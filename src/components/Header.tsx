@@ -7,7 +7,7 @@ export default function Header() {
         <span className="text-4xl">⚡</span>
         <span className="text-3xl font-[800] tracking-[-0.02em] text-foreground">The Plugd</span>
       </Link>
-      <h1 className="text-[clamp(2.25rem,5vw,3.5rem)] font-[800] tracking-[-0.03em] leading-[1.1] text-foreground mb-4 max-w-4xl">
+      <h1 className="text-[clamp(1.75rem,4.5vw,2.85rem)] font-[800] tracking-[-0.035em] leading-[1.1] text-foreground mb-4">
         Get seen. Get followed. Blow up on X.
       </h1>
       <p className="text-muted text-[1.25rem] font-normal max-w-2xl leading-relaxed">
