@@ -198,106 +198,108 @@ export default function Home() {
   const remainingCount = filteredAccounts.length - visibleCount;
 
   return (
-    <main className="flex-1 flex flex-col items-center">
-      {/* Hero Wrapper with Scattered Hashtags */}
+    <main className="flex-1 flex flex-col items-center w-full">
+      {/* Hero Wrapper with Scattered Hashtags - Now truly full width */}
       <div className="w-full relative overflow-hidden flex flex-col items-center pt-2 pb-4">
-        {/* Left Side Hashtags - Locked to extreme edges */}
+        {/* Left Side Hashtags - Truly pushed to screen edges */}
         <div className="hidden min-[1100px]:block absolute inset-0 pointer-events-none select-none">
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "8%", left: "15px", transform: "rotate(-6deg)", fontSize: "1.6rem" }}>#LetsConnect</span>
+                style={{ top: "8%", left: "5%", transform: "rotate(-6deg)", fontSize: "1.6rem" }}>#LetsConnect</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "28%", left: "45px", transform: "rotate(8deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
+                style={{ top: "28%", left: "10%", transform: "rotate(8deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "48%", left: "10px", transform: "rotate(-10deg)", fontSize: "0.95rem" }}>#Founders</span>
+                style={{ top: "48%", left: "3%", transform: "rotate(-10deg)", fontSize: "0.95rem" }}>#Founders</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "68%", left: "35px", transform: "rotate(5deg)", fontSize: "0.9rem" }}>#SideProject</span>
+                style={{ top: "68%", left: "12%", transform: "rotate(5deg)", fontSize: "0.9rem" }}>#SideProject</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "88%", left: "20px", transform: "rotate(-7deg)", fontSize: "1.05rem" }}>#ShipIt</span>
+                style={{ top: "88%", left: "5%", transform: "rotate(-7deg)", fontSize: "1.05rem" }}>#ShipIt</span>
         </div>
 
-        {/* Right Side Hashtags - Locked to extreme edges */}
+        {/* Right Side Hashtags - Truly pushed to screen edges */}
         <div className="hidden min-[1100px]:block absolute inset-0 pointer-events-none select-none">
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "12%", right: "15px", transform: "rotate(9deg)", fontSize: "1.2rem" }}>#Networking</span>
+                style={{ top: "12%", right: "5%", transform: "rotate(9deg)", fontSize: "1.2rem" }}>#Networking</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "32%", right: "45px", transform: "rotate(-8deg)", fontSize: "0.9rem" }}>#PersonalBrand</span>
+                style={{ top: "32%", right: "10%", transform: "rotate(-8deg)", fontSize: "0.9rem" }}>#PersonalBrand</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "52%", right: "10px", transform: "rotate(6deg)", fontSize: "0.95rem" }}>#IndieHackers</span>
+                style={{ top: "52%", right: "3%", transform: "rotate(6deg)", fontSize: "0.95rem" }}>#IndieHackers</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "72%", right: "35px", transform: "rotate(-5deg)", fontSize: "0.85rem" }}>#CreatorEconomy</span>
+                style={{ top: "72%", right: "12%", transform: "rotate(-5deg)", fontSize: "0.85rem" }}>#CreatorEconomy</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "92%", right: "20px", transform: "rotate(10deg)", fontSize: "0.85rem" }}>#StartupLife</span>
+                style={{ top: "92%", right: "5%", transform: "rotate(10deg)", fontSize: "0.85rem" }}>#StartupLife</span>
         </div>
 
         {/* Center Content Content */}
-        <div className="w-full max-w-[800px] px-4 relative z-10">
-          <Header />
+        <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-10 flex flex-col items-center">
+          <div className="max-w-[800px] w-full">
+            <Header />
 
-          <section className="mb-0">
-            <div className="flex flex-col md:flex-row gap-4 mb-6">
-              <div className="relative flex-1">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
-                <input
-                  type="text"
-                  placeholder="Search accounts, niches, names..."
-                  className="w-full h-[48px] bg-pill border border-border rounded-lg pl-12 pr-4 text-foreground placeholder:text-[#6b7280] focus:outline-none focus:ring-1 focus:ring-border transition-all"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  suppressHydrationWarning
-                />
-              </div>
-              <button
-                onClick={() => setIsModalOpen(true)}
-                suppressHydrationWarning
-                className="h-[48px] bg-foreground text-background font-[700] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90"
-              >
-                <Plus className="w-5 h-5" />
-                Add Account
-              </button>
-            </div>
-
-            {/* Niche Categories */}
-            <div className="flex justify-center w-full">
-              <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 mask-fade-right w-full scroll-smooth">
+            <section className="mb-0">
+              <div className="flex flex-col md:flex-row gap-4 mb-6">
+                <div className="relative flex-1">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
+                  <input
+                    type="text"
+                    placeholder="Search accounts, niches, names..."
+                    className="w-full h-[48px] bg-pill border border-border rounded-lg pl-12 pr-4 text-foreground placeholder:text-[#6b7280] focus:outline-none focus:ring-1 focus:ring-border transition-all"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    suppressHydrationWarning
+                  />
+                </div>
                 <button
-                  onClick={() => toggleNiche("All")}
+                  onClick={() => setIsModalOpen(true)}
                   suppressHydrationWarning
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
-                    selectedNiches.length === 0
-                      ? "bg-foreground text-background border-foreground font-medium"
-                      : "bg-card border-border text-muted hover:border-muted-foreground"
-                  }`}
+                  className="h-[48px] bg-foreground text-background font-[700] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90"
                 >
-                  <Globe size={16} />
-                  <span>All</span>
+                  <Plus className="w-5 h-5" />
+                  Add Account
                 </button>
-                
-                {(hasMounted ? sortedNiches : NICHES.filter(n => n.name !== "All")).map((niche) => {
-                  const Icon = niche.icon;
-                  const isSelected = hasMounted && selectedNiches.includes(niche.name);
-                  return (
-                    <button
-                      key={niche.name}
-                      onClick={() => toggleNiche(niche.name)}
-                      suppressHydrationWarning
-                      className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
-                        isSelected
-                          ? "bg-foreground text-background border-foreground font-medium"
-                          : "bg-card border-border text-muted hover:border-muted-foreground"
-                      }`}
-                    >
-                      <Icon size={16} />
-                      <span>{niche.name}</span>
-                    </button>
-                  );
-                })}
               </div>
-            </div>
-          </section>
+
+              {/* Niche Categories */}
+              <div className="flex justify-center w-full">
+                <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 mask-fade-right w-full scroll-smooth">
+                  <button
+                    onClick={() => toggleNiche("All")}
+                    suppressHydrationWarning
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
+                      selectedNiches.length === 0
+                        ? "bg-foreground text-background border-foreground font-medium"
+                        : "bg-card border-border text-muted hover:border-muted-foreground"
+                    }`}
+                  >
+                    <Globe size={16} />
+                    <span>All</span>
+                  </button>
+                  
+                  {(hasMounted ? sortedNiches : NICHES.filter(n => n.name !== "All")).map((niche) => {
+                    const Icon = niche.icon;
+                    const isSelected = hasMounted && selectedNiches.includes(niche.name);
+                    return (
+                      <button
+                        key={niche.name}
+                        onClick={() => toggleNiche(niche.name)}
+                        suppressHydrationWarning
+                        className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
+                          isSelected
+                            ? "bg-foreground text-background border-foreground font-medium"
+                            : "bg-card border-border text-muted hover:border-muted-foreground"
+                        }`}
+                      >
+                        <Icon size={16} />
+                        <span>{niche.name}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+          </div>
         </div>
       </div>
 
-      <div className="w-full max-w-[1200px] px-4">
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 mt-4">
         <DirectoryTable accounts={displayedAccounts} isLoading={isLoading} />
 
         <div className="flex flex-col items-center gap-4 py-8">
@@ -316,7 +318,9 @@ export default function Home() {
         </div>
       </div>
 
-      <Footer />
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8">
+        <Footer />
+      </div>
 
       <AddAccountModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </main>
