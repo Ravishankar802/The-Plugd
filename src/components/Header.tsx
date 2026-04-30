@@ -28,8 +28,8 @@ export default function Header() {
         Get seen. Get followed. Blow up on X.
       </h1>
       <p className="text-muted text-[1.25rem] font-normal max-w-2xl leading-relaxed mx-auto">
-        The place where 'let\'s connect' actually means something.<br />
-        Get listed for $1 and get more followers, more impressions, more growth. Or keep posting into the void.
+        $1 to get listed. More followers, more impressions, more growth.<br />
+        Or keep posting into the void.
       </p>
     </header>
   );
