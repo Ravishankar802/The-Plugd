@@ -63,7 +63,7 @@ export default function Home() {
   const [filteredAccounts, setFilteredAccounts] = useState<Account[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedNiche, setSelectedNiche] = useState("All");
+  const [selectedNiches, setSelectedNiches] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(50);
 
