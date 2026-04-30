@@ -28,7 +28,7 @@ export default function Footer() {
           </button>
 
           {isOpen && (
-            <div className="absolute bottom-full right-0 mb-2 w-36 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1">
+            <div className="absolute bottom-full right-0 mb-2 w-40 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1.5">
               {[
                 { name: "Dark", icon: Moon },
                 { name: "Light", icon: Sun },
@@ -42,10 +42,10 @@ export default function Footer() {
                     if (item.name === "Light") document.documentElement.classList.remove("dark");
                     if (item.name === "Dark") document.documentElement.classList.add("dark");
                   }}
-                  className="w-full flex items-center gap-3 px-3 py-2 text-sm text-muted hover:bg-accent hover:text-foreground transition-colors rounded-lg text-left"
+                  className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-foreground hover:bg-accent transition-colors rounded-lg text-left"
                 >
-                  <item.icon className="w-4 h-4" />
-                  <span className="font-medium">{item.name}</span>
+                  <item.icon className="w-4 h-4 text-muted" />
+                  <span className="font-semibold">{item.name}</span>
                 </button>
               ))}
             </div>
