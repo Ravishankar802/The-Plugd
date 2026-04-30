@@ -266,7 +266,7 @@ export default function Home() {
           )}
           <p className="text-[#a1a1aa] text-[0.85rem] flex items-center gap-2 font-mono-custom">
             <Info className="w-4 h-4" />
-            Accounts listed here are added by founders and creators
+            Accounts listed here are submitted by real X creators. Every listing is verified by a $1 payment. No bots. No spam.
           </p>
         </div>
       </section>
