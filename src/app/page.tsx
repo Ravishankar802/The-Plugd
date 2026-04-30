@@ -24,7 +24,6 @@ import {
   Coins, 
   Building, 
   GraduationCap, 
-  GraduationCap, 
   Mic,
   Info
 } from "lucide-react";
