@@ -1,30 +1,30 @@
 import Link from "next/link";
 
 const HASHTAGS = [
-  { text: "#BuildInPublic", top: "15%", left: "8%", size: "1.2rem", rotate: "-12deg" },
-  { text: "#LetsConnect", top: "45%", left: "12%", size: "0.95rem", rotate: "8deg" },
-  { text: "#Solopreneur", top: "75%", left: "5%", size: "1.3rem", rotate: "-5deg" },
-  { text: "#Networking", top: "25%", left: "15%", size: "1.1rem", rotate: "15deg" },
-  { text: "#SaaS", top: "60%", left: "10%", size: "1.4rem", rotate: "-10deg" },
-  { text: "#Hustle", top: "10%", left: "18%", size: "0.9rem", rotate: "10deg" },
+  // Left Column (0% to 15%)
+  { text: "#BuildInPublic", top: "12%", left: "3%", size: "1.3rem", rotate: "-8deg" },
+  { text: "#LetsConnect", top: "35%", left: "5%", size: "1.1rem", rotate: "12deg" },
+  { text: "#Solopreneur", top: "58%", left: "2%", size: "1.5rem", rotate: "-5deg" },
+  { text: "#SaaS", top: "82%", left: "4%", size: "1.2rem", rotate: "10deg" },
+  { text: "#Hustle", top: "45%", left: "8%", size: "1rem", rotate: "-12deg" },
   
-  { text: "#PersonalBrand", top: "20%", right: "8%", size: "1.25rem", rotate: "12deg" },
-  { text: "#BuildInPublic", top: "50%", right: "12%", size: "1.1rem", rotate: "-8deg" },
-  { text: "#LetsConnect", top: "80%", right: "5%", size: "0.95rem", rotate: "5deg" },
-  { text: "#Solopreneur", top: "30%", right: "15%", size: "1.4rem", rotate: "-15deg" },
-  { text: "#SaaS", top: "65%", right: "10%", size: "1.2rem", rotate: "10deg" },
-  { text: "#Networking", top: "15%", right: "18%", size: "1rem", rotate: "-10deg" },
+  // Right Column (85% to 100%)
+  { text: "#PersonalBrand", top: "18%", right: "3%", size: "1.4rem", rotate: "8deg" },
+  { text: "#Networking", top: "42%", right: "5%", size: "1.25rem", rotate: "-10deg" },
+  { text: "#BuildInPublic", top: "65%", right: "2%", size: "1.1rem", rotate: "12deg" },
+  { text: "#LetsConnect", top: "88%", right: "6%", size: "1.35rem", rotate: "-8deg" },
+  { text: "#Solopreneur", top: "30%", right: "7%", size: "1rem", rotate: "5deg" },
 ];
 
 export default function Header() {
   return (
     <header className="py-12 flex flex-col items-center text-center relative overflow-hidden">
-      {/* Background Hashtags */}
+      {/* Background Hashtags - Locked to margins */}
       <div className="absolute inset-0 pointer-events-none select-none hidden md:block">
         {HASHTAGS.map((tag, i) => (
           <span
             key={i}
-            className="absolute font-mono-custom font-[500] text-foreground opacity-[0.05] dark:opacity-[0.05] light:opacity-[0.04] transition-opacity"
+            className="absolute font-mono-custom font-[500] text-foreground opacity-[0.18] dark:opacity-[0.18] light:opacity-[0.15] transition-opacity"
             style={{
               top: tag.top,
               left: tag.left,
