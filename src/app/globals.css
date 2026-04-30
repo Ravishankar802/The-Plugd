@@ -120,7 +120,7 @@ body {
 
 @keyframes signal-flow {
   0%, 100% { opacity: 0.4; stroke-width: 0.8; filter: none; }
-  50% { opacity: 1; stroke-width: 1.2; filter: drop-shadow(0 0 1.5px #ff6b00); }
+  50% { opacity: 0.8; stroke-width: 1.2; filter: drop-shadow(0 0 1px #ff6b00); }
 }
 
 .signal-line {
