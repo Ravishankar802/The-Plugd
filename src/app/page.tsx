@@ -220,6 +220,7 @@ export default function Home() {
           <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 px-4 mask-fade-right max-w-full sm:max-w-4xl scroll-smooth">
             <button
               onClick={() => toggleNiche("All")}
+              suppressHydrationWarning
               className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
                 selectedNiches.length === 0
                   ? "bg-foreground text-background border-foreground font-medium"
@@ -237,6 +238,7 @@ export default function Home() {
                 <button
                   key={niche.name}
                   onClick={() => toggleNiche(niche.name)}
+                  suppressHydrationWarning
                   className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
                     isSelected
                       ? "bg-foreground text-background border-foreground font-medium"
