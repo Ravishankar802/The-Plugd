@@ -66,8 +66,10 @@ export default function Home() {
   const [selectedNiches, setSelectedNiches] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(50);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
+    setHasMounted(true);
     fetchAccounts();
   }, []);
 
@@ -181,9 +183,9 @@ export default function Home() {
               <span>All</span>
             </button>
             
-            {sortedNiches.map((niche) => {
+            {(hasMounted ? sortedNiches : NICHES.filter(n => n.name !== "All")).map((niche) => {
               const Icon = niche.icon;
-              const isSelected = selectedNiches.includes(niche.name);
+              const isSelected = hasMounted && selectedNiches.includes(niche.name);
               return (
                 <button
                   key={niche.name}
