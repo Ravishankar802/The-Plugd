@@ -37,7 +37,7 @@ export default function DirectoryTable({ accounts, isLoading }: DirectoryTablePr
             <tr>
               <th className="w-16">#</th>
               <th>Profile</th>
-              <th className="w-48 text-center pr-8">X Handle</th>
+              <th className="w-52 text-left pl-12">X Handle</th>
             </tr>
           </thead>
           <tbody>
@@ -55,7 +55,7 @@ export default function DirectoryTable({ accounts, isLoading }: DirectoryTablePr
                       }}
                     />
                     <div>
-                      <div className="font-[600] text-base leading-tight text-foreground">
+                      <div className="font-[600] text-base leading-tight text-foreground text-glow">
                         {account.name}
                       </div>
                       <div className="text-muted text-[0.8rem] line-clamp-1 mt-0.5">
@@ -64,13 +64,13 @@ export default function DirectoryTable({ accounts, isLoading }: DirectoryTablePr
                     </div>
                   </div>
                 </td>
-                <td className="text-center pr-8">
-                  <div className="flex justify-center">
+                <td className="text-left pl-12">
+                  <div className="flex justify-start">
                     <Link
                       href={`https://x.com/${account.xHandle}`}
                       target="_blank"
                       suppressHydrationWarning
-                      className="inline-flex items-center gap-2 bg-white text-black hover:bg-white/90 transition-all px-4 py-2 rounded-lg font-mono-custom text-sm font-bold min-w-[140px] text-left shadow-lg"
+                      className="inline-flex items-center gap-2 bg-[#ffffff] text-black hover:scale-[1.02] transition-all px-4 py-2 rounded-lg font-mono-custom text-sm font-bold min-w-[150px] text-left shadow-[0_0_20px_rgba(255,255,255,0.25)] ring-1 ring-white/50"
                     >
                       <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
