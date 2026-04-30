@@ -118,15 +118,14 @@ body {
   animation: wave 0.8s ease-in-out infinite;
 }
 
-@keyframes signal-flow {
-  0% { stroke-dashoffset: 40; opacity: 0.3; }
-  50% { opacity: 0.8; }
-  100% { stroke-dashoffset: 0; opacity: 0.3; }
+@keyframes signal-flash {
+  0%, 10%, 100% { opacity: 0.2; stroke-width: 1.5; filter: none; }
+  5% { opacity: 1; stroke-width: 3; filter: drop-shadow(0 0 4px #ff6b00); }
 }
 
 .signal-line {
-  stroke-dasharray: 4, 12;
-  animation: signal-flow 2s linear infinite;
+  opacity: 0.2;
+  animation: signal-flash 2.5s infinite;
 }
 
 /* Custom scrollbar */

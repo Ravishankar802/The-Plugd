@@ -8,10 +8,10 @@ export default function Header() {
           <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-2">
             {/* Connections */}
             <line x1="20" y1="20" x2="10" y2="10" className="signal-line" style={{ animationDelay: '0s' }} />
-            <line x1="20" y1="20" x2="30" y2="10" className="signal-line" style={{ animationDelay: '0.5s' }} />
-            <line x1="20" y1="20" x2="35" y2="25" className="signal-line" style={{ animationDelay: '1s' }} />
-            <line x1="20" y1="20" x2="25" y2="35" className="signal-line" style={{ animationDelay: '1.5s' }} />
-            <line x1="20" y1="20" x2="5" y2="28" className="signal-line" style={{ animationDelay: '2s' }} />
+            <line x1="20" y1="20" x2="30" y2="10" className="signal-line" style={{ animationDelay: '0.15s' }} />
+            <line x1="20" y1="20" x2="35" y2="25" className="signal-line" style={{ animationDelay: '0.3s' }} />
+            <line x1="20" y1="20" x2="25" y2="35" className="signal-line" style={{ animationDelay: '0.45s' }} />
+            <line x1="20" y1="20" x2="5" y2="28" className="signal-line" style={{ animationDelay: '0.6s' }} />
             
             {/* Nodes (Static) */}
             <circle cx="20" cy="20" r="3" className="fill-[#ff6b00] stroke-none" />
