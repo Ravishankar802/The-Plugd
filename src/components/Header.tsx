@@ -22,7 +22,7 @@ export default function Header() {
             <circle cx="3" cy="28" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
           </svg>
         </div>
-        <span className="text-3xl font-[800] tracking-[-0.02em] text-foreground">The Plugd</span>
+        <span className="text-3xl font-[800] tracking-[-0.02em] text-foreground">Plugd</span>
       </Link>
       <h1 className="text-[clamp(1.75rem,4.5vw,2.85rem)] font-[800] tracking-[-0.035em] leading-[1.1] text-foreground mb-4">
         Get seen. Get followed. Blow up on X.
