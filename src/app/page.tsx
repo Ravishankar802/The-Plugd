@@ -122,24 +122,24 @@ export default function Home() {
 
         <DirectoryTable accounts={displayedAccounts} isLoading={isLoading} />
 
-        {remainingCount > 0 && (
-          <div className="flex flex-col items-center gap-4 py-8">
+        <div className="flex flex-col items-center gap-4 py-8">
+          {remainingCount > 0 && (
             <button
               onClick={handleLoadMore}
-              className="flex items-center gap-2 bg-card hover:bg-accent border border-border px-8 py-3 rounded-xl text-sm font-medium transition-all"
+              className="flex items-center gap-2 bg-card hover:bg-accent border border-border px-8 py-3 rounded-xl text-sm font-medium transition-all mb-4"
             >
               Load more ({remainingCount} remaining) ↓
             </button>
-            <p className="text-muted text-sm flex items-center gap-2">
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 16v-4" />
-                <path d="M12 8h.01" />
-              </svg>
-              Accounts listed here are added by creators.
-            </p>
-          </div>
-        )}
+          )}
+          <p className="text-muted text-[0.85rem] flex items-center gap-2 font-medium">
+            <svg className="w-4 h-4 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+            Accounts listed here are added by founders and creators
+          </p>
+        </div>
       </section>
 
       <Footer />
