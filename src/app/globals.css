@@ -119,13 +119,13 @@ body {
 }
 
 @keyframes signal-flash {
-  0%, 10%, 100% { opacity: 0.2; stroke-width: 1.5; filter: none; }
-  5% { opacity: 1; stroke-width: 3; filter: drop-shadow(0 0 4px #ff6b00); }
+  0%, 15%, 100% { opacity: 0.4; stroke-width: 1.5; filter: none; }
+  7% { opacity: 1; stroke-width: 3; filter: drop-shadow(0 0 4px #ff6b00); }
 }
 
 .signal-line {
-  opacity: 0.2;
-  animation: signal-flash 2.5s infinite;
+  opacity: 0.4;
+  animation: signal-flash infinite ease-in-out;
 }
 
 /* Custom scrollbar */
