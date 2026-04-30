@@ -118,6 +118,26 @@ body {
   animation: wave 0.8s ease-in-out infinite;
 }
 
+@keyframes network-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; filter: drop-shadow(0 0 4px #ff6b00); }
+}
+
+@keyframes connection-draw {
+  0% { stroke-dashoffset: 20; opacity: 0.4; }
+  50% { stroke-dashoffset: 0; opacity: 0.8; }
+  100% { stroke-dashoffset: -20; opacity: 0.4; }
+}
+
+.node-pulse {
+  animation: network-pulse 2s ease-in-out infinite;
+}
+
+.connection-flow {
+  stroke-dasharray: 20;
+  animation: connection-draw 3s linear infinite;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

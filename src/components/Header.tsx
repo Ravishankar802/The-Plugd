@@ -3,8 +3,25 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className="py-12 flex flex-col items-center text-center">
-      <Link href="/" className="flex items-center gap-3 mb-8 hover:opacity-80 transition-opacity">
-        <span className="text-4xl">⚡</span>
+      <Link href="/" className="flex items-center gap-4 mb-8 hover:opacity-80 transition-opacity group">
+        <div className="relative w-10 h-10 flex items-center justify-center">
+          <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-2">
+            {/* Connections */}
+            <line x1="20" y1="20" x2="10" y2="10" className="connection-flow" style={{ animationDelay: '0s' }} />
+            <line x1="20" y1="20" x2="30" y2="10" className="connection-flow" style={{ animationDelay: '0.5s' }} />
+            <line x1="20" y1="20" x2="35" y2="25" className="connection-flow" style={{ animationDelay: '1s' }} />
+            <line x1="20" y1="20" x2="25" y2="35" className="connection-flow" style={{ animationDelay: '1.5s' }} />
+            <line x1="20" y1="20" x2="5" y2="28" className="connection-flow" style={{ animationDelay: '2s' }} />
+            
+            {/* Nodes */}
+            <circle cx="20" cy="20" r="3" className="fill-[#ff6b00] stroke-none" />
+            <circle cx="10" cy="10" r="2.5" className="fill-[#ff6b00] stroke-none node-pulse" style={{ animationDelay: '0s' }} />
+            <circle cx="30" cy="10" r="2.5" className="fill-[#ff6b00] stroke-none node-pulse" style={{ animationDelay: '0.4s' }} />
+            <circle cx="35" cy="25" r="2.5" className="fill-[#ff6b00] stroke-none node-pulse" style={{ animationDelay: '0.8s' }} />
+            <circle cx="25" cy="35" r="2.5" className="fill-[#ff6b00] stroke-none node-pulse" style={{ animationDelay: '1.2s' }} />
+            <circle cx="5" cy="28" r="2.5" className="fill-[#ff6b00] stroke-none node-pulse" style={{ animationDelay: '1.6s' }} />
+          </svg>
+        </div>
         <span className="text-3xl font-[800] tracking-[-0.02em] text-foreground">The Plugd</span>
       </Link>
       <h1 className="text-[clamp(1.75rem,4.5vw,2.85rem)] font-[800] tracking-[-0.035em] leading-[1.1] text-foreground mb-4">
