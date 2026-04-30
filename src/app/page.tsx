@@ -1,65 +1,145 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import DirectoryTable from "@/components/DirectoryTable";
+import AddAccountModal from "@/components/AddAccountModal";
+import { Search, Plus } from "lucide-react";
+
+interface Account {
+  id: number;
+  name: string;
+  xHandle: string;
+  avatarUrl: string;
+  bio: string;
+  niche: string;
+  followers: number;
+}
+
+const NICHES = ["All", "Founder", "Builder", "Student", "Creator", "Crypto", "Other"];
 
 export default function Home() {
+  const [accounts, setAccounts] = useState<Account[]>([]);
+  const [filteredAccounts, setFilteredAccounts] = useState<Account[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedNiche, setSelectedNiche] = useState("All");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(50);
+
+  useEffect(() => {
+    fetchAccounts();
+  }, []);
+
+  useEffect(() => {
+    let result = accounts;
+
+    if (selectedNiche !== "All") {
+      result = result.filter((a) => a.niche === selectedNiche);
+    }
+
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      result = result.filter(
+        (a) =>
+          a.name.toLowerCase().includes(q) ||
+          a.xHandle.toLowerCase().includes(q) ||
+          a.bio.toLowerCase().includes(q) ||
+          a.niche.toLowerCase().includes(q)
+      );
+    }
+
+    setFilteredAccounts(result);
+  }, [searchQuery, selectedNiche, accounts]);
+
+  const fetchAccounts = async () => {
+    setIsLoading(true);
+    try {
+      const res = await fetch("/api/accounts");
+      const data = await res.json();
+      setAccounts(data);
+      setFilteredAccounts(data);
+    } catch (error) {
+      console.error("Error fetching accounts:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 50);
+  };
+
+  const displayedAccounts = filteredAccounts.slice(0, visibleCount);
+  const remainingCount = filteredAccounts.length - visibleCount;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <main className="flex-1 flex flex-col">
+      <Header />
+
+      <section className="mb-12">
+        <div className="flex flex-col md:flex-row gap-4 mb-8">
+          <div className="relative flex-1">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
+            <input
+              type="text"
+              placeholder="Search accounts, niches, names..."
+              className="w-full bg-[#111] border border-border rounded-xl pl-12 pr-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          </div>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-white hover:bg-white/90 text-black font-bold px-6 py-3 rounded-xl flex items-center justify-center gap-2 transition-all"
           >
-            Documentation
-          </a>
+            <Plus className="w-5 h-5" />
+            Add Account
+          </button>
         </div>
-      </main>
-    </div>
+
+        <div className="flex flex-wrap gap-2 mb-8">
+          {NICHES.map((niche) => (
+            <button
+              key={niche}
+              onClick={() => setSelectedNiche(niche)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                selectedNiche === niche
+                  ? "bg-white text-black"
+                  : "bg-[#111] text-muted border border-border hover:bg-[#1a1a1a] hover:text-white"
+              }`}
+            >
+              {niche}
+            </button>
+          ))}
+        </div>
+
+        <DirectoryTable accounts={displayedAccounts} isLoading={isLoading} />
+
+        {remainingCount > 0 && (
+          <div className="flex flex-col items-center gap-4 py-8">
+            <button
+              onClick={handleLoadMore}
+              className="flex items-center gap-2 bg-[#111] hover:bg-[#1a1a1a] border border-border px-8 py-3 rounded-xl text-sm font-medium transition-all"
+            >
+              Load more ({remainingCount} remaining) ↓
+            </button>
+            <p className="text-muted text-sm flex items-center gap-2">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4" />
+                <path d="M12 8h.01" />
+              </svg>
+              Accounts listed here are added by creators.
+            </p>
+          </div>
+        )}
+      </section>
+
+      <Footer />
+
+      <AddAccountModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </main>
   );
 }
