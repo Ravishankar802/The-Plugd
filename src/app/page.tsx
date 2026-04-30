@@ -84,7 +84,7 @@ export default function Home() {
       <Header />
 
       <section className="mb-12">
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
+        <div className="max-w-2xl mx-auto flex flex-col md:flex-row gap-4 mb-8">
           <div className="relative flex-1">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
             <input

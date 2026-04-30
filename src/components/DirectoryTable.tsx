@@ -23,8 +23,8 @@ export default function DirectoryTable({ accounts, isLoading }: DirectoryTablePr
   return (
     <div className="w-full bg-card rounded-2xl border border-border overflow-hidden mb-8">
       <div className="flex items-center justify-between p-6">
-        <h2 className="text-[1.25rem] font-[700] text-foreground">Index</h2>
-        <button className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors bg-transparent px-3 py-1.5 rounded-lg border border-border">
+        <h2 className="text-[1.25rem] font-[700] text-foreground text-glow">Index</h2>
+        <button className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors bg-transparent px-3 py-1.5 rounded-lg border border-border text-glow">
           <TrendingUp className="w-4 h-4" />
           Recently Added
           <ChevronDown className="w-4 h-4" />
