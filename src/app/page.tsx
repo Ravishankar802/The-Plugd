@@ -73,24 +73,48 @@ export default function Home() {
 
   useEffect(() => {
     let result = accounts;
-
-    if (selectedNiche !== "All") {
-      result = result.filter((a) => a.niche === selectedNiche);
-    }
-
-    if (searchQuery) {
+    const result = accounts.filter(account => {
       const q = searchQuery.toLowerCase();
-      result = result.filter(
-        (a) =>
-          a.name.toLowerCase().includes(q) ||
-          a.xHandle.toLowerCase().includes(q) ||
-          a.bio.toLowerCase().includes(q) ||
-          a.niche.toLowerCase().includes(q)
-      );
-    }
+      const matchesSearch = 
+        account.name.toLowerCase().includes(q) ||
+        account.xHandle.toLowerCase().includes(q) ||
+        account.bio.toLowerCase().includes(q) ||
+        account.niche.toLowerCase().includes(q);
+      
+      const matchesNiche = selectedNiches.length === 0 || selectedNiches.includes(account.niche);
+      
+      return matchesSearch && matchesNiche;
+    });
 
     setFilteredAccounts(result);
-  }, [searchQuery, selectedNiche, accounts]);
+  }, [searchQuery, selectedNiches, accounts]);
+
+  const toggleNiche = (name: string) => {
+    if (name === "All") {
+      setSelectedNiches([]);
+      return;
+    }
+    
+    setSelectedNiches(prev => {
+      if (prev.includes(name)) {
+        return prev.filter(n => n !== name);
+      }
+      return [...prev, name];
+    });
+  };
+
+  const sortedNiches = [...NICHES]
+    .filter(n => n.name !== "All")
+    .sort((a, b) => {
+      const indexA = selectedNiches.indexOf(a.name);
+      const indexB = selectedNiches.indexOf(b.name);
+      
+      if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+      
+      return NICHES.findIndex(n => n.name === a.name) - NICHES.findIndex(n => n.name === b.name);
+    });
 
   const fetchAccounts = async () => {
     setIsLoading(true);
@@ -147,9 +171,9 @@ export default function Home() {
         <div className="flex justify-center w-full mb-12">
           <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 px-4 mask-fade-right max-w-full sm:max-w-4xl scroll-smooth">
             <button
-              onClick={() => setSelectedNiche("All")}
+              onClick={() => toggleNiche("All")}
               className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
-                selectedNiche === "All"
+                selectedNiches.length === 0
                   ? "bg-foreground text-background border-foreground font-medium"
                   : "bg-card border-border text-muted hover:border-muted-foreground"
               }`}
@@ -158,30 +182,24 @@ export default function Home() {
               <span>All</span>
             </button>
             
-            {NICHES
-              .filter(n => n.name !== "All")
-              .sort((a, b) => {
-                if (a.name === selectedNiche) return -1;
-                if (b.name === selectedNiche) return 1;
-                return 0;
-              })
-              .map((niche) => {
-                const Icon = niche.icon;
-                return (
-                  <button
-                    key={niche.name}
-                    onClick={() => setSelectedNiche(niche.name)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
-                      selectedNiche === niche.name
-                        ? "bg-foreground text-background border-foreground font-medium"
-                        : "bg-card border-border text-muted hover:border-muted-foreground"
-                    }`}
-                  >
-                    <Icon size={16} />
-                    <span>{niche.name}</span>
-                  </button>
-                );
-              })}
+            {sortedNiches.map((niche) => {
+              const Icon = niche.icon;
+              const isSelected = selectedNiches.includes(niche.name);
+              return (
+                <button
+                  key={niche.name}
+                  onClick={() => toggleNiche(niche.name)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
+                    isSelected
+                      ? "bg-foreground text-background border-foreground font-medium"
+                      : "bg-card border-border text-muted hover:border-muted-foreground"
+                  }`}
+                >
+                  <Icon size={16} />
+                  <span>{niche.name}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
