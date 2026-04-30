@@ -206,13 +206,9 @@ export default function Home() {
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
                 style={{ top: "8%", left: "5%", transform: "rotate(-6deg)", fontSize: "1.6rem" }}>#LetsConnect</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "28%", left: "10%", transform: "rotate(8deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
+                style={{ top: "48%", left: "3%", transform: "rotate(-10deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "48%", left: "3%", transform: "rotate(-10deg)", fontSize: "0.95rem" }}>#Founders</span>
-          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "68%", left: "12%", transform: "rotate(5deg)", fontSize: "0.9rem" }}>#SideProject</span>
-          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "88%", left: "5%", transform: "rotate(-7deg)", fontSize: "1.05rem" }}>#ShipIt</span>
+                style={{ top: "88%", left: "5%", transform: "rotate(-7deg)", fontSize: "1.45rem" }}>#ShipIt</span>
         </div>
 
         {/* Right Side Hashtags - Truly pushed to screen edges */}
@@ -220,13 +216,9 @@ export default function Home() {
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
                 style={{ top: "12%", right: "5%", transform: "rotate(9deg)", fontSize: "1.2rem" }}>#Networking</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "32%", right: "10%", transform: "rotate(-8deg)", fontSize: "0.9rem" }}>#PersonalBrand</span>
+                style={{ top: "52%", right: "3%", transform: "rotate(6deg)", fontSize: "1.45rem" }}>#IndieHackers</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "52%", right: "3%", transform: "rotate(6deg)", fontSize: "0.95rem" }}>#IndieHackers</span>
-          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "72%", right: "12%", transform: "rotate(-5deg)", fontSize: "0.85rem" }}>#CreatorEconomy</span>
-          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "92%", right: "5%", transform: "rotate(10deg)", fontSize: "0.85rem" }}>#StartupLife</span>
+                style={{ top: "92%", right: "5%", transform: "rotate(10deg)", fontSize: "1.45rem" }}>#StartupLife</span>
         </div>
 
         {/* Center Content Content */}
