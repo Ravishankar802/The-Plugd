@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="py-12 flex flex-col items-center text-center relative overflow-hidden">
+    <header className="pt-4 pb-2 flex flex-col items-center text-center relative overflow-hidden">
       <Link href="/" className="flex items-center gap-4 mb-8 hover:opacity-80 transition-opacity group relative z-10">
         <div className="relative w-10 h-10 flex items-center justify-center">
           <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-[1.5]">
