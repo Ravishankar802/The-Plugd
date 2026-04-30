@@ -103,6 +103,21 @@ body {
   mask-image: linear-gradient(to right, black 85%, transparent 100%);
 }
 
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-20deg); }
+  50% { transform: rotate(20deg); }
+  75% { transform: rotate(-20deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.wave {
+  display: inline-block;
+  font-size: 28px;
+  transform-origin: bottom;
+  animation: wave 0.8s ease-in-out infinite;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
