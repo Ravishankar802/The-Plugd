@@ -144,7 +144,6 @@ export default function Home() {
       const response = await fetch("/api/accounts");
       const data = await response.json();
       
-      // Ensure data is an array before filtering
       const apiAccounts = Array.isArray(data) ? data : [];
       
       const combinedData = [...MOCK_ACCOUNTS, ...apiAccounts.filter((acc: Account) => 
@@ -201,33 +200,33 @@ export default function Home() {
   return (
     <main className="flex-1 flex flex-col items-center">
       {/* Hero Wrapper with Scattered Hashtags */}
-      <div className="w-full relative overflow-hidden flex flex-col items-center pt-2 pb-6">
-        {/* Left Side Hashtags - Pushed to extreme edges */}
+      <div className="w-full relative overflow-hidden flex flex-col items-center pt-2 pb-4">
+        {/* Left Side Hashtags - Locked to extreme edges */}
         <div className="hidden min-[1100px]:block absolute inset-0 pointer-events-none select-none">
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "8%", left: "0.5%", transform: "rotate(-6deg)", fontSize: "1.6rem" }}>#LetsConnect</span>
+                style={{ top: "8%", left: "15px", transform: "rotate(-6deg)", fontSize: "1.6rem" }}>#LetsConnect</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "28%", left: "2%", transform: "rotate(8deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
+                style={{ top: "28%", left: "45px", transform: "rotate(8deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "48%", left: "0.8%", transform: "rotate(-10deg)", fontSize: "0.95rem" }}>#Founders</span>
+                style={{ top: "48%", left: "10px", transform: "rotate(-10deg)", fontSize: "0.95rem" }}>#Founders</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "68%", left: "2.5%", transform: "rotate(5deg)", fontSize: "0.9rem" }}>#SideProject</span>
+                style={{ top: "68%", left: "35px", transform: "rotate(5deg)", fontSize: "0.9rem" }}>#SideProject</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "88%", left: "1.2%", transform: "rotate(-7deg)", fontSize: "1.05rem" }}>#ShipIt</span>
+                style={{ top: "88%", left: "20px", transform: "rotate(-7deg)", fontSize: "1.05rem" }}>#ShipIt</span>
         </div>
 
-        {/* Right Side Hashtags - Pushed to extreme edges */}
+        {/* Right Side Hashtags - Locked to extreme edges */}
         <div className="hidden min-[1100px]:block absolute inset-0 pointer-events-none select-none">
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "12%", right: "0.5%", transform: "rotate(9deg)", fontSize: "1.2rem" }}>#Networking</span>
+                style={{ top: "12%", right: "15px", transform: "rotate(9deg)", fontSize: "1.2rem" }}>#Networking</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "32%", right: "2%", transform: "rotate(-8deg)", fontSize: "0.9rem" }}>#PersonalBrand</span>
+                style={{ top: "32%", right: "45px", transform: "rotate(-8deg)", fontSize: "0.9rem" }}>#PersonalBrand</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "52%", right: "0.8%", transform: "rotate(6deg)", fontSize: "0.95rem" }}>#IndieHackers</span>
+                style={{ top: "52%", right: "10px", transform: "rotate(6deg)", fontSize: "0.95rem" }}>#IndieHackers</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "72%", right: "2.5%", transform: "rotate(-5deg)", fontSize: "0.85rem" }}>#CreatorEconomy</span>
+                style={{ top: "72%", right: "35px", transform: "rotate(-5deg)", fontSize: "0.85rem" }}>#CreatorEconomy</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "92%", right: "1.2%", transform: "rotate(10deg)", fontSize: "0.85rem" }}>#StartupLife</span>
+                style={{ top: "92%", right: "20px", transform: "rotate(10deg)", fontSize: "0.85rem" }}>#StartupLife</span>
         </div>
 
         {/* Center Content Content */}
@@ -235,7 +234,7 @@ export default function Home() {
           <Header />
 
           <section className="mb-0">
-            <div className="flex flex-col md:flex-row gap-4 mb-8">
+            <div className="flex flex-col md:flex-row gap-4 mb-6">
               <div className="relative flex-1">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
                 <input
