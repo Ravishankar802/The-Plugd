@@ -17,10 +17,10 @@ export default function Footer() {
           <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
         </div>
 
-        <div className="relative w-36">
+        <div className="relative">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-full flex items-center justify-between gap-2 bg-transparent border border-border hover:bg-accent px-3 py-1.5 rounded-lg text-sm text-muted transition-colors"
+            className="flex items-center gap-2 bg-transparent border border-border hover:bg-accent px-4 py-2 rounded-lg text-sm text-muted transition-colors"
           >
             <div className="flex items-center gap-2">
               <Moon className="w-4 h-4" />
@@ -30,7 +30,7 @@ export default function Footer() {
           </button>
 
           {isOpen && (
-            <div className="absolute bottom-full left-0 mb-2 w-full bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1.5">
+            <div className="absolute bottom-full left-0 mb-2 w-28 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1">
               {[
                 { name: "Dark", icon: Moon },
                 { name: "Light", icon: Sun },
