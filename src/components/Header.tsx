@@ -7,19 +7,19 @@ export default function Header() {
         <div className="relative w-10 h-10 flex items-center justify-center">
           <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-2">
             {/* Connections */}
-            <line x1="20" y1="20" x2="10" y2="10" className="signal-line" style={{ animationDuration: '4.2s', animationDelay: '0s' }} />
-            <line x1="20" y1="20" x2="30" y2="10" className="signal-line" style={{ animationDuration: '3.8s', animationDelay: '1.2s' }} />
-            <line x1="20" y1="20" x2="35" y2="25" className="signal-line" style={{ animationDuration: '5.1s', animationDelay: '2.5s' }} />
-            <line x1="20" y1="20" x2="25" y2="35" className="signal-line" style={{ animationDuration: '4.5s', animationDelay: '0.8s' }} />
-            <line x1="20" y1="20" x2="5" y2="28" className="signal-line" style={{ animationDuration: '3.6s', animationDelay: '3.1s' }} />
+            <line x1="20" y1="20" x2="8" y2="8" className="signal-line" style={{ animationDuration: '4.2s', animationDelay: '0s' }} />
+            <line x1="20" y1="20" x2="32" y2="8" className="signal-line" style={{ animationDuration: '3.8s', animationDelay: '1.2s' }} />
+            <line x1="20" y1="20" x2="37" y2="25" className="signal-line" style={{ animationDuration: '5.1s', animationDelay: '2.5s' }} />
+            <line x1="20" y1="20" x2="25" y2="37" className="signal-line" style={{ animationDuration: '4.5s', animationDelay: '0.8s' }} />
+            <line x1="20" y1="20" x2="3" y2="28" className="signal-line" style={{ animationDuration: '3.6s', animationDelay: '3.1s' }} />
             
             {/* Nodes (Static) */}
-            <circle cx="20" cy="20" r="3" className="fill-[#ff6b00] stroke-none" />
-            <circle cx="10" cy="10" r="2.5" className="fill-[#ff6b00] stroke-none opacity-80" />
-            <circle cx="30" cy="10" r="2.5" className="fill-[#ff6b00] stroke-none opacity-80" />
-            <circle cx="35" cy="25" r="2.5" className="fill-[#ff6b00] stroke-none opacity-80" />
-            <circle cx="25" cy="35" r="2.5" className="fill-[#ff6b00] stroke-none opacity-80" />
-            <circle cx="5" cy="28" r="2.5" className="fill-[#ff6b00] stroke-none opacity-80" />
+            <circle cx="20" cy="20" r="3.5" className="fill-[#ff6b00] stroke-none" />
+            <circle cx="8" cy="8" r="3" className="fill-[#ff6b00] stroke-none opacity-80" />
+            <circle cx="32" cy="8" r="3" className="fill-[#ff6b00] stroke-none opacity-80" />
+            <circle cx="37" cy="25" r="3" className="fill-[#ff6b00] stroke-none opacity-80" />
+            <circle cx="25" cy="37" r="3" className="fill-[#ff6b00] stroke-none opacity-80" />
+            <circle cx="3" cy="28" r="3" className="fill-[#ff6b00] stroke-none opacity-80" />
           </svg>
         </div>
         <span className="text-3xl font-[800] tracking-[-0.02em] text-foreground">The Plugd</span>
