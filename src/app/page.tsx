@@ -58,9 +58,57 @@ const NICHES = [
   { name: "Other", icon: Plus },
 ];
 
+const MOCK_ACCOUNTS: Account[] = [
+  {
+    id: -1,
+    name: "Ravi Shankar",
+    xHandle: "ravishankar802",
+    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+    bio: "Building The Plugd. Growth hacker & founder.",
+    niche: "Founder",
+    followers: 12500
+  },
+  {
+    id: -2,
+    name: "Sarah Chen",
+    xHandle: "sarahcodes",
+    avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+    bio: "Full-stack developer at Vercel. Next.js enthusiast.",
+    niche: "Developer",
+    followers: 8400
+  },
+  {
+    id: -3,
+    name: "James Wilson",
+    xHandle: "jdesign",
+    avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+    bio: "Minimalist designer. Making the web beautiful.",
+    niche: "Designer",
+    followers: 21000
+  },
+  {
+    id: -4,
+    name: "Elena Rodriguez",
+    xHandle: "elenarai",
+    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
+    bio: "AI researcher. Exploring the future of LLMs.",
+    niche: "AI",
+    followers: 5600
+  },
+  {
+    id: -5,
+    name: "Marc Lou",
+    xHandle: "marclou",
+    avatarUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop",
+    bio: "Indie hacker. Shipping 12 startups in 12 months.",
+    niche: "Indie Hacker",
+    followers: 45000
+  }
+];
+
 export default function Home() {
-  const [accounts, setAccounts] = useState<Account[]>([]);
-  const [filteredAccounts, setFilteredAccounts] = useState<Account[]>([]);
+  const [accounts, setAccounts] = useState<Account[]>(MOCK_ACCOUNTS);
+  const [filteredAccounts, setFilteredAccounts] = useState<Account[]>(MOCK_ACCOUNTS);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedNiches, setSelectedNiches] = useState<string[]>([]);
