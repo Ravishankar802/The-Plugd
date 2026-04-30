@@ -17,18 +17,20 @@ export default function Footer() {
           <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
         </div>
 
-        <div className="relative">
+        <div className="relative w-36">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center gap-2 bg-transparent border border-border hover:bg-accent px-3 py-1.5 rounded-lg text-sm text-muted transition-colors"
+            className="w-full flex items-center justify-between gap-2 bg-transparent border border-border hover:bg-accent px-3 py-1.5 rounded-lg text-sm text-muted transition-colors"
           >
-            <Moon className="w-4 h-4" />
-            <span>{theme}</span>
+            <div className="flex items-center gap-2">
+              <Moon className="w-4 h-4" />
+              <span>{theme}</span>
+            </div>
             <ChevronDown className="w-4 h-4" />
           </button>
 
           {isOpen && (
-            <div className="absolute bottom-full right-0 mb-2 w-40 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1.5">
+            <div className="absolute bottom-full left-0 mb-2 w-full bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1.5">
               {[
                 { name: "Dark", icon: Moon },
                 { name: "Light", icon: Sun },
@@ -44,7 +46,7 @@ export default function Footer() {
                   }}
                   className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-foreground hover:bg-accent transition-colors rounded-lg text-left"
                 >
-                  <item.icon className="w-4 h-4 text-muted" />
+                  <item.icon className="w-4 h-4 text-muted shrink-0" />
                   <span className="font-semibold">{item.name}</span>
                 </button>
               ))}
