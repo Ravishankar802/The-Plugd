@@ -12,7 +12,8 @@ export default function Header() {
       </h1>
       <p className="text-muted text-[1.25rem] font-normal max-w-2xl leading-relaxed mx-auto">
         <span className="wave mr-2">👋</span>
-        $1 to get listed and get more followers, more impressions, more growth — or keep posting into the void.
+        $1 to get listed and get more followers, more impressions,<br />
+        more growth — or keep posting into the void.
       </p>
     </header>
   );
