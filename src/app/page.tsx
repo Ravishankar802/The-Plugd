@@ -204,9 +204,9 @@ export default function Home() {
         {/* Left Side Hashtags - Truly pushed to screen edges */}
         <div className="hidden min-[1100px]:block absolute inset-0 pointer-events-none select-none">
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "8%", left: "5%", transform: "rotate(-6deg)", fontSize: "1.6rem" }}>#LetsConnect</span>
+                style={{ top: "8%", left: "5%", transform: "rotate(-6deg)", fontSize: "1.8rem" }}>#LetsConnect</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "48%", left: "3%", transform: "rotate(-10deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
+                style={{ top: "48%", left: "3%", transform: "rotate(8deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
                 style={{ top: "88%", left: "5%", transform: "rotate(-7deg)", fontSize: "1.45rem" }}>#ShipIt</span>
         </div>
@@ -214,11 +214,11 @@ export default function Home() {
         {/* Right Side Hashtags - Truly pushed to screen edges */}
         <div className="hidden min-[1100px]:block absolute inset-0 pointer-events-none select-none">
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "12%", right: "5%", transform: "rotate(9deg)", fontSize: "1.2rem" }}>#Networking</span>
+                style={{ top: "12%", right: "5%", transform: "rotate(9deg)", fontSize: "1.5rem" }}>#Networking</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "52%", right: "3%", transform: "rotate(6deg)", fontSize: "1.45rem" }}>#IndieHackers</span>
+                style={{ top: "52%", right: "3%", transform: "rotate(-8deg)", fontSize: "1.45rem" }}>#IndieHackers</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "92%", right: "5%", transform: "rotate(10deg)", fontSize: "1.45rem" }}>#StartupLife</span>
+                style={{ top: "92%", right: "5%", transform: "rotate(10deg)", fontSize: "1.1rem" }}>#StartupLife</span>
         </div>
 
         {/* Center Content Content */}
