@@ -135,52 +135,62 @@ export default function Home() {
       
       return matchesSearch && matchesNiche;
     });
-
     setFilteredAccounts(result);
   }, [searchQuery, selectedNiches, accounts]);
 
-  const toggleNiche = (name: string) => {
-    if (name === "All") {
+  const fetchAccounts = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch("/api/accounts");
+      const data = await response.json();
+      
+      // Combine mock accounts with real data, avoiding duplicates if necessary
+      const combinedData = [...MOCK_ACCOUNTS, ...data.filter((acc: Account) => 
+        !MOCK_ACCOUNTS.some(mock => mock.xHandle === acc.xHandle)
+      )];
+      
+      setAccounts(combinedData);
+    } catch (error) {
+      console.error("Failed to fetch accounts:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const toggleNiche = (nicheName: string) => {
+    if (nicheName === "All") {
       setSelectedNiches([]);
       return;
     }
     
     setSelectedNiches(prev => {
-      if (prev.includes(name)) {
-        return prev.filter(n => n !== name);
+      if (prev.includes(nicheName)) {
+        return prev.filter(n => n !== nicheName);
+      } else {
+        return [...prev, nicheName];
       }
-      return [...prev, name];
     });
   };
 
-  const sortedNiches = [...NICHES]
-    .filter(n => n.name !== "All")
-    .sort((a, b) => {
-      const indexA = selectedNiches.indexOf(a.name);
-      const indexB = selectedNiches.indexOf(b.name);
-      
-      if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-      if (indexA !== -1) return -1;
-      if (indexB !== -1) return 1;
-      
-      return NICHES.findIndex(n => n.name === a.name) - NICHES.findIndex(n => n.name === b.name);
-    });
-
-  const fetchAccounts = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch("/api/accounts");
-      const data = await response.json();
-      // Prepend mock accounts to fetched data for testing
-      const combinedAccounts = Array.isArray(data) ? [...MOCK_ACCOUNTS, ...data] : [...MOCK_ACCOUNTS];
-      setAccounts(combinedAccounts);
-      setFilteredAccounts(combinedAccounts);
-    } catch (error) {
-      console.error("Error fetching accounts:", error);
-    } finally {
-      setIsLoading(false);
+  // Logic to move selected niches to the front
+  const sortedNiches = [...NICHES.filter(n => n.name !== "All")].sort((a, b) => {
+    const aSelected = selectedNiches.includes(a.name);
+    const bSelected = selectedNiches.includes(b.name);
+    
+    if (aSelected && !bSelected) return -1;
+    if (!aSelected && bSelected) return 1;
+    
+    // If both or neither are selected, maintain original order
+    const aIndex = NICHES.findIndex(n => n.name === a.name);
+    const bIndex = NICHES.findIndex(n => n.name === b.name);
+    
+    // Maintain selection order for multiple selections
+    if (aSelected && bSelected) {
+      return selectedNiches.indexOf(a.name) - selectedNiches.indexOf(b.name);
     }
-  };
+    
+    return aIndex - bIndex;
+  });
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 50);
@@ -190,87 +200,110 @@ export default function Home() {
   const remainingCount = filteredAccounts.length - visibleCount;
 
   return (
-    <main className="flex-1 flex flex-col">
-      <Header />
-
-      <section className="mb-12">
-        <div className="max-w-2xl mx-auto flex flex-col md:flex-row gap-4 mb-12">
-          <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
-            <input
-              type="text"
-              placeholder="Search accounts, niches, names..."
-              className="w-full h-[48px] bg-pill border border-border rounded-lg pl-12 pr-4 text-foreground placeholder:text-[#6b7280] focus:outline-none focus:ring-1 focus:ring-border transition-all"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              suppressHydrationWarning
-            />
-          </div>
-          <button
-            onClick={() => setIsModalOpen(true)}
-            suppressHydrationWarning
-            className="h-[48px] bg-foreground text-background font-[700] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90"
-          >
-            <Plus className="w-5 h-5" />
-            Add Account
-          </button>
+    <main className="flex-1 flex flex-col items-center">
+      <div className="w-full max-w-[1200px] flex justify-center items-start gap-8 pt-12">
+        {/* Left Hashtag Column */}
+        <div className="hidden min-[1100px]:flex flex-col w-[180px] pt-32 pointer-events-none select-none">
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[-8deg] mb-6">#BuildInPublic</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[8deg] mb-6">#LetsConnect</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[-8deg] mb-6">#Founders</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[8deg] mb-6">#SideProject</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[-8deg] mb-6">#ShipIt</span>
         </div>
 
-        {/* Niche Categories */}
-        <div className="flex justify-center w-full mb-12">
-          <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 px-4 mask-fade-right max-w-full sm:max-w-4xl scroll-smooth">
-            <button
-              onClick={() => toggleNiche("All")}
-              suppressHydrationWarning
-              className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
-                selectedNiches.length === 0
-                  ? "bg-foreground text-background border-foreground font-medium"
-                  : "bg-card border-border text-muted hover:border-muted-foreground"
-              }`}
-            >
-              <Globe size={16} />
-              <span>All</span>
-            </button>
-            
-            {(hasMounted ? sortedNiches : NICHES.filter(n => n.name !== "All")).map((niche) => {
-              const Icon = niche.icon;
-              const isSelected = hasMounted && selectedNiches.includes(niche.name);
-              return (
+        {/* Center Content */}
+        <div className="flex-1 max-w-[680px]">
+          <Header />
+
+          <section className="mb-12">
+            <div className="flex flex-col md:flex-row gap-4 mb-12">
+              <div className="relative flex-1">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
+                <input
+                  type="text"
+                  placeholder="Search accounts, niches, names..."
+                  className="w-full h-[48px] bg-pill border border-border rounded-lg pl-12 pr-4 text-foreground placeholder:text-[#6b7280] focus:outline-none focus:ring-1 focus:ring-border transition-all"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  suppressHydrationWarning
+                />
+              </div>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                suppressHydrationWarning
+                className="h-[48px] bg-foreground text-background font-[700] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90"
+              >
+                <Plus className="w-5 h-5" />
+                Add Account
+              </button>
+            </div>
+
+            {/* Niche Categories */}
+            <div className="flex justify-center w-full mb-12">
+              <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 px-4 mask-fade-right max-w-full scroll-smooth">
                 <button
-                  key={niche.name}
-                  onClick={() => toggleNiche(niche.name)}
+                  onClick={() => toggleNiche("All")}
                   suppressHydrationWarning
                   className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
-                    isSelected
+                    selectedNiches.length === 0
                       ? "bg-foreground text-background border-foreground font-medium"
                       : "bg-card border-border text-muted hover:border-muted-foreground"
                   }`}
                 >
-                  <Icon size={16} />
-                  <span>{niche.name}</span>
+                  <Globe size={16} />
+                  <span>All</span>
                 </button>
-              );
-            })}
-          </div>
+                
+                {(hasMounted ? sortedNiches : NICHES.filter(n => n.name !== "All")).map((niche) => {
+                  const Icon = niche.icon;
+                  const isSelected = hasMounted && selectedNiches.includes(niche.name);
+                  return (
+                    <button
+                      key={niche.name}
+                      onClick={() => toggleNiche(niche.name)}
+                      suppressHydrationWarning
+                      className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
+                        isSelected
+                          ? "bg-foreground text-background border-foreground font-medium"
+                          : "bg-card border-border text-muted hover:border-muted-foreground"
+                      }`}
+                    >
+                      <Icon size={16} />
+                      <span>{niche.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
         </div>
 
-        <DirectoryTable accounts={displayedAccounts} isLoading={isLoading} />
-
-        <div className="flex flex-col items-center gap-4 py-8">
-          {remainingCount > 0 && (
-            <button
-              onClick={handleLoadMore}
-              className="flex items-center gap-2 bg-card hover:bg-accent border border-border px-8 py-3 rounded-xl text-sm font-medium transition-all mb-4"
-            >
-              Load more ({remainingCount} remaining) ↓
-            </button>
-          )}
-          <p className="text-[#a1a1aa] text-[0.85rem] flex items-center gap-2 font-mono-custom">
-            <Info className="w-4 h-4" />
-            Accounts listed here are submitted by real X creators. Every listing is verified by a $1 payment. No bots. No spam.
-          </p>
+        {/* Right Hashtag Column */}
+        <div className="hidden min-[1100px]:flex flex-col w-[180px] pt-32 pointer-events-none select-none">
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[8deg] mb-6">#PersonalBrand</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[-8deg] mb-6">#IndieHackers</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[8deg] mb-6">#CreatorEconomy</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[-8deg] mb-6">#Networking</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[8deg] mb-6">#StartupLife</span>
         </div>
-      </section>
+      </div>
+
+      <DirectoryTable accounts={displayedAccounts} isLoading={isLoading} />
+
+      <div className="flex flex-col items-center gap-4 py-8">
+        {remainingCount > 0 && (
+          <button
+            onClick={handleLoadMore}
+            className="flex items-center gap-2 bg-card hover:bg-accent border border-border px-8 py-3 rounded-xl text-sm font-medium transition-all mb-4"
+          >
+            Load more ({remainingCount} remaining) ↓
+          </button>
+        )}
+        <p className="text-[#a1a1aa] text-[0.85rem] flex items-center gap-2 font-mono-custom">
+          <Info className="w-4 h-4" />
+          Accounts listed here are submitted by real X creators. Every listing is verified by a $1 payment. No bots. No spam.
+        </p>
+      </div>
 
       <Footer />
 
