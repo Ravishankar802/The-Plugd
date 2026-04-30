@@ -14,7 +14,7 @@ export default function Header() {
             <line x1="20" y1="20" x2="3" y2="28" className="signal-line" style={{ animationDuration: '3.6s', animationDelay: '3.1s' }} />
             
             {/* Nodes (Static) */}
-            <circle cx="20" cy="20" r="3.5" className="fill-[#ff6b00] stroke-none" />
+            <circle cx="20" cy="20" r="2.5" className="fill-[#ff6b00] stroke-none" />
             <circle cx="8" cy="8" r="3" className="fill-[#ff6b00] stroke-none opacity-80" />
             <circle cx="32" cy="8" r="3" className="fill-[#ff6b00] stroke-none opacity-80" />
             <circle cx="37" cy="25" r="3" className="fill-[#ff6b00] stroke-none opacity-80" />
