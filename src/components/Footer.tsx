@@ -2,11 +2,16 @@
 
 import Link from "next/link";
 import { Moon, Sun, Monitor, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
   const [theme, setTheme] = useState("Dark");
   const [isOpen, setIsOpen] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   return (
     <footer className="mt-auto py-8 border-t border-border">
@@ -17,42 +22,44 @@ export default function Footer() {
           <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
         </div>
 
-        <div className="relative">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center gap-2 bg-transparent border border-border hover:bg-accent px-4 py-2 rounded-lg text-sm text-muted transition-colors"
-          >
-            <div className="flex items-center gap-2">
-              <Moon className="w-4 h-4" />
-              <span>{theme}</span>
-            </div>
-            <ChevronDown className="w-4 h-4" />
-          </button>
+        {hasMounted && (
+          <div className="relative">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex items-center gap-2 bg-transparent border border-border hover:bg-accent px-4 py-2 rounded-lg text-sm text-muted transition-colors"
+            >
+              <div className="flex items-center gap-2">
+                <Moon className="w-4 h-4" />
+                <span>{theme}</span>
+              </div>
+              <ChevronDown className="w-4 h-4" />
+            </button>
 
-          {isOpen && (
-            <div className="absolute bottom-full left-0 mb-2 w-28 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1">
-              {[
-                { name: "Dark", icon: Moon },
-                { name: "Light", icon: Sun },
-                { name: "System", icon: Monitor },
-              ].map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => {
-                    setTheme(item.name);
-                    setIsOpen(false);
-                    if (item.name === "Light") document.documentElement.classList.remove("dark");
-                    if (item.name === "Dark") document.documentElement.classList.add("dark");
-                  }}
-                  className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-foreground hover:bg-accent transition-colors rounded-lg text-left"
-                >
-                  <item.icon className="w-4 h-4 text-muted shrink-0" />
-                  <span className="font-semibold">{item.name}</span>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
+            {isOpen && (
+              <div className="absolute bottom-full left-0 mb-2 w-28 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1">
+                {[
+                  { name: "Dark", icon: Moon },
+                  { name: "Light", icon: Sun },
+                  { name: "System", icon: Monitor },
+                ].map((item) => (
+                  <button
+                    key={item.name}
+                    onClick={() => {
+                      setTheme(item.name);
+                      setIsOpen(false);
+                      if (item.name === "Light") document.documentElement.classList.remove("dark");
+                      if (item.name === "Dark") document.documentElement.classList.add("dark");
+                    }}
+                    className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-foreground hover:bg-accent transition-colors rounded-lg text-left"
+                  >
+                    <item.icon className="w-4 h-4 text-muted shrink-0" />
+                    <span className="font-semibold">{item.name}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </footer>
   );
