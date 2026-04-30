@@ -72,7 +72,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    let result = accounts;
     const result = accounts.filter(account => {
       const q = searchQuery.toLowerCase();
       const matchesSearch = 
