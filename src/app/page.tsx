@@ -197,18 +197,38 @@ export default function Home() {
 
   return (
     <main className="flex-1 flex flex-col items-center">
-      <div className="w-full max-w-[1200px] flex justify-center items-start gap-8 pt-12">
-        {/* Left Hashtag Column */}
-        <div className="hidden min-[1100px]:flex flex-col w-[180px] pt-32 pointer-events-none select-none">
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1.35rem] font-[500] rotate-[-8deg] mb-6">#BuildInPublic</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1.6rem] font-[500] rotate-[8deg] mb-6">#LetsConnect</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[0.95rem] font-[500] rotate-[-8deg] mb-6">#Founders</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[0.9rem] font-[500] rotate-[8deg] mb-6">#SideProject</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1.05rem] font-[500] rotate-[-8deg] mb-6">#ShipIt</span>
+      {/* Hero Wrapper with Scattered Hashtags */}
+      <div className="w-full relative overflow-hidden flex flex-col items-center pt-12 pb-20">
+        {/* Left Side Hashtags */}
+        <div className="hidden min-[1100px]:block absolute inset-0 pointer-events-none select-none">
+          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                style={{ top: "15%", left: "2%", transform: "rotate(-6deg)", fontSize: "1.6rem" }}>#LetsConnect</span>
+          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                style={{ top: "32%", left: "5%", transform: "rotate(8deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
+          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                style={{ top: "52%", left: "1%", transform: "rotate(-10deg)", fontSize: "0.95rem" }}>#Founders</span>
+          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                style={{ top: "68%", left: "6%", transform: "rotate(5deg)", fontSize: "0.9rem" }}>#SideProject</span>
+          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                style={{ top: "82%", left: "3%", transform: "rotate(-7deg)", fontSize: "1.05rem" }}>#ShipIt</span>
         </div>
 
-        {/* Center Content */}
-        <div className="flex-1 max-w-[680px]">
+        {/* Right Side Hashtags */}
+        <div className="hidden min-[1100px]:block absolute inset-0 pointer-events-none select-none">
+          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                style={{ top: "20%", right: "1%", transform: "rotate(9deg)", fontSize: "1.2rem" }}>#Networking</span>
+          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                style={{ top: "38%", right: "4%", transform: "rotate(-8deg)", fontSize: "0.9rem" }}>#PersonalBrand</span>
+          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                style={{ top: "55%", right: "2%", transform: "rotate(6deg)", fontSize: "0.95rem" }}>#IndieHackers</span>
+          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                style={{ top: "70%", right: "5%", transform: "rotate(-5deg)", fontSize: "0.85rem" }}>#CreatorEconomy</span>
+          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                style={{ top: "85%", right: "3%", transform: "rotate(10deg)", fontSize: "0.85rem" }}>#StartupLife</span>
+        </div>
+
+        {/* Center Content Content */}
+        <div className="w-full max-w-[680px] px-4 relative z-10">
           <Header />
 
           <section className="mb-12">
@@ -273,32 +293,25 @@ export default function Home() {
             </div>
           </section>
         </div>
-
-        {/* Right Hashtag Column */}
-        <div className="hidden min-[1100px]:flex flex-col w-[180px] pt-32 pointer-events-none select-none">
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[0.9rem] font-[500] rotate-[8deg] mb-6">#PersonalBrand</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[0.95rem] font-[500] rotate-[-8deg] mb-6">#IndieHackers</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[0.85rem] font-[500] rotate-[8deg] mb-6">#CreatorEconomy</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1.2rem] font-[500] rotate-[-8deg] mb-6">#Networking</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[0.85rem] font-[500] rotate-[8deg] mb-6">#StartupLife</span>
-        </div>
       </div>
 
-      <DirectoryTable accounts={displayedAccounts} isLoading={isLoading} />
+      <div className="w-full max-w-[1200px] px-4">
+        <DirectoryTable accounts={displayedAccounts} isLoading={isLoading} />
 
-      <div className="flex flex-col items-center gap-4 py-8">
-        {remainingCount > 0 && (
-          <button
-            onClick={handleLoadMore}
-            className="flex items-center gap-2 bg-card hover:bg-accent border border-border px-8 py-3 rounded-xl text-sm font-medium transition-all mb-4"
-          >
-            Load more ({remainingCount} remaining) ↓
-          </button>
-        )}
-        <p className="text-[#a1a1aa] text-[0.85rem] flex items-center gap-2 font-mono-custom">
-          <Info className="w-4 h-4" />
-          Accounts listed here are submitted by real X creators. Every listing is verified by a $1 payment. No bots. No spam.
-        </p>
+        <div className="flex flex-col items-center gap-4 py-8">
+          {remainingCount > 0 && (
+            <button
+              onClick={handleLoadMore}
+              className="flex items-center gap-2 bg-card hover:bg-accent border border-border px-8 py-3 rounded-xl text-sm font-medium transition-all mb-4"
+            >
+              Load more ({remainingCount} remaining) ↓
+            </button>
+          )}
+          <p className="text-[#a1a1aa] text-[0.85rem] flex items-center gap-2 font-mono-custom">
+            <Info className="w-4 h-4" />
+            Accounts listed here are submitted by real X creators. Every listing is verified by a $1 payment. No bots. No spam.
+          </p>
+        </div>
       </div>
 
       <Footer />
