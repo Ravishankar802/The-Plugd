@@ -143,22 +143,45 @@ export default function Home() {
           </button>
         </div>
 
-        <div className="relative mb-8">
-          <div className="flex items-center gap-2 overflow-x-auto pb-4 no-scrollbar -mx-4 px-4 mask-fade-right">
-            {NICHES.map((niche) => (
-              <button
-                key={niche.name}
-                onClick={() => setSelectedNiche(niche.name)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-[0.875rem] font-[500] transition-all whitespace-nowrap flex-shrink-0 ${
-                  selectedNiche === niche.name
-                    ? "bg-foreground text-background border border-foreground"
-                    : "bg-pill text-muted border border-border hover:text-foreground hover:border-muted"
-                }`}
-              >
-                <niche.icon className={`w-4 h-4 ${selectedNiche === niche.name ? "text-background" : "text-muted"}`} />
-                {niche.name}
-              </button>
-            ))}
+        {/* Niche Categories */}
+        <div className="flex justify-center w-full mb-12">
+          <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 px-4 mask-fade-right max-w-full sm:max-w-4xl scroll-smooth">
+            <button
+              onClick={() => setSelectedNiche("All")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
+                selectedNiche === "All"
+                  ? "bg-foreground text-background border-foreground font-medium"
+                  : "bg-card border-border text-muted hover:border-muted-foreground"
+              }`}
+            >
+              <Globe size={16} />
+              <span>All</span>
+            </button>
+            
+            {NICHES
+              .filter(n => n.name !== "All")
+              .sort((a, b) => {
+                if (a.name === selectedNiche) return -1;
+                if (b.name === selectedNiche) return 1;
+                return 0;
+              })
+              .map((niche) => {
+                const Icon = niche.icon;
+                return (
+                  <button
+                    key={niche.name}
+                    onClick={() => setSelectedNiche(niche.name)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
+                      selectedNiche === niche.name
+                        ? "bg-foreground text-background border-foreground font-medium"
+                        : "bg-card border-border text-muted hover:border-muted-foreground"
+                    }`}
+                  >
+                    <Icon size={16} />
+                    <span>{niche.name}</span>
+                  </button>
+                );
+              })}
           </div>
         </div>
 
