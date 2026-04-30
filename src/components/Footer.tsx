@@ -2,15 +2,25 @@
 
 import Link from "next/link";
 import { Moon, Sun, Monitor, ChevronDown } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Footer() {
   const [theme, setTheme] = useState("Dark");
   const [isOpen, setIsOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setHasMounted(true);
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
@@ -23,7 +33,7 @@ export default function Footer() {
         </div>
 
         {hasMounted && (
-          <div className="relative">
+          <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="flex items-center gap-2 bg-transparent border border-border hover:bg-accent px-4 py-2 rounded-lg text-sm text-muted transition-colors"
