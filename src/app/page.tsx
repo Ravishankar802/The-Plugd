@@ -198,17 +198,17 @@ export default function Home() {
   return (
     <main className="flex-1 flex flex-col items-center">
       {/* Hero Wrapper with Scattered Hashtags */}
-      <div className="w-full relative overflow-hidden flex flex-col items-center pt-12 pb-20">
+      <div className="w-full relative overflow-hidden flex flex-col items-center pt-12 pb-12">
         {/* Left Side Hashtags */}
         <div className="hidden min-[1100px]:block absolute inset-0 pointer-events-none select-none">
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "15%", left: "2%", transform: "rotate(-6deg)", fontSize: "1.6rem" }}>#LetsConnect</span>
+                style={{ top: "8%", left: "1%", transform: "rotate(-6deg)", fontSize: "1.6rem" }}>#LetsConnect</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "32%", left: "5%", transform: "rotate(8deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
+                style={{ top: "28%", left: "8%", transform: "rotate(8deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "52%", left: "1%", transform: "rotate(-10deg)", fontSize: "0.95rem" }}>#Founders</span>
+                style={{ top: "48%", left: "2%", transform: "rotate(-10deg)", fontSize: "0.95rem" }}>#Founders</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "68%", left: "6%", transform: "rotate(5deg)", fontSize: "0.9rem" }}>#SideProject</span>
+                style={{ top: "65%", left: "10%", transform: "rotate(5deg)", fontSize: "0.9rem" }}>#SideProject</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
                 style={{ top: "82%", left: "3%", transform: "rotate(-7deg)", fontSize: "1.05rem" }}>#ShipIt</span>
         </div>
@@ -216,22 +216,22 @@ export default function Home() {
         {/* Right Side Hashtags */}
         <div className="hidden min-[1100px]:block absolute inset-0 pointer-events-none select-none">
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "20%", right: "1%", transform: "rotate(9deg)", fontSize: "1.2rem" }}>#Networking</span>
+                style={{ top: "12%", right: "2%", transform: "rotate(9deg)", fontSize: "1.2rem" }}>#Networking</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "38%", right: "4%", transform: "rotate(-8deg)", fontSize: "0.9rem" }}>#PersonalBrand</span>
+                style={{ top: "30%", right: "7%", transform: "rotate(-8deg)", fontSize: "0.9rem" }}>#PersonalBrand</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "55%", right: "2%", transform: "rotate(6deg)", fontSize: "0.95rem" }}>#IndieHackers</span>
+                style={{ top: "50%", right: "1%", transform: "rotate(6deg)", fontSize: "0.95rem" }}>#IndieHackers</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "70%", right: "5%", transform: "rotate(-5deg)", fontSize: "0.85rem" }}>#CreatorEconomy</span>
+                style={{ top: "67%", right: "8%", transform: "rotate(-5deg)", fontSize: "0.85rem" }}>#CreatorEconomy</span>
           <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "85%", right: "3%", transform: "rotate(10deg)", fontSize: "0.85rem" }}>#StartupLife</span>
+                style={{ top: "83%", right: "3%", transform: "rotate(10deg)", fontSize: "0.85rem" }}>#StartupLife</span>
         </div>
 
         {/* Center Content Content */}
         <div className="w-full max-w-[680px] px-4 relative z-10">
           <Header />
 
-          <section className="mb-12">
+          <section className="mb-0">
             <div className="flex flex-col md:flex-row gap-4 mb-12">
               <div className="relative flex-1">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
@@ -255,8 +255,8 @@ export default function Home() {
             </div>
 
             {/* Niche Categories */}
-            <div className="flex justify-center w-full mb-12">
-              <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 px-4 mask-fade-right max-w-full scroll-smooth">
+            <div className="flex justify-center w-full">
+              <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 mask-fade-right w-full scroll-smooth">
                 <button
                   onClick={() => toggleNiche("All")}
                   suppressHydrationWarning
