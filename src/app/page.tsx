@@ -168,15 +168,12 @@ export default function Home() {
   const fetchAccounts = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch("/api/accounts");
-      const data = await res.json();
-      if (Array.isArray(data)) {
-        setAccounts(data);
-        setFilteredAccounts(data);
-      } else {
-        setAccounts([]);
-        setFilteredAccounts([]);
-      }
+      const response = await fetch("/api/accounts");
+      const data = await response.json();
+      // Prepend mock accounts to fetched data for testing
+      const combinedAccounts = Array.isArray(data) ? [...MOCK_ACCOUNTS, ...data] : [...MOCK_ACCOUNTS];
+      setAccounts(combinedAccounts);
+      setFilteredAccounts(combinedAccounts);
     } catch (error) {
       console.error("Error fetching accounts:", error);
     } finally {
