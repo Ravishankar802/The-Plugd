@@ -10,8 +10,8 @@ export default function Header() {
       <h1 className="text-[clamp(1.75rem,4.5vw,2.85rem)] font-[800] tracking-[-0.035em] leading-[1.1] text-foreground mb-4">
         Get seen. Get followed. Blow up on X.
       </h1>
-      <p className="text-muted text-[1.25rem] font-normal max-w-2xl leading-relaxed flex items-center justify-center gap-3">
-        <span className="wave">👋</span>
+      <p className="text-muted text-[1.25rem] font-normal max-w-2xl leading-relaxed mx-auto">
+        <span className="wave mr-2">👋</span>
         $1 to get listed and get more followers, more impressions, more growth — or keep posting into the void.
       </p>
     </header>
