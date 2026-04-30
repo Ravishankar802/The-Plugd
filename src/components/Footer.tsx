@@ -36,6 +36,7 @@ export default function Footer() {
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setIsOpen(!isOpen)}
+              suppressHydrationWarning
               className="flex items-center gap-2 bg-transparent border border-border hover:bg-accent px-4 py-2 rounded-lg text-sm text-muted transition-colors"
             >
               <div className="flex items-center gap-2">
