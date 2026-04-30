@@ -1,19 +1,38 @@
 @import "tailwindcss";
 
 :root {
+  /* Light Mode - AnonCrib Style */
+  --background: #ffffff;
+  --card: #f4f4f5;
+  --foreground: #09090b;
+  --muted: #71717a;
+  --accent: #eeeeee;
+  --border: #e4e4e7;
+  --pill: #f4f4f5;
+  --pill-border: #e4e4e7;
+}
+
+.dark {
+  /* Dark Mode - AnonCrib Style */
   --background: #0a0a0a;
+  --card: #161616;
   --foreground: #ffffff;
-  --muted: #888888;
-  --accent: #222222;
-  --border: #1a1a1a;
+  --muted: #8b8b8b;
+  --accent: #1c1c1c;
+  --border: #2a2a2a;
+  --pill: #1a1a1a;
+  --pill-border: #2a2a2a;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-card: var(--card);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-border: var(--border);
+  --color-pill: var(--pill);
+  --color-pill-border: var(--pill-border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -35,7 +54,7 @@ body {
 
 .directory-table th {
   text-align: left;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   color: var(--muted);
   font-weight: 500;
   font-size: 0.875rem;
@@ -48,20 +67,17 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
+.directory-row {
+  transition: background-color 0.2s ease;
+}
+
 .directory-row:hover {
-  background-color: #111111;
+  background-color: var(--accent);
 }
 
-/* Monospace for X handles */
-.x-handle {
+/* Monospace for X handles and serials */
+.font-mono-custom {
   font-family: var(--font-mono), monospace;
-}
-
-/* Glassmorphism for modal */
-.glass {
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border);
 }
 
 /* Custom scrollbar */
@@ -74,10 +90,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent);
+  background: var(--border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #333333;
+  background: var(--muted);
 }

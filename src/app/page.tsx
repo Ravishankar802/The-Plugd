@@ -58,8 +58,13 @@ export default function Home() {
     try {
       const res = await fetch("/api/accounts");
       const data = await res.json();
-      setAccounts(data);
-      setFilteredAccounts(data);
+      if (Array.isArray(data)) {
+        setAccounts(data);
+        setFilteredAccounts(data);
+      } else {
+        setAccounts([]);
+        setFilteredAccounts([]);
+      }
     } catch (error) {
       console.error("Error fetching accounts:", error);
     } finally {
@@ -85,14 +90,14 @@ export default function Home() {
             <input
               type="text"
               placeholder="Search accounts, niches, names..."
-              className="w-full bg-[#111] border border-border rounded-xl pl-12 pr-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
+              className="w-full h-[48px] bg-pill border border-border rounded-lg pl-12 pr-4 text-foreground placeholder:text-[#6b7280] dark:placeholder:text-[#6b7280] light:placeholder:text-[#9ca3af] focus:outline-none focus:ring-1 focus:ring-border transition-all"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-white hover:bg-white/90 text-black font-bold px-6 py-3 rounded-xl flex items-center justify-center gap-2 transition-all"
+            className="h-[48px] bg-foreground text-background font-[700] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90"
           >
             <Plus className="w-5 h-5" />
             Add Account
@@ -104,10 +109,10 @@ export default function Home() {
             <button
               key={niche}
               onClick={() => setSelectedNiche(niche)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-4 py-1.5 rounded-full text-[0.875rem] font-[500] transition-all ${
                 selectedNiche === niche
-                  ? "bg-white text-black"
-                  : "bg-[#111] text-muted border border-border hover:bg-[#1a1a1a] hover:text-white"
+                  ? "bg-foreground text-background border border-foreground"
+                  : "bg-transparent text-muted border border-border hover:text-foreground hover:border-muted"
               }`}
             >
               {niche}
@@ -121,7 +126,7 @@ export default function Home() {
           <div className="flex flex-col items-center gap-4 py-8">
             <button
               onClick={handleLoadMore}
-              className="flex items-center gap-2 bg-[#111] hover:bg-[#1a1a1a] border border-border px-8 py-3 rounded-xl text-sm font-medium transition-all"
+              className="flex items-center gap-2 bg-card hover:bg-accent border border-border px-8 py-3 rounded-xl text-sm font-medium transition-all"
             >
               Load more ({remainingCount} remaining) ↓
             </button>

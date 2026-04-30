@@ -62,10 +62,10 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-xl bg-[#111] border border-border rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+      <div className="relative w-full max-w-xl bg-card border border-border rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
         <div className="p-6 border-b border-border flex items-center justify-between">
-          <h2 className="text-xl font-bold">Add Your Account</h2>
-          <button onClick={onClose} className="p-1 hover:bg-[#222] rounded-lg transition-colors">
+          <h2 className="text-xl font-bold text-foreground">Add Your Account</h2>
+          <button onClick={onClose} className="p-1 hover:bg-accent rounded-lg transition-colors">
             <X className="w-5 h-5 text-muted" />
           </button>
         </div>
@@ -78,7 +78,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 required
                 type="text"
                 placeholder="e.g. John Doe"
-                className="w-full bg-[#1a1a1a] border border-border rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
+                className="w-full bg-background border border-border rounded-lg px-4 py-2 text-foreground focus:outline-none focus:ring-1 focus:ring-muted transition-all"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
@@ -89,7 +89,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 required
                 type="text"
                 placeholder="e.g. johndoe"
-                className="w-full bg-[#1a1a1a] border border-border rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
+                className="w-full bg-background border border-border rounded-lg px-4 py-2 text-foreground focus:outline-none focus:ring-1 focus:ring-muted transition-all"
                 value={formData.xHandle}
                 onChange={(e) => setFormData({ ...formData, xHandle: e.target.value })}
               />
@@ -102,7 +102,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
               required
               type="url"
               placeholder="https://pbs.twimg.com/profile_images/..."
-              className="w-full bg-[#1a1a1a] border border-border rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
+              className="w-full bg-background border border-border rounded-lg px-4 py-2 text-foreground focus:outline-none focus:ring-1 focus:ring-muted transition-all"
               value={formData.avatarUrl}
               onChange={(e) => setFormData({ ...formData, avatarUrl: e.target.value })}
             />
@@ -118,7 +118,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
               maxLength={100}
               type="text"
               placeholder="Founder at XYZ | Building in public"
-              className="w-full bg-[#1a1a1a] border border-border rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
+              className="w-full bg-background border border-border rounded-lg px-4 py-2 text-foreground focus:outline-none focus:ring-1 focus:ring-muted transition-all"
               value={formData.bio}
               onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
             />
@@ -128,12 +128,12 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             <div className="space-y-2">
               <label className="text-sm font-medium text-muted">Niche</label>
               <select
-                className="w-full bg-[#1a1a1a] border border-border rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-all appearance-none"
+                className="w-full bg-background border border-border rounded-lg px-4 py-2 text-foreground focus:outline-none focus:ring-1 focus:ring-muted transition-all appearance-none"
                 value={formData.niche}
                 onChange={(e) => setFormData({ ...formData, niche: e.target.value })}
               >
                 {["Founder", "Builder", "Student", "Creator", "Crypto", "Other"].map((n) => (
-                  <option key={n} value={n}>{n}</option>
+                  <option key={n} value={n} className="bg-card">{n}</option>
                 ))}
               </select>
             </div>
@@ -143,7 +143,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 required
                 type="number"
                 placeholder="1000"
-                className="w-full bg-[#1a1a1a] border border-border rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
+                className="w-full bg-background border border-border rounded-lg px-4 py-2 text-foreground focus:outline-none focus:ring-1 focus:ring-muted transition-all"
                 value={formData.followers}
                 onChange={(e) => setFormData({ ...formData, followers: parseInt(e.target.value) || 0 })}
               />
@@ -156,7 +156,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
               required
               type="email"
               placeholder="john@example.com"
-              className="w-full bg-[#1a1a1a] border border-border rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
+              className="w-full bg-background border border-border rounded-lg px-4 py-2 text-foreground focus:outline-none focus:ring-1 focus:ring-muted transition-all"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             />
@@ -165,7 +165,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
           <button
             disabled={isLoading}
             type="submit"
-            className="w-full bg-white hover:bg-white/90 text-black font-bold py-3 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4"
+            className="w-full bg-foreground text-background font-bold py-3 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4"
           >
             {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Pay $1 to Get Listed"}
           </button>
