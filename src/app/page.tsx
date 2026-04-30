@@ -24,7 +24,9 @@ import {
   Coins, 
   Building, 
   GraduationCap, 
-  Mic 
+  GraduationCap, 
+  Mic,
+  Info
 } from "lucide-react";
 
 interface Account {
@@ -261,12 +263,8 @@ export default function Home() {
               Load more ({remainingCount} remaining) ↓
             </button>
           )}
-          <p className="text-muted text-[0.85rem] flex items-center gap-2 font-medium">
-            <svg className="w-4 h-4 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 16v-4" />
-              <path d="M12 8h.01" />
-            </svg>
+          <p className="text-[#a1a1aa] text-[0.85rem] flex items-center gap-2 font-mono-custom">
+            <Info className="w-4 h-4" />
             Accounts listed here are added by founders and creators
           </p>
         </div>
