@@ -144,7 +144,6 @@ export default function Home() {
       const response = await fetch("/api/accounts");
       const data = await response.json();
       
-      // Combine mock accounts with real data, avoiding duplicates if necessary
       const combinedData = [...MOCK_ACCOUNTS, ...data.filter((acc: Account) => 
         !MOCK_ACCOUNTS.some(mock => mock.xHandle === acc.xHandle)
       )];
@@ -172,7 +171,6 @@ export default function Home() {
     });
   };
 
-  // Logic to move selected niches to the front
   const sortedNiches = [...NICHES.filter(n => n.name !== "All")].sort((a, b) => {
     const aSelected = selectedNiches.includes(a.name);
     const bSelected = selectedNiches.includes(b.name);
@@ -180,11 +178,9 @@ export default function Home() {
     if (aSelected && !bSelected) return -1;
     if (!aSelected && bSelected) return 1;
     
-    // If both or neither are selected, maintain original order
     const aIndex = NICHES.findIndex(n => n.name === a.name);
     const bIndex = NICHES.findIndex(n => n.name === b.name);
     
-    // Maintain selection order for multiple selections
     if (aSelected && bSelected) {
       return selectedNiches.indexOf(a.name) - selectedNiches.indexOf(b.name);
     }
@@ -204,11 +200,11 @@ export default function Home() {
       <div className="w-full max-w-[1200px] flex justify-center items-start gap-8 pt-12">
         {/* Left Hashtag Column */}
         <div className="hidden min-[1100px]:flex flex-col w-[180px] pt-32 pointer-events-none select-none">
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[-8deg] mb-6">#BuildInPublic</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[8deg] mb-6">#LetsConnect</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[-8deg] mb-6">#Founders</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[8deg] mb-6">#SideProject</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[-8deg] mb-6">#ShipIt</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1.35rem] font-[500] rotate-[-8deg] mb-6">#BuildInPublic</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1.6rem] font-[500] rotate-[8deg] mb-6">#LetsConnect</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[0.95rem] font-[500] rotate-[-8deg] mb-6">#Founders</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[0.9rem] font-[500] rotate-[8deg] mb-6">#SideProject</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1.05rem] font-[500] rotate-[-8deg] mb-6">#ShipIt</span>
         </div>
 
         {/* Center Content */}
@@ -280,11 +276,11 @@ export default function Home() {
 
         {/* Right Hashtag Column */}
         <div className="hidden min-[1100px]:flex flex-col w-[180px] pt-32 pointer-events-none select-none">
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[8deg] mb-6">#PersonalBrand</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[-8deg] mb-6">#IndieHackers</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[8deg] mb-6">#CreatorEconomy</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[-8deg] mb-6">#Networking</span>
-          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1rem] font-[500] rotate-[8deg] mb-6">#StartupLife</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[0.9rem] font-[500] rotate-[8deg] mb-6">#PersonalBrand</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[0.95rem] font-[500] rotate-[-8deg] mb-6">#IndieHackers</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[0.85rem] font-[500] rotate-[8deg] mb-6">#CreatorEconomy</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[1.2rem] font-[500] rotate-[-8deg] mb-6">#Networking</span>
+          <span className="text-[#ffffff] opacity-[0.12] font-mono-custom text-[0.85rem] font-[500] rotate-[8deg] mb-6">#StartupLife</span>
         </div>
       </div>
 
