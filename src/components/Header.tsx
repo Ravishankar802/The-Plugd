@@ -7,11 +7,11 @@ export default function Header() {
         <div className="relative w-10 h-10 flex items-center justify-center">
           <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-2">
             {/* Connections */}
-            <line x1="20" y1="20" x2="10" y2="10" className="signal-line" style={{ animationDuration: '3.2s', animationDelay: '0s' }} />
-            <line x1="20" y1="20" x2="30" y2="10" className="signal-line" style={{ animationDuration: '2.8s', animationDelay: '0.8s' }} />
-            <line x1="20" y1="20" x2="35" y2="25" className="signal-line" style={{ animationDuration: '3.5s', animationDelay: '1.6s' }} />
-            <line x1="20" y1="20" x2="25" y2="35" className="signal-line" style={{ animationDuration: '2.5s', animationDelay: '0.4s' }} />
-            <line x1="20" y1="20" x2="5" y2="28" className="signal-line" style={{ animationDuration: '3s', animationDelay: '2.2s' }} />
+            <line x1="20" y1="20" x2="10" y2="10" className="signal-line" style={{ animationDuration: '4.2s', animationDelay: '0s' }} />
+            <line x1="20" y1="20" x2="30" y2="10" className="signal-line" style={{ animationDuration: '3.8s', animationDelay: '1.2s' }} />
+            <line x1="20" y1="20" x2="35" y2="25" className="signal-line" style={{ animationDuration: '5.1s', animationDelay: '2.5s' }} />
+            <line x1="20" y1="20" x2="25" y2="35" className="signal-line" style={{ animationDuration: '4.5s', animationDelay: '0.8s' }} />
+            <line x1="20" y1="20" x2="5" y2="28" className="signal-line" style={{ animationDuration: '3.6s', animationDelay: '3.1s' }} />
             
             {/* Nodes (Static) */}
             <circle cx="20" cy="20" r="3" className="fill-[#ff6b00] stroke-none" />

@@ -120,12 +120,12 @@ body {
 
 @keyframes signal-flow {
   0%, 100% { opacity: 0.4; stroke-width: 1.5; filter: none; }
-  50% { opacity: 1; stroke-width: 2.5; filter: drop-shadow(0 0 3px #ff6b00); }
+  50% { opacity: 1; stroke-width: 2.8; filter: drop-shadow(0 0 5px #ff6b00); }
 }
 
 .signal-line {
   opacity: 0.4;
-  animation: signal-flow infinite ease-in-out;
+  animation: signal-flow infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Custom scrollbar */
