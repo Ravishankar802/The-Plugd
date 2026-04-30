@@ -132,7 +132,25 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 value={formData.niche}
                 onChange={(e) => setFormData({ ...formData, niche: e.target.value })}
               >
-                {["Founder", "Builder", "Student", "Creator", "Crypto", "Other"].map((n) => (
+                {[
+                  "Founder", 
+                  "Builder", 
+                  "Developer", 
+                  "Designer", 
+                  "Indie Hacker", 
+                  "AI", 
+                  "Marketer", 
+                  "Writer", 
+                  "Creator", 
+                  "Investor", 
+                  "SaaS", 
+                  "No-Code", 
+                  "Crypto", 
+                  "Agency", 
+                  "Student", 
+                  "Podcaster", 
+                  "Other"
+                ].map((n) => (
                   <option key={n} value={n} className="bg-card">{n}</option>
                 ))}
               </select>

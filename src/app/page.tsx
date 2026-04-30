@@ -5,7 +5,27 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DirectoryTable from "@/components/DirectoryTable";
 import AddAccountModal from "@/components/AddAccountModal";
-import { Search, Plus } from "lucide-react";
+import { 
+  Search, 
+  Plus, 
+  Globe, 
+  Rocket, 
+  Hammer, 
+  Laptop, 
+  Palette, 
+  Zap, 
+  Bot, 
+  TrendingUp, 
+  Pen, 
+  Clapperboard, 
+  Banknote, 
+  Box, 
+  Puzzle, 
+  Coins, 
+  Building, 
+  GraduationCap, 
+  Mic 
+} from "lucide-react";
 
 interface Account {
   id: number;
@@ -17,7 +37,26 @@ interface Account {
   followers: number;
 }
 
-const NICHES = ["All", "Founder", "Builder", "Student", "Creator", "Crypto", "Other"];
+const NICHES = [
+  { name: "All", icon: Globe },
+  { name: "Founder", icon: Rocket },
+  { name: "Builder", icon: Hammer },
+  { name: "Developer", icon: Laptop },
+  { name: "Designer", icon: Palette },
+  { name: "Indie Hacker", icon: Zap },
+  { name: "AI", icon: Bot },
+  { name: "Marketer", icon: TrendingUp },
+  { name: "Writer", icon: Pen },
+  { name: "Creator", icon: Clapperboard },
+  { name: "Investor", icon: Banknote },
+  { name: "SaaS", icon: Box },
+  { name: "No-Code", icon: Puzzle },
+  { name: "Crypto", icon: Coins },
+  { name: "Agency", icon: Building },
+  { name: "Student", icon: GraduationCap },
+  { name: "Podcaster", icon: Mic },
+  { name: "Other", icon: Plus },
+];
 
 export default function Home() {
   const [accounts, setAccounts] = useState<Account[]>([]);
@@ -84,13 +123,13 @@ export default function Home() {
       <Header />
 
       <section className="mb-12">
-        <div className="max-w-2xl mx-auto flex flex-col md:flex-row gap-4 mb-8">
+        <div className="max-w-2xl mx-auto flex flex-col md:flex-row gap-4 mb-12">
           <div className="relative flex-1">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
             <input
               type="text"
               placeholder="Search accounts, niches, names..."
-              className="w-full h-[48px] bg-pill border border-border rounded-lg pl-12 pr-4 text-foreground placeholder:text-[#6b7280] dark:placeholder:text-[#6b7280] light:placeholder:text-[#9ca3af] focus:outline-none focus:ring-1 focus:ring-border transition-all"
+              className="w-full h-[48px] bg-pill border border-border rounded-lg pl-12 pr-4 text-foreground placeholder:text-[#6b7280] focus:outline-none focus:ring-1 focus:ring-border transition-all"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -104,20 +143,23 @@ export default function Home() {
           </button>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-8">
-          {NICHES.map((niche) => (
-            <button
-              key={niche}
-              onClick={() => setSelectedNiche(niche)}
-              className={`px-4 py-1.5 rounded-full text-[0.875rem] font-[500] transition-all ${
-                selectedNiche === niche
-                  ? "bg-foreground text-background border border-foreground"
-                  : "bg-transparent text-muted border border-border hover:text-foreground hover:border-muted"
-              }`}
-            >
-              {niche}
-            </button>
-          ))}
+        <div className="relative mb-8">
+          <div className="flex items-center gap-2 overflow-x-auto pb-4 no-scrollbar -mx-4 px-4 mask-fade-right">
+            {NICHES.map((niche) => (
+              <button
+                key={niche.name}
+                onClick={() => setSelectedNiche(niche.name)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-[0.875rem] font-[500] transition-all whitespace-nowrap flex-shrink-0 ${
+                  selectedNiche === niche.name
+                    ? "bg-foreground text-background border border-foreground"
+                    : "bg-pill text-muted border border-border hover:text-foreground hover:border-muted"
+                }`}
+              >
+                <niche.icon className={`w-4 h-4 ${selectedNiche === niche.name ? "text-background" : "text-muted"}`} />
+                {niche.name}
+              </button>
+            ))}
+          </div>
         </div>
 
         <DirectoryTable accounts={displayedAccounts} isLoading={isLoading} />
