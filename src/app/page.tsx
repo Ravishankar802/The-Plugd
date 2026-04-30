@@ -208,6 +208,7 @@ export default function Home() {
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
+            suppressHydrationWarning
             className="h-[48px] bg-foreground text-background font-[700] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90"
           >
             <Plus className="w-5 h-5" />
