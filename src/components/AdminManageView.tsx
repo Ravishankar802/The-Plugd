@@ -235,28 +235,30 @@ export default function AdminManageView() {
       {/* List */}
       <div className="grid grid-cols-1 gap-6">
         {filteredAccounts.map(acc => (
-          <div key={acc.id} className="relative bg-[#111111] border border-[#2a2a2a] rounded-[16px] p-8 flex flex-col md:flex-row md:items-center justify-between group hover:border-[#3a3a3a] transition-all shadow-xl">
+          <div key={acc.id} className="relative bg-[#111111] border border-[#2a2a2a] rounded-[16px] p-8 flex flex-col group hover:border-[#3a3a3a] transition-all shadow-xl">
             <div className="flex items-start gap-6">
-              <img src={acc.avatarPath} className="w-20 h-20 rounded-[16px] object-cover border border-[#2a2a2a] shadow-lg" alt="" />
-              <div className="space-y-1.5 pt-1">
+              <img src={acc.avatarPath} className="w-16 h-16 rounded-[12px] object-cover border border-[#2a2a2a] shadow-lg" alt="" />
+              <div className="space-y-1.5 pt-0">
                 <h3 className="text-white font-[700] text-[1.4rem] tracking-tight">{acc.name}</h3>
                 <p className="text-[#8b8b8b] text-[1rem] font-medium leading-snug max-w-xl">{acc.bio}</p>
-                <div className="flex items-center gap-4 pt-2">
-                  <span className="text-[#555555] text-sm font-medium">Founder: {acc.name}</span>
+                <div className="flex items-center gap-4 pt-1">
                   <span className="text-[#555555] text-sm font-medium">Added: {new Date(acc.createdAt).toLocaleDateString()}</span>
                 </div>
               </div>
             </div>
             
-            <div className="flex items-center gap-3 mt-6 md:mt-0">
-              <button
-                className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-white text-black text-sm font-bold shadow-lg hover:bg-[#e5e5e5] transition-all active:scale-[0.98]"
+            <div className="flex items-center gap-3 mt-6">
+              <a
+                href={`https://x.com/${acc.xHandle.startsWith("@") ? acc.xHandle.substring(1) : acc.xHandle}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-2 rounded-lg bg-white text-black text-sm font-bold shadow-lg hover:bg-[#e5e5e5] transition-all active:scale-[0.98]"
               >
                 Visit <ArrowRight size={14} />
-              </button>
+              </a>
               <button
                 onClick={() => setEditingAccount(acc)}
-                className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#111111] border border-[#2a2a2a] text-white text-sm font-bold hover:border-[#3a3a3a] transition-all"
+                className="flex items-center gap-2 px-6 py-2 rounded-lg bg-white text-black text-sm font-bold shadow-lg hover:bg-[#e5e5e5] transition-all active:scale-[0.98]"
               >
                 Edit Profile <Edit3 size={14} />
               </button>
