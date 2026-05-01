@@ -28,7 +28,7 @@ export default function Footer({ showBorder = true }: FooterProps) {
   }, []);
 
   return (
-    <footer className={`mt-auto py-8 ${showBorder ? "border-t border-border" : ""}`}>
+    <footer className={`mt-auto py-12 ${showBorder ? "border-t border-border" : ""}`}>
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-6 text-[0.9rem] text-muted font-medium">
           <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
