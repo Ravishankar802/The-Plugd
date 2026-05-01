@@ -30,10 +30,10 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
   return (
     <aside className="w-[280px] bg-[#0a0a0a] border-r border-[#1a1a1a] flex flex-col h-screen fixed left-0 top-0 z-30">
       {/* Top: Logo */}
-      <div className="px-5 py-6">
-        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <div className="w-8 h-8 flex items-center justify-center">
-            <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-[2]">
+      <div className="px-5 py-8">
+        <Link href="/" className="flex items-center gap-3.5 hover:opacity-80 transition-opacity">
+          <div className="w-10 h-10 flex items-center justify-center">
+            <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-[2.5]">
               <line x1="20" y1="20" x2="8" y2="8" className="opacity-60" />
               <line x1="20" y1="20" x2="32" y2="8" className="opacity-60" />
               <line x1="20" y1="20" x2="37" y2="25" className="opacity-60" />
@@ -47,7 +47,7 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
               <circle cx="3" cy="28" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
             </svg>
           </div>
-          <span className="text-xl font-bold text-white tracking-tight">Plugd</span>
+          <span className="text-2xl font-[900] text-white tracking-[-0.02em]">Plugd</span>
         </Link>
       </div>
 
