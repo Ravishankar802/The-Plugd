@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { User, Grid, LogOut, Zap, ArrowRight } from "lucide-react";
+import { User, Grid, LogOut, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface DashboardSidebarProps {
@@ -32,8 +32,22 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
       {/* Top: Logo */}
       <div className="px-5 py-6">
         <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <Zap className="w-8 h-8 text-[#ff6b00] fill-[#ff6b00]" />
-          <span className="text-xl font-bold text-white tracking-tight">The Plugd</span>
+          <div className="w-8 h-8 flex items-center justify-center">
+            <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-[2]">
+              <line x1="20" y1="20" x2="8" y2="8" className="opacity-60" />
+              <line x1="20" y1="20" x2="32" y2="8" className="opacity-60" />
+              <line x1="20" y1="20" x2="37" y2="25" className="opacity-60" />
+              <line x1="20" y1="20" x2="25" y2="37" className="opacity-60" />
+              <line x1="20" y1="20" x2="3" y2="28" className="opacity-60" />
+              <circle cx="20" cy="20" r="5" className="fill-[#ff6b00] stroke-none" />
+              <circle cx="8" cy="8" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
+              <circle cx="32" cy="8" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
+              <circle cx="37" cy="25" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
+              <circle cx="25" cy="37" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
+              <circle cx="3" cy="28" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
+            </svg>
+          </div>
+          <span className="text-xl font-bold text-white tracking-tight">Plugd</span>
         </Link>
       </div>
 
