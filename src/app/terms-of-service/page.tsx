@@ -3,8 +3,8 @@ import Footer from "@/components/Footer";
 
 export default function TermsOfService() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white selection:bg-[#ff6b00]/30">
-      <div className="max-w-[840px] mx-auto px-6 pt-16 pb-12 flex flex-col items-center">
+    <main className="min-h-screen bg-[#0a0a0a] text-white selection:bg-[#ff6b00]/30 flex flex-col">
+      <div className="max-w-[840px] mx-auto px-6 pt-16 flex flex-col items-center flex-1">
         
         {/* Page Header */}
         <div className="flex flex-col items-center text-center mb-16">
@@ -31,7 +31,7 @@ export default function TermsOfService() {
         </div>
 
         {/* Content Sections */}
-        <div className="w-full space-y-10 mb-10">
+        <div className="w-full space-y-10">
           
           <Section 
             title="1. Introduction" 
