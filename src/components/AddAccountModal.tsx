@@ -249,7 +249,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
             {/* Niche - Compact Select with Icons */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Categories</label>
+              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Niche</label>
               <div className="flex flex-wrap gap-2.5">
                 {NICHES.map((niche) => {
                   const Icon = niche.icon;
@@ -267,7 +267,6 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                     >
                       <Icon size={16} className={isSelected ? "text-black" : "text-[#71717a]"} />
                       <span>{niche.name}</span>
-                      {isSelected && <Check className="w-3.5 h-3.5" />}
                     </button>
                   );
                 })}
