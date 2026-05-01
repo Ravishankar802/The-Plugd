@@ -379,7 +379,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Bottom Spacing */}
-            <div className="h-16" />
+            <div className="h-6" />
           </form>
         </div>
 
