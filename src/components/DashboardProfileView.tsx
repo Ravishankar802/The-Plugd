@@ -227,7 +227,7 @@ export default function DashboardProfileView() {
                 placeholder="e.g. John Doe"
                 value={account.name}
                 onChange={(e) => setAccount({ ...account, name: e.target.value })}
-                className="w-full bg-pill border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
               />
             </div>
 
@@ -242,7 +242,7 @@ export default function DashboardProfileView() {
                   placeholder="username"
                   value={account.xHandle.startsWith("@") ? account.xHandle.substring(1) : account.xHandle}
                   onChange={(e) => setAccount({ ...account, xHandle: e.target.value })}
-                  className="w-full bg-pill border border-border rounded-xl pl-11 pr-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                  className="w-full bg-background border border-border rounded-xl pl-11 pr-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
                 />
               </div>
             </div>
@@ -263,7 +263,7 @@ export default function DashboardProfileView() {
               placeholder="Founder | Building in public | Shipping daily"
               value={account.bio}
               onChange={(e) => setAccount({ ...account, bio: e.target.value })}
-              className="w-full bg-pill border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
             />
           </div>
 
@@ -274,7 +274,7 @@ export default function DashboardProfileView() {
               readOnly
               type="email"
               value={account.email}
-              className="w-full bg-pill border border-border rounded-xl px-5 py-4 text-muted cursor-not-allowed text-[1rem] opacity-70"
+              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-muted cursor-not-allowed text-[1rem] opacity-70"
             />
           </div>
 
