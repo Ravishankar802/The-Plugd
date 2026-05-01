@@ -73,6 +73,7 @@ export default function DirectoryTable({
                 setFollowersOpen(!followersOpen);
                 setSortOpen(false);
               }}
+              suppressHydrationWarning
               className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors bg-transparent px-3 py-1.5 rounded-lg border border-border text-glow"
             >
               <Sliders className="w-4 h-4" />
@@ -89,6 +90,7 @@ export default function DirectoryTable({
                       setSelectedFollowersRange(range);
                       setFollowersOpen(false);
                     }}
+                    suppressHydrationWarning
                     className="flex items-center justify-between w-full px-4 py-2.5 text-[0.9rem] text-[#f5f5f5] hover:bg-[#2a2a2a] transition-colors text-left"
                   >
                     <span>{range}</span>
@@ -106,6 +108,7 @@ export default function DirectoryTable({
                 setSortOpen(!sortOpen);
                 setFollowersOpen(false);
               }}
+              suppressHydrationWarning
               className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors bg-transparent px-3 py-1.5 rounded-lg border border-border text-glow"
             >
               <TrendingUp className="w-4 h-4" />
@@ -126,6 +129,7 @@ export default function DirectoryTable({
                       }
                       setSortOpen(false);
                     }}
+                    suppressHydrationWarning
                     className="flex items-center justify-between w-full px-4 py-2.5 text-[0.9rem] text-[#f5f5f5] hover:bg-[#2a2a2a] transition-colors text-left"
                   >
                     <span>{option}</span>
