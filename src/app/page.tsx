@@ -127,7 +127,7 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(50);
   const [hasMounted, setHasMounted] = useState(false);
-  const [selectedFollowersRange, setSelectedFollowersRange] = useState("All Followers");
+  const [selectedFollowersRange, setSelectedFollowersRange] = useState("All Ranges");
   const [sortBy, setSortBy] = useState("Latest");
   const [shuffleKey, setShuffleKey] = useState(0);
 
@@ -146,7 +146,7 @@ export default function Home() {
         account.niche.toLowerCase().includes(q);
       
       const matchesNiche = selectedNiches.length === 0 || selectedNiches.includes(account.niche);
-      const matchesFollowers = selectedFollowersRange === "All Followers" || account.followersRange === selectedFollowersRange;
+      const matchesFollowers = selectedFollowersRange === "All Ranges" || account.followersRange === selectedFollowersRange;
       
       return matchesSearch && matchesNiche && matchesFollowers;
     });

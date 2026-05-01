@@ -27,7 +27,7 @@ interface DirectoryTableProps {
 }
  
 const FOLLOWERS_RANGES = [
-  "All Followers", "0-100", "100-500", "500-1K", "1K-2K", "2K-5K", "5K-10K", "10K-25K", "25K-50K", "50K-100K", "100K+"
+  "All Ranges", "0-100", "100-500", "500-1K", "1K-2K", "2K-5K", "5K-10K", "10K-25K", "25K-50K", "50K-100K", "100K+"
 ];
  
 const SORT_OPTIONS = ["Latest", "Oldest", "Shuffle"];
@@ -77,12 +77,12 @@ export default function DirectoryTable({
               className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors bg-transparent px-3 py-1.5 rounded-lg border border-border text-glow"
             >
               <Sliders className="w-4 h-4" />
-              {selectedFollowersRange === "All Followers" ? "Followers Range" : selectedFollowersRange}
+              {selectedFollowersRange === "All Ranges" ? "Followers Range" : selectedFollowersRange}
               <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${followersOpen ? "rotate-180" : ""}`} />
             </button>
  
             {followersOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg shadow-xl z-50 py-1 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="absolute right-0 mt-2 w-48 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg shadow-xl z-50 py-1 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200 max-h-[400px] overflow-y-auto no-scrollbar">
                 {FOLLOWERS_RANGES.map((range) => (
                   <button
                     key={range}
