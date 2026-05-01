@@ -200,38 +200,38 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
         {/* Form Body - Scrollable */}
         <div className="flex-1 overflow-y-auto custom-scrollbar bg-[#0d0d0d]">
-          <form onSubmit={handleSubmit} id="add-account-form" className="px-8 py-8 space-y-10">
+          <form onSubmit={handleSubmit} id="add-account-form" className="px-8 py-8 space-y-12">
             
             {/* Full Name */}
-            <div className="space-y-5">
-              <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Full Name</label>
+            <div className="flex flex-col gap-6">
+              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Full Name</label>
               <input
                 required
                 type="text"
                 placeholder="e.g. John Doe"
-                className="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-5 py-3.5 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all shadow-inner"
+                className="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all shadow-inner"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
             </div>
 
             {/* X Username */}
-            <div className="space-y-5">
-              <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">X Username</label>
+            <div className="flex flex-col gap-6">
+              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">X Username</label>
               <input
                 required
                 type="text"
                 placeholder="@username"
-                className="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-5 py-3.5 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all shadow-inner"
+                className="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all shadow-inner"
                 value={formData.xHandle}
                 onChange={(e) => handleXHandleChange(e.target.value)}
               />
             </div>
 
             {/* Bio */}
-            <div className="space-y-5">
+            <div className="flex flex-col gap-6">
               <div className="flex justify-between items-center">
-                <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">One-line Bio</label>
+                <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">One-line Bio</label>
                 <span className={`text-[0.75rem] font-mono ${formData.bio.length > 100 ? "text-red-500" : "text-gray-500"}`}>
                   {formData.bio.length}/100
                 </span>
@@ -241,15 +241,15 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 maxLength={100}
                 type="text"
                 placeholder="Founder | Building in public | Shipping daily"
-                className="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-5 py-3.5 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all shadow-inner"
+                className="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all shadow-inner"
                 value={formData.bio}
                 onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
               />
             </div>
 
             {/* Niche - Compact Select with Icons */}
-            <div className="space-y-6">
-              <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Categories</label>
+            <div className="flex flex-col gap-8">
+              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Categories</label>
               <div className="flex flex-wrap gap-2.5">
                 {NICHES.map((niche) => {
                   const Icon = niche.icon;
@@ -275,8 +275,8 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Followers Range - Compact pills */}
-            <div className="space-y-6">
-              <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Followers Range</label>
+            <div className="flex flex-col gap-8">
+              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Followers Range</label>
               <div className="flex flex-wrap gap-2.5">
                 {FOLLOWERS_RANGES.map((range) => (
                   <button
@@ -296,8 +296,8 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Profile Picture */}
-            <div className="space-y-6">
-              <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Profile Picture</label>
+            <div className="flex flex-col gap-8">
+              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Profile Picture</label>
               <div className="flex items-center gap-6">
                 <div className="relative shrink-0">
                   {previewUrl ? (
@@ -334,7 +334,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     disabled={uploading}
-                    className="bg-[#18181b] border border-[#27272a] text-white px-6 py-3 rounded-xl text-sm font-bold hover:border-[#3f3f46] transition-all flex items-center gap-2.5 shadow-sm active:scale-[0.98]"
+                    className="bg-[#18181b] border border-[#27272a] text-white px-6 py-3.5 rounded-xl text-sm font-bold hover:border-[#3f3f46] transition-all flex items-center gap-2.5 shadow-sm active:scale-[0.98]"
                   >
                     {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
                     Upload
@@ -345,13 +345,13 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Email */}
-            <div className="space-y-5">
-              <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Email</label>
+            <div className="flex flex-col gap-6">
+              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Email</label>
               <input
                 required
                 type="email"
                 placeholder="you@example.com"
-                className="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-5 py-3.5 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all shadow-inner"
+                className="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all shadow-inner"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
@@ -372,7 +372,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 {formData.confirmed && <Check className="w-4 h-4" />}
               </button>
               <label 
-                className="text-[0.9rem] text-[#a1a1aa] cursor-pointer select-none leading-relaxed hover:text-gray-300 transition-colors"
+                className="text-[0.95rem] text-[#a1a1aa] cursor-pointer select-none leading-relaxed hover:text-gray-300 transition-colors font-medium"
                 onClick={() => setFormData({ ...formData, confirmed: !formData.confirmed })}
               >
                 I confirm this information is accurate and belongs to me.
@@ -380,7 +380,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Bottom Spacing */}
-            <div className="h-12" />
+            <div className="h-16" />
           </form>
         </div>
 
