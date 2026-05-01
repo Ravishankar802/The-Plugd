@@ -36,10 +36,10 @@ export default function Footer({ showBorder = true }: FooterProps) {
         {isDashboard ? (
           <>
             {/* Dashboard style: Centered Home */}
-            <div className="flex-1 hidden md:block" />
-            <div className="flex items-center justify-center gap-6 text-[0.85rem] text-[#8b8b8b] font-medium flex-1">
+            <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] text-[#8b8b8b] font-medium">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
             </div>
+            <div className="flex-1" />
           </>
         ) : (
           /* Default style: Links on left */

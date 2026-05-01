@@ -6,7 +6,8 @@ import {
   Trash2, 
   Upload, 
   Check,
-  Camera
+  Camera,
+  Save
 } from "lucide-react";
 
 import { 
@@ -161,17 +162,17 @@ export default function DashboardProfileView() {
   if (!account) return <div>Account not found.</div>;
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <div className="mb-10">
-        <h1 className="text-[2.5rem] font-[800] text-white leading-tight tracking-tight">Your Profile</h1>
-        <p className="text-[#8b8b8b] text-[1.1rem] mt-2 font-medium">Manage your public listing on Plugd.</p>
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="mb-8">
+        <h1 className="text-[2.25rem] font-[700] text-white leading-tight tracking-tight">Your Profile</h1>
+        <p className="text-[#8b8b8b] text-[1rem] mt-1.5 font-normal">Manage your public listing on Plugd.</p>
       </div>
 
       <div className="bg-[#111111] border border-[#2a2a2a] rounded-[16px] p-10 shadow-2xl">
         <form onSubmit={handleSave} className="space-y-10">
           
           {/* Profile Picture */}
-          <div className="space-y-4">
+          <div className="flex flex-col gap-4">
             <label className="text-[0.75rem] font-[600] text-[#6b7280] uppercase tracking-[0.12em]">Profile Picture</label>
             <div className="flex items-center gap-8">
               {account.avatarPath ? (
@@ -218,7 +219,7 @@ export default function DashboardProfileView() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Name */}
-            <div className="space-y-4">
+            <div className="flex flex-col gap-3">
               <label className="text-[0.75rem] font-[600] text-[#6b7280] uppercase tracking-[0.12em]">Full Name</label>
               <input
                 required
@@ -231,7 +232,7 @@ export default function DashboardProfileView() {
             </div>
 
             {/* X Handle */}
-            <div className="space-y-4">
+            <div className="flex flex-col gap-3">
               <label className="text-[0.75rem] font-[600] text-[#6b7280] uppercase tracking-[0.12em]">X Username</label>
               <div className="relative">
                 <span className="absolute left-5 top-1/2 -translate-y-1/2 text-[#6b7280] font-medium text-[1rem]">@</span>
@@ -248,7 +249,7 @@ export default function DashboardProfileView() {
           </div>
 
           {/* Bio */}
-          <div className="space-y-4">
+          <div className="flex flex-col gap-3">
             <div className="flex justify-between items-center">
               <label className="text-[0.75rem] font-[600] text-[#6b7280] uppercase tracking-[0.12em]">One-line Bio</label>
               <span className={`text-[0.75rem] font-medium ${account.bio.length > 100 ? "text-red-500" : "text-[#6b7280]"}`}>
@@ -267,7 +268,7 @@ export default function DashboardProfileView() {
           </div>
 
           {/* Email - Read Only */}
-          <div className="space-y-4">
+          <div className="flex flex-col gap-3">
             <label className="text-[0.75rem] font-[600] text-[#6b7280] uppercase tracking-[0.12em]">Email Address</label>
             <input
               readOnly
@@ -278,7 +279,7 @@ export default function DashboardProfileView() {
           </div>
 
           {/* Niche - Single Select */}
-          <div className="space-y-5">
+          <div className="flex flex-col gap-5">
             <label className="text-[0.75rem] font-[600] text-[#6b7280] uppercase tracking-[0.12em]">Niche</label>
             <div className="flex flex-wrap gap-3">
               {NICHES.map((niche) => {
@@ -302,7 +303,7 @@ export default function DashboardProfileView() {
           </div>
 
           {/* Followers Range */}
-          <div className="space-y-5">
+          <div className="flex flex-col gap-5">
             <label className="text-[0.75rem] font-[600] text-[#6b7280] uppercase tracking-[0.12em]">Followers Range</label>
             <div className="flex flex-wrap gap-3">
               {FOLLOWERS_RANGES.map((range) => (
@@ -327,9 +328,14 @@ export default function DashboardProfileView() {
             <button
               disabled={saving}
               type="submit"
-              className="w-full bg-white text-black font-[700] text-[1rem] py-[0.85rem] rounded-lg hover:bg-[#e5e5e5] transition-all flex items-center justify-center gap-3 disabled:opacity-50 active:scale-[0.99]"
+              className="w-full bg-white text-black font-[700] text-[1rem] py-[0.85rem] rounded-xl hover:bg-[#e5e5e5] transition-all flex items-center justify-center gap-3 disabled:opacity-50 active:scale-[0.99] shadow-xl"
             >
-              {saving ? <Loader2 size={24} className="animate-spin" /> : "Save Changes"}
+              {saving ? <Loader2 size={24} className="animate-spin" /> : (
+                <>
+                  <Save size={20} />
+                  <span>Save Changes</span>
+                </>
+              )}
             </button>
             {success && (
               <p className="text-green-500 text-center mt-4 font-bold flex items-center justify-center gap-2 animate-in fade-in slide-in-from-top-2">
