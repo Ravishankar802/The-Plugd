@@ -31,7 +31,7 @@ export default function Footer({ showBorder = true }: FooterProps) {
   }, []);
 
   return (
-    <footer className={`mt-auto py-6 ${showBorder ? "border-t border-[#1a1a1a]" : ""}`}>
+    <footer className={`mt-auto py-20 ${showBorder ? "border-t border-[#1a1a1a]" : ""}`}>
       <div className="flex items-center justify-between gap-6 relative">
         {isDashboard ? (
           <>
