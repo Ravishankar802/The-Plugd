@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { User, Grid, LogOut, Moon, Sun, Monitor } from "lucide-react";
+import { User, Grid, LogOut, Zap, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface DashboardSidebarProps {
@@ -30,17 +30,15 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
   return (
     <aside className="w-[280px] bg-[#0a0a0a] border-r border-[#1a1a1a] flex flex-col h-screen fixed left-0 top-0 z-30">
       {/* Top: Logo */}
-      <div className="px-8 py-10">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
-            <span className="text-black font-black text-xl">P</span>
-          </div>
+      <div className="px-5 py-6">
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <Zap className="w-8 h-8 text-[#ff6b00] fill-[#ff6b00]" />
           <span className="text-xl font-bold text-white tracking-tight">The Plugd</span>
         </Link>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-4 space-y-1.5">
+      <nav className="flex-1 px-4 space-y-1">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = pathname === item.href;
@@ -48,21 +46,21 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all ${
+              className={`flex items-center gap-3 px-4 py-[0.65rem] rounded-lg transition-all ${
                 isActive 
-                  ? "bg-[#161616] text-white font-semibold" 
-                  : "text-[#888888] hover:text-white hover:bg-[#161616]"
+                  ? "bg-[#1f1f1f] text-white font-bold" 
+                  : "text-[#8b8b8b] hover:text-white"
               }`}
             >
-              <Icon size={18} className={isActive ? "text-white" : "text-[#555555]"} />
-              <span className="text-[0.95rem]">{item.name}</span>
+              <Icon size={18} className={isActive ? "text-white" : "text-[#8b8b8b]"} />
+              <span className="text-[0.9rem]">{item.name}</span>
             </Link>
           );
         })}
 
         {isAdmin && (
-          <div className="pt-10">
-            <p className="px-4 text-[0.65rem] font-bold text-[#444444] uppercase tracking-[0.2em] mb-4">ADMIN</p>
+          <div className="mt-6">
+            <p className="px-4 text-[0.7rem] font-bold text-[#6b7280] uppercase tracking-[0.1em] mb-2">ADMIN</p>
             {adminItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
@@ -70,14 +68,14 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all ${
+                  className={`flex items-center gap-3 px-4 py-[0.65rem] rounded-lg transition-all ${
                     isActive 
-                      ? "bg-[#161616] text-white font-semibold" 
-                      : "text-[#888888] hover:text-white hover:bg-[#161616]"
+                      ? "bg-[#1f1f1f] text-white font-bold" 
+                      : "text-[#8b8b8b] hover:text-white"
                   }`}
                 >
-                  <Icon size={18} className={isActive ? "text-white" : "text-[#555555]"} />
-                  <span className="text-[0.95rem]">{item.name}</span>
+                  <Icon size={18} className={isActive ? "text-white" : "text-[#8b8b8b]"} />
+                  <span className="text-[0.9rem]">{item.name}</span>
                 </Link>
               );
             })}
@@ -86,17 +84,17 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
       </nav>
 
       {/* Bottom info */}
-      <div className="p-4">
-        <div className="bg-[#111111] border border-[#1a1a1a] rounded-2xl p-5 space-y-4 shadow-xl">
+      <div className="m-4">
+        <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-4 space-y-4 shadow-xl">
           <div>
-            <p className="text-[0.65rem] text-[#444444] font-bold uppercase tracking-[0.15em] mb-1.5">Signed in as</p>
-            <p className="text-[#eeeeee] font-bold text-sm truncate">{email}</p>
+            <p className="text-[0.75rem] text-[#6b7280] mb-1">Signed in as</p>
+            <p className="text-white font-semibold text-[0.875rem] truncate" title={email}>{email}</p>
           </div>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-transparent border border-[#1a1a1a] text-[#888888] hover:text-white hover:bg-[#161616] transition-all text-xs font-bold"
+            className="w-full flex items-center justify-center gap-2 py-2 rounded-md bg-transparent border border-[#2a2a2a] text-[#8b8b8b] hover:border-[#dc2626] hover:text-[#dc2626] transition-all text-[0.85rem] font-medium"
           >
-            <LogOut size={14} />
+            <ArrowRight size={14} />
             Log out
           </button>
         </div>

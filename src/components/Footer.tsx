@@ -28,12 +28,13 @@ export default function Footer({ showBorder = true }: FooterProps) {
   }, []);
 
   return (
-    <footer className={`mt-auto py-20 ${showBorder ? "border-t border-border" : ""}`}>
-      <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-6 text-[0.9rem] text-muted font-medium">
-          <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
-          <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
-          <Link href="/terms-of-service" className="hover:text-foreground transition-colors">Terms of Service</Link>
+    <footer className={`mt-auto py-6 ${showBorder ? "border-t border-[#1a1a1a]" : ""}`}>
+      <div className="flex items-center justify-between gap-6 relative">
+        {/* Placeholder for left to keep home centered if needed, but we can just use absolute centering for Home */}
+        <div className="flex-1 hidden md:block" />
+        
+        <div className="flex items-center justify-center gap-6 text-[0.85rem] text-[#8b8b8b] font-medium flex-1">
+          <Link href="/" className="hover:text-white transition-colors">Home</Link>
         </div>
 
         {hasMounted && (
