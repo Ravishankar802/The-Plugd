@@ -116,8 +116,6 @@ export default function TermsOfService() {
           />
 
         </div>
-
-        </div>
       </div>
 
       {/* Footer - Wider container matching homepage */}
