@@ -204,7 +204,8 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
       // Build the Dodo Payments URL
       const dodoBaseUrl = "https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1";
-      const redirectUrl = encodeURIComponent(`https://the-plugd.vercel.app/dashboard?email=${formData.email}`);
+      const origin = typeof window !== "undefined" ? window.location.origin : "https://the-plugd.vercel.app";
+      const redirectUrl = encodeURIComponent(`${origin}/dashboard?email=${formData.email}`);
       
       const checkoutUrl = `${dodoBaseUrl}?quantity=1&showDiscounts=false&redirect_url=${redirectUrl}&customer_email=${formData.email}&metadata_accountId=${accountId}`;
 
