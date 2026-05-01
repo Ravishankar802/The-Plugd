@@ -201,10 +201,10 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={onClose} />
       
-      <div className="relative w-full max-w-xl bg-card border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in duration-300">
+      <div className="relative w-full max-w-xl bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in duration-300">
         
         {/* Header - Fixed */}
-        <div className="px-8 py-6 border-b border-border flex items-center justify-between bg-card z-20 shrink-0">
+        <div className="px-8 py-6 border-b border-[#2a2a2a] flex items-center justify-between bg-[#1c1c1c] z-20 shrink-0">
           <div>
             <h2 className="text-xl font-bold text-white tracking-tight">Add Your Account</h2>
             <p className="text-sm text-[#a1a1aa] mt-1 font-medium">Get discovered by X builders, founders and creators.</p>
@@ -215,7 +215,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         </div>
 
         {/* Form Body - Scrollable */}
-        <div className="flex-1 overflow-y-auto custom-scrollbar bg-card">
+        <div className="flex-1 overflow-y-auto custom-scrollbar bg-[#1c1c1c]">
           <form onSubmit={handleSubmit} id="add-account-form" className="px-8 py-8 space-y-7">
             
             {/* Full Name */}
@@ -225,7 +225,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 required
                 type="text"
                 placeholder="e.g. John Doe"
-                className="w-full bg-pill border border-border rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
+                className="w-full bg-[#0f0f0f] border border-[#2a2a2a] rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
@@ -238,7 +238,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 required
                 type="text"
                 placeholder="@username"
-                className="w-full bg-pill border border-border rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
+                className="w-full bg-[#0f0f0f] border border-[#2a2a2a] rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
                 value={formData.xHandle}
                 onChange={(e) => handleXHandleChange(e.target.value)}
               />
@@ -257,7 +257,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 maxLength={100}
                 type="text"
                 placeholder="Founder | Building in public | Shipping daily"
-                className="w-full bg-pill border border-border rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
+                className="w-full bg-[#0f0f0f] border border-[#2a2a2a] rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
                 value={formData.bio}
                 onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
               />
@@ -278,7 +278,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                       className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm transition-all border ${
                         isSelected 
                           ? "bg-white text-black border-white font-bold shadow-lg shadow-white/5" 
-                          : "bg-pill text-[#a1a1aa] border-border hover:border-[#3f3f46] hover:text-white"
+                          : "bg-[#0f0f0f] text-[#a1a1aa] border-[#2a2a2a] hover:border-[#3f3f46] hover:text-white"
                       }`}
                     >
                       <Icon size={16} className={isSelected ? "text-black" : "text-[#71717a]"} />
@@ -301,7 +301,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                     className={`px-4 py-2.5 rounded-xl text-sm transition-all border ${
                       formData.followersRange === range 
                         ? "bg-white text-black border-white font-bold shadow-lg shadow-white/5" 
-                        : "bg-pill text-[#a1a1aa] border-border hover:border-[#3f3f46] hover:text-white"
+                        : "bg-[#0f0f0f] text-[#a1a1aa] border-[#2a2a2a] hover:border-[#3f3f46] hover:text-white"
                     }`}
                   >
                     {range}
@@ -331,7 +331,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                       </button>
                     </div>
                   ) : (
-                    <div className="w-16 h-16 rounded-full bg-pill border-2 border-border border-dashed flex items-center justify-center group hover:border-[#3f3f46] transition-colors">
+                    <div className="w-16 h-16 rounded-full bg-[#0f0f0f] border-2 border-[#2a2a2a] border-dashed flex items-center justify-center group hover:border-[#3f3f46] transition-colors">
                       <Upload className="w-7 h-7 text-[#3f3f46] group-hover:text-[#71717a] transition-colors" />
                     </div>
                   )}
@@ -349,7 +349,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     disabled={uploading}
-                    className="bg-pill border border-border text-white px-6 py-3.5 rounded-xl text-sm font-bold hover:border-[#3f3f46] transition-all flex items-center gap-2.5 shadow-sm active:scale-[0.98]"
+                    className="bg-[#0f0f0f] border border-[#2a2a2a] text-white px-6 py-3.5 rounded-xl text-sm font-bold hover:border-[#3f3f46] transition-all flex items-center gap-2.5 shadow-sm active:scale-[0.98]"
                   >
                     {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
                     Upload
@@ -366,7 +366,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 required
                 type="email"
                 placeholder="you@example.com"
-                className="w-full bg-pill border border-border rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
+                className="w-full bg-[#0f0f0f] border border-[#2a2a2a] rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
@@ -381,7 +381,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 className={`mt-1 w-6 h-6 rounded-lg border flex items-center justify-center transition-all ${
                   formData.confirmed 
                     ? "bg-white border-white text-black shadow-lg shadow-white/5" 
-                    : "bg-pill border-border hover:border-[#3f3f46]"
+                    : "bg-[#0f0f0f] border-[#2a2a2a] hover:border-[#3f3f46]"
                 }`}
               >
                 {formData.confirmed && <Check className="w-4 h-4 text-black" />}
@@ -398,7 +398,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         </div>
 
         {/* Submit Button - Fixed at bottom */}
-        <div className="px-8 py-8 border-t border-border bg-card z-20 shrink-0">
+        <div className="px-8 py-8 border-t border-[#2a2a2a] bg-[#1c1c1c] z-20 shrink-0">
           <button
             disabled={!isFormValid || isLoading}
             type="submit"
