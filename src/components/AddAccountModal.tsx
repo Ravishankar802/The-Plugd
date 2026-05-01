@@ -68,9 +68,6 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
   
   const [isLoading, setIsLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [avatarPath, setAvatarPath] = useState("");
-  
   const [formData, setFormData] = useState({
     name: "",
     xHandle: "",
@@ -80,16 +77,9 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
     email: "",
     confirmed: false
   });
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
-  const isFormValid = 
-    formData.name.trim() !== "" &&
-    formData.xHandle.trim() !== "" &&
-    formData.bio.trim() !== "" &&
-    formData.niches.length > 0 &&
-    formData.followersRange !== "" &&
-    formData.email.trim() !== "" &&
-    formData.confirmed &&
-    avatarPath !== "";
 
   if (!isOpen) return null;
 
@@ -112,117 +102,69 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
     });
   };
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    setImageFile(file);
+    const objectUrl = URL.createObjectURL(file);
+    setPreviewUrl(objectUrl);
+  };
 
-    if (file.size > 2 * 1024 * 1024) {
-      alert("File is too large. Max 2MB.");
+  const handleSubmit = async () => {
+    // 1. Validate
+    if (!formData.name || !formData.xHandle || !formData.niches.length || !formData.email || !formData.confirmed) {
+      alert("Please fill in all fields and confirm.");
       return;
     }
 
-    setUploading(true);
-    
-    // Set preview immediately for better UX
-    const localPreviewUrl = URL.createObjectURL(file);
-    setPreviewUrl(localPreviewUrl);
-    
-    // Store the actual file for later upload if needed, 
-    // but for now we keep the two-step upload to /api/upload 
-    // to get a permanent URL for the DB record.
-    const body = new FormData();
-    body.append("file", file);
-
-    try {
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        body
-      });
-      
-      if (!res.ok) throw new Error("Upload failed");
-      
-      const data = await res.json();
-      if (data.filePath) {
-        setAvatarPath(data.filePath);
-      }
-    } catch (error) {
-      console.error("Upload error:", error);
-      alert("Failed to upload image. Please try again.");
-      setPreviewUrl(null);
-      setAvatarPath("");
-    } finally {
-      setUploading(false);
-    }
-  };
-
-  const removeImage = () => {
-    setAvatarPath("");
-    setPreviewUrl(null);
-    if (fileInputRef.current) fileInputRef.current.value = "";
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("handleSubmit triggered", { isFormValid, isLoading });
-    
-    if (!isFormValid) {
-      console.log("Form is invalid", formData, avatarPath);
-      return;
-    }
-    
     setIsLoading(true);
 
     try {
-      // 1. Validate all required fields (already handled by isFormValid)
-      
-      const xHandleToStore = formData.xHandle.startsWith("@") 
-        ? formData.xHandle.substring(1) 
-        : formData.xHandle;
+      // 2. Upload image if selected
+      let imageUrl = "";
+      if (imageFile) {
+        const formDataUpload = new FormData();
+        formDataUpload.append("file", imageFile);
+        const uploadRes = await fetch("/api/upload", {
+          method: "POST",
+          body: formDataUpload,
+        });
+        const uploadData = await uploadRes.json();
+        imageUrl = uploadData.filePath; // Using filePath from my API
+      }
 
-      const submissionData = {
-        name: formData.name,
-        xHandle: xHandleToStore,
-        bio: formData.bio,
-        niche: formData.niches,
-        followersRange: formData.followersRange,
-        email: formData.email,
-        avatarPath
-      };
-
-      console.log("Saving submission to /api/accounts...", submissionData);
-
-      // 2. POST to /api/accounts - returns accountId
+      // 3. Save account to DB with status: pending_payment
       const res = await fetch("/api/accounts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(submissionData),
+        body: JSON.stringify({ 
+          name: formData.name, 
+          xHandle: formData.xHandle, 
+          bio: formData.bio,
+          niche: formData.niches, 
+          followersRange: formData.followersRange,
+          email: formData.email, 
+          avatarPath: imageUrl, // Mapping imageUrl to avatarPath for API
+          status: "pending_payment" 
+        }),
       });
+      const data = await res.json();
+      const accountId = data.accountId; // Using accountId from my API
 
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.error || "Failed to create account");
+      console.log("accountId:", accountId);
+
+      if (!accountId) {
+        alert("Something went wrong. Please try again.");
+        setIsLoading(false);
+        return;
       }
-      
-      const responseData = await res.json();
-      const accountId = responseData.accountId;
 
-      console.log("Account created with ID:", accountId);
-
-      // 3. Build Dodo URL with customer_email and metadata_accountId
-      const dodoBaseUrl = "https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1";
-      const origin = typeof window !== "undefined" ? window.location.origin : "https://the-plugd.vercel.app";
-      const redirectUrl = encodeURIComponent(`${origin}/dashboard?email=${formData.email}`);
-      
-      const checkoutUrl = `${dodoBaseUrl}?quantity=1&showDiscounts=false&redirect_url=${redirectUrl}&customer_email=${formData.email}&metadata_accountId=${accountId}`;
-
-      console.log("Redirecting to Dodo:", checkoutUrl);
-
-      // 4. Redirect
+      // 4. Redirect to Dodo checkout with accountId in metadata
+      const checkoutUrl = `https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=https://the-plugd.vercel.app/dashboard&showDiscounts=false&customer_email=${encodeURIComponent(formData.email)}&metadata_accountId=${accountId}`;
       window.location.href = checkoutUrl;
-    } catch (error: any) {
+    } catch (error) {
       console.error(error);
-      alert(error.message || "Something went wrong. Please try again.");
-    } finally {
+      alert("Something went wrong. Please try again.");
       setIsLoading(false);
     }
   };
@@ -246,7 +188,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
         {/* Form Body - Scrollable */}
         <div className="flex-1 overflow-y-auto custom-scrollbar bg-pill">
-          <form onSubmit={handleSubmit} id="add-account-form" className="px-8 py-8 space-y-7">
+          <div className="px-8 py-8 space-y-7">
             
             {/* Full Name */}
             <div className="flex flex-col gap-3">
@@ -344,55 +286,42 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             <div className="flex flex-col gap-3">
               <label className="text-[1rem] font-[500] text-foreground tracking-wide block">Profile Picture</label>
               <div className="flex items-center gap-6">
-                <div 
-                  className="relative shrink-0 cursor-pointer group"
+                <div
                   onClick={() => fileInputRef.current?.click()}
+                  style={{
+                    width: 64,
+                    height: 64,
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    cursor: "pointer",
+                    background: "#222",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
                 >
                   {previewUrl ? (
-                    <div className="relative w-16 h-16">
-                      <img 
-                        src={previewUrl} 
-                        alt="Preview" 
-                        className="w-16 h-16 rounded-full object-cover border-2 border-border shadow-xl group-hover:opacity-80 transition-opacity"
-                      />
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          removeImage();
-                        }}
-                        className="absolute -top-1 -right-1 bg-red-600 text-white rounded-full p-1.5 shadow-lg hover:bg-red-700 transition-colors border-2 border-pill z-30"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
+                    <img src={previewUrl} alt="preview" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   ) : (
-                    <div className="w-16 h-16 rounded-full bg-background border-2 border-border border-dashed flex items-center justify-center group-hover:border-muted transition-colors">
-                      <Upload className="w-7 h-7 text-muted group-hover:text-foreground transition-colors" />
-                    </div>
-                  )}
-                  {uploading && (
-                    <div className="absolute inset-0 bg-background/60 rounded-full flex items-center justify-center z-20">
-                      <Loader2 className="w-6 h-6 animate-spin text-foreground" />
-                    </div>
+                    <Upload className="w-6 h-6 text-muted" />
                   )}
                 </div>
                 
                 <div className="flex-1">
                   <input
-                    type="file"
                     ref={fileInputRef}
-                    onChange={handleFileUpload}
-                    accept="image/jpeg,image/png,image/webp"
-                    className="hidden"
+                    type="file"
+                    accept="image/jpg,image/jpeg,image/png,image/webp"
+                    style={{ display: "none" }}
+                    onChange={handleImageChange}
                   />
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    disabled={uploading}
+                    disabled={isLoading}
                     className="bg-background border border-border text-foreground px-6 py-3.5 rounded-xl text-sm font-bold hover:bg-accent transition-all flex items-center gap-2.5 shadow-sm active:scale-[0.98]"
                   >
-                    {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+                    {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
                     Upload
                   </button>
                   <p className="text-[0.75rem] text-muted mt-2.5 font-medium tracking-tight">JPG, PNG or WebP. Max 2MB.</p>
@@ -437,14 +366,9 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
             {/* Submit Button inside form for better compatibility */}
             <div className="pt-4 pb-2">
-              {!isFormValid && (
-                <p className="text-[0.7rem] text-red-500/80 mb-3 text-center font-bold uppercase tracking-wider">
-                  Please fill all fields and upload a profile picture
-                </p>
-              )}
               <button
-                disabled={!isFormValid || isLoading}
-                type="submit"
+                disabled={isLoading}
+                onClick={handleSubmit}
                 className="w-full bg-background border border-pill-border text-foreground font-black text-base py-5 rounded-xl transition-all disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed flex items-center justify-center gap-2.5 hover:bg-accent shadow-2xl active:scale-[0.99] uppercase tracking-wider"
               >
                 {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Pay $1 to Get Listed"}
@@ -453,7 +377,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 Secure payment via Dodo Payments
               </p>
             </div>
-          </form>
+          </div>
         </div>
 
         {/* Footer - Optional or empty since button is now inside */}
