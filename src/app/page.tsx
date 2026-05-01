@@ -345,7 +345,7 @@ export default function Home() {
               Show more ({Math.min(50, remainingCount)} more accounts)
             </button>
           )}
-          <p className="text-[#a1a1aa] text-[0.85rem] flex items-center gap-2 font-mono-custom text-center px-4 max-w-xl">
+          <p className="text-[#a1a1aa] text-[0.85rem] flex items-center justify-center gap-2 font-mono-custom whitespace-nowrap">
             <Info className="w-4 h-4 shrink-0" />
             Accounts listed here are submitted by real X creators. Every listing is verified by a $1 payment. No bots. No spam.
           </p>
