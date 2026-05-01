@@ -130,6 +130,8 @@ export default function Home() {
   const [selectedFollowersRange, setSelectedFollowersRange] = useState("All Ranges");
   const [sortBy, setSortBy] = useState("Latest");
   const [shuffleKey, setShuffleKey] = useState(0);
+  const [searchResults, setSearchResults] = useState<Account[]>([]);
+  const [showResults, setShowResults] = useState(false);
 
   useEffect(() => {
     setHasMounted(true);
@@ -138,17 +140,10 @@ export default function Home() {
 
   useEffect(() => {
     const result = accounts.filter(account => {
-      const q = searchQuery.toLowerCase();
-      const matchesSearch = 
-        account.name.toLowerCase().includes(q) ||
-        account.xHandle.toLowerCase().includes(q) ||
-        account.bio.toLowerCase().includes(q) ||
-        account.niche.toLowerCase().includes(q);
-      
       const matchesNiche = selectedNiches.length === 0 || selectedNiches.includes(account.niche);
       const matchesFollowers = selectedFollowersRange === "All Ranges" || account.followersRange === selectedFollowersRange;
       
-      return matchesSearch && matchesNiche && matchesFollowers;
+      return matchesNiche && matchesFollowers;
     });
 
     // Apply Sorting
@@ -164,7 +159,36 @@ export default function Home() {
 
     setFilteredAccounts(sorted);
     setVisibleCount(50); // Reset pagination on any filter change
-  }, [searchQuery, selectedNiches, accounts, selectedFollowersRange, sortBy, shuffleKey]);
+  }, [selectedNiches, accounts, selectedFollowersRange, sortBy, shuffleKey]);
+
+  // Separate Search Logic for Dropdown
+  useEffect(() => {
+    if (searchQuery.trim() === "") {
+      setSearchResults([]);
+      setShowResults(false);
+      return;
+    }
+
+    const q = searchQuery.toLowerCase();
+    const results = accounts.filter(acc => 
+      acc.name.toLowerCase().includes(q) || 
+      acc.xHandle.toLowerCase().includes(q)
+    ).slice(0, 8); // Limit to 8 results for the dropdown
+
+    setSearchResults(results);
+    setShowResults(true);
+  }, [searchQuery, accounts]);
+
+  // Click outside to close search results
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest(".search-container")) {
+        setShowResults(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const fetchAccounts = async () => {
     try {
@@ -262,16 +286,51 @@ export default function Home() {
 
             <section className="mb-0">
               <div className="flex flex-col md:flex-row gap-4 mb-6">
-                <div className="relative flex-1">
+                <div className="relative flex-1 search-container">
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
                   <input
                     type="text"
-                    placeholder="Search accounts, niches, names..."
+                    placeholder="Search accounts or names..."
                     className="w-full h-[48px] bg-pill border border-border rounded-lg pl-12 pr-4 text-foreground placeholder:text-[#6b7280] focus:outline-none focus:ring-1 focus:ring-border transition-all"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
+                    onFocus={() => searchQuery.trim() !== "" && setShowResults(true)}
                     suppressHydrationWarning
                   />
+
+                  {/* Search Results Dropdown */}
+                  {showResults && searchQuery.trim() !== "" && (
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-pill border border-border rounded-xl shadow-2xl z-[100] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                      {searchResults.length > 0 ? (
+                        <div className="py-2">
+                          {searchResults.map((acc) => (
+                            <div 
+                              key={acc.id} 
+                              className="px-4 py-3 hover:bg-accent cursor-pointer flex items-center gap-4 transition-colors group"
+                              onClick={() => {
+                                window.open(`https://x.com/${acc.xHandle}`, '_blank');
+                                setShowResults(false);
+                              }}
+                            >
+                              <img src={acc.avatarPath} alt="" className="w-10 h-10 rounded-lg object-cover border border-border" />
+                              <div className="flex-1 min-w-0">
+                                <p className="text-foreground font-bold text-[0.95rem] truncate">{acc.name}</p>
+                                <p className="text-muted text-[0.8rem] truncate">@{acc.xHandle}</p>
+                              </div>
+                              <Plus className="w-4 h-4 text-muted opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </div>
+                          ))}
+                          <div className="px-4 py-2 border-t border-border mt-1">
+                            <p className="text-[0.7rem] text-muted font-bold uppercase tracking-wider">Results for &quot;{searchQuery}&quot;</p>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="p-8 text-center">
+                          <p className="text-muted font-medium">No accounts found for &quot;{searchQuery}&quot;</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
                 <button
                   onClick={() => setIsModalOpen(true)}
