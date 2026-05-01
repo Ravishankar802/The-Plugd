@@ -24,7 +24,8 @@ import {
   DollarSign,
   Cloud,
   Layers,
-  Building2
+  Building2,
+  Mic
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
