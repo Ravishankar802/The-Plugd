@@ -95,31 +95,34 @@ export default function AdminManageView() {
 
       {/* Filters */}
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <div className="flex items-center gap-2 bg-[#111111] p-1 rounded-xl border border-[#2a2a2a]">
-          <button className="px-6 py-2 rounded-lg bg-white text-black font-bold text-sm">
+        <div className="flex items-center gap-2">
+          <button className="px-5 py-2 rounded-lg bg-white text-black font-bold text-sm">
             All ({accounts.length})
+          </button>
+          <button className="px-5 py-2 rounded-lg bg-transparent text-[#888888] hover:text-white font-bold text-sm transition-colors">
+            Recently Added
           </button>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-3">
           {/* Range Dropdown */}
           <div className="relative">
             <button
               onClick={() => setIsRangeOpen(!isRangeOpen)}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#111111] border border-[#2a2a2a] text-[#a1a1aa] hover:text-white transition-all text-sm font-medium"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#111111] border border-[#1a1a1a] text-[#888888] hover:text-white transition-all text-sm font-bold"
             >
-              <Sliders size={16} />
+              <Sliders size={14} />
               <span>{selectedRange === "All Ranges" ? "Followers Range" : selectedRange}</span>
               <ChevronDown size={14} className={`transition-transform ${isRangeOpen ? "rotate-180" : ""}`} />
             </button>
             {isRangeOpen && (
-              <div className="absolute right-0 mt-2 w-56 bg-[#111111] border border-[#2a2a2a] rounded-2xl shadow-2xl z-50 overflow-hidden py-2">
+              <div className="absolute right-0 mt-2 w-56 bg-[#111111] border border-[#1a1a1a] rounded-xl shadow-2xl z-50 overflow-hidden py-2">
                 <div className="max-h-[400px] overflow-y-auto custom-scrollbar">
                   {FOLLOWERS_RANGES.map(range => (
                     <button
                       key={range}
                       onClick={() => { setSelectedRange(range); setIsRangeOpen(false); }}
-                      className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-[#a1a1aa] hover:text-white hover:bg-[#1a1a1a] transition-all"
+                      className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-[#888888] hover:text-white hover:bg-[#161616] transition-all"
                     >
                       {range}
                       {selectedRange === range && <Check size={14} className="text-white" />}
@@ -134,19 +137,19 @@ export default function AdminManageView() {
           <div className="relative">
             <button
               onClick={() => setIsSortOpen(!isSortOpen)}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#111111] border border-[#2a2a2a] text-[#a1a1aa] hover:text-white transition-all text-sm font-medium"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#111111] border border-[#1a1a1a] text-[#888888] hover:text-white transition-all text-sm font-bold"
             >
-              <TrendingUp size={16} />
+              <TrendingUp size={14} />
               <span>{SORT_OPTIONS.find(o => o.id === sortBy)?.name}</span>
               <ChevronDown size={14} className={`transition-transform ${isSortOpen ? "rotate-180" : ""}`} />
             </button>
             {isSortOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-[#111111] border border-[#2a2a2a] rounded-2xl shadow-2xl z-50 overflow-hidden py-2">
+              <div className="absolute right-0 mt-2 w-48 bg-[#111111] border border-[#1a1a1a] rounded-xl shadow-2xl z-50 overflow-hidden py-2">
                 {SORT_OPTIONS.map(opt => (
                   <button
                     key={opt.id}
                     onClick={() => { setSortBy(opt.id); setIsSortOpen(false); }}
-                    className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-[#a1a1aa] hover:text-white hover:bg-[#1a1a1a] transition-all"
+                    className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-[#888888] hover:text-white hover:bg-[#161616] transition-all"
                   >
                     {opt.name}
                     {sortBy === opt.id && <Check size={14} className="text-white" />}
@@ -159,36 +162,41 @@ export default function AdminManageView() {
       </div>
 
       {/* List */}
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 gap-6">
         {filteredAccounts.map(acc => (
-          <div key={acc.id} className="bg-[#111111] border border-[#2a2a2a] rounded-2xl p-6 flex items-center justify-between group hover:border-[#3f3f46] transition-all shadow-sm">
-            <div className="flex items-center gap-5">
-              <img src={acc.avatarPath} className="w-12 h-12 rounded-full object-cover border border-[#2a2a2a]" alt="" />
-              <div>
-                <h3 className="text-white font-bold text-lg">{acc.name}</h3>
-                <p className="text-[#a1a1aa] text-sm line-clamp-1">{acc.bio}</p>
-                <div className="flex items-center gap-4 mt-1">
-                  <span className="text-[#52525b] text-xs font-mono">@{acc.xHandle}</span>
-                  <span className="text-[#52525b] text-xs">Added: {new Date(acc.createdAt).toLocaleDateString()}</span>
+          <div key={acc.id} className="relative bg-[#111111] border border-[#1a1a1a] rounded-2xl p-8 flex flex-col md:flex-row md:items-center justify-between group hover:border-[#222222] transition-all shadow-xl">
+            <div className="flex items-start gap-6">
+              <img src={acc.avatarPath} className="w-20 h-20 rounded-xl object-cover border border-[#1a1a1a] shadow-lg" alt="" />
+              <div className="space-y-1.5 pt-1">
+                <h3 className="text-white font-bold text-[1.4rem] tracking-tight">{acc.name}</h3>
+                <p className="text-[#888888] text-[1.05rem] font-medium">{acc.bio}</p>
+                <div className="flex items-center gap-4 pt-1.5">
+                  <span className="text-[#555555] text-sm font-medium">Founder: {acc.name}</span>
+                  <span className="text-[#555555] text-sm font-medium">Added: {new Date(acc.createdAt).toLocaleDateString()}</span>
                 </div>
               </div>
             </div>
             
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 mt-6 md:mt-0">
+              <button
+                className="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-white text-black text-sm font-bold shadow-lg active:scale-[0.98] transition-all"
+              >
+                Visit <Edit3 size={14} />
+              </button>
               <button
                 onClick={() => setEditingAccount(acc)}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1a1a1a] border border-[#2a2a2a] text-[#a1a1aa] hover:text-white hover:border-[#3f3f46] transition-all text-xs font-bold"
+                className="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-transparent border border-[#222222] text-white text-sm font-bold hover:bg-[#161616] transition-all"
               >
-                <Edit3 size={14} />
-                Edit Profile
-              </button>
-              <button
-                onClick={() => setIsDeleteModalOpen(acc.id)}
-                className="p-2.5 bg-[#1a1a1a] border border-[#2a2a2a] text-[#52525b] hover:text-red-500 hover:border-red-500/50 rounded-xl transition-all"
-              >
-                <Trash2 size={16} />
+                Edit Profile <Edit3 size={14} />
               </button>
             </div>
+
+            <button
+              onClick={() => setIsDeleteModalOpen(acc.id)}
+              className="absolute top-8 right-8 p-2 text-[#444444] hover:text-red-500 transition-colors"
+            >
+              <Trash2 size={20} />
+            </button>
           </div>
         ))}
       </div>

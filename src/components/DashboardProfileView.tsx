@@ -163,17 +163,17 @@ export default function DashboardProfileView() {
         <p className="text-[#a1a1aa] mt-2 text-lg">Edit your public listing on The Plugd.</p>
       </div>
 
-      <div className="bg-[#111111] border border-[#2a2a2a] rounded-3xl p-10 shadow-2xl">
-        <form onSubmit={handleSave} className="space-y-10">
+      <div className="bg-[#111111] border border-[#1a1a1a] rounded-2xl p-10 shadow-2xl">
+        <form onSubmit={handleSave} className="space-y-12">
           
           {/* Profile Picture */}
           <div className="space-y-4">
-            <label className="text-sm font-bold text-[#52525b] uppercase tracking-[0.15em]">Profile Picture</label>
+            <label className="text-[0.65rem] font-bold text-[#444444] uppercase tracking-[0.2em]">Profile Picture</label>
             <div className="flex items-center gap-8">
               <img 
                 src={account.avatarPath} 
                 alt={account.name} 
-                className="w-24 h-24 rounded-full object-cover border-2 border-[#2a2a2a] shadow-2xl"
+                className="w-28 h-28 rounded-xl object-cover border border-[#1a1a1a] shadow-2xl"
               />
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3">
@@ -188,7 +188,7 @@ export default function DashboardProfileView() {
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     disabled={uploading}
-                    className="bg-[#1a1a1a] border border-[#2a2a2a] text-white px-6 py-3 rounded-xl text-sm font-bold hover:border-[#3f3f46] transition-all flex items-center gap-2"
+                    className="bg-[#161616] border border-[#222222] text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:border-[#333333] transition-all flex items-center gap-2"
                   >
                     {uploading ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
                     Change
@@ -196,12 +196,12 @@ export default function DashboardProfileView() {
                   <button
                     type="button"
                     onClick={() => setAccount({ ...account, avatarPath: "" })}
-                    className="p-3 bg-[#1a1a1a] border border-[#2a2a2a] text-[#71717a] hover:text-red-500 hover:border-red-500/50 rounded-xl transition-all"
+                    className="p-2.5 bg-[#161616] border border-[#222222] text-[#444444] hover:text-red-500 hover:border-red-500/50 rounded-lg transition-all"
                   >
                     <Trash2 size={18} />
                   </button>
                 </div>
-                <p className="text-xs text-[#52525b] font-medium">JPG, PNG or WebP. Max 2MB.</p>
+                <p className="text-[0.7rem] text-[#444444] font-medium">JPG, PNG or WebP. Max 2MB.</p>
               </div>
             </div>
           </div>
@@ -209,27 +209,27 @@ export default function DashboardProfileView() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Name */}
             <div className="space-y-3">
-              <label className="text-sm font-bold text-[#52525b] uppercase tracking-[0.15em]">Full Name</label>
+              <label className="text-[0.65rem] font-bold text-[#444444] uppercase tracking-[0.2em]">Full Name</label>
               <input
                 required
                 type="text"
                 value={account.name}
                 onChange={(e) => setAccount({ ...account, name: e.target.value })}
-                className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
+                className="w-full bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg px-5 py-4 text-white focus:outline-none focus:border-[#333333] transition-all font-medium"
               />
             </div>
 
             {/* X Handle */}
             <div className="space-y-3">
-              <label className="text-sm font-bold text-[#52525b] uppercase tracking-[0.15em]">X Username</label>
+              <label className="text-[0.65rem] font-bold text-[#444444] uppercase tracking-[0.2em]">X Username</label>
               <div className="relative">
-                <span className="absolute left-5 top-1/2 -translate-y-1/2 text-[#52525b] font-mono">@</span>
+                <span className="absolute left-5 top-1/2 -translate-y-1/2 text-[#444444] font-medium">@</span>
                 <input
                   required
                   type="text"
                   value={account.xHandle.startsWith("@") ? account.xHandle.substring(1) : account.xHandle}
                   onChange={(e) => setAccount({ ...account, xHandle: e.target.value })}
-                  className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl pl-10 pr-5 py-4 text-white focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
+                  className="w-full bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg pl-10 pr-5 py-4 text-white focus:outline-none focus:border-[#333333] transition-all font-medium"
                 />
               </div>
             </div>
@@ -238,8 +238,8 @@ export default function DashboardProfileView() {
           {/* Bio */}
           <div className="space-y-3">
             <div className="flex justify-between items-center">
-              <label className="text-sm font-bold text-[#52525b] uppercase tracking-[0.15em]">One-line Bio</label>
-              <span className={`text-[0.7rem] font-mono ${account.bio.length > 100 ? "text-red-500" : "text-[#52525b]"}`}>
+              <label className="text-[0.65rem] font-bold text-[#444444] uppercase tracking-[0.2em]">One-line Bio</label>
+              <span className={`text-[0.65rem] font-bold ${account.bio.length > 100 ? "text-red-500" : "text-[#444444]"}`}>
                 {account.bio.length}/100
               </span>
             </div>
@@ -249,41 +249,38 @@ export default function DashboardProfileView() {
               type="text"
               value={account.bio}
               onChange={(e) => setAccount({ ...account, bio: e.target.value })}
-              className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
+              className="w-full bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg px-5 py-4 text-white focus:outline-none focus:border-[#333333] transition-all font-medium"
             />
           </div>
 
           {/* Email - Read Only */}
           <div className="space-y-3">
-            <label className="text-sm font-bold text-[#52525b] uppercase tracking-[0.15em]">Email Address</label>
+            <label className="text-[0.65rem] font-bold text-[#444444] uppercase tracking-[0.2em]">Email Address</label>
             <input
               readOnly
               type="email"
               value={account.email}
-              className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-5 py-4 text-[#52525b] cursor-not-allowed"
+              className="w-full bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg px-5 py-4 text-[#444444] cursor-not-allowed font-medium opacity-50"
             />
-            <p className="text-xs text-[#52525b]">Email cannot be changed. Contact support if needed.</p>
           </div>
 
           {/* Niche - Single Select */}
           <div className="space-y-4">
-            <label className="text-sm font-bold text-[#52525b] uppercase tracking-[0.15em]">Niche</label>
+            <label className="text-[0.65rem] font-bold text-[#444444] uppercase tracking-[0.2em]">Niche</label>
             <div className="flex flex-wrap gap-2.5">
               {NICHES.map((niche) => {
-                const Icon = niche.icon;
                 const isSelected = account.niche.includes(niche.name);
                 return (
                   <button
                     key={niche.name}
                     type="button"
                     onClick={() => setAccount({ ...account, niche: [niche.name] })}
-                    className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm transition-all border ${
+                    className={`flex items-center gap-2.5 px-4 py-2 rounded-lg text-[0.85rem] transition-all border font-bold ${
                       isSelected 
-                        ? "bg-white text-black border-white font-bold" 
-                        : "bg-[#0a0a0a] text-[#a1a1aa] border-[#2a2a2a] hover:border-[#3f3f46]"
+                        ? "bg-white text-black border-white" 
+                        : "bg-[#111111] text-[#888888] border-[#1a1a1a] hover:text-white"
                     }`}
                   >
-                    <Icon size={16} />
                     <span>{niche.name}</span>
                   </button>
                 );
@@ -293,17 +290,17 @@ export default function DashboardProfileView() {
 
           {/* Followers Range */}
           <div className="space-y-4">
-            <label className="text-sm font-bold text-[#52525b] uppercase tracking-[0.15em]">Followers Range</label>
+            <label className="text-[0.65rem] font-bold text-[#444444] uppercase tracking-[0.2em]">Followers Range</label>
             <div className="flex flex-wrap gap-2.5">
               {FOLLOWERS_RANGES.map((range) => (
                 <button
                   key={range}
                   type="button"
                   onClick={() => setAccount({ ...account, followersRange: range })}
-                  className={`px-4 py-2.5 rounded-xl text-sm transition-all border ${
+                  className={`px-4 py-2 rounded-lg text-[0.85rem] transition-all border font-bold ${
                     account.followersRange === range 
-                      ? "bg-white text-black border-white font-bold" 
-                      : "bg-[#0a0a0a] text-[#a1a1aa] border-[#2a2a2a] hover:border-[#3f3f46]"
+                      ? "bg-white text-black border-white" 
+                      : "bg-[#111111] text-[#888888] border-[#1a1a1a] hover:text-white"
                   }`}
                 >
                   {range}
@@ -317,7 +314,7 @@ export default function DashboardProfileView() {
             <button
               disabled={saving}
               type="submit"
-              className="w-full bg-white text-black font-black text-lg py-5 rounded-xl hover:bg-gray-100 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+              className="w-full bg-white text-black font-black text-lg py-5 rounded-lg hover:bg-gray-100 transition-all flex items-center justify-center gap-3 disabled:opacity-50 active:scale-[0.99]"
             >
               {saving ? <Loader2 size={24} className="animate-spin" /> : "Save Changes"}
             </button>
