@@ -203,7 +203,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
           <form onSubmit={handleSubmit} id="add-account-form" className="px-8 py-8 space-y-12">
             
             {/* Full Name */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Full Name</label>
               <input
                 required
@@ -216,7 +216,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* X Username */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">X Username</label>
               <input
                 required
@@ -229,7 +229,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Bio */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center">
                 <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">One-line Bio</label>
                 <span className={`text-[0.75rem] font-mono ${formData.bio.length > 100 ? "text-red-500" : "text-gray-500"}`}>
@@ -248,7 +248,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Niche - Compact Select with Icons */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Niche</label>
               <div className="flex flex-wrap gap-2.5">
                 {NICHES.map((niche) => {
@@ -274,7 +274,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Followers Range - Compact pills */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Followers Range</label>
               <div className="flex flex-wrap gap-2.5">
                 {FOLLOWERS_RANGES.map((range) => (
@@ -295,7 +295,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Profile Picture */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Profile Picture</label>
               <div className="flex items-center gap-6">
                 <div className="relative shrink-0">
@@ -344,7 +344,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Email */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Email</label>
               <input
                 required
