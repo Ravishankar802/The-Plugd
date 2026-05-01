@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 export default function TermsOfService() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white selection:bg-[#ff6b00]/30">
-      <div className="max-w-[760px] mx-auto px-6 pt-16 pb-12 flex flex-col items-center">
+      <div className="max-w-[840px] mx-auto px-6 pt-16 pb-12 flex flex-col items-center">
         
         {/* Page Header */}
         <div className="flex flex-col items-center text-center mb-16">
@@ -27,11 +27,11 @@ export default function TermsOfService() {
             <span className="text-3xl font-[800] tracking-[-0.02em] text-[#52525b]">Plugd</span>
           </Link>
           <h1 className="text-[2.5rem] font-bold tracking-tight mb-2">Terms of Service</h1>
-          <p className="text-[#a1a1aa] text-[0.95rem] font-medium tracking-tight">Last updated: May 1, 2026</p>
+          <p className="text-[#a1a1aa] text-[1rem] font-medium tracking-tight">Last updated: May 1, 2026</p>
         </div>
 
         {/* Content Sections */}
-        <div className="w-full space-y-8 mb-16">
+        <div className="w-full space-y-10 mb-20">
           
           <Section 
             title="1. Introduction" 
@@ -71,9 +71,9 @@ export default function TermsOfService() {
           <Section 
             title="8. Prohibited Use" 
             content={
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <p>You may not use The Plugd to:</p>
-                <ul className="list-disc pl-5 space-y-1">
+                <ul className="list-disc pl-6 space-y-2">
                   <li>Submit profiles that belong to someone else</li>
                   <li>Submit fake, bot, or spam accounts</li>
                   <li>Submit misleading or deceptive information</li>
@@ -112,14 +112,17 @@ export default function TermsOfService() {
 
           <Section 
             title="14. Contact" 
-            content="For any questions about these Terms or your listing, contact us at: support@theplugd.com" 
+            content="For any questions regarding these Terms, please contact us through the Plugd website." 
           />
 
         </div>
 
-        <div className="w-full">
-          <Footer showBorder={false} />
         </div>
+      </div>
+
+      {/* Footer - Wider container matching homepage */}
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8">
+        <Footer showBorder={false} />
       </div>
     </main>
   );
@@ -127,9 +130,9 @@ export default function TermsOfService() {
 
 function Section({ title, content }: { title: string; content: React.ReactNode }) {
   return (
-    <div className="bg-[#161616] border border-[#2a2a2a] rounded-[12px] p-8 shadow-sm">
-      <h2 className="text-[1.2rem] font-bold text-white mb-4">{title}</h2>
-      <div className="text-[#a1a1aa] text-[0.95rem] leading-[1.8] font-medium">
+    <div className="bg-[#161616] border border-[#2a2a2a] rounded-[12px] p-10 shadow-sm">
+      <h2 className="text-[1.5rem] font-bold text-white mb-6">{title}</h2>
+      <div className="text-[#a1a1aa] text-[1.125rem] leading-[1.8] font-medium">
         {content}
       </div>
     </div>
