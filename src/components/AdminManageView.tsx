@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { 
   Loader2, 
   Trash2, 
@@ -25,8 +25,66 @@ const SORT_OPTIONS = [
   { id: "shuffle", name: "Shuffle", icon: TrendingUp },
 ];
 
+const MOCK_ACCOUNTS = [
+  {
+    id: 1001,
+    name: "Ravi Shankar",
+    xHandle: "ravishankar802",
+    bio: "Building The Plugd. Growth hacker & founder.",
+    niche: ["Founder", "Builder"],
+    followersRange: "1K-2K",
+    email: "ravishankar4284@gmail.com",
+    avatarPath: "https://unavatar.io/x/ravishankar802",
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 1002,
+    name: "John Doe",
+    xHandle: "johndoe",
+    bio: "AI Engineer | Building the future of logistics with neural networks.",
+    niche: ["AI", "Developer"],
+    followersRange: "5K-10K",
+    email: "john@example.com",
+    avatarPath: "https://unavatar.io/x/johndoe",
+    createdAt: new Date(Date.now() - 86400000).toISOString(),
+  },
+  {
+    id: 1003,
+    name: "Jane Smith",
+    xHandle: "janesmith",
+    bio: "Product Designer @ Figma. obsessed with clean interfaces.",
+    niche: ["Designer", "Creator"],
+    followersRange: "10K-25K",
+    email: "jane@example.com",
+    avatarPath: "https://unavatar.io/x/janesmith",
+    createdAt: new Date(Date.now() - 172800000).toISOString(),
+  },
+  {
+    id: 1004,
+    name: "Alex River",
+    xHandle: "ariver",
+    bio: "Indie Hacker. 5 micro-SaaS products in 12 months.",
+    niche: ["Indie Hacker", "SaaS"],
+    followersRange: "500-1K",
+    email: "alex@example.com",
+    avatarPath: "https://unavatar.io/x/alexriver",
+    createdAt: new Date(Date.now() - 259200000).toISOString(),
+  },
+  {
+    id: 1005,
+    name: "Sarah Chen",
+    xHandle: "sarahc",
+    bio: "Venture Capitalist. Investing in the next generation of builders.",
+    niche: ["Investor", "Founder"],
+    followersRange: "25K-50K",
+    email: "sarah@example.com",
+    avatarPath: "https://unavatar.io/x/sarahchen",
+    createdAt: new Date(Date.now() - 345600000).toISOString(),
+  },
+];
+
 export default function AdminManageView() {
-  const [accounts, setAccounts] = useState<any[]>([]);
+  const [accounts, setAccounts] = useState<any[]>(MOCK_ACCOUNTS);
   const [loading, setLoading] = useState(true);
   const [selectedRange, setSelectedRange] = useState("All Ranges");
   const [sortBy, setSortBy] = useState("latest");
@@ -35,8 +93,23 @@ export default function AdminManageView() {
   const [editingAccount, setEditingAccount] = useState<any>(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<number | null>(null);
 
+  const rangeRef = useRef<HTMLDivElement>(null);
+  const sortRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     fetchAccounts();
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (rangeRef.current && !rangeRef.current.contains(event.target as Node)) {
+        setIsRangeOpen(false);
+      }
+      if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
+        setIsSortOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const fetchAccounts = async () => {
@@ -44,7 +117,7 @@ export default function AdminManageView() {
       const res = await fetch("/api/accounts");
       if (res.ok) {
         const data = await res.json();
-        setAccounts(data);
+        setAccounts([...MOCK_ACCOUNTS, ...data]);
       }
     } catch (err) {
       console.error(err);
@@ -88,29 +161,26 @@ export default function AdminManageView() {
   );
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <div className="mb-10">
-        <h1 className="text-[2rem] font-[700] text-white leading-tight">Manage Accounts</h1>
-        <p className="text-[#8b8b8b] text-[1rem] mt-1">View and manage all account submissions.</p>
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="mb-8">
+        <h1 className="text-[2.25rem] font-[700] text-white leading-tight tracking-tight">Manage Accounts</h1>
+        <p className="text-[#8b8b8b] text-[1rem] mt-1.5 font-normal">View and manage all account submissions.</p>
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
         <div className="flex items-center gap-2">
-          <button className="px-5 py-2 rounded-lg bg-white text-black font-bold text-sm hover:bg-[#e5e5e5] transition-all">
+          <button className="px-5 py-2.5 rounded-xl bg-white text-black font-bold text-sm hover:bg-[#e5e5e5] transition-all shadow-lg">
             All ({accounts.length})
-          </button>
-          <button className="px-5 py-2 rounded-lg bg-transparent text-[#8b8b8b] hover:text-white font-bold text-sm transition-colors">
-            Recently Added
           </button>
         </div>
 
         <div className="flex items-center gap-3">
           {/* Range Dropdown */}
-          <div className="relative">
+          <div className="relative" ref={rangeRef}>
             <button
               onClick={() => setIsRangeOpen(!isRangeOpen)}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] text-[#8b8b8b] hover:text-white transition-all text-sm font-bold"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#111111] border border-[#2a2a2a] text-[#8b8b8b] hover:text-white hover:border-[#3a3a3a] transition-all text-sm font-bold shadow-xl"
             >
               <Sliders size={14} />
               <span>{selectedRange === "All Ranges" ? "Followers Range" : selectedRange}</span>
@@ -135,10 +205,10 @@ export default function AdminManageView() {
           </div>
 
           {/* Sort Dropdown */}
-          <div className="relative">
+          <div className="relative" ref={sortRef}>
             <button
               onClick={() => setIsSortOpen(!isSortOpen)}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] text-[#8b8b8b] hover:text-white transition-all text-sm font-bold"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#111111] border border-[#2a2a2a] text-[#8b8b8b] hover:text-white hover:border-[#3a3a3a] transition-all text-sm font-bold shadow-xl"
             >
               <TrendingUp size={14} />
               <span>{SORT_OPTIONS.find(o => o.id === sortBy)?.name}</span>
@@ -165,9 +235,9 @@ export default function AdminManageView() {
       {/* List */}
       <div className="grid grid-cols-1 gap-6">
         {filteredAccounts.map(acc => (
-          <div key={acc.id} className="relative bg-[#111111] border border-[#2a2a2a] rounded-[12px] p-8 flex flex-col md:flex-row md:items-center justify-between group hover:border-[#3a3a3a] transition-all shadow-xl">
+          <div key={acc.id} className="relative bg-[#111111] border border-[#2a2a2a] rounded-[16px] p-8 flex flex-col md:flex-row md:items-center justify-between group hover:border-[#3a3a3a] transition-all shadow-xl">
             <div className="flex items-start gap-6">
-              <img src={acc.avatarPath} className="w-20 h-20 rounded-[12px] object-cover border border-[#2a2a2a] shadow-lg" alt="" />
+              <img src={acc.avatarPath} className="w-20 h-20 rounded-[16px] object-cover border border-[#2a2a2a] shadow-lg" alt="" />
               <div className="space-y-1.5 pt-1">
                 <h3 className="text-white font-[700] text-[1.4rem] tracking-tight">{acc.name}</h3>
                 <p className="text-[#8b8b8b] text-[1rem] font-medium leading-snug max-w-xl">{acc.bio}</p>
@@ -180,13 +250,13 @@ export default function AdminManageView() {
             
             <div className="flex items-center gap-3 mt-6 md:mt-0">
               <button
-                className="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-white text-black text-sm font-bold shadow-lg hover:bg-[#e5e5e5] transition-all active:scale-[0.98]"
+                className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-white text-black text-sm font-bold shadow-lg hover:bg-[#e5e5e5] transition-all active:scale-[0.98]"
               >
                 Visit <ArrowRight size={14} />
               </button>
               <button
                 onClick={() => setEditingAccount(acc)}
-                className="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] text-white text-sm font-bold hover:border-[#3a3a3a] transition-all"
+                className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#111111] border border-[#2a2a2a] text-white text-sm font-bold hover:border-[#3a3a3a] transition-all"
               >
                 Edit Profile <Edit3 size={14} />
               </button>
