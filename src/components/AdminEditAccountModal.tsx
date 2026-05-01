@@ -140,7 +140,7 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
           <form id="admin-edit-form" onSubmit={handleSave} className="space-y-8">
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">Account Name</label>
+                <label className="text-[0.95rem] font-[500] text-foreground">Account Name</label>
                 <input
                   required
                   type="text"
@@ -150,7 +150,7 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">X Username</label>
+                <label className="text-[0.95rem] font-[500] text-foreground">X Username</label>
                 <input
                   required
                   type="text"
@@ -162,7 +162,7 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
             </div>
 
             <div className="space-y-2">
-              <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">Bio</label>
+              <label className="text-[0.95rem] font-[500] text-foreground">Bio</label>
               <input
                 required
                 maxLength={100}
@@ -174,7 +174,7 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
             </div>
 
             <div className="space-y-2">
-              <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">Email (Admin Editable)</label>
+              <label className="text-[0.95rem] font-[500] text-foreground">Email (Admin Editable)</label>
               <input
                 required
                 type="email"
@@ -185,7 +185,7 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
             </div>
 
             <div className="space-y-4">
-              <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">Profile Picture</label>
+              <label className="text-[0.95rem] font-[500] text-foreground">Profile Picture</label>
               <div className="flex items-center gap-6">
                 <img src={formData.avatarPath} className="w-16 h-16 rounded-full object-cover border border-border shadow-lg" />
                 <input type="file" ref={fileInputRef} onChange={handleFileUpload} className="hidden" />
@@ -201,7 +201,7 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
             </div>
 
             <div className="space-y-3">
-              <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">Niche</label>
+              <label className="text-[0.95rem] font-[500] text-foreground">Niche</label>
               <div className="flex flex-wrap gap-2">
                 {NICHES.map(n => {
                   const isSelected = formData.niche.includes(n.name);
@@ -222,7 +222,7 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
             </div>
 
             <div className="space-y-3">
-              <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">Followers Range</label>
+              <label className="text-[0.95rem] font-[500] text-foreground">Followers Range</label>
               <div className="flex flex-wrap gap-2">
                 {FOLLOWERS_RANGES.map(range => (
                   <button

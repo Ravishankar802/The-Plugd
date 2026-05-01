@@ -220,7 +220,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             
             {/* Full Name */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-bold text-foreground tracking-wide block">Full Name</label>
+              <label className="text-[1rem] font-[500] text-foreground tracking-wide block">Full Name</label>
               <input
                 required
                 type="text"
@@ -233,7 +233,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
             {/* X Username */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-bold text-foreground tracking-wide block">X Username</label>
+              <label className="text-[1rem] font-[500] text-foreground tracking-wide block">X Username</label>
               <input
                 required
                 type="text"
@@ -247,7 +247,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             {/* Bio */}
             <div className="flex flex-col gap-3">
               <div className="flex justify-between items-center">
-                <label className="text-[1rem] font-bold text-foreground tracking-wide block">One-line Bio</label>
+                <label className="text-[1rem] font-[500] text-foreground tracking-wide block">One-line Bio</label>
                 <span className={`text-[0.75rem] font-mono ${formData.bio.length > 100 ? "text-red-500" : "text-muted"}`}>
                   {formData.bio.length}/100
                 </span>
@@ -265,7 +265,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
             {/* Niche - Compact Select with Icons */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-bold text-foreground tracking-wide block">Niche</label>
+              <label className="text-[1rem] font-[500] text-foreground tracking-wide block">Niche</label>
               <div className="flex flex-wrap gap-2.5">
                 {NICHES.map((niche) => {
                   const Icon = niche.icon;
@@ -291,7 +291,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
             {/* Followers Range - Compact pills */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-bold text-foreground tracking-wide block">Followers Range</label>
+              <label className="text-[1rem] font-[500] text-foreground tracking-wide block">Followers Range</label>
               <div className="flex flex-wrap gap-2.5">
                 {FOLLOWERS_RANGES.map((range) => (
                   <button
@@ -312,7 +312,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
             {/* Profile Picture */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-bold text-foreground tracking-wide block">Profile Picture</label>
+              <label className="text-[1rem] font-[500] text-foreground tracking-wide block">Profile Picture</label>
               <div className="flex items-center gap-6">
                 <div className="relative shrink-0">
                   {previewUrl ? (
@@ -361,7 +361,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
             {/* Email */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-bold text-foreground tracking-wide block">Email</label>
+              <label className="text-[1rem] font-[500] text-foreground tracking-wide block">Email</label>
               <input
                 required
                 type="email"
