@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Moon, Sun, Monitor, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
@@ -13,6 +14,8 @@ export default function Footer({ showBorder = true }: FooterProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const isDashboard = pathname?.startsWith("/dashboard");
 
   useEffect(() => {
     setHasMounted(true);
@@ -30,12 +33,22 @@ export default function Footer({ showBorder = true }: FooterProps) {
   return (
     <footer className={`mt-auto py-6 ${showBorder ? "border-t border-[#1a1a1a]" : ""}`}>
       <div className="flex items-center justify-between gap-6 relative">
-        {/* Placeholder for left to keep home centered if needed, but we can just use absolute centering for Home */}
-        <div className="flex-1 hidden md:block" />
-        
-        <div className="flex items-center justify-center gap-6 text-[0.85rem] text-[#8b8b8b] font-medium flex-1">
-          <Link href="/" className="hover:text-white transition-colors">Home</Link>
-        </div>
+        {isDashboard ? (
+          <>
+            {/* Dashboard style: Centered Home */}
+            <div className="flex-1 hidden md:block" />
+            <div className="flex items-center justify-center gap-6 text-[0.85rem] text-[#8b8b8b] font-medium flex-1">
+              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            </div>
+          </>
+        ) : (
+          /* Default style: Links on left */
+          <div className="flex items-center gap-6 text-[0.9rem] text-[#8b8b8b] font-medium">
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <Link href="/dashboard" className="hover:text-white transition-colors">Dashboard</Link>
+            <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
+          </div>
+        )}
 
         {hasMounted && (
           <div className="relative" ref={dropdownRef}>
