@@ -25,7 +25,13 @@ import {
   Building, 
   GraduationCap, 
   Mic,
-  Info
+  Info,
+  BarChart2,
+  Briefcase,
+  DollarSign,
+  Cloud,
+  Layers,
+  Building2
 } from "lucide-react";
 
 interface Account {
@@ -46,15 +52,19 @@ const NICHES = [
   { name: "Designer", icon: Palette },
   { name: "Indie Hacker", icon: Zap },
   { name: "AI", icon: Bot },
+  { name: "Creator", icon: Clapperboard },
+  { name: "Student", icon: GraduationCap },
+  { name: "Crypto", icon: Coins },
   { name: "Marketer", icon: TrendingUp },
   { name: "Writer", icon: Pen },
-  { name: "Creator", icon: Clapperboard },
-  { name: "Investor", icon: Banknote },
-  { name: "SaaS", icon: Box },
-  { name: "No-Code", icon: Puzzle },
-  { name: "Crypto", icon: Coins },
-  { name: "Agency", icon: Building },
-  { name: "Student", icon: GraduationCap },
+  { name: "Investor", icon: TrendingUp },
+  { name: "Trader", icon: BarChart2 },
+  { name: "Freelancer", icon: Briefcase },
+  { name: "Artist", icon: Palette },
+  { name: "Finance", icon: DollarSign },
+  { name: "SaaS", icon: Cloud },
+  { name: "No-Code", icon: Layers },
+  { name: "Agency", icon: Building2 },
   { name: "Podcaster", icon: Mic },
   { name: "Other", icon: Plus },
 ];
