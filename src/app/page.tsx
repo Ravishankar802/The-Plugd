@@ -163,6 +163,7 @@ export default function Home() {
     }
 
     setFilteredAccounts(sorted);
+    setVisibleCount(50); // Reset pagination on any filter change
   }, [searchQuery, selectedNiches, accounts, selectedFollowersRange, sortBy, shuffleKey]);
 
   const fetchAccounts = async () => {
@@ -192,6 +193,7 @@ export default function Home() {
     }
     
     setSelectedNiches(prev => {
+      setVisibleCount(50); // Reset pagination on niche toggle
       if (prev.includes(nicheName)) {
         return prev.filter(n => n !== nicheName);
       } else {
@@ -334,17 +336,17 @@ export default function Home() {
           onShuffle={handleShuffle}
         />
 
-        <div className="flex flex-col items-center gap-4 py-8">
+        <div className="flex flex-col items-center gap-6 py-12">
           {remainingCount > 0 && (
             <button
               onClick={handleLoadMore}
-              className="flex items-center gap-2 bg-card hover:bg-accent border border-border px-8 py-3 rounded-xl text-sm font-medium transition-all mb-4"
+              className="flex items-center justify-center gap-2 bg-transparent border border-[#2a2a2a] px-8 py-3 rounded-full text-[0.95rem] font-medium text-[#f5f5f5] transition-all hover:bg-[#1a1a1a] active:scale-[0.98]"
             >
-              Load more ({remainingCount} remaining) ↓
+              Show more ({Math.min(50, remainingCount)} more accounts)
             </button>
           )}
-          <p className="text-[#a1a1aa] text-[0.85rem] flex items-center gap-2 font-mono-custom">
-            <Info className="w-4 h-4" />
+          <p className="text-[#a1a1aa] text-[0.85rem] flex items-center gap-2 font-mono-custom text-center px-4 max-w-xl">
+            <Info className="w-4 h-4 shrink-0" />
             Accounts listed here are submitted by real X creators. Every listing is verified by a $1 payment. No bots. No spam.
           </p>
         </div>
