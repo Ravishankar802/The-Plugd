@@ -13,7 +13,7 @@ model Account {
   xHandle        String   @unique
   avatarPath     String?  // Store path to uploaded image
   bio            String
-  niche          String
+  niche          String[] // Store multiple niches
   followersRange String   // e.g. "1K - 5K"
   email          String
   paid           Boolean  @default(false)
