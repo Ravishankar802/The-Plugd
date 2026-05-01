@@ -241,7 +241,7 @@ export default function AdminManageView() {
       {/* List */}
       <div className="grid grid-cols-1 gap-6">
         {filteredAccounts.map(acc => (
-          <div key={acc.id} className="relative bg-pill border border-border rounded-[16px] p-8 flex flex-col group hover:border-muted transition-all shadow-xl">
+          <div key={acc.id} className="relative bg-pill border border-border rounded-[16px] p-8 flex flex-col group transition-all shadow-xl">
             <div className="flex items-start gap-6">
               <img src={acc.avatarPath} className="w-14 h-14 rounded-[12px] object-cover border border-border shadow-lg" alt="" />
               <div className="space-y-1 pt-0">
