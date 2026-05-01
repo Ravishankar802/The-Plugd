@@ -36,8 +36,17 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ accountId: account.id });
-  } catch (error) {
+  } catch (error: any) {
     console.error("POST /api/accounts error:", error);
+    
+    // Check for Prisma unique constraint error
+    if (error.code === "P2002") {
+      return NextResponse.json(
+        { error: "This X Username is already listed. Please use a different one or access your dashboard." },
+        { status: 400 }
+      );
+    }
+    
     return NextResponse.json({ error: "Failed to create account" }, { status: 500 });
   }
 }

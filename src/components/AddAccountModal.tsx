@@ -130,14 +130,17 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         method: "POST",
         body
       });
+      
+      if (!res.ok) throw new Error("Upload failed");
+      
       const data = await res.json();
       if (data.filePath) {
         setAvatarPath(data.filePath);
-        setPreviewUrl(URL.createObjectURL(file));
+        setPreviewUrl(data.filePath); // Use the server path for preview to confirm it worked
       }
     } catch (error) {
       console.error("Upload error:", error);
-      alert("Failed to upload image.");
+      alert("Failed to upload image. Please try again.");
     } finally {
       setUploading(false);
     }
@@ -176,7 +179,11 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         body: JSON.stringify(submissionData),
       });
 
-      if (!res.ok) throw new Error("Failed to create account");
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Failed to create account");
+      }
+      
       const { accountId } = await res.json();
 
       // Build the Dodo Payments URL
@@ -186,9 +193,9 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
       const checkoutUrl = `${dodoBaseUrl}?quantity=1&showDiscounts=false&redirect_url=${redirectUrl}&customer_email=${formData.email}&metadata_accountId=${accountId}`;
 
       window.location.href = checkoutUrl;
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      alert("Something went wrong. Please try again.");
+      alert(error.message || "Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -311,25 +318,36 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             <div className="flex flex-col gap-3">
               <label className="text-[1rem] font-[500] text-foreground tracking-wide block">Profile Picture</label>
               <div className="flex items-center gap-6">
-                <div className="relative shrink-0">
+                <div 
+                  className="relative shrink-0 cursor-pointer group"
+                  onClick={() => fileInputRef.current?.click()}
+                >
                   {previewUrl ? (
                     <div className="relative w-16 h-16">
                       <img 
                         src={previewUrl} 
                         alt="Preview" 
-                        className="w-16 h-16 rounded-full object-cover border-2 border-border shadow-xl"
+                        className="w-16 h-16 rounded-full object-cover border-2 border-border shadow-xl group-hover:opacity-80 transition-opacity"
                       />
                       <button
                         type="button"
-                        onClick={removeImage}
-                        className="absolute -top-1 -right-1 bg-red-600 text-white rounded-full p-1.5 shadow-lg hover:bg-red-700 transition-colors border-2 border-pill"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          removeImage();
+                        }}
+                        className="absolute -top-1 -right-1 bg-red-600 text-white rounded-full p-1.5 shadow-lg hover:bg-red-700 transition-colors border-2 border-pill z-30"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   ) : (
-                    <div className="w-16 h-16 rounded-full bg-background border-2 border-border border-dashed flex items-center justify-center group hover:border-muted transition-colors">
+                    <div className="w-16 h-16 rounded-full bg-background border-2 border-border border-dashed flex items-center justify-center group-hover:border-muted transition-colors">
                       <Upload className="w-7 h-7 text-muted group-hover:text-foreground transition-colors" />
+                    </div>
+                  )}
+                  {uploading && (
+                    <div className="absolute inset-0 bg-background/60 rounded-full flex items-center justify-center z-20">
+                      <Loader2 className="w-6 h-6 animate-spin text-foreground" />
                     </div>
                   )}
                 </div>
@@ -396,6 +414,11 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
         {/* Submit Button - Fixed at bottom */}
         <div className="px-8 py-8 border-t border-border bg-pill z-20 shrink-0">
+          {!isFormValid && (
+            <p className="text-[0.7rem] text-red-500/80 mb-3 text-center font-bold uppercase tracking-wider">
+              Please fill all fields and upload a profile picture
+            </p>
+          )}
           <button
             disabled={!isFormValid || isLoading}
             type="submit"

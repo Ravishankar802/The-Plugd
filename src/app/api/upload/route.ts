@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile } from "fs/promises";
+import { writeFile, mkdir } from "fs/promises";
 import { join } from "path";
+import crypto from "crypto";
 
 export async function POST(request: NextRequest) {
   try {
@@ -18,10 +19,16 @@ export async function POST(request: NextRequest) {
     const buffer = Buffer.from(bytes);
 
     // Create a unique filename
-    const fileExtension = file.name.split(".").pop();
+    const fileExtension = file.name.split(".").pop() || "png";
     const fileName = `${crypto.randomUUID()}.${fileExtension}`;
-    const path = join(process.cwd(), "public", "uploads", fileName);
+    const uploadDir = join(process.cwd(), "public", "uploads");
+    
+    // Ensure directory exists
+    try {
+      await mkdir(uploadDir, { recursive: true });
+    } catch (e) {}
 
+    const path = join(uploadDir, fileName);
     await writeFile(path, buffer);
     
     const filePath = `/uploads/${fileName}`;
