@@ -336,7 +336,7 @@ export default function DashboardProfileView() {
             <button
               disabled={saving}
               type="submit"
-              className="w-full bg-pill border border-pill-border text-foreground font-[700] text-[1rem] py-[0.85rem] rounded-xl hover:bg-accent transition-all flex items-center justify-center gap-3 disabled:opacity-50 active:scale-[0.99] shadow-xl"
+              className="w-full bg-pill dark:bg-selected border border-pill-border dark:border-selected text-foreground dark:text-selected-foreground font-[700] text-[1rem] py-[0.85rem] rounded-xl hover:bg-accent dark:hover:opacity-90 transition-all flex items-center justify-center gap-3 disabled:opacity-50 active:scale-[0.99] shadow-xl"
             >
               {saving ? <Loader2 size={24} className="animate-spin" /> : (
                 <>

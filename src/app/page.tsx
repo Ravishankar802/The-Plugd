@@ -276,7 +276,7 @@ export default function Home() {
                 <button
                   onClick={() => setIsModalOpen(true)}
                   suppressHydrationWarning
-                  className="h-[48px] bg-selected border border-selected text-selected-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-accent active:scale-[0.98] shadow-lg"
+                  className="h-[48px] bg-selected border border-selected text-selected-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg"
                 >
                   <Plus className="w-5 h-5" />
                   Add Account
