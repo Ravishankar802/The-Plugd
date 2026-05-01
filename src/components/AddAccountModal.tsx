@@ -43,7 +43,7 @@ const NICHES = [
 ];
 
 const FOLLOWERS_RANGES = [
-  "0 - 100", "100 - 500", "500 - 1K", "1K - 5K", "5K - 10K", "10K+"
+  "0-100", "100-500", "500-1K", "1K-2K", "2K-5K", "5K-10K", "10K-25K", "25K-50K", "50K-100K", "100K+"
 ];
 
 export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProps) {
