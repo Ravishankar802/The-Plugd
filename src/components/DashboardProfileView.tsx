@@ -69,17 +69,9 @@ export default function DashboardProfileView() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // Check URL params for email (redirect from payment)
     const params = new URLSearchParams(window.location.search);
-    const emailParam = params.get("email");
+    const email = params.get("email");
     
-    if (emailParam) {
-      localStorage.setItem("plugd_user_email", emailParam);
-      // Clean URL
-      window.history.replaceState({}, document.title, window.location.pathname);
-    }
-
-    const email = localStorage.getItem("plugd_user_email");
     if (email) {
       fetchAccount(email);
     } else {

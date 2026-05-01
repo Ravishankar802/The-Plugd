@@ -126,7 +126,10 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
     // Set preview immediately for better UX
     const localPreviewUrl = URL.createObjectURL(file);
     setPreviewUrl(localPreviewUrl);
-
+    
+    // Store the actual file for later upload if needed, 
+    // but for now we keep the two-step upload to /api/upload 
+    // to get a permanent URL for the DB record.
     const body = new FormData();
     body.append("file", file);
 
@@ -170,6 +173,8 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
     setIsLoading(true);
 
     try {
+      // 1. Validate all required fields (already handled by isFormValid)
+      
       const xHandleToStore = formData.xHandle.startsWith("@") 
         ? formData.xHandle.substring(1) 
         : formData.xHandle;
@@ -184,8 +189,9 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         avatarPath
       };
 
-      console.log("Saving submission...", submissionData);
+      console.log("Saving submission to /api/accounts...", submissionData);
 
+      // 2. POST to /api/accounts - returns accountId
       const res = await fetch("/api/accounts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -200,15 +206,18 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
       const responseData = await res.json();
       const accountId = responseData.accountId;
 
-      console.log("Account created, redirecting to payment...", accountId);
+      console.log("Account created with ID:", accountId);
 
-      // Build the Dodo Payments URL
+      // 3. Build Dodo URL with customer_email and metadata_accountId
       const dodoBaseUrl = "https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1";
       const origin = typeof window !== "undefined" ? window.location.origin : "https://the-plugd.vercel.app";
       const redirectUrl = encodeURIComponent(`${origin}/dashboard?email=${formData.email}`);
       
       const checkoutUrl = `${dodoBaseUrl}?quantity=1&showDiscounts=false&redirect_url=${redirectUrl}&customer_email=${formData.email}&metadata_accountId=${accountId}`;
 
+      console.log("Redirecting to Dodo:", checkoutUrl);
+
+      // 4. Redirect
       window.location.href = checkoutUrl;
     } catch (error: any) {
       console.error(error);
