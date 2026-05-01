@@ -51,12 +51,12 @@ export default function DashboardLayout({
       <DashboardSidebar email={email || ""} isAdmin={isAdmin} />
       
       <main className="flex-1 ml-[320px] h-screen overflow-y-auto relative flex flex-col">
-        <div className="p-10 flex-1 w-full max-w-5xl mx-auto">
+        <div className="pt-10 px-10 pb-4 flex-1 w-full max-w-5xl mx-auto">
           {children}
         </div>
         
         {/* Sidebar Footer (below sidebar style nav) */}
-        <div className="px-10 pb-10">
+        <div className="px-10 pb-4">
           <Footer showBorder={true} />
         </div>
       </main>
