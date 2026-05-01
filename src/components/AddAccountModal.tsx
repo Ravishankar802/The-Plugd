@@ -203,7 +203,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
           <form onSubmit={handleSubmit} id="add-account-form" className="px-8 py-8 space-y-10">
             
             {/* Full Name */}
-            <div className="space-y-3">
+            <div className="space-y-5">
               <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Full Name</label>
               <input
                 required
@@ -216,7 +216,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* X Username */}
-            <div className="space-y-3">
+            <div className="space-y-5">
               <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">X Username</label>
               <input
                 required
@@ -229,7 +229,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Bio */}
-            <div className="space-y-3">
+            <div className="space-y-5">
               <div className="flex justify-between items-center">
                 <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">One-line Bio</label>
                 <span className={`text-[0.75rem] font-mono ${formData.bio.length > 100 ? "text-red-500" : "text-gray-500"}`}>
@@ -248,7 +248,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Niche - Compact Select with Icons */}
-            <div className="space-y-4">
+            <div className="space-y-6">
               <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Categories</label>
               <div className="flex flex-wrap gap-2.5">
                 {NICHES.map((niche) => {
@@ -275,7 +275,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Followers Range - Compact pills */}
-            <div className="space-y-4">
+            <div className="space-y-6">
               <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Followers Range</label>
               <div className="flex flex-wrap gap-2.5">
                 {FOLLOWERS_RANGES.map((range) => (
@@ -296,7 +296,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Profile Picture */}
-            <div className="space-y-4">
+            <div className="space-y-6">
               <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Profile Picture</label>
               <div className="flex items-center gap-6">
                 <div className="relative shrink-0">
@@ -345,7 +345,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             </div>
 
             {/* Email */}
-            <div className="space-y-3">
+            <div className="space-y-5">
               <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Email</label>
               <input
                 required
