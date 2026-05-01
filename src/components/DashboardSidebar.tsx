@@ -103,15 +103,15 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
       </nav>
 
       {/* Bottom info */}
-      <div className="m-4">
-        <div className="bg-[#111111] border border-[#1a1a1a] rounded-xl p-6 space-y-5 shadow-2xl">
+      <div className="mx-5 mb-6">
+        <div className="bg-[#ffffff]/[0.02] border border-[#ffffff]/[0.05] rounded-2xl p-6 space-y-6 shadow-2xl backdrop-blur-sm">
           <div>
-            <p className="text-[0.75rem] text-[#6b7280] mb-1.5 uppercase tracking-wider font-medium">Signed in as</p>
-            <p className="text-white font-bold text-[0.95rem] truncate" title={email}>{email}</p>
+            <p className="text-[0.7rem] text-[#6b7280] mb-2 uppercase tracking-[0.15em] font-medium">Signed in as</p>
+            <p className="text-white font-semibold text-[0.9rem] tracking-tight truncate" title={email}>{email}</p>
           </div>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-3 py-3 rounded-xl bg-transparent border border-[#1a1a1a] text-[#8b8b8b] hover:border-[#ffffff]/10 hover:bg-[#ffffff]/[0.02] hover:text-white transition-all text-[0.9rem] font-bold group"
+            className="w-full flex items-center justify-center gap-3 py-3 rounded-xl bg-[#050505] border border-[#ffffff]/[0.05] text-[#8b8b8b] hover:text-white hover:border-[#ffffff]/10 transition-all text-[0.9rem] font-semibold group shadow-inner"
           >
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             Log out
