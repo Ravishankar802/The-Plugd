@@ -30,7 +30,7 @@ export default function Footer({ showBorder = true }: FooterProps) {
   return (
     <footer className={`mt-auto py-8 ${showBorder ? "border-t border-border" : ""}`}>
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-6 text-[0.875rem] text-muted">
+        <div className="flex items-center gap-6 text-[0.95rem] text-muted">
           <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
           <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
           <Link href="/terms-of-service" className="hover:text-foreground transition-colors">Terms of Service</Link>
@@ -41,11 +41,11 @@ export default function Footer({ showBorder = true }: FooterProps) {
             <button
               onClick={() => setIsOpen(!isOpen)}
               suppressHydrationWarning
-              className="flex items-center gap-2 bg-transparent border border-border hover:bg-accent px-4 py-2 rounded-lg text-sm text-muted transition-colors"
+              className="flex items-center gap-2 bg-[#1c1c1c] border border-[#2a2a2a] hover:bg-[#252525] px-5 py-2.5 rounded-2xl text-[0.95rem] text-muted transition-colors"
             >
               <div className="flex items-center gap-2">
                 <Moon className="w-4 h-4" />
-                <span>{theme}</span>
+                <span className="font-medium">{theme}</span>
               </div>
               <ChevronDown className="w-4 h-4" />
             </button>

@@ -31,7 +31,7 @@ export default function TermsOfService() {
         </div>
 
         {/* Content Sections */}
-        <div className="w-full space-y-10 mb-20">
+        <div className="w-full space-y-10 mb-10">
           
           <Section 
             title="1. Introduction" 
