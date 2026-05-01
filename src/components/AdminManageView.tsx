@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { 
   Loader2, 
   Trash2, 
-  Pencil, 
+  SquarePen, 
   ChevronDown, 
   Sliders, 
   TrendingUp, 
@@ -165,8 +165,8 @@ export default function AdminManageView() {
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="mb-10">
-        <h1 className="text-[2.5rem] font-[600] text-white leading-tight tracking-tight">Manage Accounts</h1>
-        <p className="text-[#8b8b8b] text-[1rem] mt-1 font-normal">View and manage all account submissions.</p>
+        <h1 className="text-[2.5rem] font-[500] text-white leading-tight tracking-tighter">Manage Accounts</h1>
+        <p className="text-[#8b8b8b] text-[1rem] mt-1 font-[300]">View and manage all account submissions.</p>
       </div>
 
       {/* Filters */}
@@ -241,10 +241,10 @@ export default function AdminManageView() {
             <div className="flex items-start gap-6">
               <img src={acc.avatarPath} className="w-14 h-14 rounded-[12px] object-cover border border-[#2a2a2a] shadow-lg" alt="" />
               <div className="space-y-1 pt-0">
-                <h3 className="text-white font-[600] text-[1.4rem] tracking-tight">{acc.name}</h3>
-                <p className="text-[#8b8b8b] text-[1rem] font-normal leading-snug max-w-2xl">{acc.bio}</p>
+                <h3 className="text-white font-[500] text-[1.4rem] tracking-tight">{acc.name}</h3>
+                <p className="text-[#8b8b8b] text-[1rem] font-[300] leading-snug max-w-2xl">{acc.bio}</p>
                 <div className="flex items-center gap-4 pt-1">
-                  <span className="text-[#555555] text-sm font-normal">Added: {new Date(acc.createdAt).toLocaleDateString()}</span>
+                  <span className="text-[#555555] text-sm font-[300]">Added: {new Date(acc.createdAt).toLocaleDateString()}</span>
                 </div>
               </div>
             </div>
@@ -262,7 +262,7 @@ export default function AdminManageView() {
                 onClick={() => setEditingAccount(acc)}
                 className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-white text-black text-sm font-bold shadow-lg hover:bg-[#e5e5e5] transition-all active:scale-[0.98]"
               >
-                Edit Profile <Pencil size={14} />
+                Edit Profile <SquarePen size={14} />
               </button>
             </div>
 
