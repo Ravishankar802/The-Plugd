@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { User, Grid, LogOut, ArrowRight } from "lucide-react";
+import { User, LayoutGrid, LogOut, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface DashboardSidebarProps {
@@ -24,13 +24,13 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
   ];
 
   const adminItems = [
-    { name: "Manage Accounts", href: "/dashboard/manage", icon: Grid },
+    { name: "Manage Accounts", href: "/dashboard/manage", icon: LayoutGrid },
   ];
 
   return (
     <aside className="w-[320px] bg-[#0a0a0a] border-r border-[#1a1a1a] flex flex-col h-screen fixed left-0 top-0 z-30">
       {/* Top: Logo */}
-      <div className="px-6 py-10">
+      <div className="px-6 pt-10 pb-6">
         <Link href="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
           <div className="w-10 h-10 flex items-center justify-center">
             <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-[2.5]">
@@ -62,7 +62,7 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
               href={item.href}
               className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all ${
                 isActive 
-                  ? "bg-[#ffffff]/[0.08] border border-[#ffffff]/[0.05] text-white shadow-lg" 
+                  ? "bg-[#ffffff]/[0.1] border border-[#ffffff]/[0.08] text-white shadow-xl backdrop-blur-md" 
                   : "text-[#8b8b8b] hover:text-white"
               }`}
             >
@@ -87,7 +87,7 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
                   href={item.href}
                   className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all ${
                     isActive 
-                      ? "bg-[#ffffff]/[0.08] border border-[#ffffff]/[0.05] text-white shadow-lg" 
+                      ? "bg-[#ffffff]/[0.1] border border-[#ffffff]/[0.08] text-white shadow-xl backdrop-blur-md" 
                       : "text-[#8b8b8b] hover:text-white"
                   }`}
                 >
