@@ -104,14 +104,14 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
 
       {/* Bottom info */}
       <div className="mx-3 mb-4">
-        <div className="bg-[#111111]/[0.4] border border-[#ffffff]/[0.05] rounded-xl p-5 space-y-4 shadow-xl backdrop-blur-md">
+        <div className="bg-[#ffffff]/[0.03] border border-[#ffffff]/[0.1] rounded-xl p-5 space-y-4 shadow-2xl backdrop-blur-xl">
           <div>
             <p className="text-[0.8rem] text-[#8b8b8b] lowercase font-normal mb-1">signed in as</p>
             <p className="text-white font-semibold text-[0.95rem] tracking-tight truncate" title={email}>{email}</p>
           </div>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2.5 py-2.5 rounded-lg bg-[#000000]/40 border border-[#ffffff]/[0.03] text-[#8b8b8b] hover:text-white hover:border-[#ffffff]/10 hover:bg-[#000000]/60 transition-all text-[0.9rem] font-medium group"
+            className="w-full flex items-center justify-center gap-2.5 py-2.5 rounded-lg bg-[#000000]/60 border border-[#ffffff]/[0.05] text-[#8b8b8b] hover:text-white hover:border-[#ffffff]/20 hover:bg-[#000000]/80 transition-all text-[0.9rem] font-medium group"
           >
             <LogOut size={16} className="text-[#8b8b8b] group-hover:text-white transition-colors" />
             <span>Log out</span>
