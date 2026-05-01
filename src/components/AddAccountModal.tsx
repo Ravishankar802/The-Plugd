@@ -179,16 +179,13 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
       if (!res.ok) throw new Error("Failed to create account");
       const { accountId } = await res.json();
 
-      const checkoutRes = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ accountId }),
-      });
+      // Build the Dodo Payments URL
+      const dodoBaseUrl = "https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1";
+      const redirectUrl = encodeURIComponent(`https://the-plugd.vercel.app/dashboard?email=${formData.email}`);
+      
+      const checkoutUrl = `${dodoBaseUrl}?quantity=1&showDiscounts=false&redirect_url=${redirectUrl}&customer_email=${formData.email}&metadata_accountId=${accountId}`;
 
-      if (!checkoutRes.ok) throw new Error("Failed to create checkout session");
-      const { url } = await checkoutRes.json();
-
-      window.location.href = url;
+      window.location.href = checkoutUrl;
     } catch (error) {
       console.error(error);
       alert("Something went wrong. Please try again.");

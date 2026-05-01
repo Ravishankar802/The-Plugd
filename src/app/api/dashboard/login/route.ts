@@ -30,7 +30,6 @@ export async function POST(req: Request) {
     const account = await prisma.account.findFirst({
       where: {
         email: email,
-        paid: true,
       },
     });
 

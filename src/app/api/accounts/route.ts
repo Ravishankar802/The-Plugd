@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 export async function GET() {
   try {
     const accounts = await prisma.account.findMany({
-      where: { paid: true },
+      where: { status: "paid" },
       orderBy: { createdAt: "desc" },
     });
     return NextResponse.json(accounts);
@@ -31,6 +31,7 @@ export async function POST(req: Request) {
         followersRange,
         email,
         paid: false,
+        status: "pending_payment",
       },
     });
 

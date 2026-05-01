@@ -69,9 +69,21 @@ export default function DashboardProfileView() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    // Check URL params for email (redirect from payment)
+    const params = new URLSearchParams(window.location.search);
+    const emailParam = params.get("email");
+    
+    if (emailParam) {
+      localStorage.setItem("plugd_user_email", emailParam);
+      // Clean URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
     const email = localStorage.getItem("plugd_user_email");
     if (email) {
       fetchAccount(email);
+    } else {
+      setLoading(false);
     }
   }, []);
 
@@ -159,13 +171,27 @@ export default function DashboardProfileView() {
     );
   }
 
-  if (!account) return <div className="text-foreground">Account not found.</div>;
+  if (!account) {
+    if (typeof window !== "undefined") {
+      window.location.href = "/dashboard/login";
+    }
+    return null;
+  }
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="mb-8">
         <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Your Profile</h1>
         <p className="text-muted text-[1rem] mt-1.5 font-normal">Manage your public listing on Plugd.</p>
+        
+        {account?.status === "pending_payment" && (
+          <div className="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-xl flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-500">
+            <div className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" />
+            <p className="text-yellow-500 text-sm font-bold uppercase tracking-wider">
+              We&apos;re confirming your payment. Your profile will appear shortly.
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="bg-pill border border-border rounded-[16px] p-10 shadow-2xl">

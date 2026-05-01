@@ -17,6 +17,7 @@ model Account {
   followersRange String   // e.g. "1K - 5K"
   email          String
   paid           Boolean  @default(false)
+  status         String   @default("pending_payment")
   paymentId      String?
   createdAt      DateTime @default(now())
 }
