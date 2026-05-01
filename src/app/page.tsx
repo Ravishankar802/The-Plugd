@@ -336,7 +336,7 @@ export default function Home() {
           onShuffle={handleShuffle}
         />
 
-        <div className="flex flex-col items-center gap-6 py-12">
+        <div className="flex flex-col items-center gap-6 pt-4 pb-12">
           {remainingCount > 0 && (
             <button
               onClick={handleLoadMore}
