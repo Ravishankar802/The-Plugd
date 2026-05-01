@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { 
   Loader2, 
   Trash2, 
-  Edit3, 
+  Pencil, 
   ChevronDown, 
   Sliders, 
   TrendingUp, 
@@ -262,7 +262,7 @@ export default function AdminManageView() {
                 onClick={() => setEditingAccount(acc)}
                 className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-white text-black text-sm font-bold shadow-lg hover:bg-[#e5e5e5] transition-all active:scale-[0.98]"
               >
-                Edit Profile <Edit3 size={14} />
+                Edit Profile <Pencil size={14} />
               </button>
             </div>
 
