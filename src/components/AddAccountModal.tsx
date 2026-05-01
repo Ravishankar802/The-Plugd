@@ -122,6 +122,11 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
     }
 
     setUploading(true);
+    
+    // Set preview immediately for better UX
+    const localPreviewUrl = URL.createObjectURL(file);
+    setPreviewUrl(localPreviewUrl);
+
     const body = new FormData();
     body.append("file", file);
 
@@ -136,11 +141,12 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
       const data = await res.json();
       if (data.filePath) {
         setAvatarPath(data.filePath);
-        setPreviewUrl(data.filePath); // Use the server path for preview to confirm it worked
       }
     } catch (error) {
       console.error("Upload error:", error);
       alert("Failed to upload image. Please try again.");
+      setPreviewUrl(null);
+      setAvatarPath("");
     } finally {
       setUploading(false);
     }
@@ -154,7 +160,12 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isFormValid) return;
+    console.log("handleSubmit triggered", { isFormValid, isLoading });
+    
+    if (!isFormValid) {
+      console.log("Form is invalid", formData, avatarPath);
+      return;
+    }
     
     setIsLoading(true);
 
@@ -173,6 +184,8 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         avatarPath
       };
 
+      console.log("Saving submission...", submissionData);
+
       const res = await fetch("/api/accounts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -184,7 +197,10 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         throw new Error(errorData.error || "Failed to create account");
       }
       
-      const { accountId } = await res.json();
+      const responseData = await res.json();
+      const accountId = responseData.accountId;
+
+      console.log("Account created, redirecting to payment...", accountId);
 
       // Build the Dodo Payments URL
       const dodoBaseUrl = "https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1";
@@ -409,28 +425,29 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
               </label>
             </div>
 
+            {/* Submit Button inside form for better compatibility */}
+            <div className="pt-4 pb-2">
+              {!isFormValid && (
+                <p className="text-[0.7rem] text-red-500/80 mb-3 text-center font-bold uppercase tracking-wider">
+                  Please fill all fields and upload a profile picture
+                </p>
+              )}
+              <button
+                disabled={!isFormValid || isLoading}
+                type="submit"
+                className="w-full bg-background border border-pill-border text-foreground font-black text-base py-5 rounded-xl transition-all disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed flex items-center justify-center gap-2.5 hover:bg-accent shadow-2xl active:scale-[0.99] uppercase tracking-wider"
+              >
+                {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Pay $1 to Get Listed"}
+              </button>
+              <p className="text-center text-[0.7rem] text-muted mt-5 font-bold uppercase tracking-[0.15em]">
+                Secure payment via Dodo Payments
+              </p>
+            </div>
           </form>
         </div>
 
-        {/* Submit Button - Fixed at bottom */}
-        <div className="px-8 py-8 border-t border-border bg-pill z-20 shrink-0">
-          {!isFormValid && (
-            <p className="text-[0.7rem] text-red-500/80 mb-3 text-center font-bold uppercase tracking-wider">
-              Please fill all fields and upload a profile picture
-            </p>
-          )}
-          <button
-            disabled={!isFormValid || isLoading}
-            type="submit"
-            form="add-account-form"
-            className="w-full bg-background border border-pill-border text-foreground font-black text-base py-5 rounded-xl transition-all disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed flex items-center justify-center gap-2.5 hover:bg-accent shadow-2xl active:scale-[0.99] uppercase tracking-wider"
-          >
-            {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Pay $1 to Get Listed"}
-          </button>
-          <p className="text-center text-[0.7rem] text-muted mt-5 font-bold uppercase tracking-[0.15em]">
-            Secure payment via Dodo Payments
-          </p>
-        </div>
+        {/* Footer - Optional or empty since button is now inside */}
+        <div className="px-8 py-2 border-t border-border bg-pill z-20 shrink-0 hidden md:block" />
         
       </div>
     </div>
