@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
 import DodoPayments from "dodopayments";
 
-const dodo = new DodoPayments({
-  bearerToken: process.env.DODO_API_KEY!,
-});
-
 export async function POST(req: Request) {
+  const dodo = new DodoPayments({
+    bearerToken: process.env.DODO_API_KEY || "mock_key",
+  });
   try {
     const { accountId } = await req.json();
 

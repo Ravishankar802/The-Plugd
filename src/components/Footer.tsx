@@ -29,7 +29,7 @@ export default function Footer() {
         <div className="flex items-center gap-6 text-[0.875rem] text-muted">
           <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
           <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
-          <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
+          <Link href="/terms-of-service" className="hover:text-foreground transition-colors">Terms of Service</Link>
         </div>
 
         {hasMounted && (
