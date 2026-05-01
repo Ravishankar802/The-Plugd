@@ -148,7 +148,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         name: formData.name,
         xHandle: xHandleToStore,
         bio: formData.bio,
-        niche: formData.niches, // This will be the array
+        niche: formData.niches,
         followersRange: formData.followersRange,
         email: formData.email,
         avatarPath
@@ -183,56 +183,56 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={onClose} />
       
-      <div className="relative w-full max-w-xl bg-[#111111] border border-[#2a2a2a] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in duration-200">
+      <div className="relative w-full max-w-xl bg-[#111111] border border-[#27272a] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in duration-300">
         
         {/* Header - Fixed */}
-        <div className="p-6 border-b border-[#2a2a2a] flex items-center justify-between bg-[#111111] z-20 shrink-0">
+        <div className="px-8 py-6 border-b border-[#27272a] flex items-center justify-between bg-[#111111] z-20 shrink-0">
           <div>
-            <h2 className="text-xl font-bold text-white">Add Your Account</h2>
-            <p className="text-sm text-gray-400 mt-1">Get discovered by X builders, founders and creators.</p>
+            <h2 className="text-xl font-bold text-white tracking-tight">Add Your Account</h2>
+            <p className="text-sm text-[#a1a1aa] mt-1 font-medium">Get discovered by X builders, founders and creators.</p>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-[#1a1a1a] rounded-lg transition-colors">
-            <X className="w-5 h-5 text-gray-400" />
+          <button onClick={onClose} className="p-2 hover:bg-[#1a1a1a] rounded-full transition-all text-[#a1a1aa] hover:text-white border border-transparent hover:border-[#27272a]">
+            <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Form Body - Scrollable */}
-        <div className="flex-1 overflow-y-auto custom-scrollbar">
-          <form onSubmit={handleSubmit} className="p-6 space-y-8">
+        <div className="flex-1 overflow-y-auto custom-scrollbar bg-[#0d0d0d]">
+          <form onSubmit={handleSubmit} id="add-account-form" className="px-8 py-8 space-y-10">
             
             {/* Full Name */}
-            <div className="space-y-2">
-              <label className="text-[0.9rem] font-semibold text-gray-200">Full Name</label>
+            <div className="space-y-3">
+              <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Full Name</label>
               <input
                 required
                 type="text"
                 placeholder="e.g. John Doe"
-                className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-gray-700 transition-all"
+                className="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-5 py-3.5 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all shadow-inner"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
             </div>
 
             {/* X Username */}
-            <div className="space-y-2">
-              <label className="text-[0.9rem] font-semibold text-gray-200">X Username</label>
+            <div className="space-y-3">
+              <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">X Username</label>
               <input
                 required
                 type="text"
                 placeholder="@username"
-                className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-gray-700 transition-all"
+                className="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-5 py-3.5 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all shadow-inner"
                 value={formData.xHandle}
                 onChange={(e) => handleXHandleChange(e.target.value)}
               />
             </div>
 
             {/* Bio */}
-            <div className="space-y-2">
+            <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <label className="text-[0.9rem] font-semibold text-gray-200">One-line Bio</label>
-                <span className={`text-[0.75rem] ${formData.bio.length > 100 ? "text-red-500" : "text-gray-500"}`}>
+                <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">One-line Bio</label>
+                <span className={`text-[0.75rem] font-mono ${formData.bio.length > 100 ? "text-red-500" : "text-gray-500"}`}>
                   {formData.bio.length}/100
                 </span>
               </div>
@@ -241,16 +241,16 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 maxLength={100}
                 type="text"
                 placeholder="Founder | Building in public | Shipping daily"
-                className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-gray-700 transition-all"
+                className="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-5 py-3.5 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all shadow-inner"
                 value={formData.bio}
                 onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
               />
             </div>
 
-            {/* Niche - Multi Select with Icons */}
+            {/* Niche - Compact Select with Icons */}
             <div className="space-y-4">
-              <label className="text-[0.9rem] font-semibold text-gray-200">Categories (Multi-select)</label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Categories</label>
+              <div className="flex flex-wrap gap-2.5">
                 {NICHES.map((niche) => {
                   const Icon = niche.icon;
                   const isSelected = formData.niches.includes(niche.name);
@@ -259,36 +259,34 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                       key={niche.name}
                       type="button"
                       onClick={() => toggleNiche(niche.name)}
-                      className={`flex items-center gap-3 p-3 rounded-xl text-sm transition-all border text-left ${
+                      className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm transition-all border ${
                         isSelected 
-                          ? "bg-white text-black border-white font-semibold shadow-lg" 
-                          : "bg-[#1a1a1a] text-gray-400 border-[#2a2a2a] hover:border-gray-600 hover:text-white"
+                          ? "bg-white text-black border-white font-bold shadow-lg shadow-white/5" 
+                          : "bg-[#18181b] text-[#a1a1aa] border-[#27272a] hover:border-[#3f3f46] hover:text-white"
                       }`}
                     >
-                      <div className={`p-1.5 rounded-lg ${isSelected ? "bg-black/10" : "bg-[#111111]"}`}>
-                        <Icon size={16} />
-                      </div>
+                      <Icon size={16} className={isSelected ? "text-black" : "text-[#71717a]"} />
                       <span>{niche.name}</span>
-                      {isSelected && <Check className="ml-auto w-4 h-4" />}
+                      {isSelected && <Check className="w-3.5 h-3.5" />}
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            {/* Followers Range */}
+            {/* Followers Range - Compact pills */}
             <div className="space-y-4">
-              <label className="text-[0.9rem] font-semibold text-gray-200">Followers Range</label>
-              <div className="flex flex-wrap gap-2">
+              <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Followers Range</label>
+              <div className="flex flex-wrap gap-2.5">
                 {FOLLOWERS_RANGES.map((range) => (
                   <button
                     key={range}
                     type="button"
                     onClick={() => setFormData({ ...formData, followersRange: range })}
-                    className={`py-2 px-4 rounded-xl text-sm transition-all border ${
+                    className={`px-4 py-2.5 rounded-xl text-sm transition-all border ${
                       formData.followersRange === range 
-                        ? "bg-white text-black border-white font-semibold shadow-lg" 
-                        : "bg-[#1a1a1a] text-gray-400 border-[#2a2a2a] hover:border-gray-600 hover:text-white"
+                        ? "bg-white text-black border-white font-bold shadow-lg shadow-white/5" 
+                        : "bg-[#18181b] text-[#a1a1aa] border-[#27272a] hover:border-[#3f3f46] hover:text-white"
                     }`}
                   >
                     {range}
@@ -299,27 +297,27 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
             {/* Profile Picture */}
             <div className="space-y-4">
-              <label className="text-[0.9rem] font-semibold text-gray-200">Profile Picture</label>
-              <div className="flex items-center gap-5">
-                <div className="relative">
+              <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Profile Picture</label>
+              <div className="flex items-center gap-6">
+                <div className="relative shrink-0">
                   {previewUrl ? (
-                    <div className="relative w-14 h-14">
+                    <div className="relative w-16 h-16">
                       <img 
                         src={previewUrl} 
                         alt="Preview" 
-                        className="w-14 h-14 rounded-full object-cover border-2 border-[#2a2a2a]"
+                        className="w-16 h-16 rounded-full object-cover border-2 border-[#27272a] shadow-xl"
                       />
                       <button
                         type="button"
                         onClick={removeImage}
-                        className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full p-1 shadow-lg hover:bg-red-600 transition-colors border-2 border-[#111111]"
+                        className="absolute -top-1 -right-1 bg-red-600 text-white rounded-full p-1.5 shadow-lg hover:bg-red-700 transition-colors border-2 border-[#0d0d0d]"
                       >
-                        <Trash2 className="w-3 h-3" />
+                        <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   ) : (
-                    <div className="w-14 h-14 rounded-full bg-[#1a1a1a] border-2 border-[#2a2a2a] border-dashed flex items-center justify-center">
-                      <Upload className="w-6 h-6 text-gray-700" />
+                    <div className="w-16 h-16 rounded-full bg-[#09090b] border-2 border-[#27272a] border-dashed flex items-center justify-center group hover:border-[#3f3f46] transition-colors">
+                      <Upload className="w-7 h-7 text-[#3f3f46] group-hover:text-[#71717a] transition-colors" />
                     </div>
                   )}
                 </div>
@@ -336,70 +334,67 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     disabled={uploading}
-                    className="bg-[#1a1a1a] border border-[#2a2a2a] text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:border-gray-600 transition-all flex items-center gap-2 shadow-sm"
+                    className="bg-[#18181b] border border-[#27272a] text-white px-6 py-3 rounded-xl text-sm font-bold hover:border-[#3f3f46] transition-all flex items-center gap-2.5 shadow-sm active:scale-[0.98]"
                   >
                     {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
                     Upload
                   </button>
-                  <p className="text-[0.75rem] text-gray-500 mt-2 font-medium">JPG, PNG or WebP. Max 2MB.</p>
+                  <p className="text-[0.75rem] text-[#71717a] mt-2.5 font-medium tracking-tight">JPG, PNG or WebP. Max 2MB.</p>
                 </div>
               </div>
             </div>
 
             {/* Email */}
-            <div className="space-y-2">
-              <label className="text-[0.9rem] font-semibold text-gray-200">Email</label>
+            <div className="space-y-3">
+              <label className="text-[0.95rem] font-bold text-gray-200 tracking-wide">Email</label>
               <input
                 required
                 type="email"
                 placeholder="you@example.com"
-                className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-gray-700 transition-all"
+                className="w-full bg-[#09090b] border border-[#27272a] rounded-xl px-5 py-3.5 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all shadow-inner"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
-              <p className="text-[0.75rem] text-gray-500 font-medium">We&apos;ll only use this email for your receipt. It won&apos;t be shown publicly.</p>
+              <p className="text-[0.75rem] text-[#71717a] font-medium leading-relaxed">We&apos;ll only use this email for your receipt. It won&apos;t be shown publicly.</p>
             </div>
 
             {/* Confirmation Checkbox */}
-            <div className="flex items-start gap-4 pt-2">
+            <div className="flex items-start gap-4 pt-4">
               <button
                 type="button"
                 onClick={() => setFormData({ ...formData, confirmed: !formData.confirmed })}
-                className={`mt-1 w-5 h-5 rounded-lg border flex items-center justify-center transition-all ${
+                className={`mt-1 w-6 h-6 rounded-lg border flex items-center justify-center transition-all ${
                   formData.confirmed 
-                    ? "bg-white border-white text-black shadow-lg" 
-                    : "bg-[#1a1a1a] border-[#2a2a2a] hover:border-gray-600"
+                    ? "bg-white border-white text-black shadow-lg shadow-white/5" 
+                    : "bg-[#09090b] border-[#27272a] hover:border-[#3f3f46]"
                 }`}
               >
                 {formData.confirmed && <Check className="w-4 h-4" />}
               </button>
               <label 
-                className="text-sm text-gray-400 cursor-pointer select-none leading-relaxed"
+                className="text-[0.9rem] text-[#a1a1aa] cursor-pointer select-none leading-relaxed hover:text-gray-300 transition-colors"
                 onClick={() => setFormData({ ...formData, confirmed: !formData.confirmed })}
               >
                 I confirm this information is accurate and belongs to me.
               </label>
             </div>
 
-            {/* Bottom Spacing for fixed button */}
-            <div className="h-10" />
+            {/* Bottom Spacing */}
+            <div className="h-12" />
           </form>
         </div>
 
         {/* Submit Button - Fixed at bottom */}
-        <div className="p-6 border-t border-[#2a2a2a] bg-[#111111] z-20 shrink-0">
+        <div className="px-8 py-8 border-t border-[#27272a] bg-[#111111] z-20 shrink-0">
           <button
             disabled={!isFormValid || isLoading}
-            type="button"
-            onClick={(e) => {
-              const form = document.querySelector('form');
-              if (form) form.requestSubmit();
-            }}
-            className="w-full bg-white text-black font-bold py-4 rounded-xl transition-all disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:bg-gray-100 shadow-xl active:scale-[0.98]"
+            type="submit"
+            form="add-account-form"
+            className="w-full bg-white text-black font-black text-base py-5 rounded-xl transition-all disabled:opacity-20 disabled:grayscale disabled:cursor-not-allowed flex items-center justify-center gap-2.5 hover:bg-gray-100 shadow-2xl active:scale-[0.99] uppercase tracking-wider"
           >
             {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Pay $1 to Get Listed"}
           </button>
-          <p className="text-center text-[0.7rem] text-gray-500 mt-4 font-medium uppercase tracking-wider">
+          <p className="text-center text-[0.7rem] text-[#52525b] mt-5 font-bold uppercase tracking-[0.15em]">
             Secure payment via Dodo Payments
           </p>
         </div>
