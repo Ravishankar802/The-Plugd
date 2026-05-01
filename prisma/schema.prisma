@@ -8,15 +8,15 @@ datasource db {
 }
 
 model Account {
-  id          Int      @id @default(autoincrement())
-  name        String
-  xHandle     String   @unique
-  avatarUrl   String
-  bio         String
-  niche       String
-  followers   Int
-  email       String
-  paid        Boolean  @default(false)
-  paymentId   String?
-  createdAt   DateTime @default(now())
+  id             Int      @id @default(autoincrement())
+  name           String
+  xHandle        String   @unique
+  avatarPath     String?  // Store path to uploaded image
+  bio            String
+  niche          String
+  followersRange String   // e.g. "1K - 5K"
+  email          String
+  paid           Boolean  @default(false)
+  paymentId      String?
+  createdAt      DateTime @default(now())
 }

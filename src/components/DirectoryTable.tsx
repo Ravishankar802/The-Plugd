@@ -8,10 +8,10 @@ interface Account {
   id: number;
   name: string;
   xHandle: string;
-  avatarUrl: string;
+  avatarPath: string; // Changed from avatarUrl
   bio: string;
   niche: string;
-  followers: number;
+  followersRange: string; // Changed from followers
 }
 
 interface DirectoryTableProps {
@@ -47,7 +47,7 @@ export default function DirectoryTable({ accounts, isLoading }: DirectoryTablePr
                 <td>
                   <div className="flex items-center gap-4">
                     <img
-                      src={account.avatarUrl}
+                      src={account.avatarPath}
                       alt={account.name}
                       className="w-10 h-10 rounded-full object-cover border border-border"
                       onError={(e) => {

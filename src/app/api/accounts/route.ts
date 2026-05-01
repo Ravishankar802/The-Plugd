@@ -19,16 +19,16 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, xHandle, avatarUrl, bio, niche, followers, email } = body;
+    const { name, xHandle, avatarPath, bio, niche, followersRange, email } = body;
 
     const account = await prisma.account.create({
       data: {
         name,
         xHandle,
-        avatarUrl,
+        avatarPath,
         bio,
         niche,
-        followers,
+        followersRange,
         email,
         paid: false,
       },
