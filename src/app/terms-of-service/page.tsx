@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 export default function TermsOfService() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white selection:bg-[#ff6b00]/30">
-      <div className="max-w-[800px] mx-auto px-6 pt-16 pb-12 flex flex-col items-center">
+      <div className="max-w-[760px] mx-auto px-6 pt-16 pb-12 flex flex-col items-center">
         
         {/* Page Header */}
         <div className="flex flex-col items-center text-center mb-16">
@@ -27,7 +27,7 @@ export default function TermsOfService() {
             <span className="text-3xl font-[800] tracking-[-0.02em] text-[#52525b]">Plugd</span>
           </Link>
           <h1 className="text-[2.5rem] font-bold tracking-tight mb-2">Terms of Service</h1>
-          <p className="text-[#8b8b8b] text-[1rem] font-medium tracking-tight">Last updated: May 1, 2026</p>
+          <p className="text-[#a1a1aa] text-[0.95rem] font-medium tracking-tight">Last updated: May 1, 2026</p>
         </div>
 
         {/* Content Sections */}
@@ -118,7 +118,7 @@ export default function TermsOfService() {
         </div>
 
         <div className="w-full">
-          <Footer />
+          <Footer showBorder={false} />
         </div>
       </div>
     </main>
@@ -128,8 +128,8 @@ export default function TermsOfService() {
 function Section({ title, content }: { title: string; content: React.ReactNode }) {
   return (
     <div className="bg-[#161616] border border-[#2a2a2a] rounded-[12px] p-8 shadow-sm">
-      <h2 className="text-[1.25rem] font-bold text-white mb-4">{title}</h2>
-      <div className="text-[#8b8b8b] text-[1rem] leading-[1.8] font-medium">
+      <h2 className="text-[1.2rem] font-bold text-white mb-4">{title}</h2>
+      <div className="text-[#a1a1aa] text-[0.95rem] leading-[1.8] font-medium">
         {content}
       </div>
     </div>

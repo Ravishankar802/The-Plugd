@@ -4,7 +4,11 @@ import Link from "next/link";
 import { Moon, Sun, Monitor, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
-export default function Footer() {
+interface FooterProps {
+  showBorder?: boolean;
+}
+
+export default function Footer({ showBorder = true }: FooterProps) {
   const [theme, setTheme] = useState("Dark");
   const [isOpen, setIsOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
@@ -24,7 +28,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="mt-auto py-8 border-t border-border">
+    <footer className={`mt-auto py-8 ${showBorder ? "border-t border-border" : ""}`}>
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-6 text-[0.875rem] text-muted">
           <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
