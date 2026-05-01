@@ -60,21 +60,24 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center gap-3 px-4 py-[0.65rem] rounded-lg transition-all ${
+              className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all ${
                 isActive 
-                  ? "bg-[#1f1f1f] text-white font-bold" 
+                  ? "bg-[#ffffff]/[0.08] border border-[#ffffff]/[0.05] text-white shadow-lg" 
                   : "text-[#8b8b8b] hover:text-white"
               }`}
             >
               <Icon size={18} className={isActive ? "text-white" : "text-[#8b8b8b]"} />
-              <span className="text-[0.9rem]">{item.name}</span>
+              <span className={`text-[0.95rem] tracking-tight ${isActive ? "font-semibold" : "font-medium"}`}>
+                {item.name}
+              </span>
             </Link>
           );
         })}
 
         {isAdmin && (
-          <div className="mt-6">
-            <p className="px-4 text-[0.7rem] font-bold text-[#6b7280] uppercase tracking-[0.1em] mb-2">ADMIN</p>
+          <div className="mt-8">
+            <div className="h-[1px] bg-[#1a1a1a] mx-4 mb-8" />
+            <p className="px-4 text-[0.8rem] font-medium text-[#6b7280] uppercase tracking-[0.12em] mb-4">ADMIN</p>
             {adminItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
@@ -82,14 +85,16 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center gap-3 px-4 py-[0.65rem] rounded-lg transition-all ${
+                  className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all ${
                     isActive 
-                      ? "bg-[#1f1f1f] text-white font-bold" 
+                      ? "bg-[#ffffff]/[0.08] border border-[#ffffff]/[0.05] text-white shadow-lg" 
                       : "text-[#8b8b8b] hover:text-white"
                   }`}
                 >
                   <Icon size={18} className={isActive ? "text-white" : "text-[#8b8b8b]"} />
-                  <span className="text-[0.9rem]">{item.name}</span>
+                  <span className={`text-[0.95rem] tracking-tight ${isActive ? "font-semibold" : "font-medium"}`}>
+                    {item.name}
+                  </span>
                 </Link>
               );
             })}
@@ -99,16 +104,16 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
 
       {/* Bottom info */}
       <div className="m-4">
-        <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-4 space-y-4 shadow-xl">
+        <div className="bg-[#111111] border border-[#1a1a1a] rounded-xl p-6 space-y-5 shadow-2xl">
           <div>
-            <p className="text-[0.75rem] text-[#6b7280] mb-1">Signed in as</p>
-            <p className="text-white font-semibold text-[0.875rem] truncate" title={email}>{email}</p>
+            <p className="text-[0.75rem] text-[#6b7280] mb-1.5 uppercase tracking-wider font-medium">Signed in as</p>
+            <p className="text-white font-bold text-[0.95rem] truncate" title={email}>{email}</p>
           </div>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2 py-2 rounded-md bg-transparent border border-[#2a2a2a] text-[#8b8b8b] hover:border-[#dc2626] hover:text-[#dc2626] transition-all text-[0.85rem] font-medium"
+            className="w-full flex items-center justify-center gap-3 py-3 rounded-xl bg-transparent border border-[#1a1a1a] text-[#8b8b8b] hover:border-[#ffffff]/10 hover:bg-[#ffffff]/[0.02] hover:text-white transition-all text-[0.9rem] font-bold group"
           >
-            <ArrowRight size={14} />
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             Log out
           </button>
         </div>
