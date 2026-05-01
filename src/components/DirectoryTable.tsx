@@ -63,7 +63,7 @@ export default function DirectoryTable({
   return (
     <div className="w-full bg-card rounded-2xl border border-border overflow-hidden">
       <div className="flex flex-col md:flex-row md:items-center justify-between p-6 gap-4">
-        <h2 className="text-[1.25rem] font-[700] text-foreground text-glow">Index</h2>
+        <h2 className="text-[1.5rem] font-[800] text-foreground text-glow">Index</h2>
         
         <div className="flex items-center gap-2.5">
           {/* Followers Range Dropdown */}
