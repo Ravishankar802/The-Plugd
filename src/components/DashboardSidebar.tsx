@@ -111,7 +111,7 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
           </div>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2.5 py-2.5 rounded-lg bg-background/60 border border-border text-muted hover:text-foreground hover:border-foreground/20 hover:bg-background/80 transition-all text-[0.9rem] font-medium group"
+            className="w-full flex items-center justify-center gap-2.5 py-2.5 rounded-lg bg-pill border border-pill-border text-muted hover:text-foreground hover:bg-accent transition-all text-[0.9rem] font-medium group"
           >
             <LogOut size={16} className="text-muted group-hover:text-foreground transition-colors" />
             <span>Log out</span>

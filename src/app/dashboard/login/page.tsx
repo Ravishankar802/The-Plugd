@@ -41,11 +41,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-[#111111] border border-[#2a2a2a] rounded-2xl p-8 shadow-2xl">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-card border border-border rounded-2xl p-8 shadow-2xl">
         <div className="mb-8 text-center">
-          <h1 className="text-2xl font-bold text-white mb-2">Access Your Dashboard</h1>
-          <p className="text-[#a1a1aa] text-sm">Enter the email you used when getting listed.</p>
+          <h1 className="text-2xl font-bold text-foreground mb-2">Access Your Dashboard</h1>
+          <p className="text-muted text-sm font-medium">Enter the email you used when getting listed.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -56,25 +56,25 @@ export default function LoginPage() {
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-[#0f0f0f] border border-[#2a2a2a] rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
+              className="w-full bg-pill border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all"
             />
           </div>
 
-          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+          {error && <p className="text-red-500 text-sm text-center font-medium">{error}</p>}
 
           <button
             disabled={loading || !email}
             type="submit"
-            className="w-full bg-white text-black font-bold py-4 rounded-xl transition-all hover:bg-gray-100 flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full bg-pill border border-pill-border text-foreground font-bold py-4 rounded-xl transition-all hover:bg-accent flex items-center justify-center gap-2 disabled:opacity-50 shadow-lg active:scale-[0.98]"
           >
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Continue"}
           </button>
         </form>
 
-        <div className="mt-8 pt-8 border-t border-[#2a2a2a] text-center">
+        <div className="mt-8 pt-8 border-t border-border text-center">
           <Link 
             href="/" 
-            className="text-[#a1a1aa] hover:text-white transition-colors text-sm flex items-center justify-center gap-2"
+            className="text-muted hover:text-foreground transition-colors text-sm flex items-center justify-center gap-2 font-medium"
           >
             Not listed yet? Add your account <ArrowRight className="w-4 h-4" />
           </Link>

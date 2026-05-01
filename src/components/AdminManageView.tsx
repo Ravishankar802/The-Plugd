@@ -172,7 +172,7 @@ export default function AdminManageView() {
       {/* Filters */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
         <div className="flex items-center gap-2">
-          <button className="px-6 py-2.5 rounded-xl bg-foreground text-background font-bold text-sm hover:opacity-90 transition-all shadow-lg">
+          <button className="px-6 py-2.5 rounded-xl bg-pill border border-pill-border text-foreground font-bold text-sm hover:bg-accent transition-all shadow-lg">
             All ({accounts.length})
           </button>
         </div>
@@ -258,13 +258,13 @@ export default function AdminManageView() {
                 href={`https://x.com/${acc.xHandle.startsWith("@") ? acc.xHandle.substring(1) : acc.xHandle}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-foreground text-background text-sm font-bold shadow-lg hover:opacity-90 transition-all active:scale-[0.98]"
+                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-pill border border-pill-border text-foreground text-sm font-bold shadow-lg hover:bg-accent transition-all active:scale-[0.98]"
               >
                 Visit <ExternalLink size={14} />
               </a>
               <button
                 onClick={() => setEditingAccount(acc)}
-                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-foreground text-background text-sm font-bold shadow-lg hover:opacity-90 transition-all active:scale-[0.98]"
+                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-pill border border-pill-border text-foreground text-sm font-bold shadow-lg hover:bg-accent transition-all active:scale-[0.98]"
               >
                 Edit Profile <SquarePen size={14} />
               </button>

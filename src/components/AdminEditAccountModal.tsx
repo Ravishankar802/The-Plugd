@@ -124,14 +124,14 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={onClose} />
-      <div className="relative w-full max-w-2xl bg-[#111111] border border-[#2a2a2a] rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-        <div className="px-8 py-6 border-b border-[#2a2a2a] flex items-center justify-between">
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-md" onClick={onClose} />
+      <div className="relative w-full max-w-2xl bg-card border border-border rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div className="px-8 py-6 border-b border-border flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-bold text-white">Edit Profile</h2>
-            <p className="text-sm text-[#a1a1aa] mt-1">Update all details for {formData.name}</p>
+            <h2 className="text-xl font-bold text-foreground">Edit Profile</h2>
+            <p className="text-sm text-muted mt-1 font-medium">Update all details for {formData.name}</p>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-[#2a2a2a] rounded-full text-[#a1a1aa] hover:text-white transition-colors">
+          <button onClick={onClose} className="p-2 hover:bg-accent rounded-full text-muted hover:text-foreground transition-colors">
             <X size={20} />
           </button>
         </div>
@@ -140,59 +140,59 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
           <form id="admin-edit-form" onSubmit={handleSave} className="space-y-8">
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-xs font-bold text-[#52525b] uppercase tracking-wider">Account Name</label>
+                <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">Account Name</label>
                 <input
                   required
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-600"
+                  className="w-full bg-pill border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-muted transition-all"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-bold text-[#52525b] uppercase tracking-wider">X Username</label>
+                <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">X Username</label>
                 <input
                   required
                   type="text"
                   value={formData.xHandle}
                   onChange={(e) => setFormData({ ...formData, xHandle: e.target.value })}
-                  className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-600"
+                  className="w-full bg-pill border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-muted transition-all"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-xs font-bold text-[#52525b] uppercase tracking-wider">Bio</label>
+              <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">Bio</label>
               <input
                 required
                 maxLength={100}
                 type="text"
                 value={formData.bio}
                 onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-                className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-600"
+                className="w-full bg-pill border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-muted transition-all"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-xs font-bold text-[#52525b] uppercase tracking-wider">Email (Admin Editable)</label>
+              <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">Email (Admin Editable)</label>
               <input
                 required
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-600"
+                className="w-full bg-pill border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-muted transition-all"
               />
             </div>
 
             <div className="space-y-4">
-              <label className="text-xs font-bold text-[#52525b] uppercase tracking-wider">Profile Picture</label>
+              <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">Profile Picture</label>
               <div className="flex items-center gap-6">
-                <img src={formData.avatarPath} className="w-16 h-16 rounded-full object-cover border border-[#2a2a2a]" />
+                <img src={formData.avatarPath} className="w-16 h-16 rounded-full object-cover border border-border shadow-lg" />
                 <input type="file" ref={fileInputRef} onChange={handleFileUpload} className="hidden" />
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="bg-[#1a1a1a] border border-[#2a2a2a] text-white px-4 py-2 rounded-lg text-sm hover:border-[#3f3f46] transition-all flex items-center gap-2"
+                  className="bg-pill border border-border text-foreground px-4 py-2 rounded-lg text-sm font-bold hover:bg-accent transition-all flex items-center gap-2"
                 >
                   {uploading ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
                   Upload Logo
@@ -201,7 +201,7 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
             </div>
 
             <div className="space-y-3">
-              <label className="text-xs font-bold text-[#52525b] uppercase tracking-wider">Niche</label>
+              <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">Niche</label>
               <div className="flex flex-wrap gap-2">
                 {NICHES.map(n => {
                   const isSelected = formData.niche.includes(n.name);
@@ -210,8 +210,8 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
                       key={n.name}
                       type="button"
                       onClick={() => setFormData({ ...formData, niche: [n.name] })}
-                      className={`px-3 py-1.5 rounded-lg text-xs transition-all border ${
-                        isSelected ? "bg-white text-black border-white" : "bg-[#0a0a0a] text-[#a1a1aa] border-[#2a2a2a]"
+                      className={`px-3 py-1.5 rounded-lg text-[0.75rem] transition-all border ${
+                        isSelected ? "bg-foreground text-background border-foreground font-bold shadow-sm" : "bg-pill text-muted border-border hover:bg-accent hover:text-foreground"
                       }`}
                     >
                       {n.name}
@@ -222,15 +222,15 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
             </div>
 
             <div className="space-y-3">
-              <label className="text-xs font-bold text-[#52525b] uppercase tracking-wider">Followers Range</label>
+              <label className="text-[0.75rem] font-bold text-muted/60 uppercase tracking-wider">Followers Range</label>
               <div className="flex flex-wrap gap-2">
                 {FOLLOWERS_RANGES.map(range => (
                   <button
                     key={range}
                     type="button"
                     onClick={() => setFormData({ ...formData, followersRange: range })}
-                    className={`px-3 py-1.5 rounded-lg text-xs transition-all border ${
-                      formData.followersRange === range ? "bg-white text-black border-white" : "bg-[#0a0a0a] text-[#a1a1aa] border-[#2a2a2a]"
+                    className={`px-3 py-1.5 rounded-lg text-[0.75rem] transition-all border ${
+                      formData.followersRange === range ? "bg-foreground text-background border-foreground font-bold shadow-sm" : "bg-pill text-muted border-border hover:bg-accent hover:text-foreground"
                     }`}
                   >
                     {range}
@@ -241,14 +241,14 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
           </form>
         </div>
 
-        <div className="px-8 py-6 border-t border-[#2a2a2a] flex justify-end gap-3">
-          <button onClick={onClose} className="px-6 py-2.5 rounded-xl text-sm font-bold text-[#a1a1aa] hover:text-white transition-colors">
+        <div className="px-8 py-6 border-t border-border flex justify-end gap-3 bg-card">
+          <button onClick={onClose} className="px-6 py-2.5 rounded-xl text-sm font-bold text-muted hover:text-foreground transition-colors">
             Cancel
           </button>
           <button
             form="admin-edit-form"
             disabled={saving}
-            className="bg-white text-black px-6 py-2.5 rounded-xl text-sm font-black hover:bg-gray-100 transition-all flex items-center gap-2"
+            className="bg-pill border border-pill-border text-foreground px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-accent transition-all flex items-center gap-2 shadow-xl"
           >
             {saving && <Loader2 size={16} className="animate-spin" />}
             Save Changes

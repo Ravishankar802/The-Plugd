@@ -31,8 +31,8 @@ export default function DashboardLayout({
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-muted border-t-foreground rounded-full animate-spin" />
       </div>
     );
   }
@@ -47,7 +47,7 @@ export default function DashboardLayout({
   const isAdmin = email === ADMIN_EMAIL;
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex overflow-hidden">
+    <div className="min-h-screen bg-background flex overflow-hidden">
       <DashboardSidebar email={email || ""} isAdmin={isAdmin} />
       
       <main className="flex-1 ml-[320px] h-screen overflow-y-auto relative flex flex-col">
