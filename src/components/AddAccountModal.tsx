@@ -139,17 +139,17 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
           name: formData.name, 
-          xHandle: formData.xHandle, 
+          handle: formData.xHandle, 
           bio: formData.bio,
-          niche: formData.niches, 
+          category: formData.niches, 
           followersRange: formData.followersRange,
           email: formData.email, 
-          avatarPath: imageUrl, // Mapping imageUrl to avatarPath for API
+          imageUrl, 
           status: "pending_payment" 
         }),
       });
       const data = await res.json();
-      const accountId = data.accountId; // Using accountId from my API
+      const accountId = data.accountId || data.id; // Support both
 
       console.log("accountId:", accountId);
 

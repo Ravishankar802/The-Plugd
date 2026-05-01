@@ -19,23 +19,37 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, xHandle, avatarPath, bio, niche, followersRange, email } = body;
+    const { 
+      name, 
+      handle, // user pattern
+      xHandle, // existing
+      avatarPath, // existing
+      imageUrl, // user pattern
+      bio, 
+      category, // user pattern
+      niche, // existing
+      followersRange, 
+      email 
+    } = body;
 
     const account = await prisma.account.create({
       data: {
-        name,
-        xHandle,
-        avatarPath,
-        bio,
-        niche,
-        followersRange,
-        email,
+        name: name || "Unknown",
+        xHandle: handle || xHandle || `user_${Math.random().toString(36).substring(7)}`,
+        avatarPath: imageUrl || avatarPath || "",
+        bio: bio || "No bio provided",
+        niche: category || niche || [],
+        followersRange: followersRange || "Unknown",
+        email: email || "unknown@example.com",
         paid: false,
         status: "pending_payment",
       },
     });
 
-    return NextResponse.json({ accountId: account.id });
+    return NextResponse.json({ 
+      id: account.id,
+      accountId: account.id 
+    });
   } catch (error: any) {
     console.error("POST /api/accounts error:", error);
     
