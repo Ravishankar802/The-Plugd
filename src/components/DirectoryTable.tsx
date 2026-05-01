@@ -1,36 +1,143 @@
 "use client";
-
+ 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, TrendingUp } from "lucide-react";
-
+import { useState, useRef, useEffect } from "react";
+import { ChevronDown, TrendingUp, Sliders, Check } from "lucide-react";
+ 
 interface Account {
   id: number;
   name: string;
   xHandle: string;
-  avatarPath: string; // Changed from avatarUrl
+  avatarPath: string;
   bio: string;
   niche: string;
-  followersRange: string; // Changed from followers
+  followersRange: string;
+  createdAt?: string;
 }
-
+ 
 interface DirectoryTableProps {
   accounts: Account[];
   isLoading?: boolean;
+  selectedFollowersRange: string;
+  setSelectedFollowersRange: (val: string) => void;
+  sortBy: string;
+  setSortBy: (val: string) => void;
+  onShuffle: () => void;
 }
-
-export default function DirectoryTable({ accounts, isLoading }: DirectoryTableProps) {
+ 
+const FOLLOWERS_RANGES = [
+  "All Followers", "0-100", "100-500", "500-1K", "1K-2K", "2K-5K", "5K-10K", "10K-25K", "25K-50K", "50K-100K", "100K+"
+];
+ 
+const SORT_OPTIONS = ["Latest", "Oldest", "Shuffle"];
+ 
+export default function DirectoryTable({ 
+  accounts, 
+  isLoading, 
+  selectedFollowersRange, 
+  setSelectedFollowersRange, 
+  sortBy, 
+  setSortBy,
+  onShuffle
+}: DirectoryTableProps) {
+  const [followersOpen, setFollowersOpen] = useState(false);
+  const [sortOpen, setSortOpen] = useState(false);
+  
+  const followersRef = useRef<HTMLDivElement>(null);
+  const sortRef = useRef<HTMLDivElement>(null);
+ 
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (followersRef.current && !followersRef.current.contains(event.target as Node)) {
+        setFollowersOpen(false);
+      }
+      if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
+        setSortOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+ 
   return (
     <div className="w-full bg-card rounded-2xl border border-border overflow-hidden mb-8">
-      <div className="flex items-center justify-between p-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between p-6 gap-4">
         <h2 className="text-[1.25rem] font-[700] text-foreground text-glow">Index</h2>
-        <button className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors bg-transparent px-3 py-1.5 rounded-lg border border-border text-glow">
-          <TrendingUp className="w-4 h-4" />
-          Recently Added
-          <ChevronDown className="w-4 h-4" />
-        </button>
+        
+        <div className="flex items-center gap-2.5">
+          {/* Followers Range Dropdown */}
+          <div className="relative" ref={followersRef}>
+            <button 
+              onClick={() => {
+                setFollowersOpen(!followersOpen);
+                setSortOpen(false);
+              }}
+              className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors bg-transparent px-3 py-1.5 rounded-lg border border-border text-glow"
+            >
+              <Sliders className="w-4 h-4" />
+              {selectedFollowersRange === "All Followers" ? "Followers Range" : selectedFollowersRange}
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${followersOpen ? "rotate-180" : ""}`} />
+            </button>
+ 
+            {followersOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg shadow-xl z-50 py-1 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                {FOLLOWERS_RANGES.map((range) => (
+                  <button
+                    key={range}
+                    onClick={() => {
+                      setSelectedFollowersRange(range);
+                      setFollowersOpen(false);
+                    }}
+                    className="flex items-center justify-between w-full px-4 py-2.5 text-[0.9rem] text-[#f5f5f5] hover:bg-[#2a2a2a] transition-colors text-left"
+                  >
+                    <span>{range}</span>
+                    {selectedFollowersRange === range && <Check className="w-3.5 h-3.5 text-foreground" />}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+ 
+          {/* Sort Dropdown */}
+          <div className="relative" ref={sortRef}>
+            <button 
+              onClick={() => {
+                setSortOpen(!sortOpen);
+                setFollowersOpen(false);
+              }}
+              className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors bg-transparent px-3 py-1.5 rounded-lg border border-border text-glow"
+            >
+              <TrendingUp className="w-4 h-4" />
+              {sortBy}
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${sortOpen ? "rotate-180" : ""}`} />
+            </button>
+ 
+            {sortOpen && (
+              <div className="absolute right-0 mt-2 w-40 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg shadow-xl z-50 py-1 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                {SORT_OPTIONS.map((option) => (
+                  <button
+                    key={option}
+                    onClick={() => {
+                      if (option === "Shuffle") {
+                        onShuffle();
+                      } else {
+                        setSortBy(option);
+                      }
+                      setSortOpen(false);
+                    }}
+                    className="flex items-center justify-between w-full px-4 py-2.5 text-[0.9rem] text-[#f5f5f5] hover:bg-[#2a2a2a] transition-colors text-left"
+                  >
+                    <span>{option}</span>
+                    {sortBy === option && <Check className="w-3.5 h-3.5 text-foreground" />}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-
+ 
       <div className="overflow-x-auto">
         <table className="directory-table">
           <thead>
@@ -84,7 +191,7 @@ export default function DirectoryTable({ accounts, isLoading }: DirectoryTablePr
           </tbody>
         </table>
       </div>
-
+ 
       {accounts.length === 0 && !isLoading && (
         <div className="p-12 text-center text-muted">
           No accounts found matching your search.

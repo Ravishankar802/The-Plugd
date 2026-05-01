@@ -42,6 +42,7 @@ interface Account {
   bio: string;
   niche: string;
   followersRange: string;
+  createdAt?: string;
 }
 
 const NICHES = [
@@ -126,6 +127,9 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(50);
   const [hasMounted, setHasMounted] = useState(false);
+  const [selectedFollowersRange, setSelectedFollowersRange] = useState("All Followers");
+  const [sortBy, setSortBy] = useState("Latest");
+  const [shuffleKey, setShuffleKey] = useState(0);
 
   useEffect(() => {
     setHasMounted(true);
@@ -142,11 +146,24 @@ export default function Home() {
         account.niche.toLowerCase().includes(q);
       
       const matchesNiche = selectedNiches.length === 0 || selectedNiches.includes(account.niche);
+      const matchesFollowers = selectedFollowersRange === "All Followers" || account.followersRange === selectedFollowersRange;
       
-      return matchesSearch && matchesNiche;
+      return matchesSearch && matchesNiche && matchesFollowers;
     });
-    setFilteredAccounts(result);
-  }, [searchQuery, selectedNiches, accounts]);
+
+    // Apply Sorting
+    let sorted = [...result];
+    if (sortBy === "Latest") {
+      sorted.sort((a, b) => b.id - a.id);
+    } else if (sortBy === "Oldest") {
+      sorted.sort((a, b) => a.id - b.id);
+    } else if (sortBy === "Shuffle") {
+      // Use the shuffleKey to ensure a re-shuffle if user clicks Shuffle again
+      sorted.sort(() => Math.random() - 0.5);
+    }
+
+    setFilteredAccounts(sorted);
+  }, [searchQuery, selectedNiches, accounts, selectedFollowersRange, sortBy, shuffleKey]);
 
   const fetchAccounts = async () => {
     try {
@@ -206,6 +223,11 @@ export default function Home() {
 
   const displayedAccounts = filteredAccounts.slice(0, visibleCount);
   const remainingCount = filteredAccounts.length - visibleCount;
+
+  const handleShuffle = () => {
+    setSortBy("Shuffle");
+    setShuffleKey(prev => prev + 1);
+  };
 
   return (
     <main className="flex-1 flex flex-col items-center w-full">
@@ -302,7 +324,15 @@ export default function Home() {
       </div>
 
       <div className="w-full max-w-5xl mx-auto px-4 md:px-8 mt-4">
-        <DirectoryTable accounts={displayedAccounts} isLoading={isLoading} />
+        <DirectoryTable 
+          accounts={displayedAccounts} 
+          isLoading={isLoading} 
+          selectedFollowersRange={selectedFollowersRange}
+          setSelectedFollowersRange={setSelectedFollowersRange}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          onShuffle={handleShuffle}
+        />
 
         <div className="flex flex-col items-center gap-4 py-8">
           {remainingCount > 0 && (
