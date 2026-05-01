@@ -276,7 +276,7 @@ export default function Home() {
                 <button
                   onClick={() => setIsModalOpen(true)}
                   suppressHydrationWarning
-                  className="h-[48px] bg-pill border border-pill-border text-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-accent active:scale-[0.98]"
+                  className="h-[48px] bg-selected border border-selected text-selected-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-accent active:scale-[0.98] shadow-lg"
                 >
                   <Plus className="w-5 h-5" />
                   Add Account
@@ -291,7 +291,7 @@ export default function Home() {
                     suppressHydrationWarning
                     className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap font-[600] ${
                       selectedNiches.length === 0
-                        ? "bg-pill border-pill-border text-foreground shadow-sm"
+                        ? "bg-selected border-selected text-selected-foreground shadow-sm"
                         : "bg-card border-border text-muted hover:border-muted-foreground"
                     }`}
                   >
@@ -309,7 +309,7 @@ export default function Home() {
                         suppressHydrationWarning
                         className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap font-[600] ${
                           isSelected
-                            ? "bg-pill border-pill-border text-foreground shadow-sm"
+                            ? "bg-selected border-selected text-selected-foreground shadow-sm"
                             : "bg-card border-border text-muted hover:border-muted-foreground"
                         }`}
                       >

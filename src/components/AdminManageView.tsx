@@ -258,13 +258,13 @@ export default function AdminManageView() {
                 href={`https://x.com/${acc.xHandle.startsWith("@") ? acc.xHandle.substring(1) : acc.xHandle}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-background border border-border text-foreground text-sm font-bold shadow-lg hover:bg-accent transition-all active:scale-[0.98]"
+                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-background dark:bg-selected border border-border text-foreground dark:text-selected-foreground text-sm font-bold shadow-lg hover:bg-accent transition-all active:scale-[0.98]"
               >
                 Visit <ExternalLink size={14} />
               </a>
               <button
                 onClick={() => setEditingAccount(acc)}
-                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-background border border-border text-foreground text-sm font-bold shadow-lg hover:bg-accent transition-all active:scale-[0.98]"
+                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-background dark:bg-selected border border-border text-foreground dark:text-selected-foreground text-sm font-bold shadow-lg hover:bg-accent transition-all active:scale-[0.98]"
               >
                 Edit Profile <SquarePen size={14} />
               </button>
