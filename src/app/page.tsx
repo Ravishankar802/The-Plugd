@@ -276,7 +276,7 @@ export default function Home() {
                 <button
                   onClick={() => setIsModalOpen(true)}
                   suppressHydrationWarning
-                  className="h-[48px] bg-selected border border-selected text-selected-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg"
+                  className="h-[48px] bg-selected border border-selected text-selected-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
                 >
                   <Plus className="w-5 h-5" />
                   Add Account
@@ -289,7 +289,7 @@ export default function Home() {
                   <button
                     onClick={() => toggleNiche("All")}
                     suppressHydrationWarning
-                    className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap font-[600] ${
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap font-[600] cursor-pointer ${
                       selectedNiches.length === 0
                         ? "bg-selected border-selected text-selected-foreground shadow-sm"
                         : "bg-card border-border text-muted hover:border-muted-foreground"
@@ -307,7 +307,7 @@ export default function Home() {
                         key={niche.name}
                         onClick={() => toggleNiche(niche.name)}
                         suppressHydrationWarning
-                        className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap font-[600] ${
+                        className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap font-[600] cursor-pointer ${
                           isSelected
                             ? "bg-selected border-selected text-selected-foreground shadow-sm"
                             : "bg-card border-border text-muted hover:border-muted-foreground"
