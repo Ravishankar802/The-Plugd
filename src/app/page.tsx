@@ -259,29 +259,32 @@ export default function Home() {
   return (
     <main className="flex-1 flex flex-col items-center w-full">
       {/* Hero Wrapper with Scattered Hashtags - Now truly full width */}
-      <div className="w-full relative overflow-hidden flex flex-col items-center pt-2 pb-4">
-        {/* Left Side Hashtags - Truly pushed to screen edges */}
-        <div className="hidden min-[1100px]:block absolute inset-0 pointer-events-none select-none">
-          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "8%", left: "5%", transform: "rotate(-6deg)", fontSize: "1.8rem" }}>#LetsConnect</span>
-          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "48%", left: "3%", transform: "rotate(8deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
-          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "88%", left: "5%", transform: "rotate(-7deg)", fontSize: "1.45rem" }}>#ShipIt</span>
-        </div>
+      <div className="w-full relative flex flex-col items-center pt-2 pb-4">
+        {/* Background Hashtags Container - This handles overflow for hashtags only */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+          {/* Left Side Hashtags */}
+          <div className="hidden min-[1100px]:block absolute inset-0">
+            <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                  style={{ top: "8%", left: "5%", transform: "rotate(-6deg)", fontSize: "1.8rem" }}>#LetsConnect</span>
+            <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                  style={{ top: "48%", left: "3%", transform: "rotate(8deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
+            <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                  style={{ top: "88%", left: "5%", transform: "rotate(-7deg)", fontSize: "1.45rem" }}>#ShipIt</span>
+          </div>
 
-        {/* Right Side Hashtags - Truly pushed to screen edges */}
-        <div className="hidden min-[1100px]:block absolute inset-0 pointer-events-none select-none">
-          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "12%", right: "5%", transform: "rotate(9deg)", fontSize: "1.5rem" }}>#Networking</span>
-          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "52%", right: "3%", transform: "rotate(-8deg)", fontSize: "1.45rem" }}>#IndieHackers</span>
-          <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
-                style={{ top: "92%", right: "5%", transform: "rotate(10deg)", fontSize: "1.1rem" }}>#StartupLife</span>
+          {/* Right Side Hashtags */}
+          <div className="hidden min-[1100px]:block absolute inset-0">
+            <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                  style={{ top: "12%", right: "5%", transform: "rotate(9deg)", fontSize: "1.5rem" }}>#Networking</span>
+            <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                  style={{ top: "52%", right: "3%", transform: "rotate(-8deg)", fontSize: "1.45rem" }}>#IndieHackers</span>
+            <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                  style={{ top: "92%", right: "5%", transform: "rotate(10deg)", fontSize: "1.1rem" }}>#StartupLife</span>
+          </div>
         </div>
 
         {/* Center Content Content */}
-        <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-10 flex flex-col items-center">
+        <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-[60] flex flex-col items-center">
           <div className="max-w-[800px] w-full">
             <Header />
 
