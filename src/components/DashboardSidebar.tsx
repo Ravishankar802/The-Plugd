@@ -28,7 +28,7 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
   ];
 
   return (
-    <aside className="w-[320px] bg-[#0a0a0a] border-r border-[#1a1a1a] flex flex-col h-screen fixed left-0 top-0 z-30">
+    <aside className="w-[320px] bg-background border-r border-border flex flex-col h-screen fixed left-0 top-0 z-30">
       {/* Top: Logo */}
       <div className="px-6 pt-10 pb-6">
         <Link href="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
@@ -47,7 +47,7 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
               <circle cx="3" cy="28" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
             </svg>
           </div>
-          <span className="text-2xl font-[900] text-white tracking-[-0.02em]">Plugd</span>
+          <span className="text-2xl font-[900] text-foreground tracking-[-0.02em]">Plugd</span>
         </Link>
       </div>
 
@@ -62,11 +62,11 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
               href={item.href}
               className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all ${
                 isActive 
-                  ? "bg-[#ffffff]/[0.1] border border-[#ffffff]/[0.08] text-white shadow-xl backdrop-blur-md" 
-                  : "text-[#8b8b8b] hover:text-white"
+                  ? "bg-foreground/[0.05] border border-foreground/[0.08] text-foreground shadow-sm backdrop-blur-md" 
+                  : "text-muted hover:text-foreground"
               }`}
             >
-              <Icon size={18} className={isActive ? "text-white" : "text-[#8b8b8b]"} />
+              <Icon size={18} className={isActive ? "text-foreground" : "text-muted"} />
               <span className={`text-[0.95rem] tracking-tight ${isActive ? "font-semibold" : "font-medium"}`}>
                 {item.name}
               </span>
@@ -76,8 +76,8 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
 
         {isAdmin && (
           <div className="mt-4">
-            <div className="h-[1px] bg-[#1a1a1a] mx-4 mb-4" />
-            <p className="px-4 text-[0.8rem] font-medium text-[#6b7280] uppercase tracking-[0.12em] mb-4">ADMIN</p>
+            <div className="h-[1px] bg-border mx-4 mb-4" />
+            <p className="px-4 text-[0.8rem] font-medium text-muted/60 uppercase tracking-[0.12em] mb-4">ADMIN</p>
             {adminItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
@@ -87,11 +87,11 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
                   href={item.href}
                   className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all ${
                     isActive 
-                      ? "bg-[#ffffff]/[0.1] border border-[#ffffff]/[0.08] text-white shadow-xl backdrop-blur-md" 
-                      : "text-[#8b8b8b] hover:text-white"
+                      ? "bg-foreground/[0.05] border border-foreground/[0.08] text-foreground shadow-sm backdrop-blur-md" 
+                      : "text-muted hover:text-foreground"
                   }`}
                 >
-                  <Icon size={18} className={isActive ? "text-white" : "text-[#8b8b8b]"} />
+                  <Icon size={18} className={isActive ? "text-foreground" : "text-muted"} />
                   <span className={`text-[0.95rem] tracking-tight ${isActive ? "font-semibold" : "font-medium"}`}>
                     {item.name}
                   </span>
@@ -104,16 +104,16 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
 
       {/* Bottom info */}
       <div className="mx-3 mb-4">
-        <div className="bg-[#ffffff]/[0.03] border border-[#ffffff]/[0.1] rounded-xl p-5 space-y-4 shadow-2xl backdrop-blur-xl">
+        <div className="bg-foreground/[0.03] border border-foreground/[0.1] rounded-xl p-5 space-y-4 shadow-2xl backdrop-blur-xl">
           <div>
-            <p className="text-[0.8rem] text-[#8b8b8b] lowercase font-normal mb-1">signed in as</p>
-            <p className="text-white font-semibold text-[0.95rem] tracking-tight truncate" title={email}>{email}</p>
+            <p className="text-[0.8rem] text-muted lowercase font-normal mb-1">signed in as</p>
+            <p className="text-foreground font-semibold text-[0.95rem] tracking-tight truncate" title={email}>{email}</p>
           </div>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2.5 py-2.5 rounded-lg bg-[#000000]/60 border border-[#ffffff]/[0.05] text-[#8b8b8b] hover:text-white hover:border-[#ffffff]/20 hover:bg-[#000000]/80 transition-all text-[0.9rem] font-medium group"
+            className="w-full flex items-center justify-center gap-2.5 py-2.5 rounded-lg bg-background/60 border border-border text-muted hover:text-foreground hover:border-foreground/20 hover:bg-background/80 transition-all text-[0.9rem] font-medium group"
           >
-            <LogOut size={16} className="text-[#8b8b8b] group-hover:text-white transition-colors" />
+            <LogOut size={16} className="text-muted group-hover:text-foreground transition-colors" />
             <span>Log out</span>
           </button>
         </div>

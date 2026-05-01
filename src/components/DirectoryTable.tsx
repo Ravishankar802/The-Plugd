@@ -82,7 +82,7 @@ export default function DirectoryTable({
             </button>
  
             {followersOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg shadow-xl z-50 py-1 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200 max-h-[400px] overflow-y-auto no-scrollbar">
+              <div className="absolute right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-xl z-50 py-1 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200 max-h-[400px] overflow-y-auto no-scrollbar">
                 {FOLLOWERS_RANGES.map((range) => (
                   <button
                     key={range}
@@ -91,16 +91,18 @@ export default function DirectoryTable({
                       setFollowersOpen(false);
                     }}
                     suppressHydrationWarning
-                    className="flex items-center justify-between w-full px-4 py-2.5 text-[0.9rem] text-[#f5f5f5] hover:bg-[#2a2a2a] transition-colors text-left"
+                    className={`flex items-center justify-between w-full px-4 py-2.5 text-[0.9rem] transition-colors text-left ${
+                      selectedFollowersRange === range ? "text-foreground bg-accent" : "text-muted hover:bg-accent hover:text-foreground"
+                    }`}
                   >
                     <span>{range}</span>
-                    {selectedFollowersRange === range && <Check className="w-3.5 h-3.5 text-foreground" />}
+                    {selectedFollowersRange === range && <Check className="w-3.5 h-3.5" />}
                   </button>
                 ))}
               </div>
             )}
           </div>
- 
+
           {/* Sort Dropdown */}
           <div className="relative" ref={sortRef}>
             <button 
@@ -115,9 +117,9 @@ export default function DirectoryTable({
               {sortBy}
               <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${sortOpen ? "rotate-180" : ""}`} />
             </button>
- 
+
             {sortOpen && (
-              <div className="absolute right-0 mt-2 w-40 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg shadow-xl z-50 py-1 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="absolute right-0 mt-2 w-40 bg-card border border-border rounded-lg shadow-xl z-50 py-1 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
                 {SORT_OPTIONS.map((option) => (
                   <button
                     key={option}
@@ -130,10 +132,12 @@ export default function DirectoryTable({
                       setSortOpen(false);
                     }}
                     suppressHydrationWarning
-                    className="flex items-center justify-between w-full px-4 py-2.5 text-[0.9rem] text-[#f5f5f5] hover:bg-[#2a2a2a] transition-colors text-left"
+                    className={`flex items-center justify-between w-full px-4 py-2.5 text-[0.9rem] transition-colors text-left ${
+                      sortBy === option ? "text-foreground bg-accent" : "text-muted hover:bg-accent hover:text-foreground"
+                    }`}
                   >
                     <span>{option}</span>
-                    {sortBy === option && <Check className="w-3.5 h-3.5 text-foreground" />}
+                    {sortBy === option && <Check className="w-3.5 h-3.5" />}
                   </button>
                 ))}
               </div>

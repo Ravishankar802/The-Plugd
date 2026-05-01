@@ -158,21 +158,21 @@ export default function AdminManageView() {
 
   if (loading) return (
     <div className="flex items-center justify-center h-64">
-      <Loader2 className="w-8 h-8 animate-spin text-white" />
+      <Loader2 className="w-8 h-8 animate-spin text-foreground" />
     </div>
   );
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="mb-10">
-        <h1 className="text-[2.5rem] font-[500] text-white leading-tight tracking-tighter">Manage Accounts</h1>
-        <p className="text-[#8b8b8b] text-[1rem] mt-1 font-[300]">View and manage all account submissions.</p>
+        <h1 className="text-[2.5rem] font-[500] text-foreground leading-tight tracking-tighter">Manage Accounts</h1>
+        <p className="text-muted text-[1rem] mt-1 font-[300]">View and manage all account submissions.</p>
       </div>
 
       {/* Filters */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
         <div className="flex items-center gap-2">
-          <button className="px-6 py-2.5 rounded-xl bg-white text-black font-bold text-sm hover:bg-[#e5e5e5] transition-all shadow-lg">
+          <button className="px-6 py-2.5 rounded-xl bg-foreground text-background font-bold text-sm hover:opacity-90 transition-all shadow-lg">
             All ({accounts.length})
           </button>
         </div>
@@ -182,23 +182,25 @@ export default function AdminManageView() {
           <div className="relative" ref={rangeRef}>
             <button
               onClick={() => setIsRangeOpen(!isRangeOpen)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1a1a1a] border border-[#2a2a2a] text-[#8b8b8b] hover:text-white hover:border-[#3a3a3a] transition-all text-sm font-bold shadow-xl"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-pill border border-border text-muted hover:text-foreground hover:border-muted transition-all text-sm font-bold shadow-xl"
             >
               <Sliders size={14} />
               <span>{selectedRange === "All Ranges" ? "Followers Range" : selectedRange}</span>
               <ChevronDown size={14} className={`transition-transform ${isRangeOpen ? "rotate-180" : ""}`} />
             </button>
             {isRangeOpen && (
-              <div className="absolute right-0 mt-2 w-56 bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl shadow-2xl z-50 overflow-hidden py-2 animate-in fade-in zoom-in-95 duration-200">
+              <div className="absolute right-0 mt-2 w-56 bg-card border border-border rounded-xl shadow-2xl z-50 overflow-hidden py-2 animate-in fade-in zoom-in-95 duration-200">
                 <div className="max-h-[400px] overflow-y-auto custom-scrollbar">
                   {FOLLOWERS_RANGES.map(range => (
                     <button
                       key={range}
                       onClick={() => { setSelectedRange(range); setIsRangeOpen(false); }}
-                      className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-[#8b8b8b] hover:text-white hover:bg-[#252525] transition-all"
+                      className={`w-full flex items-center justify-between px-4 py-2.5 text-sm transition-all ${
+                        selectedRange === range ? "bg-accent text-foreground" : "text-muted hover:text-foreground hover:bg-accent"
+                      }`}
                     >
                       {range}
-                      {selectedRange === range && <Check size={14} className="text-white" />}
+                      {selectedRange === range && <Check size={14} />}
                     </button>
                   ))}
                 </div>
@@ -210,22 +212,24 @@ export default function AdminManageView() {
           <div className="relative" ref={sortRef}>
             <button
               onClick={() => setIsSortOpen(!isSortOpen)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1a1a1a] border border-[#2a2a2a] text-[#8b8b8b] hover:text-white hover:border-[#3a3a3a] transition-all text-sm font-bold shadow-xl"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-pill border border-border text-muted hover:text-foreground hover:border-muted transition-all text-sm font-bold shadow-xl"
             >
               <TrendingUp size={14} />
               <span>{SORT_OPTIONS.find(o => o.id === sortBy)?.name}</span>
               <ChevronDown size={14} className={`transition-transform ${isSortOpen ? "rotate-180" : ""}`} />
             </button>
             {isSortOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl shadow-2xl z-50 overflow-hidden py-2 animate-in fade-in zoom-in-95 duration-200">
+              <div className="absolute right-0 mt-2 w-48 bg-card border border-border rounded-xl shadow-2xl z-50 overflow-hidden py-2 animate-in fade-in zoom-in-95 duration-200">
                 {SORT_OPTIONS.map(opt => (
                   <button
                     key={opt.id}
                     onClick={() => { setSortBy(opt.id); setIsSortOpen(false); }}
-                    className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-[#8b8b8b] hover:text-white hover:bg-[#252525] transition-all"
+                    className={`w-full flex items-center justify-between px-4 py-2.5 text-sm transition-all ${
+                      sortBy === opt.id ? "bg-accent text-foreground" : "text-muted hover:text-foreground hover:bg-accent"
+                    }`}
                   >
                     {opt.name}
-                    {sortBy === opt.id && <Check size={14} className="text-white" />}
+                    {sortBy === opt.id && <Check size={14} />}
                   </button>
                 ))}
               </div>
@@ -237,14 +241,14 @@ export default function AdminManageView() {
       {/* List */}
       <div className="grid grid-cols-1 gap-6">
         {filteredAccounts.map(acc => (
-          <div key={acc.id} className="relative bg-[#1a1a1a] border border-[#2a2a2a] rounded-[16px] p-8 flex flex-col group hover:border-[#3a3a3a] transition-all shadow-xl">
+          <div key={acc.id} className="relative bg-card border border-border rounded-[16px] p-8 flex flex-col group hover:border-muted transition-all shadow-xl">
             <div className="flex items-start gap-6">
-              <img src={acc.avatarPath} className="w-14 h-14 rounded-[12px] object-cover border border-[#2a2a2a] shadow-lg" alt="" />
+              <img src={acc.avatarPath} className="w-14 h-14 rounded-[12px] object-cover border border-border shadow-lg" alt="" />
               <div className="space-y-1 pt-0">
-                <h3 className="text-white font-[500] text-[1.4rem] tracking-tight">{acc.name}</h3>
-                <p className="text-[#8b8b8b] text-[1rem] font-[300] leading-snug max-w-2xl">{acc.bio}</p>
+                <h3 className="text-foreground font-[500] text-[1.4rem] tracking-tight">{acc.name}</h3>
+                <p className="text-muted text-[1rem] font-[300] leading-snug max-w-2xl">{acc.bio}</p>
                 <div className="flex items-center gap-4 pt-1">
-                  <span className="text-[#555555] text-sm font-[300]">Added: {new Date(acc.createdAt).toLocaleDateString()}</span>
+                  <span className="text-muted/60 text-sm font-[300]">Added: {new Date(acc.createdAt).toLocaleDateString()}</span>
                 </div>
               </div>
             </div>
@@ -254,13 +258,13 @@ export default function AdminManageView() {
                 href={`https://x.com/${acc.xHandle.startsWith("@") ? acc.xHandle.substring(1) : acc.xHandle}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-white text-black text-sm font-bold shadow-lg hover:bg-[#e5e5e5] transition-all active:scale-[0.98]"
+                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-foreground text-background text-sm font-bold shadow-lg hover:opacity-90 transition-all active:scale-[0.98]"
               >
                 Visit <ExternalLink size={14} />
               </a>
               <button
                 onClick={() => setEditingAccount(acc)}
-                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-white text-black text-sm font-bold shadow-lg hover:bg-[#e5e5e5] transition-all active:scale-[0.98]"
+                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-foreground text-background text-sm font-bold shadow-lg hover:opacity-90 transition-all active:scale-[0.98]"
               >
                 Edit Profile <SquarePen size={14} />
               </button>
@@ -268,7 +272,7 @@ export default function AdminManageView() {
 
             <button
               onClick={() => setIsDeleteModalOpen(acc.id)}
-              className="absolute top-8 right-8 p-2 text-[#444444] hover:text-red-500 transition-colors"
+              className="absolute top-8 right-8 p-2 text-muted/40 hover:text-red-500 transition-colors"
             >
               <Trash2 size={20} />
             </button>
@@ -288,24 +292,24 @@ export default function AdminManageView() {
       {/* Delete Confirmation Modal Refined */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setIsDeleteModalOpen(null)} />
-          <div className="relative w-full max-w-lg bg-[#111111] border border-[#2a2a2a] rounded-[24px] p-10 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setIsDeleteModalOpen(null)} />
+          <div className="relative w-full max-w-lg bg-card border border-border rounded-[24px] p-10 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
             <div className="flex gap-6">
               <div className="w-14 h-14 bg-red-500/10 rounded-xl flex items-center justify-center shrink-0 border border-red-500/20">
                 <AlertTriangle size={28} className="text-red-500" />
               </div>
               <div className="space-y-4">
                 <div className="space-y-1">
-                  <h3 className="text-[1.5rem] font-bold text-white">Delete Account</h3>
-                  <p className="text-[#a1a1aa] text-[1.05rem] leading-relaxed">
-                    Are you sure you want to delete <span className="text-white font-bold">{accounts.find(a => a.id === isDeleteModalOpen)?.name}</span>? This action cannot be undone and will permanently remove the account profile.
+                  <h3 className="text-[1.5rem] font-bold text-foreground">Delete Account</h3>
+                  <p className="text-muted text-[1.05rem] leading-relaxed">
+                    Are you sure you want to delete <span className="text-foreground font-bold">{accounts.find(a => a.id === isDeleteModalOpen)?.name}</span>? This action cannot be undone and will permanently remove the account profile.
                   </p>
                 </div>
                 
                 <div className="flex items-center gap-4 pt-2">
                   <button
                     onClick={() => setIsDeleteModalOpen(null)}
-                    className="px-8 py-3 rounded-xl bg-transparent border border-[#2a2a2a] text-white font-bold hover:bg-white/5 transition-all text-[0.95rem]"
+                    className="px-8 py-3 rounded-xl bg-transparent border border-border text-foreground font-bold hover:bg-accent transition-all text-[0.95rem]"
                   >
                     Cancel
                   </button>

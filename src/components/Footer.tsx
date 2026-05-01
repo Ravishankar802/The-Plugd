@@ -4,13 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Moon, Sun, Monitor, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 
 interface FooterProps {
   showBorder?: boolean;
 }
 
 export default function Footer({ showBorder = true }: FooterProps) {
-  const [theme, setTheme] = useState("Dark");
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -30,23 +31,32 @@ export default function Footer({ showBorder = true }: FooterProps) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const themeOptions = [
+    { name: "light", label: "Light", icon: Sun },
+    { name: "dark", label: "Dark", icon: Moon },
+    { name: "system", label: "System", icon: Monitor },
+  ];
+
+  const currentThemeOption = themeOptions.find(opt => opt.name === theme) || themeOptions[2];
+  const CurrentIcon = currentThemeOption.icon;
+
   return (
-    <footer className={`${isDashboard ? "py-10" : "py-20"} ${showBorder ? "border-t border-[#1a1a1a]" : ""}`}>
+    <footer className={`${isDashboard ? "py-10" : "py-20"} ${showBorder ? "border-t border-border" : ""}`}>
       <div className="flex items-center justify-between gap-6 relative">
         {isDashboard ? (
           <>
             {/* Dashboard style: Centered Home */}
-            <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] text-[#8b8b8b] font-medium">
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] text-muted font-medium">
+              <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
             </div>
             <div className="flex-1" />
           </>
         ) : (
           /* Default style: Links on left */
-          <div className="flex items-center gap-6 text-[0.9rem] text-[#8b8b8b] font-medium">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <Link href="/dashboard" className="hover:text-white transition-colors">Dashboard</Link>
-            <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
+          <div className="flex items-center gap-6 text-[0.9rem] text-muted font-medium">
+            <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+            <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
+            <Link href="/terms-of-service" className="hover:text-foreground transition-colors">Terms of Service</Link>
           </div>
         )}
 
@@ -55,34 +65,30 @@ export default function Footer({ showBorder = true }: FooterProps) {
             <button
               onClick={() => setIsOpen(!isOpen)}
               suppressHydrationWarning
-              className="flex items-center gap-2 bg-[#1c1c1c] border border-[#2a2a2a] hover:bg-[#252525] px-3.5 py-1.5 rounded-2xl text-[0.9rem] text-muted transition-colors"
+              className="flex items-center gap-2 bg-pill border border-border hover:bg-accent px-3.5 py-1.5 rounded-2xl text-[0.9rem] text-muted transition-colors"
             >
               <div className="flex items-center gap-2">
-                <Moon className="w-4 h-4" />
-                <span className="font-medium">{theme}</span>
+                <CurrentIcon className="w-4 h-4" />
+                <span className="font-medium capitalize">{theme === "system" ? "System" : theme}</span>
               </div>
-              <ChevronDown className="w-4 h-4" />
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
             </button>
 
             {isOpen && (
-              <div className="absolute bottom-full left-0 mb-2 w-28 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1">
-                {[
-                  { name: "Dark", icon: Moon },
-                  { name: "Light", icon: Sun },
-                  { name: "System", icon: Monitor },
-                ].map((item) => (
+              <div className="absolute bottom-full left-0 mb-2 w-32 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-2">
+                {themeOptions.map((item) => (
                   <button
                     key={item.name}
                     onClick={() => {
                       setTheme(item.name);
                       setIsOpen(false);
-                      if (item.name === "Light") document.documentElement.classList.remove("dark");
-                      if (item.name === "Dark") document.documentElement.classList.add("dark");
                     }}
-                    className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-foreground hover:bg-accent transition-colors rounded-lg text-left"
+                    className={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors rounded-lg text-left ${
+                      theme === item.name ? "bg-accent text-foreground" : "text-muted hover:bg-accent/50 hover:text-foreground"
+                    }`}
                   >
-                    <item.icon className="w-4 h-4 text-muted shrink-0" />
-                    <span className="font-semibold">{item.name}</span>
+                    <item.icon className="w-4 h-4 shrink-0" />
+                    <span className="font-medium">{item.label}</span>
                   </button>
                 ))}
               </div>

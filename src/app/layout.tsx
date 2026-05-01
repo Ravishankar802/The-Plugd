@@ -17,17 +17,26 @@ export const metadata: Metadata = {
   description: "The directory for X builders, founders and creators.",
 };
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" style={{ colorScheme: 'dark' }}>
-      <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-[#0a0a0a] text-white selection:bg-white selection:text-black`}>
-        <div className="flex flex-col min-h-screen">
-          {children}
-        </div>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background transition-colors duration-300`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex flex-col min-h-screen">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

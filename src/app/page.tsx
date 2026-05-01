@@ -276,7 +276,7 @@ export default function Home() {
                 <button
                   onClick={() => setIsModalOpen(true)}
                   suppressHydrationWarning
-                  className="h-[48px] bg-foreground text-background font-[700] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90"
+                  className="h-[48px] bg-pill border border-pill-border text-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-accent active:scale-[0.98]"
                 >
                   <Plus className="w-5 h-5" />
                   Add Account
@@ -289,9 +289,9 @@ export default function Home() {
                   <button
                     onClick={() => toggleNiche("All")}
                     suppressHydrationWarning
-                    className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap font-[600] ${
                       selectedNiches.length === 0
-                        ? "bg-foreground text-background border-foreground font-medium"
+                        ? "bg-pill border-pill-border text-foreground shadow-sm"
                         : "bg-card border-border text-muted hover:border-muted-foreground"
                     }`}
                   >
@@ -307,9 +307,9 @@ export default function Home() {
                         key={niche.name}
                         onClick={() => toggleNiche(niche.name)}
                         suppressHydrationWarning
-                        className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
+                        className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap font-[600] ${
                           isSelected
-                            ? "bg-foreground text-background border-foreground font-medium"
+                            ? "bg-pill border-pill-border text-foreground shadow-sm"
                             : "bg-card border-border text-muted hover:border-muted-foreground"
                         }`}
                       >

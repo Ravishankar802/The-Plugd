@@ -199,33 +199,33 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={onClose} />
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-md" onClick={onClose} />
       
-      <div className="relative w-full max-w-xl bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in duration-300">
+      <div className="relative w-full max-w-xl bg-card border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in duration-300">
         
         {/* Header - Fixed */}
-        <div className="px-8 py-6 border-b border-[#2a2a2a] flex items-center justify-between bg-[#1c1c1c] z-20 shrink-0">
+        <div className="px-8 py-6 border-b border-border flex items-center justify-between bg-card z-20 shrink-0">
           <div>
-            <h2 className="text-xl font-bold text-white tracking-tight">Add Your Account</h2>
-            <p className="text-sm text-[#a1a1aa] mt-1 font-medium">Get discovered by X builders, founders and creators.</p>
+            <h2 className="text-xl font-bold text-foreground tracking-tight">Add Your Account</h2>
+            <p className="text-sm text-muted mt-1 font-medium">Get discovered by X builders, founders and creators.</p>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-[#2a2a2a] rounded-full transition-all text-[#a1a1aa] hover:text-white border border-transparent hover:border-[#3f3f46]">
+          <button onClick={onClose} className="p-2 hover:bg-accent rounded-full transition-all text-muted hover:text-foreground border border-transparent hover:border-border">
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Form Body - Scrollable */}
-        <div className="flex-1 overflow-y-auto custom-scrollbar bg-[#1c1c1c]">
+        <div className="flex-1 overflow-y-auto custom-scrollbar bg-card">
           <form onSubmit={handleSubmit} id="add-account-form" className="px-8 py-8 space-y-7">
             
             {/* Full Name */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Full Name</label>
+              <label className="text-[1rem] font-bold text-foreground tracking-wide block">Full Name</label>
               <input
                 required
                 type="text"
                 placeholder="e.g. John Doe"
-                className="w-full bg-[#0f0f0f] border border-[#2a2a2a] rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
+                className="w-full bg-pill border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-1 focus:ring-foreground transition-all"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
@@ -233,12 +233,12 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
             {/* X Username */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">X Username</label>
+              <label className="text-[1rem] font-bold text-foreground tracking-wide block">X Username</label>
               <input
                 required
                 type="text"
                 placeholder="@username"
-                className="w-full bg-[#0f0f0f] border border-[#2a2a2a] rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
+                className="w-full bg-pill border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-1 focus:ring-foreground transition-all"
                 value={formData.xHandle}
                 onChange={(e) => handleXHandleChange(e.target.value)}
               />
@@ -247,8 +247,8 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             {/* Bio */}
             <div className="flex flex-col gap-3">
               <div className="flex justify-between items-center">
-                <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">One-line Bio</label>
-                <span className={`text-[0.75rem] font-mono ${formData.bio.length > 100 ? "text-red-500" : "text-gray-500"}`}>
+                <label className="text-[1rem] font-bold text-foreground tracking-wide block">One-line Bio</label>
+                <span className={`text-[0.75rem] font-mono ${formData.bio.length > 100 ? "text-red-500" : "text-muted"}`}>
                   {formData.bio.length}/100
                 </span>
               </div>
@@ -257,7 +257,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 maxLength={100}
                 type="text"
                 placeholder="Founder | Building in public | Shipping daily"
-                className="w-full bg-[#0f0f0f] border border-[#2a2a2a] rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
+                className="w-full bg-pill border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-1 focus:ring-foreground transition-all"
                 value={formData.bio}
                 onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
               />
@@ -265,7 +265,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
             {/* Niche - Compact Select with Icons */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Niche</label>
+              <label className="text-[1rem] font-bold text-foreground tracking-wide block">Niche</label>
               <div className="flex flex-wrap gap-2.5">
                 {NICHES.map((niche) => {
                   const Icon = niche.icon;
@@ -277,11 +277,11 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                       onClick={() => toggleNiche(niche.name)}
                       className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm transition-all border ${
                         isSelected 
-                          ? "bg-white text-black border-white font-bold shadow-lg shadow-white/5" 
-                          : "bg-[#0f0f0f] text-[#a1a1aa] border-[#2a2a2a] hover:border-[#3f3f46] hover:text-white"
+                          ? "bg-foreground text-background border-foreground font-bold shadow-lg" 
+                          : "bg-pill text-muted border-border hover:border-muted hover:text-foreground"
                       }`}
                     >
-                      <Icon size={16} className={isSelected ? "text-black" : "text-[#71717a]"} />
+                      <Icon size={16} className={isSelected ? "text-background" : "text-muted"} />
                       <span>{niche.name}</span>
                     </button>
                   );
@@ -291,7 +291,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
             {/* Followers Range - Compact pills */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Followers Range</label>
+              <label className="text-[1rem] font-bold text-foreground tracking-wide block">Followers Range</label>
               <div className="flex flex-wrap gap-2.5">
                 {FOLLOWERS_RANGES.map((range) => (
                   <button
@@ -300,8 +300,8 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                     onClick={() => setFormData({ ...formData, followersRange: range })}
                     className={`px-4 py-2.5 rounded-xl text-sm transition-all border ${
                       formData.followersRange === range 
-                        ? "bg-white text-black border-white font-bold shadow-lg shadow-white/5" 
-                        : "bg-[#0f0f0f] text-[#a1a1aa] border-[#2a2a2a] hover:border-[#3f3f46] hover:text-white"
+                        ? "bg-foreground text-background border-foreground font-bold shadow-lg" 
+                        : "bg-pill text-muted border-border hover:border-muted hover:text-foreground"
                     }`}
                   >
                     {range}
@@ -312,7 +312,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
             {/* Profile Picture */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Profile Picture</label>
+              <label className="text-[1rem] font-bold text-foreground tracking-wide block">Profile Picture</label>
               <div className="flex items-center gap-6">
                 <div className="relative shrink-0">
                   {previewUrl ? (
@@ -320,19 +320,19 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                       <img 
                         src={previewUrl} 
                         alt="Preview" 
-                        className="w-16 h-16 rounded-full object-cover border-2 border-[#2a2a2a] shadow-xl"
+                        className="w-16 h-16 rounded-full object-cover border-2 border-border shadow-xl"
                       />
                       <button
                         type="button"
                         onClick={removeImage}
-                        className="absolute -top-1 -right-1 bg-red-600 text-white rounded-full p-1.5 shadow-lg hover:bg-red-700 transition-colors border-2 border-[#1c1c1c]"
+                        className="absolute -top-1 -right-1 bg-red-600 text-white rounded-full p-1.5 shadow-lg hover:bg-red-700 transition-colors border-2 border-card"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   ) : (
-                    <div className="w-16 h-16 rounded-full bg-[#0f0f0f] border-2 border-[#2a2a2a] border-dashed flex items-center justify-center group hover:border-[#3f3f46] transition-colors">
-                      <Upload className="w-7 h-7 text-[#3f3f46] group-hover:text-[#71717a] transition-colors" />
+                    <div className="w-16 h-16 rounded-full bg-pill border-2 border-border border-dashed flex items-center justify-center group hover:border-muted transition-colors">
+                      <Upload className="w-7 h-7 text-muted group-hover:text-foreground transition-colors" />
                     </div>
                   )}
                 </div>
@@ -349,28 +349,28 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     disabled={uploading}
-                    className="bg-[#0f0f0f] border border-[#2a2a2a] text-white px-6 py-3.5 rounded-xl text-sm font-bold hover:border-[#3f3f46] transition-all flex items-center gap-2.5 shadow-sm active:scale-[0.98]"
+                    className="bg-pill border border-border text-foreground px-6 py-3.5 rounded-xl text-sm font-bold hover:border-muted transition-all flex items-center gap-2.5 shadow-sm active:scale-[0.98]"
                   >
                     {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
                     Upload
                   </button>
-                  <p className="text-[0.75rem] text-[#71717a] mt-2.5 font-medium tracking-tight">JPG, PNG or WebP. Max 2MB.</p>
+                  <p className="text-[0.75rem] text-muted mt-2.5 font-medium tracking-tight">JPG, PNG or WebP. Max 2MB.</p>
                 </div>
               </div>
             </div>
 
             {/* Email */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-bold text-gray-200 tracking-wide block">Email</label>
+              <label className="text-[1rem] font-bold text-foreground tracking-wide block">Email</label>
               <input
                 required
                 type="email"
                 placeholder="you@example.com"
-                className="w-full bg-[#0f0f0f] border border-[#2a2a2a] rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-600 transition-all"
+                className="w-full bg-pill border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-1 focus:ring-foreground transition-all"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
-              <p className="text-[0.75rem] text-[#71717a] font-medium leading-relaxed">We&apos;ll only use this email for your receipt. It won&apos;t be shown publicly.</p>
+              <p className="text-[0.75rem] text-muted font-medium leading-relaxed">We&apos;ll only use this email for your receipt. It won&apos;t be shown publicly.</p>
             </div>
 
             {/* Confirmation Checkbox */}
@@ -380,14 +380,14 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 onClick={() => setFormData({ ...formData, confirmed: !formData.confirmed })}
                 className={`mt-1 w-6 h-6 rounded-lg border flex items-center justify-center transition-all ${
                   formData.confirmed 
-                    ? "bg-white border-white text-black shadow-lg shadow-white/5" 
-                    : "bg-[#0f0f0f] border-[#2a2a2a] hover:border-[#3f3f46]"
+                    ? "bg-foreground border-foreground text-background shadow-lg" 
+                    : "bg-pill border-border hover:border-muted"
                 }`}
               >
-                {formData.confirmed && <Check className="w-4 h-4 text-black" />}
+                {formData.confirmed && <Check className="w-4 h-4 text-background" />}
               </button>
               <label 
-                className="text-[0.95rem] text-[#a1a1aa] cursor-pointer select-none leading-relaxed hover:text-gray-300 transition-colors font-medium"
+                className="text-[0.95rem] text-muted cursor-pointer select-none leading-relaxed hover:text-foreground transition-colors font-medium"
                 onClick={() => setFormData({ ...formData, confirmed: !formData.confirmed })}
               >
                 I confirm this information is accurate and belongs to me.
@@ -398,16 +398,16 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         </div>
 
         {/* Submit Button - Fixed at bottom */}
-        <div className="px-8 py-8 border-t border-[#2a2a2a] bg-[#1c1c1c] z-20 shrink-0">
+        <div className="px-8 py-8 border-t border-border bg-card z-20 shrink-0">
           <button
             disabled={!isFormValid || isLoading}
             type="submit"
             form="add-account-form"
-            className="w-full bg-white text-black font-black text-base py-5 rounded-xl transition-all disabled:opacity-20 disabled:grayscale disabled:cursor-not-allowed flex items-center justify-center gap-2.5 hover:bg-gray-100 shadow-2xl active:scale-[0.99] uppercase tracking-wider"
+            className="w-full bg-foreground text-background font-black text-base py-5 rounded-xl transition-all disabled:opacity-20 disabled:grayscale disabled:cursor-not-allowed flex items-center justify-center gap-2.5 hover:opacity-90 shadow-2xl active:scale-[0.99] uppercase tracking-wider"
           >
             {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Pay $1 to Get Listed"}
           </button>
-          <p className="text-center text-[0.7rem] text-[#52525b] mt-5 font-bold uppercase tracking-[0.15em]">
+          <p className="text-center text-[0.7rem] text-muted mt-5 font-bold uppercase tracking-[0.15em]">
             Secure payment via Dodo Payments
           </p>
         </div>

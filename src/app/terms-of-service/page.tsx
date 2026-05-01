@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 
 export default function TermsOfService() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white selection:bg-[#ff6b00]/30 flex flex-col">
+    <main className="min-h-screen bg-background text-foreground selection:bg-foreground/10 flex flex-col">
       <div className="max-w-[840px] mx-auto px-6 pt-16 flex flex-col items-center flex-1">
         
         {/* Page Header */}
@@ -26,8 +26,8 @@ export default function TermsOfService() {
             </div>
             <span className="text-3xl font-[800] tracking-[-0.02em] text-[#52525b]">Plugd</span>
           </Link>
-          <h1 className="text-[2.5rem] font-bold tracking-tight mb-2">Terms of Service</h1>
-          <p className="text-[#a1a1aa] text-[1rem] font-medium tracking-tight">Last updated: May 1, 2026</p>
+          <h1 className="text-[2.5rem] font-bold tracking-tight mb-2 text-foreground">Terms of Service</h1>
+          <p className="text-muted text-[1rem] font-medium tracking-tight">Last updated: May 1, 2026</p>
         </div>
 
         {/* Content Sections */}
@@ -128,9 +128,9 @@ export default function TermsOfService() {
 
 function Section({ title, content }: { title: string; content: React.ReactNode }) {
   return (
-    <div className="bg-[#161616] border border-[#2a2a2a] rounded-[12px] p-10 shadow-sm">
-      <h2 className="text-[1.5rem] font-bold text-white mb-6">{title}</h2>
-      <div className="text-[#a1a1aa] text-[1.125rem] leading-[1.8] font-medium">
+    <div className="bg-card border border-border rounded-[12px] p-10 shadow-sm">
+      <h2 className="text-[1.5rem] font-bold text-foreground mb-6">{title}</h2>
+      <div className="text-muted text-[1.125rem] leading-[1.8] font-medium">
         {content}
       </div>
     </div>
