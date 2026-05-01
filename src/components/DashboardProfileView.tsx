@@ -173,7 +173,7 @@ export default function DashboardProfileView() {
           
           {/* Profile Picture */}
           <div className="flex flex-col gap-4">
-            <label className="text-[0.75rem] font-[600] text-muted/60 uppercase tracking-[0.12em]">Profile Picture</label>
+            <label className="text-[0.75rem] font-bold text-foreground uppercase tracking-[0.12em]">Profile Picture</label>
             <div className="flex items-center gap-8">
               {account.avatarPath ? (
                 <img 
@@ -220,7 +220,7 @@ export default function DashboardProfileView() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Name */}
             <div className="flex flex-col gap-3">
-              <label className="text-[0.75rem] font-[600] text-muted/60 uppercase tracking-[0.12em]">Full Name</label>
+              <label className="text-[0.75rem] font-bold text-foreground uppercase tracking-[0.12em]">Full Name</label>
               <input
                 required
                 type="text"
@@ -233,7 +233,7 @@ export default function DashboardProfileView() {
 
             {/* X Handle */}
             <div className="flex flex-col gap-3">
-              <label className="text-[0.75rem] font-[600] text-muted/60 uppercase tracking-[0.12em]">X Username</label>
+              <label className="text-[0.75rem] font-bold text-foreground uppercase tracking-[0.12em]">X Username</label>
               <div className="relative">
                 <span className="absolute left-5 top-1/2 -translate-y-1/2 text-muted/60 font-medium text-[1rem]">@</span>
                 <input
@@ -251,7 +251,7 @@ export default function DashboardProfileView() {
           {/* Bio */}
           <div className="flex flex-col gap-3">
             <div className="flex justify-between items-center">
-              <label className="text-[0.75rem] font-[600] text-muted/60 uppercase tracking-[0.12em]">One-line Bio</label>
+              <label className="text-[0.75rem] font-bold text-foreground uppercase tracking-[0.12em]">One-line Bio</label>
               <span className={`text-[0.75rem] font-medium ${account.bio.length > 100 ? "text-red-500" : "text-muted/60"}`}>
                 {account.bio.length}/100
               </span>
@@ -269,7 +269,7 @@ export default function DashboardProfileView() {
 
           {/* Email - Read Only */}
           <div className="flex flex-col gap-3">
-            <label className="text-[0.75rem] font-[600] text-muted/60 uppercase tracking-[0.12em]">Email Address</label>
+            <label className="text-[0.75rem] font-bold text-foreground uppercase tracking-[0.12em]">Email Address</label>
             <input
               readOnly
               type="email"
@@ -280,7 +280,7 @@ export default function DashboardProfileView() {
 
           {/* Niche - Multi Select */}
           <div className="flex flex-col gap-5">
-            <label className="text-[0.75rem] font-[600] text-muted/60 uppercase tracking-[0.12em]">Niche</label>
+            <label className="text-[0.75rem] font-bold text-foreground uppercase tracking-[0.12em]">Niche</label>
             <div className="flex flex-wrap gap-3">
               {NICHES.map((niche) => {
                 const Icon = niche.icon;
@@ -312,7 +312,7 @@ export default function DashboardProfileView() {
 
           {/* Followers Range */}
           <div className="flex flex-col gap-5">
-            <label className="text-[0.75rem] font-[600] text-muted/60 uppercase tracking-[0.12em]">Followers Range</label>
+            <label className="text-[0.75rem] font-bold text-foreground uppercase tracking-[0.12em]">Followers Range</label>
             <div className="flex flex-wrap gap-3">
               {FOLLOWERS_RANGES.map((range) => (
                 <button
