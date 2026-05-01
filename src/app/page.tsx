@@ -31,7 +31,8 @@ import {
   DollarSign,
   Cloud,
   Layers,
-  Building2
+  Building2,
+  ExternalLink
 } from "lucide-react";
 
 interface Account {
@@ -300,7 +301,7 @@ export default function Home() {
 
                   {/* Search Results Dropdown */}
                   {showResults && searchQuery.trim() !== "" && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-pill border border-border rounded-xl shadow-2xl z-[100] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="absolute top-[calc(100%+8px)] left-0 right-0 bg-pill border border-border rounded-xl shadow-2xl z-[100] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
                       {searchResults.length > 0 ? (
                         <div className="py-2">
                           {searchResults.map((acc) => (
@@ -312,12 +313,14 @@ export default function Home() {
                                 setShowResults(false);
                               }}
                             >
-                              <img src={acc.avatarPath} alt="" className="w-10 h-10 rounded-lg object-cover border border-border" />
+                              <img src={acc.avatarPath} alt="" className="w-10 h-10 rounded-lg object-cover border border-border shadow-sm" />
                               <div className="flex-1 min-w-0">
                                 <p className="text-foreground font-bold text-[0.95rem] truncate">{acc.name}</p>
                                 <p className="text-muted text-[0.8rem] truncate">@{acc.xHandle}</p>
                               </div>
-                              <Plus className="w-4 h-4 text-muted opacity-0 group-hover:opacity-100 transition-opacity" />
+                              <div className="px-3 py-1.5 rounded-lg bg-background border border-border text-foreground text-[0.75rem] font-bold opacity-0 group-hover:opacity-100 transition-all flex items-center gap-1.5 shadow-sm">
+                                Visit <ExternalLink className="w-3.5 h-3.5" />
+                              </div>
                             </div>
                           ))}
                           <div className="px-4 py-2 border-t border-border mt-1">
