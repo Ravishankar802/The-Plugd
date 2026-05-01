@@ -326,9 +326,6 @@ export default function Home() {
                               </div>
                             </div>
                           ))}
-                          <div className="px-4 py-2 border-t border-border mt-1">
-                            <p className="text-[0.7rem] text-muted font-bold uppercase tracking-wider">Results for &quot;{searchQuery}&quot;</p>
-                          </div>
                         </div>
                       ) : (
                         <div className="p-8 text-center">
