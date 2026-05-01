@@ -11,7 +11,9 @@ import {
   Check,
   Search,
   Users,
-  ArrowRight
+  ArrowRight,
+  ExternalLink,
+  AlertTriangle
 } from "lucide-react";
 import AdminEditAccountModal from "./AdminEditAccountModal";
 
@@ -237,30 +239,30 @@ export default function AdminManageView() {
         {filteredAccounts.map(acc => (
           <div key={acc.id} className="relative bg-[#111111] border border-[#2a2a2a] rounded-[16px] p-8 flex flex-col group hover:border-[#3a3a3a] transition-all shadow-xl">
             <div className="flex items-start gap-6">
-              <img src={acc.avatarPath} className="w-16 h-16 rounded-[12px] object-cover border border-[#2a2a2a] shadow-lg" alt="" />
-              <div className="space-y-1.5 pt-0">
+              <img src={acc.avatarPath} className="w-14 h-14 rounded-[12px] object-cover border border-[#2a2a2a] shadow-lg" alt="" />
+              <div className="space-y-1 pt-0">
                 <h3 className="text-white font-[700] text-[1.4rem] tracking-tight">{acc.name}</h3>
-                <p className="text-[#8b8b8b] text-[1rem] font-medium leading-snug max-w-xl">{acc.bio}</p>
+                <p className="text-[#8b8b8b] text-[1rem] font-medium leading-snug max-w-2xl">{acc.bio}</p>
                 <div className="flex items-center gap-4 pt-1">
                   <span className="text-[#555555] text-sm font-medium">Added: {new Date(acc.createdAt).toLocaleDateString()}</span>
                 </div>
               </div>
             </div>
             
-            <div className="flex items-center gap-3 mt-6">
+            <div className="flex items-center gap-3 mt-6 ml-20">
               <a
                 href={`https://x.com/${acc.xHandle.startsWith("@") ? acc.xHandle.substring(1) : acc.xHandle}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-2 rounded-lg bg-white text-black text-sm font-bold shadow-lg hover:bg-[#e5e5e5] transition-all active:scale-[0.98]"
+                className="flex items-center gap-2.5 px-6 py-2.5 rounded-xl bg-white text-black text-sm font-bold shadow-lg hover:bg-[#e5e5e5] transition-all active:scale-[0.98]"
               >
-                Visit <ArrowRight size={14} />
+                Visit <ExternalLink size={14} />
               </a>
               <button
                 onClick={() => setEditingAccount(acc)}
-                className="flex items-center gap-2 px-6 py-2 rounded-lg bg-white text-black text-sm font-bold shadow-lg hover:bg-[#e5e5e5] transition-all active:scale-[0.98]"
+                className="flex items-center gap-2.5 px-6 py-2.5 rounded-xl bg-white text-black text-sm font-bold shadow-lg hover:bg-[#e5e5e5] transition-all active:scale-[0.98]"
               >
-                Edit Profile <Edit3 size={14} />
+                Edit Profile <ExternalLink size={14} />
               </button>
             </div>
 
@@ -283,29 +285,38 @@ export default function AdminManageView() {
         />
       )}
 
-      {/* Delete Confirmation */}
+      {/* Delete Confirmation Modal Refined */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" onClick={() => setIsDeleteModalOpen(null)} />
-          <div className="relative w-full max-w-sm bg-[#111111] border border-[#2a2a2a] rounded-2xl p-8 shadow-2xl text-center">
-            <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Trash2 size={24} className="text-red-500" />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-2">Are you sure?</h3>
-            <p className="text-[#a1a1aa] text-sm mb-8 leading-relaxed">This account will be permanently removed from the directory. This cannot be undone.</p>
-            <div className="flex gap-3">
-              <button
-                onClick={() => setIsDeleteModalOpen(null)}
-                className="flex-1 px-4 py-3 rounded-xl bg-transparent border border-[#2a2a2a] text-[#a1a1aa] hover:text-white font-bold transition-all"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={() => handleDelete(isDeleteModalOpen)}
-                className="flex-1 px-4 py-3 rounded-xl bg-red-600 text-white font-bold hover:bg-red-700 transition-all shadow-lg shadow-red-600/20"
-              >
-                Delete
-              </button>
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setIsDeleteModalOpen(null)} />
+          <div className="relative w-full max-w-lg bg-[#111111] border border-[#2a2a2a] rounded-[24px] p-10 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            <div className="flex gap-6">
+              <div className="w-14 h-14 bg-red-500/10 rounded-xl flex items-center justify-center shrink-0 border border-red-500/20">
+                <AlertTriangle size={28} className="text-red-500" />
+              </div>
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <h3 className="text-[1.5rem] font-bold text-white">Delete Account</h3>
+                  <p className="text-[#a1a1aa] text-[1.05rem] leading-relaxed">
+                    Are you sure you want to delete <span className="text-white font-bold">{accounts.find(a => a.id === isDeleteModalOpen)?.name}</span>? This action cannot be undone and will permanently remove the account profile.
+                  </p>
+                </div>
+                
+                <div className="flex items-center gap-4 pt-2">
+                  <button
+                    onClick={() => setIsDeleteModalOpen(null)}
+                    className="px-8 py-3 rounded-xl bg-transparent border border-[#2a2a2a] text-white font-bold hover:bg-white/5 transition-all text-[0.95rem]"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={() => handleDelete(isDeleteModalOpen)}
+                    className="px-8 py-3 rounded-xl bg-[#8b0000] text-white font-bold hover:bg-red-800 transition-all shadow-lg shadow-red-900/20 text-[0.95rem]"
+                  >
+                    Delete Permanently
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
