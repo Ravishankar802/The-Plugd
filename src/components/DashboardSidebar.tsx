@@ -28,10 +28,10 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
   ];
 
   return (
-    <aside className="w-[280px] bg-[#0a0a0a] border-r border-[#1a1a1a] flex flex-col h-screen fixed left-0 top-0 z-30">
+    <aside className="w-[320px] bg-[#0a0a0a] border-r border-[#1a1a1a] flex flex-col h-screen fixed left-0 top-0 z-30">
       {/* Top: Logo */}
-      <div className="px-5 py-8">
-        <Link href="/" className="flex items-center gap-3.5 hover:opacity-80 transition-opacity">
+      <div className="px-6 py-10">
+        <Link href="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
           <div className="w-10 h-10 flex items-center justify-center">
             <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-[2.5]">
               <line x1="20" y1="20" x2="8" y2="8" className="opacity-60" />
@@ -52,7 +52,7 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-4 space-y-1">
+      <nav className="flex-1 px-5 space-y-1">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = pathname === item.href;
@@ -75,8 +75,8 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
         })}
 
         {isAdmin && (
-          <div className="mt-8">
-            <div className="h-[1px] bg-[#1a1a1a] mx-4 mb-8" />
+          <div className="mt-4">
+            <div className="h-[1px] bg-[#1a1a1a] mx-4 mb-4" />
             <p className="px-4 text-[0.8rem] font-medium text-[#6b7280] uppercase tracking-[0.12em] mb-4">ADMIN</p>
             {adminItems.map((item) => {
               const Icon = item.icon;

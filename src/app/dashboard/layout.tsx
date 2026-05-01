@@ -50,7 +50,7 @@ export default function DashboardLayout({
     <div className="min-h-screen bg-[#0a0a0a] flex overflow-hidden">
       <DashboardSidebar email={email || ""} isAdmin={isAdmin} />
       
-      <main className="flex-1 ml-[280px] h-screen overflow-y-auto relative flex flex-col">
+      <main className="flex-1 ml-[320px] h-screen overflow-y-auto relative flex flex-col">
         <div className="p-10 flex-1 w-full max-w-5xl mx-auto">
           {children}
         </div>
