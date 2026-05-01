@@ -104,7 +104,7 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
 
       {/* Bottom info */}
       <div className="mx-3 mb-4">
-        <div className="bg-foreground/[0.03] border border-foreground/[0.1] rounded-xl p-5 space-y-4 shadow-2xl backdrop-blur-xl">
+        <div className="bg-pill border border-border rounded-xl p-5 space-y-4 shadow-2xl backdrop-blur-xl">
           <div>
             <p className="text-[0.8rem] text-muted lowercase font-normal mb-1">signed in as</p>
             <p className="text-foreground font-semibold text-[0.95rem] tracking-tight truncate" title={email}>{email}</p>

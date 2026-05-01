@@ -172,7 +172,7 @@ export default function AdminManageView() {
       {/* Filters */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
         <div className="flex items-center gap-2">
-          <button className="px-6 py-2.5 rounded-xl bg-pill border border-pill-border text-foreground font-bold text-sm hover:bg-accent transition-all shadow-lg">
+          <button className="px-6 py-2.5 rounded-xl bg-selected text-selected-foreground border-selected font-bold text-sm hover:bg-accent transition-all shadow-lg">
             All ({accounts.length})
           </button>
         </div>
@@ -241,7 +241,7 @@ export default function AdminManageView() {
       {/* List */}
       <div className="grid grid-cols-1 gap-6">
         {filteredAccounts.map(acc => (
-          <div key={acc.id} className="relative bg-card border border-border rounded-[16px] p-8 flex flex-col group hover:border-muted transition-all shadow-xl">
+          <div key={acc.id} className="relative bg-pill border border-border rounded-[16px] p-8 flex flex-col group hover:border-muted transition-all shadow-xl">
             <div className="flex items-start gap-6">
               <img src={acc.avatarPath} className="w-14 h-14 rounded-[12px] object-cover border border-border shadow-lg" alt="" />
               <div className="space-y-1 pt-0">
@@ -258,13 +258,13 @@ export default function AdminManageView() {
                 href={`https://x.com/${acc.xHandle.startsWith("@") ? acc.xHandle.substring(1) : acc.xHandle}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-pill border border-pill-border text-foreground text-sm font-bold shadow-lg hover:bg-accent transition-all active:scale-[0.98]"
+                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-background border border-border text-foreground text-sm font-bold shadow-lg hover:bg-accent transition-all active:scale-[0.98]"
               >
                 Visit <ExternalLink size={14} />
               </a>
               <button
                 onClick={() => setEditingAccount(acc)}
-                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-pill border border-pill-border text-foreground text-sm font-bold shadow-lg hover:bg-accent transition-all active:scale-[0.98]"
+                className="flex items-center gap-2.5 px-6 py-2 rounded-lg bg-background border border-border text-foreground text-sm font-bold shadow-lg hover:bg-accent transition-all active:scale-[0.98]"
               >
                 Edit Profile <SquarePen size={14} />
               </button>

@@ -168,7 +168,7 @@ export default function DashboardProfileView() {
         <p className="text-muted text-[1rem] mt-1.5 font-normal">Manage your public listing on Plugd.</p>
       </div>
 
-      <div className="bg-card border border-border rounded-[16px] p-10 shadow-2xl">
+      <div className="bg-pill border border-border rounded-[16px] p-10 shadow-2xl">
         <form onSubmit={handleSave} className="space-y-10">
           
           {/* Profile Picture */}
@@ -298,7 +298,7 @@ export default function DashboardProfileView() {
                     }}
                     className={`flex items-center gap-2.5 px-5 py-2.5 rounded-full text-[0.9rem] transition-all border ${
                       isSelected 
-                        ? "bg-foreground text-background border-foreground font-bold shadow-lg" 
+                        ? "bg-selected text-selected-foreground border-selected font-bold shadow-lg" 
                         : "bg-pill text-muted border-border hover:border-muted hover:text-foreground hover:bg-accent"
                     }`}
                   >
@@ -321,7 +321,7 @@ export default function DashboardProfileView() {
                   onClick={() => setAccount({ ...account, followersRange: range })}
                   className={`px-5 py-2.5 rounded-full text-[0.9rem] transition-all border ${
                     account.followersRange === range 
-                      ? "bg-foreground text-background border-foreground font-bold shadow-lg" 
+                      ? "bg-selected text-selected-foreground border-selected font-bold shadow-lg" 
                       : "bg-pill text-muted border-border hover:border-muted hover:text-foreground hover:bg-accent"
                   }`}
                 >
