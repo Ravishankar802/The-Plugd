@@ -278,24 +278,32 @@ export default function DashboardProfileView() {
             />
           </div>
 
-          {/* Niche - Single Select */}
+          {/* Niche - Multi Select */}
           <div className="flex flex-col gap-5">
             <label className="text-[0.75rem] font-[600] text-[#6b7280] uppercase tracking-[0.12em]">Niche</label>
             <div className="flex flex-wrap gap-3">
               {NICHES.map((niche) => {
+                const Icon = niche.icon;
                 const isSelected = account.niche.includes(niche.name);
                 return (
                   <button
                     key={niche.name}
                     type="button"
-                    onClick={() => setAccount({ ...account, niche: [niche.name] })}
-                    className={`px-5 py-2.5 rounded-full text-[0.9rem] transition-all border ${
+                    onClick={() => {
+                      const current = account.niche || [];
+                      const updated = current.includes(niche.name)
+                        ? current.filter((n: string) => n !== niche.name)
+                        : [...current, niche.name];
+                      setAccount({ ...account, niche: updated });
+                    }}
+                    className={`flex items-center gap-2.5 px-5 py-2.5 rounded-full text-[0.9rem] transition-all border ${
                       isSelected 
-                        ? "bg-white text-black border-white font-bold shadow-lg" 
+                        ? "bg-white text-black border-white font-bold shadow-lg shadow-white/5" 
                         : "bg-[#111111] text-[#8b8b8b] border-[#2a2a2a] hover:border-[#3a3a3a] hover:text-white"
                     }`}
                   >
-                    {niche.name}
+                    <Icon size={16} className={isSelected ? "text-black" : "text-[#71717a]"} />
+                    <span>{niche.name}</span>
                   </button>
                 );
               })}

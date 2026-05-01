@@ -56,7 +56,7 @@ export default function DashboardLayout({
         </div>
         
         {/* Sidebar Footer (below sidebar style nav) */}
-        <div className="px-10 pb-4">
+        <div className="px-10 pb-4 pt-8">
           <Footer showBorder={true} />
         </div>
       </main>
