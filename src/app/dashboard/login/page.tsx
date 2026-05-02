@@ -85,7 +85,7 @@ export default function LoginPage() {
           <button
             disabled={loading || !email}
             type="submit"
-            className="w-full bg-pill border border-pill-border text-foreground font-bold py-4 rounded-xl transition-all hover:bg-accent flex items-center justify-center gap-2 disabled:opacity-50 shadow-lg active:scale-[0.98]"
+            className="w-full bg-white text-black font-bold py-4 rounded-xl transition-all hover:bg-white/90 flex items-center justify-center gap-2 disabled:opacity-50 shadow-lg active:scale-[0.98]"
           >
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Continue"}
           </button>
