@@ -3,13 +3,23 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Loader2, ArrowRight } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { Loader2, ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const verified = searchParams.get("verified") === "true";
+
+  // Clear existing session if we just came from a successful payment
+  useState(() => {
+    if (typeof window !== "undefined" && searchParams.get("verified") === "true") {
+      localStorage.removeItem("plugd_user_email");
+    }
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,6 +58,15 @@ export default function LoginPage() {
           <h1 className="text-2xl font-bold text-foreground mb-2">Access Your Dashboard</h1>
           <p className="text-muted text-sm font-medium">Enter the email you used when getting listed.</p>
         </div>
+
+        {verified && (
+          <div className="mb-8 p-4 bg-green-500/10 border border-green-500/20 rounded-xl flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-500">
+            <CheckCircle2 className="text-green-500 w-5 h-5" />
+            <p className="text-green-500 text-sm font-bold">
+              Payment confirmed! Please enter your email to access your dashboard.
+            </p>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">

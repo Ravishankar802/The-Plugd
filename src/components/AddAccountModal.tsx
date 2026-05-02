@@ -161,7 +161,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
       }
 
       // 4. Redirect to Dodo checkout with accountId in metadata
-      const checkoutUrl = `https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=https://the-plugd.vercel.app/dashboard&showDiscounts=false&customer_email=${encodeURIComponent(formData.email)}&metadata_accountId=${accountId}`;
+      const checkoutUrl = `https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=${encodeURIComponent('https://the-plugd.vercel.app/dashboard/login?verified=true')}&showDiscounts=false&customer_email=${encodeURIComponent(formData.email)}&metadata_accountId=${accountId}`;
       window.location.href = checkoutUrl;
     } catch (error) {
       console.error(error);

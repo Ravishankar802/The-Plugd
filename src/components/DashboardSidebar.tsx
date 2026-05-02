@@ -16,7 +16,7 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
 
   const handleLogout = () => {
     localStorage.removeItem("plugd_user_email");
-    router.push("/dashboard/login");
+    window.location.href = "/dashboard/login";
   };
 
   const navItems = [
