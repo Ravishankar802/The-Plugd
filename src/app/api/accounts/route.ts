@@ -1,3 +1,7 @@
+/**
+ * API route for managing accounts.
+ * Handlers for GET (fetch all paid) and POST (create submission).
+ */
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
