@@ -16,9 +16,11 @@ export const metadata: Metadata = {
   title: "The Plugd - Get Found. Grow Your Network.",
   description: "The directory for X builders, founders and creators.",
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+    ],
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
 };
 
