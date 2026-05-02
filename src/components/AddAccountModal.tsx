@@ -140,7 +140,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
           name: formData.name, 
-          handle: formData.xHandle, 
+          handle: formData.xHandle.replace(/^@+/, ''), // Strip leading @
           bio: formData.bio,
           category: formData.niches, 
           followersRange: formData.followersRange,

@@ -70,10 +70,16 @@ export default function DashboardProfileView() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const email = params.get("email");
+    let email = params.get("email");
     
+    if (!email && typeof window !== "undefined") {
+      email = localStorage.getItem("plugd_user_email");
+    }
+
     if (email) {
       fetchAccount(email);
+      // Persist for refresh
+      localStorage.setItem("plugd_user_email", email);
     } else {
       setLoading(false);
     }

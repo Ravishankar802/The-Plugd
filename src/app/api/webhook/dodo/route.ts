@@ -30,10 +30,11 @@ export async function POST(req: Request) {
 
     if (event.type === "payment.succeeded") {
       const payment = event.data;
-      const accountId = payment.metadata?.accountId;
+      // Dodo Payments metadata keys are usually nested or accessible via data
+      const accountId = payment.metadata?.metadata_accountId || payment.metadata?.accountId;
 
       if (!accountId) {
-        console.error("No accountId found in metadata");
+        console.error("No accountId found in metadata", payment.metadata);
         return NextResponse.json({ error: "Missing accountId" }, { status: 400 });
       }
 
