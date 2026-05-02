@@ -14,13 +14,16 @@ export default function LoginPage() {
   const searchParams = useSearchParams();
   const verified = searchParams.get("verified") === "true";
 
-  // Clear existing session if we just came from a successful payment
+  // Redirect if already logged in
   useState(() => {
-    if (typeof window !== "undefined" && searchParams.get("verified") === "true") {
-      localStorage.removeItem("plugd_user_email");
+    if (typeof window !== "undefined") {
+      const storedEmail = localStorage.getItem("plugd_user_email");
+      if (storedEmail && !verified) {
+        router.replace("/dashboard");
+      }
     }
   });
-
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -38,7 +41,7 @@ export default function LoginPage() {
       if (res.ok) {
         if (data.status === "paid") {
           localStorage.setItem("plugd_user_email", email.trim());
-          router.push("/dashboard");
+          router.replace("/dashboard");
         }
       } else {
         // Show specific error from API if available

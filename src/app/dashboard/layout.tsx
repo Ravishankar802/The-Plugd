@@ -21,7 +21,7 @@ export default function DashboardLayout({
     const storedEmail = localStorage.getItem("plugd_user_email");
     if (!storedEmail) {
       if (pathname !== "/dashboard/login") {
-        router.push("/dashboard/login");
+        router.replace("/dashboard/login");
       } else {
         setIsLoading(false);
       }
