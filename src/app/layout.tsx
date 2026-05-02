@@ -14,8 +14,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Plugd - Get Found. Grow Your Network.",
-  description: "The directory for X builders, founders and creators.",
+  title: "Plugd — Get discovered by X builders, founders and creators",
+  description: "$1 to get listed and get more followers, impressions and growth on X.",
+  openGraph: {
+    title: "Plugd — Get discovered by X builders, founders and creators",
+    description: "$1 to get listed and get more followers, impressions and growth on X.",
+    url: "https://the-plugd.vercel.app",
+    siteName: "Plugd",
+    images: [
+      {
+        url: "https://the-plugd.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+      }
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Plugd — Get discovered by X builders, founders and creators",
+    description: "$1 to get listed and get more followers, impressions and growth on X.",
+    images: ["https://the-plugd.vercel.app/og-image.png"],
+  },
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
