@@ -2,6 +2,9 @@ import prisma from "@/lib/prisma";
 import HomeClient from "@/components/HomeClient";
 
 // Server component — fetches accounts at request time (SSR)
+// force-dynamic ensures fresh DB data on every request, not stale build-time snapshot
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   let accounts: Awaited<ReturnType<typeof prisma.account.findMany>> = [];
   try {

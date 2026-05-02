@@ -61,7 +61,7 @@ export default function DirectoryTable({
   }, []);
  
   return (
-    <div className="w-full bg-card rounded-2xl border border-border overflow-hidden">
+    <div className="w-full bg-card rounded-2xl border border-border">
       <div className="flex flex-col md:flex-row md:items-center justify-between p-6 gap-4">
         <h2 className="text-[1.5rem] font-[800] text-foreground text-glow">Index</h2>
         
@@ -82,7 +82,7 @@ export default function DirectoryTable({
             </button>
  
             {followersOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-xl z-50 py-1 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200 max-h-[400px] overflow-y-auto no-scrollbar">
+              <div className="absolute right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-xl z-[200] py-1 animate-in fade-in slide-in-from-top-2 duration-200 max-h-[320px] overflow-y-auto no-scrollbar">
                 {FOLLOWERS_RANGES.map((range) => (
                   <button
                     key={range}
