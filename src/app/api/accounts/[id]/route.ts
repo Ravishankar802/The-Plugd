@@ -10,6 +10,26 @@ export async function PATCH(
     const id = parseInt(idStr);
     const body = await req.json();
     
+    // Security check
+    const userEmail = req.headers.get("x-user-email");
+    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+    
+    // Fetch current account to check ownership
+    const currentAccount = await prisma.account.findUnique({
+      where: { id },
+    });
+
+    if (!currentAccount) {
+      return NextResponse.json({ error: "Account not found" }, { status: 404 });
+    }
+
+    const isOwner = userEmail && currentAccount.email.toLowerCase() === userEmail.toLowerCase();
+    const isAdmin = userEmail && adminEmail && userEmail.toLowerCase() === adminEmail.toLowerCase();
+
+    if (!isOwner && !isAdmin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     // Extract editable fields
     const { name, xHandle, bio, niche, followersRange, avatarPath, email } = body;
 
@@ -17,7 +37,7 @@ export async function PATCH(
       where: { id },
       data: {
         name,
-        xHandle,
+        xHandle: xHandle ? String(xHandle).replace(/^@+/, "") : undefined,
         bio,
         niche,
         followersRange,
@@ -41,6 +61,14 @@ export async function DELETE(
     const { id: idStr } = await params;
     const id = parseInt(idStr);
     
+    // Security check - Only Admin can delete
+    const userEmail = req.headers.get("x-user-email");
+    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+
+    if (!userEmail || !adminEmail || userEmail.toLowerCase() !== adminEmail.toLowerCase()) {
+      return NextResponse.json({ error: "Unauthorized. Admin access required." }, { status: 401 });
+    }
+
     await prisma.account.delete({
       where: { id },
     });

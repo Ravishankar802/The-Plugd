@@ -115,9 +115,13 @@ export default function DashboardProfileView() {
       let handle = account.xHandle;
       if (handle.startsWith("@")) handle = handle.substring(1);
 
+      const emailHeader = localStorage.getItem("plugd_user_email");
       const res = await fetch(`/api/accounts/${account.id}`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "x-user-email": emailHeader || ""
+        },
         body: JSON.stringify({
           ...account,
           xHandle: handle

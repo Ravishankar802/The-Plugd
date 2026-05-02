@@ -81,9 +81,13 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
     e.preventDefault();
     setSaving(true);
     try {
+      const emailHeader = localStorage.getItem("plugd_user_email");
       const res = await fetch(`/api/accounts/${formData.id}`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "x-user-email": emailHeader || ""
+        },
         body: JSON.stringify(formData),
       });
       if (res.ok) {

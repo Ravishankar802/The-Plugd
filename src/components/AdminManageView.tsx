@@ -58,7 +58,13 @@ export default function AdminManageView() {
 
   const fetchAccounts = async () => {
     try {
-      const res = await fetch("/api/accounts/admin");
+      const email = localStorage.getItem("plugd_user_email");
+      const res = await fetch("/api/accounts/admin", {
+        headers: {
+          "x-admin-email": email || "", // Keep for legacy if needed, but we'll transition to x-user-email
+          "x-user-email": email || "",
+        },
+      });
       if (res.ok) {
         const data = await res.json();
         setAccounts(Array.isArray(data) ? data : []);
@@ -72,8 +78,12 @@ export default function AdminManageView() {
 
   const handleDelete = async (id: number) => {
     try {
+      const email = localStorage.getItem("plugd_user_email");
       const res = await fetch(`/api/accounts/${id}`, {
         method: "DELETE",
+        headers: {
+          "x-user-email": email || "",
+        },
       });
       if (res.ok) {
         setAccounts(accounts.filter(a => a.id !== id));

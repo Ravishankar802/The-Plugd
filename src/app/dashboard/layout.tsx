@@ -42,9 +42,8 @@ export default function DashboardLayout({
     return <>{children}</>;
   }
 
-  // Admin check (hardcoded env check would be better in a server component, but we'll do simple check here)
-  const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "admin@theplugd.com";
-  const isAdmin = email === ADMIN_EMAIL;
+  // Admin check
+  const isAdmin = email === process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 
   return (
     <div className="min-h-screen bg-background flex overflow-hidden">
