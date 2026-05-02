@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "Plugd",
     images: [
       {
-        url: "https://the-plugd.vercel.app/og-v4.png",
+        url: "https://the-plugd.vercel.app/og-v5.png",
         width: 1200,
         height: 630,
       }
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Plugd — Get discovered by X builders, founders and creators",
     description: "$1 to get listed and get more followers, impressions and growth on X.",
-    images: ["https://the-plugd.vercel.app/og-v4.png"],
+    images: ["https://the-plugd.vercel.app/og-v5.png"],
   },
   icons: {
     icon: [
