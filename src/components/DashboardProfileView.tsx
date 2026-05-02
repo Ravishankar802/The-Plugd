@@ -202,20 +202,20 @@ export default function DashboardProfileView() {
           {/* Profile Picture */}
           <div className="flex flex-col gap-4">
             <label className="text-[0.95rem] font-[500] text-foreground block">Profile Picture</label>
-            <div className="flex items-center gap-8">
+            <div className="flex flex-row items-center gap-4 md:gap-8 w-full overflow-hidden">
               {account.avatarPath ? (
                 <img 
                   src={account.avatarPath} 
                   alt={account.name} 
-                  className="w-24 h-24 rounded-[16px] object-cover border border-border shadow-2xl"
+                  className="w-20 h-20 md:w-24 md:h-24 rounded-[16px] object-cover border border-border shadow-2xl shrink-0"
                 />
               ) : (
-                <div className="w-24 h-24 rounded-[16px] bg-pill border border-border flex items-center justify-center shadow-inner">
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-[16px] bg-pill border border-border flex items-center justify-center shadow-inner shrink-0">
                   <Camera size={28} className="text-muted/40" />
                 </div>
               )}
-              <div className="flex flex-col gap-3">
-                <div className="flex gap-3">
+              <div className="flex flex-col gap-2 md:gap-3 flex-1 min-w-0">
+                <div className="flex items-center gap-2 md:gap-3">
                   <input
                     type="file"
                     ref={fileInputRef}
@@ -227,20 +227,20 @@ export default function DashboardProfileView() {
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     disabled={uploading}
-                    className="bg-pill border border-pill-border text-foreground px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-accent transition-all flex items-center gap-2 shadow-lg active:scale-[0.98]"
+                    className="bg-pill border border-pill-border text-foreground px-4 md:px-6 py-2 rounded-xl text-xs md:text-sm font-bold hover:bg-accent transition-all flex items-center gap-2 shadow-lg active:scale-[0.98] whitespace-nowrap"
                   >
-                    {uploading ? <Loader2 size={16} className="animate-spin" /> : <Upload size={18} />}
+                    {uploading ? <Loader2 size={14} className="animate-spin" /> : <Upload size={16} />}
                     Change
                   </button>
                   <button
                     type="button"
                     onClick={() => setAccount({ ...account, avatarPath: "" })}
-                    className="p-3 bg-pill border border-border text-muted hover:text-red-500 hover:border-red-500/50 rounded-xl transition-all active:scale-[0.98]"
+                    className="p-2 md:p-3 bg-pill border border-border text-muted hover:text-red-500 hover:border-red-500/50 rounded-xl transition-all active:scale-[0.98] shrink-0"
                   >
-                    <Trash2 size={20} />
+                    <Trash2 size={18} />
                   </button>
                 </div>
-                <p className="text-[0.8rem] text-muted/60 font-medium">JPG, PNG or WebP. Max 2MB.</p>
+                <p className="text-[0.75rem] md:text-[0.8rem] text-muted/60 font-medium truncate">JPG, PNG or WebP. Max 2MB.</p>
               </div>
             </div>
           </div>

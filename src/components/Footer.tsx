@@ -42,21 +42,30 @@ export default function Footer({ showBorder = true }: FooterProps) {
 
   return (
     <footer className={`${isDashboard ? "py-10" : "py-20"} ${showBorder ? "border-t border-border" : ""}`}>
-      <div className="flex items-center justify-between gap-6 relative">
+      <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative">
         {isDashboard ? (
           <>
             {/* Dashboard style: Centered Home */}
-            <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] text-muted font-medium">
+            <div className="md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] text-muted font-medium">
               <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
             </div>
-            <div className="flex-1" />
+            <div className="hidden md:block flex-1" />
           </>
         ) : (
-          /* Default style: Links on left */
-          <div className="flex flex-row gap-4 md:gap-6 items-center flex-wrap text-[0.9rem] text-muted font-medium">
-            <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
-            <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
-            <Link href="/terms-of-service" className="hover:text-foreground transition-colors">Terms of Service</Link>
+          /* Default style: Minimal row on mobile, links on left on desktop */
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 text-sm md:text-[0.9rem] text-muted font-medium w-full md:w-auto">
+            <div className="md:hidden flex items-center justify-center gap-2 whitespace-nowrap">
+              <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+              <span className="opacity-40">·</span>
+              <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
+              <span className="opacity-40">·</span>
+              <Link href="/terms-of-service" className="hover:text-foreground transition-colors">Terms</Link>
+            </div>
+            <div className="hidden md:flex items-center gap-6">
+              <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+              <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
+              <Link href="/terms-of-service" className="hover:text-foreground transition-colors">Terms of Service</Link>
+            </div>
           </div>
         )}
 
@@ -75,7 +84,7 @@ export default function Footer({ showBorder = true }: FooterProps) {
             </button>
 
             {isOpen && (
-              <div className="absolute bottom-full left-0 mb-2 w-32 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-2">
+              <div className="absolute bottom-full left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 mb-2 w-32 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-2">
                 {themeOptions.map((item) => (
                   <button
                     key={item.name}
