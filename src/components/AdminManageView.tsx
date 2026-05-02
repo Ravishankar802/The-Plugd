@@ -36,6 +36,8 @@ export default function AdminManageView() {
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [editingAccount, setEditingAccount] = useState<any>(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<number | null>(null);
+  const [isCleaningUp, setIsCleaningUp] = useState(false);
+  const [cleanupMessage, setCleanupMessage] = useState<string | null>(null);
 
   const rangeRef = useRef<HTMLDivElement>(null);
   const sortRef = useRef<HTMLDivElement>(null);
@@ -98,6 +100,25 @@ export default function AdminManageView() {
     setAccounts(accounts.map(a => a.id === updated.id ? updated : a));
   };
 
+  const handleCleanup = async () => {
+    setIsCleaningUp(true);
+    setCleanupMessage(null);
+    try {
+      const email = localStorage.getItem("plugd_user_email");
+      const res = await fetch("/api/accounts/admin", {
+        method: "DELETE",
+        headers: { "x-user-email": email || "" },
+      });
+      const data = await res.json();
+      setCleanupMessage(data.message || "Done.");
+    } catch {
+      setCleanupMessage("Cleanup failed.");
+    } finally {
+      setIsCleaningUp(false);
+      setTimeout(() => setCleanupMessage(null), 4000);
+    }
+  };
+
   // Filter and Sort Logic
   const filteredAccounts = accounts
     .filter(a => selectedRange === "All Ranges" || a.followersRange === selectedRange)
@@ -118,15 +139,26 @@ export default function AdminManageView() {
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="mb-10">
         <h1 className="text-[2.5rem] font-[500] text-foreground leading-tight tracking-tighter">Manage Accounts</h1>
-        <p className="text-muted text-[1rem] mt-1 font-[300]">View and manage all account submissions.</p>
+        <p className="text-muted text-[1rem] mt-1 font-[300]">Showing paid accounts only. Abandoned pending payments are excluded.</p>
       </div>
 
       {/* Filters */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <button className="px-6 py-2.5 rounded-xl bg-selected text-selected-foreground border-selected font-bold text-sm hover:bg-accent transition-all shadow-lg">
-            All ({accounts.length})
+            Paid ({accounts.length})
           </button>
+          <button
+            onClick={handleCleanup}
+            disabled={isCleaningUp}
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-pill border border-border text-muted hover:text-red-500 hover:border-red-500/40 transition-all text-sm font-bold shadow-lg disabled:opacity-50"
+          >
+            {isCleaningUp ? <Loader2 size={14} className="animate-spin" /> : <Trash2 size={14} />}
+            Clean up stale
+          </button>
+          {cleanupMessage && (
+            <span className="text-green-500 text-xs font-medium animate-in fade-in">{cleanupMessage}</span>
+          )}
         </div>
 
         <div className="flex items-center gap-3">
