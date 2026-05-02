@@ -31,6 +31,19 @@ export default function DashboardLayout({
     }
   }, [router, pathname]);
 
+  // Prevent back button from going to login page
+  useEffect(() => {
+    if (pathname === "/dashboard" || pathname === "/dashboard/manage") {
+      window.history.pushState(null, "", window.location.href);
+      window.onpopstate = () => {
+        router.replace("/");
+      };
+    }
+    return () => {
+      window.onpopstate = null;
+    };
+  }, [pathname, router]);
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">

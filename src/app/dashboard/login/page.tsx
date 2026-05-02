@@ -15,14 +15,14 @@ export default function LoginPage() {
   const verified = searchParams.get("verified") === "true";
 
   // Redirect if already logged in
-  useState(() => {
+  useEffect(() => {
     if (typeof window !== "undefined") {
-      const storedEmail = localStorage.getItem("plugd_user_email");
-      if (storedEmail && !verified) {
+      const email = localStorage.getItem("plugd_user_email");
+      if (email && !verified) {
         router.replace("/dashboard");
       }
     }
-  });
+  }, [router, verified]);
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
