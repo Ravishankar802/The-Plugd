@@ -27,9 +27,9 @@ export default function Header() {
       <h1 className="text-[clamp(1.75rem,4.5vw,2.85rem)] font-[800] tracking-[-0.035em] leading-[1.1] text-foreground mb-4 relative z-10">
         Get seen. Get followed. Blow up on X.
       </h1>
-      <p className="text-muted text-[1.25rem] font-normal max-w-2xl leading-relaxed mx-auto relative z-10">
-        $1 to get listed and get more followers, more impressions, more growth.<br />
-        Or keep posting into the void.
+      <p className="text-muted text-[0.875rem] md:text-[1.25rem] font-normal max-w-[340px] md:max-w-2xl leading-tight md:leading-relaxed mx-auto relative z-10 px-4">
+        $1 to get listed and get more followers, more impressions, more growth.
+        <span className="hidden md:inline"> Or keep posting into the void.</span>
       </p>
     </header>
   );

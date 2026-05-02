@@ -146,46 +146,48 @@ export default function DirectoryTable({
         </div>
       </div>
  
-      <div className="overflow-x-auto">
-        <table className="directory-table">
-          <thead>
+      <div className="overflow-x-hidden md:overflow-x-visible">
+        <table className="w-full block md:table border-collapse">
+          <thead className="hidden md:table-header-group">
             <tr>
               <th className="w-16">#</th>
               <th>Profile</th>
               <th className="w-52 text-left pl-12">X Handle</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="block md:table-row-group">
             {accounts.map((account, index) => (
-              <tr key={account.id} className="directory-row group transition-colors">
-                <td className="font-mono-custom text-muted text-sm">{index + 1}</td>
-                <td>
+              <tr key={account.id} className="directory-row group transition-colors flex flex-col md:table-row border-b border-border md:border-none py-6 md:py-0">
+                <td className="font-mono-custom text-muted text-sm block md:table-cell px-6 py-1 md:py-4 md:w-16">
+                  <span className="md:inline">{index + 1}</span>
+                </td>
+                <td className="block md:table-cell px-6 py-2 md:py-4">
                   <div className="flex items-center gap-4">
                     <img
                       src={account.avatarPath}
                       alt={account.name}
-                      className="w-10 h-10 rounded-full object-cover border border-border"
+                      className="w-12 h-12 md:w-10 md:h-10 rounded-full object-cover border border-border shrink-0"
                       onError={(e) => {
                         (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(account.name)}&background=random`;
                       }}
                     />
-                    <div>
-                      <div className="font-[600] text-base leading-tight text-foreground text-glow">
+                    <div className="min-w-0 flex-1">
+                      <div className="font-[600] text-base md:text-base leading-tight text-foreground text-glow truncate">
                         {account.name}
                       </div>
-                      <div className="text-muted text-[0.8rem] line-clamp-1 mt-0.5">
+                      <div className="text-muted text-[0.8rem] line-clamp-2 md:line-clamp-1 mt-1 md:mt-0.5">
                         {account.bio}
                       </div>
                     </div>
                   </div>
                 </td>
-                <td className="text-left pl-12">
+                <td className="block md:table-cell px-6 pt-4 pb-0 md:py-4 md:pl-12">
                   <div className="flex justify-start">
                     <Link
                       href={`https://x.com/${account.xHandle.replace(/^@+/, '')}`}
                       target="_blank"
                       suppressHydrationWarning
-                      className="inline-flex items-center gap-2 bg-white text-black hover:bg-white/90 transition-all px-4 py-2 rounded-lg font-mono-custom text-sm font-bold min-w-[150px] text-left"
+                      className="inline-flex items-center gap-2 bg-white text-black hover:bg-white/90 transition-all px-4 py-3 md:py-2 rounded-lg font-mono-custom text-sm font-bold w-full md:min-w-[150px] md:w-auto justify-center md:justify-start shadow-sm"
                     >
                       <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />

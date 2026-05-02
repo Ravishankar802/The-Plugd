@@ -274,7 +274,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
                 <button
                   onClick={() => setIsModalOpen(true)}
                   suppressHydrationWarning
-                  className="h-[48px] bg-selected border border-selected text-selected-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
+                  className="h-[48px] w-full md:w-auto bg-selected border border-selected text-selected-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
                 >
                   <Plus className="w-5 h-5" />
                   Add Account
@@ -282,8 +282,8 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
               </div>
 
               {/* Niche Categories */}
-              <div className="flex justify-center w-full">
-                <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 mask-fade-right w-full scroll-smooth">
+              <div className="flex justify-center w-full relative group">
+                <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 mask-fade-right w-full scroll-smooth px-4 md:px-0">
                   <button
                     onClick={() => toggleNiche("All")}
                     suppressHydrationWarning
