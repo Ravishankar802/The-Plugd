@@ -248,14 +248,14 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
                               key={acc.id} 
                               className="px-4 py-3 hover:bg-accent cursor-pointer flex items-center gap-4 transition-colors group"
                               onClick={() => {
-                                window.open(`https://x.com/${acc.xHandle}`, '_blank');
+                                window.open(`https://x.com/${acc.xHandle.replace(/^@+/, '')}`, '_blank');
                                 setShowResults(false);
                               }}
                             >
                               <img src={acc.avatarPath} alt="" className="w-10 h-10 rounded-lg object-cover border border-border shadow-sm" />
                               <div className="flex-1 min-w-0">
                                 <p className="text-foreground font-bold text-[0.95rem] truncate">{acc.name}</p>
-                                <p className="text-muted text-[0.8rem] truncate">@{acc.xHandle}</p>
+                                <p className="text-muted text-[0.8rem] truncate">@{acc.xHandle.replace(/^@+/, '')}</p>
                               </div>
                               <div className="px-3 py-1.5 rounded-lg bg-selected border border-selected text-selected-foreground text-[0.75rem] font-bold transition-all flex items-center gap-1.5 shadow-sm">
                                 Visit <ExternalLink className="w-3.5 h-3.5" />

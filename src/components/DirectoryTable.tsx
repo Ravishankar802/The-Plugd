@@ -182,7 +182,7 @@ export default function DirectoryTable({
                 <td className="text-left pl-12">
                   <div className="flex justify-start">
                     <Link
-                      href={`https://x.com/${account.xHandle}`}
+                      href={`https://x.com/${account.xHandle.replace(/^@+/, '')}`}
                       target="_blank"
                       suppressHydrationWarning
                       className="inline-flex items-center gap-2 bg-white text-black hover:bg-white/90 transition-all px-4 py-2 rounded-lg font-mono-custom text-sm font-bold min-w-[150px] text-left"
@@ -190,7 +190,7 @@ export default function DirectoryTable({
                       <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                       </svg>
-                      <span>@{account.xHandle}</span>
+                      <span>@{account.xHandle.replace(/^@+/, '')}</span>
                     </Link>
                   </div>
                 </td>
