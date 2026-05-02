@@ -343,7 +343,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
               Show more ({Math.min(50, remainingCount)} more accounts)
             </button>
           )}
-          <p className="text-[#a1a1aa] text-[0.8rem] md:text-[0.85rem] font-mono-custom text-center px-4 max-w-sm mx-auto break-words leading-relaxed">
+          <p className="text-[#a1a1aa] text-[0.8rem] md:text-[0.85rem] font-mono-custom text-center px-4 md:whitespace-nowrap whitespace-normal max-w-sm mx-auto md:max-w-none leading-relaxed">
             <Info className="w-4 h-4 shrink-0 inline-block mr-2 -mt-0.5" />
             Accounts listed here are submitted by real X creators. Every listing is verified by a $1 payment. No bots. No spam.
           </p>

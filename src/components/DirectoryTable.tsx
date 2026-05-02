@@ -150,14 +150,14 @@ export default function DirectoryTable({
         <table className="w-full block md:table border-collapse">
           <thead className="hidden md:table-header-group">
             <tr>
-              <th className="w-16">#</th>
-              <th>Profile</th>
-              <th className="w-52 text-left pl-12">X Handle</th>
+              <th className="w-16 text-left pl-6 pb-3 text-muted text-sm font-medium">#</th>
+              <th className="text-left pb-3 text-muted text-sm font-medium">Name</th>
+              <th className="w-52 text-left pl-12 pb-3 text-muted text-sm font-medium">X Handle</th>
             </tr>
           </thead>
           <tbody className="block md:table-row-group">
             {accounts.map((account, index) => (
-              <tr key={account.id} className="directory-row group transition-colors flex flex-col md:table-row border-b border-border md:border-none py-6 md:py-0">
+              <tr key={account.id} className="directory-row group transition-colors flex flex-col md:table-row border-b border-border py-6 md:py-0">
                 {/* Desktop Number Cell */}
                 <td className="font-mono-custom text-muted text-sm hidden md:table-cell px-6 py-4 md:w-16">
                   {index + 1}
