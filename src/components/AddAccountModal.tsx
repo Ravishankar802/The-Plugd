@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+// Deployment timestamp: 2026-05-02T00:43:00Z
 import { 
   X, 
   Loader2, 
@@ -105,7 +106,10 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    
     setImageFile(file);
+    
+    // Preview
     const objectUrl = URL.createObjectURL(file);
     setPreviewUrl(objectUrl);
   };
@@ -120,17 +124,14 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
     setIsLoading(true);
 
     try {
-      // 2. Upload image if selected
+      // 2. Convert image to Base64 if selected
       let imageUrl = "";
       if (imageFile) {
-        const formDataUpload = new FormData();
-        formDataUpload.append("file", imageFile);
-        const uploadRes = await fetch("/api/upload", {
-          method: "POST",
-          body: formDataUpload,
+        imageUrl = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.readAsDataURL(imageFile);
         });
-        const uploadData = await uploadRes.json();
-        imageUrl = uploadData.filePath; // Using filePath from my API
       }
 
       // 3. Save account to DB with status: pending_payment
