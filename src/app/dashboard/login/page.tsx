@@ -23,15 +23,16 @@ export default function LoginPage() {
         body: JSON.stringify({ email: email.trim() }),
       });
 
+      const data = await res.json();
+
       if (res.ok) {
-        const data = await res.json();
-        if (data.found) {
+        if (data.status === "paid") {
           localStorage.setItem("plugd_user_email", email.trim());
           router.push("/dashboard");
         }
       } else {
-        const data = await res.json();
-        setError(data.found === false ? "No account found with this email. Get listed first." : "Something went wrong.");
+        // Show specific error from API if available
+        setError(data.error || "No paid account found with this email.");
       }
     } catch (err) {
       setError("Failed to connect to the server.");

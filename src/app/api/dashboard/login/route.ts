@@ -14,8 +14,7 @@ export async function POST(req: Request) {
         email: {
           equals: email,
           mode: 'insensitive'
-        },
-        status: "paid" // Ensure they only see paid profiles in dashboard
+        }
       },
       orderBy: {
         createdAt: 'desc'
@@ -23,10 +22,25 @@ export async function POST(req: Request) {
     });
 
     if (!account) {
-      return NextResponse.json({ found: false }, { status: 404 });
+      return NextResponse.json({ found: false, error: "No account found with this email." }, { status: 404 });
     }
 
-    return NextResponse.json({ found: true, account });
+    if (account.status === "pending_payment") {
+      return NextResponse.json({ 
+        found: true, 
+        status: "pending",
+        error: "Your payment is being verified. Your profile will appear shortly." 
+      }, { status: 403 });
+    }
+
+    if (account.status !== "paid") {
+      return NextResponse.json({ 
+        found: false, 
+        error: "Account not active. Please contact support." 
+      }, { status: 403 });
+    }
+
+    return NextResponse.json({ found: true, status: "paid", account });
   } catch (error) {
     console.error("Login error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
