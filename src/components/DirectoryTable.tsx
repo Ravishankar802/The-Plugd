@@ -206,11 +206,6 @@ export default function DirectoryTable({
         </div>
       )}
       
-      {isLoading && (
-        <div className="p-12 text-center text-muted">
-          Loading accounts...
-        </div>
-      )}
     </div>
   );
 }

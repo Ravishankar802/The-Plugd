@@ -71,53 +71,7 @@ const NICHES = [
   { name: "Other", icon: Plus },
 ];
 
-const MOCK_ACCOUNTS: Account[] = [
-  {
-    id: -1,
-    name: "Ravi Shankar",
-    xHandle: "ravishankar802",
-    avatarPath: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-    bio: "Building The Plugd. Growth hacker & founder.",
-    niche: "Founder",
-    followersRange: "10K+"
-  },
-  {
-    id: -2,
-    name: "Sarah Chen",
-    xHandle: "sarahcodes",
-    avatarPath: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-    bio: "Full-stack developer at Vercel. Next.js enthusiast.",
-    niche: "Developer",
-    followersRange: "5K - 10K"
-  },
-  {
-    id: -3,
-    name: "James Wilson",
-    xHandle: "jdesign",
-    avatarPath: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
-    bio: "Minimalist designer. Making the web beautiful.",
-    niche: "Designer",
-    followersRange: "10K+"
-  },
-  {
-    id: -4,
-    name: "Elena Rodriguez",
-    xHandle: "elenarai",
-    avatarPath: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
-    bio: "AI researcher. Exploring the future of LLMs.",
-    niche: "AI",
-    followersRange: "5K - 10K"
-  },
-  {
-    id: -5,
-    name: "Marc Lou",
-    xHandle: "marclou",
-    avatarPath: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop",
-    bio: "Indie hacker. Shipping 12 startups in 12 months.",
-    niche: "Indie Hacker",
-    followersRange: "10K+"
-  }
-];
+const MOCK_ACCOUNTS: Account[] = [];
 
 export default function Home() {
   const [accounts, setAccounts] = useState<Account[]>(MOCK_ACCOUNTS);
@@ -198,12 +152,7 @@ export default function Home() {
       const data = await response.json();
       
       const apiAccounts = Array.isArray(data) ? data : [];
-      
-      const combinedData = [...MOCK_ACCOUNTS, ...apiAccounts.filter((acc: Account) => 
-        !MOCK_ACCOUNTS.some(mock => mock.xHandle === acc.xHandle)
-      )];
-      
-      setAccounts(combinedData);
+      setAccounts(apiAccounts);
     } catch (error) {
       console.error("Failed to fetch accounts:", error);
     } finally {
