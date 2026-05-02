@@ -193,7 +193,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
   };
 
   return (
-    <main className="flex-1 flex flex-col items-center w-full">
+    <main className="flex-1 flex flex-col items-center w-full max-w-full overflow-x-hidden">
       {/* Hero Wrapper with Scattered Hashtags - Now truly full width */}
       <div className="w-full relative flex flex-col items-center pt-2 pb-4">
         {/* Background Hashtags Container - This handles overflow for hashtags only */}
@@ -343,9 +343,12 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
               Show more ({Math.min(50, remainingCount)} more accounts)
             </button>
           )}
-          <p className="text-[#a1a1aa] text-[0.85rem] flex items-center justify-center gap-2 font-mono-custom whitespace-nowrap">
-            <Info className="w-4 h-4 shrink-0" />
-            Accounts listed here are submitted by real X creators. Every listing is verified by a $1 payment. No bots. No spam.
+          <p className="text-[#a1a1aa] text-[0.8rem] md:text-[0.85rem] flex flex-col md:flex-row items-center justify-center gap-2 font-mono-custom text-center px-6 max-w-full break-words">
+            <span className="flex items-center gap-2">
+              <Info className="w-4 h-4 shrink-0" />
+              <span>Accounts listed here are submitted by real X creators.</span>
+            </span>
+            <span>Every listing is verified by a $1 payment. No bots. No spam.</span>
           </p>
         </div>
       </div>

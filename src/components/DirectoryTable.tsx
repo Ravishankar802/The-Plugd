@@ -158,11 +158,16 @@ export default function DirectoryTable({
           <tbody className="block md:table-row-group">
             {accounts.map((account, index) => (
               <tr key={account.id} className="directory-row group transition-colors flex flex-col md:table-row border-b border-border md:border-none py-6 md:py-0">
-                <td className="font-mono-custom text-muted text-sm block md:table-cell px-6 py-1 md:py-4 md:w-16">
-                  <span className="md:inline">{index + 1}</span>
+                {/* Desktop Number Cell */}
+                <td className="font-mono-custom text-muted text-sm hidden md:table-cell px-6 py-4 md:w-16">
+                  {index + 1}
                 </td>
                 <td className="block md:table-cell px-6 py-2 md:py-4">
                   <div className="flex items-center gap-4">
+                    {/* Mobile Number Indicator */}
+                    <span className="md:hidden font-mono-custom text-muted text-xs w-4 shrink-0">
+                      {index + 1}
+                    </span>
                     <img
                       src={account.avatarPath}
                       alt={account.name}
