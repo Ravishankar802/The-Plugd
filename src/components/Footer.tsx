@@ -53,7 +53,7 @@ export default function Footer({ showBorder = true }: FooterProps) {
           </>
         ) : (
           /* Default style: Links on left */
-          <div className="flex items-center gap-6 text-[0.9rem] text-muted font-medium">
+          <div className="flex flex-row gap-4 md:gap-6 items-center flex-wrap text-[0.9rem] text-muted font-medium">
             <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
             <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
             <Link href="/terms-of-service" className="hover:text-foreground transition-colors">Terms of Service</Link>

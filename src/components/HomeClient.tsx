@@ -343,12 +343,9 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
               Show more ({Math.min(50, remainingCount)} more accounts)
             </button>
           )}
-          <p className="text-[#a1a1aa] text-[0.8rem] md:text-[0.85rem] flex flex-col md:flex-row items-center justify-center gap-2 font-mono-custom text-center px-6 max-w-full break-words">
-            <span className="flex items-center gap-2">
-              <Info className="w-4 h-4 shrink-0" />
-              <span>Accounts listed here are submitted by real X creators.</span>
-            </span>
-            <span>Every listing is verified by a $1 payment. No bots. No spam.</span>
+          <p className="text-[#a1a1aa] text-[0.8rem] md:text-[0.85rem] font-mono-custom text-center px-4 max-w-sm mx-auto break-words leading-relaxed">
+            <Info className="w-4 h-4 shrink-0 inline-block mr-2 -mt-0.5" />
+            Accounts listed here are submitted by real X creators. Every listing is verified by a $1 payment. No bots. No spam.
           </p>
         </div>
       </div>
