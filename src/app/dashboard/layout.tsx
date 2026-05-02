@@ -31,26 +31,6 @@ export default function DashboardLayout({
     }
   }, [router, pathname]);
 
-  // Prevent back button from going to login page - refined for mobile
-  useEffect(() => {
-    if (pathname === "/dashboard" || pathname === "/dashboard/manage") {
-      // Clean start for history stack
-      window.history.replaceState(null, "", window.location.href);
-      window.history.pushState(null, "", window.location.href);
-      
-      const handlePopState = () => {
-        window.removeEventListener("popstate", handlePopState);
-        router.replace("/");
-      };
-      
-      window.addEventListener("popstate", handlePopState);
-      
-      return () => {
-        window.removeEventListener("popstate", handlePopState);
-      };
-    }
-  }, [pathname, router]);
-
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
