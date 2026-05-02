@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { 
   Loader2, 
   Trash2, 
@@ -66,7 +66,6 @@ export default function DashboardProfileView() {
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -216,25 +215,17 @@ export default function DashboardProfileView() {
               )}
               <div className="flex flex-col gap-2 md:gap-3 flex-1 min-w-0">
                 <div className="flex items-center gap-2 md:gap-3">
+                  <label htmlFor="avatar-upload" className="cursor-pointer bg-pill border border-pill-border text-foreground px-4 md:px-6 py-2 rounded-xl text-xs md:text-sm font-bold hover:bg-accent transition-all flex items-center gap-2 shadow-lg active:scale-[0.98] whitespace-nowrap">
+                    <Upload size={16} />
+                    Upload
+                  </label>
                   <input
+                    id="avatar-upload"
                     type="file"
-                    ref={fileInputRef}
-                    onChange={handleFileUpload}
                     accept="image/*"
                     className="hidden"
+                    onChange={handleFileUpload}
                   />
-                  <button
-                    type="button"
-                    onClick={() => {
-                      console.log('fileInputRef:', fileInputRef.current);
-                      fileInputRef.current?.click();
-                    }}
-                    disabled={uploading}
-                    className="bg-pill border border-pill-border text-foreground px-4 md:px-6 py-2 rounded-xl text-xs md:text-sm font-bold hover:bg-accent transition-all flex items-center gap-2 shadow-lg active:scale-[0.98] whitespace-nowrap"
-                  >
-                    {uploading ? <Loader2 size={14} className="animate-spin" /> : <Upload size={16} />}
-                    Upload
-                  </button>
                   <button
                     type="button"
                     onClick={() => setAccount({ ...account, avatarPath: "" })}
