@@ -19,48 +19,65 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { 
-      name, 
-      handle, // user pattern
-      xHandle, // existing
-      avatarPath, // existing
-      imageUrl, // user pattern
-      bio, 
-      category, // user pattern
-      niche, // existing
-      followersRange, 
-      email 
+    const {
+      name,
+      handle,    // frontend sends this
+      xHandle,   // legacy key
+      avatarPath,
+      imageUrl,  // frontend sends this
+      bio,
+      category,  // frontend sends this (array of niches)
+      niche,     // legacy key
+      followersRange,
+      email,
     } = body;
 
-    const account = await prisma.account.create({
-      data: {
-        name: name || "Unknown",
-        xHandle: handle || xHandle || `user_${Math.random().toString(36).substring(7)}`,
-        avatarPath: imageUrl || avatarPath || "",
-        bio: bio || "No bio provided",
-        niche: category || niche || [],
-        followersRange: followersRange || "Unknown",
-        email: email || "unknown@example.com",
-        paid: false,
-        status: "pending_payment",
-      },
-    });
-
-    return NextResponse.json({ 
-      id: account.id,
-      accountId: account.id 
-    });
-  } catch (error: any) {
-    console.error("POST /api/accounts error:", error);
-    
-    // Check for Prisma unique constraint error
-    if (error.code === "P2002") {
+    // Validate required fields — no silent fallbacks
+    const finalHandle = handle || xHandle;
+    if (!name || !email || !finalHandle) {
       return NextResponse.json(
-        { error: "This X Username is already listed. Please use a different one or access your dashboard." },
+        { error: "Missing required fields: name, email, and X handle are required." },
         { status: 400 }
       );
     }
-    
+
+    // Strip leading @ chars before saving
+    const cleanHandle = String(finalHandle).replace(/^@+/, "");
+
+    const account = await prisma.account.create({
+      data: {
+        name:          String(name),
+        xHandle:       cleanHandle,
+        avatarPath:    imageUrl || avatarPath || "",
+        bio:           bio || "",
+        niche:         category || niche || [],
+        followersRange: followersRange || "",
+        email:         String(email),
+        paid:          false,
+        status:        "pending_payment",
+      },
+    });
+
+    return NextResponse.json({
+      id:        account.id,
+      accountId: account.id,
+    });
+  } catch (error: unknown) {
+    console.error("POST /api/accounts error:", error);
+
+    // Prisma unique constraint (duplicate xHandle)
+    if (
+      typeof error === "object" &&
+      error !== null &&
+      "code" in error &&
+      (error as { code: string }).code === "P2002"
+    ) {
+      return NextResponse.json(
+        { error: "This X handle is already listed. Use a different one or access your dashboard." },
+        { status: 400 }
+      );
+    }
+
     return NextResponse.json({ error: "Failed to create account" }, { status: 500 });
   }
 }
