@@ -150,8 +150,8 @@ export default function DirectoryTable({
         <table className="w-full block md:table border-collapse">
           <thead className="hidden md:table-header-group">
             <tr>
-              <th className="w-16 text-left pl-6 pb-3 text-muted text-sm font-medium">#</th>
-              <th className="text-left pl-20 pb-3 text-muted text-sm font-medium">Profile</th>
+              <th className="w-10 text-left pl-6 pb-3 text-muted text-sm font-medium">#</th>
+              <th className="text-left pb-3 text-muted text-sm font-medium">Profile</th>
               <th className="w-52 text-left pl-12 pb-3 text-muted text-sm font-medium">X Handle</th>
             </tr>
           </thead>
@@ -159,10 +159,10 @@ export default function DirectoryTable({
             {accounts.map((account, index) => (
               <tr key={account.id} className="directory-row group transition-colors flex flex-col md:table-row border-b border-border py-6 md:py-0">
                 {/* Desktop Number Cell */}
-                <td className="font-mono-custom text-muted text-sm hidden md:table-cell px-6 py-4 md:w-16">
+                <td className="font-mono-custom text-muted text-sm hidden md:table-cell px-6 py-4 md:w-10">
                   {index + 1}
                 </td>
-                <td className="block md:table-cell px-6 md:pl-10 py-2 md:py-4">
+                <td className="block md:table-cell px-6 py-2 md:py-4">
                   <div className="flex items-center gap-4">
                     {/* Mobile Number Indicator */}
                     <span className="md:hidden font-mono-custom text-muted text-xs w-4 shrink-0">
