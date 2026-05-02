@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -18,11 +18,12 @@ export default function LoginPage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const email = localStorage.getItem("plugd_user_email");
-      if (email && !verified) {
+      if (email) {
+        console.log("Session found, redirecting to dashboard...");
         router.replace("/dashboard");
       }
     }
-  }, [router, verified]);
+  }, [router]);
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
