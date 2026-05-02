@@ -151,7 +151,7 @@ export default function DirectoryTable({
           <thead className="hidden md:table-header-group">
             <tr>
               <th className="w-16 text-left pl-6 pb-3 text-muted text-sm font-medium">#</th>
-              <th className="text-left pb-3 text-muted text-sm font-medium">Creator</th>
+              <th className="text-left pl-20 pb-3 text-muted text-sm font-medium">Profile</th>
               <th className="w-52 text-left pl-12 pb-3 text-muted text-sm font-medium">X Handle</th>
             </tr>
           </thead>
