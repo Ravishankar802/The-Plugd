@@ -248,7 +248,7 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
           <button
             form="admin-edit-form"
             disabled={saving}
-            className="bg-background border border-border text-foreground px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-accent transition-all flex items-center gap-2 shadow-xl"
+            className="bg-white border border-white text-black px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-white/90 transition-all flex items-center gap-2 shadow-xl disabled:opacity-50"
           >
             {saving && <Loader2 size={16} className="animate-spin" />}
             Save Changes
