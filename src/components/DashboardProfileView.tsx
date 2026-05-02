@@ -140,6 +140,7 @@ export default function DashboardProfileView() {
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+    console.log('File selected:', file);
     if (!file) return;
 
     setUploading(true);
@@ -151,7 +152,9 @@ export default function DashboardProfileView() {
         method: "POST",
         body
       });
+      console.log('Upload response status:', res.status);
       const data = await res.json();
+      console.log('Upload response data:', data);
       if (data.filePath) {
         setAccount({ ...account, avatarPath: data.filePath });
       }
