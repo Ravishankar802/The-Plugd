@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "The Plugd - Get Found. Grow Your Network.",
   description: "The directory for X builders, founders and creators.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 import { ThemeProvider } from "@/components/ThemeProvider";

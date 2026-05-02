@@ -1,0 +1,360 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import DirectoryTable from "@/components/DirectoryTable";
+import AddAccountModal from "@/components/AddAccountModal";
+import { 
+  Search, 
+  Plus, 
+  Globe, 
+  Rocket, 
+  Hammer, 
+  Laptop, 
+  Palette, 
+  Zap, 
+  Bot, 
+  TrendingUp, 
+  Pen, 
+  Clapperboard, 
+  Banknote, 
+  Box, 
+  Puzzle, 
+  Coins, 
+  Building, 
+  GraduationCap, 
+  Mic,
+  Info,
+  BarChart2,
+  Briefcase,
+  DollarSign,
+  Cloud,
+  Layers,
+  Building2,
+  ExternalLink
+} from "lucide-react";
+
+interface Account {
+  id: number;
+  name: string;
+  xHandle: string;
+  avatarPath: string;
+  bio: string;
+  niche: string;
+  followersRange: string;
+  createdAt?: string;
+}
+
+const NICHES = [
+  { name: "All", icon: Globe },
+  { name: "Founder", icon: Rocket },
+  { name: "Builder", icon: Hammer },
+  { name: "Developer", icon: Laptop },
+  { name: "Designer", icon: Palette },
+  { name: "Indie Hacker", icon: Zap },
+  { name: "AI", icon: Bot },
+  { name: "Creator", icon: Clapperboard },
+  { name: "Student", icon: GraduationCap },
+  { name: "Crypto", icon: Coins },
+  { name: "Marketer", icon: TrendingUp },
+  { name: "Writer", icon: Pen },
+  { name: "Investor", icon: TrendingUp },
+  { name: "Trader", icon: BarChart2 },
+  { name: "Freelancer", icon: Briefcase },
+  { name: "Artist", icon: Palette },
+  { name: "Finance", icon: DollarSign },
+  { name: "SaaS", icon: Cloud },
+  { name: "No-Code", icon: Layers },
+  { name: "Agency", icon: Building2 },
+  { name: "Podcaster", icon: Mic },
+  { name: "Other", icon: Plus },
+];
+
+interface HomeClientProps {
+  initialAccounts: Account[];
+}
+
+export default function HomeClient({ initialAccounts }: HomeClientProps) {
+  const [accounts, setAccounts] = useState<Account[]>(initialAccounts);
+  const [filteredAccounts, setFilteredAccounts] = useState<Account[]>(initialAccounts);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedNiches, setSelectedNiches] = useState<string[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(50);
+  const [hasMounted, setHasMounted] = useState(false);
+  const [selectedFollowersRange, setSelectedFollowersRange] = useState("All Ranges");
+  const [sortBy, setSortBy] = useState("Latest");
+  const [shuffleKey, setShuffleKey] = useState(0);
+  const [searchResults, setSearchResults] = useState<Account[]>([]);
+  const [showResults, setShowResults] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const result = accounts.filter(account => {
+      const matchesNiche = selectedNiches.length === 0 || selectedNiches.includes(account.niche);
+      const matchesFollowers = selectedFollowersRange === "All Ranges" || account.followersRange === selectedFollowersRange;
+      
+      return matchesNiche && matchesFollowers;
+    });
+
+    // Apply Sorting
+    let sorted = [...result];
+    if (sortBy === "Latest") {
+      sorted.sort((a, b) => b.id - a.id);
+    } else if (sortBy === "Oldest") {
+      sorted.sort((a, b) => a.id - b.id);
+    } else if (sortBy === "Shuffle") {
+      // Use the shuffleKey to ensure a re-shuffle if user clicks Shuffle again
+      sorted.sort(() => Math.random() - 0.5);
+    }
+
+    setFilteredAccounts(sorted);
+    setVisibleCount(50); // Reset pagination on any filter change
+  }, [selectedNiches, accounts, selectedFollowersRange, sortBy, shuffleKey]);
+
+  // Separate Search Logic for Dropdown
+  useEffect(() => {
+    if (searchQuery.trim() === "") {
+      setSearchResults([]);
+      setShowResults(false);
+      return;
+    }
+
+    const q = searchQuery.toLowerCase();
+    const results = accounts.filter(acc => 
+      acc.name.toLowerCase().includes(q) || 
+      acc.xHandle.toLowerCase().includes(q)
+    ).slice(0, 8); // Limit to 8 results for the dropdown
+
+    setSearchResults(results);
+    setShowResults(true);
+  }, [searchQuery, accounts]);
+
+  // Click outside to close search results
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest(".search-container")) {
+        setShowResults(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+
+
+  const toggleNiche = (nicheName: string) => {
+    if (nicheName === "All") {
+      setSelectedNiches([]);
+      return;
+    }
+    
+    setSelectedNiches(prev => {
+      setVisibleCount(50); // Reset pagination on niche toggle
+      if (prev.includes(nicheName)) {
+        return prev.filter(n => n !== nicheName);
+      } else {
+        return [...prev, nicheName];
+      }
+    });
+  };
+
+  const sortedNiches = [...NICHES.filter(n => n.name !== "All")].sort((a, b) => {
+    const aSelected = selectedNiches.includes(a.name);
+    const bSelected = selectedNiches.includes(b.name);
+    
+    if (aSelected && !bSelected) return -1;
+    if (!aSelected && bSelected) return 1;
+    
+    const aIndex = NICHES.findIndex(n => n.name === a.name);
+    const bIndex = NICHES.findIndex(n => n.name === b.name);
+    
+    if (aSelected && bSelected) {
+      return selectedNiches.indexOf(a.name) - selectedNiches.indexOf(b.name);
+    }
+    
+    return aIndex - bIndex;
+  });
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 50);
+  };
+
+  const displayedAccounts = filteredAccounts.slice(0, visibleCount);
+  const remainingCount = filteredAccounts.length - visibleCount;
+
+  const handleShuffle = () => {
+    setSortBy("Shuffle");
+    setShuffleKey(prev => prev + 1);
+  };
+
+  return (
+    <main className="flex-1 flex flex-col items-center w-full">
+      {/* Hero Wrapper with Scattered Hashtags - Now truly full width */}
+      <div className="w-full relative flex flex-col items-center pt-2 pb-4">
+        {/* Background Hashtags Container - This handles overflow for hashtags only */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+          {/* Left Side Hashtags */}
+          <div className="hidden min-[1100px]:block absolute inset-0">
+            <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                  style={{ top: "8%", left: "5%", transform: "rotate(-6deg)", fontSize: "1.8rem" }}>#LetsConnect</span>
+            <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                  style={{ top: "48%", left: "3%", transform: "rotate(8deg)", fontSize: "1.35rem" }}>#BuildInPublic</span>
+            <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                  style={{ top: "88%", left: "5%", transform: "rotate(-7deg)", fontSize: "1.45rem" }}>#ShipIt</span>
+          </div>
+
+          {/* Right Side Hashtags */}
+          <div className="hidden min-[1100px]:block absolute inset-0">
+            <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                  style={{ top: "12%", right: "5%", transform: "rotate(9deg)", fontSize: "1.5rem" }}>#Networking</span>
+            <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                  style={{ top: "52%", right: "3%", transform: "rotate(-8deg)", fontSize: "1.45rem" }}>#IndieHackers</span>
+            <span className="absolute text-[#ffffff] opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
+                  style={{ top: "92%", right: "5%", transform: "rotate(10deg)", fontSize: "1.1rem" }}>#StartupLife</span>
+          </div>
+        </div>
+
+        {/* Center Content Content */}
+        <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-[60] flex flex-col items-center">
+          <div className="max-w-[800px] w-full">
+            <Header />
+
+            <section className="mb-0">
+              <div className="flex flex-col md:flex-row gap-4 mb-6">
+                <div className="relative flex-1 search-container">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
+                  <input
+                    type="text"
+                    placeholder="Search accounts or names..."
+                    className="w-full h-[48px] bg-pill border border-border rounded-lg pl-12 pr-4 text-foreground placeholder:text-[#6b7280] focus:outline-none focus:ring-1 focus:ring-border transition-all"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onFocus={() => searchQuery.trim() !== "" && setShowResults(true)}
+                    suppressHydrationWarning
+                  />
+
+                  {/* Search Results Dropdown */}
+                  {showResults && searchQuery.trim() !== "" && (
+                    <div className="absolute top-[calc(100%+8px)] left-0 right-0 bg-pill border border-border rounded-xl shadow-2xl z-[150] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                      {searchResults.length > 0 ? (
+                        <div className="py-2">
+                          {searchResults.map((acc) => (
+                            <div 
+                              key={acc.id} 
+                              className="px-4 py-3 hover:bg-accent cursor-pointer flex items-center gap-4 transition-colors group"
+                              onClick={() => {
+                                window.open(`https://x.com/${acc.xHandle}`, '_blank');
+                                setShowResults(false);
+                              }}
+                            >
+                              <img src={acc.avatarPath} alt="" className="w-10 h-10 rounded-lg object-cover border border-border shadow-sm" />
+                              <div className="flex-1 min-w-0">
+                                <p className="text-foreground font-bold text-[0.95rem] truncate">{acc.name}</p>
+                                <p className="text-muted text-[0.8rem] truncate">@{acc.xHandle}</p>
+                              </div>
+                              <div className="px-3 py-1.5 rounded-lg bg-selected border border-selected text-selected-foreground text-[0.75rem] font-bold transition-all flex items-center gap-1.5 shadow-sm">
+                                Visit <ExternalLink className="w-3.5 h-3.5" />
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="p-8 text-center">
+                          <p className="text-muted font-medium">No accounts found for &quot;{searchQuery}&quot;</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  suppressHydrationWarning
+                  className="h-[48px] bg-selected border border-selected text-selected-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
+                >
+                  <Plus className="w-5 h-5" />
+                  Add Account
+                </button>
+              </div>
+
+              {/* Niche Categories */}
+              <div className="flex justify-center w-full">
+                <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 mask-fade-right w-full scroll-smooth">
+                  <button
+                    onClick={() => toggleNiche("All")}
+                    suppressHydrationWarning
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap font-[600] cursor-pointer ${
+                      selectedNiches.length === 0
+                        ? "bg-selected border-selected text-selected-foreground shadow-sm"
+                        : "bg-card border-border text-muted hover:border-muted-foreground"
+                    }`}
+                  >
+                    <Globe size={16} />
+                    <span>All</span>
+                  </button>
+                  
+                  {(hasMounted ? sortedNiches : NICHES.filter(n => n.name !== "All")).map((niche) => {
+                    const Icon = niche.icon;
+                    const isSelected = hasMounted && selectedNiches.includes(niche.name);
+                    return (
+                      <button
+                        key={niche.name}
+                        onClick={() => toggleNiche(niche.name)}
+                        suppressHydrationWarning
+                        className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap font-[600] cursor-pointer ${
+                          isSelected
+                            ? "bg-selected border-selected text-selected-foreground shadow-sm"
+                            : "bg-card border-border text-muted hover:border-muted-foreground"
+                        }`}
+                      >
+                        <Icon size={16} />
+                        <span>{niche.name}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 mt-4">
+        <DirectoryTable 
+          accounts={displayedAccounts} 
+          isLoading={false}
+          selectedFollowersRange={selectedFollowersRange}
+          setSelectedFollowersRange={setSelectedFollowersRange}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          onShuffle={handleShuffle}
+        />
+
+        <div className="flex flex-col items-center gap-6 pt-12 pb-20">
+          {remainingCount > 0 && (
+            <button
+              onClick={handleLoadMore}
+              className="flex items-center justify-center gap-2 bg-transparent border border-[#2a2a2a] px-8 py-3 rounded-full text-[0.95rem] font-medium text-[#f5f5f5] transition-all hover:bg-[#1a1a1a] active:scale-[0.98]"
+            >
+              Show more ({Math.min(50, remainingCount)} more accounts)
+            </button>
+          )}
+          <p className="text-[#a1a1aa] text-[0.85rem] flex items-center justify-center gap-2 font-mono-custom whitespace-nowrap">
+            <Info className="w-4 h-4 shrink-0" />
+            Accounts listed here are submitted by real X creators. Every listing is verified by a $1 payment. No bots. No spam.
+          </p>
+        </div>
+      </div>
+
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8">
+        <Footer />
+      </div>
+
+      <AddAccountModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </main>
+  );
+}

@@ -27,66 +27,8 @@ const SORT_OPTIONS = [
   { id: "shuffle", name: "Shuffle", icon: TrendingUp },
 ];
 
-const MOCK_ACCOUNTS = [
-  {
-    id: 1001,
-    name: "Ravi Shankar",
-    xHandle: "ravishankar802",
-    bio: "Building The Plugd. Growth hacker & founder.",
-    niche: ["Founder", "Builder"],
-    followersRange: "1K-2K",
-    email: "ravishankar4284@gmail.com",
-    avatarPath: "https://unavatar.io/x/ravishankar802",
-    createdAt: new Date().toISOString(),
-  },
-  {
-    id: 1002,
-    name: "John Doe",
-    xHandle: "johndoe",
-    bio: "AI Engineer | Building the future of logistics with neural networks.",
-    niche: ["AI", "Developer"],
-    followersRange: "5K-10K",
-    email: "john@example.com",
-    avatarPath: "https://unavatar.io/x/johndoe",
-    createdAt: new Date(Date.now() - 86400000).toISOString(),
-  },
-  {
-    id: 1003,
-    name: "Jane Smith",
-    xHandle: "janesmith",
-    bio: "Product Designer @ Figma. obsessed with clean interfaces.",
-    niche: ["Designer", "Creator"],
-    followersRange: "10K-25K",
-    email: "jane@example.com",
-    avatarPath: "https://unavatar.io/x/janesmith",
-    createdAt: new Date(Date.now() - 172800000).toISOString(),
-  },
-  {
-    id: 1004,
-    name: "Alex River",
-    xHandle: "ariver",
-    bio: "Indie Hacker. 5 micro-SaaS products in 12 months.",
-    niche: ["Indie Hacker", "SaaS"],
-    followersRange: "500-1K",
-    email: "alex@example.com",
-    avatarPath: "https://unavatar.io/x/alexriver",
-    createdAt: new Date(Date.now() - 259200000).toISOString(),
-  },
-  {
-    id: 1005,
-    name: "Sarah Chen",
-    xHandle: "sarahc",
-    bio: "Venture Capitalist. Investing in the next generation of builders.",
-    niche: ["Investor", "Founder"],
-    followersRange: "25K-50K",
-    email: "sarah@example.com",
-    avatarPath: "https://unavatar.io/x/sarahchen",
-    createdAt: new Date(Date.now() - 345600000).toISOString(),
-  },
-];
-
 export default function AdminManageView() {
-  const [accounts, setAccounts] = useState<any[]>(MOCK_ACCOUNTS);
+  const [accounts, setAccounts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedRange, setSelectedRange] = useState("All Ranges");
   const [sortBy, setSortBy] = useState("latest");
@@ -116,10 +58,10 @@ export default function AdminManageView() {
 
   const fetchAccounts = async () => {
     try {
-      const res = await fetch("/api/accounts");
+      const res = await fetch("/api/accounts/admin");
       if (res.ok) {
         const data = await res.json();
-        setAccounts([...MOCK_ACCOUNTS, ...data]);
+        setAccounts(Array.isArray(data) ? data : []);
       }
     } catch (err) {
       console.error(err);
