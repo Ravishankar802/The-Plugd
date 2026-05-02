@@ -17,9 +17,10 @@ export const metadata: Metadata = {
   description: "The directory for X builders, founders and creators.",
   icons: {
     icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
       { url: "/icon.png", type: "image/png" },
     ],
-    shortcut: "/icon.png",
+    shortcut: "/icon.svg",
     apple: "/icon.png",
   },
 };
