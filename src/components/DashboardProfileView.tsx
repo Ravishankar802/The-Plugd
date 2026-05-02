@@ -230,7 +230,7 @@ export default function DashboardProfileView() {
                     className="bg-pill border border-pill-border text-foreground px-4 md:px-6 py-2 rounded-xl text-xs md:text-sm font-bold hover:bg-accent transition-all flex items-center gap-2 shadow-lg active:scale-[0.98] whitespace-nowrap"
                   >
                     {uploading ? <Loader2 size={14} className="animate-spin" /> : <Upload size={16} />}
-                    Change
+                    Upload
                   </button>
                   <button
                     type="button"
