@@ -38,6 +38,9 @@ export async function POST(req: Request) {
 
     // Validate required fields — no silent fallbacks
     const finalHandle = handle || xHandle;
+    console.log('Attempting to create account with xHandle:', finalHandle);
+    console.log('Request body:', body);
+
     if (!name || !email || !finalHandle) {
       return NextResponse.json(
         { error: "Missing required fields: name, email, and X handle are required." },
@@ -52,6 +55,7 @@ export async function POST(req: Request) {
     const userEmail = req.headers.get("x-user-email");
     const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
     const isAdmin = userEmail && adminEmail && userEmail.toLowerCase() === adminEmail.toLowerCase();
+    console.log('Is admin:', isAdmin);
 
     const account = await prisma.account.create({
       data: {
@@ -71,22 +75,11 @@ export async function POST(req: Request) {
       id:        account.id,
       accountId: account.id,
     });
-  } catch (error: unknown) {
-    console.error("POST /api/accounts error:", error);
-
-    // Prisma unique constraint (duplicate xHandle)
-    if (
-      typeof error === "object" &&
-      error !== null &&
-      "code" in error &&
-      (error as { code: string }).code === "P2002"
-    ) {
-      return NextResponse.json(
-        { error: "This X handle is already listed. Use a different one or access your dashboard." },
-        { status: 400 }
-      );
-    }
-
-    return NextResponse.json({ error: "Failed to create account" }, { status: 500 });
+  } catch (error: any) {
+    console.error("FULL ERROR:", error.message, error.code, error.meta);
+    return NextResponse.json({ 
+      error: error.message,
+      code: error.code 
+    }, { status: 500 });
   }
 }
