@@ -48,6 +48,11 @@ export async function POST(req: Request) {
     // Strip leading @ chars before saving
     const cleanHandle = String(finalHandle).replace(/^@+/, "");
 
+    // Admin Bypass Check
+    const userEmail = req.headers.get("x-user-email");
+    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+    const isAdmin = userEmail && adminEmail && userEmail.toLowerCase() === adminEmail.toLowerCase();
+
     const account = await prisma.account.create({
       data: {
         name:          String(name),
@@ -57,8 +62,8 @@ export async function POST(req: Request) {
         niche:         category || niche || [],
         followersRange: followersRange || "",
         email:         String(email),
-        paid:          false,
-        status:        "pending_payment",
+        paid:          isAdmin ? (body.status === "paid") : false,
+        status:        isAdmin ? (body.status || "pending_payment") : "pending_payment",
       },
     });
 

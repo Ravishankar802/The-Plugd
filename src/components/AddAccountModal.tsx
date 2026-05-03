@@ -80,6 +80,9 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
   });
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
+
+  const isAdmin = typeof window !== "undefined" && localStorage.getItem('userEmail') === process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 
 
   if (!isOpen) return null;
@@ -134,10 +137,13 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         });
       }
 
-      // 3. Save account to DB with status: pending_payment
+      // 3. Save account to DB
       const res = await fetch("/api/accounts", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "x-user-email": (typeof window !== "undefined" && localStorage.getItem('userEmail')) || ""
+        },
         body: JSON.stringify({ 
           name: formData.name, 
           handle: formData.xHandle.replace(/^@+/, ''), // Strip leading @
@@ -146,7 +152,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
           followersRange: formData.followersRange,
           email: formData.email, 
           imageUrl, 
-          status: "pending_payment" 
+          status: isAdmin ? "paid" : "pending_payment" 
         }),
       });
       const data = await res.json();
@@ -155,14 +161,23 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
       console.log("accountId:", accountId);
 
       if (!accountId) {
-        alert("Something went wrong. Please try again.");
+        alert(data.error || "Something went wrong. Please try again.");
         setIsLoading(false);
         return;
       }
 
-      // 4. Redirect to Dodo checkout with accountId in metadata
-      const checkoutUrl = `https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=${encodeURIComponent('https://the-plugd.vercel.app/dashboard/login?verified=true')}&showDiscounts=false&customer_email=${encodeURIComponent(formData.email)}&metadata_accountId=${accountId}`;
-      window.location.href = checkoutUrl;
+      if (isAdmin) {
+        setSuccess(true);
+        setIsLoading(false);
+        setTimeout(() => {
+          onClose();
+          window.location.reload();
+        }, 2000);
+      } else {
+        // 4. Redirect to Dodo checkout with accountId in metadata
+        const checkoutUrl = `https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=${encodeURIComponent('https://the-plugd.vercel.app/dashboard/login?verified=true')}&showDiscounts=false&customer_email=${encodeURIComponent(formData.email)}&metadata_accountId=${accountId}`;
+        window.location.href = checkoutUrl;
+      }
     } catch (error) {
       console.error(error);
       alert("Something went wrong. Please try again.");
@@ -368,15 +383,27 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
             {/* Submit Button inside form for better compatibility */}
             <div className="pt-4 pb-2">
               <button
-                disabled={isLoading}
+                disabled={isLoading || success}
                 onClick={handleSubmit}
                 className="w-full bg-white border border-white text-black font-black text-base py-5 rounded-xl transition-all disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed flex items-center justify-center gap-2.5 hover:bg-white/90 shadow-2xl active:scale-[0.99] uppercase tracking-wider"
               >
-                {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Pay $1 to Get Listed"}
+                {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : (isAdmin ? "Add Account Directly" : "Pay $1 to Get Listed")}
               </button>
-              <p className="text-center text-[0.7rem] text-muted mt-5 font-bold uppercase tracking-[0.15em]">
-                Secure payment via Dodo Payments
-              </p>
+              
+              {success && (
+                <div className="mt-4 p-4 bg-green-500/10 border border-green-500/20 rounded-xl flex items-center justify-center gap-3 animate-in fade-in slide-in-from-top-2">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <p className="text-green-500 text-sm font-bold">
+                    Account listed successfully! It&apos;s now live on Plugd.
+                  </p>
+                </div>
+              )}
+
+              {!isAdmin && (
+                <p className="text-center text-[0.7rem] text-muted mt-5 font-bold uppercase tracking-[0.15em]">
+                  Secure payment via Dodo Payments
+                </p>
+              )}
             </div>
           </div>
         </div>
