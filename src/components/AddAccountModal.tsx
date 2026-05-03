@@ -82,7 +82,8 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
-  const isAdmin = typeof window !== "undefined" && localStorage.getItem('userEmail') === process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+  const userEmailFromStorage = typeof window !== "undefined" ? (localStorage.getItem('plugd_user_email') || localStorage.getItem('userEmail')) : null;
+  const isAdmin = userEmailFromStorage === process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 
 
   if (!isOpen) return null;
@@ -126,6 +127,10 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
     setIsLoading(true);
 
+    console.log('userEmail from storage:', userEmailFromStorage);
+    console.log('isAdmin:', isAdmin);
+    console.log('ADMIN_EMAIL:', process.env.NEXT_PUBLIC_ADMIN_EMAIL);
+
     try {
       // 2. Convert image to Base64 if selected
       let imageUrl = "";
@@ -142,7 +147,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
-          "x-user-email": (typeof window !== "undefined" && localStorage.getItem('userEmail')) || ""
+          "x-user-email": userEmailFromStorage || ""
         },
         body: JSON.stringify({ 
           name: formData.name, 
