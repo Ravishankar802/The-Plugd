@@ -127,10 +127,6 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
 
     setIsLoading(true);
 
-    console.log('userEmail from storage:', userEmailFromStorage);
-    console.log('isAdmin:', isAdmin);
-    console.log('ADMIN_EMAIL:', process.env.NEXT_PUBLIC_ADMIN_EMAIL);
-
     try {
       // 2. Convert image to Base64 if selected
       let imageUrl = "";
