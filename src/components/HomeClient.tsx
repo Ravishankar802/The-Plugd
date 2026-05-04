@@ -340,7 +340,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
               onClick={handleLoadMore}
               className="flex items-center justify-center gap-2 bg-transparent border border-[#2a2a2a] px-8 py-3 rounded-full text-[0.95rem] font-medium text-[#f5f5f5] transition-all hover:bg-[#1a1a1a] active:scale-[0.98]"
             >
-              Show more ({Math.min(50, remainingCount)} more accounts)
+              Next {remainingCount >= 50 ? "50" : remainingCount} ›
             </button>
           )}
           <p className="text-[#a1a1aa] text-[0.8rem] md:text-[0.85rem] font-mono-custom text-center px-4 md:whitespace-nowrap whitespace-normal max-w-sm mx-auto md:max-w-none leading-relaxed">
