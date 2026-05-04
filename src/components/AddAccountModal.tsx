@@ -278,34 +278,32 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
               </div>
             </div>
 
-            {/* Profile Picture URL */}
-            <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-[500] text-foreground tracking-wide block">Profile Picture URL</label>
-              <input
-                type="text"
-                placeholder="https://pbs.twimg.com/profile_images/..."
-                className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all"
-                value={formData.avatarUrl}
-                onChange={(e) => setFormData({ ...formData, avatarUrl: e.target.value })}
-              />
-              <p className="text-[0.75rem] text-muted font-medium">Right click your X profile picture → Copy image address → paste it here</p>
-              
-              <div className="mt-2 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-[#111] border border-border flex items-center justify-center shadow-inner">
-                  {formData.avatarUrl ? (
-                    <img 
-                      src={formData.avatarUrl} 
-                      alt="preview" 
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = 'none';
-                        (e.target as HTMLImageElement).parentElement!.innerHTML = '<div class="flex items-center justify-center w-full h-full"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user text-muted/40"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>';
-                      }}
-                    />
-                  ) : (
-                    <User size={20} className="text-muted/40" />
-                  )}
-                </div>
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full overflow-hidden bg-[#111] border border-border flex items-center justify-center shadow-inner shrink-0 mt-1">
+                {formData.avatarUrl ? (
+                  <img 
+                    src={formData.avatarUrl} 
+                    alt="preview" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      (e.target as HTMLImageElement).parentElement!.innerHTML = '<div class="flex items-center justify-center w-full h-full"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user text-muted/40"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>';
+                    }}
+                  />
+                ) : (
+                  <User size={20} className="text-muted/40" />
+                )}
+              </div>
+              <div className="flex-1 space-y-2">
+                <label className="text-[1rem] font-[500] text-foreground tracking-wide block">Profile Picture URL</label>
+                <input
+                  type="text"
+                  placeholder="https://pbs.twimg.com/profile_images/..."
+                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all"
+                  value={formData.avatarUrl}
+                  onChange={(e) => setFormData({ ...formData, avatarUrl: e.target.value })}
+                />
+                <p className="text-[0.75rem] text-muted font-medium">Right click your X profile picture → Copy image address → paste it here</p>
               </div>
             </div>
 
