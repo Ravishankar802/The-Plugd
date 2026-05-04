@@ -191,16 +191,33 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
             <div className="space-y-4">
               <label className="text-[0.95rem] font-[500] text-foreground">Profile Picture</label>
               <div className="flex items-center gap-6">
-                <img src={formData.avatarPath} className="w-16 h-16 rounded-full object-cover border border-border shadow-lg" />
+                {formData.avatarPath ? (
+                  <img src={formData.avatarPath} className="w-16 h-16 rounded-full object-cover border border-border shadow-lg" alt="" />
+                ) : (
+                  <div className="w-16 h-16 rounded-full bg-background border border-border flex items-center justify-center shadow-inner">
+                    <Pen size={20} className="text-muted/40" />
+                  </div>
+                )}
                 <input type="file" ref={fileInputRef} onChange={handleFileUpload} className="hidden" />
-                <button
-                  type="button"
-                  onClick={() => fileInputRef.current?.click()}
-                  className="bg-background border border-border text-foreground px-4 py-2 rounded-lg text-sm font-bold hover:bg-accent transition-all flex items-center gap-2"
-                >
-                  {uploading ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
-                  Upload Logo
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="bg-background border border-border text-foreground px-4 py-2 rounded-lg text-sm font-bold hover:bg-accent transition-all flex items-center gap-2"
+                  >
+                    {uploading ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
+                    Upload
+                  </button>
+                  {formData.avatarPath && (
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, avatarPath: "" })}
+                      className="p-2.5 bg-background border border-border text-muted hover:text-red-500 hover:border-red-500/50 rounded-lg transition-all active:scale-[0.98]"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
 
