@@ -31,7 +31,7 @@ export async function PATCH(
     }
 
     // Extract editable fields
-    const { name, xHandle, bio, niche, followersRange, avatarPath, email } = body;
+    const { name, xHandle, bio, niche, followersRange, avatarUrl, email } = body;
 
     const updatedAccount = await prisma.account.update({
       where: { id },
@@ -41,7 +41,7 @@ export async function PATCH(
         bio,
         niche,
         followersRange,
-        avatarPath,
+        avatarUrl,
         email,
       },
     });

@@ -25,7 +25,8 @@ import {
   Cloud,
   Layers,
   Building2,
-  Mic
+  Mic,
+  User
 } from "lucide-react";
 
 const NICHES = [
@@ -64,10 +65,8 @@ interface AdminEditAccountModalProps {
 }
 
 export default function AdminEditAccountModal({ account, isOpen, onClose, onSave }: AdminEditAccountModalProps) {
-  const fileInputRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState<any>(null);
   const [saving, setSaving] = useState(false);
-  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     if (account) {
@@ -102,29 +101,6 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
     }
   };
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setUploading(true);
-    const body = new FormData();
-    body.append("file", file);
-
-    try {
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        body
-      });
-      const data = await res.json();
-      if (data.filePath) {
-        setFormData({ ...formData, avatarPath: data.filePath });
-      }
-    } catch (error) {
-      console.error("Upload error:", error);
-    } finally {
-      setUploading(false);
-    }
-  };
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -188,37 +164,33 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
               />
             </div>
 
-            <div className="space-y-4">
-              <label className="text-[0.95rem] font-[500] text-foreground">Profile Picture</label>
-              <div className="flex items-center gap-6">
-                {formData.avatarPath ? (
-                  <img src={formData.avatarPath} className="w-16 h-16 rounded-full object-cover border border-border shadow-lg" alt="" />
-                ) : (
-                  <div className="w-16 h-16 rounded-full bg-background border border-border flex items-center justify-center shadow-inner">
-                    <Pen size={20} className="text-muted/40" />
-                  </div>
-                )}
-                <input type="file" ref={fileInputRef} onChange={handleFileUpload} className="hidden" />
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    className="bg-background border border-border text-foreground px-4 py-2 rounded-lg text-sm font-bold hover:bg-accent transition-all flex items-center gap-2"
-                  >
-                    {uploading ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
-                    Upload
-                  </button>
-                  {formData.avatarPath && (
-                    <button
-                      type="button"
-                      onClick={() => setFormData({ ...formData, avatarPath: "" })}
-                      className="p-2.5 bg-background border border-border text-muted hover:text-red-500 hover:border-red-500/50 rounded-lg transition-all active:scale-[0.98]"
-                    >
-                      <Trash2 size={16} />
-                    </button>
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <label className="text-[0.95rem] font-[500] text-foreground">Profile Picture URL</label>
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-background border border-border flex items-center justify-center shadow-lg">
+                  {formData.avatarUrl ? (
+                    <img 
+                      src={formData.avatarUrl} 
+                      className="w-full h-full object-cover" 
+                      alt="" 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                        (e.target as HTMLImageElement).parentElement!.innerHTML = '<div class="flex items-center justify-center w-full h-full"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user text-muted/40"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>';
+                      }}
+                    />
+                  ) : (
+                    <User size={20} className="text-muted/40" />
                   )}
                 </div>
               </div>
+              <input
+                type="text"
+                placeholder="https://pbs.twimg.com/profile_images/..."
+                value={formData.avatarUrl || ""}
+                onChange={(e) => setFormData({ ...formData, avatarUrl: e.target.value })}
+                className="w-full bg-background border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-muted transition-all"
+              />
+              <p className="text-[0.75rem] text-muted font-medium">Paste the X profile picture URL</p>
             </div>
 
             <div className="space-y-3">

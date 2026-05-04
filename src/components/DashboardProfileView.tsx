@@ -7,7 +7,8 @@ import {
   Upload, 
   Check,
   Camera,
-  Save
+  Save,
+  User
 } from "lucide-react";
 
 import { 
@@ -64,7 +65,6 @@ export default function DashboardProfileView() {
   const [account, setAccount] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [uploading, setUploading] = useState(false);
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
@@ -138,32 +138,6 @@ export default function DashboardProfileView() {
     }
   };
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    console.log('File selected:', file);
-    if (!file) return;
-
-    setUploading(true);
-    const body = new FormData();
-    body.append("file", file);
-
-    try {
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        body
-      });
-      console.log('Upload response status:', res.status);
-      const data = await res.json();
-      console.log('Upload response data:', data);
-      if (data.filePath) {
-        setAccount({ ...account, avatarPath: data.filePath });
-      }
-    } catch (error) {
-      console.error("Upload error:", error);
-    } finally {
-      setUploading(false);
-    }
-  };
 
   if (loading) {
     return (
@@ -202,42 +176,36 @@ export default function DashboardProfileView() {
         <form onSubmit={handleSave} className="space-y-10">
           
           {/* Profile Picture */}
-          <div className="flex flex-col gap-4">
-            <label className="text-[0.95rem] font-[500] text-foreground block">Profile Picture</label>
-            <div className="flex flex-row items-center gap-4 md:gap-8 w-full overflow-hidden">
-              {account.avatarPath ? (
-                <img 
-                  src={account.avatarPath} 
-                  alt={account.name} 
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-[16px] object-cover border border-border shadow-2xl shrink-0"
-                />
-              ) : (
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-[16px] bg-pill border border-border flex items-center justify-center shadow-inner shrink-0">
-                  <Camera size={28} className="text-muted/40" />
-                </div>
-              )}
-              <div className="flex flex-col gap-2 md:gap-3 flex-1 min-w-0">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <label htmlFor="avatar-upload" className="cursor-pointer bg-pill border border-pill-border text-foreground px-4 md:px-6 py-2 rounded-xl text-xs md:text-sm font-bold hover:bg-accent transition-all flex items-center gap-2 shadow-lg active:scale-[0.98] whitespace-nowrap">
-                    <Upload size={16} />
-                    Upload
-                  </label>
-                  <input
-                    id="avatar-upload"
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={handleFileUpload}
+          <div className="flex flex-col gap-6">
+            <label className="text-[0.8rem] font-bold text-muted/60 block tracking-widest uppercase">PROFILE PICTURE URL</label>
+            
+            <div className="flex flex-col gap-6">
+              {/* 80px Preview above input */}
+              <div className="w-20 h-20 rounded-full overflow-hidden bg-pill border border-border flex items-center justify-center shadow-2xl shrink-0">
+                {account.avatarUrl ? (
+                  <img 
+                    src={account.avatarUrl} 
+                    alt={account.name} 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      (e.target as HTMLImageElement).parentElement!.innerHTML = '<div class="flex items-center justify-center w-full h-full"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user text-muted/40"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>';
+                    }}
                   />
-                  <button
-                    type="button"
-                    onClick={() => setAccount({ ...account, avatarPath: "" })}
-                    className="p-2 md:p-3 bg-pill border border-border text-muted hover:text-red-500 hover:border-red-500/50 rounded-xl transition-all active:scale-[0.98] shrink-0"
-                  >
-                    <Trash2 size={18} />
-                  </button>
-                </div>
-                <p className="text-[0.75rem] md:text-[0.8rem] text-muted/60 font-medium truncate">JPG, PNG or WebP. Max 2MB.</p>
+                ) : (
+                  <User size={32} className="text-muted/40" />
+                )}
+              </div>
+
+              <div className="flex-1 space-y-3">
+                <input
+                  type="text"
+                  placeholder="https://pbs.twimg.com/profile_images/..."
+                  value={account.avatarUrl || ""}
+                  onChange={(e) => setAccount({ ...account, avatarUrl: e.target.value })}
+                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                />
+                <p className="text-[0.8rem] text-muted/60 font-medium">Paste your X profile picture URL here</p>
               </div>
             </div>
           </div>
@@ -265,7 +233,7 @@ export default function DashboardProfileView() {
                   required
                   type="text"
                   placeholder="username"
-                  value={account.xHandle.startsWith("@") ? account.xHandle.substring(1) : account.xHandle}
+                  value={((account.xHandle || "") as string).startsWith("@") ? ((account.xHandle || "") as string).substring(1) : (account.xHandle || "")}
                   onChange={(e) => setAccount({ ...account, xHandle: e.target.value })}
                   className="w-full bg-background border border-border rounded-xl pl-11 pr-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
                 />
@@ -277,8 +245,8 @@ export default function DashboardProfileView() {
           <div className="flex flex-col gap-3">
             <div className="flex justify-between items-center">
               <label className="text-[0.95rem] font-[500] text-foreground block">One-line Bio</label>
-              <span className={`text-[0.75rem] font-medium ${account.bio.length > 100 ? "text-red-500" : "text-muted/60"}`}>
-                {account.bio.length}/100
+              <span className={`text-[0.75rem] font-medium ${(account.bio || "").length > 100 ? "text-red-500" : "text-muted/60"}`}>
+                {(account.bio || "").length}/100
               </span>
             </div>
             <input
@@ -286,7 +254,7 @@ export default function DashboardProfileView() {
               maxLength={100}
               type="text"
               placeholder="Founder | Building in public | Shipping daily"
-              value={account.bio}
+              value={account.bio || ""}
               onChange={(e) => setAccount({ ...account, bio: e.target.value })}
               className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
             />
@@ -309,7 +277,7 @@ export default function DashboardProfileView() {
             <div className="flex flex-wrap gap-3">
               {NICHES.map((niche) => {
                 const Icon = niche.icon;
-                const isSelected = account.niche.includes(niche.name);
+                const isSelected = (account.niche || []).includes(niche.name);
                 return (
                   <button
                     key={niche.name}

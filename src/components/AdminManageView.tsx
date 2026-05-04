@@ -227,7 +227,7 @@ export default function AdminManageView() {
         {filteredAccounts.map(acc => (
           <div key={acc.id} className="relative bg-pill border border-border rounded-[16px] p-8 flex flex-col group transition-all shadow-xl">
             <div className="flex items-start gap-6">
-              <img src={acc.avatarPath} className="w-14 h-14 rounded-[12px] object-cover border border-border shadow-lg" alt="" />
+              <img src={acc.avatarUrl} className="w-14 h-14 rounded-[12px] object-cover border border-border shadow-lg" alt="" />
               <div className="space-y-1 pt-0">
                 <h3 className="text-foreground font-[500] text-[1.4rem] tracking-tight">{acc.name}</h3>
                 <p className="text-muted text-[1rem] font-[300] leading-snug max-w-2xl">{acc.bio}</p>

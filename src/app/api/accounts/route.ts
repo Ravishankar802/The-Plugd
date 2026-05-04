@@ -61,7 +61,7 @@ export async function POST(req: Request) {
       data: {
         name:          String(name),
         xHandle:       cleanHandle,
-        avatarPath:    imageUrl || avatarPath || "",
+        avatarUrl:     imageUrl || avatarPath || "",
         bio:           bio || "",
         niche:         category || niche || [],
         followersRange: followersRange || "",

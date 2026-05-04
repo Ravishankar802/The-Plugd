@@ -9,7 +9,7 @@ interface Account {
   id: number;
   name: string;
   xHandle: string;
-  avatarPath: string;
+  avatarUrl: string;
   bio: string;
   niche: string;
   followersRange: string;
@@ -169,7 +169,7 @@ export default function DirectoryTable({
                       {index + 1}
                     </span>
                     <img
-                      src={account.avatarPath}
+                      src={account.avatarUrl}
                       alt={account.name}
                       className="w-12 h-12 md:w-10 md:h-10 rounded-full object-cover border border-border shrink-0"
                       onError={(e) => {

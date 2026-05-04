@@ -19,6 +19,7 @@ import {
   Coins,
   TrendingUp,
   Pen,
+  User,
   Plus,
   BarChart2,
   Briefcase,
@@ -68,18 +69,16 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [isLoading, setIsLoading] = useState(false);
-  const [uploading, setUploading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     xHandle: "",
     bio: "",
     niches: [] as string[],
     followersRange: "",
+    avatarUrl: "",
     email: "",
     confirmed: false
   });
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
   const userEmailFromStorage = typeof window !== "undefined" ? (localStorage.getItem('plugd_user_email') || localStorage.getItem('userEmail')) : null;
@@ -107,16 +106,6 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
     });
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    
-    setImageFile(file);
-    
-    // Preview
-    const objectUrl = URL.createObjectURL(file);
-    setPreviewUrl(objectUrl);
-  };
 
   const handleSubmit = async () => {
     // 1. Validate
@@ -128,17 +117,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
     setIsLoading(true);
 
     try {
-      // 2. Convert image to Base64 if selected
-      let imageUrl = "";
-      if (imageFile) {
-        imageUrl = await new Promise((resolve) => {
-          const reader = new FileReader();
-          reader.onloadend = () => resolve(reader.result as string);
-          reader.readAsDataURL(imageFile);
-        });
-      }
-
-      // 3. Save account to DB
+      // 2. Save account to DB
       const res = await fetch("/api/accounts", {
         method: "POST",
         headers: { 
@@ -152,7 +131,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
           category: formData.niches, 
           followersRange: formData.followersRange,
           email: formData.email, 
-          imageUrl, 
+          avatarUrl: formData.avatarUrl, 
           status: isAdmin ? "paid" : "pending_payment" 
         }),
       });
@@ -299,49 +278,33 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
               </div>
             </div>
 
-            {/* Profile Picture */}
+            {/* Profile Picture URL */}
             <div className="flex flex-col gap-3">
-              <label className="text-[1rem] font-[500] text-foreground tracking-wide block">Profile Picture</label>
-              <div className="flex items-center gap-6">
-                <div
-                  onClick={() => fileInputRef.current?.click()}
-                  style={{
-                    width: 64,
-                    height: 64,
-                    borderRadius: "50%",
-                    overflow: "hidden",
-                    cursor: "pointer",
-                    background: "#222",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  {previewUrl ? (
-                    <img src={previewUrl} alt="preview" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <label className="text-[1rem] font-[500] text-foreground tracking-wide block">Profile Picture URL</label>
+              <input
+                type="text"
+                placeholder="https://pbs.twimg.com/profile_images/..."
+                className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all"
+                value={formData.avatarUrl}
+                onChange={(e) => setFormData({ ...formData, avatarUrl: e.target.value })}
+              />
+              <p className="text-[0.75rem] text-muted font-medium">Right click your X profile picture → Copy image address → paste it here</p>
+              
+              <div className="mt-2 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-[#111] border border-border flex items-center justify-center shadow-inner">
+                  {formData.avatarUrl ? (
+                    <img 
+                      src={formData.avatarUrl} 
+                      alt="preview" 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                        (e.target as HTMLImageElement).parentElement!.innerHTML = '<div class="flex items-center justify-center w-full h-full"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user text-muted/40"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>';
+                      }}
+                    />
                   ) : (
-                    <Upload className="w-6 h-6 text-muted" />
+                    <User size={20} className="text-muted/40" />
                   )}
-                </div>
-                
-                <div className="flex-1">
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/jpg,image/jpeg,image/png,image/webp"
-                    style={{ display: "none" }}
-                    onChange={handleImageChange}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    disabled={isLoading}
-                    className="bg-background border border-border text-foreground px-6 py-3.5 rounded-xl text-sm font-bold hover:bg-accent transition-all flex items-center gap-2.5 shadow-sm active:scale-[0.98]"
-                  >
-                    {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
-                    Upload
-                  </button>
-                  <p className="text-[0.75rem] text-muted mt-2.5 font-medium tracking-tight">JPG, PNG or WebP. Max 2MB.</p>
                 </div>
               </div>
             </div>

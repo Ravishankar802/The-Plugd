@@ -25,7 +25,7 @@ async function main() {
         niche: ['Founder'],
         followersRange: '1K - 5K',
         paid: true,
-        avatarPath: '/uploads/avatar-1.png' // Default or placeholder
+        avatarUrl: 'https://pbs.twimg.com/profile_images/1683325305276710912/m_9n7_2v_400x400.jpg' // Example URL
       }
     });
   }

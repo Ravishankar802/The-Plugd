@@ -39,7 +39,7 @@ interface Account {
   id: number;
   name: string;
   xHandle: string;
-  avatarPath: string;
+  avatarUrl: string;
   bio: string;
   niche: string;
   followersRange: string;
@@ -252,7 +252,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
                                 setShowResults(false);
                               }}
                             >
-                              <img src={acc.avatarPath} alt="" className="w-10 h-10 rounded-lg object-cover border border-border shadow-sm" />
+                              <img src={acc.avatarUrl} alt="" className="w-10 h-10 rounded-lg object-cover border border-border shadow-sm" />
                               <div className="flex-1 min-w-0">
                                 <p className="text-foreground font-bold text-[0.95rem] truncate">{acc.name}</p>
                                 <p className="text-muted text-[0.8rem] truncate">@{acc.xHandle.replace(/^@+/, '')}</p>

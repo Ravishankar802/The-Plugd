@@ -12,6 +12,7 @@ export default async function Home() {
       where: { status: "paid" },
       orderBy: { createdAt: "desc" },
     });
+    console.log("SSR Accounts count:", accounts.length);
   } catch (error) {
     console.error("SSR fetch failed:", error);
   }
@@ -21,7 +22,7 @@ export default async function Home() {
     id: a.id,
     name: a.name,
     xHandle: a.xHandle,
-    avatarPath: a.avatarPath ?? "",
+    avatarUrl: a.avatarUrl ?? "",
     bio: a.bio,
     niche: a.niche[0] ?? "", // HomeClient Account interface expects string, not string[]
     followersRange: a.followersRange,

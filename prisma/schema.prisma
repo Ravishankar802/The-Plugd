@@ -11,7 +11,7 @@ model Account {
   id             Int      @id @default(autoincrement())
   name           String
   xHandle        String   @unique
-  avatarPath     String?  // Store path to uploaded image
+  avatarUrl      String?  // Store X profile picture URL
   bio            String
   niche          String[] // Store multiple niches
   followersRange String   // e.g. "1K - 5K"
