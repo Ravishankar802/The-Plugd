@@ -206,7 +206,7 @@ export default function DashboardProfileView() {
                   className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
                 />
                 <p className="text-[0.8rem] text-muted/60 font-medium">Paste your X profile picture URL here</p>
-                <p className="text-[0.8rem] text-muted/60 font-medium mt-1">If you update your profile picture on X, paste the new URL here to keep your listing current.</p>
+                <p className="text-[0.75rem] text-muted/60 font-medium mt-1 whitespace-nowrap">Changed your X profile pic? Update the URL here.</p>
               </div>
             </div>
           </div>
