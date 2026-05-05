@@ -244,7 +244,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
           <div className="max-w-[800px] w-full">
             <Header />
 
-            <div className="w-full flex flex-col items-center justify-center mt-8 mb-8 animate-in fade-in slide-in-from-top-2 duration-500">
+            <div className="w-full flex flex-col items-center justify-center my-8 animate-in fade-in slide-in-from-top-2 duration-500">
               <span className="font-mono text-[0.7rem] text-muted uppercase tracking-[0.08em] font-[600] mb-1">
                 TOTAL ACCOUNTS LISTED
               </span>
