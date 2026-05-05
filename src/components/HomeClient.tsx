@@ -88,9 +88,29 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
   const [shuffleKey, setShuffleKey] = useState(0);
   const [searchResults, setSearchResults] = useState<Account[]>([]);
   const [showResults, setShowResults] = useState(false);
+  const [stats, setStats] = useState<{ count: number; loading: boolean; error: boolean }>({
+    count: 0,
+    loading: true,
+    error: false,
+  });
+
+  const fetchStats = async () => {
+    try {
+      const res = await fetch("/api/stats");
+      if (!res.ok) throw new Error("Failed to fetch stats");
+      const data = await res.json();
+      setStats({ count: data.count, loading: false, error: false });
+    } catch (err) {
+      console.error("Stats fetch failed:", err);
+      setStats(prev => ({ ...prev, loading: false, error: true }));
+    }
+  };
 
   useEffect(() => {
     setHasMounted(true);
+    fetchStats();
+    const interval = setInterval(fetchStats, 30000);
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -223,6 +243,38 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
         <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-[60] flex flex-col items-center">
           <div className="max-w-[800px] w-full">
             <Header />
+
+            {!stats.error && (
+              <div className="w-full bg-[#111111] border border-[#1f1f1f] rounded-[12px] p-[1.25rem_1.75rem] mx-auto mb-8 animate-in fade-in slide-in-from-top-2 duration-500">
+                <div className="flex justify-between items-end">
+                  <span className="font-mono text-[0.7rem] text-[#6b7280] uppercase tracking-[0.08em]">
+                    Free spots claimed
+                  </span>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-white text-[1.4rem] font-bold leading-none">
+                      {stats.loading ? "0" : stats.count}
+                    </span>
+                    <span className="text-[#6b7280] text-[0.9rem]">/ 1000</span>
+                  </div>
+                </div>
+                
+                <div className="w-full bg-[#1a1a1a] rounded-full h-[8px] overflow-hidden mt-[0.75rem]">
+                  <div 
+                    className="bg-[#f97316] h-full rounded-full transition-all duration-500 ease-out"
+                    style={{ width: stats.loading ? "0%" : `${Math.min(Math.round((stats.count / 1000) * 100), 100)}%` }}
+                  />
+                </div>
+                
+                <div className="flex justify-between mt-[0.5rem]">
+                  <span className="text-[#6b7280] text-[0.75rem] font-mono">
+                    {stats.loading ? "Calculating..." : `${Math.max(1000 - stats.count, 0)} free spots left`}
+                  </span>
+                  <span className="text-[#f97316] text-[0.75rem] font-mono">
+                    {stats.loading ? "0% full" : `${Math.min(Math.round((stats.count / 1000) * 100), 100)}% full`}
+                  </span>
+                </div>
+              </div>
+            )}
 
             <section className="mb-0">
               <div className="flex flex-col md:flex-row gap-4 mb-6">
