@@ -7,51 +7,11 @@ import {
   Trash2, 
   Upload, 
   Check,
-  Rocket,
-  Hammer,
-  Laptop,
-  Palette,
-  Zap,
-  Bot,
-  Clapperboard,
-  GraduationCap,
-  Coins,
-  TrendingUp,
-  Pen,
   Plus,
-  BarChart2,
-  Briefcase,
-  DollarSign,
-  Cloud,
-  Layers,
-  Building2,
-  Mic,
   User
 } from "lucide-react";
+import { NICHES } from "@/lib/constants";
 
-const NICHES = [
-  { name: "Founder", icon: Rocket },
-  { name: "Builder", icon: Hammer },
-  { name: "Developer", icon: Laptop },
-  { name: "Designer", icon: Palette },
-  { name: "Indie Hacker", icon: Zap },
-  { name: "AI", icon: Bot },
-  { name: "Creator", icon: Clapperboard },
-  { name: "Student", icon: GraduationCap },
-  { name: "Crypto", icon: Coins },
-  { name: "Marketer", icon: TrendingUp },
-  { name: "Writer", icon: Pen },
-  { name: "Investor", icon: TrendingUp },
-  { name: "Trader", icon: BarChart2 },
-  { name: "Freelancer", icon: Briefcase },
-  { name: "Artist", icon: Palette },
-  { name: "Finance", icon: DollarSign },
-  { name: "SaaS", icon: Cloud },
-  { name: "No-Code", icon: Layers },
-  { name: "Agency", icon: Building2 },
-  { name: "Podcaster", icon: Mic },
-  { name: "Other", icon: Plus },
-];
 
 const FOLLOWERS_RANGES = [
   "0-100", "100-500", "500-1K", "1K-2K", "2K-5K", "5K-10K", "10K-25K", "25K-50K", "50K-100K", "100K+"
@@ -203,11 +163,12 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
                       key={n.name}
                       type="button"
                       onClick={() => setFormData({ ...formData, niche: [n.name] })}
-                      className={`px-3 py-1.5 rounded-lg text-[0.75rem] transition-all border ${
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[0.75rem] transition-all border ${
                         isSelected ? "bg-selected text-selected-foreground border-selected font-bold shadow-sm" : "bg-background text-muted border-border hover:bg-accent hover:text-foreground"
                       }`}
                     >
-                      {n.name}
+                      <span>{n.emoji}</span>
+                      <span>{n.name}</span>
                     </button>
                   );
                 })}

@@ -11,7 +11,7 @@ interface Account {
   xHandle: string;
   avatarUrl: string;
   bio: string;
-  niche: string;
+  niche: string[];
   followersRange: string;
   createdAt?: string;
 }

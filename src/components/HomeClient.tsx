@@ -9,31 +9,10 @@ import {
   Search, 
   Plus, 
   Globe, 
-  Rocket, 
-  Hammer, 
-  Laptop, 
-  Palette, 
-  Zap, 
-  Bot, 
-  TrendingUp, 
-  Pen, 
-  Clapperboard, 
-  Banknote, 
-  Box, 
-  Puzzle, 
-  Coins, 
-  Building, 
-  GraduationCap, 
-  Mic,
-  Info,
-  BarChart2,
-  Briefcase,
-  DollarSign,
-  Cloud,
-  Layers,
-  Building2,
-  ExternalLink
+  ExternalLink,
+  Info
 } from "lucide-react";
+import { NICHES } from "@/lib/constants";
 
 interface Account {
   id: number;
@@ -41,34 +20,15 @@ interface Account {
   xHandle: string;
   avatarUrl: string;
   bio: string;
-  niche: string;
+  niche: string[];
   followersRange: string;
   createdAt?: string;
 }
 
-const NICHES = [
-  { name: "All", icon: Globe },
-  { name: "Founder", icon: Rocket },
-  { name: "Builder", icon: Hammer },
-  { name: "Developer", icon: Laptop },
-  { name: "Designer", icon: Palette },
-  { name: "Indie Hacker", icon: Zap },
-  { name: "AI", icon: Bot },
-  { name: "Creator", icon: Clapperboard },
-  { name: "Student", icon: GraduationCap },
-  { name: "Crypto", icon: Coins },
-  { name: "Marketer", icon: TrendingUp },
-  { name: "Writer", icon: Pen },
-  { name: "Investor", icon: TrendingUp },
-  { name: "Trader", icon: BarChart2 },
-  { name: "Freelancer", icon: Briefcase },
-  { name: "Artist", icon: Palette },
-  { name: "Finance", icon: DollarSign },
-  { name: "SaaS", icon: Cloud },
-  { name: "No-Code", icon: Layers },
-  { name: "Agency", icon: Building2 },
-  { name: "Podcaster", icon: Mic },
-  { name: "Other", icon: Plus },
+// Component local "All" option
+const HOME_NICHES = [
+  { name: "All", emoji: "" },
+  ...NICHES
 ];
 
 interface HomeClientProps {
@@ -116,7 +76,10 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
 
   useEffect(() => {
     const result = accounts.filter(account => {
-      const matchesNiche = selectedNiches.length === 0 || selectedNiches.includes(account.niche);
+      const matchesNiche = selectedNiches.length === 0 || 
+        (Array.isArray(account.niche) 
+          ? selectedNiches.some(n => account.niche.includes(n))
+          : selectedNiches.includes(account.niche));
       const matchesFollowers = selectedFollowersRange === "All Ranges" || account.followersRange === selectedFollowersRange;
       
       return matchesNiche && matchesFollowers;
@@ -184,15 +147,15 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     });
   };
 
-  const sortedNiches = [...NICHES.filter(n => n.name !== "All")].sort((a, b) => {
+  const sortedNiches = [...HOME_NICHES.filter(n => n.name !== "All")].sort((a, b) => {
     const aSelected = selectedNiches.includes(a.name);
     const bSelected = selectedNiches.includes(b.name);
     
     if (aSelected && !bSelected) return -1;
     if (!aSelected && bSelected) return 1;
     
-    const aIndex = NICHES.findIndex(n => n.name === a.name);
-    const bIndex = NICHES.findIndex(n => n.name === b.name);
+    const aIndex = HOME_NICHES.findIndex(n => n.name === a.name);
+    const bIndex = HOME_NICHES.findIndex(n => n.name === b.name);
     
     if (aSelected && bSelected) {
       return selectedNiches.indexOf(a.name) - selectedNiches.indexOf(b.name);
@@ -334,8 +297,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
                     <span>All</span>
                   </button>
                   
-                  {(hasMounted ? sortedNiches : NICHES.filter(n => n.name !== "All")).map((niche) => {
-                    const Icon = niche.icon;
+                  {(hasMounted ? sortedNiches : HOME_NICHES.filter(n => n.name !== "All")).map((niche) => {
                     const isSelected = hasMounted && selectedNiches.includes(niche.name);
                     return (
                       <button
@@ -348,7 +310,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
                             : "bg-card border-border text-muted hover:border-muted-foreground"
                         }`}
                       >
-                        <Icon size={16} />
+                        <span className="text-base">{niche.emoji}</span>
                         <span>{niche.name}</span>
                       </button>
                     );

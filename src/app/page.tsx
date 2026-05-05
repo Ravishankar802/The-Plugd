@@ -24,7 +24,7 @@ export default async function Home() {
     xHandle: a.xHandle,
     avatarUrl: a.avatarUrl ?? "",
     bio: a.bio,
-    niche: a.niche[0] ?? "", // HomeClient Account interface expects string, not string[]
+    niche: a.niche,
     followersRange: a.followersRange,
     createdAt: a.createdAt.toISOString(),
   }));

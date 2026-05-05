@@ -8,54 +8,11 @@ import {
   Check,
   Camera,
   Save,
-  User
-} from "lucide-react";
-
-import { 
-  Rocket, 
-  Hammer, 
-  Laptop, 
-  Palette, 
-  Zap, 
-  Bot, 
-  Clapperboard, 
-  GraduationCap, 
-  Coins, 
-  TrendingUp, 
-  Pen, 
-  BarChart2, 
-  Briefcase, 
-  DollarSign, 
-  Cloud, 
-  Layers, 
-  Building2, 
-  Mic,
+  User,
   Plus
 } from "lucide-react";
+import { NICHES } from "@/lib/constants";
 
-const NICHES = [
-  { name: "Founder", icon: Rocket },
-  { name: "Builder", icon: Hammer },
-  { name: "Developer", icon: Laptop },
-  { name: "Designer", icon: Palette },
-  { name: "Indie Hacker", icon: Zap },
-  { name: "AI", icon: Bot },
-  { name: "Creator", icon: Clapperboard },
-  { name: "Student", icon: GraduationCap },
-  { name: "Crypto", icon: Coins },
-  { name: "Marketer", icon: TrendingUp },
-  { name: "Writer", icon: Pen },
-  { name: "Investor", icon: TrendingUp },
-  { name: "Trader", icon: BarChart2 },
-  { name: "Freelancer", icon: Briefcase },
-  { name: "Artist", icon: Palette },
-  { name: "Finance", icon: DollarSign },
-  { name: "SaaS", icon: Cloud },
-  { name: "No-Code", icon: Layers },
-  { name: "Agency", icon: Building2 },
-  { name: "Podcaster", icon: Mic },
-  { name: "Other", icon: Plus },
-];
 
 const FOLLOWERS_RANGES = [
   "0-100", "100-500", "500-1K", "1K-2K", "2K-5K", "5K-10K", "10K-25K", "25K-50K", "50K-100K", "100K+"
@@ -277,7 +234,6 @@ export default function DashboardProfileView() {
             <label className="text-[0.95rem] font-[500] text-foreground block">Niche</label>
             <div className="flex flex-wrap gap-3">
               {NICHES.map((niche) => {
-                const Icon = niche.icon;
                 const isSelected = (account.niche || []).includes(niche.name);
                 return (
                   <button
@@ -296,7 +252,7 @@ export default function DashboardProfileView() {
                         : "bg-pill text-muted border-border hover:border-muted hover:text-foreground hover:bg-accent"
                     }`}
                   >
-                    <Icon size={16} className={isSelected ? "text-background" : "text-muted"} />
+                    <span className="text-base">{niche.emoji}</span>
                     <span>{niche.name}</span>
                   </button>
                 );

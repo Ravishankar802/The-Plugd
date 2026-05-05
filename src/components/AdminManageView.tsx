@@ -13,9 +13,11 @@ import {
   Users,
   ArrowRight,
   ExternalLink,
-  AlertTriangle
+  AlertTriangle,
+  Globe
 } from "lucide-react";
 import AdminEditAccountModal from "./AdminEditAccountModal";
+import { NICHES } from "@/lib/constants";
 
 const FOLLOWERS_RANGES = [
   "All Ranges", "0-100", "100-500", "500-1K", "1K-2K", "2K-5K", "5K-10K", "10K-25K", "25K-50K", "50K-100K", "100K+"
@@ -31,8 +33,10 @@ export default function AdminManageView() {
   const [accounts, setAccounts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedRange, setSelectedRange] = useState("All Ranges");
+  const [selectedNiche, setSelectedNiche] = useState("All Niches");
   const [sortBy, setSortBy] = useState("latest");
   const [isRangeOpen, setIsRangeOpen] = useState(false);
+  const [isNicheOpen, setIsNicheOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [editingAccount, setEditingAccount] = useState<any>(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<number | null>(null);
@@ -40,6 +44,7 @@ export default function AdminManageView() {
   const [cleanupMessage, setCleanupMessage] = useState<string | null>(null);
 
   const rangeRef = useRef<HTMLDivElement>(null);
+  const nicheRef = useRef<HTMLDivElement>(null);
   const sortRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -48,6 +53,9 @@ export default function AdminManageView() {
     const handleClickOutside = (event: MouseEvent) => {
       if (rangeRef.current && !rangeRef.current.contains(event.target as Node)) {
         setIsRangeOpen(false);
+      }
+      if (nicheRef.current && !nicheRef.current.contains(event.target as Node)) {
+        setIsNicheOpen(false);
       }
       if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
         setIsSortOpen(false);
@@ -121,7 +129,11 @@ export default function AdminManageView() {
 
   // Filter and Sort Logic
   const filteredAccounts = accounts
-    .filter(a => selectedRange === "All Ranges" || a.followersRange === selectedRange)
+    .filter(a => {
+      const matchesRange = selectedRange === "All Ranges" || a.followersRange === selectedRange;
+      const matchesNiche = selectedNiche === "All Niches" || (Array.isArray(a.niche) ? a.niche.includes(selectedNiche) : a.niche === selectedNiche);
+      return matchesRange && matchesNiche;
+    })
     .sort((a, b) => {
       if (sortBy === "latest") return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
       if (sortBy === "oldest") return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
@@ -191,6 +203,48 @@ export default function AdminManageView() {
               </div>
             )}
           </div>
+          
+          {/* Niche Dropdown */}
+          <div className="relative" ref={nicheRef}>
+            <button
+              onClick={() => setIsNicheOpen(!isNicheOpen)}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-pill border border-border text-muted hover:text-foreground hover:border-muted transition-all text-sm font-bold shadow-xl"
+            >
+              <Globe size={14} />
+              <span>{selectedNiche === "All Niches" ? "Niche" : selectedNiche}</span>
+              <ChevronDown size={14} className={`transition-transform ${isNicheOpen ? "rotate-180" : ""}`} />
+            </button>
+            {isNicheOpen && (
+              <div className="absolute right-0 mt-2 w-56 bg-card border border-border rounded-xl shadow-2xl z-50 overflow-hidden py-2 animate-in fade-in zoom-in-95 duration-200">
+                <div className="max-h-[400px] overflow-y-auto custom-scrollbar">
+                  <button
+                    onClick={() => { setSelectedNiche("All Niches"); setIsNicheOpen(false); }}
+                    className={`w-full flex items-center justify-between px-4 py-2.5 text-sm transition-all ${
+                      selectedNiche === "All Niches" ? "bg-accent text-foreground" : "text-muted hover:text-foreground hover:bg-accent"
+                    }`}
+                  >
+                    All Niches
+                    {selectedNiche === "All Niches" && <Check size={14} />}
+                  </button>
+                  {NICHES.map(niche => (
+                    <button
+                      key={niche.name}
+                      onClick={() => { setSelectedNiche(niche.name); setIsNicheOpen(false); }}
+                      className={`w-full flex items-center justify-between px-4 py-2.5 text-sm transition-all ${
+                        selectedNiche === niche.name ? "bg-accent text-foreground" : "text-muted hover:text-foreground hover:bg-accent"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{niche.emoji}</span>
+                        <span>{niche.name}</span>
+                      </div>
+                      {selectedNiche === niche.name && <Check size={14} />}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
 
           {/* Sort Dropdown */}
           <div className="relative" ref={sortRef}>
@@ -233,6 +287,16 @@ export default function AdminManageView() {
                 <p className="text-muted text-[1rem] font-[300] leading-snug max-w-2xl">{acc.bio}</p>
                 <div className="flex items-center gap-4 pt-1">
                   <span className="text-muted/60 text-sm font-[300]">Added: {new Date(acc.createdAt).toLocaleDateString()}</span>
+                  <div className="flex gap-2">
+                    {(Array.isArray(acc.niche) ? acc.niche : [acc.niche]).map((n: string) => {
+                      const nicheData = NICHES.find(ni => ni.name === n);
+                      return (
+                        <span key={n} className="px-2 py-0.5 rounded-md bg-selected/10 border border-selected/20 text-selected-foreground text-[0.7rem] font-bold">
+                          {nicheData?.emoji} {n}
+                        </span>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
