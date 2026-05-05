@@ -61,7 +61,7 @@ export default function DirectoryTable({
   }, []);
  
   return (
-    <div className="w-full bg-card rounded-2xl border border-border">
+    <div className="w-full bg-card rounded-2xl border border-border overflow-hidden">
       <div className="flex flex-col md:flex-row md:items-center justify-between p-6 gap-4">
         <h2 className="text-[1.5rem] font-[800] text-foreground text-glow">Index</h2>
         
