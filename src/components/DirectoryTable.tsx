@@ -24,6 +24,7 @@ interface DirectoryTableProps {
   sortBy: string;
   setSortBy: (val: string) => void;
   onShuffle: () => void;
+  startIndex: number;
 }
  
 const FOLLOWERS_RANGES = [
@@ -39,7 +40,8 @@ export default function DirectoryTable({
   setSelectedFollowersRange, 
   sortBy, 
   setSortBy,
-  onShuffle
+  onShuffle,
+  startIndex
 }: DirectoryTableProps) {
   const [followersOpen, setFollowersOpen] = useState(false);
   const [sortOpen, setSortOpen] = useState(false);
@@ -160,13 +162,13 @@ export default function DirectoryTable({
               <tr key={account.id} className="directory-row group transition-colors flex flex-col md:table-row border-b border-border py-6 md:py-0">
                 {/* Desktop Number Cell */}
                 <td className="font-mono-custom text-muted text-sm hidden md:table-cell px-6 py-4 md:w-10">
-                  {index + 1}
+                  {startIndex + index + 1}
                 </td>
                 <td className="block md:table-cell px-6 py-2 md:py-4">
                   <div className="flex items-center gap-4">
                     {/* Mobile Number Indicator */}
                     <span className="md:hidden font-mono-custom text-muted text-xs w-4 shrink-0">
-                      {index + 1}
+                      {startIndex + index + 1}
                     </span>
                     <img
                       src={account.avatarUrl}

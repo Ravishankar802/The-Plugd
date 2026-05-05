@@ -81,7 +81,8 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedNiches, setSelectedNiches] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(50);
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 100;
   const [hasMounted, setHasMounted] = useState(false);
   const [selectedFollowersRange, setSelectedFollowersRange] = useState("All Ranges");
   const [sortBy, setSortBy] = useState("Latest");
@@ -133,7 +134,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     }
 
     setFilteredAccounts(sorted);
-    setVisibleCount(50); // Reset pagination on any filter change
+    setCurrentPage(1); // Reset pagination on any filter change
   }, [selectedNiches, accounts, selectedFollowersRange, sortBy, shuffleKey]);
 
   // Separate Search Logic for Dropdown
@@ -174,7 +175,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     }
     
     setSelectedNiches(prev => {
-      setVisibleCount(50); // Reset pagination on niche toggle
+      setCurrentPage(1); // Reset pagination on niche toggle
       if (prev.includes(nicheName)) {
         return prev.filter(n => n !== nicheName);
       } else {
@@ -200,12 +201,10 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     return aIndex - bIndex;
   });
 
-  const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 50);
-  };
-
-  const displayedAccounts = filteredAccounts.slice(0, visibleCount);
-  const remainingCount = filteredAccounts.length - visibleCount;
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const displayedAccounts = filteredAccounts.slice(startIndex, startIndex + PAGE_SIZE);
+  const hasNextPage = startIndex + PAGE_SIZE < filteredAccounts.length;
+  const hasPrevPage = currentPage > 1;
 
   const handleShuffle = () => {
     setSortBy("Shuffle");
@@ -367,17 +366,34 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
           sortBy={sortBy}
           setSortBy={setSortBy}
           onShuffle={handleShuffle}
+          startIndex={startIndex}
         />
 
         <div className="flex flex-col items-center gap-6 pt-12 pb-20">
-          {remainingCount > 0 && (
-            <button
-              onClick={handleLoadMore}
-              className="flex items-center justify-center gap-2 bg-[#1a1a1a] border border-[#2a2a2a] px-8 py-3 rounded-full text-[0.95rem] font-medium text-[#f5f5f5] transition-all hover:bg-[#252525] active:scale-[0.98]"
-            >
-              Next {remainingCount >= 50 ? "50" : remainingCount} ›
-            </button>
-          )}
+          <div className="flex items-center gap-8">
+            {hasPrevPage && (
+              <button
+                onClick={() => {
+                  setCurrentPage(prev => prev - 1);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="text-muted hover:text-foreground transition-colors font-medium text-[0.95rem] cursor-pointer"
+              >
+                ‹ Prev 100
+              </button>
+            )}
+            {hasNextPage && (
+              <button
+                onClick={() => {
+                  setCurrentPage(prev => prev + 1);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="text-muted hover:text-foreground transition-colors font-medium text-[0.95rem] cursor-pointer"
+              >
+                Next 100 ›
+              </button>
+            )}
+          </div>
           <p className="text-[#a1a1aa] text-[0.8rem] md:text-[0.85rem] font-mono-custom text-center px-4 md:whitespace-nowrap whitespace-normal max-w-sm mx-auto md:max-w-none leading-relaxed">
             <Info className="w-4 h-4 shrink-0 inline-block mr-2 -mt-0.5" />
             Accounts listed here are submitted by real X creators. Every listing is verified by a $1 payment. No bots. No spam.
