@@ -206,6 +206,9 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
   const hasNextPage = startIndex + PAGE_SIZE < filteredAccounts.length;
   const hasPrevPage = currentPage > 1;
 
+  const remainingAfterCurrent = filteredAccounts.length - (startIndex + PAGE_SIZE);
+  const nextCount = remainingAfterCurrent >= 100 ? 100 : remainingAfterCurrent;
+
   const handleShuffle = () => {
     setSortBy("Shuffle");
     setShuffleKey(prev => prev + 1);
@@ -370,14 +373,14 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
         />
 
         <div className="flex flex-col items-center gap-6 pt-12 pb-20">
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-4">
             {hasPrevPage && (
               <button
                 onClick={() => {
                   setCurrentPage(prev => prev - 1);
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="text-muted hover:text-foreground transition-colors font-medium text-[0.95rem] cursor-pointer"
+                className="flex items-center justify-center bg-card border border-border px-6 py-2.5 rounded-lg text-muted hover:text-foreground hover:border-muted-foreground transition-all font-medium text-[0.95rem] cursor-pointer shadow-sm active:scale-[0.98]"
               >
                 ‹ Prev 100
               </button>
@@ -388,9 +391,9 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
                   setCurrentPage(prev => prev + 1);
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="text-muted hover:text-foreground transition-colors font-medium text-[0.95rem] cursor-pointer"
+                className="flex items-center justify-center bg-card border border-border px-6 py-2.5 rounded-lg text-muted hover:text-foreground hover:border-muted-foreground transition-all font-medium text-[0.95rem] cursor-pointer shadow-sm active:scale-[0.98]"
               >
-                Next 100 ›
+                Next {nextCount} ›
               </button>
             )}
           </div>
