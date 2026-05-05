@@ -226,21 +226,24 @@ export default function AdminManageView() {
                     All Niches
                     {selectedNiche === "All Niches" && <Check size={14} />}
                   </button>
-                  {NICHES.map(niche => (
-                    <button
-                      key={niche.name}
-                      onClick={() => { setSelectedNiche(niche.name); setIsNicheOpen(false); }}
-                      className={`w-full flex items-center justify-between px-4 py-2.5 text-sm transition-all ${
-                        selectedNiche === niche.name ? "bg-accent text-foreground" : "text-muted hover:text-foreground hover:bg-accent"
-                      }`}
-                    >
-                      <div className="flex items-center gap-2">
-                        <span>{niche.emoji}</span>
-                        <span>{niche.name}</span>
-                      </div>
-                      {selectedNiche === niche.name && <Check size={14} />}
-                    </button>
-                  ))}
+                    {NICHES.map(niche => {
+                      const Icon = niche.icon;
+                      return (
+                        <button
+                          key={niche.name}
+                          onClick={() => { setSelectedNiche(niche.name); setIsNicheOpen(false); }}
+                          className={`w-full flex items-center justify-between px-4 py-2.5 text-sm transition-all ${
+                            selectedNiche === niche.name ? "bg-accent text-foreground" : "text-muted hover:text-foreground hover:bg-accent"
+                          }`}
+                        >
+                          <div className="flex items-center gap-2">
+                            {Icon && <Icon size={14} />}
+                            <span>{niche.name}</span>
+                          </div>
+                          {selectedNiche === niche.name && <Check size={14} />}
+                        </button>
+                      );
+                    })}
                 </div>
               </div>
             )}
@@ -290,9 +293,11 @@ export default function AdminManageView() {
                   <div className="flex gap-2">
                     {(Array.isArray(acc.niche) ? acc.niche : [acc.niche]).map((n: string) => {
                       const nicheData = NICHES.find(ni => ni.name === n);
+                      const Icon = nicheData?.icon;
                       return (
-                        <span key={n} className="px-2 py-0.5 rounded-md bg-selected/10 border border-selected/20 text-selected-foreground text-[0.7rem] font-bold">
-                          {nicheData?.emoji} {n}
+                        <span key={n} className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-selected/10 border border-selected/20 text-selected-foreground text-[0.7rem] font-bold">
+                          {Icon && <Icon size={12} />}
+                          {n}
                         </span>
                       );
                     })}

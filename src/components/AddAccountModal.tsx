@@ -196,6 +196,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
               <label className="text-[1rem] font-[500] text-foreground tracking-wide block">Niche</label>
               <div className="flex flex-wrap gap-2.5">
                 {NICHES.map((niche) => {
+                  const Icon = niche.icon;
                   const isSelected = formData.niches.includes(niche.name);
                   return (
                     <button
@@ -208,7 +209,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                           : "bg-background text-muted border-border hover:border-muted hover:text-foreground"
                       }`}
                     >
-                      <span className="text-base">{niche.emoji}</span>
+                      {Icon && <Icon size={16} className={isSelected ? "text-selected-foreground" : "text-muted"} />}
                       <span>{niche.name}</span>
                     </button>
                   );

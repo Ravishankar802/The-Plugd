@@ -157,6 +157,7 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
               <label className="text-[0.95rem] font-[500] text-foreground">Niche</label>
               <div className="flex flex-wrap gap-2">
                 {NICHES.map(n => {
+                  const Icon = n.icon;
                   const isSelected = formData.niche.includes(n.name);
                   return (
                     <button
@@ -167,7 +168,7 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
                         isSelected ? "bg-selected text-selected-foreground border-selected font-bold shadow-sm" : "bg-background text-muted border-border hover:bg-accent hover:text-foreground"
                       }`}
                     >
-                      <span>{n.emoji}</span>
+                      {Icon && <Icon size={14} />}
                       <span>{n.name}</span>
                     </button>
                   );

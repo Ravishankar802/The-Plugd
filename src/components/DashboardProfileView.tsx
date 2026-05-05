@@ -234,6 +234,7 @@ export default function DashboardProfileView() {
             <label className="text-[0.95rem] font-[500] text-foreground block">Niche</label>
             <div className="flex flex-wrap gap-3">
               {NICHES.map((niche) => {
+                const Icon = niche.icon;
                 const isSelected = (account.niche || []).includes(niche.name);
                 return (
                   <button
@@ -252,7 +253,7 @@ export default function DashboardProfileView() {
                         : "bg-pill text-muted border-border hover:border-muted hover:text-foreground hover:bg-accent"
                     }`}
                   >
-                    <span className="text-base">{niche.emoji}</span>
+                    {Icon && <Icon size={16} className={isSelected ? "text-selected-foreground" : "text-muted"} />}
                     <span>{niche.name}</span>
                   </button>
                 );

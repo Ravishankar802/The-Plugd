@@ -27,7 +27,7 @@ interface Account {
 
 // Component local "All" option
 const HOME_NICHES = [
-  { name: "All", emoji: "" },
+  { name: "All", icon: Globe },
   ...NICHES
 ];
 
@@ -298,6 +298,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
                   </button>
                   
                   {(hasMounted ? sortedNiches : HOME_NICHES.filter(n => n.name !== "All")).map((niche) => {
+                    const Icon = niche.icon;
                     const isSelected = hasMounted && selectedNiches.includes(niche.name);
                     return (
                       <button
@@ -310,7 +311,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
                             : "bg-card border-border text-muted hover:border-muted-foreground"
                         }`}
                       >
-                        <span className="text-base">{niche.emoji}</span>
+                        {Icon && <Icon size={16} />}
                         <span>{niche.name}</span>
                       </button>
                     );
