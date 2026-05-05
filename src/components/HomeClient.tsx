@@ -338,7 +338,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
           {remainingCount > 0 && (
             <button
               onClick={handleLoadMore}
-              className="flex items-center justify-center gap-2 bg-transparent border border-[#2a2a2a] px-8 py-3 rounded-full text-[0.95rem] font-medium text-[#f5f5f5] transition-all hover:bg-[#1a1a1a] active:scale-[0.98]"
+              className="flex items-center justify-center gap-2 bg-[#1a1a1a] border border-[#2a2a2a] px-8 py-3 rounded-full text-[0.95rem] font-medium text-[#f5f5f5] transition-all hover:bg-[#252525] active:scale-[0.98]"
             >
               Next {remainingCount >= 50 ? "50" : remainingCount} ›
             </button>
