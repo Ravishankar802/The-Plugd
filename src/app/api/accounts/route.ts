@@ -28,6 +28,7 @@ export async function POST(req: Request) {
       handle,    // frontend sends this
       xHandle,   // legacy key
       avatarPath,
+      avatarUrl, // frontend sends this
       imageUrl,  // frontend sends this
       bio,
       category,  // frontend sends this (array of niches)
@@ -61,7 +62,7 @@ export async function POST(req: Request) {
       data: {
         name:          String(name),
         xHandle:       cleanHandle,
-        avatarUrl:     imageUrl || avatarPath || "",
+        avatarUrl:     avatarUrl || imageUrl || avatarPath || "",
         bio:           bio || "",
         niche:         category || niche || [],
         followersRange: followersRange || "",
