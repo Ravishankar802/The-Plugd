@@ -13,10 +13,9 @@ import ProfileActions from "@/components/ProfileActions";
 import Footer from "@/components/Footer";
 import ProfileStatusWrapper from "@/components/ProfileStatusWrapper";
 import ScrollToTop from "@/components/ScrollToTop";
-import { cookies } from "next/headers";
 
-// Revalidate every hour
-export const revalidate = 3600;
+// Revalidate every 5 minutes
+export const revalidate = 300;
 
 export async function generateStaticParams() {
   const accounts = await prisma.account.findMany({
@@ -37,36 +36,22 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
   const { xHandle } = await params;
   const cleanHandle = xHandle.replace(/^@+/, "");
 
-  const cookieStore = await cookies();
-  const userEmail = cookieStore.get("plugd_user_email")?.value || null;
-
-  // Fetch current account and user status in parallel
-  const [account, userStatuses] = await Promise.all([
-    prisma.account.findFirst({
-      where: {
-        xHandle: {
-          equals: cleanHandle,
-          mode: "insensitive",
-        },
-        status: "paid",
+  // Fetch current account
+  const account = await prisma.account.findFirst({
+    where: {
+      xHandle: {
+        equals: cleanHandle,
+        mode: "insensitive",
       },
-    }),
-    userEmail ? prisma.userAccountStatus.findMany({
-      where: { userId: userEmail }
-    }) : Promise.resolve([])
-  ]);
+      status: "paid",
+    },
+  });
 
   if (!account) {
     notFound();
   }
 
-  // Create a status map for easy lookup
-  const statusMap: Record<number, string> = {};
-  userStatuses.forEach(s => {
-    statusMap[s.accountId] = s.status;
-  });
-
-  // Calculate permanent listing number and discover more accounts in parallel
+  // Calculate permanent listing number and random accounts in parallel
   const [listingNumber, allPaidAccounts] = await Promise.all([
     prisma.account.count({
       where: {
@@ -175,9 +160,6 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
                   <div className="h-6 w-[1px] bg-border mx-1" />
                   <ProfileStatusWrapper 
                     accountId={account.id} 
-                    initialStatus={statusMap[account.id]} 
-                    initialEmail={userEmail}
-                    initialIsPaid={!!userEmail}
                   />
                 </div>
               </div>
@@ -230,9 +212,6 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
                 <div className="pt-4 border-t border-border flex items-center justify-center">
                    <ProfileStatusWrapper 
                     accountId={acc.id} 
-                    initialStatus={statusMap[acc.id]} 
-                    initialEmail={userEmail}
-                    initialIsPaid={!!userEmail}
                   />
                 </div>
               </Link>
