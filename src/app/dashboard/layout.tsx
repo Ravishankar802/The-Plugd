@@ -19,7 +19,7 @@ export default async function DashboardLayout({
 
   return (
     <div className="min-h-screen bg-background flex">
-      <DashboardSidebar email={session.email} isAdmin={session.isAdmin} />
+      <DashboardSidebar email={session.email} />
       <main className="flex-1 md:ml-[320px] p-6 md:p-12">
         {children}
       </main>

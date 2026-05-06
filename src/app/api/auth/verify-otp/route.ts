@@ -37,7 +37,15 @@ export async function POST(req: Request) {
 
     // Create session
     const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
-    const session = await encrypt({ email: email.toLowerCase(), isPaid: true, expires });
+    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "ravx003@gmail.com";
+    const isAdmin = email.toLowerCase() === adminEmail.toLowerCase();
+    
+    const session = await encrypt({ 
+      email: email.toLowerCase(), 
+      isPaid: true, 
+      isAdmin,
+      expires 
+    });
 
     // Set cookie
     const cookieStore = await cookies();
