@@ -12,8 +12,19 @@ import {
 import ProfileActions from "@/components/ProfileActions";
 import Footer from "@/components/Footer";
 
-// Force dynamic to ensure we get fresh data
-export const dynamic = "force-dynamic";
+// Revalidate every hour
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const accounts = await prisma.account.findMany({
+    where: { status: "paid" },
+    select: { xHandle: true },
+  });
+  
+  return accounts.map((account) => ({
+    xHandle: account.xHandle.replace(/^@+/, ""),
+  }));
+}
 
 interface ProfilePageProps {
   params: Promise<{ xHandle: string }>;

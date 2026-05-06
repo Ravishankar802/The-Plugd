@@ -165,6 +165,7 @@ export default function DirectoryTable({
                 key={account.id} 
                 className="directory-row group transition-colors flex flex-col md:table-row border-b border-border py-6 md:py-0 cursor-pointer"
                 onClick={() => router.push(`/u/${account.xHandle.replace(/^@+/, '')}`)}
+                onMouseEnter={() => router.prefetch(`/u/${account.xHandle.replace(/^@+/, '')}`)}
               >
                 {/* Desktop Number Cell */}
                 <td className="font-mono-custom text-muted text-sm hidden md:table-cell px-6 py-4 md:w-10">
