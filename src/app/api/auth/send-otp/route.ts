@@ -10,8 +10,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
 
+    console.log(`[AUTH] Sending OTP to: ${email}`);
+
     // Check if email exists in Account table with status: 'paid'
-    // User requested "Only users whose email exists in the Account table as paid get access"
     const account = await prisma.account.findFirst({
       where: {
         email: email.toLowerCase(),
@@ -20,9 +21,10 @@ export async function POST(req: Request) {
     });
 
     if (!account) {
+      console.warn(`[AUTH] No paid account found for: ${email}`);
       return NextResponse.json(
         { error: "No paid account found for this email" },
-        { status: 401 }
+        { status: 404 }
       );
     }
 
@@ -46,34 +48,56 @@ export async function POST(req: Request) {
       },
     });
 
+    // Check Env Vars
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.error("[AUTH] Missing Gmail configuration env vars");
+      return NextResponse.json(
+        { error: "Internal server error: Email service not configured" },
+        { status: 500 }
+      );
+    }
+
     // Send email
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_APP_PASSWORD
-      }
+      },
+      // Adding extra config for stability
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
     });
 
-    await transporter.sendMail({
-      from: '"Plugd" <ravx003@gmail.com>',
-      to: email,
-      subject: 'Your Plugd login code',
-      html: `
-        <div style="font-family: sans-serif; max-width: 400px;">
-          <h2>Your Plugd login code</h2>
-          <p style="font-size: 36px; font-weight: bold; letter-spacing: 8px;">${code}</p>
-          <p>This code expires in 5 minutes.</p>
-          <p>If you didn't request this, ignore this email.</p>
-        </div>
-      `
-    });
+    try {
+      await transporter.sendMail({
+        from: `"Plugd" <${process.env.GMAIL_USER}>`,
+        to: email,
+        subject: 'Your Plugd login code',
+        html: `
+          <div style="font-family: sans-serif; max-width: 400px; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+            <h2 style="color: #333;">Your Plugd login code</h2>
+            <p style="font-size: 36px; font-weight: bold; letter-spacing: 8px; color: #ff6b00; margin: 20px 0;">${code}</p>
+            <p style="color: #666;">This code expires in 5 minutes.</p>
+            <p style="color: #999; font-size: 12px; margin-top: 30px;">If you didn't request this, you can safely ignore this email.</p>
+          </div>
+        `
+      });
+      console.log(`[AUTH] OTP sent successfully to: ${email}`);
+    } catch (mailError) {
+      console.error("[AUTH] Nodemailer error:", mailError);
+      return NextResponse.json(
+        { error: "Internal server error: Failed to send email" },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ message: "OTP sent successfully" });
-  } catch (error) {
-    console.error("Send OTP error:", error);
+  } catch (error: any) {
+    console.error("[AUTH] Unexpected error in send-otp:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: `Internal server error: ${error.message || 'Unknown error'}` },
       { status: 500 }
     );
   }
