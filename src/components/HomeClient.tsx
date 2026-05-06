@@ -45,7 +45,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
   const [selectedNiches, setSelectedNiches] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const PAGE_SIZE = 100;
+  const PAGE_SIZE = 50;
   const [hasMounted, setHasMounted] = useState(false);
   const [selectedFollowersRange, setSelectedFollowersRange] = useState("All Ranges");
   const [sortBy, setSortBy] = useState("Latest");
@@ -229,7 +229,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
   const hasPrevPage = currentPage > 1;
 
   const remainingAfterCurrent = filteredAccounts.length - (startIndex + PAGE_SIZE);
-  const nextCount = remainingAfterCurrent >= 100 ? 100 : remainingAfterCurrent;
+  const nextCount = remainingAfterCurrent >= 50 ? 50 : remainingAfterCurrent;
 
   const handleShuffle = () => {
     setSortBy("Shuffle");
@@ -410,7 +410,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
                 }}
                 className="flex items-center justify-center bg-card border border-border px-6 py-2.5 rounded-lg text-muted hover:text-foreground hover:border-muted-foreground transition-all font-medium text-[0.95rem] cursor-pointer shadow-sm active:scale-[0.98]"
               >
-                ‹ Prev 100
+                ‹ Prev 50
               </button>
             )}
             {hasNextPage && (
