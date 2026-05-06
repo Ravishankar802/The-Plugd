@@ -1,5 +1,6 @@
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import DashboardSidebar from "@/components/DashboardSidebar";
 
 export default async function AdminLayout({
   children,
@@ -13,16 +14,18 @@ export default async function AdminLayout({
   }
 
   const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "ravx003@gmail.com";
+  const isAdmin = session.email.toLowerCase() === adminEmail.toLowerCase();
   
-  if (session.email.toLowerCase() !== adminEmail.toLowerCase()) {
+  if (!isAdmin) {
     redirect("/dashboard");
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="max-w-[1400px] mx-auto p-6 md:p-12">
+    <div className="min-h-screen bg-background flex">
+      <DashboardSidebar email={session.email} isAdmin={isAdmin} />
+      <main className="flex-1 md:ml-[320px] p-6 md:p-12">
         {children}
-      </div>
+      </main>
     </div>
   );
 }
