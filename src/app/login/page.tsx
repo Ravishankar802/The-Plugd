@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 import { Mail, ShieldCheck, Loader2, ArrowRight, RefreshCcw, CheckCircle2, AlertCircle } from "lucide-react";
 
 function LoginContent() {
@@ -22,7 +22,7 @@ function LoginContent() {
     const success = searchParams.get("success");
     const err = searchParams.get("error");
     if (success === "true") {
-      setSuccessMsg("Payment successful! Login with your email to access your dashboard");
+      setSuccessMsg("Payment successful! Enter your email to access your dashboard");
     }
     if (err === "not_paid") {
       setError("You need a paid account to access the dashboard");
@@ -84,7 +84,6 @@ function LoginContent() {
         throw new Error(data.error || "Invalid or expired code");
       }
 
-      // Sync local storage for client-side legacy components if needed
       localStorage.setItem("plugd_user_email", email);
       
       router.push("/dashboard");
@@ -104,14 +103,11 @@ function LoginContent() {
     newOtp[index] = value;
     setOtp(newOtp);
 
-    // Auto-advance
     if (value && index < 3) {
       otpRefs[index + 1].current?.focus();
     }
 
-    // Auto-submit if full
     if (newOtp.every(digit => digit !== "") && index === 3) {
-      // Small delay to allow state update
       setTimeout(() => {
         const btn = document.getElementById('verify-btn');
         btn?.click();
@@ -131,127 +127,118 @@ function LoginContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8">
-        <Header />
-      </div>
+    <div className="flex-1 flex flex-col items-center pt-12 pb-20 px-4">
+      <Link href="/" className="group flex flex-col items-center gap-3 mb-12 hover:opacity-80 transition-all">
+        <div className="w-12 h-12 bg-selected rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+          <span className="text-selected-foreground font-black text-2xl italic tracking-tighter">P</span>
+        </div>
+        <span className="text-2xl font-black italic tracking-tighter text-foreground group-hover:text-glow transition-all uppercase">PLUGD</span>
+      </Link>
 
-      <main className="flex-1 flex items-center justify-center p-4">
-        <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <div className="bg-pill border border-border rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
-            {/* Background Decoration */}
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-selected/10 rounded-full blur-3xl transition-all group-hover:bg-selected/20" />
-            <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-32 h-32 bg-selected/5 rounded-full blur-3xl transition-all group-hover:bg-selected/10" />
+      <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className="bg-pill border border-border rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-selected/10 rounded-full blur-3xl" />
+          
+          <div className="relative z-10">
+            <h1 className="text-3xl font-bold text-center mb-2 text-foreground tracking-tight">
+              {step === 1 ? "Welcome Back" : "Check Your Email"}
+            </h1>
+            <p className="text-muted text-center mb-8 text-[0.95rem]">
+              {step === 1 
+                ? "Login with your email to access your dashboard" 
+                : `We sent a 4-digit code to ${email}`}
+            </p>
 
-            <div className="relative z-10">
-              <div className="w-16 h-16 bg-selected/10 rounded-xl flex items-center justify-center mb-6 mx-auto border border-selected/20 shadow-inner">
-                {step === 1 ? (
-                  <Mail className="w-8 h-8 text-selected" />
-                ) : (
-                  <ShieldCheck className="w-8 h-8 text-selected" />
-                )}
+            {successMsg && (
+              <div className="bg-green-500/10 border border-green-500/20 text-green-500 text-sm py-3 px-4 rounded-lg mb-6 text-center flex items-center justify-center gap-2">
+                <CheckCircle2 className="w-4 h-4" />
+                {successMsg}
               </div>
+            )}
 
-              <h1 className="text-3xl font-bold text-center mb-2 text-foreground tracking-tight">
-                {step === 1 ? "Welcome Back" : "Check Your Email"}
-              </h1>
-              <p className="text-muted text-center mb-8 text-[0.95rem]">
-                {step === 1 
-                  ? "Login with your email to access your dashboard" 
-                  : `We sent a 4-digit code to ${email}`}
-              </p>
+            {error && (
+              <div className="bg-red-500/10 border border-red-500/20 text-red-500 text-sm py-3 px-4 rounded-lg mb-6 text-center flex items-center justify-center gap-2">
+                <AlertCircle className="w-4 h-4" />
+                {error}
+              </div>
+            )}
 
-              {successMsg && (
-                <div className="bg-green-500/10 border border-green-500/20 text-green-500 text-sm py-3 px-4 rounded-lg mb-6 text-center flex items-center justify-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300">
-                  <CheckCircle2 className="w-4 h-4" />
-                  {successMsg}
+            {step === 1 ? (
+              <form onSubmit={handleSendOtp} className="space-y-4">
+                <div className="relative">
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="w-full h-[54px] bg-pill border border-border rounded-xl pl-12 pr-4 text-foreground placeholder:text-muted/60 focus:outline-none focus:border-selected transition-all text-lg"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
                 </div>
-              )}
-
-              {error && (
-                <div className="bg-red-500/10 border border-red-500/20 text-red-500 text-sm py-3 px-4 rounded-lg mb-6 text-center animate-in shake duration-300 flex items-center justify-center gap-2">
-                  <AlertCircle className="w-4 h-4" />
-                  {error}
-                </div>
-              )}
-
-              {step === 1 ? (
-                <form onSubmit={handleSendOtp} className="space-y-4">
-                  <div className="relative group">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted transition-colors group-focus-within:text-selected" />
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full h-[54px] bg-selected text-selected-foreground rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:bg-selected/90 transition-all shadow-lg disabled:opacity-50"
+                >
+                  {loading ? <Loader2 className="w-6 h-6 animate-spin" /> : <>Send Code <ArrowRight className="w-5 h-5" /></>}
+                </button>
+              </form>
+            ) : (
+              <form onSubmit={handleVerifyOtp} className="space-y-6">
+                <div className="flex justify-between gap-3 px-2">
+                  {otp.map((digit, index) => (
                     <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="w-full h-[54px] bg-pill border border-border rounded-xl pl-12 pr-4 text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-selected/20 focus:border-selected transition-all text-lg"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      key={index}
+                      ref={otpRefs[index]}
+                      type="text"
+                      maxLength={1}
+                      className="w-16 h-20 bg-pill border border-border rounded-xl text-center text-3xl font-bold text-foreground focus:outline-none focus:border-selected transition-all"
+                      value={digit}
+                      onChange={(e) => handleOtpChange(index, e.target.value)}
+                      onKeyDown={(e) => handleKeyDown(index, e)}
                       required
                     />
-                  </div>
+                  ))}
+                </div>
+                
+                <div className="space-y-4">
                   <button
+                    id="verify-btn"
                     type="submit"
-                    disabled={loading}
-                    className="w-full h-[54px] bg-selected text-selected-foreground rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:bg-selected/90 active:scale-[0.98] transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+                    disabled={loading || otp.some(d => !d)}
+                    className="w-full h-[54px] bg-selected text-selected-foreground rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:bg-selected/90 transition-all"
                   >
-                    {loading ? <Loader2 className="w-6 h-6 animate-spin" /> : <>Send Code <ArrowRight className="w-5 h-5" /></>}
+                    {loading ? <Loader2 className="w-6 h-6 animate-spin" /> : "Verify Code"}
                   </button>
-                </form>
-              ) : (
-                <form onSubmit={handleVerifyOtp} className="space-y-6">
-                  <div className="flex justify-between gap-3 px-2">
-                    {otp.map((digit, index) => (
-                      <input
-                        key={index}
-                        ref={otpRefs[index]}
-                        type="text"
-                        maxLength={1}
-                        className="w-16 h-20 bg-pill border border-border rounded-xl text-center text-3xl font-bold text-foreground focus:outline-none focus:ring-4 focus:ring-selected/20 focus:border-selected transition-all shadow-sm"
-                        value={digit}
-                        onChange={(e) => handleOtpChange(index, e.target.value)}
-                        onKeyDown={(e) => handleKeyDown(index, e)}
-                        required
-                      />
-                    ))}
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <button
-                      id="verify-btn"
-                      type="submit"
-                      disabled={loading || otp.some(d => !d)}
-                      className="w-full h-[54px] bg-selected text-selected-foreground rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:bg-selected/90 active:scale-[0.98] transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {loading ? <Loader2 className="w-6 h-6 animate-spin" /> : "Verify Code"}
-                    </button>
 
-                    <div className="text-center">
-                      <button
-                        type="button"
-                        onClick={handleResend}
-                        disabled={resendTimer > 0 || loading}
-                        className="text-muted hover:text-selected text-sm font-medium transition-colors flex items-center justify-center gap-2 mx-auto disabled:opacity-50 disabled:cursor-not-allowed"
-                      >
-                        <RefreshCcw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-                        {resendTimer > 0 ? `Resend code in ${resendTimer}s` : "Resend code"}
-                      </button>
-                    </div>
-
+                  <div className="text-center">
                     <button
                       type="button"
-                      onClick={() => setStep(1)}
-                      className="w-full text-muted hover:text-foreground text-sm transition-colors pt-2"
+                      onClick={handleResend}
+                      disabled={resendTimer > 0 || loading}
+                      className="text-muted hover:text-selected text-sm font-medium transition-colors flex items-center justify-center gap-2 mx-auto disabled:opacity-50"
                     >
-                      Change Email
+                      <RefreshCcw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+                      {resendTimer > 0 ? `Resend code in ${resendTimer}s` : "Resend code"}
                     </button>
                   </div>
-                </form>
-              )}
-            </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setStep(1)}
+                    className="w-full text-muted hover:text-foreground text-sm transition-colors pt-2"
+                  >
+                    Change Email
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
-      </main>
-
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8">
+      </div>
+      
+      <div className="mt-auto w-full max-w-5xl">
         <Footer />
       </div>
     </div>
@@ -265,7 +252,9 @@ export default function LoginPage() {
         <Loader2 className="w-10 h-10 animate-spin text-selected" />
       </div>
     }>
-      <LoginContent />
+      <div className="min-h-screen flex flex-col bg-background">
+        <LoginContent />
+      </div>
     </Suspense>
   );
 }

@@ -108,7 +108,7 @@ export default function DashboardProfileView() {
 
   if (!account) {
     if (typeof window !== "undefined") {
-      window.location.href = "/dashboard/login";
+      window.location.href = "/login";
     }
     return null;
   }

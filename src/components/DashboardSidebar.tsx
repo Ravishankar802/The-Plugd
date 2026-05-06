@@ -14,9 +14,15 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
   const pathname = usePathname();
   const router = useRouter();
 
-  const handleLogout = () => {
-    localStorage.removeItem("plugd_user_email");
-    window.location.href = "/dashboard/login";
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+      localStorage.removeItem("plugd_user_email");
+      router.push("/");
+      router.refresh();
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
   };
 
   const navItems = [

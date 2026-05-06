@@ -11,7 +11,8 @@ import {
   Globe, 
   ExternalLink,
   Info,
-  Filter
+  Filter,
+  LayoutDashboard
 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
@@ -281,6 +282,14 @@ export default function HomeClient({
                 >
                   <Plus className="w-5 h-5" />
                   Add Account
+                </button>
+                <button
+                  onClick={() => router.push(userEmail ? "/dashboard" : "/login")}
+                  suppressHydrationWarning
+                  className="h-[48px] w-full md:w-auto bg-pill border border-border text-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-accent active:scale-[0.98] shadow-lg cursor-pointer"
+                >
+                  <LayoutDashboard className="w-5 h-5" />
+                  Dashboard
                 </button>
               </div>
 
