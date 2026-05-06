@@ -23,10 +23,10 @@ export default function ProfileActions({ handle }: ProfileActionsProps) {
   };
 
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-col sm:flex-row items-center gap-3">
       <button 
         onClick={handleShare}
-        className="flex items-center gap-2 px-6 py-3 bg-selected text-selected-foreground rounded-xl font-bold hover:opacity-90 transition-all active:scale-[0.98] shadow-lg cursor-pointer min-w-[160px] justify-center"
+        className="flex items-center gap-2 px-6 py-2.5 bg-transparent border border-border text-foreground rounded-lg font-bold hover:bg-accent transition-all active:scale-[0.98] cursor-pointer w-full sm:w-auto min-w-[120px] justify-center"
       >
         {copied ? (
           <>
@@ -36,14 +36,14 @@ export default function ProfileActions({ handle }: ProfileActionsProps) {
         ) : (
           <>
             <Share2 className="w-4 h-4" />
-            Share Profile
+            Share
           </>
         )}
       </button>
       <Link 
         href={`https://x.com/${handle}`}
         target="_blank"
-        className="flex items-center gap-2 px-6 py-3 bg-card border border-border text-foreground rounded-xl font-bold hover:bg-accent transition-all active:scale-[0.98] shadow-sm min-w-[160px] justify-center"
+        className="flex items-center gap-2 px-6 py-2.5 bg-foreground text-background border border-foreground rounded-lg font-bold hover:opacity-90 transition-all active:scale-[0.98] w-full sm:w-auto min-w-[140px] justify-center"
       >
         <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />

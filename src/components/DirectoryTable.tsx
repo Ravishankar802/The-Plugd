@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { ChevronDown, TrendingUp, Sliders, Check } from "lucide-react";
  
 interface Account {
@@ -43,6 +44,7 @@ export default function DirectoryTable({
   onShuffle,
   startIndex
 }: DirectoryTableProps) {
+  const router = useRouter();
   const [followersOpen, setFollowersOpen] = useState(false);
   const [sortOpen, setSortOpen] = useState(false);
   
@@ -159,7 +161,11 @@ export default function DirectoryTable({
           </thead>
           <tbody className="block md:table-row-group">
             {accounts.map((account, index) => (
-              <tr key={account.id} className="directory-row group transition-colors flex flex-col md:table-row border-b border-border py-6 md:py-0">
+              <tr 
+                key={account.id} 
+                className="directory-row group transition-colors flex flex-col md:table-row border-b border-border py-6 md:py-0 cursor-pointer"
+                onClick={() => router.push(`/u/${account.xHandle.replace(/^@+/, '')}`)}
+              >
                 {/* Desktop Number Cell */}
                 <td className="font-mono-custom text-muted text-sm hidden md:table-cell px-6 py-4 md:w-10">
                   {startIndex + index + 1}
@@ -179,12 +185,9 @@ export default function DirectoryTable({
                       }}
                     />
                     <div className="min-w-0 flex-1">
-                      <Link 
-                        href={`/u/${account.xHandle.replace(/^@+/, '')}`}
-                        className="font-[600] text-base md:text-base leading-tight text-foreground text-glow truncate hover:underline"
-                      >
+                      <div className="font-[600] text-base md:text-base leading-tight text-foreground text-glow truncate">
                         {account.name}
-                      </Link>
+                      </div>
                       <div className="text-muted text-[0.8rem] line-clamp-2 md:line-clamp-1 mt-1 md:mt-0.5">
                         {account.bio}
                       </div>
@@ -192,7 +195,7 @@ export default function DirectoryTable({
                   </div>
                 </td>
                 <td className="block md:table-cell px-6 pt-4 pb-0 md:py-4 md:pl-12">
-                  <div className="flex justify-start">
+                  <div className="flex justify-start" onClick={(e) => e.stopPropagation()}>
                     <Link
                       href={`https://x.com/${account.xHandle.replace(/^@+/, '')}`}
                       target="_blank"

@@ -38,6 +38,16 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
     notFound();
   }
 
+  // Calculate listing number based on position in the index (createdAt desc)
+  const listingNumber = await prisma.account.count({
+    where: {
+      status: "paid",
+      createdAt: {
+        gte: account.createdAt,
+      },
+    },
+  });
+
   // Fetch 3 random accounts for "Discover More"
   // Using a simpler approach: fetch a larger subset and pick 3 random ones
   const allPaidAccounts = await prisma.account.findMany({
@@ -77,63 +87,77 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
 
         {/* Main Profile Card */}
         <div className="w-full bg-card border border-border rounded-2xl p-6 md:p-10 mb-6 relative overflow-hidden">
-          <div className="flex flex-col md:flex-row gap-8 items-start">
-            {/* Avatar */}
-            <div className="relative shrink-0">
-              {account.avatarUrl ? (
-                <img 
-                  src={account.avatarUrl} 
-                  alt={account.name} 
-                  className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-background shadow-xl"
-                />
-              ) : (
-                <div 
-                  className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-background shadow-xl flex items-center justify-center text-3xl md:text-4xl font-bold text-white"
-                  style={{ 
-                    backgroundColor: `hsl(${account.name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % 360}, 60%, 40%)` 
-                  }}
-                >
-                  {initials}
+          <div className="flex flex-col gap-6">
+            {/* Top Row: Avatar + Name + Buttons */}
+            <div className="flex flex-col md:flex-row justify-between items-start gap-6">
+              <div className="flex items-center gap-6">
+                {/* Avatar */}
+                <div className="relative shrink-0">
+                  {account.avatarUrl ? (
+                    <img 
+                      src={account.avatarUrl} 
+                      alt={account.name} 
+                      className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-4 border-background shadow-xl"
+                    />
+                  ) : (
+                    <div 
+                      className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-background shadow-xl flex items-center justify-center text-2xl md:text-3xl font-bold text-white"
+                      style={{ 
+                        backgroundColor: `hsl(${account.name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % 360}, 60%, 40%)` 
+                      }}
+                    >
+                      {initials}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-
-            {/* Info */}
-            <div className="flex-1 min-w-0">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                
                 <div>
                   <h1 className="text-3xl md:text-4xl font-[800] tracking-tight mb-1">{account.name}</h1>
                   <p className="text-muted text-lg font-mono-custom">@{cleanHandle}</p>
                 </div>
-                <div className="flex items-center gap-4">
-                   <span className="text-2xl md:text-3xl font-mono-custom font-[800] text-muted opacity-40">#{account.id}</span>
-                   <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted opacity-30 cursor-not-allowed bg-pill">
-                        <Check className="w-4 h-4" />
-                      </div>
-                      <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted opacity-30 cursor-not-allowed bg-pill">
-                        <Bookmark className="w-4 h-4" />
-                      </div>
-                      <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted opacity-30 cursor-not-allowed bg-pill">
-                        <XIcon className="w-4 h-4" />
-                      </div>
-                   </div>
-                </div>
               </div>
 
-              <p className="text-foreground/90 text-lg leading-relaxed mb-6 whitespace-pre-wrap">
+              {/* Top Right Buttons */}
+              <div className="w-full md:w-auto">
+                <ProfileActions handle={cleanHandle} />
+              </div>
+            </div>
+
+            {/* Bio Row */}
+            <div className="max-w-3xl">
+              <p className="text-foreground/90 text-lg leading-relaxed whitespace-pre-wrap">
                 {account.bio}
               </p>
+            </div>
 
-              <div className="flex flex-wrap gap-2 mb-8">
+            {/* Bottom Row: Niches (Left) and Stats (Right) */}
+            <div className="flex flex-col md:flex-row justify-between items-end gap-6 pt-4">
+              <div className="flex flex-wrap gap-2">
                 {account.niche.map((n) => (
-                  <span key={n} className="px-3 py-1 rounded-full bg-pill border border-border text-sm font-semibold text-muted">
+                  <span key={n} className="px-4 py-1.5 rounded-full bg-pill border border-border text-sm font-semibold text-muted flex items-center gap-2">
+                    {/* Simplified emoji/icon lookup if needed, but for now just text */}
                     {n}
                   </span>
                 ))}
               </div>
 
-              <ProfileActions handle={cleanHandle} />
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-3">
+                  <span className="text-lg font-mono-custom font-[600] text-muted opacity-60">#{listingNumber}</span>
+                  <div className="h-6 w-[1px] bg-border mx-1" />
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted opacity-30 cursor-not-allowed bg-pill transition-all">
+                      <Check className="w-5 h-5" />
+                    </div>
+                    <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted opacity-30 cursor-not-allowed bg-pill transition-all">
+                      <Bookmark className="w-5 h-5" />
+                    </div>
+                    <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted opacity-30 cursor-not-allowed bg-pill transition-all">
+                      <XIcon className="w-5 h-5" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -157,7 +181,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
               <Link 
                 key={acc.id} 
                 href={`/u/${acc.xHandle.replace(/^@+/, "")}`}
-                className="group bg-card border border-border rounded-2xl p-6 hover:border-muted-foreground/30 transition-all flex flex-col h-full"
+                className="group bg-card border border-border rounded-2xl p-6 hover:border-muted-foreground/30 transition-all flex flex-col h-full cursor-pointer"
               >
                 <div className="flex items-center gap-3 mb-4">
                   {acc.avatarUrl ? (
@@ -173,26 +197,25 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
                     </div>
                   )}
                   <div className="min-w-0">
-                    <p className="font-bold truncate">{acc.name}</p>
+                    <p className="font-bold truncate group-hover:text-foreground transition-colors">{acc.name}</p>
                     <p className="text-muted text-xs truncate">@{acc.xHandle.replace(/^@+/, "")}</p>
                   </div>
                 </div>
-                <p className="text-sm text-muted line-clamp-2 mb-4 flex-1">
+                <p className="text-sm text-muted line-clamp-2 mb-6 flex-1">
                   {acc.bio}
                 </p>
-                <div className="pt-4 border-t border-border flex items-center justify-between">
-                   <div className="flex items-center gap-1.5">
-                      <div className="w-6 h-6 rounded-full border border-border flex items-center justify-center text-muted opacity-30 bg-pill">
-                        <Check className="w-3 h-3" />
+                <div className="pt-4 border-t border-border flex items-center justify-center">
+                   <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted opacity-30 bg-pill group-hover:opacity-40 transition-opacity">
+                        <Check className="w-5 h-5" />
                       </div>
-                      <div className="w-6 h-6 rounded-full border border-border flex items-center justify-center text-muted opacity-30 bg-pill">
-                        <Bookmark className="w-3 h-3" />
+                      <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted opacity-30 bg-pill group-hover:opacity-40 transition-opacity">
+                        <Bookmark className="w-5 h-5" />
                       </div>
-                      <div className="w-6 h-6 rounded-full border border-border flex items-center justify-center text-muted opacity-30 bg-pill">
-                        <XIcon className="w-3 h-3" />
+                      <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted opacity-30 bg-pill group-hover:opacity-40 transition-opacity">
+                        <XIcon className="w-5 h-5" />
                       </div>
                    </div>
-                   <ChevronRight className="w-4 h-4 text-muted group-hover:text-foreground transition-colors" />
                 </div>
               </Link>
             ))}
