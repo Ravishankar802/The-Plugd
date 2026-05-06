@@ -35,26 +35,29 @@ const HOME_NICHES = [
 
 interface HomeClientProps {
   initialAccounts: Account[];
+  totalFilteredCount: number;
+  currentPage: number;
+  pageSize: number;
 }
 
-export default function HomeClient({ initialAccounts }: HomeClientProps) {
+export default function HomeClient({ 
+  initialAccounts, 
+  totalFilteredCount,
+  currentPage,
+  pageSize
+}: HomeClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   
-  // URL-driven state
-  const currentPage = parseInt(searchParams.get("page") || "1");
+  // URL-driven filters (mostly for UI state)
   const searchQuery = searchParams.get("q") || "";
   const selectedNiches = searchParams.get("niches")?.split(",").filter(Boolean) || [];
   const selectedFollowersRange = searchParams.get("followers") || "All Ranges";
   const selectedStatusFilter = searchParams.get("status") || "All";
   const sortBy = searchParams.get("sort") || "Latest";
 
-  const [accounts, setAccounts] = useState<Account[]>(initialAccounts);
-  const [filteredAccounts, setFilteredAccounts] = useState<Account[]>(initialAccounts);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const PAGE_SIZE = 50;
   const [hasMounted, setHasMounted] = useState(false);
-  const [shuffleKey, setShuffleKey] = useState(0);
   const [searchResults, setSearchResults] = useState<Account[]>([]);
   const [showResults, setShowResults] = useState(false);
   const [stats, setStats] = useState<{ count: number; loading: boolean; error: boolean }>({
@@ -76,7 +79,6 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
         params.set(key, value);
       }
     });
-    // Always scroll to top on URL change
     router.push(`/?${params.toString()}`, { scroll: true });
   };
 
@@ -142,52 +144,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     }
   };
 
-  // Filter Logic
-  useEffect(() => {
-    const result = accounts.filter(account => {
-      // Niche filter
-      const matchesNiche = selectedNiches.length === 0 || 
-        (Array.isArray(account.niche) 
-          ? selectedNiches.some(n => account.niche.includes(n))
-          : selectedNiches.includes(account.niche));
-      
-      // Followers filter
-      const matchesFollowers = selectedFollowersRange === "All Ranges" || account.followersRange === selectedFollowersRange;
-      
-      // Search filter (for the table)
-      const q = searchQuery.toLowerCase().trim();
-      const matchesSearch = q === "" || 
-        account.name.toLowerCase().includes(q) || 
-        account.xHandle.toLowerCase().includes(q) ||
-        account.bio.toLowerCase().includes(q);
-
-      // Status filter
-      let matchesStatus = true;
-      if (isPaidUser && selectedStatusFilter !== "All") {
-        const status = userStatuses[account.id];
-        if (selectedStatusFilter === "Followed") matchesStatus = status === "followed";
-        else if (selectedStatusFilter === "Saved") matchesStatus = status === "saved";
-        else if (selectedStatusFilter === "Not Interested") matchesStatus = status === "not_interested";
-        else if (selectedStatusFilter === "Not Viewed") matchesStatus = !status;
-      }
-
-      return matchesNiche && matchesFollowers && matchesStatus && matchesSearch;
-    });
-
-    // Apply Sorting
-    let sorted = [...result];
-    if (sortBy === "Latest") {
-      sorted.sort((a, b) => b.id - a.id);
-    } else if (sortBy === "Oldest") {
-      sorted.sort((a, b) => a.id - b.id);
-    } else if (sortBy === "Shuffle") {
-      sorted.sort(() => Math.random() - 0.5);
-    }
-
-    setFilteredAccounts(sorted);
-  }, [selectedNiches, accounts, selectedFollowersRange, sortBy, shuffleKey, selectedStatusFilter, userStatuses, isPaidUser, searchQuery]);
-
-  // Separate Search Logic for Dropdown
+  // Separate Search Logic for Dropdown (Only searches current page now, which is acceptable for server-side pagination)
   useEffect(() => {
     if (searchQuery.trim() === "") {
       setSearchResults([]);
@@ -196,14 +153,14 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     }
 
     const q = searchQuery.toLowerCase();
-    const results = accounts.filter(acc => 
+    const results = initialAccounts.filter(acc => 
       acc.name.toLowerCase().includes(q) || 
       acc.xHandle.toLowerCase().includes(q)
     ).slice(0, 8); 
 
     setSearchResults(results);
     setShowResults(true);
-  }, [searchQuery, accounts]);
+  }, [searchQuery, initialAccounts]);
 
   // Click outside to close search results
   useEffect(() => {
@@ -237,18 +194,12 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     return HOME_NICHES.findIndex(n => n.name === a.name) - HOME_NICHES.findIndex(n => n.name === b.name);
   });
 
-  const startIndex = (currentPage - 1) * PAGE_SIZE;
-  const displayedAccounts = filteredAccounts.slice(startIndex, startIndex + PAGE_SIZE);
-  const hasNextPage = startIndex + PAGE_SIZE < filteredAccounts.length;
+  const startIndex = (currentPage - 1) * pageSize;
+  const hasNextPage = startIndex + pageSize < totalFilteredCount;
   const hasPrevPage = currentPage > 1;
 
-  const remainingAfterCurrent = filteredAccounts.length - (startIndex + PAGE_SIZE);
+  const remainingAfterCurrent = totalFilteredCount - (startIndex + pageSize);
   const nextCount = remainingAfterCurrent >= 50 ? 50 : remainingAfterCurrent;
-
-  const handleShuffle = () => {
-    updateUrl({ sort: "Shuffle", page: "1" });
-    setShuffleKey(prev => prev + 1);
-  };
 
   return (
     <main className="flex-1 flex flex-col items-center w-full max-w-full overflow-x-hidden">
@@ -391,13 +342,13 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
 
       <div className="w-full max-w-5xl mx-auto px-4 md:px-8 mt-4">
         <DirectoryTable 
-          accounts={displayedAccounts} 
+          accounts={initialAccounts} 
           isLoading={false}
           selectedFollowersRange={selectedFollowersRange}
           setSelectedFollowersRange={(val) => updateUrl({ followers: val, page: "1" })}
           sortBy={sortBy}
           setSortBy={(val) => updateUrl({ sort: val, page: "1" })}
-          onShuffle={handleShuffle}
+          onShuffle={() => updateUrl({ sort: "Shuffle", page: "1" })}
           startIndex={startIndex}
           userEmail={userEmail}
           isPaidUser={isPaidUser}
@@ -441,4 +392,5 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     </main>
   );
 }
+
 
