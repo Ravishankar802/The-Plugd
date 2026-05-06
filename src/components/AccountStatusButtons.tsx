@@ -28,39 +28,38 @@ export default function AccountStatusButtons({
   }, [initialStatus]);
 
   const handleStatusClick = async (newStatus: string) => {
-    if (!isPaidUser || !userEmail || isLoading) return;
+    if (!isPaidUser || !userEmail) return;
 
-    setIsLoading(true);
+    const previousStatus = status;
     const isToggleOff = status === newStatus;
-    
+    const optimisticStatus = isToggleOff ? null : newStatus;
+
+    // Optimistic Update
+    setStatus(optimisticStatus);
+    onStatusChange?.(optimisticStatus);
+
     try {
       if (isToggleOff) {
-        // Toggle off
         const res = await fetch("/api/status", {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ userId: userEmail, accountId })
         });
-        if (res.ok) {
-          setStatus(null);
-          onStatusChange?.(null);
-        }
+        if (!res.ok) throw new Error("Failed to delete status");
       } else {
-        // Set or Update
         const res = await fetch("/api/status", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ userId: userEmail, accountId, status: newStatus })
         });
-        if (res.ok) {
-          setStatus(newStatus);
-          onStatusChange?.(newStatus);
-        }
+        if (!res.ok) throw new Error("Failed to set status");
       }
     } catch (err) {
-      console.error("Failed to update status:", err);
-    } finally {
-      setIsLoading(false);
+      console.error("Status update failed, reverting:", err);
+      // Revert on failure
+      setStatus(previousStatus);
+      onStatusChange?.(previousStatus);
+      alert("Failed to update status. Please try again.");
     }
   };
 
@@ -71,49 +70,76 @@ export default function AccountStatusButtons({
   return (
     <div className="flex items-center gap-2.5" onClick={(e) => e.stopPropagation()}>
       {/* Followed ✅ */}
-      <button
-        onClick={() => handleStatusClick("followed")}
-        disabled={isDisabled || isLoading}
-        className={`${buttonSize} rounded-full border border-border flex items-center justify-center transition-all ${
-          isDisabled 
-            ? "text-muted opacity-30 cursor-not-allowed bg-pill" 
-            : status === "followed"
-              ? "bg-green-500/20 border-green-500 text-green-500 shadow-[0_0_10px_rgba(34,197,94,0.3)]"
-              : "text-muted hover:border-green-500/50 hover:text-green-500/50 bg-pill cursor-pointer"
-        }`}
-      >
-        <Check className={iconSize} />
-      </button>
+      <div className="relative group/tooltip">
+        <button
+          onClick={() => handleStatusClick("followed")}
+          disabled={isDisabled}
+          title={isDisabled ? "Available for paid users" : ""}
+          className={`${buttonSize} rounded-full border border-border flex items-center justify-center transition-all ${
+            isDisabled 
+              ? "text-muted opacity-30 cursor-not-allowed bg-pill" 
+              : status === "followed"
+                ? "bg-green-500/20 border-green-500 text-green-500 shadow-[0_0_10px_rgba(34,197,94,0.3)]"
+                : "text-muted hover:border-green-500/50 hover:text-green-500/50 bg-pill cursor-pointer"
+          }`}
+        >
+          <Check className={iconSize} />
+        </button>
+        {!isDisabled && (
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-foreground text-background text-[10px] font-bold rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-[100] shadow-xl">
+            Followed
+            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-foreground" />
+          </div>
+        )}
+      </div>
 
       {/* Saved 🔖 */}
-      <button
-        onClick={() => handleStatusClick("saved")}
-        disabled={isDisabled || isLoading}
-        className={`${buttonSize} rounded-full border border-border flex items-center justify-center transition-all ${
-          isDisabled 
-            ? "text-muted opacity-30 cursor-not-allowed bg-pill" 
-            : status === "saved"
-              ? "bg-orange-500/20 border-orange-500 text-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.3)]"
-              : "text-muted hover:border-orange-500/50 hover:text-orange-500/50 bg-pill cursor-pointer"
-        }`}
-      >
-        <Bookmark className={iconSize} />
-      </button>
+      <div className="relative group/tooltip">
+        <button
+          onClick={() => handleStatusClick("saved")}
+          disabled={isDisabled}
+          title={isDisabled ? "Available for paid users" : ""}
+          className={`${buttonSize} rounded-full border border-border flex items-center justify-center transition-all ${
+            isDisabled 
+              ? "text-muted opacity-30 cursor-not-allowed bg-pill" 
+              : status === "saved"
+                ? "bg-orange-500/20 border-orange-500 text-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.3)]"
+                : "text-muted hover:border-orange-500/50 hover:text-orange-500/50 bg-pill cursor-pointer"
+          }`}
+        >
+          <Bookmark className={iconSize} />
+        </button>
+        {!isDisabled && (
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-foreground text-background text-[10px] font-bold rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-[100] shadow-xl">
+            Saved
+            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-foreground" />
+          </div>
+        )}
+      </div>
 
       {/* Not Interested ✕ */}
-      <button
-        onClick={() => handleStatusClick("not_interested")}
-        disabled={isDisabled || isLoading}
-        className={`${buttonSize} rounded-full border border-border flex items-center justify-center transition-all ${
-          isDisabled 
-            ? "text-muted opacity-30 cursor-not-allowed bg-pill" 
-            : status === "not_interested"
-              ? "bg-red-500/20 border-red-500 text-red-500 shadow-[0_0_10px_rgba(239,68,68,0.3)]"
-              : "text-muted hover:border-red-500/50 hover:text-red-500/50 bg-pill cursor-pointer"
-        }`}
-      >
-        <X className={iconSize} />
-      </button>
+      <div className="relative group/tooltip">
+        <button
+          onClick={() => handleStatusClick("not_interested")}
+          disabled={isDisabled}
+          title={isDisabled ? "Available for paid users" : ""}
+          className={`${buttonSize} rounded-full border border-border flex items-center justify-center transition-all ${
+            isDisabled 
+              ? "text-muted opacity-30 cursor-not-allowed bg-pill" 
+              : status === "not_interested"
+                ? "bg-red-500/20 border-red-500 text-red-500 shadow-[0_0_10px_rgba(239,68,68,0.3)]"
+                : "text-muted hover:border-red-500/50 hover:text-red-500/50 bg-pill cursor-pointer"
+          }`}
+        >
+          <X className={iconSize} />
+        </button>
+        {!isDisabled && (
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-foreground text-background text-[10px] font-bold rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-[100] shadow-xl">
+            Not Interested
+            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-foreground" />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
