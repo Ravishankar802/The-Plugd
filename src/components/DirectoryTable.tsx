@@ -179,9 +179,12 @@ export default function DirectoryTable({
                       }}
                     />
                     <div className="min-w-0 flex-1">
-                      <div className="font-[600] text-base md:text-base leading-tight text-foreground text-glow truncate">
+                      <Link 
+                        href={`/u/${account.xHandle.replace(/^@+/, '')}`}
+                        className="font-[600] text-base md:text-base leading-tight text-foreground text-glow truncate hover:underline"
+                      >
                         {account.name}
-                      </div>
+                      </Link>
                       <div className="text-muted text-[0.8rem] line-clamp-2 md:line-clamp-1 mt-1 md:mt-0.5">
                         {account.bio}
                       </div>

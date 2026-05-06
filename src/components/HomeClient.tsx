@@ -12,6 +12,7 @@ import {
   ExternalLink,
   Info
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { NICHES } from "@/lib/constants";
 
 interface Account {
@@ -36,6 +37,7 @@ interface HomeClientProps {
 }
 
 export default function HomeClient({ initialAccounts }: HomeClientProps) {
+  const router = useRouter();
   const [accounts, setAccounts] = useState<Account[]>(initialAccounts);
   const [filteredAccounts, setFilteredAccounts] = useState<Account[]>(initialAccounts);
   const [searchQuery, setSearchQuery] = useState("");
@@ -248,7 +250,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
                               key={acc.id} 
                               className="px-4 py-3 hover:bg-accent cursor-pointer flex items-center gap-4 transition-colors group"
                               onClick={() => {
-                                window.open(`https://x.com/${acc.xHandle.replace(/^@+/, '')}`, '_blank');
+                                router.push(`/u/${acc.xHandle.replace(/^@+/, '')}`);
                                 setShowResults(false);
                               }}
                             >
