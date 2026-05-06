@@ -55,7 +55,17 @@ export async function POST(req: Request) {
       }, { status: 403 });
     }
 
-    return NextResponse.json({ found: true, status: "paid", account });
+    const response = NextResponse.json({ found: true, status: "paid", account });
+    
+    // Set cookie for server-side auth
+    response.cookies.set("plugd_user_email", email.toLowerCase().trim(), {
+      path: "/",
+      maxAge: 60 * 60 * 24 * 30, // 30 days
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+    });
+
+    return response;
   } catch (error) {
     console.error("Login error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

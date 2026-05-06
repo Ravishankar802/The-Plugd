@@ -6,12 +6,23 @@ import AccountStatusButtons from "./AccountStatusButtons";
 interface ProfileStatusWrapperProps {
   accountId: number;
   size?: "sm" | "md";
+  initialStatus?: string | null;
+  initialIsPaid?: boolean;
+  initialEmail?: string | null;
 }
 
-export default function ProfileStatusWrapper({ accountId, size = "md" }: ProfileStatusWrapperProps) {
-  const [userEmail, setUserEmail] = useState<string | null>(null);
-  const [isPaidUser, setIsPaidUser] = useState(false);
-  const [userStatuses, setUserStatuses] = useState<Record<number, string>>({});
+export default function ProfileStatusWrapper({ 
+  accountId, 
+  size = "md",
+  initialStatus,
+  initialIsPaid = false,
+  initialEmail = null
+}: ProfileStatusWrapperProps) {
+  const [userEmail, setUserEmail] = useState<string | null>(initialEmail);
+  const [isPaidUser, setIsPaidUser] = useState(initialIsPaid);
+  const [userStatuses, setUserStatuses] = useState<Record<number, string>>(
+    initialStatus ? { [accountId]: initialStatus } : {}
+  );
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {

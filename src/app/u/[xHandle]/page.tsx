@@ -12,6 +12,7 @@ import {
 import ProfileActions from "@/components/ProfileActions";
 import Footer from "@/components/Footer";
 import ProfileStatusWrapper from "@/components/ProfileStatusWrapper";
+import { cookies } from "next/headers";
 
 // Revalidate every hour
 export const revalidate = 3600;
@@ -35,40 +36,53 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
   const { xHandle } = await params;
   const cleanHandle = xHandle.replace(/^@+/, "");
 
-  // Fetch current account
-  const account = await prisma.account.findFirst({
-    where: {
-      xHandle: {
-        equals: cleanHandle,
-        mode: "insensitive",
+  const cookieStore = await cookies();
+  const userEmail = cookieStore.get("plugd_user_email")?.value || null;
+
+  // Fetch current account and user status in parallel
+  const [account, userStatuses] = await Promise.all([
+    prisma.account.findFirst({
+      where: {
+        xHandle: {
+          equals: cleanHandle,
+          mode: "insensitive",
+        },
+        status: "paid",
       },
-      status: "paid",
-    },
-  });
+    }),
+    userEmail ? prisma.userAccountStatus.findMany({
+      where: { userId: userEmail }
+    }) : Promise.resolve([])
+  ]);
 
   if (!account) {
     notFound();
   }
 
-  // Calculate permanent listing number based on chronological position (createdAt asc)
-  const listingNumber = await prisma.account.count({
-    where: {
-      status: "paid",
-      createdAt: {
-        lte: account.createdAt,
-      },
-    },
+  // Create a status map for easy lookup
+  const statusMap: Record<number, string> = {};
+  userStatuses.forEach(s => {
+    statusMap[s.accountId] = s.status;
   });
 
-  // Fetch 3 random accounts for "Discover More"
-  // Using a simpler approach: fetch a larger subset and pick 3 random ones
-  const allPaidAccounts = await prisma.account.findMany({
-    where: {
-      status: "paid",
-      id: { not: account.id },
-    },
-    take: 50, // Get a good sample size
-  });
+  // Calculate permanent listing number and discover more accounts in parallel
+  const [listingNumber, allPaidAccounts] = await Promise.all([
+    prisma.account.count({
+      where: {
+        status: "paid",
+        createdAt: {
+          lte: account.createdAt,
+        },
+      },
+    }),
+    prisma.account.findMany({
+      where: {
+        status: "paid",
+        id: { not: account.id },
+      },
+      take: 50,
+    })
+  ]);
 
   const randomAccounts = allPaidAccounts
     .sort(() => Math.random() - 0.5)
@@ -157,7 +171,12 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
                 <div className="flex items-center gap-3">
                   <span className="text-lg font-mono-custom font-[600] text-muted opacity-60">#{listingNumber}</span>
                   <div className="h-6 w-[1px] bg-border mx-1" />
-                  <ProfileStatusWrapper accountId={account.id} />
+                  <ProfileStatusWrapper 
+                    accountId={account.id} 
+                    initialStatus={statusMap[account.id]} 
+                    initialEmail={userEmail}
+                    initialIsPaid={!!userEmail}
+                  />
                 </div>
               </div>
             </div>
@@ -207,7 +226,12 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
                   {acc.bio}
                 </p>
                 <div className="pt-4 border-t border-border flex items-center justify-center">
-                   <ProfileStatusWrapper accountId={acc.id} />
+                   <ProfileStatusWrapper 
+                    accountId={acc.id} 
+                    initialStatus={statusMap[acc.id]} 
+                    initialEmail={userEmail}
+                    initialIsPaid={!!userEmail}
+                  />
                 </div>
               </Link>
             ))}
