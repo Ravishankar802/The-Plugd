@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DirectoryTable from "@/components/DirectoryTable";
@@ -48,6 +48,7 @@ export default function HomeClient({
 }: HomeClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
   
   // URL-driven filters (mostly for UI state)
   const searchQuery = searchParams.get("q") || "";
@@ -79,8 +80,28 @@ export default function HomeClient({
         params.set(key, value);
       }
     });
-    router.push(`/?${params.toString()}`, { scroll: true });
+    startTransition(() => {
+      router.push(`/?${params.toString()}`, { scroll: true });
+    });
   };
+
+  // Prefetching adjacent pages
+  useEffect(() => {
+    const prefetchPage = (pageNumber: number) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("page", String(pageNumber));
+      router.prefetch(`/?${params.toString()}`);
+    };
+
+    // Prefetch next
+    if (startIndex + pageSize < totalFilteredCount) {
+      prefetchPage(currentPage + 1);
+    }
+    // Prefetch prev
+    if (currentPage > 1) {
+      prefetchPage(currentPage - 1);
+    }
+  }, [currentPage, searchParams, totalFilteredCount, pageSize, router]);
 
   const fetchStats = async () => {
     try {
@@ -203,6 +224,8 @@ export default function HomeClient({
 
   return (
     <main className="flex-1 flex flex-col items-center w-full max-w-full overflow-x-hidden">
+      {/* Top Loading Progress Bar */}
+      <div className={`fixed top-0 left-0 right-0 h-1 bg-selected z-[9999] transition-transform duration-500 origin-left ${isPending ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0"}`} />
       <div className="w-full relative flex flex-col items-center pt-2 pb-4">
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
           <div className="hidden min-[1100px]:block absolute inset-0">
@@ -266,9 +289,12 @@ export default function HomeClient({
                               key={acc.id} 
                               className="px-4 py-3 hover:bg-accent cursor-pointer flex items-center gap-4 transition-colors group"
                               onClick={() => {
-                                router.push(`/u/${acc.xHandle.replace(/^@+/, '')}`);
+                                startTransition(() => {
+                                  router.push(`/u/${acc.xHandle.replace(/^@+/, '')}`);
+                                });
                                 setShowResults(false);
                               }}
+                              onMouseEnter={() => router.prefetch(`/u/${acc.xHandle.replace(/^@+/, '')}`)}
                             >
                               <img src={acc.avatarUrl} alt="" className="w-10 h-10 rounded-lg object-cover border border-border shadow-sm" />
                               <div className="flex-1 min-w-0">
@@ -340,7 +366,7 @@ export default function HomeClient({
         </div>
       </div>
 
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 mt-4">
+      <div className={`w-full max-w-5xl mx-auto px-4 md:px-8 mt-4 transition-opacity duration-300 ${isPending ? "opacity-50" : "opacity-100"}`}>
         <DirectoryTable 
           accounts={initialAccounts} 
           isLoading={false}
@@ -363,6 +389,11 @@ export default function HomeClient({
             {hasPrevPage && (
               <button
                 onClick={() => updateUrl({ page: String(currentPage - 1) })}
+                onMouseEnter={() => {
+                  const params = new URLSearchParams(searchParams.toString());
+                  params.set("page", String(currentPage - 1));
+                  router.prefetch(`/?${params.toString()}`);
+                }}
                 className="flex items-center justify-center bg-card border border-border px-6 py-2.5 rounded-lg text-muted hover:text-foreground hover:border-muted-foreground transition-all font-medium text-[0.95rem] cursor-pointer shadow-sm active:scale-[0.98]"
               >
                 ‹ Prev 50
@@ -371,6 +402,11 @@ export default function HomeClient({
             {hasNextPage && (
               <button
                 onClick={() => updateUrl({ page: String(currentPage + 1) })}
+                onMouseEnter={() => {
+                  const params = new URLSearchParams(searchParams.toString());
+                  params.set("page", String(currentPage + 1));
+                  router.prefetch(`/?${params.toString()}`);
+                }}
                 className="flex items-center justify-center bg-card border border-border px-6 py-2.5 rounded-lg text-muted hover:text-foreground hover:border-muted-foreground transition-all font-medium text-[0.95rem] cursor-pointer shadow-sm active:scale-[0.98]"
               >
                 Next {nextCount} ›
