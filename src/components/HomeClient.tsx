@@ -13,7 +13,7 @@ import {
   Info,
   Filter
 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
 
 interface Account {
@@ -39,16 +39,21 @@ interface HomeClientProps {
 
 export default function HomeClient({ initialAccounts }: HomeClientProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  
+  // URL-driven state
+  const currentPage = parseInt(searchParams.get("page") || "1");
+  const searchQuery = searchParams.get("q") || "";
+  const selectedNiches = searchParams.get("niches")?.split(",").filter(Boolean) || [];
+  const selectedFollowersRange = searchParams.get("followers") || "All Ranges";
+  const selectedStatusFilter = searchParams.get("status") || "All";
+  const sortBy = searchParams.get("sort") || "Latest";
+
   const [accounts, setAccounts] = useState<Account[]>(initialAccounts);
   const [filteredAccounts, setFilteredAccounts] = useState<Account[]>(initialAccounts);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedNiches, setSelectedNiches] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
   const PAGE_SIZE = 50;
   const [hasMounted, setHasMounted] = useState(false);
-  const [selectedFollowersRange, setSelectedFollowersRange] = useState("All Ranges");
-  const [sortBy, setSortBy] = useState("Latest");
   const [shuffleKey, setShuffleKey] = useState(0);
   const [searchResults, setSearchResults] = useState<Account[]>([]);
   const [showResults, setShowResults] = useState(false);
@@ -60,7 +65,20 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [isPaidUser, setIsPaidUser] = useState(false);
   const [userStatuses, setUserStatuses] = useState<Record<number, string>>({});
-  const [selectedStatusFilter, setSelectedStatusFilter] = useState("All");
+
+  // Helper to update URL params
+  const updateUrl = (updates: Record<string, string | null>) => {
+    const params = new URLSearchParams(searchParams.toString());
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value === null || value === "" || value === "All" || value === "All Ranges" || value === "Latest") {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
+    // Always scroll to top on URL change
+    router.push(`/?${params.toString()}`, { scroll: true });
+  };
 
   const fetchStats = async () => {
     try {
@@ -124,14 +142,26 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     }
   };
 
+  // Filter Logic
   useEffect(() => {
     const result = accounts.filter(account => {
+      // Niche filter
       const matchesNiche = selectedNiches.length === 0 || 
         (Array.isArray(account.niche) 
           ? selectedNiches.some(n => account.niche.includes(n))
           : selectedNiches.includes(account.niche));
+      
+      // Followers filter
       const matchesFollowers = selectedFollowersRange === "All Ranges" || account.followersRange === selectedFollowersRange;
       
+      // Search filter (for the table)
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch = q === "" || 
+        account.name.toLowerCase().includes(q) || 
+        account.xHandle.toLowerCase().includes(q) ||
+        account.bio.toLowerCase().includes(q);
+
+      // Status filter
       let matchesStatus = true;
       if (isPaidUser && selectedStatusFilter !== "All") {
         const status = userStatuses[account.id];
@@ -141,7 +171,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
         else if (selectedStatusFilter === "Not Viewed") matchesStatus = !status;
       }
 
-      return matchesNiche && matchesFollowers && matchesStatus;
+      return matchesNiche && matchesFollowers && matchesStatus && matchesSearch;
     });
 
     // Apply Sorting
@@ -151,13 +181,11 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     } else if (sortBy === "Oldest") {
       sorted.sort((a, b) => a.id - b.id);
     } else if (sortBy === "Shuffle") {
-      // Use the shuffleKey to ensure a re-shuffle if user clicks Shuffle again
       sorted.sort(() => Math.random() - 0.5);
     }
 
     setFilteredAccounts(sorted);
-    setCurrentPage(1); // Reset pagination on any filter change
-  }, [selectedNiches, accounts, selectedFollowersRange, sortBy, shuffleKey, selectedStatusFilter, userStatuses, isPaidUser]);
+  }, [selectedNiches, accounts, selectedFollowersRange, sortBy, shuffleKey, selectedStatusFilter, userStatuses, isPaidUser, searchQuery]);
 
   // Separate Search Logic for Dropdown
   useEffect(() => {
@@ -171,7 +199,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     const results = accounts.filter(acc => 
       acc.name.toLowerCase().includes(q) || 
       acc.xHandle.toLowerCase().includes(q)
-    ).slice(0, 8); // Limit to 8 results for the dropdown
+    ).slice(0, 8); 
 
     setSearchResults(results);
     setShowResults(true);
@@ -188,39 +216,25 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-
-
   const toggleNiche = (nicheName: string) => {
     if (nicheName === "All") {
-      setSelectedNiches([]);
+      updateUrl({ niches: null, page: "1" });
       return;
     }
     
-    setSelectedNiches(prev => {
-      setCurrentPage(1); // Reset pagination on niche toggle
-      if (prev.includes(nicheName)) {
-        return prev.filter(n => n !== nicheName);
-      } else {
-        return [...prev, nicheName];
-      }
-    });
+    const newNiches = selectedNiches.includes(nicheName)
+      ? selectedNiches.filter(n => n !== nicheName)
+      : [...selectedNiches, nicheName];
+    
+    updateUrl({ niches: newNiches.join(","), page: "1" });
   };
 
   const sortedNiches = [...HOME_NICHES.filter(n => n.name !== "All")].sort((a, b) => {
     const aSelected = selectedNiches.includes(a.name);
     const bSelected = selectedNiches.includes(b.name);
-    
     if (aSelected && !bSelected) return -1;
     if (!aSelected && bSelected) return 1;
-    
-    const aIndex = HOME_NICHES.findIndex(n => n.name === a.name);
-    const bIndex = HOME_NICHES.findIndex(n => n.name === b.name);
-    
-    if (aSelected && bSelected) {
-      return selectedNiches.indexOf(a.name) - selectedNiches.indexOf(b.name);
-    }
-    
-    return aIndex - bIndex;
+    return HOME_NICHES.findIndex(n => n.name === a.name) - HOME_NICHES.findIndex(n => n.name === b.name);
   });
 
   const startIndex = (currentPage - 1) * PAGE_SIZE;
@@ -232,17 +246,14 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
   const nextCount = remainingAfterCurrent >= 50 ? 50 : remainingAfterCurrent;
 
   const handleShuffle = () => {
-    setSortBy("Shuffle");
+    updateUrl({ sort: "Shuffle", page: "1" });
     setShuffleKey(prev => prev + 1);
   };
 
   return (
     <main className="flex-1 flex flex-col items-center w-full max-w-full overflow-x-hidden">
-      {/* Hero Wrapper with Scattered Hashtags - Now truly full width */}
       <div className="w-full relative flex flex-col items-center pt-2 pb-4">
-        {/* Background Hashtags Container - This handles overflow for hashtags only */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-          {/* Left Side Hashtags */}
           <div className="hidden min-[1100px]:block absolute inset-0">
             <span className="absolute text-foreground opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
                   style={{ top: "8%", left: "5%", transform: "rotate(-6deg)", fontSize: "1.8rem" }}>#LetsConnect</span>
@@ -252,7 +263,6 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
                   style={{ top: "88%", left: "5%", transform: "rotate(-7deg)", fontSize: "1.45rem" }}>#Networking</span>
           </div>
 
-          {/* Right Side Hashtags */}
           <div className="hidden min-[1100px]:block absolute inset-0">
             <span className="absolute text-foreground opacity-[0.12] font-mono-custom font-[500] whitespace-nowrap" 
                   style={{ top: "12%", right: "5%", transform: "rotate(9deg)", fontSize: "1.5rem" }}>#FollowBack</span>
@@ -263,7 +273,6 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
           </div>
         </div>
 
-        {/* Center Content Content */}
         <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-[60] flex flex-col items-center">
           <div className="max-w-[800px] w-full">
             <Header />
@@ -292,12 +301,11 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
                     placeholder="Search accounts or names..."
                     className="w-full h-[48px] bg-pill border border-border rounded-lg pl-12 pr-4 text-foreground placeholder:text-[#6b7280] focus:outline-none focus:ring-1 focus:ring-border transition-all"
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={(e) => updateUrl({ q: e.target.value, page: "1" })}
                     onFocus={() => searchQuery.trim() !== "" && setShowResults(true)}
                     suppressHydrationWarning
                   />
 
-                  {/* Search Results Dropdown */}
                   {showResults && searchQuery.trim() !== "" && (
                     <div className="absolute top-[calc(100%+8px)] left-0 right-0 bg-pill border border-border rounded-xl shadow-2xl z-[150] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
                       {searchResults.length > 0 ? (
@@ -340,7 +348,6 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
                 </button>
               </div>
 
-              {/* Niche Categories */}
               <div className="flex justify-center w-full relative group">
                 <div className="flex gap-2 overflow-x-auto no-scrollbar py-2 mask-fade-right w-full scroll-smooth px-4 md:px-0">
                   <button
@@ -387,9 +394,9 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
           accounts={displayedAccounts} 
           isLoading={false}
           selectedFollowersRange={selectedFollowersRange}
-          setSelectedFollowersRange={setSelectedFollowersRange}
+          setSelectedFollowersRange={(val) => updateUrl({ followers: val, page: "1" })}
           sortBy={sortBy}
-          setSortBy={setSortBy}
+          setSortBy={(val) => updateUrl({ sort: val, page: "1" })}
           onShuffle={handleShuffle}
           startIndex={startIndex}
           userEmail={userEmail}
@@ -397,17 +404,14 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
           userStatuses={userStatuses}
           setUserStatuses={setUserStatuses}
           selectedStatusFilter={selectedStatusFilter}
-          setSelectedStatusFilter={setSelectedStatusFilter}
+          setSelectedStatusFilter={(val) => updateUrl({ status: val, page: "1" })}
         />
 
         <div className="flex flex-col items-center gap-6 pt-12 pb-20">
           <div className="flex items-center gap-4">
             {hasPrevPage && (
               <button
-                onClick={() => {
-                  setCurrentPage(prev => prev - 1);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
+                onClick={() => updateUrl({ page: String(currentPage - 1) })}
                 className="flex items-center justify-center bg-card border border-border px-6 py-2.5 rounded-lg text-muted hover:text-foreground hover:border-muted-foreground transition-all font-medium text-[0.95rem] cursor-pointer shadow-sm active:scale-[0.98]"
               >
                 ‹ Prev 50
@@ -415,10 +419,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
             )}
             {hasNextPage && (
               <button
-                onClick={() => {
-                  setCurrentPage(prev => prev + 1);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
+                onClick={() => updateUrl({ page: String(currentPage + 1) })}
                 className="flex items-center justify-center bg-card border border-border px-6 py-2.5 rounded-lg text-muted hover:text-foreground hover:border-muted-foreground transition-all font-medium text-[0.95rem] cursor-pointer shadow-sm active:scale-[0.98]"
               >
                 Next {nextCount} ›
@@ -440,3 +441,4 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     </main>
   );
 }
+
