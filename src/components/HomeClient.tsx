@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DirectoryTable from "@/components/DirectoryTable";
@@ -48,7 +48,6 @@ export default function HomeClient({
 }: HomeClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
   
   // URL-driven filters (mostly for UI state)
   const searchQuery = searchParams.get("q") || "";
@@ -80,9 +79,7 @@ export default function HomeClient({
         params.set(key, value);
       }
     });
-    startTransition(() => {
-      router.push(`/?${params.toString()}`, { scroll: true });
-    });
+    router.push(`/?${params.toString()}`, { scroll: true });
   };
 
   // Prefetching adjacent pages
@@ -224,8 +221,6 @@ export default function HomeClient({
 
   return (
     <main className="flex-1 flex flex-col items-center w-full max-w-full overflow-x-hidden">
-      {/* Top Loading Progress Bar */}
-      <div className={`fixed top-0 left-0 right-0 h-1 bg-selected z-[9999] transition-transform duration-500 origin-left ${isPending ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0"}`} />
       <div className="w-full relative flex flex-col items-center pt-2 pb-4">
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
           <div className="hidden min-[1100px]:block absolute inset-0">
@@ -289,9 +284,7 @@ export default function HomeClient({
                               key={acc.id} 
                               className="px-4 py-3 hover:bg-accent cursor-pointer flex items-center gap-4 transition-colors group"
                               onClick={() => {
-                                startTransition(() => {
-                                  router.push(`/u/${acc.xHandle.replace(/^@+/, '')}`);
-                                });
+                                router.push(`/u/${acc.xHandle.replace(/^@+/, '')}`);
                                 setShowResults(false);
                               }}
                               onMouseEnter={() => router.prefetch(`/u/${acc.xHandle.replace(/^@+/, '')}`)}
@@ -366,7 +359,7 @@ export default function HomeClient({
         </div>
       </div>
 
-      <div className={`w-full max-w-5xl mx-auto px-4 md:px-8 mt-4 transition-opacity duration-300 ${isPending ? "opacity-50" : "opacity-100"}`}>
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 mt-4">
         <DirectoryTable 
           accounts={initialAccounts} 
           isLoading={false}
