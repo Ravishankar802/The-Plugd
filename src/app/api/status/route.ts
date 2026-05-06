@@ -1,39 +1,47 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+import { getSession } from "@/lib/auth";
 
-// Auth helper to check if user is paid
-async function checkAuth(userId: string) {
-  if (!userId) return null;
-  const account = await prisma.account.findFirst({
-    where: {
-      email: {
-        equals: userId,
-        mode: 'insensitive'
-      },
-      status: 'paid'
+export async function GET() {
+  try {
+    const session = await getSession();
+    if (!session || !session.email) {
+      return NextResponse.json([]);
     }
-  });
-  return account;
+
+    const statuses = await prisma.userAccountStatus.findMany({
+      where: {
+        userId: session.email
+      }
+    });
+
+    return NextResponse.json(statuses);
+  } catch (error) {
+    console.error("Status GET error:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
 }
 
 export async function POST(req: Request) {
   try {
-    const { userId, accountId, status } = await req.json();
+    const session = await getSession();
+    if (!session || !session.email) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
-    if (!userId || !accountId || !status) {
+    const { accountId, status } = await req.json();
+
+    if (!accountId || !status) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
-    const auth = await checkAuth(userId);
-    if (!auth) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
+    const userId = session.email;
 
     // Upsert status
     const result = await prisma.userAccountStatus.upsert({
       where: {
         userId_accountId: {
-          userId: userId,
+          userId,
           accountId: parseInt(accountId)
         }
       },
@@ -41,7 +49,7 @@ export async function POST(req: Request) {
         status: status
       },
       create: {
-        userId: userId,
+        userId,
         accountId: parseInt(accountId),
         status: status
       }
@@ -56,23 +64,23 @@ export async function POST(req: Request) {
 
 export async function DELETE(req: Request) {
   try {
-    const { userId, accountId } = await req.json();
-
-    if (!userId || !accountId) {
-      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
-    }
-
-    const auth = await checkAuth(userId);
-    if (!auth) {
+    const session = await getSession();
+    if (!session || !session.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    await prisma.userAccountStatus.delete({
+    const { accountId } = await req.json();
+
+    if (!accountId) {
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+    }
+
+    const userId = session.email;
+
+    await prisma.userAccountStatus.deleteMany({
       where: {
-        userId_accountId: {
-          userId: userId,
-          accountId: parseInt(accountId)
-        }
+        userId: userId,
+        accountId: parseInt(accountId)
       }
     });
 

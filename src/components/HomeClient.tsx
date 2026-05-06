@@ -100,49 +100,33 @@ export default function HomeClient({
     const interval = setInterval(fetchStats, 30000);
     
     // Auth Check
-    const email = localStorage.getItem("plugd_user_email");
-    if (email) {
-      setUserEmail(email);
-      checkUserPaid(email);
-      fetchUserStatuses(email);
+    async function checkAuth() {
+      try {
+        const meRes = await fetch("/api/auth/me");
+        if (meRes.ok) {
+          const userData = await meRes.json();
+          setUserEmail(userData.email);
+          setIsPaidUser(userData.isPaid);
+
+          // Fetch Statuses
+          const statusRes = await fetch("/api/status");
+          if (statusRes.ok) {
+            const data = await statusRes.json();
+            const statusMap: Record<number, string> = {};
+            data.forEach((s: any) => {
+              statusMap[s.accountId] = s.status;
+            });
+            setUserStatuses(statusMap);
+          }
+        }
+      } catch (err) {
+        console.error("Auth check failed:", err);
+      }
     }
+    checkAuth();
 
     return () => clearInterval(interval);
   }, []);
-
-  const checkUserPaid = async (email: string) => {
-    try {
-      const res = await fetch("/api/dashboard/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email })
-      });
-      if (res.ok) {
-        const data = await res.json();
-        if (data.status === "paid") {
-          setIsPaidUser(true);
-        }
-      }
-    } catch (err) {
-      console.error("Auth check failed:", err);
-    }
-  };
-
-  const fetchUserStatuses = async (email: string) => {
-    try {
-      const res = await fetch(`/api/status/${email}`);
-      if (res.ok) {
-        const data = await res.json();
-        const statusMap: Record<number, string> = {};
-        data.forEach((s: any) => {
-          statusMap[s.accountId] = s.status;
-        });
-        setUserStatuses(statusMap);
-      }
-    } catch (err) {
-      console.error("Failed to fetch user statuses:", err);
-    }
-  };
 
   // Separate Search Logic for Dropdown (Searches initialAccounts from current page)
   useEffect(() => {

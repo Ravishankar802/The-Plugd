@@ -13,6 +13,7 @@ import ProfileActions from "@/components/ProfileActions";
 import Footer from "@/components/Footer";
 import ProfileStatusWrapper from "@/components/ProfileStatusWrapper";
 import ScrollToTop from "@/components/ScrollToTop";
+import ClaimButton from "@/components/ClaimButton";
 
 // Revalidate every 5 minutes
 export const revalidate = 300;
@@ -173,9 +174,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
             <h2 className="text-xl font-bold mb-1">Is this you?</h2>
             <p className="text-muted">Claim this account to manage your account.</p>
           </div>
-          <button className="px-6 py-3 bg-foreground text-background rounded-xl font-bold hover:opacity-90 transition-all active:scale-[0.98] cursor-pointer">
-            Claim this account
-          </button>
+          <ClaimButton />
         </div>
 
         {/* Discover More Section */}

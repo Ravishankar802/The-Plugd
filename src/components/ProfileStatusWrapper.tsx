@@ -27,31 +27,31 @@ export default function ProfileStatusWrapper({
 
   useEffect(() => {
     setHasMounted(true);
-    const email = localStorage.getItem("plugd_user_email");
-    if (!email) return;
+    
+    async function checkAuth() {
+      try {
+        const meRes = await fetch("/api/auth/me");
+        if (meRes.ok) {
+          const userData = await meRes.json();
+          setUserEmail(userData.email);
+          setIsPaidUser(userData.isPaid);
 
-    setUserEmail(email);
-
-    // Parallel fetch for speed
-    Promise.all([
-      fetch("/api/dashboard/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email })
-      }).then(res => res.ok ? res.json() : null),
-      fetch(`/api/status/${email}`).then(res => res.ok ? res.json() : [])
-    ]).then(([authData, statusData]) => {
-      if (authData?.status === "paid") {
-        setIsPaidUser(true);
+          // Fetch Statuses
+          const statusRes = await fetch("/api/status");
+          if (statusRes.ok) {
+            const data = await statusRes.json();
+            const statusMap: Record<number, string> = {};
+            data.forEach((s: any) => {
+              statusMap[s.accountId] = s.status;
+            });
+            setUserStatuses(statusMap);
+          }
+        }
+      } catch (err) {
+        console.error("Auth check failed:", err);
       }
-      if (statusData) {
-        const statusMap: Record<number, string> = {};
-        statusData.forEach((s: any) => {
-          statusMap[s.accountId] = s.status;
-        });
-        setUserStatuses(statusMap);
-      }
-    }).catch(err => console.error("Parallel fetch failed:", err));
+    }
+    checkAuth();
   }, []);
 
 
