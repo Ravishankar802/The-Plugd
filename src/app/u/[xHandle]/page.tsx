@@ -38,12 +38,12 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
     notFound();
   }
 
-  // Calculate listing number based on position in the index (createdAt desc)
+  // Calculate permanent listing number based on chronological position (createdAt asc)
   const listingNumber = await prisma.account.count({
     where: {
       status: "paid",
       createdAt: {
-        gte: account.createdAt,
+        lte: account.createdAt,
       },
     },
   });
@@ -181,7 +181,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
               <Link 
                 key={acc.id} 
                 href={`/u/${acc.xHandle.replace(/^@+/, "")}`}
-                className="group bg-card border border-border rounded-2xl p-6 hover:border-muted-foreground/30 transition-all flex flex-col h-full cursor-pointer"
+                className="group bg-card border border-white/10 hover:border-white/40 transition-all duration-200 rounded-2xl p-6 flex flex-col h-full cursor-pointer"
               >
                 <div className="flex items-center gap-3 mb-4">
                   {acc.avatarUrl ? (
