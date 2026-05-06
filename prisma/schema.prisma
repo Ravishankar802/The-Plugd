@@ -21,3 +21,13 @@ model Account {
   paymentId      String?
   createdAt      DateTime @default(now())
 }
+
+model UserAccountStatus {
+  id        Int      @id @default(autoincrement())
+  userId    String   // Store email of the logged-in user
+  accountId Int
+  status    String   // 'followed', 'saved', 'not_interested'
+  createdAt DateTime @default(now())
+
+  @@unique([userId, accountId])
+}

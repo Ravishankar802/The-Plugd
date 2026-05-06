@@ -10,7 +10,8 @@ import {
   Plus, 
   Globe, 
   ExternalLink,
-  Info
+  Info,
+  Filter
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { NICHES } from "@/lib/constants";
@@ -56,6 +57,10 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     loading: true,
     error: false,
   });
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [isPaidUser, setIsPaidUser] = useState(false);
+  const [userStatuses, setUserStatuses] = useState<Record<number, string>>({});
+  const [selectedStatusFilter, setSelectedStatusFilter] = useState("All");
 
   const fetchStats = async () => {
     try {
@@ -73,8 +78,51 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
     setHasMounted(true);
     fetchStats();
     const interval = setInterval(fetchStats, 30000);
+    
+    // Auth Check
+    const email = localStorage.getItem("plugd_user_email");
+    if (email) {
+      setUserEmail(email);
+      checkUserPaid(email);
+      fetchUserStatuses(email);
+    }
+
     return () => clearInterval(interval);
   }, []);
+
+  const checkUserPaid = async (email: string) => {
+    try {
+      const res = await fetch("/api/dashboard/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.status === "paid") {
+          setIsPaidUser(true);
+        }
+      }
+    } catch (err) {
+      console.error("Auth check failed:", err);
+    }
+  };
+
+  const fetchUserStatuses = async (email: string) => {
+    try {
+      const res = await fetch(`/api/status/${email}`);
+      if (res.ok) {
+        const data = await res.json();
+        const statusMap: Record<number, string> = {};
+        data.forEach((s: any) => {
+          statusMap[s.accountId] = s.status;
+        });
+        setUserStatuses(statusMap);
+      }
+    } catch (err) {
+      console.error("Failed to fetch user statuses:", err);
+    }
+  };
 
   useEffect(() => {
     const result = accounts.filter(account => {
@@ -84,7 +132,16 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
           : selectedNiches.includes(account.niche));
       const matchesFollowers = selectedFollowersRange === "All Ranges" || account.followersRange === selectedFollowersRange;
       
-      return matchesNiche && matchesFollowers;
+      let matchesStatus = true;
+      if (isPaidUser && selectedStatusFilter !== "All") {
+        const status = userStatuses[account.id];
+        if (selectedStatusFilter === "Followed") matchesStatus = status === "followed";
+        else if (selectedStatusFilter === "Saved") matchesStatus = status === "saved";
+        else if (selectedStatusFilter === "Not Interested") matchesStatus = status === "not_interested";
+        else if (selectedStatusFilter === "Not Viewed") matchesStatus = !status;
+      }
+
+      return matchesNiche && matchesFollowers && matchesStatus;
     });
 
     // Apply Sorting
@@ -100,7 +157,7 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
 
     setFilteredAccounts(sorted);
     setCurrentPage(1); // Reset pagination on any filter change
-  }, [selectedNiches, accounts, selectedFollowersRange, sortBy, shuffleKey]);
+  }, [selectedNiches, accounts, selectedFollowersRange, sortBy, shuffleKey, selectedStatusFilter, userStatuses, isPaidUser]);
 
   // Separate Search Logic for Dropdown
   useEffect(() => {
@@ -335,6 +392,12 @@ export default function HomeClient({ initialAccounts }: HomeClientProps) {
           setSortBy={setSortBy}
           onShuffle={handleShuffle}
           startIndex={startIndex}
+          userEmail={userEmail}
+          isPaidUser={isPaidUser}
+          userStatuses={userStatuses}
+          setUserStatuses={setUserStatuses}
+          selectedStatusFilter={selectedStatusFilter}
+          setSelectedStatusFilter={setSelectedStatusFilter}
         />
 
         <div className="flex flex-col items-center gap-6 pt-12 pb-20">

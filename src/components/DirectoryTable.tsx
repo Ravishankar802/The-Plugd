@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { ChevronDown, TrendingUp, Sliders, Check } from "lucide-react";
+import { ChevronDown, TrendingUp, Sliders, Check, Filter } from "lucide-react";
+import AccountStatusButtons from "./AccountStatusButtons";
  
 interface Account {
   id: number;
@@ -16,7 +17,6 @@ interface Account {
   followersRange: string;
   createdAt?: string;
 }
- 
 interface DirectoryTableProps {
   accounts: Account[];
   isLoading?: boolean;
@@ -26,14 +26,21 @@ interface DirectoryTableProps {
   setSortBy: (val: string) => void;
   onShuffle: () => void;
   startIndex: number;
+  userEmail: string | null;
+  isPaidUser: boolean;
+  userStatuses: Record<number, string>;
+  setUserStatuses: React.Dispatch<React.SetStateAction<Record<number, string>>>;
+  selectedStatusFilter: string;
+  setSelectedStatusFilter: (val: string) => void;
 }
+
+const STATUS_FILTERS = ["All", "Followed", "Saved", "Not Interested", "Not Viewed"];
  
 const FOLLOWERS_RANGES = [
   "All Ranges", "0-100", "100-500", "500-1K", "1K-2K", "2K-5K", "5K-10K", "10K-25K", "25K-50K", "50K-100K", "100K+"
 ];
  
 const SORT_OPTIONS = ["Latest", "Oldest", "Shuffle"];
- 
 export default function DirectoryTable({ 
   accounts, 
   isLoading, 
@@ -42,14 +49,22 @@ export default function DirectoryTable({
   sortBy, 
   setSortBy,
   onShuffle,
-  startIndex
+  startIndex,
+  userEmail,
+  isPaidUser,
+  userStatuses,
+  setUserStatuses,
+  selectedStatusFilter,
+  setSelectedStatusFilter
 }: DirectoryTableProps) {
   const router = useRouter();
   const [followersOpen, setFollowersOpen] = useState(false);
   const [sortOpen, setSortOpen] = useState(false);
+  const [statusOpen, setStatusOpen] = useState(false);
   
   const followersRef = useRef<HTMLDivElement>(null);
   const sortRef = useRef<HTMLDivElement>(null);
+  const statusRef = useRef<HTMLDivElement>(null);
  
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -58,6 +73,9 @@ export default function DirectoryTable({
       }
       if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
         setSortOpen(false);
+      }
+      if (statusRef.current && !statusRef.current.contains(event.target as Node)) {
+        setStatusOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -101,6 +119,48 @@ export default function DirectoryTable({
                   >
                     <span>{range}</span>
                     {selectedFollowersRange === range && <Check className="w-3.5 h-3.5" />}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Status Filter Dropdown */}
+          <div className="relative" ref={statusRef}>
+            <button 
+              onClick={() => {
+                if (!isPaidUser) return;
+                setStatusOpen(!statusOpen);
+                setFollowersOpen(false);
+                setSortOpen(false);
+              }}
+              suppressHydrationWarning
+              disabled={!isPaidUser}
+              className={`flex items-center gap-2 text-sm transition-colors bg-transparent px-3 py-1.5 rounded-lg border border-border text-glow ${
+                !isPaidUser ? "opacity-30 cursor-not-allowed text-muted" : "text-muted hover:text-foreground cursor-pointer"
+              }`}
+            >
+              <Filter className="w-4 h-4" />
+              {selectedStatusFilter === "All" ? "Status" : selectedStatusFilter}
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${statusOpen ? "rotate-180" : ""}`} />
+            </button>
+
+            {statusOpen && isPaidUser && (
+              <div className="absolute right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-xl z-[200] py-1 animate-in fade-in slide-in-from-top-2 duration-200">
+                {STATUS_FILTERS.map((filter) => (
+                  <button
+                    key={filter}
+                    onClick={() => {
+                      setSelectedStatusFilter(filter);
+                      setStatusOpen(false);
+                    }}
+                    suppressHydrationWarning
+                    className={`flex items-center justify-between w-full px-4 py-2.5 text-[0.9rem] transition-colors text-left ${
+                      selectedStatusFilter === filter ? "text-foreground bg-accent" : "text-muted hover:bg-accent hover:text-foreground"
+                    }`}
+                  >
+                    <span>{filter}</span>
+                    {selectedStatusFilter === filter && <Check className="w-3.5 h-3.5" />}
                   </button>
                 ))}
               </div>
@@ -157,6 +217,7 @@ export default function DirectoryTable({
               <th className="w-10 text-left pl-6 pb-3 text-muted text-sm font-medium">#</th>
               <th className="text-left pl-16 pb-3 text-muted text-sm font-medium">Profile</th>
               <th className="w-52 text-left pl-12 pb-3 text-muted text-sm font-medium">X Handle</th>
+              <th className="w-40 text-left pl-12 pb-3 text-muted text-sm font-medium">Status</th>
             </tr>
           </thead>
           <tbody className="block md:table-row-group">
@@ -208,6 +269,25 @@ export default function DirectoryTable({
                       </svg>
                       <span>@{account.xHandle.replace(/^@+/, '')}</span>
                     </Link>
+                  </div>
+                </td>
+                <td className="block md:table-cell px-6 pt-4 pb-0 md:py-4 md:pl-12">
+                  <div className="flex justify-start">
+                    <AccountStatusButtons 
+                      accountId={account.id}
+                      currentStatus={userStatuses[account.id]}
+                      isPaidUser={isPaidUser}
+                      userEmail={userEmail}
+                      size="sm"
+                      onStatusChange={(newStatus) => {
+                        setUserStatuses(prev => {
+                          const next = { ...prev };
+                          if (newStatus) next[account.id] = newStatus;
+                          else delete next[account.id];
+                          return next;
+                        });
+                      }}
+                    />
                   </div>
                 </td>
               </tr>

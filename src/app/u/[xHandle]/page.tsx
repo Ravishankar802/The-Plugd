@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import ProfileActions from "@/components/ProfileActions";
 import Footer from "@/components/Footer";
+import ProfileStatusWrapper from "@/components/ProfileStatusWrapper";
 
 // Revalidate every hour
 export const revalidate = 3600;
@@ -156,17 +157,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
                 <div className="flex items-center gap-3">
                   <span className="text-lg font-mono-custom font-[600] text-muted opacity-60">#{listingNumber}</span>
                   <div className="h-6 w-[1px] bg-border mx-1" />
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted opacity-30 cursor-not-allowed bg-pill transition-all">
-                      <Check className="w-5 h-5" />
-                    </div>
-                    <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted opacity-30 cursor-not-allowed bg-pill transition-all">
-                      <Bookmark className="w-5 h-5" />
-                    </div>
-                    <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted opacity-30 cursor-not-allowed bg-pill transition-all">
-                      <XIcon className="w-5 h-5" />
-                    </div>
-                  </div>
+                  <ProfileStatusWrapper accountId={account.id} />
                 </div>
               </div>
             </div>
@@ -216,17 +207,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
                   {acc.bio}
                 </p>
                 <div className="pt-4 border-t border-border flex items-center justify-center">
-                   <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted opacity-30 bg-pill group-hover:opacity-40 transition-opacity">
-                        <Check className="w-5 h-5" />
-                      </div>
-                      <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted opacity-30 bg-pill group-hover:opacity-40 transition-opacity">
-                        <Bookmark className="w-5 h-5" />
-                      </div>
-                      <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted opacity-30 bg-pill group-hover:opacity-40 transition-opacity">
-                        <XIcon className="w-5 h-5" />
-                      </div>
-                   </div>
+                   <ProfileStatusWrapper accountId={acc.id} />
                 </div>
               </Link>
             ))}
