@@ -25,7 +25,7 @@ export default function Header() {
         <span className="text-3xl font-[800] tracking-[-0.02em] text-foreground">Plugd</span>
       </Link>
       <h1 className="text-[clamp(1.75rem,4.5vw,2.85rem)] font-[800] tracking-[-0.035em] leading-[1.1] text-foreground mb-4 relative z-10">
-        Just follow each other and Grow on X.
+        Just follow each other and Grow on X
       </h1>
       <p className="text-muted text-[0.875rem] md:text-[1.25rem] font-normal max-w-[340px] md:max-w-2xl leading-tight md:leading-relaxed mx-auto relative z-10 px-4">
         Pay $1 to get listed and gain access to the Status feature. If you are already on the list, pay $1 to claim your account and gain access to the Status feature.
