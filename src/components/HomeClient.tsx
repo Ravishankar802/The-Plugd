@@ -73,37 +73,36 @@ export default function HomeClient({
   
   // Search state
   const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery);
-  const [history, setHistory] = useState<string[]>([]);
+  const [history, setHistory] = useState<Account[]>([]);
   const [showHistory, setShowHistory] = useState(false);
 
   // Load history on mount
   useEffect(() => {
-    const saved = localStorage.getItem("plugd_search_history");
+    const saved = localStorage.getItem("plugd_search_history_v2");
     if (saved) setHistory(JSON.parse(saved));
   }, []);
 
-  const saveToHistory = (term: string) => {
-    if (!term.trim()) return;
+  const addToAccountHistory = (account: Account) => {
     setHistory(prev => {
-      const filtered = prev.filter(h => h.toLowerCase() !== term.toLowerCase());
-      const next = [term, ...filtered].slice(0, 5);
-      localStorage.setItem("plugd_search_history", JSON.stringify(next));
+      const filtered = prev.filter(h => h.id !== account.id);
+      const next = [account, ...filtered].slice(0, 5);
+      localStorage.setItem("plugd_search_history_v2", JSON.stringify(next));
       return next;
     });
   };
 
-  const removeFromHistory = (term: string, e: React.MouseEvent) => {
+  const removeFromHistory = (accountId: number, e: React.MouseEvent) => {
     e.stopPropagation();
     setHistory(prev => {
-      const next = prev.filter(h => h !== term);
-      localStorage.setItem("plugd_search_history", JSON.stringify(next));
+      const next = prev.filter(h => h.id !== accountId);
+      localStorage.setItem("plugd_search_history_v2", JSON.stringify(next));
       return next;
     });
   };
 
   const clearHistory = () => {
     setHistory([]);
-    localStorage.removeItem("plugd_search_history");
+    localStorage.removeItem("plugd_search_history_v2");
   };
 
   // Sync local search with URL if it changes externally
@@ -116,7 +115,6 @@ export default function HomeClient({
     const timer = setTimeout(() => {
       if (localSearchQuery !== searchQuery) {
         updateUrl({ q: localSearchQuery, page: "1" });
-        if (localSearchQuery.trim()) saveToHistory(localSearchQuery);
       }
     }, 400);
     return () => clearTimeout(timer);
@@ -190,12 +188,37 @@ export default function HomeClient({
     }
 
     const q = searchQuery.toLowerCase();
-    const results = initialAccounts.filter(acc => 
+    const filtered = initialAccounts.filter(acc => 
       acc.name.toLowerCase().includes(q) || 
       acc.xHandle.toLowerCase().includes(q)
-    ).slice(0, 8); 
+    );
 
-    setSearchResults(results);
+    // Ranking Logic
+    const ranked = filtered.sort((a, b) => {
+      const aName = a.name.toLowerCase();
+      const bName = b.name.toLowerCase();
+      const aHandle = a.xHandle.toLowerCase().replace(/^@+/, '');
+      const bHandle = b.xHandle.toLowerCase().replace(/^@+/, '');
+
+      // 1. Name starts with query
+      const aNameStarts = aName.startsWith(q);
+      const bNameStarts = bName.startsWith(q);
+      if (aNameStarts && !bNameStarts) return -1;
+      if (!aNameStarts && bNameStarts) return 1;
+
+      // 2. Handle starts with query
+      const aHandleStarts = aHandle.startsWith(q);
+      const bHandleStarts = bHandle.startsWith(q);
+      if (aHandleStarts && !bHandleStarts) return -1;
+      if (!aHandleStarts && bHandleStarts) return 1;
+
+      // 3. Name contains query (handled by filter, but maintain relative order)
+      // 4. Handle contains query (handled by filter)
+      
+      return 0;
+    });
+
+    setSearchResults(ranked.slice(0, 8));
     setShowResults(true);
   }, [searchQuery, initialAccounts]);
 
@@ -298,7 +321,7 @@ export default function HomeClient({
                     suppressHydrationWarning
                   />
 
-                  {/* Recent Searches Dropdown */}
+                  {/* Recent Searches Dropdown (Visited Accounts) */}
                   {showHistory && localSearchQuery.trim() === "" && history.length > 0 && (
                     <div className="absolute top-[calc(100%+8px)] left-0 right-0 bg-pill border border-border rounded-xl shadow-2xl z-[150] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
                       <div className="px-4 py-3 border-b border-border flex items-center justify-between">
@@ -306,21 +329,24 @@ export default function HomeClient({
                         <button onClick={clearHistory} className="text-[0.7rem] text-[#f97316] hover:underline font-bold">Clear all</button>
                       </div>
                       <div className="py-1">
-                        {history.map((term, i) => (
+                        {history.map((acc) => (
                           <div 
-                            key={i}
+                            key={acc.id}
                             className="px-4 py-2.5 hover:bg-accent cursor-pointer flex items-center justify-between group transition-colors"
                             onClick={() => {
-                              setLocalSearchQuery(term);
+                              router.push(`/u/${acc.xHandle.replace(/^@+/, '')}`);
                               setShowHistory(false);
                             }}
                           >
                             <div className="flex items-center gap-3">
-                              <Search className="w-3.5 h-3.5 text-muted" />
-                              <span className="text-foreground text-[0.9rem]">{term}</span>
+                              <img src={acc.avatarUrl} alt="" className="w-8 h-8 rounded-full object-cover border border-border" />
+                              <div className="min-w-0">
+                                <p className="text-foreground font-bold text-[0.85rem] leading-tight truncate">{acc.name}</p>
+                                <p className="text-muted text-[0.75rem] truncate">@{acc.xHandle.replace(/^@+/, '')}</p>
+                              </div>
                             </div>
                             <button 
-                              onClick={(e) => removeFromHistory(term, e)}
+                              onClick={(e) => removeFromHistory(acc.id, e)}
                               className="w-6 h-6 rounded-md hover:bg-border flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                             >
                               <X className="w-3 h-3 text-muted" />
@@ -340,6 +366,7 @@ export default function HomeClient({
                               key={acc.id} 
                               className="px-4 py-3 hover:bg-accent cursor-pointer flex items-center gap-4 transition-colors group"
                               onClick={() => {
+                                addToAccountHistory(acc);
                                 router.push(`/u/${acc.xHandle.replace(/^@+/, '')}`);
                                 setShowResults(false);
                               }}
