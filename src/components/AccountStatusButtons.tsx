@@ -1,4 +1,4 @@
-import { Check, Bookmark, X, Lock } from "lucide-react";
+import { Check, Bookmark, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
 interface AccountStatusButtonsProps {
@@ -19,7 +19,6 @@ export default function AccountStatusButtons({
   size = "md"
 }: AccountStatusButtonsProps) {
   const [status, setStatus] = useState<string | null>(initialStatus || null);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setStatus(initialStatus || null);
@@ -69,7 +68,7 @@ export default function AccountStatusButtons({
     const isSelected = status === type;
     
     return (
-      <div className="relative group/tooltip">
+      <div className="relative group/btn-tooltip">
         <button
           onClick={() => !isDisabled && handleStatusClick(type)}
           className={`${buttonSize} rounded-full border border-border flex items-center justify-center transition-all relative ${
@@ -88,19 +87,17 @@ export default function AccountStatusButtons({
                 e.stopPropagation();
                 window.location.href = "/?modal=add";
               }}
-              className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-foreground text-background rounded-full flex items-center justify-center border border-background shadow-lg cursor-pointer hover:scale-110 transition-transform group/lock z-20"
+              className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-foreground text-background rounded-full flex items-center justify-center border border-background shadow-lg cursor-pointer hover:scale-110 transition-transform z-20"
             >
-              <Lock size={8} fill="currentColor" />
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-foreground text-background text-[10px] font-bold rounded opacity-0 group-hover/lock:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-[120] shadow-xl">
-                Unlock for $1
-                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-foreground" />
-              </div>
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 5a3 3 0 0 1 6 0v3H9V7zm3 9a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/>
+              </svg>
             </div>
           )}
         </button>
 
-        {/* Main Tooltip (Always show) */}
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-foreground text-background text-[10px] font-bold rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-[100] shadow-xl">
+        {/* Button Specific Tooltip */}
+        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-foreground text-background text-[10px] font-bold rounded opacity-0 group-hover/btn-tooltip:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-[100] shadow-xl">
           {label}
           <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-foreground" />
         </div>
@@ -109,7 +106,15 @@ export default function AccountStatusButtons({
   };
 
   return (
-    <div className="flex items-center gap-2.5 relative" onClick={(e) => e.stopPropagation()}>
+    <div className="group/container relative flex items-center gap-2.5" onClick={(e) => e.stopPropagation()}>
+      {/* Global Locked Tooltip: Shown on container hover, but hidden if any button is hovered */}
+      {isDisabled && (
+        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-foreground text-background text-[10px] font-bold rounded opacity-0 group-hover/container:opacity-100 group-has-[.group\/btn-tooltip:hover]:opacity-0 transition-opacity pointer-events-none whitespace-nowrap z-[90] shadow-xl">
+          Unlock for $1
+          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-foreground" />
+        </div>
+      )}
+
       <StatusButton 
         type="followed" 
         icon={Check} 
