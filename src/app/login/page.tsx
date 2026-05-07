@@ -198,6 +198,15 @@ function LoginContent() {
                 >
                   {loading ? <Loader2 className="w-6 h-6 animate-spin" /> : <>Send Code <ArrowRight className="w-5 h-5" /></>}
                 </button>
+
+                <div className="mt-6 space-y-2 text-center text-[13px] text-muted leading-relaxed font-medium">
+                  <p>
+                    New here? <Link href="/?modal=add" className="text-foreground hover:text-selected transition-colors">Add your account</Link> to get listed.
+                  </p>
+                  <p>
+                    Already listed? <Link href="/" className="text-foreground hover:text-selected transition-colors">Search your name on the homepage</Link> to claim your account.
+                  </p>
+                </div>
               </form>
             ) : (
               <form onSubmit={handleVerifyOtp} className="space-y-6">
