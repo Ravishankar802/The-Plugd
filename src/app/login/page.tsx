@@ -156,11 +156,11 @@ function LoginContent() {
           
           <div className="relative z-10">
             <h1 className="text-3xl font-bold text-center mb-2 text-foreground tracking-tight">
-              {step === 1 ? "Welcome Back" : "Check Your Email"}
+              {step === 1 ? "Login to Plugd" : "Check Your Email"}
             </h1>
             <p className="text-muted text-center mb-8 text-[0.95rem]">
               {step === 1 
-                ? "Login with your email to access your dashboard" 
+                ? "Enter your email to access your dashboard" 
                 : `We sent a 4-digit code to ${email}`}
             </p>
 
