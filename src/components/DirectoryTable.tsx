@@ -171,13 +171,6 @@ export default function DirectoryTable({
                       </div>
                       {isPaidUser && selectedStatusFilter === filter && <Check className="w-3.5 h-3.5" />}
                     </button>
-                    
-                    {!isPaidUser && (
-                      <div className="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-2 py-1 bg-foreground text-background text-[10px] font-bold rounded opacity-0 group-hover/filter-item:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-[100] shadow-xl">
-                        Unlock for $1
-                        <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-foreground" />
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>
@@ -234,10 +227,14 @@ export default function DirectoryTable({
               <th className="w-10 text-left pl-6 pb-3 text-muted text-sm font-medium">#</th>
               <th className="text-left pl-16 pb-3 text-muted text-sm font-medium">Profile</th>
               <th className="w-52 text-left pl-12 pb-3 text-muted text-sm font-medium">X Handle</th>
-              <th className="w-40 text-left pl-12 pb-3 text-muted text-sm font-medium">
-                <div className="flex flex-col">
+              <th className="w-44 text-left pl-12 pb-3 text-muted text-sm font-medium">
+                <div className="flex items-center gap-1.5 whitespace-nowrap">
                   <span>Status</span>
-                  {!isPaidUser && <span className="text-[10px] opacity-60 font-normal leading-tight">Unlock for $1</span>}
+                  {!isPaidUser && (
+                    <span className="text-[11px] text-muted-foreground/60 font-normal tracking-tight">
+                      (Unlock for $1)
+                    </span>
+                  )}
                 </div>
               </th>
             </tr>
