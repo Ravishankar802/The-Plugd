@@ -21,9 +21,14 @@ function LoginContent() {
   useEffect(() => {
     const success = searchParams.get("success");
     const err = searchParams.get("error");
-    if (success === "true") {
+    const message = searchParams.get("message");
+
+    if (message) {
+      setSuccessMsg(message);
+    } else if (success === "true") {
       setSuccessMsg("Payment successful! Enter your email to access your dashboard");
     }
+
     if (err === "not_paid") {
       setError("You need a paid account to access the dashboard");
     }

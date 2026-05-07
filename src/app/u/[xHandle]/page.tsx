@@ -174,7 +174,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
             <h2 className="text-xl font-bold mb-1">Is this you?</h2>
             <p className="text-muted">Claim this account to manage your account.</p>
           </div>
-          <ClaimButton />
+          <ClaimButton xHandle={cleanHandle} />
         </div>
 
         {/* Discover More Section */}

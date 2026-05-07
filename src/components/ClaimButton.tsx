@@ -3,24 +3,21 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function ClaimButton() {
+interface ClaimButtonProps {
+  xHandle: string;
+}
+
+export default function ClaimButton({ xHandle }: ClaimButtonProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   const handleClaim = async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/auth/me");
-      if (res.ok) {
-        // Logged in
-        alert("Account claiming is coming soon! Since you are logged in, we have noted your interest.");
-      } else {
-        // Not logged in
-        router.push("/login?redirect=claim");
-      }
+      const checkoutUrl = `https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=${encodeURIComponent(`https://the-plugd.vercel.app/login?message=Payment successful! Enter the email you used for payment to access your dashboard`)}&showDiscounts=false&metadata_claimHandle=${xHandle}`;
+      window.location.href = checkoutUrl;
     } catch (err) {
-      router.push("/login?redirect=claim");
-    } finally {
+      console.error(err);
       setLoading(false);
     }
   };
@@ -31,7 +28,7 @@ export default function ClaimButton() {
       disabled={loading}
       className="px-6 py-3 bg-foreground text-background rounded-xl font-bold hover:opacity-90 transition-all active:scale-[0.98] cursor-pointer disabled:opacity-50"
     >
-      {loading ? "Checking..." : "Claim this account"}
+      {loading ? "Redirecting..." : "Claim this account"}
     </button>
   );
 }

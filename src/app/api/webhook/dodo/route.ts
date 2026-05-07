@@ -30,40 +30,65 @@ export async function POST(req: Request) {
 
     if (event.type === "payment.succeeded") {
       const payment = event.data;
-      // Dodo Payments metadata keys are usually nested or accessible via data
-      const accountId = payment.metadata?.metadata_accountId || payment.metadata?.accountId;
+      const metadata = payment.metadata || {};
+      const accountId = metadata.metadata_accountId || metadata.accountId;
+      const claimHandle = metadata.metadata_claimHandle || metadata.claimHandle;
 
-      if (!accountId) {
-        console.error("No accountId found in metadata", payment.metadata);
-        return NextResponse.json({ error: "Missing accountId" }, { status: 400 });
+      if (claimHandle) {
+        // Handle Claim Flow
+        const account = await prisma.account.findFirst({
+          where: {
+            xHandle: {
+              equals: claimHandle,
+              mode: "insensitive",
+            },
+          },
+        });
+
+        if (!account) {
+          console.error(`Account not found for claim: ${claimHandle}`);
+          return NextResponse.json({ error: "Account not found" }, { status: 404 });
+        }
+
+        await prisma.account.update({
+          where: { id: account.id },
+          data: {
+            status: "paid",
+            paid: true,
+            email: payment.customer.email,
+            paymentId: payment.payment_id
+          }
+        });
+        console.log(`Account ${claimHandle} successfully claimed by ${payment.customer.email}`);
+      } else if (accountId) {
+        // Handle New Account Flow
+        const account = await prisma.account.findUnique({
+          where: { id: parseInt(accountId) },
+        });
+
+        if (!account) {
+          console.error(`Account not found: ${accountId}`);
+          return NextResponse.json({ error: "Account not found" }, { status: 404 });
+        }
+
+        if (account.status === "paid") {
+          console.log(`Account ${accountId} already marked as paid.`);
+          return NextResponse.json({ success: true, message: "Already processed" });
+        }
+
+        await prisma.account.update({
+          where: { id: parseInt(accountId) },
+          data: { 
+            status: "paid",
+            paid: true,
+            paymentId: payment.payment_id
+          },
+        });
+        console.log(`Account ${accountId} successfully marked as paid.`);
+      } else {
+        console.error("No accountId or claimHandle found in metadata", metadata);
+        return NextResponse.json({ error: "Missing metadata" }, { status: 400 });
       }
-
-      // Idempotency: Check if already paid
-      const account = await prisma.account.findUnique({
-        where: { id: parseInt(accountId) },
-      });
-
-      if (!account) {
-        console.error(`Account not found: ${accountId}`);
-        return NextResponse.json({ error: "Account not found" }, { status: 404 });
-      }
-
-      if (account.status === "paid") {
-        console.log(`Account ${accountId} already marked as paid.`);
-        return NextResponse.json({ success: true, message: "Already processed" });
-      }
-
-      // Update account status
-      await prisma.account.update({
-        where: { id: parseInt(accountId) },
-        data: { 
-          status: "paid",
-          paid: true,
-          paymentId: payment.payment_id
-        },
-      });
-
-      console.log(`Account ${accountId} successfully marked as paid.`);
     }
 
     return NextResponse.json({ success: true });
