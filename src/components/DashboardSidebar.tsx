@@ -17,7 +17,6 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
-      localStorage.removeItem("plugd_user_email");
       router.push("/");
       router.refresh();
     } catch (err) {

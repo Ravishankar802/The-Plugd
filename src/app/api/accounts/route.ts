@@ -4,6 +4,7 @@
  */
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+import { getSession } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
@@ -53,9 +54,8 @@ export async function POST(req: Request) {
     const cleanHandle = String(finalHandle).replace(/^@+/, "");
 
     // Admin Bypass Check
-    const userEmail = req.headers.get("x-user-email");
-    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
-    const isAdmin = userEmail && adminEmail && userEmail.toLowerCase() === adminEmail.toLowerCase();
+    const session = await getSession();
+    const isAdmin = session?.isAdmin;
     console.log('Is admin:', isAdmin);
 
     const account = await prisma.account.create({

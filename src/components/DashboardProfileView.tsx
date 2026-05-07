@@ -25,20 +25,23 @@ export default function DashboardProfileView() {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    let email = params.get("email");
-    
-    if (!email && typeof window !== "undefined") {
-      email = localStorage.getItem("plugd_user_email");
-    }
+    const fetchUser = async () => {
+      try {
+        const res = await fetch("/api/auth/me");
+        if (res.ok) {
+          const data = await res.json();
+          fetchAccount(data.email);
+        } else {
+          setLoading(false);
+          window.location.href = "/login";
+        }
+      } catch (err) {
+        console.error(err);
+        setLoading(false);
+      }
+    };
 
-    if (email) {
-      fetchAccount(email);
-      // Persist for refresh
-      localStorage.setItem("plugd_user_email", email);
-    } else {
-      setLoading(false);
-    }
+    fetchUser();
   }, []);
 
   const fetchAccount = async (email: string) => {

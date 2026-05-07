@@ -41,8 +41,20 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
   });
   const [success, setSuccess] = useState(false);
 
-  const userEmailFromStorage = typeof window !== "undefined" ? (localStorage.getItem('plugd_user_email') || localStorage.getItem('userEmail')) : null;
-  const isAdmin = userEmailFromStorage === process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+  const [session, setSession] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchSession = async () => {
+      const res = await fetch("/api/auth/me");
+      if (res.ok) {
+        const data = await res.json();
+        setSession(data);
+      }
+    };
+    fetchSession();
+  }, []);
+
+  const isAdmin = session?.isAdmin;
 
 
   if (!isOpen) return null;
@@ -81,8 +93,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
       const res = await fetch("/api/accounts", {
         method: "POST",
         headers: { 
-          "Content-Type": "application/json",
-          "x-user-email": userEmailFromStorage || ""
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({ 
           name: formData.name, 

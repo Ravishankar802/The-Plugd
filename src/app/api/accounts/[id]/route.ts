@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+import { getSession } from "@/lib/auth";
 
 export async function PATCH(
   req: Request,
@@ -11,7 +12,12 @@ export async function PATCH(
     const body = await req.json();
     
     // Security check
-    const userEmail = req.headers.get("x-user-email");
+    const session = await getSession();
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+    
+    const userEmail = session.email;
     const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
     
     // Fetch current account to check ownership
@@ -24,7 +30,7 @@ export async function PATCH(
     }
 
     const isOwner = userEmail && currentAccount.email.toLowerCase() === userEmail.toLowerCase();
-    const isAdmin = userEmail && adminEmail && userEmail.toLowerCase() === adminEmail.toLowerCase();
+    const isAdmin = session.isAdmin;
 
     if (!isOwner && !isAdmin) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -62,10 +68,9 @@ export async function DELETE(
     const id = parseInt(idStr);
     
     // Security check - Only Admin can delete
-    const userEmail = req.headers.get("x-user-email");
-    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+    const session = await getSession();
 
-    if (!userEmail || !adminEmail || userEmail.toLowerCase() !== adminEmail.toLowerCase()) {
+    if (!session?.isAdmin) {
       return NextResponse.json({ error: "Unauthorized. Admin access required." }, { status: 401 });
     }
 

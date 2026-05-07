@@ -1,14 +1,15 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+import { getSession } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
 // Admin-only endpoint: returns only paid accounts (same filter as public homepage)
 export async function GET(req: Request) {
   try {
-    const adminEmail = req.headers.get("x-admin-email") || req.headers.get("x-user-email");
+    const session = await getSession();
 
-    if (!adminEmail || adminEmail !== process.env.NEXT_PUBLIC_ADMIN_EMAIL) {
+    if (!session?.isAdmin) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -26,9 +27,9 @@ export async function GET(req: Request) {
 // Admin-only endpoint: deletes abandoned pending_payment accounts older than 24h
 export async function DELETE(req: Request) {
   try {
-    const adminEmail = req.headers.get("x-admin-email") || req.headers.get("x-user-email");
+    const session = await getSession();
 
-    if (!adminEmail || adminEmail !== process.env.NEXT_PUBLIC_ADMIN_EMAIL) {
+    if (!session?.isAdmin) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 

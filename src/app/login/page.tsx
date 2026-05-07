@@ -89,8 +89,6 @@ function LoginContent() {
         throw new Error(data.error || "Invalid or expired code");
       }
 
-      localStorage.setItem("plugd_user_email", email);
-      
       router.push("/dashboard");
       router.refresh();
     } catch (err: any) {
