@@ -169,13 +169,15 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
         </div>
 
         {/* Claim Card */}
-        <div className="w-full bg-pill border border-border rounded-2xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h2 className="text-xl font-bold mb-1">Is this you?</h2>
-            <p className="text-muted">Claim this account to manage your account.</p>
+        {!account.paid && (
+          <div className="w-full bg-pill border border-border rounded-2xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h2 className="text-xl font-bold mb-1">Is this you?</h2>
+              <p className="text-muted">Claim this account to manage your account.</p>
+            </div>
+            <ClaimButton xHandle={cleanHandle} />
           </div>
-          <ClaimButton xHandle={cleanHandle} />
-        </div>
+        )}
 
         {/* Discover More Section */}
         <section className="w-full mb-20">
