@@ -37,6 +37,7 @@ const HOME_NICHES = [
 
 interface HomeClientProps {
   initialAccounts: Account[];
+  allAccounts: Account[];
   totalFilteredCount: number;
   currentPage: number;
   pageSize: number;
@@ -44,6 +45,7 @@ interface HomeClientProps {
 
 export default function HomeClient({ 
   initialAccounts, 
+  allAccounts,
   totalFilteredCount,
   currentPage,
   pageSize
@@ -110,15 +112,10 @@ export default function HomeClient({
     setLocalSearchQuery(searchQuery);
   }, [searchQuery]);
 
-  // Debounce URL update
+  // Sync local search with URL if it changes externally
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (localSearchQuery !== searchQuery) {
-        updateUrl({ q: localSearchQuery, page: "1" });
-      }
-    }, 400);
-    return () => clearTimeout(timer);
-  }, [localSearchQuery]);
+    setLocalSearchQuery(searchQuery);
+  }, [searchQuery]);
 
   // Helper to update URL params
   const updateUrl = (updates: Record<string, string | null>) => {
@@ -179,48 +176,43 @@ export default function HomeClient({
     return () => clearInterval(interval);
   }, []);
 
-  // Separate Search Logic for Dropdown (Searches initialAccounts from current page)
+  // Instant Client-side Search Logic for Dropdown
   useEffect(() => {
-    if (searchQuery.trim() === "") {
+    if (localSearchQuery.trim() === "") {
       setSearchResults([]);
       setShowResults(false);
       return;
     }
 
-    const q = searchQuery.toLowerCase();
-    const filtered = initialAccounts.filter(acc => 
+    const q = localSearchQuery.toLowerCase();
+    const filtered = allAccounts.filter(acc => 
       acc.name.toLowerCase().includes(q) || 
       acc.xHandle.toLowerCase().includes(q)
     );
 
-    // Ranking Logic
+    // Ranking Logic: Exact name start > Handle start > Others
     const ranked = filtered.sort((a, b) => {
       const aName = a.name.toLowerCase();
       const bName = b.name.toLowerCase();
       const aHandle = a.xHandle.toLowerCase().replace(/^@+/, '');
       const bHandle = b.xHandle.toLowerCase().replace(/^@+/, '');
 
-      // 1. Name starts with query
       const aNameStarts = aName.startsWith(q);
       const bNameStarts = bName.startsWith(q);
       if (aNameStarts && !bNameStarts) return -1;
       if (!aNameStarts && bNameStarts) return 1;
 
-      // 2. Handle starts with query
       const aHandleStarts = aHandle.startsWith(q);
       const bHandleStarts = bHandle.startsWith(q);
       if (aHandleStarts && !bHandleStarts) return -1;
       if (!aHandleStarts && bHandleStarts) return 1;
-
-      // 3. Name contains query (handled by filter, but maintain relative order)
-      // 4. Handle contains query (handled by filter)
       
       return 0;
     });
 
-    setSearchResults(ranked.slice(0, 8));
+    setSearchResults(ranked.slice(0, 6)); // Max 6 results
     setShowResults(true);
-  }, [searchQuery, initialAccounts]);
+  }, [localSearchQuery, allAccounts]);
 
   // Click outside to close search results
   useEffect(() => {
@@ -314,6 +306,12 @@ export default function HomeClient({
                     className="w-full h-[48px] bg-pill border border-border rounded-lg pl-12 pr-4 text-foreground placeholder:text-[#6b7280] focus:outline-none focus:ring-1 focus:ring-border transition-all"
                     value={localSearchQuery}
                     onChange={(e) => setLocalSearchQuery(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        updateUrl({ q: localSearchQuery, page: "1" });
+                        setShowResults(false);
+                      }
+                    }}
                     onFocus={() => {
                       if (localSearchQuery.trim() !== "") setShowResults(true);
                       else setShowHistory(true);
@@ -367,6 +365,7 @@ export default function HomeClient({
                               className="px-4 py-3 hover:bg-accent cursor-pointer flex items-center gap-4 transition-colors group"
                               onClick={() => {
                                 addToAccountHistory(acc);
+                                updateUrl({ q: acc.name, page: "1" }); // Update URL on click
                                 router.push(`/u/${acc.xHandle.replace(/^@+/, '')}`);
                                 setShowResults(false);
                               }}

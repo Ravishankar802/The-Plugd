@@ -87,15 +87,20 @@ export default async function Home({ searchParams }: PageProps) {
   if (sort === "Oldest") orderBy = { id: "asc" };
 
   try {
-    // Fetch total count and current page accounts in parallel
-    const [accounts, totalCount] = await Promise.all([
+    // Fetch total count, current page accounts, and ALL accounts for instant search
+    const [accounts, totalCount, allAccountsRaw] = await Promise.all([
       prisma.account.findMany({
         where,
         orderBy,
         skip,
         take: PAGE_SIZE,
       }),
-      prisma.account.count({ where })
+      prisma.account.count({ where }),
+      prisma.account.findMany({
+        where: { status: "paid" },
+        select: { id: true, name: true, xHandle: true, avatarUrl: true },
+        orderBy: { id: "desc" }
+      })
     ]);
 
     // Serialize accounts
@@ -110,9 +115,15 @@ export default async function Home({ searchParams }: PageProps) {
       createdAt: a.createdAt.toISOString(),
     }));
 
+    const allAccounts = allAccountsRaw.map(a => ({
+      ...a,
+      avatarUrl: a.avatarUrl ?? ""
+    }));
+
     return (
       <HomeClient 
         initialAccounts={serialized} 
+        allAccounts={allAccounts as any}
         totalFilteredCount={totalCount}
         currentPage={currentPage}
         pageSize={PAGE_SIZE}
@@ -120,6 +131,6 @@ export default async function Home({ searchParams }: PageProps) {
     );
   } catch (error) {
     console.error("SSR fetch failed:", error);
-    return <HomeClient initialAccounts={[]} totalFilteredCount={0} currentPage={1} pageSize={PAGE_SIZE} />;
+    return <HomeClient initialAccounts={[]} allAccounts={[]} totalFilteredCount={0} currentPage={1} pageSize={PAGE_SIZE} />;
   }
 }
