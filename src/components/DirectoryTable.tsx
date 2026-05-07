@@ -126,7 +126,7 @@ export default function DirectoryTable({
           </div>
 
           {/* Status Filter Dropdown */}
-          <div className="relative" ref={statusRef}>
+          <div className="relative group/filter-tooltip" ref={statusRef}>
             <button 
               onClick={() => {
                 if (!isPaidUser) return;
@@ -144,6 +144,13 @@ export default function DirectoryTable({
               {selectedStatusFilter === "All" ? "Status" : selectedStatusFilter}
               <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${statusOpen ? "rotate-180" : ""}`} />
             </button>
+
+            {!isPaidUser && (
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-foreground text-background text-[10px] font-bold rounded opacity-0 group-hover/filter-tooltip:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-[100] shadow-xl">
+                Unlock for $1
+                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-foreground" />
+              </div>
+            )}
 
             {statusOpen && isPaidUser && (
               <div className="absolute right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-xl z-[9999] py-1 animate-in fade-in slide-in-from-top-2 duration-200">

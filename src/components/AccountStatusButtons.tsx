@@ -106,7 +106,7 @@ export default function AccountStatusButtons({
   };
 
   return (
-    <div className="group/container relative flex items-center gap-2.5" onClick={(e) => e.stopPropagation()}>
+    <div className="group/container relative flex items-center gap-2.5 w-full h-full min-h-[40px]" onClick={(e) => e.stopPropagation()}>
       {/* Global Locked Tooltip: Shown on container hover, but hidden if any button is hovered */}
       {isDisabled && (
         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-foreground text-background text-[10px] font-bold rounded opacity-0 group-hover/container:opacity-100 group-has-[.group\/btn-tooltip:hover]:opacity-0 transition-opacity pointer-events-none whitespace-nowrap z-[90] shadow-xl">
