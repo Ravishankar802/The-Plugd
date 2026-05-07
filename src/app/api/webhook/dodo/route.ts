@@ -83,6 +83,7 @@ export async function POST(req: Request) {
             status: "paid",
             paid: true,
             isClaimed: true,
+            email: payment.customer.email,
             paymentId: payment.payment_id
           },
         });

@@ -115,7 +115,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
         }, 2000);
       } else {
         // 4. Redirect to Dodo checkout with accountId in metadata
-        const checkoutUrl = `https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=${encodeURIComponent('https://the-plugd.vercel.app/login?success=true')}&showDiscounts=false&customer_email=${encodeURIComponent(formData.email)}&metadata_accountId=${accountId}`;
+        const checkoutUrl = `https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=${encodeURIComponent('https://the-plugd.vercel.app/login?message=Payment successful! Enter the email you used for payment to access your dashboard')}&showDiscounts=false&customer_email=${encodeURIComponent(formData.email)}&metadata_accountId=${accountId}`;
         window.location.href = checkoutUrl;
       }
     } catch (error) {
