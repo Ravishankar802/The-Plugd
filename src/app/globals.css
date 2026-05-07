@@ -162,3 +162,19 @@ body {
 .pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-content {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 25s linear infinite;
+  width: max-content;
+}
+
+.ticker-container:hover .ticker-content {
+  animation-play-state: paused;
+}
