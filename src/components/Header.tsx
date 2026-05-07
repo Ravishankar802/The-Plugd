@@ -28,7 +28,7 @@ export default function Header() {
         Just follow each other and Grow on X
       </h1>
       <p className="text-muted text-[0.875rem] md:text-[1.25rem] font-normal max-w-[340px] md:max-w-2xl leading-tight md:leading-relaxed mx-auto relative z-10 px-4">
-        Pay $1 to get listed and gain access to the Status feature. If you are already on the list, pay $1 to claim your account and gain access to the Status feature.
+        Browse X accounts by niche and follower count. Keep track of who you&apos;ve followed. Save the ones you want to follow later.
       </p>
     </header>
   );
