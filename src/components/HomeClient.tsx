@@ -12,7 +12,8 @@ import {
   ExternalLink,
   Info,
   Filter,
-  LayoutDashboard
+  LayoutDashboard,
+  X
 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
@@ -69,6 +70,57 @@ export default function HomeClient({
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [isPaidUser, setIsPaidUser] = useState(false);
   const [userStatuses, setUserStatuses] = useState<Record<number, string>>({});
+  
+  // Search state
+  const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery);
+  const [history, setHistory] = useState<string[]>([]);
+  const [showHistory, setShowHistory] = useState(false);
+
+  // Load history on mount
+  useEffect(() => {
+    const saved = localStorage.getItem("plugd_search_history");
+    if (saved) setHistory(JSON.parse(saved));
+  }, []);
+
+  const saveToHistory = (term: string) => {
+    if (!term.trim()) return;
+    setHistory(prev => {
+      const filtered = prev.filter(h => h.toLowerCase() !== term.toLowerCase());
+      const next = [term, ...filtered].slice(0, 5);
+      localStorage.setItem("plugd_search_history", JSON.stringify(next));
+      return next;
+    });
+  };
+
+  const removeFromHistory = (term: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setHistory(prev => {
+      const next = prev.filter(h => h !== term);
+      localStorage.setItem("plugd_search_history", JSON.stringify(next));
+      return next;
+    });
+  };
+
+  const clearHistory = () => {
+    setHistory([]);
+    localStorage.removeItem("plugd_search_history");
+  };
+
+  // Sync local search with URL if it changes externally
+  useEffect(() => {
+    setLocalSearchQuery(searchQuery);
+  }, [searchQuery]);
+
+  // Debounce URL update
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (localSearchQuery !== searchQuery) {
+        updateUrl({ q: localSearchQuery, page: "1" });
+        if (localSearchQuery.trim()) saveToHistory(localSearchQuery);
+      }
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [localSearchQuery]);
 
   // Helper to update URL params
   const updateUrl = (updates: Record<string, string | null>) => {
@@ -152,6 +204,7 @@ export default function HomeClient({
     const handleClickOutside = (e: MouseEvent) => {
       if (!(e.target as HTMLElement).closest(".search-container")) {
         setShowResults(false);
+        setShowHistory(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -236,11 +289,47 @@ export default function HomeClient({
                     type="text"
                     placeholder="Search accounts or names..."
                     className="w-full h-[48px] bg-pill border border-border rounded-lg pl-12 pr-4 text-foreground placeholder:text-[#6b7280] focus:outline-none focus:ring-1 focus:ring-border transition-all"
-                    value={searchQuery}
-                    onChange={(e) => updateUrl({ q: e.target.value, page: "1" })}
-                    onFocus={() => searchQuery.trim() !== "" && setShowResults(true)}
+                    value={localSearchQuery}
+                    onChange={(e) => setLocalSearchQuery(e.target.value)}
+                    onFocus={() => {
+                      if (localSearchQuery.trim() !== "") setShowResults(true);
+                      else setShowHistory(true);
+                    }}
                     suppressHydrationWarning
                   />
+
+                  {/* Recent Searches Dropdown */}
+                  {showHistory && localSearchQuery.trim() === "" && history.length > 0 && (
+                    <div className="absolute top-[calc(100%+8px)] left-0 right-0 bg-pill border border-border rounded-xl shadow-2xl z-[150] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                      <div className="px-4 py-3 border-b border-border flex items-center justify-between">
+                        <span className="text-[0.7rem] uppercase font-bold text-muted tracking-wider">Recent Searches</span>
+                        <button onClick={clearHistory} className="text-[0.7rem] text-[#f97316] hover:underline font-bold">Clear all</button>
+                      </div>
+                      <div className="py-1">
+                        {history.map((term, i) => (
+                          <div 
+                            key={i}
+                            className="px-4 py-2.5 hover:bg-accent cursor-pointer flex items-center justify-between group transition-colors"
+                            onClick={() => {
+                              setLocalSearchQuery(term);
+                              setShowHistory(false);
+                            }}
+                          >
+                            <div className="flex items-center gap-3">
+                              <Search className="w-3.5 h-3.5 text-muted" />
+                              <span className="text-foreground text-[0.9rem]">{term}</span>
+                            </div>
+                            <button 
+                              onClick={(e) => removeFromHistory(term, e)}
+                              className="w-6 h-6 rounded-md hover:bg-border flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                            >
+                              <X className="w-3 h-3 text-muted" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {showResults && searchQuery.trim() !== "" && (
                     <div className="absolute top-[calc(100%+8px)] left-0 right-0 bg-pill border border-border rounded-xl shadow-2xl z-[150] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
