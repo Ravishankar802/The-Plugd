@@ -341,7 +341,7 @@ export default function HomeClient({
               {[...Array(10)].map((_, i) => (
                 <div key={i} className="flex items-center gap-3 shrink-0">
                   <span className="text-[#f97316] text-xl leading-none">●</span>
-                  <span className="text-white font-medium text-[15px] tracking-wide uppercase">
+                  <span className="text-white font-medium text-[15px] tracking-wide">
                     Add or claim your account for $1 to track, save and skip X accounts
                   </span>
                 </div>
