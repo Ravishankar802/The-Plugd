@@ -19,6 +19,7 @@ model Account {
   paid           Boolean  @default(false)
   status         String   @default("pending_payment")
   paymentId      String?
+  isClaimed      Boolean  @default(false)
   createdAt      DateTime @default(now())
 }
 

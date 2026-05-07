@@ -169,7 +169,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
         </div>
 
         {/* Claim Card */}
-        {!account.paid && (
+        {!account.isClaimed && (
           <div className="w-full bg-pill border border-border rounded-2xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h2 className="text-xl font-bold mb-1">Is this you?</h2>

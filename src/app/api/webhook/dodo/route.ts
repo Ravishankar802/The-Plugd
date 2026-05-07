@@ -55,6 +55,7 @@ export async function POST(req: Request) {
           data: {
             status: "paid",
             paid: true,
+            isClaimed: true,
             email: payment.customer.email,
             paymentId: payment.payment_id
           }
@@ -81,6 +82,7 @@ export async function POST(req: Request) {
           data: { 
             status: "paid",
             paid: true,
+            isClaimed: true,
             paymentId: payment.payment_id
           },
         });
