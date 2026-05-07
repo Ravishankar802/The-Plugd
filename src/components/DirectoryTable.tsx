@@ -83,7 +83,7 @@ export default function DirectoryTable({
   }, []);
  
   return (
-    <div className="w-full bg-card rounded-2xl border border-border">
+    <div className="w-full bg-card rounded-2xl border border-border overflow-hidden">
       <div className="flex flex-col md:flex-row md:items-center justify-between p-6 gap-4">
         <h2 className="text-[1.5rem] font-[800] text-foreground text-glow">Index</h2>
         
@@ -224,7 +224,7 @@ export default function DirectoryTable({
             {accounts.map((account, index) => (
               <tr 
                 key={account.id} 
-                className="directory-row group transition-colors flex flex-col md:table-row border-b border-border py-6 md:py-0 cursor-pointer"
+                className="directory-row group transition-colors flex flex-col md:table-row border-b last:border-b-0 border-border py-6 md:py-0 cursor-pointer"
                 onClick={() => router.push(`/u/${account.xHandle.replace(/^@+/, '')}`)}
                 onMouseEnter={() => router.prefetch(`/u/${account.xHandle.replace(/^@+/, '')}`)}
               >
