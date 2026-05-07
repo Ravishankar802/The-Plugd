@@ -52,6 +52,8 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
     notFound();
   }
 
+  console.log('isClaimed:', account.isClaimed);
+
   // Calculate permanent listing number and random accounts in parallel
   const [listingNumber, allPaidAccounts] = await Promise.all([
     prisma.account.count({
