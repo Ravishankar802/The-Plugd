@@ -112,11 +112,6 @@ export default function HomeClient({
     setLocalSearchQuery(searchQuery);
   }, [searchQuery]);
 
-  // Sync local search with URL if it changes externally
-  useEffect(() => {
-    setLocalSearchQuery(searchQuery);
-  }, [searchQuery]);
-
   // Helper to update URL params
   const updateUrl = (updates: Record<string, string | null>) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -212,6 +207,13 @@ export default function HomeClient({
 
     setSearchResults(ranked.slice(0, 6)); // Max 6 results
     setShowResults(true);
+
+    // Debug logs
+    console.log("Search Debug:", {
+      allAccountsCount: allAccounts.length,
+      query: localSearchQuery,
+      resultsFound: ranked.length
+    });
   }, [localSearchQuery, allAccounts]);
 
   // Click outside to close search results
@@ -355,8 +357,8 @@ export default function HomeClient({
                     </div>
                   )}
 
-                  {showResults && searchQuery.trim() !== "" && (
-                    <div className="absolute top-[calc(100%+8px)] left-0 right-0 bg-pill border border-border rounded-xl shadow-2xl z-[150] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                  {showResults && localSearchQuery.trim() !== "" && (
+                    <div className="absolute top-[calc(100%+8px)] left-0 right-0 bg-pill border border-border rounded-xl shadow-2xl z-[9999] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
                       {searchResults.length > 0 ? (
                         <div className="py-2">
                           {searchResults.map((acc) => (
