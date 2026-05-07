@@ -16,7 +16,7 @@ export default function Footer({ showBorder = true }: FooterProps) {
   const [hasMounted, setHasMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-  const isDashboard = pathname?.startsWith("/dashboard");
+  const isDashboard = pathname?.startsWith("/dashboard") || pathname?.startsWith("/admin");
 
   useEffect(() => {
     setHasMounted(true);

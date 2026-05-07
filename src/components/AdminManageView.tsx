@@ -16,6 +16,7 @@ import {
   AlertTriangle,
   Globe
 } from "lucide-react";
+import Link from "next/link";
 import AdminEditAccountModal from "./AdminEditAccountModal";
 import { NICHES } from "@/lib/constants";
 
@@ -149,9 +150,17 @@ export default function AdminManageView() {
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <div className="mb-10">
-        <h1 className="text-[2.5rem] font-[500] text-foreground leading-tight tracking-tighter">Manage Accounts</h1>
-        <p className="text-muted text-[1rem] mt-1 font-[300]">Showing paid accounts only. Abandoned pending payments are excluded.</p>
+      <div className="mb-10 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <div>
+          <h1 className="text-[2.5rem] font-[500] text-foreground leading-tight tracking-tighter">Manage Accounts</h1>
+          <p className="text-muted text-[1rem] mt-1 font-[300]">Showing paid accounts only. Abandoned pending payments are excluded.</p>
+        </div>
+        <Link 
+          href="/"
+          className="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-pill border border-border text-foreground font-bold text-sm hover:bg-accent transition-all shadow-lg w-fit"
+        >
+          Home
+        </Link>
       </div>
 
       {/* Filters */}
