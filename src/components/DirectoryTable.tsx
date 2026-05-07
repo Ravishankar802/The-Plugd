@@ -126,49 +126,59 @@ export default function DirectoryTable({
           </div>
 
           {/* Status Filter Dropdown */}
-          <div className="relative group/filter-tooltip" ref={statusRef}>
+          <div className="relative group/filter-container" ref={statusRef}>
             <button 
               onClick={() => {
-                if (!isPaidUser) return;
                 setStatusOpen(!statusOpen);
                 setFollowersOpen(false);
                 setSortOpen(false);
               }}
               suppressHydrationWarning
-              disabled={!isPaidUser}
-              className={`flex items-center gap-2 text-sm transition-colors bg-transparent px-3 py-1.5 rounded-lg border border-border text-glow ${
-                !isPaidUser ? "opacity-30 cursor-not-allowed text-muted" : "text-muted hover:text-foreground cursor-pointer"
-              }`}
+              className="flex items-center gap-2 text-sm transition-colors bg-transparent px-3 py-1.5 rounded-lg border border-border text-glow text-muted hover:text-foreground cursor-pointer"
             >
               <Filter className="w-4 h-4" />
               {selectedStatusFilter === "All" ? "Status" : selectedStatusFilter}
               <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${statusOpen ? "rotate-180" : ""}`} />
             </button>
 
-            {!isPaidUser && (
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-foreground text-background text-[10px] font-bold rounded opacity-0 group-hover/filter-tooltip:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-[100] shadow-xl">
-                Unlock for $1
-                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-foreground" />
-              </div>
-            )}
-
-            {statusOpen && isPaidUser && (
+            {statusOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-xl z-[9999] py-1 animate-in fade-in slide-in-from-top-2 duration-200">
                 {STATUS_FILTERS.map((filter) => (
-                  <button
-                    key={filter}
-                    onClick={() => {
-                      setSelectedStatusFilter(filter);
-                      setStatusOpen(false);
-                    }}
-                    suppressHydrationWarning
-                    className={`flex items-center justify-between w-full px-4 py-2.5 text-[0.9rem] transition-colors text-left ${
-                      selectedStatusFilter === filter ? "text-foreground bg-accent" : "text-muted hover:bg-accent hover:text-foreground"
-                    }`}
-                  >
-                    <span>{filter}</span>
-                    {selectedStatusFilter === filter && <Check className="w-3.5 h-3.5" />}
-                  </button>
+                  <div key={filter} className="relative group/filter-item">
+                    <button
+                      onClick={() => {
+                        if (isPaidUser) {
+                          setSelectedStatusFilter(filter);
+                          setStatusOpen(false);
+                        }
+                      }}
+                      suppressHydrationWarning
+                      className={`flex items-center justify-between w-full px-4 py-2.5 text-[0.9rem] transition-colors text-left ${
+                        !isPaidUser 
+                          ? "opacity-40 cursor-not-allowed text-muted" 
+                          : selectedStatusFilter === filter 
+                            ? "text-foreground bg-accent" 
+                            : "text-muted hover:bg-accent hover:text-foreground"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{filter}</span>
+                        {!isPaidUser && (
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" className="opacity-60">
+                            <path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 5a3 3 0 0 1 6 0v3H9V7zm3 9a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/>
+                          </svg>
+                        )}
+                      </div>
+                      {isPaidUser && selectedStatusFilter === filter && <Check className="w-3.5 h-3.5" />}
+                    </button>
+                    
+                    {!isPaidUser && (
+                      <div className="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-2 py-1 bg-foreground text-background text-[10px] font-bold rounded opacity-0 group-hover/filter-item:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-[100] shadow-xl">
+                        Unlock for $1
+                        <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-foreground" />
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             )}
@@ -224,7 +234,12 @@ export default function DirectoryTable({
               <th className="w-10 text-left pl-6 pb-3 text-muted text-sm font-medium">#</th>
               <th className="text-left pl-16 pb-3 text-muted text-sm font-medium">Profile</th>
               <th className="w-52 text-left pl-12 pb-3 text-muted text-sm font-medium">X Handle</th>
-              <th className="w-40 text-left pl-12 pb-3 text-muted text-sm font-medium">Status</th>
+              <th className="w-40 text-left pl-12 pb-3 text-muted text-sm font-medium">
+                <div className="flex flex-col">
+                  <span>Status</span>
+                  {!isPaidUser && <span className="text-[10px] opacity-60 font-normal leading-tight">Unlock for $1</span>}
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody className="block md:table-row-group">
