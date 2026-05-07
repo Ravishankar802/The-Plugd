@@ -157,7 +157,7 @@ export default function AdminManageView() {
         </div>
         <Link 
           href="/"
-          className="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-pill border border-border text-foreground font-bold text-sm hover:bg-accent transition-all shadow-lg w-fit"
+          className="text-muted hover:text-foreground font-bold text-sm transition-all"
         >
           Home
         </Link>

@@ -41,7 +41,7 @@ export default function Footer({ showBorder = true }: FooterProps) {
   const CurrentIcon = currentThemeOption.icon;
 
   return (
-    <footer className={`${isDashboard ? "py-10" : "py-20"} ${showBorder ? "border-t border-border" : ""}`}>
+    <footer className={`${isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-border" : ""}`}>
       <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative">
         {isDashboard ? (
           <>

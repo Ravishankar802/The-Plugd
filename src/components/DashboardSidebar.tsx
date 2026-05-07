@@ -83,7 +83,7 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
         {isAdmin && (
           <div className="mt-6">
             <div className="h-[1px] bg-border mx-4 mb-6" />
-            <p className="px-4 text-[0.75rem] font-bold text-muted/40 uppercase tracking-[0.15em] mb-4">Administration</p>
+            <p className="px-4 text-[0.8125rem] font-bold text-muted/40 uppercase tracking-[0.15em] mb-4">Admin</p>
             {adminItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
