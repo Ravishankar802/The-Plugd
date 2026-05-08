@@ -171,25 +171,13 @@ export default function StatsClient({
           >
             <h2 className="text-xl font-bold mb-6 text-foreground">Niche</h2>
             <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
-              <div className="space-y-4">
-                {nicheStats.map((stat) => {
-                  const percentage = totalCount > 0 ? (stat.count / totalCount) * 100 : 0;
-                  return (
-                    <div key={stat.niche} className="flex items-center gap-4">
-                      <span className="w-32 text-sm text-muted font-medium shrink-0 truncate">{stat.niche}</span>
-                      <div className="flex-1 h-2 bg-pill rounded-full overflow-hidden">
-                        <div 
-                          className="h-full bg-[#f97316] transition-all duration-1000 ease-out" 
-                          style={{ width: `${percentage}%` }}
-                        />
-                      </div>
-                      <span className="w-28 text-sm text-right font-mono-custom flex justify-end gap-2 shrink-0">
-                        <span className="text-foreground font-bold">{percentage.toFixed(1)}%</span>
-                        <span className="text-muted">({stat.count})</span>
-                      </span>
-                    </div>
-                  );
-                })}
+              <div>
+                {nicheStats.map((stat) => (
+                  <div key={stat.niche} className="flex items-center justify-between border-b border-white/5 last:border-0 py-2.5">
+                    <span className="text-[0.9rem] text-muted font-medium">{stat.niche}</span>
+                    <span className="text-[0.9rem] font-mono-custom font-bold text-foreground">{stat.count}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
