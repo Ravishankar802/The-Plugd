@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { RefreshCcw, Timer, Trophy, ArrowRight, Loader2, X } from "lucide-react";
+import { RefreshCcw, Timer, Trophy, ArrowRight, Loader2, Clock } from "lucide-react";
 import Footer from "@/components/Footer";
 import { FOLLOWERS_RANGES } from "@/lib/constants";
 
@@ -20,14 +20,13 @@ interface Account {
 }
 
 const ELON_IMAGE = "/elon.jpg";
-const ELON_PLACEHOLDER = "https://api.dicebear.com/7.x/avataaars/svg?seed=Elon&backgroundColor=b6e3f4";
 
 export default function GameClient() {
   const router = useRouter();
   const [gameState, setGameState] = useState<GameState>("landing");
   const [round, setRound] = useState(1);
   const [score, setScore] = useState(0);
-  const [timer, setTimer] = useState(15);
+  const [timer, setTimer] = useState(7); // TrustMRR uses shorter timers, user said 0:07
   const [accounts, setAccounts] = useState<{ acc1: Account; acc2: Account } | null>(null);
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
@@ -40,7 +39,7 @@ export default function GameClient() {
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       setAccounts(data);
-      setTimer(15);
+      setTimer(7);
     } catch (err) {
       console.error("Failed to fetch game accounts:", err);
     } finally {
@@ -91,7 +90,6 @@ export default function GameClient() {
         setTimer(prev => prev - 1);
       }, 1000);
     } else if (timer === 0 && gameState === "playing") {
-      // Auto-select random if timer runs out
       const randomAcc = Math.random() > 0.5 ? accounts?.acc1 : accounts?.acc2;
       if (randomAcc) handleSelect(randomAcc.id);
     }
@@ -110,64 +108,67 @@ export default function GameClient() {
 
   const renderElonReaction = () => {
     if (gameState === "landing") {
-      return "Well, well, well... Another broke builder trying to grow on X. I'll show you two real builders. Think you can even find the winner?";
+      return (
+        <>
+          Well, well, well... Another broke builder trying to grow on X.<br /><br />
+          I&apos;ll show you two real builders. Think you can even find the winner?
+        </>
+      );
     }
     if (gameState === "playing" || gameState === "result") {
       return "These are two real builders. Check their profiles to see what they're building. Which one has more followers?";
     }
     if (gameState === "end") {
-      if (score === 5) return "Not bad. Maybe you do know what you're doing.";
-      if (score >= 3) return "Decent. But you're no genius.";
-      return "Embarrassing. Stick to scrolling.";
+      if (score === 5) return "Impressive. You really know your builders.";
+      if (score >= 3) return "Not bad. Keep scrolling and learning.";
+      return "Better luck next time. Keep exploring Plugd!";
     }
     return "";
   };
 
   return (
-    <main className="min-h-screen flex flex-col bg-background text-foreground font-mono-custom overflow-x-hidden">
+    <main className="min-h-screen flex flex-col bg-background text-foreground font-mono overflow-x-hidden selection:bg-[#f97316] selection:text-white">
       
       {/* Game Content */}
-      <div className="flex-1 flex flex-col items-center justify-center py-8 px-4 max-w-5xl mx-auto w-full">
+      <div className="flex-1 flex flex-col items-center justify-center py-12 px-4 max-w-5xl mx-auto w-full">
         
         {gameState === "landing" && (
-          <div className="flex flex-col items-center text-center animate-in fade-in slide-in-from-bottom-4 duration-500 w-full">
+          <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-500 w-full">
             {/* Logo */}
-            <div className="flex items-center gap-3 mb-10">
-              <div className="relative w-8 h-8 flex items-center justify-center">
-                <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-[2]">
-                  <line x1="20" y1="20" x2="8" y2="8" className="opacity-60" />
-                  <line x1="20" y1="20" x2="32" y2="8" className="opacity-60" />
-                  <line x1="20" y1="20" x2="37" y2="25" className="opacity-60" />
-                  <line x1="20" y1="20" x2="25" y2="37" className="opacity-60" />
-                  <line x1="20" y1="20" x2="3" y2="28" className="opacity-60" />
-                  <circle cx="20" cy="20" r="5" className="fill-[#ff6b00] stroke-none" />
+            <div className="flex items-center gap-2 mb-12 opacity-80">
+              <div className="relative w-6 h-6 flex items-center justify-center">
+                <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-[3]">
+                  <path d="M20 5 L20 35 M5 20 L35 20" className="opacity-40" />
+                  <circle cx="20" cy="20" r="8" className="fill-[#ff6b00] stroke-none" />
                 </svg>
               </div>
-              <span className="text-xl font-[800]">Plugd</span>
+              <span className="text-lg font-bold tracking-tight">Plugd</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black mb-12 tracking-tight uppercase leading-none">
+            <h1 className="text-4xl md:text-6xl font-black mb-16 tracking-tight text-center">
               100 vs 100,000
             </h1>
 
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-12 w-full max-w-4xl">
-              <img 
-                src={ELON_IMAGE} 
-                alt="Elon" 
-                className="w-48 h-48 md:w-64 md:h-64 object-contain"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = ELON_PLACEHOLDER;
-                }}
-              />
-              <div className="relative bg-card border border-border p-6 md:p-8 rounded-3xl shadow-2xl text-left max-w-md">
-                <div className="absolute left-[-12px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent border-r-[12px] border-r-card hidden md:block" />
-                <p className="text-xl md:text-2xl leading-tight font-bold">{renderElonReaction()}</p>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-20 w-full max-w-3xl">
+              <div className="relative shrink-0">
+                <img 
+                  src={ELON_IMAGE} 
+                  alt="Elon" 
+                  className="w-[250px] md:w-[300px] h-auto grayscale-[20%] brightness-110"
+                  style={{ mixBlendMode: "multiply" }}
+                />
+              </div>
+              <div className="relative bg-[#1a1a1a] p-8 md:p-10 rounded-[32px] text-left max-w-md shadow-2xl">
+                <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[10px] border-r-[#1a1a1a] hidden md:block" />
+                <p className="text-lg md:text-xl leading-relaxed font-bold text-white/90">
+                  {renderElonReaction()}
+                </p>
               </div>
             </div>
 
             <button 
               onClick={startGame}
-              className="w-full max-w-md py-6 bg-foreground text-background font-black text-3xl rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-[0_8px_0_0_#333] hover:shadow-[0_4px_0_0_#333] hover:translate-y-[4px] active:shadow-none active:translate-y-[8px]"
+              className="w-full max-w-[800px] py-6 bg-[#e5e5e5] text-black font-black text-2xl rounded-2xl hover:bg-white transition-all shadow-xl active:scale-[0.98]"
             >
               Start Game
             </button>
@@ -177,34 +178,38 @@ export default function GameClient() {
         {(gameState === "playing" || gameState === "result") && (
           <div className="w-full max-w-5xl flex flex-col items-center">
             {/* Top Bar */}
-            <div className="w-full flex items-center justify-between mb-8 bg-card/50 px-6 py-4 rounded-2xl border border-border">
-              <button onClick={() => setGameState("landing")} className="flex items-center gap-2 text-muted hover:text-foreground transition-colors font-bold uppercase text-xs tracking-widest">
+            <div className="w-full flex items-center justify-between mb-10 px-4">
+              <button 
+                onClick={() => setGameState("landing")} 
+                className="flex items-center gap-1 text-white/60 hover:text-white transition-colors text-sm font-bold"
+              >
                 <RefreshCcw className="w-4 h-4" /> Restart
               </button>
-              <div className="flex flex-col items-center">
-                <span className="text-muted text-[0.65rem] font-bold uppercase tracking-[0.2em] mb-0.5">Score</span>
-                <span className="text-2xl font-black leading-none">{score} / 5</span>
+              
+              <div className="bg-[#1a1a1a] px-8 py-2.5 rounded-full border border-white/5">
+                <span className="text-xl font-black tabular-nums">{score} / 5</span>
               </div>
-              <div className="flex items-center gap-3 text-[#f97316]">
-                <Timer className="w-5 h-5" />
-                <span className="text-2xl font-black tabular-nums">0:{timer.toString().padStart(2, '0')}</span>
+              
+              <div className="flex items-center gap-2 text-[#f97316]">
+                <Clock className="w-5 h-5 fill-[#f97316]/20" />
+                <span className="text-xl font-black tabular-nums">0:{timer.toString().padStart(2, '0')}</span>
               </div>
             </div>
 
             {/* Account Cards */}
             {loading ? (
-              <div className="h-[400px] flex items-center justify-center">
-                <Loader2 className="w-12 h-12 animate-spin text-selected" />
+              <div className="h-[500px] flex items-center justify-center">
+                <Loader2 className="w-12 h-12 animate-spin text-[#f97316]" />
               </div>
             ) : accounts && (
-              <div className="relative w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8">
+              <div className="relative w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-4 mb-12">
                 {/* VS Starburst */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none scale-110 md:scale-150">
+                <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none scale-125 md:scale-150">
                   <div className="relative flex items-center justify-center">
                     <svg viewBox="0 0 100 100" className="w-24 h-24 drop-shadow-[0_0_20px_rgba(249,115,22,0.4)] fill-[#f97316]">
-                      <path d="M50 5 L58 25 L78 20 L72 38 L95 42 L75 55 L88 78 L62 68 L50 95 L38 68 L12 78 L25 55 L5 42 L28 38 L22 20 L42 25 Z" />
+                      <path d="M50 2 L55 22 L75 15 L68 35 L95 35 L75 50 L90 75 L65 65 L50 98 L35 65 L10 75 L25 50 L5 35 L32 35 L25 15 L45 22 Z" />
                     </svg>
-                    <span className="absolute text-white font-black text-2xl italic tracking-tighter drop-shadow-md">VS</span>
+                    <span className="absolute text-white font-black text-2xl italic tracking-tighter drop-shadow-md pb-1">VS</span>
                   </div>
                 </div>
 
@@ -226,17 +231,16 @@ export default function GameClient() {
             )}
 
             {/* Bottom Elon */}
-            <div className="flex items-center gap-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
+            <div className="flex items-center gap-6 mt-4 self-start md:ml-12 animate-in fade-in slide-in-from-bottom-2 duration-300">
               <img 
                 src={ELON_IMAGE} 
                 alt="Elon" 
-                className="w-20 h-20 object-contain" 
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = ELON_PLACEHOLDER;
-                }}
+                className="w-24 h-24 object-contain brightness-110" 
+                style={{ mixBlendMode: "multiply" }}
               />
-              <div className="bg-card border border-border p-4 rounded-2xl shadow-xl max-w-sm">
-                <p className="text-sm font-bold leading-tight">{renderElonReaction()}</p>
+              <div className="bg-[#1a1a1a] p-5 rounded-[24px] shadow-xl max-w-md relative">
+                <div className="absolute left-[-8px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[8px] border-r-[#1a1a1a]" />
+                <p className="text-sm font-bold leading-tight text-white/80">{renderElonReaction()}</p>
               </div>
             </div>
           </div>
@@ -244,27 +248,27 @@ export default function GameClient() {
 
         {gameState === "end" && (
           <div className="flex flex-col items-center text-center animate-in zoom-in duration-500 w-full">
-            <Trophy className="w-16 h-16 text-[#f97316] mb-6" />
-            <h2 className="text-6xl font-black mb-4 uppercase leading-none">Game Over</h2>
-            <p className="text-2xl mb-10 font-bold">You got {score} / 5 correct!</p>
+            <Trophy className="w-20 h-20 text-[#f97316] mb-8" />
+            <h2 className="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tight">Game Over</h2>
+            <p className="text-3xl mb-12 font-bold">You got {score} / 5 correct!</p>
 
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12 w-full max-w-3xl">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-16 w-full max-w-3xl">
               <img 
                 src={ELON_IMAGE} 
                 alt="Elon" 
-                className="w-48 h-48 object-contain"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = ELON_PLACEHOLDER;
-                }}
+                className="w-[200px] h-auto object-contain brightness-110"
+                style={{ mixBlendMode: "multiply" }}
               />
-              <div className="relative bg-card border border-border p-8 rounded-3xl shadow-2xl text-left">
-                <p className="text-2xl italic font-bold">&quot;{renderElonReaction()}&quot;</p>
+              <div className="bg-[#1a1a1a] p-10 rounded-[32px] shadow-2xl text-left max-w-md">
+                <p className="text-2xl font-bold text-white/90 leading-tight italic">
+                  &quot;{renderElonReaction()}&quot;
+                </p>
               </div>
             </div>
 
             <button 
               onClick={startGame}
-              className="w-full max-w-md py-6 bg-selected text-selected-foreground font-black text-3xl rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-[0_8px_0_0_#999] active:shadow-none active:translate-y-[8px]"
+              className="w-full max-w-[800px] py-6 bg-[#e5e5e5] text-black font-black text-2xl rounded-2xl hover:bg-white transition-all shadow-xl active:scale-[0.98]"
             >
               Play Again
             </button>
@@ -291,50 +295,51 @@ function GameAccountCard({
   showResult: boolean; 
   onSelect: () => void 
 }) {
-  let borderColor = "border-border";
+  let cardClass = "bg-[#f5f5f5] text-black";
+  let borderClass = "border-transparent";
+  
   if (showResult) {
-    if (isWinner) borderColor = "border-green-500 ring-8 ring-green-500/10";
-    else if (isSelected) borderColor = "border-red-500 ring-8 ring-red-500/10";
+    if (isWinner) borderClass = "border-green-500 ring-8 ring-green-500/20";
+    else if (isSelected) borderClass = "border-red-500 ring-8 ring-red-500/20";
   }
 
   return (
-    <div className={`bg-[#111] border-2 ${borderColor} rounded-3xl overflow-hidden transition-all duration-300 flex flex-col shadow-2xl h-full group`}>
-      <div className="p-6 md:p-8 flex-1">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="relative w-16 h-16 shrink-0">
-            <img src={account.avatarUrl} alt="" className="w-full h-full rounded-2xl border border-white/10 object-cover" />
-          </div>
-          <div className="min-w-0">
-            <h3 className="text-xl font-black truncate leading-tight">{account.name}</h3>
-            <p className="text-muted text-sm font-bold opacity-60">@{account.xHandle.replace(/^@+/, '')}</p>
-          </div>
+    <div className={`${cardClass} border-4 ${borderClass} rounded-[32px] overflow-hidden transition-all duration-300 flex flex-col shadow-2xl min-h-[580px] group relative`}>
+      <div className="p-8 md:p-10 flex-1 flex flex-col items-center text-center">
+        <div className="relative w-32 h-32 md:w-40 md:h-40 mb-8 shrink-0">
+          <img src={account.avatarUrl} alt="" className="w-full h-full rounded-[32px] border border-black/5 object-cover shadow-lg" />
         </div>
         
-        <p className="text-[0.95rem] line-clamp-4 mb-8 text-muted italic leading-relaxed font-medium">
+        <div className="mb-6">
+          <h3 className="text-2xl md:text-3xl font-black mb-1 leading-none">{account.name}</h3>
+          <p className="text-black/40 text-lg font-bold">@{account.xHandle.replace(/^@+/, '')}</p>
+        </div>
+        
+        <p className="text-lg md:text-xl mb-8 text-black/70 font-medium leading-relaxed line-clamp-4">
           {account.bio}
         </p>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap justify-center gap-2 mt-auto">
           {account.niche.slice(0, 3).map(n => (
-            <span key={n} className="px-3 py-1 rounded-lg bg-[#1a1a1a] border border-white/5 text-[0.75rem] font-bold text-muted transition-colors group-hover:border-white/10">
-              {n.charAt(0).toUpperCase() + n.slice(1).toLowerCase()}
+            <span key={n} className="px-4 py-1.5 rounded-full bg-black/5 border border-black/5 text-[0.8rem] font-bold text-black/50 uppercase tracking-widest">
+              {n}
             </span>
           ))}
         </div>
       </div>
 
-      <div className="p-6 md:p-8 pt-0 mt-auto">
+      <div className="px-8 pb-8 mt-auto">
         {showResult ? (
-          <div className="flex flex-col items-center py-6 bg-pill/50 rounded-2xl border border-white/5 animate-in zoom-in-95 duration-300">
-            <span className="text-[0.65rem] uppercase text-muted font-black tracking-[0.2em] mb-2">Followers</span>
-            <span className={`text-4xl font-black ${isWinner ? "text-green-500" : "text-muted opacity-50"}`}>
+          <div className="flex flex-col items-center py-8 bg-black/5 rounded-[24px] animate-in zoom-in-95 duration-300">
+            <span className="text-xs uppercase text-black/30 font-black tracking-[0.2em] mb-2">Followers</span>
+            <span className={`text-4xl font-black ${isWinner ? "text-green-600" : "text-black/20"}`}>
               {account.followersRange}
             </span>
           </div>
         ) : (
           <button 
             onClick={onSelect}
-            className="w-full py-5 bg-selected text-selected-foreground font-black text-sm rounded-2xl hover:bg-selected/90 transition-all flex items-center justify-center gap-2 group-active:scale-[0.98]"
+            className="w-full py-6 bg-black/10 text-black font-black text-lg rounded-[24px] hover:bg-black/20 transition-all flex items-center justify-center gap-3 active:scale-[0.98]"
           >
             This builder has more followers →
           </button>
