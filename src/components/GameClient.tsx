@@ -19,6 +19,7 @@ interface Account {
   followersRange: string;
 }
 
+const ELON_IMAGE = "/elon.jpg";
 const ELON_PLACEHOLDER = "https://api.dicebear.com/7.x/avataaars/svg?seed=Elon&backgroundColor=b6e3f4";
 
 export default function GameClient() {
@@ -126,14 +127,14 @@ export default function GameClient() {
     <main className="min-h-screen flex flex-col bg-background text-foreground font-mono-custom overflow-x-hidden">
       
       {/* Game Content */}
-      <div className="flex-1 flex flex-col items-center justify-center py-12 px-4 max-w-5xl mx-auto w-full">
+      <div className="flex-1 flex flex-col items-center justify-center py-8 px-4 max-w-5xl mx-auto w-full">
         
         {gameState === "landing" && (
-          <div className="flex flex-col items-center text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="flex flex-col items-center text-center animate-in fade-in slide-in-from-bottom-4 duration-500 w-full">
             {/* Logo */}
-            <div className="flex items-center gap-4 mb-8">
-              <div className="relative w-10 h-10 flex items-center justify-center">
-                <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-[1.5]">
+            <div className="flex items-center gap-3 mb-10">
+              <div className="relative w-8 h-8 flex items-center justify-center">
+                <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-[2]">
                   <line x1="20" y1="20" x2="8" y2="8" className="opacity-60" />
                   <line x1="20" y1="20" x2="32" y2="8" className="opacity-60" />
                   <line x1="20" y1="20" x2="37" y2="25" className="opacity-60" />
@@ -142,24 +143,31 @@ export default function GameClient() {
                   <circle cx="20" cy="20" r="5" className="fill-[#ff6b00] stroke-none" />
                 </svg>
               </div>
-              <span className="text-2xl font-[800]">Plugd</span>
+              <span className="text-xl font-[800]">Plugd</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-black mb-12 tracking-tight uppercase">
+            <h1 className="text-5xl md:text-7xl font-black mb-12 tracking-tight uppercase leading-none">
               100 vs 100,000
             </h1>
 
-            <div className="flex flex-col md:flex-row items-center gap-8 mb-12 max-w-3xl">
-              <img src={ELON_PLACEHOLDER} alt="Elon" className="w-48 h-48 rounded-full border-4 border-border shadow-2xl" />
-              <div className="relative bg-card border border-border p-6 rounded-2xl shadow-xl text-left">
-                <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-right-[10px] border-right-border hidden md:block" />
-                <p className="text-lg leading-relaxed">{renderElonReaction()}</p>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-12 w-full max-w-4xl">
+              <img 
+                src={ELON_IMAGE} 
+                alt="Elon" 
+                className="w-48 h-48 md:w-64 md:h-64 object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = ELON_PLACEHOLDER;
+                }}
+              />
+              <div className="relative bg-card border border-border p-6 md:p-8 rounded-3xl shadow-2xl text-left max-w-md">
+                <div className="absolute left-[-12px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent border-r-[12px] border-r-card hidden md:block" />
+                <p className="text-xl md:text-2xl leading-tight font-bold">{renderElonReaction()}</p>
               </div>
             </div>
 
             <button 
               onClick={startGame}
-              className="px-12 py-5 bg-foreground text-background font-black text-2xl rounded-xl hover:scale-105 active:scale-95 transition-all shadow-[0_8px_0_0_#333] hover:shadow-[0_4px_0_0_#333] hover:translate-y-[4px] active:shadow-none active:translate-y-[8px]"
+              className="w-full max-w-md py-6 bg-foreground text-background font-black text-3xl rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-[0_8px_0_0_#333] hover:shadow-[0_4px_0_0_#333] hover:translate-y-[4px] active:shadow-none active:translate-y-[8px]"
             >
               Start Game
             </button>
@@ -167,19 +175,19 @@ export default function GameClient() {
         )}
 
         {(gameState === "playing" || gameState === "result") && (
-          <div className="w-full max-w-4xl flex flex-col items-center">
+          <div className="w-full max-w-5xl flex flex-col items-center">
             {/* Top Bar */}
-            <div className="w-full flex items-center justify-between mb-12 bg-card/50 p-4 rounded-xl border border-border">
-              <button onClick={() => setGameState("landing")} className="flex items-center gap-2 text-muted hover:text-foreground transition-colors">
+            <div className="w-full flex items-center justify-between mb-8 bg-card/50 px-6 py-4 rounded-2xl border border-border">
+              <button onClick={() => setGameState("landing")} className="flex items-center gap-2 text-muted hover:text-foreground transition-colors font-bold uppercase text-xs tracking-widest">
                 <RefreshCcw className="w-4 h-4" /> Restart
               </button>
               <div className="flex flex-col items-center">
-                <span className="text-muted text-xs font-bold uppercase tracking-widest mb-1">Score</span>
-                <span className="text-xl font-black">{score} / 5</span>
+                <span className="text-muted text-[0.65rem] font-bold uppercase tracking-[0.2em] mb-0.5">Score</span>
+                <span className="text-2xl font-black leading-none">{score} / 5</span>
               </div>
-              <div className="flex items-center gap-3 text-orange-500">
+              <div className="flex items-center gap-3 text-[#f97316]">
                 <Timer className="w-5 h-5" />
-                <span className="text-xl font-black">0:{timer.toString().padStart(2, '0')}</span>
+                <span className="text-2xl font-black tabular-nums">0:{timer.toString().padStart(2, '0')}</span>
               </div>
             </div>
 
@@ -189,14 +197,14 @@ export default function GameClient() {
                 <Loader2 className="w-12 h-12 animate-spin text-selected" />
               </div>
             ) : accounts && (
-              <div className="relative w-full grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+              <div className="relative w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8">
                 {/* VS Starburst */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none scale-75 md:scale-100">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none scale-110 md:scale-150">
                   <div className="relative flex items-center justify-center">
-                    <svg viewBox="0 0 100 100" className="w-24 h-24 drop-shadow-2xl fill-[#f97316]">
-                      <polygon points="50,5 60,35 95,35 65,55 75,90 50,70 25,90 35,55 5,35 40,35" />
+                    <svg viewBox="0 0 100 100" className="w-24 h-24 drop-shadow-[0_0_20px_rgba(249,115,22,0.4)] fill-[#f97316]">
+                      <path d="M50 5 L58 25 L78 20 L72 38 L95 42 L75 55 L88 78 L62 68 L50 95 L38 68 L12 78 L25 55 L5 42 L28 38 L22 20 L42 25 Z" />
                     </svg>
-                    <span className="absolute text-white font-black text-2xl italic tracking-tighter">VS</span>
+                    <span className="absolute text-white font-black text-2xl italic tracking-tighter drop-shadow-md">VS</span>
                   </div>
                 </div>
 
@@ -218,31 +226,45 @@ export default function GameClient() {
             )}
 
             {/* Bottom Elon */}
-            <div className="flex items-center gap-6 mt-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
-              <img src={ELON_PLACEHOLDER} alt="Elon" className="w-20 h-20 rounded-full border-2 border-border" />
-              <div className="bg-card border border-border p-4 rounded-xl shadow-lg max-w-md">
-                <p className="text-sm leading-tight">{renderElonReaction()}</p>
+            <div className="flex items-center gap-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
+              <img 
+                src={ELON_IMAGE} 
+                alt="Elon" 
+                className="w-20 h-20 object-contain" 
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = ELON_PLACEHOLDER;
+                }}
+              />
+              <div className="bg-card border border-border p-4 rounded-2xl shadow-xl max-w-sm">
+                <p className="text-sm font-bold leading-tight">{renderElonReaction()}</p>
               </div>
             </div>
           </div>
         )}
 
         {gameState === "end" && (
-          <div className="flex flex-col items-center text-center animate-in zoom-in duration-500">
-            <Trophy className="w-20 h-20 text-orange-500 mb-6" />
-            <h2 className="text-5xl font-black mb-4 uppercase">Game Over</h2>
-            <p className="text-2xl mb-8 font-bold">You got {score} / 5 correct!</p>
+          <div className="flex flex-col items-center text-center animate-in zoom-in duration-500 w-full">
+            <Trophy className="w-16 h-16 text-[#f97316] mb-6" />
+            <h2 className="text-6xl font-black mb-4 uppercase leading-none">Game Over</h2>
+            <p className="text-2xl mb-10 font-bold">You got {score} / 5 correct!</p>
 
-            <div className="flex flex-col md:flex-row items-center gap-8 mb-12 max-w-3xl">
-              <img src={ELON_PLACEHOLDER} alt="Elon" className="w-32 h-32 rounded-full border-2 border-border" />
-              <div className="bg-card border border-border p-6 rounded-2xl shadow-xl text-left">
-                <p className="text-lg italic">&quot;{renderElonReaction()}&quot;</p>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12 w-full max-w-3xl">
+              <img 
+                src={ELON_IMAGE} 
+                alt="Elon" 
+                className="w-48 h-48 object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = ELON_PLACEHOLDER;
+                }}
+              />
+              <div className="relative bg-card border border-border p-8 rounded-3xl shadow-2xl text-left">
+                <p className="text-2xl italic font-bold">&quot;{renderElonReaction()}&quot;</p>
               </div>
             </div>
 
             <button 
               onClick={startGame}
-              className="px-12 py-5 bg-selected text-selected-foreground font-black text-2xl rounded-xl hover:scale-105 active:scale-95 transition-all shadow-[0_8px_0_0_#999] active:shadow-none active:translate-y-[8px]"
+              className="w-full max-w-md py-6 bg-selected text-selected-foreground font-black text-3xl rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-[0_8px_0_0_#999] active:shadow-none active:translate-y-[8px]"
             >
               Play Again
             </button>
@@ -271,49 +293,50 @@ function GameAccountCard({
 }) {
   let borderColor = "border-border";
   if (showResult) {
-    if (isWinner) borderColor = "border-green-500 ring-4 ring-green-500/20";
-    else if (isSelected) borderColor = "border-red-500 ring-4 ring-red-500/20";
+    if (isWinner) borderColor = "border-green-500 ring-8 ring-green-500/10";
+    else if (isSelected) borderColor = "border-red-500 ring-8 ring-red-500/10";
   }
 
   return (
-    <div className={`bg-card border-2 ${borderColor} rounded-2xl overflow-hidden transition-all duration-300 flex flex-col shadow-2xl h-full`}>
-      <div className="p-6 flex-1">
+    <div className={`bg-[#111] border-2 ${borderColor} rounded-3xl overflow-hidden transition-all duration-300 flex flex-col shadow-2xl h-full group`}>
+      <div className="p-6 md:p-8 flex-1">
         <div className="flex items-center gap-4 mb-6">
-          <img src={account.avatarUrl} alt="" className="w-16 h-16 rounded-xl border border-border object-cover" />
+          <div className="relative w-16 h-16 shrink-0">
+            <img src={account.avatarUrl} alt="" className="w-full h-full rounded-2xl border border-white/10 object-cover" />
+          </div>
           <div className="min-w-0">
-            <h3 className="text-xl font-black truncate">{account.name}</h3>
-            <p className="text-muted text-sm">@{account.xHandle.replace(/^@+/, '')}</p>
+            <h3 className="text-xl font-black truncate leading-tight">{account.name}</h3>
+            <p className="text-muted text-sm font-bold opacity-60">@{account.xHandle.replace(/^@+/, '')}</p>
           </div>
         </div>
         
-        <p className="text-sm line-clamp-3 mb-6 text-muted italic leading-relaxed">
-          &quot;{account.bio}&quot;
+        <p className="text-[0.95rem] line-clamp-4 mb-8 text-muted italic leading-relaxed font-medium">
+          {account.bio}
         </p>
 
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2">
           {account.niche.slice(0, 3).map(n => (
-            <span key={n} className="px-3 py-1 rounded-full bg-accent border border-border text-[0.7rem] font-bold uppercase tracking-wider">
-              {n}
+            <span key={n} className="px-3 py-1 rounded-lg bg-[#1a1a1a] border border-white/5 text-[0.75rem] font-bold text-muted transition-colors group-hover:border-white/10">
+              {n.charAt(0).toUpperCase() + n.slice(1).toLowerCase()}
             </span>
           ))}
         </div>
       </div>
 
-      <div className="p-6 pt-0 mt-auto">
+      <div className="p-6 md:p-8 pt-0 mt-auto">
         {showResult ? (
-          <div className="flex flex-col items-center py-4 bg-pill rounded-xl border border-border animate-in zoom-in-95 duration-300">
-            <span className="text-xs uppercase text-muted font-bold tracking-widest mb-1">Followers</span>
-            <span className={`text-2xl font-black ${isWinner ? "text-green-500" : "text-foreground"}`}>
+          <div className="flex flex-col items-center py-6 bg-pill/50 rounded-2xl border border-white/5 animate-in zoom-in-95 duration-300">
+            <span className="text-[0.65rem] uppercase text-muted font-black tracking-[0.2em] mb-2">Followers</span>
+            <span className={`text-4xl font-black ${isWinner ? "text-green-500" : "text-muted opacity-50"}`}>
               {account.followersRange}
             </span>
           </div>
         ) : (
           <button 
             onClick={onSelect}
-            className="w-full py-4 bg-selected text-selected-foreground font-black text-sm rounded-xl hover:bg-selected/90 transition-all flex items-center justify-center gap-2 group"
+            className="w-full py-5 bg-selected text-selected-foreground font-black text-sm rounded-2xl hover:bg-selected/90 transition-all flex items-center justify-center gap-2 group-active:scale-[0.98]"
           >
-            This builder has more followers 💰
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            This builder has more followers →
           </button>
         )}
       </div>
