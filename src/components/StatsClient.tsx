@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Search, Plus, LayoutDashboard, ExternalLink } from "lucide-react";
+import { Search, Plus, LayoutDashboard } from "lucide-react";
 import Footer from "@/components/Footer";
 import AddAccountModal from "@/components/AddAccountModal";
 
@@ -25,13 +25,27 @@ export default function StatsClient({
   const router = useRouter();
   const [localSearchQuery, setLocalSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [leftCardHeight, setLeftCardHeight] = useState<number | null>(null);
+  const leftCardRef = useRef<HTMLDivElement>(null);
 
-  const maxFollowers = Math.max(...followerStats.map(s => s.count), 1);
-  const maxNiches = Math.max(...nicheStats.map(s => s.count), 1);
+  useEffect(() => {
+    if (leftCardRef.current) {
+      setLeftCardHeight(leftCardRef.current.clientHeight);
+    }
+    
+    // Update on resize
+    const handleResize = () => {
+      if (leftCardRef.current) {
+        setLeftCardHeight(leftCardRef.current.clientHeight);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <main className="min-h-screen flex flex-col bg-background text-foreground overflow-x-hidden">
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 py-12 flex flex-col items-center">
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 pt-12 flex flex-col items-center">
         
         {/* Header (Same as Login Logo style) */}
         <Link href="/" className="flex items-center gap-4 mb-8 hover:opacity-80 transition-opacity group">
@@ -54,11 +68,24 @@ export default function StatsClient({
         </Link>
 
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-2 tracking-tight">
-          {totalCount} Accounts Statistics
+          Accounts Statistics
         </h1>
-        <p className="text-muted text-center mb-12 text-lg">
-          Live data from {totalCount} accounts listed on Plugd
-        </p>
+        
+        {/* Live Counter (Same as Homepage) */}
+        <div className="w-full flex flex-col items-center justify-center my-8 animate-in fade-in slide-in-from-top-2 duration-500">
+          <span className="font-mono text-[0.7rem] text-muted uppercase tracking-[0.08em] font-[700] mb-1">
+            TOTAL ACCOUNTS LISTED
+          </span>
+          <div className="flex flex-col items-center gap-1">
+            <span className="text-foreground text-[40px] md:text-[56px] font-bold leading-none">
+              {totalCount}
+            </span>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-[#f97316] pulse" />
+              <span className="text-[#f97316] text-[0.875rem] font-medium">live</span>
+            </div>
+          </div>
+        </div>
 
         {/* Action Row (Search bar + Buttons) */}
         <div className="w-full max-w-[800px] flex flex-col md:flex-row gap-4 mb-8">
@@ -110,10 +137,10 @@ export default function StatsClient({
         )}
 
         {/* Stats Cards */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 items-start">
           
           {/* Card 1: X Followers Distribution */}
-          <div className="bg-[#161616] border border-border rounded-2xl p-6 shadow-xl">
+          <div ref={leftCardRef} className="bg-[#161616] border border-border rounded-2xl p-6 shadow-xl h-fit">
             <h2 className="text-xl font-bold mb-6 text-foreground">X Followers</h2>
             <div className="space-y-4">
               {followerStats.map((stat) => {
@@ -138,32 +165,39 @@ export default function StatsClient({
           </div>
 
           {/* Card 2: Niche Distribution */}
-          <div className="bg-[#161616] border border-border rounded-2xl p-6 shadow-xl">
+          <div 
+            className="bg-[#161616] border border-border rounded-2xl p-6 shadow-xl flex flex-col"
+            style={{ height: leftCardHeight ? `${leftCardHeight}px` : 'auto' }}
+          >
             <h2 className="text-xl font-bold mb-6 text-foreground">Niche</h2>
-            <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
-              {nicheStats.map((stat) => {
-                const percentage = totalCount > 0 ? (stat.count / totalCount) * 100 : 0;
-                return (
-                  <div key={stat.niche} className="flex items-center gap-4">
-                    <span className="w-32 text-sm text-muted font-medium shrink-0 truncate">{stat.niche}</span>
-                    <div className="flex-1 h-2 bg-pill rounded-full overflow-hidden">
-                      <div 
-                        className="h-full bg-[#f97316] transition-all duration-1000 ease-out" 
-                        style={{ width: `${percentage}%` }}
-                      />
+            <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
+              <div className="space-y-4">
+                {nicheStats.map((stat) => {
+                  const percentage = totalCount > 0 ? (stat.count / totalCount) * 100 : 0;
+                  return (
+                    <div key={stat.niche} className="flex items-center gap-4">
+                      <span className="w-32 text-sm text-muted font-medium shrink-0 truncate">{stat.niche}</span>
+                      <div className="flex-1 h-2 bg-pill rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-[#f97316] transition-all duration-1000 ease-out" 
+                          style={{ width: `${percentage}%` }}
+                        />
+                      </div>
+                      <span className="w-28 text-sm text-right font-mono-custom flex justify-end gap-2 shrink-0">
+                        <span className="text-foreground font-bold">{percentage.toFixed(1)}%</span>
+                        <span className="text-muted">({stat.count})</span>
+                      </span>
                     </div>
-                    <span className="w-28 text-sm text-right font-mono-custom flex justify-end gap-2 shrink-0">
-                      <span className="text-foreground font-bold">{percentage.toFixed(1)}%</span>
-                      <span className="text-muted">({stat.count})</span>
-                    </span>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
 
         </div>
+      </div>
 
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 mt-auto">
         <Footer />
       </div>
 
