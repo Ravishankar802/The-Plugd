@@ -15,6 +15,7 @@ import {
   LayoutDashboard,
   X
 } from "lucide-react";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
 
@@ -408,6 +409,12 @@ export default function HomeClient({
                   <LayoutDashboard className="w-5 h-5" />
                   Dashboard
                 </button>
+              </div>
+
+              <div className="flex items-center justify-center gap-2 mb-6 text-[13px] text-[#666] -mt-2">
+                <Link href="/stats" className="hover:text-foreground transition-colors">Stats</Link>
+                <span className="select-none">·</span>
+                <Link href="/100-vs-100k" className="hover:text-foreground transition-colors">100 vs 100K</Link>
               </div>
 
               <div className="flex justify-center w-full relative group">
