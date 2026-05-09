@@ -40,7 +40,12 @@ function TypewriterText({ text, speed = 30, delay = 0 }: { text: string; speed?:
     }
   }, [index, text, speed, delay]);
 
-  return <>{displayedText}</>;
+  // Support for newlines
+  return (
+    <span className="whitespace-pre-line">
+      {displayedText}
+    </span>
+  );
 }
 
 export default function GameClient() {
@@ -125,8 +130,8 @@ export default function GameClient() {
     return range1 > range2 ? accounts.acc1.id : accounts.acc2.id;
   };
 
-  const elonLandingText = "Well, well, well... Another broke builder trying to grow on X. I'll show you two real builders. Think you can even find the winner?";
-  const elonPlayingText = "These are two real builders. Check their profiles to see what they're building. Which one has more followers?";
+  const elonLandingText = "Well, well, well... Another broke builder trying to grow on X.\n\nI'll show you two real builders. Think you can even find the winner?";
+  const elonPlayingText = "These are two real builders. Check their profiles to see what they're building.\n\nWhich one has more followers?";
 
   const renderElonReactionText = () => {
     if (gameState === "landing") return elonLandingText;
@@ -182,7 +187,7 @@ export default function GameClient() {
                 <img 
                   src={ELON_IMAGE} 
                   alt="Elon" 
-                  className="h-[220px] md:h-[260px] w-auto"
+                  className="h-[220px] md:h-[260px] w-auto brightness-[2.5] contrast-[1.1]"
                   style={{ mixBlendMode: "multiply" }}
                 />
               </div>
@@ -263,7 +268,7 @@ export default function GameClient() {
               <img 
                 src={ELON_IMAGE} 
                 alt="Elon" 
-                className="h-16 md:h-20 w-auto object-contain" 
+                className="h-16 md:h-20 w-auto object-contain brightness-[2.5] contrast-[1.1]" 
                 style={{ mixBlendMode: "multiply" }}
               />
               <div className="bg-[#1a1a1a] p-4 rounded-[20px] shadow-xl max-w-md relative border border-white/5">
@@ -286,7 +291,7 @@ export default function GameClient() {
               <img 
                 src={ELON_IMAGE} 
                 alt="Elon" 
-                className="h-[180px] md:h-[220px] w-auto object-contain"
+                className="h-[180px] md:h-[220px] w-auto object-contain brightness-[2.5] contrast-[1.1]"
                 style={{ mixBlendMode: "multiply" }}
               />
               <div className="bg-[#1a1a1a] p-8 rounded-[24px] shadow-2xl text-left max-w-md border border-white/5">
