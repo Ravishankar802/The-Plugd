@@ -243,7 +243,7 @@ export default function DirectoryTable({
             {accounts.map((account, index) => (
               <tr 
                 key={account.id} 
-                className="directory-row group transition-colors flex flex-col md:table-row border-b last:border-b-0 border-border py-6 md:py-0 cursor-pointer"
+                className="directory-row group transition-all duration-200 flex flex-col md:table-row border-b last:border-b-0 border-border py-6 md:py-0 cursor-pointer hover:bg-accent/30 relative active:scale-[0.998]"
                 onClick={() => router.push(`/u/${account.xHandle.replace(/^@+/, '')}`)}
                 onMouseEnter={() => router.prefetch(`/u/${account.xHandle.replace(/^@+/, '')}`)}
               >
@@ -316,8 +316,25 @@ export default function DirectoryTable({
       </div>
  
       {accounts.length === 0 && !isLoading && (
-        <div className="p-12 text-center text-muted">
-          No accounts found matching your search.
+        <div className="p-16 text-center flex flex-col items-center gap-4 animate-in fade-in zoom-in-95 duration-500">
+          <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mb-2">
+            <Search className="w-8 h-8 text-muted" />
+          </div>
+          <div className="space-y-1">
+            <p className="text-foreground font-bold text-lg">No accounts found</p>
+            <p className="text-muted text-sm max-w-[280px] mx-auto">Try adjusting your filters or search terms to find what you&apos;re looking for.</p>
+          </div>
+          <button 
+            onClick={() => {
+              setSelectedFollowersRange("All Ranges");
+              setSelectedStatusFilter("All");
+              setSortBy("Latest");
+              router.push("/");
+            }}
+            className="mt-2 text-[#f97316] font-bold text-sm hover:underline"
+          >
+            Clear all filters
+          </button>
         </div>
       )}
       

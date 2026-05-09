@@ -9,8 +9,10 @@ import {
   Camera,
   Save,
   User,
-  Plus
+  Plus,
+  ArrowRight
 } from "lucide-react";
+import Link from "next/link";
 import { NICHES } from "@/lib/constants";
 
 
@@ -118,19 +120,30 @@ export default function DashboardProfileView() {
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <div className="mb-8">
-        <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Your Profile</h1>
-        <p className="text-muted text-[1rem] mt-1.5 font-normal">Manage your public listing on Plugd.</p>
+      <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Your Profile</h1>
+          <p className="text-muted text-[1rem] mt-1.5 font-normal">Manage your public listing on Plugd.</p>
+        </div>
         
-        {account?.status === "pending_payment" && (
-          <div className="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-xl flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-500">
-            <div className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" />
-            <p className="text-yellow-500 text-sm font-bold uppercase tracking-wider">
-              We&apos;re confirming your payment. Your profile will appear shortly.
-            </p>
-          </div>
+        {account && (
+          <Link 
+            href={`/u/${account.xHandle.replace(/^@+/, '')}`}
+            className="flex items-center gap-2 text-[#f97316] font-bold text-sm hover:underline"
+          >
+            Visit Public Profile <ArrowRight size={14} />
+          </Link>
         )}
       </div>
+
+      {account?.status === "pending_payment" && (
+        <div className="mb-8 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-xl flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-500">
+          <div className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" />
+          <p className="text-yellow-500 text-sm font-bold uppercase tracking-wider">
+            We&apos;re confirming your payment. Your profile will appear shortly.
+          </p>
+        </div>
+      )}
 
       <div className="bg-pill border border-border rounded-[16px] p-10 shadow-2xl">
         <form onSubmit={handleSave} className="space-y-10">

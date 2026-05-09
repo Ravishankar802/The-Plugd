@@ -104,8 +104,14 @@ export default async function Home({ searchParams }: PageProps) {
       })
     ]);
 
+    // Apply Shuffle if requested
+    let displayAccounts = accounts;
+    if (sort === "Shuffle") {
+      displayAccounts = [...accounts].sort(() => Math.random() - 0.5);
+    }
+
     // Serialize accounts
-    const serialized = accounts.map((a) => ({
+    const serialized = displayAccounts.map((a) => ({
       id: a.id,
       name: a.name,
       xHandle: a.xHandle,

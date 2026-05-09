@@ -202,9 +202,9 @@ export default function GameClient() {
                   style={{ filter: "url(#remove-white)" }}
                 />
               </div>
-              <div className="relative bg-card p-6 md:p-8 rounded-[24px] text-left max-w-md shadow-2xl border border-border">
+              <div className="relative bg-card p-5 md:p-8 rounded-[24px] text-left max-w-md shadow-2xl border border-border">
                 <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[10px] border-r-card hidden md:block" />
-                <p className="text-lg md:text-xl leading-relaxed font-bold text-foreground min-h-[6em]">
+                <p className="text-base md:text-xl leading-relaxed font-bold text-foreground min-h-[4em] md:min-h-[6em]">
                   <TypewriterText text={elonLandingText} speed={25} delay={500} />
                 </p>
               </div>
