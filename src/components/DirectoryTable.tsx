@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { ChevronDown, TrendingUp, Sliders, Check, Filter } from "lucide-react";
+import { ChevronDown, TrendingUp, Sliders, Check, Filter, Search } from "lucide-react";
 import AccountStatusButtons from "./AccountStatusButtons";
  
 interface Account {
