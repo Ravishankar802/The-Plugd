@@ -87,7 +87,7 @@ export default function DirectoryTable({
       <div className="flex flex-col md:flex-row md:items-center justify-between p-6 gap-4">
         <h2 className="text-[1.5rem] font-[800] text-foreground text-glow">Index</h2>
         
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar pb-1 md:pb-0">
           {/* Followers Range Dropdown */}
           <div className="relative" ref={followersRef}>
             <button 
@@ -291,7 +291,7 @@ export default function DirectoryTable({
                   </div>
                 </td>
                 <td className="block md:table-cell px-6 pt-4 pb-0 md:py-4 md:pl-12">
-                  <div className="flex justify-start">
+                  <div className="flex justify-between md:justify-start w-full">
                     <AccountStatusButtons 
                       accountId={account.id}
                       currentStatus={userStatuses[account.id]}

@@ -212,7 +212,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
                 <p className="text-sm text-muted line-clamp-2 mb-6 flex-1">
                   {acc.bio}
                 </p>
-                <div className="pt-4 border-t border-border flex items-center justify-center">
+                <div className="pt-4 border-t border-border flex items-center justify-between md:justify-center w-full">
                    <ProfileStatusWrapper 
                     accountId={acc.id} 
                   />

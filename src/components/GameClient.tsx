@@ -249,7 +249,7 @@ export default function GameClient() {
             ) : accounts && (
               <div className="relative w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8">
                 {/* VS Starburst */}
-                <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none scale-110 md:scale-125">
+                <div className="absolute top-[45%] md:top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none scale-[0.8] md:scale-125">
                   <div className="relative flex items-center justify-center">
                     <svg viewBox="0 0 100 100" className="w-20 h-20 drop-shadow-[0_0_20px_rgba(249,115,22,0.4)] fill-[#f97316]">
                       <path d="M50 2 L55 22 L75 15 L68 35 L95 35 L75 50 L90 75 L65 65 L50 98 L35 65 L10 75 L25 50 L5 35 L32 35 L25 15 L45 22 Z" />
@@ -353,18 +353,18 @@ function GameAccountCard({
   }
 
   return (
-    <div className={`${cardClass} border-2 ${borderClass} rounded-[24px] overflow-hidden transition-all duration-300 flex flex-col shadow-2xl min-h-[440px] group relative`}>
+    <div className={`${cardClass} border-2 ${borderClass} rounded-[24px] overflow-hidden transition-all duration-300 flex flex-col shadow-2xl min-h-[380px] md:min-h-[440px] group relative`}>
       <div className="p-5 md:p-6 flex-1 flex flex-col items-center text-center">
         <div className="relative w-20 h-20 md:w-24 md:h-24 mb-4 shrink-0">
           <img src={account.avatarUrl} alt="" className="w-full h-full rounded-[20px] border border-white/10 object-cover shadow-lg" />
         </div>
         
         <div className="mb-3">
-          <h3 className="text-lg md:text-xl font-black mb-0.5 leading-none text-foreground">{account.name}</h3>
-          <p className="text-muted text-sm font-bold">@{account.xHandle.replace(/^@+/, '')}</p>
+          <h3 className="text-base md:text-xl font-black mb-0.5 leading-none text-foreground">{account.name}</h3>
+          <p className="text-muted text-[0.7rem] md:text-sm font-bold">@{account.xHandle.replace(/^@+/, '')}</p>
         </div>
         
-        <p className="text-sm md:text-base mb-4 text-muted font-medium leading-relaxed line-clamp-3 italic">
+        <p className="text-[0.8rem] md:text-base mb-4 text-muted font-medium leading-relaxed line-clamp-2 md:line-clamp-3 italic">
           {account.bio}
         </p>
 
@@ -388,7 +388,7 @@ function GameAccountCard({
         ) : (
           <button 
             onClick={onSelect}
-            className="w-full py-3.5 bg-accent text-foreground border border-border font-black text-sm rounded-[16px] hover:bg-accent/80 transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
+            className="w-full py-3 md:py-3.5 bg-accent text-foreground border border-border font-black text-[0.75rem] md:text-sm rounded-[16px] hover:bg-accent/80 transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
           >
             This account has more followers →
           </button>

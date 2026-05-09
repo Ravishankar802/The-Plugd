@@ -61,8 +61,8 @@ export default function AccountStatusButtons({
   };
 
   const isDisabled = !isPaidUser || !userEmail;
-  const iconSize = size === "sm" ? "w-4 h-4" : "w-5 h-5";
-  const buttonSize = size === "sm" ? "w-8 h-8" : "w-10 h-10";
+  const iconSize = size === "sm" ? "w-4 h-4 md:w-4 md:h-4" : "w-5 h-5 md:w-5 md:h-5";
+  const buttonSize = size === "sm" ? "w-10 h-10 md:w-8 md:h-8" : "w-12 h-12 md:w-10 md:h-10";
 
   const StatusButton = ({ type, icon: Icon, label, activeColor, activeShadow }: any) => {
     const isSelected = status === type;
@@ -106,7 +106,7 @@ export default function AccountStatusButtons({
   };
 
   return (
-    <div className="relative flex items-center gap-2.5 w-full h-full min-h-[40px]" onClick={(e) => e.stopPropagation()}>
+    <div className="relative flex items-center justify-between md:justify-start gap-2.5 w-full h-full min-h-[40px]" onClick={(e) => e.stopPropagation()}>
       <StatusButton 
         type="followed" 
         icon={Check} 
