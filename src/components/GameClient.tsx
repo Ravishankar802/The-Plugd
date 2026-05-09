@@ -247,9 +247,17 @@ export default function GameClient() {
                 <Loader2 className="w-12 h-12 animate-spin text-[#f97316]" />
               </div>
             ) : accounts && (
-              <div className="relative w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8">
+              <div className="relative w-full flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-6 mb-8">
+                <GameAccountCard 
+                  account={accounts.acc1} 
+                  isSelected={selectedId === accounts.acc1.id}
+                  isWinner={getWinnerId() === accounts.acc1.id}
+                  showResult={gameState === "result"}
+                  onSelect={() => handleSelect(accounts.acc1.id)}
+                />
+
                 {/* VS Starburst */}
-                <div className="absolute top-[45%] md:top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none scale-[0.8] md:scale-125">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none md:scale-125 scale-75 md:block hidden">
                   <div className="relative flex items-center justify-center">
                     <svg viewBox="0 0 100 100" className="w-20 h-20 drop-shadow-[0_0_20px_rgba(249,115,22,0.4)] fill-[#f97316]">
                       <path d="M50 2 L55 22 L75 15 L68 35 L95 35 L75 50 L90 75 L65 65 L50 98 L35 65 L10 75 L25 50 L5 35 L32 35 L25 15 L45 22 Z" />
@@ -258,13 +266,16 @@ export default function GameClient() {
                   </div>
                 </div>
 
-                <GameAccountCard 
-                  account={accounts.acc1} 
-                  isSelected={selectedId === accounts.acc1.id}
-                  isWinner={getWinnerId() === accounts.acc1.id}
-                  showResult={gameState === "result"}
-                  onSelect={() => handleSelect(accounts.acc1.id)}
-                />
+                {/* Mobile VS Starburst */}
+                <div className="md:hidden flex justify-center -my-10 z-50 pointer-events-none scale-75">
+                  <div className="relative flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" className="w-20 h-20 drop-shadow-[0_0_20px_rgba(249,115,22,0.4)] fill-[#f97316]">
+                      <path d="M50 2 L55 22 L75 15 L68 35 L95 35 L75 50 L90 75 L65 65 L50 98 L35 65 L10 75 L25 50 L5 35 L32 35 L25 15 L45 22 Z" />
+                    </svg>
+                    <span className="absolute text-white font-black text-xl italic tracking-tighter drop-shadow-md pb-0.5">VS</span>
+                  </div>
+                </div>
+
                 <GameAccountCard 
                   account={accounts.acc2} 
                   isSelected={selectedId === accounts.acc2.id}
@@ -353,10 +364,10 @@ function GameAccountCard({
   }
 
   return (
-    <div className={`${cardClass} border-2 ${borderClass} rounded-[24px] overflow-hidden transition-all duration-300 flex flex-col shadow-2xl min-h-[380px] md:min-h-[440px] group relative`}>
-      <div className="p-5 md:p-6 flex-1 flex flex-col items-center text-center">
-        <div className="relative w-20 h-20 md:w-24 md:h-24 mb-4 shrink-0">
-          <img src={account.avatarUrl} alt="" className="w-full h-full rounded-[20px] border border-white/10 object-cover shadow-lg" />
+    <div className={`${cardClass} border-2 ${borderClass} rounded-[24px] overflow-hidden transition-all duration-300 flex flex-col shadow-2xl min-h-[300px] md:min-h-[440px] group relative`}>
+      <div className="p-4 md:p-6 flex-1 flex flex-col items-center text-center">
+        <div className="relative w-14 h-14 md:w-24 md:h-24 mb-3 md:mb-4 shrink-0">
+          <img src={account.avatarUrl} alt="" className="w-full h-full rounded-[16px] md:rounded-[20px] border border-white/10 object-cover shadow-lg" />
         </div>
         
         <div className="mb-3">
@@ -368,7 +379,7 @@ function GameAccountCard({
           {account.bio}
         </p>
 
-        <div className="flex flex-wrap justify-center gap-1.5 mt-auto">
+        <div className="hidden md:flex flex-wrap justify-center gap-1.5 mt-auto">
           {account.niche.slice(0, 3).map(n => (
             <span key={n} className="px-2.5 py-1 rounded-full bg-accent border border-border text-[0.65rem] font-bold text-muted uppercase tracking-widest">
               {n}
