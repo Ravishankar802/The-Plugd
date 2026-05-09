@@ -66,7 +66,6 @@ export default function GameClient() {
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       setAccounts(data);
-      setTimer(0);
     } catch (err) {
       console.error("Failed to fetch game accounts:", err);
     } finally {
@@ -97,7 +96,6 @@ export default function GameClient() {
     
     setSelectedId(id);
     setGameState("result");
-    if (timerRef.current) clearInterval(timerRef.current);
 
     const range1 = FOLLOWERS_RANGES.indexOf(accounts.acc1.followersRange);
     const range2 = FOLLOWERS_RANGES.indexOf(accounts.acc2.followersRange);
@@ -110,12 +108,13 @@ export default function GameClient() {
     setTimeout(nextRound, 2000);
   };
 
-  // Timer logic - count up
   useEffect(() => {
-    if (gameState === "playing") {
+    if (gameState === "playing" || gameState === "result") {
       timerRef.current = setInterval(() => {
         setTimer(prev => prev + 1);
       }, 1000);
+    } else {
+      if (timerRef.current) clearInterval(timerRef.current);
     }
 
     return () => {
