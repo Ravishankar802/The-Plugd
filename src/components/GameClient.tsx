@@ -130,14 +130,14 @@ export default function GameClient() {
     return range1 > range2 ? accounts.acc1.id : accounts.acc2.id;
   };
 
-  const elonLandingText = "Well, well, well... Another broke builder trying to grow on X.\n\nI'll show you two real builders. Think you can even find the winner?";
-  const elonPlayingText = "These are two real builders. Check their profiles to see what they're building.\n\nWhich one has more followers?";
+  const elonLandingText = "Well, well, well... Another brokie trying to grow on X.\n\nI'll show you two real X accounts. Think you can even find the winner?";
+  const elonPlayingText = "These are two real X accounts. Check their profiles to see what they're about.\n\nWhich one has more followers?";
 
   const renderElonReactionText = () => {
     if (gameState === "landing") return elonLandingText;
     if (gameState === "playing" || gameState === "result") return elonPlayingText;
     if (gameState === "end") {
-      if (score === 5) return "Impressive. You really know your builders.";
+      if (score === 5) return "Impressive. You really know your X accounts.";
       if (score >= 3) return "Not bad. Keep connecting and growing.";
       return "Better luck next time. Keep exploring Plugd!";
     }
@@ -390,7 +390,7 @@ function GameAccountCard({
             onClick={onSelect}
             className="w-full py-3.5 bg-white/5 text-white border border-white/10 font-black text-sm rounded-[16px] hover:bg-white/10 transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
           >
-            This builder has more followers →
+            This account has more followers →
           </button>
         )}
       </div>
