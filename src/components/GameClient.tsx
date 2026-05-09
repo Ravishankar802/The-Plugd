@@ -152,7 +152,19 @@ export default function GameClient() {
 
   return (
     <main className="min-h-screen flex flex-col bg-background text-foreground font-mono overflow-x-hidden selection:bg-[#f97316] selection:text-white">
-      
+      {/* SVG Filter for removing white background from JPEG */}
+      <svg className="absolute w-0 h-0 invisible" aria-hidden="true">
+        <filter id="remove-white" colorInterpolationFilters="sRGB">
+          <feColorMatrix 
+            type="matrix" 
+            values="1 0 0 0 0
+                    0 1 0 0 0
+                    0 0 1 0 0
+                    -1.1 -1.1 -1.1 1 3" 
+          />
+        </filter>
+      </svg>
+
       {/* Game Content */}
       <div className="flex-1 flex flex-col items-center justify-center py-4 px-4 max-w-5xl mx-auto w-full">
         
@@ -187,8 +199,8 @@ export default function GameClient() {
                 <img 
                   src={ELON_IMAGE} 
                   alt="Elon" 
-                  className="h-[220px] md:h-[260px] w-auto brightness-[2.5] contrast-[1.1]"
-                  style={{ mixBlendMode: "multiply" }}
+                  className="h-[220px] md:h-[260px] w-auto"
+                  style={{ filter: "url(#remove-white)" }}
                 />
               </div>
               <div className="relative bg-[#1a1a1a] p-6 md:p-8 rounded-[24px] text-left max-w-md shadow-2xl border border-white/5">
@@ -268,8 +280,8 @@ export default function GameClient() {
               <img 
                 src={ELON_IMAGE} 
                 alt="Elon" 
-                className="h-16 md:h-20 w-auto object-contain brightness-[2.5] contrast-[1.1]" 
-                style={{ mixBlendMode: "multiply" }}
+                className="h-16 md:h-20 w-auto object-contain" 
+                style={{ filter: "url(#remove-white)" }}
               />
               <div className="bg-[#1a1a1a] p-4 rounded-[20px] shadow-xl max-w-md relative border border-white/5">
                 <div className="absolute left-[-8px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[8px] border-r-[#1a1a1a]" />
@@ -291,8 +303,8 @@ export default function GameClient() {
               <img 
                 src={ELON_IMAGE} 
                 alt="Elon" 
-                className="h-[180px] md:h-[220px] w-auto object-contain brightness-[2.5] contrast-[1.1]"
-                style={{ mixBlendMode: "multiply" }}
+                className="h-[180px] md:h-[220px] w-auto object-contain"
+                style={{ filter: "url(#remove-white)" }}
               />
               <div className="bg-[#1a1a1a] p-8 rounded-[24px] shadow-2xl text-left max-w-md border border-white/5">
                 <p className="text-xl font-bold text-white/90 leading-tight italic">
