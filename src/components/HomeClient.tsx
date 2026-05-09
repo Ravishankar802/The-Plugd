@@ -42,6 +42,8 @@ interface HomeClientProps {
   totalFilteredCount: number;
   currentPage: number;
   pageSize: number;
+  initialIsPaid: boolean;
+  userEmail: string | null;
 }
 
 export default function HomeClient({ 
@@ -49,7 +51,9 @@ export default function HomeClient({
   allAccounts,
   totalFilteredCount,
   currentPage,
-  pageSize
+  pageSize,
+  initialIsPaid,
+  userEmail: serverUserEmail
 }: HomeClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -70,8 +74,8 @@ export default function HomeClient({
     loading: true,
     error: false,
   });
-  const [userEmail, setUserEmail] = useState<string | null>(null);
-  const [isPaidUser, setIsPaidUser] = useState(false);
+  const [userEmail, setUserEmail] = useState<string | null>(serverUserEmail);
+  const [isPaidUser, setIsPaidUser] = useState(initialIsPaid);
   const [userStatuses, setUserStatuses] = useState<Record<number, string>>({});
   
   // Search state

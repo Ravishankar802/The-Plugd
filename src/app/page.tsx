@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import HomeClient from "@/components/HomeClient";
-import { cookies } from "next/headers";
+import { getSession } from "@/lib/auth";
 
 // Server component — fetches accounts at request time (SSR)
 export const dynamic = "force-dynamic";
@@ -30,9 +30,10 @@ export default async function Home({ searchParams }: PageProps) {
   const PAGE_SIZE = 50;
   const skip = (currentPage - 1) * PAGE_SIZE;
 
-  // Get user email for status filtering
-  const cookieStore = await cookies();
-  const userEmail = cookieStore.get("plugd_user_email")?.value || null;
+  // Get user session for auth status and filtering
+  const session = await getSession();
+  const userEmail = session?.email || null;
+  const initialIsPaid = session?.isPaid || session?.isAdmin || false;
 
   // Construct Prisma Filter
   const where: any = {
@@ -127,10 +128,12 @@ export default async function Home({ searchParams }: PageProps) {
         totalFilteredCount={totalCount}
         currentPage={currentPage}
         pageSize={PAGE_SIZE}
+        initialIsPaid={initialIsPaid}
+        userEmail={userEmail}
       />
     );
   } catch (error) {
     console.error("SSR fetch failed:", error);
-    return <HomeClient initialAccounts={[]} allAccounts={[]} totalFilteredCount={0} currentPage={1} pageSize={PAGE_SIZE} />;
+    return <HomeClient initialAccounts={[]} allAccounts={[]} totalFilteredCount={0} currentPage={1} pageSize={PAGE_SIZE} initialIsPaid={initialIsPaid} userEmail={userEmail} />;
   }
 }

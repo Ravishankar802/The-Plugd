@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import StatsClient from "@/components/StatsClient";
-import { cookies } from "next/headers";
+import { getSession } from "@/lib/auth";
 
 export const revalidate = 60;
 
@@ -9,11 +9,12 @@ const FOLLOWERS_RANGES = [
 ];
 
 export default async function StatsPage() {
-  const cookieStore = await cookies();
-  const userEmail = cookieStore.get("plugd_user_email")?.value || null;
+  const session = await getSession();
+  const userEmail = session?.email || null;
+  const isPaidUser = session?.isPaid || session?.isAdmin || false;
 
   // Run all independent queries in parallel
-  const [totalCount, groupedFollowers, allAccounts, user] = await Promise.all([
+  const [totalCount, groupedFollowers, allAccounts] = await Promise.all([
     prisma.account.count({ where: { status: "paid" } }),
     prisma.account.groupBy({
       by: ['followersRange'],
@@ -23,10 +24,7 @@ export default async function StatsPage() {
     prisma.account.findMany({ 
       where: { status: "paid" }, 
       select: { niche: true } 
-    }),
-    userEmail ? prisma.account.findFirst({
-      where: { email: userEmail, status: "paid" }
-    }) : Promise.resolve(null)
+    })
   ]);
 
   // Process follower stats
@@ -47,8 +45,6 @@ export default async function StatsPage() {
   const nicheStats = Object.entries(nicheCounts)
     .map(([niche, count]) => ({ niche, count }))
     .sort((a, b) => b.count - a.count);
-
-  const isPaidUser = !!user;
 
   return (
     <StatsClient 
