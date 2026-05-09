@@ -27,7 +27,7 @@ export default function TermsOfService() {
             <span className="text-3xl font-[800] tracking-[-0.02em] text-[#52525b]">Plugd</span>
           </Link>
           <h1 className="text-[2.5rem] font-bold tracking-tight mb-2 text-foreground">Terms of Service</h1>
-          <p className="text-muted text-[1rem] font-medium tracking-tight">Last updated: May 1, 2026</p>
+          <p className="text-muted text-[1rem] font-medium tracking-tight">Last updated: May 9, 2026</p>
         </div>
 
         {/* Content Sections */}
