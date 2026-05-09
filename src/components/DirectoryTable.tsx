@@ -87,7 +87,7 @@ export default function DirectoryTable({
       <div className="flex flex-col md:flex-row md:items-center justify-between p-6 gap-4">
         <h2 className="text-[1.5rem] font-[800] text-foreground text-glow">Index</h2>
         
-        <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar pb-1 md:pb-0">
+        <div className="flex flex-wrap items-center gap-2.5 pb-1 md:pb-0">
           {/* Followers Range Dropdown */}
           <div className="relative" ref={followersRef}>
             <button 
@@ -104,7 +104,7 @@ export default function DirectoryTable({
             </button>
  
             {followersOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-xl z-[9999] py-1 animate-in fade-in slide-in-from-top-2 duration-200 max-h-[320px] overflow-y-auto no-scrollbar">
+              <div className="absolute left-0 md:right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-xl z-[9999] py-1 animate-in fade-in slide-in-from-top-2 duration-200 max-h-[320px] overflow-y-auto no-scrollbar">
                 {FOLLOWERS_RANGES.map((range) => (
                   <button
                     key={range}
@@ -142,7 +142,7 @@ export default function DirectoryTable({
             </button>
 
             {statusOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-xl z-[9999] py-1 animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="absolute left-0 md:right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-xl z-[9999] py-1 animate-in fade-in slide-in-from-top-2 duration-200">
                 {STATUS_FILTERS.map((filter) => (
                   <div key={filter} className="relative group/filter-item">
                     <button
@@ -193,7 +193,7 @@ export default function DirectoryTable({
             </button>
 
             {sortOpen && (
-              <div className="absolute right-0 mt-2 w-40 bg-card border border-border rounded-lg shadow-xl z-[9999] py-1 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="absolute left-0 md:right-0 mt-2 w-40 bg-card border border-border rounded-lg shadow-xl z-[9999] py-1 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
                 {SORT_OPTIONS.map((option) => (
                   <button
                     key={option}
