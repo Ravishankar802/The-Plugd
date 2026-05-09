@@ -9,20 +9,34 @@ const FOLLOWERS_RANGES = [
 ];
 
 export default async function StatsPage() {
-  const totalCount = await prisma.account.count({ where: { status: "paid" } });
+  const cookieStore = await cookies();
+  const userEmail = cookieStore.get("plugd_user_email")?.value || null;
 
-  // Fetch follower stats
-  const followerStats = await Promise.all(FOLLOWERS_RANGES.map(async range => {
-    const count = await prisma.account.count({ where: { status: "paid", followersRange: range } });
-    return { range, count };
+  // Run all independent queries in parallel
+  const [totalCount, groupedFollowers, allAccounts, user] = await Promise.all([
+    prisma.account.count({ where: { status: "paid" } }),
+    prisma.account.groupBy({
+      by: ['followersRange'],
+      where: { status: "paid" },
+      _count: { _all: true }
+    }),
+    prisma.account.findMany({ 
+      where: { status: "paid" }, 
+      select: { niche: true } 
+    }),
+    userEmail ? prisma.account.findFirst({
+      where: { email: userEmail, status: "paid" }
+    }) : Promise.resolve(null)
+  ]);
+
+  // Process follower stats
+  const followerStatsMap = Object.fromEntries(groupedFollowers.map(g => [g.followersRange, g._count._all]));
+  const followerStats = FOLLOWERS_RANGES.map(range => ({
+    range,
+    count: followerStatsMap[range] || 0
   }));
 
-  // Fetch niche stats
-  const allAccounts = await prisma.account.findMany({ 
-    where: { status: "paid" }, 
-    select: { niche: true } 
-  });
-  
+  // Process niche stats
   const nicheCounts: Record<string, number> = {};
   allAccounts.forEach(acc => {
     acc.niche.forEach(n => {
@@ -34,17 +48,7 @@ export default async function StatsPage() {
     .map(([niche, count]) => ({ niche, count }))
     .sort((a, b) => b.count - a.count);
 
-  // Auth/Payment check for ticker
-  const cookieStore = await cookies();
-  const userEmail = cookieStore.get("plugd_user_email")?.value || null;
-  
-  let isPaidUser = false;
-  if (userEmail) {
-    const user = await prisma.account.findFirst({
-      where: { email: userEmail, status: "paid" }
-    });
-    isPaidUser = !!user;
-  }
+  const isPaidUser = !!user;
 
   return (
     <StatsClient 
