@@ -122,12 +122,12 @@ export default function StatsClient({
 
         {/* Ad Ticker */}
         {!isPaidUser && (
-          <div className="ticker-container w-full max-w-5xl bg-[#111] border border-border rounded-[10px] overflow-hidden py-3 mb-12 cursor-default">
+          <div className="ticker-container w-full max-w-5xl bg-card border border-border rounded-[10px] overflow-hidden py-3 mb-12 cursor-default">
             <div className="ticker-content flex items-center gap-12 px-4">
               {[...Array(10)].map((_, i) => (
                 <div key={i} className="flex items-center gap-3 shrink-0">
                   <span className="text-[#f97316] text-xl leading-none">●</span>
-                  <span className="text-white font-medium text-[15px] tracking-wide">
+                  <span className="text-foreground font-medium text-[15px] tracking-wide">
                     Add or claim your account for $1 to track, save and skip X accounts
                   </span>
                 </div>
@@ -140,7 +140,7 @@ export default function StatsClient({
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 items-start">
           
           {/* Card 1: X Followers Distribution */}
-          <div ref={leftCardRef} className="bg-[#161616] border border-border rounded-2xl p-6 shadow-xl h-fit">
+          <div ref={leftCardRef} className="bg-card border border-border rounded-2xl p-6 shadow-xl h-fit">
             <h2 className="text-xl font-bold mb-6 text-foreground">X Followers</h2>
             <div className="space-y-4">
               {followerStats.map((stat) => {
@@ -166,7 +166,7 @@ export default function StatsClient({
 
           {/* Card 2: Niche Distribution */}
           <div 
-            className="bg-[#161616] border border-border rounded-2xl p-6 shadow-xl flex flex-col"
+            className="bg-card border border-border rounded-2xl p-6 shadow-xl flex flex-col"
             style={{ height: leftCardHeight ? `${leftCardHeight}px` : 'auto' }}
           >
             <h2 className="text-xl font-bold mb-6 text-foreground">Niche</h2>

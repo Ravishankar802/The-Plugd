@@ -460,12 +460,12 @@ export default function HomeClient({
 
       <div className="w-full max-w-5xl mx-auto px-4 md:px-8 mt-4">
         {!isPaidUser && (
-          <div className="ticker-container w-full bg-[#111] border border-border rounded-[10px] overflow-hidden py-3 mb-8 cursor-default">
+          <div className="ticker-container w-full bg-card border border-border rounded-[10px] overflow-hidden py-3 mb-8 cursor-default">
             <div className="ticker-content flex items-center gap-12 px-4">
               {[...Array(10)].map((_, i) => (
                 <div key={i} className="flex items-center gap-3 shrink-0">
                   <span className="text-[#f97316] text-xl leading-none">●</span>
-                  <span className="text-white font-medium text-[15px] tracking-wide">
+                  <span className="text-foreground font-medium text-[15px] tracking-wide">
                     Add or claim your account for $1 to track, save and skip X accounts
                   </span>
                 </div>

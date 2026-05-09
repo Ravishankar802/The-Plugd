@@ -203,9 +203,9 @@ export default function GameClient() {
                   style={{ filter: "url(#remove-white)" }}
                 />
               </div>
-              <div className="relative bg-[#1a1a1a] p-6 md:p-8 rounded-[24px] text-left max-w-md shadow-2xl border border-white/5">
-                <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[10px] border-r-[#1a1a1a] hidden md:block" />
-                <p className="text-lg md:text-xl leading-relaxed font-bold text-white/90 min-h-[6em]">
+              <div className="relative bg-card p-6 md:p-8 rounded-[24px] text-left max-w-md shadow-2xl border border-border">
+                <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[10px] border-r-card hidden md:block" />
+                <p className="text-lg md:text-xl leading-relaxed font-bold text-foreground min-h-[6em]">
                   <TypewriterText text={elonLandingText} speed={25} delay={500} />
                 </p>
               </div>
@@ -231,7 +231,7 @@ export default function GameClient() {
                 <RefreshCcw className="w-4 h-4" /> Restart
               </button>
               
-              <div className="bg-[#1a1a1a] px-8 py-2 rounded-full border border-white/5 shadow-xl">
+              <div className="bg-card px-8 py-2 rounded-full border border-border shadow-xl">
                 <span className="text-xl font-black tabular-nums">{score} / 5</span>
               </div>
               
@@ -283,9 +283,9 @@ export default function GameClient() {
                 className="h-16 md:h-20 w-auto object-contain" 
                 style={{ filter: "url(#remove-white)" }}
               />
-              <div className="bg-[#1a1a1a] p-4 rounded-[20px] shadow-xl max-w-md relative border border-white/5">
-                <div className="absolute left-[-8px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[8px] border-r-[#1a1a1a]" />
-                <p className="text-sm font-bold leading-tight text-white/80">
+              <div className="bg-card p-4 rounded-[20px] shadow-xl max-w-md relative border border-border">
+                <div className="absolute left-[-8px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[8px] border-r-card" />
+                <p className="text-sm font-bold leading-tight text-foreground/80">
                   <TypewriterText text={elonPlayingText} speed={20} />
                 </p>
               </div>
@@ -306,8 +306,8 @@ export default function GameClient() {
                 className="h-[180px] md:h-[220px] w-auto object-contain"
                 style={{ filter: "url(#remove-white)" }}
               />
-              <div className="bg-[#1a1a1a] p-8 rounded-[24px] shadow-2xl text-left max-w-md border border-white/5">
-                <p className="text-xl font-bold text-white/90 leading-tight italic">
+              <div className="bg-card p-8 rounded-[24px] shadow-2xl text-left max-w-md border border-border">
+                <p className="text-xl font-bold text-foreground leading-tight italic">
                   &quot;<TypewriterText text={renderElonReactionText()} speed={30} />&quot;
                 </p>
               </div>
@@ -344,8 +344,8 @@ function GameAccountCard({
   showResult: boolean; 
   onSelect: () => void 
 }) {
-  let cardClass = "bg-[#161616] text-foreground";
-  let borderClass = "border-white/10";
+  let cardClass = "bg-card text-foreground";
+  let borderClass = "border-border";
   
   if (showResult) {
     if (isWinner) borderClass = "border-green-500 ring-8 ring-green-500/20";
@@ -360,8 +360,8 @@ function GameAccountCard({
         </div>
         
         <div className="mb-3">
-          <h3 className="text-lg md:text-xl font-black mb-0.5 leading-none text-white">{account.name}</h3>
-          <p className="text-muted text-sm font-bold opacity-60">@{account.xHandle.replace(/^@+/, '')}</p>
+          <h3 className="text-lg md:text-xl font-black mb-0.5 leading-none text-foreground">{account.name}</h3>
+          <p className="text-muted text-sm font-bold">@{account.xHandle.replace(/^@+/, '')}</p>
         </div>
         
         <p className="text-sm md:text-base mb-4 text-muted font-medium leading-relaxed line-clamp-3 italic">
@@ -370,7 +370,7 @@ function GameAccountCard({
 
         <div className="flex flex-wrap justify-center gap-1.5 mt-auto">
           {account.niche.slice(0, 3).map(n => (
-            <span key={n} className="px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-[0.65rem] font-bold text-muted uppercase tracking-widest">
+            <span key={n} className="px-2.5 py-1 rounded-full bg-accent border border-border text-[0.65rem] font-bold text-muted uppercase tracking-widest">
               {n}
             </span>
           ))}
@@ -388,7 +388,7 @@ function GameAccountCard({
         ) : (
           <button 
             onClick={onSelect}
-            className="w-full py-3.5 bg-white/5 text-white border border-white/10 font-black text-sm rounded-[16px] hover:bg-white/10 transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
+            className="w-full py-3.5 bg-accent text-foreground border border-border font-black text-sm rounded-[16px] hover:bg-accent/80 transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
           >
             This account has more followers →
           </button>
