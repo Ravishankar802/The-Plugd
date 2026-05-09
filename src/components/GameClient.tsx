@@ -157,8 +157,7 @@ export default function GameClient() {
                 <img 
                   src={ELON_IMAGE} 
                   alt="Elon" 
-                  className="h-[300px] md:h-[350px] w-auto brightness-110"
-                  style={{ mixBlendMode: "multiply" }}
+                  className="h-[280px] md:h-[320px] w-auto"
                 />
               </div>
               <div className="relative bg-[#1a1a1a] p-8 md:p-10 rounded-[32px] text-left max-w-md shadow-2xl border border-white/5">
@@ -238,8 +237,7 @@ export default function GameClient() {
               <img 
                 src={ELON_IMAGE} 
                 alt="Elon" 
-                className="h-24 md:h-32 w-auto object-contain brightness-110" 
-                style={{ mixBlendMode: "multiply" }}
+                className="h-20 md:h-24 w-auto object-contain" 
               />
               <div className="bg-[#1a1a1a] p-5 rounded-[24px] shadow-xl max-w-md relative border border-white/5">
                 <div className="absolute left-[-8px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[8px] border-r-[#1a1a1a]" />
@@ -259,8 +257,7 @@ export default function GameClient() {
               <img 
                 src={ELON_IMAGE} 
                 alt="Elon" 
-                className="h-[250px] md:h-[300px] w-auto object-contain brightness-110"
-                style={{ mixBlendMode: "multiply" }}
+                className="h-[200px] md:h-[250px] w-auto object-contain"
               />
               <div className="bg-[#1a1a1a] p-10 rounded-[32px] shadow-2xl text-left max-w-md border border-white/5">
                 <p className="text-2xl font-bold text-white/90 leading-tight italic">
@@ -309,42 +306,42 @@ function GameAccountCard({
   }
 
   return (
-    <div className={`${cardClass} border-2 ${borderClass} rounded-[32px] overflow-hidden transition-all duration-300 flex flex-col shadow-2xl min-h-[580px] group relative`}>
-      <div className="p-8 md:p-10 flex-1 flex flex-col items-center text-center">
-        <div className="relative w-32 h-32 md:w-40 md:h-40 mb-8 shrink-0">
-          <img src={account.avatarUrl} alt="" className="w-full h-full rounded-[32px] border border-white/10 object-cover shadow-lg" />
+    <div className={`${cardClass} border-2 ${borderClass} rounded-[32px] overflow-hidden transition-all duration-300 flex flex-col shadow-2xl min-h-[480px] group relative`}>
+      <div className="p-6 md:p-8 flex-1 flex flex-col items-center text-center">
+        <div className="relative w-24 h-24 md:w-32 md:h-32 mb-6 shrink-0">
+          <img src={account.avatarUrl} alt="" className="w-full h-full rounded-[24px] border border-white/10 object-cover shadow-lg" />
         </div>
         
-        <div className="mb-6">
-          <h3 className="text-2xl md:text-3xl font-black mb-1 leading-none text-white">{account.name}</h3>
-          <p className="text-muted text-lg font-bold opacity-60">@{account.xHandle.replace(/^@+/, '')}</p>
+        <div className="mb-4">
+          <h3 className="text-xl md:text-2xl font-black mb-1 leading-none text-white">{account.name}</h3>
+          <p className="text-muted text-base font-bold opacity-60">@{account.xHandle.replace(/^@+/, '')}</p>
         </div>
         
-        <p className="text-lg md:text-xl mb-8 text-muted font-medium leading-relaxed line-clamp-4 italic">
+        <p className="text-base md:text-lg mb-6 text-muted font-medium leading-relaxed line-clamp-3 italic">
           {account.bio}
         </p>
 
         <div className="flex flex-wrap justify-center gap-2 mt-auto">
           {account.niche.slice(0, 3).map(n => (
-            <span key={n} className="px-4 py-1.5 rounded-full bg-white/5 border border-white/5 text-[0.8rem] font-bold text-muted uppercase tracking-widest">
+            <span key={n} className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[0.7rem] font-bold text-muted uppercase tracking-widest">
               {n}
             </span>
           ))}
         </div>
       </div>
 
-      <div className="px-8 pb-8 mt-auto">
+      <div className="px-6 pb-6 mt-auto">
         {showResult ? (
-          <div className="flex flex-col items-center py-8 bg-white/5 rounded-[24px] border border-white/5 animate-in zoom-in-95 duration-300">
-            <span className="text-[0.65rem] uppercase text-muted font-black tracking-[0.2em] mb-2">Followers</span>
-            <span className={`text-4xl font-black ${isWinner ? "text-green-500" : "text-muted opacity-40"}`}>
+          <div className="flex flex-col items-center py-6 bg-white/5 rounded-[24px] border border-white/5 animate-in zoom-in-95 duration-300">
+            <span className="text-[0.6rem] uppercase text-muted font-black tracking-[0.2em] mb-1">Followers</span>
+            <span className={`text-3xl font-black ${isWinner ? "text-green-500" : "text-muted opacity-40"}`}>
               {account.followersRange}
             </span>
           </div>
         ) : (
           <button 
             onClick={onSelect}
-            className="w-full py-6 bg-white/5 text-white border border-white/10 font-black text-lg rounded-[24px] hover:bg-white/10 transition-all flex items-center justify-center gap-3 active:scale-[0.98]"
+            className="w-full py-4 bg-white/5 text-white border border-white/10 font-black text-base rounded-[24px] hover:bg-white/10 transition-all flex items-center justify-center gap-3 active:scale-[0.98]"
           >
             This builder has more followers →
           </button>
