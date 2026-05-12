@@ -12,6 +12,9 @@ export async function POST(req: Request) {
 
     console.log(`[AUTH] Sending OTP to: ${email}`);
 
+    // Admin bypass
+    const isAdmin = email.toLowerCase() === process.env.NEXT_PUBLIC_ADMIN_EMAIL?.toLowerCase();
+    
     // Check if email exists in Account table with status: 'paid'
     const account = await prisma.account.findFirst({
       where: {
@@ -20,7 +23,7 @@ export async function POST(req: Request) {
       },
     });
 
-    if (!account) {
+    if (!account && !isAdmin) {
       console.warn(`[AUTH] No paid account found for: ${email}`);
       return NextResponse.json(
         { error: "No paid account found for this email" },
