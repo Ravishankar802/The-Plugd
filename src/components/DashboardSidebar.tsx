@@ -64,7 +64,7 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
   ];
 
   return (
-    <aside className="hidden md:flex w-[320px] bg-background border-r border-border flex-col h-screen fixed left-0 top-0 z-30">
+    <aside className="hidden md:flex w-[240px] bg-background border-r border-border flex-col h-screen fixed left-0 top-0 z-30">
       {/* Top: Logo */}
       <div className="px-6 pt-10 pb-6">
         <Link href="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
