@@ -18,6 +18,7 @@ import {
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
+import ReferralModal from "@/components/ReferralModal";
 
 interface Account {
   id: number;
@@ -66,6 +67,7 @@ export default function HomeClient({
   const sortBy = searchParams.get("sort") || "Latest";
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isReferModalOpen, setIsReferModalOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const [searchResults, setSearchResults] = useState<Account[]>([]);
   const [showResults, setShowResults] = useState(false);
@@ -261,6 +263,15 @@ export default function HomeClient({
   const remainingAfterCurrent = totalFilteredCount - (startIndex + pageSize);
   const nextCount = remainingAfterCurrent >= 50 ? 50 : remainingAfterCurrent;
 
+  const handleJoinReferral = () => {
+    setIsReferModalOpen(false);
+    if (!userEmail || !isPaidUser) {
+      setIsModalOpen(true);
+    } else {
+      router.push("/dashboard#refer");
+    }
+  };
+
   return (
     <main className="flex-1 flex flex-col items-center w-full max-w-full overflow-x-hidden">
       <div className="w-full relative flex flex-col items-center pt-2 pb-4">
@@ -387,12 +398,12 @@ export default function HomeClient({
                   Add Account
                 </button>
                 <button
-                  onClick={() => router.push(userEmail ? "/dashboard" : "/login")}
+                  onClick={() => setIsReferModalOpen(true)}
                   suppressHydrationWarning
                   className="h-[48px] w-full md:w-auto bg-pill border border-border text-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-accent active:scale-[0.98] shadow-lg cursor-pointer"
                 >
-                  <LayoutDashboard className="w-5 h-5" />
-                  Dashboard
+                  <TrendingUp className="w-5 h-5" />
+                  Refer & Earn
                 </button>
               </div>
 
@@ -451,7 +462,7 @@ export default function HomeClient({
                 <div key={i} className="flex items-center gap-3 shrink-0">
                   <span className="text-[#f97316] text-xl leading-none">●</span>
                   <span className="text-foreground font-medium text-[15px] tracking-wide">
-                    Add or claim your account for $1 to track, save and skip X accounts
+                    Add or claim your account for $2 to track, save and skip X accounts
                   </span>
                 </div>
               ))}
@@ -507,6 +518,11 @@ export default function HomeClient({
       </div>
 
       <AddAccountModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ReferralModal 
+        isOpen={isReferModalOpen} 
+        onClose={() => setIsReferModalOpen(false)} 
+        onJoin={handleJoinReferral}
+      />
     </main>
   );
 }

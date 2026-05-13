@@ -320,7 +320,7 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
                 onClick={handleSubmit}
                 className="w-full bg-white border border-white text-black font-black text-base py-5 rounded-xl transition-all disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed flex items-center justify-center gap-2.5 hover:bg-white/90 shadow-2xl active:scale-[0.99] uppercase tracking-wider"
               >
-                {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : (isAdmin ? "Add Account Directly" : "Pay $1 to Get Listed")}
+                {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : (isAdmin ? "Add Account Directly" : "Pay $2 to Get Listed")}
               </button>
               
               {success && (

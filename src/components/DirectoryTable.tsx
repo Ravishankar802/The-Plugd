@@ -232,7 +232,7 @@ export default function DirectoryTable({
                   <span>Status</span>
                   {!isPaidUser && (
                     <span className="text-[11px] text-muted-foreground/60 font-normal tracking-tight">
-                      (Unlock for $1)
+                      (Unlock for $2)
                     </span>
                   )}
                 </div>

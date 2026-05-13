@@ -128,7 +128,7 @@ export default function StatsClient({
                 <div key={i} className="flex items-center gap-3 shrink-0">
                   <span className="text-[#f97316] text-xl leading-none">●</span>
                   <span className="text-foreground font-medium text-[15px] tracking-wide">
-                    Add or claim your account for $1 to track, save and skip X accounts
+                    Add or claim your account for $2 to track, save and skip X accounts
                   </span>
                 </div>
               ))}
