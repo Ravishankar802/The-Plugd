@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 export async function GET() {
   try {
     const count = await prisma.account.count({
-      where: { paid: true },
+      where: { status: "paid" },
     });
     
     return NextResponse.json({ count });

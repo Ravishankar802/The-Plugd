@@ -22,6 +22,7 @@ model Account {
   avatarUrl      String?
   isClaimed      Boolean  @default(false)
   referredBy     String?
+  userStatuses   UserAccountStatus[]
 }
 
 model UserAccountStatus {
@@ -30,6 +31,7 @@ model UserAccountStatus {
   accountId Int
   status    String
   createdAt DateTime @default(now())
+  account   Account  @relation(fields: [accountId], references: [id])
 
   @@unique([userId, accountId])
 }
