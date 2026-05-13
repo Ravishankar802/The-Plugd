@@ -1,22 +1,16 @@
 import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
+import { getSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 
 export async function PATCH(req: Request) {
   try {
-    const cookieStore = await cookies();
-    const sessionCookie = cookieStore.get("plugd_session");
+    const session = await getSession();
 
-    if (!sessionCookie) {
+    if (!session || !session.email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const session = JSON.parse(sessionCookie.value);
     const email = session.email;
-
-    if (!email) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
 
     const body = await req.json();
     const { name, xHandle, payoutMethod, payoutDetails } = body;
