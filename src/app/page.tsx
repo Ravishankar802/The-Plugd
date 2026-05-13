@@ -90,8 +90,8 @@ export default async function Home({ searchParams }: PageProps) {
   if (sort === "Oldest") orderBy = { id: "asc" };
 
   try {
-    // Fetch total count, current page accounts, and ALL accounts for instant search
-    const [accounts, totalCount, allAccountsRaw] = await Promise.all([
+    // Fetch total filtered count, current page accounts, ALL accounts for instant search, and absolute total paid count
+    const [accounts, totalCount, allAccountsRaw, totalListedCount] = await Promise.all([
       prisma.account.findMany({
         where,
         orderBy,
@@ -103,7 +103,8 @@ export default async function Home({ searchParams }: PageProps) {
         where: { status: "paid" },
         select: { id: true, name: true, xHandle: true, avatarUrl: true },
         orderBy: { id: "desc" }
-      })
+      }),
+      prisma.account.count({ where: { status: "paid" } })
     ]);
 
     // Apply Shuffle if requested
@@ -134,6 +135,7 @@ export default async function Home({ searchParams }: PageProps) {
         initialAccounts={serialized} 
         allAccounts={allAccounts as any}
         totalFilteredCount={totalCount}
+        totalListedCount={totalListedCount}
         currentPage={currentPage}
         pageSize={PAGE_SIZE}
         initialIsPaid={initialIsPaid}
