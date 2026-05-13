@@ -29,27 +29,35 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
   const navItems = [
     { 
       name: "Profile", 
-      href: "/dashboard", 
+      href: "/dashboard#profile", 
       icon: User, 
       show: hasAccount,
       locked: !hasAccount,
-      upgradeHref: "/dashboard#upgrade-account"
+      upgradeHref: "/?modal=add"
+    },
+    { 
+      name: "CRM", 
+      href: "/dashboard#crm", 
+      icon: LayoutGrid, 
+      show: hasAccount,
+      locked: !hasAccount,
+      upgradeHref: "/?modal=add"
     },
     { 
       name: "Referrals", 
-      href: "/dashboard#refer", 
+      href: "/dashboard#referrals", 
       icon: UserPlus, 
       show: hasPromoter,
       locked: !hasPromoter,
-      upgradeHref: "/dashboard#refer"
+      upgradeHref: "/dashboard#referrals"
     },
     { 
       name: "Earnings", 
-      href: "/dashboard#refer", 
+      href: "/dashboard#earnings", 
       icon: Wallet, 
       show: hasPromoter,
       locked: !hasPromoter,
-      upgradeHref: "/dashboard#refer"
+      upgradeHref: "/dashboard#earnings"
     },
   ];
 
