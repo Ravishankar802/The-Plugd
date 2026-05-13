@@ -23,7 +23,6 @@ model Account {
   isClaimed      Boolean  @default(false)
   referredBy     String?
   userStatuses   UserAccountStatus[]
-  referral       Referral?
 }
 
 model UserAccountStatus {
@@ -71,20 +70,21 @@ model Conversion {
 }
 
 model Promoter {
-  id                Int                 @id @default(autoincrement())
-  email             String              @unique
-  name              String
-  xHandle           String?
-  referralCode      String              @unique
-  totalEarned       Float               @default(0)
-  pendingPayout     Float               @default(0)
-  totalClicks       Int                 @default(0)
-  totalConversions  Int                 @default(0)
-  payoutEmail       String?
-  createdAt         DateTime            @default(now())
-  Conversion        Conversion[]
+  id               Int      @id @default(autoincrement())
+  email            String   @unique
+  name             String
+  xHandle          String?
+  referralCode     String   @unique
+  payoutMethod     String?
+  payoutDetails    String?
+  totalEarned      Float    @default(0)
+  pendingPayout    Float    @default(0)
+  totalClicks      Int      @default(0)
+  totalConversions Int      @default(0)
+  createdAt        DateTime @default(now())
+  Conversion       Conversion[]
   WithdrawalRequest WithdrawalRequest[]
-  Referral          Referral[]
+  Referral         Referral[]
 }
 
 model Startup {
@@ -115,12 +115,13 @@ model WithdrawalRequest {
   Promoter      Promoter  @relation(fields: [promoterId], references: [id])
 }
 model Referral {
-  id           Int      @id @default(autoincrement())
-  promoterId   Int
-  accountId    Int      @unique
-  referralCode String
-  amount       Float    @default(1.0)
-  createdAt    DateTime @default(now())
-  Promoter     Promoter @relation(fields: [promoterId], references: [id])
-  Account      Account  @relation(fields: [accountId], references: [id])
+  id            Int       @id @default(autoincrement())
+  referralCode  String
+  promoterEmail String
+  convertedAt   DateTime?
+  amountEarned  Float?
+  paymentId     String?
+  status        String    @default("clicked")
+  createdAt     DateTime  @default(now())
+  Promoter      Promoter? @relation(fields: [promoterEmail], references: [email])
 }
