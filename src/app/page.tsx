@@ -13,6 +13,7 @@ interface PageProps {
     followers?: string;
     status?: string;
     sort?: string;
+    ref?: string;
   }>;
 }
 
