@@ -541,7 +541,7 @@ export default function DashboardProfileView() {
         <div className="space-y-8">
           <div>
             <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Referrals</h1>
-            <p className="text-muted text-[1rem] mt-1.5 font-normal">Share Plugd and earn rewards for every referral.</p>
+            <p className="text-muted text-[1rem] mt-1.5 font-normal">Share Plugd and earn $1 for every successful referral.</p>
           </div>
 
           {(!hasPromoter && !isAdmin) ? (
@@ -678,7 +678,7 @@ export default function DashboardProfileView() {
         <div className="space-y-8">
           <div>
             <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Your Earnings</h1>
-            <p className="text-muted text-[1rem] mt-1.5 font-normal">Track your rewards and request payouts.</p>
+            <p className="text-muted text-[1rem] mt-1.5 font-normal">Track your earnings and request payouts.</p>
           </div>
 
           {(!hasPromoter && !isAdmin) ? (
