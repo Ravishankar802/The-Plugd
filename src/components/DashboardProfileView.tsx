@@ -41,6 +41,7 @@ export default function DashboardProfileView() {
   const [copied, setCopied] = useState<string | null>(null);
   const [hasAccount, setHasAccount] = useState(false);
   const [hasPromoter, setHasPromoter] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [promoterData, setPromoterData] = useState<any>(null);
   const [isReferModalOpen, setIsReferModalOpen] = useState(false);
   const [crmData, setCrmData] = useState<any[]>([]);
@@ -57,6 +58,7 @@ export default function DashboardProfileView() {
           const data = await res.json();
           setHasAccount(data.hasAccount);
           setHasPromoter(data.hasPromoter);
+          setIsAdmin(data.isAdmin);
           setPromoterData(data.promoterData);
           setAccount(data.accountData);
         } else {
@@ -157,7 +159,7 @@ export default function DashboardProfileView() {
       {/* Profile Section */}
       {activeSection === "profile" && (
         <>
-          {hasAccount ? (
+          {(hasAccount || isAdmin) ? (
             <>
               <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
@@ -377,7 +379,7 @@ export default function DashboardProfileView() {
             <p className="text-muted text-[1rem] mt-1.5 font-normal">Manage the accounts you&apos;ve followed, saved, or skipped.</p>
           </div>
 
-          {!hasAccount ? (
+          {(!hasAccount && !isAdmin) ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
               <div className="w-20 h-20 rounded-3xl bg-foreground/5 flex items-center justify-center mb-6">
                 <Lock className="w-10 h-10 text-muted" />
@@ -444,7 +446,7 @@ export default function DashboardProfileView() {
             <p className="text-muted text-[1rem] mt-1.5 font-normal">Share Plugd and earn rewards for every referral.</p>
           </div>
 
-          {!hasPromoter ? (
+          {(!hasPromoter && !isAdmin) ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
               <div className="w-20 h-20 rounded-3xl bg-[#f97316]/10 flex items-center justify-center mb-6">
                 <Gift className="w-10 h-10 text-[#f97316]" />
@@ -527,7 +529,7 @@ export default function DashboardProfileView() {
             <p className="text-muted text-[1rem] mt-1.5 font-normal">Track your rewards and request payouts.</p>
           </div>
 
-          {!hasPromoter ? (
+          {(!hasPromoter && !isAdmin) ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
               <div className="w-20 h-20 rounded-3xl bg-[#f97316]/10 flex items-center justify-center mb-6">
                 <Wallet className="w-10 h-10 text-[#f97316]" />

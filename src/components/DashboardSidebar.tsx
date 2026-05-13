@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { User, LayoutGrid, LogOut, ArrowRight, UserPlus, Wallet, Lock, Plus as PlusIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -15,6 +15,8 @@ interface DashboardSidebarProps {
 export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromoter }: DashboardSidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const currentTab = searchParams.get("tab") || "profile";
 
   const handleLogout = async () => {
     try {
@@ -29,34 +31,38 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
   const navItems = [
     { 
       name: "Profile", 
+      id: "profile",
       href: "/dashboard?tab=profile", 
       icon: User, 
-      show: hasAccount,
-      locked: !hasAccount,
+      show: hasAccount || isAdmin,
+      locked: !hasAccount && !isAdmin,
       upgradeHref: "/?modal=add"
     },
     { 
       name: "Index", 
+      id: "index",
       href: "/dashboard?tab=index", 
       icon: LayoutGrid, 
-      show: hasAccount,
-      locked: !hasAccount,
+      show: hasAccount || isAdmin,
+      locked: !hasAccount && !isAdmin,
       upgradeHref: "/?modal=add"
     },
     { 
       name: "Referrals", 
+      id: "referrals",
       href: "/dashboard?tab=referrals", 
       icon: UserPlus, 
-      show: hasPromoter,
-      locked: !hasPromoter,
+      show: hasPromoter || isAdmin,
+      locked: !hasPromoter && !isAdmin,
       upgradeHref: "/dashboard?tab=referrals"
     },
     { 
       name: "Earnings", 
+      id: "earnings",
       href: "/dashboard?tab=earnings", 
       icon: Wallet, 
-      show: hasPromoter,
-      locked: !hasPromoter,
+      show: hasPromoter || isAdmin,
+      locked: !hasPromoter && !isAdmin,
       upgradeHref: "/dashboard?tab=earnings"
     },
   ];
@@ -93,7 +99,7 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
       <nav className="flex-1 px-5 space-y-1">
         {navItems.map((item) => {
           const Icon = item.icon;
-          const isActive = pathname === item.href && !item.locked;
+          const isActive = currentTab === item.id;
           
           if (!item.show) {
             return (
@@ -117,10 +123,10 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all ${
+              className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all border ${
                 isActive 
-                  ? "bg-foreground/[0.05] border border-foreground/[0.08] text-foreground shadow-sm backdrop-blur-md" 
-                  : "text-muted hover:text-foreground"
+                  ? "bg-foreground/[0.05] border-foreground/[0.08] text-foreground shadow-sm backdrop-blur-md" 
+                  : "text-muted hover:text-foreground border-transparent"
               }`}
             >
               <Icon size={18} className={isActive ? "text-foreground" : "text-muted"} />

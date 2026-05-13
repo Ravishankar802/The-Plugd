@@ -81,6 +81,7 @@ export default function HomeClient({
   });
   const [userEmail, setUserEmail] = useState<string | null>(serverUserEmail);
   const [isPaidUser, setIsPaidUser] = useState(initialIsPaid);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [userStatuses, setUserStatuses] = useState<Record<number, string>>({});
   
   // Search state
@@ -159,7 +160,8 @@ export default function HomeClient({
         if (meRes.ok) {
           const userData = await meRes.json();
           setUserEmail(userData.email);
-          setIsPaidUser(userData.isPaid);
+          setIsPaidUser(userData.hasAccount);
+          setIsAdmin(userData.isAdmin);
 
           // Fetch Statuses
           const statusRes = await fetch("/api/status");
@@ -460,7 +462,7 @@ export default function HomeClient({
       </div>
 
       <div className="w-full max-w-5xl mx-auto px-4 md:px-8 mt-4">
-        {!isPaidUser && (
+        {(!isPaidUser && !isAdmin) && (
           <div className="ticker-container w-full bg-card border border-border rounded-[10px] overflow-hidden py-3 mb-8 cursor-default">
             <div className="ticker-content flex items-center gap-12 px-4">
               {[...Array(10)].map((_, i) => (
@@ -485,7 +487,7 @@ export default function HomeClient({
           onShuffle={() => updateUrl({ sort: "Shuffle", page: "1" })}
           startIndex={startIndex}
           userEmail={userEmail}
-          isPaidUser={isPaidUser}
+          isPaidUser={isPaidUser || isAdmin}
           userStatuses={userStatuses}
           setUserStatuses={setUserStatuses}
           selectedStatusFilter={selectedStatusFilter}

@@ -26,12 +26,12 @@ export default async function DashboardLayout({
     prisma.promoter.findUnique({ where: { email: session.email } })
   ]);
 
-  if (!account && !promoter) {
-    redirect("/");
-  }
-
   const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "ravx003@gmail.com";
   const isAdmin = session.email.toLowerCase() === adminEmail.toLowerCase();
+
+  if (!account && !promoter && !isAdmin) {
+    redirect("/");
+  }
 
   return (
     <div className="min-h-screen bg-background flex">
