@@ -287,29 +287,29 @@ export default function HomeClient({
           <div className="max-w-[800px] w-full">
             <Header />
 
-            <div className="w-full flex items-center justify-center my-8 md:my-12 animate-in fade-in slide-in-from-top-2 duration-700">
-              <div className="inline-flex items-center bg-pill/80 backdrop-blur-sm border border-border/80 rounded-full px-8 md:px-10 py-4 md:py-5 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:border-border/100 hover:bg-pill transition-all group relative overflow-hidden">
+            <div className="w-full flex items-center justify-center my-8 md:my-10 animate-in fade-in slide-in-from-top-2 duration-700">
+              <div className="inline-flex items-center bg-pill/80 backdrop-blur-sm border border-border/80 rounded-full px-7 md:px-9 py-3 md:py-4 shadow-[0_4px_20px_rgb(0,0,0,0.1)] hover:border-border/100 hover:bg-pill transition-all group relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite] pointer-events-none" />
                 
                 <div className="flex items-center gap-3 relative z-10">
-                  <span className="text-[0.6rem] md:text-[0.65rem] text-muted uppercase tracking-[0.15em] font-bold">Earn per referral</span>
-                  <span className="text-[1rem] md:text-[1.2rem] font-black text-foreground">$1</span>
+                  <span className="text-[0.6rem] md:text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Earn per referral</span>
+                  <span className="text-[0.9rem] md:text-[1.1rem] font-bold text-foreground">$1</span>
                 </div>
                 
-                <div className="w-[1px] h-6 bg-border/60 mx-6 md:mx-8 shrink-0 relative z-10" />
+                <div className="w-[1px] h-5 bg-border/60 mx-5 md:mx-8 shrink-0 relative z-10" />
                 
-                <div className="flex items-center gap-3 relative z-10">
-                  <span className="text-[0.6rem] md:text-[0.65rem] text-muted uppercase tracking-[0.15em] font-bold">Listed accounts</span>
-                  <span className="text-[1rem] md:text-[1.2rem] font-black text-foreground">
+                <div className="flex items-center gap-2.5 md:gap-3 relative z-10">
+                  <span className="text-[0.6rem] md:text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Listed accounts</span>
+                  <span className="text-[0.9rem] md:text-[1.1rem] font-bold text-foreground">
                     {totalListedCount}
                   </span>
                 </div>
                 
-                <div className="w-[1px] h-6 bg-border/60 mx-6 md:mx-8 shrink-0 relative z-10" />
+                <div className="w-[1px] h-5 bg-border/60 mx-5 md:mx-8 shrink-0 relative z-10" />
                 
                 <div className="flex items-center gap-3 relative z-10">
-                  <span className="text-[0.6rem] md:text-[0.65rem] text-muted uppercase tracking-[0.15em] font-bold">Payouts</span>
-                  <span className="text-[1rem] md:text-[1.2rem] font-black text-foreground">Within 48h</span>
+                  <span className="text-[0.6rem] md:text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Payouts</span>
+                  <span className="text-[0.9rem] md:text-[1.1rem] font-bold text-foreground">Within 48h</span>
                 </div>
               </div>
             </div>
