@@ -31,6 +31,22 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
   const isDark = currentTheme === 'dark';
 
   const handleJoin = async () => {
+    // Admin Bypass Check
+    const adminEmail = "ravx003@gmail.com";
+    if (userEmail === adminEmail) {
+      setLoading(true);
+      try {
+        const res = await fetch("/api/referral/join-admin", { method: "POST" });
+        if (res.ok) {
+          window.location.reload();
+          return;
+        }
+      } catch (err) {
+        console.error("Admin bypass failed:", err);
+      }
+      setLoading(false);
+    }
+
     if (!userEmail && !showEmailInput) {
       setShowEmailInput(true);
       return;
