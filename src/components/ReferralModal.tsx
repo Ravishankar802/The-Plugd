@@ -43,7 +43,17 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
 
     setLoading(true);
     const productId = process.env.NEXT_PUBLIC_DODO_PROMOTER_PRODUCT_ID || "pdt_0NejlJx2mdXJSOgzLprt5";
-    const checkoutUrl = `https://checkout.dodopayments.com/buy/${productId}?quantity=1&redirect_url=${encodeURIComponent('https://the-plugd.vercel.app/dashboard')}&customer_email=${encodeURIComponent(email)}&metadata_type=promoter&metadata_email=${encodeURIComponent(email)}`;
+    
+    // Debug logs as requested
+    console.log("DODO_DEBUG: Promoter Product ID from Env:", process.env.NEXT_PUBLIC_DODO_PROMOTER_PRODUCT_ID);
+    console.log("DODO_DEBUG: Final Product ID being used:", productId);
+    
+    // Build URL exactly like AddAccountModal
+    const redirectUrl = 'https://the-plugd.vercel.app/dashboard';
+    const checkoutUrl = `https://checkout.dodopayments.com/buy/${productId}?quantity=1&redirect_url=${encodeURIComponent(redirectUrl)}&showDiscounts=false&customer_email=${encodeURIComponent(email)}&metadata_type=promoter&metadata_email=${encodeURIComponent(email)}`;
+    
+    console.log("DODO_DEBUG: Constructed Checkout URL:", checkoutUrl);
+    
     window.location.href = checkoutUrl;
   };
 
