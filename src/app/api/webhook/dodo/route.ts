@@ -112,10 +112,12 @@ export async function POST(req: Request) {
               }),
               prisma.referral.create({
                 data: {
-                  promoterId: promoter.id,
-                  accountId: account.id,
                   referralCode: referralCode,
-                  amount: 1.0
+                  promoterEmail: promoter.email,
+                  status: "converted",
+                  amountEarned: 1.0,
+                  paymentId: payment.payment_id,
+                  convertedAt: new Date()
                 }
               })
             ]);
