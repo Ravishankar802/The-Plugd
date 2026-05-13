@@ -46,8 +46,11 @@ export async function POST(req: Request) {
           where: { email },
           create: {
             email,
-            name: email.split("@")[0],
+            name: metadata.metadata_name || email.split("@")[0],
+            xHandle: metadata.metadata_xHandle || null,
             referralCode: generateReferralCode(email),
+            payoutMethod: metadata.metadata_payoutMethod || null,
+            payoutDetails: metadata.metadata_payoutDetails || null,
             totalEarned: 0,
             pendingPayout: 0,
             totalClicks: 0,
