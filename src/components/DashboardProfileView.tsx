@@ -41,8 +41,10 @@ export default function DashboardProfileView() {
   const [hasAccount, setHasAccount] = useState(false);
   const [hasPromoter, setHasPromoter] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [promoterData, setPromoterData] = useState<any>(null);
   const [isReferModalOpen, setIsReferModalOpen] = useState(false);
+  const [promoterData, setPromoterData] = useState<any>(null);
+  const [promoterSaving, setPromoterSaving] = useState(false);
+  const [promoterSuccess, setPromoterSuccess] = useState(false);
 
   // Determine active section from tab param
   const activeSection = ["profile", "referrals", "earnings"].includes(tab) ? tab : "profile";
@@ -106,6 +108,36 @@ export default function DashboardProfileView() {
     }
   };
 
+  const handlePromoterSave = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPromoterSaving(true);
+    setPromoterSuccess(false);
+
+    try {
+      const res = await fetch("/api/promoters/me", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: promoterData.name,
+          xHandle: promoterData.xHandle,
+          payoutMethod: promoterData.payoutMethod,
+          payoutDetails: promoterData.payoutDetails
+        })
+      });
+
+      if (res.ok) {
+        setPromoterSuccess(true);
+        setTimeout(() => setPromoterSuccess(false), 3000);
+      } else {
+        alert("Failed to save changes.");
+      }
+    } catch (err) {
+      alert("Failed to save changes.");
+    } finally {
+      setPromoterSaving(false);
+    }
+  };
+
   const copyToClipboard = (text: string, id: string) => {
     navigator.clipboard.writeText(text);
     setCopied(id);
@@ -136,6 +168,7 @@ export default function DashboardProfileView() {
       {/* Profile Section */}
       {activeSection === "profile" && (
         <>
+          {/* Account Profile Section */}
           {(hasAccount || isAdmin) ? (
             <>
               <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -163,7 +196,7 @@ export default function DashboardProfileView() {
                 </div>
               )}
 
-              <div className="bg-pill border border-border rounded-[16px] p-10 shadow-2xl">
+              <div className="bg-pill border border-border rounded-[16px] p-10 shadow-2xl mb-12">
                 <form onSubmit={handleSave} className="space-y-10">
                   {/* Profile Picture */}
                   <div className="flex flex-col gap-6">
@@ -307,21 +340,26 @@ export default function DashboardProfileView() {
                     </div>
                   </div>
 
-                  <div className="pt-4">
+                  <div className="pt-6 border-t border-border">
                     <button
-                      disabled={saving}
                       type="submit"
-                      className="w-full bg-white text-black font-[700] text-[1rem] py-[0.85rem] rounded-xl hover:bg-white/90 transition-all flex items-center justify-center gap-3 disabled:opacity-50 active:scale-[0.99] shadow-xl"
+                      disabled={saving}
+                      className="w-full md:w-auto min-w-[240px] bg-white text-black font-black text-lg py-5 px-12 rounded-xl transition-all hover:bg-white/90 shadow-2xl active:scale-[0.99] uppercase tracking-wider disabled:opacity-50 flex items-center justify-center gap-3"
                     >
-                      {saving ? <Loader2 size={24} className="animate-spin" /> : (
+                      {saving ? (
+                        <>
+                          <Loader2 className="w-6 h-6 animate-spin" />
+                          Saving Changes...
+                        </>
+                      ) : (
                         <>
                           <Save size={20} />
-                          <span>Save Changes</span>
+                          Save Changes
                         </>
                       )}
                     </button>
                     {success && (
-                      <p className="text-green-500 text-center mt-4 font-bold flex items-center justify-center gap-2 animate-in fade-in slide-in-from-top-2">
+                      <p className="text-green-500 text-center md:text-left mt-4 font-bold flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
                         <Check size={20} />
                         Profile updated successfully
                       </p>
@@ -330,7 +368,7 @@ export default function DashboardProfileView() {
                 </form>
               </div>
             </>
-          ) : (
+          ) : !hasPromoter && !isAdmin && (
             <div className="flex flex-col items-center justify-center py-20 text-center">
               <div className="w-20 h-20 rounded-3xl bg-foreground/5 flex items-center justify-center mb-6">
                 <Lock className="w-10 h-10 text-muted" />
@@ -343,6 +381,154 @@ export default function DashboardProfileView() {
               >
                 Get Listed for $2 <ArrowRight size={18} />
               </button>
+            </div>
+          )}
+
+          {/* Promoter Settings Section */}
+          {(hasPromoter || isAdmin) && promoterData && (
+            <div className="mt-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
+              <div className="mb-8">
+                <h2 className="text-[2rem] font-[700] text-foreground leading-tight tracking-tight">Promoter Settings</h2>
+                <p className="text-muted text-[1rem] mt-1.5 font-normal">Manage your identity and payout preferences.</p>
+              </div>
+
+              <div className="bg-pill border border-border rounded-[16px] p-10 shadow-2xl">
+                <form onSubmit={handlePromoterSave} className="space-y-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Name */}
+                    <div className="flex flex-col gap-3">
+                      <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Full Name</label>
+                      <input
+                        required
+                        type="text"
+                        value={promoterData.name || ""}
+                        onChange={(e) => setPromoterData({ ...promoterData, name: e.target.value })}
+                        className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                      />
+                    </div>
+
+                    {/* Email (Read-only) */}
+                    <div className="flex flex-col gap-3">
+                      <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Email Address</label>
+                      <div className="w-full bg-background border border-border rounded-xl px-5 py-4 text-muted/60 text-[1rem] opacity-70 cursor-not-allowed">
+                        {promoterData.email}
+                      </div>
+                      <p className="text-[0.7rem] text-muted/40 font-bold uppercase tracking-wider ml-1 mt-1">Email cannot be changed.</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* X Handle */}
+                    <div className="flex flex-col gap-3">
+                      <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">X Handle</label>
+                      <div className="relative">
+                        <span className="absolute left-5 top-1/2 -translate-y-1/2 text-muted/60 font-medium text-[1rem]">@</span>
+                        <input
+                          type="text"
+                          value={promoterData.xHandle?.replace(/^@+/, "") || ""}
+                          onChange={(e) => setPromoterData({ ...promoterData, xHandle: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl pl-11 pr-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Member Since */}
+                    <div className="flex flex-col gap-3">
+                      <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Member since</label>
+                      <div className="w-full bg-background border border-border rounded-xl px-5 py-4 text-muted/60 text-[1rem] opacity-70 font-medium">
+                        {new Date(promoterData.createdAt).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Payout Method Toggle */}
+                  <div className="flex flex-col gap-3">
+                    <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Payout Method</label>
+                    <div className="flex gap-3 max-w-sm">
+                      <button
+                        type="button"
+                        onClick={() => setPromoterData({ ...promoterData, payoutMethod: "PayPal" })}
+                        className={`flex-1 py-4 rounded-xl border font-bold transition-all ${
+                          promoterData.payoutMethod === "PayPal" 
+                          ? "bg-[#f97316] text-white border-[#f97316] shadow-lg shadow-orange-500/20" 
+                          : "bg-background text-muted border-border hover:border-muted"
+                        }`}
+                      >
+                        PayPal
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setPromoterData({ ...promoterData, payoutMethod: "UPI" })}
+                        className={`flex-1 py-4 rounded-xl border font-bold transition-all ${
+                          promoterData.payoutMethod === "UPI" 
+                          ? "bg-[#f97316] text-white border-[#f97316] shadow-lg shadow-orange-500/20" 
+                          : "bg-background text-muted border-border hover:border-muted"
+                        }`}
+                      >
+                        UPI
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Payout Details */}
+                  <div className="flex flex-col gap-3">
+                    <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Payout Details</label>
+                    <input
+                      required
+                      type="text"
+                      placeholder={promoterData.payoutMethod === "PayPal" ? "Your PayPal email" : "Your UPI ID (e.g. name@upi)"}
+                      value={promoterData.payoutDetails || ""}
+                      onChange={(e) => setPromoterData({ ...promoterData, payoutDetails: e.target.value })}
+                      className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                    />
+                  </div>
+
+                  {/* Referral Code */}
+                  <div className="flex flex-col gap-3">
+                    <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Your Referral Code</label>
+                    <div className="flex gap-3">
+                      <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-[#f97316] font-mono font-bold text-[1.1rem] shadow-inner flex items-center">
+                        {promoterData.referralCode}
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => copyToClipboard(promoterData.referralCode, 'code')}
+                        className="px-8 rounded-xl bg-accent border border-border text-foreground font-bold hover:bg-accent/80 transition-all flex items-center gap-2.5 active:scale-[0.98]"
+                      >
+                        {copied === 'code' ? <Check size={18} className="text-green-500" /> : <Copy size={18} />}
+                        {copied === 'code' ? "Copied" : "Copy"}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Save Button */}
+                  <div className="pt-8 border-t border-border">
+                    <button
+                      type="submit"
+                      disabled={promoterSaving}
+                      className="w-full md:w-auto min-w-[260px] bg-[#f97316] text-white font-black text-lg py-5 px-12 rounded-xl transition-all hover:bg-[#f97316]/90 shadow-2xl active:scale-[0.99] uppercase tracking-wider disabled:opacity-50 flex items-center justify-center gap-3"
+                    >
+                      {promoterSaving ? (
+                        <>
+                          <Loader2 className="w-6 h-6 animate-spin" />
+                          Saving...
+                        </>
+                      ) : (
+                        <>
+                          <Save size={20} />
+                          Save Changes
+                        </>
+                      )}
+                    </button>
+                    {promoterSuccess && (
+                      <p className="text-green-500 text-center md:text-left mt-4 font-bold flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
+                        <Check size={20} />
+                        Changes saved successfully!
+                      </p>
+                    )}
+                  </div>
+                </form>
+              </div>
             </div>
           )}
         </>
