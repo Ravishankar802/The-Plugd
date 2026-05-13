@@ -25,10 +25,10 @@ export default function Header() {
         <span className="text-3xl font-[800] tracking-[-0.02em] text-foreground">Plugd</span>
       </Link>
       <h1 className="text-[clamp(1.75rem,4.5vw,2.85rem)] font-[800] tracking-[-0.035em] leading-[1.1] text-foreground mb-4 relative z-10">
-        Just follow each other and Grow on X
+        Grow on X. Get paid for it.
       </h1>
       <p className="text-muted text-[0.875rem] md:text-[1.25rem] font-normal max-w-[340px] md:max-w-2xl leading-tight md:leading-relaxed mx-auto relative z-10 px-4">
-        Browse X accounts by niche and follower count. Keep track of who you&apos;ve followed. Save the ones you want to follow later.
+        Share Plugd. Earn $1 for every person who joins.
       </p>
     </header>
   );

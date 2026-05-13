@@ -285,17 +285,23 @@ export default function HomeClient({
           <div className="max-w-[800px] w-full">
             <Header />
 
-            <div className="w-full flex flex-col items-center justify-center my-4 md:my-8 animate-in fade-in slide-in-from-top-2 duration-500">
-              <span className="font-mono text-[0.65rem] md:text-[0.7rem] text-muted uppercase tracking-[0.12em] font-[700] mb-1">
-                TOTAL ACCOUNTS LISTED
-              </span>
-              <div className="flex flex-col items-center gap-0.5 md:gap-1">
-                <span className="text-foreground text-[32px] md:text-[56px] font-extrabold leading-none tracking-tight">
-                  {stats.loading ? "..." : stats.count}
-                </span>
-                <div className="flex items-center gap-1.5 md:gap-2">
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#f97316] pulse" />
-                  <span className="text-[#f97316] text-[0.75rem] md:text-[0.875rem] font-bold uppercase tracking-wider">live</span>
+            <div className="w-full flex items-center justify-center my-6 md:my-10 animate-in fade-in slide-in-from-top-2 duration-500">
+              <div className="inline-flex items-center bg-pill border border-border rounded-full px-6 py-3 shadow-sm whitespace-nowrap overflow-x-auto no-scrollbar max-w-full">
+                <div className="flex items-center gap-2">
+                  <span className="text-[0.75rem] text-muted">Earn per referral</span>
+                  <span className="text-[0.75rem] font-bold text-foreground">$1</span>
+                </div>
+                <div className="w-[1px] h-3 bg-border mx-4 md:mx-6 shrink-0" />
+                <div className="flex items-center gap-2">
+                  <span className="text-[0.75rem] text-muted">Listed accounts</span>
+                  <span className="text-[0.75rem] font-bold text-foreground">
+                    {stats.loading ? "..." : stats.count}
+                  </span>
+                </div>
+                <div className="w-[1px] h-3 bg-border mx-4 md:mx-6 shrink-0" />
+                <div className="flex items-center gap-2">
+                  <span className="text-[0.75rem] text-muted">Payouts</span>
+                  <span className="text-[0.75rem] font-bold text-foreground">Within 48h</span>
                 </div>
               </div>
             </div>
