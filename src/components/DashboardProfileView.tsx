@@ -478,20 +478,20 @@ export default function DashboardProfileView() {
                     />
                   </div>
 
-                  {/* Referral Code */}
+                  {/* Referral Link */}
                   <div className="flex flex-col gap-3">
-                    <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Your Referral Code</label>
+                    <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Your Referral Link</label>
                     <div className="flex gap-3">
-                      <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-[#f97316] font-mono font-bold text-[1.1rem] shadow-inner flex items-center">
-                        {promoterData.referralCode}
+                      <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-[#f97316] font-mono font-bold text-[1rem] shadow-inner flex items-center truncate">
+                        https://the-plugd.vercel.app?ref={promoterData.referralCode}
                       </div>
                       <button
                         type="button"
-                        onClick={() => copyToClipboard(promoterData.referralCode, 'code')}
-                        className="px-8 rounded-xl bg-accent border border-border text-foreground font-bold hover:bg-accent/80 transition-all flex items-center gap-2.5 active:scale-[0.98]"
+                        onClick={() => copyToClipboard(`https://the-plugd.vercel.app?ref=${promoterData.referralCode}`, 'link')}
+                        className="px-8 rounded-xl bg-accent border border-border text-foreground font-bold hover:bg-accent/80 transition-all flex items-center gap-2.5 active:scale-[0.98] shrink-0"
                       >
-                        {copied === 'code' ? <Check size={18} className="text-green-500" /> : <Copy size={18} />}
-                        {copied === 'code' ? "Copied" : "Copy"}
+                        {copied === 'link' ? <Check size={18} className="text-green-500" /> : <Copy size={18} />}
+                        {copied === 'link' ? "Copied" : "Copy Link"}
                       </button>
                     </div>
                   </div>

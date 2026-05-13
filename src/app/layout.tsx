@@ -47,6 +47,8 @@ export const metadata: Metadata = {
 };
 
 import { ThemeProvider } from "@/components/ThemeProvider";
+import RefTracker from "@/components/RefTracker";
+import { Suspense } from "react";
 
 export default function RootLayout({
   children,
@@ -65,6 +67,9 @@ export default function RootLayout({
           <div className="flex flex-col min-h-screen">
             {children}
           </div>
+          <Suspense fallback={null}>
+            <RefTracker />
+          </Suspense>
           <Analytics />
         </ThemeProvider>
       </body>
