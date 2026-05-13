@@ -409,6 +409,8 @@ export default function HomeClient({
               </div>
 
               <div className="flex items-center justify-center gap-2 mb-6 text-[13px] text-[#666] -mt-2">
+                <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
+                <span className="select-none">·</span>
                 <Link href="/stats" className="hover:text-foreground transition-colors">Stats</Link>
                 <span className="select-none">·</span>
                 <Link href="/100-vs-100k" className="hover:text-foreground transition-colors">100 vs 100K</Link>
