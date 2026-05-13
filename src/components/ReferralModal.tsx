@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { X, ArrowRight, Link as LinkIcon, DollarSign, Infinity, Gift, Sparkles, Loader2, Mail } from "lucide-react";
+import { useTheme } from "next-themes";
 
 interface ReferralModalProps {
   isOpen: boolean;
@@ -10,11 +11,14 @@ interface ReferralModalProps {
 }
 
 export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralModalProps) {
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState("");
   const [showEmailInput, setShowEmailInput] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (userEmail) {
       setEmail(userEmail);
     }
@@ -22,25 +26,24 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
 
   if (!isOpen) return null;
 
+  // Use resolvedTheme to handle 'system' preference
+  const currentTheme = mounted ? resolvedTheme : 'dark';
+  const isDark = currentTheme === 'dark';
+
   const handleJoin = async () => {
-    // If not logged in and email input not shown yet, show it
     if (!userEmail && !showEmailInput) {
       setShowEmailInput(true);
       return;
     }
 
-    // Validate email if input is shown
     if (showEmailInput && (!email || !email.includes("@"))) {
       alert("Please enter a valid email to continue.");
       return;
     }
 
     setLoading(true);
-    
-    // Redirect to Dodo Checkout
     const productId = process.env.NEXT_PUBLIC_DODO_PROMOTER_PRODUCT_ID || "pdt_0NejlJx2mdXJSOgzLprt5";
     const checkoutUrl = `https://checkout.dodopayments.com/buy/${productId}?quantity=1&redirect_url=${encodeURIComponent('https://the-plugd.vercel.app/dashboard')}&customer_email=${encodeURIComponent(email)}&metadata_type=promoter&metadata_email=${encodeURIComponent(email)}`;
-    
     window.location.href = checkoutUrl;
   };
 
@@ -48,17 +51,25 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-hidden">
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-background/80 backdrop-blur-md animate-in fade-in duration-300" 
+        className="absolute inset-0 bg-black/60 backdrop-blur-md animate-in fade-in duration-300" 
         onClick={onClose} 
       />
       
       {/* Modal Container */}
-      <div className="relative w-full max-w-[540px] bg-white dark:bg-[#1a1a1a] rounded-[24px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] border border-border flex flex-col animate-in fade-in zoom-in duration-300 overflow-hidden">
+      <div 
+        style={{ 
+          backgroundColor: isDark ? '#1a1a1a' : '#ffffff',
+          color: isDark ? '#ffffff' : '#000000',
+          borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
+        }}
+        className="relative w-full max-w-[540px] rounded-[24px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] border flex flex-col animate-in fade-in zoom-in duration-300 overflow-hidden"
+      >
         
         {/* Close Button */}
         <button 
           onClick={onClose} 
-          className="absolute top-4 right-4 p-1.5 hover:bg-accent rounded-full transition-all text-muted hover:text-foreground z-50"
+          style={{ color: isDark ? '#a1a1aa' : '#666666' }}
+          className="absolute top-4 right-4 p-1.5 hover:bg-accent rounded-full transition-all z-50"
         >
           <X className="w-4 h-4" />
         </button>
@@ -79,7 +90,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
 
           {/* Typography */}
           <div className="text-center space-y-1.5 mb-7">
-            <h2 className="text-[1.5rem] font-[800] text-foreground tracking-tight leading-[1.1]">
+            <h2 className="text-[1.5rem] font-[800] tracking-tight leading-[1.1]">
               Join Plugd&apos;s Referral Program
             </h2>
             <p className="text-[0.95rem] text-[#f97316] font-bold tracking-tight">
@@ -96,7 +107,12 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
                   placeholder="Enter your email to join"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-background border border-border rounded-xl pl-12 pr-4 py-4 text-foreground focus:outline-none focus:border-[#f97316] transition-all"
+                  style={{ 
+                    backgroundColor: isDark ? '#262626' : '#f9f9f9',
+                    borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
+                    color: isDark ? '#ffffff' : '#000000'
+                  }}
+                  className="w-full border rounded-xl pl-12 pr-4 py-4 focus:outline-none focus:border-[#f97316] transition-all"
                   autoFocus
                 />
               </div>
@@ -107,24 +123,33 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
           ) : (
             <div className="space-y-4 mb-7 max-w-[280px] mx-auto">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-accent/50 flex items-center justify-center shrink-0 border border-border">
-                  <LinkIcon className="w-4 h-4 text-foreground/70" />
+                <div 
+                  style={{ backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}
+                  className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border border-border"
+                >
+                  <LinkIcon className="w-4 h-4" style={{ color: isDark ? '#ffffff' : '#000000' }} />
                 </div>
-                <p className="text-foreground font-semibold text-[0.95rem]">Share your referral link</p>
+                <p className="font-semibold text-[0.95rem]">Share your referral link</p>
               </div>
               
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-accent/50 flex items-center justify-center shrink-0 border border-border">
-                  <DollarSign className="w-4 h-4 text-foreground/70" />
+                <div 
+                  style={{ backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}
+                  className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border border-border"
+                >
+                  <DollarSign className="w-4 h-4" style={{ color: isDark ? '#ffffff' : '#000000' }} />
                 </div>
-                <p className="text-foreground font-semibold text-[0.95rem]">Get paid for each referral</p>
+                <p className="font-semibold text-[0.95rem]">Get paid for each referral</p>
               </div>
               
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-accent/50 flex items-center justify-center shrink-0 border border-border">
-                  <Infinity className="w-4 h-4 text-foreground/70" />
+                <div 
+                  style={{ backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}
+                  className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border border-border"
+                >
+                  <Infinity className="w-4 h-4" style={{ color: isDark ? '#ffffff' : '#000000' }} />
                 </div>
-                <p className="text-foreground font-semibold text-[0.95rem]">Unlimited earning potential</p>
+                <p className="font-semibold text-[0.95rem]">Unlimited earning potential</p>
               </div>
             </div>
           )}
@@ -132,18 +157,30 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
           {/* Stat Boxes */}
           {!showEmailInput && (
             <div className="grid grid-cols-2 gap-3 mb-7 w-full">
-              <div className="bg-white dark:bg-card border border-border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm">
-                <span className="text-[0.6rem] text-muted font-bold uppercase tracking-[0.05em] text-center leading-tight">
+              <div 
+                style={{ 
+                  backgroundColor: isDark ? '#262626' : '#f9f9f9',
+                  borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
+                }}
+                className="border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm"
+              >
+                <span style={{ color: isDark ? '#a1a1aa' : '#666666' }} className="text-[0.6rem] font-bold uppercase tracking-[0.05em] text-center leading-tight">
                   if you refer <br /> 1,000 builders
                 </span>
-                <span className="text-[1.35rem] font-[900] text-foreground tracking-tighter">$1,000</span>
+                <span className="text-[1.35rem] font-[900] tracking-tighter">$1,000</span>
               </div>
               
-              <div className="bg-white dark:bg-card border border-border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm">
-                <span className="text-[0.6rem] text-muted font-bold uppercase tracking-[0.05em] text-center leading-tight">
+              <div 
+                style={{ 
+                  backgroundColor: isDark ? '#262626' : '#f9f9f9',
+                  borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
+                }}
+                className="border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm"
+              >
+                <span style={{ color: isDark ? '#a1a1aa' : '#666666' }} className="text-[0.6rem] font-bold uppercase tracking-[0.05em] text-center leading-tight">
                   top referrers <br /> could earn
                 </span>
-                <span className="text-[1.35rem] font-[900] text-foreground tracking-tighter">$10,000+</span>
+                <span className="text-[1.35rem] font-[900] tracking-tighter">$10,000+</span>
               </div>
             </div>
           )}
