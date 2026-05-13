@@ -175,8 +175,8 @@ export default function DashboardProfileView() {
             <>
               <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
-                  <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Your Profile</h1>
-                  <p className="text-muted text-[1rem] mt-1.5 font-normal">Manage your public listing on Plugd.</p>
+                  <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Listing Profile</h1>
+                  <p className="text-muted text-[1rem] mt-1.5 font-normal">Your public listing in the Plugd index.</p>
                 </div>
                 
                 {account && (
@@ -390,8 +390,8 @@ export default function DashboardProfileView() {
           {(hasPromoter || isAdmin) && promoterData && (
             <div className="mt-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
               <div className="mb-8">
-                <h2 className="text-[2rem] font-[700] text-foreground leading-tight tracking-tight">Promoter Settings</h2>
-                <p className="text-muted text-[1rem] mt-1.5 font-normal">Manage your identity and payout preferences.</p>
+                <h2 className="text-[2rem] font-[700] text-foreground leading-tight tracking-tight">Promoter Profile</h2>
+                <p className="text-muted text-[1rem] mt-1.5 font-normal">Your referral identity and payout details.</p>
               </div>
 
               <div className="bg-pill border border-border rounded-[16px] p-10 shadow-2xl">
