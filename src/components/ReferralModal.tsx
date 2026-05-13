@@ -20,7 +20,7 @@ export default function ReferralModal({ isOpen, onClose, onJoin }: ReferralModal
       />
       
       {/* Modal Container */}
-      <div className="relative w-full max-w-[440px] bg-white dark:bg-[#1a1a1a] rounded-[24px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] border border-border flex flex-col animate-in fade-in zoom-in duration-300 overflow-hidden">
+      <div className="relative w-full max-w-[540px] bg-white dark:bg-[#1a1a1a] rounded-[24px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] border border-border flex flex-col animate-in fade-in zoom-in duration-300 overflow-hidden">
         
         {/* Close Button */}
         <button 
