@@ -60,6 +60,7 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
 
   const adminItems = [
     { name: "Manage Accounts", href: "/admin", icon: LayoutGrid },
+    { name: "Manage Referrals", href: "/admin/referrals", icon: UserPlus },
   ];
 
   return (

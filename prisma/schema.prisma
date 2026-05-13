@@ -69,6 +69,16 @@ model Conversion {
   Startup          Startup  @relation(fields: [startupId], references: [id])
 }
 
+model ReferralPayout {
+  id          String   @id @default(cuid())
+  promoterId  Int
+  amount      Float
+  note        String?
+  createdAt   DateTime @default(now())
+
+  promoter    Promoter @relation(fields: [promoterId], references: [id], onDelete: Cascade)
+}
+
 model Promoter {
   id               Int      @id @default(autoincrement())
   email            String   @unique
@@ -79,12 +89,14 @@ model Promoter {
   payoutDetails    String?
   totalEarned      Float    @default(0)
   pendingPayout    Float    @default(0)
+  totalPaid        Float    @default(0)
   totalClicks      Int      @default(0)
   totalConversions Int      @default(0)
   createdAt        DateTime @default(now())
   Conversion       Conversion[]
   WithdrawalRequest WithdrawalRequest[]
   Referral         Referral[]
+  payouts          ReferralPayout[]
 }
 
 model Startup {
