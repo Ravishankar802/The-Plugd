@@ -19,6 +19,8 @@ import Link from "next/link";
 import { NICHES } from "@/lib/constants";
 
 
+import ReferralModal from "@/components/ReferralModal";
+
 const FOLLOWERS_RANGES = [
   "0-100", "100-500", "500-1K", "1K-2K", "2K-5K", "5K-10K", "10K-25K", "25K-50K", "50K-100K", "100K+"
 ];
@@ -29,6 +31,9 @@ export default function DashboardProfileView() {
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
+  const [isPromoter, setIsPromoter] = useState(false);
+  const [promoterData, setPromoterData] = useState<any>(null);
+  const [isReferModalOpen, setIsReferModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -36,6 +41,8 @@ export default function DashboardProfileView() {
         const res = await fetch("/api/auth/me");
         if (res.ok) {
           const data = await res.json();
+          setIsPromoter(data.isPromoter);
+          setPromoterData(data.promoterData);
           fetchAccount(data.email);
         } else {
           setLoading(false);
@@ -333,108 +340,141 @@ export default function DashboardProfileView() {
         </form>
       </div>
 
-      {/* Refer & Earn Section - Only for paid/claimed users */}
-      {(account.paid || account.isClaimed) && (
-        <div id="refer" className="mt-16 bg-pill border border-border rounded-[16px] p-10 shadow-2xl space-y-8 animate-in fade-in slide-in-from-top-4 duration-700">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-[#f97316]/10 flex items-center justify-center border border-[#f97316]/20">
-              <Gift className="w-7 h-7 text-[#f97316]" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-[800] text-foreground tracking-tight">Refer & Earn</h2>
-              <p className="text-sm text-muted font-medium mt-0.5">Share Plugd with your audience and earn rewards.</p>
-            </div>
-          </div>
+      {/* Refer & Earn Section */}
+      {((account.paid || account.isClaimed) || isPromoter) && (
+        <div className="mt-16 space-y-8 animate-in fade-in slide-in-from-top-4 duration-700">
           
-          <div className="space-y-4">
-            <label className="text-[0.8rem] font-bold text-muted/60 block tracking-widest uppercase">YOUR REFERRAL LINK</label>
-            <div className="flex flex-col md:flex-row gap-3">
-              <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] font-medium truncate flex items-center">
-                the-plugd.vercel.app?ref={account.xHandle.replace(/^@+/, '')}
+          {/* Banner for non-promoters */}
+          {!isPromoter && (
+            <div className="p-8 bg-[#f97316]/5 border border-[#f97316]/20 rounded-[20px] flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-[#f97316]/10 flex items-center justify-center border border-[#f97316]/20 shadow-inner">
+                  <Gift className="w-8 h-8 text-[#f97316]" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-[800] text-foreground tracking-tight">Want to earn by referring?</h3>
+                  <p className="text-muted text-[1rem] font-medium mt-1">Join our referral program for just $1 and earn $1 from every sale.</p>
+                </div>
               </div>
               <button 
-                type="button"
-                onClick={() => copyToClipboard(`https://the-plugd.vercel.app?ref=${account.xHandle.replace(/^@+/, '')}`, 'link')}
-                className="bg-[#f97316] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#f97316]/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 active:scale-[0.98]"
+                onClick={() => setIsReferModalOpen(true)}
+                className="w-full md:w-auto bg-[#f97316] text-white px-10 py-4 rounded-xl font-bold hover:bg-[#f97316]/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 active:scale-[0.98]"
               >
-                {copied === 'link' ? <Check className="w-5 h-5" /> : <><Copy className="w-5 h-5" /> Copy Link</>}
+                Join for $1 <ArrowRight size={18} />
               </button>
             </div>
-          </div>
+          )}
 
-          <div className="space-y-6 pt-4">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
-                <svg className="w-4 h-4 text-foreground" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-foreground">X Sharing Kit</h3>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-pill border border-border rounded-2xl p-6 space-y-4">
-                <p className="text-sm text-muted font-medium line-clamp-3">
-                  &quot;Just found this — 430+ X builders, founders and creators all in one place, sorted by niche and follower count. Actually useful. 👇&quot;
-                </p>
-                <button 
-                  type="button"
-                  onClick={() => copyToClipboard("Just found this — 430+ X builders, founders and creators all in one place, sorted by niche and follower count. Actually useful. 👇", 'post')}
-                  className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
-                >
-                  {copied === 'post' ? <Check className="w-4 h-4" /> : "Copy Post"}
-                </button>
+          {/* Full kit for promoters */}
+          {isPromoter && (
+            <div id="refer" className="bg-pill border border-border rounded-[16px] p-10 shadow-2xl space-y-8">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-[#f97316]/10 flex items-center justify-center border border-[#f97316]/20">
+                  <Gift className="w-7 h-7 text-[#f97316]" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-[800] text-foreground tracking-tight">Refer & Earn</h2>
+                  <p className="text-sm text-muted font-medium mt-0.5">Share Plugd with your audience and earn rewards.</p>
+                </div>
               </div>
               
-              <div className="bg-pill border border-border rounded-2xl p-6 space-y-4">
-                <p className="text-sm text-muted font-medium truncate">
-                  https://the-plugd.vercel.app?ref={account.xHandle.replace(/^@+/, '')}
-                </p>
-                <button 
-                  type="button"
-                  onClick={() => copyToClipboard(`https://the-plugd.vercel.app?ref=${account.xHandle.replace(/^@+/, '')}`, 'reply')}
-                  className="w-full border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
-                >
-                  {copied === 'reply' ? <Check className="w-4 h-4" /> : "Copy Reply Link"}
-                </button>
+              <div className="space-y-4">
+                <label className="text-[0.8rem] font-bold text-muted/60 block tracking-widest uppercase">YOUR REFERRAL LINK</label>
+                <div className="flex flex-col md:flex-row gap-3">
+                  <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] font-medium truncate flex items-center">
+                    the-plugd.vercel.app?ref={promoterData.referralCode}
+                  </div>
+                  <button 
+                    type="button"
+                    onClick={() => copyToClipboard(`https://the-plugd.vercel.app?ref=${promoterData.referralCode}`, 'link')}
+                    className="bg-[#f97316] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#f97316]/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 active:scale-[0.98]"
+                  >
+                    {copied === 'link' ? <Check className="w-5 h-5" /> : <><Copy className="w-5 h-5" /> Copy Link</>}
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="flex items-start gap-3 p-4 bg-accent/30 rounded-xl border border-border">
-              <div className="w-5 h-5 rounded-full bg-selected flex items-center justify-center shrink-0 mt-0.5">
-                <span className="text-[10px] font-bold text-selected-foreground">!</span>
-              </div>
-              <p className="text-[0.85rem] text-muted font-medium leading-relaxed">
-                <span className="text-foreground font-bold underline">Strategy:</span> Post the first one on X. Then immediately reply to your own post with the second one. This avoids the shadowban on links in main posts.
-              </p>
-            </div>
-          </div>
 
-          <div className="pt-8 border-t border-border">
-            <div className="grid grid-cols-3 gap-4">
-              <div className="text-center">
-                <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-1">Total Clicks</p>
-                <p className="text-2xl font-bold text-foreground">0</p>
+              <div className="space-y-6 pt-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
+                    <svg className="w-4 h-4 text-foreground" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground">X Sharing Kit</h3>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-pill border border-border rounded-2xl p-6 space-y-4">
+                    <p className="text-sm text-muted font-medium line-clamp-3">
+                      &quot;Just found this — 430+ X builders, founders and creators all in one place, sorted by niche and follower count. Actually useful. 👇&quot;
+                    </p>
+                    <button 
+                      type="button"
+                      onClick={() => copyToClipboard("Just found this — 430+ X builders, founders and creators all in one place, sorted by niche and follower count. Actually useful. 👇", 'post')}
+                      className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
+                    >
+                      {copied === 'post' ? <Check className="w-4 h-4" /> : "Copy Post"}
+                    </button>
+                  </div>
+                  
+                  <div className="bg-pill border border-border rounded-2xl p-6 space-y-4">
+                    <p className="text-sm text-muted font-medium truncate">
+                      https://the-plugd.vercel.app?ref={promoterData.referralCode}
+                    </p>
+                    <button 
+                      type="button"
+                      onClick={() => copyToClipboard(`https://the-plugd.vercel.app?ref=${promoterData.referralCode}`, 'reply')}
+                      className="w-full border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
+                    >
+                      {copied === 'reply' ? <Check className="w-4 h-4" /> : "Copy Reply Link"}
+                    </button>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 bg-accent/30 rounded-xl border border-border">
+                  <div className="w-5 h-5 rounded-full bg-selected flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-[10px] font-bold text-selected-foreground">!</span>
+                  </div>
+                  <p className="text-[0.85rem] text-muted font-medium leading-relaxed">
+                    <span className="text-foreground font-bold underline">Strategy:</span> Post the first one on X. Then immediately reply to your own post with the second one. This avoids the shadowban on links in main posts.
+                  </p>
+                </div>
               </div>
-              <div className="text-center border-x border-border">
-                <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-1">Referrals</p>
-                <p className="text-2xl font-bold text-foreground">0</p>
-              </div>
-              <div className="text-center">
-                <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-1">Earned</p>
-                <p className="text-2xl font-bold text-selected">$0</p>
+
+              <div className="pt-8 border-t border-border">
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="text-center">
+                    <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-1">Total Clicks</p>
+                    <p className="text-2xl font-bold text-foreground">{promoterData.totalClicks}</p>
+                  </div>
+                  <div className="text-center border-x border-border">
+                    <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-1">Referrals</p>
+                    <p className="text-2xl font-bold text-foreground">{promoterData.totalConversions}</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-1">Earned</p>
+                    <p className="text-2xl font-bold text-selected">${promoterData.totalEarned}</p>
+                  </div>
+                </div>
+                
+                <p className="text-[0.75rem] text-muted text-center font-medium mt-8 flex items-center justify-center gap-2">
+                  Earnings are tracked and paid out manually. 
+                  <Link href="https://x.com/ravx003" target="_blank" className="text-[#f97316] font-bold hover:underline inline-flex items-center gap-1">
+                    Contact @ravx003 <ExternalLink className="w-3 h-3" />
+                  </Link>
+                  on X to claim your earnings.
+                </p>
               </div>
             </div>
-            
-            <p className="text-[0.75rem] text-muted text-center font-medium mt-8 flex items-center justify-center gap-2">
-              Earnings are tracked and paid out manually. 
-              <Link href="https://x.com/ravx003" target="_blank" className="text-[#f97316] font-bold hover:underline inline-flex items-center gap-1">
-                Contact @ravx003 <ExternalLink className="w-3 h-3" />
-              </Link>
-              on X to claim your earnings.
-            </p>
-          </div>
+          )}
         </div>
       )}
+
+      <ReferralModal 
+        isOpen={isReferModalOpen} 
+        onClose={() => setIsReferModalOpen(false)} 
+        userEmail={account.email} 
+      />
     </div>
   );
 }

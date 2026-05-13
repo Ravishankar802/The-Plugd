@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
+import prisma from "@/lib/prisma";
 
 export async function GET() {
   const session = await getSession();
@@ -8,9 +9,16 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  const [account, promoter] = await Promise.all([
+    prisma.account.findFirst({ where: { email: session.email, paid: true } }),
+    prisma.promoter.findUnique({ where: { email: session.email } })
+  ]);
+
   return NextResponse.json({
     email: session.email,
-    isPaid: session.isPaid,
+    isPaid: !!account,
+    isPromoter: !!promoter,
     isAdmin: session.isAdmin,
+    promoterData: promoter
   });
 }

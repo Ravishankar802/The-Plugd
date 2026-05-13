@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface ClaimButtonProps {
   xHandle: string;
@@ -9,12 +9,14 @@ interface ClaimButtonProps {
 
 export default function ClaimButton({ xHandle }: ClaimButtonProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
 
   const handleClaim = async () => {
     setLoading(true);
     try {
-      const checkoutUrl = `https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=${encodeURIComponent(`https://the-plugd.vercel.app/login?message=Payment successful! Enter the email you used for payment to access your dashboard`)}&showDiscounts=false&metadata_claimHandle=${xHandle}`;
+      const referralCode = searchParams.get("ref") || "";
+      const checkoutUrl = `https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=${encodeURIComponent(`https://the-plugd.vercel.app/login?message=Payment successful! Enter the email you used for payment to access your dashboard`)}&showDiscounts=false&metadata_claimHandle=${xHandle}${referralCode ? `&metadata_referralCode=${referralCode}` : ''}`;
       window.location.href = checkoutUrl;
     } catch (err) {
       console.error(err);

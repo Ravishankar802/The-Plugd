@@ -2,6 +2,12 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import DodoPayments from "dodopayments";
 
+function generateReferralCode(email: string) {
+  const base = email.split("@")[0].toLowerCase().replace(/[^a-z0-9]/g, "");
+  const random = Math.random().toString(36).substring(2, 6);
+  return `${base}-${random}`;
+}
+
 export async function POST(req: Request) {
   const dodo = new DodoPayments({
     bearerToken: process.env.DODO_API_KEY || "",
@@ -20,7 +26,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Webhook secret not configured" }, { status: 500 });
     }
 
-    // Verify and unwrap the event
     const event = dodo.webhooks.unwrap(body, {
       headers,
       key: webhookSecret,
@@ -31,25 +36,52 @@ export async function POST(req: Request) {
     if (event.type === "payment.succeeded") {
       const payment = event.data;
       const metadata = payment.metadata || {};
+      const type = metadata.metadata_type || metadata.type;
+      
+      // 1. Handle Promoter Payment ($1)
+      if (type === "promoter") {
+        const email = metadata.metadata_email || metadata.email || payment.customer.email;
+        
+        await prisma.promoter.upsert({
+          where: { email },
+          create: {
+            email,
+            name: email.split("@")[0],
+            referralCode: generateReferralCode(email),
+            totalEarned: 0,
+            pendingPayout: 0,
+            totalClicks: 0,
+            totalConversions: 0
+          },
+          update: {} // Already a promoter, just record payment was successful if needed
+        });
+        
+        console.log(`Promoter ${email} successfully joined the program.`);
+        return NextResponse.json({ success: true });
+      }
+
+      // 2. Handle Account Payment ($2) - Existing Logic + Referral Tracking
       const accountId = metadata.metadata_accountId || metadata.accountId;
       const claimHandle = metadata.metadata_claimHandle || metadata.claimHandle;
+      const referralCode = metadata.metadata_referralCode || metadata.referralCode;
 
+      let account;
       if (claimHandle) {
-        // Handle Claim Flow
-        const account = await prisma.account.findFirst({
-          where: {
-            xHandle: {
-              equals: claimHandle,
-              mode: "insensitive",
-            },
-          },
+        account = await prisma.account.findFirst({
+          where: { xHandle: { equals: claimHandle, mode: "insensitive" } },
         });
+      } else if (accountId) {
+        account = await prisma.account.findUnique({
+          where: { id: parseInt(accountId) },
+        });
+      }
 
-        if (!account) {
-          console.error(`Account not found for claim: ${claimHandle}`);
-          return NextResponse.json({ error: "Account not found" }, { status: 404 });
-        }
+      if (!account) {
+        console.error(`Account not found for payment: ${accountId || claimHandle}`);
+        return NextResponse.json({ error: "Account not found" }, { status: 404 });
+      }
 
+      if (!account.paid) {
         await prisma.account.update({
           where: { id: account.id },
           data: {
@@ -60,37 +92,36 @@ export async function POST(req: Request) {
             paymentId: payment.payment_id
           }
         });
-        console.log(`Account ${claimHandle} successfully claimed by ${payment.customer.email}`);
-      } else if (accountId) {
-        // Handle New Account Flow
-        const account = await prisma.account.findUnique({
-          where: { id: parseInt(accountId) },
-        });
+        console.log(`Account ${account.xHandle} successfully marked as paid.`);
 
-        if (!account) {
-          console.error(`Account not found: ${accountId}`);
-          return NextResponse.json({ error: "Account not found" }, { status: 404 });
+        // Handle Referral Credit Logic
+        if (referralCode) {
+          const promoter = await prisma.promoter.findUnique({
+            where: { referralCode }
+          });
+          
+          if (promoter) {
+            await prisma.$transaction([
+              prisma.promoter.update({
+                where: { id: promoter.id },
+                data: {
+                  totalEarned: { increment: 1.0 },
+                  pendingPayout: { increment: 1.0 },
+                  totalConversions: { increment: 1 }
+                }
+              }),
+              prisma.referral.create({
+                data: {
+                  promoterId: promoter.id,
+                  accountId: account.id,
+                  referralCode: referralCode,
+                  amount: 1.0
+                }
+              })
+            ]);
+            console.log(`Referral credited to promoter: ${promoter.email}`);
+          }
         }
-
-        if (account.status === "paid") {
-          console.log(`Account ${accountId} already marked as paid.`);
-          return NextResponse.json({ success: true, message: "Already processed" });
-        }
-
-        await prisma.account.update({
-          where: { id: parseInt(accountId) },
-          data: { 
-            status: "paid",
-            paid: true,
-            isClaimed: true,
-            email: payment.customer.email,
-            paymentId: payment.payment_id
-          },
-        });
-        console.log(`Account ${accountId} successfully marked as paid.`);
-      } else {
-        console.error("No accountId or claimHandle found in metadata", metadata);
-        return NextResponse.json({ error: "Missing metadata" }, { status: 400 });
       }
     }
 

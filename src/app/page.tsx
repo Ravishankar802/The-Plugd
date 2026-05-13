@@ -23,7 +23,8 @@ export default async function Home({ searchParams }: PageProps) {
     niches: nichesStr = "", 
     followers = "All Ranges", 
     status = "All",
-    sort = "Latest"
+    sort = "Latest",
+    ref = ""
   } = await searchParams;
 
   const currentPage = parseInt(pageStr);
@@ -136,6 +137,7 @@ export default async function Home({ searchParams }: PageProps) {
         pageSize={PAGE_SIZE}
         initialIsPaid={initialIsPaid}
         userEmail={userEmail}
+        referralCode={ref}
       />
     );
   } catch (error) {

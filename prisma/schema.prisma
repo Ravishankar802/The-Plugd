@@ -23,6 +23,7 @@ model Account {
   isClaimed      Boolean  @default(false)
   referredBy     String?
   userStatuses   UserAccountStatus[]
+  referral       Referral?
 }
 
 model UserAccountStatus {
@@ -83,6 +84,7 @@ model Promoter {
   createdAt         DateTime            @default(now())
   Conversion        Conversion[]
   WithdrawalRequest WithdrawalRequest[]
+  Referral          Referral[]
 }
 
 model Startup {
@@ -111,4 +113,14 @@ model WithdrawalRequest {
   requestedAt   DateTime  @default(now())
   paidAt        DateTime?
   Promoter      Promoter  @relation(fields: [promoterId], references: [id])
+}
+model Referral {
+  id           Int      @id @default(autoincrement())
+  promoterId   Int
+  accountId    Int      @unique
+  referralCode String
+  amount       Float    @default(1.0)
+  createdAt    DateTime @default(now())
+  Promoter     Promoter @relation(fields: [promoterId], references: [id])
+  Account      Account  @relation(fields: [accountId], references: [id])
 }

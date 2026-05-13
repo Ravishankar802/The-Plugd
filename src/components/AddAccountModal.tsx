@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 interface AddAccountModalProps {
   isOpen: boolean;
   onClose: () => void;
+  referralCode?: string;
 }
 
 
@@ -24,7 +25,7 @@ const FOLLOWERS_RANGES = [
   "0-100", "100-500", "500-1K", "1K-2K", "2K-5K", "5K-10K", "10K-25K", "25K-50K", "50K-100K", "100K+"
 ];
 
-export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProps) {
+export default function AddAccountModal({ isOpen, onClose, referralCode = "" }: AddAccountModalProps) {
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   
@@ -125,8 +126,8 @@ export default function AddAccountModal({ isOpen, onClose }: AddAccountModalProp
           window.location.reload();
         }, 2000);
       } else {
-        // 4. Redirect to Dodo checkout with accountId in metadata
-        const checkoutUrl = `https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=${encodeURIComponent('https://the-plugd.vercel.app/login?message=Payment successful! Enter the email you used for payment to access your dashboard')}&showDiscounts=false&customer_email=${encodeURIComponent(formData.email)}&metadata_accountId=${accountId}`;
+        // 4. Redirect to Dodo checkout with accountId and referralCode in metadata
+        const checkoutUrl = `https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=${encodeURIComponent('https://the-plugd.vercel.app/login?message=Payment successful! Enter the email you used for payment to access your dashboard')}&showDiscounts=false&customer_email=${encodeURIComponent(formData.email)}&metadata_accountId=${accountId}${referralCode ? `&metadata_referralCode=${referralCode}` : ''}`;
         window.location.href = checkoutUrl;
       }
     } catch (error) {

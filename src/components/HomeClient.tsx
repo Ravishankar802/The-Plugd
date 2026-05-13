@@ -46,6 +46,7 @@ interface HomeClientProps {
   pageSize: number;
   initialIsPaid: boolean;
   userEmail: string | null;
+  referralCode?: string;
 }
 
 export default function HomeClient({ 
@@ -55,7 +56,8 @@ export default function HomeClient({
   currentPage,
   pageSize,
   initialIsPaid,
-  userEmail: serverUserEmail
+  userEmail: serverUserEmail,
+  referralCode: initialReferralCode = ""
 }: HomeClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -520,11 +522,11 @@ export default function HomeClient({
         <Footer />
       </div>
 
-      <AddAccountModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <AddAccountModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} referralCode={initialReferralCode} />
       <ReferralModal 
         isOpen={isReferModalOpen} 
         onClose={() => setIsReferModalOpen(false)} 
-        onJoin={handleJoinReferral}
+        userEmail={userEmail} 
       />
     </main>
   );
