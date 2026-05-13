@@ -29,15 +29,15 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
   const navItems = [
     { 
       name: "Profile", 
-      href: "/dashboard#profile", 
+      href: "/dashboard?tab=profile", 
       icon: User, 
       show: hasAccount,
       locked: !hasAccount,
       upgradeHref: "/?modal=add"
     },
     { 
-      name: "CRM", 
-      href: "/dashboard#crm", 
+      name: "Index", 
+      href: "/dashboard?tab=index", 
       icon: LayoutGrid, 
       show: hasAccount,
       locked: !hasAccount,
@@ -45,19 +45,19 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
     },
     { 
       name: "Referrals", 
-      href: "/dashboard#referrals", 
+      href: "/dashboard?tab=referrals", 
       icon: UserPlus, 
       show: hasPromoter,
       locked: !hasPromoter,
-      upgradeHref: "/dashboard#referrals"
+      upgradeHref: "/dashboard?tab=referrals"
     },
     { 
       name: "Earnings", 
-      href: "/dashboard#earnings", 
+      href: "/dashboard?tab=earnings", 
       icon: Wallet, 
       show: hasPromoter,
       locked: !hasPromoter,
-      upgradeHref: "/dashboard#earnings"
+      upgradeHref: "/dashboard?tab=earnings"
     },
   ];
 

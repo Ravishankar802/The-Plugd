@@ -10,31 +10,17 @@ export async function POST(req: Request) {
     }
 
     let account;
-    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
-    
-    if (adminEmail && email.toLowerCase() === adminEmail.toLowerCase()) {
-      // Admin always sees their primary account
-      account = await prisma.account.findFirst({
-        where: {
-          xHandle: {
-            equals: 'ravx003',
-            mode: 'insensitive'
-          }
+    account = await prisma.account.findFirst({
+      where: {
+        email: {
+          equals: email,
+          mode: 'insensitive'
         }
-      });
-    } else {
-      account = await prisma.account.findFirst({
-        where: {
-          email: {
-            equals: email,
-            mode: 'insensitive'
-          }
-        },
-        orderBy: {
-          createdAt: 'desc'
-        }
-      });
-    }
+      },
+      orderBy: {
+        createdAt: 'desc'
+      }
+    });
 
     if (!account) {
       return NextResponse.json({ found: false, error: "No account found with this email." }, { status: 404 });

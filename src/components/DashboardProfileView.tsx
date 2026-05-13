@@ -19,6 +19,7 @@ import {
   Wallet
 } from "lucide-react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
 
 
@@ -29,6 +30,10 @@ const FOLLOWERS_RANGES = [
 ];
 
 export default function DashboardProfileView() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const tab = searchParams.get("tab") || "profile";
+  
   const [account, setAccount] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -38,21 +43,13 @@ export default function DashboardProfileView() {
   const [hasPromoter, setHasPromoter] = useState(false);
   const [promoterData, setPromoterData] = useState<any>(null);
   const [isReferModalOpen, setIsReferModalOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("profile");
   const [crmData, setCrmData] = useState<any[]>([]);
   const [crmLoading, setCrmLoading] = useState(false);
 
+  // Determine active section from tab param
+  const activeSection = ["profile", "index", "referrals", "earnings"].includes(tab) ? tab : "profile";
+
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace("#", "");
-      if (["profile", "crm", "referrals", "earnings"].includes(hash)) {
-        setActiveSection(hash);
-      }
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-    handleHashChange(); // Initial check
-
     const fetchUser = async () => {
       try {
         const res = await fetch("/api/auth/me");
@@ -63,7 +60,7 @@ export default function DashboardProfileView() {
           setPromoterData(data.promoterData);
           setAccount(data.accountData);
         } else {
-          window.location.href = "/login";
+          router.push("/login");
         }
       } catch (err) {
         console.error(err);
@@ -73,8 +70,7 @@ export default function DashboardProfileView() {
     };
 
     fetchUser();
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
+  }, [router]);
 
   const fetchCRM = async () => {
     setCrmLoading(true);
@@ -92,7 +88,7 @@ export default function DashboardProfileView() {
   };
 
   useEffect(() => {
-    if (activeSection === "crm") {
+    if (activeSection === "index") {
       fetchCRM();
     }
   }, [activeSection]);
@@ -373,11 +369,11 @@ export default function DashboardProfileView() {
         </>
       )}
 
-      {/* CRM Section */}
-      {activeSection === "crm" && (
+      {/* Index Section */}
+      {activeSection === "index" && (
         <div className="space-y-8">
           <div>
-            <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Your CRM</h1>
+            <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Your Index</h1>
             <p className="text-muted text-[1rem] mt-1.5 font-normal">Manage the accounts you&apos;ve followed, saved, or skipped.</p>
           </div>
 
@@ -386,13 +382,13 @@ export default function DashboardProfileView() {
               <div className="w-20 h-20 rounded-3xl bg-foreground/5 flex items-center justify-center mb-6">
                 <Lock className="w-10 h-10 text-muted" />
               </div>
-              <h2 className="text-2xl font-bold mb-2">CRM Locked</h2>
-              <p className="text-muted max-w-sm mb-8">CRM features (Follow, Save, Skip) are exclusive to paid members.</p>
+              <h2 className="text-2xl font-bold mb-2">Index Locked</h2>
+              <p className="text-muted max-w-sm mb-8">Index features (Follow, Save, Skip) are exclusive to paid members.</p>
               <button 
                 onClick={() => window.location.href = "/?modal=add"}
                 className="bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-white/90 transition-all flex items-center gap-2 shadow-xl"
               >
-                Unlock CRM for $2 <ArrowRight size={18} />
+                Unlock Index for $2 <ArrowRight size={18} />
               </button>
             </div>
           ) : crmLoading ? (
@@ -404,7 +400,7 @@ export default function DashboardProfileView() {
               <div className="w-16 h-16 bg-foreground/5 rounded-2xl flex items-center justify-center">
                 <LayoutGrid className="w-8 h-8 text-muted" />
               </div>
-              <p className="text-foreground font-bold text-lg">No CRM data yet</p>
+              <p className="text-foreground font-bold text-lg">No Index data yet</p>
               <p className="text-muted text-sm max-w-xs">Start browsing accounts on the homepage to build your list.</p>
               <Link href="/" className="text-[#f97316] font-bold hover:underline mt-2">Go to Homepage</Link>
             </div>
