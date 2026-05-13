@@ -480,14 +480,14 @@ export default function DashboardProfileView() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">Withdraw Funds</h3>
-                  <p className="text-muted max-w-sm mt-2 font-medium">Request a payout to your PayPal or Bank account. Minimum withdrawal is $5.</p>
+                  <p className="text-muted max-w-sm mt-2 font-medium">Request a payout to your PayPal or Bank account. Minimum withdrawal is $10.</p>
                 </div>
                 <button 
-                  disabled={(promoterData?.pendingPayout || 0) < 5}
+                  disabled={(promoterData?.pendingPayout || 0) < 10}
                   onClick={() => alert("Payout request sent to admin! We will contact you at " + promoterData.email)}
                   className="bg-white text-black px-12 py-4 rounded-xl font-bold hover:bg-white/90 transition-all disabled:opacity-50 disabled:grayscale shadow-xl active:scale-[0.98]"
                 >
-                  {(promoterData?.pendingPayout || 0) < 5 ? "Minimum $5 required" : "Withdraw Funds"}
+                  {(promoterData?.pendingPayout || 0) < 10 ? "Minimum $10 required" : "Withdraw Funds"}
                 </button>
               </div>
 
