@@ -108,21 +108,15 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
       
       {/* Modal Container */}
       <div 
-        style={{ 
-          backgroundColor: isDark ? '#1a1a1a' : '#ffffff',
-          color: isDark ? '#ffffff' : '#000000',
-          borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
-        }}
-        className="relative w-full max-w-[540px] rounded-[24px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] border flex flex-col animate-in fade-in zoom-in duration-300 overflow-hidden"
+        className="relative w-full max-w-xl bg-pill border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300 max-h-[90vh]"
       >
         
         {/* Close Button */}
         <button 
           onClick={onClose} 
-          style={{ color: isDark ? '#a1a1aa' : '#666666' }}
-          className="absolute top-4 right-4 p-1.5 hover:bg-accent rounded-full transition-all z-50"
+          className="absolute top-6 right-6 p-2 hover:bg-accent rounded-full transition-all text-muted hover:text-foreground border border-transparent hover:border-border z-50"
         >
-          <X className="w-4 h-4" />
+          <X className="w-5 h-5" />
         </button>
 
         {/* Content Area */}
@@ -150,58 +144,55 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
           </div>
 
           {showEmailInput ? (
-            <div className="w-full space-y-5 mb-7 animate-in fade-in slide-in-from-bottom-2 duration-300">
-              <div className="space-y-4">
+            <div className="w-full space-y-6 mb-7 animate-in fade-in slide-in-from-bottom-2 duration-300">
+              <div className="space-y-6">
                 {/* Full Name */}
-                <div className="space-y-1.5">
-                  <label className="text-[0.7rem] font-bold text-muted uppercase tracking-wider ml-1">Full Name</label>
+                <div className="flex flex-col gap-3">
+                  <label className="text-[1rem] font-bold text-white tracking-wide block">Full Name</label>
                   <input 
                     type="text"
                     placeholder="Your full name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    style={{ backgroundColor: isDark ? '#262626' : '#f9f9f9', borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)', color: isDark ? '#ffffff' : '#000000' }}
-                    className="w-full border rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#f97316] transition-all text-[0.95rem]"
+                    className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
                   />
                 </div>
 
                 {/* Email */}
-                <div className="space-y-1.5">
-                  <label className="text-[0.7rem] font-bold text-muted uppercase tracking-wider ml-1">Email</label>
+                <div className="flex flex-col gap-3">
+                  <label className="text-[1rem] font-bold text-white tracking-wide block">Email</label>
                   <input 
                     type="email"
                     placeholder="your@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    style={{ backgroundColor: isDark ? '#262626' : '#f9f9f9', borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)', color: isDark ? '#ffffff' : '#000000' }}
-                    className="w-full border rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#f97316] transition-all text-[0.95rem]"
+                    className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
                   />
                 </div>
 
                 {/* X Handle */}
-                <div className="space-y-1.5">
-                  <label className="text-[0.7rem] font-bold text-muted uppercase tracking-wider ml-1">X Handle</label>
+                <div className="flex flex-col gap-3">
+                  <label className="text-[1rem] font-bold text-white tracking-wide block">X Handle</label>
                   <input 
                     type="text"
                     placeholder="@yourhandle"
                     value={formData.xHandle}
                     onChange={(e) => setFormData({ ...formData, xHandle: e.target.value })}
-                    style={{ backgroundColor: isDark ? '#262626' : '#f9f9f9', borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)', color: isDark ? '#ffffff' : '#000000' }}
-                    className="w-full border rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#f97316] transition-all text-[0.95rem]"
+                    className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
                   />
                 </div>
 
                 {/* Payout Method Toggle */}
-                <div className="space-y-1.5">
-                  <label className="text-[0.7rem] font-bold text-muted uppercase tracking-wider ml-1">Payout Method</label>
-                  <div className="flex gap-2">
+                <div className="flex flex-col gap-3">
+                  <label className="text-[1rem] font-bold text-white tracking-wide block">Payout Method</label>
+                  <div className="flex gap-3">
                     <button
                       type="button"
                       onClick={() => setFormData({ ...formData, payoutMethod: "PayPal" })}
-                      className={`flex-1 py-3 rounded-xl border font-bold transition-all ${
+                      className={`flex-1 py-4 rounded-xl border font-bold transition-all ${
                         formData.payoutMethod === "PayPal" 
-                        ? "bg-[#f97316] text-white border-[#f97316]" 
-                        : "bg-transparent text-muted border-border hover:bg-accent"
+                        ? "bg-[#f97316] text-white border-[#f97316] shadow-lg" 
+                        : "bg-black text-muted border-border hover:border-muted"
                       }`}
                     >
                       PayPal
@@ -209,10 +200,10 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
                     <button
                       type="button"
                       onClick={() => setFormData({ ...formData, payoutMethod: "UPI" })}
-                      className={`flex-1 py-3 rounded-xl border font-bold transition-all ${
+                      className={`flex-1 py-4 rounded-xl border font-bold transition-all ${
                         formData.payoutMethod === "UPI" 
-                        ? "bg-[#f97316] text-white border-[#f97316]" 
-                        : "bg-transparent text-muted border-border hover:bg-accent"
+                        ? "bg-[#f97316] text-white border-[#f97316] shadow-lg" 
+                        : "bg-black text-muted border-border hover:border-muted"
                       }`}
                     >
                       UPI
@@ -221,15 +212,14 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
                 </div>
 
                 {/* Payout Details */}
-                <div className="space-y-1.5">
-                  <label className="text-[0.7rem] font-bold text-muted uppercase tracking-wider ml-1">Payout Details</label>
+                <div className="flex flex-col gap-3">
+                  <label className="text-[1rem] font-bold text-white tracking-wide block">Payout Details</label>
                   <input 
                     type="text"
                     placeholder={formData.payoutMethod === "PayPal" ? "Your PayPal email" : "Your UPI ID (e.g. name@upi)"}
                     value={formData.payoutDetails}
                     onChange={(e) => setFormData({ ...formData, payoutDetails: e.target.value })}
-                    style={{ backgroundColor: isDark ? '#262626' : '#f9f9f9', borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)', color: isDark ? '#ffffff' : '#000000' }}
-                    className="w-full border rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#f97316] transition-all text-[0.95rem]"
+                    className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
                   />
                 </div>
               </div>
