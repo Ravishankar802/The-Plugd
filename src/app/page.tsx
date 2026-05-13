@@ -145,6 +145,6 @@ export default async function Home({ searchParams }: PageProps) {
     );
   } catch (error) {
     console.error("SSR fetch failed:", error);
-    return <HomeClient initialAccounts={[]} allAccounts={[]} totalFilteredCount={0} currentPage={1} pageSize={PAGE_SIZE} initialIsPaid={initialIsPaid} userEmail={userEmail} />;
+    return <HomeClient initialAccounts={[]} allAccounts={[]} totalFilteredCount={0} totalListedCount={0} currentPage={1} pageSize={PAGE_SIZE} initialIsPaid={initialIsPaid} userEmail={userEmail} />;
   }
 }
