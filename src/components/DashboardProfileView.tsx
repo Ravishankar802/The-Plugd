@@ -45,6 +45,13 @@ export default function DashboardProfileView() {
   const [promoterData, setPromoterData] = useState<any>(null);
   const [promoterSaving, setPromoterSaving] = useState(false);
   const [promoterSuccess, setPromoterSuccess] = useState(false);
+  const [selectedVariation, setSelectedVariation] = useState(0);
+
+  const POST_VARIATIONS = [
+    "There's a directory of X builders where you get paid $1 just for sharing it. Been using it. Here's my link 👇",
+    "Found a directory of every builder, founder and creator on X — sorted by niche and follower count. Actually useful for finding people to follow. 👇",
+    "If you're building on X and you're not in this directory yet, you're missing out on free visibility. 👇"
+  ];
 
   // Determine active section from tab param
   const activeSection = ["profile", "referrals", "earnings"].includes(tab) ? tab : "profile";
@@ -579,31 +586,85 @@ export default function DashboardProfileView() {
                   <h3 className="text-lg font-bold text-foreground">X Sharing Kit</h3>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="bg-pill border border-border rounded-2xl p-6 space-y-4">
-                    <p className="text-sm text-muted font-medium line-clamp-3">
-                      &quot;Just found this — 430+ X builders, founders and creators all in one place, sorted by niche and follower count. Actually useful. 👇&quot;
+                <div className="flex flex-col gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                    <div className="bg-pill border border-border rounded-2xl p-6 space-y-4">
+                      <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">
+                        {[1, 2, 3].map((num, idx) => (
+                          <button
+                            key={num}
+                            onClick={() => setSelectedVariation(idx)}
+                            className={`px-3 py-1.5 rounded-lg text-[0.7rem] font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+                              selectedVariation === idx 
+                              ? "bg-selected text-selected-foreground border border-selected" 
+                              : "bg-background text-muted border border-border hover:border-muted"
+                            }`}
+                          >
+                            Variation {num}
+                          </button>
+                        ))}
+                      </div>
+                      <div className="min-h-[80px] flex items-center">
+                        <p className="text-sm text-muted font-medium leading-relaxed">
+                          &quot;{POST_VARIATIONS[selectedVariation]}&quot;
+                        </p>
+                      </div>
+                      <button 
+                        type="button"
+                        onClick={() => copyToClipboard(POST_VARIATIONS[selectedVariation], 'post')}
+                        className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
+                      >
+                        {copied === 'post' ? <Check className="w-4 h-4 text-green-500" /> : "Copy Post"}
+                      </button>
+                    </div>
+
+                    <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 md:mt-10">
+                      <div className="min-h-[80px] flex items-center">
+                        <p className="text-sm text-muted font-medium break-all">
+                          https://the-plugd.vercel.app?ref={promoterData?.referralCode}
+                        </p>
+                      </div>
+                      <button 
+                        type="button"
+                        onClick={() => copyToClipboard(`https://the-plugd.vercel.app?ref=${promoterData?.referralCode}`, 'reply')}
+                        className="w-full border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
+                      >
+                        {copied === 'reply' ? <Check className="w-4 h-4 text-green-500" /> : "Copy Reply Link"}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-center text-center px-4">
+                    <p className="text-[0.75rem] text-muted font-medium italic">
+                      ① Post the first one. Then immediately ② reply to your own post with the link. This bypasses X&apos;s link suppression.
                     </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-6 pt-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
+                    <ExternalLink className="w-4 h-4 text-foreground" />
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground">DM Template</h3>
+                </div>
+
+                <div className="bg-pill border border-border rounded-2xl p-6 space-y-5">
+                  <p className="text-sm text-muted font-medium leading-relaxed">
+                    Hey [name], saw you&apos;re building on X — there&apos;s a directory called Plugd where builders get listed and discovered by niche and follower count. Thought you&apos;d find it useful: https://the-plugd.vercel.app?ref={promoterData?.referralCode}
+                  </p>
+                  <div className="space-y-3">
                     <button 
                       type="button"
-                      onClick={() => copyToClipboard("Just found this — 430+ X builders, founders and creators all in one place, sorted by niche and follower count. Actually useful. 👇", 'post')}
+                      onClick={() => copyToClipboard(`Hey [name], saw you're building on X — there's a directory called Plugd where builders get listed and discovered by niche and follower count. Thought you'd find it useful: https://the-plugd.vercel.app?ref=${promoterData?.referralCode}`, 'dm')}
                       className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
                     >
-                      {copied === 'post' ? <Check className="w-4 h-4" /> : "Copy Post"}
+                      {copied === 'dm' ? <Check className="w-4 h-4 text-green-500" /> : <><Copy className="w-5 h-5" /> Copy DM Template</>}
                     </button>
-                  </div>
-                  
-                  <div className="bg-pill border border-border rounded-2xl p-6 space-y-4">
-                    <p className="text-sm text-muted font-medium truncate">
-                      https://the-plugd.vercel.app?ref={promoterData?.referralCode}
+                    <p className="text-[0.7rem] text-muted/60 font-bold uppercase tracking-wider text-center">
+                      Replace [name] with their actual name before sending.
                     </p>
-                    <button 
-                      type="button"
-                      onClick={() => copyToClipboard(`https://the-plugd.vercel.app?ref=${promoterData?.referralCode}`, 'reply')}
-                      className="w-full border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
-                    >
-                      {copied === 'reply' ? <Check className="w-4 h-4" /> : "Copy Reply Link"}
-                    </button>
                   </div>
                 </div>
               </div>
