@@ -16,9 +16,10 @@ export async function GET() {
 
   return NextResponse.json({
     email: session.email,
-    isPaid: !!account,
-    isPromoter: !!promoter,
+    hasAccount: !!account,
+    hasPromoter: !!promoter,
     isAdmin: session.isAdmin,
+    accountData: account,
     promoterData: promoter
   });
 }

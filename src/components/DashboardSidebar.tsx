@@ -2,15 +2,17 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { User, LayoutGrid, LogOut, ArrowRight } from "lucide-react";
+import { User, LayoutGrid, LogOut, ArrowRight, UserPlus, Wallet, Lock, Plus as PlusIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface DashboardSidebarProps {
   email: string;
   isAdmin: boolean;
+  hasAccount: boolean;
+  hasPromoter: boolean;
 }
 
-export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarProps) {
+export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromoter }: DashboardSidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -25,7 +27,30 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
   };
 
   const navItems = [
-    { name: "Profile", href: "/dashboard", icon: User },
+    { 
+      name: "Profile", 
+      href: "/dashboard", 
+      icon: User, 
+      show: hasAccount,
+      locked: !hasAccount,
+      upgradeHref: "/dashboard#upgrade-account"
+    },
+    { 
+      name: "Referrals", 
+      href: "/dashboard#refer", 
+      icon: UserPlus, 
+      show: hasPromoter,
+      locked: !hasPromoter,
+      upgradeHref: "/dashboard#refer"
+    },
+    { 
+      name: "Earnings", 
+      href: "/dashboard#refer", 
+      icon: Wallet, 
+      show: hasPromoter,
+      locked: !hasPromoter,
+      upgradeHref: "/dashboard#refer"
+    },
   ];
 
   const adminItems = [
@@ -60,7 +85,26 @@ export default function DashboardSidebar({ email, isAdmin }: DashboardSidebarPro
       <nav className="flex-1 px-5 space-y-1">
         {navItems.map((item) => {
           const Icon = item.icon;
-          const isActive = pathname === item.href;
+          const isActive = pathname === item.href && !item.locked;
+          
+          if (!item.show) {
+            return (
+              <Link
+                key={item.name}
+                href={item.upgradeHref}
+                className="flex items-center justify-between gap-3 px-4 py-[0.75rem] rounded-xl text-muted/40 hover:text-muted/70 transition-all group"
+              >
+                <div className="flex items-center gap-3">
+                  <Icon size={18} />
+                  <span className="text-[0.95rem] font-medium tracking-tight">
+                    {item.name}
+                  </span>
+                </div>
+                <PlusIcon size={14} className="opacity-40 group-hover:opacity-100 transition-opacity" />
+              </Link>
+            );
+          }
+
           return (
             <Link
               key={item.name}
