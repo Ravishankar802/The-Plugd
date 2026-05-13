@@ -2,6 +2,7 @@ import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import DashboardSidebar from "@/components/DashboardSidebar";
 import Footer from "@/components/Footer";
+import prisma from "@/lib/prisma";
 
 export default async function DashboardLayout({
   children,

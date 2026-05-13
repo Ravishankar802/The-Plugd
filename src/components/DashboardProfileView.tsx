@@ -9,7 +9,7 @@ import {
   Camera,
   Save,
   User,
-  Plus,
+  Plus as PlusIcon,
   ArrowRight,
   Gift,
   Copy,
@@ -322,7 +322,7 @@ export default function DashboardProfileView() {
               </p>
             )}
           </div>
-
+            </form>
           </div>
         </>
       )}
