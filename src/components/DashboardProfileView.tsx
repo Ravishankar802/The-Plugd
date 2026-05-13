@@ -15,7 +15,8 @@ import {
   Copy,
   ExternalLink,
   Lock,
-  Wallet
+  Wallet,
+  TrendingUp
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -48,9 +49,9 @@ export default function DashboardProfileView() {
   const [selectedVariation, setSelectedVariation] = useState(0);
 
   const POST_VARIATIONS = [
-    "There's a directory of X builders where you get paid $1 just for sharing it. Been using it. Here's my link 👇",
-    "Found a directory of every builder, founder and creator on X — sorted by niche and follower count. Actually useful for finding people to follow. 👇",
-    "If you're building on X and you're not in this directory yet, you're missing out on free visibility. 👇"
+    "This referral program pays $1 every time someone joins through your link. No cap. Keep sharing, keep earning. $10,000 is not unrealistic. 👇",
+    "Easiest $1 you'll make today — share a link, someone joins Plugd, you get paid. Stack enough of those and it adds up to $10,000+. 👇",
+    "Most people sleep on referral programs. This one pays $1 per signup, no limit. The people who move first earn the most. 👇"
   ];
 
   // Determine active section from tab param
@@ -652,12 +653,12 @@ export default function DashboardProfileView() {
 
                 <div className="bg-pill border border-border rounded-2xl p-6 space-y-5">
                   <p className="text-sm text-muted font-medium leading-relaxed">
-                    Hey [name], saw you&apos;re building on X — there&apos;s a directory called Plugd where builders get listed and discovered by niche and follower count. Thought you&apos;d find it useful: https://the-plugd.vercel.app?ref={promoterData?.referralCode}
+                    Hey [name] — there&apos;s a referral program that pays $1 every time someone joins through your link. No cap. People are already making serious money with this. 1,000 referrals = $1,000. 10,000 referrals = $10,000. The product is Plugd — a directory of X builders that&apos;s blowing up right now. Share it, start earning 👉 the-plugd.vercel.app?ref={promoterData?.referralCode}
                   </p>
                   <div className="space-y-3">
                     <button 
                       type="button"
-                      onClick={() => copyToClipboard(`Hey [name], saw you're building on X — there's a directory called Plugd where builders get listed and discovered by niche and follower count. Thought you'd find it useful: https://the-plugd.vercel.app?ref=${promoterData?.referralCode}`, 'dm')}
+                      onClick={() => copyToClipboard(`Hey [name] — there's a referral program that pays $1 every time someone joins through your link. No cap. People are already making serious money with this. 1,000 referrals = $1,000. 10,000 referrals = $10,000. The product is Plugd — a directory of X builders that's blowing up right now. Share it, start earning 👉 the-plugd.vercel.app?ref=${promoterData?.referralCode}`, 'dm')}
                       className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
                     >
                       {copied === 'dm' ? <Check className="w-4 h-4 text-green-500" /> : <><Copy className="w-5 h-5" /> Copy DM Template</>}
@@ -665,6 +666,44 @@ export default function DashboardProfileView() {
                     <p className="text-[0.7rem] text-muted/60 font-bold uppercase tracking-wider text-center">
                       Replace [name] with their actual name before sending.
                     </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-6 pt-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
+                    <TrendingUp className="w-4 h-4 text-foreground" />
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground">How to hit $1,000 fast</h3>
+                </div>
+
+                <div className="bg-pill border border-border rounded-2xl p-8 space-y-6">
+                  <div className="space-y-4">
+                    <div className="flex gap-4">
+                      <div className="w-6 h-6 rounded-full bg-[#f97316]/10 text-[#f97316] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</div>
+                      <p className="text-sm text-muted font-medium leading-relaxed">
+                        Post 10-20 times per day using the variations above. Immediately reply to your own post with the link — this bypasses X&apos;s link suppression
+                      </p>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="w-6 h-6 rounded-full bg-[#f97316]/10 text-[#f97316] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</div>
+                      <p className="text-sm text-muted font-medium leading-relaxed">
+                        DM 10-20 people every day who are active builders on X — consistency beats everything
+                      </p>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="w-6 h-6 rounded-full bg-[#f97316]/10 text-[#f97316] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</div>
+                      <p className="text-sm text-muted font-medium leading-relaxed">
+                        Reply under big builder accounts&apos; posts — add value first, then drop your link in a follow-up reply
+                      </p>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="w-6 h-6 rounded-full bg-[#f97316]/10 text-[#f97316] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</div>
+                      <p className="text-sm text-muted font-medium leading-relaxed">
+                        The math is simple: 1,000 people = $1,000. Start today, not tomorrow
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
