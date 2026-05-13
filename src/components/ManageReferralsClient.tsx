@@ -191,163 +191,163 @@ export default function ManageReferralsClient() {
   );
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-[1400px] mx-auto w-full space-y-6">
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-[1200px] mx-auto w-full space-y-5">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         <div>
-          <h1 className="text-4xl font-bold text-foreground leading-tight tracking-tight">Manage Referrals</h1>
-          <p className="text-muted-foreground text-base mt-1 font-normal">Track promoter performance and manage payouts.</p>
+          <h1 className="text-3xl font-bold text-foreground leading-tight tracking-tight">Manage Referrals</h1>
+          <p className="text-muted-foreground text-sm mt-1 font-normal">Track promoter performance and manage payouts.</p>
         </div>
         <div className="flex items-center gap-2">
           <button 
             onClick={exportCsv}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-pill border border-border text-foreground hover:bg-accent transition-all font-bold text-sm shadow-sm"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-pill border border-border text-foreground hover:bg-accent transition-all font-bold text-xs shadow-sm"
           >
-            <Download size={14} />
+            <Download size={12} />
             CSV
           </button>
           <Link 
             href="/"
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-selected text-selected-foreground font-bold text-sm shadow-sm hover:opacity-90 transition-all"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-selected text-selected-foreground font-bold text-xs shadow-sm hover:opacity-90 transition-all"
           >
-            Home <ArrowRight size={14} />
+            Home <ArrowRight size={12} />
           </Link>
         </div>
       </div>
 
       {/* Stats Summary */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-        <div className="bg-pill border border-border rounded-2xl p-5 shadow-sm">
-          <p className="text-muted text-[0.65rem] font-bold uppercase tracking-[0.15em] mb-2">Total Pending</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
+        <div className="bg-pill border border-border rounded-xl p-4 shadow-sm">
+          <p className="text-muted text-[0.6rem] font-bold uppercase tracking-[0.15em] mb-1.5">Total Pending</p>
           <div className="flex items-end justify-between">
-            <p className="text-3xl font-bold text-[#f97316]">${stats.totalPending.toFixed(2)}</p>
-            <div className="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
-              <Wallet className="w-4 h-4 text-[#f97316]" />
+            <p className="text-2xl font-bold text-[#f97316]">${stats.totalPending.toFixed(2)}</p>
+            <div className="w-7 h-7 rounded-lg bg-orange-500/10 flex items-center justify-center">
+              <Wallet className="w-3.5 h-3.5 text-[#f97316]" />
             </div>
           </div>
         </div>
-        <div className="bg-pill border border-border rounded-2xl p-5 shadow-sm">
-          <p className="text-muted text-[0.65rem] font-bold uppercase tracking-[0.15em] mb-2">Total Paid Out</p>
+        <div className="bg-pill border border-border rounded-xl p-4 shadow-sm">
+          <p className="text-muted text-[0.6rem] font-bold uppercase tracking-[0.15em] mb-1.5">Total Paid Out</p>
           <div className="flex items-end justify-between">
-            <p className="text-3xl font-bold text-foreground">${stats.totalPaid.toFixed(2)}</p>
-            <div className="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center">
-              <Check className="w-4 h-4 text-green-500" />
+            <p className="text-2xl font-bold text-foreground">${stats.totalPaid.toFixed(2)}</p>
+            <div className="w-7 h-7 rounded-lg bg-green-500/10 flex items-center justify-center">
+              <Check className="w-3.5 h-3.5 text-green-500" />
             </div>
           </div>
         </div>
-        <div className="bg-pill border border-border rounded-2xl p-5 shadow-sm">
-          <p className="text-muted text-[0.65rem] font-bold uppercase tracking-[0.15em] mb-2">Platform Revenue</p>
+        <div className="bg-pill border border-border rounded-xl p-4 shadow-sm">
+          <p className="text-muted text-[0.6rem] font-bold uppercase tracking-[0.15em] mb-1.5">Platform Revenue</p>
           <div className="flex items-end justify-between">
-            <p className="text-3xl font-bold text-foreground">${stats.totalRevenue.toFixed(2)}</p>
-            <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
-              <TrendingUp className="w-4 h-4 text-blue-500" />
+            <p className="text-2xl font-bold text-foreground">${stats.totalRevenue.toFixed(2)}</p>
+            <div className="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center">
+              <TrendingUp className="w-3.5 h-3.5 text-blue-500" />
             </div>
           </div>
         </div>
-        <div className="bg-pill border border-border rounded-2xl p-5 shadow-sm">
-          <p className="text-muted text-[0.65rem] font-bold uppercase tracking-[0.15em] mb-2">Conversions</p>
+        <div className="bg-pill border border-border rounded-xl p-4 shadow-sm">
+          <p className="text-muted text-[0.6rem] font-bold uppercase tracking-[0.15em] mb-1.5">Conversions</p>
           <div className="flex items-end justify-between">
-            <p className="text-3xl font-bold text-foreground">{stats.totalConversions}</p>
-            <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center">
-              <ArrowRight className="w-4 h-4 text-purple-500" />
+            <p className="text-2xl font-bold text-foreground">{stats.totalConversions}</p>
+            <div className="w-7 h-7 rounded-lg bg-purple-500/10 flex items-center justify-center">
+              <ArrowRight className="w-3.5 h-3.5 text-purple-500" />
             </div>
           </div>
         </div>
       </div>
 
       {/* Table Section */}
-      <div className="bg-pill border border-border rounded-2xl shadow-sm overflow-hidden flex flex-col">
-        <div className="p-4 border-b border-border flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted/60" />
+      <div className="bg-pill border border-border rounded-xl shadow-sm overflow-hidden flex flex-col">
+        <div className="p-3 border-b border-border flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div className="relative flex-1 max-w-sm">
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted/60" />
             <input 
               type="text"
               placeholder="Search email, name or code..."
-              className="w-full bg-background border border-border rounded-lg pl-10 pr-4 py-2 text-sm text-foreground placeholder:text-muted/40 focus:outline-none focus:border-muted transition-all shadow-inner"
+              className="w-full bg-background border border-border rounded-lg pl-8 pr-3 py-1.5 text-xs text-foreground placeholder:text-muted/40 focus:outline-none focus:border-muted transition-all shadow-inner"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          <p className="text-muted text-xs font-medium">Found {filteredAndSorted.length} promoters</p>
+          <p className="text-muted text-[0.7rem] font-medium">Found {filteredAndSorted.length}</p>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse text-sm">
+          <table className="w-full text-left border-collapse text-xs">
             <thead>
               <tr className="bg-foreground/[0.02] border-b border-border">
-                <th className="px-4 py-3 text-xs font-bold text-muted uppercase tracking-widest cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("name")}>
-                  <div className="flex items-center gap-2">User {sortField === "name" && <ChevronDown size={12} className={sortOrder === "asc" ? "rotate-180" : ""} />}</div>
+                <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("name")}>
+                  <div className="flex items-center gap-1.5">User {sortField === "name" && <ChevronDown size={10} className={sortOrder === "asc" ? "rotate-180" : ""} />}</div>
                 </th>
-                <th className="px-4 py-3 text-xs font-bold text-muted uppercase tracking-widest cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("referralCode")}>
+                <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("referralCode")}>
                   Code
                 </th>
-                <th className="hidden sm:table-cell px-4 py-3 text-xs font-bold text-muted uppercase tracking-widest text-center cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("totalClicks")}>
+                <th className="hidden sm:table-cell px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("totalClicks")}>
                   Clicks
                 </th>
-                <th className="px-4 py-3 text-xs font-bold text-muted uppercase tracking-widest text-center cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("totalSignups")}>
+                <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("totalSignups")}>
                   Signups
                 </th>
-                <th className="hidden lg:table-cell px-4 py-3 text-xs font-bold text-muted uppercase tracking-widest text-center cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("revenueGenerated")}>
+                <th className="hidden lg:table-cell px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("revenueGenerated")}>
                   Rev
                 </th>
-                <th className="px-4 py-3 text-xs font-bold text-muted uppercase tracking-widest text-right cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("pendingPayout")}>
+                <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("pendingPayout")}>
                   Pending
                 </th>
-                <th className="hidden lg:table-cell px-4 py-3 text-xs font-bold text-muted uppercase tracking-widest text-right cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("totalPaid")}>
+                <th className="hidden lg:table-cell px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("totalPaid")}>
                   Paid
                 </th>
-                <th className="px-4 py-3 text-xs font-bold text-muted uppercase tracking-widest text-right">Action</th>
+                <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border/40">
               {filteredAndSorted.length > 0 ? filteredAndSorted.map((p) => (
                 <tr key={p.id} className="hover:bg-foreground/[0.01] transition-colors group">
-                  <td className="px-4 py-3">
-                    <div className="flex flex-col max-w-[180px]">
+                  <td className="px-3 py-2.5">
+                    <div className="flex flex-col max-w-[150px]">
                       <span className="text-foreground font-bold truncate" title={p.name}>{p.name}</span>
-                      <span className="text-muted text-xs truncate" title={p.email}>{p.email}</span>
+                      <span className="text-muted text-[0.65rem] truncate" title={p.email}>{p.email}</span>
                     </div>
                   </td>
-                  <td className="px-4 py-3">
-                    <div className="max-w-[120px] truncate">
+                  <td className="px-3 py-2.5">
+                    <div className="max-w-[100px] truncate">
                       <button 
                         onClick={() => handleCopy(`https://the-plugd.vercel.app?ref=${p.referralCode}`, `link-${p.id}`)}
-                        className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-accent/50 border border-border text-foreground text-xs font-mono font-bold hover:bg-accent transition-all group/btn"
+                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-accent/50 border border-border text-foreground text-[0.65rem] font-mono font-bold hover:bg-accent transition-all group/btn"
                       >
                         <span className="truncate">{p.referralCode}</span>
-                        {copied === `link-${p.id}` ? <Check size={10} className="text-green-500" /> : <Copy size={10} className="text-muted group-hover/btn:text-foreground" />}
+                        {copied === `link-${p.id}` ? <Check size={8} className="text-green-500" /> : <Copy size={8} className="text-muted group-hover/btn:text-foreground" />}
                       </button>
                     </div>
                   </td>
-                  <td className="hidden sm:table-cell px-4 py-3 text-center text-muted font-medium">{p.totalClicks}</td>
-                  <td className="px-4 py-3 text-center">
-                    <span className="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-500 text-[0.7rem] font-bold">
+                  <td className="hidden sm:table-cell px-3 py-2.5 text-center text-muted font-medium">{p.totalClicks}</td>
+                  <td className="px-3 py-2.5 text-center">
+                    <span className="px-1.5 py-0.5 rounded-full bg-blue-500/10 text-blue-500 text-[0.6rem] font-bold">
                       {p.totalSignups}
                     </span>
                   </td>
-                  <td className="hidden lg:table-cell px-4 py-3 text-center font-bold text-foreground">
+                  <td className="hidden lg:table-cell px-3 py-2.5 text-center font-bold text-foreground">
                     ${p.revenueGenerated.toFixed(0)}
                   </td>
-                  <td className="px-4 py-3 text-right">
-                    <span className={`px-2 py-1 rounded-md font-bold text-xs ${p.pendingPayout > 0 ? "bg-orange-500/10 text-[#f97316]" : "bg-muted/10 text-muted/60"}`}>
+                  <td className="px-3 py-2.5 text-right">
+                    <span className={`px-1.5 py-0.5 rounded-md font-bold text-[0.7rem] ${p.pendingPayout > 0 ? "bg-orange-500/10 text-[#f97316]" : "bg-muted/10 text-muted/60"}`}>
                       ${p.pendingPayout.toFixed(2)}
                     </span>
                   </td>
-                  <td className="hidden lg:table-cell px-4 py-3 text-right text-foreground font-bold">
+                  <td className="hidden lg:table-cell px-3 py-2.5 text-right text-foreground font-bold">
                     ${p.totalPaid.toFixed(2)}
                   </td>
-                  <td className="px-4 py-3 text-right">
-                    <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <td className="px-3 py-2.5 text-right">
+                    <div className="flex items-center justify-end gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                       <button 
                         onClick={() => setHistoryPromoter(p)}
-                        className="p-1.5 rounded-lg bg-background border border-border text-muted hover:text-foreground hover:border-muted transition-all shadow-sm"
+                        className="p-1 rounded-md bg-background border border-border text-muted hover:text-foreground hover:border-muted transition-all shadow-sm"
                         title="Payout History"
                       >
-                        <History size={14} />
+                        <History size={12} />
                       </button>
                       <button 
                         disabled={p.pendingPayout <= 0}
                         onClick={() => setPayoutPromoter(p)}
-                        className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all shadow-sm ${
+                        className={`px-2 py-1 rounded-md font-bold text-[0.65rem] transition-all shadow-sm ${
                           p.pendingPayout > 0 
                           ? "bg-[#f97316] text-white hover:opacity-90 active:scale-[0.98]" 
                           : "bg-muted/10 text-muted/40 cursor-not-allowed"
@@ -360,10 +360,10 @@ export default function ManageReferralsClient() {
                 </tr>
               )) : (
                 <tr>
-                  <td colSpan={8} className="px-4 py-12 text-center">
+                  <td colSpan={8} className="px-3 py-10 text-center">
                     <div className="flex flex-col items-center gap-2">
-                      <Search className="w-6 h-6 text-muted/40" />
-                      <p className="text-muted font-medium text-xs">No promoters found.</p>
+                      <Search className="w-5 h-5 text-muted/40" />
+                      <p className="text-muted font-medium text-[0.65rem]">No promoters found.</p>
                     </div>
                   </td>
                 </tr>
