@@ -45,7 +45,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
     
     // Hardcoded URL format as requested by user
     const redirectUrl = 'https://the-plugd.vercel.app/dashboard';
-    const checkoutUrl = `https://www.checkout.dodopayments.com/buy/pdt_0NejlJx2mdXJSOgzLprt5?quantity=1&redirect_url=${encodeURIComponent(redirectUrl)}&showDiscounts=false&customer_email=${encodeURIComponent(email)}&metadata_type=promoter&metadata_email=${encodeURIComponent(email)}`;
+    const checkoutUrl = `https://www.checkout.dodopayments.com/buy/pdt_0NejIjx2mdXJSOgzLprt5?quantity=1&redirect_url=${encodeURIComponent(redirectUrl)}&showDiscounts=false&customer_email=${encodeURIComponent(email)}&metadata_type=promoter&metadata_email=${encodeURIComponent(email)}`;
     
     console.log("DODO_DEBUG: Constructed Checkout URL:", checkoutUrl);
     
