@@ -430,8 +430,6 @@ export default function HomeClient({
                 <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
                 <span className="select-none">·</span>
                 <Link href="/stats" className="hover:text-foreground transition-colors">Stats</Link>
-                <span className="select-none">·</span>
-                <Link href="/100-vs-100k" className="hover:text-foreground transition-colors">100 vs 100K</Link>
               </div>
 
               <div className="flex justify-center w-full relative group">
