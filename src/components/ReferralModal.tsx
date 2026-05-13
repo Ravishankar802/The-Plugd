@@ -80,14 +80,14 @@ export default function ReferralModal({ isOpen, onClose, onJoin }: ReferralModal
 
           {/* Stat Boxes (Reduced padding & font) */}
           <div className="grid grid-cols-2 gap-3 mb-7 w-full">
-            <div className="bg-white dark:bg-[#1a1a1a] border border-border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5">
+            <div className="bg-white dark:bg-card border border-border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm">
               <span className="text-[0.6rem] text-muted font-bold uppercase tracking-[0.05em] text-center leading-tight">
                 if you refer <br /> 1,000 builders
               </span>
               <span className="text-[1.35rem] font-[900] text-foreground tracking-tighter">$1,000</span>
             </div>
             
-            <div className="bg-white dark:bg-[#1a1a1a] border border-border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5">
+            <div className="bg-white dark:bg-card border border-border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm">
               <span className="text-[0.6rem] text-muted font-bold uppercase tracking-[0.05em] text-center leading-tight">
                 top referrers <br /> could earn
               </span>

@@ -373,20 +373,20 @@ export default function DashboardProfileView() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-background border border-border rounded-2xl p-6 space-y-4">
+              <div className="bg-pill border border-border rounded-2xl p-6 space-y-4">
                 <p className="text-sm text-muted font-medium line-clamp-3">
                   &quot;Just found this — 430+ X builders, founders and creators all in one place, sorted by niche and follower count. Actually useful. 👇&quot;
                 </p>
                 <button 
                   type="button"
                   onClick={() => copyToClipboard("Just found this — 430+ X builders, founders and creators all in one place, sorted by niche and follower count. Actually useful. 👇", 'post')}
-                  className="w-full bg-foreground text-background py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-[0.98]"
+                  className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
                 >
                   {copied === 'post' ? <Check className="w-4 h-4" /> : "Copy Post"}
                 </button>
               </div>
               
-              <div className="bg-background border border-border rounded-2xl p-6 space-y-4">
+              <div className="bg-pill border border-border rounded-2xl p-6 space-y-4">
                 <p className="text-sm text-muted font-medium truncate">
                   https://the-plugd.vercel.app?ref={account.xHandle.replace(/^@+/, '')}
                 </p>
