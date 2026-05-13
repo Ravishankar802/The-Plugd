@@ -16,7 +16,13 @@ export default async function DashboardLayout({
   }
 
   const [account, promoter] = await Promise.all([
-    prisma.account.findFirst({ where: { email: session.email, paid: true } }),
+    prisma.account.findFirst({ 
+      where: { email: session.email, paid: true },
+      orderBy: [
+        { isClaimed: 'desc' },
+        { createdAt: 'desc' }
+      ]
+    }),
     prisma.promoter.findUnique({ where: { email: session.email } })
   ]);
 

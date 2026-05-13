@@ -17,9 +17,10 @@ export async function POST(req: Request) {
           mode: 'insensitive'
         }
       },
-      orderBy: {
-        createdAt: 'desc'
-      }
+      orderBy: [
+        { isClaimed: 'desc' },
+        { createdAt: 'desc' }
+      ]
     });
 
     if (!account) {

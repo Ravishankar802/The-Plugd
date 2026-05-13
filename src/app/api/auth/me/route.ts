@@ -12,7 +12,10 @@ export async function GET() {
   const [account, promoter] = await Promise.all([
     prisma.account.findFirst({ 
       where: { email: session.email, paid: true },
-      orderBy: { createdAt: 'desc' }
+      orderBy: [
+        { isClaimed: 'desc' },
+        { createdAt: 'desc' }
+      ]
     }),
     prisma.promoter.findUnique({ where: { email: session.email } })
   ]);
