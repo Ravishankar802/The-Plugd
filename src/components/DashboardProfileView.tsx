@@ -15,7 +15,6 @@ import {
   Copy,
   ExternalLink,
   Lock,
-  LayoutGrid,
   Wallet
 } from "lucide-react";
 import Link from "next/link";
@@ -44,11 +43,9 @@ export default function DashboardProfileView() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [promoterData, setPromoterData] = useState<any>(null);
   const [isReferModalOpen, setIsReferModalOpen] = useState(false);
-  const [crmData, setCrmData] = useState<any[]>([]);
-  const [crmLoading, setCrmLoading] = useState(false);
 
   // Determine active section from tab param
-  const activeSection = ["profile", "index", "referrals", "earnings"].includes(tab) ? tab : "profile";
+  const activeSection = ["profile", "referrals", "earnings"].includes(tab) ? tab : "profile";
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -74,26 +71,6 @@ export default function DashboardProfileView() {
     fetchUser();
   }, [router]);
 
-  const fetchCRM = async () => {
-    setCrmLoading(true);
-    try {
-      const res = await fetch("/api/dashboard/crm");
-      if (res.ok) {
-        const data = await res.json();
-        setCrmData(data);
-      }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setCrmLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (activeSection === "index") {
-      fetchCRM();
-    }
-  }, [activeSection]);
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -369,73 +346,6 @@ export default function DashboardProfileView() {
             </div>
           )}
         </>
-      )}
-
-      {/* Index Section */}
-      {activeSection === "index" && (
-        <div className="space-y-8">
-          <div>
-            <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Your Index</h1>
-            <p className="text-muted text-[1rem] mt-1.5 font-normal">Manage the accounts you&apos;ve followed, saved, or skipped.</p>
-          </div>
-
-          {(!hasAccount && !isAdmin) ? (
-            <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="w-20 h-20 rounded-3xl bg-foreground/5 flex items-center justify-center mb-6">
-                <Lock className="w-10 h-10 text-muted" />
-              </div>
-              <h2 className="text-2xl font-bold mb-2">Index Locked</h2>
-              <p className="text-muted max-w-sm mb-8">Index features (Follow, Save, Skip) are exclusive to paid members.</p>
-              <button 
-                onClick={() => window.location.href = "/?modal=add"}
-                className="bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-white/90 transition-all flex items-center gap-2 shadow-xl"
-              >
-                Unlock Index for $2 <ArrowRight size={18} />
-              </button>
-            </div>
-          ) : crmLoading ? (
-            <div className="flex justify-center py-20">
-              <Loader2 size={40} className="animate-spin text-[#f97316]" />
-            </div>
-          ) : crmData.length === 0 ? (
-            <div className="bg-pill border border-border rounded-2xl p-20 text-center flex flex-col items-center gap-4">
-              <div className="w-16 h-16 bg-foreground/5 rounded-2xl flex items-center justify-center">
-                <LayoutGrid className="w-8 h-8 text-muted" />
-              </div>
-              <p className="text-foreground font-bold text-lg">No Index data yet</p>
-              <p className="text-muted text-sm max-w-xs">Start browsing accounts on the homepage to build your list.</p>
-              <Link href="/" className="text-[#f97316] font-bold hover:underline mt-2">Go to Homepage</Link>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {crmData.map((item) => (
-                <Link 
-                  key={item.id}
-                  href={`/u/${item.account.xHandle.replace(/^@+/, '')}`}
-                  className="bg-pill border border-border rounded-2xl p-6 hover:border-[#f97316]/50 transition-all group relative"
-                >
-                  <div className="absolute top-4 right-4">
-                    <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                      item.status === 'followed' ? 'bg-green-500/10 text-green-500 border border-green-500/20' :
-                      item.status === 'saved' ? 'bg-orange-500/10 text-orange-500 border border-orange-500/20' :
-                      'bg-red-500/10 text-red-500 border border-red-500/20'
-                    }`}>
-                      {item.status.replace('_', ' ')}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-4 mb-4">
-                    <img src={item.account.avatarUrl} className="w-12 h-12 rounded-full border border-border" />
-                    <div>
-                      <h3 className="font-bold text-foreground group-hover:text-[#f97316] transition-colors truncate max-w-[120px]">{item.account.name}</h3>
-                      <p className="text-xs text-muted">@{item.account.xHandle.replace(/^@+/, '')}</p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-muted line-clamp-2 min-h-[40px]">{item.account.bio}</p>
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
       )}
 
       {/* Referrals Section */}

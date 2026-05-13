@@ -39,15 +39,6 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
       upgradeHref: "/?modal=add"
     },
     { 
-      name: "Index", 
-      id: "index",
-      href: "/dashboard?tab=index", 
-      icon: LayoutGrid, 
-      show: hasAccount || isAdmin,
-      locked: !hasAccount && !isAdmin,
-      upgradeHref: "/?modal=add"
-    },
-    { 
       name: "Referrals", 
       id: "referrals",
       href: "/dashboard?tab=referrals", 
