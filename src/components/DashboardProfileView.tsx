@@ -156,12 +156,6 @@ export default function DashboardProfileView() {
     );
   }
 
-  if (!account) {
-    if (typeof window !== "undefined") {
-      window.location.href = "/login";
-    }
-    return null;
-  }
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
