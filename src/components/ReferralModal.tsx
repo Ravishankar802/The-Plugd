@@ -50,7 +50,7 @@ export default function ReferralModal({ isOpen, onClose, onJoin }: ReferralModal
               Join Plugd&apos;s Referral Program
             </h2>
             <p className="text-[0.95rem] text-[#f97316] font-bold tracking-tight">
-              Earn $1 for every builder you refer
+              Refer your network to join Plugd and earn $1 for every successful referral.
             </p>
           </div>
 
