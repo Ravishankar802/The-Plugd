@@ -16,11 +16,18 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
   const [email, setEmail] = useState("");
   const [showEmailInput, setShowEmailInput] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: userEmail || "",
+    xHandle: "",
+    payoutMethod: "PayPal" as "PayPal" | "UPI",
+    payoutDetails: ""
+  });
 
   useEffect(() => {
     setMounted(true);
     if (userEmail) {
-      setEmail(userEmail);
+      setFormData(prev => ({ ...prev, email: userEmail }));
     }
   }, [userEmail]);
 
@@ -47,24 +54,47 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
       setLoading(false);
     }
 
-    if (!userEmail && !showEmailInput) {
+    if (!showEmailInput) {
       setShowEmailInput(true);
       return;
     }
 
-    if (showEmailInput && (!email || !email.includes("@"))) {
-      alert("Please enter a valid email to continue.");
+    // Validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.payoutDetails.trim()) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    if (!formData.email.includes("@")) {
+      alert("Please enter a valid email.");
       return;
     }
 
     setLoading(true);
     
+    // Clean X Handle
+    let handle = formData.xHandle.trim();
+    if (handle.startsWith("@")) handle = handle.substring(1);
+
     // Hardcoded URL format as requested by user
     const redirectUrl = 'https://the-plugd.vercel.app/dashboard';
-    const checkoutUrl = `https://www.checkout.dodopayments.com/buy/pdt_0NejIjx2mdXJSOgzLprt5?quantity=1&redirect_url=${encodeURIComponent(redirectUrl)}&showDiscounts=false&customer_email=${encodeURIComponent(email)}&metadata_type=promoter&metadata_email=${encodeURIComponent(email)}`;
+    const baseUrl = 'https://www.checkout.dodopayments.com/buy/pdt_0NejIjx2mdXJSOgzLprt5';
     
+    const params = new URLSearchParams({
+      quantity: '1',
+      redirect_url: redirectUrl,
+      showDiscounts: 'false',
+      customer_email: formData.email,
+      metadata_type: 'promoter',
+      metadata_name: formData.name,
+      metadata_email: formData.email,
+      metadata_xHandle: handle,
+      metadata_payoutMethod: formData.payoutMethod,
+      metadata_payoutDetails: formData.payoutDetails
+    });
+
+    const checkoutUrl = `${baseUrl}?${params.toString()}`;
     console.log("DODO_DEBUG: Constructed Checkout URL:", checkoutUrl);
-    
     window.location.href = checkoutUrl;
   };
 
@@ -96,7 +126,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
         </button>
 
         {/* Content Area */}
-        <div className="px-8 pt-10 pb-8 flex flex-col items-center">
+        <div className={`px-8 pt-10 pb-8 flex flex-col items-center max-h-[90vh] overflow-y-auto no-scrollbar`}>
           
           {/* Top Decorative Icon */}
           <div className="flex justify-center mb-5">
@@ -120,26 +150,89 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
           </div>
 
           {showEmailInput ? (
-            <div className="w-full space-y-4 mb-7 animate-in fade-in slide-in-from-bottom-2 duration-300">
-              <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
-                <input 
-                  type="email"
-                  placeholder="Enter your email to join"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  style={{ 
-                    backgroundColor: isDark ? '#262626' : '#f9f9f9',
-                    borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
-                    color: isDark ? '#ffffff' : '#000000'
-                  }}
-                  className="w-full border rounded-xl pl-12 pr-4 py-4 focus:outline-none focus:border-[#f97316] transition-all"
-                  autoFocus
-                />
+            <div className="w-full space-y-5 mb-7 animate-in fade-in slide-in-from-bottom-2 duration-300">
+              <div className="space-y-4">
+                {/* Full Name */}
+                <div className="space-y-1.5">
+                  <label className="text-[0.7rem] font-bold text-muted uppercase tracking-wider ml-1">Full Name</label>
+                  <input 
+                    type="text"
+                    placeholder="Your full name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    style={{ backgroundColor: isDark ? '#262626' : '#f9f9f9', borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)', color: isDark ? '#ffffff' : '#000000' }}
+                    className="w-full border rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#f97316] transition-all text-[0.95rem]"
+                  />
+                </div>
+
+                {/* Email */}
+                <div className="space-y-1.5">
+                  <label className="text-[0.7rem] font-bold text-muted uppercase tracking-wider ml-1">Email</label>
+                  <input 
+                    type="email"
+                    placeholder="your@email.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    style={{ backgroundColor: isDark ? '#262626' : '#f9f9f9', borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)', color: isDark ? '#ffffff' : '#000000' }}
+                    className="w-full border rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#f97316] transition-all text-[0.95rem]"
+                  />
+                </div>
+
+                {/* X Handle */}
+                <div className="space-y-1.5">
+                  <label className="text-[0.7rem] font-bold text-muted uppercase tracking-wider ml-1">X Handle</label>
+                  <input 
+                    type="text"
+                    placeholder="@yourhandle"
+                    value={formData.xHandle}
+                    onChange={(e) => setFormData({ ...formData, xHandle: e.target.value })}
+                    style={{ backgroundColor: isDark ? '#262626' : '#f9f9f9', borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)', color: isDark ? '#ffffff' : '#000000' }}
+                    className="w-full border rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#f97316] transition-all text-[0.95rem]"
+                  />
+                </div>
+
+                {/* Payout Method Toggle */}
+                <div className="space-y-1.5">
+                  <label className="text-[0.7rem] font-bold text-muted uppercase tracking-wider ml-1">Payout Method</label>
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, payoutMethod: "PayPal" })}
+                      className={`flex-1 py-3 rounded-xl border font-bold transition-all ${
+                        formData.payoutMethod === "PayPal" 
+                        ? "bg-[#f97316] text-white border-[#f97316]" 
+                        : "bg-transparent text-muted border-border hover:bg-accent"
+                      }`}
+                    >
+                      PayPal
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, payoutMethod: "UPI" })}
+                      className={`flex-1 py-3 rounded-xl border font-bold transition-all ${
+                        formData.payoutMethod === "UPI" 
+                        ? "bg-[#f97316] text-white border-[#f97316]" 
+                        : "bg-transparent text-muted border-border hover:bg-accent"
+                      }`}
+                    >
+                      UPI
+                    </button>
+                  </div>
+                </div>
+
+                {/* Payout Details */}
+                <div className="space-y-1.5">
+                  <label className="text-[0.7rem] font-bold text-muted uppercase tracking-wider ml-1">Payout Details</label>
+                  <input 
+                    type="text"
+                    placeholder={formData.payoutMethod === "PayPal" ? "Your PayPal email" : "Your UPI ID (e.g. name@upi)"}
+                    value={formData.payoutDetails}
+                    onChange={(e) => setFormData({ ...formData, payoutDetails: e.target.value })}
+                    style={{ backgroundColor: isDark ? '#262626' : '#f9f9f9', borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)', color: isDark ? '#ffffff' : '#000000' }}
+                    className="w-full border rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#f97316] transition-all text-[0.95rem]"
+                  />
+                </div>
               </div>
-              <p className="text-[0.75rem] text-muted text-center font-medium">
-                We&apos;ll use this email to create your promoter account and track earnings.
-              </p>
             </div>
           ) : (
             <div className="space-y-4 mb-7 max-w-[280px] mx-auto">
