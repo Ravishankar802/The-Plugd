@@ -16,7 +16,7 @@ export default function ClaimButton({ xHandle }: ClaimButtonProps) {
     setLoading(true);
     try {
       const referralCode = searchParams.get("ref") || "";
-      const checkoutUrl = `https://checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=${encodeURIComponent(`https://the-plugd.vercel.app/login?message=Payment successful! Enter the email you used for payment to access your dashboard`)}&showDiscounts=false&metadata_claimHandle=${xHandle}${referralCode ? `&metadata_referralCode=${referralCode}` : ''}`;
+      const checkoutUrl = `https://www.checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1?quantity=1&redirect_url=${encodeURIComponent(`https://the-plugd.vercel.app/login?message=Payment successful! Enter the email you used for payment to access your dashboard`)}&showDiscounts=false&metadata_claimHandle=${xHandle}${referralCode ? `&metadata_referralCode=${referralCode}` : ''}`;
       window.location.href = checkoutUrl;
     } catch (err) {
       console.error(err);
