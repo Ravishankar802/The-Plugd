@@ -309,7 +309,7 @@ export default function HomeClient({
                 
                 <div className="flex items-center gap-2 relative z-10">
                   <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Payouts</span>
-                  <span className="text-[0.75rem] font-bold text-foreground">Within 48h</span>
+                  <span className="text-[0.75rem] font-bold text-foreground">Twice a month</span>
                 </div>
               </div>
             </div>

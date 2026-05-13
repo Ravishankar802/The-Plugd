@@ -734,7 +734,7 @@ export default function DashboardProfileView() {
               </div>
 
               <p className="text-[0.75rem] text-muted text-center font-medium flex items-center justify-center gap-2">
-                Earnings are processed manually within 48 hours.
+                Payouts are processed twice a month.
                 <Link href="https://x.com/ravx003" target="_blank" className="text-[#f97316] font-bold hover:underline inline-flex items-center gap-1">
                   Contact Support <ExternalLink className="w-3 h-3" />
                 </Link>
