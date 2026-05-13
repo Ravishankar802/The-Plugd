@@ -133,26 +133,28 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
           <div className="mt-6">
             <div className="h-[1px] bg-border mx-4 mb-6" />
             <p className="px-4 text-[0.8125rem] font-bold text-muted/40 uppercase tracking-[0.15em] mb-4">Admin</p>
-            {adminItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all ${
-                    isActive 
-                      ? "bg-foreground/[0.05] border border-foreground/[0.08] text-foreground shadow-sm backdrop-blur-md" 
-                      : "text-muted hover:text-foreground"
-                  }`}
-                >
-                  <Icon size={18} className={isActive ? "text-foreground" : "text-muted"} />
-                  <span className={`text-[0.95rem] tracking-tight ${isActive ? "font-semibold" : "font-medium"}`}>
-                    {item.name}
-                  </span>
-                </Link>
-              );
-            })}
+            <div className="space-y-1">
+              {adminItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all ${
+                      isActive 
+                        ? "bg-foreground/[0.05] border border-foreground/[0.08] text-foreground shadow-sm backdrop-blur-md" 
+                        : "text-muted hover:text-foreground"
+                    }`}
+                  >
+                    <Icon size={18} className={isActive ? "text-foreground" : "text-muted"} />
+                    <span className={`text-[0.95rem] tracking-tight ${isActive ? "font-semibold" : "font-medium"}`}>
+                      {item.name}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         )}
       </nav>
