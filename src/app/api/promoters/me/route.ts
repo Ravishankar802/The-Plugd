@@ -21,9 +21,19 @@ export async function PATCH(req: Request) {
     const body = await req.json();
     const { name, xHandle, payoutMethod, payoutDetails } = body;
 
-    const promoter = await prisma.promoter.update({
+    console.log("DEBUG: Updating promoter:", email, body);
+
+    const promoter = await prisma.promoter.upsert({
       where: { email },
-      data: {
+      create: {
+        email,
+        name: name || email.split("@")[0],
+        xHandle: xHandle || null,
+        payoutMethod: payoutMethod || null,
+        payoutDetails: payoutDetails || null,
+        referralCode: `${email.split("@")[0]}-${Math.random().toString(36).substring(2, 6)}`,
+      },
+      update: {
         name,
         xHandle,
         payoutMethod,
@@ -32,8 +42,8 @@ export async function PATCH(req: Request) {
     });
 
     return NextResponse.json(promoter);
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error updating promoter profile:", error);
-    return NextResponse.json({ error: "Failed to update profile" }, { status: 500 });
+    return NextResponse.json({ error: error.message || "Failed to update profile" }, { status: 500 });
   }
 }

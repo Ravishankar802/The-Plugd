@@ -129,7 +129,8 @@ export default function DashboardProfileView() {
         setPromoterSuccess(true);
         setTimeout(() => setPromoterSuccess(false), 3000);
       } else {
-        alert("Failed to save changes.");
+        const data = await res.json();
+        alert("Failed to save changes: " + (data.error || "Unknown error"));
       }
     } catch (err) {
       alert("Failed to save changes.");
