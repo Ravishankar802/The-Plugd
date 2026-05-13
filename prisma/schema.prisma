@@ -45,30 +45,6 @@ model OtpToken {
   createdAt DateTime @default(now())
 }
 
-model AffiliateProgram {
-  id               Int     @id @default(autoincrement())
-  startupId        Int     @unique
-  totalClicks      Int     @default(0)
-  totalConversions Int     @default(0)
-  totalPaid        Float   @default(0)
-  active           Boolean @default(true)
-  Startup          Startup @relation(fields: [startupId], references: [id])
-}
-
-model Conversion {
-  id               Int      @id @default(autoincrement())
-  promoterId       Int
-  startupId        Int
-  referralCode     String
-  saleAmount       Float
-  commissionEarned Float
-  status           String   @default("pending")
-  paymentRef       String?
-  convertedAt      DateTime @default(now())
-  Promoter         Promoter @relation(fields: [promoterId], references: [id])
-  Startup          Startup  @relation(fields: [startupId], references: [id])
-}
-
 model ReferralPayout {
   id          String   @id @default(cuid())
   promoterId  Int
@@ -93,39 +69,10 @@ model Promoter {
   totalClicks      Int      @default(0)
   totalConversions Int      @default(0)
   createdAt        DateTime @default(now())
-  Conversion       Conversion[]
-  WithdrawalRequest WithdrawalRequest[]
   Referral         Referral[]
   payouts          ReferralPayout[]
 }
 
-model Startup {
-  id               Int               @id @default(autoincrement())
-  name             String
-  websiteUrl       String
-  email            String            @unique
-  description      String
-  logoUrl          String?
-  commissionPct    Float             @default(10)
-  balance          Float             @default(0)
-  postbackSecret   String            @unique
-  status           String            @default("pending")
-  createdAt        DateTime          @default(now())
-  AffiliateProgram AffiliateProgram?
-  Conversion       Conversion[]
-}
-
-model WithdrawalRequest {
-  id            Int       @id @default(autoincrement())
-  promoterId    Int
-  amount        Float
-  payoutMethod  String
-  payoutDetails String
-  status        String    @default("pending")
-  requestedAt   DateTime  @default(now())
-  paidAt        DateTime?
-  Promoter      Promoter  @relation(fields: [promoterId], references: [id])
-}
 model Referral {
   id            Int       @id @default(autoincrement())
   referralCode  String
