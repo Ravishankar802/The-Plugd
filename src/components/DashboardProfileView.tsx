@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { 
   Loader2, 
   Trash2, 
@@ -16,7 +16,8 @@ import {
   ExternalLink,
   Lock,
   Wallet,
-  TrendingUp
+  TrendingUp,
+  X
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
