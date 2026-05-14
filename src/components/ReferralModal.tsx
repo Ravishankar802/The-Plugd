@@ -79,7 +79,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
     // Hardcoded URL format as requested by user
     const redirectUrl = 'https://the-plugd.vercel.app/dashboard';
-    const baseUrl = 'https://www.checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1';
+    const baseUrl = 'https://www.checkout.dodopayments.com/buy/pdt_0NejlJx2mdXJSOgzLprt5';
     
     const params = new URLSearchParams({
       quantity: '1',
