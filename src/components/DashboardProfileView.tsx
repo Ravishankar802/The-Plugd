@@ -377,7 +377,7 @@ export default function DashboardProfileView() {
                 <Lock className="w-10 h-10 text-muted" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Listing Required</h2>
-              <p className="text-muted max-w-sm mb-8">You need to add your account to the directory to access profile editing.</p>
+              <p className="text-muted max-w-sm mb-8">You need to add your account to the directory to access profile editing. (Listing Profile = $2, Promoter Profile = $2, both = $4)</p>
               <button 
                 onClick={() => window.location.href = "/?modal=add"}
                 className="bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-white/90 transition-all flex items-center gap-2 shadow-xl"
@@ -551,7 +551,7 @@ export default function DashboardProfileView() {
                 <Gift className="w-10 h-10 text-[#f97316]" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Join Referral Program</h2>
-              <p className="text-muted max-w-sm mb-8">Earn $1 from every sale by sharing Plugd with your audience.</p>
+              <p className="text-muted max-w-sm mb-8">Earn $1 from every sale by sharing Plugd with your audience. (Listing Profile = $2, Promoter Profile = $2, both = $4)</p>
               <button 
                 onClick={() => setIsReferModalOpen(true)}
                 className="bg-[#f97316] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#f97316]/90 transition-all flex items-center gap-2 shadow-xl shadow-orange-500/20"
@@ -726,7 +726,7 @@ export default function DashboardProfileView() {
                 <Wallet className="w-10 h-10 text-[#f97316]" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Earnings Locked</h2>
-              <p className="text-muted max-w-sm mb-8">Join the referral program to start earning rewards.</p>
+              <p className="text-muted max-w-sm mb-8">Join the referral program to start earning rewards. (Listing Profile = $2, Promoter Profile = $2, both = $4)</p>
               <button 
                 onClick={() => setIsReferModalOpen(true)}
                 className="bg-[#f97316] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#f97316]/90 transition-all flex items-center gap-2 shadow-xl shadow-orange-500/20"

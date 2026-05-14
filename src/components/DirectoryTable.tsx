@@ -106,20 +106,34 @@ export default function DirectoryTable({
             {followersOpen && (
               <div className="absolute left-0 md:right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-xl z-[9999] py-1 animate-in fade-in slide-in-from-top-2 duration-200 max-h-[320px] overflow-y-auto no-scrollbar">
                 {FOLLOWERS_RANGES.map((range) => (
-                  <button
-                    key={range}
-                    onClick={() => {
-                      setSelectedFollowersRange(range);
-                      setFollowersOpen(false);
-                    }}
-                    suppressHydrationWarning
-                    className={`flex items-center justify-between w-full px-4 py-2.5 text-[0.9rem] transition-colors text-left ${
-                      selectedFollowersRange === range ? "text-foreground bg-accent" : "text-muted hover:bg-accent hover:text-foreground"
-                    }`}
-                  >
-                    <span>{range}</span>
-                    {selectedFollowersRange === range && <Check className="w-3.5 h-3.5" />}
-                  </button>
+                  <div key={range} className="relative group/filter-item">
+                    <button
+                      onClick={() => {
+                        if (isPaidUser) {
+                          setSelectedFollowersRange(range);
+                          setFollowersOpen(false);
+                        }
+                      }}
+                      suppressHydrationWarning
+                      className={`flex items-center justify-between w-full px-4 py-2.5 text-[0.9rem] transition-colors text-left ${
+                        !isPaidUser 
+                          ? "opacity-40 cursor-not-allowed text-muted" 
+                          : selectedFollowersRange === range 
+                            ? "text-foreground bg-accent" 
+                            : "text-muted hover:bg-accent hover:text-foreground"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{range}</span>
+                        {!isPaidUser && (
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" className="opacity-60">
+                            <path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 5a3 3 0 0 1 6 0v3H9V7zm3 9a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/>
+                          </svg>
+                        )}
+                      </div>
+                      {isPaidUser && selectedFollowersRange === range && <Check className="w-3.5 h-3.5" />}
+                    </button>
+                  </div>
                 ))}
               </div>
             )}

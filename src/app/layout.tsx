@@ -15,10 +15,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Plugd — Get discovered by X builders, founders and creators",
-  description: "$1 to get listed and get more followers, impressions and growth on X.",
+  description: "$2 to get listed and get more followers, impressions and growth on X.",
   openGraph: {
-    title: "Plugd — Get more followers, more impressions, more growth on X. All for just $1.",
-    description: "$1 to get listed and get more followers, impressions and growth on X.",
+    title: "Plugd — Get more followers, more impressions, more growth on X. All for just $2.",
+    description: "$2 to get listed and get more followers, impressions and growth on X.",
     url: "https://the-plugd.vercel.app",
     siteName: "Plugd",
     images: [
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Plugd — Get more followers, more impressions, more growth on X. All for just $1.",
-    description: "Get more followers, more impressions, more growth on X. All for just $1.",
+    title: "Plugd — Get more followers, more impressions, more growth on X. All for just $2.",
+    description: "Get more followers, more impressions, more growth on X. All for just $2.",
     images: ["https://the-plugd.vercel.app/og-v8.png"],
   },
   icons: {
