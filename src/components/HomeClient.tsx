@@ -541,6 +541,7 @@ export default function HomeClient({
         isOpen={isReferModalOpen} 
         onClose={() => setIsReferModalOpen(false)} 
         userEmail={userEmail} 
+        referralCode={initialReferralCode}
       />
     </main>
   );

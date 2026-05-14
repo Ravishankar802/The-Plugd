@@ -41,6 +41,7 @@ export async function POST(req: Request) {
       // 1. Handle Promoter Payment ($1)
       if (type === "promoter") {
         const email = metadata.metadata_email || metadata.email || payment.customer.email;
+        const referralCode = metadata.metadata_referralCode || metadata.referralCode;
         
         await prisma.promoter.upsert({
           where: { email },
@@ -60,6 +61,38 @@ export async function POST(req: Request) {
         });
         
         console.log(`Promoter ${email} successfully joined the program.`);
+
+        // Handle Referral Credit Logic for Promoter Signups ($2 payment)
+        if (referralCode) {
+          const referringPromoter = await prisma.promoter.findUnique({
+            where: { referralCode }
+          });
+          
+          if (referringPromoter) {
+            await prisma.$transaction([
+              prisma.promoter.update({
+                where: { id: referringPromoter.id },
+                data: {
+                  totalEarned: { increment: 1.0 },
+                  pendingPayout: { increment: 1.0 },
+                  totalConversions: { increment: 1 }
+                }
+              }),
+              prisma.referral.create({
+                data: {
+                  referralCode: referralCode,
+                  promoterEmail: referringPromoter.email,
+                  status: "converted",
+                  amountEarned: 1.0,
+                  paymentId: payment.payment_id,
+                  convertedAt: new Date()
+                }
+              })
+            ]);
+            console.log(`Referral credited to promoter (for promoter signup): ${referringPromoter.email}`);
+          }
+        }
+
         return NextResponse.json({ success: true });
       }
 

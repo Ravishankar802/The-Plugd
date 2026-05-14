@@ -8,9 +8,10 @@ interface ReferralModalProps {
   isOpen: boolean;
   onClose: () => void;
   userEmail: string | null;
+  referralCode?: string;
 }
 
-export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralModalProps) {
+export default function ReferralModal({ isOpen, onClose, userEmail, referralCode = "" }: ReferralModalProps) {
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState("");
@@ -78,7 +79,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
 
     // Hardcoded URL format as requested by user
     const redirectUrl = 'https://the-plugd.vercel.app/dashboard';
-    const baseUrl = 'https://www.checkout.dodopayments.com/buy/pdt_0NejIjx2mdXJSOgzLprt5';
+    const baseUrl = 'https://www.checkout.dodopayments.com/buy/pdt_0NduKJ5KdWe8CXogjNol1';
     
     const params = new URLSearchParams({
       quantity: '1',
@@ -90,7 +91,8 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
       metadata_email: formData.email,
       metadata_xHandle: handle,
       metadata_payoutMethod: formData.payoutMethod,
-      metadata_payoutDetails: formData.payoutDetails
+      metadata_payoutDetails: formData.payoutDetails,
+      ...(referralCode ? { metadata_referralCode: referralCode } : {})
     });
 
     const checkoutUrl = `${baseUrl}?${params.toString()}`;
@@ -298,7 +300,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail }: ReferralMo
             >
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (
                 <>
-                  <span>{showEmailInput ? "Continue to Payment" : "Join now for $1"}</span>
+                  <span>{showEmailInput ? "Continue to Payment" : "Join now for $2"}</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}

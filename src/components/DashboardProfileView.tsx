@@ -556,7 +556,7 @@ export default function DashboardProfileView() {
                 onClick={() => setIsReferModalOpen(true)}
                 className="bg-[#f97316] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#f97316]/90 transition-all flex items-center gap-2 shadow-xl shadow-orange-500/20"
               >
-                Join for $1 <ArrowRight size={18} />
+                Join for $2 <ArrowRight size={18} />
               </button>
             </div>
           ) : (
@@ -731,7 +731,7 @@ export default function DashboardProfileView() {
                 onClick={() => setIsReferModalOpen(true)}
                 className="bg-[#f97316] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#f97316]/90 transition-all flex items-center gap-2 shadow-xl shadow-orange-500/20"
               >
-                Join for $1 <ArrowRight size={18} />
+                Join for $2 <ArrowRight size={18} />
               </button>
             </div>
           ) : (
@@ -787,6 +787,7 @@ export default function DashboardProfileView() {
         isOpen={isReferModalOpen} 
         onClose={() => setIsReferModalOpen(false)} 
         userEmail={account?.email || promoterData?.email || ""} 
+        referralCode={useSearchParams().get("ref") || ""}
       />
     </div>
   );
