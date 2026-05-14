@@ -491,11 +491,11 @@ export default function DashboardProfileView() {
                     <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Your Referral Link</label>
                     <div className="flex gap-3">
                       <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-[#f97316] font-mono font-bold text-[1rem] shadow-inner flex items-center truncate">
-                        https://the-plugd.vercel.app?ref={promoterData.referralCode}
+                        https://theplugd.com?ref={promoterData.referralCode}
                       </div>
                       <button
                         type="button"
-                        onClick={() => copyToClipboard(`https://the-plugd.vercel.app?ref=${promoterData.referralCode}`, 'link')}
+                        onClick={() => copyToClipboard(`https://theplugd.com?ref=${promoterData.referralCode}`, 'link')}
                         className="px-8 rounded-xl bg-accent border border-border text-foreground font-bold hover:bg-accent/80 transition-all flex items-center gap-2.5 active:scale-[0.98] shrink-0"
                       >
                         {copied === 'link' ? <Check size={18} className="text-green-500" /> : <Copy size={18} />}
@@ -565,11 +565,11 @@ export default function DashboardProfileView() {
                 <label className="text-[0.8rem] font-bold text-muted/60 block tracking-widest uppercase">YOUR REFERRAL LINK</label>
                 <div className="flex flex-col md:flex-row gap-3">
                   <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] font-medium truncate flex items-center">
-                    the-plugd.vercel.app?ref={promoterData?.referralCode}
+                    theplugd.com?ref={promoterData?.referralCode}
                   </div>
                   <button 
                     type="button"
-                    onClick={() => copyToClipboard(`https://the-plugd.vercel.app?ref=${promoterData?.referralCode}`, 'link')}
+                    onClick={() => copyToClipboard(`https://theplugd.com?ref=${promoterData?.referralCode}`, 'link')}
                     className="bg-[#f97316] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#f97316]/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 active:scale-[0.98]"
                   >
                     {copied === 'link' ? <Check className="w-5 h-5" /> : <><Copy className="w-5 h-5" /> Copy Link</>}
@@ -622,12 +622,12 @@ export default function DashboardProfileView() {
                     <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 md:mt-10">
                       <div className="min-h-[80px] flex items-center">
                         <p className="text-sm text-muted font-medium break-all">
-                          https://the-plugd.vercel.app?ref={promoterData?.referralCode}
+                          https://theplugd.com?ref={promoterData?.referralCode}
                         </p>
                       </div>
                       <button 
                         type="button"
-                        onClick={() => copyToClipboard(`https://the-plugd.vercel.app?ref=${promoterData?.referralCode}`, 'reply')}
+                        onClick={() => copyToClipboard(`https://theplugd.com?ref=${promoterData?.referralCode}`, 'reply')}
                         className="w-full border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
                       >
                         {copied === 'reply' ? <Check className="w-4 h-4 text-green-500" /> : "Copy Reply Link"}
@@ -653,12 +653,12 @@ export default function DashboardProfileView() {
 
                 <div className="bg-pill border border-border rounded-2xl p-6 space-y-5">
                   <p className="text-sm text-muted font-medium leading-relaxed">
-                    Hey [name] — there&apos;s a referral program that pays $1 every time someone joins through your link. No cap. People are already making serious money with this. 1,000 referrals = $1,000. 10,000 referrals = $10,000. The product is Plugd — a directory of X builders that&apos;s blowing up right now. Share it, start earning 👉 the-plugd.vercel.app?ref={promoterData?.referralCode}
+                    Hey [name] — there&apos;s a referral program that pays $1 every time someone joins through your link. No cap. People are already making serious money with this. 1,000 referrals = $1,000. 10,000 referrals = $10,000. The product is Plugd — a directory of X builders that&apos;s blowing up right now. Share it, start earning 👉 theplugd.com?ref={promoterData?.referralCode}
                   </p>
                   <div className="space-y-3">
                     <button 
                       type="button"
-                      onClick={() => copyToClipboard(`Hey [name] — there's a referral program that pays $1 every time someone joins through your link. No cap. People are already making serious money with this. 1,000 referrals = $1,000. 10,000 referrals = $10,000. The product is Plugd — a directory of X builders that's blowing up right now. Share it, start earning 👉 the-plugd.vercel.app?ref=${promoterData?.referralCode}`, 'dm')}
+                      onClick={() => copyToClipboard(`Hey [name] — there's a referral program that pays $1 every time someone joins through your link. No cap. People are already making serious money with this. 1,000 referrals = $1,000. 10,000 referrals = $10,000. The product is Plugd — a directory of X builders that's blowing up right now. Share it, start earning 👉 theplugd.com?ref=${promoterData?.referralCode}`, 'dm')}
                       className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
                     >
                       {copied === 'dm' ? <Check className="w-4 h-4 text-green-500" /> : <><Copy className="w-5 h-5" /> Copy DM Template</>}

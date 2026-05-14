@@ -310,7 +310,7 @@ export default function ManageReferralsClient() {
                   <td className="px-3 py-2.5">
                     <div className="max-w-[100px] truncate">
                       <button 
-                        onClick={() => handleCopy(`https://the-plugd.vercel.app?ref=${p.referralCode}`, `link-${p.id}`)}
+                        onClick={() => handleCopy(`https://theplugd.com?ref=${p.referralCode}`, `link-${p.id}`)}
                         className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-accent/50 border border-border text-foreground text-[0.65rem] font-mono font-bold hover:bg-accent transition-all group/btn"
                       >
                         <span className="truncate">{p.referralCode}</span>

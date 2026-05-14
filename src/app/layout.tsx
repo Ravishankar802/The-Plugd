@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Plugd — Get more followers, more impressions, more growth on X. All for just $2.",
     description: "$2 to get listed and get more followers, impressions and growth on X.",
-    url: "https://the-plugd.vercel.app",
+    url: "https://theplugd.com",
     siteName: "Plugd",
     images: [
       {
-        url: "https://the-plugd.vercel.app/og-v8.png",
+        url: "https://theplugd.com/og-v8.png",
         width: 1200,
         height: 630,
       }
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Plugd — Get more followers, more impressions, more growth on X. All for just $2.",
     description: "Get more followers, more impressions, more growth on X. All for just $2.",
-    images: ["https://the-plugd.vercel.app/og-v8.png"],
+    images: ["https://theplugd.com/og-v8.png"],
   },
   icons: {
     icon: [

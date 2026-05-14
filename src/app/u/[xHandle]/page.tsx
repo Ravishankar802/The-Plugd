@@ -88,7 +88,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
   };
 
   const initials = getInitials(account.name);
-  const profileUrl = `https://the-plugd.vercel.app/u/${cleanHandle}`;
+  const profileUrl = `https://theplugd.com/u/${cleanHandle}`;
 
   return (
     <main className="min-h-screen bg-background text-foreground flex flex-col items-center">

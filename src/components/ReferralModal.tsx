@@ -78,7 +78,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
     if (handle.startsWith("@")) handle = handle.substring(1);
 
     // Hardcoded URL format as requested by user
-    const redirectUrl = 'https://the-plugd.vercel.app/dashboard';
+    const redirectUrl = 'https://theplugd.com/dashboard';
     const baseUrl = 'https://www.checkout.dodopayments.com/buy/pdt_0NejIjx2mdXJSOgzLprt5';
     
     const params = new URLSearchParams({

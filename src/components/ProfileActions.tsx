@@ -12,7 +12,7 @@ export default function ProfileActions({ handle }: ProfileActionsProps) {
   const [copied, setCopied] = useState(false);
 
   const handleShare = async () => {
-    const url = `https://the-plugd.vercel.app/u/${handle}`;
+    const url = `https://theplugd.com/u/${handle}`;
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
