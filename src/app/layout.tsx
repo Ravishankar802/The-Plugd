@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "Plugd",
     images: [
       {
-        url: "https://theplugd.com/og-v8.png",
+        url: "https://theplugd.com/og-v9.png",
         width: 1200,
         height: 630,
       }
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Plugd — Get paid to share links",
     description: "Share your referral link. Earn $1 for every person who joins.",
-    images: ["https://theplugd.com/og-v8.png"],
+    images: ["https://theplugd.com/og-v9.png"],
   },
   icons: {
     icon: [
