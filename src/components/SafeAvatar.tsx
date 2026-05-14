@@ -26,6 +26,7 @@ export default function SafeAvatar({ src, alt, className = "", fallbackSize = 24
       src={src}
       alt={alt}
       className={className}
+      referrerPolicy="no-referrer"
       onError={() => setError(true)}
     />
   );
