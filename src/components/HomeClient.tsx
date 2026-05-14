@@ -486,7 +486,7 @@ export default function HomeClient({
                 <div key={i} className="flex items-center gap-3 shrink-0">
                   <span className="text-[#f97316] text-xl leading-none">●</span>
                   <span className="text-foreground font-medium text-[15px] tracking-wide">
-                    Add or claim your account for $2 to track, save and skip X accounts
+                    1,000 referrals = $1,000. 10,000 referrals = $10,000. Start earning big.
                   </span>
                 </div>
               ))}
