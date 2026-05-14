@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ChevronDown, TrendingUp, Sliders, Check, Filter, Search } from "lucide-react";
 import AccountStatusButtons from "./AccountStatusButtons";
+import SafeAvatar from "./SafeAvatar";
  
 interface Account {
   id: number;
@@ -271,14 +272,14 @@ export default function DirectoryTable({
                     <span className="md:hidden font-mono-custom text-muted text-xs w-4 shrink-0">
                       {startIndex + index + 1}
                     </span>
-                    <img
-                      src={account.avatarUrl}
-                      alt={account.name}
-                      className="w-12 h-12 md:w-10 md:h-10 rounded-full object-cover border border-border shrink-0"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(account.name)}&background=random`;
-                      }}
-                    />
+                    <div className="w-12 h-12 md:w-10 md:h-10 rounded-full overflow-hidden border border-border shrink-0">
+                      <SafeAvatar
+                        src={account.avatarUrl}
+                        alt={account.name}
+                        className="w-full h-full object-cover"
+                        fallbackSize={20}
+                      />
+                    </div>
                     <div className="min-w-0 flex-1">
                       <div className="font-[600] text-base md:text-base leading-tight text-foreground text-glow truncate">
                         {account.name}

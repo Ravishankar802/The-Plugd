@@ -20,6 +20,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
 import ReferralModal from "@/components/ReferralModal";
+import SafeAvatar from "@/components/SafeAvatar";
 
 interface Account {
   id: number;
@@ -355,7 +356,9 @@ export default function HomeClient({
                             }}
                           >
                             <div className="flex items-center gap-3">
-                              <img src={acc.avatarUrl} alt="" className="w-8 h-8 rounded-full object-cover border border-border" />
+                              <div className="w-8 h-8 rounded-full overflow-hidden border border-border">
+                                <SafeAvatar src={acc.avatarUrl} alt="" className="w-full h-full object-cover" fallbackSize={16} />
+                              </div>
                               <div className="min-w-0">
                                 <p className="text-foreground font-bold text-[0.85rem] leading-tight truncate">{acc.name}</p>
                                 <p className="text-muted text-[0.75rem] truncate">@{acc.xHandle.replace(/^@+/, '')}</p>
@@ -389,7 +392,9 @@ export default function HomeClient({
                               }}
                               onMouseEnter={() => router.prefetch(`/u/${acc.xHandle.replace(/^@+/, '')}`)}
                             >
-                              <img src={acc.avatarUrl} alt="" className="w-10 h-10 rounded-lg object-cover border border-border shadow-sm" />
+                              <div className="w-10 h-10 rounded-lg overflow-hidden border border-border shadow-sm">
+                                <SafeAvatar src={acc.avatarUrl} alt="" className="w-full h-full object-cover" fallbackSize={20} />
+                              </div>
                               <div className="flex-1 min-w-0">
                                 <p className="text-foreground font-bold text-[0.95rem] truncate">{acc.name}</p>
                                 <p className="text-muted text-[0.8rem] truncate">@{acc.xHandle.replace(/^@+/, '')}</p>

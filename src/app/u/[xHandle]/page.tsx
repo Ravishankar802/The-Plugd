@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import ProfileStatusWrapper from "@/components/ProfileStatusWrapper";
 import ScrollToTop from "@/components/ScrollToTop";
 import ClaimButton from "@/components/ClaimButton";
+import SafeAvatar from "@/components/SafeAvatar";
 
 // Revalidate every 5 minutes
 export const revalidate = 300;
@@ -111,11 +112,14 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
                 {/* Avatar */}
                 <div className="relative shrink-0">
                   {account.avatarUrl ? (
-                    <img 
-                      src={account.avatarUrl} 
-                      alt={account.name} 
-                      className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-4 border-background shadow-xl"
-                    />
+                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-background shadow-xl">
+                      <SafeAvatar 
+                        src={account.avatarUrl} 
+                        alt={account.name} 
+                        className="w-full h-full object-cover"
+                        fallbackSize={32}
+                      />
+                    </div>
                   ) : (
                     <div 
                       className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-background shadow-xl flex items-center justify-center text-2xl md:text-3xl font-bold text-white"
@@ -196,7 +200,9 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
               >
                 <div className="flex items-center gap-3 mb-4">
                   {acc.avatarUrl ? (
-                    <img src={acc.avatarUrl} alt="" className="w-10 h-10 rounded-full object-cover border border-border" />
+                    <div className="w-10 h-10 rounded-full overflow-hidden border border-border">
+                      <SafeAvatar src={acc.avatarUrl} alt="" className="w-full h-full object-cover" fallbackSize={16} />
+                    </div>
                   ) : (
                     <div 
                       className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold text-white border border-border shrink-0"

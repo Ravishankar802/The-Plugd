@@ -9,10 +9,12 @@ import {
   Upload, 
   Check,
   Plus,
-  User
+  User,
+  ExternalLink
 } from "lucide-react";
 import { NICHES } from "@/lib/constants";
 import { useRouter } from "next/navigation";
+import SafeAvatar from "@/components/SafeAvatar";
 
 interface AddAccountModalProps {
   isOpen: boolean;
@@ -252,19 +254,12 @@ export default function AddAccountModal({ isOpen, onClose, referralCode = "" }: 
 
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-full overflow-hidden bg-[#111] border border-border flex items-center justify-center shadow-inner shrink-0 mt-1">
-                {formData.avatarUrl ? (
-                  <img 
-                    src={formData.avatarUrl} 
-                    alt="preview" 
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = 'none';
-                      (e.target as HTMLImageElement).parentElement!.innerHTML = '<div class="flex items-center justify-center w-full h-full"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user text-muted/40"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>';
-                    }}
-                  />
-                ) : (
-                  <User size={20} className="text-muted/40" />
-                )}
+                <SafeAvatar 
+                  src={formData.avatarUrl} 
+                  alt="preview" 
+                  className="w-full h-full object-cover"
+                  fallbackSize={20}
+                />
               </div>
               <div className="flex-1 space-y-2">
                 <label className="text-[1rem] font-[500] text-foreground tracking-wide block">Profile Picture URL</label>

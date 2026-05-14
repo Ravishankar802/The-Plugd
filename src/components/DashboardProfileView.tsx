@@ -24,6 +24,7 @@ import { NICHES } from "@/lib/constants";
 
 
 import ReferralModal from "@/components/ReferralModal";
+import SafeAvatar from "@/components/SafeAvatar";
 
 const FOLLOWERS_RANGES = [
   "0-100", "100-500", "500-1K", "1K-2K", "2K-5K", "5K-10K", "10K-25K", "25K-50K", "50K-100K", "100K+"
@@ -230,19 +231,12 @@ function DashboardProfileContent() {
                     
                     <div className="flex flex-col gap-6">
                       <div className="w-20 h-20 rounded-full overflow-hidden bg-pill border border-border flex items-center justify-center shadow-2xl shrink-0">
-                        {account?.avatarUrl ? (
-                          <img 
-                            src={account.avatarUrl} 
-                            alt={account.name} 
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).style.display = 'none';
-                              (e.target as HTMLImageElement).parentElement!.innerHTML = '<div class="flex items-center justify-center w-full h-full"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user text-muted/40"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>';
-                            }}
-                          />
-                        ) : (
-                          <User size={32} className="text-muted/40" />
-                        )}
+                        <SafeAvatar 
+                          src={account?.avatarUrl} 
+                          alt={account?.name || ""} 
+                          className="w-full h-full object-cover"
+                          fallbackSize={32}
+                        />
                       </div>
 
                       <div className="flex-1 space-y-3">
