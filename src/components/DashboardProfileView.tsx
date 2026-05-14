@@ -29,7 +29,7 @@ const FOLLOWERS_RANGES = [
   "0-100", "100-500", "500-1K", "1K-2K", "2K-5K", "5K-10K", "10K-25K", "25K-50K", "50K-100K", "100K+"
 ];
 
-export default function DashboardProfileView() {
+function DashboardProfileContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const tab = searchParams.get("tab") || "profile";
@@ -38,6 +38,7 @@ export default function DashboardProfileView() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
   const [hasAccount, setHasAccount] = useState(false);
   const [hasPromoter, setHasPromoter] = useState(false);
@@ -46,6 +47,7 @@ export default function DashboardProfileView() {
   const [promoterData, setPromoterData] = useState<any>(null);
   const [promoterSaving, setPromoterSaving] = useState(false);
   const [promoterSuccess, setPromoterSuccess] = useState(false);
+  const [promoterError, setPromoterError] = useState<string | null>(null);
   const [selectedVariation, setSelectedVariation] = useState(0);
 
   const POST_VARIATIONS = [
@@ -84,12 +86,18 @@ export default function DashboardProfileView() {
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!account?.id) {
+      setError("No account ID found. Please refresh and try again.");
+      return;
+    }
+
     setSaving(true);
     setSuccess(false);
+    setError(null);
 
     try {
       // Clean Handle
-      let handle = account.xHandle;
+      let handle = account.xHandle || "";
       if (handle.startsWith("@")) handle = handle.substring(1);
 
       const emailHeader = localStorage.getItem("plugd_user_email");
@@ -108,9 +116,13 @@ export default function DashboardProfileView() {
       if (res.ok) {
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
+      } else {
+        const data = await res.json();
+        setError(data.error || "Failed to save changes.");
       }
-    } catch (err) {
-      alert("Failed to save changes.");
+    } catch (err: any) {
+      console.error("Save error:", err);
+      setError(err.message || "An unexpected error occurred.");
     } finally {
       setSaving(false);
     }
@@ -118,8 +130,14 @@ export default function DashboardProfileView() {
 
   const handlePromoterSave = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!promoterData) {
+      setPromoterError("Promoter data not loaded.");
+      return;
+    }
+
     setPromoterSaving(true);
     setPromoterSuccess(false);
+    setPromoterError(null);
 
     try {
       const res = await fetch("/api/promoters/me", {
@@ -138,19 +156,24 @@ export default function DashboardProfileView() {
         setTimeout(() => setPromoterSuccess(false), 3000);
       } else {
         const data = await res.json();
-        alert("Failed to save changes: " + (data.error || "Unknown error"));
+        setPromoterError(data.error || "Failed to save promoter profile.");
       }
-    } catch (err) {
-      alert("Failed to save changes.");
+    } catch (err: any) {
+      console.error("Promoter save error:", err);
+      setPromoterError(err.message || "An unexpected error occurred.");
     } finally {
       setPromoterSaving(false);
     }
   };
 
-  const copyToClipboard = (text: string, id: string) => {
-    navigator.clipboard.writeText(text);
-    setCopied(id);
-    setTimeout(() => setCopied(null), 2000);
+  const copyToClipboard = async (text: string, id: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(id);
+      setTimeout(() => setCopied(null), 2000);
+    } catch (err) {
+      console.error("Clipboard error:", err);
+    }
   };
 
 
@@ -361,6 +384,12 @@ export default function DashboardProfileView() {
                         </>
                       )}
                     </button>
+                    {error && (
+                      <p className="text-red-500 text-center md:text-left mt-4 font-bold flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
+                        <X size={20} />
+                        {error}
+                      </p>
+                    )}
                     {success && (
                       <p className="text-green-500 text-center md:text-left mt-4 font-bold flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
                         <Check size={20} />
@@ -523,6 +552,12 @@ export default function DashboardProfileView() {
                         </>
                       )}
                     </button>
+                    {promoterError && (
+                      <p className="text-red-500 text-center md:text-left mt-4 font-bold flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
+                        <X size={20} />
+                        {promoterError}
+                      </p>
+                    )}
                     {promoterSuccess && (
                       <p className="text-green-500 text-center md:text-left mt-4 font-bold flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
                         <Check size={20} />
@@ -790,5 +825,19 @@ export default function DashboardProfileView() {
         referralCode={searchParams.get("ref") || ""}
       />
     </div>
+  );
+}
+
+export default function DashboardProfileView() {
+  return (
+    <Suspense fallback={
+      <div className="flex flex-col gap-4 animate-pulse">
+        <div className="h-10 w-48 bg-card rounded-lg" />
+        <div className="h-4 w-64 bg-card rounded-lg" />
+        <div className="h-[600px] w-full bg-card rounded-xl mt-8" />
+      </div>
+    }>
+      <DashboardProfileContent />
+    </Suspense>
   );
 }
