@@ -14,11 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Plugd — Get discovered by X builders, founders and creators",
-  description: "$2 to get listed and get more followers, impressions and growth on X.",
+  metadataBase: new URL("https://theplugd.com"),
+  title: "Plugd — Get paid to share links",
+  description: "Share your referral link. Earn $1 for every person who joins.",
   openGraph: {
-    title: "Plugd — Get more followers, more impressions, more growth on X. All for just $2.",
-    description: "$2 to get listed and get more followers, impressions and growth on X.",
+    title: "Plugd — Get paid to share links",
+    description: "Share your referral link. Earn $1 for every person who joins.",
     url: "https://theplugd.com",
     siteName: "Plugd",
     images: [
@@ -32,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Plugd — Get more followers, more impressions, more growth on X. All for just $2.",
-    description: "Get more followers, more impressions, more growth on X. All for just $2.",
+    title: "Plugd — Get paid to share links",
+    description: "Share your referral link. Earn $1 for every person who joins.",
     images: ["https://theplugd.com/og-v8.png"],
   },
   icons: {
