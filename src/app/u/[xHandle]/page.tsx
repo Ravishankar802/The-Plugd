@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
@@ -177,7 +178,9 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
               <h2 className="text-xl font-bold mb-1">Is this you?</h2>
               <p className="text-muted">Claim this account to manage your account.</p>
             </div>
-            <ClaimButton xHandle={cleanHandle} />
+            <Suspense fallback={<div className="h-12 w-40 bg-pill animate-pulse rounded-xl" />}>
+              <ClaimButton xHandle={cleanHandle} />
+            </Suspense>
           </div>
         )}
 
