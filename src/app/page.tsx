@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 import HomeClient from "@/components/HomeClient";
 import { getSession } from "@/lib/auth";
+import { Suspense } from "react";
 
 // Server component — fetches accounts at request time (SSR)
 export const dynamic = "force-dynamic";
