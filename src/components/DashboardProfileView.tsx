@@ -787,7 +787,7 @@ export default function DashboardProfileView() {
         isOpen={isReferModalOpen} 
         onClose={() => setIsReferModalOpen(false)} 
         userEmail={account?.email || promoterData?.email || ""} 
-        referralCode={useSearchParams().get("ref") || ""}
+        referralCode={searchParams.get("ref") || ""}
       />
     </div>
   );

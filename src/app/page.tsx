@@ -131,17 +131,19 @@ export default async function Home({ searchParams }: PageProps) {
     }));
 
     return (
-      <HomeClient 
-        initialAccounts={serialized} 
-        allAccounts={allAccounts as any}
-        totalFilteredCount={totalCount}
-        totalListedCount={totalListedCount}
-        currentPage={currentPage}
-        pageSize={PAGE_SIZE}
-        initialIsPaid={initialIsPaid}
-        userEmail={userEmail}
-        referralCode={ref}
-      />
+      <Suspense fallback={null}>
+        <HomeClient 
+          initialAccounts={serialized} 
+          allAccounts={allAccounts as any}
+          totalFilteredCount={totalCount}
+          totalListedCount={totalListedCount}
+          currentPage={currentPage}
+          pageSize={PAGE_SIZE}
+          initialIsPaid={initialIsPaid}
+          userEmail={userEmail}
+          referralCode={ref}
+        />
+      </Suspense>
     );
   } catch (error) {
     console.error("SSR fetch failed:", error);
