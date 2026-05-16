@@ -42,7 +42,10 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <h1 className="text-[clamp(1.75rem,4.5vw,2.85rem)] font-[800] tracking-[-0.035em] leading-[1.1] text-foreground mb-4 relative z-10">
+      <h1 
+        className="text-[clamp(1.75rem,4.5vw,2.85rem)] font-[800] tracking-[-0.035em] leading-[1.1] text-foreground mb-4 relative z-10"
+        style={{ fontFamily: '"Times New Roman", Times, serif' }}
+      >
         Dream Big. Earn Big.
       </h1>
       <p className="text-muted text-[0.875rem] md:text-[1.25rem] font-normal max-w-[340px] md:max-w-2xl leading-tight md:leading-relaxed mx-auto relative z-10 px-4 mb-12">
