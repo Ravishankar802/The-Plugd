@@ -81,7 +81,7 @@ export async function POST(req: Request) {
         html: `
           <div style="font-family: sans-serif; max-width: 400px; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
             <h2 style="color: #333;">Your Plugd login code</h2>
-            <p style="font-size: 36px; font-weight: bold; letter-spacing: 8px; color: #ff6b00; margin: 20px 0;">${code}</p>
+            <p style="font-size: 36px; font-weight: bold; letter-spacing: 8px; color: #16a34a; margin: 20px 0;">${code}</p>
             <p style="color: #666;">This code expires in 5 minutes.</p>
             <p style="color: #999; font-size: 12px; margin-top: 30px;">If you didn't request this, you can safely ignore this email.</p>
           </div>

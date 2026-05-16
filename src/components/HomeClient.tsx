@@ -66,13 +66,6 @@ export default function HomeClient({
 
             <section className="mb-0">
               <div className="flex flex-col md:flex-row gap-4 mb-6 items-center justify-center">
-                <Link
-                  href="/dashboard"
-                  className="h-[48px] w-full md:w-auto bg-selected border border-selected text-selected-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
-                >
-                  <LayoutDashboard className="w-5 h-5" />
-                  Dashboard
-                </Link>
                 <button
                   onClick={() => setIsReferModalOpen(true)}
                   suppressHydrationWarning
@@ -81,6 +74,13 @@ export default function HomeClient({
                   <TrendingUp className="w-5 h-5" />
                   Refer & Earn
                 </button>
+                <Link
+                  href="/dashboard"
+                  className="h-[48px] w-full md:w-auto bg-selected border border-selected text-selected-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
+                >
+                  <LayoutDashboard className="w-5 h-5" />
+                  Dashboard
+                </Link>
               </div>
             </section>
           </div>

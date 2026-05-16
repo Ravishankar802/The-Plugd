@@ -118,7 +118,7 @@ export default function AccountStatusButtons({
         type="saved" 
         icon={Bookmark} 
         label="Save" 
-        activeColor="bg-orange-500/20 text-orange-500" 
+        activeColor="bg-green-600/20 text-green-600" 
         activeShadow="shadow-[0_0_10px_rgba(249,115,22,0.3)]"
       />
       <StatusButton 

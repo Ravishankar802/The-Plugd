@@ -219,9 +219,9 @@ export default function ManageReferralsClient() {
         <div className="bg-pill border border-border rounded-xl p-4 shadow-sm">
           <p className="text-muted text-[0.6rem] font-bold uppercase tracking-[0.15em] mb-1.5">Total Pending</p>
           <div className="flex items-end justify-between">
-            <p className="text-2xl font-bold text-[#f97316]">${stats.totalPending.toFixed(2)}</p>
-            <div className="w-7 h-7 rounded-lg bg-orange-500/10 flex items-center justify-center">
-              <Wallet className="w-3.5 h-3.5 text-[#f97316]" />
+            <p className="text-2xl font-bold text-[#16a34a]">${stats.totalPending.toFixed(2)}</p>
+            <div className="w-7 h-7 rounded-lg bg-green-600/10 flex items-center justify-center">
+              <Wallet className="w-3.5 h-3.5 text-[#16a34a]" />
             </div>
           </div>
         </div>
@@ -328,7 +328,7 @@ export default function ManageReferralsClient() {
                     ${p.revenueGenerated.toFixed(0)}
                   </td>
                   <td className="px-3 py-2.5 text-right">
-                    <span className={`px-1.5 py-0.5 rounded-md font-bold text-[0.7rem] ${p.pendingPayout > 0 ? "bg-orange-500/10 text-[#f97316]" : "bg-muted/10 text-muted/60"}`}>
+                    <span className={`px-1.5 py-0.5 rounded-md font-bold text-[0.7rem] ${p.pendingPayout > 0 ? "bg-green-600/10 text-[#16a34a]" : "bg-muted/10 text-muted/60"}`}>
                       ${p.pendingPayout.toFixed(2)}
                     </span>
                   </td>
@@ -349,7 +349,7 @@ export default function ManageReferralsClient() {
                         onClick={() => setPayoutPromoter(p)}
                         className={`px-2 py-1 rounded-md font-bold text-[0.65rem] transition-all shadow-sm ${
                           p.pendingPayout > 0 
-                          ? "bg-[#f97316] text-white hover:opacity-90 active:scale-[0.98]" 
+                          ? "bg-[#16a34a] text-white hover:opacity-90 active:scale-[0.98]" 
                           : "bg-muted/10 text-muted/40 cursor-not-allowed"
                         }`}
                       >
@@ -417,8 +417,8 @@ export default function ManageReferralsClient() {
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setPayoutPromoter(null)} />
           <div className="relative w-full max-w-lg bg-card border border-border rounded-[24px] p-10 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
             <div className="flex gap-6">
-              <div className="w-16 h-16 bg-[#f97316]/10 rounded-2xl flex items-center justify-center shrink-0 border border-[#f97316]/20">
-                <Wallet size={32} className="text-[#f97316]" />
+              <div className="w-16 h-16 bg-[#16a34a]/10 rounded-2xl flex items-center justify-center shrink-0 border border-[#16a34a]/20">
+                <Wallet size={32} className="text-[#16a34a]" />
               </div>
               <div className="flex-1 space-y-6">
                 <div className="space-y-2">
@@ -435,7 +435,7 @@ export default function ManageReferralsClient() {
                       <span className="text-foreground font-bold">{payoutPromoter.payoutMethod}</span>
                       <button 
                         onClick={() => handleCopy(payoutPromoter.payoutDetails || "", 'details')}
-                        className="text-[#f97316] font-bold text-sm hover:underline flex items-center gap-1"
+                        className="text-[#16a34a] font-bold text-sm hover:underline flex items-center gap-1"
                       >
                         {payoutPromoter.payoutDetails} <Copy size={12} />
                       </button>
@@ -463,7 +463,7 @@ export default function ManageReferralsClient() {
                   <button
                     onClick={handleMarkAsPaid}
                     disabled={isPaying}
-                    className="flex-1 py-4 rounded-xl bg-[#f97316] text-white font-black hover:opacity-90 transition-all shadow-lg shadow-orange-900/20 text-[1rem] disabled:opacity-50 flex items-center justify-center gap-2"
+                    className="flex-1 py-4 rounded-xl bg-[#16a34a] text-white font-black hover:opacity-90 transition-all shadow-lg shadow-green-700/20 text-[1rem] disabled:opacity-50 flex items-center justify-center gap-2"
                   >
                     {isPaying ? <Loader2 size={20} className="animate-spin" /> : "Confirm Payout"}
                   </button>

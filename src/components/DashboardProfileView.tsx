@@ -205,7 +205,7 @@ function DashboardProfileContent() {
                         onClick={() => setPromoterData({ ...promoterData, payoutMethod: "PayPal" })}
                         className={`flex-1 py-4 rounded-xl border font-bold transition-all ${
                           promoterData.payoutMethod === "PayPal" 
-                          ? "bg-[#f97316] text-white border-[#f97316] shadow-lg shadow-orange-500/20" 
+                          ? "bg-[#16a34a] text-white border-[#16a34a] shadow-lg shadow-green-600/20" 
                           : "bg-background text-muted border-border hover:border-muted"
                         }`}
                       >
@@ -216,7 +216,7 @@ function DashboardProfileContent() {
                         onClick={() => setPromoterData({ ...promoterData, payoutMethod: "UPI" })}
                         className={`flex-1 py-4 rounded-xl border font-bold transition-all ${
                           promoterData.payoutMethod === "UPI" 
-                          ? "bg-[#f97316] text-white border-[#f97316] shadow-lg shadow-orange-500/20" 
+                          ? "bg-[#16a34a] text-white border-[#16a34a] shadow-lg shadow-green-600/20" 
                           : "bg-background text-muted border-border hover:border-muted"
                         }`}
                       >
@@ -242,7 +242,7 @@ function DashboardProfileContent() {
                   <div className="flex flex-col gap-3">
                     <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Your Referral Link</label>
                     <div className="flex gap-3">
-                      <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-[#f97316] font-mono font-bold text-[1rem] shadow-inner flex items-center truncate">
+                      <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-[#16a34a] font-mono font-bold text-[1rem] shadow-inner flex items-center truncate">
                         https://theplugd.com?ref={promoterData.referralCode}
                       </div>
                       <button
@@ -261,7 +261,7 @@ function DashboardProfileContent() {
                     <button
                       type="submit"
                       disabled={promoterSaving}
-                      className="w-full md:w-auto min-w-[260px] bg-[#f97316] text-white font-black text-lg py-5 px-12 rounded-xl transition-all hover:bg-[#f97316]/90 shadow-2xl active:scale-[0.99] uppercase tracking-wider disabled:opacity-50 flex items-center justify-center gap-3"
+                      className="w-full md:w-auto min-w-[260px] bg-[#16a34a] text-white font-black text-lg py-5 px-12 rounded-xl transition-all hover:bg-[#16a34a]/90 shadow-2xl active:scale-[0.99] uppercase tracking-wider disabled:opacity-50 flex items-center justify-center gap-3"
                     >
                       {promoterSaving ? (
                         <>
@@ -305,14 +305,14 @@ function DashboardProfileContent() {
 
           {(!hasPromoter && !isAdmin) ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="w-20 h-20 rounded-3xl bg-[#f97316]/10 flex items-center justify-center mb-6">
-                <Gift className="w-10 h-10 text-[#f97316]" />
+              <div className="w-20 h-20 rounded-3xl bg-[#16a34a]/10 flex items-center justify-center mb-6">
+                <Gift className="w-10 h-10 text-[#16a34a]" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Join Referral Program</h2>
               <p className="text-muted max-w-sm mb-8">Earn $1 from every sale by sharing Plugd with your audience. (Listing Profile = $2, Promoter Profile = $2, both = $4)</p>
               <button 
                 onClick={() => setIsReferModalOpen(true)}
-                className="bg-[#f97316] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#f97316]/90 transition-all flex items-center gap-2 shadow-xl shadow-orange-500/20"
+                className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
               >
                 Join for $2 <ArrowRight size={18} />
               </button>
@@ -328,7 +328,7 @@ function DashboardProfileContent() {
                   <button 
                     type="button"
                     onClick={() => copyToClipboard(`https://theplugd.com?ref=${promoterData?.referralCode}`, 'link')}
-                    className="bg-[#f97316] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#f97316]/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 active:scale-[0.98]"
+                    className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-600/20 active:scale-[0.98]"
                   >
                     {copied === 'link' ? <Check className="w-5 h-5" /> : <><Copy className="w-5 h-5" /> Copy Link</>}
                   </button>
@@ -439,25 +439,25 @@ function DashboardProfileContent() {
                 <div className="bg-pill border border-border rounded-2xl p-8 space-y-6">
                   <div className="space-y-4">
                     <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#f97316]/10 text-[#f97316] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</div>
+                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
                         Post 10-20 times per day using the variations above. Immediately reply to your own post with the link — this bypasses X&apos;s link suppression
                       </p>
                     </div>
                     <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#f97316]/10 text-[#f97316] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</div>
+                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
                         DM 10-20 people every day who are active builders on X — consistency beats everything
                       </p>
                     </div>
                     <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#f97316]/10 text-[#f97316] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</div>
+                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
                         Reply under big builder accounts&apos; posts — add value first, then drop your link in a follow-up reply
                       </p>
                     </div>
                     <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#f97316]/10 text-[#f97316] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</div>
+                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
                         The math is simple: 1,000 people = $1,000. Start today, not tomorrow
                       </p>
@@ -480,14 +480,14 @@ function DashboardProfileContent() {
 
           {(!hasPromoter && !isAdmin) ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="w-20 h-20 rounded-3xl bg-[#f97316]/10 flex items-center justify-center mb-6">
-                <Wallet className="w-10 h-10 text-[#f97316]" />
+              <div className="w-20 h-20 rounded-3xl bg-[#16a34a]/10 flex items-center justify-center mb-6">
+                <Wallet className="w-10 h-10 text-[#16a34a]" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Earnings Locked</h2>
               <p className="text-muted max-w-sm mb-8">Join the referral program to start earning rewards. (Listing Profile = $2, Promoter Profile = $2, both = $4)</p>
               <button 
                 onClick={() => setIsReferModalOpen(true)}
-                className="bg-[#f97316] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#f97316]/90 transition-all flex items-center gap-2 shadow-xl shadow-orange-500/20"
+                className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
               >
                 Join for $2 <ArrowRight size={18} />
               </button>
@@ -499,9 +499,9 @@ function DashboardProfileContent() {
                   <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Total Earned</p>
                   <p className="text-4xl font-bold text-foreground">${promoterData?.totalEarned || 0}</p>
                 </div>
-                <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl border-[#f97316]/20">
-                  <p className="text-[#f97316] text-[0.7rem] font-bold uppercase tracking-widest mb-2">Pending Payout</p>
-                  <p className="text-4xl font-bold text-[#f97316]">${promoterData?.pendingPayout || 0}</p>
+                <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl border-[#16a34a]/20">
+                  <p className="text-[#16a34a] text-[0.7rem] font-bold uppercase tracking-widest mb-2">Pending Payout</p>
+                  <p className="text-4xl font-bold text-[#16a34a]">${promoterData?.pendingPayout || 0}</p>
                 </div>
                 <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
                   <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Total Clicks</p>
@@ -532,7 +532,7 @@ function DashboardProfileContent() {
 
               <p className="text-[0.75rem] text-muted text-center font-medium flex items-center justify-center gap-2">
                 Payouts are processed twice a month.
-                <Link href="https://x.com/ravx003" target="_blank" className="text-[#f97316] font-bold hover:underline inline-flex items-center gap-1">
+                <Link href="https://x.com/ravx003" target="_blank" className="text-[#16a34a] font-bold hover:underline inline-flex items-center gap-1">
                   Contact Support <ExternalLink className="w-3 h-3" />
                 </Link>
               </p>
