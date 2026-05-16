@@ -20,7 +20,6 @@ import { NICHES } from "@/lib/constants";
 
 
 import ReferralModal from "@/components/ReferralModal";
-import SafeAvatar from "@/components/SafeAvatar";
 
 
 
