@@ -268,23 +268,7 @@ export default function HomeClient({
           <div className="max-w-[800px] w-full">
             <Header />
 
-            <div className="w-full flex items-center justify-center my-6 md:my-10 animate-in fade-in slide-in-from-top-2 duration-500">
-              <div className="inline-flex items-center bg-pill/80 backdrop-blur-sm border border-border/80 rounded-full px-6 py-3 shadow-sm hover:border-border/100 hover:bg-pill transition-all group relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite] pointer-events-none" />
-                
-                <div className="flex items-center gap-2 relative z-10">
-                  <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Average pay</span>
-                  <span className="text-[0.75rem] font-bold text-foreground">$140/Day</span>
-                </div>
-                
-                <div className="w-[1px] h-4 bg-border/60 mx-4 md:mx-6 shrink-0 relative z-10" />
-                
-                <div className="flex items-center gap-2 relative z-10">
-                  <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Total Payouts</span>
-                  <span className="text-[0.75rem] font-bold text-foreground">$300K+</span>
-                </div>
-              </div>
-            </div>
+
 
             <section className="mb-0">
               <div className="flex flex-col md:flex-row gap-4 mb-6">
