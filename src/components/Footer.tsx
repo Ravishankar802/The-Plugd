@@ -8,9 +8,13 @@ import { useTheme } from "next-themes";
 
 interface FooterProps {
   showBorder?: boolean;
+  variant?: 'default' | 'white';
 }
 
-export default function Footer({ showBorder = true }: FooterProps) {
+export default function Footer({ showBorder = true, variant = 'default' }: FooterProps) {
+  const isWhite = variant === 'white';
+  const textColor = isWhite ? "text-white/80 hover:text-white" : "text-muted hover:text-foreground";
+  const mutedTextColor = isWhite ? "text-white/40" : "text-muted/40";
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
@@ -46,25 +50,25 @@ export default function Footer({ showBorder = true }: FooterProps) {
         {isDashboard ? (
           <>
             {/* Dashboard style: Centered Home */}
-            <div className="md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] text-muted font-medium">
-              <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+            <div className={`md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] ${textColor} font-medium`}>
+              <Link href="/" className="transition-colors">Home</Link>
             </div>
             <div className="hidden md:block flex-1" />
           </>
         ) : (
           /* Default style: Minimal row on mobile, links on left on desktop */
-          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 text-sm md:text-[0.9rem] text-muted font-medium w-full md:w-auto">
+          <div className={`flex flex-col md:flex-row items-center gap-4 md:gap-6 text-sm md:text-[0.9rem] ${textColor} font-medium w-full md:w-auto`}>
             <div className="md:hidden flex items-center justify-center gap-2 whitespace-nowrap">
-              <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
-              <span className="opacity-40">·</span>
-              <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
-              <span className="opacity-40">·</span>
-              <Link href="/terms-of-service" className="hover:text-foreground transition-colors">Terms</Link>
+              <Link href="/" className="transition-colors">Home</Link>
+              <span className={mutedTextColor}>·</span>
+              <Link href="/dashboard" className="transition-colors">Dashboard</Link>
+              <span className={mutedTextColor}>·</span>
+              <Link href="/terms-of-service" className="transition-colors">Terms</Link>
             </div>
             <div className="hidden md:flex items-center gap-6">
-              <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
-              <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
-              <Link href="/terms-of-service" className="hover:text-foreground transition-colors">Terms of Service</Link>
+              <Link href="/" className="transition-colors">Home</Link>
+              <Link href="/dashboard" className="transition-colors">Dashboard</Link>
+              <Link href="/terms-of-service" className="transition-colors">Terms of Service</Link>
             </div>
           </div>
         )}
@@ -74,7 +78,7 @@ export default function Footer({ showBorder = true }: FooterProps) {
             <button
               onClick={() => setIsOpen(!isOpen)}
               suppressHydrationWarning
-              className="flex items-center gap-2 bg-pill border border-border hover:bg-accent px-3.5 py-1.5 rounded-2xl text-[0.9rem] text-muted transition-colors"
+              className={`flex items-center gap-2 ${isWhite ? "bg-white/10 hover:bg-white/20 border-white/20" : "bg-pill border-border hover:bg-accent"} px-3.5 py-1.5 rounded-2xl text-[0.9rem] ${isWhite ? "text-white" : "text-muted"} transition-colors`}
             >
               <div className="flex items-center gap-2">
                 <CurrentIcon className="w-4 h-4" />

@@ -88,11 +88,9 @@ export default function HomeClient({
         </div>
       </div>
       
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8">
-        <Footer showBorder={false} />
-      </div>
-
-      <WealthBanner />
+      <WealthBanner>
+        <Footer showBorder={false} variant="white" />
+      </WealthBanner>
 
       <ReferralModal 
         isOpen={isReferModalOpen} 
