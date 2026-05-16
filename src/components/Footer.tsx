@@ -46,69 +46,120 @@ export default function Footer({ showBorder = true, variant = 'default', minimal
   const CurrentIcon = currentThemeOption.icon;
 
   return (
-    <footer className={`${isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-border" : ""}`}>
-      <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative">
+    <footer className={`${isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-border" : ""} ${minimal ? "border-t border-white/10 py-6" : ""}`}>
+      <div className="flex flex-col gap-6">
         {minimal ? (
-          <div className={`flex items-center justify-between w-full text-sm md:text-[0.9rem] ${textColor} font-medium`}>
-            <Link href="/terms-of-service" className="transition-colors">Terms of Service</Link>
-          </div>
-        ) : isDashboard ? (
           <>
-            {/* Dashboard style: Centered Home */}
-            <div className={`md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] ${textColor} font-medium`}>
-              <Link href="/" className="transition-colors">Home</Link>
+            {/* Row 1: Links and Toggle */}
+            <div className={`flex items-center justify-between w-full text-sm md:text-[0.9rem] ${textColor} font-medium`}>
+              <div className="flex items-center gap-6">
+                <Link href="/terms-of-service" className="transition-colors">Terms of Service</Link>
+                <Link href="/privacy" className="transition-colors">Privacy</Link>
+              </div>
+              
+              {hasMounted && (
+                <div className="relative" ref={dropdownRef}>
+                  <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    suppressHydrationWarning
+                    className={`flex items-center gap-2 ${isWhite ? "bg-white/10 hover:bg-white/20 border-white/20" : "bg-pill border-border hover:bg-accent"} px-3.5 py-1.5 rounded-2xl text-[0.9rem] ${isWhite ? "text-white" : "text-muted"} transition-colors`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <CurrentIcon className="w-4 h-4" />
+                      <span className="font-medium capitalize">{theme === "system" ? "System" : theme}</span>
+                    </div>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+                  </button>
+
+                  {isOpen && (
+                    <div className="absolute bottom-full right-0 mb-2 w-32 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-2">
+                      {themeOptions.map((item) => (
+                        <button
+                          key={item.name}
+                          onClick={() => {
+                            setTheme(item.name);
+                            setIsOpen(false);
+                          }}
+                          className={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors rounded-lg text-left ${
+                            theme === item.name ? "bg-accent text-foreground" : "text-muted hover:bg-accent/50 hover:text-foreground"
+                          }`}
+                        >
+                          <item.icon className="w-4 h-4 shrink-0" />
+                          <span className="font-medium">{item.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
-            <div className="hidden md:block flex-1" />
+
+            {/* Row 2: Copyright */}
+            <div className={`text-xs md:text-sm ${mutedTextColor} font-medium`}>
+              © 2026 Plugd · Made for hustlers
+            </div>
           </>
         ) : (
-          /* Default style: Minimal row on mobile, links on left on desktop */
-          <div className={`flex flex-col md:flex-row items-center gap-4 md:gap-6 text-sm md:text-[0.9rem] ${textColor} font-medium w-full md:w-auto`}>
-            <div className="md:hidden flex items-center justify-center gap-2 whitespace-nowrap">
-              <Link href="/" className="transition-colors">Home</Link>
-              <span className={mutedTextColor}>·</span>
-              <Link href="/dashboard" className="transition-colors">Dashboard</Link>
-              <span className={mutedTextColor}>·</span>
-              <Link href="/terms-of-service" className="transition-colors">Terms</Link>
-            </div>
-            <div className="hidden md:flex items-center gap-6">
-              <Link href="/" className="transition-colors">Home</Link>
-              <Link href="/dashboard" className="transition-colors">Dashboard</Link>
-              <Link href="/terms-of-service" className="transition-colors">Terms of Service</Link>
-            </div>
-          </div>
-        )}
-
-        {hasMounted && (
-          <div className="relative" ref={dropdownRef}>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              suppressHydrationWarning
-              className={`flex items-center gap-2 ${isWhite ? "bg-white/10 hover:bg-white/20 border-white/20" : "bg-pill border-border hover:bg-accent"} px-3.5 py-1.5 rounded-2xl text-[0.9rem] ${isWhite ? "text-white" : "text-muted"} transition-colors`}
-            >
-              <div className="flex items-center gap-2">
-                <CurrentIcon className="w-4 h-4" />
-                <span className="font-medium capitalize">{theme === "system" ? "System" : theme}</span>
+          <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative">
+            {isDashboard ? (
+              <>
+                {/* Dashboard style: Centered Home */}
+                <div className={`md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] ${textColor} font-medium`}>
+                  <Link href="/" className="transition-colors">Home</Link>
+                </div>
+                <div className="hidden md:block flex-1" />
+              </>
+            ) : (
+              /* Default style: Minimal row on mobile, links on left on desktop */
+              <div className={`flex flex-col md:flex-row items-center gap-4 md:gap-6 text-sm md:text-[0.9rem] ${textColor} font-medium w-full md:w-auto`}>
+                <div className="md:hidden flex items-center justify-center gap-2 whitespace-nowrap">
+                  <Link href="/" className="transition-colors">Home</Link>
+                  <span className={mutedTextColor}>·</span>
+                  <Link href="/dashboard" className="transition-colors">Dashboard</Link>
+                  <span className={mutedTextColor}>·</span>
+                  <Link href="/terms-of-service" className="transition-colors">Terms</Link>
+                </div>
+                <div className="hidden md:flex items-center gap-6">
+                  <Link href="/" className="transition-colors">Home</Link>
+                  <Link href="/dashboard" className="transition-colors">Dashboard</Link>
+                  <Link href="/terms-of-service" className="transition-colors">Terms of Service</Link>
+                </div>
               </div>
-              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
-            </button>
+            )}
 
-            {isOpen && (
-              <div className="absolute bottom-full left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 mb-2 w-32 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-2">
-                {themeOptions.map((item) => (
-                  <button
-                    key={item.name}
-                    onClick={() => {
-                      setTheme(item.name);
-                      setIsOpen(false);
-                    }}
-                    className={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors rounded-lg text-left ${
-                      theme === item.name ? "bg-accent text-foreground" : "text-muted hover:bg-accent/50 hover:text-foreground"
-                    }`}
-                  >
-                    <item.icon className="w-4 h-4 shrink-0" />
-                    <span className="font-medium">{item.label}</span>
-                  </button>
-                ))}
+            {hasMounted && (
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  suppressHydrationWarning
+                  className={`flex items-center gap-2 ${isWhite ? "bg-white/10 hover:bg-white/20 border-white/20" : "bg-pill border-border hover:bg-accent"} px-3.5 py-1.5 rounded-2xl text-[0.9rem] ${isWhite ? "text-white" : "text-muted"} transition-colors`}
+                >
+                  <div className="flex items-center gap-2">
+                    <CurrentIcon className="w-4 h-4" />
+                    <span className="font-medium capitalize">{theme === "system" ? "System" : theme}</span>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+                </button>
+
+                {isOpen && (
+                  <div className="absolute bottom-full left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 mb-2 w-32 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-2">
+                    {themeOptions.map((item) => (
+                      <button
+                        key={item.name}
+                        onClick={() => {
+                          setTheme(item.name);
+                          setIsOpen(false);
+                        }}
+                        className={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors rounded-lg text-left ${
+                          theme === item.name ? "bg-accent text-foreground" : "text-muted hover:bg-accent/50 hover:text-foreground"
+                        }`}
+                      >
+                        <item.icon className="w-4 h-4 shrink-0" />
+                        <span className="font-medium">{item.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </div>
