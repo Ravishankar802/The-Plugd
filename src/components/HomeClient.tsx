@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ReferralModal from "@/components/ReferralModal";
 import WealthCollage from "@/components/WealthCollage";
+import WealthBanner from "@/components/WealthBanner";
 
 
 
@@ -93,6 +94,8 @@ export default function HomeClient({
       <div className="w-full max-w-5xl mx-auto px-4 md:px-8">
         <Footer showBorder={false} />
       </div>
+
+      <WealthBanner />
 
       <ReferralModal 
         isOpen={isReferModalOpen} 
