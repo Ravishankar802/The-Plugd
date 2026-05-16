@@ -544,7 +544,7 @@ function DashboardProfileContent() {
       <ReferralModal 
         isOpen={isReferModalOpen} 
         onClose={() => setIsReferModalOpen(false)} 
-        userEmail={account?.email || promoterData?.email || ""} 
+        userEmail={promoterData?.email || ""} 
         referralCode={searchParams.get("ref") || ""}
       />
     </div>

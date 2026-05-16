@@ -36,6 +36,7 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
       icon: User, 
       show: true,
       locked: false,
+      upgradeHref: "/dashboard?tab=profile"
     },
     { 
       name: "Referrals", 
