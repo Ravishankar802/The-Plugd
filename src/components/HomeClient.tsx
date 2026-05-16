@@ -77,11 +77,7 @@ export default function HomeClient({
   const [hasMounted, setHasMounted] = useState(false);
   const [searchResults, setSearchResults] = useState<Account[]>([]);
   const [showResults, setShowResults] = useState(false);
-  const [stats, setStats] = useState<{ count: number; loading: boolean; error: boolean }>({
-    count: 0,
-    loading: true,
-    error: false,
-  });
+
   const [userEmail, setUserEmail] = useState<string | null>(serverUserEmail);
   const [isPaidUser, setIsPaidUser] = useState(initialIsPaid);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -139,22 +135,8 @@ export default function HomeClient({
     router.push(`/?${params.toString()}`, { scroll: true });
   };
 
-  const fetchStats = async () => {
-    try {
-      const res = await fetch("/api/stats");
-      if (!res.ok) throw new Error("Failed to fetch stats");
-      const data = await res.json();
-      setStats({ count: data.count, loading: false, error: false });
-    } catch (err) {
-      console.error("Stats fetch failed:", err);
-      setStats(prev => ({ ...prev, loading: false, error: true }));
-    }
-  };
-
   useEffect(() => {
     setHasMounted(true);
-    fetchStats();
-    const interval = setInterval(fetchStats, 30000);
     
     // Auth Check
     async function checkAuth() {
@@ -182,8 +164,6 @@ export default function HomeClient({
       }
     }
     checkAuth();
-
-    return () => clearInterval(interval);
   }, []);
 
   // Instant Client-side Search Logic for Dropdown
@@ -293,24 +273,15 @@ export default function HomeClient({
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite] pointer-events-none" />
                 
                 <div className="flex items-center gap-2 relative z-10">
-                  <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Earn per referral</span>
-                  <span className="text-[0.75rem] font-bold text-foreground">$1</span>
+                  <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Average pay</span>
+                  <span className="text-[0.75rem] font-bold text-foreground">$140/Day</span>
                 </div>
                 
                 <div className="w-[1px] h-4 bg-border/60 mx-4 md:mx-6 shrink-0 relative z-10" />
                 
                 <div className="flex items-center gap-2 relative z-10">
-                  <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Listed accounts</span>
-                  <span className="text-[0.75rem] font-bold text-foreground">
-                    {totalListedCount}
-                  </span>
-                </div>
-                
-                <div className="w-[1px] h-4 bg-border/60 mx-4 md:mx-6 shrink-0 relative z-10" />
-                
-                <div className="flex items-center gap-2 relative z-10">
-                  <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Payouts</span>
-                  <span className="text-[0.75rem] font-bold text-foreground">Twice a month</span>
+                  <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Total Payouts</span>
+                  <span className="text-[0.75rem] font-bold text-foreground">$300K+</span>
                 </div>
               </div>
             </div>
@@ -433,8 +404,6 @@ export default function HomeClient({
 
               <div className="flex items-center justify-center gap-2 mb-6 text-[13px] text-[#666] -mt-2">
                 <Link href="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
-                <span className="select-none">·</span>
-                <Link href="/stats" className="hover:text-foreground transition-colors">Stats</Link>
               </div>
 
               <div className="flex justify-center w-full relative group">
@@ -479,20 +448,7 @@ export default function HomeClient({
       </div>
 
       <div className="w-full max-w-5xl mx-auto px-4 md:px-8 mt-4">
-        {(!isPaidUser && !isAdmin) && (
-          <div className="ticker-container w-full bg-card border border-border rounded-[10px] overflow-hidden py-3 mb-8 cursor-default">
-            <div className="ticker-content flex items-center gap-12 px-4">
-              {[...Array(10)].map((_, i) => (
-                <div key={i} className="flex items-center gap-3 shrink-0">
-                  <span className="text-[#f97316] text-xl leading-none">●</span>
-                  <span className="text-foreground font-medium text-[15px] tracking-wide">
-                    1,000 referrals = $1,000. 10,000 referrals = $10,000. Start earning big.
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+
 
         <DirectoryTable 
           accounts={initialAccounts} 
@@ -532,7 +488,7 @@ export default function HomeClient({
           </div>
           <p className="text-[#a1a1aa] text-[0.8rem] md:text-[0.85rem] font-mono-custom text-center px-4 md:whitespace-nowrap whitespace-normal max-w-sm mx-auto md:max-w-none leading-relaxed">
             <Info className="w-4 h-4 shrink-0 inline-block mr-2 -mt-0.5" />
-            Accounts listed here are either submitted by the account owners themselves or added by Plugd's founder.
+            Accounts listed here are real X builders.
           </p>
         </div>
       </div>

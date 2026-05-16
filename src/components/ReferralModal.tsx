@@ -141,7 +141,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
               Join Plugd&apos;s Referral Program
             </h2>
             <p className="text-[0.95rem] text-[#f97316] font-bold tracking-tight">
-              Refer your network to join Plugd and earn $1 for every successful referral.
+              Refer your network to join Plugd and earn for every successful referral.
             </p>
           </div>
 
@@ -271,9 +271,9 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 className="border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm"
               >
                 <span style={{ color: isDark ? '#a1a1aa' : '#666666' }} className="text-[0.6rem] font-bold uppercase tracking-[0.05em] text-center leading-tight">
-                  if you refer <br /> 1,000 builders
+                  All-time earnings
                 </span>
-                <span className="text-[1.35rem] font-[900] tracking-tighter">$1,000</span>
+                <span className="text-[1.35rem] font-[900] tracking-tighter">$300K+</span>
               </div>
               
               <div 
@@ -284,9 +284,9 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 className="border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm"
               >
                 <span style={{ color: isDark ? '#a1a1aa' : '#666666' }} className="text-[0.6rem] font-bold uppercase tracking-[0.05em] text-center leading-tight">
-                  top referrers <br /> could earn
+                  Top referrer earnings
                 </span>
-                <span className="text-[1.35rem] font-[900] tracking-tighter">$10,000+</span>
+                <span className="text-[1.35rem] font-[900] tracking-tighter">$25K+</span>
               </div>
             </div>
           )}
