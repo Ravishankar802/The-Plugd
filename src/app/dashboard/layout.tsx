@@ -59,7 +59,7 @@ export default async function DashboardLayout({
           {children}
         </div>
         <div className="mt-12">
-          <Footer />
+          <Footer showBorder={false} />
         </div>
       </main>
     </div>
