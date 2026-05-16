@@ -69,18 +69,18 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
       <div className="px-6 pt-10 pb-6">
         <Link href="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
           <div className="w-10 h-10 flex items-center justify-center">
-            <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-[2.5]">
+            <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#16a34a] stroke-[2.5]">
               <line x1="20" y1="20" x2="8" y2="8" className="opacity-60" />
               <line x1="20" y1="20" x2="32" y2="8" className="opacity-60" />
               <line x1="20" y1="20" x2="37" y2="25" className="opacity-60" />
               <line x1="20" y1="20" x2="25" y2="37" className="opacity-60" />
               <line x1="20" y1="20" x2="3" y2="28" className="opacity-60" />
-              <circle cx="20" cy="20" r="5" className="fill-[#ff6b00] stroke-none" />
-              <circle cx="8" cy="8" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
-              <circle cx="32" cy="8" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
-              <circle cx="37" cy="25" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
-              <circle cx="25" cy="37" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
-              <circle cx="3" cy="28" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
+              <circle cx="20" cy="20" r="5" className="fill-[#16a34a] stroke-none" />
+              <circle cx="8" cy="8" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
+              <circle cx="32" cy="8" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
+              <circle cx="37" cy="25" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
+              <circle cx="25" cy="37" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
+              <circle cx="3" cy="28" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
             </svg>
           </div>
           <span className="text-2xl font-[900] text-foreground tracking-[-0.02em]">Plugd</span>

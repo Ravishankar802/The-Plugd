@@ -5,7 +5,7 @@ export default function Header() {
     <header className="pt-4 pb-0 flex flex-col items-center text-center relative overflow-hidden">
       <Link href="/" className="flex items-center gap-4 mb-8 hover:opacity-80 transition-opacity group relative z-10">
         <div className="relative w-10 h-10 flex items-center justify-center">
-          <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#ff6b00] stroke-[1.5]">
+          <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#16a34a] stroke-[1.5]">
             {/* Connections */}
             <line x1="20" y1="20" x2="8" y2="8" className="opacity-60" />
             <line x1="20" y1="20" x2="32" y2="8" className="opacity-60" />
@@ -14,12 +14,12 @@ export default function Header() {
             <line x1="20" y1="20" x2="3" y2="28" className="opacity-60" />
             
             {/* Nodes (Static) */}
-            <circle cx="20" cy="20" r="5" className="fill-[#ff6b00] stroke-none" />
-            <circle cx="8" cy="8" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
-            <circle cx="32" cy="8" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
-            <circle cx="37" cy="25" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
-            <circle cx="25" cy="37" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
-            <circle cx="3" cy="28" r="2.5" className="fill-[#ff6b00] stroke-none opacity-90" />
+            <circle cx="20" cy="20" r="5" className="fill-[#16a34a] stroke-none" />
+            <circle cx="8" cy="8" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
+            <circle cx="32" cy="8" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
+            <circle cx="37" cy="25" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
+            <circle cx="25" cy="37" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
+            <circle cx="3" cy="28" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
           </svg>
         </div>
         <span className="text-3xl font-[800] tracking-[-0.02em] text-foreground">Plugd</span>
