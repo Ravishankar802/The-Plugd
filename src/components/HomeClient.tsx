@@ -49,7 +49,7 @@ export default function HomeClient({
   };
 
   return (
-    <main className="flex-1 flex flex-col items-center w-full max-w-full overflow-x-hidden">
+    <main className="min-h-screen flex flex-col items-center w-full max-w-full overflow-x-hidden">
       <div className="w-full relative flex flex-col items-center pt-2 pb-4">
 
         <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-[60] flex flex-col items-center">
@@ -79,7 +79,7 @@ export default function HomeClient({
         </div>
       </div>
 
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8">
+      <div className="mt-auto w-full max-w-5xl mx-auto px-4 md:px-8 pb-10">
         <Footer showBorder={false} />
       </div>
 
