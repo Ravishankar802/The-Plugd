@@ -261,7 +261,7 @@ function DashboardProfileContent() {
                     <button
                       type="submit"
                       disabled={promoterSaving}
-                      className="w-full md:w-auto min-w-[260px] bg-[#16a34a] text-white font-black text-lg py-5 px-12 rounded-xl transition-all hover:bg-[#16a34a]/90 shadow-2xl active:scale-[0.99] uppercase tracking-wider disabled:opacity-50 flex items-center justify-center gap-3"
+                      className="w-full bg-[#16a34a] text-white font-black text-lg py-5 px-12 rounded-xl transition-all hover:bg-[#16a34a]/90 shadow-2xl active:scale-[0.99] uppercase tracking-wider disabled:opacity-50 flex items-center justify-center gap-3"
                     >
                       {promoterSaving ? (
                         <>
