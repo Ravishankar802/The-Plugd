@@ -79,7 +79,7 @@ export default function HomeClient({
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 z-[100] bg-background/50 backdrop-blur-md px-4 py-4">
+      <div className="w-full max-w-2xl mx-auto mb-10 px-4 md:px-0">
         <Footer showBorder={false} />
       </div>
 
