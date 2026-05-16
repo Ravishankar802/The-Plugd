@@ -379,7 +379,7 @@ export default function HomeClient({
                 <button
                   onClick={() => setIsReferModalOpen(true)}
                   suppressHydrationWarning
-                  className="h-[48px] w-full md:w-auto bg-[#f97316] border border-[#f97316] text-black dark:text-white font-[700] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-[#f97316]/90 active:scale-[0.98] shadow-lg cursor-pointer"
+                  className="h-[48px] w-full md:w-auto bg-[#16a34a] border border-[#16a34a] text-black dark:text-white font-[700] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg cursor-pointer"
                 >
                   <TrendingUp className="w-5 h-5" />
                   Refer & Earn

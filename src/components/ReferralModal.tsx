@@ -127,11 +127,11 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
           {/* Top Decorative Icon */}
           <div className="flex justify-center mb-5">
             <div className="relative">
-              <div className="absolute -inset-2 bg-[#22c55e]/20 rounded-full blur-xl animate-pulse" />
-              <div className="relative w-12 h-12 bg-[#22c55e]/10 rounded-2xl flex items-center justify-center border border-[#22c55e]/20">
-                <Gift className="w-6 h-6 text-[#22c55e]" strokeWidth={1.5} />
+              <div className="absolute -inset-2 bg-[#16a34a]/20 rounded-full blur-xl animate-pulse" />
+              <div className="relative w-12 h-12 bg-[#16a34a]/10 rounded-2xl flex items-center justify-center border border-[#16a34a]/20">
+                <Gift className="w-6 h-6 text-[#16a34a]" strokeWidth={1.5} />
               </div>
-              <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-[#22c55e] animate-bounce" />
+              <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-[#16a34a] animate-bounce" />
             </div>
           </div>
 
@@ -140,7 +140,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
             <h2 className="text-[1.5rem] font-[800] tracking-tight leading-[1.1]">
               Join Plugd&apos;s Referral Program
             </h2>
-            <p className="text-[0.95rem] text-[#22c55e] font-bold tracking-tight">
+            <p className="text-[0.95rem] text-[#16a34a] font-bold tracking-tight">
               Refer your network to join Plugd and earn for every successful referral.
             </p>
           </div>
@@ -193,7 +193,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       onClick={() => setFormData({ ...formData, payoutMethod: "PayPal" })}
                       className={`flex-1 py-4 rounded-xl border font-bold transition-all ${
                         formData.payoutMethod === "PayPal" 
-                        ? "bg-[#22c55e] text-white border-[#22c55e] shadow-lg" 
+                        ? "bg-[#16a34a] text-white border-[#16a34a] shadow-lg" 
                         : "bg-black text-muted border-border hover:border-muted"
                       }`}
                     >
@@ -204,7 +204,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       onClick={() => setFormData({ ...formData, payoutMethod: "UPI" })}
                       className={`flex-1 py-4 rounded-xl border font-bold transition-all ${
                         formData.payoutMethod === "UPI" 
-                        ? "bg-[#22c55e] text-white border-[#22c55e] shadow-lg" 
+                        ? "bg-[#16a34a] text-white border-[#16a34a] shadow-lg" 
                         : "bg-black text-muted border-border hover:border-muted"
                       }`}
                     >
@@ -296,7 +296,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
             <button
               onClick={handleJoin}
               disabled={loading}
-              className="w-full bg-[#22c55e] text-white font-[800] text-[1rem] py-[14px] rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-[#22c55e]/90 active:scale-[0.98] shadow-lg shadow-green-500/20 disabled:opacity-50"
+              className="w-full bg-[#16a34a] text-white font-[800] text-[1rem] py-[14px] rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg shadow-green-600/20 disabled:opacity-50"
             >
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (
                 <>
