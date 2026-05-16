@@ -25,7 +25,7 @@ export default function Header() {
         <span className="text-3xl font-[800] tracking-[-0.02em] text-foreground">Plugd</span>
       </Link>
 
-      <div className="w-full flex items-center justify-center my-6 md:my-10 animate-in fade-in slide-in-from-top-2 duration-500 relative z-10">
+      <div className="w-full flex items-center justify-center mb-8 animate-in fade-in slide-in-from-top-2 duration-500 relative z-10">
         <div className="inline-flex items-center bg-pill/80 backdrop-blur-sm border border-border/80 rounded-full px-6 py-3 shadow-sm hover:border-border/100 hover:bg-pill transition-all group relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite] pointer-events-none" />
           
@@ -45,7 +45,7 @@ export default function Header() {
       <h1 className="text-[clamp(1.75rem,4.5vw,2.85rem)] font-[800] tracking-[-0.035em] leading-[1.1] text-foreground mb-4 relative z-10">
         Dream Big. Earn Big.
       </h1>
-      <p className="text-muted text-[0.875rem] md:text-[1.25rem] font-normal max-w-[340px] md:max-w-2xl leading-tight md:leading-relaxed mx-auto relative z-10 px-4">
+      <p className="text-muted text-[0.875rem] md:text-[1.25rem] font-normal max-w-[340px] md:max-w-2xl leading-tight md:leading-relaxed mx-auto relative z-10 px-4 mb-12">
         Share Plugd. Earn for every person who joins.
       </p>
     </header>
