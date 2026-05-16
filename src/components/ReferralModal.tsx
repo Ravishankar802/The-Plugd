@@ -271,11 +271,11 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 className="border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm"
               >
                 <span style={{ color: isDark ? '#a1a1aa' : '#666666' }} className="text-[0.6rem] font-bold uppercase tracking-[0.05em] text-center leading-tight">
-                  All-time earnings
+                  Top referrer earnings
                 </span>
-                <span className="text-[1.35rem] font-[900] tracking-tighter">$300K+</span>
+                <span className="text-[1.35rem] font-[900] tracking-tighter">$25K+</span>
               </div>
-              
+
               <div 
                 style={{ 
                   backgroundColor: isDark ? '#262626' : '#f9f9f9',
@@ -284,9 +284,9 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 className="border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm"
               >
                 <span style={{ color: isDark ? '#a1a1aa' : '#666666' }} className="text-[0.6rem] font-bold uppercase tracking-[0.05em] text-center leading-tight">
-                  Top referrer earnings
+                  All-time earnings
                 </span>
-                <span className="text-[1.35rem] font-[900] tracking-tighter">$25K+</span>
+                <span className="text-[1.35rem] font-[900] tracking-tighter">$300K+</span>
               </div>
             </div>
           )}
