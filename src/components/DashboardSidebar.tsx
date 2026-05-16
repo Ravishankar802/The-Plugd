@@ -34,9 +34,8 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
       id: "profile",
       href: "/dashboard?tab=profile", 
       icon: User, 
-      show: hasAccount || isAdmin,
-      locked: !hasAccount && !isAdmin,
-      upgradeHref: "/?modal=add"
+      show: true,
+      locked: false,
     },
     { 
       name: "Referrals", 
@@ -59,7 +58,6 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
   ];
 
   const adminItems = [
-    { name: "Manage Accounts", href: "/admin", icon: LayoutGrid },
     { name: "Manage Referrals", href: "/admin/referrals", icon: UserPlus },
   ];
 

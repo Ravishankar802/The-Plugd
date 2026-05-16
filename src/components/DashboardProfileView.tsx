@@ -3,13 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { 
   Loader2, 
-  Trash2, 
-  Upload, 
   Check,
-  Camera,
-  Save,
-  User,
-  Plus as PlusIcon,
   ArrowRight,
   Gift,
   Copy,
@@ -17,7 +11,8 @@ import {
   Lock,
   Wallet,
   TrendingUp,
-  X
+  X,
+  Save
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -27,22 +22,15 @@ import { NICHES } from "@/lib/constants";
 import ReferralModal from "@/components/ReferralModal";
 import SafeAvatar from "@/components/SafeAvatar";
 
-const FOLLOWERS_RANGES = [
-  "0-100", "100-500", "500-1K", "1K-2K", "2K-5K", "5K-10K", "10K-25K", "25K-50K", "50K-100K", "100K+"
-];
+
 
 function DashboardProfileContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const tab = searchParams.get("tab") || "profile";
   
-  const [account, setAccount] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
-  const [hasAccount, setHasAccount] = useState(false);
   const [hasPromoter, setHasPromoter] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isReferModalOpen, setIsReferModalOpen] = useState(false);
@@ -67,11 +55,9 @@ function DashboardProfileContent() {
         const res = await fetch("/api/auth/me");
         if (res.ok) {
           const data = await res.json();
-          setHasAccount(data.hasAccount);
           setHasPromoter(data.hasPromoter);
           setIsAdmin(data.isAdmin);
           setPromoterData(data.promoterData);
-          setAccount(data.accountData);
         } else {
           router.push("/login");
         }
@@ -86,49 +72,7 @@ function DashboardProfileContent() {
   }, [router]);
 
 
-  const handleSave = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!account?.id) {
-      setError("No account ID found. Please refresh and try again.");
-      return;
-    }
 
-    setSaving(true);
-    setSuccess(false);
-    setError(null);
-
-    try {
-      // Clean Handle
-      let handle = account.xHandle || "";
-      if (handle.startsWith("@")) handle = handle.substring(1);
-
-      const emailHeader = localStorage.getItem("plugd_user_email");
-      const res = await fetch(`/api/accounts/${account.id}`, {
-        method: "PATCH",
-        headers: { 
-          "Content-Type": "application/json",
-          "x-user-email": emailHeader || ""
-        },
-        body: JSON.stringify({
-          ...account,
-          xHandle: handle
-        }),
-      });
-
-      if (res.ok) {
-        setSuccess(true);
-        setTimeout(() => setSuccess(false), 3000);
-      } else {
-        const data = await res.json();
-        setError(data.error || "Failed to save changes.");
-      }
-    } catch (err: any) {
-      console.error("Save error:", err);
-      setError(err.message || "An unexpected error occurred.");
-    } finally {
-      setSaving(false);
-    }
-  };
 
   const handlePromoterSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -196,221 +140,6 @@ function DashboardProfileContent() {
       {/* Profile Section */}
       {activeSection === "profile" && (
         <>
-          {/* Account Profile Section */}
-          {(hasAccount || isAdmin) ? (
-            <>
-              <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div>
-                  <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Listing Profile</h1>
-                  <p className="text-muted text-[1rem] mt-1.5 font-normal">Your public listing in the Plugd index.</p>
-                </div>
-                
-                {account && (
-                  <Link 
-                    href={`/u/${account.xHandle.replace(/^@+/, '')}`}
-                    className="flex items-center gap-2 text-[#f97316] font-bold text-sm hover:underline"
-                  >
-                    Visit Public Profile <ArrowRight size={14} />
-                  </Link>
-                )}
-              </div>
-
-              {account?.status === "pending_payment" && (
-                <div className="mb-8 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-xl flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-500">
-                  <div className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" />
-                  <p className="text-yellow-500 text-sm font-bold uppercase tracking-wider">
-                    We&apos;re confirming your payment. Your profile will appear shortly.
-                  </p>
-                </div>
-              )}
-
-              <div className="bg-pill border border-border rounded-[16px] p-10 shadow-2xl mb-12">
-                <form onSubmit={handleSave} className="space-y-10">
-                  {/* Profile Picture */}
-                  <div className="flex flex-col gap-6">
-                    <label className="text-[0.8rem] font-bold text-muted/60 block tracking-widest uppercase">PROFILE PICTURE URL</label>
-                    
-                    <div className="flex flex-col gap-6">
-                      <div className="w-20 h-20 rounded-full overflow-hidden bg-pill border border-border flex items-center justify-center shadow-2xl shrink-0">
-                        <SafeAvatar 
-                          src={account?.avatarUrl} 
-                          alt={account?.name || ""} 
-                          className="w-full h-full object-cover"
-                          fallbackSize={32}
-                        />
-                      </div>
-
-                      <div className="flex-1 space-y-3">
-                        <input
-                          type="text"
-                          placeholder="https://pbs.twimg.com/profile_images/..."
-                          value={account?.avatarUrl || ""}
-                          onChange={(e) => setAccount({ ...account, avatarUrl: e.target.value })}
-                          className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                        />
-                        <p className="text-[0.8rem] text-muted/60 font-medium">Paste your X profile picture URL here</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="flex flex-col gap-3">
-                      <label className="text-[0.95rem] font-[500] text-foreground block">Full Name</label>
-                      <input
-                        required
-                        type="text"
-                        placeholder="e.g. John Doe"
-                        value={account?.name || ""}
-                        onChange={(e) => setAccount({ ...account, name: e.target.value })}
-                        className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                      />
-                    </div>
-
-                    <div className="flex flex-col gap-3">
-                      <label className="text-[0.95rem] font-[500] text-foreground block">X Username</label>
-                      <div className="relative">
-                        <span className="absolute left-5 top-1/2 -translate-y-1/2 text-muted/60 font-medium text-[1rem]">@</span>
-                        <input
-                          required
-                          type="text"
-                          placeholder="username"
-                          value={((account?.xHandle || "") as string).startsWith("@") ? ((account?.xHandle || "") as string).substring(1) : (account?.xHandle || "")}
-                          onChange={(e) => setAccount({ ...account, xHandle: e.target.value })}
-                          className="w-full bg-background border border-border rounded-xl pl-11 pr-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-3">
-                    <div className="flex justify-between items-center">
-                      <label className="text-[0.95rem] font-[500] text-foreground block">One-line Bio</label>
-                      <span className={`text-[0.75rem] font-medium ${(account?.bio || "").length > 100 ? "text-red-500" : "text-muted/60"}`}>
-                        {(account?.bio || "").length}/100
-                      </span>
-                    </div>
-                    <input
-                      required
-                      maxLength={100}
-                      type="text"
-                      placeholder="Founder | Building in public | Shipping daily"
-                      value={account?.bio || ""}
-                      onChange={(e) => setAccount({ ...account, bio: e.target.value })}
-                      className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-3">
-                    <label className="text-[0.95rem] font-[500] text-foreground block">Email Address</label>
-                    <input
-                      readOnly
-                      type="email"
-                      value={account?.email || ""}
-                      className="w-full bg-background border border-border rounded-xl px-5 py-4 text-muted cursor-not-allowed text-[1rem] opacity-70"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-5">
-                    <label className="text-[0.95rem] font-[500] text-foreground block">Niche</label>
-                    <div className="flex flex-wrap gap-3">
-                      {NICHES.map((niche) => {
-                        const Icon = niche.icon;
-                        const isSelected = (account?.niche || []).includes(niche.name);
-                        return (
-                          <button
-                            key={niche.name}
-                            type="button"
-                            onClick={() => {
-                              const current = account?.niche || [];
-                              const updated = current.includes(niche.name)
-                                ? current.filter((n: string) => n !== niche.name)
-                                : [...current, niche.name];
-                              setAccount({ ...account, niche: updated });
-                            }}
-                            className={`flex items-center gap-2.5 px-5 py-2.5 rounded-full text-[0.9rem] transition-all border ${
-                              isSelected 
-                                ? "bg-selected text-selected-foreground border-selected font-bold shadow-lg" 
-                                : "bg-pill text-muted border-border hover:border-muted hover:text-foreground hover:bg-accent"
-                            }`}
-                          >
-                            {Icon && <Icon size={16} className={isSelected ? "text-selected-foreground" : "text-muted"} />}
-                            <span>{niche.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-5">
-                    <label className="text-[0.95rem] font-[500] text-foreground block">Followers Range</label>
-                    <div className="flex flex-wrap gap-3">
-                      {FOLLOWERS_RANGES.map((range) => (
-                        <button
-                          key={range}
-                          type="button"
-                          onClick={() => setAccount({ ...account, followersRange: range })}
-                          className={`px-5 py-2.5 rounded-full text-[0.9rem] transition-all border ${
-                            account?.followersRange === range 
-                              ? "bg-selected text-selected-foreground border-selected font-bold shadow-lg" 
-                              : "bg-pill text-muted border-border hover:border-muted hover:text-foreground hover:bg-accent"
-                          }`}
-                        >
-                          {range}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-6 border-t border-border">
-                    <button
-                      type="submit"
-                      disabled={saving}
-                      className="w-full md:w-auto min-w-[240px] bg-white text-black font-black text-lg py-5 px-12 rounded-xl transition-all hover:bg-white/90 shadow-2xl active:scale-[0.99] uppercase tracking-wider disabled:opacity-50 flex items-center justify-center gap-3"
-                    >
-                      {saving ? (
-                        <>
-                          <Loader2 className="w-6 h-6 animate-spin" />
-                          Saving Changes...
-                        </>
-                      ) : (
-                        <>
-                          <Save size={20} />
-                          Save Changes
-                        </>
-                      )}
-                    </button>
-                    {error && (
-                      <p className="text-red-500 text-center md:text-left mt-4 font-bold flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
-                        <X size={20} />
-                        {error}
-                      </p>
-                    )}
-                    {success && (
-                      <p className="text-green-500 text-center md:text-left mt-4 font-bold flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
-                        <Check size={20} />
-                        Profile updated successfully
-                      </p>
-                    )}
-                  </div>
-                </form>
-              </div>
-            </>
-          ) : !hasPromoter && !isAdmin && (
-            <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="w-20 h-20 rounded-3xl bg-foreground/5 flex items-center justify-center mb-6">
-                <Lock className="w-10 h-10 text-muted" />
-              </div>
-              <h2 className="text-2xl font-bold mb-2">Listing Required</h2>
-              <p className="text-muted max-w-sm mb-8">You need to add your account to the directory to access profile editing. (Listing Profile = $2, Promoter Profile = $2, both = $4)</p>
-              <button 
-                onClick={() => window.location.href = "/?modal=add"}
-                className="bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-white/90 transition-all flex items-center gap-2 shadow-xl"
-              >
-                Get Listed for $2 <ArrowRight size={18} />
-              </button>
-            </div>
-          )}
-
           {/* Promoter Settings Section */}
           {(hasPromoter || isAdmin) && promoterData && (
             <div className="mt-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">

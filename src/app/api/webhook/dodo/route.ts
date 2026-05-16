@@ -96,71 +96,8 @@ export async function POST(req: Request) {
         return NextResponse.json({ success: true });
       }
 
-      // 2. Handle Account Payment ($2) - Existing Logic + Referral Tracking
-      const accountId = metadata.metadata_accountId || metadata.accountId;
-      const claimHandle = metadata.metadata_claimHandle || metadata.claimHandle;
-      const referralCode = metadata.metadata_referralCode || metadata.referralCode;
-
-      let account;
-      if (claimHandle) {
-        account = await prisma.account.findFirst({
-          where: { xHandle: { equals: claimHandle, mode: "insensitive" } },
-        });
-      } else if (accountId) {
-        account = await prisma.account.findUnique({
-          where: { id: parseInt(accountId) },
-        });
-      }
-
-      if (!account) {
-        console.error(`Account not found for payment: ${accountId || claimHandle}`);
-        return NextResponse.json({ error: "Account not found" }, { status: 404 });
-      }
-
-      if (!account.paid) {
-        await prisma.account.update({
-          where: { id: account.id },
-          data: {
-            status: "paid",
-            paid: true,
-            isClaimed: true,
-            email: payment.customer.email,
-            paymentId: payment.payment_id
-          }
-        });
-        console.log(`Account ${account.xHandle} successfully marked as paid.`);
-
-        // Handle Referral Credit Logic
-        if (referralCode) {
-          const promoter = await prisma.promoter.findUnique({
-            where: { referralCode }
-          });
-          
-          if (promoter) {
-            await prisma.$transaction([
-              prisma.promoter.update({
-                where: { id: promoter.id },
-                data: {
-                  totalEarned: { increment: 1.0 },
-                  pendingPayout: { increment: 1.0 },
-                  totalConversions: { increment: 1 }
-                }
-              }),
-              prisma.referral.create({
-                data: {
-                  referralCode: referralCode,
-                  promoterEmail: promoter.email,
-                  status: "converted",
-                  amountEarned: 1.0,
-                  paymentId: payment.payment_id,
-                  convertedAt: new Date()
-                }
-              })
-            ]);
-            console.log(`Referral credited to promoter: ${promoter.email}`);
-          }
-        }
-      }
+      // 2. Account Listing Payments have been removed
+      return NextResponse.json({ success: true });
     }
 
     return NextResponse.json({ success: true });
