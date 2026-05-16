@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, EB_Garamond } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -10,6 +10,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const ebGaramond = EB_Garamond({
+  variable: "--font-eb-garamond",
   subsets: ["latin"],
 });
 
@@ -58,7 +63,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background transition-colors duration-300`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${ebGaramond.variable} min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background transition-colors duration-300`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
