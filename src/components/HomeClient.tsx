@@ -80,7 +80,7 @@ export default function HomeClient({
       </div>
 
       <div className="w-full max-w-2xl mx-auto mb-10 px-4 md:px-0">
-        <Footer showBorder={false} />
+        <Footer showBorder={false} minimal={true} />
       </div>
 
       <ReferralModal 

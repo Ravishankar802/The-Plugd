@@ -9,9 +9,10 @@ import { useTheme } from "next-themes";
 interface FooterProps {
   showBorder?: boolean;
   variant?: 'default' | 'white';
+  minimal?: boolean;
 }
 
-export default function Footer({ showBorder = true, variant = 'default' }: FooterProps) {
+export default function Footer({ showBorder = true, variant = 'default', minimal = false }: FooterProps) {
   const isWhite = variant === 'white';
   const textColor = isWhite ? "text-white/80 hover:text-white" : "text-muted hover:text-foreground";
   const mutedTextColor = isWhite ? "text-white/40" : "text-muted/40";
@@ -47,7 +48,11 @@ export default function Footer({ showBorder = true, variant = 'default' }: Foote
   return (
     <footer className={`${isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-border" : ""}`}>
       <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative">
-        {isDashboard ? (
+        {minimal ? (
+          <div className={`flex items-center justify-between w-full text-sm md:text-[0.9rem] ${textColor} font-medium`}>
+            <Link href="/terms-of-service" className="transition-colors">Terms of Service</Link>
+          </div>
+        ) : isDashboard ? (
           <>
             {/* Dashboard style: Centered Home */}
             <div className={`md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] ${textColor} font-medium`}>
