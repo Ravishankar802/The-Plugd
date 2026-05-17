@@ -204,7 +204,7 @@ export default function ManageReferralsClient() {
   );
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-[1200px] mx-auto w-full space-y-5">
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-[1200px] mx-auto w-full space-y-5 overflow-x-hidden px-1 md:px-0">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-foreground leading-tight tracking-tight">Manage Referrals</h1>
@@ -228,7 +228,7 @@ export default function ManageReferralsClient() {
       </div>
 
       {/* Stats Summary */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
         <div className="bg-pill border border-border rounded-xl p-4 shadow-sm">
           <p className="text-muted text-[0.6rem] font-bold uppercase tracking-[0.15em] mb-1.5">Total Pending</p>
           <div className="flex items-end justify-between">
@@ -283,8 +283,8 @@ export default function ManageReferralsClient() {
           <p className="text-muted text-[0.7rem] font-medium">Found {filteredAndSorted.length}</p>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse text-xs">
+        <div className="overflow-x-auto w-full">
+          <table className="w-full min-w-[800px] md:min-w-full text-left border-collapse text-xs">
             <thead>
               <tr className="bg-foreground/[0.02] border-b border-border">
                 <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("name")}>

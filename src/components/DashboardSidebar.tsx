@@ -19,6 +19,8 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
   const searchParams = useSearchParams();
   const currentTab = searchParams.get("tab") || "profile";
 
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
@@ -153,7 +155,7 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
               <p className="text-foreground font-semibold text-[0.95rem] tracking-tight truncate" title={email}>{email}</p>
             </div>
             <button
-              onClick={handleLogout}
+              onClick={() => setShowLogoutConfirm(true)}
               className="w-full flex items-center justify-center gap-2.5 py-2.5 rounded-lg bg-background border border-pill-border text-foreground hover:text-foreground hover:bg-accent transition-all text-[0.9rem] font-medium group"
             >
               <LogOut size={16} className="text-muted group-hover:text-foreground transition-colors" />
@@ -201,13 +203,48 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
           );
         })}
         <button
-          onClick={handleLogout}
+          onClick={() => setShowLogoutConfirm(true)}
           className="flex flex-col items-center gap-1 transition-all text-muted hover:text-foreground cursor-pointer"
         >
           <LogOut size={20} />
           <span className="text-[0.62rem] font-bold uppercase tracking-wider">Logout</span>
         </button>
       </div>
+
+      {showLogoutConfirm && (
+        <div className="fixed inset-0 z-[150] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setShowLogoutConfirm(false)} />
+          <div className="relative bg-pill border border-border p-6 rounded-2xl max-w-xs w-full shadow-2xl flex flex-col items-center text-center space-y-5 animate-in fade-in zoom-in-95 duration-200">
+            <div className="w-12 h-12 bg-foreground/5 border border-border text-foreground rounded-full flex items-center justify-center shrink-0">
+              <LogOut size={22} className="text-muted-foreground" />
+            </div>
+            
+            <div className="space-y-1.5">
+              <h3 className="text-lg font-bold text-foreground">Confirm Logout</h3>
+              <p className="text-xs text-muted leading-normal">
+                Are you sure you want to log out of your Vault session?
+              </p>
+            </div>
+
+            <div className="flex gap-3 w-full">
+              <button
+                type="button"
+                onClick={() => setShowLogoutConfirm(false)}
+                className="flex-1 py-2.5 rounded-xl border border-border text-foreground hover:bg-accent font-bold transition-all text-xs cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="flex-1 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold transition-all text-xs shadow-lg shadow-red-600/10 cursor-pointer"
+              >
+                Log out
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

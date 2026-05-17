@@ -22,14 +22,14 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-background flex" style={{ fontFamily: 'Georgia, serif' }}>
+    <div className="min-h-screen bg-background flex overflow-x-hidden max-w-full" style={{ fontFamily: 'Georgia, serif' }}>
       <DashboardSidebar 
         email={session.email} 
         isAdmin={isAdmin} 
         hasAccount={true} 
         hasPromoter={true} 
       />
-      <main className="flex-1 md:ml-[320px] p-6 md:p-12 flex flex-col min-h-screen">
+      <main className="flex-1 md:ml-[320px] p-6 md:p-12 pb-24 md:pb-12 flex flex-col min-h-screen overflow-x-hidden max-w-full">
         <div className="flex-1">
           {children}
         </div>
