@@ -82,13 +82,13 @@ export default function HomeClient({
       </div>
 
       {/* LEGACY Section */}
-      <section className="w-full px-4 mb-10">
+      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-10">
         <Link 
           href="/legacy" 
-          className="block w-full max-w-md mx-auto bg-[#22c55e] h-32 rounded-xl flex items-center justify-center hover:scale-105 transition-transform duration-300 shadow-xl"
+          className="block w-full bg-[#22c55e] h-80 rounded-xl flex items-center justify-center hover:scale-[1.02] transition-transform duration-300 shadow-xl"
         >
           <h2 
-            className="text-4xl md:text-5xl font-bold uppercase tracking-widest text-white"
+            className="text-6xl md:text-8xl font-bold uppercase tracking-widest text-white"
             style={{ fontFamily: '"Times New Roman", Times, serif' }}
           >
             LEGACY
