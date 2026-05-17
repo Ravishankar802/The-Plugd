@@ -3,7 +3,7 @@ import FadeInSection from "./FadeInSection";
 
 export const metadata = {
   title: "LEGACY | The Plugd",
-  description: "The art of earning by sharing — a story as old as commerce itself.",
+  description: "The art of earning by sharing. A story as old as commerce itself.",
 };
 
 export default function LegacyPage() {
@@ -49,7 +49,7 @@ export default function LegacyPage() {
             LEGACY
           </h1>
           <p className="text-white/50 text-xl italic max-w-xl mx-auto">
-            The art of earning by sharing — a story as old as commerce itself.
+            The art of earning by sharing. A story as old as commerce itself.
           </p>
           <div className="w-24 border-t border-amber-500/40 mt-8 mx-auto"></div>
         </div>
@@ -79,7 +79,7 @@ export default function LegacyPage() {
               Long before algorithms and affiliate links, there was the oldest marketing channel in the world: a person telling another person about something worth knowing.
             </p>
             <p className="text-white/75 text-xl leading-9 mb-8">
-              In the 1800s, traveling salesmen were paid commissions for every customer they brought in. Newspaper boys who recruited new subscribers got a cut. The milkman who referred a neighbor got a free week of deliveries. The system had no name then. It didn't need one. It was just how trust moved through a community — and money followed trust.
+              In the 1800s, traveling salesmen were paid commissions for every customer they brought in. Newspaper boys who recruited new subscribers got a cut. The milkman who referred a neighbor got a free week of deliveries. The system had no name then. It didn't need one. It was just how trust moved through a community, and money followed trust.
             </p>
           </FadeInSection>
 
@@ -121,10 +121,10 @@ export default function LegacyPage() {
               In 1999, PayPal was bleeding money on traditional ads. So they tried something different: pay people $10 to sign up, and $10 more for every friend they brought in.
             </p>
             <p className="text-white/75 text-xl leading-9 mb-8">
-              Within months they were adding 7 to 10 percent new users every single day. That referral program didn't just grow PayPal — it funded the careers of the people who would go on to build YouTube, LinkedIn, Tesla, and SpaceX. They called it the PayPal Mafia. Referrals built the mafia.
+              Within months they were adding 7 to 10 percent new users every single day. That referral program didn't just grow PayPal. It funded the careers of the people who would go on to build YouTube, LinkedIn, Tesla, and SpaceX. They called it the PayPal Mafia. Referrals built the mafia.
             </p>
             <p className="text-white/75 text-xl leading-9 mb-8">
-              In 2008, Dropbox was a file storage startup with a $300 cost-per-acquisition through Google Ads. They scrapped the ads and launched a referral program — free storage for you, free storage for your friend.
+              In 2008, Dropbox was a file storage startup with a $300 cost-per-acquisition through Google Ads. They scrapped the ads and launched a referral program: free storage for you, free storage for your friend.
             </p>
           </FadeInSection>
 
@@ -136,7 +136,7 @@ export default function LegacyPage() {
 
           <FadeInSection>
             <p className="text-white/75 text-xl leading-9 mb-8">
-              Uber. Airbnb. Robinhood. Cash App. Every major consumer platform of the last two decades has a referral program baked into its DNA. Not as an afterthought — as the engine.
+              Uber. Airbnb. Robinhood. Cash App. Every major consumer platform of the last two decades has a referral program baked into its DNA. Not as an afterthought, but as the engine.
             </p>
           </FadeInSection>
         </div>
@@ -169,7 +169,7 @@ export default function LegacyPage() {
               Somewhere right now, a 22-year-old is making $4,000 a month dropping referral links in Reddit threads. A mom of three runs a deals newsletter with 8,000 subscribers and earns a full-time income from affiliate commissions. A college student built a Discord server around a niche hobby, and every product recommendation he makes earns him a cut.
             </p>
             <p className="text-white/75 text-xl leading-9 mb-8">
-              None of them have investors. None of them have employees. They have audiences — even small ones.
+              None of them have investors. None of them have employees. They have audiences, even small ones.
             </p>
           </FadeInSection>
 
@@ -211,7 +211,7 @@ export default function LegacyPage() {
               Nielsen's research is unambiguous: 92 percent of consumers trust recommendations from people they know above every other form of advertising. Not 52 percent. Not 72 percent. 92.
             </p>
             <p className="text-white/75 text-xl leading-9 mb-8">
-              When a friend tells you about something, your brain skips the skepticism. The mental work of evaluating whether to trust the source is already done. You trust your friend. So you trust the thing they're telling you about. This is not manipulation — it is the natural architecture of human social networks doing what it was built to do.
+              When a friend tells you about something, your brain skips the skepticism. The mental work of evaluating whether to trust the source is already done. You trust your friend. So you trust the thing they're telling you about. This is not manipulation. It is the natural architecture of human social networks doing what it was built to do.
             </p>
           </FadeInSection>
 
@@ -253,7 +253,7 @@ export default function LegacyPage() {
               The PayPal founders didn't invent referral marketing. The Dropbox team didn't either. They just recognized the moment they were in and built the right structure around a timeless human behavior.
             </p>
             <p className="text-white/75 text-xl leading-9 mb-8">
-              You are living in the most connected moment in human history. Your network — however large or small you think it is — has real, measurable economic value. The question is not whether that value exists. The question is whether you're capturing any of it.
+              You are living in the most connected moment in human history. Your network, however large or small you think it is, has real, measurable economic value. The question is not whether that value exists. The question is whether you're capturing any of it.
             </p>
             <p className="text-white/75 text-xl leading-9 mb-8">
               Every person you know who joins Plugd puts a dollar in your pocket. That's not a metaphor. That's the structure. Share your link, earn your cut, withdraw when you're ready.
@@ -268,15 +268,30 @@ export default function LegacyPage() {
         </div>
 
         <FadeInSection>
-          <div className="w-full bg-gradient-to-br from-green-950 to-black py-24 text-center border-t border-green-800/40">
-            <h3 className="text-4xl md:text-5xl font-bold text-white mb-8">
-              Ready to start?
+          <div 
+            className="w-full py-32 text-center"
+            style={{ 
+              backgroundColor: '#15803d', 
+              backgroundImage: 'radial-gradient(ellipse at 0% 0%, #eab308 0%, transparent 35%), radial-gradient(ellipse at 100% 100%, #f59e0b 0%, transparent 45%), radial-gradient(ellipse at 0% 100%, #eab308 0%, transparent 35%), radial-gradient(ellipse at 100% 0%, #22c55e 0%, transparent 70%), radial-gradient(ellipse at 50% 50%, #16a34a 0%, transparent 100%)' 
+            }}
+          >
+            <p className="text-amber-500 text-xs tracking-[0.4em] font-mono mb-6 uppercase">
+              YOUR TURN
+            </p>
+            <h3 
+              className="text-5xl md:text-6xl text-white font-serif italic mb-4"
+              style={{ fontFamily: '"Times New Roman", Times, serif' }}
+            >
+              Your network is worth something.
             </h3>
+            <p className="text-white/50 text-lg mt-4 mb-10">
+              Every person you refer puts $1 in your pocket. Payouts twice a month.
+            </p>
             <Link 
               href="/"
-              className="inline-block bg-green-500 hover:bg-green-400 text-black font-bold text-lg px-8 py-4 rounded-full transition-all hover:scale-105 shadow-xl hover:shadow-green-500/20"
+              className="inline-block bg-[#0a0a0a] hover:bg-black text-white font-bold text-lg px-8 py-4 rounded-full transition-all hover:scale-105 shadow-xl ring-1 ring-white/10"
             >
-              Join Plugd — $2 to start
+              Join Plugd
             </Link>
           </div>
         </FadeInSection>
