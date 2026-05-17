@@ -91,7 +91,7 @@ const articleDetails: Record<string, ArticleContent> = {
   },
   "realistic-earnings": {
     slug: "realistic-earnings",
-    image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&q=80",
     category: "MONEY",
     title: "How Much Can You Realistically Earn",
     content: [
