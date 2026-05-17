@@ -22,7 +22,7 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen bg-background flex" style={{ fontFamily: 'Georgia, serif' }}>
       <DashboardSidebar 
         email={session.email} 
         isAdmin={isAdmin} 
