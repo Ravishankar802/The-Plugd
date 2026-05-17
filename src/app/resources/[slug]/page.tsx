@@ -98,10 +98,10 @@ const articleDetails: Record<string, ArticleContent> = {
       "Let's do the actual math so there are no surprises.",
       "10 referrals: $10. That's your $2 back plus $8 profit. At this point you're in the green and you've barely started.",
       "50 referrals: $50. If each of those 50 people refers just 2 more, that's 100 additional referrals you didn't make, but those earnings go to them, not you. Your earnings come from your direct referrals only.",
-      "100 referrals: $100. Achievable for anyone with an active social presence over 2 to 3 months of consistent sharing.",
-      "The people earning the most on Plugd aren't doing anything magical. They're sharing consistently across multiple platforms, writing good messages, and following up. Volume and consistency beat any single viral moment.",
-      "The realistic ceiling for someone putting in 30 minutes a week is 20 to 40 referrals a month. That's $20 to $40 per month, every month, for work you mostly did once. Over a year that's $240 to $480 from a $2 investment.",
-      "The realistic ceiling for someone who treats it seriously, creating content, building an audience around it, and optimizing their message, is unlimited. The top earner on Plugd has cleared over $25,000. That did not happen by accident. It happened because they picked the right platforms, wrote messages that converted, and never stopped sharing. The infrastructure is already built. The question is how far you want to take it."
+      "100 referrals: $100. That's just the start. The people hitting serious numbers on Plugd aren't stopping at 100.",
+      "The people earning the most on Plugd are sharing consistently across multiple platforms, writing messages that actually convert, and treating it like a real income stream, not a one-time thing. Volume and consistency beat any single viral moment.",
+      "The realistic ceiling for someone putting in genuine effort is well beyond what most people expect. Top earners on Plugd are clearing over $100 a day. That is not a typo. It is the result of a wide network, a sharp message, and showing up every day. The top earner has cleared over $25,000 total. One person. One link. No product, no team, no inventory.",
+      "The floor is whatever you put in. The ceiling is on you."
     ]
   }
 };
