@@ -4,6 +4,12 @@ import Footer from "@/components/Footer";
 export default function TermsOfService() {
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-foreground/10 flex flex-col font-['Georgia',_serif]">
+      <Link 
+        href="/" 
+        className="fixed top-6 left-6 z-50 text-white/50 hover:text-white text-sm font-mono transition-colors"
+      >
+        &larr; Back
+      </Link>
       <div className="max-w-[840px] mx-auto px-6 pt-16 flex flex-col items-center flex-1">
         
         {/* Page Header */}
@@ -111,8 +117,8 @@ export default function TermsOfService() {
       </div>
 
       {/* Footer - Wider container matching homepage */}
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8">
-        <Footer showBorder={false} />
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 flex justify-end pb-12">
+        <Footer toggleOnly={true} />
       </div>
     </main>
   );
