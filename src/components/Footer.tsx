@@ -12,6 +12,7 @@ interface FooterProps {
   minimal?: boolean;
   isLogin?: boolean;
   toggleOnly?: boolean;
+  hideLinks?: boolean;
   onStartEarning?: () => void;
 }
 
@@ -21,6 +22,7 @@ export default function Footer({
   minimal = false,
   isLogin = false,
   toggleOnly = false,
+  hideLinks = false,
   onStartEarning
 }: FooterProps) {
   const isWhite = variant === 'white';
@@ -195,7 +197,9 @@ export default function Footer({
           </div>
         ) : (
           <div className={isLogin ? "flex items-center justify-between relative w-full" : "flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative w-full"}>
-            {isLogin ? (
+            {hideLinks ? (
+              <div className="hidden md:block flex-1" />
+            ) : isLogin ? (
               <div className={`flex items-center gap-6 text-[0.9rem] ${textColor} font-medium`}>
                 <Link href="/" className="transition-colors">Home</Link>
               </div>

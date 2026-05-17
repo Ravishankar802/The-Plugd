@@ -117,8 +117,8 @@ export default function TermsOfService() {
       </div>
 
       {/* Footer - Wider container matching homepage */}
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 flex justify-end pb-12">
-        <Footer toggleOnly={true} />
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8">
+        <Footer showBorder={false} hideLinks={true} />
       </div>
     </main>
   );
