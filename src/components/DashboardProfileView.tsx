@@ -21,7 +21,8 @@ import {
   Wallet,
   TrendingUp,
   X,
-  Save
+  Save,
+  Share2
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -53,12 +54,16 @@ function DashboardProfileContent() {
   const [requestingWithdrawal, setRequestingWithdrawal] = useState(false);
 
   const referralLinkSuffix = promoterData?.username || promoterData?.referralCode || "";
+  const link = `https://theplugd.com?ref=${referralLinkSuffix}`;
+  const totalEarnedStr = `${promoterData?.totalEarned || 0}`;
 
   const POST_VARIATIONS = [
-    "This referral program pays $1 every time someone joins through your link. No cap. Keep sharing, keep earning. $10,000 is not unrealistic. 👇",
-    "Easiest $1 you'll make today — share a link, someone joins Plugd, you get paid. Stack enough of those and it adds up to $10,000+. 👇",
-    "Most people sleep on referral programs. This one pays $1 per signup, no limit. The people who move first earn the most. 👇"
+    `guys I've been sharing this link for a week and made $${totalEarnedStr} already. every time someone signs up through it I get $1. it's ${link} — join and you get your own link too`,
+    `not gonna lie I was skeptical but this actually works. share a link, someone joins, you get $1. been doing it in my groups. link — ${link}`,
+    `if you're in a lot of WhatsApp groups or have decent followers anywhere, this is worth 2 minutes of your time. $1 per signup through your link — ${link}`
   ];
+
+  const dmTemplate = `hey [name], random but thought of you — there's this thing called Plugd, you share a referral link and get $1 every time someone joins. I've made $${totalEarnedStr} so far just dropping it in groups. here's mine if you want to check it out first: ${link}. if you join you get your own link`;
 
   // Determine active section from tab param
   const activeSection = ["profile", "referrals", "earnings"].includes(tab) ? tab : "profile";
@@ -425,35 +430,35 @@ function DashboardProfileContent() {
               <div className="space-y-6 pt-4">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
-                    <svg className="w-4 h-4 text-foreground" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg>
+                    <Share2 className="w-4 h-4 text-foreground" />
                   </div>
-                  <h3 className="text-lg font-bold text-foreground">X Sharing Kit</h3>
+                  <h3 className="text-lg font-bold text-foreground">Sharing Kit</h3>
                 </div>
                 
                 <div className="flex flex-col gap-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-                    <div className="bg-pill border border-border rounded-2xl p-6 space-y-4">
-                      <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">
-                        {[1, 2, 3].map((num, idx) => (
-                          <button
-                            key={num}
-                            onClick={() => setSelectedVariation(idx)}
-                            className={`px-3 py-1.5 rounded-lg text-[0.7rem] font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
-                              selectedVariation === idx 
-                              ? "bg-selected text-selected-foreground border border-selected" 
-                              : "bg-background text-muted border border-border hover:border-muted"
-                            }`}
-                          >
-                            Variation {num}
-                          </button>
-                        ))}
-                      </div>
-                      <div className="min-h-[80px] flex items-center">
-                        <p className="text-sm text-muted font-medium leading-relaxed">
-                          &quot;{POST_VARIATIONS[selectedVariation]}&quot;
-                        </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                    <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 flex flex-col justify-between">
+                      <div className="space-y-4">
+                        <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">
+                          {[1, 2, 3].map((num, idx) => (
+                            <button
+                              key={num}
+                              onClick={() => setSelectedVariation(idx)}
+                              className={`px-3 py-1.5 rounded-lg text-[0.7rem] font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+                                selectedVariation === idx 
+                                ? "bg-selected text-selected-foreground border border-selected" 
+                                : "bg-background text-muted border border-border hover:border-muted"
+                              }`}
+                            >
+                              Variation {num}
+                            </button>
+                          ))}
+                        </div>
+                        <div className="min-h-[80px] flex items-center">
+                          <p className="text-sm text-muted font-medium leading-relaxed">
+                            &quot;{POST_VARIATIONS[selectedVariation]}&quot;
+                          </p>
+                        </div>
                       </div>
                       <button 
                         type="button"
@@ -464,26 +469,23 @@ function DashboardProfileContent() {
                       </button>
                     </div>
 
-                    <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 md:mt-10">
-                      <div className="min-h-[80px] flex items-center">
-                        <p className="text-sm text-muted font-medium break-all">
-                          https://theplugd.com?ref={referralLinkSuffix}
-                        </p>
+                    <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 flex flex-col justify-between">
+                      <div className="space-y-4">
+                        <span className="text-[0.7rem] font-bold text-muted/60 block tracking-widest uppercase">YOUR REFERRAL LINK</span>
+                        <div className="min-h-[80px] flex items-center">
+                          <p className="text-sm text-muted font-medium break-all">
+                            https://theplugd.com?ref={referralLinkSuffix}
+                          </p>
+                        </div>
                       </div>
                       <button 
                         type="button"
-                        onClick={() => copyToClipboard(`https://theplugd.com?ref=${referralLinkSuffix}`, 'reply')}
-                        className="w-full border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
+                        onClick={() => copyToClipboard(`https://theplugd.com?ref=${referralLinkSuffix}`, 'referral')}
+                        className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
                       >
-                        {copied === 'reply' ? <Check className="w-4 h-4 text-green-500" /> : "Copy Reply Link"}
+                        {copied === 'referral' ? <Check className="w-4 h-4 text-green-500" /> : <><Copy className="w-4 h-4" /> Copy Link</>}
                       </button>
                     </div>
-                  </div>
-
-                  <div className="flex items-center justify-center text-center px-4">
-                    <p className="text-[0.75rem] text-muted font-medium italic">
-                      ① Post the first one. Then immediately ② reply to your own post with the link. This bypasses X&apos;s link suppression.
-                    </p>
                   </div>
                 </div>
               </div>
@@ -498,12 +500,12 @@ function DashboardProfileContent() {
 
                 <div className="bg-pill border border-border rounded-2xl p-6 space-y-5">
                   <p className="text-sm text-muted font-medium leading-relaxed">
-                    Hey [name] — there&apos;s a referral program that pays $1 every time someone joins through your link. No cap. People are already making serious money with this. 1,000 referrals = $1,000. 10,000 referrals = $10,000. The product is Plugd — a directory of X builders that&apos;s blowing up right now. Share it, start earning 👉 theplugd.com?ref={referralLinkSuffix}
+                    {dmTemplate}
                   </p>
                   <div className="space-y-3">
                     <button 
                       type="button"
-                      onClick={() => copyToClipboard(`Hey [name] — there's a referral program that pays $1 every time someone joins through your link. No cap. People are already making serious money with this. 1,000 referrals = $1,000. 10,000 referrals = $10,000. The product is Plugd — a directory of X builders that's blowing up right now. Share it, start earning 👉 theplugd.com?ref=${referralLinkSuffix}`, 'dm')}
+                      onClick={() => copyToClipboard(dmTemplate, 'dm')}
                       className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
                     >
                       {copied === 'dm' ? <Check className="w-4 h-4 text-green-500" /> : <><Copy className="w-5 h-5" /> Copy DM Template</>}
@@ -528,25 +530,31 @@ function DashboardProfileContent() {
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        Post 10-20 times per day using the variations above. Immediately reply to your own post with the link — this bypasses X&apos;s link suppression
+                        Send the DM template to 20 people you know today — not a blast, actual people you'd text normally
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        DM 10-20 people every day who are active builders on X — consistency beats everything
+                        Drop it in your WhatsApp groups as a genuine tip, not an ad — people trust you there
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        Reply under big builder accounts&apos; posts — add value first, then drop your link in a follow-up reply
+                        Post on X replying to your own post with the link — your followers see it twice
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        The math is simple: 1,000 people = $1,000. Start today, not tomorrow
+                        Find 3 Discord or Telegram groups where people talk about making money and share it there once
+                      </p>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">5</div>
+                      <p className="text-sm text-muted font-medium leading-relaxed">
+                        Pin it in your Instagram bio and mention it in one story — passive clicks forever
                       </p>
                     </div>
                   </div>
