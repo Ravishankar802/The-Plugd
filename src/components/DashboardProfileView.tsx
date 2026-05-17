@@ -1,6 +1,15 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
+import {
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  LineChart,
+  Line
+} from "recharts";
 import { 
   Loader2, 
   Check,
@@ -109,6 +118,51 @@ function DashboardProfileContent() {
       setRequestingWithdrawal(false);
     }
   };
+
+  // Earnings Chart State & Logic
+  const [chartData, setChartData] = useState<{ date: string; amount: number }[]>([]);
+  const [loadingChart, setLoadingChart] = useState(true);
+  const [chartRange, setChartRange] = useState<"7d" | "4w" | "3m">("7d");
+  const [chartMode, setChartMode] = useState<"daily" | "cumulative">("daily");
+  const [chartMounted, setChartMounted] = useState(false);
+
+  useEffect(() => {
+    setChartMounted(true);
+  }, []);
+
+  useEffect(() => {
+    async function fetchChartData() {
+      if (tab !== "earnings" || (!hasPromoter && !isAdmin)) return;
+      
+      setLoadingChart(true);
+      try {
+        const res = await fetch(`/api/earnings-chart?range=${chartRange}`);
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success) {
+            setChartData(json.data);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch earnings chart data:", err);
+      } finally {
+        setLoadingChart(false);
+      }
+    }
+    fetchChartData();
+  }, [chartRange, tab, hasPromoter, isAdmin]);
+
+  const processedChartData = (() => {
+    let runningTotal = 0;
+    return chartData.map(item => {
+      runningTotal += item.amount;
+      return {
+        ...item,
+        displayAmount: chartMode === "cumulative" ? runningTotal : item.amount,
+        cumulativeAmount: runningTotal
+      };
+    });
+  })();
 
   const handlePromoterSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -543,6 +597,115 @@ function DashboardProfileContent() {
                 <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
                   <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Conversions</p>
                   <p className="text-4xl font-bold text-foreground">{promoterData?.totalConversions || 0}</p>
+                </div>
+              </div>
+
+              {/* Earnings Over Time Chart Card */}
+              <div className="bg-pill border border-border rounded-[16px] p-6 md:p-8 shadow-xl">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground">Earnings Over Time</h3>
+                    <p className="text-xs text-muted mt-1 font-medium">Track your conversion velocity and growth.</p>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-4">
+                    {/* Time Range Toggle */}
+                    <div className="flex bg-[#111] dark:bg-[#111] bg-selected rounded-xl p-1 border border-border/40">
+                      {(["7d", "4w", "3m"] as const).map((r) => (
+                        <button
+                          key={r}
+                          onClick={() => setChartRange(r)}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all uppercase ${
+                            chartRange === r
+                              ? "bg-[#22c55e] text-white shadow-md"
+                              : "text-muted hover:text-foreground cursor-pointer"
+                          }`}
+                        >
+                          {r === "7d" ? "7D" : r === "4w" ? "4W" : "3M"}
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Mode Toggle */}
+                    <div className="flex bg-[#111] dark:bg-[#111] bg-selected rounded-xl p-1 border border-border/40">
+                      {(["daily", "cumulative"] as const).map((m) => (
+                        <button
+                          key={m}
+                          onClick={() => setChartMode(m)}
+                          className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all capitalize ${
+                            chartMode === m
+                              ? "bg-[#22c55e] text-white shadow-md"
+                              : "text-muted hover:text-foreground cursor-pointer"
+                          }`}
+                        >
+                          {m}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="w-full h-72">
+                  {loadingChart ? (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <Loader2 className="w-8 h-8 text-[#22c55e] animate-spin" />
+                    </div>
+                  ) : chartMounted ? (
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart
+                        data={processedChartData}
+                        margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+                      >
+                        <defs>
+                          <linearGradient id="colorEarning" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#22c55e" stopOpacity={0.1}/>
+                            <stop offset="95%" stopColor="#22c55e" stopOpacity={0}/>
+                          </linearGradient>
+                        </defs>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" opacity={0.3} />
+                        <XAxis 
+                          dataKey="date" 
+                          stroke="var(--muted)" 
+                          fontSize={11}
+                          tickLine={false}
+                          axisLine={false}
+                          dy={10}
+                        />
+                        <YAxis 
+                          stroke="var(--muted)" 
+                          fontSize={11}
+                          tickLine={false}
+                          axisLine={false}
+                          tickFormatter={(v) => `$${v}`}
+                          dx={-10}
+                        />
+                        <Tooltip
+                          content={({ active, payload }) => {
+                            if (active && payload && payload.length) {
+                              const data = payload[0].payload;
+                              return (
+                                <div className="bg-pill border border-border px-3 py-2 rounded-xl shadow-xl font-['Georgia',_serif]">
+                                  <p className="text-[10px] text-muted font-medium mb-0.5">{data.date}</p>
+                                  <p className="text-xs font-bold text-[#22c55e]">
+                                    ${Number(payload[0].value).toFixed(2)}
+                                  </p>
+                                </div>
+                              );
+                            }
+                            return null;
+                          }}
+                        />
+                        <Line
+                          type="monotone"
+                          dataKey="displayAmount"
+                          stroke="#22c55e"
+                          strokeWidth={2.5}
+                          dot={{ r: 4, stroke: '#22c55e', strokeWidth: 1.5, fill: 'var(--background)' }}
+                          activeDot={{ r: 6, stroke: '#22c55e', strokeWidth: 2, fill: 'var(--background)' }}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  ) : null}
                 </div>
               </div>
 
