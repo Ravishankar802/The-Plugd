@@ -62,9 +62,9 @@ export const articles: Article[] = [
 
 export default function ResourcesPage() {
   return (
-    <div className="min-h-screen bg-[#080808] text-white py-12 pb-24">
+    <div className="min-h-screen bg-[#080808] text-white pt-6 pb-24">
       {/* Header section */}
-      <div className="max-w-5xl mx-auto px-6 pt-16 pb-2 text-left relative">
+      <div className="max-w-5xl mx-auto px-6 pt-0 pb-2 text-left relative">
         <Link href="/" className="text-green-500 text-sm hover:text-green-400 transition-colors inline-flex items-center gap-1 mb-8 font-sans">
           ← Back
         </Link>
