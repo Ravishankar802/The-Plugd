@@ -84,7 +84,7 @@ export default function LegacyClient() {
         {[0, 1, 2, 3, 4, 5].map((idx) => (
           <div 
             key={idx}
-            className={\`w-1.5 h-1.5 rounded-full transition-all duration-300 \${activeSection === idx ? 'bg-green-500 scale-150' : 'bg-white/20'}\`}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeSection === idx ? 'bg-green-500 scale-150' : 'bg-white/20'}`}
           />
         ))}
       </div>
@@ -302,13 +302,13 @@ export default function LegacyClient() {
           data-index="5"
           style={{
             backgroundColor: '#15803d',
-            backgroundImage: \`
+            backgroundImage: `
               radial-gradient(ellipse at 50% 40%, #22c55e 0%, transparent 60%),
               radial-gradient(ellipse at 20% 50%, #16a34a 0%, transparent 50%),
               radial-gradient(ellipse at 80% 50%, #16a34a 0%, transparent 50%),
               radial-gradient(ellipse at 25% 90%, #92400e 0%, transparent 35%),
               radial-gradient(ellipse at 75% 90%, #92400e 0%, transparent 35%)
-            \`
+            `
           }}
         >
           <div className="max-w-[700px] mx-auto w-full">
