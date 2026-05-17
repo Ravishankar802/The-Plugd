@@ -439,18 +439,18 @@ function DashboardProfileContent() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                     <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 flex flex-col justify-between">
                       <div className="space-y-4">
-                        <div className="flex flex-wrap gap-1.5 pb-1">
+                        <div className="flex flex-row gap-1 pb-1 w-full justify-between sm:justify-start">
                           {[1, 2, 3].map((num, idx) => (
                             <button
                               key={num}
                               onClick={() => setSelectedVariation(idx)}
-                              className={`px-3 py-1.5 rounded-lg text-[0.7rem] font-bold uppercase tracking-wider whitespace-nowrap transition-all cursor-pointer ${
+                              className={`px-2 py-1 rounded-lg text-[0.62rem] font-bold uppercase tracking-wide whitespace-nowrap transition-all cursor-pointer ${
                                 selectedVariation === idx 
                                 ? "bg-selected text-selected-foreground border border-selected" 
                                 : "bg-background text-muted border border-border hover:border-muted"
                               }`}
                             >
-                              VAR {num}
+                              VARIATION {num}
                             </button>
                           ))}
                         </div>
