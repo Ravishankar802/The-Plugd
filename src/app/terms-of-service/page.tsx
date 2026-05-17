@@ -8,12 +8,6 @@ export default function TermsOfService() {
       <Link href="/" className="fixed top-4 left-6 z-50 hover:opacity-80 transition-opacity">
         <Image src="/logo.png" alt="Plugd" width={80} height={80} className="cursor-pointer" />
       </Link>
-      <Link 
-        href="/" 
-        className="fixed top-[110px] left-6 z-50 text-white/50 hover:text-white text-sm font-mono transition-colors"
-      >
-        &larr; Back
-      </Link>
       <div className="max-w-[840px] mx-auto px-6 pt-16 flex flex-col items-center flex-1">
         
         {/* Page Header */}
