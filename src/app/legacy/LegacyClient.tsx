@@ -53,15 +53,8 @@ export default function LegacyClient() {
           from { opacity: 0; transform: translateY(60px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes scaleIn {
-          from { opacity: 0; transform: scale(1.08); }
-          to { opacity: 1; transform: scale(1); }
-        }
         .anim-fadeup { opacity: 0; }
         .in-view .anim-fadeup { animation: fadeUp 1s ease forwards; }
-        
-        .anim-scalein { opacity: 0; }
-        .in-view .anim-scalein { animation: scaleIn 1.2s ease forwards; }
         
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.4s; }
@@ -112,187 +105,165 @@ export default function LegacyClient() {
         </section>
 
         {/* SECTION 1 */}
-        <section className="snap-section bg-[#080808]" data-index="1">
-          <img 
-            src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?w=1600&q=90&auto=format&fit=crop" 
-            alt="Ancient Coins"
-            crossOrigin="anonymous"
-            className="absolute inset-0 w-full h-full object-cover anim-scalein"
-          />
-          <div 
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%)' }}
-          ></div>
-          
-          <div 
-            className="absolute top-8 right-8 font-serif-custom font-black pointer-events-none text-[rgba(255,255,255,0.03)]"
-            style={{ fontSize: '30vw', lineHeight: 1 }}
-          >
-            3000
-          </div>
-
-          <div className="absolute bottom-0 left-0 p-16 md:p-20 max-w-[700px] w-full">
-            <p className="anim-fadeup delay-1 text-amber-500 text-xs tracking-[0.5em] font-mono mb-4 uppercase">
+        <section 
+          className="snap-section text-center" 
+          data-index="1"
+          style={{
+            backgroundColor: '#15803d',
+            backgroundImage: `
+              radial-gradient(ellipse at 50% 40%, #22c55e 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 50%, #16a34a 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 50%, #16a34a 0%, transparent 50%),
+              radial-gradient(ellipse at 25% 90%, #92400e 0%, transparent 35%),
+              radial-gradient(ellipse at 75% 90%, #92400e 0%, transparent 35%)
+            `
+          }}
+        >
+          <div className="flex flex-col justify-center items-center h-full px-24 max-w-[900px] mx-auto">
+            <p className="anim-fadeup delay-1 text-white/50 text-xs tracking-[0.5em] font-mono mb-4 uppercase font-bold">
               01
             </p>
             <h2 
-              className="anim-fadeup delay-2 font-serif-custom font-bold text-white whitespace-pre-wrap"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1 }}
+              className="anim-fadeup delay-2 font-serif-custom font-bold text-white whitespace-pre-wrap mb-6"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.15 }}
             >
               {"Before Google.\nBefore Newspapers.\nBefore Money Had a Name."}
             </h2>
-            <p className="anim-fadeup delay-3 text-white/70 text-lg leading-8 mt-6">
+            <p className="anim-fadeup delay-3 text-white/80 text-base leading-7">
               In 3000 BC, Egyptian merchants carved referrals into clay tablets passed to travelers heading to distant cities. The oldest written endorsement in human history is not an ad. It is a referral. Greek merchants in 500 BC paid ordinary citizens — not criers — to spread the word through neighborhoods no official could reach. They paid commissions. In ancient Greece. Twenty-five centuries before Silicon Valley invented the word affiliate. In 1270 AD, the Venetian government passed a law regulating referral broker commissions. The system was so powerful it needed legislation.
             </p>
           </div>
         </section>
 
         {/* SECTION 2 */}
-        <section className="snap-section bg-[#080808]" data-index="2">
-          <img 
-            src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1600&q=90&auto=format&fit=crop" 
-            alt="PayPal"
-            crossOrigin="anonymous"
-            className="absolute inset-0 w-full h-full object-cover anim-scalein"
-          />
-          <div 
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.92) 50%, rgba(0,0,0,0.3) 100%)' }}
-          ></div>
-          
-          <div 
-            className="absolute top-8 right-8 font-serif-custom font-black pointer-events-none text-[rgba(255,255,255,0.03)]"
-            style={{ fontSize: '30vw', lineHeight: 1 }}
-          >
-            $1.5B
-          </div>
-
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 px-16 md:px-20 max-w-[650px] w-full">
-            <p className="anim-fadeup delay-1 text-amber-500 text-xs tracking-[0.5em] font-mono mb-4 uppercase">
+        <section 
+          className="snap-section text-center" 
+          data-index="2"
+          style={{
+            backgroundColor: '#15803d',
+            backgroundImage: `
+              radial-gradient(ellipse at 50% 40%, #22c55e 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 50%, #16a34a 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 50%, #16a34a 0%, transparent 50%),
+              radial-gradient(ellipse at 25% 90%, #92400e 0%, transparent 35%),
+              radial-gradient(ellipse at 75% 90%, #92400e 0%, transparent 35%)
+            `
+          }}
+        >
+          <div className="flex flex-col justify-center items-center h-full px-24 max-w-[900px] mx-auto">
+            <p className="anim-fadeup delay-1 text-white/50 text-xs tracking-[0.5em] font-mono mb-4 uppercase font-bold">
               02
             </p>
             <h2 
-              className="anim-fadeup delay-1 font-serif-custom font-bold text-white mb-6"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1 }}
+              className="anim-fadeup delay-1 font-serif-custom font-bold text-white mb-4"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.15 }}
             >
               The Day PayPal Broke Mathematics
             </h2>
             
-            <div className="anim-fadeup delay-2">
+            <div className="anim-fadeup delay-2 flex flex-col items-center mb-4">
               <div 
-                className="text-[#22c55e] font-serif-custom font-black leading-none"
-                style={{ fontSize: 'clamp(5rem, 12vw, 10rem)' }}
+                className="text-[#ffffff] font-serif-custom font-black leading-none"
+                style={{ fontSize: 'clamp(3.5rem, 8vw, 6rem)' }}
               >
                 1,650%
               </div>
-              <p className="text-amber-400 text-sm font-mono tracking-wider mt-2 mb-6">
+              <p className="text-amber-300 text-xs font-mono tracking-wider mt-1">
                 annual growth rate. The industry average is 45%.
               </p>
             </div>
             
-            <p className="anim-fadeup delay-3 text-white/70 text-lg leading-8">
+            <p className="anim-fadeup delay-3 text-white/80 text-base leading-7">
               PayPal gave $20 to anyone who joined and $20 to whoever referred them. At peak they were adding users at 10% per day. Not per year. Per day. They spent $70 million on referral bonuses and sold for $1.5 billion. Every dollar spent on referrals returned over twenty dollars in exit value. The team that built this went on to found YouTube, LinkedIn, Tesla, and SpaceX. They are called the PayPal Mafia. Referrals didn't just build PayPal. They funded the next two decades of civilization.
             </p>
           </div>
         </section>
 
         {/* SECTION 3 */}
-        <section className="snap-section bg-[#080808]" data-index="3">
-          <img 
-            src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1600&q=90&auto=format&fit=crop" 
-            alt="Dropbox"
-            crossOrigin="anonymous"
-            className="absolute inset-0 w-full h-full object-cover anim-scalein"
-          />
-          <div 
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: 'linear-gradient(to left, rgba(0,0,0,0.92) 50%, rgba(0,0,0,0.3) 100%)' }}
-          ></div>
-          
-          <div 
-            className="absolute top-8 left-8 font-serif-custom font-black pointer-events-none text-[rgba(255,255,255,0.03)]"
-            style={{ fontSize: '30vw', lineHeight: 1 }}
-          >
-            4M
-          </div>
-
-          <div className="absolute top-1/2 -translate-y-1/2 right-0 px-16 md:px-20 max-w-[650px] w-full text-right ml-auto">
-            <p className="anim-fadeup delay-1 text-amber-500 text-xs tracking-[0.5em] font-mono mb-4 uppercase">
+        <section 
+          className="snap-section text-center" 
+          data-index="3"
+          style={{
+            backgroundColor: '#15803d',
+            backgroundImage: `
+              radial-gradient(ellipse at 50% 40%, #22c55e 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 50%, #16a34a 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 50%, #16a34a 0%, transparent 50%),
+              radial-gradient(ellipse at 25% 90%, #92400e 0%, transparent 35%),
+              radial-gradient(ellipse at 75% 90%, #92400e 0%, transparent 35%)
+            `
+          }}
+        >
+          <div className="flex flex-col justify-center items-center h-full px-24 max-w-[900px] mx-auto">
+            <p className="anim-fadeup delay-1 text-white/50 text-xs tracking-[0.5em] font-mono mb-4 uppercase font-bold">
               03
             </p>
             <h2 
-              className="anim-fadeup delay-1 font-serif-custom font-bold text-white mb-6 ml-auto"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1 }}
+              className="anim-fadeup delay-1 font-serif-custom font-bold text-white mb-4"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.15 }}
             >
               Dropbox Did It With No Marketing Team. Zero.
             </h2>
             
-            <div className="anim-fadeup delay-2">
+            <div className="anim-fadeup delay-2 flex flex-col items-center mb-4">
               <div 
-                className="text-[#22c55e] font-serif-custom font-black leading-none"
-                style={{ fontSize: 'clamp(5rem, 12vw, 10rem)' }}
+                className="text-[#ffffff] font-serif-custom font-black leading-none"
+                style={{ fontSize: 'clamp(3.5rem, 8vw, 6rem)' }}
               >
                 3,900%
               </div>
-              <p className="text-amber-400 text-sm font-mono tracking-wider mt-2 mb-6">
+              <p className="text-amber-300 text-xs font-mono tracking-wider mt-1">
                 growth in 15 months. No full-time marketer.
               </p>
             </div>
             
-            <p className="anim-fadeup delay-3 text-white/70 text-lg leading-8">
+            <p className="anim-fadeup delay-3 text-white/80 text-base leading-7">
               In 2008 Dropbox tried Google Ads. Each new customer cost $388 to acquire on a $99 product. The math was fatal. So they scrapped the ads and launched a referral program. Give existing users free storage for every friend they brought in. Within the first month, 35% of all daily signups came through referrals. By April 2010 users were sending 2.8 million referral invites in a single month. From 100,000 users to 4,000,000. No ad budget. No PR. No marketing team. Just people telling other people. Dropbox is now worth over $10 billion.
             </p>
           </div>
         </section>
 
         {/* SECTION 4 */}
-        <section className="snap-section bg-[#080808]" data-index="4">
-          <img 
-            src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=90&auto=format&fit=crop" 
-            alt="Trust"
-            crossOrigin="anonymous"
-            className="absolute inset-0 w-full h-full object-cover anim-scalein"
-          />
-          <div 
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.5) 100%)' }}
-          ></div>
-          
-          <div 
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif-custom font-black pointer-events-none text-[rgba(255,255,255,0.03)]"
-            style={{ fontSize: '40vw', lineHeight: 1 }}
-          >
-            92
-          </div>
-
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8 w-full">
-            <div className="max-w-[800px] w-full">
-              <p className="anim-fadeup delay-1 text-amber-500 text-xs tracking-[0.5em] font-mono mb-4 uppercase">
-                04
-              </p>
-              <h2 
-                className="anim-fadeup delay-1 font-serif-custom font-bold text-white mx-auto"
-                style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.1 }}
+        <section 
+          className="snap-section text-center" 
+          data-index="4"
+          style={{
+            backgroundColor: '#15803d',
+            backgroundImage: `
+              radial-gradient(ellipse at 50% 40%, #22c55e 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 50%, #16a34a 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 50%, #16a34a 0%, transparent 50%),
+              radial-gradient(ellipse at 25% 90%, #92400e 0%, transparent 35%),
+              radial-gradient(ellipse at 75% 90%, #92400e 0%, transparent 35%)
+            `
+          }}
+        >
+          <div className="flex flex-col justify-center items-center h-full px-24 max-w-[900px] mx-auto">
+            <p className="anim-fadeup delay-1 text-white/50 text-xs tracking-[0.5em] font-mono mb-4 uppercase font-bold">
+              04
+            </p>
+            <h2 
+              className="anim-fadeup delay-1 font-serif-custom font-bold text-white mb-4"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.15 }}
+            >
+              92% of People Will Trust Your Recommendation Over Any Ad Ever Made
+            </h2>
+            
+            <div className="anim-fadeup delay-2 flex flex-col items-center mb-4">
+              <div 
+                className="text-[#ffffff] font-serif-custom font-black leading-none"
+                style={{ fontSize: 'clamp(3.5rem, 8vw, 6rem)' }}
               >
-                92% of People Will Trust Your Recommendation Over Any Ad Ever Made
-              </h2>
-              
-              <div className="anim-fadeup delay-2 my-8">
-                <div 
-                  className="text-[#22c55e] font-serif-custom font-black leading-none"
-                  style={{ fontSize: 'clamp(5rem, 12vw, 10rem)' }}
-                >
-                  92%
-                </div>
-                <p className="text-amber-400 text-sm font-mono tracking-wider mt-2">
-                  Nielsen Global Survey. Every year. Barely moves.
-                </p>
+                92%
               </div>
-              
-              <p className="anim-fadeup delay-3 text-white/70 text-lg leading-8 mx-auto">
-                Not 52 percent. Not 72 percent. 92 percent of consumers trust a recommendation from someone they know above every other form of marketing. No Super Bowl ad, no celebrity endorsement, no algorithmically targeted campaign has ever come close. A referred customer costs less to acquire, converts at a higher rate, stays longer, and refers more people themselves. Every referral compounds. One share from the right person can seed an entire network. The referral economy does not care about your follower count. It cares about trust. And trust is the one thing you already have.
+              <p className="text-amber-300 text-xs font-mono tracking-wider mt-1">
+                Nielsen Global Survey. Every year. Barely moves.
               </p>
             </div>
+            
+            <p className="anim-fadeup delay-3 text-white/80 text-base leading-7">
+              Not 52 percent. Not 72 percent. 92 percent of consumers trust a recommendation from someone they know above every other form of marketing. No Super Bowl ad, no celebrity endorsement, no algorithmically targeted campaign has ever come close. A referred customer costs less to acquire, converts at a higher rate, stays longer, and refers more people themselves. Every referral compounds. One share from the right person can seed an entire network. The referral economy does not care about your follower count. It cares about trust. And trust is the one thing you already have.
+            </p>
           </div>
         </section>
 
