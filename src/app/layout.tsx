@@ -43,12 +43,7 @@ export const metadata: Metadata = {
     images: ["https://theplugd.com/og-v9.png"],
   },
   icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/icon.png", type: "image/png" },
-    ],
-    shortcut: "/icon.svg",
-    apple: "/icon.png",
+    icon: '/favicon.png',
   },
 };
 
