@@ -45,7 +45,7 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-background flex" style={{ fontFamily: 'Georgia, serif' }}>
+    <div className="min-h-screen bg-background flex overflow-x-hidden max-w-full" style={{ fontFamily: 'Georgia, serif' }}>
       <Suspense fallback={<div className="hidden md:flex w-[320px] bg-background border-r border-border h-screen fixed left-0 top-0 z-30" />}>
         <DashboardSidebar 
           email={email} 
@@ -54,7 +54,7 @@ export default async function DashboardLayout({
           hasPromoter={!!promoter}
         />
       </Suspense>
-      <main className="flex-1 md:ml-[320px] p-6 md:p-12 pb-24 md:pb-12 flex flex-col min-h-screen">
+      <main className="flex-1 md:ml-[320px] p-6 md:p-12 pb-24 md:pb-12 flex flex-col min-h-screen overflow-x-hidden max-w-full">
         <div className="flex-1">
           {children}
         </div>
