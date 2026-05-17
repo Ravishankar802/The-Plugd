@@ -54,7 +54,7 @@ export default async function DashboardLayout({
           hasPromoter={!!promoter}
         />
       </Suspense>
-      <main className="flex-1 md:ml-[320px] p-6 md:p-12 flex flex-col min-h-screen">
+      <main className="flex-1 md:ml-[320px] p-6 md:p-12 pb-24 md:pb-12 flex flex-col min-h-screen">
         <div className="flex-1">
           {children}
         </div>

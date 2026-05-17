@@ -243,7 +243,7 @@ function DashboardProfileContent() {
                 <p className="text-muted text-[1rem] mt-1.5 font-normal">Your referral identity and payout details.</p>
               </div>
 
-              <div className="bg-pill border border-border rounded-[16px] p-10 shadow-2xl">
+              <div className="bg-pill border border-border rounded-[16px] p-6 md:p-10 shadow-2xl">
                 <form onSubmit={handlePromoterSave} className="space-y-10">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Name */}
@@ -409,7 +409,7 @@ function DashboardProfileContent() {
               </button>
             </div>
           ) : (
-            <div className="bg-pill border border-border rounded-[16px] p-10 shadow-2xl space-y-8">
+            <div className="bg-pill border border-border rounded-[16px] p-6 md:p-10 shadow-2xl space-y-8">
               <div className="space-y-4">
                 <label className="text-[0.8rem] font-bold text-muted/60 block tracking-widest uppercase">YOUR REFERRAL LINK</label>
                 <div className="flex flex-col md:flex-row gap-3">
@@ -716,7 +716,7 @@ function DashboardProfileContent() {
                 </div>
               </div>
 
-              <div className="bg-pill border border-border rounded-[16px] p-10 shadow-2xl flex flex-col items-center text-center space-y-6">
+              <div className="bg-pill border border-border rounded-[16px] p-6 md:p-10 shadow-2xl flex flex-col items-center text-center space-y-6">
                 <div className="w-16 h-16 rounded-2xl bg-selected/10 flex items-center justify-center">
                   <Wallet className="w-8 h-8 text-selected" />
                 </div>

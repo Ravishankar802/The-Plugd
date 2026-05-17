@@ -57,7 +57,7 @@ export default function HomeClient({
             <Header />
 
             <section className="mb-0">
-              <div className="flex flex-col md:flex-row gap-4 mb-6 items-center justify-center">
+              <div className="flex flex-row gap-4 mb-6 items-center justify-center">
                  <button
                   onClick={() => setIsReferModalOpen(true)}
                   suppressHydrationWarning

@@ -64,102 +64,150 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
   ];
 
   return (
-    <aside className="hidden md:flex w-[320px] bg-background border-r border-border flex-col h-screen fixed left-0 top-0 z-30">
-      {/* Top: Logo */}
-      <div className="pl-5 pt-6 pb-2">
-        <Link href="/" className="hover:opacity-80 transition-opacity block w-fit">
-          <Image src="/logo.png" alt="Plugd" width={64} height={64} className="block" />
-        </Link>
-      </div>
+    <>
+      <aside className="hidden md:flex w-[320px] bg-background border-r border-border flex-col h-screen fixed left-0 top-0 z-30">
+        {/* Top: Logo */}
+        <div className="pl-5 pt-6 pb-2">
+          <Link href="/" className="hover:opacity-80 transition-opacity block w-fit">
+            <Image src="/logo.png" alt="Plugd" width={64} height={64} className="block" />
+          </Link>
+        </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 px-5 space-y-1">
+        {/* Navigation */}
+        <nav className="flex-1 px-5 space-y-1">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = currentTab === item.id;
+            
+            if (!item.show) {
+              return (
+                <Link
+                  key={item.name}
+                  href={item.upgradeHref}
+                  className="flex items-center justify-between gap-3 px-4 py-[0.75rem] rounded-xl text-muted/40 hover:text-muted/70 transition-all group"
+                >
+                  <div className="flex items-center gap-3">
+                    <Icon size={18} />
+                    <span className="text-[0.95rem] font-medium tracking-tight">
+                      {item.name}
+                    </span>
+                  </div>
+                  <PlusIcon size={14} className="opacity-40 group-hover:opacity-100 transition-opacity" />
+                </Link>
+              );
+            }
+
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all border ${
+                  isActive 
+                    ? "bg-foreground/[0.05] border-foreground/[0.08] text-foreground shadow-sm backdrop-blur-md" 
+                    : "text-muted hover:text-foreground border-transparent"
+                }`}
+              >
+                <Icon size={18} className={isActive ? "text-foreground" : "text-muted"} />
+                <span className={`text-[0.95rem] tracking-tight ${isActive ? "font-semibold" : "font-medium"}`}>
+                  {item.name}
+                </span>
+              </Link>
+            );
+          })}
+
+          {isAdmin && (
+            <div className="mt-6">
+              <div className="h-[1px] bg-border mx-4 mb-6" />
+              <p className="px-4 text-[0.8125rem] font-bold text-muted/40 uppercase tracking-[0.15em] mb-4">Admin</p>
+              <div className="space-y-1">
+                {adminItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all border ${
+                        isActive 
+                          ? "bg-foreground/[0.05] border-foreground/[0.08] text-foreground shadow-sm backdrop-blur-md" 
+                          : "text-muted hover:text-foreground border-transparent"
+                      }`}
+                    >
+                      <Icon size={18} className={isActive ? "text-foreground" : "text-muted"} />
+                      <span className={`text-[0.95rem] tracking-tight ${isActive ? "font-semibold" : "font-medium"}`}>
+                        {item.name}
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </nav>
+
+        {/* Bottom info */}
+        <div className="mx-3 mb-4">
+          <div className="bg-pill border border-border rounded-xl p-5 space-y-4 shadow-2xl backdrop-blur-xl">
+            <div>
+              <p className="text-[0.8rem] text-muted lowercase font-normal mb-1">signed in as</p>
+              <p className="text-foreground font-semibold text-[0.95rem] tracking-tight truncate" title={email}>{email}</p>
+            </div>
+            <button
+              onClick={handleLogout}
+              className="w-full flex items-center justify-center gap-2.5 py-2.5 rounded-lg bg-background border border-pill-border text-foreground hover:text-foreground hover:bg-accent transition-all text-[0.9rem] font-medium group"
+            >
+              <LogOut size={16} className="text-muted group-hover:text-foreground transition-colors" />
+              <span>Log out</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      {/* Mobile Bottom Navigation Bar */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur-lg border-t border-border z-40 flex items-center justify-around py-3 px-4 shadow-xl">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = currentTab === item.id;
           
-          if (!item.show) {
-            return (
-              <Link
-                key={item.name}
-                href={item.upgradeHref}
-                className="flex items-center justify-between gap-3 px-4 py-[0.75rem] rounded-xl text-muted/40 hover:text-muted/70 transition-all group"
-              >
-                <div className="flex items-center gap-3">
-                  <Icon size={18} />
-                  <span className="text-[0.95rem] font-medium tracking-tight">
-                    {item.name}
-                  </span>
-                </div>
-                <PlusIcon size={14} className="opacity-40 group-hover:opacity-100 transition-opacity" />
-              </Link>
-            );
-          }
+          if (!item.show) return null;
 
           return (
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all border ${
-                isActive 
-                  ? "bg-foreground/[0.05] border-foreground/[0.08] text-foreground shadow-sm backdrop-blur-md" 
-                  : "text-muted hover:text-foreground border-transparent"
+              className={`flex flex-col items-center gap-1 transition-all ${
+                isActive ? "text-[#16a34a]" : "text-muted hover:text-foreground"
               }`}
             >
-              <Icon size={18} className={isActive ? "text-foreground" : "text-muted"} />
-              <span className={`text-[0.95rem] tracking-tight ${isActive ? "font-semibold" : "font-medium"}`}>
-                {item.name}
-              </span>
+              <Icon size={20} className={isActive ? "text-[#16a34a]" : "text-muted"} />
+              <span className="text-[0.62rem] font-bold uppercase tracking-wider">{item.name}</span>
             </Link>
           );
         })}
-
-        {isAdmin && (
-          <div className="mt-6">
-            <div className="h-[1px] bg-border mx-4 mb-6" />
-            <p className="px-4 text-[0.8125rem] font-bold text-muted/40 uppercase tracking-[0.15em] mb-4">Admin</p>
-            <div className="space-y-1">
-              {adminItems.map((item) => {
-                const Icon = item.icon;
-                const isActive = pathname === item.href;
-                return (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={`flex items-center gap-3 px-4 py-[0.75rem] rounded-xl transition-all ${
-                      isActive 
-                        ? "bg-foreground/[0.05] border border-foreground/[0.08] text-foreground shadow-sm backdrop-blur-md" 
-                        : "text-muted hover:text-foreground"
-                    }`}
-                  >
-                    <Icon size={18} className={isActive ? "text-foreground" : "text-muted"} />
-                    <span className={`text-[0.95rem] tracking-tight ${isActive ? "font-semibold" : "font-medium"}`}>
-                      {item.name}
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </nav>
-
-      {/* Bottom info */}
-      <div className="mx-3 mb-4">
-        <div className="bg-pill border border-border rounded-xl p-5 space-y-4 shadow-2xl backdrop-blur-xl">
-          <div>
-            <p className="text-[0.8rem] text-muted lowercase font-normal mb-1">signed in as</p>
-            <p className="text-foreground font-semibold text-[0.95rem] tracking-tight truncate" title={email}>{email}</p>
-          </div>
-          <button
-            onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2.5 py-2.5 rounded-lg bg-background border border-pill-border text-foreground hover:text-foreground hover:bg-accent transition-all text-[0.9rem] font-medium group"
-          >
-            <LogOut size={16} className="text-muted group-hover:text-foreground transition-colors" />
-            <span>Log out</span>
-          </button>
-        </div>
+        {isAdmin && adminItems.map((item) => {
+          const Icon = item.icon;
+          const isActive = pathname === item.href;
+          return (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={`flex flex-col items-center gap-1 transition-all ${
+                isActive ? "text-[#16a34a]" : "text-muted hover:text-foreground"
+              }`}
+            >
+              <Icon size={20} className={isActive ? "text-[#16a34a]" : "text-muted"} />
+              <span className="text-[0.62rem] font-bold uppercase tracking-wider">Admin</span>
+            </Link>
+          );
+        })}
+        <button
+          onClick={handleLogout}
+          className="flex flex-col items-center gap-1 transition-all text-muted hover:text-foreground cursor-pointer"
+        >
+          <LogOut size={20} />
+          <span className="text-[0.62rem] font-bold uppercase tracking-wider">Logout</span>
+        </button>
       </div>
-    </aside>
+    </>
   );
 }

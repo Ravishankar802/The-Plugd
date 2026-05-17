@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 export default function TermsOfService() {
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-foreground/10 flex flex-col font-['Georgia',_serif]">
-      <Link href="/" className="fixed top-4 left-6 z-50 hover:opacity-80 transition-opacity">
+      <Link href="/" className="relative md:fixed top-0 md:top-4 left-0 md:left-6 z-50 flex justify-center md:inline-block mx-auto md:mx-0 pt-8 md:pt-0 hover:opacity-80 transition-opacity">
         <Image src="/logo.png" alt="Plugd" width={80} height={80} className="cursor-pointer" />
       </Link>
       <div className="max-w-[840px] mx-auto px-6 pt-16 flex flex-col items-center flex-1">

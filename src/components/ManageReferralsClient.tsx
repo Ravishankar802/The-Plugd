@@ -442,7 +442,7 @@ export default function ManageReferralsClient() {
       {payoutPromoter && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setPayoutPromoter(null)} />
-          <div className="relative w-full max-w-lg bg-card border border-border rounded-[24px] p-10 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative w-full max-w-lg bg-card border border-border rounded-[24px] p-6 md:p-10 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
             <div className="flex gap-6">
               <div className="w-16 h-16 bg-[#16a34a]/10 rounded-2xl flex items-center justify-center shrink-0 border border-[#16a34a]/20">
                 <Wallet size={32} className="text-[#16a34a]" />

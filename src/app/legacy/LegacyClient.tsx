@@ -100,7 +100,7 @@ export default function LegacyClient() {
       </Link>
 
       {/* FIXED DOTS */}
-      <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3">
+      <div className="fixed right-3 md:right-8 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3">
         {[0, 1, 2, 3, 4, 5].map((idx) => (
           <div 
             key={idx}
@@ -114,12 +114,12 @@ export default function LegacyClient() {
         <section className="snap-section flex flex-col items-center justify-center text-center bg-[#080808]" data-index="0">
           <h1 
             className="anim-fadeup delay-1 font-serif-custom text-white font-bold"
-            style={{ fontSize: 'clamp(8rem, 20vw, 18rem)', lineHeight: 0.85 }}
+            style={{ fontSize: 'clamp(3.5rem, 15vw, 18rem)', lineHeight: 0.85 }}
           >
             LEGACY
           </h1>
           <div className="anim-fadeup delay-2 w-[80px] h-[1px] bg-[#d97706] mx-auto mt-10 mb-8"></div>
-          <p className="anim-fadeup delay-3 text-white/40 text-xl italic font-serif-custom max-w-none w-full px-4 whitespace-nowrap">
+          <p className="anim-fadeup delay-3 text-white/40 text-sm md:text-xl italic font-serif-custom max-w-none w-full px-4 whitespace-normal md:whitespace-nowrap">
             The art of earning by sharing. A story as old as commerce itself.
           </p>
           
@@ -143,7 +143,7 @@ export default function LegacyClient() {
             `
           }}
         >
-          <div className="flex flex-col justify-center items-center h-full px-24 max-w-[900px] mx-auto">
+          <div className="flex flex-col justify-center items-center h-full px-6 md:px-24 max-w-[900px] mx-auto">
             <p className="anim-fadeup delay-1 text-white/50 text-xs tracking-[0.5em] font-mono mb-4 uppercase font-bold">
               01
             </p>
@@ -153,7 +153,7 @@ export default function LegacyClient() {
             >
               {"Before Google.\nBefore Newspapers.\nBefore Money Had a Name."}
             </h2>
-            <p className="anim-fadeup delay-3 text-white/80 text-base leading-7">
+            <p className="anim-fadeup delay-3 text-white/80 text-xs md:text-base leading-5 md:leading-7">
               In 3000 BC, Egyptian merchants carved referrals into clay tablets passed to travelers heading to distant cities. The oldest written endorsement in human history is not an ad. It is a referral. Greek merchants in 500 BC paid ordinary citizens — not criers — to spread the word through neighborhoods no official could reach. They paid commissions. In ancient Greece. Twenty-five centuries before Silicon Valley invented the word affiliate. In 1270 AD, the Venetian government passed a law regulating referral broker commissions. The system was so powerful it needed legislation.
             </p>
           </div>
@@ -174,7 +174,7 @@ export default function LegacyClient() {
             `
           }}
         >
-          <div className="flex flex-col justify-center items-center h-full px-24 max-w-[900px] mx-auto">
+          <div className="flex flex-col justify-center items-center h-full px-6 md:px-24 max-w-[900px] mx-auto">
             <p className="anim-fadeup delay-1 text-white/50 text-xs tracking-[0.5em] font-mono mb-4 uppercase font-bold">
               02
             </p>
@@ -197,7 +197,7 @@ export default function LegacyClient() {
               </p>
             </div>
             
-            <p className="anim-fadeup delay-3 text-white/80 text-base leading-7">
+            <p className="anim-fadeup delay-3 text-white/80 text-xs md:text-base leading-5 md:leading-7">
               PayPal gave $20 to anyone who joined and $20 to whoever referred them. At peak they were adding users at 10% per day. Not per year. Per day. They spent $70 million on referral bonuses and sold for $1.5 billion. Every dollar spent on referrals returned over twenty dollars in exit value. The team that built this went on to found YouTube, LinkedIn, Tesla, and SpaceX. They are called the PayPal Mafia. Referrals didn't just build PayPal. They funded the next two decades of civilization.
             </p>
           </div>
@@ -218,7 +218,7 @@ export default function LegacyClient() {
             `
           }}
         >
-          <div className="flex flex-col justify-center items-center h-full px-24 max-w-[900px] mx-auto">
+          <div className="flex flex-col justify-center items-center h-full px-6 md:px-24 max-w-[900px] mx-auto">
             <p className="anim-fadeup delay-1 text-white/50 text-xs tracking-[0.5em] font-mono mb-4 uppercase font-bold">
               03
             </p>
@@ -241,7 +241,7 @@ export default function LegacyClient() {
               </p>
             </div>
             
-            <p className="anim-fadeup delay-3 text-white/80 text-base leading-7">
+            <p className="anim-fadeup delay-3 text-white/80 text-xs md:text-base leading-5 md:leading-7">
               In 2008 Dropbox tried Google Ads. Each new customer cost $388 to acquire on a $99 product. The math was fatal. So they scrapped the ads and launched a referral program. Give existing users free storage for every friend they brought in. Within the first month, 35% of all daily signups came through referrals. By April 2010 users were sending 2.8 million referral invites in a single month. From 100,000 users to 4,000,000. No ad budget. No PR. No marketing team. Just people telling other people. Dropbox is now worth over $10 billion.
             </p>
           </div>
@@ -262,7 +262,7 @@ export default function LegacyClient() {
             `
           }}
         >
-          <div className="flex flex-col justify-center items-center h-full px-24 max-w-[900px] mx-auto">
+          <div className="flex flex-col justify-center items-center h-full px-6 md:px-24 max-w-[900px] mx-auto">
             <p className="anim-fadeup delay-1 text-white/50 text-xs tracking-[0.5em] font-mono mb-4 uppercase font-bold">
               04
             </p>
@@ -285,7 +285,7 @@ export default function LegacyClient() {
               </p>
             </div>
             
-            <p className="anim-fadeup delay-3 text-white/80 text-base leading-7">
+            <p className="anim-fadeup delay-3 text-white/80 text-xs md:text-base leading-5 md:leading-7">
               Not 52 percent. Not 72 percent. 92 percent of consumers trust a recommendation from someone they know above every other form of marketing. No Super Bowl ad, no celebrity endorsement, no algorithmically targeted campaign has ever come close. A referred customer costs less to acquire, converts at a higher rate, stays longer, and refers more people themselves. Every referral compounds. One share from the right person can seed an entire network. The referral economy does not care about your follower count. It cares about trust. And trust is the one thing you already have.
             </p>
           </div>
@@ -306,7 +306,7 @@ export default function LegacyClient() {
             `
           }}
         >
-          <div className="max-w-[700px] mx-auto w-full">
+          <div className="max-w-[700px] mx-auto w-full px-6 md:px-0">
             <p className="anim-fadeup delay-1 font-serif-custom italic text-2xl text-white/60 mb-6">
               "5,000 years ago someone carved a referral into clay."
             </p>
