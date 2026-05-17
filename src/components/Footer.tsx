@@ -26,8 +26,8 @@ export default function Footer({
   onStartEarning
 }: FooterProps) {
   const isWhite = variant === 'white';
-  const textColor = isWhite ? "text-white/80 hover:text-white" : "text-muted hover:text-foreground";
-  const mutedTextColor = isWhite ? "text-white/40" : "text-muted/40";
+  const textColor = "text-white/50 hover:text-white";
+  const mutedTextColor = "text-white/30";
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
@@ -97,8 +97,8 @@ export default function Footer({
   }
 
   return (
-    <footer className={`w-full ${isLogin ? "py-0" : isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-border" : ""} ${minimal ? "border-t border-white/10 pt-16 pb-12 max-w-5xl mx-auto px-6" : ""}`}>
-      <div className={`${isLogin ? "" : "flex flex-col gap-6"} w-full`}>
+    <footer className={`w-full bg-[#0a0a0a] ${isLogin ? "py-0" : isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-white/10" : ""}`}>
+      <div className={`w-full px-6 ${minimal ? "border-t border-white/10 pt-16 pb-12 max-w-5xl mx-auto" : ""} ${isLogin ? "" : "flex flex-col gap-6"}`}>
         {minimal ? (
           <div className="w-full flex flex-col font-['Georgia',_serif]">
             {/* Three Columns Grid */}
