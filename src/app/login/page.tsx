@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import ReferralModal from "@/components/ReferralModal";
 import { Mail, ShieldCheck, Loader2, ArrowRight, RefreshCcw, CheckCircle2, AlertCircle } from "lucide-react";
 
 function LoginContent() {
@@ -14,6 +15,7 @@ function LoginContent() {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [loading, setLoading] = useState(false);
   const [isRedirecting, setIsRedirecting] = useState(false);
+  const [isReferModalOpen, setIsReferModalOpen] = useState(false);
   const [error, setError] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [resendTimer, setResendTimer] = useState(0);
@@ -168,7 +170,7 @@ function LoginContent() {
             </h1>
             <p className="text-muted text-center mb-8 text-[0.95rem]">
               {step === 1 
-                ? "Enter your email to access your dashboard" 
+                ? "Enter your email to access your Vault" 
                 : `We sent a 4-digit code to ${email}`}
             </p>
 
@@ -209,10 +211,7 @@ function LoginContent() {
 
                 <div className="mt-6 space-y-2 text-center text-[13px] text-muted leading-relaxed font-medium">
                   <p>
-                    New here? <Link href="/?modal=add" className="text-foreground hover:text-selected transition-colors">Add your account</Link> to get listed.
-                  </p>
-                  <p>
-                    Already listed? <Link href="/" className="text-foreground hover:text-selected transition-colors">Search your name on the homepage</Link> to claim your account.
+                    New here? <button type="button" onClick={() => setIsReferModalOpen(true)} className="text-foreground hover:text-selected transition-colors font-medium">Join Plugd</button> to start earning.
                   </p>
                 </div>
               </form>
@@ -273,6 +272,12 @@ function LoginContent() {
       <div className="w-full max-w-5xl mt-auto">
         <Footer showBorder={false} />
       </div>
+
+      <ReferralModal 
+        isOpen={isReferModalOpen} 
+        onClose={() => setIsReferModalOpen(false)} 
+        userEmail={email} 
+      />
     </div>
   );
 }
