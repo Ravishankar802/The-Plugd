@@ -61,15 +61,27 @@ export default function HomeClient({
                  <button
                   onClick={() => setIsReferModalOpen(true)}
                   suppressHydrationWarning
-                  className="w-full md:w-auto bg-[#16a34a] border border-[#16a34a] text-black dark:text-white text-base font-semibold px-8 py-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg cursor-pointer"
-                  style={{ fontFamily: 'var(--font-eb-garamond), serif', minWidth: '180px' }}
+                  className="bg-[#16a34a] border border-[#16a34a] text-black dark:text-white flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg cursor-pointer"
+                  style={{ 
+                    fontFamily: 'var(--font-eb-garamond), serif', 
+                    padding: '0.6rem 1.75rem',
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    borderRadius: '8px'
+                  }}
                 >
                   Start Earning
                 </button>
                 <Link
                   href="/dashboard"
-                  className="w-full md:w-auto bg-selected border border-selected text-selected-foreground text-base font-semibold px-8 py-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
-                  style={{ fontFamily: 'var(--font-eb-garamond), serif', minWidth: '180px' }}
+                  className="bg-selected border border-selected text-selected-foreground flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
+                  style={{ 
+                    fontFamily: 'var(--font-eb-garamond), serif', 
+                    padding: '0.6rem 1.75rem',
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    borderRadius: '8px'
+                  }}
                 >
                   Vault
                 </Link>
