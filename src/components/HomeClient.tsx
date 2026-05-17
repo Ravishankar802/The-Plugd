@@ -86,7 +86,7 @@ export default function HomeClient({
         <Link 
           href="/legacy" 
           className="block w-full h-96 rounded-xl flex items-center justify-center hover:scale-[1.02] transition-transform duration-300 shadow-xl"
-          style={{ backgroundColor: '#15803d', backgroundImage: 'radial-gradient(ellipse at 15% 0%, #eab308 0%, transparent 55%), radial-gradient(ellipse at 85% 100%, #f59e0b 0%, transparent 65%), radial-gradient(ellipse at 15% 100%, #eab308 0%, transparent 55%), radial-gradient(ellipse at 85% 15%, #22c55e 0%, transparent 65%), radial-gradient(ellipse at 50% 50%, #16a34a 0%, transparent 90%)' }}
+          style={{ backgroundColor: '#15803d', backgroundImage: 'radial-gradient(ellipse at 0% 0%, #eab308 0%, transparent 35%), radial-gradient(ellipse at 100% 100%, #f59e0b 0%, transparent 45%), radial-gradient(ellipse at 0% 100%, #eab308 0%, transparent 35%), radial-gradient(ellipse at 100% 0%, #22c55e 0%, transparent 70%), radial-gradient(ellipse at 50% 50%, #16a34a 0%, transparent 100%)' }}
         >
           <h2 
             className="text-5xl md:text-7xl font-bold uppercase tracking-widest text-white"
