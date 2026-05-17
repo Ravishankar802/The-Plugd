@@ -81,7 +81,57 @@ export default function HomeClient({
         </div>
       </div>
 
-      <div className="w-full max-w-2xl mx-auto mb-10 px-4 md:px-0" style={{ fontFamily: 'Georgia, serif' }}>
+      {/* LEGACY Section */}
+      <section className="w-full bg-[#0a0a0a] border-t border-amber-500/30 py-20 px-6">
+        <div className="max-w-5xl mx-auto w-full">
+          <h2 
+            className="text-6xl md:text-7xl font-bold uppercase tracking-tight bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-600 bg-clip-text text-transparent mb-4"
+            style={{ fontFamily: '"Times New Roman", Times, serif' }}
+          >
+            LEGACY
+          </h2>
+          <p className="text-white/60 italic text-lg md:text-xl mb-12">
+            The art of earning by sharing — a story as old as commerce itself.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Card 1 */}
+            <div className="flex flex-col gap-4 pl-4 border-l-4 border-green-600">
+              <div className="bg-zinc-800 h-48 w-full rounded" />
+              <div>
+                <h3 className="text-white font-bold text-lg mb-2">The Power of Word of Mouth</h3>
+                <p className="text-white/40 text-sm line-clamp-2">
+                  Discover how human connection drives the most successful business models in modern history.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="flex flex-col gap-4 pl-4 border-l-4 border-green-600">
+              <div className="bg-zinc-800 h-48 w-full rounded" />
+              <div>
+                <h3 className="text-white font-bold text-lg mb-2">Building Your Empire</h3>
+                <p className="text-white/40 text-sm line-clamp-2">
+                  A step-by-step guide to leveraging your network and turning casual sharing into serious revenue.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="flex flex-col gap-4 pl-4 border-l-4 border-green-600">
+              <div className="bg-zinc-800 h-48 w-full rounded" />
+              <div>
+                <h3 className="text-white font-bold text-lg mb-2">The New Creator Economy</h3>
+                <p className="text-white/40 text-sm line-clamp-2">
+                  Why traditional advertising is dying and how promoters are taking control of the narrative.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="w-full max-w-2xl mx-auto mb-10 px-4 md:px-0 mt-10" style={{ fontFamily: 'Georgia, serif' }}>
         <Footer showBorder={false} minimal={true} />
       </div>
 
