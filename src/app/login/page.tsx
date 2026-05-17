@@ -141,7 +141,7 @@ function LoginContent() {
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center py-8 px-4 relative">
-      <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500 -mt-12">
         <div className="bg-pill border border-border rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
           <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-selected/10 rounded-full blur-3xl" />
           
@@ -269,7 +269,7 @@ function LoginContent() {
         </div>
       </div>
       
-      <div className="fixed bottom-0 left-0 right-0 px-6 pb-4">
+      <div className="fixed bottom-0 left-0 right-0 px-6 pb-8">
         <Footer showBorder={false} isLogin={true} />
       </div>
 
