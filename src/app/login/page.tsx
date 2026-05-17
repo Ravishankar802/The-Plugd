@@ -269,7 +269,7 @@ function LoginContent() {
         </div>
       </div>
       
-      <div className="fixed bottom-[25%] left-0 right-0 px-6">
+      <div className="fixed bottom-8 left-0 right-0 px-8 flex items-center justify-between">
         <Footer showBorder={false} isLogin={true} />
       </div>
 

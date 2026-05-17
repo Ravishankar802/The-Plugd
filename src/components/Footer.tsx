@@ -54,8 +54,8 @@ export default function Footer({
   const CurrentIcon = currentThemeOption.icon;
 
   return (
-    <footer className={`w-full ${isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-border" : ""} ${minimal ? "border-t border-white/10 pt-16 pb-12 max-w-5xl mx-auto px-6" : ""}`}>
-      <div className="flex flex-col gap-6 w-full">
+    <footer className={`w-full ${isLogin ? "py-0" : isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-border" : ""} ${minimal ? "border-t border-white/10 pt-16 pb-12 max-w-5xl mx-auto px-6" : ""}`}>
+      <div className={`${isLogin ? "" : "flex flex-col gap-6"} w-full`}>
         {minimal ? (
           <div className="w-full flex flex-col">
             {/* Three Columns Grid */}
@@ -153,15 +153,11 @@ export default function Footer({
             </div>
           </div>
         ) : (
-          <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative w-full">
+          <div className={isLogin ? "flex items-center justify-between relative w-full" : "flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative w-full"}>
             {isLogin ? (
-              <>
-                {/* Login style: Centered Home */}
-                <div className={`md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] ${textColor} font-medium`}>
-                  <Link href="/" className="transition-colors">Home</Link>
-                </div>
-                <div className="hidden md:block flex-1" />
-              </>
+              <div className={`flex items-center gap-6 text-[0.9rem] ${textColor} font-medium`}>
+                <Link href="/" className="transition-colors">Home</Link>
+              </div>
             ) : isDashboard ? (
               <>
                 {/* Dashboard style: Centered Home */}
@@ -203,7 +199,7 @@ export default function Footer({
                 </button>
 
                 {isOpen && (
-                  <div className="absolute bottom-full left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 mb-2 w-32 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-2">
+                  <div className={`absolute bottom-full ${isLogin ? "right-0" : "left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0"} mb-2 w-32 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-2`}>
                     {themeOptions.map((item) => (
                       <button
                         key={item.name}
