@@ -36,7 +36,7 @@ export default function TermsOfService() {
 
           <Section 
             title="4. Earning Referrals" 
-            content="You earn $1 for each person who joins Plugd through your unique referral link and completes the $2 payment. Earnings are tracked in your Vault and paid out twice a month via PayPal or UPI, whichever you have set in your profile. The minimum withdrawal amount is $10." 
+            content="You earn $1 for each person who joins Plugd through your unique referral link and completes the $2 payment. Earnings are tracked in your Vault and paid out twice a month via PayPal or UPI, whichever you have set in your profile. The minimum withdrawal amount is $100." 
           />
 
           <Section 
