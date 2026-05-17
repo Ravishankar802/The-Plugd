@@ -28,6 +28,33 @@ export default function LegacyClient() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowDown" || e.key === "Space" || e.key === " ") {
+        e.preventDefault();
+        const sections = document.querySelectorAll('.snap-section');
+        if (activeSection < sections.length - 1) {
+          const nextIndex = activeSection + 1;
+          sections[nextIndex]?.scrollIntoView({ behavior: 'smooth' });
+          setActiveSection(nextIndex);
+        }
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        const sections = document.querySelectorAll('.snap-section');
+        if (activeSection > 0) {
+          const prevIndex = activeSection - 1;
+          sections[prevIndex]?.scrollIntoView({ behavior: 'smooth' });
+          setActiveSection(prevIndex);
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeSection]);
+
   return (
     <div className="bg-[#080808] text-[#f5f5f0] font-sans antialiased overflow-hidden h-screen w-full">
       <style>{`
