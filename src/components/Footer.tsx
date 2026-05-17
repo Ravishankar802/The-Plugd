@@ -26,8 +26,8 @@ export default function Footer({
   onStartEarning
 }: FooterProps) {
   const isWhite = variant === 'white';
-  const textColor = "text-white/50 hover:text-white";
-  const mutedTextColor = "text-white/30";
+  const textColor = "text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white";
+  const mutedTextColor = "text-black/30 dark:text-white/30";
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
@@ -97,67 +97,139 @@ export default function Footer({
   }
 
   return (
-    <footer className={`w-full bg-[#0a0a0a] ${isLogin ? "py-0" : isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-white/10" : ""}`}>
-      <div className={`w-full px-6 ${minimal ? "border-t border-white/10 pt-16 pb-12 max-w-5xl mx-auto" : ""} ${isLogin ? "" : "flex flex-col gap-6"}`}>
-        {minimal ? (
-          <div className="w-full flex flex-col font-['Georgia',_serif]">
-            {/* Three Columns Grid */}
-            <div className="grid grid-cols-3 gap-16 mb-6 text-left w-fit">
-              {/* Column 1 */}
-              <div className="flex flex-col">
-                <span className="text-white font-semibold text-sm mb-4">Plugd</span>
-                <div className="flex flex-col space-y-3">
-                  <Link href="/resources" className="text-white/50 text-sm hover:text-white transition-colors">
-                    Resources
-                  </Link>
-                  <Link href="/legacy" className="text-white/50 text-sm hover:text-white transition-colors">
-                    Legacy
-                  </Link>
-                </div>
-              </div>
-
-              {/* Column 2 */}
-              <div className="flex flex-col">
-                <span className="text-white font-semibold text-sm mb-4">Account</span>
-                <div className="flex flex-col space-y-3">
-                  <Link href="/vault" className="text-white/50 text-sm hover:text-white transition-colors">
-                    Vault
-                  </Link>
-                  {onStartEarning ? (
-                    <button 
-                      onClick={onStartEarning} 
-                      className="text-white/50 text-sm hover:text-white transition-colors text-left"
-                    >
-                      Start Earning
-                    </button>
-                  ) : (
-                    <Link href="/vault" className="text-white/50 text-sm hover:text-white transition-colors">
-                      Start Earning
+    <div className="w-full bg-white dark:bg-[#0a0a0a] transition-colors">
+      <footer className={`w-full ${isLogin ? "py-0" : isDashboard ? "py-8" : minimal ? "pt-20 pb-0" : "py-20"} ${showBorder ? "border-t border-border" : ""}`}>
+        <div className={`w-full px-6 ${minimal ? "border-t border-border pt-16 pb-6 max-w-5xl mx-auto" : ""} ${isLogin ? "" : "flex flex-col gap-6"}`}>
+          {minimal ? (
+            <div className="w-full flex flex-col font-['Georgia',_serif]">
+              {/* Three Columns Grid */}
+              <div className="grid grid-cols-3 gap-16 mb-6 text-left w-fit">
+                {/* Column 1 */}
+                <div className="flex flex-col">
+                  <span className="text-black dark:text-white font-semibold text-sm mb-4">Plugd</span>
+                  <div className="flex flex-col space-y-3">
+                    <Link href="/resources" className="text-black/50 dark:text-white/50 text-sm hover:text-black dark:hover:text-white transition-colors">
+                      Resources
                     </Link>
-                  )}
+                    <Link href="/legacy" className="text-black/50 dark:text-white/50 text-sm hover:text-black dark:hover:text-white transition-colors">
+                      Legacy
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Column 2 */}
+                <div className="flex flex-col">
+                  <span className="text-black dark:text-white font-semibold text-sm mb-4">Account</span>
+                  <div className="flex flex-col space-y-3">
+                    <Link href="/vault" className="text-black/50 dark:text-white/50 text-sm hover:text-black dark:hover:text-white transition-colors">
+                      Vault
+                    </Link>
+                    {onStartEarning ? (
+                      <button 
+                        onClick={onStartEarning} 
+                        className="text-black/50 dark:text-white/50 text-sm hover:text-black dark:hover:text-white transition-colors text-left"
+                      >
+                        Start Earning
+                      </button>
+                    ) : (
+                      <Link href="/vault" className="text-black/50 dark:text-white/50 text-sm hover:text-black dark:hover:text-white transition-colors">
+                        Start Earning
+                      </Link>
+                    )}
+                  </div>
+                </div>
+
+                {/* Column 3 */}
+                <div className="flex flex-col">
+                  <span className="text-black dark:text-white font-semibold text-sm mb-4">Support</span>
+                  <div className="flex flex-col space-y-3">
+                    <a href="mailto:support@theplugd.com" className="text-black/50 dark:text-white/50 text-sm hover:text-black dark:hover:text-white transition-colors">
+                      Contact
+                    </a>
+                    <Link href="/terms-of-service" className="text-black/50 dark:text-white/50 text-sm hover:text-black dark:hover:text-white transition-colors">
+                      Terms of Service
+                    </Link>
+                  </div>
                 </div>
               </div>
 
-              {/* Column 3 */}
-              <div className="flex flex-col">
-                <span className="text-white font-semibold text-sm mb-4">Support</span>
-                <div className="flex flex-col space-y-3">
-                  <a href="mailto:support@theplugd.com" className="text-white/50 text-sm hover:text-white transition-colors">
-                    Contact
-                  </a>
-                  <Link href="/terms-of-service" className="text-white/50 text-sm hover:text-white transition-colors">
-                    Terms of Service
-                  </Link>
+              {/* Bottom Row */}
+              <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 w-full">
+                <div className="text-black/30 dark:text-white/30 text-xs">
+                  © 2026 Plugd · Made for hustlers
                 </div>
+                
+                {hasMounted && (
+                  <div className="relative" ref={dropdownRef}>
+                    <button
+                      onClick={() => setIsOpen(!isOpen)}
+                      suppressHydrationWarning
+                      className={`flex items-center gap-2 ${isWhite ? "bg-white/10 hover:bg-white/20 border-white/20" : "bg-pill border-border hover:bg-accent"} px-3.5 py-1.5 rounded-2xl text-[0.9rem] ${isWhite ? "text-white" : "text-muted"} transition-colors`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <CurrentIcon className="w-4 h-4" />
+                        <span className="font-medium capitalize">{theme === "system" ? "System" : theme}</span>
+                      </div>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+                    </button>
+
+                    {isOpen && (
+                      <div className="absolute bottom-full right-0 mb-2 w-32 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-2">
+                        {themeOptions.map((item) => (
+                          <button
+                            key={item.name}
+                            onClick={() => {
+                              setTheme(item.name);
+                              setIsOpen(false);
+                            }}
+                            className={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors rounded-lg text-left ${
+                              theme === item.name ? "bg-accent text-foreground" : "text-muted hover:bg-accent/50 hover:text-foreground"
+                            }`}
+                          >
+                            <item.icon className="w-4 h-4 shrink-0" />
+                            <span className="font-medium">{item.label}</span>
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
+          ) : (
+            <div className={isLogin ? "flex items-center justify-between relative w-full" : "flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative w-full"}>
+              {hideLinks ? (
+                <div className="hidden md:block flex-1" />
+              ) : isLogin ? (
+                <div className={`flex items-center gap-6 text-[0.9rem] ${textColor} font-medium`}>
+                  <Link href="/" className="transition-colors">Home</Link>
+                </div>
+              ) : isDashboard ? (
+                <>
+                  {/* Dashboard style: Centered Home */}
+                  <div className={`md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] ${textColor} font-medium`}>
+                    <Link href="/" className="transition-colors">Home</Link>
+                  </div>
+                  <div className="hidden md:block flex-1" />
+                </>
+              ) : (
+                /* Default style: Minimal row on mobile, links on left on desktop */
+                <div className={`flex flex-col md:flex-row items-center gap-4 md:gap-6 text-sm md:text-[0.9rem] ${textColor} font-medium w-full md:w-auto`}>
+                  <div className="md:hidden flex items-center justify-center gap-2 whitespace-nowrap">
+                    <Link href="/" className="transition-colors">Home</Link>
+                    <span className={mutedTextColor}>·</span>
+                    <Link href="/vault" className="transition-colors">Vault</Link>
+                    <span className={mutedTextColor}>·</span>
+                    <Link href="/terms-of-service" className="transition-colors">Terms</Link>
+                  </div>
+                  <div className="hidden md:flex items-center gap-6">
+                    <Link href="/" className="transition-colors">Home</Link>
+                    <Link href="/vault" className="transition-colors">Vault</Link>
+                    <Link href="/terms-of-service" className="transition-colors">Terms of Service</Link>
+                  </div>
+                </div>
+              )}
 
-            {/* Bottom Row */}
-            <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 w-full">
-              <div className="text-white/30 text-xs">
-                © 2026 Plugd · Made for hustlers
-              </div>
-              
               {hasMounted && (
                 <div className="relative" ref={dropdownRef}>
                   <button
@@ -173,7 +245,7 @@ export default function Footer({
                   </button>
 
                   {isOpen && (
-                    <div className="absolute bottom-full right-0 mb-2 w-32 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-2">
+                    <div className={`absolute bottom-full ${isLogin ? "right-0" : "left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0"} mb-2 w-32 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-2`}>
                       {themeOptions.map((item) => (
                         <button
                           key={item.name}
@@ -194,79 +266,9 @@ export default function Footer({
                 </div>
               )}
             </div>
-          </div>
-        ) : (
-          <div className={isLogin ? "flex items-center justify-between relative w-full" : "flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative w-full"}>
-            {hideLinks ? (
-              <div className="hidden md:block flex-1" />
-            ) : isLogin ? (
-              <div className={`flex items-center gap-6 text-[0.9rem] ${textColor} font-medium`}>
-                <Link href="/" className="transition-colors">Home</Link>
-              </div>
-            ) : isDashboard ? (
-              <>
-                {/* Dashboard style: Centered Home */}
-                <div className={`md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] ${textColor} font-medium`}>
-                  <Link href="/" className="transition-colors">Home</Link>
-                </div>
-                <div className="hidden md:block flex-1" />
-              </>
-            ) : (
-              /* Default style: Minimal row on mobile, links on left on desktop */
-              <div className={`flex flex-col md:flex-row items-center gap-4 md:gap-6 text-sm md:text-[0.9rem] ${textColor} font-medium w-full md:w-auto`}>
-                <div className="md:hidden flex items-center justify-center gap-2 whitespace-nowrap">
-                  <Link href="/" className="transition-colors">Home</Link>
-                  <span className={mutedTextColor}>·</span>
-                  <Link href="/vault" className="transition-colors">Vault</Link>
-                  <span className={mutedTextColor}>·</span>
-                  <Link href="/terms-of-service" className="transition-colors">Terms</Link>
-                </div>
-                <div className="hidden md:flex items-center gap-6">
-                  <Link href="/" className="transition-colors">Home</Link>
-                  <Link href="/vault" className="transition-colors">Vault</Link>
-                  <Link href="/terms-of-service" className="transition-colors">Terms of Service</Link>
-                </div>
-              </div>
-            )}
-
-            {hasMounted && (
-              <div className="relative" ref={dropdownRef}>
-                <button
-                  onClick={() => setIsOpen(!isOpen)}
-                  suppressHydrationWarning
-                  className={`flex items-center gap-2 ${isWhite ? "bg-white/10 hover:bg-white/20 border-white/20" : "bg-pill border-border hover:bg-accent"} px-3.5 py-1.5 rounded-2xl text-[0.9rem] ${isWhite ? "text-white" : "text-muted"} transition-colors`}
-                >
-                  <div className="flex items-center gap-2">
-                    <CurrentIcon className="w-4 h-4" />
-                    <span className="font-medium capitalize">{theme === "system" ? "System" : theme}</span>
-                  </div>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
-                </button>
-
-                {isOpen && (
-                  <div className={`absolute bottom-full ${isLogin ? "right-0" : "left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0"} mb-2 w-32 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-2`}>
-                    {themeOptions.map((item) => (
-                      <button
-                        key={item.name}
-                        onClick={() => {
-                          setTheme(item.name);
-                          setIsOpen(false);
-                        }}
-                        className={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors rounded-lg text-left ${
-                          theme === item.name ? "bg-accent text-foreground" : "text-muted hover:bg-accent/50 hover:text-foreground"
-                        }`}
-                      >
-                        <item.icon className="w-4 h-4 shrink-0" />
-                        <span className="font-medium">{item.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    </footer>
+          )}
+        </div>
+      </footer>
+    </div>
   );
 }
