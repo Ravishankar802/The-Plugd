@@ -214,7 +214,7 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
       {showLogoutConfirm && (
         <div className="fixed inset-0 z-[150] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setShowLogoutConfirm(false)} />
-          <div className="relative bg-pill border border-border p-6 rounded-2xl max-w-xs w-full shadow-2xl flex flex-col items-center text-center space-y-5 animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative bg-pill border border-border p-6 rounded-2xl md:rounded-xl max-w-xs md:max-w-[420px] w-full md:w-[420px] md:min-w-[420px] shadow-2xl flex flex-col items-center text-center space-y-5 animate-in fade-in zoom-in-95 duration-200">
             <div className="w-12 h-12 bg-foreground/5 border border-border text-foreground rounded-full flex items-center justify-center shrink-0">
               <LogOut size={22} className="text-muted-foreground" />
             </div>
