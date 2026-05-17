@@ -148,7 +148,7 @@ function LoginContent() {
         &larr; Back
       </Link>
       <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500 -mt-12">
-        <div className="bg-pill border border-border rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
+        <div className="bg-pill border border-border rounded-2xl p-8 shadow-2xl relative overflow-hidden group font-['Georgia',_serif]">
           <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-selected/10 rounded-full blur-3xl" />
           
           <div className="relative z-10">
