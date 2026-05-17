@@ -37,24 +37,29 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
     const trimmed = username.trim();
 
-    if (trimmed.length < 3 || trimmed.length > 20) {
-      setUsernameStatus('invalid');
-      setUsernameMessage("Username must be between 3 and 20 characters");
-      return;
-    }
     if (!/^[a-zA-Z0-9_.]+$/.test(trimmed)) {
       setUsernameStatus('invalid');
-      setUsernameMessage("Only letters, numbers, underscores (_), and periods (.) are allowed");
+      setUsernameMessage("Only letters, numbers, _ and . allowed");
+      return;
+    }
+    if (trimmed.length < 3) {
+      setUsernameStatus('invalid');
+      setUsernameMessage("Username must be at least 3 characters");
+      return;
+    }
+    if (trimmed.length > 20) {
+      setUsernameStatus('invalid');
+      setUsernameMessage("Username must be 20 characters or less");
       return;
     }
     if (trimmed.startsWith(".") || trimmed.endsWith(".")) {
       setUsernameStatus('invalid');
-      setUsernameMessage("Username cannot start or end with a period");
+      setUsernameMessage("Username can't start or end with a period");
       return;
     }
     if (trimmed.includes("..")) {
       setUsernameStatus('invalid');
-      setUsernameMessage("Username cannot contain consecutive periods (..)");
+      setUsernameMessage("Username can't contain consecutive periods (..)");
       return;
     }
 
@@ -261,21 +266,6 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                         <Loader2 className="w-3.5 h-3.5 animate-spin" /> Verifying...
                       </span>
                     )}
-                    {usernameStatus === 'available' && (
-                      <span className="text-xs text-[#16a34a] font-bold flex items-center gap-1 font-sans">
-                        ✓ Username available
-                      </span>
-                    )}
-                    {usernameStatus === 'taken' && (
-                      <span className="text-xs text-red-500 font-bold flex items-center gap-1 font-sans">
-                        ✗ Username is taken
-                      </span>
-                    )}
-                    {usernameStatus === 'invalid' && (
-                      <span className="text-xs text-red-400 font-bold flex items-center gap-1 font-sans">
-                        ✗ Invalid format
-                      </span>
-                    )}
                   </label>
                   <input 
                     type="text"
@@ -288,20 +278,11 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       'border-border focus:border-muted'
                     }`}
                   />
-                  {usernameMessage && (
-                    <p className={`text-xs mt-1 font-sans ${usernameStatus === 'available' ? 'text-[#16a34a]' : 'text-red-400'}`}>
-                      {usernameMessage}
+                  {username && usernameMessage && (
+                    <p className={`text-xs mt-1 font-sans font-bold ${usernameStatus === 'available' ? 'text-[#16a34a]' : 'text-red-400'}`}>
+                      {usernameStatus === 'available' ? '✓ ' : '✗ '}{usernameMessage}
                     </p>
                   )}
-                  <div className="text-xs text-muted/80 leading-relaxed bg-black/30 border border-border/40 rounded-lg p-3 space-y-1 mt-1 font-sans">
-                    <p className="font-bold text-white/90">Username Rules:</p>
-                    <ul className="list-disc pl-4 space-y-0.5">
-                      <li>Only letters, numbers, underscores (_) and periods (.) allowed</li>
-                      <li>3 to 20 characters</li>
-                      <li>Cannot start or end with a period</li>
-                      <li>No consecutive periods (..)</li>
-                    </ul>
-                  </div>
                 </div>
 
                 {/* Payout Method Toggle */}
