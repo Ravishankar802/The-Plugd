@@ -12,7 +12,7 @@ export async function GET() {
   const email = session.email.toLowerCase();
 
   try {
-    const [account, promoter] = await Promise.all([
+    const [account, promoter, pendingWithdrawal] = await Promise.all([
       prisma.account.findFirst({ 
         where: { email, paid: true },
         orderBy: [
@@ -20,7 +20,10 @@ export async function GET() {
           { createdAt: 'desc' }
         ]
       }),
-      prisma.promoter.findUnique({ where: { email } })
+      prisma.promoter.findUnique({ where: { email } }),
+      prisma.withdrawalRequest.findFirst({
+        where: { userId: email, status: "pending" }
+      })
     ]);
 
     return NextResponse.json({
@@ -29,7 +32,8 @@ export async function GET() {
       hasPromoter: !!promoter,
       isAdmin: session.isAdmin,
       accountData: account,
-      promoterData: promoter
+      promoterData: promoter,
+      hasPendingWithdrawal: !!pendingWithdrawal
     });
   } catch (error) {
     console.error("Auth me error:", error);

@@ -54,6 +54,16 @@ export async function POST(
           totalPaid: { increment: payoutAmount },
           pendingPayout: 0
         }
+      }),
+      // 3. Update pending withdrawal requests to paid status
+      prisma.withdrawalRequest.updateMany({
+        where: {
+          userId: promoter.email,
+          status: "pending"
+        },
+        data: {
+          status: "paid"
+        }
       })
     ]);
 

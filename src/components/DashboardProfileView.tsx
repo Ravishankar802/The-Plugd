@@ -38,8 +38,10 @@ function DashboardProfileContent() {
   const [promoterSuccess, setPromoterSuccess] = useState(false);
   const [promoterError, setPromoterError] = useState<string | null>(null);
   const [selectedVariation, setSelectedVariation] = useState(0);
-
-
+  
+  const [hasPendingWithdrawal, setHasPendingWithdrawal] = useState(false);
+  const [withdrawalSuccessMessage, setWithdrawalSuccessMessage] = useState<string | null>(null);
+  const [requestingWithdrawal, setRequestingWithdrawal] = useState(false);
 
   const referralLinkSuffix = promoterData?.username || promoterData?.referralCode || "";
 
@@ -61,7 +63,7 @@ function DashboardProfileContent() {
           setHasPromoter(data.hasPromoter);
           setIsAdmin(data.isAdmin);
           setPromoterData(data.promoterData);
-
+          setHasPendingWithdrawal(data.hasPendingWithdrawal || false);
         } else {
           router.push("/login");
         }
@@ -75,10 +77,38 @@ function DashboardProfileContent() {
     fetchUser();
   }, [router]);
 
+  const handleRequestWithdrawal = async () => {
+    if (requestingWithdrawal) return;
+    setRequestingWithdrawal(true);
+    setWithdrawalSuccessMessage(null);
 
+    try {
+      const res = await fetch("/api/request-withdrawal", {
+        method: "POST"
+      });
 
+      const data = await res.json();
 
-
+      if (res.ok) {
+        setHasPendingWithdrawal(true);
+        setWithdrawalSuccessMessage("Request submitted. We'll process it on the next payout date.");
+        // Decrease pending payout in UI locally or trigger a reload
+        if (promoterData) {
+          setPromoterData({
+            ...promoterData,
+            pendingPayout: 0
+          });
+        }
+      } else {
+        alert(data.error || "Failed to submit withdrawal request.");
+      }
+    } catch (err: any) {
+      console.error("Withdrawal error:", err);
+      alert(err.message || "An unexpected error occurred.");
+    } finally {
+      setRequestingWithdrawal(false);
+    }
+  };
 
   const handlePromoterSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -524,13 +554,31 @@ function DashboardProfileContent() {
                   <h3 className="text-xl font-bold">Withdraw Funds</h3>
                   <p className="text-muted max-w-sm mt-2 font-medium">Request a payout to your PayPal or Bank account. Minimum withdrawal is $50.</p>
                 </div>
-                <button 
-                  disabled={(promoterData?.pendingPayout || 0) < 10}
-                  onClick={() => alert("Payout request sent to admin! We will contact you at " + promoterData.email)}
-                  className="bg-white text-black px-12 py-4 rounded-xl font-bold hover:bg-white/90 transition-all disabled:opacity-50 disabled:grayscale shadow-xl active:scale-[0.98]"
-                >
-                  {(promoterData?.pendingPayout || 0) < 10 ? "Minimum $50 required" : "Withdraw Funds"}
-                </button>
+                {withdrawalSuccessMessage && (
+                  <p className="text-[#16a34a] font-bold text-sm bg-[#16a34a]/10 px-6 py-3 rounded-xl border border-[#16a34a]/20">
+                    {withdrawalSuccessMessage}
+                  </p>
+                )}
+                {hasPendingWithdrawal ? (
+                  <button 
+                    disabled
+                    className="bg-amber-600/10 text-amber-500 border border-amber-600/20 px-12 py-4 rounded-xl font-bold opacity-75 cursor-not-allowed shadow-inner"
+                  >
+                    Withdrawal requested
+                  </button>
+                ) : (
+                  <button 
+                    disabled={(promoterData?.pendingPayout || 0) < 50 || requestingWithdrawal}
+                    onClick={handleRequestWithdrawal}
+                    className="bg-[#16a34a] hover:bg-[#16a34a]/90 text-white disabled:bg-white disabled:text-black disabled:opacity-50 disabled:grayscale px-12 py-4 rounded-xl font-bold transition-all shadow-xl active:scale-[0.98]"
+                  >
+                    {(promoterData?.pendingPayout || 0) < 50 
+                      ? "Minimum $50 required" 
+                      : requestingWithdrawal 
+                        ? "Submitting..." 
+                        : "Request Withdrawal"}
+                  </button>
+                )}
               </div>
 
               <p className="text-[0.75rem] text-muted text-center font-medium flex items-center justify-center gap-2">

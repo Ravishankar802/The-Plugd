@@ -24,6 +24,15 @@ interface Payout {
   createdAt: string;
 }
 
+interface WithdrawalRequest {
+  id: string;
+  amount: number;
+  method: string;
+  details: string;
+  status: string;
+  createdAt: string;
+}
+
 interface Promoter {
   id: number;
   email: string;
@@ -42,6 +51,7 @@ interface Promoter {
   revenueGenerated: number;
   createdAt: string;
   payouts: Payout[];
+  pendingWithdrawalRequest: WithdrawalRequest | null;
 }
 
 export default function ManageReferralsClient() {
@@ -339,26 +349,40 @@ export default function ManageReferralsClient() {
                     ${p.totalPaid.toFixed(2)}
                   </td>
                   <td className="px-3 py-2.5 text-right">
-                    <div className="flex items-center justify-end gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button 
-                        onClick={() => setHistoryPromoter(p)}
-                        className="p-1 rounded-md bg-background border border-border text-muted hover:text-foreground hover:border-muted transition-all shadow-sm"
-                        title="Payout History"
-                      >
-                        <History size={12} />
-                      </button>
-                      <button 
-                        disabled={p.pendingPayout <= 0}
-                        onClick={() => setPayoutPromoter(p)}
-                        className={`px-2 py-1 rounded-md font-bold text-[0.65rem] transition-all shadow-sm ${
-                          p.pendingPayout > 0 
-                          ? "bg-[#16a34a] text-white hover:opacity-90 active:scale-[0.98]" 
-                          : "bg-muted/10 text-muted/40 cursor-not-allowed"
-                        }`}
-                      >
-                        Paid
-                      </button>
-                    </div>
+                    {p.pendingWithdrawalRequest ? (
+                      <div className="flex items-center justify-end gap-2">
+                        <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 text-[0.65rem] font-bold shrink-0 animate-pulse border border-amber-500/20">
+                          REQUESTED (${p.pendingWithdrawalRequest.amount})
+                        </span>
+                        <button 
+                          onClick={() => setPayoutPromoter(p)}
+                          className="bg-amber-500 hover:bg-amber-600 text-white px-2 py-1 rounded-md font-bold text-[0.65rem] transition-all shadow-sm active:scale-[0.98] shrink-0 cursor-pointer"
+                        >
+                          Mark Paid
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-end gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button 
+                          onClick={() => setHistoryPromoter(p)}
+                          className="p-1 rounded-md bg-background border border-border text-muted hover:text-foreground hover:border-muted transition-all shadow-sm"
+                          title="Payout History"
+                        >
+                          <History size={12} />
+                        </button>
+                        <button 
+                          disabled={p.pendingPayout <= 0}
+                          onClick={() => setPayoutPromoter(p)}
+                          className={`px-2 py-1 rounded-md font-bold text-[0.65rem] transition-all shadow-sm ${
+                            p.pendingPayout > 0 
+                            ? "bg-[#16a34a] text-white hover:opacity-90 active:scale-[0.98]" 
+                            : "bg-muted/10 text-muted/40 cursor-not-allowed"
+                          }`}
+                        >
+                          Paid
+                        </button>
+                      </div>
+                    )}
                   </td>
                 </tr>
               )) : (
@@ -431,16 +455,20 @@ export default function ManageReferralsClient() {
                   </p>
                 </div>
 
-                {payoutPromoter.payoutMethod && (
+                {(payoutPromoter.payoutMethod || payoutPromoter.pendingWithdrawalRequest) && (
                   <div className="bg-pill border border-border rounded-xl p-4 space-y-2">
-                    <p className="text-[0.7rem] text-muted font-bold uppercase tracking-widest">Payment Info</p>
+                    <p className="text-[0.7rem] text-muted font-bold uppercase tracking-widest text-left">
+                      {payoutPromoter.pendingWithdrawalRequest ? "Requested Payout Info" : "Payment Info"}
+                    </p>
                     <div className="flex items-center justify-between">
-                      <span className="text-foreground font-bold">{payoutPromoter.payoutMethod}</span>
+                      <span className="text-foreground font-bold">
+                        {payoutPromoter.pendingWithdrawalRequest?.method || payoutPromoter.payoutMethod}
+                      </span>
                       <button 
-                        onClick={() => handleCopy(payoutPromoter.payoutDetails || "", 'details')}
+                        onClick={() => handleCopy(payoutPromoter.pendingWithdrawalRequest?.details || payoutPromoter.payoutDetails || "", 'details')}
                         className="text-[#16a34a] font-bold text-sm hover:underline flex items-center gap-1"
                       >
-                        {payoutPromoter.payoutDetails} <Copy size={12} />
+                        {payoutPromoter.pendingWithdrawalRequest?.details || payoutPromoter.payoutDetails} <Copy size={12} />
                       </button>
                     </div>
                   </div>

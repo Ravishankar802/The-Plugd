@@ -18,15 +18,20 @@ export async function GET() {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    const promoters = await prisma.promoter.findMany({
-      include: {
-        Referral: true,
-        payouts: {
-          orderBy: { createdAt: "desc" }
-        }
-      },
-      orderBy: { createdAt: "desc" }
-    });
+    const [promoters, withdrawalRequests] = await Promise.all([
+      prisma.promoter.findMany({
+        include: {
+          Referral: true,
+          payouts: {
+            orderBy: { createdAt: "desc" }
+          }
+        },
+        orderBy: { createdAt: "desc" }
+      }),
+      prisma.withdrawalRequest.findMany({
+        where: { status: "pending" }
+      })
+    ]);
 
     // Map promoters to include calculated stats
     const promotersWithStats = promoters.map(promoter => {
@@ -40,13 +45,24 @@ export async function GET() {
       // Paid Users: In this system, all "converted" referrals are paid users ($2)
       const paidUsers = signupCount;
 
+      const pendingRequest = withdrawalRequests.find(
+        wr => wr.userId.toLowerCase() === promoter.email.toLowerCase()
+      );
+
       return {
         ...promoter,
         totalClicks: clicks,
         totalSignups: signupCount,
         paidUsers,
         revenueGenerated,
-        // pendingPayout and totalPaid are already in the model
+        pendingWithdrawalRequest: pendingRequest ? {
+          id: pendingRequest.id,
+          amount: pendingRequest.amount,
+          method: pendingRequest.method,
+          details: pendingRequest.details,
+          status: pendingRequest.status,
+          createdAt: pendingRequest.createdAt
+        } : null
       };
     });
 
