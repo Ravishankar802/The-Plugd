@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="pt-4 pb-0 flex flex-col items-center text-center relative overflow-hidden">
+    <header className="pt-24 pb-0 flex flex-col items-center text-center relative overflow-hidden">
       <Link href="/" className="fixed top-4 left-6 hover:opacity-80 transition-opacity group z-50">
-        <Image src="/logo.png" alt="Plugd" width={64} height={64} />
+        <Image src="/logo.png" alt="Plugd" width={80} height={80} />
       </Link>
 
       <div className="w-full flex items-center justify-center mb-8 animate-in fade-in slide-in-from-top-2 duration-500 relative z-10">
