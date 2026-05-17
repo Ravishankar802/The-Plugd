@@ -215,13 +215,13 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
         <div className="fixed inset-0 z-[150] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setShowLogoutConfirm(false)} />
           <div className="relative bg-pill border border-border p-6 rounded-2xl md:rounded-xl max-w-xs md:max-w-[420px] w-full md:w-[420px] md:min-w-[420px] shadow-2xl flex flex-col items-center text-center space-y-5 animate-in fade-in zoom-in-95 duration-200">
-            <div className="w-12 h-12 bg-foreground/5 border border-border text-foreground rounded-full flex items-center justify-center shrink-0">
-              <LogOut size={22} className="text-muted-foreground" />
+            <div className="w-12 h-12 md:w-8 md:h-8 bg-foreground/5 border border-border text-foreground rounded-full flex items-center justify-center shrink-0">
+              <LogOut className="text-muted-foreground w-[22px] h-[22px] md:w-[14px] md:h-[14px]" />
             </div>
             
             <div className="space-y-1.5">
-              <h3 className="text-lg font-bold text-foreground">Confirm Logout</h3>
-              <p className="text-xs text-muted leading-normal">
+              <h3 className="text-lg md:text-3xl font-bold text-foreground">Confirm Logout</h3>
+              <p className="text-xs md:text-base text-muted leading-normal">
                 Are you sure you want to log out of your Vault session?
               </p>
             </div>
@@ -230,14 +230,14 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
               <button
                 type="button"
                 onClick={() => setShowLogoutConfirm(false)}
-                className="flex-1 py-2.5 rounded-xl border border-border text-foreground hover:bg-accent font-bold transition-all text-xs cursor-pointer"
+                className="flex-1 py-2.5 md:py-3 rounded-xl border border-border text-foreground hover:bg-accent font-bold transition-all text-xs md:text-base cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={handleLogout}
-                className="flex-1 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold transition-all text-xs shadow-lg shadow-red-600/10 cursor-pointer"
+                className="flex-1 py-2.5 md:py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold transition-all text-xs md:text-base shadow-lg shadow-red-600/10 cursor-pointer"
               >
                 Log out
               </button>
