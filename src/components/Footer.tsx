@@ -98,13 +98,13 @@ export default function Footer({
     <footer className={`w-full ${isLogin ? "py-0" : isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-border" : ""} ${minimal ? "border-t border-white/10 pt-16 pb-12 max-w-5xl mx-auto px-6" : ""}`}>
       <div className={`${isLogin ? "" : "flex flex-col gap-6"} w-full`}>
         {minimal ? (
-          <div className="w-full flex flex-col">
+          <div className="w-full flex flex-col font-['Georgia',_serif]">
             {/* Three Columns Grid */}
             <div className="grid grid-cols-3 gap-16 mb-6 text-left w-fit">
               {/* Column 1 */}
               <div className="flex flex-col">
-                <span className="text-white font-semibold text-sm mb-4 font-sans">Plugd</span>
-                <div className="flex flex-col space-y-3 font-sans">
+                <span className="text-white font-semibold text-sm mb-4">Plugd</span>
+                <div className="flex flex-col space-y-3">
                   <Link href="/resources" className="text-white/50 text-sm hover:text-white transition-colors">
                     Resources
                   </Link>
@@ -116,15 +116,15 @@ export default function Footer({
 
               {/* Column 2 */}
               <div className="flex flex-col">
-                <span className="text-white font-semibold text-sm mb-4 font-sans">Account</span>
-                <div className="flex flex-col space-y-3 font-sans">
+                <span className="text-white font-semibold text-sm mb-4">Account</span>
+                <div className="flex flex-col space-y-3">
                   <Link href="/vault" className="text-white/50 text-sm hover:text-white transition-colors">
                     Vault
                   </Link>
                   {onStartEarning ? (
                     <button 
                       onClick={onStartEarning} 
-                      className="text-white/50 text-sm hover:text-white transition-colors text-left font-sans"
+                      className="text-white/50 text-sm hover:text-white transition-colors text-left"
                     >
                       Start Earning
                     </button>
@@ -138,8 +138,8 @@ export default function Footer({
 
               {/* Column 3 */}
               <div className="flex flex-col">
-                <span className="text-white font-semibold text-sm mb-4 font-sans">Support</span>
-                <div className="flex flex-col space-y-3 font-sans">
+                <span className="text-white font-semibold text-sm mb-4">Support</span>
+                <div className="flex flex-col space-y-3">
                   <a href="mailto:support@theplugd.com" className="text-white/50 text-sm hover:text-white transition-colors">
                     Contact
                   </a>
@@ -152,7 +152,7 @@ export default function Footer({
 
             {/* Bottom Row */}
             <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 w-full">
-              <div className="text-white/30 text-xs font-sans">
+              <div className="text-white/30 text-xs">
                 © 2026 Plugd · Made for hustlers
               </div>
               
