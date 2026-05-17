@@ -98,7 +98,7 @@ export default function Footer({
                 <span className="text-white font-semibold text-sm mb-4 font-sans">Support</span>
                 <div className="flex flex-col space-y-3 font-sans">
                   <a href="mailto:support@theplugd.com" className="text-white/50 text-sm hover:text-white transition-colors">
-                    Support
+                    Contact
                   </a>
                   <Link href="/terms-of-service" className="text-white/50 text-sm hover:text-white transition-colors">
                     Terms of Service
