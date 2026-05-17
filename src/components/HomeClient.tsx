@@ -62,7 +62,7 @@ export default function HomeClient({
                   onClick={() => setIsReferModalOpen(true)}
                   suppressHydrationWarning
                   className="h-[48px] w-full md:w-auto bg-[#16a34a] border border-[#16a34a] text-black dark:text-white font-[700] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg cursor-pointer"
-                  style={{ fontFamily: '"Trebuchet MS", sans-serif' }}
+                  style={{ fontFamily: 'var(--font-eb-garamond), serif' }}
                 >
                   <TrendingUp className="w-5 h-5" />
                   Refer & Earn
@@ -70,7 +70,7 @@ export default function HomeClient({
                 <Link
                   href="/dashboard"
                   className="h-[48px] w-full md:w-auto bg-selected border border-selected text-selected-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
-                  style={{ fontFamily: '"Trebuchet MS", sans-serif' }}
+                  style={{ fontFamily: 'var(--font-eb-garamond), serif' }}
                 >
                   <LayoutDashboard className="w-5 h-5" />
                   Dashboard
@@ -85,10 +85,10 @@ export default function HomeClient({
       <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-10">
         <Link 
           href="/legacy" 
-          className="block w-full bg-[#22c55e] h-80 rounded-xl flex items-center justify-center hover:scale-[1.02] transition-transform duration-300 shadow-xl"
+          className="block w-full bg-[#22c55e] h-96 rounded-xl flex items-center justify-center hover:scale-[1.02] transition-transform duration-300 shadow-xl"
         >
           <h2 
-            className="text-6xl md:text-8xl font-bold uppercase tracking-widest text-white"
+            className="text-5xl md:text-7xl font-bold uppercase tracking-widest text-white"
             style={{ fontFamily: '"Times New Roman", Times, serif' }}
           >
             LEGACY
