@@ -85,17 +85,14 @@ export default function LegacyClient() {
       <div className="snap-container">
         {/* SECTION 0 */}
         <section className="snap-section flex flex-col items-center justify-center text-center bg-[#080808]" data-index="0">
-          <p className="anim-fadeup delay-1 text-amber-500 text-xs tracking-[0.6em] font-mono mb-8 uppercase font-bold">
-            ESSAY · 7 MIN READ
-          </p>
           <h1 
-            className="anim-fadeup delay-2 font-serif-custom text-white font-bold"
+            className="anim-fadeup delay-1 font-serif-custom text-white font-bold"
             style={{ fontSize: 'clamp(8rem, 20vw, 18rem)', lineHeight: 0.85 }}
           >
             LEGACY
           </h1>
-          <div className="anim-fadeup delay-3 w-[80px] h-[1px] bg-[#d97706] mx-auto mt-10 mb-8"></div>
-          <p className="anim-fadeup delay-4 text-white/40 text-xl italic font-serif-custom max-w-xl mx-auto px-4">
+          <div className="anim-fadeup delay-2 w-[80px] h-[1px] bg-[#d97706] mx-auto mt-10 mb-8"></div>
+          <p className="anim-fadeup delay-3 text-white/40 text-xl italic font-serif-custom max-w-xl mx-auto px-4">
             The art of earning by sharing. A story as old as commerce itself.
           </p>
           
@@ -283,19 +280,16 @@ export default function LegacyClient() {
           }}
         >
           <div className="max-w-[700px] mx-auto w-full">
-            <p className="anim-fadeup delay-1 text-white/30 font-mono text-xs tracking-[0.5em] mb-6 uppercase">
-              05
+            <p className="anim-fadeup delay-1 font-serif-custom italic text-2xl text-white/60 mb-6">
+              "5,000 years ago someone carved a referral into clay."
             </p>
             <h2 
-              className="anim-fadeup delay-2 font-serif-custom font-bold text-white whitespace-pre-wrap"
+              className="anim-fadeup delay-2 font-serif-custom font-bold text-white mb-12"
               style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', lineHeight: 1.1 }}
             >
-              {"Your network is worth something.\nStart acting like it."}
+              "The medium changed. The reward didn't."
             </h2>
-            <p className="anim-fadeup delay-3 text-white/60 text-xl mt-6 mb-10">
-              Every person you refer puts $1 in your pocket. Payouts on the 1st and 15th.
-            </p>
-            <div className="anim-fadeup delay-4">
+            <div className="anim-fadeup delay-3">
               <Link 
                 href="/"
                 className="inline-block bg-white text-black font-bold hover:bg-white/90 transition-all shadow-2xl hover:scale-[1.03]"
@@ -304,9 +298,6 @@ export default function LegacyClient() {
                 Join Plugd
               </Link>
             </div>
-            <p className="anim-fadeup delay-4 text-white/30 text-sm font-mono tracking-wider mt-5">
-              $2 to join &middot; $1 per referral &middot; $10 minimum withdrawal
-            </p>
           </div>
         </section>
       </div>
