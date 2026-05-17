@@ -52,12 +52,12 @@ export default function Footer({
   const CurrentIcon = currentThemeOption.icon;
 
   return (
-    <footer className={`w-full ${isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-border" : ""} ${minimal ? "border-t border-white/10 pt-8 pb-12 max-w-5xl mx-auto px-6" : ""}`}>
+    <footer className={`w-full ${isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-border" : ""} ${minimal ? "border-t border-white/10 pt-16 pb-12 max-w-5xl mx-auto px-6" : ""}`}>
       <div className="flex flex-col gap-6 w-full">
         {minimal ? (
           <div className="w-full flex flex-col">
             {/* Three Columns Grid */}
-            <div className="grid grid-cols-3 gap-16 mb-12 text-left w-fit">
+            <div className="grid grid-cols-3 gap-16 mb-6 text-left w-fit">
               {/* Column 1 */}
               <div className="flex flex-col">
                 <span className="text-white font-semibold text-sm mb-4 font-sans">Plugd</span>
