@@ -20,10 +20,71 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
   const [formData, setFormData] = useState({
     name: "",
     email: userEmail || "",
-    xHandle: "",
     payoutMethod: "PayPal" as "PayPal" | "UPI",
     payoutDetails: ""
   });
+
+  const [username, setUsername] = useState("");
+  const [usernameStatus, setUsernameStatus] = useState<'idle' | 'checking' | 'available' | 'taken' | 'invalid'>('idle');
+  const [usernameMessage, setUsernameMessage] = useState("");
+
+  useEffect(() => {
+    if (!username) {
+      setUsernameStatus('idle');
+      setUsernameMessage("");
+      return;
+    }
+
+    const trimmed = username.trim();
+
+    if (trimmed.length < 3 || trimmed.length > 20) {
+      setUsernameStatus('invalid');
+      setUsernameMessage("Username must be between 3 and 20 characters");
+      return;
+    }
+    if (!/^[a-zA-Z0-9_.]+$/.test(trimmed)) {
+      setUsernameStatus('invalid');
+      setUsernameMessage("Only letters, numbers, underscores (_), and periods (.) are allowed");
+      return;
+    }
+    if (trimmed.startsWith(".") || trimmed.endsWith(".")) {
+      setUsernameStatus('invalid');
+      setUsernameMessage("Username cannot start or end with a period");
+      return;
+    }
+    if (trimmed.includes("..")) {
+      setUsernameStatus('invalid');
+      setUsernameMessage("Username cannot contain consecutive periods (..)");
+      return;
+    }
+
+    setUsernameStatus('checking');
+    setUsernameMessage("");
+
+    const delayDebounceFn = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/check-username?username=${encodeURIComponent(trimmed)}`);
+        const data = await res.json();
+        
+        if (res.status === 400 && data.error === "invalid format") {
+          setUsernameStatus('invalid');
+          setUsernameMessage(data.reason);
+        } else if (data.available === true) {
+          setUsernameStatus('available');
+          setUsernameMessage("Username available");
+        } else {
+          setUsernameStatus('taken');
+          setUsernameMessage("Username is taken");
+        }
+      } catch (err) {
+        console.error("Check username fetch error:", err);
+        setUsernameStatus('invalid');
+        setUsernameMessage("Failed to verify username availability");
+      }
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [username]);
 
   useEffect(() => {
     setMounted(true);
@@ -61,8 +122,13 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
     }
 
     // Validation
-    if (!formData.name.trim() || !formData.email.trim() || !formData.payoutDetails.trim()) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.payoutDetails.trim() || !username.trim()) {
       alert("Please fill in all fields.");
+      return;
+    }
+
+    if (usernameStatus !== 'available') {
+      alert("Please choose an available username first.");
       return;
     }
 
@@ -72,10 +138,6 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
     }
 
     setLoading(true);
-    
-    // Clean X Handle
-    let handle = formData.xHandle.trim();
-    if (handle.startsWith("@")) handle = handle.substring(1);
 
     // Hardcoded URL format as requested by user
     const redirectUrl = 'https://theplugd.com/vault';
@@ -89,7 +151,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       metadata_type: 'promoter',
       metadata_name: formData.name,
       metadata_email: formData.email,
-      metadata_xHandle: handle,
+      metadata_username: username.trim(),
       metadata_payoutMethod: formData.payoutMethod,
       metadata_payoutDetails: formData.payoutDetails,
       ...(referralCode ? { metadata_referralCode: referralCode } : {})
@@ -190,16 +252,56 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                   />
                 </div>
 
-                {/* X Handle */}
+                {/* Username */}
                 <div className="flex flex-col gap-3">
-                  <label className="text-[1rem] font-bold text-white tracking-wide block">X Handle</label>
+                  <label className="text-[1rem] font-bold text-white tracking-wide block flex items-center justify-between">
+                    <span>Username</span>
+                    {usernameStatus === 'checking' && (
+                      <span className="text-xs text-muted flex items-center gap-1 font-sans">
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" /> Verifying...
+                      </span>
+                    )}
+                    {usernameStatus === 'available' && (
+                      <span className="text-xs text-[#16a34a] font-bold flex items-center gap-1 font-sans">
+                        ✓ Username available
+                      </span>
+                    )}
+                    {usernameStatus === 'taken' && (
+                      <span className="text-xs text-red-500 font-bold flex items-center gap-1 font-sans">
+                        ✗ Username is taken
+                      </span>
+                    )}
+                    {usernameStatus === 'invalid' && (
+                      <span className="text-xs text-red-400 font-bold flex items-center gap-1 font-sans">
+                        ✗ Invalid format
+                      </span>
+                    )}
+                  </label>
                   <input 
                     type="text"
-                    placeholder="@yourhandle"
-                    value={formData.xHandle}
-                    onChange={(e) => setFormData({ ...formData, xHandle: e.target.value })}
-                    className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                    placeholder="Enter username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value.toLowerCase().trim())}
+                    className={`w-full bg-black border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none transition-all text-[0.95rem] ${
+                      usernameStatus === 'available' ? 'border-[#16a34a]' :
+                      (usernameStatus === 'taken' || usernameStatus === 'invalid') ? 'border-red-500' :
+                      'border-border focus:border-muted'
+                    }`}
                   />
+                  {usernameMessage && (
+                    <p className={`text-xs mt-1 font-sans ${usernameStatus === 'available' ? 'text-[#16a34a]' : 'text-red-400'}`}>
+                      {usernameMessage}
+                    </p>
+                  )}
+                  <div className="text-xs text-muted/80 leading-relaxed bg-black/30 border border-border/40 rounded-lg p-3 space-y-1 mt-1 font-sans">
+                    <p className="font-bold text-white/90">Username Rules:</p>
+                    <ul className="list-disc pl-4 space-y-0.5">
+                      <li>Only letters, numbers, underscores (_) and periods (.) allowed</li>
+                      <li>3 to 20 characters</li>
+                      <li>Cannot start or end with a period</li>
+                      <li>No consecutive periods (..)</li>
+                    </ul>
+                  </div>
                 </div>
 
                 {/* Payout Method Toggle */}
@@ -313,7 +415,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
           <div className="w-full">
             <button
               onClick={handleJoin}
-              disabled={loading}
+              disabled={loading || (showEmailInput && (usernameStatus !== 'available' || !formData.name.trim() || !formData.email.trim() || !formData.payoutDetails.trim()))}
               className="w-full bg-[#16a34a] text-white font-[800] text-[1rem] py-[14px] rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg shadow-green-600/20 disabled:opacity-50"
             >
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (

@@ -9,8 +9,13 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Referral code is required" }, { status: 400 });
     }
 
-    const promoter = await prisma.promoter.findUnique({
-      where: { referralCode }
+    const promoter = await prisma.promoter.findFirst({
+      where: {
+        OR: [
+          { referralCode },
+          { username: referralCode }
+        ]
+      }
     });
 
     if (!promoter) {
@@ -18,7 +23,7 @@ export async function POST(req: Request) {
     }
 
     await prisma.promoter.update({
-      where: { referralCode },
+      where: { id: promoter.id },
       data: {
         totalClicks: {
           increment: 1

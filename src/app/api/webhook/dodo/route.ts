@@ -42,6 +42,7 @@ export async function POST(req: Request) {
       if (type === "promoter") {
         const email = metadata.metadata_email || metadata.email || payment.customer.email;
         const referralCode = metadata.metadata_referralCode || metadata.referralCode;
+        const username = metadata.metadata_username || null;
         
         await prisma.promoter.upsert({
           where: { email },
@@ -49,7 +50,8 @@ export async function POST(req: Request) {
             email,
             name: metadata.metadata_name || email.split("@")[0],
             xHandle: metadata.metadata_xHandle || null,
-            referralCode: generateReferralCode(email),
+            username,
+            referralCode: username || generateReferralCode(email),
             payoutMethod: metadata.metadata_payoutMethod || null,
             payoutDetails: metadata.metadata_payoutDetails || null,
             totalEarned: 0,
@@ -64,8 +66,13 @@ export async function POST(req: Request) {
 
         // Handle Referral Credit Logic for Promoter Signups ($2 payment)
         if (referralCode) {
-          const referringPromoter = await prisma.promoter.findUnique({
-            where: { referralCode }
+          const referringPromoter = await prisma.promoter.findFirst({
+            where: {
+              OR: [
+                { referralCode },
+                { username: referralCode }
+              ]
+            }
           });
           
           if (referringPromoter) {

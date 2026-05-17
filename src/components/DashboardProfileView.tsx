@@ -39,6 +39,12 @@ function DashboardProfileContent() {
   const [promoterError, setPromoterError] = useState<string | null>(null);
   const [selectedVariation, setSelectedVariation] = useState(0);
 
+  const [originalUsername, setOriginalUsername] = useState("");
+  const [profileUsernameStatus, setProfileUsernameStatus] = useState<'idle' | 'checking' | 'available' | 'taken' | 'invalid'>('idle');
+  const [profileUsernameMessage, setProfileUsernameMessage] = useState("");
+
+  const referralLinkSuffix = promoterData?.username || promoterData?.referralCode || "";
+
   const POST_VARIATIONS = [
     "This referral program pays $1 every time someone joins through your link. No cap. Keep sharing, keep earning. $10,000 is not unrealistic. 👇",
     "Easiest $1 you'll make today — share a link, someone joins Plugd, you get paid. Stack enough of those and it adds up to $10,000+. 👇",
@@ -57,6 +63,9 @@ function DashboardProfileContent() {
           setHasPromoter(data.hasPromoter);
           setIsAdmin(data.isAdmin);
           setPromoterData(data.promoterData);
+          if (data.promoterData?.username) {
+            setOriginalUsername(data.promoterData.username);
+          }
         } else {
           router.push("/login");
         }
@@ -70,6 +79,70 @@ function DashboardProfileContent() {
     fetchUser();
   }, [router]);
 
+  useEffect(() => {
+    if (!promoterData?.username) {
+      setProfileUsernameStatus('idle');
+      setProfileUsernameMessage("");
+      return;
+    }
+
+    const trimmed = promoterData.username.trim();
+
+    if (trimmed.toLowerCase() === originalUsername.toLowerCase()) {
+      setProfileUsernameStatus('available');
+      setProfileUsernameMessage("");
+      return;
+    }
+
+    if (trimmed.length < 3 || trimmed.length > 20) {
+      setProfileUsernameStatus('invalid');
+      setProfileUsernameMessage("Username must be between 3 and 20 characters");
+      return;
+    }
+    if (!/^[a-zA-Z0-9_.]+$/.test(trimmed)) {
+      setProfileUsernameStatus('invalid');
+      setProfileUsernameMessage("Only letters, numbers, underscores (_), and periods (.) are allowed");
+      return;
+    }
+    if (trimmed.startsWith(".") || trimmed.endsWith(".")) {
+      setProfileUsernameStatus('invalid');
+      setProfileUsernameMessage("Username cannot start or end with a period");
+      return;
+    }
+    if (trimmed.includes("..")) {
+      setProfileUsernameStatus('invalid');
+      setProfileUsernameMessage("Username cannot contain consecutive periods (..)");
+      return;
+    }
+
+    setProfileUsernameStatus('checking');
+    setProfileUsernameMessage("");
+
+    const delayDebounceFn = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/check-username?username=${encodeURIComponent(trimmed)}`);
+        const data = await res.json();
+        
+        if (res.status === 400 && data.error === "invalid format") {
+          setProfileUsernameStatus('invalid');
+          setProfileUsernameMessage(data.reason);
+        } else if (data.available === true) {
+          setProfileUsernameStatus('available');
+          setProfileUsernameMessage("Username available");
+        } else {
+          setProfileUsernameStatus('taken');
+          setProfileUsernameMessage("Username is taken");
+        }
+      } catch (err) {
+        console.error("Check username fetch error:", err);
+        setProfileUsernameStatus('invalid');
+        setProfileUsernameMessage("Failed to verify username availability");
+      }
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [promoterData?.username, originalUsername]);
+
 
 
 
@@ -77,6 +150,11 @@ function DashboardProfileContent() {
     e.preventDefault();
     if (!promoterData) {
       setPromoterError("Promoter data not loaded.");
+      return;
+    }
+
+    if (promoterData.username && profileUsernameStatus !== 'available') {
+      setPromoterError("Please choose a valid and available username first.");
       return;
     }
 
@@ -91,6 +169,7 @@ function DashboardProfileContent() {
         body: JSON.stringify({
           name: promoterData.name,
           xHandle: promoterData.xHandle,
+          username: promoterData.username,
           payoutMethod: promoterData.payoutMethod,
           payoutDetails: promoterData.payoutDetails
         })
@@ -98,6 +177,9 @@ function DashboardProfileContent() {
 
       if (res.ok) {
         setPromoterSuccess(true);
+        if (promoterData.username) {
+          setOriginalUsername(promoterData.username);
+        }
         setTimeout(() => setPromoterSuccess(false), 3000);
       } else {
         const data = await res.json();
@@ -173,18 +255,47 @@ function DashboardProfileContent() {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {/* X Handle */}
+                    {/* Username */}
                     <div className="flex flex-col gap-3">
-                      <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">X Handle</label>
-                      <div className="relative">
-                        <span className="absolute left-5 top-1/2 -translate-y-1/2 text-muted/60 font-medium text-[1rem]">@</span>
-                        <input
-                          type="text"
-                          value={promoterData.xHandle?.replace(/^@+/, "") || ""}
-                          onChange={(e) => setPromoterData({ ...promoterData, xHandle: e.target.value })}
-                          className="w-full bg-background border border-border rounded-xl pl-11 pr-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                        />
-                      </div>
+                      <label className="text-[0.95rem] font-bold text-foreground block tracking-wide flex items-center justify-between">
+                        <span>Username</span>
+                        {profileUsernameStatus === 'checking' && (
+                          <span className="text-xs text-muted flex items-center gap-1 font-sans">
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" /> Verifying...
+                          </span>
+                        )}
+                        {profileUsernameStatus === 'available' && (
+                          <span className="text-xs text-[#16a34a] font-bold flex items-center gap-1 font-sans">
+                            ✓ Available
+                          </span>
+                        )}
+                        {profileUsernameStatus === 'taken' && (
+                          <span className="text-xs text-red-500 font-bold flex items-center gap-1 font-sans">
+                            ✗ Taken
+                          </span>
+                        )}
+                        {profileUsernameStatus === 'invalid' && (
+                          <span className="text-xs text-red-400 font-bold flex items-center gap-1 font-sans">
+                            ✗ Invalid format
+                          </span>
+                        )}
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Enter username"
+                        value={promoterData.username || ""}
+                        onChange={(e) => setPromoterData({ ...promoterData, username: e.target.value.toLowerCase().trim() })}
+                        className={`w-full bg-background border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none transition-all shadow-inner ${
+                          profileUsernameStatus === 'available' ? 'border-[#16a34a]' :
+                          (profileUsernameStatus === 'taken' || profileUsernameStatus === 'invalid') ? 'border-red-500' :
+                          'border-border focus:border-muted'
+                        }`}
+                      />
+                      {profileUsernameMessage && (
+                        <p className={`text-xs mt-0.5 font-sans ${profileUsernameStatus === 'available' ? 'text-[#16a34a]' : 'text-red-400'}`}>
+                          {profileUsernameMessage}
+                        </p>
+                      )}
                     </div>
 
                     {/* Member Since */}
@@ -243,11 +354,11 @@ function DashboardProfileContent() {
                     <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Your Referral Link</label>
                     <div className="flex gap-3">
                       <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-[#16a34a] font-mono font-bold text-[1rem] shadow-inner flex items-center truncate">
-                        https://theplugd.com?ref={promoterData.referralCode}
+                        https://theplugd.com?ref={referralLinkSuffix}
                       </div>
                       <button
                         type="button"
-                        onClick={() => copyToClipboard(`https://theplugd.com?ref=${promoterData.referralCode}`, 'link')}
+                        onClick={() => copyToClipboard(`https://theplugd.com?ref=${referralLinkSuffix}`, 'link')}
                         className="px-8 rounded-xl bg-accent border border-border text-foreground font-bold hover:bg-accent/80 transition-all flex items-center gap-2.5 active:scale-[0.98] shrink-0"
                       >
                         {copied === 'link' ? <Check size={18} className="text-green-500" /> : <Copy size={18} />}
@@ -260,7 +371,7 @@ function DashboardProfileContent() {
                   <div className="pt-8 border-t border-border">
                     <button
                       type="submit"
-                      disabled={promoterSaving}
+                      disabled={promoterSaving || (promoterData.username && profileUsernameStatus !== 'available')}
                       className="w-full bg-[#16a34a] text-white font-black text-lg py-5 px-12 rounded-xl transition-all hover:bg-[#16a34a]/90 shadow-2xl active:scale-[0.99] uppercase tracking-wider disabled:opacity-50 flex items-center justify-center gap-3"
                     >
                       {promoterSaving ? (
@@ -323,11 +434,11 @@ function DashboardProfileContent() {
                 <label className="text-[0.8rem] font-bold text-muted/60 block tracking-widest uppercase">YOUR REFERRAL LINK</label>
                 <div className="flex flex-col md:flex-row gap-3">
                   <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] font-medium truncate flex items-center">
-                    theplugd.com?ref={promoterData?.referralCode}
+                    theplugd.com?ref={referralLinkSuffix}
                   </div>
                   <button 
                     type="button"
-                    onClick={() => copyToClipboard(`https://theplugd.com?ref=${promoterData?.referralCode}`, 'link')}
+                    onClick={() => copyToClipboard(`https://theplugd.com?ref=${referralLinkSuffix}`, 'link')}
                     className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-600/20 active:scale-[0.98]"
                   >
                     {copied === 'link' ? <Check className="w-5 h-5" /> : <><Copy className="w-5 h-5" /> Copy Link</>}
@@ -380,12 +491,12 @@ function DashboardProfileContent() {
                     <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 md:mt-10">
                       <div className="min-h-[80px] flex items-center">
                         <p className="text-sm text-muted font-medium break-all">
-                          https://theplugd.com?ref={promoterData?.referralCode}
+                          https://theplugd.com?ref={referralLinkSuffix}
                         </p>
                       </div>
                       <button 
                         type="button"
-                        onClick={() => copyToClipboard(`https://theplugd.com?ref=${promoterData?.referralCode}`, 'reply')}
+                        onClick={() => copyToClipboard(`https://theplugd.com?ref=${referralLinkSuffix}`, 'reply')}
                         className="w-full border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
                       >
                         {copied === 'reply' ? <Check className="w-4 h-4 text-green-500" /> : "Copy Reply Link"}
@@ -411,12 +522,12 @@ function DashboardProfileContent() {
 
                 <div className="bg-pill border border-border rounded-2xl p-6 space-y-5">
                   <p className="text-sm text-muted font-medium leading-relaxed">
-                    Hey [name] — there&apos;s a referral program that pays $1 every time someone joins through your link. No cap. People are already making serious money with this. 1,000 referrals = $1,000. 10,000 referrals = $10,000. The product is Plugd — a directory of X builders that&apos;s blowing up right now. Share it, start earning 👉 theplugd.com?ref={promoterData?.referralCode}
+                    Hey [name] — there&apos;s a referral program that pays $1 every time someone joins through your link. No cap. People are already making serious money with this. 1,000 referrals = $1,000. 10,000 referrals = $10,000. The product is Plugd — a directory of X builders that&apos;s blowing up right now. Share it, start earning 👉 theplugd.com?ref={referralLinkSuffix}
                   </p>
                   <div className="space-y-3">
                     <button 
                       type="button"
-                      onClick={() => copyToClipboard(`Hey [name] — there's a referral program that pays $1 every time someone joins through your link. No cap. People are already making serious money with this. 1,000 referrals = $1,000. 10,000 referrals = $10,000. The product is Plugd — a directory of X builders that's blowing up right now. Share it, start earning 👉 theplugd.com?ref=${promoterData?.referralCode}`, 'dm')}
+                      onClick={() => copyToClipboard(`Hey [name] — there's a referral program that pays $1 every time someone joins through your link. No cap. People are already making serious money with this. 1,000 referrals = $1,000. 10,000 referrals = $10,000. The product is Plugd — a directory of X builders that's blowing up right now. Share it, start earning 👉 theplugd.com?ref=${referralLinkSuffix}`, 'dm')}
                       className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
                     >
                       {copied === 'dm' ? <Check className="w-4 h-4 text-green-500" /> : <><Copy className="w-5 h-5" /> Copy DM Template</>}

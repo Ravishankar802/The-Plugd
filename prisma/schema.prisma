@@ -60,6 +60,7 @@ model Promoter {
   email            String   @unique
   name             String
   xHandle          String?
+  username         String?  @unique
   referralCode     String   @unique
   payoutMethod     String?
   payoutDetails    String?

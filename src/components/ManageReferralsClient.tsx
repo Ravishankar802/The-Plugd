@@ -29,6 +29,7 @@ interface Promoter {
   email: string;
   name: string;
   xHandle: string | null;
+  username: string | null;
   referralCode: string;
   payoutMethod: string | null;
   payoutDetails: string | null;
@@ -124,6 +125,7 @@ export default function ManageReferralsClient() {
       .filter(p => 
         p.email.toLowerCase().includes(searchQuery.toLowerCase()) || 
         p.referralCode.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (p.username && p.username.toLowerCase().includes(searchQuery.toLowerCase())) ||
         p.name.toLowerCase().includes(searchQuery.toLowerCase())
       )
       .sort((a, b) => {
@@ -154,10 +156,11 @@ export default function ManageReferralsClient() {
   };
 
   const exportCsv = () => {
-    const headers = ["Name", "Email", "Referral Code", "Total Clicks", "Conversions", "Revenue", "Pending Payout", "Total Paid", "Joined"];
+    const headers = ["Name", "Email", "Username", "Referral Code", "Total Clicks", "Conversions", "Revenue", "Pending Payout", "Total Paid", "Joined"];
     const rows = promoters.map(p => [
       p.name,
       p.email,
+      p.username || "",
       p.referralCode,
       p.totalClicks,
       p.totalSignups,
@@ -310,10 +313,10 @@ export default function ManageReferralsClient() {
                   <td className="px-3 py-2.5">
                     <div className="max-w-[100px] truncate">
                       <button 
-                        onClick={() => handleCopy(`https://theplugd.com?ref=${p.referralCode}`, `link-${p.id}`)}
+                        onClick={() => handleCopy(`https://theplugd.com?ref=${p.username || p.referralCode}`, `link-${p.id}`)}
                         className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-accent/50 border border-border text-foreground text-[0.65rem] font-mono font-bold hover:bg-accent transition-all group/btn"
                       >
-                        <span className="truncate">{p.referralCode}</span>
+                        <span className="truncate">{p.username || p.referralCode}</span>
                         {copied === `link-${p.id}` ? <Check size={8} className="text-green-500" /> : <Copy size={8} className="text-muted group-hover/btn:text-foreground" />}
                       </button>
                     </div>
