@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 
 export default function TermsOfService() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-foreground/10 flex flex-col">
+    <main className="min-h-screen bg-background text-foreground selection:bg-foreground/10 flex flex-col font-['Georgia',_serif]">
       <div className="max-w-[840px] mx-auto px-6 pt-16 flex flex-col items-center flex-1">
         
         {/* Page Header */}
@@ -27,7 +27,7 @@ export default function TermsOfService() {
             <span className="text-3xl font-[800] tracking-[-0.02em] text-[#52525b]">Plugd</span>
           </Link>
           <h1 className="text-[2.5rem] font-bold tracking-tight mb-2 text-foreground">Terms of Service</h1>
-          <p className="text-muted text-[1rem] font-medium tracking-tight">Last updated: May 9, 2026</p>
+          <p className="text-muted text-[1rem] font-medium tracking-tight">Last updated: May 17, 2026</p>
         </div>
 
         {/* Content Sections */}
@@ -35,84 +35,76 @@ export default function TermsOfService() {
           
           <Section 
             title="1. Introduction" 
-            content="Welcome to The Plugd. These Terms govern your use of theplugd.com — a paid directory platform where X creators get listed and discovered. By using The Plugd, you agree to these Terms." 
+            content="Welcome to Plugd. These Terms govern your use of theplugd.com, a referral platform where promoters earn by sharing their referral link. By using Plugd, you agree to these Terms." 
           />
 
           <Section 
-            title="2. What The Plugd Does" 
-            content="The Plugd is a public directory of X accounts. Users pay a one-time $1 fee to submit their profile and get listed. Anyone can browse the directory for free. The Plugd does not guarantee followers, impressions, growth, or any specific outcome from being listed." 
+            title="2. What Plugd Does" 
+            content="Plugd is a referral program. Promoters pay a one-time $2 fee to join, receive a unique referral link, and earn $1 for every new person who joins through that link. Plugd does not guarantee any specific earnings." 
           />
 
           <Section 
-            title="3. The $1 Listing Fee" 
-            content="Getting listed on The Plugd requires a one-time payment of $1 processed via Dodo Payments. This fee is non-refundable once your listing goes live. The fee covers your permanent listing on the platform. We do not charge recurring fees or subscriptions." 
+            title="3. The $2 Joining Fee" 
+            content="Joining Plugd as a promoter requires a one-time payment of $2 processed via Dodo Payments. This fee is non-refundable once your account is activated." 
           />
 
           <Section 
-            title="4. What You Submit" 
-            content="When you add your account you submit: your full name, X username, a one-line bio, a profile picture, your niche, your follower range, and your email. You confirm this information is accurate and belongs to you. Submitting false, misleading, or someone else's information is a violation of these Terms and will result in removal with no refund." 
+            title="4. Earning Referrals" 
+            content="You earn $1 for each person who joins Plugd through your unique referral link and completes the $2 payment. Earnings are tracked in your Vault and paid out twice a month via PayPal or UPI, whichever you have set in your profile. The minimum withdrawal amount is $10." 
           />
 
           <Section 
-            title="5. Public Visibility" 
-            content="All submitted information except your email is displayed publicly on The Plugd directory. Your name, X username, bio, profile picture, niche and follower range will be visible to anyone who visits the site. Do not submit information you do not want to be publicly visible." 
+            title="5. Payout Eligibility" 
+            content="To receive a payout, your account must have a valid payout method (PayPal or UPI) saved in your profile. Plugd reserves the right to withhold payouts if fraudulent activity is suspected." 
           />
 
           <Section 
-            title="6. No Verification or Guarantee" 
-            content="The Plugd does not verify the identity of users or the accuracy of submitted information. Being listed on The Plugd does not imply endorsement, verification, or recommendation by The Plugd. We do not guarantee any increase in followers, impressions, or growth as a result of being listed." 
-          />
-
-          <Section 
-            title="7. Payments and Refunds" 
-            content="All payments are processed securely via Dodo Payments. The $1 listing fee is non-refundable after your account is successfully listed. If a technical error prevents your listing from going live after payment, contact us and we will resolve it or issue a refund at our discretion." 
-          />
-
-          <Section 
-            title="8. Prohibited Use" 
+            title="6. Prohibited Conduct" 
             content={
               <div className="space-y-4">
-                <p>You may not use The Plugd to:</p>
+                <p>You may not:</p>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Submit profiles that belong to someone else</li>
-                  <li>Submit fake, bot, or spam accounts</li>
-                  <li>Submit misleading or deceptive information</li>
-                  <li>Attempt to manipulate or abuse the directory</li>
-                  <li>Scrape, copy, or misuse platform data</li>
+                  <li>Use bots, scripts, or fake accounts to generate referrals</li>
+                  <li>Self-refer or manipulate the referral system in any way</li>
+                  <li>Share false or misleading information to get people to join</li>
+                  <li>Attempt to abuse, reverse-engineer, or exploit the platform</li>
                 </ul>
-                <p>Violations will result in permanent removal with no refund.</p>
+                <p>Violations will result in permanent account removal and forfeiture of any pending earnings.</p>
               </div>
             }
           />
 
           <Section 
-            title="9. User Responsibility" 
-            content="You are solely responsible for the accuracy of your submitted information. Any connections, collaborations, or interactions that happen as a result of being discovered on The Plugd occur independently and outside our platform. The Plugd is not responsible for any outcomes from such interactions." 
+            title="7. User Responsibility" 
+            content="You are responsible for the accuracy of your payout details. Plugd is not liable for failed payouts resulting from incorrect information provided by you." 
           />
 
           <Section 
-            title="10. Intellectual Property" 
-            content="All branding, design, UI, and original content of The Plugd are protected by intellectual property laws. You may not copy, reproduce, or redistribute any part of The Plugd without permission. You retain ownership of your submitted profile content but grant The Plugd a non-exclusive license to display it on the platform." 
+            title="8. Intellectual Property" 
+            content="All branding, design, and content of Plugd are protected by intellectual property laws. You may not copy, reproduce, or redistribute any part of Plugd without permission." 
           />
 
           <Section 
-            title="11. Removal of Listings" 
-            content="The Plugd reserves the right to remove any listing at any time without notice if it violates these Terms, contains false information, or is deemed harmful to the platform or its users. No refund will be issued for removed listings that violate these Terms." 
+            title="9. Limitation of Liability" 
+            content="Plugd is provided on an \"as is\" basis. We are not liable for any indirect, incidental, or consequential damages arising from your use of the platform." 
           />
 
           <Section 
-            title="12. Limitation of Liability" 
-            content="The Plugd is provided on an &quot;as is&quot; and &quot;as available&quot; basis. We are not liable for any indirect, incidental, or consequential damages arising from your use of the platform. Use of The Plugd is entirely at your own risk." 
+            title="10. Changes to These Terms" 
+            content="We may update these Terms at any time. Continued use of Plugd after updates constitutes acceptance of the revised Terms." 
           />
 
           <Section 
-            title="13. Changes to These Terms" 
-            content="We may update these Terms at any time. Continued use of The Plugd after updates constitutes acceptance of the revised Terms. The &quot;Last updated&quot; date at the top of this page will reflect the most recent changes." 
-          />
-
-          <Section 
-            title="14. Contact" 
-            content="For any questions regarding these Terms, please contact us through the Plugd website." 
+            title="11. Contact" 
+            content={
+              <span>
+                For any questions, contact us at{" "}
+                <a href="mailto:support@theplugd.com" className="text-foreground hover:underline">
+                  support@theplugd.com
+                </a>
+                .
+              </span>
+            }
           />
 
         </div>
