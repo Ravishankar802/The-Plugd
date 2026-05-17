@@ -82,22 +82,17 @@ export default function HomeClient({
       </div>
 
       {/* LEGACY Section */}
-      <section className="w-full">
+      <section className="w-full px-4 mb-10">
         <Link 
           href="/legacy" 
-          className="block w-full bg-[#0a0a0a] border-t border-amber-500/30 hover:bg-[#111111] transition-all duration-500 py-32 px-6 group"
+          className="block w-full max-w-md mx-auto bg-[#22c55e] h-32 rounded-xl flex items-center justify-center hover:scale-105 transition-transform duration-300 shadow-xl"
         >
-          <div className="max-w-5xl mx-auto w-full flex flex-col items-center justify-center text-center">
-            <h2 
-              className="text-6xl md:text-8xl font-bold uppercase tracking-tight bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-600 bg-clip-text text-transparent mb-6 transition-all duration-500 group-hover:scale-[1.02]"
-              style={{ fontFamily: '"Times New Roman", Times, serif' }}
-            >
-              LEGACY
-            </h2>
-            <p className="text-white/60 italic text-lg md:text-2xl max-w-2xl transition-colors duration-500 group-hover:text-white/80">
-              The art of earning by sharing — a story as old as commerce itself.
-            </p>
-          </div>
+          <h2 
+            className="text-4xl md:text-5xl font-bold uppercase tracking-widest text-white"
+            style={{ fontFamily: '"Times New Roman", Times, serif' }}
+          >
+            LEGACY
+          </h2>
         </Link>
       </section>
 
