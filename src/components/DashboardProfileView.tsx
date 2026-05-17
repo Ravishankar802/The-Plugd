@@ -55,15 +55,14 @@ function DashboardProfileContent() {
 
   const referralLinkSuffix = promoterData?.username || promoterData?.referralCode || "";
   const link = `https://theplugd.com?ref=${referralLinkSuffix}`;
-  const totalEarnedStr = `${promoterData?.totalEarned || 0}`;
 
   const POST_VARIATIONS = [
-    `guys I've been sharing this link for a week and made $${totalEarnedStr} already. every time someone signs up through it I get $1. it's ${link} — join and you get your own link too`,
+    `guys I've been sharing this link for a week and already making money. every time someone signs up through it I get $1. it's ${link} — join and you get your own link too`,
     `not gonna lie I was skeptical but this actually works. share a link, someone joins, you get $1. been doing it in my groups. link — ${link}`,
     `if you're in a lot of WhatsApp groups or have decent followers anywhere, this is worth 2 minutes of your time. $1 per signup through your link — ${link}`
   ];
 
-  const dmTemplate = `hey [name], random but thought of you — there's this thing called Plugd, you share a referral link and get $1 every time someone joins. I've made $${totalEarnedStr} so far just dropping it in groups. here's mine if you want to check it out first: ${link}. if you join you get your own link`;
+  const dmTemplate = `hey [name], random but thought of you — there's this thing called Plugd, you share a referral link and get $1 every time someone joins. I've been doing it and already making money just dropping it in groups. here's mine if you want to check it out first: ${link}. if you join you get your own link`;
 
   // Determine active section from tab param
   const activeSection = ["profile", "referrals", "earnings"].includes(tab) ? tab : "profile";
