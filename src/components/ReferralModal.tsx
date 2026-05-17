@@ -114,8 +114,10 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
         .georgia-modal h2 {
           font-family: Georgia, serif !important;
         }
+        .georgia-modal .rich-number,
+        .georgia-modal span.rich-number,
         .rich-number {
-          font-family: 'Times New Roman', Times, serif !important;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
         }
       `}</style>
       {/* Backdrop */}
