@@ -13,6 +13,7 @@ function LoginContent() {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [loading, setLoading] = useState(false);
+  const [isRedirecting, setIsRedirecting] = useState(false);
   const [error, setError] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [resendTimer, setResendTimer] = useState(0);
@@ -75,6 +76,7 @@ function LoginContent() {
 
     setLoading(true);
     setError("");
+    let success = false;
 
     try {
       const res = await fetch("/api/auth/verify-otp", {
@@ -89,12 +91,18 @@ function LoginContent() {
         throw new Error(data.error || "Invalid or expired code");
       }
 
+      success = true;
+      setIsRedirecting(true);
       router.push("/vault");
       router.refresh();
     } catch (err: any) {
-      setError(err.message);
+      if (!success) {
+        setError(err.message);
+      }
     } finally {
-      setLoading(false);
+      if (!success) {
+        setLoading(false);
+      }
     }
   };
 
@@ -171,7 +179,7 @@ function LoginContent() {
               </div>
             )}
 
-            {error && (
+            {!isRedirecting && error && (
               <div className="bg-red-500/10 border border-red-500/20 text-red-500 text-sm py-3 px-4 rounded-lg mb-6 text-center flex items-center justify-center gap-2">
                 <AlertCircle className="w-4 h-4" />
                 {error}
@@ -230,10 +238,10 @@ function LoginContent() {
                   <button
                     id="verify-btn"
                     type="submit"
-                    disabled={loading || otp.some(d => !d)}
+                    disabled={loading || isRedirecting || otp.some(d => !d)}
                     className="w-full h-[54px] bg-selected text-selected-foreground rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:bg-selected/90 transition-all"
                   >
-                    {loading ? <Loader2 className="w-6 h-6 animate-spin" /> : "Verify Code"}
+                    {(loading || isRedirecting) ? <Loader2 className="w-6 h-6 animate-spin" /> : "Verify Code"}
                   </button>
 
                   <div className="text-center">
