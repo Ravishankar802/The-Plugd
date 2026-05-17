@@ -10,6 +10,7 @@ interface FooterProps {
   showBorder?: boolean;
   variant?: 'default' | 'white';
   minimal?: boolean;
+  isLogin?: boolean;
   onStartEarning?: () => void;
 }
 
@@ -17,6 +18,7 @@ export default function Footer({
   showBorder = true, 
   variant = 'default', 
   minimal = false,
+  isLogin = false,
   onStartEarning
 }: FooterProps) {
   const isWhite = variant === 'white';
@@ -152,7 +154,11 @@ export default function Footer({
           </div>
         ) : (
           <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative w-full">
-            {isDashboard ? (
+            {isLogin ? (
+              <div className={`flex flex-col md:flex-row items-center gap-4 md:gap-6 text-sm md:text-[0.9rem] ${textColor} font-medium w-full md:w-auto`}>
+                <Link href="/" className="transition-colors">Home</Link>
+              </div>
+            ) : isDashboard ? (
               <>
                 {/* Dashboard style: Centered Home */}
                 <div className={`md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] ${textColor} font-medium`}>

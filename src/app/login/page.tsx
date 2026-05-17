@@ -270,7 +270,7 @@ function LoginContent() {
       </div>
       
       <div className="w-full max-w-5xl mt-auto">
-        <Footer showBorder={false} />
+        <Footer showBorder={false} isLogin={true} />
       </div>
 
       <ReferralModal 
