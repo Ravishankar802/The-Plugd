@@ -115,7 +115,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
           font-family: Georgia, serif !important;
         }
         .rich-number {
-          font-family: 'EB Garamond', 'Times New Roman', serif !important;
+          font-family: 'Times New Roman', Times, serif !important;
         }
       `}</style>
       {/* Backdrop */}
