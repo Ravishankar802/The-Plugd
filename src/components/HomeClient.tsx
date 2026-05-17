@@ -116,8 +116,12 @@ export default function HomeClient({
         </Link>
       </section>
 
-      <div className="w-full max-w-2xl mx-auto mb-10 px-4 md:px-0 mt-10" style={{ fontFamily: 'Georgia, serif' }}>
-        <Footer showBorder={false} minimal={true} />
+      <div className="w-full mt-20">
+        <Footer 
+          showBorder={false} 
+          minimal={true} 
+          onStartEarning={() => setIsReferModalOpen(true)} 
+        />
       </div>
 
       <ReferralModal 

@@ -10,9 +10,15 @@ interface FooterProps {
   showBorder?: boolean;
   variant?: 'default' | 'white';
   minimal?: boolean;
+  onStartEarning?: () => void;
 }
 
-export default function Footer({ showBorder = true, variant = 'default', minimal = false }: FooterProps) {
+export default function Footer({ 
+  showBorder = true, 
+  variant = 'default', 
+  minimal = false,
+  onStartEarning
+}: FooterProps) {
   const isWhite = variant === 'white';
   const textColor = isWhite ? "text-white/80 hover:text-white" : "text-muted hover:text-foreground";
   const mutedTextColor = isWhite ? "text-white/40" : "text-muted/40";
@@ -46,15 +52,65 @@ export default function Footer({ showBorder = true, variant = 'default', minimal
   const CurrentIcon = currentThemeOption.icon;
 
   return (
-    <footer className={`${isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-border" : ""} ${minimal ? "border-t border-white/10 py-6" : ""}`}>
-      <div className="flex flex-col gap-6">
+    <footer className={`w-full ${isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-border" : ""} ${minimal ? "border-t border-white/10 py-12 max-w-5xl mx-auto px-6" : ""}`}>
+      <div className="flex flex-col gap-6 w-full">
         {minimal ? (
-          <>
-            {/* Row 1: Links and Toggle */}
-            <div className={`flex items-center justify-between w-full text-sm md:text-[0.9rem] ${textColor} font-medium`}>
-              <div className="flex items-center gap-6">
-                <Link href="/terms-of-service" className="transition-colors">Terms of Service</Link>
-                <Link href="/privacy" className="transition-colors">Privacy</Link>
+          <div className="w-full flex flex-col">
+            {/* Three Columns Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 w-full text-left">
+              {/* Column 1 */}
+              <div className="flex flex-col">
+                <span className="text-white font-semibold text-sm mb-4 font-sans">Plugd</span>
+                <div className="flex flex-col space-y-3 font-sans">
+                  <Link href="/legacy" className="text-white/50 text-sm hover:text-white transition-colors">
+                    Blog
+                  </Link>
+                  <Link href="/legacy" className="text-white/50 text-sm hover:text-white transition-colors">
+                    Legacy
+                  </Link>
+                </div>
+              </div>
+
+              {/* Column 2 */}
+              <div className="flex flex-col">
+                <span className="text-white font-semibold text-sm mb-4 font-sans">Account</span>
+                <div className="flex flex-col space-y-3 font-sans">
+                  <Link href="/dashboard" className="text-white/50 text-sm hover:text-white transition-colors">
+                    Vault
+                  </Link>
+                  {onStartEarning ? (
+                    <button 
+                      onClick={onStartEarning} 
+                      className="text-white/50 text-sm hover:text-white transition-colors text-left font-sans"
+                    >
+                      Start Earning
+                    </button>
+                  ) : (
+                    <Link href="/dashboard" className="text-white/50 text-sm hover:text-white transition-colors">
+                      Start Earning
+                    </Link>
+                  )}
+                </div>
+              </div>
+
+              {/* Column 3 */}
+              <div className="flex flex-col">
+                <span className="text-white font-semibold text-sm mb-4 font-sans">Support</span>
+                <div className="flex flex-col space-y-3 font-sans">
+                  <a href="mailto:support@theplugd.com" className="text-white/50 text-sm hover:text-white transition-colors">
+                    Support
+                  </a>
+                  <Link href="/terms-of-service" className="text-white/50 text-sm hover:text-white transition-colors">
+                    Terms of Service
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Row */}
+            <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 w-full">
+              <div className="text-white/30 text-xs font-sans">
+                © 2026 Plugd · Made for hustlers
               </div>
               
               {hasMounted && (
@@ -93,14 +149,9 @@ export default function Footer({ showBorder = true, variant = 'default', minimal
                 </div>
               )}
             </div>
-
-            {/* Row 2: Copyright */}
-            <div className={`text-xs md:text-sm ${mutedTextColor} font-medium`}>
-              © 2026 Plugd · Made for hustlers
-            </div>
-          </>
+          </div>
         ) : (
-          <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative">
+          <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative w-full">
             {isDashboard ? (
               <>
                 {/* Dashboard style: Centered Home */}
