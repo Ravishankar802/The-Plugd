@@ -141,6 +141,12 @@ function LoginContent() {
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center py-8 px-4 relative">
+      <Link 
+        href="/" 
+        className="fixed top-6 left-6 z-50 text-white/50 hover:text-white text-sm font-mono transition-colors"
+      >
+        &larr; Back
+      </Link>
       <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500 -mt-12">
         <div className="bg-pill border border-border rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
           <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-selected/10 rounded-full blur-3xl" />
@@ -269,8 +275,8 @@ function LoginContent() {
         </div>
       </div>
       
-      <div className="fixed bottom-8 left-0 right-0 px-8 flex items-center justify-between">
-        <Footer showBorder={false} isLogin={true} />
+      <div className="fixed bottom-8 right-8 z-50">
+        <Footer toggleOnly={true} />
       </div>
 
       <ReferralModal 

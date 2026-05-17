@@ -11,6 +11,7 @@ interface FooterProps {
   variant?: 'default' | 'white';
   minimal?: boolean;
   isLogin?: boolean;
+  toggleOnly?: boolean;
   onStartEarning?: () => void;
 }
 
@@ -19,6 +20,7 @@ export default function Footer({
   variant = 'default', 
   minimal = false,
   isLogin = false,
+  toggleOnly = false,
   onStartEarning
 }: FooterProps) {
   const isWhite = variant === 'white';
@@ -52,6 +54,45 @@ export default function Footer({
 
   const currentThemeOption = themeOptions.find(opt => opt.name === theme) || themeOptions[2];
   const CurrentIcon = currentThemeOption.icon;
+  
+  if (toggleOnly) {
+    if (!hasMounted) return null;
+    return (
+      <div className="relative" ref={dropdownRef}>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          suppressHydrationWarning
+          className={`flex items-center gap-2 ${isWhite ? "bg-white/10 hover:bg-white/20 border-white/20" : "bg-pill border-border hover:bg-accent"} px-3.5 py-1.5 rounded-2xl text-[0.9rem] ${isWhite ? "text-white" : "text-muted"} transition-colors`}
+        >
+          <div className="flex items-center gap-2">
+            <CurrentIcon className="w-4 h-4" />
+            <span className="font-medium capitalize">{theme === "system" ? "System" : theme}</span>
+          </div>
+          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+        </button>
+
+        {isOpen && (
+          <div className="absolute bottom-full right-0 mb-2 w-32 bg-card border border-border rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-2">
+            {themeOptions.map((item) => (
+              <button
+                key={item.name}
+                onClick={() => {
+                  setTheme(item.name);
+                  setIsOpen(false);
+                }}
+                className={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors rounded-lg text-left ${
+                  theme === item.name ? "bg-accent text-foreground" : "text-muted hover:bg-accent/50 hover:text-foreground"
+                }`}
+              >
+                <item.icon className="w-4 h-4 shrink-0" />
+                <span className="font-medium">{item.label}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <footer className={`w-full ${isLogin ? "py-0" : isDashboard ? "py-8" : "py-20"} ${showBorder ? "border-t border-border" : ""} ${minimal ? "border-t border-white/10 pt-16 pb-12 max-w-5xl mx-auto px-6" : ""}`}>
