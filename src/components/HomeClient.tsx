@@ -85,7 +85,8 @@ export default function HomeClient({
       <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-10">
         <Link 
           href="/legacy" 
-          className="block w-full bg-[#22c55e] h-96 rounded-xl flex items-center justify-center hover:scale-[1.02] transition-transform duration-300 shadow-xl"
+          className="block w-full h-96 rounded-xl flex items-center justify-center hover:scale-[1.02] transition-transform duration-300 shadow-xl"
+          style={{ background: 'linear-gradient(135deg, #166534 0%, #22c55e 35%, #f59e0b 70%, #3d6b2e 100%)' }}
         >
           <h2 
             className="text-5xl md:text-7xl font-bold uppercase tracking-widest text-white"
