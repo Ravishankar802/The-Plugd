@@ -280,7 +280,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                   />
                   {username && usernameMessage && (
                     <p className={`text-xs mt-1 font-sans font-bold ${usernameStatus === 'available' ? 'text-[#16a34a]' : 'text-red-400'}`}>
-                      {usernameStatus === 'available' ? '✓ ' : '✗ '}{usernameMessage}
+                      {usernameMessage}
                     </p>
                   )}
                 </div>
