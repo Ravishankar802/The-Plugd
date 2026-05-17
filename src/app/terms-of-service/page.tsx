@@ -86,7 +86,7 @@ export default function TermsOfService() {
 
           <Section 
             title="9. Limitation of Liability" 
-            content="Plugd is provided on an \"as is\" basis. We are not liable for any indirect, incidental, or consequential damages arising from your use of the platform." 
+            content='Plugd is provided on an "as is" basis. We are not liable for any indirect, incidental, or consequential damages arising from your use of the platform.' 
           />
 
           <Section 
