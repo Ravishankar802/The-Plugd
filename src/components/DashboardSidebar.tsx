@@ -32,29 +32,29 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
     { 
       name: "Profile", 
       id: "profile",
-      href: "/dashboard?tab=profile", 
+      href: "/vault?tab=profile", 
       icon: User, 
       show: true,
       locked: false,
-      upgradeHref: "/dashboard?tab=profile"
+      upgradeHref: "/vault?tab=profile"
     },
     { 
       name: "Referrals", 
       id: "referrals",
-      href: "/dashboard?tab=referrals", 
+      href: "/vault?tab=referrals", 
       icon: UserPlus, 
       show: hasPromoter || isAdmin,
       locked: !hasPromoter && !isAdmin,
-      upgradeHref: "/dashboard?tab=referrals"
+      upgradeHref: "/vault?tab=referrals"
     },
     { 
       name: "Earnings", 
       id: "earnings",
-      href: "/dashboard?tab=earnings", 
+      href: "/vault?tab=earnings", 
       icon: Wallet, 
       show: hasPromoter || isAdmin,
       locked: !hasPromoter && !isAdmin,
-      upgradeHref: "/dashboard?tab=earnings"
+      upgradeHref: "/vault?tab=earnings"
     },
   ];
 

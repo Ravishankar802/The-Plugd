@@ -45,7 +45,7 @@ export default function HomeClient({
 
   const handleJoinReferral = () => {
     setIsReferModalOpen(false);
-    router.push("/dashboard?tab=referrals");
+    router.push("/vault?tab=referrals");
   };
 
   return (
@@ -73,7 +73,7 @@ export default function HomeClient({
                   Start Earning
                 </button>
                 <Link
-                  href="/dashboard"
+                  href="/vault"
                   className="bg-selected border border-selected text-selected-foreground flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
                   style={{ 
                     fontFamily: 'var(--font-eb-garamond), serif', 

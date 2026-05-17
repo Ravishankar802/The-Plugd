@@ -18,7 +18,7 @@ export default async function AdminLayout({
   const isAdmin = session.email.toLowerCase() === adminEmail.toLowerCase();
   
   if (!isAdmin) {
-    redirect("/dashboard");
+    redirect("/vault");
   }
 
   return (

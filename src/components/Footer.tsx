@@ -27,7 +27,7 @@ export default function Footer({
   const [hasMounted, setHasMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-  const isDashboard = pathname?.startsWith("/dashboard") || pathname?.startsWith("/admin");
+  const isDashboard = pathname?.startsWith("/vault") || pathname?.startsWith("/admin");
 
   useEffect(() => {
     setHasMounted(true);
@@ -75,7 +75,7 @@ export default function Footer({
               <div className="flex flex-col">
                 <span className="text-white font-semibold text-sm mb-4 font-sans">Account</span>
                 <div className="flex flex-col space-y-3 font-sans">
-                  <Link href="/dashboard" className="text-white/50 text-sm hover:text-white transition-colors">
+                  <Link href="/vault" className="text-white/50 text-sm hover:text-white transition-colors">
                     Vault
                   </Link>
                   {onStartEarning ? (
@@ -86,7 +86,7 @@ export default function Footer({
                       Start Earning
                     </button>
                   ) : (
-                    <Link href="/dashboard" className="text-white/50 text-sm hover:text-white transition-colors">
+                    <Link href="/vault" className="text-white/50 text-sm hover:text-white transition-colors">
                       Start Earning
                     </Link>
                   )}
@@ -166,13 +166,13 @@ export default function Footer({
                 <div className="md:hidden flex items-center justify-center gap-2 whitespace-nowrap">
                   <Link href="/" className="transition-colors">Home</Link>
                   <span className={mutedTextColor}>·</span>
-                  <Link href="/dashboard" className="transition-colors">Dashboard</Link>
+                  <Link href="/vault" className="transition-colors">Dashboard</Link>
                   <span className={mutedTextColor}>·</span>
                   <Link href="/terms-of-service" className="transition-colors">Terms</Link>
                 </div>
                 <div className="hidden md:flex items-center gap-6">
                   <Link href="/" className="transition-colors">Home</Link>
-                  <Link href="/dashboard" className="transition-colors">Dashboard</Link>
+                  <Link href="/vault" className="transition-colors">Dashboard</Link>
                   <Link href="/terms-of-service" className="transition-colors">Terms of Service</Link>
                 </div>
               </div>
