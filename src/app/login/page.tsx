@@ -142,22 +142,14 @@ function LoginContent() {
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center py-8 px-4 relative">
-      <Link 
-        href="/" 
-        className="fixed top-6 left-6 z-50 text-white/50 hover:text-white text-sm font-mono transition-colors"
-      >
-        &larr; Back
+      <Link href="/" className="fixed top-4 left-6 z-50 hover:opacity-80 transition-opacity">
+        <Image src="/logo.png" alt="Plugd" width={80} height={80} className="cursor-pointer" />
       </Link>
       <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500 -mt-12">
         <div className="bg-pill border border-border rounded-2xl p-8 shadow-2xl relative overflow-hidden group font-['Georgia',_serif]">
           <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-selected/10 rounded-full blur-3xl" />
           
           <div className="relative z-10">
-            <div className="flex justify-center mb-6">
-              <Link href="/" className="hover:opacity-80 transition-opacity group">
-                <Image src="/logo.png" alt="Plugd" width={44} height={44} />
-              </Link>
-            </div>
             <h1 className="text-3xl font-bold text-center mb-2 text-foreground tracking-tight">
               {step === 1 ? "Login to Plugd" : "Check Your Email"}
             </h1>

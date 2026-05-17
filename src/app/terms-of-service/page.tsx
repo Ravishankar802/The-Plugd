@@ -5,9 +5,12 @@ import Footer from "@/components/Footer";
 export default function TermsOfService() {
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-foreground/10 flex flex-col font-['Georgia',_serif]">
+      <Link href="/" className="fixed top-4 left-6 z-50 hover:opacity-80 transition-opacity">
+        <Image src="/logo.png" alt="Plugd" width={80} height={80} className="cursor-pointer" />
+      </Link>
       <Link 
         href="/" 
-        className="fixed top-6 left-6 z-50 text-white/50 hover:text-white text-sm font-mono transition-colors"
+        className="fixed top-[110px] left-6 z-50 text-white/50 hover:text-white text-sm font-mono transition-colors"
       >
         &larr; Back
       </Link>
@@ -15,9 +18,6 @@ export default function TermsOfService() {
         
         {/* Page Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <Link href="/" className="mb-8 hover:opacity-80 transition-opacity">
-            <Image src="/logo.png" alt="Plugd" width={44} height={44} />
-          </Link>
           <h1 className="text-[2.5rem] font-bold tracking-tight mb-2 text-foreground">Terms of Service</h1>
           <p className="text-muted text-[1rem] font-medium tracking-tight">Last updated: May 17, 2026</p>
         </div>
