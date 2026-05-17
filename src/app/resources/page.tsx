@@ -53,7 +53,7 @@ export const articles: Article[] = [
   },
   {
     slug: "realistic-earnings",
-    image: "https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=800&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=800&q=80",
     category: "MONEY",
     title: "How Much Can You Realistically Earn",
     description: "Honest math, real scenarios. What 10 referrals looks like, what 100 looks like, and what it takes to get there."
