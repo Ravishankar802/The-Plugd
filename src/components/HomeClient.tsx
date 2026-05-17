@@ -58,14 +58,14 @@ export default function HomeClient({
 
             <section className="mb-0">
               <div className="flex flex-col md:flex-row gap-4 mb-6 items-center justify-center">
-                <button
+                 <button
                   onClick={() => setIsReferModalOpen(true)}
                   suppressHydrationWarning
                   className="h-[48px] w-full md:w-auto bg-[#16a34a] border border-[#16a34a] text-black dark:text-white font-[700] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg cursor-pointer"
                   style={{ fontFamily: 'var(--font-eb-garamond), serif' }}
                 >
                   <TrendingUp className="w-5 h-5" />
-                  Refer & Earn
+                  Start Earning
                 </button>
                 <Link
                   href="/dashboard"
@@ -73,7 +73,7 @@ export default function HomeClient({
                   style={{ fontFamily: 'var(--font-eb-garamond), serif' }}
                 >
                   <LayoutDashboard className="w-5 h-5" />
-                  Dashboard
+                  Vault
                 </Link>
               </div>
             </section>
