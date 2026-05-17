@@ -61,14 +61,14 @@ export default function HomeClient({
                  <button
                   onClick={() => setIsReferModalOpen(true)}
                   suppressHydrationWarning
-                  className="h-[48px] w-full md:w-auto bg-[#16a34a] border border-[#16a34a] text-black dark:text-white font-[700] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg cursor-pointer"
+                  className="w-full md:w-auto bg-[#16a34a] border border-[#16a34a] text-black dark:text-white text-base font-semibold px-8 py-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg cursor-pointer"
                   style={{ fontFamily: 'var(--font-eb-garamond), serif', minWidth: '180px' }}
                 >
                   Start Earning
                 </button>
                 <Link
                   href="/dashboard"
-                  className="h-[48px] w-full md:w-auto bg-selected border border-selected text-selected-foreground font-[600] px-6 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
+                  className="w-full md:w-auto bg-selected border border-selected text-selected-foreground text-base font-semibold px-8 py-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
                   style={{ fontFamily: 'var(--font-eb-garamond), serif', minWidth: '180px' }}
                 >
                   Vault
