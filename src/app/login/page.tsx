@@ -269,7 +269,7 @@ function LoginContent() {
         </div>
       </div>
       
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-5xl px-4">
+      <div className="fixed bottom-0 left-0 right-0 px-6 pb-4">
         <Footer showBorder={false} isLogin={true} />
       </div>
 
