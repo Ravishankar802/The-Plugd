@@ -102,6 +102,19 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-hidden">
+      <style>{`
+        .georgia-modal,
+        .georgia-modal input,
+        .georgia-modal button,
+        .georgia-modal select,
+        .georgia-modal textarea,
+        .georgia-modal label,
+        .georgia-modal span,
+        .georgia-modal p,
+        .georgia-modal h2 {
+          font-family: Georgia, serif !important;
+        }
+      `}</style>
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/60 backdrop-blur-md animate-in fade-in duration-300" 
@@ -110,7 +123,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       
       {/* Modal Container */}
       <div 
-        className="relative w-full max-w-xl bg-pill border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300 max-h-[90vh]"
+        className="relative w-full max-w-xl bg-pill border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300 max-h-[90vh] georgia-modal"
       >
         
         {/* Close Button */}
