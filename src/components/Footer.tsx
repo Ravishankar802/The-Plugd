@@ -62,8 +62,8 @@ export default function Footer({
               <div className="flex flex-col">
                 <span className="text-white font-semibold text-sm mb-4 font-sans">Plugd</span>
                 <div className="flex flex-col space-y-3 font-sans">
-                  <Link href="/legacy" className="text-white/50 text-sm hover:text-white transition-colors">
-                    Blog
+                  <Link href="/resources" className="text-white/50 text-sm hover:text-white transition-colors">
+                    Resources
                   </Link>
                   <Link href="/legacy" className="text-white/50 text-sm hover:text-white transition-colors">
                     Legacy
