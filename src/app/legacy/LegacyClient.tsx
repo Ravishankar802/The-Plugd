@@ -92,7 +92,7 @@ export default function LegacyClient() {
             LEGACY
           </h1>
           <div className="anim-fadeup delay-2 w-[80px] h-[1px] bg-[#d97706] mx-auto mt-10 mb-8"></div>
-          <p className="anim-fadeup delay-3 text-white/40 text-xl italic font-serif-custom max-w-xl mx-auto px-4">
+          <p className="anim-fadeup delay-3 text-white/40 text-xl italic font-serif-custom max-w-none w-full px-4 whitespace-nowrap">
             The art of earning by sharing. A story as old as commerce itself.
           </p>
           
