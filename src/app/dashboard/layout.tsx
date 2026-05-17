@@ -45,7 +45,7 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen bg-background flex" style={{ fontFamily: 'var(--font-eb-garamond), serif' }}>
       <Suspense fallback={<div className="hidden md:flex w-[320px] bg-background border-r border-border h-screen fixed left-0 top-0 z-30" />}>
         <DashboardSidebar 
           email={email} 

@@ -143,7 +143,7 @@ function DashboardProfileContent() {
           {(hasPromoter || isAdmin) && promoterData && (
             <div className="mt-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
               <div className="mb-8">
-                <h2 className="text-[2rem] font-[700] text-foreground leading-tight tracking-tight">Promoter Profile</h2>
+                <h2 className="text-[2rem] font-[700] text-foreground leading-tight tracking-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Your Profile</h2>
                 <p className="text-muted text-[1rem] mt-1.5 font-normal">Your referral identity and payout details.</p>
               </div>
 
