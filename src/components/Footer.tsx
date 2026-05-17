@@ -60,11 +60,11 @@ export default function Footer({
   if (toggleOnly) {
     if (!hasMounted) return null;
     return (
-      <div className="relative" ref={dropdownRef}>
+      <div className={`relative ${isLogin ? "font-['Georgia',_serif]" : ""}`} ref={dropdownRef}>
         <button
           onClick={() => setIsOpen(!isOpen)}
           suppressHydrationWarning
-          className={`flex items-center gap-2 ${isWhite ? "bg-white/10 hover:bg-white/20 border-white/20" : "bg-pill border-border hover:bg-accent"} px-3.5 py-1.5 rounded-2xl text-[0.9rem] ${isWhite ? "text-white" : "text-muted"} transition-colors`}
+          className={`flex items-center gap-2 ${isWhite ? "bg-white/10 hover:bg-white/20 border-white/20" : "bg-pill border-border hover:bg-accent"} px-3.5 py-1.5 rounded-2xl text-[0.9rem] ${isWhite ? "text-white" : "text-muted"} transition-colors ${isLogin ? "font-['Georgia',_serif]" : ""}`}
         >
           <div className="flex items-center gap-2">
             <CurrentIcon className="w-4 h-4" />
@@ -84,7 +84,7 @@ export default function Footer({
                 }}
                 className={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors rounded-lg text-left ${
                   theme === item.name ? "bg-accent text-foreground" : "text-muted hover:bg-accent/50 hover:text-foreground"
-                }`}
+                } ${isLogin ? "font-['Georgia',_serif]" : ""}`}
               >
                 <item.icon className="w-4 h-4 shrink-0" />
                 <span className="font-medium">{item.label}</span>

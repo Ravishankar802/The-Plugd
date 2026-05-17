@@ -263,7 +263,7 @@ function LoginContent() {
       </div>
       
       <div className="fixed bottom-8 right-8 z-50">
-        <Footer toggleOnly={true} />
+        <Footer toggleOnly={true} isLogin={true} />
       </div>
 
       <ReferralModal 
