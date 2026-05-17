@@ -46,8 +46,13 @@
   --animate-shimmer: shimmer 2s infinite;
 
   @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
   }
 }
 
@@ -110,8 +115,10 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .mask-fade-right {
@@ -119,11 +126,25 @@ body {
 }
 
 @keyframes wave {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(-20deg); }
-  50% { transform: rotate(20deg); }
-  75% { transform: rotate(-20deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-20deg);
+  }
+
+  50% {
+    transform: rotate(20deg);
+  }
+
+  75% {
+    transform: rotate(-20deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .wave {
@@ -134,8 +155,19 @@ body {
 }
 
 @keyframes signal-flow {
-  0%, 100% { opacity: 0.4; stroke-width: 0.8; filter: none; }
-  50% { opacity: 0.8; stroke-width: 1.2; filter: drop-shadow(0 0 1px #16a34a); }
+
+  0%,
+  100% {
+    opacity: 0.4;
+    stroke-width: 0.8;
+    filter: none;
+  }
+
+  50% {
+    opacity: 0.8;
+    stroke-width: 1.2;
+    filter: drop-shadow(0 0 1px #16a34a);
+  }
 }
 
 .signal-line {
@@ -162,9 +194,20 @@ body {
 }
 
 @keyframes pulse {
-  0% { transform: scale(0.95); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.8; }
-  100% { transform: scale(0.95); opacity: 1; }
+  0% {
+    transform: scale(0.95);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(0.95);
+    opacity: 1;
+  }
 }
 
 .pulse {
@@ -172,8 +215,13 @@ body {
 }
 
 @keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .ticker-content {

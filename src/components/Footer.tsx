@@ -156,7 +156,7 @@ export default function Footer({
               {/* Bottom Row */}
               <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 w-full">
                 <div className="text-black/30 dark:text-white/30 text-xs">
-                  © 2026 Plugd · Made for hustlers
+                  © 2026 Plugd
                 </div>
                 
                 {hasMounted && (
