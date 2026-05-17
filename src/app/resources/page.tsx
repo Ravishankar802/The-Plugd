@@ -6,7 +6,6 @@ interface Article {
   category: string;
   title: string;
   description: string;
-  readTime: string;
 }
 
 export const articles: Article[] = [
@@ -15,56 +14,49 @@ export const articles: Article[] = [
     image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&q=80&auto=format&fit=crop",
     category: "GETTING STARTED",
     title: "How Plugd Works",
-    description: "The full breakdown — pay once, share your link, earn for every person who joins. Simple as that.",
-    readTime: "3 MIN READ"
+    description: "The full breakdown: pay once, share your link, and earn for every person who joins. Simple as that."
   },
   {
     slug: "how-to-share-your-link",
     image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&q=80&auto=format&fit=crop",
     category: "GETTING STARTED",
     title: "How to Share Your Link",
-    description: "The best platforms, the best messages, and what actually gets people to click and join.",
-    readTime: "4 MIN READ"
+    description: "The best platforms, the best messages, and what actually gets people to click and join."
   },
   {
     slug: "first-10-referrals",
     image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&auto=format&fit=crop",
     category: "STRATEGY",
     title: "How to Get Your First 10 Referrals",
-    description: "A practical, no-fluff playbook for getting your first 10 people in — even if you think you have no audience.",
-    readTime: "5 MIN READ"
+    description: "A practical, no-fluff playbook for getting your first 10 people in, even if you think you have no audience."
   },
   {
     slug: "best-platforms",
-    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=800&q=80&auto=format&fit=crop",
     category: "STRATEGY",
     title: "Which Platforms Convert Best",
-    description: "WhatsApp, Instagram, Twitter, Reddit — ranked by how well referral links actually convert on each one.",
-    readTime: "4 MIN READ"
+    description: "WhatsApp, Instagram, X, Reddit — ranked by how well referral links actually convert on each one."
   },
   {
     slug: "writing-your-message",
     image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80&auto=format&fit=crop",
     category: "STRATEGY",
     title: "How to Write a Message That Gets People to Join",
-    description: "The difference between a link that gets ignored and one that converts is the three sentences around it.",
-    readTime: "4 MIN READ"
+    description: "The difference between a link that gets ignored and one that converts is the three sentences around it."
   },
   {
     slug: "how-payouts-work",
     image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80&auto=format&fit=crop",
     category: "MONEY",
     title: "How Payouts Work",
-    description: "When you get paid, how you get paid, minimums, processing times — everything about getting your money out.",
-    readTime: "3 MIN READ"
+    description: "When you get paid, how you get paid, minimums, processing times, and everything about getting your money out."
   },
   {
     slug: "realistic-earnings",
     image: "https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=800&q=80&auto=format&fit=crop",
     category: "MONEY",
     title: "How Much Can You Realistically Earn",
-    description: "Honest math, real scenarios. What 10 referrals looks like, what 100 looks like, and what it takes to get there.",
-    readTime: "5 MIN READ"
+    description: "Honest math, real scenarios. What 10 referrals looks like, what 100 looks like, and what it takes to get there."
   }
 ];
 
@@ -112,11 +104,6 @@ export default function ResourcesPage() {
                   <p className="text-white/40 text-sm leading-6 font-sans">
                     {article.description}
                   </p>
-                </div>
-                
-                {/* Read time */}
-                <div className="text-white/20 text-xs mt-auto pt-4 font-mono">
-                  {article.readTime}
                 </div>
               </div>
             </Link>
