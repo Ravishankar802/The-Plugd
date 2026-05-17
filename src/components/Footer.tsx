@@ -98,8 +98,8 @@ export default function Footer({
 
   return (
     <div className="w-full bg-white dark:bg-[#0a0a0a] transition-colors">
-      <footer className={`w-full ${isLogin ? "py-0" : isDashboard ? "py-8" : minimal ? "pt-16 pb-0" : "py-20"} ${showBorder ? "border-t border-border" : ""}`}>
-        <div className={`w-full px-6 ${minimal ? "border-t border-border pt-16 pb-6 max-w-5xl mx-auto" : ""} ${isLogin ? "" : "flex flex-col gap-6"}`}>
+      <footer className={`${isLogin ? "py-0" : isDashboard ? "py-8" : minimal ? "w-full max-w-5xl mx-auto px-6 border-t border-border pt-16 pb-6" : "w-full py-20"} ${showBorder && !minimal ? "border-t border-border" : ""}`}>
+        <div className={`w-full ${minimal ? "" : "px-6"} ${isLogin ? "" : "flex flex-col gap-6"}`}>
           {minimal ? (
             <div className="w-full flex flex-col font-['Georgia',_serif]">
               {/* Three Columns Grid */}
