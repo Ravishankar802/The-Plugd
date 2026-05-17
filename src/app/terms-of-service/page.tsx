@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Footer from "@/components/Footer";
 
 export default function TermsOfService() {
@@ -14,23 +15,8 @@ export default function TermsOfService() {
         
         {/* Page Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <Link href="/" className="flex items-center gap-4 mb-8 hover:opacity-80 transition-opacity">
-            <div className="w-10 h-10">
-              <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#16a34a] stroke-[1.5]">
-                <line x1="20" y1="20" x2="8" y2="8" className="opacity-60" />
-                <line x1="20" y1="20" x2="32" y2="8" className="opacity-60" />
-                <line x1="20" y1="20" x2="37" y2="25" className="opacity-60" />
-                <line x1="20" y1="20" x2="25" y2="37" className="opacity-60" />
-                <line x1="20" y1="20" x2="3" y2="28" className="opacity-60" />
-                <circle cx="20" cy="20" r="5" className="fill-[#16a34a] stroke-none" />
-                <circle cx="8" cy="8" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
-                <circle cx="32" cy="8" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
-                <circle cx="37" cy="25" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
-                <circle cx="25" cy="37" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
-                <circle cx="3" cy="28" r="2.5" className="fill-[#16a34a] stroke-none opacity-90" />
-              </svg>
-            </div>
-            <span className="text-3xl font-[800] tracking-[-0.02em] text-[#52525b]">Plugd</span>
+          <Link href="/" className="mb-8 hover:opacity-80 transition-opacity">
+            <Image src="/logo.png" alt="Plugd" width={44} height={44} />
           </Link>
           <h1 className="text-[2.5rem] font-bold tracking-tight mb-2 text-foreground">Terms of Service</h1>
           <p className="text-muted text-[1rem] font-medium tracking-tight">Last updated: May 17, 2026</p>
