@@ -140,8 +140,8 @@ function LoginContent() {
   };
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center py-20 px-4">
-      <Link href="/" className="flex items-center gap-4 mb-12 hover:opacity-80 transition-opacity group">
+    <div className="flex-1 flex flex-col items-center justify-center py-8 px-4">
+      <Link href="/" className="flex items-center gap-4 mb-6 hover:opacity-80 transition-opacity group">
         <div className="relative w-10 h-10 flex items-center justify-center">
           <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-[#16a34a] stroke-[1.5]">
             <line x1="20" y1="20" x2="8" y2="8" className="opacity-60" />
@@ -160,7 +160,7 @@ function LoginContent() {
         <span className="text-3xl font-[800] tracking-[-0.02em] text-foreground transition-all">Plugd</span>
       </Link>
 
-      <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500 mb-12">
+      <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500 mb-6">
         <div className="bg-pill border border-border rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
           <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-selected/10 rounded-full blur-3xl" />
           
@@ -289,7 +289,7 @@ export default function LoginPage() {
         <Loader2 className="w-10 h-10 animate-spin text-selected" />
       </div>
     }>
-      <div className="min-h-screen flex flex-col bg-background">
+      <div className="min-h-screen h-screen flex flex-col bg-background overflow-hidden">
         <LoginContent />
       </div>
     </Suspense>

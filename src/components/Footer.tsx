@@ -155,9 +155,13 @@ export default function Footer({
         ) : (
           <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-6 relative w-full">
             {isLogin ? (
-              <div className={`flex flex-col md:flex-row items-center gap-4 md:gap-6 text-sm md:text-[0.9rem] ${textColor} font-medium w-full md:w-auto`}>
-                <Link href="/" className="transition-colors">Home</Link>
-              </div>
+              <>
+                {/* Login style: Centered Home */}
+                <div className={`md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center gap-6 text-[0.9rem] ${textColor} font-medium`}>
+                  <Link href="/" className="transition-colors">Home</Link>
+                </div>
+                <div className="hidden md:block flex-1" />
+              </>
             ) : isDashboard ? (
               <>
                 {/* Dashboard style: Centered Home */}
