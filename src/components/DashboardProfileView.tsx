@@ -561,6 +561,10 @@ function DashboardProfileContent() {
                             </div>
                           )}
 
+                          <p className="text-[0.75rem] text-amber-500/80 font-medium mt-1">
+                            Make sure your details are correct. Incorrect details may delay your payout.
+                          </p>
+
                           <div className="flex items-center gap-3">
                             <input
                               id="useBankTransfer"
@@ -609,6 +613,9 @@ function DashboardProfileContent() {
                                   />
                                 </div>
                               ))}
+                              <p className="text-[0.75rem] text-amber-500/80 font-medium mt-1">
+                                Make sure your details are correct. Incorrect details may delay your payout.
+                              </p>
                             </div>
                           ) : (
                             <div className="flex flex-col gap-3">
