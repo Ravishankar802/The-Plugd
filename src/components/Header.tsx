@@ -13,7 +13,7 @@ export default function Header() {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite] pointer-events-none" />
           
           <div className="flex items-center gap-2 relative z-10">
-            <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Average pay</span>
+            <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Average earning</span>
             <span className="text-[0.75rem] font-bold text-foreground">$140/Day</span>
           </div>
           
