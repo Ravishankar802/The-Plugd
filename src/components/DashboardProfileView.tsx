@@ -561,7 +561,7 @@ function DashboardProfileContent() {
                           )}
 
                           <p className="text-[0.75rem] text-amber-500/80 font-medium mt-1">
-                            Make sure your details are correct. Incorrect details may delay your payout.
+                            Make sure your details are correct. Incorrect details may prevent your payout.
                           </p>
 
                           <div className="flex items-center gap-3">
@@ -613,7 +613,7 @@ function DashboardProfileContent() {
                                 </div>
                               ))}
                               <p className="text-[0.75rem] text-amber-500/80 font-medium mt-1">
-                                Make sure your details are correct. Incorrect details may delay your payout.
+                                Make sure your details are correct. Incorrect details may prevent your payout.
                               </p>
                             </div>
                           ) : (
