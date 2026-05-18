@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
@@ -52,44 +54,24 @@ export async function POST(req: Request) {
     });
 
     // Check Env Vars
-    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-      console.error("[AUTH] Missing Gmail configuration env vars");
+    if (!process.env.RESEND_API_KEY) {
+      console.error("[AUTH] Missing Resend API key");
       return NextResponse.json(
         { error: "Internal server error: Email service not configured" },
         { status: 500 }
       );
     }
 
-    // Send email
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD
-      },
-      // Adding extra config for stability
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
-    });
-
     try {
-      await transporter.sendMail({
-        from: `"Plugd" <${process.env.GMAIL_USER}>`,
+      await resend.emails.send({
+        from: "Plugd <noreply@theplugd.com>",
         to: email,
-        subject: 'Your Plugd login code',
-        html: `
-          <div style="font-family: sans-serif; max-width: 400px; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-            <h2 style="color: #333;">Your Plugd login code</h2>
-            <p style="font-size: 36px; font-weight: bold; letter-spacing: 8px; color: #16a34a; margin: 20px 0;">${code}</p>
-            <p style="color: #666;">This code expires in 5 minutes.</p>
-            <p style="color: #999; font-size: 12px; margin-top: 30px;">If you didn't request this, you can safely ignore this email.</p>
-          </div>
-        `
+        subject: "Your Plugd login code",
+        html: `<p>Your login code is <strong>${code}</strong>. It expires in 10 minutes.</p>`,
       });
-      console.log(`[AUTH] OTP sent successfully to: ${email}`);
+      console.log(`[AUTH] OTP sent successfully via Resend to: ${email}`);
     } catch (mailError) {
-      console.error("[AUTH] Nodemailer error:", mailError);
+      console.error("[AUTH] Resend error:", mailError);
       return NextResponse.json(
         { error: "Internal server error: Failed to send email" },
         { status: 500 }
