@@ -27,6 +27,7 @@ import {
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
+import { getFieldsForCountry } from "@/lib/payoutFieldsByCountry";
 
 
 import ReferralModal from "@/components/ReferralModal";
@@ -81,7 +82,7 @@ function DashboardProfileContent() {
           setHasPendingWithdrawal(data.hasPendingWithdrawal || false);
           if (data.promoterData) {
             setUseBankTransfer(!!data.promoterData.bankAccountNumber);
-            setUsePaypal(!!data.promoterData.paypalEmail && !data.promoterData.intlBankAccountNumber);
+            setUsePaypal(!!data.promoterData.paypalEmail && !data.promoterData.intlAccountNumber && !data.promoterData.intlIban);
           }
         } else {
           router.push("/login");
@@ -195,9 +196,15 @@ function DashboardProfileContent() {
           : promoterData.upiId;
       } else if (promoterData.payoutRegion === "INTERNATIONAL") {
         derivedMethod = usePaypal ? "PayPal" : "Bank";
-        derivedDetails = usePaypal 
-          ? promoterData.paypalEmail 
-          : `${promoterData.intlBankAccountName || ""} | ${promoterData.intlBankAccountNumber || ""} | ${promoterData.intlSwiftBic || ""} | ${promoterData.intlBankCountry || ""}`;
+        if (usePaypal) {
+          derivedDetails = promoterData.paypalEmail;
+        } else {
+          const fields = getFieldsForCountry(promoterData.intlBankCountry || "");
+          derivedDetails = fields
+            .map(f => promoterData[f.key] || "")
+            .filter(Boolean)
+            .join(" | ");
+        }
       }
 
       const res = await fetch("/api/promoters/me", {
@@ -214,9 +221,15 @@ function DashboardProfileContent() {
           bankAccountName: promoterData.bankAccountName,
           bankAccountNumber: promoterData.bankAccountNumber,
           bankIfsc: promoterData.bankIfsc,
-          intlBankAccountName: promoterData.intlBankAccountName,
-          intlBankAccountNumber: promoterData.intlBankAccountNumber,
-          intlSwiftBic: promoterData.intlSwiftBic,
+          intlAccountHolderName: promoterData.intlAccountHolderName,
+          intlRoutingNumber: promoterData.intlRoutingNumber,
+          intlAccountNumber: promoterData.intlAccountNumber,
+          intlSortCode: promoterData.intlSortCode,
+          intlIban: promoterData.intlIban,
+          intlBicSwift: promoterData.intlBicSwift,
+          intlBsbCode: promoterData.intlBsbCode,
+          intlTransitNumber: promoterData.intlTransitNumber,
+          intlInstitutionNumber: promoterData.intlInstitutionNumber,
           intlBankCountry: promoterData.intlBankCountry,
           paypalEmail: promoterData.paypalEmail
         })
@@ -334,9 +347,15 @@ function DashboardProfileContent() {
                           bankAccountName: region === "INTERNATIONAL" ? null : promoterData.bankAccountName,
                           bankAccountNumber: region === "INTERNATIONAL" ? null : promoterData.bankAccountNumber,
                           bankIfsc: region === "INTERNATIONAL" ? null : promoterData.bankIfsc,
-                          intlBankAccountName: region === "INDIA" ? null : promoterData.intlBankAccountName,
-                          intlBankAccountNumber: region === "INDIA" ? null : promoterData.intlBankAccountNumber,
-                          intlSwiftBic: region === "INDIA" ? null : promoterData.intlSwiftBic,
+                          intlAccountHolderName: region === "INDIA" ? null : promoterData.intlAccountHolderName,
+                          intlRoutingNumber: region === "INDIA" ? null : promoterData.intlRoutingNumber,
+                          intlAccountNumber: region === "INDIA" ? null : promoterData.intlAccountNumber,
+                          intlSortCode: region === "INDIA" ? null : promoterData.intlSortCode,
+                          intlIban: region === "INDIA" ? null : promoterData.intlIban,
+                          intlBicSwift: region === "INDIA" ? null : promoterData.intlBicSwift,
+                          intlBsbCode: region === "INDIA" ? null : promoterData.intlBsbCode,
+                          intlTransitNumber: region === "INDIA" ? null : promoterData.intlTransitNumber,
+                          intlInstitutionNumber: region === "INDIA" ? null : promoterData.intlInstitutionNumber,
                           paypalEmail: region === "INDIA" ? null : promoterData.paypalEmail,
                         });
                         setUsePaypal(false);
@@ -568,50 +587,21 @@ function DashboardProfileContent() {
                         <div className="space-y-6">
                           {!usePaypal ? (
                             <div className="space-y-6">
-                              <div className="flex flex-col gap-3">
-                                <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Account Holder Name</label>
-                                <input
-                                  required={!usePaypal}
-                                  type="text"
-                                  placeholder="As in bank records"
-                                  value={promoterData.intlBankAccountName || ""}
-                                  onChange={(e) => setPromoterData({ ...promoterData, intlBankAccountName: e.target.value })}
-                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                                />
-                              </div>
-                              <div className="flex flex-col gap-3">
-                                <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Account Number / IBAN</label>
-                                <input
-                                  required={!usePaypal}
-                                  type="text"
-                                  placeholder="Account number or IBAN"
-                                  value={promoterData.intlBankAccountNumber || ""}
-                                  onChange={(e) => setPromoterData({ ...promoterData, intlBankAccountNumber: e.target.value })}
-                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                                />
-                              </div>
-                              <div className="flex flex-col gap-3">
-                                <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">SWIFT / BIC Code</label>
-                                <input
-                                  required={!usePaypal}
-                                  type="text"
-                                  placeholder="e.g. HDFCINBB"
-                                  value={promoterData.intlSwiftBic || ""}
-                                  onChange={(e) => setPromoterData({ ...promoterData, intlSwiftBic: e.target.value })}
-                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                                />
-                              </div>
-                              <div className="flex flex-col gap-3">
-                                <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Country</label>
-                                <input
-                                  required={!usePaypal}
-                                  type="text"
-                                  placeholder="e.g. United States"
-                                  value={promoterData.intlBankCountry || ""}
-                                  onChange={(e) => setPromoterData({ ...promoterData, intlBankCountry: e.target.value })}
-                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                                />
-                              </div>
+                              {getFieldsForCountry(promoterData.intlBankCountry || "").map((field) => (
+                                <div key={field.key} className="flex flex-col gap-3">
+                                  <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">
+                                    {field.label}
+                                  </label>
+                                  <input
+                                    required={field.required}
+                                    type="text"
+                                    placeholder={field.placeholder}
+                                    value={promoterData[field.key] || ""}
+                                    onChange={(e) => setPromoterData({ ...promoterData, [field.key]: e.target.value })}
+                                    className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                  />
+                                </div>
+                              ))}
                             </div>
                           ) : (
                             <div className="flex flex-col gap-3">
@@ -638,9 +628,15 @@ function DashboardProfileContent() {
                                 if (val) {
                                   setPromoterData({
                                     ...promoterData,
-                                    intlBankAccountName: null,
-                                    intlBankAccountNumber: null,
-                                    intlSwiftBic: null
+                                    intlAccountHolderName: null,
+                                    intlRoutingNumber: null,
+                                    intlAccountNumber: null,
+                                    intlSortCode: null,
+                                    intlIban: null,
+                                    intlBicSwift: null,
+                                    intlBsbCode: null,
+                                    intlTransitNumber: null,
+                                    intlInstitutionNumber: null
                                   });
                                 } else {
                                   setPromoterData({ ...promoterData, paypalEmail: null });

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { X, ArrowRight, Link as LinkIcon, DollarSign, Infinity, Gift, Sparkles, Loader2, Mail } from "lucide-react";
 import { useTheme } from "next-themes";
+import { getFieldsForCountry } from "@/lib/payoutFieldsByCountry";
 
 interface ReferralModalProps {
   isOpen: boolean;
@@ -27,9 +28,15 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
     bankAccountName: "",
     bankAccountNumber: "",
     bankIfsc: "",
-    intlBankAccountName: "",
-    intlBankAccountNumber: "",
-    intlSwiftBic: "",
+    intlAccountHolderName: "",
+    intlRoutingNumber: "",
+    intlAccountNumber: "",
+    intlSortCode: "",
+    intlIban: "",
+    intlBicSwift: "",
+    intlBsbCode: "",
+    intlTransitNumber: "",
+    intlInstitutionNumber: "",
     intlBankCountry: "",
     paypalEmail: ""
   });
@@ -48,7 +55,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       if (usePaypal) {
         return !!formData.paypalEmail.trim();
       } else {
-        return !!formData.intlBankAccountNumber.trim();
+        return !!formData.intlAccountNumber.trim() || !!formData.intlIban.trim();
       }
     }
   };
@@ -182,9 +189,15 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
         : formData.upiId.trim();
     } else {
       derivedMethod = usePaypal ? "PayPal" : "Bank";
-      derivedDetails = usePaypal 
-        ? formData.paypalEmail.trim() 
-        : `${formData.intlBankAccountName.trim()} | ${formData.intlBankAccountNumber.trim()} | ${formData.intlSwiftBic.trim()} | ${formData.intlBankCountry.trim()}`;
+      if (usePaypal) {
+        derivedDetails = formData.paypalEmail.trim();
+      } else {
+        const fields = getFieldsForCountry(formData.intlBankCountry || "");
+        derivedDetails = fields
+          .map(f => formData[f.key]?.trim() || "")
+          .filter(Boolean)
+          .join(" | ");
+      }
     }
 
     // Hardcoded URL format as requested by user
@@ -207,9 +220,15 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       metadata_bankAccountName: formData.bankAccountName,
       metadata_bankAccountNumber: formData.bankAccountNumber,
       metadata_bankIfsc: formData.bankIfsc,
-      metadata_intlBankAccountName: formData.intlBankAccountName,
-      metadata_intlBankAccountNumber: formData.intlBankAccountNumber,
-      metadata_intlSwiftBic: formData.intlSwiftBic,
+      metadata_intlAccountHolderName: formData.intlAccountHolderName,
+      metadata_intlRoutingNumber: formData.intlRoutingNumber,
+      metadata_intlAccountNumber: formData.intlAccountNumber,
+      metadata_intlSortCode: formData.intlSortCode,
+      metadata_intlIban: formData.intlIban,
+      metadata_intlBicSwift: formData.intlBicSwift,
+      metadata_intlBsbCode: formData.intlBsbCode,
+      metadata_intlTransitNumber: formData.intlTransitNumber,
+      metadata_intlInstitutionNumber: formData.intlInstitutionNumber,
       metadata_intlBankCountry: formData.intlBankCountry,
       metadata_paypalEmail: formData.paypalEmail,
       ...(referralCode ? { metadata_referralCode: referralCode } : {})
@@ -355,9 +374,15 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                         bankAccountName: region === "INTERNATIONAL" ? "" : formData.bankAccountName,
                         bankAccountNumber: region === "INTERNATIONAL" ? "" : formData.bankAccountNumber,
                         bankIfsc: region === "INTERNATIONAL" ? "" : formData.bankIfsc,
-                        intlBankAccountName: region === "INDIA" ? "" : formData.intlBankAccountName,
-                        intlBankAccountNumber: region === "INDIA" ? "" : formData.intlBankAccountNumber,
-                        intlSwiftBic: region === "INDIA" ? "" : formData.intlSwiftBic,
+                        intlAccountHolderName: region === "INDIA" ? "" : formData.intlAccountHolderName,
+                        intlRoutingNumber: region === "INDIA" ? "" : formData.intlRoutingNumber,
+                        intlAccountNumber: region === "INDIA" ? "" : formData.intlAccountNumber,
+                        intlSortCode: region === "INDIA" ? "" : formData.intlSortCode,
+                        intlIban: region === "INDIA" ? "" : formData.intlIban,
+                        intlBicSwift: region === "INDIA" ? "" : formData.intlBicSwift,
+                        intlBsbCode: region === "INDIA" ? "" : formData.intlBsbCode,
+                        intlTransitNumber: region === "INDIA" ? "" : formData.intlTransitNumber,
+                        intlInstitutionNumber: region === "INDIA" ? "" : formData.intlInstitutionNumber,
                         paypalEmail: region === "INDIA" ? "" : formData.paypalEmail,
                       });
                       setUsePaypal(false);
@@ -589,50 +614,21 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       <div className="space-y-6">
                         {!usePaypal ? (
                           <div className="space-y-6">
-                            <div className="flex flex-col gap-3">
-                              <label className="text-[1rem] font-bold text-white tracking-wide block">Account Holder Name</label>
-                              <input
-                                required={!usePaypal}
-                                type="text"
-                                placeholder="As in bank records"
-                                value={formData.intlBankAccountName}
-                                onChange={(e) => setFormData({ ...formData, intlBankAccountName: e.target.value })}
-                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
-                              />
-                            </div>
-                            <div className="flex flex-col gap-3">
-                              <label className="text-[1rem] font-bold text-white tracking-wide block">Account Number / IBAN</label>
-                              <input
-                                required={!usePaypal}
-                                type="text"
-                                placeholder="Account number or IBAN"
-                                value={formData.intlBankAccountNumber}
-                                onChange={(e) => setFormData({ ...formData, intlBankAccountNumber: e.target.value })}
-                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
-                              />
-                            </div>
-                            <div className="flex flex-col gap-3">
-                              <label className="text-[1rem] font-bold text-white tracking-wide block">SWIFT / BIC Code</label>
-                              <input
-                                required={!usePaypal}
-                                type="text"
-                                placeholder="e.g. HDFCINBB"
-                                value={formData.intlSwiftBic}
-                                onChange={(e) => setFormData({ ...formData, intlSwiftBic: e.target.value })}
-                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
-                              />
-                            </div>
-                            <div className="flex flex-col gap-3">
-                              <label className="text-[1rem] font-bold text-white tracking-wide block">Country</label>
-                              <input
-                                required={!usePaypal}
-                                type="text"
-                                placeholder="e.g. United States"
-                                value={formData.intlBankCountry}
-                                onChange={(e) => setFormData({ ...formData, intlBankCountry: e.target.value })}
-                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
-                              />
-                            </div>
+                            {getFieldsForCountry(formData.intlBankCountry || "").map((field) => (
+                              <div key={field.key} className="flex flex-col gap-3">
+                                <label className="text-[1rem] font-bold text-white tracking-wide block">
+                                  {field.label}
+                                </label>
+                                <input
+                                  required={field.required}
+                                  type="text"
+                                  placeholder={field.placeholder}
+                                  value={formData[field.key as keyof typeof formData] || ""}
+                                  onChange={(e) => setFormData({ ...formData, [field.key]: e.target.value })}
+                                  className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                                />
+                              </div>
+                            ))}
                           </div>
                         ) : (
                           <div className="flex flex-col gap-3">
@@ -659,9 +655,15 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                               if (val) {
                                 setFormData({
                                   ...formData,
-                                  intlBankAccountName: "",
-                                  intlBankAccountNumber: "",
-                                  intlSwiftBic: ""
+                                  intlAccountHolderName: "",
+                                  intlRoutingNumber: "",
+                                  intlAccountNumber: "",
+                                  intlSortCode: "",
+                                  intlIban: "",
+                                  intlBicSwift: "",
+                                  intlBsbCode: "",
+                                  intlTransitNumber: "",
+                                  intlInstitutionNumber: ""
                                 });
                               } else {
                                 setFormData({ ...formData, paypalEmail: "" });

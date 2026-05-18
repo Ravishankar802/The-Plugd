@@ -69,10 +69,16 @@ model Promoter {
   bankAccountName  String?
   bankAccountNumber String?
   bankIfsc         String?
-  intlBankAccountName String?
-  intlBankAccountNumber String?
-  intlSwiftBic     String?
-  intlBankCountry  String?
+  intlAccountHolderName String?
+  intlRoutingNumber    String?
+  intlAccountNumber    String?
+  intlSortCode         String?
+  intlIban             String?
+  intlBicSwift         String?
+  intlBsbCode          String?
+  intlTransitNumber    String?
+  intlInstitutionNumber String?
+  intlBankCountry      String?
   paypalEmail      String?
   totalEarned      Float    @default(0)
   pendingPayout    Float    @default(0)

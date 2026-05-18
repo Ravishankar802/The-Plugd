@@ -47,9 +47,15 @@ interface Promoter {
   bankAccountName: string | null;
   bankAccountNumber: string | null;
   bankIfsc: string | null;
-  intlBankAccountName: string | null;
-  intlBankAccountNumber: string | null;
-  intlSwiftBic: string | null;
+  intlAccountHolderName: string | null;
+  intlRoutingNumber: string | null;
+  intlAccountNumber: string | null;
+  intlSortCode: string | null;
+  intlIban: string | null;
+  intlBicSwift: string | null;
+  intlBsbCode: string | null;
+  intlTransitNumber: string | null;
+  intlInstitutionNumber: string | null;
   intlBankCountry: string | null;
   paypalEmail: string | null;
   totalEarned: number;
@@ -75,11 +81,15 @@ function getPayoutSummary(promoter: Promoter) {
   }
   
   if (promoter.payoutRegion === "INTERNATIONAL") {
-    if (promoter.intlBankAccountNumber) {
-      return `Bank: ${promoter.intlBankAccountName || ""} | ${promoter.intlBankAccountNumber} | ${promoter.intlSwiftBic || ""} | ${promoter.intlBankCountry || ""}`;
-    } else if (promoter.paypalEmail) {
+    if (promoter.paypalEmail) {
       return `PayPal: ${promoter.paypalEmail}`;
     }
+    const intlParts = [
+      promoter.intlAccountHolderName,
+      promoter.intlIban || promoter.intlAccountNumber,
+      promoter.intlBicSwift || promoter.intlSortCode || promoter.intlBsbCode || promoter.intlRoutingNumber,
+    ].filter(Boolean);
+    if (intlParts.length) return `Bank: ${intlParts.join(" | ")}`;
     return promoter.payoutDetails || "";
   }
   
