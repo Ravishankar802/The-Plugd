@@ -200,9 +200,8 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       }
     }
 
-    // Hardcoded URL format as requested by user
     const redirectUrl = 'https://theplugd.com/vault';
-    const baseUrl = 'https://www.checkout.dodopayments.com/buy/pdt_0NejIjx2mdXJSOgzLprt5';
+    const baseUrl = `https://www.checkout.dodopayments.com/buy/${process.env.NEXT_PUBLIC_DODO_PROMOTER_PRODUCT_ID}`;
     
     const params = new URLSearchParams({
       quantity: '1',
