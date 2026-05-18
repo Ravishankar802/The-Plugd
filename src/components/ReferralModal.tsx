@@ -272,7 +272,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
         {/* Close Button */}
         <button 
           onClick={onClose} 
-          className="absolute top-6 right-6 p-2 hover:bg-accent rounded-full transition-all text-muted hover:text-foreground border border-transparent hover:border-border z-50"
+          className="fixed top-6 right-6 z-[110] sm:absolute sm:top-6 sm:right-6 sm:z-50 p-2 hover:bg-accent rounded-full transition-all text-muted hover:text-foreground border border-transparent hover:border-border"
         >
           <X className="w-5 h-5" />
         </button>
@@ -588,7 +588,8 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                         )}
 
                         <p className="text-[0.75rem] text-amber-500/80 font-medium mt-1">
-                          Make sure your details are correct. Incorrect details may prevent your payout.
+                          <span className="block sm:inline">Make sure your details are correct. </span>
+                          <span className="block sm:inline">Incorrect details may prevent your payout.</span>
                         </p>
 
                         <div className="flex items-center gap-3">
@@ -640,7 +641,8 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                               </div>
                             ))}
                             <p className="text-[0.75rem] text-amber-500/80 font-medium mt-1">
-                              Make sure your details are correct. Incorrect details may prevent your payout.
+                              <span className="block sm:inline">Make sure your details are correct. </span>
+                              <span className="block sm:inline">Incorrect details may prevent your payout.</span>
                             </p>
                           </div>
                         ) : (

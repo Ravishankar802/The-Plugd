@@ -561,7 +561,8 @@ function DashboardProfileContent() {
                           )}
 
                           <p className="text-[0.75rem] text-amber-500/80 font-medium mt-1">
-                            Make sure your details are correct. Incorrect details may prevent your payout.
+                            <span className="block sm:inline">Make sure your details are correct. </span>
+                            <span className="block sm:inline">Incorrect details may prevent your payout.</span>
                           </p>
 
                           <div className="flex items-center gap-3">
@@ -613,7 +614,8 @@ function DashboardProfileContent() {
                                 </div>
                               ))}
                               <p className="text-[0.75rem] text-amber-500/80 font-medium mt-1">
-                                Make sure your details are correct. Incorrect details may prevent your payout.
+                                <span className="block sm:inline">Make sure your details are correct. </span>
+                                <span className="block sm:inline">Incorrect details may prevent your payout.</span>
                               </p>
                             </div>
                           ) : (
@@ -670,7 +672,7 @@ function DashboardProfileContent() {
                   <div className="flex flex-col gap-3">
                     <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Your Referral Link</label>
                     <div className="flex flex-col md:flex-row gap-3">
-                      <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-[#16a34a] font-mono font-bold text-[1rem] shadow-inner flex items-center truncate">
+                      <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-[#16a34a] font-mono font-bold text-[1rem] shadow-inner flex items-center overflow-x-auto whitespace-nowrap no-scrollbar md:overflow-x-visible">
                         https://theplugd.com?ref={referralLinkSuffix}
                       </div>
                       <button
@@ -750,7 +752,7 @@ function DashboardProfileContent() {
               <div className="space-y-4">
                 <label className="text-[0.8rem] font-bold text-muted/60 block tracking-widest uppercase">YOUR REFERRAL LINK</label>
                 <div className="flex flex-col md:flex-row gap-3">
-                  <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] font-medium truncate flex items-center">
+                  <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] font-medium flex items-center overflow-x-auto whitespace-nowrap no-scrollbar md:overflow-x-visible">
                     theplugd.com?ref={referralLinkSuffix}
                   </div>
                   <button 

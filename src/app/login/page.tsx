@@ -202,14 +202,14 @@ function LoginContent() {
               </form>
             ) : (
               <form onSubmit={handleVerifyOtp} className="space-y-6">
-                <div className="flex justify-between gap-3 px-2">
+                <div className="flex justify-center gap-2 sm:gap-3 px-1 sm:px-2">
                   {otp.map((digit, index) => (
                     <input
                       key={index}
                       ref={otpRefs[index]}
                       type="text"
                       maxLength={1}
-                      className="w-16 h-20 bg-pill border border-border rounded-xl text-center text-3xl font-bold text-foreground focus:outline-none focus:border-selected transition-all"
+                      className="w-12 h-16 sm:w-16 sm:h-20 bg-pill border border-border rounded-xl text-center text-2xl sm:text-3xl font-bold text-foreground focus:outline-none focus:border-selected transition-all"
                       value={digit}
                       onChange={(e) => handleOtpChange(index, e.target.value)}
                       onKeyDown={(e) => handleKeyDown(index, e)}
