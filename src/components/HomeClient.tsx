@@ -48,6 +48,14 @@ export default function HomeClient({
     router.push("/vault?tab=referrals");
   };
 
+  const handleStartEarning = () => {
+    if (userEmail && isPaidUser) {
+      router.push("/vault");
+    } else {
+      setIsReferModalOpen(true);
+    }
+  };
+
   return (
     <main className="min-h-screen flex flex-col items-center w-full max-w-full overflow-x-hidden">
       <div className="w-full relative flex flex-col items-center pt-2 pb-4">
@@ -59,7 +67,7 @@ export default function HomeClient({
             <section className="mb-0">
               <div className="flex flex-row gap-4 mb-6 items-center justify-center">
                  <button
-                  onClick={() => setIsReferModalOpen(true)}
+                  onClick={handleStartEarning}
                   suppressHydrationWarning
                   className="bg-[#16a34a] border border-[#16a34a] text-black dark:text-white flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg cursor-pointer"
                   style={{ 
@@ -120,7 +128,7 @@ export default function HomeClient({
         <Footer 
           showBorder={false} 
           minimal={true} 
-          onStartEarning={() => setIsReferModalOpen(true)} 
+          onStartEarning={handleStartEarning} 
         />
       </div>
 
