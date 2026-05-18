@@ -48,12 +48,31 @@ export default function HomeClient({
     router.push("/vault?tab=referrals");
   };
 
-  const handleStartEarning = () => {
+  const handleStartEarning = async () => {
+    // If we already know they are a paid member, redirect instantly
     if (userEmail && isPaidUser) {
       router.push("/vault");
-    } else {
-      setIsReferModalOpen(true);
+      return;
     }
+
+    // Otherwise, do a live fetch to guarantee fresh confirmed auth state
+    try {
+      const meRes = await fetch("/api/auth/me");
+      if (meRes.ok) {
+        const userData = await meRes.json();
+        setUserEmail(userData.email);
+        setIsPaidUser(userData.hasPromoter);
+        
+        if (userData.email && userData.hasPromoter) {
+          router.push("/vault");
+          return;
+        }
+      }
+    } catch (err) {
+      console.error("Auth check failed in click handler:", err);
+    }
+
+    setIsReferModalOpen(true);
   };
 
   return (
