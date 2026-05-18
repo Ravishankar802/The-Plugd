@@ -81,7 +81,7 @@ function DashboardProfileContent() {
           setHasPendingWithdrawal(data.hasPendingWithdrawal || false);
           if (data.promoterData) {
             setUseBankTransfer(!!data.promoterData.bankAccountNumber);
-            setUsePaypal(!!data.promoterData.paypalEmail && !data.promoterData.payoneerEmail);
+            setUsePaypal(!!data.promoterData.paypalEmail && !data.promoterData.intlBankAccountNumber);
           }
         } else {
           router.push("/login");
@@ -194,8 +194,10 @@ function DashboardProfileContent() {
           ? `${promoterData.bankAccountName || ""} | ${promoterData.bankAccountNumber || ""} | ${promoterData.bankIfsc || ""}` 
           : promoterData.upiId;
       } else if (promoterData.payoutRegion === "INTERNATIONAL") {
-        derivedMethod = usePaypal ? "PayPal" : "Payoneer";
-        derivedDetails = usePaypal ? promoterData.paypalEmail : promoterData.payoneerEmail;
+        derivedMethod = usePaypal ? "PayPal" : "Bank";
+        derivedDetails = usePaypal 
+          ? promoterData.paypalEmail 
+          : `${promoterData.intlBankAccountName || ""} | ${promoterData.intlBankAccountNumber || ""} | ${promoterData.intlSwiftBic || ""} | ${promoterData.intlBankCountry || ""}`;
       }
 
       const res = await fetch("/api/promoters/me", {
@@ -212,7 +214,10 @@ function DashboardProfileContent() {
           bankAccountName: promoterData.bankAccountName,
           bankAccountNumber: promoterData.bankAccountNumber,
           bankIfsc: promoterData.bankIfsc,
-          payoneerEmail: promoterData.payoneerEmail,
+          intlBankAccountName: promoterData.intlBankAccountName,
+          intlBankAccountNumber: promoterData.intlBankAccountNumber,
+          intlSwiftBic: promoterData.intlSwiftBic,
+          intlBankCountry: promoterData.intlBankCountry,
           paypalEmail: promoterData.paypalEmail
         })
       });
@@ -322,7 +327,10 @@ function DashboardProfileContent() {
                           setPromoterData({
                             ...promoterData,
                             payoutRegion: "INDIA",
-                            payoneerEmail: null,
+                            intlBankAccountName: null,
+                            intlBankAccountNumber: null,
+                            intlSwiftBic: null,
+                            intlBankCountry: null,
                             paypalEmail: null
                           });
                         }}
@@ -442,16 +450,51 @@ function DashboardProfileContent() {
                   {promoterData.payoutRegion === "INTERNATIONAL" && (
                     <div className="space-y-6">
                       {!usePaypal ? (
-                        <div className="flex flex-col gap-3">
-                          <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Payoneer Email</label>
-                          <input
-                            required={!usePaypal}
-                            type="email"
-                            placeholder="Your Payoneer email"
-                            value={promoterData.payoneerEmail || ""}
-                            onChange={(e) => setPromoterData({ ...promoterData, payoneerEmail: e.target.value })}
-                            className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                          />
+                        <div className="space-y-6">
+                          <div className="flex flex-col gap-3">
+                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Account Holder Name</label>
+                            <input
+                              required={!usePaypal}
+                              type="text"
+                              placeholder="As in bank records"
+                              value={promoterData.intlBankAccountName || ""}
+                              onChange={(e) => setPromoterData({ ...promoterData, intlBankAccountName: e.target.value })}
+                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                            />
+                          </div>
+                          <div className="flex flex-col gap-3">
+                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Account Number / IBAN</label>
+                            <input
+                              required={!usePaypal}
+                              type="text"
+                              placeholder="Account number or IBAN"
+                              value={promoterData.intlBankAccountNumber || ""}
+                              onChange={(e) => setPromoterData({ ...promoterData, intlBankAccountNumber: e.target.value })}
+                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                            />
+                          </div>
+                          <div className="flex flex-col gap-3">
+                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">SWIFT / BIC Code</label>
+                            <input
+                              required={!usePaypal}
+                              type="text"
+                              placeholder="e.g. HDFCINBB"
+                              value={promoterData.intlSwiftBic || ""}
+                              onChange={(e) => setPromoterData({ ...promoterData, intlSwiftBic: e.target.value })}
+                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                            />
+                          </div>
+                          <div className="flex flex-col gap-3">
+                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Country</label>
+                            <input
+                              required={!usePaypal}
+                              type="text"
+                              placeholder="e.g. United States"
+                              value={promoterData.intlBankCountry || ""}
+                              onChange={(e) => setPromoterData({ ...promoterData, intlBankCountry: e.target.value })}
+                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                            />
+                          </div>
                         </div>
                       ) : (
                         <div className="flex flex-col gap-3">
@@ -476,7 +519,13 @@ function DashboardProfileContent() {
                             const val = e.target.checked;
                             setUsePaypal(val);
                             if (val) {
-                              setPromoterData({ ...promoterData, payoneerEmail: null });
+                              setPromoterData({
+                                ...promoterData,
+                                intlBankAccountName: null,
+                                intlBankAccountNumber: null,
+                                intlSwiftBic: null,
+                                intlBankCountry: null
+                              });
                             } else {
                               setPromoterData({ ...promoterData, paypalEmail: null });
                             }
@@ -484,7 +533,7 @@ function DashboardProfileContent() {
                           className="w-4 h-4 rounded border-border text-[#16a34a] focus:ring-[#16a34a] cursor-pointer"
                         />
                         <label htmlFor="usePaypal" className="text-sm font-bold text-muted cursor-pointer select-none">
-                          I don't have Payoneer
+                          I don't have a bank account I can receive international wire transfers to
                         </label>
                       </div>
                     </div>

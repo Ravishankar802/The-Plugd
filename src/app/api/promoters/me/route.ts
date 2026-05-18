@@ -24,7 +24,10 @@ export async function PATCH(req: Request) {
       bankAccountName,
       bankAccountNumber,
       bankIfsc,
-      payoneerEmail,
+      intlBankAccountName,
+      intlBankAccountNumber,
+      intlSwiftBic,
+      intlBankCountry,
       paypalEmail
     } = body;
 
@@ -74,7 +77,10 @@ export async function PATCH(req: Request) {
         bankAccountName: bankAccountName || null,
         bankAccountNumber: bankAccountNumber || null,
         bankIfsc: bankIfsc || null,
-        payoneerEmail: payoneerEmail || null,
+        intlBankAccountName: intlBankAccountName || null,
+        intlBankAccountNumber: intlBankAccountNumber || null,
+        intlSwiftBic: intlSwiftBic || null,
+        intlBankCountry: intlBankCountry || null,
         paypalEmail: paypalEmail || null,
         referralCode: username || `${email.split("@")[0]}-${Math.random().toString(36).substring(2, 6)}`,
       },
@@ -89,7 +95,10 @@ export async function PATCH(req: Request) {
         bankAccountName,
         bankAccountNumber,
         bankIfsc,
-        payoneerEmail,
+        intlBankAccountName,
+        intlBankAccountNumber,
+        intlSwiftBic,
+        intlBankCountry,
         paypalEmail
       }
     });

@@ -27,7 +27,10 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
     bankAccountName: "",
     bankAccountNumber: "",
     bankIfsc: "",
-    payoneerEmail: "",
+    intlBankAccountName: "",
+    intlBankAccountNumber: "",
+    intlSwiftBic: "",
+    intlBankCountry: "",
     paypalEmail: ""
   });
 
@@ -45,7 +48,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       if (usePaypal) {
         return !!formData.paypalEmail.trim();
       } else {
-        return !!formData.payoneerEmail.trim();
+        return !!formData.intlBankAccountNumber.trim();
       }
     }
   };
@@ -178,8 +181,10 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
         ? `${formData.bankAccountName.trim()} | ${formData.bankAccountNumber.trim()} | ${formData.bankIfsc.trim()}` 
         : formData.upiId.trim();
     } else {
-      derivedMethod = usePaypal ? "PayPal" : "Payoneer";
-      derivedDetails = usePaypal ? formData.paypalEmail.trim() : formData.payoneerEmail.trim();
+      derivedMethod = usePaypal ? "PayPal" : "Bank";
+      derivedDetails = usePaypal 
+        ? formData.paypalEmail.trim() 
+        : `${formData.intlBankAccountName.trim()} | ${formData.intlBankAccountNumber.trim()} | ${formData.intlSwiftBic.trim()} | ${formData.intlBankCountry.trim()}`;
     }
 
     // Hardcoded URL format as requested by user
@@ -202,7 +207,10 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       metadata_bankAccountName: formData.bankAccountName,
       metadata_bankAccountNumber: formData.bankAccountNumber,
       metadata_bankIfsc: formData.bankIfsc,
-      metadata_payoneerEmail: formData.payoneerEmail,
+      metadata_intlBankAccountName: formData.intlBankAccountName,
+      metadata_intlBankAccountNumber: formData.intlBankAccountNumber,
+      metadata_intlSwiftBic: formData.intlSwiftBic,
+      metadata_intlBankCountry: formData.intlBankCountry,
       metadata_paypalEmail: formData.paypalEmail,
       ...(referralCode ? { metadata_referralCode: referralCode } : {})
     });
@@ -340,7 +348,10 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                         setFormData({
                           ...formData,
                           payoutRegion: "INDIA",
-                          payoneerEmail: "",
+                          intlBankAccountName: "",
+                          intlBankAccountNumber: "",
+                          intlSwiftBic: "",
+                          intlBankCountry: "",
                           paypalEmail: ""
                         });
                       }}
@@ -460,16 +471,51 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 {formData.payoutRegion === "INTERNATIONAL" && (
                   <div className="space-y-6">
                     {!usePaypal ? (
-                      <div className="flex flex-col gap-3">
-                        <label className="text-[1rem] font-bold text-white tracking-wide block">Payoneer Email</label>
-                        <input
-                          required={!usePaypal}
-                          type="email"
-                          placeholder="Your Payoneer email"
-                          value={formData.payoneerEmail}
-                          onChange={(e) => setFormData({ ...formData, payoneerEmail: e.target.value })}
-                          className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
-                        />
+                      <div className="space-y-6">
+                        <div className="flex flex-col gap-3">
+                          <label className="text-[1rem] font-bold text-white tracking-wide block">Account Holder Name</label>
+                          <input
+                            required={!usePaypal}
+                            type="text"
+                            placeholder="As in bank records"
+                            value={formData.intlBankAccountName}
+                            onChange={(e) => setFormData({ ...formData, intlBankAccountName: e.target.value })}
+                            className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                          <label className="text-[1rem] font-bold text-white tracking-wide block">Account Number / IBAN</label>
+                          <input
+                            required={!usePaypal}
+                            type="text"
+                            placeholder="Account number or IBAN"
+                            value={formData.intlBankAccountNumber}
+                            onChange={(e) => setFormData({ ...formData, intlBankAccountNumber: e.target.value })}
+                            className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                          <label className="text-[1rem] font-bold text-white tracking-wide block">SWIFT / BIC Code</label>
+                          <input
+                            required={!usePaypal}
+                            type="text"
+                            placeholder="e.g. HDFCINBB"
+                            value={formData.intlSwiftBic}
+                            onChange={(e) => setFormData({ ...formData, intlSwiftBic: e.target.value })}
+                            className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                          <label className="text-[1rem] font-bold text-white tracking-wide block">Country</label>
+                          <input
+                            required={!usePaypal}
+                            type="text"
+                            placeholder="e.g. United States"
+                            value={formData.intlBankCountry}
+                            onChange={(e) => setFormData({ ...formData, intlBankCountry: e.target.value })}
+                            className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                          />
+                        </div>
                       </div>
                     ) : (
                       <div className="flex flex-col gap-3">
@@ -494,7 +540,13 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                           const val = e.target.checked;
                           setUsePaypal(val);
                           if (val) {
-                            setFormData({ ...formData, payoneerEmail: "" });
+                            setFormData({
+                              ...formData,
+                              intlBankAccountName: "",
+                              intlBankAccountNumber: "",
+                              intlSwiftBic: "",
+                              intlBankCountry: ""
+                            });
                           } else {
                             setFormData({ ...formData, paypalEmail: "" });
                           }
@@ -502,7 +554,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                         className="w-4 h-4 rounded border-border text-[#16a34a] focus:ring-[#16a34a] cursor-pointer"
                       />
                       <label htmlFor="usePaypalModal" className="text-sm font-bold text-muted cursor-pointer select-none">
-                        I don't have Payoneer
+                        I don't have a bank account I can receive international wire transfers to
                       </label>
                     </div>
                   </div>

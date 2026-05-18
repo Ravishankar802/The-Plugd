@@ -47,7 +47,10 @@ interface Promoter {
   bankAccountName: string | null;
   bankAccountNumber: string | null;
   bankIfsc: string | null;
-  payoneerEmail: string | null;
+  intlBankAccountName: string | null;
+  intlBankAccountNumber: string | null;
+  intlSwiftBic: string | null;
+  intlBankCountry: string | null;
   paypalEmail: string | null;
   totalEarned: number;
   pendingPayout: number;
@@ -72,8 +75,8 @@ function getPayoutSummary(promoter: Promoter) {
   }
   
   if (promoter.payoutRegion === "INTERNATIONAL") {
-    if (promoter.payoneerEmail) {
-      return `Payoneer: ${promoter.payoneerEmail}`;
+    if (promoter.intlBankAccountNumber) {
+      return `Bank: ${promoter.intlBankAccountName || ""} | ${promoter.intlBankAccountNumber} | ${promoter.intlSwiftBic || ""} | ${promoter.intlBankCountry || ""}`;
     } else if (promoter.paypalEmail) {
       return `PayPal: ${promoter.paypalEmail}`;
     }
