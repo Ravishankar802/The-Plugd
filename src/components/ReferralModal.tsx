@@ -500,178 +500,182 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                   </select>
                 </div>
 
-                {/* If region is INDIA */}
-                {formData.payoutRegion === "INDIA" && (
-                  <div className="space-y-6">
-                    {!useBankTransfer ? (
-                      <div className="flex flex-col gap-3">
-                        <label className="text-[1rem] font-bold text-white tracking-wide block">UPI ID</label>
-                        <input
-                          required={!useBankTransfer}
-                          type="text"
-                          placeholder="name@upi"
-                          value={formData.upiId}
-                          onChange={(e) => setFormData({ ...formData, upiId: e.target.value })}
-                          className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
-                        />
-                      </div>
-                    ) : (
+                {/* If country has been selected */}
+                {formData.intlBankCountry && (
+                  <>
+                    {/* If region is INDIA */}
+                    {formData.payoutRegion === "INDIA" && (
                       <div className="space-y-6">
-                        <div className="flex flex-col gap-3">
-                          <label className="text-[1rem] font-bold text-white tracking-wide block">Account Holder Name</label>
+                        {!useBankTransfer ? (
+                          <div className="flex flex-col gap-3">
+                            <label className="text-[1rem] font-bold text-white tracking-wide block">UPI ID</label>
+                            <input
+                              required={!useBankTransfer}
+                              type="text"
+                              placeholder="name@upi"
+                              value={formData.upiId}
+                              onChange={(e) => setFormData({ ...formData, upiId: e.target.value })}
+                              className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                            />
+                          </div>
+                        ) : (
+                          <div className="space-y-6">
+                            <div className="flex flex-col gap-3">
+                              <label className="text-[1rem] font-bold text-white tracking-wide block">Account Holder Name</label>
+                              <input
+                                required={useBankTransfer}
+                                type="text"
+                                placeholder="As in bank records"
+                                value={formData.bankAccountName}
+                                onChange={(e) => setFormData({ ...formData, bankAccountName: e.target.value })}
+                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                              />
+                            </div>
+                            <div className="flex flex-col gap-3">
+                              <label className="text-[1rem] font-bold text-white tracking-wide block">Bank Account Number</label>
+                              <input
+                                required={useBankTransfer}
+                                type="text"
+                                placeholder="Account number"
+                                value={formData.bankAccountNumber}
+                                onChange={(e) => setFormData({ ...formData, bankAccountNumber: e.target.value })}
+                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                              />
+                            </div>
+                            <div className="flex flex-col gap-3">
+                              <label className="text-[1rem] font-bold text-white tracking-wide block">IFSC Code</label>
+                              <input
+                                required={useBankTransfer}
+                                type="text"
+                                placeholder="Enter IFSC code"
+                                value={formData.bankIfsc}
+                                onChange={(e) => setFormData({ ...formData, bankIfsc: e.target.value })}
+                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                              />
+                            </div>
+                          </div>
+                        )}
+
+                        <div className="flex items-center gap-3">
                           <input
-                            required={useBankTransfer}
-                            type="text"
-                            placeholder="As in bank records"
-                            value={formData.bankAccountName}
-                            onChange={(e) => setFormData({ ...formData, bankAccountName: e.target.value })}
-                            className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                            id="useBankTransferModal"
+                            type="checkbox"
+                            checked={useBankTransfer}
+                            onChange={(e) => {
+                              const val = e.target.checked;
+                              setUseBankTransfer(val);
+                              if (val) {
+                                setFormData({ ...formData, upiId: "" });
+                              } else {
+                                setFormData({
+                                  ...formData,
+                                  bankAccountName: "",
+                                  bankAccountNumber: "",
+                                  bankIfsc: ""
+                                });
+                              }
+                            }}
+                            className="w-4 h-4 rounded border-border text-[#16a34a] focus:ring-[#16a34a] cursor-pointer"
                           />
-                        </div>
-                        <div className="flex flex-col gap-3">
-                          <label className="text-[1rem] font-bold text-white tracking-wide block">Bank Account Number</label>
-                          <input
-                            required={useBankTransfer}
-                            type="text"
-                            placeholder="Account number"
-                            value={formData.bankAccountNumber}
-                            onChange={(e) => setFormData({ ...formData, bankAccountNumber: e.target.value })}
-                            className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
-                          />
-                        </div>
-                        <div className="flex flex-col gap-3">
-                          <label className="text-[1rem] font-bold text-white tracking-wide block">IFSC Code</label>
-                          <input
-                            required={useBankTransfer}
-                            type="text"
-                            placeholder="HDFC0000053"
-                            value={formData.bankIfsc}
-                            onChange={(e) => setFormData({ ...formData, bankIfsc: e.target.value })}
-                            className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
-                          />
+                          <label htmlFor="useBankTransferModal" className="text-sm font-bold text-muted cursor-pointer select-none">
+                            Use bank transfer instead
+                          </label>
                         </div>
                       </div>
                     )}
 
-                    <div className="flex items-center gap-3">
-                      <input
-                        id="useBankTransferModal"
-                        type="checkbox"
-                        checked={useBankTransfer}
-                        onChange={(e) => {
-                          const val = e.target.checked;
-                          setUseBankTransfer(val);
-                          if (val) {
-                            setFormData({ ...formData, upiId: "" });
-                          } else {
-                            setFormData({
-                              ...formData,
-                              bankAccountName: "",
-                              bankAccountNumber: "",
-                              bankIfsc: ""
-                            });
-                          }
-                        }}
-                        className="w-4 h-4 rounded border-border text-[#16a34a] focus:ring-[#16a34a] cursor-pointer"
-                      />
-                      <label htmlFor="useBankTransferModal" className="text-sm font-bold text-muted cursor-pointer select-none">
-                        Use bank transfer instead
-                      </label>
-                    </div>
-                  </div>
-                )}
-
-                {/* If region is INTERNATIONAL */}
-                {formData.payoutRegion === "INTERNATIONAL" && (
-                  <div className="space-y-6">
-                    {!usePaypal ? (
+                    {/* If region is INTERNATIONAL */}
+                    {formData.payoutRegion === "INTERNATIONAL" && (
                       <div className="space-y-6">
-                        <div className="flex flex-col gap-3">
-                          <label className="text-[1rem] font-bold text-white tracking-wide block">Account Holder Name</label>
+                        {!usePaypal ? (
+                          <div className="space-y-6">
+                            <div className="flex flex-col gap-3">
+                              <label className="text-[1rem] font-bold text-white tracking-wide block">Account Holder Name</label>
+                              <input
+                                required={!usePaypal}
+                                type="text"
+                                placeholder="As in bank records"
+                                value={formData.intlBankAccountName}
+                                onChange={(e) => setFormData({ ...formData, intlBankAccountName: e.target.value })}
+                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                              />
+                            </div>
+                            <div className="flex flex-col gap-3">
+                              <label className="text-[1rem] font-bold text-white tracking-wide block">Account Number / IBAN</label>
+                              <input
+                                required={!usePaypal}
+                                type="text"
+                                placeholder="Account number or IBAN"
+                                value={formData.intlBankAccountNumber}
+                                onChange={(e) => setFormData({ ...formData, intlBankAccountNumber: e.target.value })}
+                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                              />
+                            </div>
+                            <div className="flex flex-col gap-3">
+                              <label className="text-[1rem] font-bold text-white tracking-wide block">SWIFT / BIC Code</label>
+                              <input
+                                required={!usePaypal}
+                                type="text"
+                                placeholder="e.g. HDFCINBB"
+                                value={formData.intlSwiftBic}
+                                onChange={(e) => setFormData({ ...formData, intlSwiftBic: e.target.value })}
+                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                              />
+                            </div>
+                            <div className="flex flex-col gap-3">
+                              <label className="text-[1rem] font-bold text-white tracking-wide block">Country</label>
+                              <input
+                                required={!usePaypal}
+                                type="text"
+                                placeholder="e.g. United States"
+                                value={formData.intlBankCountry}
+                                onChange={(e) => setFormData({ ...formData, intlBankCountry: e.target.value })}
+                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                              />
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="flex flex-col gap-3">
+                            <label className="text-[1rem] font-bold text-white tracking-wide block">PayPal Email</label>
+                            <input
+                              required={usePaypal}
+                              type="email"
+                              placeholder="Your PayPal email"
+                              value={formData.paypalEmail}
+                              onChange={(e) => setFormData({ ...formData, paypalEmail: e.target.value })}
+                              className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                            />
+                          </div>
+                        )}
+
+                        <div className="flex items-center gap-3">
                           <input
-                            required={!usePaypal}
-                            type="text"
-                            placeholder="As in bank records"
-                            value={formData.intlBankAccountName}
-                            onChange={(e) => setFormData({ ...formData, intlBankAccountName: e.target.value })}
-                            className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                            id="usePaypalModal"
+                            type="checkbox"
+                            checked={usePaypal}
+                            onChange={(e) => {
+                              const val = e.target.checked;
+                              setUsePaypal(val);
+                              if (val) {
+                                setFormData({
+                                  ...formData,
+                                  intlBankAccountName: "",
+                                  intlBankAccountNumber: "",
+                                  intlSwiftBic: ""
+                                });
+                              } else {
+                                setFormData({ ...formData, paypalEmail: "" });
+                              }
+                            }}
+                            className="w-4 h-4 rounded border-border text-[#16a34a] focus:ring-[#16a34a] cursor-pointer"
                           />
+                          <label htmlFor="usePaypalModal" className="text-sm font-bold text-muted cursor-pointer select-none">
+                            I don't have a bank account that accepts international wire transfers
+                          </label>
                         </div>
-                        <div className="flex flex-col gap-3">
-                          <label className="text-[1rem] font-bold text-white tracking-wide block">Account Number / IBAN</label>
-                          <input
-                            required={!usePaypal}
-                            type="text"
-                            placeholder="Account number or IBAN"
-                            value={formData.intlBankAccountNumber}
-                            onChange={(e) => setFormData({ ...formData, intlBankAccountNumber: e.target.value })}
-                            className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
-                          />
-                        </div>
-                        <div className="flex flex-col gap-3">
-                          <label className="text-[1rem] font-bold text-white tracking-wide block">SWIFT / BIC Code</label>
-                          <input
-                            required={!usePaypal}
-                            type="text"
-                            placeholder="e.g. HDFCINBB"
-                            value={formData.intlSwiftBic}
-                            onChange={(e) => setFormData({ ...formData, intlSwiftBic: e.target.value })}
-                            className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
-                          />
-                        </div>
-                        <div className="flex flex-col gap-3">
-                          <label className="text-[1rem] font-bold text-white tracking-wide block">Country</label>
-                          <input
-                            required={!usePaypal}
-                            type="text"
-                            placeholder="e.g. United States"
-                            value={formData.intlBankCountry}
-                            onChange={(e) => setFormData({ ...formData, intlBankCountry: e.target.value })}
-                            className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
-                          />
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="flex flex-col gap-3">
-                        <label className="text-[1rem] font-bold text-white tracking-wide block">PayPal Email</label>
-                        <input
-                          required={usePaypal}
-                          type="email"
-                          placeholder="Your PayPal email"
-                          value={formData.paypalEmail}
-                          onChange={(e) => setFormData({ ...formData, paypalEmail: e.target.value })}
-                          className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
-                        />
                       </div>
                     )}
-
-                    <div className="flex items-center gap-3">
-                      <input
-                        id="usePaypalModal"
-                        type="checkbox"
-                        checked={usePaypal}
-                        onChange={(e) => {
-                          const val = e.target.checked;
-                          setUsePaypal(val);
-                          if (val) {
-                            setFormData({
-                              ...formData,
-                              intlBankAccountName: "",
-                              intlBankAccountNumber: "",
-                              intlSwiftBic: "",
-                              intlBankCountry: ""
-                            });
-                          } else {
-                            setFormData({ ...formData, paypalEmail: "" });
-                          }
-                        }}
-                        className="w-4 h-4 rounded border-border text-[#16a34a] focus:ring-[#16a34a] cursor-pointer"
-                      />
-                      <label htmlFor="usePaypalModal" className="text-sm font-bold text-muted cursor-pointer select-none">
-                        I don't have a bank account I can receive international wire transfers to
-                      </label>
-                    </div>
-                  </div>
+                  </>
                 )}
               </div>
             </div>

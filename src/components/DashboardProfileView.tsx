@@ -479,178 +479,182 @@ function DashboardProfileContent() {
                     </select>
                   </div>
 
-                  {/* If region is INDIA */}
-                  {promoterData.payoutRegion === "INDIA" && (
-                    <div className="space-y-6">
-                      {!useBankTransfer ? (
-                        <div className="flex flex-col gap-3">
-                          <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">UPI ID</label>
-                          <input
-                            required={!useBankTransfer}
-                            type="text"
-                            placeholder="name@upi"
-                            value={promoterData.upiId || ""}
-                            onChange={(e) => setPromoterData({ ...promoterData, upiId: e.target.value })}
-                            className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                          />
-                        </div>
-                      ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                          <div className="flex flex-col gap-3">
-                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Account Holder Name</label>
-                            <input
-                              required={useBankTransfer}
-                              type="text"
-                              placeholder="As in bank records"
-                              value={promoterData.bankAccountName || ""}
-                              onChange={(e) => setPromoterData({ ...promoterData, bankAccountName: e.target.value })}
-                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                            />
-                          </div>
-                          <div className="flex flex-col gap-3">
-                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Bank Account Number</label>
-                            <input
-                              required={useBankTransfer}
-                              type="text"
-                              placeholder="Account number"
-                              value={promoterData.bankAccountNumber || ""}
-                              onChange={(e) => setPromoterData({ ...promoterData, bankAccountNumber: e.target.value })}
-                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                            />
-                          </div>
-                          <div className="flex flex-col gap-3">
-                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">IFSC Code</label>
-                            <input
-                              required={useBankTransfer}
-                              type="text"
-                              placeholder="HDFC0000053"
-                              value={promoterData.bankIfsc || ""}
-                              onChange={(e) => setPromoterData({ ...promoterData, bankIfsc: e.target.value })}
-                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                            />
-                          </div>
-                        </div>
-                      )}
-
-                      <div className="flex items-center gap-3">
-                        <input
-                          id="useBankTransfer"
-                          type="checkbox"
-                          checked={useBankTransfer}
-                          onChange={(e) => {
-                            const val = e.target.checked;
-                            setUseBankTransfer(val);
-                            if (val) {
-                              setPromoterData({ ...promoterData, upiId: null });
-                            } else {
-                              setPromoterData({
-                                ...promoterData,
-                                bankAccountName: null,
-                                bankAccountNumber: null,
-                                bankIfsc: null
-                              });
-                            }
-                          }}
-                          className="w-4 h-4 rounded border-border text-[#16a34a] focus:ring-[#16a34a] cursor-pointer"
-                        />
-                        <label htmlFor="useBankTransfer" className="text-sm font-bold text-muted cursor-pointer select-none">
-                          Use bank transfer instead
-                        </label>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* If region is INTERNATIONAL */}
-                  {promoterData.payoutRegion === "INTERNATIONAL" && (
-                    <div className="space-y-6">
-                      {!usePaypal ? (
+                  {/* If country has been selected */}
+                  {promoterData.intlBankCountry && (
+                    <>
+                      {/* If region is INDIA */}
+                      {promoterData.payoutRegion === "INDIA" && (
                         <div className="space-y-6">
-                          <div className="flex flex-col gap-3">
-                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Account Holder Name</label>
+                          {!useBankTransfer ? (
+                            <div className="flex flex-col gap-3">
+                              <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">UPI ID</label>
+                              <input
+                                required={!useBankTransfer}
+                                type="text"
+                                placeholder="name@upi"
+                                value={promoterData.upiId || ""}
+                                onChange={(e) => setPromoterData({ ...promoterData, upiId: e.target.value })}
+                                className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                              />
+                            </div>
+                          ) : (
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                              <div className="flex flex-col gap-3">
+                                <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Account Holder Name</label>
+                                <input
+                                  required={useBankTransfer}
+                                  type="text"
+                                  placeholder="As in bank records"
+                                  value={promoterData.bankAccountName || ""}
+                                  onChange={(e) => setPromoterData({ ...promoterData, bankAccountName: e.target.value })}
+                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                />
+                              </div>
+                              <div className="flex flex-col gap-3">
+                                <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Bank Account Number</label>
+                                <input
+                                  required={useBankTransfer}
+                                  type="text"
+                                  placeholder="Account number"
+                                  value={promoterData.bankAccountNumber || ""}
+                                  onChange={(e) => setPromoterData({ ...promoterData, bankAccountNumber: e.target.value })}
+                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                />
+                              </div>
+                              <div className="flex flex-col gap-3">
+                                <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">IFSC Code</label>
+                                <input
+                                  required={useBankTransfer}
+                                  type="text"
+                                  placeholder="Enter IFSC code"
+                                  value={promoterData.bankIfsc || ""}
+                                  onChange={(e) => setPromoterData({ ...promoterData, bankIfsc: e.target.value })}
+                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                />
+                              </div>
+                            </div>
+                          )}
+
+                          <div className="flex items-center gap-3">
                             <input
-                              required={!usePaypal}
-                              type="text"
-                              placeholder="As in bank records"
-                              value={promoterData.intlBankAccountName || ""}
-                              onChange={(e) => setPromoterData({ ...promoterData, intlBankAccountName: e.target.value })}
-                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                              id="useBankTransfer"
+                              type="checkbox"
+                              checked={useBankTransfer}
+                              onChange={(e) => {
+                                const val = e.target.checked;
+                                setUseBankTransfer(val);
+                                if (val) {
+                                  setPromoterData({ ...promoterData, upiId: null });
+                                } else {
+                                  setPromoterData({
+                                    ...promoterData,
+                                    bankAccountName: null,
+                                    bankAccountNumber: null,
+                                    bankIfsc: null
+                                  });
+                                }
+                              }}
+                              className="w-4 h-4 rounded border-border text-[#16a34a] focus:ring-[#16a34a] cursor-pointer"
                             />
+                            <label htmlFor="useBankTransfer" className="text-sm font-bold text-muted cursor-pointer select-none">
+                              Use bank transfer instead
+                            </label>
                           </div>
-                          <div className="flex flex-col gap-3">
-                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Account Number / IBAN</label>
-                            <input
-                              required={!usePaypal}
-                              type="text"
-                              placeholder="Account number or IBAN"
-                              value={promoterData.intlBankAccountNumber || ""}
-                              onChange={(e) => setPromoterData({ ...promoterData, intlBankAccountNumber: e.target.value })}
-                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                            />
-                          </div>
-                          <div className="flex flex-col gap-3">
-                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">SWIFT / BIC Code</label>
-                            <input
-                              required={!usePaypal}
-                              type="text"
-                              placeholder="e.g. HDFCINBB"
-                              value={promoterData.intlSwiftBic || ""}
-                              onChange={(e) => setPromoterData({ ...promoterData, intlSwiftBic: e.target.value })}
-                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                            />
-                          </div>
-                          <div className="flex flex-col gap-3">
-                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Country</label>
-                            <input
-                              required={!usePaypal}
-                              type="text"
-                              placeholder="e.g. United States"
-                              value={promoterData.intlBankCountry || ""}
-                              onChange={(e) => setPromoterData({ ...promoterData, intlBankCountry: e.target.value })}
-                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                            />
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="flex flex-col gap-3">
-                          <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">PayPal Email</label>
-                          <input
-                            required={usePaypal}
-                            type="email"
-                            placeholder="Your PayPal email"
-                            value={promoterData.paypalEmail || ""}
-                            onChange={(e) => setPromoterData({ ...promoterData, paypalEmail: e.target.value })}
-                            className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                          />
                         </div>
                       )}
 
-                      <div className="flex items-center gap-3">
-                        <input
-                          id="usePaypal"
-                          type="checkbox"
-                          checked={usePaypal}
-                          onChange={(e) => {
-                            const val = e.target.checked;
-                            setUsePaypal(val);
-                            if (val) {
-                              setPromoterData({
-                                ...promoterData,
-                                intlBankAccountName: null,
-                                intlBankAccountNumber: null,
-                                intlSwiftBic: null,
-                                intlBankCountry: null
-                              });
-                            } else {
-                              setPromoterData({ ...promoterData, paypalEmail: null });
-                            }
-                          }}
-                          className="w-4 h-4 rounded border-border text-[#16a34a] focus:ring-[#16a34a] cursor-pointer"
-                        />
-                        <label htmlFor="usePaypal" className="text-sm font-bold text-muted cursor-pointer select-none">
-                          I don't have a bank account I can receive international wire transfers to
-                        </label>
-                      </div>
-                    </div>
+                      {/* If region is INTERNATIONAL */}
+                      {promoterData.payoutRegion === "INTERNATIONAL" && (
+                        <div className="space-y-6">
+                          {!usePaypal ? (
+                            <div className="space-y-6">
+                              <div className="flex flex-col gap-3">
+                                <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Account Holder Name</label>
+                                <input
+                                  required={!usePaypal}
+                                  type="text"
+                                  placeholder="As in bank records"
+                                  value={promoterData.intlBankAccountName || ""}
+                                  onChange={(e) => setPromoterData({ ...promoterData, intlBankAccountName: e.target.value })}
+                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                />
+                              </div>
+                              <div className="flex flex-col gap-3">
+                                <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Account Number / IBAN</label>
+                                <input
+                                  required={!usePaypal}
+                                  type="text"
+                                  placeholder="Account number or IBAN"
+                                  value={promoterData.intlBankAccountNumber || ""}
+                                  onChange={(e) => setPromoterData({ ...promoterData, intlBankAccountNumber: e.target.value })}
+                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                />
+                              </div>
+                              <div className="flex flex-col gap-3">
+                                <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">SWIFT / BIC Code</label>
+                                <input
+                                  required={!usePaypal}
+                                  type="text"
+                                  placeholder="e.g. HDFCINBB"
+                                  value={promoterData.intlSwiftBic || ""}
+                                  onChange={(e) => setPromoterData({ ...promoterData, intlSwiftBic: e.target.value })}
+                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                />
+                              </div>
+                              <div className="flex flex-col gap-3">
+                                <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Country</label>
+                                <input
+                                  required={!usePaypal}
+                                  type="text"
+                                  placeholder="e.g. United States"
+                                  value={promoterData.intlBankCountry || ""}
+                                  onChange={(e) => setPromoterData({ ...promoterData, intlBankCountry: e.target.value })}
+                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                />
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="flex flex-col gap-3">
+                              <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">PayPal Email</label>
+                              <input
+                                required={usePaypal}
+                                type="email"
+                                placeholder="Your PayPal email"
+                                value={promoterData.paypalEmail || ""}
+                                onChange={(e) => setPromoterData({ ...promoterData, paypalEmail: e.target.value })}
+                                className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                              />
+                            </div>
+                          )}
+
+                          <div className="flex items-center gap-3">
+                            <input
+                              id="usePaypal"
+                              type="checkbox"
+                              checked={usePaypal}
+                              onChange={(e) => {
+                                const val = e.target.checked;
+                                setUsePaypal(val);
+                                if (val) {
+                                  setPromoterData({
+                                    ...promoterData,
+                                    intlBankAccountName: null,
+                                    intlBankAccountNumber: null,
+                                    intlSwiftBic: null
+                                  });
+                                } else {
+                                  setPromoterData({ ...promoterData, paypalEmail: null });
+                                }
+                              }}
+                              className="w-4 h-4 rounded border-border text-[#16a34a] focus:ring-[#16a34a] cursor-pointer"
+                            />
+                            <label htmlFor="usePaypal" className="text-sm font-bold text-muted cursor-pointer select-none">
+                              I don't have a bank account that accepts international wire transfers
+                            </label>
+                          </div>
+                        </div>
+                      )}
+                    </>
                   )}
 
                   {/* Referral Link */}
