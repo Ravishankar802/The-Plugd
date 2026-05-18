@@ -338,52 +338,52 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                   )}
                 </div>
 
-                {/* Payout Region Selector */}
+                {/* Country Selector */}
                 <div className="flex flex-col gap-3">
-                  <label className="text-[1rem] font-bold text-white tracking-wide block">Payout Region</label>
-                  <div className="flex gap-3">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setFormData({
-                          ...formData,
-                          payoutRegion: "INDIA",
-                          intlBankAccountName: "",
-                          intlBankAccountNumber: "",
-                          intlSwiftBic: "",
-                          intlBankCountry: "",
-                          paypalEmail: ""
-                        });
-                      }}
-                      className={`flex-1 py-4 rounded-xl border font-bold transition-all cursor-pointer ${
-                        formData.payoutRegion === "INDIA"
-                        ? "bg-[#16a34a] text-white border-[#16a34a] shadow-lg"
-                        : "bg-black text-muted border-border hover:border-muted"
-                      }`}
-                    >
-                      India
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setFormData({
-                          ...formData,
-                          payoutRegion: "INTERNATIONAL",
-                          upiId: "",
-                          bankAccountName: "",
-                          bankAccountNumber: "",
-                          bankIfsc: ""
-                        });
-                      }}
-                      className={`flex-1 py-4 rounded-xl border font-bold transition-all cursor-pointer ${
-                        formData.payoutRegion === "INTERNATIONAL"
-                        ? "bg-[#16a34a] text-white border-[#16a34a] shadow-lg"
-                        : "bg-black text-muted border-border hover:border-muted"
-                      }`}
-                    >
-                      International
-                    </button>
-                  </div>
+                  <label className="text-[1rem] font-bold text-white tracking-wide block">Country</label>
+                  <select
+                    value={formData.intlBankCountry || ""}
+                    onChange={(e) => {
+                      const country = e.target.value;
+                      const region = country === "India" ? "INDIA" : "INTERNATIONAL";
+                      setFormData({
+                        ...formData,
+                        intlBankCountry: country,
+                        payoutRegion: region,
+                        // clear fields that don't apply
+                        upiId: region === "INTERNATIONAL" ? "" : formData.upiId,
+                        bankAccountName: region === "INTERNATIONAL" ? "" : formData.bankAccountName,
+                        bankAccountNumber: region === "INTERNATIONAL" ? "" : formData.bankAccountNumber,
+                        bankIfsc: region === "INTERNATIONAL" ? "" : formData.bankIfsc,
+                        intlBankAccountName: region === "INDIA" ? "" : formData.intlBankAccountName,
+                        intlBankAccountNumber: region === "INDIA" ? "" : formData.intlBankAccountNumber,
+                        intlSwiftBic: region === "INDIA" ? "" : formData.intlSwiftBic,
+                        paypalEmail: region === "INDIA" ? "" : formData.paypalEmail,
+                      });
+                      setUsePaypal(false);
+                    }}
+                    className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                  >
+                    <option value="" disabled>Select your country</option>
+                    <option value="India">India</option>
+                    <option value="United States">United States</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="France">France</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="UAE">UAE</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Philippines">Philippines</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="Kenya">Kenya</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
 
                 {/* If region is INDIA */}

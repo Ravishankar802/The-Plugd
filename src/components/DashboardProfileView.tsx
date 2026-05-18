@@ -317,52 +317,52 @@ function DashboardProfileContent() {
                     </div>
                   </div>
 
-                  {/* Payout Region Selector */}
+                  {/* Country Selector */}
                   <div className="flex flex-col gap-3">
-                    <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Payout Region</label>
-                    <div className="flex gap-3 max-w-sm">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setPromoterData({
-                            ...promoterData,
-                            payoutRegion: "INDIA",
-                            intlBankAccountName: null,
-                            intlBankAccountNumber: null,
-                            intlSwiftBic: null,
-                            intlBankCountry: null,
-                            paypalEmail: null
-                          });
-                        }}
-                        className={`flex-1 py-4 rounded-xl border font-bold transition-all cursor-pointer ${
-                          promoterData.payoutRegion === "INDIA"
-                          ? "bg-[#16a34a] text-white border-[#16a34a] shadow-lg shadow-green-600/20"
-                          : "bg-background text-muted border-border hover:border-muted"
-                        }`}
-                      >
-                        India
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setPromoterData({
-                            ...promoterData,
-                            payoutRegion: "INTERNATIONAL",
-                            upiId: null,
-                            bankAccountName: null,
-                            bankAccountNumber: null,
-                            bankIfsc: null
-                          });
-                        }}
-                        className={`flex-1 py-4 rounded-xl border font-bold transition-all cursor-pointer ${
-                          promoterData.payoutRegion === "INTERNATIONAL"
-                          ? "bg-[#16a34a] text-white border-[#16a34a] shadow-lg shadow-green-600/20"
-                          : "bg-background text-muted border-border hover:border-muted"
-                        }`}
-                      >
-                        International
-                      </button>
-                    </div>
+                    <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Country</label>
+                    <select
+                      value={promoterData.intlBankCountry || ""}
+                      onChange={(e) => {
+                        const country = e.target.value;
+                        const region = country === "India" ? "INDIA" : "INTERNATIONAL";
+                        setPromoterData({
+                          ...promoterData,
+                          intlBankCountry: country,
+                          payoutRegion: region,
+                          // clear fields that don't apply
+                          upiId: region === "INTERNATIONAL" ? null : promoterData.upiId,
+                          bankAccountName: region === "INTERNATIONAL" ? null : promoterData.bankAccountName,
+                          bankAccountNumber: region === "INTERNATIONAL" ? null : promoterData.bankAccountNumber,
+                          bankIfsc: region === "INTERNATIONAL" ? null : promoterData.bankIfsc,
+                          intlBankAccountName: region === "INDIA" ? null : promoterData.intlBankAccountName,
+                          intlBankAccountNumber: region === "INDIA" ? null : promoterData.intlBankAccountNumber,
+                          intlSwiftBic: region === "INDIA" ? null : promoterData.intlSwiftBic,
+                          paypalEmail: region === "INDIA" ? null : promoterData.paypalEmail,
+                        });
+                        setUsePaypal(false);
+                      }}
+                      className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                    >
+                      <option value="" disabled>Select your country</option>
+                      <option value="India">India</option>
+                      <option value="United States">United States</option>
+                      <option value="United Kingdom">United Kingdom</option>
+                      <option value="Canada">Canada</option>
+                      <option value="Australia">Australia</option>
+                      <option value="Germany">Germany</option>
+                      <option value="France">France</option>
+                      <option value="Netherlands">Netherlands</option>
+                      <option value="Singapore">Singapore</option>
+                      <option value="UAE">UAE</option>
+                      <option value="Brazil">Brazil</option>
+                      <option value="Mexico">Mexico</option>
+                      <option value="Philippines">Philippines</option>
+                      <option value="Pakistan">Pakistan</option>
+                      <option value="Bangladesh">Bangladesh</option>
+                      <option value="Nigeria">Nigeria</option>
+                      <option value="Kenya">Kenya</option>
+                      <option value="Other">Other</option>
+                    </select>
                   </div>
 
                   {/* If region is INDIA */}
