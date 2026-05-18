@@ -360,35 +360,36 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 {/* Country Selector */}
                 <div className="flex flex-col gap-3">
                   <label className="text-[1rem] font-bold text-white tracking-wide block">Country</label>
-                  <select
-                    value={formData.intlBankCountry || ""}
-                    onChange={(e) => {
-                      const country = e.target.value;
-                      const region = country === "India" ? "INDIA" : "INTERNATIONAL";
-                      setFormData({
-                        ...formData,
-                        intlBankCountry: country,
-                        payoutRegion: region,
-                        // clear fields that don't apply
-                        upiId: region === "INTERNATIONAL" ? "" : formData.upiId,
-                        bankAccountName: region === "INTERNATIONAL" ? "" : formData.bankAccountName,
-                        bankAccountNumber: region === "INTERNATIONAL" ? "" : formData.bankAccountNumber,
-                        bankIfsc: region === "INTERNATIONAL" ? "" : formData.bankIfsc,
-                        intlAccountHolderName: region === "INDIA" ? "" : formData.intlAccountHolderName,
-                        intlRoutingNumber: region === "INDIA" ? "" : formData.intlRoutingNumber,
-                        intlAccountNumber: region === "INDIA" ? "" : formData.intlAccountNumber,
-                        intlSortCode: region === "INDIA" ? "" : formData.intlSortCode,
-                        intlIban: region === "INDIA" ? "" : formData.intlIban,
-                        intlBicSwift: region === "INDIA" ? "" : formData.intlBicSwift,
-                        intlBsbCode: region === "INDIA" ? "" : formData.intlBsbCode,
-                        intlTransitNumber: region === "INDIA" ? "" : formData.intlTransitNumber,
-                        intlInstitutionNumber: region === "INDIA" ? "" : formData.intlInstitutionNumber,
-                        paypalEmail: region === "INDIA" ? "" : formData.paypalEmail,
-                      });
-                      setUsePaypal(false);
-                    }}
-                    className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
-                  >
+                  <div className="relative">
+                    <select
+                      value={formData.intlBankCountry || ""}
+                      onChange={(e) => {
+                        const country = e.target.value;
+                        const region = country === "India" ? "INDIA" : "INTERNATIONAL";
+                        setFormData({
+                          ...formData,
+                          intlBankCountry: country,
+                          payoutRegion: region,
+                          // clear fields that don't apply
+                          upiId: region === "INTERNATIONAL" ? "" : formData.upiId,
+                          bankAccountName: region === "INTERNATIONAL" ? "" : formData.bankAccountName,
+                          bankAccountNumber: region === "INTERNATIONAL" ? "" : formData.bankAccountNumber,
+                          bankIfsc: region === "INTERNATIONAL" ? "" : formData.bankIfsc,
+                          intlAccountHolderName: region === "INDIA" ? "" : formData.intlAccountHolderName,
+                          intlRoutingNumber: region === "INDIA" ? "" : formData.intlRoutingNumber,
+                          intlAccountNumber: region === "INDIA" ? "" : formData.intlAccountNumber,
+                          intlSortCode: region === "INDIA" ? "" : formData.intlSortCode,
+                          intlIban: region === "INDIA" ? "" : formData.intlIban,
+                          intlBicSwift: region === "INDIA" ? "" : formData.intlBicSwift,
+                          intlBsbCode: region === "INDIA" ? "" : formData.intlBsbCode,
+                          intlTransitNumber: region === "INDIA" ? "" : formData.intlTransitNumber,
+                          intlInstitutionNumber: region === "INDIA" ? "" : formData.intlInstitutionNumber,
+                          paypalEmail: region === "INDIA" ? "" : formData.paypalEmail,
+                        });
+                        setUsePaypal(false);
+                      }}
+                      className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] appearance-none pr-10"
+                    >
                     <option value="" disabled>Select your country</option>
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="Albania">Albania</option>
@@ -523,7 +524,13 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                     <option value="Zimbabwe">Zimbabwe</option>
                     <option value="Other">Other</option>
                   </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
+                    <svg className="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
                 </div>
+              </div>
 
                 {/* If country has been selected */}
                 {formData.intlBankCountry && (

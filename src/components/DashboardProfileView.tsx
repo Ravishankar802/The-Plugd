@@ -333,35 +333,36 @@ function DashboardProfileContent() {
                   {/* Country Selector */}
                   <div className="flex flex-col gap-3">
                     <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Country</label>
-                    <select
-                      value={promoterData.intlBankCountry || ""}
-                      onChange={(e) => {
-                        const country = e.target.value;
-                        const region = country === "India" ? "INDIA" : "INTERNATIONAL";
-                        setPromoterData({
-                          ...promoterData,
-                          intlBankCountry: country,
-                          payoutRegion: region,
-                          // clear fields that don't apply
-                          upiId: region === "INTERNATIONAL" ? null : promoterData.upiId,
-                          bankAccountName: region === "INTERNATIONAL" ? null : promoterData.bankAccountName,
-                          bankAccountNumber: region === "INTERNATIONAL" ? null : promoterData.bankAccountNumber,
-                          bankIfsc: region === "INTERNATIONAL" ? null : promoterData.bankIfsc,
-                          intlAccountHolderName: region === "INDIA" ? null : promoterData.intlAccountHolderName,
-                          intlRoutingNumber: region === "INDIA" ? null : promoterData.intlRoutingNumber,
-                          intlAccountNumber: region === "INDIA" ? null : promoterData.intlAccountNumber,
-                          intlSortCode: region === "INDIA" ? null : promoterData.intlSortCode,
-                          intlIban: region === "INDIA" ? null : promoterData.intlIban,
-                          intlBicSwift: region === "INDIA" ? null : promoterData.intlBicSwift,
-                          intlBsbCode: region === "INDIA" ? null : promoterData.intlBsbCode,
-                          intlTransitNumber: region === "INDIA" ? null : promoterData.intlTransitNumber,
-                          intlInstitutionNumber: region === "INDIA" ? null : promoterData.intlInstitutionNumber,
-                          paypalEmail: region === "INDIA" ? null : promoterData.paypalEmail,
-                        });
-                        setUsePaypal(false);
-                      }}
-                      className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                    >
+                    <div className="relative">
+                      <select
+                        value={promoterData.intlBankCountry || ""}
+                        onChange={(e) => {
+                          const country = e.target.value;
+                          const region = country === "India" ? "INDIA" : "INTERNATIONAL";
+                          setPromoterData({
+                            ...promoterData,
+                            intlBankCountry: country,
+                            payoutRegion: region,
+                            // clear fields that don't apply
+                            upiId: region === "INTERNATIONAL" ? null : promoterData.upiId,
+                            bankAccountName: region === "INTERNATIONAL" ? null : promoterData.bankAccountName,
+                            bankAccountNumber: region === "INTERNATIONAL" ? null : promoterData.bankAccountNumber,
+                            bankIfsc: region === "INTERNATIONAL" ? null : promoterData.bankIfsc,
+                            intlAccountHolderName: region === "INDIA" ? null : promoterData.intlAccountHolderName,
+                            intlRoutingNumber: region === "INDIA" ? null : promoterData.intlRoutingNumber,
+                            intlAccountNumber: region === "INDIA" ? null : promoterData.intlAccountNumber,
+                            intlSortCode: region === "INDIA" ? null : promoterData.intlSortCode,
+                            intlIban: region === "INDIA" ? null : promoterData.intlIban,
+                            intlBicSwift: region === "INDIA" ? null : promoterData.intlBicSwift,
+                            intlBsbCode: region === "INDIA" ? null : promoterData.intlBsbCode,
+                            intlTransitNumber: region === "INDIA" ? null : promoterData.intlTransitNumber,
+                            intlInstitutionNumber: region === "INDIA" ? null : promoterData.intlInstitutionNumber,
+                            paypalEmail: region === "INDIA" ? null : promoterData.paypalEmail,
+                          });
+                          setUsePaypal(false);
+                        }}
+                        className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner appearance-none pr-10"
+                      >
                       <option value="" disabled>Select your country</option>
                       <option value="Afghanistan">Afghanistan</option>
                       <option value="Albania">Albania</option>
@@ -496,7 +497,13 @@ function DashboardProfileContent() {
                       <option value="Zimbabwe">Zimbabwe</option>
                       <option value="Other">Other</option>
                     </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
+                      <svg className="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
                   </div>
+                </div>
 
                   {/* If country has been selected */}
                   {promoterData.intlBankCountry && (
