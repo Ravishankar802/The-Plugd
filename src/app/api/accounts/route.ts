@@ -40,8 +40,6 @@ export async function POST(req: Request) {
 
     // Validate required fields — no silent fallbacks
     const finalHandle = handle || xHandle;
-    console.log('Attempting to create account with xHandle:', finalHandle);
-    console.log('Request body:', body);
 
     if (!name || !email || !finalHandle) {
       return NextResponse.json(
@@ -56,7 +54,6 @@ export async function POST(req: Request) {
     // Admin Bypass Check
     const session = await getSession();
     const isAdmin = session?.isAdmin;
-    console.log('Is admin:', isAdmin);
 
     const account = await prisma.account.create({
       data: {

@@ -31,8 +31,6 @@ export async function POST(req: Request) {
       key: webhookSecret,
     });
 
-    console.log("Webhook event received:", event.type);
-
     if (event.type === "payment.succeeded") {
       const payment = event.data;
       const metadata = payment.metadata || {};
@@ -78,8 +76,6 @@ export async function POST(req: Request) {
           update: {} // Already a promoter, just record payment was successful if needed
         });
         
-        console.log(`Promoter ${email} successfully joined the program.`);
-
         // Handle Referral Credit Logic for Promoter Signups ($2 payment)
         if (referralCode) {
           const referringPromoter = await prisma.promoter.findFirst({
@@ -112,7 +108,6 @@ export async function POST(req: Request) {
                 }
               })
             ]);
-            console.log(`Referral credited to promoter (for promoter signup): ${referringPromoter.email}`);
           }
         }
 

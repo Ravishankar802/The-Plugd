@@ -154,7 +154,7 @@ export default function LegacyClient() {
               {"Before Google.\nBefore Newspapers.\nBefore Money Had a Name."}
             </h2>
             <p className="anim-fadeup delay-3 text-white/80 text-xs md:text-base leading-5 md:leading-7">
-              In 3000 BC, Egyptian merchants carved referrals into clay tablets passed to travelers heading to distant cities. The oldest written endorsement in human history is not an ad. It is a referral. Greek merchants in 500 BC paid ordinary citizens — not criers — to spread the word through neighborhoods no official could reach. They paid commissions. In ancient Greece. Twenty-five centuries before Silicon Valley invented the word affiliate. In 1270 AD, the Venetian government passed a law regulating referral broker commissions. The system was so powerful it needed legislation.
+              In 3000 BC, Egyptian merchants carved referrals into clay tablets passed to travelers heading to distant cities. The oldest written endorsement in human history is not an ad. It is a referral. Greek merchants in 500 BC paid ordinary citizens - not criers - to spread the word through neighborhoods no official could reach. They paid commissions. In ancient Greece. Twenty-five centuries before Silicon Valley invented the word affiliate. In 1270 AD, the Venetian government passed a law regulating referral broker commissions. The system was so powerful it needed legislation.
             </p>
           </div>
         </section>

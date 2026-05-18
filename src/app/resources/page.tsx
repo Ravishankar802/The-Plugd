@@ -35,7 +35,7 @@ export const articles: Article[] = [
     image: "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=800&q=80&auto=format&fit=crop",
     category: "STRATEGY",
     title: "Which Platforms Convert Best",
-    description: "WhatsApp, Instagram, X, Reddit — ranked by how well referral links actually convert on each one."
+    description: "WhatsApp, Instagram, X, Reddit - ranked by how well referral links actually convert on each one."
   },
   {
     slug: "writing-your-message",

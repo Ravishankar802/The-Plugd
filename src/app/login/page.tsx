@@ -30,11 +30,11 @@ function LoginContent() {
     if (message) {
       setSuccessMsg(message);
     } else if (success === "true") {
-      setSuccessMsg("Payment successful! Enter your email to access your dashboard");
+      setSuccessMsg("Payment successful! Enter your email to access your Vault");
     }
 
     if (err === "not_paid") {
-      setError("You need a paid account to access the dashboard");
+      setError("You need a paid account to access the Vault");
     }
   }, [searchParams]);
 

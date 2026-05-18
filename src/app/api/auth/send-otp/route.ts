@@ -2,7 +2,13 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let resendInstance: Resend | null = null;
+function getResend() {
+  if (!resendInstance) {
+    resendInstance = new Resend(process.env.RESEND_API_KEY);
+  }
+  return resendInstance;
+}
 
 export async function POST(req: Request) {
   try {
@@ -11,8 +17,6 @@ export async function POST(req: Request) {
     if (!email) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
-
-    console.log(`[AUTH] Sending OTP to: ${email}`);
 
     // Admin bypass
     const isAdmin = email.toLowerCase() === process.env.NEXT_PUBLIC_ADMIN_EMAIL?.toLowerCase();
@@ -63,13 +67,12 @@ export async function POST(req: Request) {
     }
 
     try {
-      await resend.emails.send({
+      await getResend().emails.send({
         from: "Plugd <noreply@theplugd.com>",
         to: email,
         subject: "Your Plugd login code",
         html: `<p>Your login code is <strong>${code}</strong>. It expires in 10 minutes.</p>`,
       });
-      console.log(`[AUTH] OTP sent successfully via Resend to: ${email}`);
     } catch (mailError) {
       console.error("[AUTH] Resend error:", mailError);
       return NextResponse.json(

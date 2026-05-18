@@ -24,7 +24,6 @@ import {
   Save,
   Share2
 } from "lucide-react";
-import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
 import { getFieldsForCountry } from "@/lib/payoutFieldsByCountry";
@@ -60,12 +59,12 @@ function DashboardProfileContent() {
   const link = `https://theplugd.com?ref=${referralLinkSuffix}`;
 
   const POST_VARIATIONS = [
-    `guys I've been sharing this link for a week and already making money. every time someone signs up through it I get $1. it's ${link} — join and you get your own link too`,
-    `not gonna lie I was skeptical but this actually works. share a link, someone joins, you get $1. been doing it in my groups. link — ${link}`,
-    `if you're in a lot of WhatsApp groups or have decent followers anywhere, this is worth 2 minutes of your time. $1 per signup through your link — ${link}`
+    `guys I've been sharing this link for a week and already making money. every time someone signs up through it I get $1. it's ${link} - join and you get your own link too`,
+    `not gonna lie I was skeptical but this actually works. share a link, someone joins, you get $1. been doing it in my groups. link - ${link}`,
+    `if you're in a lot of WhatsApp groups or have decent followers anywhere, this is worth 2 minutes of your time. $1 per signup through your link - ${link}`
   ];
 
-  const dmTemplate = `hey [name], random but thought of you — there's this thing called Plugd, you share a referral link and get $1 every time someone joins. I've been doing it and already making money just dropping it in groups. here's mine if you want to check it out first: ${link}. if you join you get your own link`;
+  const dmTemplate = `hey [name], random but thought of you - there's this thing called Plugd, you share a referral link and get $1 every time someone joins. I've been doing it and already making money just dropping it in groups. here's mine if you want to check it out first: ${link}. if you join you get your own link`;
 
   // Determine active section from tab param
   const activeSection = ["profile", "referrals", "earnings"].includes(tab) ? tab : "profile";
@@ -867,19 +866,19 @@ function DashboardProfileContent() {
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        Send the DM template to 20 people you know today — not a blast, actual people you'd text normally
+                        Send the DM template to 20 people you know today - not a blast, actual people you'd text normally
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        Drop it in your WhatsApp groups as a genuine tip, not an ad — people trust you there
+                        Drop it in your WhatsApp groups as a genuine tip, not an ad - people trust you there
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        Post on X replying to your own post with the link — your followers see it twice
+                        Post on X replying to your own post with the link - your followers see it twice
                       </p>
                     </div>
                     <div className="flex gap-4">
@@ -891,7 +890,7 @@ function DashboardProfileContent() {
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">5</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        Pin it in your Instagram bio and mention it in one story — passive clicks forever
+                        Pin it in your Instagram bio and mention it in one story - passive clicks forever
                       </p>
                     </div>
                   </div>

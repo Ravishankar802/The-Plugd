@@ -37,8 +37,6 @@ export async function PATCH(req: Request) {
       paypalEmail
     } = body;
 
-    console.log("DEBUG: Updating promoter:", email, body);
-
     if (username) {
       const trimmed = username.trim();
       if (
