@@ -1091,9 +1091,9 @@ function DashboardProfileContent() {
 
               <p className="text-[0.75rem] text-muted text-center font-medium flex items-center justify-center gap-2">
                 Payouts are processed twice a month.
-                <Link href="https://x.com/ravx003" target="_blank" className="text-[#16a34a] font-bold hover:underline inline-flex items-center gap-1">
+                <a href="mailto:support@theplugd.com" className="text-[#16a34a] font-bold hover:underline inline-flex items-center gap-1">
                   Contact Support <ExternalLink className="w-3 h-3" />
-                </Link>
+                </a>
               </p>
             </div>
           )}

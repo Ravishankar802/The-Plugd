@@ -221,11 +221,14 @@ export default function Footer({
                     <Link href="/vault" className="transition-colors">Vault</Link>
                     <span className={mutedTextColor}>·</span>
                     <Link href="/terms-of-service" className="transition-colors">Terms</Link>
+                    <span className={mutedTextColor}>·</span>
+                    <a href="mailto:support@theplugd.com" className="transition-colors">Contact</a>
                   </div>
                   <div className="hidden md:flex items-center gap-6">
                     <Link href="/" className="transition-colors">Home</Link>
                     <Link href="/vault" className="transition-colors">Vault</Link>
                     <Link href="/terms-of-service" className="transition-colors">Terms of Service</Link>
+                    <a href="mailto:support@theplugd.com" className="transition-colors">Contact</a>
                   </div>
                 </div>
               )}
