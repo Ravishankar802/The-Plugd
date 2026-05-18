@@ -269,16 +269,24 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
         className="relative w-full max-w-xl bg-pill border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300 max-h-[90vh] georgia-modal"
       >
         
-        {/* Close Button */}
+        {/* Close Button - Desktop Only */}
         <button 
           onClick={onClose} 
-          className="fixed top-6 right-6 z-[110] sm:absolute sm:top-6 sm:right-6 sm:z-50 p-2 hover:bg-accent rounded-full transition-all text-muted hover:text-foreground border border-transparent hover:border-border"
+          className="hidden sm:block absolute top-6 right-6 p-2 hover:bg-accent rounded-full transition-all text-muted hover:text-foreground border border-transparent hover:border-border z-50"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Content Area */}
         <div className={`px-8 pt-10 pb-8 flex flex-col items-center max-h-[90vh] overflow-y-auto no-scrollbar`}>
+          
+          {/* Close Button - Mobile Only */}
+          <button
+            onClick={onClose}
+            className="sm:hidden self-end p-2 mb-2 hover:bg-accent rounded-full transition-all text-muted hover:text-foreground border border-transparent hover:border-border"
+          >
+            <X className="w-5 h-5" />
+          </button>
           
           {/* Top Decorative Icon */}
           <div className="flex justify-center mb-5">
