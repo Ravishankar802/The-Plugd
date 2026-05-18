@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { X, ArrowRight, Link as LinkIcon, DollarSign, Infinity, Gift, Sparkles, Loader2, Mail } from "lucide-react";
 import { useTheme } from "next-themes";
 import { getFieldsForCountry } from "@/lib/payoutFieldsByCountry";
@@ -770,7 +771,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
           )}
 
           {/* Primary CTA */}
-          <div className="w-full">
+          <div className="w-full space-y-3">
             <button
               onClick={handleJoin}
               disabled={loading || (showEmailInput && (usernameStatus !== 'available' || !formData.name.trim() || !formData.email.trim() || !isPayoutInfoFilled()))}
@@ -783,6 +784,15 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 </>
               )}
             </button>
+
+            {!showEmailInput && (
+              <p className="text-center text-xs text-muted/80 font-bold font-sans">
+                Already a member?{" "}
+                <Link href="/login" className="text-foreground hover:underline transition-all">
+                  Log in
+                </Link>
+              </p>
+            )}
           </div>
           
         </div>
