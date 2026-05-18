@@ -13,7 +13,20 @@ export async function PATCH(req: Request) {
     const email = session.email;
 
     const body = await req.json();
-    const { name, xHandle, username, payoutMethod, payoutDetails } = body;
+    const { 
+      name, 
+      xHandle, 
+      username, 
+      payoutMethod, 
+      payoutDetails,
+      payoutRegion,
+      upiId,
+      bankAccountName,
+      bankAccountNumber,
+      bankIfsc,
+      payoneerEmail,
+      paypalEmail
+    } = body;
 
     console.log("DEBUG: Updating promoter:", email, body);
 
@@ -56,6 +69,13 @@ export async function PATCH(req: Request) {
         username: username || null,
         payoutMethod: payoutMethod || null,
         payoutDetails: payoutDetails || null,
+        payoutRegion: payoutRegion || null,
+        upiId: upiId || null,
+        bankAccountName: bankAccountName || null,
+        bankAccountNumber: bankAccountNumber || null,
+        bankIfsc: bankIfsc || null,
+        payoneerEmail: payoneerEmail || null,
+        paypalEmail: paypalEmail || null,
         referralCode: username || `${email.split("@")[0]}-${Math.random().toString(36).substring(2, 6)}`,
       },
       update: {
@@ -63,7 +83,14 @@ export async function PATCH(req: Request) {
         xHandle,
         username,
         payoutMethod,
-        payoutDetails
+        payoutDetails,
+        payoutRegion,
+        upiId,
+        bankAccountName,
+        bankAccountNumber,
+        bankIfsc,
+        payoneerEmail,
+        paypalEmail
       }
     });
 

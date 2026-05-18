@@ -62,8 +62,15 @@ model Promoter {
   xHandle          String?
   username         String?  @unique
   referralCode     String   @unique
-  payoutMethod     String?
-  payoutDetails    String?
+  payoutMethod     String? // @deprecated
+  payoutDetails    String? // @deprecated
+  payoutRegion     String?
+  upiId            String?
+  bankAccountName  String?
+  bankAccountNumber String?
+  bankIfsc         String?
+  payoneerEmail    String?
+  paypalEmail      String?
   totalEarned      Float    @default(0)
   pendingPayout    Float    @default(0)
   totalPaid        Float    @default(0)

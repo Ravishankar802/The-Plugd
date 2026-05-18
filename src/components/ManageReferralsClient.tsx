@@ -42,6 +42,13 @@ interface Promoter {
   referralCode: string;
   payoutMethod: string | null;
   payoutDetails: string | null;
+  payoutRegion: string | null;
+  upiId: string | null;
+  bankAccountName: string | null;
+  bankAccountNumber: string | null;
+  bankIfsc: string | null;
+  payoneerEmail: string | null;
+  paypalEmail: string | null;
   totalEarned: number;
   pendingPayout: number;
   totalPaid: number;
@@ -52,6 +59,28 @@ interface Promoter {
   createdAt: string;
   payouts: Payout[];
   pendingWithdrawalRequest: WithdrawalRequest | null;
+}
+
+function getPayoutSummary(promoter: Promoter) {
+  if (promoter.payoutRegion === "INDIA") {
+    if (promoter.upiId) {
+      return `UPI: ${promoter.upiId}`;
+    } else if (promoter.bankAccountNumber) {
+      return `Bank: ${promoter.bankAccountName || ""} | ${promoter.bankAccountNumber} | ${promoter.bankIfsc || ""}`;
+    }
+    return promoter.payoutDetails || "";
+  }
+  
+  if (promoter.payoutRegion === "INTERNATIONAL") {
+    if (promoter.payoneerEmail) {
+      return `Payoneer: ${promoter.payoneerEmail}`;
+    } else if (promoter.paypalEmail) {
+      return `PayPal: ${promoter.paypalEmail}`;
+    }
+    return promoter.payoutDetails || "";
+  }
+  
+  return promoter.payoutDetails || "";
 }
 
 export default function ManageReferralsClient() {
@@ -455,20 +484,20 @@ export default function ManageReferralsClient() {
                   </p>
                 </div>
 
-                {(payoutPromoter.payoutMethod || payoutPromoter.pendingWithdrawalRequest) && (
+                {(payoutPromoter.payoutMethod || payoutPromoter.payoutRegion || payoutPromoter.pendingWithdrawalRequest) && (
                   <div className="bg-pill border border-border rounded-xl p-4 space-y-2">
                     <p className="text-[0.7rem] text-muted font-bold uppercase tracking-widest text-left">
                       {payoutPromoter.pendingWithdrawalRequest ? "Requested Payout Info" : "Payment Info"}
                     </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-foreground font-bold">
-                        {payoutPromoter.pendingWithdrawalRequest?.method || payoutPromoter.payoutMethod}
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-foreground font-bold shrink-0">
+                        {payoutPromoter.pendingWithdrawalRequest?.method || payoutPromoter.payoutRegion || payoutPromoter.payoutMethod}
                       </span>
                       <button 
-                        onClick={() => handleCopy(payoutPromoter.pendingWithdrawalRequest?.details || payoutPromoter.payoutDetails || "", 'details')}
-                        className="text-[#16a34a] font-bold text-sm hover:underline flex items-center gap-1"
+                        onClick={() => handleCopy(payoutPromoter.pendingWithdrawalRequest?.details || getPayoutSummary(payoutPromoter), 'details')}
+                        className="text-[#16a34a] font-bold text-sm hover:underline flex items-center gap-1 text-right break-all"
                       >
-                        {payoutPromoter.pendingWithdrawalRequest?.details || payoutPromoter.payoutDetails} <Copy size={12} />
+                        {payoutPromoter.pendingWithdrawalRequest?.details || getPayoutSummary(payoutPromoter)} <Copy size={12} className="shrink-0" />
                       </button>
                     </div>
                   </div>

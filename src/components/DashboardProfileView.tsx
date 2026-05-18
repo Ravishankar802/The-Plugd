@@ -52,6 +52,8 @@ function DashboardProfileContent() {
   const [hasPendingWithdrawal, setHasPendingWithdrawal] = useState(false);
   const [withdrawalSuccessMessage, setWithdrawalSuccessMessage] = useState<string | null>(null);
   const [requestingWithdrawal, setRequestingWithdrawal] = useState(false);
+  const [useBankTransfer, setUseBankTransfer] = useState(false);
+  const [usePaypal, setUsePaypal] = useState(false);
 
   const referralLinkSuffix = promoterData?.username || promoterData?.referralCode || "";
   const link = `https://theplugd.com?ref=${referralLinkSuffix}`;
@@ -77,6 +79,10 @@ function DashboardProfileContent() {
           setIsAdmin(data.isAdmin);
           setPromoterData(data.promoterData);
           setHasPendingWithdrawal(data.hasPendingWithdrawal || false);
+          if (data.promoterData) {
+            setUseBankTransfer(!!data.promoterData.bankAccountNumber);
+            setUsePaypal(!!data.promoterData.paypalEmail && !data.promoterData.payoneerEmail);
+          }
         } else {
           router.push("/login");
         }
@@ -180,6 +186,18 @@ function DashboardProfileContent() {
     setPromoterError(null);
 
     try {
+      let derivedMethod = promoterData.payoutMethod;
+      let derivedDetails = promoterData.payoutDetails;
+      if (promoterData.payoutRegion === "INDIA") {
+        derivedMethod = useBankTransfer ? "Bank" : "UPI";
+        derivedDetails = useBankTransfer 
+          ? `${promoterData.bankAccountName || ""} | ${promoterData.bankAccountNumber || ""} | ${promoterData.bankIfsc || ""}` 
+          : promoterData.upiId;
+      } else if (promoterData.payoutRegion === "INTERNATIONAL") {
+        derivedMethod = usePaypal ? "PayPal" : "Payoneer";
+        derivedDetails = usePaypal ? promoterData.paypalEmail : promoterData.payoneerEmail;
+      }
+
       const res = await fetch("/api/promoters/me", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -187,8 +205,15 @@ function DashboardProfileContent() {
           name: promoterData.name,
           xHandle: promoterData.xHandle,
           username: promoterData.username,
-          payoutMethod: promoterData.payoutMethod,
-          payoutDetails: promoterData.payoutDetails
+          payoutMethod: derivedMethod,
+          payoutDetails: derivedDetails,
+          payoutRegion: promoterData.payoutRegion,
+          upiId: promoterData.upiId,
+          bankAccountName: promoterData.bankAccountName,
+          bankAccountNumber: promoterData.bankAccountNumber,
+          bankIfsc: promoterData.bankIfsc,
+          payoneerEmail: promoterData.payoneerEmail,
+          paypalEmail: promoterData.paypalEmail
         })
       });
 
@@ -287,47 +312,183 @@ function DashboardProfileContent() {
                     </div>
                   </div>
 
-                  {/* Payout Method Toggle */}
+                  {/* Payout Region Selector */}
                   <div className="flex flex-col gap-3">
-                    <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Payout Method</label>
+                    <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Payout Region</label>
                     <div className="flex gap-3 max-w-sm">
                       <button
                         type="button"
-                        onClick={() => setPromoterData({ ...promoterData, payoutMethod: "PayPal" })}
-                        className={`flex-1 py-4 rounded-xl border font-bold transition-all ${
-                          promoterData.payoutMethod === "PayPal" 
-                          ? "bg-[#16a34a] text-white border-[#16a34a] shadow-lg shadow-green-600/20" 
+                        onClick={() => {
+                          setPromoterData({
+                            ...promoterData,
+                            payoutRegion: "INDIA",
+                            payoneerEmail: null,
+                            paypalEmail: null
+                          });
+                        }}
+                        className={`flex-1 py-4 rounded-xl border font-bold transition-all cursor-pointer ${
+                          promoterData.payoutRegion === "INDIA"
+                          ? "bg-[#16a34a] text-white border-[#16a34a] shadow-lg shadow-green-600/20"
                           : "bg-background text-muted border-border hover:border-muted"
                         }`}
                       >
-                        PayPal
+                        India
                       </button>
                       <button
                         type="button"
-                        onClick={() => setPromoterData({ ...promoterData, payoutMethod: "UPI" })}
-                        className={`flex-1 py-4 rounded-xl border font-bold transition-all ${
-                          promoterData.payoutMethod === "UPI" 
-                          ? "bg-[#16a34a] text-white border-[#16a34a] shadow-lg shadow-green-600/20" 
+                        onClick={() => {
+                          setPromoterData({
+                            ...promoterData,
+                            payoutRegion: "INTERNATIONAL",
+                            upiId: null,
+                            bankAccountName: null,
+                            bankAccountNumber: null,
+                            bankIfsc: null
+                          });
+                        }}
+                        className={`flex-1 py-4 rounded-xl border font-bold transition-all cursor-pointer ${
+                          promoterData.payoutRegion === "INTERNATIONAL"
+                          ? "bg-[#16a34a] text-white border-[#16a34a] shadow-lg shadow-green-600/20"
                           : "bg-background text-muted border-border hover:border-muted"
                         }`}
                       >
-                        UPI
+                        International
                       </button>
                     </div>
                   </div>
 
-                  {/* Payout Details */}
-                  <div className="flex flex-col gap-3">
-                    <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Payout Details</label>
-                    <input
-                      required
-                      type="text"
-                      placeholder={promoterData.payoutMethod === "PayPal" ? "Your PayPal email" : "Your UPI ID (e.g. name@upi)"}
-                      value={promoterData.payoutDetails || ""}
-                      onChange={(e) => setPromoterData({ ...promoterData, payoutDetails: e.target.value })}
-                      className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
-                    />
-                  </div>
+                  {/* If region is INDIA */}
+                  {promoterData.payoutRegion === "INDIA" && (
+                    <div className="space-y-6">
+                      {!useBankTransfer ? (
+                        <div className="flex flex-col gap-3">
+                          <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">UPI ID</label>
+                          <input
+                            required={!useBankTransfer}
+                            type="text"
+                            placeholder="name@upi"
+                            value={promoterData.upiId || ""}
+                            onChange={(e) => setPromoterData({ ...promoterData, upiId: e.target.value })}
+                            className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                          />
+                        </div>
+                      ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                          <div className="flex flex-col gap-3">
+                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Account Holder Name</label>
+                            <input
+                              required={useBankTransfer}
+                              type="text"
+                              placeholder="As in bank records"
+                              value={promoterData.bankAccountName || ""}
+                              onChange={(e) => setPromoterData({ ...promoterData, bankAccountName: e.target.value })}
+                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                            />
+                          </div>
+                          <div className="flex flex-col gap-3">
+                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Bank Account Number</label>
+                            <input
+                              required={useBankTransfer}
+                              type="text"
+                              placeholder="Account number"
+                              value={promoterData.bankAccountNumber || ""}
+                              onChange={(e) => setPromoterData({ ...promoterData, bankAccountNumber: e.target.value })}
+                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                            />
+                          </div>
+                          <div className="flex flex-col gap-3">
+                            <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">IFSC Code</label>
+                            <input
+                              required={useBankTransfer}
+                              type="text"
+                              placeholder="HDFC0000053"
+                              value={promoterData.bankIfsc || ""}
+                              onChange={(e) => setPromoterData({ ...promoterData, bankIfsc: e.target.value })}
+                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                            />
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="flex items-center gap-3">
+                        <input
+                          id="useBankTransfer"
+                          type="checkbox"
+                          checked={useBankTransfer}
+                          onChange={(e) => {
+                            const val = e.target.checked;
+                            setUseBankTransfer(val);
+                            if (val) {
+                              setPromoterData({ ...promoterData, upiId: null });
+                            } else {
+                              setPromoterData({
+                                ...promoterData,
+                                bankAccountName: null,
+                                bankAccountNumber: null,
+                                bankIfsc: null
+                              });
+                            }
+                          }}
+                          className="w-4 h-4 rounded border-border text-[#16a34a] focus:ring-[#16a34a] cursor-pointer"
+                        />
+                        <label htmlFor="useBankTransfer" className="text-sm font-bold text-muted cursor-pointer select-none">
+                          Use bank transfer instead
+                        </label>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* If region is INTERNATIONAL */}
+                  {promoterData.payoutRegion === "INTERNATIONAL" && (
+                    <div className="space-y-6">
+                      {!usePaypal ? (
+                        <div className="flex flex-col gap-3">
+                          <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Payoneer Email</label>
+                          <input
+                            required={!usePaypal}
+                            type="email"
+                            placeholder="Your Payoneer email"
+                            value={promoterData.payoneerEmail || ""}
+                            onChange={(e) => setPromoterData({ ...promoterData, payoneerEmail: e.target.value })}
+                            className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                          />
+                        </div>
+                      ) : (
+                        <div className="flex flex-col gap-3">
+                          <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">PayPal Email</label>
+                          <input
+                            required={usePaypal}
+                            type="email"
+                            placeholder="Your PayPal email"
+                            value={promoterData.paypalEmail || ""}
+                            onChange={(e) => setPromoterData({ ...promoterData, paypalEmail: e.target.value })}
+                            className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                          />
+                        </div>
+                      )}
+
+                      <div className="flex items-center gap-3">
+                        <input
+                          id="usePaypal"
+                          type="checkbox"
+                          checked={usePaypal}
+                          onChange={(e) => {
+                            const val = e.target.checked;
+                            setUsePaypal(val);
+                            if (val) {
+                              setPromoterData({ ...promoterData, payoneerEmail: null });
+                            } else {
+                              setPromoterData({ ...promoterData, paypalEmail: null });
+                            }
+                          }}
+                          className="w-4 h-4 rounded border-border text-[#16a34a] focus:ring-[#16a34a] cursor-pointer"
+                        />
+                        <label htmlFor="usePaypal" className="text-sm font-bold text-muted cursor-pointer select-none">
+                          I don't have Payoneer
+                        </label>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Referral Link */}
                   <div className="flex flex-col gap-3">
