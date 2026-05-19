@@ -59,56 +59,19 @@ function DashboardProfileContent() {
   const link = `https://theplugd.com?ref=${referralLinkSuffix}`;
 
   const POST_VARIATIONS = [
-    `someone sent me this a few weeks ago and i almost ignored it 💀
-
-it's called Plugd. you pay $2, you get a link, every person who joins through it puts $1 in your pocket 💸
-
-top earner is at $25K+ 😭🔥
-
-i've been dropping it in whatsapp groups, telegram, discord, everywhere -- and it's spreading like crazy 🤯
-
-the internet is INFINITE 🌍 all you need is your link
-
+    `if you've never heard of Plugd, it's a referral platform 💸
+pay $2 once, get your link, share it everywhere -- whatsapp, telegram, discord, twitter, wherever
+every person who joins through your link = $1 in your earnings
+stay consistent and it builds up fast 👉 ${link}`,
+    `Plugd is a referral program and honestly one of the simplest ways to make money online 💸
+$2 to join. you get a unique link. every signup through your link pays you $1 back.
+share it consistently and it compounds. i'm doing it.
 👉 ${link}`,
-    `not gonna lie i thought this was bs at first 💀
-
-but i've been making money from literally just sharing a link so 😭💸
-
-it's called Plugd -- $2 to join, every signup through your link pays you $1 back
-
-people on here are sitting at $25K+ in earnings 😭🔥
-
-here's my link if you want in 👉 ${link}`,
-    `$2 to join. you get a link. every single person who joins through your link puts $1 in your pocket 💸
-
-i've been sending it to whatsapp groups, telegram groups, discord servers, reddit threads, DM'ing it to my followers -- and it's spreading like crazy 🤯
-
-bro think about it -- you know people. those people know people. the internet is INFINITE 🌍🔥
-
-top earner on the platform is at $25K+ 😭
-
-it's called Plugd and it's the simplest thing i've ever done
-
-👉 ${link}`
+    `joined this referral platform called Plugd a while back 💸
+the model is simple -- pay $2, get your own referral link, earn $1 every time someone signs up through it
+the more consistently you share it, the more it adds up
+here's my link 👉 ${link}`
   ];
-
-  const dmTemplate = `bro okay listen 👀
-
-there's this platform called Plugd and i genuinely can't stop thinking about it 😭
-
-you pay $2, you get your own link, every single person who joins through your link puts $1 in your pocket 💸
-
-sounds too simple right 💀 that's what i said
-
-people on here are making insane money just sending a link to everyone they know -- whatsapp, telegram, discord, twitter, reddit, everywhere 🤯
-
-the top earner is sitting at $25K+ 😭🔥
-
-bro the internet has billions of people on it. BILLIONS. and all you need is your link 🌍
-
-here's mine 👉 ${link}
-
-join and get yours. then go send it to everyone 💸`;
 
   // Determine active section from tab param
   const activeSection = ["profile", "referrals", "earnings"].includes(tab) ? tab : "profile";
@@ -814,13 +777,16 @@ join and get yours. then go send it to everyone 💸`;
                   <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
                     <Share2 className="w-4 h-4 text-foreground" />
                   </div>
-                  <h3 className="text-lg font-bold text-foreground">Sharing Kit</h3>
+                  <h3 className="text-lg font-bold text-foreground">Post Ideas</h3>
                 </div>
                 
                 <div className="flex flex-col gap-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                     <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 flex flex-col justify-between">
                       <div className="space-y-4">
+                        <p className="text-xs text-muted font-normal">
+                          these are just post ideas to get you started -- customize them, make it sound like you ✏️
+                        </p>
                         <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">
                           {[1, 2, 3].map((num, idx) => (
                             <button
@@ -872,29 +838,6 @@ join and get yours. then go send it to everyone 💸`;
                 </div>
               </div>
 
-              <div className="space-y-6 pt-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
-                    <ExternalLink className="w-4 h-4 text-foreground" />
-                  </div>
-                  <h3 className="text-lg font-bold text-foreground">DM Template</h3>
-                </div>
-
-                <div className="bg-pill border border-border rounded-2xl p-6 space-y-5">
-                  <p className="text-sm text-muted font-medium leading-relaxed" style={{ whiteSpace: "pre-line" }}>
-                    {dmTemplate}
-                  </p>
-                  <div className="space-y-3">
-                    <button 
-                      type="button"
-                      onClick={() => copyToClipboard(dmTemplate, 'dm')}
-                      className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
-                    >
-                      {copied === 'dm' ? <Check className="w-4 h-4 text-green-500" /> : <><Copy className="w-5 h-5" /> Copy DM Template</>}
-                    </button>
-                  </div>
-                </div>
-              </div>
 
               <div className="space-y-6 pt-4">
                 <div className="flex items-center gap-3">
