@@ -59,12 +59,56 @@ function DashboardProfileContent() {
   const link = `https://theplugd.com?ref=${referralLinkSuffix}`;
 
   const POST_VARIATIONS = [
-    `guys I've been sharing this link for a week and already making money. every time someone signs up through it I get $1. it's ${link} - join and you get your own link too`,
-    `not gonna lie I was skeptical but this actually works. share a link, someone joins, you get $1. been doing it in my groups. link - ${link}`,
-    `if you're in a lot of WhatsApp groups or have decent followers anywhere, this is worth 2 minutes of your time. $1 per signup through your link - ${link}`
+    `someone sent me this a few weeks ago and i almost ignored it 💀
+
+it's called Plugd. you pay $2, you get a link, every person who joins through it puts $1 in your pocket 💸
+
+top earner is at $25K+ 😭🔥
+
+i've been dropping it in whatsapp groups, telegram, discord, everywhere -- and it's spreading like crazy 🤯
+
+the internet is INFINITE 🌍 all you need is your link
+
+👉 ${link}`,
+    `not gonna lie i thought this was bs at first 💀
+
+but i've been making money from literally just sharing a link so 😭💸
+
+it's called Plugd -- $2 to join, every signup through your link pays you $1 back
+
+people on here are sitting at $25K+ in earnings 😭🔥
+
+here's my link if you want in 👉 ${link}`,
+    `$2 to join. you get a link. every single person who joins through your link puts $1 in your pocket 💸
+
+i've been sending it to whatsapp groups, telegram groups, discord servers, reddit threads, DM'ing it to my followers -- and it's spreading like crazy 🤯
+
+bro think about it -- you know people. those people know people. the internet is INFINITE 🌍🔥
+
+top earner on the platform is at $25K+ 😭
+
+it's called Plugd and it's the simplest thing i've ever done
+
+👉 ${link}`
   ];
 
-  const dmTemplate = `hey [name], random but thought of you - there's this thing called Plugd, you share a referral link and get $1 every time someone joins. I've been doing it and already making money just dropping it in groups. here's mine if you want to check it out first: ${link}. if you join you get your own link`;
+  const dmTemplate = `bro okay listen 👀
+
+there's this platform called Plugd and i genuinely can't stop thinking about it 😭
+
+you pay $2, you get your own link, every single person who joins through your link puts $1 in your pocket 💸
+
+sounds too simple right 💀 that's what i said
+
+people on here are making insane money just sending a link to everyone they know -- whatsapp, telegram, discord, twitter, reddit, everywhere 🤯
+
+the top earner is sitting at $25K+ 😭🔥
+
+bro the internet has billions of people on it. BILLIONS. and all you need is your link 🌍
+
+here's mine 👉 ${link}
+
+join and get yours. then go send it to everyone 💸`;
 
   // Determine active section from tab param
   const activeSection = ["profile", "referrals", "earnings"].includes(tab) ? tab : "profile";
@@ -848,9 +892,6 @@ function DashboardProfileContent() {
                     >
                       {copied === 'dm' ? <Check className="w-4 h-4 text-green-500" /> : <><Copy className="w-5 h-5" /> Copy DM Template</>}
                     </button>
-                    <p className="text-[0.7rem] text-muted/60 font-bold uppercase tracking-wider text-center">
-                      Replace [name] with their actual name before sending.
-                    </p>
                   </div>
                 </div>
               </div>
