@@ -60,16 +60,25 @@ function DashboardProfileContent() {
 
   const POST_VARIATIONS = [
     `if you've never heard of Plugd, it's a referral platform 💸
-pay $2 once, get your link, share it everywhere -- whatsapp, telegram, discord, twitter, wherever
+
+pay $2 once, get your link, share it everywhere - whatsapp, telegram, discord, twitter, wherever
+
 every person who joins through your link = $1 in your earnings
+
 stay consistent and it builds up fast 👉 ${link}`,
     `Plugd is a referral program and honestly one of the simplest ways to make money online 💸
+
 $2 to join. you get a unique link. every signup through your link pays you $1 back.
+
 share it consistently and it compounds. i'm doing it.
+
 👉 ${link}`,
     `joined this referral platform called Plugd a while back 💸
-the model is simple -- pay $2, get your own referral link, earn $1 every time someone signs up through it
+
+the model is simple - pay $2, get your own referral link, earn $1 every time someone signs up through it
+
 the more consistently you share it, the more it adds up
+
 here's my link 👉 ${link}`
   ];
 
@@ -785,7 +794,7 @@ here's my link 👉 ${link}`
                     <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 flex flex-col justify-between">
                       <div className="space-y-4">
                         <p className="text-xs text-muted font-normal">
-                          these are just post ideas to get you started -- customize them, make it sound like you ✏️
+                          these are just post ideas to get you started, customize them, make it sound like you
                         </p>
                         <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">
                           {[1, 2, 3].map((num, idx) => (
