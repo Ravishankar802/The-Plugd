@@ -861,61 +861,61 @@ here's my link 👉 ${link}`
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        open your contacts. send the DM to everyone you think would actually do something with this. don&apos;t overthink it, just send 💀
+                        Open your contacts. Send your link to everyone you think would actually do something with this. Don&apos;t overthink it, just send.
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        you&apos;re in WhatsApp and Telegram groups you haven&apos;t opened in months -- drop your link there. those people haven&apos;t seen it 🤯
+                        Drop your link in every WhatsApp and Telegram group you&apos;re in.
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        go on X -- post it, reply with it, DM it to your followers. everywhere 👀
+                        Go on X. Post it, reply with it, DM it to your followers. Everywhere.
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        find Reddit threads and Discord servers about making money, side hustles, passive income -- drop your link there 💸
+                        Find Reddit threads and Discord servers about making money, side hustles, passive income. Drop your link there.
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">5</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        post your link in your Instagram story and TikTok -- 10 seconds and it works while you sleep 😭🔥
+                        Post your link in your Instagram story and TikTok. 10 seconds and it works while you sleep.
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">6</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        put your referral link in your Instagram bio, X bio, TikTok bio -- passive clicks every time someone visits your profile 👀
+                        Put your referral link in your Instagram bio, X bio, TikTok bio. Passive clicks every time someone visits your profile.
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">7</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        find Facebook groups about making money online -- there are millions of people in there just waiting to see this 😭
+                        Find Facebook groups about making money online. Millions of people in there who haven&apos;t seen this yet.
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">8</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        go to YouTube -- find videos about making money online and drop your link in the comments. people are already in the mindset to act 🔥
+                        Go to YouTube. Find videos about making money online and drop your link in the comments. Those people are already looking.
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">9</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        find friends who have big followings and ask them to share your link -- one post from the right person changes everything 👀
+                        Find friends who have big followings and ask them to share your link. One post from the right person changes everything.
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">10</div>
                       <p className="text-sm text-muted font-medium leading-relaxed">
-                        don&apos;t just send once and stop. follow up. people need to see things multiple times before they act 💸
+                        Don&apos;t just send once and stop. Follow up. People need to see something multiple times before they act.
                       </p>
                     </div>
                   </div>
