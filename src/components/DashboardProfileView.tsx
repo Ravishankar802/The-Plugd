@@ -837,7 +837,7 @@ join and get yours. then go send it to everyone 💸`;
                           ))}
                         </div>
                         <div className="min-h-[80px] flex items-center">
-                          <p className="text-sm text-muted font-medium leading-relaxed">
+                          <p className="text-sm text-muted font-medium leading-relaxed" style={{ whiteSpace: "pre-line" }}>
                             &quot;{POST_VARIATIONS[selectedVariation]}&quot;
                           </p>
                         </div>
@@ -881,7 +881,7 @@ join and get yours. then go send it to everyone 💸`;
                 </div>
 
                 <div className="bg-pill border border-border rounded-2xl p-6 space-y-5">
-                  <p className="text-sm text-muted font-medium leading-relaxed">
+                  <p className="text-sm text-muted font-medium leading-relaxed" style={{ whiteSpace: "pre-line" }}>
                     {dmTemplate}
                   </p>
                   <div className="space-y-3">
