@@ -271,18 +271,18 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       >
         
         {/* Content Area */}
-        <div className={`px-8 ${showEmailInput ? 'pt-10 pb-8' : 'pt-10 sm:pt-6 pb-8 sm:pb-6'} flex flex-col items-center max-h-[90vh] overflow-y-auto no-scrollbar`}>
+        <div className={`px-8 pt-10 pb-8 flex flex-col items-center max-h-[90vh] overflow-y-auto no-scrollbar`}>
           
           {/* Close Button */}
           <button
             onClick={onClose}
-            className={`self-end p-2 ${showEmailInput ? 'mb-2' : 'mb-2 sm:mb-1'} hover:bg-accent rounded-full transition-all text-muted hover:text-foreground border border-transparent hover:border-border`}
+            className="self-end p-2 mb-2 hover:bg-accent rounded-full transition-all text-muted hover:text-foreground border border-transparent hover:border-border"
           >
             <X className="w-5 h-5" />
           </button>
           
           {/* Top Decorative Icon */}
-          <div className={`flex justify-center ${showEmailInput ? 'mb-5' : 'mb-5 sm:mb-3'}`}>
+          <div className="flex justify-center mb-5">
             <div className="relative">
               <div className="absolute -inset-2 bg-[#16a34a]/20 rounded-full blur-xl animate-pulse" />
               <div className="relative w-12 h-12 bg-[#16a34a]/10 rounded-2xl flex items-center justify-center border border-[#16a34a]/20">
@@ -293,7 +293,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
           </div>
 
           {/* Typography */}
-          <div className={`text-center space-y-1.5 ${showEmailInput ? 'mb-7' : 'mb-7 sm:mb-4'}`}>
+          <div className="text-center space-y-1.5 mb-7">
             <h2 className="text-[1.5rem] font-[800] tracking-tight leading-[1.1]">
               Join Plugd&apos;s Referral Program
             </h2>
@@ -698,7 +698,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
               </div>
             </div>
           ) : (
-            <div className="space-y-4 sm:space-y-2 mb-7 sm:mb-4 max-w-[280px] mx-auto">
+            <div className="space-y-4 mb-7 max-w-[280px] mx-auto">
               <div className="flex items-center gap-3">
                 <div 
                   style={{ backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}
@@ -733,13 +733,13 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
           {/* Stat Boxes */}
           {!showEmailInput && (
-            <div className="grid grid-cols-2 gap-3 mb-7 sm:mb-4 w-full">
+            <div className="grid grid-cols-2 gap-3 mb-7 w-full">
               <div 
                 style={{ 
                   backgroundColor: isDark ? '#262626' : '#f9f9f9',
                   borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
                 }}
-                className="border rounded-xl p-4 sm:py-2.5 sm:px-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm"
+                className="border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm"
               >
                 <span style={{ color: isDark ? '#a1a1aa' : '#666666' }} className="text-[0.6rem] font-bold uppercase tracking-[0.05em] text-center leading-tight">
                   Top referrer earnings
@@ -752,7 +752,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                   backgroundColor: isDark ? '#262626' : '#f9f9f9',
                   borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
                 }}
-                className="border rounded-xl p-4 sm:py-2.5 sm:px-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm"
+                className="border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm"
               >
                 <span style={{ color: isDark ? '#a1a1aa' : '#666666' }} className="text-[0.6rem] font-bold uppercase tracking-[0.05em] text-center leading-tight">
                   All-time earnings
@@ -767,7 +767,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
             <button
               onClick={handleJoin}
               disabled={loading || (showEmailInput && (usernameStatus !== 'available' || !formData.name.trim() || !formData.email.trim() || !isPayoutInfoFilled()))}
-              className={`w-full bg-[#16a34a] text-white font-[800] text-[1rem] ${showEmailInput ? 'py-[14px]' : 'py-[14px] sm:py-[10px]'} rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg shadow-green-600/20 disabled:opacity-50`}
+              className="w-full bg-[#16a34a] text-white font-[800] text-[1rem] py-[14px] rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg shadow-green-600/20 disabled:opacity-50"
             >
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (
                 <>
