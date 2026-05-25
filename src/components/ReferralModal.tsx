@@ -271,7 +271,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       >
         
         {/* Content Area */}
-        <div className={`px-8 pt-10 pb-8 flex flex-col items-center max-h-[90vh] overflow-y-auto no-scrollbar`}>
+        <div className={`px-8 ${showEmailInput ? 'pt-10' : 'pt-10 sm:pt-3'} pb-8 flex flex-col items-center max-h-[90vh] overflow-y-auto no-scrollbar`}>
           
           {/* Close Button */}
           <button
