@@ -21,7 +21,7 @@ export default function Header() {
           
           <div className="flex items-center gap-2 relative z-10">
             <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Total Payouts</span>
-            <span className="text-[0.75rem] font-bold text-foreground">$300K+</span>
+            <span className="text-[0.75rem] font-bold text-foreground">$1M+</span>
           </div>
         </div>
       </div>
