@@ -63,8 +63,8 @@ function generateEarners(): Earner[] {
     let earningRatePerSec = 0;
     
     if (id === 1) {
-      // Rank 1 starts at $102,400 with a $3,500/day rate ($0.0405/sec)
-      baseEarnings = 102400;
+      // Rank 1 starts at $71,000 base with a $3,500/day rate ($0.0405/sec) so base + accrued = ~$102K+ today
+      baseEarnings = 71000;
       earningRatePerSec = 0.0405;
     } else {
       // Ranks 2 to 50 scale down from $25,000 base to $3,200 base
@@ -321,7 +321,7 @@ export default function HomeClient({
                 className="bg-accent border border-border text-foreground hover:bg-accent/80 transition-all font-bold text-xs px-4 py-2 rounded-lg cursor-pointer active:scale-[0.98]"
                 style={{ fontFamily: 'var(--font-eb-garamond), serif' }}
               >
-                {visibleCount === 10 ? "Show All 50 Earners" : "Show Top 10 Earners"}
+                {visibleCount === 10 ? "Show Top 50 Earners" : "Show Top 10 Earners"}
               </button>
             </div>
           )}
