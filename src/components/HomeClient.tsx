@@ -16,6 +16,69 @@ interface HomeClientProps {
   referralCode?: string;
 }
 
+interface Earner {
+  id: number;
+  name: string;
+  handle: string;
+  initials: string;
+  gradient: string;
+  baseEarnings: number;
+  baseLastMonth: number;
+  earningRatePerSec: number;
+}
+
+interface ActiveEarner extends Earner {
+  currentEarnings: number;
+  momGrowth: number;
+}
+
+const FIRST_NAMES = ["Alex", "Sarah", "Marcus", "Elena", "David", "Jessica", "Ryan", "Emily", "James", "Sophia", "Michael", "Olivia", "William", "Emma", "Daniel", "Isabella", "John", "Mia", "Robert", "Charlotte", "Joseph", "Amelia", "David", "Harper", "Andrew", "Evelyn", "Chris", "Abigail", "Matthew", "Emily", "Joshua", "Elizabeth", "Nathan", "Sofia", "Tyler", "Avery", "Brandon", "Ella", "Kevin", "Madison", "Justin", "Scarlett", "Brian", "Victoria", "Dylan", "Grace", "Ethan", "Chloe", "Connor", "Lily"];
+const LAST_NAMES = ["Rivers", "Jenkins", "Chen", "Rostova", "Kim", "Miller", "Davis", "Garcia", "Rodriguez", "Wilson", "Martinez", "Anderson", "Taylor", "Thomas", "Hernandez", "Moore", "Martin", "Jackson", "Martin", "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker", "Young", "Allen", "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores", "Green", "Adams", "Nelson", "Baker", "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts", "Gomez"];
+const GRADIENTS = [
+  "from-emerald-500 to-green-300",
+  "from-purple-500 to-pink-300",
+  "from-blue-500 to-cyan-300",
+  "from-amber-500 to-yellow-300",
+  "from-red-500 to-orange-300",
+  "from-violet-600 to-indigo-400",
+  "from-fuchsia-500 to-purple-300",
+  "from-rose-500 to-red-300",
+  "from-teal-500 to-emerald-300",
+  "from-sky-500 to-blue-300"
+];
+
+function generateEarners(): Earner[] {
+  const list: Earner[] = [];
+  
+  for (let i = 0; i < 50; i++) {
+    const id = i + 1;
+    const firstName = FIRST_NAMES[i % FIRST_NAMES.length];
+    const lastName = LAST_NAMES[(i * 3) % LAST_NAMES.length]; 
+    const name = `${firstName} ${lastName}`;
+    const handle = `@${firstName.toLowerCase()}_${lastName.toLowerCase()}`;
+    const initials = `${firstName[0]}${lastName[0]}`;
+    const gradient = GRADIENTS[i % GRADIENTS.length];
+    
+    const factor = (50 - i) / 50;
+    const baseEarnings = 3200 + 99200 * Math.pow(factor, 1.8);
+    const baseLastMonth = baseEarnings * (0.75 + (i % 5) * 0.02);
+    const earningRatePerSec = 0.00004 + 0.0055 * Math.pow(factor, 2.5);
+    
+    list.push({
+      id,
+      name,
+      handle,
+      initials,
+      gradient,
+      baseEarnings,
+      baseLastMonth,
+      earningRatePerSec
+    });
+  }
+  
+  return list;
+}
+
 export default function HomeClient({ 
   userEmail: serverUserEmail,
   referralCode: initialReferralCode = ""
@@ -25,6 +88,46 @@ export default function HomeClient({
   const [isReferModalOpen, setIsReferModalOpen] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(serverUserEmail);
   const [isPaidUser, setIsPaidUser] = useState(false);
+  const [earners, setEarners] = useState<ActiveEarner[]>([]);
+  const [visibleCount, setVisibleCount] = useState(10);
+
+  useEffect(() => {
+    const baseEpoch = 1780272000000;
+    const initialElapsedSeconds = Math.max(0, (Date.now() - baseEpoch) / 1000);
+    
+    const initialEarners = generateEarners().map(e => {
+      const initialAccrued = initialElapsedSeconds * e.earningRatePerSec;
+      const currentEarnings = e.baseEarnings + initialAccrued;
+      const momGrowth = ((currentEarnings - e.baseLastMonth) / e.baseLastMonth) * 100;
+      return {
+        ...e,
+        currentEarnings,
+        momGrowth
+      };
+    }).sort((a, b) => b.currentEarnings - a.currentEarnings);
+
+    setEarners(initialEarners);
+
+    const interval = setInterval(() => {
+      setEarners(prev => {
+        const nextList = prev.map(e => {
+          const hasEarned = Math.random() > 0.3; 
+          const multiplier = hasEarned ? (0.5 + Math.random() * 1.5) : 0;
+          const increment = 60 * e.earningRatePerSec * multiplier;
+          const nextEarnings = e.currentEarnings + increment;
+          const nextMomGrowth = ((nextEarnings - e.baseLastMonth) / e.baseLastMonth) * 100;
+          return {
+            ...e,
+            currentEarnings: nextEarnings,
+            momGrowth: nextMomGrowth
+          };
+        });
+        return [...nextList].sort((a, b) => b.currentEarnings - a.currentEarnings);
+      });
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     // Auth Check
@@ -151,138 +254,64 @@ export default function HomeClient({
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/30">
-                {/* Rank 1 */}
-                <tr className="hover:bg-foreground/[0.01] transition-colors group">
-                  <td className="py-3 text-center w-8 md:w-10">
-                    <span className="text-base md:text-lg">🥇</span>
-                  </td>
-                  <td className="py-3 pl-1 md:pl-2">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr from-emerald-500 to-green-300 text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0">
-                        AR
-                      </div>
-                      <div className="flex flex-col min-w-0">
-                        <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate">Alex Rivers</span>
-                        <span className="text-muted text-[10px] md:text-xs leading-none truncate">@alexrivers</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-3 text-right font-bold text-foreground text-xs md:text-sm whitespace-nowrap">
-                    $14,850
-                  </td>
-                  <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4">
-                    <span className="text-emerald-500 font-bold text-[10px] md:text-xs bg-emerald-500/10 px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md">
-                      ↑ 28%
-                    </span>
-                  </td>
-                </tr>
+                {earners.slice(0, visibleCount).map((earner, index) => {
+                  const rank = index + 1;
+                  const formattedEarnings = new Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                    maximumFractionDigits: 0
+                  }).format(earner.currentEarnings);
+                  
+                  const formattedGrowth = `${earner.momGrowth >= 0 ? "↑" : "↓"} ${Math.abs(earner.momGrowth).toFixed(2)}%`;
+                  const growthColor = earner.momGrowth >= 0 ? "text-emerald-500 bg-emerald-500/10" : "text-red-500 bg-red-500/10";
+                  
+                  let rankDisplay: React.ReactNode = rank;
+                  if (rank === 1) rankDisplay = <span className="text-base md:text-lg">🥇</span>;
+                  else if (rank === 2) rankDisplay = <span className="text-base md:text-lg">🥈</span>;
+                  else if (rank === 3) rankDisplay = <span className="text-base md:text-lg">🥉</span>;
 
-                {/* Rank 2 */}
-                <tr className="hover:bg-foreground/[0.01] transition-colors group">
-                  <td className="py-3 text-center w-8 md:w-10">
-                    <span className="text-base md:text-lg">🥈</span>
-                  </td>
-                  <td className="py-3 pl-1 md:pl-2">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-300 text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0">
-                        SJ
-                      </div>
-                      <div className="flex flex-col min-w-0">
-                        <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate">Sarah Jenkins</span>
-                        <span className="text-muted text-[10px] md:text-xs leading-none truncate">@sarahj</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-3 text-right font-bold text-foreground text-xs md:text-sm whitespace-nowrap">
-                    $9,320
-                  </td>
-                  <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4">
-                    <span className="text-emerald-500 font-bold text-[10px] md:text-xs bg-emerald-500/10 px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md">
-                      ↑ 14%
-                    </span>
-                  </td>
-                </tr>
-
-                {/* Rank 3 */}
-                <tr className="hover:bg-foreground/[0.01] transition-colors group">
-                  <td className="py-3 text-center w-8 md:w-10">
-                    <span className="text-base md:text-lg">🥉</span>
-                  </td>
-                  <td className="py-3 pl-1 md:pl-2">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr from-blue-500 to-cyan-300 text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0">
-                        MC
-                      </div>
-                      <div className="flex flex-col min-w-0">
-                        <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate">Marcus Chen</span>
-                        <span className="text-muted text-[10px] md:text-xs leading-none truncate">@marcus_writes</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-3 text-right font-bold text-foreground text-xs md:text-sm whitespace-nowrap">
-                    $7,150
-                  </td>
-                  <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4">
-                    <span className="text-red-500 font-bold text-[10px] md:text-xs bg-red-500/10 px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md">
-                      ↓ 2%
-                    </span>
-                  </td>
-                </tr>
-
-                {/* Rank 4 */}
-                <tr className="hover:bg-foreground/[0.01] transition-colors group">
-                  <td className="py-3 text-center font-bold text-muted text-xs md:text-sm w-8 md:w-10">
-                    4
-                  </td>
-                  <td className="py-3 pl-1 md:pl-2">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-300 text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0">
-                        ER
-                      </div>
-                      <div className="flex flex-col min-w-0">
-                        <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate">Elena Rostova</span>
-                        <span className="text-muted text-[10px] md:text-xs leading-none truncate">@elena_ros</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-3 text-right font-bold text-foreground text-xs md:text-sm whitespace-nowrap">
-                    $5,890
-                  </td>
-                  <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4">
-                    <span className="text-emerald-500 font-bold text-[10px] md:text-xs bg-emerald-500/10 px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md">
-                      ↑ 8%
-                    </span>
-                  </td>
-                </tr>
-
-                {/* Rank 5 */}
-                <tr className="hover:bg-foreground/[0.01] transition-colors group">
-                  <td className="py-3 text-center font-bold text-muted text-xs md:text-sm w-8 md:w-10">
-                    5
-                  </td>
-                  <td className="py-3 pl-1 md:pl-2">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr from-red-500 to-orange-300 text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0">
-                        DK
-                      </div>
-                      <div className="flex flex-col min-w-0">
-                        <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate">David Kim</span>
-                        <span className="text-muted text-[10px] md:text-xs leading-none truncate">@dkim_dev</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-3 text-right font-bold text-foreground text-xs md:text-sm whitespace-nowrap">
-                    $4,230
-                  </td>
-                  <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4">
-                    <span className="text-muted font-bold text-[10px] md:text-xs bg-muted/10 px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md">
-                      —
-                    </span>
-                  </td>
-                </tr>
+                  return (
+                    <tr key={earner.id} className="hover:bg-foreground/[0.01] transition-colors group animate-in fade-in duration-300">
+                      <td className="py-3 text-center w-8 md:w-10 font-bold text-muted text-xs md:text-sm">
+                        {rankDisplay}
+                      </td>
+                      <td className="py-3 pl-1 md:pl-2">
+                        <div className="flex items-center gap-2 md:gap-3">
+                          <div className={`w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr ${earner.gradient} text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0`}>
+                            {earner.initials}
+                          </div>
+                          <div className="flex flex-col min-w-0">
+                            <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate">{earner.name}</span>
+                            <span className="text-muted text-[10px] md:text-xs leading-none truncate">{earner.handle}</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="py-3 text-right font-bold text-foreground text-xs md:text-sm whitespace-nowrap">
+                        {formattedEarnings}
+                      </td>
+                      <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4">
+                        <span className={`${growthColor} font-bold text-[10px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md`}>
+                          {formattedGrowth}
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
+
+          {earners.length > 10 && (
+            <div className="flex justify-center mt-6">
+              <button
+                onClick={() => setVisibleCount(prev => prev === 10 ? 50 : 10)}
+                className="bg-accent border border-border text-foreground hover:bg-accent/80 transition-all font-bold text-xs px-4 py-2 rounded-lg cursor-pointer active:scale-[0.98]"
+                style={{ fontFamily: 'var(--font-eb-garamond), serif' }}
+              >
+                {visibleCount === 10 ? "Show All 50 Earners" : "Show Top 10 Earners"}
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
