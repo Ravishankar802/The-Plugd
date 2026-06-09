@@ -108,7 +108,8 @@ export default function HomeClient({
     const baseEpoch = 1780272000000;
     const initialElapsedSeconds = Math.max(0, (Date.now() - baseEpoch) / 1000);
     
-    const initialEarners = generateEarners().map(e => {
+    // 1. Calculate time-accrued values
+    const calculatedEarners = generateEarners().map(e => {
       const initialAccrued = initialElapsedSeconds * e.earningRatePerSec;
       const currentEarnings = e.baseEarnings + initialAccrued;
       const momGrowth = ((currentEarnings - e.baseLastMonth) / e.baseLastMonth) * 100;
@@ -117,10 +118,43 @@ export default function HomeClient({
         currentEarnings,
         momGrowth
       };
+    });
+
+    // 2. Load from localStorage if present
+    let storedData: Record<string, number> = {};
+    try {
+      const stored = localStorage.getItem("plugd_leaderboard_earnings_v2");
+      if (stored) {
+        storedData = JSON.parse(stored);
+      }
+    } catch (err) {
+      console.error("Failed to parse stored earnings:", err);
+    }
+
+    // 3. Merge taking the maximum of calculated and stored to guarantee it never goes down
+    const mergedEarners = calculatedEarners.map(e => {
+      const storedVal = storedData[e.id.toString()];
+      const finalEarnings = storedVal ? Math.max(storedVal, e.currentEarnings) : e.currentEarnings;
+      const momGrowth = ((finalEarnings - e.baseLastMonth) / e.baseLastMonth) * 100;
+      return {
+        ...e,
+        currentEarnings: finalEarnings,
+        momGrowth
+      };
     }).sort((a, b) => b.currentEarnings - a.currentEarnings);
 
-    setEarners(initialEarners);
+    setEarners(mergedEarners);
 
+    // Save initial merged values
+    const dataToStore: Record<string, number> = {};
+    mergedEarners.forEach(e => {
+      dataToStore[e.id.toString()] = e.currentEarnings;
+    });
+    try {
+      localStorage.setItem("plugd_leaderboard_earnings_v2", JSON.stringify(dataToStore));
+    } catch (err) {}
+
+    // Live update interval
     const interval = setInterval(() => {
       setEarners(prev => {
         const nextList = prev.map(e => {
@@ -135,7 +169,19 @@ export default function HomeClient({
             momGrowth: nextMomGrowth
           };
         });
-        return [...nextList].sort((a, b) => b.currentEarnings - a.currentEarnings);
+        
+        const sorted = [...nextList].sort((a, b) => b.currentEarnings - a.currentEarnings);
+        
+        // Save to localStorage
+        const storeData: Record<string, number> = {};
+        sorted.forEach(e => {
+          storeData[e.id.toString()] = e.currentEarnings;
+        });
+        try {
+          localStorage.setItem("plugd_leaderboard_earnings_v2", JSON.stringify(storeData));
+        } catch (err) {}
+
+        return sorted;
       });
     }, 60000);
 
