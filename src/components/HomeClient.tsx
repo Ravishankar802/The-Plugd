@@ -311,7 +311,6 @@ export default function HomeClient({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <h2 className="text-xl md:text-2xl font-extrabold tracking-tight text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Top Earners</h2>
-              <p className="text-muted text-xs md:text-sm mt-1" style={{ fontFamily: '"EB Garamond", serif' }}>Plugd creators ranking by referral earnings.</p>
             </div>
             
             <div className="flex items-center gap-3">
@@ -328,7 +327,7 @@ export default function HomeClient({
           </div>
 
           <div className="overflow-x-auto no-scrollbar w-full">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full min-w-[440px] md:min-w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-border/60">
                   <th className="pb-3 pt-1 w-8 md:w-10 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center">#</th>
