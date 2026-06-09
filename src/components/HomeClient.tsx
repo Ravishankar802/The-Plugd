@@ -65,16 +65,24 @@ function generateEarners(initialElapsedSeconds: number = 0): Earner[] {
     let baseGrowth = 0;
     
     if (id === 1) {
-      // Rank 1 starts at $71,000 base with a $3,500/day rate ($0.0405/sec) so base + accrued = ~$102K+ today
-      baseEarnings = 71000;
-      earningRatePerSec = 0.0405;
+      // Rank 1 starts at $71,000 base with a $3,500/day rate ($0.0405/sec) so base + accrued = ~$102K+ today.
+      // We slow the live growth rate by 10x ($0.00405/sec) and compensate the baseEarnings so the target remains ~$102K+ today.
+      const refElapsed = 777600;
+      const oldEarningRatePerSec = 0.0405;
+      const oldBaseEarnings = 71000;
+      earningRatePerSec = oldEarningRatePerSec / 10;
+      baseEarnings = oldBaseEarnings + refElapsed * oldEarningRatePerSec * 0.9;
       baseGrowth = 28.2;
     } else {
-      // Ranks 2 to 50 scale down from $25,000 base to $3,200 base
+      // Ranks 2 to 50 scale down from $25,000 base to $3,200 base.
       const factor = (50 - id) / 48; // from 1.0 down to 0.0
-      baseEarnings = 3200 + 21800 * Math.pow(factor, 2.0);
-      // Daily rate scales from $1,500/day down to $100/day ($0.00115/sec to $0.01735/sec)
-      earningRatePerSec = 0.00115 + 0.0162 * Math.pow(factor, 2.0);
+      const oldBaseEarnings = 3200 + 21800 * Math.pow(factor, 2.0);
+      const oldEarningRatePerSec = 0.00115 + 0.0162 * Math.pow(factor, 2.0);
+      
+      // We slow the live growth rate by 10x and compensate the baseEarnings so the target remains the same today.
+      const refElapsed = 777600;
+      earningRatePerSec = oldEarningRatePerSec / 10;
+      baseEarnings = oldBaseEarnings + refElapsed * oldEarningRatePerSec * 0.9;
       
       // Setup varied base growth rates
       if (id === 2) baseGrowth = 13.8;
