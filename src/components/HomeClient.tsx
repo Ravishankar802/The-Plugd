@@ -63,14 +63,15 @@ function generateEarners(): Earner[] {
     let earningRatePerSec = 0;
     
     if (id === 1) {
-      // Rank 1 starts at $102,400 with a $15/hour rate
+      // Rank 1 starts at $102,400 with a $3,500/day rate ($0.0405/sec)
       baseEarnings = 102400;
-      earningRatePerSec = 0.0042;
+      earningRatePerSec = 0.0405;
     } else {
       // Ranks 2 to 50 scale down from $25,000 base to $300 base
       const factor = (50 - id) / 48; // from 1.0 down to 0.0
       baseEarnings = 300 + 24700 * Math.pow(factor, 2.0);
-      earningRatePerSec = 0.00001 + 0.0012 * Math.pow(factor, 2.0);
+      // Daily rate scales from $1,500/day down to $100/day ($0.00115/sec to $0.01735/sec)
+      earningRatePerSec = 0.00115 + 0.0162 * Math.pow(factor, 2.0);
     }
     
     // last month base is 75% to 83% of base earnings
