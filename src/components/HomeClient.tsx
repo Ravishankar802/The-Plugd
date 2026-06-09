@@ -82,8 +82,8 @@ function generateEarners(initialElapsedSeconds: number = 0): Earner[] {
       else if (id === 4) baseGrowth = 8.1;
       else if (id === 5) baseGrowth = 0.0;
       else {
-        // Deterministic varied growth rate between -15% and +35%
-        const raw = Math.sin(id * 0.7) * 20 + Math.cos(id * 1.3) * 8; 
+        // Deterministic varied growth rate (mostly positive, minimal negative growth)
+        const raw = Math.sin(id * 0.7) * 15 + Math.cos(id * 1.3) * 5 + 15; 
         baseGrowth = Math.round(raw * 10) / 10;
       }
     }
