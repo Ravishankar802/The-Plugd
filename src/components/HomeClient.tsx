@@ -120,7 +120,7 @@ export default function HomeClient({
 
       {/* Top Earners Leaderboard Section */}
       <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-10">
-        <div className="bg-pill border border-border rounded-[24px] p-6 md:p-8 shadow-xl">
+        <div className="bg-pill border border-border rounded-[24px] p-4 sm:p-6 md:p-8 shadow-xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <h2 className="text-xl md:text-2xl font-extrabold tracking-tight text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Top Earners</h2>
@@ -144,34 +144,34 @@ export default function HomeClient({
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-border/60">
-                  <th className="pb-4 pt-2 w-10 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center">#</th>
-                  <th className="pb-4 pt-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest pl-2">Creator</th>
-                  <th className="pb-4 pt-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap">Earnings</th>
-                  <th className="pb-4 pt-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap pl-4">MoM Growth</th>
+                  <th className="pb-3 pt-1 w-8 md:w-10 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center">#</th>
+                  <th className="pb-3 pt-1 text-[0.65rem] font-bold text-muted uppercase tracking-widest pl-1 md:pl-2">Creator</th>
+                  <th className="pb-3 pt-1 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap">Earnings</th>
+                  <th className="pb-3 pt-1 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap pl-2 md:pl-4">MoM Growth</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/30">
                 {/* Rank 1 */}
                 <tr className="hover:bg-foreground/[0.01] transition-colors group">
-                  <td className="py-4 text-center">
-                    <span className="text-lg">🥇</span>
+                  <td className="py-3 text-center w-8 md:w-10">
+                    <span className="text-base md:text-lg">🥇</span>
                   </td>
-                  <td className="py-4 pl-2">
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-emerald-500 to-green-300 text-white font-bold text-xs flex items-center justify-center shadow-md">
+                  <td className="py-3 pl-1 md:pl-2">
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <div className="w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr from-emerald-500 to-green-300 text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0">
                         AR
                       </div>
-                      <div className="flex flex-col">
-                        <span className="font-bold text-foreground text-sm leading-snug">Alex Rivers</span>
-                        <span className="text-muted text-xs leading-none">@alexrivers</span>
+                      <div className="flex flex-col min-w-0">
+                        <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate">Alex Rivers</span>
+                        <span className="text-muted text-[10px] md:text-xs leading-none truncate">@alexrivers</span>
                       </div>
                     </div>
                   </td>
-                  <td className="py-4 text-right font-bold text-foreground text-sm whitespace-nowrap">
+                  <td className="py-3 text-right font-bold text-foreground text-xs md:text-sm whitespace-nowrap">
                     $14,850
                   </td>
-                  <td className="py-4 text-right whitespace-nowrap pl-4">
-                    <span className="text-emerald-500 font-bold text-xs bg-emerald-500/10 px-2 py-0.5 rounded-md">
+                  <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4">
+                    <span className="text-emerald-500 font-bold text-[10px] md:text-xs bg-emerald-500/10 px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md">
                       ↑ 28%
                     </span>
                   </td>
@@ -179,25 +179,25 @@ export default function HomeClient({
 
                 {/* Rank 2 */}
                 <tr className="hover:bg-foreground/[0.01] transition-colors group">
-                  <td className="py-4 text-center">
-                    <span className="text-lg">🥈</span>
+                  <td className="py-3 text-center w-8 md:w-10">
+                    <span className="text-base md:text-lg">🥈</span>
                   </td>
-                  <td className="py-4 pl-2">
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-300 text-white font-bold text-xs flex items-center justify-center shadow-md">
+                  <td className="py-3 pl-1 md:pl-2">
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <div className="w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-300 text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0">
                         SJ
                       </div>
-                      <div className="flex flex-col">
-                        <span className="font-bold text-foreground text-sm leading-snug">Sarah Jenkins</span>
-                        <span className="text-muted text-xs leading-none">@sarahj</span>
+                      <div className="flex flex-col min-w-0">
+                        <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate">Sarah Jenkins</span>
+                        <span className="text-muted text-[10px] md:text-xs leading-none truncate">@sarahj</span>
                       </div>
                     </div>
                   </td>
-                  <td className="py-4 text-right font-bold text-foreground text-sm whitespace-nowrap">
+                  <td className="py-3 text-right font-bold text-foreground text-xs md:text-sm whitespace-nowrap">
                     $9,320
                   </td>
-                  <td className="py-4 text-right whitespace-nowrap pl-4">
-                    <span className="text-emerald-500 font-bold text-xs bg-emerald-500/10 px-2 py-0.5 rounded-md">
+                  <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4">
+                    <span className="text-emerald-500 font-bold text-[10px] md:text-xs bg-emerald-500/10 px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md">
                       ↑ 14%
                     </span>
                   </td>
@@ -205,25 +205,25 @@ export default function HomeClient({
 
                 {/* Rank 3 */}
                 <tr className="hover:bg-foreground/[0.01] transition-colors group">
-                  <td className="py-4 text-center">
-                    <span className="text-lg">🥉</span>
+                  <td className="py-3 text-center w-8 md:w-10">
+                    <span className="text-base md:text-lg">🥉</span>
                   </td>
-                  <td className="py-4 pl-2">
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-blue-500 to-cyan-300 text-white font-bold text-xs flex items-center justify-center shadow-md">
+                  <td className="py-3 pl-1 md:pl-2">
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <div className="w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr from-blue-500 to-cyan-300 text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0">
                         MC
                       </div>
-                      <div className="flex flex-col">
-                        <span className="font-bold text-foreground text-sm leading-snug">Marcus Chen</span>
-                        <span className="text-muted text-xs leading-none">@marcus_writes</span>
+                      <div className="flex flex-col min-w-0">
+                        <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate">Marcus Chen</span>
+                        <span className="text-muted text-[10px] md:text-xs leading-none truncate">@marcus_writes</span>
                       </div>
                     </div>
                   </td>
-                  <td className="py-4 text-right font-bold text-foreground text-sm whitespace-nowrap">
+                  <td className="py-3 text-right font-bold text-foreground text-xs md:text-sm whitespace-nowrap">
                     $7,150
                   </td>
-                  <td className="py-4 text-right whitespace-nowrap pl-4">
-                    <span className="text-red-500 font-bold text-xs bg-red-500/10 px-2 py-0.5 rounded-md">
+                  <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4">
+                    <span className="text-red-500 font-bold text-[10px] md:text-xs bg-red-500/10 px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md">
                       ↓ 2%
                     </span>
                   </td>
@@ -231,25 +231,25 @@ export default function HomeClient({
 
                 {/* Rank 4 */}
                 <tr className="hover:bg-foreground/[0.01] transition-colors group">
-                  <td className="py-4 text-center font-bold text-muted text-sm">
+                  <td className="py-3 text-center font-bold text-muted text-xs md:text-sm w-8 md:w-10">
                     4
                   </td>
-                  <td className="py-4 pl-2">
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-300 text-white font-bold text-xs flex items-center justify-center shadow-md">
+                  <td className="py-3 pl-1 md:pl-2">
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <div className="w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-300 text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0">
                         ER
                       </div>
-                      <div className="flex flex-col">
-                        <span className="font-bold text-foreground text-sm leading-snug">Elena Rostova</span>
-                        <span className="text-muted text-xs leading-none">@elena_ros</span>
+                      <div className="flex flex-col min-w-0">
+                        <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate">Elena Rostova</span>
+                        <span className="text-muted text-[10px] md:text-xs leading-none truncate">@elena_ros</span>
                       </div>
                     </div>
                   </td>
-                  <td className="py-4 text-right font-bold text-foreground text-sm whitespace-nowrap">
+                  <td className="py-3 text-right font-bold text-foreground text-xs md:text-sm whitespace-nowrap">
                     $5,890
                   </td>
-                  <td className="py-4 text-right whitespace-nowrap pl-4">
-                    <span className="text-emerald-500 font-bold text-xs bg-emerald-500/10 px-2 py-0.5 rounded-md">
+                  <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4">
+                    <span className="text-emerald-500 font-bold text-[10px] md:text-xs bg-emerald-500/10 px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md">
                       ↑ 8%
                     </span>
                   </td>
@@ -257,25 +257,25 @@ export default function HomeClient({
 
                 {/* Rank 5 */}
                 <tr className="hover:bg-foreground/[0.01] transition-colors group">
-                  <td className="py-4 text-center font-bold text-muted text-sm">
+                  <td className="py-3 text-center font-bold text-muted text-xs md:text-sm w-8 md:w-10">
                     5
                   </td>
-                  <td className="py-4 pl-2">
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-red-500 to-orange-300 text-white font-bold text-xs flex items-center justify-center shadow-md">
+                  <td className="py-3 pl-1 md:pl-2">
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <div className="w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr from-red-500 to-orange-300 text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0">
                         DK
                       </div>
-                      <div className="flex flex-col">
-                        <span className="font-bold text-foreground text-sm leading-snug">David Kim</span>
-                        <span className="text-muted text-xs leading-none">@dkim_dev</span>
+                      <div className="flex flex-col min-w-0">
+                        <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate">David Kim</span>
+                        <span className="text-muted text-[10px] md:text-xs leading-none truncate">@dkim_dev</span>
                       </div>
                     </div>
                   </td>
-                  <td className="py-4 text-right font-bold text-foreground text-sm whitespace-nowrap">
+                  <td className="py-3 text-right font-bold text-foreground text-xs md:text-sm whitespace-nowrap">
                     $4,230
                   </td>
-                  <td className="py-4 text-right whitespace-nowrap pl-4">
-                    <span className="text-muted font-bold text-xs bg-muted/10 px-2 py-0.5 rounded-md">
+                  <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4">
+                    <span className="text-muted font-bold text-[10px] md:text-xs bg-muted/10 px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md">
                       —
                     </span>
                   </td>
