@@ -111,9 +111,6 @@ export default function Footer({
                     <Link href="/resources" className="text-black/50 dark:text-white/50 text-sm hover:text-black dark:hover:text-white transition-colors">
                       Resources
                     </Link>
-                    <Link href="/legacy" className="text-black/50 dark:text-white/50 text-sm hover:text-black dark:hover:text-white transition-colors">
-                      Legacy
-                    </Link>
                   </div>
                 </div>
 

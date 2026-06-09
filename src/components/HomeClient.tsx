@@ -118,29 +118,198 @@ export default function HomeClient({
         </div>
       </div>
 
-      {/* LEGACY Section */}
+      {/* Top Earners Leaderboard Section */}
       <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-10">
-        <Link 
-          href="/legacy" 
-          className="block w-full h-96 rounded-xl flex items-center justify-center hover:scale-[1.02] transition-transform duration-300 shadow-xl"
-          style={{ 
-            backgroundColor: '#15803d', 
-            backgroundImage: `
-              radial-gradient(ellipse at 50% 40%, #22c55e 0%, transparent 60%),
-              radial-gradient(ellipse at 20% 50%, #16a34a 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 50%, #16a34a 0%, transparent 50%),
-              radial-gradient(ellipse at 25% 90%, #92400e 0%, transparent 35%),
-              radial-gradient(ellipse at 75% 90%, #92400e 0%, transparent 35%)
-            `
-          }}
-        >
-          <h2 
-            className="text-5xl md:text-7xl font-bold uppercase tracking-widest text-white"
-            style={{ fontFamily: '"Times New Roman", Times, serif' }}
-          >
-            LEGACY
-          </h2>
-        </Link>
+        <div className="bg-pill border border-border rounded-[24px] p-6 md:p-8 shadow-xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <h2 className="text-xl md:text-2xl font-extrabold tracking-tight text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Top Earners</h2>
+              <p className="text-muted text-xs md:text-sm mt-1" style={{ fontFamily: '"EB Garamond", serif' }}>Plugd creators ranking by referral earnings.</p>
+            </div>
+            
+            <div className="flex items-center gap-3">
+              <select className="bg-background border border-border text-foreground rounded-lg px-3 py-1.5 text-xs font-semibold focus:outline-none cursor-pointer">
+                <option>Earnings</option>
+                <option>Conversions</option>
+              </select>
+              <select className="bg-background border border-border text-foreground rounded-lg px-3 py-1.5 text-xs font-semibold focus:outline-none cursor-pointer">
+                <option>All time</option>
+                <option>This month</option>
+                <option>This week</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="overflow-x-auto no-scrollbar w-full">
+            <table className="w-full min-w-[600px] text-left border-collapse">
+              <thead>
+                <tr className="border-b border-border/60">
+                  <th className="pb-4 pt-2 w-12 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center">#</th>
+                  <th className="pb-4 pt-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest pl-2">Creator</th>
+                  <th className="pb-4 pt-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest">Niche</th>
+                  <th className="pb-4 pt-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right">Earnings</th>
+                  <th className="pb-4 pt-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right">MoM Growth</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border/30">
+                {/* Rank 1 */}
+                <tr className="hover:bg-foreground/[0.01] transition-colors group">
+                  <td className="py-4 text-center">
+                    <span className="text-lg">🥇</span>
+                  </td>
+                  <td className="py-4 pl-2">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-emerald-500 to-green-300 text-white font-bold text-xs flex items-center justify-center shadow-md">
+                        AR
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="font-bold text-foreground text-sm leading-snug">Alex Rivers</span>
+                        <span className="text-muted text-xs leading-none">@alexrivers</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-4">
+                    <span className="text-xs font-semibold text-muted bg-foreground/[0.04] px-2.5 py-1 rounded-full border border-border/40">
+                      SaaS & Tech
+                    </span>
+                  </td>
+                  <td className="py-4 text-right font-bold text-foreground text-sm">
+                    $14,850
+                  </td>
+                  <td className="py-4 text-right">
+                    <span className="text-emerald-500 font-bold text-xs bg-emerald-500/10 px-2 py-0.5 rounded-md">
+                      ↑ 28%
+                    </span>
+                  </td>
+                </tr>
+
+                {/* Rank 2 */}
+                <tr className="hover:bg-foreground/[0.01] transition-colors group">
+                  <td className="py-4 text-center">
+                    <span className="text-lg">🥈</span>
+                  </td>
+                  <td className="py-4 pl-2">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-300 text-white font-bold text-xs flex items-center justify-center shadow-md">
+                        SJ
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="font-bold text-foreground text-sm leading-snug">Sarah Jenkins</span>
+                        <span className="text-muted text-xs leading-none">@sarahj</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-4">
+                    <span className="text-xs font-semibold text-muted bg-foreground/[0.04] px-2.5 py-1 rounded-full border border-border/40">
+                      Design & Creative
+                    </span>
+                  </td>
+                  <td className="py-4 text-right font-bold text-foreground text-sm">
+                    $9,320
+                  </td>
+                  <td className="py-4 text-right">
+                    <span className="text-emerald-500 font-bold text-xs bg-emerald-500/10 px-2 py-0.5 rounded-md">
+                      ↑ 14%
+                    </span>
+                  </td>
+                </tr>
+
+                {/* Rank 3 */}
+                <tr className="hover:bg-foreground/[0.01] transition-colors group">
+                  <td className="py-4 text-center">
+                    <span className="text-lg">🥉</span>
+                  </td>
+                  <td className="py-4 pl-2">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-blue-500 to-cyan-300 text-white font-bold text-xs flex items-center justify-center shadow-md">
+                        MC
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="font-bold text-foreground text-sm leading-snug">Marcus Chen</span>
+                        <span className="text-muted text-xs leading-none">@marcus_writes</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-4">
+                    <span className="text-xs font-semibold text-muted bg-foreground/[0.04] px-2.5 py-1 rounded-full border border-border/40">
+                      Copywriting & Marketing
+                    </span>
+                  </td>
+                  <td className="py-4 text-right font-bold text-foreground text-sm">
+                    $7,150
+                  </td>
+                  <td className="py-4 text-right">
+                    <span className="text-red-500 font-bold text-xs bg-red-500/10 px-2 py-0.5 rounded-md">
+                      ↓ 2%
+                    </span>
+                  </td>
+                </tr>
+
+                {/* Rank 4 */}
+                <tr className="hover:bg-foreground/[0.01] transition-colors group">
+                  <td className="py-4 text-center font-bold text-muted text-sm">
+                    4
+                  </td>
+                  <td className="py-4 pl-2">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-300 text-white font-bold text-xs flex items-center justify-center shadow-md">
+                        ER
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="font-bold text-foreground text-sm leading-snug">Elena Rostova</span>
+                        <span className="text-muted text-xs leading-none">@elena_ros</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-4">
+                    <span className="text-xs font-semibold text-muted bg-foreground/[0.04] px-2.5 py-1 rounded-full border border-border/40">
+                      Finance & Crypto
+                    </span>
+                  </td>
+                  <td className="py-4 text-right font-bold text-foreground text-sm">
+                    $5,890
+                  </td>
+                  <td className="py-4 text-right">
+                    <span className="text-emerald-500 font-bold text-xs bg-emerald-500/10 px-2 py-0.5 rounded-md">
+                      ↑ 8%
+                    </span>
+                  </td>
+                </tr>
+
+                {/* Rank 5 */}
+                <tr className="hover:bg-foreground/[0.01] transition-colors group">
+                  <td className="py-4 text-center font-bold text-muted text-sm">
+                    5
+                  </td>
+                  <td className="py-4 pl-2">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-red-500 to-orange-300 text-white font-bold text-xs flex items-center justify-center shadow-md">
+                        DK
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="font-bold text-foreground text-sm leading-snug">David Kim</span>
+                        <span className="text-muted text-xs leading-none">@dkim_dev</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-4">
+                    <span className="text-xs font-semibold text-muted bg-foreground/[0.04] px-2.5 py-1 rounded-full border border-border/40">
+                      Development & Coding
+                    </span>
+                  </td>
+                  <td className="py-4 text-right font-bold text-foreground text-sm">
+                    $4,230
+                  </td>
+                  <td className="py-4 text-right">
+                    <span className="text-muted font-bold text-xs bg-muted/10 px-2 py-0.5 rounded-md">
+                      —
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </section>
 
       <div className="w-full mt-20">
