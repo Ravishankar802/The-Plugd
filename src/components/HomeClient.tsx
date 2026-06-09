@@ -25,6 +25,7 @@ interface Earner {
   baseEarnings: number;
   baseLastMonth: number;
   earningRatePerSec: number;
+  baseGrowth: number;
 }
 
 interface ActiveEarner extends Earner {
@@ -47,7 +48,7 @@ const GRADIENTS = [
   "from-sky-500 to-blue-300"
 ];
 
-function generateEarners(): Earner[] {
+function generateEarners(initialElapsedSeconds: number = 0): Earner[] {
   const list: Earner[] = [];
   
   for (let i = 0; i < 50; i++) {
@@ -61,21 +62,36 @@ function generateEarners(): Earner[] {
     
     let baseEarnings = 0;
     let earningRatePerSec = 0;
+    let baseGrowth = 0;
     
     if (id === 1) {
       // Rank 1 starts at $71,000 base with a $3,500/day rate ($0.0405/sec) so base + accrued = ~$102K+ today
       baseEarnings = 71000;
       earningRatePerSec = 0.0405;
+      baseGrowth = 28.2;
     } else {
       // Ranks 2 to 50 scale down from $25,000 base to $3,200 base
       const factor = (50 - id) / 48; // from 1.0 down to 0.0
       baseEarnings = 3200 + 21800 * Math.pow(factor, 2.0);
       // Daily rate scales from $1,500/day down to $100/day ($0.00115/sec to $0.01735/sec)
       earningRatePerSec = 0.00115 + 0.0162 * Math.pow(factor, 2.0);
+      
+      // Setup varied base growth rates
+      if (id === 2) baseGrowth = 13.8;
+      else if (id === 3) baseGrowth = -2.5;
+      else if (id === 4) baseGrowth = 8.1;
+      else if (id === 5) baseGrowth = 0.0;
+      else {
+        // Deterministic varied growth rate between -15% and +35%
+        const raw = Math.sin(id * 0.7) * 20 + Math.cos(id * 1.3) * 8; 
+        baseGrowth = Math.round(raw * 10) / 10;
+      }
     }
     
-    // last month base is 75% to 83% of base earnings
-    const baseLastMonth = baseEarnings * (0.75 + (i % 5) * 0.02);
+    // Calculate expected earnings at the time of calculation
+    const expectedEarnings = baseEarnings + initialElapsedSeconds * earningRatePerSec;
+    // Calculate baseLastMonth such that (expectedEarnings - baseLastMonth) / baseLastMonth * 100 === baseGrowth
+    const baseLastMonth = expectedEarnings / (1 + baseGrowth / 100);
     
     list.push({
       id,
@@ -85,7 +101,8 @@ function generateEarners(): Earner[] {
       gradient,
       baseEarnings,
       baseLastMonth,
-      earningRatePerSec
+      earningRatePerSec,
+      baseGrowth
     });
   }
   
@@ -109,7 +126,7 @@ export default function HomeClient({
     const initialElapsedSeconds = Math.max(0, (Date.now() - baseEpoch) / 1000);
     
     // 1. Calculate time-accrued values
-    const calculatedEarners = generateEarners().map(e => {
+    const calculatedEarners = generateEarners(initialElapsedSeconds).map(e => {
       const initialAccrued = initialElapsedSeconds * e.earningRatePerSec;
       const currentEarnings = e.baseEarnings + initialAccrued;
       const momGrowth = ((currentEarnings - e.baseLastMonth) / e.baseLastMonth) * 100;
@@ -321,8 +338,15 @@ export default function HomeClient({
                     maximumFractionDigits: 0
                   }).format(earner.currentEarnings);
                   
-                  const formattedGrowth = `${earner.momGrowth >= 0 ? "↑" : "↓"} ${Math.abs(earner.momGrowth).toFixed(2)}%`;
-                  const growthColor = earner.momGrowth >= 0 ? "text-emerald-500 bg-emerald-500/10" : "text-red-500 bg-red-500/10";
+                  let formattedGrowth = "";
+                  let growthColor = "";
+                  if (Math.abs(earner.momGrowth) < 0.005) {
+                    formattedGrowth = "—";
+                    growthColor = "text-muted/60 bg-muted/10";
+                  } else {
+                    formattedGrowth = `${earner.momGrowth > 0 ? "↑" : "↓"} ${Math.abs(earner.momGrowth).toFixed(2)}%`;
+                    growthColor = earner.momGrowth > 0 ? "text-emerald-500 bg-emerald-500/10" : "text-red-500 bg-red-500/10";
+                  }
                   
                   let rankDisplay: React.ReactNode = rank;
                   if (rank === 1) rankDisplay = <span className="text-base md:text-lg">🥇</span>;
