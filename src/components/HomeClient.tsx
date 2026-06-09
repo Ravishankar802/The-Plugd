@@ -327,13 +327,13 @@ export default function HomeClient({
           </div>
 
           <div className="overflow-x-auto no-scrollbar w-full">
-            <table className="w-full min-w-[440px] md:min-w-full text-left border-collapse">
+            <table className="w-full min-w-[380px] md:min-w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-border/60">
                   <th className="pb-3 pt-1 w-8 md:w-10 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center">#</th>
                   <th className="pb-3 pt-1 text-[0.65rem] font-bold text-muted uppercase tracking-widest pl-1 md:pl-2">Creator</th>
-                  <th className="pb-3 pt-1 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap">Earnings</th>
-                  <th className="pb-3 pt-1 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap pl-2 md:pl-4">MoM Growth</th>
+                  <th className="pb-3 pt-1 w-24 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap">Earnings</th>
+                  <th className="pb-3 pt-1 w-28 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap pl-2 md:pl-4">MoM Growth</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/30">
