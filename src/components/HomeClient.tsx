@@ -141,14 +141,13 @@ export default function HomeClient({
           </div>
 
           <div className="overflow-x-auto no-scrollbar w-full">
-            <table className="w-full min-w-[600px] text-left border-collapse">
+            <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-border/60">
-                  <th className="pb-4 pt-2 w-12 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center">#</th>
+                  <th className="pb-4 pt-2 w-10 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center">#</th>
                   <th className="pb-4 pt-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest pl-2">Creator</th>
-                  <th className="pb-4 pt-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest">Niche</th>
-                  <th className="pb-4 pt-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right">Earnings</th>
-                  <th className="pb-4 pt-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right">MoM Growth</th>
+                  <th className="pb-4 pt-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap">Earnings</th>
+                  <th className="pb-4 pt-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap pl-4">MoM Growth</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/30">
@@ -168,15 +167,10 @@ export default function HomeClient({
                       </div>
                     </div>
                   </td>
-                  <td className="py-4">
-                    <span className="text-xs font-semibold text-muted bg-foreground/[0.04] px-2.5 py-1 rounded-full border border-border/40">
-                      SaaS & Tech
-                    </span>
-                  </td>
-                  <td className="py-4 text-right font-bold text-foreground text-sm">
+                  <td className="py-4 text-right font-bold text-foreground text-sm whitespace-nowrap">
                     $14,850
                   </td>
-                  <td className="py-4 text-right">
+                  <td className="py-4 text-right whitespace-nowrap pl-4">
                     <span className="text-emerald-500 font-bold text-xs bg-emerald-500/10 px-2 py-0.5 rounded-md">
                       ↑ 28%
                     </span>
@@ -199,15 +193,10 @@ export default function HomeClient({
                       </div>
                     </div>
                   </td>
-                  <td className="py-4">
-                    <span className="text-xs font-semibold text-muted bg-foreground/[0.04] px-2.5 py-1 rounded-full border border-border/40">
-                      Design & Creative
-                    </span>
-                  </td>
-                  <td className="py-4 text-right font-bold text-foreground text-sm">
+                  <td className="py-4 text-right font-bold text-foreground text-sm whitespace-nowrap">
                     $9,320
                   </td>
-                  <td className="py-4 text-right">
+                  <td className="py-4 text-right whitespace-nowrap pl-4">
                     <span className="text-emerald-500 font-bold text-xs bg-emerald-500/10 px-2 py-0.5 rounded-md">
                       ↑ 14%
                     </span>
@@ -230,15 +219,10 @@ export default function HomeClient({
                       </div>
                     </div>
                   </td>
-                  <td className="py-4">
-                    <span className="text-xs font-semibold text-muted bg-foreground/[0.04] px-2.5 py-1 rounded-full border border-border/40">
-                      Copywriting & Marketing
-                    </span>
-                  </td>
-                  <td className="py-4 text-right font-bold text-foreground text-sm">
+                  <td className="py-4 text-right font-bold text-foreground text-sm whitespace-nowrap">
                     $7,150
                   </td>
-                  <td className="py-4 text-right">
+                  <td className="py-4 text-right whitespace-nowrap pl-4">
                     <span className="text-red-500 font-bold text-xs bg-red-500/10 px-2 py-0.5 rounded-md">
                       ↓ 2%
                     </span>
@@ -261,15 +245,10 @@ export default function HomeClient({
                       </div>
                     </div>
                   </td>
-                  <td className="py-4">
-                    <span className="text-xs font-semibold text-muted bg-foreground/[0.04] px-2.5 py-1 rounded-full border border-border/40">
-                      Finance & Crypto
-                    </span>
-                  </td>
-                  <td className="py-4 text-right font-bold text-foreground text-sm">
+                  <td className="py-4 text-right font-bold text-foreground text-sm whitespace-nowrap">
                     $5,890
                   </td>
-                  <td className="py-4 text-right">
+                  <td className="py-4 text-right whitespace-nowrap pl-4">
                     <span className="text-emerald-500 font-bold text-xs bg-emerald-500/10 px-2 py-0.5 rounded-md">
                       ↑ 8%
                     </span>
@@ -292,15 +271,10 @@ export default function HomeClient({
                       </div>
                     </div>
                   </td>
-                  <td className="py-4">
-                    <span className="text-xs font-semibold text-muted bg-foreground/[0.04] px-2.5 py-1 rounded-full border border-border/40">
-                      Development & Coding
-                    </span>
-                  </td>
-                  <td className="py-4 text-right font-bold text-foreground text-sm">
+                  <td className="py-4 text-right font-bold text-foreground text-sm whitespace-nowrap">
                     $4,230
                   </td>
-                  <td className="py-4 text-right">
+                  <td className="py-4 text-right whitespace-nowrap pl-4">
                     <span className="text-muted font-bold text-xs bg-muted/10 px-2 py-0.5 rounded-md">
                       —
                     </span>
