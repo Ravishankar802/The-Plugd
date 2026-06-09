@@ -59,10 +59,22 @@ function generateEarners(): Earner[] {
     const initials = `${firstName[0]}${lastName[0]}`;
     const gradient = GRADIENTS[i % GRADIENTS.length];
     
-    const factor = (50 - i) / 50;
-    const baseEarnings = 3200 + 99200 * Math.pow(factor, 1.8);
+    let baseEarnings = 0;
+    let earningRatePerSec = 0;
+    
+    if (id === 1) {
+      // Rank 1 starts at $102,400 with a $15/hour rate
+      baseEarnings = 102400;
+      earningRatePerSec = 0.0042;
+    } else {
+      // Ranks 2 to 50 scale down from $25,000 base to $300 base
+      const factor = (50 - id) / 48; // from 1.0 down to 0.0
+      baseEarnings = 300 + 24700 * Math.pow(factor, 2.0);
+      earningRatePerSec = 0.00001 + 0.0012 * Math.pow(factor, 2.0);
+    }
+    
+    // last month base is 75% to 83% of base earnings
     const baseLastMonth = baseEarnings * (0.75 + (i % 5) * 0.02);
-    const earningRatePerSec = 0.00004 + 0.0055 * Math.pow(factor, 2.5);
     
     list.push({
       id,
