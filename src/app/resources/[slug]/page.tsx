@@ -95,13 +95,11 @@ const articleDetails: Record<string, ArticleContent> = {
     category: "MONEY",
     title: "How Much Can You Realistically Earn",
     content: [
-      "Let's do the actual math so there are no surprises.",
-      "10 referrals: $10. That's your $2 back plus $8 profit. At this point you're in the green and you've barely started.",
-      "50 referrals: $50. If each of those 50 people refers just 2 more, that's 100 additional referrals you didn't make, but those earnings go to them, not you. Your earnings come from your direct referrals only.",
-      "100 referrals: $100. That's just the start. The people hitting serious numbers on Plugd aren't stopping at 100.",
-      "The people earning the most on Plugd are sharing consistently across multiple platforms, writing messages that actually convert, and treating it like a real income stream, not a one-time thing. Volume and consistency beat any single viral moment.",
-      "The realistic ceiling for someone putting in genuine effort is well beyond what most people expect. Top earners on Plugd are clearing over $100 a day. That is not a typo. It is the result of a wide network, a sharp message, and showing up every day. The top earner has cleared over $25,000 total. One person. One link. No product, no team, no inventory.",
-      "The floor is whatever you put in. The ceiling is on you."
+      "Let's look at the actual data and mathematics from our live leaderboard so you can see exactly what is possible.",
+      "Our Top Earners board provides clear evidence of what is achievable. The 50th top earner on the platform has crossed $4,000 in total payouts. Ranks 2 to 10 have cleared between $30,000 and $38,000. And our number one promoter has crossed the $100,000 mark in lifetime earnings. All of this is done with a single link, no inventory, no overhead, and no marketing teams.",
+      "When we look at daily earnings, the numbers are just as solid. The top 50 promoters on the platform are earning between $140 and $180 every single day. Since you earn $1 for every direct referral who joins, this means these top users are bringing in 140 to 180 new paid members daily. They achieve this by consistently sharing their link across their primary channels—like WhatsApp groups, close Instagram communities, Discord servers, and X.",
+      "But you don't need a massive initial following to start earning. The overall average earning for promoters on the platform is $140/day. Getting your first 10 referrals pays you $10, which covers your initial $2 entry fee and puts you in profit. From there, scaling is a matter of consistency: sharing once a day, targeting active communities where people are looking for side income, and following up on clicks.",
+      "Volume and persistence beat any single viral moment. The floor is whatever effort you put in. The ceiling is shown right on our Top Earners board. Start small, share daily, and watch your Vault grow."
     ]
   }
 };
