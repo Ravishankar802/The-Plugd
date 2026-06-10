@@ -65,45 +65,62 @@ function generateEarners(initialElapsedSeconds: number = 0): Earner[] {
     
     const factor = (50 - id) / 48; // from 1.0 down to 0.0
     
-    // We adjust the daily rates to align with the platform average of $140/day
-    // Rank 1: $180/day, Rank 2: $180/day, Rank 50: $140/day
+    // We adjust the daily rates to align with the proposed top 50 average ($180/day average):
+    // Rank 1: $250/day, Rank 2: $220/day, Rank 50: $140/day
     let dailyRate = 0;
     if (id === 1) {
-      dailyRate = 180;
+      dailyRate = 250;
     } else {
-      dailyRate = 140 + 40 * Math.pow(factor, 2.0);
+      dailyRate = 140 + 80 * Math.pow(factor, 2.0);
     }
     earningRatePerSec = dailyRate / 86400;
     
-    // To prevent any step jumps and align perfectly with yesterday's values:
-    const prevRefElapsed = 777600; // 9 days elapsed (yesterday)
-    let oldBaseEarnings = 0;
-    let oldEarningRatePerSec = 0;
+    // Calculate the growth rate with a slow-moving date-based fluctuation (changes naturally once in a few days)
+    const daysSinceEpoch = Math.floor(Date.now() / (86400 * 1000));
+    const fluctuation = Math.sin(id * 1.7 + daysSinceEpoch * 0.15) * 4;
     
     if (id === 1) {
-      oldEarningRatePerSec = 0.0405 / 10;
-      oldBaseEarnings = 71000 + prevRefElapsed * 0.0405 * 0.9;
-      baseGrowth = 28.2;
+      baseGrowth = Math.round((28.2 + fluctuation) * 10) / 10;
     } else {
-      const oldRate = 0.00115 + 0.0162 * Math.pow(factor, 2.0);
-      oldEarningRatePerSec = oldRate / 10;
-      const oldBase = 3200 + 21800 * Math.pow(factor, 2.0);
-      oldBaseEarnings = oldBase + prevRefElapsed * oldRate * 0.9;
-      
-      // Setup varied base growth rates
-      if (id === 2) baseGrowth = 13.8;
-      else if (id === 3) baseGrowth = -2.5;
-      else if (id === 4) baseGrowth = 8.1;
-      else if (id === 5) baseGrowth = 0.0;
+      // Setup varied base growth rates with daily fluctuations
+      if (id === 2) baseGrowth = Math.round((13.8 + fluctuation) * 10) / 10;
+      else if (id === 3) baseGrowth = Math.round((-2.5 + fluctuation) * 10) / 10;
+      else if (id === 4) baseGrowth = Math.round((8.1 + fluctuation) * 10) / 10;
+      else if (id === 5) baseGrowth = Math.round((0.0 + fluctuation) * 10) / 10;
       else {
         // Deterministic varied growth rate (mostly positive, minimal negative growth)
         const raw = Math.sin(id * 0.7) * 15 + Math.cos(id * 1.3) * 5 + 15; 
-        baseGrowth = Math.round(raw * 10) / 10;
+        baseGrowth = Math.round((Math.round(raw * 10) / 10 + fluctuation) * 10) / 10;
       }
     }
     
-    const oldEarningsAtPrev = oldBaseEarnings + prevRefElapsed * oldEarningRatePerSec;
-    baseEarnings = oldEarningsAtPrev - prevRefElapsed * earningRatePerSec;
+    // To prevent any step jumps and align perfectly with today's values (transition day):
+    const currentRefElapsed = 845000; // ~9.8 days elapsed (June 11)
+    const prevRefElapsed = 777600; // 9 days elapsed (June 10)
+    
+    // Previous parameters in code version c2fe865
+    let prevRatePerSec = 0;
+    if (id === 1) {
+      prevRatePerSec = 180 / 86400;
+    } else {
+      prevRatePerSec = (140 + 40 * Math.pow(factor, 2.0)) / 86400;
+    }
+    
+    let prevBaseEarnings = 0;
+    if (id === 1) {
+      const oldRate = 0.0405 / 10;
+      const oldBase = 71000 + prevRefElapsed * 0.0405 * 0.9;
+      const oldEarnings = oldBase + prevRefElapsed * oldRate;
+      prevBaseEarnings = oldEarnings - prevRefElapsed * prevRatePerSec;
+    } else {
+      const oldRate = (0.00115 + 0.0162 * Math.pow(factor, 2.0)) / 10;
+      const oldBase = (3200 + 21800 * Math.pow(factor, 2.0)) + prevRefElapsed * (0.00115 + 0.0162 * Math.pow(factor, 2.0)) * 0.9;
+      const oldEarnings = oldBase + prevRefElapsed * oldRate;
+      prevBaseEarnings = oldEarnings - prevRefElapsed * prevRatePerSec;
+    }
+    
+    const prevExpectedEarnings = prevBaseEarnings + currentRefElapsed * prevRatePerSec;
+    baseEarnings = prevExpectedEarnings - currentRefElapsed * earningRatePerSec;
     
     // Calculate expected earnings at the time of calculation
     const expectedEarnings = baseEarnings + initialElapsedSeconds * earningRatePerSec;
