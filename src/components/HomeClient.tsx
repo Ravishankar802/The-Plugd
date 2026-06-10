@@ -59,30 +59,36 @@ function generateEarners(initialElapsedSeconds: number = 0): Earner[] {
     const handle = `@${firstName.toLowerCase()}_${lastName.toLowerCase()}`;
     const initials = `${firstName[0]}${lastName[0]}`;
     const gradient = GRADIENTS[i % GRADIENTS.length];
-    
     let baseEarnings = 0;
     let earningRatePerSec = 0;
     let baseGrowth = 0;
     
+    const factor = (50 - id) / 48; // from 1.0 down to 0.0
+    
+    // We adjust the daily rates to align with the platform average of $140/day
+    // Rank 1: $180/day, Rank 2: $180/day, Rank 50: $140/day
+    let dailyRate = 0;
     if (id === 1) {
-      // Rank 1 starts at $71,000 base with a $3,500/day rate ($0.0405/sec) so base + accrued = ~$102K+ today.
-      // We slow the live growth rate by 10x ($0.00405/sec) and compensate the baseEarnings so the target remains ~$102K+ today.
-      const refElapsed = 777600;
-      const oldEarningRatePerSec = 0.0405;
-      const oldBaseEarnings = 71000;
-      earningRatePerSec = oldEarningRatePerSec / 10;
-      baseEarnings = oldBaseEarnings + refElapsed * oldEarningRatePerSec * 0.9;
+      dailyRate = 180;
+    } else {
+      dailyRate = 140 + 40 * Math.pow(factor, 2.0);
+    }
+    earningRatePerSec = dailyRate / 86400;
+    
+    // To prevent any step jumps and align perfectly with yesterday's values:
+    const prevRefElapsed = 777600; // 9 days elapsed (yesterday)
+    let oldBaseEarnings = 0;
+    let oldEarningRatePerSec = 0;
+    
+    if (id === 1) {
+      oldEarningRatePerSec = 0.0405 / 10;
+      oldBaseEarnings = 71000 + prevRefElapsed * 0.0405 * 0.9;
       baseGrowth = 28.2;
     } else {
-      // Ranks 2 to 50 scale down from $25,000 base to $3,200 base.
-      const factor = (50 - id) / 48; // from 1.0 down to 0.0
-      const oldBaseEarnings = 3200 + 21800 * Math.pow(factor, 2.0);
-      const oldEarningRatePerSec = 0.00115 + 0.0162 * Math.pow(factor, 2.0);
-      
-      // We slow the live growth rate by 10x and compensate the baseEarnings so the target remains the same today.
-      const refElapsed = 777600;
-      earningRatePerSec = oldEarningRatePerSec / 10;
-      baseEarnings = oldBaseEarnings + refElapsed * oldEarningRatePerSec * 0.9;
+      const oldRate = 0.00115 + 0.0162 * Math.pow(factor, 2.0);
+      oldEarningRatePerSec = oldRate / 10;
+      const oldBase = 3200 + 21800 * Math.pow(factor, 2.0);
+      oldBaseEarnings = oldBase + prevRefElapsed * oldRate * 0.9;
       
       // Setup varied base growth rates
       if (id === 2) baseGrowth = 13.8;
@@ -95,6 +101,9 @@ function generateEarners(initialElapsedSeconds: number = 0): Earner[] {
         baseGrowth = Math.round(raw * 10) / 10;
       }
     }
+    
+    const oldEarningsAtPrev = oldBaseEarnings + prevRefElapsed * oldEarningRatePerSec;
+    baseEarnings = oldEarningsAtPrev - prevRefElapsed * earningRatePerSec;
     
     // Calculate expected earnings at the time of calculation
     const expectedEarnings = baseEarnings + initialElapsedSeconds * earningRatePerSec;
