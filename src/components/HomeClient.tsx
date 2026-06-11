@@ -148,7 +148,12 @@ export default function HomeClient({
               const initials = p.name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2);
               
               const gradient = GRADIENTS[p.id % GRADIENTS.length];
-              const baseLastMonth = p.totalEarned / 1.15;
+              
+              // Deterministic growth rate based on id
+              const baseGrowthVal = 8 + ((p.id * 73) % 28); // 8% to 35%
+              const isNegative = (p.id % 12 === 0 || p.id % 19 === 0);
+              const initialGrowth = isNegative ? -baseGrowthVal / 4 : baseGrowthVal;
+              const baseLastMonth = p.totalEarned / (1 + initialGrowth / 100);
 
               const storedVal = storedData[p.id.toString()];
               const finalEarnings = storedVal ? Math.max(storedVal, p.totalEarned) : p.totalEarned;
