@@ -376,6 +376,7 @@ export default function HomeClient({
                         type="button"
                         onClick={() => {
                           setMetric("Growth");
+                          setTimeframe("Last 30 days");
                           setMetricOpen(false);
                         }}
                         className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-bold transition-colors ${
@@ -396,11 +397,14 @@ export default function HomeClient({
               <div className="relative">
                 <button 
                   type="button"
+                  disabled={metric === "Growth"}
                   onClick={() => {
                     setTimeframeOpen(!timeframeOpen);
                     setMetricOpen(false);
                   }}
-                  className="flex items-center justify-between gap-2 px-3 py-1.5 bg-accent border border-border text-foreground rounded-lg text-xs font-semibold focus:outline-none cursor-pointer hover:bg-accent/80 transition-all min-w-[125px] shadow-sm select-none"
+                  className={`flex items-center justify-between gap-2 px-3 py-1.5 bg-accent border border-border text-foreground rounded-lg text-xs font-semibold focus:outline-none transition-all min-w-[125px] shadow-sm select-none ${
+                    metric === "Growth" ? "opacity-60 cursor-not-allowed" : "cursor-pointer hover:bg-accent/80"
+                  }`}
                 >
                   <span>{timeframe === "All time" ? "All time" : "Last 30 days"}</span>
                   <ChevronDown size={14} className={`text-muted transition-transform duration-200 ${timeframeOpen ? "rotate-180" : ""}`} />
