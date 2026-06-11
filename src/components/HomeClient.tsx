@@ -335,7 +335,7 @@ export default function HomeClient({
                     setMetricOpen(!metricOpen);
                     setTimeframeOpen(false);
                   }}
-                  className="flex items-center justify-between gap-2 px-3 py-1.5 bg-background border border-border text-foreground rounded-lg text-xs font-semibold focus:outline-none cursor-pointer hover:bg-accent transition-all min-w-[110px] shadow-sm select-none"
+                  className="flex items-center justify-between gap-2 px-3 py-1.5 bg-accent border border-border text-foreground rounded-lg text-xs font-semibold focus:outline-none cursor-pointer hover:bg-accent/80 transition-all min-w-[110px] shadow-sm select-none"
                 >
                   <span>{metric}</span>
                   <ChevronDown size={14} className={`text-muted transition-transform duration-200 ${metricOpen ? "rotate-180" : ""}`} />
@@ -353,12 +353,12 @@ export default function HomeClient({
                         }}
                         className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-bold transition-colors ${
                           metric === "Earnings" 
-                          ? "bg-selected text-selected-foreground" 
+                          ? "bg-white/10 text-foreground" 
                           : "text-foreground hover:bg-accent"
                         }`}
                       >
                         <span>Earnings</span>
-                        {metric === "Earnings" && <Check size={12} className="text-selected-foreground shrink-0" />}
+                        {metric === "Earnings" && <Check size={12} className="text-foreground shrink-0" />}
                       </button>
                       <button
                         type="button"
@@ -368,12 +368,12 @@ export default function HomeClient({
                         }}
                         className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-bold transition-colors ${
                           metric === "Growth" 
-                          ? "bg-selected text-selected-foreground" 
+                          ? "bg-white/10 text-foreground" 
                           : "text-foreground hover:bg-accent"
                         }`}
                       >
                         <span>Growth</span>
-                        {metric === "Growth" && <Check size={12} className="text-selected-foreground shrink-0" />}
+                        {metric === "Growth" && <Check size={12} className="text-foreground shrink-0" />}
                       </button>
                     </div>
                   </>
@@ -388,7 +388,7 @@ export default function HomeClient({
                     setTimeframeOpen(!timeframeOpen);
                     setMetricOpen(false);
                   }}
-                  className="flex items-center justify-between gap-2 px-3 py-1.5 bg-background border border-border text-foreground rounded-lg text-xs font-semibold focus:outline-none cursor-pointer hover:bg-accent transition-all min-w-[125px] shadow-sm select-none"
+                  className="flex items-center justify-between gap-2 px-3 py-1.5 bg-accent border border-border text-foreground rounded-lg text-xs font-semibold focus:outline-none cursor-pointer hover:bg-accent/80 transition-all min-w-[125px] shadow-sm select-none"
                 >
                   <span>{timeframe === "All time" ? "All time" : "Last 30 days"}</span>
                   <ChevronDown size={14} className={`text-muted transition-transform duration-200 ${timeframeOpen ? "rotate-180" : ""}`} />
@@ -406,12 +406,12 @@ export default function HomeClient({
                         }}
                         className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-bold transition-colors ${
                           timeframe === "All time" 
-                          ? "bg-selected text-selected-foreground" 
+                          ? "bg-white/10 text-foreground" 
                           : "text-foreground hover:bg-accent"
                         }`}
                       >
                         <span>All time</span>
-                        {timeframe === "All time" && <Check size={12} className="text-selected-foreground shrink-0" />}
+                        {timeframe === "All time" && <Check size={12} className="text-foreground shrink-0" />}
                       </button>
                       <button
                         type="button"
@@ -421,12 +421,12 @@ export default function HomeClient({
                         }}
                         className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-bold transition-colors ${
                           timeframe === "Last 30 days" 
-                          ? "bg-selected text-selected-foreground" 
+                          ? "bg-white/10 text-foreground" 
                           : "text-foreground hover:bg-accent"
                         }`}
                       >
                         <span>Last 30 days</span>
-                        {timeframe === "Last 30 days" && <Check size={12} className="text-selected-foreground shrink-0" />}
+                        {timeframe === "Last 30 days" && <Check size={12} className="text-foreground shrink-0" />}
                       </button>
                     </div>
                   </>
