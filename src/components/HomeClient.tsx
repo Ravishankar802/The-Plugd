@@ -149,9 +149,9 @@ export default function HomeClient({
               
               const gradient = GRADIENTS[p.id % GRADIENTS.length];
               
-              // Deterministic growth rate based on id
-              const baseGrowthVal = 8 + ((p.id * 73) % 28); // 8% to 35%
-              const isNegative = (p.id % 12 === 0 || p.id % 19 === 0);
+              // Deterministic growth rate based on rank
+              const baseGrowthVal = 8 + ((rank * 73) % 28); // 8% to 35%
+              const isNegative = rank > 10 && (rank % 12 === 0 || rank % 19 === 0);
               const initialGrowth = isNegative ? -baseGrowthVal / 4 : baseGrowthVal;
               const baseLastMonth = p.totalEarned / (1 + initialGrowth / 100);
 
