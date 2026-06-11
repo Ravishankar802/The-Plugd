@@ -78,15 +78,22 @@ export default function HomeClient({
       const actualDays = Math.max(0.1, (Date.now() - signupDate.getTime()) / (1000 * 60 * 60 * 24));
       
       const dailyRate = e.earningRatePerSec * 86400;
-      const virtualDays = e.baseEarnings > 1000 && dailyRate > 0 ? e.baseEarnings / dailyRate : 0;
+      const seededDaysActive = 45 + ((e.id * 17) % 45);
+      const virtualDays = e.baseEarnings > 1000 && dailyRate > 0 ? Math.max(seededDaysActive, e.baseEarnings / dailyRate) : 0;
       
       const daysActive = Math.max(1, actualDays, virtualDays);
       const avgEarningsPerDay = e.currentEarnings / daysActive;
       
       const earningsLast30 = avgEarningsPerDay * Math.min(30, daysActive);
       const growthAllTime = e.momGrowth;
-      const base30DaysAgo = e.currentEarnings - earningsLast30;
-      const growthLast30 = base30DaysAgo > 10 ? (earningsLast30 / base30DaysAgo) * 100 : 15.0;
+      
+      let growthLast30 = 15.0;
+      if (growthAllTime < 0) {
+        growthLast30 = growthAllTime * (0.9 + ((e.id * 13) % 3) / 10);
+      } else {
+        const base30DaysAgo = e.currentEarnings - earningsLast30;
+        growthLast30 = base30DaysAgo > 10 ? (earningsLast30 / base30DaysAgo) * 100 : 15.0;
+      }
       
       return {
         ...e,
