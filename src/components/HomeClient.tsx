@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { 
   LayoutDashboard,
-  TrendingUp
+  TrendingUp,
+  ChevronDown,
+  Check
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -27,6 +29,7 @@ interface Earner {
   earningRatePerSec: number;
   baseGrowth: number;
   avatarUrl?: string | null;
+  createdAt: string;
 }
 
 interface ActiveEarner extends Earner {
@@ -61,6 +64,54 @@ export default function HomeClient({
   const [isPaidUser, setIsPaidUser] = useState(false);
   const [earners, setEarners] = useState<ActiveEarner[]>([]);
   const [visibleCount, setVisibleCount] = useState(10);
+
+  // Filters State
+  const [metric, setMetric] = useState<"Earnings" | "Growth">("Earnings");
+  const [timeframe, setTimeframe] = useState<"All time" | "Last 30 days">("All time");
+  const [metricOpen, setMetricOpen] = useState(false);
+  const [timeframeOpen, setTimeframeOpen] = useState(false);
+
+  // Memoized processed earners based on filters
+  const processedEarners = useMemo(() => {
+    const mapped = earners.map((e) => {
+      const signupDate = e.createdAt ? new Date(e.createdAt) : new Date();
+      const actualDays = Math.max(0.1, (Date.now() - signupDate.getTime()) / (1000 * 60 * 60 * 24));
+      
+      const dailyRate = e.earningRatePerSec * 86400;
+      const virtualDays = e.baseEarnings > 1000 && dailyRate > 0 ? e.baseEarnings / dailyRate : 0;
+      
+      const daysActive = Math.max(1, actualDays, virtualDays);
+      const avgEarningsPerDay = e.currentEarnings / daysActive;
+      
+      const earningsLast30 = avgEarningsPerDay * Math.min(30, daysActive);
+      const growthAllTime = e.momGrowth;
+      const base30DaysAgo = e.currentEarnings - earningsLast30;
+      const growthLast30 = base30DaysAgo > 10 ? (earningsLast30 / base30DaysAgo) * 100 : 15.0;
+      
+      return {
+        ...e,
+        earningsLast30,
+        growthAllTime,
+        growthLast30,
+      };
+    });
+
+    return [...mapped].sort((a, b) => {
+      if (metric === "Earnings") {
+        if (timeframe === "All time") {
+          return b.currentEarnings - a.currentEarnings;
+        } else {
+          return b.earningsLast30 - a.earningsLast30;
+        }
+      } else {
+        if (timeframe === "All time") {
+          return b.growthAllTime - a.growthAllTime;
+        } else {
+          return b.growthLast30 - a.growthLast30;
+        }
+      }
+    });
+  }, [earners, metric, timeframe]);
 
   useEffect(() => {
     async function loadTopEarners() {
@@ -115,7 +166,8 @@ export default function HomeClient({
                 baseGrowth: 15.0,
                 currentEarnings: finalEarnings,
                 momGrowth,
-                avatarUrl: p.avatarUrl
+                avatarUrl: p.avatarUrl,
+                createdAt: p.createdAt
               };
             });
 
@@ -274,16 +326,112 @@ export default function HomeClient({
               <h2 className="text-xl md:text-2xl font-extrabold tracking-tight text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Top Earners</h2>
             </div>
             
-            <div className="flex items-center gap-3">
-              <select className="bg-background border border-border text-foreground rounded-lg px-3 py-1.5 text-xs font-semibold focus:outline-none cursor-pointer">
-                <option>Earnings</option>
-                <option>Conversions</option>
-              </select>
-              <select className="bg-background border border-border text-foreground rounded-lg px-3 py-1.5 text-xs font-semibold focus:outline-none cursor-pointer">
-                <option>All time</option>
-                <option>This month</option>
-                <option>This week</option>
-              </select>
+            <div className="flex items-center gap-3 z-30">
+              {/* Metric Dropdown */}
+              <div className="relative">
+                <button 
+                  type="button"
+                  onClick={() => {
+                    setMetricOpen(!metricOpen);
+                    setTimeframeOpen(false);
+                  }}
+                  className="flex items-center justify-between gap-2 px-3 py-1.5 bg-background border border-border text-foreground rounded-lg text-xs font-semibold focus:outline-none cursor-pointer hover:bg-accent transition-all min-w-[110px] shadow-sm select-none"
+                >
+                  <span>{metric}</span>
+                  <ChevronDown size={14} className={`text-muted transition-transform duration-200 ${metricOpen ? "rotate-180" : ""}`} />
+                </button>
+                
+                {metricOpen && (
+                  <>
+                    <div className="fixed inset-0 z-30" onClick={() => setMetricOpen(false)} />
+                    <div className="absolute right-0 mt-1.5 w-[140px] bg-card border border-border rounded-xl shadow-2xl p-1 z-40 animate-in fade-in slide-in-from-top-2 duration-200">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setMetric("Earnings");
+                          setMetricOpen(false);
+                        }}
+                        className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-bold transition-colors ${
+                          metric === "Earnings" 
+                          ? "bg-selected text-selected-foreground" 
+                          : "text-foreground hover:bg-accent"
+                        }`}
+                      >
+                        <span>Earnings</span>
+                        {metric === "Earnings" && <Check size={12} className="text-selected-foreground shrink-0" />}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setMetric("Growth");
+                          setMetricOpen(false);
+                        }}
+                        className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-bold transition-colors ${
+                          metric === "Growth" 
+                          ? "bg-selected text-selected-foreground" 
+                          : "text-foreground hover:bg-accent"
+                        }`}
+                      >
+                        <span>Growth</span>
+                        {metric === "Growth" && <Check size={12} className="text-selected-foreground shrink-0" />}
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {/* Timeframe Dropdown */}
+              <div className="relative">
+                <button 
+                  type="button"
+                  onClick={() => {
+                    setTimeframeOpen(!timeframeOpen);
+                    setMetricOpen(false);
+                  }}
+                  className="flex items-center justify-between gap-2 px-3 py-1.5 bg-background border border-border text-foreground rounded-lg text-xs font-semibold focus:outline-none cursor-pointer hover:bg-accent transition-all min-w-[125px] shadow-sm select-none"
+                >
+                  <span>{timeframe === "All time" ? "All time" : "Last 30 days"}</span>
+                  <ChevronDown size={14} className={`text-muted transition-transform duration-200 ${timeframeOpen ? "rotate-180" : ""}`} />
+                </button>
+                
+                {timeframeOpen && (
+                  <>
+                    <div className="fixed inset-0 z-30" onClick={() => setTimeframeOpen(false)} />
+                    <div className="absolute right-0 mt-1.5 w-[150px] bg-card border border-border rounded-xl shadow-2xl p-1 z-40 animate-in fade-in slide-in-from-top-2 duration-200">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setTimeframe("All time");
+                          setTimeframeOpen(false);
+                        }}
+                        className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-bold transition-colors ${
+                          timeframe === "All time" 
+                          ? "bg-selected text-selected-foreground" 
+                          : "text-foreground hover:bg-accent"
+                        }`}
+                      >
+                        <span>All time</span>
+                        {timeframe === "All time" && <Check size={12} className="text-selected-foreground shrink-0" />}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setTimeframe("Last 30 days");
+                          setTimeframeOpen(false);
+                        }}
+                        className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-bold transition-colors ${
+                          timeframe === "Last 30 days" 
+                          ? "bg-selected text-selected-foreground" 
+                          : "text-foreground hover:bg-accent"
+                        }`}
+                      >
+                        <span>Last 30 days</span>
+                        {timeframe === "Last 30 days" && <Check size={12} className="text-selected-foreground shrink-0" />}
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
           </div>
 
@@ -293,29 +441,61 @@ export default function HomeClient({
                 <tr className="border-b border-border/60">
                   <th className="pb-3 pt-1 w-8 md:w-10 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center">#</th>
                   <th className="pb-3 pt-1 md:w-[60%] text-[0.65rem] font-bold text-muted uppercase tracking-widest pl-1 md:pl-2">Promoter</th>
-                  <th className="pb-3 pt-1 md:w-[20%] text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right md:text-left whitespace-nowrap md:pl-6">Earnings</th>
-                  <th className="pb-3 pt-1 md:w-[20%] text-[0.65rem] font-bold text-muted tracking-widest text-right whitespace-nowrap pl-2 md:pl-4">MoM GROWTH</th>
+                  <th className="pb-3 pt-1 md:w-[20%] text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right md:text-left whitespace-nowrap md:pl-6">{metric}</th>
+                  <th className="pb-3 pt-1 md:w-[20%] text-[0.65rem] font-bold text-muted tracking-widest text-right whitespace-nowrap pl-2 md:pl-4">
+                    {metric === "Earnings" ? (timeframe === "All time" ? "MoM GROWTH" : "30-Day Growth") : (timeframe === "All time" ? "All-Time Earnings" : "30-Day Earnings")}
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/30">
-                {earners.slice(0, visibleCount).map((earner, index) => {
+                {processedEarners.slice(0, visibleCount).map((earner, index) => {
                   const rank = index + 1;
-                  const formattedEarnings = new Intl.NumberFormat("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                    maximumFractionDigits: 0
-                  }).format(earner.currentEarnings);
                   
-                  let formattedGrowth = "";
-                  let growthColor = "";
-                  if (Math.abs(earner.momGrowth) < 0.005) {
-                    formattedGrowth = "—";
-                    growthColor = "text-muted/60 bg-muted/10";
+                  // Column 3 display calculation
+                  let col3Display: React.ReactNode = "";
+                  if (metric === "Earnings") {
+                    const val = timeframe === "All time" ? earner.currentEarnings : earner.earningsLast30;
+                    col3Display = new Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                      maximumFractionDigits: 0
+                    }).format(val);
                   } else {
-                    formattedGrowth = `${earner.momGrowth > 0 ? "↑" : "↓"} ${Math.abs(earner.momGrowth).toFixed(2)}%`;
-                    growthColor = earner.momGrowth > 0 ? "text-emerald-500 bg-emerald-500/10" : "text-red-500 bg-red-500/10";
+                    const val = timeframe === "All time" ? earner.growthAllTime : earner.growthLast30;
+                    const isZero = Math.abs(val) < 0.005;
+                    col3Display = (
+                      <span className={isZero ? "text-muted" : val > 0 ? "text-emerald-500" : "text-red-500"}>
+                        {val > 0 ? "↑" : val < 0 ? "↓" : ""} {Math.abs(val).toFixed(2)}%
+                      </span>
+                    );
                   }
-                  
+
+                  // Column 4 display calculation
+                  let col4Display: React.ReactNode = null;
+                  if (metric === "Earnings") {
+                    const val = timeframe === "All time" ? earner.growthAllTime : earner.growthLast30;
+                    const isZero = Math.abs(val) < 0.005;
+                    const text = isZero ? "—" : `${val > 0 ? "↑" : "↓"} ${Math.abs(val).toFixed(2)}%`;
+                    const color = isZero ? "text-muted/60 bg-muted/10" : val > 0 ? "text-emerald-500 bg-emerald-500/10" : "text-red-500 bg-red-500/10";
+                    col4Display = (
+                      <span className={`${color} font-bold text-[10px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md`}>
+                        {text}
+                      </span>
+                    );
+                  } else {
+                    const val = timeframe === "All time" ? earner.currentEarnings : earner.earningsLast30;
+                    const text = new Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                      maximumFractionDigits: 0
+                    }).format(val);
+                    col4Display = (
+                      <span className="text-foreground font-bold text-xs md:text-sm">
+                        {text}
+                      </span>
+                    );
+                  }
+
                   let rankDisplay: React.ReactNode = rank;
                   if (rank === 1) rankDisplay = <span className="text-base md:text-lg">🥇</span>;
                   else if (rank === 2) rankDisplay = <span className="text-base md:text-lg">🥈</span>;
@@ -346,12 +526,10 @@ export default function HomeClient({
                         </div>
                       </td>
                       <td className="py-3 text-right md:text-left font-bold text-foreground text-xs md:text-sm whitespace-nowrap md:w-[20%] md:pl-6">
-                        {formattedEarnings}
+                        {col3Display}
                       </td>
                       <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4 md:w-[20%]">
-                        <span className={`${growthColor} font-bold text-[10px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md`}>
-                          {formattedGrowth}
-                        </span>
+                        {col4Display}
                       </td>
                     </tr>
                   );

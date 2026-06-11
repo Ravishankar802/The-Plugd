@@ -13,6 +13,7 @@ export async function GET() {
         username: true,
         avatarUrl: true,
         totalEarned: true,
+        createdAt: true,
       },
       orderBy: {
         totalEarned: "desc"
