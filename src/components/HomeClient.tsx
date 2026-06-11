@@ -26,6 +26,7 @@ interface Earner {
   baseLastMonth: number;
   earningRatePerSec: number;
   baseGrowth: number;
+  avatarUrl?: string | null;
 }
 
 interface ActiveEarner extends Earner {
@@ -196,6 +197,52 @@ export default function HomeClient({
 
     setEarners(mergedEarners);
 
+    // Fetch and merge real top earners from database
+    async function loadTopEarners() {
+      try {
+        const res = await fetch("/api/top-earners");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && data.promoters) {
+            setEarners(prev => {
+              const realEarners: ActiveEarner[] = data.promoters.map((p: any) => {
+                const name = p.name;
+                const handle = p.username ? `@${p.username}` : `@${p.name.toLowerCase().replace(/[^a-z0-9_]/g, "_")}`;
+                const initials = name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2);
+                
+                const index = p.id;
+                const gradient = GRADIENTS[index % GRADIENTS.length];
+                const baseLastMonth = p.totalEarned / 1.15;
+                const momGrowth = 15.0;
+                
+                return {
+                  id: -p.id, // negative id to prevent collisions
+                  name,
+                  handle,
+                  initials,
+                  gradient,
+                  baseEarnings: p.totalEarned,
+                  baseLastMonth,
+                  earningRatePerSec: 0,
+                  baseGrowth: 15.0,
+                  currentEarnings: p.totalEarned,
+                  momGrowth,
+                  avatarUrl: p.avatarUrl
+                };
+              });
+
+              const filteredPrev = prev.filter(e => e.id > 0);
+              const combined = [...filteredPrev, ...realEarners].sort((a, b) => b.currentEarnings - a.currentEarnings);
+              return combined;
+            });
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load real top earners:", err);
+      }
+    }
+    loadTopEarners();
+
     // Save initial merged values
     const dataToStore: Record<string, number> = {};
     mergedEarners.forEach(e => {
@@ -209,6 +256,7 @@ export default function HomeClient({
     const interval = setInterval(() => {
       setEarners(prev => {
         const nextList = prev.map(e => {
+          if (e.id < 0) return e; // Skip real database earners
           const hasEarned = Math.random() > 0.3; 
           const multiplier = hasEarned ? (0.5 + Math.random() * 1.5) : 0;
           const increment = 60 * e.earningRatePerSec * multiplier;
@@ -393,9 +441,17 @@ export default function HomeClient({
                       </td>
                       <td className="py-3 pl-1 md:pl-2">
                         <div className="flex items-center gap-2 md:gap-3">
-                          <div className={`w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr ${earner.gradient} text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0`}>
-                            {earner.initials}
-                          </div>
+                          {earner.avatarUrl ? (
+                            <img 
+                              src={earner.avatarUrl} 
+                              alt={earner.name}
+                              className="w-8 h-8 md:w-9 h-9 rounded-full object-cover shadow-md shrink-0 border border-border/40"
+                            />
+                          ) : (
+                            <div className={`w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr ${earner.gradient} text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0`}>
+                              {earner.initials}
+                            </div>
+                          )}
                           <div className="flex flex-col min-w-0">
                             <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate">{earner.name}</span>
                             <span className="text-muted text-[10px] md:text-xs leading-none truncate">{earner.handle}</span>

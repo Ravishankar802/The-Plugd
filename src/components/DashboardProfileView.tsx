@@ -22,7 +22,11 @@ import {
   TrendingUp,
   X,
   Save,
-  Share2
+  Share2,
+  Camera,
+  Trash2,
+  Upload,
+  User
 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
@@ -190,6 +194,64 @@ here's my link 👉 ${link}`
     });
   })();
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert("File size exceeds 5MB. Please select a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        const maxDim = 150;
+        
+        let width = img.width;
+        let height = img.height;
+        const size = Math.min(width, height);
+        
+        canvas.width = maxDim;
+        canvas.height = maxDim;
+        
+        if (ctx) {
+          const sx = (width - size) / 2;
+          const sy = (height - size) / 2;
+          ctx.drawImage(img, sx, sy, size, size, 0, 0, maxDim, maxDim);
+          try {
+            const compressedBase64 = canvas.toDataURL("image/jpeg", 0.85);
+            setPromoterData((prev: any) => ({
+              ...prev,
+              avatarUrl: compressedBase64
+            }));
+          } catch (err) {
+            console.error("Canvas toDataURL failed:", err);
+            alert("Failed to process image.");
+          }
+        }
+      };
+      img.onerror = () => {
+        alert("Failed to load image file.");
+      };
+      img.src = event.target?.result as string;
+    };
+    reader.onerror = () => {
+      alert("Failed to read file.");
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleRemoveAvatar = () => {
+    setPromoterData((prev: any) => ({
+      ...prev,
+      avatarUrl: null
+    }));
+  };
+
   const handlePromoterSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!promoterData) {
@@ -229,6 +291,7 @@ here's my link 👉 ${link}`
           name: promoterData.name,
           xHandle: promoterData.xHandle,
           username: promoterData.username,
+          avatarUrl: promoterData.avatarUrl,
           payoutMethod: derivedMethod,
           payoutDetails: derivedDetails,
           payoutRegion: promoterData.payoutRegion,
@@ -303,6 +366,62 @@ here's my link 👉 ${link}`
 
               <div className="bg-pill border border-border rounded-[16px] p-6 md:p-10 shadow-2xl">
                 <form onSubmit={handlePromoterSave} className="space-y-10">
+                  {/* Profile Picture Upload */}
+                  <div className="flex flex-col sm:flex-row items-center gap-6 pb-6 border-b border-border/40">
+                    <div className="relative group shrink-0">
+                      {promoterData.avatarUrl ? (
+                        <img 
+                          src={promoterData.avatarUrl} 
+                          alt="Profile Picture" 
+                          className="w-24 h-24 rounded-full object-cover border border-border shadow-lg"
+                        />
+                      ) : (
+                        <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-emerald-500 to-green-300 text-white font-black text-2xl flex items-center justify-center border border-border shadow-lg">
+                          {(promoterData.name || "").split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2) || <User className="w-8 h-8" />}
+                        </div>
+                      )}
+                      <label 
+                        htmlFor="avatar-upload" 
+                        className="absolute inset-0 bg-black/60 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer text-white text-xs font-bold"
+                      >
+                        <Camera className="w-5 h-5" />
+                      </label>
+                    </div>
+
+                    <div className="flex flex-col items-center sm:items-start gap-2.5 text-center sm:text-left">
+                      <span className="text-[1.1rem] font-bold text-foreground">Profile Picture</span>
+                      <p className="text-xs text-muted max-w-[280px]">
+                        Upload a photo to be displayed in your profile and on the leaderboard if you reach the top earners.
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <label 
+                          htmlFor="avatar-upload"
+                          className="px-4 py-2 rounded-lg bg-accent border border-border text-foreground hover:bg-accent/80 transition-all font-bold text-xs cursor-pointer flex items-center gap-1.5 active:scale-[0.98]"
+                        >
+                          <Upload className="w-3.5 h-3.5" />
+                          Upload Photo
+                        </label>
+                        <input 
+                          id="avatar-upload"
+                          type="file"
+                          accept="image/*"
+                          onChange={handleFileChange}
+                          className="hidden"
+                        />
+                        {promoterData.avatarUrl && (
+                          <button
+                            type="button"
+                            onClick={handleRemoveAvatar}
+                            className="px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 hover:bg-red-500/20 transition-all font-bold text-xs flex items-center gap-1.5 active:scale-[0.98]"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                            Remove
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Name */}
                     <div className="flex flex-col gap-3">
