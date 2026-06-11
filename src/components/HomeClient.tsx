@@ -545,7 +545,7 @@ export default function HomeClient({
                 className="bg-accent border border-border text-foreground hover:bg-accent/80 transition-all font-bold text-xs px-4 py-2 rounded-lg cursor-pointer active:scale-[0.98]"
                 style={{ fontFamily: 'var(--font-eb-garamond), serif' }}
               >
-                {visibleCount === 10 ? "Show Top 50 Earners" : "Show Top 10 Earners"}
+                {visibleCount === 10 ? "Show Top 50" : "Show Top 10"}
               </button>
             </div>
           )}
