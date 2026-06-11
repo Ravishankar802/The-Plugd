@@ -292,11 +292,9 @@ export default function HomeClient({
               <thead>
                 <tr className="border-b border-border/60">
                   <th className="pb-3 pt-1 w-8 md:w-10 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center">#</th>
-                  <th className="pb-3 pt-1 text-[0.65rem] font-bold text-muted uppercase tracking-widest pl-1 md:pl-2">
-                    <span className="md:inline-block md:-translate-x-10">Promoter</span>
-                  </th>
-                  <th className="pb-3 pt-1 w-24 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap">Earnings</th>
-                  <th className="pb-3 pt-1 w-28 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap pl-2 md:pl-4">MoM Growth</th>
+                  <th className="pb-3 pt-1 md:w-[40%] text-[0.65rem] font-bold text-muted uppercase tracking-widest pl-1 md:pl-2">Promoter</th>
+                  <th className="pb-3 pt-1 md:w-[35%] text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right md:text-left whitespace-nowrap md:pl-8">Earnings</th>
+                  <th className="pb-3 pt-1 md:w-[20%] text-[0.65rem] font-bold text-muted tracking-widest text-right whitespace-nowrap pl-2 md:pl-4">MoM Growth</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/30">
@@ -328,8 +326,8 @@ export default function HomeClient({
                       <td className="py-3 text-center w-8 md:w-10 font-bold text-muted text-xs md:text-sm">
                         {rankDisplay}
                       </td>
-                      <td className="py-3 pl-1 md:pl-2">
-                        <div className="flex items-center gap-2 md:gap-3 md:-translate-x-10">
+                      <td className="py-3 pl-1 md:pl-2 md:w-[40%]">
+                        <div className="flex items-center gap-2 md:gap-3">
                           {earner.avatarUrl ? (
                             <img 
                               src={earner.avatarUrl} 
@@ -347,10 +345,10 @@ export default function HomeClient({
                           </div>
                         </div>
                       </td>
-                      <td className="py-3 text-right font-bold text-foreground text-xs md:text-sm whitespace-nowrap">
+                      <td className="py-3 text-right md:text-left font-bold text-foreground text-xs md:text-sm whitespace-nowrap md:w-[35%] md:pl-8">
                         {formattedEarnings}
                       </td>
-                      <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4">
+                      <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4 md:w-[20%]">
                         <span className={`${growthColor} font-bold text-[10px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md`}>
                           {formattedGrowth}
                         </span>
