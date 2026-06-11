@@ -292,7 +292,9 @@ export default function HomeClient({
               <thead>
                 <tr className="border-b border-border/60">
                   <th className="pb-3 pt-1 w-8 md:w-10 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center">#</th>
-                  <th className="pb-3 pt-1 text-[0.65rem] font-bold text-muted uppercase tracking-widest pl-1 md:pl-2">Creator</th>
+                  <th className="pb-3 pt-1 text-[0.65rem] font-bold text-muted uppercase tracking-widest pl-1 md:pl-2">
+                    <span className="md:inline-block md:-translate-x-10">Promoter</span>
+                  </th>
                   <th className="pb-3 pt-1 w-24 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap">Earnings</th>
                   <th className="pb-3 pt-1 w-28 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right whitespace-nowrap pl-2 md:pl-4">MoM Growth</th>
                 </tr>
@@ -327,7 +329,7 @@ export default function HomeClient({
                         {rankDisplay}
                       </td>
                       <td className="py-3 pl-1 md:pl-2">
-                        <div className="flex items-center gap-2 md:gap-3">
+                        <div className="flex items-center gap-2 md:gap-3 md:-translate-x-10">
                           {earner.avatarUrl ? (
                             <img 
                               src={earner.avatarUrl} 
