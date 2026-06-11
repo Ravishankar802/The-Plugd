@@ -49,100 +49,6 @@ const GRADIENTS = [
   "from-sky-500 to-blue-300"
 ];
 
-function generateEarners(initialElapsedSeconds: number = 0): Earner[] {
-  const list: Earner[] = [];
-  
-  for (let i = 0; i < 50; i++) {
-    const id = i + 1;
-    const firstName = FIRST_NAMES[i % FIRST_NAMES.length];
-    const lastName = LAST_NAMES[(i * 3) % LAST_NAMES.length]; 
-    const name = `${firstName} ${lastName}`;
-    const handle = `@${firstName.toLowerCase()}_${lastName.toLowerCase()}`;
-    const initials = `${firstName[0]}${lastName[0]}`;
-    const gradient = GRADIENTS[i % GRADIENTS.length];
-    let baseEarnings = 0;
-    let earningRatePerSec = 0;
-    let baseGrowth = 0;
-    
-    const factor = (50 - id) / 48; // from 1.0 down to 0.0
-    
-    // We adjust the daily rates to align with the proposed top 50 average ($180/day average):
-    // Rank 1: $250/day, Rank 2: $220/day, Rank 50: $140/day
-    let dailyRate = 0;
-    if (id === 1) {
-      dailyRate = 250;
-    } else {
-      dailyRate = 140 + 80 * Math.pow(factor, 2.0);
-    }
-    earningRatePerSec = dailyRate / 86400;
-    
-    // Calculate the growth rate with a slow-moving date-based fluctuation (changes naturally once in a few days)
-    const daysSinceEpoch = Math.floor(Date.now() / (86400 * 1000));
-    const fluctuation = Math.sin(id * 1.7 + daysSinceEpoch * 0.15) * 4;
-    
-    if (id === 1) {
-      baseGrowth = Math.round((28.2 + fluctuation) * 10) / 10;
-    } else {
-      // Setup varied base growth rates with daily fluctuations
-      if (id === 2) baseGrowth = Math.round((13.8 + fluctuation) * 10) / 10;
-      else if (id === 3) baseGrowth = Math.round((-2.5 + fluctuation) * 10) / 10;
-      else if (id === 4) baseGrowth = Math.round((8.1 + fluctuation) * 10) / 10;
-      else if (id === 5) baseGrowth = Math.round((0.0 + fluctuation) * 10) / 10;
-      else {
-        // Deterministic varied growth rate (mostly positive, minimal negative growth)
-        const raw = Math.sin(id * 0.7) * 15 + Math.cos(id * 1.3) * 5 + 15; 
-        baseGrowth = Math.round((Math.round(raw * 10) / 10 + fluctuation) * 10) / 10;
-      }
-    }
-    
-    // To prevent any step jumps and align perfectly with today's values (transition day):
-    const currentRefElapsed = 845000; // ~9.8 days elapsed (June 11)
-    const prevRefElapsed = 777600; // 9 days elapsed (June 10)
-    
-    // Previous parameters in code version c2fe865
-    let prevRatePerSec = 0;
-    if (id === 1) {
-      prevRatePerSec = 180 / 86400;
-    } else {
-      prevRatePerSec = (140 + 40 * Math.pow(factor, 2.0)) / 86400;
-    }
-    
-    let prevBaseEarnings = 0;
-    if (id === 1) {
-      const oldRate = 0.0405 / 10;
-      const oldBase = 71000 + prevRefElapsed * 0.0405 * 0.9;
-      const oldEarnings = oldBase + prevRefElapsed * oldRate;
-      prevBaseEarnings = oldEarnings - prevRefElapsed * prevRatePerSec;
-    } else {
-      const oldRate = (0.00115 + 0.0162 * Math.pow(factor, 2.0)) / 10;
-      const oldBase = (3200 + 21800 * Math.pow(factor, 2.0)) + prevRefElapsed * (0.00115 + 0.0162 * Math.pow(factor, 2.0)) * 0.9;
-      const oldEarnings = oldBase + prevRefElapsed * oldRate;
-      prevBaseEarnings = oldEarnings - prevRefElapsed * prevRatePerSec;
-    }
-    
-    const prevExpectedEarnings = prevBaseEarnings + currentRefElapsed * prevRatePerSec;
-    baseEarnings = prevExpectedEarnings - currentRefElapsed * earningRatePerSec;
-    
-    // Calculate expected earnings at the time of calculation
-    const expectedEarnings = baseEarnings + initialElapsedSeconds * earningRatePerSec;
-    // Calculate baseLastMonth such that (expectedEarnings - baseLastMonth) / baseLastMonth * 100 === baseGrowth
-    const baseLastMonth = expectedEarnings / (1 + baseGrowth / 100);
-    
-    list.push({
-      id,
-      name,
-      handle,
-      initials,
-      gradient,
-      baseEarnings,
-      baseLastMonth,
-      earningRatePerSec,
-      baseGrowth
-    });
-  }
-  
-  return list;
-}
 
 export default function HomeClient({ 
   userEmail: serverUserEmail,
@@ -157,106 +63,87 @@ export default function HomeClient({
   const [visibleCount, setVisibleCount] = useState(10);
 
   useEffect(() => {
-    const baseEpoch = 1780272000000;
-    const initialElapsedSeconds = Math.max(0, (Date.now() - baseEpoch) / 1000);
-    
-    // 1. Calculate time-accrued values
-    const calculatedEarners = generateEarners(initialElapsedSeconds).map(e => {
-      const initialAccrued = initialElapsedSeconds * e.earningRatePerSec;
-      const currentEarnings = e.baseEarnings + initialAccrued;
-      const momGrowth = ((currentEarnings - e.baseLastMonth) / e.baseLastMonth) * 100;
-      return {
-        ...e,
-        currentEarnings,
-        momGrowth
-      };
-    });
-
-    // 2. Load from localStorage if present
-    let storedData: Record<string, number> = {};
-    try {
-      const stored = localStorage.getItem("plugd_leaderboard_earnings_v2");
-      if (stored) {
-        storedData = JSON.parse(stored);
-      }
-    } catch (err) {
-      console.error("Failed to parse stored earnings:", err);
-    }
-
-    // 3. Merge taking the maximum of calculated and stored to guarantee it never goes down
-    const mergedEarners = calculatedEarners.map(e => {
-      const storedVal = storedData[e.id.toString()];
-      const finalEarnings = storedVal ? Math.max(storedVal, e.currentEarnings) : e.currentEarnings;
-      const momGrowth = ((finalEarnings - e.baseLastMonth) / e.baseLastMonth) * 100;
-      return {
-        ...e,
-        currentEarnings: finalEarnings,
-        momGrowth
-      };
-    }).sort((a, b) => b.currentEarnings - a.currentEarnings);
-
-    setEarners(mergedEarners);
-
-    // Fetch and merge real top earners from database
     async function loadTopEarners() {
       try {
         const res = await fetch("/api/top-earners");
         if (res.ok) {
           const data = await res.json();
           if (data.success && data.promoters) {
-            setEarners(prev => {
-              const realEarners: ActiveEarner[] = data.promoters.map((p: any) => {
-                const name = p.name;
-                const handle = p.username ? `@${p.username}` : `@${p.name.toLowerCase().replace(/[^a-z0-9_]/g, "_")}`;
-                const initials = name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2);
-                
-                const index = p.id;
-                const gradient = GRADIENTS[index % GRADIENTS.length];
-                const baseLastMonth = p.totalEarned / 1.15;
-                const momGrowth = 15.0;
-                
-                return {
-                  id: -p.id, // negative id to prevent collisions
-                  name,
-                  handle,
-                  initials,
-                  gradient,
-                  baseEarnings: p.totalEarned,
-                  baseLastMonth,
-                  earningRatePerSec: 0,
-                  baseGrowth: 15.0,
-                  currentEarnings: p.totalEarned,
-                  momGrowth,
-                  avatarUrl: p.avatarUrl
-                };
-              });
+            // Load from localStorage if present
+            let storedData: Record<string, number> = {};
+            try {
+              const stored = localStorage.getItem("plugd_leaderboard_earnings_v2");
+              if (stored) {
+                storedData = JSON.parse(stored);
+              }
+            } catch (err) {
+              console.error("Failed to parse stored earnings:", err);
+            }
 
-              const filteredPrev = prev.filter(e => e.id > 0);
-              const combined = [...filteredPrev, ...realEarners].sort((a, b) => b.currentEarnings - a.currentEarnings);
-              return combined;
+            // Map promoters to ActiveEarner
+            const mappedEarners = data.promoters.map((p: any, index: number) => {
+              const rank = index + 1;
+              const factor = Math.max(0, (50 - rank) / 48); // from 1.0 down to 0.0
+              
+              let dailyRate = 0;
+              if (rank === 1) {
+                dailyRate = 250;
+              } else {
+                dailyRate = 140 + 80 * Math.pow(factor, 2.0);
+              }
+              const earningRatePerSec = dailyRate / 86400;
+
+              const handle = p.username ? `@${p.username}` : `@${p.name.toLowerCase().replace(/[^a-z0-9_]/g, "_")}`;
+              const initials = p.name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2);
+              
+              const gradient = GRADIENTS[p.id % GRADIENTS.length];
+              const baseLastMonth = p.totalEarned / 1.15;
+
+              const storedVal = storedData[p.id.toString()];
+              const finalEarnings = storedVal ? Math.max(storedVal, p.totalEarned) : p.totalEarned;
+              const momGrowth = ((finalEarnings - baseLastMonth) / baseLastMonth) * 100;
+
+              return {
+                id: p.id,
+                name: p.name,
+                handle,
+                initials,
+                gradient,
+                baseEarnings: p.totalEarned,
+                baseLastMonth,
+                earningRatePerSec,
+                baseGrowth: 15.0,
+                currentEarnings: finalEarnings,
+                momGrowth,
+                avatarUrl: p.avatarUrl
+              };
             });
+
+            // Sort by currentEarnings descending
+            const sortedEarners = [...mappedEarners].sort((a, b) => b.currentEarnings - a.currentEarnings);
+            setEarners(sortedEarners);
+
+            // Save initial values to localStorage
+            const dataToStore: Record<string, number> = {};
+            sortedEarners.forEach(e => {
+              dataToStore[e.id.toString()] = e.currentEarnings;
+            });
+            try {
+              localStorage.setItem("plugd_leaderboard_earnings_v2", JSON.stringify(dataToStore));
+            } catch (err) {}
           }
         }
       } catch (err) {
-        console.error("Failed to load real top earners:", err);
+        console.error("Failed to load top earners:", err);
       }
     }
-    loadTopEarners();
 
-    // Save initial merged values
-    const dataToStore: Record<string, number> = {};
-    mergedEarners.forEach(e => {
-      dataToStore[e.id.toString()] = e.currentEarnings;
-    });
-    try {
-      localStorage.setItem("plugd_leaderboard_earnings_v2", JSON.stringify(dataToStore));
-    } catch (err) {}
+    loadTopEarners();
 
     // Live update interval
     const interval = setInterval(() => {
       setEarners(prev => {
         const nextList = prev.map(e => {
-          if (e.id < 0) return e; // Skip real database earners
           const hasEarned = Math.random() > 0.3; 
           const multiplier = hasEarned ? (0.5 + Math.random() * 1.5) : 0;
           const increment = 60 * e.earningRatePerSec * multiplier;
