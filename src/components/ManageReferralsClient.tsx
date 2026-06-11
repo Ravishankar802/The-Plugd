@@ -229,9 +229,9 @@ export default function ManageReferralsClient() {
           
           let dailyRate = 0;
           if (rank === 1) {
-            dailyRate = 250;
+            dailyRate = 1200;
           } else {
-            dailyRate = 140 + 80 * Math.pow(factor, 2.0);
+            dailyRate = 300 + 600 * Math.pow(factor, 2.0);
           }
           const earningRatePerSec = dailyRate / 86400;
           const baseLastMonth = p.totalEarned / 1.15;
