@@ -390,9 +390,6 @@ here's my link 👉 ${link}`
 
                     <div className="flex flex-col items-center sm:items-start gap-2.5 text-center sm:text-left">
                       <span className="text-[1.1rem] font-bold text-foreground">Profile Picture</span>
-                      <p className="text-xs text-muted max-w-[280px]">
-                        Upload a photo to be displayed in your profile and on the leaderboard if you reach the top earners.
-                      </p>
                       <div className="flex items-center gap-2">
                         <label 
                           htmlFor="avatar-upload"
