@@ -729,23 +729,13 @@ export default function ManageReferralsClient() {
                       className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
                     />
                   </div>
-                  <div className="space-y-1.5">
+                  <div className="space-y-1.5 md:col-span-2">
                     <label className="text-xs font-bold text-muted uppercase tracking-wider">Email Address</label>
                     <input
                       required
                       type="email"
                       value={editForm.email || ""}
                       onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
-                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-muted uppercase tracking-wider">X Handle (optional)</label>
-                    <input
-                      type="text"
-                      placeholder="e.g. twitter_username"
-                      value={editForm.xHandle || ""}
-                      onChange={(e) => setEditForm({ ...editForm, xHandle: e.target.value })}
                       className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
                     />
                   </div>
