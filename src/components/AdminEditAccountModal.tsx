@@ -8,7 +8,8 @@ import {
   Upload, 
   Check,
   Plus,
-  User
+  User,
+  Camera
 } from "lucide-react";
 import { NICHES } from "@/lib/constants";
 import SafeAvatar from "./SafeAvatar";
@@ -58,6 +59,61 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
     } finally {
       setSaving(false);
     }
+  };
+
+  const handleAvatarFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert("File size exceeds 5MB. Please select a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        const maxDim = 150;
+        
+        let width = img.width;
+        let height = img.height;
+        const size = Math.min(width, height);
+        
+        canvas.width = maxDim;
+        canvas.height = maxDim;
+        
+        if (ctx) {
+          const sx = (width - size) / 2;
+          const sy = (height - size) / 2;
+          ctx.drawImage(img, sx, sy, size, size, 0, 0, maxDim, maxDim);
+          try {
+            const compressedBase64 = canvas.toDataURL("image/jpeg", 0.85);
+            setFormData((prev: any) => ({
+              ...prev,
+              avatarUrl: compressedBase64
+            }));
+          } catch (err) {
+            console.error("Canvas toDataURL failed:", err);
+            alert("Failed to process image.");
+          }
+        }
+      };
+      img.onerror = () => {
+        alert("Failed to load image file.");
+      };
+      img.src = event.target?.result as string;
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleRemoveAvatar = () => {
+    setFormData((prev: any) => ({
+      ...prev,
+      avatarUrl: ""
+    }));
   };
 
 
@@ -123,25 +179,49 @@ export default function AdminEditAccountModal({ account, isOpen, onClose, onSave
               />
             </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full overflow-hidden bg-background border border-border flex items-center justify-center shadow-lg shrink-0 mt-1">
-                <SafeAvatar 
-                  src={formData.avatarUrl} 
-                  alt="" 
-                  className="w-full h-full object-cover" 
-                  fallbackSize={20}
-                />
+            <div className="flex items-center gap-6 pb-2">
+              <div className="relative group shrink-0">
+                {formData.avatarUrl ? (
+                  <img 
+                    src={formData.avatarUrl} 
+                    alt="Profile Picture" 
+                    className="w-16 h-16 rounded-full object-cover border border-border shadow-lg"
+                  />
+                ) : (
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-emerald-500 to-green-300 text-white font-black text-lg flex items-center justify-center border border-border shadow-lg">
+                    {formData.name ? formData.name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2) : <User className="w-5 h-5" />}
+                  </div>
+                )}
               </div>
-              <div className="flex-1 space-y-2">
-                <label className="text-[0.95rem] font-[500] text-foreground">Profile Picture URL</label>
-                <input
-                  type="text"
-                  placeholder="https://pbs.twimg.com/profile_images/..."
-                  value={formData.avatarUrl || ""}
-                  onChange={(e) => setFormData({ ...formData, avatarUrl: e.target.value })}
-                  className="w-full bg-background border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-muted transition-all"
-                />
-                <p className="text-[0.75rem] text-muted font-medium">Paste the X profile picture URL</p>
+
+              <div className="flex flex-col items-start gap-2">
+                <span className="text-[0.95rem] font-[500] text-foreground">Profile Picture</span>
+                <div className="flex items-center gap-2">
+                  <label 
+                    htmlFor="admin-edit-avatar-upload"
+                    className="px-4 py-2 rounded-lg bg-accent border border-border text-foreground hover:bg-accent/80 transition-all font-bold text-xs cursor-pointer flex items-center gap-1.5 active:scale-[0.98]"
+                  >
+                    <Upload className="w-3.5 h-3.5" />
+                    Upload Photo
+                  </label>
+                  <input 
+                    id="admin-edit-avatar-upload"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleAvatarFileChange}
+                    className="hidden"
+                  />
+                  {formData.avatarUrl && (
+                    <button
+                      type="button"
+                      onClick={handleRemoveAvatar}
+                      className="px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 hover:bg-red-500/20 transition-all font-bold text-xs flex items-center gap-1.5 active:scale-[0.98]"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                      Remove
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
 
