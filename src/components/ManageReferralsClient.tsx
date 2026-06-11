@@ -13,7 +13,9 @@ import {
   ExternalLink,
   ChevronDown,
   Download,
-  AlertCircle
+  AlertCircle,
+  Edit,
+  X
 } from "lucide-react";
 import Link from "next/link";
 
@@ -65,6 +67,10 @@ interface Promoter {
   totalSignups: number;
   paidUsers: number;
   revenueGenerated: number;
+  avatarUrl: string | null;
+  currentEarnings?: number;
+  earningRatePerSec?: number;
+  baseLastMonth?: number;
   createdAt: string;
   payouts: Payout[];
   pendingWithdrawalRequest: WithdrawalRequest | null;
@@ -96,6 +102,19 @@ function getPayoutSummary(promoter: Promoter) {
   return promoter.payoutDetails || "";
 }
 
+const GRADIENTS = [
+  "from-emerald-500 to-green-300",
+  "from-purple-500 to-pink-300",
+  "from-blue-500 to-cyan-300",
+  "from-amber-500 to-yellow-300",
+  "from-red-500 to-orange-300",
+  "from-violet-600 to-indigo-400",
+  "from-fuchsia-500 to-purple-300",
+  "from-rose-500 to-red-300",
+  "from-teal-500 to-emerald-300",
+  "from-sky-500 to-blue-300"
+];
+
 export default function ManageReferralsClient() {
   const [promoters, setPromoters] = useState<Promoter[]>([]);
   const [loading, setLoading] = useState(true);
@@ -105,6 +124,12 @@ export default function ManageReferralsClient() {
   const [payoutPromoter, setPayoutPromoter] = useState<Promoter | null>(null);
   const [payoutNote, setPayoutNote] = useState("");
   const [isPaying, setIsPaying] = useState(false);
+
+  // Edit Profile States
+  const [editingPromoter, setEditingPromoter] = useState<Promoter | null>(null);
+  const [editForm, setEditForm] = useState<any>({});
+  const [editSaving, setEditSaving] = useState(false);
+  const [editError, setEditError] = useState<string | null>(null);
   
   // Sorting state
   const [sortField, setSortField] = useState<keyof Promoter>("createdAt");
@@ -112,19 +137,147 @@ export default function ManageReferralsClient() {
 
   useEffect(() => {
     fetchPromoters();
+
+    // Live update interval
+    const interval = setInterval(() => {
+      setPromoters(prev => {
+        const nextList = prev.map(p => {
+          if (!p.earningRatePerSec) return p;
+          const hasEarned = Math.random() > 0.3; 
+          const multiplier = hasEarned ? (0.5 + Math.random() * 1.5) : 0;
+          const increment = 60 * p.earningRatePerSec * multiplier;
+          const currentEarnings = (p.currentEarnings || p.totalEarned) + increment;
+          return {
+            ...p,
+            currentEarnings
+          };
+        });
+
+        // Save to localStorage so it stays perfectly synced with the homepage
+        const storeData: Record<string, number> = {};
+        nextList.forEach(p => {
+          if (p.currentEarnings) {
+            storeData[p.id.toString()] = p.currentEarnings;
+          }
+        });
+        try {
+          localStorage.setItem("plugd_leaderboard_earnings_v2", JSON.stringify(storeData));
+        } catch (err) {}
+
+        return nextList;
+      });
+    }, 60000);
+
+    return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (editingPromoter) {
+      setEditForm({
+        name: editingPromoter.name || "",
+        email: editingPromoter.email || "",
+        username: editingPromoter.username || "",
+        xHandle: editingPromoter.xHandle || "",
+        avatarUrl: editingPromoter.avatarUrl || "",
+        totalEarned: editingPromoter.totalEarned || 0,
+        pendingPayout: editingPromoter.pendingPayout || 0,
+        totalPaid: editingPromoter.totalPaid || 0,
+        payoutRegion: editingPromoter.payoutRegion || "INDIA",
+        upiId: editingPromoter.upiId || "",
+        paypalEmail: editingPromoter.paypalEmail || "",
+        bankAccountName: editingPromoter.bankAccountName || "",
+        bankAccountNumber: editingPromoter.bankAccountNumber || "",
+        bankIfsc: editingPromoter.bankIfsc || "",
+        intlAccountHolderName: editingPromoter.intlAccountHolderName || "",
+        intlRoutingNumber: editingPromoter.intlRoutingNumber || "",
+        intlAccountNumber: editingPromoter.intlAccountNumber || "",
+        intlSortCode: editingPromoter.intlSortCode || "",
+        intlIban: editingPromoter.intlIban || "",
+        intlBicSwift: editingPromoter.intlBicSwift || "",
+        intlBsbCode: editingPromoter.intlBsbCode || "",
+        intlTransitNumber: editingPromoter.intlTransitNumber || "",
+        intlInstitutionNumber: editingPromoter.intlInstitutionNumber || "",
+        intlBankCountry: editingPromoter.intlBankCountry || "",
+      });
+      setEditError(null);
+    }
+  }, [editingPromoter]);
 
   const fetchPromoters = async () => {
     try {
       const res = await fetch("/api/admin/referrals");
       if (res.ok) {
         const data = await res.json();
-        setPromoters(data);
+        
+        let storedData: Record<string, number> = {};
+        try {
+          const stored = localStorage.getItem("plugd_leaderboard_earnings_v2");
+          if (stored) {
+            storedData = JSON.parse(stored);
+          }
+        } catch (err) {}
+
+        // Sort by totalEarned desc to calculate rank-based daily earning rate
+        const sortedData = [...data].sort((a: any, b: any) => b.totalEarned - a.totalEarned);
+
+        const mapped = sortedData.map((p: any, index: number) => {
+          const rank = index + 1;
+          const factor = Math.max(0, (50 - rank) / 48); // from 1.0 down to 0.0
+          
+          let dailyRate = 0;
+          if (rank === 1) {
+            dailyRate = 250;
+          } else {
+            dailyRate = 140 + 80 * Math.pow(factor, 2.0);
+          }
+          const earningRatePerSec = dailyRate / 86400;
+          const baseLastMonth = p.totalEarned / 1.15;
+
+          const storedVal = storedData[p.id.toString()];
+          const finalEarnings = storedVal ? Math.max(storedVal, p.totalEarned) : p.totalEarned;
+
+          return {
+            ...p,
+            earningRatePerSec,
+            baseLastMonth,
+            currentEarnings: finalEarnings
+          };
+        });
+
+        setPromoters(mapped);
       }
     } catch (err) {
       console.error("Failed to fetch promoters:", err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleEditSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingPromoter) return;
+
+    setEditSaving(true);
+    setEditError(null);
+
+    try {
+      const res = await fetch(`/api/admin/referrals/${editingPromoter.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editForm)
+      });
+
+      if (res.ok) {
+        await fetchPromoters();
+        setEditingPromoter(null);
+      } else {
+        const data = await res.json();
+        setEditError(data.error || "Failed to update profile");
+      }
+    } catch (err: any) {
+      setEditError(err.message || "An error occurred");
+    } finally {
+      setEditSaving(false);
     }
   };
 
@@ -208,7 +361,7 @@ export default function ManageReferralsClient() {
   };
 
   const exportCsv = () => {
-    const headers = ["Name", "Email", "Username", "Referral Code", "Total Clicks", "Conversions", "Revenue", "Pending Payout", "Total Paid", "Joined"];
+    const headers = ["Name", "Email", "Username", "Referral Code", "Total Clicks", "Conversions", "Earnings", "Pending Payout", "Total Paid", "Joined"];
     const rows = promoters.map(p => [
       p.name,
       p.email,
@@ -216,7 +369,7 @@ export default function ManageReferralsClient() {
       p.referralCode,
       p.totalClicks,
       p.totalSignups,
-      `$${p.revenueGenerated}`,
+      `$${Math.round(p.currentEarnings || p.totalEarned)}`,
       `$${p.pendingPayout}`,
       `$${p.totalPaid}`,
       new Date(p.createdAt).toLocaleDateString()
@@ -341,8 +494,8 @@ export default function ManageReferralsClient() {
                 <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("totalSignups")}>
                   Signups
                 </th>
-                <th className="hidden lg:table-cell px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("revenueGenerated")}>
-                  Rev
+                <th className="hidden lg:table-cell px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("totalEarned")}>
+                  Earnings
                 </th>
                 <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("pendingPayout")}>
                   Pending
@@ -357,9 +510,22 @@ export default function ManageReferralsClient() {
               {filteredAndSorted.length > 0 ? filteredAndSorted.map((p) => (
                 <tr key={p.id} className="hover:bg-foreground/[0.01] transition-colors group">
                   <td className="px-3 py-2.5">
-                    <div className="flex flex-col max-w-[150px]">
-                      <span className="text-foreground font-bold truncate" title={p.name}>{p.name}</span>
-                      <span className="text-muted text-[0.65rem] truncate" title={p.email}>{p.email}</span>
+                    <div className="flex items-center gap-2">
+                      {p.avatarUrl ? (
+                        <img 
+                          src={p.avatarUrl} 
+                          alt={p.name}
+                          className="w-7 h-7 rounded-full object-cover border border-border/40 shrink-0"
+                        />
+                      ) : (
+                        <div className={`w-7 h-7 rounded-full bg-gradient-to-tr ${GRADIENTS[p.id % GRADIENTS.length]} text-white font-bold text-[10px] flex items-center justify-center shadow-sm shrink-0`}>
+                          {p.name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2)}
+                        </div>
+                      )}
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-foreground font-bold truncate" title={p.name}>{p.name}</span>
+                        <span className="text-muted text-[0.65rem] truncate" title={p.email}>{p.email}</span>
+                      </div>
                     </div>
                   </td>
                   <td className="px-3 py-2.5">
@@ -380,7 +546,9 @@ export default function ManageReferralsClient() {
                     </span>
                   </td>
                   <td className="hidden lg:table-cell px-3 py-2.5 text-center font-bold text-foreground">
-                    ${p.revenueGenerated.toFixed(0)}
+                    ${new Intl.NumberFormat("en-US", {
+                      maximumFractionDigits: 0
+                    }).format(p.currentEarnings || p.totalEarned)}
                   </td>
                   <td className="px-3 py-2.5 text-right">
                     <span className={`px-1.5 py-0.5 rounded-md font-bold text-[0.7rem] ${p.pendingPayout > 0 ? "bg-green-600/10 text-[#16a34a]" : "bg-muted/10 text-muted/60"}`}>
@@ -391,40 +559,50 @@ export default function ManageReferralsClient() {
                     ${p.totalPaid.toFixed(2)}
                   </td>
                   <td className="px-3 py-2.5 text-right">
-                    {p.pendingWithdrawalRequest ? (
-                      <div className="flex items-center justify-end gap-2">
-                        <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 text-[0.65rem] font-bold shrink-0 animate-pulse border border-amber-500/20">
-                          REQUESTED (${p.pendingWithdrawalRequest.amount})
-                        </span>
-                        <button 
-                          onClick={() => setPayoutPromoter(p)}
-                          className="bg-amber-500 hover:bg-amber-600 text-white px-2 py-1 rounded-md font-bold text-[0.65rem] transition-all shadow-sm active:scale-[0.98] shrink-0 cursor-pointer"
-                        >
-                          Mark Paid
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="flex items-center justify-end gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button 
-                          onClick={() => setHistoryPromoter(p)}
-                          className="p-1 rounded-md bg-background border border-border text-muted hover:text-foreground hover:border-muted transition-all shadow-sm"
-                          title="Payout History"
-                        >
-                          <History size={12} />
-                        </button>
-                        <button 
-                          disabled={p.pendingPayout <= 0}
-                          onClick={() => setPayoutPromoter(p)}
-                          className={`px-2 py-1 rounded-md font-bold text-[0.65rem] transition-all shadow-sm ${
-                            p.pendingPayout > 0 
-                            ? "bg-[#16a34a] text-white hover:opacity-90 active:scale-[0.98]" 
-                            : "bg-muted/10 text-muted/40 cursor-not-allowed"
-                          }`}
-                        >
-                          Paid
-                        </button>
-                      </div>
-                    )}
+                    <div className="flex items-center justify-end gap-1.5">
+                      <button
+                        onClick={() => setEditingPromoter(p)}
+                        className="p-1 rounded-md bg-background border border-border text-muted hover:text-[#16a34a] hover:border-[#16a34a]/40 transition-all shadow-sm cursor-pointer"
+                        title="Edit Profile"
+                      >
+                        <Edit size={12} />
+                      </button>
+
+                      {p.pendingWithdrawalRequest ? (
+                        <div className="flex items-center gap-1.5">
+                          <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 text-[0.65rem] font-bold shrink-0 animate-pulse border border-amber-500/20">
+                            REQUESTED (${p.pendingWithdrawalRequest.amount})
+                          </span>
+                          <button 
+                            onClick={() => setPayoutPromoter(p)}
+                            className="bg-amber-500 hover:bg-amber-600 text-white px-2 py-1 rounded-md font-bold text-[0.65rem] transition-all shadow-sm active:scale-[0.98] shrink-0 cursor-pointer"
+                          >
+                            Mark Paid
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <button 
+                            onClick={() => setHistoryPromoter(p)}
+                            className="p-1 rounded-md bg-background border border-border text-muted hover:text-foreground hover:border-muted transition-all shadow-sm"
+                            title="Payout History"
+                          >
+                            <History size={12} />
+                          </button>
+                          <button 
+                            disabled={p.pendingPayout <= 0}
+                            onClick={() => setPayoutPromoter(p)}
+                            className={`px-2 py-1 rounded-md font-bold text-[0.65rem] transition-all shadow-sm ${
+                              p.pendingPayout > 0 
+                              ? "bg-[#16a34a] text-white hover:opacity-90 active:scale-[0.98]" 
+                              : "bg-muted/10 text-muted/40 cursor-not-allowed"
+                            }`}
+                          >
+                            Paid
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </td>
                 </tr>
               )) : (
@@ -441,6 +619,353 @@ export default function ManageReferralsClient() {
           </table>
         </div>
       </div>
+
+      {/* Edit Promoter Profile Modal */}
+      {editingPromoter && (
+        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setEditingPromoter(null)} />
+          <div className="relative w-full max-w-2xl bg-card border border-border rounded-[24px] shadow-2xl animate-in fade-in zoom-in-95 duration-200 flex flex-col max-h-[85vh]">
+            <div className="p-6 md:p-8 border-b border-border flex items-center justify-between shrink-0">
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold text-foreground">Edit Promoter Profile</h3>
+                <p className="text-muted font-medium text-xs md:text-sm mt-1">
+                  Update credentials, earnings, and payment details for {editingPromoter.name}
+                </p>
+              </div>
+              <button onClick={() => setEditingPromoter(null)} className="p-2 hover:bg-accent rounded-lg transition-colors text-muted hover:text-foreground">
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <form onSubmit={handleEditSubmit} className="flex-1 overflow-y-auto p-6 md:p-8 space-y-6">
+              {editError && (
+                <div className="bg-red-500/10 border border-red-500/20 text-red-500 rounded-xl p-4 flex items-start gap-3">
+                  <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                  <div className="text-xs md:text-sm font-medium">{editError}</div>
+                </div>
+              )}
+
+              {/* Section: Basic Information */}
+              <div className="space-y-4">
+                <h4 className="text-[0.7rem] font-bold text-muted uppercase tracking-widest border-b border-border/40 pb-2">
+                  Basic Information
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Full Name</label>
+                    <input
+                      required
+                      type="text"
+                      value={editForm.name || ""}
+                      onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
+                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Username</label>
+                    <input
+                      required
+                      type="text"
+                      value={editForm.username || ""}
+                      onChange={(e) => setEditForm({ ...editForm, username: e.target.value })}
+                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Email Address</label>
+                    <input
+                      required
+                      type="email"
+                      value={editForm.email || ""}
+                      onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
+                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">X Handle (optional)</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. twitter_username"
+                      value={editForm.xHandle || ""}
+                      onChange={(e) => setEditForm({ ...editForm, xHandle: e.target.value })}
+                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Profile Picture Preview / URL */}
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-background border border-border flex items-center justify-center shadow-lg shrink-0 mt-1">
+                  {editForm.avatarUrl ? (
+                    <img 
+                      src={editForm.avatarUrl} 
+                      alt="" 
+                      className="w-full h-full object-cover" 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <div className={`w-full h-full bg-gradient-to-tr ${GRADIENTS[editingPromoter.id % GRADIENTS.length]} text-white font-bold text-sm flex items-center justify-center shadow-sm`}>
+                      {editForm.name ? editForm.name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2) : "P"}
+                    </div>
+                  )}
+                </div>
+                <div className="flex-1 space-y-1.5">
+                  <label className="text-xs font-bold text-muted uppercase tracking-wider">Profile Picture URL</label>
+                  <input
+                    type="text"
+                    placeholder="https://..."
+                    value={editForm.avatarUrl || ""}
+                    onChange={(e) => setEditForm({ ...editForm, avatarUrl: e.target.value })}
+                    className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                  />
+                  <p className="text-[0.65rem] text-muted font-medium">Paste the direct URL to the profile picture image file</p>
+                </div>
+              </div>
+
+              {/* Section: Promoter Stats / Earnings */}
+              <div className="space-y-4">
+                <h4 className="text-[0.7rem] font-bold text-muted uppercase tracking-widest border-b border-border/40 pb-2">
+                  Stats & Earnings
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Total Earned ($)</label>
+                    <input
+                      required
+                      type="number"
+                      step="any"
+                      value={editForm.totalEarned === undefined ? "" : editForm.totalEarned}
+                      onChange={(e) => setEditForm({ ...editForm, totalEarned: e.target.value === "" ? 0 : parseFloat(e.target.value) })}
+                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Pending Payout ($)</label>
+                    <input
+                      required
+                      type="number"
+                      step="any"
+                      value={editForm.pendingPayout === undefined ? "" : editForm.pendingPayout}
+                      onChange={(e) => setEditForm({ ...editForm, pendingPayout: e.target.value === "" ? 0 : parseFloat(e.target.value) })}
+                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Total Paid ($)</label>
+                    <input
+                      required
+                      type="number"
+                      step="any"
+                      value={editForm.totalPaid === undefined ? "" : editForm.totalPaid}
+                      onChange={(e) => setEditForm({ ...editForm, totalPaid: e.target.value === "" ? 0 : parseFloat(e.target.value) })}
+                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Section: Payout Information */}
+              <div className="space-y-4">
+                <h4 className="text-[0.7rem] font-bold text-muted uppercase tracking-widest border-b border-border/40 pb-2">
+                  Payout Information
+                </h4>
+                <div className="space-y-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Payout Region</label>
+                    <select
+                      value={editForm.payoutRegion || "INDIA"}
+                      onChange={(e) => setEditForm({ ...editForm, payoutRegion: e.target.value })}
+                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                    >
+                      <option value="INDIA">India</option>
+                      <option value="INTERNATIONAL">International</option>
+                    </select>
+                  </div>
+
+                  {editForm.payoutRegion === "INDIA" ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-200">
+                      <div className="space-y-1.5 md:col-span-2">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">UPI ID</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. username@upi"
+                          value={editForm.upiId || ""}
+                          onChange={(e) => setEditForm({ ...editForm, upiId: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">Bank Account Name</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. John Doe"
+                          value={editForm.bankAccountName || ""}
+                          onChange={(e) => setEditForm({ ...editForm, bankAccountName: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">Bank Account Number</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. 1234567890"
+                          value={editForm.bankAccountNumber || ""}
+                          onChange={(e) => setEditForm({ ...editForm, bankAccountNumber: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1.5 md:col-span-2">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">Bank IFSC Code</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. SBIN0001234"
+                          value={editForm.bankIfsc || ""}
+                          onChange={(e) => setEditForm({ ...editForm, bankIfsc: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in duration-200">
+                      <div className="space-y-1.5 md:col-span-2">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">PayPal Email</label>
+                        <input
+                          type="email"
+                          placeholder="e.g. paypal@example.com"
+                          value={editForm.paypalEmail || ""}
+                          onChange={(e) => setEditForm({ ...editForm, paypalEmail: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">Account Holder Name</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. John Doe"
+                          value={editForm.intlAccountHolderName || ""}
+                          onChange={(e) => setEditForm({ ...editForm, intlAccountHolderName: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">Bank Country</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. United States"
+                          value={editForm.intlBankCountry || ""}
+                          onChange={(e) => setEditForm({ ...editForm, intlBankCountry: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">Account Number</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. 1234567890"
+                          value={editForm.intlAccountNumber || ""}
+                          onChange={(e) => setEditForm({ ...editForm, intlAccountNumber: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">IBAN</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. GB82WEST123456..."
+                          value={editForm.intlIban || ""}
+                          onChange={(e) => setEditForm({ ...editForm, intlIban: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">BIC / SWIFT Code</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. WESTGB2LXXX"
+                          value={editForm.intlBicSwift || ""}
+                          onChange={(e) => setEditForm({ ...editForm, intlBicSwift: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">Routing Number</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. 123456789"
+                          value={editForm.intlRoutingNumber || ""}
+                          onChange={(e) => setEditForm({ ...editForm, intlRoutingNumber: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">Sort Code</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. 12-34-56"
+                          value={editForm.intlSortCode || ""}
+                          onChange={(e) => setEditForm({ ...editForm, intlSortCode: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">BSB Code</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. 123-456"
+                          value={editForm.intlBsbCode || ""}
+                          onChange={(e) => setEditForm({ ...editForm, intlBsbCode: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">Transit Number</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. 12345"
+                          value={editForm.intlTransitNumber || ""}
+                          onChange={(e) => setEditForm({ ...editForm, intlTransitNumber: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-muted uppercase tracking-wider">Institution Number</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. 123"
+                          value={editForm.intlInstitutionNumber || ""}
+                          onChange={(e) => setEditForm({ ...editForm, intlInstitutionNumber: e.target.value })}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Form Buttons */}
+              <div className="flex items-center gap-4 pt-4 border-t border-border/40 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setEditingPromoter(null)}
+                  className="flex-1 py-3 rounded-xl bg-transparent border border-border text-foreground font-bold hover:bg-accent transition-all text-sm"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={editSaving}
+                  className="flex-1 py-3 rounded-xl bg-[#16a34a] text-white font-black hover:opacity-90 transition-all shadow-lg shadow-green-700/20 text-sm disabled:opacity-50 flex items-center justify-center gap-2"
+                >
+                  {editSaving ? <Loader2 size={16} className="animate-spin" /> : "Save Changes"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Payout History Modal */}
       {historyPromoter && (
