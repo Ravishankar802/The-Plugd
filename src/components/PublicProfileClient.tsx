@@ -7,8 +7,8 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  LineChart,
-  Line
+  AreaChart,
+  Area
 } from "recharts";
 import { 
   Loader2, 
@@ -20,7 +20,7 @@ import {
   User
 } from "lucide-react";
 import Link from "next/link";
-import Header from "@/components/Header";
+import Image from "next/image";
 import Footer from "@/components/Footer";
 
 interface PromoterData {
@@ -124,20 +124,40 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
   ];
   const gradient = GRADIENTS[promoter.id % GRADIENTS.length];
 
+  const formatYAxis = (value: number) => {
+    if (value === 0) return "$0";
+    if (value >= 1e6) {
+      return `$${(value / 1e6).toFixed(1).replace(/\.0$/, "")}M`;
+    }
+    if (value >= 1e3) {
+      return `$${(value / 1e3).toFixed(1).replace(/\.0$/, "")}k`;
+    }
+    return `$${value}`;
+  };
+
   return (
     <main className="min-h-screen flex flex-col items-center w-full max-w-full overflow-x-hidden">
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 pt-2 pb-4 relative z-10">
-        <Header />
-        
-        {/* Back Link */}
-        <div className="mb-6">
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 pt-6 pb-4 relative z-10">
+        {/* Logo at the top left */}
+        <div className="flex justify-center md:inline-block mb-6 md:mb-8 md:h-10">
           <Link 
-            href="/"
-            className="inline-flex items-center gap-1 text-sm text-muted hover:text-foreground font-semibold transition-colors group"
+            href="/" 
+            className="relative md:fixed top-0 md:top-4 left-0 md:left-6 flex justify-center md:inline-block mx-auto md:mx-0 hover:opacity-80 transition-opacity group z-50"
           >
-            <ChevronLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
-            Back to Leaderboard
+            <Image src="/logo.png" alt="Plugd" width={80} height={80} priority />
           </Link>
+        </div>
+
+        {/* Breadcrumb Navigation styled like TrustMRR */}
+        <div className="mb-6 flex items-center gap-1.5 text-[11px] font-mono tracking-wider text-muted/80 uppercase">
+          <span className="text-[#5c6bc0] text-xs leading-none">★</span>
+          <Link href="/" className="hover:text-foreground transition-colors font-medium">
+            Plugd
+          </Link>
+          <span className="text-muted/40 font-normal">&gt;</span>
+          <span className="font-bold text-foreground">
+            {promoter.name.toUpperCase()}
+          </span>
         </div>
 
         {/* Profile Header Card */}
@@ -163,9 +183,6 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
                   <span className="text-lg" title={promoter.country}>{promoter.flag}</span>
                 </div>
                 <span className="text-muted text-sm md:text-base leading-snug">@{promoter.username}</span>
-                <span className="text-[10px] md:text-xs text-muted/50 font-bold uppercase tracking-wider mt-1.5">
-                  Member since {new Date(promoter.createdAt).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
-                </span>
               </div>
             </div>
 
@@ -264,13 +281,13 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
               </div>
             ) : chartMounted ? (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart
+                <AreaChart
                   data={processedChartData}
-                  margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+                  margin={{ top: 10, right: 10, left: 15, bottom: 0 }}
                 >
                   <defs>
                     <linearGradient id="colorEarning" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#22c55e" stopOpacity={0.1}/>
+                      <stop offset="5%" stopColor="#22c55e" stopOpacity={0.25}/>
                       <stop offset="95%" stopColor="#22c55e" stopOpacity={0}/>
                     </linearGradient>
                   </defs>
@@ -288,10 +305,11 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
                     fontSize={11}
                     tickLine={false}
                     axisLine={false}
-                    tickFormatter={(v) => `$${v}`}
+                    tickFormatter={formatYAxis}
                     dx={-10}
                   />
                   <Tooltip
+                    cursor={{ stroke: 'var(--border)', strokeWidth: 1, strokeDasharray: '3 3' }}
                     content={({ active, payload }) => {
                       if (active && payload && payload.length) {
                         const data = payload[0].payload;
@@ -307,15 +325,17 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
                       return null;
                     }}
                   />
-                  <Line
+                  <Area
                     type="monotone"
                     dataKey="displayAmount"
                     stroke="#22c55e"
                     strokeWidth={2.5}
-                    dot={{ r: 4, stroke: '#22c55e', strokeWidth: 1.5, fill: 'var(--background)' }}
+                    fillOpacity={1}
+                    fill="url(#colorEarning)"
+                    dot={false}
                     activeDot={{ r: 6, stroke: '#22c55e', strokeWidth: 2, fill: 'var(--background)' }}
                   />
-                </LineChart>
+                </AreaChart>
               </ResponsiveContainer>
             ) : null}
           </div>

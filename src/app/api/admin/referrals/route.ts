@@ -35,9 +35,10 @@ export async function GET() {
 
     // Map promoters to include calculated stats
     const promotersWithStats = promoters.map(promoter => {
-      const clicks = promoter.Referral.length;
+      const hasReferrals = promoter.Referral.length > 0;
+      const clicks = hasReferrals ? promoter.Referral.length : promoter.totalClicks;
       const conversions = promoter.Referral.filter(r => r.status === "converted");
-      const signupCount = conversions.length;
+      const signupCount = hasReferrals ? conversions.length : promoter.totalConversions;
       
       // Revenue Generated: Users pay $2 for listing
       const revenueGenerated = signupCount * 2.0;
