@@ -135,6 +135,24 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
     return `$${value}`;
   };
 
+  const FLAG_CODES: Record<string, string> = {
+    "United States": "us",
+    "United Kingdom": "gb",
+    "Australia": "au",
+    "Canada": "ca",
+    "Germany": "de",
+    "India": "in",
+    "France": "fr",
+    "Netherlands": "nl",
+    "Singapore": "sg",
+    "Spain": "es",
+    "Italy": "it",
+    "Sweden": "se",
+    "Switzerland": "ch"
+  };
+
+  const countryCode = FLAG_CODES[promoter.country] || "us";
+
   return (
     <main className="min-h-screen flex flex-col items-center w-full max-w-full overflow-x-hidden">
       {/* Desktop fixed logo (off-canvas) */}
@@ -184,7 +202,6 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
                   <h1 className="text-xl md:text-2xl font-extrabold tracking-tight text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
                     {promoter.name}
                   </h1>
-                  <span className="text-lg" title={promoter.country}>{promoter.flag}</span>
                 </div>
                 <span className="text-muted text-sm md:text-base leading-snug">@{promoter.username}</span>
               </div>
@@ -232,7 +249,11 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
           <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
             <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Country</p>
             <p className="text-2xl font-extrabold text-foreground flex items-center justify-center gap-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-              <span className="text-3xl shrink-0" title={promoter.country}>{promoter.flag}</span>
+              <img 
+                src={`https://flagcdn.com/w40/${countryCode}.png`} 
+                alt={promoter.country}
+                className="w-6 h-4.5 object-cover rounded-xs shrink-0 shadow-sm select-none"
+              />
               <span className="truncate">{promoter.country}</span>
             </p>
           </div>
