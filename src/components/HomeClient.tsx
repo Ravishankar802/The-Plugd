@@ -523,7 +523,10 @@ export default function HomeClient({
                         {rankDisplay}
                       </td>
                       <td className="py-3 pl-1 md:pl-2 md:w-[60%]">
-                        <div className="flex items-center gap-2 md:gap-3">
+                        <Link 
+                          href={`/p/${earner.handle.substring(1)}`}
+                          className="flex items-center gap-2 md:gap-3 group/link hover:opacity-95 transition-opacity"
+                        >
                           {earner.avatarUrl ? (
                             <img 
                               src={earner.avatarUrl} 
@@ -536,10 +539,10 @@ export default function HomeClient({
                             </div>
                           )}
                           <div className="flex flex-col min-w-0">
-                            <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate">{earner.name}</span>
+                            <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate group-hover/link:underline">{earner.name}</span>
                             <span className="text-muted text-[10px] md:text-xs leading-none truncate">{earner.handle}</span>
                           </div>
-                        </div>
+                        </Link>
                       </td>
                       <td className="py-3 text-right md:text-left font-bold text-foreground text-xs md:text-sm whitespace-nowrap md:w-[20%] md:pl-6">
                         {col3Display}
