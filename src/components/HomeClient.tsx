@@ -518,15 +518,16 @@ export default function HomeClient({
                   else if (rank === 3) rankDisplay = <span className="text-base md:text-lg">🥉</span>;
 
                   return (
-                    <tr key={earner.id} className="hover:bg-foreground/[0.01] transition-colors group animate-in fade-in duration-300">
+                    <tr 
+                      key={earner.id} 
+                      onClick={() => router.push(`/p/${earner.handle.substring(1)}`)}
+                      className="hover:bg-foreground/[0.02] transition-colors group animate-in fade-in duration-300 cursor-pointer"
+                    >
                       <td className="py-3 text-center w-8 md:w-10 font-bold text-muted text-xs md:text-sm">
                         {rankDisplay}
                       </td>
                       <td className="py-3 pl-1 md:pl-2 md:w-[60%]">
-                        <Link 
-                          href={`/p/${earner.handle.substring(1)}`}
-                          className="flex items-center gap-2 md:gap-3 group/link hover:opacity-95 transition-opacity"
-                        >
+                        <div className="flex items-center gap-2 md:gap-3">
                           {earner.avatarUrl ? (
                             <img 
                               src={earner.avatarUrl} 
@@ -539,10 +540,10 @@ export default function HomeClient({
                             </div>
                           )}
                           <div className="flex flex-col min-w-0">
-                            <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate group-hover/link:underline">{earner.name}</span>
+                            <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate group-hover:underline">{earner.name}</span>
                             <span className="text-muted text-[10px] md:text-xs leading-none truncate">{earner.handle}</span>
                           </div>
-                        </Link>
+                        </div>
                       </td>
                       <td className="py-3 text-right md:text-left font-bold text-foreground text-xs md:text-sm whitespace-nowrap md:w-[20%] md:pl-6">
                         {col3Display}

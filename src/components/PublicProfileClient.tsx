@@ -145,7 +145,7 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
         <Image src="/logo.png" alt="Plugd" width={80} height={80} priority />
       </Link>
 
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 pt-3 md:pt-4 pb-4 relative z-10">
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 pt-6 md:pt-10 pb-4 relative z-10">
         {/* Mobile centered logo */}
         <div className="flex justify-center md:hidden mb-4">
           <Link href="/" className="hover:opacity-80 transition-opacity">
@@ -155,9 +155,8 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
 
         {/* Breadcrumb Navigation styled like TrustMRR */}
         <div className="mb-4 flex items-center gap-1.5 text-[11px] font-mono tracking-wider text-muted/80 uppercase">
-          <span className="text-[#5c6bc0] text-xs leading-none">★</span>
           <Link href="/" className="hover:text-foreground transition-colors font-medium">
-            Plugd
+            PLUGD
           </Link>
           <span className="text-muted/40 font-normal">&gt;</span>
           <span className="font-bold text-foreground">
@@ -211,7 +210,7 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
             <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Total Earned</p>
             <p className="text-4xl font-extrabold text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
@@ -228,6 +227,13 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
             <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Conversions</p>
             <p className="text-4xl font-extrabold text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
               {promoter.totalConversions.toLocaleString()}
+            </p>
+          </div>
+          <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
+            <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Country</p>
+            <p className="text-2xl font-extrabold text-foreground flex items-center justify-center gap-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+              <span className="text-3xl shrink-0" title={promoter.country}>{promoter.flag}</span>
+              <span className="truncate">{promoter.country}</span>
             </p>
           </div>
         </div>
