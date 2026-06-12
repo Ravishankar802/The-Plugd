@@ -247,15 +247,17 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
             </p>
           </div>
           <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
-            <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Country</p>
-            <p className="text-2xl font-extrabold text-foreground flex items-center justify-center gap-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+            <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-3">Country</p>
+            <div className="flex flex-col items-center gap-2">
               <img 
                 src={`https://flagcdn.com/w40/${countryCode}.png`} 
                 alt={promoter.country}
-                className="w-6 h-4.5 object-cover rounded-xs shrink-0 shadow-sm select-none"
+                className="w-8 h-5.5 object-cover rounded-sm shrink-0 shadow-md select-none"
               />
-              <span className="truncate">{promoter.country}</span>
-            </p>
+              <p className="text-xl font-bold text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+                {promoter.country}
+              </p>
+            </div>
           </div>
         </div>
 
