@@ -137,19 +137,24 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
 
   return (
     <main className="min-h-screen flex flex-col items-center w-full max-w-full overflow-x-hidden">
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 pt-6 pb-4 relative z-10">
-        {/* Logo at the top left */}
-        <div className="flex justify-center md:inline-block mb-6 md:mb-8 md:h-10">
-          <Link 
-            href="/" 
-            className="relative md:fixed top-0 md:top-4 left-0 md:left-6 flex justify-center md:inline-block mx-auto md:mx-0 hover:opacity-80 transition-opacity group z-50"
-          >
-            <Image src="/logo.png" alt="Plugd" width={80} height={80} priority />
+      {/* Desktop fixed logo (off-canvas) */}
+      <Link 
+        href="/" 
+        className="fixed top-4 left-6 hover:opacity-80 transition-opacity z-50 hidden md:block"
+      >
+        <Image src="/logo.png" alt="Plugd" width={80} height={80} priority />
+      </Link>
+
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 pt-3 md:pt-4 pb-4 relative z-10">
+        {/* Mobile centered logo */}
+        <div className="flex justify-center md:hidden mb-4">
+          <Link href="/" className="hover:opacity-80 transition-opacity">
+            <Image src="/logo.png" alt="Plugd" width={60} height={60} priority />
           </Link>
         </div>
 
         {/* Breadcrumb Navigation styled like TrustMRR */}
-        <div className="mb-6 flex items-center gap-1.5 text-[11px] font-mono tracking-wider text-muted/80 uppercase">
+        <div className="mb-4 flex items-center gap-1.5 text-[11px] font-mono tracking-wider text-muted/80 uppercase">
           <span className="text-[#5c6bc0] text-xs leading-none">★</span>
           <Link href="/" className="hover:text-foreground transition-colors font-medium">
             Plugd
