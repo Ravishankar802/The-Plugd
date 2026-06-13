@@ -7,8 +7,8 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  LineChart,
-  Line
+  AreaChart,
+  Area
 } from "recharts";
 import { 
   Loader2, 
@@ -193,6 +193,17 @@ here's my link 👉 ${link}`
       };
     });
   })();
+  
+  const formatYAxis = (value: number) => {
+    if (value === 0) return "$0";
+    if (value >= 1e6) {
+      return `$${(value / 1e6).toFixed(1).replace(/\.0$/, "")}M`;
+    }
+    if (value >= 1e3) {
+      return `$${(value / 1e3).toFixed(1).replace(/\.0$/, "")}k`;
+    }
+    return `$${value}`;
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -1137,13 +1148,13 @@ here's my link 👉 ${link}`
                     </div>
                   ) : chartMounted ? (
                     <ResponsiveContainer width="100%" height="100%">
-                      <LineChart
+                      <AreaChart
                         data={processedChartData}
                         margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
                       >
                         <defs>
                           <linearGradient id="colorEarning" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#22c55e" stopOpacity={0.1}/>
+                            <stop offset="5%" stopColor="#22c55e" stopOpacity={0.25}/>
                             <stop offset="95%" stopColor="#22c55e" stopOpacity={0}/>
                           </linearGradient>
                         </defs>
@@ -1161,10 +1172,11 @@ here's my link 👉 ${link}`
                           fontSize={11}
                           tickLine={false}
                           axisLine={false}
-                          tickFormatter={(v) => `$${v}`}
+                          tickFormatter={formatYAxis}
                           dx={-10}
                         />
                         <Tooltip
+                          cursor={{ stroke: 'var(--border)', strokeWidth: 1, strokeDasharray: '3 3' }}
                           content={({ active, payload }) => {
                             if (active && payload && payload.length) {
                               const data = payload[0].payload;
@@ -1180,15 +1192,17 @@ here's my link 👉 ${link}`
                             return null;
                           }}
                         />
-                        <Line
+                        <Area
                           type="monotone"
                           dataKey="displayAmount"
                           stroke="#22c55e"
                           strokeWidth={2.5}
-                          dot={{ r: 4, stroke: '#22c55e', strokeWidth: 1.5, fill: 'var(--background)' }}
+                          fillOpacity={1}
+                          fill="url(#colorEarning)"
+                          dot={false}
                           activeDot={{ r: 6, stroke: '#22c55e', strokeWidth: 2, fill: 'var(--background)' }}
                         />
-                      </LineChart>
+                      </AreaChart>
                     </ResponsiveContainer>
                   ) : null}
                 </div>

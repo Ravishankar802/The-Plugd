@@ -353,12 +353,12 @@ export default function HomeClient({
       {/* Top Earners Leaderboard Section */}
       <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-10">
         <div className="bg-pill border border-border rounded-[24px] p-4 sm:p-6 md:p-8 shadow-xl">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-            <div>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+            <div className="text-center sm:text-left">
               <h2 className="text-xl md:text-2xl font-extrabold tracking-tight text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Top Earners</h2>
             </div>
             
-            <div className="flex items-center gap-3 z-30">
+            <div className="flex items-center justify-center sm:justify-end gap-3 z-30 w-full sm:w-auto">
               {/* Timeframe Dropdown */}
               <div className="relative">
                 <button 
@@ -375,7 +375,7 @@ export default function HomeClient({
                 {timeframeOpen && (
                   <>
                     <div className="fixed inset-0 z-30" onClick={() => setTimeframeOpen(false)} />
-                    <div className="absolute right-0 mt-1.5 w-[160px] bg-card border border-border rounded-xl shadow-2xl p-1 z-40 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="absolute left-1/2 -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 mt-1.5 w-[160px] bg-card border border-border rounded-xl shadow-2xl p-1 z-40 animate-in fade-in slide-in-from-top-2 duration-200">
                       <button
                         type="button"
                         onClick={() => {
