@@ -171,7 +171,7 @@ export default function ManageReferralsClient() {
           const hasEarned = Math.random() > 0.3; 
           const multiplier = hasEarned ? (0.5 + Math.random() * 1.5) : 0;
           const increment = 60 * p.earningRatePerSec * multiplier;
-          const currentEarnings = (p.currentEarnings || p.totalEarned) + increment;
+          const currentEarnings = Math.round((p.currentEarnings || p.totalEarned) + increment);
           return {
             ...p,
             currentEarnings
@@ -275,7 +275,7 @@ export default function ManageReferralsClient() {
           const baseLastMonth = p.totalEarned / (1 + initialGrowth / 100);
 
           const storedVal = storedData[p.id.toString()];
-          const finalEarnings = storedVal ? Math.max(storedVal, p.totalEarned) : p.totalEarned;
+          const finalEarnings = Math.round(storedVal ? Math.max(storedVal, p.totalEarned) : p.totalEarned);
 
           return {
             ...p,

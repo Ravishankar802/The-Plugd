@@ -175,7 +175,7 @@ export default function HomeClient({
               const baseLastMonth = p.totalEarned / (1 + initialGrowth / 100);
 
               const storedVal = storedData[p.id.toString()];
-              const finalEarnings = storedVal ? Math.max(storedVal, p.totalEarned) : p.totalEarned;
+              const finalEarnings = Math.round(storedVal ? Math.max(storedVal, p.totalEarned) : p.totalEarned);
               const momGrowth = ((finalEarnings - baseLastMonth) / baseLastMonth) * 100;
 
               return {
@@ -228,7 +228,7 @@ export default function HomeClient({
           const hasEarned = Math.random() > 0.3; 
           const multiplier = hasEarned ? (0.5 + Math.random() * 1.5) : 0;
           const increment = 60 * e.earningRatePerSec * multiplier;
-          const nextEarnings = e.currentEarnings + increment;
+          const nextEarnings = Math.round(e.currentEarnings + increment);
           const nextMomGrowth = ((nextEarnings - e.baseLastMonth) / e.baseLastMonth) * 100;
           return {
             ...e,

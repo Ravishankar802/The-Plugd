@@ -57,7 +57,7 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
         const storedData = JSON.parse(stored);
         const storedVal = storedData[promoter.id.toString()];
         if (storedVal) {
-          setCurrentEarnings(Math.max(storedVal, promoter.totalEarned));
+          setCurrentEarnings(Math.round(Math.max(storedVal, promoter.totalEarned)));
         }
       }
     } catch (err) {}
@@ -84,7 +84,7 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
         const hasEarned = Math.random() > 0.3; 
         const multiplier = hasEarned ? (0.5 + Math.random() * 1.5) : 0;
         const increment = 60 * earningRatePerSec * multiplier;
-        const nextEarnings = prev + increment;
+        const nextEarnings = Math.round(prev + increment);
         
         // Save to localStorage
         try {
