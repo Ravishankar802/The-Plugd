@@ -10,7 +10,7 @@ const SEEDED_PROMOTERS = [
   { name: "Kevin Tan", country: "Singapore" },
   { name: "Austin Vance", country: "United States" },
   { name: "Darren Lim", country: "Singapore" },
-  { name: "Marcus Vance", country: "United States" },
+  { name: "Marcus Reed", country: "United States" },
   { name: "Alex Wong", country: "Singapore" },
   { name: "Tyler Brooks", country: "United States" },
   { name: "Ethan Ng", country: "Malaysia" },
