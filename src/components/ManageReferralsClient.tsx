@@ -382,8 +382,12 @@ export default function ManageReferralsClient() {
     return promoters.reduce((acc, p) => {
       acc.totalPending += p.pendingPayout;
       acc.totalPaid += p.totalPaid;
-      acc.totalRevenue += p.revenueGenerated;
-      acc.totalConversions += p.totalSignups;
+      // Exclude seeded display promoters from platform revenue and conversions summary
+      const isDisplayPromoter = p.email.toLowerCase().endsWith("@example.com");
+      if (!isDisplayPromoter) {
+        acc.totalRevenue += p.revenueGenerated;
+        acc.totalConversions += p.totalSignups;
+      }
       return acc;
     }, { totalPending: 0, totalPaid: 0, totalRevenue: 0, totalConversions: 0 });
   }, [promoters]);
@@ -843,14 +847,26 @@ export default function ManageReferralsClient() {
                 </h4>
                 <div className="space-y-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Payout Region</label>
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Country</label>
                     <select
-                      value={editForm.payoutRegion || "INDIA"}
-                      onChange={(e) => setEditForm({ ...editForm, payoutRegion: e.target.value })}
+                      value={editForm.intlBankCountry || (editForm.payoutRegion === "INDIA" ? "India" : "United States")}
+                      onChange={(e) => {
+                        const country = e.target.value;
+                        const region = country === "India" ? "INDIA" : "INTERNATIONAL";
+                        setEditForm({ 
+                          ...editForm, 
+                          intlBankCountry: country,
+                          payoutRegion: region 
+                        });
+                      }}
                       className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
                     >
-                      <option value="INDIA">India</option>
-                      <option value="INTERNATIONAL">International</option>
+                      <option value="United States">United States</option>
+                      <option value="India">India</option>
+                      <option value="United Kingdom">United Kingdom</option>
+                      <option value="Canada">Canada</option>
+                      <option value="Australia">Australia</option>
+                      <option value="Germany">Germany</option>
                     </select>
                   </div>
 

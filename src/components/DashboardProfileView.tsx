@@ -1095,7 +1095,7 @@ here's my link 👉 ${link}`
 
                   <div className="flex flex-wrap items-center gap-4">
                     {/* Time Range Toggle */}
-                    <div className="flex bg-[#111] dark:bg-[#111] bg-selected rounded-xl p-1 border border-border/40">
+                    <div className="flex bg-accent dark:bg-[#111] rounded-xl p-1 border border-border/40">
                       {(["7d", "4w", "3m"] as const).map((r) => (
                         <button
                           key={r}
@@ -1112,7 +1112,7 @@ here's my link 👉 ${link}`
                     </div>
 
                     {/* Mode Toggle */}
-                    <div className="flex bg-[#111] dark:bg-[#111] bg-selected rounded-xl p-1 border border-border/40">
+                    <div className="flex bg-accent dark:bg-[#111] rounded-xl p-1 border border-border/40">
                       {(["daily", "cumulative"] as const).map((m) => (
                         <button
                           key={m}
