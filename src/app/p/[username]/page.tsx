@@ -23,6 +23,7 @@ export default async function PublicProfilePage({ params }: PageProps) {
     select: {
       id: true,
       name: true,
+      email: true,
       username: true,
       referralCode: true,
       avatarUrl: true,
@@ -58,9 +59,18 @@ export default async function PublicProfilePage({ params }: PageProps) {
   const countryName = promoter.payoutRegion === "INDIA" ? "India" : (promoter.intlBankCountry || "United States");
   const flag = FLAG_MAP[countryName] || "🌐";
 
+  // Find database rank of this promoter to calculate their exact dailyRate
+  const allPromoters = await prisma.promoter.findMany({
+    orderBy: { totalEarned: "desc" },
+    select: { id: true }
+  });
+  const rank = allPromoters.findIndex(p => p.id === promoter.id) + 1;
+
   const safePromoterData = {
     id: promoter.id,
     name: promoter.name,
+    email: promoter.email,
+    rank: rank,
     username: promoter.username || promoter.referralCode,
     referralCode: promoter.referralCode,
     avatarUrl: promoter.avatarUrl,

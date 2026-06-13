@@ -26,6 +26,8 @@ import Footer from "@/components/Footer";
 interface PromoterData {
   id: number;
   name: string;
+  email: string;
+  rank: number;
   username: string;
   referralCode: string;
   avatarUrl: string | null;
@@ -44,6 +46,75 @@ interface PublicProfileClientProps {
 export default function PublicProfileClient({ promoter }: PublicProfileClientProps) {
   const [copied, setCopied] = useState<string | null>(null);
   
+  // Realtime simulated/database values
+  const [currentEarnings, setCurrentEarnings] = useState(promoter.totalEarned);
+
+  // Load initial value from localStorage if present
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("plugd_leaderboard_earnings_v2");
+      if (stored) {
+        const storedData = JSON.parse(stored);
+        const storedVal = storedData[promoter.id.toString()];
+        if (storedVal) {
+          setCurrentEarnings(Math.max(storedVal, promoter.totalEarned));
+        }
+      }
+    } catch (err) {}
+  }, [promoter.id, promoter.totalEarned]);
+
+  const isDisplayPromoter = promoter.email?.toLowerCase().endsWith("@example.com");
+
+  // Live update interval
+  useEffect(() => {
+    if (!isDisplayPromoter) return;
+
+    // Calculate daily rate and earningRatePerSec
+    const factor = Math.max(0, (50 - promoter.rank) / 48); // from 1.0 down to 0.0
+    let dailyRate = 0;
+    if (promoter.rank === 1) {
+      dailyRate = 1200;
+    } else {
+      dailyRate = 300 + 600 * Math.pow(factor, 2.0);
+    }
+    const earningRatePerSec = dailyRate / 86400;
+
+    const interval = setInterval(() => {
+      setCurrentEarnings(prev => {
+        const hasEarned = Math.random() > 0.3; 
+        const multiplier = hasEarned ? (0.5 + Math.random() * 1.5) : 0;
+        const increment = 60 * earningRatePerSec * multiplier;
+        const nextEarnings = prev + increment;
+        
+        // Save to localStorage
+        try {
+          const stored = localStorage.getItem("plugd_leaderboard_earnings_v2");
+          const storedData = stored ? JSON.parse(stored) : {};
+          storedData[promoter.id.toString()] = nextEarnings;
+          localStorage.setItem("plugd_leaderboard_earnings_v2", JSON.stringify(storedData));
+        } catch (err) {}
+
+        return nextEarnings;
+      });
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, [isDisplayPromoter, promoter.rank, promoter.id]);
+
+  // Derived stats matching conversions and clicks
+  const formattedCurrentEarnings = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0
+  }).format(currentEarnings);
+
+  const currentConversions = Math.floor(currentEarnings);
+
+  const baseClicks = promoter.totalClicks;
+  const baseEarned = promoter.totalEarned;
+  const clickMultiplier = baseEarned > 0 ? (baseClicks / baseEarned) : 1.75;
+  const currentClicks = baseClicks + Math.floor((currentEarnings - baseEarned) * clickMultiplier);
+
   // Chart State & Logic
   const [chartData, setChartData] = useState<{ date: string; amount: number }[]>([]);
   const [loadingChart, setLoadingChart] = useState(true);
@@ -94,12 +165,6 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
     setCopied(type);
     setTimeout(() => setCopied(null), 2000);
   };
-
-  const formattedTotalEarned = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0
-  }).format(promoter.totalEarned);
 
   // Initials for avatar fallback
   const initials = promoter.name
@@ -231,19 +296,19 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
           <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
             <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Total Earned</p>
             <p className="text-4xl font-extrabold text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-              {formattedTotalEarned}
+              {formattedCurrentEarnings}
             </p>
           </div>
           <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
             <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Total Clicks</p>
             <p className="text-4xl font-extrabold text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-              {promoter.totalClicks.toLocaleString()}
+              {currentClicks.toLocaleString()}
             </p>
           </div>
           <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
             <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Conversions</p>
             <p className="text-4xl font-extrabold text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-              {promoter.totalConversions.toLocaleString()}
+              {currentConversions.toLocaleString()}
             </p>
           </div>
           <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
