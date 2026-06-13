@@ -73,8 +73,8 @@ async function main() {
     const referralCode = username;
     const totalEarned = calculateEarnings(id);
     const totalConversions = Math.round(totalEarned);
-    const clickMultiplier = 15 + (id * 17) % 21; // between 15 and 35
-    const totalClicks = totalConversions * clickMultiplier;
+    const conversionRate = 0.50 + ((id * 7) % 13) / 100; // 50% to 62%
+    const totalClicks = Math.round(totalConversions / conversionRate);
 
     // Select a country deterministically based on ID
     let country = "United States";
