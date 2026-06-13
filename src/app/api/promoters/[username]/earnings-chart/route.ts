@@ -128,66 +128,59 @@ export async function GET(req: Request, { params }: RouteParams) {
     
     const seededDaysActive = 45 + ((promoter.id * 17) % 45);
     const virtualDays = promoter.totalEarned > 1000 && dailyRate > 0 ? Math.max(seededDaysActive, promoter.totalEarned / dailyRate) : 0;
-    const daysActive = Math.max(1, actualDays, virtualDays);
     
-    const roundedDaysActive = Math.max(1, Math.floor(daysActive));
+    const roundedDaysActive = Math.max(1, Math.floor(virtualDays));
     
-    // Generate raw amounts for all days from 0 to roundedDaysActive - 1
-    const rawAmounts: number[] = [];
-    let sumRaw = 0;
-    
+    // The virtual signup date is fixed relative to promoter.createdAt
+    const virtualSignupDate = new Date(signupDate);
+    virtualSignupDate.setDate(virtualSignupDate.getDate() - roundedDaysActive);
+
+    // Calculate fixed sum of raw values up to roundedDaysActive to get a permanent scaleFactor
+    let fixedSumRaw = 0;
     for (let d = 0; d < roundedDaysActive; d++) {
-      // 1. Overall growth trend: starts smaller (e.g. 35% level) and goes to 100%
       const trend = 0.35 + 0.65 * (d / Math.max(1, roundedDaysActive - 1));
-      
-      // 2. Weekly seasonality: sine wave with period of 7 days
       const weeklyPhase = (promoter.id * 3) % 7;
       const weekly = 0.8 + 0.4 * Math.sin((2 * Math.PI * (d + weeklyPhase)) / 7);
-      
-      // 3. Natural fluctuation noise: deterministic based on promoter ID and day
       const noiseSeed = (promoter.id * 103 + d * 53) % 100;
       const noise = 0.3 + 1.4 * (noiseSeed / 100);
-      
-      // 4. Occasional spikes on random days (e.g. 2x - 4x)
       let spike = 1.0;
       if ((promoter.id * 7 + d * 31) % 19 === 0) {
         spike = 2.0 + ((promoter.id * 13 + d * 7) % 5) * 0.5;
       }
-      
-      const raw = trend * weekly * noise * spike;
-      rawAmounts.push(raw);
-      sumRaw += raw;
+      fixedSumRaw += trend * weekly * noise * spike;
     }
-    
-    // Scale raw amounts so their sum is exactly equal to promoter.totalEarned
-    const scaledAmounts = rawAmounts.map(raw => {
-      return (raw * promoter.totalEarned) / (sumRaw || 1);
-    });
-    
-    // Round to 2 decimal places
-    const dailyEarnings = scaledAmounts.map(val => Math.round(val * 100) / 100);
-    
-    // Adjust for any small rounding error on the final day so the sum is EXACTLY promoter.totalEarned
-    const currentSum = dailyEarnings.reduce((sum, val) => sum + val, 0);
-    const diff = promoter.totalEarned - currentSum;
-    if (dailyEarnings.length > 0) {
-      dailyEarnings[dailyEarnings.length - 1] = Math.round((dailyEarnings[dailyEarnings.length - 1] + diff) * 100) / 100;
-    }
+    const scaleFactor = promoter.totalEarned / (fixedSumRaw || 1);
 
     const today = new Date();
     const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
 
-    const chartData = dates.map((dateStr, i) => {
+    const chartData = dates.map(dateStr => {
       const [yyyy, mm, dd] = dateStr.split("-");
       const monthLabel = months[parseInt(mm, 10) - 1];
       const dayLabel = parseInt(dd, 10);
       
-      const daysAgo = daysCount - 1 - i;
+      const currentDate = new Date(dateStr);
+      currentDate.setHours(0, 0, 0, 0);
+      const virtualSignup = new Date(virtualSignupDate);
+      virtualSignup.setHours(0, 0, 0, 0);
+      
+      const diffTime = currentDate.getTime() - virtualSignup.getTime();
+      const d = Math.floor(diffTime / (1000 * 60 * 60 * 24));
       
       let amount = 0;
-      if (daysAgo < roundedDaysActive) {
-        const d = (roundedDaysActive - 1) - daysAgo;
-        amount = dailyEarnings[d] || 0;
+      if (d >= 0) {
+        // Calculate raw amount for this specific calendar day index 'd'
+        const trend = 0.35 + 0.65 * Math.min(1.0, d / Math.max(1, roundedDaysActive - 1));
+        const weeklyPhase = (promoter.id * 3) % 7;
+        const weekly = 0.8 + 0.4 * Math.sin((2 * Math.PI * (d + weeklyPhase)) / 7);
+        const noiseSeed = (promoter.id * 103 + d * 53) % 100;
+        const noise = 0.3 + 1.4 * (noiseSeed / 100);
+        let spike = 1.0;
+        if ((promoter.id * 7 + d * 31) % 19 === 0) {
+          spike = 2.0 + ((promoter.id * 13 + d * 7) % 5) * 0.5;
+        }
+        const raw = trend * weekly * noise * spike;
+        amount = raw * scaleFactor;
 
         // If this date is today, scale it to the elapsed fraction of the day
         if (dateStr === todayStr) {
