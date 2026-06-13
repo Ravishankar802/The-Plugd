@@ -128,7 +128,7 @@ export async function GET(req: Request, { params }: RouteParams) {
       dailyRate = 300 + 600 * Math.pow(factor, 2.0);
     }
     
-    const seededDaysActive = 45 + ((promoter.id * 17) % 45);
+    const seededDaysActive = 45 + ((rank * 17) % 45);
     const virtualDays = promoter.totalEarned > 1000 && dailyRate > 0 ? Math.max(seededDaysActive, promoter.totalEarned / dailyRate) : 0;
     
     const roundedDaysActive = Math.max(1, Math.floor(virtualDays));
@@ -141,13 +141,13 @@ export async function GET(req: Request, { params }: RouteParams) {
     let fixedSumRaw = 0;
     for (let d = 0; d < roundedDaysActive; d++) {
       const trend = 0.35 + 0.65 * (d / Math.max(1, roundedDaysActive - 1));
-      const weeklyPhase = (promoter.id * 3) % 7;
+      const weeklyPhase = (rank * 3) % 7;
       const weekly = 0.8 + 0.4 * Math.sin((2 * Math.PI * (d + weeklyPhase)) / 7);
-      const noiseSeed = (promoter.id * 103 + d * 53) % 100;
+      const noiseSeed = (rank * 103 + d * 53) % 100;
       const noise = 0.3 + 1.4 * (noiseSeed / 100);
       let spike = 1.0;
-      if ((promoter.id * 7 + d * 31) % 19 === 0) {
-        spike = 2.0 + ((promoter.id * 13 + d * 7) % 5) * 0.5;
+      if ((rank * 7 + d * 31) % 19 === 0) {
+        spike = 2.0 + ((rank * 13 + d * 7) % 5) * 0.5;
       }
       fixedSumRaw += trend * weekly * noise * spike;
     }
@@ -173,13 +173,13 @@ export async function GET(req: Request, { params }: RouteParams) {
       if (d >= 0) {
         // Calculate raw amount for this specific calendar day index 'd'
         const trend = 0.35 + 0.65 * Math.min(1.0, d / Math.max(1, roundedDaysActive - 1));
-        const weeklyPhase = (promoter.id * 3) % 7;
+        const weeklyPhase = (rank * 3) % 7;
         const weekly = 0.8 + 0.4 * Math.sin((2 * Math.PI * (d + weeklyPhase)) / 7);
-        const noiseSeed = (promoter.id * 103 + d * 53) % 100;
+        const noiseSeed = (rank * 103 + d * 53) % 100;
         const noise = 0.3 + 1.4 * (noiseSeed / 100);
         let spike = 1.0;
-        if ((promoter.id * 7 + d * 31) % 19 === 0) {
-          spike = 2.0 + ((promoter.id * 13 + d * 7) % 5) * 0.5;
+        if ((rank * 7 + d * 31) % 19 === 0) {
+          spike = 2.0 + ((rank * 13 + d * 7) % 5) * 0.5;
         }
         const raw = trend * weekly * noise * spike;
         amount = raw * scaleFactor;
