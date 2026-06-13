@@ -159,6 +159,7 @@ export default function ManageReferralsClient() {
   // Sorting state
   const [sortField, setSortField] = useState<keyof Promoter>("createdAt");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+  const [sortOpen, setSortOpen] = useState(false);
 
   useEffect(() => {
     fetchPromoters();
@@ -564,8 +565,8 @@ export default function ManageReferralsClient() {
 
       {/* Table Section */}
       <div className="bg-pill border border-border rounded-xl shadow-sm overflow-hidden flex flex-col">
-        <div className="p-3 border-b border-border flex flex-col md:flex-row md:items-center justify-between gap-3">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3 flex-1 max-w-xl">
+        <div className="p-3 border-b border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-3 flex-1 max-w-md w-full">
             <div className="relative flex-1 max-w-sm">
               <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted/60" />
               <input 
@@ -576,29 +577,69 @@ export default function ManageReferralsClient() {
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-muted/80 shrink-0">Sort Joined:</span>
-              <select
-                className="bg-background border border-border rounded-lg px-2.5 py-1.5 text-xs text-foreground focus:outline-none focus:border-muted transition-all cursor-pointer"
-                value={sortField === "createdAt" ? sortOrder : "custom"}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  if (val === "desc") {
-                    setSortField("createdAt");
-                    setSortOrder("desc");
-                  } else if (val === "asc") {
-                    setSortField("createdAt");
-                    setSortOrder("asc");
-                  }
+            <p className="text-muted text-[0.7rem] font-medium hidden sm:block">Found {filteredAndSorted.length}</p>
+          </div>
+          
+          <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto z-30">
+            <p className="text-muted text-[0.7rem] font-medium sm:hidden">Found {filteredAndSorted.length}</p>
+            {/* Custom Sort Joined Dropdown */}
+            <div className="relative">
+              <button 
+                type="button"
+                onClick={() => {
+                  setSortOpen(!sortOpen);
                 }}
+                className="flex items-center justify-between gap-2 px-4 py-2 bg-accent border border-border text-foreground rounded-lg text-sm font-semibold focus:outline-none transition-all min-w-[155px] shadow-sm select-none cursor-pointer hover:bg-accent/80"
               >
-                {sortField !== "createdAt" && <option value="custom" disabled>Custom Sorted</option>}
-                <option value="desc">Recently Joined</option>
-                <option value="asc">Earliest Joined</option>
-              </select>
+                <span>
+                  {sortField === "createdAt" 
+                    ? (sortOrder === "desc" ? "Recently Joined" : "Earliest Joined") 
+                    : "Custom Sorted"}
+                </span>
+                <ChevronDown size={16} className={`text-muted transition-transform duration-200 ${sortOpen ? "rotate-180" : ""}`} />
+              </button>
+              
+              {sortOpen && (
+                <>
+                  <div className="fixed inset-0 z-30" onClick={() => setSortOpen(false)} />
+                  <div className="absolute right-0 mt-1.5 w-[160px] bg-card border border-border rounded-xl shadow-2xl p-1 z-40 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSortField("createdAt");
+                        setSortOrder("desc");
+                        setSortOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-left text-sm font-bold transition-colors ${
+                        sortField === "createdAt" && sortOrder === "desc"
+                        ? "bg-white/10 text-foreground" 
+                        : "text-foreground hover:bg-accent"
+                      }`}
+                    >
+                      <span>Recently Joined</span>
+                      {sortField === "createdAt" && sortOrder === "desc" && <Check size={12} className="text-foreground shrink-0" />}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSortField("createdAt");
+                        setSortOrder("asc");
+                        setSortOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-left text-sm font-bold transition-colors ${
+                        sortField === "createdAt" && sortOrder === "asc"
+                        ? "bg-white/10 text-foreground" 
+                        : "text-foreground hover:bg-accent"
+                      }`}
+                    >
+                      <span>Earliest Joined</span>
+                      {sortField === "createdAt" && sortOrder === "asc" && <Check size={12} className="text-foreground shrink-0" />}
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
-          <p className="text-muted text-[0.7rem] font-medium">Found {filteredAndSorted.length}</p>
         </div>
 
         <div className="overflow-x-auto w-full">
