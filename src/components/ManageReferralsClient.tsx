@@ -589,7 +589,7 @@ export default function ManageReferralsClient() {
                 onClick={() => {
                   setSortOpen(!sortOpen);
                 }}
-                className="flex items-center justify-between gap-2 px-4 py-2 bg-accent border border-border text-foreground rounded-lg text-sm font-semibold focus:outline-none transition-all min-w-[155px] shadow-sm select-none cursor-pointer hover:bg-accent/80"
+                className="flex items-center justify-between gap-2 px-4 py-2 bg-accent border border-border text-foreground rounded-lg text-sm font-semibold focus:outline-none transition-all min-w-[160px] whitespace-nowrap shadow-sm select-none cursor-pointer hover:bg-accent/80"
               >
                 <span>
                   {sortField === "createdAt" 
@@ -602,7 +602,7 @@ export default function ManageReferralsClient() {
               {sortOpen && (
                 <>
                   <div className="fixed inset-0 z-30" onClick={() => setSortOpen(false)} />
-                  <div className="absolute right-0 mt-1.5 w-[160px] bg-card border border-border rounded-xl shadow-2xl p-1 z-40 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="absolute right-0 mt-1.5 w-[190px] bg-card border border-border rounded-xl shadow-2xl p-1 z-40 animate-in fade-in slide-in-from-top-2 duration-200">
                     <button
                       type="button"
                       onClick={() => {
@@ -610,7 +610,7 @@ export default function ManageReferralsClient() {
                         setSortOrder("desc");
                         setSortOpen(false);
                       }}
-                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-left text-sm font-bold transition-colors ${
+                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-left text-sm font-bold transition-colors whitespace-nowrap ${
                         sortField === "createdAt" && sortOrder === "desc"
                         ? "bg-white/10 text-foreground" 
                         : "text-foreground hover:bg-accent"
@@ -626,7 +626,7 @@ export default function ManageReferralsClient() {
                         setSortOrder("asc");
                         setSortOpen(false);
                       }}
-                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-left text-sm font-bold transition-colors ${
+                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-left text-sm font-bold transition-colors whitespace-nowrap ${
                         sortField === "createdAt" && sortOrder === "asc"
                         ? "bg-white/10 text-foreground" 
                         : "text-foreground hover:bg-accent"
