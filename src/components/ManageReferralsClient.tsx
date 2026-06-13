@@ -21,6 +21,27 @@ import {
   Upload
 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+const COUNTRIES = [
+  "Afghanistan", "Albania", "Algeria", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+  "Bahrain", "Bangladesh", "Belarus", "Belgium", "Benin", "Bolivia", "Bosnia and Herzegovina", "Botswana",
+  "Brazil", "Bulgaria", "Burkina Faso", "Cambodia", "Cameroon", "Canada", "Chile", "China", "Colombia",
+  "Costa Rica", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Dominican Republic", "Ecuador", "Egypt",
+  "El Salvador", "Estonia", "Ethiopia", "Finland", "France", "Georgia", "Germany", "Ghana", "Greece",
+  "Guatemala", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iraq", "Ireland",
+  "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kosovo",
+  "Kuwait", "Kyrgyzstan", "Latvia", "Lebanon", "Libya", "Lithuania", "Luxembourg", "Malaysia", "Mali",
+  "Malta", "Mexico", "Moldova", "Mongolia", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nepal",
+  "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman",
+  "Pakistan", "Palestine", "Panama", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar",
+  "Romania", "Russia", "Rwanda", "Saudi Arabia", "Senegal", "Serbia", "Sierra Leone", "Singapore",
+  "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "Sweden", "Switzerland",
+  "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Tunisia", "Turkey", "Turkmenistan", "Uganda",
+  "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan",
+  "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe", "Other"
+];
+
 
 interface Payout {
   id: string;
@@ -119,6 +140,7 @@ const GRADIENTS = [
 ];
 
 export default function ManageReferralsClient() {
+  const router = useRouter();
   const [promoters, setPromoters] = useState<Promoter[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -159,7 +181,8 @@ export default function ManageReferralsClient() {
         // Save to localStorage so it stays perfectly synced with the homepage
         const storeData: Record<string, number> = {};
         nextList.forEach(p => {
-          if (p.currentEarnings) {
+          const isDisplayPromoter = p.email.toLowerCase().endsWith("@example.com");
+          if (isDisplayPromoter && p.currentEarnings) {
             storeData[p.id.toString()] = p.currentEarnings;
           }
         });
@@ -224,6 +247,16 @@ export default function ManageReferralsClient() {
         const sortedData = [...data].sort((a: any, b: any) => b.totalEarned - a.totalEarned);
 
         const mapped = sortedData.map((p: any, index: number) => {
+          const isDisplayPromoter = p.email.toLowerCase().endsWith("@example.com");
+          if (!isDisplayPromoter) {
+            return {
+              ...p,
+              earningRatePerSec: 0,
+              baseLastMonth: p.totalEarned,
+              currentEarnings: p.totalEarned
+            };
+          }
+
           const rank = index + 1;
           const factor = Math.max(0, (50 - rank) / 48); // from 1.0 down to 0.0
           
@@ -575,7 +608,11 @@ export default function ManageReferralsClient() {
             </thead>
             <tbody className="divide-y divide-border/40">
               {filteredAndSorted.length > 0 ? filteredAndSorted.map((p) => (
-                <tr key={p.id} className="hover:bg-foreground/[0.01] transition-colors group">
+                <tr 
+                  key={p.id} 
+                  className="hover:bg-foreground/[0.01] transition-colors group cursor-pointer"
+                  onClick={() => router.push(`/p/${p.username || p.referralCode}`)}
+                >
                   <td className="px-3 py-2.5">
                     <div className="flex items-center gap-2">
                       {p.avatarUrl ? (
@@ -598,7 +635,10 @@ export default function ManageReferralsClient() {
                   <td className="px-3 py-2.5">
                     <div className="max-w-[100px] truncate">
                       <button 
-                        onClick={() => handleCopy(`https://theplugd.com?ref=${p.username || p.referralCode}`, `link-${p.id}`)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleCopy(`https://theplugd.com?ref=${p.username || p.referralCode}`, `link-${p.id}`);
+                        }}
                         className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-accent/50 border border-border text-foreground text-[0.65rem] font-mono font-bold hover:bg-accent transition-all group/btn"
                       >
                         <span className="truncate">{p.username || p.referralCode}</span>
@@ -628,7 +668,10 @@ export default function ManageReferralsClient() {
                   <td className="px-3 py-2.5 text-right">
                     <div className="flex items-center justify-end gap-1.5">
                       <button
-                        onClick={() => setEditingPromoter(p)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setEditingPromoter(p);
+                        }}
                         className="p-1 rounded-md bg-background border border-border text-muted hover:text-[#16a34a] hover:border-[#16a34a]/40 transition-all shadow-sm cursor-pointer"
                         title="Edit Profile"
                       >
@@ -641,7 +684,10 @@ export default function ManageReferralsClient() {
                             REQUESTED (${p.pendingWithdrawalRequest.amount})
                           </span>
                           <button 
-                            onClick={() => setPayoutPromoter(p)}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setPayoutPromoter(p);
+                            }}
                             className="bg-amber-500 hover:bg-amber-600 text-white px-2 py-1 rounded-md font-bold text-[0.65rem] transition-all shadow-sm active:scale-[0.98] shrink-0 cursor-pointer"
                           >
                             Mark Paid
@@ -650,7 +696,10 @@ export default function ManageReferralsClient() {
                       ) : (
                         <div className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                           <button 
-                            onClick={() => setHistoryPromoter(p)}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setHistoryPromoter(p);
+                            }}
                             className="p-1 rounded-md bg-background border border-border text-muted hover:text-foreground hover:border-muted transition-all shadow-sm"
                             title="Payout History"
                           >
@@ -658,7 +707,10 @@ export default function ManageReferralsClient() {
                           </button>
                           <button 
                             disabled={p.pendingPayout <= 0}
-                            onClick={() => setPayoutPromoter(p)}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setPayoutPromoter(p);
+                            }}
                             className={`px-2 py-1 rounded-md font-bold text-[0.65rem] transition-all shadow-sm ${
                               p.pendingPayout > 0 
                               ? "bg-[#16a34a] text-white hover:opacity-90 active:scale-[0.98]" 
@@ -861,12 +913,11 @@ export default function ManageReferralsClient() {
                       }}
                       className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
                     >
-                      <option value="United States">United States</option>
-                      <option value="India">India</option>
-                      <option value="United Kingdom">United Kingdom</option>
-                      <option value="Canada">Canada</option>
-                      <option value="Australia">Australia</option>
-                      <option value="Germany">Germany</option>
+                      {COUNTRIES.map((country) => (
+                        <option key={country} value={country}>
+                          {country}
+                        </option>
+                      ))}
                     </select>
                   </div>
 

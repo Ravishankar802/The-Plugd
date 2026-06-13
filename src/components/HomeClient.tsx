@@ -21,6 +21,7 @@ interface HomeClientProps {
 interface Earner {
   id: number;
   name: string;
+  email?: string;
   handle: string;
   initials: string;
   gradient: string;
@@ -130,6 +131,30 @@ export default function HomeClient({
 
             // Map promoters to ActiveEarner
             const mappedEarners = data.promoters.map((p: any, index: number) => {
+              const isDisplayPromoter = p.email?.toLowerCase().endsWith("@example.com");
+              const handle = p.username ? `@${p.username}` : `@${p.name.toLowerCase().replace(/[^a-z0-9_]/g, "_")}`;
+              const initials = p.name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2);
+              const gradient = GRADIENTS[p.id % GRADIENTS.length];
+
+              if (!isDisplayPromoter) {
+                return {
+                  id: p.id,
+                  name: p.name,
+                  email: p.email,
+                  handle,
+                  initials,
+                  gradient,
+                  baseEarnings: p.totalEarned,
+                  baseLastMonth: p.totalEarned,
+                  earningRatePerSec: 0,
+                  baseGrowth: 0,
+                  currentEarnings: p.totalEarned,
+                  momGrowth: 0,
+                  avatarUrl: p.avatarUrl,
+                  createdAt: p.createdAt
+                };
+              }
+
               const rank = index + 1;
               const factor = Math.max(0, (50 - rank) / 48); // from 1.0 down to 0.0
               
@@ -141,11 +166,6 @@ export default function HomeClient({
               }
               const earningRatePerSec = dailyRate / 86400;
 
-              const handle = p.username ? `@${p.username}` : `@${p.name.toLowerCase().replace(/[^a-z0-9_]/g, "_")}`;
-              const initials = p.name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2);
-              
-              const gradient = GRADIENTS[p.id % GRADIENTS.length];
-              
               // Deterministic growth rate based on rank and slowly varying daily offset
               const dayOfYear = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
               const dailyOffset = Math.sin((dayOfYear + rank * 3) * 2 * Math.PI / 10) * 1.5;
@@ -161,6 +181,7 @@ export default function HomeClient({
               return {
                 id: p.id,
                 name: p.name,
+                email: p.email,
                 handle,
                 initials,
                 gradient,
@@ -182,7 +203,10 @@ export default function HomeClient({
             // Save initial values to localStorage
             const dataToStore: Record<string, number> = {};
             sortedEarners.forEach(e => {
-              dataToStore[e.id.toString()] = e.currentEarnings;
+              const isDisplayPromoter = e.email?.toLowerCase().endsWith("@example.com");
+              if (isDisplayPromoter) {
+                dataToStore[e.id.toString()] = e.currentEarnings;
+              }
             });
             try {
               localStorage.setItem("plugd_leaderboard_earnings_v2", JSON.stringify(dataToStore));
@@ -200,6 +224,7 @@ export default function HomeClient({
     const interval = setInterval(() => {
       setEarners(prev => {
         const nextList = prev.map(e => {
+          if (!e.earningRatePerSec) return e;
           const hasEarned = Math.random() > 0.3; 
           const multiplier = hasEarned ? (0.5 + Math.random() * 1.5) : 0;
           const increment = 60 * e.earningRatePerSec * multiplier;
@@ -217,7 +242,10 @@ export default function HomeClient({
         // Save to localStorage
         const storeData: Record<string, number> = {};
         sorted.forEach(e => {
-          storeData[e.id.toString()] = e.currentEarnings;
+          const isDisplayPromoter = e.email?.toLowerCase().endsWith("@example.com");
+          if (isDisplayPromoter) {
+            storeData[e.id.toString()] = e.currentEarnings;
+          }
         });
         try {
           localStorage.setItem("plugd_leaderboard_earnings_v2", JSON.stringify(storeData));
