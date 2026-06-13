@@ -1166,6 +1166,7 @@ here's my link 👉 ${link}`
                           tickLine={false}
                           axisLine={false}
                           dy={10}
+                          interval={chartRange === "7d" ? 1 : "preserveEnd"}
                         />
                         <YAxis 
                           stroke="var(--muted)" 
