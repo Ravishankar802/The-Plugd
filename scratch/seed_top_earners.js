@@ -1,19 +1,58 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-const FIRST_NAMES = ["Alex", "Sarah", "Marcus", "Elena", "David", "Jessica", "Ryan", "Emily", "James", "Sophia", "Michael", "Olivia", "William", "Emma", "Daniel", "Isabella", "John", "Mia", "Robert", "Charlotte", "Joseph", "Amelia", "David", "Harper", "Andrew", "Evelyn", "Chris", "Abigail", "Matthew", "Emily", "Joshua", "Elizabeth", "Nathan", "Sofia", "Tyler", "Avery", "Brandon", "Ella", "Kevin", "Madison", "Justin", "Scarlett", "Brian", "Victoria", "Dylan", "Grace", "Ethan", "Chloe", "Connor", "Lily"];
-const LAST_NAMES = ["Rivers", "Jenkins", "Chen", "Rostova", "Kim", "Miller", "Davis", "Garcia", "Rodriguez", "Wilson", "Martinez", "Anderson", "Taylor", "Thomas", "Hernandez", "Moore", "Martin", "Jackson", "Martin", "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker", "Young", "Allen", "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores", "Green", "Adams", "Nelson", "Baker", "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts", "Gomez"];
-const GRADIENTS = [
-  "from-emerald-500 to-green-300",
-  "from-purple-500 to-pink-300",
-  "from-blue-500 to-cyan-300",
-  "from-amber-500 to-yellow-300",
-  "from-red-500 to-orange-300",
-  "from-violet-600 to-indigo-400",
-  "from-fuchsia-500 to-purple-300",
-  "from-rose-500 to-red-300",
-  "from-teal-500 to-emerald-300",
-  "from-sky-500 to-blue-300"
+const SEEDED_PROMOTERS = [
+  { name: "Nathan Hill", country: "United States" },
+  { name: "Lucas Martin", country: "France" },
+  { name: "Lachlan Jones", country: "Australia" },
+  { name: "Jack Miller", country: "United States" },
+  { name: "Ethan Davis", country: "United States" },
+  { name: "Ryan Clark", country: "United States" },
+  { name: "Thomas Bernard", country: "France" },
+  { name: "Tariq Khan", country: "Saudi Arabia" },
+  { name: "Connor Smith", country: "Australia" },
+  { name: "Tyler Brooks", country: "United States" },
+  { name: "Justin Hall", country: "United States" },
+  { name: "Cody Evans", country: "United States" },
+  { name: "Nicolas Petit", country: "France" },
+  { name: "Youssef Ali", country: "Saudi Arabia" },
+  { name: "Riley Taylor", country: "Australia" },
+  { name: "Matthew Baker", country: "United States" },
+  { name: "Caleb Cooper", country: "United States" },
+  { name: "Pierre Dubois", country: "France" },
+  { name: "Zayn Ahmed", country: "Saudi Arabia" },
+  { name: "Liam Wilson", country: "Australia" },
+  { name: "Brandon Ward", country: "United States" },
+  { name: "Dylan Carter", country: "United States" },
+  { name: "Alexandre Michel", country: "France" },
+  { name: "Omar Hassan", country: "Saudi Arabia" },
+  { name: "Sienna Brown", country: "Australia" },
+  { name: "Austin Wright", country: "United States" },
+  { name: "Logan Green", country: "United States" },
+  { name: "Jordan Adams", country: "United States" },
+  { name: "Dylan Mitchell", country: "United States" },
+  { name: "Cameron Roberts", country: "United States" },
+  // Ranks 31 to 50 can have Indian names:
+  { name: "Aarav Patel", country: "India" },
+  { name: "Rohan Sharma", country: "India" },
+  { name: "Vikram Singh", country: "India" },
+  { name: "Amit Das", country: "India" },
+  { name: "Hunter Watson", country: "United States" },
+  { name: "Wyatt Perez", country: "United States" },
+  { name: "Christian Turner", country: "United States" },
+  { name: "Aaron Phillips", country: "United States" },
+  { name: "Blake Campbell", country: "United States" },
+  { name: "Chase Parker", country: "United States" },
+  { name: "Devin Jenkins", country: "United States" },
+  { name: "Brody Myers", country: "United States" },
+  { name: "Garrett Ross", country: "United States" },
+  { name: "Spencer Perry", country: "United States" },
+  { name: "Travis Powell", country: "United States" },
+  { name: "Colby Bryant", country: "United States" },
+  { name: "Paige Miller", country: "United States" },
+  { name: "Kenzie Watson", country: "United States" },
+  { name: "Savannah Kim", country: "United States" },
+  { name: "Cole Evans", country: "United States" }
 ];
 
 function calculateEarnings(id) {
@@ -61,14 +100,22 @@ function calculateEarnings(id) {
 }
 
 async function main() {
+  console.log("Cleaning old seeded promoters...");
+  await prisma.promoter.deleteMany({
+    where: {
+      email: {
+        endsWith: "@example.com"
+      }
+    }
+  });
+
   console.log("Seeding top 50 earners into database...");
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < SEEDED_PROMOTERS.length; i++) {
     const id = i + 1;
-    const firstName = FIRST_NAMES[i % FIRST_NAMES.length];
-    const lastName = LAST_NAMES[(i * 3) % LAST_NAMES.length]; 
-    const name = `${firstName} ${lastName}`;
-    const username = `${firstName.toLowerCase()}_${lastName.toLowerCase()}`;
+    const item = SEEDED_PROMOTERS[i];
+    const name = item.name;
+    const username = name.toLowerCase().replace(/\s+/g, '');
     const email = `${username}@example.com`;
     const referralCode = username;
     const totalEarned = calculateEarnings(id);
@@ -76,35 +123,12 @@ async function main() {
     const conversionRate = 0.50 + ((id * 7) % 31) / 100; // 50% to 80%
     const totalClicks = Math.round(totalConversions / conversionRate);
 
-    // Select a country deterministically based on ID
-    let country = "United States";
-    let region = "INTERNATIONAL";
-    if (id % 5 === 0) {
-      country = "India";
-      region = "INDIA";
-    } else if (id % 5 === 1) {
-      country = "United Kingdom";
-    } else if (id % 5 === 2) {
-      country = "Australia";
-    } else if (id % 5 === 3) {
-      country = "Canada";
-    } else if (id % 5 === 4) {
-      country = "Germany";
-    }
+    const country = item.country;
+    const region = country === "India" ? "INDIA" : "INTERNATIONAL";
 
-    // Upsert promoter
-    const promoter = await prisma.promoter.upsert({
-      where: { email },
-      update: {
-        totalEarned: totalEarned,
-        totalClicks: totalClicks,
-        totalConversions: totalConversions,
-        payoutRegion: region,
-        paypalEmail: region === "INTERNATIONAL" ? email : null,
-        upiId: region === "INDIA" ? `${username}@okaxis` : null,
-        intlBankCountry: region === "INTERNATIONAL" ? country : null
-      },
-      create: {
+    // Create promoter
+    const promoter = await prisma.promoter.create({
+      data: {
         email,
         name,
         username,
@@ -119,7 +143,7 @@ async function main() {
       }
     });
 
-    console.log(`Upserted promoter: ${promoter.name} (${promoter.username}) - $${promoter.totalEarned}`);
+    console.log(`Created promoter Rank ${id}: ${promoter.name} (${promoter.username}) - $${promoter.totalEarned}`);
   }
 
   console.log("Seeding complete!");
