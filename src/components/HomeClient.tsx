@@ -420,8 +420,8 @@ export default function HomeClient({
                   <th className="pb-3 pt-1 w-8 md:w-10 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center">#</th>
                   <th className="pb-3 pt-1 md:w-[60%] text-[0.65rem] font-bold text-muted uppercase tracking-widest pl-1 md:pl-2">Promoter</th>
                   <th className="pb-3 pt-1 md:w-[20%] text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right md:text-left whitespace-nowrap md:pl-6">EARNINGS</th>
-                  <th className="pb-3 pt-1 md:w-[20%] text-[0.65rem] font-bold text-muted tracking-widest text-right whitespace-nowrap pl-2 md:pl-4 uppercase">
-                    {timeframe === "All time" ? "MoM GROWTH" : "30-Day Growth"}
+                  <th className="pb-3 pt-1 md:w-[20%] text-[0.65rem] font-bold text-muted tracking-widest text-right whitespace-nowrap pl-2 md:pl-4">
+                    {timeframe === "All time" ? "MoM Growth" : "30-Day Growth"}
                   </th>
                 </tr>
               </thead>
