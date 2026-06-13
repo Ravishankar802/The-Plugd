@@ -757,7 +757,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 <span style={{ color: isDark ? '#a1a1aa' : '#666666' }} className="text-[0.6rem] font-bold uppercase tracking-[0.05em] text-center leading-tight">
                   All-time earnings
                 </span>
-                <span className="text-[1.35rem] font-[900] tracking-tighter rich-number">$1M+</span>
+                <span className="text-[1.35rem] font-[900] tracking-tighter rich-number">$10M+</span>
               </div>
             </div>
           )}
