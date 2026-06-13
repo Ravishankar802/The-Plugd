@@ -21,16 +21,23 @@ export async function POST(req: Request) {
     // Admin bypass
     const isAdmin = email.toLowerCase() === process.env.NEXT_PUBLIC_ADMIN_EMAIL?.toLowerCase();
     
-    // Check if email exists in Account table with status: 'paid'
-    const account = await prisma.account.findFirst({
-      where: {
-        email: email.toLowerCase(),
-        paid: true,
-      },
-    });
+    // Check if email exists in Account table with status: 'paid' or in Promoter table
+    const [account, promoter] = await Promise.all([
+      prisma.account.findFirst({
+        where: {
+          email: email.toLowerCase(),
+          paid: true,
+        },
+      }),
+      prisma.promoter.findUnique({
+        where: {
+          email: email.toLowerCase(),
+        },
+      }),
+    ]);
 
-    if (!account && !isAdmin) {
-      console.warn(`[AUTH] No paid account found for: ${email}`);
+    if (!account && !promoter && !isAdmin) {
+      console.warn(`[AUTH] No paid account or promoter profile found for: ${email}`);
       return NextResponse.json(
         { error: "No paid account found for this email" },
         { status: 404 }

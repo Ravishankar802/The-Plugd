@@ -204,6 +204,15 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
     const redirectUrl = 'https://theplugd.com/vault';
     const baseUrl = `https://www.checkout.dodopayments.com/buy/${process.env.NEXT_PUBLIC_DODO_PROMOTER_PRODUCT_ID}`;
     
+    let finalReferralCode = referralCode;
+    if (!finalReferralCode && typeof document !== "undefined") {
+      const cookies = document.cookie.split("; ");
+      const match = cookies.find(row => row.startsWith("plugd_ref="));
+      if (match) {
+        finalReferralCode = match.split("=")[1] || "";
+      }
+    }
+
     const params = new URLSearchParams({
       quantity: '1',
       redirect_url: redirectUrl,
@@ -231,7 +240,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       metadata_intlInstitutionNumber: formData.intlInstitutionNumber,
       metadata_intlBankCountry: formData.intlBankCountry,
       metadata_paypalEmail: formData.paypalEmail,
-      ...(referralCode ? { metadata_referralCode: referralCode } : {})
+      ...(finalReferralCode ? { metadata_referralCode: finalReferralCode } : {})
     });
 
     const checkoutUrl = `${baseUrl}?${params.toString()}`;

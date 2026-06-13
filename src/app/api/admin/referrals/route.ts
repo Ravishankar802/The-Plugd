@@ -36,7 +36,7 @@ export async function GET() {
     // Map promoters to include calculated stats
     const promotersWithStats = promoters.map(promoter => {
       const hasReferrals = promoter.Referral.length > 0;
-      const clicks = hasReferrals ? promoter.Referral.length : promoter.totalClicks;
+      const clicks = promoter.totalClicks;
       const conversions = promoter.Referral.filter(r => r.status === "converted");
       const signupCount = hasReferrals ? conversions.length : promoter.totalConversions;
       
