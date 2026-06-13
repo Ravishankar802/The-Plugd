@@ -174,6 +174,9 @@ export async function GET(req: Request, { params }: RouteParams) {
       dailyEarnings[dailyEarnings.length - 1] = Math.round((dailyEarnings[dailyEarnings.length - 1] + diff) * 100) / 100;
     }
 
+    const today = new Date();
+    const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+
     const chartData = dates.map((dateStr, i) => {
       const [yyyy, mm, dd] = dateStr.split("-");
       const monthLabel = months[parseInt(mm, 10) - 1];
@@ -185,6 +188,16 @@ export async function GET(req: Request, { params }: RouteParams) {
       if (daysAgo < roundedDaysActive) {
         const d = (roundedDaysActive - 1) - daysAgo;
         amount = dailyEarnings[d] || 0;
+
+        // If this date is today, scale it to the elapsed fraction of the day
+        if (dateStr === todayStr) {
+          const now = new Date();
+          const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          const msElapsed = now.getTime() - startOfDay.getTime();
+          // Minimum of 0.05 so it doesn't show 0 at exactly midnight, maximum of 1.0
+          const dayFraction = Math.max(0.05, Math.min(1.0, msElapsed / (1000 * 60 * 60 * 24)));
+          amount = amount * dayFraction;
+        }
       }
       
       return {
