@@ -73,8 +73,10 @@ export async function GET(req: Request, { params }: RouteParams) {
 
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-    // If there are real conversions in the database, return those real stats!
-    if (referrals.length > 0) {
+    const isDisplayPromoter = promoter.email.toLowerCase().endsWith("@example.com");
+
+    // If it's a real promoter, or they have real conversions in the database, return real stats!
+    if (!isDisplayPromoter || referrals.length > 0) {
       const earningsByDate: Record<string, number> = {};
       dates.forEach(dateStr => {
         earningsByDate[dateStr] = 0;
