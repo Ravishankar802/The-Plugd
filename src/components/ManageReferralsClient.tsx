@@ -565,15 +565,38 @@ export default function ManageReferralsClient() {
       {/* Table Section */}
       <div className="bg-pill border border-border rounded-xl shadow-sm overflow-hidden flex flex-col">
         <div className="p-3 border-b border-border flex flex-col md:flex-row md:items-center justify-between gap-3">
-          <div className="relative flex-1 max-w-sm">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted/60" />
-            <input 
-              type="text"
-              placeholder="Search email, name or code..."
-              className="w-full bg-background border border-border rounded-lg pl-8 pr-3 py-1.5 text-xs text-foreground placeholder:text-muted/40 focus:outline-none focus:border-muted transition-all shadow-inner"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 flex-1 max-w-xl">
+            <div className="relative flex-1 max-w-sm">
+              <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted/60" />
+              <input 
+                type="text"
+                placeholder="Search email, name or code..."
+                className="w-full bg-background border border-border rounded-lg pl-8 pr-3 py-1.5 text-xs text-foreground placeholder:text-muted/40 focus:outline-none focus:border-muted transition-all shadow-inner"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-muted/80 shrink-0">Sort Joined:</span>
+              <select
+                className="bg-background border border-border rounded-lg px-2.5 py-1.5 text-xs text-foreground focus:outline-none focus:border-muted transition-all cursor-pointer"
+                value={sortField === "createdAt" ? sortOrder : "custom"}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === "desc") {
+                    setSortField("createdAt");
+                    setSortOrder("desc");
+                  } else if (val === "asc") {
+                    setSortField("createdAt");
+                    setSortOrder("asc");
+                  }
+                }}
+              >
+                {sortField !== "createdAt" && <option value="custom" disabled>Custom Sorted</option>}
+                <option value="desc">Recently Joined</option>
+                <option value="asc">Earliest Joined</option>
+              </select>
+            </div>
           </div>
           <p className="text-muted text-[0.7rem] font-medium">Found {filteredAndSorted.length}</p>
         </div>
