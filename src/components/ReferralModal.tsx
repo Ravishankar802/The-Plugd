@@ -261,11 +261,31 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       }
     });
 
-    const params = new URLSearchParams(filteredParams);
+    try {
+      const response = await fetch("/api/checkout/session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          metadata: filteredParams,
+        }),
+      });
 
-    const checkoutUrl = `${baseUrl}?${params.toString().replace(/\+/g, "%20")}`;
-    console.log("DODO_DEBUG: Constructed Checkout URL:", checkoutUrl);
-    window.location.href = checkoutUrl;
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error || "Failed to create checkout session");
+      }
+
+      const { checkoutUrl } = await response.json();
+      window.location.href = checkoutUrl;
+    } catch (err: any) {
+      console.error("Checkout session error:", err);
+      alert(`Checkout failed: ${err.message || "Please try again."}`);
+      setLoading(false);
+    }
   };
 
   return (
