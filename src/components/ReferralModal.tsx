@@ -217,6 +217,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       quantity: '1',
       redirect_url: redirectUrl,
       email: formData.email,
+      showDiscounts: 'false',
       metadata_type: 'promoter',
       metadata_name: formData.name,
       metadata_email: formData.email,
