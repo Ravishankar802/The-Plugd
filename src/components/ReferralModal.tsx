@@ -216,8 +216,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
     const rawParams: Record<string, string | undefined> = {
       quantity: '1',
       redirect_url: redirectUrl,
-      showDiscounts: 'false',
-      customer_email: formData.email,
+      email: formData.email,
       metadata_type: 'promoter',
       metadata_name: formData.name,
       metadata_email: formData.email,
