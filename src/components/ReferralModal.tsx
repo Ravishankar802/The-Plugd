@@ -202,7 +202,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
     }
 
     const redirectUrl = 'https://theplugd.com/vault';
-    const baseUrl = `https://www.checkout.dodopayments.com/buy/${process.env.NEXT_PUBLIC_DODO_PROMOTER_PRODUCT_ID}`;
+    const baseUrl = `https://checkout.dodopayments.com/buy/${process.env.NEXT_PUBLIC_DODO_PROMOTER_PRODUCT_ID}`;
     
     let finalReferralCode = referralCode;
     if (!finalReferralCode && typeof document !== "undefined") {
