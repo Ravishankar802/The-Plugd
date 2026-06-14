@@ -254,6 +254,32 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       rawParams.metadata_referralCode = finalReferralCode;
     }
 
+    const COUNTRY_TO_ISO: Record<string, string> = {
+      "Afghanistan": "af", "Albania": "al", "Algeria": "dz", "Angola": "ao", "Argentina": "ar", "Armenia": "am", "Australia": "au", "Austria": "at", "Azerbaijan": "az",
+      "Bahrain": "bh", "Bangladesh": "bd", "Belarus": "by", "Belgium": "be", "Benin": "bj", "Bolivia": "bo", "Bosnia and Herzegovina": "ba", "Botswana": "bw",
+      "Brazil": "br", "Bulgaria": "bg", "Burkina Faso": "bf", "Cambodia": "kh", "Cameroon": "cm", "Canada": "ca", "Chile": "cl", "China": "cn", "Colombia": "co",
+      "Costa Rica": "cr", "Croatia": "hr", "Cyprus": "cy", "Czech Republic": "cz", "Denmark": "dk", "Dominican Republic": "do", "Ecuador": "ec", "Egypt": "eg",
+      "El Salvador": "sv", "Estonia": "ee", "Ethiopia": "et", "Finland": "fi", "France": "fr", "Georgia": "ge", "Germany": "de", "Ghana": "gh", "Greece": "gr",
+      "Guatemala": "gt", "Honduras": "hn", "Hong Kong": "hk", "Hungary": "hu", "Iceland": "is", "India": "in", "Indonesia": "id", "Iraq": "iq", "Ireland": "ie",
+      "Israel": "il", "Italy": "it", "Ivory Coast": "ci", "Jamaica": "jm", "Japan": "jp", "Jordan": "jo", "Kazakhstan": "kz", "Kenya": "ke", "Kosovo": "xk",
+      "Kuwait": "kw", "Kyrgyzstan": "kg", "Latvia": "lv", "Lebanon": "lb", "Libya": "ly", "Lithuania": "lt", "Luxembourg": "lu", "Malaysia": "my", "Mali": "ml",
+      "Malta": "mt", "Mexico": "mx", "Moldova": "md", "Mongolia": "mn", "Morocco": "ma", "Mozambique": "mz", "Myanmar": "mm", "Namibia": "na", "Nepal": "np",
+      "Netherlands": "nl", "New Zealand": "nz", "Nicaragua": "ni", "Niger": "ne", "Nigeria": "ng", "North Macedonia": "mk", "Norway": "no", "Oman": "om",
+      "Pakistan": "pk", "Palestine": "ps", "Panama": "pa", "Paraguay": "py", "Peru": "pe", "Philippines": "ph", "Poland": "pl", "Portugal": "pt", "Qatar": "qa",
+      "Romania": "ro", "Russia": "ru", "Rwanda": "rw", "Saudi Arabia": "sa", "Senegal": "sn", "Serbia": "rs", "Sierra Leone": "sl", "Singapore": "sg",
+      "Slovakia": "sk", "Slovenia": "si", "South Africa": "za", "South Korea": "kr", "Spain": "es", "Sri Lanka": "lk", "Sweden": "se", "Switzerland": "ch",
+      "Taiwan": "tw", "Tajikistan": "tj", "Tanzania": "tz", "Thailand": "th", "Tunisia": "tn", "Turkey": "tr", "Turkmenistan": "tm", "Uganda": "ug",
+      "Ukraine": "ua", "United Arab Emirates": "ae", "United Kingdom": "gb", "United States": "us", "Uruguay": "uy", "Uzbekistan": "uz",
+      "Venezuela": "ve", "Vietnam": "vn", "Yemen": "ye", "Zambia": "zm", "Zimbabwe": "zw"
+    };
+
+    let derivedCountry: string | undefined = undefined;
+    if (formData.payoutRegion === "INDIA") {
+      derivedCountry = "IN";
+    } else if (formData.intlBankCountry) {
+      derivedCountry = COUNTRY_TO_ISO[formData.intlBankCountry]?.toUpperCase();
+    }
+
     const filteredParams: Record<string, string> = {};
     Object.entries(rawParams).forEach(([key, val]) => {
       if (val !== undefined && val !== null && val !== "") {
@@ -271,6 +297,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
           email: formData.email,
           name: formData.name,
           metadata: filteredParams,
+          country: derivedCountry,
         }),
       });
 
