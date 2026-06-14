@@ -213,7 +213,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       }
     }
 
-    const params = new URLSearchParams({
+    const rawParams: Record<string, string | undefined> = {
       quantity: '1',
       redirect_url: redirectUrl,
       showDiscounts: 'false',
@@ -241,7 +241,16 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       metadata_intlBankCountry: formData.intlBankCountry,
       metadata_paypalEmail: formData.paypalEmail,
       ...(finalReferralCode ? { metadata_referralCode: finalReferralCode } : {})
+    };
+
+    const filteredParams: Record<string, string> = {};
+    Object.entries(rawParams).forEach(([key, val]) => {
+      if (val !== undefined && val !== null && val !== "") {
+        filteredParams[key] = val;
+      }
     });
+
+    const params = new URLSearchParams(filteredParams);
 
     const checkoutUrl = `${baseUrl}?${params.toString()}`;
     console.log("DODO_DEBUG: Constructed Checkout URL:", checkoutUrl);
