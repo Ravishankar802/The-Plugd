@@ -224,23 +224,34 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       metadata_payoutMethod: derivedMethod,
       metadata_payoutDetails: derivedDetails,
       metadata_payoutRegion: formData.payoutRegion,
-      metadata_upiId: formData.upiId,
-      metadata_bankAccountName: formData.bankAccountName,
-      metadata_bankAccountNumber: formData.bankAccountNumber,
-      metadata_bankIfsc: formData.bankIfsc,
-      metadata_intlAccountHolderName: formData.intlAccountHolderName,
-      metadata_intlRoutingNumber: formData.intlRoutingNumber,
-      metadata_intlAccountNumber: formData.intlAccountNumber,
-      metadata_intlSortCode: formData.intlSortCode,
-      metadata_intlIban: formData.intlIban,
-      metadata_intlBicSwift: formData.intlBicSwift,
-      metadata_intlBsbCode: formData.intlBsbCode,
-      metadata_intlTransitNumber: formData.intlTransitNumber,
-      metadata_intlInstitutionNumber: formData.intlInstitutionNumber,
-      metadata_intlBankCountry: formData.intlBankCountry,
-      metadata_paypalEmail: formData.paypalEmail,
-      ...(finalReferralCode ? { metadata_referralCode: finalReferralCode } : {})
     };
+
+    if (derivedMethod === "UPI") {
+      rawParams.metadata_upiId = formData.upiId;
+    } else if (derivedMethod === "PayPal") {
+      rawParams.metadata_paypalEmail = formData.paypalEmail;
+    } else if (derivedMethod === "Bank") {
+      if (formData.payoutRegion === "INDIA") {
+        rawParams.metadata_bankAccountName = formData.bankAccountName;
+        rawParams.metadata_bankAccountNumber = formData.bankAccountNumber;
+        rawParams.metadata_bankIfsc = formData.bankIfsc;
+      } else {
+        rawParams.metadata_intlAccountHolderName = formData.intlAccountHolderName;
+        rawParams.metadata_intlRoutingNumber = formData.intlRoutingNumber;
+        rawParams.metadata_intlAccountNumber = formData.intlAccountNumber;
+        rawParams.metadata_intlSortCode = formData.intlSortCode;
+        rawParams.metadata_intlIban = formData.intlIban;
+        rawParams.metadata_intlBicSwift = formData.intlBicSwift;
+        rawParams.metadata_intlBsbCode = formData.intlBsbCode;
+        rawParams.metadata_intlTransitNumber = formData.intlTransitNumber;
+        rawParams.metadata_intlInstitutionNumber = formData.intlInstitutionNumber;
+        rawParams.metadata_intlBankCountry = formData.intlBankCountry;
+      }
+    }
+
+    if (finalReferralCode) {
+      rawParams.metadata_referralCode = finalReferralCode;
+    }
 
     const filteredParams: Record<string, string> = {};
     Object.entries(rawParams).forEach(([key, val]) => {
