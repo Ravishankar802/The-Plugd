@@ -121,6 +121,15 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
   const [chartRange, setChartRange] = useState<"7d" | "4w" | "3m">("7d");
   const [chartMode, setChartMode] = useState<"daily" | "cumulative">("daily");
   const [chartMounted, setChartMounted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(media.matches);
+    const listener = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, []);
 
   const link = `https://theplugd.com?ref=${promoter.username || promoter.referralCode}`;
 
@@ -385,7 +394,7 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart
                   data={processedChartData}
-                  margin={{ top: 10, right: 10, left: -5, bottom: 0 }}
+                  margin={{ top: 10, right: isDesktop ? 30 : 10, left: -5, bottom: 0 }}
                 >
                   <defs>
                     <linearGradient id="colorEarning" x1="0" y1="0" x2="0" y2="1">
@@ -401,7 +410,15 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
                     tickLine={false}
                     axisLine={false}
                     dy={10}
-                    interval={chartRange === "7d" ? 1 : "preserveEnd"}
+                    interval={
+                      (!isDesktop
+                        ? (chartRange === "7d" ? 1 : "preserveEnd")
+                        : (index: number) => {
+                            const total = processedChartData.length;
+                            const step = chartRange === "7d" ? 2 : chartRange === "4w" ? 2 : 5;
+                            return (total - 1 - index) % step === 0;
+                          }) as any
+                    }
                   />
                   <YAxis 
                     stroke="var(--muted)" 
