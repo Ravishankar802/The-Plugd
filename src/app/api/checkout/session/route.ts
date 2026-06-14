@@ -7,7 +7,7 @@ const dodo = new DodoPayments({
 
 export async function POST(req: Request) {
   try {
-    const { email, name, metadata } = await req.json();
+    const { email, name, metadata, country } = await req.json();
 
     if (!email) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
@@ -29,6 +29,8 @@ export async function POST(req: Request) {
         email,
         name: name || undefined,
       },
+      billing_address: country ? { country: country.toUpperCase() } : undefined,
+      billing_currency: country?.toUpperCase() === "IN" ? "INR" : undefined,
       metadata,
       feature_flags: {
         allow_discount_code: false,
