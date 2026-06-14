@@ -262,7 +262,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
     const params = new URLSearchParams(filteredParams);
 
-    const checkoutUrl = `${baseUrl}?${params.toString()}`;
+    const checkoutUrl = `${baseUrl}?${params.toString().replace(/\+/g, "%20")}`;
     console.log("DODO_DEBUG: Constructed Checkout URL:", checkoutUrl);
     window.location.href = checkoutUrl;
   };
