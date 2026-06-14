@@ -646,6 +646,9 @@ export default function ManageReferralsClient() {
           <table className="w-full min-w-[800px] md:min-w-full text-left border-collapse text-xs">
             <thead>
               <tr className="bg-foreground/[0.02] border-b border-border">
+                <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest w-10 text-center">
+                  #
+                </th>
                 <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("name")}>
                   <div className="flex items-center gap-1.5">User {sortField === "name" && <ChevronDown size={10} className={sortOrder === "asc" ? "rotate-180" : ""} />}</div>
                 </th>
@@ -671,12 +674,15 @@ export default function ManageReferralsClient() {
               </tr>
             </thead>
             <tbody className="divide-y divide-border/40">
-              {filteredAndSorted.length > 0 ? filteredAndSorted.map((p) => (
+              {filteredAndSorted.length > 0 ? filteredAndSorted.map((p, index) => (
                 <tr 
                   key={p.id} 
                   className="hover:bg-foreground/[0.01] transition-colors group cursor-pointer"
                   onClick={() => router.push(`/p/${p.username || p.referralCode}`)}
                 >
+                  <td className="px-3 py-2.5 text-center text-muted font-bold w-10">
+                    {index + 1}
+                  </td>
                   <td className="px-3 py-2.5">
                     <div className="flex items-center gap-2">
                       {p.avatarUrl ? (
@@ -790,7 +796,7 @@ export default function ManageReferralsClient() {
                 </tr>
               )) : (
                 <tr>
-                  <td colSpan={8} className="px-3 py-10 text-center">
+                  <td colSpan={9} className="px-3 py-10 text-center">
                     <div className="flex flex-col items-center gap-2">
                       <Search className="w-5 h-5 text-muted/40" />
                       <p className="text-muted font-medium text-[0.65rem]">No promoters found.</p>
@@ -807,7 +813,7 @@ export default function ManageReferralsClient() {
       {editingPromoter && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setEditingPromoter(null)} />
-          <div className="relative w-full max-w-2xl bg-card border border-border rounded-[24px] shadow-2xl animate-in fade-in zoom-in-95 duration-200 flex flex-col max-h-[85vh]">
+          <div className="relative w-full max-w-2xl bg-card border border-border rounded-[24px] shadow-2xl animate-in fade-in zoom-in-95 duration-200 flex flex-col max-h-[85vh] overflow-hidden">
             <div className="p-6 md:p-8 border-b border-border flex items-center justify-between shrink-0">
               <div>
                 <h3 className="text-xl md:text-2xl font-bold text-foreground">Edit Promoter Profile</h3>
@@ -1171,7 +1177,7 @@ export default function ManageReferralsClient() {
       {historyPromoter && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setHistoryPromoter(null)} />
-          <div className="relative w-full max-w-2xl bg-card border border-border rounded-[24px] shadow-2xl animate-in fade-in zoom-in-95 duration-200 flex flex-col max-h-[80vh]">
+          <div className="relative w-full max-w-2xl bg-card border border-border rounded-[24px] shadow-2xl animate-in fade-in zoom-in-95 duration-200 flex flex-col max-h-[80vh] overflow-hidden">
             <div className="p-8 border-b border-border flex items-center justify-between">
               <div>
                 <h3 className="text-2xl font-bold text-foreground">Payout History</h3>
