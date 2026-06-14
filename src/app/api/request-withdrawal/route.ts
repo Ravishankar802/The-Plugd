@@ -21,10 +21,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Promoter profile not found" }, { status: 404 });
     }
 
-    // Checks that user has enough pending payout ($50+) before allowing
-    if (promoter.pendingPayout < 50) {
+    // Checks that user has enough pending payout (₹5,000+) before allowing
+    if (promoter.pendingPayout < 5000) {
       return NextResponse.json(
-        { error: "Minimum withdrawal amount of $50 is required." },
+        { error: "Minimum withdrawal amount of ₹5,000 is required." },
         { status: 400 }
       );
     }

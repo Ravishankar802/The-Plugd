@@ -65,21 +65,21 @@ function DashboardProfileContent() {
   const POST_VARIATIONS = [
     `if you've never heard of Plugd, it's a referral platform 💸
 
-pay $2 once, get your link, share it everywhere - whatsapp, telegram, discord, twitter, wherever
+pay ₹200 once, get your link, share it everywhere - whatsapp, telegram, discord, twitter, wherever
 
-every person who joins through your link = $1 in your earnings
+every person who joins through your link = ₹100 in your earnings
 
 stay consistent and it builds up fast 👉 ${link}`,
     `Plugd is a referral program and honestly one of the simplest ways to make money online 💸
 
-$2 to join. you get a unique link. every signup through your link pays you $1 back.
+₹200 to join. you get a unique link. every signup through your link pays you ₹100 back.
 
 share it consistently and it compounds. i'm doing it.
 
 👉 ${link}`,
     `joined this referral platform called Plugd a while back 💸
 
-the model is simple - pay $2, get your own referral link, earn $1 every time someone signs up through it
+the model is simple - pay ₹200, get your own referral link, earn ₹100 every time someone signs up through it
 
 the more consistently you share it, the more it adds up
 
@@ -204,14 +204,17 @@ here's my link 👉 ${link}`
   })();
   
   const formatYAxis = (value: number) => {
-    if (value === 0) return "$0";
-    if (value >= 1e6) {
-      return `$${(value / 1e6).toFixed(1).replace(/\.0$/, "")}M`;
+    if (value === 0) return "₹0";
+    if (value >= 1e7) {
+      return `₹${(value / 1e7).toFixed(1).replace(/\.0$/, "")}Cr`;
+    }
+    if (value >= 1e5) {
+      return `₹${(value / 1e5).toFixed(1).replace(/\.0$/, "")}L`;
     }
     if (value >= 1e3) {
-      return `$${(value / 1e3).toFixed(1).replace(/\.0$/, "")}k`;
+      return `₹${(value / 1e3).toFixed(1).replace(/\.0$/, "")}k`;
     }
-    return `$${value}`;
+    return `₹${value}`;
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -882,7 +885,7 @@ here's my link 👉 ${link}`
         <div className="space-y-8">
           <div>
             <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Referrals</h1>
-            <p className="text-muted text-[1rem] mt-1.5 font-normal">Share Plugd and earn $1 for every successful referral.</p>
+            <p className="text-muted text-[1rem] mt-1.5 font-normal">Share Plugd and earn ₹100 for every successful referral.</p>
           </div>
 
           {(!hasPromoter && !isAdmin) ? (
@@ -891,12 +894,12 @@ here's my link 👉 ${link}`
                 <Gift className="w-10 h-10 text-[#16a34a]" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Join Referral Program</h2>
-              <p className="text-muted max-w-sm mb-8">Earn $1 from every sale by sharing Plugd with your audience. (Listing Profile = $2, Promoter Profile = $2, both = $4)</p>
+              <p className="text-muted max-w-sm mb-8">Earn ₹100 from every sale by sharing Plugd with your audience. (Listing Profile = ₹200, Promoter Profile = ₹200, both = ₹400)</p>
               <button 
                 onClick={() => setIsReferModalOpen(true)}
                 className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
               >
-                Join for $2 <ArrowRight size={18} />
+                Join for ₹200 <ArrowRight size={18} />
               </button>
             </div>
           ) : (
@@ -989,7 +992,7 @@ here's my link 👉 ${link}`
                   <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
                     <TrendingUp className="w-4 h-4 text-foreground" />
                   </div>
-                  <h3 className="text-lg font-bold text-foreground">How to hit $1,000 fast</h3>
+                  <h3 className="text-lg font-bold text-foreground">How to hit ₹1,00,000 fast</h3>
                 </div>
 
                 <div className="bg-pill border border-border rounded-2xl p-8 space-y-6">
@@ -1076,12 +1079,12 @@ here's my link 👉 ${link}`
                 <Wallet className="w-10 h-10 text-[#16a34a]" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Earnings Locked</h2>
-              <p className="text-muted max-w-sm mb-8">Join the referral program to start earning rewards. (Listing Profile = $2, Promoter Profile = $2, both = $4)</p>
+              <p className="text-muted max-w-sm mb-8">Join the referral program to start earning rewards. (Listing Profile = ₹200, Promoter Profile = ₹200, both = ₹400)</p>
               <button 
                 onClick={() => setIsReferModalOpen(true)}
                 className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
               >
-                Join for $2 <ArrowRight size={18} />
+                Join for ₹200 <ArrowRight size={18} />
               </button>
             </div>
           ) : (
@@ -1089,11 +1092,11 @@ here's my link 👉 ${link}`
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
                   <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Total Earned</p>
-                  <p className="text-4xl font-bold text-foreground">${promoterData?.totalEarned || 0}</p>
+                  <p className="text-4xl font-bold text-foreground">₹{promoterData?.totalEarned || 0}</p>
                 </div>
                 <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl border-[#16a34a]/20">
                   <p className="text-[#16a34a] text-[0.7rem] font-bold uppercase tracking-widest mb-2">Pending Payout</p>
-                  <p className="text-4xl font-bold text-[#16a34a]">${promoterData?.pendingPayout || 0}</p>
+                  <p className="text-4xl font-bold text-[#16a34a]">₹{promoterData?.pendingPayout || 0}</p>
                 </div>
                 <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
                   <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Total Clicks</p>
@@ -1202,7 +1205,7 @@ here's my link 👉 ${link}`
                                 <div className="bg-pill border border-border px-3 py-2 rounded-xl shadow-xl font-['Georgia',_serif]">
                                   <p className="text-[10px] text-muted font-medium mb-0.5">{data.date}</p>
                                   <p className="text-xs font-bold text-[#22c55e]">
-                                    ${Number(payload[0].value).toFixed(2)}
+                                    ₹{Number(payload[0].value).toFixed(2)}
                                   </p>
                                 </div>
                               );
@@ -1232,7 +1235,7 @@ here's my link 👉 ${link}`
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">Withdraw Funds</h3>
-                  <p className="text-muted max-w-sm mt-2 font-medium">Request a payout to your PayPal or Bank account. Minimum withdrawal is $50.</p>
+                  <p className="text-muted max-w-sm mt-2 font-medium">Request a payout to your PayPal or Bank account. Minimum withdrawal is ₹5,000.</p>
                 </div>
                 {withdrawalSuccessMessage && (
                   <p className="text-[#16a34a] font-bold text-sm bg-[#16a34a]/10 px-6 py-3 rounded-xl border border-[#16a34a]/20">
@@ -1248,12 +1251,12 @@ here's my link 👉 ${link}`
                   </button>
                 ) : (
                   <button 
-                    disabled={(promoterData?.pendingPayout || 0) < 50 || requestingWithdrawal}
+                    disabled={(promoterData?.pendingPayout || 0) < 5000 || requestingWithdrawal}
                     onClick={handleRequestWithdrawal}
                     className="bg-[#16a34a] hover:bg-[#16a34a]/90 text-white disabled:bg-white disabled:text-black disabled:opacity-50 disabled:grayscale px-12 py-4 rounded-xl font-bold transition-all shadow-xl active:scale-[0.98]"
                   >
-                    {(promoterData?.pendingPayout || 0) < 50 
-                      ? "Minimum $50 required" 
+                    {(promoterData?.pendingPayout || 0) < 5000 
+                      ? "Minimum ₹5,000 required" 
                       : requestingWithdrawal 
                         ? "Submitting..." 
                         : "Request Withdrawal"}

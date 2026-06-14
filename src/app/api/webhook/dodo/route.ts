@@ -92,8 +92,8 @@ export async function POST(req: Request) {
               prisma.promoter.update({
                 where: { id: referringPromoter.id },
                 data: {
-                  totalEarned: { increment: 1.0 },
-                  pendingPayout: { increment: 1.0 },
+                  totalEarned: { increment: 100.0 },
+                  pendingPayout: { increment: 100.0 },
                   totalConversions: { increment: 1 }
                 }
               }),
@@ -102,7 +102,7 @@ export async function POST(req: Request) {
                   referralCode: referralCode,
                   promoterEmail: referringPromoter.email,
                   status: "converted",
-                  amountEarned: 1.0,
+                  amountEarned: 100.0,
                   paymentId: payment.payment_id,
                   convertedAt: new Date()
                 }

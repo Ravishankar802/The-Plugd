@@ -91,7 +91,7 @@ export async function GET(req: Request, { params }: RouteParams) {
           const dateStr = `${yyyy}-${mm}-${dd}`;
           
           if (earningsByDate[dateStr] !== undefined) {
-            earningsByDate[dateStr] += ref.amountEarned || 1.0;
+            earningsByDate[dateStr] += ref.amountEarned || 100.0;
           }
         }
       });
@@ -123,13 +123,13 @@ export async function GET(req: Request, { params }: RouteParams) {
     const factor = Math.max(0, (50 - rank) / 48);
     let dailyRate = 0;
     if (rank === 1) {
-      dailyRate = 1200;
+      dailyRate = 120000;
     } else {
-      dailyRate = 300 + 600 * Math.pow(factor, 2.0);
+      dailyRate = 30000 + 60000 * Math.pow(factor, 2.0);
     }
     
     const seededDaysActive = 45 + ((rank * 17) % 45);
-    const virtualDays = promoter.totalEarned > 1000 && dailyRate > 0 ? Math.max(seededDaysActive, promoter.totalEarned / dailyRate) : 0;
+    const virtualDays = promoter.totalEarned > 100000 && dailyRate > 0 ? Math.max(seededDaysActive, promoter.totalEarned / dailyRate) : 0;
     
     const roundedDaysActive = Math.max(1, Math.floor(virtualDays));
     

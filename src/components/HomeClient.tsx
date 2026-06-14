@@ -78,7 +78,7 @@ export default function HomeClient({
       
       const dailyRate = e.earningRatePerSec * 86400;
       const seededDaysActive = 45 + ((e.id * 17) % 45);
-      const virtualDays = e.baseEarnings > 1000 && dailyRate > 0 ? Math.max(seededDaysActive, e.baseEarnings / dailyRate) : 0;
+      const virtualDays = e.baseEarnings > 100000 && dailyRate > 0 ? Math.max(seededDaysActive, e.baseEarnings / dailyRate) : 0;
       
       const daysActive = Math.max(1, actualDays, virtualDays);
       const avgEarningsPerDay = e.currentEarnings / daysActive;
@@ -431,9 +431,9 @@ export default function HomeClient({
                   
                   // Column 3 display calculation (Earnings)
                   const earningsVal = timeframe === "All time" ? earner.currentEarnings : earner.earningsLast30;
-                  const col3Display = new Intl.NumberFormat("en-US", {
+                  const col3Display = new Intl.NumberFormat("en-IN", {
                     style: "currency",
-                    currency: "USD",
+                    currency: "INR",
                     maximumFractionDigits: 0
                   }).format(earningsVal);
 

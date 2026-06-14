@@ -73,9 +73,9 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
     const factor = Math.max(0, (50 - promoter.rank) / 48); // from 1.0 down to 0.0
     let dailyRate = 0;
     if (promoter.rank === 1) {
-      dailyRate = 1200;
+      dailyRate = 120000;
     } else {
-      dailyRate = 300 + 600 * Math.pow(factor, 2.0);
+      dailyRate = 30000 + 60000 * Math.pow(factor, 2.0);
     }
     const earningRatePerSec = dailyRate / 86400;
 
@@ -102,17 +102,17 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
   }, [isDisplayPromoter, promoter.rank, promoter.id]);
 
   // Derived stats matching conversions and clicks
-  const formattedCurrentEarnings = new Intl.NumberFormat("en-US", {
+  const formattedCurrentEarnings = new Intl.NumberFormat("en-IN", {
     style: "currency",
-    currency: "USD",
+    currency: "INR",
     maximumFractionDigits: 0
   }).format(currentEarnings);
 
-  const currentConversions = Math.floor(currentEarnings);
+  const currentConversions = Math.floor(currentEarnings / 100);
 
   const baseClicks = promoter.totalClicks;
   const baseEarned = promoter.totalEarned;
-  const clickMultiplier = baseEarned > 0 ? (baseClicks / baseEarned) : 1.75;
+  const clickMultiplier = baseEarned > 0 ? (baseClicks / baseEarned) : 0.0175;
   const currentClicks = baseClicks + Math.floor((currentEarnings - baseEarned) * clickMultiplier);
 
   // Chart State & Logic
@@ -199,14 +199,17 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
   const gradient = GRADIENTS[promoter.id % GRADIENTS.length];
 
   const formatYAxis = (value: number) => {
-    if (value === 0) return "$0";
-    if (value >= 1e6) {
-      return `$${(value / 1e6).toFixed(1).replace(/\.0$/, "")}M`;
+    if (value === 0) return "₹0";
+    if (value >= 1e7) {
+      return `₹${(value / 1e7).toFixed(1).replace(/\.0$/, "")}Cr`;
+    }
+    if (value >= 1e5) {
+      return `₹${(value / 1e5).toFixed(1).replace(/\.0$/, "")}L`;
     }
     if (value >= 1e3) {
-      return `$${(value / 1e3).toFixed(1).replace(/\.0$/, "")}k`;
+      return `₹${(value / 1e3).toFixed(1).replace(/\.0$/, "")}k`;
     }
-    return `$${value}`;
+    return `₹${value}`;
   };
 
   const COUNTRY_TO_ISO: Record<string, string> = {
@@ -437,7 +440,7 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
                           <div className="bg-pill border border-border px-3 py-2 rounded-xl shadow-xl font-[Georgia,_serif]">
                             <p className="text-[10px] text-muted font-medium mb-0.5">{data.date}</p>
                             <p className="text-xs font-bold text-[#22c55e]">
-                              ${Number(payload[0].value).toFixed(2)}
+                              ₹{Number(payload[0].value).toFixed(2)}
                             </p>
                           </div>
                         );

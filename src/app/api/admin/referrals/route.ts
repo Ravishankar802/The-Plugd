@@ -40,10 +40,10 @@ export async function GET() {
       const conversions = promoter.Referral.filter(r => r.status === "converted");
       const signupCount = hasReferrals ? conversions.length : promoter.totalConversions;
       
-      // Revenue Generated: Users pay $2 for listing
-      const revenueGenerated = signupCount * 2.0;
+      // Revenue Generated: Users pay ₹200 for listing
+      const revenueGenerated = signupCount * 200.0;
       
-      // Paid Users: In this system, all "converted" referrals are paid users ($2)
+      // Paid Users: In this system, all "converted" referrals are paid users (₹200)
       const paidUsers = signupCount;
 
       const pendingRequest = withdrawalRequests.find(
