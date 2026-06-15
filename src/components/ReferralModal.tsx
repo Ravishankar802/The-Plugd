@@ -847,7 +847,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
             >
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (
                 <>
-                  <span>{showEmailInput ? "Continue to Payment" : <>Join now for <span className="rich-number">₹200</span></>}</span>
+                  <span>{showEmailInput ? "Continue to Payment" : <>Join now for <span className="rich-number">₹199</span></>}</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}

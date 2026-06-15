@@ -65,21 +65,21 @@ function DashboardProfileContent() {
   const POST_VARIATIONS = [
     `if you've never heard of Plugd, it's a referral platform 💸
 
-pay ₹200 once, get your link, share it everywhere - whatsapp, telegram, discord, twitter, wherever
+pay ₹199 once, get your link, share it everywhere - whatsapp, telegram, discord, twitter, wherever
 
 every person who joins through your link = ₹100 in your earnings
 
 stay consistent and it builds up fast 👉 ${link}`,
     `Plugd is a referral program and honestly one of the simplest ways to make money online 💸
 
-₹200 to join. you get a unique link. every signup through your link pays you ₹100 back.
+₹199 to join. you get a unique link. every signup through your link pays you ₹100 back.
 
 share it consistently and it compounds. i'm doing it.
 
 👉 ${link}`,
     `joined this referral platform called Plugd a while back 💸
 
-the model is simple - pay ₹200, get your own referral link, earn ₹100 every time someone signs up through it
+the model is simple - pay ₹199, get your own referral link, earn ₹100 every time someone signs up through it
 
 the more consistently you share it, the more it adds up
 
@@ -894,12 +894,12 @@ here's my link 👉 ${link}`
                 <Gift className="w-10 h-10 text-[#16a34a]" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Join Referral Program</h2>
-              <p className="text-muted max-w-sm mb-8">Earn ₹100 from every sale by sharing Plugd with your audience. (Listing Profile = ₹200, Promoter Profile = ₹200, both = ₹400)</p>
+              <p className="text-muted max-w-sm mb-8">Earn ₹100 from every sale by sharing Plugd with your audience. (Listing Profile = ₹199, Promoter Profile = ₹199, both = ₹398)</p>
               <button 
                 onClick={() => setIsReferModalOpen(true)}
                 className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
               >
-                Join for ₹200 <ArrowRight size={18} />
+                Join for ₹199 <ArrowRight size={18} />
               </button>
             </div>
           ) : (
@@ -1079,12 +1079,12 @@ here's my link 👉 ${link}`
                 <Wallet className="w-10 h-10 text-[#16a34a]" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Earnings Locked</h2>
-              <p className="text-muted max-w-sm mb-8">Join the referral program to start earning rewards. (Listing Profile = ₹200, Promoter Profile = ₹200, both = ₹400)</p>
+              <p className="text-muted max-w-sm mb-8">Join the referral program to start earning rewards. (Listing Profile = ₹199, Promoter Profile = ₹199, both = ₹398)</p>
               <button 
                 onClick={() => setIsReferModalOpen(true)}
                 className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
               >
-                Join for ₹200 <ArrowRight size={18} />
+                Join for ₹199 <ArrowRight size={18} />
               </button>
             </div>
           ) : (

@@ -26,17 +26,17 @@ export default function TermsOfService() {
 
           <Section 
             title="2. What Plugd Does" 
-            content="Plugd is a referral program. Promoters pay a one-time ₹200 fee to join, receive a unique referral link, and earn ₹100 for every new person who joins through that link. Plugd does not guarantee any specific earnings." 
+            content="Plugd is a referral program. Promoters pay a one-time ₹199 fee to join, receive a unique referral link, and earn ₹100 for every new person who joins through that link. Plugd does not guarantee any specific earnings." 
           />
 
           <Section 
-            title="3. The ₹200 Joining Fee" 
-            content="Joining Plugd as a promoter requires a one-time payment of ₹200 processed via Dodo Payments. This fee is non-refundable once your account is activated." 
+            title="3. The ₹199 Joining Fee" 
+            content="Joining Plugd as a promoter requires a one-time payment of ₹199 processed via Dodo Payments. This fee is non-refundable once your account is activated." 
           />
 
           <Section 
             title="4. Earning Referrals" 
-            content="You earn ₹100 for each person who joins Plugd through your unique referral link and completes the ₹200 payment. Earnings are tracked in your Vault and paid out twice a month via PayPal or UPI, whichever you have set in your profile. The minimum withdrawal amount is ₹5,000." 
+            content="You earn ₹100 for each person who joins Plugd through your unique referral link and completes the ₹199 payment. Earnings are tracked in your Vault and paid out twice a month via PayPal or UPI, whichever you have set in your profile. The minimum withdrawal amount is ₹5,000." 
           />
 
           <Section 
