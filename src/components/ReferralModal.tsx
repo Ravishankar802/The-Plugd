@@ -853,6 +853,16 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
               )}
             </button>
 
+            {showEmailInput && (
+              <p className="text-center text-[10px] text-muted/40 font-medium font-sans mt-2 leading-snug">
+                By continuing, you agree to our{" "}
+                <Link href="/terms-of-service" className="underline hover:text-foreground transition-colors" target="_blank">
+                  Terms of Service
+                </Link>
+                .
+              </p>
+            )}
+
             {!showEmailInput && (
               <p className="text-center text-xs text-muted/80 font-bold font-sans">
                 Already a member?{" "}

@@ -167,6 +167,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <p key={index}>{paragraph}</p>
           ))}
         </div>
+
+        <p className="text-[11px] text-white/20 font-medium font-sans mt-16 pt-6 border-t border-white/5 select-none">
+          *Earning statistics, ranks, and daily figures mentioned in these articles are based on illustrative simulations to demonstrate platform potential. Actual results vary by promoter activity.
+        </p>
       </article>
     </div>
   );

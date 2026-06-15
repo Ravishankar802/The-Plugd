@@ -45,7 +45,12 @@ export default function TermsOfService() {
           />
 
           <Section 
-            title="6. Prohibited Conduct" 
+            title="6. Simulated Leaderboard and Projections" 
+            content='To demonstrate platform capability and gamify promoter participation, the "Top Earners" board, average daily earning stats, total platform payout metrics, charts, promoter profiles, and stats referenced in our educational resources may display simulated, virtual, or illustrative data. These profiles and figures represent simulated promotional performance based on mathematical referral growth models and do not guarantee or represent actual live earnings of specific historical individuals. Actual earnings of registered users are tracked separately in their respective Vaults and paid out strictly based on verified conversions.'
+          />
+
+          <Section 
+            title="7. Prohibited Conduct" 
             content={
               <div className="space-y-4">
                 <p>You may not:</p>
@@ -61,27 +66,27 @@ export default function TermsOfService() {
           />
 
           <Section 
-            title="7. User Responsibility" 
+            title="8. User Responsibility" 
             content="You are responsible for the accuracy of your payout details. Plugd is not liable for failed payouts resulting from incorrect information provided by you." 
           />
 
           <Section 
-            title="8. Intellectual Property" 
+            title="9. Intellectual Property" 
             content="All branding, design, and content of Plugd are protected by intellectual property laws. You may not copy, reproduce, or redistribute any part of Plugd without permission." 
           />
 
           <Section 
-            title="9. Limitation of Liability" 
+            title="10. Limitation of Liability" 
             content='Plugd is provided on an "as is" basis. We are not liable for any indirect, incidental, or consequential damages arising from your use of the platform.' 
           />
 
           <Section 
-            title="10. Changes to These Terms" 
+            title="11. Changes to These Terms" 
             content="We may update these Terms at any time. Continued use of Plugd after updates constitutes acceptance of the revised Terms." 
           />
 
           <Section 
-            title="11. Contact" 
+            title="12. Contact" 
             content={
               <span>
                 For any questions, contact us at{" "}

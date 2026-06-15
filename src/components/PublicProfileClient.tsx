@@ -472,6 +472,10 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
           </div>
         </div>
       </div>
+
+      <p className="text-center text-[10px] text-muted/30 font-medium mt-10 mb-6 select-none font-sans max-w-2xl mx-auto px-4">
+        ⓘ This profile and associated earning figures demonstrate platform scaling potential using simulated data. Actual earnings vary by promoter activity.
+      </p>
       
       <div className="w-full mt-auto">
         <Footer showBorder={false} minimal={true} />
