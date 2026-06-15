@@ -507,11 +507,11 @@ export default function HomeClient({
               </button>
             </div>
           )}
-
-          <p className="text-center text-[10px] text-muted/30 font-medium mt-6 select-none font-sans">
-            ⓘ These figures and profiles demonstrate platform scaling potential using simulated earnings. Individual earnings vary based on actual sharing performance.
-          </p>
         </div>
+
+        <p className="text-center text-[10px] text-muted/30 font-medium mt-4 select-none font-sans px-4">
+          ⓘ These figures and profiles demonstrate platform scaling potential using simulated earnings. Individual earnings vary based on actual sharing performance.
+        </p>
       </section>
 
       <div className="w-full mt-20">

@@ -348,7 +348,7 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
         </div>
 
         {/* Earnings Chart Section */}
-        <div className="bg-pill border border-border rounded-[24px] p-6 md:p-8 shadow-xl mb-12">
+        <div className={`bg-pill border border-border rounded-[24px] p-6 md:p-8 shadow-xl ${isDisplayPromoter ? "mb-0" : "mb-12"}`}>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
             <div>
               <h3 className="text-xl font-bold text-foreground">Earnings Over Time</h3>
@@ -471,11 +471,13 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
             ) : null}
           </div>
         </div>
-      </div>
 
-      <p className="text-center text-[10px] text-muted/30 font-medium mt-10 mb-6 select-none font-sans max-w-2xl mx-auto px-4">
-        ⓘ This profile and associated earning figures demonstrate platform scaling potential using simulated data. Actual earnings vary by promoter activity.
-      </p>
+        {isDisplayPromoter && (
+          <p className="text-center text-[10px] text-muted/30 font-medium mt-4 select-none font-sans max-w-2xl mx-auto px-4">
+            ⓘ This profile and associated earning figures demonstrate platform scaling potential using simulated data. Actual earnings vary by promoter activity.
+          </p>
+        )}
+      </div>
       
       <div className="w-full mt-auto">
         <Footer showBorder={false} minimal={true} />
