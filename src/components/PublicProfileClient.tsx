@@ -249,7 +249,7 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
         <Image src="/logo.png" alt="Plugd" width={80} height={80} priority />
       </Link>
 
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 pt-6 md:pt-10 pb-4 relative z-10">
+      <div className={`w-full max-w-5xl mx-auto px-4 md:px-8 pt-6 md:pt-10 relative z-10 ${isDisplayPromoter ? "pb-8" : "pb-4"}`}>
         {/* Mobile centered logo */}
         <div className="flex justify-center md:hidden mb-4">
           <Link href="/" className="hover:opacity-80 transition-opacity">
