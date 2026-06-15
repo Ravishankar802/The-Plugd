@@ -198,7 +198,7 @@ export async function GET(req: Request, { params }: RouteParams) {
       return {
         rawDate: dateStr,
         date: `${monthLabel} ${dayLabel}`,
-        amount: Math.round(amount)
+        amount: Math.round(amount / 100) * 100
       };
     });
 

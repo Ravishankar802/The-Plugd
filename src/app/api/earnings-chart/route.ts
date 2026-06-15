@@ -66,7 +66,7 @@ export async function GET(req: Request) {
         const dateStr = `${yyyy}-${mm}-${dd}`;
         
         if (earningsByDate[dateStr] !== undefined) {
-          earningsByDate[dateStr] += ref.amountEarned || 1.0;
+          earningsByDate[dateStr] += ref.amountEarned || 100.0;
         }
       }
     });

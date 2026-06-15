@@ -171,8 +171,10 @@ export default function ManageReferralsClient() {
           if (!p.earningRatePerSec) return p;
           const hasEarned = Math.random() > 0.3; 
           const multiplier = hasEarned ? (0.5 + Math.random() * 1.5) : 0;
-          const increment = 60 * p.earningRatePerSec * multiplier;
-          const currentEarnings = Math.round((p.currentEarnings || p.totalEarned) + increment);
+          const expectedReferralsPerMin = (p.earningRatePerSec * 0.6) * multiplier;
+          const numReferrals = Math.floor(expectedReferralsPerMin) + (Math.random() < (expectedReferralsPerMin % 1) ? 1 : 0);
+          const increment = numReferrals * 100;
+          const currentEarnings = (p.currentEarnings || Math.round(p.totalEarned / 100) * 100) + increment;
           return {
             ...p,
             currentEarnings
@@ -263,9 +265,9 @@ export default function ManageReferralsClient() {
           
           let dailyRate = 0;
           if (rank === 1) {
-            dailyRate = 1200;
+            dailyRate = 120000;
           } else {
-            dailyRate = 300 + 600 * Math.pow(factor, 2.0);
+            dailyRate = 30000 + 60000 * Math.pow(factor, 2.0);
           }
           const earningRatePerSec = dailyRate / 86400;
           
@@ -276,7 +278,8 @@ export default function ManageReferralsClient() {
           const baseLastMonth = p.totalEarned / (1 + initialGrowth / 100);
 
           const storedVal = storedData[p.id.toString()];
-          const finalEarnings = Math.round(storedVal ? Math.max(storedVal, p.totalEarned) : p.totalEarned);
+          const cleanStoredVal = storedVal ? Math.round(storedVal / 100) * 100 : null;
+          const finalEarnings = cleanStoredVal ? Math.max(cleanStoredVal, Math.round(p.totalEarned / 100) * 100) : Math.round(p.totalEarned / 100) * 100;
 
           return {
             ...p,

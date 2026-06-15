@@ -62,9 +62,9 @@ function calculateEarnings(id) {
   
   let dailyRate = 0;
   if (id === 1) {
-    dailyRate = 1200;
+    dailyRate = 120000;
   } else {
-    dailyRate = 300 + 600 * Math.pow(factor, 2.0);
+    dailyRate = 30000 + 60000 * Math.pow(factor, 2.0);
   }
   const earningRatePerSec = dailyRate / 86400;
   
@@ -73,20 +73,20 @@ function calculateEarnings(id) {
   
   let prevRatePerSec = 0;
   if (id === 1) {
-    prevRatePerSec = 860 / 86400;
+    prevRatePerSec = 86000 / 86400;
   } else {
-    prevRatePerSec = (250 + 350 * Math.pow(factor, 2.0)) / 86400;
+    prevRatePerSec = (25000 + 35000 * Math.pow(factor, 2.0)) / 86400;
   }
   
   let prevBaseEarnings = 0;
   if (id === 1) {
-    const oldRate = 0.0405 / 10;
-    const oldBase = 71000 + prevRefElapsed * 0.0405 * 0.9;
+    const oldRate = 4.05 / 10;
+    const oldBase = 7100000 + prevRefElapsed * 4.05 * 0.9;
     const oldEarnings = oldBase + prevRefElapsed * oldRate;
     prevBaseEarnings = oldEarnings - prevRefElapsed * prevRatePerSec;
   } else {
-    const oldRate = (0.00115 + 0.0162 * Math.pow(factor, 2.0)) / 10;
-    const oldBase = (3200 + 21800 * Math.pow(factor, 2.0)) + prevRefElapsed * (0.00115 + 0.0162 * Math.pow(factor, 2.0)) * 0.9;
+    const oldRate = (0.115 + 1.62 * Math.pow(factor, 2.0)) / 10;
+    const oldBase = (320000 + 2180000 * Math.pow(factor, 2.0)) + prevRefElapsed * (0.115 + 1.62 * Math.pow(factor, 2.0)) * 0.9;
     const oldEarnings = oldBase + prevRefElapsed * oldRate;
     prevBaseEarnings = oldEarnings - prevRefElapsed * prevRatePerSec;
   }
@@ -95,7 +95,7 @@ function calculateEarnings(id) {
   const baseEarnings = prevExpectedEarnings - currentRefElapsed * earningRatePerSec;
   
   const expectedEarnings = baseEarnings + initialElapsedSeconds * earningRatePerSec;
-  return Math.round(expectedEarnings);
+  return Math.round(expectedEarnings / 100) * 100;
 }
 
 async function main() {
@@ -118,7 +118,7 @@ async function main() {
     const email = `${username}@example.com`;
     const referralCode = username;
     const totalEarned = calculateEarnings(id);
-    const totalConversions = Math.round(totalEarned);
+    const totalConversions = Math.round(totalEarned / 100);
     const conversionRate = 0.50 + ((id * 7) % 31) / 100; // 50% to 80%
     const totalClicks = Math.round(totalConversions / conversionRate);
 
@@ -142,7 +142,7 @@ async function main() {
       }
     });
 
-    console.log(`Created promoter Rank ${id}: ${promoter.name} (${promoter.username}) - $${promoter.totalEarned}`);
+    console.log(`Created promoter Rank ${id}: ${promoter.name} (${promoter.username}) - ₹${promoter.totalEarned}`);
   }
 
   console.log("Seeding complete!");
