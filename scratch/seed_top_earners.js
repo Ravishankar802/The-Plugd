@@ -2,9 +2,9 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const SEEDED_PROMOTERS = [
-  { name: "Mohit Vats", country: "India" },
-  { name: "Raghav Talwar", country: "India" },
-  { name: "Shreyaaa Roy", country: "India" },
+  { name: "Aryan Khanna", country: "India" },
+  { name: "Raghav Sethi", country: "India" },
+  { name: "Shreya Sen", country: "India" },
   { name: "Aditya Chaudhary", country: "India" },
   { name: "Karthik Gowda", country: "India" },
   { name: "Vineeth Shetty", country: "India" },
@@ -33,7 +33,7 @@ const SEEDED_PROMOTERS = [
   { name: "Mayur Jadhav", country: "India" },
   { name: "Suraj Maurya", country: "India" },
   { name: "Rohit Bansal", country: "India" },
-  { name: "Ankita Sen", country: "India" },
+  { name: "Ankita Roy", country: "India" },
   { name: "Arun Chauhan", country: "India" },
   { name: "Praveen Hegde", country: "India" },
   { name: "Nikhil Somanna", country: "India" },

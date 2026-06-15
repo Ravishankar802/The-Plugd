@@ -3,9 +3,9 @@ const prisma = new PrismaClient();
 
 async function main() {
   const p = await prisma.promoter.findFirst({
-    where: { username: 'mohitvats' }
+    where: { username: 'aryankhanna' }
   });
-  console.log('Mohit Vats:', p);
+  console.log('Aryan Khanna:', p);
 }
 
 main()
