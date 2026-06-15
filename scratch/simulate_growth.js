@@ -13,9 +13,9 @@ console.log("Rank | Name | Today | Tomorrow | In 2 Days | In 3 Days");
 console.log("-----|------|-------|----------|-----------|----------");
 
 const promoters = [
-  { rank: 1, name: "Aryan Khanna" },
-  { rank: 2, name: "Raghav Sethi" },
-  { rank: 3, name: "Shreya Sen" },
+  { rank: 1, name: "Dhruv Goel" },
+  { rank: 2, name: "Raghav Arora" },
+  { rank: 3, name: "Shreya Nanda" },
   { rank: 12, name: "Harshit Gupta" },
   { rank: 19, name: "Sarthak Joshi" },
   { rank: 38, name: "Satvik Patel" },

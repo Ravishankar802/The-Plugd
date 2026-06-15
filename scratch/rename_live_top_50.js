@@ -2,9 +2,9 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const NEW_PROMOTERS = [
-  { name: "Aryan Khanna", username: "aryankhanna", country: "India" },
-  { name: "Raghav Sethi", username: "raghavsethi", country: "India" },
-  { name: "Shreya Sen", username: "shreyasen", country: "India" },
+  { name: "Dhruv Goel", username: "dhruvgoel", country: "India" },
+  { name: "Raghav Arora", username: "raghavarora", country: "India" },
+  { name: "Shreya Nanda", username: "shreyananda", country: "India" },
   { name: "Aditya Chaudhary", username: "adityachaudhary", country: "India" },
   { name: "Karthik Gowda", username: "karthikgowda", country: "India" },
   { name: "Vineeth Shetty", username: "vineethshetty", country: "India" },
@@ -18,7 +18,7 @@ const NEW_PROMOTERS = [
   { name: "Khushi Kapoor", username: "khushikapoor", country: "India" },
   { name: "Dushyant Kumar", username: "dushyantkumar", country: "India" },
   { name: "Ayush Mishra", username: "ayushmishra", country: "India" },
-  { name: "Kanishka Goel", username: "kanishkagoel", country: "India" },
+  { name: "Kanishka Sen", username: "kanishkasen", country: "India" },
   { name: "Rohan Das", username: "rohandas", country: "India" },
   { name: "Sarthak Joshi", username: "sarthakjoshi", country: "India" },
   { name: "Daksh Rana", username: "dakshrana", country: "India" },
