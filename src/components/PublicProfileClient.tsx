@@ -448,7 +448,7 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
                           <div className="bg-pill border border-border px-3 py-2 rounded-xl shadow-xl font-[Georgia,_serif]">
                             <p className="text-[10px] text-muted font-medium mb-0.5">{data.date}</p>
                             <p className="text-xs font-bold text-[#22c55e]">
-                              ₹{new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(Number(payload[0].value))}
+                              ₹{new Intl.NumberFormat('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(Number(payload[0].value))}
                             </p>
                           </div>
                         );
