@@ -13,13 +13,13 @@ console.log("Rank | Name | Today | Tomorrow | In 2 Days | In 3 Days");
 console.log("-----|------|-------|----------|-----------|----------");
 
 const promoters = [
-  { rank: 1, name: "Mohit Sharma" },
-  { rank: 2, name: "Raghav Arora" },
-  { rank: 3, name: "Shreyaaa Sen" },
+  { rank: 1, name: "Mohit Vats" },
+  { rank: 2, name: "Raghav Talwar" },
+  { rank: 3, name: "Shreyaaa Roy" },
   { rank: 12, name: "Harshit Gupta" },
   { rank: 19, name: "Sarthak Joshi" },
-  { rank: 38, name: "Praveen Reddy" },
-  { rank: 50, name: "Chirag Shah" }
+  { rank: 38, name: "Satvik Patel" },
+  { rank: 50, name: "Chirag Shenoy" }
 ];
 
 promoters.forEach(p => {
