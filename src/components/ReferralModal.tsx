@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { X, ArrowRight, Link as LinkIcon, DollarSign, Infinity, Gift, Sparkles, Loader2, Mail } from "lucide-react";
+import { X, ArrowRight, Link as LinkIcon, IndianRupee, Infinity, Gift, Sparkles, Loader2, Mail } from "lucide-react";
 import { useTheme } from "next-themes";
 import { getFieldsForCountry } from "@/lib/payoutFieldsByCountry";
 
@@ -790,7 +790,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                   style={{ backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}
                   className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border border-border"
                 >
-                  <DollarSign className="w-4 h-4" style={{ color: isDark ? '#ffffff' : '#000000' }} />
+                  <IndianRupee className="w-4 h-4" style={{ color: isDark ? '#ffffff' : '#000000' }} />
                 </div>
                 <p className="font-semibold text-[0.95rem]">Get paid for each referral</p>
               </div>

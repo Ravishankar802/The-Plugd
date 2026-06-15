@@ -38,6 +38,17 @@ export async function PATCH(req: Request) {
       paypalEmail
     } = body;
 
+    // Look up existing promoter to enforce that username cannot be changed once set
+    const existingPromoter = await prisma.promoter.findUnique({
+      where: { email: email.toLowerCase() }
+    });
+
+    if (existingPromoter && existingPromoter.username && username) {
+      if (existingPromoter.username.toLowerCase() !== username.trim().toLowerCase()) {
+        return NextResponse.json({ error: "Username cannot be changed once set" }, { status: 400 });
+      }
+    }
+
     if (username) {
       const trimmed = username.trim();
       if (
