@@ -172,6 +172,9 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
     });
   })();
 
+  const maxVal = Math.max(...processedChartData.map(d => d.displayAmount), 0);
+  const hasNoEarnings = maxVal === 0;
+
   const copyToClipboard = (text: string, type: string) => {
     navigator.clipboard.writeText(text);
     setCopied(type);
@@ -433,6 +436,8 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
                     axisLine={false}
                     tickFormatter={formatYAxis}
                     dx={-10}
+                    domain={hasNoEarnings ? [0, 400] : undefined}
+                    ticks={hasNoEarnings ? [0, 100, 200, 300, 400] : undefined}
                   />
                   <Tooltip
                     cursor={{ stroke: 'var(--border)', strokeWidth: 1, strokeDasharray: '3 3' }}

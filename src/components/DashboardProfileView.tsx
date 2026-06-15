@@ -203,6 +203,9 @@ here's my link 👉 ${link}`
     });
   })();
   
+  const maxVal = Math.max(...processedChartData.map(d => d.displayAmount), 0);
+  const hasNoEarnings = maxVal === 0;
+
   const formatYAxis = (value: number) => {
     if (value === 0) return "₹0";
     if (value >= 1e7) {
@@ -1195,6 +1198,8 @@ here's my link 👉 ${link}`
                           axisLine={false}
                           tickFormatter={formatYAxis}
                           dx={-10}
+                          domain={hasNoEarnings ? [0, 400] : undefined}
+                          ticks={hasNoEarnings ? [0, 100, 200, 300, 400] : undefined}
                         />
                         <Tooltip
                           cursor={{ stroke: 'var(--border)', strokeWidth: 1, strokeDasharray: '3 3' }}
