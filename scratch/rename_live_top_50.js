@@ -41,7 +41,7 @@ const NEW_PROMOTERS = [
   { name: "Shubh Agarwal", username: "shubhagarwal", country: "India" },
   { name: "Satvik Patel", username: "satvikpatel", country: "India" },
   { name: "Anushka Tyagi", username: "anushkatyagi", country: "India" },
-  { name: "Shalini Pai", username: "shalinipai", country: "India" },
+  { name: "Shalini Prabhu", username: "shaliniprabhu", country: "India" },
   { name: "Tejas Nayak", username: "tejasnayak", country: "India" },
   { name: "Prashant Bhat", username: "prashantbhat", country: "India" },
   { name: "Piyush Garg", username: "piyushgarg", country: "India" },
@@ -49,7 +49,7 @@ const NEW_PROMOTERS = [
   { name: "Muskan Soni", username: "muskansoni", country: "India" },
   { name: "Sanjay Prasad", username: "sanjayprasad", country: "India" },
   { name: "Vishal Rajput", username: "vishalrajput", country: "India" },
-  { name: "Tanisha Shrivastav", username: "tanishashrivastav", country: "India" },
+  { name: "Tanisha Koushik", username: "tanishakoushik", country: "India" },
   { name: "Sagar Khatri", username: "sagarkhatri", country: "India" },
   { name: "Chirag Shenoy", username: "chiragshenoy", country: "India" }
 ];

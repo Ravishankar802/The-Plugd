@@ -41,7 +41,7 @@ const SEEDED_PROMOTERS = [
   { name: "Shubh Agarwal", country: "India" },
   { name: "Satvik Patel", country: "India" },
   { name: "Anushka Tyagi", country: "India" },
-  { name: "Shalini Pai", country: "India" },
+  { name: "Shalini Prabhu", country: "India" },
   { name: "Tejas Nayak", country: "India" },
   { name: "Prashant Bhat", country: "India" },
   { name: "Piyush Garg", country: "India" },
@@ -49,7 +49,7 @@ const SEEDED_PROMOTERS = [
   { name: "Muskan Soni", country: "India" },
   { name: "Sanjay Prasad", country: "India" },
   { name: "Vishal Rajput", country: "India" },
-  { name: "Tanisha Shrivastav", country: "India" },
+  { name: "Tanisha Koushik", country: "India" },
   { name: "Sagar Khatri", country: "India" },
   { name: "Chirag Shenoy", country: "India" }
 ];
