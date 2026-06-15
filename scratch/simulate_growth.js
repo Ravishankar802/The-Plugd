@@ -16,7 +16,7 @@ const promoters = [
   { rank: 1, name: "Dhruv Goel" },
   { rank: 2, name: "Raghav Arora" },
   { rank: 3, name: "Shreya Nanda" },
-  { rank: 12, name: "Harshit Gupta" },
+  { rank: 12, name: "Harshit Sen" },
   { rank: 19, name: "Sarthak Joshi" },
   { rank: 38, name: "Satvik Patel" },
   { rank: 50, name: "Chirag Shenoy" }
