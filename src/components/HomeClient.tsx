@@ -352,7 +352,7 @@ export default function HomeClient({
       </div>
 
       {/* Top Earners Leaderboard Section */}
-      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-10">
+      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-0">
         <div className="bg-pill border border-border rounded-[24px] p-4 sm:p-6 md:p-8 shadow-xl">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
             <div className="text-center sm:text-left">
@@ -514,7 +514,7 @@ export default function HomeClient({
         </p>
       </section>
 
-      <div className="w-full mt-20">
+      <div className="w-full mt-16">
         <Footer 
           showBorder={false} 
           minimal={true} 
