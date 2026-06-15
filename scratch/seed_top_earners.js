@@ -99,15 +99,6 @@ function calculateEarnings(id) {
 }
 
 async function main() {
-  console.log("Cleaning old seeded promoters...");
-  await prisma.promoter.deleteMany({
-    where: {
-      email: {
-        endsWith: "@example.com"
-      }
-    }
-  });
-
   console.log("Seeding top 50 earners into database...");
 
   for (let i = 0; i < SEEDED_PROMOTERS.length; i++) {
@@ -125,9 +116,22 @@ async function main() {
     const country = item.country;
     const region = country === "India" ? "INDIA" : "INTERNATIONAL";
 
-    // Create promoter
-    const promoter = await prisma.promoter.create({
-      data: {
+    // Create or update promoter non-destructively to preserve fields like avatarUrl
+    const promoter = await prisma.promoter.upsert({
+      where: { email },
+      update: {
+        name,
+        username,
+        referralCode,
+        totalEarned,
+        totalClicks: totalClicks,
+        totalConversions: totalConversions,
+        payoutRegion: region,
+        paypalEmail: region === "INTERNATIONAL" ? email : null,
+        upiId: region === "INDIA" ? `${username}@okaxis` : null,
+        intlBankCountry: region === "INTERNATIONAL" ? country : null
+      },
+      create: {
         email,
         name,
         username,
@@ -142,7 +146,7 @@ async function main() {
       }
     });
 
-    console.log(`Created promoter Rank ${id}: ${promoter.name} (${promoter.username}) - ₹${promoter.totalEarned}`);
+    console.log(`Seeded promoter Rank ${id}: ${promoter.name} (${promoter.username}) - ₹${promoter.totalEarned}`);
   }
 
   console.log("Seeding complete!");
