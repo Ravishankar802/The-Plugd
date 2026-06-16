@@ -177,7 +177,8 @@ export default function ManageReferralsClient() {
           const currentEarnings = (p.currentEarnings || Math.round(p.totalEarned / 100) * 100) + increment;
           return {
             ...p,
-            currentEarnings
+            currentEarnings,
+            totalSignups: Math.floor(currentEarnings / 100)
           };
         });
 
@@ -256,7 +257,8 @@ export default function ManageReferralsClient() {
               ...p,
               earningRatePerSec: 0,
               baseLastMonth: p.totalEarned,
-              currentEarnings: p.totalEarned
+              currentEarnings: p.totalEarned,
+              totalSignups: Math.floor(p.totalEarned / 100)
             };
           }
 
@@ -285,7 +287,8 @@ export default function ManageReferralsClient() {
             ...p,
             earningRatePerSec,
             baseLastMonth,
-            currentEarnings: finalEarnings
+            currentEarnings: finalEarnings,
+            totalSignups: Math.floor(finalEarnings / 100)
           };
         });
 
@@ -662,7 +665,7 @@ export default function ManageReferralsClient() {
                   Clicks
                 </th>
                 <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("totalSignups")}>
-                  Signups
+                  Conversions
                 </th>
                 <th className="hidden lg:table-cell px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("totalEarned")}>
                   Earnings

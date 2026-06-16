@@ -87,6 +87,7 @@ export async function PATCH(
         xHandle,
         avatarUrl,
         totalEarned: totalEarned !== undefined ? parseFloat(totalEarned) : undefined,
+        totalConversions: totalEarned !== undefined ? Math.floor(parseFloat(totalEarned) / 100) : undefined,
         pendingPayout: pendingPayout !== undefined ? parseFloat(pendingPayout) : undefined,
         totalPaid: totalPaid !== undefined ? parseFloat(totalPaid) : undefined,
         upiId,
