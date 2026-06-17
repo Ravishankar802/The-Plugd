@@ -4,18 +4,6 @@ export interface CountryCode {
   code: string;
 }
 
-export function getFlagEmoji(countryCode: string): string {
-  const codePoints = countryCode
-    .toUpperCase()
-    .split("")
-    .map(char => 127397 + char.charCodeAt(0));
-  try {
-    return String.fromCodePoint(...codePoints);
-  } catch {
-    return "🌐";
-  }
-}
-
 export const COUNTRY_CODES: CountryCode[] = [
   { name: "Afghanistan", dialCode: "+93", code: "AF" },
   { name: "Albania", dialCode: "+355", code: "AL" },

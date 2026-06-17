@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { COUNTRY_CODES, getFlagEmoji } from "@/lib/countryCodes";
+import { COUNTRY_CODES } from "@/lib/countryCodes";
 
 const COUNTRIES = [
   "Afghanistan", "Albania", "Algeria", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
@@ -928,7 +928,7 @@ export default function ManageReferralsClient() {
                           ) : (
                             COUNTRY_CODES.map((c) => (
                               <option key={`${c.code}-${c.dialCode}`} value={c.dialCode}>
-                                {getFlagEmoji(c.code)} {c.name} ({c.code} {c.dialCode})
+                                {c.name} ({c.code} {c.dialCode})
                               </option>
                             ))
                           )}

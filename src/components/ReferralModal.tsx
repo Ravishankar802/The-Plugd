@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { X, ArrowRight, Link as LinkIcon, IndianRupee, Infinity, Gift, Sparkles, Loader2, Mail } from "lucide-react";
+import { X, ArrowRight, Link as LinkIcon, IndianRupee, Infinity, Gift, Sparkles, Loader2, Mail, ChevronDown, Check } from "lucide-react";
 import { useTheme } from "next-themes";
 import { getFieldsForCountry } from "@/lib/payoutFieldsByCountry";
-import { COUNTRY_CODES, getFlagEmoji } from "@/lib/countryCodes";
+import { COUNTRY_CODES } from "@/lib/countryCodes";
 
 interface ReferralModalProps {
   isOpen: boolean;
@@ -47,6 +47,8 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
   const [usePaypal, setUsePaypal] = useState(false);
   const [phoneCode, setPhoneCode] = useState("+91");
   const [phoneNo, setPhoneNo] = useState("");
+  const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
+  const [phoneCodeDropdownOpen, setPhoneCodeDropdownOpen] = useState(false);
 
   const isPayoutInfoFilled = () => {
     if (formData.payoutRegion === "INDIA") {
@@ -441,202 +443,114 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 <div className="flex flex-col gap-3">
                   <label className="text-[1rem] font-bold text-white tracking-wide block">Country</label>
                   <div className="relative">
-                    <select
-                      value={formData.intlBankCountry || ""}
-                      onChange={(e) => {
-                        const country = e.target.value;
-                        const region = country === "India" ? "INDIA" : "INTERNATIONAL";
-                        const matched = COUNTRY_CODES.find(c => c.name === country);
-                        if (matched) {
-                          setPhoneCode(matched.dialCode);
-                        }
-                        setFormData({
-                          ...formData,
-                          intlBankCountry: country,
-                          payoutRegion: region,
-                          // clear fields that don't apply
-                          upiId: region === "INTERNATIONAL" ? "" : formData.upiId,
-                          bankAccountName: region === "INTERNATIONAL" ? "" : formData.bankAccountName,
-                          bankAccountNumber: region === "INTERNATIONAL" ? "" : formData.bankAccountNumber,
-                          bankIfsc: region === "INTERNATIONAL" ? "" : formData.bankIfsc,
-                          intlAccountHolderName: region === "INDIA" ? "" : formData.intlAccountHolderName,
-                          intlRoutingNumber: region === "INDIA" ? "" : formData.intlRoutingNumber,
-                          intlAccountNumber: region === "INDIA" ? "" : formData.intlAccountNumber,
-                          intlSortCode: region === "INDIA" ? "" : formData.intlSortCode,
-                          intlIban: region === "INDIA" ? "" : formData.intlIban,
-                          intlBicSwift: region === "INDIA" ? "" : formData.intlBicSwift,
-                          intlBsbCode: region === "INDIA" ? "" : formData.intlBsbCode,
-                          intlTransitNumber: region === "INDIA" ? "" : formData.intlTransitNumber,
-                          intlInstitutionNumber: region === "INDIA" ? "" : formData.intlInstitutionNumber,
-                          paypalEmail: region === "INDIA" ? "" : formData.paypalEmail,
-                        });
-                        setUsePaypal(false);
-                      }}
-                      className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] appearance-none pr-10"
+                    <button
+                      type="button"
+                      onClick={() => setCountryDropdownOpen(!countryDropdownOpen)}
+                      className="w-full flex items-center justify-between bg-black border border-border rounded-xl px-5 py-4 text-white focus:outline-none focus:border-muted transition-all text-[0.95rem] cursor-pointer text-left"
                     >
-                    <option value="" disabled>Select your country</option>
-                    <option value="Afghanistan">Afghanistan</option>
-                    <option value="Albania">Albania</option>
-                    <option value="Algeria">Algeria</option>
-                    <option value="Angola">Angola</option>
-                    <option value="Argentina">Argentina</option>
-                    <option value="Armenia">Armenia</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Austria">Austria</option>
-                    <option value="Azerbaijan">Azerbaijan</option>
-                    <option value="Bahrain">Bahrain</option>
-                    <option value="Bangladesh">Bangladesh</option>
-                    <option value="Belarus">Belarus</option>
-                    <option value="Belgium">Belgium</option>
-                    <option value="Benin">Benin</option>
-                    <option value="Bolivia">Bolivia</option>
-                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                    <option value="Botswana">Botswana</option>
-                    <option value="Brazil">Brazil</option>
-                    <option value="Bulgaria">Bulgaria</option>
-                    <option value="Burkina Faso">Burkina Faso</option>
-                    <option value="Cambodia">Cambodia</option>
-                    <option value="Cameroon">Cameroon</option>
-                    <option value="Canada">Canada</option>
-                    <option value="Chile">Chile</option>
-                    <option value="China">China</option>
-                    <option value="Colombia">Colombia</option>
-                    <option value="Costa Rica">Costa Rica</option>
-                    <option value="Croatia">Croatia</option>
-                    <option value="Cyprus">Cyprus</option>
-                    <option value="Czech Republic">Czech Republic</option>
-                    <option value="Denmark">Denmark</option>
-                    <option value="Dominican Republic">Dominican Republic</option>
-                    <option value="Ecuador">Ecuador</option>
-                    <option value="Egypt">Egypt</option>
-                    <option value="El Salvador">El Salvador</option>
-                    <option value="Estonia">Estonia</option>
-                    <option value="Ethiopia">Ethiopia</option>
-                    <option value="Finland">Finland</option>
-                    <option value="France">France</option>
-                    <option value="Georgia">Georgia</option>
-                    <option value="Germany">Germany</option>
-                    <option value="Ghana">Ghana</option>
-                    <option value="Greece">Greece</option>
-                    <option value="Guatemala">Guatemala</option>
-                    <option value="Honduras">Honduras</option>
-                    <option value="Hong Kong">Hong Kong</option>
-                    <option value="Hungary">Hungary</option>
-                    <option value="Iceland">Iceland</option>
-                    <option value="India">India</option>
-                    <option value="Indonesia">Indonesia</option>
-                    <option value="Iraq">Iraq</option>
-                    <option value="Ireland">Ireland</option>
-                    <option value="Israel">Israel</option>
-                    <option value="Italy">Italy</option>
-                    <option value="Ivory Coast">Ivory Coast</option>
-                    <option value="Jamaica">Jamaica</option>
-                    <option value="Japan">Japan</option>
-                    <option value="Jordan">Jordan</option>
-                    <option value="Kazakhstan">Kazakhstan</option>
-                    <option value="Kenya">Kenya</option>
-                    <option value="Kosovo">Kosovo</option>
-                    <option value="Kuwait">Kuwait</option>
-                    <option value="Kyrgyzstan">Kyrgyzstan</option>
-                    <option value="Latvia">Latvia</option>
-                    <option value="Lebanon">Lebanon</option>
-                    <option value="Libya">Libya</option>
-                    <option value="Lithuania">Lithuania</option>
-                    <option value="Luxembourg">Luxembourg</option>
-                    <option value="Malaysia">Malaysia</option>
-                    <option value="Mali">Mali</option>
-                    <option value="Malta">Malta</option>
-                    <option value="Mexico">Mexico</option>
-                    <option value="Moldova">Moldova</option>
-                    <option value="Mongolia">Mongolia</option>
-                    <option value="Morocco">Morocco</option>
-                    <option value="Mozambique">Mozambique</option>
-                    <option value="Myanmar">Myanmar</option>
-                    <option value="Namibia">Namibia</option>
-                    <option value="Nepal">Nepal</option>
-                    <option value="Netherlands">Netherlands</option>
-                    <option value="New Zealand">New Zealand</option>
-                    <option value="Nicaragua">Nicaragua</option>
-                    <option value="Niger">Niger</option>
-                    <option value="Nigeria">Nigeria</option>
-                    <option value="North Macedonia">North Macedonia</option>
-                    <option value="Norway">Norway</option>
-                    <option value="Oman">Oman</option>
-                    <option value="Pakistan">Pakistan</option>
-                    <option value="Palestine">Palestine</option>
-                    <option value="Panama">Panama</option>
-                    <option value="Paraguay">Paraguay</option>
-                    <option value="Peru">Peru</option>
-                    <option value="Philippines">Philippines</option>
-                    <option value="Poland">Poland</option>
-                    <option value="Portugal">Portugal</option>
-                    <option value="Qatar">Qatar</option>
-                    <option value="Romania">Romania</option>
-                    <option value="Russia">Russia</option>
-                    <option value="Rwanda">Rwanda</option>
-                    <option value="Saudi Arabia">Saudi Arabia</option>
-                    <option value="Senegal">Senegal</option>
-                    <option value="Serbia">Serbia</option>
-                    <option value="Sierra Leone">Sierra Leone</option>
-                    <option value="Singapore">Singapore</option>
-                    <option value="Slovakia">Slovakia</option>
-                    <option value="Slovenia">Slovenia</option>
-                    <option value="South Africa">South Africa</option>
-                    <option value="South Korea">South Korea</option>
-                    <option value="Spain">Spain</option>
-                    <option value="Sri Lanka">Sri Lanka</option>
-                    <option value="Sweden">Sweden</option>
-                    <option value="Switzerland">Switzerland</option>
-                    <option value="Taiwan">Taiwan</option>
-                    <option value="Tajikistan">Tajikistan</option>
-                    <option value="Tanzania">Tanzania</option>
-                    <option value="Thailand">Thailand</option>
-                    <option value="Tunisia">Tunisia</option>
-                    <option value="Turkey">Turkey</option>
-                    <option value="Turkmenistan">Turkmenistan</option>
-                    <option value="Uganda">Uganda</option>
-                    <option value="Ukraine">Ukraine</option>
-                    <option value="United Arab Emirates">United Arab Emirates</option>
-                    <option value="United Kingdom">United Kingdom</option>
-                    <option value="United States">United States</option>
-                    <option value="Uruguay">Uruguay</option>
-                    <option value="Uzbekistan">Uzbekistan</option>
-                    <option value="Venezuela">Venezuela</option>
-                    <option value="Vietnam">Vietnam</option>
-                    <option value="Yemen">Yemen</option>
-                    <option value="Zambia">Zambia</option>
-                    <option value="Zimbabwe">Zimbabwe</option>
-                    <option value="Other">Other</option>
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
-                    <svg className="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
+                      <span className="truncate">
+                        {formData.intlBankCountry || "Select your country"}
+                      </span>
+                      <ChevronDown size={16} className={`text-muted transition-transform duration-200 shrink-0 ml-1 ${countryDropdownOpen ? "rotate-180" : ""}`} />
+                    </button>
+
+                    {countryDropdownOpen && (
+                      <>
+                        <div className="fixed inset-0 z-40" onClick={() => setCountryDropdownOpen(false)} />
+                        <div className="absolute left-0 mt-1.5 w-full bg-black border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto">
+                          {[...COUNTRY_CODES.map(c => c.name), "Other"].map((country) => (
+                            <button
+                              key={country}
+                              type="button"
+                              onClick={() => {
+                                const region = country === "India" ? "INDIA" : "INTERNATIONAL";
+                                const matched = COUNTRY_CODES.find(c => c.name === country);
+                                
+                                setFormData({
+                                  ...formData,
+                                  intlBankCountry: country,
+                                  payoutRegion: region,
+                                  upiId: region === "INTERNATIONAL" ? "" : formData.upiId,
+                                  bankAccountName: region === "INTERNATIONAL" ? "" : formData.bankAccountName,
+                                  bankAccountNumber: region === "INTERNATIONAL" ? "" : formData.bankAccountNumber,
+                                  bankIfsc: region === "INTERNATIONAL" ? "" : formData.bankIfsc,
+                                  intlAccountHolderName: region === "INDIA" ? "" : formData.intlAccountHolderName,
+                                  intlRoutingNumber: region === "INDIA" ? "" : formData.intlRoutingNumber,
+                                  intlAccountNumber: region === "INDIA" ? "" : formData.intlAccountNumber,
+                                  intlSortCode: region === "INDIA" ? "" : formData.intlSortCode,
+                                  intlIban: region === "INDIA" ? "" : formData.intlIban,
+                                  intlBicSwift: region === "INDIA" ? "" : formData.intlBicSwift,
+                                  intlBsbCode: region === "INDIA" ? "" : formData.intlBsbCode,
+                                  intlTransitNumber: region === "INDIA" ? "" : formData.intlTransitNumber,
+                                  intlInstitutionNumber: region === "INDIA" ? "" : formData.intlInstitutionNumber,
+                                  paypalEmail: region === "INDIA" ? "" : formData.paypalEmail,
+                                });
+                                setUsePaypal(false);
+                                if (matched) {
+                                  setPhoneCode(matched.dialCode);
+                                }
+                                setCountryDropdownOpen(false);
+                              }}
+                              className={`w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-left text-xs font-bold transition-colors ${
+                                formData.intlBankCountry === country 
+                                ? "bg-white/10 text-white" 
+                                : "text-white/80 hover:bg-white/10"
+                              }`}
+                            >
+                              <span className="truncate">{country}</span>
+                              {formData.intlBankCountry === country && <Check size={12} className="text-white shrink-0 ml-2" />}
+                            </button>
+                          ))}
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
-              </div>
 
                 {/* Phone Number Selector & Input */}
                 <div className="flex flex-col gap-3">
                   <label className="text-[1rem] font-bold text-white tracking-wide block">Phone Number</label>
                   <div className="flex gap-2">
                     <div className="relative flex-1 max-w-[220px] shrink-0">
-                      <select
-                        value={phoneCode}
-                        onChange={(e) => setPhoneCode(e.target.value)}
-                        className="w-full bg-black border border-border rounded-xl px-4 py-4 text-white focus:outline-none focus:border-muted transition-all text-[0.95rem] appearance-none pr-8 font-sans"
+                      <button
+                        type="button"
+                        onClick={() => setPhoneCodeDropdownOpen(!phoneCodeDropdownOpen)}
+                        className="w-full flex items-center justify-between bg-black border border-border rounded-xl px-4 py-4 text-white focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans cursor-pointer text-left"
                       >
-                        {COUNTRY_CODES.map((c) => (
-                          <option key={`${c.code}-${c.dialCode}`} value={c.dialCode}>
-                            {getFlagEmoji(c.code)} {c.name} ({c.code} {c.dialCode})
-                          </option>
-                        ))}
-                      </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-                        <svg className="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
+                        <span className="truncate">
+                          {(() => {
+                            const matched = COUNTRY_CODES.find(c => c.dialCode === phoneCode);
+                            return matched ? `${matched.name} (${matched.code} ${matched.dialCode})` : phoneCode;
+                          })()}
+                        </span>
+                        <ChevronDown size={16} className={`text-muted transition-transform duration-200 shrink-0 ml-1 ${phoneCodeDropdownOpen ? "rotate-180" : ""}`} />
+                      </button>
+                      
+                      {phoneCodeDropdownOpen && (
+                        <>
+                          <div className="fixed inset-0 z-40" onClick={() => setPhoneCodeDropdownOpen(false)} />
+                          <div className="absolute left-0 mt-1.5 w-[260px] bg-black border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto">
+                            {COUNTRY_CODES.map((c) => (
+                              <button
+                                key={`${c.code}-${c.dialCode}`}
+                                type="button"
+                                onClick={() => {
+                                  setPhoneCode(c.dialCode);
+                                  setPhoneCodeDropdownOpen(false);
+                                }}
+                                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left text-xs font-bold transition-colors ${
+                                  phoneCode === c.dialCode 
+                                  ? "bg-white/10 text-white" 
+                                  : "text-white/80 hover:bg-white/10"
+                                }`}
+                              >
+                                <span className="truncate">{c.name} ({c.code} {c.dialCode})</span>
+                                {phoneCode === c.dialCode && <Check size={12} className="text-white shrink-0 ml-2" />}
+                              </button>
+                            ))}
+                          </div>
+                        </>
+                      )}
                     </div>
                     <input
                       type="tel"
