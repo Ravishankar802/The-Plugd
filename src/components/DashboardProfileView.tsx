@@ -31,7 +31,7 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
 import { getFieldsForCountry } from "@/lib/payoutFieldsByCountry";
-import { COUNTRY_CODES } from "@/lib/countryCodes";
+import { COUNTRY_CODES, getFlagEmoji } from "@/lib/countryCodes";
 
 
 import ReferralModal from "@/components/ReferralModal";
@@ -690,7 +690,7 @@ here's my link 👉 ${link}`
                   <div className="flex flex-col gap-3">
                     <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Phone Number</label>
                     <div className="flex gap-2">
-                      <div className="relative w-1/3 shrink-0">
+                      <div className="relative flex-1 max-w-[220px] shrink-0">
                         <select
                           value={phoneCode}
                           onChange={(e) => setPhoneCode(e.target.value)}
@@ -698,7 +698,7 @@ here's my link 👉 ${link}`
                         >
                           {COUNTRY_CODES.map((c) => (
                             <option key={`${c.code}-${c.dialCode}`} value={c.dialCode}>
-                              {c.code} ({c.dialCode})
+                              {getFlagEmoji(c.code)} {c.name} ({c.code} {c.dialCode})
                             </option>
                           ))}
                         </select>

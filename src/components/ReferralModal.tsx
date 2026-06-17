@@ -5,7 +5,7 @@ import Link from "next/link";
 import { X, ArrowRight, Link as LinkIcon, IndianRupee, Infinity, Gift, Sparkles, Loader2, Mail } from "lucide-react";
 import { useTheme } from "next-themes";
 import { getFieldsForCountry } from "@/lib/payoutFieldsByCountry";
-import { COUNTRY_CODES } from "@/lib/countryCodes";
+import { COUNTRY_CODES, getFlagEmoji } from "@/lib/countryCodes";
 
 interface ReferralModalProps {
   isOpen: boolean;
@@ -620,7 +620,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 <div className="flex flex-col gap-3">
                   <label className="text-[1rem] font-bold text-white tracking-wide block">Phone Number</label>
                   <div className="flex gap-2">
-                    <div className="relative w-1/3 shrink-0">
+                    <div className="relative flex-1 max-w-[220px] shrink-0">
                       <select
                         value={phoneCode}
                         onChange={(e) => setPhoneCode(e.target.value)}
@@ -628,7 +628,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       >
                         {COUNTRY_CODES.map((c) => (
                           <option key={`${c.code}-${c.dialCode}`} value={c.dialCode}>
-                            {c.code} ({c.dialCode})
+                            {getFlagEmoji(c.code)} {c.name} ({c.code} {c.dialCode})
                           </option>
                         ))}
                       </select>
