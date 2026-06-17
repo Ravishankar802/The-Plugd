@@ -5,6 +5,7 @@ import Link from "next/link";
 import { X, ArrowRight, Link as LinkIcon, IndianRupee, Infinity, Gift, Sparkles, Loader2, Mail } from "lucide-react";
 import { useTheme } from "next-themes";
 import { getFieldsForCountry } from "@/lib/payoutFieldsByCountry";
+import { COUNTRY_CODES } from "@/lib/countryCodes";
 
 interface ReferralModalProps {
   isOpen: boolean;
@@ -44,6 +45,8 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
   const [useBankTransfer, setUseBankTransfer] = useState(false);
   const [usePaypal, setUsePaypal] = useState(false);
+  const [phoneCode, setPhoneCode] = useState("+91");
+  const [phoneNo, setPhoneNo] = useState("");
 
   const isPayoutInfoFilled = () => {
     if (formData.payoutRegion === "INDIA") {
@@ -164,7 +167,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
     }
 
     // Validation
-    if (!formData.name.trim() || !formData.email.trim() || !isPayoutInfoFilled() || !username.trim()) {
+    if (!formData.name.trim() || !formData.email.trim() || !isPayoutInfoFilled() || !username.trim() || !phoneNo.trim()) {
       alert("Please fill in all fields.");
       return;
     }
@@ -222,6 +225,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       metadata_name: formData.name,
       metadata_email: formData.email,
       metadata_username: username.trim(),
+      metadata_phoneNumber: `${phoneCode}${phoneNo.trim()}`,
       metadata_payoutMethod: derivedMethod,
       metadata_payoutDetails: derivedDetails,
       metadata_payoutRegion: formData.payoutRegion,
@@ -442,6 +446,10 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       onChange={(e) => {
                         const country = e.target.value;
                         const region = country === "India" ? "INDIA" : "INTERNATIONAL";
+                        const matched = COUNTRY_CODES.find(c => c.name === country);
+                        if (matched) {
+                          setPhoneCode(matched.dialCode);
+                        }
                         setFormData({
                           ...formData,
                           intlBankCountry: country,
@@ -607,6 +615,38 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                   </div>
                 </div>
               </div>
+
+                {/* Phone Number Selector & Input */}
+                <div className="flex flex-col gap-3">
+                  <label className="text-[1rem] font-bold text-white tracking-wide block">Phone Number</label>
+                  <div className="flex gap-2">
+                    <div className="relative w-1/3 shrink-0">
+                      <select
+                        value={phoneCode}
+                        onChange={(e) => setPhoneCode(e.target.value)}
+                        className="w-full bg-black border border-border rounded-xl px-4 py-4 text-white focus:outline-none focus:border-muted transition-all text-[0.95rem] appearance-none pr-8 font-sans"
+                      >
+                        {COUNTRY_CODES.map((c) => (
+                          <option key={`${c.code}-${c.dialCode}`} value={c.dialCode}>
+                            {c.code} ({c.dialCode})
+                          </option>
+                        ))}
+                      </select>
+                      <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                        <svg className="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
+                    <input
+                      type="tel"
+                      placeholder="Enter phone number"
+                      value={phoneNo}
+                      onChange={(e) => setPhoneNo(e.target.value.replace(/[^0-9]/g, ""))}
+                      className="flex-1 bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
+                    />
+                  </div>
+                </div>
 
                 {/* If country has been selected */}
                 {formData.intlBankCountry && (
@@ -842,7 +882,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
           <div className="w-full space-y-3">
             <button
               onClick={handleJoin}
-              disabled={loading || (showEmailInput && (usernameStatus !== 'available' || !formData.name.trim() || !formData.email.trim() || !isPayoutInfoFilled()))}
+              disabled={loading || (showEmailInput && (usernameStatus !== 'available' || !formData.name.trim() || !formData.email.trim() || !isPayoutInfoFilled() || !phoneNo.trim()))}
               className="w-full bg-[#16a34a] text-white font-[800] text-[1rem] py-[14px] rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg shadow-green-600/20 disabled:opacity-50"
             >
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (

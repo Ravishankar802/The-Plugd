@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { COUNTRY_CODES } from "@/lib/countryCodes";
 
 const COUNTRIES = [
   "Afghanistan", "Albania", "Algeria", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
@@ -64,6 +65,7 @@ interface Promoter {
   email: string;
   name: string;
   xHandle: string | null;
+  phoneNumber?: string | null;
   username: string | null;
   referralCode: string;
   payoutMethod: string | null;
@@ -155,6 +157,8 @@ export default function ManageReferralsClient() {
   const [editForm, setEditForm] = useState<any>({});
   const [editSaving, setEditSaving] = useState(false);
   const [editError, setEditError] = useState<string | null>(null);
+  const [editPhoneCode, setEditPhoneCode] = useState("+91");
+  const [editPhoneNo, setEditPhoneNo] = useState("");
   
   // Sorting state
   const [sortField, setSortField] = useState<keyof Promoter>("createdAt");
@@ -229,6 +233,21 @@ export default function ManageReferralsClient() {
         intlInstitutionNumber: editingPromoter.intlInstitutionNumber || "",
         intlBankCountry: editingPromoter.intlBankCountry || "",
       });
+      const phone = editingPromoter.phoneNumber || "";
+      let parsedCode = "+91";
+      let parsedNo = "";
+      if (phone) {
+        const sortedCodes = [...COUNTRY_CODES].sort((a, b) => b.dialCode.length - a.dialCode.length);
+        const matched = sortedCodes.find(c => phone.startsWith(c.dialCode));
+        if (matched) {
+          parsedCode = matched.dialCode;
+          parsedNo = phone.slice(matched.dialCode.length);
+        } else {
+          parsedNo = phone;
+        }
+      }
+      setEditPhoneCode(parsedCode);
+      setEditPhoneNo(parsedNo);
       setEditError(null);
     }
   }, [editingPromoter]);
@@ -309,10 +328,14 @@ export default function ManageReferralsClient() {
     setEditError(null);
 
     try {
+      const payload = {
+        ...editForm,
+        phoneNumber: editPhoneNo.trim() ? `${editPhoneCode}${editPhoneNo.trim()}` : null
+      };
       const res = await fetch(`/api/admin/referrals/${editingPromoter.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(editForm)
+        body: JSON.stringify(payload)
       });
 
       if (res.ok) {
@@ -416,6 +439,12 @@ export default function ManageReferralsClient() {
       setIsPaying(false);
     }
   };
+
+  const isTop50Earner = useMemo(() => {
+    if (!editingPromoter) return false;
+    const sorted = [...promoters].sort((a, b) => b.totalEarned - a.totalEarned);
+    return sorted.slice(0, 50).some(p => p.id === editingPromoter.id);
+  }, [editingPromoter, promoters]);
 
   // Calculations
   const stats = useMemo(() => {
@@ -661,6 +690,9 @@ export default function ManageReferralsClient() {
                 <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("referralCode")}>
                   Code
                 </th>
+                <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest">
+                  Phone Number
+                </th>
                 <th className="hidden sm:table-cell px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("totalClicks")}>
                   Clicks
                 </th>
@@ -721,6 +753,11 @@ export default function ManageReferralsClient() {
                         {copied === `link-${p.id}` ? <Check size={8} className="text-green-500" /> : <Copy size={8} className="text-muted group-hover/btn:text-foreground" />}
                       </button>
                     </div>
+                  </td>
+                  <td className="px-3 py-2.5">
+                    <span className="font-mono font-medium text-foreground text-[0.75rem]">
+                      {p.phoneNumber || "—"}
+                    </span>
                   </td>
                   <td className="hidden sm:table-cell px-3 py-2.5 text-center text-muted font-medium">{p.totalClicks}</td>
                   <td className="px-3 py-2.5 text-center">
@@ -875,6 +912,44 @@ export default function ManageReferralsClient() {
                       onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
                       className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
                     />
+                  </div>
+                  <div className="space-y-1.5 md:col-span-2">
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Phone Number</label>
+                    <div className="flex gap-2">
+                      <div className="relative w-1/3 shrink-0">
+                        <select
+                          disabled={isTop50Earner}
+                          value={isTop50Earner ? "" : editPhoneCode}
+                          onChange={(e) => setEditPhoneCode(e.target.value)}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all appearance-none pr-8 font-sans disabled:opacity-50"
+                        >
+                          {isTop50Earner ? (
+                            <option value="">—</option>
+                          ) : (
+                            COUNTRY_CODES.map((c) => (
+                              <option key={`${c.code}-${c.dialCode}`} value={c.dialCode}>
+                                {c.code} ({c.dialCode})
+                              </option>
+                            ))
+                          )}
+                        </select>
+                        {!isTop50Earner && (
+                          <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                            <svg className="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                      <input
+                        disabled={isTop50Earner}
+                        type="tel"
+                        placeholder={isTop50Earner ? "N/A (Top 50 Earner)" : "Enter phone number"}
+                        value={isTop50Earner ? "" : editPhoneNo}
+                        onChange={(e) => setEditPhoneNo(e.target.value.replace(/[^0-9]/g, ""))}
+                        className="flex-1 bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all disabled:opacity-50 font-sans"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

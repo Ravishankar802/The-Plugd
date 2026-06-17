@@ -50,6 +50,7 @@ export async function POST(req: Request) {
             xHandle: metadata.metadata_xHandle || null,
             username,
             referralCode: username || generateReferralCode(email),
+            phoneNumber: metadata.metadata_phoneNumber || metadata.phoneNumber || null,
             payoutMethod: metadata.metadata_payoutMethod || null,
             payoutDetails: metadata.metadata_payoutDetails || null,
             payoutRegion: metadata.metadata_payoutRegion || null,

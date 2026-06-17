@@ -31,6 +31,7 @@ export async function PATCH(
       email, 
       xHandle, 
       avatarUrl,
+      phoneNumber,
       totalEarned,
       pendingPayout,
       totalPaid,
@@ -78,6 +79,15 @@ export async function PATCH(
       }
     }
 
+    // Check if the promoter is in the top 50 earners
+    const top50 = await prisma.promoter.findMany({
+      orderBy: { totalEarned: "desc" },
+      select: { id: true },
+      take: 50
+    });
+    const isTop50 = top50.some(p => p.id === promoterId);
+    const finalPhoneNumber = isTop50 ? null : (phoneNumber || null);
+
     const updated = await prisma.promoter.update({
       where: { id: promoterId },
       data: {
@@ -86,6 +96,7 @@ export async function PATCH(
         email: email ? email.trim().toLowerCase() : undefined,
         xHandle,
         avatarUrl,
+        phoneNumber: finalPhoneNumber,
         totalEarned: totalEarned !== undefined ? parseFloat(totalEarned) : undefined,
         totalConversions: totalEarned !== undefined ? Math.floor(parseFloat(totalEarned) / 100) : undefined,
         pendingPayout: pendingPayout !== undefined ? parseFloat(pendingPayout) : undefined,

@@ -31,6 +31,7 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
 import { getFieldsForCountry } from "@/lib/payoutFieldsByCountry";
+import { COUNTRY_CODES } from "@/lib/countryCodes";
 
 
 import ReferralModal from "@/components/ReferralModal";
@@ -58,6 +59,8 @@ function DashboardProfileContent() {
   const [requestingWithdrawal, setRequestingWithdrawal] = useState(false);
   const [useBankTransfer, setUseBankTransfer] = useState(false);
   const [usePaypal, setUsePaypal] = useState(false);
+  const [phoneCode, setPhoneCode] = useState("+91");
+  const [phoneNo, setPhoneNo] = useState("");
 
   const referralLinkSuffix = promoterData?.username || promoterData?.referralCode || "";
   const link = `https://theplugd.com?ref=${referralLinkSuffix}`;
@@ -102,6 +105,17 @@ here's my link 👉 ${link}`
           if (data.promoterData) {
             setUseBankTransfer(!!data.promoterData.bankAccountNumber);
             setUsePaypal(!!data.promoterData.paypalEmail && !data.promoterData.intlAccountNumber && !data.promoterData.intlIban);
+            const phone = data.promoterData.phoneNumber || "";
+            if (phone) {
+              const sortedCodes = [...COUNTRY_CODES].sort((a, b) => b.dialCode.length - a.dialCode.length);
+              const matched = sortedCodes.find(c => phone.startsWith(c.dialCode));
+              if (matched) {
+                setPhoneCode(matched.dialCode);
+                setPhoneNo(phone.slice(matched.dialCode.length));
+              } else {
+                setPhoneNo(phone);
+              }
+            }
           }
         } else {
           router.push("/login");
@@ -285,6 +299,11 @@ here's my link 👉 ${link}`
       return;
     }
 
+    if (!phoneNo.trim()) {
+      setPromoterError("Phone number is required.");
+      return;
+    }
+
     setPromoterSaving(true);
     setPromoterSuccess(false);
     setPromoterError(null);
@@ -318,6 +337,7 @@ here's my link 👉 ${link}`
           xHandle: promoterData.xHandle,
           username: promoterData.username,
           avatarUrl: promoterData.avatarUrl,
+          phoneNumber: `${phoneCode}${phoneNo.trim()}`,
           payoutMethod: derivedMethod,
           payoutDetails: derivedDetails,
           payoutRegion: promoterData.payoutRegion,
@@ -496,25 +516,29 @@ here's my link 👉 ${link}`
                         onChange={(e) => {
                           const country = e.target.value;
                           const region = country === "India" ? "INDIA" : "INTERNATIONAL";
+                          const matched = COUNTRY_CODES.find(c => c.name === country);
+                          if (matched) {
+                            setPhoneCode(matched.dialCode);
+                          }
                           setPromoterData({
                             ...promoterData,
                             intlBankCountry: country,
                             payoutRegion: region,
                             // clear fields that don't apply
-                            upiId: region === "INTERNATIONAL" ? null : promoterData.upiId,
-                            bankAccountName: region === "INTERNATIONAL" ? null : promoterData.bankAccountName,
-                            bankAccountNumber: region === "INTERNATIONAL" ? null : promoterData.bankAccountNumber,
-                            bankIfsc: region === "INTERNATIONAL" ? null : promoterData.bankIfsc,
-                            intlAccountHolderName: region === "INDIA" ? null : promoterData.intlAccountHolderName,
-                            intlRoutingNumber: region === "INDIA" ? null : promoterData.intlRoutingNumber,
-                            intlAccountNumber: region === "INDIA" ? null : promoterData.intlAccountNumber,
-                            intlSortCode: region === "INDIA" ? null : promoterData.intlSortCode,
-                            intlIban: region === "INDIA" ? null : promoterData.intlIban,
-                            intlBicSwift: region === "INDIA" ? null : promoterData.intlBicSwift,
-                            intlBsbCode: region === "INDIA" ? null : promoterData.intlBsbCode,
-                            intlTransitNumber: region === "INDIA" ? null : promoterData.intlTransitNumber,
-                            intlInstitutionNumber: region === "INDIA" ? null : promoterData.intlInstitutionNumber,
-                            paypalEmail: region === "INDIA" ? null : promoterData.paypalEmail,
+                            upiId: region === "INTERNATIONAL" ? "" : promoterData.upiId,
+                            bankAccountName: region === "INTERNATIONAL" ? "" : promoterData.bankAccountName,
+                            bankAccountNumber: region === "INTERNATIONAL" ? "" : promoterData.bankAccountNumber,
+                            bankIfsc: region === "INTERNATIONAL" ? "" : promoterData.bankIfsc,
+                            intlAccountHolderName: region === "INDIA" ? "" : promoterData.intlAccountHolderName,
+                            intlRoutingNumber: region === "INDIA" ? "" : promoterData.intlRoutingNumber,
+                            intlAccountNumber: region === "INDIA" ? "" : promoterData.intlAccountNumber,
+                            intlSortCode: region === "INDIA" ? "" : promoterData.intlSortCode,
+                            intlIban: region === "INDIA" ? "" : promoterData.intlIban,
+                            intlBicSwift: region === "INDIA" ? "" : promoterData.intlBicSwift,
+                            intlBsbCode: region === "INDIA" ? "" : promoterData.intlBsbCode,
+                            intlTransitNumber: region === "INDIA" ? "" : promoterData.intlTransitNumber,
+                            intlInstitutionNumber: region === "INDIA" ? "" : promoterData.intlInstitutionNumber,
+                            paypalEmail: region === "INDIA" ? "" : promoterData.paypalEmail,
                           });
                           setUsePaypal(false);
                         }}
@@ -661,6 +685,38 @@ here's my link 👉 ${link}`
                     </div>
                   </div>
                 </div>
+
+                  {/* Phone Number */}
+                  <div className="flex flex-col gap-3">
+                    <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Phone Number</label>
+                    <div className="flex gap-2">
+                      <div className="relative w-1/3 shrink-0">
+                        <select
+                          value={phoneCode}
+                          onChange={(e) => setPhoneCode(e.target.value)}
+                          className="w-full bg-background border border-border rounded-xl px-4 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner appearance-none pr-8 font-sans"
+                        >
+                          {COUNTRY_CODES.map((c) => (
+                            <option key={`${c.code}-${c.dialCode}`} value={c.dialCode}>
+                              {c.code} ({c.dialCode})
+                            </option>
+                          ))}
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                          <svg className="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      </div>
+                      <input
+                        type="tel"
+                        placeholder="Enter phone number"
+                        value={phoneNo}
+                        onChange={(e) => setPhoneNo(e.target.value.replace(/[^0-9]/g, ""))}
+                        className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner font-sans"
+                      />
+                    </div>
+                  </div>
 
                   {/* If country has been selected */}
                   {promoterData.intlBankCountry && (

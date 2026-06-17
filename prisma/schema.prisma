@@ -63,6 +63,7 @@ model Promoter {
   username         String?  @unique
   referralCode     String   @unique
   avatarUrl        String?
+  phoneNumber      String?
   payoutMethod     String? // @deprecated
   payoutDetails    String? // @deprecated
   payoutRegion     String?

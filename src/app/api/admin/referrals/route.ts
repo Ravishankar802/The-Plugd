@@ -33,6 +33,14 @@ export async function GET() {
       })
     ]);
 
+    // Find the IDs of the top 50 made earners
+    const top50Ids = new Set(
+      [...promoters]
+        .sort((a, b) => b.totalEarned - a.totalEarned)
+        .slice(0, 50)
+        .map(p => p.id)
+    );
+
     // Map promoters to include calculated stats
     const promotersWithStats = promoters.map(promoter => {
       const hasReferrals = promoter.Referral.length > 0;
@@ -50,8 +58,11 @@ export async function GET() {
         wr => wr.userId.toLowerCase() === promoter.email.toLowerCase()
       );
 
+      const isTop50 = top50Ids.has(promoter.id);
+
       return {
         ...promoter,
+        phoneNumber: isTop50 ? null : promoter.phoneNumber,
         totalClicks: clicks,
         totalSignups: signupCount,
         paidUsers,
