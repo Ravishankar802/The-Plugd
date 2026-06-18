@@ -14,7 +14,7 @@ export default function Header() {
           
           <div className="flex items-center gap-2 relative z-10">
             <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Average earning</span>
-            <span className="text-[0.75rem] font-bold text-foreground">₹14,000/Day</span>
+            <span className="text-[0.75rem] font-bold text-foreground">₹5L/Month</span>
           </div>
           
           <div className="w-[1px] h-4 bg-border/60 mx-4 md:mx-6 shrink-0 relative z-10" />
