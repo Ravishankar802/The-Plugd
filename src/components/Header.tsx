@@ -10,7 +10,7 @@ export default function Header() {
 
       <div className="w-full flex items-center justify-center mb-8 animate-in fade-in slide-in-from-top-2 duration-500 relative z-10">
         <div className="inline-flex items-center bg-pill/80 backdrop-blur-sm border border-border/80 rounded-full px-6 py-3 shadow-sm hover:border-border/100 hover:bg-pill transition-all group relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite] pointer-events-none" />
+          <div className="absolute inset-0 bg-[linear-gradient(110deg,transparent_30%,rgba(255,240,210,0.35)_50%,transparent_70%)] -translate-x-full animate-[shimmer_2.5s_infinite] pointer-events-none" />
           
           <div className="flex items-center gap-2 relative z-10">
             <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Average earning</span>
