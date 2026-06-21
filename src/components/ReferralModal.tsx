@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { X, ArrowRight, ArrowLeft, Link as LinkIcon, IndianRupee, Infinity, Gift, Sparkles, Loader2, Mail, ChevronDown, Check, Wallet, Users, Trophy } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -16,6 +16,7 @@ interface ReferralModalProps {
 
 export default function ReferralModal({ isOpen, onClose, userEmail, referralCode = "" }: ReferralModalProps) {
   const { theme, resolvedTheme } = useTheme();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState("");
   const [showEmailInput, setShowEmailInput] = useState(false);
@@ -140,6 +141,12 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       setFormData(prev => ({ ...prev, email: userEmail }));
     }
   }, [userEmail]);
+
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0;
+    }
+  }, [showEmailInput, isOpen]);
 
   if (!isOpen) return null;
 
@@ -356,28 +363,34 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       >
         
         {/* Content Area */}
-        <div className="px-6 md:px-8 pt-6 pb-8 flex flex-col items-center max-h-[90vh] overflow-y-auto no-scrollbar">
+        <div ref={scrollContainerRef} className="px-6 md:px-8 pt-6 pb-8 flex flex-col items-center max-h-[90vh] overflow-y-auto no-scrollbar">
           
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            className="self-end p-2 mb-2 hover:bg-accent rounded-full transition-all text-muted hover:text-foreground border border-transparent hover:border-border cursor-pointer shrink-0"
-          >
-            <X className="w-5 h-5" />
-          </button>
-          
-          {showEmailInput ? (
-            // STEP 2: DETAILS CAPTURE FORM
-            <div className="w-full animate-in fade-in slide-in-from-bottom-2 duration-300">
-              {/* Back Button */}
+          {/* Header Row */}
+          <div className="w-full flex items-center justify-between mb-4 shrink-0">
+            {showEmailInput ? (
               <button 
                 type="button"
                 onClick={() => setShowEmailInput(false)}
-                className="flex items-center gap-1.5 mb-6 text-xs font-bold text-muted hover:text-foreground cursor-pointer transition-colors"
+                className="flex items-center gap-1.5 text-xs font-bold text-muted hover:text-foreground cursor-pointer transition-colors"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 <span>Back to plans</span>
               </button>
+            ) : (
+              <div />
+            )}
+            
+            <button
+              onClick={onClose}
+              className="p-2 hover:bg-accent rounded-full transition-all text-muted hover:text-foreground border border-transparent hover:border-border cursor-pointer shrink-0"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          
+          {showEmailInput ? (
+            // STEP 2: DETAILS CAPTURE FORM
+            <div className="w-full animate-in fade-in slide-in-from-bottom-2 duration-300">
 
               {/* Selected Plan Details Badge */}
               <div className="flex items-center justify-between w-full border border-border bg-black/40 rounded-xl p-4 mb-6">
@@ -538,7 +551,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       {phoneCodeDropdownOpen && (
                         <>
                           <div className="fixed inset-0 z-40" onClick={() => setPhoneCodeDropdownOpen(false)} />
-                          <div className="absolute left-0 mt-1.5 w-[260px] bg-black border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto animate-in fade-in duration-150">
+                          <div className="absolute left-0 bottom-full mb-1.5 w-[260px] bg-black border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto animate-in fade-in duration-150">
                             {COUNTRY_CODES.map((c) => (
                               <button
                                 key={`${c.code}-${c.dialCode}`}
@@ -838,7 +851,6 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       {/* Hero Price */}
                       <div className="flex flex-col items-center justify-center py-2">
                         <span className="text-4xl md:text-5xl font-medium text-white font-sans tracking-tight rich-number">₹199</span>
-                        <span className="text-[10px] text-muted/60 font-medium mt-0.5 font-sans">one-time</span>
                       </div>
 
                       {/* Earning Potential */}
@@ -899,7 +911,6 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       {/* Hero Price */}
                       <div className="flex flex-col items-center justify-center py-2">
                         <span className="text-4xl md:text-5xl font-medium text-white font-sans tracking-tight rich-number">₹499</span>
-                        <span className="text-[10px] text-muted/60 font-medium mt-0.5 font-sans">one-time</span>
                       </div>
 
                       {/* Earning Potential */}
@@ -960,7 +971,6 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       {/* Hero Price */}
                       <div className="flex flex-col items-center justify-center py-2">
                         <span className="text-4xl md:text-5xl font-medium text-white font-sans tracking-tight rich-number">₹999</span>
-                        <span className="text-[10px] text-muted/60 font-medium mt-0.5 font-sans">one-time</span>
                       </div>
 
                       {/* Earning Potential */}
