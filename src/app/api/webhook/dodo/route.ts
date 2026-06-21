@@ -61,7 +61,7 @@ export async function POST(req: Request) {
         let selectedTier: PromoterTier = PromoterTier.STARTER;
 
         const starterId = process.env.NEXT_PUBLIC_DODO_STARTER_PRODUCT_ID || "pdt_0Nejljx2mdXJSOgzLprt5";
-        const proId = process.env.NEXT_PUBLIC_DODO_PRO_PRODUCT_ID || "pdt_0NhVMNBBsEQWhalkkliJE";
+        const proId = process.env.NEXT_PUBLIC_DODO_PRO_PRODUCT_ID || "pdt_0NhVMNBBsEQWhaIkkliJE";
         const maxId = process.env.NEXT_PUBLIC_DODO_MAX_PRODUCT_ID || "pdt_0NhVMasO6TQwK4pK427wT";
 
         if (
@@ -70,7 +70,7 @@ export async function POST(req: Request) {
           productId === "pdt_0NejIjx2mdXJSOgzLprt5"
         ) {
           selectedTier = PromoterTier.STARTER;
-        } else if (productId === proId || productId === "pdt_0NhVMNBBsEQWhalkkliJE") {
+        } else if (productId === proId || productId === "pdt_0NhVMNBBsEQWhaIkkliJE") {
           selectedTier = PromoterTier.PRO;
         } else if (productId === maxId || productId === "pdt_0NhVMasO6TQwK4pK427wT") {
           selectedTier = PromoterTier.MAX;

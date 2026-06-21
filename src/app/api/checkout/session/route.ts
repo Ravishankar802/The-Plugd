@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     if (tier === "STARTER") {
       productId = process.env.NEXT_PUBLIC_DODO_STARTER_PRODUCT_ID || "pdt_0Nejljx2mdXJSOgzLprt5";
     } else if (tier === "PRO") {
-      productId = process.env.NEXT_PUBLIC_DODO_PRO_PRODUCT_ID || "pdt_0NhVMNBBsEQWhalkkliJE";
+      productId = process.env.NEXT_PUBLIC_DODO_PRO_PRODUCT_ID || "pdt_0NhVMNBBsEQWhaIkkliJE";
     } else if (tier === "MAX") {
       productId = process.env.NEXT_PUBLIC_DODO_MAX_PRODUCT_ID || "pdt_0NhVMasO6TQwK4pK427wT";
     } else {
