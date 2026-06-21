@@ -867,7 +867,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
                     {/* Earning Calculator */}
                     <div className="text-center pt-1 pb-2">
-                      <span className="text-[11px] font-semibold text-muted/50">100 referrals – ₹10,000</span>
+                      <span className="text-[11px] font-semibold text-muted/50">100 referrals = ₹10,000</span>
                     </div>
                   </div>
 
