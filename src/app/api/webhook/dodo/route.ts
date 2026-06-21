@@ -1,11 +1,25 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import DodoPayments from "dodopayments";
+import { PromoterTier } from "@prisma/client";
 
 function generateReferralCode(email: string) {
   const base = email.split("@")[0].toLowerCase().replace(/[^a-z0-9]/g, "");
   const random = Math.random().toString(36).substring(2, 6);
   return `${base}-${random}`;
+}
+
+function calculateCommission(referrerTier: PromoterTier, purchasedTier: PromoterTier): number {
+  if (referrerTier === PromoterTier.PRO) {
+    if (purchasedTier === PromoterTier.STARTER) return 100.0;
+    return 250.0;
+  }
+  if (referrerTier === PromoterTier.MAX) {
+    if (purchasedTier === PromoterTier.STARTER) return 100.0;
+    if (purchasedTier === PromoterTier.PRO) return 250.0;
+    return 500.0;
+  }
+  return 100.0;
 }
 
 export async function POST(req: Request) {
@@ -42,6 +56,9 @@ export async function POST(req: Request) {
         const referralCode = metadata.metadata_referralCode || metadata.referralCode;
         const username = metadata.metadata_username || null;
         
+        const rawTier = metadata.metadata_tier || metadata.tier || "STARTER";
+        const selectedTier = (rawTier === "PRO" || rawTier === "MAX") ? (rawTier as PromoterTier) : PromoterTier.STARTER;
+
         await prisma.promoter.upsert({
           where: { email },
           create: {
@@ -50,6 +67,7 @@ export async function POST(req: Request) {
             xHandle: metadata.metadata_xHandle || null,
             username,
             referralCode: username || generateReferralCode(email),
+            tier: selectedTier,
             phoneNumber: metadata.metadata_phoneNumber || metadata.phoneNumber || null,
             payoutMethod: metadata.metadata_payoutMethod || null,
             payoutDetails: metadata.metadata_payoutDetails || null,
@@ -74,7 +92,9 @@ export async function POST(req: Request) {
             totalClicks: 0,
             totalConversions: 0
           },
-          update: {} // Already a promoter, just record payment was successful if needed
+          update: {
+            tier: selectedTier
+          }
         });
         
         // Handle Referral Credit Logic for Promoter Signups ($2 payment)
@@ -89,12 +109,14 @@ export async function POST(req: Request) {
           });
           
           if (referringPromoter) {
+            const commission = calculateCommission(referringPromoter.tier, selectedTier);
+
             await prisma.$transaction([
               prisma.promoter.update({
                 where: { id: referringPromoter.id },
                 data: {
-                  totalEarned: { increment: 100.0 },
-                  pendingPayout: { increment: 100.0 },
+                  totalEarned: { increment: commission },
+                  pendingPayout: { increment: commission },
                   totalConversions: { increment: 1 }
                 }
               }),
@@ -103,7 +125,7 @@ export async function POST(req: Request) {
                   referralCode: referralCode,
                   promoterEmail: referringPromoter.email,
                   status: "converted",
-                  amountEarned: 100.0,
+                  amountEarned: commission,
                   paymentId: payment.payment_id,
                   convertedAt: new Date()
                 }

@@ -55,6 +55,12 @@ model ReferralPayout {
   promoter    Promoter @relation(fields: [promoterId], references: [id], onDelete: Cascade)
 }
 
+enum PromoterTier {
+  STARTER
+  PRO
+  MAX
+}
+
 model Promoter {
   id               Int      @id @default(autoincrement())
   email            String   @unique
@@ -62,6 +68,7 @@ model Promoter {
   xHandle          String?
   username         String?  @unique
   referralCode     String   @unique
+  tier             PromoterTier @default(STARTER)
   avatarUrl        String?
   phoneNumber      String?
   payoutMethod     String? // @deprecated

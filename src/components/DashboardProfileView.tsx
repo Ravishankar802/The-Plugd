@@ -408,9 +408,16 @@ here's my link 👉 ${link}`
           {/* Promoter Settings Section */}
           {(hasPromoter || isAdmin) && promoterData && (
             <div className="mt-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
-              <div className="mb-8">
-                <h2 className="text-[2rem] font-[700] text-foreground leading-tight tracking-tight">Your Profile</h2>
-                <p className="text-muted text-[1rem] mt-1.5 font-normal">Your referral identity and payout details.</p>
+              <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <h2 className="text-[2rem] font-[700] text-foreground leading-tight tracking-tight">Your Profile</h2>
+                  <p className="text-muted text-[1rem] mt-1.5 font-normal">Your referral identity and payout details.</p>
+                </div>
+                {promoterData.tier && (
+                  <div className="self-start sm:self-center px-4 py-1.5 rounded-full border text-xs font-black uppercase tracking-widest bg-emerald-500/10 border-emerald-500/30 text-emerald-400">
+                    {promoterData.tier} Tier
+                  </div>
+                )}
               </div>
 
               <div className="bg-pill border border-border rounded-[16px] p-6 md:p-10 shadow-2xl">
@@ -506,6 +513,54 @@ here's my link 👉 ${link}`
                       <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Member since</label>
                       <div className="w-full bg-background border border-border rounded-xl px-5 py-4 text-muted/60 text-[1rem] opacity-70 font-medium">
                         {new Date(promoterData.createdAt).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Tier & Commission Structure Section */}
+                  <div className="border-t border-border/40 pt-8 space-y-6">
+                    <h3 className="text-lg font-bold text-foreground">Promoter Tier & Commissions</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-zinc-950/40 border border-border/60 rounded-xl p-6">
+                      <div className="flex flex-col gap-1.5">
+                        <span className="text-xs text-muted uppercase font-bold tracking-wider">Current Tier</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl font-extrabold text-foreground tracking-tight">{promoterData.tier || "STARTER"}</span>
+                          <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">Active</span>
+                        </div>
+                      </div>
+                      
+                      <div className="flex flex-col gap-2">
+                        <span className="text-xs text-muted uppercase font-bold tracking-wider">Commission Structure</span>
+                        <div className="space-y-1 text-sm font-medium text-foreground">
+                          {promoterData.tier === "STARTER" && (
+                            <>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹199 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹499 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
+                              <div className="flex justify-between"><span>₹999 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
+                            </>
+                          )}
+                          {promoterData.tier === "PRO" && (
+                            <>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹199 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹499 sale</span> <span className="font-bold text-emerald-400">Earn ₹250</span></div>
+                              <div className="flex justify-between"><span>₹999 sale</span> <span className="font-bold text-emerald-400">Earn ₹250</span></div>
+                            </>
+                          )}
+                          {promoterData.tier === "MAX" && (
+                            <>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹199 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹499 sale</span> <span className="font-bold text-emerald-400">Earn ₹250</span></div>
+                              <div className="flex justify-between"><span>₹999 sale</span> <span className="font-bold text-emerald-400">Earn ₹500</span></div>
+                            </>
+                          )}
+                          {(!promoterData.tier || (promoterData.tier !== "STARTER" && promoterData.tier !== "PRO" && promoterData.tier !== "MAX")) && (
+                            <>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹199 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹499 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
+                              <div className="flex justify-between"><span>₹999 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
+                            </>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>

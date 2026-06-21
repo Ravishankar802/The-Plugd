@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import { PromoterTier } from "@prisma/client";
 
 export async function PATCH(
   req: Request,
@@ -50,8 +51,13 @@ export async function PATCH(
       intlBsbCode,
       intlTransitNumber,
       intlInstitutionNumber,
-      intlBankCountry
+      intlBankCountry,
+      tier
     } = body;
+
+    if (tier && !Object.values(PromoterTier).includes(tier as PromoterTier)) {
+      return NextResponse.json({ error: "Invalid promoter tier" }, { status: 400 });
+    }
 
     // Check if username already taken by another promoter
     if (username) {
@@ -117,6 +123,7 @@ export async function PATCH(
         intlTransitNumber,
         intlInstitutionNumber,
         intlBankCountry,
+        tier: tier ? (tier as PromoterTier) : undefined,
         referralCode: username ? username.trim() : undefined
       }
     });

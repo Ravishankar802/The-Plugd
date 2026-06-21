@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { X, ArrowRight, Link as LinkIcon, IndianRupee, Infinity, Gift, Sparkles, Loader2, Mail, ChevronDown, Check } from "lucide-react";
+import { X, ArrowRight, ArrowLeft, Link as LinkIcon, IndianRupee, Infinity, Gift, Sparkles, Loader2, Mail, ChevronDown, Check } from "lucide-react";
 import { useTheme } from "next-themes";
 import { getFieldsForCountry } from "@/lib/payoutFieldsByCountry";
 import { COUNTRY_CODES } from "@/lib/countryCodes";
@@ -19,6 +19,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
   const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState("");
   const [showEmailInput, setShowEmailInput] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<"STARTER" | "PRO" | "MAX">("STARTER");
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -304,6 +305,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
           name: formData.name,
           metadata: filteredParams,
           country: derivedCountry,
+          tier: selectedPlan,
         }),
       });
 
@@ -322,7 +324,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-hidden">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-hidden animate-in fade-in duration-200">
       <style>{`
         .georgia-modal,
         .georgia-modal input,
@@ -343,49 +345,55 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
       `}</style>
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-black/60 backdrop-blur-md animate-in fade-in duration-300" 
+        className="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-300" 
         onClick={onClose} 
       />
       
       {/* Modal Container */}
       <div 
-        className="relative w-full max-w-xl bg-pill border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300 max-h-[90vh] georgia-modal"
+        className={`relative w-full ${showEmailInput ? 'max-w-xl' : 'max-w-5xl'} bg-pill border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col transition-all duration-300 max-h-[90vh] georgia-modal`}
       >
         
         {/* Content Area */}
-        <div className="px-8 pt-6 sm:pt-3 pb-8 flex flex-col items-center max-h-[90vh] overflow-y-auto no-scrollbar">
+        <div className="px-6 md:px-8 pt-6 pb-8 flex flex-col items-center max-h-[90vh] overflow-y-auto no-scrollbar">
           
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="self-end p-2 mb-2 hover:bg-accent rounded-full transition-all text-muted hover:text-foreground border border-transparent hover:border-border"
+            className="self-end p-2 mb-2 hover:bg-accent rounded-full transition-all text-muted hover:text-foreground border border-transparent hover:border-border cursor-pointer shrink-0"
           >
             <X className="w-5 h-5" />
           </button>
           
-          {/* Top Decorative Icon */}
-          <div className="flex justify-center mb-5">
-            <div className="relative">
-              <div className="absolute -inset-2 bg-[#16a34a]/20 rounded-full blur-xl animate-pulse" />
-              <div className="relative w-12 h-12 bg-[#16a34a]/10 rounded-2xl flex items-center justify-center border border-[#16a34a]/20">
-                <Gift className="w-6 h-6 text-[#16a34a]" strokeWidth={1.5} />
-              </div>
-              <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-[#16a34a] animate-bounce" />
-            </div>
-          </div>
-
-          {/* Typography */}
-          <div className="text-center space-y-1.5 mb-7">
-            <h2 className="text-[1.5rem] font-[800] tracking-tight leading-[1.1]">
-              Join Plugd&apos;s Referral Program
-            </h2>
-            <p className="text-[0.95rem] text-[#16a34a] font-bold tracking-tight">
-              Refer your network to join Plugd and earn for every successful referral.
-            </p>
-          </div>
-
           {showEmailInput ? (
-            <div className="w-full space-y-6 mb-7 animate-in fade-in slide-in-from-bottom-2 duration-300">
+            // STEP 2: DETAILS CAPTURE FORM
+            <div className="w-full animate-in fade-in slide-in-from-bottom-2 duration-300">
+              {/* Back Button */}
+              <button 
+                type="button"
+                onClick={() => setShowEmailInput(false)}
+                className="flex items-center gap-1.5 mb-6 text-xs font-bold text-muted hover:text-foreground cursor-pointer transition-colors"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>Back to plans</span>
+              </button>
+
+              {/* Selected Plan Details Badge */}
+              <div className="flex items-center justify-between w-full border border-border bg-black/40 rounded-xl p-4 mb-6">
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[10px] text-muted uppercase font-bold tracking-wider">Selected Plan</span>
+                  <span className="text-sm font-extrabold text-white tracking-tight">{selectedPlan}</span>
+                </div>
+                <div className="text-right">
+                  <span className="text-xs text-muted font-medium">Price</span>
+                  <p className="text-base font-extrabold text-[#16a34a] font-sans">
+                    {selectedPlan === "STARTER" && "₹199"}
+                    {selectedPlan === "PRO" && "₹499"}
+                    {selectedPlan === "MAX" && "₹999"}
+                  </p>
+                </div>
+              </div>
+
               <div className="space-y-6">
                 {/* Full Name */}
                 <div className="flex flex-col gap-3">
@@ -457,7 +465,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                     {countryDropdownOpen && (
                       <>
                         <div className="fixed inset-0 z-40" onClick={() => setCountryDropdownOpen(false)} />
-                        <div className="absolute left-0 mt-1.5 w-full bg-black border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto">
+                        <div className="absolute left-0 mt-1.5 w-full bg-black border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto animate-in fade-in duration-150">
                           {[...COUNTRY_CODES.map(c => c.name), "Other"].map((country) => (
                             <button
                               key={country}
@@ -529,7 +537,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       {phoneCodeDropdownOpen && (
                         <>
                           <div className="fixed inset-0 z-40" onClick={() => setPhoneCodeDropdownOpen(false)} />
-                          <div className="absolute left-0 mt-1.5 w-[260px] bg-black border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto">
+                          <div className="absolute left-0 mt-1.5 w-[260px] bg-black border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto animate-in fade-in duration-150">
                             {COUNTRY_CODES.map((c) => (
                               <button
                                 key={`${c.code}-${c.dialCode}`}
@@ -562,10 +570,10 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                   </div>
                 </div>
 
-                {/* If country has been selected */}
+                {/* Payout Details */}
                 {formData.intlBankCountry && (
                   <>
-                    {/* If region is INDIA */}
+                    {/* INDIA */}
                     {formData.payoutRegion === "INDIA" && (
                       <div className="space-y-6">
                         {!useBankTransfer ? (
@@ -651,7 +659,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       </div>
                     )}
 
-                    {/* If region is INTERNATIONAL */}
+                    {/* INTERNATIONAL */}
                     {formData.payoutRegion === "INTERNATIONAL" && (
                       <div className="space-y-6">
                         {!usePaypal ? (
@@ -726,106 +734,224 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                   </>
                 )}
               </div>
+
+              {/* Action Buttons for Step 2 */}
+              <div className="mt-8 space-y-3">
+                <button
+                  onClick={handleJoin}
+                  disabled={loading || (usernameStatus !== 'available' || !formData.name.trim() || !formData.email.trim() || !isPayoutInfoFilled() || !phoneNo.trim())}
+                  className="w-full bg-[#16a34a] text-white font-[800] text-[1rem] py-[14px] rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg shadow-green-600/20 disabled:opacity-50 cursor-pointer"
+                >
+                  {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (
+                    <>
+                      <span>
+                        Continue to Payment (
+                        {selectedPlan === "STARTER" && "₹199"}
+                        {selectedPlan === "PRO" && "₹499"}
+                        {selectedPlan === "MAX" && "₹999"}
+                        )
+                      </span>
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
+                </button>
+
+                <p className="text-center text-[10px] text-muted/40 font-medium font-sans mt-2 leading-snug">
+                  By continuing, you agree to our{" "}
+                  <Link href="/terms-of-service" className="underline hover:text-foreground transition-colors" target="_blank">
+                    Terms of Service
+                  </Link>
+                  .
+                </p>
+              </div>
             </div>
           ) : (
-            <div className="space-y-4 mb-7 max-w-[280px] mx-auto">
-              <div className="flex items-center gap-3">
-                <div 
-                  style={{ backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}
-                  className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border border-border"
-                >
-                  <LinkIcon className="w-4 h-4" style={{ color: isDark ? '#ffffff' : '#000000' }} />
+            // STEP 1: CHOOSE YOUR PROMOTER PLAN
+            <div className="w-full space-y-8 animate-in fade-in duration-300">
+              {/* Header */}
+              <div className="text-center space-y-2 max-w-xl mx-auto">
+                <h2 className="text-2xl md:text-3xl font-[800] tracking-tight text-white leading-tight">
+                  Choose Your Promoter Plan
+                </h2>
+                <p className="text-sm md:text-base text-muted/80">
+                  Join Plugd, get your referral link, and earn commissions from successful referrals.
+                </p>
+              </div>
+
+              {/* Grid of 3 Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch justify-center max-w-5xl mx-auto px-2">
+                {/* Plan 1: STARTER */}
+                <div className="relative bg-zinc-950/65 border-2 border-[#16a34a] rounded-2xl p-6 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 shadow-xl">
+                  {/* Badge */}
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#16a34a] text-white text-[10px] uppercase font-black tracking-widest px-3.5 py-1 rounded-full shadow-lg whitespace-nowrap">
+                    Most Popular
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="space-y-1.5 text-center mt-2">
+                      <h3 className="text-lg font-bold text-white uppercase tracking-wider">Starter</h3>
+                      <div className="flex items-baseline justify-center gap-1">
+                        <span className="text-3xl font-extrabold text-white font-sans">₹199</span>
+                        <span className="text-xs text-muted/70 font-medium">one-time</span>
+                      </div>
+                      <p className="text-xs text-muted/95 min-h-[32px] flex items-center justify-center leading-normal">
+                        Perfect for beginners starting their referral journey.
+                      </p>
+                    </div>
+
+                    <div className="border-t border-border/40 pt-4 space-y-2">
+                      <p className="text-[10px] font-bold text-muted uppercase tracking-wider text-center">Commission Structure</p>
+                      <div className="space-y-2 text-xs">
+                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2.5">
+                          <span className="text-muted/80">₹199 sale</span>
+                          <span className="font-bold text-[#16a34a]">Earn ₹100</span>
+                        </div>
+                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2.5">
+                          <span className="text-muted/80">₹499 sale</span>
+                          <span className="font-bold text-[#16a34a]">Earn ₹100</span>
+                        </div>
+                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2.5">
+                          <span className="text-muted/80">₹999 sale</span>
+                          <span className="font-bold text-[#16a34a]">Earn ₹100</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      setSelectedPlan("STARTER");
+                      setShowEmailInput(true);
+                    }}
+                    className="w-full mt-6 bg-[#16a34a] text-white font-[800] text-sm py-3.5 rounded-xl transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-md shadow-green-600/10 cursor-pointer"
+                  >
+                    Join Starter
+                  </button>
                 </div>
-                <p className="font-semibold text-[0.95rem]">Share your referral link</p>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <div 
-                  style={{ backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}
-                  className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border border-border"
-                >
-                  <IndianRupee className="w-4 h-4" style={{ color: isDark ? '#ffffff' : '#000000' }} />
+
+                {/* Plan 2: PRO */}
+                <div className="relative bg-zinc-950/65 border border-zinc-800 rounded-2xl p-6 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 shadow-xl">
+                  <div className="space-y-4">
+                    <div className="space-y-1.5 text-center mt-2">
+                      <h3 className="text-lg font-bold text-white uppercase tracking-wider">Pro</h3>
+                      <div className="flex items-baseline justify-center gap-1">
+                        <span className="text-3xl font-extrabold text-white font-sans">₹499</span>
+                        <span className="text-xs text-muted/70 font-medium">one-time</span>
+                      </div>
+                      <p className="text-xs text-muted/95 min-h-[32px] flex items-center justify-center leading-normal">
+                        Higher earning potential for active promoters.
+                      </p>
+                    </div>
+
+                    <div className="border-t border-border/40 pt-4 space-y-2">
+                      <p className="text-[10px] font-bold text-muted uppercase tracking-wider text-center">Commission Structure</p>
+                      <div className="space-y-2 text-xs">
+                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2.5">
+                          <span className="text-muted/80">₹199 sale</span>
+                          <span className="font-bold text-[#16a34a]">Earn ₹100</span>
+                        </div>
+                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2.5">
+                          <span className="text-muted/80">₹499 sale</span>
+                          <span className="font-bold text-[#16a34a]">Earn ₹250</span>
+                        </div>
+                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2.5">
+                          <span className="text-muted/80">₹999 sale</span>
+                          <span className="font-bold text-[#16a34a]">Earn ₹250</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      setSelectedPlan("PRO");
+                      setShowEmailInput(true);
+                    }}
+                    className="w-full mt-6 bg-zinc-800 text-white border border-zinc-700 font-[800] text-sm py-3.5 rounded-xl transition-all hover:bg-zinc-700 hover:border-zinc-600 active:scale-[0.98] cursor-pointer"
+                  >
+                    Join Pro
+                  </button>
                 </div>
-                <p className="font-semibold text-[0.95rem]">Get paid for each referral</p>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <div 
-                  style={{ backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}
-                  className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border border-border"
-                >
-                  <Infinity className="w-4 h-4" style={{ color: isDark ? '#ffffff' : '#000000' }} />
+
+                {/* Plan 3: MAX */}
+                <div className="relative bg-zinc-950/65 border border-emerald-500/50 shadow-[0_0_25px_rgba(16,185,129,0.15)] rounded-2xl p-6 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300">
+                  {/* Badge */}
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-500 text-black text-[10px] uppercase font-black tracking-widest px-3.5 py-1 rounded-full shadow-lg whitespace-nowrap">
+                    Highest Earnings
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="space-y-1.5 text-center mt-2">
+                      <h3 className="text-lg font-bold text-white uppercase tracking-wider">Max</h3>
+                      <div className="flex items-baseline justify-center gap-1">
+                        <span className="text-3xl font-extrabold text-white font-sans">₹999</span>
+                        <span className="text-xs text-muted/70 font-medium">one-time</span>
+                      </div>
+                      <p className="text-xs text-muted/95 min-h-[32px] flex items-center justify-center leading-normal">
+                        Unlock maximum commission potential.
+                      </p>
+                    </div>
+
+                    <div className="border-t border-border/40 pt-4 space-y-2">
+                      <p className="text-[10px] font-bold text-muted uppercase tracking-wider text-center">Commission Structure</p>
+                      <div className="space-y-2 text-xs">
+                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2.5">
+                          <span className="text-muted/80">₹199 sale</span>
+                          <span className="font-bold text-[#16a34a]">Earn ₹100</span>
+                        </div>
+                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2.5">
+                          <span className="text-muted/80">₹499 sale</span>
+                          <span className="font-bold text-[#16a34a]">Earn ₹250</span>
+                        </div>
+                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2.5">
+                          <span className="text-muted/80">₹999 sale</span>
+                          <span className="font-bold text-[#16a34a]">Earn ₹500</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      setSelectedPlan("MAX");
+                      setShowEmailInput(true);
+                    }}
+                    className="w-full mt-6 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-[800] text-sm py-3.5 rounded-xl transition-all hover:opacity-95 hover:scale-[1.01] active:scale-[0.98] shadow-md shadow-emerald-500/10 cursor-pointer"
+                  >
+                    Join Max
+                  </button>
                 </div>
-                <p className="font-semibold text-[0.95rem]">Unlimited earning potential</p>
-              </div>
-            </div>
-          )}
-
-          {/* Stat Boxes */}
-          {!showEmailInput && (
-            <div className="grid grid-cols-2 gap-3 mb-7 w-full">
-              <div 
-                style={{ 
-                  backgroundColor: isDark ? '#262626' : '#f9f9f9',
-                  borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
-                }}
-                className="border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm"
-              >
-                <span style={{ color: isDark ? '#a1a1aa' : '#666666' }} className="text-[0.6rem] font-bold uppercase tracking-[0.05em] text-center leading-tight">
-                  Top referrer earnings
-                </span>
-                <span className="text-[1.35rem] font-[900] tracking-tighter rich-number">₹1Cr+</span>
               </div>
 
-              <div 
-                style={{ 
-                  backgroundColor: isDark ? '#262626' : '#f9f9f9',
-                  borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
-                }}
-                className="border rounded-xl p-4 flex flex-col items-center justify-center space-y-0.5 shadow-sm"
-              >
-                <span style={{ color: isDark ? '#a1a1aa' : '#666666' }} className="text-[0.6rem] font-bold uppercase tracking-[0.05em] text-center leading-tight">
-                  All-time earnings
-                </span>
-                <span className="text-[1.35rem] font-[900] tracking-tighter rich-number">₹100Cr+</span>
+              {/* Social Proof Stats */}
+              <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto pt-6 border-t border-border/20">
+                <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-4 flex flex-col items-center justify-center space-y-1 shadow-md">
+                  <span className="text-[0.65rem] text-muted font-bold uppercase tracking-[0.1em] text-center leading-none">
+                    Top Referrer Earnings
+                  </span>
+                  <span className="text-xl md:text-2xl font-[900] tracking-tighter text-white font-sans">
+                    ₹1Cr+
+                  </span>
+                </div>
+                <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-4 flex flex-col items-center justify-center space-y-1 shadow-md">
+                  <span className="text-[0.65rem] text-muted font-bold uppercase tracking-[0.1em] text-center leading-none">
+                    All-Time Earnings
+                  </span>
+                  <span className="text-xl md:text-2xl font-[900] tracking-tighter text-white font-sans">
+                    ₹100Cr+
+                  </span>
+                </div>
               </div>
-            </div>
-          )}
 
-          {/* Primary CTA */}
-          <div className="w-full space-y-3">
-            <button
-              onClick={handleJoin}
-              disabled={loading || (showEmailInput && (usernameStatus !== 'available' || !formData.name.trim() || !formData.email.trim() || !isPayoutInfoFilled() || !phoneNo.trim()))}
-              className="w-full bg-[#16a34a] text-white font-[800] text-[1rem] py-[14px] rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg shadow-green-600/20 disabled:opacity-50"
-            >
-              {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (
-                <>
-                  <span>{showEmailInput ? "Continue to Payment" : <>Join now for <span className="rich-number">₹199</span></>}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </>
-              )}
-            </button>
-
-            {showEmailInput && (
-              <p className="text-center text-[10px] text-muted/40 font-medium font-sans mt-2 leading-snug">
-                By continuing, you agree to our{" "}
-                <Link href="/terms-of-service" className="underline hover:text-foreground transition-colors" target="_blank">
-                  Terms of Service
-                </Link>
-                .
-              </p>
-            )}
-
-            {!showEmailInput && (
-              <p className="text-center text-xs text-muted/80 font-bold font-sans">
+              {/* Login Link */}
+              <p className="text-center text-xs text-muted/80 font-bold font-sans mt-4">
                 Already a member?{" "}
                 <Link href="/login" className="text-foreground hover:underline transition-all">
                   Log in
                 </Link>
               </p>
-            )}
-          </div>
+            </div>
+          )}
           
         </div>
       </div>

@@ -68,6 +68,7 @@ interface Promoter {
   phoneNumber?: string | null;
   username: string | null;
   referralCode: string;
+  tier?: "STARTER" | "PRO" | "MAX";
   payoutMethod: string | null;
   payoutDetails: string | null;
   payoutRegion: string | null;
@@ -146,6 +147,7 @@ export default function ManageReferralsClient() {
   const [promoters, setPromoters] = useState<Promoter[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [tierFilter, setTierFilter] = useState<string>("ALL");
   const [copied, setCopied] = useState<string | null>(null);
   const [historyPromoter, setHistoryPromoter] = useState<Promoter | null>(null);
   const [payoutPromoter, setPayoutPromoter] = useState<Promoter | null>(null);
@@ -216,6 +218,7 @@ export default function ManageReferralsClient() {
         totalEarned: editingPromoter.totalEarned || 0,
         pendingPayout: editingPromoter.pendingPayout || 0,
         totalPaid: editingPromoter.totalPaid || 0,
+        tier: editingPromoter.tier || "STARTER",
         payoutRegion: editingPromoter.payoutRegion || "INDIA",
         upiId: editingPromoter.upiId || "",
         paypalEmail: editingPromoter.paypalEmail || "",
@@ -463,12 +466,15 @@ export default function ManageReferralsClient() {
 
   const filteredAndSorted = useMemo(() => {
     return promoters
-      .filter(p => 
-        p.email.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        p.referralCode.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (p.username && p.username.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        p.name.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+      .filter(p => {
+        const matchesSearch = 
+          p.email.toLowerCase().includes(searchQuery.toLowerCase()) || 
+          p.referralCode.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (p.username && p.username.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          p.name.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchesTier = tierFilter === "ALL" || p.tier === tierFilter;
+        return matchesSearch && matchesTier;
+      })
       .sort((a, b) => {
         const aVal = a[sortField];
         const bVal = b[sortField];
@@ -485,7 +491,7 @@ export default function ManageReferralsClient() {
         
         return 0;
       });
-  }, [promoters, searchQuery, sortField, sortOrder]);
+  }, [promoters, searchQuery, tierFilter, sortField, sortOrder]);
 
   const handleSort = (field: keyof Promoter) => {
     if (sortField === field) {
@@ -617,6 +623,18 @@ export default function ManageReferralsClient() {
           
           <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto z-30">
             <p className="text-muted text-[0.7rem] font-medium sm:hidden">Found {filteredAndSorted.length}</p>
+            <div className="relative">
+              <select
+                value={tierFilter}
+                onChange={(e) => setTierFilter(e.target.value)}
+                className="px-3 py-1.5 bg-accent border border-border text-foreground rounded-lg text-xs font-semibold focus:outline-none transition-all cursor-pointer hover:bg-accent/80"
+              >
+                <option value="ALL">All Tiers</option>
+                <option value="STARTER">STARTER</option>
+                <option value="PRO">PRO</option>
+                <option value="MAX">MAX</option>
+              </select>
+            </div>
             {/* Custom Sort Joined Dropdown */}
             <div className="relative">
               <button 
@@ -690,6 +708,9 @@ export default function ManageReferralsClient() {
                 <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("referralCode")}>
                   Code
                 </th>
+                <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center cursor-pointer hover:text-foreground transition-colors" onClick={() => handleSort("tier")}>
+                  Tier
+                </th>
                 <th className="px-3 py-2 text-[0.65rem] font-bold text-muted uppercase tracking-widest">
                   Phone Number
                 </th>
@@ -753,6 +774,15 @@ export default function ManageReferralsClient() {
                         {copied === `link-${p.id}` ? <Check size={8} className="text-green-500" /> : <Copy size={8} className="text-muted group-hover/btn:text-foreground" />}
                       </button>
                     </div>
+                  </td>
+                  <td className="px-3 py-2.5 text-center">
+                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${
+                      p.tier === "MAX" ? "bg-amber-500/10 border border-amber-500/25 text-amber-500" :
+                      p.tier === "PRO" ? "bg-blue-500/10 border border-blue-500/25 text-blue-400" :
+                      "bg-zinc-500/10 border border-zinc-500/25 text-zinc-400"
+                    }`}>
+                      {p.tier || "STARTER"}
+                    </span>
                   </td>
                   <td className="px-3 py-2.5">
                     <span className="font-mono font-medium text-foreground text-[0.75rem]">
@@ -912,6 +942,25 @@ export default function ManageReferralsClient() {
                       onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
                       className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
                     />
+                  </div>
+                  <div className="space-y-1.5 md:col-span-2">
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Promoter Tier</label>
+                    <div className="relative">
+                      <select
+                        value={editForm.tier || "STARTER"}
+                        onChange={(e) => setEditForm({ ...editForm, tier: e.target.value })}
+                        className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all appearance-none pr-8 font-sans"
+                      >
+                        <option value="STARTER">STARTER</option>
+                        <option value="PRO">PRO</option>
+                        <option value="MAX">MAX</option>
+                      </select>
+                      <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                        <svg className="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                   <div className="space-y-1.5 md:col-span-2">
                     <label className="text-xs font-bold text-muted uppercase tracking-wider">Phone Number</label>

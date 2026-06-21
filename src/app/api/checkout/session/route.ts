@@ -7,16 +7,32 @@ const dodo = new DodoPayments({
 
 export async function POST(req: Request) {
   try {
-    const { email, name, metadata, country } = await req.json();
+    const { email, name, metadata, country, tier } = await req.json();
 
     if (!email) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
 
-    const productId = process.env.NEXT_PUBLIC_DODO_PROMOTER_PRODUCT_ID;
+    let productId = "";
+    if (tier === "STARTER") {
+      productId = process.env.NEXT_PUBLIC_DODO_STARTER_PRODUCT_ID || process.env.NEXT_PUBLIC_DODO_PROMOTER_PRODUCT_ID || "";
+    } else if (tier === "PRO") {
+      productId = process.env.NEXT_PUBLIC_DODO_PRO_PRODUCT_ID || process.env.NEXT_PUBLIC_DODO_PROMOTER_PRODUCT_ID || "";
+    } else if (tier === "MAX") {
+      productId = process.env.NEXT_PUBLIC_DODO_MAX_PRODUCT_ID || process.env.NEXT_PUBLIC_DODO_PROMOTER_PRODUCT_ID || "";
+    } else {
+      productId = process.env.NEXT_PUBLIC_DODO_PROMOTER_PRODUCT_ID || "";
+    }
+
     if (!productId) {
       return NextResponse.json({ error: "Product ID not configured" }, { status: 500 });
     }
+
+    const updatedMetadata = {
+      ...metadata,
+      metadata_tier: tier || "STARTER",
+      tier: tier || "STARTER"
+    };
 
     const session = await dodo.checkoutSessions.create({
       product_cart: [
@@ -31,7 +47,7 @@ export async function POST(req: Request) {
       },
       billing_address: country ? { country: country.toUpperCase() } : undefined,
       billing_currency: country?.toUpperCase() === "IN" ? "INR" : undefined,
-      metadata,
+      metadata: updatedMetadata,
       feature_flags: {
         allow_discount_code: false,
       },
