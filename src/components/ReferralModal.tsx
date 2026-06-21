@@ -326,15 +326,15 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-hidden animate-in fade-in duration-200">
       <style>{`
-        .georgia-modal,
-        .georgia-modal input,
-        .georgia-modal button,
-        .georgia-modal select,
-        .georgia-modal textarea,
-        .georgia-modal label,
-        .georgia-modal span,
-        .georgia-modal p,
-        .georgia-modal h2 {
+        .georgia-modal:not(.font-sans),
+        .georgia-modal input:not(.font-sans),
+        .georgia-modal button:not(.font-sans),
+        .georgia-modal select:not(.font-sans),
+        .georgia-modal textarea:not(.font-sans),
+        .georgia-modal label:not(.font-sans),
+        .georgia-modal span:not(.font-sans),
+        .georgia-modal p:not(.font-sans),
+        .georgia-modal h2:not(.font-sans) {
           font-family: Georgia, serif !important;
         }
         .georgia-modal .font-sans,
