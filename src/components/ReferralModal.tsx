@@ -837,7 +837,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       
                       {/* Hero Price */}
                       <div className="flex flex-col items-center justify-center py-2">
-                        <span className="text-4xl md:text-5xl font-black text-white font-sans tracking-tight rich-number">₹199</span>
+                        <span className="text-4xl md:text-5xl font-medium text-white font-sans tracking-tight rich-number">₹199</span>
                         <span className="text-[10px] text-muted/60 font-medium mt-0.5 font-sans">one-time</span>
                       </div>
 
@@ -898,7 +898,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       
                       {/* Hero Price */}
                       <div className="flex flex-col items-center justify-center py-2">
-                        <span className="text-4xl md:text-5xl font-black text-white font-sans tracking-tight rich-number">₹499</span>
+                        <span className="text-4xl md:text-5xl font-medium text-white font-sans tracking-tight rich-number">₹499</span>
                         <span className="text-[10px] text-muted/60 font-medium mt-0.5 font-sans">one-time</span>
                       </div>
 
@@ -959,7 +959,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       
                       {/* Hero Price */}
                       <div className="flex flex-col items-center justify-center py-2">
-                        <span className="text-4xl md:text-5xl font-black text-white font-sans tracking-tight rich-number">₹999</span>
+                        <span className="text-4xl md:text-5xl font-medium text-white font-sans tracking-tight rich-number">₹999</span>
                         <span className="text-[10px] text-muted/60 font-medium mt-0.5 font-sans">one-time</span>
                       </div>
 
