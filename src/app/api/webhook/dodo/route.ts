@@ -56,8 +56,28 @@ export async function POST(req: Request) {
         const referralCode = metadata.metadata_referralCode || metadata.referralCode;
         const username = metadata.metadata_username || null;
         
-        const rawTier = metadata.metadata_tier || metadata.tier || "STARTER";
-        const selectedTier = (rawTier === "PRO" || rawTier === "MAX") ? (rawTier as PromoterTier) : PromoterTier.STARTER;
+        const paymentAny = payment as any;
+        const productId = paymentAny.product_id || (paymentAny.product_cart && paymentAny.product_cart[0]?.product_id);
+        let selectedTier: PromoterTier = PromoterTier.STARTER;
+
+        const starterId = process.env.NEXT_PUBLIC_DODO_STARTER_PRODUCT_ID || "pdt_0Nejljx2mdXJSOgzLprt5";
+        const proId = process.env.NEXT_PUBLIC_DODO_PRO_PRODUCT_ID || "pdt_0NhVMNBBsEQWhalkkliJE";
+        const maxId = process.env.NEXT_PUBLIC_DODO_MAX_PRODUCT_ID || "pdt_0NhVMasO6TQwK4pK427wT";
+
+        if (
+          productId === starterId || 
+          productId === "pdt_0Nejljx2mdXJSOgzLprt5" || 
+          productId === "pdt_0NejIjx2mdXJSOgzLprt5"
+        ) {
+          selectedTier = PromoterTier.STARTER;
+        } else if (productId === proId || productId === "pdt_0NhVMNBBsEQWhalkkliJE") {
+          selectedTier = PromoterTier.PRO;
+        } else if (productId === maxId || productId === "pdt_0NhVMasO6TQwK4pK427wT") {
+          selectedTier = PromoterTier.MAX;
+        } else {
+          const rawTier = metadata.metadata_tier || metadata.tier || "STARTER";
+          selectedTier = (rawTier === "PRO" || rawTier === "MAX") ? (rawTier as PromoterTier) : PromoterTier.STARTER;
+        }
 
         await prisma.promoter.upsert({
           where: { email },
