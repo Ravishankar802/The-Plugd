@@ -337,10 +337,11 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
         .georgia-modal h2 {
           font-family: Georgia, serif !important;
         }
+        .georgia-modal .font-sans,
         .georgia-modal .rich-number,
         .georgia-modal span.rich-number,
         .rich-number {
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+          font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
         }
       `}</style>
       {/* Backdrop */}
@@ -786,7 +787,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                     <Wallet className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[0.65rem] text-muted font-bold uppercase tracking-[0.1em] leading-none">
+                    <span className="text-[0.65rem] text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
                       Total Paid Out
                     </span>
                     <span className="text-xl md:text-2xl font-[900] tracking-tighter text-white font-sans mt-1">
@@ -801,7 +802,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                     <Users className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[0.65rem] text-muted font-bold uppercase tracking-[0.1em] leading-none">
+                    <span className="text-[0.65rem] text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
                       Promoters
                     </span>
                     <span className="text-xl md:text-2xl font-[900] tracking-tighter text-white font-sans mt-1">
@@ -816,7 +817,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                     <Trophy className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[0.65rem] text-muted font-bold uppercase tracking-[0.1em] leading-none">
+                    <span className="text-[0.65rem] text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
                       Top Earner
                     </span>
                     <span className="text-xl md:text-2xl font-[900] tracking-tighter text-white font-sans mt-1">
@@ -832,42 +833,42 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 <div className="relative bg-zinc-950/65 border border-zinc-800 rounded-2xl p-6 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 shadow-xl min-h-[460px] md:min-h-[480px] self-stretch md:self-center order-2 md:order-1">
                   <div className="space-y-4">
                     <div className="space-y-1.5 text-center mt-2">
-                      <h3 className="text-sm font-bold text-muted uppercase tracking-widest">Starter</h3>
+                      <h3 className="text-sm font-bold text-muted uppercase tracking-widest font-sans">Starter</h3>
                       
                       {/* Hero Price */}
                       <div className="flex flex-col items-center justify-center py-2">
                         <span className="text-4xl md:text-5xl font-black text-white font-sans tracking-tight">₹199</span>
-                        <span className="text-[10px] text-muted/60 font-medium mt-0.5">one-time</span>
+                        <span className="text-[10px] text-muted/60 font-medium mt-0.5 font-sans">one-time</span>
                       </div>
 
                       {/* Earning Potential */}
                       <div className="flex flex-col items-center justify-center pt-1 pb-2">
-                        <span className="text-sm font-bold text-[#16a34a] tracking-wide">Earn up to ₹100</span>
-                        <span className="text-[10px] text-muted/60 font-medium mt-0.5">per referral</span>
+                        <span className="text-sm font-bold text-[#16a34a] tracking-wide font-sans">Earn up to ₹100</span>
+                        <span className="text-[10px] text-muted/60 font-medium mt-0.5 font-sans">per referral</span>
                       </div>
                     </div>
 
                     <div className="border-t border-border/40 pt-4 space-y-2">
-                      <p className="text-[9px] font-bold text-muted uppercase tracking-wider text-center">Commission Structure</p>
+                      <p className="text-[9px] font-bold text-muted uppercase tracking-wider text-center font-sans">Commission Structure</p>
                       <div className="space-y-1 text-xs">
                         <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2">
-                          <span className="text-muted/80 text-[11px]">₹199 sale</span>
-                          <span className="font-bold text-[#16a34a] text-[11px]">Earn ₹100</span>
+                          <span className="text-muted/80 text-[11px] font-sans">₹199 sale</span>
+                          <span className="font-bold text-[#16a34a] text-[11px] font-sans">Earn ₹100</span>
                         </div>
                         <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2">
-                          <span className="text-muted/80 text-[11px]">₹499 sale</span>
-                          <span className="font-bold text-[#16a34a] text-[11px]">Earn ₹100</span>
+                          <span className="text-muted/80 text-[11px] font-sans">₹499 sale</span>
+                          <span className="font-bold text-[#16a34a] text-[11px] font-sans">Earn ₹100</span>
                         </div>
                         <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2">
-                          <span className="text-muted/80 text-[11px]">₹999 sale</span>
-                          <span className="font-bold text-[#16a34a] text-[11px]">Earn ₹100</span>
+                          <span className="text-muted/80 text-[11px] font-sans">₹999 sale</span>
+                          <span className="font-bold text-[#16a34a] text-[11px] font-sans">Earn ₹100</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Earning Calculator */}
                     <div className="text-center pt-1 pb-2">
-                      <span className="text-[11px] font-semibold text-muted/50">100 referrals = ₹10,000</span>
+                      <span className="text-[11px] font-semibold text-muted/50 font-sans">100 referrals = ₹10,000</span>
                     </div>
                   </div>
 
@@ -877,7 +878,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                         setSelectedPlan("STARTER");
                         setShowEmailInput(true);
                       }}
-                      className="w-full bg-[#16a34a] text-white font-[800] text-xs md:text-sm py-3 rounded-xl transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg shadow-green-600/20 cursor-pointer"
+                      className="w-full bg-[#16a34a] text-white font-[800] text-xs md:text-sm py-3 rounded-xl transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg shadow-green-600/20 cursor-pointer font-sans"
                     >
                       Join Starter
                     </button>
@@ -887,48 +888,48 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 {/* Plan 2: PRO */}
                 <div className="relative bg-zinc-950/65 border-2 border-[#16a34a] shadow-[0_0_25px_rgba(22,163,74,0.15)] rounded-2xl p-6 md:p-8 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 min-h-[480px] md:min-h-[510px] md:scale-[1.05] z-10 self-stretch md:self-center order-1 md:order-2">
                   {/* Badge */}
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#16a34a] text-white text-[10px] uppercase font-black tracking-widest px-3.5 py-1 rounded-full shadow-lg whitespace-nowrap z-20">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#16a34a] text-white text-[10px] uppercase font-black tracking-widest px-3.5 py-1 rounded-full shadow-lg whitespace-nowrap z-20 font-sans">
                     ⭐ Most Popular
                   </div>
                   
                   <div className="space-y-4">
                     <div className="space-y-1.5 text-center mt-2">
-                      <h3 className="text-sm font-bold text-white uppercase tracking-widest">Pro</h3>
+                      <h3 className="text-sm font-bold text-white uppercase tracking-widest font-sans">Pro</h3>
                       
                       {/* Hero Price */}
                       <div className="flex flex-col items-center justify-center py-2">
                         <span className="text-4xl md:text-5xl font-black text-white font-sans tracking-tight">₹499</span>
-                        <span className="text-[10px] text-muted/60 font-medium mt-0.5">one-time</span>
+                        <span className="text-[10px] text-muted/60 font-medium mt-0.5 font-sans">one-time</span>
                       </div>
 
                       {/* Earning Potential */}
                       <div className="flex flex-col items-center justify-center pt-1 pb-2">
-                        <span className="text-sm font-bold text-[#16a34a] tracking-wide">Earn up to ₹250</span>
-                        <span className="text-[10px] text-muted/60 font-medium mt-0.5">per referral</span>
+                        <span className="text-sm font-bold text-[#16a34a] tracking-wide font-sans">Earn up to ₹250</span>
+                        <span className="text-[10px] text-muted/60 font-medium mt-0.5 font-sans">per referral</span>
                       </div>
                     </div>
 
                     <div className="border-t border-[#16a34a]/30 pt-4 space-y-2">
-                      <p className="text-[9px] font-bold text-muted uppercase tracking-wider text-center">Commission Structure</p>
+                      <p className="text-[9px] font-bold text-muted uppercase tracking-wider text-center font-sans">Commission Structure</p>
                       <div className="space-y-1 text-xs">
                         <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2">
-                          <span className="text-muted/80 text-[11px]">₹199 sale</span>
-                          <span className="font-bold text-[#16a34a] text-[11px]">Earn ₹100</span>
+                          <span className="text-muted/80 text-[11px] font-sans">₹199 sale</span>
+                          <span className="font-bold text-[#16a34a] text-[11px] font-sans">Earn ₹100</span>
                         </div>
                         <div className="flex justify-between items-center bg-black/45 border border-[#16a34a]/20 rounded-lg p-2">
-                          <span className="text-muted/80 text-[11px]">₹499 sale</span>
-                          <span className="font-bold text-[#16a34a] text-[11px]">Earn ₹250</span>
+                          <span className="text-muted/80 text-[11px] font-sans">₹499 sale</span>
+                          <span className="font-bold text-[#16a34a] text-[11px] font-sans">Earn ₹250</span>
                         </div>
                         <div className="flex justify-between items-center bg-black/45 border border-[#16a34a]/20 rounded-lg p-2">
-                          <span className="text-muted/80 text-[11px]">₹999 sale</span>
-                          <span className="font-bold text-[#16a34a] text-[11px]">Earn ₹250</span>
+                          <span className="text-muted/80 text-[11px] font-sans">₹999 sale</span>
+                          <span className="font-bold text-[#16a34a] text-[11px] font-sans">Earn ₹250</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Earning Calculator */}
                     <div className="text-center pt-1 pb-2">
-                      <span className="text-[11px] font-semibold text-emerald-400/80">100 Pro referrals = ₹25,000</span>
+                      <span className="text-[11px] font-semibold text-emerald-400/80 font-sans">100 Pro referrals = ₹25,000</span>
                     </div>
                   </div>
 
@@ -938,7 +939,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                         setSelectedPlan("PRO");
                         setShowEmailInput(true);
                       }}
-                      className="w-full bg-[#16a34a] text-white font-[800] text-xs md:text-sm py-3.5 rounded-xl transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg shadow-green-600/20 cursor-pointer"
+                      className="w-full bg-[#16a34a] text-white font-[800] text-xs md:text-sm py-3.5 rounded-xl transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg shadow-green-600/20 cursor-pointer font-sans"
                     >
                       Join Pro
                     </button>
@@ -948,48 +949,48 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 {/* Plan 3: MAX */}
                 <div className="relative bg-zinc-950/65 border border-emerald-500/50 shadow-[0_0_25px_rgba(16,185,129,0.15)] rounded-2xl p-6 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 min-h-[460px] md:min-h-[480px] self-stretch md:self-center order-3 md:order-3">
                   {/* Badge */}
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-500 text-black text-[10px] uppercase font-black tracking-widest px-3.5 py-1 rounded-full shadow-lg whitespace-nowrap z-20">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-500 text-black text-[10px] uppercase font-black tracking-widest px-3.5 py-1 rounded-full shadow-lg whitespace-nowrap z-20 font-sans">
                     🔥 Highest Earnings
                   </div>
 
                   <div className="space-y-4">
                     <div className="space-y-1.5 text-center mt-2">
-                      <h3 className="text-sm font-bold text-muted uppercase tracking-widest">Max</h3>
+                      <h3 className="text-sm font-bold text-muted uppercase tracking-widest font-sans">Max</h3>
                       
                       {/* Hero Price */}
                       <div className="flex flex-col items-center justify-center py-2">
                         <span className="text-4xl md:text-5xl font-black text-white font-sans tracking-tight">₹999</span>
-                        <span className="text-[10px] text-muted/60 font-medium mt-0.5">one-time</span>
+                        <span className="text-[10px] text-muted/60 font-medium mt-0.5 font-sans">one-time</span>
                       </div>
 
                       {/* Earning Potential */}
                       <div className="flex flex-col items-center justify-center pt-1 pb-2">
-                        <span className="text-sm font-bold text-amber-500 tracking-wide">Earn up to ₹500</span>
-                        <span className="text-[10px] text-muted/60 font-medium mt-0.5">per referral</span>
+                        <span className="text-sm font-bold text-amber-500 tracking-wide font-sans">Earn up to ₹500</span>
+                        <span className="text-[10px] text-muted/60 font-medium mt-0.5 font-sans">per referral</span>
                       </div>
                     </div>
 
                     <div className="border-t border-border/40 pt-4 space-y-2">
-                      <p className="text-[9px] font-bold text-muted uppercase tracking-wider text-center">Commission Structure</p>
+                      <p className="text-[9px] font-bold text-muted uppercase tracking-wider text-center font-sans">Commission Structure</p>
                       <div className="space-y-1 text-xs">
                         <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2">
-                          <span className="text-muted/80 text-[11px]">₹199 sale</span>
-                          <span className="font-bold text-[#16a34a] text-[11px]">Earn ₹100</span>
+                          <span className="text-muted/80 text-[11px] font-sans">₹199 sale</span>
+                          <span className="font-bold text-[#16a34a] text-[11px] font-sans">Earn ₹100</span>
                         </div>
                         <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2">
-                          <span className="text-muted/80 text-[11px]">₹499 sale</span>
-                          <span className="font-bold text-[#16a34a] text-[11px]">Earn ₹250</span>
+                          <span className="text-muted/80 text-[11px] font-sans">₹499 sale</span>
+                          <span className="font-bold text-[#16a34a] text-[11px] font-sans">Earn ₹250</span>
                         </div>
                         <div className="flex justify-between items-center bg-black/45 border border-emerald-500/20 rounded-lg p-2">
-                          <span className="text-muted/80 text-[11px]">₹999 sale</span>
-                          <span className="font-bold text-[#16a34a] text-[11px]">Earn ₹500</span>
+                          <span className="text-muted/80 text-[11px] font-sans">₹999 sale</span>
+                          <span className="font-bold text-[#16a34a] text-[11px] font-sans">Earn ₹500</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Earning Calculator */}
                     <div className="text-center pt-1 pb-2">
-                      <span className="text-[11px] font-semibold text-amber-500/80">100 Max referrals = ₹50,000</span>
+                      <span className="text-[11px] font-semibold text-amber-500/80 font-sans">100 Max referrals = ₹50,000</span>
                     </div>
                   </div>
 
@@ -999,7 +1000,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                         setSelectedPlan("MAX");
                         setShowEmailInput(true);
                       }}
-                      className="w-full bg-[#16a34a] text-white font-[800] text-xs md:text-sm py-3 rounded-xl transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg shadow-green-600/20 cursor-pointer"
+                      className="w-full bg-[#16a34a] text-white font-[800] text-xs md:text-sm py-3 rounded-xl transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg shadow-green-600/20 cursor-pointer font-sans"
                     >
                       Join Max
                     </button>
@@ -1009,9 +1010,9 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
               {/* Recover Cost & Login Links */}
               <div className="flex flex-col items-center justify-center space-y-3 mt-6">
-                <div className="flex items-center gap-1.5 text-emerald-400 font-bold text-xs md:text-sm">
+                <div className="flex items-center gap-1.5 text-emerald-400 font-bold text-xs md:text-sm font-sans">
                   <span>⚡</span>
-                  <span>Recover your cost in <span className="font-[800] text-emerald-400">just 2 referrals</span></span>
+                  <span className="font-sans">Recover your cost in <span className="font-[800] text-emerald-400 font-sans">just 2 referrals</span></span>
                 </div>
                 
                 <p className="text-center text-xs text-muted/80 font-bold font-sans">
