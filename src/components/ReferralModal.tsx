@@ -867,7 +867,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
                     {/* Earning Calculator */}
                     <div className="text-center pt-1 pb-2">
-                      <span className="text-[11px] font-semibold text-muted/50">10 referrals – ₹1,000</span>
+                      <span className="text-[11px] font-semibold text-muted/50">100 referrals – ₹10,000</span>
                     </div>
                   </div>
 
@@ -928,7 +928,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
                     {/* Earning Calculator */}
                     <div className="text-center pt-1 pb-2">
-                      <span className="text-[11px] font-semibold text-emerald-400/80">10 Pro referrals = ₹2,500</span>
+                      <span className="text-[11px] font-semibold text-emerald-400/80">100 Pro referrals = ₹25,000</span>
                     </div>
                   </div>
 
@@ -989,7 +989,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
                     {/* Earning Calculator */}
                     <div className="text-center pt-1 pb-2">
-                      <span className="text-[11px] font-semibold text-amber-500/80">10 Max referrals = ₹5,000</span>
+                      <span className="text-[11px] font-semibold text-amber-500/80">100 Max referrals = ₹50,000</span>
                     </div>
                   </div>
 
