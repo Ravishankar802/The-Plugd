@@ -28,10 +28,7 @@ import {
   Trash2,
   Upload,
   User,
-  Trophy,
-  Award,
-  Flame,
-  Zap
+  Trophy
 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
@@ -101,7 +98,7 @@ here's my link 👉 ${link}`
   ];
 
   // Determine active section from tab param
-  const activeSection = ["profile", "referrals", "earnings", "missions", "achievements"].includes(tab) ? tab : "profile";
+  const activeSection = ["profile", "referrals", "earnings", "league"].includes(tab) ? tab : "profile";
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -476,109 +473,23 @@ here's my link 👉 ${link}`
   const earnings = promoterData?.totalEarned || 0;
   const streak = streakCount;
 
-  const getPlatformClicks = (platformId: string) => {
-    return trafficSources.find(s => s.source.toLowerCase() === platformId.toLowerCase())?.clicks || 0;
-  };
-
-  const activePlatformsCount = trafficSources.filter(s => s.clicks > 0).length;
-  const copiedLinksCount = Object.values(copiedPlatforms).filter(Boolean).length + (copiedLinkMission ? 1 : 0);
-
   const LEAGUE_DEFS = [
-    {
-      id: "bronze",
-      name: "Bronze League",
-      emoji: "🥉",
-      reqs: [
-        { label: "10 Clicks", met: clicks >= 10, current: clicks, target: 10 },
-        { label: "Copy 3 Referral Links", met: copiedLinksCount >= 3, current: copiedLinksCount, target: 3 }
-      ],
-      reward: "🥈 Silver League Progress"
-    },
-    {
-      id: "silver",
-      name: "Silver League",
-      emoji: "🥈",
-      reqs: [
-        { label: "50 Clicks", met: clicks >= 50, current: clicks, target: 50 },
-        { label: "1 Signup", met: signups >= 1, current: signups, target: 1 }
-      ],
-      reward: "🥇 Gold League Progress"
-    },
-    {
-      id: "gold",
-      name: "Gold League",
-      emoji: "🥇",
-      reqs: [
-        { label: "100 Clicks", met: clicks >= 100, current: clicks, target: 100 },
-        { label: "Earn ₹100", met: earnings >= 100, current: earnings, target: 100 }
-      ],
-      reward: "💎 Diamond League Progress"
-    },
-    {
-      id: "diamond",
-      name: "Diamond League",
-      emoji: "💎",
-      reqs: [
-        { label: "250 Clicks", met: clicks >= 250, current: clicks, target: 250 },
-        { label: "5 Signups", met: signups >= 5, current: signups, target: 5 }
-      ],
-      reward: "⚔️ Elite League Progress"
-    },
-    {
-      id: "elite",
-      name: "Elite League",
-      emoji: "⚔️",
-      reqs: [
-        { label: "500 Clicks", met: clicks >= 500, current: clicks, target: 500 },
-        { label: "Earn ₹1,000", met: earnings >= 1000, current: earnings, target: 1000 }
-      ],
-      reward: "🔥 Champion League Progress"
-    },
-    {
-      id: "champion",
-      name: "Champion League",
-      emoji: "🔥",
-      reqs: [
-        { label: "1,000 Clicks", met: clicks >= 1000, current: clicks, target: 1000 },
-        { label: "10 Signups", met: signups >= 10, current: signups, target: 10 }
-      ],
-      reward: "👑 Titan League Progress"
-    },
-    {
-      id: "titan",
-      name: "Titan League",
-      emoji: "👑",
-      reqs: [
-        { label: "5,000 Clicks", met: clicks >= 5000, current: clicks, target: 5000 },
-        { label: "Earn ₹100,000", met: earnings >= 100000, current: earnings, target: 100000 }
-      ],
-      reward: "🚀 Immortal League Progress"
-    },
-    {
-      id: "immortal",
-      name: "Immortal League",
-      emoji: "🚀",
-      reqs: [
-        { label: "10,000 Clicks", met: clicks >= 10000, current: clicks, target: 10000 },
-        { label: "100 Signups", met: signups >= 100, current: signups, target: 100 }
-      ],
-      reward: "⚡ Legend League Progress"
-    },
-    {
-      id: "legend",
-      name: "Legend League",
-      emoji: "⚡",
-      reqs: [
-        { label: "25,000 Clicks", met: clicks >= 25000, current: clicks, target: 25000 },
-        { label: "Earn ₹1,000,000", met: earnings >= 1000000, current: earnings, target: 1000000 }
-      ],
-      reward: "Ultimate Promoter Crown"
-    }
+    { id: "bronze", name: "Bronze League", emoji: "🥉", target: 0 },
+    { id: "silver", name: "Silver League", emoji: "🥈", target: 1000 },
+    { id: "gold", name: "Gold League", emoji: "🥇", target: 5000 },
+    { id: "diamond", name: "Diamond League", emoji: "💎", target: 25000 },
+    { id: "master", name: "Master League", emoji: "⚔️", target: 100000 },
+    { id: "champion", name: "Champion League", emoji: "🔥", target: 500000 },
+    { id: "titan", name: "Titan League", emoji: "👑", target: 1000000 },
+    { id: "legend", name: "Legend League", emoji: "🚀", target: 2500000 },
+    { id: "elite", name: "Elite League", emoji: "🌟", target: 5000000 },
+    { id: "apex", name: "Apex League", emoji: "🏆", target: 10000000 },
+    { id: "sovereign", name: "Sovereign League", emoji: "👑", target: 100000000 }
   ];
 
   let currentLeagueIndex = -1;
   for (let i = 0; i < LEAGUE_DEFS.length; i++) {
-    if (LEAGUE_DEFS[i].reqs.every(r => r.met)) {
+    if (earnings >= LEAGUE_DEFS[i].target) {
       currentLeagueIndex = i;
     } else {
       break;
@@ -590,86 +501,13 @@ here's my link 👉 ${link}`
   const targetLeague = targetLeagueIndex < LEAGUE_DEFS.length ? LEAGUE_DEFS[targetLeagueIndex] : null;
 
   let progressPercent = 0;
+  let remainingAmount = 0;
   if (targetLeague) {
-    const metCount = targetLeague.reqs.filter(r => r.met).length;
-    progressPercent = Math.round((metCount / targetLeague.reqs.length) * 100);
+    progressPercent = targetLeague.target > 0 ? Math.min(100, Math.max(0, Math.round((earnings / targetLeague.target) * 100))) : 0;
+    remainingAmount = targetLeague.target - earnings;
   } else {
     progressPercent = 100;
   }
-
-  const MISSION_CATEGORIES = [
-    {
-      name: "ATTENTION MISSIONS",
-      icon: "⚡",
-      textColor: "text-amber-400",
-      missions: [
-        { title: "First Blood", desc: "Generate your first click.", current: clicks, target: 1, reward: "+50 XP" },
-        { title: "Attention Hunter", desc: "Generate 25 clicks.", current: clicks, target: 25, reward: "+100 XP" },
-        { title: "Traffic Machine", desc: "Generate 100 clicks.", current: clicks, target: 100, reward: "+250 XP" },
-        { title: "Traffic Engine", desc: "Generate 500 clicks.", current: clicks, target: 500, reward: "+500 XP" },
-        { title: "Attention Monster", desc: "Generate 1,000 clicks.", current: clicks, target: 1000, reward: "+1,000 XP" }
-      ]
-    },
-    {
-      name: "SIGNUP MISSIONS",
-      icon: "👥",
-      textColor: "text-emerald-400",
-      missions: [
-        { title: "First Conversion", desc: "Get your first signup.", current: signups, target: 1, reward: "+100 XP" },
-        { title: "Builder", desc: "Get 5 signups.", current: signups, target: 5, reward: "+250 XP" },
-        { title: "Operator", desc: "Get 10 signups.", current: signups, target: 10, reward: "+500 XP" },
-        { title: "Growth Machine", desc: "Get 25 signups.", current: signups, target: 25, reward: "+1,000 XP" },
-        { title: "Acquisition Master", desc: "Get 100 signups.", current: signups, target: 100, reward: "+2,500 XP" }
-      ]
-    },
-    {
-      name: "EARNINGS MISSIONS",
-      icon: "💰",
-      textColor: "text-yellow-400",
-      missions: [
-        { title: "First ₹100", desc: "Accumulate ₹100 in total earnings.", current: earnings, target: 100, reward: "+100 XP", format: "currency" },
-        { title: "First ₹1,000", desc: "Accumulate ₹1,000 in total earnings.", current: earnings, target: 1000, reward: "+250 XP", format: "currency" },
-        { title: "First ₹5,000", desc: "Accumulate ₹5,000 in total earnings.", current: earnings, target: 5000, reward: "+500 XP", format: "currency" },
-        { title: "First ₹10,000", desc: "Accumulate ₹10,000 in total earnings.", current: earnings, target: 10000, reward: "+1,000 XP", format: "currency" },
-        { title: "First ₹50,000", desc: "Accumulate ₹50,000 in total earnings.", current: earnings, target: 50000, reward: "+2,500 XP", format: "currency" },
-        { title: "First ₹100,000", desc: "Accumulate ₹100,000 in total earnings.", current: earnings, target: 100000, reward: "+5,000 XP", format: "currency" }
-      ]
-    },
-    {
-      name: "DISTRIBUTION MISSIONS",
-      icon: "🕸️",
-      textColor: "text-sky-400",
-      missions: [
-        { title: "Link Explorer", desc: "Copy your first referral link.", current: copiedLinksCount >= 1 ? 1 : 0, target: 1, reward: "+50 XP" },
-        { title: "WhatsApp Route", desc: "Generate traffic from WhatsApp.", current: getPlatformClicks("whatsapp") >= 1 ? 1 : 0, target: 1, reward: "+50 XP" },
-        { title: "Telegram Route", desc: "Generate traffic from Telegram.", current: getPlatformClicks("telegram") >= 1 ? 1 : 0, target: 1, reward: "+50 XP" },
-        { title: "X Route", desc: "Generate traffic from X.", current: getPlatformClicks("x") >= 1 ? 1 : 0, target: 1, reward: "+50 XP" },
-        { title: "Reddit Route", desc: "Generate traffic from Reddit.", current: getPlatformClicks("reddit") >= 1 ? 1 : 0, target: 1, reward: "+50 XP" },
-        { title: "Discord Route", desc: "Generate traffic from Discord.", current: getPlatformClicks("discord") >= 1 ? 1 : 0, target: 1, reward: "+50 XP" },
-        { title: "Instagram Route", desc: "Generate traffic from Instagram.", current: getPlatformClicks("instagram") >= 1 ? 1 : 0, target: 1, reward: "+50 XP" },
-        { title: "Facebook Route", desc: "Generate traffic from Facebook.", current: getPlatformClicks("facebook") >= 1 ? 1 : 0, target: 1, reward: "+50 XP" },
-        { title: "LinkedIn Route", desc: "Generate traffic from LinkedIn.", current: getPlatformClicks("linkedin") >= 1 ? 1 : 0, target: 1, reward: "+50 XP" },
-        { title: "YouTube Route", desc: "Generate traffic from YouTube.", current: getPlatformClicks("youtube") >= 1 ? 1 : 0, target: 1, reward: "+50 XP" },
-        { title: "Others Route", desc: "Generate traffic from other sources.", current: getPlatformClicks("others") >= 1 ? 1 : 0, target: 1, reward: "+50 XP" },
-        { title: "Multi-Platform Starter", desc: "Generate traffic from 3 platforms.", current: activePlatformsCount, target: 3, reward: "+150 XP" },
-        { title: "Multi-Platform Master", desc: "Generate traffic from 5 platforms.", current: activePlatformsCount, target: 5, reward: "+300 XP" },
-        { title: "Distribution Sovereign", desc: "Generate traffic from all 10 platforms.", current: activePlatformsCount, target: 10, reward: "+1,000 XP" }
-      ]
-    },
-    {
-      name: "CONSISTENCY MISSIONS",
-      icon: "🔥",
-      textColor: "text-orange-400",
-      missions: [
-        { title: "3 Day Streak", desc: "Promote for 3 consecutive days.", current: streak, target: 3, reward: "+50 XP" },
-        { title: "7 Day Streak", desc: "Promote for 7 consecutive days.", current: streak, target: 7, reward: "+100 XP" },
-        { title: "14 Day Streak", desc: "Promote for 14 consecutive days.", current: streak, target: 14, reward: "+200 XP" },
-        { title: "30 Day Streak", desc: "Promote for 30 consecutive days.", current: streak, target: 30, reward: "+500 XP" },
-        { title: "60 Day Streak", desc: "Promote for 60 consecutive days.", current: streak, target: 60, reward: "+1,000 XP" },
-        { title: "90 Day Streak", desc: "Promote for 90 consecutive days.", current: streak, target: 90, reward: "+2,500 XP" }
-      ]
-    }
-  ];
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -1638,12 +1476,12 @@ here's my link 👉 ${link}`
         </div>
       )}
 
-      {/* Missions Section */}
-      {activeSection === "missions" && (
+      {/* League Section */}
+      {activeSection === "league" && (
         <div className="space-y-8">
           <div>
-            <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Missions</h1>
-            <p className="text-muted text-[1rem] mt-1.5 font-normal">Complete promoter tasks, rank up, and climb through the leagues.</p>
+            <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Promoter League</h1>
+            <p className="text-muted text-[1rem] mt-1.5 font-normal">Climb through the promoter leagues based on your lifetime earnings.</p>
           </div>
 
           {(!hasPromoter && !isAdmin) ? (
@@ -1651,8 +1489,8 @@ here's my link 👉 ${link}`
               <div className="w-20 h-20 rounded-3xl bg-[#16a34a]/10 flex items-center justify-center mb-6">
                 <Trophy className="w-10 h-10 text-[#16a34a]" />
               </div>
-              <h2 className="text-2xl font-bold mb-2">Missions Locked</h2>
-              <p className="text-muted max-w-sm mb-8">Join the referral program to start unlocking promoter leagues and achievements.</p>
+              <h2 className="text-2xl font-bold mb-2">League Locked</h2>
+              <p className="text-muted max-w-sm mb-8">Join the referral program to start unlocking promoter leagues.</p>
               <button 
                 onClick={() => setIsReferModalOpen(true)}
                 className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
@@ -1661,328 +1499,151 @@ here's my link 👉 ${link}`
               </button>
             </div>
           ) : (
-            <div className="space-y-10 text-left">
+            <div className="space-y-8 text-left">
               {/* CURRENT LEAGUE CENTERPIECE CARD */}
-              <div className="bg-pill border border-[#16a34a]/40 rounded-2xl p-6 md:p-8 shadow-[0_0_25px_rgba(22,163,74,0.08)] backdrop-blur-md relative overflow-hidden">
-                {/* Decorative glow background */}
-                <div className="absolute -right-20 -top-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-                <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-[#16a34a]/5 rounded-full blur-3xl pointer-events-none" />
-
-                <div className="relative z-10 space-y-6">
-                  <span className="text-[10px] bg-[#16a34a]/15 border border-[#16a34a]/30 px-3 py-1 rounded-full text-emerald-400 font-extrabold uppercase tracking-widest block w-fit">
-                    Current League
-                  </span>
-                  
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                    <div className="flex items-center gap-5">
-                      <span className="text-6xl filter drop-shadow-[0_0_15px_rgba(22,163,74,0.3)] select-none">
+              <div className="bg-pill border border-[#16a34a]/35 rounded-2xl p-6 md:p-8 shadow-[0_0_25px_rgba(22,163,74,0.05)] backdrop-blur-md relative overflow-hidden">
+                <div className="absolute -right-20 -top-20 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+                
+                <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                  <div className="space-y-2">
+                    <span className="text-[10px] text-muted uppercase font-bold tracking-widest block">
+                      Current League
+                    </span>
+                    <div className="flex items-center gap-4">
+                      <span className="text-5xl md:text-6xl select-none filter drop-shadow-[0_0_15px_rgba(22,163,74,0.15)]">
                         {currentLeague ? currentLeague.emoji : "🥉"}
                       </span>
                       <div>
-                        <h2 className="text-2xl md:text-3xl font-black text-foreground tracking-tight uppercase">
-                          {currentLeague ? currentLeague.name : "Bronze League (In Progress)"}
+                        <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+                          {currentLeague ? currentLeague.name : "Bronze League"}
                         </h2>
-                        {targetLeague ? (
-                          <p className="text-xs text-muted font-bold tracking-wide uppercase mt-1">
-                            Progressing to {targetLeague.emoji} {targetLeague.name}
-                          </p>
-                        ) : (
-                          <p className="text-xs text-emerald-400 font-black tracking-wide uppercase mt-1">
-                            🏆 MAXIMUM LEAGUE ACHIEVED! YOU ARE A LEGEND!
-                          </p>
-                        )}
+                        <p className="text-xs text-muted mt-0.5">Keep promoting to reach the next status tier.</p>
                       </div>
                     </div>
-
-                    {targetLeague && (
-                      <div className="bg-zinc-950/50 border border-border/80 rounded-xl p-3 px-4 text-left md:text-right shrink-0">
-                        <span className="text-[10px] text-muted uppercase font-bold tracking-wider block">Next Reward</span>
-                        <span className="text-sm font-extrabold text-[#16a34a] mt-0.5 block flex items-center gap-1.5 md:justify-end">
-                          <span>{targetLeague.emoji}</span>
-                          <span>{targetLeague.name} Badge</span>
-                        </span>
-                      </div>
-                    )}
                   </div>
 
-                  {/* League progress bar */}
-                  {targetLeague && (
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-baseline text-xs font-bold text-muted uppercase">
-                        <span>Progress to {targetLeague.name}</span>
-                        <span className="text-foreground">{progressPercent}%</span>
-                      </div>
-                      <div className="w-full bg-zinc-950 rounded-full h-4 overflow-hidden border border-border/30 p-[2px]">
-                        <div 
-                          className="bg-gradient-to-r from-amber-500 via-orange-500 to-[#16a34a] h-full rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(245,158,11,0.3)]"
-                          style={{ width: `${progressPercent}%` }}
-                        />
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Target League Requirements checklist */}
-                  {targetLeague && (
-                    <div className="border-t border-border/40 pt-5 space-y-3.5">
-                      <h4 className="text-xs text-muted font-bold tracking-widest uppercase">Target League Requirements:</h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {targetLeague.reqs.map((req, rIdx) => (
-                          <div 
-                            key={rIdx}
-                            className={`flex items-center justify-between border rounded-xl p-3 px-4 text-xs font-semibold ${
-                              req.met 
-                              ? "bg-green-950/10 border-green-500/25 text-[#16a34a]" 
-                              : "bg-zinc-900/35 border-border/30 text-muted"
-                            }`}
-                          >
-                            <div className="flex items-center gap-2">
-                              <span className="text-sm">{req.met ? "✓" : "□"}</span>
-                              <span className={req.met ? "line-through font-normal" : "font-bold text-foreground"}>
-                                {req.label}
-                              </span>
-                            </div>
-                            <span className="text-[10px] bg-black/30 px-2 py-0.5 rounded-full border border-border/40 font-mono">
-                              {req.current} / {req.target}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <div className="bg-zinc-950/45 border border-border/40 rounded-xl p-4 min-w-[200px] text-left md:text-right">
+                    <span className="text-[9px] text-muted uppercase font-bold tracking-widest block">
+                      Lifetime Earnings
+                    </span>
+                    <span className="text-2xl font-black text-[#16a34a] mt-1 block">
+                      ₹{new Intl.NumberFormat("en-IN").format(earnings)}
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              {/* MISSION CATEGORIES & ROWS */}
-              <div className="space-y-12">
-                {MISSION_CATEGORIES.map((category) => (
-                  <div key={category.name} className="space-y-4">
-                    <div className="flex items-center gap-3 border-b border-border/40 pb-2.5">
-                      <span className="text-2xl select-none">{category.icon}</span>
-                      <h3 className={`text-base font-extrabold tracking-widest ${category.textColor}`}>
-                        {category.name}
-                      </h3>
-                      <span className="text-xs bg-zinc-900 border border-border px-2 py-0.5 rounded-full font-bold text-muted">
-                        {category.missions.filter(m => m.current >= m.target).length} / {category.missions.length} Completed
+              {/* PROGRESS TO NEXT LEAGUE */}
+              {targetLeague && (
+                <div className="bg-pill border border-border/80 rounded-2xl p-6 md:p-8 shadow-xl space-y-6">
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground">Progress To Next League</h3>
+                    <p className="text-xs text-muted mt-0.5 font-medium">Your current path towards {targetLeague.emoji} {targetLeague.name}.</p>
+                  </div>
+
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="bg-zinc-950/20 border border-border/40 p-4 rounded-xl">
+                      <span className="text-[9px] text-muted uppercase font-bold tracking-widest block">Current</span>
+                      <span className="text-lg font-bold text-white mt-1 block">
+                        ₹{new Intl.NumberFormat("en-IN").format(earnings)}
                       </span>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {category.missions.map((mission) => {
-                        const isCompleted = mission.current >= mission.target;
-                        const progressPercent = Math.min(100, (mission.current / mission.target) * 100);
-                        const isDistributionCopy = category.name === "DISTRIBUTION MISSIONS" && mission.title === "Link Explorer";
-                        
-                        return (
-                          <div 
-                            key={mission.title}
-                            className={`border rounded-xl p-5 transition-all duration-300 relative flex flex-col justify-between min-h-[145px] ${
-                              isCompleted 
-                              ? "bg-green-950/5 border-green-500/20 shadow-[0_0_10px_rgba(22,163,74,0.02)]" 
-                              : "bg-zinc-900/35 border-border/40"
-                            }`}
-                          >
-                            <div className="space-y-2">
-                              <div className="flex justify-between items-start gap-4">
-                                <div className="text-left">
-                                  <h4 className={`text-sm font-black tracking-tight ${isCompleted ? "text-muted line-through" : "text-foreground"}`}>
-                                    {mission.title}
-                                  </h4>
-                                  <p className="text-xs text-muted mt-0.5 font-medium leading-relaxed max-w-[280px]">
-                                    {mission.desc}
-                                  </p>
-                                </div>
-                                <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md border shrink-0 ${
-                                  isCompleted
-                                  ? "bg-zinc-950 border-border/30 text-muted"
-                                  : "bg-[#16a34a]/10 border-[#16a34a]/25 text-emerald-400"
-                                }`}>
-                                  {mission.reward}
-                                </span>
-                              </div>
-
-                              {/* Progress bar in Clash of Clans style */}
-                              <div className="space-y-1">
-                                <div className="flex justify-between items-center text-[10px] font-bold text-muted">
-                                  <span>Progress</span>
-                                  <span>
-                                  {(mission as any).format === "currency" ? "₹" : ""}
-                                    {new Intl.NumberFormat("en-IN").format(mission.current)} / {(mission as any).format === "currency" ? "₹" : ""}
-                                    {new Intl.NumberFormat("en-IN").format(mission.target)}
-                                  </span>
-                                </div>
-                                <div className="w-full bg-zinc-950 rounded-full h-3 overflow-hidden border border-border/30 p-[1px]">
-                                  <div 
-                                    className={`h-full rounded-full transition-all duration-300 ${
-                                      isCompleted 
-                                      ? "bg-emerald-500" 
-                                      : "bg-gradient-to-r from-amber-500 to-orange-500"
-                                    }`}
-                                    style={{ width: `${progressPercent}%` }}
-                                  />
-                                </div>
-                              </div>
-                            </div>
-
-                            {/* Row Status footer */}
-                            <div className="flex justify-between items-center mt-3 pt-2.5 border-t border-border/20">
-                              <span className={`text-[10px] font-black uppercase tracking-widest ${
-                                isCompleted ? "text-emerald-400" : "text-muted"
-                              }`}>
-                                {isCompleted ? "✓ Completed" : "⚡ In Progress"}
-                              </span>
-
-                              {/* Copy button helper for Distribution link copies */}
-                              {isDistributionCopy && !isCompleted && (
-                                <button
-                                  type="button"
-                                  onClick={() => copyToClipboard(`https://theplugd.com?ref=${referralLinkSuffix}`, 'link')}
-                                  className="bg-[#16a34a] hover:bg-[#16a34a]/90 text-white text-[9px] font-black uppercase tracking-wider py-1 px-3 rounded-lg flex items-center gap-1 cursor-pointer transition-all animate-pulse"
-                                >
-                                  {copied === 'link' ? <Check size={10} /> : <Copy size={10} />}
-                                  <span>{copied === 'link' ? "Copied" : "Copy Link"}</span>
-                                </button>
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
+                    <div className="bg-zinc-950/20 border border-border/40 p-4 rounded-xl">
+                      <span className="text-[9px] text-muted uppercase font-bold tracking-widest block">Target</span>
+                      <span className="text-lg font-bold text-white mt-1 block">
+                        ₹{new Intl.NumberFormat("en-IN").format(targetLeague.target)}
+                      </span>
+                    </div>
+                    <div className="bg-zinc-950/20 border border-border/40 p-4 rounded-xl col-span-2 md:col-span-1">
+                      <span className="text-[9px] text-muted uppercase font-bold tracking-widest block">Remaining</span>
+                      <span className="text-lg font-bold text-emerald-400 mt-1 block">
+                        ₹{new Intl.NumberFormat("en-IN").format(remainingAmount)} Remaining
+                      </span>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
 
-      {/* League Hall Section */}
-      {activeSection === "achievements" && (
-        <div className="space-y-8">
-          <div>
-            <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">League Hall</h1>
-            <p className="text-muted text-[1rem] mt-1.5 font-normal">Climb through the promoter leagues and unlock status rewards.</p>
-          </div>
+                  <div className="space-y-2">
+                    <div className="w-full bg-zinc-950 rounded-full h-3 overflow-hidden border border-border/30 p-[1px]">
+                      <div 
+                        className="h-full rounded-full bg-[#16a34a] transition-all duration-500 shadow-[0_0_10px_rgba(22,163,74,0.3)]"
+                        style={{ width: `${progressPercent}%` }}
+                      />
+                    </div>
+                    <div className="flex justify-between items-center text-[10px] font-bold text-muted px-1">
+                      <span>{progressPercent}% Complete</span>
+                      <span>₹{new Intl.NumberFormat("en-IN").format(remainingAmount)} left to unlock {targetLeague.name}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
 
-          {(!hasPromoter && !isAdmin) ? (
-            <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="w-20 h-20 rounded-3xl bg-[#16a34a]/10 flex items-center justify-center mb-6">
-                <Award className="w-10 h-10 text-[#16a34a]" />
-              </div>
-              <h2 className="text-2xl font-bold mb-2">League Hall Locked</h2>
-              <p className="text-muted max-w-sm mb-8">Join the referral program to start unlocking promoter achievements.</p>
-              <button 
-                onClick={() => setIsReferModalOpen(true)}
-                className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
-              >
-                Join for ₹199 <ArrowRight size={18} />
-              </button>
-            </div>
-          ) : (
-            <div className="space-y-6 text-left">
-              {/* Summary stat board */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-pill border border-border p-5 rounded-2xl shadow-xl">
+              {/* LEAGUE PROGRESSION VERTICAL STACK */}
+              <div className="space-y-6">
                 <div>
-                  <span className="text-xs text-muted uppercase font-bold tracking-wider">Current League</span>
-                  <p className="text-xl font-black text-foreground mt-1 select-none">
-                    {currentLeague ? `${currentLeague.emoji} ${currentLeague.name.split(" ")[0]}` : "🥉 Unranked"}
-                  </p>
+                  <h3 className="text-lg font-bold text-foreground">League Progression</h3>
+                  <p className="text-xs text-muted mt-0.5 font-medium">Review the complete hierarchical status ladder.</p>
                 </div>
-                <div>
-                  <span className="text-xs text-muted uppercase font-bold tracking-wider">Leagues Unlocked</span>
-                  <p className="text-xl font-black text-[#16a34a] mt-1">
-                    {currentLeagueIndex + 1} / {LEAGUE_DEFS.length}
-                  </p>
-                </div>
-                <div>
-                  <span className="text-xs text-muted uppercase font-bold tracking-wider">Clicks Driven</span>
-                  <p className="text-xl font-black text-foreground mt-1">
-                    {clicks} Clicks
-                  </p>
-                </div>
-                <div>
-                  <span className="text-xs text-muted uppercase font-bold tracking-wider">Conversions</span>
-                  <p className="text-xl font-black text-foreground mt-1">
-                    {signups} Signups
-                  </p>
-                </div>
-              </div>
 
-              {/* Leagues Vertical List */}
-              <div className="space-y-5">
-                {LEAGUE_DEFS.map((league, idx) => {
-                  const isUnlocked = currentLeagueIndex >= idx;
-                  const isCurrent = currentLeagueIndex === idx;
-                  const isNext = currentLeagueIndex + 1 === idx;
-                  
-                  const statusColors = isUnlocked
-                    ? "bg-green-950/15 border-green-500/30 text-emerald-400 shadow-[0_0_12px_rgba(22,163,74,0.05)]"
-                    : isNext
-                      ? "bg-zinc-900/50 border-[#16a34a] shadow-[0_0_15px_rgba(22,163,74,0.1)] ring-1 ring-[#16a34a]/20 text-foreground"
-                      : "bg-zinc-950/30 border-border/30 text-muted opacity-50";
+                <div className="space-y-3.5">
+                  {LEAGUE_DEFS.map((league, idx) => {
+                    const isUnlocked = earnings >= league.target;
+                    const isCurrent = currentLeagueIndex === idx;
+                    
+                    const statusColors = isCurrent
+                      ? "bg-green-950/15 border-[#16a34a] text-emerald-400 shadow-[0_0_15px_rgba(22,163,74,0.08)] ring-1 ring-[#16a34a]/30"
+                      : isUnlocked
+                        ? "bg-zinc-900/40 border-green-500/20 text-emerald-400/80"
+                        : "bg-zinc-950/30 border-border/30 text-muted opacity-50";
 
-                  return (
-                    <div 
-                      key={league.id}
-                      className={`border rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-5 text-left ${statusColors}`}
-                    >
-                      <div className="flex items-center gap-5">
-                        <div className={`w-16 h-16 rounded-full bg-zinc-900/80 border flex items-center justify-center text-3xl shrink-0 ${
-                          isUnlocked ? "border-green-500/40 shadow-[0_0_10px_rgba(34,197,94,0.15)]" : "border-border/30"
-                        }`}>
-                          {league.emoji}
-                        </div>
-                        
-                        <div className="space-y-1.5">
-                          <div className="flex items-center gap-2">
-                            <h3 className="text-lg font-black tracking-tight text-white">
+                    return (
+                      <div 
+                        key={league.id}
+                        className={`border rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-5 text-left ${statusColors}`}
+                      >
+                        <div className="flex items-center gap-5">
+                          <div className={`w-14 h-14 rounded-full bg-zinc-900/80 border flex items-center justify-center text-3xl shrink-0 ${
+                            isCurrent 
+                              ? "border-[#16a34a] shadow-[0_0_10px_rgba(34,197,94,0.2)]" 
+                              : isUnlocked 
+                                ? "border-green-500/30" 
+                                : "border-border/30"
+                          }`}>
+                            {league.emoji}
+                          </div>
+                          
+                          <div>
+                            <h4 className="text-base font-black tracking-tight text-white">
                               {league.name}
-                            </h3>
-                            {isCurrent && (
-                              <span className="text-[9px] bg-[#16a34a] text-black font-extrabold uppercase px-2 py-0.5 rounded-full select-none">
-                                Current
+                            </h4>
+                            <p className="text-xs text-muted mt-0.5">
+                              Requirement: <span className="font-bold text-foreground">₹{new Intl.NumberFormat("en-IN").format(league.target)}+</span>
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Status Label on Right */}
+                        <div className="flex items-center justify-between md:justify-end border-t border-border/10 md:border-t-0 pt-3 md:pt-0 shrink-0">
+                          <div className="text-left md:text-right">
+                            <span className="text-[9px] text-muted uppercase font-bold tracking-wider block">Status</span>
+                            {isCurrent ? (
+                              <span className="text-xs font-black text-emerald-400 uppercase tracking-widest mt-0.5 block select-none">
+                                Current League
+                              </span>
+                            ) : isUnlocked ? (
+                              <span className="text-xs font-bold text-[#16a34a] uppercase tracking-widest mt-0.5 block">
+                                Unlocked
+                              </span>
+                            ) : (
+                              <span className="text-xs font-bold text-muted uppercase tracking-widest flex items-center gap-1 mt-0.5">
+                                <Lock size={12} className="opacity-60" /> Locked
                               </span>
                             )}
                           </div>
-
-                          <div className="space-y-1">
-                            <span className="text-[10px] text-muted font-bold uppercase tracking-wider block">Requirements:</span>
-                            <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
-                              {league.reqs.map((req, rIdx) => (
-                                <div key={rIdx} className="flex items-center gap-1.5 font-medium">
-                                  <span className={req.met ? "text-emerald-400 font-extrabold animate-pulse" : "text-muted"}>
-                                    {req.met ? "✓" : "□"}
-                                  </span>
-                                  <span className={req.met ? "text-muted line-through font-normal" : "text-foreground font-semibold"}>
-                                    {req.label}
-                                  </span>
-                                  <span className="text-[10px] text-muted/60">
-                                    ({req.current}/{req.target})
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
                         </div>
                       </div>
-
-                      {/* Status indicator on right side */}
-                      <div className="flex items-center justify-between md:justify-end border-t border-border/10 md:border-t-0 pt-3 md:pt-0 shrink-0">
-                        <div className="text-left md:text-right">
-                          <span className="text-[9px] text-muted uppercase font-bold tracking-wider block">League Status</span>
-                          {isUnlocked ? (
-                            <span className="text-xs font-black text-emerald-400 uppercase tracking-widest flex items-center gap-1 mt-0.5">
-                              ✓ Unlocked
-                            </span>
-                          ) : (
-                            <span className="text-xs font-bold text-muted uppercase tracking-widest flex items-center gap-1 mt-0.5">
-                              <Lock size={12} className="opacity-60" /> Locked
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             </div>
           )}

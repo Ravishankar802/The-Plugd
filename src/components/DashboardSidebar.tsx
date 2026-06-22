@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { User, LayoutGrid, LogOut, ArrowRight, UserPlus, Wallet, Lock, Plus as PlusIcon, Trophy, Award } from "lucide-react";
+import { User, LayoutGrid, LogOut, ArrowRight, UserPlus, Wallet, Lock, Plus as PlusIcon, Trophy } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface DashboardSidebarProps {
@@ -60,22 +60,13 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
       upgradeHref: "/vault?tab=earnings"
     },
     { 
-      name: "Missions", 
-      id: "missions",
-      href: "/vault?tab=missions", 
+      name: "League", 
+      id: "league",
+      href: "/vault?tab=league", 
       icon: Trophy, 
       show: hasPromoter || isAdmin,
       locked: !hasPromoter && !isAdmin,
-      upgradeHref: "/vault?tab=missions"
-    },
-    { 
-      name: "Achievements", 
-      id: "achievements",
-      href: "/vault?tab=achievements", 
-      icon: Award, 
-      show: hasPromoter || isAdmin,
-      locked: !hasPromoter && !isAdmin,
-      upgradeHref: "/vault?tab=achievements"
+      upgradeHref: "/vault?tab=league"
     },
   ];
 
