@@ -482,7 +482,7 @@ export default function HomeClient({
             {/* Slider Widget */}
             <div className="w-full flex flex-col items-center gap-4 bg-zinc-950/40 border border-border/60 rounded-2xl p-6">
               <div className="flex items-baseline justify-center gap-2">
-                <span className="text-4xl md:text-5xl font-black text-white font-sans tracking-tight rich-number">
+                <span className="text-4xl md:text-5xl font-semibold text-white font-sans tracking-tight rich-number">
                   {new Intl.NumberFormat("en-IN").format(sliderReferrals)}
                 </span>
                 <span className="text-muted text-sm font-semibold uppercase tracking-wider font-sans">Referrals</span>
@@ -516,7 +516,7 @@ export default function HomeClient({
               <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-5 flex flex-col items-center text-center shadow-lg hover:border-[#16a34a]/30 transition-all duration-300 group">
                 <span className="text-xs text-muted font-bold uppercase tracking-widest font-sans mb-1">Starter</span>
                 <span className="text-xs text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
-                <span className="text-3xl font-extrabold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
+                <span className="text-3xl font-semibold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
                   ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 100)}
                 </span>
               </div>
@@ -528,7 +528,7 @@ export default function HomeClient({
                 </div>
                 <span className="text-xs text-white font-bold uppercase tracking-widest font-sans mb-1 mt-1">Pro</span>
                 <span className="text-xs text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
-                <span className="text-3xl font-extrabold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
+                <span className="text-3xl font-semibold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
                   ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 250)}
                 </span>
               </div>
@@ -540,7 +540,7 @@ export default function HomeClient({
                 </div>
                 <span className="text-xs text-muted font-bold uppercase tracking-widest font-sans mb-1 mt-1">Max</span>
                 <span className="text-xs text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
-                <span className="text-3xl font-extrabold text-amber-500 font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
+                <span className="text-3xl font-semibold text-amber-500 font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
                   ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 500)}
                 </span>
               </div>
