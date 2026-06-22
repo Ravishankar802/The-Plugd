@@ -792,53 +792,6 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 </p>
               </div>
 
-              {/* Social Proof Stats (Moved Above Pricing with Icons) */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto px-4">
-                {/* Total Paid Out */}
-                <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-4 flex items-center gap-4 shadow-md">
-                  <div className="p-2.5 bg-green-500/10 border border-green-500/20 rounded-lg text-emerald-400">
-                    <Wallet className="w-5 h-5" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[0.65rem] text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
-                      Total Paid Out
-                    </span>
-                    <span className="text-xl md:text-2xl font-[900] tracking-tighter text-white font-sans mt-1 rich-number">
-                      ₹100Cr+
-                    </span>
-                  </div>
-                </div>
-
-                {/* Promoters */}
-                <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-4 flex items-center gap-4 shadow-md">
-                  <div className="p-2.5 bg-green-500/10 border border-green-500/20 rounded-lg text-emerald-400">
-                    <Users className="w-5 h-5" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[0.65rem] text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
-                      Promoters
-                    </span>
-                    <span className="text-xl md:text-2xl font-[900] tracking-tighter text-white font-sans mt-1 rich-number">
-                      1,00,000+
-                    </span>
-                  </div>
-                </div>
-
-                {/* Top Earner */}
-                <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-4 flex items-center gap-4 shadow-md">
-                  <div className="p-2.5 bg-green-500/10 border border-green-500/20 rounded-lg text-emerald-400">
-                    <Trophy className="w-5 h-5" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[0.65rem] text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
-                      Top Earner
-                    </span>
-                    <span className="text-xl md:text-2xl font-[900] tracking-tighter text-white font-sans mt-1 rich-number">
-                      ₹1Cr+
-                    </span>
-                  </div>
-                </div>
-              </div>
 
               {/* Grid of 3 Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center justify-center max-w-5xl mx-auto px-4 pt-4">

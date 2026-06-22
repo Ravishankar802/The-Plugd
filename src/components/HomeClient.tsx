@@ -7,7 +7,15 @@ import {
   LayoutDashboard,
   TrendingUp,
   ChevronDown,
-  Check
+  Check,
+  Wallet,
+  Users,
+  Trophy,
+  Coins,
+  Share2,
+  UserPlus,
+  Award,
+  Activity
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -65,6 +73,14 @@ export default function HomeClient({
   const [isPaidUser, setIsPaidUser] = useState(false);
   const [earners, setEarners] = useState<ActiveEarner[]>([]);
   const [visibleCount, setVisibleCount] = useState(10);
+  const [sliderReferrals, setSliderReferrals] = useState(100);
+  const [activities, setActivities] = useState([
+    { id: 1, text: "Someone earned ₹500", timeAgo: "2 minutes ago", badge: "Max" },
+    { id: 2, text: "Someone joined Pro", timeAgo: "5 minutes ago", badge: "Signup" },
+    { id: 3, text: "Someone earned ₹250", timeAgo: "12 minutes ago", badge: "Pro" },
+    { id: 4, text: "Someone upgraded to Max", timeAgo: "18 minutes ago", badge: "Upgrade" },
+    { id: 5, text: "Someone joined Starter", timeAgo: "24 minutes ago", badge: "Signup" }
+  ]);
 
   // Filters State
   const [timeframe, setTimeframe] = useState<"All time" | "Last 30 days">("All time");
@@ -260,6 +276,43 @@ export default function HomeClient({
   }, []);
 
   useEffect(() => {
+    const activityTypes = [
+      { text: "Someone earned ₹500", badge: "Max" },
+      { text: "Someone joined Pro", badge: "Signup" },
+      { text: "Someone earned ₹250", badge: "Pro" },
+      { text: "Someone upgraded to Max", badge: "Upgrade" },
+      { text: "Someone joined Starter", badge: "Signup" },
+      { text: "Someone earned ₹100", badge: "Starter" },
+      { text: "Someone joined Max", badge: "Signup" }
+    ];
+
+    const interval = setInterval(() => {
+      const randomActivity = activityTypes[Math.floor(Math.random() * activityTypes.length)];
+      setActivities(prev => {
+        const nextId = prev.length ? Math.max(...prev.map(a => a.id)) + 1 : 1;
+        const newEvent = {
+          id: nextId,
+          text: randomActivity.text,
+          timeAgo: "Just now",
+          badge: randomActivity.badge
+        };
+        const updatedPrev = prev.map(act => {
+          if (act.timeAgo === "Just now") return { ...act, timeAgo: "1 minute ago" };
+          const minMatch = act.timeAgo.match(/^(\d+) minute/);
+          if (minMatch) {
+            const nextMin = parseInt(minMatch[1]) + 1;
+            return { ...act, timeAgo: `${nextMin} minutes ago` };
+          }
+          return act;
+        });
+        return [newEvent, ...updatedPrev].slice(0, 5);
+      });
+    }, 7000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     // Auth Check
     async function checkAuth() {
       try {
@@ -351,167 +404,358 @@ export default function HomeClient({
         </div>
       </div>
 
-      {/* Top Earners Leaderboard Section */}
-      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-0">
-        <div className="bg-pill border border-border rounded-[24px] p-4 sm:p-6 md:p-8 shadow-xl">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
-            <div className="text-center sm:text-left">
-              <h2 className="text-xl md:text-2xl font-extrabold tracking-tight text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Top Earners</h2>
+      {/* SECTION 2: PLATFORM STATS */}
+      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Total Paid Out */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex items-center gap-5 shadow-xl hover:border-border transition-all duration-300">
+            <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-xl text-emerald-400">
+              <Wallet className="w-6 h-6" />
             </div>
-            
-            <div className="flex items-center justify-center sm:justify-end gap-3 z-30 w-full sm:w-auto">
-              {/* Timeframe Dropdown */}
-              <div className="relative">
-                <button 
-                  type="button"
-                  onClick={() => {
-                    setTimeframeOpen(!timeframeOpen);
-                  }}
-                  className="flex items-center justify-between gap-2 px-4 py-2 bg-accent border border-border text-foreground rounded-lg text-sm font-semibold focus:outline-none transition-all min-w-[135px] shadow-sm select-none cursor-pointer hover:bg-accent/80"
-                >
-                  <span>{timeframe === "All time" ? "All time" : "Last 30 days"}</span>
-                  <ChevronDown size={16} className={`text-muted transition-transform duration-200 ${timeframeOpen ? "rotate-180" : ""}`} />
-                </button>
-                
-                {timeframeOpen && (
-                  <>
-                    <div className="fixed inset-0 z-30" onClick={() => setTimeframeOpen(false)} />
-                    <div className="absolute left-1/2 -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 mt-1.5 w-[160px] bg-card border border-border rounded-xl shadow-2xl p-1 z-40 animate-in fade-in slide-in-from-top-2 duration-200">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setTimeframe("All time");
-                          setTimeframeOpen(false);
-                        }}
-                        className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-left text-sm font-bold transition-colors ${
-                          timeframe === "All time" 
-                          ? "bg-white/10 text-foreground" 
-                          : "text-foreground hover:bg-accent"
-                        }`}
-                      >
-                        <span>All time</span>
-                        {timeframe === "All time" && <Check size={12} className="text-foreground shrink-0" />}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setTimeframe("Last 30 days");
-                          setTimeframeOpen(false);
-                        }}
-                        className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-left text-sm font-bold transition-colors ${
-                          timeframe === "Last 30 days" 
-                          ? "bg-white/10 text-foreground" 
-                          : "text-foreground hover:bg-accent"
-                        }`}
-                      >
-                        <span>Last 30 days</span>
-                        {timeframe === "Last 30 days" && <Check size={12} className="text-foreground shrink-0" />}
-                      </button>
-                    </div>
-                  </>
-                )}
+            <div className="flex flex-col">
+              <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
+                Total Paid Out
+              </span>
+              <span className="text-2xl md:text-3xl font-[900] tracking-tighter text-white font-sans mt-2 rich-number">
+                ₹100Cr+
+              </span>
+            </div>
+          </div>
+
+          {/* Promoters */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex items-center gap-5 shadow-xl hover:border-border transition-all duration-300">
+            <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-xl text-emerald-400">
+              <Users className="w-6 h-6" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
+                Promoters
+              </span>
+              <span className="text-2xl md:text-3xl font-[900] tracking-tighter text-white font-sans mt-2 rich-number">
+                1,00,000+
+              </span>
+            </div>
+          </div>
+
+          {/* Top Earner */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex items-center gap-5 shadow-xl hover:border-border transition-all duration-300">
+            <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-xl text-emerald-400">
+              <Trophy className="w-6 h-6" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
+                Top Earner
+              </span>
+              <span className="text-2xl md:text-3xl font-[900] tracking-tighter text-white font-sans mt-2 rich-number">
+                ₹1Cr+
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: EARNINGS CALCULATOR */}
+      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
+        <div className="bg-pill border border-border rounded-[24px] p-6 sm:p-8 md:p-10 shadow-xl flex flex-col items-center">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-3" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+              Calculate Your Earnings
+            </h2>
+            <p className="text-muted text-sm md:text-base font-medium" style={{ fontFamily: '"EB Garamond", serif' }}>
+              See how much you could earn by sharing your referral link.
+            </p>
+          </div>
+
+          <div className="w-full max-w-3xl flex flex-col items-center gap-8">
+            {/* Slider Widget */}
+            <div className="w-full flex flex-col items-center gap-4 bg-zinc-950/40 border border-border/60 rounded-2xl p-6">
+              <div className="flex items-baseline justify-center gap-2">
+                <span className="text-4xl md:text-5xl font-black text-white font-sans tracking-tight rich-number">{sliderReferrals}</span>
+                <span className="text-muted text-sm font-semibold uppercase tracking-wider font-sans">Referrals</span>
+              </div>
+
+              <input
+                type="range"
+                min="1"
+                max="1000"
+                value={sliderReferrals}
+                onChange={(e) => setSliderReferrals(Number(e.target.value))}
+                className="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-[#16a34a]"
+                style={{
+                  background: `linear-gradient(to right, #16a34a 0%, #16a34a ${(sliderReferrals - 1) / 999 * 100}%, #27272a ${(sliderReferrals - 1) / 999 * 100}%, #27272a 100%)`
+                }}
+              />
+              <div className="flex justify-between w-full text-xs text-muted/60 font-semibold font-sans mt-1">
+                <span>1 Referral</span>
+                <span>500</span>
+                <span>1,000 Referrals</span>
+              </div>
+            </div>
+
+            {/* Live Earnings Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+              {/* Starter */}
+              <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-5 flex flex-col items-center text-center shadow-lg hover:border-[#16a34a]/30 transition-all duration-300 group">
+                <span className="text-xs text-muted font-bold uppercase tracking-widest font-sans mb-1">Starter</span>
+                <span className="text-xs text-muted/60 font-medium font-sans mb-3">₹100 per referral</span>
+                <span className="text-3xl font-extrabold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
+                  ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 100)}
+                </span>
+              </div>
+
+              {/* Pro */}
+              <div className="bg-zinc-900/40 border border-[#16a34a]/40 shadow-[0_0_20px_rgba(22,163,74,0.05)] rounded-2xl p-5 flex flex-col items-center text-center shadow-lg hover:border-[#16a34a]/80 transition-all duration-300 group relative">
+                <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#16a34a] text-white text-[9px] uppercase font-black tracking-widest px-2.5 py-0.5 rounded-full shadow-md whitespace-nowrap">
+                  Most Popular
+                </div>
+                <span className="text-xs text-white font-bold uppercase tracking-widest font-sans mb-1 mt-1">Pro</span>
+                <span className="text-xs text-muted/60 font-medium font-sans mb-3">₹250 per referral</span>
+                <span className="text-3xl font-extrabold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
+                  ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 250)}
+                </span>
+              </div>
+
+              {/* Max */}
+              <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-5 flex flex-col items-center text-center shadow-lg hover:border-[#16a34a]/30 transition-all duration-300 group relative">
+                <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-amber-500 text-black text-[9px] uppercase font-black tracking-widest px-2.5 py-0.5 rounded-full shadow-md whitespace-nowrap">
+                  Highest Yield
+                </div>
+                <span className="text-xs text-muted font-bold uppercase tracking-widest font-sans mb-1 mt-1">Max</span>
+                <span className="text-xs text-muted/60 font-medium font-sans mb-3">₹500 per referral</span>
+                <span className="text-3xl font-extrabold text-amber-500 font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
+                  ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 500)}
+                </span>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="overflow-x-auto no-scrollbar w-full">
-            <table className="w-full min-w-[380px] md:min-w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b border-border/60">
-                  <th className="pb-3 pt-1 w-8 md:w-10 text-[0.65rem] font-bold text-muted uppercase tracking-widest text-center">#</th>
-                  <th className="pb-3 pt-1 md:w-[60%] text-[0.65rem] font-bold text-muted uppercase tracking-widest pl-1 md:pl-2">Promoter</th>
-                  <th className="pb-3 pt-1 md:w-[20%] text-[0.65rem] font-bold text-muted uppercase tracking-widest text-right md:text-left whitespace-nowrap md:pl-6">EARNINGS</th>
-                  <th className="pb-3 pt-1 md:w-[20%] text-[0.65rem] font-bold text-muted tracking-widest text-right whitespace-nowrap pl-2 md:pl-4">
-                    {timeframe === "All time" ? "MoM Growth" : "30-Day Growth"}
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/30">
-                {processedEarners.slice(0, visibleCount).map((earner, index) => {
-                  const rank = index + 1;
-                  
-                  // Column 3 display calculation (Earnings)
-                  const rawEarningsVal = timeframe === "All time" ? earner.currentEarnings : earner.earningsLast30;
-                  const earningsVal = Math.round(rawEarningsVal / 100) * 100;
-                  const col3Display = new Intl.NumberFormat("en-IN", {
-                    style: "currency",
-                    currency: "INR",
-                    maximumFractionDigits: 0
-                  }).format(earningsVal);
-
-                  // Column 4 display calculation (Growth)
-                  const growthVal = timeframe === "All time" ? earner.growthAllTime : earner.growthLast30;
-                  const isZero = Math.abs(growthVal) < 0.005;
-                  const growthText = isZero ? "—" : `${growthVal > 0 ? "↑" : "↓"} ${Math.abs(growthVal).toFixed(2)}%`;
-                  const growthColor = isZero ? "text-muted/60 bg-muted/10" : growthVal > 0 ? "text-emerald-500 bg-emerald-500/10" : "text-red-500 bg-red-500/10";
-                  const col4Display = (
-                    <span className={`${growthColor} font-bold text-[10px] md:text-xs px-1.5 py-0.5 md:px-2 md:py-0.5 rounded-md`}>
-                      {growthText}
-                    </span>
-                  );
-
-                  let rankDisplay: React.ReactNode = rank;
-                  if (rank === 1) rankDisplay = <span className="text-base md:text-lg">🥇</span>;
-                  else if (rank === 2) rankDisplay = <span className="text-base md:text-lg">🥈</span>;
-                  else if (rank === 3) rankDisplay = <span className="text-base md:text-lg">🥉</span>;
-
-                  return (
-                    <tr 
-                      key={earner.id} 
-                      onClick={() => router.push(`/p/${earner.handle.substring(1)}`)}
-                      className="hover:bg-foreground/[0.02] transition-colors group animate-in fade-in duration-300 cursor-pointer"
-                    >
-                      <td className="py-3 text-center w-8 md:w-10 font-bold text-muted text-xs md:text-sm">
-                        {rankDisplay}
-                      </td>
-                      <td className="py-3 pl-1 md:pl-2 md:w-[60%]">
-                        <div className="flex items-center gap-2 md:gap-3">
-                          {earner.avatarUrl ? (
-                            <img 
-                              src={earner.avatarUrl} 
-                              alt={earner.name}
-                              className="w-8 h-8 md:w-9 h-9 rounded-full object-cover shadow-md shrink-0 border border-border/40"
-                            />
-                          ) : (
-                            <div className={`w-8 h-8 md:w-9 h-9 rounded-full bg-gradient-to-tr ${earner.gradient} text-white font-bold text-xs flex items-center justify-center shadow-md shrink-0`}>
-                              {earner.initials}
-                            </div>
-                          )}
-                          <div className="flex flex-col min-w-0">
-                            <span className="font-bold text-foreground text-xs md:text-sm leading-snug truncate group-hover:underline">{earner.name}</span>
-                            <span className="text-muted text-[10px] md:text-xs leading-none truncate">{earner.handle}</span>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="py-3 text-right md:text-left font-bold text-foreground text-xs md:text-sm whitespace-nowrap md:w-[20%] md:pl-6">
-                        {col3Display}
-                      </td>
-                      <td className="py-3 text-right whitespace-nowrap pl-2 md:pl-4 md:w-[20%]">
-                        {col4Display}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-
-          {earners.length > 10 && (
-            <div className="flex justify-center mt-6">
-              <button
-                onClick={() => setVisibleCount(prev => prev === 10 ? 50 : 10)}
-                className="bg-accent border border-border text-foreground hover:bg-accent/80 transition-all font-bold text-xs px-4 py-2 rounded-lg cursor-pointer active:scale-[0.98]"
-                style={{ fontFamily: 'var(--font-eb-garamond), serif' }}
-              >
-                {visibleCount === 10 ? "Show Top 50" : "Show Top 10"}
-              </button>
-            </div>
-          )}
+      {/* SECTION 4: HOW IT WORKS */}
+      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-3" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+            How Plugd Works
+          </h2>
         </div>
 
-        <p className="text-center text-[10px] text-muted/30 font-medium mt-4 select-none font-sans px-4">
-          ⓘ These figures and profiles demonstrate platform scaling potential using simulated earnings. Individual earnings vary based on actual sharing performance.
-        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Card 1: Join */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
+            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
+              <UserPlus className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>1. Join</h3>
+            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
+              Choose a promoter plan and receive your unique referral link.
+            </p>
+          </div>
+
+          {/* Card 2: Share */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
+            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
+              <Share2 className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>2. Share</h3>
+            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
+              Share your link across WhatsApp, Instagram, X, Reddit, Discord, Telegram, communities, and groups.
+            </p>
+          </div>
+
+          {/* Card 3: Earn */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
+            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
+              <Coins className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>3. Earn</h3>
+            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
+              Receive commissions every time someone joins through your referral link.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: WHY PLUGD EXISTS */}
+      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
+        <div className="bg-pill border border-border rounded-[24px] p-8 md:p-12 shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="absolute right-0 top-0 w-[300px] h-[300px] bg-[#16a34a]/5 rounded-full blur-[100px] pointer-events-none" />
+          
+          <div className="flex-1 space-y-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+              Distribution Has Value
+            </h2>
+            <div className="h-[2px] w-16 bg-[#16a34a] mb-2" />
+            <p className="text-muted text-sm md:text-base leading-relaxed max-w-xl font-sans">
+              Creators have audiences. Students have networks. Communities have attention.
+            </p>
+            <p className="text-white text-base md:text-lg font-bold leading-relaxed max-w-xl" style={{ fontFamily: '"EB Garamond", serif' }}>
+              Plugd lets anyone monetize distribution. If you can bring attention, you can earn.
+            </p>
+          </div>
+          
+          <div className="flex-shrink-0 bg-zinc-950/60 border border-zinc-800/80 rounded-2xl p-6 text-center shadow-lg min-w-[240px] md:min-w-[280px] self-stretch flex flex-col justify-center">
+            <span className="text-[10px] text-muted font-bold uppercase tracking-[0.15em] mb-1 font-sans">Distribution Monetization</span>
+            <span className="text-3xl font-extrabold text-[#16a34a] font-sans rich-number">100% Direct</span>
+            <span className="text-xs text-muted/60 mt-1 font-sans">No middleman fees</span>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6: LIVE ACTIVITY FEED */}
+      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
+        <div className="bg-pill border border-border rounded-[24px] p-6 sm:p-8 md:p-10 shadow-xl">
+          <div className="flex items-center gap-3 mb-8">
+            <span className="flex h-3.5 w-3.5 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
+            </span>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+              Recent Activity
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {activities.map((act) => (
+              <div 
+                key={act.id} 
+                className="flex items-center justify-between p-4 bg-zinc-900/40 border border-zinc-800/80 rounded-xl shadow-sm hover:border-zinc-805 transition-all duration-300 animate-in fade-in duration-300"
+              >
+                <div className="flex items-center gap-4">
+                  <div className={`text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full ${
+                    act.badge === "Max" || act.badge === "Upgrade" ? "bg-amber-500/10 text-amber-500 border border-amber-500/20" :
+                    act.badge === "Pro" ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" :
+                    "bg-[#16a34a]/10 text-[#16a34a] border border-[#16a34a]/20"
+                  }`}>
+                    {act.badge}
+                  </div>
+                  <span className="text-sm font-bold text-white leading-none font-sans">
+                    {act.text}
+                  </span>
+                </div>
+                <span className="text-xs text-muted font-semibold font-sans">
+                  {act.timeAgo}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: ACHIEVEMENTS */}
+      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-3" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+            Unlock Milestones
+          </h2>
+          <p className="text-muted text-sm font-medium" style={{ fontFamily: '"EB Garamond", serif' }}>
+            Unlock exclusive collector milestones as your network expands.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          {/* Badge 1: First Referral */}
+          <div className="bg-pill border border-border/60 hover:border-border rounded-2xl p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 relative group overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-amber-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="w-16 h-16 rounded-full bg-amber-900/20 border-2 border-amber-600/40 text-amber-500 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(217,119,6,0.1)] group-hover:scale-110 transition-transform duration-300">
+              <Award className="w-8 h-8" />
+            </div>
+            <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: '"Times New Roman", Times, serif' }}>First Referral</h3>
+            <span className="text-[10px] text-muted/80 font-semibold font-sans">Beginner Status</span>
+          </div>
+
+          {/* Badge 2: ₹1,000 Club */}
+          <div className="bg-pill border border-border/60 hover:border-border rounded-2xl p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 relative group overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-700/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="w-16 h-16 rounded-full bg-slate-800/40 border-2 border-slate-500/40 text-slate-300 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(148,163,184,0.1)] group-hover:scale-110 transition-transform duration-300">
+              <Trophy className="w-8 h-8" />
+            </div>
+            <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: '"Times New Roman", Times, serif' }}>₹1,000 Club</h3>
+            <span className="text-[10px] text-muted/80 font-semibold font-sans">Silver Tier</span>
+          </div>
+
+          {/* Badge 3: ₹10,000 Club */}
+          <div className="bg-pill border border-border/60 hover:border-border rounded-2xl p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 relative group overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-yellow-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="w-16 h-16 rounded-full bg-yellow-950/20 border-2 border-yellow-500/40 text-yellow-400 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(234,179,8,0.15)] group-hover:scale-110 transition-transform duration-300">
+              <Trophy className="w-8 h-8" />
+            </div>
+            <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: '"Times New Roman", Times, serif' }}>₹10,000 Club</h3>
+            <span className="text-[10px] text-muted/80 font-semibold font-sans">Gold Badge</span>
+          </div>
+
+          {/* Badge 4: ₹1 Lakh Club */}
+          <div className="bg-pill border border-border/60 hover:border-border rounded-2xl p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 relative group overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-emerald-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="w-16 h-16 rounded-full bg-emerald-950/20 border-2 border-emerald-500/40 text-emerald-400 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(16,185,129,0.15)] group-hover:scale-110 transition-transform duration-300">
+              <Coins className="w-8 h-8" />
+            </div>
+            <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: '"Times New Roman", Times, serif' }}>₹1 Lakh Club</h3>
+            <span className="text-[10px] text-muted/80 font-semibold font-sans">Emerald Collector</span>
+          </div>
+
+          {/* Badge 5: Top 1% */}
+          <div className="bg-pill border border-border/60 hover:border-border rounded-2xl p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 relative group overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-purple-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="w-16 h-16 rounded-full bg-purple-950/20 border-2 border-purple-500/40 text-purple-400 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(168,85,247,0.15)] group-hover:scale-110 transition-transform duration-300">
+              <Award className="w-8 h-8" />
+            </div>
+            <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Top 1%</h3>
+            <span className="text-[10px] text-muted/80 font-semibold font-sans">Platinum Status</span>
+          </div>
+
+          {/* Badge 6: Top 100 Promoters */}
+          <div className="bg-pill border border-border/60 hover:border-border rounded-2xl p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 relative group overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-cyan-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="w-16 h-16 rounded-full bg-cyan-950/20 border-2 border-cyan-500/40 text-cyan-400 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(6,182,212,0.15)] group-hover:scale-110 transition-transform duration-300">
+              <Trophy className="w-8 h-8" />
+            </div>
+            <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Top 100 Promoters</h3>
+            <span className="text-[10px] text-muted/80 font-semibold font-sans">Diamond Badge</span>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8: FINAL CTA */}
+      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
+        <div className="bg-pill border border-border rounded-[24px] p-8 md:p-12 shadow-xl relative overflow-hidden flex flex-col items-center text-center">
+          <div className="absolute inset-0 bg-gradient-to-b from-green-500/[0.03] to-transparent pointer-events-none" />
+          
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-3" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+            Start Earning Today
+          </h2>
+          <p className="text-muted text-sm md:text-base font-medium mb-8 max-w-lg mx-auto" style={{ fontFamily: '"EB Garamond", serif' }}>
+            Turn your network into income.
+          </p>
+
+          <div className="flex flex-row gap-4 items-center justify-center">
+            <button
+              onClick={handleStartEarning}
+              className="bg-[#16a34a] border border-[#16a34a] text-black dark:text-white flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg cursor-pointer"
+              style={{ 
+                fontFamily: 'var(--font-eb-garamond), serif', 
+                padding: '0.6rem 2.25rem',
+                fontSize: '1rem',
+                fontWeight: 600,
+                borderRadius: '8px'
+              }}
+            >
+              Start Earning
+            </button>
+            <Link
+              href="/vault"
+              className="bg-selected border border-selected text-selected-foreground flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
+              style={{ 
+                fontFamily: 'var(--font-eb-garamond), serif', 
+                padding: '0.6rem 2.25rem',
+                fontSize: '1rem',
+                fontWeight: 600,
+                borderRadius: '8px'
+              }}
+            >
+              Vault
+            </Link>
+          </div>
+        </div>
       </section>
 
       <div className="w-full mt-16">
