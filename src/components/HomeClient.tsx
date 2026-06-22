@@ -15,7 +15,8 @@ import {
   Share2,
   UserPlus,
   Award,
-  Activity
+  Activity,
+  Info
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -516,7 +517,7 @@ export default function HomeClient({
                 <span className="text-xs text-muted font-bold uppercase tracking-widest font-sans mb-1">Starter</span>
                 <span className="text-xs text-muted/60 font-medium font-sans mb-3">₹100 per referral</span>
                 <span className="text-3xl font-extrabold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
-                  ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 100)}
+                  Up to ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 100)}
                 </span>
               </div>
 
@@ -528,7 +529,7 @@ export default function HomeClient({
                 <span className="text-xs text-white font-bold uppercase tracking-widest font-sans mb-1 mt-1">Pro</span>
                 <span className="text-xs text-muted/60 font-medium font-sans mb-3">₹250 per referral</span>
                 <span className="text-3xl font-extrabold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
-                  ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 250)}
+                  Up to ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 250)}
                 </span>
               </div>
 
@@ -540,9 +541,15 @@ export default function HomeClient({
                 <span className="text-xs text-muted font-bold uppercase tracking-widest font-sans mb-1 mt-1">Max</span>
                 <span className="text-xs text-muted/60 font-medium font-sans mb-3">₹500 per referral</span>
                 <span className="text-3xl font-extrabold text-amber-500 font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
-                  ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 500)}
+                  Up to ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 500)}
                 </span>
               </div>
+            </div>
+
+            {/* Note */}
+            <div className="flex items-center gap-1.5 text-xs text-muted/50 font-medium font-sans select-none mt-1">
+              <Info className="w-3.5 h-3.5 flex-shrink-0 text-muted/40" />
+              <span>Based on referral purchase type. Actual earnings depend on which plan your referrals purchase.</span>
             </div>
           </div>
         </div>
