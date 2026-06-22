@@ -73,7 +73,18 @@ export default function HomeClient({
   const [isPaidUser, setIsPaidUser] = useState(false);
   const [earners, setEarners] = useState<ActiveEarner[]>([]);
   const [visibleCount, setVisibleCount] = useState(10);
-  const [sliderReferrals, setSliderReferrals] = useState(100);
+  const [sliderVal, setSliderVal] = useState(2); // 10^2 = 100 referrals default
+
+  const getLogValue = (val: number) => {
+    const raw = Math.pow(10, val);
+    if (raw <= 10) return Math.round(raw);
+    if (raw <= 100) return Math.round(raw / 1) * 1;
+    if (raw <= 1000) return Math.round(raw / 10) * 10;
+    if (raw <= 10000) return Math.round(raw / 100) * 100;
+    return Math.round(raw / 1000) * 1000;
+  };
+
+  const sliderReferrals = getLogValue(sliderVal);
   const [activities, setActivities] = useState([
     { id: 1, text: "Someone earned ₹500", timeAgo: "2 minutes ago", badge: "Max" },
     { id: 2, text: "Someone joined Pro", timeAgo: "5 minutes ago", badge: "Signup" },
@@ -470,25 +481,31 @@ export default function HomeClient({
             {/* Slider Widget */}
             <div className="w-full flex flex-col items-center gap-4 bg-zinc-950/40 border border-border/60 rounded-2xl p-6">
               <div className="flex items-baseline justify-center gap-2">
-                <span className="text-4xl md:text-5xl font-black text-white font-sans tracking-tight rich-number">{sliderReferrals}</span>
+                <span className="text-4xl md:text-5xl font-black text-white font-sans tracking-tight rich-number">
+                  {new Intl.NumberFormat("en-IN").format(sliderReferrals)}
+                </span>
                 <span className="text-muted text-sm font-semibold uppercase tracking-wider font-sans">Referrals</span>
               </div>
 
               <input
                 type="range"
-                min="1"
-                max="1000"
-                value={sliderReferrals}
-                onChange={(e) => setSliderReferrals(Number(e.target.value))}
+                min="0"
+                max="5"
+                step="0.01"
+                value={sliderVal}
+                onChange={(e) => setSliderVal(Number(e.target.value))}
                 className="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-[#16a34a]"
                 style={{
-                  background: `linear-gradient(to right, #16a34a 0%, #16a34a ${(sliderReferrals - 1) / 999 * 100}%, #27272a ${(sliderReferrals - 1) / 999 * 100}%, #27272a 100%)`
+                  background: `linear-gradient(to right, #16a34a 0%, #16a34a ${(sliderVal / 5) * 100}%, #27272a ${(sliderVal / 5) * 100}%, #27272a 100%)`
                 }}
               />
-              <div className="flex justify-between w-full text-xs text-muted/60 font-semibold font-sans mt-1">
-                <span>1 Referral</span>
-                <span>500</span>
-                <span>1,000 Referrals</span>
+              <div className="flex justify-between w-full text-[10px] sm:text-xs text-muted/60 font-semibold font-sans mt-1">
+                <span>1</span>
+                <span>10</span>
+                <span>100</span>
+                <span>1,000</span>
+                <span>10,000</span>
+                <span>100,000</span>
               </div>
             </div>
 
