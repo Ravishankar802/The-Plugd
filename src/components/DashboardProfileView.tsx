@@ -56,13 +56,9 @@ export function LeagueIcon({ id, className = "", size = 56 }: LeagueIconProps) {
               <stop offset="70%" stopColor="#8C4F2D" />
               <stop offset="100%" stopColor="#5C3119" />
             </linearGradient>
-            <linearGradient id="bronze-star-light" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#F5D0A9" />
-              <stop offset="100%" stopColor="#C68052" />
-            </linearGradient>
-            <linearGradient id="bronze-star-dark" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#8C4F2D" />
-              <stop offset="100%" stopColor="#4A2511" />
+            <linearGradient id="bronze-inner-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#A16F4A" />
+              <stop offset="100%" stopColor="#52321C" />
             </linearGradient>
           </defs>
           {/* Hexagon Outer Border */}
@@ -81,25 +77,21 @@ export function LeagueIcon({ id, className = "", size = 56 }: LeagueIconProps) {
             strokeWidth="1.5"
             strokeLinejoin="round"
           />
-          {/* 3D Star in the Center */}
-          <path d="M 32,16 L 32,32 L 28,27 Z" fill="url(#bronze-star-light)" />
-          <path d="M 32,16 L 36,27 L 32,32 Z" fill="url(#bronze-star-dark)" />
-          <path d="M 47,27 L 32,32 L 36,27 Z" fill="url(#bronze-star-light)" />
-          <path d="M 47,27 L 38,34 L 32,32 Z" fill="url(#bronze-star-dark)" />
-          <path d="M 41,45 L 32,32 L 38,34 Z" fill="url(#bronze-star-light)" />
-          <path d="M 41,45 L 32,38.5 L 32,32 Z" fill="url(#bronze-star-dark)" />
-          <path d="M 23,45 L 32,32 L 32,38.5 Z" fill="url(#bronze-star-light)" />
-          <path d="M 23,45 L 26,34 L 32,32 Z" fill="url(#bronze-star-dark)" />
-          <path d="M 17,27 L 32,32 L 26,34 Z" fill="url(#bronze-star-light)" />
-          <path d="M 17,27 L 28,27 L 32,32 Z" fill="url(#bronze-star-dark)" />
-          
-          <path
-            d="M 32,16 L 36,27 L 47,27 L 38,34 L 41,45 L 32,38.5 L 23,45 L 26,34 L 17,27 L 28,27 Z"
-            fill="none"
-            stroke="#E5A97C"
-            strokeWidth="0.5"
-            strokeLinejoin="round"
+          {/* 3D Hollow Chevron/V-Shape Centerpiece */}
+          <path 
+            d="M 18,22 L 46,22 L 46,26 L 32,44 L 18,26 Z" 
+            fill="url(#bronze-inner-grad)" 
+            stroke="#5C3119" 
+            strokeWidth="0.5" 
           />
+          <path 
+            d="M 23,26 L 41,26 L 32,38 Z" 
+            fill="#120c08" 
+            stroke="#5C3119" 
+            strokeWidth="0.5" 
+          />
+          <path d="M 18,22 L 46,22" stroke="#E5A97C" strokeWidth="1" opacity="0.6" />
+          <path d="M 18,22 L 32,44 L 46,22" stroke="#E5A97C" strokeWidth="0.5" opacity="0.4" />
         </svg>
       );
     case "silver":
@@ -164,28 +156,38 @@ export function LeagueIcon({ id, className = "", size = 56 }: LeagueIconProps) {
           />
           {/* Inner Hexagon Border */}
           <path
-            d="M 32,8 L 54,21 L 54,43 L 32,56 L 10,43 L 10,21 Z"
+            d="M 32,10 L 53,22 L 53,42 L 32,54 L 11,42 L 11,22 Z"
             fill="#120e06"
-            stroke="#854D0E"
-            strokeWidth="1.5"
+            stroke="url(#gold-metal-grad)"
+            strokeWidth="2.5"
             strokeLinejoin="round"
           />
-          {/* Flat Center Face */}
-          <path d="M 32,24 L 38,28 L 38,36 L 32,40 L 26,36 L 26,28 Z" fill="url(#gold-gem-light)" />
-          {/* Top Facet */}
-          <path d="M 32,16 L 42,24 L 38,28 L 32,24 Z" fill="url(#gold-gem-light)" opacity="0.9" />
-          {/* Top-Right Facet */}
-          <path d="M 42,24 L 42,40 L 38,36 L 38,28 Z" fill="url(#gold-gem-dark)" opacity="0.8" />
-          {/* Bottom-Right Facet */}
-          <path d="M 42,40 L 32,48 L 32,40 L 38,36 Z" fill="url(#gold-gem-dark)" />
-          {/* Bottom Facet */}
-          <path d="M 32,48 L 22,40 L 26,36 L 32,40 Z" fill="url(#gold-gem-light)" opacity="0.7" />
-          {/* Bottom-Left Facet */}
-          <path d="M 22,40 L 22,24 L 26,28 L 26,36 Z" fill="url(#gold-gem-light)" opacity="0.85" />
-          {/* Top-Left Facet */}
-          <path d="M 22,24 L 32,16 L 32,24 L 26,28 Z" fill="url(#gold-gem-light)" />
-          
-          <path d="M 32,16 L 42,24 L 42,40 L 32,48 L 22,40 L 22,24 Z" fill="none" stroke="#FDE047" strokeWidth="0.75" />
+
+          {/* Radial ticks connecting them to match the screenshot */}
+          <line x1="32" y1="4" x2="32" y2="10" stroke="url(#gold-metal-grad)" strokeWidth="2.5" />
+          <line x1="58" y1="19" x2="53" y2="22" stroke="url(#gold-metal-grad)" strokeWidth="2.5" />
+          <line x1="58" y1="45" x2="53" y2="42" stroke="url(#gold-metal-grad)" strokeWidth="2.5" />
+          <line x1="32" y1="60" x2="32" y2="54" stroke="url(#gold-metal-grad)" strokeWidth="2.5" />
+          <line x1="6" y1="45" x2="11" y2="42" stroke="url(#gold-metal-grad)" strokeWidth="2.5" />
+          <line x1="6" y1="19" x2="11" y2="22" stroke="url(#gold-metal-grad)" strokeWidth="2.5" />
+
+          {/* Center 3D Regular Hexagon Block */}
+          {/* Inner face */}
+          <path d="M 32,26 L 38,29.5 L 38,34.5 L 32,38 L 26,34.5 L 26,29.5 Z" fill="url(#gold-gem-light)" />
+          {/* Top facet */}
+          <path d="M 32,20 L 43,26 L 38,29.5 L 32,26 Z" fill="url(#gold-gem-light)" opacity="0.9" />
+          {/* Top-Right facet */}
+          <path d="M 43,26 L 43,38 L 38,34.5 L 38,29.5 Z" fill="url(#gold-gem-dark)" opacity="0.8" />
+          {/* Bottom-Right facet */}
+          <path d="M 43,38 L 32,44 L 32,38 L 38,34.5 Z" fill="url(#gold-gem-dark)" />
+          {/* Bottom facet */}
+          <path d="M 32,44 L 21,38 L 26,34.5 L 32,38 Z" fill="url(#gold-gem-light)" opacity="0.75" />
+          {/* Bottom-Left facet */}
+          <path d="M 21,38 L 21,26 L 26,29.5 L 26,34.5 Z" fill="url(#gold-gem-light)" opacity="0.85" />
+          {/* Top-Left facet */}
+          <path d="M 21,26 L 32,20 L 32,26 L 26,29.5 Z" fill="url(#gold-gem-light)" />
+
+          <path d="M 32,20 L 43,26 L 43,38 L 32,44 L 21,38 L 21,26 Z" fill="none" stroke="#FDE047" strokeWidth="0.75" />
         </svg>
       );
     case "diamond":
