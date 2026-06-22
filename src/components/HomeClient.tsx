@@ -499,13 +499,13 @@ export default function HomeClient({
                   background: `linear-gradient(to right, #16a34a 0%, #16a34a ${(sliderVal / 5) * 100}%, #27272a ${(sliderVal / 5) * 100}%, #27272a 100%)`
                 }}
               />
-              <div className="flex justify-between w-full text-[10px] sm:text-xs text-muted/60 font-semibold font-sans mt-1">
-                <span>1</span>
-                <span>10</span>
-                <span>100</span>
-                <span>1,000</span>
-                <span>10,000</span>
-                <span>100,000</span>
+              <div className="relative w-full h-4 text-[10px] sm:text-xs text-muted/60 font-semibold font-sans mt-1">
+                <span className="absolute left-0">1</span>
+                <span className="absolute left-[20%] -translate-x-1/2">10</span>
+                <span className="absolute left-[40%] -translate-x-1/2">100</span>
+                <span className="absolute left-[60%] -translate-x-1/2">1,000</span>
+                <span className="absolute left-[80%] -translate-x-1/2">10,000</span>
+                <span className="absolute right-0">1,00,000</span>
               </div>
             </div>
 
