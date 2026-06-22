@@ -515,7 +515,7 @@ export default function HomeClient({
               {/* Starter */}
               <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-5 flex flex-col items-center text-center shadow-lg hover:border-[#16a34a]/30 transition-all duration-300 group">
                 <span className="text-xs text-muted font-bold uppercase tracking-widest font-sans mb-1">Starter</span>
-                <span className="text-xs text-muted/50 font-semibold font-sans mb-0.5 mt-2">Earn Up To</span>
+                <span className="text-xs text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
                 <span className="text-3xl font-extrabold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
                   ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 100)}
                 </span>
@@ -527,7 +527,7 @@ export default function HomeClient({
                   Most Popular
                 </div>
                 <span className="text-xs text-white font-bold uppercase tracking-widest font-sans mb-1 mt-1">Pro</span>
-                <span className="text-xs text-muted/50 font-semibold font-sans mb-0.5 mt-2">Earn Up To</span>
+                <span className="text-xs text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
                 <span className="text-3xl font-extrabold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
                   ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 250)}
                 </span>
@@ -539,7 +539,7 @@ export default function HomeClient({
                   Highest Yield
                 </div>
                 <span className="text-xs text-muted font-bold uppercase tracking-widest font-sans mb-1 mt-1">Max</span>
-                <span className="text-xs text-muted/50 font-semibold font-sans mb-0.5 mt-2">Earn Up To</span>
+                <span className="text-xs text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
                 <span className="text-3xl font-extrabold text-amber-500 font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
                   ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 500)}
                 </span>
