@@ -1612,33 +1612,30 @@ here's my link 👉 ${link}`
                           </div>
                           
                           <div>
-                            <h4 className="text-base font-black tracking-tight text-white">
+                            <h4 className="text-lg md:text-xl font-black text-white tracking-tight leading-tight">
                               {league.name}
                             </h4>
-                            <p className="text-xs text-muted mt-0.5">
-                              Requirement: <span className="font-bold text-foreground">₹{new Intl.NumberFormat("en-IN").format(league.target)}+</span>
+                            <p className="text-sm md:text-base font-extrabold text-[#16a34a] mt-1">
+                              ₹{new Intl.NumberFormat("en-IN").format(league.target)}+
                             </p>
                           </div>
                         </div>
 
-                        {/* Status Label on Right */}
-                        <div className="flex items-center justify-between md:justify-end border-t border-border/10 md:border-t-0 pt-3 md:pt-0 shrink-0">
-                          <div className="text-left md:text-right">
-                            <span className="text-[9px] text-muted uppercase font-bold tracking-wider block">Status</span>
-                            {isCurrent ? (
-                              <span className="text-xs font-black text-emerald-400 uppercase tracking-widest mt-0.5 block select-none">
-                                Current League
-                              </span>
-                            ) : isUnlocked ? (
-                              <span className="text-xs font-bold text-[#16a34a] uppercase tracking-widest mt-0.5 block">
-                                Unlocked
-                              </span>
-                            ) : (
-                              <span className="text-xs font-bold text-muted uppercase tracking-widest flex items-center gap-1 mt-0.5">
-                                <Lock size={12} className="opacity-60" /> Locked
-                              </span>
-                            )}
-                          </div>
+                        {/* Status Label on Right (Subtle, no header label) */}
+                        <div className="flex items-center justify-between md:justify-end border-t border-border/10 md:border-t-0 pt-3 md:pt-0 shrink-0 text-left md:text-right">
+                          {isCurrent ? (
+                            <span className="text-[10px] font-black text-[#16a34a] uppercase tracking-widest select-none bg-[#16a34a]/10 border border-[#16a34a]/30 px-3 py-1.5 rounded-full">
+                              Current League
+                            </span>
+                          ) : isUnlocked ? (
+                            <span className="text-[10px] font-bold text-emerald-400/80 uppercase tracking-widest bg-emerald-500/5 border border-emerald-500/20 px-2.5 py-1 rounded-full">
+                              Unlocked
+                            </span>
+                          ) : (
+                            <span className="text-[10px] font-medium text-muted uppercase tracking-widest flex items-center gap-1.5 opacity-60">
+                              <Lock size={10} /> Locked
+                            </span>
+                          )}
                         </div>
                       </div>
                     );
