@@ -93,7 +93,7 @@ export default function HomeClient({
   }>({ today: [], thisWeek: [], allTime: [] });
   const [recentEarnings, setRecentEarnings] = useState<Array<{ id: number; text: string; time: string }>>([]);
   const [visibleCount, setVisibleCount] = useState(10);
-  const [sliderVal, setSliderVal] = useState(2); // 10^2 = 100 referrals default
+  const [sliderVal, setSliderVal] = useState(3); // 10^3 = 1000 referrals default
 
   const getLogValue = (val: number) => {
     const raw = Math.pow(10, val);
