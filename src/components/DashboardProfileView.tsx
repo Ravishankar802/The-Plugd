@@ -50,232 +50,470 @@ export function LeagueIcon({ id, className = "", size = 56 }: LeagueIconProps) {
       return (
         <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
           <defs>
-            <linearGradient id="bronze-top" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#d5a6bd" />
-              <stop offset="100%" stopColor="#8c5a3c" />
+            <linearGradient id="bronze-gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#E5A97C" />
+              <stop offset="35%" stopColor="#C68052" />
+              <stop offset="70%" stopColor="#8C4F2D" />
+              <stop offset="100%" stopColor="#5C3119" />
             </linearGradient>
-            <linearGradient id="bronze-left" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#a67c52" />
-              <stop offset="100%" stopColor="#5c3a24" />
+            <linearGradient id="bronze-star-light" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#F5D0A9" />
+              <stop offset="100%" stopColor="#C68052" />
             </linearGradient>
-            <linearGradient id="bronze-right" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#8c5a3c" />
-              <stop offset="100%" stopColor="#3d2314" />
+            <linearGradient id="bronze-star-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#8C4F2D" />
+              <stop offset="100%" stopColor="#4A2511" />
             </linearGradient>
           </defs>
-          <path d="M 32,4 L 56,18 L 56,46 L 32,60 L 8,46 L 8,18 Z" fill="none" stroke="#a67c52" strokeWidth="2" strokeLinejoin="round" />
-          <path d="M 32,4 L 56,18 L 32,32 L 8,18 Z" fill="url(#bronze-top)" stroke="#3d2314" strokeWidth="0.5" />
-          <path d="M 8,18 L 32,32 L 32,60 L 8,46 Z" fill="url(#bronze-left)" stroke="#3d2314" strokeWidth="0.5" />
-          <path d="M 32,32 L 56,18 L 56,46 L 32,60 Z" fill="url(#bronze-right)" stroke="#3d2314" strokeWidth="0.5" />
+          {/* Hexagon Outer Border */}
+          <path
+            d="M 32,4 L 58,19 L 58,45 L 32,60 L 6,45 L 6,19 Z"
+            fill="none"
+            stroke="url(#bronze-gold-grad)"
+            strokeWidth="3.5"
+            strokeLinejoin="round"
+          />
+          {/* Inner Hexagon Border */}
+          <path
+            d="M 32,8 L 54,21 L 54,43 L 32,56 L 10,43 L 10,21 Z"
+            fill="#120c08"
+            stroke="#5C3119"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
+          {/* 3D Star in the Center */}
+          <path d="M 32,16 L 32,32 L 28,27 Z" fill="url(#bronze-star-light)" />
+          <path d="M 32,16 L 36,27 L 32,32 Z" fill="url(#bronze-star-dark)" />
+          <path d="M 47,27 L 32,32 L 36,27 Z" fill="url(#bronze-star-light)" />
+          <path d="M 47,27 L 38,34 L 32,32 Z" fill="url(#bronze-star-dark)" />
+          <path d="M 41,45 L 32,32 L 38,34 Z" fill="url(#bronze-star-light)" />
+          <path d="M 41,45 L 32,38.5 L 32,32 Z" fill="url(#bronze-star-dark)" />
+          <path d="M 23,45 L 32,32 L 32,38.5 Z" fill="url(#bronze-star-light)" />
+          <path d="M 23,45 L 26,34 L 32,32 Z" fill="url(#bronze-star-dark)" />
+          <path d="M 17,27 L 32,32 L 26,34 Z" fill="url(#bronze-star-light)" />
+          <path d="M 17,27 L 28,27 L 32,32 Z" fill="url(#bronze-star-dark)" />
+          
+          <path
+            d="M 32,16 L 36,27 L 47,27 L 38,34 L 41,45 L 32,38.5 L 23,45 L 26,34 L 17,27 L 28,27 Z"
+            fill="none"
+            stroke="#E5A97C"
+            strokeWidth="0.5"
+            strokeLinejoin="round"
+          />
         </svg>
       );
     case "silver":
       return (
         <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
           <defs>
-            <linearGradient id="silver-grad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#f3f4f6" />
-              <stop offset="50%" stopColor="#9ca3af" />
-              <stop offset="100%" stopColor="#4b5563" />
+            <linearGradient id="silver-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFFFFF" />
+              <stop offset="25%" stopColor="#E2E8F0" />
+              <stop offset="60%" stopColor="#94A3B8" />
+              <stop offset="100%" stopColor="#475569" />
+            </linearGradient>
+            <linearGradient id="silver-highlight" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#F8FAFC" />
+              <stop offset="100%" stopColor="#CBD5E1" />
+            </linearGradient>
+            <linearGradient id="silver-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#64748B" />
+              <stop offset="100%" stopColor="#1E293B" />
             </linearGradient>
           </defs>
-          <path d="M 32,58 C 22,42 16,30 20,10 C 22,22 28,34 32,40 C 36,34 40,22 42,10 C 46,30 42,42 32,58 Z" fill="url(#silver-grad)" stroke="#9ca3af" strokeWidth="1" />
-          <path d="M 32,58 C 14,46 4,32 6,18 C 12,28 18,36 26,42 Z" fill="url(#silver-grad)" stroke="#9ca3af" strokeWidth="1" />
-          <path d="M 32,58 C 50,46 60,32 58,18 C 52,28 46,36 38,42 Z" fill="url(#silver-grad)" stroke="#9ca3af" strokeWidth="1" />
+          <path d="M 32,58 C 20,44 12,32 16,14 C 18,24 24,34 32,40 C 40,34 46,24 48,14 C 52,32 44,44 32,58 Z" fill="#0f172a" opacity="0.5" />
+          
+          {/* Left Wing */}
+          <path d="M 32,54 C 20,48 14,36 16,22 C 20,30 26,36 32,38 Z" fill="url(#silver-metal)" stroke="#94A3B8" strokeWidth="0.5" />
+          <path d="M 32,42 C 22,36 18,24 20,12 C 24,20 28,26 32,28 Z" fill="url(#silver-highlight)" stroke="#CBD5E1" strokeWidth="0.5" />
+          <path d="M 32,30 C 26,24 22,14 24,4 C 26,10 29,16 32,18 Z" fill="url(#silver-metal)" stroke="#94A3B8" strokeWidth="0.5" />
+
+          {/* Right Wing */}
+          <path d="M 32,54 C 44,48 50,36 48,22 C 44,30 38,36 32,38 Z" fill="url(#silver-dark)" stroke="#475569" strokeWidth="0.5" />
+          <path d="M 32,42 C 42,36 46,24 44,12 C 40,20 36,26 32,28 Z" fill="url(#silver-metal)" stroke="#94A3B8" strokeWidth="0.5" />
+          <path d="M 32,30 C 38,24 42,14 40,4 C 38,10 35,16 32,18 Z" fill="url(#silver-dark)" stroke="#475569" strokeWidth="0.5" />
+
+          <path d="M 32,56 L 32,4" stroke="#FFFFFF" strokeWidth="1" strokeLinecap="round" opacity="0.8" />
         </svg>
       );
     case "gold":
       return (
         <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
           <defs>
-            <linearGradient id="gold-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#fbbf24" />
-              <stop offset="50%" stopColor="#d97706" />
-              <stop offset="100%" stopColor="#78350f" />
+            <linearGradient id="gold-metal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FDE047" />
+              <stop offset="50%" stopColor="#EAB308" />
+              <stop offset="100%" stopColor="#854D0E" />
             </linearGradient>
-            <linearGradient id="gold-bright" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#fef08a" />
-              <stop offset="100%" stopColor="#fbbf24" />
+            <linearGradient id="gold-gem-light" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FEF08A" />
+              <stop offset="100%" stopColor="#CA8A04" />
+            </linearGradient>
+            <linearGradient id="gold-gem-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#A16207" />
+              <stop offset="100%" stopColor="#451A03" />
             </linearGradient>
           </defs>
-          <path d="M 32,4 L 56,18 L 56,46 L 32,60 L 8,46 L 8,18 Z" fill="url(#gold-grad)" stroke="#fbbf24" strokeWidth="2.5" strokeLinejoin="round" />
-          <path d="M 32,11 L 50,21 L 50,43 L 32,53 L 14,43 L 14,21 Z" fill="none" stroke="#fef08a" strokeWidth="1.5" strokeLinejoin="round" />
-          <path d="M 32,20 L 42,26 L 42,38 L 32,44 L 22,38 L 22,26 Z" fill="url(#gold-bright)" stroke="#d97706" strokeWidth="1" />
-          <line x1="32" y1="4" x2="32" y2="20" stroke="#fef08a" strokeWidth="1.5" />
-          <line x1="56" y1="18" x2="42" y2="26" stroke="#fef08a" strokeWidth="1.5" />
-          <line x1="56" y1="46" x2="42" y2="38" stroke="#fef08a" strokeWidth="1.5" />
-          <line x1="32" y1="60" x2="32" y2="44" stroke="#fef08a" strokeWidth="1.5" />
-          <line x1="8" y1="46" x2="22" y2="38" stroke="#fef08a" strokeWidth="1.5" />
-          <line x1="8" y1="18" x2="22" y2="26" stroke="#fef08a" strokeWidth="1.5" />
+          {/* Hexagon Outer Border */}
+          <path
+            d="M 32,4 L 58,19 L 58,45 L 32,60 L 6,45 L 6,19 Z"
+            fill="none"
+            stroke="url(#gold-metal-grad)"
+            strokeWidth="3.5"
+            strokeLinejoin="round"
+          />
+          {/* Inner Hexagon Border */}
+          <path
+            d="M 32,8 L 54,21 L 54,43 L 32,56 L 10,43 L 10,21 Z"
+            fill="#120e06"
+            stroke="#854D0E"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
+          {/* Flat Center Face */}
+          <path d="M 32,24 L 38,28 L 38,36 L 32,40 L 26,36 L 26,28 Z" fill="url(#gold-gem-light)" />
+          {/* Top Facet */}
+          <path d="M 32,16 L 42,24 L 38,28 L 32,24 Z" fill="url(#gold-gem-light)" opacity="0.9" />
+          {/* Top-Right Facet */}
+          <path d="M 42,24 L 42,40 L 38,36 L 38,28 Z" fill="url(#gold-gem-dark)" opacity="0.8" />
+          {/* Bottom-Right Facet */}
+          <path d="M 42,40 L 32,48 L 32,40 L 38,36 Z" fill="url(#gold-gem-dark)" />
+          {/* Bottom Facet */}
+          <path d="M 32,48 L 22,40 L 26,36 L 32,40 Z" fill="url(#gold-gem-light)" opacity="0.7" />
+          {/* Bottom-Left Facet */}
+          <path d="M 22,40 L 22,24 L 26,28 L 26,36 Z" fill="url(#gold-gem-light)" opacity="0.85" />
+          {/* Top-Left Facet */}
+          <path d="M 22,24 L 32,16 L 32,24 L 26,28 Z" fill="url(#gold-gem-light)" />
+          
+          <path d="M 32,16 L 42,24 L 42,40 L 32,48 L 22,40 L 22,24 Z" fill="none" stroke="#FDE047" strokeWidth="0.75" />
         </svg>
       );
     case "diamond":
       return (
         <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
           <defs>
-            <linearGradient id="blue-light" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#93c5fd" />
-              <stop offset="100%" stopColor="#60a5fa" />
+            <linearGradient id="diamond-blue-light" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#E0F2FE" />
+              <stop offset="100%" stopColor="#38BDF8" />
             </linearGradient>
-            <linearGradient id="blue-mid" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#3b82f6" />
-              <stop offset="100%" stopColor="#1d4ed8" />
+            <linearGradient id="diamond-blue-mid" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#0EA5E9" />
+              <stop offset="100%" stopColor="#0369A1" />
             </linearGradient>
-            <linearGradient id="blue-dark" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#1e3a8a" />
-              <stop offset="100%" stopColor="#172554" />
+            <linearGradient id="diamond-blue-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#0284C7" />
+              <stop offset="100%" stopColor="#0C4A6E" />
+            </linearGradient>
+            <linearGradient id="diamond-silver-wing" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFFFFF" />
+              <stop offset="50%" stopColor="#CBD5E1" />
+              <stop offset="100%" stopColor="#64748B" />
             </linearGradient>
           </defs>
-          <path d="M 8,24 L 18,12 L 23,24 Z" fill="url(#blue-light)" />
-          <path d="M 18,12 L 32,24 L 23,24 Z" fill="url(#blue-mid)" />
-          <path d="M 18,12 L 46,12 L 32,24 Z" fill="url(#blue-light)" />
-          <path d="M 46,12 L 32,24 L 41,24 Z" fill="url(#blue-mid)" />
-          <path d="M 46,12 L 56,24 L 41,24 Z" fill="url(#blue-light)" />
-          <path d="M 8,24 L 32,56 L 23,24 Z" fill="url(#blue-mid)" />
-          <path d="M 23,24 L 32,56 L 32,24 Z" fill="url(#blue-dark)" />
-          <path d="M 32,24 L 32,56 L 41,24 Z" fill="url(#blue-mid)" />
-          <path d="M 41,24 L 32,56 L 56,24 Z" fill="url(#blue-dark)" />
-          <path d="M 18,12 L 46,12 L 56,24 L 32,56 L 8,24 Z" fill="none" stroke="#ffffff" strokeWidth="0.75" strokeOpacity="0.4" />
+          {/* Left Bracket */}
+          <path d="M 12,14 L 4,26 L 14,48 L 20,44 L 10,26 L 16,18 Z" fill="url(#diamond-silver-wing)" stroke="#94A3B8" strokeWidth="0.5" />
+          {/* Right Bracket */}
+          <path d="M 52,14 L 60,26 L 50,48 L 44,44 L 54,26 L 48,18 Z" fill="url(#diamond-silver-wing)" stroke="#94A3B8" strokeWidth="0.5" />
+
+          {/* Top Flat Face */}
+          <path d="M 22,20 L 42,20 L 37,28 L 27,28 Z" fill="url(#diamond-blue-light)" />
+          {/* Top Left Face */}
+          <path d="M 14,28 L 22,20 L 27,28 Z" fill="url(#diamond-blue-mid)" />
+          {/* Top Right Face */}
+          <path d="M 42,20 L 50,28 L 37,28 Z" fill="url(#diamond-blue-dark)" />
+          {/* Bottom Left Face */}
+          <path d="M 14,28 L 27,28 L 32,50 Z" fill="url(#diamond-blue-mid)" />
+          {/* Bottom Center Face */}
+          <path d="M 27,28 L 37,28 L 32,50 Z" fill="url(#diamond-blue-light)" />
+          {/* Bottom Right Face */}
+          <path d="M 37,28 L 50,28 L 32,50 Z" fill="url(#diamond-blue-dark)" />
+
+          <path d="M 22,20 L 42,20 L 50,28 L 32,50 L 14,28 Z" fill="none" stroke="#FFFFFF" strokeWidth="1" strokeLinejoin="round" opacity="0.8" />
         </svg>
       );
     case "master":
       return (
         <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
           <defs>
-            <linearGradient id="purple-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#d8b4fe" />
-              <stop offset="50%" stopColor="#a855f7" />
-              <stop offset="100%" stopColor="#581c87" />
+            <linearGradient id="master-purple-light" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#F3E8FF" />
+              <stop offset="50%" stopColor="#C084FC" />
+              <stop offset="100%" stopColor="#8B5CF6" />
+            </linearGradient>
+            <linearGradient id="master-purple-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#7C3AED" />
+              <stop offset="100%" stopColor="#4C1D95" />
             </linearGradient>
           </defs>
-          <path d="M 12,12 L 32,26 L 52,12 L 52,20 L 32,34 L 12,20 Z" fill="url(#purple-grad)" stroke="#c084fc" strokeWidth="1" />
-          <path d="M 12,24 L 32,38 L 52,24 L 52,32 L 32,46 L 12,32 Z" fill="url(#purple-grad)" stroke="#c084fc" strokeWidth="1" />
-          <path d="M 12,36 L 32,50 L 52,36 L 52,44 L 32,58 L 12,44 Z" fill="url(#purple-grad)" stroke="#c084fc" strokeWidth="1" />
+          {/* Chevron 1 (Top) */}
+          <path d="M 32,24 L 8,10 L 8,18 L 32,32 Z" fill="url(#master-purple-light)" />
+          <path d="M 32,24 L 56,10 L 56,18 L 32,32 Z" fill="url(#master-purple-dark)" />
+          
+          {/* Chevron 2 (Middle) */}
+          <path d="M 32,38 L 8,24 L 8,32 L 32,46 Z" fill="url(#master-purple-light)" />
+          <path d="M 32,38 L 56,24 L 56,32 L 32,46 Z" fill="url(#master-purple-dark)" />
+
+          {/* Chevron 3 (Bottom) */}
+          <path d="M 32,52 L 8,38 L 8,46 L 32,60 Z" fill="url(#master-purple-light)" />
+          <path d="M 32,52 L 56,38 L 56,46 L 32,60 Z" fill="url(#master-purple-dark)" />
+
+          <path d="M 8,10 L 32,24 L 56,10 M 8,24 L 32,38 L 56,26 M 8,38 L 32,52 L 56,38" fill="none" stroke="#E9D5FF" strokeWidth="1" opacity="0.6" />
         </svg>
       );
     case "champion":
       return (
         <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
           <defs>
-            <linearGradient id="red-shield" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#991b1b" />
-              <stop offset="100%" stopColor="#450a0a" />
+            <linearGradient id="champion-shield-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#7F1D1D" />
+              <stop offset="100%" stopColor="#450A0A" />
             </linearGradient>
-            <linearGradient id="red-spike" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#fca5a5" />
-              <stop offset="50%" stopColor="#ef4444" />
-              <stop offset="100%" stopColor="#991b1b" />
+            <linearGradient id="champion-red-light" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FCA5A5" />
+              <stop offset="50%" stopColor="#EF4444" />
+              <stop offset="100%" stopColor="#991B1B" />
+            </linearGradient>
+            <linearGradient id="champion-red-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#991B1B" />
+              <stop offset="100%" stopColor="#450A0A" />
             </linearGradient>
           </defs>
-          <path d="M 14,8 L 50,8 L 50,30 C 50,46 32,58 32,58 C 32,58 14,46 14,30 Z" fill="url(#red-shield)" stroke="#ef4444" strokeWidth="2.5" strokeLinejoin="round" />
-          <path d="M 19,26 L 22,22 L 25,26 L 25,42 L 19,42 Z" fill="url(#red-spike)" stroke="#ef4444" strokeWidth="0.5" />
-          <path d="M 29,18 L 32,12 L 35,18 L 35,48 L 29,48 Z" fill="url(#red-spike)" stroke="#ef4444" strokeWidth="0.5" />
-          <path d="M 39,26 L 42,22 L 45,26 L 45,42 L 39,42 Z" fill="url(#red-spike)" stroke="#ef4444" strokeWidth="0.5" />
+          <path
+            d="M 12,6 L 52,6 L 52,28 C 52,44 32,58 32,58 C 32,58 12,44 12,28 Z"
+            fill="url(#champion-shield-grad)"
+            stroke="#EF4444"
+            strokeWidth="3.5"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M 15,9 L 49,9 L 49,27 C 49,41 32,53 32,53 C 32,53 15,41 15,27 Z"
+            fill="#0f0505"
+            stroke="#991B1B"
+            strokeWidth="1"
+          />
+          
+          {/* Pillar 1 (Left) */}
+          <path d="M 21,20 L 21,42 L 23,42 L 23,20 Z" fill="url(#champion-red-light)" />
+          <path d="M 23,20 L 23,42 L 25,42 L 25,20 Z" fill="url(#champion-red-dark)" />
+          <path d="M 21,20 L 23,16 L 25,20 Z" fill="#EF4444" />
+
+          {/* Pillar 2 (Center) */}
+          <path d="M 30,14 L 30,46 L 32,46 L 32,14 Z" fill="url(#champion-red-light)" />
+          <path d="M 32,14 L 32,46 L 34,46 L 34,14 Z" fill="url(#champion-red-dark)" />
+          <path d="M 30,14 L 32,10 L 34,14 Z" fill="#FCA5A5" />
+
+          {/* Pillar 3 (Right) */}
+          <path d="M 39,20 L 39,42 L 41,42 L 41,20 Z" fill="url(#champion-red-light)" />
+          <path d="M 41,20 L 41,42 L 43,42 L 43,20 Z" fill="url(#champion-red-dark)" />
+          <path d="M 39,20 L 41,16 L 43,20 Z" fill="#EF4444" />
         </svg>
       );
     case "titan":
       return (
         <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
           <defs>
-            <linearGradient id="gold-trident" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#fef08a" />
-              <stop offset="50%" stopColor="#fbbf24" />
-              <stop offset="100%" stopColor="#b45309" />
+            <linearGradient id="titan-gold-light" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FEF08A" />
+              <stop offset="50%" stopColor="#F59E0B" />
+              <stop offset="100%" stopColor="#B45309" />
+            </linearGradient>
+            <linearGradient id="titan-gold-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#D97706" />
+              <stop offset="100%" stopColor="#78350F" />
             </linearGradient>
           </defs>
-          <path d="M 30,12 L 32,4 L 34,12 L 34,44 L 30,44 Z" fill="url(#gold-trident)" stroke="#d97706" strokeWidth="1" />
-          <path d="M 16,18 L 20,13 L 24,18 C 24,32 30,34 30,38 L 26,38 C 20,34 16,27 16,18 Z" fill="url(#gold-trident)" stroke="#d97706" strokeWidth="1" />
-          <path d="M 48,18 L 44,13 L 40,18 C 40,32 34,34 34,38 L 38,38 C 44,34 48,27 48,18 Z" fill="url(#gold-trident)" stroke="#d97706" strokeWidth="1" />
-          <path d="M 24,40 L 40,40 L 40,44 L 24,44 Z" fill="url(#gold-trident)" stroke="#d97706" strokeWidth="1" />
-          <path d="M 31,44 L 33,44 L 33,58 L 31,58 Z" fill="url(#gold-trident)" stroke="#d97706" strokeWidth="1" />
+          <path d="M 12,12 C 10,22 14,32 26,34 L 28,34 C 18,32 14,22 16,12 Z" fill="url(#titan-gold-light)" stroke="#D97706" strokeWidth="0.5" />
+          <path d="M 12,12 L 16,12 L 16,16 L 12,16 Z" fill="#FEF08A" />
+          
+          <path d="M 52,12 C 54,22 50,32 38,34 L 36,34 C 46,32 50,22 48,12 Z" fill="url(#titan-gold-dark)" stroke="#78350F" strokeWidth="0.5" />
+          <path d="M 48,12 L 52,12 L 52,16 L 48,16 Z" fill="#F59E0B" />
+
+          {/* Center prong */}
+          <path d="M 32,4 L 28,16 L 32,24 Z" fill="url(#titan-gold-light)" />
+          <path d="M 32,4 L 32,24 L 36,16 Z" fill="url(#titan-gold-dark)" />
+          
+          {/* Connection bar */}
+          <path d="M 22,34 L 42,34 L 38,40 L 26,40 Z" fill="url(#titan-gold-light)" stroke="#D97706" strokeWidth="0.5" />
+          <path d="M 32,34 L 42,34 L 38,40 L 32,40 Z" fill="url(#titan-gold-dark)" />
+
+          {/* Shaft */}
+          <path d="M 30,40 L 32,40 L 32,58 L 30,58 Z" fill="url(#titan-gold-light)" />
+          <path d="M 32,40 L 34,40 L 34,58 L 32,58 Z" fill="url(#titan-gold-dark)" />
         </svg>
       );
     case "legend":
       return (
         <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
           <defs>
-            <linearGradient id="teal-shield" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#0369a1" />
-              <stop offset="100%" stopColor="#0c4a6e" />
+            <linearGradient id="legend-shield-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#0B5394" />
+              <stop offset="100%" stopColor="#073763" />
             </linearGradient>
-            <linearGradient id="legend-gold" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#fef08a" />
-              <stop offset="100%" stopColor="#d97706" />
+            <linearGradient id="legend-gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFE599" />
+              <stop offset="50%" stopColor="#F1C232" />
+              <stop offset="100%" stopColor="#BF9000" />
             </linearGradient>
           </defs>
-          <path d="M 14,8 L 50,8 L 50,32 C 50,47 32,58 32,58 C 32,58 14,47 14,32 Z" fill="url(#teal-shield)" stroke="#38bdf8" strokeWidth="2.5" />
-          <path d="M 23,38 L 47,14 L 50,17 L 26,41 Z" fill="url(#legend-gold)" stroke="#b45309" strokeWidth="0.5" />
-          <path d="M 47,14 L 52,12 L 50,17 Z" fill="#ffffff" />
-          <path d="M 19,38 L 26,31 L 29,34 L 22,41 Z" fill="url(#legend-gold)" stroke="#b45309" strokeWidth="0.5" />
-          <path d="M 20,40 L 14,46 L 17,49 L 23,43 Z" fill="url(#legend-gold)" stroke="#b45309" strokeWidth="0.5" />
+          <path
+            d="M 14,8 L 50,8 L 50,38 L 32,54 L 14,38 Z"
+            fill="url(#legend-shield-grad)"
+            stroke="#3D85C6"
+            strokeWidth="3.5"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M 17,11 L 47,11 L 47,36 L 32,50 L 17,36 Z"
+            fill="#051b2c"
+            stroke="#073763"
+            strokeWidth="1.5"
+          />
+
+          <path d="M 12,47 L 20,39 L 18,37 L 10,45 Z" fill="#BF9000" />
+          <circle cx="11" cy="46" r="2.5" fill="#FFE599" />
+          
+          <path d="M 18,41 L 44,15 L 48,19 L 22,45 Z" fill="url(#legend-gold-grad)" stroke="#BF9000" strokeWidth="0.5" />
+          
+          <path d="M 23,38 L 27,34" stroke="#7F6000" strokeWidth="2.5" />
+          <path d="M 31,30 L 35,26" stroke="#7F6000" strokeWidth="2.5" />
+          <path d="M 39,22 L 43,18" stroke="#7F6000" strokeWidth="2.5" />
+
+          <path d="M 18,41 L 44,15" stroke="#FFFFFF" strokeWidth="0.75" opacity="0.6" />
         </svg>
       );
     case "elite":
       return (
         <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
           <defs>
-            <linearGradient id="emerald-light" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#a7f3d0" />
-              <stop offset="100%" stopColor="#34d399" />
+            <linearGradient id="elite-silver-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFFFFF" />
+              <stop offset="50%" stopColor="#94A3B8" />
+              <stop offset="100%" stopColor="#334155" />
             </linearGradient>
-            <linearGradient id="emerald-mid" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#10b981" />
-              <stop offset="100%" stopColor="#047857" />
+            <linearGradient id="elite-green-light" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#A7F3D0" />
+              <stop offset="50%" stopColor="#34D399" />
+              <stop offset="100%" stopColor="#059669" />
             </linearGradient>
-            <linearGradient id="emerald-dark" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#064e3b" />
-              <stop offset="100%" stopColor="#022c22" />
+            <linearGradient id="elite-green-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#047857" />
+              <stop offset="100%" stopColor="#064E3B" />
             </linearGradient>
           </defs>
-          <path d="M 32,4 L 54,16 L 54,48 L 32,60 L 10,48 L 10,16 Z" fill="url(#emerald-dark)" />
-          <path d="M 32,14 L 46,22 L 46,42 L 32,50 L 18,42 L 18,22 Z" fill="url(#emerald-mid)" />
-          <path d="M 32,20 L 40,32 L 32,44 L 24,32 Z" fill="url(#emerald-light)" />
-          <line x1="32" y1="4" x2="32" y2="14" stroke="#6ee7b7" strokeWidth="1" strokeOpacity="0.5" />
-          <line x1="54" y1="16" x2="46" y2="22" stroke="#6ee7b7" strokeWidth="1" strokeOpacity="0.5" />
-          <line x1="54" y1="48" x2="46" y2="42" stroke="#6ee7b7" strokeWidth="1" strokeOpacity="0.5" />
-          <line x1="32" y1="60" x2="32" y2="50" stroke="#6ee7b7" strokeWidth="1" strokeOpacity="0.5" />
-          <line x1="10" y1="48" x2="18" y2="42" stroke="#6ee7b7" strokeWidth="1" strokeOpacity="0.5" />
-          <line x1="10" y1="16" x2="18" y2="22" stroke="#6ee7b7" strokeWidth="1" strokeOpacity="0.5" />
+          <path
+            d="M 32,4 L 58,19 L 58,45 L 32,60 L 6,45 L 6,19 Z"
+            fill="none"
+            stroke="url(#elite-silver-grad)"
+            strokeWidth="3.5"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M 32,8 L 54,21 L 54,43 L 32,56 L 10,43 L 10,21 Z"
+            fill="#022c22"
+            stroke="#065F46"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
+
+          <path d="M 32,22 L 41,27 L 41,37 L 32,42 L 23,37 L 23,27 Z" fill="url(#elite-green-light)" />
+
+          <path d="M 32,14 L 48,22 L 41,27 L 32,22 Z" fill="url(#elite-green-light)" opacity="0.9" />
+          <path d="M 48,22 L 48,42 L 41,37 L 41,27 Z" fill="url(#elite-green-dark)" opacity="0.8" />
+          <path d="M 48,42 L 32,50 L 32,42 L 41,37 Z" fill="url(#elite-green-dark)" />
+          <path d="M 32,50 L 16,42 L 23,37 L 32,42 Z" fill="url(#elite-green-light)" opacity="0.75" />
+          <path d="M 16,42 L 16,22 L 23,27 L 23,37 Z" fill="url(#elite-green-light)" opacity="0.85" />
+          <path d="M 16,22 L 32,14 L 32,22 L 23,27 Z" fill="url(#elite-green-light)" />
+
+          <path d="M 32,14 L 48,22 L 48,42 L 32,50 L 16,42 L 16,22 Z" fill="none" stroke="#6EE7B7" strokeWidth="0.75" />
         </svg>
       );
     case "apex":
       return (
         <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
           <defs>
-            <linearGradient id="gold-cup" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#fbbf24" />
-              <stop offset="50%" stopColor="#d97706" />
-              <stop offset="100%" stopColor="#92400e" />
+            <linearGradient id="apex-gold-light" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FDE047" />
+              <stop offset="50%" stopColor="#EAB308" />
+              <stop offset="100%" stopColor="#CA8A04" />
             </linearGradient>
-            <linearGradient id="gold-stem" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#fef08a" />
-              <stop offset="100%" stopColor="#d97706" />
+            <linearGradient id="apex-gold-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#854D0E" />
+              <stop offset="100%" stopColor="#451A03" />
             </linearGradient>
           </defs>
-          <path d="M 20,16 C 10,16 10,28 20,28" fill="none" stroke="#fbbf24" strokeWidth="3" />
-          <path d="M 44,16 C 54,16 54,28 44,28" fill="none" stroke="#fbbf24" strokeWidth="3" />
-          <path d="M 18,12 L 46,12 L 44,32 C 44,40 38,44 32,44 C 26,44 20,40 20,32 Z" fill="url(#gold-cup)" stroke="#fbbf24" strokeWidth="1" />
-          <path d="M 29,44 L 35,44 L 33,52 L 31,52 Z" fill="url(#gold-stem)" stroke="#d97706" strokeWidth="1" />
-          <path d="M 24,52 L 40,52 L 42,58 L 22,58 Z" fill="url(#gold-cup)" stroke="#fbbf24" strokeWidth="1" />
+          <path d="M 20,18 C 12,18 10,30 20,32 L 20,28 C 14,26 15,22 20,22 Z" fill="url(#apex-gold-light)" stroke="#CA8A04" strokeWidth="0.5" />
+          <path d="M 44,18 C 52,18 54,30 44,32 L 44,28 C 50,26 49,22 44,22 Z" fill="url(#apex-gold-dark)" stroke="#854D0E" strokeWidth="0.5" />
+
+          <path d="M 18,12 L 46,12 L 44,16 L 20,16 Z" fill="url(#apex-gold-light)" />
+          
+          <path d="M 20,16 L 28,34 L 18,28 Z" fill="url(#apex-gold-light)" opacity="0.8" />
+          <path d="M 20,16 L 32,16 L 32,36 L 28,34 Z" fill="url(#apex-gold-light)" />
+          <path d="M 32,16 L 44,16 L 36,34 L 32,36 Z" fill="url(#apex-gold-dark)" />
+          <path d="M 44,16 L 46,28 L 36,34 Z" fill="url(#apex-gold-dark)" opacity="0.9" />
+
+          <path d="M 28,34 L 36,34 L 34,46 L 30,46 Z" fill="url(#apex-gold-light)" />
+          <path d="M 32,34 L 36,34 L 34,46 L 32,46 Z" fill="url(#apex-gold-dark)" />
+
+          <path d="M 26,46 L 38,46 L 36,50 L 28,50 Z" fill="url(#apex-gold-light)" />
+          <path d="M 32,46 L 38,46 L 36,50 L 32,50 Z" fill="url(#apex-gold-dark)" />
+          <path d="M 22,50 L 42,50 L 40,58 L 24,58 Z" fill="url(#apex-gold-light)" />
+          <path d="M 32,50 L 42,50 L 40,58 L 32,58 Z" fill="url(#apex-gold-dark)" />
+
+          <path d="M 18,12 L 46,12 L 44,34 L 32,36 L 20,34 Z" fill="none" stroke="#FEF08A" strokeWidth="0.75" />
         </svg>
       );
     case "sovereign":
       return (
         <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
           <defs>
-            <linearGradient id="sov-purple" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#581c87" />
-              <stop offset="100%" stopColor="#2e1065" />
+            <linearGradient id="sov-purple-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#4C1D95" />
+              <stop offset="100%" stopColor="#1E1B4B" />
             </linearGradient>
-            <linearGradient id="sov-gold" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#fef08a" />
-              <stop offset="100%" stopColor="#d97706" />
+            <linearGradient id="sov-gold-light" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FEF08A" />
+              <stop offset="50%" stopColor="#F59E0B" />
+              <stop offset="100%" stopColor="#B45309" />
+            </linearGradient>
+            <linearGradient id="sov-gold-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#D97706" />
+              <stop offset="100%" stopColor="#78350F" />
+            </linearGradient>
+            <linearGradient id="sov-star-gem" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFFFFF" />
+              <stop offset="100%" stopColor="#38BDF8" />
             </linearGradient>
           </defs>
-          <path d="M 14,6 L 50,6 L 50,32 C 50,48 32,60 32,60 C 32,60 14,48 14,32 Z" fill="url(#sov-purple)" stroke="url(#sov-gold)" strokeWidth="3.5" strokeLinejoin="round" />
-          <path d="M 32,16 L 36,32 L 32,48 L 28,32 Z" fill="url(#sov-gold)" />
-          <path d="M 16,32 L 32,28 L 48,32 L 32,36 Z" fill="url(#sov-gold)" />
-          <circle cx="32" cy="32" r="3" fill="#ffffff" />
+          <path d="M 32,54 C 26,52 20,44 18,40 C 15,44 20,52 28,54 Z" fill="url(#sov-gold-light)" />
+          <path d="M 18,40 C 14,36 12,28 12,22 C 9,28 12,36 16,40 Z" fill="url(#sov-gold-light)" />
+          <path d="M 32,54 C 38,52 44,44 46,40 C 49,44 44,52 36,54 Z" fill="url(#sov-gold-dark)" />
+          <path d="M 46,40 C 50,36 52,28 52,22 C 55,28 52,36 48,40 Z" fill="url(#sov-gold-dark)" />
+
+          <path
+            d="M 14,8 L 50,8 L 50,32 C 50,48 32,58 32,58 C 32,58 14,48 14,32 Z"
+            fill="url(#sov-purple-grad)"
+            stroke="url(#sov-gold-light)"
+            strokeWidth="3.5"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M 17,11 L 47,11 L 47,30 C 47,44 32,53 32,53 C 32,53 17,44 17,30 Z"
+            fill="#090514"
+            stroke="#4C1D95"
+            strokeWidth="1.5"
+          />
+
+          <path d="M 32,16 L 32,32 L 29,30 Z" fill="url(#sov-gold-light)" />
+          <path d="M 32,16 L 35,30 L 32,32 Z" fill="url(#sov-gold-dark)" />
+          <path d="M 48,32 L 32,32 L 35,29 Z" fill="url(#sov-gold-light)" />
+          <path d="M 48,32 L 35,35 L 32,32 Z" fill="url(#sov-gold-dark)" />
+          <path d="M 32,48 L 29,34 L 32,32 Z" fill="url(#sov-gold-light)" />
+          <path d="M 32,48 L 32,32 L 35,34 Z" fill="url(#sov-gold-dark)" />
+          <path d="M 16,32 L 32,32 L 29,29 Z" fill="url(#sov-gold-light)" />
+          <path d="M 16,32 L 29,35 L 32,32 Z" fill="url(#sov-gold-dark)" />
+
+          <path d="M 32,28 L 36,32 L 32,36 L 28,32 Z" fill="url(#sov-star-gem)" />
+          <path d="M 32,28 L 36,32 L 32,36 L 28,32 Z" fill="none" stroke="#FFFFFF" strokeWidth="0.5" />
         </svg>
       );
     default:
