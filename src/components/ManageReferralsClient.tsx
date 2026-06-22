@@ -23,6 +23,8 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { COUNTRY_CODES } from "@/lib/countryCodes";
+import { LeagueIcon } from "@/components/DashboardProfileView";
+
 
 const COUNTRIES = [
   "Afghanistan", "Albania", "Algeria", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
@@ -744,17 +746,24 @@ export default function ManageReferralsClient() {
                   </td>
                   <td className="px-3 py-2.5">
                     <div className="flex items-center gap-2">
-                      {p.avatarUrl ? (
-                        <img 
-                          src={p.avatarUrl} 
-                          alt={p.name}
-                          className="w-7 h-7 rounded-full object-cover border border-border/40 shrink-0"
-                        />
-                      ) : (
-                        <div className={`w-7 h-7 rounded-full bg-gradient-to-tr ${GRADIENTS[p.id % GRADIENTS.length]} text-white font-bold text-[10px] flex items-center justify-center shadow-sm shrink-0`}>
-                          {p.name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2)}
-                        </div>
-                      )}
+                      <LeagueIcon 
+                        id={(() => {
+                          const e = p.totalEarned || 0;
+                          if (e >= 100000000) return "sovereign";
+                          if (e >= 10000000) return "apex";
+                          if (e >= 5000000) return "elite";
+                          if (e >= 2500000) return "legend";
+                          if (e >= 1000000) return "titan";
+                          if (e >= 500000) return "champion";
+                          if (e >= 100000) return "master";
+                          if (e >= 25000) return "diamond";
+                          if (e >= 5000) return "gold";
+                          if (e >= 1000) return "silver";
+                          return "bronze";
+                        })()} 
+                        size={28} 
+                        className="w-7 h-7 filter drop-shadow-[0_0_4px_rgba(22,163,74,0.2)] shrink-0"
+                      />
                       <div className="flex flex-col min-w-0">
                         <span className="text-foreground font-bold truncate" title={p.name}>{p.name}</span>
                         <span className="text-muted text-[0.65rem] truncate" title={p.email}>{p.email}</span>
@@ -1003,50 +1012,47 @@ export default function ManageReferralsClient() {
                 </div>
               </div>
 
-              {/* Profile Picture Upload */}
-              <div className="flex items-center gap-6 pb-2">
+              {/* League Emblem and Name */}
+              <div className="flex items-center gap-6 pb-4 border-b border-border/20">
                 <div className="relative group shrink-0">
-                  {editForm.avatarUrl ? (
-                    <img 
-                      src={editForm.avatarUrl} 
-                      alt="Profile Picture" 
-                      className="w-16 h-16 rounded-full object-cover border border-border shadow-lg"
-                    />
-                  ) : (
-                    <div className={`w-16 h-16 rounded-full bg-gradient-to-tr ${GRADIENTS[editingPromoter.id % GRADIENTS.length]} text-white font-black text-lg flex items-center justify-center border border-border shadow-lg`}>
-                      {editForm.name ? editForm.name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2) : <Camera className="w-5 h-5" />}
-                    </div>
-                  )}
+                  <LeagueIcon 
+                    id={(() => {
+                      const e = editForm.totalEarned || 0;
+                      if (e >= 100000000) return "sovereign";
+                      if (e >= 10000000) return "apex";
+                      if (e >= 5000000) return "elite";
+                      if (e >= 2500000) return "legend";
+                      if (e >= 1000000) return "titan";
+                      if (e >= 500000) return "champion";
+                      if (e >= 100000) return "master";
+                      if (e >= 25000) return "diamond";
+                      if (e >= 5000) return "gold";
+                      if (e >= 1000) return "silver";
+                      return "bronze";
+                    })()} 
+                    size={64} 
+                    className="w-16 h-16 filter drop-shadow-[0_0_8px_rgba(22,163,74,0.25)]" 
+                  />
                 </div>
 
-                <div className="flex flex-col items-start gap-2">
-                  <span className="text-xs font-bold text-muted uppercase tracking-wider">Profile Picture</span>
-                  <div className="flex items-center gap-2">
-                    <label 
-                      htmlFor="admin-avatar-upload"
-                      className="px-3 py-1.5 rounded-lg bg-accent border border-border text-foreground hover:bg-accent/80 transition-all font-bold text-[0.7rem] cursor-pointer flex items-center gap-1.5 active:scale-[0.98]"
-                    >
-                      <Upload className="w-3.5 h-3.5" />
-                      Upload Photo
-                    </label>
-                    <input 
-                      id="admin-avatar-upload"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleAvatarFileChange}
-                      className="hidden"
-                    />
-                    {editForm.avatarUrl && (
-                      <button
-                        type="button"
-                        onClick={handleRemoveAvatar}
-                        className="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 hover:bg-red-500/20 transition-all font-bold text-[0.7rem] flex items-center gap-1.5 active:scale-[0.98]"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                        Remove
-                      </button>
-                    )}
-                  </div>
+                <div className="flex flex-col items-start gap-0.5">
+                  <span className="text-[10px] font-black text-[#16a34a] uppercase tracking-wider font-sans">Current League</span>
+                  <span className="text-base font-black text-white tracking-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+                    {(() => {
+                      const e = editForm.totalEarned || 0;
+                      if (e >= 100000000) return "Sovereign League";
+                      if (e >= 10000000) return "Apex League";
+                      if (e >= 5000000) return "Elite League";
+                      if (e >= 2500000) return "Legend League";
+                      if (e >= 1000000) return "Titan League";
+                      if (e >= 500000) return "Champion League";
+                      if (e >= 100000) return "Master League";
+                      if (e >= 25000) return "Diamond League";
+                      if (e >= 5000) return "Gold League";
+                      if (e >= 1000) return "Silver League";
+                      return "Bronze League";
+                    })()}
+                  </span>
                 </div>
               </div>
 

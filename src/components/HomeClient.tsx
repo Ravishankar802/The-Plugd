@@ -23,6 +23,8 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ReferralModal from "@/components/ReferralModal";
+import { LeagueIcon } from "@/components/DashboardProfileView";
+
 
 interface HomeClientProps {
   userEmail: string | null;
@@ -690,19 +692,36 @@ export default function HomeClient({
                   No active promoters in this timeframe yet
                 </div>
               ) : (
-                leaderboardData[leaderboardTab].map((entry, idx) => (
+                leaderboardData[leaderboardTab].map((entry, idx) => {
+                const getLeagueIdByEarnings = (earnings: number) => {
+                  if (earnings >= 100000000) return "sovereign";
+                  if (earnings >= 10000000) return "apex";
+                  if (earnings >= 5000000) return "elite";
+                  if (earnings >= 2500000) return "legend";
+                  if (earnings >= 1000000) return "titan";
+                  if (earnings >= 500000) return "champion";
+                  if (earnings >= 100000) return "master";
+                  if (earnings >= 25000) return "diamond";
+                  if (earnings >= 5000) return "gold";
+                  if (earnings >= 1000) return "silver";
+                  return "bronze";
+                };
+                const leagueId = getLeagueIdByEarnings(entry.earnings);
+                return (
                   <div key={idx} className="grid grid-cols-3 px-4 py-3 text-sm font-sans items-center hover:bg-zinc-900/10 transition-colors text-left">
                     <div className="font-extrabold text-muted">
                       {entry.rank === 1 ? "🥇" : entry.rank === 2 ? "🥈" : entry.rank === 3 ? "🥉" : `#${entry.rank}`}
                     </div>
-                    <div className="font-semibold text-white break-all pr-2">
-                      @{entry.username}
+                    <div className="font-semibold text-white break-all pr-2 flex items-center gap-2">
+                      <LeagueIcon id={leagueId} size={20} className="inline-block flex-shrink-0" />
+                      <span>@{entry.username}</span>
                     </div>
                     <div className="font-extrabold text-[#16a34a] text-right rich-number">
                       ₹{new Intl.NumberFormat("en-IN").format(entry.earnings)}
                     </div>
                   </div>
-                ))
+                );
+              })
               )}
             </div>
           </div>

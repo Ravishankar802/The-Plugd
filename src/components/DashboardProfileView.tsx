@@ -1013,56 +1013,21 @@ here's my link 👉 ${link}`
 
               <div className="bg-pill border border-border rounded-[16px] p-6 md:p-10 shadow-2xl">
                 <form onSubmit={handlePromoterSave} className="space-y-10">
-                  {/* Profile Picture Upload */}
+                  {/* League Emblem and Name */}
                   <div className="flex flex-col sm:flex-row items-center gap-6 pb-6 border-b border-border/40">
                     <div className="relative group shrink-0">
-                      {promoterData.avatarUrl ? (
-                        <img 
-                          src={promoterData.avatarUrl} 
-                          alt="Profile Picture" 
-                          className="w-24 h-24 rounded-full object-cover border border-border shadow-lg"
-                        />
+                      {currentLeague ? (
+                        <LeagueIcon id={currentLeague.id} size={96} className="w-24 h-24 filter drop-shadow-[0_0_12px_rgba(22,163,74,0.3)]" />
                       ) : (
-                        <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-emerald-500 to-green-300 text-white font-black text-2xl flex items-center justify-center border border-border shadow-lg">
-                          {(promoterData.name || "").split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2) || <User className="w-8 h-8" />}
-                        </div>
+                        <LeagueIcon id="bronze" size={96} className="w-24 h-24 filter drop-shadow-[0_0_12px_rgba(22,163,74,0.3)]" />
                       )}
-                      <label 
-                        htmlFor="avatar-upload" 
-                        className="absolute inset-0 bg-black/60 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer text-white text-xs font-bold"
-                      >
-                        <Camera className="w-5 h-5" />
-                      </label>
                     </div>
 
-                    <div className="flex flex-col items-center sm:items-start gap-2.5 text-center sm:text-left">
-                      <span className="text-[1.1rem] font-bold text-foreground">Profile Picture</span>
-                      <div className="flex items-center gap-2">
-                        <label 
-                          htmlFor="avatar-upload"
-                          className="px-4 py-2 rounded-lg bg-accent border border-border text-foreground hover:bg-accent/80 transition-all font-bold text-xs cursor-pointer flex items-center gap-1.5 active:scale-[0.98]"
-                        >
-                          <Upload className="w-3.5 h-3.5" />
-                          Upload Photo
-                        </label>
-                        <input 
-                          id="avatar-upload"
-                          type="file"
-                          accept="image/*"
-                          onChange={handleFileChange}
-                          className="hidden"
-                        />
-                        {promoterData.avatarUrl && (
-                          <button
-                            type="button"
-                            onClick={handleRemoveAvatar}
-                            className="px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 hover:bg-red-500/20 transition-all font-bold text-xs flex items-center gap-1.5 active:scale-[0.98]"
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                            Remove
-                          </button>
-                        )}
-                      </div>
+                    <div className="flex flex-col items-center sm:items-start gap-1 text-center sm:text-left">
+                      <span className="text-xs text-[#16a34a] font-extrabold uppercase tracking-widest font-sans font-black">Current League</span>
+                      <span className="text-[1.8rem] font-black text-white tracking-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+                        {currentLeague ? currentLeague.name : "Bronze League"}
+                      </span>
                     </div>
                   </div>
 

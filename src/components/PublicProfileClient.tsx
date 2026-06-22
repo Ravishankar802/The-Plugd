@@ -22,6 +22,8 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer";
+import { LeagueIcon } from "@/components/DashboardProfileView";
+
 
 interface PromoterData {
   id: number;
@@ -272,17 +274,24 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
         <div className="bg-pill border border-border rounded-[24px] p-6 sm:p-8 md:p-10 shadow-xl mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex items-center gap-4 md:gap-6">
-              {promoter.avatarUrl ? (
-                <img 
-                  src={promoter.avatarUrl} 
-                  alt={promoter.name}
-                  className="w-16 h-16 md:w-20 h-20 rounded-full object-cover shadow-lg border border-border/40 shrink-0"
-                />
-              ) : (
-                <div className={`w-16 h-16 md:w-20 h-20 rounded-full bg-gradient-to-tr ${gradient} text-white font-bold text-2xl flex items-center justify-center shadow-lg shrink-0`}>
-                  {initials}
-                </div>
-              )}
+              <LeagueIcon 
+                id={(() => {
+                  const e = promoter.totalEarned;
+                  if (e >= 100000000) return "sovereign";
+                  if (e >= 10000000) return "apex";
+                  if (e >= 5000000) return "elite";
+                  if (e >= 2500000) return "legend";
+                  if (e >= 1000000) return "titan";
+                  if (e >= 500000) return "champion";
+                  if (e >= 100000) return "master";
+                  if (e >= 25000) return "diamond";
+                  if (e >= 5000) return "gold";
+                  if (e >= 1000) return "silver";
+                  return "bronze";
+                })()} 
+                size={80} 
+                className="w-16 h-16 md:w-20 h-20 filter drop-shadow-[0_0_8px_rgba(22,163,74,0.25)] shrink-0" 
+              />
               <div className="flex flex-col min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
                   <h1 className="text-xl md:text-2xl font-extrabold tracking-tight text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
