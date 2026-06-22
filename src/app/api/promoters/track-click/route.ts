@@ -22,7 +22,11 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid referral code" }, { status: 404 });
     }
 
-    const normalizedSource = source ? String(source).toLowerCase().trim() : "direct";
+    const allowedSources = ["whatsapp", "telegram", "x", "reddit", "discord", "instagram", "facebook", "linkedin", "youtube"];
+    let normalizedSource = source ? String(source).toLowerCase().trim() : "others";
+    if (!allowedSources.includes(normalizedSource)) {
+      normalizedSource = "others";
+    }
 
     await prisma.$transaction([
       prisma.promoter.update({

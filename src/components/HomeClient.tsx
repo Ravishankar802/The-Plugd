@@ -720,47 +720,63 @@ export default function HomeClient({
           </div>
         </div>
 
-        {/* Live Activity Feed */}
-        <div className="w-full max-w-md bg-zinc-950/40 border border-border/60 rounded-2xl p-5 flex flex-col items-center shadow-lg">
-          <div className="flex items-center gap-2 mb-4 text-[10px] sm:text-xs text-muted font-bold uppercase tracking-widest font-sans">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]" />
-            <span>Recent Earnings Activity</span>
-          </div>
-          <div className="w-full flex flex-col gap-2.5">
-            {recentEarnings.map((item) => (
-              <div 
-                key={item.id} 
-                className="w-full flex justify-between items-center bg-zinc-900/40 border border-zinc-800/60 rounded-xl px-4 py-3 animate-in fade-in slide-in-from-top-1.5 duration-300"
-              >
-                <span className="text-xs font-semibold text-white font-sans">{item.text}</span>
-                <span className="text-[10px] text-muted/60 font-bold uppercase tracking-wider font-sans">{item.time}</span>
+        {/* Succeed vs Fail side-by-side cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-4">
+          {/* LEFT CARD: How Top Promoters Succeed */}
+          <div className="bg-pill border border-[#16a34a]/30 rounded-2xl p-6 md:p-8 shadow-xl flex flex-col justify-between hover:border-[#16a34a]/50 transition-all duration-300">
+            <div>
+              <h3 className="text-xl font-bold text-[#16a34a] mb-6 text-left" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+                How Top Promoters Succeed
+              </h3>
+              <div className="flex flex-col gap-4 text-sm font-sans text-left">
+                {[
+                  "Share consistently",
+                  "Follow up with interested people",
+                  "Promote across multiple platforms",
+                  "Improve their messaging over time",
+                  "Build distribution instead of waiting",
+                  "Treat attention like an asset"
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-3 text-zinc-300">
+                    <span className="text-emerald-500 shrink-0 mt-0.5">✓</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <div className="mt-8 pt-4 border-t border-border/40 text-left">
+              <p className="text-xs text-emerald-400 font-bold uppercase tracking-wider">
+                "Top promoters create attention every day."
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* Why People Fail Section */}
-        <div className="w-full max-w-md bg-zinc-950/60 border border-red-950/30 rounded-2xl p-6 shadow-xl hover:border-red-950/50 transition-all duration-300">
-          <h3 className="text-lg font-bold text-center text-red-400 mb-4" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-            Why People Fail
-          </h3>
-          <div className="flex flex-col gap-3.5 text-xs sm:text-sm font-sans text-left">
-            <div className="flex items-start gap-3 text-zinc-300">
-              <span className="text-red-500 shrink-0 mt-0.5">❌</span>
-              <span>They share once and stop</span>
+          {/* RIGHT CARD: Why Most People Fail */}
+          <div className="bg-pill border border-red-950/40 rounded-2xl p-6 md:p-8 shadow-xl flex flex-col justify-between hover:border-red-950/70 transition-all duration-300">
+            <div>
+              <h3 className="text-xl font-bold text-red-400 mb-6 text-left" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+                Why Most People Fail
+              </h3>
+              <div className="flex flex-col gap-4 text-sm font-sans text-left">
+                {[
+                  "Share once and stop",
+                  "Expect instant results",
+                  "Never follow up",
+                  "Promote in only one place",
+                  "Quit before momentum starts",
+                  "Wait instead of taking action"
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-3 text-zinc-400">
+                    <span className="text-red-500 shrink-0 mt-0.5">✕</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="flex items-start gap-3 text-zinc-300">
-              <span className="text-red-500 shrink-0 mt-0.5">❌</span>
-              <span>They never follow up</span>
-            </div>
-            <div className="flex items-start gap-3 text-zinc-300">
-              <span className="text-red-500 shrink-0 mt-0.5">❌</span>
-              <span>They wait instead of promoting</span>
-            </div>
-            <div className="h-[1px] bg-zinc-800/80 my-1" />
-            <div className="flex items-start gap-3 text-emerald-400 font-semibold">
-              <span className="text-emerald-500 shrink-0 mt-0.5">✔</span>
-              <span>Top promoters share consistently</span>
+            <div className="mt-8 pt-4 border-t border-border/40 text-left">
+              <p className="text-xs text-red-400/80 font-bold uppercase tracking-wider">
+                "Most people quit before results compound."
+              </p>
             </div>
           </div>
         </div>

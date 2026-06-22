@@ -27,7 +27,11 @@ import {
   Camera,
   Trash2,
   Upload,
-  User
+  User,
+  Trophy,
+  Award,
+  Flame,
+  Zap
 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { NICHES } from "@/lib/constants";
@@ -66,6 +70,8 @@ function DashboardProfileContent() {
   const [phoneCodeDropdownOpen, setPhoneCodeDropdownOpen] = useState(false);
   const [copiedLinkMission, setCopiedLinkMission] = useState(false);
   const [trafficSources, setTrafficSources] = useState<Array<{ source: string; clicks: number }>>([]);
+  const [streakCount, setStreakCount] = useState(0);
+  const [copiedPlatforms, setCopiedPlatforms] = useState<Record<string, boolean>>({});
 
   const referralLinkSuffix = promoterData?.username || promoterData?.referralCode || "";
   const link = `https://theplugd.com?ref=${referralLinkSuffix}`;
@@ -95,7 +101,7 @@ here's my link 👉 ${link}`
   ];
 
   // Determine active section from tab param
-  const activeSection = ["profile", "referrals", "earnings"].includes(tab) ? tab : "profile";
+  const activeSection = ["profile", "referrals", "earnings", "missions", "achievements"].includes(tab) ? tab : "profile";
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -396,10 +402,63 @@ here's my link 👉 ${link}`
           setCopiedLinkMission(true);
         }
       }
+
+      if (id.startsWith('link_')) {
+        const platform = id.replace('link_', '');
+        if (promoterData?.id) {
+          localStorage.setItem(`plugd_distribution_copied_${platform}_${promoterData.id}`, 'true');
+          setCopiedPlatforms(prev => ({ ...prev, [platform]: true }));
+        }
+      }
     } catch (err) {
       console.error("Clipboard error:", err);
     }
   };
+
+  useEffect(() => {
+    if (!promoterData?.id) return;
+    
+    const countKey = `plugd_streak_count_${promoterData.id}`;
+    const dateKey = `plugd_streak_last_date_${promoterData.id}`;
+    
+    const localCount = localStorage.getItem(countKey);
+    const localDate = localStorage.getItem(dateKey);
+    const todayStr = new Date().toDateString();
+    
+    if (localCount && localDate) {
+      const lastDate = new Date(localDate);
+      const diffTime = Math.abs(new Date(todayStr).getTime() - new Date(lastDate.toDateString()).getTime());
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      
+      if (diffDays === 0) {
+        setStreakCount(parseInt(localCount, 10));
+      } else if (diffDays === 1) {
+        const newCount = parseInt(localCount, 10) + 1;
+        localStorage.setItem(countKey, newCount.toString());
+        localStorage.setItem(dateKey, todayStr);
+        setStreakCount(newCount);
+      } else {
+        localStorage.setItem(countKey, "1");
+        localStorage.setItem(dateKey, todayStr);
+        setStreakCount(1);
+      }
+    } else {
+      let initialStreak = 1;
+      if (promoterData.totalClicks > 10) {
+        initialStreak = Math.min(5, Math.floor(promoterData.totalClicks / 10));
+      }
+      localStorage.setItem(countKey, initialStreak.toString());
+      localStorage.setItem(dateKey, todayStr);
+      setStreakCount(initialStreak);
+    }
+
+    const platforms = ["whatsapp", "telegram", "x", "reddit", "discord", "instagram", "facebook", "linkedin", "youtube"];
+    const copiedMap: Record<string, boolean> = {};
+    platforms.forEach(p => {
+      copiedMap[p] = localStorage.getItem(`plugd_distribution_copied_${p}_${promoterData.id}`) === "true";
+    });
+    setCopiedPlatforms(copiedMap);
+  }, [promoterData?.id, copied]);
 
 
   if (loading) {
@@ -412,6 +471,312 @@ here's my link 👉 ${link}`
     );
   }
 
+
+  const clicks = promoterData?.totalClicks || 0;
+  const signups = promoterData?.totalConversions || 0;
+  const earnings = promoterData?.totalEarned || 0;
+  const streak = streakCount;
+
+  // 1. Click Missions (10 levels)
+  const clickMissions = [
+    { level: 1, target: 1, xp: 100 },
+    { level: 2, target: 10, xp: 150 },
+    { level: 3, target: 50, xp: 200 },
+    { level: 4, target: 100, xp: 250 },
+    { level: 5, target: 250, xp: 300 },
+    { level: 6, target: 500, xp: 350 },
+    { level: 7, target: 1000, xp: 400 },
+    { level: 8, target: 2500, xp: 500 },
+    { level: 9, target: 5000, xp: 600 },
+    { level: 10, target: 10000, xp: 800 },
+  ];
+
+  // 2. Signup Missions (9 levels)
+  const signupMissions = [
+    { level: 1, target: 1, xp: 150 },
+    { level: 2, target: 5, xp: 200 },
+    { level: 3, target: 10, xp: 250 },
+    { level: 4, target: 25, xp: 300 },
+    { level: 5, target: 50, xp: 350 },
+    { level: 6, target: 100, xp: 400 },
+    { level: 7, target: 250, xp: 500 },
+    { level: 8, target: 500, xp: 600 },
+    { level: 9, target: 1000, xp: 800 },
+  ];
+
+  // 3. Earnings Missions (10 levels)
+  const earningsMissions = [
+    { level: 1, target: 100, xp: 200 },
+    { level: 2, target: 1000, xp: 250 },
+    { level: 3, target: 5000, xp: 300 },
+    { level: 4, target: 10000, xp: 350 },
+    { level: 5, target: 25000, xp: 400 },
+    { level: 6, target: 50000, xp: 500 },
+    { level: 7, target: 100000, xp: 600 },
+    { level: 8, target: 250000, xp: 700 },
+    { level: 9, target: 500000, xp: 800 },
+    { level: 10, target: 1000000, xp: 1000 },
+  ];
+
+  // 4. Distribution Platforms (9 platforms)
+  const distributionPlatforms = [
+    { id: "whatsapp", name: "WhatsApp", xp: 50 },
+    { id: "telegram", name: "Telegram", xp: 50 },
+    { id: "x", name: "X", xp: 50 },
+    { id: "reddit", name: "Reddit", xp: 50 },
+    { id: "discord", name: "Discord", xp: 50 },
+    { id: "instagram", name: "Instagram", xp: 50 },
+    { id: "facebook", name: "Facebook", xp: 50 },
+    { id: "linkedin", name: "LinkedIn", xp: 50 },
+    { id: "youtube", name: "YouTube", xp: 50 },
+  ];
+
+  // 5. Consistency Missions (5 levels)
+  const consistencyMissions = [
+    { level: 1, target: 7, xp: 100 },
+    { level: 2, target: 14, xp: 150 },
+    { level: 3, target: 30, xp: 250 },
+    { level: 4, target: 60, xp: 400 },
+    { level: 5, target: 90, xp: 600 },
+  ];
+
+  let totalXp = 0;
+  
+  clickMissions.forEach(m => {
+    if (clicks >= m.target) totalXp += m.xp;
+  });
+
+  signupMissions.forEach(m => {
+    if (signups >= m.target) totalXp += m.xp;
+  });
+
+  earningsMissions.forEach(m => {
+    if (earnings >= m.target) totalXp += m.xp;
+  });
+
+  distributionPlatforms.forEach(p => {
+    if (copiedPlatforms[p.id]) totalXp += p.xp;
+  });
+
+  consistencyMissions.forEach(m => {
+    if (streak >= m.target) totalXp += m.xp;
+  });
+
+  const currentLevel = Math.floor(totalXp / 1000) + 1;
+  const xpInCurrentLevel = totalXp % 1000;
+  const progressToNextLevel = (xpInCurrentLevel / 1000) * 100;
+
+  // Active mission selectors
+  const currentClickMissionIndex = clickMissions.findIndex(m => clicks < m.target);
+  const activeClickMission = currentClickMissionIndex === -1 ? null : clickMissions[currentClickMissionIndex];
+  const completedClickMissionsCount = currentClickMissionIndex === -1 ? clickMissions.length : currentClickMissionIndex;
+
+  const currentSignupMissionIndex = signupMissions.findIndex(m => signups < m.target);
+  const activeSignupMission = currentSignupMissionIndex === -1 ? null : signupMissions[currentSignupMissionIndex];
+  const completedSignupMissionsCount = currentSignupMissionIndex === -1 ? signupMissions.length : currentSignupMissionIndex;
+
+  const currentEarningsMissionIndex = earningsMissions.findIndex(m => earnings < m.target);
+  const activeEarningsMission = currentEarningsMissionIndex === -1 ? null : earningsMissions[currentEarningsMissionIndex];
+  const completedEarningsMissionsCount = currentEarningsMissionIndex === -1 ? earningsMissions.length : currentEarningsMissionIndex;
+
+  const currentConsistencyMissionIndex = consistencyMissions.findIndex(m => streak < m.target);
+  const activeConsistencyMission = currentConsistencyMissionIndex === -1 ? null : consistencyMissions[currentConsistencyMissionIndex];
+  const completedConsistencyMissionsCount = currentConsistencyMissionIndex === -1 ? consistencyMissions.length : currentConsistencyMissionIndex;
+
+  const completedDistributionCount = Object.values(copiedPlatforms).filter(Boolean).length;
+
+  const achievements = [
+    {
+      id: "first_click",
+      name: "First Click",
+      rarity: "Common",
+      emoji: "🥉",
+      unlocked: clicks >= 1,
+      desc: "Generate your first link click",
+      requirement: "1 Click",
+      badgeColor: "from-zinc-500/20 to-zinc-600/30 border-zinc-500/40 text-zinc-400"
+    },
+    {
+      id: "first_signup",
+      name: "First Signup",
+      rarity: "Common",
+      emoji: "🏅",
+      unlocked: signups >= 1,
+      desc: "Get your first paid signup",
+      requirement: "1 Signup",
+      badgeColor: "from-zinc-500/20 to-zinc-600/30 border-zinc-500/40 text-zinc-400"
+    },
+    {
+      id: "first_100",
+      name: "₹100 Earned",
+      rarity: "Common",
+      emoji: "💸",
+      unlocked: earnings >= 100,
+      desc: "Earn your first ₹100 reward",
+      requirement: "₹100 Earned",
+      badgeColor: "from-zinc-500/20 to-zinc-600/30 border-zinc-500/40 text-zinc-400"
+    },
+    {
+      id: "7_day_streak",
+      name: "7 Day Streak",
+      rarity: "Common",
+      emoji: "🔥",
+      unlocked: streak >= 7,
+      desc: "Promote for 7 consecutive days",
+      requirement: "7 Day Streak",
+      badgeColor: "from-zinc-500/20 to-zinc-600/30 border-zinc-500/40 text-zinc-400"
+    },
+    {
+      id: "10_signups",
+      name: "10 Signups",
+      rarity: "Rare",
+      emoji: "🥈",
+      unlocked: signups >= 10,
+      desc: "Secure 10 successful promoter signups",
+      requirement: "10 Signups",
+      badgeColor: "from-teal-600/20 to-teal-500/30 border-teal-500/40 text-teal-400"
+    },
+    {
+      id: "1000_earned",
+      name: "₹1,000 Earned",
+      rarity: "Rare",
+      emoji: "💰",
+      unlocked: earnings >= 1000,
+      desc: "Accumulate ₹1,000 in total commissions",
+      requirement: "₹1,000 Earned",
+      badgeColor: "from-teal-600/20 to-teal-500/30 border-teal-500/40 text-teal-400"
+    },
+    {
+      id: "viral_promoter",
+      name: "Viral Promoter",
+      rarity: "Rare",
+      emoji: "🚀",
+      unlocked: trafficSources.filter(s => s.clicks > 0).length >= 5,
+      desc: "Get clicks from 5 or more platforms",
+      requirement: "5 Active Channels",
+      badgeColor: "from-teal-600/20 to-teal-500/30 border-teal-500/40 text-teal-400"
+    },
+    {
+      id: "100_clicks",
+      name: "100 Clicks",
+      rarity: "Epic",
+      emoji: "⚡",
+      unlocked: clicks >= 100,
+      desc: "Drive 100 total clicks to your link",
+      requirement: "100 Clicks",
+      badgeColor: "from-purple-600/20 to-purple-500/30 border-purple-500/40 text-purple-400"
+    },
+    {
+      id: "100_signups",
+      name: "100 Signups",
+      rarity: "Epic",
+      emoji: "🎖️",
+      unlocked: signups >= 100,
+      desc: "Register 100 paid promoters",
+      requirement: "100 Signups",
+      badgeColor: "from-purple-600/20 to-purple-500/30 border-purple-500/40 text-purple-400"
+    },
+    {
+      id: "10000_earned",
+      name: "₹10,000 Earned",
+      rarity: "Epic",
+      emoji: "💎",
+      unlocked: earnings >= 10000,
+      desc: "Cross ₹10,000 in total earned commissions",
+      requirement: "₹10,000 Earned",
+      badgeColor: "from-purple-600/20 to-purple-500/30 border-purple-500/40 text-purple-400"
+    },
+    {
+      id: "30_day_streak",
+      name: "30 Day Streak",
+      rarity: "Epic",
+      emoji: "💥",
+      unlocked: streak >= 30,
+      desc: "Promote for 30 consecutive days",
+      requirement: "30 Day Streak",
+      badgeColor: "from-purple-600/20 to-purple-500/30 border-purple-500/40 text-purple-400"
+    },
+    {
+      id: "1000_clicks",
+      name: "1,000 Clicks",
+      rarity: "Legendary",
+      emoji: "🌟",
+      unlocked: clicks >= 1000,
+      desc: "Drive 1,000 total clicks to your link",
+      requirement: "1,000 Clicks",
+      badgeColor: "from-amber-600/20 to-amber-500/30 border-amber-500/40 text-amber-400"
+    },
+    {
+      id: "100000_earned",
+      name: "₹100,000 Earned",
+      rarity: "Legendary",
+      emoji: "👑",
+      unlocked: earnings >= 100000,
+      desc: "Unlock the 6-figure promoters club",
+      requirement: "₹100,000 Earned",
+      badgeColor: "from-amber-600/20 to-amber-500/30 border-amber-500/40 text-amber-400"
+    },
+    {
+      id: "distribution_master",
+      name: "Distribution Master",
+      rarity: "Legendary",
+      emoji: "🕸️",
+      unlocked: Object.values(copiedPlatforms).filter(Boolean).length >= 9,
+      desc: "Copy referral links for all 9 platforms",
+      requirement: "9 Links Copied",
+      badgeColor: "from-amber-600/20 to-amber-500/30 border-amber-500/40 text-amber-400"
+    },
+    {
+      id: "10000_clicks",
+      name: "10,000 Clicks",
+      rarity: "Mythic",
+      emoji: "🌌",
+      unlocked: clicks >= 10000,
+      desc: "Drive 10,000 total clicks to your link",
+      requirement: "10,000 Clicks",
+      badgeColor: "from-red-600/25 to-red-500/35 border-red-500/50 text-red-400"
+    },
+    {
+      id: "1000_signups",
+      name: "1,000 Signups",
+      rarity: "Mythic",
+      emoji: "🏆",
+      unlocked: signups >= 1000,
+      desc: "Amass a promoter army of 1,000 users",
+      requirement: "1,000 Signups",
+      badgeColor: "from-red-600/25 to-red-500/35 border-red-500/50 text-red-400"
+    },
+    {
+      id: "1000000_earned",
+      name: "₹1,000,000 Earned",
+      rarity: "Mythic",
+      emoji: "🔱",
+      unlocked: earnings >= 1000000,
+      desc: "Achieve legendary status: Earn ₹10 Lakhs",
+      requirement: "₹1,000,000 Earned",
+      badgeColor: "from-red-600/25 to-red-500/35 border-red-500/50 text-red-400"
+    },
+    {
+      id: "plugd_legend",
+      name: "Plugd Legend",
+      rarity: "Mythic",
+      emoji: "🐉",
+      unlocked: currentLevel >= 10,
+      desc: "Reach Level 10 on the promoter dashboard",
+      requirement: "Level 10 reached",
+      badgeColor: "from-red-600/25 to-red-500/35 border-red-500/50 text-red-400"
+    },
+    {
+      id: "cup_legend",
+      name: "Cup Legend",
+      rarity: "Mythic",
+      emoji: "🏆",
+      unlocked: promoterData?.rank !== undefined && promoterData.rank <= 3,
+      desc: "Rank in the top 3 global promoter leaderboard",
+      requirement: "Top 3 Rank",
+      badgeColor: "from-red-600/25 to-red-500/35 border-red-500/50 text-red-400"
+    }
+  ];
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -971,7 +1336,7 @@ here's my link 👉 ${link}`
                   <div className="space-y-4 pt-4 border-t border-border/60">
                     <label className="text-[0.8rem] font-bold text-muted/60 block tracking-widest uppercase">Generate Source Link</label>
                     <div className="flex flex-wrap gap-2">
-                      {["WhatsApp", "X", "Discord", "Reddit", "Telegram"].map(srcName => {
+                      {["WhatsApp", "Telegram", "X", "Reddit", "Discord", "Instagram", "Facebook", "LinkedIn", "YouTube"].map(srcName => {
                         const srcId = srcName.toLowerCase();
                         const sourceLink = `https://theplugd.com?ref=${referralLinkSuffix}&src=${srcId}`;
                         const isCopied = copied === `link_${srcId}`;
@@ -1169,10 +1534,15 @@ here's my link 👉 ${link}`
                   <div className="space-y-3.5">
                     {[
                       { name: "WhatsApp", key: "whatsapp", color: "bg-emerald-500" },
+                      { name: "Telegram", key: "telegram", color: "bg-sky-500" },
                       { name: "X", key: "x", color: "bg-zinc-200" },
-                      { name: "Discord", key: "discord", color: "bg-indigo-500" },
                       { name: "Reddit", key: "reddit", color: "bg-orange-500" },
-                      { name: "Telegram", key: "telegram", color: "bg-sky-500" }
+                      { name: "Discord", key: "discord", color: "bg-indigo-500" },
+                      { name: "Instagram", key: "instagram", color: "bg-pink-500" },
+                      { name: "Facebook", key: "facebook", color: "bg-blue-600" },
+                      { name: "LinkedIn", key: "linkedin", color: "bg-blue-500" },
+                      { name: "YouTube", key: "youtube", color: "bg-red-600" },
+                      { name: "Others", key: "others", color: "bg-zinc-500" }
                     ].map(source => {
                       const clicks = trafficSources.find(s => s.source.toLowerCase() === source.key)?.clicks || 0;
                       const totalClicks = trafficSources.reduce((acc, curr) => acc + curr.clicks, 0) || 1;
@@ -1243,57 +1613,90 @@ here's my link 👉 ${link}`
                 </div>
               </div>
 
-              {/* Leaderboard Rank, Payout Progress, and Funnel Cards */}
+              {/* Earnings Milestones and Funnel Cards */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                {/* Left side: First Payout Goal Progress */}
+                {/* Left side: Earnings Milestones */}
                 <div className="lg:col-span-2 bg-pill border border-border rounded-2xl p-6 md:p-8 shadow-xl flex flex-col justify-between text-left">
                   <div>
-                    <h4 className="text-base font-bold text-foreground">First Payout Goal</h4>
-                    <p className="text-xs text-muted mt-0.5">Earn ₹5,000 to unlock your first automatic payout.</p>
+                    <h4 className="text-lg font-bold text-foreground">Earnings Milestones</h4>
+                    <p className="text-xs text-muted mt-0.5">Complete these earnings milestones to unlock exclusive promoter badges.</p>
                   </div>
-                  <div className="my-6">
-                    <div className="flex justify-between items-baseline mb-2">
-                      <span className="text-2xl font-black text-[#16a34a]">₹{promoterData?.totalEarned || 0}</span>
-                      <span className="text-muted text-sm font-semibold">/ ₹5,000</span>
-                    </div>
-                    <div className="w-full bg-zinc-800 rounded-full h-3.5 overflow-hidden">
-                      <div 
-                        className="bg-gradient-to-r from-emerald-500 to-green-400 h-full rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(16,185,129,0.3)]"
-                        style={{ width: `${Math.min(100, ((promoterData?.totalEarned || 0) / 5000) * 100)}%` }}
-                      />
-                    </div>
-                    <div className="flex justify-between items-center mt-2.5 text-[10px] text-muted/60 font-bold uppercase tracking-wider font-sans">
-                      <span>0%</span>
-                      <span>{Math.round(Math.min(100, ((promoterData?.totalEarned || 0) / 5000) * 100))}% Completed</span>
-                      <span>100%</span>
-                    </div>
+                  
+                  {/* Milestones list */}
+                  <div className="space-y-4 mt-6">
+                    {[
+                      { value: 100, label: "Milestone 1", badge: "First Earner Badge", emoji: "🥉" },
+                      { value: 1000, label: "Milestone 2", badge: "Bronze Earner Badge", emoji: "🥉" },
+                      { value: 5000, label: "Milestone 3", badge: "Silver Earner Badge", emoji: "🥈" },
+                      { value: 10000, label: "Milestone 4", badge: "Gold Earner Badge", emoji: "🥇" },
+                      { value: 50000, label: "Milestone 5", badge: "Elite Earner Badge", emoji: "💎" },
+                      { value: 100000, label: "Milestone 6", badge: "Legend Earner Badge", emoji: "💎" },
+                      { value: 500000, label: "Milestone 7", badge: "Titan Earner Badge", emoji: "👑" },
+                      { value: 1000000, label: "Milestone 8", badge: "Plugd Icon Badge", emoji: "👑" }
+                    ].map((milestone, idx) => {
+                      const totalEarned = promoterData?.totalEarned || 0;
+                      const completed = totalEarned >= milestone.value;
+                      
+                      // Highlight the next uncompleted milestone
+                      const isNextToUnlock = !completed && (idx === 0 || totalEarned >= [100, 1000, 5000, 10000, 50000, 100000, 500000, 1000000][idx - 1]);
+                      
+                      const progressPercent = Math.min(100, (totalEarned / milestone.value) * 100);
+
+                      return (
+                        <div 
+                          key={idx} 
+                          className={`border rounded-xl p-4 transition-all duration-300 ${
+                            completed 
+                            ? "bg-green-950/10 border-green-500/30 shadow-[0_0_12px_rgba(22,163,74,0.05)]" 
+                            : isNextToUnlock 
+                              ? "bg-zinc-900/50 border-[#16a34a] shadow-[0_0_15px_rgba(22,163,74,0.15)] ring-1 ring-[#16a34a]/30"
+                              : "bg-zinc-950/25 border-border/40 opacity-50"
+                          }`}
+                        >
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2.5">
+                            <div className="flex items-center gap-2.5">
+                              <span className="text-xl shrink-0">{milestone.emoji}</span>
+                              <div>
+                                <span className="text-xs text-muted/80 font-bold uppercase tracking-wider block leading-none">{milestone.label}</span>
+                                <span className="text-sm font-extrabold text-foreground mt-1.5 block leading-none">{milestone.badge}</span>
+                              </div>
+                            </div>
+                            <div className="text-left sm:text-right">
+                              <span className={`text-sm font-bold ${completed ? "text-[#16a34a]" : "text-white"}`}>
+                                ₹{new Intl.NumberFormat("en-IN").format(totalEarned)}
+                              </span>
+                              <span className="text-muted text-xs font-semibold"> / ₹{new Intl.NumberFormat("en-IN").format(milestone.value)}</span>
+                            </div>
+                          </div>
+                          
+                          {/* Progress bar */}
+                          <div className="w-full bg-zinc-800 rounded-full h-2 overflow-hidden">
+                            <div 
+                              className={`h-full rounded-full transition-all duration-500 ${
+                                completed 
+                                ? "bg-emerald-500" 
+                                : isNextToUnlock 
+                                  ? "bg-[#16a34a] shadow-[0_0_6px_#16a34a]" 
+                                  : "bg-muted/40"
+                              }`}
+                              style={{ width: `${progressPercent}%` }}
+                            />
+                          </div>
+                          
+                          {/* Highlight Tag */}
+                          {isNextToUnlock && (
+                            <div className="mt-2 text-[10px] font-extrabold text-emerald-400 uppercase tracking-widest animate-pulse">
+                              ⚡ Next Target to Chase
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
 
-                {/* Right side: Rank & Funnel */}
+                {/* Right side: Funnel */}
                 <div className="space-y-6">
-                  {/* Your Rank Card */}
-                  <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl flex flex-col justify-between text-left">
-                    <div>
-                      <h4 className="text-base font-bold text-foreground">Your Rank</h4>
-                      <p className="text-xs text-muted">Compare your performance with other promoters.</p>
-                    </div>
-                    <div className="flex flex-col items-center justify-center py-4">
-                      <span className="text-[10px] text-muted font-bold uppercase tracking-wider">Current Position</span>
-                      <span className="text-4xl font-black text-[#16a34a] mt-1">#{promoterData?.rank || 1}</span>
-                      <span className="text-xs text-muted mt-1">out of {promoterData?.totalPromoters || 1} promoters</span>
-                    </div>
-                    <div className="pt-3.5 border-t border-border/60 text-center">
-                      {promoterData?.rank === 1 ? (
-                        <span className="text-xs font-bold text-amber-400">👑 You are the #1 Promoter!</span>
-                      ) : (
-                        <p className="text-xs text-muted leading-relaxed">
-                          Next rank requires <span className="font-bold text-white">₹{promoterData?.nextRankEarningsNeeded || 0}</span> more earnings
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
                   {/* Conversion Funnel Card */}
                   <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl text-left">
                     <h4 className="text-base font-bold text-foreground mb-1">Conversion Funnel</h4>
@@ -1489,6 +1892,473 @@ here's my link 👉 ${link}`
                   Contact Support <ExternalLink className="w-3 h-3" />
                 </a>
               </p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Missions Section */}
+      {activeSection === "missions" && (
+        <div className="space-y-8">
+          <div>
+            <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Missions</h1>
+            <p className="text-muted text-[1rem] mt-1.5 font-normal">Complete promoter tasks, rank up, and earn XP badges.</p>
+          </div>
+
+          {(!hasPromoter && !isAdmin) ? (
+            <div className="flex flex-col items-center justify-center py-20 text-center">
+              <div className="w-20 h-20 rounded-3xl bg-[#16a34a]/10 flex items-center justify-center mb-6">
+                <Trophy className="w-10 h-10 text-[#16a34a]" />
+              </div>
+              <h2 className="text-2xl font-bold mb-2">Missions Locked</h2>
+              <p className="text-muted max-w-sm mb-8">Join the referral program to start earning XP and rank up.</p>
+              <button 
+                onClick={() => setIsReferModalOpen(true)}
+                className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
+              >
+                Join for ₹199 <ArrowRight size={18} />
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-8 text-left">
+              {/* Level progression board */}
+              <div className="bg-pill border border-border rounded-2xl p-6 md:p-8 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div className="flex items-center gap-5">
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-[#16a34a] to-emerald-400 text-black flex flex-col items-center justify-center font-black shadow-lg relative border border-emerald-500/20 shrink-0">
+                    <span className="text-[10px] uppercase tracking-wider opacity-85 leading-none">Level</span>
+                    <span className="text-3xl leading-none mt-1">{currentLevel}</span>
+                  </div>
+                  <div className="space-y-2 flex-1">
+                    <div className="flex items-baseline gap-2">
+                      <h4 className="text-lg font-extrabold text-foreground">Promoter Rank</h4>
+                      <span className="text-xs text-[#16a34a] font-bold">({totalXp} XP Earned)</span>
+                    </div>
+                    <p className="text-xs text-muted font-medium text-left">
+                      Level up every 1,000 XP. Keep completing missions to reach the next tier!
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div className="flex-1 bg-zinc-800 rounded-full h-2.5 overflow-hidden">
+                        <div 
+                          className="bg-[#16a34a] h-full rounded-full transition-all duration-500 shadow-[0_0_8px_#16a34a]"
+                          style={{ width: `${progressToNextLevel}%` }}
+                        />
+                      </div>
+                      <span className="text-xs font-bold text-muted shrink-0">{xpInCurrentLevel} / 1,000 XP</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+                  <div className="bg-zinc-950/40 border border-border/60 rounded-xl p-4 text-center min-w-[120px]">
+                    <span className="text-[10px] text-muted uppercase font-bold tracking-wider">Completed</span>
+                    <p className="text-2xl font-black text-foreground mt-1">
+                      {completedClickMissionsCount + completedSignupMissionsCount + completedEarningsMissionsCount + completedDistributionCount + completedConsistencyMissionsCount}
+                    </p>
+                  </div>
+                  <div className="bg-zinc-950/40 border border-border/60 rounded-xl p-4 text-center min-w-[120px]">
+                    <span className="text-[10px] text-muted uppercase font-bold tracking-wider">Active Missions</span>
+                    <p className="text-2xl font-black text-[#16a34a] mt-1">
+                      {(activeClickMission ? 1 : 0) + (activeSignupMission ? 1 : 0) + (activeEarningsMission ? 1 : 0) + (9 - completedDistributionCount > 0 ? 1 : 0) + (activeConsistencyMission ? 1 : 0)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Missions Lists */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-left">
+                {/* Left side: Activity category missions */}
+                <div className="space-y-6">
+                  {/* Click Missions */}
+                  <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                        <Zap size={16} className="text-emerald-400" />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-bold text-foreground">Click Missions</h4>
+                        <p className="text-xs text-muted">Drive unique promoter clicks to your link</p>
+                      </div>
+                    </div>
+                    {activeClickMission ? (
+                      <div className="bg-zinc-900/40 border border-border/40 rounded-xl p-4 space-y-3">
+                        <div className="flex justify-between items-baseline text-xs font-semibold">
+                          <span className="text-foreground">Level {activeClickMission.level}: Get {activeClickMission.target} clicks</span>
+                          <span className="text-emerald-400">+{activeClickMission.xp} XP</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="flex-1 bg-zinc-800 rounded-full h-1.5 overflow-hidden">
+                            <div 
+                              className="bg-[#16a34a] h-full rounded-full transition-all duration-300"
+                              style={{ width: `${Math.min(100, (clicks / activeClickMission.target) * 100)}%` }}
+                            />
+                          </div>
+                          <span className="text-[10px] font-bold text-muted shrink-0">{clicks} / {activeClickMission.target}</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="bg-green-950/10 border border-green-500/20 text-[#16a34a] rounded-xl p-4 text-xs font-bold text-center">
+                        🎉 All Click Missions Completed! (Level 10 reached)
+                      </div>
+                    )}
+                    {/* Collapsible/mini-list of Click missions */}
+                    <div className="space-y-2 max-h-[160px] overflow-y-auto pr-1">
+                      {clickMissions.map((m) => {
+                        const isCompleted = clicks >= m.target;
+                        return (
+                          <div key={m.level} className="flex justify-between items-center text-xs py-1 border-b border-border/20 last:border-0">
+                            <span className={isCompleted ? "text-muted line-through" : "text-foreground font-medium"}>
+                              Level {m.level}: {m.target} clicks
+                            </span>
+                            <span className={`font-bold ${isCompleted ? "text-muted" : "text-emerald-400"}`}>
+                              {isCompleted ? "✓ Completed" : `+${m.xp} XP`}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Signup Missions */}
+                  <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                        <User className="text-emerald-400" size={16} />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-bold text-foreground">Signup Missions</h4>
+                        <p className="text-xs text-muted">Convert unique click referrals into paid accounts</p>
+                      </div>
+                    </div>
+                    {activeSignupMission ? (
+                      <div className="bg-zinc-900/40 border border-border/40 rounded-xl p-4 space-y-3">
+                        <div className="flex justify-between items-baseline text-xs font-semibold">
+                          <span className="text-foreground">Level {activeSignupMission.level}: Get {activeSignupMission.target} signups</span>
+                          <span className="text-emerald-400">+{activeSignupMission.xp} XP</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="flex-1 bg-zinc-800 rounded-full h-1.5 overflow-hidden">
+                            <div 
+                              className="bg-[#16a34a] h-full rounded-full transition-all duration-300"
+                              style={{ width: `${Math.min(100, (signups / activeSignupMission.target) * 100)}%` }}
+                            />
+                          </div>
+                          <span className="text-[10px] font-bold text-muted shrink-0">{signups} / {activeSignupMission.target}</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="bg-green-950/10 border border-green-500/20 text-[#16a34a] rounded-xl p-4 text-xs font-bold text-center">
+                        🎉 All Signup Missions Completed! (Level 9 reached)
+                      </div>
+                    )}
+                    <div className="space-y-2 max-h-[160px] overflow-y-auto pr-1">
+                      {signupMissions.map((m) => {
+                        const isCompleted = signups >= m.target;
+                        return (
+                          <div key={m.level} className="flex justify-between items-center text-xs py-1 border-b border-border/20 last:border-0">
+                            <span className={isCompleted ? "text-muted line-through" : "text-foreground font-medium"}>
+                              Level {m.level}: {m.target} signups
+                            </span>
+                            <span className={`font-bold ${isCompleted ? "text-muted" : "text-emerald-400"}`}>
+                              {isCompleted ? "✓ Completed" : `+${m.xp} XP`}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Earnings Missions */}
+                  <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                        <Wallet className="text-emerald-400" size={16} />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-bold text-foreground">Earnings Missions</h4>
+                        <p className="text-xs text-muted">Amass commissions from successful referrals</p>
+                      </div>
+                    </div>
+                    {activeEarningsMission ? (
+                      <div className="bg-zinc-900/40 border border-border/40 rounded-xl p-4 space-y-3">
+                        <div className="flex justify-between items-baseline text-xs font-semibold">
+                          <span className="text-foreground">Level {activeEarningsMission.level}: Earn ₹{activeEarningsMission.target}</span>
+                          <span className="text-emerald-400">+{activeEarningsMission.xp} XP</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="flex-1 bg-zinc-800 rounded-full h-1.5 overflow-hidden">
+                            <div 
+                              className="bg-[#16a34a] h-full rounded-full transition-all duration-300"
+                              style={{ width: `${Math.min(100, (earnings / activeEarningsMission.target) * 100)}%` }}
+                            />
+                          </div>
+                          <span className="text-[10px] font-bold text-muted shrink-0">₹{earnings} / ₹{activeEarningsMission.target}</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="bg-green-950/10 border border-green-500/20 text-[#16a34a] rounded-xl p-4 text-xs font-bold text-center">
+                        🎉 All Earnings Missions Completed! (Level 10 reached)
+                      </div>
+                    )}
+                    <div className="space-y-2 max-h-[160px] overflow-y-auto pr-1">
+                      {earningsMissions.map((m) => {
+                        const isCompleted = earnings >= m.target;
+                        return (
+                          <div key={m.level} className="flex justify-between items-center text-xs py-1 border-b border-border/20 last:border-0">
+                            <span className={isCompleted ? "text-muted line-through" : "text-foreground font-medium"}>
+                              Level {m.level}: Earn ₹{m.target}
+                            </span>
+                            <span className={`font-bold ${isCompleted ? "text-muted" : "text-emerald-400"}`}>
+                              {isCompleted ? "✓ Completed" : `+${m.xp} XP`}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right side: Distribution and Streak consistency */}
+                <div className="space-y-6">
+                  {/* Distribution Platforms (9 share links) */}
+                  <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                        <Share2 className="text-emerald-400" size={16} />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-bold text-foreground">Distribution Channels</h4>
+                        <p className="text-xs text-muted">Generate & copy referral links for all 9 core sharing platforms</p>
+                      </div>
+                    </div>
+                    <div className="bg-zinc-950/30 border border-border/60 rounded-xl p-4">
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="text-xs font-bold text-muted uppercase">Progress</span>
+                        <span className="text-xs font-bold text-[#16a34a]">{completedDistributionCount} / 9 Completed</span>
+                      </div>
+                      <div className="w-full bg-zinc-800 rounded-full h-1.5 overflow-hidden mb-5">
+                        <div 
+                          className="bg-[#16a34a] h-full rounded-full transition-all duration-350"
+                          style={{ width: `${(completedDistributionCount / 9) * 100}%` }}
+                        />
+                      </div>
+                      
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[280px] overflow-y-auto pr-1">
+                        {distributionPlatforms.map((platform) => {
+                          const isCopied = !!copiedPlatforms[platform.id];
+                          const sourceLink = `https://theplugd.com?ref=${referralLinkSuffix}&src=${platform.id}`;
+                          const isJustCopied = copied === `link_${platform.id}`;
+                          return (
+                            <div key={platform.id} className="flex justify-between items-center bg-zinc-900/40 border border-border/30 rounded-xl p-2 px-3 text-xs text-left">
+                              <div className="flex items-center gap-2">
+                                <div className={`w-4 h-4 rounded-md border flex items-center justify-center transition-all shrink-0 ${
+                                  isCopied 
+                                  ? "bg-[#16a34a] border-[#16a34a] text-black" 
+                                  : "border-border text-transparent"
+                                }`}>
+                                  <Check size={11} className="stroke-[3]" />
+                                </div>
+                                <span className={isCopied ? "text-muted line-through font-normal" : "text-foreground font-bold"}>
+                                  {platform.name} Link
+                                </span>
+                              </div>
+                              
+                              <button
+                                type="button"
+                                onClick={() => copyToClipboard(sourceLink, `link_${platform.id}`)}
+                                className="bg-accent hover:bg-accent/80 border border-border hover:border-muted font-bold p-1 px-2.5 rounded-lg text-[10px] shrink-0 text-foreground transition-all flex items-center gap-1 cursor-pointer"
+                              >
+                                {isJustCopied ? <Check size={10} className="text-green-500" /> : <Copy size={10} />}
+                                <span>{isJustCopied ? "Copied" : "Copy"}</span>
+                              </button>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Consistency streak missions */}
+                  <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                        <Flame className="text-emerald-400" size={16} />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-bold text-foreground">Consistency Streaks</h4>
+                        <p className="text-xs text-muted">Generate activity for consecutive days</p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-zinc-900/50 border border-border/40 rounded-xl p-4 flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <span className="text-3xl text-orange-500 animate-pulse">🔥</span>
+                        <div className="text-left">
+                          <span className="text-xs text-muted uppercase font-bold block leading-none">Your Daily Active Streak</span>
+                          <span className="text-2xl font-black text-foreground mt-1.5 block leading-none">{streakCount} Days</span>
+                        </div>
+                      </div>
+                      <span className="text-[10px] bg-[#16a34a]/10 border border-[#16a34a]/30 px-3 py-1 rounded-full text-emerald-400 font-bold uppercase tracking-wider animate-pulse">
+                        Active
+                      </span>
+                    </div>
+
+                    {activeConsistencyMission ? (
+                      <div className="bg-zinc-900/40 border border-border/40 rounded-xl p-4 space-y-3">
+                        <div className="flex justify-between items-baseline text-xs font-semibold">
+                          <span className="text-foreground">Level {activeConsistencyMission.level}: Hit a {activeConsistencyMission.target} day streak</span>
+                          <span className="text-emerald-400">+{activeConsistencyMission.xp} XP</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="flex-1 bg-zinc-800 rounded-full h-1.5 overflow-hidden">
+                            <div 
+                              className="bg-[#16a34a] h-full rounded-full transition-all duration-300"
+                              style={{ width: `${Math.min(100, (streakCount / activeConsistencyMission.target) * 100)}%` }}
+                            />
+                          </div>
+                          <span className="text-[10px] font-bold text-muted shrink-0">{streakCount} / {activeConsistencyMission.target}</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="bg-green-950/10 border border-green-500/20 text-[#16a34a] rounded-xl p-4 text-xs font-bold text-center">
+                        🎉 All Streak Missions Completed! (Level 5 reached)
+                      </div>
+                    )}
+                    <div className="space-y-2 max-h-[160px] overflow-y-auto pr-1">
+                      {consistencyMissions.map((m) => {
+                        const isCompleted = streakCount >= m.target;
+                        return (
+                          <div key={m.level} className="flex justify-between items-center text-xs py-1 border-b border-border/20 last:border-0">
+                            <span className={isCompleted ? "text-muted line-through" : "text-foreground font-medium"}>
+                              Level {m.level}: {m.target} Day Streak
+                            </span>
+                            <span className={`font-bold ${isCompleted ? "text-muted" : "text-emerald-400"}`}>
+                              {isCompleted ? "✓ Completed" : `+${m.xp} XP`}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Achievements Section */}
+      {activeSection === "achievements" && (
+        <div className="space-y-8">
+          <div>
+            <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Achievements</h1>
+            <p className="text-muted text-[1rem] mt-1.5 font-normal">Collect visual promoter badge medallions as rewards.</p>
+          </div>
+
+          {(!hasPromoter && !isAdmin) ? (
+            <div className="flex flex-col items-center justify-center py-20 text-center">
+              <div className="w-20 h-20 rounded-3xl bg-[#16a34a]/10 flex items-center justify-center mb-6">
+                <Award className="w-10 h-10 text-[#16a34a]" />
+              </div>
+              <h2 className="text-2xl font-bold mb-2">Achievements Locked</h2>
+              <p className="text-muted max-w-sm mb-8">Join the referral program to start unlocking promoter achievements.</p>
+              <button 
+                onClick={() => setIsReferModalOpen(true)}
+                className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
+              >
+                Join for ₹199 <ArrowRight size={18} />
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-12 text-left">
+              {/* Summary stat board */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-pill border border-border p-6 rounded-2xl shadow-xl">
+                <div>
+                  <span className="text-xs text-muted uppercase font-bold tracking-wider">Unlocked</span>
+                  <p className="text-3xl font-black text-foreground mt-1">
+                    {achievements.filter(a => a.unlocked).length} / {achievements.length}
+                  </p>
+                </div>
+                <div>
+                  <span className="text-xs text-muted uppercase font-bold tracking-wider">Completion Rate</span>
+                  <p className="text-3xl font-black text-[#16a34a] mt-1">
+                    {Math.round((achievements.filter(a => a.unlocked).length / achievements.length) * 100)}%
+                  </p>
+                </div>
+                <div>
+                  <span className="text-xs text-muted uppercase font-bold tracking-wider">Mythic Badges</span>
+                  <p className="text-3xl font-black text-red-500 mt-1">
+                    {achievements.filter(a => a.unlocked && a.rarity === "Mythic").length} Unlocked
+                  </p>
+                </div>
+                <div>
+                  <span className="text-xs text-muted uppercase font-bold tracking-wider">Legendary Badges</span>
+                  <p className="text-3xl font-black text-amber-500 mt-1">
+                    {achievements.filter(a => a.unlocked && a.rarity === "Legendary").length} Unlocked
+                  </p>
+                </div>
+              </div>
+
+              {/* Medallions Categorized by Rarity */}
+              {(["Common", "Rare", "Epic", "Legendary", "Mythic"] as const).map(rarity => {
+                const rarityBadges = achievements.filter(a => a.rarity === rarity);
+                const rarityColorsMap = {
+                  Common: { text: "text-zinc-400", border: "border-zinc-500/20", bg: "bg-zinc-950/20", glow: "" },
+                  Rare: { text: "text-teal-400", border: "border-teal-500/30", bg: "bg-teal-950/10", glow: "shadow-[0_0_12px_rgba(20,184,166,0.15)]" },
+                  Epic: { text: "text-purple-400", border: "border-purple-500/30", bg: "bg-purple-950/10", glow: "shadow-[0_0_15px_rgba(168,85,247,0.15)]" },
+                  Legendary: { text: "text-amber-400", border: "border-amber-500/30", bg: "bg-amber-950/10", glow: "shadow-[0_0_20px_rgba(245,158,11,0.2)]" },
+                  Mythic: { text: "text-red-500 font-extrabold uppercase tracking-wide", border: "border-red-500/40", bg: "bg-red-950/15", glow: "shadow-[0_0_25px_rgba(239,68,68,0.25)]" }
+                };
+                const colorConfig = rarityColorsMap[rarity];
+                
+                return (
+                  <div key={rarity} className="space-y-4">
+                    <div className="flex items-center gap-2 pb-1 border-b border-border/40">
+                      <h3 className={`text-base md:text-lg font-black ${colorConfig.text}`}>
+                        {rarity} Achievements
+                      </h3>
+                      <span className="text-xs bg-accent px-2 py-0.5 border border-border rounded-full font-bold text-muted">
+                        {rarityBadges.filter(a => a.unlocked).length} / {rarityBadges.length}
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                      {rarityBadges.map((badge) => (
+                        <div 
+                          key={badge.id}
+                          className={`relative border rounded-2xl p-5 flex flex-col items-center text-center transition-all duration-300 ${
+                            badge.unlocked 
+                            ? `bg-gradient-to-br ${badge.badgeColor} border-opacity-70 ${colorConfig.glow}` 
+                            : "bg-zinc-950/45 border-zinc-900/60 text-muted/30 opacity-40 grayscale"
+                          }`}
+                        >
+                          <div className={`w-16 h-16 rounded-full bg-zinc-900/80 border flex items-center justify-center text-3xl mb-4 relative ${
+                            badge.unlocked ? "border-[#16a34a]/30 shadow-md" : "border-border/40"
+                          }`}>
+                            {badge.emoji}
+                            {!badge.unlocked && (
+                              <div className="absolute inset-0 bg-black/60 rounded-full flex items-center justify-center">
+                                <Lock size={14} className="text-muted/50" />
+                              </div>
+                            )}
+                          </div>
+                          
+                          <div className="space-y-1">
+                            <span className={`text-sm font-black block tracking-tight ${badge.unlocked ? "text-foreground" : "text-muted"}`}>
+                              {badge.name}
+                            </span>
+                            <span className="text-[11px] text-muted leading-tight block">
+                              {badge.desc}
+                            </span>
+                            <span className="text-[9px] font-bold text-[#16a34a] uppercase tracking-wider block mt-2.5">
+                              {badge.unlocked ? "✓ Unlocked" : `Req: ${badge.requirement}`}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>

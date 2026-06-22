@@ -55,9 +55,20 @@ export async function GET() {
 
       rank = higherEarnersCount + 1;
       totalPromoters = totalCount;
-      trafficSources = clickGroups.map(g => ({
-        source: g.paymentId || "direct",
-        clicks: g._count.id
+      const allowedSources = ["whatsapp", "telegram", "x", "reddit", "discord", "instagram", "facebook", "linkedin", "youtube"];
+      const sourceCounts: Record<string, number> = {};
+      
+      clickGroups.forEach(g => {
+        let src = g.paymentId ? g.paymentId.toLowerCase().trim() : "others";
+        if (!allowedSources.includes(src)) {
+          src = "others";
+        }
+        sourceCounts[src] = (sourceCounts[src] || 0) + g._count.id;
+      });
+
+      trafficSources = Object.entries(sourceCounts).map(([source, clicks]) => ({
+        source,
+        clicks
       }));
 
       if (rank > 1) {
