@@ -17,7 +17,8 @@ import {
   Award,
   Activity,
   Info,
-  Globe
+  Globe,
+  ArrowRight
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -64,6 +65,14 @@ const GRADIENTS = [
 ];
 
 
+function maskUsername(username: string): string {
+  if (!username) return "promoter";
+  const clean = username.replace("@", "");
+  if (clean.length <= 2) return clean + "***";
+  if (clean.length <= 4) return clean[0] + "***" + clean[clean.length - 1];
+  return clean.slice(0, 2) + "***" + clean.slice(-2);
+}
+
 export default function HomeClient({ 
   userEmail: serverUserEmail,
   referralCode: initialReferralCode = ""
@@ -74,6 +83,13 @@ export default function HomeClient({
   const [userEmail, setUserEmail] = useState<string | null>(serverUserEmail);
   const [isPaidUser, setIsPaidUser] = useState(false);
   const [earners, setEarners] = useState<ActiveEarner[]>([]);
+  const [leaderboardTab, setLeaderboardTab] = useState<"today" | "thisWeek" | "allTime">("today");
+  const [leaderboardData, setLeaderboardData] = useState<{
+    today: any[];
+    thisWeek: any[];
+    allTime: any[];
+  }>({ today: [], thisWeek: [], allTime: [] });
+  const [recentEarnings, setRecentEarnings] = useState<Array<{ id: number; text: string; time: string }>>([]);
   const [visibleCount, setVisibleCount] = useState(10);
   const [sliderVal, setSliderVal] = useState(2); // 10^2 = 100 referrals default
 
@@ -146,7 +162,28 @@ export default function HomeClient({
         const res = await fetch("/api/top-earners");
         if (res.ok) {
           const data = await res.json();
-          if (data.success && data.promoters) {
+          if (data.success) {
+            if (data.today && data.thisWeek && data.allTime) {
+              setLeaderboardData({
+                today: data.today,
+                thisWeek: data.thisWeek,
+                allTime: data.allTime
+              });
+            } else if (data.promoters) {
+              const mapped = data.promoters.map((p: any, idx: number) => ({
+                rank: idx + 1,
+                username: p.username || p.name || p.email.split("@")[0],
+                earnings: p.totalEarned,
+                avatarUrl: p.avatarUrl
+              }));
+              setLeaderboardData({
+                today: mapped,
+                thisWeek: mapped,
+                allTime: mapped
+              });
+            }
+
+            if (data.promoters) {
             // Load from localStorage if present
             let storedData: Record<string, number> = {};
             try {
@@ -243,7 +280,8 @@ export default function HomeClient({
             } catch (err) {}
           }
         }
-      } catch (err) {
+      }
+    } catch (err) {
         console.error("Failed to load top earners:", err);
       }
     }
@@ -341,6 +379,58 @@ export default function HomeClient({
     }
     checkAuth();
   }, []);
+
+  useEffect(() => {
+    const initialNames = ["arjun", "chirag", "vishal", "siddharth", "priya", "rohit", "aditya", "sneha", "kabir", "ananya"];
+    const initialAmounts = [100, 250, 500, 100, 100, 250, 500, 100];
+    
+    const initialList = Array.from({ length: 3 }).map((_, idx) => {
+      const name = initialNames[idx % initialNames.length];
+      const amount = initialAmounts[idx % initialAmounts.length];
+      return {
+        id: idx,
+        text: `${maskUsername(name)} earned ₹${amount}`,
+        time: `${idx * 2 + 1}m ago`
+      };
+    });
+    setRecentEarnings(initialList);
+
+    const interval = setInterval(() => {
+      let name = "";
+      if (earners.length > 0) {
+        const randomEarner = earners[Math.floor(Math.random() * earners.length)];
+        name = randomEarner.handle ? randomEarner.handle.replace("@", "") : (randomEarner.name || "promoter");
+      } else {
+        const fallbackNames = ["arjun", "chirag", "vishal", "siddharth", "priya", "rohit", "aditya", "sneha", "kabir", "ananya"];
+        name = fallbackNames[Math.floor(Math.random() * fallbackNames.length)];
+      }
+
+      const amounts = [100, 100, 250, 250, 500, 100, 500];
+      const amount = amounts[Math.floor(Math.random() * amounts.length)];
+      const masked = maskUsername(name);
+
+      setRecentEarnings(prev => {
+        const nextId = prev.length ? Math.max(...prev.map(p => p.id)) + 1 : 1;
+        const newEntry = {
+          id: nextId,
+          text: `${masked} earned ₹${amount}`,
+          time: "Just now"
+        };
+        const updatedPrev = prev.map(item => {
+          if (item.time === "Just now") return { ...item, time: "1m ago" };
+          const minMatch = item.time.match(/^(\d+)m/);
+          if (minMatch) {
+            const nextMin = parseInt(minMatch[1]) + 1;
+            return { ...item, time: `${nextMin}m ago` };
+          }
+          return item;
+        });
+        return [newEntry, ...updatedPrev].slice(0, 3);
+      });
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [earners]);
 
   const handleJoinReferral = () => {
     setIsReferModalOpen(false);
@@ -551,6 +641,126 @@ export default function HomeClient({
             <div className="flex items-center gap-1.5 text-xs text-muted/50 font-medium font-sans select-none mt-1">
               <Info className="w-3.5 h-3.5 flex-shrink-0 text-muted/40" />
               <span>Based on referral purchase type. Actual earnings depend on which plan your referrals purchase.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION: LEADERBOARD & RECENT EARNINGS & WHY PEOPLE FAIL */}
+      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10 flex flex-col gap-8 items-center">
+        {/* Leaderboard Card */}
+        <div className="w-full bg-pill border border-border rounded-[24px] p-6 sm:p-8 md:p-10 shadow-xl flex flex-col">
+          <div className="text-center max-w-2xl mx-auto mb-6">
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-3" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+              Top Promoters
+            </h2>
+          </div>
+
+          {/* Leaderboard Tabs */}
+          <div className="flex bg-zinc-950/40 border border-border/60 rounded-xl p-1 max-w-xs mx-auto mb-6">
+            {[
+              { id: "today", label: "Today" },
+              { id: "thisWeek", label: "This Week" },
+              { id: "allTime", label: "All Time" }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setLeaderboardTab(tab.id as any)}
+                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap cursor-pointer uppercase tracking-wider ${
+                  leaderboardTab === tab.id
+                    ? "bg-[#16a34a] text-white"
+                    : "text-muted hover:text-white"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Table Display */}
+          <div className="w-full overflow-hidden border border-border/50 rounded-xl bg-zinc-950/20">
+            <div className="grid grid-cols-3 border-b border-border/80 bg-zinc-950/40 px-4 py-3 text-xs font-bold uppercase tracking-wider text-muted font-sans text-left">
+              <div>Rank</div>
+              <div>Username</div>
+              <div className="text-right">Earnings</div>
+            </div>
+            <div className="divide-y divide-border/40 max-h-[300px] overflow-y-auto">
+              {(!leaderboardData[leaderboardTab] || leaderboardData[leaderboardTab].length === 0) ? (
+                <div className="text-center py-8 text-sm text-muted font-medium font-sans">
+                  No active promoters in this timeframe yet
+                </div>
+              ) : (
+                leaderboardData[leaderboardTab].map((entry, idx) => (
+                  <div key={idx} className="grid grid-cols-3 px-4 py-3 text-sm font-sans items-center hover:bg-zinc-900/10 transition-colors text-left">
+                    <div className="font-extrabold text-muted">
+                      {entry.rank === 1 ? "🥇" : entry.rank === 2 ? "🥈" : entry.rank === 3 ? "🥉" : `#${entry.rank}`}
+                    </div>
+                    <div className="font-semibold text-white break-all pr-2">
+                      @{entry.username}
+                    </div>
+                    <div className="font-extrabold text-[#16a34a] text-right rich-number">
+                      ₹{new Intl.NumberFormat("en-IN").format(entry.earnings)}
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+
+          {/* CTA Link */}
+          <div className="mt-6 text-center">
+            <button 
+              onClick={handleStartEarning}
+              className="text-emerald-400 hover:text-emerald-300 font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-1.5 mx-auto active:scale-[0.98]"
+              style={{ fontFamily: '"EB Garamond", serif' }}
+            >
+              <span>Think you can beat them?</span>
+              <ArrowRight size={14} />
+            </button>
+          </div>
+        </div>
+
+        {/* Live Activity Feed */}
+        <div className="w-full max-w-md bg-zinc-950/40 border border-border/60 rounded-2xl p-5 flex flex-col items-center shadow-lg">
+          <div className="flex items-center gap-2 mb-4 text-[10px] sm:text-xs text-muted font-bold uppercase tracking-widest font-sans">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]" />
+            <span>Recent Earnings Activity</span>
+          </div>
+          <div className="w-full flex flex-col gap-2.5">
+            {recentEarnings.map((item) => (
+              <div 
+                key={item.id} 
+                className="w-full flex justify-between items-center bg-zinc-900/40 border border-zinc-800/60 rounded-xl px-4 py-3 animate-in fade-in slide-in-from-top-1.5 duration-300"
+              >
+                <span className="text-xs font-semibold text-white font-sans">{item.text}</span>
+                <span className="text-[10px] text-muted/60 font-bold uppercase tracking-wider font-sans">{item.time}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Why People Fail Section */}
+        <div className="w-full max-w-md bg-zinc-950/60 border border-red-950/30 rounded-2xl p-6 shadow-xl hover:border-red-950/50 transition-all duration-300">
+          <h3 className="text-lg font-bold text-center text-red-400 mb-4" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+            Why People Fail
+          </h3>
+          <div className="flex flex-col gap-3.5 text-xs sm:text-sm font-sans text-left">
+            <div className="flex items-start gap-3 text-zinc-300">
+              <span className="text-red-500 shrink-0 mt-0.5">❌</span>
+              <span>They share once and stop</span>
+            </div>
+            <div className="flex items-start gap-3 text-zinc-300">
+              <span className="text-red-500 shrink-0 mt-0.5">❌</span>
+              <span>They never follow up</span>
+            </div>
+            <div className="flex items-start gap-3 text-zinc-300">
+              <span className="text-red-500 shrink-0 mt-0.5">❌</span>
+              <span>They wait instead of promoting</span>
+            </div>
+            <div className="h-[1px] bg-zinc-800/80 my-1" />
+            <div className="flex items-start gap-3 text-emerald-400 font-semibold">
+              <span className="text-emerald-500 shrink-0 mt-0.5">✔</span>
+              <span>Top promoters share consistently</span>
             </div>
           </div>
         </div>

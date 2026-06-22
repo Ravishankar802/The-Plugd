@@ -64,6 +64,8 @@ function DashboardProfileContent() {
   const [phoneNo, setPhoneNo] = useState("");
   const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
   const [phoneCodeDropdownOpen, setPhoneCodeDropdownOpen] = useState(false);
+  const [copiedLinkMission, setCopiedLinkMission] = useState(false);
+  const [trafficSources, setTrafficSources] = useState<Array<{ source: string; clicks: number }>>([]);
 
   const referralLinkSuffix = promoterData?.username || promoterData?.referralCode || "";
   const link = `https://theplugd.com?ref=${referralLinkSuffix}`;
@@ -105,7 +107,12 @@ here's my link 👉 ${link}`
           setIsAdmin(data.isAdmin);
           setPromoterData(data.promoterData);
           setHasPendingWithdrawal(data.hasPendingWithdrawal || false);
+          setTrafficSources(data.trafficSources || []);
           if (data.promoterData) {
+            const val = localStorage.getItem(`plugd_mission_copied_${data.promoterData.id}`);
+            if (val === 'true') {
+              setCopiedLinkMission(true);
+            }
             setUseBankTransfer(!!data.promoterData.bankAccountNumber);
             setUsePaypal(!!data.promoterData.paypalEmail && !data.promoterData.intlAccountNumber && !data.promoterData.intlIban);
             const phone = data.promoterData.phoneNumber || "";
@@ -382,6 +389,13 @@ here's my link 👉 ${link}`
       await navigator.clipboard.writeText(text);
       setCopied(id);
       setTimeout(() => setCopied(null), 2000);
+
+      if (id === 'link' || id === 'referral' || id.startsWith('link_')) {
+        if (promoterData?.id) {
+          localStorage.setItem(`plugd_mission_copied_${promoterData.id}`, 'true');
+          setCopiedLinkMission(true);
+        }
+      }
     } catch (err) {
       console.error("Clipboard error:", err);
     }
@@ -932,160 +946,252 @@ here's my link 👉 ${link}`
               </button>
             </div>
           ) : (
-            <div className="bg-pill border border-border rounded-[16px] p-6 md:p-10 shadow-2xl space-y-8">
-              <div className="space-y-4">
-                <label className="text-[0.8rem] font-bold text-muted/60 block tracking-widest uppercase">YOUR REFERRAL LINK</label>
-                <div className="flex flex-col md:flex-row gap-3">
-                  <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] font-medium flex items-center overflow-x-auto whitespace-nowrap no-scrollbar md:overflow-x-visible">
-                    theplugd.com?ref={referralLinkSuffix}
-                  </div>
-                  <button 
-                    type="button"
-                    onClick={() => copyToClipboard(`https://theplugd.com?ref=${referralLinkSuffix}`, 'link')}
-                    className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-600/20 active:scale-[0.98]"
-                  >
-                    {copied === 'link' ? <Check className="w-5 h-5" /> : <><Copy className="w-5 h-5" /> Copy Link</>}
-                  </button>
-                </div>
-              </div>
-
-              <div className="space-y-6 pt-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
-                    <Share2 className="w-4 h-4 text-foreground" />
-                  </div>
-                  <h3 className="text-lg font-bold text-foreground">Post Ideas</h3>
-                </div>
-                
-                <div className="flex flex-col gap-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-                    <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 flex flex-col justify-between">
-                      <div className="space-y-4">
-                        <p className="text-xs text-muted font-normal">
-                          these are just post ideas to get you started, customize them, make it sound like you
-                        </p>
-                        <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">
-                          {[1, 2, 3].map((num, idx) => (
-                            <button
-                              key={num}
-                              onClick={() => setSelectedVariation(idx)}
-                              className={`px-3 py-1.5 rounded-lg text-[0.7rem] font-bold uppercase tracking-wider whitespace-nowrap transition-all cursor-pointer ${
-                                selectedVariation === idx 
-                                ? "bg-selected text-selected-foreground border border-selected" 
-                                : "bg-background text-muted border border-border hover:border-muted"
-                              }`}
-                            >
-                              VARIATION {num}
-                            </button>
-                          ))}
-                        </div>
-                        <div className="min-h-[80px] flex items-center">
-                          <p className="text-sm text-muted font-medium leading-relaxed" style={{ whiteSpace: "pre-line" }}>
-                            &quot;{POST_VARIATIONS[selectedVariation]}&quot;
-                          </p>
-                        </div>
-                      </div>
-                      <button 
-                        type="button"
-                        onClick={() => copyToClipboard(POST_VARIATIONS[selectedVariation], 'post')}
-                        className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
-                      >
-                        {copied === 'post' ? <Check className="w-4 h-4 text-green-500" /> : "Copy Post"}
-                      </button>
-                    </div>
-
-                    <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 flex flex-col justify-between">
-                      <div className="space-y-4">
-                        <span className="text-[0.7rem] font-bold text-muted/60 block tracking-widest uppercase">YOUR REFERRAL LINK</span>
-                        <div className="min-h-[80px] flex items-center">
-                          <p className="text-sm text-muted font-medium break-all">
-                            https://theplugd.com?ref={referralLinkSuffix}
-                          </p>
-                        </div>
-                      </div>
-                      <button 
-                        type="button"
-                        onClick={() => copyToClipboard(`https://theplugd.com?ref=${referralLinkSuffix}`, 'referral')}
-                        className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
-                      >
-                        {copied === 'referral' ? <Check className="w-4 h-4 text-green-500" /> : <><Copy className="w-4 h-4" /> Copy Link</>}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div className="space-y-6 pt-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
-                    <TrendingUp className="w-4 h-4 text-foreground" />
-                  </div>
-                  <h3 className="text-lg font-bold text-foreground">How to hit ₹1,00,000 fast</h3>
-                </div>
-
-                <div className="bg-pill border border-border rounded-2xl p-8 space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+              {/* Left Column: Link Copying and Post Ideas */}
+              <div className="lg:col-span-2 space-y-8">
+                <div className="bg-pill border border-border rounded-[16px] p-6 md:p-8 shadow-2xl space-y-6">
+                  {/* Referral Link */}
                   <div className="space-y-4">
-                    <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</div>
-                      <p className="text-sm text-muted font-medium leading-relaxed">
-                        Open your contacts. Send your link to everyone you think would actually do something with this. Don&apos;t overthink it, just send.
-                      </p>
+                    <label className="text-[0.8rem] font-bold text-muted/60 block tracking-widest uppercase">YOUR REFERRAL LINK</label>
+                    <div className="flex flex-col md:flex-row gap-3">
+                      <div className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] font-medium flex items-center overflow-x-auto whitespace-nowrap no-scrollbar md:overflow-x-visible">
+                        theplugd.com?ref={referralLinkSuffix}
+                      </div>
+                      <button 
+                        type="button"
+                        onClick={() => copyToClipboard(`https://theplugd.com?ref=${referralLinkSuffix}`, 'link')}
+                        className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-600/20 active:scale-[0.98]"
+                      >
+                        {copied === 'link' ? <Check className="w-5 h-5" /> : <><Copy className="w-5 h-5" /> Copy Link</>}
+                      </button>
                     </div>
-                    <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</div>
-                      <p className="text-sm text-muted font-medium leading-relaxed">
-                        Drop your link in every WhatsApp and Telegram group you&apos;re in.
-                      </p>
+                  </div>
+
+                  {/* Source link generator */}
+                  <div className="space-y-4 pt-4 border-t border-border/60">
+                    <label className="text-[0.8rem] font-bold text-muted/60 block tracking-widest uppercase">Generate Source Link</label>
+                    <div className="flex flex-wrap gap-2">
+                      {["WhatsApp", "X", "Discord", "Reddit", "Telegram"].map(srcName => {
+                        const srcId = srcName.toLowerCase();
+                        const sourceLink = `https://theplugd.com?ref=${referralLinkSuffix}&src=${srcId}`;
+                        const isCopied = copied === `link_${srcId}`;
+                        return (
+                          <button
+                            key={srcId}
+                            type="button"
+                            onClick={() => copyToClipboard(sourceLink, `link_${srcId}`)}
+                            className="bg-background border border-border hover:bg-accent text-foreground text-xs font-bold py-2.5 px-4 rounded-xl flex items-center gap-1.5 transition-all"
+                          >
+                            {isCopied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
+                            <span>{srcName} Link</span>
+                          </button>
+                        );
+                      })}
                     </div>
-                    <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</div>
-                      <p className="text-sm text-muted font-medium leading-relaxed">
-                        Go on X. Post it, reply with it, DM it to your followers. Everywhere.
-                      </p>
+                  </div>
+                </div>
+
+                {/* Post Ideas */}
+                <div className="bg-pill border border-border rounded-[16px] p-6 md:p-8 shadow-2xl space-y-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
+                      <Share2 className="w-4 h-4 text-foreground" />
                     </div>
-                    <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</div>
-                      <p className="text-sm text-muted font-medium leading-relaxed">
-                        Find Reddit threads and Discord servers about making money, side hustles, passive income. Drop your link there.
-                      </p>
+                    <h3 className="text-lg font-bold text-foreground">Post Ideas</h3>
+                  </div>
+
+                  <div className="flex flex-col gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                      <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 flex flex-col justify-between bg-zinc-950/20">
+                        <div className="space-y-4">
+                          <p className="text-xs text-muted font-normal">
+                            these are just post ideas to get you started, customize them, make it sound like you
+                          </p>
+                          <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">
+                            {[1, 2, 3].map((num, idx) => (
+                              <button
+                                key={num}
+                                onClick={() => setSelectedVariation(idx)}
+                                className={`px-3 py-1.5 rounded-lg text-[0.7rem] font-bold uppercase tracking-wider whitespace-nowrap transition-all cursor-pointer ${
+                                  selectedVariation === idx 
+                                  ? "bg-selected text-selected-foreground border border-selected" 
+                                  : "bg-background text-muted border border-border hover:border-muted"
+                                }`}
+                              >
+                                VARIATION {num}
+                              </button>
+                            ))}
+                          </div>
+                          <div className="min-h-[80px] flex items-center">
+                            <p className="text-sm text-muted font-medium leading-relaxed" style={{ whiteSpace: "pre-line" }}>
+                              &quot;{POST_VARIATIONS[selectedVariation]}&quot;
+                            </p>
+                          </div>
+                        </div>
+                        <button 
+                          type="button"
+                          onClick={() => copyToClipboard(POST_VARIATIONS[selectedVariation], 'post')}
+                          className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
+                        >
+                          {copied === 'post' ? <Check className="w-4 h-4 text-green-500" /> : "Copy Post"}
+                        </button>
+                      </div>
+
+                      <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 flex flex-col justify-between bg-zinc-950/20">
+                        <div className="space-y-4">
+                          <span className="text-[0.7rem] font-bold text-muted/60 block tracking-widest uppercase">YOUR REFERRAL LINK</span>
+                          <div className="min-h-[80px] flex items-center">
+                            <p className="text-sm text-muted font-medium break-all">
+                              https://theplugd.com?ref={referralLinkSuffix}
+                            </p>
+                          </div>
+                        </div>
+                        <button 
+                          type="button"
+                          onClick={() => copyToClipboard(`https://theplugd.com?ref=${referralLinkSuffix}`, 'referral')}
+                          className="w-full bg-background text-foreground border border-border py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-[0.98]"
+                        >
+                          {copied === 'referral' ? <Check className="w-4 h-4 text-green-500" /> : <><Copy className="w-4 h-4" /> Copy Link</>}
+                        </button>
+                      </div>
                     </div>
-                    <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">5</div>
-                      <p className="text-sm text-muted font-medium leading-relaxed">
-                        Post your link in your Instagram story and TikTok. 10 seconds and it works while you sleep.
-                      </p>
+                  </div>
+                </div>
+
+                {/* How to hit ₹1,00,000 fast */}
+                <div className="bg-pill border border-border rounded-[16px] p-6 md:p-8 shadow-2xl space-y-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
+                      <TrendingUp className="w-4 h-4 text-foreground" />
                     </div>
-                    <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">6</div>
-                      <p className="text-sm text-muted font-medium leading-relaxed">
-                        Put your referral link in your Instagram bio, X bio, TikTok bio. Passive clicks every time someone visits your profile.
-                      </p>
+                    <h3 className="text-lg font-bold text-foreground">How to hit ₹1,00,000 fast</h3>
+                  </div>
+
+                  <div className="bg-zinc-950/20 border border-border rounded-2xl p-6 space-y-6">
+                    <div className="space-y-4">
+                      {[
+                        "Open your contacts. Send your link to everyone you think would actually do something with this. Don't overthink it, just send.",
+                        "Drop your link in every WhatsApp and Telegram group you're in.",
+                        "Go on X. Post it, reply with it, DM it to your followers. Everywhere.",
+                        "Find Reddit threads and Discord servers about making money, side hustles, passive income. Drop your link there.",
+                        "Post your link in your Instagram story and TikTok. 10 seconds and it works while you sleep.",
+                        "Put your referral link in your Instagram bio, X bio, TikTok bio. Passive clicks every time someone visits your profile.",
+                        "Find Facebook groups about making money online. Millions of people in there who haven't seen this yet.",
+                        "Go to YouTube. Find videos about making money online and drop your link in the comments. Those people are already looking.",
+                        "Find friends who have big followings and ask them to share your link. One post from the right person changes everything.",
+                        "Don't just send once and stop. Follow up. People need to see something multiple times before they act."
+                      ].map((tip, idx) => (
+                        <div key={idx} className="flex gap-4">
+                          <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{idx + 1}</div>
+                          <p className="text-sm text-muted font-medium leading-relaxed">{tip}</p>
+                        </div>
+                      ))}
                     </div>
-                    <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">7</div>
-                      <p className="text-sm text-muted font-medium leading-relaxed">
-                        Find Facebook groups about making money online. Millions of people in there who haven&apos;t seen this yet.
-                      </p>
-                    </div>
-                    <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">8</div>
-                      <p className="text-sm text-muted font-medium leading-relaxed">
-                        Go to YouTube. Find videos about making money online and drop your link in the comments. Those people are already looking.
-                      </p>
-                    </div>
-                    <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">9</div>
-                      <p className="text-sm text-muted font-medium leading-relaxed">
-                        Find friends who have big followings and ask them to share your link. One post from the right person changes everything.
-                      </p>
-                    </div>
-                    <div className="flex gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">10</div>
-                      <p className="text-sm text-muted font-medium leading-relaxed">
-                        Don&apos;t just send once and stop. Follow up. People need to see something multiple times before they act.
-                      </p>
-                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Missions, Achievements, Traffic Sources clicks */}
+              <div className="space-y-8">
+                {/* Referral Missions */}
+                <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl space-y-4">
+                  <div>
+                    <h4 className="text-base font-bold text-foreground">Referral Missions</h4>
+                    <p className="text-xs text-muted mt-0.5">Complete these tasks to kickstart your earnings.</p>
+                  </div>
+                  <div className="space-y-3">
+                    {[
+                      { label: "Copy referral link", completed: copiedLinkMission },
+                      { label: "Get 10 clicks", completed: (promoterData?.totalClicks || 0) >= 10, current: `${promoterData?.totalClicks || 0}/10` },
+                      { label: "Get first signup", completed: (promoterData?.totalConversions || 0) >= 1 },
+                      { label: "Earn first ₹100", completed: (promoterData?.totalEarned || 0) >= 100 }
+                    ].map((mission, idx) => (
+                      <div key={idx} className="flex items-center justify-between border border-border/40 bg-zinc-900/30 rounded-xl p-3.5 text-left">
+                        <div className="flex items-center gap-3">
+                          <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all ${
+                            mission.completed 
+                            ? "bg-[#16a34a] border-[#16a34a] text-black" 
+                            : "border-border text-transparent"
+                          }`}>
+                            <Check size={14} className="stroke-[3]" />
+                          </div>
+                          <span className={`text-xs font-semibold ${mission.completed ? "text-muted line-through font-normal" : "text-foreground font-bold"}`}>
+                            {mission.label}
+                          </span>
+                        </div>
+                        {mission.current && !mission.completed && (
+                          <span className="text-[10px] bg-accent border border-border px-2 py-0.5 rounded-full font-bold text-muted">
+                            {mission.current}
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Achievements Badges */}
+                <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl space-y-4">
+                  <div>
+                    <h4 className="text-base font-bold text-foreground">Achievements</h4>
+                    <p className="text-xs text-muted mt-0.5">Unlock collectible promoter badges.</p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      { label: "First Click", emoji: "🏅", unlocked: (promoterData?.totalClicks || 0) > 0, desc: "Get 1 link click" },
+                      { label: "First Signup", emoji: "🏅", unlocked: (promoterData?.totalConversions || 0) > 0, desc: "Get 1 signup" },
+                      { label: "First ₹100", emoji: "🏅", unlocked: (promoterData?.totalEarned || 0) >= 100, desc: "Earn ₹100 total" },
+                      { label: "First ₹1000", emoji: "🏅", unlocked: (promoterData?.totalEarned || 0) >= 1000, desc: "Earn ₹1,000 total" }
+                    ].map((badge, idx) => (
+                      <div 
+                        key={idx}
+                        className={`border rounded-xl p-3 flex flex-col items-center text-center transition-all ${
+                          badge.unlocked 
+                          ? "bg-green-950/15 border-green-500/35 text-white" 
+                          : "bg-zinc-900/40 border-zinc-800/80 text-muted/40 opacity-40"
+                        }`}
+                      >
+                        <span className={`text-2xl mb-1.5 ${badge.unlocked ? "animate-pulse" : ""}`}>{badge.emoji}</span>
+                        <span className="text-xs font-bold block leading-none">{badge.label}</span>
+                        <span className="text-[9px] text-muted mt-1 leading-tight">{badge.desc}</span>
+                        {!badge.unlocked && <Lock size={10} className="mt-1.5 text-muted/30" />}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Traffic Sources list */}
+                <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl space-y-4">
+                  <div>
+                    <h4 className="text-base font-bold text-foreground">Traffic Sources</h4>
+                    <p className="text-xs text-muted mt-0.5">Clicks tracked from each share destination.</p>
+                  </div>
+                  
+                  <div className="space-y-3.5">
+                    {[
+                      { name: "WhatsApp", key: "whatsapp", color: "bg-emerald-500" },
+                      { name: "X", key: "x", color: "bg-zinc-200" },
+                      { name: "Discord", key: "discord", color: "bg-indigo-500" },
+                      { name: "Reddit", key: "reddit", color: "bg-orange-500" },
+                      { name: "Telegram", key: "telegram", color: "bg-sky-500" }
+                    ].map(source => {
+                      const clicks = trafficSources.find(s => s.source.toLowerCase() === source.key)?.clicks || 0;
+                      const totalClicks = trafficSources.reduce((acc, curr) => acc + curr.clicks, 0) || 1;
+                      const percentage = Math.round((clicks / totalClicks) * 100);
+                      return (
+                        <div key={source.key} className="space-y-1.5 text-left">
+                          <div className="flex justify-between items-center text-xs font-semibold">
+                            <span className="text-foreground">{source.name}</span>
+                            <span className="text-muted">{clicks} clicks</span>
+                          </div>
+                          <div className="w-full bg-zinc-800 rounded-full h-1.5 overflow-hidden">
+                            <div 
+                              className={`${source.color} h-full rounded-full transition-all duration-300`}
+                              style={{ width: `${clicks > 0 ? Math.max(4, percentage) : 0}%` }}
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -1134,6 +1240,88 @@ here's my link 👉 ${link}`
                 <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
                   <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Conversions</p>
                   <p className="text-4xl font-bold text-foreground">{promoterData?.totalConversions || 0}</p>
+                </div>
+              </div>
+
+              {/* Leaderboard Rank, Payout Progress, and Funnel Cards */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {/* Left side: First Payout Goal Progress */}
+                <div className="lg:col-span-2 bg-pill border border-border rounded-2xl p-6 md:p-8 shadow-xl flex flex-col justify-between text-left">
+                  <div>
+                    <h4 className="text-base font-bold text-foreground">First Payout Goal</h4>
+                    <p className="text-xs text-muted mt-0.5">Earn ₹5,000 to unlock your first automatic payout.</p>
+                  </div>
+                  <div className="my-6">
+                    <div className="flex justify-between items-baseline mb-2">
+                      <span className="text-2xl font-black text-[#16a34a]">₹{promoterData?.totalEarned || 0}</span>
+                      <span className="text-muted text-sm font-semibold">/ ₹5,000</span>
+                    </div>
+                    <div className="w-full bg-zinc-800 rounded-full h-3.5 overflow-hidden">
+                      <div 
+                        className="bg-gradient-to-r from-emerald-500 to-green-400 h-full rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(16,185,129,0.3)]"
+                        style={{ width: `${Math.min(100, ((promoterData?.totalEarned || 0) / 5000) * 100)}%` }}
+                      />
+                    </div>
+                    <div className="flex justify-between items-center mt-2.5 text-[10px] text-muted/60 font-bold uppercase tracking-wider font-sans">
+                      <span>0%</span>
+                      <span>{Math.round(Math.min(100, ((promoterData?.totalEarned || 0) / 5000) * 100))}% Completed</span>
+                      <span>100%</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right side: Rank & Funnel */}
+                <div className="space-y-6">
+                  {/* Your Rank Card */}
+                  <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl flex flex-col justify-between text-left">
+                    <div>
+                      <h4 className="text-base font-bold text-foreground">Your Rank</h4>
+                      <p className="text-xs text-muted">Compare your performance with other promoters.</p>
+                    </div>
+                    <div className="flex flex-col items-center justify-center py-4">
+                      <span className="text-[10px] text-muted font-bold uppercase tracking-wider">Current Position</span>
+                      <span className="text-4xl font-black text-[#16a34a] mt-1">#{promoterData?.rank || 1}</span>
+                      <span className="text-xs text-muted mt-1">out of {promoterData?.totalPromoters || 1} promoters</span>
+                    </div>
+                    <div className="pt-3.5 border-t border-border/60 text-center">
+                      {promoterData?.rank === 1 ? (
+                        <span className="text-xs font-bold text-amber-400">👑 You are the #1 Promoter!</span>
+                      ) : (
+                        <p className="text-xs text-muted leading-relaxed">
+                          Next rank requires <span className="font-bold text-white">₹{promoterData?.nextRankEarningsNeeded || 0}</span> more earnings
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Conversion Funnel Card */}
+                  <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl text-left">
+                    <h4 className="text-base font-bold text-foreground mb-1">Conversion Funnel</h4>
+                    <p className="text-xs text-muted mb-5">Your conversion flow at a glance.</p>
+                    <div className="flex flex-col items-center gap-1.5">
+                      {/* Clicks */}
+                      <div className="w-full bg-zinc-900/60 border border-zinc-800/80 rounded-xl p-3 flex flex-col items-center text-center">
+                        <span className="text-xl font-black text-white">{promoterData?.totalClicks || 0}</span>
+                        <span className="text-[9px] text-muted font-bold uppercase tracking-wider mt-0.5">Clicks</span>
+                      </div>
+                      
+                      <span className="text-muted/40 font-bold text-sm my-0.5">↓</span>
+                      
+                      {/* Signups */}
+                      <div className="w-full bg-zinc-900/60 border border-zinc-800/80 rounded-xl p-3 flex flex-col items-center text-center">
+                        <span className="text-xl font-black text-emerald-400">{promoterData?.totalConversions || 0}</span>
+                        <span className="text-[9px] text-muted font-bold uppercase tracking-wider mt-0.5">Signups</span>
+                      </div>
+                      
+                      <span className="text-muted/40 font-bold text-sm my-0.5">↓</span>
+                      
+                      {/* Earnings */}
+                      <div className="w-full bg-green-950/15 border border-green-500/25 rounded-xl p-3 flex flex-col items-center text-center">
+                        <span className="text-xl font-black text-[#16a34a]">₹{promoterData?.totalEarned || 0}</span>
+                        <span className="text-[9px] text-emerald-400/80 font-bold uppercase tracking-wider mt-0.5">Earnings</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 

@@ -29,7 +29,7 @@ export default function Header() {
         className="text-[clamp(2.15rem,5.5vw,3.5rem)] font-[800] tracking-[-0.035em] leading-[1.1] text-foreground mb-4 relative z-10"
         style={{ fontFamily: '"Times New Roman", Times, serif' }}
       >
-        Dream Big. <br className="md:hidden" /> Earn Big.
+        Attention Is Money.
       </h1>
       <p 
         className="text-muted text-[0.875rem] md:text-[1.25rem] font-normal max-w-[340px] md:max-w-2xl leading-tight md:leading-relaxed mx-auto relative z-10 px-4 mb-12"

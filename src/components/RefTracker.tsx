@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 export default function RefTracker() {
   const searchParams = useSearchParams();
   const refCode = searchParams.get("ref");
+  const source = searchParams.get("src") || searchParams.get("source");
 
   useEffect(() => {
     if (!refCode) return;
@@ -26,7 +27,7 @@ export default function RefTracker() {
         await fetch("/api/promoters/track-click", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ referralCode: refCode }),
+          body: JSON.stringify({ referralCode: refCode, source }),
         });
       } catch (error) {
         console.error("Failed to track referral click:", error);
