@@ -428,7 +428,7 @@ export default function HomeClient({
               <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
                 Total Paid Out
               </span>
-              <span className="text-2xl md:text-3xl font-[900] tracking-tighter text-white font-sans mt-2 rich-number">
+              <span className="text-2xl md:text-3xl font-semibold tracking-tighter text-white font-sans mt-2 rich-number">
                 ₹100Cr+
               </span>
             </div>
@@ -443,7 +443,7 @@ export default function HomeClient({
               <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
                 Promoters
               </span>
-              <span className="text-2xl md:text-3xl font-[900] tracking-tighter text-white font-sans mt-2 rich-number">
+              <span className="text-2xl md:text-3xl font-semibold tracking-tighter text-white font-sans mt-2 rich-number">
                 1,00,000+
               </span>
             </div>
@@ -458,7 +458,7 @@ export default function HomeClient({
               <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
                 Top Earner
               </span>
-              <span className="text-2xl md:text-3xl font-[900] tracking-tighter text-white font-sans mt-2 rich-number">
+              <span className="text-2xl md:text-3xl font-semibold tracking-tighter text-white font-sans mt-2 rich-number">
                 ₹1Cr+
               </span>
             </div>
