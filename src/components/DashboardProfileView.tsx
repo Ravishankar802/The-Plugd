@@ -38,7 +38,250 @@ import { COUNTRY_CODES } from "@/lib/countryCodes";
 
 import ReferralModal from "@/components/ReferralModal";
 
+interface LeagueIconProps {
+  id: string;
+  className?: string;
+  size?: number;
+}
 
+export function LeagueIcon({ id, className = "", size = 56 }: LeagueIconProps) {
+  switch (id) {
+    case "bronze":
+      return (
+        <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
+          <defs>
+            <linearGradient id="bronze-top" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#d5a6bd" />
+              <stop offset="100%" stopColor="#8c5a3c" />
+            </linearGradient>
+            <linearGradient id="bronze-left" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#a67c52" />
+              <stop offset="100%" stopColor="#5c3a24" />
+            </linearGradient>
+            <linearGradient id="bronze-right" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#8c5a3c" />
+              <stop offset="100%" stopColor="#3d2314" />
+            </linearGradient>
+          </defs>
+          <path d="M 32,4 L 56,18 L 56,46 L 32,60 L 8,46 L 8,18 Z" fill="none" stroke="#a67c52" strokeWidth="2" strokeLinejoin="round" />
+          <path d="M 32,4 L 56,18 L 32,32 L 8,18 Z" fill="url(#bronze-top)" stroke="#3d2314" strokeWidth="0.5" />
+          <path d="M 8,18 L 32,32 L 32,60 L 8,46 Z" fill="url(#bronze-left)" stroke="#3d2314" strokeWidth="0.5" />
+          <path d="M 32,32 L 56,18 L 56,46 L 32,60 Z" fill="url(#bronze-right)" stroke="#3d2314" strokeWidth="0.5" />
+        </svg>
+      );
+    case "silver":
+      return (
+        <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
+          <defs>
+            <linearGradient id="silver-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#f3f4f6" />
+              <stop offset="50%" stopColor="#9ca3af" />
+              <stop offset="100%" stopColor="#4b5563" />
+            </linearGradient>
+          </defs>
+          <path d="M 32,58 C 22,42 16,30 20,10 C 22,22 28,34 32,40 C 36,34 40,22 42,10 C 46,30 42,42 32,58 Z" fill="url(#silver-grad)" stroke="#9ca3af" strokeWidth="1" />
+          <path d="M 32,58 C 14,46 4,32 6,18 C 12,28 18,36 26,42 Z" fill="url(#silver-grad)" stroke="#9ca3af" strokeWidth="1" />
+          <path d="M 32,58 C 50,46 60,32 58,18 C 52,28 46,36 38,42 Z" fill="url(#silver-grad)" stroke="#9ca3af" strokeWidth="1" />
+        </svg>
+      );
+    case "gold":
+      return (
+        <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
+          <defs>
+            <linearGradient id="gold-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fbbf24" />
+              <stop offset="50%" stopColor="#d97706" />
+              <stop offset="100%" stopColor="#78350f" />
+            </linearGradient>
+            <linearGradient id="gold-bright" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fef08a" />
+              <stop offset="100%" stopColor="#fbbf24" />
+            </linearGradient>
+          </defs>
+          <path d="M 32,4 L 56,18 L 56,46 L 32,60 L 8,46 L 8,18 Z" fill="url(#gold-grad)" stroke="#fbbf24" strokeWidth="2.5" strokeLinejoin="round" />
+          <path d="M 32,11 L 50,21 L 50,43 L 32,53 L 14,43 L 14,21 Z" fill="none" stroke="#fef08a" strokeWidth="1.5" strokeLinejoin="round" />
+          <path d="M 32,20 L 42,26 L 42,38 L 32,44 L 22,38 L 22,26 Z" fill="url(#gold-bright)" stroke="#d97706" strokeWidth="1" />
+          <line x1="32" y1="4" x2="32" y2="20" stroke="#fef08a" strokeWidth="1.5" />
+          <line x1="56" y1="18" x2="42" y2="26" stroke="#fef08a" strokeWidth="1.5" />
+          <line x1="56" y1="46" x2="42" y2="38" stroke="#fef08a" strokeWidth="1.5" />
+          <line x1="32" y1="60" x2="32" y2="44" stroke="#fef08a" strokeWidth="1.5" />
+          <line x1="8" y1="46" x2="22" y2="38" stroke="#fef08a" strokeWidth="1.5" />
+          <line x1="8" y1="18" x2="22" y2="26" stroke="#fef08a" strokeWidth="1.5" />
+        </svg>
+      );
+    case "diamond":
+      return (
+        <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
+          <defs>
+            <linearGradient id="blue-light" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#93c5fd" />
+              <stop offset="100%" stopColor="#60a5fa" />
+            </linearGradient>
+            <linearGradient id="blue-mid" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#3b82f6" />
+              <stop offset="100%" stopColor="#1d4ed8" />
+            </linearGradient>
+            <linearGradient id="blue-dark" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#1e3a8a" />
+              <stop offset="100%" stopColor="#172554" />
+            </linearGradient>
+          </defs>
+          <path d="M 8,24 L 18,12 L 23,24 Z" fill="url(#blue-light)" />
+          <path d="M 18,12 L 32,24 L 23,24 Z" fill="url(#blue-mid)" />
+          <path d="M 18,12 L 46,12 L 32,24 Z" fill="url(#blue-light)" />
+          <path d="M 46,12 L 32,24 L 41,24 Z" fill="url(#blue-mid)" />
+          <path d="M 46,12 L 56,24 L 41,24 Z" fill="url(#blue-light)" />
+          <path d="M 8,24 L 32,56 L 23,24 Z" fill="url(#blue-mid)" />
+          <path d="M 23,24 L 32,56 L 32,24 Z" fill="url(#blue-dark)" />
+          <path d="M 32,24 L 32,56 L 41,24 Z" fill="url(#blue-mid)" />
+          <path d="M 41,24 L 32,56 L 56,24 Z" fill="url(#blue-dark)" />
+          <path d="M 18,12 L 46,12 L 56,24 L 32,56 L 8,24 Z" fill="none" stroke="#ffffff" strokeWidth="0.75" strokeOpacity="0.4" />
+        </svg>
+      );
+    case "master":
+      return (
+        <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
+          <defs>
+            <linearGradient id="purple-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#d8b4fe" />
+              <stop offset="50%" stopColor="#a855f7" />
+              <stop offset="100%" stopColor="#581c87" />
+            </linearGradient>
+          </defs>
+          <path d="M 12,12 L 32,26 L 52,12 L 52,20 L 32,34 L 12,20 Z" fill="url(#purple-grad)" stroke="#c084fc" strokeWidth="1" />
+          <path d="M 12,24 L 32,38 L 52,24 L 52,32 L 32,46 L 12,32 Z" fill="url(#purple-grad)" stroke="#c084fc" strokeWidth="1" />
+          <path d="M 12,36 L 32,50 L 52,36 L 52,44 L 32,58 L 12,44 Z" fill="url(#purple-grad)" stroke="#c084fc" strokeWidth="1" />
+        </svg>
+      );
+    case "champion":
+      return (
+        <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
+          <defs>
+            <linearGradient id="red-shield" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#991b1b" />
+              <stop offset="100%" stopColor="#450a0a" />
+            </linearGradient>
+            <linearGradient id="red-spike" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fca5a5" />
+              <stop offset="50%" stopColor="#ef4444" />
+              <stop offset="100%" stopColor="#991b1b" />
+            </linearGradient>
+          </defs>
+          <path d="M 14,8 L 50,8 L 50,30 C 50,46 32,58 32,58 C 32,58 14,46 14,30 Z" fill="url(#red-shield)" stroke="#ef4444" strokeWidth="2.5" strokeLinejoin="round" />
+          <path d="M 19,26 L 22,22 L 25,26 L 25,42 L 19,42 Z" fill="url(#red-spike)" stroke="#ef4444" strokeWidth="0.5" />
+          <path d="M 29,18 L 32,12 L 35,18 L 35,48 L 29,48 Z" fill="url(#red-spike)" stroke="#ef4444" strokeWidth="0.5" />
+          <path d="M 39,26 L 42,22 L 45,26 L 45,42 L 39,42 Z" fill="url(#red-spike)" stroke="#ef4444" strokeWidth="0.5" />
+        </svg>
+      );
+    case "titan":
+      return (
+        <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
+          <defs>
+            <linearGradient id="gold-trident" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fef08a" />
+              <stop offset="50%" stopColor="#fbbf24" />
+              <stop offset="100%" stopColor="#b45309" />
+            </linearGradient>
+          </defs>
+          <path d="M 30,12 L 32,4 L 34,12 L 34,44 L 30,44 Z" fill="url(#gold-trident)" stroke="#d97706" strokeWidth="1" />
+          <path d="M 16,18 L 20,13 L 24,18 C 24,32 30,34 30,38 L 26,38 C 20,34 16,27 16,18 Z" fill="url(#gold-trident)" stroke="#d97706" strokeWidth="1" />
+          <path d="M 48,18 L 44,13 L 40,18 C 40,32 34,34 34,38 L 38,38 C 44,34 48,27 48,18 Z" fill="url(#gold-trident)" stroke="#d97706" strokeWidth="1" />
+          <path d="M 24,40 L 40,40 L 40,44 L 24,44 Z" fill="url(#gold-trident)" stroke="#d97706" strokeWidth="1" />
+          <path d="M 31,44 L 33,44 L 33,58 L 31,58 Z" fill="url(#gold-trident)" stroke="#d97706" strokeWidth="1" />
+        </svg>
+      );
+    case "legend":
+      return (
+        <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
+          <defs>
+            <linearGradient id="teal-shield" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#0369a1" />
+              <stop offset="100%" stopColor="#0c4a6e" />
+            </linearGradient>
+            <linearGradient id="legend-gold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fef08a" />
+              <stop offset="100%" stopColor="#d97706" />
+            </linearGradient>
+          </defs>
+          <path d="M 14,8 L 50,8 L 50,32 C 50,47 32,58 32,58 C 32,58 14,47 14,32 Z" fill="url(#teal-shield)" stroke="#38bdf8" strokeWidth="2.5" />
+          <path d="M 23,38 L 47,14 L 50,17 L 26,41 Z" fill="url(#legend-gold)" stroke="#b45309" strokeWidth="0.5" />
+          <path d="M 47,14 L 52,12 L 50,17 Z" fill="#ffffff" />
+          <path d="M 19,38 L 26,31 L 29,34 L 22,41 Z" fill="url(#legend-gold)" stroke="#b45309" strokeWidth="0.5" />
+          <path d="M 20,40 L 14,46 L 17,49 L 23,43 Z" fill="url(#legend-gold)" stroke="#b45309" strokeWidth="0.5" />
+        </svg>
+      );
+    case "elite":
+      return (
+        <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
+          <defs>
+            <linearGradient id="emerald-light" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#a7f3d0" />
+              <stop offset="100%" stopColor="#34d399" />
+            </linearGradient>
+            <linearGradient id="emerald-mid" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#10b981" />
+              <stop offset="100%" stopColor="#047857" />
+            </linearGradient>
+            <linearGradient id="emerald-dark" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#064e3b" />
+              <stop offset="100%" stopColor="#022c22" />
+            </linearGradient>
+          </defs>
+          <path d="M 32,4 L 54,16 L 54,48 L 32,60 L 10,48 L 10,16 Z" fill="url(#emerald-dark)" />
+          <path d="M 32,14 L 46,22 L 46,42 L 32,50 L 18,42 L 18,22 Z" fill="url(#emerald-mid)" />
+          <path d="M 32,20 L 40,32 L 32,44 L 24,32 Z" fill="url(#emerald-light)" />
+          <line x1="32" y1="4" x2="32" y2="14" stroke="#6ee7b7" strokeWidth="1" strokeOpacity="0.5" />
+          <line x1="54" y1="16" x2="46" y2="22" stroke="#6ee7b7" strokeWidth="1" strokeOpacity="0.5" />
+          <line x1="54" y1="48" x2="46" y2="42" stroke="#6ee7b7" strokeWidth="1" strokeOpacity="0.5" />
+          <line x1="32" y1="60" x2="32" y2="50" stroke="#6ee7b7" strokeWidth="1" strokeOpacity="0.5" />
+          <line x1="10" y1="48" x2="18" y2="42" stroke="#6ee7b7" strokeWidth="1" strokeOpacity="0.5" />
+          <line x1="10" y1="16" x2="18" y2="22" stroke="#6ee7b7" strokeWidth="1" strokeOpacity="0.5" />
+        </svg>
+      );
+    case "apex":
+      return (
+        <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
+          <defs>
+            <linearGradient id="gold-cup" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fbbf24" />
+              <stop offset="50%" stopColor="#d97706" />
+              <stop offset="100%" stopColor="#92400e" />
+            </linearGradient>
+            <linearGradient id="gold-stem" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fef08a" />
+              <stop offset="100%" stopColor="#d97706" />
+            </linearGradient>
+          </defs>
+          <path d="M 20,16 C 10,16 10,28 20,28" fill="none" stroke="#fbbf24" strokeWidth="3" />
+          <path d="M 44,16 C 54,16 54,28 44,28" fill="none" stroke="#fbbf24" strokeWidth="3" />
+          <path d="M 18,12 L 46,12 L 44,32 C 44,40 38,44 32,44 C 26,44 20,40 20,32 Z" fill="url(#gold-cup)" stroke="#fbbf24" strokeWidth="1" />
+          <path d="M 29,44 L 35,44 L 33,52 L 31,52 Z" fill="url(#gold-stem)" stroke="#d97706" strokeWidth="1" />
+          <path d="M 24,52 L 40,52 L 42,58 L 22,58 Z" fill="url(#gold-cup)" stroke="#fbbf24" strokeWidth="1" />
+        </svg>
+      );
+    case "sovereign":
+      return (
+        <svg viewBox="0 0 64 64" width={size} height={size} className={className}>
+          <defs>
+            <linearGradient id="sov-purple" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#581c87" />
+              <stop offset="100%" stopColor="#2e1065" />
+            </linearGradient>
+            <linearGradient id="sov-gold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fef08a" />
+              <stop offset="100%" stopColor="#d97706" />
+            </linearGradient>
+          </defs>
+          <path d="M 14,6 L 50,6 L 50,32 C 50,48 32,60 32,60 C 32,60 14,48 14,32 Z" fill="url(#sov-purple)" stroke="url(#sov-gold)" strokeWidth="3.5" strokeLinejoin="round" />
+          <path d="M 32,16 L 36,32 L 32,48 L 28,32 Z" fill="url(#sov-gold)" />
+          <path d="M 16,32 L 32,28 L 48,32 L 32,36 Z" fill="url(#sov-gold)" />
+          <circle cx="32" cy="32" r="3" fill="#ffffff" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 function DashboardProfileContent() {
   const router = useRouter();
@@ -1510,9 +1753,9 @@ here's my link 👉 ${link}`
                       Current League
                     </span>
                     <div className="flex items-center gap-4">
-                      <span className="text-5xl md:text-6xl select-none filter drop-shadow-[0_0_15px_rgba(22,163,74,0.15)]">
-                        {currentLeague ? currentLeague.emoji : "🥉"}
-                      </span>
+                      <div className="shrink-0 filter drop-shadow-[0_0_15px_rgba(22,163,74,0.15)]">
+                        <LeagueIcon id={currentLeague ? currentLeague.id : "bronze"} size={64} />
+                      </div>
                       <div>
                         <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight">
                           {currentLeague ? currentLeague.name : "Bronze League"}
@@ -1538,7 +1781,7 @@ here's my link 👉 ${link}`
                 <div className="bg-pill border border-border/80 rounded-2xl p-6 md:p-8 shadow-xl space-y-6">
                   <div>
                     <h3 className="text-lg font-bold text-foreground">Progress To Next League</h3>
-                    <p className="text-xs text-muted mt-0.5 font-medium">Your current path towards {targetLeague.emoji} {targetLeague.name}.</p>
+                    <p className="text-xs text-muted mt-0.5 font-medium">Your current path towards {targetLeague.name}.</p>
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -1601,14 +1844,14 @@ here's my link 👉 ${link}`
                         className={`border rounded-2xl p-5 md:p-6 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-5 text-left ${statusColors}`}
                       >
                         <div className="flex items-center gap-5">
-                          <div className={`w-14 h-14 rounded-full bg-zinc-900/80 border flex items-center justify-center text-3xl shrink-0 ${
+                          <div className={`w-14 h-14 rounded-full bg-zinc-900/80 border flex items-center justify-center shrink-0 ${
                             isCurrent 
                               ? "border-[#16a34a] shadow-[0_0_10px_rgba(34,197,94,0.2)]" 
                               : isUnlocked 
                                 ? "border-green-500/30" 
                                 : "border-border/30"
                           }`}>
-                            {league.emoji}
+                            <LeagueIcon id={league.id} size={36} />
                           </div>
                           
                           <div>
