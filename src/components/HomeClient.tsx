@@ -647,7 +647,7 @@ export default function HomeClient({
         </div>
       </section>
 
-      <div className="w-full">
+      <div className="w-full mt-16">
         <Footer 
           showBorder={false} 
           minimal={true} 
