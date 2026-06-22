@@ -61,6 +61,7 @@ export async function GET() {
       rank: index + 1,
       username: p.username || p.name || p.email.split("@")[0],
       earnings: p.totalEarned,
+      allTimeEarnings: p.totalEarned,
       avatarUrl: p.avatarUrl
     }));
 
@@ -81,6 +82,7 @@ export async function GET() {
         return {
           username: p.username || p.name || p.email.split("@")[0],
           earnings,
+          allTimeEarnings: p.totalEarned,
           avatarUrl: p.avatarUrl
         };
       })
@@ -106,6 +108,7 @@ export async function GET() {
         return {
           username: p.username || p.name || p.email.split("@")[0],
           earnings,
+          allTimeEarnings: p.totalEarned,
           avatarUrl: p.avatarUrl
         };
       })

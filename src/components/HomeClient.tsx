@@ -176,6 +176,7 @@ export default function HomeClient({
                 rank: idx + 1,
                 username: p.username || p.name || p.email.split("@")[0],
                 earnings: p.totalEarned,
+                allTimeEarnings: p.totalEarned,
                 avatarUrl: p.avatarUrl
               }));
               setLeaderboardData({
@@ -706,7 +707,7 @@ export default function HomeClient({
                   if (earnings >= 1000) return "silver";
                   return "bronze";
                 };
-                const leagueId = getLeagueIdByEarnings(entry.earnings);
+                const leagueId = getLeagueIdByEarnings(entry.allTimeEarnings || entry.earnings);
                 return (
                   <div key={idx} className="grid grid-cols-3 px-4 py-3 text-sm font-sans items-center hover:bg-zinc-900/10 transition-colors text-left">
                     <div className="font-extrabold text-muted">
