@@ -16,7 +16,8 @@ import {
   UserPlus,
   Award,
   Activity,
-  Info
+  Info,
+  Globe
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -599,145 +600,87 @@ export default function HomeClient({
         </div>
       </section>
 
-      {/* SECTION 5: WHY PLUGD EXISTS */}
-      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
-        <div className="bg-pill border border-border rounded-[24px] p-8 md:p-12 shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="absolute right-0 top-0 w-[300px] h-[300px] bg-[#16a34a]/5 rounded-full blur-[100px] pointer-events-none" />
-          
-          <div className="flex-1 space-y-4">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-              Distribution Has Value
-            </h2>
-            <div className="h-[2px] w-16 bg-[#16a34a] mb-2" />
-            <p className="text-muted text-sm md:text-base leading-relaxed max-w-xl font-sans">
-              Creators have audiences. Students have networks. Communities have attention.
-            </p>
-            <p className="text-white text-base md:text-lg font-bold leading-relaxed max-w-xl" style={{ fontFamily: '"EB Garamond", serif' }}>
-              Plugd lets anyone monetize distribution. If you can bring attention, you can earn.
-            </p>
-          </div>
-          
-          <div className="flex-shrink-0 bg-zinc-950/60 border border-zinc-800/80 rounded-2xl p-6 text-center shadow-lg min-w-[240px] md:min-w-[280px] self-stretch flex flex-col justify-center">
-            <span className="text-[10px] text-muted font-bold uppercase tracking-[0.15em] mb-1 font-sans">Distribution Monetization</span>
-            <span className="text-3xl font-extrabold text-[#16a34a] font-sans rich-number">100% Direct</span>
-            <span className="text-xs text-muted/60 mt-1 font-sans">No middleman fees</span>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 6: LIVE ACTIVITY FEED */}
-      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
-        <div className="bg-pill border border-border rounded-[24px] p-6 sm:p-8 md:p-10 shadow-xl">
-          <div className="flex items-center gap-3 mb-8">
-            <span className="flex h-3.5 w-3.5 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
-            </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-              Recent Activity
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            {activities.map((act) => (
-              <div 
-                key={act.id} 
-                className="flex items-center justify-between p-4 bg-zinc-900/40 border border-zinc-800/80 rounded-xl shadow-sm hover:border-zinc-805 transition-all duration-300 animate-in fade-in duration-300"
-              >
-                <div className="flex items-center gap-4">
-                  <div className={`text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full ${
-                    act.badge === "Max" || act.badge === "Upgrade" ? "bg-amber-500/10 text-amber-500 border border-amber-500/20" :
-                    act.badge === "Pro" ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" :
-                    "bg-[#16a34a]/10 text-[#16a34a] border border-[#16a34a]/20"
-                  }`}>
-                    {act.badge}
-                  </div>
-                  <span className="text-sm font-bold text-white leading-none font-sans">
-                    {act.text}
-                  </span>
-                </div>
-                <span className="text-xs text-muted font-semibold font-sans">
-                  {act.timeAgo}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 7: ACHIEVEMENTS */}
+      {/* SECTION 5: WHY PEOPLE JOIN */}
       <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-3" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-            Unlock Milestones
+            Why People Join
           </h2>
           <p className="text-muted text-sm font-medium" style={{ fontFamily: '"EB Garamond", serif' }}>
-            Unlock exclusive collector milestones as your network expands.
+            Simple reasons thousands choose to promote with Plugd.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-          {/* Badge 1: First Referral */}
-          <div className="bg-pill border border-border/60 hover:border-border rounded-2xl p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 relative group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-amber-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="w-16 h-16 rounded-full bg-amber-900/20 border-2 border-amber-600/40 text-amber-500 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(217,119,6,0.1)] group-hover:scale-110 transition-transform duration-300">
-              <Award className="w-8 h-8" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Benefit 1: One-Time Payment */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
+            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
+              <Wallet className="w-5 h-5" />
             </div>
-            <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: '"Times New Roman", Times, serif' }}>First Referral</h3>
-            <span className="text-[10px] text-muted/80 font-semibold font-sans">Beginner Status</span>
+            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>One-Time Payment</h3>
+            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
+              Join once. No recurring subscriptions.
+            </p>
           </div>
 
-          {/* Badge 2: ₹1,000 Club */}
-          <div className="bg-pill border border-border/60 hover:border-border rounded-2xl p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 relative group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-700/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="w-16 h-16 rounded-full bg-slate-800/40 border-2 border-slate-500/40 text-slate-300 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(148,163,184,0.1)] group-hover:scale-110 transition-transform duration-300">
-              <Trophy className="w-8 h-8" />
+          {/* Benefit 2: Unlimited Referrals */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
+            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
+              <Users className="w-5 h-5" />
             </div>
-            <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: '"Times New Roman", Times, serif' }}>₹1,000 Club</h3>
-            <span className="text-[10px] text-muted/80 font-semibold font-sans">Silver Tier</span>
+            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Unlimited Referrals</h3>
+            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
+              No limits on how many people can join through you.
+            </p>
           </div>
 
-          {/* Badge 3: ₹10,000 Club */}
-          <div className="bg-pill border border-border/60 hover:border-border rounded-2xl p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 relative group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-yellow-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="w-16 h-16 rounded-full bg-yellow-950/20 border-2 border-yellow-500/40 text-yellow-400 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(234,179,8,0.15)] group-hover:scale-110 transition-transform duration-300">
-              <Trophy className="w-8 h-8" />
+          {/* Benefit 3: Instant Tracking */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
+            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
+              <Activity className="w-5 h-5" />
             </div>
-            <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: '"Times New Roman", Times, serif' }}>₹10,000 Club</h3>
-            <span className="text-[10px] text-muted/80 font-semibold font-sans">Gold Badge</span>
+            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Instant Tracking</h3>
+            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
+              See clicks, referrals, and earnings inside your dashboard.
+            </p>
           </div>
 
-          {/* Badge 4: ₹1 Lakh Club */}
-          <div className="bg-pill border border-border/60 hover:border-border rounded-2xl p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 relative group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-emerald-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="w-16 h-16 rounded-full bg-emerald-950/20 border-2 border-emerald-500/40 text-emerald-400 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(16,185,129,0.15)] group-hover:scale-110 transition-transform duration-300">
-              <Coins className="w-8 h-8" />
+          {/* Benefit 4: Global Access */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
+            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
+              <Globe className="w-5 h-5" />
             </div>
-            <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: '"Times New Roman", Times, serif' }}>₹1 Lakh Club</h3>
-            <span className="text-[10px] text-muted/80 font-semibold font-sans">Emerald Collector</span>
+            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Global Access</h3>
+            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
+              Share your referral link from anywhere.
+            </p>
           </div>
 
-          {/* Badge 5: Top 1% */}
-          <div className="bg-pill border border-border/60 hover:border-border rounded-2xl p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 relative group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-purple-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="w-16 h-16 rounded-full bg-purple-950/20 border-2 border-purple-500/40 text-purple-400 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(168,85,247,0.15)] group-hover:scale-110 transition-transform duration-300">
-              <Award className="w-8 h-8" />
+          {/* Benefit 5: No Audience Required */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
+            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
+              <UserPlus className="w-5 h-5" />
             </div>
-            <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Top 1%</h3>
-            <span className="text-[10px] text-muted/80 font-semibold font-sans">Platinum Status</span>
+            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>No Audience Required</h3>
+            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
+              You do not need followers or a personal brand to start.
+            </p>
           </div>
 
-          {/* Badge 6: Top 100 Promoters */}
-          <div className="bg-pill border border-border/60 hover:border-border rounded-2xl p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 relative group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-cyan-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="w-16 h-16 rounded-full bg-cyan-950/20 border-2 border-cyan-500/40 text-cyan-400 flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(6,182,212,0.15)] group-hover:scale-110 transition-transform duration-300">
-              <Trophy className="w-8 h-8" />
+          {/* Benefit 6: Multiple Earning Tiers */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
+            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
+              <TrendingUp className="w-5 h-5" />
             </div>
-            <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Top 100 Promoters</h3>
-            <span className="text-[10px] text-muted/80 font-semibold font-sans">Diamond Badge</span>
+            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Multiple Earning Tiers</h3>
+            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
+              Earn from Starter, Pro, and Max referrals depending on your plan.
+            </p>
           </div>
         </div>
       </section>
+
+
 
       {/* SECTION 8: FINAL CTA */}
       <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
