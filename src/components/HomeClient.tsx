@@ -740,6 +740,54 @@ export default function HomeClient({
           </div>
         </div>
 
+      </section>
+
+      {/* SECTION 4: HOW IT WORKS */}
+      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-3" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+            How Plugd Works
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Card 1: Join */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
+            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
+              <UserPlus className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>1. Join</h3>
+            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
+              Choose a promoter plan and receive your unique referral link.
+            </p>
+          </div>
+
+          {/* Card 2: Share */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
+            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
+              <Share2 className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>2. Share</h3>
+            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
+              Share your link across WhatsApp, Instagram, X, Reddit, Discord, Telegram, communities, and groups.
+            </p>
+          </div>
+
+          {/* Card 3: Earn */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
+            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
+              <Coins className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>3. Earn</h3>
+            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
+              Receive commissions every time someone joins through your referral link.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION: WHY PEOPLE FAIL / HOW PROMOTERS SUCCEED */}
+      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10 flex flex-col gap-8 items-center">
         {/* Succeed vs Fail side-by-side cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-4">
           {/* LEFT CARD: How Top Promoters Succeed */}
@@ -798,50 +846,6 @@ export default function HomeClient({
                 "Most people quit before results compound."
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 4: HOW IT WORKS */}
-      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-3" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-            How Plugd Works
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1: Join */}
-          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
-            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
-              <UserPlus className="w-5 h-5" />
-            </div>
-            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>1. Join</h3>
-            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
-              Choose a promoter plan and receive your unique referral link.
-            </p>
-          </div>
-
-          {/* Card 2: Share */}
-          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
-            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
-              <Share2 className="w-5 h-5" />
-            </div>
-            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>2. Share</h3>
-            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
-              Share your link across WhatsApp, Instagram, X, Reddit, Discord, Telegram, communities, and groups.
-            </p>
-          </div>
-
-          {/* Card 3: Earn */}
-          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-border transition-all">
-            <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
-              <Coins className="w-5 h-5" />
-            </div>
-            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>3. Earn</h3>
-            <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
-              Receive commissions every time someone joins through your referral link.
-            </p>
           </div>
         </div>
       </section>
