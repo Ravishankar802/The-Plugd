@@ -599,7 +599,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                               placeholder="name@upi"
                               value={formData.upiId}
                               onChange={(e) => setFormData({ ...formData, upiId: e.target.value })}
-                              className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                              className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
                             />
                           </div>
                         ) : (
@@ -612,7 +612,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                                 placeholder="As in bank records"
                                 value={formData.bankAccountName}
                                 onChange={(e) => setFormData({ ...formData, bankAccountName: e.target.value })}
-                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
                               />
                             </div>
                             <div className="flex flex-col gap-3">
@@ -623,7 +623,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                                 placeholder="Account number"
                                 value={formData.bankAccountNumber}
                                 onChange={(e) => setFormData({ ...formData, bankAccountNumber: e.target.value })}
-                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
                               />
                             </div>
                             <div className="flex flex-col gap-3">
@@ -634,7 +634,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                                 placeholder="Enter IFSC code"
                                 value={formData.bankIfsc}
                                 onChange={(e) => setFormData({ ...formData, bankIfsc: e.target.value })}
-                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
                               />
                             </div>
                           </div>
@@ -689,7 +689,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                                   placeholder={field.placeholder}
                                   value={formData[field.key as keyof typeof formData] || ""}
                                   onChange={(e) => setFormData({ ...formData, [field.key]: e.target.value })}
-                                  className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                                  className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
                                 />
                               </div>
                             ))}
@@ -707,7 +707,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                               placeholder="Your PayPal email"
                               value={formData.paypalEmail}
                               onChange={(e) => setFormData({ ...formData, paypalEmail: e.target.value })}
-                              className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                              className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
                             />
                           </div>
                         )}

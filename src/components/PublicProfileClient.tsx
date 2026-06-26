@@ -325,19 +325,19 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
             <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Total Earned</p>
-            <p className="text-4xl font-extrabold text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+            <p className="text-4xl font-sans font-extrabold text-foreground">
               {formattedCurrentEarnings}
             </p>
           </div>
           <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
             <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Total Clicks</p>
-            <p className="text-4xl font-extrabold text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+            <p className="text-4xl font-sans font-extrabold text-foreground">
               {currentClicks.toLocaleString()}
             </p>
           </div>
           <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
             <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Conversions</p>
-            <p className="text-4xl font-extrabold text-foreground" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+            <p className="text-4xl font-sans font-extrabold text-foreground">
               {currentConversions.toLocaleString()}
             </p>
           </div>
@@ -454,7 +454,7 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
                       if (active && payload && payload.length) {
                         const data = payload[0].payload;
                         return (
-                          <div className="bg-pill border border-border px-3 py-2 rounded-xl shadow-xl font-[Georgia,_serif]">
+                          <div className="bg-pill border border-border px-3 py-2 rounded-xl shadow-xl font-sans">
                             <p className="text-[10px] text-muted font-medium mb-0.5">{data.date}</p>
                             <p className="text-xs font-bold text-[#22c55e] font-sans">
                               ₹{new Intl.NumberFormat('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(Number(payload[0].value))}

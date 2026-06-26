@@ -640,7 +640,7 @@ here's my link 👉 ${link}`
                     {/* Member since */}
                     <div className="flex flex-col gap-3">
                       <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Member since</label>
-                      <div className="w-full bg-background border border-border rounded-xl px-5 py-4 text-muted/60 text-[1rem] opacity-70 font-medium">
+                      <div className="w-full bg-background border border-border rounded-xl px-5 py-4 text-muted/60 text-[1rem] opacity-70 font-sans font-medium">
                         {new Date(promoterData.createdAt).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
                       </div>
                     </div>
@@ -660,7 +660,7 @@ here's my link 👉 ${link}`
                       
                       <div className="flex flex-col gap-2">
                         <span className="text-xs text-muted uppercase font-bold tracking-wider">Commission Structure</span>
-                        <div className="space-y-1 text-sm font-medium text-foreground">
+                        <div className="space-y-1 text-sm font-sans font-medium text-foreground">
                           {promoterData.tier === "STARTER" && (
                             <>
                               <div className="flex justify-between border-b border-border/20 pb-1"><span>₹199 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
@@ -832,7 +832,7 @@ here's my link 👉 ${link}`
                                 placeholder="name@upi"
                                 value={promoterData.upiId || ""}
                                 onChange={(e) => setPromoterData({ ...promoterData, upiId: e.target.value })}
-                                className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner font-sans"
                               />
                             </div>
                           ) : (
@@ -845,7 +845,7 @@ here's my link 👉 ${link}`
                                   placeholder="As in bank records"
                                   value={promoterData.bankAccountName || ""}
                                   onChange={(e) => setPromoterData({ ...promoterData, bankAccountName: e.target.value })}
-                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner font-sans"
                                 />
                               </div>
                               <div className="flex flex-col gap-3">
@@ -856,7 +856,7 @@ here's my link 👉 ${link}`
                                   placeholder="Account number"
                                   value={promoterData.bankAccountNumber || ""}
                                   onChange={(e) => setPromoterData({ ...promoterData, bankAccountNumber: e.target.value })}
-                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner font-sans"
                                 />
                               </div>
                               <div className="flex flex-col gap-3">
@@ -867,7 +867,7 @@ here's my link 👉 ${link}`
                                   placeholder="Enter IFSC code"
                                   value={promoterData.bankIfsc || ""}
                                   onChange={(e) => setPromoterData({ ...promoterData, bankIfsc: e.target.value })}
-                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner font-sans"
                                 />
                               </div>
                             </div>
@@ -922,7 +922,7 @@ here's my link 👉 ${link}`
                                     placeholder={field.placeholder}
                                     value={promoterData[field.key] || ""}
                                     onChange={(e) => setPromoterData({ ...promoterData, [field.key]: e.target.value })}
-                                    className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                    className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner font-sans"
                                   />
                                 </div>
                               ))}
@@ -940,7 +940,7 @@ here's my link 👉 ${link}`
                                 placeholder="Your PayPal email"
                                 value={promoterData.paypalEmail || ""}
                                 onChange={(e) => setPromoterData({ ...promoterData, paypalEmail: e.target.value })}
-                                className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner"
+                                className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner font-sans"
                               />
                             </div>
                           )}
@@ -1043,7 +1043,7 @@ here's my link 👉 ${link}`
         <div className="space-y-8">
           <div>
             <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Referrals</h1>
-            <p className="text-muted text-[1rem] mt-1.5 font-normal">Share Plugd and earn ₹100 for every successful referral.</p>
+            <p className="text-muted text-[1rem] mt-1.5 font-sans font-normal">Share Plugd and earn ₹100 for every successful referral.</p>
           </div>
 
           {(!hasPromoter && !isAdmin) ? (
@@ -1052,10 +1052,10 @@ here's my link 👉 ${link}`
                 <Gift className="w-10 h-10 text-[#16a34a]" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Join Referral Program</h2>
-              <p className="text-muted max-w-sm mb-8">Earn ₹100 from every sale by sharing Plugd with your audience. (Listing Profile = ₹199, Promoter Profile = ₹199, both = ₹398)</p>
+              <p className="text-muted max-w-sm mb-8 font-sans">Earn ₹100 from every sale by sharing Plugd with your audience. (Listing Profile = ₹199, Promoter Profile = ₹199, both = ₹398)</p>
               <button 
                 onClick={() => setIsReferModalOpen(true)}
-                className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
+                className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-sans font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
               >
                 Join for ₹199 <ArrowRight size={18} />
               </button>
@@ -1083,7 +1083,7 @@ here's my link 👉 ${link}`
               </div>
 
               {/* Row 2: Post Ideas (Left) and Traffic Sources (Right) side-by-side on desktop */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Post Ideas */}
                 <div className="bg-pill border border-border rounded-[16px] p-6 md:p-8 shadow-2xl space-y-6">
                   <div className="flex items-center gap-3">
@@ -1104,7 +1104,7 @@ here's my link 👉 ${link}`
                             <button
                               key={num}
                               onClick={() => setSelectedVariation(idx)}
-                              className={`px-3 py-1.5 rounded-lg text-[0.7rem] font-bold uppercase tracking-wider whitespace-nowrap transition-all cursor-pointer ${
+                              className={`px-3 py-1.5 rounded-lg text-[0.7rem] font-sans font-bold uppercase tracking-wider whitespace-nowrap transition-all cursor-pointer ${
                                 selectedVariation === idx 
                                 ? "bg-selected text-selected-foreground border border-selected" 
                                 : "bg-background text-muted border border-border hover:border-muted"
@@ -1132,7 +1132,7 @@ here's my link 👉 ${link}`
                 </div>
 
                 {/* Traffic Sources */}
-                <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl space-y-4">
+                <div className="bg-pill border border-border rounded-[16px] p-6 md:p-8 shadow-2xl space-y-6">
                   <div className="text-left">
                     <h4 className="text-base font-bold text-foreground">Traffic Sources</h4>
                     <p className="text-xs text-muted mt-0.5">Clicks tracked from each share destination.</p>
@@ -1150,7 +1150,6 @@ here's my link 👉 ${link}`
                       { name: "LinkedIn", key: "linkedin", color: "bg-blue-500" },
                       { name: "YouTube", key: "youtube", color: "bg-red-600" },
                       { name: "TikTok", key: "tiktok", color: "bg-teal-400" },
-                      { name: "Pinterest", key: "pinterest", color: "bg-red-500" },
                       { name: "Threads", key: "threads", color: "bg-stone-300" },
                       { name: "Others", key: "others", color: "bg-zinc-500" }
                     ].map(source => {
@@ -1161,7 +1160,7 @@ here's my link 👉 ${link}`
                         <div key={source.key} className="space-y-1.5 text-left">
                           <div className="flex justify-between items-center text-xs font-semibold">
                             <span className="text-foreground">{source.name}</span>
-                            <span className="text-muted">{clicks} clicks</span>
+                            <span className="text-muted font-sans">{clicks} clicks</span>
                           </div>
                           <div className="w-full bg-zinc-800 rounded-full h-1.5 overflow-hidden">
                             <div 
@@ -1182,7 +1181,7 @@ here's my link 👉 ${link}`
                   <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
                     <TrendingUp className="w-4 h-4 text-foreground" />
                   </div>
-                  <h3 className="text-lg font-bold text-foreground">How to hit ₹1,00,000 fast</h3>
+                  <h3 className="text-lg font-sans font-bold text-foreground">How to hit ₹1,00,000 fast</h3>
                 </div>
 
                 <div className="bg-zinc-950/20 border border-border rounded-2xl p-6 space-y-6">
@@ -1200,7 +1199,7 @@ here's my link 👉 ${link}`
                       "Don't just send once and stop. Follow up. People need to see something multiple times before they act."
                     ].map((tip, idx) => (
                       <div key={idx} className="flex gap-4">
-                        <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{idx + 1}</div>
+                        <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-sans font-bold shrink-0 mt-0.5">{idx + 1}</div>
                         <p className="text-sm text-muted font-medium leading-relaxed">{tip}</p>
                       </div>
                     ))}
@@ -1226,10 +1225,10 @@ here's my link 👉 ${link}`
                 <Wallet className="w-10 h-10 text-[#16a34a]" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Earnings Locked</h2>
-              <p className="text-muted max-w-sm mb-8">Join the referral program to start earning rewards. (Listing Profile = ₹199, Promoter Profile = ₹199, both = ₹398)</p>
+              <p className="text-muted max-w-sm mb-8 font-sans">Join the referral program to start earning rewards. (Listing Profile = ₹199, Promoter Profile = ₹199, both = ₹398)</p>
               <button 
                 onClick={() => setIsReferModalOpen(true)}
-                className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
+                className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-sans font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
               >
                 Join for ₹199 <ArrowRight size={18} />
               </button>
@@ -1380,7 +1379,7 @@ here's my link 👉 ${link}`
                             if (active && payload && payload.length) {
                               const data = payload[0].payload;
                               return (
-                                <div className="bg-pill border border-border px-3 py-2 rounded-xl shadow-xl font-['Georgia',_serif]">
+                                <div className="bg-pill border border-border px-3 py-2 rounded-xl shadow-xl font-sans">
                                   <p className="text-[10px] text-muted font-medium mb-0.5">{data.date}</p>
                                   <p className="text-xs font-bold text-[#22c55e] font-sans">
                                     ₹{new Intl.NumberFormat('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(Number(payload[0].value))}
@@ -1413,7 +1412,7 @@ here's my link 👉 ${link}`
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">Withdraw Funds</h3>
-                  <p className="text-muted max-w-sm mt-2 font-medium">Request a payout to your PayPal or Bank account. Minimum withdrawal is ₹5,000.</p>
+                  <p className="text-muted max-w-sm mt-2 font-sans font-medium">Request a payout to your PayPal or Bank account. Minimum withdrawal is ₹5,000.</p>
                 </div>
                 {withdrawalSuccessMessage && (
                   <p className="text-[#16a34a] font-bold text-sm bg-[#16a34a]/10 px-6 py-3 rounded-xl border border-[#16a34a]/20">
@@ -1431,7 +1430,7 @@ here's my link 👉 ${link}`
                   <button 
                     disabled={(promoterData?.pendingPayout || 0) < 5000 || requestingWithdrawal}
                     onClick={handleRequestWithdrawal}
-                    className="bg-[#16a34a] hover:bg-[#16a34a]/90 text-white disabled:bg-white disabled:text-black disabled:opacity-50 disabled:grayscale px-12 py-4 rounded-xl font-bold transition-all shadow-xl active:scale-[0.98]"
+                    className="bg-[#16a34a] hover:bg-[#16a34a]/90 text-white disabled:bg-white disabled:text-black disabled:opacity-50 disabled:grayscale px-12 py-4 rounded-xl font-sans font-bold transition-all shadow-xl active:scale-[0.98]"
                   >
                     {(promoterData?.pendingPayout || 0) < 5000 
                       ? "Minimum ₹5,000 required" 
@@ -1547,7 +1546,7 @@ here's my link 👉 ${link}`
                       />
                     </div>
                     <div className="flex justify-between items-center text-[10px] font-bold text-muted px-1">
-                      <span>{progressPercent}% Complete</span>
+                      <span className="font-sans">{progressPercent}% Complete</span>
                       <span className="font-sans">₹{new Intl.NumberFormat("en-IN").format(remainingAmount)} left to unlock {targetLeague.name}</span>
                     </div>
                   </div>

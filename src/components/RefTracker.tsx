@@ -43,8 +43,6 @@ export default function RefTracker() {
           detectedSource = "youtube";
         } else if (ref.includes("tiktok.com")) {
           detectedSource = "tiktok";
-        } else if (ref.includes("pinterest.com") || ref.includes("pin.it")) {
-          detectedSource = "pinterest";
         } else if (ref.includes("threads.net")) {
           detectedSource = "threads";
         }

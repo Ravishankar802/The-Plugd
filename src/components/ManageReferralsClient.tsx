@@ -571,7 +571,7 @@ export default function ManageReferralsClient() {
         <div className="bg-pill border border-border rounded-xl p-4 shadow-sm">
           <p className="text-muted text-[0.6rem] font-bold uppercase tracking-[0.15em] mb-1.5">Total Pending</p>
           <div className="flex items-end justify-between">
-            <p className="text-2xl font-bold text-[#16a34a]">₹{stats.totalPending.toFixed(2)}</p>
+            <p className="text-2xl font-sans font-bold text-[#16a34a]">₹{stats.totalPending.toFixed(2)}</p>
             <div className="w-7 h-7 rounded-lg bg-green-600/10 flex items-center justify-center">
               <Wallet className="w-3.5 h-3.5 text-[#16a34a]" />
             </div>
@@ -580,7 +580,7 @@ export default function ManageReferralsClient() {
         <div className="bg-pill border border-border rounded-xl p-4 shadow-sm">
           <p className="text-muted text-[0.6rem] font-bold uppercase tracking-[0.15em] mb-1.5">Total Paid Out</p>
           <div className="flex items-end justify-between">
-            <p className="text-2xl font-bold text-foreground">₹{stats.totalPaid.toFixed(2)}</p>
+            <p className="text-2xl font-sans font-bold text-foreground">₹{stats.totalPaid.toFixed(2)}</p>
             <div className="w-7 h-7 rounded-lg bg-green-500/10 flex items-center justify-center">
               <Check className="w-3.5 h-3.5 text-green-500" />
             </div>
@@ -589,7 +589,7 @@ export default function ManageReferralsClient() {
         <div className="bg-pill border border-border rounded-xl p-4 shadow-sm">
           <p className="text-muted text-[0.6rem] font-bold uppercase tracking-[0.15em] mb-1.5">Platform Revenue</p>
           <div className="flex items-end justify-between">
-            <p className="text-2xl font-bold text-foreground">₹{stats.totalRevenue.toFixed(2)}</p>
+            <p className="text-2xl font-sans font-bold text-foreground">₹{stats.totalRevenue.toFixed(2)}</p>
             <div className="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center">
               <TrendingUp className="w-3.5 h-3.5 text-blue-500" />
             </div>
@@ -598,7 +598,7 @@ export default function ManageReferralsClient() {
         <div className="bg-pill border border-border rounded-xl p-4 shadow-sm">
           <p className="text-muted text-[0.6rem] font-bold uppercase tracking-[0.15em] mb-1.5">Conversions</p>
           <div className="flex items-end justify-between">
-            <p className="text-2xl font-bold text-foreground">{stats.totalConversions}</p>
+            <p className="text-2xl font-sans font-bold text-foreground">{stats.totalConversions}</p>
             <div className="w-7 h-7 rounded-lg bg-purple-500/10 flex items-center justify-center">
               <ArrowRight className="w-3.5 h-3.5 text-purple-500" />
             </div>
@@ -798,23 +798,23 @@ export default function ManageReferralsClient() {
                       {p.phoneNumber || "—"}
                     </span>
                   </td>
-                  <td className="hidden sm:table-cell px-3 py-2.5 text-center text-muted font-medium">{p.totalClicks}</td>
+                  <td className="hidden sm:table-cell px-3 py-2.5 text-center text-muted font-sans font-medium">{p.totalClicks}</td>
                   <td className="px-3 py-2.5 text-center">
-                    <span className="px-1.5 py-0.5 rounded-full bg-blue-500/10 text-blue-500 text-[0.6rem] font-bold">
+                    <span className="px-1.5 py-0.5 rounded-full bg-blue-500/10 text-blue-500 text-[0.6rem] font-sans font-bold">
                       {p.totalSignups}
                     </span>
                   </td>
-                  <td className="hidden lg:table-cell px-3 py-2.5 text-center font-bold text-foreground">
+                  <td className="hidden lg:table-cell px-3 py-2.5 text-center font-sans font-bold text-foreground">
                     ₹{new Intl.NumberFormat("en-IN", {
                       maximumFractionDigits: 0
                     }).format(p.currentEarnings || p.totalEarned)}
                   </td>
                   <td className="px-3 py-2.5 text-right">
-                    <span className={`px-1.5 py-0.5 rounded-md font-bold text-[0.7rem] ${p.pendingPayout > 0 ? "bg-green-600/10 text-[#16a34a]" : "bg-muted/10 text-muted/60"}`}>
+                    <span className={`px-1.5 py-0.5 rounded-md font-sans font-bold text-[0.7rem] ${p.pendingPayout > 0 ? "bg-green-600/10 text-[#16a34a]" : "bg-muted/10 text-muted/60"}`}>
                       ₹{p.pendingPayout.toFixed(2)}
                     </span>
                   </td>
-                  <td className="hidden lg:table-cell px-3 py-2.5 text-right text-foreground font-bold">
+                  <td className="hidden lg:table-cell px-3 py-2.5 text-right text-foreground font-sans font-bold">
                     ₹{p.totalPaid.toFixed(2)}
                   </td>
                   <td className="px-3 py-2.5 text-right">
@@ -832,7 +832,7 @@ export default function ManageReferralsClient() {
 
                       {p.pendingWithdrawalRequest ? (
                         <div className="flex items-center gap-1.5">
-                          <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 text-[0.65rem] font-bold shrink-0 animate-pulse border border-amber-500/20">
+                          <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 text-[0.65rem] font-sans font-bold shrink-0 animate-pulse border border-amber-500/20">
                             REQUESTED (₹{p.pendingWithdrawalRequest.amount})
                           </span>
                           <button 
@@ -1070,7 +1070,7 @@ export default function ManageReferralsClient() {
                       step="any"
                       value={editForm.totalEarned === undefined ? "" : editForm.totalEarned}
                       onChange={(e) => setEditForm({ ...editForm, totalEarned: e.target.value === "" ? 0 : parseFloat(e.target.value) })}
-                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all font-sans"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -1081,7 +1081,7 @@ export default function ManageReferralsClient() {
                       step="any"
                       value={editForm.pendingPayout === undefined ? "" : editForm.pendingPayout}
                       onChange={(e) => setEditForm({ ...editForm, pendingPayout: e.target.value === "" ? 0 : parseFloat(e.target.value) })}
-                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all font-sans"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -1092,7 +1092,7 @@ export default function ManageReferralsClient() {
                       step="any"
                       value={editForm.totalPaid === undefined ? "" : editForm.totalPaid}
                       onChange={(e) => setEditForm({ ...editForm, totalPaid: e.target.value === "" ? 0 : parseFloat(e.target.value) })}
-                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all"
+                      className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs md:text-sm text-foreground focus:outline-none focus:border-muted transition-all font-sans"
                     />
                   </div>
                 </div>
@@ -1327,10 +1327,10 @@ export default function ManageReferralsClient() {
               {historyPromoter.payouts.length > 0 ? historyPromoter.payouts.map(payout => (
                 <div key={payout.id} className="bg-pill border border-border rounded-xl p-5 flex items-center justify-between">
                   <div>
-                    <p className="text-foreground font-black text-lg">₹{payout.amount.toFixed(2)}</p>
+                    <p className="text-foreground font-sans font-black text-lg">₹{payout.amount.toFixed(2)}</p>
                     <p className="text-muted text-sm font-medium mt-1">{payout.note || "No note added"}</p>
                   </div>
-                  <p className="text-muted text-xs font-bold uppercase tracking-wider">
+                  <p className="text-muted text-xs font-sans font-bold uppercase tracking-wider">
                     {new Date(payout.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}
                   </p>
                 </div>
@@ -1360,7 +1360,7 @@ export default function ManageReferralsClient() {
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold text-foreground">Confirm Payout</h3>
                   <p className="text-muted text-[1.05rem] leading-relaxed">
-                    You are marking <span className="text-foreground font-bold">₹{payoutPromoter.pendingPayout.toFixed(2)}</span> as paid for <span className="text-foreground font-bold">{payoutPromoter.name}</span>.
+                    You are marking <span className="text-foreground font-sans font-bold">₹{payoutPromoter.pendingPayout.toFixed(2)}</span> as paid for <span className="text-foreground font-bold">{payoutPromoter.name}</span>.
                   </p>
                 </div>
 
