@@ -1149,6 +1149,9 @@ here's my link 👉 ${link}`
                       { name: "Facebook", key: "facebook", color: "bg-blue-600" },
                       { name: "LinkedIn", key: "linkedin", color: "bg-blue-500" },
                       { name: "YouTube", key: "youtube", color: "bg-red-600" },
+                      { name: "TikTok", key: "tiktok", color: "bg-teal-400" },
+                      { name: "Pinterest", key: "pinterest", color: "bg-red-500" },
+                      { name: "Threads", key: "threads", color: "bg-stone-300" },
                       { name: "Others", key: "others", color: "bg-zinc-500" }
                     ].map(source => {
                       const clicks = trafficSources.find(s => s.source.toLowerCase() === source.key)?.clicks || 0;
@@ -1236,19 +1239,19 @@ here's my link 👉 ${link}`
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
                   <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Total Earned</p>
-                  <p className="text-4xl font-bold text-foreground">₹{promoterData?.totalEarned || 0}</p>
+                  <p className="text-4xl font-sans font-bold text-foreground">₹{promoterData?.totalEarned || 0}</p>
                 </div>
                 <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl border-[#16a34a]/20">
                   <p className="text-[#16a34a] text-[0.7rem] font-bold uppercase tracking-widest mb-2">Pending Payout</p>
-                  <p className="text-4xl font-bold text-[#16a34a]">₹{promoterData?.pendingPayout || 0}</p>
+                  <p className="text-4xl font-sans font-bold text-[#16a34a]">₹{promoterData?.pendingPayout || 0}</p>
                 </div>
                 <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
                   <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Total Clicks</p>
-                  <p className="text-4xl font-bold text-foreground">{promoterData?.totalClicks || 0}</p>
+                  <p className="text-4xl font-sans font-bold text-foreground">{promoterData?.totalClicks || 0}</p>
                 </div>
                 <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
                   <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Conversions</p>
-                  <p className="text-4xl font-bold text-foreground">{promoterData?.totalConversions || 0}</p>
+                  <p className="text-4xl font-sans font-bold text-foreground">{promoterData?.totalConversions || 0}</p>
                 </div>
               </div>
 
@@ -1259,7 +1262,7 @@ here's my link 👉 ${link}`
                 <div className="flex flex-col items-center gap-1.5">
                   {/* Clicks */}
                   <div className="w-full bg-zinc-900/60 border border-zinc-800/80 rounded-xl p-3 flex flex-col items-center text-center">
-                    <span className="text-xl font-black text-white">{promoterData?.totalClicks || 0}</span>
+                    <span className="text-xl font-sans font-black text-white">{promoterData?.totalClicks || 0}</span>
                     <span className="text-[9px] text-muted font-bold uppercase tracking-wider mt-0.5">Clicks</span>
                   </div>
                   
@@ -1267,7 +1270,7 @@ here's my link 👉 ${link}`
                   
                   {/* Signups */}
                   <div className="w-full bg-zinc-900/60 border border-zinc-800/80 rounded-xl p-3 flex flex-col items-center text-center">
-                    <span className="text-xl font-black text-emerald-400">{promoterData?.totalConversions || 0}</span>
+                    <span className="text-xl font-sans font-black text-emerald-400">{promoterData?.totalConversions || 0}</span>
                     <span className="text-[9px] text-muted font-bold uppercase tracking-wider mt-0.5">Signups</span>
                   </div>
                   
@@ -1275,7 +1278,7 @@ here's my link 👉 ${link}`
                   
                   {/* Earnings */}
                   <div className="w-full bg-green-950/15 border border-green-500/25 rounded-xl p-3 flex flex-col items-center text-center">
-                    <span className="text-xl font-black text-[#16a34a]">₹{promoterData?.totalEarned || 0}</span>
+                    <span className="text-xl font-sans font-black text-[#16a34a]">₹{promoterData?.totalEarned || 0}</span>
                     <span className="text-[9px] text-emerald-400/80 font-bold uppercase tracking-wider mt-0.5">Earnings</span>
                   </div>
                 </div>

@@ -55,7 +55,7 @@ export async function GET() {
 
       rank = higherEarnersCount + 1;
       totalPromoters = totalCount;
-      const allowedSources = ["whatsapp", "telegram", "x", "reddit", "discord", "instagram", "facebook", "linkedin", "youtube"];
+      const allowedSources = ["whatsapp", "telegram", "x", "reddit", "discord", "instagram", "facebook", "linkedin", "youtube", "tiktok", "pinterest", "threads"];
       const sourceCounts: Record<string, number> = {};
       
       clickGroups.forEach(g => {

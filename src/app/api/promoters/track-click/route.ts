@@ -22,7 +22,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid referral code" }, { status: 404 });
     }
 
-    const allowedSources = ["whatsapp", "telegram", "x", "reddit", "discord", "instagram", "facebook", "linkedin", "youtube"];
+    const allowedSources = ["whatsapp", "telegram", "x", "reddit", "discord", "instagram", "facebook", "linkedin", "youtube", "tiktok", "pinterest", "threads"];
     let normalizedSource = source ? String(source).toLowerCase().trim() : "others";
     if (!allowedSources.includes(normalizedSource)) {
       normalizedSource = "others";
