@@ -588,9 +588,9 @@ here's my link 👉 ${link}`
                     </div>
 
                     <div className="flex flex-col items-center sm:items-start gap-1 text-center sm:text-left">
-                      <span className="text-xs text-[#16a34a] font-extrabold uppercase tracking-widest font-sans font-black">Current League</span>
+                      <span className="text-xs text-[#16a34a] font-extrabold uppercase tracking-widest font-sans font-black">Full Name</span>
                       <span className="text-[1.8rem] font-black text-white tracking-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-                        {currentLeague ? currentLeague.name : "Bronze League"}
+                        {promoterData.name || "Your Name"}
                       </span>
                     </div>
                   </div>
@@ -628,7 +628,17 @@ here's my link 👉 ${link}`
                       <p className="text-[0.7rem] text-muted/40 font-bold uppercase tracking-wider ml-1 mt-1">Username cannot be changed.</p>
                     </div>
 
-                    {/* Member Since */}
+                    {/* Current League (Read-only) */}
+                    <div className="flex flex-col gap-3">
+                      <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Current League</label>
+                      <div className="w-full bg-background border border-border rounded-xl px-5 py-4 text-muted/60 text-[1rem] opacity-70 cursor-not-allowed font-medium">
+                        {currentLeague ? currentLeague.name : "Bronze League"}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Member since */}
                     <div className="flex flex-col gap-3">
                       <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Member since</label>
                       <div className="w-full bg-background border border-border rounded-xl px-5 py-4 text-muted/60 text-[1rem] opacity-70 font-medium">
@@ -1073,28 +1083,7 @@ here's my link 👉 ${link}`
                     </div>
                   </div>
 
-                  {/* Source link generator */}
-                  <div className="space-y-4 pt-4 border-t border-border/60">
-                    <label className="text-[0.8rem] font-bold text-muted/60 block tracking-widest uppercase">Generate Source Link</label>
-                    <div className="flex flex-wrap gap-2">
-                      {["WhatsApp", "Telegram", "X", "Reddit", "Discord", "Instagram", "Facebook", "LinkedIn", "YouTube"].map(srcName => {
-                        const srcId = srcName.toLowerCase();
-                        const sourceLink = `https://theplugd.com?ref=${referralLinkSuffix}&src=${srcId}`;
-                        const isCopied = copied === `link_${srcId}`;
-                        return (
-                          <button
-                            key={srcId}
-                            type="button"
-                            onClick={() => copyToClipboard(sourceLink, `link_${srcId}`)}
-                            className="bg-background border border-border hover:bg-accent text-foreground text-xs font-bold py-2.5 px-4 rounded-xl flex items-center gap-1.5 transition-all"
-                          >
-                            {isCopied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
-                            <span>{srcName} Link</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
+
                 </div>
 
                 {/* Post Ideas */}
