@@ -13,7 +13,7 @@ export default function Header() {
           <div className="absolute inset-0 bg-[linear-gradient(110deg,transparent_30%,rgba(255,240,210,0.35)_50%,transparent_70%)] bg-[length:200%_100%] animate-shine pointer-events-none" />
           
           <span className="text-[0.75rem] font-bold text-foreground tracking-[0.05em] relative z-10">
-            India&apos;s Referral Marketplace
+            🏆 India&apos;s #1 Referral Marketplace
           </span>
         </div>
       </div>
