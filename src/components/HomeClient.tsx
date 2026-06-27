@@ -101,6 +101,8 @@ export default function HomeClient({
       setIsMobile(window.innerWidth < 768);
     };
     checkMobile();
+    // Set initial default based on screen size on mount
+    setSliderVal(window.innerWidth < 768 ? 2.5 : 3);
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
@@ -700,7 +702,7 @@ export default function HomeClient({
               <div>Username</div>
               <div className="text-right">Earnings</div>
             </div>
-            <div className="divide-y divide-border/40 max-h-[300px] overflow-y-auto min-w-[380px] md:min-w-0">
+            <div className="divide-y divide-border/40 max-h-[300px] overflow-y-auto overflow-x-hidden touch-pan-y min-w-[380px] md:min-w-0">
               {(!leaderboardData[leaderboardTab] || leaderboardData[leaderboardTab].length === 0) ? (
                 <div className="text-center py-8 text-sm text-muted font-medium font-sans">
                   No active promoters in this timeframe yet
