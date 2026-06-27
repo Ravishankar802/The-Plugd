@@ -11,6 +11,119 @@ function getHash(str: string) {
   return Math.abs(hash);
 }
 
+function calculateEarningsForPromoter(username: string, i: number, elapsedToday: number, elapsedWeek: number, elapsedAllTime: number) {
+  const seed = getHash(username);
+  
+  // Base Targets
+  let targetAllTime = 500000;
+  if (i === 0) {
+    targetAllTime = 11000000;
+  } else if (i === 1) {
+    targetAllTime = 5500000;
+  } else {
+    targetAllTime = 500000 + (5500000 - 500000) * Math.pow((49 - i) / 48, 1.8);
+  }
+  const allTimeVar = (seed % 1000) - 500; // ±500
+  const finalTargetAllTime = Math.max(i === 0 ? 11000000 : (i === 1 ? 5500000 : 500000), targetAllTime + allTimeVar);
+
+  let targetThisWeek = 30000;
+  if (i === 0) {
+    targetThisWeek = 450000;
+  } else {
+    targetThisWeek = 30000 + (250000 - 30000) * Math.pow((49 - i) / 48, 1.6);
+  }
+  const weekVar = (seed % 200) - 100; // ±100
+  const finalTargetThisWeek = Math.max(i === 0 ? 450000 : 30000, targetThisWeek + weekVar);
+
+  let targetToday = 5000;
+  if (i === 0) {
+    targetToday = 40000;
+  } else {
+    targetToday = 5000 + (25000 - 5000) * Math.pow((49 - i) / 48, 1.4);
+  }
+  const todayVar = (seed % 100) - 50; // ±50
+  const finalTargetToday = Math.max(i === 0 ? 40000 : 5000, targetToday + todayVar);
+
+  // Helper to map any amount into starter, pro, max sales
+  const getCommissionSum = (amount: number) => {
+    let maxSales = Math.floor((amount * 0.50) / 500);
+    let proSales = Math.floor((amount * 0.35) / 250);
+    let starterSales = Math.floor((amount * 0.15) / 100);
+
+    let sum = maxSales * 500 + proSales * 250 + starterSales * 100;
+    let remainder = amount - sum;
+
+    if (remainder > 0) {
+      const addMax = Math.floor(remainder / 500);
+      maxSales += addMax;
+      remainder -= addMax * 500;
+    }
+    if (remainder > 0) {
+      const addPro = Math.floor(remainder / 250);
+      proSales += addPro;
+      remainder -= addPro * 250;
+    }
+    if (remainder > 0) {
+      const addStarter = Math.floor(remainder / 100);
+      starterSales += addStarter;
+      remainder -= addStarter * 100;
+    }
+    if (remainder === 50) {
+      if (starterSales >= 2) {
+        proSales += 1;
+        starterSales -= 2;
+      } else {
+        maxSales += 1;
+        proSales -= 1;
+        starterSales -= 2;
+      }
+    }
+    return { maxSales, proSales, starterSales };
+  };
+
+  const baseAllTimeSales = getCommissionSum(finalTargetAllTime);
+  const baseThisWeekSales = getCommissionSum(finalTargetThisWeek);
+  const baseTodaySales = getCommissionSum(finalTargetToday);
+
+  // Conversion rates (conversions per 10,000 minutes to have high precision)
+  const rankMult = 1 + 9 * Math.pow((49 - i) / 49, 1.5);
+  const starterConversionsPer10k = (50 + (seed % 50)) * rankMult;
+  const proConversionsPer10k = (30 + (seed % 40)) * rankMult;
+  const maxConversionsPer10k = (10 + (seed % 30)) * rankMult;
+
+  // Live drift sales
+  const liveMaxToday = Math.floor((elapsedToday * maxConversionsPer10k) / 10000);
+  const liveProToday = Math.floor((elapsedToday * proConversionsPer10k) / 10000);
+  const liveStarterToday = Math.floor((elapsedToday * starterConversionsPer10k) / 10000);
+
+  const liveMaxWeek = Math.floor((elapsedWeek * maxConversionsPer10k) / 10000);
+  const liveProWeek = Math.floor((elapsedWeek * proConversionsPer10k) / 10000);
+  const liveStarterWeek = Math.floor((elapsedWeek * starterConversionsPer10k) / 10000);
+
+  const liveMaxAllTime = Math.floor((elapsedAllTime * maxConversionsPer10k) / 10000);
+  const liveProAllTime = Math.floor((elapsedAllTime * proConversionsPer10k) / 10000);
+  const liveStarterAllTime = Math.floor((elapsedAllTime * starterConversionsPer10k) / 10000);
+
+  // Compute final sales counts
+  const totalMaxToday = baseTodaySales.maxSales + liveMaxToday;
+  const totalProToday = baseTodaySales.proSales + liveProToday;
+  const totalStarterToday = baseTodaySales.starterSales + liveStarterToday;
+
+  const totalMaxWeek = baseThisWeekSales.maxSales + liveMaxWeek;
+  const totalProWeek = baseThisWeekSales.proSales + liveProWeek;
+  const totalStarterWeek = baseThisWeekSales.starterSales + liveStarterWeek;
+
+  const totalMaxAllTime = baseAllTimeSales.maxSales + liveMaxAllTime;
+  const totalProAllTime = baseAllTimeSales.proSales + liveProAllTime;
+  const totalStarterAllTime = baseAllTimeSales.starterSales + liveStarterAllTime;
+
+  return {
+    today: totalMaxToday * 500 + totalProToday * 250 + totalStarterToday * 100,
+    thisWeek: totalMaxWeek * 500 + totalProWeek * 250 + totalStarterWeek * 100,
+    allTime: totalMaxAllTime * 500 + totalProAllTime * 250 + totalStarterAllTime * 100
+  };
+}
+
 export async function GET() {
   try {
     // 1. Fetch all real promoters
@@ -76,137 +189,50 @@ export async function GET() {
     const elapsedMinsThisWeek = Math.floor((now.getTime() - startOfWeek.getTime()) / 60000);
     const elapsedMinsAllTime = elapsedMinsThisWeek + 60 * 24 * 60; // Base: 60 days of history
 
-    const todayItems = promotersList.map((p, i) => {
-      const username = p.username;
-      const seed = getHash(username);
-      
-      let baseToday = 5000;
-      if (i === 0) {
-        baseToday = 40000;
-      } else {
-        baseToday = 5000 + (25000 - 5000) * Math.pow((49 - i) / 48, 1.4);
-      }
-      const todayVar = 1 + ((seed % 7) - 3.5) / 100; // ±3.5%
-      const finalBaseToday = Math.max(i === 0 ? 40000 : 5000, baseToday * todayVar);
-
-      let baseAllTime = 500000;
-      if (i === 0) {
-        baseAllTime = 11000000;
-      } else {
-        baseAllTime = 500000 + (5500000 - 500000) * Math.pow((49 - i) / 48, 1.8);
-      }
-      const allTimeVar = 1 + ((seed % 11) - 5.5) / 100;
-      const finalBaseAllTime = Math.max(i === 0 ? 11000000 : (i === 1 ? 5500000 : 500000), baseAllTime * allTimeVar);
-
-      const finalDriftRate = Math.round((finalBaseAllTime * 0.00001) + (seed % 10) * 2);
-      const earnings = Math.round((finalBaseToday + elapsedMinsToday * finalDriftRate) / 100) * 100;
-
+    const calculatedList = promotersList.map((p, i) => {
+      const { today, thisWeek, allTime } = calculateEarningsForPromoter(p.username, i, elapsedMinsToday, elapsedMinsThisWeek, elapsedMinsAllTime);
       return {
-        username,
-        earnings,
-        avatarUrl: p.avatarUrl
-      };
-    });
-
-    const thisWeekItems = promotersList.map((p, i) => {
-      const username = p.username;
-      const seed = getHash(username);
-      
-      let baseThisWeek = 30000;
-      if (i === 0) {
-        baseThisWeek = 450000;
-      } else {
-        baseThisWeek = 30000 + (250000 - 30000) * Math.pow((49 - i) / 48, 1.6);
-      }
-      const weekVar = 1 + ((seed % 9) - 4.5) / 100; // ±4.5%
-      const finalBaseThisWeek = Math.max(i === 0 ? 450000 : 30000, baseThisWeek * weekVar);
-
-      let baseAllTime = 500000;
-      if (i === 0) {
-        baseAllTime = 11000000;
-      } else {
-        baseAllTime = 500000 + (5500000 - 500000) * Math.pow((49 - i) / 48, 1.8);
-      }
-      const allTimeVar = 1 + ((seed % 11) - 5.5) / 100;
-      const finalBaseAllTime = Math.max(i === 0 ? 11000000 : (i === 1 ? 5500000 : 500000), baseAllTime * allTimeVar);
-
-      const finalDriftRate = Math.round((finalBaseAllTime * 0.00001) + (seed % 10) * 2);
-      const earnings = Math.round((finalBaseThisWeek + elapsedMinsThisWeek * finalDriftRate) / 100) * 100;
-
-      return {
-        username,
-        earnings,
-        avatarUrl: p.avatarUrl
-      };
-    });
-
-    const allTimeItems = promotersList.map((p, i) => {
-      const username = p.username;
-      const seed = getHash(username);
-      
-      let baseAllTime = 500000;
-      if (i === 0) {
-        baseAllTime = 11000000;
-      } else {
-        baseAllTime = 500000 + (5500000 - 500000) * Math.pow((49 - i) / 48, 1.8);
-      }
-      const allTimeVar = 1 + ((seed % 11) - 5.5) / 100;
-      const finalBaseAllTime = Math.max(i === 0 ? 11000000 : (i === 1 ? 5500000 : 500000), baseAllTime * allTimeVar);
-
-      const finalDriftRate = Math.round((finalBaseAllTime * 0.00001) + (seed % 10) * 2);
-      const earnings = Math.round((finalBaseAllTime + elapsedMinsAllTime * finalDriftRate) / 100) * 100;
-
-      return {
-        username,
-        earnings,
-        avatarUrl: p.avatarUrl
+        ...p,
+        todayEarnings: today,
+        thisWeekEarnings: thisWeek,
+        allTimeEarnings: allTime
       };
     });
 
     // 5. Sort each list descending and assign rank
-    const sortedToday = [...todayItems].sort((a, b) => b.earnings - a.earnings).map((item, idx) => ({
+    const sortedToday = [...calculatedList].sort((a, b) => b.todayEarnings - a.todayEarnings).map((item, idx) => ({
       rank: idx + 1,
       username: item.username,
-      earnings: item.earnings,
-      allTimeEarnings: item.earnings, // matching frontend expectations
+      earnings: item.todayEarnings,
+      allTimeEarnings: item.allTimeEarnings, // Return actual all-time earnings so league is consistent!
       avatarUrl: item.avatarUrl
     }));
 
-    const sortedThisWeek = [...thisWeekItems].sort((a, b) => b.earnings - a.earnings).map((item, idx) => ({
+    const sortedThisWeek = [...calculatedList].sort((a, b) => b.thisWeekEarnings - a.thisWeekEarnings).map((item, idx) => ({
       rank: idx + 1,
       username: item.username,
-      earnings: item.earnings,
-      allTimeEarnings: item.earnings,
+      earnings: item.thisWeekEarnings,
+      allTimeEarnings: item.allTimeEarnings, // Return actual all-time earnings so league is consistent!
       avatarUrl: item.avatarUrl
     }));
 
-    const sortedAllTime = [...allTimeItems].sort((a, b) => b.earnings - a.earnings).map((item, idx) => ({
+    const sortedAllTime = [...calculatedList].sort((a, b) => b.allTimeEarnings - a.allTimeEarnings).map((item, idx) => ({
       rank: idx + 1,
       username: item.username,
-      earnings: item.earnings,
-      allTimeEarnings: item.earnings,
+      earnings: item.allTimeEarnings,
+      allTimeEarnings: item.allTimeEarnings,
       avatarUrl: item.avatarUrl
     }));
 
     // Backwards compatibility promoters mapping
-    const compatPromoters = promotersList.map((p, i) => {
-      const username = p.username;
-      const seed = getHash(username);
-      const baseAllTime = 1500000 + (15000000 - 1500000) * Math.pow((49 - i) / 49, 1.8);
-      const allTimeVar = 1 + ((seed % 15) - 7.5) / 100;
-      const finalBaseAllTime = baseAllTime * allTimeVar;
-      const finalDriftRate = Math.round((finalBaseAllTime * 0.00001) + (seed % 10) * 5);
-      const earnings = Math.round((finalBaseAllTime + elapsedMinsAllTime * finalDriftRate) / 100) * 100;
-
-      return {
-        id: p.id,
-        name: p.name,
-        email: p.email,
-        username: p.username,
-        avatarUrl: p.avatarUrl,
-        totalEarned: earnings
-      };
-    }).sort((a, b) => b.totalEarned - a.totalEarned);
+    const compatPromoters = [...calculatedList].map((item) => ({
+      id: item.id,
+      name: item.name,
+      email: item.email,
+      username: item.username,
+      avatarUrl: item.avatarUrl,
+      totalEarned: item.allTimeEarnings
+    })).sort((a, b) => b.totalEarned - a.totalEarned);
 
     return NextResponse.json({
       success: true,
