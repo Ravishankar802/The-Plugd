@@ -652,8 +652,9 @@ export default function HomeClient({
 
       {/* SECTION: LEADERBOARD & RECENT EARNINGS & WHY PEOPLE FAIL */}
       <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10 flex flex-col gap-8 items-center">
-        {/* Leaderboard Card */}
-        <div className="w-full bg-pill border border-border rounded-[24px] p-6 sm:p-8 md:p-10 shadow-xl flex flex-col">
+        <div className="w-full flex flex-col items-center">
+          {/* Leaderboard Card */}
+          <div className="w-full bg-pill border border-border rounded-[24px] p-6 sm:p-8 md:p-10 shadow-xl flex flex-col">
           <div className="text-center max-w-2xl mx-auto mb-6">
             <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-3" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
               Top Promoters
@@ -744,6 +745,7 @@ export default function HomeClient({
         <p className="text-center text-[10px] text-muted/30 font-medium mt-4 select-none font-sans px-4">
           ⓘ These figures and profiles demonstrate platform scaling potential using simulated earnings. Individual earnings vary based on actual sharing performance.
         </p>
+      </div>
 
       </section>
 
