@@ -8,14 +8,10 @@ export default function Header() {
         <Image src="/logo.png" alt="Plugd" width={80} height={80} />
       </Link>
 
-      <div className="w-full flex items-center justify-center mb-8 animate-in fade-in slide-in-from-top-2 duration-500 relative z-10">
-        <div className="inline-flex items-center bg-pill/80 backdrop-blur-sm border border-border/80 rounded-full px-8 py-4 md:px-14 md:py-6 shadow-md hover:border-border/100 hover:bg-pill transition-all group relative overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(110deg,transparent_30%,rgba(255,240,210,0.35)_50%,transparent_70%)] bg-[length:200%_100%] animate-shine pointer-events-none" />
-          
-          <span className="text-xl md:text-2xl font-bold text-foreground tracking-[0.02em] relative z-10">
-            India&apos;s #1 Referral Marketplace
-          </span>
-        </div>
+      <div className="mb-4 animate-in fade-in slide-in-from-top-2 duration-500 relative z-10">
+        <span className="text-[#16a34a] text-xs font-bold uppercase tracking-[0.2em]">
+          India&apos;s #1 Referral Marketplace
+        </span>
       </div>
       <h1 
         className="text-[clamp(2.15rem,5.5vw,3.5rem)] font-[800] tracking-[-0.035em] leading-[1.1] text-foreground mb-4 relative z-10"
