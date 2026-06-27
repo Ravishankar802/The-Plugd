@@ -597,10 +597,10 @@ export default function HomeClient({
               />
               <div className="relative w-full h-4 text-[10px] sm:text-xs text-zinc-500/70 dark:text-muted/60 font-semibold font-sans mt-1">
                 <span className="absolute left-0">1</span>
-                <span className="absolute left-[20%] -translate-x-1/2">10</span>
-                <span className="absolute left-[40%] -translate-x-1/2">100</span>
-                <span className="absolute left-[60%] -translate-x-1/2">1,000</span>
-                <span className="absolute left-[80%] -translate-x-1/2">10,000</span>
+                <span className="absolute left-[20%] -translate-x-1/2 hidden sm:inline">10</span>
+                <span className="absolute left-[40%] -translate-x-1/2 hidden sm:inline">100</span>
+                <span className="absolute left-[60%] -translate-x-1/2 hidden sm:inline">1,000</span>
+                <span className="absolute left-[80%] -translate-x-1/2 hidden sm:inline">10,000</span>
                 <span className="absolute right-0">1,00,000</span>
               </div>
             </div>
@@ -684,7 +684,7 @@ export default function HomeClient({
 
           {/* Table Display */}
           <div className="w-full overflow-hidden border border-[#e4e4e7] dark:border-border/50 rounded-xl bg-[#F5F5F5] dark:bg-zinc-950/20">
-            <div className="grid grid-cols-3 border-b border-[#e4e4e7] dark:border-border/80 bg-zinc-200 dark:bg-zinc-950/40 px-4 py-3 text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-muted font-sans text-left">
+            <div className="grid grid-cols-[45px_1fr_105px] md:grid-cols-3 border-b border-[#e4e4e7] dark:border-border/80 bg-zinc-200 dark:bg-zinc-950/40 px-4 py-3 text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-muted font-sans text-left">
               <div>Rank</div>
               <div>Username</div>
               <div className="text-right">Earnings</div>
@@ -711,13 +711,13 @@ export default function HomeClient({
                 };
                 const leagueId = getLeagueIdByEarnings(entry.allTimeEarnings || entry.earnings);
                 return (
-                  <div key={idx} className="grid grid-cols-3 px-4 py-3 text-sm font-sans items-center hover:bg-zinc-900/10 border-b border-[#e4e4e7]/60 dark:border-border/40 transition-colors text-left last:border-b-0">
+                  <div key={idx} className="grid grid-cols-[45px_1fr_105px] md:grid-cols-3 px-4 py-3 text-sm font-sans items-center hover:bg-zinc-900/10 border-b border-[#e4e4e7]/60 dark:border-border/40 transition-colors text-left last:border-b-0">
                     <div className="font-extrabold text-muted">
                       {entry.rank === 1 ? "🥇" : entry.rank === 2 ? "🥈" : entry.rank === 3 ? "🥉" : `#${entry.rank}`}
                     </div>
-                    <div className="font-semibold text-foreground break-all pr-2 flex items-center gap-2">
+                    <div className="font-semibold text-foreground pr-2 flex items-center gap-2 min-w-0">
                       <LeagueIcon id={leagueId} size={20} className="inline-block flex-shrink-0" />
-                      <span>@{entry.username}</span>
+                      <span className="truncate">@{entry.username}</span>
                     </div>
                     <div className="font-extrabold text-[#16a34a] text-right rich-number">
                       ₹{new Intl.NumberFormat("en-IN").format(entry.earnings)}
@@ -876,10 +876,11 @@ export default function HomeClient({
           <div className="flex flex-row gap-4 items-center justify-center">
             <button
               onClick={handleStartEarning}
-              className="bg-[#16a34a] border border-[#16a34a] text-black dark:text-white flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg cursor-pointer"
+              className="bg-[#16a34a] border border-[#16a34a] text-black dark:text-white flex items-center justify-center gap-2 transition-all hover:bg-[#16a34a]/90 active:scale-[0.98] shadow-lg cursor-pointer whitespace-nowrap px-4 sm:px-9"
               style={{ 
                 fontFamily: 'var(--font-eb-garamond), serif', 
-                padding: '0.6rem 2.25rem',
+                paddingTop: '0.6rem',
+                paddingBottom: '0.6rem',
                 fontSize: '1rem',
                 fontWeight: 600,
                 borderRadius: '8px'
@@ -889,10 +890,11 @@ export default function HomeClient({
             </button>
             <Link
               href="/vault"
-              className="bg-selected border border-selected text-selected-foreground flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
+              className="bg-selected border border-selected text-selected-foreground flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer whitespace-nowrap px-4 sm:px-9"
               style={{ 
                 fontFamily: 'var(--font-eb-garamond), serif', 
-                padding: '0.6rem 2.25rem',
+                paddingTop: '0.6rem',
+                paddingBottom: '0.6rem',
                 fontSize: '1rem',
                 fontWeight: 600,
                 borderRadius: '8px'
