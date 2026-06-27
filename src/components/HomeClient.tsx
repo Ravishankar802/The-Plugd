@@ -469,7 +469,7 @@ export default function HomeClient({
 
   return (
     <main className="min-h-screen flex flex-col items-center w-full max-w-full overflow-x-hidden">
-      <div className="w-full relative flex flex-col items-center pt-2 pb-4">
+      <div className="w-full relative flex flex-col items-center pt-2 pb-12">
 
         <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-[60] flex flex-col items-center">
           <div className="max-w-[800px] w-full">
@@ -514,7 +514,7 @@ export default function HomeClient({
       <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Total Paid Out */}
-          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex items-center gap-5 shadow-xl hover:border-border transition-all duration-300">
+          <div className="bg-pill border border-[#16a34a]/20 rounded-2xl p-6 flex items-center gap-5 shadow-[0_0_15px_rgba(22,163,74,0.04)] transition-all duration-200 hover:-translate-y-1 hover:border-[#16a34a]/45 hover:shadow-[0_0_20px_rgba(22,163,74,0.12)]">
             <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-xl text-emerald-400">
               <Wallet className="w-6 h-6" />
             </div>
@@ -522,14 +522,14 @@ export default function HomeClient({
               <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
                 Total Paid Out
               </span>
-              <span className="text-2xl md:text-3xl font-semibold tracking-tighter text-white font-sans mt-2 rich-number">
+              <span className="text-[1.7rem] md:text-[2rem] font-semibold tracking-tighter text-white font-sans mt-2 leading-tight rich-number">
                 ₹100Cr+
               </span>
             </div>
           </div>
 
           {/* Promoters */}
-          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex items-center gap-5 shadow-xl hover:border-border transition-all duration-300">
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex items-center gap-5 shadow-xl transition-all duration-200 hover:-translate-y-1 hover:border-[#16a34a]/35 hover:shadow-[0_0_15px_rgba(22,163,74,0.08)]">
             <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-xl text-emerald-400">
               <Users className="w-6 h-6" />
             </div>
@@ -543,14 +543,14 @@ export default function HomeClient({
             </div>
           </div>
 
-          {/* Top Earner */}
-          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex items-center gap-5 shadow-xl hover:border-border transition-all duration-300">
+          {/* Top Promoter */}
+          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex items-center gap-5 shadow-xl transition-all duration-200 hover:-translate-y-1 hover:border-[#16a34a]/35 hover:shadow-[0_0_15px_rgba(22,163,74,0.08)]">
             <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-xl text-emerald-400">
               <Trophy className="w-6 h-6" />
             </div>
             <div className="flex flex-col">
               <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
-                Top Earner
+                Top Promoter
               </span>
               <span className="text-2xl md:text-3xl font-semibold tracking-tighter text-white font-sans mt-2 rich-number">
                 ₹1Cr+

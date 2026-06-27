@@ -23,7 +23,7 @@ export default function Header() {
         className="text-muted text-[0.875rem] md:text-[1.25rem] font-normal max-w-[340px] md:max-w-2xl leading-tight md:leading-relaxed mx-auto relative z-10 px-4 mb-12"
         style={{ fontFamily: '"EB Garamond", serif' }}
       >
-        Share Plugd. Earn commissions for every successful referral.
+        Share Plugd. Get paid for every successful referral.
       </p>
     </header>
   );
