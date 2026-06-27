@@ -41,8 +41,9 @@ function calculateEarningsForPromoter(username: string, i: number, elapsedToday:
   } else {
     targetToday = 5000 + (25000 - 5000) * Math.pow((49 - i) / 48, 1.4);
   }
+  const timeFraction = Math.min(1, Math.max(0, elapsedToday / 1440));
   const todayVar = (seed % 100) - 50; // ±50
-  const finalTargetToday = Math.max(i === 0 ? 40000 : 5000, targetToday + todayVar);
+  const finalTargetToday = Math.max(0, Math.round((targetToday * timeFraction + todayVar * timeFraction) / 50) * 50);
 
   // Helper to map any amount into starter, pro, max sales
   const getCommissionSum = (amount: number) => {
