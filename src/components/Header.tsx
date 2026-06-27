@@ -12,17 +12,9 @@ export default function Header() {
         <div className="inline-flex items-center bg-pill/80 backdrop-blur-sm border border-border/80 rounded-full px-6 py-3 shadow-sm hover:border-border/100 hover:bg-pill transition-all group relative overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(110deg,transparent_30%,rgba(255,240,210,0.35)_50%,transparent_70%)] bg-[length:200%_100%] animate-shine pointer-events-none" />
           
-          <div className="flex items-center gap-2 relative z-10">
-            <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Average earning</span>
-            <span className="text-[0.75rem] font-bold text-foreground">₹5L/Month</span>
-          </div>
-          
-          <div className="w-[1px] h-4 bg-border/60 mx-4 md:mx-6 shrink-0 relative z-10" />
-          
-          <div className="flex items-center gap-2 relative z-10">
-            <span className="text-[0.65rem] text-muted uppercase tracking-[0.12em] font-bold">Total Payouts</span>
-            <span className="text-[0.75rem] font-bold text-foreground">₹100Cr+</span>
-          </div>
+          <span className="text-[0.75rem] font-bold text-foreground tracking-[0.05em] relative z-10">
+            India&apos;s Referral Marketplace
+          </span>
         </div>
       </div>
       <h1 
