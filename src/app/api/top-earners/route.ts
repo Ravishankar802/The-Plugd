@@ -80,15 +80,25 @@ export async function GET() {
       const username = p.username;
       const seed = getHash(username);
       
-      const baseToday = 15000 + (75000 - 15000) * Math.pow((49 - i) / 49, 1.4);
-      const todayVar = 1 + ((seed % 9) - 4.5) / 100; // ±4.5%
-      const finalBaseToday = Math.max(15000, baseToday * todayVar);
+      let baseToday = 5000;
+      if (i === 0) {
+        baseToday = 40000;
+      } else {
+        baseToday = 5000 + (25000 - 5000) * Math.pow((49 - i) / 48, 1.4);
+      }
+      const todayVar = 1 + ((seed % 7) - 3.5) / 100; // ±3.5%
+      const finalBaseToday = Math.max(i === 0 ? 40000 : 5000, baseToday * todayVar);
 
-      const baseAllTime = 1500000 + (15000000 - 1500000) * Math.pow((49 - i) / 49, 1.8);
-      const allTimeVar = 1 + ((seed % 15) - 7.5) / 100;
-      const finalBaseAllTime = baseAllTime * allTimeVar;
+      let baseAllTime = 500000;
+      if (i === 0) {
+        baseAllTime = 11000000;
+      } else {
+        baseAllTime = 500000 + (5500000 - 500000) * Math.pow((49 - i) / 48, 1.8);
+      }
+      const allTimeVar = 1 + ((seed % 11) - 5.5) / 100;
+      const finalBaseAllTime = Math.max(i === 0 ? 11000000 : (i === 1 ? 5500000 : 500000), baseAllTime * allTimeVar);
 
-      const finalDriftRate = Math.round((finalBaseAllTime * 0.00001) + (seed % 10) * 5);
+      const finalDriftRate = Math.round((finalBaseAllTime * 0.00001) + (seed % 10) * 2);
       const earnings = Math.round((finalBaseToday + elapsedMinsToday * finalDriftRate) / 100) * 100;
 
       return {
@@ -102,15 +112,25 @@ export async function GET() {
       const username = p.username;
       const seed = getHash(username);
       
-      const baseThisWeek = 100000 + (800000 - 100000) * Math.pow((49 - i) / 49, 1.6);
-      const weekVar = 1 + ((seed % 11) - 5.5) / 100; // ±5.5%
-      const finalBaseThisWeek = Math.max(100000, baseThisWeek * weekVar);
+      let baseThisWeek = 30000;
+      if (i === 0) {
+        baseThisWeek = 450000;
+      } else {
+        baseThisWeek = 30000 + (250000 - 30000) * Math.pow((49 - i) / 48, 1.6);
+      }
+      const weekVar = 1 + ((seed % 9) - 4.5) / 100; // ±4.5%
+      const finalBaseThisWeek = Math.max(i === 0 ? 450000 : 30000, baseThisWeek * weekVar);
 
-      const baseAllTime = 1500000 + (15000000 - 1500000) * Math.pow((49 - i) / 49, 1.8);
-      const allTimeVar = 1 + ((seed % 15) - 7.5) / 100;
-      const finalBaseAllTime = baseAllTime * allTimeVar;
+      let baseAllTime = 500000;
+      if (i === 0) {
+        baseAllTime = 11000000;
+      } else {
+        baseAllTime = 500000 + (5500000 - 500000) * Math.pow((49 - i) / 48, 1.8);
+      }
+      const allTimeVar = 1 + ((seed % 11) - 5.5) / 100;
+      const finalBaseAllTime = Math.max(i === 0 ? 11000000 : (i === 1 ? 5500000 : 500000), baseAllTime * allTimeVar);
 
-      const finalDriftRate = Math.round((finalBaseAllTime * 0.00001) + (seed % 10) * 5);
+      const finalDriftRate = Math.round((finalBaseAllTime * 0.00001) + (seed % 10) * 2);
       const earnings = Math.round((finalBaseThisWeek + elapsedMinsThisWeek * finalDriftRate) / 100) * 100;
 
       return {
@@ -124,11 +144,16 @@ export async function GET() {
       const username = p.username;
       const seed = getHash(username);
       
-      const baseAllTime = 1500000 + (15000000 - 1500000) * Math.pow((49 - i) / 49, 1.8);
-      const allTimeVar = 1 + ((seed % 15) - 7.5) / 100;
-      const finalBaseAllTime = baseAllTime * allTimeVar;
+      let baseAllTime = 500000;
+      if (i === 0) {
+        baseAllTime = 11000000;
+      } else {
+        baseAllTime = 500000 + (5500000 - 500000) * Math.pow((49 - i) / 48, 1.8);
+      }
+      const allTimeVar = 1 + ((seed % 11) - 5.5) / 100;
+      const finalBaseAllTime = Math.max(i === 0 ? 11000000 : (i === 1 ? 5500000 : 500000), baseAllTime * allTimeVar);
 
-      const finalDriftRate = Math.round((finalBaseAllTime * 0.00001) + (seed % 10) * 5);
+      const finalDriftRate = Math.round((finalBaseAllTime * 0.00001) + (seed % 10) * 2);
       const earnings = Math.round((finalBaseAllTime + elapsedMinsAllTime * finalDriftRate) / 100) * 100;
 
       return {
