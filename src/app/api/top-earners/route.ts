@@ -91,31 +91,23 @@ function calculateEarningsForPromoter(username: string, i: number, elapsedToday:
   const proConversionsPer10k = (30 + (seed % 40)) * rankMult;
   const maxConversionsPer10k = (10 + (seed % 30)) * rankMult;
 
-  // Live drift sales
+  // Live drift sales (use elapsedToday for all to keep weekly and all-time aligned to their bases)
   const liveMaxToday = Math.floor((elapsedToday * maxConversionsPer10k) / 10000);
   const liveProToday = Math.floor((elapsedToday * proConversionsPer10k) / 10000);
   const liveStarterToday = Math.floor((elapsedToday * starterConversionsPer10k) / 10000);
-
-  const liveMaxWeek = Math.floor((elapsedWeek * maxConversionsPer10k) / 10000);
-  const liveProWeek = Math.floor((elapsedWeek * proConversionsPer10k) / 10000);
-  const liveStarterWeek = Math.floor((elapsedWeek * starterConversionsPer10k) / 10000);
-
-  const liveMaxAllTime = Math.floor((elapsedAllTime * maxConversionsPer10k) / 10000);
-  const liveProAllTime = Math.floor((elapsedAllTime * proConversionsPer10k) / 10000);
-  const liveStarterAllTime = Math.floor((elapsedAllTime * starterConversionsPer10k) / 10000);
 
   // Compute final sales counts
   const totalMaxToday = baseTodaySales.maxSales + liveMaxToday;
   const totalProToday = baseTodaySales.proSales + liveProToday;
   const totalStarterToday = baseTodaySales.starterSales + liveStarterToday;
 
-  const totalMaxWeek = baseThisWeekSales.maxSales + liveMaxWeek;
-  const totalProWeek = baseThisWeekSales.proSales + liveProWeek;
-  const totalStarterWeek = baseThisWeekSales.starterSales + liveStarterWeek;
+  const totalMaxWeek = baseThisWeekSales.maxSales + liveMaxToday;
+  const totalProWeek = baseThisWeekSales.proSales + liveProToday;
+  const totalStarterWeek = baseThisWeekSales.starterSales + liveStarterToday;
 
-  const totalMaxAllTime = baseAllTimeSales.maxSales + liveMaxAllTime;
-  const totalProAllTime = baseAllTimeSales.proSales + liveProAllTime;
-  const totalStarterAllTime = baseAllTimeSales.starterSales + liveStarterAllTime;
+  const totalMaxAllTime = baseAllTimeSales.maxSales + liveMaxToday;
+  const totalProAllTime = baseAllTimeSales.proSales + liveProToday;
+  const totalStarterAllTime = baseAllTimeSales.starterSales + liveStarterToday;
 
   return {
     today: totalMaxToday * 500 + totalProToday * 250 + totalStarterToday * 100,
