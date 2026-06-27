@@ -1254,36 +1254,7 @@ here's my link 👉 ${link}`
                 </div>
               </div>
 
-              {/* Conversion Funnel Card */}
-              <div className="bg-pill border border-border rounded-2xl p-6 shadow-xl text-left max-w-md mx-auto mb-8">
-                <h4 className="text-base font-bold text-foreground mb-1">Conversion Funnel</h4>
-                <p className="text-xs text-muted mb-5">Your conversion flow at a glance.</p>
-                <div className="flex flex-col items-center gap-1.5">
-                  {/* Clicks */}
-                  <div className="w-full bg-zinc-900/60 border border-zinc-800/80 rounded-xl p-3 flex flex-col items-center text-center">
-                    <span className="text-xl font-sans font-black text-white">{promoterData?.totalClicks || 0}</span>
-                    <span className="text-[9px] text-muted font-bold uppercase tracking-wider mt-0.5">Clicks</span>
-                  </div>
-                  
-                  <span className="text-muted/40 font-bold text-sm my-0.5">↓</span>
-                  
-                  {/* Signups */}
-                  <div className="w-full bg-zinc-900/60 border border-zinc-800/80 rounded-xl p-3 flex flex-col items-center text-center">
-                    <span className="text-xl font-sans font-black text-emerald-400">{promoterData?.totalConversions || 0}</span>
-                    <span className="text-[9px] text-muted font-bold uppercase tracking-wider mt-0.5">Signups</span>
-                  </div>
-                  
-                  <span className="text-muted/40 font-bold text-sm my-0.5">↓</span>
-                  
-                  {/* Earnings */}
-                  <div className="w-full bg-green-950/15 border border-green-500/25 rounded-xl p-3 flex flex-col items-center text-center">
-                    <span className="text-xl font-sans font-black text-[#16a34a]">₹{promoterData?.totalEarned || 0}</span>
-                    <span className="text-[9px] text-emerald-400/80 font-bold uppercase tracking-wider mt-0.5">Earnings</span>
-                  </div>
-                </div>
-              </div>
 
-              {/* Earnings Over Time Chart Card */}
               <div className="bg-pill border border-border rounded-[16px] p-6 md:p-8 shadow-xl">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
                   <div>
