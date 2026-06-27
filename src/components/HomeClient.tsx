@@ -741,6 +741,10 @@ export default function HomeClient({
           </div>
         </div>
 
+        <p className="text-center text-[10px] text-muted/30 font-medium mt-4 select-none font-sans px-4">
+          ⓘ These figures and profiles demonstrate platform scaling potential using simulated earnings. Individual earnings vary based on actual sharing performance.
+        </p>
+
       </section>
 
       {/* SECTION 4: HOW IT WORKS */}
