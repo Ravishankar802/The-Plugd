@@ -118,24 +118,28 @@ function DashboardProfileContent() {
   const referralLinkSuffix = promoterData?.username || promoterData?.referralCode || "";
   const link = `https://theplugd.com?ref=${referralLinkSuffix}`;
 
+  const tier = promoterData?.tier || "STARTER";
+  const joinFee = tier === "MAX" ? "₹999" : (tier === "PRO" ? "₹499" : "₹199");
+  const commission = tier === "MAX" ? "₹500" : (tier === "PRO" ? "₹250" : "₹100");
+
   const POST_VARIATIONS = [
     `if you've never heard of Plugd, it's a referral platform 💸
 
-pay ₹199 once, get your link, share it everywhere - whatsapp, telegram, discord, twitter, wherever
+pay ${joinFee} once, get your link, share it everywhere - whatsapp, telegram, discord, twitter, wherever
 
-every person who joins through your link = ₹100 in your earnings
+every person who joins through your link = ${commission} in your earnings
 
 stay consistent and it builds up fast 👉 ${link}`,
     `Plugd is a referral program and honestly one of the simplest ways to make money online 💸
 
-₹199 to join. you get a unique link. every signup through your link pays you ₹100 back.
+${joinFee} to join. you get a unique link. every signup through your link pays you ${commission} back.
 
 share it consistently and it compounds. i'm doing it.
 
 👉 ${link}`,
     `joined this referral platform called Plugd a while back 💸
 
-the model is simple - pay ₹199, get your own referral link, earn ₹100 every time someone signs up through it
+the model is simple - pay ${joinFee}, get your own referral link, earn ${commission} every time someone signs up through it
 
 the more consistently you share it, the more it adds up
 

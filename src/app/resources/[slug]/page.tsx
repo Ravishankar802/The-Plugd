@@ -16,9 +16,9 @@ const articleDetails: Record<string, ArticleContent> = {
     category: "GETTING STARTED",
     title: "How Plugd Works",
     content: [
-      "Plugd is a referral program. That's the whole thing. You pay ₹199 to join, you get a unique referral link, and every time someone joins through your link you earn ₹100.",
+      "Plugd is a referral program. That's the whole thing. You pay a one-time entry fee depending on your chosen plan tier (Starter: ₹199, Pro: ₹499, Max: ₹999) to join, you get a unique referral link, and every time someone joins through your link you earn a commission based on your plan tier (₹100, ₹250, or ₹500).",
       "There's no product to sell. No inventory. No customer service. Your job is one thing: share your link with people who might want to earn too.",
-      "The ₹199 entry fee exists to keep the network serious. It filters out people who aren't committed, which means the people you're referring are joining a real platform with real earners, not a spam list. That makes your referrals more likely to refer others, which compounds your earnings over time.",
+      "The entry fee exists to keep the network serious. It filters out people who aren't committed, which means the people you're referring are joining a real platform with real earners, not a spam list. That makes your referrals more likely to refer others, which compounds your earnings over time.",
       "There's no cap on how many people you can refer. There's no expiry on your link. As long as Plugd runs, your link works."
     ]
   },
@@ -31,7 +31,7 @@ const articleDetails: Record<string, ArticleContent> = {
       "Your referral link is only as powerful as where you put it and how you frame it. A link dropped into a group chat with no context gets ignored. The same link with three good sentences around it gets clicks.",
       "The platforms that convert best for Plugd are the ones where you already have trust: WhatsApp groups, close Instagram followers, Discord servers you're active in, and X. These are places where people know you and your word carries weight.",
       "Don't spam. One well-placed message in the right group will outperform fifty cold posts every time. Think about who in your life is always looking for ways to make extra money. Send them a direct message, not a broadcast.",
-      "The best performing shares include three things: what Plugd is in one sentence, what they earn, and a line that makes it personal. Something like: \"I've been using this, it's ₹199 to join and you earn ₹100 for everyone you bring in, so I figured you'd be into it.\"",
+      "The best performing shares include three things: what Plugd is in one sentence, what they earn, and a line that makes it personal. Something like: \"I've been using this, it's ₹199 to join and you earn ₹100 to ₹500 for everyone you bring in depending on your tier, so I figured you'd be into it.\"",
       "Consistency matters more than volume. Share once a week in a new place rather than blasting everywhere once and never again."
     ]
   },
@@ -72,7 +72,7 @@ const articleDetails: Record<string, ArticleContent> = {
       "The message you write around your referral link is doing more work than the link itself. Most people skip writing it. That's why most people get ignored.",
       "A good referral message has three parts: context, the offer, and a personal hook. Context tells them what it is. The offer tells them what they get. The personal hook tells them why you're telling them specifically.",
       "Bad message: \"Hey check this out [link]\"",
-      "Good message: \"This is a referral program: ₹199 to join, you earn ₹100 for everyone you bring in. Payouts twice a month. Thought of you because you're always looking for side income things.\"",
+      "Good message: \"This is a referral program: ₹199 to join, you earn ₹100 to ₹500 for everyone you bring in. Payouts twice a month. Thought of you because you're always looking for side income things.\"",
       "The biggest mistake people make is being vague. Vague messages make people suspicious. Specific messages with actual numbers and mechanics build instant credibility.",
       "Don't oversell. You don't need to tell them it'll change their life. Tell them exactly what it is and let them decide. People can smell desperation in a message. Calm confidence converts.",
       "One more thing: follow up once. If someone didn't respond, one follow-up three days later doubles your conversion rate. More than one follow-up and you're pushing them away."
@@ -85,8 +85,8 @@ const articleDetails: Record<string, ArticleContent> = {
     title: "How Payouts Work",
     content: [
       "Payments are processed through Dodo Payments. Processing times vary by region but are typically 1 to 3 business days after the payout date.",
-      "Your earnings are tracked in real time in your Vault. Every time someone joins through your link, ₹100 is added to your balance immediately. You can watch it grow between payouts.",
-      "There's no maximum on how much you can withdraw. If you've referred 500 people, you have ₹50,000 waiting. Request it all at once or let it accumulate, depending on your preference."
+      "Your earnings are tracked in real time in your Vault. Every time someone joins through your link, your plan tier commission (₹100, ₹250, or ₹500) is added to your balance immediately. You can watch it grow between payouts.",
+      "There's no maximum on how much you can withdraw. If you've referred 500 people on the Starter tier, you have ₹50,000 waiting. Request it all at once or let it accumulate, depending on your preference."
     ]
   },
   "realistic-earnings": {
@@ -96,10 +96,10 @@ const articleDetails: Record<string, ArticleContent> = {
     title: "How Much Can You Realistically Earn",
     content: [
       "Let's look at the actual data and mathematics from our live leaderboard so you can see exactly what is possible.",
-      "Our Top Earners board provides clear evidence of what is achievable. Across over ₹100 Crore in total platform payouts, our top promoters have achieved impressive scale. The 50th top earner on the platform has crossed ₹4,90,000 in total payouts. Ranks 2 to 10 have cleared between ₹30,00,000 and ₹41,00,000. And our number one promoter has crossed the ₹1 Crore mark in lifetime earnings (currently standing at over ₹1,05,00,000). All of this is done with a single link, no inventory, no overhead, and no marketing teams.",
-      "When we look at daily earnings, the numbers are just as solid. The top 50 promoters on the platform earn between ₹30,000 and ₹1,20,000 every single day. Since you earn ₹100 for every direct referral who joins, this means these top users are bringing in 300 to 1,200 new paid members daily. They achieve this by consistently sharing their link across their primary channels—like WhatsApp groups, close Instagram communities, Discord servers, and X.",
-      "But you don't need a massive initial following to start earning. The overall average earning for promoters on the platform is ₹5L/month. Getting your first 10 referrals pays you ₹1,000, which covers your initial ₹199 entry fee and puts you in profit. From there, scaling is a matter of consistency: sharing once a day, targeting active communities where people are looking for side income, and following up on clicks.",
-      "Volume and persistence beat any single viral moment. The floor is whatever effort you put in. The ceiling is shown right on our Top Earners board. Start small, share daily, and watch your Vault grow."
+      "Our Top Promoters board provides clear evidence of what is achievable. Across over ₹100 Crore in total platform payouts, our top promoters have achieved impressive scale. The 50th top promoter on the platform has crossed ₹5,00,000 in total payouts. Rank 2 has cleared ₹55,00,000. And our number one promoter has crossed the ₹1 Crore mark in lifetime earnings (currently standing at over ₹1,10,00,000). All of this is done with a single link, no inventory, no overhead, and no marketing teams.",
+      "When we look at daily earnings, the numbers are just as solid. The top 50 promoters on the platform earn between ₹5,000 and ₹40,000 every single day. Depending on their plan tier, they earn up to ₹500 for every direct referral who joins. They achieve this by consistently sharing their link across their primary channels—like WhatsApp groups, close Instagram communities, Discord servers, and X.",
+      "But you don't need a massive initial following to start earning. The overall average earning for promoters on the platform is ₹5L/month. Getting your first 10 referrals pays you ₹1,000 on the Starter plan, which covers your initial ₹199 entry fee and puts you in profit. From there, scaling is a matter of consistency: sharing once a day, targeting active communities where people are looking for side income, and following up on clicks.",
+      "Volume and persistence beat any single viral moment. The floor is whatever effort you put in. The ceiling is shown right on our Top Promoters board. Start small, share daily, and watch your Vault grow."
     ]
   }
 };

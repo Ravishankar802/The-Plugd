@@ -24,19 +24,19 @@ export default function TermsOfService() {
             content="Welcome to Plugd. These Terms govern your use of theplugd.com, a referral platform where promoters earn by sharing their referral link. By using Plugd, you agree to these Terms." 
           />
 
-          <Section 
+           <Section 
             title="2. What Plugd Does" 
-            content="Plugd is a referral program. Promoters pay a one-time ₹199 fee to join, receive a unique referral link, and earn ₹100 for every new person who joins through that link. Plugd does not guarantee any specific earnings." 
+            content="Plugd is a referral program. Promoters pay a one-time entry fee depending on their chosen plan tier (Starter: ₹199, Pro: ₹499, Max: ₹999) to join, receive a unique referral link, and earn referral commissions based on their plan tier for every new person who joins through that link. Plugd does not guarantee any specific earnings." 
           />
 
           <Section 
-            title="3. The ₹199 Joining Fee" 
-            content="Joining Plugd as a promoter requires a one-time payment of ₹199 processed via Dodo Payments. This fee is non-refundable once your account is activated." 
+            title="3. Joining Fee" 
+            content="Joining Plugd as a promoter requires a one-time payment based on your chosen plan tier (Starter: ₹199, Pro: ₹499, Max: ₹999) processed via Dodo Payments. This fee is non-refundable once your account is activated." 
           />
 
           <Section 
             title="4. Earning Referrals" 
-            content="You earn ₹100 for each person who joins Plugd through your unique referral link and completes the ₹199 payment. Earnings are tracked in your Vault and paid out twice a month via PayPal or UPI, whichever you have set in your profile. The minimum withdrawal amount is ₹5,000." 
+            content="You earn a commission for each person who joins Plugd through your unique referral link and completes their plan payment. The commission you earn is determined by your promoter plan tier: ₹100 for Starter, ₹250 for Pro, and ₹500 for Max. Earnings are tracked in your Vault and paid out twice a month via PayPal or UPI, whichever you have set in your profile. The minimum withdrawal amount is ₹5,000." 
           />
 
           <Section 
@@ -46,7 +46,7 @@ export default function TermsOfService() {
 
           <Section 
             title="6. Simulated Leaderboard and Projections" 
-            content='To demonstrate platform capability and gamify promoter participation, the "Top Earners" board, average daily earning stats, total platform payout metrics, charts, promoter profiles, and stats referenced in our educational resources may display simulated, virtual, or illustrative data. These profiles and figures represent simulated promotional performance based on mathematical referral growth models and do not guarantee or represent actual live earnings of specific historical individuals. Actual earnings of registered users are tracked separately in their respective Vaults and paid out strictly based on verified conversions.'
+            content='To demonstrate platform capability and gamify promoter participation, the "Top Promoters" board, average daily earning stats, total platform payout metrics, charts, promoter profiles, and stats referenced in our educational resources may display simulated, virtual, or illustrative data. These profiles and figures represent simulated promotional performance based on mathematical referral growth models and do not guarantee or represent actual live earnings of specific historical individuals. Actual earnings of registered users are tracked separately in their respective Vaults and paid out strictly based on verified conversions.'
           />
 
           <Section 
