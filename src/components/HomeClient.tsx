@@ -324,6 +324,7 @@ export default function HomeClient({
 
         return sorted;
       });
+      loadTopEarners();
     }, 60000);
 
     return () => clearInterval(interval);
