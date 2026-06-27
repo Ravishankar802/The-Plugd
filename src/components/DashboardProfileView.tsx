@@ -1115,7 +1115,7 @@ here's my link 👉 ${link}`
                           ))}
                         </div>
                         <div className="min-h-[80px] flex items-center">
-                          <p className="text-sm text-foreground font-medium leading-relaxed" style={{ whiteSpace: "pre-line" }}>
+                          <p className="text-sm text-foreground font-sans font-medium leading-relaxed" style={{ whiteSpace: "pre-line" }}>
                             &quot;{POST_VARIATIONS[selectedVariation]}&quot;
                           </p>
                         </div>
