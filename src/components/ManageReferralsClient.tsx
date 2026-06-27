@@ -168,6 +168,7 @@ export default function ManageReferralsClient() {
   const [sortField, setSortField] = useState<keyof Promoter>("createdAt");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
   const [sortOpen, setSortOpen] = useState(false);
+  const [tierOpen, setTierOpen] = useState(false);
 
   useEffect(() => {
     fetchPromoters();
@@ -625,17 +626,51 @@ export default function ManageReferralsClient() {
           
           <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto z-30">
             <p className="text-muted text-[0.7rem] font-medium sm:hidden">Found {filteredAndSorted.length}</p>
+            {/* Custom Tiers Dropdown */}
             <div className="relative">
-              <select
-                value={tierFilter}
-                onChange={(e) => setTierFilter(e.target.value)}
-                className="px-3 py-1.5 bg-accent border border-border text-foreground rounded-lg text-xs font-semibold focus:outline-none transition-all cursor-pointer hover:bg-accent/80"
+              <button 
+                type="button"
+                onClick={() => {
+                  setTierOpen(!tierOpen);
+                }}
+                className="flex items-center justify-between gap-2 px-4 py-2 bg-accent border border-border text-foreground rounded-lg text-sm font-semibold focus:outline-none transition-all min-w-[140px] whitespace-nowrap shadow-sm select-none cursor-pointer hover:bg-accent/80"
               >
-                <option value="ALL">All Tiers</option>
-                <option value="STARTER">STARTER</option>
-                <option value="PRO">PRO</option>
-                <option value="MAX">MAX</option>
-              </select>
+                <span>
+                  {tierFilter === "ALL" ? "All Tiers" : tierFilter}
+                </span>
+                <ChevronDown size={16} className={`text-muted transition-transform duration-200 ${tierOpen ? "rotate-180" : ""}`} />
+              </button>
+              
+              {tierOpen && (
+                <>
+                  <div className="fixed inset-0 z-30" onClick={() => setTierOpen(false)} />
+                  <div className="absolute right-0 mt-1.5 w-[160px] bg-card border border-border rounded-xl shadow-2xl p-1 z-40 animate-in fade-in slide-in-from-top-2 duration-200">
+                    {[
+                      { value: "ALL", label: "All Tiers" },
+                      { value: "STARTER", label: "STARTER" },
+                      { value: "PRO", label: "PRO" },
+                      { value: "MAX", label: "MAX" }
+                    ].map((opt) => (
+                      <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() => {
+                          setTierFilter(opt.value);
+                          setTierOpen(false);
+                        }}
+                        className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-left text-sm font-bold transition-colors whitespace-nowrap ${
+                          tierFilter === opt.value
+                          ? "bg-white/10 text-foreground" 
+                          : "text-foreground hover:bg-accent"
+                        }`}
+                      >
+                        <span>{opt.label}</span>
+                        {tierFilter === opt.value && <Check size={12} className="text-foreground shrink-0" />}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
             {/* Custom Sort Joined Dropdown */}
             <div className="relative">

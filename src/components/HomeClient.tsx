@@ -574,12 +574,12 @@ export default function HomeClient({
 
           <div className="w-full max-w-3xl flex flex-col items-center gap-8">
             {/* Slider Widget */}
-            <div className="w-full flex flex-col items-center gap-4 bg-zinc-950/40 border border-border/60 rounded-2xl p-6">
+            <div className="w-full flex flex-col items-center gap-4 bg-[#F5F5F5] dark:bg-zinc-950/40 border border-[#e4e4e7] dark:border-border/60 rounded-2xl p-6">
               <div className="flex items-baseline justify-center gap-2">
                 <span className="text-4xl md:text-5xl font-semibold text-foreground font-sans tracking-tight rich-number">
                   {new Intl.NumberFormat("en-IN").format(sliderReferrals)}
                 </span>
-                <span className="text-muted text-sm font-semibold uppercase tracking-wider font-sans">Referrals</span>
+                <span className="text-zinc-500 dark:text-muted text-sm font-semibold uppercase tracking-wider font-sans">Referrals</span>
               </div>
 
               <input
@@ -589,12 +589,12 @@ export default function HomeClient({
                 step="0.01"
                 value={sliderVal}
                 onChange={(e) => setSliderVal(Number(e.target.value))}
-                className="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-[#16a34a]"
+                className="w-full h-2 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-[#16a34a]"
                 style={{
-                  background: `linear-gradient(to right, #16a34a 0%, #16a34a ${(sliderVal / 5) * 100}%, #27272a ${(sliderVal / 5) * 100}%, #27272a 100%)`
+                  background: `linear-gradient(to right, #16a34a 0%, #16a34a ${(sliderVal / 5) * 100}%, var(--border) ${(sliderVal / 5) * 100}%, var(--border) 100%)`
                 }}
               />
-              <div className="relative w-full h-4 text-[10px] sm:text-xs text-muted/60 font-semibold font-sans mt-1">
+              <div className="relative w-full h-4 text-[10px] sm:text-xs text-zinc-500/70 dark:text-muted/60 font-semibold font-sans mt-1">
                 <span className="absolute left-0">1</span>
                 <span className="absolute left-[20%] -translate-x-1/2">10</span>
                 <span className="absolute left-[40%] -translate-x-1/2">100</span>
@@ -607,33 +607,33 @@ export default function HomeClient({
             {/* Live Earnings Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
               {/* Starter */}
-              <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-5 flex flex-col items-center text-center shadow-lg hover:border-[#16a34a]/30 transition-all duration-300 group">
-                <span className="text-xs text-muted font-bold uppercase tracking-widest font-sans mb-1">Starter</span>
-                <span className="text-xs text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
+              <div className="bg-[#F5F5F5] dark:bg-zinc-900/40 border border-[#e4e4e7] dark:border-zinc-800/80 rounded-2xl p-5 flex flex-col items-center text-center shadow-lg hover:border-[#16a34a]/30 transition-all duration-300 group">
+                <span className="text-xs text-zinc-500 dark:text-muted font-bold uppercase tracking-widest font-sans mb-1">Starter</span>
+                <span className="text-xs text-zinc-500/70 dark:text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
                 <span className="text-3xl font-semibold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
                   ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 100)}
                 </span>
               </div>
 
               {/* Pro */}
-              <div className="bg-zinc-900/40 border border-[#16a34a]/40 shadow-[0_0_20px_rgba(22,163,74,0.05)] rounded-2xl p-5 flex flex-col items-center text-center shadow-lg hover:border-[#16a34a]/80 transition-all duration-300 group relative">
+              <div className="bg-[#F5F5F5] dark:bg-zinc-900/40 border border-[#16a34a]/40 shadow-[0_0_20px_rgba(22,163,74,0.05)] rounded-2xl p-5 flex flex-col items-center text-center shadow-lg hover:border-[#16a34a]/80 transition-all duration-300 group relative">
                 <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#16a34a] text-white text-[9px] uppercase font-black tracking-widest px-2.5 py-0.5 rounded-full shadow-md whitespace-nowrap">
                   Most Popular
                 </div>
                 <span className="text-xs text-foreground font-bold uppercase tracking-widest font-sans mb-1 mt-1">Pro</span>
-                <span className="text-xs text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
+                <span className="text-xs text-zinc-500/70 dark:text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
                 <span className="text-3xl font-semibold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
                   ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 250)}
                 </span>
               </div>
 
               {/* Max */}
-              <div className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-5 flex flex-col items-center text-center shadow-lg hover:border-[#16a34a]/30 transition-all duration-300 group relative">
+              <div className="bg-[#F5F5F5] dark:bg-zinc-900/40 border border-[#e4e4e7] dark:border-zinc-800/80 rounded-2xl p-5 flex flex-col items-center text-center shadow-lg hover:border-[#16a34a]/30 transition-all duration-300 group relative">
                 <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-amber-500 text-black text-[9px] uppercase font-black tracking-widest px-2.5 py-0.5 rounded-full shadow-md whitespace-nowrap">
                   Highest Yield
                 </div>
-                <span className="text-xs text-muted font-bold uppercase tracking-widest font-sans mb-1 mt-1">Max</span>
-                <span className="text-xs text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
+                <span className="text-xs text-zinc-500 dark:text-muted font-bold uppercase tracking-widest font-sans mb-1 mt-1">Max</span>
+                <span className="text-xs text-zinc-500/70 dark:text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
                 <span className="text-3xl font-semibold text-amber-500 font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
                   ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 500)}
                 </span>
@@ -660,7 +660,7 @@ export default function HomeClient({
           </div>
 
           {/* Leaderboard Tabs */}
-          <div className="flex bg-zinc-950/40 border border-border/60 rounded-xl p-1 max-w-xs mx-auto mb-6">
+          <div className="flex bg-accent/40 dark:bg-zinc-950/40 border border-border/60 rounded-xl p-1 max-w-xs mx-auto mb-6">
             {[
               { id: "today", label: "Today" },
               { id: "thisWeek", label: "This Week" },
@@ -672,7 +672,7 @@ export default function HomeClient({
                 className={`px-4 py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap cursor-pointer uppercase tracking-wider ${
                   leaderboardTab === tab.id
                     ? "bg-[#16a34a] text-white"
-                    : "text-muted hover:text-foreground"
+                    : "text-zinc-500 dark:text-muted hover:text-foreground"
                 }`}
               >
                 {tab.label}
@@ -681,8 +681,8 @@ export default function HomeClient({
           </div>
 
           {/* Table Display */}
-          <div className="w-full overflow-hidden border border-border/50 rounded-xl bg-zinc-950/20">
-            <div className="grid grid-cols-3 border-b border-border/80 bg-zinc-950/40 px-4 py-3 text-xs font-bold uppercase tracking-wider text-muted font-sans text-left">
+          <div className="w-full overflow-hidden border border-[#e4e4e7] dark:border-border/50 rounded-xl bg-[#F5F5F5] dark:bg-zinc-950/20">
+            <div className="grid grid-cols-3 border-b border-[#e4e4e7] dark:border-border/80 bg-zinc-200 dark:bg-zinc-950/40 px-4 py-3 text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-muted font-sans text-left">
               <div>Rank</div>
               <div>Username</div>
               <div className="text-right">Earnings</div>
@@ -709,7 +709,7 @@ export default function HomeClient({
                 };
                 const leagueId = getLeagueIdByEarnings(entry.allTimeEarnings || entry.earnings);
                 return (
-                  <div key={idx} className="grid grid-cols-3 px-4 py-3 text-sm font-sans items-center hover:bg-zinc-900/10 transition-colors text-left">
+                  <div key={idx} className="grid grid-cols-3 px-4 py-3 text-sm font-sans items-center hover:bg-zinc-900/10 border-b border-[#e4e4e7]/60 dark:border-border/40 transition-colors text-left last:border-b-0">
                     <div className="font-extrabold text-muted">
                       {entry.rank === 1 ? "🥇" : entry.rank === 2 ? "🥈" : entry.rank === 3 ? "🥉" : `#${entry.rank}`}
                     </div>
@@ -805,7 +805,7 @@ export default function HomeClient({
                   "Build distribution instead of waiting",
                   "Treat attention like an asset"
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3 text-zinc-300">
+                  <div key={idx} className="flex items-start gap-3 text-zinc-700 dark:text-zinc-300 font-medium">
                     <span className="text-emerald-500 shrink-0 mt-0.5">✓</span>
                     <span>{item}</span>
                   </div>
@@ -813,7 +813,7 @@ export default function HomeClient({
               </div>
             </div>
             <div className="mt-8 pt-4 border-t border-border/40 text-left">
-              <p className="text-xs text-emerald-400 font-bold uppercase tracking-wider">
+              <p className="text-xs text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">
                 "Top promoters create attention every day."
               </p>
             </div>
@@ -834,7 +834,7 @@ export default function HomeClient({
                   "Quit before momentum starts",
                   "Wait instead of taking action"
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3 text-zinc-400">
+                  <div key={idx} className="flex items-start gap-3 text-zinc-700 dark:text-zinc-400 font-medium">
                     <span className="text-red-500 shrink-0 mt-0.5">✕</span>
                     <span>{item}</span>
                   </div>
@@ -842,7 +842,7 @@ export default function HomeClient({
               </div>
             </div>
             <div className="mt-8 pt-4 border-t border-border/40 text-left">
-              <p className="text-xs text-red-400/80 font-bold uppercase tracking-wider">
+              <p className="text-xs text-red-600 dark:text-red-400/80 font-bold uppercase tracking-wider">
                 "Most people quit before results compound."
               </p>
             </div>

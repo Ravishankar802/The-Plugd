@@ -649,7 +649,7 @@ here's my link 👉 ${link}`
                   {/* Tier & Commission Structure Section */}
                   <div className="border-t border-border/40 pt-8 space-y-6">
                     <h3 className="text-lg font-bold text-foreground">Promoter Tier & Commissions</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-zinc-950/40 border border-border/60 rounded-xl p-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-[#F5F5F5] dark:bg-zinc-950/40 border border-[#e4e4e7] dark:border-border/60 rounded-xl p-6">
                       <div className="flex flex-col gap-1.5">
                         <span className="text-xs text-muted uppercase font-bold tracking-wider">Current Tier</span>
                         <div className="flex items-center gap-2">
@@ -1094,9 +1094,9 @@ here's my link 👉 ${link}`
                   </div>
 
                   <div className="flex flex-col gap-6">
-                    <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 flex flex-col justify-between bg-zinc-950/20 text-left">
+                    <div className="bg-pill border border-border rounded-2xl p-6 space-y-4 flex flex-col justify-between bg-[#F5F5F5] dark:bg-zinc-950/20 text-left">
                       <div className="space-y-4">
-                        <p className="text-xs text-muted font-normal">
+                        <p className="text-xs text-zinc-600 dark:text-muted font-normal">
                           these are just post ideas to get you started, customize them, make it sound like you
                         </p>
                         <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">
@@ -1135,7 +1135,7 @@ here's my link 👉 ${link}`
                 <div className="bg-pill border border-border rounded-[16px] p-6 md:p-8 shadow-2xl space-y-6">
                   <div className="text-left">
                     <h4 className="text-base font-bold text-foreground">Traffic Sources</h4>
-                    <p className="text-xs text-muted mt-0.5">Clicks tracked from each share destination.</p>
+                    <p className="text-xs text-zinc-600 dark:text-muted mt-0.5">Clicks tracked from each share destination.</p>
                   </div>
                   
                   <div className="space-y-3.5">
@@ -1160,7 +1160,7 @@ here's my link 👉 ${link}`
                         <div key={source.key} className="space-y-1.5 text-left">
                           <div className="flex justify-between items-center text-xs font-semibold">
                             <span className="text-foreground">{source.name}</span>
-                            <span className="text-muted font-sans">{clicks} clicks</span>
+                            <span className="text-zinc-600 dark:text-muted font-sans">{clicks} clicks</span>
                           </div>
                           <div className="w-full bg-zinc-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden">
                             <div 
@@ -1184,7 +1184,7 @@ here's my link 👉 ${link}`
                   <h3 className="text-lg font-sans font-bold text-foreground">How to hit ₹1,00,000 fast</h3>
                 </div>
 
-                <div className="bg-zinc-950/20 border border-border rounded-2xl p-6 space-y-6">
+                <div className="bg-[#F5F5F5] dark:bg-zinc-950/20 border border-[#e4e4e7] dark:border-border rounded-2xl p-6 space-y-6">
                   <div className="space-y-4 text-left">
                     {[
                       "Open your contacts. Send your link to everyone you think would actually do something with this. Don't overthink it, just send.",
@@ -1469,7 +1469,7 @@ here's my link 👉 ${link}`
                     </div>
                   </div>
 
-                  <div className="bg-zinc-950/45 border border-border/40 rounded-xl p-4 min-w-[200px] text-left md:text-right">
+                  <div className="bg-[#F5F5F5] dark:bg-zinc-950/45 border border-[#e4e4e7] dark:border-border/40 rounded-xl p-4 min-w-[200px] text-left md:text-right">
                     <span className="text-[9px] text-muted uppercase font-bold tracking-widest block">
                       Lifetime Earnings
                     </span>
@@ -1489,19 +1489,19 @@ here's my link 👉 ${link}`
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <div className="bg-zinc-950/20 border border-border/40 p-4 rounded-xl">
+                    <div className="bg-[#F5F5F5] dark:bg-zinc-950/20 border border-[#e4e4e7] dark:border-border/40 p-4 rounded-xl">
                       <span className="text-[9px] text-muted uppercase font-bold tracking-widest block">Current</span>
                       <span className="text-lg font-sans font-bold text-foreground mt-1 block">
                         ₹{new Intl.NumberFormat("en-IN").format(earnings)}
                       </span>
                     </div>
-                    <div className="bg-zinc-950/20 border border-border/40 p-4 rounded-xl">
+                    <div className="bg-[#F5F5F5] dark:bg-zinc-950/20 border border-[#e4e4e7] dark:border-border/40 p-4 rounded-xl">
                       <span className="text-[9px] text-muted uppercase font-bold tracking-widest block">Target</span>
                       <span className="text-lg font-sans font-bold text-foreground mt-1 block">
                         ₹{new Intl.NumberFormat("en-IN").format(targetLeague.target)}
                       </span>
                     </div>
-                    <div className="bg-zinc-950/20 border border-border/40 p-4 rounded-xl col-span-2 md:col-span-1">
+                    <div className="bg-[#F5F5F5] dark:bg-zinc-950/20 border border-[#e4e4e7] dark:border-border/40 p-4 rounded-xl col-span-2 md:col-span-1">
                       <span className="text-[9px] text-muted uppercase font-bold tracking-widest block">Remaining</span>
                       <span className="text-lg font-sans font-bold text-emerald-400 mt-1 block">
                         ₹{new Intl.NumberFormat("en-IN").format(remainingAmount)} Remaining
@@ -1510,11 +1510,13 @@ here's my link 👉 ${link}`
                   </div>
 
                   <div className="space-y-2">
-                    <div className="w-full bg-zinc-950 rounded-full h-3 overflow-hidden border border-border/30 p-[1px]">
-                      <div 
-                        className="h-full rounded-full bg-[#16a34a] transition-all duration-500 shadow-[0_0_10px_rgba(22,163,74,0.3)]"
-                        style={{ width: `${progressPercent}%` }}
-                      />
+                    <div className="w-full bg-zinc-200 dark:bg-zinc-950 rounded-full h-3 overflow-hidden border border-border/30 p-[1px]">
+                      {progressPercent > 0 && (
+                        <div 
+                          className="h-full rounded-full bg-[#16a34a] transition-all duration-500 shadow-[0_0_10px_rgba(22,163,74,0.3)]"
+                          style={{ width: `${progressPercent}%` }}
+                        />
+                      )}
                     </div>
                     <div className="flex justify-between items-center text-[10px] font-bold text-muted px-1">
                       <span className="font-sans">{progressPercent}% Complete</span>
@@ -1528,7 +1530,7 @@ here's my link 👉 ${link}`
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-bold text-foreground">League Progression</h3>
-                  <p className="text-xs text-muted mt-0.5 font-medium">Review the complete hierarchical status ladder.</p>
+                  <p className="text-xs text-zinc-600 dark:text-muted mt-0.5 font-medium">Review the complete hierarchical status ladder.</p>
                 </div>
 
                 <div className="space-y-3.5">
@@ -1540,7 +1542,7 @@ here's my link 👉 ${link}`
                       ? "bg-green-950/15 border-[#16a34a] text-emerald-400 shadow-[0_0_15px_rgba(22,163,74,0.08)] ring-1 ring-[#16a34a]/30"
                       : isUnlocked
                         ? "bg-zinc-900/40 border-green-500/20 text-emerald-400/80"
-                        : "bg-zinc-950/30 border-border/30 text-muted opacity-50";
+                        : "bg-zinc-950/30 dark:bg-zinc-950/30 border-border/30 text-zinc-500 dark:text-muted/80 opacity-70";
 
                     return (
                       <div 
@@ -1579,8 +1581,8 @@ here's my link 👉 ${link}`
                               Unlocked
                             </span>
                           ) : (
-                            <span className="text-[10px] font-medium text-muted uppercase tracking-widest flex items-center gap-1.5 opacity-60">
-                              <Lock size={10} /> Locked
+                            <span className="text-[10px] font-bold text-zinc-500 dark:text-muted/80 uppercase tracking-widest flex items-center gap-1.5 opacity-85">
+                              <Lock size={10} className="text-zinc-500 dark:text-muted/80" /> Locked
                             </span>
                           )}
                         </div>
