@@ -1037,7 +1037,7 @@ export default function ManageReferralsClient() {
 
                 <div className="flex flex-col items-start gap-0.5">
                   <span className="text-[10px] font-black text-[#16a34a] uppercase tracking-wider font-sans">Current League</span>
-                  <span className="text-base font-black text-white tracking-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+                  <span className="text-base font-black text-foreground tracking-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
                     {(() => {
                       const e = editForm.totalEarned || 0;
                       if (e >= 100000000) return "Sovereign League";

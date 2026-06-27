@@ -588,7 +588,7 @@ here's my link 👉 ${link}`
                     </div>
 
                     <div className="flex flex-col items-center sm:items-start gap-1 text-center sm:text-left">
-                      <span className="text-[1.8rem] font-black text-white tracking-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+                      <span className="text-[1.8rem] font-black text-foreground tracking-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
                         {promoterData.name || "Your Name"}
                       </span>
                     </div>
@@ -1115,7 +1115,7 @@ here's my link 👉 ${link}`
                           ))}
                         </div>
                         <div className="min-h-[80px] flex items-center">
-                          <p className="text-sm text-muted font-medium leading-relaxed" style={{ whiteSpace: "pre-line" }}>
+                          <p className="text-sm text-foreground font-medium leading-relaxed" style={{ whiteSpace: "pre-line" }}>
                             &quot;{POST_VARIATIONS[selectedVariation]}&quot;
                           </p>
                         </div>
@@ -1162,7 +1162,7 @@ here's my link 👉 ${link}`
                             <span className="text-foreground">{source.name}</span>
                             <span className="text-muted font-sans">{clicks} clicks</span>
                           </div>
-                          <div className="w-full bg-zinc-800 rounded-full h-1.5 overflow-hidden">
+                          <div className="w-full bg-zinc-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden">
                             <div 
                               className={`${source.color} h-full rounded-full transition-all duration-300`}
                               style={{ width: `${clicks > 0 ? Math.max(4, percentage) : 0}%` }}
@@ -1200,7 +1200,7 @@ here's my link 👉 ${link}`
                     ].map((tip, idx) => (
                       <div key={idx} className="flex gap-4">
                         <div className="w-6 h-6 rounded-full bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center text-xs font-sans font-bold shrink-0 mt-0.5">{idx + 1}</div>
-                        <p className="text-sm text-muted font-medium leading-relaxed">{tip}</p>
+                        <p className="text-sm text-foreground font-medium leading-relaxed">{tip}</p>
                       </div>
                     ))}
                   </div>
@@ -1461,7 +1461,7 @@ here's my link 👉 ${link}`
                         <LeagueIcon id={currentLeague ? currentLeague.id : "bronze"} size={64} />
                       </div>
                       <div>
-                        <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+                        <h2 className="text-2xl md:text-3xl font-black text-foreground tracking-tight">
                           {currentLeague ? currentLeague.name : "Bronze League"}
                         </h2>
                         <p className="text-xs text-muted mt-0.5">Keep promoting to reach the next status tier.</p>
@@ -1491,13 +1491,13 @@ here's my link 👉 ${link}`
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div className="bg-zinc-950/20 border border-border/40 p-4 rounded-xl">
                       <span className="text-[9px] text-muted uppercase font-bold tracking-widest block">Current</span>
-                      <span className="text-lg font-sans font-bold text-white mt-1 block">
+                      <span className="text-lg font-sans font-bold text-foreground mt-1 block">
                         ₹{new Intl.NumberFormat("en-IN").format(earnings)}
                       </span>
                     </div>
                     <div className="bg-zinc-950/20 border border-border/40 p-4 rounded-xl">
                       <span className="text-[9px] text-muted uppercase font-bold tracking-widest block">Target</span>
-                      <span className="text-lg font-sans font-bold text-white mt-1 block">
+                      <span className="text-lg font-sans font-bold text-foreground mt-1 block">
                         ₹{new Intl.NumberFormat("en-IN").format(targetLeague.target)}
                       </span>
                     </div>
@@ -1559,7 +1559,7 @@ here's my link 👉 ${link}`
                           </div>
                           
                           <div>
-                            <h4 className="text-lg md:text-xl font-black text-white tracking-tight leading-tight">
+                            <h4 className="text-lg md:text-xl font-black text-foreground tracking-tight leading-tight">
                               {league.name}
                             </h4>
                             <p className="text-sm md:text-base font-sans font-extrabold text-[#16a34a] mt-1">

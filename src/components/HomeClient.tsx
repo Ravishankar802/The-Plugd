@@ -522,7 +522,7 @@ export default function HomeClient({
               <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
                 Total Paid Out
               </span>
-              <span className="text-[1.7rem] md:text-[2rem] font-semibold tracking-tighter text-white font-sans mt-2 leading-tight rich-number">
+              <span className="text-[1.7rem] md:text-[2rem] font-semibold tracking-tighter text-foreground font-sans mt-2 leading-tight rich-number">
                 ₹100Cr+
               </span>
             </div>
@@ -537,7 +537,7 @@ export default function HomeClient({
               <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
                 Promoters
               </span>
-              <span className="text-2xl md:text-3xl font-semibold tracking-tighter text-white font-sans mt-2 rich-number">
+              <span className="text-2xl md:text-3xl font-semibold tracking-tighter text-foreground font-sans mt-2 rich-number">
                 1,00,000+
               </span>
             </div>
@@ -552,7 +552,7 @@ export default function HomeClient({
               <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
                 Top Promoter
               </span>
-              <span className="text-2xl md:text-3xl font-semibold tracking-tighter text-white font-sans mt-2 rich-number">
+              <span className="text-2xl md:text-3xl font-semibold tracking-tighter text-foreground font-sans mt-2 rich-number">
                 ₹1Cr+
               </span>
             </div>
@@ -576,7 +576,7 @@ export default function HomeClient({
             {/* Slider Widget */}
             <div className="w-full flex flex-col items-center gap-4 bg-zinc-950/40 border border-border/60 rounded-2xl p-6">
               <div className="flex items-baseline justify-center gap-2">
-                <span className="text-4xl md:text-5xl font-semibold text-white font-sans tracking-tight rich-number">
+                <span className="text-4xl md:text-5xl font-semibold text-foreground font-sans tracking-tight rich-number">
                   {new Intl.NumberFormat("en-IN").format(sliderReferrals)}
                 </span>
                 <span className="text-muted text-sm font-semibold uppercase tracking-wider font-sans">Referrals</span>
@@ -620,7 +620,7 @@ export default function HomeClient({
                 <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#16a34a] text-white text-[9px] uppercase font-black tracking-widest px-2.5 py-0.5 rounded-full shadow-md whitespace-nowrap">
                   Most Popular
                 </div>
-                <span className="text-xs text-white font-bold uppercase tracking-widest font-sans mb-1 mt-1">Pro</span>
+                <span className="text-xs text-foreground font-bold uppercase tracking-widest font-sans mb-1 mt-1">Pro</span>
                 <span className="text-xs text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
                 <span className="text-3xl font-semibold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
                   ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 250)}
@@ -672,7 +672,7 @@ export default function HomeClient({
                 className={`px-4 py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap cursor-pointer uppercase tracking-wider ${
                   leaderboardTab === tab.id
                     ? "bg-[#16a34a] text-white"
-                    : "text-muted hover:text-white"
+                    : "text-muted hover:text-foreground"
                 }`}
               >
                 {tab.label}
@@ -713,7 +713,7 @@ export default function HomeClient({
                     <div className="font-extrabold text-muted">
                       {entry.rank === 1 ? "🥇" : entry.rank === 2 ? "🥈" : entry.rank === 3 ? "🥉" : `#${entry.rank}`}
                     </div>
-                    <div className="font-semibold text-white break-all pr-2 flex items-center gap-2">
+                    <div className="font-semibold text-foreground break-all pr-2 flex items-center gap-2">
                       <LeagueIcon id={leagueId} size={20} className="inline-block flex-shrink-0" />
                       <span>@{entry.username}</span>
                     </div>
@@ -756,7 +756,7 @@ export default function HomeClient({
             <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
               <UserPlus className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>1. Join</h3>
+            <h3 className="text-lg font-bold text-foreground mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>1. Join</h3>
             <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
               Choose a promoter plan and receive your unique referral link.
             </p>
@@ -767,7 +767,7 @@ export default function HomeClient({
             <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
               <Share2 className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>2. Share</h3>
+            <h3 className="text-lg font-bold text-foreground mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>2. Share</h3>
             <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
               Share your link across WhatsApp, Instagram, X, Reddit, Discord, Telegram, communities, and groups.
             </p>
@@ -778,7 +778,7 @@ export default function HomeClient({
             <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-[#16a34a] flex items-center justify-center mb-4">
               <Coins className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>3. Earn</h3>
+            <h3 className="text-lg font-bold text-foreground mb-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>3. Earn</h3>
             <p className="text-sm text-muted/80 leading-relaxed font-sans max-w-[280px]">
               Receive commissions every time someone joins through your referral link.
             </p>

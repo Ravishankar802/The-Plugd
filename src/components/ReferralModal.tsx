@@ -393,10 +393,10 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
             <div className="w-full animate-in fade-in slide-in-from-bottom-2 duration-300">
 
               {/* Selected Plan Details Badge */}
-              <div className="flex items-center justify-between w-full border border-border bg-black/40 rounded-xl p-4 mb-6">
+              <div className="flex items-center justify-between w-full border border-border bg-accent rounded-xl p-4 mb-6">
                 <div className="flex flex-col gap-0.5">
                   <span className="text-[10px] text-muted uppercase font-bold tracking-wider">Selected Plan</span>
-                  <span className="text-sm font-extrabold text-white tracking-tight">{selectedPlan}</span>
+                  <span className="text-sm font-extrabold text-foreground tracking-tight">{selectedPlan}</span>
                 </div>
                 <div className="text-right">
                   <span className="text-xs text-muted font-medium">Price</span>
@@ -411,31 +411,31 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
               <div className="space-y-6">
                 {/* Full Name */}
                 <div className="flex flex-col gap-3">
-                  <label className="text-[1rem] font-bold text-white tracking-wide block">Full Name</label>
+                  <label className="text-[1rem] font-bold text-foreground tracking-wide block">Full Name</label>
                   <input 
                     type="text"
                     placeholder="Your full name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                    className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
                   />
                 </div>
 
                 {/* Email */}
                 <div className="flex flex-col gap-3">
-                  <label className="text-[1rem] font-bold text-white tracking-wide block">Email</label>
+                  <label className="text-[1rem] font-bold text-foreground tracking-wide block">Email</label>
                   <input 
                     type="email"
                     placeholder="your@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
+                    className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem]"
                   />
                 </div>
 
                 {/* Username */}
                 <div className="flex flex-col gap-3">
-                  <label className="text-[1rem] font-bold text-white tracking-wide block flex items-center justify-between">
+                  <label className="text-[1rem] font-bold text-foreground tracking-wide block flex items-center justify-between">
                     <span>Username</span>
                     {usernameStatus === 'checking' && (
                       <span className="text-xs text-muted flex items-center gap-1 font-sans">
@@ -448,7 +448,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                     placeholder="Enter username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value.toLowerCase().trim())}
-                    className={`w-full bg-black border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none transition-all text-[0.95rem] ${
+                    className={`w-full bg-background border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none transition-all text-[0.95rem] ${
                       usernameStatus === 'available' ? 'border-[#16a34a]' :
                       (usernameStatus === 'taken' || usernameStatus === 'invalid') ? 'border-red-500' :
                       'border-border focus:border-muted'
@@ -463,12 +463,12 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
                 {/* Country Selector */}
                 <div className="flex flex-col gap-3">
-                  <label className="text-[1rem] font-bold text-white tracking-wide block">Country</label>
+                  <label className="text-[1rem] font-bold text-foreground tracking-wide block">Country</label>
                   <div className="relative">
                     <button
                       type="button"
                       onClick={() => setCountryDropdownOpen(!countryDropdownOpen)}
-                      className="w-full flex items-center justify-between bg-black border border-border rounded-xl px-5 py-4 text-white focus:outline-none focus:border-muted transition-all text-[0.95rem] cursor-pointer text-left"
+                      className="w-full flex items-center justify-between bg-background border border-border rounded-xl px-5 py-4 text-foreground focus:outline-none focus:border-muted transition-all text-[0.95rem] cursor-pointer text-left"
                     >
                       <span className="truncate">
                         {formData.intlBankCountry || "Select your country"}
@@ -479,7 +479,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                     {countryDropdownOpen && (
                       <>
                         <div className="fixed inset-0 z-40" onClick={() => setCountryDropdownOpen(false)} />
-                        <div className="absolute left-0 mt-1.5 w-full bg-black border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto animate-in fade-in duration-150">
+                        <div className="absolute left-0 mt-1.5 w-full bg-card border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto animate-in fade-in duration-150">
                           {[...COUNTRY_CODES.map(c => c.name), "Other"].map((country) => (
                             <button
                               key={country}
@@ -515,12 +515,11 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                               }}
                               className={`w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-left text-xs font-bold transition-colors ${
                                 formData.intlBankCountry === country 
-                                ? "bg-white/10 text-white" 
-                                : "text-white/80 hover:bg-white/10"
+                                ? "bg-accent text-foreground" : "text-foreground/80 hover:bg-accent"
                               }`}
                             >
                               <span className="truncate">{country}</span>
-                              {formData.intlBankCountry === country && <Check size={12} className="text-white shrink-0 ml-2" />}
+                              {formData.intlBankCountry === country && <Check size={12} className="text-foreground shrink-0 ml-2" />}
                             </button>
                           ))}
                         </div>
@@ -531,13 +530,13 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
                 {/* Phone Number Selector & Input */}
                 <div className="flex flex-col gap-3">
-                  <label className="text-[1rem] font-bold text-white tracking-wide block">Phone Number</label>
+                  <label className="text-[1rem] font-bold text-foreground tracking-wide block">Phone Number</label>
                   <div className="flex gap-2">
                     <div className="relative flex-1 max-w-[220px] shrink-0">
                       <button
                         type="button"
                         onClick={() => setPhoneCodeDropdownOpen(!phoneCodeDropdownOpen)}
-                        className="w-full flex items-center justify-between bg-black border border-border rounded-xl px-4 py-4 text-white focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans cursor-pointer text-left"
+                        className="w-full flex items-center justify-between bg-background border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans cursor-pointer text-left"
                       >
                         <span className="truncate">
                           {(() => {
@@ -551,7 +550,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       {phoneCodeDropdownOpen && (
                         <>
                           <div className="fixed inset-0 z-40" onClick={() => setPhoneCodeDropdownOpen(false)} />
-                          <div className="absolute left-0 bottom-full mb-1.5 w-[260px] bg-black border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto animate-in fade-in duration-150">
+                          <div className="absolute left-0 bottom-full mb-1.5 w-[260px] bg-card border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto animate-in fade-in duration-150">
                             {COUNTRY_CODES.map((c) => (
                               <button
                                 key={`${c.code}-${c.dialCode}`}
@@ -562,12 +561,11 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                                 }}
                                 className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left text-xs font-bold transition-colors ${
                                   phoneCode === c.dialCode 
-                                  ? "bg-white/10 text-white" 
-                                  : "text-white/80 hover:bg-white/10"
+                                  ? "bg-accent text-foreground" : "text-foreground/80 hover:bg-accent"
                                 }`}
                               >
                                 <span className="truncate">{c.name} ({c.code} {c.dialCode})</span>
-                                {phoneCode === c.dialCode && <Check size={12} className="text-white shrink-0 ml-2" />}
+                                {phoneCode === c.dialCode && <Check size={12} className="text-foreground shrink-0 ml-2" />}
                               </button>
                             ))}
                           </div>
@@ -579,7 +577,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       placeholder="Enter phone number"
                       value={phoneNo}
                       onChange={(e) => setPhoneNo(e.target.value.replace(/[^0-9]/g, ""))}
-                      className="flex-1 bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
+                      className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
                     />
                   </div>
                 </div>
@@ -592,49 +590,49 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       <div className="space-y-6">
                         {!useBankTransfer ? (
                           <div className="flex flex-col gap-3">
-                            <label className="text-[1rem] font-bold text-white tracking-wide block">UPI ID</label>
+                            <label className="text-[1rem] font-bold text-foreground tracking-wide block">UPI ID</label>
                             <input
                               required={!useBankTransfer}
                               type="text"
                               placeholder="name@upi"
                               value={formData.upiId}
                               onChange={(e) => setFormData({ ...formData, upiId: e.target.value })}
-                              className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
+                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
                             />
                           </div>
                         ) : (
                           <div className="space-y-6">
                             <div className="flex flex-col gap-3">
-                              <label className="text-[1rem] font-bold text-white tracking-wide block">Account Holder Name</label>
+                              <label className="text-[1rem] font-bold text-foreground tracking-wide block">Account Holder Name</label>
                               <input
                                 required={useBankTransfer}
                                 type="text"
                                 placeholder="As in bank records"
                                 value={formData.bankAccountName}
                                 onChange={(e) => setFormData({ ...formData, bankAccountName: e.target.value })}
-                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
+                                className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
                               />
                             </div>
                             <div className="flex flex-col gap-3">
-                              <label className="text-[1rem] font-bold text-white tracking-wide block">Bank Account Number</label>
+                              <label className="text-[1rem] font-bold text-foreground tracking-wide block">Bank Account Number</label>
                               <input
                                 required={useBankTransfer}
                                 type="text"
                                 placeholder="Account number"
                                 value={formData.bankAccountNumber}
                                 onChange={(e) => setFormData({ ...formData, bankAccountNumber: e.target.value })}
-                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
+                                className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
                               />
                             </div>
                             <div className="flex flex-col gap-3">
-                              <label className="text-[1rem] font-bold text-white tracking-wide block">IFSC Code</label>
+                              <label className="text-[1rem] font-bold text-foreground tracking-wide block">IFSC Code</label>
                               <input
                                 required={useBankTransfer}
                                 type="text"
                                 placeholder="Enter IFSC code"
                                 value={formData.bankIfsc}
                                 onChange={(e) => setFormData({ ...formData, bankIfsc: e.target.value })}
-                                className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
+                                className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
                               />
                             </div>
                           </div>
@@ -680,7 +678,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                           <div className="space-y-6">
                             {getFieldsForCountry(formData.intlBankCountry || "").map((field) => (
                               <div key={field.key} className="flex flex-col gap-3">
-                                <label className="text-[1rem] font-bold text-white tracking-wide block">
+                                <label className="text-[1rem] font-bold text-foreground tracking-wide block">
                                   {field.label}
                                 </label>
                                 <input
@@ -689,7 +687,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                                   placeholder={field.placeholder}
                                   value={formData[field.key as keyof typeof formData] || ""}
                                   onChange={(e) => setFormData({ ...formData, [field.key]: e.target.value })}
-                                  className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
+                                  className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
                                 />
                               </div>
                             ))}
@@ -700,14 +698,14 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                           </div>
                         ) : (
                           <div className="flex flex-col gap-3">
-                            <label className="text-[1rem] font-bold text-white tracking-wide block">PayPal Email</label>
+                            <label className="text-[1rem] font-bold text-foreground tracking-wide block">PayPal Email</label>
                             <input
                               required={usePaypal}
                               type="email"
                               placeholder="Your PayPal email"
                               value={formData.paypalEmail}
                               onChange={(e) => setFormData({ ...formData, paypalEmail: e.target.value })}
-                              className="w-full bg-black border border-border rounded-xl px-5 py-4 text-white placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
+                              className="w-full bg-background border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted/50 focus:outline-none focus:border-muted transition-all text-[0.95rem] font-sans"
                             />
                           </div>
                         )}
@@ -784,7 +782,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
             <div className="w-full space-y-6 md:space-y-8 animate-in fade-in duration-300">
               {/* Header */}
               <div className="text-center space-y-2 max-w-xl mx-auto">
-                <h2 className="text-2xl md:text-3xl font-[800] tracking-tight text-white leading-tight">
+                <h2 className="text-2xl md:text-3xl font-[800] tracking-tight text-foreground leading-tight">
                   Choose Your Promoter Plan
                 </h2>
                 <p className="text-sm md:text-base text-muted/80 px-4">
@@ -796,14 +794,14 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
               {/* Grid of 3 Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center justify-center max-w-5xl mx-auto px-4 pt-4">
                 {/* Plan 1: STARTER */}
-                <div className="relative bg-zinc-950/65 border border-zinc-800 rounded-2xl p-6 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 shadow-xl min-h-[460px] md:min-h-[480px] self-stretch md:self-center order-2 md:order-1">
+                <div className="relative bg-card border border-border rounded-2xl p-6 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 shadow-xl min-h-[460px] md:min-h-[480px] self-stretch md:self-center order-2 md:order-1">
                   <div className="space-y-4">
                     <div className="space-y-1.5 text-center mt-2">
                       <h3 className="text-sm font-bold text-muted uppercase tracking-widest font-sans">Starter</h3>
                       
                       {/* Hero Price */}
                       <div className="flex flex-col items-center justify-center py-2">
-                        <span className="text-4xl md:text-5xl font-medium text-white font-sans tracking-tight rich-number">₹199</span>
+                        <span className="text-4xl md:text-5xl font-medium text-foreground font-sans tracking-tight rich-number">₹199</span>
                       </div>
 
                       {/* Earning Potential */}
@@ -816,15 +814,15 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                     <div className="border-t border-border/40 pt-4 space-y-2">
                       <p className="text-[9px] font-bold text-muted uppercase tracking-wider text-center font-sans">Commission Structure</p>
                       <div className="space-y-1 text-xs">
-                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2">
+                        <div className="flex justify-between items-center bg-background border border-border/40 rounded-lg p-2">
                           <span className="text-muted/80 text-[11px] font-sans rich-number">₹199 sale</span>
                           <span className="font-bold text-[#16a34a] text-[11px] font-sans rich-number">Earn ₹100</span>
                         </div>
-                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2">
+                        <div className="flex justify-between items-center bg-background border border-border/40 rounded-lg p-2">
                           <span className="text-muted/80 text-[11px] font-sans rich-number">₹499 sale</span>
                           <span className="font-bold text-[#16a34a] text-[11px] font-sans rich-number">Earn ₹100</span>
                         </div>
-                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2">
+                        <div className="flex justify-between items-center bg-background border border-border/40 rounded-lg p-2">
                           <span className="text-muted/80 text-[11px] font-sans rich-number">₹999 sale</span>
                           <span className="font-bold text-[#16a34a] text-[11px] font-sans rich-number">Earn ₹100</span>
                         </div>
@@ -851,7 +849,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 </div>
 
                 {/* Plan 2: PRO */}
-                <div className="relative bg-zinc-950/65 border-2 border-[#16a34a] shadow-[0_0_25px_rgba(22,163,74,0.15)] rounded-2xl p-6 md:p-8 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 min-h-[480px] md:min-h-[510px] md:scale-[1.05] z-10 self-stretch md:self-center order-1 md:order-2">
+                <div className="relative bg-card border-2 border-[#16a34a] shadow-[0_0_25px_rgba(22,163,74,0.06)] rounded-2xl p-6 md:p-8 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 min-h-[480px] md:min-h-[510px] md:scale-[1.05] z-10 self-stretch md:self-center order-1 md:order-2">
                   {/* Badge */}
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#16a34a] text-white text-[10px] uppercase font-black tracking-widest px-3.5 py-1 rounded-full shadow-lg whitespace-nowrap z-20 font-sans">
                     ⭐ Most Popular
@@ -859,11 +857,11 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                   
                   <div className="space-y-4">
                     <div className="space-y-1.5 text-center mt-2">
-                      <h3 className="text-sm font-bold text-white uppercase tracking-widest font-sans">Pro</h3>
+                      <h3 className="text-sm font-bold text-foreground uppercase tracking-widest font-sans">Pro</h3>
                       
                       {/* Hero Price */}
                       <div className="flex flex-col items-center justify-center py-2">
-                        <span className="text-4xl md:text-5xl font-medium text-white font-sans tracking-tight rich-number">₹499</span>
+                        <span className="text-4xl md:text-5xl font-medium text-foreground font-sans tracking-tight rich-number">₹499</span>
                       </div>
 
                       {/* Earning Potential */}
@@ -876,15 +874,15 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                     <div className="border-t border-[#16a34a]/30 pt-4 space-y-2">
                       <p className="text-[9px] font-bold text-muted uppercase tracking-wider text-center font-sans">Commission Structure</p>
                       <div className="space-y-1 text-xs">
-                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2">
+                        <div className="flex justify-between items-center bg-background border border-border/40 rounded-lg p-2">
                           <span className="text-muted/80 text-[11px] font-sans rich-number">₹199 sale</span>
                           <span className="font-bold text-[#16a34a] text-[11px] font-sans rich-number">Earn ₹100</span>
                         </div>
-                        <div className="flex justify-between items-center bg-black/45 border border-[#16a34a]/20 rounded-lg p-2">
+                        <div className="flex justify-between items-center bg-background border border-[#16a34a]/30 rounded-lg p-2">
                           <span className="text-muted/80 text-[11px] font-sans rich-number">₹499 sale</span>
                           <span className="font-bold text-[#16a34a] text-[11px] font-sans rich-number">Earn ₹250</span>
                         </div>
-                        <div className="flex justify-between items-center bg-black/45 border border-[#16a34a]/20 rounded-lg p-2">
+                        <div className="flex justify-between items-center bg-background border border-[#16a34a]/30 rounded-lg p-2">
                           <span className="text-muted/80 text-[11px] font-sans rich-number">₹999 sale</span>
                           <span className="font-bold text-[#16a34a] text-[11px] font-sans rich-number">Earn ₹250</span>
                         </div>
@@ -893,7 +891,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
 
                     {/* Earning Calculator */}
                     <div className="text-center pt-1 pb-2">
-                      <span className="text-[11px] font-semibold text-emerald-400/80 font-sans rich-number">100 Pro referrals = ₹25,000</span>
+                      <span className="text-[11px] font-semibold text-[#16a34a] font-sans rich-number">100 Pro referrals = ₹25,000</span>
                     </div>
                   </div>
 
@@ -911,7 +909,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 </div>
 
                 {/* Plan 3: MAX */}
-                <div className="relative bg-zinc-950/65 border border-emerald-500/50 shadow-[0_0_25px_rgba(16,185,129,0.15)] rounded-2xl p-6 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 min-h-[460px] md:min-h-[480px] self-stretch md:self-center order-3 md:order-3">
+                <div className="relative bg-card border border-border shadow-[0_0_25px_rgba(16,185,129,0.06)] rounded-2xl p-6 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 min-h-[460px] md:min-h-[480px] self-stretch md:self-center order-3 md:order-3">
                   {/* Badge */}
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-500 text-black text-[10px] uppercase font-black tracking-widest px-3.5 py-1 rounded-full shadow-lg whitespace-nowrap z-20 font-sans">
                     🔥 Highest Earnings
@@ -923,7 +921,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                       
                       {/* Hero Price */}
                       <div className="flex flex-col items-center justify-center py-2">
-                        <span className="text-4xl md:text-5xl font-medium text-white font-sans tracking-tight rich-number">₹999</span>
+                        <span className="text-4xl md:text-5xl font-medium text-foreground font-sans tracking-tight rich-number">₹999</span>
                       </div>
 
                       {/* Earning Potential */}
@@ -936,15 +934,15 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                     <div className="border-t border-border/40 pt-4 space-y-2">
                       <p className="text-[9px] font-bold text-muted uppercase tracking-wider text-center font-sans">Commission Structure</p>
                       <div className="space-y-1 text-xs">
-                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2">
+                        <div className="flex justify-between items-center bg-background border border-border/40 rounded-lg p-2">
                           <span className="text-muted/80 text-[11px] font-sans rich-number">₹199 sale</span>
                           <span className="font-bold text-[#16a34a] text-[11px] font-sans rich-number">Earn ₹100</span>
                         </div>
-                        <div className="flex justify-between items-center bg-black/45 border border-border/20 rounded-lg p-2">
+                        <div className="flex justify-between items-center bg-background border border-border/40 rounded-lg p-2">
                           <span className="text-muted/80 text-[11px] font-sans rich-number">₹499 sale</span>
                           <span className="font-bold text-[#16a34a] text-[11px] font-sans rich-number">Earn ₹250</span>
                         </div>
-                        <div className="flex justify-between items-center bg-black/45 border border-emerald-500/20 rounded-lg p-2">
+                        <div className="flex justify-between items-center bg-background border border-emerald-500/30 rounded-lg p-2">
                           <span className="text-muted/80 text-[11px] font-sans rich-number">₹999 sale</span>
                           <span className="font-bold text-[#16a34a] text-[11px] font-sans rich-number">Earn ₹500</span>
                         </div>
