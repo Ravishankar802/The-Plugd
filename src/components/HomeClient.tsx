@@ -696,8 +696,8 @@ export default function HomeClient({
           </div>
 
           {/* Table Display */}
-          <div className="w-full overflow-x-auto border border-[#e4e4e7] dark:border-border/50 rounded-xl bg-[#F5F5F5] dark:bg-zinc-950/20">
-            <div className="min-w-[380px] md:min-w-0 max-h-[300px] md:max-h-none overflow-y-auto md:overflow-y-visible">
+          <div className="w-full overflow-auto md:overflow-x-auto md:overflow-y-visible max-h-[300px] md:max-h-none border border-[#e4e4e7] dark:border-border/50 rounded-xl bg-[#F5F5F5] dark:bg-zinc-950/20">
+            <div className="min-w-[380px] md:min-w-0">
               <div className="grid grid-cols-[45px_1fr_105px] md:grid-cols-3 border-b border-[#e4e4e7] dark:border-border/80 bg-zinc-200 dark:bg-zinc-950/40 px-4 py-3 text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-muted font-sans text-left">
                 <div>Rank</div>
                 <div>Username</div>
