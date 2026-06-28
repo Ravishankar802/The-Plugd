@@ -231,7 +231,7 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
             <div className="space-y-1.5">
               <h3 className="text-lg md:text-xl font-bold text-foreground">Confirm Logout</h3>
               <p className="text-xs md:text-sm text-muted leading-normal">
-                Are you sure you want to log out of your Dashboard session?
+                Are you sure you want to log out of your session?
               </p>
             </div>
 
