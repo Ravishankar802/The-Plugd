@@ -769,8 +769,8 @@ here's my link 👉 ${link}`
                   {/* Phone Number */}
                   <div className="flex flex-col gap-3">
                     <label className="text-[0.95rem] font-bold text-foreground block tracking-wide">Phone Number</label>
-                    <div className="flex gap-2">
-                      <div className="relative flex-1 max-w-[220px] shrink-0">
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <div className="relative w-full sm:max-w-[220px] sm:shrink-0">
                         <button
                           type="button"
                           onClick={() => setPhoneCodeDropdownOpen(!phoneCodeDropdownOpen)}
@@ -788,7 +788,7 @@ here's my link 👉 ${link}`
                         {phoneCodeDropdownOpen && (
                           <>
                             <div className="fixed inset-0 z-40" onClick={() => setPhoneCodeDropdownOpen(false)} />
-                            <div className="absolute left-0 mt-1.5 w-[260px] bg-card border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto">
+                            <div className="absolute left-0 mt-1.5 w-full sm:w-[260px] bg-card border border-border rounded-xl shadow-2xl p-1 z-50 max-h-[300px] overflow-y-auto">
                               {COUNTRY_CODES.map((c) => (
                                 <button
                                   key={`${c.code}-${c.dialCode}`}
@@ -816,7 +816,7 @@ here's my link 👉 ${link}`
                         placeholder="Enter phone number"
                         value={phoneNo}
                         onChange={(e) => setPhoneNo(e.target.value.replace(/[^0-9]/g, ""))}
-                        className="flex-1 bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner font-sans"
+                        className="w-full sm:flex-1 bg-background border border-border rounded-xl px-5 py-4 text-foreground text-[1rem] focus:outline-none focus:border-muted transition-all shadow-inner font-sans"
                       />
                     </div>
                   </div>

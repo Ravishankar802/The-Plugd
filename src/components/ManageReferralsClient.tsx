@@ -621,24 +621,23 @@ export default function ManageReferralsClient() {
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
-            <p className="text-muted text-[0.7rem] font-medium hidden sm:block">Found {filteredAndSorted.length}</p>
+            <p className="text-muted text-[0.7rem] font-medium">Found {filteredAndSorted.length}</p>
           </div>
           
-          <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto z-30">
-            <p className="text-muted text-[0.7rem] font-medium sm:hidden">Found {filteredAndSorted.length}</p>
+          <div className="flex items-center justify-end gap-2.5 w-full sm:w-auto z-30">
             {/* Custom Tiers Dropdown */}
-            <div className="relative">
+            <div className="relative flex-1 sm:flex-initial">
               <button 
                 type="button"
                 onClick={() => {
                   setTierOpen(!tierOpen);
                 }}
-                className="flex items-center justify-between gap-2 px-4 py-2 bg-accent border border-border text-foreground rounded-lg text-sm font-semibold focus:outline-none transition-all min-w-[140px] whitespace-nowrap shadow-sm select-none cursor-pointer hover:bg-accent/80"
+                className="w-full flex items-center justify-between gap-1.5 px-2.5 sm:px-4 py-2 bg-accent border border-border text-foreground rounded-lg text-sm font-semibold focus:outline-none transition-all min-w-0 sm:min-w-[140px] whitespace-nowrap shadow-sm select-none cursor-pointer hover:bg-accent/80"
               >
-                <span>
+                <span className="truncate">
                   {tierFilter === "ALL" ? "All Tiers" : tierFilter}
                 </span>
-                <ChevronDown size={16} className={`text-muted transition-transform duration-200 ${tierOpen ? "rotate-180" : ""}`} />
+                <ChevronDown size={16} className={`text-muted transition-transform duration-200 shrink-0 ${tierOpen ? "rotate-180" : ""}`} />
               </button>
               
               {tierOpen && (
@@ -673,20 +672,20 @@ export default function ManageReferralsClient() {
               )}
             </div>
             {/* Custom Sort Joined Dropdown */}
-            <div className="relative">
+            <div className="relative flex-1 sm:flex-initial">
               <button 
                 type="button"
                 onClick={() => {
                   setSortOpen(!sortOpen);
                 }}
-                className="flex items-center justify-between gap-2 px-4 py-2 bg-accent border border-border text-foreground rounded-lg text-sm font-semibold focus:outline-none transition-all min-w-[160px] whitespace-nowrap shadow-sm select-none cursor-pointer hover:bg-accent/80"
+                className="w-full flex items-center justify-between gap-1.5 px-2.5 sm:px-4 py-2 bg-accent border border-border text-foreground rounded-lg text-sm font-semibold focus:outline-none transition-all min-w-0 sm:min-w-[160px] whitespace-nowrap shadow-sm select-none cursor-pointer hover:bg-accent/80"
               >
-                <span>
+                <span className="truncate">
                   {sortField === "createdAt" 
                     ? (sortOrder === "desc" ? "Recently Joined" : "Earliest Joined") 
                     : "Custom Sorted"}
                 </span>
-                <ChevronDown size={16} className={`text-muted transition-transform duration-200 ${sortOpen ? "rotate-180" : ""}`} />
+                <ChevronDown size={16} className={`text-muted transition-transform duration-200 shrink-0 ${sortOpen ? "rotate-180" : ""}`} />
               </button>
               
               {sortOpen && (

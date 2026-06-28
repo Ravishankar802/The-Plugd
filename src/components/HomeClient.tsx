@@ -697,48 +697,50 @@ export default function HomeClient({
 
           {/* Table Display */}
           <div className="w-full overflow-x-auto border border-[#e4e4e7] dark:border-border/50 rounded-xl bg-[#F5F5F5] dark:bg-zinc-950/20">
-            <div className="min-w-[380px] md:min-w-0 grid grid-cols-[45px_1fr_105px] md:grid-cols-3 border-b border-[#e4e4e7] dark:border-border/80 bg-zinc-200 dark:bg-zinc-950/40 px-4 py-3 text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-muted font-sans text-left">
-              <div>Rank</div>
-              <div>Username</div>
-              <div className="text-right">Earnings</div>
-            </div>
-            <div className="divide-y divide-border/40 max-h-[300px] overflow-y-auto overflow-x-hidden touch-pan-y min-w-[380px] md:min-w-0">
-              {(!leaderboardData[leaderboardTab] || leaderboardData[leaderboardTab].length === 0) ? (
-                <div className="text-center py-8 text-sm text-muted font-medium font-sans">
-                  No active promoters in this timeframe yet
-                </div>
-              ) : (
-                leaderboardData[leaderboardTab].map((entry, idx) => {
-                const getLeagueIdByEarnings = (earnings: number) => {
-                  if (earnings >= 100000000) return "sovereign";
-                  if (earnings >= 10000000) return "apex";
-                  if (earnings >= 5000000) return "elite";
-                  if (earnings >= 2500000) return "legend";
-                  if (earnings >= 1000000) return "titan";
-                  if (earnings >= 500000) return "champion";
-                  if (earnings >= 100000) return "master";
-                  if (earnings >= 25000) return "diamond";
-                  if (earnings >= 5000) return "gold";
-                  if (earnings >= 1000) return "silver";
-                  return "bronze";
-                };
-                const leagueId = getLeagueIdByEarnings(entry.allTimeEarnings || entry.earnings);
-                return (
-                  <div key={idx} className="grid grid-cols-[45px_1fr_105px] md:grid-cols-3 px-4 py-3 text-sm font-sans items-center hover:bg-zinc-900/10 border-b border-[#e4e4e7]/60 dark:border-border/40 transition-colors text-left last:border-b-0 min-w-[380px] md:min-w-0">
-                    <div className="font-extrabold text-muted">
-                      {entry.rank === 1 ? "🥇" : entry.rank === 2 ? "🥈" : entry.rank === 3 ? "🥉" : `#${entry.rank}`}
-                    </div>
-                    <div className="font-semibold text-foreground pr-2 flex items-center gap-2 whitespace-nowrap min-w-0">
-                      <LeagueIcon id={leagueId} size={20} className="inline-block flex-shrink-0" />
-                      <span>@{entry.username}</span>
-                    </div>
-                    <div className="font-extrabold text-[#16a34a] text-right rich-number">
-                      ₹{new Intl.NumberFormat("en-IN").format(entry.earnings)}
-                    </div>
+            <div className="min-w-[380px] md:min-w-0 max-h-[300px] md:max-h-none overflow-y-auto md:overflow-y-visible">
+              <div className="grid grid-cols-[45px_1fr_105px] md:grid-cols-3 border-b border-[#e4e4e7] dark:border-border/80 bg-zinc-200 dark:bg-zinc-950/40 px-4 py-3 text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-muted font-sans text-left">
+                <div>Rank</div>
+                <div>Username</div>
+                <div className="text-right">Earnings</div>
+              </div>
+              <div className="divide-y divide-border/40 md:max-h-[300px] md:overflow-y-auto min-w-[380px] md:min-w-0">
+                {(!leaderboardData[leaderboardTab] || leaderboardData[leaderboardTab].length === 0) ? (
+                  <div className="text-center py-8 text-sm text-muted font-medium font-sans">
+                    No active promoters in this timeframe yet
                   </div>
-                );
-              })
-              )}
+                ) : (
+                  leaderboardData[leaderboardTab].map((entry, idx) => {
+                  const getLeagueIdByEarnings = (earnings: number) => {
+                    if (earnings >= 100000000) return "sovereign";
+                    if (earnings >= 10000000) return "apex";
+                    if (earnings >= 5000000) return "elite";
+                    if (earnings >= 2500000) return "legend";
+                    if (earnings >= 1000000) return "titan";
+                    if (earnings >= 500000) return "champion";
+                    if (earnings >= 100000) return "master";
+                    if (earnings >= 25000) return "diamond";
+                    if (earnings >= 5000) return "gold";
+                    if (earnings >= 1000) return "silver";
+                    return "bronze";
+                  };
+                  const leagueId = getLeagueIdByEarnings(entry.allTimeEarnings || entry.earnings);
+                  return (
+                    <div key={idx} className="grid grid-cols-[45px_1fr_105px] md:grid-cols-3 px-4 py-3 text-sm font-sans items-center hover:bg-zinc-900/10 border-b border-[#e4e4e7]/60 dark:border-border/40 transition-colors text-left last:border-b-0 min-w-[380px] md:min-w-0">
+                      <div className="font-extrabold text-muted">
+                        {entry.rank === 1 ? "🥇" : entry.rank === 2 ? "🥈" : entry.rank === 3 ? "🥉" : `#${entry.rank}`}
+                      </div>
+                      <div className="font-semibold text-foreground pr-2 flex items-center gap-2 whitespace-nowrap min-w-0">
+                        <LeagueIcon id={leagueId} size={20} className="inline-block flex-shrink-0" />
+                        <span>@{entry.username}</span>
+                      </div>
+                      <div className="font-extrabold text-[#16a34a] text-right rich-number">
+                        ₹{new Intl.NumberFormat("en-IN").format(entry.earnings)}
+                      </div>
+                    </div>
+                  );
+                })
+                )}
+              </div>
             </div>
           </div>
 
