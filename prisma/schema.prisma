@@ -23,6 +23,8 @@ model Account {
   isClaimed      Boolean  @default(false)
   referredBy     String?
   userStatuses   UserAccountStatus[]
+
+  @@index([email])
 }
 
 model UserAccountStatus {
@@ -43,6 +45,8 @@ model OtpToken {
   expiresAt DateTime
   used      Boolean  @default(false)
   createdAt DateTime @default(now())
+
+  @@index([email, used])
 }
 
 model ReferralPayout {
