@@ -122,7 +122,7 @@ export default function Footer({
                   <span className="text-black dark:text-white font-semibold text-sm mb-4">Account</span>
                   <div className="flex flex-col space-y-3">
                     <Link href="/vault" className="text-black/50 dark:text-white/50 text-sm hover:text-black dark:hover:text-white transition-colors">
-                      Vault
+                      Dashboard
                     </Link>
                     {onStartEarning ? (
                       <button 
@@ -218,7 +218,7 @@ export default function Footer({
                   <div className="md:hidden flex items-center justify-center gap-2 whitespace-nowrap">
                     <Link href="/" className="transition-colors">Home</Link>
                     <span className={mutedTextColor}>·</span>
-                    <Link href="/vault" className="transition-colors">Vault</Link>
+                    <Link href="/vault" className="transition-colors">Dashboard</Link>
                     <span className={mutedTextColor}>·</span>
                     <Link href="/terms-of-service" className="transition-colors">Terms</Link>
                     <span className={mutedTextColor}>·</span>
@@ -226,7 +226,7 @@ export default function Footer({
                   </div>
                   <div className="hidden md:flex items-center gap-6">
                     <Link href="/" className="transition-colors">Home</Link>
-                    <Link href="/vault" className="transition-colors">Vault</Link>
+                    <Link href="/vault" className="transition-colors">Dashboard</Link>
                     <Link href="/terms-of-service" className="transition-colors">Terms of Service</Link>
                     <a href="mailto:support@theplugd.com" className="transition-colors">Contact</a>
                   </div>

@@ -85,7 +85,7 @@ const articleDetails: Record<string, ArticleContent> = {
     title: "How Payouts Work",
     content: [
       "Payments are processed through Dodo Payments. Processing times vary by region but are typically 1 to 3 business days after the payout date.",
-      "Your earnings are tracked in real time in your Vault. Every time someone joins through your link, your plan tier commission (₹100, ₹250, or ₹500) is added to your balance immediately. You can watch it grow between payouts.",
+      "Your earnings are tracked in real time in your Dashboard. Every time someone joins through your link, your plan tier commission (₹100, ₹250, or ₹500) is added to your balance immediately. You can watch it grow between payouts.",
       "There's no maximum on how much you can withdraw. If you've referred 500 people on the Starter tier, you have ₹50,000 waiting. Request it all at once or let it accumulate, depending on your preference."
     ]
   },
@@ -99,7 +99,7 @@ const articleDetails: Record<string, ArticleContent> = {
       "Our Top Promoters board provides clear evidence of what is achievable. Across over ₹100 Crore in total platform payouts, our top promoters have achieved impressive scale. The 50th top promoter on the platform has crossed ₹5,00,000 in total payouts. Rank 2 has cleared ₹55,00,000. And our number one promoter has crossed the ₹1 Crore mark in lifetime earnings (currently standing at over ₹1,10,00,000). All of this is done with a single link, no inventory, no overhead, and no marketing teams.",
       "When we look at daily earnings, the numbers are just as solid. The top 50 promoters on the platform earn between ₹5,000 and ₹40,000 every single day. Depending on their plan tier, they earn up to ₹500 for every direct referral who joins. They achieve this by consistently sharing their link across their primary channels—like WhatsApp groups, close Instagram communities, Discord servers, and X.",
       "But you don't need a massive initial following to start earning. The overall average earning for promoters on the platform is ₹5L/month. Getting your first 10 referrals pays you ₹1,000 on the Starter plan, which covers your initial ₹199 entry fee and puts you in profit. From there, scaling is a matter of consistency: sharing once a day, targeting active communities where people are looking for side income, and following up on clicks.",
-      "Volume and persistence beat any single viral moment. The floor is whatever effort you put in. The ceiling is shown right on our Top Promoters board. Start small, share daily, and watch your Vault grow."
+      "Volume and persistence beat any single viral moment. The floor is whatever effort you put in. The ceiling is shown right on our Top Promoters board. Start small, share daily, and watch your Dashboard grow."
     ]
   }
 };

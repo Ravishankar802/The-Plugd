@@ -516,7 +516,7 @@ export default function HomeClient({
                     borderRadius: '8px'
                   }}
                 >
-                  Vault
+                  Dashboard
                 </Link>
               </div>
             </section>
@@ -915,7 +915,7 @@ export default function HomeClient({
                 borderRadius: '8px'
               }}
             >
-              Vault
+              Dashboard
             </Link>
           </div>
         </div>

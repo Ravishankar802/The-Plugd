@@ -36,7 +36,7 @@ export default function TermsOfService() {
 
           <Section 
             title="4. Earning Referrals" 
-            content="You earn a commission for each person who joins Plugd through your unique referral link and completes their plan payment. The commission you earn is determined by your promoter plan tier: ₹100 for Starter, ₹250 for Pro, and ₹500 for Max. Earnings are tracked in your Vault and paid out twice a month via PayPal or UPI, whichever you have set in your profile. The minimum withdrawal amount is ₹5,000." 
+            content="You earn a commission for each person who joins Plugd through your unique referral link and completes their plan payment. The commission you earn is determined by your promoter plan tier: ₹100 for Starter, ₹250 for Pro, and ₹500 for Max. Earnings are tracked in your Dashboard and paid out twice a month via PayPal or UPI, whichever you have set in your profile. The minimum withdrawal amount is ₹5,000." 
           />
 
           <Section 
@@ -46,7 +46,7 @@ export default function TermsOfService() {
 
           <Section 
             title="6. Simulated Leaderboard and Projections" 
-            content='To demonstrate platform capability and gamify promoter participation, the "Top Promoters" board, average daily earning stats, total platform payout metrics, charts, promoter profiles, and stats referenced in our educational resources may display simulated, virtual, or illustrative data. These profiles and figures represent simulated promotional performance based on mathematical referral growth models and do not guarantee or represent actual live earnings of specific historical individuals. Actual earnings of registered users are tracked separately in their respective Vaults and paid out strictly based on verified conversions.'
+            content='To demonstrate platform capability and gamify promoter participation, the "Top Promoters" board, average daily earning stats, total platform payout metrics, charts, promoter profiles, and stats referenced in our educational resources may display simulated, virtual, or illustrative data. These profiles and figures represent simulated promotional performance based on mathematical referral growth models and do not guarantee or represent actual live earnings of specific historical individuals. Actual earnings of registered users are tracked separately in their respective Dashboards and paid out strictly based on verified conversions.'
           />
 
           <Section 

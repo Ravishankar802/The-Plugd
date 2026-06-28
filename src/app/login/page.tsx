@@ -30,11 +30,11 @@ function LoginContent() {
     if (message) {
       setSuccessMsg(message);
     } else if (success === "true") {
-      setSuccessMsg("Payment successful! Enter your email to access your Vault");
+      setSuccessMsg("Payment successful! Enter your email to access your Dashboard");
     }
 
     if (err === "not_paid") {
-      setError("You need a paid account to access the Vault");
+      setError("You need a paid account to access the Dashboard");
     }
   }, [searchParams]);
 
@@ -155,7 +155,7 @@ function LoginContent() {
             </h1>
             <p className="text-muted text-center mb-8 text-[0.95rem]">
               {step === 1 
-                ? "Enter your email to access your Vault" 
+                ? "Enter your email to access your Dashboard" 
                 : `We sent a 4-digit code to ${email}`}
             </p>
 
