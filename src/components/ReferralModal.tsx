@@ -794,7 +794,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
               {/* Grid of 3 Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center justify-center max-w-5xl mx-auto px-4 pt-4">
                 {/* Plan 1: STARTER */}
-                <div className="relative bg-card border border-border rounded-2xl p-6 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 shadow-xl min-h-[460px] md:min-h-[480px] self-stretch md:self-center order-2 md:order-1">
+                <div className="relative bg-card border border-border rounded-2xl p-6 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 shadow-xl min-h-[460px] md:min-h-[480px] self-stretch md:self-center order-1 md:order-1">
                   <div className="space-y-4">
                     <div className="space-y-1.5 text-center mt-2">
                       <h3 className="text-sm font-bold text-muted uppercase tracking-widest font-sans">Starter</h3>
@@ -849,7 +849,7 @@ export default function ReferralModal({ isOpen, onClose, userEmail, referralCode
                 </div>
 
                 {/* Plan 2: PRO */}
-                <div className="relative bg-card border-2 border-[#16a34a] shadow-[0_0_25px_rgba(22,163,74,0.06)] rounded-2xl p-6 md:p-8 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 min-h-[480px] md:min-h-[510px] md:scale-[1.05] z-10 self-stretch md:self-center order-1 md:order-2">
+                <div className="relative bg-card border-2 border-[#16a34a] shadow-[0_0_25px_rgba(22,163,74,0.06)] rounded-2xl p-6 md:p-8 flex flex-col justify-between hover:scale-[1.01] transition-all duration-300 min-h-[480px] md:min-h-[510px] md:scale-[1.05] z-10 self-stretch md:self-center order-2 md:order-2">
                   {/* Badge */}
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#16a34a] text-white text-[10px] uppercase font-black tracking-widest px-3.5 py-1 rounded-full shadow-lg whitespace-nowrap z-20 font-sans">
                     ⭐ Most Popular
