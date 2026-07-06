@@ -119,31 +119,34 @@ function DashboardProfileContent() {
   const link = `https://theplugd.com?ref=${referralLinkSuffix}`;
 
   const tier = promoterData?.tier || "STARTER";
-  const joinFee = tier === "MAX" ? "₹999" : (tier === "PRO" ? "₹499" : "₹199");
-  const commission = tier === "MAX" ? "₹500" : (tier === "PRO" ? "₹250" : "₹100");
 
   const POST_VARIATIONS = [
-    `if you've never heard of Plugd, it's a referral platform 💸
-
-pay ${joinFee} once, get your link, share it everywhere - whatsapp, telegram, discord, twitter, wherever
-
-every person who joins through your link = ${commission} in your earnings
-
-stay consistent and it builds up fast 👉 ${link}`,
-    `Plugd is a referral program and honestly one of the simplest ways to make money online 💸
-
-${joinFee} to join. you get a unique link. every signup through your link pays you ${commission} back.
-
-share it consistently and it compounds. i'm doing it.
-
-👉 ${link}`,
-    `joined this referral platform called Plugd a while back 💸
-
-the model is simple - pay ${joinFee}, get your own referral link, earn ${commission} every time someone signs up through it
-
-the more consistently you share it, the more it adds up
-
-here's my link 👉 ${link}`
+    `if you've never heard of Plugd, it's a super simple referral platform 💸
+Here's how it works:
+1. Choose a plan to join: ₹199 (Starter), ₹499 (Pro), or ₹999 (Max)
+2. Get your unique referral link
+3. Share it anywhere (WhatsApp groups, Telegram channels, X, Instagram, or Discord)
+4. Every time someone signs up through your link, you get paid: ₹100, ₹250, or ₹500 directly in commission.
+No products to sell, no complicated setups. Just share your link and earn.
+👉 Check it out: ${link}`,
+    `Plugd is a referral program and honestly one of the cleanest side hustles right now 💸
+You pay a one-time fee to join (₹199, ₹499, or ₹999 depending on the tier you choose) and get a personal link. 
+Then, you just drop it in your bio, share it on WhatsApp, post it on Telegram, or share on Twitter/X. 
+Every person who joins through you pays you back:
+- ₹100/ref (Starter)
+- ₹250/ref (Pro)
+- ₹500/ref (Max)
+If you get just 10 people to join Pro, that's ₹2,500. Get 50 people on Max, that's ₹25,000. It compounds fast if you stay consistent.
+Try it out here: ${link}`,
+    `I joined this referral platform called Plugd a while back and the payout model is so simple 💸
+You join once by choosing a tier (Starter: ₹199, Pro: ₹499, Max: ₹999), receive your own referral link, and earn commission every time someone else signs up through it.
+You can share your link on WhatsApp, Telegram, Discord, X, or Reddit. 
+Every single conversion earns you:
+- ₹100 (Starter)
+- ₹250 (Pro)
+- ₹500 (Max)
+Earnings track live on your dashboard and payout via UPI or PayPal. If you're looking for a simple way to earn, this is it.
+Here's my link to sign up 👉 ${link}`
   ];
 
   // Determine active section from tab param
