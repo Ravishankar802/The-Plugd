@@ -113,6 +113,9 @@ model Referral {
   status        String    @default("clicked")
   createdAt     DateTime  @default(now())
   Promoter      Promoter? @relation(fields: [promoterEmail], references: [email])
+
+  @@index([promoterEmail, status])
+  @@index([referralCode, status])
 }
 
 model User {
@@ -131,5 +134,7 @@ model WithdrawalRequest {
   details     String
   status      String   @default("pending")
   createdAt   DateTime @default(now())
+
+  @@index([status])
 }
 
