@@ -46,7 +46,6 @@ export async function POST(req: Request) {
         name: name || undefined,
       },
       billing_address: country ? { country: country.toUpperCase() } : undefined,
-      billing_currency: country?.toUpperCase() === "IN" ? "INR" : undefined,
       metadata: updatedMetadata,
       feature_flags: {
         allow_discount_code: false,

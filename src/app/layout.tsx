@@ -21,10 +21,10 @@ const ebGaramond = EB_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL("https://theplugd.com"),
   title: "Plugd - Get paid to share links",
-  description: "Share your referral link. Earn ₹100 for every person who joins.",
+  description: "Share your referral link. Earn $2 to $10 for every person who joins.",
   openGraph: {
     title: "Plugd - Get paid to share links",
-    description: "Share your referral link. Earn ₹100 for every person who joins.",
+    description: "Share your referral link. Earn $2 to $10 for every person who joins.",
     url: "https://theplugd.com",
     siteName: "Plugd",
     images: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Plugd - Get paid to share links",
-    description: "Share your referral link. Earn ₹100 for every person who joins.",
+    description: "Share your referral link. Earn $2 to $10 for every person who joins.",
     images: ["https://theplugd.com/og-v9.png"],
   },
   icons: {

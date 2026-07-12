@@ -10,7 +10,7 @@ async function main() {
   
   promoters.forEach((p, idx) => {
     const rank = idx + 1;
-    console.log(`Rank ${rank}: ${p.name} (@${p.username}) - ₹${p.totalEarned} - ${p.intlBankCountry || 'India'}`);
+    console.log(`Rank ${rank}: ${p.name} (@${p.username}) - $${p.totalEarned} - ${p.intlBankCountry || 'International'}`);
   });
 }
 

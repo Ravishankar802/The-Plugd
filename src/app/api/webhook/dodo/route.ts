@@ -11,15 +11,15 @@ function generateReferralCode(email: string) {
 
 function calculateCommission(referrerTier: PromoterTier, purchasedTier: PromoterTier): number {
   if (referrerTier === PromoterTier.PRO) {
-    if (purchasedTier === PromoterTier.STARTER) return 100.0;
-    return 250.0;
+    if (purchasedTier === PromoterTier.STARTER) return 2.0;
+    return 5.0;
   }
   if (referrerTier === PromoterTier.MAX) {
-    if (purchasedTier === PromoterTier.STARTER) return 100.0;
-    if (purchasedTier === PromoterTier.PRO) return 250.0;
-    return 500.0;
+    if (purchasedTier === PromoterTier.STARTER) return 2.0;
+    if (purchasedTier === PromoterTier.PRO) return 5.0;
+    return 10.0;
   }
-  return 100.0;
+  return 2.0;
 }
 
 export async function POST(req: Request) {

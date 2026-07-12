@@ -2,7 +2,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log("Starting USD to INR Database Migration...");
+  console.log("Starting INR to USD Database Migration...");
 
   // 1. Fetch current totals
   const totalEarnedBefore = await prisma.promoter.aggregate({ _sum: { totalEarned: true } });
@@ -14,9 +14,9 @@ async function main() {
   const updatePromoters = await prisma.$executeRaw`
     UPDATE "Promoter" 
     SET 
-      "totalEarned" = "totalEarned" * 100.0,
-      "pendingPayout" = "pendingPayout" * 100.0,
-      "totalPaid" = "totalPaid" * 100.0
+      "totalEarned" = "totalEarned" / 50.0,
+      "pendingPayout" = "pendingPayout" / 50.0,
+      "totalPaid" = "totalPaid" / 50.0
   `;
   console.log(`Updated ${updatePromoters} records in Promoter table.`);
 
@@ -24,7 +24,7 @@ async function main() {
   console.log("Updating Referral table rewards...");
   const updateReferrals = await prisma.$executeRaw`
     UPDATE "Referral"
-    SET "amountEarned" = "amountEarned" * 100.0
+    SET "amountEarned" = "amountEarned" / 50.0
     WHERE "amountEarned" IS NOT NULL
   `;
   console.log(`Updated ${updateReferrals} records in Referral table.`);
@@ -33,7 +33,7 @@ async function main() {
   console.log("Updating ReferralPayout table amounts...");
   const updatePayouts = await prisma.$executeRaw`
     UPDATE "ReferralPayout"
-    SET "amount" = "amount" * 100.0
+    SET "amount" = "amount" / 50.0
   `;
   console.log(`Updated ${updatePayouts} records in ReferralPayout table.`);
 
@@ -41,7 +41,7 @@ async function main() {
   console.log("Updating WithdrawalRequest table amounts...");
   const updateWithdrawals = await prisma.$executeRaw`
     UPDATE "WithdrawalRequest"
-    SET "amount" = "amount" * 100.0
+    SET "amount" = "amount" / 50.0
   `;
   console.log(`Updated ${updateWithdrawals} records in WithdrawalRequest table.`);
 

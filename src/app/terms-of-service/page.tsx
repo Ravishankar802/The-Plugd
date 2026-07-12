@@ -26,22 +26,22 @@ export default function TermsOfService() {
 
            <Section 
             title="2. What Plugd Does" 
-            content="Plugd is a referral program. Promoters pay a one-time entry fee depending on their chosen plan tier (Starter: ₹199, Pro: ₹499, Max: ₹999) to join, receive a unique referral link, and earn referral commissions based on their plan tier for every new person who joins through that link. Plugd does not guarantee any specific earnings." 
+            content="Plugd is a referral program. Promoters pay a one-time entry fee depending on their chosen plan tier (Starter: $4, Pro: $9, Max: $19) to join, receive a unique referral link, and earn referral commissions based on their plan tier for every new person who joins through that link. Plugd does not guarantee any specific earnings." 
           />
 
           <Section 
             title="3. Joining Fee" 
-            content="Joining Plugd as a promoter requires a one-time payment based on your chosen plan tier (Starter: ₹199, Pro: ₹499, Max: ₹999) processed via Dodo Payments. This fee is non-refundable once your account is activated." 
+            content="Joining Plugd as a promoter requires a one-time payment based on your chosen plan tier (Starter: $4, Pro: $9, Max: $19) processed via Dodo Payments. This fee is non-refundable once your account is activated." 
           />
 
           <Section 
             title="4. Earning Referrals" 
-            content="You earn a commission for each person who joins Plugd through your unique referral link and completes their plan payment. The commission you earn is determined by your promoter plan tier: ₹100 for Starter, ₹250 for Pro, and ₹500 for Max. Earnings are tracked on your Dashboard and paid out twice a month via PayPal or UPI, whichever you have set in your profile. The minimum withdrawal amount is ₹5,000." 
+            content="You earn a commission for each person who joins Plugd through your unique referral link and completes their plan payment. The commission you earn is determined by your promoter plan tier: $2 for Starter, $5 for Pro, and $10 for Max. Earnings are tracked on your Dashboard and paid out twice a month via PayPal or bank transfer, whichever you have set in your profile. The minimum withdrawal amount is $50." 
           />
 
           <Section 
             title="5. Payout Eligibility" 
-            content="To receive a payout, your account must have a valid payout method (PayPal or UPI) saved in your profile. Plugd reserves the right to withhold payouts if fraudulent activity is suspected." 
+            content="To receive a payout, your account must have a valid payout method (PayPal or bank transfer) saved in your profile. Plugd reserves the right to withhold payouts if fraudulent activity is suspected." 
           />
 
           <Section 

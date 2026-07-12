@@ -48,10 +48,10 @@ export async function GET() {
       const conversions = promoter.Referral.filter(r => r.status === "converted");
       const signupCount = hasReferrals ? conversions.length : promoter.totalConversions;
       
-      // Revenue Generated: Users pay ₹199 for listing
-      const revenueGenerated = signupCount * 199.0;
+      // Revenue Generated: Users pay $4 for Starter tier (baseline calculation)
+      const revenueGenerated = signupCount * 4.0;
       
-      // Paid Users: In this system, all "converted" referrals are paid users (₹199)
+      // Paid Users: In this system, all "converted" referrals are paid users ($4 Starter tier baseline)
       const paidUsers = signupCount;
 
       const pendingRequest = withdrawalRequests.find(

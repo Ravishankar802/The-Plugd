@@ -123,29 +123,29 @@ function DashboardProfileContent() {
   const POST_VARIATIONS = [
     `if you've never heard of Plugd, it's a super simple referral platform 💸
 Here's how it works:
-1. Choose a plan to join: ₹199 (Starter), ₹499 (Pro), or ₹999 (Max)
+1. Choose a plan to join: $4 (Starter), $9 (Pro), or $19 (Max)
 2. Get your unique referral link
 3. Share it anywhere (WhatsApp groups, Telegram channels, X, Instagram, or Discord)
-4. Every time someone signs up through your link, you get paid: ₹100, ₹250, or ₹500 directly in commission.
+4. Every time someone signs up through your link, you get paid: $2, $5, or $10 directly in commission.
 No products to sell, no complicated setups. Just share your link and earn.
 👉 Check it out: ${link}`,
     `Plugd is a referral program and honestly one of the cleanest side hustles right now 💸
-You pay a one-time fee to join (₹199, ₹499, or ₹999 depending on the tier you choose) and get a personal link. 
+You pay a one-time fee to join ($4, $9, or $19 depending on the tier you choose) and get a personal link. 
 Then, you just drop it in your bio, share it on WhatsApp, post it on Telegram, or share on Twitter/X. 
 Every person who joins through you pays you back:
-- ₹100/ref (Starter)
-- ₹250/ref (Pro)
-- ₹500/ref (Max)
-If you get just 10 people to join Pro, that's ₹2,500. Get 50 people on Max, that's ₹25,000. It compounds fast if you stay consistent.
+- $2/ref (Starter)
+- $5/ref (Pro)
+- $10/ref (Max)
+If you get just 10 people to join Pro, that's $50. Get 50 people on Max, that's $500. It compounds fast if you stay consistent.
 Try it out here: ${link}`,
     `I joined this referral platform called Plugd a while back and the payout model is so simple 💸
-You join once by choosing a tier (Starter: ₹199, Pro: ₹499, Max: ₹999), receive your own referral link, and earn commission every time someone else signs up through it.
+You join once by choosing a tier (Starter: $4, Pro: $9, Max: $19), receive your own referral link, and earn commission every time someone else signs up through it.
 You can share your link on WhatsApp, Telegram, Discord, X, or Reddit. 
 Every single conversion earns you:
-- ₹100 (Starter)
-- ₹250 (Pro)
-- ₹500 (Max)
-Earnings track live on your dashboard and payout via UPI or PayPal. If you're looking for a simple way to earn, this is it.
+- $2 (Starter)
+- $5 (Pro)
+- $10 (Max)
+Earnings track live on your dashboard and payout via PayPal or bank transfer. If you're looking for a simple way to earn, this is it.
 Here's my link to sign up 👉 ${link}`
   ];
 
@@ -286,17 +286,14 @@ Here's my link to sign up 👉 ${link}`
   const hasNoEarnings = maxVal === 0;
 
   const formatYAxis = (value: number) => {
-    if (value === 0) return "₹0";
-    if (value >= 1e7) {
-      return `₹${(value / 1e7).toFixed(1).replace(/\.0$/, "")}Cr`;
-    }
-    if (value >= 1e5) {
-      return `₹${(value / 1e5).toFixed(1).replace(/\.0$/, "")}L`;
+    if (value === 0) return "$0";
+    if (value >= 1e6) {
+      return `$${(value / 1e6).toFixed(1).replace(/\.0$/, "")}M`;
     }
     if (value >= 1e3) {
-      return `₹${(value / 1e3).toFixed(1).replace(/\.0$/, "")}k`;
+      return `$${(value / 1e3).toFixed(1).replace(/\.0$/, "")}K`;
     }
-    return `₹${value}`;
+    return `$${value}`;
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -527,16 +524,16 @@ Here's my link to sign up 👉 ${link}`
 
   const LEAGUE_DEFS = [
     { id: "bronze", name: "Bronze League", emoji: "🥉", target: 0 },
-    { id: "silver", name: "Silver League", emoji: "🥈", target: 1000 },
-    { id: "gold", name: "Gold League", emoji: "🥇", target: 5000 },
-    { id: "diamond", name: "Diamond League", emoji: "💎", target: 25000 },
-    { id: "master", name: "Master League", emoji: "⚔️", target: 100000 },
-    { id: "champion", name: "Champion League", emoji: "🔥", target: 500000 },
-    { id: "titan", name: "Titan League", emoji: "👑", target: 1000000 },
-    { id: "legend", name: "Legend League", emoji: "🚀", target: 2500000 },
-    { id: "elite", name: "Elite League", emoji: "🌟", target: 5000000 },
-    { id: "apex", name: "Apex League", emoji: "🏆", target: 10000000 },
-    { id: "sovereign", name: "Sovereign League", emoji: "👑", target: 100000000 }
+    { id: "silver", name: "Silver League", emoji: "🥈", target: 100 },
+    { id: "gold", name: "Gold League", emoji: "🥇", target: 500 },
+    { id: "diamond", name: "Diamond League", emoji: "💎", target: 2000 },
+    { id: "master", name: "Master League", emoji: "⚔️", target: 10000 },
+    { id: "champion", name: "Champion League", emoji: "🔥", target: 50000 },
+    { id: "titan", name: "Titan League", emoji: "👑", target: 100000 },
+    { id: "legend", name: "Legend League", emoji: "🚀", target: 250000 },
+    { id: "elite", name: "Elite League", emoji: "🌟", target: 500000 },
+    { id: "apex", name: "Apex League", emoji: "🏆", target: 1000000 },
+    { id: "sovereign", name: "Sovereign League", emoji: "👑", target: 10000000 }
   ];
 
   let currentLeagueIndex = -1;
@@ -670,30 +667,30 @@ Here's my link to sign up 👉 ${link}`
                         <div className="space-y-1 text-sm font-sans font-medium text-foreground">
                           {promoterData.tier === "STARTER" && (
                             <>
-                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹199 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
-                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹499 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
-                              <div className="flex justify-between"><span>₹999 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>$4 sale</span> <span className="font-bold text-emerald-400">Earn $2</span></div>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>$9 sale</span> <span className="font-bold text-emerald-400">Earn $2</span></div>
+                              <div className="flex justify-between"><span>$19 sale</span> <span className="font-bold text-emerald-400">Earn $2</span></div>
                             </>
                           )}
                           {promoterData.tier === "PRO" && (
                             <>
-                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹199 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
-                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹499 sale</span> <span className="font-bold text-emerald-400">Earn ₹250</span></div>
-                              <div className="flex justify-between"><span>₹999 sale</span> <span className="font-bold text-emerald-400">Earn ₹250</span></div>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>$4 sale</span> <span className="font-bold text-emerald-400">Earn $2</span></div>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>$9 sale</span> <span className="font-bold text-emerald-400">Earn $5</span></div>
+                              <div className="flex justify-between"><span>$19 sale</span> <span className="font-bold text-emerald-400">Earn $5</span></div>
                             </>
                           )}
                           {promoterData.tier === "MAX" && (
                             <>
-                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹199 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
-                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹499 sale</span> <span className="font-bold text-emerald-400">Earn ₹250</span></div>
-                              <div className="flex justify-between"><span>₹999 sale</span> <span className="font-bold text-emerald-400">Earn ₹500</span></div>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>$4 sale</span> <span className="font-bold text-emerald-400">Earn $2</span></div>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>$9 sale</span> <span className="font-bold text-emerald-400">Earn $5</span></div>
+                              <div className="flex justify-between"><span>$19 sale</span> <span className="font-bold text-emerald-400">Earn $10</span></div>
                             </>
                           )}
                           {(!promoterData.tier || (promoterData.tier !== "STARTER" && promoterData.tier !== "PRO" && promoterData.tier !== "MAX")) && (
                             <>
-                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹199 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
-                              <div className="flex justify-between border-b border-border/20 pb-1"><span>₹499 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
-                              <div className="flex justify-between"><span>₹999 sale</span> <span className="font-bold text-emerald-400">Earn ₹100</span></div>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>$4 sale</span> <span className="font-bold text-emerald-400">Earn $2</span></div>
+                              <div className="flex justify-between border-b border-border/20 pb-1"><span>$9 sale</span> <span className="font-bold text-emerald-400">Earn $2</span></div>
+                              <div className="flex justify-between"><span>$19 sale</span> <span className="font-bold text-emerald-400">Earn $2</span></div>
                             </>
                           )}
                         </div>
@@ -1050,7 +1047,7 @@ Here's my link to sign up 👉 ${link}`
         <div className="space-y-8">
           <div>
             <h1 className="text-[2.25rem] font-[700] text-foreground leading-tight tracking-tight">Referrals</h1>
-            <p className="text-muted text-[1rem] mt-1.5 font-sans font-normal">Share Plugd and earn ₹100 for every successful referral.</p>
+            <p className="text-muted text-[1rem] mt-1.5 font-sans font-normal">Share Plugd and earn commissions every time someone joins through your referral link.</p>
           </div>
 
           {(!hasPromoter && !isAdmin) ? (
@@ -1059,12 +1056,12 @@ Here's my link to sign up 👉 ${link}`
                 <Gift className="w-10 h-10 text-[#16a34a]" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Join Referral Program</h2>
-              <p className="text-muted max-w-sm mb-8 font-sans">Earn ₹100 from every sale by sharing Plugd with your audience. (Listing Profile = ₹199, Promoter Profile = ₹199, both = ₹398)</p>
+              <p className="text-muted max-w-sm mb-8 font-sans">Earn commissions from every sale by sharing Plugd with your audience. (Starter: $4, Pro: $9, Max: $19)</p>
               <button 
                 onClick={() => setIsReferModalOpen(true)}
                 className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-sans font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
               >
-                Join for ₹199 <ArrowRight size={18} />
+                Join for $4 <ArrowRight size={18} />
               </button>
             </div>
           ) : (
@@ -1182,13 +1179,13 @@ Here's my link to sign up 👉 ${link}`
                 </div>
               </div>
 
-              {/* Row 3: How to hit ₹1,00,000 fast card (Full width) */}
+              {/* Row 3: How to hit $10,000 fast card (Full width) */}
               <div className="bg-pill border border-border rounded-[16px] p-6 md:p-8 shadow-2xl space-y-6">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center border border-border">
                     <TrendingUp className="w-4 h-4 text-foreground" />
                   </div>
-                  <h3 className="text-lg font-sans font-bold text-foreground">How to hit ₹1,00,000 fast</h3>
+                  <h3 className="text-lg font-sans font-bold text-foreground">How to hit $10,000 fast</h3>
                 </div>
 
                 <div className="bg-[#F5F5F5] dark:bg-zinc-950/20 border border-[#e4e4e7] dark:border-border rounded-2xl p-6 space-y-6">
@@ -1232,12 +1229,12 @@ Here's my link to sign up 👉 ${link}`
                 <Wallet className="w-10 h-10 text-[#16a34a]" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Earnings Locked</h2>
-              <p className="text-muted max-w-sm mb-8 font-sans">Join the referral program to start earning rewards. (Listing Profile = ₹199, Promoter Profile = ₹199, both = ₹398)</p>
+              <p className="text-muted max-w-sm mb-8 font-sans">Join the referral program to start earning rewards. (Starter: $4, Pro: $9, Max: $19)</p>
               <button 
                 onClick={() => setIsReferModalOpen(true)}
                 className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-sans font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
               >
-                Join for ₹199 <ArrowRight size={18} />
+                Join for $4 <ArrowRight size={18} />
               </button>
             </div>
           ) : (
@@ -1245,11 +1242,11 @@ Here's my link to sign up 👉 ${link}`
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
                   <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Total Earned</p>
-                  <p className="text-4xl font-sans font-bold text-foreground">₹{promoterData?.totalEarned || 0}</p>
+                  <p className="text-4xl font-sans font-bold text-foreground">${promoterData?.totalEarned || 0}</p>
                 </div>
                 <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl border-[#16a34a]/20">
                   <p className="text-[#16a34a] text-[0.7rem] font-bold uppercase tracking-widest mb-2">Pending Payout</p>
-                  <p className="text-4xl font-sans font-bold text-[#16a34a]">₹{promoterData?.pendingPayout || 0}</p>
+                  <p className="text-4xl font-sans font-bold text-[#16a34a]">${promoterData?.pendingPayout || 0}</p>
                 </div>
                 <div className="bg-pill border border-border rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xl">
                   <p className="text-muted text-[0.7rem] font-bold uppercase tracking-widest mb-2">Total Clicks</p>
@@ -1360,7 +1357,7 @@ Here's my link to sign up 👉 ${link}`
                                 <div className="bg-pill border border-border px-3 py-2 rounded-xl shadow-xl font-sans">
                                   <p className="text-[10px] text-muted font-medium mb-0.5">{data.date}</p>
                                   <p className="text-xs font-bold text-[#22c55e] font-sans">
-                                    ₹{new Intl.NumberFormat('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(Number(payload[0].value))}
+                                    ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(Number(payload[0].value))}
                                   </p>
                                 </div>
                               );
@@ -1390,7 +1387,7 @@ Here's my link to sign up 👉 ${link}`
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">Withdraw Funds</h3>
-                  <p className="text-muted max-w-sm mt-2 font-sans font-medium">Request a payout to your PayPal or Bank account. Minimum withdrawal is ₹5,000.</p>
+                  <p className="text-muted max-w-sm mt-2 font-sans font-medium">Request a payout to your PayPal or Bank account. Minimum withdrawal is $50.</p>
                 </div>
                 {withdrawalSuccessMessage && (
                   <p className="text-[#16a34a] font-bold text-sm bg-[#16a34a]/10 px-6 py-3 rounded-xl border border-[#16a34a]/20">
@@ -1406,12 +1403,12 @@ Here's my link to sign up 👉 ${link}`
                   </button>
                 ) : (
                   <button 
-                    disabled={(promoterData?.pendingPayout || 0) < 5000 || requestingWithdrawal}
+                    disabled={(promoterData?.pendingPayout || 0) < 50 || requestingWithdrawal}
                     onClick={handleRequestWithdrawal}
                     className="bg-[#16a34a] hover:bg-[#16a34a]/90 text-white disabled:bg-white disabled:text-black disabled:opacity-50 disabled:grayscale px-12 py-4 rounded-xl font-sans font-bold transition-all shadow-xl active:scale-[0.98]"
                   >
-                    {(promoterData?.pendingPayout || 0) < 5000 
-                      ? "Minimum ₹5,000 required" 
+                    {(promoterData?.pendingPayout || 0) < 50 
+                      ? "Minimum $50 required" 
                       : requestingWithdrawal 
                         ? "Submitting..." 
                         : "Request Withdrawal"}
@@ -1449,7 +1446,7 @@ Here's my link to sign up 👉 ${link}`
                 onClick={() => setIsReferModalOpen(true)}
                 className="bg-[#16a34a] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#16a34a]/90 transition-all flex items-center gap-2 shadow-xl shadow-green-600/20"
               >
-                Join for ₹199 <ArrowRight size={18} />
+                Join for $4 <ArrowRight size={18} />
               </button>
             </div>
           ) : (
@@ -1481,7 +1478,7 @@ Here's my link to sign up 👉 ${link}`
                       Lifetime Earnings
                     </span>
                     <span className="text-2xl font-sans font-black text-[#16a34a] mt-1 block">
-                      ₹{new Intl.NumberFormat("en-IN").format(earnings)}
+                      ${new Intl.NumberFormat("en-US").format(earnings)}
                     </span>
                   </div>
                 </div>
@@ -1499,19 +1496,19 @@ Here's my link to sign up 👉 ${link}`
                     <div className="bg-[#F5F5F5] dark:bg-zinc-950/20 border border-[#e4e4e7] dark:border-border/40 p-4 rounded-xl">
                       <span className="text-[9px] text-muted uppercase font-bold tracking-widest block">Current</span>
                       <span className="text-lg font-sans font-bold text-foreground mt-1 block">
-                        ₹{new Intl.NumberFormat("en-IN").format(earnings)}
+                        ${new Intl.NumberFormat("en-US").format(earnings)}
                       </span>
                     </div>
                     <div className="bg-[#F5F5F5] dark:bg-zinc-950/20 border border-[#e4e4e7] dark:border-border/40 p-4 rounded-xl">
                       <span className="text-[9px] text-muted uppercase font-bold tracking-widest block">Target</span>
                       <span className="text-lg font-sans font-bold text-foreground mt-1 block">
-                        ₹{new Intl.NumberFormat("en-IN").format(targetLeague.target)}
+                        ${new Intl.NumberFormat("en-US").format(targetLeague.target)}
                       </span>
                     </div>
                     <div className="bg-[#F5F5F5] dark:bg-zinc-950/20 border border-[#e4e4e7] dark:border-border/40 p-4 rounded-xl col-span-2 md:col-span-1">
                       <span className="text-[9px] text-muted uppercase font-bold tracking-widest block">Remaining</span>
                       <span className="text-lg font-sans font-bold text-emerald-400 mt-1 block">
-                        ₹{new Intl.NumberFormat("en-IN").format(remainingAmount)} Remaining
+                        ${new Intl.NumberFormat("en-US").format(remainingAmount)} Remaining
                       </span>
                     </div>
                   </div>
@@ -1527,7 +1524,7 @@ Here's my link to sign up 👉 ${link}`
                     </div>
                     <div className="flex justify-between items-center text-[10px] font-bold text-muted px-1">
                       <span className="font-sans">{progressPercent}% Complete</span>
-                      <span className="font-sans">₹{new Intl.NumberFormat("en-IN").format(remainingAmount)} left to unlock {targetLeague.name}</span>
+                      <span className="font-sans">${new Intl.NumberFormat("en-US").format(remainingAmount)} left to unlock {targetLeague.name}</span>
                     </div>
                   </div>
                 </div>
@@ -1572,7 +1569,7 @@ Here's my link to sign up 👉 ${link}`
                               {league.name}
                             </h4>
                             <p className="text-sm md:text-base font-sans font-extrabold text-[#16a34a] mt-1">
-                              ₹{new Intl.NumberFormat("en-IN").format(league.target)}+
+                              ${new Intl.NumberFormat("en-US").format(league.target)}+
                             </p>
                           </div>
                         </div>

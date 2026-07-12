@@ -146,7 +146,7 @@ async function main() {
       }
     });
 
-    console.log(`Seeded promoter Rank ${id}: ${promoter.name} (${promoter.username}) - ₹${promoter.totalEarned}`);
+    console.log(`Seeded promoter Rank ${id}: ${promoter.name} (${promoter.username}) - $${promoter.totalEarned}`);
   }
 
   console.log("Seeding complete!");

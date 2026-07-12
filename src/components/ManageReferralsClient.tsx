@@ -514,9 +514,9 @@ export default function ManageReferralsClient() {
       p.referralCode,
       p.totalClicks,
       p.totalSignups,
-      `₹${Math.round(p.currentEarnings || p.totalEarned)}`,
-      `₹${p.pendingPayout}`,
-      `₹${p.totalPaid}`,
+      `$${Math.round(p.currentEarnings || p.totalEarned)}`,
+      `$${p.pendingPayout}`,
+      `$${p.totalPaid}`,
       new Date(p.createdAt).toLocaleDateString()
     ]);
     
@@ -572,7 +572,7 @@ export default function ManageReferralsClient() {
         <div className="bg-pill border border-border rounded-xl p-4 shadow-sm">
           <p className="text-muted text-[0.6rem] font-bold uppercase tracking-[0.15em] mb-1.5">Total Pending</p>
           <div className="flex items-end justify-between">
-            <p className="text-2xl font-sans font-bold text-[#16a34a]">₹{stats.totalPending.toFixed(2)}</p>
+            <p className="text-2xl font-sans font-bold text-[#16a34a]">${stats.totalPending.toFixed(2)}</p>
             <div className="w-7 h-7 rounded-lg bg-green-600/10 flex items-center justify-center">
               <Wallet className="w-3.5 h-3.5 text-[#16a34a]" />
             </div>
@@ -581,7 +581,7 @@ export default function ManageReferralsClient() {
         <div className="bg-pill border border-border rounded-xl p-4 shadow-sm">
           <p className="text-muted text-[0.6rem] font-bold uppercase tracking-[0.15em] mb-1.5">Total Paid Out</p>
           <div className="flex items-end justify-between">
-            <p className="text-2xl font-sans font-bold text-foreground">₹{stats.totalPaid.toFixed(2)}</p>
+            <p className="text-2xl font-sans font-bold text-foreground">${stats.totalPaid.toFixed(2)}</p>
             <div className="w-7 h-7 rounded-lg bg-green-500/10 flex items-center justify-center">
               <Check className="w-3.5 h-3.5 text-green-500" />
             </div>
@@ -590,7 +590,7 @@ export default function ManageReferralsClient() {
         <div className="bg-pill border border-border rounded-xl p-4 shadow-sm">
           <p className="text-muted text-[0.6rem] font-bold uppercase tracking-[0.15em] mb-1.5">Platform Revenue</p>
           <div className="flex items-end justify-between">
-            <p className="text-2xl font-sans font-bold text-foreground">₹{stats.totalRevenue.toFixed(2)}</p>
+            <p className="text-2xl font-sans font-bold text-foreground">${stats.totalRevenue.toFixed(2)}</p>
             <div className="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center">
               <TrendingUp className="w-3.5 h-3.5 text-blue-500" />
             </div>
@@ -783,16 +783,16 @@ export default function ManageReferralsClient() {
                       <LeagueIcon 
                         id={(() => {
                           const e = p.totalEarned || 0;
-                          if (e >= 100000000) return "sovereign";
-                          if (e >= 10000000) return "apex";
-                          if (e >= 5000000) return "elite";
-                          if (e >= 2500000) return "legend";
-                          if (e >= 1000000) return "titan";
-                          if (e >= 500000) return "champion";
-                          if (e >= 100000) return "master";
-                          if (e >= 25000) return "diamond";
-                          if (e >= 5000) return "gold";
-                          if (e >= 1000) return "silver";
+                          if (e >= 10000000) return "sovereign";
+                          if (e >= 1000000) return "apex";
+                          if (e >= 500000) return "elite";
+                          if (e >= 250000) return "legend";
+                          if (e >= 100000) return "titan";
+                          if (e >= 50000) return "champion";
+                          if (e >= 10000) return "master";
+                          if (e >= 2000) return "diamond";
+                          if (e >= 500) return "gold";
+                          if (e >= 100) return "silver";
                           return "bronze";
                         })()} 
                         size={28} 
@@ -839,17 +839,17 @@ export default function ManageReferralsClient() {
                     </span>
                   </td>
                   <td className="hidden lg:table-cell px-3 py-2.5 text-center font-sans font-bold text-foreground">
-                    ₹{new Intl.NumberFormat("en-IN", {
+                    ${new Intl.NumberFormat("en-US", {
                       maximumFractionDigits: 0
                     }).format(p.currentEarnings || p.totalEarned)}
                   </td>
                   <td className="px-3 py-2.5 text-right">
                     <span className={`px-1.5 py-0.5 rounded-md font-sans font-bold text-[0.7rem] ${p.pendingPayout > 0 ? "bg-green-600/10 text-[#16a34a]" : "bg-muted/10 text-muted/60"}`}>
-                      ₹{p.pendingPayout.toFixed(2)}
+                      ${p.pendingPayout.toFixed(2)}
                     </span>
                   </td>
                   <td className="hidden lg:table-cell px-3 py-2.5 text-right text-foreground font-sans font-bold">
-                    ₹{p.totalPaid.toFixed(2)}
+                    ${p.totalPaid.toFixed(2)}
                   </td>
                   <td className="px-3 py-2.5 text-right">
                     <div className="flex items-center justify-end gap-1.5">
@@ -867,7 +867,7 @@ export default function ManageReferralsClient() {
                       {p.pendingWithdrawalRequest ? (
                         <div className="flex items-center gap-1.5">
                           <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 text-[0.65rem] font-sans font-bold shrink-0 animate-pulse border border-amber-500/20">
-                            REQUESTED (₹{p.pendingWithdrawalRequest.amount})
+                            REQUESTED ($${p.pendingWithdrawalRequest.amount})
                           </span>
                           <button 
                             onClick={(e) => {
@@ -1052,16 +1052,16 @@ export default function ManageReferralsClient() {
                   <LeagueIcon 
                     id={(() => {
                       const e = editForm.totalEarned || 0;
-                      if (e >= 100000000) return "sovereign";
-                      if (e >= 10000000) return "apex";
-                      if (e >= 5000000) return "elite";
-                      if (e >= 2500000) return "legend";
-                      if (e >= 1000000) return "titan";
-                      if (e >= 500000) return "champion";
-                      if (e >= 100000) return "master";
-                      if (e >= 25000) return "diamond";
-                      if (e >= 5000) return "gold";
-                      if (e >= 1000) return "silver";
+                      if (e >= 10000000) return "sovereign";
+                      if (e >= 1000000) return "apex";
+                      if (e >= 500000) return "elite";
+                      if (e >= 250000) return "legend";
+                      if (e >= 100000) return "titan";
+                      if (e >= 50000) return "champion";
+                      if (e >= 10000) return "master";
+                      if (e >= 2000) return "diamond";
+                      if (e >= 500) return "gold";
+                      if (e >= 100) return "silver";
                       return "bronze";
                     })()} 
                     size={64} 
@@ -1074,16 +1074,16 @@ export default function ManageReferralsClient() {
                   <span className="text-base font-black text-foreground tracking-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
                     {(() => {
                       const e = editForm.totalEarned || 0;
-                      if (e >= 100000000) return "Sovereign League";
-                      if (e >= 10000000) return "Apex League";
-                      if (e >= 5000000) return "Elite League";
-                      if (e >= 2500000) return "Legend League";
-                      if (e >= 1000000) return "Titan League";
-                      if (e >= 500000) return "Champion League";
-                      if (e >= 100000) return "Master League";
-                      if (e >= 25000) return "Diamond League";
-                      if (e >= 5000) return "Gold League";
-                      if (e >= 1000) return "Silver League";
+                      if (e >= 10000000) return "Sovereign League";
+                      if (e >= 1000000) return "Apex League";
+                      if (e >= 500000) return "Elite League";
+                      if (e >= 250000) return "Legend League";
+                      if (e >= 100000) return "Titan League";
+                      if (e >= 50000) return "Champion League";
+                      if (e >= 10000) return "Master League";
+                      if (e >= 2000) return "Diamond League";
+                      if (e >= 500) return "Gold League";
+                      if (e >= 100) return "Silver League";
                       return "Bronze League";
                     })()}
                   </span>
@@ -1097,7 +1097,7 @@ export default function ManageReferralsClient() {
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Total Earned (₹)</label>
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Total Earned ($)</label>
                     <input
                       required
                       type="number"
@@ -1108,7 +1108,7 @@ export default function ManageReferralsClient() {
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Pending Payout (₹)</label>
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Pending Payout ($)</label>
                     <input
                       required
                       type="number"
@@ -1119,7 +1119,7 @@ export default function ManageReferralsClient() {
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Total Paid (₹)</label>
+                    <label className="text-xs font-bold text-muted uppercase tracking-wider">Total Paid ($)</label>
                     <input
                       required
                       type="number"
@@ -1361,7 +1361,7 @@ export default function ManageReferralsClient() {
               {historyPromoter.payouts.length > 0 ? historyPromoter.payouts.map(payout => (
                 <div key={payout.id} className="bg-pill border border-border rounded-xl p-5 flex items-center justify-between">
                   <div>
-                    <p className="text-foreground font-sans font-black text-lg">₹{payout.amount.toFixed(2)}</p>
+                    <p className="text-foreground font-sans font-black text-lg">${payout.amount.toFixed(2)}</p>
                     <p className="text-muted text-sm font-medium mt-1">{payout.note || "No note added"}</p>
                   </div>
                   <p className="text-muted text-xs font-sans font-bold uppercase tracking-wider">
@@ -1394,7 +1394,7 @@ export default function ManageReferralsClient() {
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold text-foreground">Confirm Payout</h3>
                   <p className="text-muted text-[1.05rem] leading-relaxed">
-                    You are marking <span className="text-foreground font-sans font-bold">₹{payoutPromoter.pendingPayout.toFixed(2)}</span> as paid for <span className="text-foreground font-bold">{payoutPromoter.name}</span>.
+                    You are marking <span className="text-foreground font-sans font-bold">${payoutPromoter.pendingPayout.toFixed(2)}</span> as paid for <span className="text-foreground font-bold">{payoutPromoter.name}</span>.
                   </p>
                 </div>
 

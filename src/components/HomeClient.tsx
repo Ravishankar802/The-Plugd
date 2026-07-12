@@ -119,9 +119,9 @@ export default function HomeClient({
 
   const sliderReferrals = getLogValue(sliderVal);
   const [activities, setActivities] = useState([
-    { id: 1, text: "Someone earned ₹500", timeAgo: "2 minutes ago", badge: "Max" },
+    { id: 1, text: "Someone earned $10", timeAgo: "2 minutes ago", badge: "Max" },
     { id: 2, text: "Someone joined Pro", timeAgo: "5 minutes ago", badge: "Signup" },
-    { id: 3, text: "Someone earned ₹250", timeAgo: "12 minutes ago", badge: "Pro" },
+    { id: 3, text: "Someone earned $5", timeAgo: "12 minutes ago", badge: "Pro" },
     { id: 4, text: "Someone upgraded to Max", timeAgo: "18 minutes ago", badge: "Upgrade" },
     { id: 5, text: "Someone joined Starter", timeAgo: "24 minutes ago", badge: "Signup" }
   ]);
@@ -345,12 +345,12 @@ export default function HomeClient({
 
   useEffect(() => {
     const activityTypes = [
-      { text: "Someone earned ₹500", badge: "Max" },
+      { text: "Someone earned $10", badge: "Max" },
       { text: "Someone joined Pro", badge: "Signup" },
-      { text: "Someone earned ₹250", badge: "Pro" },
+      { text: "Someone earned $5", badge: "Pro" },
       { text: "Someone upgraded to Max", badge: "Upgrade" },
       { text: "Someone joined Starter", badge: "Signup" },
-      { text: "Someone earned ₹100", badge: "Starter" },
+      { text: "Someone earned $2", badge: "Starter" },
       { text: "Someone joined Max", badge: "Signup" }
     ];
 
@@ -398,15 +398,15 @@ export default function HomeClient({
   }, []);
 
   useEffect(() => {
-    const initialNames = ["arjun", "chirag", "vishal", "siddharth", "priya", "rohit", "aditya", "sneha", "kabir", "ananya"];
-    const initialAmounts = [100, 250, 500, 100, 100, 250, 500, 100];
+    const initialNames = ["alex", "sarah", "marcus", "elena", "david", "jessica", "ryan", "emily", "james", "sophia", "michael", "olivia", "william", "emma", "daniel", "isabella", "john", "mia", "robert", "charlotte", "joseph", "amelia", "david", "harper", "andrew", "evelyn", "chris", "abigail", "matthew", "emily", "joshua", "elizabeth", "nathan", "sofia", "tyler", "avery", "brandon", "ella", "kevin", "madison", "justin", "scarlett", "brian", "victoria", "dylan", "grace", "ethan", "chloe", "connor", "lily"];
+    const initialAmounts = [2, 5, 10, 2, 2, 5, 10, 2];
     
     const initialList = Array.from({ length: 3 }).map((_, idx) => {
       const name = initialNames[idx % initialNames.length];
       const amount = initialAmounts[idx % initialAmounts.length];
       return {
         id: idx,
-        text: `${maskUsername(name)} earned ₹${amount}`,
+        text: `${maskUsername(name)} earned $${amount}`,
         time: `${idx * 2 + 1}m ago`
       };
     });
@@ -418,11 +418,11 @@ export default function HomeClient({
         const randomEarner = earners[Math.floor(Math.random() * earners.length)];
         name = randomEarner.handle ? randomEarner.handle.replace("@", "") : (randomEarner.name || "promoter");
       } else {
-        const fallbackNames = ["arjun", "chirag", "vishal", "siddharth", "priya", "rohit", "aditya", "sneha", "kabir", "ananya"];
+        const fallbackNames = ["alex", "sarah", "marcus", "elena", "david", "jessica", "ryan", "emily", "james", "sophia", "michael", "olivia", "william", "emma", "daniel", "isabella", "john", "mia", "robert", "charlotte", "joseph", "amelia", "david", "harper", "andrew", "evelyn", "chris", "abigail", "matthew", "emily", "joshua", "elizabeth", "nathan", "sofia", "tyler", "avery", "brandon", "ella", "kevin", "madison", "justin", "scarlett", "brian", "victoria", "dylan", "grace", "ethan", "chloe", "connor", "lily"];
         name = fallbackNames[Math.floor(Math.random() * fallbackNames.length)];
       }
 
-      const amounts = [100, 100, 250, 250, 500, 100, 500];
+      const amounts = [2, 2, 5, 5, 10, 2, 10];
       const amount = amounts[Math.floor(Math.random() * amounts.length)];
       const masked = maskUsername(name);
 
@@ -430,7 +430,7 @@ export default function HomeClient({
         const nextId = prev.length ? Math.max(...prev.map(p => p.id)) + 1 : 1;
         const newEntry = {
           id: nextId,
-          text: `${masked} earned ₹${amount}`,
+          text: `${masked} earned $${amount}`,
           time: "Just now"
         };
         const updatedPrev = prev.map(item => {
@@ -537,7 +537,7 @@ export default function HomeClient({
                 Total Paid Out
               </span>
               <span className="text-[1.7rem] md:text-[2rem] font-semibold tracking-tighter text-foreground font-sans mt-2 leading-tight rich-number">
-                ₹100Cr+
+                $10M+
               </span>
             </div>
           </div>
@@ -552,7 +552,7 @@ export default function HomeClient({
                 Promoters
               </span>
               <span className="text-2xl md:text-3xl font-semibold tracking-tighter text-foreground font-sans mt-2 rich-number">
-                1,00,000+
+                100,000+
               </span>
             </div>
           </div>
@@ -567,7 +567,7 @@ export default function HomeClient({
                 Top Promoter
               </span>
               <span className="text-2xl md:text-3xl font-semibold tracking-tighter text-foreground font-sans mt-2 rich-number">
-                ₹1Cr+
+                $100K+
               </span>
             </div>
           </div>
@@ -591,7 +591,7 @@ export default function HomeClient({
             <div className="w-full flex flex-col items-center gap-4 bg-[#F5F5F5] dark:bg-zinc-950/40 border border-[#e4e4e7] dark:border-border/60 rounded-2xl p-6">
               <div className="flex items-baseline justify-center gap-2">
                 <span className="text-4xl md:text-5xl font-semibold text-foreground font-sans tracking-tight rich-number">
-                  {new Intl.NumberFormat("en-IN").format(sliderReferrals)}
+                  {new Intl.NumberFormat("en-US").format(sliderReferrals)}
                 </span>
                 <span className="text-zinc-500 dark:text-muted text-sm font-semibold uppercase tracking-wider font-sans">Referrals</span>
               </div>
@@ -614,7 +614,7 @@ export default function HomeClient({
                 <span className="absolute left-[40%] -translate-x-1/2 hidden sm:inline">100</span>
                 <span className="absolute left-[60%] -translate-x-1/2 hidden sm:inline">1,000</span>
                 <span className="absolute left-[80%] -translate-x-1/2 hidden sm:inline">10,000</span>
-                <span className="absolute right-0">1,00,000</span>
+                <span className="absolute right-0">100,000</span>
               </div>
             </div>
 
@@ -625,7 +625,7 @@ export default function HomeClient({
                 <span className="text-xs text-zinc-500 dark:text-muted font-bold uppercase tracking-widest font-sans mb-1">Starter</span>
                 <span className="text-xs text-zinc-500/70 dark:text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
                 <span className="text-3xl font-semibold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
-                  ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 100)}
+                  ${new Intl.NumberFormat("en-US").format(sliderReferrals * 2)}
                 </span>
               </div>
 
@@ -637,7 +637,7 @@ export default function HomeClient({
                 <span className="text-xs text-foreground font-bold uppercase tracking-widest font-sans mb-1 mt-1">Pro</span>
                 <span className="text-xs text-zinc-500/70 dark:text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
                 <span className="text-3xl font-semibold text-[#16a34a] font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
-                  ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 250)}
+                  ${new Intl.NumberFormat("en-US").format(sliderReferrals * 5)}
                 </span>
               </div>
 
@@ -649,7 +649,7 @@ export default function HomeClient({
                 <span className="text-xs text-zinc-500 dark:text-muted font-bold uppercase tracking-widest font-sans mb-1 mt-1">Max</span>
                 <span className="text-xs text-zinc-500/70 dark:text-muted/50 font-semibold font-sans mb-2 mt-2">Earn Up To</span>
                 <span className="text-3xl font-semibold text-amber-500 font-sans tracking-tight rich-number group-hover:scale-105 transition-transform">
-                  ₹{new Intl.NumberFormat("en-IN").format(sliderReferrals * 500)}
+                  ${new Intl.NumberFormat("en-US").format(sliderReferrals * 10)}
                 </span>
               </div>
             </div>
@@ -711,16 +711,16 @@ export default function HomeClient({
                 ) : (
                   leaderboardData[leaderboardTab].map((entry, idx) => {
                   const getLeagueIdByEarnings = (earnings: number) => {
-                    if (earnings >= 100000000) return "sovereign";
-                    if (earnings >= 10000000) return "apex";
-                    if (earnings >= 5000000) return "elite";
-                    if (earnings >= 2500000) return "legend";
-                    if (earnings >= 1000000) return "titan";
-                    if (earnings >= 500000) return "champion";
-                    if (earnings >= 100000) return "master";
-                    if (earnings >= 25000) return "diamond";
-                    if (earnings >= 5000) return "gold";
-                    if (earnings >= 1000) return "silver";
+                    if (earnings >= 10000000) return "sovereign";
+                    if (earnings >= 1000000) return "apex";
+                    if (earnings >= 500000) return "elite";
+                    if (earnings >= 250000) return "legend";
+                    if (earnings >= 100000) return "titan";
+                    if (earnings >= 50000) return "champion";
+                    if (earnings >= 10000) return "master";
+                    if (earnings >= 2000) return "diamond";
+                    if (earnings >= 500) return "gold";
+                    if (earnings >= 100) return "silver";
                     return "bronze";
                   };
                   const leagueId = getLeagueIdByEarnings(entry.allTimeEarnings || entry.earnings);
@@ -734,7 +734,7 @@ export default function HomeClient({
                         <span>@{entry.username}</span>
                       </div>
                       <div className="font-extrabold text-[#16a34a] text-right rich-number">
-                        ₹{new Intl.NumberFormat("en-IN").format(entry.earnings)}
+                        ${new Intl.NumberFormat("en-US").format(entry.earnings)}
                       </div>
                     </div>
                   );

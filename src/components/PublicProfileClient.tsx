@@ -107,13 +107,13 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
   }, [isDisplayPromoter, promoter.rank, promoter.id]);
 
   // Derived stats matching conversions and clicks
-  const formattedCurrentEarnings = new Intl.NumberFormat("en-IN", {
+  const formattedCurrentEarnings = new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "INR",
+    currency: "USD",
     maximumFractionDigits: 0
   }).format(currentEarnings);
 
-  const currentConversions = Math.floor(currentEarnings / 100);
+  const currentConversions = Math.floor(currentEarnings / 2);
 
   const baseClicks = promoter.totalClicks;
   const baseEarned = promoter.totalEarned;
@@ -207,17 +207,14 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
   const gradient = GRADIENTS[promoter.id % GRADIENTS.length];
 
   const formatYAxis = (value: number) => {
-    if (value === 0) return "₹0";
-    if (value >= 1e7) {
-      return `₹${(value / 1e7).toFixed(1).replace(/\.0$/, "")}Cr`;
-    }
-    if (value >= 1e5) {
-      return `₹${(value / 1e5).toFixed(1).replace(/\.0$/, "")}L`;
+    if (value === 0) return "$0";
+    if (value >= 1e6) {
+      return `$${(value / 1e6).toFixed(1).replace(/\.0$/, "")}M`;
     }
     if (value >= 1e3) {
-      return `₹${(value / 1e3).toFixed(1).replace(/\.0$/, "")}k`;
+      return `$${(value / 1e3).toFixed(1).replace(/\.0$/, "")}K`;
     }
-    return `₹${value}`;
+    return `$${value}`;
   };
 
   const COUNTRY_TO_ISO: Record<string, string> = {
@@ -277,16 +274,16 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
               <LeagueIcon 
                 id={(() => {
                   const e = promoter.totalEarned;
-                  if (e >= 100000000) return "sovereign";
-                  if (e >= 10000000) return "apex";
-                  if (e >= 5000000) return "elite";
-                  if (e >= 2500000) return "legend";
-                  if (e >= 1000000) return "titan";
-                  if (e >= 500000) return "champion";
-                  if (e >= 100000) return "master";
-                  if (e >= 25000) return "diamond";
-                  if (e >= 5000) return "gold";
-                  if (e >= 1000) return "silver";
+                  if (e >= 10000000) return "sovereign";
+                  if (e >= 1000000) return "apex";
+                  if (e >= 500000) return "elite";
+                  if (e >= 250000) return "legend";
+                  if (e >= 100000) return "titan";
+                  if (e >= 50000) return "champion";
+                  if (e >= 10000) return "master";
+                  if (e >= 2000) return "diamond";
+                  if (e >= 500) return "gold";
+                  if (e >= 100) return "silver";
                   return "bronze";
                 })()} 
                 size={80} 
@@ -457,7 +454,7 @@ export default function PublicProfileClient({ promoter }: PublicProfileClientPro
                           <div className="bg-pill border border-border px-3 py-2 rounded-xl shadow-xl font-sans">
                             <p className="text-[10px] text-muted font-medium mb-0.5">{data.date}</p>
                             <p className="text-xs font-bold text-[#22c55e] font-sans">
-                              ₹{new Intl.NumberFormat('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(Number(payload[0].value))}
+                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(Number(payload[0].value))}
                             </p>
                           </div>
                         );
