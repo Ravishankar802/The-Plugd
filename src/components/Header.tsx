@@ -12,54 +12,54 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 left-0 w-full z-50 bg-[#09090b]/90 backdrop-blur-md border-b border-zinc-200/10 dark:border-zinc-800/40 h-16 md:h-20 flex items-center justify-between">
-      {/* LEFT: Logo & Brand */}
-      <div className="flex items-center gap-4 pl-4 md:pl-8 h-full">
-        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <Image src="/logo.png" alt="Plugd Logo" width={40} height={40} className="w-8 h-8 md:w-10 md:h-10" />
-          <span className="text-foreground font-black text-lg md:text-xl tracking-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-            plugd
-          </span>
+    <header className="sticky top-0 left-0 w-full z-50 bg-[#09090b]/95 backdrop-blur-md border-b border-[#16a34a]/20 shadow-[0_4px_20px_rgba(0,0,0,0.5)] h-16 md:h-20 flex items-center justify-between">
+      {/* LEFT: Logo */}
+      <div className="flex items-center pl-4 md:pl-8 h-full">
+        <Link href="/" className="hover:scale-105 active:scale-95 transition-transform duration-200">
+          <Image src="/logo.png" alt="Plugd Logo" width={80} height={80} className="w-12 h-12 md:w-20 md:h-20" />
         </Link>
-        
-        {/* Pill Badge */}
-        <div className="hidden sm:flex items-center bg-emerald-500/10 border border-emerald-500/25 px-2.5 py-0.5 rounded-full text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
-          ★ Active
-        </div>
       </div>
 
-      {/* CENTER: Navigation Links */}
-      <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-muted/80">
-        <Link href="/resources" className="hover:text-foreground transition-colors">
-          Resources
-        </Link>
-        <button 
-          onClick={() => scrollToSection("calculator")} 
-          className="hover:text-foreground transition-colors cursor-pointer font-semibold"
-        >
-          Calculate
-        </button>
-        <button 
-          onClick={() => scrollToSection("how-it-works")} 
-          className="hover:text-foreground transition-colors cursor-pointer font-semibold"
-        >
-          How It Works
-        </button>
-      </nav>
-
-      {/* RIGHT: Dashboard Block Button */}
+      {/* RIGHT: Navigation & Dashboard */}
       <div className="h-full flex items-center">
+        {/* Navigation Links */}
+        <nav className="hidden md:flex items-center gap-8 mr-8">
+          <Link 
+            href="/resources" 
+            className="text-zinc-100 hover:text-[#16a34a] font-bold text-base md:text-lg transition-colors duration-200"
+            style={{ fontFamily: '"Times New Roman", Times, serif' }}
+          >
+            Resources
+          </Link>
+          <button 
+            onClick={() => scrollToSection("calculator")} 
+            className="text-zinc-100 hover:text-[#16a34a] font-bold text-base md:text-lg transition-colors duration-200 cursor-pointer"
+            style={{ fontFamily: '"Times New Roman", Times, serif' }}
+          >
+            Calculate
+          </button>
+          <button 
+            onClick={() => scrollToSection("how-it-works")} 
+            className="text-zinc-100 hover:text-[#16a34a] font-bold text-base md:text-lg transition-colors duration-200 cursor-pointer"
+            style={{ fontFamily: '"Times New Roman", Times, serif' }}
+          >
+            How It Works
+          </button>
+        </nav>
+
         {/* Mobile menu link for Resources */}
         <Link 
           href="/resources" 
-          className="md:hidden text-xs font-bold text-muted hover:text-foreground px-4 py-2 mr-2"
+          className="md:hidden text-sm font-bold text-zinc-100 hover:text-[#16a34a] px-4 py-2 mr-2"
+          style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
           Resources
         </Link>
+
+        {/* Dashboard Block Button */}
         <Link 
           href="/vault" 
-          className="h-full bg-[#16a34a] text-black font-extrabold text-xs md:text-sm uppercase tracking-wider px-6 md:px-10 flex items-center justify-center border-l border-zinc-200/10 dark:border-zinc-800/40 hover:bg-[#16a34a]/90 transition-colors"
-          style={{ fontFamily: 'var(--font-eb-garamond), serif' }}
+          className="h-full bg-[#16a34a] text-black font-black text-sm md:text-base uppercase tracking-[0.12em] px-8 md:px-12 flex items-center justify-center border-l border-[#16a34a]/20 hover:bg-[#16a34a]/90 hover:scale-[1.02] active:scale-100 transition-all duration-150"
         >
           Dashboard
         </Link>
