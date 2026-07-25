@@ -8,9 +8,6 @@ import {
   TrendingUp,
   ChevronDown,
   Check,
-  Wallet,
-  Users,
-  Trophy,
   Coins,
   Share2,
   UserPlus,
@@ -74,6 +71,8 @@ function maskUsername(username: string): string {
   if (clean.length <= 4) return clean[0] + "***" + clean[clean.length - 1];
   return clean.slice(0, 2) + "***" + clean.slice(-2);
 }
+
+const SHOW_LEADERBOARD = false;
 
 export default function HomeClient({ 
   userEmail: serverUserEmail,
@@ -524,55 +523,7 @@ export default function HomeClient({
         </div>
       </div>
 
-      {/* SECTION 2: PLATFORM STATS */}
-      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Total Paid Out */}
-          <div className="bg-pill border border-[#16a34a]/20 rounded-2xl p-6 flex items-center gap-5 shadow-[0_0_15px_rgba(22,163,74,0.04)] transition-all duration-200 hover:-translate-y-1 hover:border-[#16a34a]/45 hover:shadow-[0_0_20px_rgba(22,163,74,0.12)]">
-            <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-xl text-emerald-400">
-              <Wallet className="w-6 h-6" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
-                Total Paid Out
-              </span>
-              <span className="text-[1.7rem] md:text-[2rem] font-semibold tracking-tighter text-foreground font-sans mt-2 leading-tight rich-number">
-                $10M+
-              </span>
-            </div>
-          </div>
 
-          {/* Promoters */}
-          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex items-center gap-5 shadow-xl transition-all duration-200 hover:-translate-y-1 hover:border-[#16a34a]/35 hover:shadow-[0_0_15px_rgba(22,163,74,0.08)]">
-            <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-xl text-emerald-400">
-              <Users className="w-6 h-6" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
-                Promoters
-              </span>
-              <span className="text-2xl md:text-3xl font-semibold tracking-tighter text-foreground font-sans mt-2 rich-number">
-                100,000+
-              </span>
-            </div>
-          </div>
-
-          {/* Top Promoter */}
-          <div className="bg-pill border border-border/80 rounded-2xl p-6 flex items-center gap-5 shadow-xl transition-all duration-200 hover:-translate-y-1 hover:border-[#16a34a]/35 hover:shadow-[0_0_15px_rgba(22,163,74,0.08)]">
-            <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-xl text-emerald-400">
-              <Trophy className="w-6 h-6" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xs text-muted font-bold uppercase tracking-[0.1em] leading-none font-sans">
-                Top Promoter
-              </span>
-              <span className="text-2xl md:text-3xl font-semibold tracking-tighter text-foreground font-sans mt-2 rich-number">
-                $100K+
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* SECTION 3: EARNINGS CALCULATOR */}
       <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
@@ -664,105 +615,107 @@ export default function HomeClient({
       </section>
 
       {/* SECTION: LEADERBOARD & RECENT EARNINGS & WHY PEOPLE FAIL */}
-      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10 flex flex-col gap-8 items-center">
-        <div className="w-full flex flex-col items-center">
-          {/* Leaderboard Card */}
-          <div className="w-full bg-pill border border-border rounded-[24px] p-6 sm:p-8 md:p-10 shadow-xl flex flex-col">
-          <div className="text-center max-w-2xl mx-auto mb-6">
-            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-3" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-              Top Promoters
-            </h2>
-          </div>
+      {SHOW_LEADERBOARD && (
+        <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10 flex flex-col gap-8 items-center">
+          <div className="w-full flex flex-col items-center">
+            {/* Leaderboard Card */}
+            <div className="w-full bg-pill border border-border rounded-[24px] p-6 sm:p-8 md:p-10 shadow-xl flex flex-col">
+            <div className="text-center max-w-2xl mx-auto mb-6">
+              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-3" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+                Top Promoters
+              </h2>
+            </div>
 
-          {/* Leaderboard Tabs */}
-          <div className="flex bg-accent/40 dark:bg-zinc-950/40 border border-border/60 rounded-xl p-1 max-w-xs mx-auto mb-6">
-            {[
-              { id: "today", label: "Today" },
-              { id: "thisWeek", label: "This Week" },
-              { id: "allTime", label: "All Time" }
-            ].map(tab => (
-              <button
-                key={tab.id}
-                onClick={() => setLeaderboardTab(tab.id as any)}
-                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap cursor-pointer uppercase tracking-wider ${
-                  leaderboardTab === tab.id
-                    ? "bg-[#16a34a] text-white"
-                    : "text-zinc-500 dark:text-muted hover:text-foreground"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+            {/* Leaderboard Tabs */}
+            <div className="flex bg-accent/40 dark:bg-zinc-950/40 border border-border/60 rounded-xl p-1 max-w-xs mx-auto mb-6">
+              {[
+                { id: "today", label: "Today" },
+                { id: "thisWeek", label: "This Week" },
+                { id: "allTime", label: "All Time" }
+              ].map(tab => (
+                <button
+                  key={tab.id}
+                  onClick={() => setLeaderboardTab(tab.id as any)}
+                  className={`px-4 py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap cursor-pointer uppercase tracking-wider ${
+                    leaderboardTab === tab.id
+                      ? "bg-[#16a34a] text-white"
+                      : "text-zinc-500 dark:text-muted hover:text-foreground"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
 
-          {/* Table Display */}
-          <div className="w-full overflow-auto md:overflow-x-auto md:overflow-y-visible max-h-[300px] md:max-h-none border border-[#e4e4e7] dark:border-border/50 rounded-xl bg-[#F5F5F5] dark:bg-zinc-950/20">
-            <div className="min-w-[380px] md:min-w-0">
-              <div className="grid grid-cols-[45px_1fr_105px] md:grid-cols-3 border-b border-[#e4e4e7] dark:border-border/80 bg-zinc-200 dark:bg-zinc-950/40 px-4 py-3 text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-muted font-sans text-left">
-                <div>Rank</div>
-                <div>Username</div>
-                <div className="text-right">Earnings</div>
-              </div>
-              <div className="divide-y divide-border/40 md:max-h-[300px] md:overflow-y-auto min-w-[380px] md:min-w-0">
-                {(!leaderboardData[leaderboardTab] || leaderboardData[leaderboardTab].length === 0) ? (
-                  <div className="text-center py-8 text-sm text-muted font-medium font-sans">
-                    No active promoters in this timeframe yet
-                  </div>
-                ) : (
-                  leaderboardData[leaderboardTab].map((entry, idx) => {
-                  const getLeagueIdByEarnings = (earnings: number) => {
-                    if (earnings >= 10000000) return "sovereign";
-                    if (earnings >= 1000000) return "apex";
-                    if (earnings >= 500000) return "elite";
-                    if (earnings >= 250000) return "legend";
-                    if (earnings >= 100000) return "titan";
-                    if (earnings >= 50000) return "champion";
-                    if (earnings >= 10000) return "master";
-                    if (earnings >= 2000) return "diamond";
-                    if (earnings >= 500) return "gold";
-                    if (earnings >= 100) return "silver";
-                    return "bronze";
-                  };
-                  const leagueId = getLeagueIdByEarnings(entry.allTimeEarnings || entry.earnings);
-                  return (
-                    <div key={idx} className="grid grid-cols-[45px_1fr_105px] md:grid-cols-3 px-4 py-3 text-sm font-sans items-center hover:bg-zinc-900/10 border-b border-[#e4e4e7]/60 dark:border-border/40 transition-colors text-left last:border-b-0 min-w-[380px] md:min-w-0">
-                      <div className="font-extrabold text-muted">
-                        {entry.rank === 1 ? "🥇" : entry.rank === 2 ? "🥈" : entry.rank === 3 ? "🥉" : `#${entry.rank}`}
-                      </div>
-                      <div className="font-semibold text-foreground pr-2 flex items-center gap-2 whitespace-nowrap min-w-0">
-                        <LeagueIcon id={leagueId} size={20} className="inline-block flex-shrink-0" />
-                        <span>@{entry.username}</span>
-                      </div>
-                      <div className="font-extrabold text-[#16a34a] text-right rich-number">
-                        ${new Intl.NumberFormat("en-US").format(entry.earnings)}
-                      </div>
+            {/* Table Display */}
+            <div className="w-full overflow-auto md:overflow-x-auto md:overflow-y-visible max-h-[300px] md:max-h-none border border-[#e4e4e7] dark:border-border/50 rounded-xl bg-[#F5F5F5] dark:bg-zinc-950/20">
+              <div className="min-w-[380px] md:min-w-0">
+                <div className="grid grid-cols-[45px_1fr_105px] md:grid-cols-3 border-b border-[#e4e4e7] dark:border-border/80 bg-zinc-200 dark:bg-zinc-950/40 px-4 py-3 text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-muted font-sans text-left">
+                  <div>Rank</div>
+                  <div>Username</div>
+                  <div className="text-right">Earnings</div>
+                </div>
+                <div className="divide-y divide-border/40 md:max-h-[300px] md:overflow-y-auto min-w-[380px] md:min-w-0">
+                  {(!leaderboardData[leaderboardTab] || leaderboardData[leaderboardTab].length === 0) ? (
+                    <div className="text-center py-8 text-sm text-muted font-medium font-sans">
+                      No active promoters in this timeframe yet
                     </div>
-                  );
-                })
-                )}
+                  ) : (
+                    leaderboardData[leaderboardTab].map((entry, idx) => {
+                    const getLeagueIdByEarnings = (earnings: number) => {
+                      if (earnings >= 10000000) return "sovereign";
+                      if (earnings >= 1000000) return "apex";
+                      if (earnings >= 500000) return "elite";
+                      if (earnings >= 250000) return "legend";
+                      if (earnings >= 100000) return "titan";
+                      if (earnings >= 50000) return "champion";
+                      if (earnings >= 10000) return "master";
+                      if (earnings >= 2000) return "diamond";
+                      if (earnings >= 500) return "gold";
+                      if (earnings >= 100) return "silver";
+                      return "bronze";
+                    };
+                    const leagueId = getLeagueIdByEarnings(entry.allTimeEarnings || entry.earnings);
+                    return (
+                      <div key={idx} className="grid grid-cols-[45px_1fr_105px] md:grid-cols-3 px-4 py-3 text-sm font-sans items-center hover:bg-zinc-900/10 border-b border-[#e4e4e7]/60 dark:border-border/40 transition-colors text-left last:border-b-0 min-w-[380px] md:min-w-0">
+                        <div className="font-extrabold text-muted">
+                          {entry.rank === 1 ? "🥇" : entry.rank === 2 ? "🥈" : entry.rank === 3 ? "🥉" : `#${entry.rank}`}
+                        </div>
+                        <div className="font-semibold text-foreground pr-2 flex items-center gap-2 whitespace-nowrap min-w-0">
+                          <LeagueIcon id={leagueId} size={20} className="inline-block flex-shrink-0" />
+                          <span>@{entry.username}</span>
+                        </div>
+                        <div className="font-extrabold text-[#16a34a] text-right rich-number">
+                          ${new Intl.NumberFormat("en-US").format(entry.earnings)}
+                        </div>
+                      </div>
+                    );
+                  })
+                  )}
+                </div>
               </div>
+            </div>
+
+            {/* CTA Link */}
+            <div className="mt-6 text-center">
+              <button 
+                onClick={handleStartEarning}
+                className="text-emerald-400 hover:text-emerald-300 font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-1.5 mx-auto active:scale-[0.98]"
+                style={{ fontFamily: '"EB Garamond", serif' }}
+              >
+                <span>Think you can beat them?</span>
+                <ArrowRight size={14} />
+              </button>
             </div>
           </div>
 
-          {/* CTA Link */}
-          <div className="mt-6 text-center">
-            <button 
-              onClick={handleStartEarning}
-              className="text-emerald-400 hover:text-emerald-300 font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-1.5 mx-auto active:scale-[0.98]"
-              style={{ fontFamily: '"EB Garamond", serif' }}
-            >
-              <span>Think you can beat them?</span>
-              <ArrowRight size={14} />
-            </button>
-          </div>
+          <p className="text-center text-[10px] text-muted/30 font-medium mt-4 select-none font-sans px-4">
+            ⓘ These figures and profiles demonstrate platform scaling potential using simulated earnings. Individual earnings vary based on actual sharing performance.
+          </p>
         </div>
 
-        <p className="text-center text-[10px] text-muted/30 font-medium mt-4 select-none font-sans px-4">
-          ⓘ These figures and profiles demonstrate platform scaling potential using simulated earnings. Individual earnings vary based on actual sharing performance.
-        </p>
-      </div>
-
-      </section>
+        </section>
+      )}
 
       {/* SECTION 4: HOW IT WORKS */}
       <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
