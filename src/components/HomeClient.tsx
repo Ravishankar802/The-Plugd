@@ -482,7 +482,7 @@ export default function HomeClient({
 
   return (
     <main className="min-h-screen flex flex-col items-center w-full max-w-full overflow-x-hidden">
-      <div className="w-full relative flex flex-col items-center pt-2 pb-12">
+      <div className="w-full relative flex flex-col items-center pt-2 pb-24 md:pb-40">
 
         <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-[60] flex flex-col items-center">
           <div className="max-w-[800px] w-full">
