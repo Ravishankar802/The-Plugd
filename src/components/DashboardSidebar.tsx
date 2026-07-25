@@ -175,7 +175,7 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
       </aside>
 
       {/* Mobile Bottom Navigation Bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur-lg border-t border-border z-40 flex items-center justify-around py-3 px-4 shadow-xl">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur-lg border-t border-white/20 z-40 flex items-center justify-around py-3 px-4 shadow-xl">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = currentTab === item.id;
@@ -191,7 +191,7 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
               }`}
             >
               <Icon size={20} className={isActive ? "text-[#16a34a]" : "text-muted"} />
-              <span className="text-[0.62rem] font-bold uppercase tracking-wider">{item.name}</span>
+              <span className="text-[0.62rem] font-medium tracking-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>{item.name}</span>
             </Link>
           );
         })}
@@ -207,7 +207,7 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
               }`}
             >
               <Icon size={20} className={isActive ? "text-[#16a34a]" : "text-muted"} />
-              <span className="text-[0.62rem] font-bold uppercase tracking-wider">Admin</span>
+              <span className="text-[0.62rem] font-medium tracking-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Admin</span>
             </Link>
           );
         })}
@@ -216,7 +216,7 @@ export default function DashboardSidebar({ email, isAdmin, hasAccount, hasPromot
           className="flex flex-col items-center gap-1 transition-all text-muted hover:text-foreground cursor-pointer"
         >
           <LogOut size={20} />
-          <span className="text-[0.62rem] font-bold uppercase tracking-wider">Logout</span>
+          <span className="text-[0.62rem] font-medium tracking-tight" style={{ fontFamily: '"Times New Roman", Times, serif' }}>Logout</span>
         </button>
       </div>
 
