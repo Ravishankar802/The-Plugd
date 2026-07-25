@@ -482,11 +482,26 @@ export default function HomeClient({
 
   return (
     <main className="min-h-screen flex flex-col items-center w-full max-w-full overflow-x-hidden">
-      <div className="w-full relative flex flex-col items-center pt-2 pb-24 md:pb-40">
+      <Header />
+      <div className="w-full relative flex flex-col items-center pt-2 pb-16 md:pb-24">
 
         <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-[60] flex flex-col items-center">
-          <div className="max-w-[800px] w-full">
-            <Header />
+          <div className="max-w-[800px] w-full text-center">
+            {/* Hero Title & Subtitle */}
+            <div className="text-center pt-10 md:pt-16 pb-8 flex flex-col items-center">
+              <h1 
+                className="text-[clamp(2.15rem,5.5vw,3.5rem)] font-[800] tracking-[-0.035em] leading-[1.1] text-foreground mb-4 relative z-10"
+                style={{ fontFamily: '"Times New Roman", Times, serif' }}
+              >
+                Refer & Earn
+              </h1>
+              <p 
+                className="text-muted text-[0.875rem] md:text-[1.25rem] font-normal max-w-[340px] md:max-w-2xl leading-tight md:leading-relaxed mx-auto relative z-10 px-4"
+                style={{ fontFamily: '"EB Garamond", serif' }}
+              >
+                Share Plugd. Get paid for every successful referral.
+              </p>
+            </div>
 
             <section className="mb-0">
               <div className="flex flex-row gap-4 mb-6 items-center justify-center">
@@ -504,9 +519,12 @@ export default function HomeClient({
                 >
                   Start Earning
                 </button>
-                <Link
-                  href="/vault"
-                  className="bg-selected border border-selected text-selected-foreground flex items-center justify-center gap-2 transition-all hover:bg-selected/90 active:scale-[0.98] shadow-lg cursor-pointer"
+                <button
+                  onClick={() => {
+                    const el = document.getElementById("how-it-works");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="bg-transparent border border-border text-foreground hover:bg-zinc-800/10 dark:hover:bg-zinc-800/40 flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-lg cursor-pointer"
                   style={{ 
                     fontFamily: 'var(--font-eb-garamond), serif', 
                     padding: '0.6rem 1.75rem',
@@ -515,8 +533,8 @@ export default function HomeClient({
                     borderRadius: '8px'
                   }}
                 >
-                  Dashboard
-                </Link>
+                  How It Works
+                </button>
               </div>
             </section>
           </div>
@@ -526,7 +544,7 @@ export default function HomeClient({
 
 
       {/* SECTION 3: EARNINGS CALCULATOR */}
-      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
+      <section id="calculator" className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
         <div className="bg-pill border border-border rounded-[24px] p-6 sm:p-8 md:p-10 shadow-xl flex flex-col items-center">
           <div className="text-center max-w-2xl mx-auto mb-8">
             <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-3" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
@@ -718,7 +736,7 @@ export default function HomeClient({
       )}
 
       {/* SECTION 4: HOW IT WORKS */}
-      <section className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
+      <section id="how-it-works" className="w-full max-w-5xl mx-auto px-4 md:px-8 mb-16 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-3" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
             How Plugd Works
