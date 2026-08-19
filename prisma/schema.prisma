@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String           @id @default(cuid())
+  email           String           @unique
+  username        String?          @unique
+  displayName     String?
+  bio             String?
+  avatarUrl       String?
+  bannerUrl       String?
+  accentColor     String?          @default("#f97316")
+  instagramUrl    String?
+  xUrl            String?
+  youtubeUrl      String?
+  tiktokUrl       String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  categories      Category[]
+  items           Item[]
+  paymentSettings PaymentSettings?
+}
+
+model Category {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name         String
+  slug         String
+  icon         String?
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+  items        Item[]
+
+  @@unique([userId, slug])
+}
+
+model Item {
+  id               String    @id @default(cuid())
+  userId           String
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  categoryId       String?
+  category         Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  name             String
+  slug             String
+  shortDescription String?
+  description      String?
+  imageUrl         String?
+  isFeatured       Boolean   @default(false)
+  isPublished      Boolean   @default(true)
+  isArchived       Boolean   @default(false)
+  displayOrder     Int       @default(0)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@unique([userId, slug])
+}
+
+model PaymentSettings {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  upiEnabled    Boolean  @default(false)
+  upiId         String?
+  upiQrUrl      String?
+  bankEnabled   Boolean  @default(false)
+  accountHolder String?
+  accountNumber String?
+  ifsc          String?
+  bankName      String?
+  updatedAt     DateTime @updatedAt
+}
+
+model OtpToken {
+  id        String   @id @default(cuid())
+  email     String
+  code      String
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([email, used])
+}
