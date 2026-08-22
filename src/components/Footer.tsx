@@ -1,99 +1,63 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Moon, Sun, Monitor, ChevronDown } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
-import { useTheme } from "next-themes";
 
 interface FooterProps {
   showBorder?: boolean;
 }
 
 export default function Footer({ showBorder = true }: FooterProps) {
-  const { theme, setTheme } = useTheme();
-  const [isOpen, setIsOpen] = useState(false);
-  const [hasMounted, setHasMounted] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  useEffect(() => {
-    setHasMounted(true);
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const themeOptions = [
-    { name: "light", label: "Light", icon: Sun },
-    { name: "dark", label: "Dark", icon: Moon },
-    { name: "system", label: "System", icon: Monitor },
-  ];
-
-  const currentThemeOption = themeOptions.find(opt => opt.name === theme) || themeOptions[2];
-  const CurrentIcon = currentThemeOption.icon;
-
-  const isPublicPage = pathname?.startsWith("/@");
-
-  if (isPublicPage) {
-    return null; // Public creator pages render their own simplified brand footer
+  // Public creator pages have their own minimal badge
+  if (pathname?.startsWith("/@")) {
+    return null;
   }
 
   return (
-    <footer className={`w-full bg-zinc-950 border-t ${showBorder ? "border-zinc-900" : "border-transparent"} py-8 font-sans`}>
-      <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-        
-        {/* Left: Brand info & Links */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-xs text-zinc-500 font-medium">
-          <span>© {new Date().getFullYear()} Plugd Inc.</span>
-          <div className="flex items-center gap-4">
-            <Link href="/" className="hover:text-zinc-300 transition-colors">Home</Link>
-            <Link href="/dashboard" className="hover:text-zinc-300 transition-colors">Dashboard</Link>
-            <Link href="/terms-of-service" className="hover:text-zinc-300 transition-colors">Terms of Service</Link>
-            <a href="mailto:support@theplugd.com" className="hover:text-zinc-300 transition-colors">Contact</a>
+    <footer className={`w-full bg-zinc-950 text-zinc-400 py-10 font-sans ${showBorder ? "border-t border-zinc-900" : ""}`}>
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-8 border-b border-zinc-800">
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-orange-500 text-black">
+              <Image src="/logo.png" alt="Plugd" width={28} height={28} className="h-6 w-6 object-contain" />
+            </div>
+            <div>
+              <span className="text-lg font-black tracking-tight text-white">
+                Plugd<span className="text-orange-500">.</span>
+              </span>
+              <p className="text-xs text-zinc-400">India-first creator wishlist and discovery platform.</p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-6 text-xs font-semibold">
+            <Link href="/" className="hover:text-white transition-colors">
+              Catalog
+            </Link>
+            <Link href="/category/electronics" className="hover:text-white transition-colors">
+              Electronics
+            </Link>
+            <Link href="/category/travel" className="hover:text-white transition-colors">
+              Travel
+            </Link>
+            <Link href="/category/dreams" className="hover:text-white transition-colors">
+              Dreams
+            </Link>
+            <Link href="/login" className="hover:text-white transition-colors">
+              Creator Login
+            </Link>
+            <Link href="/terms-of-service" className="hover:text-white transition-colors">
+              Terms
+            </Link>
           </div>
         </div>
 
-        {/* Right: Theme Toggle */}
-        {hasMounted && (
-          <div className="relative" ref={dropdownRef}>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center gap-2 bg-zinc-900 border border-zinc-800 hover:bg-zinc-850 px-3 py-1.5 rounded-xl text-xs text-zinc-400 transition-all cursor-pointer"
-            >
-              <div className="flex items-center gap-1.5">
-                <CurrentIcon className="w-3.5 h-3.5" />
-                <span className="font-semibold capitalize">{theme === "system" ? "System" : theme}</span>
-              </div>
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
-            </button>
-
-            {isOpen && (
-              <div className="absolute bottom-full right-0 mb-1.5 w-32 bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-bottom-1">
-                {themeOptions.map((item) => (
-                  <button
-                    key={item.name}
-                    onClick={() => {
-                      setTheme(item.name);
-                      setIsOpen(false);
-                    }}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold transition-colors rounded-lg text-left ${
-                      theme === item.name ? "bg-zinc-850 text-zinc-100" : "text-zinc-450 hover:bg-zinc-850/50 hover:text-zinc-200"
-                    }`}
-                  >
-                    <item.icon className="w-3.5 h-3.5 shrink-0" />
-                    <span>{item.label}</span>
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-        
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-zinc-500">
+          <p>© {new Date().getFullYear()} Plugd Inc. Browse things people want.</p>
+          <p>Powered by Plugd • theplugd.com</p>
+        </div>
       </div>
     </footer>
   );

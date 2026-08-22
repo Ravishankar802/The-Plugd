@@ -1,125 +1,103 @@
 import { notFound } from "next/navigation";
-import prisma from "@/lib/prisma";
 import PublicProfileClient from "@/components/PublicProfileClient";
+import { ensureCatalogSeeded, resolveWishlistItem } from "@/lib/catalog";
+import { getCreatorDisplayName } from "@/lib/creator";
+import prisma from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
-interface PageProps {
+interface PublicProfilePageProps {
   params: Promise<{ username: string }> | { username: string };
 }
 
-// Generate Dynamic SEO & OpenGraph Metadata
-export async function generateMetadata({ params }: PageProps) {
-  try {
-    const resolvedParams = await params;
-    const rawUsername = resolvedParams.username;
-
-    // Only allow usernames starting with @
-    if (!rawUsername.startsWith("%40") && !rawUsername.startsWith("@")) {
-      return { title: "Page Not Found — Plugd" };
-    }
-
-    const username = decodeURIComponent(rawUsername).replace(/^@/, "");
-
-    const creator = await prisma.user.findUnique({
-      where: { username },
-      select: {
-        username: true,
-        displayName: true,
-        bio: true,
-        avatarUrl: true,
-      },
-    });
-
-    if (!creator) {
-      return { title: "Page Not Found — Plugd" };
-    }
-
-    const title = `${creator.displayName} (@${creator.username}) — Plugd`;
-    const description = creator.bio || `Support ${creator.displayName}'s goals directly on Plugd!`;
-
-    return {
-      title,
-      description,
-      openGraph: {
-        title,
-        description,
-        type: "profile",
-        username: creator.username,
-        images: creator.avatarUrl ? [{ url: creator.avatarUrl }] : [],
-      },
-    };
-  } catch (error) {
-    return { title: "Plugd" };
-  }
+function normalizeUsername(rawUsername: string) {
+  if (!rawUsername) return null;
+  const decoded = decodeURIComponent(rawUsername);
+  return decoded.replace(/^@/, "").trim();
 }
 
-export default async function PublicProfilePage({ params }: PageProps) {
+export async function generateMetadata({ params }: PublicProfilePageProps) {
   const resolvedParams = await params;
-  const rawUsername = resolvedParams.username;
+  const username = normalizeUsername(resolvedParams.username);
 
-  // Validate path starts with @ (e.g. /@username)
-  if (!rawUsername.startsWith("%40") && !rawUsername.startsWith("@")) {
+  if (!username) {
+    return { title: "Plugd" };
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { username },
+    include: { creatorProfile: true },
+  });
+
+  if (!user) {
+    return { title: "Plugd" };
+  }
+
+  const displayName = getCreatorDisplayName(user.creatorProfile, user.email.split("@")[0]);
+
+  return {
+    title: `${displayName}'s Wishlist | Plugd`,
+    description: user.creatorProfile?.bio || `${displayName}'s Wishlist on Plugd`,
+  };
+}
+
+export default async function PublicProfilePage({ params }: PublicProfilePageProps) {
+  await ensureCatalogSeeded();
+  const resolvedParams = await params;
+  const username = normalizeUsername(resolvedParams.username);
+
+  if (!username) {
     notFound();
   }
 
-  const username = decodeURIComponent(rawUsername).replace(/^@/, "");
-
-  // Fetch creator profile
-  const creator = await prisma.user.findUnique({
+  const user = await prisma.user.findUnique({
     where: { username },
     include: {
-      categories: {
-        orderBy: { displayOrder: "asc" },
+      creatorProfile: true,
+      wishlistItems: {
+        where: { isPublished: true },
+        include: {
+          category: true,
+          catalogItem: {
+            include: {
+              category: true,
+            },
+          },
+        },
+        orderBy: [{ isFeatured: "desc" }, { displayOrder: "asc" }, { createdAt: "asc" }],
       },
-      items: {
-        where: { isPublished: true, isArchived: false },
-        orderBy: { displayOrder: "asc" },
-      },
-      paymentSettings: true,
     },
   });
 
-  if (!creator) {
+  if (!user) {
     notFound();
   }
 
-  // Ensure sensitive payment details are not leaked directly into page props
-  // UPI details and bank Enabled flag are safe, but keep bank details isolated
-  const safePaymentSettings = creator.paymentSettings
-    ? {
-        upiEnabled: creator.paymentSettings.upiEnabled,
-        upiId: creator.paymentSettings.upiId,
-        upiQrUrl: creator.paymentSettings.upiQrUrl,
-        bankEnabled: creator.paymentSettings.bankEnabled,
-        // Bank fields are sent to the client, but the modal handles exposing them.
-        accountHolder: creator.paymentSettings.accountHolder,
-        accountNumber: creator.paymentSettings.accountNumber,
-        ifsc: creator.paymentSettings.ifsc,
-        bankName: creator.paymentSettings.bankName,
-      }
-    : null;
-
-  const safeCreatorData = {
-    id: creator.id,
-    username: creator.username!,
-    displayName: creator.displayName || creator.email.split("@")[0],
-    bio: creator.bio,
-    avatarUrl: creator.avatarUrl,
-    bannerUrl: creator.bannerUrl,
-    accentColor: creator.accentColor,
-    instagramUrl: creator.instagramUrl,
-    xUrl: creator.xUrl,
-    youtubeUrl: creator.youtubeUrl,
-    tiktokUrl: creator.tiktokUrl,
-  };
+  const items = user.wishlistItems.map(resolveWishlistItem);
+  const categories = Array.from(
+    new Map(
+      items
+        .filter((item) => item.category)
+        .map((item) => [item.category!.id, item.category!]),
+    ).values(),
+  );
 
   return (
     <PublicProfileClient
-      creator={safeCreatorData}
-      categories={creator.categories}
-      items={creator.items}
-      paymentSettings={safePaymentSettings}
+      creator={{
+        username: user.username || username,
+        displayName: getCreatorDisplayName(user.creatorProfile, user.email.split("@")[0]),
+        bio: user.creatorProfile?.bio,
+        avatarUrl: user.creatorProfile?.avatarUrl,
+        bannerUrl: user.creatorProfile?.bannerUrl,
+        accentColor: user.creatorProfile?.accentColor,
+        instagramUrl: user.creatorProfile?.instagramUrl,
+        xUrl: user.creatorProfile?.xUrl,
+        youtubeUrl: user.creatorProfile?.youtubeUrl,
+        tiktokUrl: user.creatorProfile?.tiktokUrl,
+      }}
+      categories={categories}
+      items={items}
     />
   );
 }

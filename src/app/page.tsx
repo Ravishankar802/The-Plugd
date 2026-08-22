@@ -1,130 +1,284 @@
-"use client";
-
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, Sparkles, Gift, Share2, Shield, Heart } from "lucide-react";
+import { ChevronRight, ArrowRight, Sparkles } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import AddToWishlistButton from "@/components/AddToWishlistButton";
+import CatalogCard from "@/components/CatalogCard";
+import CategoryIcon from "@/components/CategoryIcon";
+import { getSession } from "@/lib/auth";
+import { ensureCatalogSeeded } from "@/lib/catalog";
+import prisma from "@/lib/prisma";
 
-export default function LandingPage() {
+export const dynamic = "force-dynamic";
+
+interface HomePageProps {
+  searchParams?: Promise<{ q?: string }> | { q?: string };
+}
+
+export default async function HomePage({ searchParams }: HomePageProps) {
+  await ensureCatalogSeeded();
+
+  const session = await getSession();
+  const resolvedSearchParams = await searchParams;
+  const query = resolvedSearchParams?.q?.trim() || "";
+
+  const [categories, featuredItems, searchResults] = await Promise.all([
+    prisma.category.findMany({
+      where: { active: true },
+      include: {
+        catalogItems: {
+          where: { active: true },
+          orderBy: [{ featured: "desc" }, { displayOrder: "asc" }],
+          take: 6,
+        },
+      },
+      orderBy: { displayOrder: "asc" },
+    }),
+    prisma.catalogItem.findMany({
+      where: { active: true, featured: true },
+      include: { category: true },
+      orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
+      take: 6,
+    }),
+    query
+      ? prisma.catalogItem.findMany({
+          where: {
+            active: true,
+            OR: [
+              { name: { contains: query, mode: "insensitive" } },
+              { shortDescription: { contains: query, mode: "insensitive" } },
+              { description: { contains: query, mode: "insensitive" } },
+              { category: { name: { contains: query, mode: "insensitive" } } },
+            ],
+          },
+          include: { category: true },
+          orderBy: [{ featured: "desc" }, { displayOrder: "asc" }],
+          take: 24,
+        })
+      : Promise.resolve([]),
+  ]);
+
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col font-sans selection:bg-orange-500/20 selection:text-orange-500 relative overflow-hidden">
-      
-      {/* Subtle premium gradient background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-500/5 via-transparent to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
+    <div className="min-h-screen bg-[#f7f3ee] text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
+      {/* Sticky Header with Search */}
+      <Header
+        initialQuery={query}
+        isLoggedIn={Boolean(session?.userId)}
+        username={session?.username}
+        searchAction="/"
+      />
 
-      {/* Landing Header */}
-      <header className="sticky top-0 left-0 right-0 h-20 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-900 z-50 flex items-center justify-between px-6 md:px-12">
-        <Link href="/" className="flex items-center gap-2 hover:opacity-95 transition-opacity">
-          <Image src="/logo.png" alt="Plugd" width={40} height={40} />
-          <span className="font-bold text-xl text-zinc-100 tracking-tight">Plugd</span>
-        </Link>
-
-        <Link 
-          href="/dashboard"
-          className="h-10 px-5 bg-zinc-900 border border-zinc-800 hover:bg-zinc-850 hover:text-zinc-100 text-zinc-300 rounded-xl text-xs font-bold flex items-center justify-center transition-all cursor-pointer"
-        >
-          Dashboard
-        </Link>
-      </header>
-
-      {/* Hero Section */}
-      <section className="relative z-10 max-w-4xl mx-auto px-6 pt-16 md:pt-28 pb-16 text-center space-y-8 font-sans">
-        
-        {/* Fee Badge */}
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs font-bold text-orange-500">
-          <Sparkles size={13} className="animate-pulse" />
-          <span>0% Plugd platform fee on supporter payments</span>
-        </div>
-
-        {/* Hero Title */}
-        <div className="space-y-4">
-          <h1 className="text-4xl md:text-6xl font-black text-zinc-100 tracking-tight leading-[1.08] max-w-3xl mx-auto">
-            Get supported for what you <span className="text-orange-500">actually want</span>.
-          </h1>
-          <p className="text-zinc-400 text-sm md:text-lg max-w-xl mx-auto leading-relaxed font-medium">
-            Create your page, add the goals you're working toward, and share it with your audience. Receive 100% of supporter payments directly.
-          </p>
-        </div>
-
-        {/* Hero CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+      {/* Sticky/Scrollable Horizontal Category Navigation Bar */}
+      <div className="sticky top-[65px] md:top-[69px] z-30 border-b border-zinc-200/80 bg-[#f7f3ee]/95 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-4 py-2.5 no-scrollbar md:px-6">
           <Link
-            href="/dashboard"
-            className="w-full sm:w-auto h-14 px-8 bg-orange-500 text-black font-extrabold rounded-xl text-sm flex items-center justify-center gap-2 hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/10 cursor-pointer"
+            href="/"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-zinc-950 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-zinc-800"
           >
-            <span>Create your Plugd</span>
-            <ArrowRight size={16} strokeWidth={3} />
+            <Sparkles className="h-3.5 w-3.5 text-orange-400" />
+            <span>All</span>
           </Link>
-          
-          <Link
-            href="/@ravi"
-            className="w-full sm:w-auto h-14 px-8 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-zinc-300 hover:text-zinc-100 rounded-xl text-sm font-bold flex items-center justify-center transition-colors"
-          >
-            See an example
-          </Link>
+          {categories.map((category) => (
+            <Link
+              key={category.id}
+              href={`/category/${category.slug}`}
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-zinc-200/90 bg-white px-3.5 py-1.5 text-xs font-semibold text-zinc-700 shadow-sm transition hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+            >
+              <CategoryIcon name={category.icon} className="h-3.5 w-3.5 text-zinc-500" />
+              <span>{category.name}</span>
+            </Link>
+          ))}
         </div>
-      </section>
+      </div>
 
-      {/* Explainer Features grid */}
-      <section className="relative z-10 max-w-5xl w-full mx-auto px-6 py-16 md:py-24 border-t border-zinc-900/60">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
-          {/* Add Goal */}
-          <div className="bg-zinc-900/40 border border-zinc-900 rounded-2xl p-6 md:p-8 space-y-4">
-            <div className="w-10 h-10 bg-orange-500/10 border border-orange-500/20 text-orange-500 rounded-xl flex items-center justify-center">
-              <Gift className="w-5 h-5" />
+      {/* Main Body */}
+      <main className="mx-auto max-w-7xl flex-1 px-4 py-5 md:px-6 md:py-7 w-full">
+        {/* Compact Introductory Banner (No Giant SaaS Hero) */}
+        {!query && (
+          <section className="mb-8 overflow-hidden rounded-[28px] bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 p-6 text-white shadow-md md:p-8 relative">
+            <div className="absolute right-0 top-0 -mr-16 -mt-16 h-48 w-48 rounded-full bg-orange-500/20 blur-3xl" />
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div className="max-w-xl space-y-2">
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/15 border border-orange-500/30 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-orange-400">
+                  <Sparkles className="h-3 w-3" />
+                  India&apos;s Creator Wishlist Platform
+                </div>
+                <h1 className="text-2xl font-black tracking-tight md:text-3xl lg:text-4xl text-white">
+                  Get what you actually want.
+                </h1>
+                <p className="text-xs md:text-sm text-zinc-300 leading-relaxed max-w-lg">
+                  Create a public wishlist of items, upgrades, and dreams. Share it with your supporters so they can back what truly matters to you.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 shrink-0">
+                <Link
+                  href={session?.userId ? "/dashboard/items" : "/login"}
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-orange-500 px-5 text-xs md:text-sm font-bold text-black shadow-lg shadow-orange-500/20 transition hover:bg-orange-400 active:scale-98"
+                >
+                  <span>{session?.userId ? "Go to My Wishlist" : "Create My Wishlist"}</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/category/dreams"
+                  className="inline-flex h-11 items-center justify-center rounded-2xl border border-zinc-700 bg-zinc-900/60 px-4 text-xs md:text-sm font-semibold text-zinc-200 transition hover:border-zinc-500 hover:text-white"
+                >
+                  Explore Dreams
+                </Link>
+              </div>
             </div>
-            <div className="space-y-1.5">
-              <h3 className="font-bold text-zinc-100 text-sm">1. Add what you want</h3>
-              <p className="text-zinc-400 text-xs leading-relaxed font-medium">
-                Coffee, creator gear, tech tools, a trip to Ladakh, or your biggest dreams. You decide what goals to show.
-              </p>
+          </section>
+        )}
+
+        {/* Search Results Section */}
+        {query ? (
+          <section className="space-y-6">
+            <div className="flex items-end justify-between gap-4 border-b border-zinc-200 pb-4">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-orange-600">Search Results</p>
+                <h2 className="mt-1 text-2xl font-black tracking-tight text-zinc-950">
+                  Results for &ldquo;{query}&rdquo;
+                </h2>
+              </div>
+              <Link
+                href="/"
+                className="text-xs font-bold text-zinc-500 hover:text-zinc-950 transition-colors"
+              >
+                Clear Search
+              </Link>
             </div>
+
+            {searchResults.length > 0 ? (
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                {searchResults.map((item) => (
+                  <CatalogCard
+                    key={item.id}
+                    href={`/catalog/${item.slug}`}
+                    image={item.image}
+                    name={item.name}
+                    category={item.category.name}
+                    description={item.shortDescription}
+                    action={
+                      <AddToWishlistButton
+                        catalogItemId={item.id}
+                        isLoggedIn={Boolean(session?.userId)}
+                      />
+                    }
+                  />
+                ))}
+              </div>
+            ) : null}
+
+            {/* If no results or custom search prompt */}
+            <div className="rounded-[28px] border border-dashed border-zinc-300 bg-white p-6 md:p-8 text-center sm:text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <h3 className="text-base font-bold text-zinc-950">Can&apos;t find what you&apos;re looking for?</h3>
+                <p className="mt-1 text-xs text-zinc-600 max-w-md">
+                  Create a completely custom wishlist item with your own name, image, description, and link.
+                </p>
+              </div>
+              <Link
+                href={session?.userId ? "/dashboard/items" : "/login"}
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-zinc-950 px-5 text-xs font-bold text-white shadow-sm transition hover:bg-orange-500 hover:text-black shrink-0"
+              >
+                <span>+ Create Custom Item</span>
+              </Link>
+            </div>
+          </section>
+        ) : null}
+
+        {/* Discovery Sections / Shelves (Only if not in search mode) */}
+        {!query && (
+          <div className="space-y-10 md:space-y-12">
+            {/* 1. Trending Row */}
+            <section className="space-y-4">
+              <div className="flex items-end justify-between gap-4 border-b border-zinc-200/80 pb-3">
+                <div className="flex items-center gap-2">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600">
+                    <Sparkles className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <h2 className="text-lg md:text-xl font-black tracking-tight text-zinc-950">Trending</h2>
+                    <p className="text-[11px] text-zinc-500 hidden sm:block">Most popular items added to creator wishlists</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                {featuredItems.map((item) => (
+                  <CatalogCard
+                    key={item.id}
+                    href={`/catalog/${item.slug}`}
+                    image={item.image}
+                    name={item.name}
+                    category={item.category.name}
+                    description={item.shortDescription}
+                    action={
+                      <AddToWishlistButton
+                        catalogItemId={item.id}
+                        isLoggedIn={Boolean(session?.userId)}
+                      />
+                    }
+                  />
+                ))}
+              </div>
+            </section>
+
+            {/* 2. Category Shelves */}
+            {categories.map((category) => (
+              <section key={category.id} className="space-y-4">
+                <div className="flex items-center justify-between gap-4 border-b border-zinc-200/80 pb-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-zinc-200/80 text-zinc-800">
+                      <CategoryIcon name={category.icon} className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <h2 className="text-lg md:text-xl font-black tracking-tight text-zinc-950">
+                        {category.name}
+                      </h2>
+                      {category.description ? (
+                        <p className="text-[11px] text-zinc-500 hidden sm:block">
+                          {category.description}
+                        </p>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  <Link
+                    href={`/category/${category.slug}`}
+                    className="inline-flex items-center gap-1 text-xs font-bold text-zinc-600 hover:text-orange-600 transition-colors"
+                  >
+                    <span>View all</span>
+                    <ChevronRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                  {category.catalogItems.map((item) => (
+                    <CatalogCard
+                      key={item.id}
+                      href={`/catalog/${item.slug}`}
+                      image={item.image}
+                      name={item.name}
+                      category={category.name}
+                      description={item.shortDescription}
+                      action={
+                        <AddToWishlistButton
+                          catalogItemId={item.id}
+                          isLoggedIn={Boolean(session?.userId)}
+                        />
+                      }
+                    />
+                  ))}
+                </div>
+              </section>
+            ))}
           </div>
+        )}
+      </main>
 
-          {/* Share */}
-          <div className="bg-zinc-900/40 border border-zinc-900 rounded-2xl p-6 md:p-8 space-y-4">
-            <div className="w-10 h-10 bg-orange-500/10 border border-orange-500/20 text-orange-500 rounded-xl flex items-center justify-center">
-              <Share2 className="w-5 h-5" />
-            </div>
-            <div className="space-y-1.5">
-              <h3 className="font-bold text-zinc-100 text-sm">2. Share your Plugd</h3>
-              <p className="text-zinc-400 text-xs leading-relaxed font-medium">
-                Add your unique URL (e.g. `theplugd.com/@ravi`) to your Instagram bio, X bio, or YouTube description.
-              </p>
-            </div>
-          </div>
-
-          {/* Get Paid */}
-          <div className="bg-zinc-900/40 border border-zinc-900 rounded-2xl p-6 md:p-8 space-y-4">
-            <div className="w-10 h-10 bg-orange-500/10 border border-orange-500/20 text-orange-500 rounded-xl flex items-center justify-center">
-              <Shield className="w-5 h-5" />
-            </div>
-            <div className="space-y-1.5">
-              <h3 className="font-bold text-zinc-100 text-sm">3. Get supported directly</h3>
-              <p className="text-zinc-400 text-xs leading-relaxed font-medium">
-                Supporters pay you using your own UPI QR, UPI ID, or bank details. We take 0% commission and never touch the money.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* Mission statement bar */}
-      <section className="relative z-10 max-w-4xl mx-auto px-6 py-8 md:py-16 text-center border-t border-zinc-900/60 font-sans space-y-3">
-        <h3 className="text-lg md:text-xl font-bold text-zinc-300">India-first creator support. Direct and free.</h3>
-        <p className="text-zinc-500 text-xs leading-relaxed max-w-md mx-auto font-medium">
-          Support your favorite creators directly. No commissions, no middle-men. Subscription options will be introduced separately.
-        </p>
-      </section>
-
-      {/* Landing Footer */}
-      <footer className="mt-auto border-t border-zinc-900 py-8 text-center text-[10px] text-zinc-600 space-y-1 bg-zinc-950 relative z-10">
-        <p className="font-bold">© {new Date().getFullYear()} Plugd Inc. All rights reserved.</p>
-        <p className="font-semibold text-zinc-700">0% Plugd platform fee on supporter payments.</p>
-      </footer>
-
+      {/* Modern Footer */}
+      <Footer />
     </div>
   );
 }

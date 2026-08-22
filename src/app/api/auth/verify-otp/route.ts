@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { encrypt } from "@/lib/auth";
+import { ensureCreatorProfile } from "@/lib/creator";
 import { cookies } from "next/headers";
 
 export const dynamic = "force-dynamic";
@@ -49,10 +50,16 @@ export async function POST(req: Request) {
       user = await prisma.user.create({
         data: {
           email: cleanEmail,
-          displayName: cleanEmail.split("@")[0],
-          accentColor: "#f97316", // default Plugd orange
+          creatorProfile: {
+            create: {
+              displayName: cleanEmail.split("@")[0],
+              accentColor: "#f97316", // default Plugd orange
+            },
+          },
         },
       });
+    } else {
+      await ensureCreatorProfile(user.id);
     }
 
     // 4. Create Session

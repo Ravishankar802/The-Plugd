@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowLeft, ArrowRight, Star, Heart, Calendar, Gift } from "lucide-react";
 import Link from "next/link";
-import PaymentModal from "@/components/PaymentModal";
+import { ArrowLeft, Sparkles, Heart } from "lucide-react";
+import { useState } from "react";
+import SupportSoonModal from "@/components/SupportSoonModal";
 
 interface ItemDetailClientProps {
   creator: {
@@ -13,154 +13,120 @@ interface ItemDetailClientProps {
     accentColor?: string | null;
   };
   item: {
-    id: string;
     name: string;
-    slug: string;
+    image?: string | null;
     shortDescription?: string | null;
     description?: string | null;
-    imageUrl?: string | null;
-    createdAt: string;
+    personalNote?: string | null;
     category?: {
       name: string;
-      icon?: string | null;
     } | null;
   };
-  paymentSettings: any;
 }
 
-export default function ItemDetailClient({ creator, item, paymentSettings }: ItemDetailClientProps) {
-  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+export default function ItemDetailClient({ creator, item }: ItemDetailClientProps) {
+  const [open, setOpen] = useState(false);
   const accentColor = creator.accentColor || "#f97316";
 
-  const formattedDate = new Date(item.createdAt).toLocaleDateString("en-US", {
-    month: "long",
-    year: "numeric"
-  });
-
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col font-sans selection:bg-orange-500/20 selection:text-orange-500">
-      
-      {/* Detail Page Container */}
-      <div className="max-w-4xl w-full mx-auto px-4 md:px-6 py-8 md:py-16 space-y-6 flex-1">
-        
-        {/* Back Link */}
-        <Link 
-          href={`/@${creator.username}`}
-          className="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-300 text-xs font-bold uppercase tracking-wider transition-colors"
-        >
-          <ArrowLeft size={14} />
-          <span>Back to {creator.displayName}'s page</span>
-        </Link>
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
+      {/* Top Header */}
+      <header className="border-b border-white/10 bg-zinc-950/80 backdrop-blur">
+        <div className="mx-auto max-w-5xl px-4 py-4 md:px-6 flex items-center justify-between">
+          <Link
+            href={`/@${creator.username}`}
+            className="inline-flex items-center gap-2 text-xs md:text-sm font-bold text-zinc-400 hover:text-white transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            <span>Back to {creator.displayName}&apos;s Wishlist</span>
+          </Link>
 
-        {/* Content Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 bg-zinc-900 border border-zinc-800 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-44 h-44 bg-orange-500/5 rounded-full blur-3xl" />
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors"
+          >
+            <span>Powered by Plugd</span>
+          </Link>
+        </div>
+      </header>
 
-          {/* Left: Big Image */}
-          <div className="w-full aspect-[4/3] md:aspect-square rounded-2xl overflow-hidden bg-zinc-950 border border-zinc-850 shrink-0 shadow-lg relative group">
-            {item.imageUrl ? (
-              <img 
-                src={item.imageUrl} 
-                alt={item.name} 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-101"
+      {/* Main Content */}
+      <main className="mx-auto max-w-5xl flex-1 px-4 py-8 md:px-6 md:py-12 w-full">
+        <section className="grid gap-8 rounded-[32px] border border-white/10 bg-zinc-900/60 p-6 md:grid-cols-[1fr_1fr] md:p-10">
+          {/* Image */}
+          <div className="overflow-hidden rounded-[24px] bg-zinc-950 flex items-center justify-center">
+            {item.image ? (
+              <img
+                src={item.image}
+                alt={item.name}
+                className="aspect-square w-full object-cover"
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-zinc-700 bg-zinc-900">
-                <Gift size={64} />
+              <div className="aspect-square w-full bg-zinc-900 flex items-center justify-center text-zinc-700">
+                <Heart className="h-16 w-16" />
               </div>
             )}
           </div>
 
-          {/* Right: Info Panel */}
-          <div className="flex flex-col justify-between py-2 gap-6 relative z-10">
-            {/* Header info */}
+          {/* Details & Support CTA */}
+          <div className="flex flex-col justify-between gap-6">
             <div className="space-y-4">
-              {/* Category Tag */}
-              {item.category && (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-zinc-950 border border-zinc-850 rounded-full text-[10px] font-bold text-zinc-400 uppercase tracking-wider">
-                  {item.category.icon && <span>{item.category.icon}</span>}
-                  <span>{item.category.name}</span>
-                </span>
-              )}
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-orange-400">
+                {item.category?.name || "Wishlist Item"}
+              </span>
 
-              {/* Goal Title */}
-              <div className="space-y-1.5">
-                <h1 className="text-3xl font-black text-zinc-100 tracking-tight leading-tight">
-                  {item.name}
-                </h1>
-                {item.shortDescription && (
-                  <p className="text-sm font-semibold text-zinc-400">
-                    {item.shortDescription}
-                  </p>
-                )}
-              </div>
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight text-white">
+                {item.name}
+              </h1>
 
-              {/* Creator details */}
-              <div className="flex items-center gap-2.5 pt-2">
-                <div className="w-8 h-8 rounded-full border border-zinc-800 overflow-hidden bg-zinc-950 shrink-0">
-                  {creator.avatarUrl ? (
-                    <img src={creator.avatarUrl} alt={creator.displayName} className="w-full h-full object-cover" />
-                  ) : (
-                    <div className="w-full h-full bg-zinc-800 flex items-center justify-center text-xs font-bold text-zinc-500 uppercase">
-                      {creator.displayName[0]}
-                    </div>
-                  )}
-                </div>
-                <div className="text-xs">
-                  <p className="text-zinc-500">Goal set by</p>
-                  <p className="font-bold text-zinc-300">@{creator.username}</p>
-                </div>
-              </div>
-            </div>
+              {item.shortDescription ? (
+                <p className="text-sm md:text-base text-zinc-300 font-medium leading-relaxed">
+                  {item.shortDescription}
+                </p>
+              ) : null}
 
-            {/* Story / Why I want this */}
-            {item.description && (
-              <div className="space-y-2 border-t border-zinc-850 pt-5">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500 flex items-center gap-1.5">
-                  <Heart className="w-3.5 h-3.5 fill-red-500/10 text-red-500" /> Why I want this
-                </h3>
-                <p className="text-zinc-300 text-xs md:text-sm leading-relaxed font-medium">
+              {item.description ? (
+                <p className="text-xs md:text-sm text-zinc-400 leading-relaxed">
                   {item.description}
                 </p>
-              </div>
-            )}
+              ) : null}
 
-            {/* Date set */}
-            <div className="text-[10px] text-zinc-500 flex items-center gap-1 mt-auto font-medium">
-              <Calendar className="w-3.5 h-3.5 text-zinc-600" />
-              <span>Goal created in {formattedDate}</span>
+              {item.personalNote ? (
+                <div className="rounded-2xl border border-orange-500/20 bg-orange-500/5 p-4 space-y-1">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-orange-400">
+                    Note from {creator.displayName}
+                  </p>
+                  <p className="text-xs md:text-sm text-zinc-200 leading-relaxed italic">
+                    &ldquo;{item.personalNote}&rdquo;
+                  </p>
+                </div>
+              ) : null}
             </div>
 
-            {/* Primary Action Button */}
-            <button
-              onClick={() => setIsPaymentOpen(true)}
-              className="w-full h-14 text-black font-extrabold rounded-xl text-sm flex items-center justify-center gap-2 hover:opacity-95 transition-all active:scale-[0.99] cursor-pointer shadow-lg mt-4"
-              style={{ 
-                backgroundColor: accentColor,
-                boxShadow: `0 4px 20px ${accentColor}15`
-              }}
-            >
-              <span>Support {creator.displayName.split(" ")[0]}</span>
-              <ArrowRight size={14} strokeWidth={3} />
-            </button>
+            {/* Support CTA */}
+            <div className="pt-4 border-t border-white/10 space-y-3">
+              <button
+                type="button"
+                onClick={() => setOpen(true)}
+                className="h-12 w-full rounded-2xl text-sm font-extrabold text-black transition hover:brightness-110 shadow-lg shadow-orange-500/10 active:scale-98"
+                style={{ backgroundColor: accentColor }}
+              >
+                Support this
+              </button>
+              <p className="text-center text-[11px] text-zinc-500">
+                Direct support for {creator.displayName}. Powered by Plugd.
+              </p>
+            </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
 
-      {/* Brand Footer */}
-      <footer className="mt-auto border-t border-zinc-900 py-8 text-center text-[10px] text-zinc-600 space-y-1.5 bg-zinc-950">
-        <p className="font-bold">0% Plugd platform fee on supporter payments.</p>
-        <p className="font-semibold text-zinc-700">Supporters pay creators directly. Built with <Link href="/" className="hover:underline">Plugd</Link></p>
-      </footer>
-
-      {/* Shared Payment modal sheet */}
-      <PaymentModal 
-        isOpen={isPaymentOpen}
-        onClose={() => setIsPaymentOpen(false)}
+      <SupportSoonModal
+        open={open}
+        onClose={() => setOpen(false)}
         creatorName={creator.displayName}
-        paymentSettings={paymentSettings}
+        itemName={item.name}
       />
     </div>
   );
 }
-export type { ItemDetailClientProps };

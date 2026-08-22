@@ -8,73 +8,87 @@ datasource db {
 }
 
 model User {
-  id              String           @id @default(cuid())
-  email           String           @unique
-  username        String?          @unique
-  displayName     String?
-  bio             String?
-  avatarUrl       String?
-  bannerUrl       String?
-  accentColor     String?          @default("#f97316")
-  instagramUrl    String?
-  xUrl            String?
-  youtubeUrl      String?
-  tiktokUrl       String?
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-  categories      Category[]
-  items           Item[]
-  paymentSettings PaymentSettings?
+  id             String          @id @default(cuid())
+  email          String          @unique
+  username       String?         @unique
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  creatorProfile CreatorProfile?
+  wishlistItems  WishlistItem[]
+}
+
+model CreatorProfile {
+  id           String   @id @default(cuid())
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  displayName  String?
+  bio          String?
+  avatarUrl    String?
+  bannerUrl    String?
+  accentColor  String   @default("#f97316")
+  instagramUrl String?
+  xUrl         String?
+  youtubeUrl   String?
+  tiktokUrl    String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model Category {
-  id           String   @id @default(cuid())
-  userId       String
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  name         String
-  slug         String
-  icon         String?
-  displayOrder Int      @default(0)
-  createdAt    DateTime @default(now())
-  items        Item[]
-
-  @@unique([userId, slug])
+  id            String         @id @default(cuid())
+  name          String
+  slug          String         @unique
+  icon          String?
+  description   String?
+  active        Boolean        @default(true)
+  displayOrder  Int            @default(0)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  catalogItems  CatalogItem[]
+  wishlistItems WishlistItem[]
 }
 
-model Item {
-  id               String    @id @default(cuid())
-  userId           String
-  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  categoryId       String?
-  category         Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+model CatalogItem {
+  id               String         @id @default(cuid())
+  categoryId       String
+  category         Category       @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   name             String
-  slug             String
+  slug             String         @unique
+  image            String?
   shortDescription String?
   description      String?
-  imageUrl         String?
-  isFeatured       Boolean   @default(false)
-  isPublished      Boolean   @default(true)
-  isArchived       Boolean   @default(false)
-  displayOrder     Int       @default(0)
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
-
-  @@unique([userId, slug])
+  active           Boolean        @default(true)
+  featured         Boolean        @default(false)
+  displayOrder     Int            @default(0)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  wishlistItems    WishlistItem[]
 }
 
-model PaymentSettings {
-  id            String   @id @default(cuid())
-  userId        String   @unique
-  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  upiEnabled    Boolean  @default(false)
-  upiId         String?
-  upiQrUrl      String?
-  bankEnabled   Boolean  @default(false)
-  accountHolder String?
-  accountNumber String?
-  ifsc          String?
-  bankName      String?
-  updatedAt     DateTime @updatedAt
+model WishlistItem {
+  id               String           @id @default(cuid())
+  userId           String
+  user             User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  categoryId       String?
+  category         Category?        @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  catalogItemId    String?
+  catalogItem      CatalogItem?     @relation(fields: [catalogItemId], references: [id], onDelete: SetNull)
+  itemType         WishlistItemType
+  slug             String
+  name             String?
+  image            String?
+  shortDescription String?
+  description      String?
+  externalUrl      String?
+  personalNote     String?
+  isFeatured       Boolean          @default(false)
+  isPublished      Boolean          @default(true)
+  displayOrder     Int              @default(0)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@unique([userId, slug])
+  @@unique([userId, catalogItemId])
 }
 
 model OtpToken {
@@ -86,4 +100,9 @@ model OtpToken {
   createdAt DateTime @default(now())
 
   @@index([email, used])
+}
+
+enum WishlistItemType {
+  CATALOG
+  CUSTOM
 }

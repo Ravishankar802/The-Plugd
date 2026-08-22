@@ -1,98 +1,189 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { 
-  Loader2, 
-  Plus, 
-  Trash2, 
-  ChevronUp, 
+import {
   ChevronDown,
-  Upload,
-  CheckCircle2,
-  Gift,
+  ChevronUp,
+  Copy,
+  ExternalLink,
+  Loader2,
+  Pencil,
+  Plus,
+  Search,
+  Sparkles,
   Star,
-  EyeOff,
+  Trash2,
+  Upload,
+  Check,
+  CheckCircle2,
+  X,
   Eye,
-  Archive,
-  Edit3,
-  X
+  EyeOff,
 } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
-export default function ItemsPage() {
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const editFileInputRef = useRef<HTMLInputElement>(null);
-  
+type Category = {
+  id: string;
+  name: string;
+  slug: string;
+  icon?: string | null;
+};
+
+type CatalogItem = {
+  id: string;
+  name: string;
+  slug: string;
+  image: string | null;
+  shortDescription?: string | null;
+  category: Category;
+};
+
+type WishlistItem = {
+  id: string;
+  slug: string;
+  itemType: "CATALOG" | "CUSTOM";
+  name: string;
+  image: string | null;
+  shortDescription?: string | null;
+  description?: string | null;
+  personalNote?: string | null;
+  externalUrl?: string | null;
+  isFeatured: boolean;
+  isPublished: boolean;
+  displayOrder: number;
+  category?: Category | null;
+};
+
+export default function WishlistDashboardPage() {
   const [loading, setLoading] = useState(true);
-  const [items, setItems] = useState<any[]>([]);
-  const [categories, setCategories] = useState<any[]>([]);
-  
-  // Form states
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [editingItem, setEditingItem] = useState<any | null>(null);
-
-  // New Item details
-  const [name, setName] = useState("");
-  const [shortDescription, setShortDescription] = useState("");
-  const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [categoryId, setCategoryId] = useState("");
-  const [isFeatured, setIsFeatured] = useState(false);
-  const [isPublished, setIsPublished] = useState(true);
-
-  // Edit Item details
-  const [editName, setEditName] = useState("");
-  const [editShortDescription, setEditShortDescription] = useState("");
-  const [editDescription, setEditDescription] = useState("");
-  const [editImageUrl, setEditImageUrl] = useState("");
-  const [editCategoryId, setEditCategoryId] = useState("");
-  const [editIsFeatured, setEditIsFeatured] = useState(false);
-  const [editIsPublished, setEditIsPublished] = useState(true);
-  const [editIsArchived, setEditIsArchived] = useState(false);
-  const [editSlug, setEditSlug] = useState("");
-
-  const [uploadingImage, setUploadingImage] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [catalog, setCatalog] = useState<CatalogItem[]>([]);
+  const [wishlist, setWishlist] = useState<WishlistItem[]>([]);
+  const [query, setQuery] = useState("");
+  const [searching, setSearching] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [username, setUsername] = useState("");
+  const [copied, setCopied] = useState(false);
+
+  // Custom Item Form State
+  const [customFormOpen, setCustomFormOpen] = useState(false);
+  const [editingItem, setEditingItem] = useState<WishlistItem | null>(null);
+  const [customName, setCustomName] = useState("");
+  const [customCategoryId, setCustomCategoryId] = useState("");
+  const [customImage, setCustomImage] = useState("");
+  const [customShortDescription, setCustomShortDescription] = useState("");
+  const [customDescription, setCustomDescription] = useState("");
+  const [customExternalUrl, setCustomExternalUrl] = useState("");
+  const [customPersonalNote, setCustomPersonalNote] = useState("");
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const fetchData = async () => {
     try {
-      const [itemsRes, catsRes] = await Promise.all([
-        fetch("/api/items"),
-        fetch("/api/categories")
+      const [authRes, wishlistRes, categoriesRes, catalogRes] = await Promise.all([
+        fetch("/api/auth/me"),
+        fetch("/api/wishlist"),
+        fetch("/api/categories"),
+        fetch("/api/catalog?limit=30"),
       ]);
 
-      if (itemsRes.ok && catsRes.ok) {
-        const itemsData = await itemsRes.json();
-        const catsData = await catsRes.json();
-        setItems(itemsData);
-        setCategories(catsData);
+      if (authRes.ok) {
+        const auth = await authRes.json();
+        setUsername(auth.user?.username || "");
       }
+      if (wishlistRes.ok) setWishlist(await wishlistRes.json());
+      if (categoriesRes.ok) setCategories(await categoriesRes.json());
+      if (catalogRes.ok) setCatalog(await catalogRes.json());
     } catch (err) {
-      console.error("Failed to load dashboard data:", err);
-    } finally {
-      setLoading(false);
+      console.error(err);
     }
   };
 
   useEffect(() => {
-    fetchData();
+    fetchData().finally(() => setLoading(false));
   }, []);
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, isEdit: boolean) => {
+  const handleSearchChange = async (val: string) => {
+    setQuery(val);
+    setSearching(true);
+    try {
+      const res = await fetch(`/api/catalog${val ? `?q=${encodeURIComponent(val)}&limit=30` : "?limit=30"}`);
+      if (res.ok) {
+        setCatalog(await res.json());
+      }
+    } finally {
+      setSearching(false);
+    }
+  };
+
+  const publicUrl = username
+    ? `${typeof window !== "undefined" ? window.location.origin : ""}/@${username}`
+    : "";
+
+  const handleCopyUrl = async () => {
+    if (!publicUrl) return;
+    await navigator.clipboard.writeText(publicUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const resetCustomForm = () => {
+    setCustomName("");
+    setCustomCategoryId("");
+    setCustomImage("");
+    setCustomShortDescription("");
+    setCustomDescription("");
+    setCustomExternalUrl("");
+    setCustomPersonalNote("");
+    setEditingItem(null);
+  };
+
+  const showToast = (type: "success" | "error", message: string) => {
+    if (type === "success") {
+      setSuccess(message);
+      setError("");
+      setTimeout(() => setSuccess(""), 3500);
+    } else {
+      setError(message);
+      setSuccess("");
+      setTimeout(() => setError(""), 4000);
+    }
+  };
+
+  const addCatalogItem = async (catalogItemId: string) => {
+    try {
+      const response = await fetch("/api/wishlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ catalogItemId }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        showToast("error", data.error || "Could not add item to wishlist.");
+        return;
+      }
+
+      setWishlist(data);
+      showToast("success", "Added to wishlist.");
+    } catch {
+      showToast("error", "Failed to add item to wishlist.");
+    }
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     if (file.size > 5 * 1024 * 1024) {
-      alert("File size exceeds 5MB.");
+      showToast("error", "Image file size exceeds 5MB limit.");
       return;
     }
 
     setUploadingImage(true);
-    setError("");
-
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("folder", "items");
+    formData.append("folder", "wishlist_custom");
 
     try {
       const res = await fetch("/api/upload", {
@@ -102,727 +193,628 @@ export default function ItemsPage() {
 
       const data = await res.json();
       if (res.ok) {
-        if (isEdit) setEditImageUrl(data.url);
-        else setImageUrl(data.url);
+        setCustomImage(data.url);
+        showToast("success", "Image uploaded.");
       } else {
-        setError(data.error || "Failed to upload item image.");
+        showToast("error", data.error || "Image upload failed.");
       }
-    } catch (err) {
-      console.error("Error uploading image:", err);
-      setError("Failed to upload image.");
+    } catch {
+      showToast("error", "Failed to upload image.");
     } finally {
       setUploadingImage(false);
     }
   };
 
-  const handleCreateItem = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim() || !imageUrl || uploadingImage) return;
-
-    setLoading(true);
-    setError("");
-    setSuccess("");
-
-    try {
-      const res = await fetch("/api/items", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: name.trim(),
-          shortDescription: shortDescription.trim(),
-          description: description.trim(),
-          imageUrl,
-          categoryId: categoryId || null,
-          isFeatured,
-          isPublished,
-        }),
-      });
-
-      const data = await res.json();
-      if (res.ok) {
-        setSuccess("Item goal created successfully!");
-        setName("");
-        setShortDescription("");
-        setDescription("");
-        setImageUrl("");
-        setCategoryId("");
-        setIsFeatured(false);
-        setIsPublished(true);
-        setShowAddForm(false);
-        setItems([...items, data]);
-        setTimeout(() => setSuccess(""), 3000);
-      } else {
-        setError(data.error || "Failed to create item.");
-      }
-    } catch (err) {
-      console.error("Error creating item:", err);
-      setError("Failed to create item.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleEditItemSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!editingItem || !editName.trim() || !editImageUrl || uploadingImage) return;
-
-    setLoading(true);
-    setError("");
-    setSuccess("");
-
-    try {
-      const res = await fetch("/api/items", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id: editingItem.id,
-          name: editName.trim(),
-          slug: editSlug.trim(),
-          shortDescription: editShortDescription.trim(),
-          description: editDescription.trim(),
-          imageUrl: editImageUrl,
-          categoryId: editCategoryId || null,
-          isFeatured: editIsFeatured,
-          isPublished: editIsPublished,
-          isArchived: editIsArchived,
-        }),
-      });
-
-      const data = await res.json();
-      if (res.ok) {
-        setSuccess("Item goal updated successfully!");
-        setItems(items.map(item => item.id === editingItem.id ? data : item));
-        setEditingItem(null);
-        setTimeout(() => setSuccess(""), 3000);
-      } else {
-        setError(data.error || "Failed to update item.");
-      }
-    } catch (err) {
-      console.error("Error editing item:", err);
-      setError("Failed to update item.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleDeleteItem = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this support goal? This action cannot be undone.")) {
+  const saveCustomItem = async () => {
+    if (!customName.trim()) {
+      showToast("error", "Please provide a name for your custom wishlist item.");
       return;
     }
 
+    const payload = {
+      name: customName.trim(),
+      categoryId: customCategoryId || null,
+      image: customImage || null,
+      shortDescription: customShortDescription.trim(),
+      description: customDescription.trim(),
+      externalUrl: customExternalUrl.trim(),
+      personalNote: customPersonalNote.trim(),
+    };
+
     try {
-      const res = await fetch(`/api/items?id=${id}`, {
-        method: "DELETE",
-      });
-
-      if (res.ok) {
-        setItems(items.filter((item) => item.id !== id));
-      } else {
-        const data = await res.json();
-        alert(data.error || "Failed to delete support goal.");
-      }
-    } catch (err) {
-      console.error("Error deleting item:", err);
-    }
-  };
-
-  const handleMove = async (index: number, direction: "up" | "down") => {
-    const newItems = [...items];
-    const targetIndex = direction === "up" ? index - 1 : index + 1;
-
-    if (targetIndex < 0 || targetIndex >= newItems.length) return;
-
-    // Swap
-    const temp = newItems[index];
-    newItems[index] = newItems[targetIndex];
-    newItems[targetIndex] = temp;
-
-    // Update display orders locally
-    const reordered = newItems.map((item, idx) => ({
-      ...item,
-      displayOrder: idx,
-    }));
-
-    setItems(reordered);
-
-    // Save to DB
-    try {
-      await fetch("/api/items", {
-        method: "PUT",
+      const response = await fetch("/api/wishlist", {
+        method: editingItem ? "PATCH" : "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          reorders: reordered.map((item) => ({ id: item.id, displayOrder: item.displayOrder })),
-        }),
+        body: JSON.stringify(editingItem ? { id: editingItem.id, ...payload } : payload),
       });
-    } catch (err) {
-      console.error("Failed to save item order:", err);
+
+      const data = await response.json();
+      if (!response.ok) {
+        showToast("error", data.error || "Could not save custom item.");
+        return;
+      }
+
+      setWishlist(data);
+      setCustomFormOpen(false);
+      resetCustomForm();
+      showToast("success", editingItem ? "Custom item updated." : "Custom item added to wishlist!");
+    } catch {
+      showToast("error", "Failed to save custom item.");
     }
   };
 
-  const handleQuickToggle = async (item: any, field: "isFeatured" | "isPublished" | "isArchived") => {
-    const originalValue = item[field];
-    const newValue = !originalValue;
-
-    // Optimistically update UI
-    setItems(items.map(i => i.id === item.id ? { ...i, [field]: newValue } : i));
-
+  const removeItem = async (id: string) => {
     try {
-      const res = await fetch("/api/items", {
+      const response = await fetch(`/api/wishlist?id=${id}`, { method: "DELETE" });
+      const data = await response.json();
+      if (!response.ok) {
+        showToast("error", data.error || "Could not remove item.");
+        return;
+      }
+      setWishlist(data);
+      showToast("success", "Item removed from wishlist.");
+    } catch {
+      showToast("error", "Failed to remove item.");
+    }
+  };
+
+  const toggleItem = async (item: WishlistItem, field: "isFeatured" | "isPublished") => {
+    try {
+      const response = await fetch("/api/wishlist", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           id: item.id,
-          [field]: newValue
-        })
+          [field]: !item[field],
+        }),
       });
-      if (!res.ok) {
-        // Revert on error
-        setItems(items.map(i => i.id === item.id ? { ...i, [field]: originalValue } : i));
-        const data = await res.json();
-        alert(data.error || "Failed to update item.");
+
+      const data = await response.json();
+      if (!response.ok) {
+        showToast("error", data.error || "Could not update item.");
+        return;
       }
-    } catch (err) {
-      console.error("Failed to toggle field:", err);
-      // Revert on error
-      setItems(items.map(i => i.id === item.id ? { ...i, [field]: originalValue } : i));
+      setWishlist(data);
+      showToast("success", field === "isFeatured" ? (item.isFeatured ? "Unfeatured" : "Featured on top") : (item.isPublished ? "Item hidden" : "Item published"));
+    } catch {
+      showToast("error", "Failed to update item.");
     }
   };
 
-  const openEditModal = (item: any) => {
-    setEditingItem(item);
-    setEditName(item.name || "");
-    setEditSlug(item.slug || "");
-    setEditShortDescription(item.shortDescription || "");
-    setEditDescription(item.description || "");
-    setEditImageUrl(item.imageUrl || "");
-    setEditCategoryId(item.categoryId || "");
-    setEditIsFeatured(item.isFeatured || false);
-    setEditIsPublished(item.isPublished !== false);
-    setEditIsArchived(item.isArchived || false);
+  const reorder = async (index: number, direction: "up" | "down") => {
+    const next = [...wishlist];
+    const targetIndex = direction === "up" ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= next.length) return;
+
+    [next[index], next[targetIndex]] = [next[targetIndex], next[index]];
+    const reorders = next.map((item, orderIndex) => ({ id: item.id, displayOrder: orderIndex }));
+
+    setWishlist(next.map((item, orderIndex) => ({ ...item, displayOrder: orderIndex })));
+
+    try {
+      const response = await fetch("/api/wishlist", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reorders }),
+      });
+
+      if (response.ok) {
+        setWishlist(await response.json());
+      }
+    } catch {
+      showToast("error", "Failed to save reorder.");
+    }
   };
+
+  const beginEdit = (item: WishlistItem) => {
+    if (item.itemType !== "CUSTOM") return;
+
+    setEditingItem(item);
+    setCustomFormOpen(true);
+    setCustomName(item.name);
+    setCustomCategoryId(item.category?.id || "");
+    setCustomImage(item.image || "");
+    setCustomShortDescription(item.shortDescription || "");
+    setCustomDescription(item.description || "");
+    setCustomExternalUrl(item.externalUrl || "");
+    setCustomPersonalNote(item.personalNote || "");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const alreadyWishlistedIds = useMemo(() => {
+    return new Set(wishlist.map((w) => w.name.toLowerCase()));
+  }, [wishlist]);
 
   if (loading) {
     return (
-      <div className="flex-1 flex items-center justify-center min-h-[400px]">
-        <Loader2 className="w-8 h-8 animate-spin text-orange-500" />
+      <div className="flex min-h-[400px] items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-orange-500" />
       </div>
     );
   }
 
   return (
-    <div className="space-y-8 py-2 font-sans">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div className="space-y-8 py-2 font-sans max-w-5xl">
+      {/* Page Header with Public Link & Actions */}
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-800 pb-6">
         <div>
-          <h1 className="text-3xl font-black text-zinc-100 tracking-tight">Support Goals</h1>
-          <p className="text-zinc-400 text-sm mt-1.5 font-normal">
-            Add and manage things you would like your audience to help you get.
+          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-zinc-100">My Wishlist</h1>
+          <p className="mt-1 text-xs md:text-sm text-zinc-400">
+            Manage the items on your public wishlist. Add from our catalog or create custom goals.
           </p>
         </div>
 
-        {!showAddForm && !editingItem && (
-          <button
-            onClick={() => setShowAddForm(true)}
-            className="self-start sm:self-center h-12 px-5 bg-orange-500 hover:bg-orange-600 text-black font-extrabold rounded-xl text-sm flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-lg shadow-orange-500/5"
-          >
-            <Plus className="w-4 h-4" /> Add Support Goal
-          </button>
-        )}
+        {username ? (
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={handleCopyUrl}
+              className="inline-flex h-10 items-center gap-1.5 rounded-xl border border-zinc-800 bg-zinc-900 px-3.5 text-xs font-bold text-zinc-200 transition hover:border-zinc-700 hover:text-white"
+            >
+              {copied ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5 text-zinc-400" />}
+              <span>{copied ? "Copied Link" : "Copy URL"}</span>
+            </button>
+            <a
+              href={publicUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-10 items-center gap-1.5 rounded-xl bg-orange-500 px-4 text-xs font-bold text-black transition hover:bg-orange-400"
+            >
+              <span>Preview Page</span>
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          </div>
+        ) : null}
       </div>
 
+      {/* Notifications Toast */}
       {error && (
-        <p className="text-xs text-red-500 font-semibold">{error}</p>
+        <div className="rounded-2xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-xs font-semibold text-red-300 animate-in fade-in">
+          {error}
+        </div>
       )}
       {success && (
-        <p className="text-xs text-emerald-500 font-semibold flex items-center gap-1">
-          <CheckCircle2 className="w-4 h-4" /> {success}
-        </p>
+        <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-xs font-semibold text-emerald-300 flex items-center gap-2 animate-in fade-in">
+          <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
+          <span>{success}</span>
+        </div>
       )}
 
-      {/* CREATE NEW SUPPORT GOAL FORM */}
-      {showAddForm && (
-        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-xl space-y-6 animate-in fade-in duration-200">
-          <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
-            <h2 className="text-lg font-bold text-zinc-200">Add Support Goal</h2>
-            <button
-              onClick={() => setShowAddForm(false)}
-              className="p-1.5 text-zinc-500 hover:text-zinc-200 rounded-lg"
-            >
-              <X className="w-5 h-5" />
-            </button>
+      {/* 1. SECTION: Add from Catalog */}
+      <section className="rounded-3xl border border-zinc-800 bg-zinc-900/90 p-6 space-y-6">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <div className="inline-flex items-center gap-1.5 text-orange-400 text-[10px] font-bold uppercase tracking-wider">
+              <Sparkles className="h-3 w-3" />
+              Catalog Discovery
+            </div>
+            <h2 className="mt-1 text-xl font-black text-zinc-100">Add from Catalog</h2>
+            <p className="text-xs text-zinc-400">Search over 170+ standardized creator items and add them in 1 click.</p>
           </div>
 
-          <form onSubmit={handleCreateItem} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Goal Name */}
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Goal Name *</label>
+          <div className="relative w-full md:w-80">
+            <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              placeholder="Search (e.g. iPhone, Camera, Japan, Coffee)..."
+              className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-950 pl-10 pr-4 text-xs font-medium text-zinc-100 outline-none transition placeholder:text-zinc-500 focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+            />
+          </div>
+        </div>
+
+        {/* Catalog grid */}
+        {catalog.length > 0 ? (
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {catalog.slice(0, query ? 18 : 6).map((item) => {
+              const isAdded = alreadyWishlistedIds.has(item.name.toLowerCase());
+              return (
+                <div
+                  key={item.id}
+                  className="flex gap-3.5 rounded-2xl border border-zinc-800/80 bg-zinc-950/70 p-3.5 transition hover:border-zinc-700"
+                >
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-zinc-900 flex items-center justify-center">
+                    {item.image ? (
+                      <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
+                    ) : (
+                      <Sparkles className="h-6 w-6 text-zinc-600" />
+                    )}
+                  </div>
+                  <div className="flex min-w-0 flex-1 flex-col justify-between gap-2">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-orange-400">
+                        {item.category.name}
+                      </span>
+                      <h3 className="truncate text-xs font-bold text-zinc-100">{item.name}</h3>
+                      {item.shortDescription ? (
+                        <p className="line-clamp-1 text-[11px] text-zinc-400">{item.shortDescription}</p>
+                      ) : null}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => addCatalogItem(item.id)}
+                      disabled={isAdded}
+                      className={`inline-flex h-8 items-center justify-center gap-1 rounded-xl px-3 text-[11px] font-bold transition ${
+                        isAdded
+                          ? "bg-zinc-800 text-zinc-400 cursor-not-allowed"
+                          : "bg-orange-500 text-black hover:bg-orange-400"
+                      }`}
+                    >
+                      {isAdded ? (
+                        <>
+                          <Check className="h-3 w-3" />
+                          <span>In Wishlist</span>
+                        </>
+                      ) : (
+                        <>
+                          <Plus className="h-3 w-3" />
+                          <span>Add to Wishlist</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-dashed border-zinc-800 bg-zinc-950/40 p-6 text-center space-y-3">
+            <p className="text-xs text-zinc-400">
+              No catalog items found matching &ldquo;{query}&rdquo;.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setCustomName(query);
+                setCustomFormOpen(true);
+                setEditingItem(null);
+              }}
+              className="inline-flex h-9 items-center gap-1.5 rounded-xl bg-orange-500 px-4 text-xs font-bold text-black hover:bg-orange-400 transition"
+            >
+              <Plus className="h-3.5 w-3.5" />
+              <span>Create Custom Item for &ldquo;{query}&rdquo;</span>
+            </button>
+          </div>
+        )}
+      </section>
+
+      {/* 2. SECTION: Create Custom Wishlist Item */}
+      <section className="rounded-3xl border border-zinc-800 bg-zinc-900/90 p-6 space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <div className="inline-flex items-center gap-1.5 text-orange-400 text-[10px] font-bold uppercase tracking-wider">
+              <Sparkles className="h-3 w-3" />
+              Custom Item Flow
+            </div>
+            <h2 className="mt-1 text-xl font-black text-zinc-100">
+              {editingItem ? `Edit Custom Item: ${editingItem.name}` : "Create Custom Wishlist Item"}
+            </h2>
+            <p className="text-xs text-zinc-400">
+              Wishlisting a dream studio, personal project, trip, or unique goal? Add it here.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => {
+              if (customFormOpen) {
+                resetCustomForm();
+                setCustomFormOpen(false);
+              } else {
+                setCustomFormOpen(true);
+              }
+            }}
+            className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-zinc-700 bg-zinc-950 px-4 text-xs font-bold text-zinc-200 transition hover:border-zinc-500 hover:text-white shrink-0"
+          >
+            {customFormOpen ? (
+              <>
+                <X className="h-3.5 w-3.5" />
+                <span>Close Form</span>
+              </>
+            ) : (
+              <>
+                <Plus className="h-3.5 w-3.5 text-orange-500" />
+                <span>+ Create Custom Item</span>
+              </>
+            )}
+          </button>
+        </div>
+
+        {customFormOpen && (
+          <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5 md:p-6 space-y-5 animate-in fade-in duration-200">
+            <div className="grid gap-4 md:grid-cols-2">
+              {/* Item Name */}
+              <div className="space-y-1.5 md:col-span-2">
+                <label className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
+                  Item Name *
+                </label>
                 <input
                   type="text"
-                  placeholder="e.g. MacBook Pro, Coffee, Books"
-                  className="w-full h-12 bg-zinc-950 border border-zinc-850 rounded-xl px-4 text-zinc-100 placeholder:text-zinc-700 text-sm focus:outline-none focus:border-orange-500 transition-colors font-semibold"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  maxLength={50}
+                  value={customName}
+                  onChange={(e) => setCustomName(e.target.value)}
+                  placeholder="e.g. My Dream Recording Studio, Trip to Kyoto, Road Trip Van..."
+                  className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition"
                   required
                 />
               </div>
 
               {/* Category Dropdown */}
               <div className="space-y-1.5">
-                <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Category *</label>
+                <label className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
+                  Category
+                </label>
                 <select
-                  className="w-full h-12 bg-zinc-950 border border-zinc-850 rounded-xl px-4 text-zinc-100 text-sm focus:outline-none focus:border-orange-500 transition-colors font-medium cursor-pointer"
-                  value={categoryId}
-                  onChange={(e) => setCategoryId(e.target.value)}
-                  required
+                  value={customCategoryId}
+                  onChange={(e) => setCustomCategoryId(e.target.value)}
+                  className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-3 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition"
                 >
-                  <option value="" disabled>Select a category</option>
-                  {categories.map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.icon ? `${c.icon} ` : ""}{c.name}
+                  <option value="">Select a category (optional)</option>
+                  {categories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.name}
                     </option>
                   ))}
-                  <option value="uncategorized">No category (Uncategorized)</option>
                 </select>
+              </div>
+
+              {/* Image Upload or URL */}
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
+                  Image (Upload or paste URL)
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="url"
+                    value={customImage}
+                    onChange={(e) => setCustomImage(e.target.value)}
+                    placeholder="https://..."
+                    className="h-11 flex-1 rounded-xl border border-zinc-800 bg-zinc-900 px-4 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={uploadingImage}
+                    className="inline-flex h-11 items-center gap-1.5 rounded-xl border border-zinc-700 bg-zinc-800 px-3 text-xs font-bold text-zinc-200 transition hover:bg-zinc-700 shrink-0"
+                  >
+                    {uploadingImage ? (
+                      <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                    ) : (
+                      <Upload className="h-3.5 w-3.5" />
+                    )}
+                    <span>Upload</span>
+                  </button>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                  />
+                </div>
               </div>
 
               {/* Short Description */}
               <div className="space-y-1.5 md:col-span-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Tagline / Short Description</label>
+                <label className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
+                  Short Description
+                </label>
                 <input
                   type="text"
-                  placeholder="e.g. For building my next startup."
-                  className="w-full h-12 bg-zinc-950 border border-zinc-850 rounded-xl px-4 text-zinc-100 placeholder:text-zinc-700 text-sm focus:outline-none focus:border-orange-500 transition-colors font-medium"
-                  value={shortDescription}
-                  onChange={(e) => setShortDescription(e.target.value)}
-                  maxLength={80}
+                  value={customShortDescription}
+                  onChange={(e) => setCustomShortDescription(e.target.value)}
+                  placeholder="One sentence describing what this is..."
+                  className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition"
                 />
               </div>
 
-              {/* Full Description / Why I want this */}
+              {/* Personal Note (Shown on Public Wishlist Card) */}
               <div className="space-y-1.5 md:col-span-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">The Story / Why I want this</label>
+                <label className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
+                  Personal Note (Visible on your public wishlist card)
+                </label>
                 <textarea
-                  placeholder="e.g. My current laptop is struggling with development. I am saving toward a MacBook Pro that I'll use to build my next product."
-                  rows={4}
-                  className="w-full bg-zinc-950 border border-zinc-850 rounded-xl p-4 text-zinc-100 placeholder:text-zinc-700 text-sm focus:outline-none focus:border-orange-500 transition-colors font-medium resize-none leading-relaxed"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  maxLength={500}
+                  value={customPersonalNote}
+                  onChange={(e) => setCustomPersonalNote(e.target.value)}
+                  placeholder="Tell your audience why this wishlist item matters to you..."
+                  rows={2}
+                  className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-3 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition resize-none"
                 />
               </div>
 
-              {/* Goal Image Upload */}
+              {/* Long Description */}
               <div className="space-y-1.5 md:col-span-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Goal Image *</label>
-                {imageUrl ? (
-                  <div className="relative border border-zinc-850 rounded-xl p-3 bg-zinc-950/40 w-fit flex flex-col items-center gap-3">
-                    <img 
-                      src={imageUrl} 
-                      alt="Goal" 
-                      className="w-48 h-32 object-cover rounded-lg"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setImageUrl("")}
-                      className="text-xs font-bold text-red-500 hover:text-red-400 flex items-center gap-1 cursor-pointer"
-                    >
-                      <Trash2 className="w-3 h-3" /> Remove Image
-                    </button>
-                  </div>
-                ) : (
-                  <div 
-                    onClick={() => fileInputRef.current?.click()}
-                    className="border border-dashed border-zinc-800 hover:border-zinc-700 rounded-xl p-8 text-center flex flex-col items-center justify-center gap-2 cursor-pointer bg-zinc-950/20 hover:bg-zinc-950/40 transition-all h-36"
-                  >
-                    {uploadingImage ? (
-                      <Loader2 className="w-6 h-6 animate-spin text-orange-500" />
-                    ) : (
-                      <>
-                        <Upload className="w-5 h-5 text-zinc-500" />
-                        <span className="text-xs text-zinc-400 font-semibold">Upload Goal Image</span>
-                        <span className="text-[9px] text-zinc-600 font-medium">JPEG, PNG, WEBP up to 5MB</span>
-                      </>
-                    )}
-                  </div>
-                )}
-                <input 
-                  type="file" 
-                  ref={fileInputRef}
-                  onChange={(e) => handleImageUpload(e, false)}
-                  className="hidden" 
-                  accept="image/*"
+                <label className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
+                  Full Details (Optional)
+                </label>
+                <textarea
+                  value={customDescription}
+                  onChange={(e) => setCustomDescription(e.target.value)}
+                  placeholder="Additional context or links..."
+                  rows={3}
+                  className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-3 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition resize-none"
                 />
               </div>
 
-              {/* Toggles */}
-              <div className="flex flex-col sm:flex-row gap-6 md:col-span-2 pt-2">
-                {/* Feature */}
-                <label className="flex items-center gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="w-5 h-5 accent-orange-500 rounded border-zinc-800 bg-zinc-950 text-orange-500"
-                    checked={isFeatured}
-                    onChange={(e) => setIsFeatured(e.target.checked)}
-                  />
-                  <div>
-                    <span className="text-sm font-bold text-zinc-200">Feature this Goal</span>
-                    <p className="text-[10px] text-zinc-500 mt-0.5">Will display prominently at the top of your page</p>
-                  </div>
+              {/* External Link */}
+              <div className="space-y-1.5 md:col-span-2">
+                <label className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
+                  External Reference Link (Optional)
                 </label>
-
-                {/* Publish */}
-                <label className="flex items-center gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="w-5 h-5 accent-orange-500 rounded border-zinc-800 bg-zinc-950 text-orange-500"
-                    checked={isPublished}
-                    onChange={(e) => setIsPublished(e.target.checked)}
-                  />
-                  <div>
-                    <span className="text-sm font-bold text-zinc-200">Publish Goal</span>
-                    <p className="text-[10px] text-zinc-500 mt-0.5">Visible on your public profile immediately</p>
-                  </div>
-                </label>
+                <input
+                  type="url"
+                  value={customExternalUrl}
+                  onChange={(e) => setCustomExternalUrl(e.target.value)}
+                  placeholder="https://example.com/item"
+                  className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition"
+                />
               </div>
             </div>
 
-            <div className="flex gap-4 border-t border-zinc-800 pt-6">
+            {/* Form Actions */}
+            <div className="flex items-center gap-3 pt-2">
               <button
-                type="submit"
-                disabled={loading || !imageUrl || uploadingImage}
-                className="h-12 px-6 bg-orange-500 text-black font-extrabold rounded-xl text-sm flex items-center justify-center gap-2 hover:bg-orange-600 transition-colors disabled:opacity-50 cursor-pointer shadow-lg shadow-orange-500/5"
+                type="button"
+                onClick={saveCustomItem}
+                className="h-11 rounded-xl bg-orange-500 px-6 text-xs font-bold text-black transition hover:bg-orange-400"
               >
-                Create Support Goal
+                {editingItem ? "Save Changes" : "Create Custom Item"}
               </button>
               <button
                 type="button"
-                onClick={() => setShowAddForm(false)}
-                className="h-12 px-6 bg-zinc-800 hover:bg-zinc-750 text-zinc-300 rounded-xl text-sm font-bold transition-colors cursor-pointer"
+                onClick={() => {
+                  resetCustomForm();
+                  setCustomFormOpen(false);
+                }}
+                className="h-11 rounded-xl border border-zinc-800 bg-zinc-900 px-5 text-xs font-bold text-zinc-300 transition hover:bg-zinc-800"
               >
                 Cancel
               </button>
             </div>
-          </form>
-        </div>
-      )}
+          </div>
+        )}
+      </section>
 
-      {/* EDIT MODAL DIALOG */}
-      {editingItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setEditingItem(null)} />
-          <div className="relative bg-zinc-900 border border-zinc-800 p-6 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl space-y-6 animate-in fade-in zoom-in-95 duration-200">
-            <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
-              <h2 className="text-lg font-bold text-zinc-200">Edit Support Goal</h2>
-              <button
-                onClick={() => setEditingItem(null)}
-                className="p-1.5 text-zinc-500 hover:text-zinc-200 rounded-lg cursor-pointer"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <form onSubmit={handleEditItemSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Goal Name */}
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Goal Name *</label>
-                  <input
-                    type="text"
-                    className="w-full h-12 bg-zinc-950 border border-zinc-850 rounded-xl px-4 text-zinc-100 placeholder:text-zinc-700 text-sm focus:outline-none focus:border-orange-500 transition-colors font-semibold"
-                    value={editName}
-                    onChange={(e) => setEditName(e.target.value)}
-                    maxLength={50}
-                    required
-                  />
-                </div>
-
-                {/* Slug */}
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Custom URL Slug</label>
-                  <input
-                    type="text"
-                    className="w-full h-12 bg-zinc-950 border border-zinc-850 rounded-xl px-4 text-zinc-100 placeholder:text-zinc-700 text-sm focus:outline-none focus:border-orange-500 transition-colors font-semibold"
-                    value={editSlug}
-                    onChange={(e) => setEditSlug(e.target.value)}
-                    maxLength={50}
-                  />
-                </div>
-
-                {/* Category Dropdown */}
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Category *</label>
-                  <select
-                    className="w-full h-12 bg-zinc-950 border border-zinc-850 rounded-xl px-4 text-zinc-100 text-sm focus:outline-none focus:border-orange-500 transition-colors font-medium cursor-pointer"
-                    value={editCategoryId}
-                    onChange={(e) => setEditCategoryId(e.target.value)}
-                  >
-                    <option value="">No category (Uncategorized)</option>
-                    {categories.map((c) => (
-                      <option key={c.id} value={c.id}>
-                        {c.icon ? `${c.icon} ` : ""}{c.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Short Description */}
-                <div className="space-y-1.5 md:col-span-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Tagline / Short Description</label>
-                  <input
-                    type="text"
-                    className="w-full h-12 bg-zinc-950 border border-zinc-850 rounded-xl px-4 text-zinc-100 placeholder:text-zinc-700 text-sm focus:outline-none focus:border-orange-500 transition-colors font-medium"
-                    value={editShortDescription}
-                    onChange={(e) => setEditShortDescription(e.target.value)}
-                    maxLength={80}
-                  />
-                </div>
-
-                {/* Full Description */}
-                <div className="space-y-1.5 md:col-span-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">The Story / Why I want this</label>
-                  <textarea
-                    rows={4}
-                    className="w-full bg-zinc-950 border border-zinc-850 rounded-xl p-4 text-zinc-100 placeholder:text-zinc-700 text-sm focus:outline-none focus:border-orange-500 transition-colors font-medium resize-none leading-relaxed"
-                    value={editDescription}
-                    onChange={(e) => setEditDescription(e.target.value)}
-                    maxLength={500}
-                  />
-                </div>
-
-                {/* Goal Image Upload */}
-                <div className="space-y-1.5 md:col-span-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Goal Image *</label>
-                  {editImageUrl ? (
-                    <div className="relative border border-zinc-850 rounded-xl p-3 bg-zinc-950/40 w-fit flex flex-col items-center gap-3">
-                      <img 
-                        src={editImageUrl} 
-                        alt="Goal" 
-                        className="w-48 h-32 object-cover rounded-lg"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setEditImageUrl("")}
-                        className="text-xs font-bold text-red-500 hover:text-red-400 flex items-center gap-1 cursor-pointer"
-                      >
-                        <Trash2 className="w-3 h-3" /> Remove Image
-                      </button>
-                    </div>
-                  ) : (
-                    <div 
-                      onClick={() => editFileInputRef.current?.click()}
-                      className="border border-dashed border-zinc-800 hover:border-zinc-700 rounded-xl p-8 text-center flex flex-col items-center justify-center gap-2 cursor-pointer bg-zinc-950/20 hover:bg-zinc-950/40 transition-all h-36"
-                    >
-                      {uploadingImage ? (
-                        <Loader2 className="w-6 h-6 animate-spin text-orange-500" />
-                      ) : (
-                        <>
-                          <Upload className="w-5 h-5 text-zinc-500" />
-                          <span className="text-xs text-zinc-400 font-semibold">Upload Goal Image</span>
-                          <span className="text-[9px] text-zinc-600 font-medium">JPEG, PNG, WEBP up to 5MB</span>
-                        </>
-                      )}
-                    </div>
-                  )}
-                  <input 
-                    type="file" 
-                    ref={editFileInputRef}
-                    onChange={(e) => handleImageUpload(e, true)}
-                    className="hidden" 
-                    accept="image/*"
-                  />
-                </div>
-
-                {/* Toggles */}
-                <div className="flex flex-col sm:flex-row gap-6 md:col-span-2 pt-2">
-                  <label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      className="w-5 h-5 accent-orange-500 rounded border-zinc-800 bg-zinc-950 text-orange-500"
-                      checked={editIsFeatured}
-                      onChange={(e) => setEditIsFeatured(e.target.checked)}
-                    />
-                    <span className="text-sm font-bold text-zinc-200">Feature this Goal</span>
-                  </label>
-
-                  <label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      className="w-5 h-5 accent-orange-500 rounded border-zinc-800 bg-zinc-950 text-orange-500"
-                      checked={editIsPublished}
-                      onChange={(e) => setEditIsPublished(e.target.checked)}
-                    />
-                    <span className="text-sm font-bold text-zinc-200">Published</span>
-                  </label>
-
-                  <label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      className="w-5 h-5 accent-orange-500 rounded border-zinc-800 bg-zinc-950 text-orange-500"
-                      checked={editIsArchived}
-                      onChange={(e) => setEditIsArchived(e.target.checked)}
-                    />
-                    <span className="text-sm font-bold text-zinc-200">Archived</span>
-                  </label>
-                </div>
-              </div>
-
-              <div className="flex gap-4 border-t border-zinc-800 pt-6">
-                <button
-                  type="submit"
-                  disabled={loading || !editImageUrl || uploadingImage}
-                  className="h-12 px-6 bg-orange-500 text-black font-extrabold rounded-xl text-sm flex items-center justify-center gap-2 hover:bg-orange-600 transition-colors disabled:opacity-50 cursor-pointer shadow-lg shadow-orange-500/5"
-                >
-                  Save Changes
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setEditingItem(null)}
-                  className="h-12 px-6 bg-zinc-800 hover:bg-zinc-750 text-zinc-300 rounded-xl text-sm font-bold transition-colors cursor-pointer"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
+      {/* 3. SECTION: Manage Current Wishlist Items */}
+      <section className="rounded-3xl border border-zinc-800 bg-zinc-900/90 p-6 space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-xl font-black text-zinc-100">Wishlist Items ({wishlist.length})</h2>
+            <p className="text-xs text-zinc-400">
+              Reorder items, feature standout picks, and manage what appears on your public page.
+            </p>
           </div>
         </div>
-      )}
 
-      {/* ITEMS LIST */}
-      {!showAddForm && (
-        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-xl space-y-4">
-          <h2 className="text-lg font-bold text-zinc-200">Current Goals</h2>
-
-          {items.length === 0 ? (
-            <div className="border border-dashed border-zinc-800 rounded-xl p-16 text-center flex flex-col items-center justify-center space-y-3">
-              <div className="w-12 h-12 rounded-full bg-zinc-950 border border-zinc-850 flex items-center justify-center text-zinc-600">
-                <Gift className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="font-bold text-zinc-300 text-sm">No items yet</p>
-                <p className="text-xs text-zinc-500 mt-1 leading-normal">
-                  Add the first thing you'd love your audience to support.
-                </p>
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-3">
-              {items.map((item, index) => {
-                const cat = categories.find((c) => c.id === item.categoryId);
-                return (
-                  <div 
-                    key={item.id} 
-                    className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-zinc-950/40 border border-zinc-800 rounded-xl gap-4 hover:border-zinc-750 transition-colors"
-                  >
-                    <div className="flex items-center gap-4 min-w-0">
-                      {/* Image */}
-                      <img 
-                        src={item.imageUrl} 
-                        alt={item.name} 
-                        className="w-16 h-12 object-cover rounded-lg bg-zinc-900 border border-zinc-800 shrink-0"
-                      />
-
-                      {/* Info */}
-                      <div className="min-w-0 space-y-1">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="font-bold text-zinc-200 text-sm truncate">{item.name}</span>
-                          
-                          {/* Badges */}
-                          {item.isFeatured && (
-                            <span className="text-[9px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded bg-orange-500/10 border border-orange-500/20 text-orange-500 flex items-center gap-0.5">
-                              <Star className="w-2.5 h-2.5 fill-orange-500" /> Featured
-                            </span>
-                          )}
-                          {!item.isPublished && (
-                            <span className="text-[9px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded bg-zinc-850 border border-zinc-800 text-zinc-500">
-                              Draft
-                            </span>
-                          )}
-                          {item.isArchived && (
-                            <span className="text-[9px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded bg-red-500/10 border border-red-500/20 text-red-500">
-                              Archived
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-[11px] text-zinc-500 truncate max-w-sm">{item.shortDescription || "No tagline description"}</p>
-                        <p className="text-[10px] text-zinc-600 font-bold uppercase tracking-wider">
-                          Category: {cat ? `${cat.icon || ""} ${cat.name}` : "Uncategorized"}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-end gap-2.5 shrink-0">
-                      {/* Reordering */}
-                      <div className="flex items-center bg-zinc-950 border border-zinc-850 rounded-lg p-0.5">
-                        <button
-                          onClick={() => handleMove(index, "up")}
-                          disabled={index === 0}
-                          className="p-1.5 text-zinc-500 hover:text-zinc-200 disabled:opacity-20 cursor-pointer"
-                          title="Move Up"
-                        >
-                          <ChevronUp className="w-4 h-4" />
-                        </button>
-                        <div className="w-[1px] h-4 bg-zinc-850" />
-                        <button
-                          onClick={() => handleMove(index, "down")}
-                          disabled={index === items.length - 1}
-                          className="p-1.5 text-zinc-500 hover:text-zinc-200 disabled:opacity-20 cursor-pointer"
-                          title="Move Down"
-                        >
-                          <ChevronDown className="w-4 h-4" />
-                        </button>
-                      </div>
-
-                      {/* Action buttons */}
-                      <div className="flex items-center gap-1">
-                        <button
-                          onClick={() => handleQuickToggle(item, "isFeatured")}
-                          className={`p-2 rounded-lg border transition-colors cursor-pointer ${
-                            item.isFeatured 
-                              ? "bg-orange-500/10 border-orange-500/30 text-orange-500" 
-                              : "bg-zinc-950 hover:bg-zinc-900 border-zinc-850 text-zinc-500 hover:text-zinc-300"
-                          }`}
-                          title="Toggle Featured"
-                        >
-                          <Star className="w-4 h-4" />
-                        </button>
-
-                        <button
-                          onClick={() => handleQuickToggle(item, "isPublished")}
-                          className={`p-2 rounded-lg border transition-colors cursor-pointer ${
-                            item.isPublished 
-                              ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400" 
-                              : "bg-zinc-950 hover:bg-zinc-900 border-zinc-850 text-zinc-500 hover:text-zinc-300"
-                          }`}
-                          title={item.isPublished ? "De-publish / Draft" : "Publish"}
-                        >
-                          {item.isPublished ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
-                        </button>
-
-                        <button
-                          onClick={() => openEditModal(item)}
-                          className="p-2 bg-zinc-950 hover:bg-zinc-900 border border-zinc-850 hover:border-zinc-700 text-zinc-500 hover:text-zinc-200 rounded-lg transition-colors cursor-pointer"
-                          title="Edit Goal"
-                        >
-                          <Edit3 className="w-4 h-4" />
-                        </button>
-
-                        <button
-                          onClick={() => handleDeleteItem(item.id)}
-                          className="p-2 bg-zinc-950 hover:bg-red-500/10 border border-zinc-850 hover:border-red-500/20 text-zinc-500 hover:text-red-500 rounded-lg transition-colors cursor-pointer"
-                          title="Delete Goal"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </div>
+        {wishlist.length > 0 ? (
+          <div className="space-y-3">
+            {wishlist.map((item, index) => (
+              <div
+                key={item.id}
+                className="flex flex-col gap-4 rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 md:flex-row md:items-center md:justify-between transition hover:border-zinc-700"
+              >
+                {/* Left: Thumbnail and metadata */}
+                <div className="flex items-start sm:items-center gap-3.5">
+                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-zinc-900 flex items-center justify-center">
+                    {item.image ? (
+                      <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
+                    ) : (
+                      <Sparkles className="h-5 w-5 text-zinc-600" />
+                    )}
                   </div>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      )}
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="text-sm font-bold text-zinc-100">{item.name}</h3>
+                      {item.isFeatured ? (
+                        <span className="rounded-full bg-orange-500/20 border border-orange-500/30 px-2 py-0.5 text-[10px] font-bold text-orange-400">
+                          Featured
+                        </span>
+                      ) : null}
+                      {!item.isPublished ? (
+                        <span className="rounded-full bg-zinc-800 px-2 py-0.5 text-[10px] font-bold text-zinc-400">
+                          Hidden
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="mt-0.5 text-[11px] text-zinc-400">
+                      {item.category?.name || "Wishlist"} •{" "}
+                      {item.itemType === "CUSTOM" ? "Custom Item" : "Catalog Item"}
+                    </p>
+                    {item.personalNote ? (
+                      <p className="mt-1 text-[11px] text-zinc-300 italic line-clamp-1">
+                        &ldquo;{item.personalNote}&rdquo;
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+
+                {/* Right: Actions */}
+                <div className="flex flex-wrap items-center gap-2 self-end md:self-center">
+                  {/* Reorder Arrows */}
+                  <div className="flex rounded-xl border border-zinc-800 bg-zinc-900">
+                    <button
+                      type="button"
+                      onClick={() => reorder(index, "up")}
+                      disabled={index === 0}
+                      className="p-2 text-zinc-400 hover:text-white disabled:opacity-20 transition"
+                      title="Move up"
+                    >
+                      <ChevronUp className="h-4 w-4" />
+                    </button>
+                    <div className="w-px bg-zinc-800" />
+                    <button
+                      type="button"
+                      onClick={() => reorder(index, "down")}
+                      disabled={index === wishlist.length - 1}
+                      className="p-2 text-zinc-400 hover:text-white disabled:opacity-20 transition"
+                      title="Move down"
+                    >
+                      <ChevronDown className="h-4 w-4" />
+                    </button>
+                  </div>
+
+                  {/* Feature Button */}
+                  <button
+                    type="button"
+                    onClick={() => toggleItem(item, "isFeatured")}
+                    className={`inline-flex h-9 items-center gap-1.5 rounded-xl px-3 text-xs font-bold transition ${
+                      item.isFeatured
+                        ? "bg-orange-500 text-black"
+                        : "border border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-700"
+                    }`}
+                    title="Feature this item on your public profile"
+                  >
+                    <Star className="h-3.5 w-3.5" fill={item.isFeatured ? "currentColor" : "none"} />
+                    <span>{item.isFeatured ? "Featured" : "Feature"}</span>
+                  </button>
+
+                  {/* Publish/Hide Button */}
+                  <button
+                    type="button"
+                    onClick={() => toggleItem(item, "isPublished")}
+                    className="inline-flex h-9 items-center gap-1.5 rounded-xl border border-zinc-800 bg-zinc-900 px-3 text-xs font-bold text-zinc-300 hover:border-zinc-700 transition"
+                    title={item.isPublished ? "Hide from public profile" : "Publish to profile"}
+                  >
+                    {item.isPublished ? <Eye className="h-3.5 w-3.5" /> : <EyeOff className="h-3.5 w-3.5" />}
+                    <span>{item.isPublished ? "Visible" : "Hidden"}</span>
+                  </button>
+
+                  {/* Edit Custom Item */}
+                  {item.itemType === "CUSTOM" ? (
+                    <button
+                      type="button"
+                      onClick={() => beginEdit(item)}
+                      className="inline-flex h-9 items-center gap-1 rounded-xl border border-zinc-800 bg-zinc-900 px-3 text-xs font-bold text-zinc-300 hover:border-zinc-700 transition"
+                      title="Edit custom item"
+                    >
+                      <Pencil className="h-3.5 w-3.5" />
+                      <span>Edit</span>
+                    </button>
+                  ) : null}
+
+                  {/* Delete Item */}
+                  <button
+                    type="button"
+                    onClick={() => removeItem(item.id)}
+                    className="inline-flex h-9 items-center justify-center rounded-xl border border-red-500/20 bg-red-500/10 px-3 text-xs font-bold text-red-400 hover:bg-red-500/20 transition"
+                    title="Remove from wishlist"
+                  >
+                    <Trash2 className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-dashed border-zinc-800 bg-zinc-950/40 p-8 text-center space-y-3">
+            <p className="text-sm font-bold text-zinc-300">Your wishlist is currently empty.</p>
+            <p className="text-xs text-zinc-500 max-w-sm mx-auto">
+              Add wishlist items from our catalog above or create a custom item to get started.
+            </p>
+          </div>
+        )}
+      </section>
     </div>
   );
 }

@@ -5,7 +5,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Loader2, ArrowRight, RefreshCcw, CheckCircle2, AlertCircle } from "lucide-react";
-import Footer from "@/components/Footer";
 
 function LoginContent() {
   const router = useRouter();
@@ -258,9 +257,6 @@ function LoginContent() {
         </div>
       </div>
       
-      <div className="fixed bottom-8 right-8 z-55">
-        <Footer />
-      </div>
     </div>
   );
 }
