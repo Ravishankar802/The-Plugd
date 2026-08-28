@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 import { ensureUniqueSlug, slugify } from "@/lib/slug";
 import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
+import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 
 type CatalogSeedDefinition = {
   name: string;
@@ -99,19 +100,13 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     slug: "mobiles",
     icon: "Smartphone",
     description: "Phones and mobile-first gadgets people ask for most often.",
-    items: makeItems([
-      ["iPhone 17 Pro", "A flagship phone for creators and camera-heavy workflows.", "📱", true],
-      ["iPhone 17", "A premium daily driver with a strong camera.", "📲"],
-      ["iPhone Air", "A slim phone for all-day carry.", "📱"],
-      ["Samsung Galaxy Ultra", "A big-screen Android powerhouse.", "📲"],
-      ["Google Pixel Pro", "A clean Android phone with a great camera.", "📸"],
-      ["OnePlus Flagship", "Fast charging and a smooth mobile experience.", "⚡"],
-      ["Nothing Phone", "A design-led phone that stands out.", "✨"],
-      ["Foldable Phone", "A pocketable device with a tablet feel.", "📖"],
-      ["Creator Phone Gimbal", "Smoother videos straight from the phone.", "🎥"],
-      ["Wireless Power Bank", "Portable charging for travel days.", "🔋"],
-      ["MagSafe Tripod Mount", "Versatile mobile mounting for creators.", "🔭"],
-    ]),
+    items: getFullMobilesCatalog().map((item) => ({
+      name: item.name,
+      shortDescription: item.description,
+      description: `${item.name} (${item.brand} • ${item.subcategory}) — ${item.description}`,
+      imageUrl: item.imageUrl,
+      featured: item.featured,
+    })),
   },
   {
     name: "Gaming",
@@ -418,8 +413,11 @@ export async function ensureCatalogSeeded() {
   const electronicsCount = await prisma.catalogItem.count({
     where: { category: { slug: "electronics" } },
   });
+  const mobilesCount = await prisma.catalogItem.count({
+    where: { category: { slug: "mobiles" } },
+  });
 
-  if (categoryCount >= 15 && catalogCount >= 200 && electronicsCount >= 100) {
+  if (categoryCount >= 15 && catalogCount >= 300 && electronicsCount >= 100 && mobilesCount >= 75) {
     return;
   }
 
