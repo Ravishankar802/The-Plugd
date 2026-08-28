@@ -5,6 +5,7 @@ import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getFullGamingCatalog } from "@/lib/gaming-catalog";
 import { getFullFashionCatalog } from "@/lib/fashion-catalog";
 import { getFullBeautyCatalog } from "@/lib/beauty-catalog";
+import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 
 type CatalogSeedDefinition = {
   name: string;
@@ -155,19 +156,13 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     slug: "food-drinks",
     icon: "Coffee",
     description: "Everyday treats, meals, and comfort picks audiences love supporting.",
-    items: makeItems([
-      ["Coffee", "A simple way to support someone's day.", "☕", true],
-      ["Pizza Night", "A comfort-food wishlist classic.", "🍕"],
-      ["Biryani Feast", "An easy fan-favorite support item.", "🍛"],
-      ["Birthday Cake", "Perfect for celebration content and milestones.", "🎂"],
-      ["Chocolate Box", "A sweet, giftable wishlist item.", "🍫"],
-      ["Ice Cream Date", "A playful little treat worth sharing.", "🍨"],
-      ["Restaurant Dinner", "A special meal someone wants support for.", "🍽️"],
-      ["Protein Shake Pack", "A practical nutrition pick.", "🥤"],
-      ["Specialty Tea Set", "A cozy home ritual in wishlist form.", "🫖"],
-      ["Brunch Outing", "A casual experience people love gifting.", "🥐"],
-      ["Matcha Starter Kit", "Ceremonial grade matcha for the morning ritual.", "🍵"],
-    ]),
+    items: getFullDrinksCatalog().map((item) => ({
+      name: item.name,
+      shortDescription: item.description,
+      description: `${item.name} (${item.brand} • ${item.subcategory}) — ${item.description}`,
+      imageUrl: item.imageUrl,
+      featured: item.featured,
+    })),
   },
   {
     name: "Travel",
@@ -346,7 +341,7 @@ export const SEARCH_PLACEHOLDERS = [
   "Search for iPhone",
   "Search for headphones",
   "Search for a Japan trip",
-  "Search for coffee",
+  "Search for Red Bull",
   "Search for a gaming PC",
 ];
 
@@ -408,8 +403,11 @@ export async function ensureCatalogSeeded() {
   const beautyCount = await prisma.catalogItem.count({
     where: { category: { slug: "beauty" } },
   });
+  const drinksCount = await prisma.catalogItem.count({
+    where: { category: { slug: "food-drinks" } },
+  });
 
-  if (categoryCount >= 15 && catalogCount >= 500 && electronicsCount >= 100 && mobilesCount >= 75 && gamingCount >= 70 && fashionCount >= 50 && beautyCount >= 30) {
+  if (categoryCount >= 15 && catalogCount >= 500 && electronicsCount >= 100 && mobilesCount >= 75 && gamingCount >= 70 && fashionCount >= 50 && beautyCount >= 30 && drinksCount >= 200) {
     return;
   }
 

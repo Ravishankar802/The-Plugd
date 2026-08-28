@@ -1,7 +1,7 @@
 /**
- * Product Image Abstraction Layer for Plugd Electronics & Mobiles Catalogs
+ * Product Image Abstraction Layer for Plugd Catalogs
  * 
- * Provides high-resolution, CDN-backed remote image URLs for electronics & mobile products.
+ * Provides high-resolution, CDN-backed remote image URLs for electronics, mobiles, and drinks products.
  * Does not bundle images in the local repository or Vercel build, allowing the
  * catalog to scale to thousands of products without deployment bloat.
  */
@@ -822,6 +822,376 @@ export const BEAUTY_IMAGE_MAP: Record<string, string> = {
   "laneige-midnight-minis-lip-mask-set": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80",
 };
 
+/**
+ * Curated product image map matching actual drink and beverage products.
+ * Using real product imagery for beverages available in the Indian market.
+ */
+export const DRINKS_IMAGE_MAP: Record<string, string> = {
+  // === Energy Drinks ===
+  "red-bull-energy-drink": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+  "red-bull-sugarfree": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+  "red-bull-zero": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+  "red-bull-watermelon": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+  "red-bull-editions": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+  "monster-energy": "https://images.unsplash.com/photo-1615472447784-5f8c2c4e5dfc?auto=format&fit=crop&w=800&q=80",
+  "monster-ultra": "https://images.unsplash.com/photo-1615472447784-5f8c2c4e5dfc?auto=format&fit=crop&w=800&q=80",
+  "monster-pipeline-punch": "https://images.unsplash.com/photo-1615472447784-5f8c2c4e5dfc?auto=format&fit=crop&w=800&q=80",
+  "monster-mango-loco": "https://images.unsplash.com/photo-1615472447784-5f8c2c4e5dfc?auto=format&fit=crop&w=800&q=80",
+  "monster-ultra-fiesta": "https://images.unsplash.com/photo-1615472447784-5f8c2c4e5dfc?auto=format&fit=crop&w=800&q=80",
+  "monster-ultra-peachy-keen": "https://images.unsplash.com/photo-1615472447784-5f8c2c4e5dfc?auto=format&fit=crop&w=800&q=80",
+  "sting-energy": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+  "sting-zero-sugar": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+  "hell-energy": "https://images.unsplash.com/photo-1615472447784-5f8c2c4e5dfc?auto=format&fit=crop&w=800&q=80",
+  "hell-apple": "https://images.unsplash.com/photo-1615472447784-5f8c2c4e5dfc?auto=format&fit=crop&w=800&q=80",
+  "hell-watermelon": "https://images.unsplash.com/photo-1615472447784-5f8c2c4e5dfc?auto=format&fit=crop&w=800&q=80",
+  "xtcy": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+  "muscleblaze-wrathx": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+  "adrenaline-rush": "https://images.unsplash.com/photo-1615472447784-5f8c2c4e5dfc?auto=format&fit=crop&w=800&q=80",
+  "rio-boom": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+
+  // === Soft Drinks ===
+  "coca-cola": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "coca-cola-zero-sugar": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "diet-coke": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "coca-cola-cherry": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "coca-cola-vanilla": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "coca-cola-life": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "sprite": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "sprite-zero-sugar": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "fanta": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "fanta-orange": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "fanta-grape": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "thums-up": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "thums-up-zero-sugar": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "limca": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "pepsi": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "pepsi-black": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "diet-pepsi": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "7up": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "7up-zero-sugar": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "mirinda": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "mirinda-orange": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "mountain-dew": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "mountain-dew-voltage": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "mountain-dew-code-red": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "appy-fizz": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "maaza": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "slice": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "slice-mango": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "minute-maid": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+
+  // === Indian Soft Drinks ===
+  "b-natural": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "b-natural-mango": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "raw-pressery": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "raw-pressery-orange": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "cloud-9-energy": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+  "fruity": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "rasna": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "sip-wise": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "mojito": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+
+  // === Zero Sugar & Diet ===
+  "diet-mountain-dew": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "zero-sugar-dr-pepper": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "xtcy-zero-sugar": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+
+  // === Sports & Electrolyte ===
+  "gatorade": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "gatorade-zero": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "gatorade-orange": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "gatorade-blue-bolt": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "enerzal": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "glucon-d": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "electral": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "electral-ors": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "pedialyte": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "powerade": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "electrolyte-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "sports-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "isotonic-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "hydration-pack": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+
+  // === Hydration Drinks ===
+  "coconut-water": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
+  "coco-fiji": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
+  "coco-eva": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
+  "real-coconut-water": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
+  "paper-boat-coconut-water": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
+  "electrolyte-powder": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "ors-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "sports-hydration": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "hydration-tablets": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "oral-rehydration-salts": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "hydration-mix": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+
+  // === Fruit Juices ===
+  "real-fruit-power": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "real-activ": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "real-orange": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "real-mango": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "real-apple": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "real-mixed-fruit": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "tropicana": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "tropicana-orange": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "tropicana-mixed-fruit": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "minute-maid-orange": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "paper-boat-mango": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "appy": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "fruit-nectar": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "pomegranate-juice": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "cranberry-juice": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "pineapple-juice": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "guava-juice": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "grape-juice": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+
+  // === Coconut Water ===
+  "celebration-coconut-water": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
+  "coco-natural": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
+  "fresh-coconut-water": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
+  "tender-coconut-water": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
+  "coco-drink": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
+  "coco-refresh": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
+  "organic-coconut-water": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
+
+  // === Cold Coffee ===
+  "nescafe-cold-coffee": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "nescafe-frappe": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "starbucks-iced-coffee": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "starbucks-frappuccino": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "cold-coffee-premix": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "instant-cold-coffee": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "ready-to-drink-coffee": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "iced-latte": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "cold-brew-coffee": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "coffee-shake": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "mocha-cold-coffee": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "cappuccino-cold": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "coffee-chiller": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "frost-coffee": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "coffee-cooler": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+
+  // === Ready-to-Drink Coffee ===
+  "starbucks-ready-to-drink": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "starbucks-frappuccino-bottle": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "nescafe-ready-to-drink": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "rage-coffee": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "sleepy-owl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "country-bean": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "bevzilla": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "canned-coffee": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "bottled-coffee": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "coffee-energy-drink": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "mocha-rt": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "latte-rt": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "espresso-rt": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "coffee-shot": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "java-energy": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+
+  // === Iced Tea ===
+  "lipton-iced-tea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "lipton-lemon-iced-tea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "lipton-peach-iced-tea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "lipton-green-iced-tea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "nestea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "paper-boat-iced-tea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "ready-to-drink-tea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "bottled-iced-tea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "lemon-iced-tea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "peach-iced-tea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "green-tea-rt": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "masala-iced-tea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "honey-iced-tea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "raspberry-iced-tea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "tea-energy": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+
+  // === Milkshakes & Flavoured Milk ===
+  "hersheys-milkshake": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "hersheys-chocolate-milkshake": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "hersheys-strawberry-milkshake": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "epigamia-milkshake": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "epigamia-smoothie": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "amul-flavoured-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "amul-chocolate-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "amul-strawberry-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "amul-badam-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "amul-kesar-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "chocolate-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "strawberry-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "vanilla-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "coffee-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "badam-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "kesar-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "banana-milkshake": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "mango-milkshake": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+
+  // === Protein Drinks ===
+  "amul-high-protein": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "epigamia-turbo": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "muscleblaze-beverage": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "protein-milkshake": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "protein-drink": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "whey-protein-drink": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "plant-protein-drink": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "protein-shot": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "nutrition-drink": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "muscle-recovery": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "post-workout-drink": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "protein-water": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "high-protein-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "protein-plus": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+
+  // === Instant Drink Mixes ===
+  "tang": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "horlicks": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "boost": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "bournvita": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "malt-drink": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "chocolate-drink-mix": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "coffee-premix": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  "tea-premix": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "iced-tea-mix": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  "lemonade-mix": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "orange-juice-mix": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "mango-drink-mix": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "energy-drink-mix": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+  "electrolyte-mix": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+
+  // === Soda & Mixers ===
+  "schweppes": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "schweppes-tonic-water": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "schweppes-ginger-ale": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "schweppes-club-soda": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "canada-dry": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "canada-dry-ginger-ale": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "kinley-soda": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "kinley-club-soda": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "kinley-tonic-water": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "tonic-water": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "club-soda": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "ginger-ale": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "lemon-soda": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "sparkling-water": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "mocktail-mixer": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "soda-water": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+
+  // === Premium & Imported ===
+  "perrier": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "perrier-sparkling-water": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "evian": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "evian-water": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "san-pellegrino": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "perrier-lime": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "perrier-lemon": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "imported-coca-cola": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "imported-pepsi": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "premium-sparkling-water": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "imported-energy-drinks": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
+  "imported-sodas": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "premium-functional-drinks": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "fiji-water": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "vosswater": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+
+  // === Functional & Wellness ===
+  "vitamin-water": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "smartwater": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "electrolyte-enhanced-water": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "vitamin-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "wellness-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "immunity-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "detox-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "antioxidant-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "superfood-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "adaptogen-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "cbd-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "collagen-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "fiber-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "probiotic-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "prebiotic-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+
+  // === Kombucha & Probiotic ===
+  "raw-kombucha": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "ginger-kombucha": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "berry-kombucha": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "gut-health-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "digestive-health-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "kefir-drink": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "yogurt-drink": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "cultured-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "probiotic-soda": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "fermented-beverage": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "living-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+  "active-culture-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
+
+  // === Plant-Based Drinks ===
+  "almond-milk": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "oat-milk": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "soy-milk": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "coconut-milk-drink": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "plant-based-protein-drink": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "so-good": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "so-good-almond": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "so-good-soy": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "rice-milk": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "cashew-milk": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "pea-protein-drink": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "plant-milk": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "dairy-free-milk": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "vegan-drink": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+  "non-dairy-beverage": "https://images.unsplash.com/photo-1638354095734-59bce3e6e6d4?auto=format&fit=crop&w=800&q=80",
+
+  // === Indian Traditional ===
+  "aam-panna": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "jaljeera": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "nimbu-pani": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "kokum-drink": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "lassi": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "sweet-lassi": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "salted-lassi": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "chaas": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "buttermilk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "sugarcane-juice": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "paper-boat-traditional": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "paper-boat-aam-panna": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "paper-boat-jaljeera": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
+  "thandai": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "rose-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  "badam-shake": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+
+  // === Water ===
+  "bisleri-mineral-water": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "kinley": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "kinley-water": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "aquafina": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "aquafina-water": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "himalayan": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "himalayan-water": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "tata-copper-plus": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "vedica": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "premium-bottled-water": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "mineral-water": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "flavoured-water": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "mountain-water": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+  "purified-water": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+
+  // === Non-Alcoholic ===
+  "non-alcoholic-beer": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "non-alcoholic-wine": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "mocktail-mix": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "virgin-cocktail-mix": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "zero-alcohol-drink": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "alcohol-free-beverage": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "mocktail-ready": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "party-drink": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "social-drink": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "soft-drink-mix": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "soda-mix": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
+  "sparkling-juice": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
+  "fizzy-drink": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "celebration-drink": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "party-pack": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+};
+
 /** Default high-end hardware fallback in case a newly added item has no image yet */
 export const DEFAULT_ELECTRONICS_IMAGE =
   "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80";
@@ -882,4 +1252,14 @@ export function getBeautyProductImage(slug: string, fallback?: string): string {
   return BEAUTY_IMAGE_MAP[normalized] || fallback || DEFAULT_BEAUTY_IMAGE;
 }
 
+/** Default drinks fallback */
+export const DEFAULT_DRINKS_IMAGE =
+  "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80";
+
+/**
+ * Resolves the remote product image URL for a drinks product.
+ */
+export function getDrinksProductImage(productId: string): string {
+  return DRINKS_IMAGE_MAP[productId] || DEFAULT_DRINKS_IMAGE;
+}
 
