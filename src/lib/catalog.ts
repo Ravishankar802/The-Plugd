@@ -2,6 +2,7 @@ import prisma from "@/lib/prisma";
 import { ensureUniqueSlug, slugify } from "@/lib/slug";
 import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
+import { getFullGamingCatalog } from "@/lib/gaming-catalog";
 
 type CatalogSeedDefinition = {
   name: string;
@@ -113,21 +114,13 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     slug: "gaming",
     icon: "Gamepad2",
     description: "Console, PC, and setup upgrades for gamers and streamers.",
-    items: makeItems([
-      ["PlayStation 5", "A console upgrade for late-night sessions.", "🎮", true],
-      ["Xbox Series X", "Powerful console gaming with Game Pass energy.", "🕹️"],
-      ["Gaming PC", "A dream desktop build for streaming and editing.", "🖥️", true],
-      ["Steam Deck", "Portable PC gaming wherever you go.", "🎮"],
-      ["Gaming Laptop", "Powerful performance in a travel-friendly form.", "💼"],
-      ["RTX Graphics Card", "A big upgrade for rendering and gaming.", "🧠"],
-      ["VR Headset", "A more immersive way to play and build.", "🥽"],
-      ["Racing Wheel", "For simulation fans chasing a better setup.", "🏎️"],
-      ["Gaming Chair", "Comfort for long play and work sessions.", "🪑"],
-      ["Capture Card", "Stream console gameplay in high fidelity.", "📺"],
-      ["RGB Setup Kit", "Light up the desk and stream background.", "🌈"],
-      ["Custom Controller", "A tuned controller built for feel and style.", "🕹️"],
-      ["OLED Gaming Monitor", "Ultra-fast response and deep contrast.", "🖥️"],
-    ]),
+    items: getFullGamingCatalog().map((item) => ({
+      name: item.name,
+      shortDescription: item.description,
+      description: `${item.name} (${item.brand} • ${item.subcategory}) — ${item.description}`,
+      imageUrl: item.imageUrl,
+      featured: item.featured,
+    })),
   },
   {
     name: "Fashion",
@@ -416,8 +409,11 @@ export async function ensureCatalogSeeded() {
   const mobilesCount = await prisma.catalogItem.count({
     where: { category: { slug: "mobiles" } },
   });
+  const gamingCount = await prisma.catalogItem.count({
+    where: { category: { slug: "gaming" } },
+  });
 
-  if (categoryCount >= 15 && catalogCount >= 300 && electronicsCount >= 100 && mobilesCount >= 75) {
+  if (categoryCount >= 15 && catalogCount >= 400 && electronicsCount >= 100 && mobilesCount >= 75 && gamingCount >= 70) {
     return;
   }
 
