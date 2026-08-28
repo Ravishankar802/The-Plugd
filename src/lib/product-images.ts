@@ -727,6 +727,101 @@ export const FASHION_IMAGE_MAP: Record<string, string> = {
   "hugo-boss-virgin-wool-blazer": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
 };
 
+/**
+ * Curated product image map matching actual beauty products across all subcategories and brands.
+ */
+export const BEAUTY_IMAGE_MAP: Record<string, string> = {
+  // === Makeup (Face, Base, Eyes, Lips) ===
+  "rare-beauty-soft-pinch-liquid-blush": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80",
+  "fenty-beauty-eaze-drop-skin-tint": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+  "nars-radiant-creamy-concealer": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+  "huda-beauty-easy-bake-loose-powder": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80",
+  "charlotte-tilbury-flawless-filter": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+  "charlotte-tilbury-airbrush-flawless-spray": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+  "maybelline-lash-sensational-sky-high": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80",
+  "kay-beauty-matte-liquid-lipstick": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80",
+  "fenty-beauty-gloss-bomb-universal": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80",
+  "dior-lip-glow-oil": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80",
+  "rom-and-juicy-lasting-tint": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80",
+  "peripera-ink-mood-glowy-tint": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80",
+  "lipstick-set": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80",
+  "charlotte-tilbury-pillow-talk-palette": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80",
+  "kay-beauty-gel-kajal-black": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80",
+  "benefit-precisely-my-brow-pencil": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80",
+
+  // === Skincare & K-Beauty ===
+  "cosrx-advanced-snail-96-mucin-essence": "https://images.unsplash.com/photo-1608248597359-00f722a4c148?auto=format&fit=crop&w=800&q=80",
+  "laneige-lip-sleeping-mask-berry": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80",
+  "beauty-of-joseon-relief-sun-spf50": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+  "anua-heartleaf-77-soothing-toner": "https://images.unsplash.com/photo-1608248597359-00f722a4c148?auto=format&fit=crop&w=800&q=80",
+  "skin1004-madagascar-centella-ampoule": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80",
+  "round-lab-birch-juice-sunscreen": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+  "torriden-dive-in-hyaluronic-serum": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80",
+  "minimalist-10-niacinamide-serum": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80",
+  "face-serum": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80",
+  "the-ordinary-glycolic-acid-7-toning-solution": "https://images.unsplash.com/photo-1608248597359-00f722a4c148?auto=format&fit=crop&w=800&q=80",
+  "cerave-hydrating-facial-cleanser": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+  "paulas-choice-2-bha-liquid-exfoliant": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80",
+  "dot-and-key-cica-calming-sunscreen": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+  "minimalist-sunscreen-stick-spf50": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+  "la-roche-posay-anthelios-spf50": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+  "cosrx-master-pimple-patch": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+  "skincare-routine": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+
+  // === Haircare & Hair Tools ===
+  "dyson-airwrap-multi-styler-complete-long": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+  "dyson-supersonic-hair-dryer": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+  "shark-flexstyle-air-styling-system": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+  "olaplex-no-3-hair-perfector": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=800&q=80",
+  "kerastase-elixir-ultime-hair-oil": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=800&q=80",
+  "moroccanoil-treatment-original": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=800&q=80",
+  "loreal-professionnel-absolut-repair-mask": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=800&q=80",
+  "philips-thermoprotect-hair-dryer": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+  "alan-truman-blow-dry-brush": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+
+  // === Fragrances & Body Mists ===
+  "dior-sauvage-eau-de-parfum": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+  "ysl-libre-eau-de-parfum": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80",
+  "chanel-coco-mademoiselle-edp": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80",
+  "carolina-herrera-good-girl-edp": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80",
+  "sol-de-janeiro-cheirosa-68-perfume-mist": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+  "sol-de-janeiro-cheirosa-59-perfume-mist": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+  "kayali-vanilla-28-eau-de-parfum": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80",
+  "tom-ford-tobacco-vanille-edp": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+  "maison-margiela-replica-jazz-club": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+  "lattafa-khamrah-eau-de-parfum": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+  "ajmal-aristocrat-perfume-for-her": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80",
+  "signature-perfume": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80",
+  "scented-candle": "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80",
+
+  // === Bath & Body & Indian Heritage ===
+  "sol-de-janeiro-brazilian-bum-bum-cream": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+  "tree-hut-shea-sugar-scrub-moroccan-rose": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+  "bath-and-body-works-japanese-cherry-blossom": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+  "forest-essentials-soundarya-radiance-cream": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+  "kama-ayurveda-kumkumadi-beauty-fluid": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80",
+  "plum-green-tea-pore-cleansing-face-wash": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+
+  // === Beauty Devices & Vanity Tools ===
+  "medicube-age-r-booster-pro": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+  "foreo-luna-4-facial-cleansing-device": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+  "nuface-trinity-microcurrent-device": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+  "rose-quartz-gua-sha-facial-roller-set": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80",
+  "led-light-therapy-face-mask": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+
+  // === Men's Grooming ===
+  "philips-oneblade-pro-face-and-body": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80",
+  "beardo-godfather-beard-oil": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80",
+  "bombay-shaving-company-precision-safety-razor": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80",
+  "minimalist-male-skincare-daily-duo": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+
+  // === Luxury & Gift Sets ===
+  "charlotte-tilbury-magic-cream": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+  "estee-lauder-advanced-night-repair-serum": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80",
+  "jo-malone-english-pear-and-freesia-cologne": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80",
+  "laneige-midnight-minis-lip-mask-set": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80",
+};
+
 /** Default high-end hardware fallback in case a newly added item has no image yet */
 export const DEFAULT_ELECTRONICS_IMAGE =
   "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80";
@@ -742,6 +837,10 @@ export const DEFAULT_GAMING_IMAGE =
 /** Default fashion fallback */
 export const DEFAULT_FASHION_IMAGE =
   "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80";
+
+/** Default beauty fallback */
+export const DEFAULT_BEAUTY_IMAGE =
+  "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80";
 
 /**
  * Resolves the remote product image URL for an electronics product.
@@ -774,4 +873,13 @@ export function getFashionProductImage(slug: string, fallback?: string): string 
   const normalized = slug.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
   return FASHION_IMAGE_MAP[normalized] || fallback || DEFAULT_FASHION_IMAGE;
 }
+
+/**
+ * Resolves the remote product image URL for a beauty product.
+ */
+export function getBeautyProductImage(slug: string, fallback?: string): string {
+  const normalized = slug.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  return BEAUTY_IMAGE_MAP[normalized] || fallback || DEFAULT_BEAUTY_IMAGE;
+}
+
 

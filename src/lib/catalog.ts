@@ -4,6 +4,7 @@ import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getFullGamingCatalog } from "@/lib/gaming-catalog";
 import { getFullFashionCatalog } from "@/lib/fashion-catalog";
+import { getFullBeautyCatalog } from "@/lib/beauty-catalog";
 
 type CatalogSeedDefinition = {
   name: string;
@@ -141,19 +142,13 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     slug: "beauty",
     icon: "Sparkles",
     description: "Beauty, skincare, grooming, and personal care wishlist staples.",
-    items: makeItems([
-      ["Signature Perfume", "A premium scent creators love to wishlist.", "🧴"],
-      ["Skincare Set", "Daily skincare essentials in one bundle.", "🫧"],
-      ["Makeup Kit", "A well-rounded setup for shoots and events.", "💄"],
-      ["Hair Dryer", "An everyday beauty tool upgrade.", "💨"],
-      ["Hair Styler", "A styling tool for polished looks.", "✨"],
-      ["Trimmer", "Grooming made simple and reliable.", "✂️"],
-      ["Grooming Kit", "An all-in-one personal care set.", "🧰"],
-      ["Salon Voucher", "A beauty experience instead of a physical item.", "💇"],
-      ["Nail Care Set", "A small but useful beauty upgrade.", "💅"],
-      ["Wellness Spa Day", "A restorative beauty and self-care pick.", "🕯️"],
-      ["Facial Steamer", "A home spa treatment routine.", "🧖"],
-    ]),
+    items: getFullBeautyCatalog().map((item) => ({
+      name: item.name,
+      shortDescription: item.description,
+      description: `${item.name} (${item.brand} • ${item.subcategory}) — ${item.description}`,
+      imageUrl: item.imageUrl,
+      featured: item.featured,
+    })),
   },
   {
     name: "Food & Drinks",
@@ -410,8 +405,11 @@ export async function ensureCatalogSeeded() {
   const fashionCount = await prisma.catalogItem.count({
     where: { category: { slug: "fashion" } },
   });
+  const beautyCount = await prisma.catalogItem.count({
+    where: { category: { slug: "beauty" } },
+  });
 
-  if (categoryCount >= 15 && catalogCount >= 450 && electronicsCount >= 100 && mobilesCount >= 75 && gamingCount >= 70 && fashionCount >= 50) {
+  if (categoryCount >= 15 && catalogCount >= 500 && electronicsCount >= 100 && mobilesCount >= 75 && gamingCount >= 70 && fashionCount >= 50 && beautyCount >= 30) {
     return;
   }
 
