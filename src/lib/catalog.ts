@@ -1,10 +1,12 @@
 import prisma from "@/lib/prisma";
 import { ensureUniqueSlug, slugify } from "@/lib/slug";
+import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
 
 type CatalogSeedDefinition = {
   name: string;
   category: string;
-  emoji: string;
+  emoji?: string;
+  imageUrl?: string;
   shortDescription: string;
   description: string;
   featured?: boolean;
@@ -84,22 +86,13 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     slug: "electronics",
     icon: "Laptop",
     description: "Tech upgrades, creator gear, and everyday electronics worth wishing for.",
-    items: makeItems([
-      ["MacBook Pro", "For editing, building, and shipping bigger ideas.", "💻", true],
-      ["MacBook Air", "A lighter laptop for creators on the move.", "🪶"],
-      ["AirPods Pro", "For calls, edits, and distraction-free work.", "🎧", true],
-      ["Sony WH-1000XM5", "Noise-cancelling headphones for long sessions.", "🎧", true],
-      ["iPad Pro", "For sketching, planning, and portable work.", "📱"],
-      ["Mirrorless Camera", "For sharper videos, reels, and photography.", "📷"],
-      ["Gaming Monitor", "A high-refresh display for work and play.", "🖥️"],
-      ["Mechanical Keyboard", "A satisfying upgrade for every workday.", "⌨️"],
-      ["Streaming Microphone", "Better voice quality for streams and podcasts.", "🎙️"],
-      ["External SSD", "Fast storage for footage, projects, and backups.", "💾"],
-      ["Standing Desk", "A clean setup for long creative hours.", "🛠️"],
-      ["Smart Projector", "A big-screen setup for movies and showcases.", "📽️"],
-      ["Audio Interface", "Clean sound recording for studio setups.", "🎚️"],
-      ["4K Stream Webcam", "Crystal clear stream and call video quality.", "📹"],
-    ]),
+    items: getFullElectronicsCatalog().map((item) => ({
+      name: item.name,
+      shortDescription: item.description,
+      description: `${item.name} (${item.brand} • ${item.subcategory}) — ${item.description}`,
+      imageUrl: item.imageUrl,
+      featured: item.featured,
+    })),
   },
   {
     name: "Mobiles",
@@ -401,12 +394,15 @@ export function getSeedCatalogItems() {
 
   return flattened.map((item, index) => {
     const slug = ensureUniqueSlug(slugify(item.name), usedSlugs);
+    const image =
+      item.imageUrl ||
+      (item.emoji ? buildCatalogImage(item.name, item.category.replace(/-/g, " "), item.emoji) : null);
 
     return {
       name: item.name,
       slug,
       categorySlug: item.category,
-      image: buildCatalogImage(item.name, item.category.replace(/-/g, " "), item.emoji),
+      image,
       shortDescription: item.shortDescription,
       description: item.description,
       featured: Boolean(item.featured),
@@ -419,8 +415,11 @@ export function getSeedCatalogItems() {
 export async function ensureCatalogSeeded() {
   const categoryCount = await prisma.category.count();
   const catalogCount = await prisma.catalogItem.count();
+  const electronicsCount = await prisma.catalogItem.count({
+    where: { category: { slug: "electronics" } },
+  });
 
-  if (categoryCount >= 15 && catalogCount >= 100) {
+  if (categoryCount >= 15 && catalogCount >= 200 && electronicsCount >= 100) {
     return;
   }
 
