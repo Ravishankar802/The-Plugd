@@ -8,6 +8,7 @@ import CategoryIcon from "@/components/CategoryIcon";
 import ElectronicsCatalogView from "@/components/electronics/ElectronicsCatalogView";
 import MobilesCatalogView from "@/components/mobiles/MobilesCatalogView";
 import GamingCatalogView from "@/components/gaming/GamingCatalogView";
+import FashionCatalogView from "@/components/fashion/FashionCatalogView";
 import { getSession } from "@/lib/auth";
 import { ensureCatalogSeeded } from "@/lib/catalog";
 import prisma from "@/lib/prisma";
@@ -61,8 +62,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const isElectronics = category.slug === "electronics";
   const isMobiles = category.slug === "mobiles";
   const isGaming = category.slug === "gaming";
+  const isFashion = category.slug === "fashion";
   const catalogDbMap: Record<string, string> = {};
-  if (isElectronics || isMobiles || isGaming) {
+  if (isElectronics || isMobiles || isGaming || isFashion) {
     for (const it of items) {
       catalogDbMap[it.slug] = it.id;
     }
@@ -137,6 +139,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           />
         ) : isGaming ? (
           <GamingCatalogView
+            isLoggedIn={Boolean(session?.userId)}
+            initialQuery={query}
+            catalogDbMap={catalogDbMap}
+          />
+        ) : isFashion ? (
+          <FashionCatalogView
             isLoggedIn={Boolean(session?.userId)}
             initialQuery={query}
             catalogDbMap={catalogDbMap}

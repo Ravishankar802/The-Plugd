@@ -3,6 +3,7 @@ import { ensureUniqueSlug, slugify } from "@/lib/slug";
 import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getFullGamingCatalog } from "@/lib/gaming-catalog";
+import { getFullFashionCatalog } from "@/lib/fashion-catalog";
 
 type CatalogSeedDefinition = {
   name: string;
@@ -127,19 +128,13 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     slug: "fashion",
     icon: "Shirt",
     description: "Style, staples, and statement pieces creators love sharing.",
-    items: makeItems([
-      ["Sneakers", "A fresh pair for daily wear and outfits.", "👟"],
-      ["Nike Running Shoes", "A sporty pair for all-day movement.", "👟"],
-      ["Adidas Originals", "Classic kicks with easy styling.", "👟"],
-      ["Designer Watch", "A polished accessory with a premium feel.", "⌚"],
-      ["Sunglasses", "A versatile style upgrade for everyday fits.", "🕶️"],
-      ["Oversized Hoodie", "Comfort-first wardrobe essential.", "🧥"],
-      ["Statement Jacket", "A bold layer for content and travel.", "🧥"],
-      ["Travel Backpack", "A functional carry for work and movement.", "🎒"],
-      ["Leather Boots", "A more elevated footwear pick.", "🥾"],
-      ["Capsule Wardrobe Set", "A cleaner, more intentional closet.", "👔"],
-      ["Smart Glasses", "Capture point-of-view content in style.", "👓"],
-    ]),
+    items: getFullFashionCatalog().map((item) => ({
+      name: item.name,
+      shortDescription: item.description,
+      description: `${item.name} (${item.brand} • ${item.subcategory}) — ${item.description}`,
+      imageUrl: item.imageUrl,
+      featured: item.featured,
+    })),
   },
   {
     name: "Beauty",
@@ -412,8 +407,11 @@ export async function ensureCatalogSeeded() {
   const gamingCount = await prisma.catalogItem.count({
     where: { category: { slug: "gaming" } },
   });
+  const fashionCount = await prisma.catalogItem.count({
+    where: { category: { slug: "fashion" } },
+  });
 
-  if (categoryCount >= 15 && catalogCount >= 400 && electronicsCount >= 100 && mobilesCount >= 75 && gamingCount >= 70) {
+  if (categoryCount >= 15 && catalogCount >= 450 && electronicsCount >= 100 && mobilesCount >= 75 && gamingCount >= 70 && fashionCount >= 50) {
     return;
   }
 
