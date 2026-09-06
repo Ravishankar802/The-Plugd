@@ -39,11 +39,11 @@ export default function Footer({ showBorder = true }: FooterProps) {
             <Link href="/category/electronics" className="hover:text-white transition-colors">
               Electronics
             </Link>
-            <Link href="/category/travel" className="hover:text-white transition-colors">
-              Travel
+            <Link href="/category/fashion" className="hover:text-white transition-colors">
+              Fashion
             </Link>
-            <Link href="/category/dreams" className="hover:text-white transition-colors">
-              Dreams
+            <Link href="/category/vehicles" className="hover:text-white transition-colors">
+              Vehicles
             </Link>
             <Link href="/login" className="hover:text-white transition-colors">
               Creator Login
