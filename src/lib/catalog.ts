@@ -407,7 +407,7 @@ export async function ensureCatalogSeeded() {
     where: { category: { slug: "food-drinks" } },
   });
 
-  if (categoryCount >= 15 && catalogCount >= 500 && electronicsCount >= 100 && mobilesCount >= 75 && gamingCount >= 70 && fashionCount >= 50 && beautyCount >= 30 && drinksCount >= 200) {
+  if (categoryCount >= 15 && catalogCount >= 500 && electronicsCount >= 100 && mobilesCount >= 75 && gamingCount >= 70 && fashionCount >= 180 && beautyCount >= 180 && drinksCount >= 200) {
     return;
   }
 

@@ -69,6 +69,7 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "nike-air-jordan-1-retro-high",
       "air-jordan-1",
       "nike-dunk-low-retro",
+      "nike-air-force-1-07",
       "adidas-samba-og",
       "adidas-gazelle-indoor",
       "adidas-originals-campus-00s",
@@ -84,6 +85,16 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "vans-old-skool-classic",
       "on-cloudmonster-2",
       "sneakers",
+      "new-balance-2002r",
+      "new-balance-530",
+      "nike-air-max-90",
+      "nike-air-max-1",
+      "nike-blazer-mid-77",
+      "adidas-handball-spezial",
+      "on-cloud-5",
+      "nike-air-max-97",
+      "adidas-gazelle-bold",
+      "puma-speedcat-og"
     ],
   },
   {
@@ -105,6 +116,12 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "unstructured-dad-cap",
       "minimalist-leather-crossbody-sling",
       "birkenstock-boston-clog",
+      "oversized-plain-tee",
+      "boxy-fit-tee",
+      "vintage-acid-wash-tee",
+      "parachute-pants",
+      "bomber-jacket",
+      "denim-jacket-classic"
     ],
   },
   {
@@ -125,6 +142,9 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "full-grain-leather-pin-buckle-belt",
       "seiko-5-sports-automatic-watch",
       "basic-heavyweight-t-shirt",
+      "oversized-shirt-men",
+      "relaxed-fit-shirt",
+      "polo-tshirt-classic"
     ],
   },
   {
@@ -144,6 +164,34 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "leather-structure-shoulder-handbag",
       "strappy-block-heels",
       "chunky-platform-loafers",
+      "baby-tee",
+      "crop-top-basic",
+      "ribbed-tank-top",
+      "corset-top",
+      "tube-top",
+      "off-shoulder-top",
+      "graphic-tee-womens",
+      "oversized-shirt-womens",
+      "cardigan-womens",
+      "knit-top-womens",
+      "zip-hoodie-womens",
+      "oversized-hoodie-womens",
+      "baggy-jeans-womens",
+      "wide-leg-jeans-womens",
+      "cargo-pants-womens",
+      "parachute-pants-womens",
+      "denim-skirt",
+      "mini-skirt-pleated",
+      "midi-skirt-satin",
+      "maxi-skirt",
+      "co-ord-set-womens",
+      "casual-dress",
+      "bodycon-dress",
+      "oversized-jacket-womens",
+      "denim-jacket-womens",
+      "bomber-jacket-womens",
+      "leather-style-jacket-womens",
+      "oversized-tee-womens"
     ],
   },
   {
@@ -178,6 +226,7 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "apple-watch-ultra-2",
       "fossil-grant-chronograph-leather-watch",
       "designer-watch",
+      "minimalist-watch"
     ],
   },
   {
@@ -194,6 +243,8 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "leather-structure-shoulder-handbag",
       "cordura-gym-weekend-duffle-bag",
       "slim-leather-rfid-cardholder-wallet",
+      "crossbody-bag-men",
+      "everyday-backpack"
     ],
   },
   {
@@ -260,6 +311,9 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "unstructured-dad-cap",
       "full-grain-leather-pin-buckle-belt",
       "slim-leather-rfid-cardholder-wallet",
+      "leather-wallet",
+      "classic-belt",
+      "cap-classic"
     ],
   },
   {
@@ -277,6 +331,9 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "crewneck-minimalist-sweatshirt",
       "knit-boxy-cardigan",
       "basic-heavyweight-t-shirt",
+      "zip-up-hoodie",
+      "flannel-checkered-shirt",
+      "overshirt-men"
     ],
   },
   {
@@ -293,6 +350,8 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "wide-leg-high-waist-trousers",
       "slim-tapered-stretch-chinos",
       "everyday-cotton-drawstring-shorts",
+      "wide-leg-jeans-mens",
+      "carpenter-pants"
     ],
   },
   {
@@ -329,6 +388,85 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "cuban-link-stainless-steel-chain",
     ],
   },
+  {
+    id: "ipl-sports-jerseys",
+    title: "IPL & Sports Jerseys",
+    subtitle: "Official match-day jerseys from IPL franchises and European football giants",
+    badge: "🏏 Jerseys",
+    displayOrder: 17,
+    productIds: [
+      "rcb-ipl-jersey",
+      "mumbai-indians-ipl-jersey",
+      "csk-ipl-jersey",
+      "fc-barcelona-jersey",
+      "real-madrid-jersey"
+    ],
+  },
+  {
+    id: "womens-footwear",
+    title: "Women's Footwear",
+    subtitle: "Trending sneakers, ballet flats, Mary Janes, platforms, heels, and everyday sandals",
+    badge: "👡 Women's Footwear",
+    displayOrder: 18,
+    productIds: [
+      "adidas-samba-womens",
+      "adidas-gazelle-womens",
+      "nike-dunk-low-womens",
+      "new-balance-550-womens",
+      "ballet-flats",
+      "mary-jane-shoes",
+      "platform-sneakers-womens",
+      "chunky-sneakers-womens",
+      "heels-stiletto",
+      "everyday-sandals-womens"
+    ],
+  },
+  {
+    id: "womens-indian-ethnic",
+    title: "Women's Indian & Ethnic Wear",
+    subtitle: "Kurta sets, Anarkali suits, sarees, pre-draped sarees, and handcrafted ethnic jewellery",
+    badge: "🥻 Ethnic",
+    displayOrder: 19,
+    productIds: [
+      "kurta-set-womens",
+      "anarkali-set",
+      "co-ord-ethnic-set",
+      "pre-draped-saree",
+      "silk-saree",
+      "lehenga-festive",
+      "statement-dupatta",
+      "jhumka-earrings",
+      "oxidised-jewellery-set",
+      "minimal-gold-jewellery"
+    ],
+  },
+  {
+    id: "womens-accessories",
+    title: "Women's Bags, Jewellery & Accessories",
+    subtitle: "Shoulder bags, tote bags, mini bags, scrunchies, claw clips, stacking rings, and layered necklaces",
+    badge: "👜 Accessories",
+    displayOrder: 20,
+    productIds: [
+      "shoulder-bag-womens",
+      "tote-bag-womens",
+      "mini-bag-womens",
+      "crossbody-bag-womens",
+      "sling-bag-womens",
+      "baguette-bag",
+      "sunglasses-cat-eye",
+      "cap-womens",
+      "hair-accessories-set",
+      "scrunchies-set",
+      "claw-clip-set",
+      "belt-womens",
+      "minimal-rings-set",
+      "bracelet-chain",
+      "layered-necklace",
+      "earrings-hoop",
+      "earrings-statement",
+      "sunglasses-retro-womens"
+    ],
+  }
 ];
 
 /** Full list of Fashion products */
@@ -345,7 +483,7 @@ export const RAW_FASHION_PRODUCTS: Array<{
   featured?: boolean;
   trending?: boolean;
 }> = [
-  // === Sneakers ===
+  // === EXISTING 53 PRODUCTS ===
   {
     id: "nike-air-jordan-1-retro-high",
     name: "Air Jordan 1 Retro High OG",
@@ -586,8 +724,6 @@ export const RAW_FASHION_PRODUCTS: Array<{
     description: "A fresh pair of lifestyle sneakers curated for daily wear and modern outfits.",
     tags: ["sneakers", "footwear", "streetwear"],
   },
-
-  // === Footwear (Non-Sneaker) ===
   {
     id: "birkenstock-boston-clog",
     name: "Birkenstock Boston Suede Leather Clogs",
@@ -663,8 +799,6 @@ export const RAW_FASHION_PRODUCTS: Array<{
     tags: ["kolhapuri", "mojari", "juttis", "ethnic-footwear", "festive"],
     badge: "POPULAR",
   },
-
-  // === Streetwear & Creator Tops ===
   {
     id: "heavyweight-oversized-graphic-tee",
     name: "240 GSM Heavyweight Oversized Graphic Tee",
@@ -817,8 +951,6 @@ export const RAW_FASHION_PRODUCTS: Array<{
     description: "Durable basketweave Oxford cotton with button-down collar and box pleat for timeless smart dressing.",
     tags: ["oxford", "shirt", "button-down", "formal", "smart"],
   },
-
-  // === Bottoms ===
   {
     id: "relaxed-fit-utilitarian-cargo-pants",
     name: "Multi-Pocket Utilitarian Relaxed Cargo Pants",
@@ -896,8 +1028,6 @@ export const RAW_FASHION_PRODUCTS: Array<{
     description: "Comfort-stretch elasticated waist with custom drawcords and side welt pockets.",
     tags: ["shorts", "cotton", "casual", "summer", "lounge"],
   },
-
-  // === Women's Edit ===
   {
     id: "satin-slip-midi-dress",
     name: "Bias-Cut Silk-Satin Slip Midi Dress",
@@ -964,8 +1094,6 @@ export const RAW_FASHION_PRODUCTS: Array<{
     description: "Generous boyfriend cut in crisp poplin cotton with curved high-low hem.",
     tags: ["shirt", "poplin", "oversized", "capsule-wardrobe"],
   },
-
-  // === Indian & Festive Ethnic Wear ===
   {
     id: "handloom-banarasi-silk-saree",
     name: "Handloom Pure Katan Banarasi Silk Saree",
@@ -1046,8 +1174,6 @@ export const RAW_FASHION_PRODUCTS: Array<{
     tags: ["bandhgala", "jodhpuri", "suit", "ethnic", "luxury"],
     badge: "PREMIUM",
   },
-
-  // === Watches & Timepieces ===
   {
     id: "casio-vintage-digital-a168",
     name: "Casio Vintage Digital A168WA-1",
@@ -1139,8 +1265,6 @@ export const RAW_FASHION_PRODUCTS: Array<{
     description: "A polished accessory with a premium feel for everyday outfits and evening occasions.",
     tags: ["watch", "timepiece", "accessory"],
   },
-
-  // === Bags & Backpacks ===
   {
     id: "waterproof-urban-laptop-backpack",
     name: "Urban Roll-Top Waterproof Laptop Backpack 25L",
@@ -1217,8 +1341,6 @@ export const RAW_FASHION_PRODUCTS: Array<{
     description: "Slim profile holding 8 cards plus folded currency with quick-access pull tab and RFID shielding.",
     tags: ["wallet", "cardholder", "leather", "minimalist", "edc"],
   },
-
-  // === Accessories & Jewellery ===
   {
     id: "vintage-retro-tinted-sunglasses",
     name: "Vintage 90s Tinted Acetate Sunglasses",
@@ -1284,8 +1406,6 @@ export const RAW_FASHION_PRODUCTS: Array<{
     description: "35mm wide vegetable-tanned full grain leather with brushed nickel buckle and bevelled edges.",
     tags: ["belt", "leather-belt", "menswear", "classic"],
   },
-
-  // === Sportswear ===
   {
     id: "nike-dri-fit-training-t-shirt",
     name: "Nike Dri-FIT High-Ventilation Training Tee",
@@ -1328,8 +1448,6 @@ export const RAW_FASHION_PRODUCTS: Array<{
     description: "Built-in breathable brief liner with reflective details and zippered key pocket.",
     tags: ["puma", "running-shorts", "sportswear", "active"],
   },
-
-  // === Luxury & Premium ===
   {
     id: "ralph-lauren-custom-fit-oxford",
     name: "Polo Ralph Lauren Custom Fit Oxford Shirt",
@@ -1386,6 +1504,123 @@ export const RAW_FASHION_PRODUCTS: Array<{
     tags: ["hugo-boss", "boss", "blazer", "suit", "wool", "luxury"],
     badge: "PREMIUM",
   },
+
+  // === NEW PRODUCTS: JERSEYS / SPORTSWEAR ===
+  { id: "rcb-ipl-jersey", name: "Royal Challengers Bengaluru IPL Jersey", brand: "RCB", subcategory: "Sportswear", sectionId: "ipl-sports-jerseys", sectionTitle: "IPL & Sports Jerseys", description: "Official match-day jersey with Dri-FIT fabric and team crest embroidered on chest.", tags: ["rcb", "ipl", "cricket", "jersey", "sportswear"], badge: "HOT", featured: true },
+  { id: "mumbai-indians-ipl-jersey", name: "Mumbai Indians IPL Jersey", brand: "Mumbai Indians", subcategory: "Sportswear", sectionId: "ipl-sports-jerseys", sectionTitle: "IPL & Sports Jerseys", description: "Five-time champions official match jersey with moisture-wicking polyester and MI holographic badge.", tags: ["mi", "ipl", "cricket", "jersey", "sportswear"], badge: "POPULAR", featured: true },
+  { id: "csk-ipl-jersey", name: "Chennai Super Kings IPL Jersey", brand: "CSK", subcategory: "Sportswear", sectionId: "ipl-sports-jerseys", sectionTitle: "IPL & Sports Jerseys", description: "Iconic yellow match jersey in breathable mesh fabric with embossed Super Kings lion crest.", tags: ["csk", "ipl", "cricket", "jersey", "sportswear"], badge: "HOT", featured: true },
+  { id: "fc-barcelona-jersey", name: "FC Barcelona Home Jersey", brand: "Nike", subcategory: "Sportswear", sectionId: "ipl-sports-jerseys", sectionTitle: "IPL & Sports Jerseys", description: "Legendary blaugrana stripes in Dri-FIT ADV fabric with woven FC Barcelona crest.", tags: ["barcelona", "football", "la-liga", "jersey", "nike"], badge: "POPULAR" },
+  { id: "real-madrid-jersey", name: "Real Madrid Home Jersey", brand: "Adidas", subcategory: "Sportswear", sectionId: "ipl-sports-jerseys", sectionTitle: "IPL & Sports Jerseys", description: "Classic all-white AEROREADY jersey with gold club crest and three-stripe shoulder detailing.", tags: ["real-madrid", "football", "la-liga", "jersey", "adidas"], badge: "POPULAR" },
+
+  // === NEW PRODUCTS: ADDITIONAL SNEAKERS ===
+  { id: "new-balance-2002r", name: "New Balance 2002R", brand: "New Balance", subcategory: "Sneakers", sectionId: "sneaker-culture", sectionTitle: "Sneaker Culture (Nike, Jordan, Adidas, NB)", description: "Premium suede and mesh upper with N-ergy cushioning for retro running aesthetics.", tags: ["new-balance", "2002r", "sneakers", "retro"], badge: "TRENDING" },
+  { id: "new-balance-530", name: "New Balance 530", brand: "New Balance", subcategory: "Sneakers", sectionId: "sneaker-culture", sectionTitle: "Sneaker Culture (Nike, Jordan, Adidas, NB)", description: "Early 2000s dad-runner silhouette with ABZORB midsole cushioning and mesh-synthetic panels.", tags: ["new-balance", "530", "sneakers", "retro"], badge: "POPULAR" },
+  { id: "nike-air-max-90", name: "Nike Air Max 90", brand: "Nike", subcategory: "Sneakers", sectionId: "sneaker-culture", sectionTitle: "Sneaker Culture (Nike, Jordan, Adidas, NB)", description: "Iconic visible Air unit with waffle outsole and layered design that defined a generation of street style.", tags: ["nike", "air-max-90", "sneakers", "classic"], badge: "BESTSELLER" },
+  { id: "nike-air-max-1", name: "Nike Air Max 1", brand: "Nike", subcategory: "Sneakers", sectionId: "sneaker-culture", sectionTitle: "Sneaker Culture (Nike, Jordan, Adidas, NB)", description: "The original Air Max that started the visible air revolution with mini-swoosh and suede mudguard.", tags: ["nike", "air-max-1", "sneakers", "og"], badge: "POPULAR" },
+  { id: "nike-blazer-mid-77", name: "Nike Blazer Mid '77", brand: "Nike", subcategory: "Sneakers", sectionId: "sneaker-culture", sectionTitle: "Sneaker Culture (Nike, Jordan, Adidas, NB)", description: "Vintage basketball high-top with exposed foam on the tongue and classic oversized Swoosh.", tags: ["nike", "blazer", "sneakers", "retro"], badge: "POPULAR" },
+  { id: "adidas-handball-spezial", name: "Adidas Handball Spezial", brand: "Adidas", subcategory: "Sneakers", sectionId: "sneaker-culture", sectionTitle: "Sneaker Culture (Nike, Jordan, Adidas, NB)", description: "Heritage handball shoe with soft suede upper, gum sole, and gold-foil Trefoil branding.", tags: ["adidas", "spezial", "terrace", "sneakers", "trending"], badge: "HOT", featured: true, trending: true },
+  { id: "on-cloud-5", name: "On Cloud 5", brand: "On", subcategory: "Sneakers", sectionId: "sneaker-culture", sectionTitle: "Sneaker Culture (Nike, Jordan, Adidas, NB)", description: "Ultra-lightweight CloudTec sole with speed-lacing and recycled mesh upper for all-day wear.", tags: ["on", "cloud", "sneakers", "comfort"], badge: "NEW" },
+  { id: "nike-air-max-97", name: "Nike Air Max 97", brand: "Nike", subcategory: "Sneakers", sectionId: "sneaker-culture", sectionTitle: "Sneaker Culture (Nike, Jordan, Adidas, NB)", description: "Full-length visible Air unit with undulating design lines inspired by Japanese bullet trains.", tags: ["nike", "air-max-97", "sneakers", "silver-bullet"] },
+  { id: "adidas-gazelle-bold", name: "Adidas Gazelle Bold Platform", brand: "Adidas", subcategory: "Sneakers", sectionId: "sneaker-culture", sectionTitle: "Sneaker Culture (Nike, Jordan, Adidas, NB)", description: "Platform-elevated Gazelle with thick rubber outsole, suede upper, and serrated three-stripe mark.", tags: ["adidas", "gazelle-bold", "platform", "sneakers", "womens", "trending"], badge: "TRENDING" },
+  { id: "puma-speedcat-og", name: "Puma Speedcat OG", brand: "Puma", subcategory: "Sneakers", sectionId: "sneaker-culture", sectionTitle: "Sneaker Culture (Nike, Jordan, Adidas, NB)", description: "Low-profile motorsport-inspired sneaker with slim suede upper and sleek cat-eye outsole.", tags: ["puma", "speedcat", "sneakers", "trending"], badge: "HOT" },
+
+  // === NEW PRODUCTS: MEN'S STREETWEAR ===
+  { id: "oversized-plain-tee", name: "220 GSM Oversized Plain Drop-Shoulder Tee", brand: "Bewakoof", subcategory: "T-Shirts", sectionId: "streetwear-creator-fits", sectionTitle: "Streetwear & Creator Fits", description: "Essential heavyweight cotton blank with drop shoulders and relaxed boxy fit for everyday stacking.", tags: ["t-shirt", "oversized", "plain", "basics", "streetwear"] },
+  { id: "boxy-fit-tee", name: "Boxy Fit Cotton Tee", brand: "Urbanic", subcategory: "T-Shirts", sectionId: "streetwear-creator-fits", sectionTitle: "Streetwear & Creator Fits", description: "Cropped boxy cut in soft jersey cotton with ribbed crewneck for a structured minimal look.", tags: ["t-shirt", "boxy", "basics"] },
+  { id: "vintage-acid-wash-tee", name: "Vintage Acid-Wash Oversized Tee", brand: "H&M", subcategory: "T-Shirts", sectionId: "streetwear-creator-fits", sectionTitle: "Streetwear & Creator Fits", description: "Heavy enzyme-washed cotton with faded graphic print and raw-cut hem for authentic vintage aesthetic.", tags: ["t-shirt", "vintage", "acid-wash", "streetwear"], badge: "TRENDING" },
+  { id: "wide-leg-jeans-mens", name: "Wide-Leg Relaxed Fit Jeans", brand: "Zara", subcategory: "Jeans", sectionId: "bottoms-cargos-denims", sectionTitle: "Bottoms: Cargos, Denims & Relaxed Fits", description: "Full relaxed wide-leg cut in rigid denim with classic five-pocket construction.", tags: ["jeans", "wide-leg", "denim", "menswear"] },
+  { id: "parachute-pants", name: "Nylon Parachute Cargo Pants", brand: "H&M", subcategory: "Trousers", sectionId: "streetwear-creator-fits", sectionTitle: "Streetwear & Creator Fits", description: "Lightweight crinkle nylon with toggle drawcords at ankle, elastic waist, and multiple cargo pockets.", tags: ["parachute-pants", "cargo", "nylon", "streetwear", "trending"], badge: "HOT" },
+  { id: "carpenter-pants", name: "Relaxed Carpenter Work Pants", brand: "Carhartt WIP", subcategory: "Trousers", sectionId: "bottoms-cargos-denims", sectionTitle: "Bottoms: Cargos, Denims & Relaxed Fits", description: "Double-knee canvas workwear pants with hammer loop, tool pockets, and loose straight fit.", tags: ["carpenter-pants", "workwear", "carhartt", "bottoms"] },
+  { id: "zip-up-hoodie", name: "Full-Zip Fleece Hoodie", brand: "Nike", subcategory: "Streetwear", sectionId: "tops-hoodies-layers", sectionTitle: "Casual Tops, Hoodies & Layers", description: "Classic brushed-back fleece full-zip with kangaroo-split pockets and embroidered Swoosh.", tags: ["hoodie", "zip-up", "nike", "basics"] },
+  { id: "bomber-jacket", name: "Classic MA-1 Bomber Jacket", brand: "Alpha Industries", subcategory: "Streetwear", sectionId: "streetwear-creator-fits", sectionTitle: "Streetwear & Creator Fits", description: "Military-spec flight jacket with orange reversible lining, utility pocket on sleeve, and ribbed trims.", tags: ["bomber", "jacket", "alpha-industries", "streetwear"], badge: "POPULAR" },
+  { id: "denim-jacket-classic", name: "Classic Denim Trucker Jacket", brand: "Levi's", subcategory: "Streetwear", sectionId: "streetwear-creator-fits", sectionTitle: "Streetwear & Creator Fits", description: "Iconic Type III trucker cut in rigid selvedge denim with button-flap chest pockets.", tags: ["denim-jacket", "levis", "trucker", "classic"] },
+  { id: "flannel-checkered-shirt", name: "Brushed Flannel Checkered Shirt", brand: "Uniqlo", subcategory: "Shirts", sectionId: "tops-hoodies-layers", sectionTitle: "Casual Tops, Hoodies & Layers", description: "Double-brushed cotton flannel in classic buffalo check with button-down collar.", tags: ["flannel", "checkered", "shirt", "layering"] },
+  { id: "oversized-shirt-men", name: "Oversized Linen Blend Shirt", brand: "Zara", subcategory: "Shirts", sectionId: "mens-style-essentials", sectionTitle: "Men's Style & Everyday Essentials", description: "Relaxed-fit camp collar shirt in breathable linen-cotton blend for casual warm-weather styling.", tags: ["shirt", "oversized", "linen", "menswear"] },
+  { id: "relaxed-fit-shirt", name: "Relaxed Fit Oxford Shirt", brand: "H&M", subcategory: "Shirts", sectionId: "mens-style-essentials", sectionTitle: "Men's Style & Everyday Essentials", description: "Effortlessly relaxed cut oxford cloth button-down with rolled-cuff details.", tags: ["shirt", "relaxed", "oxford", "basics"] },
+  { id: "overshirt-men", name: "Cotton Twill Overshirt Jacket", brand: "Mango", subcategory: "Shirts", sectionId: "tops-hoodies-layers", sectionTitle: "Casual Tops, Hoodies & Layers", description: "Sturdy twill overshirt with chest flap pockets and snap-button closure.", tags: ["overshirt", "jacket", "layering", "menswear"] },
+  { id: "polo-tshirt-classic", name: "Classic Fit Piqué Polo Tee", brand: "Ralph Lauren", subcategory: "T-Shirts", sectionId: "mens-style-essentials", sectionTitle: "Men's Style & Everyday Essentials", description: "Signature polo in breathable mesh piqué cotton with ribbed collar and iconic pony embroidery.", tags: ["polo", "ralph-lauren", "smart-casual", "classic"], badge: "POPULAR" },
+  { id: "minimalist-watch", name: "Minimalist Mesh Strap Watch", brand: "Daniel Wellington", subcategory: "Watches", sectionId: "timepieces-watches", sectionTitle: "Timepieces & Iconic Watches", description: "Ultra-thin 6mm case with eggshell dial and interchangeable Milanese mesh strap.", tags: ["watch", "minimalist", "daniel-wellington", "dressy"] },
+
+  // === NEW PRODUCTS: MEN'S ACCESSORIES ===
+  { id: "crossbody-bag-men", name: "Compact Crossbody Sling Bag", brand: "Nike", subcategory: "Bags", sectionId: "bags-backpacks-carry", sectionTitle: "Bags, Backpacks & Everyday Carry", description: "Quick-access front-zip crossbody with adjustable webbing strap and reflective detailing.", tags: ["crossbody", "sling", "bag", "streetwear"] },
+  { id: "leather-wallet", name: "Bi-Fold Genuine Leather Wallet", brand: "Tommy Hilfiger", subcategory: "Accessories", sectionId: "jewellery-accessories", sectionTitle: "Statement Jewellery & Accessories", description: "Full-grain leather bifold wallet with branded hardware, RFID protection, and 6 card slots.", tags: ["wallet", "leather", "tommy-hilfiger", "accessory"] },
+  { id: "classic-belt", name: "Reversible Leather Belt", brand: "Tommy Hilfiger", subcategory: "Accessories", sectionId: "jewellery-accessories", sectionTitle: "Statement Jewellery & Accessories", description: "Dual-tone reversible leather belt with brushed silver rotatable buckle.", tags: ["belt", "leather", "reversible", "accessory"] },
+  { id: "everyday-backpack", name: "Urban Commuter Backpack 28L", brand: "American Tourister", subcategory: "Bags", sectionId: "bags-backpacks-carry", sectionTitle: "Bags, Backpacks & Everyday Carry", description: "Water-resistant polyester backpack with padded laptop sleeve and organizer pockets.", tags: ["backpack", "commuter", "laptop-bag", "student"] },
+  { id: "cap-classic", name: "Cotton Twill Baseball Cap", brand: "Nike", subcategory: "Accessories", sectionId: "jewellery-accessories", sectionTitle: "Statement Jewellery & Accessories", description: "Six-panel structured cap with pre-curved brim and adjustable strapback closure.", tags: ["cap", "baseball", "nike", "streetwear"] },
+
+  // === NEW PRODUCTS: WOMEN'S FOOTWEAR ===
+  { id: "ballet-flats", name: "Classic Leather Ballet Flats", brand: "Zara", subcategory: "Footwear", sectionId: "womens-footwear", sectionTitle: "Women's Footwear", description: "Soft nappa leather ballerinas with cushioned insole and elegant round-toe silhouette.", tags: ["ballet-flats", "footwear", "womens", "elegant"], badge: "TRENDING" },
+  { id: "mary-jane-shoes", name: "Patent Leather Mary Jane Shoes", brand: "Mango", subcategory: "Footwear", sectionId: "womens-footwear", sectionTitle: "Women's Footwear", description: "Glossy patent leather Mary Janes with adjustable strap, low block heel, and round toe.", tags: ["mary-janes", "footwear", "womens", "trending"], badge: "HOT" },
+  { id: "platform-sneakers-womens", name: "Platform Canvas Sneakers", brand: "Converse", subcategory: "Footwear", sectionId: "womens-footwear", sectionTitle: "Women's Footwear", description: "Elevated platform sole on classic canvas high-top with cushioned OrthoLite insole.", tags: ["platform", "sneakers", "converse", "womens"] },
+  { id: "chunky-sneakers-womens", name: "Chunky Dad Sneakers", brand: "Fila", subcategory: "Footwear", sectionId: "womens-footwear", sectionTitle: "Women's Footwear", description: "Retro oversized midsole with mixed-material upper and Fila heritage branding.", tags: ["chunky", "sneakers", "fila", "womens", "retro"] },
+  { id: "heels-stiletto", name: "Pointed-Toe Stiletto Heels", brand: "Aldo", subcategory: "Footwear", sectionId: "womens-footwear", sectionTitle: "Women's Footwear", description: "Sleek patent-finish pointed-toe pump with slim 90mm stiletto heel for evening dressing.", tags: ["heels", "stiletto", "pumps", "womens", "party"], badge: "POPULAR" },
+  { id: "everyday-sandals-womens", name: "Padded Strap Flat Sandals", brand: "H&M", subcategory: "Footwear", sectionId: "womens-footwear", sectionTitle: "Women's Footwear", description: "Cushioned puffy straps with contoured cork-latex footbed for all-day summer comfort.", tags: ["sandals", "flat", "casual", "womens", "summer"] },
+  { id: "nike-dunk-low-womens", name: "Nike Dunk Low (Women's)", brand: "Nike", subcategory: "Sneakers", sectionId: "womens-footwear", sectionTitle: "Women's Footwear", description: "Women's exclusive colorways of the iconic Dunk Low with padded collar and foam midsole.", tags: ["nike", "dunk", "sneakers", "womens"], badge: "POPULAR" },
+  { id: "adidas-samba-womens", name: "Adidas Samba OG (Women's)", brand: "Adidas", subcategory: "Sneakers", sectionId: "womens-footwear", sectionTitle: "Women's Footwear", description: "Women's sizing of the terrace classic with supple leather upper and signature gum sole.", tags: ["adidas", "samba", "sneakers", "womens", "trending"], badge: "HOT" },
+  { id: "adidas-gazelle-womens", name: "Adidas Gazelle (Women's)", brand: "Adidas", subcategory: "Sneakers", sectionId: "womens-footwear", sectionTitle: "Women's Footwear", description: "Women's take on the suede terrace icon with contrast three-stripe mark and trefoil tongue tab.", tags: ["adidas", "gazelle", "sneakers", "womens"], badge: "TRENDING" },
+  { id: "new-balance-550-womens", name: "New Balance 550 (Women's)", brand: "New Balance", subcategory: "Sneakers", sectionId: "womens-footwear", sectionTitle: "Women's Footwear", description: "Women's colorways of the retro basketball low-top with clean leather construction.", tags: ["new-balance", "550", "sneakers", "womens"] },
+
+  // === NEW PRODUCTS: WOMEN'S CLOTHING ===
+  { id: "baby-tee", name: "Fitted Ribbed Baby Tee", brand: "Zara", subcategory: "Tops", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Slim-fit cropped baby tee in soft ribbed cotton with cap sleeves.", tags: ["baby-tee", "fitted", "crop", "womens", "trending"], badge: "TRENDING" },
+  { id: "crop-top-basic", name: "Cotton Crop Top", brand: "H&M", subcategory: "Tops", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Essential cropped silhouette in soft jersey cotton with a clean round neckline.", tags: ["crop-top", "basics", "womens"] },
+  { id: "ribbed-tank-top", name: "Ribbed Knit Tank Top", brand: "Uniqlo", subcategory: "Tops", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Slim-fit ribbed tank with wide shoulder straps and a scooped neckline for easy layering.", tags: ["tank-top", "ribbed", "basics", "womens"] },
+  { id: "corset-top", name: "Structured Boned Corset Top", brand: "Zara", subcategory: "Tops", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Statement boned corset bustier top with sweetheart neckline and back zip closure.", tags: ["corset-top", "bustier", "party", "womens", "trending"], badge: "HOT" },
+  { id: "tube-top", name: "Strapless Tube Top", brand: "H&M", subcategory: "Tops", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Stretchy bandeau tube top in cotton-elastane blend with inner silicone grip.", tags: ["tube-top", "strapless", "basics", "womens"] },
+  { id: "off-shoulder-top", name: "Off-Shoulder Ruched Top", brand: "Mango", subcategory: "Tops", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Gathered ruched bodice with elasticated off-shoulder neckline and puffed short sleeves.", tags: ["off-shoulder", "top", "ruched", "womens", "party"] },
+  { id: "graphic-tee-womens", name: "Oversized Graphic Tee (Women's)", brand: "H&M", subcategory: "T-Shirts", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Relaxed oversized fit with vintage-inspired graphic print and washed-out finish.", tags: ["graphic-tee", "oversized", "womens", "streetwear"] },
+  { id: "oversized-shirt-womens", name: "Oversized Cotton Poplin Shirt (Women's)", brand: "Zara", subcategory: "Shirts", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Effortless boyfriend-cut button-down in crisp poplin with curved shirttail hem.", tags: ["shirt", "oversized", "poplin", "womens"] },
+  { id: "cardigan-womens", name: "Chunky Knit Oversized Cardigan", brand: "H&M", subcategory: "Tops", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Cozy oversized cable-knit cardigan with large horn buttons and dropped shoulders.", tags: ["cardigan", "knitwear", "oversized", "womens", "cozy"] },
+  { id: "knit-top-womens", name: "Fine Knit Fitted Top", brand: "Uniqlo", subcategory: "Tops", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Lightweight fine-gauge knit with slim fit and ribbed hem for a polished everyday look.", tags: ["knit-top", "fitted", "basics", "womens"] },
+  { id: "zip-hoodie-womens", name: "Cropped Zip-Up Hoodie (Women's)", brand: "Nike", subcategory: "Streetwear", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Cropped French terry zip-up with kangaroo pockets and embroidered Swoosh.", tags: ["hoodie", "zip-up", "cropped", "womens", "streetwear"] },
+  { id: "oversized-hoodie-womens", name: "Oversized Fleece Hoodie (Women's)", brand: "H&M", subcategory: "Streetwear", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Ultra-soft brushed fleece hoodie with dropped shoulders and kangaroo pocket.", tags: ["hoodie", "oversized", "fleece", "womens"] },
+  { id: "baggy-jeans-womens", name: "Baggy Wide-Leg Jeans (Women's)", brand: "Zara", subcategory: "Jeans", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "High-rise baggy fit through hip and thigh with floor-length wide leg in light wash denim.", tags: ["jeans", "baggy", "wide-leg", "womens", "trending"], badge: "POPULAR" },
+  { id: "wide-leg-jeans-womens", name: "Wide-Leg Straight Jeans (Women's)", brand: "Levi's", subcategory: "Jeans", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Levi's Ribcage wide-leg with super high rise for a leg-lengthening effect.", tags: ["jeans", "wide-leg", "levis", "womens"] },
+  { id: "cargo-pants-womens", name: "Low-Rise Cargo Pants (Women's)", brand: "H&M", subcategory: "Trousers", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Relaxed low-rise cargo with multiple flap pockets and adjustable drawcord hems.", tags: ["cargo", "pants", "low-rise", "womens", "streetwear"] },
+  { id: "parachute-pants-womens", name: "Nylon Parachute Pants (Women's)", brand: "Zara", subcategory: "Trousers", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Lightweight crinkle nylon parachute pants with elasticated waist and toggle ankles.", tags: ["parachute", "pants", "nylon", "womens", "trending"], badge: "TRENDING" },
+  { id: "denim-skirt", name: "Classic Denim Mini Skirt", brand: "Levi's", subcategory: "Skirts", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Iconic denim mini with raw-edge hem, five-pocket styling, and button-fly closure.", tags: ["skirt", "denim", "mini", "levis", "womens"], badge: "POPULAR" },
+  { id: "mini-skirt-pleated", name: "Pleated Mini Skirt", brand: "Zara", subcategory: "Skirts", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Preppy box-pleated mini skirt in structured fabric with concealed side zip.", tags: ["skirt", "mini", "pleated", "womens"] },
+  { id: "midi-skirt-satin", name: "Satin Midi Slip Skirt", brand: "Mango", subcategory: "Skirts", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Fluid satin slip skirt with bias cut and elasticated waistband for effortless evening elegance.", tags: ["skirt", "midi", "satin", "womens", "party"] },
+  { id: "maxi-skirt", name: "Flowy Maxi Skirt", brand: "H&M", subcategory: "Skirts", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Floor-length flowy maxi in crinkle viscose with high elasticated waist.", tags: ["skirt", "maxi", "flowy", "womens", "summer"] },
+  { id: "co-ord-set-womens", name: "Linen Co-Ord Set", brand: "Zara", subcategory: "Sets", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Matching linen shirt and wide-leg trouser set for an effortlessly coordinated resort look.", tags: ["co-ord", "set", "linen", "matching", "womens"], badge: "TRENDING" },
+  { id: "casual-dress", name: "Cotton T-Shirt Dress", brand: "H&M", subcategory: "Dresses", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Easy pullover T-shirt dress in soft jersey cotton with relaxed A-line shape.", tags: ["dress", "casual", "t-shirt-dress", "womens"] },
+  { id: "bodycon-dress", name: "Ribbed Bodycon Mini Dress", brand: "Zara", subcategory: "Dresses", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Figure-hugging ribbed-knit mini with scoop neck and racerback detailing.", tags: ["dress", "bodycon", "mini", "party", "womens"] },
+  { id: "oversized-jacket-womens", name: "Oversized Leather-Effect Jacket (Women's)", brand: "Zara", subcategory: "Streetwear", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Oversized faux-leather biker jacket with zip hardware and quilted lining.", tags: ["jacket", "oversized", "leather", "womens", "trending"], badge: "POPULAR" },
+  { id: "denim-jacket-womens", name: "Cropped Denim Jacket (Women's)", brand: "Levi's", subcategory: "Streetwear", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Cropped trucker jacket in stretch denim with classic button-front and chest pockets.", tags: ["denim-jacket", "cropped", "levis", "womens"] },
+  { id: "bomber-jacket-womens", name: "Satin Bomber Jacket (Women's)", brand: "Zara", subcategory: "Streetwear", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Luxe satin bomber with ribbed trims, zip-front closure, and minimal embroidery.", tags: ["bomber", "satin", "jacket", "womens"] },
+  { id: "leather-style-jacket-womens", name: "Faux Leather Moto Jacket", brand: "Mango", subcategory: "Streetwear", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Classic biker moto silhouette in vegan leather with asymmetric zip and snap lapels.", tags: ["leather-jacket", "moto", "faux-leather", "womens"], badge: "POPULAR" },
+  { id: "oversized-tee-womens", name: "Oversized Drop-Shoulder Tee (Women's)", brand: "Bewakoof", subcategory: "T-Shirts", sectionId: "womens-contemporary-edit", sectionTitle: "Women's Edit & Contemporary Silhouettes", description: "Relaxed boyfriend-fit tee in premium cotton with drop shoulders and curved hem.", tags: ["t-shirt", "oversized", "womens", "basics"] },
+
+  // === NEW PRODUCTS: WOMEN'S INDIAN / ETHNIC ===
+  { id: "kurta-set-womens", name: "Cotton Printed Kurta Set with Dupatta", brand: "FabIndia", subcategory: "Ethnic Wear", sectionId: "womens-indian-ethnic", sectionTitle: "Women's Indian & Ethnic Wear", description: "Hand-block printed cotton kurta with straight pants and matching dupatta for everyday festive wear.", tags: ["kurta", "set", "ethnic", "womens", "indian"], badge: "POPULAR" },
+  { id: "anarkali-set", name: "Georgette Anarkali Suit Set", brand: "Biba", subcategory: "Ethnic Wear", sectionId: "womens-indian-ethnic", sectionTitle: "Women's Indian & Ethnic Wear", description: "Flared embroidered Anarkali kurta with churidar and sheer organza dupatta.", tags: ["anarkali", "suit", "ethnic", "womens", "festive"], badge: "POPULAR" },
+  { id: "co-ord-ethnic-set", name: "Printed Ethnic Co-Ord Set", brand: "W", subcategory: "Ethnic Wear", sectionId: "womens-indian-ethnic", sectionTitle: "Women's Indian & Ethnic Wear", description: "Modern matching ethnic crop top and palazzo set with traditional Kalamkari print.", tags: ["co-ord", "ethnic", "matching", "womens"] },
+  { id: "pre-draped-saree", name: "Pre-Draped Concept Saree", brand: "Manyavar", subcategory: "Ethnic Wear", sectionId: "womens-indian-ethnic", sectionTitle: "Women's Indian & Ethnic Wear", description: "Ready-to-wear pre-pleated and pre-draped saree with attached pallu for effortless festive dressing.", tags: ["saree", "pre-draped", "festive", "womens", "trending"], badge: "TRENDING" },
+  { id: "statement-dupatta", name: "Handcrafted Bandhani Statement Dupatta", brand: "FabIndia", subcategory: "Ethnic Wear", sectionId: "womens-indian-ethnic", sectionTitle: "Women's Indian & Ethnic Wear", description: "Vibrant hand-tied Bandhani dupatta in pure silk with contrasting borders and tassels.", tags: ["dupatta", "bandhani", "ethnic", "womens"] },
+  { id: "jhumka-earrings", name: "Traditional Silver Jhumka Earrings", brand: "FabIndia", subcategory: "Jewellery", sectionId: "womens-indian-ethnic", sectionTitle: "Women's Indian & Ethnic Wear", description: "Handcrafted sterling silver dome jhumkas with delicate hanging chains and beadwork.", tags: ["jhumkas", "earrings", "silver", "ethnic", "jewellery"], badge: "POPULAR" },
+  { id: "oxidised-jewellery-set", name: "Oxidised Silver Statement Necklace Set", brand: "FabIndia", subcategory: "Jewellery", sectionId: "womens-indian-ethnic", sectionTitle: "Women's Indian & Ethnic Wear", description: "Boho-chic oxidised silver necklace with matching earrings featuring intricate tribal motifs.", tags: ["oxidised", "necklace", "jewellery", "ethnic", "boho"] },
+  { id: "minimal-gold-jewellery", name: "Minimalist Gold-Plated Jewellery Set", brand: "Accessorize", subcategory: "Jewellery", sectionId: "womens-indian-ethnic", sectionTitle: "Women's Indian & Ethnic Wear", description: "Delicate gold-plated layered chain necklace with matching stud earrings for everyday elegance.", tags: ["gold", "minimalist", "jewellery", "everyday"] },
+  { id: "silk-saree", name: "Pure Kanjeevaram Silk Saree", brand: "Nalli", subcategory: "Ethnic Wear", sectionId: "womens-indian-ethnic", sectionTitle: "Women's Indian & Ethnic Wear", description: "Heritage handwoven Kanjeevaram silk with rich zari border and traditional temple motifs.", tags: ["saree", "silk", "kanjeevaram", "festive", "premium"], badge: "PREMIUM" },
+  { id: "lehenga-festive", name: "Sequin Embroidered Festive Lehenga", brand: "Biba", subcategory: "Ethnic Wear", sectionId: "womens-indian-ethnic", sectionTitle: "Women's Indian & Ethnic Wear", description: "Lightweight festive lehenga with scattered sequin embroidery and mesh dupatta.", tags: ["lehenga", "festive", "sequin", "womens"] },
+
+  // === NEW PRODUCTS: WOMEN'S ACCESSORIES ===
+  { id: "shoulder-bag-womens", name: "Quilted Shoulder Bag", brand: "Mango", subcategory: "Bags", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Soft quilted faux leather shoulder bag with chain strap and magnetic flap closure.", tags: ["shoulder-bag", "quilted", "womens", "bag"], badge: "POPULAR" },
+  { id: "tote-bag-womens", name: "Structured Canvas Tote Bag", brand: "Coach", subcategory: "Bags", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Spacious canvas tote with leather trim handles and interior zip pocket.", tags: ["tote", "canvas", "bag", "womens"] },
+  { id: "mini-bag-womens", name: "Mini Crossbody Phone Bag", brand: "Zara", subcategory: "Bags", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Compact crossbody just big enough for phone, cards, and keys with adjustable strap.", tags: ["mini-bag", "crossbody", "phone-bag", "womens"], badge: "TRENDING" },
+  { id: "crossbody-bag-womens", name: "Leather Crossbody Bag", brand: "Michael Kors", subcategory: "Bags", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Pebbled leather crossbody with gold-tone hardware and adjustable chain strap.", tags: ["crossbody", "leather", "bag", "womens"] },
+  { id: "sling-bag-womens", name: "Nylon Sporty Sling Bag", brand: "Nike", subcategory: "Bags", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Lightweight nylon sling bag with zip compartments and adjustable webbing strap.", tags: ["sling-bag", "nylon", "sporty", "womens"] },
+  { id: "baguette-bag", name: "Baguette Shoulder Bag", brand: "Mango", subcategory: "Bags", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Compact baguette silhouette with short shoulder strap and decorative buckle closure.", tags: ["baguette", "bag", "shoulder", "womens", "trending"], badge: "HOT" },
+  { id: "sunglasses-cat-eye", name: "Cat-Eye Acetate Sunglasses", brand: "Ray-Ban", subcategory: "Accessories", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Retro cat-eye frame in polished acetate with gradient UV400 lenses.", tags: ["sunglasses", "cat-eye", "rayban", "womens"] },
+  { id: "cap-womens", name: "Cotton Dad Cap (Women's)", brand: "Nike", subcategory: "Accessories", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Soft unstructured cotton cap with curved brim and adjustable metal buckle.", tags: ["cap", "dad-cap", "nike", "womens"] },
+  { id: "hair-accessories-set", name: "Satin Hair Accessories Set", brand: "Accessorize", subcategory: "Accessories", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Set of satin scrunchies, claw clips, and ribbon hair ties in coordinated pastel tones.", tags: ["hair-accessories", "scrunchies", "claw-clips", "womens"] },
+  { id: "scrunchies-set", name: "Silk Scrunchie Set (Pack of 5)", brand: "Accessorize", subcategory: "Accessories", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Pure mulberry silk scrunchies that are gentle on hair and prevent creasing.", tags: ["scrunchies", "silk", "hair", "womens"] },
+  { id: "claw-clip-set", name: "Acrylic Claw Clip Set", brand: "Accessorize", subcategory: "Accessories", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Set of tortoiseshell and solid-color jumbo claw clips for effortless updos.", tags: ["claw-clips", "hair-clips", "womens"] },
+  { id: "belt-womens", name: "Thin Leather Waist Belt", brand: "Mango", subcategory: "Accessories", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Slim leather belt with polished gold-tone buckle for cinching dresses and blazers.", tags: ["belt", "thin", "leather", "womens"] },
+  { id: "minimal-rings-set", name: "Minimal Stacking Ring Set", brand: "Accessorize", subcategory: "Jewellery", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Set of five delicate gold-plated stacking rings with mixed textures and tiny CZ stones.", tags: ["rings", "stacking", "gold", "minimal", "womens"], badge: "POPULAR" },
+  { id: "bracelet-chain", name: "Dainty Chain Bracelet", brand: "Accessorize", subcategory: "Jewellery", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Fine gold-plated chain bracelet with lobster clasp and adjustable extender chain.", tags: ["bracelet", "chain", "gold", "dainty", "womens"] },
+  { id: "layered-necklace", name: "Layered Chain Necklace Set", brand: "Accessorize", subcategory: "Jewellery", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Three-layer chain necklace set in gold plating with pendant, herringbone, and cable chains.", tags: ["necklace", "layered", "gold", "womens", "trending"], badge: "TRENDING" },
+  { id: "earrings-hoop", name: "Classic Gold Hoop Earrings", brand: "Accessorize", subcategory: "Jewellery", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Medium-size polished gold-plated hoop earrings with click-top closure.", tags: ["earrings", "hoops", "gold", "classic", "womens"] },
+  { id: "earrings-statement", name: "Statement Drop Earrings", brand: "Mango", subcategory: "Jewellery", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "Eye-catching geometric drop earrings with mixed-metal finish for evening looks.", tags: ["earrings", "drop", "statement", "womens"] },
+  { id: "sunglasses-retro-womens", name: "Retro Oval Sunglasses", brand: "Mango", subcategory: "Accessories", sectionId: "womens-accessories", sectionTitle: "Women's Bags, Jewellery & Accessories", description: "90s-inspired slim oval frame with tinted lenses and metal temple detailing.", tags: ["sunglasses", "retro", "oval", "womens"] },
 ];
 
 /**
