@@ -216,6 +216,71 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
       featured: item.featured,
     })),
   },
+  // 11. TOYS
+  {
+    name: "Toys",
+    slug: "toys",
+    icon: "Gamepad2",
+    description: "Retro collectibles, gaming gear, figures, and creative toys.",
+    items: [
+      {
+        name: "Retro Arcade Machine",
+        imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
+        shortDescription: "",
+        description: "",
+        featured: true,
+      },
+      {
+        name: "Lego Collector Edition",
+        imageUrl: "https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?auto=format&fit=crop&w=600&q=80",
+        shortDescription: "",
+        description: "",
+        featured: true,
+      },
+      {
+        name: "Gundam Model Kit",
+        imageUrl: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80",
+        shortDescription: "",
+        description: "",
+        featured: true,
+      },
+      {
+        name: "RC High-Speed Drone",
+        imageUrl: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=600&q=80",
+        shortDescription: "",
+        description: "",
+        featured: false,
+      },
+      {
+        name: "Anime Action Figure",
+        imageUrl: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
+        shortDescription: "",
+        description: "",
+        featured: false,
+      },
+      {
+        name: "Custom Mechanical Keyboard",
+        imageUrl: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80",
+        shortDescription: "",
+        description: "",
+        featured: false,
+      },
+      {
+        name: "Rubik's Speed Cube",
+        imageUrl: "https://images.unsplash.com/photo-1591994843349-f415893b3a6b?auto=format&fit=crop&w=600&q=80",
+        shortDescription: "",
+        description: "",
+        featured: false,
+      },
+      {
+        name: "Diecast Supercar Model",
+        imageUrl: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80",
+        shortDescription: "",
+        description: "",
+        featured: false,
+      },
+    ],
+  },
 ];
 
 export const ALLOWED_CATEGORY_SLUGS = [
@@ -229,6 +294,7 @@ export const ALLOWED_CATEGORY_SLUGS = [
   "electronics",
   "fitness",
   "vehicles",
+  "toys",
 ];
 
 export const SEARCH_PLACEHOLDERS = [
@@ -329,19 +395,23 @@ export async function ensureCatalogSeeded() {
   const electronicsCount = await prisma.catalogItem.count({
     where: { category: { slug: "electronics" } },
   });
+  const toysCount = await prisma.catalogItem.count({
+    where: { category: { slug: "toys" } },
+  });
 
   if (
-    categoryCount === 10 &&
+    categoryCount === 11 &&
     foodCount >= 90 &&
     drinksCount >= 18 &&
     mobileCount >= 21 &&
     vehiclesCount >= 130 &&
-    electronicsCount >= 60
+    electronicsCount >= 60 &&
+    toysCount >= 8
   ) {
     return;
   }
 
-  // 3. Upsert the 10 allowed categories
+  // 3. Upsert the 11 allowed categories
   for (const category of getSeedCategories()) {
     await prisma.category.upsert({
       where: { slug: category.slug },

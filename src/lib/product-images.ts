@@ -1826,7 +1826,7 @@ export const HOMEPAGE_CATEGORIES_GRID: HomepageCategoryTile[] = [
   },
   {
     name: "Coffee",
-    href: "/category/food?q=Coffee",
+    href: "/category/drinks?sub=coffee",
     image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80",
   },
   {
@@ -1836,12 +1836,12 @@ export const HOMEPAGE_CATEGORIES_GRID: HomepageCategoryTile[] = [
   },
   {
     name: "Gaming",
-    href: "/category/electronics?q=Gaming",
+    href: "/category/electronics?sub=gaming",
     image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=600&q=80",
   },
   {
     name: "Ice Creams",
-    href: "/category/food?q=Ice+Cream",
+    href: "/category/food?sub=ice-creams",
     image: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=600&q=80",
   },
   {
@@ -1856,17 +1856,17 @@ export const HOMEPAGE_CATEGORIES_GRID: HomepageCategoryTile[] = [
   },
   {
     name: "Bikes",
-    href: "/category/vehicles?q=Bikes",
+    href: "/category/vehicles?sub=bikes",
     image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80",
   },
   {
     name: "Cold Drinks & Juices",
-    href: "/category/drinks",
+    href: "/category/drinks?sub=cold-drinks-juices",
     image: "https://images.unsplash.com/photo-1622597467836-f3285f2131b7?auto=format&fit=crop&w=600&q=80",
   },
   {
     name: "Laptops",
-    href: "/category/electronics?q=Laptops",
+    href: "/category/electronics?sub=laptops",
     image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=600&q=80",
   },
   // Row 2 (10 tiles)
@@ -1877,7 +1877,7 @@ export const HOMEPAGE_CATEGORIES_GRID: HomepageCategoryTile[] = [
   },
   {
     name: "Snacks",
-    href: "/category/food?q=Snacks",
+    href: "/category/food?sub=snacks",
     image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
   },
   {
@@ -1887,17 +1887,17 @@ export const HOMEPAGE_CATEGORIES_GRID: HomepageCategoryTile[] = [
   },
   {
     name: "Skin Care",
-    href: "/category/beauty?q=Skin+Care",
+    href: "/category/beauty?sub=skin-care",
     image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
   },
   {
     name: "Cars",
-    href: "/category/vehicles?q=Cars",
+    href: "/category/vehicles?sub=cars",
     image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=600&q=80",
   },
   {
     name: "Sweet Cravings",
-    href: "/category/food?q=Sweet",
+    href: "/category/food?sub=sweet-cravings",
     image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80",
   },
   {
@@ -1907,17 +1907,17 @@ export const HOMEPAGE_CATEGORIES_GRID: HomepageCategoryTile[] = [
   },
   {
     name: "Jewellery",
-    href: "/category/fashion?q=Jewellery",
+    href: "/category/fashion?sub=jewellery",
     image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80",
   },
   {
     name: "Biscuits",
-    href: "/category/food?q=Biscuits",
+    href: "/category/food?sub=biscuits",
     image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80",
   },
   {
     name: "Toys",
-    href: "/category/entertainment?q=Toys",
+    href: "/category/toys",
     image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
   },
 ];
