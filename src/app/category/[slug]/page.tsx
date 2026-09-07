@@ -236,27 +236,27 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           </span>
         </div>
 
-        {/* Zepto Category Architecture: Permanent Dedicated Left Sidebar + Right Product Grid */}
-        <div className="flex gap-4 sm:gap-6 items-start">
-          {/* Dedicated Left Navigation Sidebar */}
+        {/* Zepto Category Architecture: Dedicated Left Sidebar Column + Right Product Grid */}
+        <div className="flex items-start">
+          {/* True Left Navigation Sidebar (Not a card, sits directly on page background) */}
           <aside
-            className={`w-32 sm:w-56 md:w-64 lg:w-72 shrink-0 self-start sticky ${
+            className={`w-44 sm:w-56 md:w-64 lg:w-72 shrink-0 self-start sticky ${
               isMainCategoryPage
                 ? "top-[125px] max-h-[calc(100vh-140px)]"
                 : "top-[75px] md:top-[80px] max-h-[calc(100vh-95px)]"
-            } overflow-y-auto no-scrollbar rounded-2xl border border-zinc-200/90 bg-white shadow-xs p-1.5 sm:p-2 space-y-1`}
+            } overflow-y-auto no-scrollbar border-r border-zinc-200/80 pr-2.5 sm:pr-4 py-1 space-y-1`}
           >
             {/* 1. TOP PICKS (Prominent Zepto Star Option) */}
             <Link
               href={topPicksHref}
-              className={`group flex flex-col sm:flex-row items-center sm:items-center gap-1.5 sm:gap-3 p-2 sm:px-3 sm:py-3 rounded-xl transition ${
+              className={`group flex items-center gap-3 px-3 py-3 sm:py-3.5 rounded-xl transition ${
                 isTopPicksActive
-                  ? "bg-purple-50 text-purple-950 font-bold border-l-2 sm:border-l-4 border-purple-600 rounded-l-none shadow-xs"
+                  ? "bg-purple-50 text-purple-950 font-bold border-l-4 border-purple-600 rounded-l-none"
                   : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950"
               }`}
             >
               <div
-                className={`flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl transition ${
+                className={`flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl transition ${
                   isTopPicksActive
                     ? "bg-purple-600 text-white shadow-xs"
                     : "bg-purple-100 text-purple-700 group-hover:scale-105"
@@ -264,9 +264,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               >
                 <Star className="h-5 w-5 fill-current" />
               </div>
-              <div className="flex flex-col min-w-0 text-center sm:text-left">
-                <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-tight">Top Picks</span>
-                <span className="hidden sm:inline text-[10px] text-zinc-400 font-medium">
+              <div className="flex flex-col min-w-0 text-left">
+                <span className="text-xs sm:text-sm font-bold tracking-tight">Top Picks</span>
+                <span className="text-[10px] sm:text-[11px] text-zinc-400 font-medium">
                   All {isGamingSubcategory ? "Gaming" : category.name}
                 </span>
               </div>
@@ -281,13 +281,13 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 <Link
                   key={sub.id}
                   href={href}
-                  className={`group flex flex-col sm:flex-row items-center sm:items-center gap-1.5 sm:gap-3 p-2 sm:px-3 sm:py-3 rounded-xl transition ${
+                  className={`group flex items-center gap-3 px-3 py-3 sm:py-3.5 rounded-xl transition ${
                     isActive
-                      ? "bg-orange-50/90 text-orange-950 font-bold border-l-2 sm:border-l-4 border-orange-500 rounded-l-none shadow-xs"
+                      ? "bg-orange-50/90 text-orange-950 font-bold border-l-4 border-orange-500 rounded-l-none"
                       : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950"
                   }`}
                 >
-                  <div className="relative h-10 w-10 sm:h-12 sm:w-12 shrink-0 overflow-hidden rounded-xl bg-zinc-100 border border-zinc-200/70">
+                  <div className="relative h-11 w-11 sm:h-12 sm:w-12 shrink-0 overflow-hidden rounded-xl bg-zinc-100 border border-zinc-200/70">
                     <img
                       src={sub.image}
                       alt={sub.name}
@@ -295,7 +295,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                       className="h-full w-full object-cover object-center group-hover:scale-105 transition duration-200"
                     />
                   </div>
-                  <span className="text-[11px] sm:text-xs md:text-sm font-semibold leading-snug line-clamp-2 text-center sm:text-left">
+                  <span className="text-xs sm:text-sm font-semibold leading-snug line-clamp-2 text-left">
                     {sub.name}
                   </span>
                 </Link>
@@ -304,7 +304,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           </aside>
 
           {/* Independent Right Product Grid */}
-          <section className="flex-1 min-w-0">
+          <section className="flex-1 min-w-0 pl-3 sm:pl-5 md:pl-6">
             {items.length > 0 ? (
               <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
                 {items.map((item) => (
