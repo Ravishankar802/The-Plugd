@@ -7,7 +7,7 @@ import CatalogCard from "@/components/CatalogCard";
 import CategoryIcon from "@/components/CategoryIcon";
 import { getSession } from "@/lib/auth";
 import { ensureCatalogSeeded } from "@/lib/catalog";
-import { getCategoryTileImage } from "@/lib/product-images";
+import { HOMEPAGE_CATEGORIES_GRID } from "@/lib/product-images";
 import prisma from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -191,44 +191,29 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         {/* Discovery Sections / Shelves (Only if not in search mode) */}
         {!query && (
           <div className="space-y-10 md:space-y-12">
-            {/* Dedicated Categories Grid (Inspired by compact Zepto-style category visual discovery) */}
-            <section id="categories" className="space-y-4">
-              <div className="flex items-end justify-between gap-4 border-b border-zinc-200/80 pb-3">
-                <div className="flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600">
-                    <Sparkles className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <h2 className="text-lg md:text-xl font-black tracking-tight text-zinc-950">Explore Categories</h2>
-                    <p className="text-[11px] text-zinc-500 hidden sm:block">Browse catalog wishlist items by category</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-10 gap-3 sm:gap-4">
-                {categories.map((category) => {
-                  const tileImage = getCategoryTileImage(category.slug);
-                  return (
-                    <Link
-                      key={category.id}
-                      href={`/category/${category.slug}`}
-                      className="group flex flex-col items-center text-center p-2 sm:p-2.5 rounded-2xl bg-white border border-zinc-200/90 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-orange-500/50"
-                    >
-                      <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-zinc-100 mb-2">
-                        <img
-                          src={tileImage}
-                          alt={category.name}
-                          loading="lazy"
-                          decoding="async"
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                      <span className="text-xs font-bold text-zinc-900 group-hover:text-orange-600 transition-colors line-clamp-1">
-                        {category.name}
-                      </span>
-                    </Link>
-                  );
-                })}
+            {/* Dedicated Categories Grid (Zepto-style visual discovery: exactly 20 tiles in 10 cols x 2 rows, no heading) */}
+            <section id="categories">
+              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-10 gap-3 sm:gap-4">
+                {HOMEPAGE_CATEGORIES_GRID.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="group flex flex-col items-center text-center"
+                  >
+                    <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-200/80 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:border-orange-500/50">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <span className="mt-2 text-xs font-semibold text-zinc-800 transition-colors group-hover:text-orange-600 line-clamp-2 leading-tight">
+                      {item.name}
+                    </span>
+                  </Link>
+                ))}
               </div>
             </section>
 

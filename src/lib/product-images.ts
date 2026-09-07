@@ -1807,3 +1807,118 @@ export function getCategoryTileImage(slug: string): string {
   return CATEGORY_TILE_IMAGES[slug] || DEFAULT_ELECTRONICS_IMAGE;
 }
 
+/**
+ * 20 Curated Homepage Category Grid Tiles (Zepto-style visual discovery)
+ * Exactly 20 tiles in specified sequence: 10 columns x 2 rows on desktop.
+ */
+export interface HomepageCategoryTile {
+  name: string;
+  href: string;
+  image: string;
+}
+
+export const HOMEPAGE_CATEGORIES_GRID: HomepageCategoryTile[] = [
+  // Row 1 (10 tiles)
+  {
+    name: "Mobile",
+    href: "/category/mobile",
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Coffee",
+    href: "/category/food?q=Coffee",
+    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Fashion",
+    href: "/category/fashion",
+    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Gaming",
+    href: "/category/electronics?q=Gaming",
+    image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Ice Creams",
+    href: "/category/food?q=Ice+Cream",
+    image: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Electronics",
+    href: "/category/electronics",
+    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Beauty",
+    href: "/category/beauty",
+    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Bikes",
+    href: "/category/vehicles?q=Bikes",
+    image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Cold Drinks & Juices",
+    href: "/category/drinks",
+    image: "https://images.unsplash.com/photo-1622597467836-f3285f2131b7?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Laptops",
+    href: "/category/electronics?q=Laptops",
+    image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=600&q=80",
+  },
+  // Row 2 (10 tiles)
+  {
+    name: "Entertainment",
+    href: "/category/entertainment",
+    image: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Snacks",
+    href: "/category/food?q=Snacks",
+    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Subscriptions",
+    href: "/category/subscriptions",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Skin Care",
+    href: "/category/beauty?q=Skin+Care",
+    image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Cars",
+    href: "/category/vehicles?q=Cars",
+    image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Sweet Cravings",
+    href: "/category/food?q=Sweet",
+    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Fitness",
+    href: "/category/fitness",
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Jewellery",
+    href: "/category/fashion?q=Jewellery",
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Biscuits",
+    href: "/category/food?q=Biscuits",
+    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    name: "Toys",
+    href: "/category/entertainment?q=Toys",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
+  },
+];
+
