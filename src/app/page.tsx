@@ -150,7 +150,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             </div>
 
             {searchResults.length > 0 ? (
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
                 {searchResults.map((item) => (
                   <CatalogCard
                     key={item.id}
@@ -158,11 +158,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     image={item.image}
                     name={item.name}
                     category={item.category.name}
-                    description={item.shortDescription}
                     action={
                       <AddToWishlistButton
                         catalogItemId={item.id}
                         isLoggedIn={Boolean(session?.userId)}
+                        floating
                       />
                     }
                   />
@@ -231,7 +231,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
                 {featuredItems.map((item) => (
                   <CatalogCard
                     key={item.id}
@@ -239,11 +239,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     image={item.image}
                     name={item.name}
                     category={item.category.name}
-                    description={item.shortDescription}
                     action={
                       <AddToWishlistButton
                         catalogItemId={item.id}
                         isLoggedIn={Boolean(session?.userId)}
+                        floating
                       />
                     }
                   />
@@ -280,7 +280,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   </Link>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
                   {category.catalogItems.map((item) => (
                     <CatalogCard
                       key={item.id}
@@ -288,11 +288,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                       image={item.image}
                       name={item.name}
                       category={category.name}
-                      description={item.shortDescription}
                       action={
                         <AddToWishlistButton
                           catalogItemId={item.id}
                           isLoggedIn={Boolean(session?.userId)}
+                          floating
                         />
                       }
                     />

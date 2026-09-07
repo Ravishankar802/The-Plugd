@@ -126,7 +126,7 @@ export default function MobilesCarouselSection({
             return (
               <div
                 key={product.id}
-                className="w-[220px] sm:w-[240px] md:w-[260px] lg:w-[270px] shrink-0 snap-start"
+                className="w-[140px] sm:w-[155px] md:w-[165px] lg:w-[175px] shrink-0 snap-start"
               >
                 <MobilesProductCard
                   id={product.id}

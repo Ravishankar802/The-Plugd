@@ -236,7 +236,7 @@ export default function BeautyCatalogView({
           </div>
 
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
               {filteredProducts.map((product) => {
                 const dbId = catalogDbMap[product.id] || product.id;
                 return (
@@ -354,7 +354,7 @@ export default function BeautyCatalogView({
             {/* Modal Grid Scrollable Body */}
             <div className="flex-1 overflow-y-auto p-4 md:p-6 no-scrollbar">
               {activeModalProducts.length > 0 ? (
-                <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
                   {activeModalProducts.map((product) => {
                     const dbId = catalogDbMap[product.id] || product.id;
                     return (
