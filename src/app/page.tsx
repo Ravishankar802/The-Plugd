@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight, ArrowRight, Sparkles } from "lucide-react";
+import { ChevronRight, ArrowRight, Sparkles, Plus } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AddToWishlistButton from "@/components/AddToWishlistButton";
@@ -114,11 +114,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
               <div className="flex flex-wrap items-center gap-3 shrink-0">
                 <Link
-                  href={session?.userId ? "/dashboard/items" : "/login"}
+                  href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
                   className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-orange-500 px-5 text-xs md:text-sm font-bold text-black shadow-lg shadow-orange-500/20 transition hover:bg-orange-400 active:scale-98"
                 >
-                  <span>{session?.userId ? "Go to My Wishlist" : "Create My Wishlist"}</span>
-                  <ArrowRight className="h-4 w-4" />
+                  <Plus className="h-4 w-4 stroke-[2.5]" />
+                  <span>Create Custom Item</span>
                 </Link>
                 <Link
                   href="#categories"

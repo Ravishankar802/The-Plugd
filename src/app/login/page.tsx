@@ -94,8 +94,8 @@ function LoginContent() {
       success = true;
       setIsRedirecting(true);
       
-      // If onboarding (no username set), redirect to dashboard where onboarding handles it.
-      router.push("/dashboard");
+      const redirectTo = searchParams.get("redirect") || "/dashboard";
+      router.push(redirectTo);
       router.refresh();
     } catch (err: any) {
       if (!success) {
