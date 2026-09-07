@@ -14,6 +14,7 @@ import {
   Smartphone,
   Sparkles,
   Ticket,
+  Utensils,
   type LucideProps,
 } from "lucide-react";
 
@@ -33,6 +34,7 @@ const iconMap = {
   Smartphone,
   Sparkles,
   Ticket,
+  Utensils,
 };
 
 interface CategoryIconProps extends Omit<LucideProps, "name"> {

@@ -1786,3 +1786,24 @@ export function getFitnessProductImage(slug: string, fallback?: string): string 
   return FITNESS_IMAGE_MAP[normalized] || fallback || DEFAULT_FITNESS_IMAGE;
 }
 
+/**
+ * Curated real category tile images for homepage category grid.
+ * Features realistic, high-definition photography cleanly representing each top-level category.
+ */
+export const CATEGORY_TILE_IMAGES: Record<string, string> = {
+  food: "https://images.unsplash.com/photo-1563379091339-03b21ab4a7f8?auto=format&fit=crop&w=600&q=80", // Biryani / Indian dining
+  drinks: "https://images.unsplash.com/photo-1622597467836-f3285f2131b7?auto=format&fit=crop&w=600&q=80", // Refreshing beverages
+  fashion: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80", // Streetwear / Fashion look
+  mobile: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80", // Flagship smartphone
+  beauty: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80", // Skincare & beauty
+  entertainment: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=600&q=80", // Concerts & live events
+  subscriptions: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80", // Digital AI & streaming tools
+  electronics: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80", // MacBook & hardware
+  fitness: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80", // Fitness & training
+  vehicles: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80", // Porsche / Hypercar
+};
+
+export function getCategoryTileImage(slug: string): string {
+  return CATEGORY_TILE_IMAGES[slug] || DEFAULT_ELECTRONICS_IMAGE;
+}
+
