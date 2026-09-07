@@ -244,14 +244,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               isMainCategoryPage
                 ? "top-[125px] max-h-[calc(100vh-140px)]"
                 : "top-[75px] md:top-[80px] max-h-[calc(100vh-95px)]"
-            } overflow-y-auto no-scrollbar border-r border-zinc-200/80 pr-2.5 sm:pr-4 py-1 space-y-1`}
+            } overflow-y-auto no-scrollbar border-r border-zinc-200/80 py-1 space-y-1`}
           >
             {/* 1. TOP PICKS (Prominent Zepto Star Option) */}
             <Link
               href={topPicksHref}
-              className={`group flex items-center gap-3 px-3 py-3 sm:py-3.5 rounded-xl transition ${
+              className={`group flex items-center gap-3 w-full px-3.5 sm:px-4 py-3 sm:py-3.5 transition ${
                 isTopPicksActive
-                  ? "bg-purple-50 text-purple-950 font-bold border-l-4 border-purple-600 rounded-l-none"
+                  ? "bg-purple-50 text-purple-950 font-bold border-l-4 border-purple-600 rounded-none"
                   : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950"
               }`}
             >
@@ -281,9 +281,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 <Link
                   key={sub.id}
                   href={href}
-                  className={`group flex items-center gap-3 px-3 py-3 sm:py-3.5 rounded-xl transition ${
+                  className={`group flex items-center gap-3 w-full px-3.5 sm:px-4 py-3 sm:py-3.5 transition ${
                     isActive
-                      ? "bg-orange-50/90 text-orange-950 font-bold border-l-4 border-orange-500 rounded-l-none"
+                      ? "bg-orange-50/90 text-orange-950 font-bold border-l-4 border-orange-500 rounded-none"
                       : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950"
                   }`}
                 >
@@ -304,7 +304,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           </aside>
 
           {/* Independent Right Product Grid */}
-          <section className="flex-1 min-w-0 pl-3 sm:pl-5 md:pl-6">
+          <section className="flex-1 min-w-0 pl-4 sm:pl-6 md:pl-8">
             {items.length > 0 ? (
               <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
                 {items.map((item) => (
