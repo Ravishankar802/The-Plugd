@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Sparkles, LayoutDashboard, Heart, LogIn, Plus } from "lucide-react";
+import { Sparkles, LayoutDashboard, Heart, LogIn } from "lucide-react";
 import DiscoverySearch from "@/components/DiscoverySearch";
 import { SEARCH_PLACEHOLDERS } from "@/lib/catalog";
 
@@ -79,13 +79,6 @@ export default function Header({
             <div className="flex items-center gap-2">
               <Link
                 href="/dashboard/items"
-                className="hidden items-center gap-2 rounded-2xl bg-orange-500 px-4 py-2.5 text-xs font-bold text-black shadow-sm transition hover:bg-orange-400 sm:inline-flex"
-              >
-                <Plus className="h-4 w-4" />
-                <span>Create Custom Item</span>
-              </Link>
-              <Link
-                href="/dashboard/items"
                 className="hidden items-center gap-2 rounded-2xl border border-zinc-300/80 bg-white px-4 py-2.5 text-xs font-bold text-zinc-900 shadow-sm transition hover:border-orange-500 hover:text-orange-600 sm:inline-flex"
               >
                 <Heart className="h-4 w-4 text-orange-500" />
@@ -110,11 +103,11 @@ export default function Header({
                 <span>Login</span>
               </Link>
               <Link
-                href="/login?redirect=%2Fdashboard%2Fitems"
+                href="/login"
                 className="hidden items-center gap-1.5 rounded-2xl bg-orange-500 px-4 py-2.5 text-xs font-bold text-black shadow-sm transition hover:bg-orange-400 sm:inline-flex"
               >
-                <Plus className="h-3.5 w-3.5" />
-                <span>Create Custom Item</span>
+                <Sparkles className="h-3.5 w-3.5" />
+                <span>Start Wishlist</span>
               </Link>
             </div>
           )}

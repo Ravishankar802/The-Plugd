@@ -114,17 +114,18 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
               <div className="flex flex-wrap items-center gap-3 shrink-0">
                 <Link
-                  href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
+                  href={session?.userId ? "/dashboard/items" : "/login"}
                   className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-orange-500 px-5 text-xs md:text-sm font-bold text-black shadow-lg shadow-orange-500/20 transition hover:bg-orange-400 active:scale-98"
                 >
-                  <Plus className="h-4 w-4 stroke-[2.5]" />
-                  <span>Create Custom Item</span>
+                  <span>{session?.userId ? "Go to My Wishlist" : "Create My Wishlist"}</span>
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
-                  href="#categories"
-                  className="inline-flex h-11 items-center justify-center rounded-2xl border border-zinc-700 bg-zinc-900/60 px-4 text-xs md:text-sm font-semibold text-zinc-200 transition hover:border-zinc-500 hover:text-white"
+                  href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl border border-zinc-700 bg-zinc-900/60 px-4 text-xs md:text-sm font-semibold text-zinc-200 transition hover:border-zinc-500 hover:text-white"
                 >
-                  Explore Categories
+                  <Plus className="h-4 w-4 text-orange-400" />
+                  <span>Create Custom Item</span>
                 </Link>
               </div>
             </div>
