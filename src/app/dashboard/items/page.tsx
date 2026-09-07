@@ -66,7 +66,7 @@ export default function WishlistDashboardPage() {
   const [copied, setCopied] = useState(false);
 
   // Custom Item Form State
-  const [customFormOpen, setCustomFormOpen] = useState(false);
+  const [customFormOpen, setCustomFormOpen] = useState(true);
   const [editingItem, setEditingItem] = useState<WishlistItem | null>(null);
   const [customName, setCustomName] = useState("");
   const [customCategoryId, setCustomCategoryId] = useState("");
@@ -380,120 +380,18 @@ export default function WishlistDashboardPage() {
         </div>
       )}
 
-      {/* 1. SECTION: Add from Catalog */}
-      <section className="rounded-3xl border border-zinc-800 bg-zinc-900/90 p-6 space-y-6">
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div>
-            <div className="inline-flex items-center gap-1.5 text-orange-400 text-[10px] font-bold uppercase tracking-wider">
-              <Sparkles className="h-3 w-3" />
-              Catalog Discovery
-            </div>
-            <h2 className="mt-1 text-xl font-black text-zinc-100">Add from Catalog</h2>
-            <p className="text-xs text-zinc-400">Search over 170+ standardized creator items and add them in 1 click.</p>
-          </div>
-
-          <div className="relative w-full md:w-80">
-            <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              placeholder="Search (e.g. iPhone, Camera, Japan, Coffee)..."
-              className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-950 pl-10 pr-4 text-xs font-medium text-zinc-100 outline-none transition placeholder:text-zinc-500 focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-            />
-          </div>
-        </div>
-
-        {/* Catalog grid */}
-        {catalog.length > 0 ? (
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {catalog.slice(0, query ? 18 : 6).map((item) => {
-              const isAdded = alreadyWishlistedIds.has(item.name.toLowerCase());
-              return (
-                <div
-                  key={item.id}
-                  className="flex gap-3.5 rounded-2xl border border-zinc-800/80 bg-zinc-950/70 p-3.5 transition hover:border-zinc-700"
-                >
-                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-zinc-900 flex items-center justify-center">
-                    {item.image ? (
-                      <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
-                    ) : (
-                      <Sparkles className="h-6 w-6 text-zinc-600" />
-                    )}
-                  </div>
-                  <div className="flex min-w-0 flex-1 flex-col justify-between gap-2">
-                    <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-orange-400">
-                        {item.category.name}
-                      </span>
-                      <h3 className="truncate text-xs font-bold text-zinc-100">{item.name}</h3>
-                      {item.shortDescription ? (
-                        <p className="line-clamp-1 text-[11px] text-zinc-400">{item.shortDescription}</p>
-                      ) : null}
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => addCatalogItem(item.id)}
-                      disabled={isAdded}
-                      className={`inline-flex h-8 items-center justify-center gap-1 rounded-xl px-3 text-[11px] font-bold transition ${
-                        isAdded
-                          ? "bg-zinc-800 text-zinc-400 cursor-not-allowed"
-                          : "bg-orange-500 text-black hover:bg-orange-400"
-                      }`}
-                    >
-                      {isAdded ? (
-                        <>
-                          <Check className="h-3 w-3" />
-                          <span>In Wishlist</span>
-                        </>
-                      ) : (
-                        <>
-                          <Plus className="h-3 w-3" />
-                          <span>Add to Wishlist</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <div className="rounded-2xl border border-dashed border-zinc-800 bg-zinc-950/40 p-6 text-center space-y-3">
-            <p className="text-xs text-zinc-400">
-              No catalog items found matching &ldquo;{query}&rdquo;.
-            </p>
-            <button
-              type="button"
-              onClick={() => {
-                setCustomName(query);
-                setCustomFormOpen(true);
-                setEditingItem(null);
-              }}
-              className="inline-flex h-9 items-center gap-1.5 rounded-xl bg-orange-500 px-4 text-xs font-bold text-black hover:bg-orange-400 transition"
-            >
-              <Plus className="h-3.5 w-3.5" />
-              <span>Create Custom Item for &ldquo;{query}&rdquo;</span>
-            </button>
-          </div>
-        )}
-      </section>
-
-      {/* 2. SECTION: Create Custom Wishlist Item */}
-      <section className="rounded-3xl border border-zinc-800 bg-zinc-900/90 p-6 space-y-6">
+      {/* 1. SECTION: Create Custom Wishlist Item (PRIMARY) */}
+      <section className="rounded-3xl border border-orange-500/30 bg-zinc-900/90 p-6 space-y-6 shadow-lg shadow-orange-500/5">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <div className="inline-flex items-center gap-1.5 text-orange-400 text-[10px] font-bold uppercase tracking-wider">
               <Sparkles className="h-3 w-3" />
-              Custom Item Flow
+              Primary Action
             </div>
             <h2 className="mt-1 text-xl font-black text-zinc-100">
-              {editingItem ? `Edit Custom Item: ${editingItem.name}` : "Create Custom Wishlist Item"}
+              {editingItem ? `Edit Custom Item: ${editingItem.name}` : "Create Custom Item"}
             </h2>
-            <p className="text-xs text-zinc-400">
-              Wishlisting a dream studio, personal project, trip, or unique goal? Add it here.
-            </p>
+            <p className="text-xs text-zinc-400">Add anything you want to your wishlist</p>
           </div>
 
           <button
@@ -506,7 +404,7 @@ export default function WishlistDashboardPage() {
                 setCustomFormOpen(true);
               }
             }}
-            className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-zinc-700 bg-zinc-950 px-4 text-xs font-bold text-zinc-200 transition hover:border-zinc-500 hover:text-white shrink-0"
+            className="inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 text-xs font-bold text-black transition hover:bg-orange-400 shrink-0 shadow-sm"
           >
             {customFormOpen ? (
               <>
@@ -515,8 +413,8 @@ export default function WishlistDashboardPage() {
               </>
             ) : (
               <>
-                <Plus className="h-3.5 w-3.5 text-orange-500" />
-                <span>+ Create Custom Item</span>
+                <Plus className="h-3.5 w-3.5" />
+                <span>Create Custom Item</span>
               </>
             )}
           </button>
@@ -640,7 +538,7 @@ export default function WishlistDashboardPage() {
               {/* External Link */}
               <div className="space-y-1.5 md:col-span-2">
                 <label className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
-                  External Reference Link (Optional)
+                  Optional Product Link
                 </label>
                 <input
                   type="url"
@@ -659,7 +557,7 @@ export default function WishlistDashboardPage() {
                 onClick={saveCustomItem}
                 className="h-11 rounded-xl bg-orange-500 px-6 text-xs font-bold text-black transition hover:bg-orange-400"
               >
-                {editingItem ? "Save Changes" : "Create Custom Item"}
+                {editingItem ? "Save Changes" : "Add to Wishlist"}
               </button>
               <button
                 type="button"
@@ -672,6 +570,106 @@ export default function WishlistDashboardPage() {
                 Cancel
               </button>
             </div>
+          </div>
+        )}
+      </section>
+
+      {/* 2. SECTION: Find something on Plugd (SECONDARY) */}
+      <section className="rounded-3xl border border-zinc-800 bg-zinc-900/90 p-6 space-y-6">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <div className="inline-flex items-center gap-1.5 text-zinc-400 text-[10px] font-bold uppercase tracking-wider">
+              <Search className="h-3 w-3" />
+              Secondary Option
+            </div>
+            <h2 className="mt-1 text-xl font-black text-zinc-100">Find something on Plugd</h2>
+            <p className="text-xs text-zinc-400">Search the Plugd catalog</p>
+          </div>
+
+          <div className="relative w-full md:w-80">
+            <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              placeholder="Search (e.g. iPhone, Camera, Japan, Coffee)..."
+              className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-950 pl-10 pr-4 text-xs font-medium text-zinc-100 outline-none transition placeholder:text-zinc-500 focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+            />
+          </div>
+        </div>
+
+        {/* Catalog grid */}
+        {catalog.length > 0 ? (
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {catalog.slice(0, query ? 18 : 6).map((item) => {
+              const isAdded = alreadyWishlistedIds.has(item.name.toLowerCase());
+              return (
+                <div
+                  key={item.id}
+                  className="flex gap-3.5 rounded-2xl border border-zinc-800/80 bg-zinc-950/70 p-3.5 transition hover:border-zinc-700"
+                >
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-zinc-900 flex items-center justify-center">
+                    {item.image ? (
+                      <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
+                    ) : (
+                      <Sparkles className="h-6 w-6 text-zinc-600" />
+                    )}
+                  </div>
+                  <div className="flex min-w-0 flex-1 flex-col justify-between gap-2">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-orange-400">
+                        {item.category.name}
+                      </span>
+                      <h3 className="truncate text-xs font-bold text-zinc-100">{item.name}</h3>
+                      {item.shortDescription ? (
+                        <p className="line-clamp-1 text-[11px] text-zinc-400">{item.shortDescription}</p>
+                      ) : null}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => addCatalogItem(item.id)}
+                      disabled={isAdded}
+                      className={`inline-flex h-8 items-center justify-center gap-1 rounded-xl px-3 text-[11px] font-bold transition ${
+                        isAdded
+                          ? "bg-zinc-800 text-zinc-400 cursor-not-allowed"
+                          : "bg-orange-500 text-black hover:bg-orange-400"
+                      }`}
+                    >
+                      {isAdded ? (
+                        <>
+                          <Check className="h-3 w-3" />
+                          <span>In Wishlist</span>
+                        </>
+                      ) : (
+                        <>
+                          <Plus className="h-3 w-3" />
+                          <span>Add to Wishlist</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-dashed border-zinc-800 bg-zinc-950/40 p-6 text-center space-y-3">
+            <p className="text-xs text-zinc-400">
+              No catalog items found matching &ldquo;{query}&rdquo;.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setCustomName(query);
+                setCustomFormOpen(true);
+                setEditingItem(null);
+              }}
+              className="inline-flex h-9 items-center gap-1.5 rounded-xl bg-orange-500 px-4 text-xs font-bold text-black hover:bg-orange-400 transition"
+            >
+              <Plus className="h-3.5 w-3.5" />
+              <span>Create Custom Item for &ldquo;{query}&rdquo;</span>
+            </button>
           </div>
         )}
       </section>
