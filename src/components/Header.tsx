@@ -41,7 +41,7 @@ export default function Header({
   }, [initialIsLoggedIn]);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-zinc-200/80 bg-[#f7f3ee]/95 backdrop-blur-xl transition-all">
+    <header className="sticky top-0 z-40 w-full border-b border-zinc-200/80 bg-white/95 backdrop-blur-xl transition-all">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:gap-6 md:px-6 md:py-3.5">
         {/* Left: Logo & Wordmark */}
         <Link href="/" className="group flex shrink-0 items-center gap-2.5">

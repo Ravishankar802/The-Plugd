@@ -60,7 +60,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   ]);
 
   return (
-    <div className="min-h-screen bg-[#f7f3ee] text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
+    <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
       {/* Sticky Header with Search */}
       <Header
         initialQuery={query}
@@ -70,7 +70,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       />
 
       {/* Sticky/Scrollable Horizontal Category Navigation Bar */}
-      <div className="sticky top-[65px] md:top-[69px] z-30 border-b border-zinc-200/80 bg-[#f7f3ee]/95 backdrop-blur-md">
+      <div className="sticky top-[65px] md:top-[69px] z-30 border-b border-zinc-200/80 bg-white/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-4 py-2.5 no-scrollbar md:px-6">
           <Link
             href="/"

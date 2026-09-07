@@ -193,7 +193,7 @@ export default function GamingCatalogView({
       </section>
 
       {/* 2. Subcategory Quick Navigation Bar */}
-      <section className="sticky top-[110px] md:top-[118px] z-20 -mx-4 px-4 md:-mx-6 md:px-6 py-2 bg-[#f7f3ee]/95 backdrop-blur-md border-y border-zinc-200/80">
+      <section className="sticky top-[110px] md:top-[118px] z-20 -mx-4 px-4 md:-mx-6 md:px-6 py-2 bg-white/95 backdrop-blur-md border-y border-zinc-200/80">
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
           {GAMING_SUBCATEGORY_NAV_ITEMS.map((item) => {
             const Icon = item.icon;
@@ -309,7 +309,7 @@ export default function GamingCatalogView({
       {/* 5. "See All" Section Modal / Full Grid Drawer */}
       {activeModalSection && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-3 sm:p-6 animate-in fade-in duration-200">
-          <div className="relative flex flex-col max-h-[90vh] w-full max-w-6xl rounded-[32px] border border-zinc-200/90 bg-[#f7f3ee] shadow-2xl overflow-hidden">
+          <div className="relative flex flex-col max-h-[90vh] w-full max-w-6xl rounded-[32px] border border-zinc-200/90 bg-white shadow-2xl overflow-hidden">
             {/* Modal Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200/80 bg-white p-5 md:p-6 shrink-0">
               <div>

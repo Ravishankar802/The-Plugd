@@ -45,7 +45,7 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
   }
 
   return (
-    <div className="min-h-screen bg-[#f7f3ee] text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
+    <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
       <Header
         isLoggedIn={Boolean(session?.userId)}
         username={session?.username}
