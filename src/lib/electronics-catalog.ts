@@ -149,10 +149,16 @@ export const ELECTRONICS_SECTIONS: ElectronicsSection[] = [
   {
     id: "watches-section",
     title: "Watches",
-    subtitle: "Connected wearables and digital timepieces (ready-to-expand)",
+    subtitle: "Connected wearables and smartwatches",
     badge: "⌚ Watches",
     displayOrder: 5,
-    productIds: [],
+    productIds: [
+      "apple-watch",
+      "apple-watch-ultra",
+      "samsung-galaxy-watch",
+      "google-pixel-watch",
+      "garmin-fenix",
+    ],
   },
 ];
 
@@ -894,7 +900,59 @@ export const RAW_ELECTRONICS_PRODUCTS: Array<{
     tags: ["boat", "partypal", "speaker"],
   },
 
-  // 5. WATCHES (empty / ready-to-expand)
+  // 5. WATCHES
+  {
+    id: "apple-watch",
+    name: "Apple Watch",
+    brand: "Apple",
+    subcategory: "Watches",
+    sectionId: "watches-section",
+    sectionTitle: "Watches",
+    description: "",
+    tags: ["apple", "applewatch", "smartwatch", "fitness", "health"],
+    featured: true,
+  },
+  {
+    id: "apple-watch-ultra",
+    name: "Apple Watch Ultra",
+    brand: "Apple",
+    subcategory: "Watches",
+    sectionId: "watches-section",
+    sectionTitle: "Watches",
+    description: "",
+    tags: ["apple", "watch-ultra", "titanium", "fitness", "adventure"],
+    featured: true,
+  },
+  {
+    id: "samsung-galaxy-watch",
+    name: "Samsung Galaxy Watch",
+    brand: "Samsung",
+    subcategory: "Watches",
+    sectionId: "watches-section",
+    sectionTitle: "Watches",
+    description: "",
+    tags: ["samsung", "galaxywatch", "smartwatch", "health"],
+  },
+  {
+    id: "google-pixel-watch",
+    name: "Google Pixel Watch",
+    brand: "Google",
+    subcategory: "Watches",
+    sectionId: "watches-section",
+    sectionTitle: "Watches",
+    description: "",
+    tags: ["google", "pixelwatch", "smartwatch", "fitbit"],
+  },
+  {
+    id: "garmin-fenix",
+    name: "Garmin Fenix",
+    brand: "Garmin",
+    subcategory: "Watches",
+    sectionId: "watches-section",
+    sectionTitle: "Watches",
+    description: "",
+    tags: ["garmin", "fenix", "multisport", "gps", "endurance"],
+  },
 ];
 
 export function getFullElectronicsCatalog(): ElectronicsProduct[] {

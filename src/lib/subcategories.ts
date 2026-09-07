@@ -5,14 +5,15 @@
  * - FOOD: Ice Creams, Sweet Cravings, Biscuits, Snacks
  * - DRINKS: Coffee, Cold Drinks & Juices
  * - FASHION: Jewellery
- * - MOBILE: None (Standalone)
+ * - MOBILE: Standalone main category
  * - BEAUTY: Skin Care
- * - ENTERTAINMENT: None (Standalone)
- * - SUBSCRIPTIONS: None (Standalone)
- * - ELECTRONICS: Mobile, Laptops, Gaming
- * - FITNESS: None (Standalone)
+ * - ENTERTAINMENT: Standalone main category
+ * - SUBSCRIPTIONS: Standalone main category
+ * - ELECTRONICS: Mobile, Laptops, Audio, Gaming, Watches
+ *   - Gaming nested: Console Controllers, Games, Keyboards, Mouse, Speakers
+ * - FITNESS: Standalone main category
  * - VEHICLES: Bikes, Cars
- * - TOYS: None (Standalone)
+ * - TOYS: Standalone main category
  */
 
 export interface Subcategory {
@@ -20,6 +21,7 @@ export interface Subcategory {
   name: string; // display name e.g. "Ice Creams"
   image: string; // square thumbnail image
   keywords: string[]; // matching keywords for filtering products
+  productIds?: string[]; // exact product IDs if predefined
   sourceCategorySlug?: string; // e.g. "mobile" when Electronics -> Mobile
 }
 
@@ -92,13 +94,57 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
       id: "laptops",
       name: "Laptops",
       image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=300&q=80",
-      keywords: ["macbook", "laptop", "xps", "thinkpad", "surface", "zenbook", "proart", "razer blade", "swift", "spectre", "notebook", "chromebook", "dell", "lenovo", "asus"],
+      keywords: ["macbook", "laptop", "xps", "thinkpad", "surface", "zenbook", "proart", "razer blade", "swift", "spectre", "notebook", "chromebook", "dell", "lenovo", "asus", "hp"],
+      productIds: ["macbook-pro", "macbook-air", "macbook-neo", "lenovo-thinkpad", "lenovo-laptop", "hp-laptop", "dell-laptop"],
+    },
+    {
+      id: "audio",
+      name: "Audio",
+      image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=300&q=80",
+      keywords: ["airpods", "headphones", "earbuds", "buds", "ear", "cmf", "marshall", "sony wf", "sony wh", "headphone", "audio"],
+      productIds: [
+        "airpods",
+        "airpods-pro",
+        "airpods-max",
+        "sony-wf-1000xm6",
+        "sony-wf-1000xm5",
+        "sony-wh-1000xm6",
+        "sony-wh-1000xm5",
+        "samsung-galaxy-buds4-pro",
+        "galaxy-buds4",
+        "galaxy-buds3-pro",
+        "galaxy-buds3",
+        "pixel-buds-pro-2",
+        "pixel-buds-2a",
+        "headphone-1",
+        "ear-open",
+        "cmf-headphone-pro",
+        "ear",
+        "ear-a",
+        "cmf-buds-2-plus",
+        "cmf-buds-pro-2",
+        "marshall-headphones",
+        "marshall-earbuds",
+      ],
     },
     {
       id: "gaming",
       name: "Gaming",
       image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=300&q=80",
-      keywords: ["playstation", "ps5", "xbox", "nintendo", "switch", "steam deck", "controller", "gaming", "headset", "razer", "alienware", "legion", "rog", "dualsense", "vr", "quest", "stream deck"],
+      keywords: ["playstation", "ps5", "xbox", "gamepad", "controller", "gaming", "keyboard", "mouse", "speaker", "soundbar", "echo", "sony-ps5"],
+    },
+    {
+      id: "watches",
+      name: "Watches",
+      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=300&q=80",
+      keywords: ["watch", "smartwatch", "apple watch", "galaxy watch", "pixel watch", "garmin", "fenix"],
+      productIds: [
+        "apple-watch",
+        "apple-watch-ultra",
+        "samsung-galaxy-watch",
+        "google-pixel-watch",
+        "garmin-fenix",
+      ],
     },
   ],
   vehicles: [
@@ -117,13 +163,107 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
   ],
 };
 
+/**
+ * Nested subcategories for Gaming under Electronics
+ */
+export const GAMING_SUBCATEGORIES: Subcategory[] = [
+  {
+    id: "console-controllers",
+    name: "Console Controllers",
+    image: "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=300&q=80",
+    keywords: ["controller", "gamepad", "dualsense", "playstation 5 console", "evofox deck"],
+    productIds: [
+      "dualsense-wireless-controller-white",
+      "zebronics-max-fury-wired-gamepad",
+      "playstation-5-console-standard",
+      "playstation-5-console-digital",
+      "evofox-deck-2-smartphone-wireless-gaming-controller",
+      "zebronics-zeb-max-link-plus-wireless-gamepad",
+    ],
+  },
+  {
+    id: "games",
+    name: "Games",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=300&q=80",
+    keywords: ["ps5", "game", "ghost of yotei", "spider-man", "last of us", "astro bot", "god of war", "gran turismo", "uncharted"],
+    productIds: [
+      "sony-ps5-ghost-of-yotei",
+      "sony-ps5-marvels-spider-man-miles-morales",
+      "sony-ps5-the-last-of-us-part-ii-remastered",
+      "sony-ps5-marvel-tokon-fighting-souls",
+      "sony-ps5-astro-bot",
+      "playstation-god-of-war-ragnarok",
+      "sony-gran-turismo-2",
+      "sony-ps5-spider-man-2",
+      "sony-ghost-of-tsushima",
+      "sony-uncharted-legacy-of-thieves-collection",
+    ],
+  },
+  {
+    id: "keyboards",
+    name: "Keyboards",
+    image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=300&q=80",
+    keywords: ["keyboard", "keys", "pebble", "companion", "rapoo", "katana", "logitech-mk240", "portronics-wireless-keyboard"],
+    productIds: [
+      "logitech-pebble-keys-2-k380s-graphite",
+      "zebronics-companion-201-24ghz-wireless-keyboard",
+      "rapoo-e9050l-bluetooth-wireless-multi-device-keyboard",
+      "evofox-katana-x2-tkl-wired-mechanical-gaming-keyboard",
+      "logitech-mk240-nano-wireless-usb-keyboard",
+      "portronics-wireless-keyboard",
+    ],
+  },
+  {
+    id: "mouse",
+    name: "Mouse",
+    image: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=300&q=80",
+    keywords: ["mouse", "g502", "g402", "shark lite", "banshee", "toad 8", "war m"],
+    productIds: [
+      "logitech-g502-hero-high-performance-gaming-mouse",
+      "logitech-g402-hyperion-fury-usb-wired-gaming-mouse",
+      "zebronics-shark-lite-gaming-mouse",
+      "evofox-banshee-tri-mode-wireless-gaming-mouse",
+      "portronics-toad-8-transparent-wireless-bluetooth-mouse",
+      "zebronics-war-m-wired-gaming-mouse",
+    ],
+  },
+  {
+    id: "speakers",
+    name: "Speakers",
+    image: "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=300&q=80",
+    keywords: ["speaker", "soundbar", "echo", "alexa", "jbl go", "partypal"],
+    productIds: [
+      "sony-new-sa-d40m2-speaker",
+      "amazon-echo-show-8",
+      "amazon-echo-4th-gen",
+      "jbl-cinema-sb150-200w-soundbar",
+      "sony-srs-xb100-wireless-bluetooth-speaker",
+      "jbl-go-4-wireless-bluetooth-speaker",
+      "philips-tax2208-party-speaker",
+      "boat-partypal-65-pro",
+    ],
+  },
+];
+
+export const ALL_GAMING_PRODUCT_IDS = GAMING_SUBCATEGORIES.flatMap(
+  (s) => s.productIds || []
+);
+
 export function getSubcategoriesForCategory(categorySlug: string): Subcategory[] {
   return CATEGORY_SUBCATEGORIES[categorySlug.toLowerCase()] || [];
+}
+
+export function getGamingSubcategories(): Subcategory[] {
+  return GAMING_SUBCATEGORIES;
 }
 
 export function getSubcategoryDef(categorySlug: string, subId: string): Subcategory | undefined {
   const subs = getSubcategoriesForCategory(categorySlug);
   return subs.find((s) => s.id === subId.toLowerCase());
+}
+
+export function getGamingSubcategoryDef(childId: string): Subcategory | undefined {
+  return GAMING_SUBCATEGORIES.find((s) => s.id === childId.toLowerCase());
 }
 
 export function matchesSubcategory(
@@ -136,6 +276,13 @@ export function matchesSubcategory(
 
   const subDef = getSubcategoryDef(normalizedCategory, normalizedSubId);
   if (!subDef) return true;
+
+  // Exact product ID match if available
+  if (subDef.productIds && subDef.productIds.length > 0) {
+    if (subDef.productIds.includes(item.slug)) {
+      return true;
+    }
+  }
 
   // Special vehicle logic
   if (normalizedCategory === "vehicles") {
@@ -155,10 +302,34 @@ export function matchesSubcategory(
     }
   }
 
+  // Gaming overall under Electronics
+  if (normalizedCategory === "electronics" && normalizedSubId === "gaming") {
+    return ALL_GAMING_PRODUCT_IDS.includes(item.slug);
+  }
+
   const nameLower = item.name.toLowerCase();
   const slugLower = item.slug.toLowerCase();
 
   return subDef.keywords.some(
+    (kw) => nameLower.includes(kw.toLowerCase()) || slugLower.includes(kw.toLowerCase())
+  );
+}
+
+export function matchesGamingChild(
+  item: { name: string; slug: string },
+  childId: string
+): boolean {
+  const childDef = getGamingSubcategoryDef(childId);
+  if (!childDef) return ALL_GAMING_PRODUCT_IDS.includes(item.slug);
+
+  if (childDef.productIds && childDef.productIds.includes(item.slug)) {
+    return true;
+  }
+
+  const nameLower = item.name.toLowerCase();
+  const slugLower = item.slug.toLowerCase();
+
+  return childDef.keywords.some(
     (kw) => nameLower.includes(kw.toLowerCase()) || slugLower.includes(kw.toLowerCase())
   );
 }

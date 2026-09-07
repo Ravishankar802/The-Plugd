@@ -405,7 +405,7 @@ export async function ensureCatalogSeeded() {
     drinksCount >= 18 &&
     mobileCount >= 21 &&
     vehiclesCount >= 130 &&
-    electronicsCount >= 60 &&
+    electronicsCount >= 70 &&
     toysCount >= 8
   ) {
     return;
