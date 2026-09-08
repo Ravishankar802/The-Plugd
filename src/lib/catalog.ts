@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import { ensureUniqueSlug, slugify } from "@/lib/slug";
-import { getFullFoodCatalog } from "@/lib/food-catalog";
+import { getFullFoodCatalog, FOOD_NAMES } from "@/lib/food-catalog";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullFashionCatalog } from "@/lib/fashion-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
@@ -401,7 +401,7 @@ export async function ensureCatalogSeeded() {
 
   if (
     categoryCount === 11 &&
-    foodCount >= 90 &&
+    foodCount >= FOOD_NAMES.length &&
     drinksCount >= 18 &&
     mobileCount >= 21 &&
     vehiclesCount >= 130 &&

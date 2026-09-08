@@ -1,7 +1,7 @@
 /**
  * Food Catalog Data Definition for Plugd
  * 
- * Exactly the 90 specified food items for the Food category.
+ * Food items for the Food category.
  * Zero descriptions, zero prices.
  */
 
@@ -124,6 +124,56 @@ export const FOOD_NAMES = [
   "Bread Omelette",
   "Bowl",
   "Paneer",
+  // ICE CREAMS (14 items)
+  "Amul Chocolate Brownie Ice Cream Tub",
+  "Amul Choco Chip Chocolate Ice Cream Tub",
+  "Amul Fruit N Nut Fantasy Ice Cream Tub",
+  "Cream Pot Vanilla Tub",
+  "Baskin Robbins Mississippi Mud Ice Cream Tub",
+  "Magnum Chocolate Almond Ice Cream Stick",
+  "Baskin Robbins Almond 'N' Caramel Ice Cream Stick",
+  "Cornetto Double Chocolate Cone",
+  "Havmor Dark Chocolate Ice Cream Cone",
+  "Hoccol Hazelnut Mudslide Ice Cream Cone",
+  "OB & GOB Tiramisu & Fudge Ice Cream Sundae",
+  "OB & GOB Vanilla & Choco Brownie Ice Cream Sundae",
+  "Amul Kulhad Kulfie Ice Cream",
+  "Havmor Matka Kulfi",
+  // SWEET CRAVINGS (23 items)
+  "Kaju Katli",
+  "Mysore Pak",
+  "Motichoor Laddu",
+  "Gulab Jamun",
+  "Besan Laddu",
+  "Soan Papdi",
+  "Rasgulla",
+  "Rasmalai",
+  "Doodh Peda",
+  "Malai Peda",
+  "Dharwad Peda",
+  "Dairy Milk",
+  "Munch Max",
+  "Dairy Milk Shots",
+  "Nestle Kit-Kat",
+  "Amul Cocoa Dark Chocolate",
+  "Kinder Joy Blue",
+  "Kinder Joy Pink",
+  "Snickers",
+  "Bournville Dark Chocolate",
+  "Cadbury 5 Star",
+  "Dairy Milk SIlk",
+  "Ferrero Rocher Premium Chocolates",
+  // BISCUITS (10 items)
+  "Malkist Cheese Crunchy Layered Crackers",
+  "Britannia Little Hearts",
+  "Hide & Seek Choco Chip Cookies",
+  "5050 Maska Chaska",
+  "Parle-G",
+  "Oreo",
+  "KrackJacK",
+  "Good Day",
+  "Dark Fantasy",
+  "Jim Jam",
 ];
 
 function slugify(text: string): string {
@@ -133,6 +183,8 @@ function slugify(text: string): string {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 }
+
+const usedFoodIds = new Set<string>();
 
 export const RAW_FOOD_PRODUCTS: Array<{
   id: string;
@@ -146,7 +198,16 @@ export const RAW_FOOD_PRODUCTS: Array<{
   featured?: boolean;
   trending?: boolean;
 }> = FOOD_NAMES.map((name, idx) => {
-  const id = slugify(name);
+  let id = slugify(name);
+  if (usedFoodIds.has(id)) {
+    let suffix = 2;
+    while (usedFoodIds.has(`${id}-${suffix}`)) {
+      suffix += 1;
+    }
+    id = `${id}-${suffix}`;
+  }
+  usedFoodIds.add(id);
+
   return {
     id,
     name,

@@ -31,19 +31,95 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
       id: "ice-creams",
       name: "Ice Creams",
       image: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=300&q=80",
-      keywords: ["ice cream", "kulfi", "gelato", "popsicle", "sundae", "cornetto", "magnum", "chocobar", "cassata"],
+      keywords: [
+        "ice cream", "kulfi", "kulfie", "gelato", "popsicle", "sundae", "cornetto", "magnum", "chocobar", "cassata",
+        "baskin robbins", "cream pot", "havmor", "hoccol", "tiramisu", "mudslide", "kulhad", "tub", "cone", "stick"
+      ],
+      productIds: [
+        "ice-cream",
+        "amul-chocolate-brownie-ice-cream-tub",
+        "amul-choco-chip-chocolate-ice-cream-tub",
+        "amul-fruit-n-nut-fantasy-ice-cream-tub",
+        "cream-pot-vanilla-tub",
+        "baskin-robbins-mississippi-mud-ice-cream-tub",
+        "magnum-chocolate-almond-ice-cream-stick",
+        "baskin-robbins-almond-n-caramel-ice-cream-stick",
+        "cornetto-double-chocolate-cone",
+        "havmor-dark-chocolate-ice-cream-cone",
+        "hoccol-hazelnut-mudslide-ice-cream-cone",
+        "ob-gob-tiramisu-fudge-ice-cream-sundae",
+        "ob-gob-vanilla-choco-brownie-ice-cream-sundae",
+        "amul-kulhad-kulfie-ice-cream",
+        "havmor-matka-kulfi",
+      ],
     },
     {
       id: "sweet-cravings",
       name: "Sweet Cravings",
       image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=300&q=80",
-      keywords: ["sweets", "sweet", "cake", "dessert", "desserts", "waffles", "pancake", "rasmalai", "gulab", "halwa", "jalebi", "laddu", "kaju", "brownie", "pastry", "donut", "doughnut", "chocolate", "mithai", "peda", "barfi", "mysore pak", "rasgulla", "pazham pori"],
+      keywords: [
+        "sweets", "sweet", "cake", "dessert", "desserts", "waffles", "pancake", "rasmalai", "gulab", "halwa", "jalebi",
+        "laddu", "kaju", "brownie", "pastry", "donut", "doughnut", "chocolate", "mithai", "peda", "barfi", "mysore pak",
+        "rasgulla", "pazham pori", "soan papdi", "dairy milk", "munch", "kit-kat", "kinder", "snickers", "bournville",
+        "5 star", "ferrero rocher"
+      ],
+      productIds: [
+        "cake",
+        "sweets",
+        "waffles",
+        "desserts",
+        "pancake",
+        "pazham-pori",
+        "rasmalai",
+        "kaju-katli",
+        "mysore-pak",
+        "motichoor-laddu",
+        "gulab-jamun",
+        "besan-laddu",
+        "soan-papdi",
+        "rasgulla",
+        "rasmalai-2",
+        "doodh-peda",
+        "malai-peda",
+        "dharwad-peda",
+        "dairy-milk",
+        "munch-max",
+        "dairy-milk-shots",
+        "nestle-kit-kat",
+        "amul-cocoa-dark-chocolate",
+        "kinder-joy-blue",
+        "kinder-joy-pink",
+        "snickers",
+        "bournville-dark-chocolate",
+        "cadbury-5-star",
+        "dairy-milk-silk",
+        "ferrero-rocher-premium-chocolates",
+      ],
     },
     {
       id: "biscuits",
       name: "Biscuits",
       image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=300&q=80",
-      keywords: ["biscuit", "biscuits", "cookie", "cookies", "rusk", "wafer", "bakery", "bread", "toast", "waffles", "pancake"],
+      keywords: [
+        "biscuit", "biscuits", "cookie", "cookies", "rusk", "wafer", "bakery", "bread", "toast", "waffles", "pancake",
+        "crackers", "little hearts", "maska chaska", "parle-g", "oreo", "krackjack", "good day", "dark fantasy",
+        "jim jam", "malkist", "5050"
+      ],
+      productIds: [
+        "waffles",
+        "pancake",
+        "bread-omelette",
+        "malkist-cheese-crunchy-layered-crackers",
+        "britannia-little-hearts",
+        "hide-seek-choco-chip-cookies",
+        "5050-maska-chaska",
+        "parle-g",
+        "oreo",
+        "krackjack",
+        "good-day",
+        "dark-fantasy",
+        "jim-jam",
+      ],
     },
     {
       id: "snacks",
@@ -276,6 +352,11 @@ export function matchesSubcategory(
 
   const subDef = getSubcategoryDef(normalizedCategory, normalizedSubId);
   if (!subDef) return true;
+
+  // Food subcategory exact matching when productIds defined
+  if (normalizedCategory === "food" && subDef.productIds && subDef.productIds.length > 0) {
+    return subDef.productIds.includes(item.slug);
+  }
 
   // Exact product ID match if available
   if (subDef.productIds && subDef.productIds.length > 0) {
