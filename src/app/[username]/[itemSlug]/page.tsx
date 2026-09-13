@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import ItemDetailClient from "@/components/ItemDetailClient";
-import { ensureCatalogSeeded, resolveWishlistItem } from "@/lib/catalog";
+import { resolveWishlistItem } from "@/lib/catalog";
 import { getCreatorDisplayName } from "@/lib/creator";
 import prisma from "@/lib/prisma";
 
@@ -66,7 +66,6 @@ export async function generateMetadata({ params }: PublicItemPageProps) {
 }
 
 export default async function PublicItemPage({ params }: PublicItemPageProps) {
-  await ensureCatalogSeeded();
   const resolvedParams = await params;
   const username = normalizeUsername(resolvedParams.username);
 

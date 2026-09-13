@@ -1,13 +1,10 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import { ensureCatalogSeeded } from "@/lib/catalog";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
   try {
-    await ensureCatalogSeeded();
-
     const { searchParams } = new URL(req.url);
     const q = searchParams.get("q")?.trim() || "";
     const category = searchParams.get("category")?.trim() || "";
@@ -28,14 +25,27 @@ export async function GET(req: Request) {
             }
           : {}),
       },
-      include: {
-        category: true,
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        image: true,
+        categoryId: true,
+        featured: true,
+        displayOrder: true,
+        category: {
+          select: { id: true, name: true, slug: true },
+        },
       },
       orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
       ...(limitParam > 0 ? { take: limitParam } : {}),
     });
 
-    return NextResponse.json(items);
+    return NextResponse.json(items, {
+      headers: {
+        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+      },
+    });
   } catch (error) {
     console.error("[CATALOG_GET_ERROR]", error);
     return NextResponse.json({ error: "Failed to fetch catalog items" }, { status: 500 });

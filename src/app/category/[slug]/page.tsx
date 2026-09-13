@@ -6,7 +6,7 @@ import AddToWishlistButton from "@/components/AddToWishlistButton";
 import CatalogCard from "@/components/CatalogCard";
 import CategoryIcon from "@/components/CategoryIcon";
 import { getSession } from "@/lib/auth";
-import { ensureCatalogSeeded } from "@/lib/catalog";
+import { getCachedCategories, getCachedCategoryItems } from "@/lib/catalog";
 import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import {
@@ -26,27 +26,21 @@ interface CategoryPageProps {
 }
 
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
-  await ensureCatalogSeeded();
-  const session = await getSession();
-  const resolvedParams = await params;
-  const resolvedSearchParams = await searchParams;
-  const query = resolvedSearchParams?.q?.trim() || "";
-  const subParam = resolvedSearchParams?.sub?.trim() || "";
-  const childParam = resolvedSearchParams?.child?.trim() || "";
-
-  const [category, allCategories] = await Promise.all([
-    prisma.category.findUnique({
-      where: { slug: resolvedParams.slug },
-    }),
-    prisma.category.findMany({
-      where: { active: true },
-      orderBy: { displayOrder: "asc" },
-    }),
+  const [session, resolvedParams, resolvedSearchParams, allCategories] = await Promise.all([
+    getSession(),
+    params,
+    searchParams,
+    getCachedCategories(),
   ]);
 
+  const category = allCategories.find((c) => c.slug === resolvedParams.slug);
   if (!category) {
     notFound();
   }
+
+  const query = resolvedSearchParams?.q?.trim() || "";
+  const subParam = resolvedSearchParams?.sub?.trim() || "";
+  const childParam = resolvedSearchParams?.child?.trim() || "";
 
   // Hierarchy context
   const isGamingSubcategory = category.slug === "electronics" && subParam.toLowerCase() === "gaming";
@@ -83,28 +77,35 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   // Special case: Electronics -> Mobile loads from the "mobile" category
   let targetCategoryId = category.id;
   if (isElectronicsMobile) {
-    const mobileCategory = await prisma.category.findUnique({ where: { slug: "mobile" } });
+    const mobileCategory = allCategories.find((c) => c.slug === "mobile");
     if (mobileCategory) {
       targetCategoryId = mobileCategory.id;
     }
   }
 
-  const rawItems = await prisma.catalogItem.findMany({
-    where: {
-      active: true,
-      categoryId: targetCategoryId,
-      ...(query
-        ? {
-            OR: [
-              { name: { contains: query, mode: "insensitive" } },
-              { shortDescription: { contains: query, mode: "insensitive" } },
-              { description: { contains: query, mode: "insensitive" } },
-            ],
-          }
-        : {}),
-    },
-    orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
-  });
+  const rawItems = query
+    ? await prisma.catalogItem.findMany({
+        where: {
+          active: true,
+          categoryId: targetCategoryId,
+          OR: [
+            { name: { contains: query, mode: "insensitive" } },
+            { shortDescription: { contains: query, mode: "insensitive" } },
+            { description: { contains: query, mode: "insensitive" } },
+          ],
+        },
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+          image: true,
+          categoryId: true,
+          featured: true,
+          displayOrder: true,
+        },
+        orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
+      })
+    : await getCachedCategoryItems(targetCategoryId);
 
   // Filter items according to hierarchy
   let items = rawItems;
@@ -319,13 +320,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           <section className="flex-1 min-w-0 pl-4 sm:pl-6 md:pl-8">
             {items.length > 0 ? (
               <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-                {items.map((item) => (
+                {items.map((item, idx) => (
                   <CatalogCard
                     key={item.id}
                     href={`/catalog/${item.slug}`}
                     image={item.image}
                     name={item.name}
                     category={itemCategoryLabel}
+                    priority={idx < 8}
                     action={
                       <AddToWishlistButton
                         catalogItemId={item.id}

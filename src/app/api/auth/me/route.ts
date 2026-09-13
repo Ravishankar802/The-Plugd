@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
-import { ensureCatalogSeeded } from "@/lib/catalog";
 import { ensureCreatorProfile } from "@/lib/creator";
 
 export const dynamic = "force-dynamic";
@@ -14,7 +13,6 @@ export async function GET() {
   }
 
   try {
-    await ensureCatalogSeeded();
     await ensureCreatorProfile(session.userId);
 
     const user = await prisma.user.findUnique({

@@ -77,6 +77,8 @@ export default function WishlistDashboardPage() {
   const [customPersonalNote, setCustomPersonalNote] = useState("");
   const [uploadingImage, setUploadingImage] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const searchDebounceRef = useRef<NodeJS.Timeout | null>(null);
+  const searchCacheRef = useRef<Map<string, CatalogItem[]>>(new Map());
 
   const fetchData = async () => {
     try {
@@ -93,7 +95,11 @@ export default function WishlistDashboardPage() {
       }
       if (wishlistRes.ok) setWishlist(await wishlistRes.json());
       if (categoriesRes.ok) setCategories(await categoriesRes.json());
-      if (catalogRes.ok) setCatalog(await catalogRes.json());
+      if (catalogRes.ok) {
+        const initialCatalog = await catalogRes.json();
+        searchCacheRef.current.set("", initialCatalog);
+        setCatalog(initialCatalog);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -101,19 +107,41 @@ export default function WishlistDashboardPage() {
 
   useEffect(() => {
     fetchData().finally(() => setLoading(false));
+    return () => {
+      if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
+    };
   }, []);
 
-  const handleSearchChange = async (val: string) => {
+  const handleSearchChange = (val: string) => {
     setQuery(val);
-    setSearching(true);
-    try {
-      const res = await fetch(`/api/catalog${val ? `?q=${encodeURIComponent(val)}&limit=30` : "?limit=30"}`);
-      if (res.ok) {
-        setCatalog(await res.json());
-      }
-    } finally {
+    const trimmed = val.trim().toLowerCase();
+
+    if (searchCacheRef.current.has(trimmed)) {
+      setCatalog(searchCacheRef.current.get(trimmed)!);
       setSearching(false);
+      if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
+      return;
     }
+
+    if (searchDebounceRef.current) {
+      clearTimeout(searchDebounceRef.current);
+    }
+
+    setSearching(true);
+    searchDebounceRef.current = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/catalog${val ? `?q=${encodeURIComponent(val)}&limit=30` : "?limit=30"}`);
+        if (res.ok) {
+          const data = await res.json();
+          searchCacheRef.current.set(trimmed, data);
+          setCatalog(data);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setSearching(false);
+      }
+    }, 250);
   };
 
   const publicUrl = username

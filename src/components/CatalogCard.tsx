@@ -7,6 +7,7 @@ interface CatalogCardProps {
   category?: string;
   description?: string | null;
   action?: React.ReactNode;
+  priority?: boolean;
 }
 
 export default function CatalogCard({
@@ -14,6 +15,7 @@ export default function CatalogCard({
   image,
   name,
   action,
+  priority = false,
 }: CatalogCardProps) {
   return (
     <article className="group flex flex-col w-full">
@@ -24,8 +26,9 @@ export default function CatalogCard({
             <img
               src={image}
               alt={name}
-              loading="lazy"
-              decoding="async"
+              loading={priority ? "eager" : "lazy"}
+              fetchPriority={priority ? "high" : "auto"}
+              decoding={priority ? "sync" : "async"}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           ) : (

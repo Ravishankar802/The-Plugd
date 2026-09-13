@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import AddToWishlistButton from "@/components/AddToWishlistButton";
 import CategoryIcon from "@/components/CategoryIcon";
 import { getSession } from "@/lib/auth";
-import { ensureCatalogSeeded } from "@/lib/catalog";
 import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
 
@@ -31,14 +30,15 @@ export async function generateMetadata({ params }: CatalogItemPageProps) {
 }
 
 export default async function CatalogItemPage({ params }: CatalogItemPageProps) {
-  await ensureCatalogSeeded();
-  const session = await getSession();
   const resolvedParams = await params;
 
-  const item = await prisma.catalogItem.findUnique({
-    where: { slug: resolvedParams.slug },
-    include: { category: true },
-  });
+  const [session, item] = await Promise.all([
+    getSession(),
+    prisma.catalogItem.findUnique({
+      where: { slug: resolvedParams.slug },
+      include: { category: true },
+    }),
+  ]);
 
   if (!item) {
     notFound();

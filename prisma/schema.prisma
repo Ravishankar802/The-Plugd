@@ -46,6 +46,8 @@ model Category {
   updatedAt     DateTime       @updatedAt
   catalogItems  CatalogItem[]
   wishlistItems WishlistItem[]
+
+  @@index([active, displayOrder])
 }
 
 model CatalogItem {
@@ -63,6 +65,9 @@ model CatalogItem {
   createdAt        DateTime       @default(now())
   updatedAt        DateTime       @updatedAt
   wishlistItems    WishlistItem[]
+
+  @@index([categoryId, active])
+  @@index([active, featured, displayOrder])
 }
 
 model WishlistItem {
@@ -89,6 +94,7 @@ model WishlistItem {
 
   @@unique([userId, slug])
   @@unique([userId, catalogItemId])
+  @@index([userId, isPublished])
 }
 
 model OtpToken {

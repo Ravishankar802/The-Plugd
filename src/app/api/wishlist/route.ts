@@ -2,7 +2,7 @@ import { WishlistItemType } from "@prisma/client";
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
-import { ensureCatalogSeeded, resolveWishlistItem } from "@/lib/catalog";
+import { resolveWishlistItem } from "@/lib/catalog";
 import { slugify } from "@/lib/slug";
 
 export const dynamic = "force-dynamic";
@@ -54,7 +54,6 @@ export async function GET() {
   }
 
   try {
-    await ensureCatalogSeeded();
     return NextResponse.json(await getWishlist(session.userId));
   } catch (error) {
     console.error("[WISHLIST_GET_ERROR]", error);
@@ -70,7 +69,6 @@ export async function POST(req: Request) {
   }
 
   try {
-    await ensureCatalogSeeded();
     const body = await req.json();
     const itemCount = await prisma.wishlistItem.count({ where: { userId: session.userId } });
 

@@ -6,7 +6,6 @@ import AddToWishlistButton from "@/components/AddToWishlistButton";
 import CatalogCard from "@/components/CatalogCard";
 import CategoryIcon from "@/components/CategoryIcon";
 import { getSession } from "@/lib/auth";
-import { ensureCatalogSeeded } from "@/lib/catalog";
 import { HOMEPAGE_CATEGORIES_GRID } from "@/lib/product-images";
 import prisma from "@/lib/prisma";
 
@@ -17,8 +16,6 @@ interface HomePageProps {
 }
 
 export default async function HomePage({ searchParams }: HomePageProps) {
-  await ensureCatalogSeeded();
-
   const session = await getSession();
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams?.q?.trim() || "";
@@ -233,13 +230,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
-                {featuredItems.map((item) => (
+                {featuredItems.map((item, idx) => (
                   <CatalogCard
                     key={item.id}
                     href={`/catalog/${item.slug}`}
                     image={item.image}
                     name={item.name}
                     category={item.category.name}
+                    priority={idx < 4}
                     action={
                       <AddToWishlistButton
                         catalogItemId={item.id}
