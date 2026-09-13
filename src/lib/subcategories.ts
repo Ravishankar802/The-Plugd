@@ -30,7 +30,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "ice-creams",
       name: "Ice Creams",
-      image: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=300&q=80",
+      image: "https://www.sheetalicecream.com/wp-content/themes/sheetal/images/all_product_image.png",
       keywords: [
         "ice cream", "kulfi", "kulfie", "gelato", "popsicle", "sundae", "cornetto", "magnum", "chocobar", "cassata",
         "baskin robbins", "cream pot", "havmor", "hoccol", "tiramisu", "mudslide", "kulhad", "tub", "cone", "stick"
@@ -55,7 +55,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "sweet-cravings",
       name: "Sweet Cravings",
-      image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=300&q=80",
+      image: "https://adharsweets.in/wp-content/uploads/2024/02/sw-b-1.webp",
       keywords: [
         "sweets", "sweet", "rasmalai", "gulab", "halwa", "jalebi",
         "laddu", "kaju", "brownie", "pastry", "donut", "doughnut", "chocolate", "mithai", "peda", "barfi", "mysore pak",
@@ -91,7 +91,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "biscuits",
       name: "Biscuits",
-      image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=300&q=80",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY0pPOy7ZcpxQoOWXjl7DHFdDaTnmNE_t9XfG1sTny2pSfnPVJXNxUpxma&s=10",
       keywords: [
         "biscuit", "biscuits", "cookie", "cookies", "rusk", "wafer",
         "crackers", "little hearts", "maska chaska", "parle-g", "oreo", "krackjack", "good day", "dark fantasy",
@@ -113,7 +113,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "snacks",
       name: "Snacks",
-      image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=300&q=80",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdyoMgk4r6y2WWdkU266A1EUbW2M499tHWY5ys6GJm3UqaOjDg72FOna3b&s=10",
       keywords: [
         "lays", "chips", "kurkure", "bingo", "uncle chipps", "too yumm", "aloo bhujia", "bhujia sev", "mixture",
         "peanuts", "makhana", "banana chips", "murukku", "chakli", "nippattu", "khakhra", "popcorn", "nachos", "cheese balls", "snack", "snacks"

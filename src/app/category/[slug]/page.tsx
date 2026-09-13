@@ -124,11 +124,19 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     // Food Top Picks: include only Food items not part of the 4 dedicated subcategories,
     // while explicitly ensuring moved items (Cake, Waffles, Dessert, Pancake, Pazham Pori, Bread Omelette) remain in Top Picks.
     const movedToTopPicks = ["cake", "waffles", "dessert", "pancake", "pazham-pori", "bread-omelette"];
+    const excludedFromTopPicks = [
+      "lays-classic-salted",
+      "lays-magic-masala",
+      "haldirams-aloo-bhujia",
+      "haldirams-bhujia-sev",
+      "haldirams-mixture",
+    ];
     const dedicatedFoodSubcategories = ["ice-creams", "sweet-cravings", "biscuits", "snacks"];
     items = rawItems.filter(
       (item) =>
-        movedToTopPicks.includes(item.slug) ||
-        !dedicatedFoodSubcategories.some((subId) => matchesSubcategory(item, "food", subId))
+        !excludedFromTopPicks.includes(item.slug) &&
+        (movedToTopPicks.includes(item.slug) ||
+          !dedicatedFoodSubcategories.some((subId) => matchesSubcategory(item, "food", subId)))
     );
   } else {
     items = rawItems;
