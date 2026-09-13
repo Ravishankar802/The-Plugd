@@ -414,6 +414,12 @@ export async function ensureCatalogSeeded() {
     await prisma.catalogItem.deleteMany({
       where: { slug: "sweets" },
     });
+    await prisma.wishlistItem.deleteMany({
+      where: { catalogItem: { slug: "bengali" } },
+    });
+    await prisma.catalogItem.deleteMany({
+      where: { slug: "bengali" },
+    });
     await prisma.catalogItem.updateMany({
       where: { slug: "egg-curries" },
       data: { name: "Egg Curry", slug: "egg-curry" },
@@ -421,6 +427,10 @@ export async function ensureCatalogSeeded() {
     await prisma.catalogItem.updateMany({
       where: { slug: "momo" },
       data: { name: "Momos", slug: "momos" },
+    });
+    await prisma.catalogItem.updateMany({
+      where: { slug: "desserts" },
+      data: { name: "Dessert", slug: "dessert" },
     });
 
     const foodImageUpdates = [
@@ -473,6 +483,26 @@ export async function ensureCatalogSeeded() {
       { slug: "khichdi", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZvHANZ7xlFqNdqWSgfbkARRQzITs4yLapx2ZnsxKIAJkE3Jb7VjJCYRJo&s=10" },
       { slug: "momos", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjhR7Pk10dvhcUiL2tHH1xQJPKu64EaCpVIFVRfx58QMrB1NAJTPilUJYM&s=10" },
       { slug: "appam", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLwoFkfYHw6EfBrRqDOdAgClwMXUMwj0JiqkHmI1rS9z1iosUJq2Lfhdw&s=10" },
+      { slug: "puttu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_nCNvqGNHjGElBOPpPuv0lIytG53vzjL3x_KbTpw5MQ&s=10" },
+      { slug: "wings", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7jVOvIhWO0VD4tQ8S338n8Ute1CwX0kvwwqL-CBiufEGwyZh71wVrgWk&s=10" },
+      { slug: "upma", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIcgjdLDX-PYS1t_6oi-JVmlg_Ot9tDe_P229FoF_K5iwDOZyDRz1T_s&s=10" },
+      { slug: "puliyogare", image: "https://www.tatasimplybetter.com/cdn/shop/articles/Puliyogare_Tamarind_Rice.png?v=1721387987" },
+      { slug: "parotta", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsmJihgChNn33uicZGpXfn-TGpKCpHsYKTRtFCEwmTkC9_S1TJFWmmbM&s=10" },
+      { slug: "chicken-salad", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFXKNpdpVo6rGwMc5TwGi44fTf-fJAkaYxTf8uphSTQQ&s=10" },
+      { slug: "samosa", image: "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/12/samosa-recipe.jpg" },
+      { slug: "paddu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFI3XXakZjnPJH8xa-zmUQehT_29bovkBYKXF6f4u6Tgkbnc-v7rhzzGH2&s=10" },
+      { slug: "waffles", image: "https://cravinghomecooked.com/wp-content/uploads/2019/02/easy-waffle-recipe-1-16.jpg" },
+      { slug: "noodles", image: "https://images.getrecipekit.com/20241008094433-blog-20templates-20-3.webp?aspect_ratio=16:9&quality=90&" },
+      { slug: "soup", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwKeH2ZJmlwbQ6UyTqcudtwYySH9JqJATOOx8iyl4tihBmxQ3EVry9yhc&s=10" },
+      { slug: "egg-roast", image: "https://cookingfromheart.com/wp-content/uploads/2016/09/Egg-Masala-Fry-2.jpg" },
+      { slug: "rolls", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv1hU_VyaeVN8j8s2Pb0lW2RiU6JgBglBmcVcH-mEcJXmYZi7qGizhDTg&s=10" },
+      { slug: "kara-bhaath", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3frBRxv_FC9f5f9Lg_X4gfzYckdOQVFYy3AkVU0amIF9L9_lkgeROpsY&s=10" },
+      { slug: "dessert", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4bGFcadEXSKsgSxS7sNMPTJ5zs-tHpS6WOR2UPy6GL8HRyKoW59jPK61_&s=10" },
+      { slug: "pancake", image: "https://cdn.loveandlemons.com/wp-content/uploads/2025/09/protein-pancakes.jpg" },
+      { slug: "non-veg-meal", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgTWZrbairQ-WEuF_gs9te7L6ZE54EjJDd5GCaI1G1o6Pza7GVIbpWUisJ&s=10" },
+      { slug: "vada-pav", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc8xwK1REAIzAUsntztuPtJxRvhZhuE1DPkExTY28DPo-Smg2jUgNPYDJK&s=10" },
+      { slug: "juice", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKrOJE3sDN28OmYdlXYDvcodKnRKfA77IP8b-yCmwRWdJL8eyiwTgpWSwD&s=10" },
+      { slug: "shawaya", image: "https://img.magnific.com/free-psd/roasted-turkey-with-potatoes-rosemary_191095-78742.jpg?semt=ais_hybrid&w=740&q=80" },
     ];
     for (const { slug, image } of foodImageUpdates) {
       await prisma.catalogItem.updateMany({
