@@ -65,7 +65,6 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
       ],
       productIds: [
         "cake",
-        "sweets",
         "waffles",
         "desserts",
         "pancake",

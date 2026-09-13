@@ -408,6 +408,21 @@ export async function ensureCatalogSeeded() {
     electronicsCount >= 70 &&
     toysCount >= 8
   ) {
+    await prisma.wishlistItem.deleteMany({
+      where: { catalogItem: { slug: "sweets" } },
+    });
+    await prisma.catalogItem.deleteMany({
+      where: { slug: "sweets" },
+    });
+    await prisma.catalogItem.updateMany({
+      where: { slug: "egg-curries" },
+      data: { name: "Egg Curry", slug: "egg-curry" },
+    });
+    await prisma.catalogItem.updateMany({
+      where: { slug: "momo" },
+      data: { name: "Momos", slug: "momos" },
+    });
+
     const foodImageUpdates = [
       { slug: "biryani", image: "https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01.jpg" },
       { slug: "idli", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXFIhXiqaaKx0splUZoe7MIWqlYTQVTEF3T9v2SiW9VlU6EPhYwb8tUEY&s=10" },
@@ -424,6 +439,40 @@ export async function ensureCatalogSeeded() {
       { slug: "vada", image: "https://c.ndtvimg.com/2023-09/u113o4r_medu-vada_625x300_06_September_23.jpg" },
       { slug: "cake", image: "https://api.floraindia.com/upload/x8i2a54tpp1754035623750.webp" },
       { slug: "chilli-chicken", image: "https://images.slurrp.com/prod/recipe_images/transcribe/side%20dish/Chilli_Chicken.webp" },
+      { slug: "chicken-biryani", image: "https://www.cubesnjuliennes.com/wp-content/uploads/2020/07/Chicken-Biryani-Recipe.jpg" },
+      { slug: "fish", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxL-aspCqvYYm2dZOYxlD2M4qXOu4rC5Sqd1_x4_I2DQ&s=10" },
+      { slug: "mutton", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_1fnqxNbv5tM936tHbmdNQczV3tu2yulHYlQNvFOKJA&s=10" },
+      { slug: "coffee", image: "https://www.nestleprofessional.co.uk/sites/default/files/styles/np_article_small/public/2025-08/cup-of-coffee.jpg?h=943238f6&itok=zph-mbOb" },
+      { slug: "tea", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Ct4pzkLR53H2CNWDGPCSfr6Uq4lGIL-bTQ7MOBIadF9RoydbZgO-VRU&s=10" },
+      { slug: "pizza", image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Pizza-3007395.jpg/1280px-Pizza-3007395.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail" },
+      { slug: "poha", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU_x1OJxNZtEE1d4hEPq3shljeJEsHLiKIiH8sp_gbaGYlSESECfIlDm4N&s=10" },
+      { slug: "chicken-lollipop", image: "https://ranveerbrar.com/wp-content/uploads/2021/02/chicken-lollypops.jpg" },
+      { slug: "aloo-paratha", image: "https://cookingfromheart.com/wp-content/uploads/2020/09/Aloo-Paratha-4.jpg" },
+      { slug: "burger", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC6SYudG3mvTFKx2qtbCr-iRm6BafxjgtC4cUaHw3Gwz9SihQjTbfAWx0u&s=10" },
+      { slug: "tiffin", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQBtgRWOKki4ZclW__PGz3BTGZtFK4sLi-Nw2381jQbpqu9pdWAMlCucIb&s=10" },
+      { slug: "pongal", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSoPBfZs4oYbz_mt-j1I3CHk25stWbDJ2g1iUYttSjbsfdzk802LBsxlU&s=10" },
+      { slug: "egg-curry", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtIZYMmAxH0-IMmIQ4HjwTdF9reOGY0V3V10t9TrJSoM36iXaSarUSvWc&s=10" },
+      { slug: "set-dosa", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu90TK4Tm6ZnCrYEQ9HyYk4qiIma7ymT1-ZheT65_JLgT8nR-cNXq64Qg&s=10" },
+      { slug: "shawarma", image: "https://moribyan.com/wp-content/uploads/2026/03/IMG_3893.jpg" },
+      { slug: "chole-bhature", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXCwkW1dCExzQ3HNnfExnx_YyZmgTS6kVRUlRGOM6Kmp-46R5YfUoanI-J&s=10" },
+      { slug: "chicken-rolls", image: "https://madscookhouse.com/wp-content/uploads/2021/02/Chicken-Kathi-Roll.jpg" },
+      { slug: "sandwich", image: "https://images.boldsky.com/img/2026/04/veg-sandwich-main_1200x675_1776389458714.jpg" },
+      { slug: "pasta", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfZAhcvNnX_AHSuDg_f_yXCFT7M2abRcatNDxpHQnHL6xTuZ5Z4Dnl6-iD&s=10" },
+      { slug: "pulao", image: "https://tiffinandteaofficial.com/wp-content/uploads/2020/12/281122_1-500x500.jpg" },
+      { slug: "fruit-bowl", image: "https://tropicalexotics.in/cdn/shop/files/gut-reset-fruit-bowl-fibre-rich-digestion-bowl_2048x.png?v=1779364274" },
+      { slug: "sambar", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj-w_V8DizqdArTLnNaKkmmxq0OdU1UvmTbdx0DzJLsNg7v4rMfsMm2Mo&s=10" },
+      { slug: "maggi", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX4f0frS0Dl6Ms9nWa2CJRJViPD3a3faz5rF0ynRCx8vPl2ojAEfMUwo1V&s=10" },
+      { slug: "poori-sabzi", image: "https://www.myindianproducts.com/images/travel/food/poori-sabzi-madhya-pradesh.webp" },
+      { slug: "north-indian-meals", image: "https://img.onmanorama.com/content/dam/mm/en/food/features/images/2022/1/11/north-indian-cuisine.jpg?crop=fc&w=100&h=100" },
+      { slug: "paratha", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvgHZEREfw42BVj83jbEdMvDYMIs9WACcVR6vyIuMS7itgwxMTDdmAxRPM&s=10" },
+      { slug: "chicken-soup", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTFhlWoVzwjTz9bIjDEnD6zyiOYXzWetkmGV16R8WaaRqwbhOLg9QZ56hA&s=10" },
+      { slug: "thali", image: "https://www.bharatmasala.com/wp-content/uploads/2025/05/gujarati-thali.png" },
+      { slug: "chicken-shawarma", image: "https://theflavoursofkitchen.com/wp-content/uploads/2022/02/chicken-shawarma-recipe-3.jpg" },
+      { slug: "curd-rice", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7wwm_OagNX30d9F041F85Mzhvo7ElxCVo6ZFsErH3hMbUT5BOV2rGceI&s=10" },
+      { slug: "omelette", image: "https://www.recipetineats.com/tachyon/2023/06/Ham-and-cheese-omelette_1.jpg" },
+      { slug: "khichdi", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZvHANZ7xlFqNdqWSgfbkARRQzITs4yLapx2ZnsxKIAJkE3Jb7VjJCYRJo&s=10" },
+      { slug: "momos", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjhR7Pk10dvhcUiL2tHH1xQJPKu64EaCpVIFVRfx58QMrB1NAJTPilUJYM&s=10" },
+      { slug: "appam", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLwoFkfYHw6EfBrRqDOdAgClwMXUMwj0JiqkHmI1rS9z1iosUJq2Lfhdw&s=10" },
     ];
     for (const { slug, image } of foodImageUpdates) {
       await prisma.catalogItem.updateMany({
