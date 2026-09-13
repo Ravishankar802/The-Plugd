@@ -408,6 +408,18 @@ export async function ensureCatalogSeeded() {
     electronicsCount >= 70 &&
     toysCount >= 8
   ) {
+    await prisma.catalogItem.updateMany({
+      where: { slug: "biryani", NOT: { image: "https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01.jpg" } },
+      data: { image: "https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01.jpg" },
+    });
+    await prisma.catalogItem.updateMany({
+      where: { slug: "idli", NOT: { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXFIhXiqaaKx0splUZoe7MIWqlYTQVTEF3T9v2SiW9VlU6EPhYwb8tUEY&s=10" } },
+      data: { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXFIhXiqaaKx0splUZoe7MIWqlYTQVTEF3T9v2SiW9VlU6EPhYwb8tUEY&s=10" },
+    });
+    await prisma.catalogItem.updateMany({
+      where: { slug: "dosa", NOT: { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHwVr20YROlapYcSBDDyUX7t2bjtmIkvPUbtjRZPzFgQ&s=10" } },
+      data: { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHwVr20YROlapYcSBDDyUX7t2bjtmIkvPUbtjRZPzFgQ&s=10" },
+    });
     return;
   }
 

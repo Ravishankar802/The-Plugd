@@ -1488,9 +1488,9 @@ export function getDrinksProductImage(productId: string): string {
  * Curated product image map matching actual food items.
  */
 export const FOOD_IMAGE_MAP: Record<string, string> = {
-  "biryani": "https://images.unsplash.com/photo-1563379091339-03b21ab4a7f8?auto=format&fit=crop&w=800&q=80",
-  "idli": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80",
-  "dosa": "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=800&q=80",
+  "biryani": "https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01.jpg",
+  "idli": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXFIhXiqaaKx0splUZoe7MIWqlYTQVTEF3T9v2SiW9VlU6EPhYwb8tUEY&s=10",
+  "dosa": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHwVr20YROlapYcSBDDyUX7t2bjtmIkvPUbtjRZPzFgQ&s=10",
   "tandoori-chicken": "https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?auto=format&fit=crop&w=800&q=80",
   "egg": "https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=800&q=80",
   "south-indian-meals": "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?auto=format&fit=crop&w=800&q=80",
