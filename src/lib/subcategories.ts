@@ -57,9 +57,9 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
       name: "Sweet Cravings",
       image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=300&q=80",
       keywords: [
-        "sweets", "sweet", "cake", "dessert", "desserts", "waffles", "pancake", "rasmalai", "gulab", "halwa", "jalebi",
+        "sweets", "sweet", "rasmalai", "gulab", "halwa", "jalebi",
         "laddu", "kaju", "brownie", "pastry", "donut", "doughnut", "chocolate", "mithai", "peda", "barfi", "mysore pak",
-        "rasgulla", "pazham pori", "soan papdi", "dairy milk", "munch", "kit-kat", "kinder", "snickers", "bournville",
+        "rasgulla", "soan papdi", "dairy milk", "munch", "kit-kat", "kinder", "snickers", "bournville",
         "5 star", "ferrero rocher"
       ],
       productIds: [
@@ -93,18 +93,15 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
       name: "Biscuits",
       image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=300&q=80",
       keywords: [
-        "biscuit", "biscuits", "cookie", "cookies", "rusk", "wafer", "bakery", "bread", "toast", "waffles", "pancake",
+        "biscuit", "biscuits", "cookie", "cookies", "rusk", "wafer",
         "crackers", "little hearts", "maska chaska", "parle-g", "oreo", "krackjack", "good day", "dark fantasy",
-        "jim jam", "malkist", "5050"
+        "jim jam", "malkist", "5050", "50-50"
       ],
       productIds: [
-        "waffles",
-        "pancake",
-        "bread-omelette",
         "malkist-cheese-crunchy-layered-crackers",
         "britannia-little-hearts",
         "hide-seek-choco-chip-cookies",
-        "5050-maska-chaska",
+        "50-50-maska-chaska",
         "parle-g",
         "oreo",
         "krackjack",

@@ -1628,16 +1628,17 @@ export const FOOD_IMAGE_MAP: Record<string, string> = {
   "ferrero-rocher-premium-chocolate": "https://deq64r0ss2hgl.cloudfront.net/images/product/ferrero-rocher-premium-24pcs-300g-61945920939606.jpg",
 
   // === BISCUITS ===
-  "malkist-cheese-crunchy-layered-crackers": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80",
-  "britannia-little-hearts": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80",
-  "hide-seek-choco-chip-cookies": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80",
-  "5050-maska-chaska": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80",
-  "parle-g": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80",
-  "oreo": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80",
-  "krackjack": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80",
-  "good-day": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80",
-  "dark-fantasy": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80",
-  "jim-jam": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80",
+  "malkist-cheese-crunchy-layered-crackers": "https://www.bbassets.com/media/uploads/p/l/40191072_8-malkist-cheese-crunchy-layered-crackers.jpg",
+  "britannia-little-hearts": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqyEKp_pGLddIkVmBTgTCwO54hU471egE_SogkKLCM39GvOkRBs3H23nI&s=10",
+  "hide-seek-choco-chip-cookies": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/NI_CATALOG/IMAGES/ciw/2025/12/18/5605574c-4661-45cd-8de2-6d963c1259cd_G1PPRO3TK0_MN_17122025.png",
+  "50-50-maska-chaska": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSATzUbrdBHkNZ1bK_8eo0jnYLshq_X77Z3tmksNOl_hZj6ao2YpogiYz8&s=10",
+  "5050-maska-chaska": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSATzUbrdBHkNZ1bK_8eo0jnYLshq_X77Z3tmksNOl_hZj6ao2YpogiYz8&s=10",
+  "parle-g": "https://www.quickpantry.in/cdn/shop/products/parle-gluco-biscuits-parle-g-quick-pantry-4.jpg?v=1710538233",
+  "oreo": "https://www.quickpantry.in/cdn/shop/products/cadbury-oreo-creame-biscuit-vanilla-46-3-g-quick-pantry.jpg?v=1710538227",
+  "krackjack": "https://budgetbazaar.online/wp-content/uploads/2024/07/PARLE-KRACKJACK-75GM.jpg",
+  "good-day": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShwrefpgRMYv4glEdE_H_7vaYt7_N3t3en_LbqNaYfgQ&s=10",
+  "dark-fantasy": "https://m.media-amazon.com/images/I/71U6Dn3aeQL.jpg",
+  "jim-jam": "https://www.bbassets.com/media/uploads/p/l/218646_9-britannia-treat-jim-jam-cream-biscuits.jpg",
 };
 
 export const DEFAULT_FOOD_IMAGE = "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80";

@@ -164,7 +164,7 @@ export const FOOD_NAMES = [
   "Malkist Cheese Crunchy Layered Crackers",
   "Britannia Little Hearts",
   "Hide & Seek Choco Chip Cookies",
-  "5050 Maska Chaska",
+  "50-50 Maska Chaska",
   "Parle-G",
   "Oreo",
   "KrackJacK",

@@ -450,6 +450,10 @@ export async function ensureCatalogSeeded() {
       where: { slug: "ferrero-rocher-premium-chocolates" },
       data: { name: "Ferrero Rocher Premium Chocolate", slug: "ferrero-rocher-premium-chocolate" },
     });
+    await prisma.catalogItem.updateMany({
+      where: { slug: "5050-maska-chaska" },
+      data: { name: "50-50 Maska Chaska", slug: "50-50-maska-chaska" },
+    });
 
     const foodImageUpdates = [
       { slug: "biryani", image: "https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01.jpg" },
@@ -576,6 +580,17 @@ export async function ensureCatalogSeeded() {
       { slug: "cadbury-5-star", image: "https://rukmini1.flixcart.com/image/1500/1500/xif0q/chocolate/4/e/c/-original-imahpaztxqc6n7j7.jpeg?q=70" },
       { slug: "dairy-milk-silk", image: "https://cococart.in/cdn/shop/files/1CH2570.png?v=1773822268&width=1946" },
       { slug: "ferrero-rocher-premium-chocolate", image: "https://deq64r0ss2hgl.cloudfront.net/images/product/ferrero-rocher-premium-24pcs-300g-61945920939606.jpg" },
+      { slug: "malkist-cheese-crunchy-layered-crackers", image: "https://www.bbassets.com/media/uploads/p/l/40191072_8-malkist-cheese-crunchy-layered-crackers.jpg" },
+      { slug: "britannia-little-hearts", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqyEKp_pGLddIkVmBTgTCwO54hU471egE_SogkKLCM39GvOkRBs3H23nI&s=10" },
+      { slug: "hide-seek-choco-chip-cookies", image: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/NI_CATALOG/IMAGES/ciw/2025/12/18/5605574c-4661-45cd-8de2-6d963c1259cd_G1PPRO3TK0_MN_17122025.png" },
+      { slug: "50-50-maska-chaska", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSATzUbrdBHkNZ1bK_8eo0jnYLshq_X77Z3tmksNOl_hZj6ao2YpogiYz8&s=10" },
+      { slug: "5050-maska-chaska", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSATzUbrdBHkNZ1bK_8eo0jnYLshq_X77Z3tmksNOl_hZj6ao2YpogiYz8&s=10" },
+      { slug: "parle-g", image: "https://www.quickpantry.in/cdn/shop/products/parle-gluco-biscuits-parle-g-quick-pantry-4.jpg?v=1710538233" },
+      { slug: "oreo", image: "https://www.quickpantry.in/cdn/shop/products/cadbury-oreo-creame-biscuit-vanilla-46-3-g-quick-pantry.jpg?v=1710538227" },
+      { slug: "krackjack", image: "https://budgetbazaar.online/wp-content/uploads/2024/07/PARLE-KRACKJACK-75GM.jpg" },
+      { slug: "good-day", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShwrefpgRMYv4glEdE_H_7vaYt7_N3t3en_LbqNaYfgQ&s=10" },
+      { slug: "dark-fantasy", image: "https://m.media-amazon.com/images/I/71U6Dn3aeQL.jpg" },
+      { slug: "jim-jam", image: "https://www.bbassets.com/media/uploads/p/l/218646_9-britannia-treat-jim-jam-cream-biscuits.jpg" },
     ];
     for (const { slug, image } of foodImageUpdates) {
       await prisma.catalogItem.updateMany({
