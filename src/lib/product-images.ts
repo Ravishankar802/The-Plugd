@@ -1564,7 +1564,7 @@ export const FOOD_IMAGE_MAP: Record<string, string> = {
   "non-veg-meal": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgTWZrbairQ-WEuF_gs9te7L6ZE54EjJDd5GCaI1G1o6Pza7GVIbpWUisJ&s=10",
   "vada-pav": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc8xwK1REAIzAUsntztuPtJxRvhZhuE1DPkExTY28DPo-Smg2jUgNPYDJK&s=10",
   "juice": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKrOJE3sDN28OmYdlXYDvcodKnRKfA77IP8b-yCmwRWdJL8eyiwTgpWSwD&s=10",
-  "shawaya": "https://mazamartdelivery.com/wp-content/uploads/2025/10/Masala-shawaya.jpg",
+  "shawaya": "https://calicutcafeteria.vercel.app/img/img1.png",
   "mutton-curries": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
   "fried-rice": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=800&q=80",
   "cold-coffee": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=80",

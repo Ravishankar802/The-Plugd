@@ -502,7 +502,7 @@ export async function ensureCatalogSeeded() {
       { slug: "non-veg-meal", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgTWZrbairQ-WEuF_gs9te7L6ZE54EjJDd5GCaI1G1o6Pza7GVIbpWUisJ&s=10" },
       { slug: "vada-pav", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc8xwK1REAIzAUsntztuPtJxRvhZhuE1DPkExTY28DPo-Smg2jUgNPYDJK&s=10" },
       { slug: "juice", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKrOJE3sDN28OmYdlXYDvcodKnRKfA77IP8b-yCmwRWdJL8eyiwTgpWSwD&s=10" },
-      { slug: "shawaya", image: "https://mazamartdelivery.com/wp-content/uploads/2025/10/Masala-shawaya.jpg" },
+      { slug: "shawaya", image: "https://calicutcafeteria.vercel.app/img/img1.png" },
     ];
     for (const { slug, image } of foodImageUpdates) {
       await prisma.catalogItem.updateMany({
