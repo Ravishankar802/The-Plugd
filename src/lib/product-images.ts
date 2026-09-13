@@ -1595,7 +1595,7 @@ export const FOOD_IMAGE_MAP: Record<string, string> = {
   "baskin-robbins-mississippi-mud-ice-cream-tub": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/NI_CATALOG/IMAGES/CIW/2025/5/30/c09a724a-7597-4673-b65b-433d4fd802a1_1409.png",
   "magnum-chocolate-almond-ice-cream-stick": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=1080/da/cms-assets/cms/product/fdb7628c-dfad-4c8e-af86-6740de5daea4.png?bg_token=color.background.quaternary",
   "baskin-robbins-almond-n-caramel-ice-cream-stick": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/8884a61c-66d6-4a80-9e46-29739f060963.png",
-  "cornetto-double-chocolate-cone": "https://dukaan.b-cdn.net/700x700/webp/projecteagle/images/60839a1d-b20b-4200-b83c-a65e5a566ec0.jpg",
+  "cornetto-double-chocolate-cone": "https://www.metro-online.pk/_next/image?url=https%3A%2F%2Fprodimages.metro-online.pk%2FProducts%2F1726812170895.jpg&w=3840&q=75",
   "havmor-dark-chocolate-ice-cream-cone": "https://cdn.zeptonow.com/production/ik-seo/cms/product_variant/f9339726-0832-4a7a-b4e0-0a44ef941dae/Havmor-Dark-Chocolate-Ice-Cream-Cone.jpeg",
   "hoccol-hazelnut-mudslide-ice-cream-cone": "https://cdn.zeptonow.com/production/ik-seo/cms/product_variant/2963d5ef-3e8c-400c-9d13-4b05c26fc856/Hocco-Hazelnut-Mudslide-Ice-Cream-Cone.jpeg",
   "ob-gob-tiramisu-fudge-ice-cream-sundae": "https://cdn.zeptonow.com/production/ik-seo/cms/product_variant/d355e273-27f9-48bb-b92a-bb57a532dd97/OB-GOB-Tiramisu-Fudge-Ice-Cream-Sundae.jpeg",
