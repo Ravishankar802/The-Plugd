@@ -408,18 +408,29 @@ export async function ensureCatalogSeeded() {
     electronicsCount >= 70 &&
     toysCount >= 8
   ) {
-    await prisma.catalogItem.updateMany({
-      where: { slug: "biryani", NOT: { image: "https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01.jpg" } },
-      data: { image: "https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01.jpg" },
-    });
-    await prisma.catalogItem.updateMany({
-      where: { slug: "idli", NOT: { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXFIhXiqaaKx0splUZoe7MIWqlYTQVTEF3T9v2SiW9VlU6EPhYwb8tUEY&s=10" } },
-      data: { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXFIhXiqaaKx0splUZoe7MIWqlYTQVTEF3T9v2SiW9VlU6EPhYwb8tUEY&s=10" },
-    });
-    await prisma.catalogItem.updateMany({
-      where: { slug: "dosa", NOT: { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHwVr20YROlapYcSBDDyUX7t2bjtmIkvPUbtjRZPzFgQ&s=10" } },
-      data: { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHwVr20YROlapYcSBDDyUX7t2bjtmIkvPUbtjRZPzFgQ&s=10" },
-    });
+    const foodImageUpdates = [
+      { slug: "biryani", image: "https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01.jpg" },
+      { slug: "idli", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXFIhXiqaaKx0splUZoe7MIWqlYTQVTEF3T9v2SiW9VlU6EPhYwb8tUEY&s=10" },
+      { slug: "dosa", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHwVr20YROlapYcSBDDyUX7t2bjtmIkvPUbtjRZPzFgQ&s=10" },
+      { slug: "tandoori-chicken", image: "https://bitesofindiaevan.com/wp-content/uploads/2024/11/tandoori-chicken.png" },
+      { slug: "egg", image: "https://cookieandkate.com/images/2025/04/scrambled-eggs-recipe.jpg" },
+      { slug: "south-indian-meals", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZGhc-3_-VL2slS056knU64LJu4DPYtuP73EJ-NUOArxMqb-j2HCfIatq9&s=10" },
+      { slug: "chicken-fried-rice", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRabpV0x1Q0EfRDu2Hb0a7QBUWHvZpewq9aVMxmtSs03A&s=10" },
+      { slug: "mandi", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYzshMgPsE4U8Zlh6diBfhHaUUiRN6TGhFhIEO8DOIlT9DAyHtQKbtVAlT&s=10" },
+      { slug: "masala-dosa", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJw66TKqMp7h45JfShKq7TWBkC96fYU2VbxnYSnPjKd6X1VEqX0NoOVow&s=10" },
+      { slug: "chicken-curry", image: "https://www.tamingtwins.com/wp-content/uploads/2026/07/EasyChickenCurry3.jpg" },
+      { slug: "chicken", image: "https://www.simplyorganic.com/media/recipe/resized/520x520/wysiwyg/tmp/original-rotisserie-oven-whole-chicken-mobile.jpg" },
+      { slug: "grilled-chicken", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQohbBz8XMTVY9lT7BgobHXwdDbSndQvNi4LoFGj5abRNvjJfGWrv_nV_Wb&s=10" },
+      { slug: "vada", image: "https://c.ndtvimg.com/2023-09/u113o4r_medu-vada_625x300_06_September_23.jpg" },
+      { slug: "cake", image: "https://api.floraindia.com/upload/x8i2a54tpp1754035623750.webp" },
+      { slug: "chilli-chicken", image: "https://images.slurrp.com/prod/recipe_images/transcribe/side%20dish/Chilli_Chicken.webp" },
+    ];
+    for (const { slug, image } of foodImageUpdates) {
+      await prisma.catalogItem.updateMany({
+        where: { slug, NOT: { image } },
+        data: { image },
+      });
+    }
     return;
   }
 
