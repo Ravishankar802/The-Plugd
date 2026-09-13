@@ -489,7 +489,7 @@ export async function ensureCatalogSeeded() {
       { slug: "puliyogare", image: "https://www.tatasimplybetter.com/cdn/shop/articles/Puliyogare_Tamarind_Rice.png?v=1721387987" },
       { slug: "parotta", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsmJihgChNn33uicZGpXfn-TGpKCpHsYKTRtFCEwmTkC9_S1TJFWmmbM&s=10" },
       { slug: "chicken-salad", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFXKNpdpVo6rGwMc5TwGi44fTf-fJAkaYxTf8uphSTQQ&s=10" },
-      { slug: "samosa", image: "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/12/samosa-recipe.jpg" },
+      { slug: "samosa", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYqaDr1EyBDbq6VhISSsgzBCiFjrD4-x-UMZOA84IlkVTpxyGIEO6KNyU&s=10" },
       { slug: "paddu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFI3XXakZjnPJH8xa-zmUQehT_29bovkBYKXF6f4u6Tgkbnc-v7rhzzGH2&s=10" },
       { slug: "waffles", image: "https://cravinghomecooked.com/wp-content/uploads/2019/02/easy-waffle-recipe-1-16.jpg" },
       { slug: "noodles", image: "https://images.getrecipekit.com/20241008094433-blog-20templates-20-3.webp?aspect_ratio=16:9&quality=90&" },
@@ -502,7 +502,7 @@ export async function ensureCatalogSeeded() {
       { slug: "non-veg-meal", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgTWZrbairQ-WEuF_gs9te7L6ZE54EjJDd5GCaI1G1o6Pza7GVIbpWUisJ&s=10" },
       { slug: "vada-pav", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc8xwK1REAIzAUsntztuPtJxRvhZhuE1DPkExTY28DPo-Smg2jUgNPYDJK&s=10" },
       { slug: "juice", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKrOJE3sDN28OmYdlXYDvcodKnRKfA77IP8b-yCmwRWdJL8eyiwTgpWSwD&s=10" },
-      { slug: "shawaya", image: "https://img.magnific.com/free-psd/roasted-turkey-with-potatoes-rosemary_191095-78742.jpg?semt=ais_hybrid&w=740&q=80" },
+      { slug: "shawaya", image: "https://mazamartdelivery.com/wp-content/uploads/2025/10/Masala-shawaya.jpg" },
     ];
     for (const { slug, image } of foodImageUpdates) {
       await prisma.catalogItem.updateMany({
