@@ -440,6 +440,16 @@ export async function ensureCatalogSeeded() {
       where: { slug: "kebabs" },
       data: { name: "Kebab", slug: "kebab" },
     });
+    await prisma.wishlistItem.deleteMany({
+      where: { catalogItem: { slug: "rasmalai-2" } },
+    });
+    await prisma.catalogItem.deleteMany({
+      where: { slug: "rasmalai-2" },
+    });
+    await prisma.catalogItem.updateMany({
+      where: { slug: "ferrero-rocher-premium-chocolates" },
+      data: { name: "Ferrero Rocher Premium Chocolate", slug: "ferrero-rocher-premium-chocolate" },
+    });
 
     const foodImageUpdates = [
       { slug: "biryani", image: "https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01.jpg" },
@@ -544,6 +554,28 @@ export async function ensureCatalogSeeded() {
       { slug: "ob-gob-vanilla-choco-brownie-ice-cream-sundae", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgTurTj9Z2i6xBktzo47kW8PLm4Jp_ZGxuEN3xKQyDjw&s=10" },
       { slug: "amul-kulhad-kulfie-ice-cream", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe6Z5mq_IAVu5tP-Et4MbKhe8pEFHFzh9_bhc8LomAbg&s=10" },
       { slug: "havmor-matka-kulfi", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVZtazs19CPH6gDLoxoXlVRWzFUlPM7Mx3u869immn1jO4_fuXFxuvAeQ&s=10" },
+      { slug: "kaju-katli", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbgCA282DUJLBMBfIxxBKHlbE7iL163w5jwyA9xHWX5aoblpy2pmK5J0j&s=10" },
+      { slug: "mysore-pak", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUbZrxjJe4l8V4tCsP89_-ynlqXpnwxJdJe2gCnejdzQ&s=10" },
+      { slug: "motichoor-laddu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6M2RtqlsBN2oc1sny8iB5SqW2JK9POm7B2ucvCsSoUXQEfKr0nf_H4pRK&s=10" },
+      { slug: "gulab-jamun", image: "https://theartisticcook.com/wp-content/uploads/2024/10/Gulab-Jamun-with-Milk-Powder.jpg" },
+      { slug: "besan-laddu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0kZfhPnty5jKeTqYj7DzHkgDL2UmGlKfeenbHcE353PnZnpMD8GZOK8bw&s=10" },
+      { slug: "soan-papdi", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_N3JGnEO0VJiHXtFVU0bktw1Y6YrPeudvhDhjVbaTzQ&s=10" },
+      { slug: "rasgulla", image: "https://i1.zopping.com/zopsmart-media/30255/images/originals/20260422/76a77c2b-af86-4680-9c74-8f66cbf19873-ChatGPTImageApr222026010445PM.webp" },
+      { slug: "doodh-peda", image: "https://www.cookclickndevour.com/wp-content/uploads/2018/05/peda-recipe.jpg" },
+      { slug: "malai-peda", image: "https://www.sugarfree-india.com/wp-content/uploads/2025/12/sugar-free-malai-peda-1.webp" },
+      { slug: "dharwad-peda", image: "https://i0.wp.com/dharwadpedha.com/wp-content/uploads/2026/03/ChatGPT-Image-Mar-12-2026-09_35_45-AM-1.png?fit=1024%2C683&ssl=1" },
+      { slug: "dairy-milk", image: "https://images.apollo247.in/pub/media/catalog/product/C/A/CAD0378_1.jpg" },
+      { slug: "munch-max", image: "https://www.bbassets.com/media/uploads/p/l/40341100_10-nestle-munch-nuts-max-chocolate-coated-wafer-bar.jpg" },
+      { slug: "dairy-milk-shots", image: "https://quickcartapp.in/media/image?path=uploads%2Fmedia%2F2026%2F40024667_16-cadbury-dairy-milk-shots.png&width=800&quality=80" },
+      { slug: "nestle-kit-kat", image: "https://www.quickpantry.in/cdn/shop/files/KitKat_Finger_Wafer_Chocolate_Bar_38.5_g_Quick_Pantry.webp?v=1739697146" },
+      { slug: "amul-cocoa-dark-chocolate", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh-3sb1Q60P813dcnZniFtcccSUTDbgmGKfDwzLDoLBcPMhHbU9pkmfzY&s=10" },
+      { slug: "kinder-joy-blue", image: "https://m.media-amazon.com/images/I/71YvlBAfxbL.jpg" },
+      { slug: "kinder-joy-pink", image: "https://www.bbassets.com/media/uploads/p/l/30005022_14-kinder-joy-for-girls-with-surprise.jpg" },
+      { slug: "snickers", image: "https://www.snickers.com/sites/g/files/fnmzdf616/files/migrate-product-files/dryeqrv2efldaaoyceat.png" },
+      { slug: "bournville-dark-chocolate", image: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/NI_CATALOG/IMAGES/ciw/2026/2/18/f472c5a7-11ad-4548-b09c-7b103a458d72_5HU1UY71SL_MN_18022026.png" },
+      { slug: "cadbury-5-star", image: "https://rukmini1.flixcart.com/image/1500/1500/xif0q/chocolate/4/e/c/-original-imahpaztxqc6n7j7.jpeg?q=70" },
+      { slug: "dairy-milk-silk", image: "https://cococart.in/cdn/shop/files/1CH2570.png?v=1773822268&width=1946" },
+      { slug: "ferrero-rocher-premium-chocolate", image: "https://deq64r0ss2hgl.cloudfront.net/images/product/ferrero-rocher-premium-24pcs-300g-61945920939606.jpg" },
     ];
     for (const { slug, image } of foodImageUpdates) {
       await prisma.catalogItem.updateMany({

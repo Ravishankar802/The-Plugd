@@ -63,11 +63,6 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
         "5 star", "ferrero rocher"
       ],
       productIds: [
-        "cake",
-        "waffles",
-        "dessert",
-        "pancake",
-        "pazham-pori",
         "rasmalai",
         "kaju-katli",
         "mysore-pak",
@@ -76,7 +71,6 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
         "besan-laddu",
         "soan-papdi",
         "rasgulla",
-        "rasmalai-2",
         "doodh-peda",
         "malai-peda",
         "dharwad-peda",
@@ -91,7 +85,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
         "bournville-dark-chocolate",
         "cadbury-5-star",
         "dairy-milk-silk",
-        "ferrero-rocher-premium-chocolates",
+        "ferrero-rocher-premium-chocolate",
       ],
     },
     {

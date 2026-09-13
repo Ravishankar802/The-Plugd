@@ -137,7 +137,7 @@ export const FOOD_NAMES = [
   "OB & GOB Vanilla & Choco Brownie Ice Cream Sundae",
   "Amul Kulhad Kulfie Ice Cream",
   "Havmor Matka Kulfi",
-  // SWEET CRAVINGS (23 items)
+  // SWEET CRAVINGS (22 items)
   "Kaju Katli",
   "Mysore Pak",
   "Motichoor Laddu",
@@ -145,7 +145,6 @@ export const FOOD_NAMES = [
   "Besan Laddu",
   "Soan Papdi",
   "Rasgulla",
-  "Rasmalai",
   "Doodh Peda",
   "Malai Peda",
   "Dharwad Peda",
@@ -160,7 +159,7 @@ export const FOOD_NAMES = [
   "Bournville Dark Chocolate",
   "Cadbury 5 Star",
   "Dairy Milk SIlk",
-  "Ferrero Rocher Premium Chocolates",
+  "Ferrero Rocher Premium Chocolate",
   // BISCUITS (10 items)
   "Malkist Cheese Crunchy Layered Crackers",
   "Britannia Little Hearts",

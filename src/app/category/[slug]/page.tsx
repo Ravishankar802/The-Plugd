@@ -120,10 +120,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   } else if (activeSubDef) {
     items = rawItems.filter((item) => matchesSubcategory(item, category.slug, activeSubDef.id));
   } else if (category.slug === "food" && isTopPicksActive) {
-    // Food Top Picks: include only Food items not part of the 4 dedicated subcategories
+    // Food Top Picks: include only Food items not part of the 4 dedicated subcategories,
+    // while explicitly ensuring the 5 moved items (Cake, Waffles, Dessert, Pancake, Pazham Pori) remain in Top Picks.
+    const movedToTopPicks = ["cake", "waffles", "dessert", "pancake", "pazham-pori"];
     const dedicatedFoodSubcategories = ["ice-creams", "sweet-cravings", "biscuits", "snacks"];
     items = rawItems.filter(
-      (item) => !dedicatedFoodSubcategories.some((subId) => matchesSubcategory(item, "food", subId))
+      (item) =>
+        movedToTopPicks.includes(item.slug) ||
+        !dedicatedFoodSubcategories.some((subId) => matchesSubcategory(item, "food", subId))
     );
   } else {
     items = rawItems;
@@ -272,11 +276,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               </div>
               <div className="flex flex-col min-w-0 text-left">
                 <span className="text-xs sm:text-sm font-bold tracking-tight">Top Picks</span>
-                <span className="text-[10px] sm:text-[11px] text-zinc-400 font-medium">
-                  {category.slug === "food"
-                    ? "Top Food Picks"
-                    : `All ${isGamingSubcategory ? "Gaming" : category.name}`}
-                </span>
+                {category.slug !== "food" && (
+                  <span className="text-[10px] sm:text-[11px] text-zinc-400 font-medium">
+                    All {isGamingSubcategory ? "Gaming" : category.name}
+                  </span>
+                )}
               </div>
             </Link>
 
