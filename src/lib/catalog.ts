@@ -432,6 +432,14 @@ export async function ensureCatalogSeeded() {
       where: { slug: "desserts" },
       data: { name: "Dessert", slug: "dessert" },
     });
+    await prisma.catalogItem.updateMany({
+      where: { slug: "mutton-curries" },
+      data: { name: "Mutton Curry", slug: "mutton-curry" },
+    });
+    await prisma.catalogItem.updateMany({
+      where: { slug: "kebabs" },
+      data: { name: "Kebab", slug: "kebab" },
+    });
 
     const foodImageUpdates = [
       { slug: "biryani", image: "https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01.jpg" },
@@ -503,6 +511,25 @@ export async function ensureCatalogSeeded() {
       { slug: "vada-pav", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc8xwK1REAIzAUsntztuPtJxRvhZhuE1DPkExTY28DPo-Smg2jUgNPYDJK&s=10" },
       { slug: "juice", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKrOJE3sDN28OmYdlXYDvcodKnRKfA77IP8b-yCmwRWdJL8eyiwTgpWSwD&s=10" },
       { slug: "shawaya", image: "https://calicutcafeteria.vercel.app/img/img1.png" },
+      { slug: "mutton-curry", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_1fnqxNbv5tM936tHbmdNQczV3tu2yulHYlQNvFOKJA&s=10" },
+      { slug: "fried-rice", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHPFObgfjcm4X7KQJIpJkCGm1402QCfJ9_m2TYzp7_WEK2nbRnoFhR2Dbc&s=10" },
+      { slug: "cold-coffee", image: "https://i0.wp.com/www.teacoffeecup.com/wp-content/uploads/2019/09/regular-cold-coffee.jpg?fit=367%2C550&ssl=1" },
+      { slug: "veg-meal", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDps70vkJzaEoXw-b3NdoNZB8N4cxprqdWcMewEpuZHg&s=10" },
+      { slug: "pazham-pori", image: "https://t4.ftcdn.net/jpg/09/97/82/31/360_F_997823124_MH2XFXDaAN3UNEdg67wyFPWxNuFEl0Ct.jpg" },
+      { slug: "rasmalai", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwxG2_CFkOwgwiZPVM-Itx25SnB2YnRe3bA8eZTI--DA&s=10" },
+      { slug: "boiled-egg", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhNUbfvNUsk785LW8m-KlzL1xjbnHJXfM7DWf7OzGAVp2FMOyC308iH6-C&s=10" },
+      { slug: "chaat", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5eOvOIFMlVfPC3o_Ud2rzDpvr5QkCRJxARR2fcR8Gcfg7p_IJJbonGz_L&s=10" },
+      { slug: "salad", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4bpvISGJtoxhZnGiyTsZg5tPERal2FKm8dJtjFDN15EXGU2Kf0g7pQoc&s=10" },
+      { slug: "mushroom-biryani", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0KDT1qTTqPUNceTCez9_sh17RAd4IMl-bDHh1T_NdC_Lr9DmhSo4u5RvZ&s=10" },
+      { slug: "kebab", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM8407vLycQEb4NKUO5VhkiBYGLkeacY71UF2FBYePDtQVwo8BHnYc2AUk&s=10" },
+      { slug: "idiyappam", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzE6nqKmMEHJuagi7J4ZR36IGzb4CnrQrTLiKYFdN4Qil3Numh3-fqEeO&s=10" },
+      { slug: "ice-cream", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqDSEBXWP47SCrHrC4-QZgJ-8IeQnP9_3VpFmIeFtAWjUCDldhVjaNJWul&s=10" },
+      { slug: "pav-bhaji", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzROQ8xvzC7lIj6hZaR2d6hKOHzQeeU4R97ioghyWvE1XvfrXSuVjESkIP&s=10" },
+      { slug: "neer-dosa", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAEE5v7qiEs3PbiG-fh8z_a8MnXPkVhg1JZRJQSOuN9g&s=10" },
+      { slug: "dal-khichdi", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX94rYGfT_rUQkC0m8f-Ris6RPYluXJDaDfRURlFTF9A&s=10" },
+      { slug: "bread-omelette", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaboXk4WI4zWD24hMw0YUq0Ua0TMlrk25e6jQvLKrcjFRaymSCmO13sQ4&s=10" },
+      { slug: "bowl", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUUI1FJYznlKeP1oLBSf2I6O3-oOgL8ViEDrvTddm9eA&s=10" },
+      { slug: "paneer", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4vSF5e23QasDyggUerShikvvA_Qg-ptmgIJfVnq75IA&s=10" },
     ];
     for (const { slug, image } of foodImageUpdates) {
       await prisma.catalogItem.updateMany({
