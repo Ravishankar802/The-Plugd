@@ -120,14 +120,19 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
       ],
       productIds: [
         "lays-classic-salted",
+        "lay-s-classic-salted",
         "lays-magic-masala",
+        "lay-s-magic-masala",
         "kurkure-masala-munch",
         "bingo-mad-angles",
         "uncle-chipps",
         "too-yumm-multigrain-chips",
         "haldirams-aloo-bhujia",
+        "haldiram-s-aloo-bhujia",
         "haldirams-bhujia-sev",
+        "haldiram-s-bhujia-sev",
         "haldirams-mixture",
+        "haldiram-s-mixture",
         "masala-peanuts",
         "roasted-peanuts",
         "makhana",
@@ -369,7 +374,9 @@ export function matchesSubcategory(
 
   // Food subcategory exact matching when productIds defined
   if (normalizedCategory === "food" && subDef.productIds && subDef.productIds.length > 0) {
-    return subDef.productIds.includes(item.slug);
+    const slug = item.slug.toLowerCase();
+    const normalizedSlug = slug.replace(/-s-/g, "s-");
+    return subDef.productIds.includes(slug) || subDef.productIds.includes(normalizedSlug);
   }
 
   // Exact product ID match if available
