@@ -36,7 +36,6 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
         "baskin robbins", "cream pot", "havmor", "hoccol", "tiramisu", "mudslide", "kulhad", "tub", "cone", "stick"
       ],
       productIds: [
-        "ice-cream",
         "amul-chocolate-brownie-ice-cream-tub",
         "amul-choco-chip-chocolate-ice-cream-tub",
         "amul-fruit-n-nut-fantasy-ice-cream-tub",

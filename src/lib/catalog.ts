@@ -530,6 +530,20 @@ export async function ensureCatalogSeeded() {
       { slug: "bread-omelette", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaboXk4WI4zWD24hMw0YUq0Ua0TMlrk25e6jQvLKrcjFRaymSCmO13sQ4&s=10" },
       { slug: "bowl", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUUI1FJYznlKeP1oLBSf2I6O3-oOgL8ViEDrvTddm9eA&s=10" },
       { slug: "paneer", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4vSF5e23QasDyggUerShikvvA_Qg-ptmgIJfVnq75IA&s=10" },
+      { slug: "amul-chocolate-brownie-ice-cream-tub", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDthO93XC1qSKLP588pT4gmn94ucQRKvHts24xMZoKHQ&s=10" },
+      { slug: "amul-choco-chip-chocolate-ice-cream-tub", image: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/NI_CATALOG/IMAGES/ciw/2026/2/11/0227a58b-1168-4b72-b731-12b2eb3c0209_YSCH7L1DZA_MN_11022026.png" },
+      { slug: "amul-fruit-n-nut-fantasy-ice-cream-tub", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4fgsAFMD1qsaRXtUSYJkXgrFAne1SNsIUXjrZXQWQF5KOVCtrPYeQnlPQ&s=10" },
+      { slug: "cream-pot-vanilla-tub", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKhZdrHsXAszZyEakUFrCwjqRyMrN2EWD6BQry3fh1dw&s=10" },
+      { slug: "baskin-robbins-mississippi-mud-ice-cream-tub", image: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/NI_CATALOG/IMAGES/CIW/2025/5/30/c09a724a-7597-4673-b65b-433d4fd802a1_1409.png" },
+      { slug: "magnum-chocolate-almond-ice-cream-stick", image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=1080/da/cms-assets/cms/product/fdb7628c-dfad-4c8e-af86-6740de5daea4.png?bg_token=color.background.quaternary" },
+      { slug: "baskin-robbins-almond-n-caramel-ice-cream-stick", image: "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/8884a61c-66d6-4a80-9e46-29739f060963.png" },
+      { slug: "cornetto-double-chocolate-cone", image: "https://dukaan.b-cdn.net/700x700/webp/projecteagle/images/60839a1d-b20b-4200-b83c-a65e5a566ec0.jpg" },
+      { slug: "havmor-dark-chocolate-ice-cream-cone", image: "https://cdn.zeptonow.com/production/ik-seo/cms/product_variant/f9339726-0832-4a7a-b4e0-0a44ef941dae/Havmor-Dark-Chocolate-Ice-Cream-Cone.jpeg" },
+      { slug: "hoccol-hazelnut-mudslide-ice-cream-cone", image: "https://cdn.zeptonow.com/production/ik-seo/cms/product_variant/2963d5ef-3e8c-400c-9d13-4b05c26fc856/Hocco-Hazelnut-Mudslide-Ice-Cream-Cone.jpeg" },
+      { slug: "ob-gob-tiramisu-fudge-ice-cream-sundae", image: "https://cdn.zeptonow.com/production/ik-seo/cms/product_variant/d355e273-27f9-48bb-b92a-bb57a532dd97/OB-GOB-Tiramisu-Fudge-Ice-Cream-Sundae.jpeg" },
+      { slug: "ob-gob-vanilla-choco-brownie-ice-cream-sundae", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgTurTj9Z2i6xBktzo47kW8PLm4Jp_ZGxuEN3xKQyDjw&s=10" },
+      { slug: "amul-kulhad-kulfie-ice-cream", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe6Z5mq_IAVu5tP-Et4MbKhe8pEFHFzh9_bhc8LomAbg&s=10" },
+      { slug: "havmor-matka-kulfi", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVZtazs19CPH6gDLoxoXlVRWzFUlPM7Mx3u869immn1jO4_fuXFxuvAeQ&s=10" },
     ];
     for (const { slug, image } of foodImageUpdates) {
       await prisma.catalogItem.updateMany({
