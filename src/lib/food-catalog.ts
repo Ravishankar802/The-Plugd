@@ -171,6 +171,27 @@ export const FOOD_NAMES = [
   "Good Day",
   "Dark Fantasy",
   "Jim Jam",
+  // SNACKS (20 items)
+  "Lay's Classic Salted",
+  "Lay's Magic Masala",
+  "Kurkure Masala Munch",
+  "Bingo! Mad Angles",
+  "Uncle Chipps",
+  "Too Yumm! Multigrain Chips",
+  "Haldiram's Aloo Bhujia",
+  "Haldiram's Bhujia Sev",
+  "Haldiram's Mixture",
+  "Masala Peanuts",
+  "Roasted Peanuts",
+  "Makhana",
+  "Banana Chips",
+  "Murukku",
+  "Chakli",
+  "Nippattu",
+  "Khakhra",
+  "Popcorn",
+  "Nachos",
+  "Cheese Balls",
 ];
 
 function slugify(text: string): string {

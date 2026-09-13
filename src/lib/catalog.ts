@@ -591,12 +591,72 @@ export async function ensureCatalogSeeded() {
       { slug: "good-day", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShwrefpgRMYv4glEdE_H_7vaYt7_N3t3en_LbqNaYfgQ&s=10" },
       { slug: "dark-fantasy", image: "https://m.media-amazon.com/images/I/71U6Dn3aeQL.jpg" },
       { slug: "jim-jam", image: "https://www.bbassets.com/media/uploads/p/l/218646_9-britannia-treat-jim-jam-cream-biscuits.jpg" },
+      { slug: "lays-classic-salted", image: "https://m.media-amazon.com/images/I/71QdkiAM2cL.jpg" },
+      { slug: "lays-magic-masala", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3SV2GUojqGYzPdmnQgz0sfig0g1L-WUHrPIIzRpIu-P-VK3_sNngmOvA&s=10" },
+      { slug: "kurkure-masala-munch", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSexmofEn1zRRzPUGdl_rs3TnSIQpNZvbRqTYYYFtpModcVJoNGXtGzLMw&s=10" },
+      { slug: "bingo-mad-angles", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV71vOt5R3L_4mJ8CmqKtfkpnh136gEuobCpWHAk_9RghXvjANZ-ZiMks&s=10" },
+      { slug: "uncle-chipps", image: "https://www.starquik.com/cdn/shop/files/SQ166692_FOP_e012f451-51b2-4923-97e5-3c3a45b0fcb1.jpg?v=1776848512" },
+      { slug: "too-yumm-multigrain-chips", image: "https://m.media-amazon.com/images/I/71kctyOY8pS.jpg" },
+      { slug: "haldirams-aloo-bhujia", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1RLIWB6bFjh3x0URa6gZtyVXIhZX67hRTUI7IhNlnvJfBaoH1_ajsyJQ&s=10" },
+      { slug: "haldirams-bhujia-sev", image: "https://cdn.shopify.com/s/files/1/0691/0948/1549/files/1_7.avif?v=1783503884" },
+      { slug: "haldirams-mixture", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtj-Zx3IOVd_pyTXmtUe27xgHbEk2lF810cVnmvyBBb2CZwwNjTlIN2Km&s=10" },
+      { slug: "masala-peanuts", image: "https://cdn.shopify.com/s/files/1/0691/0948/1549/files/1_f753cb33-d3d3-4f4f-a289-098017ffd26c.avif?v=1782743021" },
+      { slug: "roasted-peanuts", image: "https://www.bbassets.com/media/uploads/p/l/40206304_2-haldirams-crushed-peanut.jpg" },
+      { slug: "makhana", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxANpVfiaotBfJSxqoMgU7DIvA8t8SIyvFlI1I5Q5xZN4AHl0P4q2MGL4n&s=10" },
+      { slug: "banana-chips", image: "https://ganguram.com/cdn/shop/files/banana-chips-1_f31bba50-74dc-45d6-b728-b2befe11cb2c.jpg?v=1756981450" },
+      { slug: "murukku", image: "https://rakskitchen.net/wp-content/uploads/2024/02/urad-dal-murukku.jpg" },
+      { slug: "chakli", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe-07h3cITyPWsN7eq0L6cfGJ1k-M9zWZcaCoDR01Q4xsXDN5XlmimVo8j&s=10" },
+      { slug: "nippattu", image: "https://img-cdn.publive.online/fit-in/1200x675/sanjeev-kapoor/media/media_files/2025/07/01/nippattu-16-2025-07-01-09-52-47.jpg" },
+      { slug: "khakhra", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuB22CWtcou4MtRbqQmBkH8ucukvLbWnbvgEqEhgHT4R5IDxk7T0_7xEI&s=10" },
+      { slug: "popcorn", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfmT4wXR1SIzoUprmLFim6Xi9mxM6vIznwubX--WMXc9ypoi2yt-hfLpo&s=10" },
+      { slug: "nachos", image: "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480_1_5x/img/recipe/ras/Assets/7695121e-8b9a-4d00-ab96-4430e47266ba/Derivates/445ffdd9-9a8e-48fa-9e86-84c1e94469ca.jpg" },
+      { slug: "cheese-balls", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWPCu5MGpw7YczWdTILXier8hkFzS8wxiaBA7WGf9D2OqgxSNoHoELU6Ra&s=10" },
     ];
     for (const { slug, image } of foodImageUpdates) {
       await prisma.catalogItem.updateMany({
         where: { slug, NOT: { image } },
         data: { image },
       });
+    }
+
+    const foodCategory = await prisma.category.findUnique({ where: { slug: "food" } });
+    if (foodCategory) {
+      const snackItemsToEnsure = [
+        { name: "Lay's Classic Salted", slug: "lays-classic-salted", image: "https://m.media-amazon.com/images/I/71QdkiAM2cL.jpg" },
+        { name: "Lay's Magic Masala", slug: "lays-magic-masala", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3SV2GUojqGYzPdmnQgz0sfig0g1L-WUHrPIIzRpIu-P-VK3_sNngmOvA&s=10" },
+        { name: "Kurkure Masala Munch", slug: "kurkure-masala-munch", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSexmofEn1zRRzPUGdl_rs3TnSIQpNZvbRqTYYYFtpModcVJoNGXtGzLMw&s=10" },
+        { name: "Bingo! Mad Angles", slug: "bingo-mad-angles", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV71vOt5R3L_4mJ8CmqKtfkpnh136gEuobCpWHAk_9RghXvjANZ-ZiMks&s=10" },
+        { name: "Uncle Chipps", slug: "uncle-chipps", image: "https://www.starquik.com/cdn/shop/files/SQ166692_FOP_e012f451-51b2-4923-97e5-3c3a45b0fcb1.jpg?v=1776848512" },
+        { name: "Too Yumm! Multigrain Chips", slug: "too-yumm-multigrain-chips", image: "https://m.media-amazon.com/images/I/71kctyOY8pS.jpg" },
+        { name: "Haldiram's Aloo Bhujia", slug: "haldirams-aloo-bhujia", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1RLIWB6bFjh3x0URa6gZtyVXIhZX67hRTUI7IhNlnvJfBaoH1_ajsyJQ&s=10" },
+        { name: "Haldiram's Bhujia Sev", slug: "haldirams-bhujia-sev", image: "https://cdn.shopify.com/s/files/1/0691/0948/1549/files/1_7.avif?v=1783503884" },
+        { name: "Haldiram's Mixture", slug: "haldirams-mixture", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtj-Zx3IOVd_pyTXmtUe27xgHbEk2lF810cVnmvyBBb2CZwwNjTlIN2Km&s=10" },
+        { name: "Masala Peanuts", slug: "masala-peanuts", image: "https://cdn.shopify.com/s/files/1/0691/0948/1549/files/1_f753cb33-d3d3-4f4f-a289-098017ffd26c.avif?v=1782743021" },
+        { name: "Roasted Peanuts", slug: "roasted-peanuts", image: "https://www.bbassets.com/media/uploads/p/l/40206304_2-haldirams-crushed-peanut.jpg" },
+        { name: "Makhana", slug: "makhana", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxANpVfiaotBfJSxqoMgU7DIvA8t8SIyvFlI1I5Q5xZN4AHl0P4q2MGL4n&s=10" },
+        { name: "Banana Chips", slug: "banana-chips", image: "https://ganguram.com/cdn/shop/files/banana-chips-1_f31bba50-74dc-45d6-b728-b2befe11cb2c.jpg?v=1756981450" },
+        { name: "Murukku", slug: "murukku", image: "https://rakskitchen.net/wp-content/uploads/2024/02/urad-dal-murukku.jpg" },
+        { name: "Chakli", slug: "chakli", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe-07h3cITyPWsN7eq0L6cfGJ1k-M9zWZcaCoDR01Q4xsXDN5XlmimVo8j&s=10" },
+        { name: "Nippattu", slug: "nippattu", image: "https://img-cdn.publive.online/fit-in/1200x675/sanjeev-kapoor/media/media_files/2025/07/01/nippattu-16-2025-07-01-09-52-47.jpg" },
+        { name: "Khakhra", slug: "khakhra", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuB22CWtcou4MtRbqQmBkH8ucukvLbWnbvgEqEhgHT4R5IDxk7T0_7xEI&s=10" },
+        { name: "Popcorn", slug: "popcorn", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfmT4wXR1SIzoUprmLFim6Xi9mxM6vIznwubX--WMXc9ypoi2yt-hfLpo&s=10" },
+        { name: "Nachos", slug: "nachos", image: "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480_1_5x/img/recipe/ras/Assets/7695121e-8b9a-4d00-ab96-4430e47266ba/Derivates/445ffdd9-9a8e-48fa-9e86-84c1e94469ca.jpg" },
+        { name: "Cheese Balls", slug: "cheese-balls", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWPCu5MGpw7YczWdTILXier8hkFzS8wxiaBA7WGf9D2OqgxSNoHoELU6Ra&s=10" },
+      ];
+      for (const snack of snackItemsToEnsure) {
+        await prisma.catalogItem.upsert({
+          where: { slug: snack.slug },
+          update: { name: snack.name, image: snack.image },
+          create: {
+            name: snack.name,
+            slug: snack.slug,
+            categoryId: foodCategory.id,
+            image: snack.image,
+            active: true,
+            displayOrder: 100,
+          },
+        });
+      }
     }
     return;
   }

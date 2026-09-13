@@ -1639,6 +1639,28 @@ export const FOOD_IMAGE_MAP: Record<string, string> = {
   "good-day": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShwrefpgRMYv4glEdE_H_7vaYt7_N3t3en_LbqNaYfgQ&s=10",
   "dark-fantasy": "https://m.media-amazon.com/images/I/71U6Dn3aeQL.jpg",
   "jim-jam": "https://www.bbassets.com/media/uploads/p/l/218646_9-britannia-treat-jim-jam-cream-biscuits.jpg",
+
+  // === SNACKS ===
+  "lays-classic-salted": "https://m.media-amazon.com/images/I/71QdkiAM2cL.jpg",
+  "lays-magic-masala": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3SV2GUojqGYzPdmnQgz0sfig0g1L-WUHrPIIzRpIu-P-VK3_sNngmOvA&s=10",
+  "kurkure-masala-munch": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSexmofEn1zRRzPUGdl_rs3TnSIQpNZvbRqTYYYFtpModcVJoNGXtGzLMw&s=10",
+  "bingo-mad-angles": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV71vOt5R3L_4mJ8CmqKtfkpnh136gEuobCpWHAk_9RghXvjANZ-ZiMks&s=10",
+  "uncle-chipps": "https://www.starquik.com/cdn/shop/files/SQ166692_FOP_e012f451-51b2-4923-97e5-3c3a45b0fcb1.jpg?v=1776848512",
+  "too-yumm-multigrain-chips": "https://m.media-amazon.com/images/I/71kctyOY8pS.jpg",
+  "haldirams-aloo-bhujia": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1RLIWB6bFjh3x0URa6gZtyVXIhZX67hRTUI7IhNlnvJfBaoH1_ajsyJQ&s=10",
+  "haldirams-bhujia-sev": "https://cdn.shopify.com/s/files/1/0691/0948/1549/files/1_7.avif?v=1783503884",
+  "haldirams-mixture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtj-Zx3IOVd_pyTXmtUe27xgHbEk2lF810cVnmvyBBb2CZwwNjTlIN2Km&s=10",
+  "masala-peanuts": "https://cdn.shopify.com/s/files/1/0691/0948/1549/files/1_f753cb33-d3d3-4f4f-a289-098017ffd26c.avif?v=1782743021",
+  "roasted-peanuts": "https://www.bbassets.com/media/uploads/p/l/40206304_2-haldirams-crushed-peanut.jpg",
+  "makhana": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxANpVfiaotBfJSxqoMgU7DIvA8t8SIyvFlI1I5Q5xZN4AHl0P4q2MGL4n&s=10",
+  "banana-chips": "https://ganguram.com/cdn/shop/files/banana-chips-1_f31bba50-74dc-45d6-b728-b2befe11cb2c.jpg?v=1756981450",
+  "murukku": "https://rakskitchen.net/wp-content/uploads/2024/02/urad-dal-murukku.jpg",
+  "chakli": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe-07h3cITyPWsN7eq0L6cfGJ1k-M9zWZcaCoDR01Q4xsXDN5XlmimVo8j&s=10",
+  "nippattu": "https://img-cdn.publive.online/fit-in/1200x675/sanjeev-kapoor/media/media_files/2025/07/01/nippattu-16-2025-07-01-09-52-47.jpg",
+  "khakhra": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuB22CWtcou4MtRbqQmBkH8ucukvLbWnbvgEqEhgHT4R5IDxk7T0_7xEI&s=10",
+  "popcorn": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfmT4wXR1SIzoUprmLFim6Xi9mxM6vIznwubX--WMXc9ypoi2yt-hfLpo&s=10",
+  "nachos": "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480_1_5x/img/recipe/ras/Assets/7695121e-8b9a-4d00-ab96-4430e47266ba/Derivates/445ffdd9-9a8e-48fa-9e86-84c1e94469ca.jpg",
+  "cheese-balls": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWPCu5MGpw7YczWdTILXier8hkFzS8wxiaBA7WGf9D2OqgxSNoHoELU6Ra&s=10",
 };
 
 export const DEFAULT_FOOD_IMAGE = "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80";
