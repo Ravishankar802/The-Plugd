@@ -519,16 +519,32 @@ export async function getCachedCategories(): Promise<CachedCategory[]> {
   return categories;
 }
 
+const DUPLICATE_FALLBACK_SNACK_SLUGS = [
+  "lay-s-classic-salted",
+  "lay-s-magic-masala",
+  "haldiram-s-aloo-bhujia",
+  "haldiram-s-bhujia-sev",
+  "haldiram-s-mixture",
+];
+
 export async function getCachedCategoryItems(categoryId: string): Promise<CachedCatalogItem[]> {
   const now = Date.now();
   const cached = cachedItemsByCategory.get(categoryId);
   if (cached && cached.expiresAt > now) {
     return cached.data;
   }
+  // Asynchronously purge duplicate fallback snack records from DB
+  prisma.catalogItem
+    .deleteMany({
+      where: { slug: { in: DUPLICATE_FALLBACK_SNACK_SLUGS } },
+    })
+    .catch(() => {});
+
   const items = await prisma.catalogItem.findMany({
     where: {
       active: true,
       categoryId,
+      slug: { notIn: DUPLICATE_FALLBACK_SNACK_SLUGS },
     },
     select: {
       id: true,

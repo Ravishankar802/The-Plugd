@@ -119,7 +119,26 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   } else if (isElectronicsMobile) {
     items = rawItems;
   } else if (activeSubDef) {
-    items = rawItems.filter((item) => matchesSubcategory(item, category.slug, activeSubDef.id));
+    const duplicateFallbackSlugs = [
+      "lay-s-classic-salted",
+      "lay-s-magic-masala",
+      "haldiram-s-aloo-bhujia",
+      "haldiram-s-bhujia-sev",
+      "haldiram-s-mixture",
+    ];
+    const filtered = rawItems.filter(
+      (item) =>
+        !duplicateFallbackSlugs.includes(item.slug) &&
+        matchesSubcategory(item, category.slug, activeSubDef.id)
+    );
+    // Deduplicate items by normalized name (keeps the curated snack item)
+    const seenNames = new Set<string>();
+    items = filtered.filter((item) => {
+      const normalized = item.name.toLowerCase().trim();
+      if (seenNames.has(normalized)) return false;
+      seenNames.add(normalized);
+      return true;
+    });
   } else if (category.slug === "food" && isTopPicksActive) {
     // Food Top Picks: include only Food items not part of the 4 dedicated subcategories,
     // while explicitly ensuring moved items (Cake, Waffles, Dessert, Pancake, Pazham Pori, Bread Omelette) remain in Top Picks.

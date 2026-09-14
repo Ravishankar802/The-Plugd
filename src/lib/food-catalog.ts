@@ -198,6 +198,7 @@ function slugify(text: string): string {
   return text
     .toLowerCase()
     .trim()
+    .replace(/'s\b/g, "s")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 }

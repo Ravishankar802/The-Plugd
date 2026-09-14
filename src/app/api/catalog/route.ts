@@ -10,9 +10,18 @@ export async function GET(req: Request) {
     const category = searchParams.get("category")?.trim() || "";
     const limitParam = Number(searchParams.get("limit") || "0");
 
+    const duplicateFallbackSlugs = [
+      "lay-s-classic-salted",
+      "lay-s-magic-masala",
+      "haldiram-s-aloo-bhujia",
+      "haldiram-s-bhujia-sev",
+      "haldiram-s-mixture",
+    ];
+
     const items = await prisma.catalogItem.findMany({
       where: {
         active: true,
+        slug: { notIn: duplicateFallbackSlugs },
         ...(category ? { category: { slug: category } } : {}),
         ...(q
           ? {
