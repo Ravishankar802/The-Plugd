@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 
 export const dynamic = "force-dynamic";
 
@@ -50,7 +51,56 @@ export async function GET(req: Request) {
       ...(limitParam > 0 ? { take: limitParam } : {}),
     });
 
-    return NextResponse.json(items, {
+    let finalItems = items;
+    if (category === "drinks" && items.length < 58) {
+      const drinksCat = await prisma.category.findUnique({
+        where: { slug: "drinks" },
+        select: { id: true, name: true, slug: true },
+      });
+      if (drinksCat) {
+        const fullDrinks = getFullDrinksCatalog();
+        const existingSlugs = new Set(items.map((i) => i.slug));
+        const missing = fullDrinks.filter((d) => !existingSlugs.has(d.id));
+
+        if (missing.length > 0) {
+          await prisma.catalogItem.createMany({
+            data: missing.map((d) => ({
+              name: d.name,
+              slug: d.id,
+              categoryId: drinksCat.id,
+              image: d.imageUrl,
+              active: true,
+              featured: Boolean(d.featured),
+              displayOrder: d.displayOrder,
+            })),
+            skipDuplicates: true,
+          });
+
+          finalItems = await prisma.catalogItem.findMany({
+            where: {
+              active: true,
+              slug: { notIn: duplicateFallbackSlugs },
+              category: { slug: "drinks" },
+            },
+            select: {
+              id: true,
+              name: true,
+              slug: true,
+              image: true,
+              categoryId: true,
+              featured: true,
+              displayOrder: true,
+              category: {
+                select: { id: true, name: true, slug: true },
+              },
+            },
+            orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
+          });
+        }
+      }
+    }
+
+    return NextResponse.json(finalItems, {
       headers: {
         "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
       },

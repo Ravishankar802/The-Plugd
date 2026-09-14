@@ -542,7 +542,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     })
     .catch(() => {});
 
-  const items = await prisma.catalogItem.findMany({
+  let items = await prisma.catalogItem.findMany({
     where: {
       active: true,
       categoryId,
@@ -559,6 +559,48 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     },
     orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
   });
+
+  // Ensure Drinks items are fully seeded in DB (e.g. on production serverless environments)
+  const drinksCat = await prisma.category.findUnique({ where: { slug: "drinks" }, select: { id: true } });
+  if (drinksCat && categoryId === drinksCat.id && items.length < 58) {
+    const fullDrinks = getFullDrinksCatalog();
+    const existingSlugs = new Set(items.map((i) => i.slug));
+    const missing = fullDrinks.filter((d) => !existingSlugs.has(d.id));
+
+    if (missing.length > 0) {
+      await prisma.catalogItem.createMany({
+        data: missing.map((d) => ({
+          name: d.name,
+          slug: d.id,
+          categoryId: drinksCat.id,
+          image: d.imageUrl,
+          active: true,
+          featured: Boolean(d.featured),
+          displayOrder: d.displayOrder,
+        })),
+        skipDuplicates: true,
+      });
+
+      items = await prisma.catalogItem.findMany({
+        where: {
+          active: true,
+          categoryId,
+          slug: { notIn: DUPLICATE_FALLBACK_SNACK_SLUGS },
+        },
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+          image: true,
+          categoryId: true,
+          featured: true,
+          displayOrder: true,
+        },
+        orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
+      });
+    }
+  }
+
   cachedItemsByCategory.set(categoryId, { data: items, expiresAt: now + CACHE_TTL_MS });
   return items;
 }

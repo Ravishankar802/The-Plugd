@@ -17,6 +17,7 @@ import {
   matchesGamingChild,
   ALL_GAMING_PRODUCT_IDS,
 } from "@/lib/subcategories";
+import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 
 export const dynamic = "force-dynamic";
 
@@ -83,7 +84,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     }
   }
 
-  const rawItems = query
+  const initialRawItems = query
     ? await prisma.catalogItem.findMany({
         where: {
           active: true,
@@ -106,6 +107,26 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
       })
     : await getCachedCategoryItems(targetCategoryId);
+
+  let rawItems = initialRawItems;
+  if (category.slug === "drinks") {
+    const fullDrinks = getFullDrinksCatalog();
+    const existingSlugs = new Set(initialRawItems.map((i) => i.slug));
+    const missingItems = fullDrinks
+      .filter((d) => !existingSlugs.has(d.id))
+      .map((d) => ({
+        id: `drinks-${d.id}`,
+        name: d.name,
+        slug: d.id,
+        image: d.imageUrl,
+        categoryId: targetCategoryId,
+        featured: Boolean(d.featured),
+        displayOrder: d.displayOrder,
+      }));
+    if (missingItems.length > 0) {
+      rawItems = [...initialRawItems, ...missingItems];
+    }
+  }
 
   // Filter items according to hierarchy
   let items = rawItems;

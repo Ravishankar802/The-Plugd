@@ -73,9 +73,18 @@ export async function POST(req: Request) {
     const itemCount = await prisma.wishlistItem.count({ where: { userId: session.userId } });
 
     if (body.catalogItemId) {
-      const catalogItem = await prisma.catalogItem.findUnique({
+      let catalogItem = await prisma.catalogItem.findUnique({
         where: { id: body.catalogItemId },
       });
+
+      if (!catalogItem) {
+        const slugCandidate = body.catalogItemId.startsWith("drinks-")
+          ? body.catalogItemId.replace("drinks-", "")
+          : body.catalogItemId;
+        catalogItem = await prisma.catalogItem.findUnique({
+          where: { slug: slugCandidate },
+        });
+      }
 
       if (!catalogItem) {
         return NextResponse.json({ error: "Catalog item not found" }, { status: 404 });
