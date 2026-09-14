@@ -18,6 +18,7 @@ import {
   ALL_GAMING_PRODUCT_IDS,
 } from "@/lib/subcategories";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
+import { getDrinksProductImage } from "@/lib/product-images";
 
 export const dynamic = "force-dynamic";
 
@@ -237,6 +238,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     );
   } else {
     items = rawItems;
+  }
+
+  // Ensure Drinks category items always render their authentic product images
+  if (category.slug === "drinks") {
+    items = items.map((item) => ({
+      ...item,
+      image: getDrinksProductImage(item.slug, item.image || undefined),
+    }));
   }
 
   // Requirement 7: Hide main category horizontal navigation on subcategory pages

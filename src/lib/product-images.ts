@@ -1047,6 +1047,26 @@ export const BEAUTY_IMAGE_MAP: Record<string, string> = {
  * Using real product imagery for beverages available in the Indian market.
  */
 export const DRINKS_IMAGE_MAP: Record<string, string> = {
+  // === TOP PICKS (18 items) ===
+  "diet-coke": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
+  "red-bull-energy-drink": "https://images.apollo247.in/pub/media/catalog/product/R/E/RED0287_1_1.jpg",
+  "monster-energy-drink": "https://images.apollo247.in/pub/media/catalog/product/M/O/MON0001_1-JULY23_1.jpg",
+  "gatorade-energy-drink": "https://images.apollo247.in/pub/media/catalog/product/G/A/GAT0002_1-JULY23_1.jpg",
+  "amul-masti-spiced-buttermilk": "https://images.apollo247.in/pub/media/catalog/product/A/M/AMU0048_1-JULY23_1.jpg",
+  "bisleri-water-bottle": "https://images.apollo247.in/pub/media/catalog/product/B/I/BIS0001_1-JULY23_1.jpg",
+  "minute-maid-pulpy-orange": "https://images.apollo247.in/pub/media/catalog/product/M/I/MIN0001_1-JULY23_1.jpg",
+  "hell-energy-drink": "https://images.apollo247.in/pub/media/catalog/product/H/E/HEL0001_1-JULY23_1.jpg",
+  "coca-cola-zero-sugar-pet": "https://images.apollo247.in/pub/media/catalog/product/C/O/COC0004_1-JULY23_1.jpg",
+  "smooth-chocolate-milk-drink": "https://images.apollo247.in/pub/media/catalog/product/C/A/CAV0001_1-JULY23_1.jpg",
+  "coca-cola-zero-sugar-can": "https://images.apollo247.in/pub/media/catalog/product/C/O/COC0003_1-JULY23_1.jpg",
+  "soft-soya-milk-drink": "https://images.apollo247.in/pub/media/catalog/product/S/O/SOF0001_1-JULY23_1.jpg",
+  "coolberg-cranberry-non-alcoholic-beer": "https://images.apollo247.in/pub/media/catalog/product/C/O/COO0001_1-JULY23_1.jpg",
+  "amul-protein-shake-blueberry": "https://images.apollo247.in/pub/media/catalog/product/A/M/AMU0124_1-JULY23_1.jpg",
+  "sprite-zero": "https://images.apollo247.in/pub/media/catalog/product/S/P/SPR0003_1-JULY23_1.jpg",
+  "thums-up": "https://images.apollo247.in/pub/media/catalog/product/T/H/THU0026_1-JULY23_1.jpg",
+  "pepsi": "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?auto=format&fit=crop&w=800&q=80",
+  "pepsi-zero-sugar-soft-drink": "https://images.apollo247.in/pub/media/catalog/product/P/E/PEP0003_1-JULY23_1.jpg",
+
   // === COFFEE (15 items) ===
   "nescafe-classic-instant-coffee": "https://www.nescafe.com/sites/default/files/2023-04/4019P_HeroGallery_ClassicOriginal_960x960.png",
   "nescafe-sunrise-instant-coffee": "https://www.nescafe.com/in/sites/default/files/2025-05/44349573%20%281%29.png",
@@ -1092,7 +1112,6 @@ export const DRINKS_IMAGE_MAP: Record<string, string> = {
   "raw-pressery-cold-pressed-orange-juice": "https://cdn.zeptonow.com/production/ik-seo/cms/product_variant/12781183-374e-4be1-af2d-24c94cf48e8b/RAW-Pressery-Valencia-Orange-Juice.jpg",
 
   // === Energy Drinks ===
-  "red-bull-energy-drink": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
   "red-bull-sugarfree": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
   "red-bull-zero": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
   "red-bull-watermelon": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
@@ -1116,7 +1135,6 @@ export const DRINKS_IMAGE_MAP: Record<string, string> = {
   // === Soft Drinks ===
   "coca-cola": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
   "coca-cola-zero-sugar": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
-  "diet-coke": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
   "coca-cola-cherry": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
   "coca-cola-vanilla": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
   "coca-cola-life": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
@@ -1125,9 +1143,7 @@ export const DRINKS_IMAGE_MAP: Record<string, string> = {
   "fanta": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
   "fanta-orange": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
   "fanta-grape": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
-  "thums-up": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
   "thums-up-zero-sugar": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
-  "pepsi": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
   "pepsi-black": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
   "diet-pepsi": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
   "7up-zero-sugar": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",

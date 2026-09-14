@@ -601,6 +601,36 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     }
   }
 
+  // If drinks category, ensure items with outdated fallback images are updated to authentic product images
+  if (drinksCat && categoryId === drinksCat.id) {
+    const fullDrinks = getFullDrinksCatalog();
+    const imageBySlug = new Map(fullDrinks.map((d) => [d.id, d.imageUrl]));
+    
+    // Check if any drinks items have mismatched/outdated images
+    const itemsToUpdate = items.filter((item) => {
+      const targetUrl = imageBySlug.get(item.slug);
+      return targetUrl && item.image !== targetUrl;
+    });
+
+    if (itemsToUpdate.length > 0) {
+      // Asynchronously update in DB so it doesn't block the request
+      Promise.all(
+        itemsToUpdate.map((item) =>
+          prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { image: imageBySlug.get(item.slug)! },
+          }).catch(() => {})
+        )
+      ).catch(() => {});
+
+      // In-memory update for instant correctness
+      items = items.map((item) => {
+        const targetUrl = imageBySlug.get(item.slug);
+        return targetUrl ? { ...item, image: targetUrl } : item;
+      });
+    }
+  }
+
   cachedItemsByCategory.set(categoryId, { data: items, expiresAt: now + CACHE_TTL_MS });
   return items;
 }

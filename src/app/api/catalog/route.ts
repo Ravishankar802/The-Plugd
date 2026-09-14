@@ -100,6 +100,15 @@ export async function GET(req: Request) {
       }
     }
 
+    if (category === "drinks") {
+      const fullDrinks = getFullDrinksCatalog();
+      const imageBySlug = new Map(fullDrinks.map((d) => [d.id, d.imageUrl]));
+      finalItems = finalItems.map((item) => {
+        const authenticImage = imageBySlug.get(item.slug);
+        return authenticImage ? { ...item, image: authenticImage } : item;
+      });
+    }
+
     return NextResponse.json(finalItems, {
       headers: {
         "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",

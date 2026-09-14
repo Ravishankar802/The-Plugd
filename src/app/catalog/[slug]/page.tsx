@@ -7,6 +7,7 @@ import CategoryIcon from "@/components/CategoryIcon";
 import { getSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
+import { getDrinksProductImage } from "@/lib/product-images";
 
 export const dynamic = "force-dynamic";
 
@@ -44,6 +45,10 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
     notFound();
   }
 
+  const displayImage = item.category.slug === "drinks"
+    ? getDrinksProductImage(item.slug, item.image || undefined)
+    : item.image;
+
   return (
     <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
       <Header
@@ -69,9 +74,9 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
         <section className="grid gap-8 rounded-[32px] border border-zinc-200/90 bg-white p-6 shadow-sm md:grid-cols-[1fr_1fr] md:p-10">
           {/* Left: Product Image */}
           <div className="overflow-hidden rounded-[24px] bg-zinc-950 flex items-center justify-center">
-            {item.image ? (
+            {displayImage ? (
               <img
-                src={item.image}
+                src={displayImage}
                 alt={item.name}
                 className="aspect-square w-full object-cover shadow-inner"
               />
