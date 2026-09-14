@@ -146,14 +146,58 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "coffee",
       name: "Coffee",
-      image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=300&q=80",
+      image: "https://media.cnn.com/api/v1/images/stellar/prod/150929101049-black-coffee-stock.jpg?q=w_3000,h_3074,x_0,y_0,c_fill",
       keywords: ["coffee", "espresso", "latte", "cappuccino", "brew", "mocha", "cold coffee", "americano", "macchiato", "frappe"],
+      productIds: [
+        "nescafe-classic-instant-coffee",
+        "nescafe-sunrise-instant-coffee",
+        "bru-instant-coffee",
+        "bru-gold-instant-coffee",
+        "continental-xtra-coffee",
+        "tata-coffee-grand",
+        "starbucks-premium-instant-coffee",
+        "starbucks-frappuccino-coffee",
+        "rage-coffee",
+        "sleepy-owl-cold-coffee",
+        "bevzilla-instant-coffee",
+        "country-bean-vanilla-coffee",
+        "blue-tokai-coffee",
+        "third-wave-coffee",
+        "nescafe-gold",
+      ],
     },
     {
       id: "cold-drinks-juices",
       name: "Cold Drinks & Juices",
-      image: "https://images.unsplash.com/photo-1622597467836-f3285f2131b7?auto=format&fit=crop&w=300&q=80",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTimV-TDBy6BEVnHq8EQ3KzoKEdv77XU6n5ZZxjR8k7dkEmFzneKIxhU6zA&s=10",
       keywords: ["juice", "cold drink", "soda", "coke", "pepsi", "energy drink", "shake", "smoothie", "lassi", "tea", "iced", "red bull", "monster", "prime", "thums", "sprite", "fanta", "mirinda", "maaza", "frooti", "lemonade", "kombucha", "water"],
+      productIds: [
+        "frooti",
+        "maaza",
+        "appy-fizz",
+        "slice",
+        "paper-boat-aamras",
+        "paper-boat-coconut-water",
+        "real-fruit-power-orange",
+        "real-fruit-power-mixed-fruit",
+        "tropicana-orange-juice",
+        "tropicana-apple-juice",
+        "b-natural-mixed-fruit",
+        "b-natural-orange-juice",
+        "paper-boat-aam-panna",
+        "paper-boat-jaljeera",
+        "coconut-water",
+        "limca",
+        "7up",
+        "mirinda",
+        "mountain-dew",
+        "sting-energy-drink",
+        "kinley-soda",
+        "schweppes-tonic-water",
+        "nestea-lemon-iced-tea",
+        "paper-boat-neer-more",
+        "raw-pressery-cold-pressed-orange-juice",
+      ],
     },
   ],
   fashion: [
@@ -367,8 +411,12 @@ export function matchesSubcategory(
   const subDef = getSubcategoryDef(normalizedCategory, normalizedSubId);
   if (!subDef) return true;
 
-  // Food subcategory exact matching when productIds defined
-  if (normalizedCategory === "food" && subDef.productIds && subDef.productIds.length > 0) {
+  // Food and Drinks subcategory exact matching when productIds defined
+  if (
+    (normalizedCategory === "food" || normalizedCategory === "drinks") &&
+    subDef.productIds &&
+    subDef.productIds.length > 0
+  ) {
     return subDef.productIds.includes(item.slug);
   }
 

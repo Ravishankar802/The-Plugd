@@ -1047,6 +1047,50 @@ export const BEAUTY_IMAGE_MAP: Record<string, string> = {
  * Using real product imagery for beverages available in the Indian market.
  */
 export const DRINKS_IMAGE_MAP: Record<string, string> = {
+  // === COFFEE (15 items) ===
+  "nescafe-classic-instant-coffee": "https://www.nescafe.com/sites/default/files/2023-04/4019P_HeroGallery_ClassicOriginal_960x960.png",
+  "nescafe-sunrise-instant-coffee": "https://www.nescafe.com/in/sites/default/files/2025-05/44349573%20%281%29.png",
+  "bru-instant-coffee": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw1zug-yhhK8zsB4Xu01RSgJOgFEyW5rPpCbmJGyCKHBY3J1gt45KxVYA&s=10",
+  "bru-gold-instant-coffee": "https://m.media-amazon.com/images/I/51VfLWoseuL.jpg",
+  "continental-xtra-coffee": "https://www.bbassets.com/media/uploads/p/l/40161604_7-continental-xtra-coffee.jpg",
+  "tata-coffee-grand": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbqmXHGi9Auy1z5PwMwUm7usm--m6Sbti_n3HqbwEkHFihSHmZBklPBWM&s=10",
+  "starbucks-premium-instant-coffee": "https://athome.starbucks.com/sites/default/files/styles/carousel_420x352/public/2023-11/SPI_CAH_PDP_1842x1542_0000_DARK_SHADOW.png.webp?itok=WKuAm4tO",
+  "starbucks-frappuccino-coffee": "https://d3lhyaytnudnz3.cloudfront.net/fs_/media/catalog/product/s/t/prd_5211_eae9552f10bf5f5e.jpg",
+  "rage-coffee": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzRJgFdkcH1BiwOu4ZGicLibTaaKR1CnWGrfGjaCpre3bYO5lN2yVBIepC&s=10",
+  "sleepy-owl-cold-coffee": "https://www.bbassets.com/media/uploads/p/l/40172087_7-sleepy-owl-cold-brew-coffee-classic.jpg",
+  "bevzilla-instant-coffee": "https://www.bbassets.com/media/uploads/p/l/40351108_5-bevzilla-hazelnut-instant-coffee-powder.jpg",
+  "country-bean-vanilla-coffee": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjYlfvEAArBEXrsscx-h-hKG3-L3v2eNflY5IhCXI5szbTd7BR-wu6Lrc&s=10",
+  "blue-tokai-coffee": "https://bluetokaicoffee.com/cdn/shop/files/3_Classicbold_double_1.jpg?v=1717674306",
+  "third-wave-coffee": "https://www.thirdwavecoffeeroasters.com/cdn/shop/files/SSBR_WEBSITE_COFFEE_BEAN_IMAGES_2026_2048x2048-21_1200x1200.jpg?v=1770294583",
+  "nescafe-gold": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/NI_CATALOG/IMAGES/ciw/2026/5/13/e8621969-19b9-45c5-87ba-8979b80bc20c_mn_bg_removed_AL7_0f61a2da-18f0-4d4d-99f7-8d945d89f7cb.png",
+
+  // === COLD DRINKS & JUICES (25 items) ===
+  "frooti": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/NI_CATALOG/IMAGES/CIW/2024/5/10/6ae2f4b2-d5a6-4470-996b-9ff3c63dca8d_softdrinks-juiceandsoda_ANMUF5EFZ7_AL2.png",
+  "maaza": "https://www.coca-cola.com/content/dam/onexp/in/en/home-page-test-img/brands/maaza/maaza-bottles/maaza_packshot_1100x1100.jpg",
+  "appy-fizz": "https://www.bbassets.com/media/uploads/p/l/265692_9-appy-fizz-apple-juice-based-drink.jpg",
+  "slice": "https://platinum-24bucket.s3.ap-southeast-1.amazonaws.com/kkshoppy/2024/02/UASjt24312.jpg",
+  "paper-boat-aamras": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS62wgyssCHaELIqqjk09BO1xc74-gbNG6IelYyvLSzKTrmlQzuC9SIWak&s=10",
+  "paper-boat-coconut-water": "https://www.bbassets.com/media/uploads/p/l/40114332_10-paper-boat-coconut-water.jpg",
+  "real-fruit-power-orange": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9EUrE1k-2s6I75jbS3ByTLmr03PdXc3rm7TtQjGPSZYce3KlZswTdP3ZE&s=10",
+  "real-fruit-power-mixed-fruit": "https://www.bbassets.com/media/uploads/p/xl/229922_16-real-fruit-power-juice-mixed.jpg",
+  "tropicana-orange-juice": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0qvF4HYKqXlwiZwWP_FuJQe_E4QnIGlwDsZA91Is-e_zwf3OSTbxKLce0&s=10",
+  "tropicana-apple-juice": "https://m.media-amazon.com/images/I/712GOTdpsdL.jpg",
+  "b-natural-mixed-fruit": "https://www.bbassets.com/media/uploads/p/l/40341885_5-b-natural-mixed-fruit-beverage.jpg",
+  "b-natural-orange-juice": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-1KlUAJStwZTd48EcpEfmEj8BE0x3m---g73FNSI_8g&s=10",
+  "paper-boat-aam-panna": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXhPbsXedgBeGQ7HVPT2u95E1Ddv51qOExYH0dJ3Y48VPoqhhCBBdSW7E&s=10",
+  "paper-boat-jaljeera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj_Wk2wOh9uqzkA75U4nI8q5XXEm5WFeh7pU9kC81pRw&s",
+  "coconut-water": "https://cdn1.healthians.com/blog/wp-content/uploads/2025/07/Coconut-Water-benefits-and-side-effects.webp",
+  "limca": "https://www.bbassets.com/media/uploads/p/l/265906_9-limca-soft-drink-lime-lemon-flavoured.jpg",
+  "7up": "https://prithvienterprises.co.in/cdn/shop/files/sliding_images_jpeg_b7bb315b_0a9f_4bda_bc4e_c18417d9626djpgts1723622147_2609520c-9745-4e6b-9d70-5e95729e0e16.jpg?v=1746378917",
+  "mirinda": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5SVuyOjeG7bgrbuS7tZwT3pYFiW8k5M8jN-DFfQP0Og&s=10",
+  "mountain-dew": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsTjfWAxuyomFyXjgoG3SxcDaQCoGpbTDY3X_NEWDJ6g&s=10",
+  "sting-energy-drink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpeHNQ7izNAbA8sJV4MX4m4ra45CFdc6_APmenPPHlWA&s=10",
+  "kinley-soda": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV_MSgGHnd3qyXN4aegD7xYp_IMJjw0JJ6eodk7ksCUrvOBbKUyvYTU-0&s=10",
+  "schweppes-tonic-water": "https://m.media-amazon.com/images/I/61sZke6bEiL.jpg",
+  "nestea-lemon-iced-tea": "https://m.media-amazon.com/images/I/71FlMdwR7pL.jpg",
+  "paper-boat-neer-more": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM3XmNLcWxHG3LR8rQVsdM3X4bF2d8tO1XMP8hyz0DObq570BAh_VQzG8C&s=10",
+  "raw-pressery-cold-pressed-orange-juice": "https://cdn.zeptonow.com/production/ik-seo/cms/product_variant/12781183-374e-4be1-af2d-24c94cf48e8b/RAW-Pressery-Valencia-Orange-Juice.jpg",
+
   // === Energy Drinks ===
   "red-bull-energy-drink": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
   "red-bull-sugarfree": "https://images.unsplash.com/photo-1623960175040-af2cc9952c5d?auto=format&fit=crop&w=800&q=80",
@@ -1083,20 +1127,13 @@ export const DRINKS_IMAGE_MAP: Record<string, string> = {
   "fanta-grape": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
   "thums-up": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
   "thums-up-zero-sugar": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
-  "limca": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
   "pepsi": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
   "pepsi-black": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
   "diet-pepsi": "https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80",
-  "7up": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
   "7up-zero-sugar": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
-  "mirinda": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
   "mirinda-orange": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
-  "mountain-dew": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
   "mountain-dew-voltage": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
   "mountain-dew-code-red": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
-  "appy-fizz": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
-  "maaza": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
-  "slice": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
   "slice-mango": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
   "minute-maid": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
 
@@ -1133,11 +1170,9 @@ export const DRINKS_IMAGE_MAP: Record<string, string> = {
   "hydration-pack": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
 
   // === Hydration Drinks ===
-  "coconut-water": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
   "coco-fiji": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
   "coco-eva": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
   "real-coconut-water": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
-  "paper-boat-coconut-water": "https://images.unsplash.com/photo-1609490554032-0fbcb9b1f779?auto=format&fit=crop&w=800&q=80",
   "electrolyte-powder": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
   "ors-drink": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
   "sports-hydration": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",
@@ -1195,7 +1230,6 @@ export const DRINKS_IMAGE_MAP: Record<string, string> = {
   "starbucks-ready-to-drink": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
   "starbucks-frappuccino-bottle": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
   "nescafe-ready-to-drink": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
-  "rage-coffee": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
   "sleepy-owl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
   "country-bean": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
   "bevzilla": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
@@ -1279,12 +1313,10 @@ export const DRINKS_IMAGE_MAP: Record<string, string> = {
 
   // === Soda & Mixers ===
   "schweppes": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
-  "schweppes-tonic-water": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
   "schweppes-ginger-ale": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
   "schweppes-club-soda": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
   "canada-dry": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
   "canada-dry-ginger-ale": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
-  "kinley-soda": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
   "kinley-club-soda": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
   "kinley-tonic-water": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
   "tonic-water": "https://images.unsplash.com/photo-1535268617853-5897b2e8e8d4?auto=format&fit=crop&w=800&q=80",
@@ -1372,8 +1404,6 @@ export const DRINKS_IMAGE_MAP: Record<string, string> = {
   "buttermilk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
   "sugarcane-juice": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
   "paper-boat-traditional": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
-  "paper-boat-aam-panna": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=800&q=80",
-  "paper-boat-jaljeera": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=800&q=80",
   "thandai": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
   "rose-milk": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
   "badam-shake": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
@@ -1479,8 +1509,14 @@ export const DEFAULT_DRINKS_IMAGE =
 /**
  * Resolves the remote product image URL for a drinks product.
  */
-export function getDrinksProductImage(productId: string): string {
-  return DRINKS_IMAGE_MAP[productId] || DEFAULT_DRINKS_IMAGE;
+export function getDrinksProductImage(productId: string, fallback?: string): string {
+  const normalized = productId
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+  return DRINKS_IMAGE_MAP[normalized] || fallback || DEFAULT_DRINKS_IMAGE;
 }
 
 

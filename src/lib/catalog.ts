@@ -18,6 +18,7 @@ import {
 
 type CatalogSeedDefinition = {
   name: string;
+  slug?: string;
   category: string;
   imageUrl?: string;
   shortDescription?: string;
@@ -97,6 +98,7 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     icon: "Coffee",
     description: "Beverages, refreshments, and drink options for every mood.",
     items: getFullDrinksCatalog().map((item) => ({
+      slug: item.id,
       name: item.name,
       imageUrl: item.imageUrl,
       shortDescription: "",
@@ -326,7 +328,7 @@ export function getSeedCatalogItems() {
   );
 
   return flattened.map((item, index) => {
-    const slug = ensureUniqueSlug(slugify(item.name), usedSlugs);
+    const slug = item.slug ? ensureUniqueSlug(item.slug, usedSlugs) : ensureUniqueSlug(slugify(item.name), usedSlugs);
 
     return {
       name: item.name,
@@ -406,7 +408,7 @@ export async function ensureCatalogSeeded(): Promise<void> {
       if (
         categoryCount === 11 &&
         foodCount >= FOOD_NAMES.length &&
-        drinksCount >= 18 &&
+        drinksCount >= 58 &&
         mobileCount >= 21 &&
         vehiclesCount >= 130 &&
         electronicsCount >= 70 &&

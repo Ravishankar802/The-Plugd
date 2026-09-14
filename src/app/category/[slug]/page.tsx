@@ -139,6 +139,17 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       seenNames.add(normalized);
       return true;
     });
+    if (activeSubDef.productIds && activeSubDef.productIds.length > 0) {
+      const idOrder = activeSubDef.productIds;
+      items.sort((a, b) => {
+        const idxA = idOrder.indexOf(a.slug);
+        const idxB = idOrder.indexOf(b.slug);
+        if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+        if (idxA !== -1) return -1;
+        if (idxB !== -1) return 1;
+        return 0;
+      });
+    }
   } else if (category.slug === "food" && isTopPicksActive) {
     // Food Top Picks: include only Food items not part of the 4 dedicated subcategories,
     // while explicitly ensuring moved items (Cake, Waffles, Dessert, Pancake, Pazham Pori, Bread Omelette) remain in Top Picks.
@@ -176,6 +187,32 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         !isExcludedFromTopPicks(item) &&
         (movedToTopPicks.includes(item.slug) ||
           !dedicatedFoodSubcategories.some((subId) => matchesSubcategory(item, "food", subId)))
+    );
+  } else if (category.slug === "drinks" && isTopPicksActive) {
+    // Drinks Top Picks: keep the exact existing 18 items in their exact order
+    const existingTopPicksSlugs = [
+      "diet-coke",
+      "red-bull-energy-drink",
+      "monster-energy-drink",
+      "gatorade-energy-drink",
+      "amul-masti-spiced-buttermilk",
+      "bisleri-water-bottle",
+      "minute-maid-pulpy-orange",
+      "hell-energy-drink",
+      "coca-cola-zero-sugar-pet",
+      "smooth-chocolate-milk-drink",
+      "coca-cola-zero-sugar-can",
+      "soft-soya-milk-drink",
+      "coolberg-cranberry-non-alcoholic-beer",
+      "amul-protein-shake-blueberry",
+      "sprite-zero",
+      "thums-up",
+      "pepsi",
+      "pepsi-zero-sugar-soft-drink",
+    ];
+    items = rawItems.filter((item) => existingTopPicksSlugs.includes(item.slug));
+    items.sort(
+      (a, b) => existingTopPicksSlugs.indexOf(a.slug) - existingTopPicksSlugs.indexOf(b.slug)
     );
   } else {
     items = rawItems;
@@ -324,7 +361,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               </div>
               <div className="flex flex-col min-w-0 text-left">
                 <span className="text-xs sm:text-sm font-bold tracking-tight">Top Picks</span>
-                {category.slug !== "food" && (
+                {category.slug !== "food" && category.slug !== "drinks" && (
                   <span className="text-[10px] sm:text-[11px] text-zinc-400 font-medium">
                     All {isGamingSubcategory ? "Gaming" : category.name}
                   </span>
