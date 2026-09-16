@@ -19,7 +19,7 @@ import {
 } from "@/lib/subcategories";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getDrinksProductImage, getFashionProductImage } from "@/lib/product-images";
-import { FASHION_TOP_PICKS } from "@/lib/fashion-catalog";
+import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
 
 export const dynamic = "force-dynamic";
 
@@ -242,7 +242,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     const topPickSlugs = FASHION_TOP_PICKS.map((p) => p.slug);
     const topPickRawIds = FASHION_TOP_PICKS.map((p) => p.rawId);
 
-    let topItems = rawItems.filter(
+    // Keep the 15 Top Picks first in their exact specified order
+    const topItems = rawItems.filter(
       (item) => topPickSlugs.includes(item.slug) || topPickRawIds.includes(item.slug)
     );
     topItems.sort((a, b) => {
@@ -251,14 +252,26 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
     });
 
-    if (genderParam === "men" || genderParam === "women") {
-      topItems = topItems.filter((item) => {
-        const def = FASHION_TOP_PICKS.find((p) => p.slug === item.slug || p.rawId === item.slug);
-        return def?.gender === genderParam;
+    const topItemIds = new Set(topItems.map((i) => i.id));
+    const remainingItems = rawItems
+      .filter((item) => !topItemIds.has(item.id))
+      .sort((a, b) => (a.displayOrder ?? 999) - (b.displayOrder ?? 999));
+
+    let fashionCatalog = [...topItems, ...remainingItems];
+
+    if (genderParam === "men") {
+      fashionCatalog = fashionCatalog.filter((item) => {
+        const g = getFashionItemGender(item);
+        return g === "men" || g === "unisex";
+      });
+    } else if (genderParam === "women") {
+      fashionCatalog = fashionCatalog.filter((item) => {
+        const g = getFashionItemGender(item);
+        return g === "women" || g === "unisex";
       });
     }
 
-    items = topItems;
+    items = fashionCatalog;
   } else {
     items = rawItems;
   }
