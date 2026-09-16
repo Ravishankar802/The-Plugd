@@ -18,13 +18,14 @@ import {
   ALL_GAMING_PRODUCT_IDS,
 } from "@/lib/subcategories";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
-import { getDrinksProductImage } from "@/lib/product-images";
+import { getDrinksProductImage, getFashionProductImage } from "@/lib/product-images";
+import { FASHION_TOP_PICKS } from "@/lib/fashion-catalog";
 
 export const dynamic = "force-dynamic";
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }> | { slug: string };
-  searchParams?: Promise<{ q?: string; sub?: string; child?: string }> | { q?: string; sub?: string; child?: string };
+  searchParams?: Promise<{ q?: string; sub?: string; child?: string; gender?: string }> | { q?: string; sub?: string; child?: string; gender?: string };
 }
 
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
@@ -43,6 +44,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const query = resolvedSearchParams?.q?.trim() || "";
   const subParam = resolvedSearchParams?.sub?.trim() || "";
   const childParam = resolvedSearchParams?.child?.trim() || "";
+  const genderParam = resolvedSearchParams?.gender?.trim().toLowerCase() || "all";
 
   // Hierarchy context
   const isGamingSubcategory = category.slug === "electronics" && subParam.toLowerCase() === "gaming";
@@ -236,15 +238,41 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     items.sort(
       (a, b) => existingTopPicksSlugs.indexOf(a.slug) - existingTopPicksSlugs.indexOf(b.slug)
     );
+  } else if (category.slug === "fashion" && isTopPicksActive) {
+    const topPickSlugs = FASHION_TOP_PICKS.map((p) => p.slug);
+    const topPickRawIds = FASHION_TOP_PICKS.map((p) => p.rawId);
+
+    let topItems = rawItems.filter(
+      (item) => topPickSlugs.includes(item.slug) || topPickRawIds.includes(item.slug)
+    );
+    topItems.sort((a, b) => {
+      const idxA = FASHION_TOP_PICKS.findIndex((p) => p.slug === a.slug || p.rawId === a.slug);
+      const idxB = FASHION_TOP_PICKS.findIndex((p) => p.slug === b.slug || p.rawId === b.slug);
+      return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
+    });
+
+    if (genderParam === "men" || genderParam === "women") {
+      topItems = topItems.filter((item) => {
+        const def = FASHION_TOP_PICKS.find((p) => p.slug === item.slug || p.rawId === item.slug);
+        return def?.gender === genderParam;
+      });
+    }
+
+    items = topItems;
   } else {
     items = rawItems;
   }
 
-  // Ensure Drinks category items always render their authentic product images
+  // Ensure Drinks and Fashion category items always render their authentic product images
   if (category.slug === "drinks") {
     items = items.map((item) => ({
       ...item,
       image: getDrinksProductImage(item.slug, item.image || undefined),
+    }));
+  } else if (category.slug === "fashion") {
+    items = items.map((item) => ({
+      ...item,
+      image: getFashionProductImage(item.slug, item.image || undefined),
     }));
   }
 
@@ -391,7 +419,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               </div>
               <div className="flex flex-col min-w-0 text-left">
                 <span className="text-xs sm:text-sm font-bold tracking-tight">Top Picks</span>
-                {category.slug !== "food" && category.slug !== "drinks" && (
+                {category.slug !== "food" && category.slug !== "drinks" && category.slug !== "fashion" && (
                   <span className="text-[10px] sm:text-[11px] text-zinc-400 font-medium">
                     All {isGamingSubcategory ? "Gaming" : category.name}
                   </span>
@@ -432,6 +460,44 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
           {/* Independent Right Product Grid */}
           <section className="flex-1 min-w-0 pl-4 sm:pl-6 md:pl-8">
+            {category.slug === "fashion" && isTopPicksActive && (
+              <div className="mb-4 sm:mb-5 flex items-center gap-2">
+                <Link
+                  href={`/category/fashion${query ? `?q=${encodeURIComponent(query)}` : ""}`}
+                  scroll={false}
+                  className={`inline-flex shrink-0 items-center rounded-full px-3.5 py-1.5 text-xs font-bold transition ${
+                    !genderParam || genderParam === "all"
+                      ? "bg-zinc-950 text-white shadow-xs"
+                      : "border border-zinc-200/90 bg-white text-zinc-700 hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+                  }`}
+                >
+                  All
+                </Link>
+                <Link
+                  href={`/category/fashion?gender=men${query ? `&q=${encodeURIComponent(query)}` : ""}`}
+                  scroll={false}
+                  className={`inline-flex shrink-0 items-center rounded-full px-3.5 py-1.5 text-xs font-bold transition ${
+                    genderParam === "men"
+                      ? "bg-zinc-950 text-white shadow-xs"
+                      : "border border-zinc-200/90 bg-white text-zinc-700 hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+                  }`}
+                >
+                  Men
+                </Link>
+                <Link
+                  href={`/category/fashion?gender=women${query ? `&q=${encodeURIComponent(query)}` : ""}`}
+                  scroll={false}
+                  className={`inline-flex shrink-0 items-center rounded-full px-3.5 py-1.5 text-xs font-bold transition ${
+                    genderParam === "women"
+                      ? "bg-zinc-950 text-white shadow-xs"
+                      : "border border-zinc-200/90 bg-white text-zinc-700 hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+                  }`}
+                >
+                  Women
+                </Link>
+              </div>
+            )}
+
             {items.length > 0 ? (
               <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
                 {items.map((item, idx) => (

@@ -18,12 +18,129 @@ export interface FashionProduct {
   sectionTitle: string;
   imageUrl: string;
   description: string;
+  gender?: "men" | "women" | "unisex";
   tags: string[];
   badge?: "HOT" | "TRENDING" | "NEW" | "POPULAR" | "PREMIUM" | "BESTSELLER";
   featured?: boolean;
   trending?: boolean;
   displayOrder: number;
 }
+
+export interface FashionTopPickItem {
+  slug: string;
+  rawId: string;
+  name: string;
+  gender: "men" | "women";
+  imageUrl: string;
+}
+
+export const FASHION_TOP_PICKS: FashionTopPickItem[] = [
+  {
+    slug: "air-jordan-1-retro-high-og",
+    rawId: "nike-air-jordan-1-retro-high",
+    name: "Air Jordan 1 Retro High OG",
+    gender: "men",
+    imageUrl: "https://limitededt.in/cdn/shop/files/DZ5485-201-1.jpg?v=1782997568&width=2048",
+  },
+  {
+    slug: "nike-dunk-low-retro-panda",
+    rawId: "nike-dunk-low-retro",
+    name: "Nike Dunk Low Retro 'Panda'",
+    gender: "men",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4h1qWP76lZ9RnhHmMcpfBWbg9xpDGtvhR_H_vSIY62whrLm7-OCrcp2M&s=10",
+  },
+  {
+    slug: "adidas-samba-og",
+    rawId: "adidas-samba-og",
+    name: "Adidas Samba OG",
+    gender: "men",
+    imageUrl: "https://assets.adidas.com/images/w_500,f_auto,q_auto/011744ef273d4a66b9cc880b980340a2_9366/Samba_OG_Shoes_White_ID0478_01_standard.jpg",
+  },
+  {
+    slug: "new-balance-550",
+    rawId: "new-balance-550",
+    name: "New Balance 550",
+    gender: "men",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW9LLUdtDCn4gvFwe1YofJATHjdUfJU51sH_mN0BQcu0y5IOSQ0yFgg8E1&s=10",
+  },
+  {
+    slug: "asics-gel-kayano-14",
+    rawId: "asics-gel-kayano-14",
+    name: "ASICS GEL-Kayano 14",
+    gender: "men",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUldLyyS3lrXP8hDOpF-TPHA-_3ZrF5Hwfh7aEr8MjRH0JfvEJuu0mG09Q&s=10",
+  },
+  {
+    slug: "birkenstock-boston-suede-leather-clogs",
+    rawId: "birkenstock-boston-clog",
+    name: "Birkenstock Boston Suede Leather Clogs",
+    gender: "men",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTja0GMlAjmI902v179LvIKpWFTsAGk97QCd5v3NzmmFxCpgl1UrxMnj68&s=10",
+  },
+  {
+    slug: "240-gsm-heavyweight-oversized-graphic-tee",
+    rawId: "heavyweight-oversized-graphic-tee",
+    name: "240 GSM Heavyweight Oversized Graphic Tee",
+    gender: "men",
+    imageUrl: "https://m.media-amazon.com/images/I/618AzSaRSjL._AC_UY1100_.jpg",
+  },
+  {
+    slug: "400-gsm-boxy-drop-shoulder-fleece-hoodie",
+    rawId: "boxy-drop-shoulder-hoodie",
+    name: "400 GSM Boxy Drop-Shoulder Fleece Hoodie",
+    gender: "men",
+    imageUrl: "https://shopfreezestudios.com/cdn/shop/files/1_4.png?v=1757509893",
+  },
+  {
+    slug: "retro-wool-blend-varsity-bomber-jacket",
+    rawId: "varsity-bomber-jacket",
+    name: "Retro Wool-Blend Varsity Bomber Jacket",
+    gender: "men",
+    imageUrl: "https://m.media-amazon.com/images/I/81sbKthGDmL._AC_SX569_.jpg",
+  },
+  {
+    slug: "multi-pocket-utilitarian-relaxed-cargo-pants",
+    rawId: "relaxed-fit-utilitarian-cargo-pants",
+    name: "Multi-Pocket Utilitarian Relaxed Cargo Pants",
+    gender: "men",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8Lxf2iEPyOtRC0OduziidInpAAZGmrKCAvakI01I4D2wPy-XkQbQF4ne&s=10",
+  },
+  {
+    slug: "levi-s-501-original-straight-fit-jeans",
+    rawId: "levis-501-original-straight-jeans",
+    name: "Levi's 501 Original Straight Fit Jeans",
+    gender: "men",
+    imageUrl: "https://cdn-images.farfetch-contents.com/19/32/75/95/19327595_42426661_600.jpg",
+  },
+  {
+    slug: "bias-cut-silk-satin-slip-midi-dress",
+    rawId: "satin-slip-midi-dress",
+    name: "Bias-Cut Silk-Satin Slip Midi Dress",
+    gender: "women",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJC6mmUbvNlBH8ovEb6fFtj92vSn12gpk1MWC4Fg7N-Q&s=10",
+  },
+  {
+    slug: "oversized-double-breasted-tailored-blazer",
+    rawId: "oversized-structured-blazer",
+    name: "Oversized Double-Breasted Tailored Blazer",
+    gender: "women",
+    imageUrl: "https://i.etsystatic.com/21241626/r/il/de89e0/4090610125/il_570xN.4090610125_7wfl.jpg",
+  },
+  {
+    slug: "handloom-pure-katan-banarasi-silk-saree",
+    rawId: "handloom-banarasi-silk-saree",
+    name: "Handloom Pure Katan Banarasi Silk Saree",
+    gender: "women",
+    imageUrl: "https://aurabenaras.com/cdn/shop/files/IMG_6186.jpg?v=1776282515&width=1080",
+  },
+  {
+    slug: "handcrafted-lucknowi-chikankari-kurta",
+    rawId: "chikankari-embroidered-cotton-kurta",
+    name: "Handcrafted Lucknowi Chikankari Kurta",
+    gender: "women",
+    imageUrl: "https://hayatslucknowi.com/cdn/shop/files/Zeenat_Sabz_Green_Rayon_Lucknowi_Chikankari_Kurta_Set_with_Dupatta_by_Hayats_Lucknowi.webp?v=1774276697",
+  },
+];
 
 export interface FashionSection {
   id: string;

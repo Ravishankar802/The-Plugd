@@ -2,7 +2,7 @@ import prisma from "@/lib/prisma";
 import { ensureUniqueSlug, slugify } from "@/lib/slug";
 import { getFullFoodCatalog, FOOD_NAMES } from "@/lib/food-catalog";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
-import { getFullFashionCatalog } from "@/lib/fashion-catalog";
+import { getFullFashionCatalog, FASHION_TOP_PICKS } from "@/lib/fashion-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog } from "@/lib/beauty-catalog";
 import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
@@ -626,6 +626,32 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       // In-memory update for instant correctness
       items = items.map((item) => {
         const targetUrl = imageBySlug.get(item.slug);
+        return targetUrl ? { ...item, image: targetUrl } : item;
+      });
+    }
+  }
+
+  // If fashion category, ensure items with outdated fallback images are updated to authentic product images
+  const fashionCat = await prisma.category.findUnique({ where: { slug: "fashion" }, select: { id: true } });
+  if (fashionCat && categoryId === fashionCat.id) {
+    const fashionImageBySlug = new Map(FASHION_TOP_PICKS.map((d) => [d.slug, d.imageUrl]));
+    const itemsToUpdate = items.filter((item) => {
+      const targetUrl = fashionImageBySlug.get(item.slug);
+      return targetUrl && item.image !== targetUrl;
+    });
+
+    if (itemsToUpdate.length > 0) {
+      Promise.all(
+        itemsToUpdate.map((item) =>
+          prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { image: fashionImageBySlug.get(item.slug)! },
+          }).catch(() => {})
+        )
+      ).catch(() => {});
+
+      items = items.map((item) => {
+        const targetUrl = fashionImageBySlug.get(item.slug);
         return targetUrl ? { ...item, image: targetUrl } : item;
       });
     }
