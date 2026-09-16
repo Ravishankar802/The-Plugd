@@ -264,6 +264,7 @@ export const MOBiles_IMAGE_MAP: Record<string, string> = {
   // === Mobile Top Picks (25 Items Final List) ===
   "iphone-duo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0rFRvtNFZGawmAcETjvixSxS9YsgqH-_adILHbowdHZxXLDqGOnwoUaA&s=10",
   "iphone-18-pro-max-black": "https://m.media-amazon.com/images/I/71Cw9fFnAML._AC_UF894,1000_QL80_.jpg",
+  "iphone-18-pro-max-burgundy": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-18-pro-finish-select-202609-6-9inch-burgundy_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=ODB3TEdtbk8ybkd3clM3dWVML3VCYTBPcjFUQzN2eEEzbTlaeVZmVmk4T211eUU5SDU3aCs3Wm8yUmI0MUJFMmhqQmlVaWZlaG9acXNJVnJnelFvSVZLUVUycEJya0hsWFBUR0JtbjFSclN0TXdmWG8wSkNlbUlGSE83REJnTFZXci8rWnFLRWE4OTl6ZVV4N0hmclJn&traceId=1",
   "iphone-18-pro-max-burgandy": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-18-pro-finish-select-202609-6-9inch-burgundy_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=ODB3TEdtbk8ybkd3clM3dWVML3VCYTBPcjFUQzN2eEEzbTlaeVZmVmk4T211eUU5SDU3aCs3Wm8yUmI0MUJFMmhqQmlVaWZlaG9acXNJVnJnelFvSVZLUVUycEJya0hsWFBUR0JtbjFSclN0TXdmWG8wSkNlbUlGSE83REJnTFZXci8rWnFLRWE4OTl6ZVV4N0hmclJn&traceId=1",
   "iphone-18-pro": "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/tile/Apple-iPhone-18-Pro-2up-260909-lp.jpg.landing-big_2x.jpg",
   "iphone-17-pro-max": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGZh98hc32_uuobHcsdB4Gi4_vxAOdVmL8q0RhYP4nZQ&s=10",

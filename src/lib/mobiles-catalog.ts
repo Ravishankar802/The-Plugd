@@ -43,7 +43,7 @@ export const MOBILE_SECTIONS: MobileSection[] = [
     productIds: [
       "iphone-duo",
       "iphone-18-pro-max-black",
-      "iphone-18-pro-max-burgandy",
+      "iphone-18-pro-max-burgundy",
       "iphone-18-pro",
       "iphone-17-pro-max",
       "samsung-galaxy-s26-ultra",
@@ -110,8 +110,8 @@ export const RAW_MOBILE_PRODUCTS: Array<{
     trending: true,
   },
   {
-    id: "iphone-18-pro-max-burgandy",
-    name: "iPhone 18 Pro Max (Burgandy)",
+    id: "iphone-18-pro-max-burgundy",
+    name: "iPhone 18 Pro Max (Burgundy)",
     brand: "Apple",
     subcategory: "Smartphones",
     sectionId: "all-mobiles",
