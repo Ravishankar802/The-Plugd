@@ -1845,14 +1845,14 @@ export const RAW_FASHION_PRODUCTS: Array<{
     "id": "relaxed-french-terry-drawstring-shorts",
     "name": "Relaxed French Terry Drawstring Shorts",
     "brand": "Plugd Studio",
-    "subcategory": "Jewellery",
+    "subcategory": "Bottoms",
     "sectionId": "streetwear-creator-fits",
     "sectionTitle": "Streetwear & Creator Fits",
     "description": "",
     "gender": "women",
     "tags": [
       "plugd studio",
-      "jewellery",
+      "bottoms",
       "women"
     ],
     "featured": false,

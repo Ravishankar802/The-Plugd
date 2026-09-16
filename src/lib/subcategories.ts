@@ -450,6 +450,16 @@ export function matchesSubcategory(
     return ALL_GAMING_PRODUCT_IDS.includes(item.slug);
   }
 
+  // Exclude Relaxed French Terry Drawstring Shorts from Fashion -> Jewellery subcategory
+  if (normalizedCategory === "fashion" && normalizedSubId === "jewellery") {
+    if (
+      item.slug === "relaxed-french-terry-drawstring-shorts" ||
+      item.name.toLowerCase().includes("drawstring shorts")
+    ) {
+      return false;
+    }
+  }
+
   const nameLower = item.name.toLowerCase();
   const slugLower = item.slug.toLowerCase();
 
