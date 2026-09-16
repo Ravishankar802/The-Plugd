@@ -18,6 +18,7 @@ import {
   ALL_GAMING_PRODUCT_IDS,
 } from "@/lib/subcategories";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
+import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getDrinksProductImage, getFashionProductImage, getMobilesProductImage } from "@/lib/product-images";
 import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
 
@@ -125,6 +126,23 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: Boolean(d.featured),
         displayOrder: d.displayOrder,
+      }));
+    if (missingItems.length > 0) {
+      rawItems = [...initialRawItems, ...missingItems];
+    }
+  } else if (category.slug === "mobile" || isElectronicsMobile) {
+    const fullMobiles = getFullMobilesCatalog();
+    const existingSlugs = new Set(initialRawItems.map((i) => i.slug));
+    const missingItems = fullMobiles
+      .filter((d) => !existingSlugs.has(d.id))
+      .map((d, idx) => ({
+        id: `mobile-${d.id}`,
+        name: d.name,
+        slug: d.id,
+        image: d.imageUrl,
+        categoryId: targetCategoryId,
+        featured: Boolean(d.featured),
+        displayOrder: idx + 1,
       }));
     if (missingItems.length > 0) {
       rawItems = [...initialRawItems, ...missingItems];
@@ -272,6 +290,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     }
 
     items = fashionCatalog;
+  } else if ((category.slug === "mobile" || isElectronicsMobile) && isTopPicksActive) {
+    const fullMobiles = getFullMobilesCatalog();
+    const topPickSlugs = fullMobiles.map((p) => p.id);
+    items = [...rawItems].sort((a, b) => {
+      const idxA = topPickSlugs.indexOf(a.slug);
+      const idxB = topPickSlugs.indexOf(b.slug);
+      return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
+    });
   } else {
     items = rawItems;
   }

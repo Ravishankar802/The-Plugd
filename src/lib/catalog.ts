@@ -602,6 +602,47 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     }
   }
 
+  // Ensure Mobile items are fully seeded in DB (e.g. on production serverless environments)
+  const mobileCatSeed = await prisma.category.findUnique({ where: { slug: "mobile" }, select: { id: true } });
+  if (mobileCatSeed && categoryId === mobileCatSeed.id && items.length < 25) {
+    const fullMobiles = getFullMobilesCatalog();
+    const existingSlugs = new Set(items.map((i) => i.slug));
+    const missing = fullMobiles.filter((d) => !existingSlugs.has(d.id));
+
+    if (missing.length > 0) {
+      await prisma.catalogItem.createMany({
+        data: missing.map((d, idx) => ({
+          name: d.name,
+          slug: d.id,
+          categoryId: mobileCatSeed.id,
+          image: d.imageUrl,
+          active: true,
+          featured: true,
+          displayOrder: idx + 1,
+        })),
+        skipDuplicates: true,
+      });
+
+      items = await prisma.catalogItem.findMany({
+        where: {
+          active: true,
+          categoryId,
+          slug: { notIn: DUPLICATE_FALLBACK_SNACK_SLUGS },
+        },
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+          image: true,
+          categoryId: true,
+          featured: true,
+          displayOrder: true,
+        },
+        orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
+      });
+    }
+  }
+
   // If drinks category, ensure items with outdated fallback images are updated to authentic product images
   if (drinksCat && categoryId === drinksCat.id) {
     const fullDrinks = getFullDrinksCatalog();

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
+import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getMobilesProductImage } from "@/lib/product-images";
 
 export const dynamic = "force-dynamic";
@@ -109,15 +110,23 @@ export async function GET(req: Request) {
         return authenticImage ? { ...item, image: authenticImage } : item;
       });
     } else if (category === "mobile") {
-      finalItems = finalItems.map((item) => ({
-        ...item,
-        image: getMobilesProductImage(item.slug, item.image || undefined),
-      }));
+      const fullMobiles = getFullMobilesCatalog();
+      const topPickSlugs = fullMobiles.map((p) => p.id);
+      finalItems = finalItems
+        .map((item) => ({
+          ...item,
+          image: getMobilesProductImage(item.slug, item.image || undefined),
+        }))
+        .sort((a, b) => {
+          const idxA = topPickSlugs.indexOf(a.slug);
+          const idxB = topPickSlugs.indexOf(b.slug);
+          return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
+        });
     }
 
     return NextResponse.json(finalItems, {
       headers: {
-        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
       },
     });
   } catch (error) {
