@@ -1,7 +1,7 @@
 /**
  * Mobile Catalog Data Definition for Plugd
  * 
- * Exactly the 21 specified phones/tablets for the Mobile category & Electronics -> Mobile subcategory.
+ * Exactly the 25 specified phones/tablets for the Mobile category & Electronics -> Mobile subcategory.
  * No descriptions, no prices.
  */
 
@@ -41,6 +41,10 @@ export const MOBILE_SECTIONS: MobileSection[] = [
     badge: "📱 Mobile",
     displayOrder: 1,
     productIds: [
+      "iphone-duo",
+      "iphone-18-pro-max-black",
+      "iphone-18-pro-max-burgandy",
+      "iphone-18-pro",
       "iphone-17-pro-max",
       "samsung-galaxy-s26-ultra",
       "samsung-galaxy-z-fold8-ultra",
@@ -79,6 +83,58 @@ export const RAW_MOBILE_PRODUCTS: Array<{
   featured?: boolean;
   trending?: boolean;
 }> = [
+  {
+    id: "iphone-duo",
+    name: "iPhone Duo",
+    brand: "Apple",
+    subcategory: "Smartphones",
+    sectionId: "all-mobiles",
+    sectionTitle: "Mobiles & Tablets",
+    description: "",
+    tags: ["apple", "iphone", "duo", "ios"],
+    badge: "HOT",
+    featured: true,
+    trending: true,
+  },
+  {
+    id: "iphone-18-pro-max-black",
+    name: "iPhone 18 Pro Max (Black)",
+    brand: "Apple",
+    subcategory: "Smartphones",
+    sectionId: "all-mobiles",
+    sectionTitle: "Mobiles & Tablets",
+    description: "",
+    tags: ["apple", "iphone", "flagship", "ios"],
+    badge: "HOT",
+    featured: true,
+    trending: true,
+  },
+  {
+    id: "iphone-18-pro-max-burgandy",
+    name: "iPhone 18 Pro Max (Burgandy)",
+    brand: "Apple",
+    subcategory: "Smartphones",
+    sectionId: "all-mobiles",
+    sectionTitle: "Mobiles & Tablets",
+    description: "",
+    tags: ["apple", "iphone", "flagship", "ios"],
+    badge: "HOT",
+    featured: true,
+    trending: true,
+  },
+  {
+    id: "iphone-18-pro",
+    name: "iPhone 18 Pro",
+    brand: "Apple",
+    subcategory: "Smartphones",
+    sectionId: "all-mobiles",
+    sectionTitle: "Mobiles & Tablets",
+    description: "",
+    tags: ["apple", "iphone", "flagship", "ios"],
+    badge: "HOT",
+    featured: true,
+    trending: true,
+  },
   {
     id: "iphone-17-pro-max",
     name: "iPhone 17 Pro Max",

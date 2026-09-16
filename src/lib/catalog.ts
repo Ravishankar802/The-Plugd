@@ -127,6 +127,7 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     icon: "Smartphone",
     description: "Next-gen flagship smartphones and pro tablets.",
     items: getFullMobilesCatalog().map((item) => ({
+      slug: item.id,
       name: item.name,
       imageUrl: item.imageUrl,
       shortDescription: "",
@@ -652,6 +653,32 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
 
       items = items.map((item) => {
         const targetUrl = fashionImageBySlug.get(item.slug);
+        return targetUrl ? { ...item, image: targetUrl } : item;
+      });
+    }
+  }
+
+  // If mobile category, ensure items with outdated fallback images are updated to authentic product images
+  const mobileCat = await prisma.category.findUnique({ where: { slug: "mobile" }, select: { id: true } });
+  if (mobileCat && categoryId === mobileCat.id) {
+    const mobileImageBySlug = new Map(getFullMobilesCatalog().map((d) => [d.id, d.imageUrl]));
+    const itemsToUpdate = items.filter((item) => {
+      const targetUrl = mobileImageBySlug.get(item.slug);
+      return targetUrl && item.image !== targetUrl;
+    });
+
+    if (itemsToUpdate.length > 0) {
+      Promise.all(
+        itemsToUpdate.map((item) =>
+          prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { image: mobileImageBySlug.get(item.slug)! },
+          }).catch(() => {})
+        )
+      ).catch(() => {});
+
+      items = items.map((item) => {
+        const targetUrl = mobileImageBySlug.get(item.slug);
         return targetUrl ? { ...item, image: targetUrl } : item;
       });
     }

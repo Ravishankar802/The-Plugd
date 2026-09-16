@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
+import { getMobilesProductImage } from "@/lib/product-images";
 
 export const dynamic = "force-dynamic";
 
@@ -107,6 +108,11 @@ export async function GET(req: Request) {
         const authenticImage = imageBySlug.get(item.slug);
         return authenticImage ? { ...item, image: authenticImage } : item;
       });
+    } else if (category === "mobile") {
+      finalItems = finalItems.map((item) => ({
+        ...item,
+        image: getMobilesProductImage(item.slug, item.image || undefined),
+      }));
     }
 
     return NextResponse.json(finalItems, {

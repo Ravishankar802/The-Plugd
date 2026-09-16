@@ -18,7 +18,7 @@ import {
   ALL_GAMING_PRODUCT_IDS,
 } from "@/lib/subcategories";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
-import { getDrinksProductImage, getFashionProductImage } from "@/lib/product-images";
+import { getDrinksProductImage, getFashionProductImage, getMobilesProductImage } from "@/lib/product-images";
 import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
 
 export const dynamic = "force-dynamic";
@@ -286,6 +286,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     items = items.map((item) => ({
       ...item,
       image: getFashionProductImage(item.slug, item.image || undefined),
+    }));
+  } else if (category.slug === "mobile" || isElectronicsMobile) {
+    items = items.map((item) => ({
+      ...item,
+      image: getMobilesProductImage(item.slug, item.image || undefined),
     }));
   }
 

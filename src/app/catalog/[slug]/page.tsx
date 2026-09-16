@@ -7,7 +7,7 @@ import CategoryIcon from "@/components/CategoryIcon";
 import { getSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
-import { getDrinksProductImage, getFashionProductImage } from "@/lib/product-images";
+import { getDrinksProductImage, getFashionProductImage, getMobilesProductImage } from "@/lib/product-images";
 
 export const dynamic = "force-dynamic";
 
@@ -49,6 +49,8 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
     ? getDrinksProductImage(item.slug, item.image || undefined)
     : item.category.slug === "fashion"
     ? getFashionProductImage(item.slug, item.image || undefined)
+    : item.category.slug === "mobile"
+    ? getMobilesProductImage(item.slug, item.image || undefined)
     : item.image;
 
   return (

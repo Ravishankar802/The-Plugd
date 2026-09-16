@@ -261,11 +261,34 @@ export const ELECTRONICS_IMAGE_MAP: Record<string, string> = {
  * Curated product image map matching actual smartphone models across the Indian market.
  */
 export const MOBiles_IMAGE_MAP: Record<string, string> = {
+  // === Mobile Top Picks (25 Items Final List) ===
+  "iphone-duo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0rFRvtNFZGawmAcETjvixSxS9YsgqH-_adILHbowdHZxXLDqGOnwoUaA&s=10",
+  "iphone-18-pro-max-black": "https://m.media-amazon.com/images/I/71Cw9fFnAML._AC_UF894,1000_QL80_.jpg",
+  "iphone-18-pro-max-burgandy": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-18-pro-finish-select-202609-6-9inch-burgundy_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=ODB3TEdtbk8ybkd3clM3dWVML3VCYTBPcjFUQzN2eEEzbTlaeVZmVmk4T211eUU5SDU3aCs3Wm8yUmI0MUJFMmhqQmlVaWZlaG9acXNJVnJnelFvSVZLUVUycEJya0hsWFBUR0JtbjFSclN0TXdmWG8wSkNlbUlGSE83REJnTFZXci8rWnFLRWE4OTl6ZVV4N0hmclJn&traceId=1",
+  "iphone-18-pro": "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/tile/Apple-iPhone-18-Pro-2up-260909-lp.jpg.landing-big_2x.jpg",
+  "iphone-17-pro-max": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGZh98hc32_uuobHcsdB4Gi4_vxAOdVmL8q0RhYP4nZQ&s=10",
+  "samsung-galaxy-s26-ultra": "https://rukminim3.flixcart.com/image/480/480/xif0q/mobile/d/0/x/-original-imahhyzrnhgzvdk4.jpeg?q=20",
+  "samsung-galaxy-z-fold8-ultra": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTS56nYBnzKoTRPUCBX0f69UUbtVS-wRe7OHerKvDpp7-p8Q4THJokKwk&s=10",
+  "google-pixel-11-pro-xl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1BYG2mwx3YegGqi2u6sE2d-xGgACb7PEtkTkk_i1TlA&s=10",
+  "ipad-pro": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-pro-finish-select-202405-11inch-spaceblack-glossy-wifi_FMT_WHH?wid=1280&hei=720&fmt=p-jpg&qlt=80&.v=YXpaUEtKWGhlNnNrVGZkTEo4T0xsNEsrMGFueUl5dllOTm9xWTIwTHNid1VmMWkxN1U3QnRGTCt1bW5qUllQWGV0VFB1eEFsUkZXTUZIa3dLUEgvS05VRWVXSzdKNmQ4OUR2Q1RTYjk0V1lnK05jcGhxb0ZEQ0VxMXp5VmNrSEZxVUlyT2pReWpWRG9sWTcydDFOSUQxTkNhQllaajMwUWt6S2Fhakd2SHJV&traceId=1",
+  "iphone-17-pro": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB7MBW8XJb9nXA-K9zfML1nFC0-MDPLr0MbKNaIwuQRhqciGVLIYErP0rC&s=10",
+  "iphone-17": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiroY9tvOiJ-2s8jZskua1WnyHue-KGxEJviAuZLMQig&s=10",
+  "iphone-air": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-air-finish-select-202509-spaceblack_AV1_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=NUpaQVl1bitSNmJWZUdKdi9QZHhsQnMyOXpiUEVyWXc0UFVFMUg1R1ZtcDlTMWVEYlV2d0hYS1VCZ1lUcDRPRlZyZU10VldzN05ENll4dW0xeUlHNEFYZWRhV1JMZjVpMnNsVjZuVzNDRjdEeDdTbEJjaGVjdDI2aXFSM1p2WXhWZGhzVEl0M0dvbUhTSjFNb1NJNjl3&traceId=1",
+  "ipad-air": "https://m.media-amazon.com/images/I/71uC-SeFZkL.jpg",
+  "ipad": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-finish-select-202503-blue-wifi_FMT_WHH?wid=1280&hei=720&fmt=p-jpg&qlt=80&.v=aHYyeWZ6TVBzTWw5WlZ2bFJCZno2dUprQ2lFRFY2NHBMdklFNCtsRUpxdXRpY0gzeTdwdlpIKzg4NWM0UWFDYzhPR21TUjBtZytxMXNhbXdjN2ZpMXEwekI5ZWpRa0o2WWdVYzdzTUdBdFZyZS9CYmFGbEVub0pLb3hjdTIzaTk&traceId=1",
+  "samsung-galaxy-s26": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwEWdPDdxwU80fAdkqaFezr_WngzB5AFTUlOOwEjuSAQ&s=10",
+  "samsung-galaxy-z-fold8": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtq9P0gQ2GvP2CaUoCmyl7dc5oU2YzzVI1O4oxYU6EUDceLGQ38W2iaw&s=10",
+  "google-pixel-11-pro": "https://backend.paiinternational.in/media/images/4_HVCiZUZ.webp",
+  "google-pixel-11-pro-fold": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/P11PF_Obsidian.width-1200.format-webp.webp",
+  "google-pixel-11": "https://vsprod.vijaysales.com/media/catalog/product/2/5/259662_1_.jpg?optimize=medium&fit=bounds&height=500&width=500",
+  "nothing-phone-4a": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJJPfWxjBJr3M09Pbuffvj2DuJA6ovWvDvnLkL2EuscrCgEvfqHmiOXb8&s=10",
+  "nothing-phone-4a-pro": "https://cdn.shopify.com/s/files/1/0579/8091/1768/files/Phone-4a-Pro-Black.png?v=1772251082",
+  "nothing-phone-4b": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOhM06oKKXaUn1cGojfheg254KtY58At4-uTh3qT07zw&s",
+  "nothing-phone-3": "https://cdn.shopify.com/s/files/1/0586/3270/0077/files/0000s_0012_Phone-3-black.png?v=1753757353",
+  "nothing-phone-3a-pro": "https://cdn.shopify.com/s/files/1/0586/3270/0077/files/ArcPro1352x1352-Black-Glyphon.png?v=1740649967",
+  "nothing-phone-3a": "https://cdn.shopify.com/s/files/1/0586/3270/0077/files/Arc1352x1352-Black-Glyphon_4677e90c-2628-407c-b286-e6b96238dedf.png?v=1740649954",
+
   // === Apple iPhones ===
-  "iphone-17-pro-max": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80",
-  "iphone-17-pro": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80",
-  "iphone-17": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=800&q=80",
-  "iphone-air": "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80",
   "iphone-16-pro-max": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80",
   "iphone-16-pro": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80",
   "iphone-16-plus": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=800&q=80",
@@ -393,7 +416,6 @@ export const MOBiles_IMAGE_MAP: Record<string, string> = {
   "motorola-thinkphone-25": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
 
   // === Nothing & CMF ===
-  "nothing-phone-3": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
   "nothing-phone-2": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
   "nothing-phone-2a-plus": "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=800&q=80",
   "nothing-phone-2a": "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=800&q=80",
