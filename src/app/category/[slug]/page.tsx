@@ -20,7 +20,8 @@ import {
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS } from "@/lib/beauty-catalog";
-import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage } from "@/lib/product-images";
+import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
+import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage } from "@/lib/product-images";
 import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
 
 export const dynamic = "force-dynamic";
@@ -165,6 +166,25 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     if (missingItems.length > 0) {
       rawItems = [...initialRawItems, ...missingItems];
     }
+  } else if (category.slug === "entertainment") {
+    const fullEntertainment = getFullEntertainmentCatalog();
+    const allowedSlugs = new Set(fullEntertainment.map((e) => e.id));
+    const validRaw = initialRawItems.filter((i) => allowedSlugs.has(i.slug));
+    const existingSlugs = new Set(validRaw.map((i) => i.slug));
+    const missingItems = fullEntertainment
+      .filter((e) => !existingSlugs.has(e.id))
+      .map((e, idx) => ({
+        id: `entertainment-${e.id}`,
+        name: e.name,
+        slug: e.id,
+        image: e.imageUrl,
+        categoryId: targetCategoryId,
+        featured: Boolean(e.featured),
+        displayOrder: e.displayOrder ?? idx,
+      }));
+    rawItems = [...validRaw, ...missingItems];
+    const slugOrder = fullEntertainment.map((e) => e.id);
+    rawItems.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
 
   // Filter items according to hierarchy
@@ -346,6 +366,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     items = items.map((item) => ({
       ...item,
       image: getBeautyProductImage(item.slug, item.image || undefined),
+    }));
+  } else if (category.slug === "entertainment") {
+    items = items.map((item) => ({
+      ...item,
+      image: getEntertainmentProductImage(item.slug, item.image || undefined),
     }));
   }
 

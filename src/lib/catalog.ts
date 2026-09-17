@@ -5,6 +5,7 @@ import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullFashionCatalog, FASHION_TOP_PICKS } from "@/lib/fashion-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog } from "@/lib/beauty-catalog";
+import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
 import { getFullVehiclesCatalog } from "@/lib/vehicles-catalog";
 import {
@@ -39,6 +40,12 @@ const ENTERTAINMENT_ITEMS = [
   "Movie Ticket",
   "Music Festival Pass",
   "Comedy Show Ticket",
+  "IPL Match Ticket",
+  "Cricket Series Pass",
+  "Anime Box Set",
+  "Vinyl Player",
+  "Board Game Night",
+  "Theater Experience",
 ];
 
 const SUBSCRIPTIONS_ITEMS = [
@@ -156,12 +163,13 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     slug: "entertainment",
     icon: "Ticket",
     description: "Events, culture, and leisure experiences worth sharing publicly.",
-    items: ENTERTAINMENT_ITEMS.map((name, idx) => ({
-      name,
-      imageUrl: getEntertainmentProductImage(itemSlug(name)) || DEFAULT_ENTERTAINMENT_IMAGE,
+    items: getFullEntertainmentCatalog().map((item) => ({
+      slug: item.id,
+      name: item.name,
+      imageUrl: item.imageUrl,
       shortDescription: "",
       description: "",
-      featured: idx < 2,
+      featured: item.featured,
     })),
   },
   // 7. SUBSCRIPTIONS
@@ -787,6 +795,88 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
         return targetUrl ? { ...item, image: targetUrl } : item;
       });
     }
+  }
+
+  // If entertainment category, ensure items are exactly the 10 specified items with authentic images and correct order
+  const entertainmentCat = await prisma.category.findUnique({ where: { slug: "entertainment" }, select: { id: true } });
+  if (entertainmentCat && categoryId === entertainmentCat.id) {
+    const fullEntertainment = getFullEntertainmentCatalog();
+    const allowedSlugs = new Set(fullEntertainment.map((e) => e.id));
+
+    // Remove any unauthorized/legacy items (e.g. book-stack or anything not in the 10 items)
+    const unauthorizedItems = items.filter((i) => !allowedSlugs.has(i.slug));
+    if (unauthorizedItems.length > 0) {
+      await prisma.catalogItem.deleteMany({
+        where: {
+          categoryId: entertainmentCat.id,
+          slug: { in: unauthorizedItems.map((i) => i.slug) },
+        },
+      }).catch(() => {});
+    }
+
+    // Seed any missing items from the 10
+    const existingSlugs = new Set(items.map((i) => i.slug));
+    const missing = fullEntertainment.filter((e) => !existingSlugs.has(e.id));
+    if (missing.length > 0) {
+      await prisma.catalogItem.createMany({
+        data: missing.map((e) => ({
+          name: e.name,
+          slug: e.id,
+          categoryId: entertainmentCat.id,
+          image: e.imageUrl,
+          active: true,
+          featured: Boolean(e.featured),
+          displayOrder: e.displayOrder,
+        })),
+        skipDuplicates: true,
+      }).catch(() => {});
+    }
+
+    // Refresh items
+    items = await prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        categoryId: entertainmentCat.id,
+        slug: { in: Array.from(allowedSlugs) },
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        image: true,
+        categoryId: true,
+        featured: true,
+        displayOrder: true,
+      },
+      orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
+    });
+
+    // Update images if any differ
+    const entertainmentImageBySlug = new Map(fullEntertainment.map((e) => [e.id, e.imageUrl]));
+    const itemsToUpdate = items.filter((item) => {
+      const targetUrl = entertainmentImageBySlug.get(item.slug);
+      return targetUrl && item.image !== targetUrl;
+    });
+
+    if (itemsToUpdate.length > 0) {
+      Promise.all(
+        itemsToUpdate.map((item) =>
+          prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { image: entertainmentImageBySlug.get(item.slug)! },
+          }).catch(() => {})
+        )
+      ).catch(() => {});
+
+      items = items.map((item) => {
+        const targetUrl = entertainmentImageBySlug.get(item.slug);
+        return targetUrl ? { ...item, image: targetUrl } : item;
+      });
+    }
+
+    // Sort strictly by the 10 items order
+    const slugOrder = fullEntertainment.map((e) => e.id);
+    items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
 
   cachedItemsByCategory.set(categoryId, { data: items, expiresAt: now + CACHE_TTL_MS });
