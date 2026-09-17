@@ -63,6 +63,15 @@ const SUBSCRIPTIONS_ITEMS = [
   "Google AI Plus",
   "Google AI Pro",
   "Google AI Ultra",
+  "Spotify Premium",
+  "YouTube Premium",
+  "Amazon Prime",
+  "Canva Pro",
+  "Adobe Creative Cloud",
+  "GitHub Pro",
+  "Notion Plus",
+  "Figma Pro",
+  "Midjourney Subscription",
 ];
 
 const FITNESS_ITEMS = [
@@ -877,6 +886,78 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     // Sort strictly by the 10 items order
     const slugOrder = fullEntertainment.map((e) => e.id);
     items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
+  }
+
+  // If subscriptions category, ensure images are synced to authentic URLs and missing items are seeded
+  const subscriptionsCat = await prisma.category.findUnique({ where: { slug: "subscriptions" }, select: { id: true } });
+  if (subscriptionsCat && categoryId === subscriptionsCat.id) {
+    const subSlugs = SUBSCRIPTIONS_ITEMS.map((name) => itemSlug(name));
+    const existingSlugs = new Set(items.map((i) => i.slug));
+    const missing = SUBSCRIPTIONS_ITEMS
+      .map((name, idx) => ({ name, slug: itemSlug(name), idx }))
+      .filter((s) => !existingSlugs.has(s.slug) && !existingSlugs.has(s.slug === "x-premium-plus" ? "x-premium-2" : s.slug));
+
+    if (missing.length > 0) {
+      await prisma.catalogItem.createMany({
+        data: missing.map((m) => ({
+          name: m.name,
+          slug: m.slug,
+          categoryId: subscriptionsCat.id,
+          image: getSubscriptionsProductImage(m.slug),
+          active: true,
+          featured: m.idx < 4,
+          displayOrder: 548 + m.idx,
+        })),
+        skipDuplicates: true,
+      }).catch(() => {});
+    }
+
+    // Refresh items
+    items = await prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        categoryId: subscriptionsCat.id,
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        image: true,
+        categoryId: true,
+        featured: true,
+        displayOrder: true,
+      },
+      orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
+    });
+
+    // Update images if any differ
+    const itemsToUpdate = items.filter((item) => {
+      const targetUrl = getSubscriptionsProductImage(item.slug);
+      return targetUrl && item.image !== targetUrl;
+    });
+
+    if (itemsToUpdate.length > 0) {
+      Promise.all(
+        itemsToUpdate.map((item) =>
+          prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { image: getSubscriptionsProductImage(item.slug) },
+          }).catch(() => {})
+        )
+      ).catch(() => {});
+
+      items = items.map((item) => {
+        const targetUrl = getSubscriptionsProductImage(item.slug);
+        return targetUrl ? { ...item, image: targetUrl } : item;
+      });
+    }
+
+    // Sort in order of SUBSCRIPTIONS_ITEMS
+    items.sort((a, b) => {
+      const idxA = subSlugs.indexOf(a.slug) !== -1 ? subSlugs.indexOf(a.slug) : subSlugs.indexOf(a.slug.replace("-2", "-plus"));
+      const idxB = subSlugs.indexOf(b.slug) !== -1 ? subSlugs.indexOf(b.slug) : subSlugs.indexOf(b.slug.replace("-2", "-plus"));
+      return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
+    });
   }
 
   cachedItemsByCategory.set(categoryId, { data: items, expiresAt: now + CACHE_TTL_MS });

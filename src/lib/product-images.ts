@@ -2018,22 +2018,32 @@ export function getEntertainmentProductImage(slug: string, fallback?: string): s
 }
 
 export const SUBSCRIPTIONS_IMAGE_MAP: Record<string, string> = {
-  "chatgpt-plus": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
-  "chatgpt-pro": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
-  "claude-pro": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
-  "claude-max": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
-  "x-premium": "https://images.unsplash.com/photo-1611605698335-8b1569810432?auto=format&fit=crop&w=800&q=80",
-  "x-premium-plus": "https://images.unsplash.com/photo-1611605698335-8b1569810432?auto=format&fit=crop&w=800&q=80",
-  "netflix-standard": "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=800&q=80",
-  "netflix-premium": "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=800&q=80",
-  "prime-video-subscription": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
-  "hotstar-subscription": "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=800&q=80",
-  "apple-tv-subscription": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=80",
-  "google-ai-plus": "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=800&q=80",
-  "google-ai-pro": "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=800&q=80",
-  "google-ai-ultra": "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=800&q=80",
+  "chatgpt-plus": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQf6RUU-Q_5NpWc3trC5aRt7XNcuwJ1v0nSEhVmGxSSaozx8wFpsUrj4oT&s=10",
+  "chatgpt-pro": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjQlcCq1zhrqZb3-Yk2QjKL1HBa7bSsY5BROaNSlrc2LUEJ2urMF0l9vKU&s=10",
+  "claude-pro": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToWlDfYFkkvgZHmCSVcasmSwNURk5z_qdKbZj5UTKsPD2YTHEfDEiNX7dG&s=10",
+  "claude-max": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIKZXgMsY2-b34_pGX6x5LG06dXOXCoyIirWtcW9cGMeYTXW_4PGp7aHw&s=10",
+  "x-premium": "https://storage.ghost.io/c/44/11/44117e36-c400-42ea-aca8-f018c417668f/content/images/2025/02/twitter-premium.jpeg",
+  "x-premium-plus": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj1_G9ChHQOAryKAupCj5aNMEdNyLw03MUTYQ2fbYh5vZINADleoTuRv4L&s=10",
+  "x-premium-2": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj1_G9ChHQOAryKAupCj5aNMEdNyLw03MUTYQ2fbYh5vZINADleoTuRv4L&s=10",
+  "netflix-standard": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz8TbQqkCYivR1QqIePjifo1TU9X2XumEzy32YC1gfB95FcfGt4Jq482C5&s=10",
+  "netflix-premium": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPIB9mzXlPu2VbxC9ld4eycqneyMEL-6c0e0T77LlUH-I53Q7ANS02fv8o&s=10",
+  "prime-video-subscription": "https://m.media-amazon.com/images/G/01/support_images/GUID-A5E374A8-16DA-4B39-8E3F-3F3B34E831FB=2=en-US=Normal.png",
+  "hotstar-subscription": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe02x79CcdlP_ej9PgZulM3J3OnPKmjj_OyqC5l9N0mmglIkv4-KCkqF8&s=10",
+  "apple-tv-subscription": "https://www.apple.com/v/apple-tv/c/images/meta/apple-tv__ft1nltyknfmi_og.png?202608190233",
+  "google-ai-plus": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSsVNMZaabpb-u4y8Ix1us1xvzDqB16WFpiiFtvK-cWF3saIJPSoaNHC6e&s=10",
+  "google-ai-pro": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXz89ZxUT-IMHMyDJxVFgRuVmHFy3cS5eDmMr4zfobzQ&s=10",
+  "google-ai-ultra": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv9BYNJE5vrXNz7snMts94t3PHLurk2lL7WBGcojRQDeZZAS3EEV-qNVIe&s=10",
+  "spotify-premium": "https://dukaan.b-cdn.net/1000x1000/webp/upload_file_service/5af375d1-7ee1-43b0-b815-800502bc40de/image.png",
+  "youtube-premium": "https://cdnp3.stackassets.com/4371f184af0acf709d9eee72b54f8de114b6e3a0/store/f0a647407e41a6dcfd4eae0f4e4095a8ec54ee2e8c8a183db707e38bce05/product_345396_product_shots1.jpg",
+  "amazon-prime": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ_g4tg-ekOpclq9LqTWlwV5jZn7Dlcg55rJjOk6vkFyDcArRWofsx8jHf&s=10",
+  "canva-pro": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8VFjzb73_bEIWo2_uI8gyoxgvZG6gS-qwNg_iU0WckGmwJwH-YcB6YdE&s=10",
+  "adobe-creative-cloud": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-d3pIQabRkJkagM_CiKuBjSTWCSDN6166n_6JW-8agA&s=10",
+  "github-pro": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7cLdPqcB63YDXSezk8PuqgIN2RaHOMkwCFWssoPS7yBUly1GEeo5xov7S&s=10",
+  "notion-plus": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPJTbSX8mN-NsJOQnyRPKlm2RK5eLrJEZDgOU1etycppc2MHour0qI15o&s=10",
+  "figma-pro": "https://sm.pcmag.com/pcmag_me/review/f/figma/figma_dfec.png",
+  "midjourney-subscription": "https://embryo.com/wp-content/uploads/2025/03/1__Midjourney-stats-The-rise-of-AI-in-visual-creativity-scaled.png",
 };
-export const DEFAULT_SUBSCRIPTIONS_IMAGE = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80";
+export const DEFAULT_SUBSCRIPTIONS_IMAGE = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQf6RUU-Q_5NpWc3trC5aRt7XNcuwJ1v0nSEhVmGxSSaozx8wFpsUrj4oT&s=10";
 
 export function getSubscriptionsProductImage(slug: string, fallback?: string): string {
   const normalized = slug.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
