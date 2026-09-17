@@ -51,8 +51,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const genderParam = resolvedSearchParams?.gender?.trim().toLowerCase() || "all";
 
   // Hierarchy context
-  const isGamingSubcategory = category.slug === "electronics" && subParam.toLowerCase() === "gaming";
-  const isElectronicsMobile = category.slug === "electronics" && subParam.toLowerCase() === "mobile";
+  const isGamingSubcategory = false;
+  const isElectronicsMobile = false;
 
   // Subcategories list for sidebar
   const mainSubcategories = getSubcategoriesForCategory(category.slug);
@@ -599,7 +599,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             </Link>
 
             {/* 2. SUBCATEGORY ITEMS */}
-            {category.slug !== "electronics" && sidebarItems.map((sub) => {
+            {sidebarItems.map((sub) => {
               const isActive = activeItemId === sub.id;
               const href = getSubcategoryHref(sub.id);
 
