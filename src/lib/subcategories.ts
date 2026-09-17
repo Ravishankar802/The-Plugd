@@ -581,7 +581,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "mobile",
       name: "Mobile",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7T0QVTazqX6Ub2Z-hfyRuY3O5ZafA-8YBpu-TQBEC55fJdUDrKFwjBySO&s=10",
+      image: "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-duo-witb-night-sky-202609_FMT_WHH?wid=688&hei=744&fmt=jpeg&qlt=90&.v=UXRzMmJCVFBRbmt6ckpmVFpkSGV6OW9uQUtkMExYM3hCb0NtU1BmeG1MWWFQaWtwTG5hT05DL1VJbllMY2xFMTk1ZWt1OVVsVGluOVVGbTJNUkdoeFI3aG9RbUhVTmR5TzlhOU9GSVpwbWlTb2l1NkcvRHpCRmo5NWp0RkV6REk",
       keywords: ["iphone","samsung","galaxy","pixel","nothing","ipad","phone","mobile","tablet"],
       productIds: [
               "iphone-duo",

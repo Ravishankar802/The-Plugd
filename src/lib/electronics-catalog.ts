@@ -46,6 +46,10 @@ export interface ElectronicsSection {
 }
 
 export const ELECTRONICS_TOP_PICKS_SLUGS: string[] = [
+  "iphone-duo",
+  "iphone-18-pro-max",
+  "iphone-18-pro-max-burgundy",
+  "iphone-18-pro",
   "iphone-17-pro-max",
   "iphone-17-pro",
   "samsung-galaxy-s26-ultra",
@@ -65,11 +69,7 @@ export const ELECTRONICS_TOP_PICKS_SLUGS: string[] = [
   "logitech-g502-hero-high-performance-gaming-mouse",
   "amazon-echo-show-8",
   "apple-watch",
-  "apple-watch-ultra",
-  "iphone-duo",
-  "iphone-18-pro-max",
-  "iphone-18-pro-max-burgundy",
-  "iphone-18-pro"
+  "apple-watch-ultra"
 ];
 
 export const RAW_ELECTRONICS_PRODUCTS: Array<{
