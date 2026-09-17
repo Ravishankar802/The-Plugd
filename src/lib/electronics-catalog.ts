@@ -65,7 +65,11 @@ export const ELECTRONICS_TOP_PICKS_SLUGS: string[] = [
   "logitech-g502-hero-high-performance-gaming-mouse",
   "amazon-echo-show-8",
   "apple-watch",
-  "apple-watch-ultra"
+  "apple-watch-ultra",
+  "iphone-duo",
+  "iphone-18-pro-max",
+  "iphone-18-pro-max-burgundy",
+  "iphone-18-pro"
 ];
 
 export const RAW_ELECTRONICS_PRODUCTS: Array<{
@@ -85,14 +89,25 @@ export const RAW_ELECTRONICS_PRODUCTS: Array<{
     subcategory: "Mobile",
     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRt-Py_mtnnO9Wx2oMpAm_6MlBM8Ts8Y5l4GHL_ZZiFA&s=10",
     tags: ["apple","mobile","iphone","duo"],
+    featured: true,
   },
   {
     id: "iphone-18-pro-max",
-    name: "iPhone 18 Pro Max",
+    name: "iPhone 18 Pro Max (Black)",
     brand: "Apple",
     subcategory: "Mobile",
     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjjpBwTXJjm8C0bFEFG__PRqxwUokGeq-XZ01MXVgIXV15nwWvNIycsEZC&s=10",
-    tags: ["apple","mobile","iphone","18","pro","max"],
+    tags: ["apple","mobile","iphone","18","pro","max","black"],
+    featured: true,
+  },
+  {
+    id: "iphone-18-pro-max-burgundy",
+    name: "iPhone 18 Pro Max (Burgundy)",
+    brand: "Apple",
+    subcategory: "Mobile",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiFWSx1IUTIylE_EDVo-tI_zIwfb5dJD2zIVz5TF8KHw&s=10",
+    tags: ["apple","mobile","iphone","18","pro","max","burgundy"],
+    featured: true,
   },
   {
     id: "iphone-18-pro",
@@ -101,6 +116,7 @@ export const RAW_ELECTRONICS_PRODUCTS: Array<{
     subcategory: "Mobile",
     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScWhJuGRg-lc4Edazc7Y-wpw2-vCCTmbO9R0Ih6BrF8g&s=10",
     tags: ["apple","mobile","iphone","18","pro"],
+    featured: true,
   },
   {
     id: "iphone-17-pro-max",

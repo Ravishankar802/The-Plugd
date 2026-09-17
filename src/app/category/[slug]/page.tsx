@@ -222,7 +222,20 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   } else if (category.slug === "electronics") {
     const fullElectronics = getFullElectronicsCatalog();
     const allowedSlugs = new Set(fullElectronics.map((e) => e.id));
-    const validRaw = initialRawItems.filter((i) => allowedSlugs.has(i.slug));
+    const fullElectronicsMap = new Map(fullElectronics.map((e) => [e.id, e]));
+    const validRaw = initialRawItems
+      .filter((i) => allowedSlugs.has(i.slug))
+      .map((i) => {
+        const canonical = fullElectronicsMap.get(i.slug);
+        return canonical
+          ? {
+              ...i,
+              name: canonical.name,
+              image: canonical.imageUrl,
+              featured: Boolean(canonical.featured),
+            }
+          : i;
+      });
     const existingSlugs = new Set(validRaw.map((i) => i.slug));
     const missingItems = fullElectronics
       .filter((e) => !existingSlugs.has(e.id))

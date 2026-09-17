@@ -17,6 +17,8 @@ export const ELECTRONICS_IMAGE_MAP: Record<string, string> = {
   // === Mobile ===
   "iphone-duo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRt-Py_mtnnO9Wx2oMpAm_6MlBM8Ts8Y5l4GHL_ZZiFA&s=10",
   "iphone-18-pro-max": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjjpBwTXJjm8C0bFEFG__PRqxwUokGeq-XZ01MXVgIXV15nwWvNIycsEZC&s=10",
+  "iphone-18-pro-max-black": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjjpBwTXJjm8C0bFEFG__PRqxwUokGeq-XZ01MXVgIXV15nwWvNIycsEZC&s=10",
+  "iphone-18-pro-max-burgundy": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiFWSx1IUTIylE_EDVo-tI_zIwfb5dJD2zIVz5TF8KHw&s=10",
   "iphone-18-pro": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScWhJuGRg-lc4Edazc7Y-wpw2-vCCTmbO9R0Ih6BrF8g&s=10",
   "iphone-17-pro-max": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7T0QVTazqX6Ub2Z-hfyRuY3O5ZafA-8YBpu-TQBEC55fJdUDrKFwjBySO&s=10",
   "iphone-17-pro": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB7MBW8XJb9nXA-K9zfML1nFC0-MDPLr0MbKNaIwuQRhqciGVLIYErP0rC&s=10",

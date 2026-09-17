@@ -586,6 +586,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
       productIds: [
               "iphone-duo",
               "iphone-18-pro-max",
+              "iphone-18-pro-max-burgundy",
               "iphone-18-pro",
               "iphone-17-pro-max",
               "iphone-17-pro",
