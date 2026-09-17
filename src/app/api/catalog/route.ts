@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
-import { getMobilesProductImage } from "@/lib/product-images";
+import { getMobilesProductImage, getElectronicsProductImage } from "@/lib/product-images";
 
 export const dynamic = "force-dynamic";
 
@@ -122,6 +122,11 @@ export async function GET(req: Request) {
           const idxB = topPickSlugs.indexOf(b.slug);
           return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
         });
+    } else if (category === "electronics") {
+      finalItems = finalItems.map((item) => ({
+        ...item,
+        image: getElectronicsProductImage(item.slug, item.image || undefined),
+      }));
     }
 
     return NextResponse.json(finalItems, {

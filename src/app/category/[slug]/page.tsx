@@ -21,7 +21,8 @@ import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS } from "@/lib/beauty-catalog";
 import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
-import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage } from "@/lib/product-images";
+import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS } from "@/lib/electronics-catalog";
+import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage } from "@/lib/product-images";
 import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
 
 export const dynamic = "force-dynamic";
@@ -218,6 +219,25 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       const idxB = subSlugs.indexOf(b.slug) !== -1 ? subSlugs.indexOf(b.slug) : subSlugs.indexOf(b.slug.replace("-2", "-plus"));
       return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
     });
+  } else if (category.slug === "electronics") {
+    const fullElectronics = getFullElectronicsCatalog();
+    const allowedSlugs = new Set(fullElectronics.map((e) => e.id));
+    const validRaw = initialRawItems.filter((i) => allowedSlugs.has(i.slug));
+    const existingSlugs = new Set(validRaw.map((i) => i.slug));
+    const missingItems = fullElectronics
+      .filter((e) => !existingSlugs.has(e.id))
+      .map((e, idx) => ({
+        id: `electronics-${e.id}`,
+        name: e.name,
+        slug: e.id,
+        image: e.imageUrl,
+        categoryId: targetCategoryId,
+        featured: Boolean(e.featured),
+        displayOrder: e.displayOrder ?? idx,
+      }));
+    rawItems = [...validRaw, ...missingItems];
+    const slugOrder = fullElectronics.map((e) => e.id);
+    rawItems.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
 
   // Filter items according to hierarchy
@@ -375,11 +395,21 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     items.sort(
       (a, b) => topPickSlugs.indexOf(a.slug) - topPickSlugs.indexOf(b.slug)
     );
+  } else if (category.slug === "electronics" && isTopPicksActive) {
+    const topPickSlugs = ELECTRONICS_TOP_PICKS_SLUGS;
+    if (!query) {
+      items = rawItems.filter((item) => topPickSlugs.includes(item.slug));
+      items.sort(
+        (a, b) => topPickSlugs.indexOf(a.slug) - topPickSlugs.indexOf(b.slug)
+      );
+    } else {
+      items = rawItems;
+    }
   } else {
     items = rawItems;
   }
 
-  // Ensure Drinks, Fashion, Mobile, and Beauty category items always render their authentic product images
+  // Ensure authentic product images
   if (category.slug === "drinks") {
     items = items.map((item) => ({
       ...item,
@@ -409,6 +439,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     items = items.map((item) => ({
       ...item,
       image: getSubscriptionsProductImage(item.slug, item.image || undefined),
+    }));
+  } else if (category.slug === "electronics") {
+    items = items.map((item) => ({
+      ...item,
+      image: getElectronicsProductImage(item.slug, item.image || undefined),
     }));
   }
 
@@ -555,7 +590,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               </div>
               <div className="flex flex-col min-w-0 text-left">
                 <span className="text-xs sm:text-sm font-bold tracking-tight">Top Picks</span>
-                {category.slug !== "food" && category.slug !== "drinks" && category.slug !== "fashion" && category.slug !== "beauty" && (
+                {category.slug !== "food" && category.slug !== "drinks" && category.slug !== "fashion" && category.slug !== "beauty" && category.slug !== "electronics" && (
                   <span className="text-[10px] sm:text-[11px] text-zinc-400 font-medium">
                     All {isGamingSubcategory ? "Gaming" : category.name}
                   </span>
@@ -564,7 +599,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             </Link>
 
             {/* 2. SUBCATEGORY ITEMS */}
-            {sidebarItems.map((sub) => {
+            {category.slug !== "electronics" && sidebarItems.map((sub) => {
               const isActive = activeItemId === sub.id;
               const href = getSubcategoryHref(sub.id);
 

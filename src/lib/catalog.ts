@@ -972,6 +972,87 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     });
   }
 
+  // If electronics category, ensure images are synced to authentic URLs and missing items are seeded
+  const electronicsCat = await prisma.category.findUnique({ where: { slug: "electronics" }, select: { id: true } });
+  if (electronicsCat && categoryId === electronicsCat.id) {
+    const fullElectronics = getFullElectronicsCatalog();
+    const allowedSlugs = new Set(fullElectronics.map((e) => e.id));
+
+    // Remove any unauthorized/removed items
+    const unauthorizedItems = items.filter((i) => !allowedSlugs.has(i.slug));
+    if (unauthorizedItems.length > 0) {
+      await prisma.catalogItem.deleteMany({
+        where: {
+          categoryId: electronicsCat.id,
+          slug: { in: unauthorizedItems.map((i) => i.slug) },
+        },
+      }).catch(() => {});
+    }
+
+    const existingSlugs = new Set(items.map((i) => i.slug));
+    const missing = fullElectronics.filter((e) => !existingSlugs.has(e.id));
+
+    if (missing.length > 0) {
+      await prisma.catalogItem.createMany({
+        data: missing.map((m, idx) => ({
+          name: m.name,
+          slug: m.id,
+          categoryId: electronicsCat.id,
+          image: m.imageUrl,
+          active: true,
+          featured: Boolean(m.featured),
+          displayOrder: m.displayOrder ?? idx,
+        })),
+        skipDuplicates: true,
+      }).catch(() => {});
+    }
+
+    // Refresh items
+    items = await prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        categoryId: electronicsCat.id,
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        image: true,
+        categoryId: true,
+        featured: true,
+        displayOrder: true,
+      },
+      orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
+    });
+
+    // Update images if any differ
+    const electronicsImageBySlug = new Map(fullElectronics.map((e) => [e.id, e.imageUrl]));
+    const itemsToUpdate = items.filter((item) => {
+      const targetUrl = electronicsImageBySlug.get(item.slug);
+      return targetUrl && item.image !== targetUrl;
+    });
+
+    if (itemsToUpdate.length > 0) {
+      Promise.all(
+        itemsToUpdate.map((item) =>
+          prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { image: electronicsImageBySlug.get(item.slug)! },
+          }).catch(() => {})
+        )
+      ).catch(() => {});
+
+      items = items.map((item) => {
+        const targetUrl = electronicsImageBySlug.get(item.slug);
+        return targetUrl ? { ...item, image: targetUrl } : item;
+      });
+    }
+
+    // Sort strictly by the 157 items order
+    const slugOrder = fullElectronics.map((e) => e.id);
+    items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
+  }
+
   cachedItemsByCategory.set(categoryId, { data: items, expiresAt: now + CACHE_TTL_MS });
   return items;
 }
