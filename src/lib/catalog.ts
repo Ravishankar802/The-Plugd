@@ -56,7 +56,6 @@ const SUBSCRIPTIONS_ITEMS = [
   "X Premium",
   "X Premium+",
   "Netflix Standard",
-  "Netflix Premium",
   "Prime Video Subscription",
   "Hotstar Subscription",
   "Apple TV Subscription",
@@ -892,6 +891,19 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
   const subscriptionsCat = await prisma.category.findUnique({ where: { slug: "subscriptions" }, select: { id: true } });
   if (subscriptionsCat && categoryId === subscriptionsCat.id) {
     const subSlugs = SUBSCRIPTIONS_ITEMS.map((name) => itemSlug(name));
+    const allowedSlugs = new Set([...subSlugs, "x-premium-2"]);
+
+    // Remove any unauthorized/removed items (e.g. netflix-premium)
+    const unauthorizedItems = items.filter((i) => !allowedSlugs.has(i.slug));
+    if (unauthorizedItems.length > 0) {
+      await prisma.catalogItem.deleteMany({
+        where: {
+          categoryId: subscriptionsCat.id,
+          slug: { in: unauthorizedItems.map((i) => i.slug) },
+        },
+      }).catch(() => {});
+    }
+
     const existingSlugs = new Set(items.map((i) => i.slug));
     const missing = SUBSCRIPTIONS_ITEMS
       .map((name, idx) => ({ name, slug: itemSlug(name), idx }))

@@ -188,7 +188,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   } else if (category.slug === "subscriptions") {
     const subNames = [
       "ChatGPT Plus", "ChatGPT Pro", "Claude Pro", "Claude Max",
-      "X Premium", "X Premium+", "Netflix Standard", "Netflix Premium",
+      "X Premium", "X Premium+", "Netflix Standard",
       "Prime Video Subscription", "Hotstar Subscription", "Apple TV Subscription",
       "Google AI Plus", "Google AI Pro", "Google AI Ultra",
       "Spotify Premium", "YouTube Premium", "Amazon Prime",
@@ -197,7 +197,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     ];
     const itemSlug = (name: string) => name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
     const subSlugs = subNames.map(itemSlug);
-    const existingSlugs = new Set(initialRawItems.map((i) => i.slug));
+    const allowedSlugs = new Set([...subSlugs, "x-premium-2"]);
+    const validRaw = initialRawItems.filter((i) => allowedSlugs.has(i.slug));
+    const existingSlugs = new Set(validRaw.map((i) => i.slug));
     const missingItems = subNames
       .map((name, idx) => ({ name, slug: itemSlug(name), idx }))
       .filter((s) => !existingSlugs.has(s.slug) && !existingSlugs.has(s.slug === "x-premium-plus" ? "x-premium-2" : s.slug))
@@ -210,7 +212,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         featured: s.idx < 4,
         displayOrder: 548 + s.idx,
       }));
-    rawItems = [...initialRawItems, ...missingItems];
+    rawItems = [...validRaw, ...missingItems];
     rawItems.sort((a, b) => {
       const idxA = subSlugs.indexOf(a.slug) !== -1 ? subSlugs.indexOf(a.slug) : subSlugs.indexOf(a.slug.replace("-2", "-plus"));
       const idxB = subSlugs.indexOf(b.slug) !== -1 ? subSlugs.indexOf(b.slug) : subSlugs.indexOf(b.slug.replace("-2", "-plus"));
