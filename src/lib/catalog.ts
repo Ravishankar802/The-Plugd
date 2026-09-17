@@ -7,6 +7,7 @@ import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog } from "@/lib/beauty-catalog";
 import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
+import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
 import { getFullVehiclesCatalog } from "@/lib/vehicles-catalog";
 import {
   getEntertainmentProductImage,
@@ -214,12 +215,13 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     slug: "fitness",
     icon: "Dumbbell",
     description: "Health, training, and sports wishlist items that feel motivating.",
-    items: FITNESS_ITEMS.map((name, idx) => ({
-      name,
-      imageUrl: getFitnessProductImage(itemSlug(name)) || DEFAULT_FITNESS_IMAGE,
+    items: getFullFitnessCatalog().map((item) => ({
+      slug: item.id,
+      name: item.name,
+      imageUrl: item.imageUrl,
       shortDescription: "",
       description: "",
-      featured: idx < 3,
+      featured: item.featured,
     })),
   },
   // 10. VEHICLES

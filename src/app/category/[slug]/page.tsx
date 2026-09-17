@@ -22,7 +22,8 @@ import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS } from "@/lib/beauty-catalog";
 import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS } from "@/lib/electronics-catalog";
-import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage } from "@/lib/product-images";
+import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
+import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage, getFitnessProductImage } from "@/lib/product-images";
 import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
 
 export const dynamic = "force-dynamic";
@@ -251,6 +252,38 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     rawItems = [...validRaw, ...missingItems];
     const slugOrder = fullElectronics.map((e) => e.id);
     rawItems.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
+  } else if (category.slug === "fitness") {
+    const fullFitness = getFullFitnessCatalog();
+    const allowedSlugs = new Set(fullFitness.map((e) => e.id));
+    const fullFitnessMap = new Map(fullFitness.map((e) => [e.id, e]));
+    const validRaw = initialRawItems
+      .filter((i) => allowedSlugs.has(i.slug))
+      .map((i) => {
+        const canonical = fullFitnessMap.get(i.slug);
+        return canonical
+          ? {
+              ...i,
+              name: canonical.name,
+              image: canonical.imageUrl,
+              featured: Boolean(canonical.featured),
+            }
+          : i;
+      });
+    const existingSlugs = new Set(validRaw.map((i) => i.slug));
+    const missingItems = fullFitness
+      .filter((e) => !existingSlugs.has(e.id))
+      .map((e, idx) => ({
+        id: `fitness-${e.id}`,
+        name: e.name,
+        slug: e.id,
+        image: e.imageUrl,
+        categoryId: targetCategoryId,
+        featured: Boolean(e.featured),
+        displayOrder: e.displayOrder ?? idx,
+      }));
+    rawItems = [...validRaw, ...missingItems];
+    const slugOrder = fullFitness.map((e) => e.id);
+    rawItems.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
 
   // Filter items according to hierarchy
@@ -457,6 +490,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     items = items.map((item) => ({
       ...item,
       image: getElectronicsProductImage(item.slug, item.image || undefined),
+    }));
+  } else if (category.slug === "fitness") {
+    items = items.map((item) => ({
+      ...item,
+      image: getFitnessProductImage(item.slug, item.image || undefined),
     }));
   }
 
