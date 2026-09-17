@@ -142,6 +142,7 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     icon: "Sparkles",
     description: "Beauty, skincare, grooming, and personal care wishlist staples.",
     items: getFullBeautyCatalog().map((item) => ({
+      slug: item.id,
       name: item.name,
       imageUrl: item.imageUrl,
       shortDescription: "",
@@ -720,6 +721,69 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
 
       items = items.map((item) => {
         const targetUrl = mobileImageBySlug.get(item.slug);
+        return targetUrl ? { ...item, image: targetUrl } : item;
+      });
+    }
+  }
+
+  // If beauty category, ensure items with outdated fallback images are updated to authentic product images and missing items are seeded
+  const beautyCat = await prisma.category.findUnique({ where: { slug: "beauty" }, select: { id: true } });
+  if (beautyCat && categoryId === beautyCat.id) {
+    const fullBeauty = getFullBeautyCatalog();
+    const existingSlugs = new Set(items.map((i) => i.slug));
+    const missing = fullBeauty.filter((b) => !existingSlugs.has(b.id));
+
+    if (missing.length > 0) {
+      await prisma.catalogItem.createMany({
+        data: missing.map((b, idx) => ({
+          name: b.name,
+          slug: b.id,
+          categoryId: beautyCat.id,
+          image: b.imageUrl,
+          active: true,
+          featured: Boolean(b.featured),
+          displayOrder: b.displayOrder ?? idx,
+        })),
+        skipDuplicates: true,
+      });
+
+      items = await prisma.catalogItem.findMany({
+        where: {
+          active: true,
+          categoryId,
+          slug: { notIn: DUPLICATE_FALLBACK_SNACK_SLUGS },
+        },
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+          image: true,
+          categoryId: true,
+          featured: true,
+          displayOrder: true,
+        },
+        orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
+      });
+    }
+
+    const beautyImageBySlug = new Map(fullBeauty.map((b) => [b.id, b.imageUrl]));
+    const itemsToUpdate = items.filter((item) => {
+      const targetUrl = beautyImageBySlug.get(item.slug);
+      return targetUrl && item.image !== targetUrl;
+    });
+
+    if (itemsToUpdate.length > 0) {
+      Promise.all(
+        itemsToUpdate.map((item) =>
+          prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { image: beautyImageBySlug.get(item.slug)! },
+          }).catch(() => {})
+        )
+      ).catch(() => {});
+
+      items = items.map((item) => {
+        const targetUrl = beautyImageBySlug.get(item.slug);
         return targetUrl ? { ...item, image: targetUrl } : item;
       });
     }

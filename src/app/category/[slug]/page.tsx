@@ -19,7 +19,8 @@ import {
 } from "@/lib/subcategories";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
-import { getDrinksProductImage, getFashionProductImage, getMobilesProductImage } from "@/lib/product-images";
+import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS } from "@/lib/beauty-catalog";
+import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage } from "@/lib/product-images";
 import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
 
 export const dynamic = "force-dynamic";
@@ -143,6 +144,23 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: Boolean(d.featured),
         displayOrder: idx + 1,
+      }));
+    if (missingItems.length > 0) {
+      rawItems = [...initialRawItems, ...missingItems];
+    }
+  } else if (category.slug === "beauty") {
+    const fullBeauty = getFullBeautyCatalog();
+    const existingSlugs = new Set(initialRawItems.map((i) => i.slug));
+    const missingItems = fullBeauty
+      .filter((b) => !existingSlugs.has(b.id))
+      .map((b, idx) => ({
+        id: `beauty-${b.id}`,
+        name: b.name,
+        slug: b.id,
+        image: b.imageUrl,
+        categoryId: targetCategoryId,
+        featured: Boolean(b.featured),
+        displayOrder: b.displayOrder ?? idx,
       }));
     if (missingItems.length > 0) {
       rawItems = [...initialRawItems, ...missingItems];
@@ -298,11 +316,17 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       const idxB = topPickSlugs.indexOf(b.slug);
       return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
     });
+  } else if (category.slug === "beauty" && isTopPicksActive) {
+    const topPickSlugs = BEAUTY_TOP_PICKS_SLUGS;
+    items = rawItems.filter((item) => topPickSlugs.includes(item.slug));
+    items.sort(
+      (a, b) => topPickSlugs.indexOf(a.slug) - topPickSlugs.indexOf(b.slug)
+    );
   } else {
     items = rawItems;
   }
 
-  // Ensure Drinks and Fashion category items always render their authentic product images
+  // Ensure Drinks, Fashion, Mobile, and Beauty category items always render their authentic product images
   if (category.slug === "drinks") {
     items = items.map((item) => ({
       ...item,
@@ -317,6 +341,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     items = items.map((item) => ({
       ...item,
       image: getMobilesProductImage(item.slug, item.image || undefined),
+    }));
+  } else if (category.slug === "beauty") {
+    items = items.map((item) => ({
+      ...item,
+      image: getBeautyProductImage(item.slug, item.image || undefined),
     }));
   }
 
