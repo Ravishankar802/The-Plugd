@@ -1157,7 +1157,7 @@ export const RAW_BEAUTY_PRODUCTS: Array<{
     name: "Hair Gloss Treatment",
     brand: "Kérastase",
     subcategory: "Hair Care",
-    imageUrl: "https://media.allure.com/photos/66996393866cfa26020f7aff/3:4/w_748%2Cc_limit/Ke%25CC%81rastase%2520Chroma%2520Absolu%2520Soin%2520Acide%2520Chroma%2520Gloss.png",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlUlXmWJIz6uamQS4Qv6QmZuGpxlNyvxQpZiQNm4iw6Q&s=10",
     description: "",
     tags: ["hair care","hair gloss treatment"],
     badge: undefined,

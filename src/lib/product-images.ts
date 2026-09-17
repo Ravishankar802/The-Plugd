@@ -937,7 +937,7 @@ export const BEAUTY_IMAGE_MAP: Record<string, string> = {
   "curl-defining-hair-cream": "https://www.natuliquecalifornia.com/wp-content/uploads/2015/06/NATULIQUE-CURL-DEFINING-HAIR-CREAM-RGB-CENTER-0124.png",
   "anti-humidity-hair-spray": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ90XfWknznasIufn8d8vfWRMDdpukRInyI25Eu_gpRzA&s=10",
   "deep-conditioning-hair-oil": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTesyC0sVwJmHpRcl8cRDh2bAWXuGWhCLE8lfbB411P8_vFAHIAvSYDtoc&s=10",
-  "hair-gloss-treatment": "https://media.allure.com/photos/66996393866cfa26020f7aff/3:4/w_748%2Cc_limit/Ke%25CC%81rastase%2520Chroma%2520Absolu%2520Soin%2520Acide%2520Chroma%2520Gloss.png",
+  "hair-gloss-treatment": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlUlXmWJIz6uamQS4Qv6QmZuGpxlNyvxQpZiQNm4iw6Q&s=10",
   "overnight-hair-repair-serum": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDSbAAl2CLDkWsYOOLcwROkXLMlQxS5rvObNXNX7gMD2_hgLJvnBg2SEer&s=10",
   "scalp-massager-brush": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO6mqqVV2VYXOj64ICT2OeacqBvJxQe6qYBLuFxY2F-5LxAYnBQk99bBva&s=10",
   "detangling-wet-hair-brush": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_3YOEYLyO3DEbgr_mvqh_qZZXCU9IjdASILKbHf9dBR5XUHqc_1yzAdc&s=10",
