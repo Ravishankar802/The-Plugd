@@ -492,7 +492,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               </div>
               <div className="flex flex-col min-w-0 text-left">
                 <span className="text-xs sm:text-sm font-bold tracking-tight">Top Picks</span>
-                {category.slug !== "food" && category.slug !== "drinks" && category.slug !== "fashion" && (
+                {category.slug !== "food" && category.slug !== "drinks" && category.slug !== "fashion" && category.slug !== "beauty" && (
                   <span className="text-[10px] sm:text-[11px] text-zinc-400 font-medium">
                     All {isGamingSubcategory ? "Gaming" : category.name}
                   </span>
