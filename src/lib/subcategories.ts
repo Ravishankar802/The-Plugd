@@ -16,6 +16,8 @@
  * - TOYS: Standalone main category
  */
 
+import { CARS_SLUGS, BIKES_SLUGS } from "./vehicles-catalog";
+
 export interface Subcategory {
   id: string; // url slug e.g. "ice-creams"
   name: string; // display name e.g. "Ice Creams"
@@ -827,16 +829,18 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
   ],
   vehicles: [
     {
-      id: "bikes",
-      name: "Bikes",
-      image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=300&q=80",
-      keywords: ["bike", "motorcycle", "ducati", "kawasaki", "harley", "bullet", "royalenfield", "royal enfield", "bmw s1000rr", "yamaha", "hayabusa", "panigale", "ninja", "triumph", "ktm", "scooter", "vespa", "interceptor", "continental", "himalayan", "speed 400", "activa", "aprilia", "hunter", "classic 350", "meteor", "street triple", "speed triple", "z900", "zx-10r", "h2", "streetfighter", "multistrada", "diavel", "monster", "desertx", "r15", "mt-15", "r3", "duke", "rc 390", "super duke", "fat boy", "street bob", "road king", "chetak", "ola", "ather", "jupiter", "aerox"],
-    },
-    {
       id: "cars",
       name: "Cars",
       image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=300&q=80",
-      keywords: ["car", "porsche", "ferrari", "lamborghini", "bmw m", "mercedes", "amg", "audi", "thar", "defender", "mustang", "gt3", "supra", "corvette", "rolls royce", "land cruiser", "range rover", "m3", "m4", "m5", "911", "urus", "g-wagon", "mclaren", "aston martin", "bugatti", "koenigsegg", "pagani", "hypercar", "supercar", "chiron", "veyron", "tourbillon", "jesko", "utopia", "valkyrie", "speedtail", "senna", "revuelto", "sf90", "daytona sp3", "monza", "stradale", "roma", "huracan", "aventador", "svj", "artura", "750s", "765lt", "p1", "db12", "dbs", "vantage", "cullinan", "phantom", "spectre", "bentayga", "continental gt", "maybach", "gt-r", "viper", "shelby"],
+      keywords: ["car", "porsche", "ferrari", "lamborghini", "bmw", "rolls royce", "mclaren", "aston martin", "bugatti", "koenigsegg", "pagani", "hypercar", "supercar", "chiron", "veyron", "tourbillon", "jesko", "utopia", "valkyrie", "speedtail", "senna", "revuelto", "sf90", "daytona sp3", "monza", "stradale", "huracan", "aventador", "svj", "750s", "765lt", "p1", "db12", "dbs", "vantage", "cullinan", "phantom", "spectre", "maybach", "hennessey"],
+      productIds: CARS_SLUGS,
+    },
+    {
+      id: "bikes",
+      name: "Bikes",
+      image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=300&q=80",
+      keywords: ["bike", "motorcycle", "ducati", "kawasaki", "harley", "bullet", "royalenfield", "royal enfield", "bmw s1000rr", "yamaha", "panigale", "ninja", "triumph", "ktm", "interceptor", "continental", "aprilia", "street triple", "speed triple", "z900", "zx-10r", "h2", "streetfighter", "diavel", "monster", "super duke", "fat boy", "nightster", "sportster", "cbr1000rr"],
+      productIds: BIKES_SLUGS,
     },
   ],
 };
@@ -957,7 +961,7 @@ export function matchesSubcategory(
 
   // Food, Drinks, and Beauty subcategory exact matching when productIds defined
   if (
-    (normalizedCategory === "food" || normalizedCategory === "drinks" || normalizedCategory === "beauty" || normalizedCategory === "electronics") &&
+    (normalizedCategory === "food" || normalizedCategory === "drinks" || normalizedCategory === "beauty" || normalizedCategory === "electronics" || normalizedCategory === "vehicles") &&
     subDef.productIds &&
     subDef.productIds.length > 0
   ) {

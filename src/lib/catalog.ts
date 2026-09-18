@@ -381,7 +381,7 @@ export async function ensureCatalogSeeded(): Promise<void> {
         foodCount >= FOOD_NAMES.length &&
         drinksCount >= 58 &&
         mobileCount >= 21 &&
-        vehiclesCount >= 130 &&
+        vehiclesCount >= 131 &&
         electronicsCount >= 70 &&
         toysCount >= 50
       ) {

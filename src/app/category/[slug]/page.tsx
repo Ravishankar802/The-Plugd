@@ -24,7 +24,8 @@ import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS } from "@/lib/electronics-catalog";
 import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
 import { getFullToysCatalog } from "@/lib/toys-catalog";
-import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage, getFitnessProductImage, getToysProductImage } from "@/lib/product-images";
+import { getFullVehiclesCatalog, VEHICLES_TOP_PICKS_SLUGS } from "@/lib/vehicles-catalog";
+import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage, getFitnessProductImage, getToysProductImage, getVehiclesProductImage } from "@/lib/product-images";
 import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
 
 export const dynamic = "force-dynamic";
@@ -317,6 +318,38 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     rawItems = [...validRaw, ...missingItems];
     const slugOrder = fullToys.map((e) => e.id);
     rawItems.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
+  } else if (category.slug === "vehicles") {
+    const fullVehicles = getFullVehiclesCatalog();
+    const allowedSlugs = new Set(fullVehicles.map((v) => v.id));
+    const fullVehiclesMap = new Map(fullVehicles.map((v) => [v.id, v]));
+    const validRaw = initialRawItems
+      .filter((i) => allowedSlugs.has(i.slug))
+      .map((i) => {
+        const canonical = fullVehiclesMap.get(i.slug);
+        return canonical
+          ? {
+              ...i,
+              name: canonical.name,
+              image: canonical.imageUrl,
+              featured: Boolean(canonical.featured),
+            }
+          : i;
+      });
+    const existingSlugs = new Set(validRaw.map((i) => i.slug));
+    const missingItems = fullVehicles
+      .filter((v) => !existingSlugs.has(v.id))
+      .map((v, idx) => ({
+        id: `vehicles-${v.id}`,
+        name: v.name,
+        slug: v.id,
+        image: v.imageUrl,
+        categoryId: targetCategoryId,
+        featured: Boolean(v.featured),
+        displayOrder: v.displayOrder ?? idx,
+      }));
+    rawItems = [...validRaw, ...missingItems];
+    const slugOrder = fullVehicles.map((v) => v.id);
+    rawItems.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
 
   // Filter items according to hierarchy
@@ -484,6 +517,16 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     } else {
       items = rawItems;
     }
+  } else if (category.slug === "vehicles" && isTopPicksActive) {
+    const topPickSlugs = VEHICLES_TOP_PICKS_SLUGS;
+    if (!query) {
+      items = rawItems.filter((item) => topPickSlugs.includes(item.slug));
+      items.sort(
+        (a, b) => topPickSlugs.indexOf(a.slug) - topPickSlugs.indexOf(b.slug)
+      );
+    } else {
+      items = rawItems;
+    }
   } else {
     items = rawItems;
   }
@@ -533,6 +576,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     items = items.map((item) => ({
       ...item,
       image: getToysProductImage(item.slug, item.image || undefined),
+    }));
+  } else if (category.slug === "vehicles") {
+    items = items.map((item) => ({
+      ...item,
+      image: getVehiclesProductImage(item.slug, item.image || undefined),
     }));
   }
 
@@ -679,7 +727,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               </div>
               <div className="flex flex-col min-w-0 text-left">
                 <span className="text-xs sm:text-sm font-bold tracking-tight">Top Picks</span>
-                {category.slug !== "food" && category.slug !== "drinks" && category.slug !== "fashion" && category.slug !== "beauty" && category.slug !== "electronics" && (
+                {category.slug !== "food" && category.slug !== "drinks" && category.slug !== "fashion" && category.slug !== "beauty" && category.slug !== "electronics" && category.slug !== "vehicles" && (
                   <span className="text-[10px] sm:text-[11px] text-zinc-400 font-medium">
                     All {isGamingSubcategory ? "Gaming" : category.name}
                   </span>
