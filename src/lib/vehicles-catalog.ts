@@ -198,7 +198,7 @@ export const CARS_DATA = [
   },
   {
     "name": "Ferrari 296 GTS",
-    "image": "https://i.pinimg.com/236x/af/9c/00/af9c005834512d13fa878486ea1ab87c.jpg"
+    "image": "https://i.pinimg.com/736x/68/22/3b/68223b5128a52ca8752b83056c0d61f6.jpg"
   },
   {
     "name": "Ferrari 812 Superfast",
@@ -210,7 +210,7 @@ export const CARS_DATA = [
   },
   {
     "name": "McLaren P1",
-    "image": "https://i.pinimg.com/1200x/0e/d4/bc/0ed4bc9ffaafa1af8e474cc83e9fccec.jpg"
+    "image": "https://i.pinimg.com/1200x/79/bc/84/79bc845946e370285a72c2ec7a6ea9f5.jpg"
   },
   {
     "name": "McLaren P1 GTR",
@@ -262,7 +262,7 @@ export const CARS_DATA = [
   },
   {
     "name": "Jeep Wrangler",
-    "image": "https://i.pinimg.com/1200x/cc/39/be/cc39beecb452c3cac18e2269d6ac700c.jpg"
+    "image": "https://i.pinimg.com/1200x/c7/c9/a9/c7c9a967f2c35fbcc305ab4111f0d468.jpg"
   },
   {
     "name": "Ford Raptor R",
@@ -278,7 +278,7 @@ export const CARS_DATA = [
   },
   {
     "name": "Tesla Model S Plaid",
-    "image": "https://i.pinimg.com/236x/5a/9a/81/5a9a8104b4ccddf817986a769598f350.jpg"
+    "image": "https://i.pinimg.com/1200x/ad/4c/86/ad4c862e01462f4bb3a369c2ad9656e1.jpg"
   },
   {
     "name": "Ferrari 812 Competizione",
@@ -286,7 +286,7 @@ export const CARS_DATA = [
   },
   {
     "name": "Ferrari SF90 Stradale",
-    "image": "https://i.pinimg.com/736x/23/c3/44/23c3448ffe14bd9c9e5ae2a105e4cdb4.jpg"
+    "image": "https://i.pinimg.com/736x/95/f4/f7/95f4f7269be2a087f7b0bb0cc94ae4f6.jpg"
   },
   {
     "name": "Ferrari SF90 Spider",
@@ -346,7 +346,7 @@ export const CARS_DATA = [
   },
   {
     "name": "Porsche 911 GT3 RS",
-    "image": "https://i.pinimg.com/1200x/37/32/8f/37328f5640d60a2fa943c21843ee3775.jpg"
+    "image": "https://i.pinimg.com/736x/07/45/32/0745321ae0907a2388f6004403fc552f.jpg"
   },
   {
     "name": "Aston Martin Vantage",
@@ -394,7 +394,7 @@ export const CARS_DATA = [
   },
   {
     "name": "Aston Martin DBX",
-    "image": "https://i.pinimg.com/1200x/d6/3c/b4/d63cb4e90f32d38ff2a2b72401ffc078.jpg"
+    "image": "https://i.pinimg.com/736x/9f/9b/3a/9f9b3a9aead02c4bb83e922f74698f08.jpg"
   },
   {
     "name": "McLaren W1",
@@ -446,15 +446,15 @@ export const CARS_DATA = [
   },
   {
     "name": "Aston Martin Valiant",
-    "image": "https://i.pinimg.com/236x/d9/13/40/d91340bc56b196416e25c4b968d23417.jpg"
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRge-f3kCpTQJg2a6h7eAsQAT_fczJIgfDK1naBRYSJDPh9KrdNtT3-VLU&s=10"
   },
   {
     "name": "Aston Martin Valen",
-    "image": "https://i.pinimg.com/736x/a7/cd/5c/a7cd5cc7c3688ccf2e0943904e695ba3.jpg"
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa7FFqpSS1E7fPJmBqeJ9T1gb71loqFWbHRvbdNZz69g&s=10"
   },
   {
     "name": "Aston Martin Valkyrie",
-    "image": "https://i.pinimg.com/236x/fc/6d/cf/fc6dcfff908017daeaffdee69b18fddb.jpg"
+    "image": "https://i.pinimg.com/1200x/03/2f/93/032f931977018f894528c244326b4e0b.jpg"
   },
   {
     "name": "Mercedes-AMG Project One",
@@ -462,7 +462,7 @@ export const CARS_DATA = [
   },
   {
     "name": "Rimac Nevera",
-    "image": "https://i.pinimg.com/236x/12/40/b8/1240b8f75f65957ada21062f0c564b28.jpg"
+    "image": "https://i.pinimg.com/1200x/84/8e/40/848e40d44de00ef1e8f6a6a82e7d0876.jpg"
   },
   {
     "name": "Rimac Nevera R",
