@@ -1968,7 +1968,7 @@ export const VEHICLES_IMAGE_MAP: Record<string, string> = {
   "kawasaki-ninja-zx-10r": "https://i.pinimg.com/1200x/b8/1b/f7/b81bf71f9f8503a6a70730a5ef2d347d.jpg",
   "kawasaki-ninja-h2": "https://i.pinimg.com/736x/48/43/04/484304fa8b46ea0e1046eb452a94aefa.jpg",
   "kawasaki-ninja-h2r": "https://i.pinimg.com/1200x/b8/6c/07/b86c07ec5574dcf8aa7eaf6634c4d211.jpg",
-  "bmw-s1000rr": "https://i.pinimg.com/236x/8a/f3/e5/8af3e5ac4d4eeea0b03abc726bb2361a.jpg",
+  "bmw-s1000rr": "https://i.pinimg.com/736x/5a/2c/50/5a2c50fd6f4652eb32fa914674a37513.jpg",
   "bmw-m1000rr": "https://i.pinimg.com/1200x/1d/9f/a5/1d9fa5e5c46f375e6157b133bb114836.jpg",
   "ducati-monster": "https://i.pinimg.com/236x/b5/c5/16/b5c5169833511f092889655187f06102.jpg",
   "ducati-xdiavel-v4": "https://i.pinimg.com/236x/e9/08/c1/e908c16b9d5f406ef01f8ff4123212bf.jpg",

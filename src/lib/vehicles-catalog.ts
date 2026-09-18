@@ -99,7 +99,7 @@ export const BIKES_DATA = [
   },
   {
     "name": "BMW S1000RR",
-    "image": "https://i.pinimg.com/236x/8a/f3/e5/8af3e5ac4d4eeea0b03abc726bb2361a.jpg"
+    "image": "https://i.pinimg.com/736x/5a/2c/50/5a2c50fd6f4652eb32fa914674a37513.jpg"
   },
   {
     "name": "BMW M1000RR",
