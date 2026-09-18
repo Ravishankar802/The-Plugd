@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
-import { getMobilesProductImage, getElectronicsProductImage, getFitnessProductImage } from "@/lib/product-images";
+import { getMobilesProductImage, getElectronicsProductImage, getFitnessProductImage, getToysProductImage } from "@/lib/product-images";
 
 export const dynamic = "force-dynamic";
 
@@ -131,6 +131,11 @@ export async function GET(req: Request) {
       finalItems = finalItems.map((item) => ({
         ...item,
         image: getFitnessProductImage(item.slug, item.image || undefined),
+      }));
+    } else if (category === "toys") {
+      finalItems = finalItems.map((item) => ({
+        ...item,
+        image: getToysProductImage(item.slug, item.image || undefined),
       }));
     }
 

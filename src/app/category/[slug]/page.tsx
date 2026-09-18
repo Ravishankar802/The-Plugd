@@ -23,7 +23,8 @@ import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS } from "@/lib/beauty-catal
 import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS } from "@/lib/electronics-catalog";
 import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
-import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage, getFitnessProductImage } from "@/lib/product-images";
+import { getFullToysCatalog } from "@/lib/toys-catalog";
+import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage, getFitnessProductImage, getToysProductImage } from "@/lib/product-images";
 import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
 
 export const dynamic = "force-dynamic";
@@ -284,6 +285,38 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     rawItems = [...validRaw, ...missingItems];
     const slugOrder = fullFitness.map((e) => e.id);
     rawItems.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
+  } else if (category.slug === "toys") {
+    const fullToys = getFullToysCatalog();
+    const allowedSlugs = new Set(fullToys.map((e) => e.id));
+    const fullToysMap = new Map(fullToys.map((e) => [e.id, e]));
+    const validRaw = initialRawItems
+      .filter((i) => allowedSlugs.has(i.slug))
+      .map((i) => {
+        const canonical = fullToysMap.get(i.slug);
+        return canonical
+          ? {
+              ...i,
+              name: canonical.name,
+              image: canonical.imageUrl,
+              featured: Boolean(canonical.featured),
+            }
+          : i;
+      });
+    const existingSlugs = new Set(validRaw.map((i) => i.slug));
+    const missingItems = fullToys
+      .filter((e) => !existingSlugs.has(e.id))
+      .map((e, idx) => ({
+        id: `toys-${e.id}`,
+        name: e.name,
+        slug: e.id,
+        image: e.imageUrl,
+        categoryId: targetCategoryId,
+        featured: Boolean(e.featured),
+        displayOrder: e.displayOrder ?? idx,
+      }));
+    rawItems = [...validRaw, ...missingItems];
+    const slugOrder = fullToys.map((e) => e.id);
+    rawItems.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
 
   // Filter items according to hierarchy
@@ -495,6 +528,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     items = items.map((item) => ({
       ...item,
       image: getFitnessProductImage(item.slug, item.image || undefined),
+    }));
+  } else if (category.slug === "toys") {
+    items = items.map((item) => ({
+      ...item,
+      image: getToysProductImage(item.slug, item.image || undefined),
     }));
   }
 

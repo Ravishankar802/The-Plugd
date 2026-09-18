@@ -8,6 +8,7 @@ import { getFullBeautyCatalog } from "@/lib/beauty-catalog";
 import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
 import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
+import { getFullToysCatalog } from "@/lib/toys-catalog";
 import { getFullVehiclesCatalog } from "@/lib/vehicles-catalog";
 import {
   getEntertainmentProductImage,
@@ -244,64 +245,14 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     slug: "toys",
     icon: "Gamepad2",
     description: "Retro collectibles, gaming gear, figures, and creative toys.",
-    items: [
-      {
-        name: "Retro Arcade Machine",
-        imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
-        shortDescription: "",
-        description: "",
-        featured: true,
-      },
-      {
-        name: "Lego Collector Edition",
-        imageUrl: "https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?auto=format&fit=crop&w=600&q=80",
-        shortDescription: "",
-        description: "",
-        featured: true,
-      },
-      {
-        name: "Gundam Model Kit",
-        imageUrl: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80",
-        shortDescription: "",
-        description: "",
-        featured: true,
-      },
-      {
-        name: "RC High-Speed Drone",
-        imageUrl: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=600&q=80",
-        shortDescription: "",
-        description: "",
-        featured: false,
-      },
-      {
-        name: "Anime Action Figure",
-        imageUrl: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
-        shortDescription: "",
-        description: "",
-        featured: false,
-      },
-      {
-        name: "Custom Mechanical Keyboard",
-        imageUrl: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80",
-        shortDescription: "",
-        description: "",
-        featured: false,
-      },
-      {
-        name: "Rubik's Speed Cube",
-        imageUrl: "https://images.unsplash.com/photo-1591994843349-f415893b3a6b?auto=format&fit=crop&w=600&q=80",
-        shortDescription: "",
-        description: "",
-        featured: false,
-      },
-      {
-        name: "Diecast Supercar Model",
-        imageUrl: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80",
-        shortDescription: "",
-        description: "",
-        featured: false,
-      },
-    ],
+    items: getFullToysCatalog().map((item) => ({
+      slug: item.id,
+      name: item.name,
+      imageUrl: item.imageUrl,
+      shortDescription: "",
+      description: "",
+      featured: item.featured,
+    })),
   },
 ];
 
@@ -432,7 +383,7 @@ export async function ensureCatalogSeeded(): Promise<void> {
         mobileCount >= 21 &&
         vehiclesCount >= 130 &&
         electronicsCount >= 70 &&
-        toysCount >= 8
+        toysCount >= 50
       ) {
         isCatalogSeededInMemory = true;
         return;

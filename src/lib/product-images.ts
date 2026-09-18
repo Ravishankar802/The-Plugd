@@ -1542,6 +1542,69 @@ export function getElectronicsProductImage(slug: string, fallback?: string): str
   return ELECTRONICS_IMAGE_MAP[normalized] || fallback || DEFAULT_ELECTRONICS_IMAGE;
 }
 
+export const TOYS_IMAGE_MAP: Record<string, string> = {
+  "lego-collector-edition": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBiXwek7speDg9NRMlawsaPM-0qwlQ0wSirKtO64W3WhEx7xcpSg_AmsY&s=10",
+  "lego-technic-car": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdir9glXt8r3KhnrSy1ct5e1XlWrz3SZ8vUh_9q-hoDQ&s=10",
+  "lego-star-wars-set": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZgoRmRkFg28Qj3-QihtbX8VY2intosghk6HKdGDJV7tf44XHdJiDejd8&s=10",
+  "lego-architecture-set": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxuFtJve2ncSMFGz7lRU-xoGczsrsyjC5O9tFv9t_QSVxc89qqfTkYT_T9&s=10",
+  "remote-control-car": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdW2AyeYr9uVDD0O4DpImT8ScxmX0PxKizPm5sMa5OLQ&s=10",
+  "rc-high-speed-drone": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgK8Q3VTsUBBfjYSiaUIBV0IldR7nt1ik8gY1QgFqAbhIUGlaJWDOq-NE&s=10",
+  "rc-helicopter": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpvnmxM9DbwMutU7wvZr-V7ASWsOu5Vhzuq-a3tXLJKA1fT1aZJy2faTU&s=10",
+  "remote-control-boat": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_0k7TTad335uj-A5Rv-XTCt20fHMnAzXihYFE1KwLxrdM2uB3oFSrf2G3&s=10",
+  "anime-action-figure": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnRM1con0KlHazk1lVfK1Z4k1XnmIjaSGTAZh2k_KH3w&s=10",
+  "marvel-action-figure": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/1DOVFPMA5-product.jpeg",
+  "dc-action-figure": "https://fatcatcollectibles.in/cdn/shop/files/AOBatman.jpg?v=1767865070&width=2048",
+  "gundam-model-kit": "https://d3nt9em9l1urz8.cloudfront.net/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/b/i/bi2266770-1s-1.jpg",
+  "hot-wheels-car": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5A04Enb66iWjKgrpDjkpycfT8UKzrBPeRQ7iBUZ7G-IjdbEPT-IWvsnQ&s=10",
+  "diecast-supercar-model": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtXML-yLuMqHPhnYG_ll4tcsVBLK-RvUCVdjNDb4UmyEYHN3gIfrS_ABA1&s=10",
+  "barbie-doll": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6TSXBLo51HaLdx8HRQCxtsDpmCSF_9fDrf4v38kMtucAMYSQ5Z8Bd8wAL&s=10",
+  "baby-doll": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm00qLxQ9rG52TVQv67WLVGG2isD7KgBHMqBI3KXXAC_0HzHhimKa3mzt5&s=10",
+  "nerf-blaster": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=1080/da/cms-assets/cms/product/c3b9c202-831c-4121-8de4-30887ecabeb1.png?bg_token=color.background.quaternary",
+  "water-gun": "https://i5.walmartimages.com/seo/Spyra-Go-Water-Blaster-Red_b3d16d1d-620c-4294-88a8-22b43d0e6a05.14a2846e72e795645131904532d4c487.jpeg",
+  "beyblade": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNprO9A14QhCjNkwlpnu7-qd40SbB1myWsWP1olUkqzuC8r5whih18yKYO&s=10",
+  "rubik-s-speed-cube": "https://cdn.thewirecutter.com/wp-content/media/2023/01/rubikscube-2048px-08392.jpg?width=2048&quality=60&crop=2048:1365&auto=webp",
+  "rubiks-speed-cube": "https://cdn.thewirecutter.com/wp-content/media/2023/01/rubikscube-2048px-08392.jpg?width=2048&quality=60&crop=2048:1365&auto=webp",
+  "rubik-s-3-3-cube": "https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=1200,height=672,format=auto/https://doordash-static.s3.amazonaws.com/media/photosV2/adf005d1-c1e0-4602-a97f-ab051d41c01a-retina-large.jpg",
+  "rubik-s-3x3-cube": "https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=1200,height=672,format=auto/https://doordash-static.s3.amazonaws.com/media/photosV2/adf005d1-c1e0-4602-a97f-ab051d41c01a-retina-large.jpg",
+  "rubiks-3x3-cube": "https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=1200,height=672,format=auto/https://doordash-static.s3.amazonaws.com/media/photosV2/adf005d1-c1e0-4602-a97f-ab051d41c01a-retina-large.jpg",
+  "chess-set": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgNet72A24SOQ6GAVEcEwbtSz9rA1YQm5QyDP4S3_V35cnYP1wevGIVSA&s=10",
+  "monopoly": "https://m.media-amazon.com/images/I/61qODZoJc5L._AC_UF1000,1000_QL80_.jpg",
+  "jenga": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGN9xaKXbgGsS44WrYXr5M0WuqVyATD33HWF_14FJHzS_WOOB77FBdTgk&s=10",
+  "uno": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg-Fetayz-q2H-yuTSyn-FBngb0FmR8xKxf8oqAAlHlw_JZUUYT4yJNbQ&s=10",
+  "magnetic-building-blocks": "https://m.media-amazon.com/images/I/71BHmMFaAGL._AC_UF1000,1000_QL80_.jpg",
+  "building-blocks-set": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMehcsrGwQ6Z8IXVtwRi3XhPJqcrD-rzUitgc2gxQmlA&s=10",
+  "play-doh-set": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRvfM-LgPAqynsEm-NMa0kTYGSKMrutEzbvH9eVn2QfBHSQPFMJKXK3e4&s=10",
+  "remote-control-robot": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvot1tt_kRe33IfcpN7aTHDycQncTglm9xSnxQNPZs-ASLh5HvqLHJbHY&s=10",
+  "robot-building-kit": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcXkPSvh-yFkeihP2H3Gm5tgvn2yP4-gw9U00YCLUT_Jaa4ogNG3xzlD4&s=10",
+  "toy-train-set": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtLcj8bhg8UFP5zEfdQEov-Jj4V5h9rUYQrc06iLS6Dr5OrLoulWkBpmE&s=10",
+  "toy-kitchen-set": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQldwOMqn0_ICs3ymxTej2I0b8KWkEbuhz_guYzTDUD5pNzwfQKxQQv_BE&s=10",
+  "doctor-play-set": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKQ1KR1Rubme5BRDSKk7D1DvDFdwW4yqWiq4-vtFfjxw&s=10",
+  "dinosaur-figure-set": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1lAl4iRJb0SBpqwYYfzT1o0L1Vx-535Me9xHMTu0u1pgUrw502BQzCppn&s=10",
+  "dinosaur-excavation-kit": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsC7plTaxnEkw-PMKWdEvcK70KYIabsEBek1a3-N1uIi6nc0DE_8DY4yk&s=10",
+  "magic-kit": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwLCgOPVDZeNYfrchrMSYKPrtt6_B279dflJU_BTR9jqnAHhhxWKW1rMo&s=10",
+  "science-experiment-kit": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaQrGw36QGT0Zm7NV9oMQF8xyvMk7ejbrrg2aDiefeUITaBgGFRi07F2iW&s=10",
+  "telescope": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH_SJ1mvl7Hr09DICEG05h61tG4UL3aUR8im0PliIpIrc6p9ELOVlcPzoK&s=10",
+  "microscope-kit": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg5IUcpFmDfaplSTI7TtDYhXY4kxh2bdXuqXVIMtfmJfDyYraLHCotyBaf&s=10",
+  "kids-musical-keyboard": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfROgOrZynDXHJAIJQbN_IeI8QOkVrH1Sk6fgTA96WSg&s=10",
+  "toy-guitar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVexBLuzXiAPbQf-AfyIPscbZ18VNfWKsiTb4FsQCH9A&s=10",
+  "toy-piano": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT80NpgeyOrSIpWdO-A1dwB-730-K5jfh-UvTTr3d3aS7CPTWYoqSagjPc&s=10",
+  "toy-drum-set": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxXLR5d9aVPBWPvQIzcnrXZouPCsbgzw-9jlIw6k5RKg&s=10",
+  "plush-teddy-bear": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1WVszLjEknZbONK4s5O6TF-8jV5pSKmcBTaakBEMD5_bYu86SAQ8N7p-a&s=10",
+  "pokemon-plush": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj78J9OAsgrpp_HsE7M5K87QoxZRRD1-uQxjvPApImCdtQc8f88PcXoEOA&s=10",
+  "pokemon-trading-card-box": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxziJcMt9lDf9v0cphYd73asXUBJicOmI0kSOUiXIKmg&s=10",
+  "pokemon-figure-set": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhNq0H6jL9An2P_zvWJMypzLjtpaZxb3OOD5SaPuJO5g&s=10",
+  "minecraft-lego-set": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_mSk-k7JtlrTfpHdL_GDOia-58T2kunOcyE-HKhjERsIdxXEcA6W4qdzm&s=10",
+  "minecraft-figure-set": "https://media.entertainmentearth.com/assets/images/d418d75e85b84968947a4ce9d264250blg.jpg",
+  "superhero-costume-set": "https://spirit.scene7.com/is/image/Spirit/01628445-a?wid=640&hei=640&fmt=webp"
+};
+
+export const DEFAULT_TOYS_IMAGE = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80";
+
+export function getToysProductImage(slug: string, fallback?: string): string {
+  const normalized = slug.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  return TOYS_IMAGE_MAP[normalized] || fallback || DEFAULT_TOYS_IMAGE;
+}
+
 /**
  * Resolves the remote product image URL for a mobile product.
  */
