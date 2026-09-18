@@ -2229,3 +2229,22 @@ export const HOMEPAGE_CATEGORIES_GRID: HomepageCategoryTile[] = [
   },
 ];
 
+/**
+ * Universal product image resolver ensuring category listings and detail pages
+ * always display the exact same authentic image.
+ */
+export function getProductDisplayImage(categorySlug: string, itemSlug: string, rawImage?: string | null): string | null {
+  const normCat = categorySlug.toLowerCase().trim();
+  if (normCat === "drinks") return getDrinksProductImage(itemSlug, rawImage || undefined);
+  if (normCat === "fashion") return getFashionProductImage(itemSlug, rawImage || undefined);
+  if (normCat === "mobile") return getMobilesProductImage(itemSlug, rawImage || undefined);
+  if (normCat === "beauty") return getBeautyProductImage(itemSlug, rawImage || undefined);
+  if (normCat === "entertainment") return getEntertainmentProductImage(itemSlug, rawImage || undefined);
+  if (normCat === "subscriptions") return getSubscriptionsProductImage(itemSlug, rawImage || undefined);
+  if (normCat === "electronics") return getElectronicsProductImage(itemSlug, rawImage || undefined);
+  if (normCat === "fitness") return getFitnessProductImage(itemSlug, rawImage || undefined);
+  if (normCat === "toys") return getToysProductImage(itemSlug, rawImage || undefined);
+  if (normCat === "vehicles") return getVehiclesProductImage(itemSlug, rawImage || undefined);
+  if (normCat === "food") return getFoodProductImage(itemSlug, rawImage || undefined);
+  return rawImage || null;
+}

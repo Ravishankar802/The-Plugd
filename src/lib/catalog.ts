@@ -1006,8 +1006,583 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
 
+  // If fitness category, ensure images are synced to authentic URLs and missing items are seeded
+  const fitnessCat = await prisma.category.findUnique({ where: { slug: "fitness" }, select: { id: true } });
+  if (fitnessCat && categoryId === fitnessCat.id) {
+    const fullFitness = getFullFitnessCatalog();
+    const allowedSlugs = new Set(fullFitness.map((f) => f.id));
+
+    const unauthorizedItems = items.filter((i) => !allowedSlugs.has(i.slug));
+    if (unauthorizedItems.length > 0) {
+      await prisma.catalogItem.deleteMany({
+        where: {
+          categoryId: fitnessCat.id,
+          slug: { in: unauthorizedItems.map((i) => i.slug) },
+        },
+      }).catch(() => {});
+    }
+
+    const existingSlugs = new Set(items.map((i) => i.slug));
+    const missing = fullFitness.filter((f) => !existingSlugs.has(f.id));
+
+    if (missing.length > 0) {
+      await prisma.catalogItem.createMany({
+        data: missing.map((m, idx) => ({
+          name: m.name,
+          slug: m.id,
+          categoryId: fitnessCat.id,
+          image: m.imageUrl,
+          active: true,
+          featured: Boolean(m.featured),
+          displayOrder: m.displayOrder ?? idx,
+        })),
+        skipDuplicates: true,
+      }).catch(() => {});
+    }
+
+    items = await prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        categoryId: fitnessCat.id,
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        image: true,
+        categoryId: true,
+        featured: true,
+        displayOrder: true,
+      },
+      orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
+    });
+
+    const fitnessImageBySlug = new Map(fullFitness.map((f) => [f.id, f.imageUrl]));
+    const itemsToUpdate = items.filter((item) => {
+      const targetUrl = fitnessImageBySlug.get(item.slug);
+      return targetUrl && item.image !== targetUrl;
+    });
+
+    if (itemsToUpdate.length > 0) {
+      Promise.all(
+        itemsToUpdate.map((item) =>
+          prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { image: fitnessImageBySlug.get(item.slug)! },
+          }).catch(() => {})
+        )
+      ).catch(() => {});
+
+      items = items.map((item) => {
+        const targetUrl = fitnessImageBySlug.get(item.slug);
+        return targetUrl ? { ...item, image: targetUrl } : item;
+      });
+    }
+
+    const slugOrder = fullFitness.map((f) => f.id);
+    items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
+  }
+
+  // If toys category, ensure images are synced to authentic URLs and missing items are seeded
+  const toysCat = await prisma.category.findUnique({ where: { slug: "toys" }, select: { id: true } });
+  if (toysCat && categoryId === toysCat.id) {
+    const fullToys = getFullToysCatalog();
+    const allowedSlugs = new Set(fullToys.map((t) => t.id));
+
+    const unauthorizedItems = items.filter((i) => !allowedSlugs.has(i.slug));
+    if (unauthorizedItems.length > 0) {
+      await prisma.catalogItem.deleteMany({
+        where: {
+          categoryId: toysCat.id,
+          slug: { in: unauthorizedItems.map((i) => i.slug) },
+        },
+      }).catch(() => {});
+    }
+
+    const existingSlugs = new Set(items.map((i) => i.slug));
+    const missing = fullToys.filter((t) => !existingSlugs.has(t.id));
+
+    if (missing.length > 0) {
+      await prisma.catalogItem.createMany({
+        data: missing.map((m, idx) => ({
+          name: m.name,
+          slug: m.id,
+          categoryId: toysCat.id,
+          image: m.imageUrl,
+          active: true,
+          featured: Boolean(m.featured),
+          displayOrder: m.displayOrder ?? idx,
+        })),
+        skipDuplicates: true,
+      }).catch(() => {});
+    }
+
+    items = await prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        categoryId: toysCat.id,
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        image: true,
+        categoryId: true,
+        featured: true,
+        displayOrder: true,
+      },
+      orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
+    });
+
+    const toysImageBySlug = new Map(fullToys.map((t) => [t.id, t.imageUrl]));
+    const itemsToUpdate = items.filter((item) => {
+      const targetUrl = toysImageBySlug.get(item.slug);
+      return targetUrl && item.image !== targetUrl;
+    });
+
+    if (itemsToUpdate.length > 0) {
+      Promise.all(
+        itemsToUpdate.map((item) =>
+          prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { image: toysImageBySlug.get(item.slug)! },
+          }).catch(() => {})
+        )
+      ).catch(() => {});
+
+      items = items.map((item) => {
+        const targetUrl = toysImageBySlug.get(item.slug);
+        return targetUrl ? { ...item, image: targetUrl } : item;
+      });
+    }
+
+    const slugOrder = fullToys.map((t) => t.id);
+    items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
+  }
+
+  // If vehicles category, ensure images are synced to authentic URLs and missing items are seeded
+  const vehiclesCat = await prisma.category.findUnique({ where: { slug: "vehicles" }, select: { id: true } });
+  if (vehiclesCat && categoryId === vehiclesCat.id) {
+    const fullVehicles = getFullVehiclesCatalog();
+    const allowedSlugs = new Set(fullVehicles.map((v) => v.id));
+
+    const unauthorizedItems = items.filter((i) => !allowedSlugs.has(i.slug));
+    if (unauthorizedItems.length > 0) {
+      await prisma.catalogItem.deleteMany({
+        where: {
+          categoryId: vehiclesCat.id,
+          slug: { in: unauthorizedItems.map((i) => i.slug) },
+        },
+      }).catch(() => {});
+    }
+
+    const existingSlugs = new Set(items.map((i) => i.slug));
+    const missing = fullVehicles.filter((v) => !existingSlugs.has(v.id));
+
+    if (missing.length > 0) {
+      await prisma.catalogItem.createMany({
+        data: missing.map((m, idx) => ({
+          name: m.name,
+          slug: m.id,
+          categoryId: vehiclesCat.id,
+          image: m.imageUrl,
+          active: true,
+          featured: Boolean(m.featured),
+          displayOrder: m.displayOrder ?? idx,
+        })),
+        skipDuplicates: true,
+      }).catch(() => {});
+    }
+
+    items = await prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        categoryId: vehiclesCat.id,
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        image: true,
+        categoryId: true,
+        featured: true,
+        displayOrder: true,
+      },
+      orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
+    });
+
+    const vehiclesImageBySlug = new Map(fullVehicles.map((v) => [v.id, v.imageUrl]));
+    const itemsToUpdate = items.filter((item) => {
+      const targetUrl = vehiclesImageBySlug.get(item.slug);
+      return targetUrl && item.image !== targetUrl;
+    });
+
+    if (itemsToUpdate.length > 0) {
+      Promise.all(
+        itemsToUpdate.map((item) =>
+          prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { image: vehiclesImageBySlug.get(item.slug)! },
+          }).catch(() => {})
+        )
+      ).catch(() => {});
+
+      items = items.map((item) => {
+        const targetUrl = vehiclesImageBySlug.get(item.slug);
+        return targetUrl ? { ...item, image: targetUrl } : item;
+      });
+    }
+
+    const slugOrder = fullVehicles.map((v) => v.id);
+    items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
+  }
+
   cachedItemsByCategory.set(categoryId, { data: items, expiresAt: now + CACHE_TTL_MS });
   return items;
+}
+
+export type ResolvedCatalogProduct = {
+  id: string;
+  name: string;
+  slug: string;
+  image: string | null;
+  shortDescription?: string | null;
+  description?: string | null;
+  category: {
+    id: string;
+    name: string;
+    slug: string;
+    icon: string | null;
+  };
+};
+
+/**
+ * Universal catalog product resolver for product detail pages and metadata.
+ * Ensures that products from any category (including Toys, Vehicles, and Fitness)
+ * resolve to their authentic product records, canonical image URLs, and database records.
+ */
+export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCatalogProduct | null> {
+  if (!rawSlug) return null;
+  const slug = decodeURIComponent(rawSlug).trim().toLowerCase();
+
+  // 1. Direct Prisma lookup
+  let item = await prisma.catalogItem.findUnique({
+    where: { slug },
+    include: { category: true },
+  });
+
+  if (item) {
+    return {
+      id: item.id,
+      name: item.name,
+      slug: item.slug,
+      image: item.image,
+      shortDescription: item.shortDescription,
+      description: item.description,
+      category: item.category,
+    };
+  }
+
+  // 2. Slug normalization and common aliases
+  const aliases = [
+    slug.replace("pokemon-", "pok-mon-"),
+    slug.replace("pok-mon-", "pokemon-"),
+    slug.replace("rubik-s-", "rubiks-"),
+    slug.replace("rubiks-", "rubik-s-"),
+    slug.replace("-3x3-", "-3-3-"),
+    slug.replace("-3-3-", "-3x3-"),
+    slug.replace("weightlifting-", "weightlighting-"),
+    slug.replace("weightlighting-", "weightlifting-"),
+    slug.replace("protein-", "protien-"),
+    slug.replace("protien-", "protein-"),
+    slug.replace("kettlebell-", "kettleball-"),
+    slug.replace("kettleball-", "kettlebell-"),
+  ].filter((a) => a !== slug);
+
+  for (const alias of aliases) {
+    const aliasItem = await prisma.catalogItem.findUnique({
+      where: { slug: alias },
+      include: { category: true },
+    });
+    if (aliasItem) {
+      return {
+        id: aliasItem.id,
+        name: aliasItem.name,
+        slug: aliasItem.slug,
+        image: aliasItem.image,
+        shortDescription: aliasItem.shortDescription,
+        description: aliasItem.description,
+        category: aliasItem.category,
+      };
+    }
+  }
+
+  // 3. Fallback catalog matching and self-healing DB upsert
+  // Check Toys
+  const fullToys = getFullToysCatalog();
+  const toy = fullToys.find((t) => t.id === slug || aliases.includes(t.id));
+  if (toy) {
+    const category = await prisma.category.findUnique({ where: { slug: "toys" } });
+    if (category) {
+      const dbItem = await prisma.catalogItem.upsert({
+        where: { slug: toy.id },
+        update: {
+          name: toy.name,
+          image: toy.imageUrl,
+          active: true,
+          featured: Boolean(toy.featured),
+        },
+        create: {
+          name: toy.name,
+          slug: toy.id,
+          categoryId: category.id,
+          image: toy.imageUrl,
+          active: true,
+          featured: Boolean(toy.featured),
+          displayOrder: toy.displayOrder,
+        },
+        include: { category: true },
+      }).catch(() => null);
+
+      if (dbItem) return dbItem;
+
+      return {
+        id: `toys-${toy.id}`,
+        name: toy.name,
+        slug: toy.id,
+        image: toy.imageUrl,
+        category,
+      };
+    }
+  }
+
+  // Check Vehicles
+  const fullVehicles = getFullVehiclesCatalog();
+  const veh = fullVehicles.find((v) => v.id === slug || aliases.includes(v.id));
+  if (veh) {
+    const category = await prisma.category.findUnique({ where: { slug: "vehicles" } });
+    if (category) {
+      const dbItem = await prisma.catalogItem.upsert({
+        where: { slug: veh.id },
+        update: {
+          name: veh.name,
+          image: veh.imageUrl,
+          active: true,
+          featured: Boolean(veh.featured),
+        },
+        create: {
+          name: veh.name,
+          slug: veh.id,
+          categoryId: category.id,
+          image: veh.imageUrl,
+          active: true,
+          featured: Boolean(veh.featured),
+          displayOrder: veh.displayOrder,
+        },
+        include: { category: true },
+      }).catch(() => null);
+
+      if (dbItem) return dbItem;
+
+      return {
+        id: `vehicles-${veh.id}`,
+        name: veh.name,
+        slug: veh.id,
+        image: veh.imageUrl,
+        category,
+      };
+    }
+  }
+
+  // Check Fitness
+  const fullFitness = getFullFitnessCatalog();
+  const fit = fullFitness.find((f) => f.id === slug || aliases.includes(f.id));
+  if (fit) {
+    const category = await prisma.category.findUnique({ where: { slug: "fitness" } });
+    if (category) {
+      const dbItem = await prisma.catalogItem.upsert({
+        where: { slug: fit.id },
+        update: {
+          name: fit.name,
+          image: fit.imageUrl,
+          active: true,
+          featured: Boolean(fit.featured),
+        },
+        create: {
+          name: fit.name,
+          slug: fit.id,
+          categoryId: category.id,
+          image: fit.imageUrl,
+          active: true,
+          featured: Boolean(fit.featured),
+          displayOrder: fit.displayOrder,
+        },
+        include: { category: true },
+      }).catch(() => null);
+
+      if (dbItem) return dbItem;
+
+      return {
+        id: `fitness-${fit.id}`,
+        name: fit.name,
+        slug: fit.id,
+        image: fit.imageUrl,
+        category,
+      };
+    }
+  }
+
+  // Check Electronics
+  const fullElectronics = getFullElectronicsCatalog();
+  const elec = fullElectronics.find((e) => e.id === slug || aliases.includes(e.id));
+  if (elec) {
+    const category = await prisma.category.findUnique({ where: { slug: "electronics" } });
+    if (category) {
+      const dbItem = await prisma.catalogItem.upsert({
+        where: { slug: elec.id },
+        update: { name: elec.name, image: elec.imageUrl, active: true },
+        create: {
+          name: elec.name,
+          slug: elec.id,
+          categoryId: category.id,
+          image: elec.imageUrl,
+          active: true,
+          featured: Boolean(elec.featured),
+          displayOrder: elec.displayOrder ?? 0,
+        },
+        include: { category: true },
+      }).catch(() => null);
+      if (dbItem) return dbItem;
+      return { id: `electronics-${elec.id}`, name: elec.name, slug: elec.id, image: elec.imageUrl, category };
+    }
+  }
+
+  // Check Drinks
+  const fullDrinks = getFullDrinksCatalog();
+  const drink = fullDrinks.find((d) => d.id === slug);
+  if (drink) {
+    const category = await prisma.category.findUnique({ where: { slug: "drinks" } });
+    if (category) {
+      const dbItem = await prisma.catalogItem.upsert({
+        where: { slug: drink.id },
+        update: { name: drink.name, image: drink.imageUrl, active: true },
+        create: {
+          name: drink.name,
+          slug: drink.id,
+          categoryId: category.id,
+          image: drink.imageUrl,
+          active: true,
+          featured: Boolean(drink.featured),
+          displayOrder: drink.displayOrder ?? 0,
+        },
+        include: { category: true },
+      }).catch(() => null);
+      if (dbItem) return dbItem;
+      return { id: `drinks-${drink.id}`, name: drink.name, slug: drink.id, image: drink.imageUrl, category };
+    }
+  }
+
+  // Check Mobiles
+  const fullMobiles = getFullMobilesCatalog();
+  const mobile = fullMobiles.find((m) => m.id === slug);
+  if (mobile) {
+    const category = await prisma.category.findUnique({ where: { slug: "mobile" } });
+    if (category) {
+      const dbItem = await prisma.catalogItem.upsert({
+        where: { slug: mobile.id },
+        update: { name: mobile.name, image: mobile.imageUrl, active: true },
+        create: {
+          name: mobile.name,
+          slug: mobile.id,
+          categoryId: category.id,
+          image: mobile.imageUrl,
+          active: true,
+          featured: Boolean(mobile.featured),
+          displayOrder: 0,
+        },
+        include: { category: true },
+      }).catch(() => null);
+      if (dbItem) return dbItem;
+      return { id: `mobile-${mobile.id}`, name: mobile.name, slug: mobile.id, image: mobile.imageUrl, category };
+    }
+  }
+
+  // Check Beauty
+  const fullBeauty = getFullBeautyCatalog();
+  const beauty = fullBeauty.find((b) => b.id === slug);
+  if (beauty) {
+    const category = await prisma.category.findUnique({ where: { slug: "beauty" } });
+    if (category) {
+      const dbItem = await prisma.catalogItem.upsert({
+        where: { slug: beauty.id },
+        update: { name: beauty.name, image: beauty.imageUrl, active: true },
+        create: {
+          name: beauty.name,
+          slug: beauty.id,
+          categoryId: category.id,
+          image: beauty.imageUrl,
+          active: true,
+          featured: Boolean(beauty.featured),
+          displayOrder: beauty.displayOrder ?? 0,
+        },
+        include: { category: true },
+      }).catch(() => null);
+      if (dbItem) return dbItem;
+      return { id: `beauty-${beauty.id}`, name: beauty.name, slug: beauty.id, image: beauty.imageUrl, category };
+    }
+  }
+
+  // Check Entertainment
+  const fullEntertainment = getFullEntertainmentCatalog();
+  const ent = fullEntertainment.find((e) => e.id === slug);
+  if (ent) {
+    const category = await prisma.category.findUnique({ where: { slug: "entertainment" } });
+    if (category) {
+      const dbItem = await prisma.catalogItem.upsert({
+        where: { slug: ent.id },
+        update: { name: ent.name, image: ent.imageUrl, active: true },
+        create: {
+          name: ent.name,
+          slug: ent.id,
+          categoryId: category.id,
+          image: ent.imageUrl,
+          active: true,
+          featured: Boolean(ent.featured),
+          displayOrder: ent.displayOrder ?? 0,
+        },
+        include: { category: true },
+      }).catch(() => null);
+      if (dbItem) return dbItem;
+      return { id: `entertainment-${ent.id}`, name: ent.name, slug: ent.id, image: ent.imageUrl, category };
+    }
+  }
+
+  // Check Food
+  const fullFood = getFullFoodCatalog();
+  const food = fullFood.find((f) => f.id === slug);
+  if (food) {
+    const category = await prisma.category.findUnique({ where: { slug: "food" } });
+    if (category) {
+      const dbItem = await prisma.catalogItem.upsert({
+        where: { slug: food.id },
+        update: { name: food.name, image: food.imageUrl, active: true },
+        create: {
+          name: food.name,
+          slug: food.id,
+          categoryId: category.id,
+          image: food.imageUrl,
+          active: true,
+          featured: Boolean(food.featured),
+          displayOrder: food.displayOrder ?? 0,
+        },
+        include: { category: true },
+      }).catch(() => null);
+      if (dbItem) return dbItem;
+      return { id: `food-${food.id}`, name: food.name, slug: food.id, image: food.imageUrl, category };
+    }
+  }
+
+  return null;
 }
 
 export function resolveWishlistItem(wishlistItem: {

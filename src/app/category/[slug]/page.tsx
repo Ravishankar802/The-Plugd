@@ -25,7 +25,7 @@ import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS } from "@/lib/el
 import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
 import { getFullToysCatalog } from "@/lib/toys-catalog";
 import { getFullVehiclesCatalog, VEHICLES_TOP_PICKS_SLUGS } from "@/lib/vehicles-catalog";
-import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage, getFitnessProductImage, getToysProductImage, getVehiclesProductImage } from "@/lib/product-images";
+import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage, getFitnessProductImage, getToysProductImage, getVehiclesProductImage, getProductDisplayImage } from "@/lib/product-images";
 import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
 
 export const dynamic = "force-dynamic";
@@ -531,58 +531,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     items = rawItems;
   }
 
-  // Ensure authentic product images
-  if (category.slug === "drinks") {
-    items = items.map((item) => ({
-      ...item,
-      image: getDrinksProductImage(item.slug, item.image || undefined),
-    }));
-  } else if (category.slug === "fashion") {
-    items = items.map((item) => ({
-      ...item,
-      image: getFashionProductImage(item.slug, item.image || undefined),
-    }));
-  } else if (category.slug === "mobile" || isElectronicsMobile) {
-    items = items.map((item) => ({
-      ...item,
-      image: getMobilesProductImage(item.slug, item.image || undefined),
-    }));
-  } else if (category.slug === "beauty") {
-    items = items.map((item) => ({
-      ...item,
-      image: getBeautyProductImage(item.slug, item.image || undefined),
-    }));
-  } else if (category.slug === "entertainment") {
-    items = items.map((item) => ({
-      ...item,
-      image: getEntertainmentProductImage(item.slug, item.image || undefined),
-    }));
-  } else if (category.slug === "subscriptions") {
-    items = items.map((item) => ({
-      ...item,
-      image: getSubscriptionsProductImage(item.slug, item.image || undefined),
-    }));
-  } else if (category.slug === "electronics") {
-    items = items.map((item) => ({
-      ...item,
-      image: getElectronicsProductImage(item.slug, item.image || undefined),
-    }));
-  } else if (category.slug === "fitness") {
-    items = items.map((item) => ({
-      ...item,
-      image: getFitnessProductImage(item.slug, item.image || undefined),
-    }));
-  } else if (category.slug === "toys") {
-    items = items.map((item) => ({
-      ...item,
-      image: getToysProductImage(item.slug, item.image || undefined),
-    }));
-  } else if (category.slug === "vehicles") {
-    items = items.map((item) => ({
-      ...item,
-      image: getVehiclesProductImage(item.slug, item.image || undefined),
-    }));
-  }
+  // Ensure authentic product images matching detail pages perfectly
+  items = items.map((item) => ({
+    ...item,
+    image: getProductDisplayImage(isElectronicsMobile ? "mobile" : category.slug, item.slug, item.image),
+  }));
 
   // Requirement 7: Hide main category horizontal navigation on subcategory pages
   const isMainCategoryPage = !subParam || subParam === "all";

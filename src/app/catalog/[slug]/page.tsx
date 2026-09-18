@@ -5,9 +5,9 @@ import Footer from "@/components/Footer";
 import AddToWishlistButton from "@/components/AddToWishlistButton";
 import CategoryIcon from "@/components/CategoryIcon";
 import { getSession } from "@/lib/auth";
-import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
-import { getDrinksProductImage, getFashionProductImage, getMobilesProductImage } from "@/lib/product-images";
+import { getProductDisplayImage } from "@/lib/product-images";
+import { resolveCatalogProduct } from "@/lib/catalog";
 
 export const dynamic = "force-dynamic";
 
@@ -17,10 +17,7 @@ interface CatalogItemPageProps {
 
 export async function generateMetadata({ params }: CatalogItemPageProps) {
   const resolvedParams = await params;
-  const item = await prisma.catalogItem.findUnique({
-    where: { slug: resolvedParams.slug },
-    include: { category: true },
-  });
+  const item = await resolveCatalogProduct(resolvedParams.slug);
 
   if (!item) return { title: "Plugd Catalog" };
 
@@ -35,23 +32,14 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
 
   const [session, item] = await Promise.all([
     getSession(),
-    prisma.catalogItem.findUnique({
-      where: { slug: resolvedParams.slug },
-      include: { category: true },
-    }),
+    resolveCatalogProduct(resolvedParams.slug),
   ]);
 
   if (!item) {
     notFound();
   }
 
-  const displayImage = item.category.slug === "drinks"
-    ? getDrinksProductImage(item.slug, item.image || undefined)
-    : item.category.slug === "fashion"
-    ? getFashionProductImage(item.slug, item.image || undefined)
-    : item.category.slug === "mobile"
-    ? getMobilesProductImage(item.slug, item.image || undefined)
-    : item.image;
+  const displayImage = getProductDisplayImage(item.category.slug, item.slug, item.image);
 
   return (
     <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
