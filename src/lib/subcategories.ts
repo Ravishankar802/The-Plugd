@@ -831,14 +831,14 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "cars",
       name: "Cars",
-      image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=300&q=80",
+      image: "https://i.pinimg.com/1200x/2c/98/ac/2c98acd9b1ad63593d65ab97f71bc3a3.jpg",
       keywords: ["car", "porsche", "ferrari", "lamborghini", "bmw", "rolls royce", "mclaren", "aston martin", "bugatti", "koenigsegg", "pagani", "hypercar", "supercar", "chiron", "veyron", "tourbillon", "jesko", "utopia", "valkyrie", "speedtail", "senna", "revuelto", "sf90", "daytona sp3", "monza", "stradale", "huracan", "aventador", "svj", "750s", "765lt", "p1", "db12", "dbs", "vantage", "cullinan", "phantom", "spectre", "maybach", "hennessey"],
       productIds: CARS_SLUGS,
     },
     {
       id: "bikes",
       name: "Bikes",
-      image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=300&q=80",
+      image: "https://i.pinimg.com/1200x/b8/6c/07/b86c07ec5574dcf8aa7eaf6634c4d211.jpg",
       keywords: ["bike", "motorcycle", "ducati", "kawasaki", "harley", "bullet", "royalenfield", "royal enfield", "bmw s1000rr", "yamaha", "panigale", "ninja", "triumph", "ktm", "interceptor", "continental", "aprilia", "street triple", "speed triple", "z900", "zx-10r", "h2", "streetfighter", "diavel", "monster", "super duke", "fat boy", "nightster", "sportster", "cbr1000rr"],
       productIds: BIKES_SLUGS,
     },
