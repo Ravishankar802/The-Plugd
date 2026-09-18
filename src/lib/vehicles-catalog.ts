@@ -166,7 +166,7 @@ export const BIKES_DATA = [
 export const CARS_DATA = [
   {
     "name": "Rolls-Royce Cullinan",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXGhE06dhz-YuINYjFwW_5S9ipDjnSGgAyYyhg13yQ7dRSGwTM1TEL_4g&s=10"
+    "image": "https://i.pinimg.com/736x/45/bf/b9/45bfb9c3a28b8cf7f3680e76ceaf5ec6.jpg"
   },
   {
     "name": "Rolls-Royce Phantom",
@@ -174,43 +174,43 @@ export const CARS_DATA = [
   },
   {
     "name": "Rolls-Royce Spectre",
-    "image": "https://hips.hearstapps.com/hmg-prod/images/2024-rolls-royce-spectre-464-671fa79551ad8.jpg?crop=0.605xw:0.510xh;0.124xw,0.383xh&resize=640"
+    "image": "https://i.pinimg.com/736x/00/71/0c/00710c27f5ace34d718d5c2a647cca38.jpg"
   },
   {
     "name": "Mercedes-AMG G63",
-    "image": "https://www.topgear.com/sites/default/files/2024/11/1-Mercedes-AMG-G63-review-UK-2024.jpg"
+    "image": "https://i.pinimg.com/1200x/3a/e6/d1/3ae6d1bb4e17f831da816d664c3a09af.jpg"
   },
   {
     "name": "BMW M4",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK9b-2Rtg9JTg8d-zrH9elCUCbRM1OElTNjow_9PT0DCow82YNYpihK8uP&s=10"
+    "image": "https://i.pinimg.com/736x/4b/cb/0a/4bcb0a71a44920f896d8231ac4ca5792.jpg"
   },
   {
     "name": "BMW M5",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSka0_zsda1GVpb3sWJ_XyKcX8hetDFZSiR2xY0E9YYGE6ODKzh_oBougWk&s=10"
+    "image": "https://i.pinimg.com/736x/c5/32/07/c532071478fc356784cac8be0b43de69.jpg"
   },
   {
     "name": "BMW M8",
-    "image": "https://images.pistonheads.com/nimg/48516/mceu_28130768111715370648938.jpg"
+    "image": "https://i.pinimg.com/1200x/6c/8c/4e/6c8c4e2a9ed090748663d88e7fc73741.jpg"
   },
   {
     "name": "Ferrari 296 GTB",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLADKYxXzJ_AKCII4npk0VIOYnO6PT266IeyxKeHusJIMcFf1IBbnZteKi&s=10"
+    "image": "https://i.pinimg.com/1200x/e4/44/98/e44498d8f953921d2fce2fdb68740de2.jpg"
   },
   {
     "name": "Ferrari 296 GTS",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScHgvdX_IWW5n6gTZUrJ9FpKdwyMxwvVy5vswDZIzqJiO6x6SFvCJQitw&s=10"
+    "image": "https://i.pinimg.com/236x/af/9c/00/af9c005834512d13fa878486ea1ab87c.jpg"
   },
   {
     "name": "Ferrari 812 Superfast",
-    "image": "https://stimg.cardekho.com/images/carexteriorimages/360x240/Ferrari/Ferrari-812-SuperFast/047.jpg"
+    "image": "https://i.pinimg.com/1200x/a4/0a/37/a40a373006e00b54b36569fa024b19ca.jpg"
   },
   {
     "name": "Porsche 918 Spyder",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr8U_iiPkNIAULuqPUGovF2cQzHpB3zdiNL4UZT8YKVHCE65YxGxhLi8A&s=10"
+    "image": "https://i.pinimg.com/736x/25/f4/a6/25f4a65a1e5d11f42abf1bbd642c363b.jpg"
   },
   {
     "name": "McLaren P1",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUxguMkNPkSwNzlwarigzx7BBWkTg8EPkbyWAgIYxIlEUZrmYGBW8sWE88&s=10"
+    "image": "https://i.pinimg.com/1200x/0e/d4/bc/0ed4bc9ffaafa1af8e474cc83e9fccec.jpg"
   },
   {
     "name": "McLaren P1 GTR",
@@ -218,31 +218,31 @@ export const CARS_DATA = [
   },
   {
     "name": "McLaren Senna",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlRrduIzo-H0XTPtJGomqeumactGd3HLxhtnPybq8pDn0WGZn1-aaKpIg&s=10"
+    "image": "https://i.pinimg.com/236x/3d/03/d1/3d03d1ba58529f3c21c93113a13866e6.jpg"
   },
   {
     "name": "McLaren Senna GTR",
-    "image": "https://www.thespeedjournal.com/wp-content/uploads/2020/09/mclaren-senna-gtr-lm-11.jpg"
+    "image": "https://i.pinimg.com/1200x/ac/86/99/ac8699b322d74b25e71b4c325860dcf7.jpg"
   },
   {
     "name": "McLaren Speedtail",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStKUGACurI__rAwA6HExH8WJiv_3Q_zAoZ_UkpVV0EhsEGKkeHQxDZ4tR3&s=10"
+    "image": "https://i.pinimg.com/1200x/2a/79/70/2a79701a86bfa7f5267074c58410d006.jpg"
   },
   {
     "name": "McLaren Solus GT",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdmYSZmI-10L68xk5cKNnvdLyOGgXkmRU88ncPZPsbwjeg_UHEy0Iskb4&s=10"
+    "image": "https://i.pinimg.com/736x/1f/63/df/1f63dfd55d58447e832fa3d8ee85d970.jpg"
   },
   {
     "name": "McLaren Elva",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQxZ8CcuPZTRhvSToExQ00l9cHqN3c1nBoKwVRDzTsXe0gO3z5tXLLycSl&s=10"
+    "image": "https://i.pinimg.com/1200x/07/41/1a/07411a54a3f9e68114817015747d9d32.jpg"
   },
   {
-    "name": "Porsche 911 (pink)",
+    "name": "Porsche 911",
     "image": "https://i.pinimg.com/736x/af/f7/db/aff7dbc0a04399330fc0435ef26277cb.jpg"
   },
   {
     "name": "Mercedes-Maybach S-Class",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAScBdITqYs6xmYKjsdiuJE8t51LoMzOHIRXfHx360RyGOPDKbr5iXtHK9&s=10"
+    "image": "https://i.pinimg.com/236x/61/4e/a2/614ea2ae4cedb572e60b2f34de5ac40c.jpg"
   },
   {
     "name": "Mercedes-Maybach GLS 600",
@@ -250,23 +250,23 @@ export const CARS_DATA = [
   },
   {
     "name": "Range Rover SV",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHSH-PBpxStD3j34s_rR0GCAvq4uzoxG9UfQsQAd_aVh85mInoZwbhrgg&s=10"
+    "image": "https://i.pinimg.com/1200x/32/6d/a6/326da6ba7157cf4947f72eef36367ef7.jpg"
   },
   {
     "name": "Range Rover Sport",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxS1asLbWc-SvnUkWTYnQll3DDInMMb6vppsXJyJd3l-cdhpANi6l1mnI&s=10"
+    "image": "https://i.pinimg.com/736x/5e/a0/18/5ea018f37cb9615efceb738cbeb74711.jpg"
   },
   {
     "name": "Land Rover Defender",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzRtjc8qC1-Ro_fI8BjYOurt2cSKYEyo9IbpXK6O8M3JYdO0331MViWn8&s=10"
+    "image": "https://i.pinimg.com/1200x/33/73/8d/33738df22f75efc09872f90e98608d7b.jpg"
   },
   {
     "name": "Jeep Wrangler",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzJXrgdDWbmi5BcZi3S5Z0EdObA2NblT2ZvPiaLqvocgl2_gio3A77E4eE&s=10"
+    "image": "https://i.pinimg.com/1200x/cc/39/be/cc39beecb452c3cac18e2269d6ac700c.jpg"
   },
   {
     "name": "Ford Raptor R",
-    "image": "https://cdn.motor1.com/images/mgl/mM29ZR/s1/2024-ford-f-150-raptor-r-first-drive.jpg"
+    "image": "https://i.pinimg.com/1200x/01/c4/fc/01c4fca87b34b15a7a8bd92e40d6768e.jpg"
   },
   {
     "name": "Ram TRX",
@@ -278,67 +278,67 @@ export const CARS_DATA = [
   },
   {
     "name": "Tesla Model S Plaid",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_ajo2UkAPvw8EM5G0vIMgOTOI4YKWsRUzPE1it4QPhUoPr6086Rwv351t&s=10"
+    "image": "https://i.pinimg.com/236x/5a/9a/81/5a9a8104b4ccddf817986a769598f350.jpg"
   },
   {
     "name": "Ferrari 812 Competizione",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfbdVxgnDzUsJ478PwnbM9_Jp2E6rm1Vt75Q-MJhg0pA&s=10"
+    "image": "https://i.pinimg.com/1200x/a8/17/77/a817773f40e1597e564d8c8822a4d2a2.jpg"
   },
   {
     "name": "Ferrari SF90 Stradale",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQroQUeONamE__MzGFp6_yoDYEo6AgLb1mmeTmxzMX58gXIKYZbCgOl2Bpu&s=10"
+    "image": "https://i.pinimg.com/736x/23/c3/44/23c3448ffe14bd9c9e5ae2a105e4cdb4.jpg"
   },
   {
     "name": "Ferrari SF90 Spider",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY7HrzZ94SYa0CRgOEVZuyJMjTgM27G9cd-_epqX04EQ6Fy_Pk9LfCf_M&s=10"
+    "image": "https://i.pinimg.com/736x/24/43/d7/2443d7db6def1151d04b7ab6655c8c2b.jpg"
   },
   {
     "name": "Ferrari 12 Cilindri",
-    "image": "https://hips.hearstapps.com/hmg-prod/images/new-ferrari-v12-ext-04-design-red-media-66352eb2086eb.jpg?crop=1xw:0.8875739644970414xh;center,top&resize=1200"
+    "image": "https://i.pinimg.com/1200x/82/26/b2/8226b23e2be0f0fb357ab06ec4a6ded6.jpg"
   },
   {
     "name": "Ferrari 12 Cilindri Spider",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKBAd7XO4xxkwuTdY-9qr5VWdZiRh0c5J--I9WjwjecsXioOM6bKUqoFA&s=10"
+    "image": "https://i.pinimg.com/1200x/88/47/b1/8847b1e62914f64bd3cbfcd60aefd9c1.jpg"
   },
   {
     "name": "Ferrari 849 Testarossa",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1lJ5oaURWBaOKKQRvGx1JS_IxpicgzaPnWHc308UQvLEvlmUBLX2Ahy44&s=10"
+    "image": "https://i.pinimg.com/736x/6c/01/37/6c013726095bc96b38af3eca808eba41.jpg"
   },
   {
     "name": "Ferrari 849 Testarossa Spider",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtZCgerBf-tojCd9HMo1ckc5BmOb2M-TlWfTJQ2DijqvWRwErU0I35Qm4&s=10"
+    "image": "https://i.pinimg.com/1200x/da/ff/08/daff0856eddc372dcd3090ca5a6116a6.jpg"
   },
   {
     "name": "Lamborghini Huracán Evo",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXwiUfDIOqItzDIGH1RrLxEqrSPC4tPuSCgtmbn1z13IfGb3eDzTRPeWs&s=10"
+    "image": "https://i.pinimg.com/736x/46/5d/0e/465d0e77c2be34b115398c884e9f5bee.jpg"
   },
   {
     "name": "Lamborghini Huracán STO",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTASslLorWJApw-m6pQKNmzm-fMWra17iFpq-2bxXeKuF--hpzIii8OKzY&s=10"
+    "image": "https://i.pinimg.com/1200x/5c/51/56/5c5156bce2f6790c9cdcef4d12eb0294.jpg"
   },
   {
     "name": "Lamborghini Huracán Tecnica",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw4XXkOfs7kbOsSFUgvUoaZKhVTRypRrVGlX4g0zIB87u6-P8zOXtGd_w&s=10"
+    "image": "https://i.pinimg.com/1200x/e6/12/14/e61214d6f2728c5d3f9b521469567c39.jpg"
   },
   {
     "name": "Lamborghini Aventador SVJ",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFQZ-G6x8_LLhs2NPchQIoQ-liW-KLqPZLKcDHVcYxJIcsH35rzaNQj_o&s=10"
+    "image": "https://i.pinimg.com/1200x/dc/0e/f3/dc0ef3c0e120e148f65ddca88b823d9b.jpg"
   },
   {
     "name": "Lamborghini Murciélago",
-    "image": "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/masterpieces/murcielago-lp-650-roadster/murcielago_lp650_roadster_over_rev_01_m_0.jpg"
+    "image": "https://i.pinimg.com/1200x/c3/35/23/c335235e54d6dd8ebc316649be1c3ef5.jpg"
   },
   {
     "name": "Lamborghini Revuelto",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyo1w3urVJyC_y6WmW-2dxUXY_-50K7AXaBnL74yxTow&s=10"
+    "image": "https://i.pinimg.com/1200x/76/a5/c4/76a5c432c91aaa2d8087af9a49391e0b.jpg"
   },
   {
     "name": "Lamborghini Temerario",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpd1nB2dsF1XHIKnLpZ-If-OSnhwxeJEiPh9DHPj6cvg&s=10"
+    "image": "https://i.pinimg.com/736x/3a/30/3a/3a303ac87ca3f1de9ae7b373f1e58b95.jpg"
   },
   {
     "name": "Porsche 911 Turbo S",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqx_K0BsqTHRSytglKs333aD1XcFMcdLFezlgC2EHaug&s=10"
+    "image": "https://i.pinimg.com/1200x/28/2b/ef/282beff23ad6f2e37736654af562f2fb.jpg"
   },
   {
     "name": "Porsche 911 GT3",
@@ -346,19 +346,19 @@ export const CARS_DATA = [
   },
   {
     "name": "Porsche 911 GT3 RS",
-    "image": "https://i.pinimg.com/736x/10/36/43/1036438f26e29568030077e27e78f769.jpg"
+    "image": "https://i.pinimg.com/1200x/37/32/8f/37328f5640d60a2fa943c21843ee3775.jpg"
   },
   {
     "name": "Aston Martin Vantage",
-    "image": "https://i.pinimg.com/1200x/f0/14/dc/f014dc6fbc1894774237512f1e765989.jpg"
+    "image": "https://i.pinimg.com/1200x/a1/97/e3/a197e343539bbd2fb94033578369e508.jpg"
   },
   {
     "name": "Aston Martin Vanquish",
-    "image": "https://i.pinimg.com/736x/11/50/e7/1150e7a1e225c6712c09641e5fd684d3.jpg"
+    "image": "https://i.pinimg.com/1200x/97/16/6b/97166bf22acc8aad178182138aa01a6a.jpg"
   },
   {
     "name": "Aston Martin DB12",
-    "image": "https://i.pinimg.com/1200x/0c/0c/96/0c0c96cff73a87d3d9c5f3e67d8c527c.jpg"
+    "image": "https://i.pinimg.com/1200x/ea/6e/62/ea6e62f29c21234544ac4ef681e04ea2.jpg"
   },
   {
     "name": "Aston Martin DBS Superleggera",
@@ -366,7 +366,7 @@ export const CARS_DATA = [
   },
   {
     "name": "Aston Martin DBS 770 Ultimate",
-    "image": "https://i.pinimg.com/736x/a9/e3/02/a9e3024bdabeffd304bba9a27e0d6008.jpg"
+    "image": "https://i.pinimg.com/1200x/67/8f/da/678fda7ed04c743ef252af933a64ffe4.jpg"
   },
   {
     "name": "McLaren 720S",
@@ -374,43 +374,43 @@ export const CARS_DATA = [
   },
   {
     "name": "McLaren 750S",
-    "image": "https://i.pinimg.com/1200x/ab/de/4e/abde4ec8956ccb482a29f549a69997c3.jpg"
+    "image": "https://i.pinimg.com/1200x/d8/79/09/d87909c7e424081a57ab88e8e5243699.jpg"
   },
   {
     "name": "McLaren 765LT",
-    "image": "https://i.pinimg.com/736x/a6/e8/3f/a6e83f7637508bedac6c2e2fe3b51711.jpg"
+    "image": "https://i.pinimg.com/1200x/1f/74/82/1f7482e2a344fe41c78ff00e8d5aaf3e.jpg"
   },
   {
     "name": "Ferrari Purosangue",
-    "image": "https://i.pinimg.com/1200x/40/e4/65/40e4658515441cfbffa7b7e35a484a61.jpg"
+    "image": "https://i.pinimg.com/1200x/d1/2b/ed/d12bedf1a2e3c665f0f743282dee4eeb.jpg"
   },
   {
     "name": "Lamborghini Urus",
-    "image": "https://i.pinimg.com/736x/68/3d/3a/683d3a732cbaf6bd5a097113ce56f61c.jpg"
+    "image": "https://i.pinimg.com/736x/07/91/b2/0791b2008965e41caa51de309655d85a.jpg"
   },
   {
     "name": "Porsche Cayenne",
-    "image": "https://i.pinimg.com/1200x/89/73/94/8973946fa228aefbdcedd83b7085dce4.jpg"
+    "image": "https://i.pinimg.com/1200x/20/70/fb/2070fb5b769b1089ca38c01b765e7c8f.jpg"
   },
   {
     "name": "Aston Martin DBX",
-    "image": "https://i.pinimg.com/1200x/06/c9/6e/06c96eb18e4bc45b0bf87db55387c036.jpg"
+    "image": "https://i.pinimg.com/1200x/d6/3c/b4/d63cb4e90f32d38ff2a2b72401ffc078.jpg"
   },
   {
     "name": "McLaren W1",
-    "image": "https://i.pinimg.com/1200x/02/d1/c5/02d1c508599acdc9716ad665b1476a93.jpg"
+    "image": "https://i.pinimg.com/736x/44/36/67/4436679029692b5dcfd50793f2d67b38.jpg"
   },
   {
     "name": "McLaren F1",
-    "image": "https://i.pinimg.com/736x/ef/2c/1b/ef2c1bc9126d96e4f5d68a8eb61d4368.jpg"
+    "image": "https://i.pinimg.com/1200x/14/79/31/147931e0d8e38c0067e7ce54463e1a2c.jpg"
   },
   {
     "name": "Ferrari LaFerrari",
-    "image": "https://i.pinimg.com/1200x/08/c9/d3/08c9d3a94f0060994254c3342624d864.jpg"
+    "image": "https://i.pinimg.com/736x/95/74/5b/95745bde71cac44254aed53dd4c17f40.jpg"
   },
   {
     "name": "Ferrari LaFerrari Aperta",
-    "image": "https://i.pinimg.com/1200x/22/ce/e2/22cee253cdb96c2c187aa9d5f4e60021.jpg"
+    "image": "https://i.pinimg.com/736x/1c/ef/7e/1cef7e67547203a6e69658b8c03d6a1e.jpg"
   },
   {
     "name": "Ferrari Daytona SP3",
@@ -418,51 +418,51 @@ export const CARS_DATA = [
   },
   {
     "name": "Ferrari Monza SP1",
-    "image": "https://i.pinimg.com/736x/0b/82/f7/0b82f7cd3bad6b520521bd39145f2950.jpg"
+    "image": "https://i.pinimg.com/736x/64/98/09/649809f296bf80939c64404489f9d90e.jpg"
   },
   {
     "name": "Ferrari Monza SP2",
-    "image": "https://i.pinimg.com/1200x/66/08/99/6608991b41e8b09f3c90613a2fc5687d.jpg"
+    "image": "https://i.pinimg.com/736x/c6/fa/ab/c6faab0f5da4660106f7f5d5a35023ae.jpg"
   },
   {
     "name": "Lamborghini Sian",
-    "image": "https://i.pinimg.com/736x/b2/85/33/b28533b62967b90790f46bbd738bde84.jpg"
+    "image": "https://i.pinimg.com/1200x/e4/01/bd/e401bda214ca26c9cb0294776e9efc02.jpg"
   },
   {
     "name": "Lamborghini Veneno Roadster",
-    "image": "https://i.pinimg.com/1200x/db/25/23/db2523edd91d495ce46a377195c91d62.jpg"
+    "image": "https://i.pinimg.com/1200x/02/70/16/027016080e4f6d5d95fc62e9ae2788e7.jpg"
   },
   {
     "name": "Aston Martin Vulcan",
-    "image": "https://i.pinimg.com/736x/c4/7a/00/c47a00cfe1aef22c6ba6b76b627861e3.jpg"
+    "image": "https://i.pinimg.com/1200x/2f/9d/02/2f9d02e599f8b0f456473715e38c6e4f.jpg"
   },
   {
     "name": "Aston Martin Valhalla",
-    "image": "https://i.pinimg.com/236x/62/ee/20/62ee20dc6014d9f2dd48993b6185ac07.jpg"
+    "image": "https://i.pinimg.com/236x/f3/bc/33/f3bc33fab6d9df35f24751c61811b57a.jpg"
   },
   {
     "name": "Aston Martin Valour",
-    "image": "https://i.pinimg.com/1200x/7a/4a/cf/7a4acfef8df8a8efbfcc54ef451898ac.jpg"
+    "image": "https://i.pinimg.com/736x/b0/7d/06/b07d06440d7abcb9de63ec628065e03c.jpg"
   },
   {
     "name": "Aston Martin Valiant",
-    "image": "https://i.pinimg.com/1200x/21/2e/90/212e90ebd6dcd4d9c96c9cac43877ef5.jpg"
+    "image": "https://i.pinimg.com/236x/d9/13/40/d91340bc56b196416e25c4b968d23417.jpg"
   },
   {
     "name": "Aston Martin Valen",
-    "image": "https://i.pinimg.com/236x/38/5e/ce/385ecec83801df33e453465476513d1a.jpg"
+    "image": "https://i.pinimg.com/736x/a7/cd/5c/a7cd5cc7c3688ccf2e0943904e695ba3.jpg"
   },
   {
     "name": "Aston Martin Valkyrie",
-    "image": "https://i.pinimg.com/1200x/87/c8/a2/87c8a26e320f284ce89b9beafde4e7e5.jpg"
+    "image": "https://i.pinimg.com/236x/fc/6d/cf/fc6dcfff908017daeaffdee69b18fddb.jpg"
   },
   {
     "name": "Mercedes-AMG Project One",
-    "image": "https://i.pinimg.com/1200x/66/24/ed/6624ed516028c7a4c72f021fccfb9d48.jpg"
+    "image": "https://i.pinimg.com/1200x/8f/87/c0/8f87c03584d98be54c26ecaf5c3c8b78.jpg"
   },
   {
     "name": "Rimac Nevera",
-    "image": "https://i.pinimg.com/236x/f7/ce/d5/f7ced51e0dec5146ad6087d9bb82cfb6.jpg"
+    "image": "https://i.pinimg.com/236x/12/40/b8/1240b8f75f65957ada21062f0c564b28.jpg"
   },
   {
     "name": "Rimac Nevera R",
@@ -470,23 +470,23 @@ export const CARS_DATA = [
   },
   {
     "name": "Bugatti Veyron",
-    "image": "https://i.pinimg.com/1200x/01/47/6c/01476cd7f3a11d4e9d314c8ef398d938.jpg"
+    "image": "https://i.pinimg.com/1200x/15/39/cb/1539cbd48153939ca25eb6c89ba344f3.jpg"
   },
   {
-    "name": "Bugatti Chiron Super Sport 300+",
-    "image": "https://i.pinimg.com/736x/6d/6f/05/6d6f05d450f5999da6eaa2426c65c1f2.jpg"
+    "name": "Bugatti Chiron Super Sport",
+    "image": "https://i.pinimg.com/736x/06/96/ad/0696ad5fa97f9cc2df8a9b87385a16c8.jpg"
   },
   {
     "name": "Bugatti Chiron Pur Sport",
-    "image": "https://i.pinimg.com/1200x/bc/e7/81/bce781b2b76d1f521307e336eef8f567.jpg"
+    "image": "https://i.pinimg.com/236x/eb/ac/d8/ebacd8f78c3265eadcd167b2caf63b14.jpg"
   },
   {
     "name": "Bugatti Mistral",
-    "image": "https://i.pinimg.com/736x/28/5d/1b/285d1bc7cd06574acecde92e03dd5334.jpg"
+    "image": "https://i.pinimg.com/236x/53/d4/ef/53d4ef1275f502ec9b10011a812b0b40.jpg"
   },
   {
     "name": "Bugatti Divo",
-    "image": "https://i.pinimg.com/736x/0e/6d/80/0e6d80f7b3e68d90e38a22138fed8a48.jpg"
+    "image": "https://i.pinimg.com/1200x/0b/f1/40/0bf14095f7029d6617423c5ad2c05c03.jpg"
   },
   {
     "name": "Bugatti Centodieci",
@@ -494,7 +494,7 @@ export const CARS_DATA = [
   },
   {
     "name": "Bugatti Bolide",
-    "image": "https://i.pinimg.com/736x/7e/fc/8d/7efc8da7e679872ee442305b7deb7261.jpg"
+    "image": "https://i.pinimg.com/736x/4a/69/47/4a69479e6c1c6c2bdc8dbf29384da40d.jpg"
   },
   {
     "name": "Bugatti Tourbillon",
@@ -502,19 +502,19 @@ export const CARS_DATA = [
   },
   {
     "name": "Koenigsegg Jesko Absolut",
-    "image": "https://i.pinimg.com/1200x/55/a6/b5/55a6b58f00a5870ac1692cfd7ddf4ad2.jpg"
+    "image": "https://i.pinimg.com/1200x/2c/98/ac/2c98acd9b1ad63593d65ab97f71bc3a3.jpg"
   },
   {
     "name": "Koenigsegg Jesko Attack",
-    "image": "https://i.pinimg.com/736x/29/d3/7d/29d37da7c2b1d9b8db59ad81ef41df7f.jpg"
+    "image": "https://i.pinimg.com/1200x/bc/e1/db/bce1dbe2828ca279e8f4022f5be97ff9.jpg"
   },
   {
     "name": "Koenigsegg Gemera",
-    "image": "https://i.pinimg.com/736x/2a/2c/b6/2a2cb6c21ade3e78f8a585e09ea08c78.jpg"
+    "image": "https://i.pinimg.com/1200x/8b/d4/22/8bd4223d2262acb12e09acede3ad4dc7.jpg"
   },
   {
     "name": "Koenigsegg Agera",
-    "image": "https://i.pinimg.com/1200x/75/bc/91/75bc912626c9b435b3e79742e66ec7fe.jpg"
+    "image": "https://i.pinimg.com/736x/37/20/2f/37202f438aa8f729ed7c109e5a8e7bca.jpg"
   },
   {
     "name": "Koenigsegg Agera R",
@@ -522,19 +522,19 @@ export const CARS_DATA = [
   },
   {
     "name": "Koenigsegg Agera S",
-    "image": "https://i.pinimg.com/1200x/d0/b5/e5/d0b5e54c189fac57041c67bef3a84fd8.jpg"
+    "image": "https://i.pinimg.com/1200x/07/01/91/07019110ee3dbc4c8738a7fdb8b0e47b.jpg"
   },
   {
     "name": "Koenigsegg Agera RS",
-    "image": "https://i.pinimg.com/736x/ec/0a/6d/ec0a6d8bcea0560f82c76f5c2e755b61.jpg"
+    "image": "https://i.pinimg.com/1200x/e7/ef/be/e7efbe18b8fc6c0569dfae2a145618b0.jpg"
   },
   {
     "name": "Koenigsegg Regera",
-    "image": "https://i.pinimg.com/1200x/9d/4b/87/9d4b87c180e45f8b51863525ecb21dcb.jpg"
+    "image": "https://i.pinimg.com/1200x/1b/f7/f1/1bf7f115cceb881bc8a51c8cbb0e4a18.jpg"
   },
   {
     "name": "Koenigsegg CCX",
-    "image": "https://i.pinimg.com/736x/62/34/00/62340059413c9eb024ca0fdfce019712.jpg"
+    "image": "https://i.pinimg.com/736x/8a/c0/c6/8ac0c6c105b9c0cf3790bba893a7b6c9.jpg"
   },
   {
     "name": "Koenigsegg CCR",
@@ -542,11 +542,11 @@ export const CARS_DATA = [
   },
   {
     "name": "Koenigsegg CCXR",
-    "image": "https://i.pinimg.com/736x/2e/b5/89/2eb589cb1efac3cdf5f4ae33f1c8d29f.jpg"
+    "image": "https://i.pinimg.com/736x/46/37/1b/46371bbbb518131ab6350b4fb0a7cbaf.jpg"
   },
   {
     "name": "Koenigsegg CCGT",
-    "image": "https://i.pinimg.com/736x/ac/c8/be/acc8be69fbf1886a0fd23261764105ee.jpg"
+    "image": "https://i.pinimg.com/736x/11/9a/11/119a11ae464cea7372f28c4533cad123.jpg"
   },
   {
     "name": "Koenigsegg CC8S",
@@ -554,11 +554,11 @@ export const CARS_DATA = [
   },
   {
     "name": "Koenigsegg CC850",
-    "image": "https://i.pinimg.com/1200x/77/94/1c/77941cf8050dc9e3c523277e44c5edf1.jpg"
+    "image": "https://i.pinimg.com/1200x/cd/2e/19/cd2e191f5615d46600755e9ebae080f6.jpg"
   },
   {
     "name": "Pagani Zonda",
-    "image": "https://i.pinimg.com/736x/f1/ee/ec/f1eeec004a8fbece02069e588d768d2c.jpg"
+    "image": "https://i.pinimg.com/1200x/07/b5/d0/07b5d0cd944a9b0c40768be9d219e562.jpg"
   },
   {
     "name": "Pagani Huayra",
@@ -566,31 +566,31 @@ export const CARS_DATA = [
   },
   {
     "name": "Pagani Utopia",
-    "image": "https://i.pinimg.com/736x/33/eb/6d/33eb6d0586ad9ce455ed346122584c2b.jpg"
+    "image": "https://i.pinimg.com/736x/ff/3a/35/ff3a3517856a97da1d67a2bd662fc870.jpg"
   },
   {
     "name": "Pagani Grandi Complicazioni",
-    "image": "https://i.pinimg.com/1200x/78/0b/f0/780bf078faec9154806d1bac99b11c3c.jpg"
+    "image": "https://i.pinimg.com/1200x/cf/a6/89/cfa689d6321b84a621698d039e35b18a.jpg"
   },
   {
     "name": "Hennessey Venom F5",
-    "image": "https://i.pinimg.com/736x/fe/70/69/fe70696416db67f780c14d22326769b7.jpg"
+    "image": "https://i.pinimg.com/1200x/2b/f9/ee/2bf9eef9a6a34f3406f8bdf0858d2132.jpg"
   },
   {
     "name": "Hennessey Venom F5 Roadster",
-    "image": "https://i.pinimg.com/736x/15/68/a2/1568a2830459cec76a7d1e1918df53ba.jpg"
+    "image": "https://i.pinimg.com/1200x/cc/97/c9/cc97c97abfa4c15bfb8169682c3cf79a.jpg"
   }
 ] as const;
 
 export const VEHICLES_TOP_PICKS_NAMES = [
-  "Bugatti Chiron Super Sport 300+",
+  "Bugatti Chiron Super Sport",
   "Koenigsegg Jesko Absolut",
   "Pagani Huayra",
   "Aston Martin Valkyrie",
   "Ferrari LaFerrari",
   "McLaren P1",
   "Porsche 911 GT3 RS",
-  "Porsche 911 (pink)",
+  "Porsche 911",
   "Kawasaki Ninja H2R",
   "BMW S1000RR",
   "BMW M1000RR",
