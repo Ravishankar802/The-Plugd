@@ -55,31 +55,31 @@ function getBrandFromName(name: string): string {
 export const BIKES_DATA = [
   {
     "name": "Royal Enfield Continental GT 650",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLQYR7BtF6npUcPYS0oKutoaGMRwgAC5cQc_vM7O1mQA&s=10"
+    "image": "https://i.pinimg.com/1200x/51/90/11/5190112ca8a3162b8d8f40ed9da11423.jpg"
   },
   {
     "name": "Royal Enfield Interceptor 650",
-    "image": "https://imgd.aeplcdn.com/664x374/n/cw/ec/1/versions/royalenfield-interceptor-standard1788441744015.jpg?q=80"
+    "image": "https://i.pinimg.com/1200x/fb/14/1c/fb141c95792f08ad62fec3f3b9891a6b.jpg"
   },
   {
     "name": "Aprilia 457",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzFowFUlfjKck4dq-A3qazISHZyehLAz5WTW0Wk_xkWQ&s"
+    "image": "https://i.pinimg.com/736x/90/f1/db/90f1db2386679f8453e45c1389ca0502.jpg"
   },
   {
     "name": "Triumph Street Triple 765 RS",
-    "image": "https://media.triumphmotorcycles.co.uk/image/upload/f_auto/q_auto:eco/sitecoremedialibrary/media-library/images/motorcycles/my26%20colours/street%20triple/street-triple-r-my26-phantom-black-rhs-1080.png"
+    "image": "https://i.pinimg.com/1200x/8c/fd/f3/8cfdf3f35c0efa71ae09fcd6aaa53d85.jpg"
   },
   {
     "name": "Triumph Speed Triple 1200 RS",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCrKV0dyxKIjKHKUGWq52pvVL63kmMLVQjun5gMWpCAQ&s"
+    "image": "https://i.pinimg.com/1200x/a9/82/9f/a9829f6b1723f5de4e91ad8a9e73cbaf.jpg"
   },
   {
     "name": "Kawasaki Z900",
-    "image": "https://imgd.aeplcdn.com/664x374/n/cw/ec/1/versions/--standard1761118078928.jpg?q=80"
+    "image": "https://i.pinimg.com/236x/69/e8/0b/69e80b1318fc4d96e64948154023661b.jpg"
   },
   {
     "name": "Kawasaki Z1100",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVp5B1S2RPk95FYMII-J8IEeXw6opeMItEbh9C2180xg&s"
+    "image": "https://i.pinimg.com/1200x/de/75/86/de758638cde69b23021e55dd56e55f5f.jpg"
   },
   {
     "name": "Kawasaki Ninja ZX-6R",
@@ -87,43 +87,43 @@ export const BIKES_DATA = [
   },
   {
     "name": "Kawasaki Ninja ZX-10R",
-    "image": "https://asset.autocarindia.com/static/models/colors/20260702_062025_dd8a4d67.png"
+    "image": "https://i.pinimg.com/1200x/b8/1b/f7/b81bf71f9f8503a6a70730a5ef2d347d.jpg"
   },
   {
     "name": "Kawasaki Ninja H2",
-    "image": "https://imgd.aeplcdn.com/664x374/n/cw/ec/155277/ninja-h2-sx-right-front-three-quarter.jpeg?isig=0&q=80"
+    "image": "https://i.pinimg.com/736x/48/43/04/484304fa8b46ea0e1046eb452a94aefa.jpg"
   },
   {
     "name": "Kawasaki Ninja H2R",
-    "image": "https://imgd.aeplcdn.com/664x374/n/bw/models/colors/kawasaki-select-model-mirror-coated-matte-spark-black-1676442407791.png?q=80"
+    "image": "https://i.pinimg.com/1200x/b8/6c/07/b86c07ec5574dcf8aa7eaf6634c4d211.jpg"
   },
   {
     "name": "BMW S1000RR",
-    "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/1/versions/bmw-s1000rr-standard1737458444675.jpg"
+    "image": "https://i.pinimg.com/236x/8a/f3/e5/8af3e5ac4d4eeea0b03abc726bb2361a.jpg"
   },
   {
     "name": "BMW M1000RR",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRka4tq680G5Kh-80i4bCg9ceYrw1I01ypvjxInZQ_LlQ&s"
+    "image": "https://i.pinimg.com/1200x/1d/9f/a5/1d9fa5e5c46f375e6157b133bb114836.jpg"
   },
   {
     "name": "Ducati Monster",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTGf_wiqhlFOgCeL1ednggYP0VbzVV2scVIwBuxshZ0g&s=10"
+    "image": "https://i.pinimg.com/236x/b5/c5/16/b5c5169833511f092889655187f06102.jpg"
   },
   {
     "name": "Ducati XDiavel V4",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9GnLRumcX0IBWGpKtnbYFnjZd75C2GrWsOGUEZTHB5Hwot4djnTc1esI&s=10"
+    "image": "https://i.pinimg.com/236x/e9/08/c1/e908c16b9d5f406ef01f8ff4123212bf.jpg"
   },
   {
     "name": "Ducati Streetfighter V4S",
-    "image": "https://www.bikewale.com/n/cw/ec/1/versions/--standard1761911951384.jpg"
+    "image": "https://i.pinimg.com/736x/26/40/58/264058bd88baa6d2341988c0e1dffd0f.jpg"
   },
   {
     "name": "Ducati Panigale V4S",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2y9ix0Q9bcquZpgt8kEBngbTLfSAizTjAUNNL-2rgHWPokqcN5JiyiTk&s=10"
+    "image": "https://i.pinimg.com/1200x/26/a4/bb/26a4bbb02a97ca3174ccb4277532f3c6.jpg"
   },
   {
     "name": "Ducati Panigale V4R",
-    "image": "https://images.ctfassets.net/x7j9qwvpvr5s/2jHxDIZFCef9gEaxe4gwX8/c431b65f334400dc9b0b1133fb848a49/2025-09-19_Panigale-V4-R-MY25-360_0017_it-16.png?w=1920&fm=webp&q=95"
+    "image": "https://i.pinimg.com/1200x/fb/3e/1d/fb3e1d567a0baec6f10794ec9c037729.jpg"
   },
   {
     "name": "KTM 1390 Super Duke R",
@@ -131,35 +131,35 @@ export const BIKES_DATA = [
   },
   {
     "name": "Harley-Davidson X440T",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmYBgwqD1m1-PPrmX-f5Pqumh8nEuB1CTbhLNTTGADgQ&s=10"
+    "image": "https://i.pinimg.com/736x/b2/93/de/b293ded51ea510591833ad167bf71c24.jpg"
   },
   {
     "name": "Harley-Davidson Nightster",
-    "image": "https://www.bikewale.com/n/wlc6ohb_1879773.jpg"
+    "image": "https://i.pinimg.com/736x/7c/f5/7f/7cf57fe29073e8e503f71f9b5726b09e.jpg"
   },
   {
     "name": "Harley-Davidson Sportster S",
-    "image": "https://imgd.aeplcdn.com/476x268/n/cw/ec/211149/sportster-s-right-side-view-15.png?isig=0"
+    "image": "https://i.pinimg.com/1200x/7c/e3/35/7ce33558b3dfbd5310efce28aacb7f90.jpg"
   },
   {
     "name": "Harley-Davidson Fat Boy",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJfulca3JTtQAyYMsASDpr_MKhLbxM94xwfK9breVBjA&s"
+    "image": "https://i.pinimg.com/1200x/70/0f/75/700f751831453b0049664310867c6c49.jpg"
   },
   {
     "name": "Yamaha R9",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSob5JfMfDCa7p6tpkAbDXAc8EwD1ouk4r_FQRswnpqyg&s=10"
+    "image": "https://i.pinimg.com/236x/b0/73/65/b0736582bd3b285444c72333757df73b.jpg"
   },
   {
     "name": "Yamaha R7",
-    "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/146939/r7-right-front-three-quarter.jpeg?isig=0"
+    "image": "https://i.pinimg.com/736x/2b/e9/53/2be9532f4103df5145788572cc90b960.jpg"
   },
   {
     "name": "Honda CBR1000RR-R Fireblade",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCGJfkkyw0JSuCO7bunj4wAQ5q9Ri1KL64g6G1j3ILXQ&s=10"
+    "image": "https://i.pinimg.com/1200x/4b/03/5c/4b035cee24432b556c5c3f4fc37b11dc.jpg"
   },
   {
     "name": "Aprilia RSV4 1100 Factory",
-    "image": "https://apriliaindia.com/images/rsv4/aprilia_rsv4_model2.webp"
+    "image": "https://i.pinimg.com/1200x/97/e9/c7/97e9c75f887a8516dcd6d0ae57a70972.jpg"
   }
 ] as const;
 
