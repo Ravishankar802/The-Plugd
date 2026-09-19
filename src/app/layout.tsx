@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, EB_Garamond, Fredoka } from "next/font/google";
+import { Geist, Geist_Mono, EB_Garamond, Baloo_2 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -18,10 +18,10 @@ const ebGaramond = EB_Garamond({
   subsets: ["latin"],
 });
 
-const fredoka = Fredoka({
+const baloo2 = Baloo_2({
   variable: "--font-logo",
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -66,7 +66,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${ebGaramond.variable} ${fredoka.variable} min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background transition-colors duration-300`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${ebGaramond.variable} ${baloo2.variable} min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background transition-colors duration-300`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
