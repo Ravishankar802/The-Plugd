@@ -32,7 +32,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "ice-creams",
       name: "Ice Creams",
-      image: "https://www.sheetalicecream.com/wp-content/themes/sheetal/images/all_product_image.png",
+      image: "https://i.pinimg.com/1200x/8f/e2/08/8fe20822887ce50251a74036dc050eb9.jpg",
       keywords: [
         "ice cream", "kulfi", "kulfie", "gelato", "popsicle", "sundae", "cornetto", "magnum", "chocobar", "cassata",
         "baskin robbins", "cream pot", "havmor", "hoccol", "tiramisu", "mudslide", "kulhad", "tub", "cone", "stick"
@@ -57,7 +57,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "sweet-cravings",
       name: "Sweet Cravings",
-      image: "https://adharsweets.in/wp-content/uploads/2024/02/sw-b-1.webp",
+      image: "https://i.pinimg.com/736x/16/4a/21/164a21588d7025cad8444055fc361e8f.jpg",
       keywords: [
         "sweets", "sweet", "rasmalai", "gulab", "halwa", "jalebi",
         "laddu", "kaju", "brownie", "pastry", "donut", "doughnut", "chocolate", "mithai", "peda", "barfi", "mysore pak",
@@ -93,7 +93,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "biscuits",
       name: "Biscuits",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY0pPOy7ZcpxQoOWXjl7DHFdDaTnmNE_t9XfG1sTny2pSfnPVJXNxUpxma&s=10",
+      image: "https://i.pinimg.com/1200x/ee/84/b7/ee84b7dd4013b7620f2c794aa3342164.jpg",
       keywords: [
         "biscuit", "biscuits", "cookie", "cookies", "rusk", "wafer",
         "crackers", "little hearts", "maska chaska", "parle-g", "oreo", "krackjack", "good day", "dark fantasy",
@@ -115,7 +115,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "snacks",
       name: "Snacks",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdyoMgk4r6y2WWdkU266A1EUbW2M499tHWY5ys6GJm3UqaOjDg72FOna3b&s=10",
+      image: "https://i.pinimg.com/1200x/27/04/2b/27042b22fecb5612fd64e15eea285e69.jpg",
       keywords: [
         "lays", "chips", "kurkure", "bingo", "uncle chipps", "too yumm", "aloo bhujia", "bhujia sev", "mixture",
         "peanuts", "makhana", "banana chips", "murukku", "chakli", "nippattu", "khakhra", "popcorn", "nachos", "cheese balls", "snack", "snacks"
@@ -148,7 +148,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "coffee",
       name: "Coffee",
-      image: "https://media.cnn.com/api/v1/images/stellar/prod/150929101049-black-coffee-stock.jpg?q=w_3000,h_3074,x_0,y_0,c_fill",
+      image: "https://i.pinimg.com/1200x/29/6d/c1/296dc15130a76781017f119203e396d3.jpg",
       keywords: ["coffee", "espresso", "latte", "cappuccino", "brew", "mocha", "cold coffee", "americano", "macchiato", "frappe"],
       productIds: [
         "nescafe-classic-instant-coffee",
@@ -171,7 +171,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "cold-drinks-juices",
       name: "Cold Drinks & Juices",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTimV-TDBy6BEVnHq8EQ3KzoKEdv77XU6n5ZZxjR8k7dkEmFzneKIxhU6zA&s=10",
+      image: "https://i.pinimg.com/736x/b0/c1/92/b0c192ac88e38530625d72033c95d74e.jpg",
       keywords: ["juice", "cold drink", "soda", "coke", "pepsi", "energy drink", "shake", "smoothie", "lassi", "tea", "iced", "red bull", "monster", "prime", "thums", "sprite", "fanta", "mirinda", "maaza", "frooti", "lemonade", "kombucha", "water"],
       productIds: [
         "frooti",
@@ -206,7 +206,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "jewellery",
       name: "Jewellery",
-      image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=300&q=80",
+      image: "https://i.pinimg.com/736x/25/96/e6/2596e6849fbc75d5d6a1146d9d2f455e.jpg",
       keywords: ["jewellery", "jewelry", "necklace", "ring", "earring", "earrings", "bracelet", "chain", "jhumka", "gold", "silver", "pendant", "choker", "anklet", "bangle", "accessory"],
     },
   ],
@@ -214,7 +214,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "skin-care",
       name: "Skin Care",
-      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=300&q=80",
+      image: "https://i.pinimg.com/736x/5f/4d/7d/5f4d7ddb4382c44486a0e68293b1d5cf.jpg",
       keywords: ["skin", "serum", "moisturizer", "sunscreen", "toner", "cleanser", "cream", "mask", "lotion", "exfoliant", "snail", "niacinamide", "hyaluronic", "retinol", "face wash", "spf", "patch", "salicylic", "glycolic", "hydrating", "cica", "blush", "tint", "concealer", "powder", "lipstick", "lip", "kajal", "mascara"],
       productIds: [
       "rare-beauty-soft-pinch-liquid-blush",
@@ -583,7 +583,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "mobile",
       name: "Mobile",
-      image: "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-duo-witb-night-sky-202609_FMT_WHH?wid=688&hei=744&fmt=jpeg&qlt=90&.v=UXRzMmJCVFBRbmt6ckpmVFpkSGV6OW9uQUtkMExYM3hCb0NtU1BmeG1MWWFQaWtwTG5hT05DL1VJbllMY2xFMTk1ZWt1OVVsVGluOVVGbTJNUkdoeFI3aG9RbUhVTmR5TzlhOU9GSVpwbWlTb2l1NkcvRHpCRmo5NWp0RkV6REk",
+      image: "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-duo-finish-select-202609-nightsky_GEO_EMEA_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=L2FnUkNTRm43ZDRCREFsdzlaeThka1k5MDdKKy9LWVNaMytjbFNMOXdSUmFrOHlZZFNsN2Z2SDlnV2QySDNwVm4wZU5pVHVHdUU0SU0vdlcrc3NTQ1NzRVdVYUZMK2pnb0pYa1BITFFSbEwxcjBVRyswWG14bEI4WVZBcUIybEZCczNpeEs0Y3pqL3FIZXNMK2RzNTlR&traceId=1",
       keywords: ["iphone","samsung","galaxy","pixel","nothing","ipad","phone","mobile","tablet"],
       productIds: [
               "iphone-duo",
@@ -616,7 +616,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "laptops",
       name: "Laptops",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgRdG_AlB3AL1ikG4LCKqSyyqGu77kaIxVupZhXUaBKhpIQN_L105A6wI&s=10",
+      image: "https://i.pinimg.com/1200x/d6/35/af/d635afab177b8051c84149e663996085.jpg",
       keywords: ["macbook","laptop","xps","surface","thinkpad","yoga","spectre","zenbook","proart","swift","blade","rog","zephyrus","legion","alienware","raider","helios","imac","mac mini","mac studio"],
       productIds: [
               "macbook-pro-14",
@@ -680,7 +680,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "gaming",
       name: "Gaming",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYr_nHPnNucwy2bucX-nHGiKxQt8NMZWoQ4GQXizFrbG3TPICQZNjrpd_B&s=10",
+      image: "https://i.pinimg.com/1200x/a6/6c/36/a66c367c6cd24d35746c8a162e382a12.jpg",
       keywords: ["playstation","ps5","xbox","switch","rog ally","steam deck","quest","vision pro","dualsense","rtx","geforce","odyssey","gaming"],
       productIds: [
               "playstation-5",
@@ -831,14 +831,14 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     {
       id: "cars",
       name: "Cars",
-      image: "https://i.pinimg.com/1200x/2c/98/ac/2c98acd9b1ad63593d65ab97f71bc3a3.jpg",
+      image: "https://i.pinimg.com/736x/0d/37/3a/0d373af47cb9c6c8607d7ac09af14ed9.jpg",
       keywords: ["car", "porsche", "ferrari", "lamborghini", "bmw", "rolls royce", "mclaren", "aston martin", "bugatti", "koenigsegg", "pagani", "hypercar", "supercar", "chiron", "veyron", "tourbillon", "jesko", "utopia", "valkyrie", "speedtail", "senna", "revuelto", "sf90", "daytona sp3", "monza", "stradale", "huracan", "aventador", "svj", "750s", "765lt", "p1", "db12", "dbs", "vantage", "cullinan", "phantom", "spectre", "maybach", "hennessey"],
       productIds: CARS_SLUGS,
     },
     {
       id: "bikes",
       name: "Bikes",
-      image: "https://i.pinimg.com/1200x/b8/6c/07/b86c07ec5574dcf8aa7eaf6634c4d211.jpg",
+      image: "https://i.pinimg.com/736x/a4/6d/07/a46d07cce741e97a666cf51ecf5a1e81.jpg",
       keywords: ["bike", "motorcycle", "ducati", "kawasaki", "harley", "bullet", "royalenfield", "royal enfield", "bmw s1000rr", "yamaha", "panigale", "ninja", "triumph", "ktm", "interceptor", "continental", "aprilia", "street triple", "speed triple", "z900", "zx-10r", "h2", "streetfighter", "diavel", "monster", "super duke", "fat boy", "nightster", "sportster", "cbr1000rr"],
       productIds: BIKES_SLUGS,
     },

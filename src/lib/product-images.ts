@@ -2100,14 +2100,15 @@ export function getFitnessProductImage(slug: string, fallback?: string): string 
 export const CATEGORY_TILE_IMAGES: Record<string, string> = {
   food: "https://images.unsplash.com/photo-1563379091339-03b21ab4a7f8?auto=format&fit=crop&w=600&q=80", // Biryani / Indian dining
   drinks: "https://images.unsplash.com/photo-1622597467836-f3285f2131b7?auto=format&fit=crop&w=600&q=80", // Refreshing beverages
-  fashion: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80", // Streetwear / Fashion look
-  mobile: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80", // Flagship smartphone
-  beauty: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80", // Skincare & beauty
-  entertainment: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=600&q=80", // Concerts & live events
-  subscriptions: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80", // Digital AI & streaming tools
-  electronics: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80", // MacBook & hardware
-  fitness: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80", // Fitness & training
-  vehicles: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80", // Porsche / Hypercar
+  fashion: "https://i.pinimg.com/1200x/b5/62/91/b562919ee0fa1993cce4f043342fcd9c.jpg",
+  mobile: "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-duo-finish-select-202609-nightsky_GEO_EMEA_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=L2FnUkNTRm43ZDRCREFsdzlaeThka1k5MDdKKy9LWVNaMytjbFNMOXdSUmFrOHlZZFNsN2Z2SDlnV2QySDNwVm4wZU5pVHVHdUU0SU0vdlcrc3NTQ1NzRVdVYUZMK2pnb0pYa1BITFFSbEwxcjBVRyswWG14bEI4WVZBcUIybEZCczNpeEs0Y3pqL3FIZXNMK2RzNTlR&traceId=1",
+  beauty: "https://i.pinimg.com/1200x/65/c3/f7/65c3f712255d6c59224ba70f3461f799.jpg",
+  entertainment: "https://i.pinimg.com/1200x/ae/ad/1c/aead1c5a93fc66235ef5440d2c1fcce6.jpg",
+  subscriptions: "https://i.pinimg.com/736x/f9/d1/43/f9d143e7063e913378925d3ffa0de5b4.jpg",
+  electronics: "https://i.pinimg.com/1200x/f0/25/a8/f025a8720a0be78b8038aeb15fd3cc29.jpg",
+  fitness: "https://i.pinimg.com/736x/73/38/85/733885d96e5f21ba103ca8fb378f4a4c.jpg",
+  vehicles: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80",
+  toys: "https://i.pinimg.com/1200x/63/a8/a2/63a8a2c1ad77c37fb59b951e1fd7ff6d.jpg",
 };
 
 export function getCategoryTileImage(slug: string): string {
@@ -2129,103 +2130,103 @@ export const HOMEPAGE_CATEGORIES_GRID: HomepageCategoryTile[] = [
   {
     name: "Mobile",
     href: "/category/mobile",
-    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80",
+    image: "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-duo-finish-select-202609-nightsky_GEO_EMEA_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=L2FnUkNTRm43ZDRCREFsdzlaeThka1k5MDdKKy9LWVNaMytjbFNMOXdSUmFrOHlZZFNsN2Z2SDlnV2QySDNwVm4wZU5pVHVHdUU0SU0vdlcrc3NTQ1NzRVdVYUZMK2pnb0pYa1BITFFSbEwxcjBVRyswWG14bEI4WVZBcUIybEZCczNpeEs0Y3pqL3FIZXNMK2RzNTlR&traceId=1",
   },
   {
     name: "Coffee",
     href: "/category/drinks?sub=coffee",
-    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/1200x/29/6d/c1/296dc15130a76781017f119203e396d3.jpg",
   },
   {
     name: "Fashion",
     href: "/category/fashion",
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/1200x/b5/62/91/b562919ee0fa1993cce4f043342fcd9c.jpg",
   },
   {
     name: "Gaming",
     href: "/category/electronics?sub=gaming",
-    image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/1200x/a6/6c/36/a66c367c6cd24d35746c8a162e382a12.jpg",
   },
   {
     name: "Ice Creams",
     href: "/category/food?sub=ice-creams",
-    image: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/1200x/8f/e2/08/8fe20822887ce50251a74036dc050eb9.jpg",
   },
   {
     name: "Electronics",
     href: "/category/electronics",
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/1200x/f0/25/a8/f025a8720a0be78b8038aeb15fd3cc29.jpg",
   },
   {
     name: "Beauty",
     href: "/category/beauty",
-    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/1200x/65/c3/f7/65c3f712255d6c59224ba70f3461f799.jpg",
   },
   {
     name: "Bikes",
     href: "/category/vehicles?sub=bikes",
-    image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/736x/a4/6d/07/a46d07cce741e97a666cf51ecf5a1e81.jpg",
   },
   {
     name: "Cold Drinks & Juices",
     href: "/category/drinks?sub=cold-drinks-juices",
-    image: "https://images.unsplash.com/photo-1622597467836-f3285f2131b7?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/736x/b0/c1/92/b0c192ac88e38530625d72033c95d74e.jpg",
   },
   {
     name: "Laptops",
     href: "/category/electronics?sub=laptops",
-    image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/1200x/d6/35/af/d635afab177b8051c84149e663996085.jpg",
   },
   // Row 2 (10 tiles)
   {
     name: "Entertainment",
     href: "/category/entertainment",
-    image: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/1200x/ae/ad/1c/aead1c5a93fc66235ef5440d2c1fcce6.jpg",
   },
   {
     name: "Snacks",
     href: "/category/food?sub=snacks",
-    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/1200x/27/04/2b/27042b22fecb5612fd64e15eea285e69.jpg",
   },
   {
     name: "Subscriptions",
     href: "/category/subscriptions",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/736x/f9/d1/43/f9d143e7063e913378925d3ffa0de5b4.jpg",
   },
   {
     name: "Skin Care",
     href: "/category/beauty?sub=skin-care",
-    image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/736x/5f/4d/7d/5f4d7ddb4382c44486a0e68293b1d5cf.jpg",
   },
   {
     name: "Cars",
     href: "/category/vehicles?sub=cars",
-    image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/736x/0d/37/3a/0d373af47cb9c6c8607d7ac09af14ed9.jpg",
   },
   {
     name: "Sweet Cravings",
     href: "/category/food?sub=sweet-cravings",
-    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/736x/16/4a/21/164a21588d7025cad8444055fc361e8f.jpg",
   },
   {
     name: "Fitness",
     href: "/category/fitness",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/736x/73/38/85/733885d96e5f21ba103ca8fb378f4a4c.jpg",
   },
   {
     name: "Jewellery",
     href: "/category/fashion?sub=jewellery",
-    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/736x/25/96/e6/2596e6849fbc75d5d6a1146d9d2f455e.jpg",
   },
   {
     name: "Biscuits",
     href: "/category/food?sub=biscuits",
-    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/1200x/ee/84/b7/ee84b7dd4013b7620f2c794aa3342164.jpg",
   },
   {
     name: "Toys",
     href: "/category/toys",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
+    image: "https://i.pinimg.com/1200x/63/a8/a2/63a8a2c1ad77c37fb59b951e1fd7ff6d.jpg",
   },
 ];
 
