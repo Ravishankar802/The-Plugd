@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Sparkles, LayoutDashboard, Heart, LogIn } from "lucide-react";
 import DiscoverySearch from "@/components/DiscoverySearch";
@@ -44,24 +43,10 @@ export default function Header({
     <header className="sticky top-0 z-40 w-full border-b border-zinc-200/80 bg-white/95 backdrop-blur-xl transition-all">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:gap-6 md:px-6 md:py-3.5">
         {/* Left: Logo & Wordmark */}
-        <Link href="/" className="group flex shrink-0 items-center gap-2.5">
-          <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-2xl bg-zinc-950 shadow-md ring-1 ring-black/5 transition-transform group-hover:scale-105">
-            <Image
-              src="/logo.png"
-              alt="Plugd Logo"
-              width={36}
-              height={36}
-              className="h-8 w-8 object-contain"
-            />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-xl font-black tracking-tight text-zinc-950">
-              Plugd<span className="text-orange-500">.</span>
-            </span>
-            <span className="hidden text-[10px] font-semibold uppercase tracking-wider text-zinc-500 sm:block">
-              Creator Wishlist
-            </span>
-          </div>
+        <Link href="/" className="group flex shrink-0 items-center">
+          <span className="text-2xl md:text-[28px] font-black tracking-tight bg-gradient-to-r from-zinc-950 via-zinc-800 to-orange-500 bg-clip-text text-transparent select-none">
+            Plugd
+          </span>
         </Link>
 
         {/* Center: Search Bar */}
