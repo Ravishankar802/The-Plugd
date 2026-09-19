@@ -83,16 +83,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <main className="mx-auto max-w-7xl flex-1 px-4 py-5 md:px-6 md:py-7 w-full">
         {/* Two-board Hero Section */}
         {!query && (
-          <section className="mb-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5">
-            {/* Board 1: Create My Wishlist (Primary Board) */}
-            <div className="md:col-span-7 relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-8 text-white shadow-md border border-zinc-800/60 flex flex-col justify-between">
+          <section className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 items-stretch">
+            {/* Board 1: Create My Wishlist */}
+            <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-8 text-white shadow-md border border-zinc-800/60 flex flex-col justify-between h-full">
               <div className="absolute right-0 top-0 -mr-16 -mt-16 h-48 w-48 rounded-full bg-orange-500/20 blur-3xl pointer-events-none" />
               <div className="relative z-10 space-y-2">
                 <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/15 border border-orange-500/30 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-orange-400">
                   <Sparkles className="h-3 w-3" />
                   India&apos;s Creator Wishlist Platform
                 </div>
-                <h1 className="text-2xl font-black tracking-tight md:text-3xl lg:text-4xl text-white">
+                <h1 className="text-2xl font-black tracking-tight md:text-3xl text-white">
                   Get what you actually want.
                 </h1>
                 <p className="text-xs md:text-sm text-zinc-300 leading-relaxed max-w-lg">
@@ -111,8 +111,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               </div>
             </div>
 
-            {/* Board 2: Create Custom Item (Dedicated Board) */}
-            <div className="md:col-span-5 relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-900 via-zinc-900/90 to-zinc-950 p-6 md:p-8 text-white shadow-md border border-zinc-800/80 flex flex-col justify-between">
+            {/* Board 2: Create Custom Item */}
+            <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-900 via-zinc-900/90 to-zinc-950 p-6 md:p-8 text-white shadow-md border border-zinc-800/80 flex flex-col justify-between h-full">
               <div className="absolute right-0 bottom-0 -mr-12 -mb-12 h-40 w-40 rounded-full bg-orange-500/15 blur-2xl pointer-events-none" />
               <div className="relative z-10 space-y-2">
                 <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/10 border border-orange-500/25 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-orange-400">
@@ -130,7 +130,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               <div className="relative z-10 mt-6 pt-1 flex items-center">
                 <Link
                   href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl border border-zinc-700 bg-zinc-800/80 px-5 text-xs md:text-sm font-semibold text-zinc-200 shadow-sm transition hover:border-orange-500 hover:bg-zinc-800 hover:text-white active:scale-98"
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl border border-zinc-700/90 bg-black px-5 text-xs md:text-sm font-bold text-white shadow-md shadow-black/40 transition hover:border-orange-500 hover:bg-zinc-950 hover:text-orange-400 active:scale-98"
                 >
                   <Plus className="h-4 w-4 text-orange-400" />
                   <span>Create Custom Item</span>
