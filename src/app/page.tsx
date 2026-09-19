@@ -81,12 +81,13 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
       {/* Main Body */}
       <main className="mx-auto max-w-7xl flex-1 px-4 py-5 md:px-6 md:py-7 w-full">
-        {/* Compact Introductory Banner (No Giant SaaS Hero) */}
+        {/* Two-board Hero Section */}
         {!query && (
-          <section className="mb-8 overflow-hidden rounded-[28px] bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 p-6 text-white shadow-md md:p-8 relative">
-            <div className="absolute right-0 top-0 -mr-16 -mt-16 h-48 w-48 rounded-full bg-orange-500/20 blur-3xl" />
-            <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div className="max-w-xl space-y-2">
+          <section className="mb-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5">
+            {/* Board 1: Create My Wishlist (Primary Board) */}
+            <div className="md:col-span-7 relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-8 text-white shadow-md border border-zinc-800/60 flex flex-col justify-between">
+              <div className="absolute right-0 top-0 -mr-16 -mt-16 h-48 w-48 rounded-full bg-orange-500/20 blur-3xl pointer-events-none" />
+              <div className="relative z-10 space-y-2">
                 <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/15 border border-orange-500/30 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-orange-400">
                   <Sparkles className="h-3 w-3" />
                   India&apos;s Creator Wishlist Platform
@@ -99,7 +100,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <div className="relative z-10 mt-6 pt-1 flex items-center">
                 <Link
                   href={session?.userId ? "/dashboard/items" : "/login"}
                   className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-orange-500 px-5 text-xs md:text-sm font-bold text-black shadow-lg shadow-orange-500/20 transition hover:bg-orange-400 active:scale-98"
@@ -107,9 +108,29 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   <span>{session?.userId ? "Go to My Wishlist" : "Create My Wishlist"}</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
+              </div>
+            </div>
+
+            {/* Board 2: Create Custom Item (Dedicated Board) */}
+            <div className="md:col-span-5 relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-900 via-zinc-900/90 to-zinc-950 p-6 md:p-8 text-white shadow-md border border-zinc-800/80 flex flex-col justify-between">
+              <div className="absolute right-0 bottom-0 -mr-12 -mb-12 h-40 w-40 rounded-full bg-orange-500/15 blur-2xl pointer-events-none" />
+              <div className="relative z-10 space-y-2">
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/10 border border-orange-500/25 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-orange-400">
+                  <Plus className="h-3 w-3" />
+                  Personalized Items
+                </div>
+                <h2 className="text-2xl font-black tracking-tight md:text-3xl text-white">
+                  Can&apos;t find it? Add your own.
+                </h2>
+                <p className="text-xs md:text-sm text-zinc-300 leading-relaxed max-w-md">
+                  Have a specific upgrade, course, or dream gear in mind? Create a custom wishlist item with your own name, image, and link.
+                </p>
+              </div>
+
+              <div className="relative z-10 mt-6 pt-1 flex items-center">
                 <Link
                   href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl border border-zinc-700 bg-zinc-900/60 px-4 text-xs md:text-sm font-semibold text-zinc-200 transition hover:border-zinc-500 hover:text-white"
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl border border-zinc-700 bg-zinc-800/80 px-5 text-xs md:text-sm font-semibold text-zinc-200 shadow-sm transition hover:border-orange-500 hover:bg-zinc-800 hover:text-white active:scale-98"
                 >
                   <Plus className="h-4 w-4 text-orange-400" />
                   <span>Create Custom Item</span>
