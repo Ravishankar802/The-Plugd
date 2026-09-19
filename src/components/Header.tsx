@@ -44,7 +44,7 @@ export default function Header({
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:gap-6 md:px-6 md:py-3.5">
         {/* Left: Logo & Wordmark */}
         <Link href="/" className="group flex shrink-0 items-center">
-          <span className="text-2xl md:text-[28px] font-black tracking-tight bg-gradient-to-r from-zinc-950 via-zinc-800 to-orange-500 bg-clip-text text-transparent select-none">
+          <span className="font-logo text-2xl md:text-[28px] font-extrabold tracking-[-0.03em] bg-gradient-to-r from-zinc-950 via-zinc-800 to-orange-500 bg-clip-text text-transparent select-none leading-none">
             Plugd
           </span>
         </Link>

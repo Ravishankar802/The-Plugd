@@ -43,6 +43,7 @@
   --color-selected-foreground: var(--selected-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-logo: var(--font-logo);
   --animate-shimmer: shimmer 2s infinite;
   --animate-shine: shine 4.5s infinite linear;
 
@@ -78,6 +79,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+.font-logo {
+  font-family: var(--font-logo), var(--font-sans), sans-serif;
 }
 
 /* Custom Table Styles to match AnonCrib */
