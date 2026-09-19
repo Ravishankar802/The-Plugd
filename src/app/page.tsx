@@ -8,6 +8,7 @@ import CategoryIcon from "@/components/CategoryIcon";
 import { getSession } from "@/lib/auth";
 import { HOMEPAGE_CATEGORIES_GRID } from "@/lib/product-images";
 import prisma from "@/lib/prisma";
+import { searchCatalog } from "@/lib/search";
 
 export const dynamic = "force-dynamic";
 
@@ -39,21 +40,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       take: 6,
     }),
     query
-      ? prisma.catalogItem.findMany({
-          where: {
-            active: true,
-            OR: [
-              { name: { contains: query, mode: "insensitive" } },
-              { shortDescription: { contains: query, mode: "insensitive" } },
-              { description: { contains: query, mode: "insensitive" } },
-              { category: { name: { contains: query, mode: "insensitive" } } },
-            ],
-          },
-          include: { category: true },
-          orderBy: [{ featured: "desc" }, { displayOrder: "asc" }],
-          take: 24,
-        })
-      : Promise.resolve([]),
+      ? searchCatalog(query, { limitItems: 48 })
+      : Promise.resolve({ categories: [], subcategories: [], items: [], totalMatches: 0 }),
   ]);
 
   return (
@@ -133,13 +121,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
         {/* Search Results Section */}
         {query ? (
-          <section className="space-y-6">
+          <section className="space-y-8">
             <div className="flex items-end justify-between gap-4 border-b border-zinc-200 pb-4">
               <div>
                 <p className="text-[11px] font-bold uppercase tracking-wider text-orange-600">Search Results</p>
                 <h2 className="mt-1 text-2xl font-black tracking-tight text-zinc-950">
                   Results for &ldquo;{query}&rdquo;
                 </h2>
+                <p className="text-xs text-zinc-500 mt-0.5">
+                  Found {searchResults.totalMatches} result{searchResults.totalMatches === 1 ? "" : "s"} across categories, subcategories, and items
+                </p>
               </div>
               <Link
                 href="/"
@@ -149,42 +140,166 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               </Link>
             </div>
 
-            {searchResults.length > 0 ? (
-              <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
-                {searchResults.map((item) => (
-                  <CatalogCard
-                    key={item.id}
-                    href={`/catalog/${item.slug}`}
-                    image={item.image}
-                    name={item.name}
-                    category={item.category.name}
-                    action={
-                      <AddToWishlistButton
-                        catalogItemId={item.id}
-                        isLoggedIn={Boolean(session?.userId)}
-                        floating
-                      />
-                    }
-                  />
-                ))}
+            {/* Zero results state */}
+            {searchResults.totalMatches === 0 ? (
+              <div className="rounded-[28px] border border-zinc-200 bg-zinc-50/50 p-8 md:p-12 text-center max-w-xl mx-auto my-8">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-orange-100 text-orange-600 mb-4">
+                  <Sparkles className="h-7 w-7" />
+                </div>
+                <h3 className="text-lg md:text-xl font-black text-zinc-950">
+                  No results found for &ldquo;{query}&rdquo;
+                </h3>
+                <p className="mt-2 text-xs md:text-sm text-zinc-600 leading-relaxed">
+                  We couldn&apos;t find any categories, subcategories, or items matching your search.
+                  Try searching for a different keyword or create your own custom wishlist item.
+                </p>
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                  <Link
+                    href="/"
+                    className="inline-flex h-10 items-center justify-center rounded-xl border border-zinc-300 bg-white px-4 text-xs font-bold text-zinc-700 transition hover:bg-zinc-100"
+                  >
+                    Clear Search
+                  </Link>
+                  <Link
+                    href={session?.userId ? "/dashboard/items" : "/login"}
+                    className="inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 text-xs font-bold text-black shadow-md shadow-orange-500/20 transition hover:bg-orange-400"
+                  >
+                    <Plus className="h-4 w-4" />
+                    <span>Create Custom Item</span>
+                  </Link>
+                </div>
               </div>
             ) : null}
 
-            {/* If no results or custom search prompt */}
-            <div className="rounded-[28px] border border-dashed border-zinc-300 bg-white p-6 md:p-8 text-center sm:text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                <h3 className="text-base font-bold text-zinc-950">Can&apos;t find what you&apos;re looking for?</h3>
-                <p className="mt-1 text-xs text-zinc-600 max-w-md">
-                  Create a completely custom wishlist item with your own name, image, description, and link.
-                </p>
+            {/* Matching Categories */}
+            {searchResults.categories.length > 0 ? (
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-orange-500" />
+                  <h3 className="text-sm md:text-base font-extrabold text-zinc-900 tracking-tight">
+                    Categories ({searchResults.categories.length})
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                  {searchResults.categories.map((cat) => (
+                    <Link
+                      key={cat.id}
+                      href={cat.href}
+                      className="group relative overflow-hidden rounded-2xl border border-zinc-200/90 bg-white p-4 shadow-xs transition-all hover:border-orange-500 hover:shadow-md hover:bg-orange-50/30 flex flex-col items-center text-center gap-2.5"
+                    >
+                      {cat.image ? (
+                        <img
+                          src={cat.image}
+                          alt={cat.name}
+                          className="h-16 w-16 rounded-xl object-cover border border-zinc-200 bg-zinc-100 group-hover:scale-105 transition-transform"
+                        />
+                      ) : (
+                        <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-orange-50 text-orange-500">
+                          <CategoryIcon name={cat.icon} className="h-8 w-8" />
+                        </div>
+                      )}
+                      <div>
+                        <h4 className="text-xs md:text-sm font-bold text-zinc-900 group-hover:text-orange-600 transition">
+                          {cat.name}
+                        </h4>
+                        <span className="text-[10px] font-semibold text-zinc-400 group-hover:text-orange-500 transition">
+                          View Category &rarr;
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               </div>
-              <Link
-                href={session?.userId ? "/dashboard/items" : "/login"}
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-zinc-950 px-5 text-xs font-bold text-white shadow-sm transition hover:bg-orange-500 hover:text-black shrink-0"
-              >
-                <span>+ Create Custom Item</span>
-              </Link>
-            </div>
+            ) : null}
+
+            {/* Matching Subcategories */}
+            {searchResults.subcategories.length > 0 ? (
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-orange-500" />
+                  <h3 className="text-sm md:text-base font-extrabold text-zinc-900 tracking-tight">
+                    Subcategories ({searchResults.subcategories.length})
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                  {searchResults.subcategories.map((sub) => (
+                    <Link
+                      key={sub.id}
+                      href={sub.href}
+                      className="group relative overflow-hidden rounded-2xl border border-zinc-200/90 bg-white p-3.5 shadow-xs transition-all hover:border-orange-500 hover:shadow-md hover:bg-orange-50/30 flex flex-col items-center text-center gap-2"
+                    >
+                      {sub.image ? (
+                        <img
+                          src={sub.image}
+                          alt={sub.name}
+                          className="h-16 w-16 rounded-xl object-cover border border-zinc-200 bg-zinc-100 group-hover:scale-105 transition-transform"
+                        />
+                      ) : (
+                        <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-orange-50 text-orange-500">
+                          <Sparkles className="h-7 w-7" />
+                        </div>
+                      )}
+                      <div>
+                        <h4 className="text-xs md:text-sm font-bold text-zinc-900 group-hover:text-orange-600 transition line-clamp-1">
+                          {sub.name}
+                        </h4>
+                        <span className="text-[11px] font-medium text-zinc-500">
+                          in {sub.parentCategoryName}
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+
+            {/* Matching Items */}
+            {searchResults.items.length > 0 ? (
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-orange-500" />
+                  <h3 className="text-sm md:text-base font-extrabold text-zinc-900 tracking-tight">
+                    Wishlist Items ({searchResults.items.length})
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
+                  {searchResults.items.map((item) => (
+                    <CatalogCard
+                      key={item.id}
+                      href={item.href}
+                      image={item.image}
+                      name={item.name}
+                      category={item.categoryName}
+                      action={
+                        <AddToWishlistButton
+                          catalogItemId={item.id}
+                          isLoggedIn={Boolean(session?.userId)}
+                          floating
+                        />
+                      }
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : null}
+
+            {/* If results exist, prompt custom item creation below */}
+            {searchResults.totalMatches > 0 ? (
+              <div className="rounded-[28px] border border-dashed border-zinc-300 bg-white p-6 md:p-8 text-center sm:text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <h3 className="text-base font-bold text-zinc-950">Can&apos;t find what you&apos;re looking for?</h3>
+                  <p className="mt-1 text-xs text-zinc-600 max-w-md">
+                    Create a completely custom wishlist item with your own name, image, description, and link.
+                  </p>
+                </div>
+                <Link
+                  href={session?.userId ? "/dashboard/items" : "/login"}
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-zinc-950 px-5 text-xs font-bold text-white shadow-sm transition hover:bg-orange-500 hover:text-black shrink-0"
+                >
+                  <span>+ Create Custom Item</span>
+                </Link>
+              </div>
+            ) : null}
           </section>
         ) : null}
 
