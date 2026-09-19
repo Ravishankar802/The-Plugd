@@ -43,8 +43,8 @@ export default function Header({
     <header className="sticky top-0 z-40 w-full border-b border-zinc-200/80 bg-white/95 backdrop-blur-xl transition-all">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:gap-6 md:px-6 md:py-3.5">
         {/* Left: Logo & Wordmark */}
-        <Link href="/" className="group flex shrink-0 items-center">
-          <span className="font-logo text-2xl md:text-[28px] font-extrabold tracking-[-0.03em] bg-gradient-to-r from-zinc-950 via-zinc-800 to-orange-500 bg-clip-text text-transparent select-none leading-none">
+        <Link href="/" className="group flex shrink-0 items-center pl-2 md:pl-3">
+          <span className="font-logo text-3xl md:text-[34px] font-bold tracking-tight bg-gradient-to-r from-zinc-950 via-zinc-800 to-orange-500 bg-clip-text text-transparent select-none inline-block py-1 pb-1.5 leading-tight">
             Plugd
           </span>
         </Link>

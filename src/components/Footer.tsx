@@ -19,8 +19,8 @@ export default function Footer({ showBorder = true }: FooterProps) {
     <footer className={`w-full bg-white text-zinc-600 py-10 md:py-12 font-sans ${showBorder ? "border-t border-zinc-200/80" : ""}`}>
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-8 border-b border-zinc-100">
-          <Link href="/" className="group flex shrink-0 items-center">
-            <span className="font-logo text-2xl md:text-[28px] font-extrabold tracking-[-0.03em] bg-gradient-to-r from-zinc-950 via-zinc-800 to-emerald-500 bg-clip-text text-transparent select-none leading-none">
+          <Link href="/" className="group flex shrink-0 items-center pl-2 md:pl-3">
+            <span className="font-logo text-3xl md:text-[34px] font-bold tracking-tight bg-gradient-to-r from-zinc-950 via-zinc-800 to-emerald-500 bg-clip-text text-transparent select-none inline-block py-1 pb-1.5 leading-tight">
               Plugd
             </span>
           </Link>
