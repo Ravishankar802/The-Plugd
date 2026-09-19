@@ -58,34 +58,36 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
   return (
     <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
-      {/* Sticky Header with Search */}
-      <Header
-        initialQuery={query}
-        isLoggedIn={Boolean(session?.userId)}
-        username={session?.username}
-        searchAction="/"
-      />
+      {/* Sticky Header & Category Navigation Bar */}
+      <div className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-xl">
+        <Header
+          initialQuery={query}
+          isLoggedIn={Boolean(session?.userId)}
+          username={session?.username}
+          searchAction="/"
+        />
 
-      {/* Sticky/Scrollable Horizontal Category Navigation Bar */}
-      <div className="sticky top-[65px] md:top-[69px] z-30 border-b border-zinc-200/80 bg-white/95 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-4 py-2.5 no-scrollbar md:px-6">
-          <Link
-            href="/"
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-zinc-950 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-zinc-800"
-          >
-            <Sparkles className="h-3.5 w-3.5 text-orange-400" />
-            <span>All</span>
-          </Link>
-          {categories.map((category) => (
+        {/* Scrollable Horizontal Category Navigation Bar */}
+        <div className="border-b border-zinc-200/80 bg-white/95 backdrop-blur-md">
+          <div className="mx-auto flex max-w-7xl items-center gap-2.5 md:gap-3 overflow-x-auto px-4 py-3 no-scrollbar md:px-6">
             <Link
-              key={category.id}
-              href={`/category/${category.slug}`}
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-zinc-200/90 bg-white px-3.5 py-1.5 text-xs font-semibold text-zinc-700 shadow-sm transition hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+              href="/"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-zinc-950 px-4 py-2 text-[13px] md:text-sm font-bold text-white shadow-sm transition hover:bg-zinc-800"
             >
-              <CategoryIcon name={category.icon} className="h-3.5 w-3.5 text-zinc-500" />
-              <span>{category.name}</span>
+              <Sparkles className="h-4 w-4 md:h-[18px] md:w-[18px] text-orange-400" />
+              <span>All</span>
             </Link>
-          ))}
+            {categories.map((category) => (
+              <Link
+                key={category.id}
+                href={`/category/${category.slug}`}
+                className="inline-flex shrink-0 items-center gap-2 rounded-full border border-zinc-200/90 bg-white px-4 py-2 text-[13px] md:text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+              >
+                <CategoryIcon name={category.icon} className="h-4 w-4 md:h-[18px] md:w-[18px] text-zinc-500" />
+                <span>{category.name}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
 
