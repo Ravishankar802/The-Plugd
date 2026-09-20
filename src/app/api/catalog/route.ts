@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
+import { getFullDrinksCatalog, DRINKS_STARTING_COUNTS } from "@/lib/drinks-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getMobilesProductImage, getElectronicsProductImage, getFitnessProductImage, getToysProductImage, getVehiclesProductImage } from "@/lib/product-images";
 
@@ -75,6 +75,7 @@ export async function GET(req: Request) {
               active: true,
               featured: Boolean(d.featured),
               displayOrder: d.displayOrder,
+              addedCount: DRINKS_STARTING_COUNTS[d.id] || 0,
             })),
             skipDuplicates: true,
           });

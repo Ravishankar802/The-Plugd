@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma";
 import { ensureUniqueSlug, slugify } from "@/lib/slug";
 import { getFullFoodCatalog, FOOD_NAMES, FOOD_STARTING_COUNTS, FOOD_ALIASES } from "@/lib/food-catalog";
-import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
+import { getFullDrinksCatalog, DRINKS_STARTING_COUNTS } from "@/lib/drinks-catalog";
 import { getFullFashionCatalog, FASHION_TOP_PICKS } from "@/lib/fashion-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog } from "@/lib/beauty-catalog";
@@ -579,6 +579,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
           active: true,
           featured: Boolean(d.featured),
           displayOrder: d.displayOrder,
+          addedCount: DRINKS_STARTING_COUNTS[d.id] || 0,
         })),
         skipDuplicates: true,
       });
@@ -600,6 +601,34 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
           addedCount: true,
         },
         orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
+      });
+    }
+  }
+
+  // Ensure Drinks items have their starting counts seeded in DB
+  if (drinksCat && categoryId === drinksCat.id) {
+    const unseededItems = items.filter((i) => {
+      const targetCount = DRINKS_STARTING_COUNTS[i.slug];
+      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
+    });
+
+    if (unseededItems.length > 0) {
+      await Promise.all(
+        unseededItems.map((item) => {
+          const targetCount = DRINKS_STARTING_COUNTS[item.slug];
+          return prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { addedCount: targetCount },
+          }).catch(() => {});
+        })
+      );
+
+      items = items.map((item) => {
+        const targetCount = DRINKS_STARTING_COUNTS[item.slug];
+        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
+          return { ...item, addedCount: targetCount };
+        }
+        return item;
       });
     }
   }
