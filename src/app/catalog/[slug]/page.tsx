@@ -93,7 +93,7 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
                 </Link>
 
                 {item.addedCount != null && item.addedCount > 0 ? (
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 border border-zinc-200/80 px-3 py-1 text-xs font-semibold text-zinc-700">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 px-3 py-1 text-xs font-semibold text-orange-600">
                     <span aria-hidden="true">👤</span>
                     <span>{formatAddedCount(item.addedCount)} added</span>
                   </span>
