@@ -44,6 +44,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       : Promise.resolve({ categories: [], subcategories: [], items: [], totalMatches: 0 }),
   ]);
 
+  // Swap Subscriptions and Vehicles positions ONLY for the homepage category navigation row
+  const navCategories = [...categories];
+  const subIdx = navCategories.findIndex((c) => c.slug === "subscriptions");
+  const vehIdx = navCategories.findIndex((c) => c.slug === "vehicles");
+  if (subIdx !== -1 && vehIdx !== -1) {
+    const temp = navCategories[subIdx];
+    navCategories[subIdx] = navCategories[vehIdx];
+    navCategories[vehIdx] = temp;
+  }
+
   return (
     <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
       {/* Sticky Header & Category Navigation Bar */}
@@ -65,7 +75,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               <Sparkles className="h-4 w-4 md:h-[18px] md:w-[18px] text-orange-400" />
               <span>All</span>
             </Link>
-            {categories.map((category) => (
+            {navCategories.map((category) => (
               <Link
                 key={category.id}
                 href={`/category/${category.slug}`}
