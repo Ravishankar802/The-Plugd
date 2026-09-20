@@ -278,6 +278,8 @@ export const FOOD_ALIASES: Record<string, string> = {
   "mutton-curry": "mutton-curries",
   "hocol-hazelnut-mudslide-ice-cream-cone": "hoccol-hazelnut-mudslide-ice-cream-cone",
   "amul-kulhad-kulfi-ice-cream": "amul-kulhad-kulfie-ice-cream",
+  "rasmalai-2": "rasmalai",
+  "ferrero-rocher-premium-chocolates": "ferrero-rocher-premium-chocolate",
 };
 
 export const FOOD_STARTING_COUNTS: Record<string, number> = {
@@ -390,5 +392,31 @@ export const FOOD_STARTING_COUNTS: Record<string, number> = {
   "amul-kulhad-kulfie-ice-cream": 354,
   "amul-kulhad-kulfi-ice-cream": 354,
   "havmor-matka-kulfi": 329,
+  // 23 Sweet Cravings items
+  rasmalai: 281,
+  "rasmalai-2": 281,
+  "kaju-katli": 489,
+  "mysore-pak": 174,
+  "motichoor-laddu": 237,
+  "gulab-jamun": 342,
+  "besan-laddu": 228,
+  "soan-papdi": 129,
+  rasgulla: 174,
+  "doodh-peda": 236,
+  "malai-peda": 175,
+  "dharwad-peda": 142,
+  "dairy-milk": 231,
+  "munch-max": 112,
+  "dairy-milk-shots": 89,
+  "nestle-kit-kat": 246,
+  "amul-cocoa-dark-chocolate": 120,
+  "kinder-joy-blue": 239,
+  "kinder-joy-pink": 274,
+  snickers: 158,
+  "bournville-dark-chocolate": 68,
+  "cadbury-5-star": 93,
+  "dairy-milk-silk": 284,
+  "ferrero-rocher-premium-chocolate": 154,
+  "ferrero-rocher-premium-chocolates": 154,
 };
 

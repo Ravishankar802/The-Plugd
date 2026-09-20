@@ -105,7 +105,33 @@ const EXPECTED_SEEDS = [
   { name: 'OB & GOB Vanilla & Choco Brownie Ice Cream Sundae', count: 332 },
   { name: 'Amul Kulhad Kulfi Ice Cream', count: 354 },
   { name: 'Amul Kulhad Kulfie Ice Cream', count: 354 },
-  { name: 'Havmor Matka Kulfi', count: 329 }
+  { name: 'Havmor Matka Kulfi', count: 329 },
+  // 23 Sweet Cravings items
+  { name: 'Rasmalai', count: 281 },
+  { name: 'Kaju Katli', count: 489 },
+  { name: 'Mysore Pak', count: 174 },
+  { name: 'Motichoor Laddu', count: 237 },
+  { name: 'Gulab Jamun', count: 342 },
+  { name: 'Besan Laddu', count: 228 },
+  { name: 'Soan Papdi', count: 129 },
+  { name: 'Rasgulla', count: 174 },
+  { name: 'Doodh Peda', count: 236 },
+  { name: 'Malai Peda', count: 175 },
+  { name: 'Dharwad Peda', count: 142 },
+  { name: 'Dairy Milk', count: 231 },
+  { name: 'Munch Max', count: 112 },
+  { name: 'Dairy Milk Shots', count: 89 },
+  { name: 'Nestle Kit-Kat', count: 246 },
+  { name: 'Amul Cocoa Dark Chocolate', count: 120 },
+  { name: 'Kinder Joy Blue', count: 239 },
+  { name: 'Kinder Joy Pink', count: 274 },
+  { name: 'Snickers', count: 158 },
+  { name: 'Bournville Dark Chocolate', count: 68 },
+  { name: 'Cadbury 5 Star', count: 93 },
+  { name: 'Dairy Milk Silk', count: 284 },
+  { name: 'Dairy Milk SIlk', count: 284 },
+  { name: 'Ferrero Rocher Premium Chocolate', count: 154 },
+  { name: 'Ferrero Rocher Premium Chocolates', count: 154 },
 ];
 
 const ALIASES = {
@@ -116,6 +142,8 @@ const ALIASES = {
   'mutton curry': 'mutton-curries',
   'hocol hazelnut mudslide ice cream cone': 'hoccol-hazelnut-mudslide-ice-cream-cone',
   'amul kulhad kulfi ice cream': 'amul-kulhad-kulfie-ice-cream',
+  'ferrero rocher premium chocolate': 'ferrero-rocher-premium-chocolates',
+  'ferrero rocher premium chocolates': 'ferrero-rocher-premium-chocolate',
 };
 
 async function seedFoodCounts() {
@@ -137,19 +165,20 @@ async function seedFoodCounts() {
       const directSlug = seed.name.toLowerCase().replace(/\s+/g, '-');
       const aliasSlug = ALIASES[seed.name.toLowerCase()];
 
-      const item = items.find(i =>
+      const matchedItems = items.filter(i =>
         i.name.toLowerCase() === seed.name.toLowerCase() ||
         i.slug.toLowerCase() === directSlug ||
         (aliasSlug && (i.slug.toLowerCase() === aliasSlug || i.name.toLowerCase() === aliasSlug.replace('-', ' ')))
       );
 
-      if (item) {
+      for (const item of matchedItems) {
         // Only seed if item has no count or count is less than seed (idempotent, never resets higher counts)
         if (item.addedCount == null || item.addedCount < seed.count) {
           await prisma.catalogItem.update({
             where: { id: item.id },
             data: { addedCount: seed.count },
           });
+          item.addedCount = seed.count;
           updated++;
         }
       }
