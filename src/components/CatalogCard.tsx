@@ -56,7 +56,7 @@ export default function CatalogCard({
 
       {/* Added count indicator */}
       {addedCount != null && Number(addedCount) > 0 ? (
-        <p className="mt-1 pb-2 flex items-center gap-1 text-[11px] font-medium text-orange-600">
+        <p className="mt-1 pb-3.5 flex items-center gap-1 text-[11px] font-medium text-orange-600">
           <span className="text-xs leading-none text-orange-600" aria-hidden="true">👤</span>
           <span className="text-orange-600">{formatAddedCount(Number(addedCount))} added</span>
         </p>

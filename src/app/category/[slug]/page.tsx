@@ -561,48 +561,50 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   return (
     <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
-      {/* Header */}
-      <Header
-        initialQuery={query}
-        isLoggedIn={Boolean(session?.userId)}
-        username={session?.username}
-        searchAction={`/category/${category.slug}`}
-      />
+      {/* Sticky Header & Category Navigation Bar */}
+      <div className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-xl">
+        <Header
+          initialQuery={query}
+          isLoggedIn={Boolean(session?.userId)}
+          username={session?.username}
+          searchAction={`/category/${category.slug}`}
+        />
 
-      {/* Horizontal Category Navigation Bar - Shown ONLY on Main Category Pages */}
-      {isMainCategoryPage && (
-        <div className="sticky top-[65px] md:top-[69px] z-30 border-b border-zinc-200/80 bg-white/95 backdrop-blur-md">
-          <div className="mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-4 py-2.5 no-scrollbar md:px-6">
-            <Link
-              href="/"
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-zinc-200/90 bg-white px-3.5 py-1.5 text-xs font-semibold text-zinc-700 shadow-sm transition hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-zinc-500" />
-              <span>All</span>
-            </Link>
-            {allCategories.map((c) => {
-              const isActive = c.slug === category.slug;
-              return (
-                <Link
-                  key={c.id}
-                  href={`/category/${c.slug}`}
-                  className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-bold shadow-sm transition ${
-                    isActive
-                      ? "bg-zinc-950 text-white"
-                      : "border border-zinc-200/90 bg-white text-zinc-700 hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
-                  }`}
-                >
-                  <CategoryIcon
-                    name={c.icon}
-                    className={`h-3.5 w-3.5 ${isActive ? "text-orange-400" : "text-zinc-500"}`}
-                  />
-                  <span>{c.name}</span>
-                </Link>
-              );
-            })}
+        {/* Scrollable Horizontal Category Navigation Bar - Shown ONLY on Main Category Pages */}
+        {isMainCategoryPage && (
+          <div className="border-b border-zinc-200/80 bg-white/95 backdrop-blur-md">
+            <div className="mx-auto flex max-w-7xl items-center gap-2.5 md:gap-3 overflow-x-auto px-4 py-3 no-scrollbar md:px-6">
+              <Link
+                href="/"
+                className="inline-flex shrink-0 items-center gap-2 rounded-full border border-zinc-200/90 bg-white px-4 py-2 text-[13px] md:text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+              >
+                <Sparkles className="h-4 w-4 md:h-[18px] md:w-[18px] text-zinc-500" />
+                <span>All</span>
+              </Link>
+              {allCategories.map((c) => {
+                const isActive = c.slug === category.slug;
+                return (
+                  <Link
+                    key={c.id}
+                    href={`/category/${c.slug}`}
+                    className={`inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-[13px] md:text-sm shadow-sm transition ${
+                      isActive
+                        ? "bg-zinc-950 font-bold text-white hover:bg-zinc-800"
+                        : "border border-zinc-200/90 bg-white font-semibold text-zinc-700 hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+                    }`}
+                  >
+                    <CategoryIcon
+                      name={c.icon}
+                      className={`h-4 w-4 md:h-[18px] md:w-[18px] ${isActive ? "text-orange-400" : "text-zinc-500"}`}
+                    />
+                    <span>{c.name}</span>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* Main Content */}
       <main className="mx-auto max-w-7xl flex-1 px-4 py-5 md:px-6 md:py-6 w-full">

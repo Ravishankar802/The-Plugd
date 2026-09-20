@@ -2,7 +2,7 @@ import prisma from "@/lib/prisma";
 import { ensureUniqueSlug, slugify } from "@/lib/slug";
 import { getFullFoodCatalog, FOOD_NAMES, FOOD_STARTING_COUNTS, FOOD_ALIASES } from "@/lib/food-catalog";
 import { getFullDrinksCatalog, DRINKS_STARTING_COUNTS } from "@/lib/drinks-catalog";
-import { getFullFashionCatalog, FASHION_TOP_PICKS } from "@/lib/fashion-catalog";
+import { getFullFashionCatalog, FASHION_TOP_PICKS, FASHION_STARTING_COUNTS } from "@/lib/fashion-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog } from "@/lib/beauty-catalog";
 import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
@@ -705,9 +705,34 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     }
   }
 
-  // If fashion category, ensure items with outdated fallback images are updated to authentic product images
+  // If fashion category, ensure items have starting counts and authentic images
   const fashionCat = await prisma.category.findUnique({ where: { slug: "fashion" }, select: { id: true } });
   if (fashionCat && categoryId === fashionCat.id) {
+    const unseededItems = items.filter((i) => {
+      const targetCount = FASHION_STARTING_COUNTS[i.slug];
+      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
+    });
+
+    if (unseededItems.length > 0) {
+      await Promise.all(
+        unseededItems.map((item) => {
+          const targetCount = FASHION_STARTING_COUNTS[item.slug];
+          return prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { addedCount: targetCount },
+          }).catch(() => {});
+        })
+      );
+
+      items = items.map((item) => {
+        const targetCount = FASHION_STARTING_COUNTS[item.slug];
+        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
+          return { ...item, addedCount: targetCount };
+        }
+        return item;
+      });
+    }
+
     const fashionImageBySlug = new Map(FASHION_TOP_PICKS.map((d) => [d.slug, d.imageUrl]));
     const itemsToUpdate = items.filter((item) => {
       const targetUrl = fashionImageBySlug.get(item.slug);
