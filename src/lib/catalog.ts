@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import { ensureUniqueSlug, slugify } from "@/lib/slug";
-import { getFullFoodCatalog, FOOD_NAMES } from "@/lib/food-catalog";
+import { getFullFoodCatalog, FOOD_NAMES, FOOD_STARTING_COUNTS, FOOD_ALIASES } from "@/lib/food-catalog";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullFashionCatalog, FASHION_TOP_PICKS } from "@/lib/fashion-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
@@ -532,6 +532,35 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     },
     orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
   });
+
+  // Ensure Food items have their starting counts seeded in DB
+  const foodCat = await prisma.category.findUnique({ where: { slug: "food" }, select: { id: true } });
+  if (foodCat && categoryId === foodCat.id) {
+    const unseededItems = items.filter((i) => {
+      const targetCount = FOOD_STARTING_COUNTS[i.slug] || (FOOD_ALIASES[i.slug] ? FOOD_STARTING_COUNTS[FOOD_ALIASES[i.slug]] : null);
+      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
+    });
+
+    if (unseededItems.length > 0) {
+      await Promise.all(
+        unseededItems.map((item) => {
+          const targetCount = FOOD_STARTING_COUNTS[item.slug] || FOOD_STARTING_COUNTS[FOOD_ALIASES[item.slug]];
+          return prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { addedCount: targetCount },
+          }).catch(() => {});
+        })
+      );
+
+      items = items.map((item) => {
+        const targetCount = FOOD_STARTING_COUNTS[item.slug] || (FOOD_ALIASES[item.slug] ? FOOD_STARTING_COUNTS[FOOD_ALIASES[item.slug]] : null);
+        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
+          return { ...item, addedCount: targetCount };
+        }
+        return item;
+      });
+    }
+  }
 
   // Ensure Drinks items are fully seeded in DB (e.g. on production serverless environments)
   const drinksCat = await prisma.category.findUnique({ where: { slug: "drinks" }, select: { id: true } });

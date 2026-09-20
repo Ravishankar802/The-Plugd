@@ -45,6 +45,7 @@ export async function GET(req: Request) {
         categoryId: true,
         featured: true,
         displayOrder: true,
+        addedCount: true,
         category: {
           select: { id: true, name: true, slug: true },
         },
@@ -92,6 +93,7 @@ export async function GET(req: Request) {
               categoryId: true,
               featured: true,
               displayOrder: true,
+              addedCount: true,
               category: {
                 select: { id: true, name: true, slug: true },
               },
