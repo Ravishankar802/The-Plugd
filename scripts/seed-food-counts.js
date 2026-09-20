@@ -132,6 +132,19 @@ const EXPECTED_SEEDS = [
   { name: 'Dairy Milk SIlk', count: 284 },
   { name: 'Ferrero Rocher Premium Chocolate', count: 154 },
   { name: 'Ferrero Rocher Premium Chocolates', count: 154 },
+  // 10 Biscuits items
+  { name: 'Malkist Cheese Crunchy Layered Crackers', count: 87 },
+  { name: 'Britannia Little Hearts', count: 31 },
+  { name: 'Hide & Seek Choco Chip Cookies', count: 45 },
+  { name: '50-50 Maska Chaska', count: 23 },
+  { name: '5050 Maska Chaska', count: 23 },
+  { name: 'Parle-G', count: 33 },
+  { name: 'Oreo', count: 41 },
+  { name: 'KrackJack', count: 12 },
+  { name: 'KrackJacK', count: 12 },
+  { name: 'Good Day', count: 18 },
+  { name: 'Dark Fantasy', count: 37 },
+  { name: 'Jim Jam', count: 34 }
 ];
 
 const ALIASES = {
@@ -144,6 +157,8 @@ const ALIASES = {
   'amul kulhad kulfi ice cream': 'amul-kulhad-kulfie-ice-cream',
   'ferrero rocher premium chocolate': 'ferrero-rocher-premium-chocolates',
   'ferrero rocher premium chocolates': 'ferrero-rocher-premium-chocolate',
+  '50-50 maska chaska': '5050-maska-chaska',
+  '5050 maska chaska': '50-50-maska-chaska',
 };
 
 async function seedFoodCounts() {

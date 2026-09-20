@@ -280,6 +280,7 @@ export const FOOD_ALIASES: Record<string, string> = {
   "amul-kulhad-kulfi-ice-cream": "amul-kulhad-kulfie-ice-cream",
   "rasmalai-2": "rasmalai",
   "ferrero-rocher-premium-chocolates": "ferrero-rocher-premium-chocolate",
+  "5050-maska-chaska": "50-50-maska-chaska",
 };
 
 export const FOOD_STARTING_COUNTS: Record<string, number> = {
@@ -418,5 +419,17 @@ export const FOOD_STARTING_COUNTS: Record<string, number> = {
   "dairy-milk-silk": 284,
   "ferrero-rocher-premium-chocolate": 154,
   "ferrero-rocher-premium-chocolates": 154,
+  // 10 Biscuits items
+  "malkist-cheese-crunchy-layered-crackers": 87,
+  "britannia-little-hearts": 31,
+  "hide-seek-choco-chip-cookies": 45,
+  "50-50-maska-chaska": 23,
+  "5050-maska-chaska": 23,
+  "parle-g": 33,
+  oreo: 41,
+  krackjack: 12,
+  "good-day": 18,
+  "dark-fantasy": 37,
+  "jim-jam": 34,
 };
 
