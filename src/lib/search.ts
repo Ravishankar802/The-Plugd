@@ -31,6 +31,7 @@ export interface SearchItem {
   href: string;
   categoryName: string;
   categorySlug: string;
+  addedCount?: number | null;
 }
 
 export interface SearchResults {
@@ -416,6 +417,7 @@ export async function searchCatalog(
       href: `/catalog/${item.slug}`,
       categoryName: item.category.name,
       categorySlug: item.category.slug,
+      addedCount: item.addedCount,
     };
   });
 

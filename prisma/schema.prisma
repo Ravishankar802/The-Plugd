@@ -62,6 +62,7 @@ model CatalogItem {
   active           Boolean        @default(true)
   featured         Boolean        @default(false)
   displayOrder     Int            @default(0)
+  addedCount       Int            @default(0)
   createdAt        DateTime       @default(now())
   updatedAt        DateTime       @updatedAt
   wishlistItems    WishlistItem[]

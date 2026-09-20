@@ -113,6 +113,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           categoryId: true,
           featured: true,
           displayOrder: true,
+          addedCount: true,
         },
         orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
       })
@@ -768,6 +769,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                     image={item.image}
                     name={item.name}
                     category={itemCategoryLabel}
+                    addedCount={(item as any).addedCount}
                     priority={idx < 8}
                     action={
                       <AddToWishlistButton

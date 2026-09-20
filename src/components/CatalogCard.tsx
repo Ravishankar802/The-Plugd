@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { formatAddedCount } from "@/lib/format-count";
 
 interface CatalogCardProps {
   href: string;
@@ -6,6 +7,7 @@ interface CatalogCardProps {
   name: string;
   category?: string;
   description?: string | null;
+  addedCount?: number | null;
   action?: React.ReactNode;
   priority?: boolean;
 }
@@ -14,6 +16,7 @@ export default function CatalogCard({
   href,
   image,
   name,
+  addedCount,
   action,
   priority = false,
 }: CatalogCardProps) {
@@ -50,6 +53,14 @@ export default function CatalogCard({
           {name}
         </h3>
       </Link>
+
+      {/* Added count indicator */}
+      {addedCount != null && addedCount > 0 ? (
+        <p className="mt-1 flex items-center gap-1 text-[11px] font-medium text-zinc-500">
+          <span className="text-[12px] leading-none" aria-hidden="true">👤</span>
+          <span>{formatAddedCount(addedCount)} added</span>
+        </p>
+      ) : null}
     </article>
   );
 }

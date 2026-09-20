@@ -301,6 +301,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                       image={item.image}
                       name={item.name}
                       category={item.categoryName}
+                      addedCount={item.addedCount}
                       action={
                         <AddToWishlistButton
                           catalogItemId={item.id}
@@ -385,6 +386,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     image={item.image}
                     name={item.name}
                     category={item.category.name}
+                    addedCount={item.addedCount}
                     priority={idx < 4}
                     action={
                       <AddToWishlistButton
@@ -435,6 +437,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                       image={item.image}
                       name={item.name}
                       category={category.name}
+                      addedCount={item.addedCount}
                       action={
                         <AddToWishlistButton
                           catalogItemId={item.id}

@@ -101,17 +101,24 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: "This item is already in your wishlist." }, { status: 409 });
       }
 
-      await prisma.wishlistItem.create({
-        data: {
-          userId: session.userId,
-          categoryId: catalogItem.categoryId,
-          catalogItemId: catalogItem.id,
-          itemType: WishlistItemType.CATALOG,
-          slug: await createWishlistSlug(session.userId, catalogItem.name),
-          isPublished: true,
-          displayOrder: itemCount,
-        },
-      });
+      const wishlistSlug = await createWishlistSlug(session.userId, catalogItem.name);
+      await prisma.$transaction([
+        prisma.wishlistItem.create({
+          data: {
+            userId: session.userId,
+            categoryId: catalogItem.categoryId,
+            catalogItemId: catalogItem.id,
+            itemType: WishlistItemType.CATALOG,
+            slug: wishlistSlug,
+            isPublished: true,
+            displayOrder: itemCount,
+          },
+        }),
+        prisma.catalogItem.update({
+          where: { id: catalogItem.id },
+          data: { addedCount: { increment: 1 } },
+        }),
+      ]);
     } else {
       const name = body.name?.trim();
       if (!name) {

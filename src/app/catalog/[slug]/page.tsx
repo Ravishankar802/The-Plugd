@@ -8,6 +8,7 @@ import { getSession } from "@/lib/auth";
 import { notFound } from "next/navigation";
 import { getProductDisplayImage } from "@/lib/product-images";
 import { resolveCatalogProduct } from "@/lib/catalog";
+import { formatAddedCount } from "@/lib/format-count";
 
 export const dynamic = "force-dynamic";
 
@@ -82,13 +83,22 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
           {/* Right: Info & Wishlist CTA */}
           <div className="flex flex-col justify-between gap-6">
             <div className="space-y-4">
-              <Link
-                href={`/category/${item.category.slug}`}
-                className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-orange-600 hover:bg-orange-500/20 transition-colors"
-              >
-                <CategoryIcon name={item.category.icon} className="h-3.5 w-3.5" />
-                <span>{item.category.name}</span>
-              </Link>
+              <div className="flex items-center gap-2 flex-wrap">
+                <Link
+                  href={`/category/${item.category.slug}`}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-orange-600 hover:bg-orange-500/20 transition-colors"
+                >
+                  <CategoryIcon name={item.category.icon} className="h-3.5 w-3.5" />
+                  <span>{item.category.name}</span>
+                </Link>
+
+                {item.addedCount != null && item.addedCount > 0 ? (
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 border border-zinc-200/80 px-3 py-1 text-xs font-semibold text-zinc-700">
+                    <span aria-hidden="true">👤</span>
+                    <span>{formatAddedCount(item.addedCount)} added</span>
+                  </span>
+                ) : null}
+              </div>
 
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight text-zinc-950">
                 {item.name}

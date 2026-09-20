@@ -465,6 +465,7 @@ export type CachedCatalogItem = {
   categoryId: string;
   featured: boolean;
   displayOrder: number;
+  addedCount?: number | null;
 };
 
 let cachedCategories: { data: CachedCategory[]; expiresAt: number } | null = null;
@@ -513,7 +514,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     })
     .catch(() => {});
 
-  let items = await prisma.catalogItem.findMany({
+  let items: CachedCatalogItem[] = await prisma.catalogItem.findMany({
     where: {
       active: true,
       categoryId,
@@ -527,6 +528,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       categoryId: true,
       featured: true,
       displayOrder: true,
+      addedCount: true,
     },
     orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
   });
@@ -566,6 +568,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
           categoryId: true,
           featured: true,
           displayOrder: true,
+          addedCount: true,
         },
         orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
       });
@@ -607,6 +610,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
           categoryId: true,
           featured: true,
           displayOrder: true,
+          addedCount: true,
         },
         orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
       });
@@ -730,6 +734,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
           categoryId: true,
           featured: true,
           displayOrder: true,
+          addedCount: true,
         },
         orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
       });
@@ -808,6 +813,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
         categoryId: true,
         featured: true,
         displayOrder: true,
+        addedCount: true,
       },
       orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
     });
@@ -891,6 +897,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
         categoryId: true,
         featured: true,
         displayOrder: true,
+        addedCount: true,
       },
       orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
     });
@@ -974,6 +981,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
         categoryId: true,
         featured: true,
         displayOrder: true,
+        addedCount: true,
       },
       orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
     });
@@ -1053,6 +1061,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
         categoryId: true,
         featured: true,
         displayOrder: true,
+        addedCount: true,
       },
       orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
     });
@@ -1130,6 +1139,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
         categoryId: true,
         featured: true,
         displayOrder: true,
+        addedCount: true,
       },
       orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
     });
@@ -1207,6 +1217,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
         categoryId: true,
         featured: true,
         displayOrder: true,
+        addedCount: true,
       },
       orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
     });
@@ -1248,6 +1259,7 @@ export type ResolvedCatalogProduct = {
   image: string | null;
   shortDescription?: string | null;
   description?: string | null;
+  addedCount?: number | null;
   category: {
     id: string;
     name: string;
@@ -1279,6 +1291,7 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
       image: item.image,
       shortDescription: item.shortDescription,
       description: item.description,
+      addedCount: item.addedCount,
       category: item.category,
     };
   }
@@ -1312,6 +1325,7 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
         image: aliasItem.image,
         shortDescription: aliasItem.shortDescription,
         description: aliasItem.description,
+        addedCount: aliasItem.addedCount,
         category: aliasItem.category,
       };
     }
