@@ -18,7 +18,7 @@ import {
   ALL_GAMING_PRODUCT_IDS,
 } from "@/lib/subcategories";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
-import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
+import { getFullMobilesCatalog, MOBILE_STARTING_COUNTS } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS } from "@/lib/beauty-catalog";
 import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS } from "@/lib/electronics-catalog";
@@ -150,6 +150,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: Boolean(d.featured),
         displayOrder: idx + 1,
+        addedCount: MOBILE_STARTING_COUNTS[d.id] || 0,
       }));
     if (missingItems.length > 0) {
       rawItems = [...initialRawItems, ...missingItems];

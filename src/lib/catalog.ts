@@ -3,7 +3,7 @@ import { ensureUniqueSlug, slugify } from "@/lib/slug";
 import { getFullFoodCatalog, FOOD_NAMES, FOOD_STARTING_COUNTS, FOOD_ALIASES } from "@/lib/food-catalog";
 import { getFullDrinksCatalog, DRINKS_STARTING_COUNTS } from "@/lib/drinks-catalog";
 import { getFullFashionCatalog, FASHION_TOP_PICKS, FASHION_STARTING_COUNTS } from "@/lib/fashion-catalog";
-import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
+import { getFullMobilesCatalog, MOBILE_STARTING_COUNTS } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog } from "@/lib/beauty-catalog";
 import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
@@ -756,9 +756,34 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     }
   }
 
-  // If mobile category, ensure items with outdated fallback images are updated to authentic product images
+  // If mobile category, ensure items have starting counts and authentic product images
   const mobileCat = await prisma.category.findUnique({ where: { slug: "mobile" }, select: { id: true } });
   if (mobileCat && categoryId === mobileCat.id) {
+    const unseededItems = items.filter((i) => {
+      const targetCount = MOBILE_STARTING_COUNTS[i.slug];
+      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
+    });
+
+    if (unseededItems.length > 0) {
+      await Promise.all(
+        unseededItems.map((item) => {
+          const targetCount = MOBILE_STARTING_COUNTS[item.slug];
+          return prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { addedCount: targetCount },
+          }).catch(() => {});
+        })
+      );
+
+      items = items.map((item) => {
+        const targetCount = MOBILE_STARTING_COUNTS[item.slug];
+        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
+          return { ...item, addedCount: targetCount };
+        }
+        return item;
+      });
+    }
+
     const mobileImageBySlug = new Map(getFullMobilesCatalog().map((d) => [d.id, d.imageUrl]));
     const itemsToUpdate = items.filter((item) => {
       const targetUrl = mobileImageBySlug.get(item.slug);

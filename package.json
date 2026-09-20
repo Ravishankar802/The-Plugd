@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && prisma db push --accept-data-loss && node scripts/seed-food-counts.js && node scripts/seed-drinks-counts.js && node scripts/seed-fashion-counts.js && next build",
+    "build": "prisma generate && prisma db push --accept-data-loss && node scripts/seed-food-counts.js && node scripts/seed-drinks-counts.js && node scripts/seed-fashion-counts.js && node scripts/seed-mobile-counts.js && next build",
     "start": "next start",
     "lint": "eslint"
   },
