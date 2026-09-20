@@ -144,7 +144,29 @@ const EXPECTED_SEEDS = [
   { name: 'KrackJacK', count: 12 },
   { name: 'Good Day', count: 18 },
   { name: 'Dark Fantasy', count: 37 },
-  { name: 'Jim Jam', count: 34 }
+  { name: 'Jim Jam', count: 34 },
+  // 20 Snacks items
+  { name: "Lay's Classic Salted", count: 56 },
+  { name: "Lay's Magic Masala", count: 43 },
+  { name: 'Kurkure Masala Munch', count: 32 },
+  { name: 'Bingo! Mad Angles', count: 21 },
+  { name: 'Uncle Chips', count: 12 },
+  { name: 'Uncle Chipps', count: 12 },
+  { name: 'Too Yumm! Multigrain Chips', count: 14 },
+  { name: "Haldiram's Aloo Bhujia", count: 49 },
+  { name: "Haldiram's Bhujia Sev", count: 28 },
+  { name: "Haldiram's Mixture", count: 14 },
+  { name: 'Masala Peanuts', count: 19 },
+  { name: 'Roasted Peanuts', count: 15 },
+  { name: 'Makhana', count: 9 },
+  { name: 'Banana Chips', count: 64 },
+  { name: 'Murukku', count: 14 },
+  { name: 'Chakli', count: 8 },
+  { name: 'Nippattu', count: 4 },
+  { name: 'Khakhra', count: 13 },
+  { name: 'Popcorn', count: 45 },
+  { name: 'Nachos', count: 59 },
+  { name: 'Cheese Balls', count: 39 },
 ];
 
 const ALIASES = {
@@ -159,6 +181,12 @@ const ALIASES = {
   'ferrero rocher premium chocolates': 'ferrero-rocher-premium-chocolate',
   '50-50 maska chaska': '5050-maska-chaska',
   '5050 maska chaska': '50-50-maska-chaska',
+  'uncle chips': 'uncle-chipps',
+  'lays classic salted': 'lays-classic-salted',
+  'lays magic masala': 'lays-magic-masala',
+  'haldirams aloo bhujia': 'haldirams-aloo-bhujia',
+  'haldirams bhujia sev': 'haldirams-bhujia-sev',
+  'haldirams mixture': 'haldirams-mixture',
 };
 
 async function seedFoodCounts() {
@@ -183,18 +211,40 @@ async function seedFoodCounts() {
       const matchedItems = items.filter(i =>
         i.name.toLowerCase() === seed.name.toLowerCase() ||
         i.slug.toLowerCase() === directSlug ||
+        i.slug.toLowerCase() === directSlug.replace(/'/g, '') ||
+        i.slug.toLowerCase() === directSlug.replace(/'s/g, 's') ||
         (aliasSlug && (i.slug.toLowerCase() === aliasSlug || i.name.toLowerCase() === aliasSlug.replace('-', ' ')))
       );
 
-      for (const item of matchedItems) {
-        // Only seed if item has no count or count is less than seed (idempotent, never resets higher counts)
-        if (item.addedCount == null || item.addedCount < seed.count) {
-          await prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { addedCount: seed.count },
-          });
-          item.addedCount = seed.count;
-          updated++;
+      if (matchedItems.length === 0) {
+        const targetSlug = aliasSlug || directSlug.replace(/'s/g, 's').replace(/[^a-z0-9-]+/g, '');
+        const existing = await prisma.catalogItem.findUnique({ where: { slug: targetSlug } });
+        if (!existing) {
+          const created = await prisma.catalogItem.create({
+            data: {
+              name: seed.name,
+              slug: targetSlug,
+              categoryId: foodCat.id,
+              addedCount: seed.count,
+              active: true,
+            },
+          }).catch(() => null);
+          if (created) {
+            items.push(created);
+            updated++;
+          }
+        }
+      } else {
+        for (const item of matchedItems) {
+          // Only seed if item has no count or count is less than seed (idempotent, never resets higher counts)
+          if (item.addedCount == null || item.addedCount < seed.count) {
+            await prisma.catalogItem.update({
+              where: { id: item.id },
+              data: { addedCount: seed.count },
+            });
+            item.addedCount = seed.count;
+            updated++;
+          }
         }
       }
     }
