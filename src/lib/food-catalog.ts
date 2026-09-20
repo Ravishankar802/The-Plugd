@@ -276,6 +276,8 @@ export const FOOD_ALIASES: Record<string, string> = {
   dessert: "desserts",
   "egg-curry": "egg-curries",
   "mutton-curry": "mutton-curries",
+  "hocol-hazelnut-mudslide-ice-cream-cone": "hoccol-hazelnut-mudslide-ice-cream-cone",
+  "amul-kulhad-kulfi-ice-cream": "amul-kulhad-kulfie-ice-cream",
 };
 
 export const FOOD_STARTING_COUNTS: Record<string, number> = {
@@ -371,5 +373,22 @@ export const FOOD_STARTING_COUNTS: Record<string, number> = {
   "bread-omelette": 134,
   bowl: 346,
   paneer: 478,
+  // 14 Ice Creams items
+  "amul-chocolate-brownie-ice-cream-tub": 321,
+  "amul-choco-chip-chocolate-ice-cream-tub": 289,
+  "amul-fruit-n-nut-fantasy-ice-cream-tub": 198,
+  "cream-pot-vanilla-tub": 125,
+  "baskin-robbins-mississippi-mud-ice-cream-tub": 431,
+  "magnum-chocolate-almond-ice-cream-stick": 243,
+  "baskin-robbins-almond-n-caramel-ice-cream-stick": 129,
+  "cornetto-double-chocolate-cone": 143,
+  "havmor-dark-chocolate-ice-cream-cone": 365,
+  "hoccol-hazelnut-mudslide-ice-cream-cone": 432,
+  "hocol-hazelnut-mudslide-ice-cream-cone": 432,
+  "ob-gob-tiramisu-fudge-ice-cream-sundae": 365,
+  "ob-gob-vanilla-choco-brownie-ice-cream-sundae": 332,
+  "amul-kulhad-kulfie-ice-cream": 354,
+  "amul-kulhad-kulfi-ice-cream": 354,
+  "havmor-matka-kulfi": 329,
 };
 

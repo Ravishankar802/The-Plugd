@@ -88,7 +88,24 @@ const EXPECTED_SEEDS = [
   { name: 'Dal Khichdi', count: 184 },
   { name: 'Bread Omelette', count: 134 },
   { name: 'Bowl', count: 346 },
-  { name: 'Paneer', count: 478 }
+  { name: 'Paneer', count: 478 },
+  // 14 Ice Creams items
+  { name: 'Amul Chocolate Brownie Ice Cream Tub', count: 321 },
+  { name: 'Amul Choco Chip Chocolate Ice Cream Tub', count: 289 },
+  { name: 'Amul Fruit N Nut Fantasy Ice Cream Tub', count: 198 },
+  { name: 'Cream Pot Vanilla Tub', count: 125 },
+  { name: 'Baskin Robbins Mississippi Mud Ice Cream Tub', count: 431 },
+  { name: 'Magnum Chocolate Almond Ice Cream Stick', count: 243 },
+  { name: "Baskin Robbins Almond 'N' Caramel Ice Cream Stick", count: 129 },
+  { name: 'Cornetto Double Chocolate Cone', count: 143 },
+  { name: 'Havmor Dark Chocolate Ice Cream Cone', count: 365 },
+  { name: 'Hocol Hazelnut Mudslide Ice Cream Cone', count: 432 },
+  { name: 'Hoccol Hazelnut Mudslide Ice Cream Cone', count: 432 },
+  { name: 'OB & GOB Tiramisu & Fudge Ice Cream Sundae', count: 365 },
+  { name: 'OB & GOB Vanilla & Choco Brownie Ice Cream Sundae', count: 332 },
+  { name: 'Amul Kulhad Kulfi Ice Cream', count: 354 },
+  { name: 'Amul Kulhad Kulfie Ice Cream', count: 354 },
+  { name: 'Havmor Matka Kulfi', count: 329 }
 ];
 
 const ALIASES = {
@@ -97,6 +114,8 @@ const ALIASES = {
   'dessert': 'desserts',
   'egg curry': 'egg-curries',
   'mutton curry': 'mutton-curries',
+  'hocol hazelnut mudslide ice cream cone': 'hoccol-hazelnut-mudslide-ice-cream-cone',
+  'amul kulhad kulfi ice cream': 'amul-kulhad-kulfie-ice-cream',
 };
 
 async function seedFoodCounts() {
