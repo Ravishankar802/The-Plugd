@@ -48,6 +48,24 @@ export const BEAUTY_TOP_PICKS_SLUGS: string[] = [
   "led-light-therapy-face-mask"
 ];
 
+export const BEAUTY_TOP_PICKS_EXCLUSIVE_COUNTS: Record<string, number> = {
+  "soft-pinch-liquid-blush": 56,
+  "advanced-snail-96-mucin-power-essence": 65,
+  "lip-sleeping-mask-berry": 59,
+  "relief-sun-rice-probiotics-spf-50-pa": 52,
+  "airwrap-multi-styler-complete-long": 66,
+  "no-3-hair-perfector-repair-treatment": 50,
+  "elixir-ultime-l-huile-originale-hair-oil": 61,
+  "supersonic-nural-hair-dryer": 49,
+  "brazilian-bum-bum-body-cream": 54,
+  "coffee-body-scrub": 59,
+  "sauvage-eau-de-parfum": 62,
+  "libre-eau-de-parfum": 78,
+  "coco-mademoiselle-eau-de-parfum": 71,
+  "cheirosa-68-beija-flor-perfume-mist": 60,
+  "age-r-booster-pro-6-in-1-smart-glow-device": 41,
+};
+
 export const RAW_BEAUTY_PRODUCTS: Array<{
   id: string;
   name: string;

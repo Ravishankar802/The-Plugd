@@ -19,7 +19,7 @@ import {
 } from "@/lib/subcategories";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullMobilesCatalog, MOBILE_STARTING_COUNTS } from "@/lib/mobiles-catalog";
-import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS, BEAUTY_STARTING_COUNTS } from "@/lib/beauty-catalog";
+import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS, BEAUTY_STARTING_COUNTS, BEAUTY_TOP_PICKS_EXCLUSIVE_COUNTS } from "@/lib/beauty-catalog";
 import { getFullEntertainmentCatalog, ENTERTAINMENT_STARTING_COUNTS } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS } from "@/lib/electronics-catalog";
 import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
@@ -568,7 +568,15 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     });
   } else if (category.slug === "beauty" && isTopPicksActive) {
     const topPickSlugs = BEAUTY_TOP_PICKS_SLUGS;
-    items = rawItems.filter((item) => topPickSlugs.includes(item.slug));
+    items = rawItems
+      .filter((item) => topPickSlugs.includes(item.slug))
+      .map((item) => {
+        const topPickCount = BEAUTY_TOP_PICKS_EXCLUSIVE_COUNTS[item.slug];
+        if (topPickCount != null) {
+          return { ...item, addedCount: topPickCount };
+        }
+        return item;
+      });
     items.sort(
       (a, b) => topPickSlugs.indexOf(a.slug) - topPickSlugs.indexOf(b.slug)
     );
