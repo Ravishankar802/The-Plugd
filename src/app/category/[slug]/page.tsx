@@ -229,10 +229,42 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     const fullElectronics = getFullElectronicsCatalog();
     const allowedSlugs = new Set(fullElectronics.map((e) => e.id));
     const fullElectronicsMap = new Map(fullElectronics.map((e) => [e.id, e]));
+
+    // Fetch canonical Mobile products from database so any Mobile product appearing in Electronics
+    // resolves to the exact same underlying database entity and add-count data.
+    const mobileCat = allCategories.find((c) => c.slug === "mobile");
+    const canonicalMobileItems = mobileCat ? await getCachedCategoryItems(mobileCat.id) : [];
+    const mobileByName = new Map<string, (typeof canonicalMobileItems)[0]>();
+    const mobileBySlug = new Map<string, (typeof canonicalMobileItems)[0]>();
+    for (const m of canonicalMobileItems) {
+      mobileByName.set(m.name.toLowerCase().trim(), m);
+      mobileBySlug.set(m.slug.toLowerCase().trim(), m);
+    }
+    const blackItem = mobileBySlug.get("iphone-18-pro-max-black") || mobileByName.get("iphone 18 pro max (black)");
+    if (blackItem) {
+      mobileBySlug.set("iphone-18-pro-max", blackItem);
+    }
+
+    const resolveCanonicalMobile = (name: string, slug: string) => {
+      return mobileByName.get(name.toLowerCase().trim()) || mobileBySlug.get(slug.toLowerCase().trim());
+    };
+
     const validRaw = initialRawItems
       .filter((i) => allowedSlugs.has(i.slug))
       .map((i) => {
         const canonical = fullElectronicsMap.get(i.slug);
+        const mobileMatch = resolveCanonicalMobile(canonical?.name || i.name, i.slug);
+        if (mobileMatch) {
+          return {
+            ...i,
+            id: mobileMatch.id,
+            name: mobileMatch.name,
+            slug: mobileMatch.slug,
+            image: mobileMatch.image,
+            addedCount: mobileMatch.addedCount,
+            featured: Boolean(canonical?.featured ?? i.featured),
+          };
+        }
         return canonical
           ? {
               ...i,
@@ -244,19 +276,38 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       });
     const existingSlugs = new Set(validRaw.map((i) => i.slug));
     const missingItems = fullElectronics
-      .filter((e) => !existingSlugs.has(e.id))
-      .map((e, idx) => ({
-        id: `electronics-${e.id}`,
-        name: e.name,
-        slug: e.id,
-        image: e.imageUrl,
-        categoryId: targetCategoryId,
-        featured: Boolean(e.featured),
-        displayOrder: e.displayOrder ?? idx,
-      }));
+      .filter((e) => !existingSlugs.has(e.id) && !existingSlugs.has(e.id === "iphone-18-pro-max" ? "iphone-18-pro-max-black" : e.id))
+      .map((e, idx) => {
+        const mobileMatch = resolveCanonicalMobile(e.name, e.id);
+        if (mobileMatch) {
+          return {
+            id: mobileMatch.id,
+            name: mobileMatch.name,
+            slug: mobileMatch.slug,
+            image: mobileMatch.image,
+            categoryId: targetCategoryId,
+            featured: Boolean(e.featured),
+            displayOrder: e.displayOrder ?? idx,
+            addedCount: mobileMatch.addedCount,
+          };
+        }
+        return {
+          id: `electronics-${e.id}`,
+          name: e.name,
+          slug: e.id,
+          image: e.imageUrl,
+          categoryId: targetCategoryId,
+          featured: Boolean(e.featured),
+          displayOrder: e.displayOrder ?? idx,
+        };
+      });
     rawItems = [...validRaw, ...missingItems];
     const slugOrder = fullElectronics.map((e) => e.id);
-    rawItems.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
+    const getSlugOrderIndex = (slug: string) => {
+      if (slug === "iphone-18-pro-max-black") return slugOrder.indexOf("iphone-18-pro-max");
+      return slugOrder.indexOf(slug);
+    };
+    rawItems.sort((a, b) => getSlugOrderIndex(a.slug) - getSlugOrderIndex(b.slug));
   } else if (category.slug === "fitness") {
     const fullFitness = getFullFitnessCatalog();
     const allowedSlugs = new Set(fullFitness.map((e) => e.id));
@@ -522,10 +573,20 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     );
   } else if (category.slug === "electronics" && isTopPicksActive) {
     const topPickSlugs = ELECTRONICS_TOP_PICKS_SLUGS;
+    const topPickAliases: Record<string, string> = {
+      "iphone-18-pro-max-black": "iphone-18-pro-max",
+    };
+    const getTopPickIndex = (slug: string) => {
+      const canonical = topPickAliases[slug] || slug;
+      return topPickSlugs.indexOf(canonical);
+    };
     if (!query) {
-      items = rawItems.filter((item) => topPickSlugs.includes(item.slug));
+      items = rawItems.filter((item) => {
+        const canonical = topPickAliases[item.slug] || item.slug;
+        return topPickSlugs.includes(canonical);
+      });
       items.sort(
-        (a, b) => topPickSlugs.indexOf(a.slug) - topPickSlugs.indexOf(b.slug)
+        (a, b) => getTopPickIndex(a.slug) - getTopPickIndex(b.slug)
       );
     } else {
       items = rawItems;

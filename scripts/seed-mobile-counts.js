@@ -51,6 +51,17 @@ async function seedMobileCounts() {
       console.log(`[SEED_MOBILE_COUNTS] Purged ${purgedMisspelled.count} misspelled burgandy item(s).`);
     }
 
+    // Purge any stray duplicate iphone-18-pro-max in electronics
+    const purgedStray = await prisma.catalogItem.deleteMany({
+      where: {
+        slug: 'iphone-18-pro-max',
+        categoryId: { not: mobileCat.id }
+      }
+    });
+    if (purgedStray.count > 0) {
+      console.log(`[SEED_MOBILE_COUNTS] Purged ${purgedStray.count} stray non-canonical iphone-18-pro-max.`);
+    }
+
     // Also remove any extra duplicate iPhone 18 Pro Max (Burgundy) entries beyond the single canonical product
     const burgundyItems = await prisma.catalogItem.findMany({
       where: {

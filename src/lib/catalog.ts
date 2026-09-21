@@ -765,6 +765,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
         where: {
           OR: [
             { slug: "iphone-18-pro-max-burgandy" },
+            { slug: "iphone-18-pro-max" },
             { slug: { contains: "burgand", mode: "insensitive" } },
             { name: { contains: "burgand", mode: "insensitive" } },
           ],
@@ -1450,6 +1451,7 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
 
   // 2. Slug normalization and common aliases
   const aliases = [
+    slug === "iphone-18-pro-max" ? "iphone-18-pro-max-black" : null,
     slug.replace("pokemon-", "pok-mon-"),
     slug.replace("pok-mon-", "pokemon-"),
     slug.replace("rubik-s-", "rubiks-"),
@@ -1462,7 +1464,7 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
     slug.replace("protien-", "protein-"),
     slug.replace("kettlebell-", "kettleball-"),
     slug.replace("kettleball-", "kettlebell-"),
-  ].filter((a) => a !== slug);
+  ].filter((a): a is string => Boolean(a) && a !== slug);
 
   for (const alias of aliases) {
     const aliasItem = await prisma.catalogItem.findUnique({
