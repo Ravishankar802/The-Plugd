@@ -25,6 +25,7 @@ import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS } from "@/lib/el
 import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
 import { getFullToysCatalog } from "@/lib/toys-catalog";
 import { getFullVehiclesCatalog, VEHICLES_TOP_PICKS_SLUGS } from "@/lib/vehicles-catalog";
+import { SUBSCRIPTIONS_STARTING_COUNTS } from "@/lib/subscriptions-catalog";
 import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage, getFitnessProductImage, getToysProductImage, getVehiclesProductImage, getProductDisplayImage } from "@/lib/product-images";
 import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
 
@@ -219,6 +220,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: s.idx < 4,
         displayOrder: 548 + s.idx,
+        addedCount: SUBSCRIPTIONS_STARTING_COUNTS[s.slug] || 0,
       }));
     rawItems = [...validRaw, ...missingItems];
     rawItems.sort((a, b) => {

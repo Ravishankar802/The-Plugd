@@ -10,6 +10,7 @@ import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
 import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
 import { getFullToysCatalog } from "@/lib/toys-catalog";
 import { getFullVehiclesCatalog } from "@/lib/vehicles-catalog";
+import { SUBSCRIPTIONS_STARTING_COUNTS } from "@/lib/subscriptions-catalog";
 import {
   getEntertainmentProductImage,
   getSubscriptionsProductImage,
@@ -1100,6 +1101,32 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       items = items.map((item) => {
         const targetUrl = getSubscriptionsProductImage(item.slug);
         return targetUrl ? { ...item, image: targetUrl } : item;
+      });
+    }
+
+    // Ensure Subscriptions items have starting counts seeded
+    const unseededItems = items.filter((i) => {
+      const targetCount = SUBSCRIPTIONS_STARTING_COUNTS[i.slug] ?? (i.slug === "x-premium-2" ? SUBSCRIPTIONS_STARTING_COUNTS["x-premium-plus"] : undefined);
+      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
+    });
+
+    if (unseededItems.length > 0) {
+      await Promise.all(
+        unseededItems.map((item) => {
+          const targetCount = SUBSCRIPTIONS_STARTING_COUNTS[item.slug] ?? (item.slug === "x-premium-2" ? SUBSCRIPTIONS_STARTING_COUNTS["x-premium-plus"] : undefined);
+          return prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { addedCount: targetCount },
+          }).catch(() => {});
+        })
+      );
+
+      items = items.map((item) => {
+        const targetCount = SUBSCRIPTIONS_STARTING_COUNTS[item.slug] ?? (item.slug === "x-premium-2" ? SUBSCRIPTIONS_STARTING_COUNTS["x-premium-plus"] : undefined);
+        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
+          return { ...item, addedCount: targetCount };
+        }
+        return item;
       });
     }
 
