@@ -6,7 +6,7 @@ import { getFullFashionCatalog, FASHION_TOP_PICKS, FASHION_STARTING_COUNTS } fro
 import { getFullMobilesCatalog, MOBILE_STARTING_COUNTS } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog, BEAUTY_STARTING_COUNTS } from "@/lib/beauty-catalog";
 import { getFullEntertainmentCatalog, ENTERTAINMENT_STARTING_COUNTS } from "@/lib/entertainment-catalog";
-import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
+import { getFullElectronicsCatalog, ELECTRONICS_STARTING_COUNTS } from "@/lib/electronics-catalog";
 import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
 import { getFullToysCatalog } from "@/lib/toys-catalog";
 import { getFullVehiclesCatalog } from "@/lib/vehicles-catalog";
@@ -1212,6 +1212,32 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       items = items.map((item) => {
         const targetUrl = electronicsImageBySlug.get(item.slug);
         return targetUrl ? { ...item, image: targetUrl } : item;
+      });
+    }
+
+    // Ensure Electronics items have starting counts seeded
+    const unseededItems = items.filter((i) => {
+      const targetCount = ELECTRONICS_STARTING_COUNTS[i.slug];
+      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
+    });
+
+    if (unseededItems.length > 0) {
+      await Promise.all(
+        unseededItems.map((item) => {
+          const targetCount = ELECTRONICS_STARTING_COUNTS[item.slug];
+          return prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { addedCount: targetCount },
+          }).catch(() => {});
+        })
+      );
+
+      items = items.map((item) => {
+        const targetCount = ELECTRONICS_STARTING_COUNTS[item.slug];
+        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
+          return { ...item, addedCount: targetCount };
+        }
+        return item;
       });
     }
 

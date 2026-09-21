@@ -704,7 +704,7 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
     },
     {
       id: "keyboards-mice",
-      name: "Keyboards & Mice",
+      name: "Keyboards & Mouse",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNNmIcTE-CcraXOcAC7qyiYGkMbpLyjlDtf3CAAohDCA&s=10",
       keywords: ["keyboard","mouse","pebble","nano","g502","g402","companion","shark lite","war m","rapoo","katana","banshee","toad"],
       productIds: [

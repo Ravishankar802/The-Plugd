@@ -1491,3 +1491,104 @@ export const ELECTRONICS_SECTIONS: ElectronicsSection[] = [
     productIds: RAW_ELECTRONICS_PRODUCTS.filter((p) => p.subcategory === "Other").map((p) => p.id),
   },
 ];
+
+export const ELECTRONICS_STARTING_COUNTS: Record<string, number> = {
+  // LAPTOPS (25)
+  "macbook-pro-14": 2100, // 2.1K
+  "macbook-pro-16": 1800, // 1.8K
+  "macbook-air-13": 1500, // 1.5K
+  "macbook-air-15": 1300, // 1.3K
+  "macbook-neo": 1000, // 1K
+  "mac-mini": 880,
+  "mac-studio": 1100, // 1.1K
+  "imac": 1300, // 1.3K
+  "dell-xps-13": 282,
+  "dell-xps-16": 321,
+  "microsoft-surface-laptop": 210,
+  "microsoft-surface-pro": 541,
+  "lenovo-thinkpad-x1-carbon": 1400, // 1.4K
+  "lenovo-yoga-pro": 402,
+  "hp-spectre-x360": 391,
+  "asus-zenbook": 211,
+  "asus-proart": 101,
+  "acer-swift": 132,
+  "razer-blade-16": 320,
+  "asus-rog-strix": 356,
+  "asus-rog-zephyrus-g14": 432,
+  "lenovo-legion-pro": 561,
+  "alienware-gaming-laptop": 693,
+  "msi-raider": 485,
+  "acer-predator-helios": 347,
+
+  // AUDIO (23)
+  "airpods": 1100, // 1.1K
+  "airpods-pro": 2800, // 2.8K
+  "airpods-max": 2400, // 2.4K
+  "sony-wf-1000xm6": 1400, // 1.4K
+  "sony-wf-1000xm5": 742,
+  "sony-wh-1000xm6": 1200, // 1.2K
+  "sony-wh-1000xm5": 480,
+  "samsung-galaxy-buds4-pro": 245,
+  "galaxy-buds4": 609,
+  "galaxy-buds3-pro": 428,
+  "galaxy-buds3": 321,
+  "pixel-buds-pro-2": 210,
+  "pixel-buds-2a": 143,
+  "cmf-headphone-pro": 430,
+  "cmf-buds-2-plus": 382,
+  "cmf-buds-pro-2": 212,
+  "marshall-headphones": 589,
+  "marshall-earbuds": 921,
+  "bose-quietcomfort-ultra": 354,
+  "bose-quietcomfort-headphones": 430,
+  "sennheiser-momentum-4": 139,
+  "sennheiser-hd-600": 123,
+  "audio-technica-ath-m50x": 459,
+
+  // GAMING (17)
+  "playstation-5": 1200, // 1.2K
+  "playstation-5-pro": 1600, // 1.6K
+  "playstation-5-console-standard": 1100, // 1.1K
+  "playstation-5-console-digital": 1200, // 1.2K
+  "xbox-series-x": 1100, // 1.1K
+  "nintendo-switch-2": 648,
+  "asus-rog-ally-x": 532,
+  "steam-deck-oled": 498,
+  "meta-quest-3": 610,
+  "apple-vision-pro": 732,
+  "dualsense-wireless-controller-white": 523,
+  "logitech-g502-hero-high-performance-gaming-mouse": 372,
+  "logitech-g402-hyperion-fury-usb-wired-gaming-mouse": 290,
+  "nvidia-geforce-rtx-5090": 3500, // 3.5K
+  "nvidia-geforce-rtx-5080": 2300, // 2.3K
+  "nvidia-geforce-rtx-5070-ti": 1500, // 1.5K
+  "samsung-odyssey-oled-g9": 834,
+
+  // KEYBOARDS & MOUSE (12)
+  "logitech-pebble-keys-2-k380s": 349,
+  "logitech-mk240-nano-wireless-usb-keyboard": 432,
+  "logitech-g502-hero": 483,
+  "logitech-g402-hyperion-fury": 367,
+  "zebronics-companion-201": 301,
+  "zebronics-shark-lite": 392,
+  "zebronics-war-m": 340,
+  "rapoo-e9050l": 298,
+  "evofox-katana-x2-tkl": 540,
+  "evofox-banshee-tri-mode": 501,
+  "potronics-wireless-keyboard": 219,
+  "potronics-toad-8": 184,
+
+  // CAMERAS & STREAMING (11)
+  "mirrorless-camera": 234,
+  "dslr-camera": 569,
+  "action-camera": 354,
+  "gopro": 809,
+  "4k-stream-webcam": 476,
+  "streaming-microphone": 381,
+  "audio-interface": 298,
+  "ring-light": 903,
+  "capture-card": 310,
+  "tripod": 693,
+  "camera-gimbal": 311,
+};
+

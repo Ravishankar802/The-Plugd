@@ -21,7 +21,7 @@ import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullMobilesCatalog, MOBILE_STARTING_COUNTS } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS, BEAUTY_STARTING_COUNTS, BEAUTY_TOP_PICKS_EXCLUSIVE_COUNTS } from "@/lib/beauty-catalog";
 import { getFullEntertainmentCatalog, ENTERTAINMENT_STARTING_COUNTS } from "@/lib/entertainment-catalog";
-import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS } from "@/lib/electronics-catalog";
+import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS, ELECTRONICS_STARTING_COUNTS } from "@/lib/electronics-catalog";
 import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
 import { getFullToysCatalog } from "@/lib/toys-catalog";
 import { getFullVehiclesCatalog, VEHICLES_TOP_PICKS_SLUGS } from "@/lib/vehicles-catalog";
@@ -274,6 +274,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               name: canonical.name,
               image: canonical.imageUrl,
               featured: Boolean(canonical.featured),
+              addedCount: i.addedCount ?? ELECTRONICS_STARTING_COUNTS[i.slug] ?? 0,
             }
           : i;
       });
@@ -302,6 +303,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           categoryId: targetCategoryId,
           featured: Boolean(e.featured),
           displayOrder: e.displayOrder ?? idx,
+          addedCount: ELECTRONICS_STARTING_COUNTS[e.id] ?? 0,
         };
       });
     rawItems = [...validRaw, ...missingItems];
