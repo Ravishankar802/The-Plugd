@@ -139,7 +139,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     }
   } else if (category.slug === "mobile" || isElectronicsMobile) {
     const fullMobiles = getFullMobilesCatalog();
-    const existingSlugs = new Set(initialRawItems.map((i) => i.slug));
+    const allowedSlugs = new Set(fullMobiles.map((m) => m.id));
+    const validRaw = initialRawItems.filter((i) => allowedSlugs.has(i.slug));
+    const existingSlugs = new Set(validRaw.map((i) => i.slug));
     const missingItems = fullMobiles
       .filter((d) => !existingSlugs.has(d.id))
       .map((d, idx) => ({
@@ -152,9 +154,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         displayOrder: idx + 1,
         addedCount: MOBILE_STARTING_COUNTS[d.id] || 0,
       }));
-    if (missingItems.length > 0) {
-      rawItems = [...initialRawItems, ...missingItems];
-    }
+    rawItems = [...validRaw, ...missingItems];
   } else if (category.slug === "beauty") {
     const fullBeauty = getFullBeautyCatalog();
     const existingSlugs = new Set(initialRawItems.map((i) => i.slug));
@@ -498,7 +498,9 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   } else if ((category.slug === "mobile" || isElectronicsMobile) && isTopPicksActive) {
     const fullMobiles = getFullMobilesCatalog();
     const topPickSlugs = fullMobiles.map((p) => p.id);
-    items = [...rawItems].sort((a, b) => {
+    const topPickSet = new Set(topPickSlugs);
+    items = rawItems.filter((item) => topPickSet.has(item.slug));
+    items.sort((a, b) => {
       const idxA = topPickSlugs.indexOf(a.slug);
       const idxB = topPickSlugs.indexOf(b.slug);
       return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);

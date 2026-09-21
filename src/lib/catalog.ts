@@ -759,6 +759,24 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
   // If mobile category, ensure items have starting counts and authentic product images
   const mobileCat = await prisma.category.findUnique({ where: { slug: "mobile" }, select: { id: true } });
   if (mobileCat && categoryId === mobileCat.id) {
+    // Purge any duplicate or misspelled burgandy items from DB
+    prisma.catalogItem
+      .deleteMany({
+        where: {
+          OR: [
+            { slug: "iphone-18-pro-max-burgandy" },
+            { slug: { contains: "burgand", mode: "insensitive" } },
+            { name: { contains: "burgand", mode: "insensitive" } },
+          ],
+        },
+      })
+      .catch(() => {});
+
+    // Ensure only canonical Mobile items are included
+    const fullMobiles = getFullMobilesCatalog();
+    const canonicalSlugs = new Set(fullMobiles.map((d) => d.id));
+    items = items.filter((item) => canonicalSlugs.has(item.slug));
+
     const unseededItems = items.filter((i) => {
       const targetCount = MOBILE_STARTING_COUNTS[i.slug];
       return targetCount != null && (!i.addedCount || i.addedCount < targetCount);

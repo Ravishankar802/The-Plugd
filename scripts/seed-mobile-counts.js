@@ -37,7 +37,21 @@ async function seedMobileCounts() {
       return;
     }
 
-    // 1. Remove any duplicate iPhone 18 Pro Max (Burgundy) entries beyond the single canonical product
+    // 1. Purge any misspelled or duplicate "burgandy" entries
+    const purgedMisspelled = await prisma.catalogItem.deleteMany({
+      where: {
+        OR: [
+          { slug: 'iphone-18-pro-max-burgandy' },
+          { slug: { contains: 'burgand', mode: 'insensitive' } },
+          { name: { contains: 'burgand', mode: 'insensitive' } },
+        ]
+      }
+    });
+    if (purgedMisspelled.count > 0) {
+      console.log(`[SEED_MOBILE_COUNTS] Purged ${purgedMisspelled.count} misspelled burgandy item(s).`);
+    }
+
+    // Also remove any extra duplicate iPhone 18 Pro Max (Burgundy) entries beyond the single canonical product
     const burgundyItems = await prisma.catalogItem.findMany({
       where: {
         OR: [
