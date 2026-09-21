@@ -2,9 +2,9 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const MOBILE_STARTING_COUNTS = {
-  'iphone-duo': 3000,
-  'iphone-18-pro-max-black': 2800,
-  'iphone-18-pro-max-burgundy': 3000,
+  'iphone-duo': 5000,
+  'iphone-18-pro-max-black': 5000,
+  'iphone-18-pro-max-burgundy': 4800,
   'iphone-18-pro': 2000,
   'iphone-17-pro-max': 2000,
   'samsung-galaxy-s26-ultra': 2000,
@@ -87,13 +87,13 @@ async function seedMobileCounts() {
       const item = await prisma.catalogItem.findUnique({ where: { slug } });
       if (item) {
         const needsCatUpdate = item.categoryId !== mobileCat.id;
-        const needsCountUpdate = item.addedCount == null || item.addedCount < targetCount;
+        const needsCountUpdate = item.addedCount == null || item.addedCount < targetCount || (['iphone-duo', 'iphone-18-pro-max-black', 'iphone-18-pro-max-burgundy'].includes(slug) && item.addedCount !== targetCount);
         if (needsCatUpdate || needsCountUpdate) {
           await prisma.catalogItem.update({
             where: { id: item.id },
             data: {
               categoryId: mobileCat.id,
-              addedCount: Math.max(item.addedCount || 0, targetCount),
+              addedCount: targetCount,
             }
           });
           updated++;

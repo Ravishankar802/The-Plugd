@@ -20,7 +20,7 @@ export default function Footer({ showBorder = true }: FooterProps) {
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-8 border-b border-zinc-100">
           <Link href="/" className="group flex shrink-0 items-center pl-3 sm:pl-4 md:pl-5">
-            <span className="font-logo text-3xl md:text-[34px] font-extrabold tracking-normal bg-gradient-to-r from-zinc-950 via-zinc-800 to-emerald-500 bg-clip-text text-transparent select-none inline-block pt-1 pb-2 leading-tight overflow-visible">
+            <span className="font-logo text-3xl md:text-[34px] font-extrabold tracking-normal text-orange-500 select-none inline-block pt-1 pb-2 leading-tight overflow-visible">
               Plugd
             </span>
           </Link>

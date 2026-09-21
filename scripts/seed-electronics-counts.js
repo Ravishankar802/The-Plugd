@@ -99,6 +99,61 @@ const ELECTRONICS_STARTING_COUNTS = {
   "capture-card": 310,
   "tripod": 693,
   "camera-gimbal": 311,
+
+  // STORAGE & COMPUTING (10)
+  "external-ssd": 113,
+  "external-hdd": 87,
+  "usb-flash-drive": 145,
+  "portable-ssd": 56,
+  "nas-storage": 45,
+  "power-bank": 153,
+  "usb-c-hub": 50,
+  "thunderbolt-dock": 32,
+  "wireless-charger": 98,
+  "magsafe-charger": 71,
+
+  // DISPLAYS & PROJECTORS (7)
+  "gaming-monitor": 345,
+  "4k-monitor": 201,
+  "ultrawide-monitor": 198,
+  "smart-projector": 143,
+  "4k-projector": 183,
+  "portable-projector": 222,
+  "4k-smart-tv": 310,
+
+  // SMART HOME (10)
+  "amazon-echo-show-8": 92,
+  "amazon-echo-4th-gen": 83,
+  "google-nest-hub": 73,
+  "apple-homepod": 81,
+  "smart-light": 22,
+  "smart-led-strip": 54,
+  "smart-plug": 31,
+  "smart-doorbell": 12,
+  "security-camera": 9,
+  "robot-vacuum": 56,
+
+  // WATCHES (8)
+  "apple-watch": 732,
+  "apple-watch-ultra": 1200, // 1.2K
+  "samsung-galaxy-watch": 325,
+  "google-pixel-watch": 210,
+  "garmin-forerunner": 185,
+  "garmin-fenix": 57,
+  "fitbit-charge": 118,
+  "xiaomi-smart-band": 34,
+
+  // OTHER (10)
+  "standing-desk": 301,
+  "mechanical-keyboard": 126,
+  "gaming-chair": 1200, // 1.2K
+  "desk-lamp": 333,
+  "electric-toothbrush": 120,
+  "electric-shaver": 209,
+  "hair-dryer": 154,
+  "air-purifier": 91,
+  "portable-fan": 561,
+  "digital-alarm-clock": 241,
 };
 
 async function seedElectronicsCounts() {
