@@ -97,3 +97,16 @@ export function getFullEntertainmentCatalog(): EntertainmentProduct[] {
     displayOrder: idx + 1,
   }));
 }
+
+export const ENTERTAINMENT_STARTING_COUNTS: Record<string, number> = {
+  "concert-ticket": 32,
+  "movie-ticket": 58,
+  "music-festival-pass": 41,
+  "comedy-show-ticket": 23,
+  "ipl-match-ticket": 4,
+  "cricket-series-pass": 9,
+  "anime-box-set": 35,
+  "vinyl-player": 26,
+  "board-game-night": 11,
+  "theater-experience": 7,
+};

@@ -394,7 +394,7 @@ export function getMobileSubcategories(): Array<{ name: string; count: number }>
 
 export const MOBILE_STARTING_COUNTS: Record<string, number> = {
   "iphone-duo": 3000,
-  "iphone-18-pro-max-black": 2500,
+  "iphone-18-pro-max-black": 2800,
   "iphone-18-pro-max-burgundy": 3000,
   "iphone-18-pro": 2000,
   "iphone-17-pro-max": 2000,

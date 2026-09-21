@@ -20,7 +20,7 @@ import {
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullMobilesCatalog, MOBILE_STARTING_COUNTS } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS } from "@/lib/beauty-catalog";
-import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
+import { getFullEntertainmentCatalog, ENTERTAINMENT_STARTING_COUNTS } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS } from "@/lib/electronics-catalog";
 import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
 import { getFullToysCatalog } from "@/lib/toys-catalog";
@@ -55,7 +55,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   // Hierarchy context
   const isGamingSubcategory = false;
-  const isElectronicsMobile = false;
+  const isElectronicsMobile = category.slug === "electronics" && subParam.toLowerCase() === "mobile";
 
   // Subcategories list for sidebar
   const mainSubcategories = getSubcategoriesForCategory(category.slug);
@@ -187,6 +187,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: Boolean(e.featured),
         displayOrder: e.displayOrder ?? idx,
+        addedCount: ENTERTAINMENT_STARTING_COUNTS[e.id] || 0,
       }));
     rawItems = [...validRaw, ...missingItems];
     const slugOrder = fullEntertainment.map((e) => e.id);
@@ -364,7 +365,15 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       items = rawItems.filter((item) => ALL_GAMING_PRODUCT_IDS.includes(item.slug));
     }
   } else if (isElectronicsMobile) {
-    items = rawItems;
+    const fullMobiles = getFullMobilesCatalog();
+    const topPickSlugs = fullMobiles.map((p) => p.id);
+    const topPickSet = new Set(topPickSlugs);
+    items = rawItems.filter((item) => topPickSet.has(item.slug));
+    items.sort((a, b) => {
+      const idxA = topPickSlugs.indexOf(a.slug);
+      const idxB = topPickSlugs.indexOf(b.slug);
+      return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
+    });
   } else if (activeSubDef) {
     const duplicateFallbackSlugs = [
       "lay-s-classic-salted",
