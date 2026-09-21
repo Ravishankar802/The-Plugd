@@ -4,7 +4,7 @@ import { getFullFoodCatalog, FOOD_NAMES, FOOD_STARTING_COUNTS, FOOD_ALIASES } fr
 import { getFullDrinksCatalog, DRINKS_STARTING_COUNTS } from "@/lib/drinks-catalog";
 import { getFullFashionCatalog, FASHION_TOP_PICKS, FASHION_STARTING_COUNTS } from "@/lib/fashion-catalog";
 import { getFullMobilesCatalog, MOBILE_STARTING_COUNTS } from "@/lib/mobiles-catalog";
-import { getFullBeautyCatalog } from "@/lib/beauty-catalog";
+import { getFullBeautyCatalog, BEAUTY_STARTING_COUNTS } from "@/lib/beauty-catalog";
 import { getFullEntertainmentCatalog, ENTERTAINMENT_STARTING_COUNTS } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
 import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
@@ -886,6 +886,32 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       items = items.map((item) => {
         const targetUrl = beautyImageBySlug.get(item.slug);
         return targetUrl ? { ...item, image: targetUrl } : item;
+      });
+    }
+
+    // Ensure Beauty items have starting counts seeded
+    const unseededItems = items.filter((i) => {
+      const targetCount = BEAUTY_STARTING_COUNTS[i.slug];
+      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
+    });
+
+    if (unseededItems.length > 0) {
+      await Promise.all(
+        unseededItems.map((item) => {
+          const targetCount = BEAUTY_STARTING_COUNTS[item.slug];
+          return prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { addedCount: targetCount },
+          }).catch(() => {});
+        })
+      );
+
+      items = items.map((item) => {
+        const targetCount = BEAUTY_STARTING_COUNTS[item.slug];
+        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
+          return { ...item, addedCount: targetCount };
+        }
+        return item;
       });
     }
   }

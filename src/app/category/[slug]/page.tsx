@@ -19,7 +19,7 @@ import {
 } from "@/lib/subcategories";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullMobilesCatalog, MOBILE_STARTING_COUNTS } from "@/lib/mobiles-catalog";
-import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS } from "@/lib/beauty-catalog";
+import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS, BEAUTY_STARTING_COUNTS } from "@/lib/beauty-catalog";
 import { getFullEntertainmentCatalog, ENTERTAINMENT_STARTING_COUNTS } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS } from "@/lib/electronics-catalog";
 import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
@@ -168,6 +168,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: Boolean(b.featured),
         displayOrder: b.displayOrder ?? idx,
+        addedCount: BEAUTY_STARTING_COUNTS[b.id] || 0,
       }));
     if (missingItems.length > 0) {
       rawItems = [...initialRawItems, ...missingItems];
