@@ -49,6 +49,16 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     notFound();
   }
 
+  // Swap Subscriptions and Vehicles positions ONLY for the category navigation row to match homepage
+  const navCategories = [...allCategories];
+  const subIdx = navCategories.findIndex((c) => c.slug === "subscriptions");
+  const vehIdx = navCategories.findIndex((c) => c.slug === "vehicles");
+  if (subIdx !== -1 && vehIdx !== -1) {
+    const temp = navCategories[subIdx];
+    navCategories[subIdx] = navCategories[vehIdx];
+    navCategories[vehIdx] = temp;
+  }
+
   const query = resolvedSearchParams?.q?.trim() || "";
   const subParam = resolvedSearchParams?.sub?.trim() || "";
   const childParam = resolvedSearchParams?.child?.trim() || "";
@@ -667,7 +677,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 <Sparkles className="h-4 w-4 md:h-[18px] md:w-[18px] text-zinc-500" />
                 <span>All</span>
               </Link>
-              {allCategories.map((c) => {
+              {navCategories.map((c) => {
                 const isActive = c.slug === category.slug;
                 return (
                   <Link
