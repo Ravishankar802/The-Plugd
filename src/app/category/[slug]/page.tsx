@@ -24,7 +24,7 @@ import { getFullEntertainmentCatalog, ENTERTAINMENT_STARTING_COUNTS } from "@/li
 import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS, ELECTRONICS_STARTING_COUNTS } from "@/lib/electronics-catalog";
 import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
 import { getFullToysCatalog } from "@/lib/toys-catalog";
-import { getFullVehiclesCatalog, VEHICLES_TOP_PICKS_SLUGS } from "@/lib/vehicles-catalog";
+import { getFullVehiclesCatalog, VEHICLES_TOP_PICKS_SLUGS, VEHICLES_STARTING_COUNTS } from "@/lib/vehicles-catalog";
 import { SUBSCRIPTIONS_STARTING_COUNTS } from "@/lib/subscriptions-catalog";
 import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage, getFitnessProductImage, getToysProductImage, getVehiclesProductImage, getProductDisplayImage } from "@/lib/product-images";
 import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
@@ -395,14 +395,20 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       .filter((i) => allowedSlugs.has(i.slug))
       .map((i) => {
         const canonical = fullVehiclesMap.get(i.slug);
+        const targetCount = VEHICLES_STARTING_COUNTS[i.slug] ?? 0;
+        const finalCount = (i.addedCount != null && i.addedCount >= targetCount) ? i.addedCount : targetCount;
         return canonical
           ? {
               ...i,
               name: canonical.name,
               image: canonical.imageUrl,
               featured: Boolean(canonical.featured),
+              addedCount: finalCount,
             }
-          : i;
+          : {
+              ...i,
+              addedCount: finalCount,
+            };
       });
     const existingSlugs = new Set(validRaw.map((i) => i.slug));
     const missingItems = fullVehicles
@@ -415,6 +421,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: Boolean(v.featured),
         displayOrder: v.displayOrder ?? idx,
+        addedCount: VEHICLES_STARTING_COUNTS[v.id] ?? 0,
       }));
     rawItems = [...validRaw, ...missingItems];
     const slugOrder = fullVehicles.map((v) => v.id);
