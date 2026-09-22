@@ -8,7 +8,7 @@ import { getFullBeautyCatalog, BEAUTY_STARTING_COUNTS } from "@/lib/beauty-catal
 import { getFullEntertainmentCatalog, ENTERTAINMENT_STARTING_COUNTS } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog, ELECTRONICS_STARTING_COUNTS } from "@/lib/electronics-catalog";
 import { getFullFitnessCatalog, FITNESS_STARTING_COUNTS } from "@/lib/fitness-catalog";
-import { getFullToysCatalog } from "@/lib/toys-catalog";
+import { getFullToysCatalog, TOYS_STARTING_COUNTS } from "@/lib/toys-catalog";
 import { getFullVehiclesCatalog, VEHICLES_STARTING_COUNTS } from "@/lib/vehicles-catalog";
 import { SUBSCRIPTIONS_STARTING_COUNTS } from "@/lib/subscriptions-catalog";
 import {
@@ -1424,6 +1424,32 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       });
     }
 
+    // Ensure Toys items have starting counts seeded
+    const unseededItems = items.filter((i) => {
+      const targetCount = TOYS_STARTING_COUNTS[i.slug];
+      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
+    });
+
+    if (unseededItems.length > 0) {
+      await Promise.all(
+        unseededItems.map((item) => {
+          const targetCount = TOYS_STARTING_COUNTS[item.slug];
+          return prisma.catalogItem.update({
+            where: { id: item.id },
+            data: { addedCount: targetCount },
+          }).catch(() => {});
+        })
+      );
+
+      items = items.map((item) => {
+        const targetCount = TOYS_STARTING_COUNTS[item.slug];
+        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
+          return { ...item, addedCount: targetCount };
+        }
+        return item;
+      });
+    }
+
     const slugOrder = fullToys.map((t) => t.id);
     items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
@@ -1639,6 +1665,7 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
           active: true,
           featured: Boolean(toy.featured),
           displayOrder: toy.displayOrder,
+          addedCount: TOYS_STARTING_COUNTS[toy.id] ?? 0,
         },
         include: { category: true },
       }).catch(() => null);
@@ -1651,6 +1678,7 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
         slug: toy.id,
         image: toy.imageUrl,
         category,
+        addedCount: TOYS_STARTING_COUNTS[toy.id] ?? 0,
       };
     }
   }

@@ -23,7 +23,7 @@ import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS, BEAUTY_STARTING_COUNTS, B
 import { getFullEntertainmentCatalog, ENTERTAINMENT_STARTING_COUNTS } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS, ELECTRONICS_STARTING_COUNTS } from "@/lib/electronics-catalog";
 import { getFullFitnessCatalog, FITNESS_STARTING_COUNTS } from "@/lib/fitness-catalog";
-import { getFullToysCatalog } from "@/lib/toys-catalog";
+import { getFullToysCatalog, TOYS_STARTING_COUNTS } from "@/lib/toys-catalog";
 import { getFullVehiclesCatalog, VEHICLES_TOP_PICKS_SLUGS, VEHICLES_STARTING_COUNTS } from "@/lib/vehicles-catalog";
 import { SUBSCRIPTIONS_STARTING_COUNTS } from "@/lib/subscriptions-catalog";
 import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage, getFitnessProductImage, getToysProductImage, getVehiclesProductImage, getProductDisplayImage } from "@/lib/product-images";
@@ -370,14 +370,16 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       .filter((i) => allowedSlugs.has(i.slug))
       .map((i) => {
         const canonical = fullToysMap.get(i.slug);
+        const targetCount = TOYS_STARTING_COUNTS[i.slug] ?? 0;
         return canonical
           ? {
               ...i,
               name: canonical.name,
               image: canonical.imageUrl,
               featured: Boolean(canonical.featured),
+              addedCount: Math.max(i.addedCount ?? 0, targetCount),
             }
-          : i;
+          : { ...i, addedCount: Math.max(i.addedCount ?? 0, targetCount) };
       });
     const existingSlugs = new Set(validRaw.map((i) => i.slug));
     const missingItems = fullToys
@@ -390,6 +392,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: Boolean(e.featured),
         displayOrder: e.displayOrder ?? idx,
+        addedCount: TOYS_STARTING_COUNTS[e.id] ?? 0,
       }));
     rawItems = [...validRaw, ...missingItems];
     const slugOrder = fullToys.map((e) => e.id);
