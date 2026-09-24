@@ -1106,6 +1106,7 @@ export const DRINKS_IMAGE_MAP: Record<string, string> = {
   "diet-coke": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=1080/da/cms-assets/cms/product/rc-upload-1772721745362-188.png?bg_token=color.background.quaternary",
   "red-bull-energy-drink": "https://www.planethealth.in/image/cache/catalog/SUNIL%20AHUJA/18817-500x500.jpg",
   "monster-energy-drink": "https://frugivore-bucket.s3.amazonaws.com/media/package/img_one/2021-11-13/monster_energy_drink_can.jpg",
+  "monster-ultra-energy-drink": "https://cdn.zeptonow.com/production/ik-seo/cms/product_variant/6f850844-121e-4680-9b1d-a55ed7cab666/Monster-Energy-Ultra-Zero-Sugar-Carbonated-High-Caffeinated-Drink.jpeg",
   "gatorade-energy-drink": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/NI_CATALOG/IMAGES/ciw/2026/2/11/4524c235-4ca4-4382-8b45-195a25ecf8e1_5Z0ONNKCGJ_MN_11022026.png",
   "amul-masti-spiced-buttermilk": "https://neelamfoodlandmumbai.com/cdn/shop/files/7300AMULMASTISPICEDBUTTERMILK200ML_1.jpg?v=1752070727",
   "bisleri-water-bottle": "https://www.bisleri.com/on/demandware.static/-/Library-Sites-RefArchSharedLibrary/default/dwb2d6bbd4/images/homepage/bisleri-500ml-bottle.jpeg",

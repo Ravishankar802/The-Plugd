@@ -527,6 +527,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       "diet-coke",
       "red-bull-energy-drink",
       "monster-energy-drink",
+      "monster-ultra-energy-drink",
       "gatorade-energy-drink",
       "amul-masti-spiced-buttermilk",
       "bisleri-water-bottle",

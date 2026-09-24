@@ -6,11 +6,32 @@ import AddToWishlistButton from "@/components/AddToWishlistButton";
 import CatalogCard from "@/components/CatalogCard";
 import CategoryIcon from "@/components/CategoryIcon";
 import { getSession } from "@/lib/auth";
-import { HOMEPAGE_CATEGORIES_GRID } from "@/lib/product-images";
+import { HOMEPAGE_CATEGORIES_GRID, getProductDisplayImage } from "@/lib/product-images";
 import prisma from "@/lib/prisma";
 import { searchCatalog } from "@/lib/search";
 
 export const dynamic = "force-dynamic";
+
+const HOMEPAGE_TOP_PICKS_SLUGS = [
+  "iphone-duo",
+  "iphone-18-pro-max-black",
+  "iphone-18-pro-max-burgundy",
+  "claude-max",
+  "macbook-pro-14",
+  "playstation-5-pro",
+  "nvidia-geforce-rtx-5090",
+  "porsche-911-gt3-rs",
+  "bmw-s1000rr",
+  "koenigsegg-jesko-absolut",
+  "red-bull-energy-drink",
+  "bugatti-chiron-super-sport",
+  "biryani",
+  "monster-ultra-energy-drink",
+  "pizza",
+  "ducati-panigale-v4r",
+  "porsche-911",
+  "kawasaki-ninja-h2r",
+] as const;
 
 interface HomePageProps {
   searchParams?: Promise<{ q?: string }> | { q?: string };
@@ -21,7 +42,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams?.q?.trim() || "";
 
-  const [categories, featuredItems, searchResults] = await Promise.all([
+  const [categories, topPicksDbItems, searchResults] = await Promise.all([
     prisma.category.findMany({
       where: { active: true },
       include: {
@@ -34,15 +55,21 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       orderBy: { displayOrder: "asc" },
     }),
     prisma.catalogItem.findMany({
-      where: { active: true, featured: true },
+      where: {
+        active: true,
+        slug: { in: [...HOMEPAGE_TOP_PICKS_SLUGS] },
+      },
       include: { category: true },
-      orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
-      take: 6,
     }),
     query
       ? searchCatalog(query, { limitItems: 48 })
       : Promise.resolve({ categories: [], subcategories: [], items: [], totalMatches: 0 }),
   ]);
+
+  const topPicksMap = new Map(topPicksDbItems.map((item) => [item.slug, item]));
+  const topPicksItems = HOMEPAGE_TOP_PICKS_SLUGS
+    .map((slug) => topPicksMap.get(slug))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item));
 
   // Swap Subscriptions and Vehicles positions ONLY for the homepage category navigation row
   const navCategories = [...categories];
@@ -364,7 +391,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               </div>
             </section>
 
-            {/* 1. Trending Row */}
+            {/* 1. Top Picks Row */}
             <section className="space-y-4">
               <div className="flex items-end justify-between gap-4 border-b border-zinc-200/80 pb-3">
                 <div className="flex items-center gap-2">
@@ -372,18 +399,18 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     <Sparkles className="h-4 w-4" />
                   </div>
                   <div>
-                    <h2 className="text-lg md:text-xl font-black tracking-tight text-zinc-950">Trending</h2>
-                    <p className="text-[11px] text-zinc-500 hidden sm:block">Most popular items added to creator wishlists</p>
+                    <h2 className="text-lg md:text-xl font-black tracking-tight text-zinc-950">Top Picks</h2>
+                    <p className="text-[11px] text-zinc-500 hidden sm:block">A handpicked selection of things worth wanting.</p>
                   </div>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
-                {featuredItems.map((item, idx) => (
+                {topPicksItems.map((item, idx) => (
                   <CatalogCard
                     key={item.id}
                     href={`/catalog/${item.slug}`}
-                    image={item.image}
+                    image={getProductDisplayImage(item.category.slug, item.slug, item.image) || item.image}
                     name={item.name}
                     category={item.category.name}
                     addedCount={item.addedCount}

@@ -55,7 +55,7 @@ export async function GET(req: Request) {
     });
 
     let finalItems = items;
-    if (category === "drinks" && items.length < 58) {
+    if (category === "drinks" && items.length < 59) {
       const drinksCat = await prisma.category.findUnique({
         where: { slug: "drinks" },
         select: { id: true, name: true, slug: true },

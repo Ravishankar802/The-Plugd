@@ -379,7 +379,7 @@ export async function ensureCatalogSeeded(): Promise<void> {
       if (
         categoryCount === 11 &&
         foodCount >= FOOD_NAMES.length &&
-        drinksCount >= 58 &&
+        drinksCount >= 59 &&
         mobileCount >= 21 &&
         vehiclesCount >= 131 &&
         electronicsCount >= 70 &&
@@ -543,7 +543,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
 
   // Ensure Drinks items are fully seeded in DB (e.g. on production serverless environments)
   const drinksCat = await prisma.category.findUnique({ where: { slug: "drinks" }, select: { id: true } });
-  if (drinksCat && categoryId === drinksCat.id && items.length < 58) {
+  if (drinksCat && categoryId === drinksCat.id && items.length < 59) {
     const fullDrinks = getFullDrinksCatalog();
     const existingSlugs = new Set(items.map((i) => i.slug));
     const missing = fullDrinks.filter((d) => !existingSlugs.has(d.id));
