@@ -4,7 +4,7 @@
  * - 1,000 and above: compact K notation ("1.2K", "1.8K", "2.3K", "1K")
  */
 export function formatAddedCount(count: number): string {
-  if (!count || count <= 0) return "0";
+  if (!count || count <= 0) return "";
   if (count < 1000) {
     return count.toString();
   }

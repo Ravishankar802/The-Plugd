@@ -2,7 +2,7 @@ import { WishlistItemType } from "@prisma/client";
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
-import { resolveWishlistItem } from "@/lib/catalog";
+import { resolveWishlistItem, invalidateCategoryCache } from "@/lib/catalog";
 import { slugify } from "@/lib/slug";
 
 export const dynamic = "force-dynamic";
@@ -78,11 +78,18 @@ export async function POST(req: Request) {
       });
 
       if (!catalogItem) {
-        const slugCandidate = body.catalogItemId.startsWith("drinks-")
-          ? body.catalogItemId.replace("drinks-", "")
-          : body.catalogItemId;
         catalogItem = await prisma.catalogItem.findUnique({
-          where: { slug: slugCandidate },
+          where: { slug: body.catalogItemId },
+        });
+      }
+
+      if (!catalogItem) {
+        const strippedSlug = body.catalogItemId.replace(
+          /^(drinks|mobile|beauty|electronics|entertainment|subscriptions|fitness|toys|vehicles|food|fashion)-/,
+          ""
+        );
+        catalogItem = await prisma.catalogItem.findUnique({
+          where: { slug: strippedSlug },
         });
       }
 
@@ -119,6 +126,8 @@ export async function POST(req: Request) {
           data: { addedCount: { increment: 1 } },
         }),
       ]);
+
+      invalidateCategoryCache(catalogItem.categoryId);
     } else {
       const name = body.name?.trim();
       if (!name) {

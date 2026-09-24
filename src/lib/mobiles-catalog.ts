@@ -392,31 +392,5 @@ export function getMobileSubcategories(): Array<{ name: string; count: number }>
   return Array.from(map.entries()).map(([name, count]) => ({ name, count }));
 }
 
-export const MOBILE_STARTING_COUNTS: Record<string, number> = {
-  "iphone-duo": 5000,
-  "iphone-18-pro-max-black": 5000,
-  "iphone-18-pro-max-burgundy": 4800,
-  "iphone-18-pro": 2000,
-  "iphone-17-pro-max": 2000,
-  "samsung-galaxy-s26-ultra": 2000,
-  "samsung-galaxy-z-fold8-ultra": 2500,
-  "google-pixel-11-pro-xl": 1000,
-  "ipad-pro": 430,
-  "iphone-17-pro": 931,
-  "iphone-17": 830,
-  "iphone-air": 860,
-  "ipad-air": 290,
-  "ipad": 482,
-  "samsung-galaxy-s26": 563,
-  "samsung-galaxy-z-fold8": 678,
-  "google-pixel-11-pro": 421,
-  "google-pixel-11-pro-fold": 348,
-  "google-pixel-11": 232,
-  "nothing-phone-4a": 326,
-  "nothing-phone-4a-pro": 590,
-  "nothing-phone-4b": 229,
-  "nothing-phone-3": 285,
-  "nothing-phone-3a-pro": 467,
-  "nothing-phone-3a": 246,
-};
+export const MOBILE_STARTING_COUNTS: Record<string, number> = {};
 

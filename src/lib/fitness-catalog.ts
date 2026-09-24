@@ -212,37 +212,4 @@ export function getFullFitnessCatalog(): FitnessProduct[] {
   }));
 }
 
-export const FITNESS_STARTING_COUNTS: Record<string, number> = {
-  "gym-membership": 242,
-  "running-shoes": 143,
-  "fitness-watch": 320,
-  "dumbbell-set": 457,
-  "bicycle": 102,
-  "protien-supplement": 1400,
-  "protein-supplement": 1400,
-  "yoga-mat": 254,
-  "kettleball-set": 345,
-  "kettlebell-set": 345,
-  "resistance-bands": 74,
-  "weight-plates": 312,
-  "barbell-set": 229,
-  "treadmill": 152,
-  "exercise-bike": 263,
-  "rowing-machine": 180,
-  "elliptical-machine": 118,
-  "bench-press": 320,
-  "squat-rack": 204,
-  "pull-up-bar": 497,
-  "dip-station": 110,
-  "gym-gloves": 32,
-  "weightlighting-belt": 384,
-  "weightlifting-belt": 384,
-  "wrist-wraps": 82,
-  "ankle-weights": 173,
-  "foam-roller": 79,
-  "massage-gun": 98,
-  "skipping-rope": 63,
-  "ab-roller": 151,
-  "push-up-board": 8,
-  "yoga-blocks": 29,
-};
+export const FITNESS_STARTING_COUNTS: Record<string, number> = {};

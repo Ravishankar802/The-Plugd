@@ -18,14 +18,13 @@ import {
   ALL_GAMING_PRODUCT_IDS,
 } from "@/lib/subcategories";
 import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
-import { getFullMobilesCatalog, MOBILE_STARTING_COUNTS } from "@/lib/mobiles-catalog";
-import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS, BEAUTY_STARTING_COUNTS, BEAUTY_TOP_PICKS_EXCLUSIVE_COUNTS } from "@/lib/beauty-catalog";
-import { getFullEntertainmentCatalog, ENTERTAINMENT_STARTING_COUNTS } from "@/lib/entertainment-catalog";
-import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS, ELECTRONICS_STARTING_COUNTS } from "@/lib/electronics-catalog";
-import { getFullFitnessCatalog, FITNESS_STARTING_COUNTS } from "@/lib/fitness-catalog";
-import { getFullToysCatalog, TOYS_STARTING_COUNTS } from "@/lib/toys-catalog";
-import { getFullVehiclesCatalog, VEHICLES_TOP_PICKS_SLUGS, VEHICLES_STARTING_COUNTS } from "@/lib/vehicles-catalog";
-import { SUBSCRIPTIONS_STARTING_COUNTS } from "@/lib/subscriptions-catalog";
+import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
+import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS } from "@/lib/beauty-catalog";
+import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
+import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS } from "@/lib/electronics-catalog";
+import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
+import { getFullToysCatalog } from "@/lib/toys-catalog";
+import { getFullVehiclesCatalog, VEHICLES_TOP_PICKS_SLUGS } from "@/lib/vehicles-catalog";
 import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage, getFitnessProductImage, getToysProductImage, getVehiclesProductImage, getProductDisplayImage } from "@/lib/product-images";
 import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
 
@@ -163,7 +162,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: Boolean(d.featured),
         displayOrder: idx + 1,
-        addedCount: MOBILE_STARTING_COUNTS[d.id] || 0,
+        addedCount: 0,
       }));
     rawItems = [...validRaw, ...missingItems];
   } else if (category.slug === "beauty") {
@@ -179,7 +178,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: Boolean(b.featured),
         displayOrder: b.displayOrder ?? idx,
-        addedCount: BEAUTY_STARTING_COUNTS[b.id] || 0,
+        addedCount: 0,
       }));
     if (missingItems.length > 0) {
       rawItems = [...initialRawItems, ...missingItems];
@@ -199,7 +198,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: Boolean(e.featured),
         displayOrder: e.displayOrder ?? idx,
-        addedCount: ENTERTAINMENT_STARTING_COUNTS[e.id] || 0,
+        addedCount: 0,
       }));
     rawItems = [...validRaw, ...missingItems];
     const slugOrder = fullEntertainment.map((e) => e.id);
@@ -230,7 +229,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: s.idx < 4,
         displayOrder: 548 + s.idx,
-        addedCount: SUBSCRIPTIONS_STARTING_COUNTS[s.slug] || 0,
+        addedCount: 0,
       }));
     rawItems = [...validRaw, ...missingItems];
     rawItems.sort((a, b) => {
@@ -284,7 +283,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               name: canonical.name,
               image: canonical.imageUrl,
               featured: Boolean(canonical.featured),
-              addedCount: i.addedCount ?? ELECTRONICS_STARTING_COUNTS[i.slug] ?? 0,
+              addedCount: i.addedCount ?? 0,
             }
           : i;
       });
@@ -313,7 +312,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           categoryId: targetCategoryId,
           featured: Boolean(e.featured),
           displayOrder: e.displayOrder ?? idx,
-          addedCount: ELECTRONICS_STARTING_COUNTS[e.id] ?? 0,
+          addedCount: 0,
         };
       });
     rawItems = [...validRaw, ...missingItems];
@@ -331,19 +330,17 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       .filter((i) => allowedSlugs.has(i.slug))
       .map((i) => {
         const canonical = fullFitnessMap.get(i.slug);
-        const targetCount = FITNESS_STARTING_COUNTS[i.slug] ?? 0;
-        const finalCount = (i.addedCount != null && i.addedCount >= targetCount) ? i.addedCount : targetCount;
         return canonical
           ? {
               ...i,
               name: canonical.name,
               image: canonical.imageUrl,
               featured: Boolean(canonical.featured),
-              addedCount: finalCount,
+              addedCount: i.addedCount ?? 0,
             }
           : {
               ...i,
-              addedCount: finalCount,
+              addedCount: i.addedCount ?? 0,
             };
       });
     const existingSlugs = new Set(validRaw.map((i) => i.slug));
@@ -357,7 +354,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: Boolean(e.featured),
         displayOrder: e.displayOrder ?? idx,
-        addedCount: FITNESS_STARTING_COUNTS[e.id] ?? 0,
+        addedCount: 0,
       }));
     rawItems = [...validRaw, ...missingItems];
     const slugOrder = fullFitness.map((e) => e.id);
@@ -370,16 +367,15 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       .filter((i) => allowedSlugs.has(i.slug))
       .map((i) => {
         const canonical = fullToysMap.get(i.slug);
-        const targetCount = TOYS_STARTING_COUNTS[i.slug] ?? 0;
         return canonical
           ? {
               ...i,
               name: canonical.name,
               image: canonical.imageUrl,
               featured: Boolean(canonical.featured),
-              addedCount: Math.max(i.addedCount ?? 0, targetCount),
+              addedCount: i.addedCount ?? 0,
             }
-          : { ...i, addedCount: Math.max(i.addedCount ?? 0, targetCount) };
+          : { ...i, addedCount: i.addedCount ?? 0 };
       });
     const existingSlugs = new Set(validRaw.map((i) => i.slug));
     const missingItems = fullToys
@@ -392,7 +388,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: Boolean(e.featured),
         displayOrder: e.displayOrder ?? idx,
-        addedCount: TOYS_STARTING_COUNTS[e.id] ?? 0,
+        addedCount: 0,
       }));
     rawItems = [...validRaw, ...missingItems];
     const slugOrder = fullToys.map((e) => e.id);
@@ -405,19 +401,17 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       .filter((i) => allowedSlugs.has(i.slug))
       .map((i) => {
         const canonical = fullVehiclesMap.get(i.slug);
-        const targetCount = VEHICLES_STARTING_COUNTS[i.slug] ?? 0;
-        const finalCount = (i.addedCount != null && i.addedCount >= targetCount) ? i.addedCount : targetCount;
         return canonical
           ? {
               ...i,
               name: canonical.name,
               image: canonical.imageUrl,
               featured: Boolean(canonical.featured),
-              addedCount: finalCount,
+              addedCount: i.addedCount ?? 0,
             }
           : {
               ...i,
-              addedCount: finalCount,
+              addedCount: i.addedCount ?? 0,
             };
       });
     const existingSlugs = new Set(validRaw.map((i) => i.slug));
@@ -431,7 +425,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         categoryId: targetCategoryId,
         featured: Boolean(v.featured),
         displayOrder: v.displayOrder ?? idx,
-        addedCount: VEHICLES_STARTING_COUNTS[v.id] ?? 0,
+        addedCount: 0,
       }));
     rawItems = [...validRaw, ...missingItems];
     const slugOrder = fullVehicles.map((v) => v.id);
@@ -599,15 +593,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     });
   } else if (category.slug === "beauty" && isTopPicksActive) {
     const topPickSlugs = BEAUTY_TOP_PICKS_SLUGS;
-    items = rawItems
-      .filter((item) => topPickSlugs.includes(item.slug))
-      .map((item) => {
-        const topPickCount = BEAUTY_TOP_PICKS_EXCLUSIVE_COUNTS[item.slug];
-        if (topPickCount != null) {
-          return { ...item, addedCount: topPickCount };
-        }
-        return item;
-      });
+    items = rawItems.filter((item) => topPickSlugs.includes(item.slug));
     items.sort(
       (a, b) => topPickSlugs.indexOf(a.slug) - topPickSlugs.indexOf(b.slug)
     );

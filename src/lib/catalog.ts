@@ -1,16 +1,15 @@
 import prisma from "@/lib/prisma";
 import { ensureUniqueSlug, slugify } from "@/lib/slug";
-import { getFullFoodCatalog, FOOD_NAMES, FOOD_STARTING_COUNTS, FOOD_ALIASES } from "@/lib/food-catalog";
-import { getFullDrinksCatalog, DRINKS_STARTING_COUNTS } from "@/lib/drinks-catalog";
-import { getFullFashionCatalog, FASHION_TOP_PICKS, FASHION_STARTING_COUNTS } from "@/lib/fashion-catalog";
-import { getFullMobilesCatalog, MOBILE_STARTING_COUNTS } from "@/lib/mobiles-catalog";
-import { getFullBeautyCatalog, BEAUTY_STARTING_COUNTS } from "@/lib/beauty-catalog";
-import { getFullEntertainmentCatalog, ENTERTAINMENT_STARTING_COUNTS } from "@/lib/entertainment-catalog";
-import { getFullElectronicsCatalog, ELECTRONICS_STARTING_COUNTS } from "@/lib/electronics-catalog";
-import { getFullFitnessCatalog, FITNESS_STARTING_COUNTS } from "@/lib/fitness-catalog";
-import { getFullToysCatalog, TOYS_STARTING_COUNTS } from "@/lib/toys-catalog";
-import { getFullVehiclesCatalog, VEHICLES_STARTING_COUNTS } from "@/lib/vehicles-catalog";
-import { SUBSCRIPTIONS_STARTING_COUNTS } from "@/lib/subscriptions-catalog";
+import { getFullFoodCatalog, FOOD_NAMES, FOOD_ALIASES } from "@/lib/food-catalog";
+import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
+import { getFullFashionCatalog, FASHION_TOP_PICKS } from "@/lib/fashion-catalog";
+import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
+import { getFullBeautyCatalog } from "@/lib/beauty-catalog";
+import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
+import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
+import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
+import { getFullToysCatalog } from "@/lib/toys-catalog";
+import { getFullVehiclesCatalog } from "@/lib/vehicles-catalog";
 import {
   getEntertainmentProductImage,
   getSubscriptionsProductImage,
@@ -502,6 +501,14 @@ const DUPLICATE_FALLBACK_SNACK_SLUGS = [
   "haldiram-s-mixture",
 ];
 
+export function invalidateCategoryCache(categoryId?: string) {
+  if (categoryId) {
+    cachedItemsByCategory.delete(categoryId);
+  } else {
+    cachedItemsByCategory.clear();
+  }
+}
+
 export async function getCachedCategoryItems(categoryId: string): Promise<CachedCatalogItem[]> {
   const now = Date.now();
   const cached = cachedItemsByCategory.get(categoryId);
@@ -534,35 +541,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
   });
 
-  // Ensure Food items have their starting counts seeded in DB
-  const foodCat = await prisma.category.findUnique({ where: { slug: "food" }, select: { id: true } });
-  if (foodCat && categoryId === foodCat.id) {
-    const unseededItems = items.filter((i) => {
-      const targetCount = FOOD_STARTING_COUNTS[i.slug] || (FOOD_ALIASES[i.slug] ? FOOD_STARTING_COUNTS[FOOD_ALIASES[i.slug]] : null);
-      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
-    });
-
-    if (unseededItems.length > 0) {
-      await Promise.all(
-        unseededItems.map((item) => {
-          const targetCount = FOOD_STARTING_COUNTS[item.slug] || FOOD_STARTING_COUNTS[FOOD_ALIASES[item.slug]];
-          return prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { addedCount: targetCount },
-          }).catch(() => {});
-        })
-      );
-
-      items = items.map((item) => {
-        const targetCount = FOOD_STARTING_COUNTS[item.slug] || (FOOD_ALIASES[item.slug] ? FOOD_STARTING_COUNTS[FOOD_ALIASES[item.slug]] : null);
-        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
-          return { ...item, addedCount: targetCount };
-        }
-        return item;
-      });
-    }
-  }
-
   // Ensure Drinks items are fully seeded in DB (e.g. on production serverless environments)
   const drinksCat = await prisma.category.findUnique({ where: { slug: "drinks" }, select: { id: true } });
   if (drinksCat && categoryId === drinksCat.id && items.length < 58) {
@@ -580,7 +558,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
           active: true,
           featured: Boolean(d.featured),
           displayOrder: d.displayOrder,
-          addedCount: DRINKS_STARTING_COUNTS[d.id] || 0,
+          addedCount: 0,
         })),
         skipDuplicates: true,
       });
@@ -602,34 +580,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
           addedCount: true,
         },
         orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
-      });
-    }
-  }
-
-  // Ensure Drinks items have their starting counts seeded in DB
-  if (drinksCat && categoryId === drinksCat.id) {
-    const unseededItems = items.filter((i) => {
-      const targetCount = DRINKS_STARTING_COUNTS[i.slug];
-      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
-    });
-
-    if (unseededItems.length > 0) {
-      await Promise.all(
-        unseededItems.map((item) => {
-          const targetCount = DRINKS_STARTING_COUNTS[item.slug];
-          return prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { addedCount: targetCount },
-          }).catch(() => {});
-        })
-      );
-
-      items = items.map((item) => {
-        const targetCount = DRINKS_STARTING_COUNTS[item.slug];
-        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
-          return { ...item, addedCount: targetCount };
-        }
-        return item;
       });
     }
   }
@@ -706,34 +656,9 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     }
   }
 
-  // If fashion category, ensure items have starting counts and authentic images
+  // If fashion category, ensure items have authentic images
   const fashionCat = await prisma.category.findUnique({ where: { slug: "fashion" }, select: { id: true } });
   if (fashionCat && categoryId === fashionCat.id) {
-    const unseededItems = items.filter((i) => {
-      const targetCount = FASHION_STARTING_COUNTS[i.slug];
-      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
-    });
-
-    if (unseededItems.length > 0) {
-      await Promise.all(
-        unseededItems.map((item) => {
-          const targetCount = FASHION_STARTING_COUNTS[item.slug];
-          return prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { addedCount: targetCount },
-          }).catch(() => {});
-        })
-      );
-
-      items = items.map((item) => {
-        const targetCount = FASHION_STARTING_COUNTS[item.slug];
-        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
-          return { ...item, addedCount: targetCount };
-        }
-        return item;
-      });
-    }
-
     const fashionImageBySlug = new Map(FASHION_TOP_PICKS.map((d) => [d.slug, d.imageUrl]));
     const itemsToUpdate = items.filter((item) => {
       const targetUrl = fashionImageBySlug.get(item.slug);
@@ -757,7 +682,7 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     }
   }
 
-  // If mobile category, ensure items have starting counts and authentic product images
+  // If mobile category, ensure items have authentic product images
   const mobileCat = await prisma.category.findUnique({ where: { slug: "mobile" }, select: { id: true } });
   if (mobileCat && categoryId === mobileCat.id) {
     // Purge any duplicate or misspelled burgandy items from DB
@@ -778,31 +703,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     const fullMobiles = getFullMobilesCatalog();
     const canonicalSlugs = new Set(fullMobiles.map((d) => d.id));
     items = items.filter((item) => canonicalSlugs.has(item.slug));
-
-    const unseededItems = items.filter((i) => {
-      const targetCount = MOBILE_STARTING_COUNTS[i.slug];
-      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
-    });
-
-    if (unseededItems.length > 0) {
-      await Promise.all(
-        unseededItems.map((item) => {
-          const targetCount = MOBILE_STARTING_COUNTS[item.slug];
-          return prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { addedCount: targetCount },
-          }).catch(() => {});
-        })
-      );
-
-      items = items.map((item) => {
-        const targetCount = MOBILE_STARTING_COUNTS[item.slug];
-        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
-          return { ...item, addedCount: targetCount };
-        }
-        return item;
-      });
-    }
 
     const mobileImageBySlug = new Map(getFullMobilesCatalog().map((d) => [d.id, d.imageUrl]));
     const itemsToUpdate = items.filter((item) => {
@@ -890,31 +790,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       });
     }
 
-    // Ensure Beauty items have starting counts seeded
-    const unseededItems = items.filter((i) => {
-      const targetCount = BEAUTY_STARTING_COUNTS[i.slug];
-      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
-    });
-
-    if (unseededItems.length > 0) {
-      await Promise.all(
-        unseededItems.map((item) => {
-          const targetCount = BEAUTY_STARTING_COUNTS[item.slug];
-          return prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { addedCount: targetCount },
-          }).catch(() => {});
-        })
-      );
-
-      items = items.map((item) => {
-        const targetCount = BEAUTY_STARTING_COUNTS[item.slug];
-        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
-          return { ...item, addedCount: targetCount };
-        }
-        return item;
-      });
-    }
   }
 
   // If entertainment category, ensure items are exactly the 10 specified items with authentic images and correct order
@@ -971,32 +846,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       },
       orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
     });
-
-    // Ensure entertainment items have starting counts seeded
-    const unseededItems = items.filter((i) => {
-      const targetCount = ENTERTAINMENT_STARTING_COUNTS[i.slug];
-      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
-    });
-
-    if (unseededItems.length > 0) {
-      await Promise.all(
-        unseededItems.map((item) => {
-          const targetCount = ENTERTAINMENT_STARTING_COUNTS[item.slug];
-          return prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { addedCount: targetCount },
-          }).catch(() => {});
-        })
-      );
-
-      items = items.map((item) => {
-        const targetCount = ENTERTAINMENT_STARTING_COUNTS[item.slug];
-        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
-          return { ...item, addedCount: targetCount };
-        }
-        return item;
-      });
-    }
 
     // Update images if any differ
     const entertainmentImageBySlug = new Map(fullEntertainment.map((e) => [e.id, e.imageUrl]));
@@ -1104,32 +953,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       });
     }
 
-    // Ensure Subscriptions items have starting counts seeded
-    const unseededItems = items.filter((i) => {
-      const targetCount = SUBSCRIPTIONS_STARTING_COUNTS[i.slug] ?? (i.slug === "x-premium-2" ? SUBSCRIPTIONS_STARTING_COUNTS["x-premium-plus"] : undefined);
-      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
-    });
-
-    if (unseededItems.length > 0) {
-      await Promise.all(
-        unseededItems.map((item) => {
-          const targetCount = SUBSCRIPTIONS_STARTING_COUNTS[item.slug] ?? (item.slug === "x-premium-2" ? SUBSCRIPTIONS_STARTING_COUNTS["x-premium-plus"] : undefined);
-          return prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { addedCount: targetCount },
-          }).catch(() => {});
-        })
-      );
-
-      items = items.map((item) => {
-        const targetCount = SUBSCRIPTIONS_STARTING_COUNTS[item.slug] ?? (item.slug === "x-premium-2" ? SUBSCRIPTIONS_STARTING_COUNTS["x-premium-plus"] : undefined);
-        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
-          return { ...item, addedCount: targetCount };
-        }
-        return item;
-      });
-    }
-
     // Sort in order of SUBSCRIPTIONS_ITEMS
     items.sort((a, b) => {
       const idxA = subSlugs.indexOf(a.slug) !== -1 ? subSlugs.indexOf(a.slug) : subSlugs.indexOf(a.slug.replace("-2", "-plus"));
@@ -1215,32 +1038,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       });
     }
 
-    // Ensure Electronics items have starting counts seeded
-    const unseededItems = items.filter((i) => {
-      const targetCount = ELECTRONICS_STARTING_COUNTS[i.slug];
-      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
-    });
-
-    if (unseededItems.length > 0) {
-      await Promise.all(
-        unseededItems.map((item) => {
-          const targetCount = ELECTRONICS_STARTING_COUNTS[item.slug];
-          return prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { addedCount: targetCount },
-          }).catch(() => {});
-        })
-      );
-
-      items = items.map((item) => {
-        const targetCount = ELECTRONICS_STARTING_COUNTS[item.slug];
-        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
-          return { ...item, addedCount: targetCount };
-        }
-        return item;
-      });
-    }
-
     // Sort strictly by the 157 items order
     const slugOrder = fullElectronics.map((e) => e.id);
     items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
@@ -1317,32 +1114,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       items = items.map((item) => {
         const targetUrl = fitnessImageBySlug.get(item.slug);
         return targetUrl ? { ...item, image: targetUrl } : item;
-      });
-    }
-
-    // Ensure Fitness items have starting counts seeded
-    const unseededItems = items.filter((i) => {
-      const targetCount = FITNESS_STARTING_COUNTS[i.slug];
-      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
-    });
-
-    if (unseededItems.length > 0) {
-      await Promise.all(
-        unseededItems.map((item) => {
-          const targetCount = FITNESS_STARTING_COUNTS[item.slug];
-          return prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { addedCount: targetCount },
-          }).catch(() => {});
-        })
-      );
-
-      items = items.map((item) => {
-        const targetCount = FITNESS_STARTING_COUNTS[item.slug];
-        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
-          return { ...item, addedCount: targetCount };
-        }
-        return item;
       });
     }
 
@@ -1424,32 +1195,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       });
     }
 
-    // Ensure Toys items have starting counts seeded
-    const unseededItems = items.filter((i) => {
-      const targetCount = TOYS_STARTING_COUNTS[i.slug];
-      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
-    });
-
-    if (unseededItems.length > 0) {
-      await Promise.all(
-        unseededItems.map((item) => {
-          const targetCount = TOYS_STARTING_COUNTS[item.slug];
-          return prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { addedCount: targetCount },
-          }).catch(() => {});
-        })
-      );
-
-      items = items.map((item) => {
-        const targetCount = TOYS_STARTING_COUNTS[item.slug];
-        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
-          return { ...item, addedCount: targetCount };
-        }
-        return item;
-      });
-    }
-
     const slugOrder = fullToys.map((t) => t.id);
     items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
@@ -1525,32 +1270,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       items = items.map((item) => {
         const targetUrl = vehiclesImageBySlug.get(item.slug);
         return targetUrl ? { ...item, image: targetUrl } : item;
-      });
-    }
-
-    // Ensure Vehicles items have starting counts seeded
-    const unseededItems = items.filter((i) => {
-      const targetCount = VEHICLES_STARTING_COUNTS[i.slug];
-      return targetCount != null && (!i.addedCount || i.addedCount < targetCount);
-    });
-
-    if (unseededItems.length > 0) {
-      await Promise.all(
-        unseededItems.map((item) => {
-          const targetCount = VEHICLES_STARTING_COUNTS[item.slug];
-          return prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { addedCount: targetCount },
-          }).catch(() => {});
-        })
-      );
-
-      items = items.map((item) => {
-        const targetCount = VEHICLES_STARTING_COUNTS[item.slug];
-        if (targetCount != null && (!item.addedCount || item.addedCount < targetCount)) {
-          return { ...item, addedCount: targetCount };
-        }
-        return item;
       });
     }
 
@@ -1665,7 +1384,7 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
           active: true,
           featured: Boolean(toy.featured),
           displayOrder: toy.displayOrder,
-          addedCount: TOYS_STARTING_COUNTS[toy.id] ?? 0,
+          addedCount: 0,
         },
         include: { category: true },
       }).catch(() => null);
@@ -1678,7 +1397,7 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
         slug: toy.id,
         image: toy.imageUrl,
         category,
-        addedCount: TOYS_STARTING_COUNTS[toy.id] ?? 0,
+        addedCount: 0,
       };
     }
   }
@@ -1705,7 +1424,7 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
           active: true,
           featured: Boolean(veh.featured),
           displayOrder: veh.displayOrder,
-          addedCount: VEHICLES_STARTING_COUNTS[veh.id] ?? 0,
+          addedCount: 0,
         },
         include: { category: true },
       }).catch(() => null);
@@ -1717,7 +1436,7 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
         name: veh.name,
         slug: veh.id,
         image: veh.imageUrl,
-        addedCount: VEHICLES_STARTING_COUNTS[veh.id] ?? 0,
+        addedCount: 0,
         category,
       };
     }
@@ -1745,7 +1464,7 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
           active: true,
           featured: Boolean(fit.featured),
           displayOrder: fit.displayOrder,
-          addedCount: FITNESS_STARTING_COUNTS[fit.id] ?? 0,
+          addedCount: 0,
         },
         include: { category: true },
       }).catch(() => null);
@@ -1757,7 +1476,7 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
         name: fit.name,
         slug: fit.id,
         image: fit.imageUrl,
-        addedCount: FITNESS_STARTING_COUNTS[fit.id] ?? 0,
+        addedCount: 0,
         category,
       };
     }
