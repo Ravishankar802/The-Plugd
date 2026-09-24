@@ -26,7 +26,7 @@ export const RAW_FITNESS_PRODUCTS: Array<{
   {
     id: "gym-membership",
     name: "Gym Membership",
-    imageUrl: "https://pvccardprinting.in/wp-content/uploads/2025/04/fitness-club-membership-pvc-cards.webp",
+    imageUrl: "https://i.pinimg.com/736x/9b/f8/4a/9bf84ae34cfce3c79cd4ba8d290eb9c7.jpg",
     featured: true,
   },
   {

@@ -31,6 +31,9 @@ const HOMEPAGE_TOP_PICKS_SLUGS = [
   "ducati-panigale-v4r",
   "porsche-911",
   "kawasaki-ninja-h2r",
+  "diet-coke",
+  "airpods-pro",
+  "gym-membership",
 ] as const;
 
 interface HomePageProps {
@@ -405,24 +408,28 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
+              <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                 {topPicksItems.map((item, idx) => (
-                  <CatalogCard
+                  <div
                     key={item.id}
-                    href={`/catalog/${item.slug}`}
-                    image={getProductDisplayImage(item.category.slug, item.slug, item.image) || item.image}
-                    name={item.name}
-                    category={item.category.name}
-                    addedCount={item.addedCount}
-                    priority={idx < 4}
-                    action={
-                      <AddToWishlistButton
-                        catalogItemId={item.id}
-                        isLoggedIn={Boolean(session?.userId)}
-                        floating
-                      />
-                    }
-                  />
+                    className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                  >
+                    <CatalogCard
+                      href={`/catalog/${item.slug}`}
+                      image={getProductDisplayImage(item.category.slug, item.slug, item.image) || item.image}
+                      name={item.name}
+                      category={item.category.name}
+                      addedCount={item.addedCount}
+                      priority={idx < 6}
+                      action={
+                        <AddToWishlistButton
+                          catalogItemId={item.id}
+                          isLoggedIn={Boolean(session?.userId)}
+                          floating
+                        />
+                      }
+                    />
+                  </div>
                 ))}
               </div>
             </section>

@@ -2053,7 +2053,7 @@ export function getSubscriptionsProductImage(slug: string, fallback?: string): s
 }
 
 export const FITNESS_IMAGE_MAP: Record<string, string> = {
-  "gym-membership": "https://pvccardprinting.in/wp-content/uploads/2025/04/fitness-club-membership-pvc-cards.webp",
+  "gym-membership": "https://i.pinimg.com/736x/9b/f8/4a/9bf84ae34cfce3c79cd4ba8d290eb9c7.jpg",
   "running-shoes": "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/a/d/ad22b92Nike-HM6803-404_1.jpg?rnd=20200526195200&tr=w-1536",
   "fitness-watch": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnJ8G54X9uupW9d0Hg5rsD8wo5Wnz47riADrnJcQL-IllEM3A25cqPYx1Y&s=10",
   "dumbbell-set": "https://www.theflexnest.com/cdn/shop/products/2_c1174f6f-9b40-44bb-8a62-0184ec56b191_2048x.jpg?v=1658756981",
