@@ -162,7 +162,7 @@ export const ELECTRONICS_IMAGE_MAP: Record<string, string> = {
   "apple-homepod": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1JDDcpJXcdEytDWuogeN-XWidwrD70D6mLT5RiIP_rQ&s=10",
   "smart-light": "https://cdn.shopify.com/s/files/1/0648/5478/6148/files/Image_2.jpg?v=1722579278&quality=50",
   "smart-led-strip": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCEtbkV-a9c1KPPFBhtwE_MTHv5dcUIu_9Fp_njpu2J-1ab4cupUDuwJ8&s=10",
-  "smart-plug": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8hpRjGJGFI5SCbBLERgDOoCTppsXynwXdVZqWTLZbwmymvjEYOD9Aa7I&s=10",
+  "smart-plug": "https://i.pinimg.com/1200x/0c/de/af/0cdeafe1b7db210c99212e35902cc23f.jpg",
   "smart-doorbell": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0jwn3ajtYJWlr0qljUNvmFRgFoduSWhFJEhjoQ-2ls3i7qui0mp2LoPE&s=10",
   "security-camera": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST79dHhCMTGr18r_s6pDzO2xodtdZdYFoS-n2AiCTVpgV1nLIAPhHeRio&s=10",
   "robot-vacuum": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKBUD-wxaFVjEAUiqxD02VHRynrhywgbbhXxL1G6tqtDPfLD4ICd03tJRw&s=10",

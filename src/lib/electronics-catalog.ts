@@ -1197,7 +1197,7 @@ export const RAW_ELECTRONICS_PRODUCTS: Array<{
     name: "Smart Plug",
     brand: "Plugd",
     subcategory: "Smart Home",
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8hpRjGJGFI5SCbBLERgDOoCTppsXynwXdVZqWTLZbwmymvjEYOD9Aa7I&s=10",
+    imageUrl: "https://i.pinimg.com/1200x/0c/de/af/0cdeafe1b7db210c99212e35902cc23f.jpg",
     tags: ["plugd","smart home","smart","plug"],
   },
   {

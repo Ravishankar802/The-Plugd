@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: CatalogItemPageProps) {
 
   return {
     title: `${item.name} — Wishlist Catalog | Plugd`,
-    description: item.shortDescription || `${item.name} on Plugd Creator Wishlist Catalog`,
+    description: `${item.name} on Plugd Creator Wishlist Catalog`,
   };
 }
 
@@ -103,18 +103,6 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight text-zinc-950">
                 {item.name}
               </h1>
-
-              {item.shortDescription ? (
-                <p className="text-sm md:text-base text-zinc-700 font-medium leading-relaxed">
-                  {item.shortDescription}
-                </p>
-              ) : null}
-
-              {item.description ? (
-                <div className="rounded-2xl bg-zinc-50 border border-zinc-100 p-4 text-xs text-zinc-600 leading-relaxed">
-                  <p>{item.description}</p>
-                </div>
-              ) : null}
             </div>
 
             {/* Wishlist Action Box */}

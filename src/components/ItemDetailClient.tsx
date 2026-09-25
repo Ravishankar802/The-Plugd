@@ -79,18 +79,6 @@ export default function ItemDetailClient({ creator, item }: ItemDetailClientProp
                 {item.name}
               </h1>
 
-              {item.shortDescription ? (
-                <p className="text-sm md:text-base text-zinc-300 font-medium leading-relaxed">
-                  {item.shortDescription}
-                </p>
-              ) : null}
-
-              {item.description ? (
-                <p className="text-xs md:text-sm text-zinc-400 leading-relaxed">
-                  {item.description}
-                </p>
-              ) : null}
-
               {item.personalNote ? (
                 <div className="rounded-2xl border border-orange-500/20 bg-orange-500/5 p-4 space-y-1">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-orange-400">

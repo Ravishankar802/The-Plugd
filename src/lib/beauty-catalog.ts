@@ -3931,6 +3931,23 @@ export const BEAUTY_SECTIONS = [
 ];
 
 export const BEAUTY_STARTING_COUNTS: Record<string, number> = {
+  // REQUESTED BEAUTY ITEMS
+  "soft-pinch-liquid-blush": 45,
+  "advanced-snail-96-mucin-power-essence": 38,
+  "lip-sleeping-mask-berry": 49,
+  "relief-sun-rice-probiotics-spf-50-pa": 34,
+  "airwrap-multi-styler-complete-long": 41,
+  "no-3-hair-perfector-repair-treatment": 32,
+  "elixir-ultime-l-huile-originale-hair-oil": 36,
+  "supersonic-nural-hair-dryer": 31,
+  "brazilian-bum-bum-body-cream": 48,
+  "coffee-body-scrub": 38,
+  "sauvage-eau-de-parfum": 35,
+  "libre-eau-de-parfum": 41,
+  "coco-mademoiselle-eau-de-parfum": 43,
+  "cheirosa-68-beija-flor-perfume-mist": 39,
+  "age-r-booster-pro-6-in-1-smart-glow-device": 40,
+
   // SKIN CARE
   "matineee-matte-liquid-lipstick": 30,
   "lipstick-set": 42,

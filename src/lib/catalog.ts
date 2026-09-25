@@ -1341,8 +1341,8 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
       name: item.name,
       slug: item.slug,
       image: item.image,
-      shortDescription: item.shortDescription,
-      description: item.description,
+      shortDescription: null,
+      description: null,
       addedCount: item.addedCount,
       category: item.category,
     };
@@ -1376,8 +1376,8 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
         name: aliasItem.name,
         slug: aliasItem.slug,
         image: aliasItem.image,
-        shortDescription: aliasItem.shortDescription,
-        description: aliasItem.description,
+        shortDescription: null,
+        description: null,
         addedCount: aliasItem.addedCount,
         category: aliasItem.category,
       };

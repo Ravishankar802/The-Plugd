@@ -341,7 +341,6 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "tissot-prx-powermatic-80",
       "apple-watch-ultra-2",
       "fossil-grant-chronograph-leather-watch",
-      "designer-watch",
       "minimalist-watch"
     ],
   },
@@ -352,11 +351,9 @@ export const FASHION_SECTIONS: FashionSection[] = [
     badge: "🎒 Bags & Carry",
     displayOrder: 8,
     productIds: [
-      "travel-backpack",
       "minimalist-leather-crossbody-sling",
       "heavy-canvas-work-tote-bag",
       "leather-structure-shoulder-handbag",
-      "cordura-gym-weekend-duffle-bag",
       "slim-leather-rfid-cardholder-wallet",
       "crossbody-bag-men",
       "everyday-backpack"
@@ -376,8 +373,7 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "adidas-ultraboost-light",
       "on-cloudmonster-2",
       "under-armour-heatgear-compression-top",
-      "puma-drycell-running-shorts",
-      "cordura-gym-weekend-duffle-bag",
+      "puma-drycell-running-shorts"
     ],
   },
   {
@@ -566,7 +562,6 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "tote-bag-womens",
       "mini-bag-womens",
       "crossbody-bag-womens",
-      "sling-bag-womens",
       "baguette-bag",
       "sunglasses-cat-eye",
       "cap-womens",
@@ -4526,6 +4521,7 @@ export function getFashionSubcategories(): Array<{ name: string; count: number }
 }
 
 export const FASHION_STARTING_COUNTS: Record<string, number> = {
+  "220-gsm-oversized-plain-drop-shoulder-tee": 91,
   "air-jordan-1-retro-high-og": 102,
   "nike-dunk-low-retro-panda": 78,
   "adidas-samba-og": 89,

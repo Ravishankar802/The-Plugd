@@ -713,6 +713,7 @@ export const DRINKS_STARTING_COUNTS: Record<string, number> = {
   "diet-coke": 2500,
   "red-bull-energy-drink": 1200,
   "monster-energy-drink": 1800,
+  "monster-ultra-energy-drink": 2200,
   "gatorade-energy-drink": 302,
   "amul-masti-spiced-buttermilk": 285,
   "bisleri-water-bottle": 143,

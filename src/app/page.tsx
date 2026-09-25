@@ -34,7 +34,7 @@ const HOMEPAGE_TOP_PICKS_SLUGS = [
   "kawasaki-ninja-h2r",
   "diet-coke",
   "airpods-pro",
-  "gym-membership",
+  "protein-supplement",
 ] as const;
 
 const HOMEPAGE_FOOD_ITEMS_DEF = [
@@ -187,6 +187,12 @@ const HOMEPAGE_ELECTRONICS_ITEMS_DEF = [
   { name: "Capture Card", slug: "capture-card" },
   { name: "Samsung Odyssey OLED G9", slug: "samsung-odyssey-oled-g9" },
   { name: "Meta Quest 3", slug: "meta-quest-3" },
+  { name: "Gaming Monitor", slug: "gaming-monitor" },
+  { name: "Ultrawide Monitor", slug: "ultrawide-monitor" },
+  { name: "Amazon Echo Show 8", slug: "amazon-echo-show-8" },
+  { name: "Robot Vacuum", slug: "robot-vacuum" },
+  { name: "Apple Watch Ultra", slug: "apple-watch-ultra" },
+  { name: "Google Pixel Watch", slug: "google-pixel-watch" },
 ] as const;
 
 const HOMEPAGE_FITNESS_ITEMS_DEF = [
@@ -243,7 +249,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     prisma.catalogItem.findMany({
       where: {
         active: true,
-        slug: { in: [...HOMEPAGE_TOP_PICKS_SLUGS] },
+        slug: { in: [...HOMEPAGE_TOP_PICKS_SLUGS, "protien-supplement"] },
       },
       include: { category: true },
     }),
@@ -342,6 +348,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   ]);
 
   const topPicksMap = new Map(topPicksDbItems.map((item) => [item.slug, item]));
+  if (topPicksMap.has("protien-supplement") && !topPicksMap.has("protein-supplement")) {
+    const legacyProtein = topPicksMap.get("protien-supplement")!;
+    topPicksMap.set("protein-supplement", {
+      ...legacyProtein,
+      name: "Protein Supplement",
+      slug: "protein-supplement",
+    });
+  }
   const topPicksItems = HOMEPAGE_TOP_PICKS_SLUGS
     .map((slug) => topPicksMap.get(slug))
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
