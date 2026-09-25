@@ -57,6 +57,8 @@ const SUBSCRIPTIONS_ITEMS = [
   "Claude Max",
   "X Premium",
   "X Premium+",
+  "Perplexity Pro",
+  "Perplexity Max",
   "Netflix Standard",
   "Netflix Premium",
   "Prime Video",

@@ -206,7 +206,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   } else if (category.slug === "subscriptions") {
     const subNames = [
       "ChatGPT Plus", "ChatGPT Pro", "Claude Pro", "Claude Max",
-      "X Premium", "X Premium+", "Netflix Standard", "Netflix Premium",
+      "X Premium", "X Premium+", "Perplexity Pro", "Perplexity Max",
+      "Netflix Standard", "Netflix Premium",
       "Prime Video", "Hotstar Subscription", "Apple TV Subscription",
       "Google AI Plus", "Google AI Pro", "Google AI Ultra",
       "Spotify Premium", "YouTube Premium", "Amazon Prime",
