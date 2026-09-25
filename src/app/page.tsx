@@ -124,6 +124,17 @@ const HOMEPAGE_BEAUTY_ITEMS_DEF = [
   { name: "Coffee Body Scrub", slug: "coffee-body-scrub" },
 ] as const;
 
+const HOMEPAGE_ENTERTAINMENT_ITEMS_DEF = [
+  { name: "Theater Experience", slug: "theater-experience" },
+  { name: "Board Game Night", slug: "board-game-night" },
+  { name: "Movie Ticket", slug: "movie-ticket" },
+  { name: "Concert Ticket", slug: "concert-ticket" },
+  { name: "Music Festival Pass", slug: "music-festival-pass" },
+  { name: "Comedy Show Ticket", slug: "comedy-show-ticket" },
+  { name: "Anime Box Set", slug: "anime-box-set" },
+  { name: "Vinyl Player", slug: "vinyl-player" },
+] as const;
+
 interface HomePageProps {
   searchParams?: Promise<{ q?: string }> | { q?: string };
 }
@@ -133,7 +144,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams?.q?.trim() || "";
 
-  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, mobileDbItems, beautyDbItems, searchResults] = await Promise.all([
+  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, mobileDbItems, beautyDbItems, entertainmentDbItems, searchResults] = await Promise.all([
     prisma.category.findMany({
       where: { active: true },
       include: {
@@ -192,6 +203,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       },
       include: { category: true },
     }),
+    prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        category: { slug: "entertainment" },
+        slug: { in: HOMEPAGE_ENTERTAINMENT_ITEMS_DEF.map((e) => e.slug) },
+      },
+      include: { category: true },
+    }),
     query
       ? searchCatalog(query, { limitItems: 48 })
       : Promise.resolve({ categories: [], subcategories: [], items: [], totalMatches: 0 }),
@@ -245,6 +264,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const beautyMap = new Map(beautyDbItems.map((item) => [item.slug, item]));
   const beautySectionItems = HOMEPAGE_BEAUTY_ITEMS_DEF.map((def) => {
     const item = beautyMap.get(def.slug);
+    if (!item) return null;
+    return {
+      ...item,
+      displayName: def.name,
+    };
+  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+  const entertainmentMap = new Map(entertainmentDbItems.map((item) => [item.slug, item]));
+  const entertainmentSectionItems = HOMEPAGE_ENTERTAINMENT_ITEMS_DEF.map((def) => {
+    const item = entertainmentMap.get(def.slug);
     if (!item) return null;
     return {
       ...item,
@@ -745,6 +774,30 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
                           image={getProductDisplayImage("beauty", item.slug, item.image) || item.image}
+                          name={item.displayName || item.name}
+                          category={category.name}
+                          priority={idx < 6}
+                          action={
+                            <AddToWishlistButton
+                              catalogItemId={item.id}
+                              isLoggedIn={Boolean(session?.userId)}
+                              floating
+                            />
+                          }
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : category.slug === "entertainment" ? (
+                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                    {entertainmentSectionItems.map((item, idx) => (
+                      <div
+                        key={item.id}
+                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                      >
+                        <CatalogCard
+                          href={`/catalog/${item.slug}`}
+                          image={getProductDisplayImage("entertainment", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
                           priority={idx < 6}
