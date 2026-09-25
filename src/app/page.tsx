@@ -107,6 +107,23 @@ const HOMEPAGE_MOBILE_ITEMS_DEF = [
   { name: "Google Pixel 11 Pro", slug: "google-pixel-11-pro" },
 ] as const;
 
+const HOMEPAGE_BEAUTY_ITEMS_DEF = [
+  { name: "Lip Sleeping Mask (Berry)", slug: "lip-sleeping-mask-berry" },
+  { name: "Soft Pinch Liquid Blush", slug: "soft-pinch-liquid-blush" },
+  { name: "Stainless Steel Gua Sha", slug: "stainless-steel-gua-sha" },
+  { name: "Brazilian Bum Bum Body Cream", slug: "brazilian-bum-bum-body-cream" },
+  { name: "Age-R Booster Pro 6-in-1 Smart Glow Device", slug: "age-r-booster-pro-6-in-1-smart-glow-device" },
+  { name: "Reusable Under-Eye Masks", slug: "reusable-under-eye-masks" },
+  { name: "Eau de Parfum – Vanilla", slug: "eau-de-parfum-vanilla" },
+  { name: "Shea Butter Body Cream", slug: "shea-butter-body-cream" },
+  { name: "LED Light Therapy Face Mask", slug: "led-light-therapy-face-mask" },
+  { name: "Facial Ice Roller", slug: "facial-ice-roller" },
+  { name: "Body Scrub – Brown Sugar", slug: "body-scrub-brown-sugar" },
+  { name: "Lipstick Set", slug: "lipstick-set" },
+  { name: "Elixir Ultime L'Huile Originale Hair Oil", slug: "elixir-ultime-l-huile-originale-hair-oil" },
+  { name: "Coffee Body Scrub", slug: "coffee-body-scrub" },
+] as const;
+
 interface HomePageProps {
   searchParams?: Promise<{ q?: string }> | { q?: string };
 }
@@ -116,7 +133,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams?.q?.trim() || "";
 
-  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, mobileDbItems, searchResults] = await Promise.all([
+  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, mobileDbItems, beautyDbItems, searchResults] = await Promise.all([
     prisma.category.findMany({
       where: { active: true },
       include: {
@@ -167,6 +184,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       },
       include: { category: true },
     }),
+    prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        category: { slug: "beauty" },
+        slug: { in: HOMEPAGE_BEAUTY_ITEMS_DEF.map((b) => b.slug) },
+      },
+      include: { category: true },
+    }),
     query
       ? searchCatalog(query, { limitItems: 48 })
       : Promise.resolve({ categories: [], subcategories: [], items: [], totalMatches: 0 }),
@@ -210,6 +235,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const mobileMap = new Map(mobileDbItems.map((item) => [item.slug, item]));
   const mobileSectionItems = HOMEPAGE_MOBILE_ITEMS_DEF.map((def) => {
     const item = mobileMap.get(def.slug);
+    if (!item) return null;
+    return {
+      ...item,
+      displayName: def.name,
+    };
+  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+  const beautyMap = new Map(beautyDbItems.map((item) => [item.slug, item]));
+  const beautySectionItems = HOMEPAGE_BEAUTY_ITEMS_DEF.map((def) => {
+    const item = beautyMap.get(def.slug);
     if (!item) return null;
     return {
       ...item,
@@ -686,6 +721,30 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
                           image={getProductDisplayImage("mobile", item.slug, item.image) || item.image}
+                          name={item.displayName || item.name}
+                          category={category.name}
+                          priority={idx < 6}
+                          action={
+                            <AddToWishlistButton
+                              catalogItemId={item.id}
+                              isLoggedIn={Boolean(session?.userId)}
+                              floating
+                            />
+                          }
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : category.slug === "beauty" ? (
+                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                    {beautySectionItems.map((item, idx) => (
+                      <div
+                        key={item.id}
+                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                      >
+                        <CatalogCard
+                          href={`/catalog/${item.slug}`}
+                          image={getProductDisplayImage("beauty", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
                           priority={idx < 6}
