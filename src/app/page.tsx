@@ -511,7 +511,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       </div>
 
       {/* Main Body */}
-      <main className="mx-auto max-w-7xl flex-1 px-3 py-3 md:px-6 md:py-7 w-full">
+      <main className="mx-auto max-w-7xl flex-1 px-3 pt-6 pb-3 md:px-6 md:py-7 w-full">
         {/* Two-board Hero Section (hidden on mobile, visible on desktop) */}
         {!query && (
           <section className="hidden md:grid mb-8 md:grid-cols-2 gap-4 md:gap-5 items-stretch">
