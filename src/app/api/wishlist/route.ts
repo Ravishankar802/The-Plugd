@@ -109,23 +109,17 @@ export async function POST(req: Request) {
       }
 
       const wishlistSlug = await createWishlistSlug(session.userId, catalogItem.name);
-      await prisma.$transaction([
-        prisma.wishlistItem.create({
-          data: {
-            userId: session.userId,
-            categoryId: catalogItem.categoryId,
-            catalogItemId: catalogItem.id,
-            itemType: WishlistItemType.CATALOG,
-            slug: wishlistSlug,
-            isPublished: true,
-            displayOrder: itemCount,
-          },
-        }),
-        prisma.catalogItem.update({
-          where: { id: catalogItem.id },
-          data: { addedCount: { increment: 1 } },
-        }),
-      ]);
+      await prisma.wishlistItem.create({
+        data: {
+          userId: session.userId,
+          categoryId: catalogItem.categoryId,
+          catalogItemId: catalogItem.id,
+          itemType: WishlistItemType.CATALOG,
+          slug: wishlistSlug,
+          isPublished: true,
+          displayOrder: itemCount,
+        },
+      });
 
       invalidateCategoryCache(catalogItem.categoryId);
     } else {
