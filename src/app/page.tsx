@@ -971,6 +971,36 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               </div>
             </section>
 
+            {/* Mobile-Only Compact Custom Item CTA */}
+            <div className="block md:hidden">
+              <Link
+                href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
+                className="group relative flex items-center justify-between gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 px-3.5 py-3 text-white border border-zinc-800/80 shadow-md transition active:scale-[0.99]"
+              >
+                {/* Ambient green accent glow (matching Custom Wishlist block) */}
+                <div className="absolute right-0 top-0 -mr-6 -mt-6 h-28 w-28 rounded-full bg-emerald-500/20 blur-2xl pointer-events-none" />
+                <div className="absolute left-1/4 bottom-0 h-14 w-20 rounded-full bg-emerald-600/10 blur-xl pointer-events-none" />
+
+                {/* Left zone: Icon + "CAN'T FIND IT? ADD IT." */}
+                <div className="relative z-10 min-w-0 flex items-center gap-2">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400">
+                    <Plus className="h-4 w-4" />
+                  </div>
+                  <p className="text-xs sm:text-[13px] font-black tracking-tight text-white leading-tight">
+                    CAN&apos;T FIND IT? ADD IT.
+                  </p>
+                </div>
+
+                {/* Right zone: "Add your own item →" */}
+                <div className="relative z-10 shrink-0">
+                  <span className="inline-flex items-center gap-1 rounded-xl bg-white/[0.08] border border-emerald-500/40 px-2.5 py-1 text-[11px] font-bold text-white shadow-xs group-hover:bg-emerald-500 group-hover:text-black group-hover:border-emerald-400 transition-colors">
+                    <span>Add your own item</span>
+                    <span className="text-emerald-400 group-hover:text-black transition-colors">→</span>
+                  </span>
+                </div>
+              </Link>
+            </div>
+
             {/* 1. Trending Row */}
             <section className="space-y-3 md:space-y-4">
               <div className="flex items-end justify-between gap-4 border-b border-zinc-200/80 pb-2.5 md:pb-3">
