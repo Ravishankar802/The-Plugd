@@ -168,6 +168,27 @@ const HOMEPAGE_VEHICLES_ITEMS_DEF = [
   { name: "Ducati Panigale V4R", slug: "ducati-panigale-v4r" },
 ] as const;
 
+const HOMEPAGE_ELECTRONICS_ITEMS_DEF = [
+  { name: "iPhone Duo", slug: "iphone-duo" },
+  { name: "MacBook Pro 14\"", slug: "macbook-pro-14" },
+  { name: "Mac Mini", slug: "mac-mini" },
+  { name: "PlayStation 5 Pro", slug: "playstation-5-pro" },
+  { name: "NVIDIA GeForce RTX 5090", slug: "nvidia-geforce-rtx-5090" },
+  { name: "AirPods Pro", slug: "airpods-pro" },
+  { name: "Sony WH-1000XM6", slug: "sony-wh-1000xm6" },
+  { name: "DSLR Camera", slug: "dslr-camera" },
+  { name: "GoPro", slug: "gopro" },
+  { name: "External SSD", slug: "external-ssd" },
+  { name: "USB-C Hub", slug: "usb-c-hub" },
+  { name: "Power Bank", slug: "power-bank" },
+  { name: "Ring Light", slug: "ring-light" },
+  { name: "Streaming Microphone", slug: "streaming-microphone" },
+  { name: "Audio Interface", slug: "audio-interface" },
+  { name: "Capture Card", slug: "capture-card" },
+  { name: "Samsung Odyssey OLED G9", slug: "samsung-odyssey-oled-g9" },
+  { name: "Meta Quest 3", slug: "meta-quest-3" },
+] as const;
+
 interface HomePageProps {
   searchParams?: Promise<{ q?: string }> | { q?: string };
 }
@@ -177,7 +198,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams?.q?.trim() || "";
 
-  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, mobileDbItems, beautyDbItems, entertainmentDbItems, subscriptionsDbItems, vehiclesDbItems, searchResults] = await Promise.all([
+  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, mobileDbItems, beautyDbItems, entertainmentDbItems, subscriptionsDbItems, vehiclesDbItems, electronicsDbItems, searchResults] = await Promise.all([
     prisma.category.findMany({
       where: { active: true },
       include: {
@@ -259,6 +280,13 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         active: true,
         category: { slug: "vehicles" },
         slug: { in: HOMEPAGE_VEHICLES_ITEMS_DEF.map((v) => v.slug) },
+      },
+      include: { category: true },
+    }),
+    prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        slug: { in: HOMEPAGE_ELECTRONICS_ITEMS_DEF.map((e) => e.slug) },
       },
       include: { category: true },
     }),
@@ -345,6 +373,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const vehiclesMap = new Map(vehiclesDbItems.map((item) => [item.slug, item]));
   const vehiclesSectionItems = HOMEPAGE_VEHICLES_ITEMS_DEF.map((def) => {
     const item = vehiclesMap.get(def.slug);
+    if (!item) return null;
+    return {
+      ...item,
+      displayName: def.name,
+    };
+  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+  const electronicsMap = new Map(electronicsDbItems.map((item) => [item.slug, item]));
+  const electronicsSectionItems = HOMEPAGE_ELECTRONICS_ITEMS_DEF.map((def) => {
+    const item = electronicsMap.get(def.slug);
     if (!item) return null;
     return {
       ...item,
@@ -912,6 +950,30 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
                           image={getProductDisplayImage("vehicles", item.slug, item.image) || item.image}
+                          name={item.displayName || item.name}
+                          category={category.name}
+                          priority={idx < 6}
+                          action={
+                            <AddToWishlistButton
+                              catalogItemId={item.id}
+                              isLoggedIn={Boolean(session?.userId)}
+                              floating
+                            />
+                          }
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : category.slug === "electronics" ? (
+                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                    {electronicsSectionItems.map((item, idx) => (
+                      <div
+                        key={item.id}
+                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                      >
+                        <CatalogCard
+                          href={`/catalog/${item.slug}`}
+                          image={getProductDisplayImage("electronics", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
                           priority={idx < 6}

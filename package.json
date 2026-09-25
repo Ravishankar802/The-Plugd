@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && prisma db push --accept-data-loss && node scripts/add-monster-ultra.js && node scripts/update-gym-membership-image.js && node scripts/remove-urban-backpack.js && node scripts/update-subscription-items.js && next build",
+    "build": "prisma generate && prisma db push --accept-data-loss && node scripts/add-monster-ultra.js && node scripts/update-gym-membership-image.js && node scripts/remove-urban-backpack.js && node scripts/update-subscription-items.js && node scripts/update-apple-vision-pro-image.js && next build",
     "start": "next start",
     "lint": "eslint"
   },

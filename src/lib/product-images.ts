@@ -103,7 +103,7 @@ export const ELECTRONICS_IMAGE_MAP: Record<string, string> = {
   "asus-rog-ally-x": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgkcOe7AKl2kbXE0rPB_ya3Eekv2QpU4_B_HbDLG-tmrPT2F__e7wWcFQ3&s=10",
   "steam-deck-oled": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIedD7BmUHk_hA-h-uoAIcENKeVc7C4uZ4QlNo7968UhXt0Zgzj7GqMiO1&s=10",
   "meta-quest-3": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3XRDSct3HRdbwpKj2drNDr5GMNPQBqAZDUux8snZ5SA&s=10",
-  "apple-vision-pro": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3QkdlXuOTLchu2P8rVXOJIEK7Kj_RQ9KBgipwtHPwU_63DnQIogIwWpHk&s=10",
+  "apple-vision-pro": "https://i.pinimg.com/736x/0e/c1/95/0ec1950ee0ab7be962fcd9a3eeb33e46.jpg",
   "dualsense-wireless-controller-white": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHCsWRlHap9IkPM3DKF9AVxbwGx3Ya07Wt3GrJQCg-1Q&s=10",
   "logitech-g502-hero-high-performance-gaming-mouse": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn0OtGL2srDfAk6nmspWcJvWZPw7uhQvnU9UF3xlVEMw&s=10",
   "logitech-g402-hyperion-fury-usb-wired-gaming-mouse": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP03UpRuG65UGneeNUhb7SSykxQQW_k8ymjxJcsXfGhp4m2JH5kOBsi5xo&s=10",

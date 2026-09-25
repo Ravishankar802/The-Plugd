@@ -762,7 +762,7 @@ export const RAW_ELECTRONICS_PRODUCTS: Array<{
     name: "Apple Vision Pro",
     brand: "Apple",
     subcategory: "Gaming",
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3QkdlXuOTLchu2P8rVXOJIEK7Kj_RQ9KBgipwtHPwU_63DnQIogIwWpHk&s=10",
+    imageUrl: "https://i.pinimg.com/736x/0e/c1/95/0ec1950ee0ab7be962fcd9a3eeb33e46.jpg",
     tags: ["apple","gaming","vision","pro"],
   },
   {
