@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight, ArrowRight, Sparkles, Plus } from "lucide-react";
+import { ChevronRight, ArrowRight, Sparkles, Plus, Heart, ArrowUpRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AddToWishlistButton from "@/components/AddToWishlistButton";
@@ -515,22 +515,58 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         {/* Two-board Hero Section */}
         {!query && (
           <section className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 items-stretch">
-            {/* Board 1: Create My Wishlist */}
-            <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-8 text-white shadow-md border border-zinc-800/60 flex flex-col justify-between h-full">
-              <div className="absolute right-0 top-0 -mr-16 -mt-16 h-48 w-48 rounded-full bg-orange-500/20 blur-3xl pointer-events-none" />
-              <div className="relative z-10 space-y-2">
-                <h1 className="text-2xl font-black tracking-tight md:text-3xl text-white">
-                  WANT IT? LIST IT.
-                </h1>
-                <p className="text-xs md:text-sm text-zinc-300 leading-relaxed max-w-lg">
-                  Put everything you want in one place. Share your wishlist with the people who matter and let them help you get there.
-                </p>
+            {/* Board 1: Catalog Experience */}
+            <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-8 text-white shadow-xl border border-zinc-800/80 flex flex-col justify-between h-full group">
+              {/* Ambient colorful glow layers */}
+              <div className="absolute right-0 top-0 -mr-16 -mt-16 h-56 w-56 rounded-full bg-orange-500/20 blur-3xl pointer-events-none" />
+              <div className="absolute left-1/3 bottom-0 -mb-20 h-44 w-44 rounded-full bg-rose-500/10 blur-2xl pointer-events-none" />
+              
+              {/* Subtle decorative geometry */}
+              <div className="absolute -right-8 -bottom-8 w-44 h-44 rounded-full border border-orange-500/10 pointer-events-none" />
+              <div className="absolute -right-16 -bottom-16 w-60 h-60 rounded-full border border-white/[0.04] pointer-events-none" />
+
+              <div className="relative z-10 space-y-4">
+                {/* Small top label */}
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/15 border border-orange-500/30 px-3 py-1 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-orange-400">
+                  <Sparkles className="h-3 w-3 text-orange-400" />
+                  <span>ALL NEW PLUGD EXPERIENCE</span>
+                </div>
+
+                {/* Main focal content: 1,000+ ITEMS TO WISH FOR */}
+                <div className="pt-1">
+                  <div className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none text-white drop-shadow-sm flex items-baseline gap-1">
+                    <span>1,000</span>
+                    <span className="text-orange-500 font-extrabold">+</span>
+                  </div>
+                  <p className="mt-2 text-xs sm:text-sm font-black tracking-widest text-zinc-300 uppercase">
+                    ITEMS TO WISH FOR
+                  </p>
+                </div>
+
+                {/* Compact icon/text row: ♡ WISH  ↗ SHARE  ✦ GET */}
+                <div className="pt-2 flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  <div className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] border border-white/10 px-2.5 py-1 text-[11px] sm:text-xs font-bold text-zinc-200 backdrop-blur-sm shadow-sm">
+                    <Heart className="h-3.5 w-3.5 text-rose-400 fill-rose-500/20" />
+                    <span>WISH</span>
+                  </div>
+                  <span className="text-zinc-600 text-xs font-bold select-none">→</span>
+                  <div className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] border border-white/10 px-2.5 py-1 text-[11px] sm:text-xs font-bold text-zinc-200 backdrop-blur-sm shadow-sm">
+                    <ArrowUpRight className="h-3.5 w-3.5 text-orange-400" />
+                    <span>SHARE</span>
+                  </div>
+                  <span className="text-zinc-600 text-xs font-bold select-none">→</span>
+                  <div className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] border border-white/10 px-2.5 py-1 text-[11px] sm:text-xs font-bold text-zinc-200 backdrop-blur-sm shadow-sm">
+                    <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+                    <span>GET</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="relative z-10 mt-6 pt-1 flex items-center">
+              {/* Primary CTA */}
+              <div className="relative z-10 mt-7 pt-1 flex items-center">
                 <Link
                   href={session?.userId ? "/dashboard/items" : "/login"}
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-orange-500 px-5 text-xs md:text-sm font-bold text-black shadow-lg shadow-orange-500/20 transition hover:bg-orange-400 active:scale-98"
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-orange-500 px-5 sm:px-6 text-xs md:text-sm font-bold uppercase tracking-wider text-black shadow-lg shadow-orange-500/25 transition hover:bg-orange-400 active:scale-98"
                 >
                   <span>CREATE MY WISHLIST</span>
                   <ArrowRight className="h-4 w-4" />
@@ -538,22 +574,57 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               </div>
             </div>
 
-            {/* Board 2: Create Custom Item */}
-            <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-900 via-zinc-900/90 to-zinc-950 p-6 md:p-8 text-white shadow-md border border-zinc-800/80 flex flex-col justify-between h-full">
-              <div className="absolute right-0 bottom-0 -mr-12 -mb-12 h-40 w-40 rounded-full bg-orange-500/15 blur-2xl pointer-events-none" />
-              <div className="relative z-10 space-y-2">
-                <h2 className="text-2xl font-black tracking-tight md:text-3xl text-white">
-                  NOT ON THE LIST? ADD IT.
-                </h2>
-                <p className="text-xs md:text-sm text-zinc-300 leading-relaxed max-w-md">
-                  Create your own wishlist item with a name, image, and link - anything you want can have a place on your wishlist.
-                </p>
+            {/* Board 2: Custom Wishlist */}
+            <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-950 via-zinc-900 to-indigo-950/40 p-6 md:p-8 text-white shadow-xl border border-zinc-800/80 flex flex-col justify-between h-full group">
+              {/* Ambient colorful glow layers */}
+              <div className="absolute right-0 bottom-0 -mr-12 -mb-12 h-56 w-56 rounded-full bg-violet-500/20 blur-3xl pointer-events-none" />
+              <div className="absolute left-1/3 top-0 -mt-16 h-44 w-44 rounded-full bg-orange-500/10 blur-2xl pointer-events-none" />
+              
+              {/* Subtle decorative geometry */}
+              <div className="absolute -right-8 -top-8 w-44 h-44 rounded-full border border-violet-500/15 pointer-events-none" />
+              <div className="absolute -right-16 -top-16 w-60 h-60 rounded-full border border-white/[0.04] pointer-events-none" />
+
+              <div className="relative z-10 space-y-4">
+                {/* Small top label */}
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-violet-500/15 border border-violet-500/30 px-3 py-1 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-violet-300">
+                  <Plus className="h-3 w-3 text-violet-400" />
+                  <span>CUSTOM WISHLIST</span>
+                </div>
+
+                {/* Main focal content: ∞ ITEMS TO WISH FOR */}
+                <div className="pt-1">
+                  <div className="text-6xl sm:text-7xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none text-white drop-shadow-sm flex items-center">
+                    <span>∞</span>
+                  </div>
+                  <p className="mt-2 text-xs sm:text-sm font-black tracking-widest text-zinc-300 uppercase">
+                    ITEMS TO WISH FOR
+                  </p>
+                </div>
+
+                {/* Compact icon/text row: ＋ ADD  ↗ SHARE  ✦ GET */}
+                <div className="pt-2 flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  <div className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] border border-white/10 px-2.5 py-1 text-[11px] sm:text-xs font-bold text-zinc-200 backdrop-blur-sm shadow-sm">
+                    <Plus className="h-3.5 w-3.5 text-orange-400" />
+                    <span>ADD</span>
+                  </div>
+                  <span className="text-zinc-600 text-xs font-bold select-none">→</span>
+                  <div className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] border border-white/10 px-2.5 py-1 text-[11px] sm:text-xs font-bold text-zinc-200 backdrop-blur-sm shadow-sm">
+                    <ArrowUpRight className="h-3.5 w-3.5 text-violet-400" />
+                    <span>SHARE</span>
+                  </div>
+                  <span className="text-zinc-600 text-xs font-bold select-none">→</span>
+                  <div className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] border border-white/10 px-2.5 py-1 text-[11px] sm:text-xs font-bold text-zinc-200 backdrop-blur-sm shadow-sm">
+                    <Sparkles className="h-3.5 w-3.5 text-emerald-400" />
+                    <span>GET</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="relative z-10 mt-6 pt-1 flex items-center">
+              {/* Primary CTA */}
+              <div className="relative z-10 mt-7 pt-1 flex items-center">
                 <Link
                   href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl border border-zinc-700/90 bg-black px-5 text-xs md:text-sm font-bold text-white shadow-md shadow-black/40 transition hover:border-orange-500 hover:bg-zinc-950 hover:text-orange-400 active:scale-98"
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl border border-zinc-700/90 bg-zinc-950 px-5 sm:px-6 text-xs md:text-sm font-bold uppercase tracking-wider text-white shadow-lg shadow-black/40 transition hover:border-orange-500 hover:bg-black hover:text-orange-400 active:scale-98"
                 >
                   <span>ADD YOUR OWN ITEM</span>
                   <ArrowRight className="h-4 w-4 text-orange-400" />
