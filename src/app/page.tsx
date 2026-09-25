@@ -54,6 +54,21 @@ const HOMEPAGE_FOOD_ITEMS_DEF = [
   { name: "Grilled Chicken", slug: "grilled-chicken" },
 ] as const;
 
+const HOMEPAGE_DRINKS_ITEMS_DEF = [
+  { name: "Red Bull Energy Drink", slug: "red-bull-energy-drink" },
+  { name: "Monster Energy Drink", slug: "monster-energy-drink" },
+  { name: "Monster Ultra Energy Drink", slug: "monster-ultra-energy-drink" },
+  { name: "Diet Coke", slug: "diet-coke" },
+  { name: "Hell Energy Drink", slug: "hell-energy-drink" },
+  { name: "Coca Cola Zero Sugar Can", slug: "coca-cola-zero-sugar-can" },
+  { name: "Pepsi", slug: "pepsi" },
+  { name: "Sprite Zero", slug: "sprite-zero" },
+  { name: "Gatorade Energy Drink", slug: "gatorade-energy-drink" },
+  { name: "Smooth Chocolate Milk Drink", slug: "smooth-chocolate-milk-drink" },
+  { name: "Thums Up", slug: "thums-up" },
+  { name: "Mountain Dew", slug: "mountain-dew" },
+] as const;
+
 interface HomePageProps {
   searchParams?: Promise<{ q?: string }> | { q?: string };
 }
@@ -63,7 +78,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams?.q?.trim() || "";
 
-  const [categories, topPicksDbItems, foodDbItems, searchResults] = await Promise.all([
+  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, searchResults] = await Promise.all([
     prisma.category.findMany({
       where: { active: true },
       include: {
@@ -90,6 +105,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       },
       include: { category: true },
     }),
+    prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        category: { slug: "drinks" },
+        slug: { in: HOMEPAGE_DRINKS_ITEMS_DEF.map((d) => d.slug) },
+      },
+      include: { category: true },
+    }),
     query
       ? searchCatalog(query, { limitItems: 48 })
       : Promise.resolve({ categories: [], subcategories: [], items: [], totalMatches: 0 }),
@@ -103,6 +126,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const foodMap = new Map(foodDbItems.map((item) => [item.slug, item]));
   const foodSectionItems = HOMEPAGE_FOOD_ITEMS_DEF.map((def) => {
     const item = foodMap.get(def.slug) || ("fallbackSlug" in def ? foodMap.get(def.fallbackSlug) : undefined);
+    if (!item) return null;
+    return {
+      ...item,
+      displayName: def.name,
+    };
+  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+  const drinksMap = new Map(drinksDbItems.map((item) => [item.slug, item]));
+  const drinksSectionItems = HOMEPAGE_DRINKS_ITEMS_DEF.map((def) => {
+    const item = drinksMap.get(def.slug);
     if (!item) return null;
     return {
       ...item,
@@ -507,6 +540,30 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
                           image={getProductDisplayImage("food", item.slug, item.image) || item.image}
+                          name={item.displayName || item.name}
+                          category={category.name}
+                          priority={idx < 6}
+                          action={
+                            <AddToWishlistButton
+                              catalogItemId={item.id}
+                              isLoggedIn={Boolean(session?.userId)}
+                              floating
+                            />
+                          }
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : category.slug === "drinks" ? (
+                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                    {drinksSectionItems.map((item, idx) => (
+                      <div
+                        key={item.id}
+                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                      >
+                        <CatalogCard
+                          href={`/catalog/${item.slug}`}
+                          image={getProductDisplayImage("drinks", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
                           priority={idx < 6}
