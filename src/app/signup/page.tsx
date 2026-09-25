@@ -502,11 +502,11 @@ export default function SignupPage() {
                               ? "border-orange-500 ring-2 ring-orange-500/30 scale-105 shadow-xs"
                               : "border-zinc-200/80 hover:border-zinc-300 hover:bg-zinc-50"
                           }`}
-                          title={av.name}
+                          title="Select avatar"
                         >
                           <img
                             src={av.url}
-                            alt={av.name}
+                            alt="Avatar"
                             className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl object-cover pointer-events-none"
                           />
                           {isSelected && (
@@ -519,7 +519,7 @@ export default function SignupPage() {
                     })}
                   </div>
                   <p className="text-[11px] text-center text-zinc-500 font-medium pt-1">
-                    Selected avatar: <span className="font-bold text-zinc-800">{selectedAvatar.name}</span>
+                    Selected avatar
                   </p>
                 </div>
               ) : (

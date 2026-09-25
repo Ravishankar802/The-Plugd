@@ -388,11 +388,11 @@ export default function EditProfilePage() {
                             ? "border-orange-500 ring-2 ring-orange-500/30 scale-105 shadow-sm"
                             : "border-zinc-200/80 hover:border-zinc-300 hover:bg-zinc-50"
                         }`}
-                        title={av.name}
+                        title="Select avatar"
                       >
                         <img
                           src={av.url}
-                          alt={av.name}
+                          alt="Avatar"
                           className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl object-cover pointer-events-none"
                         />
                         {isSelected && (

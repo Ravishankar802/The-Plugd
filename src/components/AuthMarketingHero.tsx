@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Sparkles, Gift, Heart, Users, CheckCircle2 } from "lucide-react";
+import { Users, CheckCircle2 } from "lucide-react";
 
 export default function AuthMarketingHero() {
   return (
@@ -23,11 +23,10 @@ export default function AuthMarketingHero() {
       <div className="relative z-10 my-auto py-8 flex flex-col items-center text-center">
         {/* Punchy Headline */}
         <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight text-zinc-900 leading-[1.15] max-w-md">
-          Wish for what you want, gifted by your{" "}
-          <span className="text-orange-500 inline-block">closest friends</span>.
+          Wish for what you want.
         </h2>
         <p className="mt-3 text-sm sm:text-base text-zinc-500 max-w-sm font-medium">
-          Create your personal wishlist, share your link, and let followers and friends surprise you.
+          Create your wishlist. Share it. Get what you wish for.
         </p>
 
         {/* Stacked Overlapping Wishlist Cards (Instagram-inspired visual stack) */}
@@ -40,10 +39,6 @@ export default function AuthMarketingHero() {
                 alt="Sony WH-1000XM5"
                 className="w-full h-full object-cover"
               />
-              <span className="absolute top-1.5 right-1.5 rounded-full bg-black/75 px-2 py-0.5 text-[9px] font-bold text-white flex items-center gap-1 backdrop-blur-xs">
-                <Heart className="h-2.5 w-2.5 text-rose-400 fill-rose-400" />
-                <span>Top Pick</span>
-              </span>
             </div>
             <div className="mt-2 text-left">
               <p className="text-[11px] font-bold text-zinc-800 truncate">Sony WH-1000XM5</p>
@@ -59,10 +54,6 @@ export default function AuthMarketingHero() {
                 alt="Galaxy Buds4 Pro"
                 className="w-full h-full object-cover"
               />
-              <span className="absolute top-1.5 right-1.5 rounded-full bg-orange-500 px-2 py-0.5 text-[9px] font-bold text-black flex items-center gap-1">
-                <Sparkles className="h-2.5 w-2.5" />
-                <span>Trending</span>
-              </span>
             </div>
             <div className="mt-2 text-left">
               <p className="text-[11px] font-bold text-zinc-800 truncate">Galaxy Buds4 Pro</p>
@@ -78,23 +69,11 @@ export default function AuthMarketingHero() {
                 alt="iPhone 18 Pro Max"
                 className="w-full h-full object-cover"
               />
-              <span className="absolute top-2 left-2 rounded-full bg-orange-500 px-2.5 py-0.5 text-[9px] font-black text-black shadow-xs">
-                ON WISHLIST
-              </span>
             </div>
             <div className="mt-2.5 text-left">
-              <div className="flex items-center justify-between">
-                <p className="text-xs font-extrabold text-zinc-900 truncate">iPhone 18 Pro Max</p>
-              </div>
-              <p className="mt-0.5 text-[10px] font-bold text-orange-600 flex items-center gap-1">
-                <span>🎁 3 friends contributed</span>
-              </p>
+              <p className="text-xs font-extrabold text-zinc-900 truncate">iPhone 18 Pro Max</p>
+              <p className="text-[10px] font-medium text-orange-600">👤 2,840 added</p>
             </div>
-          </div>
-
-          <div className="absolute -bottom-2 right-4 z-30 inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white/95 px-3 py-1 text-[11px] font-bold text-zinc-800 shadow-md backdrop-blur-md">
-            <span className="text-xs">❤️</span>
-            <span>Loved by 12 friends</span>
           </div>
         </div>
       </div>
