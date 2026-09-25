@@ -155,7 +155,7 @@ export default function DiscoverySearch({
     <div ref={containerRef} className="relative w-full group">
       <form action={action} method="GET" onSubmit={() => setIsOpen(false)}>
         <div className="relative flex items-center">
-          <Search className="pointer-events-none absolute left-4 h-4 w-4 text-zinc-400 transition-colors group-focus-within:text-orange-500 md:h-5 md:w-5" />
+          <Search className="pointer-events-none absolute left-3 md:left-4 h-3.5 w-3.5 md:h-5 md:w-5 text-zinc-400 transition-colors group-focus-within:text-orange-500" />
           <input
             ref={inputRef}
             type="search"
@@ -165,7 +165,7 @@ export default function DiscoverySearch({
             onFocus={handleFocus}
             autoComplete="off"
             placeholder={placeholders[placeholderIndex] || "Search wishlist items..."}
-            className={`h-11 md:h-12 w-full rounded-2xl border border-zinc-200/90 bg-white pl-11 pr-10 text-xs md:text-sm font-medium text-zinc-900 shadow-sm outline-none transition-all placeholder:text-zinc-400 placeholder:transition-opacity focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 ${
+            className={`h-9 sm:h-11 md:h-12 w-full rounded-xl md:rounded-2xl border border-zinc-200/90 bg-white pl-8 sm:pl-10 md:pl-11 pr-8 md:pr-10 text-[11px] sm:text-xs md:text-sm font-medium text-zinc-900 shadow-xs md:shadow-sm outline-none transition-all placeholder:text-zinc-400 placeholder:transition-opacity focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 ${
               isFading ? "placeholder:opacity-0" : "placeholder:opacity-100"
             }`}
           />

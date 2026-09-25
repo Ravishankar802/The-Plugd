@@ -683,12 +683,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         {/* Scrollable Horizontal Category Navigation Bar - Shown ONLY on Main Category Pages */}
         {isMainCategoryPage && (
           <div className="border-b border-zinc-200/80 bg-white/95 backdrop-blur-md">
-            <div className="mx-auto flex max-w-7xl items-center gap-2.5 md:gap-3 overflow-x-auto px-4 py-3 no-scrollbar md:px-6">
+            <div className="mx-auto flex max-w-7xl items-center gap-2 md:gap-3 overflow-x-auto px-3 py-2 md:px-6 md:py-3 no-scrollbar">
               <Link
                 href="/"
-                className="inline-flex shrink-0 items-center gap-2 rounded-full border border-zinc-200/90 bg-white px-4 py-2 text-[13px] md:text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+                className="inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full border border-zinc-200/90 bg-white px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
               >
-                <Sparkles className="h-4 w-4 md:h-[18px] md:w-[18px] text-zinc-500" />
+                <Sparkles className="h-3.5 w-3.5 md:h-[18px] md:w-[18px] text-zinc-500" />
                 <span>All</span>
               </Link>
               {navCategories.map((c) => {
@@ -697,7 +697,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                   <Link
                     key={c.id}
                     href={`/category/${c.slug}`}
-                    className={`inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-[13px] md:text-sm shadow-sm transition ${
+                    className={`inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm shadow-sm transition ${
                       isActive
                         ? "bg-zinc-950 font-bold text-white hover:bg-zinc-800"
                         : "border border-zinc-200/90 bg-white font-semibold text-zinc-700 hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
@@ -705,7 +705,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                   >
                     <CategoryIcon
                       name={c.icon}
-                      className={`h-4 w-4 md:h-[18px] md:w-[18px] ${isActive ? "text-orange-400" : "text-zinc-500"}`}
+                      className={`h-3.5 w-3.5 md:h-[18px] md:w-[18px] ${isActive ? "text-orange-400" : "text-zinc-500"}`}
                     />
                     <span>{c.name}</span>
                   </Link>
@@ -717,9 +717,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       </div>
 
       {/* Main Content */}
-      <main className="mx-auto max-w-7xl flex-1 px-4 py-5 md:px-6 md:py-6 w-full">
+      {/* Main Content */}
+      <main className="mx-auto max-w-7xl flex-1 px-3 py-3 md:px-6 md:py-6 w-full">
         {/* Breadcrumb Navigation */}
-        <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold text-zinc-500">
+        <div className="mb-3 md:mb-5 flex flex-wrap items-center justify-between gap-2 md:gap-3 text-[11px] md:text-xs font-semibold text-zinc-500">
           <div className="flex items-center gap-2">
             <Link href="/" className="hover:text-zinc-950 transition-colors flex items-center gap-1">
               <ArrowLeft className="h-3.5 w-3.5" />
@@ -758,7 +759,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               </>
             ) : null}
           </div>
-          <span className="rounded-full bg-zinc-100 px-3 py-1 text-[11px] font-bold text-zinc-700">
+          <span className="rounded-full bg-zinc-100 px-2.5 py-0.5 md:px-3 md:py-1 text-[10px] md:text-[11px] font-bold text-zinc-700">
             {items.length} {items.length === 1 ? "item" : "items"}
           </span>
         </div>
@@ -767,34 +768,34 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         <div className="flex items-start">
           {/* True Left Navigation Sidebar (Not a card, sits directly on page background) */}
           <aside
-            className={`w-44 sm:w-56 md:w-64 lg:w-72 shrink-0 self-start sticky ${
+            className={`w-[74px] sm:w-52 md:w-64 lg:w-72 shrink-0 self-start sticky ${
               isMainCategoryPage
-                ? "top-[125px] max-h-[calc(100vh-140px)]"
-                : "top-[75px] md:top-[80px] max-h-[calc(100vh-95px)]"
+                ? "top-[100px] md:top-[125px] max-h-[calc(100vh-110px)] md:max-h-[calc(100vh-140px)]"
+                : "top-[60px] md:top-[80px] max-h-[calc(100vh-70px)] md:max-h-[calc(100vh-95px)]"
             } overflow-y-auto no-scrollbar border-r border-zinc-200/80 py-1 space-y-1`}
           >
             {/* 1. TOP PICKS (Prominent Zepto Star Option) */}
             <Link
               href={topPicksHref}
-              className={`group flex items-center gap-3 w-full px-3.5 sm:px-4 py-3 sm:py-3.5 transition ${
+              className={`group flex flex-col sm:flex-row items-center text-center sm:text-left gap-1 sm:gap-3 w-full px-1.5 py-2 sm:px-4 sm:py-3.5 transition ${
                 isTopPicksActive
-                  ? "bg-purple-50 text-purple-950 font-bold border-l-4 border-purple-600 rounded-none"
+                  ? "bg-purple-50 text-purple-950 font-bold border-l-2 sm:border-l-4 border-purple-600 rounded-none"
                   : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950"
               }`}
             >
               <div
-                className={`flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl transition ${
+                className={`flex h-9 w-9 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl transition ${
                   isTopPicksActive
                     ? "bg-purple-600 text-white shadow-xs"
                     : "bg-purple-100 text-purple-700 group-hover:scale-105"
                 }`}
               >
-                <Star className="h-5 w-5 fill-current" />
+                <Star className="h-4 w-4 sm:h-5 sm:w-5 fill-current" />
               </div>
-              <div className="flex flex-col min-w-0 text-left">
-                <span className="text-xs sm:text-sm font-bold tracking-tight">Top Picks</span>
+              <div className="flex flex-col min-w-0">
+                <span className="text-[10px] sm:text-sm font-bold tracking-tight line-clamp-1">Top Picks</span>
                 {category.slug !== "food" && category.slug !== "drinks" && category.slug !== "fashion" && category.slug !== "beauty" && category.slug !== "electronics" && category.slug !== "vehicles" && (
-                  <span className="text-[10px] sm:text-[11px] text-zinc-400 font-medium">
+                  <span className="text-[9px] sm:text-[11px] text-zinc-400 font-medium hidden sm:block">
                     All {isGamingSubcategory ? "Gaming" : category.name}
                   </span>
                 )}
@@ -810,13 +811,13 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 <Link
                   key={sub.id}
                   href={href}
-                  className={`group flex items-center gap-3 w-full px-3.5 sm:px-4 py-3 sm:py-3.5 transition ${
+                  className={`group flex flex-col sm:flex-row items-center text-center sm:text-left gap-1 sm:gap-3 w-full px-1.5 py-2 sm:px-4 sm:py-3.5 transition ${
                     isActive
-                      ? "bg-orange-50/90 text-orange-950 font-bold border-l-4 border-orange-500 rounded-none"
+                      ? "bg-orange-50/90 text-orange-950 font-bold border-l-2 sm:border-l-4 border-orange-500 rounded-none"
                       : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950"
                   }`}
                 >
-                  <div className="relative h-11 w-11 sm:h-12 sm:w-12 shrink-0 overflow-hidden rounded-xl bg-zinc-100 border border-zinc-200/70">
+                  <div className="relative h-9 w-9 sm:h-12 sm:w-12 shrink-0 overflow-hidden rounded-lg sm:rounded-xl bg-zinc-100 border border-zinc-200/70">
                     <img
                       src={sub.image}
                       alt={sub.name}
@@ -824,7 +825,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                       className="h-full w-full object-cover object-center group-hover:scale-105 transition duration-200"
                     />
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold leading-snug line-clamp-2 text-left">
+                  <span className="text-[10px] sm:text-sm font-semibold leading-tight line-clamp-2">
                     {sub.name}
                   </span>
                 </Link>
@@ -833,13 +834,13 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           </aside>
 
           {/* Independent Right Product Grid */}
-          <section className="flex-1 min-w-0 pl-4 sm:pl-6 md:pl-8">
+          <section className="flex-1 min-w-0 pl-2.5 sm:pl-6 md:pl-8">
             {category.slug === "fashion" && isTopPicksActive && (
-              <div className="mb-4 sm:mb-5 flex items-center gap-2">
+              <div className="mb-3 sm:mb-5 flex items-center gap-1.5 sm:gap-2">
                 <Link
                   href={`/category/fashion${query ? `?q=${encodeURIComponent(query)}` : ""}`}
                   scroll={false}
-                  className={`inline-flex shrink-0 items-center rounded-full px-3.5 py-1.5 text-xs font-bold transition ${
+                  className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-1 sm:px-3.5 sm:py-1.5 text-[11px] sm:text-xs font-bold transition ${
                     !genderParam || genderParam === "all"
                       ? "bg-zinc-950 text-white shadow-xs"
                       : "border border-zinc-200/90 bg-white text-zinc-700 hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
@@ -850,7 +851,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 <Link
                   href={`/category/fashion?gender=men${query ? `&q=${encodeURIComponent(query)}` : ""}`}
                   scroll={false}
-                  className={`inline-flex shrink-0 items-center rounded-full px-3.5 py-1.5 text-xs font-bold transition ${
+                  className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-1 sm:px-3.5 sm:py-1.5 text-[11px] sm:text-xs font-bold transition ${
                     genderParam === "men"
                       ? "bg-zinc-950 text-white shadow-xs"
                       : "border border-zinc-200/90 bg-white text-zinc-700 hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
@@ -861,7 +862,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 <Link
                   href={`/category/fashion?gender=women${query ? `&q=${encodeURIComponent(query)}` : ""}`}
                   scroll={false}
-                  className={`inline-flex shrink-0 items-center rounded-full px-3.5 py-1.5 text-xs font-bold transition ${
+                  className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-1 sm:px-3.5 sm:py-1.5 text-[11px] sm:text-xs font-bold transition ${
                     genderParam === "women"
                       ? "bg-zinc-950 text-white shadow-xs"
                       : "border border-zinc-200/90 bg-white text-zinc-700 hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
@@ -873,7 +874,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             )}
 
             {items.length > 0 ? (
-              <div className="grid grid-cols-2 gap-x-2.5 sm:gap-x-3.5 gap-y-6 sm:gap-y-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+              <div className="grid grid-cols-2 gap-x-2 gap-y-3.5 sm:gap-x-3.5 sm:gap-y-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
                 {items.map((item, idx) => (
                   <CatalogCard
                     key={item.id}

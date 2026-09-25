@@ -488,21 +488,21 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
         {/* Scrollable Horizontal Category Navigation Bar */}
         <div className="border-b border-zinc-200/80 bg-white/95 backdrop-blur-md">
-          <div className="mx-auto flex max-w-7xl items-center gap-2.5 md:gap-3 overflow-x-auto px-4 py-3 no-scrollbar md:px-6">
+          <div className="mx-auto flex max-w-7xl items-center gap-2 md:gap-3 overflow-x-auto px-3 py-2 md:px-6 md:py-3 no-scrollbar">
             <Link
               href="/"
-              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-zinc-950 px-4 py-2 text-[13px] md:text-sm font-bold text-white shadow-sm transition hover:bg-zinc-800"
+              className="inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full bg-zinc-950 px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-bold text-white shadow-sm transition hover:bg-zinc-800"
             >
-              <Sparkles className="h-4 w-4 md:h-[18px] md:w-[18px] text-orange-400" />
+              <Sparkles className="h-3.5 w-3.5 md:h-[18px] md:w-[18px] text-orange-400" />
               <span>All</span>
             </Link>
             {navCategories.map((category) => (
               <Link
                 key={category.id}
                 href={`/category/${category.slug}`}
-                className="inline-flex shrink-0 items-center gap-2 rounded-full border border-zinc-200/90 bg-white px-4 py-2 text-[13px] md:text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+                className="inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full border border-zinc-200/90 bg-white px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
               >
-                <CategoryIcon name={category.icon} className="h-4 w-4 md:h-[18px] md:w-[18px] text-zinc-500" />
+                <CategoryIcon name={category.icon} className="h-3.5 w-3.5 md:h-[18px] md:w-[18px] text-zinc-500" />
                 <span>{category.name}</span>
               </Link>
             ))}
@@ -511,10 +511,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       </div>
 
       {/* Main Body */}
-      <main className="mx-auto max-w-7xl flex-1 px-4 py-5 md:px-6 md:py-7 w-full">
-        {/* Two-board Hero Section */}
+      <main className="mx-auto max-w-7xl flex-1 px-3 py-3 md:px-6 md:py-7 w-full">
+        {/* Two-board Hero Section (hidden on mobile, visible on desktop) */}
         {!query && (
-          <section className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 items-stretch">
+          <section className="hidden md:grid mb-8 md:grid-cols-2 gap-4 md:gap-5 items-stretch">
             {/* Board 1: Catalog Experience */}
             <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-8 text-white shadow-xl border border-zinc-800/80 flex flex-col justify-between h-full group">
               {/* Subtle dark-to-warm-orange gradient/glow */}
@@ -875,7 +875,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     Wishlist Items ({searchResults.items.length})
                   </h3>
                 </div>
-                <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
+                <div className="grid grid-cols-2 gap-2 sm:gap-3.5 md:gap-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
                   {searchResults.items.map((item) => (
                     <CatalogCard
                       key={item.id}
@@ -919,17 +919,17 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
         {/* Discovery Sections / Shelves (Only if not in search mode) */}
         {!query && (
-          <div className="space-y-10 md:space-y-12">
-            {/* Dedicated Categories Grid (Zepto-style visual discovery: exactly 20 tiles in 10 cols x 2 rows, no heading) */}
+          <div className="space-y-6 md:space-y-12">
+            {/* Dedicated Categories Grid (Zepto-style visual discovery: 8 tiles on mobile in 4 cols x 2 rows, 20 tiles on desktop) */}
             <section id="categories">
-              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-10 gap-3 sm:gap-4">
-                {HOMEPAGE_CATEGORIES_GRID.map((item) => (
+              <div className="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-10 gap-2 sm:gap-3 md:gap-4">
+                {HOMEPAGE_CATEGORIES_GRID.map((item, idx) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="group flex flex-col items-center text-center"
+                    className={`${idx >= 8 ? "hidden md:flex" : "flex"} group flex-col items-center text-center`}
                   >
-                    <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-200/80 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:border-orange-500/50">
+                    <div className="relative aspect-square w-full overflow-hidden rounded-xl md:rounded-2xl bg-zinc-100 border border-zinc-200/80 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:border-orange-500/50">
                       <img
                         src={item.image}
                         alt={item.name}
@@ -938,7 +938,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <span className="mt-2 text-xs font-semibold text-zinc-800 transition-colors group-hover:text-orange-600 line-clamp-2 leading-tight">
+                    <span className="mt-1.5 md:mt-2 text-[10px] sm:text-xs font-semibold text-zinc-800 transition-colors group-hover:text-orange-600 line-clamp-1 md:line-clamp-2 leading-tight">
                       {item.name}
                     </span>
                   </Link>
@@ -947,8 +947,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             </section>
 
             {/* 1. Trending Row */}
-            <section className="space-y-4">
-              <div className="flex items-end justify-between gap-4 border-b border-zinc-200/80 pb-3">
+            <section className="space-y-2.5 md:space-y-4">
+              <div className="flex items-end justify-between gap-4 border-b border-zinc-200/80 pb-2 md:pb-3">
                 <div className="flex items-center gap-2">
                   <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600">
                     <Sparkles className="h-4 w-4" />
@@ -960,11 +960,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 </div>
               </div>
 
-              <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+              <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                 {topPicksItems.map((item, idx) => (
                   <div
                     key={item.id}
-                    className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                    className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
                   >
                     <CatalogCard
                       href={`/catalog/${item.slug}`}
@@ -988,8 +988,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
             {/* 2. Category Shelves */}
             {shelfCategories.map((category) => (
-              <section key={category.id} className="space-y-4">
-                <div className="flex items-center justify-between gap-4 border-b border-zinc-200/80 pb-3">
+              <section key={category.id} className="space-y-2.5 md:space-y-4">
+                <div className="flex items-center justify-between gap-4 border-b border-zinc-200/80 pb-2 md:pb-3">
                   <div className="flex items-center gap-2.5">
                     <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-zinc-200/80 text-zinc-800">
                       <CategoryIcon name={category.icon} className="h-4 w-4" />
@@ -1016,11 +1016,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 </div>
 
                 {category.slug === "food" ? (
-                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                     {foodSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1041,11 +1041,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     ))}
                   </div>
                 ) : category.slug === "drinks" ? (
-                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                     {drinksSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1066,11 +1066,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     ))}
                   </div>
                 ) : category.slug === "fashion" ? (
-                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                     {fashionSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1091,11 +1091,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     ))}
                   </div>
                 ) : category.slug === "mobile" ? (
-                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                     {mobileSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1116,11 +1116,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     ))}
                   </div>
                 ) : category.slug === "beauty" ? (
-                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                     {beautySectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1141,11 +1141,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     ))}
                   </div>
                 ) : category.slug === "entertainment" ? (
-                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                     {entertainmentSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1166,11 +1166,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     ))}
                   </div>
                 ) : category.slug === "subscriptions" ? (
-                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                     {subscriptionsSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1191,11 +1191,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     ))}
                   </div>
                 ) : category.slug === "vehicles" ? (
-                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                     {vehiclesSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1216,11 +1216,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     ))}
                   </div>
                 ) : category.slug === "electronics" ? (
-                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                     {electronicsSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1241,11 +1241,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     ))}
                   </div>
                 ) : category.slug === "fitness" ? (
-                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                     {fitnessSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1266,11 +1266,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     ))}
                   </div>
                 ) : category.slug === "toys" ? (
-                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                     {toysSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1291,7 +1291,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     ))}
                   </div>
                 ) : (
-                  <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3.5 md:gap-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
                     {category.catalogItems.map((item) => (
                       <CatalogCard
                         key={item.id}

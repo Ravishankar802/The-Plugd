@@ -67,7 +67,7 @@ export default function AddToWishlistButton({
         disabled={status === "loading"}
         aria-label="Add to Wishlist"
         title="Add to Wishlist"
-        className={`group/btn inline-flex items-center justify-center gap-1 rounded-xl px-2 py-1 text-[10px] sm:text-[11px] font-black tracking-wider transition-all duration-200 shadow-sm active:scale-95 ${
+        className={`group/btn inline-flex items-center justify-center gap-0.5 md:gap-1 rounded-lg md:rounded-xl px-1.5 py-0.5 md:px-2 md:py-1 text-[9px] md:text-[11px] font-black tracking-wider transition-all duration-200 shadow-xs md:shadow-sm active:scale-95 ${
           status === "added"
             ? "bg-emerald-500 text-white border border-emerald-600 shadow-emerald-500/20"
             : "bg-white/95 text-zinc-950 hover:bg-orange-500 hover:text-black border border-zinc-200/90 backdrop-blur-md hover:border-orange-500 hover:shadow-md"
