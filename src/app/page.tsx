@@ -92,6 +92,21 @@ const HOMEPAGE_FASHION_ITEMS_DEF = [
   { name: "Pointed-Toe Stiletto Heels", slug: "pointed-toe-stiletto-heels" },
 ] as const;
 
+const HOMEPAGE_MOBILE_ITEMS_DEF = [
+  { name: "iPhone Duo", slug: "iphone-duo" },
+  { name: "iPhone 18 Pro Max (Black)", slug: "iphone-18-pro-max-black" },
+  { name: "iPhone 18 Pro Max (Burgundy)", slug: "iphone-18-pro-max-burgundy" },
+  { name: "Samsung Galaxy Z Fold8 Ultra", slug: "samsung-galaxy-z-fold8-ultra" },
+  { name: "Samsung Galaxy S26 Ultra", slug: "samsung-galaxy-s26-ultra" },
+  { name: "Google Pixel 11 Pro Fold", slug: "google-pixel-11-pro-fold" },
+  { name: "Google Pixel 11 Pro XL", slug: "google-pixel-11-pro-xl" },
+  { name: "iPad Pro", slug: "ipad-pro" },
+  { name: "iPhone Air", slug: "iphone-air" },
+  { name: "Nothing Phone (4a) Pro", slug: "nothing-phone-4a-pro" },
+  { name: "iPhone 18 Pro", slug: "iphone-18-pro" },
+  { name: "Google Pixel 11 Pro", slug: "google-pixel-11-pro" },
+] as const;
+
 interface HomePageProps {
   searchParams?: Promise<{ q?: string }> | { q?: string };
 }
@@ -101,7 +116,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams?.q?.trim() || "";
 
-  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, searchResults] = await Promise.all([
+  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, mobileDbItems, searchResults] = await Promise.all([
     prisma.category.findMany({
       where: { active: true },
       include: {
@@ -144,6 +159,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       },
       include: { category: true },
     }),
+    prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        category: { slug: "mobile" },
+        slug: { in: HOMEPAGE_MOBILE_ITEMS_DEF.map((m) => m.slug) },
+      },
+      include: { category: true },
+    }),
     query
       ? searchCatalog(query, { limitItems: 48 })
       : Promise.resolve({ categories: [], subcategories: [], items: [], totalMatches: 0 }),
@@ -177,6 +200,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const fashionMap = new Map(fashionDbItems.map((item) => [item.slug, item]));
   const fashionSectionItems = HOMEPAGE_FASHION_ITEMS_DEF.map((def) => {
     const item = fashionMap.get(def.slug);
+    if (!item) return null;
+    return {
+      ...item,
+      displayName: def.name,
+    };
+  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+  const mobileMap = new Map(mobileDbItems.map((item) => [item.slug, item]));
+  const mobileSectionItems = HOMEPAGE_MOBILE_ITEMS_DEF.map((def) => {
+    const item = mobileMap.get(def.slug);
     if (!item) return null;
     return {
       ...item,
@@ -629,6 +662,30 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
                           image={getProductDisplayImage("fashion", item.slug, item.image) || item.image}
+                          name={item.displayName || item.name}
+                          category={category.name}
+                          priority={idx < 6}
+                          action={
+                            <AddToWishlistButton
+                              catalogItemId={item.id}
+                              isLoggedIn={Boolean(session?.userId)}
+                              floating
+                            />
+                          }
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : category.slug === "mobile" ? (
+                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                    {mobileSectionItems.map((item, idx) => (
+                      <div
+                        key={item.id}
+                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                      >
+                        <CatalogCard
+                          href={`/catalog/${item.slug}`}
+                          image={getProductDisplayImage("mobile", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
                           priority={idx < 6}
