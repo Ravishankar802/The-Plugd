@@ -69,6 +69,29 @@ const HOMEPAGE_DRINKS_ITEMS_DEF = [
   { name: "Mountain Dew", slug: "mountain-dew" },
 ] as const;
 
+const HOMEPAGE_FASHION_ITEMS_DEF = [
+  { name: "Classic MA-1 Bomber Jacket", slug: "classic-ma-1-bomber-jacket" },
+  { name: "220 GSM Oversized Plain Drop-Shoulder Tee", slug: "220-gsm-oversized-plain-drop-shoulder-tee" },
+  { name: "Bias-Cut Silk-Satin Slip Midi Dress", slug: "bias-cut-silk-satin-slip-midi-dress" },
+  { name: "Classic Denim Mini Skirt", slug: "classic-denim-mini-skirt" },
+  { name: "Faux Leather Moto Jacket", slug: "faux-leather-moto-jacket" },
+  { name: "Off-Shoulder Ruched Top", slug: "off-shoulder-ruched-top" },
+  { name: "Pleated Mini Skirt", slug: "pleated-mini-skirt" },
+  { name: "Fitted Ribbed Baby Tee", slug: "fitted-ribbed-baby-tee" },
+  { name: "Cotton Dad Cap (Women's)", slug: "cotton-dad-cap-women-s" },
+  { name: "Bespoke Royal Bandhgala Jodhpuri Suit", slug: "bespoke-royal-bandhgala-jodhpuri-suit" },
+  { name: "Oversized Hoodie", slug: "oversized-hoodie" },
+  { name: "Crisp Cotton Poplin Oversized Boyfriend Shirt", slug: "crisp-cotton-poplin-oversized-boyfriend-shirt" },
+  { name: "Converse Chuck 70 Vintage Canvas", slug: "converse-chuck-70-vintage-canvas" },
+  { name: "Fossil Grant Chronograph Leather Watch", slug: "fossil-grant-chronograph-leather-watch" },
+  { name: "Brushed Silver Geometric Signet Ring", slug: "brushed-silver-geometric-signet-ring" },
+  { name: "FC Barcelona Home Jersey", slug: "fc-barcelona-home-jersey" },
+  { name: "Coach Tabby 26 Polished Leather Shoulder Bag", slug: "coach-tabby-26-polished-leather-shoulder-bag" },
+  { name: "Structured Boned Corset Top", slug: "structured-boned-corset-top" },
+  { name: "Cat-Eye Acetate Sunglasses", slug: "cat-eye-acetate-sunglasses" },
+  { name: "Pointed-Toe Stiletto Heels", slug: "pointed-toe-stiletto-heels" },
+] as const;
+
 interface HomePageProps {
   searchParams?: Promise<{ q?: string }> | { q?: string };
 }
@@ -78,7 +101,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams?.q?.trim() || "";
 
-  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, searchResults] = await Promise.all([
+  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, searchResults] = await Promise.all([
     prisma.category.findMany({
       where: { active: true },
       include: {
@@ -113,6 +136,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       },
       include: { category: true },
     }),
+    prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        category: { slug: "fashion" },
+        slug: { in: HOMEPAGE_FASHION_ITEMS_DEF.map((f) => f.slug) },
+      },
+      include: { category: true },
+    }),
     query
       ? searchCatalog(query, { limitItems: 48 })
       : Promise.resolve({ categories: [], subcategories: [], items: [], totalMatches: 0 }),
@@ -136,6 +167,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const drinksMap = new Map(drinksDbItems.map((item) => [item.slug, item]));
   const drinksSectionItems = HOMEPAGE_DRINKS_ITEMS_DEF.map((def) => {
     const item = drinksMap.get(def.slug);
+    if (!item) return null;
+    return {
+      ...item,
+      displayName: def.name,
+    };
+  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+  const fashionMap = new Map(fashionDbItems.map((item) => [item.slug, item]));
+  const fashionSectionItems = HOMEPAGE_FASHION_ITEMS_DEF.map((def) => {
+    const item = fashionMap.get(def.slug);
     if (!item) return null;
     return {
       ...item,
@@ -564,6 +605,30 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
                           image={getProductDisplayImage("drinks", item.slug, item.image) || item.image}
+                          name={item.displayName || item.name}
+                          category={category.name}
+                          priority={idx < 6}
+                          action={
+                            <AddToWishlistButton
+                              catalogItemId={item.id}
+                              isLoggedIn={Boolean(session?.userId)}
+                              floating
+                            />
+                          }
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : category.slug === "fashion" ? (
+                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                    {fashionSectionItems.map((item, idx) => (
+                      <div
+                        key={item.id}
+                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                      >
+                        <CatalogCard
+                          href={`/catalog/${item.slug}`}
+                          image={getProductDisplayImage("fashion", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
                           priority={idx < 6}

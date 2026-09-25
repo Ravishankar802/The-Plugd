@@ -761,7 +761,6 @@ export const FASHION_IMAGE_MAP: Record<string, string> = {
   "tommy-hilfiger-regatta-yachting-bomber-jacket": "https://pvh-brands.imgix.net/catalog/product/media/MW0MW37808DW5-MO-ST-F1.jpg?w=&h=&crop=edges&fit=crop&auto=compress&auto=format",
   "traditional-silver-jhumka-earrings": "https://m.media-amazon.com/images/I/71sGHPss0cL._AC_UY1100_.jpg",
   "under-armour-heatgear-compression-long-sleeve": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqvC8VZuQTszsBGbKjs4y1MwLyQ-nebPb_7Luyk6uP-w&s=10",
-  "urban-roll-top-waterproof-laptop-backpack-25l": "https://restube.com/cdn/shop/files/COAST25_2000x2000_Product_Slider_EN_2.jpg?v=1779893248&width=2000",
   "vans-old-skool-classic-skate-shoes": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4a0GWxxRQsSyBPF23iYx_jb7rxTXV3jzWnDetZnDUv9i1V-XA9mNxtlc&s=10",
   "varsity-bomber-jacket": "https://m.media-amazon.com/images/I/81sbKthGDmL._AC_SX569_.jpg",
   "vintage-90s-tinted-acetate-sunglasses": "https://i.etsystatic.com/18601501/r/il/4a1258/2482152313/il_fullxfull.2482152313_5ehc.jpg",

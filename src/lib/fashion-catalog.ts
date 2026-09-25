@@ -166,7 +166,6 @@ export const FASHION_SECTIONS: FashionSection[] = [
       "new-balance-550",
       "boxy-drop-shoulder-hoodie",
       "relaxed-fit-utilitarian-cargo-pants",
-      "waterproof-urban-laptop-backpack",
       "vintage-retro-tinted-sunglasses",
       "asics-gel-kayano-14",
       "handloom-banarasi-silk-saree",
@@ -353,7 +352,6 @@ export const FASHION_SECTIONS: FashionSection[] = [
     badge: "🎒 Bags & Carry",
     displayOrder: 8,
     productIds: [
-      "waterproof-urban-laptop-backpack",
       "travel-backpack",
       "minimalist-leather-crossbody-sling",
       "heavy-canvas-work-tote-bag",
@@ -976,24 +974,6 @@ export const RAW_FASHION_PRODUCTS: Array<{
     "featured": false,
     "trending": false,
     "displayOrder": 20
-  },
-  {
-    "id": "urban-roll-top-waterproof-laptop-backpack-25l",
-    "name": "Urban Roll-Top Waterproof Laptop Backpack 25L",
-    "brand": "Plugd Studio",
-    "subcategory": "Bags",
-    "sectionId": "streetwear-creator-fits",
-    "sectionTitle": "Streetwear & Creator Fits",
-    "description": "",
-    "gender": "unisex",
-    "tags": [
-      "plugd studio",
-      "bags",
-      "unisex"
-    ],
-    "featured": false,
-    "trending": false,
-    "displayOrder": 21
   },
   {
     "id": "minimalist-leather-everyday-crossbody-sling",
@@ -4121,8 +4101,6 @@ export const FASHION_GENDER_MAP: Record<string, "men" | "women" | "unisex"> = {
   "titan edge ceramic ultra-slim watch": "men",
   "tissot-prx-powermatic-80-automatic": "men",
   "tissot prx powermatic 80 automatic": "men",
-  "urban-roll-top-waterproof-laptop-backpack-25l": "unisex",
-  "urban roll-top waterproof laptop backpack 25l": "unisex",
   "minimalist-leather-everyday-crossbody-sling": "women",
   "minimalist leather everyday crossbody sling": "women",
   "vintage-90s-tinted-acetate-sunglasses": "unisex",
