@@ -184,7 +184,7 @@ export default function DiscoverySearch({
 
       {/* Live Search Results Dropdown */}
       {isOpen && query.trim().length > 0 && (
-        <div className="absolute left-0 right-0 top-full mt-2 z-50 rounded-2xl border border-zinc-200/90 bg-white shadow-2xl backdrop-blur-xl overflow-hidden max-h-[75vh] overflow-y-auto no-scrollbar">
+        <div className="fixed inset-x-3 top-[54px] sm:inset-x-4 sm:top-[62px] md:absolute md:top-full md:left-0 md:right-0 md:mt-2 z-50 rounded-2xl border border-zinc-200/90 bg-white shadow-2xl backdrop-blur-xl overflow-hidden max-h-[75vh] overflow-y-auto no-scrollbar">
           {isLoading && !results ? (
             <div className="p-6 text-center text-xs font-semibold text-zinc-500 flex items-center justify-center gap-2">
               <span className="h-4 w-4 animate-spin rounded-full border-2 border-orange-500 border-t-transparent" />
@@ -271,11 +271,11 @@ export default function DiscoverySearch({
                             <Sparkles className="h-4 w-4" />
                           </div>
                         )}
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs font-bold text-zinc-900 truncate group-hover/sub:text-orange-600 transition">
+                        <div className="min-w-0 flex-1 pr-2">
+                          <div className="text-xs font-bold text-zinc-900 line-clamp-2 md:block md:truncate group-hover/sub:text-orange-600 transition leading-snug break-words">
                             {sub.name}
                           </div>
-                          <div className="text-[11px] text-zinc-500">
+                          <div className="text-[11px] text-zinc-500 truncate">
                             in {sub.parentCategoryName}
                           </div>
                         </div>
@@ -313,15 +313,15 @@ export default function DiscoverySearch({
                             <Sparkles className="h-4 w-4" />
                           </div>
                         )}
-                        <div className="min-w-0 flex-1">
-                          <div className="text-xs font-bold text-zinc-900 truncate group-hover/item:text-orange-600 transition">
+                        <div className="min-w-0 flex-1 pr-2">
+                          <div className="text-xs font-bold text-zinc-900 line-clamp-2 md:block md:truncate group-hover/item:text-orange-600 transition leading-snug break-words">
                             {item.name}
                           </div>
-                          <div className="text-[11px] font-medium text-zinc-500">
+                          <div className="text-[11px] font-medium text-zinc-500 truncate">
                             {item.categoryName}
                           </div>
                         </div>
-                        <span className="text-[11px] font-bold text-orange-600 group-hover/item:translate-x-0.5 transition-transform shrink-0">
+                        <span className="text-[11px] font-bold text-orange-600 group-hover/item:translate-x-0.5 transition-transform shrink-0 whitespace-nowrap">
                           View &rarr;
                         </span>
                       </Link>
