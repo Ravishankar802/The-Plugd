@@ -863,7 +863,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             )}
 
             {items.length > 0 ? (
-              <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+              <div className="grid grid-cols-2 gap-x-2.5 sm:gap-x-3.5 gap-y-6 sm:gap-y-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
                 {items.map((item, idx) => (
                   <CatalogCard
                     key={item.id}
