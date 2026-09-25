@@ -4,6 +4,7 @@ import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Eye, EyeOff, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
+import AuthMarketingHero from "@/components/AuthMarketingHero";
 
 function LoginForm() {
   const router = useRouter();
@@ -51,19 +52,19 @@ function LoginForm() {
   };
 
   return (
-    <div className="w-full max-w-[360px] sm:max-w-[380px] mx-auto">
-      {/* Brand Logo & Heading directly on the page */}
-      <div className="text-center mb-8">
-        <Link href="/" className="inline-block group focus:outline-none">
+    <div className="w-full max-w-[380px] sm:max-w-[400px] mx-auto">
+      {/* Brand Header */}
+      <div className="mb-8">
+        <Link href="/" className="inline-block group focus:outline-none mb-3">
           <span className="font-logo text-3xl sm:text-4xl font-extrabold tracking-normal text-orange-500 select-none leading-none">
             Plugd
           </span>
         </Link>
-        <h1 className="mt-4 text-2xl sm:text-[26px] font-black tracking-tight text-zinc-900">
+        <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900">
           Log in to Plugd
         </h1>
-        <p className="mt-1.5 text-xs text-zinc-500">
-          Welcome back! Enter your details below.
+        <p className="mt-1 text-xs sm:text-sm text-zinc-500 font-medium">
+          Enter your email or username to access your wishlist.
         </p>
       </div>
 
@@ -167,7 +168,7 @@ function LoginForm() {
           </div>
         </div>
 
-        {/* Submit Button */}
+        {/* Primary Log In Button */}
         <button
           type="submit"
           disabled={loading}
@@ -184,32 +185,47 @@ function LoginForm() {
         </button>
       </form>
 
-      {/* Sign Up Prompt - in the same page flow */}
-      <p className="mt-6 text-center text-xs text-zinc-500">
-        Don&apos;t have an account?{" "}
-        <Link
-          href="/signup"
-          className="font-bold text-orange-600 hover:text-orange-700 hover:underline transition"
-        >
-          Sign up
-        </Link>
-      </p>
+      {/* Visual Divider */}
+      <div className="relative my-6">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-zinc-200" />
+        </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-white px-3 text-zinc-400 font-bold tracking-wider">or</span>
+        </div>
+      </div>
+
+      {/* Prominent Secondary Action: "Create new account" */}
+      <Link
+        href="/signup"
+        className="w-full h-11 sm:h-12 rounded-xl border-2 border-orange-500/70 bg-orange-50/50 text-orange-950 font-extrabold text-sm flex items-center justify-center hover:bg-orange-100 hover:border-orange-600 transition active:scale-[0.99]"
+      >
+        Create new account
+      </Link>
     </div>
   );
 }
 
 export default function LoginPage() {
   return (
-    <main className="min-h-screen flex flex-col justify-center items-center py-12 px-4 sm:px-6 bg-white selection:bg-orange-500 selection:text-black font-sans">
-      <Suspense
-        fallback={
-          <div className="flex items-center justify-center p-12">
-            <Loader2 className="h-8 w-8 animate-spin text-orange-500" />
-          </div>
-        }
-      >
-        <LoginForm />
-      </Suspense>
+    <main className="min-h-screen bg-white flex flex-col lg:flex-row font-sans selection:bg-orange-500 selection:text-black">
+      {/* LEFT COLUMN: Plugd-focused visual/marketing area */}
+      <div className="hidden lg:flex lg:w-1/2 min-h-screen sticky top-0 h-screen">
+        <AuthMarketingHero />
+      </div>
+
+      {/* RIGHT COLUMN: Authentication Form */}
+      <div className="w-full lg:w-1/2 min-h-screen flex flex-col justify-center items-center py-12 px-6 sm:px-12 lg:px-16">
+        <Suspense
+          fallback={
+            <div className="flex items-center justify-center p-12">
+              <Loader2 className="h-8 w-8 animate-spin text-orange-500" />
+            </div>
+          }
+        >
+          <LoginForm />
+        </Suspense>
+      </div>
     </main>
   );
 }
