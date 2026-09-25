@@ -206,8 +206,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   } else if (category.slug === "subscriptions") {
     const subNames = [
       "ChatGPT Plus", "ChatGPT Pro", "Claude Pro", "Claude Max",
-      "X Premium", "X Premium+", "Netflix Standard",
-      "Prime Video Subscription", "Hotstar Subscription", "Apple TV Subscription",
+      "X Premium", "X Premium+", "Netflix Standard", "Netflix Premium",
+      "Prime Video", "Hotstar Subscription", "Apple TV Subscription",
       "Google AI Plus", "Google AI Pro", "Google AI Ultra",
       "Spotify Premium", "YouTube Premium", "Amazon Prime",
       "Canva Pro", "Adobe Creative Cloud", "GitHub Pro",
@@ -215,12 +215,22 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     ];
     const itemSlug = (name: string) => name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
     const subSlugs = subNames.map(itemSlug);
-    const allowedSlugs = new Set([...subSlugs, "x-premium-2"]);
-    const validRaw = initialRawItems.filter((i) => allowedSlugs.has(i.slug));
+    const allowedSlugs = new Set([...subSlugs, "x-premium-2", "prime-video-subscription"]);
+    const validRaw = initialRawItems.filter((i) => allowedSlugs.has(i.slug)).map((i) => {
+      if (i.slug === "prime-video-subscription" || i.slug === "prime-video") {
+        return { ...i, name: "Prime Video" };
+      }
+      return i;
+    });
     const existingSlugs = new Set(validRaw.map((i) => i.slug));
     const missingItems = subNames
       .map((name, idx) => ({ name, slug: itemSlug(name), idx }))
-      .filter((s) => !existingSlugs.has(s.slug) && !existingSlugs.has(s.slug === "x-premium-plus" ? "x-premium-2" : s.slug))
+      .filter((s) => {
+        if (existingSlugs.has(s.slug)) return false;
+        if (s.slug === "x-premium-plus" && existingSlugs.has("x-premium-2")) return false;
+        if (s.slug === "prime-video" && existingSlugs.has("prime-video-subscription")) return false;
+        return true;
+      })
       .map((s) => ({
         id: `subscriptions-${s.slug}`,
         name: s.name,
@@ -232,9 +242,15 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         addedCount: 0,
       }));
     rawItems = [...validRaw, ...missingItems];
+    const getSubIndex = (slug: string) => {
+      if (slug === "prime-video-subscription") return subSlugs.indexOf("prime-video");
+      const idx = subSlugs.indexOf(slug);
+      if (idx !== -1) return idx;
+      return subSlugs.indexOf(slug.replace("-2", "-plus"));
+    };
     rawItems.sort((a, b) => {
-      const idxA = subSlugs.indexOf(a.slug) !== -1 ? subSlugs.indexOf(a.slug) : subSlugs.indexOf(a.slug.replace("-2", "-plus"));
-      const idxB = subSlugs.indexOf(b.slug) !== -1 ? subSlugs.indexOf(b.slug) : subSlugs.indexOf(b.slug.replace("-2", "-plus"));
+      const idxA = getSubIndex(a.slug);
+      const idxB = getSubIndex(b.slug);
       return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
     });
   } else if (category.slug === "electronics") {

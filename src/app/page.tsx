@@ -135,6 +135,21 @@ const HOMEPAGE_ENTERTAINMENT_ITEMS_DEF = [
   { name: "Vinyl Player", slug: "vinyl-player" },
 ] as const;
 
+const HOMEPAGE_SUBSCRIPTIONS_ITEMS_DEF = [
+  { name: "Claude Max", slug: "claude-max" },
+  { name: "Google AI Ultra", slug: "google-ai-ultra" },
+  { name: "ChatGPT Pro", slug: "chatgpt-pro" },
+  { name: "Claude Pro", slug: "claude-pro" },
+  { name: "Google AI Pro", slug: "google-ai-pro" },
+  { name: "X Premium+", slug: "x-premium-2", fallbackSlug: "x-premium-plus" },
+  { name: "YouTube Premium", slug: "youtube-premium" },
+  { name: "Netflix Premium", slug: "netflix-premium" },
+  { name: "Prime Video", slug: "prime-video", fallbackSlug: "prime-video-subscription" },
+  { name: "Spotify Premium", slug: "spotify-premium" },
+  { name: "Apple TV Subscription", slug: "apple-tv-subscription" },
+  { name: "Midjourney Subscription", slug: "midjourney-subscription" },
+] as const;
+
 interface HomePageProps {
   searchParams?: Promise<{ q?: string }> | { q?: string };
 }
@@ -144,7 +159,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams?.q?.trim() || "";
 
-  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, mobileDbItems, beautyDbItems, entertainmentDbItems, searchResults] = await Promise.all([
+  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, mobileDbItems, beautyDbItems, entertainmentDbItems, subscriptionsDbItems, searchResults] = await Promise.all([
     prisma.category.findMany({
       where: { active: true },
       include: {
@@ -208,6 +223,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         active: true,
         category: { slug: "entertainment" },
         slug: { in: HOMEPAGE_ENTERTAINMENT_ITEMS_DEF.map((e) => e.slug) },
+      },
+      include: { category: true },
+    }),
+    prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        category: { slug: "subscriptions" },
+        slug: {
+          in: HOMEPAGE_SUBSCRIPTIONS_ITEMS_DEF.flatMap((s) => [s.slug, ("fallbackSlug" in s ? s.fallbackSlug : s.slug)]),
+        },
       },
       include: { category: true },
     }),
@@ -280,6 +305,29 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       displayName: def.name,
     };
   }).filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+  const subscriptionsMap = new Map(subscriptionsDbItems.map((item) => [item.slug, item]));
+  const subscriptionsSectionItems = HOMEPAGE_SUBSCRIPTIONS_ITEMS_DEF.map((def) => {
+    const item = subscriptionsMap.get(def.slug) || ("fallbackSlug" in def ? subscriptionsMap.get(def.fallbackSlug) : undefined);
+    if (!item) return null;
+    return {
+      ...item,
+      displayName: def.name,
+    };
+  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+  // Homepage shelves ordering: place Subscriptions section AFTER / BELOW Fitness
+  const shelfCategories = [...categories];
+  const subShelfIdx = shelfCategories.findIndex((c) => c.slug === "subscriptions");
+  if (subShelfIdx !== -1) {
+    const [subCat] = shelfCategories.splice(subShelfIdx, 1);
+    const fitShelfIdx = shelfCategories.findIndex((c) => c.slug === "fitness");
+    if (fitShelfIdx !== -1) {
+      shelfCategories.splice(fitShelfIdx + 1, 0, subCat);
+    } else {
+      shelfCategories.push(subCat);
+    }
+  }
 
   // Swap Subscriptions and Vehicles positions ONLY for the homepage category navigation row
   const navCategories = [...categories];
@@ -640,7 +688,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             </section>
 
             {/* 2. Category Shelves */}
-            {categories.map((category) => (
+            {shelfCategories.map((category) => (
               <section key={category.id} className="space-y-4">
                 <div className="flex items-center justify-between gap-4 border-b border-zinc-200/80 pb-3">
                   <div className="flex items-center gap-2.5">
@@ -798,6 +846,30 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
                           image={getProductDisplayImage("entertainment", item.slug, item.image) || item.image}
+                          name={item.displayName || item.name}
+                          category={category.name}
+                          priority={idx < 6}
+                          action={
+                            <AddToWishlistButton
+                              catalogItemId={item.id}
+                              isLoggedIn={Boolean(session?.userId)}
+                              floating
+                            />
+                          }
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : category.slug === "subscriptions" ? (
+                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                    {subscriptionsSectionItems.map((item, idx) => (
+                      <div
+                        key={item.id}
+                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                      >
+                        <CatalogCard
+                          href={`/catalog/${item.slug}`}
+                          image={getProductDisplayImage("subscriptions", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
                           priority={idx < 6}

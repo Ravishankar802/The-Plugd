@@ -58,7 +58,8 @@ const SUBSCRIPTIONS_ITEMS = [
   "X Premium",
   "X Premium+",
   "Netflix Standard",
-  "Prime Video Subscription",
+  "Netflix Premium",
+  "Prime Video",
   "Hotstar Subscription",
   "Apple TV Subscription",
   "Google AI Plus",
@@ -879,9 +880,9 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
   const subscriptionsCat = await prisma.category.findUnique({ where: { slug: "subscriptions" }, select: { id: true } });
   if (subscriptionsCat && categoryId === subscriptionsCat.id) {
     const subSlugs = SUBSCRIPTIONS_ITEMS.map((name) => itemSlug(name));
-    const allowedSlugs = new Set([...subSlugs, "x-premium-2"]);
+    const allowedSlugs = new Set([...subSlugs, "x-premium-2", "prime-video-subscription"]);
 
-    // Remove any unauthorized/removed items (e.g. netflix-premium)
+    // Remove any unauthorized/removed items
     const unauthorizedItems = items.filter((i) => !allowedSlugs.has(i.slug));
     if (unauthorizedItems.length > 0) {
       await prisma.catalogItem.deleteMany({
@@ -895,7 +896,12 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     const existingSlugs = new Set(items.map((i) => i.slug));
     const missing = SUBSCRIPTIONS_ITEMS
       .map((name, idx) => ({ name, slug: itemSlug(name), idx }))
-      .filter((s) => !existingSlugs.has(s.slug) && !existingSlugs.has(s.slug === "x-premium-plus" ? "x-premium-2" : s.slug));
+      .filter((s) => {
+        if (existingSlugs.has(s.slug)) return false;
+        if (s.slug === "x-premium-plus" && existingSlugs.has("x-premium-2")) return false;
+        if (s.slug === "prime-video" && existingSlugs.has("prime-video-subscription")) return false;
+        return true;
+      });
 
     if (missing.length > 0) {
       await prisma.catalogItem.createMany({
@@ -953,10 +959,25 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       });
     }
 
+    // Ensure Prime Video name is updated
+    items = items.map((item) => {
+      if (item.slug === "prime-video-subscription" || item.slug === "prime-video") {
+        return { ...item, name: "Prime Video" };
+      }
+      return item;
+    });
+
     // Sort in order of SUBSCRIPTIONS_ITEMS
+    const getSubIndex = (slug: string) => {
+      if (slug === "prime-video-subscription") return subSlugs.indexOf("prime-video");
+      const idx = subSlugs.indexOf(slug);
+      if (idx !== -1) return idx;
+      return subSlugs.indexOf(slug.replace("-2", "-plus"));
+    };
+
     items.sort((a, b) => {
-      const idxA = subSlugs.indexOf(a.slug) !== -1 ? subSlugs.indexOf(a.slug) : subSlugs.indexOf(a.slug.replace("-2", "-plus"));
-      const idxB = subSlugs.indexOf(b.slug) !== -1 ? subSlugs.indexOf(b.slug) : subSlugs.indexOf(b.slug.replace("-2", "-plus"));
+      const idxA = getSubIndex(a.slug);
+      const idxB = getSubIndex(b.slug);
       return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
     });
   }
