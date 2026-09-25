@@ -2237,14 +2237,46 @@ export const HOMEPAGE_CATEGORIES_GRID: HomepageCategoryTile[] = [
  * Desktop continues to use all 20 tiles in HOMEPAGE_CATEGORIES_GRID.
  */
 export const MOBILE_HOMEPAGE_CATEGORIES: HomepageCategoryTile[] = [
-  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Mobile")!,
-  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Fashion")!,
-  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Beauty")!,
-  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Bikes")!,
-  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Cars")!,
-  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Subscriptions")!,
-  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Gaming")!,
-  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Snacks")!,
+  {
+    name: "Mobile",
+    href: "/category/mobile",
+    image: "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-duo-finish-select-202609-nightsky_GEO_EMEA_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=L2FnUkNTRm43ZDRCREFsdzlaeThka1k5MDdKKy9LWVNaMytjbFNMOXdSUmFrOHlZZFNsN2Z2SDlnV2QySDNwVm4wZU5pVHVHdUU0SU0vdlcrc3NTQ1NzRVdVYUZMK2pnb0pYa1BITFFSbEwxcjBVRyswWG14bEI4WVZBcUIybEZCczNpeEs0Y3pqL3FIZXNMK2RzNTlR&traceId=1",
+  },
+  {
+    name: "Fashion",
+    href: "/category/fashion",
+    image: "https://i.pinimg.com/1200x/b5/62/91/b562919ee0fa1993cce4f043342fcd9c.jpg",
+  },
+  {
+    name: "Beauty",
+    href: "/category/beauty",
+    image: "https://i.pinimg.com/1200x/65/c3/f7/65c3f712255d6c59224ba70f3461f799.jpg",
+  },
+  {
+    name: "Bikes",
+    href: "/category/vehicles?sub=bikes",
+    image: "https://i.pinimg.com/736x/a4/6d/07/a46d07cce741e97a666cf51ecf5a1e81.jpg",
+  },
+  {
+    name: "Cars",
+    href: "/category/vehicles?sub=cars",
+    image: "https://i.pinimg.com/736x/0d/37/3a/0d373af47cb9c6c8607d7ac09af14ed9.jpg",
+  },
+  {
+    name: "Subscriptions",
+    href: "/category/subscriptions",
+    image: "https://i.pinimg.com/736x/f9/d1/43/f9d143e7063e913378925d3ffa0de5b4.jpg",
+  },
+  {
+    name: "Gaming",
+    href: "/category/electronics?sub=gaming",
+    image: "https://i.pinimg.com/1200x/a6/6c/36/a66c367c6cd24d35746c8a162e382a12.jpg",
+  },
+  {
+    name: "Snacks",
+    href: "/category/food?sub=snacks",
+    image: "https://i.pinimg.com/1200x/27/04/2b/27042b22fecb5612fd64e15eea285e69.jpg",
+  },
 ];
 
 /**
