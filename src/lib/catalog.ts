@@ -1703,3 +1703,40 @@ export function resolveWishlistItem(wishlistItem: {
     category: source?.category ?? wishlistItem.category ?? null,
   };
 }
+
+/**
+ * Organizes categories into standard Plugd order:
+ * Food -> Drinks -> Fashion -> Mobile -> Vehicles -> Beauty -> Entertainment -> Electronics -> Fitness -> Subscriptions -> Toys
+ */
+export function organizeCategories<T extends { slug: string }>(cats: T[]): T[] {
+  const list = [...cats];
+  // 1. Move Subscriptions after Fitness
+  const subIdx = list.findIndex((c) => c.slug === "subscriptions");
+  if (subIdx !== -1) {
+    const [subCat] = list.splice(subIdx, 1);
+    const fitIdx = list.findIndex((c) => c.slug === "fitness");
+    if (fitIdx !== -1) {
+      list.splice(fitIdx + 1, 0, subCat);
+    } else {
+      list.push(subCat);
+    }
+  }
+  // 2. Move Vehicles immediately AFTER Mobile and BEFORE Beauty
+  const vehIdx = list.findIndex((c) => c.slug === "vehicles");
+  if (vehIdx !== -1) {
+    const [vehCat] = list.splice(vehIdx, 1);
+    const mobIdx = list.findIndex((c) => c.slug === "mobile");
+    if (mobIdx !== -1) {
+      list.splice(mobIdx + 1, 0, vehCat);
+    } else {
+      const beauIdx = list.findIndex((c) => c.slug === "beauty");
+      if (beauIdx !== -1) {
+        list.splice(beauIdx, 0, vehCat);
+      } else {
+        list.push(vehCat);
+      }
+    }
+  }
+  return list;
+}
+

@@ -9,6 +9,7 @@ import { getSession } from "@/lib/auth";
 import { HOMEPAGE_CATEGORIES_GRID, getProductDisplayImage } from "@/lib/product-images";
 import prisma from "@/lib/prisma";
 import { searchCatalog } from "@/lib/search";
+import { organizeCategories } from "@/lib/catalog";
 
 export const dynamic = "force-dynamic";
 
@@ -150,6 +151,23 @@ const HOMEPAGE_SUBSCRIPTIONS_ITEMS_DEF = [
   { name: "Midjourney Subscription", slug: "midjourney-subscription" },
 ] as const;
 
+const HOMEPAGE_VEHICLES_ITEMS_DEF = [
+  { name: "Koenigsegg Jesko Absolut", slug: "koenigsegg-jesko-absolut" },
+  { name: "Bugatti Chiron Super Sport", slug: "bugatti-chiron-super-sport" },
+  { name: "McLaren F1", slug: "mclaren-f1" },
+  { name: "Kawasaki Ninja H2R", slug: "kawasaki-ninja-h2r" },
+  { name: "Pagani Huayra", slug: "pagani-huayra" },
+  { name: "Porsche 911 GT3 RS", slug: "porsche-911-gt3-rs" },
+  { name: "BMW S1000RR", slug: "bmw-s1000rr" },
+  { name: "Aston Martin Valkyrie", slug: "aston-martin-valkyrie" },
+  { name: "McLaren P1", slug: "mclaren-p1" },
+  { name: "Porsche 911", slug: "porsche-911" },
+  { name: "Tesla Cybertruck", slug: "tesla-cybertruck" },
+  { name: "Bugatti Centodieci", slug: "bugatti-centodieci" },
+  { name: "McLaren Solus GT", slug: "mclaren-solus-gt" },
+  { name: "Ducati Panigale V4R", slug: "ducati-panigale-v4r" },
+] as const;
+
 interface HomePageProps {
   searchParams?: Promise<{ q?: string }> | { q?: string };
 }
@@ -159,7 +177,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams?.q?.trim() || "";
 
-  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, mobileDbItems, beautyDbItems, entertainmentDbItems, subscriptionsDbItems, searchResults] = await Promise.all([
+  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, mobileDbItems, beautyDbItems, entertainmentDbItems, subscriptionsDbItems, vehiclesDbItems, searchResults] = await Promise.all([
     prisma.category.findMany({
       where: { active: true },
       include: {
@@ -233,6 +251,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         slug: {
           in: HOMEPAGE_SUBSCRIPTIONS_ITEMS_DEF.flatMap((s) => [s.slug, ("fallbackSlug" in s ? s.fallbackSlug : s.slug)]),
         },
+      },
+      include: { category: true },
+    }),
+    prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        category: { slug: "vehicles" },
+        slug: { in: HOMEPAGE_VEHICLES_ITEMS_DEF.map((v) => v.slug) },
       },
       include: { category: true },
     }),
@@ -316,28 +342,20 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     };
   }).filter((item): item is NonNullable<typeof item> => Boolean(item));
 
-  // Homepage shelves ordering: place Subscriptions section AFTER / BELOW Fitness
-  const shelfCategories = [...categories];
-  const subShelfIdx = shelfCategories.findIndex((c) => c.slug === "subscriptions");
-  if (subShelfIdx !== -1) {
-    const [subCat] = shelfCategories.splice(subShelfIdx, 1);
-    const fitShelfIdx = shelfCategories.findIndex((c) => c.slug === "fitness");
-    if (fitShelfIdx !== -1) {
-      shelfCategories.splice(fitShelfIdx + 1, 0, subCat);
-    } else {
-      shelfCategories.push(subCat);
-    }
-  }
+  const vehiclesMap = new Map(vehiclesDbItems.map((item) => [item.slug, item]));
+  const vehiclesSectionItems = HOMEPAGE_VEHICLES_ITEMS_DEF.map((def) => {
+    const item = vehiclesMap.get(def.slug);
+    if (!item) return null;
+    return {
+      ...item,
+      displayName: def.name,
+    };
+  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
 
-  // Swap Subscriptions and Vehicles positions ONLY for the homepage category navigation row
-  const navCategories = [...categories];
-  const subIdx = navCategories.findIndex((c) => c.slug === "subscriptions");
-  const vehIdx = navCategories.findIndex((c) => c.slug === "vehicles");
-  if (subIdx !== -1 && vehIdx !== -1) {
-    const temp = navCategories[subIdx];
-    navCategories[subIdx] = navCategories[vehIdx];
-    navCategories[vehIdx] = temp;
-  }
+  // Homepage shelves & category nav ordering:
+  // Mobile -> Vehicles -> Beauty, Subscriptions after Fitness
+  const shelfCategories = organizeCategories(categories);
+  const navCategories = organizeCategories(categories);
 
   return (
     <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
@@ -870,6 +888,30 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
                           image={getProductDisplayImage("subscriptions", item.slug, item.image) || item.image}
+                          name={item.displayName || item.name}
+                          category={category.name}
+                          priority={idx < 6}
+                          action={
+                            <AddToWishlistButton
+                              catalogItemId={item.id}
+                              isLoggedIn={Boolean(session?.userId)}
+                              floating
+                            />
+                          }
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : category.slug === "vehicles" ? (
+                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                    {vehiclesSectionItems.map((item, idx) => (
+                      <div
+                        key={item.id}
+                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                      >
+                        <CatalogCard
+                          href={`/catalog/${item.slug}`}
+                          image={getProductDisplayImage("vehicles", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
                           priority={idx < 6}

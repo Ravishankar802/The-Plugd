@@ -6,7 +6,7 @@ import AddToWishlistButton from "@/components/AddToWishlistButton";
 import CatalogCard from "@/components/CatalogCard";
 import CategoryIcon from "@/components/CategoryIcon";
 import { getSession } from "@/lib/auth";
-import { getCachedCategories, getCachedCategoryItems } from "@/lib/catalog";
+import { getCachedCategories, getCachedCategoryItems, organizeCategories } from "@/lib/catalog";
 import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import {
@@ -48,15 +48,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     notFound();
   }
 
-  // Swap Subscriptions and Vehicles positions ONLY for the category navigation row to match homepage
-  const navCategories = [...allCategories];
-  const subIdx = navCategories.findIndex((c) => c.slug === "subscriptions");
-  const vehIdx = navCategories.findIndex((c) => c.slug === "vehicles");
-  if (subIdx !== -1 && vehIdx !== -1) {
-    const temp = navCategories[subIdx];
-    navCategories[subIdx] = navCategories[vehIdx];
-    navCategories[vehIdx] = temp;
-  }
+  // Category navigation row matches homepage order (Mobile -> Vehicles -> Beauty, Subscriptions after Fitness)
+  const navCategories = organizeCategories(allCategories);
 
   const query = resolvedSearchParams?.q?.trim() || "";
   const subParam = resolvedSearchParams?.sub?.trim() || "";

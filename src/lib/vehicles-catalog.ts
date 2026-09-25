@@ -583,6 +583,7 @@ export const CARS_DATA = [
 ] as const;
 
 export const VEHICLES_TOP_PICKS_NAMES = [
+  "McLaren F1",
   "Bugatti Chiron Super Sport",
   "Koenigsegg Jesko Absolut",
   "Pagani Huayra",
