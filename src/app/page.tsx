@@ -581,19 +581,19 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 <div className="absolute top-1 left-0 sm:left-1 w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl -rotate-6 transition-transform duration-300">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://i.pinimg.com/1200x/b3/10/af/b310af7e19bf2640b445c69a1b3ea53b.jpg"
+                    src="https://i.pinimg.com/736x/1d/b7/3a/1db73af7fa1f70108a001ecb68ba1cfe.jpg"
                     alt="Cars"
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
                 </div>
 
-                {/* 2. Mobile & Electronics (iPhone Duo) */}
+                {/* 2. Mobile & Electronics (iPhone 18 Pro Max) */}
                 <div className="absolute top-0 right-0 sm:right-1 w-16 h-18 sm:w-22 sm:h-24 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl rotate-6 z-10 transition-transform duration-300">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-duo-finish-select-202609-nightsky_GEO_EMEA_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=L2FnUkNTRm43ZDRCREFsdzlaeThka1k5MDdKKy9LWVNaMytjbFNMOXdSUmFrOHlZZFNsN2Z2SDlnV2QySDNwVm4wZU5pVHVHdUU0SU0vdlcrc3NTQ1NzRVdVYUZMK2pnb0pYa1BITFFSbEwxcjBVRyswWG14bEI4WVZBcUIybEZCczNpeEs0Y3pqL3FIZXNMK2RzNTlR&traceId=1"
-                    alt="iPhone Duo"
+                    src="https://cdn.jiostore.online/v2/jmd-asp/jdprod/wrkr/products/pictures/item/free/original/apple/494833068/0/JKcV2mJVTP-1ZHtiM-g_-Apple-iPhone-18-Pro-Max-Black-494833068-i-1.jpg"
+                    alt="iPhone"
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
