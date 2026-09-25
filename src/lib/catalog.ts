@@ -131,7 +131,7 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     name: "Fashion",
     slug: "fashion",
     icon: "Shirt",
-    description: "Style, staples, and statement pieces creators love sharing.",
+    description: "Style, staples, and statement pieces people love sharing.",
     items: getFullFashionCatalog().map((item) => ({
       name: item.name,
       imageUrl: item.imageUrl,
@@ -190,7 +190,7 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     name: "Subscriptions",
     slug: "subscriptions",
     icon: "BadgeCheck",
-    description: "Digital memberships and recurring tools creators actually use.",
+    description: "Digital memberships and recurring tools people actually use.",
     items: SUBSCRIPTIONS_ITEMS.map((name, idx) => ({
       name,
       imageUrl: getSubscriptionsProductImage(itemSlug(name)) || DEFAULT_SUBSCRIPTIONS_IMAGE,
@@ -204,7 +204,7 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
     name: "Electronics",
     slug: "electronics",
     icon: "Laptop",
-    description: "Tech upgrades, creator gear, and hardware essentials worth wishing for.",
+    description: "Tech upgrades, pro gear, and hardware essentials worth wishing for.",
     items: getFullElectronicsCatalog().map((item) => ({
       name: item.name,
       imageUrl: item.imageUrl,

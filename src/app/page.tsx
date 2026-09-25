@@ -519,15 +519,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-8 text-white shadow-md border border-zinc-800/60 flex flex-col justify-between h-full">
               <div className="absolute right-0 top-0 -mr-16 -mt-16 h-48 w-48 rounded-full bg-orange-500/20 blur-3xl pointer-events-none" />
               <div className="relative z-10 space-y-2">
-                <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/15 border border-orange-500/30 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-orange-400">
-                  <Sparkles className="h-3 w-3" />
-                  India&apos;s Creator Wishlist Platform
-                </div>
                 <h1 className="text-2xl font-black tracking-tight md:text-3xl text-white">
-                  Get what you actually want.
+                  WANT IT? LIST IT.
                 </h1>
                 <p className="text-xs md:text-sm text-zinc-300 leading-relaxed max-w-lg">
-                  Create a public wishlist of items, upgrades, and dreams. Share it with your supporters so they can back what truly matters to you.
+                  Put everything you want in one place. Share your wishlist with the people who matter and let them help you get there.
                 </p>
               </div>
 
@@ -536,7 +532,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   href={session?.userId ? "/dashboard/items" : "/login"}
                   className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-orange-500 px-5 text-xs md:text-sm font-bold text-black shadow-lg shadow-orange-500/20 transition hover:bg-orange-400 active:scale-98"
                 >
-                  <span>{session?.userId ? "Go to My Wishlist" : "Create My Wishlist"}</span>
+                  <span>CREATE MY WISHLIST</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -546,15 +542,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-900 via-zinc-900/90 to-zinc-950 p-6 md:p-8 text-white shadow-md border border-zinc-800/80 flex flex-col justify-between h-full">
               <div className="absolute right-0 bottom-0 -mr-12 -mb-12 h-40 w-40 rounded-full bg-orange-500/15 blur-2xl pointer-events-none" />
               <div className="relative z-10 space-y-2">
-                <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/10 border border-orange-500/25 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-orange-400">
-                  <Plus className="h-3 w-3" />
-                  Personalized Items
-                </div>
                 <h2 className="text-2xl font-black tracking-tight md:text-3xl text-white">
-                  Can&apos;t find it? Add your own.
+                  NOT ON THE LIST? ADD IT.
                 </h2>
                 <p className="text-xs md:text-sm text-zinc-300 leading-relaxed max-w-md">
-                  Have a specific upgrade, course, or dream gear in mind? Create a custom wishlist item with your own name, image, and link.
+                  Create your own wishlist item with a name, image, and link - anything you want can have a place on your wishlist.
                 </p>
               </div>
 
@@ -563,8 +555,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
                   className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl border border-zinc-700/90 bg-black px-5 text-xs md:text-sm font-bold text-white shadow-md shadow-black/40 transition hover:border-orange-500 hover:bg-zinc-950 hover:text-orange-400 active:scale-98"
                 >
-                  <Plus className="h-4 w-4 text-orange-400" />
-                  <span>Create Custom Item</span>
+                  <span>ADD YOUR OWN ITEM</span>
+                  <ArrowRight className="h-4 w-4 text-orange-400" />
                 </Link>
               </div>
             </div>
@@ -794,7 +786,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   </div>
                   <div>
                     <h2 className="text-lg md:text-xl font-black tracking-tight text-zinc-950">Trending</h2>
-                    <p className="text-[11px] text-zinc-500 hidden sm:block">Most popular items added to creator wishlists</p>
+                    <p className="text-[11px] text-zinc-500 hidden sm:block">Most popular items added to wishlists</p>
                   </div>
                 </div>
               </div>

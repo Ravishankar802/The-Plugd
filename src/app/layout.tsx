@@ -26,10 +26,10 @@ const baloo2 = Baloo_2({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://theplugd.com"),
-  title: "Plugd — Creator Support Platform",
+  title: "Plugd — Wishlist Platform",
   description: "Create a page. Add the things you're working toward. Share it with your people. 0% Plugd platform fee.",
   openGraph: {
-    title: "Plugd — Creator Support Platform",
+    title: "Plugd — Wishlist Platform",
     description: "Create a page. Add the things you're working toward. Share it with your people. 0% Plugd platform fee.",
     url: "https://theplugd.com",
     siteName: "Plugd",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Plugd — Creator Support Platform",
+    title: "Plugd — Wishlist Platform",
     description: "Create a page. Add the things you're working toward. Share it with your people. 0% Plugd platform fee.",
     images: ["https://theplugd.com/og-v9.png"],
   },

@@ -155,7 +155,7 @@ function LoginContent() {
             </h1>
             <p className="text-zinc-400 text-center mb-8 text-sm">
               {step === 1 
-                ? "Enter your email to log in or create a new creator account." 
+                ? "Enter your email to log in or create a new account." 
                 : `We sent a 4-digit verification code to ${email}`}
             </p>
 

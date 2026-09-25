@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: CatalogItemPageProps) {
 
   return {
     title: `${item.name} — Wishlist Catalog | Plugd`,
-    description: `${item.name} on Plugd Creator Wishlist Catalog`,
+    description: `${item.name} on Plugd Wishlist Catalog`,
   };
 }
 

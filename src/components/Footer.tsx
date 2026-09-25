@@ -39,7 +39,7 @@ export default function Footer({ showBorder = true }: FooterProps) {
               Vehicles
             </Link>
             <Link href="/login" className="text-zinc-600 hover:text-zinc-950 transition-colors">
-              Creator Login
+              Login
             </Link>
             <Link href="/terms-of-service" className="text-zinc-600 hover:text-zinc-950 transition-colors">
               Terms

@@ -256,7 +256,7 @@ export default function PublicProfileClient({ creator, categories, items }: Publ
             <h2 className="text-lg md:text-xl font-black text-white">
               {creator.displayName}&apos;s Wishlist
             </h2>
-            <p className="text-xs text-zinc-400">Things this creator would love audience help getting.</p>
+            <p className="text-xs text-zinc-400">Things they would love help getting.</p>
           </div>
           <span className="text-xs text-zinc-500 font-bold">
             {visibleItems.length} {visibleItems.length === 1 ? "item" : "items"}

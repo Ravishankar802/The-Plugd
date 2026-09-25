@@ -140,7 +140,7 @@ export default function FashionCatalogView({
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-orange-500/15 border border-orange-500/30 px-3.5 py-1 text-xs font-black uppercase tracking-widest text-orange-400">
               <Shirt className="h-3.5 w-3.5" />
-              Creator Catalog • Fashion & Wardrobe
+              Catalog • Fashion & Wardrobe
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
