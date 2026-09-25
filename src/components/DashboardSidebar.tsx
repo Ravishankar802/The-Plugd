@@ -20,7 +20,7 @@ export default function DashboardSidebar({ email, username }: DashboardSidebarPr
   const navItems = [
     { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
     { name: "My Wishlist", href: "/dashboard/items", icon: Heart },
-    { name: "Appearance", href: "/dashboard/appearance", icon: Palette },
+    { name: "Edit Profile", href: "/profile", icon: Palette },
   ];
 
   const logout = async () => {

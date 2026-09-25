@@ -1,11 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { Copy, Share2, Check, Sparkles, ExternalLink, Star } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useState, useMemo } from "react";
+import {
+  Share2,
+  Check,
+  Sparkles,
+  Edit3,
+  HeartHandshake,
+  Plus,
+} from "lucide-react";
+import CatalogCard from "@/components/CatalogCard";
+import AddToWishlistButton from "@/components/AddToWishlistButton";
 import CategoryIcon from "@/components/CategoryIcon";
-import SupportSoonModal from "@/components/SupportSoonModal";
+import PaymentSupportModal from "@/components/PaymentSupportModal";
 
 interface CategoryShape {
   id: string;
@@ -24,6 +32,7 @@ interface WishlistShape {
   personalNote?: string | null;
   isFeatured: boolean;
   categoryId?: string | null;
+  catalogItemId?: string | null;
   category?: CategoryShape | null;
   externalUrl?: string | null;
 }
@@ -34,92 +43,91 @@ interface PublicProfileClientProps {
     displayName: string;
     bio?: string | null;
     avatarUrl?: string | null;
-    bannerUrl?: string | null;
-    accentColor?: string | null;
-    instagramUrl?: string | null;
-    xUrl?: string | null;
-    youtubeUrl?: string | null;
-    tiktokUrl?: string | null;
+    paymentLink?: string | null;
+    paymentQr?: string | null;
   };
   categories: CategoryShape[];
   items: WishlistShape[];
+  isOwner?: boolean;
+  isViewerLoggedIn?: boolean;
 }
 
-export default function PublicProfileClient({ creator, categories, items }: PublicProfileClientProps) {
+export default function PublicProfileClient({
+  creator,
+  categories,
+  items,
+  isOwner = false,
+  isViewerLoggedIn = false,
+}: PublicProfileClientProps) {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [supportItem, setSupportItem] = useState<WishlistShape | null>(null);
+  const [supportModalOpen, setSupportModalOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const visibleItems = useMemo(() => {
     if (selectedCategory === "all") return items;
     return items.filter(
-      (item) => item.category?.id === selectedCategory || item.categoryId === selectedCategory,
+      (item) => item.category?.id === selectedCategory || item.categoryId === selectedCategory
     );
   }, [items, selectedCategory]);
 
-  const accentColor = creator.accentColor || "#f97316";
-
   const handleShare = async () => {
+    if (typeof window === "undefined") return;
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `${creator.displayName}'s Wishlist`,
-          text: creator.bio || `${creator.displayName}'s Wishlist on Plugd`,
+          title: `${creator.displayName}'s Wishlist on Plugd`,
+          text: creator.bio || `Check out ${creator.displayName}'s wishlist on Plugd!`,
           url: window.location.href,
         });
         return;
       } catch {}
     }
 
-    await navigator.clipboard.writeText(window.location.href);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {}
   };
 
-  return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
-      {/* Creator Header Banner */}
-      <div className="relative border-b border-white/10 bg-zinc-950 overflow-hidden">
-        {/* Background Banner */}
-        <div className="absolute inset-0">
-          {creator.bannerUrl ? (
-            <img
-              src={creator.bannerUrl}
-              alt={creator.displayName}
-              className="h-full w-full object-cover opacity-35"
-            />
-          ) : (
-            <div className="h-full w-full bg-[radial-gradient(circle_at_top_left,_rgba(249,115,22,0.35),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(255,255,255,0.06),_transparent_30%),linear-gradient(180deg,_#18181b,_#09090b)]" />
-          )}
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent" />
+  const hasPayment = Boolean(creator.paymentLink || creator.paymentQr);
 
-        <div className="relative mx-auto max-w-6xl px-4 pb-8 pt-6 md:px-6 md:pb-12 md:pt-10">
-          {/* Top Brand Bar */}
-          <div className="flex items-center justify-between">
+  return (
+    <div className="min-h-screen bg-white text-zinc-900 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
+      {/* Top Profile Header Area */}
+      <header className="border-b border-zinc-200/80 bg-zinc-50/70 pt-8 pb-10 px-4 md:px-6">
+        <div className="mx-auto max-w-4xl flex flex-col items-center text-center">
+          {/* Top navigation row: back to plugd */}
+          <div className="w-full flex items-center justify-between pb-6">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-widest text-zinc-300 backdrop-blur transition hover:bg-white/10 hover:text-white"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-zinc-500 hover:text-orange-600 transition"
             >
-              <div className="flex h-4 w-4 items-center justify-center rounded-md bg-orange-500 text-black font-black text-[9px]">
-                P
-              </div>
-              <span>Powered by Plugd</span>
+              <span className="font-logo text-xl font-extrabold text-orange-500">Plugd</span>
             </Link>
 
             <button
               type="button"
               onClick={handleShare}
-              className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3.5 text-xs font-bold text-white backdrop-blur transition hover:bg-white/10"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3 py-1.5 text-xs font-bold text-zinc-700 shadow-xs hover:border-zinc-300 hover:bg-zinc-50 transition"
             >
-              {copied ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Share2 className="h-3.5 w-3.5" />}
-              <span>{copied ? "Copied" : "Share"}</span>
+              {copied ? (
+                <>
+                  <Check className="h-3.5 w-3.5 text-emerald-600" />
+                  <span>Link Copied</span>
+                </>
+              ) : (
+                <>
+                  <Share2 className="h-3.5 w-3.5 text-zinc-500" />
+                  <span>Share</span>
+                </>
+              )}
             </button>
           </div>
 
-          {/* Profile Bio & Avatar */}
-          <div className="mt-8 flex flex-col sm:flex-row sm:items-end gap-5">
-            <div className="h-20 w-20 md:h-24 md:w-24 shrink-0 overflow-hidden rounded-3xl border-2 border-white/15 bg-zinc-900 shadow-2xl">
+          {/* Profile Picture */}
+          <div className="relative mb-3.5">
+            <div className="h-24 w-24 sm:h-28 sm:w-28 rounded-full border-4 border-white bg-zinc-100 shadow-md overflow-hidden flex items-center justify-center">
               {creator.avatarUrl ? (
                 <img
                   src={creator.avatarUrl}
@@ -127,84 +135,78 @@ export default function PublicProfileClient({ creator, categories, items }: Publ
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <div className="flex h-full w-full items-center justify-center text-3xl font-black uppercase text-white bg-zinc-850">
-                  {creator.displayName.slice(0, 1)}
-                </div>
-              )}
-            </div>
-
-            <div className="space-y-1.5 max-w-2xl">
-              <div className="flex flex-wrap items-center gap-2.5">
-                <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white">
-                  {creator.displayName}
-                </h1>
-                <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-semibold text-zinc-300">
-                  @{creator.username}
+                <span className="text-3xl sm:text-4xl font-black text-orange-500">
+                  {creator.displayName.slice(0, 1).toUpperCase()}
                 </span>
-              </div>
-
-              {creator.bio ? (
-                <p className="text-xs md:text-sm text-zinc-300 leading-relaxed max-w-xl">
-                  {creator.bio}
-                </p>
-              ) : null}
-
-              {/* Social Links */}
-              {(creator.instagramUrl || creator.xUrl || creator.youtubeUrl || creator.tiktokUrl) && (
-                <div className="flex items-center gap-3 pt-2">
-                  {creator.instagramUrl && (
-                    <a
-                      href={creator.instagramUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-xs text-zinc-400 hover:text-orange-400 transition"
-                      title="Instagram"
-                    >
-                      Instagram
-                    </a>
-                  )}
-                  {creator.xUrl && (
-                    <a
-                      href={creator.xUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-xs text-zinc-400 hover:text-orange-400 transition"
-                      title="X / Twitter"
-                    >
-                      X (Twitter)
-                    </a>
-                  )}
-                  {creator.youtubeUrl && (
-                    <a
-                      href={creator.youtubeUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-xs text-zinc-400 hover:text-orange-400 transition"
-                      title="YouTube"
-                    >
-                      YouTube
-                    </a>
-                  )}
-                  {creator.tiktokUrl && (
-                    <a
-                      href={creator.tiktokUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-xs text-zinc-400 hover:text-orange-400 transition"
-                      title="TikTok"
-                    >
-                      TikTok
-                    </a>
-                  )}
-                </div>
               )}
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Main Wishlist Body */}
-      <main className="mx-auto max-w-6xl flex-1 px-4 py-6 md:px-6 md:py-10 w-full space-y-6">
+          {/* Display Name & @username */}
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-zinc-900">
+            {creator.displayName}
+          </h1>
+          <p className="mt-1 text-xs sm:text-sm font-semibold text-zinc-500">
+            @{creator.username}
+          </p>
+
+          {/* Bio text */}
+          {creator.bio && (
+            <p className="mt-2.5 max-w-md text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal">
+              {creator.bio}
+            </p>
+          )}
+
+          {/* Action Buttons: Support / Pay & Edit Profile */}
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5">
+            {hasPayment && (
+              <button
+                type="button"
+                onClick={() => setSupportModalOpen(true)}
+                className="h-10 px-5 rounded-2xl bg-orange-500 text-black font-extrabold text-xs shadow-xs hover:bg-orange-600 transition flex items-center gap-1.5 cursor-pointer"
+              >
+                <HeartHandshake className="h-4 w-4" />
+                <span>Support / Pay</span>
+              </button>
+            )}
+
+            {isOwner && (
+              <Link
+                href="/profile"
+                className="h-10 px-4 rounded-2xl border border-zinc-200 bg-white text-zinc-800 font-bold text-xs shadow-xs hover:border-zinc-300 hover:bg-zinc-50 transition flex items-center gap-1.5"
+              >
+                <Edit3 className="h-3.5 w-3.5 text-zinc-500" />
+                <span>Edit Profile</span>
+              </Link>
+            )}
+          </div>
+        </div>
+      </header>
+
+      {/* Wishlist Section */}
+      <main className="mx-auto max-w-6xl flex-1 px-4 py-8 md:px-6 w-full space-y-6">
+        {/* Wishlist Heading & Count */}
+        <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
+          <div className="flex items-center gap-2">
+            <h2 className="text-lg md:text-xl font-black text-zinc-900">
+              Wishlist
+            </h2>
+            <span className="rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-bold text-orange-700">
+              {items.length}
+            </span>
+          </div>
+
+          {isOwner && (
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1 text-xs font-bold text-orange-600 hover:text-orange-700 transition"
+            >
+              <Plus className="h-3.5 w-3.5" />
+              <span>Add more items</span>
+            </Link>
+          )}
+        </div>
+
         {/* Category Pills Filter */}
         {categories.length > 0 && (
           <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
@@ -213,10 +215,9 @@ export default function PublicProfileClient({ creator, categories, items }: Publ
               onClick={() => setSelectedCategory("all")}
               className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold transition ${
                 selectedCategory === "all"
-                  ? "text-black"
-                  : "border border-white/10 bg-zinc-900/90 text-zinc-300 hover:text-white hover:bg-zinc-800"
+                  ? "bg-orange-500 text-black shadow-xs"
+                  : "border border-zinc-200 bg-white text-zinc-600 hover:border-zinc-300 hover:bg-zinc-50"
               }`}
-              style={selectedCategory === "all" ? { backgroundColor: accentColor } : undefined}
             >
               <Sparkles className="h-3.5 w-3.5" />
               <span>All ({items.length})</span>
@@ -225,7 +226,7 @@ export default function PublicProfileClient({ creator, categories, items }: Publ
             {categories.map((category) => {
               const active = selectedCategory === category.id;
               const count = items.filter(
-                (i) => i.category?.id === category.id || i.categoryId === category.id,
+                (i) => i.category?.id === category.id || i.categoryId === category.id
               ).length;
 
               return (
@@ -235,10 +236,9 @@ export default function PublicProfileClient({ creator, categories, items }: Publ
                   onClick={() => setSelectedCategory(category.id)}
                   className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold transition ${
                     active
-                      ? "text-black"
-                      : "border border-white/10 bg-zinc-900/90 text-zinc-300 hover:text-white hover:bg-zinc-800"
+                      ? "bg-orange-500 text-black shadow-xs"
+                      : "border border-zinc-200 bg-white text-zinc-600 hover:border-zinc-300 hover:bg-zinc-50"
                   }`}
-                  style={active ? { backgroundColor: accentColor } : undefined}
                 >
                   <CategoryIcon name={category.icon} className="h-3.5 w-3.5" />
                   <span>
@@ -250,108 +250,75 @@ export default function PublicProfileClient({ creator, categories, items }: Publ
           </div>
         )}
 
-        {/* Wishlist Heading */}
-        <div className="flex items-center justify-between border-b border-white/10 pb-3">
-          <div>
-            <h2 className="text-lg md:text-xl font-black text-white">
-              {creator.displayName}&apos;s Wishlist
-            </h2>
-            <p className="text-xs text-zinc-400">Things they would love help getting.</p>
-          </div>
-          <span className="text-xs text-zinc-500 font-bold">
-            {visibleItems.length} {visibleItems.length === 1 ? "item" : "items"}
-          </span>
-        </div>
-
-        {/* Wishlist Items Grid */}
+        {/* Wishlist Items Grid using EXISTING CatalogCard */}
         {visibleItems.length > 0 ? (
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
             {visibleItems.map((item) => (
-              <article
+              <CatalogCard
                 key={item.id}
-                className="group flex flex-col justify-between overflow-hidden rounded-[24px] border border-white/10 bg-zinc-900/70 p-3 sm:p-3.5 transition hover:border-white/20 hover:bg-zinc-900"
-              >
-                <div>
-                  <Link
-                    href={`/@${creator.username}/${item.slug}`}
-                    className="block overflow-hidden rounded-2xl bg-zinc-950 relative"
-                  >
-                    {item.image ? (
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="aspect-square w-full object-cover transition duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <div className="aspect-square w-full bg-zinc-850 flex items-center justify-center text-zinc-600">
-                        <Sparkles className="h-8 w-8" />
-                      </div>
-                    )}
-
-                    {item.isFeatured ? (
-                      <span className="absolute top-2.5 right-2.5 rounded-full bg-black/70 backdrop-blur border border-orange-500/40 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-orange-400 flex items-center gap-1">
-                        <Star className="h-2.5 w-2.5 fill-orange-400" />
-                        Featured
-                      </span>
-                    ) : null}
-                  </Link>
-
-                  <div className="mt-3 space-y-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500">
-                      {item.category?.name || "Wishlist"}
-                    </span>
-                    <Link href={`/@${creator.username}/${item.slug}`} className="block">
-                      <h3 className="line-clamp-2 text-xs md:text-sm font-bold text-white transition hover:text-orange-400">
-                        {item.name}
-                      </h3>
-                    </Link>
-
-                    {item.personalNote ? (
-                      <p className="line-clamp-2 text-[11px] text-zinc-400 italic pt-1 leading-relaxed">
-                        &ldquo;{item.personalNote}&rdquo;
-                      </p>
-                    ) : null}
-                  </div>
-                </div>
-
-                <div className="mt-4 pt-2">
-                  <button
-                    type="button"
-                    onClick={() => setSupportItem(item)}
-                    className="h-10 w-full rounded-xl text-xs font-extrabold text-black transition hover:brightness-110 active:scale-98 shadow-md"
-                    style={{ backgroundColor: accentColor }}
-                  >
-                    Support this
-                  </button>
-                </div>
-              </article>
+                href={`/@${creator.username}/${item.slug}`}
+                image={item.image}
+                name={item.name}
+                category={item.category?.name || "Wishlist"}
+                action={
+                  <AddToWishlistButton
+                    catalogItemId={item.catalogItemId || item.slug}
+                    isLoggedIn={isViewerLoggedIn}
+                    compact
+                  />
+                }
+              />
             ))}
           </div>
         ) : (
-          <div className="rounded-3xl border border-dashed border-white/10 bg-zinc-900/40 p-10 text-center space-y-2">
-            <p className="text-sm font-bold text-zinc-300">No wishlist items in this category yet.</p>
-            <p className="text-xs text-zinc-500">Check back soon to see new items added by {creator.displayName}.</p>
+          <div className="rounded-3xl border border-dashed border-zinc-200 bg-zinc-50/50 p-12 text-center space-y-3">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
+              <Sparkles className="h-6 w-6" />
+            </div>
+            <h3 className="text-base font-bold text-zinc-900">
+              No wishlist items yet
+            </h3>
+            <p className="text-xs text-zinc-500 max-w-sm mx-auto">
+              {isOwner
+                ? "Browse the Plugd catalog to add items to your wishlist, or create custom items."
+                : `${creator.displayName} hasn't added any items to this wishlist yet.`}
+            </p>
+            {isOwner && (
+              <div className="pt-2">
+                <Link
+                  href="/"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-orange-500 px-4 py-2 text-xs font-extrabold text-black hover:bg-orange-600 transition"
+                >
+                  <Plus className="h-3.5 w-3.5" />
+                  <span>Explore Items to Wish For</span>
+                </Link>
+              </div>
+            )}
           </div>
         )}
       </main>
 
-      {/* Public Page Minimal Footer */}
-      <footer className="border-t border-white/10 py-6 text-center text-xs text-zinc-500 mt-auto">
+      {/* Public Profile Minimal Footer */}
+      <footer className="border-t border-zinc-100 py-6 text-center text-xs text-zinc-400 mt-auto">
         <div className="mx-auto max-w-6xl px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p>© {new Date().getFullYear()} {creator.displayName}&apos;s Wishlist</p>
-          <Link href="/" className="inline-flex items-center gap-1.5 text-zinc-400 hover:text-orange-400 transition font-bold">
-            <span>Create your own wishlist on Plugd</span>
-            <ExternalLink className="h-3 w-3" />
+          <p>© {new Date().getFullYear()} Plugd • {creator.displayName}&apos;s Wishlist</p>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1 text-zinc-500 hover:text-orange-600 transition font-bold"
+          >
+            <span>Create your own wishlist on Plugd →</span>
           </Link>
         </div>
       </footer>
 
-      {/* Temporary Support Coming Soon Modal */}
-      <SupportSoonModal
-        open={Boolean(supportItem)}
-        onClose={() => setSupportItem(null)}
+      {/* Support / Payment Modal */}
+      <PaymentSupportModal
+        open={supportModalOpen}
+        onClose={() => setSupportModalOpen(false)}
         creatorName={creator.displayName}
-        itemName={supportItem?.name || "this item"}
+        username={creator.username}
+        paymentLink={creator.paymentLink}
+        paymentQr={creator.paymentQr}
       />
     </div>
   );

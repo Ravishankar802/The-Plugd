@@ -21,6 +21,18 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/@:username',
+        destination: '/:username',
+      },
+      {
+        source: '/@:username/:itemSlug',
+        destination: '/:username/:itemSlug',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

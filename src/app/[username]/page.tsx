@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import PublicProfileClient from "@/components/PublicProfileClient";
 import { resolveWishlistItem } from "@/lib/catalog";
 import { getCreatorDisplayName } from "@/lib/creator";
+import { getSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -33,24 +34,27 @@ export async function generateMetadata({ params }: PublicProfilePageProps) {
     return { title: "Plugd" };
   }
 
-  const displayName = getCreatorDisplayName(user.creatorProfile, user.email.split("@")[0]);
+  const displayName = getCreatorDisplayName(user.creatorProfile, user.displayName || user.email.split("@")[0]);
 
   return {
-    title: `${displayName}'s Wishlist | Plugd`,
-    description: user.creatorProfile?.bio || `${displayName}'s Wishlist on Plugd`,
+    title: `${displayName} (@${username}) • Plugd Wishlist`,
+    description: user.bio || user.creatorProfile?.bio || `${displayName}'s Wishlist on Plugd`,
   };
 }
 
 export default async function PublicProfilePage({ params }: PublicProfilePageProps) {
-  const resolvedParams = await params;
+  const [resolvedParams, session] = await Promise.all([
+    params,
+    getSession(),
+  ]);
   const username = normalizeUsername(resolvedParams.username);
 
   if (!username) {
     notFound();
   }
 
-  const user = await prisma.user.findUnique({
-    where: { username },
+  const user = await prisma.user.findFirst({
+    where: { username: { equals: username, mode: "insensitive" } },
     include: {
       creatorProfile: true,
       wishlistItems: {
@@ -81,22 +85,22 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
     ).values(),
   );
 
+  const isOwner = session?.userId === user.id;
+
   return (
     <PublicProfileClient
       creator={{
         username: user.username || username,
-        displayName: getCreatorDisplayName(user.creatorProfile, user.email.split("@")[0]),
-        bio: user.creatorProfile?.bio,
-        avatarUrl: user.creatorProfile?.avatarUrl,
-        bannerUrl: user.creatorProfile?.bannerUrl,
-        accentColor: user.creatorProfile?.accentColor,
-        instagramUrl: user.creatorProfile?.instagramUrl,
-        xUrl: user.creatorProfile?.xUrl,
-        youtubeUrl: user.creatorProfile?.youtubeUrl,
-        tiktokUrl: user.creatorProfile?.tiktokUrl,
+        displayName: getCreatorDisplayName(user.creatorProfile, user.displayName || user.email.split("@")[0]),
+        bio: user.bio || user.creatorProfile?.bio,
+        avatarUrl: user.avatarUrl || user.creatorProfile?.avatarUrl,
+        paymentLink: user.paymentLink || user.creatorProfile?.paymentLink,
+        paymentQr: user.paymentQr || user.creatorProfile?.paymentQr,
       }}
       categories={categories}
       items={items}
+      isOwner={isOwner}
+      isViewerLoggedIn={Boolean(session?.userId)}
     />
   );
 }

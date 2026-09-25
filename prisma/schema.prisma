@@ -11,6 +11,12 @@ model User {
   id             String          @id @default(cuid())
   email          String          @unique
   username       String?         @unique
+  password       String?
+  displayName    String?
+  bio            String?
+  avatarUrl      String?
+  paymentLink    String?
+  paymentQr      String?
   createdAt      DateTime        @default(now())
   updatedAt      DateTime        @updatedAt
   creatorProfile CreatorProfile?
@@ -30,6 +36,8 @@ model CreatorProfile {
   xUrl         String?
   youtubeUrl   String?
   tiktokUrl    String?
+  paymentLink  String?
+  paymentQr    String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }

@@ -6,16 +6,18 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
   try {
-    // 1. Authenticate user
-    const session = await getSession();
-    if (!session || !session.email) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
-    // 2. Parse form data
+    // 1. Authenticate user if not uploading avatar or qr
     const formData = await req.formData();
     const file = formData.get("file") as File | null;
     const folder = (formData.get("folder") as string) || "misc";
+
+    const isPublicAllowed = folder === "avatars" || folder === "qr";
+    if (!isPublicAllowed) {
+      const session = await getSession();
+      if (!session || !session.email) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      }
+    }
 
     if (!file) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });

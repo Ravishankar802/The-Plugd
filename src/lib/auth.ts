@@ -30,3 +30,27 @@ export async function getSession() {
     return null;
   }
 }
+
+export async function createSession(userId: string, email: string, username?: string | null) {
+  const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+  const token = await encrypt({
+    userId,
+    email,
+    username: username || null,
+    expires,
+  });
+
+  const cookieStore = await cookies();
+  cookieStore.set("plugd-session", token, {
+    expires,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+  });
+}
+
+export async function clearSession() {
+  const cookieStore = await cookies();
+  cookieStore.delete("plugd-session");
+}
