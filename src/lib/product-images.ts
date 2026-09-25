@@ -2233,6 +2233,21 @@ export const HOMEPAGE_CATEGORIES_GRID: HomepageCategoryTile[] = [
 ];
 
 /**
+ * Mobile-specific 8 category tiles for the homepage, in exact specified order.
+ * Desktop continues to use all 20 tiles in HOMEPAGE_CATEGORIES_GRID.
+ */
+export const MOBILE_HOMEPAGE_CATEGORIES: HomepageCategoryTile[] = [
+  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Mobile")!,
+  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Fashion")!,
+  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Beauty")!,
+  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Bikes")!,
+  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Cars")!,
+  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Subscriptions")!,
+  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Gaming")!,
+  HOMEPAGE_CATEGORIES_GRID.find((c) => c.name === "Snacks")!,
+];
+
+/**
  * Universal product image resolver ensuring category listings and detail pages
  * always display the exact same authentic image.
  */

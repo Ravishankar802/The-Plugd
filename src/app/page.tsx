@@ -6,7 +6,7 @@ import AddToWishlistButton from "@/components/AddToWishlistButton";
 import CatalogCard from "@/components/CatalogCard";
 import CategoryIcon from "@/components/CategoryIcon";
 import { getSession } from "@/lib/auth";
-import { HOMEPAGE_CATEGORIES_GRID, getProductDisplayImage } from "@/lib/product-images";
+import { HOMEPAGE_CATEGORIES_GRID, MOBILE_HOMEPAGE_CATEGORIES, getProductDisplayImage } from "@/lib/product-images";
 import prisma from "@/lib/prisma";
 import { searchCatalog } from "@/lib/search";
 import { organizeCategories } from "@/lib/catalog";
@@ -875,7 +875,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     Wishlist Items ({searchResults.items.length})
                   </h3>
                 </div>
-                <div className="grid grid-cols-2 gap-2 sm:gap-3.5 md:gap-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
+                <div className="grid grid-cols-2 gap-x-2 gap-y-5 sm:gap-3.5 md:gap-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
                   {searchResults.items.map((item) => (
                     <CatalogCard
                       key={item.id}
@@ -919,17 +919,42 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
         {/* Discovery Sections / Shelves (Only if not in search mode) */}
         {!query && (
-          <div className="space-y-6 md:space-y-12">
-            {/* Dedicated Categories Grid (Zepto-style visual discovery: 8 tiles on mobile in 4 cols x 2 rows, 20 tiles on desktop) */}
+          <div className="space-y-8 md:space-y-12">
+            {/* Dedicated Categories Grid (Mobile: exactly 8 specified subcategories; Desktop: all 20 tiles) */}
             <section id="categories">
-              <div className="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-10 gap-2 sm:gap-3 md:gap-4">
-                {HOMEPAGE_CATEGORIES_GRID.map((item, idx) => (
+              {/* Mobile View: Exactly 8 subcategories (Mobile, Fashion, Beauty, Bikes, Cars, Subscriptions, Gaming, Snacks) */}
+              <div className="grid grid-cols-4 gap-2 md:hidden">
+                {MOBILE_HOMEPAGE_CATEGORIES.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`${idx >= 8 ? "hidden md:flex" : "flex"} group flex-col items-center text-center`}
+                    className="flex group flex-col items-center text-center"
                   >
-                    <div className="relative aspect-square w-full overflow-hidden rounded-xl md:rounded-2xl bg-zinc-100 border border-zinc-200/80 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:border-orange-500/50">
+                    <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-zinc-100 border border-zinc-200/80 shadow-sm transition-all duration-300">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <span className="mt-1.5 text-[10px] sm:text-xs font-semibold text-zinc-800 line-clamp-1 leading-tight">
+                      {item.name}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Desktop View: Exactly unchanged all 20 tiles in 10 cols x 2 rows */}
+              <div className="hidden md:grid md:grid-cols-5 lg:grid-cols-10 gap-3 sm:gap-4">
+                {HOMEPAGE_CATEGORIES_GRID.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="group flex flex-col items-center text-center"
+                  >
+                    <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-200/80 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:border-orange-500/50">
                       <img
                         src={item.image}
                         alt={item.name}
@@ -938,7 +963,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <span className="mt-1.5 md:mt-2 text-[10px] sm:text-xs font-semibold text-zinc-800 transition-colors group-hover:text-orange-600 line-clamp-1 md:line-clamp-2 leading-tight">
+                    <span className="mt-2 text-xs font-semibold text-zinc-800 transition-colors group-hover:text-orange-600 line-clamp-2 leading-tight">
                       {item.name}
                     </span>
                   </Link>
@@ -947,8 +972,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             </section>
 
             {/* 1. Trending Row */}
-            <section className="space-y-2.5 md:space-y-4">
-              <div className="flex items-end justify-between gap-4 border-b border-zinc-200/80 pb-2 md:pb-3">
+            <section className="space-y-3 md:space-y-4">
+              <div className="flex items-end justify-between gap-4 border-b border-zinc-200/80 pb-2.5 md:pb-3">
                 <div className="flex items-center gap-2">
                   <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600">
                     <Sparkles className="h-4 w-4" />
@@ -964,7 +989,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 {topPicksItems.map((item, idx) => (
                   <div
                     key={item.id}
-                    className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
+                    className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
                   >
                     <CatalogCard
                       href={`/catalog/${item.slug}`}
@@ -988,8 +1013,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
             {/* 2. Category Shelves */}
             {shelfCategories.map((category) => (
-              <section key={category.id} className="space-y-2.5 md:space-y-4">
-                <div className="flex items-center justify-between gap-4 border-b border-zinc-200/80 pb-2 md:pb-3">
+              <section key={category.id} className="space-y-3 md:space-y-4">
+                <div className="flex items-center justify-between gap-4 border-b border-zinc-200/80 pb-2.5 md:pb-3">
                   <div className="flex items-center gap-2.5">
                     <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-zinc-200/80 text-zinc-800">
                       <CategoryIcon name={category.icon} className="h-4 w-4" />
@@ -1020,7 +1045,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     {foodSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
+                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1045,7 +1070,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     {drinksSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
+                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1070,7 +1095,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     {fashionSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
+                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1095,7 +1120,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     {mobileSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
+                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1120,7 +1145,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     {beautySectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
+                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1145,7 +1170,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     {entertainmentSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
+                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1170,7 +1195,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     {subscriptionsSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
+                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1195,7 +1220,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     {vehiclesSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
+                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1220,7 +1245,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     {electronicsSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
+                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1245,7 +1270,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     {fitnessSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
+                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1270,7 +1295,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     {toysSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="w-[115px] sm:w-[145px] md:w-[170px] shrink-0"
+                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
@@ -1291,7 +1316,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     ))}
                   </div>
                 ) : (
-                  <div className="grid grid-cols-2 gap-2 sm:gap-3.5 md:gap-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
+                  <div className="grid grid-cols-2 gap-x-2 gap-y-5 sm:gap-3.5 md:gap-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
                     {category.catalogItems.map((item) => (
                       <CatalogCard
                         key={item.id}
