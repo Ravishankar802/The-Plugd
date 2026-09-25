@@ -708,6 +708,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                       image={item.image}
                       name={item.name}
                       category={item.categoryName}
+                      addedCount={item.addedCount}
                       action={
                         <AddToWishlistButton
                           catalogItemId={item.id}
@@ -795,6 +796,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                       image={getProductDisplayImage(item.category.slug, item.slug, item.image) || item.image}
                       name={item.name}
                       category={item.category.name}
+                      addedCount={item.addedCount}
                       priority={idx < 6}
                       action={
                         <AddToWishlistButton
@@ -850,6 +852,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                           image={getProductDisplayImage("food", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
+                          addedCount={item.addedCount}
                           priority={idx < 6}
                           action={
                             <AddToWishlistButton
@@ -874,6 +877,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                           image={getProductDisplayImage("drinks", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
+                          addedCount={item.addedCount}
                           priority={idx < 6}
                           action={
                             <AddToWishlistButton
@@ -898,6 +902,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                           image={getProductDisplayImage("fashion", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
+                          addedCount={item.addedCount}
                           priority={idx < 6}
                           action={
                             <AddToWishlistButton
@@ -922,6 +927,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                           image={getProductDisplayImage("mobile", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
+                          addedCount={item.addedCount}
                           priority={idx < 6}
                           action={
                             <AddToWishlistButton
@@ -946,6 +952,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                           image={getProductDisplayImage("beauty", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
+                          addedCount={item.addedCount}
                           priority={idx < 6}
                           action={
                             <AddToWishlistButton
@@ -970,6 +977,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                           image={getProductDisplayImage("entertainment", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
+                          addedCount={item.addedCount}
                           priority={idx < 6}
                           action={
                             <AddToWishlistButton
@@ -994,6 +1002,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                           image={getProductDisplayImage("subscriptions", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
+                          addedCount={item.addedCount}
                           priority={idx < 6}
                           action={
                             <AddToWishlistButton
@@ -1018,6 +1027,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                           image={getProductDisplayImage("vehicles", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
+                          addedCount={item.addedCount}
                           priority={idx < 6}
                           action={
                             <AddToWishlistButton
@@ -1042,6 +1052,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                           image={getProductDisplayImage("electronics", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
+                          addedCount={item.addedCount}
                           priority={idx < 6}
                           action={
                             <AddToWishlistButton
@@ -1066,6 +1077,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                           image={getProductDisplayImage("fitness", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
+                          addedCount={item.addedCount}
                           priority={idx < 6}
                           action={
                             <AddToWishlistButton
@@ -1090,6 +1102,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                           image={getProductDisplayImage("toys", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
+                          addedCount={item.addedCount}
                           priority={idx < 6}
                           action={
                             <AddToWishlistButton
@@ -1111,6 +1124,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         image={item.image}
                         name={item.name}
                         category={category.name}
+                        addedCount={item.addedCount}
                         action={
                           <AddToWishlistButton
                             catalogItemId={item.id}

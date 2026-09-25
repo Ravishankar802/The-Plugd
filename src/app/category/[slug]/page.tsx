@@ -881,6 +881,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                     image={item.image}
                     name={item.name}
                     category={itemCategoryLabel}
+                    addedCount={(item as any).addedCount}
                     priority={idx < 8}
                     action={
                       <AddToWishlistButton

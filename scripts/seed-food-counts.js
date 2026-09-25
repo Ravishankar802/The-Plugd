@@ -1,3 +1,260 @@
-// Seed scripts disabled: fake counts removed across Plugd.
-module.exports = {};
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
+const EXPECTED_SEEDS = [
+  { name: 'Biryani', count: 1200 },
+  { name: 'Idli', count: 180 },
+  { name: 'Dosa', count: 456 },
+  { name: 'Tandoori Chicken', count: 342 },
+  { name: 'Egg', count: 428 },
+  { name: 'South Indian Meals', count: 135 },
+  { name: 'Chicken Fried Rice', count: 234 },
+  { name: 'Mandi', count: 140 },
+  { name: 'Masala Dosa', count: 367 },
+  { name: 'Chicken Curry', count: 180 },
+  { name: 'Chicken', count: 249 },
+  { name: 'Grilled Chicken', count: 190 },
+  { name: 'Vada', count: 56 },
+  { name: 'Cake', count: 294 },
+  { name: 'Chilli Chicken', count: 89 },
+  { name: 'Chicken Biryani', count: 1800 },
+  { name: 'Fish', count: 189 },
+  { name: 'Mutton', count: 343 },
+  { name: 'Coffee', count: 2300 },
+  { name: 'Tea', count: 345 },
+  { name: 'Pizza', count: 1100 },
+  { name: 'Poha', count: 93 },
+  { name: 'Chicken Lollipop', count: 254 },
+  { name: 'Aloo Paratha', count: 124 },
+  { name: 'Burger', count: 1200 },
+  { name: 'Tiffin', count: 78 },
+  { name: 'Pongal', count: 63 },
+  { name: 'Egg Curry', count: 92 },
+  { name: 'Set Dosa', count: 58 },
+  { name: 'Shawarma', count: 1100 },
+  { name: 'Chole Bhature', count: 345 },
+  { name: 'Chicken Rolls', count: 452 },
+  { name: 'Sandwich', count: 346 },
+  { name: 'Pasta', count: 965 },
+  { name: 'Pulao', count: 45 },
+  { name: 'Fruit Bowl', count: 112 },
+  { name: 'Sambar', count: 22 },
+  { name: 'Maggi', count: 548 },
+  { name: 'Poori Sabzi', count: 139 },
+  { name: 'North Indian Meals', count: 346 },
+  { name: 'Paratha', count: 198 },
+  { name: 'Chicken Soup', count: 149 },
+  { name: 'Thali', count: 340 },
+  { name: 'Chicken Shawarma', count: 784 },
+  { name: 'Curd Rice', count: 95 },
+  { name: 'Omelette', count: 185 },
+  { name: 'Khichdi', count: 78 },
+  { name: 'Momos', count: 1300 },
+  { name: 'Appam', count: 143 },
+  { name: 'Puttu', count: 30 },
+  { name: 'Wings', count: 281 },
+  { name: 'Upma', count: 22 },
+  { name: 'Puliyogare', count: 18 },
+  { name: 'Parotta', count: 132 },
+  { name: 'Chicken Salad', count: 253 },
+  { name: 'Samosa', count: 583 },
+  { name: 'Paddu', count: 201 },
+  { name: 'Waffles', count: 213 },
+  { name: 'Noodles', count: 194 },
+  { name: 'Soup', count: 149 },
+  { name: 'Egg Roast', count: 83 },
+  { name: 'Rolls', count: 253 },
+  { name: 'Kara Bhaath', count: 12 },
+  { name: 'Dessert', count: 438 },
+  { name: 'Pancake', count: 302 },
+  { name: 'Non Veg Meal', count: 467 },
+  { name: 'Vada Pav', count: 643 },
+  { name: 'Juice', count: 132 },
+  { name: 'Shawaya', count: 165 },
+  { name: 'Mutton Curry', count: 236 },
+  { name: 'Fried Rice', count: 198 },
+  { name: 'Cold Coffee', count: 485 },
+  { name: 'Veg Meal', count: 124 },
+  { name: 'Pazham Pori', count: 183 },
+  { name: 'Boiled Egg', count: 302 },
+  { name: 'Chaat', count: 345 },
+  { name: 'Salad', count: 421 },
+  { name: 'Mushroom Biryani', count: 221 },
+  { name: 'Kebab', count: 548 },
+  { name: 'Idiyappam', count: 132 },
+  { name: 'Ice Cream', count: 1300 },
+  { name: 'Pav Bhaji', count: 932 },
+  { name: 'Neer Dosa', count: 129 },
+  { name: 'Dal Khichdi', count: 184 },
+  { name: 'Bread Omelette', count: 134 },
+  { name: 'Bowl', count: 346 },
+  { name: 'Paneer', count: 478 },
+  // 14 Ice Creams items
+  { name: 'Amul Chocolate Brownie Ice Cream Tub', count: 321 },
+  { name: 'Amul Choco Chip Chocolate Ice Cream Tub', count: 289 },
+  { name: 'Amul Fruit N Nut Fantasy Ice Cream Tub', count: 198 },
+  { name: 'Cream Pot Vanilla Tub', count: 125 },
+  { name: 'Baskin Robbins Mississippi Mud Ice Cream Tub', count: 431 },
+  { name: 'Magnum Chocolate Almond Ice Cream Stick', count: 243 },
+  { name: "Baskin Robbins Almond 'N' Caramel Ice Cream Stick", count: 129 },
+  { name: 'Cornetto Double Chocolate Cone', count: 143 },
+  { name: 'Havmor Dark Chocolate Ice Cream Cone', count: 365 },
+  { name: 'Hocol Hazelnut Mudslide Ice Cream Cone', count: 432 },
+  { name: 'Hoccol Hazelnut Mudslide Ice Cream Cone', count: 432 },
+  { name: 'OB & GOB Tiramisu & Fudge Ice Cream Sundae', count: 365 },
+  { name: 'OB & GOB Vanilla & Choco Brownie Ice Cream Sundae', count: 332 },
+  { name: 'Amul Kulhad Kulfi Ice Cream', count: 354 },
+  { name: 'Amul Kulhad Kulfie Ice Cream', count: 354 },
+  { name: 'Havmor Matka Kulfi', count: 329 },
+  // 23 Sweet Cravings items
+  { name: 'Rasmalai', count: 281 },
+  { name: 'Kaju Katli', count: 489 },
+  { name: 'Mysore Pak', count: 174 },
+  { name: 'Motichoor Laddu', count: 237 },
+  { name: 'Gulab Jamun', count: 342 },
+  { name: 'Besan Laddu', count: 228 },
+  { name: 'Soan Papdi', count: 129 },
+  { name: 'Rasgulla', count: 174 },
+  { name: 'Doodh Peda', count: 236 },
+  { name: 'Malai Peda', count: 175 },
+  { name: 'Dharwad Peda', count: 142 },
+  { name: 'Dairy Milk', count: 231 },
+  { name: 'Munch Max', count: 112 },
+  { name: 'Dairy Milk Shots', count: 89 },
+  { name: 'Nestle Kit-Kat', count: 246 },
+  { name: 'Amul Cocoa Dark Chocolate', count: 120 },
+  { name: 'Kinder Joy Blue', count: 239 },
+  { name: 'Kinder Joy Pink', count: 274 },
+  { name: 'Snickers', count: 158 },
+  { name: 'Bournville Dark Chocolate', count: 68 },
+  { name: 'Cadbury 5 Star', count: 93 },
+  { name: 'Dairy Milk Silk', count: 284 },
+  { name: 'Dairy Milk SIlk', count: 284 },
+  { name: 'Ferrero Rocher Premium Chocolate', count: 154 },
+  { name: 'Ferrero Rocher Premium Chocolates', count: 154 },
+  // 10 Biscuits items
+  { name: 'Malkist Cheese Crunchy Layered Crackers', count: 87 },
+  { name: 'Britannia Little Hearts', count: 31 },
+  { name: 'Hide & Seek Choco Chip Cookies', count: 45 },
+  { name: '50-50 Maska Chaska', count: 23 },
+  { name: '5050 Maska Chaska', count: 23 },
+  { name: 'Parle-G', count: 33 },
+  { name: 'Oreo', count: 41 },
+  { name: 'KrackJack', count: 12 },
+  { name: 'KrackJacK', count: 12 },
+  { name: 'Good Day', count: 18 },
+  { name: 'Dark Fantasy', count: 37 },
+  { name: 'Jim Jam', count: 34 },
+  // 20 Snacks items
+  { name: "Lay's Classic Salted", count: 56 },
+  { name: "Lay's Magic Masala", count: 43 },
+  { name: 'Kurkure Masala Munch', count: 32 },
+  { name: 'Bingo! Mad Angles', count: 21 },
+  { name: 'Uncle Chips', count: 12 },
+  { name: 'Uncle Chipps', count: 12 },
+  { name: 'Too Yumm! Multigrain Chips', count: 14 },
+  { name: "Haldiram's Aloo Bhujia", count: 49 },
+  { name: "Haldiram's Bhujia Sev", count: 28 },
+  { name: "Haldiram's Mixture", count: 14 },
+  { name: 'Masala Peanuts', count: 19 },
+  { name: 'Roasted Peanuts', count: 15 },
+  { name: 'Makhana', count: 9 },
+  { name: 'Banana Chips', count: 64 },
+  { name: 'Murukku', count: 14 },
+  { name: 'Chakli', count: 8 },
+  { name: 'Nippattu', count: 4 },
+  { name: 'Khakhra', count: 13 },
+  { name: 'Popcorn', count: 45 },
+  { name: 'Nachos', count: 59 },
+  { name: 'Cheese Balls', count: 39 },
+];
+
+const ALIASES = {
+  'kebab': 'kebabs',
+  'momos': 'momo',
+  'dessert': 'desserts',
+  'egg curry': 'egg-curries',
+  'mutton curry': 'mutton-curries',
+  'hocol hazelnut mudslide ice cream cone': 'hoccol-hazelnut-mudslide-ice-cream-cone',
+  'amul kulhad kulfi ice cream': 'amul-kulhad-kulfie-ice-cream',
+  'ferrero rocher premium chocolate': 'ferrero-rocher-premium-chocolates',
+  'ferrero rocher premium chocolates': 'ferrero-rocher-premium-chocolate',
+  '50-50 maska chaska': '5050-maska-chaska',
+  '5050 maska chaska': '50-50-maska-chaska',
+  'uncle chips': 'uncle-chipps',
+  'lays classic salted': 'lays-classic-salted',
+  'lays magic masala': 'lays-magic-masala',
+  'haldirams aloo bhujia': 'haldirams-aloo-bhujia',
+  'haldirams bhujia sev': 'haldirams-bhujia-sev',
+  'haldirams mixture': 'haldirams-mixture',
+};
+
+async function seedFoodCounts() {
+  try {
+    const foodCat = await prisma.category.findUnique({ where: { slug: 'food' } });
+    if (!foodCat) {
+      console.log('[SEED_FOOD_COUNTS] Food category not found, skipping.');
+      return;
+    }
+
+    const items = await prisma.catalogItem.findMany({
+      where: { categoryId: foodCat.id },
+    });
+
+    console.log(`[SEED_FOOD_COUNTS] Checking ${items.length} Food items...`);
+    let updated = 0;
+
+    for (const seed of EXPECTED_SEEDS) {
+      const directSlug = seed.name.toLowerCase().replace(/\s+/g, '-');
+      const aliasSlug = ALIASES[seed.name.toLowerCase()];
+
+      const matchedItems = items.filter(i =>
+        i.name.toLowerCase() === seed.name.toLowerCase() ||
+        i.slug.toLowerCase() === directSlug ||
+        i.slug.toLowerCase() === directSlug.replace(/'/g, '') ||
+        i.slug.toLowerCase() === directSlug.replace(/'s/g, 's') ||
+        (aliasSlug && (i.slug.toLowerCase() === aliasSlug || i.name.toLowerCase() === aliasSlug.replace('-', ' ')))
+      );
+
+      if (matchedItems.length === 0) {
+        const targetSlug = aliasSlug || directSlug.replace(/'s/g, 's').replace(/[^a-z0-9-]+/g, '');
+        const existing = await prisma.catalogItem.findUnique({ where: { slug: targetSlug } });
+        if (!existing) {
+          const created = await prisma.catalogItem.create({
+            data: {
+              name: seed.name,
+              slug: targetSlug,
+              categoryId: foodCat.id,
+              addedCount: seed.count,
+              active: true,
+            },
+          }).catch(() => null);
+          if (created) {
+            items.push(created);
+            updated++;
+          }
+        }
+      } else {
+        for (const item of matchedItems) {
+          // Only seed if item has no count or count is less than seed (idempotent, never resets higher counts)
+          if (item.addedCount == null || item.addedCount < seed.count) {
+            await prisma.catalogItem.update({
+              where: { id: item.id },
+              data: { addedCount: seed.count },
+            });
+            item.addedCount = seed.count;
+            updated++;
+          }
+        }
+      }
+    }
+
+    console.log(`[SEED_FOOD_COUNTS] Seeded/updated ${updated} Food counts.`);
+  } catch (error) {
+    console.error('[SEED_FOOD_COUNTS] Error:', error);
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
+seedFoodCounts();
