@@ -575,48 +575,48 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               {/* TWO-ZONE LAYOUT: RIGHT ZONE (Floating Wishlist Item Cluster) */}
               <div className="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 w-[36%] sm:w-[38%] max-w-[210px] h-[85%] max-h-[220px] pointer-events-none select-none flex items-center justify-center">
                 {/* Ambient glow behind cluster */}
-                <div className="absolute inset-0 rounded-full bg-orange-500/15 blur-2xl pointer-events-none" />
+                <div className="absolute inset-0 rounded-full bg-orange-500/20 blur-2xl pointer-events-none" />
 
-                {/* Thumbnail 1: Vehicles (Porsche 911) */}
-                <div className="absolute top-1 left-0 sm:left-1 w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl bg-zinc-900/95 border border-white/15 p-1 shadow-2xl -rotate-6 transition-transform duration-300">
+                {/* 1. Cars */}
+                <div className="absolute top-1 left-0 sm:left-1 w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl -rotate-6 transition-transform duration-300">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://i.pinimg.com/736x/af/f7/db/aff7dbc0a04399330fc0435ef26277cb.jpg"
-                    alt="Vehicle"
-                    className="h-full w-full object-cover rounded-lg sm:rounded-xl"
+                    src="https://i.pinimg.com/1200x/b3/10/af/b310af7e19bf2640b445c69a1b3ea53b.jpg"
+                    alt="Cars"
+                    className="h-full w-full object-cover"
                     loading="lazy"
                   />
                 </div>
 
-                {/* Thumbnail 2: Mobile (iPhone) */}
-                <div className="absolute top-0 right-0 sm:right-1 w-16 h-18 sm:w-22 sm:h-24 rounded-xl sm:rounded-2xl bg-zinc-900/95 border border-orange-500/30 p-1 shadow-2xl rotate-6 z-10 transition-transform duration-300">
+                {/* 2. Mobile & Electronics (iPhone Duo) */}
+                <div className="absolute top-0 right-0 sm:right-1 w-16 h-18 sm:w-22 sm:h-24 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl rotate-6 z-10 transition-transform duration-300">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRt-Py_mtnnO9Wx2oMpAm_6MlBM8Ts8Y5l4GHL_ZZiFA&s=10"
-                    alt="Mobile"
-                    className="h-full w-full object-cover rounded-lg sm:rounded-xl"
+                    src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-duo-finish-select-202609-nightsky_GEO_EMEA_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=L2FnUkNTRm43ZDRCREFsdzlaeThka1k5MDdKKy9LWVNaMytjbFNMOXdSUmFrOHlZZFNsN2Z2SDlnV2QySDNwVm4wZU5pVHVHdUU0SU0vdlcrc3NTQ1NzRVdVYUZMK2pnb0pYa1BITFFSbEwxcjBVRyswWG14bEI4WVZBcUIybEZCczNpeEs0Y3pqL3FIZXNMK2RzNTlR&traceId=1"
+                    alt="iPhone Duo"
+                    className="h-full w-full object-cover"
                     loading="lazy"
                   />
                 </div>
 
-                {/* Thumbnail 3: Coffee / Food */}
-                <div className="absolute bottom-0 left-2 sm:left-4 w-12 h-12 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-zinc-900/95 border border-white/15 p-1 shadow-xl -rotate-3 transition-transform duration-300">
+                {/* 3. Beauty & Fashion */}
+                <div className="absolute bottom-0 left-2 sm:left-4 w-12 h-12 sm:w-16 sm:h-16 rounded-xl overflow-hidden shadow-xl -rotate-3 transition-transform duration-300">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://www.nestleprofessional.co.uk/sites/default/files/styles/np_article_small/public/2025-08/cup-of-coffee.jpg?h=943238f6&itok=zph-mbOb"
-                    alt="Coffee"
-                    className="h-full w-full object-cover rounded-md sm:rounded-lg"
+                    src="https://i.pinimg.com/736x/6d/21/97/6d219705c3d59fb597946eef227f943a.jpg"
+                    alt="Beauty & Fashion"
+                    className="h-full w-full object-cover"
                     loading="lazy"
                   />
                 </div>
 
-                {/* Thumbnail 4: Fashion (Air Jordan) */}
-                <div className="absolute bottom-1 right-2 sm:right-4 w-14 h-14 sm:w-18 sm:h-18 rounded-xl sm:rounded-2xl bg-zinc-900/95 border border-white/20 p-1 shadow-2xl rotate-12 z-20 transition-transform duration-300">
+                {/* 4. Fourth image */}
+                <div className="absolute bottom-1 right-2 sm:right-4 w-14 h-14 sm:w-18 sm:h-18 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl rotate-12 z-20 transition-transform duration-300">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://limitededt.in/cdn/shop/files/DZ5485-201-1.jpg?v=1782997568&width=2048"
-                    alt="Sneaker"
-                    className="h-full w-full object-cover rounded-lg sm:rounded-xl"
+                    src="https://i.pinimg.com/1200x/e0/a9/04/e0a904a8d099516a10831fb427457e6a.jpg"
+                    alt="Wishlist Item"
+                    className="h-full w-full object-cover"
                     loading="lazy"
                   />
                 </div>
@@ -638,10 +638,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     <span>CUSTOM WISHLIST</span>
                   </div>
 
-                  {/* Main focal content: ∞ ITEMS TO WISH FOR */}
+                  {/* Main focal content: Unlimited ITEMS TO WISH FOR */}
                   <div>
-                    <div className="text-4xl sm:text-5xl font-black tracking-tight leading-none text-white drop-shadow-sm flex items-center">
-                      <span>∞</span>
+                    <div className="text-3xl sm:text-4xl md:text-4xl font-black tracking-tight leading-none text-white drop-shadow-sm flex items-center">
+                      <span>Unlimited</span>
                     </div>
                     <p className="mt-1.5 text-[11px] sm:text-xs font-black tracking-widest text-zinc-300 uppercase">
                       ITEMS TO WISH FOR
@@ -682,53 +682,48 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               {/* TWO-ZONE LAYOUT: RIGHT ZONE (Unlimited / Custom Possibilities) */}
               <div className="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 w-[36%] sm:w-[38%] max-w-[210px] h-[85%] max-h-[220px] pointer-events-none select-none flex items-center justify-center">
                 {/* Ambient glow behind cluster */}
-                <div className="absolute inset-0 rounded-full bg-emerald-500/15 blur-2xl pointer-events-none" />
-
-                {/* Central prominent "+" symbol badge */}
-                <div className="relative z-20 flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-emerald-500/20 border-2 border-emerald-400/80 shadow-xl shadow-emerald-950/60 backdrop-blur-md">
-                  <Plus className="h-6 w-6 sm:h-8 sm:w-8 text-emerald-400 stroke-[2.5]" />
-                </div>
+                <div className="absolute inset-0 rounded-full bg-emerald-500/20 blur-2xl pointer-events-none" />
 
                 {/* Custom Item 1: Camera (Electronics) */}
-                <div className="absolute top-1 left-0 sm:left-1 w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-zinc-900/95 border border-emerald-500/30 p-1 shadow-2xl -rotate-6 transition-transform duration-300">
+                <div className="absolute top-1 left-0 sm:left-1 w-14 h-14 sm:w-18 sm:h-18 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl -rotate-6 transition-transform duration-300">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQreXW9PhcBbJfJu_355JjJaudDHbOCeU9O6qpZLsu8mNeNyoMx1VRlA7W4&s=10"
                     alt="Custom camera"
-                    className="h-full w-full object-cover rounded-lg"
+                    className="h-full w-full object-cover brightness-[1.05] contrast-[1.05]"
                     loading="lazy"
                   />
                 </div>
 
                 {/* Custom Item 2: Laptop (Tech) */}
-                <div className="absolute top-0 right-0 sm:right-1 w-14 h-14 sm:w-18 sm:h-18 rounded-xl bg-zinc-900/95 border border-white/15 p-1 shadow-2xl rotate-6 transition-transform duration-300">
+                <div className="absolute top-0 right-0 sm:right-1 w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl rotate-6 z-10 transition-transform duration-300">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgRdG_AlB3AL1ikG4LCKqSyyqGu77kaIxVupZhXUaBKhpIQN_L105A6wI&s=10"
                     alt="Custom laptop"
-                    className="h-full w-full object-cover rounded-lg"
+                    className="h-full w-full object-cover brightness-[1.05] contrast-[1.05]"
                     loading="lazy"
                   />
                 </div>
 
                 {/* Custom Item 3: Pizza (Food craving) */}
-                <div className="absolute bottom-0 left-1 sm:left-3 w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-zinc-900/95 border border-white/15 p-1 shadow-xl -rotate-3 transition-transform duration-300">
+                <div className="absolute bottom-0 left-2 sm:left-4 w-12 h-12 sm:w-16 sm:h-16 rounded-xl overflow-hidden shadow-xl -rotate-3 transition-transform duration-300">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Pizza-3007395.jpg/1280px-Pizza-3007395.jpg"
                     alt="Custom food"
-                    className="h-full w-full object-cover rounded-lg"
+                    className="h-full w-full object-cover brightness-[1.05] contrast-[1.05]"
                     loading="lazy"
                   />
                 </div>
 
                 {/* Custom Item 4: Titanium Watch (Gear) */}
-                <div className="absolute bottom-1 right-1 sm:right-3 w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-zinc-900/95 border border-emerald-500/25 p-1 shadow-2xl rotate-12 transition-transform duration-300">
+                <div className="absolute bottom-1 right-2 sm:right-4 w-14 h-14 sm:w-18 sm:h-18 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl rotate-12 z-20 transition-transform duration-300">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="https://www.apple.com/newsroom/images/2024/09/apple-watch-ultra-2-now-available-in-black-titanium/article/Apple-Watch-Ultra-2-Alpine-Loop-240909_inline.jpg.large.jpg"
                     alt="Custom watch"
-                    className="h-full w-full object-cover rounded-lg"
+                    className="h-full w-full object-cover brightness-[1.05] contrast-[1.05]"
                     loading="lazy"
                   />
                 </div>
