@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, ChevronRight, Sparkles, Heart } from "lucide-react";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import AddToWishlistButton from "@/components/AddToWishlistButton";
 import CategoryIcon from "@/components/CategoryIcon";
 import { getSession } from "@/lib/auth";
@@ -124,8 +123,6 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

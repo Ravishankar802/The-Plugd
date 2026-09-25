@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ChevronRight, ArrowLeft, Star, Sparkles, Plus } from "lucide-react";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import AddToWishlistButton from "@/components/AddToWishlistButton";
 import CatalogCard from "@/components/CatalogCard";
 import CategoryIcon from "@/components/CategoryIcon";
@@ -914,8 +913,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           </section>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }
