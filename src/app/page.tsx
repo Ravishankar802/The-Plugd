@@ -517,118 +517,221 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           <section className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 items-stretch">
             {/* Board 1: Catalog Experience */}
             <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-8 text-white shadow-xl border border-zinc-800/80 flex flex-col justify-between h-full group">
-              {/* Ambient colorful glow layers */}
-              <div className="absolute right-0 top-0 -mr-16 -mt-16 h-56 w-56 rounded-full bg-orange-500/20 blur-3xl pointer-events-none" />
-              <div className="absolute left-1/3 bottom-0 -mb-20 h-44 w-44 rounded-full bg-rose-500/10 blur-2xl pointer-events-none" />
-              
-              {/* Subtle decorative geometry */}
-              <div className="absolute -right-8 -bottom-8 w-44 h-44 rounded-full border border-orange-500/10 pointer-events-none" />
-              <div className="absolute -right-16 -bottom-16 w-60 h-60 rounded-full border border-white/[0.04] pointer-events-none" />
+              {/* Subtle dark-to-warm-orange gradient/glow */}
+              <div className="absolute right-0 top-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-orange-500/20 blur-3xl pointer-events-none" />
+              <div className="absolute right-12 bottom-0 h-44 w-44 rounded-full bg-orange-600/10 blur-2xl pointer-events-none" />
 
-              <div className="relative z-10 space-y-4">
-                {/* Small top label */}
-                <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/15 border border-orange-500/30 px-3 py-1 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-orange-400">
-                  <Sparkles className="h-3 w-3 text-orange-400" />
-                  <span>ALL NEW PLUGD EXPERIENCE</span>
+              {/* TWO-ZONE LAYOUT: LEFT ZONE */}
+              <div className="relative z-10 max-w-[62%] sm:max-w-[58%] md:max-w-[56%] flex flex-col justify-between h-full space-y-5">
+                <div className="space-y-3">
+                  {/* Small top label */}
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/15 border border-orange-500/30 px-3 py-1 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-orange-400">
+                    <Sparkles className="h-3 w-3 text-orange-400" />
+                    <span>ALL NEW PLUGD EXPERIENCE</span>
+                  </div>
+
+                  {/* Main focal content: 1,000+ ITEMS TO WISH FOR */}
+                  <div>
+                    <div className="text-3xl sm:text-4xl md:text-4xl font-black tracking-tight leading-none text-white drop-shadow-sm flex items-baseline gap-0.5">
+                      <span>1,000</span>
+                      <span className="text-orange-500 font-extrabold">+</span>
+                    </div>
+                    <p className="mt-1.5 text-[11px] sm:text-xs font-black tracking-widest text-zinc-300 uppercase">
+                      ITEMS TO WISH FOR
+                    </p>
+                  </div>
+
+                  {/* Compact visual flow: ＋ ADD  →  ↗ SHARE  →  ✦ GET */}
+                  <div className="pt-1 flex flex-wrap items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px]">
+                    <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
+                      <Plus className="h-3 w-3 text-orange-400" />
+                      ADD
+                    </span>
+                    <span className="text-zinc-500 font-bold select-none text-[10px]">→</span>
+                    <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
+                      <ArrowUpRight className="h-3 w-3 text-orange-400" />
+                      SHARE
+                    </span>
+                    <span className="text-zinc-500 font-bold select-none text-[10px]">→</span>
+                    <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
+                      <Sparkles className="h-3 w-3 text-amber-400" />
+                      GET
+                    </span>
+                  </div>
                 </div>
 
-                {/* Main focal content: 1,000+ ITEMS TO WISH FOR */}
-                <div className="pt-1">
-                  <div className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none text-white drop-shadow-sm flex items-baseline gap-1">
-                    <span>1,000</span>
-                    <span className="text-orange-500 font-extrabold">+</span>
-                  </div>
-                  <p className="mt-2 text-xs sm:text-sm font-black tracking-widest text-zinc-300 uppercase">
-                    ITEMS TO WISH FOR
-                  </p>
-                </div>
-
-                {/* Compact icon/text row: ♡ WISH  ↗ SHARE  ✦ GET */}
-                <div className="pt-2 flex flex-wrap items-center gap-1.5 sm:gap-2">
-                  <div className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] border border-white/10 px-2.5 py-1 text-[11px] sm:text-xs font-bold text-zinc-200 backdrop-blur-sm shadow-sm">
-                    <Heart className="h-3.5 w-3.5 text-rose-400 fill-rose-500/20" />
-                    <span>WISH</span>
-                  </div>
-                  <span className="text-zinc-600 text-xs font-bold select-none">→</span>
-                  <div className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] border border-white/10 px-2.5 py-1 text-[11px] sm:text-xs font-bold text-zinc-200 backdrop-blur-sm shadow-sm">
-                    <ArrowUpRight className="h-3.5 w-3.5 text-orange-400" />
-                    <span>SHARE</span>
-                  </div>
-                  <span className="text-zinc-600 text-xs font-bold select-none">→</span>
-                  <div className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] border border-white/10 px-2.5 py-1 text-[11px] sm:text-xs font-bold text-zinc-200 backdrop-blur-sm shadow-sm">
-                    <Sparkles className="h-3.5 w-3.5 text-amber-400" />
-                    <span>GET</span>
-                  </div>
+                {/* Primary CTA */}
+                <div className="pt-2">
+                  <Link
+                    href={session?.userId ? "/dashboard/items" : "/login"}
+                    className="inline-flex h-10 sm:h-11 items-center justify-center gap-2 rounded-2xl bg-orange-500 px-5 text-xs sm:text-sm font-bold uppercase tracking-wider text-black shadow-lg shadow-orange-500/25 transition hover:bg-orange-400 active:scale-98"
+                  >
+                    <span>CREATE MY WISHLIST</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </div>
               </div>
 
-              {/* Primary CTA */}
-              <div className="relative z-10 mt-7 pt-1 flex items-center">
-                <Link
-                  href={session?.userId ? "/dashboard/items" : "/login"}
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-orange-500 px-5 sm:px-6 text-xs md:text-sm font-bold uppercase tracking-wider text-black shadow-lg shadow-orange-500/25 transition hover:bg-orange-400 active:scale-98"
-                >
-                  <span>CREATE MY WISHLIST</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+              {/* TWO-ZONE LAYOUT: RIGHT ZONE (Floating Wishlist Item Cluster) */}
+              <div className="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 w-[36%] sm:w-[38%] max-w-[210px] h-[85%] max-h-[220px] pointer-events-none select-none flex items-center justify-center">
+                {/* Ambient glow behind cluster */}
+                <div className="absolute inset-0 rounded-full bg-orange-500/15 blur-2xl pointer-events-none" />
+
+                {/* Thumbnail 1: Vehicles (Porsche 911) */}
+                <div className="absolute top-1 left-0 sm:left-1 w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl bg-zinc-900/95 border border-white/15 p-1 shadow-2xl -rotate-6 transition-transform duration-300">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://i.pinimg.com/736x/af/f7/db/aff7dbc0a04399330fc0435ef26277cb.jpg"
+                    alt="Vehicle"
+                    className="h-full w-full object-cover rounded-lg sm:rounded-xl"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Thumbnail 2: Mobile (iPhone) */}
+                <div className="absolute top-0 right-0 sm:right-1 w-16 h-18 sm:w-22 sm:h-24 rounded-xl sm:rounded-2xl bg-zinc-900/95 border border-orange-500/30 p-1 shadow-2xl rotate-6 z-10 transition-transform duration-300">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRt-Py_mtnnO9Wx2oMpAm_6MlBM8Ts8Y5l4GHL_ZZiFA&s=10"
+                    alt="Mobile"
+                    className="h-full w-full object-cover rounded-lg sm:rounded-xl"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Thumbnail 3: Coffee / Food */}
+                <div className="absolute bottom-0 left-2 sm:left-4 w-12 h-12 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-zinc-900/95 border border-white/15 p-1 shadow-xl -rotate-3 transition-transform duration-300">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://www.nestleprofessional.co.uk/sites/default/files/styles/np_article_small/public/2025-08/cup-of-coffee.jpg?h=943238f6&itok=zph-mbOb"
+                    alt="Coffee"
+                    className="h-full w-full object-cover rounded-md sm:rounded-lg"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Thumbnail 4: Fashion (Air Jordan) */}
+                <div className="absolute bottom-1 right-2 sm:right-4 w-14 h-14 sm:w-18 sm:h-18 rounded-xl sm:rounded-2xl bg-zinc-900/95 border border-white/20 p-1 shadow-2xl rotate-12 z-20 transition-transform duration-300">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://limitededt.in/cdn/shop/files/DZ5485-201-1.jpg?v=1782997568&width=2048"
+                    alt="Sneaker"
+                    className="h-full w-full object-cover rounded-lg sm:rounded-xl"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
 
             {/* Board 2: Custom Wishlist */}
-            <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-950 via-zinc-900 to-indigo-950/40 p-6 md:p-8 text-white shadow-xl border border-zinc-800/80 flex flex-col justify-between h-full group">
-              {/* Ambient colorful glow layers */}
-              <div className="absolute right-0 bottom-0 -mr-12 -mb-12 h-56 w-56 rounded-full bg-violet-500/20 blur-3xl pointer-events-none" />
-              <div className="absolute left-1/3 top-0 -mt-16 h-44 w-44 rounded-full bg-orange-500/10 blur-2xl pointer-events-none" />
-              
-              {/* Subtle decorative geometry */}
-              <div className="absolute -right-8 -top-8 w-44 h-44 rounded-full border border-violet-500/15 pointer-events-none" />
-              <div className="absolute -right-16 -top-16 w-60 h-60 rounded-full border border-white/[0.04] pointer-events-none" />
+            <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-950 via-zinc-900 to-emerald-950/30 p-6 md:p-8 text-white shadow-xl border border-zinc-800/80 flex flex-col justify-between h-full group">
+              {/* Subtle dark-to-Plugd-green gradient/glow */}
+              <div className="absolute right-0 bottom-0 -mr-16 -mb-16 h-64 w-64 rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
+              <div className="absolute right-12 top-0 h-44 w-44 rounded-full bg-green-500/10 blur-2xl pointer-events-none" />
 
-              <div className="relative z-10 space-y-4">
-                {/* Small top label */}
-                <div className="inline-flex items-center gap-1.5 rounded-full bg-violet-500/15 border border-violet-500/30 px-3 py-1 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-violet-300">
-                  <Plus className="h-3 w-3 text-violet-400" />
-                  <span>CUSTOM WISHLIST</span>
+              {/* TWO-ZONE LAYOUT: LEFT ZONE */}
+              <div className="relative z-10 max-w-[62%] sm:max-w-[58%] md:max-w-[56%] flex flex-col justify-between h-full space-y-5">
+                <div className="space-y-3">
+                  {/* Small top label */}
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-3 py-1 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-emerald-400">
+                    <Plus className="h-3 w-3 text-emerald-400" />
+                    <span>CUSTOM WISHLIST</span>
+                  </div>
+
+                  {/* Main focal content: ∞ ITEMS TO WISH FOR */}
+                  <div>
+                    <div className="text-4xl sm:text-5xl font-black tracking-tight leading-none text-white drop-shadow-sm flex items-center">
+                      <span>∞</span>
+                    </div>
+                    <p className="mt-1.5 text-[11px] sm:text-xs font-black tracking-widest text-zinc-300 uppercase">
+                      ITEMS TO WISH FOR
+                    </p>
+                  </div>
+
+                  {/* Compact visual flow: ＋ ADD  →  ↗ SHARE  →  ✦ GET */}
+                  <div className="pt-1 flex flex-wrap items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px]">
+                    <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
+                      <Plus className="h-3 w-3 text-emerald-400" />
+                      ADD
+                    </span>
+                    <span className="text-zinc-500 font-bold select-none text-[10px]">→</span>
+                    <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
+                      <ArrowUpRight className="h-3 w-3 text-emerald-400" />
+                      SHARE
+                    </span>
+                    <span className="text-zinc-500 font-bold select-none text-[10px]">→</span>
+                    <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
+                      <Sparkles className="h-3 w-3 text-emerald-400" />
+                      GET
+                    </span>
+                  </div>
                 </div>
 
-                {/* Main focal content: ∞ ITEMS TO WISH FOR */}
-                <div className="pt-1">
-                  <div className="text-6xl sm:text-7xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none text-white drop-shadow-sm flex items-center">
-                    <span>∞</span>
-                  </div>
-                  <p className="mt-2 text-xs sm:text-sm font-black tracking-widest text-zinc-300 uppercase">
-                    ITEMS TO WISH FOR
-                  </p>
-                </div>
-
-                {/* Compact icon/text row: ＋ ADD  ↗ SHARE  ✦ GET */}
-                <div className="pt-2 flex flex-wrap items-center gap-1.5 sm:gap-2">
-                  <div className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] border border-white/10 px-2.5 py-1 text-[11px] sm:text-xs font-bold text-zinc-200 backdrop-blur-sm shadow-sm">
-                    <Plus className="h-3.5 w-3.5 text-orange-400" />
-                    <span>ADD</span>
-                  </div>
-                  <span className="text-zinc-600 text-xs font-bold select-none">→</span>
-                  <div className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] border border-white/10 px-2.5 py-1 text-[11px] sm:text-xs font-bold text-zinc-200 backdrop-blur-sm shadow-sm">
-                    <ArrowUpRight className="h-3.5 w-3.5 text-violet-400" />
-                    <span>SHARE</span>
-                  </div>
-                  <span className="text-zinc-600 text-xs font-bold select-none">→</span>
-                  <div className="inline-flex items-center gap-1.5 rounded-xl bg-white/[0.06] border border-white/10 px-2.5 py-1 text-[11px] sm:text-xs font-bold text-zinc-200 backdrop-blur-sm shadow-sm">
-                    <Sparkles className="h-3.5 w-3.5 text-emerald-400" />
-                    <span>GET</span>
-                  </div>
+                {/* Primary CTA */}
+                <div className="pt-2">
+                  <Link
+                    href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
+                    className="inline-flex h-10 sm:h-11 items-center justify-center gap-2 rounded-2xl border border-emerald-500/40 bg-zinc-950 px-5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-lg shadow-black/40 transition hover:border-emerald-400 hover:bg-black hover:text-emerald-300 active:scale-98"
+                  >
+                    <span>ADD YOUR OWN ITEM</span>
+                    <ArrowRight className="h-4 w-4 text-emerald-400" />
+                  </Link>
                 </div>
               </div>
 
-              {/* Primary CTA */}
-              <div className="relative z-10 mt-7 pt-1 flex items-center">
-                <Link
-                  href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl border border-zinc-700/90 bg-zinc-950 px-5 sm:px-6 text-xs md:text-sm font-bold uppercase tracking-wider text-white shadow-lg shadow-black/40 transition hover:border-orange-500 hover:bg-black hover:text-orange-400 active:scale-98"
-                >
-                  <span>ADD YOUR OWN ITEM</span>
-                  <ArrowRight className="h-4 w-4 text-orange-400" />
-                </Link>
+              {/* TWO-ZONE LAYOUT: RIGHT ZONE (Unlimited / Custom Possibilities) */}
+              <div className="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 w-[36%] sm:w-[38%] max-w-[210px] h-[85%] max-h-[220px] pointer-events-none select-none flex items-center justify-center">
+                {/* Ambient glow behind cluster */}
+                <div className="absolute inset-0 rounded-full bg-emerald-500/15 blur-2xl pointer-events-none" />
+
+                {/* Central prominent "+" symbol badge */}
+                <div className="relative z-20 flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-emerald-500/20 border-2 border-emerald-400/80 shadow-xl shadow-emerald-950/60 backdrop-blur-md">
+                  <Plus className="h-6 w-6 sm:h-8 sm:w-8 text-emerald-400 stroke-[2.5]" />
+                </div>
+
+                {/* Custom Item 1: Camera (Electronics) */}
+                <div className="absolute top-1 left-0 sm:left-1 w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-zinc-900/95 border border-emerald-500/30 p-1 shadow-2xl -rotate-6 transition-transform duration-300">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQreXW9PhcBbJfJu_355JjJaudDHbOCeU9O6qpZLsu8mNeNyoMx1VRlA7W4&s=10"
+                    alt="Custom camera"
+                    className="h-full w-full object-cover rounded-lg"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Custom Item 2: Laptop (Tech) */}
+                <div className="absolute top-0 right-0 sm:right-1 w-14 h-14 sm:w-18 sm:h-18 rounded-xl bg-zinc-900/95 border border-white/15 p-1 shadow-2xl rotate-6 transition-transform duration-300">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgRdG_AlB3AL1ikG4LCKqSyyqGu77kaIxVupZhXUaBKhpIQN_L105A6wI&s=10"
+                    alt="Custom laptop"
+                    className="h-full w-full object-cover rounded-lg"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Custom Item 3: Pizza (Food craving) */}
+                <div className="absolute bottom-0 left-1 sm:left-3 w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-zinc-900/95 border border-white/15 p-1 shadow-xl -rotate-3 transition-transform duration-300">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Pizza-3007395.jpg/1280px-Pizza-3007395.jpg"
+                    alt="Custom food"
+                    className="h-full w-full object-cover rounded-lg"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Custom Item 4: Titanium Watch (Gear) */}
+                <div className="absolute bottom-1 right-1 sm:right-3 w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-zinc-900/95 border border-emerald-500/25 p-1 shadow-2xl rotate-12 transition-transform duration-300">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://www.apple.com/newsroom/images/2024/09/apple-watch-ultra-2-now-available-in-black-titanium/article/Apple-Watch-Ultra-2-Alpine-Loop-240909_inline.jpg.large.jpg"
+                    alt="Custom watch"
+                    className="h-full w-full object-cover rounded-lg"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
           </section>
