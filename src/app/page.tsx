@@ -975,27 +975,32 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <div className="block md:hidden">
               <Link
                 href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
-                className="group relative flex items-center justify-between gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 px-3.5 py-3 text-white border border-zinc-800/80 shadow-md transition active:scale-[0.99]"
+                className="group relative flex items-center justify-between gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 px-3.5 py-2.5 sm:py-3 text-white border border-orange-500/25 shadow-md transition active:scale-[0.99]"
               >
-                {/* Ambient green accent glow (matching Custom Wishlist block) */}
-                <div className="absolute right-0 top-0 -mr-6 -mt-6 h-28 w-28 rounded-full bg-emerald-500/20 blur-2xl pointer-events-none" />
-                <div className="absolute left-1/4 bottom-0 h-14 w-20 rounded-full bg-emerald-600/10 blur-xl pointer-events-none" />
+                {/* Ambient Plugd orange glow */}
+                <div className="absolute right-0 top-0 -mr-6 -mt-6 h-28 w-28 rounded-full bg-orange-500/15 blur-2xl pointer-events-none" />
+                <div className="absolute left-1/4 bottom-0 h-14 w-20 rounded-full bg-orange-600/10 blur-xl pointer-events-none" />
 
-                {/* Left zone: Icon + "CAN'T FIND IT? ADD IT." */}
-                <div className="relative z-10 min-w-0 flex items-center gap-2">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400">
+                {/* Left zone: Icon + Intentional 2-line "CAN'T FIND IT? / ADD IT." */}
+                <div className="relative z-10 min-w-0 flex items-center gap-2.5">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-orange-500/15 border border-orange-500/30 text-orange-400">
                     <Plus className="h-4 w-4" />
                   </div>
-                  <p className="text-xs sm:text-[13px] font-black tracking-tight text-white leading-tight">
-                    CAN&apos;T FIND IT? ADD IT.
-                  </p>
+                  <div className="flex flex-col leading-tight">
+                    <span className="text-[11px] sm:text-xs font-bold tracking-tight text-white whitespace-nowrap">
+                      CAN&apos;T FIND IT?
+                    </span>
+                    <span className="text-[11px] sm:text-xs font-black tracking-tight text-orange-400 whitespace-nowrap">
+                      ADD IT.
+                    </span>
+                  </div>
                 </div>
 
-                {/* Right zone: "Add your own item →" */}
+                {/* Right zone: Supporting action "Add your own item →" */}
                 <div className="relative z-10 shrink-0">
-                  <span className="inline-flex items-center gap-1 rounded-xl bg-white/[0.08] border border-emerald-500/40 px-2.5 py-1 text-[11px] font-bold text-white shadow-xs group-hover:bg-emerald-500 group-hover:text-black group-hover:border-emerald-400 transition-colors">
+                  <span className="inline-flex items-center gap-1 rounded-xl bg-white/[0.06] border border-orange-500/30 px-2.5 py-1 text-[11px] font-semibold text-zinc-200 shadow-xs group-hover:bg-orange-500 group-hover:text-black group-hover:border-orange-400 transition-colors">
                     <span>Add your own item</span>
-                    <span className="text-emerald-400 group-hover:text-black transition-colors">→</span>
+                    <span className="text-orange-400 group-hover:text-black transition-colors font-bold">→</span>
                   </span>
                 </div>
               </Link>
