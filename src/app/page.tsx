@@ -36,6 +36,24 @@ const HOMEPAGE_TOP_PICKS_SLUGS = [
   "gym-membership",
 ] as const;
 
+const HOMEPAGE_FOOD_ITEMS_DEF = [
+  { name: "Biryani", slug: "biryani" },
+  { name: "Pizza", slug: "pizza" },
+  { name: "Shawarma", slug: "shawarma" },
+  { name: "Burger", slug: "burger" },
+  { name: "Pasta", slug: "pasta" },
+  { name: "Sandwich", slug: "sandwich" },
+  { name: "Momos", slug: "momo", fallbackSlug: "momos" },
+  { name: "Vada Pav", slug: "vada-pav" },
+  { name: "Tandoori Chicken", slug: "tandoori-chicken" },
+  { name: "Mutton", slug: "mutton" },
+  { name: "Waffles", slug: "waffles" },
+  { name: "Thali", slug: "thali" },
+  { name: "Chole Bhature", slug: "chole-bhature" },
+  { name: "Paneer", slug: "paneer" },
+  { name: "Grilled Chicken", slug: "grilled-chicken" },
+] as const;
+
 interface HomePageProps {
   searchParams?: Promise<{ q?: string }> | { q?: string };
 }
@@ -45,7 +63,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams?.q?.trim() || "";
 
-  const [categories, topPicksDbItems, searchResults] = await Promise.all([
+  const [categories, topPicksDbItems, foodDbItems, searchResults] = await Promise.all([
     prisma.category.findMany({
       where: { active: true },
       include: {
@@ -64,6 +82,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       },
       include: { category: true },
     }),
+    prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        category: { slug: "food" },
+        slug: { in: HOMEPAGE_FOOD_ITEMS_DEF.flatMap((f) => [f.slug, ("fallbackSlug" in f ? f.fallbackSlug : f.slug)]) },
+      },
+      include: { category: true },
+    }),
     query
       ? searchCatalog(query, { limitItems: 48 })
       : Promise.resolve({ categories: [], subcategories: [], items: [], totalMatches: 0 }),
@@ -73,6 +99,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const topPicksItems = HOMEPAGE_TOP_PICKS_SLUGS
     .map((slug) => topPicksMap.get(slug))
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+  const foodMap = new Map(foodDbItems.map((item) => [item.slug, item]));
+  const foodSectionItems = HOMEPAGE_FOOD_ITEMS_DEF.map((def) => {
+    const item = foodMap.get(def.slug) || ("fallbackSlug" in def ? foodMap.get(def.fallbackSlug) : undefined);
+    if (!item) return null;
+    return {
+      ...item,
+      displayName: def.name,
+    };
+  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
 
   // Swap Subscriptions and Vehicles positions ONLY for the homepage category navigation row
   const navCategories = [...categories];
@@ -461,24 +497,50 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   </Link>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
-                  {category.catalogItems.map((item) => (
-                    <CatalogCard
-                      key={item.id}
-                      href={`/catalog/${item.slug}`}
-                      image={item.image}
-                      name={item.name}
-                      category={category.name}
-                      action={
-                        <AddToWishlistButton
-                          catalogItemId={item.id}
-                          isLoggedIn={Boolean(session?.userId)}
-                          floating
+                {category.slug === "food" ? (
+                  <div className="flex gap-2.5 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                    {foodSectionItems.map((item, idx) => (
+                      <div
+                        key={item.id}
+                        className="w-[145px] sm:w-[160px] md:w-[170px] shrink-0"
+                      >
+                        <CatalogCard
+                          href={`/catalog/${item.slug}`}
+                          image={getProductDisplayImage("food", item.slug, item.image) || item.image}
+                          name={item.displayName || item.name}
+                          category={category.name}
+                          priority={idx < 6}
+                          action={
+                            <AddToWishlistButton
+                              catalogItemId={item.id}
+                              isLoggedIn={Boolean(session?.userId)}
+                              floating
+                            />
+                          }
                         />
-                      }
-                    />
-                  ))}
-                </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
+                    {category.catalogItems.map((item) => (
+                      <CatalogCard
+                        key={item.id}
+                        href={`/catalog/${item.slug}`}
+                        image={item.image}
+                        name={item.name}
+                        category={category.name}
+                        action={
+                          <AddToWishlistButton
+                            catalogItemId={item.id}
+                            isLoggedIn={Boolean(session?.userId)}
+                            floating
+                          />
+                        }
+                      />
+                    ))}
+                  </div>
+                )}
               </section>
             ))}
           </div>
