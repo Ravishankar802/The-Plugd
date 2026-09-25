@@ -1705,38 +1705,41 @@ export function resolveWishlistItem(wishlistItem: {
 }
 
 /**
- * Organizes categories into standard Plugd order:
- * Food -> Drinks -> Fashion -> Mobile -> Vehicles -> Beauty -> Entertainment -> Electronics -> Fitness -> Subscriptions -> Toys
+ * Standard Plugd category order:
+ * 1) Mobile
+ * 2) Vehicles
+ * 3) Subscriptions
+ * 4) Electronics
+ * 5) Fitness
+ * 6) Beauty
+ * 7) Fashion
+ * 8) Food
+ * 9) Drinks
+ * 10) Entertainment
+ * 11) Toys
  */
+export const PLUGD_CATEGORY_ORDER = [
+  "mobile",
+  "vehicles",
+  "subscriptions",
+  "electronics",
+  "fitness",
+  "beauty",
+  "fashion",
+  "food",
+  "drinks",
+  "entertainment",
+  "toys",
+] as const;
+
 export function organizeCategories<T extends { slug: string }>(cats: T[]): T[] {
-  const list = [...cats];
-  // 1. Move Subscriptions after Fitness
-  const subIdx = list.findIndex((c) => c.slug === "subscriptions");
-  if (subIdx !== -1) {
-    const [subCat] = list.splice(subIdx, 1);
-    const fitIdx = list.findIndex((c) => c.slug === "fitness");
-    if (fitIdx !== -1) {
-      list.splice(fitIdx + 1, 0, subCat);
-    } else {
-      list.push(subCat);
-    }
-  }
-  // 2. Move Vehicles immediately AFTER Mobile and BEFORE Beauty
-  const vehIdx = list.findIndex((c) => c.slug === "vehicles");
-  if (vehIdx !== -1) {
-    const [vehCat] = list.splice(vehIdx, 1);
-    const mobIdx = list.findIndex((c) => c.slug === "mobile");
-    if (mobIdx !== -1) {
-      list.splice(mobIdx + 1, 0, vehCat);
-    } else {
-      const beauIdx = list.findIndex((c) => c.slug === "beauty");
-      if (beauIdx !== -1) {
-        list.splice(beauIdx, 0, vehCat);
-      } else {
-        list.push(vehCat);
-      }
-    }
-  }
-  return list;
+  const orderMap = new Map<string, number>(
+    PLUGD_CATEGORY_ORDER.map((slug, idx) => [slug, idx])
+  );
+  return [...cats].sort((a, b) => {
+    const idxA = orderMap.has(a.slug) ? orderMap.get(a.slug)! : 999;
+    const idxB = orderMap.has(b.slug) ? orderMap.get(b.slug)! : 999;
+    return idxA - idxB;
+  });
 }
 

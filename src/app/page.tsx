@@ -771,7 +771,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               </div>
             </section>
 
-            {/* 1. Top Picks Row */}
+            {/* 1. Trending Row */}
             <section className="space-y-4">
               <div className="flex items-end justify-between gap-4 border-b border-zinc-200/80 pb-3">
                 <div className="flex items-center gap-2">
@@ -779,8 +779,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     <Sparkles className="h-4 w-4" />
                   </div>
                   <div>
-                    <h2 className="text-lg md:text-xl font-black tracking-tight text-zinc-950">Top Picks</h2>
-                    <p className="text-[11px] text-zinc-500 hidden sm:block">A handpicked selection of things worth wanting.</p>
+                    <h2 className="text-lg md:text-xl font-black tracking-tight text-zinc-950">Trending</h2>
+                    <p className="text-[11px] text-zinc-500 hidden sm:block">Most popular items added to creator wishlists</p>
                   </div>
                 </div>
               </div>

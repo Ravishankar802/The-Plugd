@@ -110,7 +110,7 @@ async function main() {
       slug: { in: ["google-ai-plus", "google-ai-pro", "google-ai-ultra"] },
     },
     data: {
-      image: "https://i.pinimg.com/1200x/5e/09/fd/5e09fd110b1db2f7630d4948e6a6ff9d.jpg",
+      image: "https://i.pinimg.com/736x/48/6a/99/486a99b7b690e85d60e159ba6cbc893c.jpg",
     },
   });
 
@@ -118,7 +118,7 @@ async function main() {
   await prisma.catalogItem.updateMany({
     where: { slug: "chatgpt-pro" },
     data: {
-      image: "https://i.pinimg.com/736x/3b/fc/92/3bfc92138f34cab4bef4d5c5c521acd9.jpg",
+      image: "https://i.pinimg.com/1200x/2a/62/c3/2a62c34e0d217a7aa14645ce114d84b3.jpg",
     },
   });
 

@@ -2020,7 +2020,7 @@ export function getEntertainmentProductImage(slug: string, fallback?: string): s
 
 export const SUBSCRIPTIONS_IMAGE_MAP: Record<string, string> = {
   "chatgpt-plus": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQf6RUU-Q_5NpWc3trC5aRt7XNcuwJ1v0nSEhVmGxSSaozx8wFpsUrj4oT&s=10",
-  "chatgpt-pro": "https://i.pinimg.com/736x/3b/fc/92/3bfc92138f34cab4bef4d5c5c521acd9.jpg",
+  "chatgpt-pro": "https://i.pinimg.com/1200x/2a/62/c3/2a62c34e0d217a7aa14645ce114d84b3.jpg",
   "claude-pro": "https://i.pinimg.com/736x/0a/d7/f3/0ad7f36deaeefb40eb6012aba30f29c9.jpg",
   "claude-max": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIKZXgMsY2-b34_pGX6x5LG06dXOXCoyIirWtcW9cGMeYTXW_4PGp7aHw&s=10",
   "x-premium": "https://i.pinimg.com/1200x/f7/b8/82/f7b88227115c0f076c245d7450d5f976.jpg",
@@ -2034,9 +2034,9 @@ export const SUBSCRIPTIONS_IMAGE_MAP: Record<string, string> = {
   "prime-video-subscription": "https://i.pinimg.com/1200x/fd/42/5f/fd425f57ad5cbe31afa9c3ca5a3e1067.jpg",
   "hotstar-subscription": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe02x79CcdlP_ej9PgZulM3J3OnPKmjj_OyqC5l9N0mmglIkv4-KCkqF8&s=10",
   "apple-tv-subscription": "https://www.apple.com/v/apple-tv/c/images/meta/apple-tv__ft1nltyknfmi_og.png?202608190233",
-  "google-ai-plus": "https://i.pinimg.com/1200x/5e/09/fd/5e09fd110b1db2f7630d4948e6a6ff9d.jpg",
-  "google-ai-pro": "https://i.pinimg.com/1200x/5e/09/fd/5e09fd110b1db2f7630d4948e6a6ff9d.jpg",
-  "google-ai-ultra": "https://i.pinimg.com/1200x/5e/09/fd/5e09fd110b1db2f7630d4948e6a6ff9d.jpg",
+  "google-ai-plus": "https://i.pinimg.com/736x/48/6a/99/486a99b7b690e85d60e159ba6cbc893c.jpg",
+  "google-ai-pro": "https://i.pinimg.com/736x/48/6a/99/486a99b7b690e85d60e159ba6cbc893c.jpg",
+  "google-ai-ultra": "https://i.pinimg.com/736x/48/6a/99/486a99b7b690e85d60e159ba6cbc893c.jpg",
   "spotify-premium": "https://i.pinimg.com/1200x/28/8a/3a/288a3a5cf0e736992d3d9af0d94536f5.jpg",
   "youtube-premium": "https://cdnp3.stackassets.com/4371f184af0acf709d9eee72b54f8de114b6e3a0/store/f0a647407e41a6dcfd4eae0f4e4095a8ec54ee2e8c8a183db707e38bce05/product_345396_product_shots1.jpg",
   "amazon-prime": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ_g4tg-ekOpclq9LqTWlwV5jZn7Dlcg55rJjOk6vkFyDcArRWofsx8jHf&s=10",
