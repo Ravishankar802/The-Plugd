@@ -503,13 +503,13 @@ export default function EditProfilePage() {
                   Bio
                 </label>
                 <span className="text-[10px] text-zinc-400">
-                  {bio.length}/160
+                  {bio.length}/500
                 </span>
               </div>
               <textarea
                 id="edit-bio"
                 rows={2}
-                maxLength={160}
+                maxLength={500}
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
                 placeholder="Tell your friends what you're wishing for..."
@@ -555,10 +555,10 @@ export default function EditProfilePage() {
               {paymentChoice === "link" ? (
                 <div className="space-y-1.5">
                   <input
-                    type="url"
+                    type="text"
                     value={paymentLink}
                     onChange={(e) => setPaymentLink(e.target.value)}
-                    placeholder="https://... (e.g. PayPal, Stripe, UPI, Buy Me a Coffee)"
+                    placeholder="Paste your payment link (UPI, GPay, PhonePe, Paytm)"
                     className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-xs sm:text-sm font-medium text-zinc-900 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
                   />
                 </div>

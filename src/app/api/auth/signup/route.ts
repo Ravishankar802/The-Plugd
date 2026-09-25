@@ -115,10 +115,17 @@ export async function POST(req: Request) {
 
     // 4. Prepare profile details
     const cleanDisplayName = displayName?.trim() || cleanUsername;
-    const cleanBio = bio?.trim() ? bio.trim().slice(0, 160) : null;
-    const cleanAvatar = avatarUrl?.trim() || "/avatars/avatar-1.svg";
+    const cleanBio = bio?.trim() ? bio.trim().slice(0, 500) : null;
+    const cleanAvatar = avatarUrl?.trim() || "/avatars/avatar-1.png";
     const cleanPaymentLink = paymentLink?.trim() || null;
     const cleanPaymentQr = paymentQr?.trim() || null;
+
+    if (!cleanPaymentLink && !cleanPaymentQr) {
+      return NextResponse.json(
+        { error: "Payment method is required. Please provide a payment link or upload a payment QR code (UPI, GPay, PhonePe, Paytm)." },
+        { status: 400 }
+      );
+    }
 
     // Hash password securely
     const hashedPassword = hashPassword(password);

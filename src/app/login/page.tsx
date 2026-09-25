@@ -53,13 +53,8 @@ function LoginForm() {
 
   return (
     <div className="w-full max-w-[380px] sm:max-w-[400px] mx-auto">
-      {/* Brand Header */}
+      {/* Header */}
       <div className="mb-8">
-        <Link href="/" className="inline-block group focus:outline-none mb-3">
-          <span className="font-logo text-3xl sm:text-4xl font-extrabold tracking-normal text-orange-500 select-none leading-none">
-            Plugd
-          </span>
-        </Link>
         <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900">
           Log in to Plugd
         </h1>
@@ -119,7 +114,7 @@ function LoginForm() {
             required
             value={login}
             onChange={(e) => setLogin(e.target.value)}
-            placeholder="e.g. alex or alex@example.com"
+            placeholder="username or email"
             className="w-full h-11 sm:h-12 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
           />
         </div>
@@ -150,7 +145,7 @@ function LoginForm() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
+              placeholder="password"
               className="w-full h-11 sm:h-12 rounded-xl border border-zinc-200 bg-zinc-50/50 pl-3.5 pr-11 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
             />
             <button

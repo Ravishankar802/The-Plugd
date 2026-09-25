@@ -92,12 +92,6 @@ export default function AuthMarketingHero() {
             </div>
           </div>
 
-          {/* Floating Pill Reactions */}
-          <div className="absolute -top-3 left-0 z-30 inline-flex items-center gap-1.5 rounded-full border border-orange-200 bg-white/95 px-3 py-1 text-[11px] font-bold text-zinc-800 shadow-md backdrop-blur-md animate-bounce duration-1000">
-            <Gift className="h-3.5 w-3.5 text-orange-500" />
-            <span>@ravi gifted this!</span>
-          </div>
-
           <div className="absolute -bottom-2 right-4 z-30 inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white/95 px-3 py-1 text-[11px] font-bold text-zinc-800 shadow-md backdrop-blur-md">
             <span className="text-xs">❤️</span>
             <span>Loved by 12 friends</span>

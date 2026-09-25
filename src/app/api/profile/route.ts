@@ -62,7 +62,7 @@ export async function GET() {
       username: user.username,
       displayName: user.displayName || user.creatorProfile?.displayName || "",
       bio: user.bio || user.creatorProfile?.bio || "",
-      avatarUrl: user.avatarUrl || user.creatorProfile?.avatarUrl || "/avatars/avatar-1.svg",
+      avatarUrl: user.avatarUrl || user.creatorProfile?.avatarUrl || "/avatars/avatar-1.png",
       paymentLink: user.paymentLink || user.creatorProfile?.paymentLink || "",
       paymentQr: user.paymentQr || user.creatorProfile?.paymentQr || "",
     });
@@ -148,7 +148,7 @@ export async function PATCH(req: Request) {
     }
 
     const cleanDisplayName = displayName !== undefined ? displayName.trim() : user.displayName;
-    const cleanBio = bio !== undefined ? (bio.trim() ? bio.trim().slice(0, 160) : null) : user.bio;
+    const cleanBio = bio !== undefined ? (bio.trim() ? bio.trim().slice(0, 500) : null) : user.bio;
     const cleanAvatar = avatarUrl !== undefined ? avatarUrl.trim() : user.avatarUrl;
     const cleanPaymentLink = paymentLink !== undefined ? paymentLink.trim() || null : user.paymentLink;
     const cleanPaymentQr = paymentQr !== undefined ? paymentQr.trim() || null : user.paymentQr;

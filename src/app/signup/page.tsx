@@ -194,6 +194,17 @@ export default function SignupPage() {
         ? uploadedAvatarUrl
         : selectedAvatar.url;
 
+    // Validate Payment (Required: must provide payment link or uploaded QR)
+    const effectivePaymentLink = paymentLink.trim() || qrDecodedText.trim();
+    const effectivePaymentQr = paymentQrUrl.trim();
+
+    if (!effectivePaymentLink && !effectivePaymentQr) {
+      setError(
+        "Payment method is required. Please provide a payment link or upload a payment QR code (UPI, GPay, PhonePe, Paytm)."
+      );
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -205,10 +216,10 @@ export default function SignupPage() {
           email: email.trim(),
           password,
           displayName: displayName.trim() || username.trim(),
-          bio: bio.trim(),
+          bio: bio.trim().slice(0, 500),
           avatarUrl: finalAvatar,
-          paymentLink: paymentLink.trim(),
-          paymentQr: paymentQrUrl.trim() || (qrDecodedText ? qrDecodedText : null),
+          paymentLink: effectivePaymentLink,
+          paymentQr: effectivePaymentQr || (qrDecodedText ? qrDecodedText : null),
         }),
       });
 
@@ -240,11 +251,6 @@ export default function SignupPage() {
         <div className="w-full max-w-[460px] sm:max-w-[480px] mx-auto py-4">
           {/* Header */}
           <div className="mb-7">
-            <Link href="/" className="inline-block group focus:outline-none mb-3">
-              <span className="font-logo text-3xl sm:text-4xl font-extrabold tracking-normal text-orange-500 select-none leading-none">
-                Plugd
-              </span>
-            </Link>
             <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900">
               Create your Plugd account
             </h1>
@@ -303,7 +309,7 @@ export default function SignupPage() {
                     required
                     value={username}
                     onChange={(e) => setUsername(e.target.value.toLowerCase().trim())}
-                    placeholder="yourname"
+                    placeholder="username"
                     className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 pl-8 pr-3.5 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
                   />
                 </div>
@@ -329,7 +335,7 @@ export default function SignupPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="name@example.com"
+                  placeholder="email"
                   className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
                 />
               </div>
@@ -415,7 +421,7 @@ export default function SignupPage() {
                   type="text"
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
-                  placeholder="e.g. Alex Morgan"
+                  placeholder="Full Name"
                   className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
                 />
               </div>
@@ -430,13 +436,13 @@ export default function SignupPage() {
                     Bio
                   </label>
                   <span className="text-[10px] text-zinc-400">
-                    {bio.length}/160
+                    {bio.length}/500
                   </span>
                 </div>
                 <textarea
                   id="signup-bio"
                   rows={2}
-                  maxLength={160}
+                  maxLength={500}
                   value={bio}
                   onChange={(e) => setBio(e.target.value)}
                   placeholder="Tell people what you are wishing for or celebrating..."
@@ -564,18 +570,15 @@ export default function SignupPage() {
               )}
             </div>
 
-            {/* GROUP 4: SUPPORT / PAYMENT (OPTIONAL) */}
+            {/* GROUP 4: SUPPORT / PAYMENT */}
             <div className="space-y-3 pt-2">
               <div className="border-b border-zinc-100 pb-2 flex items-center justify-between">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600">
-                  4. Support / Payment (Optional)
-                </span>
-                <span className="text-[10px] rounded-full bg-zinc-100 px-2 py-0.5 font-bold text-zinc-500">
-                  Optional
+                  4. Support / Payment
                 </span>
               </div>
               <p className="text-[11px] text-zinc-500">
-                Let supporters easily gift or fund your wishlist items using your existing link or QR.
+                Provide either a payment link or a payment QR code so supporters can send money directly to you.
               </p>
 
               {/* Segmented control for Support Link vs Payment QR */}
@@ -610,14 +613,14 @@ export default function SignupPage() {
               {paymentChoice === "link" ? (
                 <div className="space-y-1.5">
                   <input
-                    type="url"
+                    type="text"
                     value={paymentLink}
                     onChange={(e) => setPaymentLink(e.target.value)}
-                    placeholder="https://... (e.g. PayPal, Stripe, UPI, Buy Me a Coffee)"
+                    placeholder="Paste your payment link (UPI, GPay, PhonePe, Paytm)"
                     className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-xs sm:text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
                   />
                   <p className="text-[10px] text-zinc-400">
-                    Supports any public URL or payment handler.
+                    Supports UPI, GPay, PhonePe, Paytm, or direct payment handles.
                   </p>
                 </div>
               ) : (
