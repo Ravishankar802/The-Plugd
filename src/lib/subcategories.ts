@@ -28,180 +28,6 @@ export interface Subcategory {
 }
 
 export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
-  food: [
-    {
-      id: "ice-creams",
-      name: "Ice Creams",
-      image: "https://i.pinimg.com/1200x/8f/e2/08/8fe20822887ce50251a74036dc050eb9.jpg",
-      keywords: [
-        "ice cream", "kulfi", "kulfie", "gelato", "popsicle", "sundae", "cornetto", "magnum", "chocobar", "cassata",
-        "baskin robbins", "cream pot", "havmor", "hoccol", "tiramisu", "mudslide", "kulhad", "tub", "cone", "stick"
-      ],
-      productIds: [
-        "amul-chocolate-brownie-ice-cream-tub",
-        "amul-choco-chip-chocolate-ice-cream-tub",
-        "amul-fruit-n-nut-fantasy-ice-cream-tub",
-        "cream-pot-vanilla-tub",
-        "baskin-robbins-mississippi-mud-ice-cream-tub",
-        "magnum-chocolate-almond-ice-cream-stick",
-        "baskin-robbins-almond-n-caramel-ice-cream-stick",
-        "cornetto-double-chocolate-cone",
-        "havmor-dark-chocolate-ice-cream-cone",
-        "hoccol-hazelnut-mudslide-ice-cream-cone",
-        "ob-gob-tiramisu-fudge-ice-cream-sundae",
-        "ob-gob-vanilla-choco-brownie-ice-cream-sundae",
-        "amul-kulhad-kulfie-ice-cream",
-        "havmor-matka-kulfi",
-      ],
-    },
-    {
-      id: "sweet-cravings",
-      name: "Sweet Cravings",
-      image: "https://i.pinimg.com/736x/16/4a/21/164a21588d7025cad8444055fc361e8f.jpg",
-      keywords: [
-        "sweets", "sweet", "rasmalai", "gulab", "halwa", "jalebi",
-        "laddu", "kaju", "brownie", "pastry", "donut", "doughnut", "chocolate", "mithai", "peda", "barfi", "mysore pak",
-        "rasgulla", "soan papdi", "dairy milk", "munch", "kit-kat", "kinder", "snickers", "bournville",
-        "5 star", "ferrero rocher"
-      ],
-      productIds: [
-        "rasmalai",
-        "kaju-katli",
-        "mysore-pak",
-        "motichoor-laddu",
-        "gulab-jamun",
-        "besan-laddu",
-        "soan-papdi",
-        "rasgulla",
-        "doodh-peda",
-        "malai-peda",
-        "dharwad-peda",
-        "dairy-milk",
-        "munch-max",
-        "dairy-milk-shots",
-        "nestle-kit-kat",
-        "amul-cocoa-dark-chocolate",
-        "kinder-joy-blue",
-        "kinder-joy-pink",
-        "snickers",
-        "bournville-dark-chocolate",
-        "cadbury-5-star",
-        "dairy-milk-silk",
-        "ferrero-rocher-premium-chocolate",
-      ],
-    },
-    {
-      id: "biscuits",
-      name: "Biscuits",
-      image: "https://i.pinimg.com/1200x/ee/84/b7/ee84b7dd4013b7620f2c794aa3342164.jpg",
-      keywords: [
-        "biscuit", "biscuits", "cookie", "cookies", "rusk", "wafer",
-        "crackers", "little hearts", "maska chaska", "parle-g", "oreo", "krackjack", "good day", "dark fantasy",
-        "jim jam", "malkist", "5050", "50-50"
-      ],
-      productIds: [
-        "malkist-cheese-crunchy-layered-crackers",
-        "britannia-little-hearts",
-        "hide-seek-choco-chip-cookies",
-        "50-50-maska-chaska",
-        "parle-g",
-        "oreo",
-        "krackjack",
-        "good-day",
-        "dark-fantasy",
-        "jim-jam",
-      ],
-    },
-    {
-      id: "snacks",
-      name: "Snacks",
-      image: "https://i.pinimg.com/1200x/27/04/2b/27042b22fecb5612fd64e15eea285e69.jpg",
-      keywords: [
-        "lays", "chips", "kurkure", "bingo", "uncle chipps", "too yumm", "aloo bhujia", "bhujia sev", "mixture",
-        "peanuts", "makhana", "banana chips", "murukku", "chakli", "nippattu", "khakhra", "popcorn", "nachos", "cheese balls", "snack", "snacks"
-      ],
-      productIds: [
-        "lays-classic-salted",
-        "lays-magic-masala",
-        "kurkure-masala-munch",
-        "bingo-mad-angles",
-        "uncle-chipps",
-        "too-yumm-multigrain-chips",
-        "haldirams-aloo-bhujia",
-        "haldirams-bhujia-sev",
-        "haldirams-mixture",
-        "masala-peanuts",
-        "roasted-peanuts",
-        "makhana",
-        "banana-chips",
-        "murukku",
-        "chakli",
-        "nippattu",
-        "khakhra",
-        "popcorn",
-        "nachos",
-        "cheese-balls",
-      ],
-    },
-  ],
-  drinks: [
-    {
-      id: "coffee",
-      name: "Coffee",
-      image: "https://i.pinimg.com/1200x/29/6d/c1/296dc15130a76781017f119203e396d3.jpg",
-      keywords: ["coffee", "espresso", "latte", "cappuccino", "brew", "mocha", "cold coffee", "americano", "macchiato", "frappe"],
-      productIds: [
-        "nescafe-classic-instant-coffee",
-        "nescafe-sunrise-instant-coffee",
-        "bru-instant-coffee",
-        "bru-gold-instant-coffee",
-        "continental-xtra-coffee",
-        "tata-coffee-grand",
-        "starbucks-premium-instant-coffee",
-        "starbucks-frappuccino-coffee",
-        "rage-coffee",
-        "sleepy-owl-cold-coffee",
-        "bevzilla-instant-coffee",
-        "country-bean-vanilla-coffee",
-        "blue-tokai-coffee",
-        "third-wave-coffee",
-        "nescafe-gold",
-      ],
-    },
-    {
-      id: "cold-drinks-juices",
-      name: "Cold Drinks & Juices",
-      image: "https://i.pinimg.com/736x/b0/c1/92/b0c192ac88e38530625d72033c95d74e.jpg",
-      keywords: ["juice", "cold drink", "soda", "coke", "pepsi", "energy drink", "shake", "smoothie", "lassi", "tea", "iced", "red bull", "monster", "prime", "thums", "sprite", "fanta", "mirinda", "maaza", "frooti", "lemonade", "kombucha", "water"],
-      productIds: [
-        "frooti",
-        "maaza",
-        "appy-fizz",
-        "slice",
-        "paper-boat-aamras",
-        "paper-boat-coconut-water",
-        "real-fruit-power-orange",
-        "real-fruit-power-mixed-fruit",
-        "tropicana-orange-juice",
-        "tropicana-apple-juice",
-        "b-natural-mixed-fruit",
-        "b-natural-orange-juice",
-        "paper-boat-aam-panna",
-        "paper-boat-jaljeera",
-        "coconut-water",
-        "limca",
-        "7up",
-        "mirinda",
-        "mountain-dew",
-        "sting-energy-drink",
-        "kinley-soda",
-        "schweppes-tonic-water",
-        "nestea-lemon-iced-tea",
-        "paper-boat-neer-more",
-        "raw-pressery-cold-pressed-orange-juice",
-      ],
-    },
-  ],
   fashion: [
     {
       id: "jewellery",
@@ -827,22 +653,6 @@ export const CATEGORY_SUBCATEGORIES: Record<string, Subcategory[]> = {
       ],
     },
   ],
-  vehicles: [
-    {
-      id: "cars",
-      name: "Cars",
-      image: "https://i.pinimg.com/736x/0d/37/3a/0d373af47cb9c6c8607d7ac09af14ed9.jpg",
-      keywords: ["car", "porsche", "ferrari", "lamborghini", "bmw", "rolls royce", "mclaren", "aston martin", "bugatti", "koenigsegg", "pagani", "hypercar", "supercar", "chiron", "veyron", "tourbillon", "jesko", "utopia", "valkyrie", "speedtail", "senna", "revuelto", "sf90", "daytona sp3", "monza", "stradale", "huracan", "aventador", "svj", "750s", "765lt", "p1", "db12", "dbs", "vantage", "cullinan", "phantom", "spectre", "maybach", "hennessey"],
-      productIds: CARS_SLUGS,
-    },
-    {
-      id: "bikes",
-      name: "Bikes",
-      image: "https://i.pinimg.com/736x/a4/6d/07/a46d07cce741e97a666cf51ecf5a1e81.jpg",
-      keywords: ["bike", "motorcycle", "ducati", "kawasaki", "harley", "bullet", "royalenfield", "royal enfield", "bmw s1000rr", "yamaha", "panigale", "ninja", "triumph", "ktm", "interceptor", "continental", "aprilia", "street triple", "speed triple", "z900", "zx-10r", "h2", "streetfighter", "diavel", "monster", "super duke", "fat boy", "nightster", "sportster", "cbr1000rr"],
-      productIds: BIKES_SLUGS,
-    },
-  ],
 };
 
 /**
@@ -959,38 +769,13 @@ export function matchesSubcategory(
   const subDef = getSubcategoryDef(normalizedCategory, normalizedSubId);
   if (!subDef) return true;
 
-  // Food, Drinks, and Beauty subcategory exact matching when productIds defined
+  // Beauty and Electronics subcategory exact matching when productIds defined
   if (
-    (normalizedCategory === "food" || normalizedCategory === "drinks" || normalizedCategory === "beauty" || normalizedCategory === "electronics" || normalizedCategory === "vehicles") &&
+    (normalizedCategory === "beauty" || normalizedCategory === "electronics" || normalizedCategory === "cars" || normalizedCategory === "bikes") &&
     subDef.productIds &&
     subDef.productIds.length > 0
   ) {
     return subDef.productIds.includes(item.slug);
-  }
-
-  // Exact product ID match if available
-  if (subDef.productIds && subDef.productIds.length > 0) {
-    if (subDef.productIds.includes(item.slug)) {
-      return true;
-    }
-  }
-
-  // Special vehicle logic
-  if (normalizedCategory === "vehicles") {
-    const bikesDef = getSubcategoryDef("vehicles", "bikes");
-    const isBike = bikesDef?.keywords.some(
-      (kw) =>
-        item.name.toLowerCase().includes(kw) ||
-        item.slug.toLowerCase().includes(kw)
-    );
-
-    if (normalizedSubId === "bikes") {
-      return Boolean(isBike);
-    }
-    if (normalizedSubId === "cars") {
-      // Anything in Vehicles that is not a bike is considered a Car / Supercar / Hypercar
-      return !isBike;
-    }
   }
 
   // Gaming overall under Electronics

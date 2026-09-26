@@ -16,15 +16,23 @@ import {
   matchesGamingChild,
   ALL_GAMING_PRODUCT_IDS,
 } from "@/lib/subcategories";
-import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog, BEAUTY_TOP_PICKS_SLUGS } from "@/lib/beauty-catalog";
-import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog, ELECTRONICS_TOP_PICKS_SLUGS } from "@/lib/electronics-catalog";
-import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
-import { getFullToysCatalog } from "@/lib/toys-catalog";
-import { getFullVehiclesCatalog, VEHICLES_TOP_PICKS_SLUGS } from "@/lib/vehicles-catalog";
-import { getBeautyProductImage, getDrinksProductImage, getFashionProductImage, getMobilesProductImage, getEntertainmentProductImage, getSubscriptionsProductImage, getElectronicsProductImage, getFitnessProductImage, getToysProductImage, getVehiclesProductImage, getProductDisplayImage } from "@/lib/product-images";
+import {
+  getFullCarsCatalog,
+  getFullBikesCatalog,
+  CARS_TOP_PICKS_SLUGS,
+  BIKES_TOP_PICKS_SLUGS,
+} from "@/lib/vehicles-catalog";
+import {
+  getBeautyProductImage,
+  getFashionProductImage,
+  getMobilesProductImage,
+  getSubscriptionsProductImage,
+  getElectronicsProductImage,
+  getProductDisplayImage,
+} from "@/lib/product-images";
 import { FASHION_TOP_PICKS, getFashionItemGender } from "@/lib/fashion-catalog";
 
 export const dynamic = "force-dynamic";
@@ -122,24 +130,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     : await getCachedCategoryItems(targetCategoryId);
 
   let rawItems = initialRawItems;
-  if (category.slug === "drinks") {
-    const fullDrinks = getFullDrinksCatalog();
-    const existingSlugs = new Set(initialRawItems.map((i) => i.slug));
-    const missingItems = fullDrinks
-      .filter((d) => !existingSlugs.has(d.id))
-      .map((d) => ({
-        id: `drinks-${d.id}`,
-        name: d.name,
-        slug: d.id,
-        image: d.imageUrl,
-        categoryId: targetCategoryId,
-        featured: Boolean(d.featured),
-        displayOrder: d.displayOrder,
-      }));
-    if (missingItems.length > 0) {
-      rawItems = [...initialRawItems, ...missingItems];
-    }
-  } else if (category.slug === "mobile" || isElectronicsMobile) {
+  if (category.slug === "mobile" || isElectronicsMobile) {
     const fullMobiles = getFullMobilesCatalog();
     const allowedSlugs = new Set(fullMobiles.map((m) => m.id));
     const validRaw = initialRawItems.filter((i) => allowedSlugs.has(i.slug));
@@ -175,26 +166,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     if (missingItems.length > 0) {
       rawItems = [...initialRawItems, ...missingItems];
     }
-  } else if (category.slug === "entertainment") {
-    const fullEntertainment = getFullEntertainmentCatalog();
-    const allowedSlugs = new Set(fullEntertainment.map((e) => e.id));
-    const validRaw = initialRawItems.filter((i) => allowedSlugs.has(i.slug));
-    const existingSlugs = new Set(validRaw.map((i) => i.slug));
-    const missingItems = fullEntertainment
-      .filter((e) => !existingSlugs.has(e.id))
-      .map((e, idx) => ({
-        id: `entertainment-${e.id}`,
-        name: e.name,
-        slug: e.id,
-        image: e.imageUrl,
-        categoryId: targetCategoryId,
-        featured: Boolean(e.featured),
-        displayOrder: e.displayOrder ?? idx,
-        addedCount: 0,
-      }));
-    rawItems = [...validRaw, ...missingItems];
-    const slugOrder = fullEntertainment.map((e) => e.id);
-    rawItems.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   } else if (category.slug === "subscriptions") {
     const subNames = [
       "ChatGPT Plus", "ChatGPT Pro", "Claude Pro", "Claude Max",
@@ -331,14 +302,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       return slugOrder.indexOf(slug);
     };
     rawItems.sort((a, b) => getSlugOrderIndex(a.slug) - getSlugOrderIndex(b.slug));
-  } else if (category.slug === "fitness") {
-    const fullFitness = getFullFitnessCatalog();
-    const allowedSlugs = new Set(fullFitness.map((e) => e.id));
-    const fullFitnessMap = new Map(fullFitness.map((e) => [e.id, e]));
+  } else if (category.slug === "cars") {
+    const fullCars = getFullCarsCatalog();
+    const allowedSlugs = new Set(fullCars.map((c) => c.id));
+    const fullCarsMap = new Map(fullCars.map((c) => [c.id, c]));
     const validRaw = initialRawItems
       .filter((i) => allowedSlugs.has(i.slug))
       .map((i) => {
-        const canonical = fullFitnessMap.get(i.slug);
+        const canonical = fullCarsMap.get(i.slug);
         return canonical
           ? {
               ...i,
@@ -353,63 +324,29 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             };
       });
     const existingSlugs = new Set(validRaw.map((i) => i.slug));
-    const missingItems = fullFitness
-      .filter((e) => !existingSlugs.has(e.id))
-      .map((e, idx) => ({
-        id: `fitness-${e.id}`,
-        name: e.name,
-        slug: e.id,
-        image: e.imageUrl,
+    const missingItems = fullCars
+      .filter((c) => !existingSlugs.has(c.id))
+      .map((c, idx) => ({
+        id: `cars-${c.id}`,
+        name: c.name,
+        slug: c.id,
+        image: c.imageUrl,
         categoryId: targetCategoryId,
-        featured: Boolean(e.featured),
-        displayOrder: e.displayOrder ?? idx,
+        featured: Boolean(c.featured),
+        displayOrder: c.displayOrder ?? idx,
         addedCount: 0,
       }));
     rawItems = [...validRaw, ...missingItems];
-    const slugOrder = fullFitness.map((e) => e.id);
+    const slugOrder = fullCars.map((c) => c.id);
     rawItems.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
-  } else if (category.slug === "toys") {
-    const fullToys = getFullToysCatalog();
-    const allowedSlugs = new Set(fullToys.map((e) => e.id));
-    const fullToysMap = new Map(fullToys.map((e) => [e.id, e]));
+  } else if (category.slug === "bikes") {
+    const fullBikes = getFullBikesCatalog();
+    const allowedSlugs = new Set(fullBikes.map((b) => b.id));
+    const fullBikesMap = new Map(fullBikes.map((b) => [b.id, b]));
     const validRaw = initialRawItems
       .filter((i) => allowedSlugs.has(i.slug))
       .map((i) => {
-        const canonical = fullToysMap.get(i.slug);
-        return canonical
-          ? {
-              ...i,
-              name: canonical.name,
-              image: canonical.imageUrl,
-              featured: Boolean(canonical.featured),
-              addedCount: i.addedCount ?? 0,
-            }
-          : { ...i, addedCount: i.addedCount ?? 0 };
-      });
-    const existingSlugs = new Set(validRaw.map((i) => i.slug));
-    const missingItems = fullToys
-      .filter((e) => !existingSlugs.has(e.id))
-      .map((e, idx) => ({
-        id: `toys-${e.id}`,
-        name: e.name,
-        slug: e.id,
-        image: e.imageUrl,
-        categoryId: targetCategoryId,
-        featured: Boolean(e.featured),
-        displayOrder: e.displayOrder ?? idx,
-        addedCount: 0,
-      }));
-    rawItems = [...validRaw, ...missingItems];
-    const slugOrder = fullToys.map((e) => e.id);
-    rawItems.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
-  } else if (category.slug === "vehicles") {
-    const fullVehicles = getFullVehiclesCatalog();
-    const allowedSlugs = new Set(fullVehicles.map((v) => v.id));
-    const fullVehiclesMap = new Map(fullVehicles.map((v) => [v.id, v]));
-    const validRaw = initialRawItems
-      .filter((i) => allowedSlugs.has(i.slug))
-      .map((i) => {
-        const canonical = fullVehiclesMap.get(i.slug);
+        const canonical = fullBikesMap.get(i.slug);
         return canonical
           ? {
               ...i,
@@ -424,20 +361,20 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             };
       });
     const existingSlugs = new Set(validRaw.map((i) => i.slug));
-    const missingItems = fullVehicles
-      .filter((v) => !existingSlugs.has(v.id))
-      .map((v, idx) => ({
-        id: `vehicles-${v.id}`,
-        name: v.name,
-        slug: v.id,
-        image: v.imageUrl,
+    const missingItems = fullBikes
+      .filter((b) => !existingSlugs.has(b.id))
+      .map((b, idx) => ({
+        id: `bikes-${b.id}`,
+        name: b.name,
+        slug: b.id,
+        image: b.imageUrl,
         categoryId: targetCategoryId,
-        featured: Boolean(v.featured),
-        displayOrder: v.displayOrder ?? idx,
+        featured: Boolean(b.featured),
+        displayOrder: b.displayOrder ?? idx,
         addedCount: 0,
       }));
     rawItems = [...validRaw, ...missingItems];
-    const slugOrder = fullVehicles.map((v) => v.id);
+    const slugOrder = fullBikes.map((b) => b.id);
     rawItems.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
 
@@ -492,71 +429,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         return 0;
       });
     }
-  } else if (category.slug === "food" && isTopPicksActive) {
-    // Food Top Picks: include only Food items not part of the 4 dedicated subcategories,
-    // while explicitly ensuring moved items (Cake, Waffles, Dessert, Pancake, Pazham Pori, Bread Omelette) remain in Top Picks.
-    const movedToTopPicks = ["cake", "waffles", "dessert", "pancake", "pazham-pori", "bread-omelette"];
-    const isExcludedFromTopPicks = (item: { name: string; slug: string }) => {
-      const slug = item.slug.toLowerCase();
-      const name = item.name.toLowerCase();
-      const excludedSlugs = [
-        "lays-classic-salted",
-        "lay-s-classic-salted",
-        "lays-magic-masala",
-        "lay-s-magic-masala",
-        "haldirams-aloo-bhujia",
-        "haldiram-s-aloo-bhujia",
-        "haldirams-bhujia-sev",
-        "haldiram-s-bhujia-sev",
-        "haldirams-mixture",
-        "haldiram-s-mixture",
-      ];
-      if (excludedSlugs.includes(slug)) return true;
-      if (
-        name.includes("classic salted") ||
-        name.includes("magic masala") ||
-        name.includes("aloo bhujia") ||
-        name.includes("bhujia sev") ||
-        (name.includes("haldiram") && name.includes("mixture"))
-      ) {
-        return true;
-      }
-      return false;
-    };
-    const dedicatedFoodSubcategories = ["ice-creams", "sweet-cravings", "biscuits", "snacks"];
-    items = rawItems.filter(
-      (item) =>
-        !isExcludedFromTopPicks(item) &&
-        (movedToTopPicks.includes(item.slug) ||
-          !dedicatedFoodSubcategories.some((subId) => matchesSubcategory(item, "food", subId)))
-    );
-  } else if (category.slug === "drinks" && isTopPicksActive) {
-    // Drinks Top Picks: keep the exact existing 18 items in their exact order
-    const existingTopPicksSlugs = [
-      "diet-coke",
-      "red-bull-energy-drink",
-      "monster-energy-drink",
-      "monster-ultra-energy-drink",
-      "gatorade-energy-drink",
-      "amul-masti-spiced-buttermilk",
-      "bisleri-water-bottle",
-      "minute-maid-pulpy-orange",
-      "hell-energy-drink",
-      "coca-cola-zero-sugar-pet",
-      "smooth-chocolate-milk-drink",
-      "coca-cola-zero-sugar-can",
-      "soft-soya-milk-drink",
-      "coolberg-cranberry-non-alcoholic-beer",
-      "amul-protein-shake-blueberry",
-      "sprite-zero",
-      "thums-up",
-      "pepsi",
-      "pepsi-zero-sugar-soft-drink",
-    ];
-    items = rawItems.filter((item) => existingTopPicksSlugs.includes(item.slug));
-    items.sort(
-      (a, b) => existingTopPicksSlugs.indexOf(a.slug) - existingTopPicksSlugs.indexOf(b.slug)
-    );
   } else if (category.slug === "fashion" && isTopPicksActive) {
     const topPickSlugs = FASHION_TOP_PICKS.map((p) => p.slug);
     const topPickRawIds = FASHION_TOP_PICKS.map((p) => p.rawId);
@@ -627,8 +499,18 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     } else {
       items = rawItems;
     }
-  } else if (category.slug === "vehicles" && isTopPicksActive) {
-    const topPickSlugs = VEHICLES_TOP_PICKS_SLUGS;
+  } else if (category.slug === "cars" && isTopPicksActive) {
+    const topPickSlugs = CARS_TOP_PICKS_SLUGS;
+    if (!query) {
+      items = rawItems.filter((item) => topPickSlugs.includes(item.slug));
+      items.sort(
+        (a, b) => topPickSlugs.indexOf(a.slug) - topPickSlugs.indexOf(b.slug)
+      );
+    } else {
+      items = rawItems;
+    }
+  } else if (category.slug === "bikes" && isTopPicksActive) {
+    const topPickSlugs = BIKES_TOP_PICKS_SLUGS;
     if (!query) {
       items = rawItems.filter((item) => topPickSlugs.includes(item.slug));
       items.sort(
@@ -793,7 +675,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               </div>
               <div className="flex flex-col min-w-0">
                 <span className="text-[10px] sm:text-sm font-bold tracking-tight line-clamp-1">Top Picks</span>
-                {category.slug !== "food" && category.slug !== "drinks" && category.slug !== "fashion" && category.slug !== "beauty" && category.slug !== "electronics" && category.slug !== "vehicles" && (
+                {category.slug !== "fashion" && category.slug !== "beauty" && category.slug !== "electronics" && category.slug !== "cars" && category.slug !== "bikes" && (
                   <span className="text-[9px] sm:text-[11px] text-zinc-400 font-medium hidden sm:block">
                     All {isGamingSubcategory ? "Gaming" : category.name}
                   </span>
@@ -898,7 +780,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 <div>
                   <h3 className="text-sm font-bold text-zinc-950">No items found</h3>
                   <p className="mt-1 text-xs text-zinc-600 max-w-md">
-                    No products matched this subcategory or search keyword.
+                    {query ? "No products matched this search keyword." : "This category is currently empty. Wishlist items will appear here soon."}
                   </p>
                 </div>
                 <Link

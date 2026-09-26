@@ -44,9 +44,12 @@ export default function Header({
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-2.5 px-3 py-2 md:gap-6 md:px-6 md:py-3.5">
         {/* Left: Logo & Wordmark */}
         <Link href="/" className="group flex shrink-0 items-center pl-1 sm:pl-4 md:pl-5">
-          <span className="font-logo text-2xl sm:text-3xl md:text-[34px] font-extrabold tracking-normal text-orange-500 select-none inline-block pt-0.5 md:pt-1 pb-1 md:pb-2 leading-tight overflow-visible">
-            Plugd
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt="Plugd"
+            className="h-8 sm:h-9 md:h-10 w-auto object-contain select-none transition-transform duration-200 group-hover:scale-[1.02]"
+          />
         </Link>
 
         {/* Center: Search Bar */}

@@ -20,7 +20,12 @@ export default function PrivateWishlistNotice({
       <header className="border-b border-zinc-200/80 bg-white/90 backdrop-blur-md px-4 py-3 sm:px-6">
         <div className="mx-auto max-w-4xl flex items-center justify-between">
           <Link href="/" className="inline-flex items-center gap-1">
-            <span className="font-logo text-2xl font-extrabold text-orange-500">Plugd</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo.png"
+              alt="Plugd"
+              className="h-8 w-auto object-contain select-none"
+            />
           </Link>
           <Link
             href="/"

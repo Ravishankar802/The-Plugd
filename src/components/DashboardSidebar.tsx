@@ -33,9 +33,12 @@ export default function DashboardSidebar({ email, username }: DashboardSidebarPr
       {/* Mobile Top Header */}
       <div className="fixed inset-x-0 top-0 z-40 flex h-16 items-center justify-between border-b border-zinc-200/80 bg-white/95 px-4 backdrop-blur md:hidden">
         <Link href="/dashboard" className="flex items-center gap-2">
-          <span className="font-logo text-2xl font-extrabold tracking-normal text-orange-500 select-none">
-            Plugd
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt="Plugd"
+            className="h-8 w-auto object-contain select-none"
+          />
         </Link>
         <button
           type="button"
@@ -64,9 +67,12 @@ export default function DashboardSidebar({ email, username }: DashboardSidebarPr
       >
         <div className="hidden items-center gap-3 px-6 pb-6 pt-7 md:flex">
           <Link href="/dashboard" className="flex items-center gap-2">
-            <span className="font-logo text-3xl font-extrabold tracking-normal text-orange-500 select-none leading-none">
-              Plugd
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo.png"
+              alt="Plugd"
+              className="h-9 w-auto object-contain select-none"
+            />
           </Link>
         </div>
 

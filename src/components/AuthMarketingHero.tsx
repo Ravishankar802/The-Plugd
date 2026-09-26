@@ -13,9 +13,12 @@ export default function AuthMarketingHero() {
       {/* Top Brand Logo */}
       <div className="relative z-10">
         <Link href="/" className="inline-block group focus:outline-none">
-          <span className="font-logo text-4xl font-extrabold tracking-normal text-orange-500 select-none leading-none">
-            Plugd
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt="Plugd"
+            className="h-10 sm:h-12 w-auto object-contain select-none transition-transform duration-200 group-hover:scale-[1.02]"
+          />
         </Link>
       </div>
 

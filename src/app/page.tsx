@@ -24,50 +24,16 @@ const HOMEPAGE_TOP_PICKS_SLUGS = [
   "porsche-911-gt3-rs",
   "bmw-s1000rr",
   "koenigsegg-jesko-absolut",
-  "red-bull-energy-drink",
   "bugatti-chiron-super-sport",
-  "biryani",
-  "monster-ultra-energy-drink",
-  "pizza",
   "ducati-panigale-v4r",
   "porsche-911",
   "kawasaki-ninja-h2r",
-  "diet-coke",
   "airpods-pro",
-  "protein-supplement",
-] as const;
-
-const HOMEPAGE_FOOD_ITEMS_DEF = [
-  { name: "Biryani", slug: "biryani" },
-  { name: "Pizza", slug: "pizza" },
-  { name: "Shawarma", slug: "shawarma" },
-  { name: "Burger", slug: "burger" },
-  { name: "Pasta", slug: "pasta" },
-  { name: "Sandwich", slug: "sandwich" },
-  { name: "Momos", slug: "momo", fallbackSlug: "momos" },
-  { name: "Vada Pav", slug: "vada-pav" },
-  { name: "Tandoori Chicken", slug: "tandoori-chicken" },
-  { name: "Mutton", slug: "mutton" },
-  { name: "Waffles", slug: "waffles" },
-  { name: "Thali", slug: "thali" },
-  { name: "Chole Bhature", slug: "chole-bhature" },
-  { name: "Paneer", slug: "paneer" },
-  { name: "Grilled Chicken", slug: "grilled-chicken" },
-] as const;
-
-const HOMEPAGE_DRINKS_ITEMS_DEF = [
-  { name: "Red Bull Energy Drink", slug: "red-bull-energy-drink" },
-  { name: "Monster Energy Drink", slug: "monster-energy-drink" },
-  { name: "Monster Ultra Energy Drink", slug: "monster-ultra-energy-drink" },
-  { name: "Diet Coke", slug: "diet-coke" },
-  { name: "Hell Energy Drink", slug: "hell-energy-drink" },
-  { name: "Coca Cola Zero Sugar Can", slug: "coca-cola-zero-sugar-can" },
-  { name: "Pepsi", slug: "pepsi" },
-  { name: "Sprite Zero", slug: "sprite-zero" },
-  { name: "Gatorade Energy Drink", slug: "gatorade-energy-drink" },
-  { name: "Smooth Chocolate Milk Drink", slug: "smooth-chocolate-milk-drink" },
-  { name: "Thums Up", slug: "thums-up" },
-  { name: "Mountain Dew", slug: "mountain-dew" },
+  "apple-watch-ultra",
+  "samsung-galaxy-s26-ultra",
+  "sony-wh-1000xm6",
+  "aston-martin-valkyrie",
+  "mclaren-f1",
 ] as const;
 
 const HOMEPAGE_FASHION_ITEMS_DEF = [
@@ -125,17 +91,6 @@ const HOMEPAGE_BEAUTY_ITEMS_DEF = [
   { name: "Coffee Body Scrub", slug: "coffee-body-scrub" },
 ] as const;
 
-const HOMEPAGE_ENTERTAINMENT_ITEMS_DEF = [
-  { name: "Theater Experience", slug: "theater-experience" },
-  { name: "Board Game Night", slug: "board-game-night" },
-  { name: "Movie Ticket", slug: "movie-ticket" },
-  { name: "Concert Ticket", slug: "concert-ticket" },
-  { name: "Music Festival Pass", slug: "music-festival-pass" },
-  { name: "Comedy Show Ticket", slug: "comedy-show-ticket" },
-  { name: "Anime Box Set", slug: "anime-box-set" },
-  { name: "Vinyl Player", slug: "vinyl-player" },
-] as const;
-
 const HOMEPAGE_SUBSCRIPTIONS_ITEMS_DEF = [
   { name: "Claude Max", slug: "claude-max" },
   { name: "Google AI Ultra", slug: "google-ai-ultra" },
@@ -151,21 +106,31 @@ const HOMEPAGE_SUBSCRIPTIONS_ITEMS_DEF = [
   { name: "Midjourney Subscription", slug: "midjourney-subscription" },
 ] as const;
 
-const HOMEPAGE_VEHICLES_ITEMS_DEF = [
+const HOMEPAGE_CARS_ITEMS_DEF = [
   { name: "Koenigsegg Jesko Absolut", slug: "koenigsegg-jesko-absolut" },
   { name: "Bugatti Chiron Super Sport", slug: "bugatti-chiron-super-sport" },
   { name: "McLaren F1", slug: "mclaren-f1" },
-  { name: "Kawasaki Ninja H2R", slug: "kawasaki-ninja-h2r" },
   { name: "Pagani Huayra", slug: "pagani-huayra" },
   { name: "Porsche 911 GT3 RS", slug: "porsche-911-gt3-rs" },
-  { name: "BMW S1000RR", slug: "bmw-s1000rr" },
   { name: "Aston Martin Valkyrie", slug: "aston-martin-valkyrie" },
   { name: "McLaren P1", slug: "mclaren-p1" },
   { name: "Porsche 911", slug: "porsche-911" },
   { name: "Tesla Cybertruck", slug: "tesla-cybertruck" },
   { name: "Bugatti Centodieci", slug: "bugatti-centodieci" },
   { name: "McLaren Solus GT", slug: "mclaren-solus-gt" },
+] as const;
+
+const HOMEPAGE_BIKES_ITEMS_DEF = [
+  { name: "Kawasaki Ninja H2R", slug: "kawasaki-ninja-h2r" },
+  { name: "BMW S1000RR", slug: "bmw-s1000rr" },
   { name: "Ducati Panigale V4R", slug: "ducati-panigale-v4r" },
+  { name: "Yamaha YZF-R1M", slug: "yamaha-yzf-r1m" },
+  { name: "Aprilia RSV4 Factory", slug: "aprilia-rsv4-factory" },
+  { name: "KTM 1290 Super Duke R", slug: "ktm-1290-super-duke-r" },
+  { name: "Ducati Streetfighter V4 SP2", slug: "ducati-streetfighter-v4-sp2" },
+  { name: "BMW M1000RR", slug: "bmw-m1000rr" },
+  { name: "Kawasaki Ninja ZX-10RR", slug: "kawasaki-ninja-zx-10rr" },
+  { name: "MV Agusta Brutale 1000 RR", slug: "mv-agusta-brutale-1000-rr" },
 ] as const;
 
 const HOMEPAGE_ELECTRONICS_ITEMS_DEF = [
@@ -195,36 +160,6 @@ const HOMEPAGE_ELECTRONICS_ITEMS_DEF = [
   { name: "Google Pixel Watch", slug: "google-pixel-watch" },
 ] as const;
 
-const HOMEPAGE_FITNESS_ITEMS_DEF = [
-  { name: "Gym Membership", slug: "gym-membership" },
-  { name: "Protein Supplement", slug: "protein-supplement", fallbackSlug: "protien-supplement" },
-  { name: "Fitness Watch", slug: "fitness-watch" },
-  { name: "Dumbbell Set", slug: "dumbbell-set" },
-  { name: "Weightlifting Belt", slug: "weightlifting-belt", fallbackSlug: "weightlighting-belt" },
-  { name: "Barbell Set", slug: "barbell-set" },
-  { name: "Weight Plates", slug: "weight-plates" },
-  { name: "Treadmill", slug: "treadmill" },
-  { name: "Exercise Bike", slug: "exercise-bike" },
-  { name: "Pull-Up Bar", slug: "pull-up-bar" },
-  { name: "Bench Press", slug: "bench-press" },
-  { name: "Squat Rack", slug: "squat-rack" },
-] as const;
-
-const HOMEPAGE_TOYS_ITEMS_DEF = [
-  { name: "Pokémon Trading Card Box", slug: "pokemon-trading-card-box" },
-  { name: "LEGO Collector Edition", slug: "lego-collector-edition" },
-  { name: "LEGO Star Wars Set", slug: "lego-star-wars-set" },
-  { name: "LEGO Technic Car", slug: "lego-technic-car" },
-  { name: "DC Action Figure", slug: "dc-action-figure" },
-  { name: "Hot Wheels Car", slug: "hot-wheels-car" },
-  { name: "Water Gun", slug: "water-gun" },
-  { name: "Monopoly", slug: "monopoly" },
-  { name: "Gundam Model Kit", slug: "gundam-model-kit" },
-  { name: "Marvel Action Figure", slug: "marvel-action-figure" },
-  { name: "Remote Control Car", slug: "remote-control-car" },
-  { name: "Nerf Blaster", slug: "nerf-blaster" },
-] as const;
-
 interface HomePageProps {
   searchParams?: Promise<{ q?: string }> | { q?: string };
 }
@@ -234,7 +169,18 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams?.q?.trim() || "";
 
-  const [categories, topPicksDbItems, foodDbItems, drinksDbItems, fashionDbItems, mobileDbItems, beautyDbItems, entertainmentDbItems, subscriptionsDbItems, vehiclesDbItems, electronicsDbItems, fitnessDbItems, toysDbItems, searchResults] = await Promise.all([
+  const [
+    categories,
+    topPicksDbItems,
+    fashionDbItems,
+    mobileDbItems,
+    beautyDbItems,
+    subscriptionsDbItems,
+    carsDbItems,
+    bikesDbItems,
+    electronicsDbItems,
+    searchResults,
+  ] = await Promise.all([
     prisma.category.findMany({
       where: { active: true },
       include: {
@@ -249,23 +195,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     prisma.catalogItem.findMany({
       where: {
         active: true,
-        slug: { in: [...HOMEPAGE_TOP_PICKS_SLUGS, "protien-supplement"] },
-      },
-      include: { category: true },
-    }),
-    prisma.catalogItem.findMany({
-      where: {
-        active: true,
-        category: { slug: "food" },
-        slug: { in: HOMEPAGE_FOOD_ITEMS_DEF.flatMap((f) => [f.slug, ("fallbackSlug" in f ? f.fallbackSlug : f.slug)]) },
-      },
-      include: { category: true },
-    }),
-    prisma.catalogItem.findMany({
-      where: {
-        active: true,
-        category: { slug: "drinks" },
-        slug: { in: HOMEPAGE_DRINKS_ITEMS_DEF.map((d) => d.slug) },
+        slug: { in: [...HOMEPAGE_TOP_PICKS_SLUGS] },
       },
       include: { category: true },
     }),
@@ -296,14 +226,6 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     prisma.catalogItem.findMany({
       where: {
         active: true,
-        category: { slug: "entertainment" },
-        slug: { in: HOMEPAGE_ENTERTAINMENT_ITEMS_DEF.map((e) => e.slug) },
-      },
-      include: { category: true },
-    }),
-    prisma.catalogItem.findMany({
-      where: {
-        active: true,
         category: { slug: "subscriptions" },
         slug: {
           in: HOMEPAGE_SUBSCRIPTIONS_ITEMS_DEF.flatMap((s) => [s.slug, ("fallbackSlug" in s ? s.fallbackSlug : s.slug)]),
@@ -314,31 +236,24 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     prisma.catalogItem.findMany({
       where: {
         active: true,
-        category: { slug: "vehicles" },
-        slug: { in: HOMEPAGE_VEHICLES_ITEMS_DEF.map((v) => v.slug) },
+        category: { slug: "cars" },
+        slug: { in: HOMEPAGE_CARS_ITEMS_DEF.map((c) => c.slug) },
       },
       include: { category: true },
     }),
     prisma.catalogItem.findMany({
       where: {
         active: true,
+        category: { slug: "bikes" },
+        slug: { in: HOMEPAGE_BIKES_ITEMS_DEF.map((b) => b.slug) },
+      },
+      include: { category: true },
+    }),
+    prisma.catalogItem.findMany({
+      where: {
+        active: true,
+        category: { slug: "electronics" },
         slug: { in: HOMEPAGE_ELECTRONICS_ITEMS_DEF.map((e) => e.slug) },
-      },
-      include: { category: true },
-    }),
-    prisma.catalogItem.findMany({
-      where: {
-        active: true,
-        category: { slug: "fitness" },
-        slug: { in: HOMEPAGE_FITNESS_ITEMS_DEF.flatMap((f) => [f.slug, ("fallbackSlug" in f ? f.fallbackSlug : f.slug)]) },
-      },
-      include: { category: true },
-    }),
-    prisma.catalogItem.findMany({
-      where: {
-        active: true,
-        category: { slug: "toys" },
-        slug: { in: HOMEPAGE_TOYS_ITEMS_DEF.map((t) => t.slug) },
       },
       include: { category: true },
     }),
@@ -348,37 +263,9 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   ]);
 
   const topPicksMap = new Map(topPicksDbItems.map((item) => [item.slug, item]));
-  if (topPicksMap.has("protien-supplement") && !topPicksMap.has("protein-supplement")) {
-    const legacyProtein = topPicksMap.get("protien-supplement")!;
-    topPicksMap.set("protein-supplement", {
-      ...legacyProtein,
-      name: "Protein Supplement",
-      slug: "protein-supplement",
-    });
-  }
   const topPicksItems = HOMEPAGE_TOP_PICKS_SLUGS
     .map((slug) => topPicksMap.get(slug))
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
-
-  const foodMap = new Map(foodDbItems.map((item) => [item.slug, item]));
-  const foodSectionItems = HOMEPAGE_FOOD_ITEMS_DEF.map((def) => {
-    const item = foodMap.get(def.slug) || ("fallbackSlug" in def ? foodMap.get(def.fallbackSlug) : undefined);
-    if (!item) return null;
-    return {
-      ...item,
-      displayName: def.name,
-    };
-  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
-
-  const drinksMap = new Map(drinksDbItems.map((item) => [item.slug, item]));
-  const drinksSectionItems = HOMEPAGE_DRINKS_ITEMS_DEF.map((def) => {
-    const item = drinksMap.get(def.slug);
-    if (!item) return null;
-    return {
-      ...item,
-      displayName: def.name,
-    };
-  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
 
   const fashionMap = new Map(fashionDbItems.map((item) => [item.slug, item]));
   const fashionSectionItems = HOMEPAGE_FASHION_ITEMS_DEF.map((def) => {
@@ -410,16 +297,6 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     };
   }).filter((item): item is NonNullable<typeof item> => Boolean(item));
 
-  const entertainmentMap = new Map(entertainmentDbItems.map((item) => [item.slug, item]));
-  const entertainmentSectionItems = HOMEPAGE_ENTERTAINMENT_ITEMS_DEF.map((def) => {
-    const item = entertainmentMap.get(def.slug);
-    if (!item) return null;
-    return {
-      ...item,
-      displayName: def.name,
-    };
-  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
-
   const subscriptionsMap = new Map(subscriptionsDbItems.map((item) => [item.slug, item]));
   const subscriptionsSectionItems = HOMEPAGE_SUBSCRIPTIONS_ITEMS_DEF.map((def) => {
     const item = subscriptionsMap.get(def.slug) || ("fallbackSlug" in def ? subscriptionsMap.get(def.fallbackSlug) : undefined);
@@ -430,9 +307,19 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     };
   }).filter((item): item is NonNullable<typeof item> => Boolean(item));
 
-  const vehiclesMap = new Map(vehiclesDbItems.map((item) => [item.slug, item]));
-  const vehiclesSectionItems = HOMEPAGE_VEHICLES_ITEMS_DEF.map((def) => {
-    const item = vehiclesMap.get(def.slug);
+  const carsMap = new Map(carsDbItems.map((item) => [item.slug, item]));
+  const carsSectionItems = HOMEPAGE_CARS_ITEMS_DEF.map((def) => {
+    const item = carsMap.get(def.slug);
+    if (!item) return null;
+    return {
+      ...item,
+      displayName: def.name,
+    };
+  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+  const bikesMap = new Map(bikesDbItems.map((item) => [item.slug, item]));
+  const bikesSectionItems = HOMEPAGE_BIKES_ITEMS_DEF.map((def) => {
+    const item = bikesMap.get(def.slug);
     if (!item) return null;
     return {
       ...item,
@@ -450,28 +337,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     };
   }).filter((item): item is NonNullable<typeof item> => Boolean(item));
 
-  const fitnessMap = new Map(fitnessDbItems.map((item) => [item.slug, item]));
-  const fitnessSectionItems = HOMEPAGE_FITNESS_ITEMS_DEF.map((def) => {
-    const item = fitnessMap.get(def.slug) || ("fallbackSlug" in def ? fitnessMap.get(def.fallbackSlug) : undefined);
-    if (!item) return null;
-    return {
-      ...item,
-      displayName: def.name,
-    };
-  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
-
-  const toysMap = new Map(toysDbItems.map((item) => [item.slug, item]));
-  const toysSectionItems = HOMEPAGE_TOYS_ITEMS_DEF.map((def) => {
-    const item = toysMap.get(def.slug);
-    if (!item) return null;
-    return {
-      ...item,
-      displayName: def.name,
-    };
-  }).filter((item): item is NonNullable<typeof item> => Boolean(item));
-
-  // Homepage shelves & category nav ordering:
-  // Mobile -> Vehicles -> Beauty, Subscriptions after Fitness
+  // Homepage shelves & category nav ordering (Exact 11 categories):
   const shelfCategories = organizeCategories(categories);
   const navCategories = organizeCategories(categories);
 
@@ -706,12 +572,12 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   />
                 </div>
 
-                {/* Custom Item 3: Pizza (Food craving) */}
+                {/* Custom Item 3: Luxury Fragrance */}
                 <div className="absolute bottom-0 left-2 sm:left-4 w-12 h-12 sm:w-16 sm:h-16 rounded-xl overflow-hidden shadow-xl -rotate-3 transition-transform duration-300">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Pizza-3007395.jpg/1280px-Pizza-3007395.jpg"
-                    alt="Custom food"
+                    src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&auto=format&fit=crop&q=80"
+                    alt="Custom fragrance"
                     className="h-full w-full object-cover brightness-[1.05] contrast-[1.05]"
                     loading="lazy"
                   />
@@ -1075,57 +941,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   </Link>
                 </div>
 
-                {category.slug === "food" ? (
-                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
-                    {foodSectionItems.map((item, idx) => (
-                      <div
-                        key={item.id}
-                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
-                      >
-                        <CatalogCard
-                          href={`/catalog/${item.slug}`}
-                          image={getProductDisplayImage("food", item.slug, item.image) || item.image}
-                          name={item.displayName || item.name}
-                          category={category.name}
-                          addedCount={item.addedCount}
-                          priority={idx < 6}
-                          action={
-                            <AddToWishlistButton
-                              catalogItemId={item.id}
-                              isLoggedIn={Boolean(session?.userId)}
-                              floating
-                            />
-                          }
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ) : category.slug === "drinks" ? (
-                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
-                    {drinksSectionItems.map((item, idx) => (
-                      <div
-                        key={item.id}
-                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
-                      >
-                        <CatalogCard
-                          href={`/catalog/${item.slug}`}
-                          image={getProductDisplayImage("drinks", item.slug, item.image) || item.image}
-                          name={item.displayName || item.name}
-                          category={category.name}
-                          addedCount={item.addedCount}
-                          priority={idx < 6}
-                          action={
-                            <AddToWishlistButton
-                              catalogItemId={item.id}
-                              isLoggedIn={Boolean(session?.userId)}
-                              floating
-                            />
-                          }
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ) : category.slug === "fashion" ? (
+                {category.slug === "fashion" ? (
                   <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                     {fashionSectionItems.map((item, idx) => (
                       <div
@@ -1200,31 +1016,6 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                       </div>
                     ))}
                   </div>
-                ) : category.slug === "entertainment" ? (
-                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
-                    {entertainmentSectionItems.map((item, idx) => (
-                      <div
-                        key={item.id}
-                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
-                      >
-                        <CatalogCard
-                          href={`/catalog/${item.slug}`}
-                          image={getProductDisplayImage("entertainment", item.slug, item.image) || item.image}
-                          name={item.displayName || item.name}
-                          category={category.name}
-                          addedCount={item.addedCount}
-                          priority={idx < 6}
-                          action={
-                            <AddToWishlistButton
-                              catalogItemId={item.id}
-                              isLoggedIn={Boolean(session?.userId)}
-                              floating
-                            />
-                          }
-                        />
-                      </div>
-                    ))}
-                  </div>
                 ) : category.slug === "subscriptions" ? (
                   <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
                     {subscriptionsSectionItems.map((item, idx) => (
@@ -1250,16 +1041,41 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                       </div>
                     ))}
                   </div>
-                ) : category.slug === "vehicles" ? (
+                ) : category.slug === "cars" ? (
                   <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
-                    {vehiclesSectionItems.map((item, idx) => (
+                    {carsSectionItems.map((item, idx) => (
                       <div
                         key={item.id}
                         className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
                       >
                         <CatalogCard
                           href={`/catalog/${item.slug}`}
-                          image={getProductDisplayImage("vehicles", item.slug, item.image) || item.image}
+                          image={getProductDisplayImage("cars", item.slug, item.image) || item.image}
+                          name={item.displayName || item.name}
+                          category={category.name}
+                          addedCount={item.addedCount}
+                          priority={idx < 6}
+                          action={
+                            <AddToWishlistButton
+                              catalogItemId={item.id}
+                              isLoggedIn={Boolean(session?.userId)}
+                              floating
+                            />
+                          }
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : category.slug === "bikes" ? (
+                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
+                    {bikesSectionItems.map((item, idx) => (
+                      <div
+                        key={item.id}
+                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
+                      >
+                        <CatalogCard
+                          href={`/catalog/${item.slug}`}
+                          image={getProductDisplayImage("bikes", item.slug, item.image) || item.image}
                           name={item.displayName || item.name}
                           category={category.name}
                           addedCount={item.addedCount}
@@ -1300,57 +1116,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                       </div>
                     ))}
                   </div>
-                ) : category.slug === "fitness" ? (
-                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
-                    {fitnessSectionItems.map((item, idx) => (
-                      <div
-                        key={item.id}
-                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
-                      >
-                        <CatalogCard
-                          href={`/catalog/${item.slug}`}
-                          image={getProductDisplayImage("fitness", item.slug, item.image) || item.image}
-                          name={item.displayName || item.name}
-                          category={category.name}
-                          addedCount={item.addedCount}
-                          priority={idx < 6}
-                          action={
-                            <AddToWishlistButton
-                              catalogItemId={item.id}
-                              isLoggedIn={Boolean(session?.userId)}
-                              floating
-                            />
-                          }
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ) : category.slug === "toys" ? (
-                  <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-2 pt-1 no-scrollbar">
-                    {toysSectionItems.map((item, idx) => (
-                      <div
-                        key={item.id}
-                        className="w-[105px] sm:w-[145px] md:w-[170px] shrink-0"
-                      >
-                        <CatalogCard
-                          href={`/catalog/${item.slug}`}
-                          image={getProductDisplayImage("toys", item.slug, item.image) || item.image}
-                          name={item.displayName || item.name}
-                          category={category.name}
-                          addedCount={item.addedCount}
-                          priority={idx < 6}
-                          action={
-                            <AddToWishlistButton
-                              catalogItemId={item.id}
-                              isLoggedIn={Boolean(session?.userId)}
-                              floating
-                            />
-                          }
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ) : (
+                ) : category.catalogItems.length > 0 ? (
                   <div className="grid grid-cols-2 gap-x-2 gap-y-5 sm:gap-3.5 md:gap-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
                     {category.catalogItems.map((item) => (
                       <CatalogCard
@@ -1370,7 +1136,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                       />
                     ))}
                   </div>
-                )}
+                ) : null}
               </section>
             ))}
           </div>

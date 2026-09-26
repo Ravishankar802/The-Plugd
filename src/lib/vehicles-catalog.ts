@@ -607,6 +607,9 @@ export const BIKES_SLUGS = BIKES_DATA.map((b) => slugifyVehicle(b.name));
 
 export const CARS_SLUGS = CARS_DATA.map((c) => slugifyVehicle(c.name));
 
+export const CARS_TOP_PICKS_SLUGS = VEHICLES_TOP_PICKS_SLUGS.filter((s) => CARS_SLUGS.includes(s));
+export const BIKES_TOP_PICKS_SLUGS = VEHICLES_TOP_PICKS_SLUGS.filter((s) => BIKES_SLUGS.includes(s));
+
 export const RAW_VEHICLE_PRODUCTS: Array<{
   id: string;
   name: string;
@@ -680,6 +683,42 @@ export function getFullVehiclesCatalog(): VehicleProduct[] {
     brand: p.brand,
     category: "Vehicles",
     subcategory: p.subcategory,
+    sectionId: p.sectionId,
+    sectionTitle: p.sectionTitle,
+    imageUrl: getVehiclesProductImage(p.id, p.imageUrl) || DEFAULT_VEHICLES_IMAGE,
+    description: "",
+    tags: p.tags,
+    featured: Boolean(p.featured),
+    trending: Boolean(p.trending),
+    displayOrder: idx,
+  }));
+}
+
+export function getFullCarsCatalog() {
+  return RAW_VEHICLE_PRODUCTS.filter((p) => p.subcategory === "Cars").map((p, idx) => ({
+    id: p.id,
+    name: p.name,
+    brand: p.brand,
+    category: "Cars",
+    subcategory: "Cars",
+    sectionId: p.sectionId,
+    sectionTitle: p.sectionTitle,
+    imageUrl: getVehiclesProductImage(p.id, p.imageUrl) || DEFAULT_VEHICLES_IMAGE,
+    description: "",
+    tags: p.tags,
+    featured: Boolean(p.featured),
+    trending: Boolean(p.trending),
+    displayOrder: idx,
+  }));
+}
+
+export function getFullBikesCatalog() {
+  return RAW_VEHICLE_PRODUCTS.filter((p) => p.subcategory === "Bikes").map((p, idx) => ({
+    id: p.id,
+    name: p.name,
+    brand: p.brand,
+    category: "Bikes",
+    subcategory: "Bikes",
     sectionId: p.sectionId,
     sectionTitle: p.sectionTitle,
     imageUrl: getVehiclesProductImage(p.id, p.imageUrl) || DEFAULT_VEHICLES_IMAGE,

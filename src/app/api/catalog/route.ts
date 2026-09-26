@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
-import { getMobilesProductImage, getElectronicsProductImage, getFitnessProductImage, getToysProductImage, getVehiclesProductImage } from "@/lib/product-images";
+import { getProductDisplayImage } from "@/lib/product-images";
 
 export const dynamic = "force-dynamic";
 
@@ -13,18 +12,9 @@ export async function GET(req: Request) {
     const category = searchParams.get("category")?.trim() || "";
     const limitParam = Number(searchParams.get("limit") || "0");
 
-    const duplicateFallbackSlugs = [
-      "lay-s-classic-salted",
-      "lay-s-magic-masala",
-      "haldiram-s-aloo-bhujia",
-      "haldiram-s-bhujia-sev",
-      "haldiram-s-mixture",
-    ];
-
     const items = await prisma.catalogItem.findMany({
       where: {
         active: true,
-        slug: { notIn: duplicateFallbackSlugs },
         ...(category ? { category: { slug: category } } : {}),
         ...(q
           ? {
@@ -54,97 +44,19 @@ export async function GET(req: Request) {
       ...(limitParam > 0 ? { take: limitParam } : {}),
     });
 
-    let finalItems = items;
-    if (category === "drinks" && items.length < 59) {
-      const drinksCat = await prisma.category.findUnique({
-        where: { slug: "drinks" },
-        select: { id: true, name: true, slug: true },
-      });
-      if (drinksCat) {
-        const fullDrinks = getFullDrinksCatalog();
-        const existingSlugs = new Set(items.map((i) => i.slug));
-        const missing = fullDrinks.filter((d) => !existingSlugs.has(d.id));
+    let finalItems = items.map((item) => ({
+      ...item,
+      image: getProductDisplayImage(item.category.slug, item.slug, item.image),
+    }));
 
-        if (missing.length > 0) {
-          await prisma.catalogItem.createMany({
-            data: missing.map((d) => ({
-              name: d.name,
-              slug: d.id,
-              categoryId: drinksCat.id,
-              image: d.imageUrl,
-              active: true,
-              featured: Boolean(d.featured),
-              displayOrder: d.displayOrder,
-              addedCount: 0,
-            })),
-            skipDuplicates: true,
-          });
-
-          finalItems = await prisma.catalogItem.findMany({
-            where: {
-              active: true,
-              slug: { notIn: duplicateFallbackSlugs },
-              category: { slug: "drinks" },
-            },
-            select: {
-              id: true,
-              name: true,
-              slug: true,
-              image: true,
-              categoryId: true,
-              featured: true,
-              displayOrder: true,
-              addedCount: true,
-              category: {
-                select: { id: true, name: true, slug: true },
-              },
-            },
-            orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
-          });
-        }
-      }
-    }
-
-    if (category === "drinks") {
-      const fullDrinks = getFullDrinksCatalog();
-      const imageBySlug = new Map(fullDrinks.map((d) => [d.id, d.imageUrl]));
-      finalItems = finalItems.map((item) => {
-        const authenticImage = imageBySlug.get(item.slug);
-        return authenticImage ? { ...item, image: authenticImage } : item;
-      });
-    } else if (category === "mobile") {
+    if (category === "mobile") {
       const fullMobiles = getFullMobilesCatalog();
       const topPickSlugs = fullMobiles.map((p) => p.id);
-      finalItems = finalItems
-        .map((item) => ({
-          ...item,
-          image: getMobilesProductImage(item.slug, item.image || undefined),
-        }))
-        .sort((a, b) => {
-          const idxA = topPickSlugs.indexOf(a.slug);
-          const idxB = topPickSlugs.indexOf(b.slug);
-          return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
-        });
-    } else if (category === "electronics") {
-      finalItems = finalItems.map((item) => ({
-        ...item,
-        image: getElectronicsProductImage(item.slug, item.image || undefined),
-      }));
-    } else if (category === "fitness") {
-      finalItems = finalItems.map((item) => ({
-        ...item,
-        image: getFitnessProductImage(item.slug, item.image || undefined),
-      }));
-    } else if (category === "toys") {
-      finalItems = finalItems.map((item) => ({
-        ...item,
-        image: getToysProductImage(item.slug, item.image || undefined),
-      }));
-    } else if (category === "vehicles") {
-      finalItems = finalItems.map((item) => ({
-        ...item,
-        image: getVehiclesProductImage(item.slug, item.image || undefined),
-      }));
+      finalItems.sort((a, b) => {
+        const idxA = topPickSlugs.indexOf(a.slug);
+        const idxB = topPickSlugs.indexOf(b.slug);
+        return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
+      });
     }
 
     return NextResponse.json(finalItems, {
@@ -157,3 +69,4 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Failed to fetch catalog items" }, { status: 500 });
   }
 }
+

@@ -7,7 +7,8 @@ async function main() {
   });
 
   if (!drinksCat) {
-    throw new Error('Drinks category not found');
+    console.log('[SCRIPTS] Drinks category not found, skipping Monster Ultra');
+    return;
   }
 
   const monsterItem = await prisma.catalogItem.findUnique({

@@ -2118,8 +2118,7 @@ export function getCategoryTileImage(slug: string): string {
 }
 
 /**
- * 20 Curated Homepage Category Grid Tiles (Zepto-style visual discovery)
- * Exactly 20 tiles in specified sequence: 10 columns x 2 rows on desktop.
+ * 11 Curated Homepage Category Grid Tiles (Exact Plugd main categories)
  */
 export interface HomepageCategoryTile {
   name: string;
@@ -2128,31 +2127,10 @@ export interface HomepageCategoryTile {
 }
 
 export const HOMEPAGE_CATEGORIES_GRID: HomepageCategoryTile[] = [
-  // Row 1 (10 tiles)
   {
     name: "Mobile",
     href: "/category/mobile",
     image: "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-duo-finish-select-202609-nightsky_GEO_EMEA_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=L2FnUkNTRm43ZDRCREFsdzlaeThka1k5MDdKKy9LWVNaMytjbFNMOXdSUmFrOHlZZFNsN2Z2SDlnV2QySDNwVm4wZU5pVHVHdUU0SU0vdlcrc3NTQ1NzRVdVYUZMK2pnb0pYa1BITFFSbEwxcjBVRyswWG14bEI4WVZBcUIybEZCczNpeEs0Y3pqL3FIZXNMK2RzNTlR&traceId=1",
-  },
-  {
-    name: "Coffee",
-    href: "/category/drinks?sub=coffee",
-    image: "https://i.pinimg.com/1200x/29/6d/c1/296dc15130a76781017f119203e396d3.jpg",
-  },
-  {
-    name: "Fashion",
-    href: "/category/fashion",
-    image: "https://i.pinimg.com/1200x/b5/62/91/b562919ee0fa1993cce4f043342fcd9c.jpg",
-  },
-  {
-    name: "Gaming",
-    href: "/category/electronics?sub=gaming",
-    image: "https://i.pinimg.com/1200x/a6/6c/36/a66c367c6cd24d35746c8a162e382a12.jpg",
-  },
-  {
-    name: "Ice Creams",
-    href: "/category/food?sub=ice-creams",
-    image: "https://i.pinimg.com/1200x/8f/e2/08/8fe20822887ce50251a74036dc050eb9.jpg",
   },
   {
     name: "Electronics",
@@ -2160,81 +2138,54 @@ export const HOMEPAGE_CATEGORIES_GRID: HomepageCategoryTile[] = [
     image: "https://i.pinimg.com/1200x/f0/25/a8/f025a8720a0be78b8038aeb15fd3cc29.jpg",
   },
   {
-    name: "Beauty",
-    href: "/category/beauty",
-    image: "https://i.pinimg.com/1200x/65/c3/f7/65c3f712255d6c59224ba70f3461f799.jpg",
-  },
-  {
-    name: "Bikes",
-    href: "/category/vehicles?sub=bikes",
-    image: "https://i.pinimg.com/736x/a4/6d/07/a46d07cce741e97a666cf51ecf5a1e81.jpg",
-  },
-  {
-    name: "Cold Drinks & Juices",
-    href: "/category/drinks?sub=cold-drinks-juices",
-    image: "https://i.pinimg.com/736x/b0/c1/92/b0c192ac88e38530625d72033c95d74e.jpg",
-  },
-  {
-    name: "Laptops",
-    href: "/category/electronics?sub=laptops",
-    image: "https://i.pinimg.com/1200x/d6/35/af/d635afab177b8051c84149e663996085.jpg",
-  },
-  // Row 2 (10 tiles)
-  {
-    name: "Entertainment",
-    href: "/category/entertainment",
-    image: "https://i.pinimg.com/1200x/ae/ad/1c/aead1c5a93fc66235ef5440d2c1fcce6.jpg",
-  },
-  {
-    name: "Snacks",
-    href: "/category/food?sub=snacks",
-    image: "https://i.pinimg.com/1200x/27/04/2b/27042b22fecb5612fd64e15eea285e69.jpg",
-  },
-  {
     name: "Subscriptions",
     href: "/category/subscriptions",
     image: "https://i.pinimg.com/736x/f9/d1/43/f9d143e7063e913378925d3ffa0de5b4.jpg",
   },
   {
-    name: "Skin Care",
-    href: "/category/beauty?sub=skin-care",
-    image: "https://i.pinimg.com/736x/5f/4d/7d/5f4d7ddb4382c44486a0e68293b1d5cf.jpg",
+    name: "Fashion",
+    href: "/category/fashion",
+    image: "https://i.pinimg.com/1200x/b5/62/91/b562919ee0fa1993cce4f043342fcd9c.jpg",
+  },
+  {
+    name: "Beauty",
+    href: "/category/beauty",
+    image: "https://i.pinimg.com/1200x/65/c3/f7/65c3f712255d6c59224ba70f3461f799.jpg",
   },
   {
     name: "Cars",
-    href: "/category/vehicles?sub=cars",
+    href: "/category/cars",
     image: "https://i.pinimg.com/736x/0d/37/3a/0d373af47cb9c6c8607d7ac09af14ed9.jpg",
   },
   {
-    name: "Sweet Cravings",
-    href: "/category/food?sub=sweet-cravings",
-    image: "https://i.pinimg.com/736x/16/4a/21/164a21588d7025cad8444055fc361e8f.jpg",
+    name: "Bikes",
+    href: "/category/bikes",
+    image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=800&auto=format&fit=crop&q=80",
   },
   {
-    name: "Fitness",
-    href: "/category/fitness",
-    image: "https://i.pinimg.com/736x/73/38/85/733885d96e5f21ba103ca8fb378f4a4c.jpg",
+    name: "Concerts",
+    href: "/category/concerts",
+    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&auto=format&fit=crop&q=80",
+  },
+  {
+    name: "Vacation",
+    href: "/category/vacation",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80",
+  },
+  {
+    name: "Watches",
+    href: "/category/watches",
+    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&auto=format&fit=crop&q=80",
   },
   {
     name: "Jewellery",
-    href: "/category/fashion?sub=jewellery",
-    image: "https://i.pinimg.com/736x/25/96/e6/2596e6849fbc75d5d6a1146d9d2f455e.jpg",
-  },
-  {
-    name: "Biscuits",
-    href: "/category/food?sub=biscuits",
-    image: "https://i.pinimg.com/1200x/ee/84/b7/ee84b7dd4013b7620f2c794aa3342164.jpg",
-  },
-  {
-    name: "Toys",
-    href: "/category/toys",
-    image: "https://i.pinimg.com/1200x/63/a8/a2/63a8a2c1ad77c37fb59b951e1fd7ff6d.jpg",
+    href: "/category/jewellery",
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80",
   },
 ];
 
 /**
- * Mobile-specific 8 category tiles for the homepage, in exact specified order.
- * Desktop continues to use all 20 tiles in HOMEPAGE_CATEGORIES_GRID.
+ * Mobile-specific category tiles for the homepage, in exact specified order.
  */
 export const MOBILE_HOMEPAGE_CATEGORIES: HomepageCategoryTile[] = [
   {
@@ -2243,6 +2194,16 @@ export const MOBILE_HOMEPAGE_CATEGORIES: HomepageCategoryTile[] = [
     image: "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-duo-finish-select-202609-nightsky_GEO_EMEA_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=L2FnUkNTRm43ZDRCREFsdzlaeThka1k5MDdKKy9LWVNaMytjbFNMOXdSUmFrOHlZZFNsN2Z2SDlnV2QySDNwVm4wZU5pVHVHdUU0SU0vdlcrc3NTQ1NzRVdVYUZMK2pnb0pYa1BITFFSbEwxcjBVRyswWG14bEI4WVZBcUIybEZCczNpeEs0Y3pqL3FIZXNMK2RzNTlR&traceId=1",
   },
   {
+    name: "Electronics",
+    href: "/category/electronics",
+    image: "https://i.pinimg.com/1200x/f0/25/a8/f025a8720a0be78b8038aeb15fd3cc29.jpg",
+  },
+  {
+    name: "Subscriptions",
+    href: "/category/subscriptions",
+    image: "https://i.pinimg.com/736x/f9/d1/43/f9d143e7063e913378925d3ffa0de5b4.jpg",
+  },
+  {
     name: "Fashion",
     href: "/category/fashion",
     image: "https://i.pinimg.com/1200x/b5/62/91/b562919ee0fa1993cce4f043342fcd9c.jpg",
@@ -2253,29 +2214,19 @@ export const MOBILE_HOMEPAGE_CATEGORIES: HomepageCategoryTile[] = [
     image: "https://i.pinimg.com/1200x/65/c3/f7/65c3f712255d6c59224ba70f3461f799.jpg",
   },
   {
-    name: "Bikes",
-    href: "/category/vehicles?sub=bikes",
-    image: "https://i.pinimg.com/736x/a4/6d/07/a46d07cce741e97a666cf51ecf5a1e81.jpg",
-  },
-  {
     name: "Cars",
-    href: "/category/vehicles?sub=cars",
+    href: "/category/cars",
     image: "https://i.pinimg.com/736x/0d/37/3a/0d373af47cb9c6c8607d7ac09af14ed9.jpg",
   },
   {
-    name: "Subscriptions",
-    href: "/category/subscriptions",
-    image: "https://i.pinimg.com/736x/f9/d1/43/f9d143e7063e913378925d3ffa0de5b4.jpg",
+    name: "Bikes",
+    href: "/category/bikes",
+    image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=800&auto=format&fit=crop&q=80",
   },
   {
-    name: "Gaming",
-    href: "/category/electronics?sub=gaming",
-    image: "https://i.pinimg.com/1200x/a6/6c/36/a66c367c6cd24d35746c8a162e382a12.jpg",
-  },
-  {
-    name: "Snacks",
-    href: "/category/food?sub=snacks",
-    image: "https://i.pinimg.com/1200x/27/04/2b/27042b22fecb5612fd64e15eea285e69.jpg",
+    name: "Watches",
+    href: "/category/watches",
+    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&auto=format&fit=crop&q=80",
   },
 ];
 
@@ -2285,16 +2236,12 @@ export const MOBILE_HOMEPAGE_CATEGORIES: HomepageCategoryTile[] = [
  */
 export function getProductDisplayImage(categorySlug: string, itemSlug: string, rawImage?: string | null): string | null {
   const normCat = categorySlug.toLowerCase().trim();
-  if (normCat === "drinks") return getDrinksProductImage(itemSlug, rawImage || undefined);
   if (normCat === "fashion") return getFashionProductImage(itemSlug, rawImage || undefined);
   if (normCat === "mobile") return getMobilesProductImage(itemSlug, rawImage || undefined);
   if (normCat === "beauty") return getBeautyProductImage(itemSlug, rawImage || undefined);
-  if (normCat === "entertainment") return getEntertainmentProductImage(itemSlug, rawImage || undefined);
   if (normCat === "subscriptions") return getSubscriptionsProductImage(itemSlug, rawImage || undefined);
   if (normCat === "electronics") return getElectronicsProductImage(itemSlug, rawImage || undefined);
-  if (normCat === "fitness") return getFitnessProductImage(itemSlug, rawImage || undefined);
-  if (normCat === "toys") return getToysProductImage(itemSlug, rawImage || undefined);
-  if (normCat === "vehicles") return getVehiclesProductImage(itemSlug, rawImage || undefined);
-  if (normCat === "food") return getFoodProductImage(itemSlug, rawImage || undefined);
+  if (normCat === "cars" || normCat === "bikes" || normCat === "vehicles") return getVehiclesProductImage(itemSlug, rawImage || undefined);
   return rawImage || null;
 }
+

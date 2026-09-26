@@ -14,17 +14,11 @@ const TRENDING_SEARCHES = [
   "Porsche 911 GT3 RS",
   "BMW S1000RR",
   "Koenigsegg Jesko Absolut",
-  "Red Bull Energy Drink",
   "Bugatti Chiron Super Sport",
-  "Biryani",
-  "Monster Ultra Energy Drink",
-  "Pizza",
   "Ducati Panigale V4R",
   "Porsche 911",
   "Kawasaki Ninja H2R",
-  "Diet Coke",
   "AirPods Pro",
-  "Protein Supplement",
 ];
 
 const POPULAR_SEARCHES = [
@@ -41,13 +35,9 @@ const POPULAR_SEARCHES = [
   "Porsche 911 GT3 RS",
   "BMW S1000RR",
   "Koenigsegg Jesko Absolut",
-  "Red Bull Energy Drink",
   "Bugatti Chiron Super Sport",
   "McLaren F1",
   "Pagani Huayra",
-  "Biryani",
-  "Monster Ultra Energy Drink",
-  "Pizza",
   "Aston Martin Valkyrie",
   "Tesla Cybertruck",
   "Ducati Panigale V4R",
@@ -55,43 +45,28 @@ const POPULAR_SEARCHES = [
   "Kawasaki Ninja H2R",
   "Netflix Premium",
   "YouTube Premium",
-  "Diet Coke",
   "AirPods Pro",
   "Mac Mini",
   "DSLR Camera",
-  "Protein Supplement",
-  "Gym Membership",
-  "Dumbell Set",
   "Lipstick Set",
   "Classic Denim Mini Skirt",
   "FC Barcelona Home Jersey",
-  "Shawarma",
-  "Momos",
-  "Vada Pav",
-  "Hell Energy Drink",
-  "Mountain Dew",
-  "Concert Ticket",
-  "Anime Box Set",
-  "Pokémon Trading Card Box",
-  "Water Gun",
 ];
 
 const CATEGORIES: { name: string; href: string }[] = [
   // Main Categories
   { name: "Mobile", href: "/category/mobile" },
-  { name: "Vehicles", href: "/category/vehicles" },
-  { name: "Subscriptions", href: "/category/subscriptions" },
   { name: "Electronics", href: "/category/electronics" },
-  { name: "Fitness", href: "/category/fitness" },
-  { name: "Beauty", href: "/category/beauty" },
+  { name: "Subscriptions", href: "/category/subscriptions" },
   { name: "Fashion", href: "/category/fashion" },
-  { name: "Food", href: "/category/food" },
-  { name: "Drinks", href: "/category/drinks" },
-  { name: "Entertainment", href: "/category/entertainment" },
-  { name: "Toys", href: "/category/toys" },
+  { name: "Beauty", href: "/category/beauty" },
+  { name: "Cars", href: "/category/cars" },
+  { name: "Bikes", href: "/category/bikes" },
+  { name: "Concerts", href: "/category/concerts" },
+  { name: "Vacation", href: "/category/vacation" },
+  { name: "Watches", href: "/category/watches" },
+  { name: "Jewellery", href: "/category/jewellery" },
   // Subcategories (only listed once, non-duplicate)
-  { name: "Bikes", href: "/category/vehicles?sub=bikes" },
-  { name: "Cars", href: "/category/vehicles?sub=cars" },
   { name: "Laptops", href: "/category/electronics?sub=laptops" },
   { name: "Audio", href: "/category/electronics?sub=audio" },
   { name: "Gaming", href: "/category/electronics?sub=gaming" },
@@ -100,20 +75,12 @@ const CATEGORIES: { name: string; href: string }[] = [
   { name: "Storage & Computing", href: "/category/electronics?sub=storage-computing" },
   { name: "Displays & Projectors", href: "/category/electronics?sub=displays-projectors" },
   { name: "Smart Home", href: "/category/electronics?sub=smart-home" },
-  { name: "Watches", href: "/category/electronics?sub=watches" },
   { name: "Skin Care", href: "/category/beauty?sub=skin-care" },
   { name: "Hair Care", href: "/category/beauty?sub=hair-care" },
   { name: "Nails", href: "/category/beauty?sub=nails" },
   { name: "Body Care", href: "/category/beauty?sub=body-care" },
   { name: "Fragrance", href: "/category/beauty?sub=fragrance" },
   { name: "Beauty Tools", href: "/category/beauty?sub=beauty-tools" },
-  { name: "Jewellery", href: "/category/fashion?sub=jewellery" },
-  { name: "Ice Creams", href: "/category/food?sub=ice-creams" },
-  { name: "Sweet Cravings", href: "/category/food?sub=sweet-cravings" },
-  { name: "Biscuits", href: "/category/food?sub=biscuits" },
-  { name: "Snacks", href: "/category/food?sub=snacks" },
-  { name: "Coffee", href: "/category/drinks?sub=coffee" },
-  { name: "Cold Drinks & Juices", href: "/category/drinks?sub=cold-drinks-juices" },
 ];
 
 interface FooterProps {
@@ -215,9 +182,12 @@ export default function Footer({ showBorder = true }: FooterProps) {
           {/* LEFT SIDE: Plugd logo/text directly above "© Plugd" */}
           <div className="flex flex-col items-start gap-1">
             <Link href="/" className="group inline-flex items-center">
-              <span className="font-logo text-2xl sm:text-3xl font-extrabold tracking-normal text-orange-500 select-none leading-tight transition-transform duration-200 group-hover:scale-[1.02]">
-                Plugd
-              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo.png"
+                alt="Plugd"
+                className="h-8 sm:h-9 w-auto object-contain select-none transition-transform duration-200 group-hover:scale-[1.02]"
+              />
             </Link>
             <p className="text-xs text-zinc-500 font-medium">© Plugd</p>
           </div>

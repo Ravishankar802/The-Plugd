@@ -141,9 +141,12 @@ export default function PublicProfileClient({
       <header className="sticky top-0 z-30 border-b border-zinc-200/80 bg-white/95 backdrop-blur-md px-4 py-3 sm:px-6">
         <div className="mx-auto max-w-4xl flex items-center justify-between">
           <Link href="/" className="inline-flex items-center gap-1 group">
-            <span className="font-logo text-2xl sm:text-3xl font-extrabold tracking-normal text-orange-500 select-none">
-              Plugd
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo.png"
+              alt="Plugd"
+              className="h-8 sm:h-9 w-auto object-contain select-none transition-transform duration-200 group-hover:scale-[1.02]"
+            />
           </Link>
 
           <div className="flex items-center gap-2">

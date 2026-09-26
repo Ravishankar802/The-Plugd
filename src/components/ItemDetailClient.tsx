@@ -90,9 +90,12 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
             </button>
 
             <Link href="/" className="inline-flex items-center">
-              <span className="font-logo text-2xl font-extrabold text-orange-500 select-none">
-                Plugd
-              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo.png"
+                alt="Plugd"
+                className="h-8 w-auto object-contain select-none"
+              />
             </Link>
           </div>
         </div>

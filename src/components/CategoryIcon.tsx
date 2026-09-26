@@ -1,5 +1,6 @@
 import {
   BadgeCheck,
+  Bike,
   Car,
   Coffee,
   Dumbbell,
@@ -15,11 +16,13 @@ import {
   Sparkles,
   Ticket,
   Utensils,
+  Watch,
   type LucideProps,
 } from "lucide-react";
 
 const iconMap = {
   BadgeCheck,
+  Bike,
   Car,
   Coffee,
   Dumbbell,
@@ -35,6 +38,7 @@ const iconMap = {
   Sparkles,
   Ticket,
   Utensils,
+  Watch,
 };
 
 interface CategoryIconProps extends Omit<LucideProps, "name"> {

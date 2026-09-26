@@ -1,22 +1,18 @@
 import prisma from "@/lib/prisma";
 import { ensureUniqueSlug, slugify } from "@/lib/slug";
-import { getFullFoodCatalog, FOOD_NAMES, FOOD_ALIASES } from "@/lib/food-catalog";
-import { getFullDrinksCatalog } from "@/lib/drinks-catalog";
 import { getFullFashionCatalog, FASHION_TOP_PICKS } from "@/lib/fashion-catalog";
 import { getFullMobilesCatalog } from "@/lib/mobiles-catalog";
 import { getFullBeautyCatalog } from "@/lib/beauty-catalog";
-import { getFullEntertainmentCatalog } from "@/lib/entertainment-catalog";
 import { getFullElectronicsCatalog } from "@/lib/electronics-catalog";
-import { getFullFitnessCatalog } from "@/lib/fitness-catalog";
-import { getFullToysCatalog } from "@/lib/toys-catalog";
-import { getFullVehiclesCatalog } from "@/lib/vehicles-catalog";
 import {
-  getEntertainmentProductImage,
+  getFullCarsCatalog,
+  getFullBikesCatalog,
+  CARS_SLUGS,
+  BIKES_SLUGS,
+} from "@/lib/vehicles-catalog";
+import {
   getSubscriptionsProductImage,
-  getFitnessProductImage,
-  DEFAULT_ENTERTAINMENT_IMAGE,
   DEFAULT_SUBSCRIPTIONS_IMAGE,
-  DEFAULT_FITNESS_IMAGE,
 } from "@/lib/product-images";
 
 type CatalogSeedDefinition = {
@@ -36,19 +32,6 @@ type CategorySeedDefinition = {
   description: string;
   items: Array<Omit<CatalogSeedDefinition, "category">>;
 };
-
-const ENTERTAINMENT_ITEMS = [
-  "Concert Ticket",
-  "Movie Ticket",
-  "Music Festival Pass",
-  "Comedy Show Ticket",
-  "IPL Match Ticket",
-  "Cricket Series Pass",
-  "Anime Box Set",
-  "Vinyl Player",
-  "Board Game Night",
-  "Theater Experience",
-];
 
 const SUBSCRIPTIONS_ITEMS = [
   "ChatGPT Plus",
@@ -78,69 +61,15 @@ const SUBSCRIPTIONS_ITEMS = [
   "Midjourney Subscription",
 ];
 
-const FITNESS_ITEMS = [
-  "Gym Membership",
-  "Running Shoes",
-  "Fitness Watch",
-  "Dumbbell Set",
-  "Bicycle",
-  "Protein Supplement",
-  "Yoga Mat",
-  "Kettlebell Set",
-];
-
 function itemSlug(name: string): string {
   return name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
 /**
- * The ONLY 10 top-level categories allowed in Plugd.
+ * The ONLY 11 top-level categories allowed in Plugd.
  */
 const CATEGORY_SEEDS: CategorySeedDefinition[] = [
-  // 1. FOOD
-  {
-    name: "Food",
-    slug: "food",
-    icon: "Utensils",
-    description: "Everyday meals, comfort food, and cravings from across India.",
-    items: getFullFoodCatalog().map((item) => ({
-      name: item.name,
-      imageUrl: item.imageUrl,
-      shortDescription: "",
-      description: "",
-      featured: item.featured,
-    })),
-  },
-  // 2. DRINKS
-  {
-    name: "Drinks",
-    slug: "drinks",
-    icon: "Coffee",
-    description: "Beverages, refreshments, and drink options for every mood.",
-    items: getFullDrinksCatalog().map((item) => ({
-      slug: item.id,
-      name: item.name,
-      imageUrl: item.imageUrl,
-      shortDescription: "",
-      description: "",
-      featured: item.featured,
-    })),
-  },
-  // 3. FASHION
-  {
-    name: "Fashion",
-    slug: "fashion",
-    icon: "Shirt",
-    description: "Style, staples, and statement pieces people love sharing.",
-    items: getFullFashionCatalog().map((item) => ({
-      name: item.name,
-      imageUrl: item.imageUrl,
-      shortDescription: "",
-      description: "",
-      featured: item.featured,
-    })),
-  },
-  // 4. MOBILE
+  // 1. Mobile
   {
     name: "Mobile",
     slug: "mobile",
@@ -155,7 +84,49 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
       featured: item.featured,
     })),
   },
-  // 5. BEAUTY
+  // 2. Electronics
+  {
+    name: "Electronics",
+    slug: "electronics",
+    icon: "Laptop",
+    description: "Tech upgrades, pro gear, and hardware essentials worth wishing for.",
+    items: getFullElectronicsCatalog().map((item) => ({
+      name: item.name,
+      imageUrl: item.imageUrl,
+      shortDescription: "",
+      description: "",
+      featured: item.featured,
+    })),
+  },
+  // 3. Subscriptions
+  {
+    name: "Subscriptions",
+    slug: "subscriptions",
+    icon: "BadgeCheck",
+    description: "Digital memberships and recurring tools people actually use.",
+    items: SUBSCRIPTIONS_ITEMS.map((name, idx) => ({
+      name,
+      imageUrl: getSubscriptionsProductImage(itemSlug(name)) || DEFAULT_SUBSCRIPTIONS_IMAGE,
+      shortDescription: "",
+      description: "",
+      featured: idx < 4,
+    })),
+  },
+  // 4. Fashion
+  {
+    name: "Fashion",
+    slug: "fashion",
+    icon: "Shirt",
+    description: "Style, staples, and statement pieces people love sharing.",
+    items: getFullFashionCatalog().map((item) => ({
+      name: item.name,
+      imageUrl: item.imageUrl,
+      shortDescription: "",
+      description: "",
+      featured: item.featured,
+    })),
+  },
+  // 5. Beauty
   {
     name: "Beauty",
     slug: "beauty",
@@ -170,85 +141,13 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
       featured: item.featured,
     })),
   },
-  // 6. ENTERTAINMENT
+  // 6. Cars
   {
-    name: "Entertainment",
-    slug: "entertainment",
-    icon: "Ticket",
-    description: "Events, culture, and leisure experiences worth sharing publicly.",
-    items: getFullEntertainmentCatalog().map((item) => ({
-      slug: item.id,
-      name: item.name,
-      imageUrl: item.imageUrl,
-      shortDescription: "",
-      description: "",
-      featured: item.featured,
-    })),
-  },
-  // 7. SUBSCRIPTIONS
-  {
-    name: "Subscriptions",
-    slug: "subscriptions",
-    icon: "BadgeCheck",
-    description: "Digital memberships and recurring tools people actually use.",
-    items: SUBSCRIPTIONS_ITEMS.map((name, idx) => ({
-      name,
-      imageUrl: getSubscriptionsProductImage(itemSlug(name)) || DEFAULT_SUBSCRIPTIONS_IMAGE,
-      shortDescription: "",
-      description: "",
-      featured: idx < 4,
-    })),
-  },
-  // 8. ELECTRONICS
-  {
-    name: "Electronics",
-    slug: "electronics",
-    icon: "Laptop",
-    description: "Tech upgrades, pro gear, and hardware essentials worth wishing for.",
-    items: getFullElectronicsCatalog().map((item) => ({
-      name: item.name,
-      imageUrl: item.imageUrl,
-      shortDescription: "",
-      description: "",
-      featured: item.featured,
-    })),
-  },
-  // 9. FITNESS
-  {
-    name: "Fitness",
-    slug: "fitness",
-    icon: "Dumbbell",
-    description: "Health, training, and sports wishlist items that feel motivating.",
-    items: getFullFitnessCatalog().map((item) => ({
-      slug: item.id,
-      name: item.name,
-      imageUrl: item.imageUrl,
-      shortDescription: "",
-      description: "",
-      featured: item.featured,
-    })),
-  },
-  // 10. VEHICLES
-  {
-    name: "Vehicles",
-    slug: "vehicles",
+    name: "Cars",
+    slug: "cars",
     icon: "Car",
-    description: "Bikes, cars, supercars, and hypercars for ambitious personal goals.",
-    items: getFullVehiclesCatalog().map((item) => ({
-      name: item.name,
-      imageUrl: item.imageUrl,
-      shortDescription: "",
-      description: "",
-      featured: item.featured,
-    })),
-  },
-  // 11. TOYS
-  {
-    name: "Toys",
-    slug: "toys",
-    icon: "Gamepad2",
-    description: "Retro collectibles, gaming gear, figures, and creative toys.",
-    items: getFullToysCatalog().map((item) => ({
+    description: "Luxury flagships, supercars, hypercars, performance SUVs, and off-road powerhouses.",
+    items: getFullCarsCatalog().map((item) => ({
       slug: item.id,
       name: item.name,
       imageUrl: item.imageUrl,
@@ -256,29 +155,76 @@ const CATEGORY_SEEDS: CategorySeedDefinition[] = [
       description: "",
       featured: item.featured,
     })),
+  },
+  // 7. Bikes
+  {
+    name: "Bikes",
+    slug: "bikes",
+    icon: "Bike",
+    description: "Superbikes, naked streetfighters, adventure tourers, and cruisers.",
+    items: getFullBikesCatalog().map((item) => ({
+      slug: item.id,
+      name: item.name,
+      imageUrl: item.imageUrl,
+      shortDescription: "",
+      description: "",
+      featured: item.featured,
+    })),
+  },
+  // 8. Concerts
+  {
+    name: "Concerts",
+    slug: "concerts",
+    icon: "Ticket",
+    description: "Live concerts, music festivals, world tours, and premium live performances.",
+    items: [],
+  },
+  // 9. Vacation
+  {
+    name: "Vacation",
+    slug: "vacation",
+    icon: "Plane",
+    description: "Luxury getaways, dream destinations, and bespoke travel experiences.",
+    items: [],
+  },
+  // 10. Watches
+  {
+    name: "Watches",
+    slug: "watches",
+    icon: "Watch",
+    description: "Haute horlogerie, iconic timepieces, and luxury Swiss watches.",
+    items: [],
+  },
+  // 11. Jewellery
+  {
+    name: "Jewellery",
+    slug: "jewellery",
+    icon: "Sparkles",
+    description: "High jewellery, timeless diamonds, bespoke gold, and luxury pieces.",
+    items: [],
   },
 ];
 
 export const ALLOWED_CATEGORY_SLUGS = [
-  "food",
-  "drinks",
-  "fashion",
   "mobile",
-  "beauty",
-  "entertainment",
-  "subscriptions",
   "electronics",
-  "fitness",
-  "vehicles",
-  "toys",
+  "subscriptions",
+  "fashion",
+  "beauty",
+  "cars",
+  "bikes",
+  "concerts",
+  "vacation",
+  "watches",
+  "jewellery",
 ];
 
 export const SEARCH_PLACEHOLDERS = [
-  "Search for iPhone 17 Pro Max",
-  "Search for Biryani",
-  "Search for Nike Air Force 1",
-  "Search for Red Bull Energy Drink",
+  "Search for iPhone 18 Pro Max",
   "Search for Porsche 911 GT3 RS",
+  "Search for BMW S1000RR",
+  "Search for Nike Air Force 1",
+  "Search for Claude Max",
 ];
 
 export function getSeedCategories() {
@@ -327,7 +273,63 @@ export async function ensureCatalogSeeded(): Promise<void> {
 
   catalogSeedPromise = (async () => {
     try {
-      // 1. Identify and purge any obsolete categories not in the allowed list
+      // 1. Ensure cars and bikes categories exist for migration
+      const carsCatSeed = CATEGORY_SEEDS.find((c) => c.slug === "cars")!;
+      const bikesCatSeed = CATEGORY_SEEDS.find((c) => c.slug === "bikes")!;
+      const carsCat = await prisma.category.upsert({
+        where: { slug: "cars" },
+        update: { name: carsCatSeed.name, icon: carsCatSeed.icon, description: carsCatSeed.description },
+        create: {
+          name: carsCatSeed.name,
+          slug: carsCatSeed.slug,
+          icon: carsCatSeed.icon,
+          description: carsCatSeed.description,
+          active: true,
+          displayOrder: 5,
+        },
+      });
+      const bikesCat = await prisma.category.upsert({
+        where: { slug: "bikes" },
+        update: { name: bikesCatSeed.name, icon: bikesCatSeed.icon, description: bikesCatSeed.description },
+        create: {
+          name: bikesCatSeed.name,
+          slug: bikesCatSeed.slug,
+          icon: bikesCatSeed.icon,
+          description: bikesCatSeed.description,
+          active: true,
+          displayOrder: 6,
+        },
+      });
+
+      // Migrate existing vehicles catalog items to cars or bikes
+      const vehiclesCat = await prisma.category.findUnique({ where: { slug: "vehicles" } });
+      if (vehiclesCat) {
+        const fullCarsSlugs = new Set(getFullCarsCatalog().map((c) => c.id));
+        const fullBikesSlugs = new Set(getFullBikesCatalog().map((b) => b.id));
+
+        const vehicleItems = await prisma.catalogItem.findMany({
+          where: { categoryId: vehiclesCat.id },
+          select: { id: true, slug: true },
+        });
+
+        const carItemIds = vehicleItems.filter((v) => fullCarsSlugs.has(v.slug)).map((v) => v.id);
+        const bikeItemIds = vehicleItems.filter((v) => fullBikesSlugs.has(v.slug)).map((v) => v.id);
+
+        if (carItemIds.length > 0) {
+          await prisma.catalogItem.updateMany({
+            where: { id: { in: carItemIds } },
+            data: { categoryId: carsCat.id },
+          });
+        }
+        if (bikeItemIds.length > 0) {
+          await prisma.catalogItem.updateMany({
+            where: { id: { in: bikeItemIds } },
+            data: { categoryId: bikesCat.id },
+          });
+        }
+      }
+
+      // 2. Identify and purge any obsolete categories not in the allowed list
       const existingCategories = await prisma.category.findMany({
         select: { id: true, slug: true },
       });
@@ -341,9 +343,10 @@ export async function ensureCatalogSeeded(): Promise<void> {
         // Delete wishlist items linked to obsolete catalog items
         await prisma.wishlistItem.deleteMany({
           where: {
-            catalogItem: {
-              categoryId: { in: obsoleteIds },
-            },
+            OR: [
+              { catalogItem: { categoryId: { in: obsoleteIds } } },
+              { categoryId: { in: obsoleteIds } },
+            ],
           },
         });
         // Delete obsolete catalog items
@@ -360,85 +363,88 @@ export async function ensureCatalogSeeded(): Promise<void> {
         });
       }
 
-      // 2. Check if we are fully seeded with correct counts in parallel
+      // 3. Check if we are fully seeded with correct counts in parallel
       const [
         categoryCount,
-        foodCount,
-        drinksCount,
         mobileCount,
-        vehiclesCount,
         electronicsCount,
-        toysCount,
+        subscriptionsCount,
+        fashionCount,
+        beautyCount,
+        carsCount,
+        bikesCount,
       ] = await Promise.all([
         prisma.category.count({ where: { slug: { in: ALLOWED_CATEGORY_SLUGS } } }),
-        prisma.catalogItem.count({ where: { category: { slug: "food" } } }),
-        prisma.catalogItem.count({ where: { category: { slug: "drinks" } } }),
         prisma.catalogItem.count({ where: { category: { slug: "mobile" } } }),
-        prisma.catalogItem.count({ where: { category: { slug: "vehicles" } } }),
         prisma.catalogItem.count({ where: { category: { slug: "electronics" } } }),
-        prisma.catalogItem.count({ where: { category: { slug: "toys" } } }),
+        prisma.catalogItem.count({ where: { category: { slug: "subscriptions" } } }),
+        prisma.catalogItem.count({ where: { category: { slug: "fashion" } } }),
+        prisma.catalogItem.count({ where: { category: { slug: "beauty" } } }),
+        prisma.catalogItem.count({ where: { category: { slug: "cars" } } }),
+        prisma.catalogItem.count({ where: { category: { slug: "bikes" } } }),
       ]);
 
       if (
         categoryCount === 11 &&
-        foodCount >= FOOD_NAMES.length &&
-        drinksCount >= 59 &&
         mobileCount >= 21 &&
-        vehiclesCount >= 131 &&
         electronicsCount >= 70 &&
-        toysCount >= 50
+        subscriptionsCount >= 25 &&
+        fashionCount >= 40 &&
+        beautyCount >= 30 &&
+        carsCount >= 104 &&
+        bikesCount >= 27
       ) {
         isCatalogSeededInMemory = true;
         return;
       }
 
-      // 3. Upsert the 11 allowed categories
-  for (const category of getSeedCategories()) {
-    await prisma.category.upsert({
-      where: { slug: category.slug },
-      update: category,
-      create: category,
-    });
-  }
+      // 4. Upsert the 11 allowed categories
+      for (const category of getSeedCategories()) {
+        await prisma.category.upsert({
+          where: { slug: category.slug },
+          update: category,
+          create: category,
+        });
+      }
 
-  const categoryMap = new Map(
-    (
-      await prisma.category.findMany({
-        select: { id: true, slug: true },
-      })
-    ).map((category) => [category.slug, category.id]),
-  );
+      const categoryMap = new Map(
+        (
+          await prisma.category.findMany({
+            select: { id: true, slug: true },
+          })
+        ).map((category) => [category.slug, category.id]),
+      );
 
-  // 4. Upsert all catalog items with NO descriptions
-  for (const item of getSeedCatalogItems()) {
-    const categoryId = categoryMap.get(item.categorySlug);
-    if (!categoryId) continue;
+      // 5. Upsert all catalog items with NO descriptions
+      for (const item of getSeedCatalogItems()) {
+        const categoryId = categoryMap.get(item.categorySlug);
+        if (!categoryId) continue;
 
-    await prisma.catalogItem.upsert({
-      where: { slug: item.slug },
-      update: {
-        name: item.name,
-        categoryId,
-        image: item.image,
-        shortDescription: null,
-        description: null,
-        featured: item.featured,
-        active: item.active,
-        displayOrder: item.displayOrder,
-      },
-      create: {
-        name: item.name,
-        slug: item.slug,
-        categoryId,
-        image: item.image,
-        shortDescription: null,
-        description: null,
-        featured: item.featured,
-        active: item.active,
-        displayOrder: item.displayOrder,
-      },
-    });
-  }
+        await prisma.catalogItem.upsert({
+          where: { slug: item.slug },
+          update: {
+            name: item.name,
+            categoryId,
+            image: item.image,
+            shortDescription: null,
+            description: null,
+            featured: item.featured,
+            active: item.active,
+            displayOrder: item.displayOrder,
+          },
+          create: {
+            name: item.name,
+            slug: item.slug,
+            categoryId,
+            image: item.image,
+            shortDescription: null,
+            description: null,
+            featured: item.featured,
+            active: item.active,
+            displayOrder: item.displayOrder,
+          },
+        });
+      }
       isCatalogSeededInMemory = true;
     } catch (error) {
       console.error("[SEED_CATALOG_ERROR]", error);
@@ -496,14 +502,6 @@ export async function getCachedCategories(): Promise<CachedCategory[]> {
   return categories;
 }
 
-const DUPLICATE_FALLBACK_SNACK_SLUGS = [
-  "lay-s-classic-salted",
-  "lay-s-magic-masala",
-  "haldiram-s-aloo-bhujia",
-  "haldiram-s-bhujia-sev",
-  "haldiram-s-mixture",
-];
-
 export function invalidateCategoryCache(categoryId?: string) {
   if (categoryId) {
     cachedItemsByCategory.delete(categoryId);
@@ -518,18 +516,11 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
   if (cached && cached.expiresAt > now) {
     return cached.data;
   }
-  // Asynchronously purge duplicate fallback snack records from DB
-  prisma.catalogItem
-    .deleteMany({
-      where: { slug: { in: DUPLICATE_FALLBACK_SNACK_SLUGS } },
-    })
-    .catch(() => {});
 
   let items: CachedCatalogItem[] = await prisma.catalogItem.findMany({
     where: {
       active: true,
       categoryId,
-      slug: { notIn: DUPLICATE_FALLBACK_SNACK_SLUGS },
     },
     select: {
       id: true,
@@ -543,49 +534,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
     },
     orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
   });
-
-  // Ensure Drinks items are fully seeded in DB (e.g. on production serverless environments)
-  const drinksCat = await prisma.category.findUnique({ where: { slug: "drinks" }, select: { id: true } });
-  if (drinksCat && categoryId === drinksCat.id && items.length < 59) {
-    const fullDrinks = getFullDrinksCatalog();
-    const existingSlugs = new Set(items.map((i) => i.slug));
-    const missing = fullDrinks.filter((d) => !existingSlugs.has(d.id));
-
-    if (missing.length > 0) {
-      await prisma.catalogItem.createMany({
-        data: missing.map((d) => ({
-          name: d.name,
-          slug: d.id,
-          categoryId: drinksCat.id,
-          image: d.imageUrl,
-          active: true,
-          featured: Boolean(d.featured),
-          displayOrder: d.displayOrder,
-          addedCount: 0,
-        })),
-        skipDuplicates: true,
-      });
-
-      items = await prisma.catalogItem.findMany({
-        where: {
-          active: true,
-          categoryId,
-          slug: { notIn: DUPLICATE_FALLBACK_SNACK_SLUGS },
-        },
-        select: {
-          id: true,
-          name: true,
-          slug: true,
-          image: true,
-          categoryId: true,
-          featured: true,
-          displayOrder: true,
-          addedCount: true,
-        },
-        orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
-      });
-    }
-  }
 
   // Ensure Mobile items are fully seeded in DB (e.g. on production serverless environments)
   const mobileCatSeed = await prisma.category.findUnique({ where: { slug: "mobile" }, select: { id: true } });
@@ -612,7 +560,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
         where: {
           active: true,
           categoryId,
-          slug: { notIn: DUPLICATE_FALLBACK_SNACK_SLUGS },
         },
         select: {
           id: true,
@@ -625,36 +572,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
           addedCount: true,
         },
         orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
-      });
-    }
-  }
-
-  // If drinks category, ensure items with outdated fallback images are updated to authentic product images
-  if (drinksCat && categoryId === drinksCat.id) {
-    const fullDrinks = getFullDrinksCatalog();
-    const imageBySlug = new Map(fullDrinks.map((d) => [d.id, d.imageUrl]));
-    
-    // Check if any drinks items have mismatched/outdated images
-    const itemsToUpdate = items.filter((item) => {
-      const targetUrl = imageBySlug.get(item.slug);
-      return targetUrl && item.image !== targetUrl;
-    });
-
-    if (itemsToUpdate.length > 0) {
-      // Asynchronously update in DB so it doesn't block the request
-      Promise.all(
-        itemsToUpdate.map((item) =>
-          prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { image: imageBySlug.get(item.slug)! },
-          }).catch(() => {})
-        )
-      ).catch(() => {});
-
-      // In-memory update for instant correctness
-      items = items.map((item) => {
-        const targetUrl = imageBySlug.get(item.slug);
-        return targetUrl ? { ...item, image: targetUrl } : item;
       });
     }
   }
@@ -688,21 +605,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
   // If mobile category, ensure items have authentic product images
   const mobileCat = await prisma.category.findUnique({ where: { slug: "mobile" }, select: { id: true } });
   if (mobileCat && categoryId === mobileCat.id) {
-    // Purge any duplicate or misspelled burgandy items from DB
-    prisma.catalogItem
-      .deleteMany({
-        where: {
-          OR: [
-            { slug: "iphone-18-pro-max-burgandy" },
-            { slug: "iphone-18-pro-max" },
-            { slug: { contains: "burgand", mode: "insensitive" } },
-            { name: { contains: "burgand", mode: "insensitive" } },
-          ],
-        },
-      })
-      .catch(() => {});
-
-    // Ensure only canonical Mobile items are included
     const fullMobiles = getFullMobilesCatalog();
     const canonicalSlugs = new Set(fullMobiles.map((d) => d.id));
     items = items.filter((item) => canonicalSlugs.has(item.slug));
@@ -755,7 +657,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
         where: {
           active: true,
           categoryId,
-          slug: { notIn: DUPLICATE_FALLBACK_SNACK_SLUGS },
         },
         select: {
           id: true,
@@ -792,90 +693,6 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
         return targetUrl ? { ...item, image: targetUrl } : item;
       });
     }
-
-  }
-
-  // If entertainment category, ensure items are exactly the 10 specified items with authentic images and correct order
-  const entertainmentCat = await prisma.category.findUnique({ where: { slug: "entertainment" }, select: { id: true } });
-  if (entertainmentCat && categoryId === entertainmentCat.id) {
-    const fullEntertainment = getFullEntertainmentCatalog();
-    const allowedSlugs = new Set(fullEntertainment.map((e) => e.id));
-
-    // Remove any unauthorized/legacy items (e.g. book-stack or anything not in the 10 items)
-    const unauthorizedItems = items.filter((i) => !allowedSlugs.has(i.slug));
-    if (unauthorizedItems.length > 0) {
-      await prisma.catalogItem.deleteMany({
-        where: {
-          categoryId: entertainmentCat.id,
-          slug: { in: unauthorizedItems.map((i) => i.slug) },
-        },
-      }).catch(() => {});
-    }
-
-    // Seed any missing items from the 10
-    const existingSlugs = new Set(items.map((i) => i.slug));
-    const missing = fullEntertainment.filter((e) => !existingSlugs.has(e.id));
-    if (missing.length > 0) {
-      await prisma.catalogItem.createMany({
-        data: missing.map((e) => ({
-          name: e.name,
-          slug: e.id,
-          categoryId: entertainmentCat.id,
-          image: e.imageUrl,
-          active: true,
-          featured: Boolean(e.featured),
-          displayOrder: e.displayOrder,
-        })),
-        skipDuplicates: true,
-      }).catch(() => {});
-    }
-
-    // Refresh items
-    items = await prisma.catalogItem.findMany({
-      where: {
-        active: true,
-        categoryId: entertainmentCat.id,
-        slug: { in: Array.from(allowedSlugs) },
-      },
-      select: {
-        id: true,
-        name: true,
-        slug: true,
-        image: true,
-        categoryId: true,
-        featured: true,
-        displayOrder: true,
-        addedCount: true,
-      },
-      orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
-    });
-
-    // Update images if any differ
-    const entertainmentImageBySlug = new Map(fullEntertainment.map((e) => [e.id, e.imageUrl]));
-    const itemsToUpdate = items.filter((item) => {
-      const targetUrl = entertainmentImageBySlug.get(item.slug);
-      return targetUrl && item.image !== targetUrl;
-    });
-
-    if (itemsToUpdate.length > 0) {
-      Promise.all(
-        itemsToUpdate.map((item) =>
-          prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { image: entertainmentImageBySlug.get(item.slug)! },
-          }).catch(() => {})
-        )
-      ).catch(() => {});
-
-      items = items.map((item) => {
-        const targetUrl = entertainmentImageBySlug.get(item.slug);
-        return targetUrl ? { ...item, image: targetUrl } : item;
-      });
-    }
-
-    // Sort strictly by the 10 items order
-    const slugOrder = fullEntertainment.map((e) => e.id);
-    items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
 
   // If subscriptions category, ensure images are synced to authentic URLs and missing items are seeded
@@ -1061,66 +878,54 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
       });
     }
 
-    // Sort strictly by the 157 items order
+    // Sort strictly by the items order
     const slugOrder = fullElectronics.map((e) => e.id);
     items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
 
-  // If fitness category, ensure images are synced to authentic URLs and missing items are seeded
-  const fitnessCat = await prisma.category.findUnique({ where: { slug: "fitness" }, select: { id: true } });
-  if (fitnessCat && categoryId === fitnessCat.id) {
-    const fullFitness = getFullFitnessCatalog();
-    const allowedSlugs = new Set(fullFitness.map((f) => f.id));
-
-    const unauthorizedItems = items.filter((i) => !allowedSlugs.has(i.slug));
-    if (unauthorizedItems.length > 0) {
-      await prisma.catalogItem.deleteMany({
-        where: {
-          categoryId: fitnessCat.id,
-          slug: { in: unauthorizedItems.map((i) => i.slug) },
-        },
-      }).catch(() => {});
-    }
-
+  // If cars category, ensure items are seeded
+  const carsCat = await prisma.category.findUnique({ where: { slug: "cars" }, select: { id: true } });
+  if (carsCat && categoryId === carsCat.id) {
+    const fullCars = getFullCarsCatalog();
     const existingSlugs = new Set(items.map((i) => i.slug));
-    const missing = fullFitness.filter((f) => !existingSlugs.has(f.id));
+    const missing = fullCars.filter((c) => !existingSlugs.has(c.id));
 
     if (missing.length > 0) {
       await prisma.catalogItem.createMany({
-        data: missing.map((m, idx) => ({
-          name: m.name,
-          slug: m.id,
-          categoryId: fitnessCat.id,
-          image: m.imageUrl,
+        data: missing.map((c, idx) => ({
+          name: c.name,
+          slug: c.id,
+          categoryId: carsCat.id,
+          image: c.imageUrl,
           active: true,
-          featured: Boolean(m.featured),
-          displayOrder: m.displayOrder ?? idx,
+          featured: Boolean(c.featured),
+          displayOrder: c.displayOrder ?? idx,
         })),
         skipDuplicates: true,
-      }).catch(() => {});
+      });
+
+      items = await prisma.catalogItem.findMany({
+        where: {
+          active: true,
+          categoryId,
+        },
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+          image: true,
+          categoryId: true,
+          featured: true,
+          displayOrder: true,
+          addedCount: true,
+        },
+        orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
+      });
     }
 
-    items = await prisma.catalogItem.findMany({
-      where: {
-        active: true,
-        categoryId: fitnessCat.id,
-      },
-      select: {
-        id: true,
-        name: true,
-        slug: true,
-        image: true,
-        categoryId: true,
-        featured: true,
-        displayOrder: true,
-        addedCount: true,
-      },
-      orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
-    });
-
-    const fitnessImageBySlug = new Map(fullFitness.map((f) => [f.id, f.imageUrl]));
+    const carsImageBySlug = new Map(fullCars.map((c) => [c.id, c.imageUrl]));
     const itemsToUpdate = items.filter((item) => {
-      const targetUrl = fitnessImageBySlug.get(item.slug);
+      const targetUrl = carsImageBySlug.get(item.slug);
       return targetUrl && item.image !== targetUrl;
     });
 
@@ -1129,76 +934,61 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
         itemsToUpdate.map((item) =>
           prisma.catalogItem.update({
             where: { id: item.id },
-            data: { image: fitnessImageBySlug.get(item.slug)! },
+            data: { image: carsImageBySlug.get(item.slug)! },
           }).catch(() => {})
         )
       ).catch(() => {});
 
       items = items.map((item) => {
-        const targetUrl = fitnessImageBySlug.get(item.slug);
+        const targetUrl = carsImageBySlug.get(item.slug);
         return targetUrl ? { ...item, image: targetUrl } : item;
       });
     }
-
-    const slugOrder = fullFitness.map((f) => f.id);
-    items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
 
-  // If toys category, ensure images are synced to authentic URLs and missing items are seeded
-  const toysCat = await prisma.category.findUnique({ where: { slug: "toys" }, select: { id: true } });
-  if (toysCat && categoryId === toysCat.id) {
-    const fullToys = getFullToysCatalog();
-    const allowedSlugs = new Set(fullToys.map((t) => t.id));
-
-    const unauthorizedItems = items.filter((i) => !allowedSlugs.has(i.slug));
-    if (unauthorizedItems.length > 0) {
-      await prisma.catalogItem.deleteMany({
-        where: {
-          categoryId: toysCat.id,
-          slug: { in: unauthorizedItems.map((i) => i.slug) },
-        },
-      }).catch(() => {});
-    }
-
+  // If bikes category, ensure items are seeded
+  const bikesCat = await prisma.category.findUnique({ where: { slug: "bikes" }, select: { id: true } });
+  if (bikesCat && categoryId === bikesCat.id) {
+    const fullBikes = getFullBikesCatalog();
     const existingSlugs = new Set(items.map((i) => i.slug));
-    const missing = fullToys.filter((t) => !existingSlugs.has(t.id));
+    const missing = fullBikes.filter((b) => !existingSlugs.has(b.id));
 
     if (missing.length > 0) {
       await prisma.catalogItem.createMany({
-        data: missing.map((m, idx) => ({
-          name: m.name,
-          slug: m.id,
-          categoryId: toysCat.id,
-          image: m.imageUrl,
+        data: missing.map((b, idx) => ({
+          name: b.name,
+          slug: b.id,
+          categoryId: bikesCat.id,
+          image: b.imageUrl,
           active: true,
-          featured: Boolean(m.featured),
-          displayOrder: m.displayOrder ?? idx,
+          featured: Boolean(b.featured),
+          displayOrder: b.displayOrder ?? idx,
         })),
         skipDuplicates: true,
-      }).catch(() => {});
+      });
+
+      items = await prisma.catalogItem.findMany({
+        where: {
+          active: true,
+          categoryId,
+        },
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+          image: true,
+          categoryId: true,
+          featured: true,
+          displayOrder: true,
+          addedCount: true,
+        },
+        orderBy: [{ featured: "desc" }, { displayOrder: "asc" }, { name: "asc" }],
+      });
     }
 
-    items = await prisma.catalogItem.findMany({
-      where: {
-        active: true,
-        categoryId: toysCat.id,
-      },
-      select: {
-        id: true,
-        name: true,
-        slug: true,
-        image: true,
-        categoryId: true,
-        featured: true,
-        displayOrder: true,
-        addedCount: true,
-      },
-      orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
-    });
-
-    const toysImageBySlug = new Map(fullToys.map((t) => [t.id, t.imageUrl]));
+    const bikesImageBySlug = new Map(fullBikes.map((b) => [b.id, b.imageUrl]));
     const itemsToUpdate = items.filter((item) => {
-      const targetUrl = toysImageBySlug.get(item.slug);
+      const targetUrl = bikesImageBySlug.get(item.slug);
       return targetUrl && item.image !== targetUrl;
     });
 
@@ -1207,97 +997,16 @@ export async function getCachedCategoryItems(categoryId: string): Promise<Cached
         itemsToUpdate.map((item) =>
           prisma.catalogItem.update({
             where: { id: item.id },
-            data: { image: toysImageBySlug.get(item.slug)! },
+            data: { image: bikesImageBySlug.get(item.slug)! },
           }).catch(() => {})
         )
       ).catch(() => {});
 
       items = items.map((item) => {
-        const targetUrl = toysImageBySlug.get(item.slug);
+        const targetUrl = bikesImageBySlug.get(item.slug);
         return targetUrl ? { ...item, image: targetUrl } : item;
       });
     }
-
-    const slugOrder = fullToys.map((t) => t.id);
-    items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
-  }
-
-  // If vehicles category, ensure images are synced to authentic URLs and missing items are seeded
-  const vehiclesCat = await prisma.category.findUnique({ where: { slug: "vehicles" }, select: { id: true } });
-  if (vehiclesCat && categoryId === vehiclesCat.id) {
-    const fullVehicles = getFullVehiclesCatalog();
-    const allowedSlugs = new Set(fullVehicles.map((v) => v.id));
-
-    const unauthorizedItems = items.filter((i) => !allowedSlugs.has(i.slug));
-    if (unauthorizedItems.length > 0) {
-      await prisma.catalogItem.deleteMany({
-        where: {
-          categoryId: vehiclesCat.id,
-          slug: { in: unauthorizedItems.map((i) => i.slug) },
-        },
-      }).catch(() => {});
-    }
-
-    const existingSlugs = new Set(items.map((i) => i.slug));
-    const missing = fullVehicles.filter((v) => !existingSlugs.has(v.id));
-
-    if (missing.length > 0) {
-      await prisma.catalogItem.createMany({
-        data: missing.map((m, idx) => ({
-          name: m.name,
-          slug: m.id,
-          categoryId: vehiclesCat.id,
-          image: m.imageUrl,
-          active: true,
-          featured: Boolean(m.featured),
-          displayOrder: m.displayOrder ?? idx,
-        })),
-        skipDuplicates: true,
-      }).catch(() => {});
-    }
-
-    items = await prisma.catalogItem.findMany({
-      where: {
-        active: true,
-        categoryId: vehiclesCat.id,
-      },
-      select: {
-        id: true,
-        name: true,
-        slug: true,
-        image: true,
-        categoryId: true,
-        featured: true,
-        displayOrder: true,
-        addedCount: true,
-      },
-      orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
-    });
-
-    const vehiclesImageBySlug = new Map(fullVehicles.map((v) => [v.id, v.imageUrl]));
-    const itemsToUpdate = items.filter((item) => {
-      const targetUrl = vehiclesImageBySlug.get(item.slug);
-      return targetUrl && item.image !== targetUrl;
-    });
-
-    if (itemsToUpdate.length > 0) {
-      Promise.all(
-        itemsToUpdate.map((item) =>
-          prisma.catalogItem.update({
-            where: { id: item.id },
-            data: { image: vehiclesImageBySlug.get(item.slug)! },
-          }).catch(() => {})
-        )
-      ).catch(() => {});
-
-      items = items.map((item) => {
-        const targetUrl = vehiclesImageBySlug.get(item.slug);
-        return targetUrl ? { ...item, image: targetUrl } : item;
-      });
-    }
-
-    const slugOrder = fullVehicles.map((v) => v.id);
-    items.sort((a, b) => slugOrder.indexOf(a.slug) - slugOrder.indexOf(b.slug));
   }
 
   cachedItemsByCategory.set(categoryId, { data: items, expiresAt: now + CACHE_TTL_MS });
@@ -1322,8 +1031,6 @@ export type ResolvedCatalogProduct = {
 
 /**
  * Universal catalog product resolver for product detail pages and metadata.
- * Ensures that products from any category (including Toys, Vehicles, and Fitness)
- * resolve to their authentic product records, canonical image URLs, and database records.
  */
 export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCatalogProduct | null> {
   if (!rawSlug) return null;
@@ -1351,18 +1058,6 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
   // 2. Slug normalization and common aliases
   const aliases = [
     slug === "iphone-18-pro-max" ? "iphone-18-pro-max-black" : null,
-    slug.replace("pokemon-", "pok-mon-"),
-    slug.replace("pok-mon-", "pokemon-"),
-    slug.replace("rubik-s-", "rubiks-"),
-    slug.replace("rubiks-", "rubik-s-"),
-    slug.replace("-3x3-", "-3-3-"),
-    slug.replace("-3-3-", "-3x3-"),
-    slug.replace("weightlifting-", "weightlighting-"),
-    slug.replace("weightlighting-", "weightlifting-"),
-    slug.replace("protein-", "protien-"),
-    slug.replace("protien-", "protein-"),
-    slug.replace("kettlebell-", "kettleball-"),
-    slug.replace("kettleball-", "kettlebell-"),
   ].filter((a): a is string => Boolean(a) && a !== slug);
 
   for (const alias of aliases) {
@@ -1385,28 +1080,28 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
   }
 
   // 3. Fallback catalog matching and self-healing DB upsert
-  // Check Toys
-  const fullToys = getFullToysCatalog();
-  const toy = fullToys.find((t) => t.id === slug || aliases.includes(t.id));
-  if (toy) {
-    const category = await prisma.category.findUnique({ where: { slug: "toys" } });
+  // Check Cars
+  const fullCars = getFullCarsCatalog();
+  const car = fullCars.find((c) => c.id === slug || aliases.includes(c.id));
+  if (car) {
+    const category = await prisma.category.findUnique({ where: { slug: "cars" } });
     if (category) {
       const dbItem = await prisma.catalogItem.upsert({
-        where: { slug: toy.id },
+        where: { slug: car.id },
         update: {
-          name: toy.name,
-          image: toy.imageUrl,
+          name: car.name,
+          image: car.imageUrl,
           active: true,
-          featured: Boolean(toy.featured),
+          featured: Boolean(car.featured),
         },
         create: {
-          name: toy.name,
-          slug: toy.id,
+          name: car.name,
+          slug: car.id,
           categoryId: category.id,
-          image: toy.imageUrl,
+          image: car.imageUrl,
           active: true,
-          featured: Boolean(toy.featured),
-          displayOrder: toy.displayOrder,
+          featured: Boolean(car.featured),
+          displayOrder: car.displayOrder,
           addedCount: 0,
         },
         include: { category: true },
@@ -1415,38 +1110,38 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
       if (dbItem) return dbItem;
 
       return {
-        id: `toys-${toy.id}`,
-        name: toy.name,
-        slug: toy.id,
-        image: toy.imageUrl,
+        id: `cars-${car.id}`,
+        name: car.name,
+        slug: car.id,
+        image: car.imageUrl,
         category,
         addedCount: 0,
       };
     }
   }
 
-  // Check Vehicles
-  const fullVehicles = getFullVehiclesCatalog();
-  const veh = fullVehicles.find((v) => v.id === slug || aliases.includes(v.id));
-  if (veh) {
-    const category = await prisma.category.findUnique({ where: { slug: "vehicles" } });
+  // Check Bikes
+  const fullBikes = getFullBikesCatalog();
+  const bike = fullBikes.find((b) => b.id === slug || aliases.includes(b.id));
+  if (bike) {
+    const category = await prisma.category.findUnique({ where: { slug: "bikes" } });
     if (category) {
       const dbItem = await prisma.catalogItem.upsert({
-        where: { slug: veh.id },
+        where: { slug: bike.id },
         update: {
-          name: veh.name,
-          image: veh.imageUrl,
+          name: bike.name,
+          image: bike.imageUrl,
           active: true,
-          featured: Boolean(veh.featured),
+          featured: Boolean(bike.featured),
         },
         create: {
-          name: veh.name,
-          slug: veh.id,
+          name: bike.name,
+          slug: bike.id,
           categoryId: category.id,
-          image: veh.imageUrl,
+          image: bike.imageUrl,
           active: true,
-          featured: Boolean(veh.featured),
-          displayOrder: veh.displayOrder,
+          featured: Boolean(bike.featured),
+          displayOrder: bike.displayOrder,
           addedCount: 0,
         },
         include: { category: true },
@@ -1455,52 +1150,12 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
       if (dbItem) return dbItem;
 
       return {
-        id: `vehicles-${veh.id}`,
-        name: veh.name,
-        slug: veh.id,
-        image: veh.imageUrl,
-        addedCount: 0,
+        id: `bikes-${bike.id}`,
+        name: bike.name,
+        slug: bike.id,
+        image: bike.imageUrl,
         category,
-      };
-    }
-  }
-
-  // Check Fitness
-  const fullFitness = getFullFitnessCatalog();
-  const fit = fullFitness.find((f) => f.id === slug || aliases.includes(f.id));
-  if (fit) {
-    const category = await prisma.category.findUnique({ where: { slug: "fitness" } });
-    if (category) {
-      const dbItem = await prisma.catalogItem.upsert({
-        where: { slug: fit.id },
-        update: {
-          name: fit.name,
-          image: fit.imageUrl,
-          active: true,
-          featured: Boolean(fit.featured),
-        },
-        create: {
-          name: fit.name,
-          slug: fit.id,
-          categoryId: category.id,
-          image: fit.imageUrl,
-          active: true,
-          featured: Boolean(fit.featured),
-          displayOrder: fit.displayOrder,
-          addedCount: 0,
-        },
-        include: { category: true },
-      }).catch(() => null);
-
-      if (dbItem) return dbItem;
-
-      return {
-        id: `fitness-${fit.id}`,
-        name: fit.name,
-        slug: fit.id,
-        image: fit.imageUrl,
         addedCount: 0,
-        category,
       };
     }
   }
@@ -1527,31 +1182,6 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
       }).catch(() => null);
       if (dbItem) return dbItem;
       return { id: `electronics-${elec.id}`, name: elec.name, slug: elec.id, image: elec.imageUrl, category };
-    }
-  }
-
-  // Check Drinks
-  const fullDrinks = getFullDrinksCatalog();
-  const drink = fullDrinks.find((d) => d.id === slug);
-  if (drink) {
-    const category = await prisma.category.findUnique({ where: { slug: "drinks" } });
-    if (category) {
-      const dbItem = await prisma.catalogItem.upsert({
-        where: { slug: drink.id },
-        update: { name: drink.name, image: drink.imageUrl, active: true },
-        create: {
-          name: drink.name,
-          slug: drink.id,
-          categoryId: category.id,
-          image: drink.imageUrl,
-          active: true,
-          featured: Boolean(drink.featured),
-          displayOrder: drink.displayOrder ?? 0,
-        },
-        include: { category: true },
-      }).catch(() => null);
-      if (dbItem) return dbItem;
-      return { id: `drinks-${drink.id}`, name: drink.name, slug: drink.id, image: drink.imageUrl, category };
     }
   }
 
@@ -1605,56 +1235,6 @@ export async function resolveCatalogProduct(rawSlug: string): Promise<ResolvedCa
     }
   }
 
-  // Check Entertainment
-  const fullEntertainment = getFullEntertainmentCatalog();
-  const ent = fullEntertainment.find((e) => e.id === slug);
-  if (ent) {
-    const category = await prisma.category.findUnique({ where: { slug: "entertainment" } });
-    if (category) {
-      const dbItem = await prisma.catalogItem.upsert({
-        where: { slug: ent.id },
-        update: { name: ent.name, image: ent.imageUrl, active: true },
-        create: {
-          name: ent.name,
-          slug: ent.id,
-          categoryId: category.id,
-          image: ent.imageUrl,
-          active: true,
-          featured: Boolean(ent.featured),
-          displayOrder: ent.displayOrder ?? 0,
-        },
-        include: { category: true },
-      }).catch(() => null);
-      if (dbItem) return dbItem;
-      return { id: `entertainment-${ent.id}`, name: ent.name, slug: ent.id, image: ent.imageUrl, category };
-    }
-  }
-
-  // Check Food
-  const fullFood = getFullFoodCatalog();
-  const food = fullFood.find((f) => f.id === slug);
-  if (food) {
-    const category = await prisma.category.findUnique({ where: { slug: "food" } });
-    if (category) {
-      const dbItem = await prisma.catalogItem.upsert({
-        where: { slug: food.id },
-        update: { name: food.name, image: food.imageUrl, active: true },
-        create: {
-          name: food.name,
-          slug: food.id,
-          categoryId: category.id,
-          image: food.imageUrl,
-          active: true,
-          featured: Boolean(food.featured),
-          displayOrder: food.displayOrder ?? 0,
-        },
-        include: { category: true },
-      }).catch(() => null);
-      if (dbItem) return dbItem;
-      return { id: `food-${food.id}`, name: food.name, slug: food.id, image: food.imageUrl, category };
-    }
-  }
-
   return null;
 }
 
@@ -1705,31 +1285,31 @@ export function resolveWishlistItem(wishlistItem: {
 }
 
 /**
- * Standard Plugd category order:
+ * Standard Plugd category order (11 categories):
  * 1) Mobile
- * 2) Vehicles
+ * 2) Electronics
  * 3) Subscriptions
- * 4) Electronics
- * 5) Fitness
- * 6) Beauty
- * 7) Fashion
- * 8) Food
- * 9) Drinks
- * 10) Entertainment
- * 11) Toys
+ * 4) Fashion
+ * 5) Beauty
+ * 6) Cars
+ * 7) Bikes
+ * 8) Concerts
+ * 9) Vacation
+ * 10) Watches
+ * 11) Jewellery
  */
 export const PLUGD_CATEGORY_ORDER = [
   "mobile",
-  "vehicles",
-  "subscriptions",
   "electronics",
-  "fitness",
-  "beauty",
+  "subscriptions",
   "fashion",
-  "food",
-  "drinks",
-  "entertainment",
-  "toys",
+  "beauty",
+  "cars",
+  "bikes",
+  "concerts",
+  "vacation",
+  "watches",
+  "jewellery",
 ] as const;
 
 export function organizeCategories<T extends { slug: string }>(cats: T[]): T[] {
