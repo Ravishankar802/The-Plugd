@@ -2224,9 +2224,24 @@ export const MOBILE_HOMEPAGE_CATEGORIES: HomepageCategoryTile[] = [
     image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=800&auto=format&fit=crop&q=80",
   },
   {
+    name: "Concerts",
+    href: "/category/concerts",
+    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&auto=format&fit=crop&q=80",
+  },
+  {
+    name: "Vacation",
+    href: "/category/vacation",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80",
+  },
+  {
     name: "Watches",
     href: "/category/watches",
     image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&auto=format&fit=crop&q=80",
+  },
+  {
+    name: "Jewellery",
+    href: "/category/jewellery",
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80",
   },
 ];
 

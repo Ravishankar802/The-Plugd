@@ -1,19 +1,18 @@
 /**
  * Subcategory Hierarchy & Mapping for Plugd
  * 
- * Defines the exact subcategory relationships per category:
- * - FOOD: Ice Creams, Sweet Cravings, Biscuits, Snacks
- * - DRINKS: Coffee, Cold Drinks & Juices
- * - FASHION: Jewellery
- * - MOBILE: Standalone main category
- * - BEAUTY: Skin Care
- * - ENTERTAINMENT: Standalone main category
- * - SUBSCRIPTIONS: Standalone main category
- * - ELECTRONICS: Mobile, Laptops, Audio, Gaming, Watches
- *   - Gaming nested: Console Controllers, Games, Keyboards, Mouse, Speakers
- * - FITNESS: Standalone main category
- * - VEHICLES: Bikes, Cars
- * - TOYS: Standalone main category
+ * 11 Main Categories:
+ * 1. Mobile
+ * 2. Electronics
+ * 3. Subscriptions
+ * 4. Fashion
+ * 5. Beauty
+ * 6. Cars
+ * 7. Bikes
+ * 8. Concerts
+ * 9. Vacation
+ * 10. Watches
+ * 11. Jewellery
  */
 
 import { CARS_SLUGS, BIKES_SLUGS } from "./vehicles-catalog";
