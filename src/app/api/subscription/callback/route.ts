@@ -1,61 +1,48 @@
 import { NextResponse } from "next/server";
+import { getSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
-import { MONETIZATION_PLANS, calculateExpirationDate } from "@/lib/subscription";
+import { dodoClient, isDodoConfigured } from "@/lib/dodopayments";
 
 export const dynamic = "force-dynamic";
 
+/**
+ * Subscription return callback.
+ * IMPORTANT: The Dodo webhook (/api/webhook/dodo) is the authoritative mechanism
+ * for verifying and granting Plugd Pro subscriptions.
+ * This callback route only safely redirects the user back to their wishlist after checkout.
+ * It NEVER grants subscription access solely from query parameters.
+ */
 export async function GET(req: Request) {
   const url = new URL(req.url);
-  const planParam = (url.searchParams.get("plan") || "MONTHLY").toUpperCase() as "MONTHLY" | "YEARLY";
-  const planKey = planParam === "YEARLY" ? "YEARLY" : "MONTHLY";
-  const userId = url.searchParams.get("userId");
   const sessionId = url.searchParams.get("session_id");
-
-  if (!userId) {
-    return NextResponse.redirect(new URL("/login", req.url));
-  }
+  const authSession = await getSession();
 
   try {
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-    });
-
-    if (!user) {
-      return NextResponse.redirect(new URL("/", req.url));
+    // If sessionId is present and Dodo is configured, we can verify session status for logging
+    if (sessionId && isDodoConfigured()) {
+      try {
+        const sessionData = await dodoClient.checkoutSessions.retrieve(sessionId);
+        console.log(`[SUBSCRIPTION_CALLBACK] Session ${sessionId} status: ${sessionData.payment_status}`);
+      } catch (e: any) {
+        console.warn(`[SUBSCRIPTION_CALLBACK] Could not retrieve session ${sessionId}:`, e.message);
+      }
     }
 
-    const planConfig = MONETIZATION_PLANS[planKey];
-    const expiresAt = calculateExpirationDate(planKey);
+    // Determine destination from authenticated session
+    if (authSession?.userId) {
+      const user = await prisma.user.findUnique({
+        where: { id: authSession.userId },
+        select: { username: true },
+      });
 
-    await prisma.$transaction([
-      prisma.subscription.upsert({
-        where: { userId: user.id },
-        update: {
-          plan: planKey,
-          status: "ACTIVE",
-          amount: planConfig.price,
-          currency: "INR",
-          sessionId: sessionId || null,
-          expiresAt,
-        },
-        create: {
-          userId: user.id,
-          plan: planKey,
-          status: "ACTIVE",
-          amount: planConfig.price,
-          currency: "INR",
-          sessionId: sessionId || null,
-          expiresAt,
-        },
-      }),
-      prisma.user.update({
-        where: { id: user.id },
-        data: { isPublic: true },
-      }),
-    ]);
+      if (user?.username) {
+        return NextResponse.redirect(new URL(`/@${user.username}?upgraded=true`, req.url));
+      }
+      return NextResponse.redirect(new URL("/profile?upgraded=true", req.url));
+    }
 
-    const destination = user.username ? `/@${user.username}?upgraded=true` : `/profile?upgraded=true`;
-    return NextResponse.redirect(new URL(destination, req.url));
+    // If viewer is not logged in, redirect to login
+    return NextResponse.redirect(new URL("/login", req.url));
   } catch (error) {
     console.error("[SUBSCRIPTION_CALLBACK_ERROR]", error);
     return NextResponse.redirect(new URL("/", req.url));

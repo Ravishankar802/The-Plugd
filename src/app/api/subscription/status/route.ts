@@ -26,7 +26,7 @@ export async function GET() {
     const sub = user.subscription;
     const isSubscribed = Boolean(
       sub &&
-      sub.status === "ACTIVE" &&
+      (sub.status === "ACTIVE" || (sub.status === "CANCELLED" && sub.expiresAt)) &&
       (!sub.expiresAt || new Date(sub.expiresAt) > new Date())
     );
 
@@ -71,16 +71,16 @@ export async function PATCH(req: Request) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // Only subscribed users can make their wishlist public
+    // Only users with an active/valid subscription can make their wishlist public
     const hasActiveSubscription = Boolean(
       user.subscription &&
-      user.subscription.status === "ACTIVE" &&
+      (user.subscription.status === "ACTIVE" || (user.subscription.status === "CANCELLED" && user.subscription.expiresAt)) &&
       (!user.subscription.expiresAt || new Date(user.subscription.expiresAt) > new Date())
     );
 
     if (isPublic && !hasActiveSubscription) {
       return NextResponse.json(
-        { error: "An active Share subscription is required to make your wishlist public." },
+        { error: "An active Plugd Pro subscription is required to make your wishlist public." },
         { status: 403 }
       );
     }

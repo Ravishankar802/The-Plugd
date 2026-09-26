@@ -11,7 +11,7 @@ export interface PlanConfig {
 export const MONETIZATION_PLANS: Record<"MONTHLY" | "YEARLY", PlanConfig> = {
   MONTHLY: {
     id: "MONTHLY",
-    name: "Share Monthly",
+    name: "Plugd Pro Monthly",
     price: 39,
     period: "month",
     periodLabel: "₹39 / month",
@@ -25,7 +25,7 @@ export const MONETIZATION_PLANS: Record<"MONTHLY" | "YEARLY", PlanConfig> = {
   },
   YEARLY: {
     id: "YEARLY",
-    name: "Share Yearly",
+    name: "Plugd Pro Yearly",
     price: 299,
     period: "year",
     periodLabel: "₹299 / year",
@@ -54,14 +54,19 @@ export interface UserSubscriptionLike {
 
 /**
  * Checks whether a user's wishlist is publicly viewable.
- * Wishlists are private by default. A user must have an active subscription
- * (Share Monthly ₹39 or Share Yearly ₹299) to unlock public sharing.
+ * Wishlists are private by default. A user must have an active or valid Pro subscription
+ * (Plugd Pro Monthly ₹39 or Plugd Pro Yearly ₹299) to unlock public sharing.
  */
 export function isWishlistPublic(user: UserSubscriptionLike | null | undefined): boolean {
   if (!user || !user.subscription) return false;
 
   const sub = user.subscription;
-  if (sub.status !== "ACTIVE") return false;
+  // A subscription grants access if ACTIVE, or CANCELLED/ON_HOLD while still within the paid period
+  const hasValidStatus =
+    sub.status === "ACTIVE" ||
+    ((sub.status === "CANCELLED" || sub.status === "ON_HOLD") && Boolean(sub.expiresAt));
+
+  if (!hasValidStatus) return false;
 
   if (sub.expiresAt) {
     const expiry = new Date(sub.expiresAt).getTime();

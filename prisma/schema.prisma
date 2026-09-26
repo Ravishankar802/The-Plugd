@@ -43,6 +43,14 @@ model Subscription {
   @@index([status, expiresAt])
 }
 
+model ProcessedWebhook {
+  id        String   @id
+  eventType String
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
 model CreatorProfile {
   id           String   @id @default(cuid())
   userId       String   @unique

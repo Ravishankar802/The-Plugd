@@ -68,13 +68,30 @@ export async function POST(req: Request) {
           }
         }
       } catch (dodoError: any) {
-        console.warn("[DODO_PAYMENTS_CHECKOUT_FALLBACK]", dodoError.message);
-        // Fall through to seamless activation / simulated flow if Dodo products aren't created yet in sandbox
+        console.warn("[DODO_PAYMENTS_CHECKOUT_ERROR]", dodoError.message);
+        if (process.env.NODE_ENV === "production" && process.env.DODO_PAYMENTS_MODE !== "test") {
+          return NextResponse.json(
+            { error: "Payment checkout initialization failed. Please try again shortly." },
+            { status: 502 }
+          );
+        }
       }
     }
 
-    // Direct / Dev / Sandbox mode when Dodo merchant credentials are not yet configured:
-    // Activate the subscription immediately so the feature is fully testable and operational
+    // Strictly restrict fallback to development / sandbox testing:
+    // It can NEVER accidentally grant production Pro access without a real Dodo payment.
+    const isDevelopmentOrTest =
+      process.env.NODE_ENV !== "production" ||
+      process.env.DODO_PAYMENTS_MODE === "test";
+
+    if (!isDevelopmentOrTest) {
+      return NextResponse.json(
+        { error: "Dodo Payments is not configured for live checkout. Please configure DODO_PAYMENTS_API_KEY." },
+        { status: 503 }
+      );
+    }
+
+    // Direct Dev / Sandbox mode simulation:
     const expiresAt = calculateExpirationDate(planKey);
 
     await prisma.$transaction([
