@@ -120,9 +120,98 @@ export async function POST(req: Request) {
 
     // 3. Handle the 9 Subscription Lifecycle Events
     switch (type) {
-      case "subscription.active":
-      case "subscription.renewed":
       case "payment.succeeded": {
+        // 1. Extract product ID from the payment event
+        const paymentProductId =
+          data?.product_id ||
+          (Array.isArray(data?.product_cart) && data.product_cart[0]?.product_id) ||
+          data?.line_items?.[0]?.product_id;
+
+        // 2. Reject/ignore if the payment does NOT correspond to either Plugd Pro product
+        const isMonthlyPro = paymentProductId === DODO_PRODUCT_IDS.MONTHLY;
+        const isYearlyPro = paymentProductId === DODO_PRODUCT_IDS.YEARLY;
+
+        if (!isMonthlyPro && !isYearlyPro) {
+          console.log(`[DODO_WEBHOOK] Ignored payment.succeeded for non-Plugd-Pro product: ${paymentProductId || "unknown"}`);
+          if (eventId) {
+            await prisma.processedWebhook.create({
+              data: { id: eventId, eventType: String(type) },
+            });
+          }
+          return NextResponse.json({
+            received: true,
+            note: "Ignored non-Plugd-Pro payment",
+          });
+        }
+
+        // 3. Check for subscription association and exact billing cycle information
+        const paymentSubId = data?.subscription_id || null;
+        const rawExpiry = data?.next_billing_date || data?.expires_at || data?.current_period_end;
+        let expiresAt: Date | null = null;
+        if (rawExpiry) {
+          const parsed = new Date(rawExpiry);
+          if (!isNaN(parsed.getTime())) {
+            expiresAt = parsed;
+          }
+        }
+
+        // 4. If payment.succeeded does not contain enough subscription period information,
+        // do not invent a fake expiration date. Record paymentId on existing subscription if present,
+        // and leave activation/dates to subscription.active / subscription.renewed / subscription.updated.
+        if (!expiresAt) {
+          if (paymentId) {
+            await prisma.subscription.updateMany({
+              where: { userId },
+              data: {
+                paymentId,
+                ...(paymentSubId ? { subscriptionId: paymentSubId } : {}),
+              },
+            });
+          }
+
+          console.log(
+            `[DODO_WEBHOOK] payment.succeeded recorded for Pro product ${paymentProductId}. Awaiting subscription.active / renewed for billing dates.`
+          );
+          break;
+        }
+
+        // 5. If exact billing period information is present:
+        const plan = isYearlyPro ? "YEARLY" : "MONTHLY";
+        const amount = isYearlyPro ? 299 : 39;
+
+        await prisma.$transaction([
+          prisma.subscription.upsert({
+            where: { userId },
+            update: {
+              plan,
+              status: "ACTIVE",
+              amount,
+              currency: "INR",
+              paymentId: paymentId ?? undefined,
+              subscriptionId: paymentSubId ?? undefined,
+              expiresAt,
+            },
+            create: {
+              userId,
+              plan,
+              status: "ACTIVE",
+              amount,
+              currency: "INR",
+              paymentId,
+              subscriptionId: paymentSubId,
+              expiresAt,
+            },
+          }),
+          prisma.user.update({
+            where: { id: userId },
+            data: { isPublic: true },
+          }),
+        ]);
+        break;
+      }
+
+      case "subscription.active":
+      case "subscription.renewed": {
         const expiresAt = resolveExpiresAt(data, planInfo.plan);
 
         await prisma.$transaction([
