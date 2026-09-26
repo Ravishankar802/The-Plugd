@@ -23,11 +23,8 @@ export default function AuthMarketingHero() {
       <div className="relative z-10 my-auto py-8 flex flex-col items-center text-center">
         {/* Punchy Headline */}
         <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight text-zinc-900 leading-[1.15] max-w-md">
-          Wish for what you want.
+          Wish for what you <span className="text-orange-500">want</span>.
         </h2>
-        <p className="mt-3 text-sm sm:text-base text-zinc-500 max-w-sm font-medium">
-          Create your wishlist. Share it. Get what you wish for.
-        </p>
 
         {/* Stacked Overlapping Wishlist Cards (Instagram-inspired visual stack) */}
         <div className="relative mt-10 w-full max-w-[340px] h-[280px] flex items-center justify-center">
@@ -72,7 +69,6 @@ export default function AuthMarketingHero() {
             </div>
             <div className="mt-2.5 text-left">
               <p className="text-xs font-extrabold text-zinc-900 truncate">iPhone 18 Pro Max</p>
-              <p className="text-[10px] font-medium text-orange-600">👤 2,840 added</p>
             </div>
           </div>
         </div>

@@ -518,9 +518,6 @@ export default function SignupPage() {
                       );
                     })}
                   </div>
-                  <p className="text-[11px] text-center text-zinc-500 font-medium pt-1">
-                    Selected avatar
-                  </p>
                 </div>
               ) : (
                 /* View B: Upload Custom Photo */
