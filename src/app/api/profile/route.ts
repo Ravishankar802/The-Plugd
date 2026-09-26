@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getSession, createSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 
+import { isWishlistPublic, MONETIZATION_PLANS } from "@/lib/subscription";
+
 export const dynamic = "force-dynamic";
 
 const RESERVED_USERNAMES = new Set([
@@ -49,12 +51,20 @@ export async function GET() {
   try {
     const user = await prisma.user.findUnique({
       where: { id: session.userId },
-      include: { creatorProfile: true },
+      include: { creatorProfile: true, subscription: true },
     });
 
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
+
+    const isPublic = isWishlistPublic(user);
+    const sub = user.subscription;
+    const isSubscribed = Boolean(
+      sub &&
+      sub.status === "ACTIVE" &&
+      (!sub.expiresAt || new Date(sub.expiresAt) > new Date())
+    );
 
     return NextResponse.json({
       id: user.id,
@@ -65,6 +75,17 @@ export async function GET() {
       avatarUrl: user.avatarUrl || user.creatorProfile?.avatarUrl || "/avatars/avatar-1.png",
       paymentLink: user.paymentLink || user.creatorProfile?.paymentLink || "",
       paymentQr: user.paymentQr || user.creatorProfile?.paymentQr || "",
+      isPublic,
+      isSubscribed,
+      subscription: sub
+        ? {
+            plan: sub.plan,
+            status: sub.status,
+            amount: sub.amount,
+            expiresAt: sub.expiresAt,
+            planDetails: MONETIZATION_PLANS[sub.plan as "MONTHLY" | "YEARLY"] || null,
+          }
+        : null,
     });
   } catch (error) {
     console.error("[PROFILE_GET_ERROR]", error);

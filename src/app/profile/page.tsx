@@ -15,9 +15,12 @@ import {
   LogOut,
   ArrowLeft,
   Sparkles,
+  Lock,
+  Globe,
 } from "lucide-react";
 import { BUILTIN_AVATARS, AvatarOption } from "@/lib/avatars";
 import { decodeQrCode } from "@/lib/qr-reader";
+import UnlockSharingModal from "@/components/UnlockSharingModal";
 
 export default function EditProfilePage() {
   const router = useRouter();
@@ -50,6 +53,12 @@ export default function EditProfilePage() {
   const [qrError, setQrError] = useState("");
   const qrFileRef = useRef<HTMLInputElement>(null);
 
+  // Subscription fields
+  const [isPublic, setIsPublic] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [subscription, setSubscription] = useState<any>(null);
+  const [unlockModalOpen, setUnlockModalOpen] = useState(false);
+
   // Username validation
   const [usernameStatus, setUsernameStatus] = useState<{
     checking: boolean;
@@ -76,6 +85,9 @@ export default function EditProfilePage() {
         setBio(data.bio || "");
         setPaymentLink(data.paymentLink || "");
         setPaymentQrUrl(data.paymentQr || "");
+        setIsPublic(Boolean(data.isPublic));
+        setIsSubscribed(Boolean(data.isSubscribed));
+        setSubscription(data.subscription || null);
 
         const avUrl = data.avatarUrl || "/avatars/avatar-1.svg";
         setCurrentAvatarUrl(avUrl);
@@ -633,6 +645,73 @@ export default function EditProfilePage() {
               )}
             </div>
 
+            {/* WISHLIST SHARING & VISIBILITY */}
+            <div className="space-y-3 pt-3 border-t border-zinc-100">
+              <span className="text-xs font-bold text-zinc-700 uppercase tracking-wider">
+                Wishlist Visibility & Sharing
+              </span>
+
+              {isSubscribed ? (
+                <div className="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-4 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-emerald-600 text-white">
+                        <Globe className="h-4 w-4" />
+                      </span>
+                      <div>
+                        <p className="text-xs font-bold text-zinc-900">
+                          Public Wishlist • {subscription?.planDetails?.name || (subscription?.plan === "YEARLY" ? "Share Yearly" : "Share Monthly")}
+                        </p>
+                        <p className="text-[11px] text-zinc-600">
+                          Your wishlist is public and anyone with your link can view and gift your items.
+                        </p>
+                      </div>
+                    </div>
+                    <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-[10px] font-bold text-emerald-800">
+                      Active
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 pt-1 text-xs">
+                    <span className="font-mono text-zinc-600 bg-white px-2.5 py-1 rounded-lg border border-emerald-200/80">
+                      theplugd.com/@{username || originalUsername}
+                    </span>
+                    <Link
+                      href={publicProfileUrl}
+                      className="font-bold text-orange-600 hover:underline"
+                    >
+                      View Wishlist
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                <div className="rounded-2xl border-2 border-orange-300/80 bg-orange-50/50 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-black">
+                      <Lock className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <p className="text-xs font-bold text-zinc-900">Private Wishlist</p>
+                        <span className="rounded-full bg-zinc-200 px-2 py-0.5 text-[10px] font-bold text-zinc-700">Free Plan (₹0)</span>
+                      </div>
+                      <p className="mt-0.5 text-xs text-zinc-600 max-w-md">
+                        Your wishlist is currently private. Unlock public sharing for <strong>₹39/month</strong> or <strong>₹299/year</strong> to share your link and receive gifts from friends and supporters.
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setUnlockModalOpen(true)}
+                    className="h-9 px-4 rounded-xl bg-orange-500 text-black font-extrabold text-xs shadow-xs hover:bg-orange-600 transition flex items-center justify-center gap-1.5 shrink-0 cursor-pointer"
+                  >
+                    <Sparkles className="h-3.5 w-3.5" />
+                    <span>Unlock Public Sharing</span>
+                  </button>
+                </div>
+              )}
+            </div>
+
             {/* SAVE BUTTON */}
             <div className="pt-4 border-t border-zinc-100 flex items-center justify-between">
               <Link
@@ -660,6 +739,13 @@ export default function EditProfilePage() {
           </form>
         </div>
       </div>
+
+      <UnlockSharingModal
+        open={unlockModalOpen}
+        onClose={() => setUnlockModalOpen(false)}
+        username={username || originalUsername}
+        onSuccess={() => window.location.reload()}
+      />
     </main>
   );
 }

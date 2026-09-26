@@ -117,12 +117,20 @@ export default function PaymentSupportModal({
               <span>Open Payment Link</span>
               <ExternalLink className="h-4 w-4" />
             </a>
+
+            <p className="text-center text-[10px] text-zinc-400 pt-1">
+              100% Direct Payment • Plugd takes 0% cut on gifts & support
+            </p>
           </div>
         ) : !isQrImage ? (
           <div className="py-6 text-center text-xs text-zinc-500">
             {creatorName} hasn&apos;t added a payment link yet.
           </div>
-        ) : null}
+        ) : (
+          <p className="text-center text-[10px] text-zinc-400 pt-1">
+            100% Direct Payment • Plugd takes 0% cut on gifts & support
+          </p>
+        )}
       </div>
     </div>
   );

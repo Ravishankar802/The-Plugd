@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import ItemDetailClient from "@/components/ItemDetailClient";
+import PrivateWishlistNotice from "@/components/PrivateWishlistNotice";
 import { resolveWishlistItem } from "@/lib/catalog";
 import { getCreatorDisplayName } from "@/lib/creator";
+import { getSession } from "@/lib/auth";
+import { isWishlistPublic } from "@/lib/subscription";
 import prisma from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -26,11 +29,16 @@ export async function generateMetadata({ params }: PublicItemPageProps) {
 
   const user = await prisma.user.findUnique({
     where: { username },
-    include: { creatorProfile: true },
+    include: { creatorProfile: true, subscription: true },
   });
 
   if (!user) {
     return { title: "Plugd" };
+  }
+
+  const isPublic = isWishlistPublic(user);
+  if (!isPublic) {
+    return { title: `Wishlist Item • Plugd` };
   }
 
   const item = await prisma.wishlistItem.findFirst({
@@ -66,7 +74,10 @@ export async function generateMetadata({ params }: PublicItemPageProps) {
 }
 
 export default async function PublicItemPage({ params }: PublicItemPageProps) {
-  const resolvedParams = await params;
+  const [resolvedParams, session] = await Promise.all([
+    params,
+    getSession(),
+  ]);
   const username = normalizeUsername(resolvedParams.username);
 
   if (!username) {
@@ -77,11 +88,27 @@ export default async function PublicItemPage({ params }: PublicItemPageProps) {
     where: { username },
     include: {
       creatorProfile: true,
+      subscription: true,
     },
   });
 
   if (!user) {
     notFound();
+  }
+
+  const isOwner = session?.userId === user.id;
+  const isPublic = isWishlistPublic(user);
+  const displayName = getCreatorDisplayName(user.creatorProfile, user.email.split("@")[0]);
+
+  if (!isPublic && !isOwner) {
+    return (
+      <PrivateWishlistNotice
+        displayName={displayName}
+        username={user.username || username}
+        avatarUrl={user.avatarUrl || user.creatorProfile?.avatarUrl}
+        isLoggedIn={Boolean(session?.userId)}
+      />
+    );
   }
 
   const item = await prisma.wishlistItem.findFirst({

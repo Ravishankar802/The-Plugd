@@ -17,10 +17,30 @@ model User {
   avatarUrl      String?
   paymentLink    String?
   paymentQr      String?
+  isPublic       Boolean         @default(false)
   createdAt      DateTime        @default(now())
   updatedAt      DateTime        @updatedAt
   creatorProfile CreatorProfile?
   wishlistItems  WishlistItem[]
+  subscription   Subscription?
+}
+
+model Subscription {
+  id             String    @id @default(cuid())
+  userId         String    @unique
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plan           String    // "MONTHLY" | "YEARLY"
+  status         String    @default("ACTIVE") // "ACTIVE" | "EXPIRED" | "CANCELLED"
+  amount         Int       // 39 or 299
+  currency       String    @default("INR")
+  paymentId      String?
+  subscriptionId String?
+  sessionId      String?
+  expiresAt      DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([status, expiresAt])
 }
 
 model CreatorProfile {

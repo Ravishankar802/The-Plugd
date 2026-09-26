@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { ensureCreatorProfile } from "@/lib/creator";
+import { isWishlistPublic } from "@/lib/subscription";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +20,7 @@ export async function GET() {
       where: { id: session.userId },
       include: {
         creatorProfile: true,
+        subscription: true,
         wishlistItems: {
           where: { isPublished: true },
         },
@@ -39,6 +41,13 @@ export async function GET() {
 
     const completeness = completenessChecks.filter(Boolean).length * 20;
 
+    const isPublic = isWishlistPublic(user);
+    const isSubscribed = Boolean(
+      user.subscription &&
+      user.subscription.status === "ACTIVE" &&
+      (!user.subscription.expiresAt || new Date(user.subscription.expiresAt) > new Date())
+    );
+
     return NextResponse.json({
       user: {
         id: user.id,
@@ -46,6 +55,9 @@ export async function GET() {
         username: user.username,
         creatorProfile: user.creatorProfile,
       },
+      isPublic,
+      isSubscribed,
+      subscription: user.subscription,
       wishlistCount: user.wishlistItems.length,
       completeness,
       isAdmin: session.isAdmin || false,

@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
 import PublicProfileClient from "@/components/PublicProfileClient";
+import PrivateWishlistNotice from "@/components/PrivateWishlistNotice";
 import { resolveWishlistItem } from "@/lib/catalog";
 import { getCreatorDisplayName } from "@/lib/creator";
 import { getSession } from "@/lib/auth";
+import { isWishlistPublic } from "@/lib/subscription";
 import prisma from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -27,14 +29,22 @@ export async function generateMetadata({ params }: PublicProfilePageProps) {
 
   const user = await prisma.user.findUnique({
     where: { username },
-    include: { creatorProfile: true },
+    include: { creatorProfile: true, subscription: true },
   });
 
   if (!user) {
     return { title: "Plugd" };
   }
 
+  const isPublic = isWishlistPublic(user);
   const displayName = getCreatorDisplayName(user.creatorProfile, user.displayName || user.email.split("@")[0]);
+
+  if (!isPublic) {
+    return {
+      title: `${displayName} (@${username}) • Plugd`,
+      description: `@${username}'s wishlist on Plugd`,
+    };
+  }
 
   return {
     title: `${displayName} (@${username}) • Plugd Wishlist`,
@@ -57,6 +67,7 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
     where: { username: { equals: username, mode: "insensitive" } },
     include: {
       creatorProfile: true,
+      subscription: true,
       wishlistItems: {
         where: { isPublished: true },
         include: {
@@ -76,6 +87,23 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
     notFound();
   }
 
+  const isOwner = session?.userId === user.id;
+  const isPublic = isWishlistPublic(user);
+  const displayName = getCreatorDisplayName(user.creatorProfile, user.displayName || user.email.split("@")[0]);
+
+  // If wishlist is private and viewer is NOT the owner:
+  // Render clean Private Wishlist Notice and NEVER leak items.
+  if (!isPublic && !isOwner) {
+    return (
+      <PrivateWishlistNotice
+        displayName={displayName}
+        username={user.username || username}
+        avatarUrl={user.avatarUrl || user.creatorProfile?.avatarUrl}
+        isLoggedIn={Boolean(session?.userId)}
+      />
+    );
+  }
+
   const items = user.wishlistItems.map(resolveWishlistItem);
   const categories = Array.from(
     new Map(
@@ -85,13 +113,11 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
     ).values(),
   );
 
-  const isOwner = session?.userId === user.id;
-
   return (
     <PublicProfileClient
       creator={{
         username: user.username || username,
-        displayName: getCreatorDisplayName(user.creatorProfile, user.displayName || user.email.split("@")[0]),
+        displayName,
         bio: user.bio || user.creatorProfile?.bio,
         avatarUrl: user.avatarUrl || user.creatorProfile?.avatarUrl,
         paymentLink: user.paymentLink || user.creatorProfile?.paymentLink,
@@ -101,6 +127,9 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
       items={items}
       isOwner={isOwner}
       isViewerLoggedIn={Boolean(session?.userId)}
+      isWishlistPublic={isPublic}
+      isSubscribed={Boolean(user.subscription && user.subscription.status === "ACTIVE")}
+      subscriptionPlan={user.subscription?.plan || null}
     />
   );
 }

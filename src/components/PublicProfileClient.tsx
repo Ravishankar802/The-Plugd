@@ -9,11 +9,14 @@ import {
   Edit3,
   HeartHandshake,
   Plus,
+  Lock,
+  Globe,
 } from "lucide-react";
 import CatalogCard from "@/components/CatalogCard";
 import AddToWishlistButton from "@/components/AddToWishlistButton";
 import CategoryIcon from "@/components/CategoryIcon";
 import PaymentSupportModal from "@/components/PaymentSupportModal";
+import UnlockSharingModal from "@/components/UnlockSharingModal";
 
 interface CategoryShape {
   id: string;
@@ -50,6 +53,9 @@ interface PublicProfileClientProps {
   items: WishlistShape[];
   isOwner?: boolean;
   isViewerLoggedIn?: boolean;
+  isWishlistPublic?: boolean;
+  isSubscribed?: boolean;
+  subscriptionPlan?: string | null;
 }
 
 export default function PublicProfileClient({
@@ -58,9 +64,13 @@ export default function PublicProfileClient({
   items,
   isOwner = false,
   isViewerLoggedIn = false,
+  isWishlistPublic = false,
+  isSubscribed = false,
+  subscriptionPlan = null,
 }: PublicProfileClientProps) {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [supportModalOpen, setSupportModalOpen] = useState(false);
+  const [unlockModalOpen, setUnlockModalOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const visibleItems = useMemo(() => {
@@ -72,6 +82,12 @@ export default function PublicProfileClient({
 
   const handleShare = async () => {
     if (typeof window === "undefined") return;
+
+    if (isOwner && !isWishlistPublic) {
+      setUnlockModalOpen(true);
+      return;
+    }
+
     if (navigator.share) {
       try {
         await navigator.share({
@@ -97,7 +113,7 @@ export default function PublicProfileClient({
       {/* Top Profile Header Area */}
       <header className="border-b border-zinc-200/80 bg-zinc-50/70 pt-8 pb-10 px-4 md:px-6">
         <div className="mx-auto max-w-4xl flex flex-col items-center text-center">
-          {/* Top navigation row: back to plugd */}
+          {/* Top navigation row: back to plugd & share/status */}
           <div className="w-full flex items-center justify-between pb-6">
             <Link
               href="/"
@@ -106,23 +122,44 @@ export default function PublicProfileClient({
               <span className="font-logo text-xl font-extrabold text-orange-500">Plugd</span>
             </Link>
 
-            <button
-              type="button"
-              onClick={handleShare}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3 py-1.5 text-xs font-bold text-zinc-700 shadow-xs hover:border-zinc-300 hover:bg-zinc-50 transition"
-            >
-              {copied ? (
-                <>
-                  <Check className="h-3.5 w-3.5 text-emerald-600" />
-                  <span>Link Copied</span>
-                </>
-              ) : (
-                <>
-                  <Share2 className="h-3.5 w-3.5 text-zinc-500" />
-                  <span>Share</span>
-                </>
+            <div className="flex items-center gap-2">
+              {isOwner && (
+                !isWishlistPublic ? (
+                  <button
+                    type="button"
+                    onClick={() => setUnlockModalOpen(true)}
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-orange-100/90 border border-orange-200 px-2.5 py-1.5 text-xs font-bold text-orange-800 hover:bg-orange-200 transition cursor-pointer"
+                  >
+                    <Lock className="h-3.5 w-3.5 text-orange-600" />
+                    <span className="hidden sm:inline">Private • Unlock Sharing</span>
+                    <span className="sm:hidden">Private</span>
+                  </button>
+                ) : (
+                  <span className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-50 border border-emerald-200 px-2.5 py-1.5 text-xs font-bold text-emerald-800">
+                    <Globe className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>Public</span>
+                  </span>
+                )
               )}
-            </button>
+
+              <button
+                type="button"
+                onClick={handleShare}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3 py-1.5 text-xs font-bold text-zinc-700 shadow-xs hover:border-zinc-300 hover:bg-zinc-50 transition cursor-pointer"
+              >
+                {copied ? (
+                  <>
+                    <Check className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>Link Copied</span>
+                  </>
+                ) : (
+                  <>
+                    <Share2 className="h-3.5 w-3.5 text-zinc-500" />
+                    <span>{isOwner && !isWishlistPublic ? "Share" : "Share"}</span>
+                  </>
+                )}
+              </button>
+            </div>
           </div>
 
           {/* Profile Picture */}
@@ -185,6 +222,34 @@ export default function PublicProfileClient({
 
       {/* Wishlist Section */}
       <main className="mx-auto max-w-6xl flex-1 px-4 py-8 md:px-6 w-full space-y-6">
+        {/* Private Wishlist Banner for Owner */}
+        {isOwner && !isWishlistPublic && (
+          <div className="rounded-2xl border-2 border-orange-300/80 bg-gradient-to-r from-orange-50 via-amber-50 to-orange-50/60 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
+            <div className="flex items-start gap-3.5">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-black shadow-xs">
+                <Lock className="h-5 w-5" />
+              </div>
+              <div className="space-y-0.5">
+                <div className="flex items-center gap-2">
+                  <h3 className="text-sm font-black text-zinc-900">Your wishlist is currently private</h3>
+                  <span className="rounded-full bg-zinc-200/90 px-2 py-0.5 text-[10px] font-bold text-zinc-700">Free (₹0)</span>
+                </div>
+                <p className="text-xs text-zinc-600 max-w-xl">
+                  Only you can see these items. Unlock public sharing for <strong>₹39/month</strong> or <strong>₹299/year</strong> so your friends can view your wishlist and gift what you want.
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setUnlockModalOpen(true)}
+              className="h-10 px-4 rounded-xl bg-orange-500 text-black font-extrabold text-xs shadow-xs hover:bg-orange-600 transition flex items-center justify-center gap-1.5 shrink-0 cursor-pointer"
+            >
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>Unlock Public Sharing</span>
+            </button>
+          </div>
+        )}
+
         {/* Wishlist Heading & Count */}
         <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
           <div className="flex items-center gap-2">
@@ -319,6 +384,14 @@ export default function PublicProfileClient({
         username={creator.username}
         paymentLink={creator.paymentLink}
         paymentQr={creator.paymentQr}
+      />
+
+      {/* Unlock Public Sharing Modal */}
+      <UnlockSharingModal
+        open={unlockModalOpen}
+        onClose={() => setUnlockModalOpen(false)}
+        username={creator.username}
+        onSuccess={() => window.location.reload()}
       />
     </div>
   );
