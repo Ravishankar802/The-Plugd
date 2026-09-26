@@ -48,7 +48,7 @@ export default function Header({
           <img
             src="/logo.png"
             alt="Plugd"
-            className="h-11 sm:h-12 md:h-14 w-auto object-contain select-none transition-transform duration-200 group-hover:scale-[1.03]"
+            className="h-8 sm:h-9 md:h-10 w-auto object-contain select-none transition-transform duration-200 group-hover:scale-[1.02]"
           />
         </Link>
 
