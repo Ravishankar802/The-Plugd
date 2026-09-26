@@ -85,7 +85,7 @@ export async function POST(req: Request) {
 
       if (!catalogItem) {
         const strippedSlug = body.catalogItemId.replace(
-          /^(drinks|mobile|beauty|electronics|entertainment|subscriptions|fitness|toys|vehicles|food|fashion)-/,
+          /^(mobile|electronics|subscriptions|fashion|beauty|cars|bikes|concerts|vacation|watches|jewellery)-/,
           ""
         );
         catalogItem = await prisma.catalogItem.findUnique({

@@ -21,7 +21,6 @@ const ITEM_COUNTS = [
   { slug: "cheirosa-68-beija-flor-perfume-mist", name: "Cheirosa 68 Beija Flor Perfume Mist", count: 39 },
   { slug: "age-r-booster-pro-6-in-1-smart-glow-device", name: "Age-R Booster Pro 6-in-1 Smart Glow Device", count: 40 },
   { slug: "220-gsm-oversized-plain-drop-shoulder-tee", name: "220 GSM Oversized Plain Drop-Shoulder Tee", count: 91 },
-  { slug: "monster-ultra-energy-drink", name: "Monster Ultra Energy Drink", count: 2200 },
 ];
 
 async function main() {

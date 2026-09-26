@@ -9,7 +9,7 @@ import { getSession } from "@/lib/auth";
 import { HOMEPAGE_CATEGORIES_GRID, MOBILE_HOMEPAGE_CATEGORIES, getProductDisplayImage } from "@/lib/product-images";
 import prisma from "@/lib/prisma";
 import { searchCatalog } from "@/lib/search";
-import { organizeCategories } from "@/lib/catalog";
+import { organizeCategories, PLUGD_CATEGORY_ORDER } from "@/lib/catalog";
 
 export const dynamic = "force-dynamic";
 
@@ -182,7 +182,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     searchResults,
   ] = await Promise.all([
     prisma.category.findMany({
-      where: { active: true },
+      where: { active: true, slug: { in: [...PLUGD_CATEGORY_ORDER] } },
       include: {
         catalogItems: {
           where: { active: true },

@@ -42,13 +42,13 @@ export default function Header({
   return (
     <header className="sticky top-0 z-40 w-full border-b border-zinc-200/80 bg-white/95 backdrop-blur-xl transition-all">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-2.5 px-3 py-2 md:gap-6 md:px-6 md:py-3.5">
-        {/* Left: Logo & Wordmark */}
-        <Link href="/" className="group flex shrink-0 items-center pl-1 sm:pl-4 md:pl-5">
+        {/* Left: Logo */}
+        <Link href="/" className="group flex shrink-0 items-center pl-1 sm:pl-3 md:pl-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/logo.png"
             alt="Plugd"
-            className="h-8 sm:h-9 md:h-10 w-auto object-contain select-none transition-transform duration-200 group-hover:scale-[1.02]"
+            className="h-11 sm:h-12 md:h-14 w-auto object-contain select-none transition-transform duration-200 group-hover:scale-[1.03]"
           />
         </Link>
 

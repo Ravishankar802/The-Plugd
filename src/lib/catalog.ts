@@ -487,7 +487,7 @@ export async function getCachedCategories(): Promise<CachedCategory[]> {
     return cachedCategories.data;
   }
   const categories = await prisma.category.findMany({
-    where: { active: true },
+    where: { active: true, slug: { in: [...PLUGD_CATEGORY_ORDER] } },
     select: {
       id: true,
       name: true,
@@ -1316,10 +1316,12 @@ export function organizeCategories<T extends { slug: string }>(cats: T[]): T[] {
   const orderMap = new Map<string, number>(
     PLUGD_CATEGORY_ORDER.map((slug, idx) => [slug, idx])
   );
-  return [...cats].sort((a, b) => {
-    const idxA = orderMap.has(a.slug) ? orderMap.get(a.slug)! : 999;
-    const idxB = orderMap.has(b.slug) ? orderMap.get(b.slug)! : 999;
-    return idxA - idxB;
-  });
+  return cats
+    .filter((c) => orderMap.has(c.slug.toLowerCase().trim()))
+    .sort((a, b) => {
+      const idxA = orderMap.get(a.slug.toLowerCase().trim())!;
+      const idxB = orderMap.get(b.slug.toLowerCase().trim())!;
+      return idxA - idxB;
+    });
 }
 

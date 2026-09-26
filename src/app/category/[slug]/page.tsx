@@ -5,7 +5,12 @@ import AddToWishlistButton from "@/components/AddToWishlistButton";
 import CatalogCard from "@/components/CatalogCard";
 import CategoryIcon from "@/components/CategoryIcon";
 import { getSession } from "@/lib/auth";
-import { getCachedCategories, getCachedCategoryItems, organizeCategories } from "@/lib/catalog";
+import {
+  getCachedCategories,
+  getCachedCategoryItems,
+  organizeCategories,
+  PLUGD_CATEGORY_ORDER,
+} from "@/lib/catalog";
 import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import {
@@ -51,7 +56,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   ]);
 
   const category = allCategories.find((c) => c.slug === resolvedParams.slug);
-  if (!category) {
+  if (!category || !PLUGD_CATEGORY_ORDER.includes(resolvedParams.slug as any)) {
     notFound();
   }
 
