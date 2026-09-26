@@ -74,7 +74,7 @@ export default function PrivateWishlistNotice({
           <div className="space-y-2.5 pt-2">
             {!isLoggedIn ? (
               <Link
-                href={`/login?redirect=/@${username}`}
+                href={`/login?redirect=/${username}`}
                 className="w-full h-11 rounded-2xl bg-zinc-900 text-white text-xs font-bold shadow-xs hover:bg-zinc-800 transition flex items-center justify-center gap-2"
               >
                 <LogIn className="h-4 w-4" />

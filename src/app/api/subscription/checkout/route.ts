@@ -123,7 +123,7 @@ export async function POST(req: Request) {
     return NextResponse.json({
       success: true,
       activated: true,
-      redirectUrl: username ? `/@${username}?upgraded=true` : `/profile?upgraded=true`,
+      redirectUrl: username ? `/${username}?upgraded=true` : `/profile?upgraded=true`,
       message: `Your wishlist is now public on the ${planConfig.name} plan!`,
     });
   } catch (error: any) {

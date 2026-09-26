@@ -308,7 +308,7 @@ export default function SignupPage() {
 
       // Successfully verified and account established!
       const cleanUsername = username.trim().toLowerCase().replace(/^@+/, "");
-      router.push(`/@${cleanUsername}`);
+      router.push(`/${cleanUsername}`);
       router.refresh();
     } catch (err: any) {
       setOtpError(err.message || "An unexpected error occurred.");
@@ -532,7 +532,7 @@ export default function SignupPage() {
                 <p className="text-[11px] text-zinc-400">
                   Your profile URL will be{" "}
                   <span className="font-mono text-zinc-600 font-semibold">
-                    theplugd.com/@{username || "username"}
+                    theplugd.com/{username || "username"}
                   </span>
                 </p>
               </div>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Sparkles, LayoutDashboard, Heart, LogIn } from "lucide-react";
+import { Sparkles, User, Heart, LogIn } from "lucide-react";
 import DiscoverySearch from "@/components/DiscoverySearch";
 import { SEARCH_PLACEHOLDERS } from "@/lib/catalog";
 
@@ -73,9 +73,8 @@ export default function Header({
                 href="/dashboard"
                 className="inline-flex items-center gap-1.5 rounded-xl md:rounded-2xl bg-zinc-950 px-2.5 py-1.5 md:px-4 md:py-2.5 text-[11px] md:text-xs font-bold text-white shadow-sm transition hover:bg-zinc-800"
               >
-                <LayoutDashboard className="h-3.5 w-3.5 md:h-4 md:w-4" />
-                <span className="hidden sm:inline">Dashboard</span>
-                <span className="sm:hidden">Menu</span>
+                <User className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                <span>Profile</span>
               </Link>
             </div>
           ) : (

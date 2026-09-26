@@ -186,8 +186,8 @@ export default function AppearancePage() {
   return (
     <div className="space-y-8 py-2 font-sans max-w-3xl">
       <div>
-        <h1 className="text-3xl font-black text-zinc-100 tracking-tight">Appearance</h1>
-        <p className="text-zinc-400 text-sm mt-1.5 font-normal">
+        <h1 className="text-3xl font-black text-zinc-900 tracking-tight">Appearance</h1>
+        <p className="text-zinc-500 text-sm mt-1.5 font-normal">
           Customize your public profile page aesthetics and social links.
         </p>
       </div>

@@ -180,7 +180,7 @@ export default function UnlockSharingModal({
           <div className="flex items-start gap-2">
             <Check className="h-4 w-4 text-orange-600 shrink-0 mt-0.5" />
             <span>
-              Public wishlist at <strong>theplugd.com/@{username || "yourname"}</strong>
+              Public wishlist at <strong>theplugd.com/{username || "yourname"}</strong>
             </span>
           </div>
           <div className="flex items-start gap-2">

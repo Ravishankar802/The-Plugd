@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import PublicProfileClient from "@/components/PublicProfileClient";
 import PrivateWishlistNotice from "@/components/PrivateWishlistNotice";
 import { resolveWishlistItem } from "@/lib/catalog";
@@ -57,6 +57,15 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
     params,
     getSession(),
   ]);
+
+  // Clean canonical redirect if accessed with @
+  if (resolvedParams.username.startsWith("@") || resolvedParams.username.startsWith("%40")) {
+    const clean = normalizeUsername(resolvedParams.username);
+    if (clean) {
+      redirect(`/${clean}`);
+    }
+  }
+
   const username = normalizeUsername(resolvedParams.username);
 
   if (!username) {
@@ -122,6 +131,10 @@ export default async function PublicProfilePage({ params }: PublicProfilePagePro
         avatarUrl: user.avatarUrl || user.creatorProfile?.avatarUrl,
         paymentLink: user.paymentLink || user.creatorProfile?.paymentLink,
         paymentQr: user.paymentQr || user.creatorProfile?.paymentQr,
+        instagramUrl: user.creatorProfile?.instagramUrl,
+        xUrl: user.creatorProfile?.xUrl,
+        youtubeUrl: user.creatorProfile?.youtubeUrl,
+        tiktokUrl: user.creatorProfile?.tiktokUrl,
       }}
       categories={categories}
       items={items}

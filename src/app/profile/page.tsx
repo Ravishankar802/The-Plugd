@@ -276,7 +276,7 @@ export default function EditProfilePage() {
     );
   }
 
-  const publicProfileUrl = `/@${originalUsername || username}`;
+  const publicProfileUrl = `/${originalUsername || username}`;
 
   return (
     <main className="min-h-screen bg-zinc-50/60 py-8 px-4 font-sans selection:bg-orange-500 selection:text-black">
@@ -674,7 +674,7 @@ export default function EditProfilePage() {
 
                   <div className="flex items-center gap-2 pt-1 text-xs">
                     <span className="font-mono text-zinc-600 bg-white px-2.5 py-1 rounded-lg border border-emerald-200/80">
-                      theplugd.com/@{username || originalUsername}
+                      theplugd.com/{username || originalUsername}
                     </span>
                     <Link
                       href={publicProfileUrl}

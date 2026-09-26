@@ -145,7 +145,7 @@ export default function WishlistDashboardPage() {
   };
 
   const publicUrl = username
-    ? `${typeof window !== "undefined" ? window.location.origin : ""}/@${username}`
+    ? `${typeof window !== "undefined" ? window.location.origin : ""}/${username}`
     : "";
 
   const handleCopyUrl = async () => {
@@ -364,10 +364,10 @@ export default function WishlistDashboardPage() {
   return (
     <div className="space-y-8 py-2 font-sans max-w-5xl">
       {/* Page Header with Public Link & Actions */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-800 pb-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-200 pb-6">
         <div>
-          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-zinc-100">My Wishlist</h1>
-          <p className="mt-1 text-xs md:text-sm text-zinc-400">
+          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-zinc-900">My Wishlist</h1>
+          <p className="mt-1 text-xs md:text-sm text-zinc-500">
             Manage the items on your public wishlist. Add from our catalog or create custom goals.
           </p>
         </div>
@@ -377,16 +377,16 @@ export default function WishlistDashboardPage() {
             <button
               type="button"
               onClick={handleCopyUrl}
-              className="inline-flex h-10 items-center gap-1.5 rounded-xl border border-zinc-800 bg-zinc-900 px-3.5 text-xs font-bold text-zinc-200 transition hover:border-zinc-700 hover:text-white"
+              className="inline-flex h-10 items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3.5 text-xs font-bold text-zinc-700 transition hover:border-zinc-300 hover:text-zinc-900 shadow-xs cursor-pointer"
             >
-              {copied ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5 text-zinc-400" />}
+              {copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5 text-zinc-400" />}
               <span>{copied ? "Copied Link" : "Copy URL"}</span>
             </button>
             <a
               href={publicUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-10 items-center gap-1.5 rounded-xl bg-orange-500 px-4 text-xs font-bold text-black transition hover:bg-orange-400"
+              className="inline-flex h-10 items-center gap-1.5 rounded-xl bg-orange-500 px-4 text-xs font-extrabold text-black transition hover:bg-orange-400 shadow-xs"
             >
               <span>Preview Page</span>
               <ExternalLink className="h-3.5 w-3.5" />

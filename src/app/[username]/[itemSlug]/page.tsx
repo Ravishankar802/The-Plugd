@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import ItemDetailClient from "@/components/ItemDetailClient";
 import PrivateWishlistNotice from "@/components/PrivateWishlistNotice";
 import { resolveWishlistItem } from "@/lib/catalog";
@@ -44,7 +44,10 @@ export async function generateMetadata({ params }: PublicItemPageProps) {
   const item = await prisma.wishlistItem.findFirst({
     where: {
       userId: user.id,
-      slug: resolvedParams.itemSlug,
+      OR: [
+        { slug: resolvedParams.itemSlug },
+        { id: resolvedParams.itemSlug },
+      ],
       isPublished: true,
     },
     include: {
@@ -62,7 +65,7 @@ export async function generateMetadata({ params }: PublicItemPageProps) {
   }
 
   const resolvedItem = resolveWishlistItem(item);
-  const displayName = getCreatorDisplayName(user.creatorProfile, user.email.split("@")[0]);
+  const displayName = getCreatorDisplayName(user.creatorProfile, user.displayName || user.email.split("@")[0]);
 
   return {
     title: `${resolvedItem.name} — ${displayName}'s Wishlist | Plugd`,
@@ -78,6 +81,15 @@ export default async function PublicItemPage({ params }: PublicItemPageProps) {
     params,
     getSession(),
   ]);
+
+  // Clean canonical redirect if accessed with @
+  if (resolvedParams.username.startsWith("@") || resolvedParams.username.startsWith("%40")) {
+    const clean = normalizeUsername(resolvedParams.username);
+    if (clean) {
+      redirect(`/${clean}/${resolvedParams.itemSlug}`);
+    }
+  }
+
   const username = normalizeUsername(resolvedParams.username);
 
   if (!username) {
@@ -98,7 +110,7 @@ export default async function PublicItemPage({ params }: PublicItemPageProps) {
 
   const isOwner = session?.userId === user.id;
   const isPublic = isWishlistPublic(user);
-  const displayName = getCreatorDisplayName(user.creatorProfile, user.email.split("@")[0]);
+  const displayName = getCreatorDisplayName(user.creatorProfile, user.displayName || user.email.split("@")[0]);
 
   if (!isPublic && !isOwner) {
     return (
@@ -114,7 +126,10 @@ export default async function PublicItemPage({ params }: PublicItemPageProps) {
   const item = await prisma.wishlistItem.findFirst({
     where: {
       userId: user.id,
-      slug: resolvedParams.itemSlug,
+      OR: [
+        { slug: resolvedParams.itemSlug },
+        { id: resolvedParams.itemSlug },
+      ],
       isPublished: true,
     },
     include: {
@@ -137,18 +152,23 @@ export default async function PublicItemPage({ params }: PublicItemPageProps) {
     <ItemDetailClient
       creator={{
         username: user.username || username,
-        displayName: getCreatorDisplayName(user.creatorProfile, user.email.split("@")[0]),
-        avatarUrl: user.creatorProfile?.avatarUrl,
-        accentColor: user.creatorProfile?.accentColor,
+        displayName,
+        avatarUrl: user.avatarUrl || user.creatorProfile?.avatarUrl,
+        paymentLink: user.paymentLink || user.creatorProfile?.paymentLink,
+        paymentQr: user.paymentQr || user.creatorProfile?.paymentQr,
       }}
       item={{
+        id: item.id,
         name: resolvedItem.name,
         image: resolvedItem.image,
         shortDescription: resolvedItem.shortDescription,
         description: resolvedItem.description,
         personalNote: resolvedItem.personalNote,
         category: resolvedItem.category ? { name: resolvedItem.category.name } : null,
+        catalogItemId: item.catalogItemId || null,
+        slug: resolvedItem.slug,
       }}
+      isViewerLoggedIn={Boolean(session?.userId)}
     />
   );
 }

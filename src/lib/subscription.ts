@@ -17,7 +17,7 @@ export const MONETIZATION_PLANS: Record<"MONTHLY" | "YEARLY", PlanConfig> = {
     periodLabel: "₹39 / month",
     features: [
       "Make your wishlist public & shareable",
-      "Personal public link (theplugd.com/@username)",
+      "Personal public link (theplugd.com/username)",
       "Direct supporter payments (100% direct UPI / QR)",
       "0% Plugd platform fee on your gifts",
       "Cancel anytime, items stay saved forever",
@@ -32,7 +32,7 @@ export const MONETIZATION_PLANS: Record<"MONTHLY" | "YEARLY", PlanConfig> = {
     savings: "Save ~36%",
     features: [
       "Make your wishlist public & shareable for 1 full year",
-      "Personal public link (theplugd.com/@username)",
+      "Personal public link (theplugd.com/username)",
       "Direct supporter payments (100% direct UPI / QR)",
       "0% Plugd platform fee on your gifts",
       "Cancel anytime, items stay saved forever",

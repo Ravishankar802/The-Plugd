@@ -36,7 +36,7 @@ export async function GET(req: Request) {
       });
 
       if (user?.username) {
-        return NextResponse.redirect(new URL(`/@${user.username}?upgraded=true`, req.url));
+        return NextResponse.redirect(new URL(`/${user.username}?upgraded=true`, req.url));
       }
       return NextResponse.redirect(new URL("/profile?upgraded=true", req.url));
     }
