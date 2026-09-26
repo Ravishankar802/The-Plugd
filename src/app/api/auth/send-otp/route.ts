@@ -22,8 +22,8 @@ export async function POST(req: Request) {
 
     const cleanEmail = email.toLowerCase().trim();
 
-    // Generate random 4-digit code
-    const code = Math.floor(1000 + Math.random() * 9000).toString();
+    // Generate random 6-digit verification code
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
 
     // Delete any existing unused OTP for this email
     await prisma.otpToken.deleteMany({
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
       },
     });
 
-    // Store new OTP
+    // Store new OTP with 10-minute validity
     await prisma.otpToken.create({
       data: {
         email: cleanEmail,
@@ -44,26 +44,38 @@ export async function POST(req: Request) {
 
     // Development / Console Logging Bypass
     if (!process.env.RESEND_API_KEY) {
-      console.log(`\n========================================\n[DEV AUTH] OTP for ${cleanEmail} is: ${code}\n========================================\n`);
-      return NextResponse.json({ message: "OTP sent successfully (Logged to console in development)" });
+      console.log(`\n========================================\n[DEV AUTH] 6-digit OTP for ${cleanEmail} is: ${code}\n========================================\n`);
+      return NextResponse.json({ message: "Verification code sent successfully", devCode: process.env.NODE_ENV === "development" ? code : undefined });
     }
 
     try {
       await getResend().emails.send({
         from: "Plugd <noreply@theplugd.com>",
         to: cleanEmail,
-        subject: "Your Plugd login code",
-        html: `<p>Your login code is <strong>${code}</strong>. It expires in 10 minutes.</p>`,
+        subject: "Your Plugd verification code",
+        html: `
+          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 24px; background-color: #ffffff; border: 1px solid #f4f4f5; border-radius: 16px;">
+            <div style="margin-bottom: 24px;">
+              <span style="font-size: 26px; font-weight: 800; color: #f97316; letter-spacing: -0.5px;">Plugd</span>
+            </div>
+            <h1 style="font-size: 20px; font-weight: 800; color: #18181b; margin-bottom: 8px;">Verify your email</h1>
+            <p style="font-size: 14px; color: #52525b; line-height: 1.5; margin-bottom: 24px;">Enter the 6-digit code below to verify your email and finish setting up your Plugd account:</p>
+            <div style="background-color: #fff7ed; border: 1px solid #ffedd5; border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 24px;">
+              <span style="font-family: monospace; font-size: 34px; font-weight: 800; letter-spacing: 8px; color: #ea580c;">${code}</span>
+            </div>
+            <p style="font-size: 12px; color: #a1a1aa; line-height: 1.4; margin: 0;">This code expires in 10 minutes. If you did not create a Plugd account, you can safely ignore this email.</p>
+          </div>
+        `,
       });
     } catch (mailError) {
       console.error("[AUTH] Resend error:", mailError);
       return NextResponse.json(
-        { error: "Internal server error: Failed to send email" },
+        { error: "Failed to send verification email. Please try again." },
         { status: 500 }
       );
     }
 
-    return NextResponse.json({ message: "OTP sent successfully" });
+    return NextResponse.json({ message: "Verification code sent successfully" });
   } catch (error: any) {
     console.error("[AUTH] Unexpected error in send-otp:", error);
     return NextResponse.json(

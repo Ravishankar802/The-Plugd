@@ -13,6 +13,8 @@ import {
   Link as LinkIcon,
   Check,
   CheckCircle2,
+  ArrowLeft,
+  Mail,
 } from "lucide-react";
 import { BUILTIN_AVATARS, AvatarOption } from "@/lib/avatars";
 import { decodeQrCode } from "@/lib/qr-reader";
@@ -20,6 +22,14 @@ import AuthMarketingHero from "@/components/AuthMarketingHero";
 
 export default function SignupPage() {
   const router = useRouter();
+
+  // Verification Step: "form" or "otp"
+  const [step, setStep] = useState<"form" | "otp">("form");
+  const [otp, setOtp] = useState("");
+  const [otpError, setOtpError] = useState("");
+  const [resendingOtp, setResendingOtp] = useState(false);
+  const [resendMessage, setResendMessage] = useState("");
+  const [resendCountdown, setResendCountdown] = useState(0);
 
   // Step fields
   const [username, setUsername] = useState("");
@@ -86,6 +96,15 @@ export default function SignupPage() {
 
     return () => clearTimeout(timer);
   }, [username]);
+
+  // Countdown timer for OTP resend
+  useEffect(() => {
+    if (resendCountdown <= 0) return;
+    const interval = setInterval(() => {
+      setResendCountdown((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [resendCountdown]);
 
   // Handle Photo Upload
   const handleAvatarFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -172,7 +191,7 @@ export default function SignupPage() {
     }
   };
 
-  // Submit Signup
+  // Submit Signup Form: Validates inputs & triggers 6-digit email OTP
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -212,6 +231,7 @@ export default function SignupPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          action: "send-code",
           username: username.trim(),
           email: email.trim(),
           password,
@@ -226,16 +246,101 @@ export default function SignupPage() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Failed to create account.");
+        throw new Error(data.error || "Failed to initiate account creation.");
       }
 
-      // Successfully signed up and session established!
+      // Seamlessly advance to OTP verification step
+      setStep("otp");
+      setOtp("");
+      setOtpError("");
+      setResendMessage("");
+      setResendCountdown(60);
+      setLoading(false);
+    } catch (err: any) {
+      setError(err.message || "An unexpected error occurred.");
+      setLoading(false);
+    }
+  };
+
+  // Verify OTP and complete account creation
+  const handleVerifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setOtpError("");
+
+    const cleanOtp = otp.trim();
+    if (cleanOtp.length !== 6) {
+      setOtpError("Please enter the complete 6-digit verification code.");
+      return;
+    }
+
+    const finalAvatar =
+      avatarChoice === "upload" && uploadedAvatarUrl
+        ? uploadedAvatarUrl
+        : selectedAvatar.url;
+
+    const effectivePaymentLink = paymentLink.trim() || qrDecodedText.trim();
+    const effectivePaymentQr = paymentQrUrl.trim();
+
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: username.trim(),
+          email: email.trim(),
+          password,
+          displayName: displayName.trim() || username.trim(),
+          bio: bio.trim().slice(0, 500),
+          avatarUrl: finalAvatar,
+          paymentLink: effectivePaymentLink,
+          paymentQr: effectivePaymentQr || (qrDecodedText ? qrDecodedText : null),
+          otp: cleanOtp,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Verification failed. Please check the code.");
+      }
+
+      // Successfully verified and account established!
       const cleanUsername = username.trim().toLowerCase().replace(/^@+/, "");
       router.push(`/@${cleanUsername}`);
       router.refresh();
     } catch (err: any) {
-      setError(err.message || "An unexpected error occurred.");
+      setOtpError(err.message || "An unexpected error occurred.");
       setLoading(false);
+    }
+  };
+
+  // Resend OTP code
+  const handleResendCode = async () => {
+    if (resendCountdown > 0 || resendingOtp) return;
+    setResendingOtp(true);
+    setOtpError("");
+    setResendMessage("");
+
+    try {
+      const res = await fetch("/api/auth/send-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to resend code.");
+      }
+
+      setResendMessage("A new 6-digit code has been sent to your email.");
+      setResendCountdown(60);
+    } catch (err: any) {
+      setOtpError(err.message || "Failed to resend verification code.");
+    } finally {
+      setResendingOtp(false);
     }
   };
 
@@ -246,18 +351,129 @@ export default function SignupPage() {
         <AuthMarketingHero />
       </div>
 
-      {/* RIGHT COLUMN: Signup Form */}
+      {/* RIGHT COLUMN: Signup Form or Email OTP Verification */}
       <div className="w-full lg:w-1/2 min-h-screen flex flex-col justify-center items-center py-12 px-6 sm:px-12 lg:px-16 overflow-y-auto">
-        <div className="w-full max-w-[460px] sm:max-w-[480px] mx-auto py-4">
-          {/* Header */}
-          <div className="mb-7">
-            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900">
-              Create your Plugd account
-            </h1>
-            <p className="mt-1 text-xs sm:text-sm text-zinc-500 font-medium">
-              Share what you wish for with friends, family, and supporters.
-            </p>
+        {step === "otp" ? (
+          <div className="w-full max-w-[420px] sm:max-w-[440px] mx-auto py-4">
+            {/* Back to form */}
+            <button
+              type="button"
+              onClick={() => {
+                setStep("form");
+                setError("");
+                setOtpError("");
+              }}
+              className="mb-6 inline-flex items-center gap-1.5 text-xs font-bold text-zinc-500 hover:text-zinc-900 transition cursor-pointer"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              <span>Back to account details</span>
+            </button>
+
+            {/* Header */}
+            <div className="mb-7">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-50 text-orange-500 mb-3.5 border border-orange-100">
+                <Mail className="h-5 w-5" />
+              </div>
+              <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900">
+                Verify your email
+              </h1>
+              <p className="mt-1.5 text-xs sm:text-sm text-zinc-500 font-medium leading-relaxed">
+                Enter the 6-digit code sent to{" "}
+                <span className="font-bold text-zinc-900 break-all">{email}</span>.
+              </p>
+            </div>
+
+            {/* OTP Error Banner */}
+            {otpError && (
+              <div className="mb-6 flex items-start gap-2.5 rounded-xl bg-red-50 p-3.5 text-xs font-medium text-red-700 border border-red-200">
+                <AlertCircle className="h-4 w-4 shrink-0 text-red-500 mt-0.5" />
+                <span>{otpError}</span>
+              </div>
+            )}
+
+            {/* Resend Success Banner */}
+            {resendMessage && (
+              <div className="mb-6 flex items-start gap-2.5 rounded-xl bg-emerald-50 p-3.5 text-xs font-medium text-emerald-800 border border-emerald-200">
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600 mt-0.5" />
+                <span>{resendMessage}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleVerifyOtp} className="space-y-6">
+              {/* 6-Digit OTP Input */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="signup-otp"
+                  className="block text-xs font-bold text-zinc-700 uppercase tracking-wider"
+                >
+                  6-Digit Code
+                </label>
+                <input
+                  id="signup-otp"
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  autoComplete="one-time-code"
+                  autoFocus
+                  maxLength={6}
+                  value={otp}
+                  onChange={(e) => {
+                    const val = e.target.value.replace(/\D/g, "").slice(0, 6);
+                    setOtp(val);
+                    if (otpError) setOtpError("");
+                  }}
+                  placeholder="000000"
+                  className="w-full h-14 rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 text-center text-2xl font-mono font-bold tracking-[0.4em] text-zinc-900 placeholder:text-zinc-300 placeholder:tracking-[0.4em] outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                />
+              </div>
+
+              {/* Verify Email Button */}
+              <button
+                type="submit"
+                disabled={loading || otp.length !== 6}
+                className="w-full h-11 sm:h-12 rounded-xl bg-orange-500 font-extrabold text-sm text-black shadow-xs transition hover:bg-orange-600 active:scale-[0.99] disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin text-black" />
+                    <span>Verifying code...</span>
+                  </>
+                ) : (
+                  <span>Verify Email</span>
+                )}
+              </button>
+
+              {/* Resend Option */}
+              <div className="text-center pt-1">
+                <p className="text-xs text-zinc-500 font-medium">
+                  Didn&apos;t receive the code?{" "}
+                  <button
+                    type="button"
+                    onClick={handleResendCode}
+                    disabled={resendCountdown > 0 || resendingOtp}
+                    className="font-bold text-orange-600 hover:text-orange-700 underline disabled:opacity-50 disabled:no-underline cursor-pointer"
+                  >
+                    {resendingOtp
+                      ? "Sending..."
+                      : resendCountdown > 0
+                      ? `Resend code in ${resendCountdown}s`
+                      : "Resend code"}
+                  </button>
+                </p>
+              </div>
+            </form>
           </div>
+        ) : (
+          <div className="w-full max-w-[460px] sm:max-w-[480px] mx-auto py-4">
+            {/* Header */}
+            <div className="mb-7">
+              <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900">
+                Create your Plugd account
+              </h1>
+              <p className="mt-1 text-xs sm:text-sm text-zinc-500 font-medium">
+                Share what you wish for with friends, family, and supporters.
+              </p>
+            </div>
 
           {/* Error Banner */}
           {error && (
@@ -706,7 +922,7 @@ export default function SignupPage() {
                 {loading ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin text-black" />
-                    <span>Creating account...</span>
+                    <span>Sending code...</span>
                   </>
                 ) : (
                   <span>Create Account</span>
@@ -733,6 +949,7 @@ export default function SignupPage() {
             Log in
           </Link>
         </div>
+        )}
       </div>
     </main>
   );

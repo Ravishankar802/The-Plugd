@@ -39,7 +39,6 @@ export default function AuthMarketingHero() {
             </div>
             <div className="mt-2 text-left">
               <p className="text-[11px] font-bold text-zinc-800 truncate">Sony WH-1000XM5</p>
-              <p className="text-[10px] font-medium text-orange-600">👤 1,420 added</p>
             </div>
           </div>
 
@@ -54,7 +53,6 @@ export default function AuthMarketingHero() {
             </div>
             <div className="mt-2 text-left">
               <p className="text-[11px] font-bold text-zinc-800 truncate">Galaxy Buds4 Pro</p>
-              <p className="text-[10px] font-medium text-orange-600">👤 890 added</p>
             </div>
           </div>
 
@@ -82,7 +80,7 @@ export default function AuthMarketingHero() {
         </span>
         <span className="flex items-center gap-1.5">
           <Users className="h-3.5 w-3.5 text-orange-500" />
-          100% free to share
+          Unlimited custom items
         </span>
       </div>
     </div>
