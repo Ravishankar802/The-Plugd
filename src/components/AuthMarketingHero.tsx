@@ -5,10 +5,10 @@ import { Users, CheckCircle2 } from "lucide-react";
 
 export default function AuthMarketingHero() {
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-8 sm:p-12 lg:p-16 select-none overflow-hidden bg-gradient-to-b from-orange-50/40 via-white to-zinc-50/60 border-r border-zinc-100">
+    <div className="relative w-full h-full flex flex-col justify-between p-8 sm:p-12 lg:p-16 select-none overflow-hidden bg-white border-r border-zinc-100">
       {/* Ambient background glow */}
-      <div className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-orange-400/15 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-amber-400/10 blur-3xl" />
+      <div className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-zinc-100/60 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-zinc-100/60 blur-3xl" />
 
       {/* Top Brand Logo */}
       <div className="relative z-10">
@@ -26,7 +26,7 @@ export default function AuthMarketingHero() {
       <div className="relative z-10 my-auto py-8 flex flex-col items-center text-center">
         {/* Punchy Headline */}
         <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight text-zinc-900 leading-[1.15] max-w-md">
-          Wish for what you <span className="text-orange-500">want</span>.
+          Wish for what you <span className="text-black">want</span>.
         </h2>
 
         {/* Stacked Overlapping Wishlist Cards (Instagram-inspired visual stack) */}
@@ -78,11 +78,11 @@ export default function AuthMarketingHero() {
       {/* Bottom Footer Info */}
       <div className="relative z-10 pt-4 flex items-center justify-between text-xs font-semibold text-zinc-400 border-t border-zinc-100">
         <span className="flex items-center gap-1.5">
-          <CheckCircle2 className="h-3.5 w-3.5 text-orange-500" />
+          <CheckCircle2 className="h-3.5 w-3.5 text-zinc-900" />
           1,000+ items to wish for
         </span>
         <span className="flex items-center gap-1.5">
-          <Users className="h-3.5 w-3.5 text-orange-500" />
+          <Users className="h-3.5 w-3.5 text-zinc-900" />
           Unlimited custom items
         </span>
       </div>

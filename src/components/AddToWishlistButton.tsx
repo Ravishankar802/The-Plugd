@@ -69,12 +69,12 @@ export default function AddToWishlistButton({
         title="Add to Wishlist"
         className={`group/btn inline-flex items-center justify-center gap-0.5 md:gap-1 rounded-lg md:rounded-xl px-1.5 py-0.5 md:px-2 md:py-1 text-[9px] md:text-[11px] font-black tracking-wider transition-all duration-200 shadow-xs md:shadow-sm active:scale-95 ${
           status === "added"
-            ? "bg-emerald-500 text-white border border-emerald-600 shadow-emerald-500/20"
-            : "bg-white/95 text-zinc-950 hover:bg-orange-500 hover:text-black border border-zinc-200/90 backdrop-blur-md hover:border-orange-500 hover:shadow-md"
+            ? "bg-black text-white border border-black shadow-xs"
+            : "bg-white/95 text-black hover:bg-black hover:text-white border border-zinc-200/90 backdrop-blur-md hover:border-black hover:shadow-md"
         }`}
       >
         {status === "loading" ? (
-          <Loader2 className="h-3 w-3 animate-spin text-orange-500" />
+          <Loader2 className="h-3 w-3 animate-spin text-black" />
         ) : status === "added" ? (
           <>
             <Check className="h-3 w-3 text-white stroke-[2.5]" />
@@ -82,7 +82,7 @@ export default function AddToWishlistButton({
           </>
         ) : (
           <>
-            <Plus className="h-3 w-3 stroke-[2.5] text-orange-500 group-hover/btn:text-black transition-colors" />
+            <Plus className="h-3 w-3 stroke-[2.5] text-black group-hover/btn:text-white transition-colors" />
             <span>ADD</span>
           </>
         )}
@@ -95,7 +95,7 @@ export default function AddToWishlistButton({
       type="button"
       onClick={handleClick}
       disabled={status === "loading"}
-      className="group/btn inline-flex w-full items-center justify-center gap-1.5 rounded-2xl text-xs font-bold transition-all h-10 px-4 bg-zinc-950 text-white hover:bg-orange-500 hover:text-black shadow-sm"
+      className="group/btn inline-flex w-full items-center justify-center gap-1.5 rounded-2xl text-xs font-bold transition-all h-10 px-4 bg-black text-white hover:bg-zinc-800 shadow-sm"
     >
       {status === "loading" ? (
         <>
@@ -104,7 +104,7 @@ export default function AddToWishlistButton({
         </>
       ) : status === "added" ? (
         <>
-          <Check className="h-3.5 w-3.5 text-emerald-600" />
+          <Check className="h-3.5 w-3.5 text-zinc-300" />
           <span>Added to Wishlist</span>
         </>
       ) : (

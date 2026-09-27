@@ -23,7 +23,7 @@ export default function CatalogCard({
   return (
     <article className="group flex flex-col w-full">
       {/* Compact Image Container with integrated bottom-right action */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-xl md:rounded-2xl border border-zinc-200/90 bg-zinc-50 shadow-xs transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-md group-hover:border-orange-500/40">
+      <div className="relative aspect-square w-full overflow-hidden rounded-xl md:rounded-2xl border border-zinc-200/90 bg-zinc-50 shadow-xs transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-md group-hover:border-zinc-400">
         <Link href={href} className="block h-full w-full overflow-hidden">
           {image ? (
             <img
@@ -49,16 +49,16 @@ export default function CatalogCard({
 
       {/* Product Name placed OUTSIDE and BELOW image container */}
       <Link href={href} className="mt-1 md:mt-2 block">
-        <h3 className="line-clamp-2 text-[11px] md:text-xs font-semibold text-zinc-900 transition-colors group-hover:text-orange-600 leading-snug">
+        <h3 className="line-clamp-2 text-[11px] md:text-xs font-semibold text-black transition-colors group-hover:text-black leading-snug">
           {name}
         </h3>
       </Link>
 
       {/* Added count indicator */}
       {addedCount != null && Number(addedCount) > 0 ? (
-        <p className="mt-0.5 md:mt-1 flex items-center gap-1 text-[10px] md:text-[11px] font-medium text-orange-600">
-          <span className="text-[10px] md:text-xs leading-none text-orange-600" aria-hidden="true">👤</span>
-          <span className="text-orange-600">{formatAddedCount(Number(addedCount))} added</span>
+        <p className="mt-0.5 md:mt-1 flex items-center gap-1 text-[10px] md:text-[11px] font-medium text-[#666666]">
+          <span className="text-[10px] md:text-xs leading-none text-[#666666]" aria-hidden="true">👤</span>
+          <span className="text-[#666666]">{formatAddedCount(Number(addedCount))} added</span>
         </p>
       ) : null}
     </article>

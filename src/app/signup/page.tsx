@@ -345,7 +345,7 @@ export default function SignupPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white flex flex-col lg:flex-row font-sans selection:bg-orange-500 selection:text-black">
+    <main className="min-h-screen bg-white flex flex-col lg:flex-row font-sans selection:bg-black selection:text-white">
       {/* LEFT COLUMN: Plugd visual / marketing area */}
       <div className="hidden lg:flex lg:w-1/2 min-h-screen sticky top-0 h-screen">
         <AuthMarketingHero />
@@ -371,7 +371,7 @@ export default function SignupPage() {
 
             {/* Header */}
             <div className="mb-7">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-50 text-orange-500 mb-3.5 border border-orange-100">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-900 mb-3.5 border border-zinc-200">
                 <Mail className="h-5 w-5" />
               </div>
               <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900">
@@ -423,7 +423,7 @@ export default function SignupPage() {
                     if (otpError) setOtpError("");
                   }}
                   placeholder="000000"
-                  className="w-full h-14 rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 text-center text-2xl font-mono font-bold tracking-[0.4em] text-zinc-900 placeholder:text-zinc-300 placeholder:tracking-[0.4em] outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                  className="w-full h-14 rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 text-center text-2xl font-mono font-bold tracking-[0.4em] text-zinc-900 placeholder:text-zinc-300 placeholder:tracking-[0.4em] outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10"
                 />
               </div>
 
@@ -431,11 +431,11 @@ export default function SignupPage() {
               <button
                 type="submit"
                 disabled={loading || otp.length !== 6}
-                className="w-full h-11 sm:h-12 rounded-xl bg-orange-500 font-extrabold text-sm text-black shadow-xs transition hover:bg-orange-600 active:scale-[0.99] disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full h-11 sm:h-12 rounded-xl bg-black font-bold text-sm text-white shadow-xs transition hover:bg-zinc-800 active:scale-[0.99] disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
               >
                 {loading ? (
                   <>
-                    <Loader2 className="h-4 w-4 animate-spin text-black" />
+                    <Loader2 className="h-4 w-4 animate-spin text-white" />
                     <span>Verifying code...</span>
                   </>
                 ) : (
@@ -451,7 +451,7 @@ export default function SignupPage() {
                     type="button"
                     onClick={handleResendCode}
                     disabled={resendCountdown > 0 || resendingOtp}
-                    className="font-bold text-orange-600 hover:text-orange-700 underline disabled:opacity-50 disabled:no-underline cursor-pointer"
+                    className="font-bold text-black hover:underline disabled:opacity-50 disabled:no-underline cursor-pointer"
                   >
                     {resendingOtp
                       ? "Sending..."
@@ -487,7 +487,7 @@ export default function SignupPage() {
             {/* GROUP 1: ACCOUNT CREDENTIALS */}
             <div className="space-y-4">
               <div className="border-b border-zinc-100 pb-2">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-600">
                   1. Account Information
                 </span>
               </div>
@@ -526,7 +526,7 @@ export default function SignupPage() {
                     value={username}
                     onChange={(e) => setUsername(e.target.value.toLowerCase().trim())}
                     placeholder="username"
-                    className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 pl-8 pr-3.5 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                    className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 pl-8 pr-3.5 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10"
                   />
                 </div>
                 <p className="text-[11px] text-zinc-400">
@@ -552,7 +552,7 @@ export default function SignupPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="email"
-                  className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                  className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10"
                 />
               </div>
 
@@ -573,7 +573,7 @@ export default function SignupPage() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Min. 6 chars"
-                      className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 pl-3.5 pr-10 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                      className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 pl-3.5 pr-10 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10"
                     />
                     <button
                       type="button"
@@ -601,7 +601,7 @@ export default function SignupPage() {
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       placeholder="Re-enter password"
-                      className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 pl-3.5 pr-10 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                      className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 pl-3.5 pr-10 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10"
                     />
                     <button
                       type="button"
@@ -619,7 +619,7 @@ export default function SignupPage() {
             {/* GROUP 2: PROFILE DETAILS */}
             <div className="space-y-4 pt-2">
               <div className="border-b border-zinc-100 pb-2">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-600">
                   2. Public Profile
                 </span>
               </div>
@@ -638,7 +638,7 @@ export default function SignupPage() {
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
                   placeholder="Full Name"
-                  className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                  className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10"
                 />
               </div>
 
@@ -662,7 +662,7 @@ export default function SignupPage() {
                   value={bio}
                   onChange={(e) => setBio(e.target.value)}
                   placeholder="Tell people what you are wishing for or celebrating..."
-                  className="w-full rounded-xl border border-zinc-200 bg-zinc-50/50 p-3 text-xs sm:text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 resize-none"
+                  className="w-full rounded-xl border border-zinc-200 bg-zinc-50/50 p-3 text-xs sm:text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10 resize-none"
                 />
               </div>
             </div>
@@ -670,7 +670,7 @@ export default function SignupPage() {
             {/* GROUP 3: PROFILE PICTURE / AVATAR */}
             <div className="space-y-3 pt-2">
               <div className="border-b border-zinc-100 pb-2 flex items-center justify-between">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-600">
                   3. Profile Picture or Avatar
                 </span>
                 <span className="text-[11px] text-zinc-400">Choose one</span>
@@ -715,7 +715,7 @@ export default function SignupPage() {
                           onClick={() => setSelectedAvatar(av)}
                           className={`relative aspect-square rounded-2xl p-1 border-2 transition-all flex flex-col items-center justify-center cursor-pointer ${
                             isSelected
-                              ? "border-orange-500 ring-2 ring-orange-500/30 scale-105 shadow-xs"
+                              ? "border-black ring-2 ring-black/10 scale-105 shadow-xs"
                               : "border-zinc-200/80 hover:border-zinc-300 hover:bg-zinc-50"
                           }`}
                           title="Select avatar"
@@ -726,7 +726,7 @@ export default function SignupPage() {
                             className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl object-cover pointer-events-none"
                           />
                           {isSelected && (
-                            <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-orange-500 text-black">
+                            <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-black text-white">
                               <Check className="h-2.5 w-2.5 stroke-[3]" />
                             </span>
                           )}
@@ -747,11 +747,11 @@ export default function SignupPage() {
                   />
                   <div
                     onClick={() => avatarFileInputRef.current?.click()}
-                    className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-zinc-200 p-6 text-center hover:border-orange-500 hover:bg-orange-50/30 transition cursor-pointer"
+                    className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-zinc-200 p-6 text-center hover:border-zinc-400 hover:bg-zinc-50 transition cursor-pointer"
                   >
                     {uploadingAvatar ? (
                       <div className="flex flex-col items-center gap-2">
-                        <Loader2 className="h-6 w-6 animate-spin text-orange-500" />
+                        <Loader2 className="h-6 w-6 animate-spin text-zinc-900" />
                         <span className="text-xs font-semibold text-zinc-600">Uploading photo...</span>
                       </div>
                     ) : uploadedAvatarUrl ? (
@@ -759,7 +759,7 @@ export default function SignupPage() {
                         <img
                           src={uploadedAvatarUrl}
                           alt="Uploaded avatar"
-                          className="h-16 w-16 rounded-full object-cover border-2 border-orange-500 shadow-md"
+                          className="h-16 w-16 rounded-full object-cover border-2 border-black shadow-md"
                         />
                         <span className="text-xs font-bold text-emerald-600 flex items-center gap-1">
                           <Check className="h-3.5 w-3.5" /> Photo uploaded! Click to change
@@ -767,7 +767,7 @@ export default function SignupPage() {
                       </div>
                     ) : (
                       <div className="flex flex-col items-center gap-1.5">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-50 text-orange-500 mb-1">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 text-zinc-900 mb-1">
                           <Upload className="h-5 w-5" />
                         </div>
                         <span className="text-xs font-bold text-zinc-800">
@@ -786,7 +786,7 @@ export default function SignupPage() {
             {/* GROUP 4: SUPPORT / PAYMENT */}
             <div className="space-y-3 pt-2">
               <div className="border-b border-zinc-100 pb-2 flex items-center justify-between">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-600">
                   4. Support / Payment
                 </span>
               </div>
@@ -830,7 +830,7 @@ export default function SignupPage() {
                     value={paymentLink}
                     onChange={(e) => setPaymentLink(e.target.value)}
                     placeholder="Paste your payment link (UPI, GPay, PhonePe, Paytm)"
-                    className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-xs sm:text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                    className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-xs sm:text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10"
                   />
                   <p className="text-[10px] text-zinc-400">
                     Supports UPI, GPay, PhonePe, Paytm, or direct payment handles.
@@ -848,11 +848,11 @@ export default function SignupPage() {
                   />
                   <div
                     onClick={() => qrFileInputRef.current?.click()}
-                    className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-zinc-200 p-5 text-center hover:border-orange-500 hover:bg-orange-50/30 transition cursor-pointer"
+                    className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-zinc-200 p-5 text-center hover:border-zinc-400 hover:bg-zinc-50 transition cursor-pointer"
                   >
                     {decodingQr ? (
                       <div className="flex flex-col items-center gap-2">
-                        <Loader2 className="h-6 w-6 animate-spin text-orange-500" />
+                        <Loader2 className="h-6 w-6 animate-spin text-zinc-900" />
                         <span className="text-xs font-semibold text-zinc-600">
                           Reading QR code...
                         </span>
@@ -870,7 +870,7 @@ export default function SignupPage() {
                       </div>
                     ) : (
                       <div className="flex flex-col items-center gap-1.5">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-50 text-orange-500 mb-1">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 text-zinc-900 mb-1">
                           <QrCode className="h-5 w-5" />
                         </div>
                         <span className="text-xs font-bold text-zinc-800">
@@ -901,7 +901,7 @@ export default function SignupPage() {
                         <button
                           type="button"
                           onClick={() => setPaymentChoice("link")}
-                          className="mt-1 font-bold text-orange-600 underline"
+                          className="mt-1 font-bold text-black underline"
                         >
                           Switch to entering a payment link directly
                         </button>
@@ -917,11 +917,11 @@ export default function SignupPage() {
               <button
                 type="submit"
                 disabled={loading || (usernameStatus.checking || usernameStatus.available === false)}
-                className="w-full h-12 rounded-xl bg-orange-500 font-extrabold text-sm text-black shadow-xs transition hover:bg-orange-600 active:scale-[0.99] disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full h-12 rounded-xl bg-black font-bold text-sm text-white shadow-xs transition hover:bg-zinc-800 active:scale-[0.99] disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
               >
                 {loading ? (
                   <>
-                    <Loader2 className="h-4 w-4 animate-spin text-black" />
+                    <Loader2 className="h-4 w-4 animate-spin text-white" />
                     <span>Sending code...</span>
                   </>
                 ) : (

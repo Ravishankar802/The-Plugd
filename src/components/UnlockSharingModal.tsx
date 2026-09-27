@@ -87,7 +87,7 @@ export default function UnlockSharingModal({
 
         {/* Header */}
         <div className="text-center pt-1 pb-4">
-          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-100 text-orange-600">
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-900">
             <Globe className="h-6 w-6" />
           </div>
           <h2 className="text-2xl font-black tracking-tight text-zinc-900">
@@ -111,7 +111,7 @@ export default function UnlockSharingModal({
             onClick={() => setSelectedPlan("MONTHLY")}
             className={`relative rounded-2xl p-4 border-2 cursor-pointer transition-all ${
               selectedPlan === "MONTHLY"
-                ? "border-orange-500 bg-orange-50/40 ring-2 ring-orange-500/20 shadow-sm"
+                ? "border-black bg-zinc-50 ring-2 ring-black/10 shadow-sm"
                 : "border-zinc-200 hover:border-zinc-300 bg-white"
             }`}
           >
@@ -122,11 +122,11 @@ export default function UnlockSharingModal({
               <div
                 className={`h-4 w-4 rounded-full border-2 flex items-center justify-center ${
                   selectedPlan === "MONTHLY"
-                    ? "border-orange-500 bg-orange-500"
+                    ? "border-black bg-black"
                     : "border-zinc-300"
                 }`}
               >
-                {selectedPlan === "MONTHLY" && <Check className="h-3 w-3 text-black stroke-[3]" />}
+                {selectedPlan === "MONTHLY" && <Check className="h-3 w-3 text-white stroke-[3]" />}
               </div>
             </div>
             <div className="text-2xl font-black text-zinc-900">
@@ -143,11 +143,11 @@ export default function UnlockSharingModal({
             onClick={() => setSelectedPlan("YEARLY")}
             className={`relative rounded-2xl p-4 border-2 cursor-pointer transition-all ${
               selectedPlan === "YEARLY"
-                ? "border-orange-500 bg-orange-50/40 ring-2 ring-orange-500/20 shadow-sm"
+                ? "border-black bg-zinc-50 ring-2 ring-black/10 shadow-sm"
                 : "border-zinc-200 hover:border-zinc-300 bg-white"
             }`}
           >
-            <div className="absolute -top-2.5 right-3 rounded-full bg-orange-500 px-2.5 py-0.5 text-[10px] font-black uppercase text-black shadow-xs">
+            <div className="absolute -top-2.5 right-3 rounded-full bg-black px-2.5 py-0.5 text-[10px] font-black uppercase text-white shadow-xs">
               Save ~36%
             </div>
             <div className="flex items-center justify-between mb-2">
@@ -157,11 +157,11 @@ export default function UnlockSharingModal({
               <div
                 className={`h-4 w-4 rounded-full border-2 flex items-center justify-center ${
                   selectedPlan === "YEARLY"
-                    ? "border-orange-500 bg-orange-500"
+                    ? "border-black bg-black"
                     : "border-zinc-300"
                 }`}
               >
-                {selectedPlan === "YEARLY" && <Check className="h-3 w-3 text-black stroke-[3]" />}
+                {selectedPlan === "YEARLY" && <Check className="h-3 w-3 text-white stroke-[3]" />}
               </div>
             </div>
             <div className="text-2xl font-black text-zinc-900">
@@ -178,34 +178,34 @@ export default function UnlockSharingModal({
         <div className="rounded-2xl bg-zinc-50 p-4 space-y-2 text-xs text-zinc-700 border border-zinc-100">
           <p className="font-bold text-zinc-900 mb-2">What you get:</p>
           <div className="flex items-start gap-2">
-            <Check className="h-4 w-4 text-orange-600 shrink-0 mt-0.5" />
+            <Check className="h-4 w-4 text-zinc-900 shrink-0 mt-0.5" />
             <span>
               Public wishlist at <strong>theplugd.com/{username || "yourname"}</strong>
             </span>
           </div>
           <div className="flex items-start gap-2">
-            <Check className="h-4 w-4 text-orange-600 shrink-0 mt-0.5" />
+            <Check className="h-4 w-4 text-zinc-900 shrink-0 mt-0.5" />
             <span>Share your link on WhatsApp, Instagram, and social bio</span>
           </div>
           <div className="flex items-start gap-2">
-            <Check className="h-4 w-4 text-orange-600 shrink-0 mt-0.5" />
+            <Check className="h-4 w-4 text-zinc-900 shrink-0 mt-0.5" />
             <span>Direct supporter gifting via your UPI & QR code</span>
           </div>
           <div className="flex items-start gap-2">
-            <Check className="h-4 w-4 text-orange-600 shrink-0 mt-0.5" />
+            <Check className="h-4 w-4 text-zinc-900 shrink-0 mt-0.5" />
             <span>
               <strong>100% direct payments</strong> — Plugd takes <strong>₹0 commission</strong> on your gifts
             </span>
           </div>
           <div className="flex items-start gap-2">
-            <Check className="h-4 w-4 text-orange-600 shrink-0 mt-0.5" />
+            <Check className="h-4 w-4 text-zinc-900 shrink-0 mt-0.5" />
             <span>If you ever cancel, your items and wishlist remain completely safe</span>
           </div>
         </div>
 
         {/* Direct Payment Note */}
-        <div className="mt-3 flex items-center gap-2 rounded-xl bg-orange-50/70 p-3 text-[11px] text-orange-950 border border-orange-100">
-          <ShieldCheck className="h-4 w-4 text-orange-600 shrink-0" />
+        <div className="mt-3 flex items-center gap-2 rounded-xl bg-zinc-100 p-3 text-[11px] text-zinc-900 border border-zinc-200">
+          <ShieldCheck className="h-4 w-4 text-zinc-900 shrink-0" />
           <span>
             Plugd never touches supporter gifts. All payments sent to you go 100% directly to your UPI/QR.
           </span>
@@ -217,11 +217,11 @@ export default function UnlockSharingModal({
             type="button"
             onClick={handleSubscribe}
             disabled={loading}
-            className="w-full h-12 rounded-2xl bg-orange-500 font-extrabold text-sm text-black shadow-md hover:bg-orange-600 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+            className="w-full h-12 rounded-2xl bg-black font-bold text-sm text-white shadow-md hover:bg-zinc-800 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
           >
             {loading ? (
               <>
-                <Loader2 className="h-4 w-4 animate-spin text-black" />
+                <Loader2 className="h-4 w-4 animate-spin text-white" />
                 <span>Processing...</span>
               </>
             ) : (

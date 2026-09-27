@@ -15,7 +15,7 @@ export default function PrivateWishlistNotice({
   isLoggedIn = false,
 }: PrivateWishlistNoticeProps) {
   return (
-    <div className="min-h-screen bg-zinc-50 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
+    <div className="min-h-screen bg-zinc-50 flex flex-col font-sans selection:bg-black selection:text-white">
       {/* Top Header */}
       <header className="border-b border-zinc-200/80 bg-white/90 backdrop-blur-md px-4 py-3 sm:px-6">
         <div className="mx-auto max-w-4xl flex items-center justify-between">
@@ -50,7 +50,7 @@ export default function PrivateWishlistNotice({
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <span className="text-3xl font-black text-orange-500">
+                <span className="text-3xl font-black text-zinc-900">
                   {displayName.slice(0, 1).toUpperCase()}
                 </span>
               )}
@@ -89,7 +89,7 @@ export default function PrivateWishlistNotice({
 
             <Link
               href="/"
-              className="w-full h-11 rounded-2xl bg-orange-500 text-black text-xs font-extrabold shadow-xs hover:bg-orange-600 transition flex items-center justify-center gap-2"
+              className="w-full h-11 rounded-2xl bg-black text-white text-xs font-bold shadow-xs hover:bg-zinc-800 transition flex items-center justify-center gap-2"
             >
               <Sparkles className="h-4 w-4" />
               <span>Create Your Own Wishlist for Free</span>

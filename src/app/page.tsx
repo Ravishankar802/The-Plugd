@@ -342,7 +342,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const navCategories = organizeCategories(categories);
 
   return (
-    <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
+    <div className="min-h-screen bg-white text-black flex flex-col font-sans selection:bg-black selection:text-white">
       {/* Sticky Header & Category Navigation Bar */}
       <div className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-xl">
         <Header
@@ -357,16 +357,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           <div className="mx-auto flex max-w-7xl items-center gap-2 md:gap-3 overflow-x-auto px-3 py-2 md:px-6 md:py-3 no-scrollbar">
             <Link
               href="/"
-              className="inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full bg-zinc-950 px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-bold text-white shadow-sm transition hover:bg-zinc-800"
+              className="inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full bg-black px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-bold text-white shadow-sm transition hover:bg-zinc-800"
             >
-              <Sparkles className="h-3.5 w-3.5 md:h-[18px] md:w-[18px] text-orange-400" />
+              <Sparkles className="h-3.5 w-3.5 md:h-[18px] md:w-[18px] text-white" />
               <span>All</span>
             </Link>
             {navCategories.map((category) => (
               <Link
                 key={category.id}
                 href={`/category/${category.slug}`}
-                className="inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full border border-zinc-200/90 bg-white px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+                className="inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full border border-zinc-200/90 bg-white px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-black hover:text-black hover:bg-zinc-100"
               >
                 <CategoryIcon name={category.icon} className="h-3.5 w-3.5 md:h-[18px] md:w-[18px] text-zinc-500" />
                 <span>{category.name}</span>
@@ -383,16 +383,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           <section className="hidden md:grid mb-8 md:grid-cols-2 gap-4 md:gap-5 items-stretch">
             {/* Board 1: Catalog Experience */}
             <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-8 text-white shadow-xl border border-zinc-800/80 flex flex-col justify-between h-full group">
-              {/* Subtle dark-to-warm-orange gradient/glow */}
-              <div className="absolute right-0 top-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-orange-500/20 blur-3xl pointer-events-none" />
-              <div className="absolute right-12 bottom-0 h-44 w-44 rounded-full bg-orange-600/10 blur-2xl pointer-events-none" />
+              {/* Subtle dark ambient glow */}
+              <div className="absolute right-0 top-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
+              <div className="absolute right-12 bottom-0 h-44 w-44 rounded-full bg-white/5 blur-2xl pointer-events-none" />
 
               {/* TWO-ZONE LAYOUT: LEFT ZONE */}
               <div className="relative z-10 max-w-[62%] sm:max-w-[58%] md:max-w-[56%] flex flex-col justify-between h-full space-y-5">
                 <div className="space-y-3">
                   {/* Small top label */}
-                  <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/15 border border-orange-500/30 px-3 py-1 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-orange-400">
-                    <Sparkles className="h-3 w-3 text-orange-400" />
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/20 px-3 py-1 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-zinc-300">
+                    <Sparkles className="h-3 w-3 text-zinc-300" />
                     <span>ALL NEW PLUGD EXPERIENCE</span>
                   </div>
 
@@ -400,7 +400,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   <div>
                     <div className="text-3xl sm:text-4xl md:text-4xl font-black tracking-tight leading-none text-white drop-shadow-sm flex items-baseline gap-0.5">
                       <span>1,000</span>
-                      <span className="text-orange-500 font-extrabold">+</span>
+                      <span className="text-zinc-400 font-extrabold">+</span>
                     </div>
                     <p className="mt-1.5 text-[11px] sm:text-xs font-black tracking-widest text-zinc-300 uppercase">
                       ITEMS TO WISH FOR
@@ -410,17 +410,17 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   {/* Compact visual flow: ＋ ADD  →  ↗ SHARE  →  ✦ GET */}
                   <div className="pt-1 flex flex-wrap items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px]">
                     <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
-                      <Plus className="h-3 w-3 text-orange-400" />
+                      <Plus className="h-3 w-3 text-zinc-300" />
                       ADD
                     </span>
                     <span className="text-zinc-500 font-bold select-none text-[10px]">→</span>
                     <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
-                      <ArrowUpRight className="h-3 w-3 text-orange-400" />
+                      <ArrowUpRight className="h-3 w-3 text-zinc-300" />
                       SHARE
                     </span>
                     <span className="text-zinc-500 font-bold select-none text-[10px]">→</span>
                     <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
-                      <Sparkles className="h-3 w-3 text-amber-400" />
+                      <Sparkles className="h-3 w-3 text-zinc-300" />
                       GET
                     </span>
                   </div>
@@ -430,7 +430,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 <div className="pt-2">
                   <Link
                     href={session?.userId ? "/dashboard/items" : "/login"}
-                    className="inline-flex h-10 sm:h-11 items-center justify-center gap-2 rounded-2xl bg-orange-500 px-5 text-xs sm:text-sm font-bold uppercase tracking-wider text-black shadow-lg shadow-orange-500/25 transition hover:bg-orange-400 active:scale-98"
+                    className="inline-flex h-10 sm:h-11 items-center justify-center gap-2 rounded-2xl bg-white px-5 text-xs sm:text-sm font-bold uppercase tracking-wider text-black shadow-lg shadow-black/40 transition hover:bg-zinc-200 active:scale-98"
                   >
                     <span>CREATE MY WISHLIST</span>
                     <ArrowRight className="h-4 w-4" />
@@ -441,7 +441,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               {/* TWO-ZONE LAYOUT: RIGHT ZONE (Floating Wishlist Item Cluster) */}
               <div className="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 w-[36%] sm:w-[38%] max-w-[210px] h-[85%] max-h-[220px] pointer-events-none select-none flex items-center justify-center">
                 {/* Ambient glow behind cluster */}
-                <div className="absolute inset-0 rounded-full bg-orange-500/20 blur-2xl pointer-events-none" />
+                <div className="absolute inset-0 rounded-full bg-white/5 blur-2xl pointer-events-none" />
 
                 {/* 1. Cars */}
                 <div className="absolute top-1 left-0 sm:left-1 w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl -rotate-6 transition-transform duration-300">
@@ -490,17 +490,17 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             </div>
 
             {/* Board 2: Custom Wishlist */}
-            <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-950 via-zinc-900 to-emerald-950/30 p-6 md:p-8 text-white shadow-xl border border-zinc-800/80 flex flex-col justify-between h-full group">
-              {/* Subtle dark-to-Plugd-green gradient/glow */}
-              <div className="absolute right-0 bottom-0 -mr-16 -mb-16 h-64 w-64 rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
-              <div className="absolute right-12 top-0 h-44 w-44 rounded-full bg-green-500/10 blur-2xl pointer-events-none" />
+            <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-8 text-white shadow-xl border border-zinc-800/80 flex flex-col justify-between h-full group">
+              {/* Subtle dark ambient glow */}
+              <div className="absolute right-0 bottom-0 -mr-16 -mb-16 h-64 w-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
+              <div className="absolute right-12 top-0 h-44 w-44 rounded-full bg-white/5 blur-2xl pointer-events-none" />
 
               {/* TWO-ZONE LAYOUT: LEFT ZONE */}
               <div className="relative z-10 max-w-[62%] sm:max-w-[58%] md:max-w-[56%] flex flex-col justify-between h-full space-y-5">
                 <div className="space-y-3">
                   {/* Small top label */}
-                  <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-3 py-1 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-emerald-400">
-                    <Plus className="h-3 w-3 text-emerald-400" />
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/20 px-3 py-1 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-zinc-300">
+                    <Plus className="h-3 w-3 text-zinc-300" />
                     <span>CUSTOM WISHLIST</span>
                   </div>
 
@@ -517,17 +517,17 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   {/* Compact visual flow: ＋ ADD  →  ↗ SHARE  →  ✦ GET */}
                   <div className="pt-1 flex flex-wrap items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px]">
                     <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
-                      <Plus className="h-3 w-3 text-emerald-400" />
+                      <Plus className="h-3 w-3 text-zinc-300" />
                       ADD
                     </span>
                     <span className="text-zinc-500 font-bold select-none text-[10px]">→</span>
                     <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
-                      <ArrowUpRight className="h-3 w-3 text-emerald-400" />
+                      <ArrowUpRight className="h-3 w-3 text-zinc-300" />
                       SHARE
                     </span>
                     <span className="text-zinc-500 font-bold select-none text-[10px]">→</span>
                     <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
-                      <Sparkles className="h-3 w-3 text-emerald-400" />
+                      <Sparkles className="h-3 w-3 text-zinc-300" />
                       GET
                     </span>
                   </div>
@@ -537,10 +537,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 <div className="pt-2">
                   <Link
                     href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
-                    className="inline-flex h-10 sm:h-11 items-center justify-center gap-2 rounded-2xl border border-emerald-500/40 bg-zinc-950 px-5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-lg shadow-black/40 transition hover:border-emerald-400 hover:bg-black hover:text-emerald-300 active:scale-98"
+                    className="inline-flex h-10 sm:h-11 items-center justify-center gap-2 rounded-2xl border border-zinc-700 bg-zinc-950 px-5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-lg shadow-black/40 transition hover:border-white hover:bg-black hover:text-white active:scale-98"
                   >
                     <span>ADD YOUR OWN ITEM</span>
-                    <ArrowRight className="h-4 w-4 text-emerald-400" />
+                    <ArrowRight className="h-4 w-4 text-zinc-300" />
                   </Link>
                 </div>
               </div>
@@ -548,7 +548,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               {/* TWO-ZONE LAYOUT: RIGHT ZONE (Unlimited / Custom Possibilities) */}
               <div className="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 w-[36%] sm:w-[38%] max-w-[210px] h-[85%] max-h-[220px] pointer-events-none select-none flex items-center justify-center">
                 {/* Ambient glow behind cluster */}
-                <div className="absolute inset-0 rounded-full bg-emerald-500/20 blur-2xl pointer-events-none" />
+                <div className="absolute inset-0 rounded-full bg-white/5 blur-2xl pointer-events-none" />
 
                 {/* Custom Item 1: Camera (Electronics) */}
                 <div className="absolute top-1 left-0 sm:left-1 w-14 h-14 sm:w-18 sm:h-18 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl -rotate-6 transition-transform duration-300">
@@ -603,7 +603,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           <section className="space-y-8">
             <div className="flex items-end justify-between gap-4 border-b border-zinc-200 pb-4">
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-wider text-orange-600">Search Results</p>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-black">Search Results</p>
                 <h2 className="mt-1 text-2xl font-black tracking-tight text-zinc-950">
                   Results for &ldquo;{query}&rdquo;
                 </h2>
@@ -622,7 +622,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             {/* Zero results state */}
             {searchResults.totalMatches === 0 ? (
               <div className="rounded-[28px] border border-zinc-200 bg-zinc-50/50 p-8 md:p-12 text-center max-w-xl mx-auto my-8">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-orange-100 text-orange-600 mb-4">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-zinc-100 text-black mb-4">
                   <Sparkles className="h-7 w-7" />
                 </div>
                 <h3 className="text-lg md:text-xl font-black text-zinc-950">
@@ -641,7 +641,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   </Link>
                   <Link
                     href={session?.userId ? "/dashboard/items" : "/login"}
-                    className="inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 text-xs font-bold text-black shadow-md shadow-orange-500/20 transition hover:bg-orange-400"
+                    className="inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-black px-5 text-xs font-bold text-white shadow-sm transition hover:bg-zinc-800"
                   >
                     <Plus className="h-4 w-4" />
                     <span>Create Custom Item</span>
@@ -654,7 +654,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             {searchResults.categories.length > 0 ? (
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-orange-500" />
+                  <span className="h-2 w-2 rounded-full bg-black" />
                   <h3 className="text-sm md:text-base font-extrabold text-zinc-900 tracking-tight">
                     Categories ({searchResults.categories.length})
                   </h3>
@@ -664,7 +664,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     <Link
                       key={cat.id}
                       href={cat.href}
-                      className="group relative overflow-hidden rounded-2xl border border-zinc-200/90 bg-white p-4 shadow-xs transition-all hover:border-orange-500 hover:shadow-md hover:bg-orange-50/30 flex flex-col items-center text-center gap-2.5"
+                      className="group relative overflow-hidden rounded-2xl border border-zinc-200/90 bg-white p-4 shadow-xs transition-all hover:border-black hover:shadow-md hover:bg-zinc-50 flex flex-col items-center text-center gap-2.5"
                     >
                       {cat.image ? (
                         <img
@@ -673,15 +673,15 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                           className="h-16 w-16 rounded-xl object-cover border border-zinc-200 bg-zinc-100 group-hover:scale-105 transition-transform"
                         />
                       ) : (
-                        <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-orange-50 text-orange-500">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-zinc-100 text-zinc-800">
                           <CategoryIcon name={cat.icon} className="h-8 w-8" />
                         </div>
                       )}
                       <div>
-                        <h4 className="text-xs md:text-sm font-bold text-zinc-900 group-hover:text-orange-600 transition">
+                        <h4 className="text-xs md:text-sm font-bold text-zinc-900 group-hover:text-black transition">
                           {cat.name}
                         </h4>
-                        <span className="text-[10px] font-semibold text-zinc-400 group-hover:text-orange-500 transition">
+                        <span className="text-[10px] font-semibold text-zinc-400 group-hover:text-black transition">
                           View Category &rarr;
                         </span>
                       </div>
@@ -695,7 +695,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             {searchResults.subcategories.length > 0 ? (
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-orange-500" />
+                  <span className="h-2 w-2 rounded-full bg-black" />
                   <h3 className="text-sm md:text-base font-extrabold text-zinc-900 tracking-tight">
                     Subcategories ({searchResults.subcategories.length})
                   </h3>
@@ -705,7 +705,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     <Link
                       key={sub.id}
                       href={sub.href}
-                      className="group relative overflow-hidden rounded-2xl border border-zinc-200/90 bg-white p-3.5 shadow-xs transition-all hover:border-orange-500 hover:shadow-md hover:bg-orange-50/30 flex flex-col items-center text-center gap-2"
+                      className="group relative overflow-hidden rounded-2xl border border-zinc-200/90 bg-white p-3.5 shadow-xs transition-all hover:border-black hover:shadow-md hover:bg-zinc-50 flex flex-col items-center text-center gap-2"
                     >
                       {sub.image ? (
                         <img
@@ -714,12 +714,12 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                           className="h-16 w-16 rounded-xl object-cover border border-zinc-200 bg-zinc-100 group-hover:scale-105 transition-transform"
                         />
                       ) : (
-                        <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-orange-50 text-orange-500">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-zinc-100 text-zinc-800">
                           <Sparkles className="h-7 w-7" />
                         </div>
                       )}
                       <div>
-                        <h4 className="text-xs md:text-sm font-bold text-zinc-900 group-hover:text-orange-600 transition line-clamp-1">
+                        <h4 className="text-xs md:text-sm font-bold text-zinc-900 group-hover:text-black transition line-clamp-1">
                           {sub.name}
                         </h4>
                         <span className="text-[11px] font-medium text-zinc-500">
@@ -736,7 +736,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             {searchResults.items.length > 0 ? (
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-orange-500" />
+                  <span className="h-2 w-2 rounded-full bg-black" />
                   <h3 className="text-sm md:text-base font-extrabold text-zinc-900 tracking-tight">
                     Wishlist Items ({searchResults.items.length})
                   </h3>
@@ -774,7 +774,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 </div>
                 <Link
                   href={session?.userId ? "/dashboard/items" : "/login"}
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-zinc-950 px-5 text-xs font-bold text-white shadow-sm transition hover:bg-orange-500 hover:text-black shrink-0"
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-black px-5 text-xs font-bold text-white shadow-sm transition hover:bg-zinc-800 shrink-0"
                 >
                   <span>+ Create Custom Item</span>
                 </Link>
@@ -820,7 +820,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     href={item.href}
                     className="group flex flex-col items-center text-center"
                   >
-                    <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-200/80 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:border-orange-500/50">
+                    <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-200/80 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:border-zinc-400">
                       <img
                         src={item.image}
                         alt={item.name}
@@ -829,7 +829,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <span className="mt-2 text-xs font-semibold text-zinc-800 transition-colors group-hover:text-orange-600 line-clamp-2 leading-tight">
+                    <span className="mt-2 text-xs font-semibold text-zinc-800 transition-colors group-hover:text-black line-clamp-2 leading-tight">
                       {item.name}
                     </span>
                   </Link>
@@ -841,22 +841,22 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <div className="block md:hidden">
               <Link
                 href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
-                className="group relative flex items-center justify-between gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 px-3.5 py-2.5 sm:py-3 text-white border border-orange-500/25 shadow-md transition active:scale-[0.99]"
+                className="group relative flex items-center justify-between gap-3 overflow-hidden rounded-2xl bg-zinc-950 px-3.5 py-2.5 sm:py-3 text-white border border-zinc-800 shadow-md transition active:scale-[0.99]"
               >
-                {/* Ambient Plugd orange glow */}
-                <div className="absolute right-0 top-0 -mr-6 -mt-6 h-28 w-28 rounded-full bg-orange-500/15 blur-2xl pointer-events-none" />
-                <div className="absolute left-1/4 bottom-0 h-14 w-20 rounded-full bg-orange-600/10 blur-xl pointer-events-none" />
+                {/* Ambient subtle glow */}
+                <div className="absolute right-0 top-0 -mr-6 -mt-6 h-28 w-28 rounded-full bg-white/5 blur-2xl pointer-events-none" />
+                <div className="absolute left-1/4 bottom-0 h-14 w-20 rounded-full bg-white/5 blur-xl pointer-events-none" />
 
                 {/* Left zone: Icon + Intentional 2-line "CAN'T FIND IT? / ADD IT." */}
                 <div className="relative z-10 min-w-0 flex items-center gap-2.5">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-orange-500/15 border border-orange-500/30 text-orange-400">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-white/10 border border-white/20 text-white">
                     <Plus className="h-4 w-4" />
                   </div>
                   <div className="flex flex-col leading-tight">
                     <span className="text-[11px] sm:text-xs font-bold tracking-tight text-white whitespace-nowrap">
                       CAN&apos;T FIND IT?
                     </span>
-                    <span className="text-[11px] sm:text-xs font-black tracking-tight text-orange-400 whitespace-nowrap">
+                    <span className="text-[11px] sm:text-xs font-black tracking-tight text-white whitespace-nowrap">
                       ADD IT.
                     </span>
                   </div>
@@ -864,9 +864,9 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
                 {/* Right zone: Supporting action "Add your own item →" */}
                 <div className="relative z-10 shrink-0">
-                  <span className="inline-flex items-center gap-1 rounded-xl bg-white/[0.06] border border-orange-500/30 px-2.5 py-1 text-[11px] font-semibold text-zinc-200 shadow-xs group-hover:bg-orange-500 group-hover:text-black group-hover:border-orange-400 transition-colors">
+                  <span className="inline-flex items-center gap-1 rounded-xl bg-white/10 border border-white/20 px-2.5 py-1 text-[11px] font-semibold text-white shadow-xs group-hover:bg-white group-hover:text-black group-hover:border-white transition-colors">
                     <span>Add your own item</span>
-                    <span className="text-orange-400 group-hover:text-black transition-colors font-bold">→</span>
+                    <span className="text-zinc-400 group-hover:text-black transition-colors font-bold">→</span>
                   </span>
                 </div>
               </Link>
@@ -876,7 +876,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <section className="space-y-3 md:space-y-4">
               <div className="flex items-end justify-between gap-4 border-b border-zinc-200/80 pb-2.5 md:pb-3">
                 <div className="flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900">
                     <Sparkles className="h-4 w-4" />
                   </div>
                   <div>
@@ -934,7 +934,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
                   <Link
                     href={`/category/${category.slug}`}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-zinc-600 hover:text-orange-600 transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-zinc-600 hover:text-black transition-colors"
                   >
                     <span>View all</span>
                     <ChevronRight className="h-3.5 w-3.5" />

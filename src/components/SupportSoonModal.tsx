@@ -24,7 +24,7 @@ export default function SupportSoonModal({
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
       />
       <div className="relative z-10 w-full max-w-md rounded-[28px] border border-zinc-800 bg-zinc-950 p-6 text-zinc-100 shadow-2xl">
-        <div className="mb-4 inline-flex rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-orange-300">
+        <div className="mb-4 inline-flex rounded-full border border-zinc-700 bg-zinc-800 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-300">
           Support coming soon
         </div>
         <h3 className="text-2xl font-bold text-white">Support {creatorName}</h3>
@@ -34,7 +34,7 @@ export default function SupportSoonModal({
         <button
           type="button"
           onClick={onClose}
-          className="mt-6 h-11 rounded-2xl bg-orange-500 px-5 text-sm font-bold text-black transition hover:bg-orange-400"
+          className="mt-6 h-11 rounded-2xl bg-white px-5 text-sm font-bold text-black transition hover:bg-zinc-200"
         >
           Close
         </button>

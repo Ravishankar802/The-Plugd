@@ -88,7 +88,7 @@ export default function DashboardSidebar({ email, username }: DashboardSidebarPr
                 onClick={() => setMobileOpen(false)}
                 className={`flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold transition ${
                   active
-                    ? "bg-orange-500 text-black shadow-xs"
+                    ? "bg-black text-white shadow-xs"
                     : "border border-transparent text-zinc-600 hover:border-zinc-200 hover:bg-zinc-50 hover:text-zinc-900"
                 }`}
               >
@@ -117,11 +117,11 @@ export default function DashboardSidebar({ email, username }: DashboardSidebarPr
             <p className="mt-1 truncate text-sm font-bold text-zinc-900" title={email}>
               {email}
             </p>
-            {username ? <p className="mt-0.5 text-xs font-semibold text-orange-600">@{username}</p> : null}
+            {username ? <p className="mt-0.5 text-xs font-semibold text-zinc-600">@{username}</p> : null}
             <button
               type="button"
               onClick={logout}
-              className="mt-3 inline-flex h-9 w-full items-center justify-center gap-2 rounded-xl border border-zinc-200 bg-white text-xs font-bold text-zinc-700 transition hover:border-red-200 hover:bg-red-50 hover:text-red-600 cursor-pointer shadow-xs"
+              className="mt-3 inline-flex h-9 w-full items-center justify-center gap-2 rounded-xl border border-zinc-200 bg-white text-xs font-bold text-zinc-700 transition hover:border-black hover:bg-zinc-100 hover:text-black cursor-pointer shadow-xs"
             >
               <LogOut className="h-3.5 w-3.5" />
               Log out

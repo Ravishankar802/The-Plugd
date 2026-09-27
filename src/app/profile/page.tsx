@@ -271,7 +271,7 @@ export default function EditProfilePage() {
   if (initialLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-zinc-50">
-        <Loader2 className="h-8 w-8 animate-spin text-orange-500" />
+        <Loader2 className="h-8 w-8 animate-spin text-zinc-900" />
       </div>
     );
   }
@@ -279,13 +279,13 @@ export default function EditProfilePage() {
   const publicProfileUrl = `/${originalUsername || username}`;
 
   return (
-    <main className="min-h-screen bg-zinc-50/60 py-8 px-4 font-sans selection:bg-orange-500 selection:text-black">
+    <main className="min-h-screen bg-zinc-50/60 py-8 px-4 font-sans selection:bg-black selection:text-white">
       <div className="max-w-2xl mx-auto space-y-6">
         {/* Top Header Bar */}
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-zinc-500 hover:text-orange-600 transition"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-zinc-500 hover:text-black transition"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             <span>Back to Plugd</span>
@@ -345,7 +345,7 @@ export default function EditProfilePage() {
               </label>
 
               <div className="flex items-center gap-4">
-                <div className="h-20 w-20 rounded-full border-2 border-orange-500 shadow-md overflow-hidden bg-zinc-100 shrink-0">
+                <div className="h-20 w-20 rounded-full border-2 border-black shadow-md overflow-hidden bg-zinc-100 shrink-0">
                   <img
                     src={
                       avatarChoice === "avatar"
@@ -397,7 +397,7 @@ export default function EditProfilePage() {
                         onClick={() => setSelectedAvatar(av)}
                         className={`relative aspect-square rounded-2xl p-1 border-2 transition-all flex flex-col items-center justify-center cursor-pointer ${
                           isSelected
-                            ? "border-orange-500 ring-2 ring-orange-500/30 scale-105 shadow-sm"
+                            ? "border-black ring-2 ring-black/10 scale-105 shadow-sm"
                             : "border-zinc-200/80 hover:border-zinc-300 hover:bg-zinc-50"
                         }`}
                         title="Select avatar"
@@ -408,7 +408,7 @@ export default function EditProfilePage() {
                           className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl object-cover pointer-events-none"
                         />
                         {isSelected && (
-                          <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-orange-500 text-black">
+                          <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-black text-white">
                             <Check className="h-2.5 w-2.5 stroke-[3]" />
                           </span>
                         )}
@@ -430,16 +430,16 @@ export default function EditProfilePage() {
                     type="button"
                     onClick={() => avatarFileRef.current?.click()}
                     disabled={uploadingAvatar}
-                    className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-xs font-bold text-zinc-800 shadow-xs hover:border-orange-500 hover:bg-orange-50/30 transition cursor-pointer"
+                    className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-xs font-bold text-zinc-800 shadow-xs hover:border-zinc-400 hover:bg-zinc-100/50 transition cursor-pointer"
                   >
                     {uploadingAvatar ? (
                       <>
-                        <Loader2 className="h-4 w-4 animate-spin text-orange-500" />
+                        <Loader2 className="h-4 w-4 animate-spin text-zinc-900" />
                         <span>Uploading photo...</span>
                       </>
                     ) : (
                       <>
-                        <Upload className="h-4 w-4 text-orange-500" />
+                        <Upload className="h-4 w-4 text-zinc-900" />
                         <span>Upload New Photo</span>
                       </>
                     )}
@@ -482,7 +482,7 @@ export default function EditProfilePage() {
                     required
                     value={username}
                     onChange={(e) => setUsername(e.target.value.toLowerCase().trim())}
-                    className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 pl-8 pr-3.5 text-sm font-medium text-zinc-900 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                    className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 pl-8 pr-3.5 text-sm font-medium text-zinc-900 outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10"
                   />
                 </div>
               </div>
@@ -500,7 +500,7 @@ export default function EditProfilePage() {
                   required
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
-                  className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-sm font-medium text-zinc-900 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                  className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-sm font-medium text-zinc-900 outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10"
                 />
               </div>
             </div>
@@ -525,7 +525,7 @@ export default function EditProfilePage() {
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
                 placeholder="Tell your friends what you're wishing for..."
-                className="w-full rounded-xl border border-zinc-200 bg-zinc-50/50 p-3 text-xs sm:text-sm font-medium text-zinc-900 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 resize-none"
+                className="w-full rounded-xl border border-zinc-200 bg-zinc-50/50 p-3 text-xs sm:text-sm font-medium text-zinc-900 outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10 resize-none"
               />
             </div>
 
@@ -571,7 +571,7 @@ export default function EditProfilePage() {
                     value={paymentLink}
                     onChange={(e) => setPaymentLink(e.target.value)}
                     placeholder="Paste your payment link (UPI, GPay, PhonePe, Paytm)"
-                    className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-xs sm:text-sm font-medium text-zinc-900 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                    className="w-full h-11 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-xs sm:text-sm font-medium text-zinc-900 outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10"
                   />
                 </div>
               ) : (
@@ -585,11 +585,11 @@ export default function EditProfilePage() {
                   />
                   <div
                     onClick={() => qrFileRef.current?.click()}
-                    className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-zinc-200 p-5 text-center hover:border-orange-500 hover:bg-orange-50/30 transition cursor-pointer"
+                    className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-zinc-200 p-5 text-center hover:border-black hover:bg-zinc-50 transition cursor-pointer"
                   >
                     {decodingQr ? (
                       <div className="flex flex-col items-center gap-2">
-                        <Loader2 className="h-6 w-6 animate-spin text-orange-500" />
+                        <Loader2 className="h-6 w-6 animate-spin text-zinc-900" />
                         <span className="text-xs font-semibold text-zinc-600">Reading QR code...</span>
                       </div>
                     ) : paymentQrUrl ? (
@@ -605,7 +605,7 @@ export default function EditProfilePage() {
                       </div>
                     ) : (
                       <div className="flex flex-col items-center gap-1.5">
-                        <QrCode className="h-6 w-6 text-orange-500" />
+                        <QrCode className="h-6 w-6 text-zinc-900" />
                         <span className="text-xs font-bold text-zinc-800">
                           Upload Payment QR
                         </span>
@@ -634,7 +634,7 @@ export default function EditProfilePage() {
                         <button
                           type="button"
                           onClick={() => setPaymentChoice("link")}
-                          className="mt-1 font-bold text-orange-600 underline"
+                          className="mt-1 font-bold text-black underline"
                         >
                           Switch to entering payment link directly
                         </button>
@@ -678,16 +678,16 @@ export default function EditProfilePage() {
                     </span>
                     <Link
                       href={publicProfileUrl}
-                      className="font-bold text-orange-600 hover:underline"
+                      className="font-bold text-black hover:underline"
                     >
                       View Wishlist
                     </Link>
                   </div>
                 </div>
               ) : (
-                <div className="rounded-2xl border-2 border-orange-300/80 bg-orange-50/50 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="flex items-start gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-black">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-black text-white">
                       <Lock className="h-4 w-4" />
                     </div>
                     <div>
@@ -703,7 +703,7 @@ export default function EditProfilePage() {
                   <button
                     type="button"
                     onClick={() => setUnlockModalOpen(true)}
-                    className="h-9 px-4 rounded-xl bg-orange-500 text-black font-extrabold text-xs shadow-xs hover:bg-orange-600 transition flex items-center justify-center gap-1.5 shrink-0 cursor-pointer"
+                    className="h-9 px-4 rounded-xl bg-black text-white font-bold text-xs hover:bg-zinc-800 transition flex items-center justify-center gap-1.5 shrink-0 cursor-pointer"
                   >
                     <Sparkles className="h-3.5 w-3.5" />
                     <span>Unlock Public Sharing</span>
@@ -724,11 +724,11 @@ export default function EditProfilePage() {
               <button
                 type="submit"
                 disabled={saving || usernameStatus.available === false}
-                className="h-11 px-6 rounded-xl bg-orange-500 font-extrabold text-sm text-black shadow-xs hover:bg-orange-600 transition active:scale-[0.99] disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
+                className="h-11 px-6 rounded-xl bg-black font-bold text-sm text-white shadow-xs hover:bg-zinc-800 transition active:scale-[0.99] disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
               >
                 {saving ? (
                   <>
-                    <Loader2 className="h-4 w-4 animate-spin text-black" />
+                    <Loader2 className="h-4 w-4 animate-spin text-white" />
                     <span>Saving...</span>
                   </>
                 ) : (

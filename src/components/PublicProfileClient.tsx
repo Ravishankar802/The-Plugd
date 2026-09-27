@@ -136,7 +136,7 @@ export default function PublicProfileClient({
   );
 
   return (
-    <div className="min-h-screen bg-white text-zinc-900 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
+    <div className="min-h-screen bg-white text-zinc-900 flex flex-col font-sans selection:bg-black selection:text-white">
       {/* 1. TOP HEADER BAR */}
       <header className="sticky top-0 z-30 border-b border-zinc-200/80 bg-white/95 backdrop-blur-md px-4 py-3 sm:px-6">
         <div className="mx-auto max-w-4xl flex items-center justify-between">
@@ -156,15 +156,15 @@ export default function PublicProfileClient({
                   <button
                     type="button"
                     onClick={() => setUnlockModalOpen(true)}
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-orange-50 border border-orange-200 px-3 py-1.5 text-xs font-bold text-orange-800 hover:bg-orange-100 transition cursor-pointer"
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-zinc-100 border border-zinc-200 px-3 py-1.5 text-xs font-bold text-zinc-900 hover:bg-zinc-200 transition cursor-pointer"
                   >
-                    <Lock className="h-3.5 w-3.5 text-orange-600" />
+                    <Lock className="h-3.5 w-3.5 text-zinc-700" />
                     <span className="hidden sm:inline">Private • Unlock Sharing</span>
                     <span className="sm:hidden">Private</span>
                   </button>
                 ) : (
-                  <span className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-50 border border-emerald-200 px-2.5 py-1.5 text-xs font-bold text-emerald-800">
-                    <Globe className="h-3.5 w-3.5 text-emerald-600" />
+                  <span className="inline-flex items-center gap-1.5 rounded-xl bg-zinc-100 border border-zinc-200 px-2.5 py-1.5 text-xs font-bold text-zinc-900">
+                    <Globe className="h-3.5 w-3.5 text-zinc-700" />
                     <span>Public</span>
                   </span>
                 )}
@@ -182,7 +182,7 @@ export default function PublicProfileClient({
             <button
               type="button"
               onClick={handleShare}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-orange-500 px-3.5 py-1.5 text-xs font-extrabold text-black shadow-xs hover:bg-orange-400 transition cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-black px-3.5 py-1.5 text-xs font-bold text-white shadow-xs hover:bg-zinc-800 transition cursor-pointer"
             >
               {copied ? (
                 <>
@@ -201,7 +201,7 @@ export default function PublicProfileClient({
       </header>
 
       {/* 2. CENTERED PERSONAL PROFILE HEADER */}
-      <div className="border-b border-zinc-100 bg-gradient-to-b from-orange-50/25 via-white to-white py-10 px-4">
+      <div className="border-b border-zinc-100 bg-white py-10 px-4">
         <div className="mx-auto max-w-2xl flex flex-col items-center text-center">
           {/* Avatar */}
           <div className="relative mb-4">
@@ -213,7 +213,7 @@ export default function PublicProfileClient({
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <span className="text-3xl sm:text-4xl font-black text-orange-500">
+                <span className="text-3xl sm:text-4xl font-black text-zinc-900">
                   {creator.displayName.slice(0, 1).toUpperCase()}
                 </span>
               )}
@@ -248,7 +248,7 @@ export default function PublicProfileClient({
                   href={creator.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full border border-zinc-200 bg-white text-zinc-600 hover:text-orange-600 hover:border-orange-300 transition shadow-xs"
+                  className="p-2 rounded-full border border-zinc-200 bg-white text-zinc-600 hover:text-black hover:border-zinc-400 transition shadow-xs"
                   title="Instagram"
                 >
                   <InstagramIcon className="h-4 w-4" />
@@ -259,7 +259,7 @@ export default function PublicProfileClient({
                   href={creator.xUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full border border-zinc-200 bg-white text-zinc-600 hover:text-orange-600 hover:border-orange-300 transition shadow-xs"
+                  className="p-2 rounded-full border border-zinc-200 bg-white text-zinc-600 hover:text-black hover:border-zinc-400 transition shadow-xs"
                   title="X (Twitter)"
                 >
                   <TwitterIcon className="h-4 w-4" />
@@ -270,7 +270,7 @@ export default function PublicProfileClient({
                   href={creator.youtubeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full border border-zinc-200 bg-white text-zinc-600 hover:text-orange-600 hover:border-orange-300 transition shadow-xs"
+                  className="p-2 rounded-full border border-zinc-200 bg-white text-zinc-600 hover:text-black hover:border-zinc-400 transition shadow-xs"
                   title="YouTube"
                 >
                   <YoutubeIcon className="h-4 w-4" />
@@ -281,7 +281,7 @@ export default function PublicProfileClient({
                   href={creator.tiktokUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full border border-zinc-200 bg-white text-zinc-600 hover:text-orange-600 hover:border-orange-300 transition shadow-xs"
+                  className="p-2 rounded-full border border-zinc-200 bg-white text-zinc-600 hover:text-black hover:border-zinc-400 transition shadow-xs"
                   title="TikTok"
                 >
                   <span className="text-xs">🎵</span>
@@ -296,7 +296,7 @@ export default function PublicProfileClient({
               <button
                 type="button"
                 onClick={() => setSupportModalOpen(true)}
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-orange-500 px-6 text-sm font-extrabold text-black shadow-xs hover:bg-orange-400 transition cursor-pointer"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-black px-6 text-sm font-bold text-white shadow-xs hover:bg-zinc-800 transition cursor-pointer"
               >
                 <HeartHandshake className="h-4 w-4" />
                 <span>Support / Send Gift</span>
@@ -310,15 +310,15 @@ export default function PublicProfileClient({
       <main className="mx-auto max-w-6xl flex-1 px-4 py-8 md:px-6 w-full space-y-6">
         {/* Private Wishlist Banner for Owner */}
         {isOwner && !isWishlistPublic && (
-          <div className="rounded-2xl border-2 border-orange-300/80 bg-gradient-to-r from-orange-50 via-amber-50 to-orange-50/60 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+          <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
             <div className="flex items-start gap-3.5">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-black shadow-xs">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black text-white shadow-xs">
                 <Lock className="h-5 w-5" />
               </div>
               <div className="space-y-0.5">
                 <div className="flex items-center gap-2">
                   <h3 className="text-sm font-black text-zinc-900">Your wishlist is currently private</h3>
-                  <span className="rounded-full bg-zinc-200/90 px-2 py-0.5 text-[10px] font-bold text-zinc-700">Free (₹0)</span>
+                  <span className="rounded-full bg-zinc-200 px-2 py-0.5 text-[10px] font-bold text-zinc-700">Free (₹0)</span>
                 </div>
                 <p className="text-xs text-zinc-600 max-w-xl">
                   Only you can see these items. Unlock public sharing for <strong>₹39/month</strong> or <strong>₹299/year</strong> so your friends can view your wishlist and gift what you want.
@@ -328,7 +328,7 @@ export default function PublicProfileClient({
             <button
               type="button"
               onClick={() => setUnlockModalOpen(true)}
-              className="h-10 px-4 rounded-xl bg-orange-500 text-black font-extrabold text-xs shadow-xs hover:bg-orange-400 transition flex items-center justify-center gap-1.5 shrink-0 cursor-pointer"
+              className="h-10 px-4 rounded-xl bg-black text-white font-bold text-xs shadow-xs hover:bg-zinc-800 transition flex items-center justify-center gap-1.5 shrink-0 cursor-pointer"
             >
               <Sparkles className="h-3.5 w-3.5" />
               <span>Unlock Public Sharing</span>
@@ -342,7 +342,7 @@ export default function PublicProfileClient({
             <h2 className="text-xl sm:text-2xl font-black text-zinc-900 tracking-tight">
               Wishlist
             </h2>
-            <span className="rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-bold text-orange-800">
+            <span className="rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs font-bold text-zinc-800">
               {items.length} {items.length === 1 ? "item" : "items"}
             </span>
           </div>
@@ -350,7 +350,7 @@ export default function PublicProfileClient({
           {isOwner && (
             <Link
               href="/"
-              className="inline-flex items-center gap-1 text-xs font-bold text-orange-600 hover:text-orange-700 transition"
+              className="inline-flex items-center gap-1 text-xs font-bold text-black hover:underline transition"
             >
               <Plus className="h-3.5 w-3.5" />
               <span>Add more items</span>
@@ -366,7 +366,7 @@ export default function PublicProfileClient({
               onClick={() => setSelectedCategory("all")}
               className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold transition ${
                 selectedCategory === "all"
-                  ? "bg-orange-500 text-black shadow-xs"
+                  ? "bg-black text-white shadow-xs"
                   : "border border-zinc-200 bg-white text-zinc-600 hover:border-zinc-300 hover:bg-zinc-50"
               }`}
             >
@@ -387,7 +387,7 @@ export default function PublicProfileClient({
                   onClick={() => setSelectedCategory(category.id)}
                   className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold transition ${
                     active
-                      ? "bg-orange-500 text-black shadow-xs"
+                      ? "bg-black text-white shadow-xs"
                       : "border border-zinc-200 bg-white text-zinc-600 hover:border-zinc-300 hover:bg-zinc-50"
                   }`}
                 >
@@ -408,7 +408,7 @@ export default function PublicProfileClient({
               <Link
                 key={item.id}
                 href={`/${creator.username}/${item.slug || item.id}`}
-                className="group rounded-2xl border border-zinc-200/90 bg-white p-3 shadow-xs hover:border-orange-500/50 hover:shadow-md transition-all flex flex-col justify-between"
+                className="group rounded-2xl border border-zinc-200/90 bg-white p-3 shadow-xs hover:border-zinc-400 hover:shadow-md transition-all flex flex-col justify-between"
               >
                 <div className="space-y-3">
                   <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-zinc-50 border border-zinc-100 flex items-center justify-center">
@@ -419,15 +419,15 @@ export default function PublicProfileClient({
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     ) : (
-                      <Sparkles className="h-8 w-8 text-orange-400" />
+                      <Sparkles className="h-8 w-8 text-zinc-400" />
                     )}
                   </div>
 
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-orange-600">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-600">
                       {item.category?.name || "Wishlist"}
                     </span>
-                    <h3 className="mt-1 text-xs sm:text-sm font-bold text-zinc-900 line-clamp-2 leading-snug group-hover:text-orange-600 transition">
+                    <h3 className="mt-1 text-xs sm:text-sm font-bold text-zinc-900 line-clamp-2 leading-snug group-hover:text-black transition">
                       {item.name}
                     </h3>
                     {item.personalNote && (
@@ -439,7 +439,7 @@ export default function PublicProfileClient({
                 </div>
 
                 <div className="mt-3 pt-2.5 border-t border-zinc-100 flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-orange-600 group-hover:translate-x-0.5 transition-transform">
+                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-black group-hover:translate-x-0.5 transition-transform">
                     <span>View Wish</span>
                     <ArrowRight className="h-3 w-3" />
                   </span>
@@ -456,7 +456,7 @@ export default function PublicProfileClient({
           </div>
         ) : (
           <div className="rounded-3xl border border-dashed border-zinc-200 bg-zinc-50/50 p-12 text-center space-y-3">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-900">
               <Sparkles className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-zinc-900">
@@ -471,7 +471,7 @@ export default function PublicProfileClient({
               <div className="pt-2">
                 <Link
                   href="/"
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-orange-500 px-4 py-2 text-xs font-extrabold text-black hover:bg-orange-400 transition"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-black px-4 py-2 text-xs font-bold text-white hover:bg-zinc-800 transition"
                 >
                   <Plus className="h-3.5 w-3.5" />
                   <span>Explore Items to Wish For</span>
@@ -488,7 +488,7 @@ export default function PublicProfileClient({
           <p>© {new Date().getFullYear()} Plugd • {creator.displayName}&apos;s Wishlist</p>
           <Link
             href="/"
-            className="inline-flex items-center gap-1 text-zinc-500 hover:text-orange-600 transition font-bold"
+            className="inline-flex items-center gap-1 text-zinc-500 hover:text-black transition font-bold"
           >
             <span>Create your own wishlist on Plugd →</span>
           </Link>

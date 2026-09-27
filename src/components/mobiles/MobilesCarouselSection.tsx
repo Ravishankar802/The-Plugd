@@ -64,7 +64,7 @@ export default function MobilesCarouselSection({
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             {badge ? (
-              <span className="inline-flex items-center rounded-lg bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 text-[11px] font-extrabold text-orange-600">
+              <span className="inline-flex items-center rounded-lg bg-zinc-100 border border-zinc-200 px-2 py-0.5 text-[11px] font-bold text-zinc-900">
                 {badge}
               </span>
             ) : null}
@@ -83,7 +83,7 @@ export default function MobilesCarouselSection({
             <button
               type="button"
               onClick={() => onSeeAll(id)}
-              className="inline-flex items-center gap-1 rounded-xl bg-zinc-100 hover:bg-orange-500 hover:text-black px-3.5 py-1.5 text-xs font-bold text-zinc-800 transition-all shadow-xs"
+              className="inline-flex items-center gap-1 rounded-xl bg-zinc-100 hover:bg-black hover:text-white px-3.5 py-1.5 text-xs font-bold text-zinc-800 transition-all shadow-xs"
             >
               <span>See All ({products.length})</span>
               <ArrowRight className="h-3.5 w-3.5" />

@@ -556,7 +556,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     : (activeSubDef?.name || category.name);
 
   return (
-    <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
+    <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-black selection:text-white">
       {/* Sticky Header & Category Navigation Bar */}
       <div className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-xl">
         <Header
@@ -572,7 +572,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             <div className="mx-auto flex max-w-7xl items-center gap-2 md:gap-3 overflow-x-auto px-3 py-2 md:px-6 md:py-3 no-scrollbar">
               <Link
                 href="/"
-                className="inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full border border-zinc-200/90 bg-white px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+                className="inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full border border-zinc-200/90 bg-white px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-black hover:text-black hover:bg-zinc-100"
               >
                 <Sparkles className="h-3.5 w-3.5 md:h-[18px] md:w-[18px] text-zinc-500" />
                 <span>All</span>
@@ -586,12 +586,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                     className={`inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm shadow-sm transition ${
                       isActive
                         ? "bg-zinc-950 font-bold text-white hover:bg-zinc-800"
-                        : "border border-zinc-200/90 bg-white font-semibold text-zinc-700 hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+                        : "border border-zinc-200/90 bg-white font-semibold text-zinc-700 hover:border-black hover:text-black hover:bg-zinc-100"
                     }`}
                   >
                     <CategoryIcon
                       name={c.icon}
-                      className={`h-3.5 w-3.5 md:h-[18px] md:w-[18px] ${isActive ? "text-orange-400" : "text-zinc-500"}`}
+                      className={`h-3.5 w-3.5 md:h-[18px] md:w-[18px] ${isActive ? "text-white" : "text-zinc-500"}`}
                     />
                     <span>{c.name}</span>
                   </Link>
@@ -602,7 +602,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         )}
       </div>
 
-      {/* Main Content */}
       {/* Main Content */}
       <main className="mx-auto max-w-7xl flex-1 px-3 py-3 md:px-6 md:py-6 w-full">
         {/* Breadcrumb Navigation */}
@@ -634,14 +633,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                     {activeSubDef.name}
                   </Link>
                 ) : (
-                  <span className="text-orange-600 font-bold">{activeSubDef.name}</span>
+                  <span className="text-black font-bold">{activeSubDef.name}</span>
                 )}
               </>
             ) : null}
             {isGamingSubcategory && activeGamingChild ? (
               <>
                 <ChevronRight className="h-3 w-3 text-zinc-400" />
-                <span className="text-orange-600 font-bold">{activeGamingChild.name}</span>
+                <span className="text-black font-bold">{activeGamingChild.name}</span>
               </>
             ) : null}
           </div>
@@ -665,15 +664,15 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               href={topPicksHref}
               className={`group flex flex-col sm:flex-row items-center text-center sm:text-left gap-1 sm:gap-3 w-full px-1.5 py-2 sm:px-4 sm:py-3.5 transition ${
                 isTopPicksActive
-                  ? "bg-purple-50 text-purple-950 font-bold border-l-2 sm:border-l-4 border-purple-600 rounded-none"
+                  ? "bg-zinc-100 text-zinc-950 font-bold border-l-2 sm:border-l-4 border-black rounded-none"
                   : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950"
               }`}
             >
               <div
                 className={`flex h-9 w-9 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl transition ${
                   isTopPicksActive
-                    ? "bg-purple-600 text-white shadow-xs"
-                    : "bg-purple-100 text-purple-700 group-hover:scale-105"
+                    ? "bg-black text-white shadow-xs"
+                    : "bg-zinc-100 text-zinc-700 group-hover:scale-105"
                 }`}
               >
                 <Star className="h-4 w-4 sm:h-5 sm:w-5 fill-current" />
@@ -699,7 +698,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                   href={href}
                   className={`group flex flex-col sm:flex-row items-center text-center sm:text-left gap-1 sm:gap-3 w-full px-1.5 py-2 sm:px-4 sm:py-3.5 transition ${
                     isActive
-                      ? "bg-orange-50/90 text-orange-950 font-bold border-l-2 sm:border-l-4 border-orange-500 rounded-none"
+                      ? "bg-zinc-100 text-zinc-950 font-bold border-l-2 sm:border-l-4 border-black rounded-none"
                       : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950"
                   }`}
                 >
@@ -729,7 +728,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                   className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-1 sm:px-3.5 sm:py-1.5 text-[11px] sm:text-xs font-bold transition ${
                     !genderParam || genderParam === "all"
                       ? "bg-zinc-950 text-white shadow-xs"
-                      : "border border-zinc-200/90 bg-white text-zinc-700 hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+                      : "border border-zinc-200/90 bg-white text-zinc-700 hover:border-black hover:text-black hover:bg-zinc-100"
                   }`}
                 >
                   All
@@ -740,7 +739,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                   className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-1 sm:px-3.5 sm:py-1.5 text-[11px] sm:text-xs font-bold transition ${
                     genderParam === "men"
                       ? "bg-zinc-950 text-white shadow-xs"
-                      : "border border-zinc-200/90 bg-white text-zinc-700 hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+                      : "border border-zinc-200/90 bg-white text-zinc-700 hover:border-black hover:text-black hover:bg-zinc-100"
                   }`}
                 >
                   Men
@@ -751,7 +750,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                   className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-1 sm:px-3.5 sm:py-1.5 text-[11px] sm:text-xs font-bold transition ${
                     genderParam === "women"
                       ? "bg-zinc-950 text-white shadow-xs"
-                      : "border border-zinc-200/90 bg-white text-zinc-700 hover:border-orange-500 hover:text-zinc-950 hover:bg-orange-50/50"
+                      : "border border-zinc-200/90 bg-white text-zinc-700 hover:border-black hover:text-black hover:bg-zinc-100"
                   }`}
                 >
                   Women
@@ -790,7 +789,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 </div>
                 <Link
                   href={session?.userId ? "/dashboard/items" : "/login"}
-                  className="inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-zinc-950 px-4 text-xs font-bold text-white shadow-sm transition hover:bg-orange-500 hover:text-black shrink-0"
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-zinc-950 px-4 text-xs font-bold text-white shadow-sm transition hover:bg-zinc-800 shrink-0"
                 >
                   <Plus className="h-4 w-4" />
                   <span>Create Custom Item</span>

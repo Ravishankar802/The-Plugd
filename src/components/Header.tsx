@@ -67,14 +67,14 @@ export default function Header({
             <div className="flex items-center gap-1.5 md:gap-2">
               <Link
                 href="/dashboard/items"
-                className="hidden items-center gap-2 rounded-2xl border border-zinc-300/80 bg-white px-4 py-2.5 text-xs font-bold text-zinc-900 shadow-sm transition hover:border-orange-500 hover:text-orange-600 sm:inline-flex"
+                className="hidden items-center gap-2 rounded-2xl border border-zinc-300/80 bg-white px-4 py-2.5 text-xs font-bold text-zinc-900 shadow-sm transition hover:border-black hover:text-black sm:inline-flex"
               >
-                <Heart className="h-4 w-4 text-orange-500" />
+                <Heart className="h-4 w-4 text-zinc-900" />
                 <span>My Wishlist</span>
               </Link>
               <Link
                 href="/dashboard"
-                className="inline-flex items-center gap-1.5 rounded-xl md:rounded-2xl bg-zinc-950 px-2.5 py-1.5 md:px-4 md:py-2.5 text-[11px] md:text-xs font-bold text-white shadow-sm transition hover:bg-zinc-800"
+                className="inline-flex items-center gap-1.5 rounded-xl md:rounded-2xl bg-black px-2.5 py-1.5 md:px-4 md:py-2.5 text-[11px] md:text-xs font-bold text-white shadow-sm transition hover:bg-zinc-800"
               >
                 <User className="h-3.5 w-3.5 md:h-4 md:w-4" />
                 <span>Profile</span>
@@ -84,16 +84,16 @@ export default function Header({
             <div className="flex items-center gap-1.5 md:gap-2">
               <Link
                 href="/login"
-                className="inline-flex items-center gap-1.5 rounded-xl md:rounded-2xl border border-zinc-300/80 bg-white px-2.5 py-1.5 md:px-4 md:py-2.5 text-[11px] md:text-xs font-bold text-zinc-900 shadow-sm transition hover:border-zinc-950 hover:bg-zinc-50"
+                className="inline-flex items-center gap-1.5 rounded-xl md:rounded-2xl border border-zinc-300/80 bg-white px-2.5 py-1.5 md:px-4 md:py-2.5 text-[11px] md:text-xs font-bold text-zinc-900 shadow-sm transition hover:border-black hover:bg-zinc-50"
               >
                 <LogIn className="h-3.5 w-3.5 md:h-4 md:w-4 text-zinc-600" />
                 <span>Login</span>
               </Link>
               <Link
                 href="/login"
-                className="hidden items-center gap-1.5 rounded-2xl bg-orange-500 px-4 py-2.5 text-xs font-bold text-black shadow-sm transition hover:bg-orange-400 sm:inline-flex"
+                className="hidden items-center gap-1.5 rounded-2xl bg-black px-4 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-zinc-800 sm:inline-flex"
               >
-                <Sparkles className="h-3.5 w-3.5" />
+                <Sparkles className="h-3.5 w-3.5 text-zinc-300" />
                 <span>Start Wishlist</span>
               </Link>
             </div>

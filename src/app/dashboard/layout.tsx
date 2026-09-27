@@ -17,7 +17,7 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 flex flex-col md:flex-row text-zinc-900 font-sans selection:bg-orange-500 selection:text-black">
+    <div className="min-h-screen bg-zinc-50 flex flex-col md:flex-row text-zinc-900 font-sans selection:bg-black selection:text-white">
       {/* Responsive Profile Sidebar */}
       <DashboardSidebar
         email={session.email}

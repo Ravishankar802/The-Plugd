@@ -43,7 +43,7 @@ export default function AppearancePage() {
   // Profile fields
   const [displayName, setDisplayName] = useState("");
   const [bio, setBio] = useState("");
-  const [accentColor, setAccentColor] = useState("#f97316");
+  const [accentColor, setAccentColor] = useState("#000000");
   const [avatarUrl, setAvatarUrl] = useState("");
   const [bannerUrl, setBannerUrl] = useState("");
 
@@ -67,7 +67,7 @@ export default function AppearancePage() {
           const u = data.user;
           setDisplayName(u.displayName || "");
           setBio(u.bio || "");
-          setAccentColor(u.accentColor || "#f97316");
+          setAccentColor(u.accentColor || "#000000");
           setAvatarUrl(u.avatarUrl || "");
           setBannerUrl(u.bannerUrl || "");
           setInstagramUrl(u.instagramUrl || "");
@@ -165,20 +165,20 @@ export default function AppearancePage() {
   };
 
   const presetColors = [
-    "#f97316", // Plugd Orange (default)
-    "#ef4444", // Red
-    "#ec4899", // Pink
-    "#8b5cf6", // Purple
-    "#3b82f6", // Blue
-    "#10b981", // Emerald Green
-    "#eab308", // Yellow
-    "#71717a", // Zinc Grey
+    "#000000", // Black
+    "#18181b", // Zinc 900
+    "#27272a", // Zinc 800
+    "#3f3f46", // Zinc 700
+    "#52525b", // Zinc 600
+    "#71717a", // Zinc 500
+    "#a1a1aa", // Zinc 400
+    "#e4e4e7", // Zinc 200
   ];
 
   if (loading) {
     return (
       <div className="flex-1 flex items-center justify-center min-h-[400px]">
-        <Loader2 className="w-8 h-8 animate-spin text-orange-500" />
+        <Loader2 className="w-8 h-8 animate-spin text-zinc-900" />
       </div>
     );
   }
@@ -194,8 +194,8 @@ export default function AppearancePage() {
 
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* Profile Details Card */}
-        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-xl space-y-6">
-          <h2 className="text-lg font-bold text-zinc-200">Profile Details</h2>
+        <div className="bg-white border border-zinc-200 rounded-2xl p-6 shadow-xs space-y-6">
+          <h2 className="text-lg font-bold text-zinc-900">Profile Details</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Display Name */}
@@ -204,7 +204,7 @@ export default function AppearancePage() {
               <input
                 type="text"
                 placeholder="e.g. Ravi Shankar"
-                className="w-full h-12 bg-zinc-950 border border-zinc-850 rounded-xl px-4 text-zinc-100 placeholder:text-zinc-700 text-sm focus:outline-none focus:border-orange-500 transition-colors font-medium"
+                className="w-full h-12 bg-zinc-50 border border-zinc-200 rounded-xl px-4 text-zinc-900 placeholder:text-zinc-400 text-sm focus:outline-none focus:border-black transition-colors font-medium"
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
                 maxLength={50}
@@ -214,11 +214,11 @@ export default function AppearancePage() {
 
             {/* Bio */}
             <div className="space-y-1.5 md:col-span-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Bio (Tell supporters what you're building)</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Bio (Tell supporters what you&apos;re building)</label>
               <textarea
                 placeholder="e.g. Building things on the internet. Here's what I'm working toward."
                 rows={4}
-                className="w-full bg-zinc-950 border border-zinc-850 rounded-xl p-4 text-zinc-100 placeholder:text-zinc-700 text-sm focus:outline-none focus:border-orange-500 transition-colors font-medium resize-none leading-relaxed"
+                className="w-full bg-zinc-50 border border-zinc-200 rounded-xl p-4 text-zinc-900 placeholder:text-zinc-400 text-sm focus:outline-none focus:border-black transition-colors font-medium resize-none leading-relaxed"
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
                 maxLength={300}
@@ -229,19 +229,19 @@ export default function AppearancePage() {
         </div>
 
         {/* Visual Assets Card */}
-        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-xl space-y-6">
-          <h2 className="text-lg font-bold text-zinc-200">Page Visuals</h2>
+        <div className="bg-white border border-zinc-200 rounded-2xl p-6 shadow-xs space-y-6">
+          <h2 className="text-lg font-bold text-zinc-900">Page Visuals</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Avatar Upload */}
             <div className="space-y-3">
               <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Profile Avatar</label>
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-zinc-950 border border-zinc-850 flex items-center justify-center text-zinc-500 overflow-hidden shrink-0">
+                <div className="w-16 h-16 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center text-zinc-500 overflow-hidden shrink-0">
                   {avatarUrl ? (
                     <img src={avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
                   ) : (
-                    <ImageIcon className="w-6 h-6 text-zinc-700" />
+                    <ImageIcon className="w-6 h-6 text-zinc-400" />
                   )}
                 </div>
                 
@@ -251,7 +251,7 @@ export default function AppearancePage() {
                       type="button"
                       onClick={() => avatarInputRef.current?.click()}
                       disabled={uploadingAvatar}
-                      className="px-4 py-2 bg-zinc-800 border border-zinc-700/50 hover:bg-zinc-750 text-zinc-200 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5"
+                      className="px-4 py-2 bg-zinc-100 border border-zinc-200 hover:bg-zinc-200 text-zinc-800 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5"
                     >
                       {uploadingAvatar ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Upload className="w-3.5 h-3.5" />}
                       Upload
@@ -260,7 +260,7 @@ export default function AppearancePage() {
                       <button
                         type="button"
                         onClick={() => setAvatarUrl("")}
-                        className="p-2 bg-zinc-950 border border-zinc-850 hover:border-red-500/20 text-zinc-500 hover:text-red-500 rounded-lg transition-colors cursor-pointer"
+                        className="p-2 bg-zinc-100 border border-zinc-200 hover:border-red-200 text-zinc-500 hover:text-red-500 rounded-lg transition-colors cursor-pointer"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
@@ -282,11 +282,11 @@ export default function AppearancePage() {
             <div className="space-y-3">
               <label className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Cover Banner</label>
               <div className="flex items-center gap-4">
-                <div className="w-24 h-16 rounded-xl bg-zinc-950 border border-zinc-850 flex items-center justify-center text-zinc-500 overflow-hidden shrink-0">
+                <div className="w-24 h-16 rounded-xl bg-zinc-100 border border-zinc-200 flex items-center justify-center text-zinc-500 overflow-hidden shrink-0">
                   {bannerUrl ? (
                     <img src={bannerUrl} alt="Banner" className="w-full h-full object-cover" />
                   ) : (
-                    <ImageIcon className="w-6 h-6 text-zinc-700" />
+                    <ImageIcon className="w-6 h-6 text-zinc-400" />
                   )}
                 </div>
                 
@@ -296,7 +296,7 @@ export default function AppearancePage() {
                       type="button"
                       onClick={() => bannerInputRef.current?.click()}
                       disabled={uploadingBanner}
-                      className="px-4 py-2 bg-zinc-800 border border-zinc-700/50 hover:bg-zinc-750 text-zinc-200 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5"
+                      className="px-4 py-2 bg-zinc-100 border border-zinc-200 hover:bg-zinc-200 text-zinc-800 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5"
                     >
                       {uploadingBanner ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Upload className="w-3.5 h-3.5" />}
                       Upload
@@ -305,7 +305,7 @@ export default function AppearancePage() {
                       <button
                         type="button"
                         onClick={() => setBannerUrl("")}
-                        className="p-2 bg-zinc-950 border border-zinc-850 hover:border-red-500/20 text-zinc-500 hover:text-red-500 rounded-lg transition-colors cursor-pointer"
+                        className="p-2 bg-zinc-100 border border-zinc-200 hover:border-red-200 text-zinc-500 hover:text-red-500 rounded-lg transition-colors cursor-pointer"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
@@ -325,7 +325,7 @@ export default function AppearancePage() {
           </div>
 
           {/* Accent Color picker */}
-          <div className="space-y-3 pt-4 border-t border-zinc-850">
+          <div className="space-y-3 pt-4 border-t border-zinc-200">
             <div className="flex items-center gap-2">
               <Palette className="w-4 h-4 text-zinc-400" />
               <label className="text-xs font-bold uppercase tracking-wider text-zinc-500">Page Accent Color</label>
@@ -339,7 +339,7 @@ export default function AppearancePage() {
                   type="button"
                   onClick={() => setAccentColor(color)}
                   className={`w-9 h-9 rounded-full relative transition-transform active:scale-95 cursor-pointer ${
-                    accentColor === color ? "scale-110 ring-2 ring-zinc-100" : ""
+                    accentColor === color ? "scale-110 ring-2 ring-black" : ""
                   }`}
                   style={{ backgroundColor: color }}
                   title={color}
@@ -347,22 +347,22 @@ export default function AppearancePage() {
               ))}
 
               {/* Custom color picker */}
-              <div className="flex items-center gap-2 border border-zinc-850 bg-zinc-950 p-2 rounded-xl h-9 ml-2">
+              <div className="flex items-center gap-2 border border-zinc-200 bg-zinc-50 p-2 rounded-xl h-9 ml-2">
                 <input 
                   type="color" 
                   value={accentColor}
                   onChange={(e) => setAccentColor(e.target.value)}
                   className="w-5 h-5 bg-transparent border-0 rounded cursor-pointer shrink-0"
                 />
-                <span className="text-[11px] font-bold text-zinc-400 font-sans tracking-wide uppercase">{accentColor}</span>
+                <span className="text-[11px] font-bold text-zinc-600 font-sans tracking-wide uppercase">{accentColor}</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Social Links Card */}
-        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-xl space-y-6">
-          <h2 className="text-lg font-bold text-zinc-200">Social Connections</h2>
+        <div className="bg-white border border-zinc-200 rounded-2xl p-6 shadow-xs space-y-6">
+          <h2 className="text-lg font-bold text-zinc-900">Social Connections</h2>
           <p className="text-xs text-zinc-500 -mt-2 leading-relaxed">Add links to your social channels. These will display as neat icons in your page hero.</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -375,7 +375,7 @@ export default function AppearancePage() {
               <input
                 type="url"
                 placeholder="https://instagram.com/yourprofile"
-                className="w-full h-12 bg-zinc-950 border border-zinc-850 rounded-xl px-4 text-zinc-100 placeholder:text-zinc-700 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+                className="w-full h-12 bg-zinc-50 border border-zinc-200 rounded-xl px-4 text-zinc-900 placeholder:text-zinc-400 text-sm focus:outline-none focus:border-black transition-colors"
                 value={instagramUrl}
                 onChange={(e) => setInstagramUrl(e.target.value)}
               />
@@ -390,7 +390,7 @@ export default function AppearancePage() {
               <input
                 type="url"
                 placeholder="https://x.com/yourprofile"
-                className="w-full h-12 bg-zinc-950 border border-zinc-850 rounded-xl px-4 text-zinc-100 placeholder:text-zinc-700 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+                className="w-full h-12 bg-zinc-50 border border-zinc-200 rounded-xl px-4 text-zinc-900 placeholder:text-zinc-400 text-sm focus:outline-none focus:border-black transition-colors"
                 value={xUrl}
                 onChange={(e) => setXUrl(e.target.value)}
               />
@@ -405,7 +405,7 @@ export default function AppearancePage() {
               <input
                 type="url"
                 placeholder="https://youtube.com/@yourchannel"
-                className="w-full h-12 bg-zinc-950 border border-zinc-850 rounded-xl px-4 text-zinc-100 placeholder:text-zinc-700 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+                className="w-full h-12 bg-zinc-50 border border-zinc-200 rounded-xl px-4 text-zinc-900 placeholder:text-zinc-400 text-sm focus:outline-none focus:border-black transition-colors"
                 value={youtubeUrl}
                 onChange={(e) => setYoutubeUrl(e.target.value)}
               />
@@ -420,7 +420,7 @@ export default function AppearancePage() {
               <input
                 type="url"
                 placeholder="https://tiktok.com/@yourprofile"
-                className="w-full h-12 bg-zinc-950 border border-zinc-850 rounded-xl px-4 text-zinc-100 placeholder:text-zinc-700 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+                className="w-full h-12 bg-zinc-50 border border-zinc-200 rounded-xl px-4 text-zinc-900 placeholder:text-zinc-400 text-sm focus:outline-none focus:border-black transition-colors"
                 value={tiktokUrl}
                 onChange={(e) => setTiktokUrl(e.target.value)}
               />
@@ -441,10 +441,10 @@ export default function AppearancePage() {
         <button
           type="submit"
           disabled={saving}
-          className="h-14 px-8 bg-orange-500 text-black font-extrabold rounded-xl flex items-center justify-center gap-2 hover:bg-orange-600 transition-colors disabled:opacity-40 text-sm cursor-pointer shadow-lg shadow-orange-500/10"
+          className="h-14 px-8 bg-black text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-zinc-800 transition-colors disabled:opacity-40 text-sm cursor-pointer shadow-sm"
         >
           {saving ? (
-            <Loader2 className="w-5 h-5 animate-spin text-black" />
+            <Loader2 className="w-5 h-5 animate-spin text-white" />
           ) : (
             "Save Appearance Settings"
           )}

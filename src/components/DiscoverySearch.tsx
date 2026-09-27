@@ -155,7 +155,7 @@ export default function DiscoverySearch({
     <div ref={containerRef} className="relative w-full group">
       <form action={action} method="GET" onSubmit={() => setIsOpen(false)}>
         <div className="relative flex items-center">
-          <Search className="pointer-events-none absolute left-3 md:left-4 h-3.5 w-3.5 md:h-5 md:w-5 text-zinc-400 transition-colors group-focus-within:text-orange-500" />
+          <Search className="pointer-events-none absolute left-3 md:left-4 h-3.5 w-3.5 md:h-5 md:w-5 text-zinc-400 transition-colors group-focus-within:text-black" />
           <input
             ref={inputRef}
             type="search"
@@ -165,7 +165,7 @@ export default function DiscoverySearch({
             onFocus={handleFocus}
             autoComplete="off"
             placeholder={placeholders[placeholderIndex] || "Search wishlist items..."}
-            className={`h-9 sm:h-11 md:h-12 w-full rounded-xl md:rounded-2xl border border-zinc-200/90 bg-white pl-8 sm:pl-10 md:pl-11 pr-8 md:pr-10 text-[11px] sm:text-xs md:text-sm font-medium text-zinc-900 shadow-xs md:shadow-sm outline-none transition-all placeholder:text-zinc-400 placeholder:transition-opacity focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 ${
+            className={`h-9 sm:h-11 md:h-12 w-full rounded-xl md:rounded-2xl border border-zinc-200/90 bg-white pl-8 sm:pl-10 md:pl-11 pr-8 md:pr-10 text-[11px] sm:text-xs md:text-sm font-medium text-black shadow-xs md:shadow-sm outline-none transition-all placeholder:text-[#666666] placeholder:transition-opacity focus:border-black focus:ring-2 focus:ring-black/10 ${
               isFading ? "placeholder:opacity-0" : "placeholder:opacity-100"
             }`}
           />
@@ -187,7 +187,7 @@ export default function DiscoverySearch({
         <div className="fixed inset-x-3 top-[54px] sm:inset-x-4 sm:top-[62px] md:absolute md:top-full md:left-0 md:right-0 md:mt-2 z-50 rounded-2xl border border-zinc-200/90 bg-white shadow-2xl backdrop-blur-xl overflow-hidden max-h-[75vh] overflow-y-auto no-scrollbar">
           {isLoading && !results ? (
             <div className="p-6 text-center text-xs font-semibold text-zinc-500 flex items-center justify-center gap-2">
-              <span className="h-4 w-4 animate-spin rounded-full border-2 border-orange-500 border-t-transparent" />
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-black border-t-transparent" />
               <span>Searching across catalog...</span>
             </div>
           ) : null}
@@ -195,7 +195,7 @@ export default function DiscoverySearch({
           {/* If No Results Found */}
           {!isLoading && results && !hasMatches && (
             <div className="p-6 text-center">
-              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-orange-50 text-orange-500 mb-2.5">
+              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 text-black mb-2.5">
                 <Search className="h-5 w-5" />
               </div>
               <h4 className="text-sm font-bold text-zinc-900">
@@ -208,7 +208,7 @@ export default function DiscoverySearch({
                 <Link
                   href="/dashboard/items"
                   onClick={() => setIsOpen(false)}
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-zinc-900 px-3.5 py-1.5 text-xs font-bold text-white transition hover:bg-orange-500 hover:text-black"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-black px-3.5 py-1.5 text-xs font-bold text-white transition hover:bg-zinc-800"
                 >
                   <Plus className="h-3.5 w-3.5" />
                   <span>Create Custom Item</span>
@@ -223,7 +223,7 @@ export default function DiscoverySearch({
               {/* 1. Categories */}
               {results.categories.length > 0 && (
                 <div className="p-3.5 bg-zinc-50/50">
-                  <div className="flex items-center gap-1.5 px-1.5 pb-2 text-[11px] font-bold uppercase tracking-wider text-orange-600">
+                  <div className="flex items-center gap-1.5 px-1.5 pb-2 text-[11px] font-bold uppercase tracking-wider text-black">
                     <FolderOpen className="h-3.5 w-3.5" />
                     <span>Categories</span>
                   </div>
@@ -233,9 +233,9 @@ export default function DiscoverySearch({
                         key={cat.id}
                         href={cat.href}
                         onClick={() => setIsOpen(false)}
-                        className="inline-flex items-center gap-2 rounded-xl border border-zinc-200/90 bg-white px-3 py-1.5 text-xs font-bold text-zinc-800 shadow-xs hover:border-orange-500 hover:bg-orange-50/50 hover:text-orange-950 transition"
+                        className="inline-flex items-center gap-2 rounded-xl border border-zinc-200/90 bg-white px-3 py-1.5 text-xs font-bold text-zinc-800 shadow-xs hover:border-black hover:bg-zinc-100 hover:text-black transition"
                       >
-                        <CategoryIcon name={cat.icon} className="h-3.5 w-3.5 text-orange-500" />
+                        <CategoryIcon name={cat.icon} className="h-3.5 w-3.5 text-zinc-700" />
                         <span>{cat.name}</span>
                         <ArrowRight className="h-3 w-3 text-zinc-400" />
                       </Link>
@@ -247,7 +247,7 @@ export default function DiscoverySearch({
               {/* 2. Subcategories */}
               {results.subcategories.length > 0 && (
                 <div className="p-3.5">
-                  <div className="flex items-center gap-1.5 px-1.5 pb-2 text-[11px] font-bold uppercase tracking-wider text-orange-600">
+                  <div className="flex items-center gap-1.5 px-1.5 pb-2 text-[11px] font-bold uppercase tracking-wider text-black">
                     <Layers className="h-3.5 w-3.5" />
                     <span>Subcategories</span>
                   </div>
@@ -267,19 +267,19 @@ export default function DiscoverySearch({
                             loading="lazy"
                           />
                         ) : (
-                          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-50 text-orange-500 shrink-0">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-100 text-zinc-700 shrink-0">
                             <Sparkles className="h-4 w-4" />
                           </div>
                         )}
                         <div className="min-w-0 flex-1 pr-2">
-                          <div className="text-xs font-bold text-zinc-900 line-clamp-2 md:block md:truncate group-hover/sub:text-orange-600 transition leading-snug break-words">
+                          <div className="text-xs font-bold text-zinc-900 line-clamp-2 md:block md:truncate group-hover/sub:text-black transition leading-snug break-words">
                             {sub.name}
                           </div>
                           <div className="text-[11px] text-zinc-500 truncate">
                             in {sub.parentCategoryName}
                           </div>
                         </div>
-                        <ArrowRight className="h-3.5 w-3.5 text-zinc-300 group-hover/sub:text-orange-500 transition shrink-0" />
+                        <ArrowRight className="h-3.5 w-3.5 text-zinc-300 group-hover/sub:text-black transition shrink-0" />
                       </Link>
                     ))}
                   </div>
@@ -289,7 +289,7 @@ export default function DiscoverySearch({
               {/* 3. Items */}
               {results.items.length > 0 && (
                 <div className="p-3.5">
-                  <div className="flex items-center gap-1.5 px-1.5 pb-2 text-[11px] font-bold uppercase tracking-wider text-orange-600">
+                  <div className="flex items-center gap-1.5 px-1.5 pb-2 text-[11px] font-bold uppercase tracking-wider text-black">
                     <Sparkles className="h-3.5 w-3.5" />
                     <span>Wishlist Items</span>
                   </div>
@@ -314,14 +314,14 @@ export default function DiscoverySearch({
                           </div>
                         )}
                         <div className="min-w-0 flex-1 pr-2">
-                          <div className="text-xs font-bold text-zinc-900 line-clamp-2 md:block md:truncate group-hover/item:text-orange-600 transition leading-snug break-words">
+                          <div className="text-xs font-bold text-zinc-900 line-clamp-2 md:block md:truncate group-hover/item:text-black transition leading-snug break-words">
                             {item.name}
                           </div>
                           <div className="text-[11px] font-medium text-zinc-500 truncate">
                             {item.categoryName}
                           </div>
                         </div>
-                        <span className="text-[11px] font-bold text-orange-600 group-hover/item:translate-x-0.5 transition-transform shrink-0 whitespace-nowrap">
+                        <span className="text-[11px] font-bold text-black group-hover/item:translate-x-0.5 transition-transform shrink-0 whitespace-nowrap">
                           View &rarr;
                         </span>
                       </Link>
@@ -335,7 +335,7 @@ export default function DiscoverySearch({
                 <Link
                   href={`/?q=${encodeURIComponent(query)}`}
                   onClick={() => setIsOpen(false)}
-                  className="text-xs font-bold text-zinc-700 hover:text-orange-600 transition flex items-center gap-1.5"
+                  className="text-xs font-bold text-zinc-700 hover:text-black transition flex items-center gap-1.5"
                 >
                   <span>See all results for &ldquo;{query}&rdquo;</span>
                   <ArrowRight className="h-3.5 w-3.5" />

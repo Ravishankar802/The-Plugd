@@ -40,7 +40,7 @@ export default function FashionProductCard({
   return (
     <article className="group flex flex-col w-full">
       {/* Compact Image Container with bottom-right action */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-zinc-200/90 bg-zinc-50 shadow-xs transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-md group-hover:border-orange-500/40">
+      <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-zinc-200/90 bg-zinc-50 shadow-xs transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-md group-hover:border-black">
         <Link
           href={`/catalog/${slug}`}
           className="block h-full w-full overflow-hidden"
@@ -82,7 +82,7 @@ export default function FashionProductCard({
 
       {/* Product Name placed OUTSIDE and BELOW image container */}
       <Link href={`/catalog/${slug}`} className="mt-2 block">
-        <h3 className="line-clamp-2 text-xs font-semibold text-zinc-900 transition-colors group-hover:text-orange-600 leading-snug">
+        <h3 className="line-clamp-2 text-xs font-semibold text-zinc-900 transition-colors group-hover:text-black leading-snug">
           {name}
         </h3>
       </Link>

@@ -62,7 +62,7 @@ export default function PaymentSupportModal({
 
         {/* Header */}
         <div className="text-center pt-2 pb-4">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500 mb-3 shadow-xs">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-900 mb-3 shadow-xs">
             <QrCode className="h-6 w-6" />
           </div>
           <h3 className="text-xl font-black text-zinc-900">
@@ -97,11 +97,11 @@ export default function PaymentSupportModal({
               <button
                 type="button"
                 onClick={handleCopy}
-                className="shrink-0 p-1.5 rounded-lg text-zinc-500 hover:text-orange-600 hover:bg-white transition"
+                className="shrink-0 p-1.5 rounded-lg text-zinc-500 hover:text-black hover:bg-white transition"
                 title="Copy link"
               >
                 {copied ? (
-                  <Check className="h-4 w-4 text-emerald-600" />
+                  <Check className="h-4 w-4 text-zinc-900" />
                 ) : (
                   <Copy className="h-4 w-4" />
                 )}
@@ -112,7 +112,7 @@ export default function PaymentSupportModal({
               href={paymentLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full h-11 rounded-xl bg-orange-500 font-extrabold text-sm text-black flex items-center justify-center gap-1.5 shadow-xs hover:bg-orange-600 transition active:scale-[0.99]"
+              className="w-full h-11 rounded-xl bg-black font-bold text-sm text-white flex items-center justify-center gap-1.5 shadow-xs hover:bg-zinc-800 transition active:scale-[0.99]"
             >
               <span>Open Payment Link</span>
               <ExternalLink className="h-4 w-4" />

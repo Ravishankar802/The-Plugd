@@ -356,7 +356,7 @@ export default function WishlistDashboardPage() {
   if (loading) {
     return (
       <div className="flex min-h-[400px] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-orange-500" />
+        <Loader2 className="h-8 w-8 animate-spin text-zinc-900" />
       </div>
     );
   }
@@ -379,14 +379,14 @@ export default function WishlistDashboardPage() {
               onClick={handleCopyUrl}
               className="inline-flex h-10 items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3.5 text-xs font-bold text-zinc-700 transition hover:border-zinc-300 hover:text-zinc-900 shadow-xs cursor-pointer"
             >
-              {copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5 text-zinc-400" />}
+              {copied ? <Check className="h-3.5 w-3.5 text-zinc-950" /> : <Copy className="h-3.5 w-3.5 text-zinc-400" />}
               <span>{copied ? "Copied Link" : "Copy URL"}</span>
             </button>
             <a
               href={publicUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-10 items-center gap-1.5 rounded-xl bg-orange-500 px-4 text-xs font-extrabold text-black transition hover:bg-orange-400 shadow-xs"
+              className="inline-flex h-10 items-center gap-1.5 rounded-xl bg-black px-4 text-xs font-bold text-white transition hover:bg-zinc-800 shadow-xs"
             >
               <span>Preview Page</span>
               <ExternalLink className="h-3.5 w-3.5" />
@@ -409,10 +409,10 @@ export default function WishlistDashboardPage() {
       )}
 
       {/* 1. SECTION: Create Custom Wishlist Item (PRIMARY) */}
-      <section className="rounded-3xl border border-orange-500/30 bg-zinc-900/90 p-6 space-y-6 shadow-lg shadow-orange-500/5">
+      <section className="rounded-3xl border border-zinc-800 bg-zinc-900/90 p-6 space-y-6 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-orange-400 text-[10px] font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-1.5 text-zinc-400 text-[10px] font-bold uppercase tracking-wider">
               <Sparkles className="h-3 w-3" />
               Primary Action
             </div>
@@ -432,7 +432,7 @@ export default function WishlistDashboardPage() {
                 setCustomFormOpen(true);
               }
             }}
-            className="inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 text-xs font-bold text-black transition hover:bg-orange-400 shrink-0 shadow-sm"
+            className="inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-white px-5 text-xs font-bold text-black transition hover:bg-zinc-200 shrink-0 shadow-sm"
           >
             {customFormOpen ? (
               <>
@@ -461,7 +461,7 @@ export default function WishlistDashboardPage() {
                   value={customName}
                   onChange={(e) => setCustomName(e.target.value)}
                   placeholder="e.g. My Dream Recording Studio, Trip to Kyoto, Road Trip Van..."
-                  className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition"
+                  className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 text-xs font-medium text-zinc-100 outline-none focus:border-white transition"
                   required
                 />
               </div>
@@ -474,7 +474,7 @@ export default function WishlistDashboardPage() {
                 <select
                   value={customCategoryId}
                   onChange={(e) => setCustomCategoryId(e.target.value)}
-                  className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-3 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition"
+                  className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-3 text-xs font-medium text-zinc-100 outline-none focus:border-white transition"
                 >
                   <option value="">Select a category (optional)</option>
                   {categories.map((cat) => (
@@ -496,7 +496,7 @@ export default function WishlistDashboardPage() {
                     value={customImage}
                     onChange={(e) => setCustomImage(e.target.value)}
                     placeholder="https://..."
-                    className="h-11 flex-1 rounded-xl border border-zinc-800 bg-zinc-900 px-4 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition"
+                    className="h-11 flex-1 rounded-xl border border-zinc-800 bg-zinc-900 px-4 text-xs font-medium text-zinc-100 outline-none focus:border-white transition"
                   />
                   <button
                     type="button"
@@ -531,7 +531,7 @@ export default function WishlistDashboardPage() {
                   value={customShortDescription}
                   onChange={(e) => setCustomShortDescription(e.target.value)}
                   placeholder="One sentence describing what this is..."
-                  className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition"
+                  className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 text-xs font-medium text-zinc-100 outline-none focus:border-white transition"
                 />
               </div>
 
@@ -545,7 +545,7 @@ export default function WishlistDashboardPage() {
                   onChange={(e) => setCustomPersonalNote(e.target.value)}
                   placeholder="Tell your audience why this wishlist item matters to you..."
                   rows={2}
-                  className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-3 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition resize-none"
+                  className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-3 text-xs font-medium text-zinc-100 outline-none focus:border-white transition resize-none"
                 />
               </div>
 
@@ -559,7 +559,7 @@ export default function WishlistDashboardPage() {
                   onChange={(e) => setCustomDescription(e.target.value)}
                   placeholder="Additional context or links..."
                   rows={3}
-                  className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-3 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition resize-none"
+                  className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-3 text-xs font-medium text-zinc-100 outline-none focus:border-white transition resize-none"
                 />
               </div>
 
@@ -573,7 +573,7 @@ export default function WishlistDashboardPage() {
                   value={customExternalUrl}
                   onChange={(e) => setCustomExternalUrl(e.target.value)}
                   placeholder="https://example.com/item"
-                  className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 text-xs font-medium text-zinc-100 outline-none focus:border-orange-500 transition"
+                  className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 text-xs font-medium text-zinc-100 outline-none focus:border-white transition"
                 />
               </div>
             </div>
@@ -583,7 +583,7 @@ export default function WishlistDashboardPage() {
               <button
                 type="button"
                 onClick={saveCustomItem}
-                className="h-11 rounded-xl bg-orange-500 px-6 text-xs font-bold text-black transition hover:bg-orange-400"
+                className="h-11 rounded-xl bg-white px-6 text-xs font-bold text-black transition hover:bg-zinc-200"
               >
                 {editingItem ? "Save Changes" : "Add to Wishlist"}
               </button>
@@ -621,7 +621,7 @@ export default function WishlistDashboardPage() {
               value={query}
               onChange={(e) => handleSearchChange(e.target.value)}
               placeholder="Search (e.g. iPhone, Camera, Japan, Coffee)..."
-              className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-950 pl-10 pr-4 text-xs font-medium text-zinc-100 outline-none transition placeholder:text-zinc-500 focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+              className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-950 pl-10 pr-4 text-xs font-medium text-zinc-100 outline-none transition placeholder:text-zinc-500 focus:border-white focus:ring-1 focus:ring-white"
             />
           </div>
         </div>
@@ -645,7 +645,7 @@ export default function WishlistDashboardPage() {
                   </div>
                   <div className="flex min-w-0 flex-1 flex-col justify-between gap-2">
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-orange-400">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">
                         {item.category.name}
                       </span>
                       <h3 className="truncate text-xs font-bold text-zinc-100">{item.name}</h3>
@@ -661,7 +661,7 @@ export default function WishlistDashboardPage() {
                       className={`inline-flex h-8 items-center justify-center gap-1 rounded-xl px-3 text-[11px] font-bold transition ${
                         isAdded
                           ? "bg-zinc-800 text-zinc-400 cursor-not-allowed"
-                          : "bg-orange-500 text-black hover:bg-orange-400"
+                          : "bg-white text-black hover:bg-zinc-200"
                       }`}
                     >
                       {isAdded ? (
@@ -693,7 +693,7 @@ export default function WishlistDashboardPage() {
                 setCustomFormOpen(true);
                 setEditingItem(null);
               }}
-              className="inline-flex h-9 items-center gap-1.5 rounded-xl bg-orange-500 px-4 text-xs font-bold text-black hover:bg-orange-400 transition"
+              className="inline-flex h-9 items-center gap-1.5 rounded-xl bg-white px-4 text-xs font-bold text-black hover:bg-zinc-200 transition"
             >
               <Plus className="h-3.5 w-3.5" />
               <span>Create Custom Item for &ldquo;{query}&rdquo;</span>
@@ -733,7 +733,7 @@ export default function WishlistDashboardPage() {
                     <div className="flex flex-wrap items-center gap-2">
                       <h3 className="text-sm font-bold text-zinc-100">{item.name}</h3>
                       {item.isFeatured ? (
-                        <span className="rounded-full bg-orange-500/20 border border-orange-500/30 px-2 py-0.5 text-[10px] font-bold text-orange-400">
+                        <span className="rounded-full bg-zinc-800 border border-zinc-700 px-2 py-0.5 text-[10px] font-bold text-zinc-200">
                           Featured
                         </span>
                       ) : null}
@@ -786,7 +786,7 @@ export default function WishlistDashboardPage() {
                     onClick={() => toggleItem(item, "isFeatured")}
                     className={`inline-flex h-9 items-center gap-1.5 rounded-xl px-3 text-xs font-bold transition ${
                       item.isFeatured
-                        ? "bg-orange-500 text-black"
+                        ? "bg-white text-black"
                         : "border border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-700"
                     }`}
                     title="Feature this item on your public profile"
@@ -823,7 +823,7 @@ export default function WishlistDashboardPage() {
                   <button
                     type="button"
                     onClick={() => removeItem(item.id)}
-                    className="inline-flex h-9 items-center justify-center rounded-xl border border-red-500/20 bg-red-500/10 px-3 text-xs font-bold text-red-400 hover:bg-red-500/20 transition"
+                    className="inline-flex h-9 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900 px-3 text-xs font-bold text-zinc-400 hover:text-white hover:bg-zinc-800 transition"
                     title="Remove from wishlist"
                   >
                     <Trash2 className="h-3.5 w-3.5" />

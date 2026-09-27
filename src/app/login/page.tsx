@@ -65,8 +65,8 @@ function LoginForm() {
 
       {/* Informational Message */}
       {initialMessage && !error && (
-        <div className="mb-5 flex items-center gap-2 rounded-xl bg-orange-50 p-3 text-xs font-semibold text-orange-700 border border-orange-200">
-          <CheckCircle2 className="h-4 w-4 shrink-0 text-orange-500" />
+        <div className="mb-5 flex items-center gap-2 rounded-xl bg-zinc-100 p-3 text-xs font-semibold text-zinc-900 border border-zinc-200">
+          <CheckCircle2 className="h-4 w-4 shrink-0 text-zinc-900" />
           <span>{initialMessage}</span>
         </div>
       )}
@@ -87,7 +87,7 @@ function LoginForm() {
             Please contact Plugd support at{" "}
             <a
               href="mailto:support@theplugd.com"
-              className="font-bold text-orange-600 hover:underline"
+              className="font-bold text-black hover:underline"
             >
               support@theplugd.com
             </a>{" "}
@@ -115,7 +115,7 @@ function LoginForm() {
             value={login}
             onChange={(e) => setLogin(e.target.value)}
             placeholder="username or email"
-            className="w-full h-11 sm:h-12 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+            className="w-full h-11 sm:h-12 rounded-xl border border-zinc-200 bg-zinc-50/50 px-3.5 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10"
           />
         </div>
 
@@ -131,7 +131,7 @@ function LoginForm() {
             <button
               type="button"
               onClick={() => setForgotNotice(!forgotNotice)}
-              className="text-[11px] font-bold text-zinc-500 hover:text-orange-600 transition"
+              className="text-[11px] font-bold text-zinc-500 hover:text-black transition"
             >
               Forgot password?
             </button>
@@ -146,7 +146,7 @@ function LoginForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="password"
-              className="w-full h-11 sm:h-12 rounded-xl border border-zinc-200 bg-zinc-50/50 pl-3.5 pr-11 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+              className="w-full h-11 sm:h-12 rounded-xl border border-zinc-200 bg-zinc-50/50 pl-3.5 pr-11 text-sm font-medium text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-black focus:bg-white focus:ring-2 focus:ring-black/10"
             />
             <button
               type="button"
@@ -167,11 +167,11 @@ function LoginForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full h-11 sm:h-12 mt-2 rounded-xl bg-orange-500 font-extrabold text-sm text-black shadow-xs transition hover:bg-orange-600 active:scale-[0.99] disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full h-11 sm:h-12 mt-2 rounded-xl bg-black font-bold text-sm text-white shadow-xs transition hover:bg-zinc-800 active:scale-[0.99] disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
         >
           {loading ? (
             <>
-              <Loader2 className="h-4 w-4 animate-spin text-black" />
+              <Loader2 className="h-4 w-4 animate-spin text-white" />
               <span>Logging in...</span>
             </>
           ) : (
@@ -193,7 +193,7 @@ function LoginForm() {
       {/* Prominent Secondary Action: "Create new account" */}
       <Link
         href="/signup"
-        className="w-full h-11 sm:h-12 rounded-xl border-2 border-orange-500/70 bg-orange-50/50 text-orange-950 font-extrabold text-sm flex items-center justify-center hover:bg-orange-100 hover:border-orange-600 transition active:scale-[0.99]"
+        className="w-full h-11 sm:h-12 rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-900 font-bold text-sm flex items-center justify-center hover:bg-zinc-100 hover:border-zinc-300 transition active:scale-[0.99]"
       >
         Create new account
       </Link>
@@ -203,7 +203,7 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <main className="min-h-screen bg-white flex flex-col lg:flex-row font-sans selection:bg-orange-500 selection:text-black">
+    <main className="min-h-screen bg-white flex flex-col lg:flex-row font-sans selection:bg-black selection:text-white">
       {/* LEFT COLUMN: Plugd-focused visual/marketing area */}
       <div className="hidden lg:flex lg:w-1/2 min-h-screen sticky top-0 h-screen">
         <AuthMarketingHero />
@@ -214,7 +214,7 @@ export default function LoginPage() {
         <Suspense
           fallback={
             <div className="flex items-center justify-center p-12">
-              <Loader2 className="h-8 w-8 animate-spin text-orange-500" />
+              <Loader2 className="h-8 w-8 animate-spin text-zinc-900" />
             </div>
           }
         >

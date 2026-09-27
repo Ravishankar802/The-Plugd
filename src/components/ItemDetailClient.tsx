@@ -58,13 +58,13 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 text-zinc-900 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
+    <div className="min-h-screen bg-zinc-50 text-zinc-900 flex flex-col font-sans selection:bg-black selection:text-white">
       {/* Top Header */}
       <header className="sticky top-0 z-30 border-b border-zinc-200/80 bg-white/95 backdrop-blur-md px-4 py-3 sm:px-6">
         <div className="mx-auto max-w-4xl flex items-center justify-between">
           <Link
             href={`/${creator.username}`}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-zinc-600 hover:text-orange-600 transition"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-zinc-600 hover:text-black transition"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to {creator.displayName}&apos;s Wishlist</span>
@@ -78,7 +78,7 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
             >
               {copied ? (
                 <>
-                  <Check className="h-3.5 w-3.5 text-emerald-600" />
+                  <Check className="h-3.5 w-3.5 text-zinc-950" />
                   <span>Link Copied</span>
                 </>
               ) : (
@@ -115,7 +115,7 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
                 />
               ) : (
                 <div className="flex flex-col items-center justify-center gap-2 text-zinc-400">
-                  <Sparkles className="h-12 w-12 text-orange-400" />
+                  <Sparkles className="h-12 w-12 text-zinc-400" />
                   <span className="text-xs font-semibold">Wishlist Item</span>
                 </div>
               )}
@@ -127,8 +127,8 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
             <div className="space-y-4">
               {/* Context / Category Pill */}
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-50 border border-orange-200 px-3 py-1 text-xs font-bold text-orange-800">
-                  <Sparkles className="h-3 w-3 text-orange-600" />
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 border border-zinc-200 px-3 py-1 text-xs font-bold text-zinc-900">
+                  <Sparkles className="h-3 w-3 text-zinc-700" />
                   <span>On {creator.displayName}&apos;s Wishlist</span>
                 </span>
 
@@ -153,8 +153,8 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
 
               {/* Personal Note Callout from Wishlist Owner */}
               {item.personalNote && (
-                <div className="rounded-2xl border border-orange-200/90 bg-orange-50/50 p-4 space-y-1">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-orange-700">
+                <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4 space-y-1">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-zinc-600">
                     Note from {creator.displayName}
                   </p>
                   <p className="text-xs sm:text-sm text-zinc-800 leading-relaxed italic">
@@ -168,7 +168,7 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
             <div className="pt-4 border-t border-zinc-100 space-y-4">
               <Link
                 href={`/${creator.username}`}
-                className="group flex items-center justify-between rounded-2xl border border-zinc-200/80 bg-zinc-50/70 p-3 hover:border-orange-300 hover:bg-orange-50/30 transition shadow-xs"
+                className="group flex items-center justify-between rounded-2xl border border-zinc-200/80 bg-zinc-50/70 p-3 hover:border-zinc-400 hover:bg-zinc-100/50 transition shadow-xs"
               >
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-full border-2 border-white bg-zinc-200 overflow-hidden flex items-center justify-center shrink-0">
@@ -179,13 +179,13 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
                         className="h-full w-full object-cover"
                       />
                     ) : (
-                      <span className="text-sm font-bold text-orange-600">
+                      <span className="text-sm font-bold text-zinc-900">
                         {creator.displayName.slice(0, 1).toUpperCase()}
                       </span>
                     )}
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-zinc-900 group-hover:text-orange-600 transition">
+                    <p className="text-xs font-bold text-zinc-900 group-hover:text-black transition">
                       {creator.displayName}
                     </p>
                     <p className="text-[11px] text-zinc-500 font-medium">
@@ -193,7 +193,7 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
                     </p>
                   </div>
                 </div>
-                <span className="text-xs font-bold text-orange-600 group-hover:underline pr-2">
+                <span className="text-xs font-bold text-black group-hover:underline pr-2">
                   View Wishlist →
                 </span>
               </Link>
@@ -204,7 +204,7 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
                   <button
                     type="button"
                     onClick={() => setSupportModalOpen(true)}
-                    className="w-full h-12 rounded-2xl bg-orange-500 font-extrabold text-sm text-black shadow-xs hover:bg-orange-400 transition flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full h-12 rounded-2xl bg-black font-extrabold text-sm text-white shadow-xs hover:bg-zinc-800 transition flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <HeartHandshake className="h-4 w-4" />
                     <span>Gift or Support This Wish</span>
@@ -232,7 +232,7 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
           <p>© {new Date().getFullYear()} Plugd • {creator.displayName}&apos;s Wishlist</p>
           <Link
             href={`/${creator.username}`}
-            className="inline-flex items-center gap-1 text-zinc-500 hover:text-orange-600 transition font-bold"
+            className="inline-flex items-center gap-1 text-zinc-500 hover:text-black transition font-bold"
           >
             <span>Back to {creator.displayName}&apos;s Wishlist →</span>
           </Link>

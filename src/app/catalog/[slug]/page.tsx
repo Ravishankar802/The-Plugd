@@ -42,7 +42,7 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
   const displayImage = getProductDisplayImage(item.category.slug, item.slug, item.image);
 
   return (
-    <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-orange-500 selection:text-black">
+    <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-black selection:text-white">
       <Header
         isLoggedIn={Boolean(session?.userId)}
         username={session?.username}
@@ -85,14 +85,14 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
               <div className="flex items-center gap-2 flex-wrap">
                 <Link
                   href={`/category/${item.category.slug}`}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-orange-600 hover:bg-orange-500/20 transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 border border-zinc-200 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-zinc-900 hover:bg-zinc-200 transition-colors"
                 >
                   <CategoryIcon name={item.category.icon} className="h-3.5 w-3.5" />
                   <span>{item.category.name}</span>
                 </Link>
 
                 {item.addedCount != null && item.addedCount > 0 ? (
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 px-3 py-1 text-xs font-semibold text-orange-600">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 border border-zinc-200 px-3 py-1 text-xs font-semibold text-zinc-700">
                     <span aria-hidden="true">👤</span>
                     <span>{formatAddedCount(item.addedCount)} added</span>
                   </span>
@@ -105,9 +105,9 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
             </div>
 
             {/* Wishlist Action Box */}
-            <div className="space-y-3.5 rounded-[24px] bg-orange-500/5 border border-orange-500/15 p-5">
+            <div className="space-y-3.5 rounded-[24px] bg-zinc-50 border border-zinc-200 p-5">
               <div className="flex items-center gap-2 text-zinc-900 font-bold text-sm">
-                <Sparkles className="h-4 w-4 text-orange-500" />
+                <Sparkles className="h-4 w-4 text-zinc-900" />
                 <span>Standard Wishlist Item</span>
               </div>
               <p className="text-xs text-zinc-600 leading-relaxed">

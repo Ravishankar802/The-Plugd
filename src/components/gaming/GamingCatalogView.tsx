@@ -132,18 +132,18 @@ export default function GamingCatalogView({
     <div className="space-y-8">
       {/* 1. Category Hero Banner */}
       <section className="relative overflow-hidden rounded-[32px] bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-10 text-white shadow-xl">
-        <div className="absolute right-0 top-0 -mr-20 -mt-20 h-72 w-72 rounded-full bg-orange-500/20 blur-3xl pointer-events-none" />
-        <div className="absolute left-1/3 bottom-0 -mb-20 h-48 w-48 rounded-full bg-orange-600/10 blur-2xl pointer-events-none" />
+        <div className="absolute right-0 top-0 -mr-20 -mt-20 h-72 w-72 rounded-full bg-zinc-800/30 blur-3xl pointer-events-none" />
+        <div className="absolute left-1/3 bottom-0 -mb-20 h-48 w-48 rounded-full bg-zinc-700/20 blur-2xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-orange-500/15 border border-orange-500/30 px-3.5 py-1 text-xs font-black uppercase tracking-widest text-orange-400">
+            <div className="inline-flex items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-zinc-300">
               <Gamepad2 className="h-3.5 w-3.5" />
               Catalog • Gaming Battlestations
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
-              GAMING<span className="text-orange-500">.</span>
+              GAMING<span className="text-zinc-500">.</span>
             </h1>
 
             <p className="text-sm md:text-base text-zinc-300 font-normal leading-relaxed max-w-xl">
@@ -157,7 +157,7 @@ export default function GamingCatalogView({
               <span className="inline-flex items-center rounded-full bg-zinc-900/80 px-3 py-1 border border-zinc-800">
                 🎮 150+ Hardware & Peripherals
               </span>
-              <span className="inline-flex items-center rounded-full bg-zinc-900/80 px-3 py-1 border border-zinc-800 text-orange-400">
+              <span className="inline-flex items-center rounded-full bg-zinc-900/80 px-3 py-1 border border-zinc-800 text-zinc-300">
                 ⚡ 0% Commerce Markup
               </span>
             </div>
@@ -175,7 +175,7 @@ export default function GamingCatalogView({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search RTX 5090, PS5, Wooting, OLED, Ally..."
-                className="h-12 w-full rounded-2xl border border-zinc-700 bg-zinc-900/90 pl-11 pr-10 text-xs md:text-sm font-medium text-white placeholder-zinc-500 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-500/30"
+                className="h-12 w-full rounded-2xl border border-zinc-700 bg-zinc-900/90 pl-11 pr-10 text-xs md:text-sm font-medium text-white placeholder-zinc-500 outline-none transition focus:border-white focus:ring-2 focus:ring-white/20"
               />
               {searchQuery ? (
                 <button
@@ -205,9 +205,9 @@ export default function GamingCatalogView({
                   setSearchQuery("");
                   scrollToSection(item.sectionId);
                 }}
-                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-zinc-200/90 bg-white px-3.5 py-1.5 text-xs font-bold text-zinc-800 shadow-xs transition hover:border-orange-500 hover:bg-orange-50/50 hover:text-zinc-950 active:scale-95"
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-zinc-200/90 bg-white px-3.5 py-1.5 text-xs font-bold text-zinc-800 shadow-xs transition hover:border-black hover:bg-zinc-100 hover:text-zinc-950 active:scale-95"
               >
-                <Icon className="h-3.5 w-3.5 text-orange-500" />
+                <Icon className="h-3.5 w-3.5 text-zinc-900" />
                 <span>{item.label}</span>
               </button>
             );
@@ -220,7 +220,7 @@ export default function GamingCatalogView({
         <section className="space-y-6 animate-in fade-in duration-200">
           <div className="flex items-center justify-between border-b border-zinc-200 pb-3">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-wider text-orange-600">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-zinc-600">
                 Gaming Search
               </p>
               <h2 className="text-xl md:text-2xl font-black text-zinc-950">
@@ -230,7 +230,7 @@ export default function GamingCatalogView({
             <button
               type="button"
               onClick={() => setSearchQuery("")}
-              className="text-xs font-bold text-zinc-600 hover:text-orange-600 transition-colors"
+              className="text-xs font-bold text-zinc-600 hover:text-black transition-colors"
             >
               Clear Search
             </button>
@@ -271,7 +271,7 @@ export default function GamingCatalogView({
               </div>
               <Link
                 href={isLoggedIn ? "/dashboard/items" : "/login"}
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-zinc-950 px-5 text-xs font-bold text-white shadow-sm transition hover:bg-orange-500 hover:text-black shrink-0"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-zinc-950 px-5 text-xs font-bold text-white shadow-sm transition hover:bg-zinc-800 hover:text-white shrink-0"
               >
                 <Plus className="h-4 w-4" />
                 <span>Create Custom Item</span>
@@ -315,7 +315,7 @@ export default function GamingCatalogView({
               <div>
                 <div className="flex items-center gap-2">
                   {activeModalSection.badge ? (
-                    <span className="inline-flex items-center rounded-lg bg-orange-500/10 px-2 py-0.5 text-[11px] font-extrabold text-orange-600">
+                    <span className="inline-flex items-center rounded-lg bg-zinc-100 px-2 py-0.5 text-[11px] font-bold text-zinc-900">
                       {activeModalSection.badge}
                     </span>
                   ) : null}
@@ -337,7 +337,7 @@ export default function GamingCatalogView({
                     value={modalSearch}
                     onChange={(e) => setModalSearch(e.target.value)}
                     placeholder="Filter this section..."
-                    className="h-10 w-full rounded-xl border border-zinc-200 bg-zinc-50 pl-10 pr-4 text-xs font-medium text-zinc-900 outline-none focus:border-orange-500 focus:bg-white"
+                    className="h-10 w-full rounded-xl border border-zinc-200 bg-zinc-50 pl-10 pr-4 text-xs font-medium text-zinc-900 outline-none focus:border-black focus:bg-white"
                   />
                 </div>
 
