@@ -55,10 +55,10 @@ function LoginForm() {
     <div className="w-full max-w-[380px] sm:max-w-[400px] mx-auto">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900">
+        <h1 className="font-serif text-2xl sm:text-3xl font-normal tracking-tight text-zinc-900">
           Log in to Plugd
         </h1>
-        <p className="mt-1 text-xs sm:text-sm text-zinc-500 font-medium">
+        <p className="mt-1 text-xs sm:text-sm text-zinc-500 font-normal">
           Enter your email or username to access your wishlist.
         </p>
       </div>
@@ -193,7 +193,7 @@ function LoginForm() {
       {/* Prominent Secondary Action: "Create new account" */}
       <Link
         href="/signup"
-        className="w-full h-11 sm:h-12 rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-900 font-bold text-sm flex items-center justify-center hover:bg-zinc-100 hover:border-zinc-300 transition active:scale-[0.99]"
+        className="w-full h-11 sm:h-12 rounded-full border border-[#e8e8e4] bg-white text-zinc-900 font-medium text-xs tracking-wide flex items-center justify-center hover:bg-zinc-50 hover:border-black transition active:scale-[0.99]"
       >
         Create new account
       </Link>
@@ -203,7 +203,7 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <main className="min-h-screen bg-white flex flex-col lg:flex-row font-sans selection:bg-black selection:text-white">
+    <main className="min-h-screen bg-[#fafaf8] flex flex-col lg:flex-row font-sans selection:bg-black selection:text-white">
       {/* LEFT COLUMN: Plugd-focused visual/marketing area */}
       <div className="hidden lg:flex lg:w-1/2 min-h-screen sticky top-0 h-screen">
         <AuthMarketingHero />

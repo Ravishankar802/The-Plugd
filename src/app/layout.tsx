@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, EB_Garamond, Baloo_2 } from "next/font/google";
+import { Geist, Geist_Mono, Cormorant_Garamond, Baloo_2 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -13,9 +13,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const ebGaramond = EB_Garamond({
-  variable: "--font-eb-garamond",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-serif",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const baloo2 = Baloo_2({
@@ -68,7 +70,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${ebGaramond.variable} ${baloo2.variable} min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background transition-colors duration-300`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} ${baloo2.variable} min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background transition-colors duration-300`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

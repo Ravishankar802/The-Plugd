@@ -342,9 +342,9 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const navCategories = organizeCategories(categories);
 
   return (
-    <div className="min-h-screen bg-white text-black flex flex-col font-sans selection:bg-black selection:text-white">
+    <div className="min-h-screen bg-[#fafaf8] text-[#0a0a0a] flex flex-col font-sans selection:bg-black selection:text-white">
       {/* Sticky Header & Category Navigation Bar */}
-      <div className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-xl">
+      <div className="sticky top-0 z-40 w-full bg-[#fafaf8]/95 backdrop-blur-xl border-b border-[#e8e8e4]">
         <Header
           initialQuery={query}
           isLoggedIn={Boolean(session?.userId)}
@@ -353,22 +353,22 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         />
 
         {/* Scrollable Horizontal Category Navigation Bar */}
-        <div className="border-b border-zinc-200/80 bg-white/95 backdrop-blur-md">
-          <div className="mx-auto flex max-w-7xl items-center gap-2 md:gap-3 overflow-x-auto px-3 py-2 md:px-6 md:py-3 no-scrollbar">
+        <div className="border-t border-[#e8e8e4]/60 bg-[#fafaf8]/90 backdrop-blur-md">
+          <div className="mx-auto flex max-w-7xl items-center gap-2 md:gap-2.5 overflow-x-auto px-3 py-2 md:px-6 md:py-2.5 no-scrollbar">
             <Link
               href="/"
-              className="inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full bg-black px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-bold text-white shadow-sm transition hover:bg-zinc-800"
+              className="inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full bg-[#0a0a0a] px-3.5 py-1.5 md:px-4 md:py-1.5 text-xs font-medium tracking-wide text-[#fafaf8] shadow-xs transition hover:bg-zinc-800"
             >
-              <Sparkles className="h-3.5 w-3.5 md:h-[18px] md:w-[18px] text-white" />
+              <Sparkles className="h-3.5 w-3.5 text-white" />
               <span>All</span>
             </Link>
             {navCategories.map((category) => (
               <Link
                 key={category.id}
                 href={`/category/${category.slug}`}
-                className="inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full border border-zinc-200/90 bg-white px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold text-zinc-700 shadow-sm transition hover:border-black hover:text-black hover:bg-zinc-100"
+                className="inline-flex shrink-0 items-center gap-1.5 md:gap-2 rounded-full border border-[#e8e8e4] bg-white/80 px-3.5 py-1.5 md:px-4 md:py-1.5 text-xs font-medium tracking-normal text-zinc-700 shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition hover:border-[#0a0a0a] hover:text-[#0a0a0a] hover:bg-white"
               >
-                <CategoryIcon name={category.icon} className="h-3.5 w-3.5 md:h-[18px] md:w-[18px] text-zinc-500" />
+                <CategoryIcon name={category.icon} className="h-3.5 w-3.5 text-zinc-500" />
                 <span>{category.name}</span>
               </Link>
             ))}
@@ -382,44 +382,44 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         {!query && (
           <section className="hidden md:grid mb-8 md:grid-cols-2 gap-4 md:gap-5 items-stretch">
             {/* Board 1: Catalog Experience */}
-            <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-8 text-white shadow-xl border border-zinc-800/80 flex flex-col justify-between h-full group">
+            <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#0c0c0d] via-[#141416] to-[#0a0a0a] p-6 md:p-8 text-white shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] border border-white/[0.08] flex flex-col justify-between h-full group">
               {/* Subtle dark ambient glow */}
-              <div className="absolute right-0 top-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
-              <div className="absolute right-12 bottom-0 h-44 w-44 rounded-full bg-white/5 blur-2xl pointer-events-none" />
+              <div className="absolute right-0 top-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-white/[0.04] blur-3xl pointer-events-none" />
+              <div className="absolute right-12 bottom-0 h-44 w-44 rounded-full bg-white/[0.04] blur-2xl pointer-events-none" />
 
               {/* TWO-ZONE LAYOUT: LEFT ZONE */}
               <div className="relative z-10 max-w-[62%] sm:max-w-[58%] md:max-w-[56%] flex flex-col justify-between h-full space-y-5">
                 <div className="space-y-3">
                   {/* Small top label */}
-                  <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/20 px-3 py-1 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-zinc-300">
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.07] border border-white/10 px-3 py-1 text-[10px] md:text-[11px] font-medium tracking-[0.16em] uppercase text-zinc-300">
                     <Sparkles className="h-3 w-3 text-zinc-300" />
                     <span>ALL NEW PLUGD EXPERIENCE</span>
                   </div>
 
                   {/* Main focal content: 1,000+ ITEMS TO WISH FOR */}
                   <div>
-                    <div className="text-3xl sm:text-4xl md:text-4xl font-black tracking-tight leading-none text-white drop-shadow-sm flex items-baseline gap-0.5">
+                    <div className="font-serif text-3xl sm:text-4xl md:text-[42px] font-normal tracking-[-0.03em] leading-[1.05] text-white drop-shadow-xs flex items-baseline gap-1">
                       <span>1,000</span>
-                      <span className="text-zinc-400 font-extrabold">+</span>
+                      <span className="text-zinc-400 font-light">+</span>
                     </div>
-                    <p className="mt-1.5 text-[11px] sm:text-xs font-black tracking-widest text-zinc-300 uppercase">
+                    <p className="mt-1.5 text-[10px] sm:text-[11px] font-medium tracking-[0.18em] text-zinc-400 uppercase">
                       ITEMS TO WISH FOR
                     </p>
                   </div>
 
                   {/* Compact visual flow: ＋ ADD  →  ↗ SHARE  →  ✦ GET */}
                   <div className="pt-1 flex flex-wrap items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px]">
-                    <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white/[0.07] border border-white/10 px-2.5 py-0.5 font-medium tracking-wide text-zinc-200">
                       <Plus className="h-3 w-3 text-zinc-300" />
                       ADD
                     </span>
-                    <span className="text-zinc-500 font-bold select-none text-[10px]">→</span>
-                    <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
+                    <span className="text-zinc-500 font-medium select-none text-[10px]">→</span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white/[0.07] border border-white/10 px-2.5 py-0.5 font-medium tracking-wide text-zinc-200">
                       <ArrowUpRight className="h-3 w-3 text-zinc-300" />
                       SHARE
                     </span>
-                    <span className="text-zinc-500 font-bold select-none text-[10px]">→</span>
-                    <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
+                    <span className="text-zinc-500 font-medium select-none text-[10px]">→</span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white/[0.07] border border-white/10 px-2.5 py-0.5 font-medium tracking-wide text-zinc-200">
                       <Sparkles className="h-3 w-3 text-zinc-300" />
                       GET
                     </span>
@@ -430,10 +430,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 <div className="pt-2">
                   <Link
                     href={session?.userId ? "/dashboard/items" : "/login"}
-                    className="inline-flex h-10 sm:h-11 items-center justify-center gap-2 rounded-2xl bg-white px-5 text-xs sm:text-sm font-bold uppercase tracking-wider text-black shadow-lg shadow-black/40 transition hover:bg-zinc-200 active:scale-98"
+                    className="inline-flex h-10 sm:h-11 items-center justify-center gap-2 rounded-full bg-white px-5 text-xs font-semibold uppercase tracking-[0.14em] text-[#0a0a0a] shadow-lg shadow-black/40 transition hover:bg-zinc-100 active:scale-98"
                   >
                     <span>CREATE MY WISHLIST</span>
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               </div>
@@ -444,7 +444,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 <div className="absolute inset-0 rounded-full bg-white/5 blur-2xl pointer-events-none" />
 
                 {/* 1. Cars */}
-                <div className="absolute top-1 left-0 sm:left-1 w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl -rotate-6 transition-transform duration-300">
+                <div className="absolute top-1 left-0 sm:left-1 w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl -rotate-6 transition-transform duration-300 border border-white/10">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="https://i.pinimg.com/736x/1d/b7/3a/1db73af7fa1f70108a001ecb68ba1cfe.jpg"
@@ -455,7 +455,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 </div>
 
                 {/* 2. Mobile & Electronics (iPhone 18 Pro Max) */}
-                <div className="absolute top-0 right-0 sm:right-1 w-16 h-18 sm:w-22 sm:h-24 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl rotate-6 z-10 transition-transform duration-300">
+                <div className="absolute top-0 right-0 sm:right-1 w-16 h-18 sm:w-22 sm:h-24 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl rotate-6 z-10 transition-transform duration-300 border border-white/10">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="https://cdn.jiostore.online/v2/jmd-asp/jdprod/wrkr/products/pictures/item/free/original/apple/494833068/0/JKcV2mJVTP-1ZHtiM-g_-Apple-iPhone-18-Pro-Max-Black-494833068-i-1.jpg"
@@ -466,7 +466,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 </div>
 
                 {/* 3. Beauty & Fashion */}
-                <div className="absolute bottom-0 left-2 sm:left-4 w-12 h-12 sm:w-16 sm:h-16 rounded-xl overflow-hidden shadow-xl -rotate-3 transition-transform duration-300">
+                <div className="absolute bottom-0 left-2 sm:left-4 w-12 h-12 sm:w-16 sm:h-16 rounded-xl overflow-hidden shadow-xl -rotate-3 transition-transform duration-300 border border-white/10">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="https://i.pinimg.com/736x/6d/21/97/6d219705c3d59fb597946eef227f943a.jpg"
@@ -477,7 +477,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 </div>
 
                 {/* 4. Fourth image */}
-                <div className="absolute bottom-1 right-2 sm:right-4 w-14 h-14 sm:w-18 sm:h-18 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl rotate-12 z-20 transition-transform duration-300">
+                <div className="absolute bottom-1 right-2 sm:right-4 w-14 h-14 sm:w-18 sm:h-18 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl rotate-12 z-20 transition-transform duration-300 border border-white/10">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="https://i.pinimg.com/1200x/e0/a9/04/e0a904a8d099516a10831fb427457e6a.jpg"
@@ -490,43 +490,43 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             </div>
 
             {/* Board 2: Custom Wishlist */}
-            <div className="relative overflow-hidden rounded-[26px] md:rounded-[28px] bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-8 text-white shadow-xl border border-zinc-800/80 flex flex-col justify-between h-full group">
+            <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#0c0c0d] via-[#141416] to-[#0a0a0a] p-6 md:p-8 text-white shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] border border-white/[0.08] flex flex-col justify-between h-full group">
               {/* Subtle dark ambient glow */}
-              <div className="absolute right-0 bottom-0 -mr-16 -mb-16 h-64 w-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
-              <div className="absolute right-12 top-0 h-44 w-44 rounded-full bg-white/5 blur-2xl pointer-events-none" />
+              <div className="absolute right-0 bottom-0 -mr-16 -mb-16 h-64 w-64 rounded-full bg-white/[0.04] blur-3xl pointer-events-none" />
+              <div className="absolute right-12 top-0 h-44 w-44 rounded-full bg-white/[0.04] blur-2xl pointer-events-none" />
 
               {/* TWO-ZONE LAYOUT: LEFT ZONE */}
               <div className="relative z-10 max-w-[62%] sm:max-w-[58%] md:max-w-[56%] flex flex-col justify-between h-full space-y-5">
                 <div className="space-y-3">
                   {/* Small top label */}
-                  <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/20 px-3 py-1 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-zinc-300">
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.07] border border-white/10 px-3 py-1 text-[10px] md:text-[11px] font-medium tracking-[0.16em] uppercase text-zinc-300">
                     <Plus className="h-3 w-3 text-zinc-300" />
                     <span>CUSTOM WISHLIST</span>
                   </div>
 
                   {/* Main focal content: Unlimited ITEMS TO WISH FOR */}
                   <div>
-                    <div className="text-3xl sm:text-4xl md:text-4xl font-black tracking-tight leading-none text-white drop-shadow-sm flex items-center">
+                    <div className="font-serif text-3xl sm:text-4xl md:text-[42px] font-normal tracking-[-0.03em] leading-[1.05] text-white drop-shadow-xs flex items-center">
                       <span>Unlimited</span>
                     </div>
-                    <p className="mt-1.5 text-[11px] sm:text-xs font-black tracking-widest text-zinc-300 uppercase">
+                    <p className="mt-1.5 text-[10px] sm:text-[11px] font-medium tracking-[0.18em] text-zinc-400 uppercase">
                       ITEMS TO WISH FOR
                     </p>
                   </div>
 
                   {/* Compact visual flow: ＋ ADD  →  ↗ SHARE  →  ✦ GET */}
                   <div className="pt-1 flex flex-wrap items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px]">
-                    <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white/[0.07] border border-white/10 px-2.5 py-0.5 font-medium tracking-wide text-zinc-200">
                       <Plus className="h-3 w-3 text-zinc-300" />
                       ADD
                     </span>
-                    <span className="text-zinc-500 font-bold select-none text-[10px]">→</span>
-                    <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
+                    <span className="text-zinc-500 font-medium select-none text-[10px]">→</span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white/[0.07] border border-white/10 px-2.5 py-0.5 font-medium tracking-wide text-zinc-200">
                       <ArrowUpRight className="h-3 w-3 text-zinc-300" />
                       SHARE
                     </span>
-                    <span className="text-zinc-500 font-bold select-none text-[10px]">→</span>
-                    <span className="inline-flex items-center gap-1 rounded-lg bg-white/[0.07] border border-white/10 px-2 py-0.5 font-bold text-zinc-200">
+                    <span className="text-zinc-500 font-medium select-none text-[10px]">→</span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white/[0.07] border border-white/10 px-2.5 py-0.5 font-medium tracking-wide text-zinc-200">
                       <Sparkles className="h-3 w-3 text-zinc-300" />
                       GET
                     </span>
@@ -537,10 +537,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                 <div className="pt-2">
                   <Link
                     href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
-                    className="inline-flex h-10 sm:h-11 items-center justify-center gap-2 rounded-2xl border border-zinc-700 bg-zinc-950 px-5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-lg shadow-black/40 transition hover:border-white hover:bg-black hover:text-white active:scale-98"
+                    className="inline-flex h-10 sm:h-11 items-center justify-center gap-2 rounded-full border border-zinc-700 bg-zinc-900/80 px-5 text-xs font-semibold uppercase tracking-[0.14em] text-white shadow-lg shadow-black/40 transition hover:border-white hover:bg-black hover:text-white active:scale-98"
                   >
                     <span>ADD YOUR OWN ITEM</span>
-                    <ArrowRight className="h-4 w-4 text-zinc-300" />
+                    <ArrowRight className="h-3.5 w-3.5 text-zinc-300" />
                   </Link>
                 </div>
               </div>
@@ -601,10 +601,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         {/* Search Results Section */}
         {query ? (
           <section className="space-y-8">
-            <div className="flex items-end justify-between gap-4 border-b border-zinc-200 pb-4">
+            <div className="flex items-end justify-between gap-4 border-b border-[#e8e8e4] pb-4">
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-wider text-black">Search Results</p>
-                <h2 className="mt-1 text-2xl font-black tracking-tight text-zinc-950">
+                <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-zinc-500">Search Results</p>
+                <h2 className="mt-1 font-serif text-2xl sm:text-3xl font-normal tracking-tight text-zinc-950">
                   Results for &ldquo;{query}&rdquo;
                 </h2>
                 <p className="text-xs text-zinc-500 mt-0.5">
@@ -613,7 +613,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               </div>
               <Link
                 href="/"
-                className="text-xs font-bold text-zinc-500 hover:text-zinc-950 transition-colors"
+                className="text-xs font-medium tracking-wide text-zinc-500 hover:text-black transition-colors"
               >
                 Clear Search
               </Link>
@@ -621,29 +621,29 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
             {/* Zero results state */}
             {searchResults.totalMatches === 0 ? (
-              <div className="rounded-[28px] border border-zinc-200 bg-zinc-50/50 p-8 md:p-12 text-center max-w-xl mx-auto my-8">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-zinc-100 text-black mb-4">
-                  <Sparkles className="h-7 w-7" />
+              <div className="rounded-[28px] border border-[#e8e8e4] bg-white p-8 md:p-12 text-center max-w-xl mx-auto my-8 shadow-xs">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#f5f5f2] text-black mb-4">
+                  <Sparkles className="h-6 w-6 text-zinc-600" />
                 </div>
-                <h3 className="text-lg md:text-xl font-black text-zinc-950">
+                <h3 className="font-serif text-xl md:text-2xl font-normal text-zinc-950">
                   No results found for &ldquo;{query}&rdquo;
                 </h3>
-                <p className="mt-2 text-xs md:text-sm text-zinc-600 leading-relaxed">
+                <p className="mt-2 text-xs md:text-sm text-zinc-500 leading-relaxed font-normal">
                   We couldn&apos;t find any categories, subcategories, or items matching your search.
                   Try searching for a different keyword or create your own custom wishlist item.
                 </p>
                 <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
                   <Link
                     href="/"
-                    className="inline-flex h-10 items-center justify-center rounded-xl border border-zinc-300 bg-white px-4 text-xs font-bold text-zinc-700 transition hover:bg-zinc-100"
+                    className="inline-flex h-10 items-center justify-center rounded-full border border-[#e8e8e4] bg-white px-5 text-xs font-medium text-zinc-700 transition hover:bg-zinc-50 hover:border-black"
                   >
                     Clear Search
                   </Link>
                   <Link
                     href={session?.userId ? "/dashboard/items" : "/login"}
-                    className="inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-black px-5 text-xs font-bold text-white shadow-sm transition hover:bg-zinc-800"
+                    className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-[#0a0a0a] px-5 text-xs font-medium uppercase tracking-[0.14em] text-white shadow-xs transition hover:bg-zinc-800"
                   >
-                    <Plus className="h-4 w-4" />
+                    <Plus className="h-3.5 w-3.5" />
                     <span>Create Custom Item</span>
                   </Link>
                 </div>
@@ -654,8 +654,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             {searchResults.categories.length > 0 ? (
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-black" />
-                  <h3 className="text-sm md:text-base font-extrabold text-zinc-900 tracking-tight">
+                  <span className="h-1.5 w-1.5 rounded-full bg-black" />
+                  <h3 className="font-serif text-lg md:text-xl font-normal text-zinc-900 tracking-tight">
                     Categories ({searchResults.categories.length})
                   </h3>
                 </div>
@@ -664,24 +664,24 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     <Link
                       key={cat.id}
                       href={cat.href}
-                      className="group relative overflow-hidden rounded-2xl border border-zinc-200/90 bg-white p-4 shadow-xs transition-all hover:border-black hover:shadow-md hover:bg-zinc-50 flex flex-col items-center text-center gap-2.5"
+                      className="group relative overflow-hidden rounded-2xl border border-[#e8e8e4] bg-white p-4 shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all hover:border-black hover:shadow-md flex flex-col items-center text-center gap-2.5"
                     >
                       {cat.image ? (
                         <img
                           src={cat.image}
                           alt={cat.name}
-                          className="h-16 w-16 rounded-xl object-cover border border-zinc-200 bg-zinc-100 group-hover:scale-105 transition-transform"
+                          className="h-16 w-16 rounded-xl object-cover border border-[#e8e8e4] bg-[#f5f5f2] group-hover:scale-105 transition-transform"
                         />
                       ) : (
-                        <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-zinc-100 text-zinc-800">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-[#f5f5f2] text-zinc-800">
                           <CategoryIcon name={cat.icon} className="h-8 w-8" />
                         </div>
                       )}
                       <div>
-                        <h4 className="text-xs md:text-sm font-bold text-zinc-900 group-hover:text-black transition">
+                        <h4 className="text-xs md:text-sm font-medium text-zinc-900 group-hover:text-black transition">
                           {cat.name}
                         </h4>
-                        <span className="text-[10px] font-semibold text-zinc-400 group-hover:text-black transition">
+                        <span className="text-[10px] font-medium tracking-wide text-zinc-400 group-hover:text-black transition">
                           View Category &rarr;
                         </span>
                       </div>
@@ -695,8 +695,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             {searchResults.subcategories.length > 0 ? (
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-black" />
-                  <h3 className="text-sm md:text-base font-extrabold text-zinc-900 tracking-tight">
+                  <span className="h-1.5 w-1.5 rounded-full bg-black" />
+                  <h3 className="font-serif text-lg md:text-xl font-normal text-zinc-900 tracking-tight">
                     Subcategories ({searchResults.subcategories.length})
                   </h3>
                 </div>
@@ -705,24 +705,24 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     <Link
                       key={sub.id}
                       href={sub.href}
-                      className="group relative overflow-hidden rounded-2xl border border-zinc-200/90 bg-white p-3.5 shadow-xs transition-all hover:border-black hover:shadow-md hover:bg-zinc-50 flex flex-col items-center text-center gap-2"
+                      className="group relative overflow-hidden rounded-2xl border border-[#e8e8e4] bg-white p-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all hover:border-black hover:shadow-md flex flex-col items-center text-center gap-2"
                     >
                       {sub.image ? (
                         <img
                           src={sub.image}
                           alt={sub.name}
-                          className="h-16 w-16 rounded-xl object-cover border border-zinc-200 bg-zinc-100 group-hover:scale-105 transition-transform"
+                          className="h-16 w-16 rounded-xl object-cover border border-[#e8e8e4] bg-[#f5f5f2] group-hover:scale-105 transition-transform"
                         />
                       ) : (
-                        <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-zinc-100 text-zinc-800">
-                          <Sparkles className="h-7 w-7" />
+                        <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-[#f5f5f2] text-zinc-800">
+                          <Sparkles className="h-6 w-6 text-zinc-600" />
                         </div>
                       )}
                       <div>
-                        <h4 className="text-xs md:text-sm font-bold text-zinc-900 group-hover:text-black transition line-clamp-1">
+                        <h4 className="text-xs md:text-sm font-medium text-zinc-900 group-hover:text-black transition line-clamp-1">
                           {sub.name}
                         </h4>
-                        <span className="text-[11px] font-medium text-zinc-500">
+                        <span className="text-[11px] font-normal text-zinc-500">
                           in {sub.parentCategoryName}
                         </span>
                       </div>
@@ -736,8 +736,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             {searchResults.items.length > 0 ? (
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-black" />
-                  <h3 className="text-sm md:text-base font-extrabold text-zinc-900 tracking-tight">
+                  <span className="h-1.5 w-1.5 rounded-full bg-black" />
+                  <h3 className="font-serif text-lg md:text-xl font-normal text-zinc-900 tracking-tight">
                     Wishlist Items ({searchResults.items.length})
                   </h3>
                 </div>
@@ -765,16 +765,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
             {/* If results exist, prompt custom item creation below */}
             {searchResults.totalMatches > 0 ? (
-              <div className="rounded-[28px] border border-dashed border-zinc-300 bg-white p-6 md:p-8 text-center sm:text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="rounded-[28px] border border-[#e8e8e4] bg-white p-6 md:p-8 text-center sm:text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-xs">
                 <div>
-                  <h3 className="text-base font-bold text-zinc-950">Can&apos;t find what you&apos;re looking for?</h3>
-                  <p className="mt-1 text-xs text-zinc-600 max-w-md">
+                  <h3 className="font-serif text-lg font-normal text-zinc-950">Can&apos;t find what you&apos;re looking for?</h3>
+                  <p className="mt-1 text-xs text-zinc-500 max-w-md font-normal">
                     Create a completely custom wishlist item with your own name, image, description, and link.
                   </p>
                 </div>
                 <Link
                   href={session?.userId ? "/dashboard/items" : "/login"}
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-black px-5 text-xs font-bold text-white shadow-sm transition hover:bg-zinc-800 shrink-0"
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-[#0a0a0a] px-5 text-xs font-medium uppercase tracking-[0.14em] text-white shadow-xs transition hover:bg-zinc-800 shrink-0"
                 >
                   <span>+ Create Custom Item</span>
                 </Link>
@@ -796,7 +796,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     href={item.href}
                     className="flex group flex-col items-center text-center"
                   >
-                    <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-zinc-100 border border-zinc-200/80 shadow-sm transition-all duration-300">
+                    <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-[#f5f5f2] border border-[#e8e8e4] shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all duration-300">
                       <img
                         src={item.image}
                         alt={item.name}
@@ -805,7 +805,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         className="h-full w-full object-cover"
                       />
                     </div>
-                    <span className="mt-1.5 text-[10px] sm:text-xs font-semibold text-zinc-800 line-clamp-1 leading-tight">
+                    <span className="mt-1.5 text-[10px] sm:text-xs font-medium text-zinc-800 line-clamp-1 leading-tight">
                       {item.name}
                     </span>
                   </Link>
@@ -820,7 +820,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     href={item.href}
                     className="group flex flex-col items-center text-center"
                   >
-                    <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-200/80 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:border-zinc-400">
+                    <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-[#f5f5f2] border border-[#e8e8e4] shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-md group-hover:border-zinc-400">
                       <img
                         src={item.image}
                         alt={item.name}
@@ -829,7 +829,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <span className="mt-2 text-xs font-semibold text-zinc-800 transition-colors group-hover:text-black line-clamp-2 leading-tight">
+                    <span className="mt-2 text-xs font-medium text-zinc-800 transition-colors group-hover:text-black line-clamp-2 leading-tight">
                       {item.name}
                     </span>
                   </Link>
@@ -841,11 +841,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <div className="block md:hidden">
               <Link
                 href={session?.userId ? "/dashboard/items" : "/login?redirect=%2Fdashboard%2Fitems"}
-                className="group relative flex items-center justify-between gap-3 overflow-hidden rounded-2xl bg-zinc-950 px-3.5 py-2.5 sm:py-3 text-white border border-zinc-800 shadow-md transition active:scale-[0.99]"
+                className="group relative flex items-center justify-between gap-3 overflow-hidden rounded-2xl bg-[#0c0c0d] px-3.5 py-2.5 sm:py-3 text-white border border-white/10 shadow-md transition active:scale-[0.99]"
               >
                 {/* Ambient subtle glow */}
-                <div className="absolute right-0 top-0 -mr-6 -mt-6 h-28 w-28 rounded-full bg-white/5 blur-2xl pointer-events-none" />
-                <div className="absolute left-1/4 bottom-0 h-14 w-20 rounded-full bg-white/5 blur-xl pointer-events-none" />
+                <div className="absolute right-0 top-0 -mr-6 -mt-6 h-28 w-28 rounded-full bg-white/[0.04] blur-2xl pointer-events-none" />
+                <div className="absolute left-1/4 bottom-0 h-14 w-20 rounded-full bg-white/[0.04] blur-xl pointer-events-none" />
 
                 {/* Left zone: Icon + Intentional 2-line "CAN'T FIND IT? / ADD IT." */}
                 <div className="relative z-10 min-w-0 flex items-center gap-2.5">
@@ -853,20 +853,20 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     <Plus className="h-4 w-4" />
                   </div>
                   <div className="flex flex-col leading-tight">
-                    <span className="text-[11px] sm:text-xs font-bold tracking-tight text-white whitespace-nowrap">
+                    <span className="text-[10px] sm:text-[11px] font-medium tracking-[0.16em] uppercase text-zinc-400 whitespace-nowrap">
                       CAN&apos;T FIND IT?
                     </span>
-                    <span className="text-[11px] sm:text-xs font-black tracking-tight text-white whitespace-nowrap">
-                      ADD IT.
+                    <span className="font-serif text-sm sm:text-base font-normal tracking-tight text-white whitespace-nowrap">
+                      Add your item.
                     </span>
                   </div>
                 </div>
 
                 {/* Right zone: Supporting action "Add your own item →" */}
                 <div className="relative z-10 shrink-0">
-                  <span className="inline-flex items-center gap-1 rounded-xl bg-white/10 border border-white/20 px-2.5 py-1 text-[11px] font-semibold text-white shadow-xs group-hover:bg-white group-hover:text-black group-hover:border-white transition-colors">
-                    <span>Add your own item</span>
-                    <span className="text-zinc-400 group-hover:text-black transition-colors font-bold">→</span>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-white/[0.08] border border-white/15 px-3 py-1 text-[11px] font-medium text-white shadow-xs group-hover:bg-white group-hover:text-black group-hover:border-white transition-colors">
+                    <span>Create</span>
+                    <span className="text-zinc-400 group-hover:text-black transition-colors font-normal">→</span>
                   </span>
                 </div>
               </Link>
@@ -874,14 +874,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
             {/* 1. Trending Row */}
             <section className="space-y-3 md:space-y-4">
-              <div className="flex items-end justify-between gap-4 border-b border-zinc-200/80 pb-2.5 md:pb-3">
-                <div className="flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900">
-                    <Sparkles className="h-4 w-4" />
+              <div className="flex items-end justify-between gap-4 border-b border-[#e8e8e4] pb-2.5 md:pb-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f5f5f2] text-zinc-800 border border-[#e8e8e4]/60">
+                    <Sparkles className="h-3.5 w-3.5 text-zinc-700" />
                   </div>
                   <div>
-                    <h2 className="text-lg md:text-xl font-black tracking-tight text-zinc-950">Trending</h2>
-                    <p className="text-[11px] text-zinc-500 hidden sm:block">Most popular items added to wishlists</p>
+                    <h2 className="font-serif text-xl sm:text-2xl font-normal tracking-tight text-[#0a0a0a]">Trending</h2>
+                    <p className="text-[11px] text-zinc-500 hidden sm:block font-normal">Most popular items added to wishlists</p>
                   </div>
                 </div>
               </div>
@@ -915,17 +915,17 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             {/* 2. Category Shelves */}
             {shelfCategories.map((category) => (
               <section key={category.id} className="space-y-3 md:space-y-4">
-                <div className="flex items-center justify-between gap-4 border-b border-zinc-200/80 pb-2.5 md:pb-3">
+                <div className="flex items-center justify-between gap-4 border-b border-[#e8e8e4] pb-2.5 md:pb-3">
                   <div className="flex items-center gap-2.5">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-zinc-200/80 text-zinc-800">
-                      <CategoryIcon name={category.icon} className="h-4 w-4" />
+                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f5f5f2] text-zinc-800 border border-[#e8e8e4]/60">
+                      <CategoryIcon name={category.icon} className="h-3.5 w-3.5" />
                     </div>
                     <div>
-                      <h2 className="text-lg md:text-xl font-black tracking-tight text-zinc-950">
+                      <h2 className="font-serif text-xl sm:text-2xl font-normal tracking-tight text-[#0a0a0a]">
                         {category.name}
                       </h2>
                       {category.description ? (
-                        <p className="text-[11px] text-zinc-500 hidden sm:block">
+                        <p className="text-[11px] text-zinc-500 hidden sm:block font-normal">
                           {category.description}
                         </p>
                       ) : null}
@@ -934,10 +934,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
                   <Link
                     href={`/category/${category.slug}`}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-zinc-600 hover:text-black transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-medium tracking-wide text-zinc-600 hover:text-black transition-colors"
                   >
                     <span>View all</span>
-                    <ChevronRight className="h-3.5 w-3.5" />
+                    <ChevronRight className="h-3.5 w-3.5 text-zinc-400" />
                   </Link>
                 </div>
 

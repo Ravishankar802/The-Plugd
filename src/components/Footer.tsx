@@ -97,29 +97,29 @@ export default function Footer({ showBorder = true }: FooterProps) {
 
   return (
     <footer
-      className={`w-full bg-white text-zinc-600 mt-12 md:mt-16 font-sans ${
-        showBorder ? "border-t border-zinc-200/80" : ""
+      className={`w-full bg-[#fafaf8] text-zinc-600 mt-12 md:mt-16 font-sans ${
+        showBorder ? "border-t border-[#e8e8e4]" : ""
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-12 space-y-9 md:space-y-11">
-        {/* Three Discovery / Search Sections with Spacious Zepto-Style Layout */}
+        {/* Three Discovery / Search Sections with Spacious Layout */}
         <div className="space-y-8 md:space-y-9">
           {/* 1. Trending Searches */}
           <div className="space-y-3">
-            <h3 className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-zinc-950">
+            <h3 className="text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.16em] text-[#0a0a0a]">
               Trending Searches
             </h3>
-            <div className="flex flex-wrap items-center gap-y-2.5 sm:gap-y-3 text-xs sm:text-[13px] text-zinc-500 leading-relaxed">
+            <div className="flex flex-wrap items-center gap-y-2.5 sm:gap-y-3 text-xs sm:text-[13px] text-zinc-500 leading-relaxed font-normal">
               {TRENDING_SEARCHES.map((term, index) => (
                 <span key={term} className="inline-flex items-center">
                   <Link
                     href={`/?q=${encodeURIComponent(term)}`}
-                    className="hover:text-zinc-950 transition-colors"
+                    className="hover:text-black transition-colors"
                   >
                     {term}
                   </Link>
                   {index < TRENDING_SEARCHES.length - 1 && (
-                    <span className="mx-2.5 sm:mx-3 text-zinc-300 font-light select-none" aria-hidden="true">
+                    <span className="mx-2.5 sm:mx-3 text-[#e8e8e4] font-light select-none" aria-hidden="true">
                       |
                     </span>
                   )}
@@ -130,20 +130,20 @@ export default function Footer({ showBorder = true }: FooterProps) {
 
           {/* 2. Popular Searches */}
           <div className="space-y-3">
-            <h3 className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-zinc-950">
+            <h3 className="text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.16em] text-[#0a0a0a]">
               Popular Searches
             </h3>
-            <div className="flex flex-wrap items-center gap-y-2.5 sm:gap-y-3 text-xs sm:text-[13px] text-zinc-500 leading-relaxed">
+            <div className="flex flex-wrap items-center gap-y-2.5 sm:gap-y-3 text-xs sm:text-[13px] text-zinc-500 leading-relaxed font-normal">
               {POPULAR_SEARCHES.map((term, index) => (
                 <span key={term} className="inline-flex items-center">
                   <Link
                     href={`/?q=${encodeURIComponent(term)}`}
-                    className="hover:text-zinc-950 transition-colors"
+                    className="hover:text-black transition-colors"
                   >
                     {term}
                   </Link>
                   {index < POPULAR_SEARCHES.length - 1 && (
-                    <span className="mx-2.5 sm:mx-3 text-zinc-300 font-light select-none" aria-hidden="true">
+                    <span className="mx-2.5 sm:mx-3 text-[#e8e8e4] font-light select-none" aria-hidden="true">
                       |
                     </span>
                   )}
@@ -154,20 +154,20 @@ export default function Footer({ showBorder = true }: FooterProps) {
 
           {/* 3. Categories */}
           <div className="space-y-3">
-            <h3 className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-zinc-950">
+            <h3 className="text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.16em] text-[#0a0a0a]">
               Categories
             </h3>
-            <div className="flex flex-wrap items-center gap-y-2.5 sm:gap-y-3 text-xs sm:text-[13px] text-zinc-500 leading-relaxed">
+            <div className="flex flex-wrap items-center gap-y-2.5 sm:gap-y-3 text-xs sm:text-[13px] text-zinc-500 leading-relaxed font-normal">
               {CATEGORIES.map((cat, index) => (
                 <span key={cat.name} className="inline-flex items-center">
                   <Link
                     href={cat.href}
-                    className="hover:text-zinc-950 transition-colors"
+                    className="hover:text-black transition-colors"
                   >
                     {cat.name}
                   </Link>
                   {index < CATEGORIES.length - 1 && (
-                    <span className="mx-2.5 sm:mx-3 text-zinc-300 font-light select-none" aria-hidden="true">
+                    <span className="mx-2.5 sm:mx-3 text-[#e8e8e4] font-light select-none" aria-hidden="true">
                       |
                     </span>
                   )}
@@ -178,7 +178,7 @@ export default function Footer({ showBorder = true }: FooterProps) {
         </div>
 
         {/* Bottom Area: Plugd Branding & Navigation Links */}
-        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 border-t border-zinc-200/80">
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 border-t border-[#e8e8e4]">
           {/* LEFT SIDE: Plugd logo/text directly above "© Plugd" */}
           <div className="flex flex-col items-start gap-1">
             <Link href="/" className="group inline-flex items-center">
@@ -189,18 +189,18 @@ export default function Footer({ showBorder = true }: FooterProps) {
                 className="h-8 sm:h-9 w-auto object-contain select-none transition-transform duration-200 group-hover:scale-[1.02]"
               />
             </Link>
-            <p className="text-xs text-zinc-500 font-medium">© Plugd</p>
+            <p className="text-xs text-zinc-500 font-normal">© Plugd</p>
           </div>
 
           {/* RIGHT SIDE: ONLY Home, Privacy Policy, Terms of Use */}
-          <div className="flex flex-wrap items-center gap-6 text-xs sm:text-sm font-semibold text-zinc-600">
-            <Link href="/" className="hover:text-zinc-950 transition-colors">
+          <div className="flex flex-wrap items-center gap-6 text-xs sm:text-xs font-medium tracking-wide text-zinc-600">
+            <Link href="/" className="hover:text-black transition-colors">
               Home
             </Link>
-            <Link href="/privacy-policy" className="hover:text-zinc-950 transition-colors">
+            <Link href="/privacy-policy" className="hover:text-black transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms-of-service" className="hover:text-zinc-950 transition-colors">
+            <Link href="/terms-of-service" className="hover:text-black transition-colors">
               Terms of Use
             </Link>
           </div>

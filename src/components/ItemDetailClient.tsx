@@ -58,13 +58,13 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 text-zinc-900 flex flex-col font-sans selection:bg-black selection:text-white">
+    <div className="min-h-screen bg-[#fafaf8] text-[#0a0a0a] flex flex-col font-sans selection:bg-black selection:text-white">
       {/* Top Header */}
-      <header className="sticky top-0 z-30 border-b border-zinc-200/80 bg-white/95 backdrop-blur-md px-4 py-3 sm:px-6">
+      <header className="sticky top-0 z-30 border-b border-[#e8e8e4] bg-[#fafaf8]/95 backdrop-blur-md px-4 py-3 sm:px-6">
         <div className="mx-auto max-w-4xl flex items-center justify-between">
           <Link
             href={`/${creator.username}`}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-zinc-600 hover:text-black transition"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-600 hover:text-black transition"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to {creator.displayName}&apos;s Wishlist</span>
@@ -74,7 +74,7 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
             <button
               type="button"
               onClick={handleShare}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3 py-1.5 text-xs font-bold text-zinc-700 shadow-xs hover:border-zinc-300 hover:bg-zinc-50 transition cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#e8e8e4] bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-700 shadow-xs hover:border-black hover:bg-zinc-50 transition cursor-pointer"
             >
               {copied ? (
                 <>
@@ -103,10 +103,10 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
 
       {/* Main Item Detail Card */}
       <main className="mx-auto max-w-4xl flex-1 px-4 py-8 sm:py-12 w-full">
-        <div className="rounded-3xl border border-zinc-200/90 bg-white p-6 sm:p-10 shadow-xs grid md:grid-cols-2 gap-8 sm:gap-10">
+        <div className="rounded-[28px] border border-[#e8e8e4] bg-white p-6 sm:p-10 shadow-xs grid md:grid-cols-2 gap-8 sm:gap-10">
           {/* Left Column: Image */}
           <div className="flex flex-col justify-start">
-            <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-zinc-50 border border-zinc-100 flex items-center justify-center shadow-xs">
+            <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-[#f7f7f4] border border-[#e8e8e4] flex items-center justify-center shadow-xs">
               {item.image ? (
                 <img
                   src={item.image}
@@ -116,7 +116,7 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
               ) : (
                 <div className="flex flex-col items-center justify-center gap-2 text-zinc-400">
                   <Sparkles className="h-12 w-12 text-zinc-400" />
-                  <span className="text-xs font-semibold">Wishlist Item</span>
+                  <span className="text-xs font-medium">Wishlist Item</span>
                 </div>
               )}
             </div>
@@ -127,20 +127,20 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
             <div className="space-y-4">
               {/* Context / Category Pill */}
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 border border-zinc-200 px-3 py-1 text-xs font-bold text-zinc-900">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f5f5f2] border border-[#e8e8e4] px-3 py-1 text-xs font-medium text-zinc-900">
                   <Sparkles className="h-3 w-3 text-zinc-700" />
                   <span>On {creator.displayName}&apos;s Wishlist</span>
                 </span>
 
                 {item.category?.name && (
-                  <span className="inline-flex items-center rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-600">
+                  <span className="inline-flex items-center rounded-full bg-[#f5f5f2] px-2.5 py-1 text-xs font-normal text-zinc-600">
                     {item.category.name}
                   </span>
                 )}
               </div>
 
               {/* Item Name */}
-              <h1 className="text-2xl sm:text-3xl font-black text-zinc-900 tracking-tight leading-tight">
+              <h1 className="font-serif text-3xl sm:text-4xl font-normal text-[#0a0a0a] tracking-tight leading-tight">
                 {item.name}
               </h1>
 
@@ -153,8 +153,8 @@ export default function ItemDetailClient({ creator, item, isViewerLoggedIn = fal
 
               {/* Personal Note Callout from Wishlist Owner */}
               {item.personalNote && (
-                <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4 space-y-1">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-zinc-600">
+                <div className="rounded-2xl border border-[#e8e8e4] bg-[#f7f7f4] p-4 space-y-1">
+                  <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-zinc-500">
                     Note from {creator.displayName}
                   </p>
                   <p className="text-xs sm:text-sm text-zinc-800 leading-relaxed italic">

@@ -132,18 +132,18 @@ export default function FashionCatalogView({
   return (
     <div className="space-y-8">
       {/* 1. Category Hero Banner */}
-      <section className="relative overflow-hidden rounded-[32px] bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 p-6 md:p-10 text-white shadow-xl">
-        <div className="absolute right-0 top-0 -mr-20 -mt-20 h-72 w-72 rounded-full bg-zinc-800/30 blur-3xl pointer-events-none" />
-        <div className="absolute left-1/3 bottom-0 -mb-20 h-48 w-48 rounded-full bg-zinc-700/20 blur-2xl pointer-events-none" />
+      <section className="relative overflow-hidden rounded-[32px] bg-gradient-to-r from-[#0c0c0d] via-[#141416] to-[#0a0a0a] p-6 md:p-10 text-white shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] border border-white/[0.08]">
+        <div className="absolute right-0 top-0 -mr-20 -mt-20 h-72 w-72 rounded-full bg-white/[0.04] blur-3xl pointer-events-none" />
+        <div className="absolute left-1/3 bottom-0 -mb-20 h-48 w-48 rounded-full bg-white/[0.03] blur-2xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-zinc-800 border border-zinc-700 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-zinc-300">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.08] border border-white/15 px-3.5 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-zinc-300">
               <Shirt className="h-3.5 w-3.5" />
               Catalog • Fashion & Wardrobe
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal tracking-[-0.03em] text-white">
               FASHION<span className="text-zinc-500">.</span>
             </h1>
 
@@ -151,14 +151,14 @@ export default function FashionCatalogView({
               Streetwear staples, iconic sneakers, handcrafted Indian ethnic wear, Swiss & digital timepieces, everyday bags, and creator signature fits. Add pieces directly to your public wishlist.
             </p>
 
-            <div className="flex flex-wrap items-center gap-2 pt-1 text-xs font-semibold text-zinc-400">
-              <span className="inline-flex items-center rounded-full bg-zinc-900/80 px-3 py-1 border border-zinc-800">
+            <div className="flex flex-wrap items-center gap-2 pt-1 text-xs font-normal text-zinc-400">
+              <span className="inline-flex items-center rounded-full bg-white/[0.06] px-3 py-1 border border-white/10 text-zinc-300">
                 ✨ 16 Discovery Shelves
               </span>
-              <span className="inline-flex items-center rounded-full bg-zinc-900/80 px-3 py-1 border border-zinc-800">
+              <span className="inline-flex items-center rounded-full bg-white/[0.06] px-3 py-1 border border-white/10 text-zinc-300">
                 👟 140+ Fashion & Footwear
               </span>
-              <span className="inline-flex items-center rounded-full bg-zinc-900/80 px-3 py-1 border border-zinc-800 text-zinc-300">
+              <span className="inline-flex items-center rounded-full bg-white/[0.06] px-3 py-1 border border-white/10 text-zinc-300">
                 ⚡ 0% Commerce Markup
               </span>
             </div>
@@ -166,7 +166,7 @@ export default function FashionCatalogView({
 
           {/* Search Box on Header */}
           <div className="w-full md:w-80 lg:w-96 space-y-2 shrink-0">
-            <label className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
+            <label className="text-[10px] font-medium uppercase tracking-[0.16em] text-zinc-400">
               Search Fashion Catalog
             </label>
             <div className="relative flex items-center">
@@ -176,7 +176,7 @@ export default function FashionCatalogView({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search sneakers, hoodie, watch, saree, Levi's..."
-                className="h-12 w-full rounded-2xl border border-zinc-700 bg-zinc-900/90 pl-11 pr-10 text-xs md:text-sm font-medium text-white placeholder-zinc-500 outline-none transition focus:border-white focus:ring-2 focus:ring-white/20"
+                className="h-11 w-full rounded-full border border-white/15 bg-white/[0.06] pl-11 pr-10 text-xs md:text-sm font-normal text-white placeholder-zinc-500 outline-none transition focus:border-white focus:ring-1 focus:ring-white/20"
               />
               {searchQuery ? (
                 <button
@@ -194,7 +194,7 @@ export default function FashionCatalogView({
       </section>
 
       {/* 2. Subcategory Quick Navigation Bar */}
-      <section className="sticky top-[110px] md:top-[118px] z-20 -mx-4 px-4 md:-mx-6 md:px-6 py-2 bg-white/95 backdrop-blur-md border-y border-zinc-200/80">
+      <section className="sticky top-[110px] md:top-[118px] z-20 -mx-4 px-4 md:-mx-6 md:px-6 py-2 bg-[#fafaf8]/95 backdrop-blur-md border-y border-[#e8e8e4]">
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
           {FASHION_SUBCATEGORY_NAV_ITEMS.map((item) => {
             const Icon = item.icon;
@@ -206,9 +206,9 @@ export default function FashionCatalogView({
                   setSearchQuery("");
                   scrollToSection(item.sectionId);
                 }}
-                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-zinc-200/90 bg-white px-3.5 py-1.5 text-xs font-bold text-zinc-800 shadow-xs transition hover:border-black hover:bg-zinc-100 hover:text-zinc-950 active:scale-95"
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#e8e8e4] bg-white/80 px-3.5 py-1.5 text-xs font-medium text-zinc-700 shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition hover:border-[#0a0a0a] hover:text-[#0a0a0a] hover:bg-white active:scale-95"
               >
-                <Icon className="h-3.5 w-3.5 text-zinc-900" />
+                <Icon className="h-3.5 w-3.5 text-zinc-500" />
                 <span>{item.label}</span>
               </button>
             );

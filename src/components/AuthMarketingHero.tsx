@@ -5,10 +5,10 @@ import { Users, CheckCircle2 } from "lucide-react";
 
 export default function AuthMarketingHero() {
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-8 sm:p-12 lg:p-16 select-none overflow-hidden bg-white border-r border-zinc-100">
+    <div className="relative w-full h-full flex flex-col justify-between p-8 sm:p-12 lg:p-16 select-none overflow-hidden bg-[#fafaf8] border-r border-[#e8e8e4]">
       {/* Ambient background glow */}
-      <div className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-zinc-100/60 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-zinc-100/60 blur-3xl" />
+      <div className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-zinc-200/30 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-zinc-200/30 blur-3xl" />
 
       {/* Top Brand Logo */}
       <div className="relative z-10">
@@ -25,15 +25,15 @@ export default function AuthMarketingHero() {
       {/* Center Hero Marketing Visual */}
       <div className="relative z-10 my-auto py-8 flex flex-col items-center text-center">
         {/* Punchy Headline */}
-        <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight text-zinc-900 leading-[1.15] max-w-md">
-          Wish for what you <span className="text-black">want</span>.
+        <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal tracking-[-0.025em] text-[#0a0a0a] leading-[1.15] max-w-md">
+          Wish for what you <span className="italic font-normal">want</span>.
         </h2>
 
         {/* Stacked Overlapping Wishlist Cards (Instagram-inspired visual stack) */}
         <div className="relative mt-10 w-full max-w-[340px] h-[280px] flex items-center justify-center">
           {/* Card Left (Behind, angled -8deg) */}
-          <div className="absolute left-2 top-4 w-[190px] rounded-2xl border border-zinc-200/90 bg-white p-2.5 shadow-lg transform -rotate-8 transition-transform duration-500 hover:-rotate-10 hover:scale-105">
-            <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-zinc-50 border border-zinc-100">
+          <div className="absolute left-2 top-4 w-[190px] rounded-2xl border border-[#e8e8e4] bg-white p-2.5 shadow-md transform -rotate-8 transition-transform duration-500 hover:-rotate-10 hover:scale-105">
+            <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-[#f7f7f4] border border-[#e8e8e4]/60">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmRsKZhTjZ3TAT4aF2-mI3gYs2V0yq-PT62EJRRToT9A&s=10"
                 alt="Sony WH-1000XM5"
@@ -41,13 +41,13 @@ export default function AuthMarketingHero() {
               />
             </div>
             <div className="mt-2 text-left">
-              <p className="text-[11px] font-bold text-zinc-800 truncate">Sony WH-1000XM5</p>
+              <p className="text-[11px] font-medium text-zinc-800 truncate">Sony WH-1000XM5</p>
             </div>
           </div>
 
           {/* Card Right (Behind, angled +8deg) */}
-          <div className="absolute right-2 top-6 w-[190px] rounded-2xl border border-zinc-200/90 bg-white p-2.5 shadow-lg transform rotate-8 transition-transform duration-500 hover:rotate-10 hover:scale-105">
-            <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-zinc-50 border border-zinc-100">
+          <div className="absolute right-2 top-6 w-[190px] rounded-2xl border border-[#e8e8e4] bg-white p-2.5 shadow-md transform rotate-8 transition-transform duration-500 hover:rotate-10 hover:scale-105">
+            <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-[#f7f7f4] border border-[#e8e8e4]/60">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTetNev18RL42vUApoNBVTLRLHLVaBhcy7E2pqHCuauBB_YYlt61GJh2Z9H&s=10"
                 alt="Galaxy Buds4 Pro"
@@ -55,13 +55,13 @@ export default function AuthMarketingHero() {
               />
             </div>
             <div className="mt-2 text-left">
-              <p className="text-[11px] font-bold text-zinc-800 truncate">Galaxy Buds4 Pro</p>
+              <p className="text-[11px] font-medium text-zinc-800 truncate">Galaxy Buds4 Pro</p>
             </div>
           </div>
 
           {/* Card Center (Front & Center, prominent) */}
-          <div className="relative z-20 w-[205px] rounded-2xl border border-zinc-200/90 bg-white p-3 shadow-2xl transition-transform duration-500 hover:scale-105">
-            <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-zinc-50 border border-zinc-100">
+          <div className="relative z-20 w-[205px] rounded-2xl border border-[#e8e8e4] bg-white p-3 shadow-xl transition-transform duration-500 hover:scale-105">
+            <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-[#f7f7f4] border border-[#e8e8e4]/60">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiFWSx1IUTIylE_EDVo-tI_zIwfb5dJD2zIVz5TF8KHw&s=10"
                 alt="iPhone 18 Pro Max"
@@ -69,14 +69,14 @@ export default function AuthMarketingHero() {
               />
             </div>
             <div className="mt-2.5 text-left">
-              <p className="text-xs font-extrabold text-zinc-900 truncate">iPhone 18 Pro Max</p>
+              <p className="text-xs font-medium text-zinc-900 truncate">iPhone 18 Pro Max</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Footer Info */}
-      <div className="relative z-10 pt-4 flex items-center justify-between text-xs font-semibold text-zinc-400 border-t border-zinc-100">
+      <div className="relative z-10 pt-4 flex items-center justify-between text-xs font-normal text-zinc-500 border-t border-[#e8e8e4]">
         <span className="flex items-center gap-1.5">
           <CheckCircle2 className="h-3.5 w-3.5 text-zinc-900" />
           1,000+ items to wish for

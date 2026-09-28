@@ -345,7 +345,7 @@ export default function SignupPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white flex flex-col lg:flex-row font-sans selection:bg-black selection:text-white">
+    <main className="min-h-screen bg-[#fafaf8] flex flex-col lg:flex-row font-sans selection:bg-black selection:text-white">
       {/* LEFT COLUMN: Plugd visual / marketing area */}
       <div className="hidden lg:flex lg:w-1/2 min-h-screen sticky top-0 h-screen">
         <AuthMarketingHero />
@@ -374,12 +374,12 @@ export default function SignupPage() {
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-900 mb-3.5 border border-zinc-200">
                 <Mail className="h-5 w-5" />
               </div>
-              <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900">
+              <h1 className="font-serif text-2xl sm:text-3xl font-normal tracking-tight text-zinc-900">
                 Verify your email
               </h1>
-              <p className="mt-1.5 text-xs sm:text-sm text-zinc-500 font-medium leading-relaxed">
+              <p className="mt-1.5 text-xs sm:text-sm text-zinc-500 font-normal leading-relaxed">
                 Enter the 6-digit code sent to{" "}
-                <span className="font-bold text-zinc-900 break-all">{email}</span>.
+                <span className="font-medium text-zinc-900 break-all">{email}</span>.
               </p>
             </div>
 
@@ -467,10 +467,10 @@ export default function SignupPage() {
           <div className="w-full max-w-[460px] sm:max-w-[480px] mx-auto py-4">
             {/* Header */}
             <div className="mb-7">
-              <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900">
+              <h1 className="font-serif text-2xl sm:text-3xl font-normal tracking-tight text-zinc-900">
                 Create your Plugd account
               </h1>
-              <p className="mt-1 text-xs sm:text-sm text-zinc-500 font-medium">
+              <p className="mt-1 text-xs sm:text-sm text-zinc-500 font-normal">
                 Share what you wish for with friends, family, and supporters.
               </p>
             </div>

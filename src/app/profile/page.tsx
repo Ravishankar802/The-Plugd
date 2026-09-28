@@ -279,13 +279,13 @@ export default function EditProfilePage() {
   const publicProfileUrl = `/${originalUsername || username}`;
 
   return (
-    <main className="min-h-screen bg-zinc-50/60 py-8 px-4 font-sans selection:bg-black selection:text-white">
+    <main className="min-h-screen bg-[#fafaf8] py-8 px-4 font-sans selection:bg-black selection:text-white">
       <div className="max-w-2xl mx-auto space-y-6">
         {/* Top Header Bar */}
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-zinc-500 hover:text-black transition"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-500 hover:text-black transition"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             <span>Back to Plugd</span>
@@ -294,7 +294,7 @@ export default function EditProfilePage() {
           <div className="flex items-center gap-2">
             <Link
               href={publicProfileUrl}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3 py-1.5 text-xs font-bold text-zinc-800 shadow-xs hover:border-zinc-300 hover:bg-zinc-50 transition"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#e8e8e4] bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-800 shadow-xs hover:border-black hover:bg-zinc-50 transition"
             >
               <span>View Public Profile</span>
               <ExternalLink className="h-3.5 w-3.5 text-zinc-400" />
@@ -303,7 +303,7 @@ export default function EditProfilePage() {
             <button
               type="button"
               onClick={handleLogout}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3 py-1.5 text-xs font-bold text-red-600 shadow-xs hover:bg-red-50 hover:border-red-200 transition"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#e8e8e4] bg-white px-3.5 py-1.5 text-xs font-medium text-red-600 shadow-xs hover:bg-red-50 hover:border-red-200 transition"
             >
               <LogOut className="h-3.5 w-3.5" />
               <span>Log out</span>
@@ -312,12 +312,12 @@ export default function EditProfilePage() {
         </div>
 
         {/* Edit Form Card */}
-        <div className="rounded-2xl sm:rounded-3xl border border-zinc-200/90 bg-white p-6 sm:p-9 shadow-sm">
-          <div className="border-b border-zinc-100 pb-5 mb-6">
-            <h1 className="text-2xl font-black text-zinc-900 tracking-tight">
+        <div className="rounded-[28px] border border-[#e8e8e4] bg-white p-6 sm:p-9 shadow-xs">
+          <div className="border-b border-[#e8e8e4] pb-5 mb-6">
+            <h1 className="font-serif text-2xl sm:text-3xl font-normal text-zinc-900 tracking-tight">
               Edit Profile
             </h1>
-            <p className="mt-1 text-xs text-zinc-500">
+            <p className="mt-1 text-xs text-zinc-500 font-normal">
               Manage your public Plugd wishlist profile, avatar, and payment links.
             </p>
           </div>

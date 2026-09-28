@@ -60,19 +60,19 @@ export default function FashionCarouselSection({
   return (
     <section id={id} className="scroll-mt-32 space-y-4">
       {/* Section Header */}
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between border-b border-zinc-200/90 pb-3.5">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between border-b border-[#e8e8e4] pb-3.5">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             {badge ? (
-              <span className="inline-flex items-center rounded-lg bg-zinc-100 border border-zinc-200 px-2 py-0.5 text-[11px] font-bold text-zinc-900">
+              <span className="inline-flex items-center rounded-full bg-[#f5f5f2] border border-[#e8e8e4] px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-zinc-800">
                 {badge}
               </span>
             ) : null}
-            <h2 className="text-xl md:text-2xl font-black tracking-tight text-zinc-950">
+            <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-normal tracking-tight text-zinc-950">
               {title}
             </h2>
           </div>
-          <p className="text-xs md:text-sm text-zinc-600 font-medium max-w-2xl">
+          <p className="text-xs md:text-sm text-zinc-500 font-normal max-w-2xl">
             {subtitle}
           </p>
         </div>
@@ -83,7 +83,7 @@ export default function FashionCarouselSection({
             <button
               type="button"
               onClick={() => onSeeAll(id)}
-              className="inline-flex items-center gap-1 rounded-xl bg-zinc-100 hover:bg-black hover:text-white px-3.5 py-1.5 text-xs font-bold text-zinc-800 transition-all shadow-xs"
+              className="inline-flex items-center gap-1 rounded-full border border-[#e8e8e4] bg-white hover:bg-black hover:text-white hover:border-black px-3.5 py-1.5 text-xs font-medium text-zinc-800 transition-all shadow-xs"
             >
               <span>See All ({products.length})</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -96,7 +96,7 @@ export default function FashionCarouselSection({
               type="button"
               onClick={() => handleScroll("left")}
               disabled={!canScrollLeft}
-              className="flex h-8 w-8 items-center justify-center rounded-xl border border-zinc-200 bg-white text-zinc-700 shadow-xs transition hover:border-zinc-400 hover:bg-zinc-50 disabled:opacity-30 disabled:pointer-events-none"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-[#e8e8e4] bg-white text-zinc-700 shadow-xs transition hover:border-zinc-400 hover:bg-zinc-50 disabled:opacity-30 disabled:pointer-events-none"
               aria-label="Scroll left"
             >
               <ChevronLeft className="h-4 w-4" />
@@ -105,7 +105,7 @@ export default function FashionCarouselSection({
               type="button"
               onClick={() => handleScroll("right")}
               disabled={!canScrollRight}
-              className="flex h-8 w-8 items-center justify-center rounded-xl border border-zinc-200 bg-white text-zinc-700 shadow-xs transition hover:border-zinc-400 hover:bg-zinc-50 disabled:opacity-30 disabled:pointer-events-none"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-[#e8e8e4] bg-white text-zinc-700 shadow-xs transition hover:border-zinc-400 hover:bg-zinc-50 disabled:opacity-30 disabled:pointer-events-none"
               aria-label="Scroll right"
             >
               <ChevronRight className="h-4 w-4" />

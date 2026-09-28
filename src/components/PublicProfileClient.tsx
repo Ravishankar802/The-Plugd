@@ -136,9 +136,9 @@ export default function PublicProfileClient({
   );
 
   return (
-    <div className="min-h-screen bg-white text-zinc-900 flex flex-col font-sans selection:bg-black selection:text-white">
+    <div className="min-h-screen bg-[#fafaf8] text-[#0a0a0a] flex flex-col font-sans selection:bg-black selection:text-white">
       {/* 1. TOP HEADER BAR */}
-      <header className="sticky top-0 z-30 border-b border-zinc-200/80 bg-white/95 backdrop-blur-md px-4 py-3 sm:px-6">
+      <header className="sticky top-0 z-30 border-b border-[#e8e8e4] bg-[#fafaf8]/95 backdrop-blur-md px-4 py-3 sm:px-6">
         <div className="mx-auto max-w-4xl flex items-center justify-between">
           <Link href="/" className="inline-flex items-center gap-1 group">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -156,14 +156,14 @@ export default function PublicProfileClient({
                   <button
                     type="button"
                     onClick={() => setUnlockModalOpen(true)}
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-zinc-100 border border-zinc-200 px-3 py-1.5 text-xs font-bold text-zinc-900 hover:bg-zinc-200 transition cursor-pointer"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-[#f5f5f2] border border-[#e8e8e4] px-3.5 py-1.5 text-xs font-medium text-zinc-800 hover:bg-zinc-200 transition cursor-pointer"
                   >
                     <Lock className="h-3.5 w-3.5 text-zinc-700" />
                     <span className="hidden sm:inline">Private • Unlock Sharing</span>
                     <span className="sm:hidden">Private</span>
                   </button>
                 ) : (
-                  <span className="inline-flex items-center gap-1.5 rounded-xl bg-zinc-100 border border-zinc-200 px-2.5 py-1.5 text-xs font-bold text-zinc-900">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f5f5f2] border border-[#e8e8e4] px-3 py-1.5 text-xs font-medium text-zinc-800">
                     <Globe className="h-3.5 w-3.5 text-zinc-700" />
                     <span>Public</span>
                   </span>
@@ -171,7 +171,7 @@ export default function PublicProfileClient({
 
                 <Link
                   href="/profile"
-                  className="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3 py-1.5 text-xs font-bold text-zinc-700 shadow-xs hover:border-zinc-300 hover:bg-zinc-50 transition"
+                  className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[#e8e8e4] bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-700 shadow-xs hover:border-black hover:bg-zinc-50 transition"
                 >
                   <Edit3 className="h-3.5 w-3.5 text-zinc-400" />
                   <span>Edit Profile</span>
@@ -182,7 +182,7 @@ export default function PublicProfileClient({
             <button
               type="button"
               onClick={handleShare}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-black px-3.5 py-1.5 text-xs font-bold text-white shadow-xs hover:bg-zinc-800 transition cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-full bg-[#0a0a0a] px-4 py-1.5 text-xs font-medium tracking-wide text-white shadow-xs hover:bg-zinc-800 transition cursor-pointer"
             >
               {copied ? (
                 <>
@@ -201,11 +201,11 @@ export default function PublicProfileClient({
       </header>
 
       {/* 2. CENTERED PERSONAL PROFILE HEADER */}
-      <div className="border-b border-zinc-100 bg-white py-10 px-4">
+      <div className="border-b border-[#e8e8e4] bg-white py-10 px-4">
         <div className="mx-auto max-w-2xl flex flex-col items-center text-center">
           {/* Avatar */}
           <div className="relative mb-4">
-            <div className="h-24 w-24 sm:h-28 sm:w-28 rounded-full border-4 border-white bg-zinc-100 shadow-md overflow-hidden flex items-center justify-center">
+            <div className="h-24 w-24 sm:h-28 sm:w-28 rounded-full border-4 border-[#fafaf8] bg-[#f5f5f2] shadow-sm overflow-hidden flex items-center justify-center">
               {creator.avatarUrl ? (
                 <img
                   src={creator.avatarUrl}
@@ -213,7 +213,7 @@ export default function PublicProfileClient({
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <span className="text-3xl sm:text-4xl font-black text-zinc-900">
+                <span className="font-serif text-3xl sm:text-4xl font-normal text-zinc-900">
                   {creator.displayName.slice(0, 1).toUpperCase()}
                 </span>
               )}
@@ -221,17 +221,17 @@ export default function PublicProfileClient({
           </div>
 
           {/* Full Name & @username */}
-          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900">
+          <h1 className="font-serif text-3xl sm:text-4xl font-normal tracking-tight text-[#0a0a0a]">
             {creator.displayName}
           </h1>
-          <p className="mt-1 text-sm font-semibold text-zinc-500">
+          <p className="mt-1 text-sm font-normal text-zinc-500">
             @{creator.username}
           </p>
 
           {/* About Section */}
           {creator.bio ? (
-            <div className="mt-5 w-full max-w-lg rounded-2xl border border-zinc-200/80 bg-zinc-50/70 p-4 sm:p-5 text-left shadow-xs">
-              <h3 className="text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-1.5">
+            <div className="mt-5 w-full max-w-lg rounded-2xl border border-[#e8e8e4] bg-[#f7f7f4] p-4 sm:p-5 text-left shadow-xs">
+              <h3 className="text-[10px] font-medium uppercase tracking-[0.16em] text-zinc-500 mb-1.5">
                 About
               </h3>
               <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed whitespace-pre-line font-normal">

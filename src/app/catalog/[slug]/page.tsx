@@ -42,7 +42,7 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
   const displayImage = getProductDisplayImage(item.category.slug, item.slug, item.image);
 
   return (
-    <div className="min-h-screen bg-white text-zinc-950 flex flex-col font-sans selection:bg-black selection:text-white">
+    <div className="min-h-screen bg-[#fafaf8] text-[#0a0a0a] flex flex-col font-sans selection:bg-black selection:text-white">
       <Header
         isLoggedIn={Boolean(session?.userId)}
         username={session?.username}
@@ -51,29 +51,29 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
 
       <main className="mx-auto max-w-5xl flex-1 px-4 py-6 md:px-6 md:py-10 w-full">
         {/* Breadcrumb Navigation */}
-        <div className="mb-6 flex items-center gap-2 text-xs font-semibold text-zinc-500">
-          <Link href="/" className="hover:text-zinc-950 transition-colors">
+        <div className="mb-6 flex items-center gap-2 text-xs font-normal text-zinc-500">
+          <Link href="/" className="hover:text-black transition-colors">
             Home
           </Link>
           <ChevronRight className="h-3 w-3 text-zinc-400" />
-          <Link href={`/category/${item.category.slug}`} className="hover:text-zinc-950 transition-colors">
+          <Link href={`/category/${item.category.slug}`} className="hover:text-black transition-colors">
             {item.category.name}
           </Link>
           <ChevronRight className="h-3 w-3 text-zinc-400" />
-          <span className="text-zinc-900 font-bold">{item.name}</span>
+          <span className="text-[#0a0a0a] font-medium">{item.name}</span>
         </div>
 
-        <section className="grid gap-8 rounded-[32px] border border-zinc-200/90 bg-white p-6 shadow-sm md:grid-cols-[1fr_1fr] md:p-10">
+        <section className="grid gap-8 rounded-[32px] border border-[#e8e8e4] bg-white p-6 shadow-xs md:grid-cols-[1fr_1fr] md:p-10">
           {/* Left: Product Image */}
-          <div className="overflow-hidden rounded-[24px] bg-zinc-950 flex items-center justify-center">
+          <div className="overflow-hidden rounded-[24px] bg-[#f7f7f4] border border-[#e8e8e4] flex items-center justify-center">
             {displayImage ? (
               <img
                 src={displayImage}
                 alt={item.name}
-                className="aspect-square w-full object-cover shadow-inner"
+                className="aspect-square w-full object-cover"
               />
             ) : (
-              <div className="aspect-square w-full bg-gradient-to-br from-zinc-900 to-zinc-950 flex items-center justify-center text-zinc-600">
+              <div className="aspect-square w-full bg-gradient-to-br from-[#f7f7f4] to-[#f0f0ec] flex items-center justify-center text-zinc-400">
                 <Heart className="h-16 w-16" />
               </div>
             )}
@@ -85,32 +85,32 @@ export default async function CatalogItemPage({ params }: CatalogItemPageProps) 
               <div className="flex items-center gap-2 flex-wrap">
                 <Link
                   href={`/category/${item.category.slug}`}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 border border-zinc-200 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-zinc-900 hover:bg-zinc-200 transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-[#f5f5f2] border border-[#e8e8e4] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-zinc-800 hover:bg-zinc-200 transition-colors"
                 >
                   <CategoryIcon name={item.category.icon} className="h-3.5 w-3.5" />
                   <span>{item.category.name}</span>
                 </Link>
 
                 {item.addedCount != null && item.addedCount > 0 ? (
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 border border-zinc-200 px-3 py-1 text-xs font-semibold text-zinc-700">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f5f5f2] border border-[#e8e8e4] px-3 py-1 text-xs font-normal text-zinc-600">
                     <span aria-hidden="true">👤</span>
                     <span>{formatAddedCount(item.addedCount)} added</span>
                   </span>
                 ) : null}
               </div>
 
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight text-zinc-950">
+              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-zinc-950">
                 {item.name}
               </h1>
             </div>
 
             {/* Wishlist Action Box */}
-            <div className="space-y-3.5 rounded-[24px] bg-zinc-50 border border-zinc-200 p-5">
-              <div className="flex items-center gap-2 text-zinc-900 font-bold text-sm">
-                <Sparkles className="h-4 w-4 text-zinc-900" />
+            <div className="space-y-3.5 rounded-[24px] bg-[#f7f7f4] border border-[#e8e8e4] p-5">
+              <div className="flex items-center gap-2 text-zinc-900 font-medium text-sm">
+                <Sparkles className="h-4 w-4 text-zinc-700" />
                 <span>Standard Wishlist Item</span>
               </div>
-              <p className="text-xs text-zinc-600 leading-relaxed">
+              <p className="text-xs text-zinc-500 leading-relaxed font-normal">
                 Add this to your public wishlist. Your supporters will see it with zero ecommerce pricing confusion and can support you directly.
               </p>
               <div className="pt-1">
