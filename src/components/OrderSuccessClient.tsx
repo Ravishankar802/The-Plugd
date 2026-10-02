@@ -98,7 +98,7 @@ export default function OrderSuccessClient({ gift }: OrderSuccessClientProps) {
         {/* Success Eyebrow */}
         <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 text-xs font-mono text-emerald-300">
           <Sparkles className="h-3.5 w-3.5" />
-          <span>{moodObj.emoji} {moodObj.name} Site Unlocked</span>
+          <span>{moodObj.name} Site Unlocked</span>
         </div>
 
         {/* Core Headlines */}

@@ -8,7 +8,7 @@ import CheckoutModal from "@/components/CheckoutModal";
 import { getMoodById } from "@/lib/experiences";
 
 export default function ForHimPage() {
-  const [selectedMood, setSelectedMood] = useState("romantic");
+  const [selectedMood, setSelectedMood] = useState("after-dark");
   const [modalOpen, setModalOpen] = useState(false);
 
   const moodObj = getMoodById(selectedMood, "him");

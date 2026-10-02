@@ -84,7 +84,6 @@ export default function CheckoutModal({
         {/* Modal Header */}
         <div className="space-y-2 pr-8">
           <div className="inline-flex items-center gap-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 text-[11px] font-mono uppercase tracking-wider text-rose-300">
-            <span>{currentMood.emoji}</span>
             <span>{currentMood.name} Experience</span>
           </div>
           <h2 className="font-serif text-2xl sm:text-3xl font-normal text-white">
@@ -143,7 +142,7 @@ export default function CheckoutModal({
               </span>
             </div>
             <p className="text-xs text-zinc-400 italic">
-              &ldquo;{currentMood.summary}&rdquo;
+              &ldquo;{currentMood.tagline}&rdquo;
             </p>
           </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Sparkles } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import { Mood, MOODS_FOR_HER, MOODS_FOR_HIM } from "@/lib/experiences";
 
 interface MoodSelectorProps {
@@ -23,83 +23,85 @@ export default function MoodSelector({
       : "WHAT DO YOU WANT TO SEND HIM?";
 
   return (
-    <div className="w-full max-w-lg mx-auto space-y-4">
+    <div className="w-full max-w-lg mx-auto space-y-5">
       {/* Header */}
       <div className="space-y-1">
         <div className="flex items-center justify-between">
-          <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-rose-400">
+          <p className="text-[11px] font-mono uppercase tracking-[0.24em] text-rose-400">
             {headerTitle}
           </p>
           <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">
-            $2.99 / mini-site
+            $2.99 • Private site
           </span>
         </div>
-        <p className="font-serif text-xl sm:text-2xl text-white font-normal">
+        <p className="font-serif text-2xl sm:text-3xl text-white font-normal tracking-tight">
           Choose the mood. We&apos;ll make the site.
         </p>
       </div>
 
-      {/* Mood Grid */}
-      <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
-        {moods.map((mood) => {
+      {/* Sexy High-End Editorial Mood Grid */}
+      <div className="grid grid-cols-2 gap-3 sm:gap-3.5">
+        {moods.map((mood, idx) => {
           const isSelected = selectedMood === mood.id;
           return (
             <button
               key={mood.id}
               type="button"
               onClick={() => onSelectMood(mood.id)}
-              className={`group relative flex flex-col justify-between rounded-2xl p-4 sm:p-4.5 text-left transition-all duration-200 border ${
+              className={`group relative overflow-hidden rounded-2xl p-4 sm:p-5 text-left transition-all duration-300 border ${
                 isSelected
-                  ? "border-rose-500/80 bg-rose-500/10 shadow-[0_0_25px_rgba(244,63,94,0.18)]"
-                  : "border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/[0.06]"
+                  ? "border-rose-500 bg-gradient-to-br from-rose-950/40 via-black to-[#09090c] shadow-[0_0_35px_rgba(244,63,94,0.22)] scale-[1.01]"
+                  : "border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent hover:border-white/25 hover:bg-white/[0.06]"
               } active:scale-[0.98]`}
             >
-              <div className="flex items-start justify-between">
-                <span className="text-2xl sm:text-3xl transition-transform group-hover:scale-110 duration-200">
-                  {mood.emoji}
-                </span>
+              {/* Subtle Ambient Radial Highlight on Selected */}
+              {isSelected && (
                 <div
-                  className={`h-4 w-4 rounded-full border flex items-center justify-center transition-colors ${
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -top-8 -right-8 h-28 w-28 rounded-full bg-rose-500/25 blur-2xl"
+                />
+              )}
+
+              <div className="relative z-10 flex items-start justify-between">
+                <span className="text-[10px] font-mono tracking-widest uppercase text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                  0{idx + 1}
+                </span>
+                <span
+                  className={`h-2 w-2 rounded-full transition-all duration-300 ${
                     isSelected
-                      ? "border-rose-500 bg-rose-500 text-white"
-                      : "border-zinc-700 group-hover:border-zinc-500"
+                      ? "bg-rose-500 shadow-[0_0_10px_#f43f5e] scale-125"
+                      : "bg-zinc-700 group-hover:bg-zinc-500"
                   }`}
-                >
-                  {isSelected && <Check className="h-2.5 w-2.5 stroke-[3]" />}
-                </div>
+                />
               </div>
 
-              <div className="mt-4 sm:mt-5 space-y-0.5">
-                <span
-                  className={`block text-xs sm:text-sm font-semibold tracking-wider uppercase font-mono ${
-                    isSelected ? "text-white" : "text-zinc-200"
+              {/* Bold Editorial Typography */}
+              <div className="relative z-10 mt-6 sm:mt-8 space-y-1">
+                <h3
+                  className={`text-sm sm:text-base font-serif font-normal tracking-wide uppercase leading-tight transition-colors duration-200 ${
+                    isSelected ? "text-white" : "text-zinc-200 group-hover:text-white"
                   }`}
                 >
                   {mood.name}
-                </span>
-                <span className="block text-[11px] sm:text-xs text-zinc-400 font-light leading-snug">
+                </h3>
+                <p className="text-[11px] sm:text-xs text-zinc-400 font-light leading-snug line-clamp-2">
                   {mood.tagline}
-                </span>
+                </p>
               </div>
             </button>
           );
         })}
       </div>
 
-      {/* Live Concept Teaser Box */}
-      <div className="rounded-2xl border border-white/10 bg-gradient-to-r from-white/[0.04] to-transparent p-4 flex items-start gap-3 backdrop-blur-sm">
-        <div className="p-2 rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20 shrink-0 mt-0.5">
-          <Sparkles className="h-4 w-4" />
-        </div>
+      {/* Dynamic Vibe Teaser Bar */}
+      <div className="rounded-2xl border border-rose-500/20 bg-gradient-to-r from-rose-950/30 via-black to-black p-4 flex items-center justify-between backdrop-blur-md">
         <div className="space-y-0.5 text-left">
-          <p className="text-xs font-medium text-white flex items-center gap-1.5">
-            <span>The {currentMood.name} experience</span>
-            <span className="text-[10px] font-mono text-zinc-500 uppercase">
-              • Pre-built
-            </span>
+          <p className="text-xs font-medium text-rose-200 flex items-center gap-1.5 font-mono uppercase tracking-wider text-[11px]">
+            <Sparkles className="h-3 w-3 text-rose-400" />
+            <span>{currentMood.name} EXPERIENCE</span>
           </p>
-          <p className="text-[11px] text-zinc-400 leading-relaxed font-light">
-            {currentMood.summary}
+          <p className="text-xs text-zinc-400 font-light">
+            {currentMood.vibe}
           </p>
         </div>
       </div>
