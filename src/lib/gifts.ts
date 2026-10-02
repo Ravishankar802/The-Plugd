@@ -8,6 +8,7 @@ export function generateGiftSlug(): string {
 
 export interface CreateGiftInput {
   target: "her" | "him";
+  mood?: string;
   senderName?: string;
   senderEmail?: string;
   recipientName?: string;
@@ -30,6 +31,7 @@ export async function createGift(input: CreateGiftInput) {
     data: {
       slug,
       target: input.target,
+      mood: input.mood || "romantic",
       senderName: input.senderName?.trim() || null,
       senderEmail: input.senderEmail?.trim() || null,
       recipientName: input.recipientName?.trim() || null,

@@ -154,6 +154,7 @@ model Gift {
   id             String    @id @default(cuid())
   slug           String    @unique
   target         String    // "her" | "him"
+  mood           String    @default("romantic")
   senderName     String?
   senderEmail    String?
   recipientName  String?

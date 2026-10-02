@@ -3,11 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Check, Copy, Share2, MessageCircle, ExternalLink, Sparkles } from "lucide-react";
+import { getMoodById } from "@/lib/experiences";
 
 interface OrderSuccessClientProps {
   gift: {
     slug: string;
     target: string;
+    mood?: string;
     recipientName: string | null;
     senderName: string | null;
     customNote: string | null;
@@ -29,11 +31,13 @@ export default function OrderSuccessClient({ gift }: OrderSuccessClientProps) {
   }, []);
 
   const shareUrl = `${origin}/g/${gift.slug}`;
-  const targetLabel = gift.target === "her" ? "her" : "him";
-  const defaultMessage =
-    gift.target === "her"
-      ? "Open this on your phone: " + shareUrl
-      : "Open this right now: " + shareUrl;
+  const isHer = gift.target === "her";
+  const targetLabel = isHer ? "her" : "him";
+  const moodObj = getMoodById(gift.mood || "romantic", isHer ? "her" : "him");
+
+  const defaultMessage = isHer
+    ? `I made you a tiny website. Open this on your phone: ${shareUrl}`
+    : `I made you a tiny website. Open this on your phone right now: ${shareUrl}`;
 
   async function handleCopy() {
     try {
@@ -41,7 +45,6 @@ export default function OrderSuccessClient({ gift }: OrderSuccessClientProps) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
     } catch {
-      // Fallback
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
     }
@@ -51,12 +54,12 @@ export default function OrderSuccessClient({ gift }: OrderSuccessClientProps) {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "A tiny thing for you",
+          title: "I made you a website",
           text: defaultMessage,
           url: shareUrl,
         });
-      } catch (err) {
-        // User cancelled or share failed
+      } catch {
+        // User cancelled
       }
     } else {
       handleCopy();
@@ -86,7 +89,7 @@ export default function OrderSuccessClient({ gift }: OrderSuccessClientProps) {
         </Link>
         <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
-          Ready to send
+          Site Live
         </span>
       </header>
 
@@ -95,31 +98,31 @@ export default function OrderSuccessClient({ gift }: OrderSuccessClientProps) {
         {/* Success Eyebrow */}
         <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 text-xs font-mono text-emerald-300">
           <Sparkles className="h-3.5 w-3.5" />
-          <span>Payment Complete</span>
+          <span>{moodObj.emoji} {moodObj.name} Site Unlocked</span>
         </div>
 
         {/* Core Headlines */}
         <div className="space-y-2">
           <h1 className="font-serif text-4xl sm:text-5xl font-normal text-white tracking-tight">
-            Okay. It&apos;s yours.
+            Your site is ready.
           </h1>
           <p className="text-zinc-400 text-sm sm:text-base font-light">
-            Here&apos;s your link.
+            Send it to {isHer ? "her" : "him"}.
           </p>
         </div>
 
         {/* Link Card Box */}
         <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-md space-y-3.5 text-left shadow-2xl">
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-500">
-              Private Experience URL
+            <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-400 font-semibold">
+              YOUR PRIVATE LINK
             </span>
-            <span className="text-[11px] font-mono text-zinc-400">
-              For {gift.recipientName || targetLabel}
+            <span className="text-[11px] font-mono text-zinc-500">
+              {gift.recipientName ? `For ${gift.recipientName}` : "Ready to open"}
             </span>
           </div>
 
-          <div className="flex items-center justify-between gap-2 rounded-xl bg-black/40 border border-white/10 px-3.5 py-3">
+          <div className="flex items-center justify-between gap-2 rounded-xl bg-black/50 border border-white/10 px-3.5 py-3">
             <span className="font-mono text-xs text-rose-300 truncate select-all">
               {shareUrl}
             </span>
@@ -142,7 +145,7 @@ export default function OrderSuccessClient({ gift }: OrderSuccessClientProps) {
             ) : (
               <>
                 <Copy className="h-4 w-4" />
-                <span>Copy Link</span>
+                <span>COPY LINK</span>
               </>
             )}
           </button>
@@ -182,10 +185,10 @@ export default function OrderSuccessClient({ gift }: OrderSuccessClientProps) {
         {/* The Instructions */}
         <div className="space-y-1 pt-2">
           <p className="font-serif text-2xl text-white font-normal">
-            Now send it to them.
+            {isHer ? "Send it to her." : "Send it to him."}
           </p>
           <p className="text-xs text-zinc-400 font-light">
-            Don&apos;t explain anything. Just drop the link and let them open it.
+            Don&apos;t over-explain. Just send the link and let {targetLabel} open it.
           </p>
         </div>
 
@@ -196,7 +199,7 @@ export default function OrderSuccessClient({ gift }: OrderSuccessClientProps) {
             target="_blank"
             className="inline-flex items-center gap-1.5 text-xs font-mono text-zinc-500 hover:text-zinc-300 transition"
           >
-            <span>Preview what {targetLabel} will see</span>
+            <span>Preview the experience</span>
             <ExternalLink className="h-3 w-3" />
           </Link>
         </div>
@@ -205,7 +208,7 @@ export default function OrderSuccessClient({ gift }: OrderSuccessClientProps) {
       {/* Footer */}
       <footer className="relative z-10 w-full text-center pb-2">
         <p className="text-xs text-zinc-500 font-mono">
-          BUY → SEND → WATCH WHAT HAPPENS
+          One tiny thing. Send it to someone you like.
         </p>
       </footer>
     </div>

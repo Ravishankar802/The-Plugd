@@ -8,6 +8,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const target = body.target === "him" ? "him" : "her";
+    const mood = String(body.mood || "romantic").toLowerCase();
     const senderName = body.senderName || "";
     const senderEmail = body.senderEmail || "";
     const recipientName = body.recipientName || "";
@@ -23,6 +24,7 @@ export async function POST(req: Request) {
       try {
         const gift = await createGift({
           target,
+          mood,
           senderName,
           senderEmail,
           recipientName,
@@ -67,6 +69,7 @@ export async function POST(req: Request) {
     // Direct Instant Flow (for test mode, demo mode, or when Dodo keys aren't set)
     const gift = await createGift({
       target,
+      mood,
       senderName,
       senderEmail,
       recipientName,
