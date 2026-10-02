@@ -1,115 +1,61 @@
 import Link from "next/link";
-import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
 
 export default function TermsOfService() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-foreground/10 flex flex-col font-['Georgia',_serif]">
-      <Link href="/" className="relative md:fixed top-0 md:top-4 left-0 md:left-6 z-50 flex justify-center md:inline-block mx-auto md:mx-0 pt-8 md:pt-0 hover:opacity-80 transition-opacity">
-        <Image src="/logo.png" alt="Plugd" width={80} height={80} className="cursor-pointer" />
-      </Link>
-      <div className="max-w-[840px] mx-auto px-6 pt-16 flex flex-col items-center flex-1">
-        
-        {/* Page Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <h1 className="text-[2.5rem] font-bold tracking-tight mb-2 text-foreground">Terms of Service</h1>
-          <p className="text-muted text-[1rem] font-medium tracking-tight">Last updated: May 17, 2026</p>
+    <main className="min-h-screen bg-[#09090b] text-[#f4f4f5] px-6 py-12 flex flex-col font-sans">
+      <div className="max-w-2xl mx-auto w-full space-y-8">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-xs font-mono text-zinc-400 hover:text-white transition"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          <span>Home</span>
+        </Link>
+
+        <div className="space-y-2">
+          <h1 className="font-serif text-3xl sm:text-4xl text-white font-normal">
+            Terms of Service
+          </h1>
+          <p className="text-xs font-mono text-zinc-500">
+            Last updated: October 2026
+          </p>
         </div>
 
-        {/* Content Sections */}
-        <div className="w-full space-y-10">
-          
-          <Section 
-            title="1. Introduction" 
-            content="Welcome to Plugd. These Terms govern your use of theplugd.com, a referral platform where promoters earn by sharing their referral link. By using Plugd, you agree to these Terms." 
-          />
+        <div className="space-y-6 text-sm text-zinc-400 font-light leading-relaxed">
+          <section className="space-y-2">
+            <h2 className="text-base font-medium text-white">1. Service Description</h2>
+            <p>
+              Plugd provides tiny, digital interactive gift experiences designed to be sent to romantic partners via unique private links.
+            </p>
+          </section>
 
-           <Section 
-            title="2. What Plugd Does" 
-            content="Plugd is a referral program. Promoters pay a one-time entry fee depending on their chosen plan tier (Starter: $4, Pro: $9, Max: $19) to join, receive a unique referral link, and earn referral commissions based on their plan tier for every new person who joins through that link. Plugd does not guarantee any specific earnings." 
-          />
+          <section className="space-y-2">
+            <h2 className="text-base font-medium text-white">2. Purchases and Delivery</h2>
+            <p>
+              All purchases are one-time payments ($2.99 USD) granting an immediate unique private link. Links remain active and accessible on mobile and desktop web browsers.
+            </p>
+          </section>
 
-          <Section 
-            title="3. Joining Fee" 
-            content="Joining Plugd as a promoter requires a one-time payment based on your chosen plan tier (Starter: $4, Pro: $9, Max: $19) processed via Dodo Payments. This fee is non-refundable once your account is activated." 
-          />
+          <section className="space-y-2">
+            <h2 className="text-base font-medium text-white">3. Acceptable Use</h2>
+            <p>
+              Plugd is intended for playful, consensual, and intimate interaction between partners. Users agree not to use the service for harassment, abusive content, or illegal communications.
+            </p>
+          </section>
 
-          <Section 
-            title="4. Earning Referrals" 
-            content="You earn a commission for each person who joins Plugd through your unique referral link and completes their plan payment. The commission you earn is determined by your promoter plan tier: $2 for Starter, $5 for Pro, and $10 for Max. Earnings are tracked on your Dashboard and paid out twice a month via PayPal or bank transfer, whichever you have set in your profile. The minimum withdrawal amount is $50." 
-          />
+          <section className="space-y-2">
+            <h2 className="text-base font-medium text-white">4. Refunds and Contact</h2>
+            <p>
+              Due to the immediate digital delivery nature of the experience link, purchases are generally final. If you encounter any technical defect, reach out to support@theplugd.com.
+            </p>
+          </section>
+        </div>
 
-          <Section 
-            title="5. Payout Eligibility" 
-            content="To receive a payout, your account must have a valid payout method (PayPal or bank transfer) saved in your profile. Plugd reserves the right to withhold payouts if fraudulent activity is suspected." 
-          />
-
-          <Section 
-            title="6. Simulated Leaderboard and Projections" 
-            content='To demonstrate platform capability and gamify promoter participation, the "Top Promoters" board, average daily earning stats, total platform payout metrics, charts, promoter profiles, and stats referenced in our educational resources may display simulated, virtual, or illustrative data. These profiles and figures represent simulated promotional performance based on mathematical referral growth models and do not guarantee or represent actual live earnings of specific historical individuals. Actual earnings of registered users are tracked separately on their respective Dashboards and paid out strictly based on verified conversions.'
-          />
-
-          <Section 
-            title="7. Prohibited Conduct" 
-            content={
-              <div className="space-y-4">
-                <p>You may not:</p>
-                <ul className="list-disc pl-6 space-y-2">
-                  <li>Use bots, scripts, or fake accounts to generate referrals</li>
-                  <li>Self-refer or manipulate the referral system in any way</li>
-                  <li>Share false or misleading information to get people to join</li>
-                  <li>Attempt to abuse, reverse-engineer, or exploit the platform</li>
-                </ul>
-                <p>Violations will result in permanent account removal and forfeiture of any pending earnings.</p>
-              </div>
-            }
-          />
-
-          <Section 
-            title="8. User Responsibility" 
-            content="You are responsible for the accuracy of your payout details. Plugd is not liable for failed payouts resulting from incorrect information provided by you." 
-          />
-
-          <Section 
-            title="9. Intellectual Property" 
-            content="All branding, design, and content of Plugd are protected by intellectual property laws. You may not copy, reproduce, or redistribute any part of Plugd without permission." 
-          />
-
-          <Section 
-            title="10. Limitation of Liability" 
-            content='Plugd is provided on an "as is" basis. We are not liable for any indirect, incidental, or consequential damages arising from your use of the platform.' 
-          />
-
-          <Section 
-            title="11. Changes to These Terms" 
-            content="We may update these Terms at any time. Continued use of Plugd after updates constitutes acceptance of the revised Terms." 
-          />
-
-          <Section 
-            title="12. Contact" 
-            content={
-              <span>
-                For any questions, contact us at{" "}
-                <a href="mailto:support@theplugd.com" className="text-foreground hover:underline">
-                  support@theplugd.com
-                </a>
-                .
-              </span>
-            }
-          />
-
+        <div className="pt-8 border-t border-white/10 text-xs font-mono text-zinc-500">
+          Plugd — One tiny thing. Send it to someone you like.
         </div>
       </div>
     </main>
-  );
-}
-
-function Section({ title, content }: { title: string; content: React.ReactNode }) {
-  return (
-    <div className="bg-card border border-border rounded-[12px] p-10 shadow-sm">
-      <h2 className="text-[1.5rem] font-bold text-foreground mb-6">{title}</h2>
-      <div className="text-muted text-[1.125rem] leading-[1.8] font-medium">
-        {content}
-      </div>
-    </div>
   );
 }

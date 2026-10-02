@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Cormorant_Garamond, Baloo_2 } from "next/font/google";
+import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -16,52 +16,34 @@ const geistMono = Geist_Mono({
 const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
-});
-
-const baloo2 = Baloo_2({
-  variable: "--font-logo",
-  subsets: ["latin"],
-  weight: ["700", "800"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://theplugd.com"),
-  title: "Plugd — Wishlist Platform",
-  description: "Create a page. Add the things you're working toward. Share it with your people. 0% Plugd platform fee.",
+  title: "Plugd — One tiny thing. Send it to someone you like.",
+  description: "A tiny digital experience you send to your partner. $2.99. Buy it, get your link, send it to them.",
   openGraph: {
-    title: "Plugd — Wishlist Platform",
-    description: "Create a page. Add the things you're working toward. Share it with your people. 0% Plugd platform fee.",
+    title: "Plugd — One tiny thing. Send it to someone you like.",
+    description: "A tiny digital experience you send to your partner. $2.99. Buy it, get your link, send it to them.",
     url: "https://theplugd.com",
     siteName: "Plugd",
-    images: [
-      {
-        url: "https://theplugd.com/og-v9.png",
-        width: 1200,
-        height: 630,
-      }
-    ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Plugd — Wishlist Platform",
-    description: "Create a page. Add the things you're working toward. Share it with your people. 0% Plugd platform fee.",
-    images: ["https://theplugd.com/og-v9.png"],
+    title: "Plugd — One tiny thing. Send it to someone you like.",
+    description: "A tiny digital experience you send to your partner.",
   },
   icons: {
     icon: [
-      { url: '/favicon.png', sizes: '32x32' },
-      { url: '/favicon.png', sizes: '16x16' },
-      { url: '/icon.png' },
+      { url: "/favicon.png", sizes: "32x32" },
+      { url: "/icon.png" },
     ],
-    apple: '/favicon.png',
-    shortcut: '/favicon.ico',
+    shortcut: "/favicon.ico",
   },
 };
-
-import { ThemeProvider } from "@/components/ThemeProvider";
 
 export default function RootLayout({
   children,
@@ -69,19 +51,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} ${baloo2.variable} min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background transition-colors duration-300`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="flex flex-col min-h-screen">
-            {children}
-          </div>
-          <Analytics />
-        </ThemeProvider>
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} min-h-screen bg-[#09090b] text-[#f4f4f5] selection:bg-rose-500 selection:text-white antialiased`}
+      >
+        <div className="flex min-h-screen flex-col">
+          {children}
+        </div>
+        <Analytics />
       </body>
     </html>
   );

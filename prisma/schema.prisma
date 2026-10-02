@@ -149,3 +149,23 @@ enum WishlistItemType {
   CATALOG
   CUSTOM
 }
+
+model Gift {
+  id             String    @id @default(cuid())
+  slug           String    @unique
+  target         String    // "her" | "him"
+  senderName     String?
+  senderEmail    String?
+  recipientName  String?
+  customNote     String?
+  status         String    @default("PAID") // "PENDING" | "PAID"
+  amount         Float     @default(2.99)
+  currency       String    @default("USD")
+  paymentId      String?
+  openedAt       DateTime?
+  responseChoice String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([slug])
+}

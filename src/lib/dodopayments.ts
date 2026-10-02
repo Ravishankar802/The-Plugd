@@ -10,10 +10,7 @@ export const dodoClient = new DodoPayments({
   environment: mode === "live_mode" ? "live_mode" : "test_mode",
 });
 
-export const DODO_PRODUCT_IDS = {
-  MONTHLY: process.env.DODO_PAYMENTS_PRODUCT_ID_MONTHLY || "pdt_0NoPsJWJ2Gwuz7Ir2e1U7",
-  YEARLY: process.env.DODO_PAYMENTS_PRODUCT_ID_YEARLY || "pdt_0NoPsdHdBCOWG0I49LJDt",
-};
+export const DODO_GIFT_PRODUCT_ID = process.env.DODO_PAYMENTS_PRODUCT_ID || "";
 
 export function isDodoConfigured(): boolean {
   return Boolean(process.env.DODO_PAYMENTS_API_KEY && process.env.DODO_PAYMENTS_API_KEY.length > 5);
