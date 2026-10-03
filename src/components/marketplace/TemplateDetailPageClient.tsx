@@ -16,13 +16,6 @@ export default function TemplateDetailPageClient({
 }: TemplateDetailPageClientProps) {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const targetLabel =
-    template.target === "her"
-      ? "For Her"
-      : template.target === "him"
-      ? "For Him"
-      : "For Anyone";
-
   return (
     <div className="relative min-h-screen bg-[#09090b] text-[#f4f4f5] selection:bg-rose-500 selection:text-white">
       {/* Background ambient lighting */}
@@ -66,9 +59,6 @@ export default function TemplateDetailPageClient({
             <div className="flex items-center gap-2 flex-wrap">
               <span className="rounded-full bg-rose-500/10 border border-rose-500/20 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-rose-300">
                 {template.mood}
-              </span>
-              <span className="rounded-full bg-white/[0.04] border border-white/10 px-3 py-1 font-mono text-[11px] text-zinc-300">
-                {targetLabel}
               </span>
               <span className="rounded-full bg-white/[0.04] border border-white/10 px-3 py-1 font-mono text-[11px] text-zinc-300">
                 {template.style} Style

@@ -131,7 +131,7 @@ export default function CheckoutModal({
             <span>{template.name} Template</span>
           </div>
           <h2 className="font-serif text-2xl sm:text-3xl font-normal text-white">
-            {isOwned ? `You own ${template.name}` : `Unlock for ${targetTitle}`}
+            {isOwned ? `You own ${template.name}` : `Unlock ${template.name}`}
           </h2>
           <p className="text-xs text-zinc-400 font-light">
             {isOwned
@@ -180,14 +180,14 @@ export default function CheckoutModal({
 
           <div>
             <label className="block text-[11px] font-mono uppercase tracking-widest text-zinc-400 mb-1.5">
-              {target === "her" ? "Her name or nickname" : "His name or nickname"}{" "}
+              Recipient&apos;s name or nickname{" "}
               <span className="text-zinc-600">(optional)</span>
             </label>
             <input
               type="text"
               value={recipientName}
               onChange={(e) => setRecipientName(e.target.value)}
-              placeholder={target === "her" ? "e.g. Maya, babe" : "e.g. Leo, babe"}
+              placeholder="e.g. babe"
               maxLength={40}
               className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm text-white placeholder-zinc-600 focus:border-rose-500/60 focus:outline-none focus:ring-1 focus:ring-rose-500/50"
             />

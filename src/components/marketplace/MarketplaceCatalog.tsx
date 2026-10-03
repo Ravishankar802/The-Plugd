@@ -1,62 +1,77 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Link from "next/link";
-import {
-  Sparkles,
-  ArrowRight,
-  Filter,
-  Search,
-  X,
-  ChevronDown,
-  Flame,
-  Star,
-  Clock,
-  Heart,
-} from "lucide-react";
+import { ChevronDown, Check, X } from "lucide-react";
 import {
   Template,
   TEMPLATES,
   MOOD_CATEGORIES,
   MoodCategory,
   TemplateStyle,
-  TemplateAudience,
 } from "@/lib/templates";
 import TemplateCard from "./TemplateCard";
 import TemplateDetailModal from "./TemplateDetailModal";
 import CheckoutModal from "@/components/CheckoutModal";
 
 interface MarketplaceCatalogProps {
+  searchQuery: string;
+  onSearchChange: (query: string) => void;
   onTemplateSelect?: (template: Template) => void;
 }
 
-export default function MarketplaceCatalog({ onTemplateSelect }: MarketplaceCatalogProps) {
-  // Filter & Sort States
+const STYLE_OPTIONS: { id: string; label: string }[] = [
+  { id: "all", label: "All Styles" },
+  { id: "minimal", label: "Minimal" },
+  { id: "cinematic", label: "Cinematic" },
+  { id: "editorial", label: "Editorial" },
+  { id: "experimental", label: "Experimental" },
+  { id: "animated", label: "Animated" },
+  { id: "dark", label: "Dark" },
+  { id: "soft", label: "Soft" },
+  { id: "playful", label: "Playful" },
+];
+
+const PRICE_OPTIONS = [
+  { id: "all", label: "All Prices" },
+  { id: "2.99", label: "$2.99" },
+  { id: "4.99", label: "$4.99" },
+  { id: "9.99", label: "$9.99" },
+];
+
+export default function MarketplaceCatalog({
+  searchQuery,
+  onSearchChange,
+  onTemplateSelect,
+}: MarketplaceCatalogProps) {
+  // Filter States
   const [activeMood, setActiveMood] = useState<MoodCategory>("ALL");
   const [activeSort, setActiveSort] = useState<"trending" | "best" | "recent">("trending");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [priceFilter, setPriceFilter] = useState<"all" | "2.99" | "free">("all");
-  const [audienceFilter, setAudienceFilter] = useState<"all" | "her" | "him">("all");
+  const [priceFilter, setPriceFilter] = useState<string>("all");
   const [styleFilter, setStyleFilter] = useState<string>("all");
 
   // Modals state
   const [previewTemplate, setPreviewTemplate] = useState<Template | null>(null);
   const [checkoutTemplate, setCheckoutTemplate] = useState<Template | null>(null);
 
-  // Compute category counts
-  const moodCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    counts["ALL"] = TEMPLATES.length;
-    TEMPLATES.forEach((t) => {
-      counts[t.mood] = (counts[t.mood] || 0) + 1;
-    });
-    return counts;
-  }, []);
-
-  // Featured templates (top 3)
-  const featuredTemplates = useMemo(() => {
-    return TEMPLATES.filter((t) => t.featured).slice(0, 3);
-  }, []);
+  // Grouped mood category columns for the Framer-like multi-column category presentation
+  const moodColumns = useMemo(() => [
+    {
+      title: "Intimate",
+      items: ["ROMANTIC", "AFTER DARK", "OBSESSED", "COME OVER"] as MoodCategory[],
+    },
+    {
+      title: "Playful",
+      items: ["FLIRTY", "TEASING", "CHAOTIC", "JUST BECAUSE"] as MoodCategory[],
+    },
+    {
+      title: "Connection",
+      items: ["MISS YOU", "LONG DISTANCE", "SOFT", "APOLOGY"] as MoodCategory[],
+    },
+    {
+      title: "Occasions",
+      items: ["DATE NIGHT", "BIRTHDAY", "ANNIVERSARY"] as MoodCategory[],
+    },
+  ], []);
 
   // Filtered & Sorted templates
   const filteredTemplates = useMemo(() => {
@@ -65,23 +80,16 @@ export default function MarketplaceCatalog({ onTemplateSelect }: MarketplaceCata
       if (activeMood !== "ALL" && t.mood !== activeMood) {
         return false;
       }
-      // Audience filter
-      if (audienceFilter === "her" && t.target !== "her" && t.target !== "both") {
-        return false;
-      }
-      if (audienceFilter === "him" && t.target !== "him" && t.target !== "both") {
-        return false;
-      }
       // Style filter
       if (styleFilter !== "all" && t.style.toLowerCase() !== styleFilter.toLowerCase()) {
         return false;
       }
       // Price filter
-      if (priceFilter === "free" && t.price > 0) {
-        return false;
-      }
-      if (priceFilter === "2.99" && t.price !== 2.99) {
-        return false;
+      if (priceFilter !== "all") {
+        const targetPrice = parseFloat(priceFilter);
+        if (Math.abs(t.price - targetPrice) > 0.01) {
+          return false;
+        }
       }
       // Search query
       if (searchQuery.trim()) {
@@ -91,7 +99,8 @@ export default function MarketplaceCatalog({ onTemplateSelect }: MarketplaceCata
         const matchMood = t.mood.toLowerCase().includes(query);
         const matchStyle = t.style.toLowerCase().includes(query);
         const matchDesc = t.description.toLowerCase().includes(query);
-        if (!matchName && !matchTagline && !matchMood && !matchStyle && !matchDesc) {
+        const matchCreator = t.creator.toLowerCase().includes(query);
+        if (!matchName && !matchTagline && !matchMood && !matchStyle && !matchDesc && !matchCreator) {
           return false;
         }
       }
@@ -108,16 +117,7 @@ export default function MarketplaceCatalog({ onTemplateSelect }: MarketplaceCata
       }
       return 0;
     });
-  }, [activeMood, audienceFilter, styleFilter, priceFilter, searchQuery, activeSort]);
-
-  // For Her & For Him dedicated sub-collections
-  const forHerTemplates = useMemo(() => {
-    return TEMPLATES.filter((t) => t.target === "her" || t.target === "both").slice(0, 4);
-  }, []);
-
-  const forHimTemplates = useMemo(() => {
-    return TEMPLATES.filter((t) => t.target === "him" || t.target === "both").slice(0, 4);
-  }, []);
+  }, [activeMood, styleFilter, priceFilter, searchQuery, activeSort]);
 
   function handleUnlock(template: Template) {
     setPreviewTemplate(null);
@@ -127,213 +127,170 @@ export default function MarketplaceCatalog({ onTemplateSelect }: MarketplaceCata
     }
   }
 
-  function resetFilters() {
-    setActiveMood("ALL");
-    setAudienceFilter("all");
-    setStyleFilter("all");
-    setPriceFilter("all");
-    setSearchQuery("");
-    setActiveSort("trending");
+  function formatMoodName(mood: string) {
+    if (mood === "ALL") return "All";
+    return mood
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
   }
 
   const hasActiveFilters =
     activeMood !== "ALL" ||
-    audienceFilter !== "all" ||
     styleFilter !== "all" ||
     priceFilter !== "all" ||
     searchQuery.trim().length > 0;
 
   return (
-    <div className="w-full space-y-20 pb-24">
-      {/* 1. FEATURED EXPERIENCES SECTION */}
-      <section className="mx-auto max-w-7xl px-5 sm:px-8 space-y-6">
-        <div className="flex items-end justify-between border-b border-white/10 pb-4">
-          <div className="space-y-1 text-left">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-rose-400">
-              Curated Selection
-            </p>
-            <h2 className="font-serif text-2xl sm:text-3xl text-white font-normal">
-              Featured Experiences
+    <div className="w-full space-y-10 pb-20">
+      {/* 1. CATEGORIES = MOODS (Framer-style text column groups) */}
+      <section className="mx-auto max-w-7xl px-5 sm:px-8 text-left">
+        <div className="border-b border-white/10 pb-8">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-500">
+              Moods
             </h2>
-          </div>
-          <span className="text-xs font-mono text-zinc-500">
-            Plugd Studio Editions
-          </span>
-        </div>
-
-        {/* 3 Huge Featured Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featuredTemplates.map((template) => (
-            <TemplateCard
-              key={template.id}
-              template={template}
-              featured={true}
-              onSelect={handleUnlock}
-              onPreview={(t) => setPreviewTemplate(t)}
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* 2. EXPLORE BY MOOD (Category Taxonomy) */}
-      <section id="categories" className="mx-auto max-w-7xl px-5 sm:px-8 space-y-5">
-        <div className="flex items-center justify-between border-b border-white/10 pb-3">
-          <div className="space-y-0.5 text-left">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-400">
-              Taxonomy
-            </p>
-            <h3 className="font-serif text-xl sm:text-2xl text-white font-normal">
-              Explore by Mood
-            </h3>
-          </div>
-          <span className="text-[11px] font-mono text-zinc-500">
-            {MOOD_CATEGORIES.length - 1} mood categories
-          </span>
-        </div>
-
-        {/* Horizontally scrollable on mobile, refined pill row on desktop */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none -mx-5 px-5 sm:mx-0 sm:px-0 sm:flex-wrap">
-          {MOOD_CATEGORIES.map((cat) => {
-            const count = moodCounts[cat.id] || 0;
-            const isSelected = activeMood === cat.id;
-
-            return (
+            {activeMood !== "ALL" && (
               <button
-                key={cat.id}
-                onClick={() => setActiveMood(cat.id)}
-                className={`group shrink-0 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-mono uppercase tracking-wider transition-all ${
-                  isSelected
-                    ? "bg-white text-black shadow-lg shadow-white/10 font-semibold"
-                    : "border border-white/10 bg-white/[0.03] text-zinc-400 hover:border-white/25 hover:text-white hover:bg-white/[0.06]"
-                }`}
+                onClick={() => setActiveMood("ALL")}
+                className="text-xs font-mono text-zinc-400 hover:text-white transition flex items-center gap-1"
               >
-                <span>{cat.name}</span>
-                {count > 0 && (
-                  <span
-                    className={`text-[10px] rounded-full px-1.5 py-0.2 ${
-                      isSelected
-                        ? "bg-black/10 text-black font-bold"
-                        : "bg-white/5 text-zinc-500 group-hover:text-zinc-300"
-                    }`}
-                  >
-                    {count}
-                  </span>
-                )}
+                <span>View All Moods</span>
+                <X className="h-3 w-3" />
               </button>
-            );
-          })}
+            )}
+          </div>
+
+          {/* Multi-column clean text category layout */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
+            {moodColumns.map((col) => (
+              <div key={col.title} className="space-y-2">
+                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider block">
+                  {col.title}
+                </span>
+                <ul className="space-y-1.5 text-xs font-normal">
+                  {col.items.map((mood) => {
+                    const isSelected = activeMood === mood;
+                    return (
+                      <li key={mood}>
+                        <button
+                          onClick={() => setActiveMood(isSelected ? "ALL" : mood)}
+                          className={`text-left transition-colors duration-150 py-0.5 block ${
+                            isSelected
+                              ? "text-white font-medium underline underline-offset-4 decoration-rose-500"
+                              : "text-zinc-400 hover:text-white"
+                          }`}
+                        >
+                          {formatMoodName(mood)}
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 3. TEMPLATES MARKETPLACE GRID (Heart of the marketplace) */}
-      <section id="templates" className="mx-auto max-w-7xl px-5 sm:px-8 space-y-6">
-        {/* Marketplace Filter / Sort Bar (Framer-inspired) */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-white/10 pb-5">
-          {/* Left: Sort Pills (Trending | Best | Recent) */}
-          <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] p-1 w-fit">
+      {/* 2. MARKETPLACE CONTROLS (Trending / Best / Recent + Price / Mood / Style filters) */}
+      <section className="mx-auto max-w-7xl px-5 sm:px-8 space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          {/* Left: Framer-style pill selector (Trending | Best | Recent) */}
+          <div className="inline-flex items-center rounded-lg bg-white/[0.04] border border-white/10 p-0.5 w-fit">
             <button
               onClick={() => setActiveSort("trending")}
-              className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-mono transition ${
+              className={`rounded-md px-3.5 py-1 text-xs font-medium transition-all ${
                 activeSort === "trending"
-                  ? "bg-white text-black font-semibold shadow-sm"
-                  : "text-zinc-400 hover:text-white"
+                  ? "bg-[#222228] text-white shadow-sm"
+                  : "text-zinc-400 hover:text-zinc-200"
               }`}
             >
-              <Flame className="h-3 w-3" />
-              <span>Trending</span>
+              Trending
             </button>
-
             <button
               onClick={() => setActiveSort("best")}
-              className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-mono transition ${
+              className={`rounded-md px-3.5 py-1 text-xs font-medium transition-all ${
                 activeSort === "best"
-                  ? "bg-white text-black font-semibold shadow-sm"
-                  : "text-zinc-400 hover:text-white"
+                  ? "bg-[#222228] text-white shadow-sm"
+                  : "text-zinc-400 hover:text-zinc-200"
               }`}
             >
-              <Star className="h-3 w-3" />
-              <span>Best</span>
+              Best
             </button>
-
             <button
               onClick={() => setActiveSort("recent")}
-              className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-mono transition ${
+              className={`rounded-md px-3.5 py-1 text-xs font-medium transition-all ${
                 activeSort === "recent"
-                  ? "bg-white text-black font-semibold shadow-sm"
-                  : "text-zinc-400 hover:text-white"
+                  ? "bg-[#222228] text-white shadow-sm"
+                  : "text-zinc-400 hover:text-zinc-200"
               }`}
             >
-              <Clock className="h-3 w-3" />
-              <span>Recent</span>
+              Recent
             </button>
           </div>
 
-          {/* Right: Dropdowns / Filters */}
+          {/* Right: Dropdowns for Price, Mood, Style */}
           <div className="flex items-center gap-2.5 flex-wrap">
-            {/* Search Input */}
-            <div className="relative flex items-center">
-              <Search className="absolute left-3 h-3.5 w-3.5 text-zinc-500 pointer-events-none" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search templates..."
-                className="h-9 w-40 sm:w-52 rounded-full border border-white/10 bg-white/[0.03] pl-8 pr-3 text-xs text-white placeholder-zinc-500 focus:border-white/30 focus:outline-none"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery("")}
-                  className="absolute right-2.5 text-zinc-500 hover:text-white"
-                >
-                  <X className="h-3 w-3" />
-                </button>
-              )}
+            {/* Price Dropdown */}
+            <div className="relative">
+              <select
+                value={priceFilter}
+                onChange={(e) => setPriceFilter(e.target.value)}
+                className="h-8 appearance-none rounded-lg border border-white/10 bg-white/[0.04] pl-3 pr-7 text-xs text-zinc-300 focus:border-white/30 focus:outline-none cursor-pointer hover:border-white/20 transition"
+              >
+                {PRICE_OPTIONS.map((opt) => (
+                  <option key={opt.id} value={opt.id} className="bg-[#121217] text-white">
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-2 top-2.5 h-3.5 w-3.5 text-zinc-500" />
             </div>
 
-            {/* Audience Filter (For Her / For Him) */}
-            <select
-              value={audienceFilter}
-              onChange={(e) => setAudienceFilter(e.target.value as any)}
-              className="h-9 rounded-full border border-white/10 bg-white/[0.03] px-3.5 text-xs font-mono text-zinc-300 focus:border-white/30 focus:outline-none cursor-pointer"
-            >
-              <option value="all" className="bg-[#121217] text-white">For: Everyone</option>
-              <option value="her" className="bg-[#121217] text-white">For: Her</option>
-              <option value="him" className="bg-[#121217] text-white">For: Him</option>
-            </select>
+            {/* Mood Dropdown */}
+            <div className="relative">
+              <select
+                value={activeMood}
+                onChange={(e) => setActiveMood(e.target.value as MoodCategory)}
+                className="h-8 appearance-none rounded-lg border border-white/10 bg-white/[0.04] pl-3 pr-7 text-xs text-zinc-300 focus:border-white/30 focus:outline-none cursor-pointer hover:border-white/20 transition"
+              >
+                {MOOD_CATEGORIES.map((m) => (
+                  <option key={m.id} value={m.id} className="bg-[#121217] text-white">
+                    Mood: {m.name}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-2 top-2.5 h-3.5 w-3.5 text-zinc-500" />
+            </div>
 
-            {/* Style Filter */}
-            <select
-              value={styleFilter}
-              onChange={(e) => setStyleFilter(e.target.value)}
-              className="h-9 rounded-full border border-white/10 bg-white/[0.03] px-3.5 text-xs font-mono text-zinc-300 focus:border-white/30 focus:outline-none cursor-pointer"
-            >
-              <option value="all" className="bg-[#121217] text-white">Style: All</option>
-              <option value="cinematic" className="bg-[#121217] text-white">Cinematic</option>
-              <option value="editorial" className="bg-[#121217] text-white">Editorial</option>
-              <option value="dark" className="bg-[#121217] text-white">Dark</option>
-              <option value="animated" className="bg-[#121217] text-white">Animated</option>
-              <option value="soft" className="bg-[#121217] text-white">Soft</option>
-              <option value="playful" className="bg-[#121217] text-white">Playful</option>
-              <option value="minimal" className="bg-[#121217] text-white">Minimal</option>
-              <option value="experimental" className="bg-[#121217] text-white">Experimental</option>
-            </select>
+            {/* Style Dropdown */}
+            <div className="relative">
+              <select
+                value={styleFilter}
+                onChange={(e) => setStyleFilter(e.target.value)}
+                className="h-8 appearance-none rounded-lg border border-white/10 bg-white/[0.04] pl-3 pr-7 text-xs text-zinc-300 focus:border-white/30 focus:outline-none cursor-pointer hover:border-white/20 transition"
+              >
+                {STYLE_OPTIONS.map((s) => (
+                  <option key={s.id} value={s.id} className="bg-[#121217] text-white">
+                    Style: {s.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-2 top-2.5 h-3.5 w-3.5 text-zinc-500" />
+            </div>
 
-            {/* Price Filter */}
-            <select
-              value={priceFilter}
-              onChange={(e) => setPriceFilter(e.target.value as any)}
-              className="h-9 rounded-full border border-white/10 bg-white/[0.03] px-3.5 text-xs font-mono text-zinc-300 focus:border-white/30 focus:outline-none cursor-pointer"
-            >
-              <option value="all" className="bg-[#121217] text-white">Price: All</option>
-              <option value="2.99" className="bg-[#121217] text-white">$2.99 (Standard)</option>
-              <option value="free" className="bg-[#121217] text-white">Free Samples</option>
-            </select>
-
-            {/* Reset Button */}
+            {/* Reset Filters button */}
             {hasActiveFilters && (
               <button
-                onClick={resetFilters}
-                className="h-9 inline-flex items-center gap-1 rounded-full border border-rose-500/20 bg-rose-500/10 px-3 text-xs font-mono text-rose-300 hover:bg-rose-500/20 transition"
+                onClick={() => {
+                  setActiveMood("ALL");
+                  setStyleFilter("all");
+                  setPriceFilter("all");
+                  onSearchChange("");
+                }}
+                className="h-8 inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 text-xs text-zinc-400 hover:text-white transition"
               >
                 <X className="h-3 w-3" />
                 <span>Reset</span>
@@ -342,32 +299,39 @@ export default function MarketplaceCatalog({ onTemplateSelect }: MarketplaceCata
           </div>
         </div>
 
-        {/* Results Counter */}
-        <div className="flex items-center justify-between text-xs font-mono text-zinc-500">
+        {/* Counter: Showing X templates */}
+        <div className="flex items-center justify-between text-xs text-zinc-500 px-0.5">
           <span>
             Showing {filteredTemplates.length} {filteredTemplates.length === 1 ? "template" : "templates"}
-            {activeMood !== "ALL" ? ` in ${activeMood}` : ""}
+            {activeMood !== "ALL" ? ` in ${formatMoodName(activeMood)}` : ""}
           </span>
-          <span className="text-[11px] text-zinc-600">
-            Click any card to preview or unlock
-          </span>
+          {searchQuery && (
+            <span className="text-zinc-400">
+              Matching &ldquo;{searchQuery}&rdquo;
+            </span>
+          )}
         </div>
 
         {/* 3-Column Template Grid */}
         {filteredTemplates.length === 0 ? (
-          <div className="py-20 text-center space-y-4 rounded-3xl border border-white/5 bg-white/[0.01] p-8">
-            <p className="text-base text-zinc-400 font-light">
-              No digital experience templates match your filter combination.
+          <div className="py-20 text-center space-y-3 rounded-2xl border border-white/5 bg-white/[0.01] p-8">
+            <p className="text-sm text-zinc-400">
+              No templates match your selected filters.
             </p>
             <button
-              onClick={resetFilters}
-              className="inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-black hover:bg-zinc-200 transition"
+              onClick={() => {
+                setActiveMood("ALL");
+                setStyleFilter("all");
+                setPriceFilter("all");
+                onSearchChange("");
+              }}
+              className="text-xs font-mono text-white underline hover:text-zinc-300"
             >
-              <span>Clear All Filters</span>
+              Clear filters
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
             {filteredTemplates.map((template) => (
               <TemplateCard
                 key={template.id}
@@ -380,113 +344,7 @@ export default function MarketplaceCatalog({ onTemplateSelect }: MarketplaceCata
         )}
       </section>
 
-      {/* 4. FOR HER SHOWCASE (Preserves & Elevates /for-her) */}
-      <section className="mx-auto max-w-7xl px-5 sm:px-8 space-y-8 pt-8 border-t border-white/10">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div className="space-y-1.5 text-left">
-            <div className="inline-flex items-center gap-2 rounded-full bg-rose-500/10 border border-rose-500/20 px-3 py-0.5 text-[11px] font-mono uppercase tracking-widest text-rose-300">
-              <span>👩</span>
-              <span>FOR HER</span>
-            </div>
-            <h2 className="font-serif text-3xl sm:text-4xl text-white font-normal">
-              Experiences she&apos;ll actually want to open.
-            </h2>
-            <p className="text-zinc-400 text-sm font-light">
-              Curated interactive templates designed to be dropped right into her DMs.
-            </p>
-          </div>
-
-          <Link
-            href="/for-her"
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white hover:border-white/30 hover:bg-white/[0.06] transition"
-          >
-            <span>VIEW ALL FOR HER →</span>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {forHerTemplates.map((template) => (
-            <TemplateCard
-              key={`her-${template.id}`}
-              template={template}
-              onSelect={handleUnlock}
-              onPreview={(t) => setPreviewTemplate(t)}
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* 5. FOR HIM SHOWCASE (Preserves & Elevates /for-him) */}
-      <section className="mx-auto max-w-7xl px-5 sm:px-8 space-y-8 pt-8 border-t border-white/10">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div className="space-y-1.5 text-left">
-            <div className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 border border-amber-500/20 px-3 py-0.5 text-[11px] font-mono uppercase tracking-widest text-amber-300">
-              <span>👨</span>
-              <span>FOR HIM</span>
-            </div>
-            <h2 className="font-serif text-3xl sm:text-4xl text-white font-normal">
-              Experiences he&apos;ll actually want to open.
-            </h2>
-            <p className="text-zinc-400 text-sm font-light">
-              Unexpected digital artifacts that make him stop scrolling and screenshot immediately.
-            </p>
-          </div>
-
-          <Link
-            href="/for-him"
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white hover:border-white/30 hover:bg-white/[0.06] transition"
-          >
-            <span>VIEW ALL FOR HIM →</span>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {forHimTemplates.map((template) => (
-            <TemplateCard
-              key={`him-${template.id}`}
-              template={template}
-              onSelect={handleUnlock}
-              onPreview={(t) => setPreviewTemplate(t)}
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* 6. MARKETPLACE VALUE BANNER */}
-      <section className="mx-auto max-w-5xl px-5 sm:px-8">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-black p-8 sm:p-12 text-center space-y-6">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 text-xs font-mono text-emerald-300">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>THE PLUGD MARKETPLACE MODEL</span>
-          </div>
-
-          <div className="space-y-2">
-            <h2 className="font-serif text-3xl sm:text-5xl text-white font-normal">
-              Buy once. Own forever. Send whenever.
-            </h2>
-            <p className="mx-auto max-w-xl text-sm sm:text-base text-zinc-400 font-light leading-relaxed">
-              When you purchase a template, you own the experience permanently. Generate a new link tonight, next week, or next year—with zero recurring subscription fees.
-            </p>
-          </div>
-
-          <div className="pt-2 flex flex-wrap justify-center gap-4 text-xs font-mono text-zinc-400">
-            <span className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              $2.99 One-Time
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              Unlimited Private Links
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              No App Required
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* DETAIL PREVIEW MODAL */}
+      {/* DETAIL MODAL */}
       <TemplateDetailModal
         template={previewTemplate}
         isOpen={Boolean(previewTemplate)}
@@ -499,7 +357,7 @@ export default function MarketplaceCatalog({ onTemplateSelect }: MarketplaceCata
         <CheckoutModal
           isOpen={Boolean(checkoutTemplate)}
           onClose={() => setCheckoutTemplate(null)}
-          target={checkoutTemplate.target === "him" ? "him" : "her"}
+          target="her"
           mood={checkoutTemplate.id}
         />
       )}

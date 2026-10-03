@@ -16,8 +16,6 @@ export type MoodCategory =
   | "ANNIVERSARY"
   | "JUST BECAUSE";
 
-export type TemplateAudience = "her" | "him" | "both";
-
 export type TemplateStyle =
   | "Minimal"
   | "Cinematic"
@@ -37,6 +35,8 @@ export interface TemplatePreviewDesign {
   accentColor: string;
   pattern: "ember" | "grid" | "mesh" | "minimal" | "blur" | "stars";
 }
+
+export type TemplateAudience = "her" | "him" | "both";
 
 export interface Template {
   id: string;
@@ -60,7 +60,7 @@ export interface Template {
   previewDesign: TemplatePreviewDesign;
 }
 
-export const MOOD_CATEGORIES: { id: MoodCategory; name: string; count?: number }[] = [
+export const MOOD_CATEGORIES: { id: MoodCategory; name: string }[] = [
   { id: "ALL", name: "All" },
   { id: "ROMANTIC", name: "Romantic" },
   { id: "AFTER DARK", name: "After Dark" },
@@ -104,7 +104,7 @@ export const TEMPLATES: Template[] = [
       glow: "from-rose-600/30 to-red-950/50",
       headline: "AFTER DARK",
       subtext: "Read this in complete privacy.",
-      tag: "Midnight Universe",
+      tag: "Midnight Atmosphere",
       accentColor: "#f43f5e",
       pattern: "ember",
     },
@@ -115,19 +115,19 @@ export const TEMPLATES: Template[] = [
     name: "Come Over",
     tagline: "Leave your keys at the door.",
     vibe: "Direct invitation, effortless temptation.",
-    description: "For when a simple 'come over' text needs an unforgettable delivery. A sleek crimson landing page with magnetic pull and zero ambiguity.",
+    description: "For when a simple 'come over' needs an unforgettable delivery. A sleek crimson landing page with magnetic pull and zero ambiguity.",
     price: 2.99,
     currency: "USD",
     mood: "COME OVER",
-    target: "him",
+    target: "both",
     style: "Cinematic",
     theme: "crimson",
     accent: "from-red-600/35 via-rose-950/40 to-transparent",
-    creator: "Plugd Studio",
+    creator: "Studio Noir",
     featured: true,
     trending: true,
     rating: 4.95,
-    sendsCount: 980,
+    sendsCount: 1180,
     previewDesign: {
       background: "bg-[#0b0304]",
       glow: "from-red-600/30 to-rose-950/40",
@@ -144,11 +144,11 @@ export const TEMPLATES: Template[] = [
     name: "Come Closer",
     tagline: "Don't look away.",
     vibe: "Intimate magnetic field, tension you can feel.",
-    description: "A continuous interactive field of gravity particles that draw her gaze straight to your message. Seductive pacing with a tactile pulse trigger.",
+    description: "A continuous interactive field of gravity particles that draw their gaze straight to your message. Seductive pacing with a tactile pulse trigger.",
     price: 2.99,
     currency: "USD",
     mood: "FLIRTY",
-    target: "her",
+    target: "both",
     style: "Animated",
     theme: "crimson",
     accent: "from-rose-500/30 via-pink-950/40 to-transparent",
@@ -206,7 +206,7 @@ export const TEMPLATES: Template[] = [
     price: 2.99,
     currency: "USD",
     mood: "FLIRTY",
-    target: "her",
+    target: "both",
     style: "Cinematic",
     theme: "crimson",
     accent: "from-red-600/35 via-rose-950/40 to-transparent",
@@ -351,7 +351,7 @@ export const TEMPLATES: Template[] = [
     price: 2.99,
     currency: "USD",
     mood: "COME OVER",
-    target: "her",
+    target: "both",
     style: "Cinematic",
     theme: "crimson",
     accent: "from-rose-600/35 via-red-950/40 to-transparent",
@@ -509,7 +509,7 @@ export const TEMPLATES: Template[] = [
       background: "bg-[#080602]",
       glow: "from-amber-500/20 to-stone-900/50",
       headline: "CHAPTERS",
-      subtext: "Every year proves you were right.",
+      subtext: "Every year proves we were right.",
       tag: "Anniversary Edition",
       accentColor: "#f59e0b",
       pattern: "mesh",
@@ -521,7 +521,7 @@ export const TEMPLATES: Template[] = [
     name: "Main Character",
     tagline: "The world stops for your birthday.",
     vibe: "High fashion lookbook, bold editorial celebration.",
-    description: "A bespoke runway lookbook celebrating your partner's birthday. Bold photography layouts, custom accolades, and playful confetti physics.",
+    description: "A bespoke runway lookbook celebrating their birthday. Bold typography layouts, custom accolades, and playful confetti physics.",
     price: 2.99,
     currency: "USD",
     mood: "BIRTHDAY",
@@ -544,18 +544,42 @@ export const TEMPLATES: Template[] = [
       pattern: "grid",
     },
   },
+  {
+    id: "just-because",
+    slug: "just-because",
+    name: "Just Because",
+    tagline: "No occasion. Just wanted to remind you.",
+    vibe: "Effortless, spontaneous, warm starlight.",
+    description: "A spontaneous interactive digital artifact with floating affirmations, subtle ambient physics, and a warm midnight glow.",
+    price: 2.99,
+    currency: "USD",
+    mood: "JUST BECAUSE",
+    target: "both",
+    style: "Soft",
+    theme: "rose",
+    accent: "from-rose-500/25 via-stone-900/40 to-transparent",
+    creator: "Plugd Studio",
+    featured: false,
+    trending: false,
+    rating: 4.95,
+    sendsCount: 540,
+    previewDesign: {
+      background: "bg-[#080406]",
+      glow: "from-rose-500/25 to-stone-950/50",
+      headline: "JUST BECAUSE",
+      subtext: "You crossed my mind. That's all.",
+      tag: "Spontaneous Thought",
+      accentColor: "#f43f5e",
+      pattern: "stars",
+    },
+  },
 ];
 
 // Helper selectors
-export function getTemplateById(id: string, target?: "her" | "him"): Template {
+export function getTemplateById(id: string, _target?: string): Template {
   const normalizedId = String(id || "after-dark").toLowerCase();
   const found = TEMPLATES.find((t) => t.id === normalizedId || t.slug === normalizedId);
   if (found) return found;
-
-  if (target === "him") {
-    const him = TEMPLATES.find((t) => t.target === "him");
-    if (him) return him;
-  }
   return TEMPLATES[0];
 }
 
@@ -567,10 +591,6 @@ export function getFeaturedTemplates(): Template[] {
   return TEMPLATES.filter((t) => t.featured);
 }
 
-export function getTemplatesByAudience(audience: "her" | "him"): Template[] {
-  return TEMPLATES.filter((t) => t.target === audience || t.target === "both");
-}
-
 export function getTemplatesByMood(mood: MoodCategory): Template[] {
   if (mood === "ALL") return TEMPLATES;
   return TEMPLATES.filter((t) => t.mood === mood);
@@ -578,8 +598,8 @@ export function getTemplatesByMood(mood: MoodCategory): Template[] {
 
 // Backward-compatibility aliases for existing routes
 export type Mood = Template;
-export const TEMPLATES_FOR_HER = TEMPLATES.filter((t) => t.target === "her" || t.target === "both");
-export const TEMPLATES_FOR_HIM = TEMPLATES.filter((t) => t.target === "him" || t.target === "both");
-export const MOODS_FOR_HER = TEMPLATES_FOR_HER;
-export const MOODS_FOR_HIM = TEMPLATES_FOR_HIM;
+export const TEMPLATES_FOR_HER = TEMPLATES;
+export const TEMPLATES_FOR_HIM = TEMPLATES;
+export const MOODS_FOR_HER = TEMPLATES;
+export const MOODS_FOR_HIM = TEMPLATES;
 export const getMoodById = getTemplateById;

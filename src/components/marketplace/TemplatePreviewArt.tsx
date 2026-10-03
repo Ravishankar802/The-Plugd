@@ -103,7 +103,7 @@ export default function TemplatePreviewArt({
         <div className="my-auto space-y-2 z-10">
           <div className="space-y-1">
             <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-zinc-400">
-              {template.mood} · {template.target.toUpperCase()}
+              {template.mood}
             </p>
             <h2
               className={`font-serif tracking-tight text-white transition-transform duration-500 group-hover:scale-[1.02] ${

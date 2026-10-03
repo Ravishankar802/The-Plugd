@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import MarketplaceNavbar from "./MarketplaceNavbar";
 import MarketplaceHero from "./MarketplaceHero";
 import MarketplaceCatalog from "./MarketplaceCatalog";
@@ -8,15 +8,9 @@ import CheckoutModal from "@/components/CheckoutModal";
 import { Template, TEMPLATES } from "@/lib/templates";
 
 export default function MarketplaceHomeClient() {
+  const [searchQuery, setSearchQuery] = useState("");
   const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<Template>(TEMPLATES[0]);
-
-  function scrollToSection(id: string) {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  }
 
   function handleQuickUnlock(template?: Template) {
     if (template) {
@@ -26,56 +20,54 @@ export default function MarketplaceHomeClient() {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#09090b] text-[#f4f4f5] selection:bg-rose-500 selection:text-white overflow-x-hidden">
-      {/* Sticky Marketplace Navbar */}
+    <div className="relative min-h-screen bg-[#09090b] text-[#f4f4f5] selection:bg-white selection:text-black overflow-x-hidden">
+      {/* Sticky Framer-style Marketplace Header (PLUGD on left, Search on right, empty center) */}
       <MarketplaceNavbar
-        onExploreClick={() => scrollToSection("templates")}
-        onCategoriesClick={() => scrollToSection("categories")}
-        onSearchClick={() => scrollToSection("templates")}
-        onUnlockClick={() => handleQuickUnlock(TEMPLATES[0])}
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
       />
 
-      {/* Hero Section */}
-      <MarketplaceHero onExploreClick={() => scrollToSection("templates")} />
+      {/* Intro: Templates + Exact Sentence */}
+      <MarketplaceHero />
 
-      {/* Marketplace Catalog (Featured + Moods + Trending/Filtered Grid + For Her + For Him + Value Banner) */}
+      {/* Moods Categories + Framer Toolbar + 3-Column Template Grid */}
       <MarketplaceCatalog
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
         onTemplateSelect={(t) => {
           setSelectedTemplate(t);
           setCheckoutModalOpen(true);
         }}
       />
 
-      {/* Footer */}
-      <footer className="border-t border-white/10 bg-black/60 py-12 text-center text-xs font-mono text-zinc-500">
+      {/* Clean Marketplace Footer */}
+      <footer className="border-t border-white/10 bg-[#09090b] py-12 text-xs font-mono text-zinc-500">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-sm tracking-[0.2em] text-white uppercase font-bold">
+            <span className="text-[13px] font-mono tracking-[0.24em] text-white uppercase font-bold">
               PLUGD
             </span>
             <span className="text-zinc-600">·</span>
-            <span>Digital experiences worth sending</span>
+            <span>Interactive experience marketplace</span>
           </div>
 
-          <div className="flex items-center gap-6 text-[11px] uppercase tracking-wider">
-            <a href="/for-her" className="hover:text-white transition">For Her</a>
-            <a href="/for-him" className="hover:text-white transition">For Him</a>
+          <div className="flex items-center gap-6 text-[11px] uppercase tracking-wider text-zinc-400">
             <a href="/my-templates" className="hover:text-white transition">My Templates</a>
             <a href="/privacy-policy" className="hover:text-white transition">Privacy</a>
             <a href="/terms-of-service" className="hover:text-white transition">Terms</a>
           </div>
 
           <p className="text-[11px] text-zinc-600">
-            © {new Date().getFullYear()} Plugd Inc. Buy once. Own forever.
+            © {new Date().getFullYear()} Plugd.
           </p>
         </div>
       </footer>
 
-      {/* Global Quick Checkout Modal */}
+      {/* Checkout Modal */}
       <CheckoutModal
         isOpen={checkoutModalOpen}
         onClose={() => setCheckoutModalOpen(false)}
-        target={selectedTemplate.target === "him" ? "him" : "her"}
+        target="her"
         mood={selectedTemplate.id}
       />
     </div>

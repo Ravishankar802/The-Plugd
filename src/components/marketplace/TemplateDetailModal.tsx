@@ -21,13 +21,6 @@ export default function TemplateDetailModal({
 }: TemplateDetailModalProps) {
   if (!isOpen || !template) return null;
 
-  const targetLabel =
-    template.target === "her"
-      ? "For Her"
-      : template.target === "him"
-      ? "For Him"
-      : "For Anyone";
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
       <div
@@ -56,9 +49,6 @@ export default function TemplateDetailModal({
               <div className="flex items-center gap-2">
                 <span className="rounded-full bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-rose-300">
                   {template.mood}
-                </span>
-                <span className="rounded-full bg-white/[0.04] border border-white/10 px-2.5 py-0.5 font-mono text-[10px] text-zinc-400">
-                  {targetLabel}
                 </span>
                 <span className="rounded-full bg-white/[0.04] border border-white/10 px-2.5 py-0.5 font-mono text-[10px] text-zinc-400">
                   {template.style} Style
