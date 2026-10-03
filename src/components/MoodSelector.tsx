@@ -31,11 +31,11 @@ export default function MoodSelector({
             {headerTitle}
           </p>
           <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">
-            $2.99 • Private site
+            $2.99 • Own forever
           </span>
         </div>
         <p className="font-serif text-2xl sm:text-3xl text-white font-normal tracking-tight">
-          Choose the mood. We&apos;ll make the site.
+          Choose the template. Own it forever.
         </p>
       </div>
 
@@ -98,7 +98,7 @@ export default function MoodSelector({
         <div className="space-y-0.5 text-left">
           <p className="text-xs font-medium text-rose-200 flex items-center gap-1.5 font-mono uppercase tracking-wider text-[11px]">
             <Sparkles className="h-3 w-3 text-rose-400" />
-            <span>{currentMood.name} EXPERIENCE</span>
+            <span>{currentMood.name} DESIGNER TEMPLATE</span>
           </p>
           <p className="text-xs text-zinc-400 font-light">
             {currentMood.vibe}

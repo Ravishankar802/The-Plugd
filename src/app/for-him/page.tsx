@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import MoodSelector from "@/components/MoodSelector";
 import CheckoutModal from "@/components/CheckoutModal";
-import { getMoodById } from "@/lib/experiences";
+import { getTemplateById } from "@/lib/templates";
 
 export default function ForHimPage() {
   const [selectedMood, setSelectedMood] = useState("after-dark");
   const [modalOpen, setModalOpen] = useState(false);
 
-  const moodObj = getMoodById(selectedMood, "him");
+  const template = getTemplateById(selectedMood, "him");
 
   return (
     <div className="relative min-h-screen bg-[#09090b] text-[#f4f4f5] selection:bg-rose-500 selection:text-white overflow-x-hidden">
@@ -35,14 +35,22 @@ export default function ForHimPage() {
           plugd
         </span>
 
-        <button
-          onClick={() => setModalOpen(true)}
-          className="inline-flex items-center gap-1 text-xs font-mono text-rose-300 hover:text-rose-200 transition"
-        >
-          <span>$2.99</span>
-          <span className="text-zinc-600">/</span>
-          <span>Get Link →</span>
-        </button>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/my-templates"
+            className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 hover:text-white transition"
+          >
+            My Templates
+          </Link>
+          <button
+            onClick={() => setModalOpen(true)}
+            className="inline-flex items-center gap-1 text-xs font-mono text-rose-300 hover:text-rose-200 transition"
+          >
+            <span>$2.99</span>
+            <span className="text-zinc-600">/</span>
+            <span>Own Forever →</span>
+          </button>
+        </div>
       </header>
 
       {/* Hero Section */}
@@ -52,7 +60,7 @@ export default function ForHimPage() {
           <div className="lg:col-span-6 space-y-6 text-left">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] border border-white/10 px-3 py-1 text-[11px] font-mono uppercase tracking-widest text-zinc-300">
               <span className="text-sm">👨</span>
-              <span>For Your Man</span>
+              <span>For Your Man • Own The Template</span>
             </div>
 
             <div className="space-y-3">
@@ -60,7 +68,7 @@ export default function ForHimPage() {
                 Get this for your man.
               </h1>
               <p className="text-base sm:text-lg text-zinc-300 font-light leading-relaxed">
-                Choose the mood. We&apos;ll make the site.
+                Choose the template. You own the experience forever.
               </p>
             </div>
 
@@ -70,42 +78,42 @@ export default function ForHimPage() {
                 onClick={() => setModalOpen(true)}
                 className="group inline-flex h-12 sm:h-13 items-center justify-center gap-2 rounded-full bg-white px-7 text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-black shadow-xl shadow-rose-950/20 transition hover:bg-zinc-200 active:scale-[0.98]"
               >
-                <span>GET IT FOR HIM — $2.99</span>
+                <span>UNLOCK TEMPLATE — $2.99</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </button>
 
               <div className="flex items-center gap-2 text-xs font-mono text-zinc-400 pl-1">
                 <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                <span>Instant private link • No app required</span>
+                <span>Own forever • Unlimited sends</span>
               </div>
             </div>
 
             {/* Core Flow */}
             <div className="pt-8 border-t border-white/10 space-y-3">
               <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-zinc-500">
-                BUY → SEND → WATCH WHAT HAPPENS
+                BUY ONCE → OWN FOREVER → SEND FOREVER
               </p>
 
               <div className="grid grid-cols-2 gap-3 text-xs sm:text-sm text-zinc-300">
                 <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3">
-                  <span className="font-mono text-xs text-rose-400 block mb-1">01</span>
-                  <span className="font-medium text-white block">Pick the mood.</span>
-                  <span className="text-zinc-500 text-xs mt-0.5 block">Hype, romantic, or chaotic.</span>
+                  <span className="font-mono text-xs text-amber-400 block mb-1">01</span>
+                  <span className="font-medium text-white block">Pick template.</span>
+                  <span className="text-zinc-500 text-xs mt-0.5 block">Designer digital experience.</span>
                 </div>
                 <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3">
-                  <span className="font-mono text-xs text-rose-400 block mb-1">02</span>
-                  <span className="font-medium text-white block">Get private link.</span>
-                  <span className="text-zinc-500 text-xs mt-0.5 block">$2.99 one-time.</span>
+                  <span className="font-mono text-xs text-amber-400 block mb-1">02</span>
+                  <span className="font-medium text-white block">Own it forever.</span>
+                  <span className="text-zinc-500 text-xs mt-0.5 block">$2.99 one-time. No subscription.</span>
                 </div>
                 <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3">
-                  <span className="font-mono text-xs text-rose-400 block mb-1">03</span>
-                  <span className="font-medium text-white block">Send it to him.</span>
-                  <span className="text-zinc-500 text-xs mt-0.5 block">He clicks thinking it&apos;s a meme.</span>
+                  <span className="font-mono text-xs text-amber-400 block mb-1">03</span>
+                  <span className="font-medium text-white block">Generate link.</span>
+                  <span className="text-zinc-500 text-xs mt-0.5 block">Create unlimited links anytime.</span>
                 </div>
                 <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3">
-                  <span className="font-mono text-xs text-rose-400 block mb-1">04</span>
-                  <span className="font-medium text-white block">He loses his mind.</span>
-                  <span className="text-zinc-500 text-xs mt-0.5 block">Screenshots it immediately.</span>
+                  <span className="font-mono text-xs text-amber-400 block mb-1">04</span>
+                  <span className="font-medium text-white block">Send to him.</span>
+                  <span className="text-zinc-500 text-xs mt-0.5 block">He loses his mind & screenshots it.</span>
                 </div>
               </div>
             </div>
@@ -124,14 +132,15 @@ export default function ForHimPage() {
         {/* Storytelling Banner */}
         <section className="mt-20 rounded-3xl border border-white/10 bg-white/[0.02] p-8 sm:p-12 text-center max-w-3xl mx-auto">
           <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-amber-400 mb-2">
-            The Surprise
+            The Product Model
           </p>
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-white font-normal">
-            No guy ever expects someone to send them a whole website.
+            Buy it once. Use it forever.
           </h2>
           <p className="mt-4 text-sm sm:text-base text-zinc-400 leading-relaxed font-light max-w-xl mx-auto">
-            Instead of a dry &ldquo;good morning&rdquo; text, you drop a link to a private,
-            custom interactive experience. Watch him figure out that someone made it for him.
+            You are not buying a one-time link. You are purchasing permanent access
+            to a finished, interactive designer experience. Generate a new link tonight,
+            next week, or next year—with zero extra charges.
           </p>
 
           <div className="mt-8">
@@ -139,7 +148,7 @@ export default function ForHimPage() {
               onClick={() => setModalOpen(true)}
               className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-8 text-xs font-semibold uppercase tracking-[0.14em] text-black shadow-lg hover:bg-zinc-200 transition active:scale-[0.98]"
             >
-              <span>GET IT FOR HIM — $2.99</span>
+              <span>UNLOCK TEMPLATE — $2.99</span>
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>
@@ -148,7 +157,7 @@ export default function ForHimPage() {
 
       {/* Minimal Footer */}
       <footer className="border-t border-white/10 py-6 text-center text-xs text-zinc-500 font-mono">
-        One tiny thing. Send it to someone you like.
+        One purchase. Unlimited sends. Plugd.
       </footer>
 
       {/* Checkout Modal */}

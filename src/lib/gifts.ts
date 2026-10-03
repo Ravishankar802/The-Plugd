@@ -16,6 +16,7 @@ export interface CreateGiftInput {
   status?: "PENDING" | "PAID";
   paymentId?: string;
   amount?: number;
+  customerId?: string;
 }
 
 export async function createGift(input: CreateGiftInput) {
@@ -40,6 +41,7 @@ export async function createGift(input: CreateGiftInput) {
       amount: input.amount ?? 2.99,
       currency: "USD",
       paymentId: input.paymentId || null,
+      customerId: input.customerId || null,
     },
   });
 

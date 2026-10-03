@@ -150,11 +150,41 @@ enum WishlistItemType {
   CUSTOM
 }
 
+model Customer {
+  id         String              @id @default(cuid())
+  email      String              @unique
+  accessKey  String              @unique @default(cuid())
+  createdAt  DateTime            @default(now())
+  updatedAt  DateTime            @updatedAt
+  ownerships TemplateOwnership[]
+  gifts      Gift[]
+
+  @@index([email])
+  @@index([accessKey])
+}
+
+model TemplateOwnership {
+  id         String   @id @default(cuid())
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  templateId String   // e.g. "after-dark"
+  status     String   @default("ACTIVE")
+  amount     Float    @default(2.99)
+  currency   String   @default("USD")
+  paymentId  String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([customerId, templateId])
+  @@index([customerId])
+  @@index([templateId])
+}
+
 model Gift {
   id             String    @id @default(cuid())
   slug           String    @unique
   target         String    // "her" | "him"
-  mood           String    @default("romantic")
+  mood           String    @default("romantic") // templateId
   senderName     String?
   senderEmail    String?
   recipientName  String?
@@ -168,5 +198,11 @@ model Gift {
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
 
+  customerId     String?
+  customer       Customer? @relation(fields: [customerId], references: [id], onDelete: SetNull)
+
   @@index([slug])
+  @@index([customerId])
+  @@index([senderEmail])
 }
+
