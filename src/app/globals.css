@@ -3,89 +3,44 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* Plugd Luxury Editorial Monochrome Palette */
-  --background: #fafaf8;
-  --surface-subtle: #f5f5f2;
-  --card: #ffffff;
-  --foreground: #0a0a0a;
-  --muted: #5e5e5e;
-  --muted-light: #767676;
-  --accent: #f4f4f0;
-  --border: #e8e8e4;
-  --border-light: #f0f0ec;
-  --border-dark: #262626;
-  --pill: #f4f4f0;
-  --pill-border: #e6e6e2;
-  --selected: #0a0a0a;
-  --selected-foreground: #fafaf8;
-}
-
-.dark {
-  /* Dark Mode - Luxury Deep Monochrome */
-  --background: #090909;
-  --surface-subtle: #121212;
-  --card: #151515;
-  --foreground: #f8f8f6;
-  --muted: #8e8e8e;
-  --muted-light: #a0a0a0;
-  --accent: #1a1a1a;
-  --border: #242424;
-  --border-light: #1f1f1f;
-  --border-dark: #333333;
-  --pill: #161616;
-  --pill-border: #262626;
-  --selected: #fafaf8;
-  --selected-foreground: #090909;
+  /* Attention Playbook Inspired Palette */
+  --background: #FAF8F5;
+  --surface-subtle: #F4EFE6;
+  --card: #FFFFFF;
+  --card-subtle: #F6F3ED;
+  --foreground: #0E0E10;
+  --muted: #646059;
+  --muted-light: #8E8A82;
+  --accent: #F0ECE4;
+  --border: #E6E1D7;
+  --border-light: #EFECE6;
+  --border-dark: #1F1F23;
+  --orange: #FF5500;
+  --orange-light: #FFF0EB;
+  --pill: #F2EFE9;
+  --pill-border: #E2DDD3;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-card: var(--card);
+  --color-card-subtle: var(--card-subtle);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-border: var(--border);
+  --color-orange: var(--orange);
+  --color-orange-light: var(--orange-light);
   --color-pill: var(--pill);
-  --color-pill-border: var(--pill-border);
-  --color-selected: var(--selected);
-  --color-selected-foreground: var(--selected-foreground);
   --font-sans: var(--font-geist-sans);
   --font-serif: var(--font-serif);
   --font-mono: var(--font-geist-mono);
-  --font-logo: var(--font-logo);
-  --animate-shimmer: shimmer 2s infinite;
-  --animate-shine: shine 4.5s infinite linear;
-
-  @keyframes shimmer {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(100%);
-    }
-  }
-
-  @keyframes shine {
-    0% {
-      background-position: 200% 0;
-    }
-    100% {
-      background-position: -200% 0;
-    }
-  }
-}
-
-:root {
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: "Cormorant Garamond", Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  --font-sans: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-family: var(--font-sans);
+  background-color: #FAF8F5;
+  color: #0E0E10;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -93,245 +48,132 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Subtle luxury satin background highlight */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 500px;
-  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 0, 0, 0.025), transparent);
-  pointer-events: none;
-  z-index: 0;
+/* Subtle editorial grid texture inspired by The Attention Playbook */
+.bg-subtle-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
 
-.font-serif {
-  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif !important;
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-.font-logo {
-  font-family: var(--font-logo), var(--font-sans), sans-serif;
-}
-
-/* Editorial & Luxury Typography Helper Classes */
-.editorial-title {
-  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif !important;
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1.08;
-}
-
-.editorial-subtitle {
-  font-family: var(--font-sans), sans-serif;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.luxury-eyebrow {
-  font-family: var(--font-sans), sans-serif;
-  font-size: 0.6875rem; /* 11px */
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-weight: 500;
-  color: var(--muted);
-}
-
-.luxury-card {
-  background-color: #ffffff;
+/* Thin editorial borders */
+.editorial-border {
   border: 1px solid var(--border);
+}
+
+.editorial-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E6E1D7;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02), 0 8px 24px -4px rgba(0, 0, 0, 0.03);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.luxury-card:hover {
-  border-color: #cecec9;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 16px 32px -6px rgba(0, 0, 0, 0.05);
+.editorial-card:hover {
+  border-color: #D2CBC0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 16px 32px -6px rgba(0, 0, 0, 0.06);
 }
 
-/* Custom Table Styles to match AnonCrib */
-.directory-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
+/* Typography styles */
+.font-editorial-title {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  line-height: 1.05;
 }
 
-.directory-table th {
-  text-align: left;
-  padding: 0.75rem 1rem;
-  color: var(--muted);
-  font-weight: 500;
-  font-size: 0.875rem;
-  border-bottom: 1px solid var(--border);
+.font-editorial-eyebrow {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.6875rem; /* 11px */
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  color: #646059;
 }
 
-.directory-table td {
-  padding: 1rem;
-  vertical-align: middle;
-  border-bottom: 1px solid var(--border);
-}
-
-.directory-row {
-  transition: background-color 0.2s ease;
-}
-
-.directory-row:hover {
-  background-color: var(--accent);
-}
-
-/* Monospace for X handles and serials */
-.font-mono-custom {
-  font-family: var(--font-mono), monospace;
-}
-
-.text-glow {
-  text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
-}
-
-.dark .text-glow {
-  text-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
+/* Hide scrollbars */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
-
-/* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
 
-.mask-fade-right {
-  mask-image: linear-gradient(to right, black 85%, transparent 100%);
-}
-
-@keyframes wave {
-  0% {
-    transform: rotate(0deg);
+/* Custom slide presentation animations & keyframes */
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px) scale(0.98);
   }
-
-  25% {
-    transform: rotate(-20deg);
-  }
-
-  50% {
-    transform: rotate(20deg);
-  }
-
-  75% {
-    transform: rotate(-20deg);
-  }
-
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-.wave {
-  display: inline-block;
-  font-size: 28px;
-  transform-origin: bottom;
-  animation: wave 0.8s ease-in-out infinite;
-}
-
-@keyframes signal-flow {
-
-  0%,
-  100% {
-    opacity: 0.4;
-    stroke-width: 0.8;
-    filter: none;
-  }
-
-  50% {
-    opacity: 0.8;
-    stroke-width: 1.2;
-    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.4));
-  }
-}
-
-.signal-line {
-  opacity: 0.4;
-  animation: signal-flow infinite cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--muted);
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.95);
+  to {
     opacity: 1;
+    transform: translateX(0) scale(1);
   }
+}
 
-  50% {
-    transform: scale(1.05);
-    opacity: 0.8;
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px) scale(0.98);
   }
-
-  100% {
-    transform: scale(0.95);
+  to {
     opacity: 1;
+    transform: translateX(0) scale(1);
   }
 }
 
-.pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes ticker {
-  0% {
-    transform: translateX(0);
+@keyframes scale-reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
   }
-
-  100% {
-    transform: translateX(-50%);
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-.ticker-content {
-  display: flex;
-  white-space: nowrap;
-  animation: ticker 25s linear infinite;
-  width: max-content;
+@keyframes vertical-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.ticker-container:hover .ticker-content {
-  animation-play-state: paused;
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
-/* Force sans-serif font for all font-sans and rich-number elements */
-.font-sans, .rich-number {
-  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-  font-variant-numeric: lining-nums tabular-nums !important;
+.animate-slide-right {
+  animation: slide-in-right 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.font-serif, .editorial-heading, .editorial-title {
-  font-family: var(--font-serif), "Cormorant Garamond", Georgia, "Times New Roman", serif !important;
+.animate-slide-left {
+  animation: slide-in-left 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.font-mono, .font-mono-custom {
-  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
-  font-variant-numeric: lining-nums tabular-nums !important;
+.animate-scale-reveal {
+  animation: scale-reveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-vertical-reveal {
+  animation: vertical-reveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: float-subtle 4s ease-in-out infinite;
 }

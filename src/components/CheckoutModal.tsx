@@ -1,98 +1,64 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { X, Lock, Sparkles, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
-import { getTemplateById } from "@/lib/templates";
+import { X, Check, Lock, Sparkles, ArrowRight, Loader2 } from "lucide-react";
 
 interface CheckoutModalProps {
   isOpen: boolean;
   onClose: () => void;
-  target: "her" | "him";
-  mood: string;
+  defaultCourseSlug?: "men" | "women";
 }
 
 export default function CheckoutModal({
   isOpen,
   onClose,
-  target,
-  mood,
+  defaultCourseSlug = "men",
 }: CheckoutModalProps) {
   const router = useRouter();
-  const [senderEmail, setSenderEmail] = useState("");
-  const [recipientName, setRecipientName] = useState("");
-  const [senderName, setSenderName] = useState("");
+  const [selectedPlan, setSelectedPlan] = useState<"men" | "women" | "bundle">(
+    defaultCourseSlug || "men"
+  );
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
-  const [checkingOwnership, setCheckingOwnership] = useState(false);
-  const [isOwned, setIsOwned] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const template = getTemplateById(mood, target);
-  const targetTitle = target === "her" ? "her" : "him";
-
-  // Check ownership when modal opens or email changes
-  useEffect(() => {
-    if (!isOpen) return;
-
-    let active = true;
-    async function checkOwnership() {
-      try {
-        setCheckingOwnership(true);
-        const query = new URLSearchParams({
-          templateId: mood,
-          ...(senderEmail ? { email: senderEmail } : {}),
-        });
-        const res = await fetch(`/api/customer/check-ownership?${query.toString()}`);
-        const data = await res.json();
-        if (active) {
-          setIsOwned(Boolean(data.owned));
-          if (data.email && !senderEmail) {
-            setSenderEmail(data.email);
-          }
-        }
-      } catch {
-        // Ignore check failure
-      } finally {
-        if (active) setCheckingOwnership(false);
-      }
-    }
-
-    const timer = setTimeout(checkOwnership, 350);
-    return () => {
-      active = false;
-      clearTimeout(timer);
-    };
-  }, [isOpen, mood, senderEmail]);
+  const [error, setError] = useState("");
 
   if (!isOpen) return null;
 
-  async function handleSubmit(e: React.FormEvent) {
+  const getPrice = () => {
+    if (selectedPlan === "bundle") return 79;
+    return 49;
+  };
+
+  const handleCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError(null);
+    setError("");
+
+    if (!email || !email.includes("@")) {
+      setError("Please enter a valid email address to receive your playbook access.");
+      return;
+    }
 
     try {
+      setLoading(true);
+
+      const targetSlug = selectedPlan === "bundle" ? "men" : selectedPlan;
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          target,
-          templateId: mood,
-          senderEmail: senderEmail.trim(),
-          recipientName: recipientName.trim(),
-          senderName: senderName.trim(),
+          courseSlug: targetSlug,
+          isBundle: selectedPlan === "bundle",
+          email: email.trim(),
+          name: name.trim(),
         }),
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Payment initialization failed.");
-      }
-
-      if (data.alreadyOwned) {
-        router.push(`/order/${data.slug}?owned=true`);
-        return;
+        throw new Error(data.error || "Failed to initiate checkout");
       }
 
       if (data.checkoutUrl) {
@@ -100,176 +66,217 @@ export default function CheckoutModal({
       } else if (data.redirectUrl) {
         router.push(data.redirectUrl);
       } else {
-        router.push(`/order/${data.slug}`);
+        router.push(`/my-playbooks?purchased=${targetSlug}`);
       }
     } catch (err: any) {
+      console.error(err);
       setError(err?.message || "Something went wrong. Please try again.");
       setLoading(false);
     }
-  }
+  };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-md animate-scale-reveal">
       <div
-        className="relative w-full max-w-md overflow-hidden rounded-3xl border border-white/10 bg-[#0f0f13] p-6 sm:p-8 shadow-2xl text-zinc-100"
+        className="relative w-full max-w-lg overflow-hidden rounded-3xl bg-[#FAF8F5] p-6 sm:p-8 text-[#0E0E10] shadow-2xl border border-[#E6E1D7]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          disabled={loading}
-          className="absolute right-5 top-5 rounded-full p-2 text-zinc-400 hover:bg-white/5 hover:text-white transition"
-          aria-label="Close"
+          className="absolute right-5 top-5 rounded-full p-2 text-neutral-400 hover:bg-[#EFECE6] hover:text-[#0E0E10] transition-colors"
         >
-          <X className="h-4 w-4" />
+          <X className="h-5 w-5" />
         </button>
 
         {/* Modal Header */}
-        <div className="space-y-2 pr-8">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 text-[11px] font-mono uppercase tracking-wider text-rose-300">
-            <Sparkles className="h-3 w-3 text-rose-400" />
-            <span>{template.name} Template</span>
+        <div className="mb-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#E6E1D7] bg-white px-3 py-1 text-[11px] font-mono tracking-wider text-[#646059] uppercase mb-3">
+            <span className="h-2 w-2 rounded-full bg-[#FF5500]" />
+            Direct Instant Access
           </div>
-          <h2 className="font-serif text-2xl sm:text-3xl font-normal text-white">
-            {isOwned ? `You own ${template.name}` : `Unlock ${template.name}`}
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0E0E10]">
+            Get The Playbook
           </h2>
-          <p className="text-xs text-zinc-400 font-light">
-            {isOwned
-              ? "Generate a fresh, private link right now. Zero extra charge."
-              : "Pay once • Own the template forever • Generate unlimited links"}
+          <p className="mt-1 text-sm text-[#646059]">
+            One-time purchase. Instant digital access. No subscriptions or hidden fees.
           </p>
         </div>
 
-        {/* Ownership banner if recognized */}
-        {isOwned && (
-          <div className="mt-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-3.5 space-y-1">
-            <div className="flex items-center gap-1.5 text-xs text-emerald-300 font-medium">
-              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-              <span>YOU ALREADY OWN THIS TEMPLATE</span>
+        {/* Course Option Selector */}
+        <div className="space-y-3 mb-6">
+          {/* For Men Option */}
+          <div
+            onClick={() => setSelectedPlan("men")}
+            className={`cursor-pointer rounded-2xl border p-4 transition-all ${
+              selectedPlan === "men"
+                ? "border-[#0E0E10] bg-white ring-1 ring-[#0E0E10] shadow-sm"
+                : "border-[#E6E1D7] bg-[#F6F3ED] hover:border-neutral-300"
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div
+                  className={`flex h-5 w-5 items-center justify-center rounded-full border transition-all ${
+                    selectedPlan === "men"
+                      ? "border-[#0E0E10] bg-[#0E0E10] text-white"
+                      : "border-neutral-300 bg-white"
+                  }`}
+                >
+                  {selectedPlan === "men" && <Check className="h-3 w-3" />}
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-[#0E0E10]">
+                    HOW TO DATE THE HOTTEST WOMEN
+                  </div>
+                  <div className="text-xs text-[#646059]">For Men · 10 Modules · Complete Playbook</div>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-base font-bold text-[#0E0E10]">$49</div>
+                <div className="text-[10px] text-neutral-400 line-through">$129</div>
+              </div>
             </div>
-            <p className="text-xs text-zinc-300">
-              You have permanent access. Click below to generate an instant link for free.
-            </p>
           </div>
-        )}
 
-        {error && (
-          <div className="mt-4 rounded-xl border border-red-500/20 bg-red-500/10 p-3 text-xs text-red-300">
-            {error}
+          {/* For Women Option */}
+          <div
+            onClick={() => setSelectedPlan("women")}
+            className={`cursor-pointer rounded-2xl border p-4 transition-all ${
+              selectedPlan === "women"
+                ? "border-[#0E0E10] bg-white ring-1 ring-[#0E0E10] shadow-sm"
+                : "border-[#E6E1D7] bg-[#F6F3ED] hover:border-neutral-300"
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div
+                  className={`flex h-5 w-5 items-center justify-center rounded-full border transition-all ${
+                    selectedPlan === "women"
+                      ? "border-[#0E0E10] bg-[#0E0E10] text-white"
+                      : "border-neutral-300 bg-white"
+                  }`}
+                >
+                  {selectedPlan === "women" && <Check className="h-3 w-3" />}
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-[#0E0E10]">
+                    HOW TO GET THE MAN OF YOUR DREAMS
+                  </div>
+                  <div className="text-xs text-[#646059]">For Women · 10 Modules · Complete Playbook</div>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-base font-bold text-[#0E0E10]">$49</div>
+                <div className="text-[10px] text-neutral-400 line-through">$129</div>
+              </div>
+            </div>
           </div>
-        )}
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="mt-5 space-y-4">
+          {/* Complete Bundle Option */}
+          <div
+            onClick={() => setSelectedPlan("bundle")}
+            className={`cursor-pointer rounded-2xl border p-4 transition-all relative overflow-hidden ${
+              selectedPlan === "bundle"
+                ? "border-[#FF5500] bg-white ring-1 ring-[#FF5500] shadow-sm"
+                : "border-[#E6E1D7] bg-[#F6F3ED] hover:border-neutral-300"
+            }`}
+          >
+            <div className="absolute right-0 top-0 bg-[#FF5500] text-white text-[9px] font-bold px-2 py-0.5 rounded-bl uppercase font-mono">
+              Save 20%
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div
+                  className={`flex h-5 w-5 items-center justify-center rounded-full border transition-all ${
+                    selectedPlan === "bundle"
+                      ? "border-[#FF5500] bg-[#FF5500] text-white"
+                      : "border-neutral-300 bg-white"
+                  }`}
+                >
+                  {selectedPlan === "bundle" && <Check className="h-3 w-3" />}
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-[#0E0E10] flex items-center gap-1.5">
+                    <span>THE COMPLETE DUO BUNDLE</span>
+                    <Sparkles className="h-3.5 w-3.5 text-[#FF5500]" />
+                  </div>
+                  <div className="text-xs text-[#646059]">Both Playbooks Included · All 20 Modules</div>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-base font-bold text-[#0E0E10]">$79</div>
+                <div className="text-[10px] text-neutral-400 line-through">$258</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Checkout Form */}
+        <form onSubmit={handleCheckout} className="space-y-4">
           <div>
-            <label className="block text-[11px] font-mono uppercase tracking-widest text-zinc-400 mb-1.5">
-              Your email <span className="text-rose-400">*</span>{" "}
-              <span className="text-zinc-500 font-sans normal-case text-[10px]">
-                (where your template ownership is permanently saved)
-              </span>
+            <label className="block text-xs font-semibold text-[#0E0E10] mb-1.5">
+              Your Email Address (For Playbook Access)
             </label>
             <input
               type="email"
               required
-              value={senderEmail}
-              onChange={(e) => setSenderEmail(e.target.value)}
-              placeholder="you@email.com"
-              className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm text-white placeholder-zinc-600 focus:border-rose-500/60 focus:outline-none focus:ring-1 focus:ring-rose-500/50"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="alex@example.com"
+              className="w-full rounded-xl border border-[#E6E1D7] bg-white px-4 py-2.5 text-sm text-[#0E0E10] placeholder:text-neutral-400 focus:border-[#0E0E10] focus:outline-none focus:ring-1 focus:ring-[#0E0E10]"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] font-mono uppercase tracking-widest text-zinc-400 mb-1.5">
-              Recipient&apos;s name or nickname{" "}
-              <span className="text-zinc-600">(optional)</span>
+            <label className="block text-xs font-semibold text-[#0E0E10] mb-1.5">
+              Your First Name
             </label>
             <input
               type="text"
-              value={recipientName}
-              onChange={(e) => setRecipientName(e.target.value)}
-              placeholder="e.g. babe"
-              maxLength={40}
-              className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm text-white placeholder-zinc-600 focus:border-rose-500/60 focus:outline-none focus:ring-1 focus:ring-rose-500/50"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Alex"
+              className="w-full rounded-xl border border-[#E6E1D7] bg-white px-4 py-2.5 text-sm text-[#0E0E10] placeholder:text-neutral-400 focus:border-[#0E0E10] focus:outline-none focus:ring-1 focus:ring-[#0E0E10]"
             />
           </div>
 
-          <div>
-            <label className="block text-[11px] font-mono uppercase tracking-widest text-zinc-400 mb-1.5">
-              Your name or nickname <span className="text-zinc-600">(optional)</span>
-            </label>
-            <input
-              type="text"
-              value={senderName}
-              onChange={(e) => setSenderName(e.target.value)}
-              placeholder="e.g. your person"
-              maxLength={40}
-              className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm text-white placeholder-zinc-600 focus:border-rose-500/60 focus:outline-none focus:ring-1 focus:ring-rose-500/50"
-            />
-          </div>
-
-          {/* Template summary card */}
-          <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-3.5 space-y-1">
-            <div className="flex items-center justify-between text-xs">
-              <span className="font-mono text-zinc-400 uppercase tracking-wider text-[10px]">
-                Template
-              </span>
-              <span className="text-rose-300 font-medium">
-                {template.name}
-              </span>
+          {error && (
+            <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-xs text-red-600">
+              {error}
             </div>
-            <p className="text-xs text-zinc-400 italic">
-              &ldquo;{template.tagline}&rdquo;
-            </p>
-          </div>
+          )}
 
-          {/* Pricing breakdown pill */}
-          <div className="flex items-center justify-between rounded-xl bg-white/[0.02] border border-white/5 px-4 py-3 text-xs">
-            <div className="flex flex-col text-left">
-              <span className="text-zinc-300 font-medium">
-                {isOwned ? "Already Owned" : "One-Time Purchase"}
-              </span>
-              <span className="text-[10px] text-zinc-500 font-mono">
-                {isOwned ? "Free unlimited sends" : "Permanent access • Unlimited sends"}
-              </span>
-            </div>
-            <div className="flex items-baseline gap-1">
-              <span className="font-mono text-base font-semibold text-white">
-                {isOwned ? "$0.00" : "$2.99"}
-              </span>
-              <span className="text-[10px] text-zinc-500 uppercase">USD</span>
-            </div>
-          </div>
-
-          {/* CTA */}
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
-            className="group mt-2 w-full flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-black shadow-lg hover:bg-zinc-200 active:scale-[0.99] transition disabled:opacity-50"
+            className="group w-full flex items-center justify-center gap-2 rounded-2xl bg-[#0E0E10] py-3.5 text-sm font-bold text-white shadow-lg shadow-black/10 transition-all hover:bg-neutral-800 disabled:opacity-70"
           >
             {loading ? (
               <>
-                <Loader2 className="h-4 w-4 animate-spin text-black" />
-                <span>{isOwned ? "Generating link..." : "Unlocking template..."}</span>
-              </>
-            ) : isOwned ? (
-              <>
-                <span>Generate New Link (Free)</span>
-                <ArrowRight className="h-4 w-4 text-zinc-800 transition-transform group-hover:translate-x-1" />
+                <Loader2 className="h-4 w-4 animate-spin" />
+                <span>Preparing Your Playbook...</span>
               </>
             ) : (
               <>
-                <span>Unlock Template — $2.99</span>
-                <ArrowRight className="h-4 w-4 text-zinc-800 transition-transform group-hover:translate-x-1" />
+                <span>Unlock Playbook · ${getPrice()}</span>
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </>
             )}
           </button>
-        </form>
 
-        {/* Security badge */}
-        <div className="mt-4 flex items-center justify-center gap-1.5 text-[11px] text-zinc-500 font-mono">
-          <Lock className="h-3 w-3" />
-          <span>Pay once • Own forever • Unlimited sends</span>
-        </div>
+          {/* Trust badges */}
+          <div className="flex items-center justify-center gap-4 pt-1 text-[11px] text-[#8E8A82]">
+            <span className="flex items-center gap-1">
+              <Lock className="h-3 w-3" /> Secure 256-Bit SSL
+            </span>
+            <span>•</span>
+            <span>Permanent Lifetime Access</span>
+            <span>•</span>
+            <span>No Recurring Billing</span>
+          </div>
+        </form>
       </div>
     </div>
   );

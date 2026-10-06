@@ -1,17 +1,19 @@
 import { Metadata } from "next";
-import MarketplaceHomeClient from "@/components/marketplace/MarketplaceHomeClient";
+import HomePageClient from "@/components/HomePageClient";
 
 export const metadata: Metadata = {
-  title: "Templates · Plugd Marketplace",
-  description: "Browse Beautiful interactive templates for the person you can't stop thinking about.",
+  title: "Plugd — Premium Digital Dating & Attraction Playbooks",
+  description:
+    "Two complete digital playbooks for becoming significantly better at attraction, dating, and relationships. 100% slide-based lessons.",
   openGraph: {
-    title: "Templates · Plugd Marketplace",
-    description: "Browse Beautiful interactive templates for the person you can't stop thinking about.",
+    title: "Plugd — Premium Digital Dating & Attraction Playbooks",
+    description:
+      "Two practical, deeply researched digital playbooks. How to Get the Man of Your Dreams (For Women) & How to Date the Hottest Women (For Men).",
   },
 };
 
 export const dynamic = "force-dynamic";
 
 export default function HomePage() {
-  return <MarketplaceHomeClient />;
+  return <HomePageClient />;
 }

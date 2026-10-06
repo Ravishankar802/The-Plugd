@@ -22,19 +22,21 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://theplugd.com"),
-  title: "Plugd — One tiny thing. Send it to someone you like.",
-  description: "A tiny digital experience you send to your partner. $2.99. Buy it, get your link, send it to them.",
+  title: "Plugd — Premium Digital Dating & Attraction Playbooks",
+  description:
+    "Two practical, deeply researched digital playbooks. How to Get the Man of Your Dreams (For Women) & How to Date the Hottest Women (For Men).",
   openGraph: {
-    title: "Plugd — One tiny thing. Send it to someone you like.",
-    description: "A tiny digital experience you send to your partner. $2.99. Buy it, get your link, send it to them.",
+    title: "Plugd — Premium Digital Dating & Attraction Playbooks",
+    description:
+      "Two practical, deeply researched digital playbooks. Slide-based lessons, actionable frameworks, and tactical scripts.",
     url: "https://theplugd.com",
     siteName: "Plugd",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Plugd — One tiny thing. Send it to someone you like.",
-    description: "A tiny digital experience you send to your partner.",
+    title: "Plugd — Premium Digital Dating & Attraction Playbooks",
+    description: "Dating is a skill. Two complete playbooks for attraction and relationships.",
   },
   icons: {
     icon: [
@@ -53,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} min-h-screen bg-[#09090b] text-[#f4f4f5] selection:bg-rose-500 selection:text-white antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} min-h-screen bg-[#FAF8F5] text-[#0E0E10] selection:bg-[#FF5500] selection:text-white antialiased`}
       >
         <div className="flex min-h-screen flex-col">
           {children}

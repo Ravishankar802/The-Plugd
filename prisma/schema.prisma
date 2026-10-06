@@ -156,11 +156,29 @@ model Customer {
   accessKey  String              @unique @default(cuid())
   createdAt  DateTime            @default(now())
   updatedAt  DateTime            @updatedAt
+  purchases  CoursePurchase[]
   ownerships TemplateOwnership[]
   gifts      Gift[]
 
   @@index([email])
   @@index([accessKey])
+}
+
+model CoursePurchase {
+  id         String   @id @default(cuid())
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  courseSlug String   // "men" | "women"
+  amount     Float    @default(49.00)
+  currency   String   @default("USD")
+  paymentId  String?
+  progress   Json?    // stores completed lesson ids, active slide index, etc.
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([customerId, courseSlug])
+  @@index([customerId])
+  @@index([courseSlug])
 }
 
 model TemplateOwnership {

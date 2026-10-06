@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { dodoClient } from "@/lib/dodopayments";
+import { recordCoursePurchase } from "@/lib/playbooks";
 
 export const dynamic = "force-dynamic";
 
@@ -45,27 +46,14 @@ export async function POST(req: Request) {
     }
 
     const metadata = data?.metadata || {};
-    const giftId = metadata?.giftId || null;
-    const slug = metadata?.slug || null;
     const paymentId = data?.payment_id || null;
-    const templateId = metadata?.templateId || null;
-    const customerId = metadata?.customerId || null;
+    const courseSlug = metadata?.courseSlug || null;
+    const isBundle = metadata?.isBundle === "true";
+    let customerId = metadata?.customerId || null;
     const customerEmail = metadata?.customerEmail || data?.customer?.email || null;
 
-    if (type === "payment.succeeded" && (giftId || slug)) {
-      const gift = await prisma.gift.findFirst({
-        where: {
-          OR: [
-            ...(giftId ? [{ id: giftId }] : []),
-            ...(slug ? [{ slug }] : []),
-          ],
-        },
-      });
-
-      const effectiveTemplateId = templateId || gift?.mood || "after-dark";
-      let effectiveCustomerId = customerId || gift?.customerId;
-
-      if (!effectiveCustomerId && customerEmail) {
+    if (type === "payment.succeeded") {
+      if (!customerId && customerEmail) {
         const customer = await prisma.customer.upsert({
           where: { email: customerEmail.trim().toLowerCase() },
           update: {},
@@ -74,44 +62,20 @@ export async function POST(req: Request) {
             accessKey: Math.random().toString(36).substring(2) + Date.now().toString(36),
           },
         });
-        effectiveCustomerId = customer.id;
+        customerId = customer.id;
       }
 
-      if (effectiveCustomerId && effectiveTemplateId) {
-        await prisma.templateOwnership.upsert({
-          where: {
-            customerId_templateId: {
-              customerId: effectiveCustomerId,
-              templateId: effectiveTemplateId.toLowerCase(),
-            },
-          },
-          update: {
-            status: "ACTIVE",
+      if (customerId && courseSlug) {
+        const slugsToGrant = isBundle ? ["men", "women"] : [courseSlug];
+        for (const slug of slugsToGrant) {
+          await recordCoursePurchase({
+            customerId,
+            courseSlug: slug,
+            amount: isBundle ? 39.5 : 49.0,
             paymentId: paymentId || undefined,
-          },
-          create: {
-            customerId: effectiveCustomerId,
-            templateId: effectiveTemplateId.toLowerCase(),
-            status: "ACTIVE",
-            amount: 2.99,
-            paymentId: paymentId || null,
-          },
-        });
+          });
+        }
       }
-
-      await prisma.gift.updateMany({
-        where: {
-          OR: [
-            ...(giftId ? [{ id: giftId }] : []),
-            ...(slug ? [{ slug }] : []),
-          ],
-        },
-        data: {
-          status: "PAID",
-          paymentId: paymentId || undefined,
-          customerId: effectiveCustomerId || undefined,
-        },
-      });
     }
 
     if (eventId) {
