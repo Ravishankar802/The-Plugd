@@ -2,24 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Sparkles,
-  ShieldCheck,
-  Zap,
-  CheckCircle2,
-  BookOpen,
-  Layers,
-  ChevronDown,
-  Lock,
-  Flame,
-} from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Header from "@/components/Header";
 import StickyPurchaseBar from "@/components/StickyPurchaseBar";
 import CheckoutModal from "@/components/CheckoutModal";
-import ProductSlidePreview from "@/components/ProductSlidePreview";
-import CurriculumAccordion from "@/components/CurriculumAccordion";
-import { COURSES } from "@/lib/playbooks-data";
 
 const DRAFT_TESTIMONIALS = [
   {
@@ -42,15 +28,12 @@ const DRAFT_TESTIMONIALS = [
 export default function HomePageClient() {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [selectedCourseSlug, setSelectedCourseSlug] = useState<"men" | "women">("men");
-  const [activeCurriculumTab, setActiveCurriculumTab] = useState<"men" | "women">("women");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   const handleOpenCheckout = (slug?: "men" | "women") => {
     if (slug) setSelectedCourseSlug(slug);
     setCheckoutOpen(true);
   };
-
-  const currentCurriculumCourse = COURSES[activeCurriculumTab];
 
   const faqs = [
     {
@@ -140,7 +123,7 @@ export default function HomePageClient() {
       </section>
 
       {/* SECTION: EDITORIAL INTRODUCTION CARD — THE DATING PLAYBOOK */}
-      <section className="letter-wrap py-8 sm:py-12" data-depth="letter">
+      <section id="curriculum" className="letter-wrap py-8 sm:py-12" data-depth="letter">
         <article className="letter card">
           {/* Headline */}
           <h2 className="letter-opener">
@@ -211,213 +194,21 @@ export default function HomePageClient() {
         </article>
       </section>
 
-      {/* SECTION: PRODUCT PREVIEW (CINEMATIC PRESENTATION ENGINE) */}
-      <ProductSlidePreview />
-
-      {/* SECTION: WHY THIS IS DIFFERENT */}
-      <section id="how-it-works" className="py-20 sm:py-28 border-y border-[#E8E4DC] bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-16">
-            <div className="text-[11px] font-mono tracking-widest text-[#FF5500] uppercase font-bold mb-3">
-              THE PLUGD ADVANTAGE
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0E0E10] leading-tight">
-              This isn't dating advice content. <br />
-              It's a system.
-            </h2>
-            <p className="mt-4 text-lg text-[#646059]">
-              Most relationship content is built for algorithmic clicks and endless podcasts. Plugd is designed for execution.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Left Card: The Typical Content */}
-            <div className="rounded-3xl border border-neutral-200 bg-[#FAF8F5] p-8 sm:p-10">
-              <div className="text-xs font-mono uppercase text-red-500 font-bold tracking-wider mb-4">
-                ✕ Generic Dating Content
-              </div>
-              <ul className="space-y-4 text-sm text-[#646059]">
-                <li className="flex items-start gap-3">
-                  <span className="text-red-500 font-bold shrink-0">✕</span>
-                  <span><strong>10 dating tips</strong> that contradict each other every week.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-red-500 font-bold shrink-0">✕</span>
-                  <span>Endless rambling 3-hour podcast interviews with zero actionable takeaways.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-red-500 font-bold shrink-0">✕</span>
-                  <span>"Manifest your soulmate" or "Alpha male secrets" cringe gurus.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-red-500 font-bold shrink-0">✕</span>
-                  <span>Cluttered 100-page generic PDF eBooks nobody ever finishes reading.</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Right Card: The Plugd System */}
-            <div className="rounded-3xl border border-[#0E0E10] bg-[#0E0E10] p-8 sm:p-10 text-white shadow-xl">
-              <div className="text-xs font-mono uppercase text-[#FF5500] font-bold tracking-wider mb-4 flex items-center gap-1.5">
-                <Sparkles className="h-3.5 w-3.5" />
-                <span>The Plugd Playbook Engine</span>
-              </div>
-              <ul className="space-y-4 text-sm text-neutral-300">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#FF5500] font-bold shrink-0">✓</span>
-                  <span><strong>A systematic framework</strong> for understanding attraction, tension, and standards.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#FF5500] font-bold shrink-0">✓</span>
-                  <span><strong>Cinema-grade presentation decks</strong> that present one crystal-clear principle per slide.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#FF5500] font-bold shrink-0">✓</span>
-                  <span><strong>Verbatim text breakdowns</strong> comparing weak messages vs calibrated responses.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#FF5500] font-bold shrink-0">✓</span>
-                  <span><strong>Weekly field drills</strong> you can put into practice in the real world immediately.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION: WHAT'S INSIDE (CURRICULUM ACCORDION) */}
-      <section id="curriculum" className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-[#fbf5ef]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
-            <div>
-              <div className="text-[11px] font-mono tracking-widest text-[#f97316] uppercase font-bold mb-2">
-                CURRICULUM & MODULES
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1c1917]">
-                What's inside
-              </h2>
-            </div>
-
-            {/* Course Curriculum Tabs */}
-            <div className="flex items-center rounded-full border border-[#e7e5e4] bg-white p-1 self-start sm:self-auto">
-              <button
-                onClick={() => setActiveCurriculumTab("women")}
-                className={`rounded-full px-5 py-2 text-xs font-bold transition-all ${
-                  activeCurriculumTab === "women"
-                    ? "bg-[#1c1917] text-white shadow-xs"
-                    : "text-[#78716c] hover:text-[#1c1917]"
-                }`}
-              >
-                Women's Playbook
-              </button>
-              <button
-                onClick={() => setActiveCurriculumTab("men")}
-                className={`rounded-full px-5 py-2 text-xs font-bold transition-all ${
-                  activeCurriculumTab === "men"
-                    ? "bg-[#1c1917] text-white shadow-xs"
-                    : "text-[#78716c] hover:text-[#1c1917]"
-                }`}
-              >
-                Men's Playbook
-              </button>
-            </div>
-          </div>
-
-          {/* Curriculum Accordion Component */}
-          <div className="rounded-2xl border border-[#e7e5e4] bg-white p-6 sm:p-10 shadow-sm">
-            <div className="mb-6">
-              <div className="text-xl sm:text-2xl font-bold text-[#1c1917]">
-                {currentCurriculumCourse.title}
-              </div>
-              <p className="text-sm text-[#78716c] mt-1">
-                {currentCurriculumCourse.description}
-              </p>
-            </div>
-
-            <CurriculumAccordion
-              modules={currentCurriculumCourse.modules}
-              courseTitle={currentCurriculumCourse.title}
-            />
-
-            <div className="mt-10 border-t border-[#e7e5e4] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-xs font-mono text-[#78716c]">
-                Includes all 10 modules · Instant slide viewer unlock
-              </div>
-              <button
-                onClick={() => handleOpenCheckout(activeCurriculumTab)}
-                className="btn btn-primary"
-              >
-                <span className="btn-dot" aria-hidden="true" />
-                <span>Unlock this playbook → $3</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION: THE PLAYBOOK BREAKDOWN ("THE PLAYBOOK INCLUDES") */}
-      <section className="py-20 sm:py-28 border-b border-[#E8E4DC] bg-white/70">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="text-[11px] font-mono tracking-widest text-[#FF5500] uppercase font-bold mb-2">
-              EVERYTHING YOU RECEIVE
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0E0E10]">
-              The Playbook Includes
-            </h2>
-            <p className="mt-3 text-base text-[#646059]">
-              Built for immediate clarity and real behavioral changes.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="rounded-2xl border border-[#E6E1D7] bg-white p-6 shadow-xs">
-              <div className="rounded-xl bg-[#FAF8F5] p-3 w-fit text-[#FF5500] mb-4">
-                <Layers className="h-5 w-5" />
-              </div>
-              <h3 className="text-base font-bold text-[#0E0E10] mb-1">
-                10 Deep Modules
-              </h3>
-              <p className="text-xs text-[#646059] leading-relaxed">
-                Step-by-step sequential progression from primal attraction theory to long-term relationship calibration.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-[#E6E1D7] bg-white p-6 shadow-xs">
-              <div className="rounded-xl bg-[#FAF8F5] p-3 w-fit text-[#FF5500] mb-4">
-                <Sparkles className="h-5 w-5" />
-              </div>
-              <h3 className="text-base font-bold text-[#0E0E10] mb-1">
-                Keynote Slide Decks
-              </h3>
-              <p className="text-xs text-[#646059] leading-relaxed">
-                Every single lesson is built inside an interactive presentation viewer with smooth transitions.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-[#E6E1D7] bg-white p-6 shadow-xs">
-              <div className="rounded-xl bg-[#FAF8F5] p-3 w-fit text-[#FF5500] mb-4">
-                <BookOpen className="h-5 w-5" />
-              </div>
-              <h3 className="text-base font-bold text-[#0E0E10] mb-1">
-                Text & Scenario Breakdowns
-              </h3>
-              <p className="text-xs text-[#646059] leading-relaxed">
-                Verbatim message threads and real scenarios showing exact mistakes vs calibrated executions.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-[#E6E1D7] bg-white p-6 shadow-xs">
-              <div className="rounded-xl bg-[#FAF8F5] p-3 w-fit text-[#FF5500] mb-4">
-                <ShieldCheck className="h-5 w-5" />
-              </div>
-              <h3 className="text-base font-bold text-[#0E0E10] mb-1">
-                Lifetime Access
-              </h3>
-              <p className="text-xs text-[#646059] leading-relaxed">
-                No recurring fees. Permanent access to all slides and upcoming curriculum additions.
-              </p>
-            </div>
+      {/* SECTION: PURCHASE CTA */}
+      <section className="py-14 sm:py-20 relative overflow-hidden bg-[#f6f6f4]">
+        <div className="texture" aria-hidden="true" />
+        <div className="mx-auto max-w-3xl px-6 text-center flex flex-col items-center relative z-10">
+          <button
+            onClick={() => handleOpenCheckout("men")}
+            className="btn btn-primary"
+            data-cta="inline"
+          >
+            <span className="btn-dot" aria-hidden="true" />
+            <span>Get the playbook for $3</span>
+          </button>
+          <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
+            <p className="m-0">One-time payment · Instant access</p>
+            <p className="m-0">Pay once. Keep it forever.</p>
           </div>
         </div>
       </section>
@@ -492,48 +283,6 @@ export default function HomePageClient() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION: FINAL PURCHASE BANNER — ATTENTION PLAYBOOK STYLE */}
-      <section className="py-24 sm:py-28 border-b border-[#e7e5e4] bg-[#f6f6f4] relative overflow-hidden">
-        <div className="mx-auto max-w-3xl px-6 text-center flex flex-col items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="180 180 664 664"
-            width="56"
-            height="56"
-            aria-hidden="true"
-            className="mb-4"
-          >
-            <rect x="180" y="180" width="664" height="664" rx="120" fill="#1C1917" />
-            <path
-              d="M232 512 C 352 318, 672 318, 792 512 C 672 706, 352 706, 232 512 Z"
-              fill="#F6F6F4"
-            />
-            <circle cx="512" cy="512" r="108" fill="#F97316" />
-            <circle cx="512" cy="512" r="42" fill="#1C1917" />
-          </svg>
-          <h2 className="text-[28px] sm:text-[34px] font-bold tracking-[-0.02em] text-[#1c1917]">
-            The Dating Playbook
-          </h2>
-          <p className="mt-2 text-[16px] text-[#78716c]">
-            Everything you need to get a girl.
-          </p>
-          <div className="mt-8 flex flex-col items-center">
-            <button
-              onClick={() => handleOpenCheckout("men")}
-              className="btn btn-primary"
-              data-cta="final"
-            >
-              <span className="btn-dot" aria-hidden="true" />
-              <span>Get the playbook for $3</span>
-            </button>
-            <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
-              <p className="m-0">One-time payment · Instant access</p>
-              <p className="m-0">Pay once. Keep it forever.</p>
-            </div>
           </div>
         </div>
       </section>
