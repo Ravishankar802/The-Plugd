@@ -1,17 +1,23 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { getCustomerByAccessKey } from "@/lib/playbooks";
-import { hasUserPurchasedCourse } from "@/lib/playbooks";
+import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
   try {
     const url = new URL(req.url);
-    const courseSlug = url.searchParams.get("courseSlug")?.toLowerCase() || url.searchParams.get("slug")?.toLowerCase();
+    const courseSlug = url.searchParams.get("courseSlug")?.toLowerCase() || url.searchParams.get("slug")?.toLowerCase() || "men";
 
-    const cookieStore = await cookies();
-    const accessKey = cookieStore.get("plugd_access_key")?.value;
+    let accessKey: string | undefined;
+    try {
+      const cookieStore = await cookies();
+      accessKey = cookieStore.get("plugd_access_key")?.value;
+    } catch {
+      const cookieHeader = req.headers.get("cookie") || "";
+      const match = cookieHeader.match(/plugd_access_key=([^;]+)/);
+      accessKey = match ? match[1] : undefined;
+    }
 
     if (!accessKey) {
       return NextResponse.json({ owned: false });
@@ -22,16 +28,9 @@ export async function GET(req: Request) {
       return NextResponse.json({ owned: false });
     }
 
-    if (courseSlug) {
-      const owns = await hasUserPurchasedCourse(customer.id, courseSlug);
-      return NextResponse.json({
-        owned: owns,
-        email: customer.email,
-      });
-    }
-
+    const owns = await hasUserAccessToCourse(customer.id, courseSlug, customer.email);
     return NextResponse.json({
-      owned: customer.purchases.length > 0,
+      owned: owns,
       email: customer.email,
     });
   } catch (error: any) {

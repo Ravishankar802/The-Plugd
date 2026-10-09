@@ -33,6 +33,77 @@ export async function getCustomerByAccessKey(accessKey: string) {
   });
 }
 
+const COMPLIMENTARY_ACCESS_EMAILS = new Set([
+  "ravx003@gmail.com",
+]);
+
+export async function hasComplimentaryAccess(
+  email?: string | null,
+  courseSlug: string = "men"
+): Promise<boolean> {
+  if (!email) return false;
+  const cleanEmail = email.trim().toLowerCase();
+  const cleanSlug = courseSlug.toLowerCase();
+
+  // Query database entitlement
+  let grant = await prisma.complimentaryAccess.findUnique({
+    where: { email: cleanEmail },
+  });
+
+  // Persistent auto-provisioning for designated complimentary emails
+  if (!grant && COMPLIMENTARY_ACCESS_EMAILS.has(cleanEmail)) {
+    try {
+      grant = await prisma.complimentaryAccess.create({
+        data: {
+          email: cleanEmail,
+          courseSlug: "men",
+          reason: "LIFETIME_FREE_ACCESS",
+        },
+      });
+    } catch {
+      grant = await prisma.complimentaryAccess.findUnique({
+        where: { email: cleanEmail },
+      });
+    }
+  }
+
+  if (grant) {
+    return grant.courseSlug === "*" || grant.courseSlug === cleanSlug;
+  }
+
+  return false;
+}
+
+export async function hasUserAccessToCourse(
+  customerId?: string | null,
+  courseSlug: string = "men",
+  email?: string | null
+): Promise<boolean> {
+  const cleanSlug = courseSlug.toLowerCase();
+
+  // 1. Check complimentary entitlement
+  if (email) {
+    const comp = await hasComplimentaryAccess(email, cleanSlug);
+    if (comp) return true;
+  } else if (customerId) {
+    const customer = await prisma.customer.findUnique({
+      where: { id: customerId },
+      select: { email: true },
+    });
+    if (customer?.email) {
+      const comp = await hasComplimentaryAccess(customer.email, cleanSlug);
+      if (comp) return true;
+    }
+  }
+
+  // 2. Check purchased course
+  if (customerId) {
+    return await hasUserPurchasedCourse(customerId, cleanSlug);
+  }
+
+  return false;
+}
+
 export async function hasUserPurchasedCourse(customerId: string, courseSlug: string): Promise<boolean> {
   if (!customerId || !courseSlug) return false;
   const purchase = await prisma.coursePurchase.findUnique({
@@ -49,7 +120,7 @@ export async function hasUserPurchasedCourse(customerId: string, courseSlug: str
 export async function recordCoursePurchase({
   customerId,
   courseSlug,
-  amount = 49.0,
+  amount = 3.0,
   paymentId,
 }: {
   customerId: string;
@@ -77,7 +148,7 @@ export async function recordCoursePurchase({
       paymentId: paymentId || null,
       progress: {
         completedLessons: [],
-        lastViewedLessonId: cleanSlug === "men" ? "m-01-01" : "w-01-01",
+        lastViewedLessonId: cleanSlug === "men" ? "01-1" : "w-01-01",
         updatedAt: new Date().toISOString(),
       },
     },
@@ -94,50 +165,94 @@ export async function getUserPurchases(customerId: string) {
 
 export async function updateCourseProgress({
   customerId,
+  customerEmail,
   courseSlug,
   lessonId,
   isCompleted = false,
 }: {
-  customerId: string;
+  customerId?: string;
+  customerEmail?: string;
   courseSlug: string;
   lessonId: string;
   isCompleted?: boolean;
 }) {
   const cleanSlug = courseSlug.toLowerCase();
-  const existing = await prisma.coursePurchase.findUnique({
-    where: {
-      customerId_courseSlug: {
-        customerId,
-        courseSlug: cleanSlug,
+
+  // 1. Check purchase record first
+  if (customerId) {
+    const existing = await prisma.coursePurchase.findUnique({
+      where: {
+        customerId_courseSlug: {
+          customerId,
+          courseSlug: cleanSlug,
+        },
       },
-    },
-  });
+    });
 
-  if (!existing) return null;
+    if (existing) {
+      const currentProgress = (existing.progress as any) || {
+        completedLessons: [],
+        lastViewedLessonId: lessonId,
+      };
 
-  const currentProgress = (existing.progress as any) || {
-    completedLessons: [],
-    lastViewedLessonId: lessonId,
-  };
+      const completedSet = new Set<string>(currentProgress.completedLessons || []);
+      if (isCompleted) {
+        completedSet.add(lessonId);
+      }
 
-  const completedSet = new Set<string>(currentProgress.completedLessons || []);
-  if (isCompleted) {
-    completedSet.add(lessonId);
+      const updatedProgress = {
+        ...currentProgress,
+        completedLessons: Array.from(completedSet),
+        lastViewedLessonId: lessonId,
+        updatedAt: new Date().toISOString(),
+      };
+
+      return await prisma.coursePurchase.update({
+        where: { id: existing.id },
+        data: { progress: updatedProgress },
+      });
+    }
   }
 
-  const updatedProgress = {
-    ...currentProgress,
-    completedLessons: Array.from(completedSet),
-    lastViewedLessonId: lessonId,
-    updatedAt: new Date().toISOString(),
-  };
+  // 2. Check complimentary access record
+  let email = customerEmail?.trim().toLowerCase();
+  if (!email && customerId) {
+    const cust = await prisma.customer.findUnique({
+      where: { id: customerId },
+      select: { email: true },
+    });
+    email = cust?.email?.trim().toLowerCase();
+  }
 
-  return await prisma.coursePurchase.update({
-    where: {
-      id: existing.id,
-    },
-    data: {
-      progress: updatedProgress,
-    },
-  });
+  if (email) {
+    const compGrant = await prisma.complimentaryAccess.findUnique({
+      where: { email },
+    });
+
+    if (compGrant) {
+      const currentProgress = (compGrant.progress as any) || {
+        completedLessons: [],
+        lastViewedLessonId: lessonId,
+      };
+
+      const completedSet = new Set<string>(currentProgress.completedLessons || []);
+      if (isCompleted) {
+        completedSet.add(lessonId);
+      }
+
+      const updatedProgress = {
+        ...currentProgress,
+        completedLessons: Array.from(completedSet),
+        lastViewedLessonId: lessonId,
+        updatedAt: new Date().toISOString(),
+      };
+
+      return await prisma.complimentaryAccess.update({
+        where: { id: compGrant.id },
+        data: { progress: updatedProgress },
+      });
+    }
+  }
+
+  return null;
 }

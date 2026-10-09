@@ -13,7 +13,7 @@ interface StickyPurchaseBarProps {
 
 export default function StickyPurchaseBar({
   courseTitle,
-  price = 49,
+  price = 3,
   onOpenCheckout,
   courseSlug,
   isLanding = false,

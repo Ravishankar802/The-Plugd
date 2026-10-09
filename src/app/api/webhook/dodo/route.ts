@@ -47,10 +47,10 @@ export async function POST(req: Request) {
 
     const metadata = data?.metadata || {};
     const paymentId = data?.payment_id || null;
-    const courseSlug = metadata?.courseSlug || null;
-    const isBundle = metadata?.isBundle === "true";
+    const courseSlug = (metadata?.courseSlug || "men").toLowerCase();
     let customerId = metadata?.customerId || null;
     const customerEmail = metadata?.customerEmail || data?.customer?.email || null;
+    const amount = Number(metadata?.amount) || 3.0;
 
     if (type === "payment.succeeded") {
       if (!customerId && customerEmail) {
@@ -65,16 +65,13 @@ export async function POST(req: Request) {
         customerId = customer.id;
       }
 
-      if (customerId && courseSlug) {
-        const slugsToGrant = isBundle ? ["men", "women"] : [courseSlug];
-        for (const slug of slugsToGrant) {
-          await recordCoursePurchase({
-            customerId,
-            courseSlug: slug,
-            amount: isBundle ? 39.5 : 49.0,
-            paymentId: paymentId || undefined,
-          });
-        }
+      if (customerId) {
+        await recordCoursePurchase({
+          customerId,
+          courseSlug,
+          amount,
+          paymentId: paymentId || undefined,
+        });
       }
     }
 

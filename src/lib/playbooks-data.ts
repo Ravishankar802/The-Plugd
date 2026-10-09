@@ -769,8 +769,8 @@ export const COURSES: Record<"men" | "women", Course> = {
       "A practical playbook for men who want to become significantly more attractive, confident, socially capable, emotionally calibrated, and genuinely great at dating.",
     description:
       "A practical playbook for becoming more attractive, confident, socially capable, and genuinely better at dating.",
-    price: 49,
-    originalPrice: 129,
+    price: 3,
+    originalPrice: 49,
     currency: "USD",
     modulesCount: 10,
     lessonsCount: 46,

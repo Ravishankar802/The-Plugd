@@ -2,40 +2,31 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { X, Check, Lock, Sparkles, ArrowRight, Loader2 } from "lucide-react";
+import { X, Check, Lock, Loader2 } from "lucide-react";
 
 interface CheckoutModalProps {
   isOpen: boolean;
   onClose: () => void;
-  defaultCourseSlug?: "men" | "women";
+  defaultCourseSlug?: string;
 }
 
 export default function CheckoutModal({
   isOpen,
   onClose,
-  defaultCourseSlug = "men",
 }: CheckoutModalProps) {
   const router = useRouter();
-  const [selectedPlan, setSelectedPlan] = useState<"men" | "women" | "bundle">(
-    defaultCourseSlug || "men"
-  );
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   if (!isOpen) return null;
 
-  const getPrice = () => {
-    if (selectedPlan === "bundle") return 79;
-    return 49;
-  };
-
   const handleCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
-    if (!email || !email.includes("@")) {
+    const cleanEmail = email.trim().toLowerCase();
+    if (!cleanEmail || !cleanEmail.includes("@")) {
       setError("Please enter a valid email address to receive your playbook access.");
       return;
     }
@@ -43,15 +34,12 @@ export default function CheckoutModal({
     try {
       setLoading(true);
 
-      const targetSlug = selectedPlan === "bundle" ? "men" : selectedPlan;
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          courseSlug: targetSlug,
-          isBundle: selectedPlan === "bundle",
-          email: email.trim(),
-          name: name.trim(),
+          email: cleanEmail,
+          courseSlug: "men",
         }),
       });
 
@@ -66,7 +54,7 @@ export default function CheckoutModal({
       } else if (data.redirectUrl) {
         router.push(data.redirectUrl);
       } else {
-        router.push(`/my-playbooks?purchased=${targetSlug}`);
+        router.push("/my-playbooks?purchased=men");
       }
     } catch (err: any) {
       console.error(err);
@@ -76,7 +64,10 @@ export default function CheckoutModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-md animate-scale-reveal">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-md animate-scale-reveal"
+      onClick={onClose}
+    >
       <div
         className="relative w-full max-w-lg overflow-hidden rounded-3xl bg-[#FAF8F5] p-6 sm:p-8 text-[#0E0E10] shadow-2xl border border-[#E6E1D7]"
         onClick={(e) => e.stopPropagation()}
@@ -84,6 +75,8 @@ export default function CheckoutModal({
         {/* Close Button */}
         <button
           onClick={onClose}
+          type="button"
+          aria-label="Close checkout modal"
           className="absolute right-5 top-5 rounded-full p-2 text-neutral-400 hover:bg-[#EFECE6] hover:text-[#0E0E10] transition-colors"
         >
           <X className="h-5 w-5" />
@@ -91,154 +84,75 @@ export default function CheckoutModal({
 
         {/* Modal Header */}
         <div className="mb-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#E6E1D7] bg-white px-3 py-1 text-[11px] font-mono tracking-wider text-[#646059] uppercase mb-3">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#FED7AA] bg-[#FFF7ED] px-3 py-1 text-[11px] font-mono tracking-wider text-[#FF5500] uppercase mb-3 font-bold">
             <span className="h-2 w-2 rounded-full bg-[#FF5500]" />
             Direct Instant Access
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0E0E10]">
-            Get The Playbook
+            Get The Dating Playbook
           </h2>
           <p className="mt-1 text-sm text-[#646059]">
             One-time purchase. Instant digital access. No subscriptions or hidden fees.
           </p>
         </div>
 
-        {/* Course Option Selector */}
-        <div className="space-y-3 mb-6">
-          {/* For Men Option */}
-          <div
-            onClick={() => setSelectedPlan("men")}
-            className={`cursor-pointer rounded-2xl border p-4 transition-all ${
-              selectedPlan === "men"
-                ? "border-[#0E0E10] bg-white ring-1 ring-[#0E0E10] shadow-sm"
-                : "border-[#E6E1D7] bg-[#F6F3ED] hover:border-neutral-300"
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div
-                  className={`flex h-5 w-5 items-center justify-center rounded-full border transition-all ${
-                    selectedPlan === "men"
-                      ? "border-[#0E0E10] bg-[#0E0E10] text-white"
-                      : "border-neutral-300 bg-white"
-                  }`}
-                >
-                  {selectedPlan === "men" && <Check className="h-3 w-3" />}
-                </div>
-                <div>
-                  <div className="text-sm font-bold text-[#0E0E10]">
-                    HOW TO DATE THE HOTTEST WOMEN
-                  </div>
-                  <div className="text-xs text-[#646059]">For Men · 10 Modules · Complete Playbook</div>
-                </div>
+        {/* Product Card */}
+        <div className="rounded-2xl border border-[#E6E1D7] bg-white p-5 sm:p-6 shadow-xs mb-6">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <div className="inline-flex items-center gap-1.5 rounded-md bg-[#FAF8F5] border border-[#E6E1D7] px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-[#646059] mb-2">
+                10 Modules · Complete Playbook
               </div>
-              <div className="text-right">
-                <div className="text-base font-bold text-[#0E0E10]">$49</div>
-                <div className="text-[10px] text-neutral-400 line-through">$129</div>
+              <h3 className="text-base sm:text-lg font-bold text-[#0E0E10] leading-snug">
+                The Dating Playbook
+              </h3>
+              <p className="mt-1.5 text-xs sm:text-[13px] text-[#646059] leading-relaxed">
+                A practical, 10-module guide to understanding attraction, building confidence, meeting women, dating, and developing meaningful relationships.
+              </p>
+            </div>
+            <div className="text-right shrink-0">
+              <div className="text-2xl sm:text-3xl font-black text-[#0E0E10] tracking-tight">
+                $3
+              </div>
+              <div className="text-[10px] font-mono font-bold text-[#8E8A82] uppercase mt-0.5">
+                USD
               </div>
             </div>
           </div>
 
-          {/* For Women Option */}
-          <div
-            onClick={() => setSelectedPlan("women")}
-            className={`cursor-pointer rounded-2xl border p-4 transition-all ${
-              selectedPlan === "women"
-                ? "border-[#0E0E10] bg-white ring-1 ring-[#0E0E10] shadow-sm"
-                : "border-[#E6E1D7] bg-[#F6F3ED] hover:border-neutral-300"
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div
-                  className={`flex h-5 w-5 items-center justify-center rounded-full border transition-all ${
-                    selectedPlan === "women"
-                      ? "border-[#0E0E10] bg-[#0E0E10] text-white"
-                      : "border-neutral-300 bg-white"
-                  }`}
-                >
-                  {selectedPlan === "women" && <Check className="h-3 w-3" />}
-                </div>
-                <div>
-                  <div className="text-sm font-bold text-[#0E0E10]">
-                    HOW TO GET THE MAN OF YOUR DREAMS
-                  </div>
-                  <div className="text-xs text-[#646059]">For Women · 10 Modules · Complete Playbook</div>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-base font-bold text-[#0E0E10]">$49</div>
-                <div className="text-[10px] text-neutral-400 line-through">$129</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Complete Bundle Option */}
-          <div
-            onClick={() => setSelectedPlan("bundle")}
-            className={`cursor-pointer rounded-2xl border p-4 transition-all relative overflow-hidden ${
-              selectedPlan === "bundle"
-                ? "border-[#FF5500] bg-white ring-1 ring-[#FF5500] shadow-sm"
-                : "border-[#E6E1D7] bg-[#F6F3ED] hover:border-neutral-300"
-            }`}
-          >
-            <div className="absolute right-0 top-0 bg-[#FF5500] text-white text-[9px] font-bold px-2 py-0.5 rounded-bl uppercase font-mono">
-              Save 20%
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div
-                  className={`flex h-5 w-5 items-center justify-center rounded-full border transition-all ${
-                    selectedPlan === "bundle"
-                      ? "border-[#FF5500] bg-[#FF5500] text-white"
-                      : "border-neutral-300 bg-white"
-                  }`}
-                >
-                  {selectedPlan === "bundle" && <Check className="h-3 w-3" />}
-                </div>
-                <div>
-                  <div className="text-sm font-bold text-[#0E0E10] flex items-center gap-1.5">
-                    <span>THE COMPLETE DUO BUNDLE</span>
-                    <Sparkles className="h-3.5 w-3.5 text-[#FF5500]" />
-                  </div>
-                  <div className="text-xs text-[#646059]">Both Playbooks Included · All 20 Modules</div>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-base font-bold text-[#0E0E10]">$79</div>
-                <div className="text-[10px] text-neutral-400 line-through">$258</div>
-              </div>
-            </div>
+          <div className="mt-4 pt-3.5 border-t border-[#F0EEE9] flex flex-wrap items-center justify-between gap-2 text-xs text-[#646059]">
+            <span className="flex items-center gap-1.5 font-medium">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#FF5500]" />
+              One-time payment
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <Check className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
+              Instant digital access with lifetime access
+            </span>
           </div>
         </div>
 
         {/* Checkout Form */}
         <form onSubmit={handleCheckout} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-[#0E0E10] mb-1.5">
-              Your Email Address (For Playbook Access)
-            </label>
+            <div className="flex items-center justify-between mb-1.5">
+              <label htmlFor="checkout-email" className="block text-xs font-semibold text-[#0E0E10]">
+                Your Email Address
+              </label>
+              <span className="text-[11px] font-mono text-[#8E8A82]">Required</span>
+            </div>
             <input
+              id="checkout-email"
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="alex@example.com"
-              className="w-full rounded-xl border border-[#E6E1D7] bg-white px-4 py-2.5 text-sm text-[#0E0E10] placeholder:text-neutral-400 focus:border-[#0E0E10] focus:outline-none focus:ring-1 focus:ring-[#0E0E10]"
+              placeholder="you@example.com"
+              className="w-full rounded-xl border border-[#E6E1D7] bg-white px-4 py-2.5 text-sm text-[#0E0E10] placeholder:text-neutral-400 focus:border-[#0E0E10] focus:outline-none focus:ring-1 focus:ring-[#0E0E10] transition-colors"
             />
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-[#0E0E10] mb-1.5">
-              Your First Name
-            </label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Alex"
-              className="w-full rounded-xl border border-[#E6E1D7] bg-white px-4 py-2.5 text-sm text-[#0E0E10] placeholder:text-neutral-400 focus:border-[#0E0E10] focus:outline-none focus:ring-1 focus:ring-[#0E0E10]"
-            />
+            <p className="mt-1.5 text-[11px] text-[#646059] leading-normal">
+              Use the email for purchase verification and playbook access.
+            </p>
           </div>
 
           {error && (
@@ -247,11 +161,11 @@ export default function CheckoutModal({
             </div>
           )}
 
-          {/* Submit Button */}
+          {/* Primary Submit Button */}
           <button
             type="submit"
             disabled={loading}
-            className="group w-full flex items-center justify-center gap-2 rounded-2xl bg-[#0E0E10] py-3.5 text-sm font-bold text-white shadow-lg shadow-black/10 transition-all hover:bg-neutral-800 disabled:opacity-70"
+            className="group w-full flex items-center justify-center gap-2 rounded-2xl bg-[#0E0E10] py-3.5 text-sm font-bold text-white shadow-lg shadow-black/10 transition-all hover:bg-neutral-800 disabled:opacity-70 cursor-pointer"
           >
             {loading ? (
               <>
@@ -260,21 +174,20 @@ export default function CheckoutModal({
               </>
             ) : (
               <>
-                <span>Unlock Playbook · ${getPrice()}</span>
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <span>Unlock The Dating Playbook · $3 →</span>
               </>
             )}
           </button>
 
           {/* Trust badges */}
-          <div className="flex items-center justify-center gap-4 pt-1 text-[11px] text-[#8E8A82]">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-1 text-[11px] text-[#8E8A82]">
             <span className="flex items-center gap-1">
               <Lock className="h-3 w-3" /> Secure 256-Bit SSL
             </span>
             <span>•</span>
-            <span>Permanent Lifetime Access</span>
+            <span>Instant Digital Access</span>
             <span>•</span>
-            <span>No Recurring Billing</span>
+            <span>Lifetime Access</span>
           </div>
         </form>
       </div>

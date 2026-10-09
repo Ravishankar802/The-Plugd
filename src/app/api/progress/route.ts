@@ -13,8 +13,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing parameters" }, { status: 400 });
     }
 
-    const cookieStore = await cookies();
-    const accessKey = cookieStore.get("plugd_access_key")?.value;
+    let accessKey: string | undefined;
+    try {
+      const cookieStore = await cookies();
+      accessKey = cookieStore.get("plugd_access_key")?.value;
+    } catch {
+      const cookieHeader = req.headers.get("cookie") || "";
+      const match = cookieHeader.match(/plugd_access_key=([^;]+)/);
+      accessKey = match ? match[1] : undefined;
+    }
 
     if (!accessKey) {
       return NextResponse.json({ success: false, guest: true });
@@ -27,6 +34,7 @@ export async function POST(req: Request) {
 
     await updateCourseProgress({
       customerId: customer.id,
+      customerEmail: customer.email,
       courseSlug,
       lessonId,
       isCompleted,
