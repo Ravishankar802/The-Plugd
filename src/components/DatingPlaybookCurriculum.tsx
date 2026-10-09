@@ -4,7 +4,13 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { DATING_PLAYBOOK_MODULES } from "@/lib/dating-playbook-curriculum";
 
-export default function DatingPlaybookCurriculum() {
+interface DatingPlaybookCurriculumProps {
+  onOpenCheckout?: (slug?: "men" | "women") => void;
+}
+
+export default function DatingPlaybookCurriculum({
+  onOpenCheckout,
+}: DatingPlaybookCurriculumProps) {
   const [openModuleIds, setOpenModuleIds] = useState<string[]>(() =>
     DATING_PLAYBOOK_MODULES.map((m) => m.id)
   );
@@ -20,9 +26,6 @@ export default function DatingPlaybookCurriculum() {
       id="curriculum"
       className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-[#fbf5ef] relative overflow-hidden scroll-mt-20"
     >
-      {/* Subtle Grid Texture */}
-      <div className="texture" aria-hidden="true" />
-
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -104,6 +107,27 @@ export default function DatingPlaybookCurriculum() {
               </div>
             );
           })}
+        </div>
+
+        {/* Post-Curriculum Purchase Section */}
+        <div className="mt-14 sm:mt-16 text-center max-w-xl mx-auto flex flex-col items-center">
+          <div className="space-y-1.5 text-[15.5px] sm:text-[16.5px] font-semibold text-[#1c1917] mb-6">
+            <p className="m-0">Written version of every lesson (markdown).</p>
+            <p className="m-0">Lifetime access and every future update.</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => onOpenCheckout?.("men")}
+            className="btn btn-primary"
+            data-cta="curriculum-final"
+          >
+            <span className="btn-dot" aria-hidden="true" />
+            <span>Get the playbook for $3 →</span>
+          </button>
+          <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
+            <p className="m-0">One-time payment · Instant access</p>
+            <p className="m-0">Pay once. Keep it forever.</p>
+          </div>
         </div>
       </div>
     </section>

@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import StickyPurchaseBar from "@/components/StickyPurchaseBar";
 import CheckoutModal from "@/components/CheckoutModal";
 import DatingPlaybookCurriculum from "@/components/DatingPlaybookCurriculum";
+import AudienceFitSection from "@/components/AudienceFitSection";
 
 const DRAFT_TESTIMONIALS = [
   {
@@ -100,9 +101,6 @@ export default function HomePageClient() {
 
   return (
     <div className="min-h-screen bg-[#f6f6f4] text-[#1c1917] font-sans antialiased selection:bg-[#f97316] selection:text-white relative">
-      {/* Subtle Background Grid Texture */}
-      <div className="texture" aria-hidden="true" />
-
       {/* Clean Sticky Header matching Attention Playbook */}
       <Header isLanding={true} onOpenCheckout={handleOpenCheckout} />
 
@@ -230,9 +228,8 @@ export default function HomePageClient() {
       </section>
 
       {/* SECTION: PURCHASE CTA */}
-      <section className="pt-10 sm:pt-14 pb-8 sm:pb-10 relative overflow-hidden bg-[#f6f6f4]">
-        <div className="texture" aria-hidden="true" />
-        <div className="mx-auto max-w-3xl px-6 text-center flex flex-col items-center relative z-10">
+      <section className="pt-10 sm:pt-14 pb-8 sm:pb-10 relative bg-[#f6f6f4]">
+        <div className="mx-auto max-w-3xl px-6 text-center flex flex-col items-center">
           <button
             onClick={() => handleOpenCheckout("men")}
             className="btn btn-primary"
@@ -278,7 +275,10 @@ export default function HomePageClient() {
       </section>
 
       {/* SECTION: 8-MODULE DATING PLAYBOOK CURRICULUM */}
-      <DatingPlaybookCurriculum />
+      <DatingPlaybookCurriculum onOpenCheckout={handleOpenCheckout} />
+
+      {/* SECTION: AUDIENCE FIT ("IS THE DATING PLAYBOOK RIGHT FOR YOU?") */}
+      <AudienceFitSection />
 
       {/* SECTION: FAQ */}
       <section id="faq" className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-white scroll-mt-20">
