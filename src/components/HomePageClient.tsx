@@ -6,6 +6,7 @@ import { ChevronDown } from "lucide-react";
 import Header from "@/components/Header";
 import StickyPurchaseBar from "@/components/StickyPurchaseBar";
 import CheckoutModal from "@/components/CheckoutModal";
+import DatingPlaybookCurriculum from "@/components/DatingPlaybookCurriculum";
 
 const DRAFT_TESTIMONIALS = [
   {
@@ -123,7 +124,7 @@ export default function HomePageClient() {
       </section>
 
       {/* SECTION: EDITORIAL INTRODUCTION CARD — THE DATING PLAYBOOK */}
-      <section id="curriculum" className="letter-wrap py-8 sm:py-12" data-depth="letter">
+      <section className="letter-wrap py-8 sm:py-12" data-depth="letter">
         <article className="letter card">
           {/* Headline */}
           <h2 className="letter-opener">
@@ -195,7 +196,7 @@ export default function HomePageClient() {
       </section>
 
       {/* SECTION: PURCHASE CTA */}
-      <section className="py-14 sm:py-20 relative overflow-hidden bg-[#f6f6f4]">
+      <section className="pt-10 sm:pt-14 pb-8 sm:pb-10 relative overflow-hidden bg-[#f6f6f4]">
         <div className="texture" aria-hidden="true" />
         <div className="mx-auto max-w-3xl px-6 text-center flex flex-col items-center relative z-10">
           <button
@@ -214,7 +215,7 @@ export default function HomePageClient() {
       </section>
 
       {/* SECTION: SOCIAL PROOF ("IN THEIR WORDS") */}
-      <section id="testimonials" className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-[#f6f6f4]">
+      <section id="testimonials" className="pt-8 sm:pt-10 pb-16 sm:pb-24 border-b border-[#e7e5e4] bg-[#f6f6f4] scroll-mt-20">
         <div className="mx-auto max-w-[1200px] px-6">
           <div className="text-center mb-12 sm:mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1c1917]">
@@ -242,8 +243,11 @@ export default function HomePageClient() {
         </div>
       </section>
 
+      {/* SECTION: 8-MODULE DATING PLAYBOOK CURRICULUM */}
+      <DatingPlaybookCurriculum />
+
       {/* SECTION: FAQ */}
-      <section id="faq" className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-white">
+      <section id="faq" className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-white scroll-mt-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="text-[11px] font-mono tracking-widest text-[#f97316] uppercase font-bold mb-2">
