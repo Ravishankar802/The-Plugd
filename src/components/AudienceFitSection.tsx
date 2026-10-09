@@ -1,5 +1,7 @@
 "use client";
 
+import { Check } from "lucide-react";
+
 export default function AudienceFitSection() {
   const checklistItems = [
     "You want to feel more confident around women and understand what creates genuine attraction.",
@@ -19,20 +21,18 @@ export default function AudienceFitSection() {
           </h2>
         </div>
 
-        {/* Audience Fit Checklist Card */}
-        <div className="rounded-2xl border border-[#e7e5e4] bg-white shadow-xs overflow-hidden">
-          <ul className="divide-y divide-[#e7e5e4] list-none p-0 m-0">
+        {/* Audience Fit Checklist Card — Warm Cream Card with Subtle Orange Border */}
+        <div className="rounded-2xl border border-[#fed7aa] bg-[#fff7ed] shadow-xs overflow-hidden">
+          <ul className="divide-y divide-[#f1e6da] list-none p-0 m-0">
             {checklistItems.map((text, idx) => (
               <li
                 key={idx}
-                className="py-4 px-5 sm:px-7 flex items-start gap-4 text-[15.5px] sm:text-[16px] text-[#1c1917] leading-relaxed"
+                className="py-4 sm:py-5 px-6 sm:px-8 flex items-start gap-4 text-[15.5px] sm:text-[16px] text-[#1c1917] leading-relaxed"
               >
-                <span
-                  className="text-[#f97316] font-bold text-lg shrink-0 select-none pt-0.5"
+                <Check
+                  className="h-5 w-5 text-[#f97316] shrink-0 mt-0.5 stroke-[2.5]"
                   aria-hidden="true"
-                >
-                  ✓
-                </span>
+                />
                 <span>{text}</span>
               </li>
             ))}
