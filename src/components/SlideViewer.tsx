@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -47,80 +47,6 @@ export default function SlideViewer({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [slideDirection, setSlideDirection] = useState<"next" | "prev">("next");
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
-
-  // Viewport Auto-Fit Scaling
-  const containerRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
-  const [naturalDimensions, setNaturalDimensions] = useState<{ width: number; height: number }>({
-    width: 0,
-    height: 0,
-  });
-
-  const calculateFit = useCallback(() => {
-    if (!containerRef.current || !cardRef.current) return;
-    const container = containerRef.current;
-    const card = cardRef.current;
-
-    const bufferX = window.innerWidth < 640 ? 16 : 32;
-    const bufferY = window.innerWidth < 640 ? 12 : 24;
-    const availWidth = Math.max(container.clientWidth - bufferX, 280);
-    const availHeight = Math.max(container.clientHeight - bufferY, 180);
-
-    const unscaledWidth = card.offsetWidth;
-    const unscaledHeight = card.offsetHeight;
-
-    if (unscaledWidth > 0 && unscaledHeight > 0) {
-      setNaturalDimensions({ width: unscaledWidth, height: unscaledHeight });
-      const scaleX = availWidth / unscaledWidth;
-      const scaleY = availHeight / unscaledHeight;
-      const fitScale = Math.min(1, scaleX, scaleY);
-      setScale(Math.max(0.45, Number(fitScale.toFixed(3))));
-    }
-  }, []);
-
-  // Recalculate scale on slide changes
-  useEffect(() => {
-    setScale(1);
-    setNaturalDimensions({ width: 0, height: 0 });
-    const raf = requestAnimationFrame(() => {
-      calculateFit();
-    });
-    const timer = setTimeout(calculateFit, 60);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      clearTimeout(timer);
-    };
-  }, [currentIndex, lesson.id, calculateFit]);
-
-  // Recalculate on resize and fullscreen state changes
-  useEffect(() => {
-    const handleResize = () => calculateFit();
-    window.addEventListener("resize", handleResize);
-
-    const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-      setTimeout(calculateFit, 80);
-    };
-
-    document.addEventListener("fullscreenchange", handleFullscreenChange);
-    document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      document.removeEventListener("fullscreenchange", handleFullscreenChange);
-      document.removeEventListener("webkitfullscreenchange", handleFullscreenChange);
-    };
-  }, [calculateFit]);
-
-  // ResizeObserver for container bounds changes
-  useEffect(() => {
-    if (!containerRef.current) return;
-    const ro = new ResizeObserver(() => calculateFit());
-    ro.observe(containerRef.current);
-    return () => ro.disconnect();
-  }, [calculateFit]);
 
   const totalSlides = lesson.slides?.length || 1;
   const currentSlide: Slide = lesson.slides?.[currentIndex] || lesson.slides?.[0];
@@ -235,15 +161,15 @@ export default function SlideViewer({
     <div
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className={`relative flex h-[100dvh] max-h-[100dvh] w-full flex-col font-sans antialiased overflow-hidden select-none ${
+      className={`relative flex min-h-screen flex-col font-sans antialiased ${
         isModule1
           ? "bg-[#faf8f5] text-[#1c1917] selection:bg-[#f97316] selection:text-white"
           : "bg-[#0A0A0C] text-white selection:bg-[#FF5500] selection:text-white"
-      }`}
+      } ${isFullscreen ? "p-0" : ""}`}
     >
       {/* Top Header Controls Bar */}
       <header
-        className={`sticky top-0 z-50 flex h-14 sm:h-16 shrink-0 items-center justify-between border-b px-4 sm:px-8 backdrop-blur-md ${
+        className={`sticky top-0 z-50 flex h-16 items-center justify-between border-b px-4 sm:px-8 backdrop-blur-md ${
           isModule1
             ? "border-[#e7e5e4] bg-[#faf8f5]/90 text-[#1c1917]"
             : "border-neutral-800/80 bg-[#121216]/90 text-white"
@@ -375,35 +301,17 @@ export default function SlideViewer({
       </header>
 
       {/* Main Slide Presentation Stage */}
-      <main
-        ref={containerRef}
-        className="relative flex flex-1 min-h-0 w-full items-center justify-center p-2 sm:p-4 md:p-6 overflow-hidden"
-      >
+      <main className="relative flex flex-1 items-center justify-center p-4 sm:p-8 lg:p-14 overflow-hidden">
         <div
-          className="relative flex items-center justify-center shrink-0"
-          style={{
-            width: scale < 1 && naturalDimensions.width > 0 ? `${naturalDimensions.width * scale}px` : "100%",
-            height: scale < 1 && naturalDimensions.height > 0 ? `${naturalDimensions.height * scale}px` : "auto",
-            maxWidth: "100%",
-            maxHeight: "100%",
-          }}
+          key={`${lesson.id}-${currentIndex}`}
+          className={`relative w-full max-w-5xl rounded-3xl p-6 sm:p-12 lg:p-16 transition-all ${
+            isModule1
+              ? "border border-[#e7e5e4] bg-white shadow-xs text-[#1c1917]"
+              : "border border-neutral-800/80 bg-gradient-to-b from-[#141418] via-[#101014] to-[#0D0D10] shadow-2xl text-white"
+          } ${slideDirection === "next" ? "animate-slide-right" : "animate-slide-left"}`}
         >
-          <div
-            ref={cardRef}
-            key={`${lesson.id}-${currentIndex}`}
-            style={{
-              transform: scale < 1 ? `scale(${scale})` : undefined,
-              transformOrigin: "center center",
-              width: scale < 1 && naturalDimensions.width > 0 ? `${naturalDimensions.width}px` : undefined,
-            }}
-            className={`relative w-full max-w-5xl rounded-3xl p-5 sm:p-8 md:p-10 lg:p-12 transition-transform duration-100 ${
-              isModule1
-                ? "border border-[#e7e5e4] bg-white shadow-xs text-[#1c1917]"
-                : "border border-neutral-800/80 bg-gradient-to-b from-[#141418] via-[#101014] to-[#0D0D10] shadow-2xl text-white"
-            } ${slideDirection === "next" ? "animate-slide-right" : "animate-slide-left"}`}
-          >
-            {/* Slide Top Eyebrow Tag */}
-            <div className="flex items-center justify-between mb-4 sm:mb-6 md:mb-8">
+          {/* Slide Top Eyebrow Tag */}
+          <div className="flex items-center justify-between mb-8 sm:mb-12">
             <div
               className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1 text-[11px] font-mono tracking-widest uppercase font-bold ${
                 isModule1
@@ -430,7 +338,7 @@ export default function SlideViewer({
 
           {/* SLIDE TYPE: TITLE */}
           {currentSlide?.type === "TITLE" && (
-            <div className="py-4 sm:py-8">
+            <div className="py-6 sm:py-12">
               <h1
                 className={`text-4xl sm:text-6xl font-bold tracking-tight leading-[1.08] mb-6 ${
                   isModule1 ? "text-[#1c1917]" : "text-white font-black"
@@ -452,7 +360,7 @@ export default function SlideViewer({
 
           {/* SLIDE TYPE: BIG_STATEMENT */}
           {currentSlide?.type === "BIG_STATEMENT" && (
-            <div className="py-4 sm:py-8 max-w-4xl">
+            <div className="py-8 sm:py-14 max-w-4xl">
               <h2
                 className={`text-3xl sm:text-5xl font-bold tracking-tight leading-tight mb-6 ${
                   isModule1 ? "text-[#1c1917]" : "text-white"
@@ -474,7 +382,7 @@ export default function SlideViewer({
 
           {/* SLIDE TYPE: QUOTE */}
           {currentSlide?.type === "QUOTE" && (
-            <div className="py-4 sm:py-8 max-w-3xl">
+            <div className="py-8 sm:py-12 max-w-3xl">
               <div
                 className={`text-5xl sm:text-6xl font-serif mb-2 ${
                   isModule1 ? "text-[#f97316]" : "text-[#FF5500]"
@@ -972,7 +880,7 @@ export default function SlideViewer({
 
           {/* SLIDE TYPE: CHAPTER_END */}
           {currentSlide?.type === "CHAPTER_END" && (
-            <div className="py-4 sm:py-8 text-center max-w-xl mx-auto">
+            <div className="py-8 sm:py-14 text-center max-w-xl mx-auto">
               <div
                 className={`mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full ${
                   isModule1
@@ -1018,13 +926,12 @@ export default function SlideViewer({
               )}
             </div>
           )}
-          </div>
         </div>
       </main>
 
       {/* Bottom Sticky Slide Navigation Bar */}
       <footer
-        className={`sticky bottom-0 z-40 flex h-16 sm:h-18 shrink-0 items-center justify-between border-t px-4 sm:px-8 backdrop-blur-md ${
+        className={`sticky bottom-0 z-40 flex h-20 items-center justify-between border-t px-4 sm:px-8 backdrop-blur-md ${
           isModule1
             ? "border-[#e7e5e4] bg-[#faf8f5]/90 text-[#1c1917]"
             : "border-neutral-800/80 bg-[#121216]/90 text-white"
