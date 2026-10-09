@@ -11,9 +11,7 @@ interface DatingPlaybookCurriculumProps {
 export default function DatingPlaybookCurriculum({
   onOpenCheckout,
 }: DatingPlaybookCurriculumProps) {
-  const [openModuleIds, setOpenModuleIds] = useState<string[]>(() =>
-    DATING_PLAYBOOK_MODULES.map((m) => m.id)
-  );
+  const [openModuleIds, setOpenModuleIds] = useState<string[]>([]);
 
   const toggleModule = (id: string) => {
     setOpenModuleIds((prev) =>
@@ -41,7 +39,7 @@ export default function DatingPlaybookCurriculum({
         </div>
 
         {/* 10-Module Accordion Cards */}
-        <div className="max-w-[760px] mx-auto space-y-3.5">
+        <div className="max-w-[760px] mx-auto space-y-3">
           {DATING_PLAYBOOK_MODULES.map((module) => {
             const isOpen = openModuleIds.includes(module.id);
             return (
@@ -53,28 +51,36 @@ export default function DatingPlaybookCurriculum({
                   type="button"
                   onClick={() => toggleModule(module.id)}
                   aria-expanded={isOpen}
-                  className="w-full text-left p-5 sm:p-6 group cursor-pointer focus-visible:outline-2 focus-visible:outline-[#1c1917] transition-colors"
+                  className={`w-full text-left group cursor-pointer focus-visible:outline-2 focus-visible:outline-[#1c1917] transition-all duration-200 ${
+                    isOpen ? "p-5 sm:p-6" : "px-5 py-4 sm:px-6 sm:py-4.5"
+                  }`}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0 flex-1">
                       <div className="text-xs font-mono font-bold text-[#f97316] uppercase tracking-wider mb-1">
                         Module {module.number}
                       </div>
-                      <h3 className="text-lg sm:text-[19px] font-bold text-[#1c1917] tracking-tight group-hover:text-[#f97316] transition-colors">
+                      <h3 className="text-base sm:text-[18px] font-bold text-[#1c1917] tracking-tight group-hover:text-[#f97316] transition-colors leading-snug">
                         {module.title}
                       </h3>
-                      <p className="mt-2 text-sm sm:text-[14.5px] text-[#57534e] leading-relaxed">
-                        {module.description}
-                      </p>
+                      {isOpen && (
+                        <p className="mt-2.5 text-sm sm:text-[14.5px] text-[#57534e] leading-relaxed max-w-2xl">
+                          {module.description}
+                        </p>
+                      )}
                     </div>
 
-                    <div className="flex items-center gap-2 shrink-0 pt-0.5">
-                      <span className="text-xs font-mono text-[#78716c] hidden sm:inline">
-                        {module.lessons.length} lessons
-                      </span>
+                    <div className="flex items-center gap-2.5 shrink-0 pt-0.5">
+                      {isOpen && (
+                        <span className="text-xs font-mono text-[#78716c] hidden sm:inline">
+                          {module.lessons.length} lessons
+                        </span>
+                      )}
                       <div
                         className={`flex h-7 w-7 items-center justify-center rounded-full border border-[#e7e5e4] bg-[#fbfbfa] text-[#1c1917] transition-transform duration-200 ${
-                          isOpen ? "rotate-180 bg-[#1c1917] text-white border-[#1c1917]" : "group-hover:border-[#d6d3d1]"
+                          isOpen
+                            ? "rotate-180 bg-[#1c1917] text-white border-[#1c1917]"
+                            : "group-hover:border-[#d6d3d1]"
                         }`}
                       >
                         <ChevronDown className="h-3.5 w-3.5" />
@@ -85,7 +91,7 @@ export default function DatingPlaybookCurriculum({
 
                 {isOpen && (
                   <div className="border-t border-[#f0eee9] bg-[#fcfbfa]">
-                    <ol className="divide-y divide-[#f0eee9]">
+                    <ol className="divide-y divide-[#f0eee9] list-none p-0 m-0">
                       {module.lessons.map((lesson) => (
                         <li
                           key={lesson.id}
