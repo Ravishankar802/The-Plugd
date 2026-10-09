@@ -24,7 +24,7 @@ export default function DatingPlaybookCurriculum({
   return (
     <section
       id="curriculum"
-      className="pt-20 sm:pt-28 pb-8 sm:pb-10 border-b border-[#e7e5e4] bg-[#fbf5ef] relative overflow-hidden scroll-mt-20"
+      className="pt-20 sm:pt-28 pb-11 sm:pb-14 border-b border-[#e7e5e4] bg-[#fbf5ef] relative overflow-hidden scroll-mt-20"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
@@ -111,7 +111,7 @@ export default function DatingPlaybookCurriculum({
 
         {/* Post-Curriculum Purchase Section */}
         <div className="mt-14 sm:mt-16 text-center max-w-xl mx-auto flex flex-col items-center">
-          <div className="w-fit max-w-md mx-auto mb-6 text-left">
+          <div className="w-fit max-w-md mx-auto mb-11 sm:mb-12 text-left">
             <ul className="space-y-2.5 text-[15px] sm:text-[16px] text-[#1c1917] list-none p-0 m-0">
               <li className="flex items-start gap-2.5 leading-snug">
                 <Check className="h-4 w-4 text-[#1c1917] shrink-0 mt-0.5 stroke-[2.5]" aria-hidden="true" />
