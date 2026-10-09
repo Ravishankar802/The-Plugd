@@ -31,7 +31,7 @@ export default function DatingPlaybookCurriculum({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-14">
-          <h2 className="text-3xl sm:text-[38px] md:text-[45px] font-bold tracking-tight text-[#1c1917] leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1c1917]">
             What&apos;s inside
           </h2>
           <p className="mt-2.5 sm:mt-3 text-base sm:text-lg md:text-[22px] text-[#57534e] leading-normal max-w-2xl mx-auto">
