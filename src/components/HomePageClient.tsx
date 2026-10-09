@@ -122,145 +122,76 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* SECTION: THE TWO PLAYBOOKS */}
-      <section id="playbooks" className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-[#f6f6f4]">
-        <div className="mx-auto max-w-[1200px] px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="text-[11px] font-mono tracking-widest text-[#f97316] uppercase font-bold mb-2">
-              THE PLAYBOOKS
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1c1917]">
-              Two playbooks. One goal.
-            </h2>
-            <p className="mt-3 text-lg text-[#78716c]">
-              Become significantly better at attraction, communication, and high-standard dating.
-            </p>
-          </div>
+      {/* SECTION: EDITORIAL INTRODUCTION CARD — THE DATING PLAYBOOK */}
+      <section className="letter-wrap py-8 sm:py-12" data-depth="letter">
+        <article className="letter card">
+          {/* Headline */}
+          <h2 className="letter-opener">
+            Getting a girl shouldn't feel like guesswork.
+          </h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
-            {/* COURSE 01: FOR WOMEN */}
-            <div className="relative flex flex-col justify-between rounded-2xl border border-[#e7e5e4] bg-white p-8 sm:p-10 shadow-sm transition-all hover:border-[#d6d3d1]">
-              <div>
-                <div className="flex items-center justify-between gap-4 mb-6">
-                  <div className="inline-flex items-center gap-2 rounded-full border border-[#e7e5e4] bg-[#f6f6f4] px-3.5 py-1 text-xs font-mono font-semibold uppercase tracking-wider text-[#1c1917]">
-                    <span className="h-2 w-2 rounded-full bg-[#f97316]" />
-                    COURSE 01 · FOR WOMEN
-                  </div>
-                  <div className="text-right">
-                    <span className="text-2xl font-bold text-[#1c1917] font-mono">$3</span>
-                    <span className="text-xs text-[#a8a29e] line-through ml-2 font-mono">$49</span>
-                  </div>
-                </div>
+          {/* Introduction */}
+          <p>
+            You see a girl you like. You want to approach her, but you don't know what to say. You overthink the conversation, second-guess your texts, and wonder whether she's interested.
+          </p>
 
-                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1c1917] mb-4">
-                  HOW TO GET THE MAN OF YOUR DREAMS
-                </h3>
+          <p>
+            It doesn't have to be that complicated.
+          </p>
 
-                <p className="text-base text-[#44403c] leading-relaxed mb-8">
-                  A practical playbook for attraction, standards, confidence, communication, and building relationships with the kind of man you actually respect.
-                </p>
+          <p>
+            That's why we're building The Dating Playbook.
+          </p>
 
-                {/* Course Metadata Highlights */}
-                <div className="space-y-3 border-t border-[#e7e5e4] pt-6 mb-8 text-sm">
-                  <div className="flex items-center gap-3 text-[#1c1917]">
-                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
-                    <span>The Attraction Gap: Why low-effort men ghost agreeable women</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-[#1c1917]">
-                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
-                    <span>Stop Writing Paragraphs: The text calibration rule</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-[#1c1917]">
-                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
-                    <span>Boundaries Without Bitterness: High standards with poise</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-[#1c1917]">
-                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
-                    <span>10 Modules · 42 Interactive Presentation Slide Decks</span>
-                  </div>
-                </div>
-              </div>
+          {/* Following Paragraph */}
+          <p>
+            Being attractive isn't just about your looks, money, or having the perfect line. It's about how you carry yourself, how you communicate, how you make her feel, and what you do when the moment actually arrives.
+          </p>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-center gap-3 pt-4">
-                <button
-                  onClick={() => handleOpenCheckout("women")}
-                  className="btn btn-primary w-full sm:w-auto"
-                >
-                  <span className="btn-dot" aria-hidden="true" />
-                  <span>Get the playbook for $3</span>
-                </button>
-                <Link
-                  href="/women"
-                  className="btn btn-surface w-full sm:w-auto text-sm"
-                >
-                  <span>Syllabus</span>
-                </Link>
-              </div>
-            </div>
+          <p>
+            The goal isn't to memorize scripts or pretend to be someone you're not. It's to understand attraction, develop real confidence, and know how to handle situations that used to leave you clueless.
+          </p>
 
-            {/* COURSE 02: FOR MEN */}
-            <div className="relative flex flex-col justify-between rounded-2xl border border-[#e7e5e4] bg-white p-8 sm:p-10 shadow-sm transition-all hover:border-[#d6d3d1]">
-              <div>
-                <div className="flex items-center justify-between gap-4 mb-6">
-                  <div className="inline-flex items-center gap-2 rounded-full border border-[#e7e5e4] bg-[#f6f6f4] px-3.5 py-1 text-xs font-mono font-semibold uppercase tracking-wider text-[#1c1917]">
-                    <span className="h-2 w-2 rounded-full bg-[#f97316]" />
-                    COURSE 02 · FOR MEN
-                  </div>
-                  <div className="text-right">
-                    <span className="text-2xl font-bold text-[#1c1917] font-mono">$3</span>
-                    <span className="text-xs text-[#a8a29e] line-through ml-2 font-mono">$49</span>
-                  </div>
-                </div>
+          {/* Short Bulleted Breakdown */}
+          <p className="font-semibold text-[#1c1917] mt-8 mb-3">
+            What you'll learn:
+          </p>
 
-                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1c1917] mb-4">
-                  HOW TO DATE THE HOTTEST WOMEN
-                </h3>
+          <ul className="dots">
+            <li>
+              Becoming more attractive through confidence, presentation, and the way you carry yourself.
+            </li>
+            <li>
+              Approaching women and starting conversations without making things unnecessarily awkward.
+            </li>
+            <li>
+              Flirting naturally, building tension, and recognizing signs of mutual interest.
+            </li>
+            <li>
+              Texting without overthinking every message or playing pointless games.
+            </li>
+            <li>
+              Planning dates, handling rejection, and navigating awkward moments.
+            </li>
+            <li>
+              Building genuine connections while staying true to yourself.
+            </li>
+          </ul>
 
-                <p className="text-base text-[#44403c] leading-relaxed mb-8">
-                  A practical playbook for becoming more attractive, confident, socially capable, emotionally calibrated, and genuinely better at dating.
-                </p>
+          {/* Closing Paragraph */}
+          <p>
+            No magic lines. No fake alpha-male persona. No promises that every woman will like you.
+          </p>
 
-                {/* Course Metadata Highlights */}
-                <div className="space-y-3 border-t border-[#e7e5e4] pt-6 mb-8 text-sm">
-                  <div className="flex items-center gap-3 text-[#1c1917]">
-                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
-                    <span>The Attraction Gap: Why 'nice' is not the same as attractive</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-[#1c1917]">
-                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
-                    <span>Presence & Vocal Weight: High status without speaking louder</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-[#1c1917]">
-                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
-                    <span>Locking Logistics: Convert casual chats into real dates in 4 texts</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-[#1c1917]">
-                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
-                    <span>10 Modules · 46 Interactive Presentation Slide Decks</span>
-                  </div>
-                </div>
-              </div>
+          <p>
+            Just practical guidance to help you become more confident, understand attraction, and handle real-life situations better.
+          </p>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-center gap-3 pt-4">
-                <button
-                  onClick={() => handleOpenCheckout("men")}
-                  className="btn btn-primary w-full sm:w-auto"
-                >
-                  <span className="btn-dot" aria-hidden="true" />
-                  <span>Get the playbook for $3</span>
-                </button>
-                <Link
-                  href="/men"
-                  className="btn btn-surface w-full sm:w-auto text-sm"
-                >
-                  <span>Syllabus</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+          {/* Signoff */}
+          <p className="signoff">
+            The Dating Playbook
+          </p>
+        </article>
       </section>
 
       {/* SECTION: PRODUCT PREVIEW (CINEMATIC PRESENTATION ENGINE) */}
