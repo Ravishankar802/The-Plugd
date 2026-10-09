@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Play, Clock, BookOpen, Layers, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Play, Clock, BookOpen, Layers, Presentation, CheckCircle2 } from "lucide-react";
 import Header from "@/components/Header";
 import { COURSES, Course } from "@/lib/playbooks-data";
 
@@ -128,29 +128,57 @@ export default async function LearnCoursePage({ params }: LearnPageProps) {
               {/* Lessons inside Module */}
               <div className="space-y-2">
                 {mod.lessons.map((lesson) => (
-                  <Link
+                  <div
                     key={lesson.id}
-                    href={`/learn/${course.slug}/${lesson.id}`}
-                    className="group flex items-center justify-between gap-4 rounded-2xl border border-transparent p-3.5 transition-all hover:border-[#E6E1D7] hover:bg-[#FAF8F5]"
+                    className="group flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 rounded-2xl border border-transparent p-3 sm:p-3.5 transition-all hover:border-[#E6E1D7] hover:bg-[#FAF8F5]"
                   >
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-xs font-semibold text-[#8E8A82] group-hover:text-[#0E0E10] w-12">
+                    <Link
+                      href={`/learn/${course.slug}/${lesson.id}`}
+                      className="flex items-center gap-3 flex-1 min-w-0"
+                    >
+                      <span className="font-mono text-xs font-semibold text-[#8E8A82] group-hover:text-[#0E0E10] w-12 shrink-0">
                         {lesson.number}
                       </span>
-                      <span className="text-sm font-semibold text-[#0E0E10] group-hover:text-[#FF5500] transition-colors">
+                      <span className="text-sm font-semibold text-[#0E0E10] group-hover:text-[#FF5500] transition-colors truncate">
                         {lesson.title}
                       </span>
-                    </div>
+                    </Link>
 
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-[11px] text-[#8E8A82]">
+                    <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                      <span className="font-mono text-[11px] text-[#8E8A82] mr-1 hidden md:inline">
                         {lesson.duration}
                       </span>
-                      <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F2EFE9] group-hover:bg-[#0E0E10] group-hover:text-white transition-colors">
+
+                      {/* Presentation Link */}
+                      <Link
+                        href={`/learn/${course.slug}/${lesson.id}?format=presentation`}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-[#E6E1D7] bg-white text-xs font-medium text-[#646059] hover:text-[#0E0E10] hover:border-[#0E0E10] transition-colors shadow-xs"
+                        title="View presentation slides"
+                      >
+                        <Presentation className="h-3.5 w-3.5 text-[#646059]" />
+                        <span>Slides</span>
+                      </Link>
+
+                      {/* Written Lesson Link */}
+                      <Link
+                        href={`/learn/${course.slug}/${lesson.id}?format=written`}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-[#E6E1D7] bg-white text-xs font-medium text-[#646059] hover:text-[#FF5500] hover:border-[#FF5500] transition-colors shadow-xs"
+                        title="Read written lesson"
+                      >
+                        <BookOpen className="h-3.5 w-3.5 text-[#FF5500]" />
+                        <span>Written</span>
+                      </Link>
+
+                      {/* Play Action */}
+                      <Link
+                        href={`/learn/${course.slug}/${lesson.id}`}
+                        className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F2EFE9] group-hover:bg-[#0E0E10] group-hover:text-white transition-colors"
+                        title="Start lesson"
+                      >
                         <Play className="h-3 w-3 fill-current ml-0.5" />
-                      </div>
+                      </Link>
                     </div>
-                  </Link>
+                  </div>
                 ))}
               </div>
             </div>
