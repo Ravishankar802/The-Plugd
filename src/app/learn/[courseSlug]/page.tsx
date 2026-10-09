@@ -1,8 +1,10 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Play, Clock, BookOpen, Layers, Presentation, CheckCircle2 } from "lucide-react";
+import { cookies } from "next/headers";
+import { Play, BookOpen, Layers, Presentation } from "lucide-react";
 import Header from "@/components/Header";
 import { COURSES, Course } from "@/lib/playbooks-data";
+import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 
 interface LearnPageProps {
   params: Promise<{
@@ -30,7 +32,26 @@ export default async function LearnCoursePage({ params }: LearnPageProps) {
     notFound();
   }
 
-  const firstLessonId = course.modules[0]?.lessons[0]?.id || "01";
+  // Server-side Authorization Check
+  let hasAccess = false;
+  try {
+    const cookieStore = await cookies();
+    const accessKey = cookieStore.get("plugd_access_key")?.value;
+    if (accessKey) {
+      const customer = await getCustomerByAccessKey(accessKey);
+      if (customer) {
+        hasAccess = await hasUserAccessToCourse(customer.id, "men", customer.email);
+      }
+    }
+  } catch (err) {
+    console.error("[LEARN_AUTH_CHECK_ERROR]", err);
+  }
+
+  if (!hasAccess) {
+    redirect("/?checkout=true");
+  }
+
+  const firstLessonId = course.modules[0]?.lessons[0]?.id || "01-1";
   const totalLessons = course.modules.reduce(
     (sum, m) => sum + (m.lessons?.length || m.lessonsCount),
     0
@@ -42,16 +63,7 @@ export default async function LearnCoursePage({ params }: LearnPageProps) {
 
       <Header activeCourse={course.slug} />
 
-      <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-        {/* Back Link */}
-        <Link
-          href="/my-playbooks"
-          className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#646059] hover:text-[#0E0E10] mb-8 transition-colors"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          <span>Back to My Playbooks</span>
-        </Link>
-
+      <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
         {/* Course Banner Card */}
         <div className="rounded-3xl border border-[#E6E1D7] bg-white p-8 sm:p-12 shadow-sm mb-12">
           <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
@@ -85,10 +97,6 @@ export default async function LearnCoursePage({ params }: LearnPageProps) {
             <div className="flex items-center gap-2">
               <BookOpen className="h-4 w-4 text-[#FF5500]" />
               <span>{totalLessons} LESSONS</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-[#FF5500]" />
-              <span>{course.hoursOfMaterial} RUNTIME</span>
             </div>
           </div>
         </div>

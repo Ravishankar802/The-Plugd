@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, BookOpen, Layers } from "lucide-react";
+import { Menu, X, BookOpen, Layers, LogOut } from "lucide-react";
+import { performLogout } from "@/lib/auth-client";
 
 export default function Header({
   activeCourse,
@@ -147,22 +148,16 @@ export default function Header({
         </div>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden sm:flex items-center gap-6">
-          <Link
-            href="/learn/men"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold uppercase tracking-wider text-[#57534e] hover:text-[#1c1917] transition-colors"
+        <div className="hidden sm:flex items-center gap-4">
+          <button
+            type="button"
+            onClick={performLogout}
+            className="inline-flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-3.5 py-1.5 text-xs font-mono font-semibold uppercase tracking-wider text-[#78716c] hover:border-[#1c1917] hover:text-[#1c1917] transition-colors shadow-xs cursor-pointer"
+            title="Log out of your account"
           >
-            <Layers className="h-3.5 w-3.5 text-[#f97316]" />
-            <span>Syllabus (69 Lessons)</span>
-          </Link>
-
-          <Link
-            href="/my-playbooks"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold uppercase tracking-wider text-[#57534e] hover:text-[#1c1917] transition-colors"
-          >
-            <BookOpen className="h-3.5 w-3.5 text-[#f97316]" />
-            <span>My Playbooks</span>
-          </Link>
+            <LogOut className="h-3.5 w-3.5 text-[#78716c]" />
+            <span>Log out</span>
+          </button>
 
           {onOpenCheckout && (
             <button
@@ -176,18 +171,14 @@ export default function Header({
 
         {/* Mobile Actions */}
         <div className="flex sm:hidden items-center gap-2">
-          <Link
-            href="/learn/men"
-            className="rounded-full border border-[#e7e5e4] bg-white px-3 py-1.5 text-xs font-medium text-[#1c1917]"
+          <button
+            type="button"
+            onClick={performLogout}
+            className="inline-flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-3 py-1.5 text-xs font-medium text-[#78716c] hover:text-[#1c1917] cursor-pointer"
           >
-            Syllabus
-          </Link>
-          <Link
-            href="/my-playbooks"
-            className="rounded-full bg-[#1c1917] px-3 py-1.5 text-xs font-medium text-white"
-          >
-            Library
-          </Link>
+            <LogOut className="h-3 w-3" />
+            <span>Log out</span>
+          </button>
         </div>
       </div>
     </header>

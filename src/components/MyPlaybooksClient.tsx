@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Play, Sparkles, BookOpen, Layers } from "lucide-react";
 import Header from "@/components/Header";
 import CheckoutModal from "@/components/CheckoutModal";
+import { performLogout } from "@/lib/auth-client";
 
 interface PlaybookItem {
   id: string;
@@ -97,8 +98,18 @@ export default function MyPlaybooksClient() {
             </div>
 
             {customerEmail ? (
-              <div className="font-mono text-xs text-[#78716c] bg-white border border-[#e7e5e4] px-3.5 py-2 rounded-xl shadow-xs">
-                Account: <span className="text-[#1c1917] font-bold">{customerEmail}</span>
+              <div className="flex items-center gap-2">
+                <div className="font-mono text-xs text-[#78716c] bg-white border border-[#e7e5e4] px-3.5 py-2 rounded-xl shadow-xs">
+                  Account: <span className="text-[#1c1917] font-bold">{customerEmail}</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={performLogout}
+                  className="font-mono text-xs text-[#78716c] hover:text-[#1c1917] bg-white border border-[#e7e5e4] hover:border-[#1c1917] px-3 py-2 rounded-xl shadow-xs transition-colors cursor-pointer"
+                  title="Log out"
+                >
+                  Log out
+                </button>
               </div>
             ) : (
               <button

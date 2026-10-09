@@ -11,7 +11,9 @@ import {
   CheckCircle2,
   Sparkles,
   ArrowRight,
+  LogOut,
 } from "lucide-react";
+import { performLogout } from "@/lib/auth-client";
 import { Lesson, Module, Course } from "@/lib/playbooks-data";
 import { ExtendedLesson } from "@/lib/module-01-content";
 
@@ -230,20 +232,19 @@ export default function WrittenLessonViewer({
     <div className="min-h-screen bg-[#faf8f5] text-[#1c1917] font-sans antialiased selection:bg-[#f97316] selection:text-white">
       {/* Sticky Header Navigation */}
       <header className="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-[#e7e5e4] bg-[#faf8f5]/90 px-4 sm:px-8 backdrop-blur-md">
-        {/* Left: Exit to Syllabus */}
+        {/* Left: Syllabus Navigation */}
         <div className="flex items-center gap-3">
           <Link
             href={`/learn/${course.slug}`}
             className="flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#57534e] transition-colors hover:border-[#1c1917] hover:text-[#1c1917] shadow-xs"
           >
-            <ChevronLeft className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">Exit to Syllabus</span>
-            <span className="sm:hidden">Syllabus</span>
+            <BookOpen className="h-3.5 w-3.5 text-[#f97316]" />
+            <span>Syllabus</span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-2 text-xs font-mono text-[#78716c]">
-            <span className="font-bold text-[#f97316]">MODULE {module.number}</span>
-            <span>·</span>
+            <span className="font-bold text-[#f97316]">MODULE {String(module.number).padStart(2, "0")}</span>
+            <span>/</span>
             <span className="truncate max-w-sm">{lesson.title}</span>
           </div>
         </div>
@@ -268,7 +269,7 @@ export default function WrittenLessonViewer({
           </button>
         </div>
 
-        {/* Right: Next / Return Control */}
+        {/* Right: Next / Logout Control */}
         <div className="flex items-center gap-2">
           {nextLesson && (
             <Link
@@ -279,6 +280,16 @@ export default function WrittenLessonViewer({
               <ChevronRight className="h-3.5 w-3.5" />
             </Link>
           )}
+
+          <button
+            type="button"
+            onClick={performLogout}
+            className="flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-3 py-1.5 text-xs font-semibold text-[#57534e] hover:border-[#1c1917] hover:text-[#1c1917] transition-colors shadow-xs cursor-pointer"
+            title="Log out of your account"
+          >
+            <LogOut className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">Log out</span>
+          </button>
         </div>
       </header>
 
@@ -372,7 +383,7 @@ export default function WrittenLessonViewer({
                 href={`/learn/${course.slug}`}
                 className="flex items-center gap-2 rounded-2xl bg-white border border-[#e7e5e4] px-5 py-3 text-xs sm:text-sm font-bold text-[#1c1917] shadow-xs hover:border-[#1c1917]"
               >
-                <span>Back to Syllabus</span>
+                <span>Course Syllabus</span>
               </Link>
             )}
           </div>
