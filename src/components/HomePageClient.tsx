@@ -64,124 +64,118 @@ export default function HomePageClient() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#0E0E10] font-sans antialiased selection:bg-[#FF5500] selection:text-white">
-      {/* Subtle Editorial Background Grid */}
-      <div className="fixed inset-0 bg-subtle-grid opacity-70 pointer-events-none -z-10" />
+    <div className="min-h-screen bg-[#f6f6f4] text-[#1c1917] font-sans antialiased selection:bg-[#f97316] selection:text-white relative">
+      {/* Subtle Background Grid Texture */}
+      <div className="texture" aria-hidden="true" />
 
-      {/* Clean Sticky Header */}
-      <Header onOpenCheckout={handleOpenCheckout} />
+      {/* Clean Sticky Header matching Attention Playbook */}
+      <Header isLanding={true} onOpenCheckout={handleOpenCheckout} />
 
-      {/* HERO SECTION */}
-      <section className="relative pt-20 pb-16 sm:pt-28 sm:pb-24 overflow-hidden border-b border-[#E8E4DC]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            {/* Pill Eyebrow */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#E6E1D7] bg-white px-4 py-1.5 text-xs font-mono tracking-widest text-[#646059] uppercase mb-8 shadow-xs">
-              <span className="h-2 w-2 rounded-full bg-[#FF5500] animate-pulse" />
-              <span>THE DIGITAL PLAYBOOKS FOR MODERN DATING</span>
-            </div>
+      {/* HERO SECTION — EXACT ATTENTION PLAYBOOK REPLICATION */}
+      <section className="relative pt-12 pb-16 lg:pt-16 lg:pb-24 overflow-hidden">
+        {/* Subtle Square Grid Texture with Radial Mask */}
+        <div className="texture texture-hero" aria-hidden="true" />
+        {/* Subtle Ambient Aurora */}
+        <div className="hero-aurora" aria-hidden="true" />
 
-            {/* Huge Confident Headline */}
-            <h1 className="font-editorial-title text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[#0E0E10] mb-8 leading-[0.98]">
-              Dating is a skill.
-            </h1>
+        <div className="mx-auto max-w-[1200px] px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,460px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,500px)_minmax(0,1fr)] gap-12 xl:gap-14 items-center">
+            {/* Left Hero Column */}
+            <div className="max-w-[640px]">
+              {/* Primary Visual Focus: Hero Headline */}
+              <h1 className="text-[36px] sm:text-[42px] lg:text-[46px] font-bold tracking-[-0.025em] text-[#1c1917] leading-[1.08] mb-0">
+                Everything you need to get a girl.
+              </h1>
 
-            {/* Subtitle */}
-            <p className="text-lg sm:text-2xl text-[#646059] max-w-2xl mx-auto font-light leading-relaxed mb-10">
-              Two complete playbooks for becoming significantly better at attraction, dating, and relationships.
-            </p>
+              {/* Supporting Copy */}
+              <p className="mt-[22px] text-[18px] lg:text-[19px] leading-[1.6] text-[#44403c]">
+                <strong className="font-semibold text-[#1c1917]">
+                  Learn how to attract women, build confidence, and get the girl you want.
+                </strong>
+                <br />
+                Everything you need to understand attraction, approach women, flirt naturally, text with confidence, plan better dates, and turn mutual interest into something real.
+              </p>
 
-            {/* Action CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="#playbooks"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full bg-[#0E0E10] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-black/10 transition-all hover:bg-neutral-800 hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <span>Explore The Two Playbooks</span>
-                <ArrowRight className="h-4 w-4" />
-              </a>
+              {/* Feature List */}
+              <ul className="checks">
+                <li>Practical lessons on attraction, confidence, flirting, texting, and dating.</li>
+                <li>Real-world examples, conversations, and actionable advice.</li>
+                <li>Instant digital access. One-time payment. Lifetime access.</li>
+              </ul>
 
-              <button
-                onClick={() => handleOpenCheckout("men")}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-[#E6E1D7] bg-white px-8 py-4 text-sm font-semibold text-[#0E0E10] shadow-xs transition-all hover:bg-[#F2EFE9]"
-              >
-                <span>Instant Access · $49</span>
-              </button>
-            </div>
-
-            {/* Social Trust Metrics */}
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs font-mono text-[#8E8A82]">
-              <div className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#FF5500]" />
-                <span>100% SLIDE-BASED FORMAT</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#FF5500]" />
-                <span>ZERO CANNED PICKUP LINES</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#FF5500]" />
-                <span>LIFETIME DIGITAL ACCESS</span>
+              {/* Hero Purchase CTA */}
+              <div className="mt-[34px] flex flex-col items-start gap-4">
+                <button
+                  onClick={() => handleOpenCheckout("men")}
+                  className="btn btn-primary w-full sm:w-auto"
+                  data-cta="hero"
+                >
+                  <span className="btn-dot" aria-hidden="true" />
+                  <span>Get the playbook for $3</span>
+                </button>
               </div>
             </div>
+
+            {/* Right Hero Column — LEAVE EMPTY (Clean Negative Space, No images, No placeholders) */}
+            <div className="hidden lg:block min-h-[340px] xl:min-h-[400px]" aria-hidden="true" />
           </div>
         </div>
       </section>
 
-      {/* SECTION: THE TWO PLAYBOOKS (VISUALLY DOMINANT) */}
-      <section id="playbooks" className="py-20 sm:py-28 border-b border-[#E8E4DC] bg-white/50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* SECTION: THE TWO PLAYBOOKS */}
+      <section id="playbooks" className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-[#f6f6f4]">
+        <div className="mx-auto max-w-[1200px] px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="text-[11px] font-mono tracking-widest text-[#FF5500] uppercase font-bold mb-2">
-              THE CORE PRODUCTS
+            <div className="text-[11px] font-mono tracking-widest text-[#f97316] uppercase font-bold mb-2">
+              THE PLAYBOOKS
             </div>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0E0E10]">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1c1917]">
               Two playbooks. One goal.
             </h2>
-            <p className="mt-3 text-lg text-[#646059]">
+            <p className="mt-3 text-lg text-[#78716c]">
               Become significantly better at attraction, communication, and high-standard dating.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
             {/* COURSE 01: FOR WOMEN */}
-            <div className="relative flex flex-col justify-between rounded-3xl border border-[#E6E1D7] bg-white p-8 sm:p-12 shadow-sm transition-all hover:border-[#D2CBC0] hover:shadow-xl">
+            <div className="relative flex flex-col justify-between rounded-2xl border border-[#e7e5e4] bg-white p-8 sm:p-10 shadow-sm transition-all hover:border-[#d6d3d1]">
               <div>
                 <div className="flex items-center justify-between gap-4 mb-6">
-                  <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-[#FAF8F5] px-3.5 py-1 text-xs font-mono font-bold uppercase tracking-wider text-[#0E0E10]">
-                    <span className="h-2 w-2 rounded-full bg-[#FF5500]" />
+                  <div className="inline-flex items-center gap-2 rounded-full border border-[#e7e5e4] bg-[#f6f6f4] px-3.5 py-1 text-xs font-mono font-semibold uppercase tracking-wider text-[#1c1917]">
+                    <span className="h-2 w-2 rounded-full bg-[#f97316]" />
                     COURSE 01 · FOR WOMEN
                   </div>
                   <div className="text-right">
-                    <span className="text-2xl font-black text-[#0E0E10] font-mono">$49</span>
-                    <span className="text-xs text-neutral-400 line-through ml-2 font-mono">$129</span>
+                    <span className="text-2xl font-bold text-[#1c1917] font-mono">$3</span>
+                    <span className="text-xs text-[#a8a29e] line-through ml-2 font-mono">$49</span>
                   </div>
                 </div>
 
-                <h3 className="font-editorial-title text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0E0E10] mb-4">
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1c1917] mb-4">
                   HOW TO GET THE MAN OF YOUR DREAMS
                 </h3>
 
-                <p className="text-base text-[#646059] leading-relaxed mb-8">
+                <p className="text-base text-[#44403c] leading-relaxed mb-8">
                   A practical playbook for attraction, standards, confidence, communication, and building relationships with the kind of man you actually respect.
                 </p>
 
                 {/* Course Metadata Highlights */}
-                <div className="space-y-3 border-t border-[#EFECE6] pt-6 mb-8 text-sm">
-                  <div className="flex items-center gap-3 text-[#0E0E10]">
-                    <CheckCircle2 className="h-4 w-4 text-[#FF5500] shrink-0" />
+                <div className="space-y-3 border-t border-[#e7e5e4] pt-6 mb-8 text-sm">
+                  <div className="flex items-center gap-3 text-[#1c1917]">
+                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
                     <span>The Attraction Gap: Why low-effort men ghost agreeable women</span>
                   </div>
-                  <div className="flex items-center gap-3 text-[#0E0E10]">
-                    <CheckCircle2 className="h-4 w-4 text-[#FF5500] shrink-0" />
+                  <div className="flex items-center gap-3 text-[#1c1917]">
+                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
                     <span>Stop Writing Paragraphs: The text calibration rule</span>
                   </div>
-                  <div className="flex items-center gap-3 text-[#0E0E10]">
-                    <CheckCircle2 className="h-4 w-4 text-[#FF5500] shrink-0" />
+                  <div className="flex items-center gap-3 text-[#1c1917]">
+                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
                     <span>Boundaries Without Bitterness: High standards with poise</span>
                   </div>
-                  <div className="flex items-center gap-3 text-[#0E0E10]">
-                    <CheckCircle2 className="h-4 w-4 text-[#FF5500] shrink-0" />
+                  <div className="flex items-center gap-3 text-[#1c1917]">
+                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
                     <span>10 Modules · 42 Interactive Presentation Slide Decks</span>
                   </div>
                 </div>
@@ -191,13 +185,14 @@ export default function HomePageClient() {
               <div className="flex flex-col sm:flex-row items-center gap-3 pt-4">
                 <button
                   onClick={() => handleOpenCheckout("women")}
-                  className="w-full flex items-center justify-center gap-2 rounded-2xl bg-[#0E0E10] py-4 px-6 text-sm font-bold text-white shadow-md transition-all hover:bg-neutral-800"
+                  className="btn btn-primary w-full sm:w-auto"
                 >
-                  <span>GET THE PLAYBOOK → $49</span>
+                  <span className="btn-dot" aria-hidden="true" />
+                  <span>Get the playbook for $3</span>
                 </button>
                 <Link
                   href="/women"
-                  className="w-full sm:w-auto flex items-center justify-center gap-1.5 rounded-2xl border border-[#E6E1D7] bg-[#FAF8F5] py-4 px-6 text-sm font-semibold text-[#0E0E10] transition-colors hover:bg-[#F2EFE9]"
+                  className="btn btn-surface w-full sm:w-auto text-sm"
                 >
                   <span>Syllabus</span>
                 </Link>
@@ -205,43 +200,43 @@ export default function HomePageClient() {
             </div>
 
             {/* COURSE 02: FOR MEN */}
-            <div className="relative flex flex-col justify-between rounded-3xl border border-[#E6E1D7] bg-white p-8 sm:p-12 shadow-sm transition-all hover:border-[#D2CBC0] hover:shadow-xl">
+            <div className="relative flex flex-col justify-between rounded-2xl border border-[#e7e5e4] bg-white p-8 sm:p-10 shadow-sm transition-all hover:border-[#d6d3d1]">
               <div>
                 <div className="flex items-center justify-between gap-4 mb-6">
-                  <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-[#FAF8F5] px-3.5 py-1 text-xs font-mono font-bold uppercase tracking-wider text-[#0E0E10]">
-                    <span className="h-2 w-2 rounded-full bg-[#FF5500]" />
+                  <div className="inline-flex items-center gap-2 rounded-full border border-[#e7e5e4] bg-[#f6f6f4] px-3.5 py-1 text-xs font-mono font-semibold uppercase tracking-wider text-[#1c1917]">
+                    <span className="h-2 w-2 rounded-full bg-[#f97316]" />
                     COURSE 02 · FOR MEN
                   </div>
                   <div className="text-right">
-                    <span className="text-2xl font-black text-[#0E0E10] font-mono">$49</span>
-                    <span className="text-xs text-neutral-400 line-through ml-2 font-mono">$129</span>
+                    <span className="text-2xl font-bold text-[#1c1917] font-mono">$3</span>
+                    <span className="text-xs text-[#a8a29e] line-through ml-2 font-mono">$49</span>
                   </div>
                 </div>
 
-                <h3 className="font-editorial-title text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0E0E10] mb-4">
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1c1917] mb-4">
                   HOW TO DATE THE HOTTEST WOMEN
                 </h3>
 
-                <p className="text-base text-[#646059] leading-relaxed mb-8">
+                <p className="text-base text-[#44403c] leading-relaxed mb-8">
                   A practical playbook for becoming more attractive, confident, socially capable, emotionally calibrated, and genuinely better at dating.
                 </p>
 
                 {/* Course Metadata Highlights */}
-                <div className="space-y-3 border-t border-[#EFECE6] pt-6 mb-8 text-sm">
-                  <div className="flex items-center gap-3 text-[#0E0E10]">
-                    <CheckCircle2 className="h-4 w-4 text-[#FF5500] shrink-0" />
+                <div className="space-y-3 border-t border-[#e7e5e4] pt-6 mb-8 text-sm">
+                  <div className="flex items-center gap-3 text-[#1c1917]">
+                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
                     <span>The Attraction Gap: Why 'nice' is not the same as attractive</span>
                   </div>
-                  <div className="flex items-center gap-3 text-[#0E0E10]">
-                    <CheckCircle2 className="h-4 w-4 text-[#FF5500] shrink-0" />
+                  <div className="flex items-center gap-3 text-[#1c1917]">
+                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
                     <span>Presence & Vocal Weight: High status without speaking louder</span>
                   </div>
-                  <div className="flex items-center gap-3 text-[#0E0E10]">
-                    <CheckCircle2 className="h-4 w-4 text-[#FF5500] shrink-0" />
+                  <div className="flex items-center gap-3 text-[#1c1917]">
+                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
                     <span>Locking Logistics: Convert casual chats into real dates in 4 texts</span>
                   </div>
-                  <div className="flex items-center gap-3 text-[#0E0E10]">
-                    <CheckCircle2 className="h-4 w-4 text-[#FF5500] shrink-0" />
+                  <div className="flex items-center gap-3 text-[#1c1917]">
+                    <CheckCircle2 className="h-4 w-4 text-[#f97316] shrink-0" />
                     <span>10 Modules · 46 Interactive Presentation Slide Decks</span>
                   </div>
                 </div>
@@ -251,13 +246,14 @@ export default function HomePageClient() {
               <div className="flex flex-col sm:flex-row items-center gap-3 pt-4">
                 <button
                   onClick={() => handleOpenCheckout("men")}
-                  className="w-full flex items-center justify-center gap-2 rounded-2xl bg-[#0E0E10] py-4 px-6 text-sm font-bold text-white shadow-md transition-all hover:bg-neutral-800"
+                  className="btn btn-primary w-full sm:w-auto"
                 >
-                  <span>GET THE PLAYBOOK → $49</span>
+                  <span className="btn-dot" aria-hidden="true" />
+                  <span>Get the playbook for $3</span>
                 </button>
                 <Link
                   href="/men"
-                  className="w-full sm:w-auto flex items-center justify-center gap-1.5 rounded-2xl border border-[#E6E1D7] bg-[#FAF8F5] py-4 px-6 text-sm font-semibold text-[#0E0E10] transition-colors hover:bg-[#F2EFE9]"
+                  className="btn btn-surface w-full sm:w-auto text-sm"
                 >
                   <span>Syllabus</span>
                 </Link>
@@ -342,26 +338,26 @@ export default function HomePageClient() {
       </section>
 
       {/* SECTION: WHAT'S INSIDE (CURRICULUM ACCORDION) */}
-      <section id="curriculum" className="py-20 sm:py-28 border-b border-[#E8E4DC]">
+      <section id="curriculum" className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-[#fbf5ef]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
             <div>
-              <div className="text-[11px] font-mono tracking-widest text-[#FF5500] uppercase font-bold mb-2">
+              <div className="text-[11px] font-mono tracking-widest text-[#f97316] uppercase font-bold mb-2">
                 CURRICULUM & MODULES
               </div>
-              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0E0E10]">
-                What's inside the playbooks.
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1c1917]">
+                What's inside
               </h2>
             </div>
 
             {/* Course Curriculum Tabs */}
-            <div className="flex items-center rounded-full border border-[#E6E1D7] bg-white p-1 self-start sm:self-auto">
+            <div className="flex items-center rounded-full border border-[#e7e5e4] bg-white p-1 self-start sm:self-auto">
               <button
                 onClick={() => setActiveCurriculumTab("women")}
                 className={`rounded-full px-5 py-2 text-xs font-bold transition-all ${
                   activeCurriculumTab === "women"
-                    ? "bg-[#0E0E10] text-white shadow-xs"
-                    : "text-[#646059] hover:text-[#0E0E10]"
+                    ? "bg-[#1c1917] text-white shadow-xs"
+                    : "text-[#78716c] hover:text-[#1c1917]"
                 }`}
               >
                 Women's Playbook
@@ -370,8 +366,8 @@ export default function HomePageClient() {
                 onClick={() => setActiveCurriculumTab("men")}
                 className={`rounded-full px-5 py-2 text-xs font-bold transition-all ${
                   activeCurriculumTab === "men"
-                    ? "bg-[#0E0E10] text-white shadow-xs"
-                    : "text-[#646059] hover:text-[#0E0E10]"
+                    ? "bg-[#1c1917] text-white shadow-xs"
+                    : "text-[#78716c] hover:text-[#1c1917]"
                 }`}
               >
                 Men's Playbook
@@ -380,12 +376,12 @@ export default function HomePageClient() {
           </div>
 
           {/* Curriculum Accordion Component */}
-          <div className="rounded-3xl border border-[#E6E1D7] bg-white p-6 sm:p-10 shadow-sm">
+          <div className="rounded-2xl border border-[#e7e5e4] bg-white p-6 sm:p-10 shadow-sm">
             <div className="mb-6">
-              <div className="text-xl sm:text-2xl font-bold text-[#0E0E10]">
+              <div className="text-xl sm:text-2xl font-bold text-[#1c1917]">
                 {currentCurriculumCourse.title}
               </div>
-              <p className="text-sm text-[#646059] mt-1">
+              <p className="text-sm text-[#78716c] mt-1">
                 {currentCurriculumCourse.description}
               </p>
             </div>
@@ -395,15 +391,16 @@ export default function HomePageClient() {
               courseTitle={currentCurriculumCourse.title}
             />
 
-            <div className="mt-10 border-t border-[#E6E1D7] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-xs font-mono text-[#8E8A82]">
+            <div className="mt-10 border-t border-[#e7e5e4] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-xs font-mono text-[#78716c]">
                 Includes all 10 modules · Instant slide viewer unlock
               </div>
               <button
                 onClick={() => handleOpenCheckout(activeCurriculumTab)}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#0E0E10] px-6 py-3 text-xs font-bold text-white transition-all hover:bg-neutral-800"
+                className="btn btn-primary"
               >
-                <span>Unlock this playbook → $49</span>
+                <span className="btn-dot" aria-hidden="true" />
+                <span>Unlock this playbook → $3</span>
               </button>
             </div>
           </div>
@@ -478,16 +475,16 @@ export default function HomePageClient() {
       </section>
 
       {/* SECTION: SOCIAL PROOF ("IN THEIR WORDS") */}
-      <section className="py-20 sm:py-28 border-b border-[#E8E4DC] bg-[#FAF8F5]">
+      <section id="testimonials" className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-[#f6f6f4]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="text-[11px] font-mono tracking-widest text-[#FF5500] uppercase font-bold mb-2">
+            <div className="text-[11px] font-mono tracking-widest text-[#f97316] uppercase font-bold mb-2">
               IN THEIR WORDS
             </div>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0E0E10]">
-              Proven by real people in the real world.
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1c1917]">
+              In their words
             </h2>
-            <p className="mt-3 text-base text-[#646059]">
+            <p className="mt-3 text-base text-[#78716c]">
               How the playbooks are reshaping standards, confidence, and dating dynamics.
             </p>
           </div>
@@ -496,22 +493,22 @@ export default function HomePageClient() {
             {[...COURSES.women.testimonials, ...COURSES.men.testimonials].slice(0, 6).map((t, i) => (
               <div
                 key={i}
-                className="rounded-3xl border border-[#E6E1D7] bg-white p-6 sm:p-8 shadow-xs flex flex-col justify-between"
+                className="rounded-2xl border border-[#e7e5e4] bg-white p-6 sm:p-8 shadow-sm flex flex-col justify-between hover:border-[#d6d3d1] transition-all"
               >
                 <div>
-                  <div className="flex items-center gap-1 text-[#FF5500] mb-4">
+                  <div className="flex items-center gap-1 text-[#f97316] mb-4">
                     {[...Array(5)].map((_, idx) => (
-                      <Star key={idx} className="h-3.5 w-3.5 fill-[#FF5500]" />
+                      <Star key={idx} className="h-3.5 w-3.5 fill-[#f97316]" />
                     ))}
                   </div>
-                  <p className="text-sm text-[#0E0E10] leading-relaxed italic mb-6">
+                  <p className="text-sm text-[#1c1917] leading-relaxed italic mb-6">
                     "{t.quote}"
                   </p>
                 </div>
 
-                <div className="border-t border-[#EFECE6] pt-4">
-                  <div className="text-sm font-bold text-[#0E0E10]">{t.name}</div>
-                  <div className="text-xs font-mono text-[#8E8A82]">
+                <div className="border-t border-[#e7e5e4] pt-4">
+                  <div className="text-sm font-bold text-[#1c1917]">{t.name}</div>
+                  <div className="text-xs font-mono text-[#78716c]">
                     {t.handle} · {t.role}
                   </div>
                 </div>
@@ -522,18 +519,18 @@ export default function HomePageClient() {
       </section>
 
       {/* SECTION: FAQ */}
-      <section id="faq" className="py-20 sm:py-28 border-b border-[#E8E4DC] bg-white">
+      <section id="faq" className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-white">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="text-[11px] font-mono tracking-widest text-[#FF5500] uppercase font-bold mb-2">
+            <div className="text-[11px] font-mono tracking-widest text-[#f97316] uppercase font-bold mb-2">
               QUESTIONS & ANSWERS
             </div>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0E0E10]">
-              Frequently Asked Questions
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1c1917]">
+              FAQ
             </h2>
           </div>
 
-          <div className="divide-y divide-[#E6E1D7] border-y border-[#E6E1D7]">
+          <div className="divide-y divide-[#e7e5e4] border-y border-[#e7e5e4]">
             {faqs.map((faq, index) => {
               const isOpen = openFaqIndex === index;
               return (
@@ -542,12 +539,12 @@ export default function HomePageClient() {
                     onClick={() => setOpenFaqIndex(isOpen ? null : index)}
                     className="w-full flex items-center justify-between text-left group focus:outline-none"
                   >
-                    <span className="text-base sm:text-lg font-bold text-[#0E0E10] group-hover:text-[#FF5500] transition-colors pr-4">
+                    <span className="text-base sm:text-lg font-bold text-[#1c1917] group-hover:text-[#f97316] transition-colors pr-4">
                       {faq.question}
                     </span>
                     <div
-                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#E6E1D7] bg-[#FAF8F5] transition-transform duration-200 ${
-                        isOpen ? "rotate-180 bg-[#0E0E10] text-white border-[#0E0E10]" : ""
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#e7e5e4] bg-[#f6f6f4] transition-transform duration-200 ${
+                        isOpen ? "rotate-180 bg-[#1c1917] text-white border-[#1c1917]" : ""
                       }`}
                     >
                       <ChevronDown className="h-3.5 w-3.5" />
@@ -555,7 +552,7 @@ export default function HomePageClient() {
                   </button>
 
                   {isOpen && (
-                    <div className="mt-4 text-sm text-[#646059] leading-relaxed animate-vertical-reveal pr-8">
+                    <div className="mt-4 text-sm text-[#44403c] leading-relaxed pr-8 border-l-2 border-[#f97316] pl-4">
                       {faq.answer}
                     </div>
                   )}
@@ -566,73 +563,102 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* SECTION: FINAL PURCHASE BANNER */}
-      <section className="py-20 sm:py-28 bg-[#FAF8F5] text-center border-b border-[#E8E4DC]">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-[#0E0E10] bg-[#0E0E10] p-8 sm:p-16 text-white shadow-2xl relative overflow-hidden">
-            <div className="relative z-10">
-              <span className="inline-block rounded-full bg-[#FF5500] px-3.5 py-1 text-[11px] font-mono font-bold uppercase tracking-wider text-white mb-6">
-                GET STARTED TODAY
-              </span>
-              <h2 className="font-editorial-title text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
-                Become significantly better at dating.
-              </h2>
-              <p className="text-base sm:text-lg text-neutral-300 max-w-xl mx-auto mb-10">
-                Stop guessing. Start executing. Get your playbook now and start exploring the slides in 60 seconds.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button
-                  onClick={() => handleOpenCheckout("women")}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-[#0E0E10] shadow-md transition-all hover:bg-neutral-200"
-                >
-                  <span>Women's Playbook · $49</span>
-                </button>
-                <button
-                  onClick={() => handleOpenCheckout("men")}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#FF5500] px-8 py-4 text-sm font-bold text-white shadow-md transition-all hover:bg-[#E04B00]"
-                >
-                  <span>Men's Playbook · $49</span>
-                </button>
-              </div>
-            </div>
+      {/* SECTION: FINAL PURCHASE BANNER — ATTENTION PLAYBOOK STYLE */}
+      <section className="py-24 sm:py-28 border-b border-[#e7e5e4] bg-[#f6f6f4] relative overflow-hidden">
+        <div className="mx-auto max-w-3xl px-6 text-center flex flex-col items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="180 180 664 664"
+            width="56"
+            height="56"
+            aria-hidden="true"
+            className="mb-4"
+          >
+            <rect x="180" y="180" width="664" height="664" rx="120" fill="#1C1917" />
+            <path
+              d="M232 512 C 352 318, 672 318, 792 512 C 672 706, 352 706, 232 512 Z"
+              fill="#F6F6F4"
+            />
+            <circle cx="512" cy="512" r="108" fill="#F97316" />
+            <circle cx="512" cy="512" r="42" fill="#1C1917" />
+          </svg>
+          <h2 className="text-[28px] sm:text-[34px] font-bold tracking-[-0.02em] text-[#1c1917]">
+            The Dating Playbook
+          </h2>
+          <p className="mt-2 text-[16px] text-[#78716c]">
+            Everything you need to get a girl.
+          </p>
+          <div className="mt-8 flex flex-col items-center gap-3">
+            <button
+              onClick={() => handleOpenCheckout("men")}
+              className="btn btn-primary"
+              data-cta="final"
+            >
+              <span className="btn-dot" aria-hidden="true" />
+              <span>Get the playbook for $3</span>
+            </button>
+            <p className="text-[14px] text-[#78716c] mt-2">
+              Instant digital access. One-time payment. Lifetime access.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="py-12 bg-white text-xs text-[#8E8A82]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      {/* FOOTER — ATTENTION PLAYBOOK STYLE */}
+      <footer className="border-t border-[#e7e5e4] bg-[#f6f6f4] py-10 text-[14.5px] text-[#78716c]">
+        <div className="mx-auto max-w-[1200px] px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <span className="font-mono text-base font-black tracking-tight text-[#0E0E10]">
-              PLUGD
-            </span>
-            <span>•</span>
-            <span>The Premium Dating & Attraction Playbooks</span>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2.5 text-[#1c1917] hover:text-[#78716c] transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="180 180 664 664"
+                width="22"
+                height="22"
+                aria-hidden="true"
+              >
+                <rect x="180" y="180" width="664" height="664" rx="120" fill="#1C1917" />
+                <path
+                  d="M232 512 C 352 318, 672 318, 792 512 C 672 706, 352 706, 232 512 Z"
+                  fill="#F6F6F4"
+                />
+                <circle cx="512" cy="512" r="108" fill="#F97316" />
+                <circle cx="512" cy="512" r="42" fill="#1C1917" />
+              </svg>
+              <span className="font-semibold text-[15px] text-[#1c1917]">The Dating Playbook</span>
+            </Link>
           </div>
 
-          <div className="flex items-center gap-6">
-            <Link href="/women" className="hover:text-[#0E0E10] transition-colors">
-              Women's Playbook
-            </Link>
-            <Link href="/men" className="hover:text-[#0E0E10] transition-colors">
-              Men's Playbook
-            </Link>
-            <Link href="/my-playbooks" className="hover:text-[#0E0E10] transition-colors">
-              My Playbooks
-            </Link>
-            <Link href="/privacy-policy" className="hover:text-[#0E0E10] transition-colors">
+          <div className="flex flex-wrap items-center gap-6 text-[14px]">
+            <a href="#curriculum" className="text-[#1c1917] hover:text-[#78716c] transition-colors">
+              What's inside
+            </a>
+            <a href="#testimonials" className="text-[#1c1917] hover:text-[#78716c] transition-colors">
+              In their words
+            </a>
+            <a href="#faq" className="text-[#1c1917] hover:text-[#78716c] transition-colors">
+              FAQ
+            </a>
+            <Link href="/privacy-policy" className="text-[#1c1917] hover:text-[#78716c] transition-colors">
               Privacy
             </Link>
-            <Link href="/terms-of-service" className="hover:text-[#0E0E10] transition-colors">
+            <Link href="/terms-of-service" className="text-[#1c1917] hover:text-[#78716c] transition-colors">
               Terms
             </Link>
           </div>
+        </div>
+        <div className="mx-auto max-w-[1200px] px-6 mt-6 pt-6 border-t border-[#e7e5e4] flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#78716c]">
+          <p>The Dating Playbook. Everything you need to get a girl.</p>
+          <p>© 2026 The Dating Playbook. All rights reserved.</p>
         </div>
       </footer>
 
       {/* PERSISTENT STICKY PURCHASE BAR */}
       <StickyPurchaseBar
-        price={49}
+        isLanding={true}
+        price={3}
         onOpenCheckout={handleOpenCheckout}
       />
 

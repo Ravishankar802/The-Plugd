@@ -7,11 +7,110 @@ import { ArrowRight, Menu, X, BookOpen } from "lucide-react";
 export default function Header({
   activeCourse,
   onOpenCheckout,
+  isLanding = false,
 }: {
   activeCourse?: "men" | "women";
   onOpenCheckout?: (slug?: "men" | "women") => void;
+  isLanding?: boolean;
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  if (isLanding) {
+    return (
+      <header className="sticky top-0 z-40 w-full border-b border-[#e7e5e4] bg-[#f6f6f4]/95 backdrop-blur-md transition-all">
+        <div className="mx-auto flex h-[68px] max-w-[1200px] items-center justify-between px-6">
+          {/* Brand Logo & Lockup */}
+          <Link
+            href="/"
+            className="group inline-flex items-center gap-2.5 text-[#1c1917] transition-colors"
+            aria-label="The Dating Playbook, home"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="180 180 664 664"
+              width="28"
+              height="28"
+              aria-hidden="true"
+              className="shrink-0"
+            >
+              <rect x="180" y="180" width="664" height="664" rx="120" fill="#1C1917" />
+              <path
+                d="M232 512 C 352 318, 672 318, 792 512 C 672 706, 352 706, 232 512 Z"
+                fill="#F6F6F4"
+              />
+              <circle cx="512" cy="512" r="108" fill="#F97316" />
+              <circle cx="512" cy="512" r="42" fill="#1C1917" />
+            </svg>
+            <span className="text-[16px] font-semibold tracking-[-0.01em] text-[#1c1917] transition-colors group-hover:text-[#78716c]">
+              The Dating Playbook
+            </span>
+          </Link>
+
+          {/* Right Navigation */}
+          <div className="flex items-center gap-7">
+            {/* Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-6" aria-label="Sections">
+              <a
+                href="#curriculum"
+                className="text-[14px] font-medium text-[#1c1917] transition-colors hover:text-[#78716c]"
+              >
+                What's inside
+              </a>
+              <a
+                href="#testimonials"
+                className="text-[14px] font-medium text-[#1c1917] transition-colors hover:text-[#78716c]"
+              >
+                In their words
+              </a>
+              <a
+                href="#faq"
+                className="text-[14px] font-medium text-[#1c1917] transition-colors hover:text-[#78716c]"
+              >
+                FAQ
+              </a>
+            </nav>
+
+            {/* Header Purchase CTA */}
+            <div className="hidden sm:block">
+              <button
+                onClick={() => (onOpenCheckout ? onOpenCheckout("men") : undefined)}
+                className="btn btn-surface btn-small"
+                data-cta="nav"
+              >
+                <span className="btn-dot" aria-hidden="true" />
+                <span>Get the playbook for $3</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Pills */}
+        <nav
+          className="flex lg:hidden overflow-x-auto gap-2 px-6 pb-3 pt-0 no-scrollbar"
+          aria-label="Sections"
+        >
+          <a
+            href="#curriculum"
+            className="nav-pill"
+          >
+            What's inside
+          </a>
+          <a
+            href="#testimonials"
+            className="nav-pill"
+          >
+            In their words
+          </a>
+          <a
+            href="#faq"
+            className="nav-pill"
+          >
+            FAQ
+          </a>
+        </nav>
+      </header>
+    );
+  }
 
   return (
     <>

@@ -2,13 +2,13 @@ import { Metadata } from "next";
 import HomePageClient from "@/components/HomePageClient";
 
 export const metadata: Metadata = {
-  title: "Plugd — Premium Digital Dating & Attraction Playbooks",
+  title: "The Dating Playbook — Everything you need to get a girl",
   description:
-    "Two complete digital playbooks for becoming significantly better at attraction, dating, and relationships. 100% slide-based lessons.",
+    "Learn how to attract women, build confidence, and get the girl you want. Practical lessons on attraction, confidence, flirting, texting, and dating.",
   openGraph: {
-    title: "Plugd — Premium Digital Dating & Attraction Playbooks",
+    title: "The Dating Playbook — Everything you need to get a girl",
     description:
-      "Two practical, deeply researched digital playbooks. How to Get the Man of Your Dreams (For Women) & How to Date the Hottest Women (For Men).",
+      "Learn how to attract women, build confidence, and get the girl you want. Instant digital access. One-time payment. Lifetime access.",
   },
 };
 

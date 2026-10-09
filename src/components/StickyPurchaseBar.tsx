@@ -7,6 +7,7 @@ interface StickyPurchaseBarProps {
   price?: number;
   onOpenCheckout: (courseSlug?: "men" | "women") => void;
   courseSlug?: "men" | "women";
+  isLanding?: boolean;
 }
 
 export default function StickyPurchaseBar({
@@ -14,7 +15,28 @@ export default function StickyPurchaseBar({
   price = 49,
   onOpenCheckout,
   courseSlug,
+  isLanding = false,
 }: StickyPurchaseBarProps) {
+  if (isLanding) {
+    return (
+      <aside className="sticky-cta" data-sticky aria-label="Purchase playbook">
+        <div className="sticky-text">
+          <p className="sticky-title">The Dating Playbook</p>
+          <p className="sticky-sub">
+            <span>Instant digital access. Lifetime access.</span>
+          </p>
+        </div>
+        <button
+          onClick={() => onOpenCheckout(courseSlug || "men")}
+          className="btn btn-invert sticky-btn"
+          data-cta="sticky"
+        >
+          <span className="btn-dot" aria-hidden="true" />
+          <span>Get the playbook for $3</span>
+        </button>
+      </aside>
+    );
+  }
   return (
     <div className="fixed bottom-5 left-0 right-0 z-50 px-4 sm:px-6 pointer-events-none">
       <div className="mx-auto max-w-4xl pointer-events-auto">

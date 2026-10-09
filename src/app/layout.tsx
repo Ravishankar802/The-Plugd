@@ -22,21 +22,21 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://theplugd.com"),
-  title: "Plugd — Premium Digital Dating & Attraction Playbooks",
+  title: "The Dating Playbook — Everything you need to get a girl",
   description:
-    "Two practical, deeply researched digital playbooks. How to Get the Man of Your Dreams (For Women) & How to Date the Hottest Women (For Men).",
+    "Learn how to attract women, build confidence, and get the girl you want. Practical lessons on attraction, confidence, flirting, texting, and dating.",
   openGraph: {
-    title: "Plugd — Premium Digital Dating & Attraction Playbooks",
+    title: "The Dating Playbook — Everything you need to get a girl",
     description:
-      "Two practical, deeply researched digital playbooks. Slide-based lessons, actionable frameworks, and tactical scripts.",
+      "Learn how to attract women, build confidence, and get the girl you want. Instant digital access. One-time payment. Lifetime access.",
     url: "https://theplugd.com",
-    siteName: "Plugd",
+    siteName: "The Dating Playbook",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Plugd — Premium Digital Dating & Attraction Playbooks",
-    description: "Dating is a skill. Two complete playbooks for attraction and relationships.",
+    title: "The Dating Playbook",
+    description: "Everything you need to get a girl.",
   },
   icons: {
     icon: [
@@ -54,8 +54,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} min-h-screen bg-[#FAF8F5] text-[#0E0E10] selection:bg-[#FF5500] selection:text-white antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} min-h-screen bg-[#f6f6f4] text-[#1c1917] selection:bg-[#f97316] selection:text-white antialiased`}
       >
         <div className="flex min-h-screen flex-col">
           {children}
