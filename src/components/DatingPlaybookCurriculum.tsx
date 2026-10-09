@@ -40,7 +40,7 @@ export default function DatingPlaybookCurriculum({
           </p>
         </div>
 
-        {/* 8-Module Accordion Cards */}
+        {/* 10-Module Accordion Cards */}
         <div className="max-w-[760px] mx-auto space-y-3.5">
           {DATING_PLAYBOOK_MODULES.map((module) => {
             const isOpen = openModuleIds.includes(module.id);

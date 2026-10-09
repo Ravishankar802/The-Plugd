@@ -284,7 +284,7 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* SECTION: 8-MODULE DATING PLAYBOOK CURRICULUM */}
+      {/* SECTION: 10-MODULE DATING PLAYBOOK CURRICULUM */}
       <DatingPlaybookCurriculum onOpenCheckout={handleOpenCheckout} />
 
       {/* SECTION: AUDIENCE FIT ("IS THE DATING PLAYBOOK RIGHT FOR YOU?") */}
