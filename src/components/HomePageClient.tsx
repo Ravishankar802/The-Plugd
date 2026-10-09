@@ -98,14 +98,14 @@ export default function HomePageClient() {
         "The playbook is designed to help you develop confidence, improve your communication, understand attraction, and approach dating more naturally. Your results will depend on how you apply what you learn.",
     },
     {
-      question: "Does it guarantee dating success?",
+      question: "What about the free course?",
       answer:
-        "No playbook can guarantee attraction or a relationship. The goal is to give you practical knowledge and skills you can develop through real-world experience.",
+        "The free course is a great place to start if you want to explore the basics of dating and attraction. The Dating Playbook goes further with more structured, practical guidance across the entire dating process.",
     },
     {
-      question: "Can I read the lessons instead of watching presentations?",
+      question: "Will I get lifetime access?",
       answer:
-        "Yes. The written version of each lesson is included in the playbook.",
+        "Yes. Your $3 purchase gives you lifetime access to The Dating Playbook. You can revisit the material whenever you want without paying a recurring subscription.",
     },
   ];
 
@@ -293,10 +293,7 @@ export default function HomePageClient() {
       {/* SECTION: FAQ */}
       <section id="faq" className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-white scroll-mt-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="text-[11px] font-mono tracking-widest text-[#f97316] uppercase font-bold mb-2">
-              QUESTIONS & ANSWERS
-            </div>
+          <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1c1917]">
               FAQ
             </h2>
@@ -401,9 +398,8 @@ export default function HomePageClient() {
             </a>
           </div>
         </div>
-        <div className="mx-auto max-w-[1200px] px-6 mt-6 pt-6 border-t border-[#e7e5e4] flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#78716c]">
-          <p>The Dating Playbook. Everything you need to get a girl.</p>
-          <p>© 2026 The Dating Playbook. All rights reserved.</p>
+        <div className="mx-auto max-w-[1200px] px-6 mt-6 pt-6 border-t border-[#e7e5e4] text-[13px] text-[#78716c]">
+          <p className="m-0">The Dating Playbook. Everything you need to get a girl.</p>
         </div>
       </footer>
 
