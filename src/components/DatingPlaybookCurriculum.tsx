@@ -30,12 +30,12 @@ export default function DatingPlaybookCurriculum({
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
-          <h2 className="text-3xl sm:text-[40px] md:text-[48px] font-bold tracking-tight text-[#1c1917] leading-tight">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-14">
+          <h2 className="text-3xl sm:text-[38px] md:text-[45px] font-bold tracking-tight text-[#1c1917] leading-tight">
             What&apos;s inside
           </h2>
-          <p className="mt-3.5 sm:mt-4 md:mt-5 text-[17px] sm:text-[21px] md:text-[26px] text-[#57534e] leading-snug sm:leading-relaxed max-w-2xl sm:max-w-3xl mx-auto">
-            {TOTAL_LESSONS_COUNT} lessons, {TOTAL_MODULES_COUNT} modules, plus a written version of every lesson.
+          <p className="mt-2.5 sm:mt-3 text-base sm:text-lg md:text-[22px] text-[#57534e] leading-normal max-w-2xl mx-auto">
+            {TOTAL_LESSONS_COUNT} lessons, {TOTAL_MODULES_COUNT} modules
           </p>
         </div>
 
