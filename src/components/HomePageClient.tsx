@@ -73,29 +73,39 @@ export default function HomePageClient() {
 
   const faqs = [
     {
-      question: "What exactly do I get when I purchase a playbook?",
+      question: "What's included in The Dating Playbook?",
       answer:
-        "You get instant lifetime access to the complete digital course: 10 structured modules, 40+ cinema-grade interactive slide decks, verbatim text breakdowns, real-world field exercises, and downloadable cheat sheets. No boring PDFs or rambling audio files.",
+        "The Dating Playbook covers attraction, confidence, approaching women, flirting, texting, planning dates, handling rejection, and building better relationships. Everything is organised into practical modules with examples and actionable advice.",
     },
     {
-      question: "Is this a subscription or recurring monthly fee?",
+      question: "Is this suitable for beginners?",
       answer:
-        "No. Plugd is strictly a one-time purchase. Pay once ($49), own it for life. All future updates to that course's slides are included for free.",
+        "Yes. Whether you're new to dating or have some experience but want to improve, the playbook helps you understand the fundamentals and put them into practice.",
     },
     {
-      question: "Can I view the slide decks on my smartphone?",
+      question: "How do I access the playbook?",
       answer:
-        "Yes! The presentation viewer is natively optimized for mobile with touch swipe navigation, tap advances, fullscreen mode, and crisp typographic hierarchy.",
+        "You'll get instant digital access after your purchase. You can revisit the material whenever you want.",
     },
     {
-      question: "How are these playbooks different from other dating advice?",
+      question: "Is this a one-time payment?",
       answer:
-        "Most dating content is either vague platitudes ('just be yourself') or manipulative pickup tactics that destroy your self-respect. Plugd is a behavioral framework designed like a top-tier strategy deck: precise, psychologically grounded, calibrated, and brutally practical.",
+        "Yes. Pay $3 once and keep access to the playbook. There is no recurring subscription.",
     },
     {
-      question: "Will my purchase be discreet?",
+      question: "Will this help me become more confident around women?",
       answer:
-        "Yes. Billing statements show a discreet, neutral charge with no explicit dating terms, and access is private to your registered email.",
+        "The playbook is designed to help you develop confidence, improve your communication, understand attraction, and approach dating more naturally. Your results will depend on how you apply what you learn.",
+    },
+    {
+      question: "Does it guarantee dating success?",
+      answer:
+        "No playbook can guarantee attraction or a relationship. The goal is to give you practical knowledge and skills you can develop through real-world experience.",
+    },
+    {
+      question: "Can I read the lessons instead of watching presentations?",
+      answer:
+        "Yes. The written version of each lesson is included in the playbook.",
     },
   ];
 
@@ -299,14 +309,17 @@ export default function HomePageClient() {
                 <div key={index} className="py-6">
                   <button
                     onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                    className="w-full flex items-center justify-between text-left group focus:outline-none"
+                    className="w-full flex items-center justify-between text-left group focus:outline-none cursor-pointer"
+                    aria-expanded={isOpen}
                   >
                     <span className="text-base sm:text-lg font-bold text-[#1c1917] group-hover:text-[#f97316] transition-colors pr-4">
                       {faq.question}
                     </span>
                     <div
-                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#e7e5e4] bg-[#f6f6f4] transition-transform duration-200 ${
-                        isOpen ? "rotate-180 bg-[#1c1917] text-white border-[#1c1917]" : ""
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all duration-200 ${
+                        isOpen
+                          ? "rotate-180 bg-[#f97316] text-white border-[#f97316]"
+                          : "border-[#e7e5e4] bg-[#f6f6f4] text-[#1c1917] group-hover:border-[#d6d3d1]"
                       }`}
                     >
                       <ChevronDown className="h-3.5 w-3.5" />
@@ -314,7 +327,7 @@ export default function HomePageClient() {
                   </button>
 
                   {isOpen && (
-                    <div className="mt-4 text-sm text-[#44403c] leading-relaxed pr-8 border-l-2 border-[#f97316] pl-4">
+                    <div className="mt-4 text-[15px] sm:text-[15.5px] text-[#44403c] leading-relaxed pr-8 border-l-2 border-[#f97316] pl-4">
                       {faq.answer}
                     </div>
                   )}
@@ -325,8 +338,29 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* FOOTER — ATTENTION PLAYBOOK STYLE */}
-      <footer className="border-t border-[#e7e5e4] bg-[#f6f6f4] py-10 pb-28 sm:pb-32 text-[14.5px] text-[#78716c]">
+      {/* SECTION: FINAL PURCHASE CTA */}
+      <section className="py-20 sm:py-24 border-b border-[#e7e5e4] bg-[#f6f6f4]">
+        <div className="mx-auto max-w-xl px-6 text-center flex flex-col items-center">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1c1917] mb-6">
+            The Dating Playbook
+          </h2>
+          <button
+            onClick={() => handleOpenCheckout("men")}
+            className="btn btn-primary"
+            data-cta="final-bottom"
+          >
+            <span className="btn-dot" aria-hidden="true" />
+            <span>Get the playbook for $3 →</span>
+          </button>
+          <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
+            <p className="m-0">One-time payment · Instant access</p>
+            <p className="m-0">Pay once. Keep it forever.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-[#f6f6f4] py-10 pb-28 sm:pb-32 text-[14.5px] text-[#78716c]">
         <div className="mx-auto max-w-[1200px] px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <Link
@@ -353,21 +387,18 @@ export default function HomePageClient() {
           </div>
 
           <div className="flex flex-wrap items-center gap-6 text-[14px]">
-            <a href="#curriculum" className="text-[#1c1917] hover:text-[#78716c] transition-colors">
-              What's inside
-            </a>
-            <a href="#testimonials" className="text-[#1c1917] hover:text-[#78716c] transition-colors">
-              In their words
-            </a>
-            <a href="#faq" className="text-[#1c1917] hover:text-[#78716c] transition-colors">
-              FAQ
-            </a>
-            <Link href="/privacy-policy" className="text-[#1c1917] hover:text-[#78716c] transition-colors">
-              Privacy
-            </Link>
             <Link href="/terms-of-service" className="text-[#1c1917] hover:text-[#78716c] transition-colors">
               Terms
             </Link>
+            <Link href="/privacy-policy" className="text-[#1c1917] hover:text-[#78716c] transition-colors">
+              Privacy
+            </Link>
+            <a
+              href="mailto:ravx003@gmail.com"
+              className="text-[#1c1917] hover:text-[#78716c] transition-colors"
+            >
+              ravx003@gmail.com
+            </a>
           </div>
         </div>
         <div className="mx-auto max-w-[1200px] px-6 mt-6 pt-6 border-t border-[#e7e5e4] flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#78716c]">
