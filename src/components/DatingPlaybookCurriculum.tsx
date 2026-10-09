@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 import { ChevronDown, Check } from "lucide-react";
-import { DATING_PLAYBOOK_MODULES } from "@/lib/dating-playbook-curriculum";
+import {
+  DATING_PLAYBOOK_MODULES,
+  TOTAL_LESSONS_COUNT,
+  TOTAL_MODULES_COUNT,
+} from "@/lib/dating-playbook-curriculum";
 
 interface DatingPlaybookCurriculumProps {
   onOpenCheckout?: (slug?: "men" | "women") => void;
@@ -26,15 +30,12 @@ export default function DatingPlaybookCurriculum({
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="text-[11px] font-mono tracking-widest text-[#f97316] uppercase font-bold mb-2">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+          <div className="text-[11px] font-mono tracking-widest text-[#f97316] uppercase font-bold mb-2.5">
             WHAT&apos;S INSIDE
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1c1917]">
-            The Dating Playbook
-          </h2>
-          <p className="mt-3 text-base text-[#78716c] max-w-2xl mx-auto leading-relaxed">
-            Everything you need to understand attraction, build confidence, navigate modern dating, and create the kind of relationships you actually want.
+          <p className="text-base sm:text-lg text-[#57534e] leading-relaxed">
+            {TOTAL_LESSONS_COUNT} lessons, {TOTAL_MODULES_COUNT} modules, plus a written version of every lesson.
           </p>
         </div>
 
