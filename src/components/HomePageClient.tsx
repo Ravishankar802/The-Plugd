@@ -61,6 +61,14 @@ export default function HomePageClient() {
       setIsStickyBarVisible(true);
     }
 
+    // Auto-open checkout modal if redirected from protected content
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("checkout") === "true") {
+        setCheckoutOpen(true);
+      }
+    } catch {}
+
     return () => {
       observer.disconnect();
     };

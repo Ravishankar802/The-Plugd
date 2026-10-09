@@ -13,7 +13,6 @@ export async function GET() {
       const cookieStore = await cookies();
       accessKey = cookieStore.get("plugd_access_key")?.value;
     } catch {
-      const cookieHeader = "";
       accessKey = undefined;
     }
 
@@ -27,24 +26,26 @@ export async function GET() {
     }
 
     const purchases = await getUserPurchases(customer.id);
-    const hasMenPurchase = purchases.some((p) => p.courseSlug === "men");
-    const hasCompMen = await hasComplimentaryAccess(customer.email, "men");
+    const hasAccess = purchases.some((p) => p.courseSlug === "men" || p.courseSlug === "women");
+    const hasComp = await hasComplimentaryAccess(customer.email, "men");
 
-    const playbooks = purchases.map((p) => {
-      const slug = p.courseSlug as "men" | "women";
-      const course = COURSES[slug] || COURSES.men;
+    const playbooks: any[] = [];
+    const course = COURSES.men;
+    const totalLessons = 69;
+
+    if (hasAccess) {
+      const p = purchases.find((x) => x.courseSlug === "men") || purchases[0];
       const progressData = (p.progress as any) || {};
-
-      const totalLessons = course.modules.reduce(
-        (sum, m) => sum + (m.lessons?.length || 0),
-        0
-      );
       const completedCount = (progressData.completedLessons || []).length;
-      const percent = totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
+      const percent = Math.round((completedCount / totalLessons) * 100);
+      let lastViewed = progressData.lastViewedLessonId || "01-1";
+      if (lastViewed.startsWith("m-") || lastViewed.startsWith("w-")) {
+        lastViewed = "01-1";
+      }
 
-      return {
+      playbooks.push({
         id: p.id,
-        courseSlug: slug,
+        courseSlug: "men",
         title: course.title,
         shortTitle: course.shortTitle,
         audience: course.audience,
@@ -53,25 +54,22 @@ export async function GET() {
         completedCount,
         totalLessons,
         percent,
-        lastViewedLessonId: progressData.lastViewedLessonId || (slug === "men" ? "01-1" : "w-01-01"),
-      };
-    });
-
-    if (hasCompMen && !hasMenPurchase) {
-      const course = COURSES.men;
+        lastViewedLessonId: lastViewed,
+      });
+    } else if (hasComp) {
       const compGrant = await prisma.complimentaryAccess.findUnique({
         where: { email: customer.email.trim().toLowerCase() },
       });
       const progressData = (compGrant?.progress as any) || {};
-      const totalLessons = course.modules.reduce(
-        (sum, m) => sum + (m.lessons?.length || 0),
-        0
-      );
       const completedCount = (progressData.completedLessons || []).length;
-      const percent = totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
+      const percent = Math.round((completedCount / totalLessons) * 100);
+      let lastViewed = progressData.lastViewedLessonId || "01-1";
+      if (lastViewed.startsWith("m-") || lastViewed.startsWith("w-")) {
+        lastViewed = "01-1";
+      }
 
-      playbooks.unshift({
-        id: "comp-men",
+      playbooks.push({
+        id: "comp-dating-playbook",
         courseSlug: "men",
         title: course.title,
         shortTitle: course.shortTitle,
@@ -81,7 +79,7 @@ export async function GET() {
         completedCount,
         totalLessons,
         percent,
-        lastViewedLessonId: progressData.lastViewedLessonId || "01-1",
+        lastViewedLessonId: lastViewed,
       });
     }
 
