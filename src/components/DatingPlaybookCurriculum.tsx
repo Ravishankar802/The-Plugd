@@ -34,8 +34,8 @@ export default function DatingPlaybookCurriculum({
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1c1917]">
             What&apos;s inside
           </h2>
-          <p className="mt-2.5 sm:mt-3 text-[15px] sm:text-base text-[#57534e] leading-relaxed max-w-2xl mx-auto">
-            {TOTAL_LESSONS_COUNT} lessons, {TOTAL_MODULES_COUNT} modules, plus a written version of every lesson.
+          <p className="mt-2.5 sm:mt-3 text-[16.5px] sm:text-[18px] text-[#57534e] leading-relaxed max-w-2xl mx-auto">
+            {TOTAL_LESSONS_COUNT} lessons, {TOTAL_MODULES_COUNT} modules, a written version of every lesson.
           </p>
         </div>
 
