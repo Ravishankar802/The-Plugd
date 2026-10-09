@@ -112,14 +112,14 @@ export const DATING_PLAYBOOK_MODULES: PlaybookModule[] = [
   {
     id: "module-07",
     number: "07",
-    title: "Lover Boy vs. Playboy: The Two Approaches",
+    title: "Dating Styles, Attraction & Intention",
     description:
-      "Explore two very different dating styles, what makes each appealing, where each can go wrong, and how to choose an approach that fits your personality and goals.",
+      "Understand different approaches to dating, from romantic and relationship-oriented to casual and independent. Explore what makes each appealing, where each can go wrong, and how to choose an approach that fits your personality and goals.",
     lessons: [
       { id: "07-1", number: "7.1", title: "The Romantic Approach: Emotional Openness & Attentiveness" },
-      { id: "07-2", number: "7.2", title: "Lover Boy Pitfalls: Overinvestment, Idealization & People-Pleasing" },
-      { id: "07-3", number: "7.3", title: "The Casual Approach: Independence, Playfulness & Novelty" },
-      { id: "07-4", number: "7.4", title: "Playboy Pitfalls: Emotional Detachment & Shallow Connections" },
+      { id: "07-2", number: "7.2", title: "Relationship-Oriented Pitfalls: Overinvestment & People-Pleasing" },
+      { id: "07-3", number: "7.3", title: "The Casual Approach: Independence, Playfulness & Freedom" },
+      { id: "07-4", number: "7.4", title: "Casual Dating Pitfalls: Emotional Detachment & Shallow Connections" },
       { id: "07-5", number: "7.5", title: "Short-Term Dating vs. Long-Term Partnership Trade-Offs" },
       { id: "07-6", number: "7.6", title: "Selective Standards vs. Manufactured Indifference" },
       { id: "07-7", number: "7.7", title: "Choosing the Right Approach for Your Authentic Goals" },

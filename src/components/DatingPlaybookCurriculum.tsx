@@ -5,7 +5,9 @@ import { ChevronDown } from "lucide-react";
 import { DATING_PLAYBOOK_MODULES } from "@/lib/dating-playbook-curriculum";
 
 export default function DatingPlaybookCurriculum() {
-  const [openModuleIds, setOpenModuleIds] = useState<string[]>(["module-01"]);
+  const [openModuleIds, setOpenModuleIds] = useState<string[]>(() =>
+    DATING_PLAYBOOK_MODULES.map((m) => m.id)
+  );
 
   const toggleModule = (id: string) => {
     setOpenModuleIds((prev) =>

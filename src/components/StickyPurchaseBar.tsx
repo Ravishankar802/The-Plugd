@@ -8,6 +8,7 @@ interface StickyPurchaseBarProps {
   onOpenCheckout: (courseSlug?: "men" | "women") => void;
   courseSlug?: "men" | "women";
   isLanding?: boolean;
+  isVisible?: boolean;
 }
 
 export default function StickyPurchaseBar({
@@ -16,10 +17,15 @@ export default function StickyPurchaseBar({
   onOpenCheckout,
   courseSlug,
   isLanding = false,
+  isVisible = false,
 }: StickyPurchaseBarProps) {
   if (isLanding) {
     return (
-      <aside className="sticky-cta" data-sticky aria-label="Purchase playbook">
+      <aside
+        className={`sticky-cta ${isVisible ? "is-visible" : ""}`}
+        data-sticky
+        aria-label="Purchase playbook"
+      >
         <div className="sticky-text">
           <p className="sticky-title">The Dating Playbook</p>
           <p className="sticky-sub">

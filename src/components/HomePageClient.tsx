@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import Header from "@/components/Header";
@@ -30,6 +30,40 @@ export default function HomePageClient() {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [selectedCourseSlug, setSelectedCourseSlug] = useState<"men" | "women">("men");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [isStickyBarVisible, setIsStickyBarVisible] = useState(false);
+  const stickyTriggerRef = useRef<HTMLParagraphElement | null>(null);
+
+  useEffect(() => {
+    const el = stickyTriggerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+          setIsStickyBarVisible(true);
+        } else {
+          setIsStickyBarVisible(false);
+        }
+      },
+      {
+        threshold: 0,
+        rootMargin: "0px",
+      }
+    );
+
+    observer.observe(el);
+
+    // Initial check on load/reload
+    const rect = el.getBoundingClientRect();
+    if (rect.top <= window.innerHeight) {
+      setIsStickyBarVisible(true);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const handleOpenCheckout = (slug?: "men" | "women") => {
     if (slug) setSelectedCourseSlug(slug);
@@ -144,8 +178,8 @@ export default function HomePageClient() {
             That's why we're building The Dating Playbook.
           </p>
 
-          {/* Following Paragraph */}
-          <p>
+          {/* Following Paragraph — Trigger point for sticky purchase banner */}
+          <p ref={stickyTriggerRef}>
             Being attractive isn't just about your looks, money, or having the perfect line. It's about how you carry yourself, how you communicate, how you make her feel, and what you do when the moment actually arrives.
           </p>
 
@@ -292,7 +326,7 @@ export default function HomePageClient() {
       </section>
 
       {/* FOOTER — ATTENTION PLAYBOOK STYLE */}
-      <footer className="border-t border-[#e7e5e4] bg-[#f6f6f4] py-10 text-[14.5px] text-[#78716c]">
+      <footer className="border-t border-[#e7e5e4] bg-[#f6f6f4] py-10 pb-28 sm:pb-32 text-[14.5px] text-[#78716c]">
         <div className="mx-auto max-w-[1200px] px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <Link
@@ -346,6 +380,7 @@ export default function HomePageClient() {
       <StickyPurchaseBar
         isLanding={true}
         price={3}
+        isVisible={isStickyBarVisible}
         onOpenCheckout={handleOpenCheckout}
       />
 
