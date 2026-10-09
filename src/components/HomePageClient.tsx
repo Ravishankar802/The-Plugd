@@ -12,7 +12,6 @@ import {
   Layers,
   ChevronDown,
   Lock,
-  Star,
   Flame,
 } from "lucide-react";
 import Header from "@/components/Header";
@@ -21,6 +20,24 @@ import CheckoutModal from "@/components/CheckoutModal";
 import ProductSlidePreview from "@/components/ProductSlidePreview";
 import CurriculumAccordion from "@/components/CurriculumAccordion";
 import { COURSES } from "@/lib/playbooks-data";
+
+const DRAFT_TESTIMONIALS = [
+  {
+    name: "Alex Morgan",
+    quote:
+      "I used to overthink every conversation with a girl I liked. Learning to relax, start conversations naturally, and stop treating every interaction like a test made a real difference.",
+  },
+  {
+    name: "Daniel Brooks",
+    quote:
+      "The biggest shift was realizing I didn't need a perfect line. Being more comfortable with myself and actually listening made conversations feel much more natural.",
+  },
+  {
+    name: "Ryan Mitchell",
+    quote:
+      "I always made texting more complicated than it needed to be. Keeping things simple, showing genuine interest, and not overthinking every reply changed how I approached it.",
+  },
+];
 
 export default function HomePageClient() {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
@@ -407,41 +424,26 @@ export default function HomePageClient() {
 
       {/* SECTION: SOCIAL PROOF ("IN THEIR WORDS") */}
       <section id="testimonials" className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-[#f6f6f4]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="text-[11px] font-mono tracking-widest text-[#f97316] uppercase font-bold mb-2">
-              IN THEIR WORDS
-            </div>
+        <div className="mx-auto max-w-[1200px] px-6">
+          <div className="text-center mb-12 sm:mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1c1917]">
               In their words
             </h2>
-            <p className="mt-3 text-base text-[#78716c]">
-              How the playbooks are reshaping standards, confidence, and dating dynamics.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[...COURSES.women.testimonials, ...COURSES.men.testimonials].slice(0, 6).map((t, i) => (
+            {DRAFT_TESTIMONIALS.map((t) => (
               <div
-                key={i}
-                className="rounded-2xl border border-[#e7e5e4] bg-white p-6 sm:p-8 shadow-sm flex flex-col justify-between hover:border-[#d6d3d1] transition-all"
+                key={t.name}
+                className="rounded-2xl border border-[#e7e5e4] bg-white p-6 sm:p-8 shadow-xs hover:border-[#d6d3d1] transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center gap-1 text-[#f97316] mb-4">
-                    {[...Array(5)].map((_, idx) => (
-                      <Star key={idx} className="h-3.5 w-3.5 fill-[#f97316]" />
-                    ))}
+                  <div className="text-[16px] font-semibold text-[#1c1917] tracking-tight">
+                    {t.name}
                   </div>
-                  <p className="text-sm text-[#1c1917] leading-relaxed italic mb-6">
-                    "{t.quote}"
+                  <p className="mt-3.5 text-[15px] sm:text-[15.5px] text-[#44403c] leading-[1.65]">
+                    &ldquo;{t.quote}&rdquo;
                   </p>
-                </div>
-
-                <div className="border-t border-[#e7e5e4] pt-4">
-                  <div className="text-sm font-bold text-[#1c1917]">{t.name}</div>
-                  <div className="text-xs font-mono text-[#78716c]">
-                    {t.handle} · {t.role}
-                  </div>
                 </div>
               </div>
             ))}
@@ -519,7 +521,7 @@ export default function HomePageClient() {
           <p className="mt-2 text-[16px] text-[#78716c]">
             Everything you need to get a girl.
           </p>
-          <div className="mt-8 flex flex-col items-center gap-3">
+          <div className="mt-8 flex flex-col items-center">
             <button
               onClick={() => handleOpenCheckout("men")}
               className="btn btn-primary"
@@ -528,9 +530,10 @@ export default function HomePageClient() {
               <span className="btn-dot" aria-hidden="true" />
               <span>Get the playbook for $3</span>
             </button>
-            <p className="text-[14px] text-[#78716c] mt-2">
-              Instant digital access. One-time payment. Lifetime access.
-            </p>
+            <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
+              <p className="m-0">One-time payment · Instant access</p>
+              <p className="m-0">Pay once. Keep it forever.</p>
+            </div>
           </div>
         </div>
       </section>
