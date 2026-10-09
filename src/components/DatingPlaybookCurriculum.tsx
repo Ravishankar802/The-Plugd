@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Check } from "lucide-react";
 import { DATING_PLAYBOOK_MODULES } from "@/lib/dating-playbook-curriculum";
 
 interface DatingPlaybookCurriculumProps {
@@ -24,7 +24,7 @@ export default function DatingPlaybookCurriculum({
   return (
     <section
       id="curriculum"
-      className="py-20 sm:py-28 border-b border-[#e7e5e4] bg-[#fbf5ef] relative overflow-hidden scroll-mt-20"
+      className="pt-20 sm:pt-28 pb-8 sm:pb-10 border-b border-[#e7e5e4] bg-[#fbf5ef] relative overflow-hidden scroll-mt-20"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
@@ -111,9 +111,17 @@ export default function DatingPlaybookCurriculum({
 
         {/* Post-Curriculum Purchase Section */}
         <div className="mt-14 sm:mt-16 text-center max-w-xl mx-auto flex flex-col items-center">
-          <div className="space-y-1.5 text-[15.5px] sm:text-[16.5px] font-semibold text-[#1c1917] mb-6">
-            <p className="m-0">Written version of every lesson (markdown).</p>
-            <p className="m-0">Lifetime access and every future update.</p>
+          <div className="w-fit max-w-md mx-auto mb-6 text-left">
+            <ul className="space-y-2.5 text-[15px] sm:text-[16px] text-[#1c1917] list-none p-0 m-0">
+              <li className="flex items-start gap-2.5 leading-snug">
+                <Check className="h-4 w-4 text-[#1c1917] shrink-0 mt-0.5 stroke-[2.5]" aria-hidden="true" />
+                <span>Written version of every lesson (markdown).</span>
+              </li>
+              <li className="flex items-start gap-2.5 leading-snug">
+                <Check className="h-4 w-4 text-[#1c1917] shrink-0 mt-0.5 stroke-[2.5]" aria-hidden="true" />
+                <span>Lifetime access and every future update. I&apos;ll keep tweaking it as X changes.</span>
+              </li>
+            </ul>
           </div>
           <button
             type="button"
