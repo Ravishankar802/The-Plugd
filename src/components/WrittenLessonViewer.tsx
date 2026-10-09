@@ -1,16 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Presentation,
   BookOpen,
   CheckCircle2,
   Sparkles,
   ArrowRight,
+  Check,
   LogOut,
 } from "lucide-react";
 import { performLogout } from "@/lib/auth-client";
@@ -36,6 +38,35 @@ export default function WrittenLessonViewer({
 }: WrittenLessonViewerProps) {
   const router = useRouter();
   const [isCompleted, setIsCompleted] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown on outside click or Escape
+  useEffect(() => {
+    if (!isDropdownOpen) return;
+
+    const handlePointerDown = (e: MouseEvent | TouchEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isDropdownOpen]);
 
   const extendedLesson = lesson as ExtendedLesson;
   const writtenContent = extendedLesson.writtenLesson || lesson.summary;
@@ -242,10 +273,83 @@ export default function WrittenLessonViewer({
             <span>Syllabus</span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-2 text-xs font-mono text-[#78716c]">
-            <span className="font-bold text-[#f97316]">MODULE {String(module.number).padStart(2, "0")}</span>
-            <span>/</span>
-            <span className="truncate max-w-sm">{lesson.title}</span>
+          {/* Module Lesson Dropdown */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              type="button"
+              onClick={() => setIsDropdownOpen((prev) => !prev)}
+              aria-expanded={isDropdownOpen}
+              aria-haspopup="listbox"
+              aria-label={`Select lesson from Module ${module.number}`}
+              className="flex items-center gap-1.5 sm:gap-2 rounded-xl border border-[#e7e5e4] bg-white px-2.5 sm:px-3 py-1.5 text-xs font-mono transition-all text-left shadow-xs text-[#1c1917] hover:border-[#d6d3d1] hover:bg-[#faf8f5]"
+            >
+              <span className="font-bold shrink-0 text-[#f97316]">
+                MODULE {String(module.number).padStart(2, "0")}
+              </span>
+              <span className="text-[#a8a29e]">/</span>
+              <span className="truncate max-w-[120px] sm:max-w-[200px] md:max-w-xs font-medium">
+                {lesson.number} {lesson.title}
+              </span>
+              <ChevronDown
+                className={`h-3.5 w-3.5 shrink-0 transition-transform duration-200 text-[#78716c] ${
+                  isDropdownOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {isDropdownOpen && (
+              <div
+                role="listbox"
+                aria-label={`Module ${module.number} Lessons`}
+                className="absolute left-0 top-full mt-2 w-72 sm:w-88 max-w-[calc(100vw-2rem)] rounded-2xl border border-[#e7e5e4] bg-white/95 p-2 shadow-2xl backdrop-blur-xl z-50 text-[#1c1917] animate-in fade-in slide-in-from-top-1 duration-150"
+              >
+                <div className="px-3 py-2 border-b border-[#e7e5e4] mb-1 flex items-center justify-between">
+                  <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#f97316]">
+                    MODULE {String(module.number).padStart(2, "0")} · LESSONS
+                  </span>
+                  <span className="text-[10px] font-mono text-[#a8a29e]">
+                    {module.lessons.length} lessons
+                  </span>
+                </div>
+
+                <div className="max-h-[60vh] overflow-y-auto space-y-1 py-1 pr-1 scrollbar-thin">
+                  {module.lessons.map((l) => {
+                    const isActive = l.id === lesson.id;
+                    return (
+                      <button
+                        key={l.id}
+                        type="button"
+                        role="option"
+                        aria-selected={isActive}
+                        onClick={() => {
+                          setIsDropdownOpen(false);
+                          router.push(`/learn/${course.slug}/${l.id}?format=written`);
+                        }}
+                        className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${
+                          isActive
+                            ? "bg-[#f97316]/10 text-[#f97316] font-bold"
+                            : "text-[#44403c] hover:bg-[#f5f3ef] hover:text-[#1c1917]"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <span
+                            className={`font-mono shrink-0 text-[11px] ${
+                              isActive ? "text-[#f97316] font-bold" : "text-[#78716c]"
+                            }`}
+                          >
+                            {l.number}
+                          </span>
+                          <span className="truncate">{l.title}</span>
+                        </div>
+                        {isActive && (
+                          <Check className="h-3.5 w-3.5 shrink-0 text-[#f97316]" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 

@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Maximize2,
   Minimize2,
   X,
@@ -47,6 +48,13 @@ export default function SlideViewer({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [slideDirection, setSlideDirection] = useState<"next" | "prev">("next");
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Synchronize index when navigating with initialSlideIndex or across lessons
+  useEffect(() => {
+    setCurrentIndex(initialSlideIndex);
+  }, [initialSlideIndex, lesson.id]);
 
   const totalSlides = lesson.slides?.length || 1;
   const currentSlide: Slide = lesson.slides?.[currentIndex] || lesson.slides?.[0];
@@ -79,22 +87,49 @@ export default function SlideViewer({
   const handleNext = useCallback(() => {
     if (currentIndex < totalSlides - 1) {
       goToSlide(currentIndex + 1, "next");
-    } else if (nextLesson) {
-      router.push(`/learn/${course.slug}/${nextLesson.lesson.id}`);
     }
-  }, [currentIndex, totalSlides, nextLesson, course.slug, goToSlide, router]);
+  }, [currentIndex, totalSlides, goToSlide]);
 
   const handlePrev = useCallback(() => {
     if (currentIndex > 0) {
       goToSlide(currentIndex - 1, "prev");
+    } else if (previousLesson) {
+      router.push(`/learn/${course.slug}/${previousLesson.lesson.id}?slide=last`);
     }
-  }, [currentIndex, goToSlide]);
+  }, [currentIndex, previousLesson, course.slug, goToSlide, router]);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    if (!isDropdownOpen) return;
+
+    const handlePointerDown = (e: MouseEvent | TouchEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+    };
+  }, [isDropdownOpen]);
 
   // Keyboard Navigation
   useEffect(() => {
     if (viewFormat === "written") return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (isDropdownOpen) {
+        if (e.key === "Escape") {
+          e.preventDefault();
+          e.stopPropagation();
+          setIsDropdownOpen(false);
+          return;
+        }
+      }
+
       if (e.key === "ArrowRight" || e.key === " " || e.key === "Enter") {
         e.preventDefault();
         handleNext();
@@ -112,7 +147,7 @@ export default function SlideViewer({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleNext, handlePrev, isFullscreen, course.slug, router, viewFormat]);
+  }, [handleNext, handlePrev, isFullscreen, course.slug, router, viewFormat, isDropdownOpen]);
 
   // Touch Swipe for Mobile
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -189,16 +224,117 @@ export default function SlideViewer({
             <span>Syllabus</span>
           </Link>
 
-          <div
-            className={`hidden md:flex items-center gap-2 text-xs font-mono ${
-              isModule1 ? "text-[#78716c]" : "text-neutral-400"
-            }`}
-          >
-            <span className={`font-bold ${isModule1 ? "text-[#f97316]" : "text-[#FF5500]"}`}>
-              MODULE {String(module.number).padStart(2, "0")}
-            </span>
-            <span>/</span>
-            <span className="truncate max-w-xs">{lesson.title}</span>
+          {/* Module Lesson Dropdown */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              type="button"
+              onClick={() => setIsDropdownOpen((prev) => !prev)}
+              aria-expanded={isDropdownOpen}
+              aria-haspopup="listbox"
+              aria-label={`Select lesson from Module ${module.number}`}
+              className={`flex items-center gap-1.5 sm:gap-2 rounded-xl border px-2.5 sm:px-3 py-1.5 text-xs font-mono transition-all text-left shadow-xs ${
+                isModule1
+                  ? "border-[#e7e5e4] bg-white text-[#1c1917] hover:border-[#d6d3d1] hover:bg-[#faf8f5]"
+                  : "border-neutral-800 bg-neutral-900 text-neutral-200 hover:border-neutral-700 hover:bg-neutral-800"
+              }`}
+            >
+              <span className={`font-bold shrink-0 ${isModule1 ? "text-[#f97316]" : "text-[#FF5500]"}`}>
+                MODULE {String(module.number).padStart(2, "0")}
+              </span>
+              <span className={isModule1 ? "text-[#a8a29e]" : "text-neutral-500"}>/</span>
+              <span className="truncate max-w-[110px] sm:max-w-[180px] md:max-w-xs font-medium">
+                {lesson.number} {lesson.title}
+              </span>
+              <ChevronDown
+                className={`h-3.5 w-3.5 shrink-0 transition-transform duration-200 ${
+                  isDropdownOpen ? "rotate-180" : ""
+                } ${isModule1 ? "text-[#78716c]" : "text-neutral-400"}`}
+              />
+            </button>
+
+            {isDropdownOpen && (
+              <div
+                role="listbox"
+                aria-label={`Module ${module.number} Lessons`}
+                className={`absolute left-0 top-full mt-2 w-72 sm:w-88 max-w-[calc(100vw-2rem)] rounded-2xl border p-2 shadow-2xl backdrop-blur-xl z-50 animate-in fade-in slide-in-from-top-1 duration-150 ${
+                  isModule1
+                    ? "border-[#e7e5e4] bg-white/95 text-[#1c1917]"
+                    : "border-neutral-800 bg-[#16161a]/95 text-white"
+                }`}
+              >
+                <div
+                  className={`px-3 py-2 border-b mb-1 flex items-center justify-between ${
+                    isModule1 ? "border-[#e7e5e4]" : "border-neutral-800"
+                  }`}
+                >
+                  <span
+                    className={`text-[11px] font-mono font-bold tracking-wider uppercase ${
+                      isModule1 ? "text-[#f97316]" : "text-[#FF5500]"
+                    }`}
+                  >
+                    MODULE {String(module.number).padStart(2, "0")} · LESSONS
+                  </span>
+                  <span
+                    className={`text-[10px] font-mono ${
+                      isModule1 ? "text-[#a8a29e]" : "text-neutral-500"
+                    }`}
+                  >
+                    {module.lessons.length} lessons
+                  </span>
+                </div>
+
+                <div className="max-h-[60vh] overflow-y-auto space-y-1 py-1 pr-1 scrollbar-thin">
+                  {module.lessons.map((l) => {
+                    const isActive = l.id === lesson.id;
+                    return (
+                      <button
+                        key={l.id}
+                        type="button"
+                        role="option"
+                        aria-selected={isActive}
+                        onClick={() => {
+                          setIsDropdownOpen(false);
+                          router.push(`/learn/${course.slug}/${l.id}`);
+                        }}
+                        className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${
+                          isActive
+                            ? isModule1
+                              ? "bg-[#f97316]/10 text-[#f97316] font-bold"
+                              : "bg-[#FF5500]/15 text-[#FF5500] font-bold"
+                            : isModule1
+                            ? "text-[#44403c] hover:bg-[#f5f3ef] hover:text-[#1c1917]"
+                            : "text-neutral-300 hover:bg-neutral-800/80 hover:text-white"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <span
+                            className={`font-mono shrink-0 text-[11px] ${
+                              isActive
+                                ? isModule1
+                                  ? "text-[#f97316] font-bold"
+                                  : "text-[#FF5500] font-bold"
+                                : isModule1
+                                ? "text-[#78716c]"
+                                : "text-neutral-400"
+                            }`}
+                          >
+                            {l.number}
+                          </span>
+                          <span className="truncate">{l.title}</span>
+                        </div>
+                        {isActive && (
+                          <Check
+                            className={`h-3.5 w-3.5 shrink-0 ${
+                              isModule1 ? "text-[#f97316]" : "text-[#FF5500]"
+                            }`}
+                          />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -940,7 +1076,7 @@ export default function SlideViewer({
         {/* Previous Button */}
         <button
           onClick={handlePrev}
-          disabled={currentIndex === 0}
+          disabled={currentIndex === 0 && !previousLesson}
           className={`flex items-center gap-2 rounded-xl border px-4 py-2.5 text-xs sm:text-sm font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
             isModule1
               ? "border-[#e7e5e4] bg-white text-[#57534e] hover:border-[#1c1917] hover:text-[#1c1917] shadow-xs"
@@ -955,19 +1091,18 @@ export default function SlideViewer({
         {/* Next Button */}
         <button
           onClick={handleNext}
-          className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs sm:text-sm font-bold shadow-md transition-all hover:scale-[1.02] active:scale-[0.98] ${
-            isModule1
-              ? "bg-[#1c1917] text-white hover:bg-neutral-800"
-              : "bg-white text-[#0E0E10] hover:bg-neutral-200"
+          disabled={currentIndex === totalSlides - 1}
+          className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs sm:text-sm font-bold shadow-md transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
+            currentIndex === totalSlides - 1
+              ? isModule1
+                ? "border border-[#e7e5e4] bg-[#f5f5f4] text-[#a8a29e]"
+                : "border border-neutral-800 bg-neutral-900 text-neutral-500"
+              : isModule1
+              ? "bg-[#1c1917] text-white hover:bg-neutral-800 hover:scale-[1.02] active:scale-[0.98]"
+              : "bg-white text-[#0E0E10] hover:bg-neutral-200 hover:scale-[1.02] active:scale-[0.98]"
           }`}
         >
-          <span>
-            {currentIndex === totalSlides - 1
-              ? nextLesson
-                ? `Next: ${nextLesson.lesson.number} →`
-                : "Complete Lesson"
-              : "Next Slide"}
-          </span>
+          <span>Next Slide</span>
           <ChevronRight className="h-4 w-4" />
         </button>
       </footer>

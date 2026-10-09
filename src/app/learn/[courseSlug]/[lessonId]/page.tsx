@@ -12,6 +12,7 @@ interface LessonPageProps {
   }>;
   searchParams?: Promise<{
     format?: string;
+    slide?: string;
   }>;
 }
 
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: LessonPageProps): Promise<Met
 
 export default async function LessonPresentationPage({ params, searchParams }: LessonPageProps) {
   const { courseSlug, lessonId } = await params;
-  const { format } = (await searchParams) || {};
+  const { format, slide } = (await searchParams) || {};
   const validSlug = courseSlug as "men" | "women";
 
   const course = COURSES[validSlug] || COURSES.men;
@@ -68,13 +69,23 @@ export default async function LessonPresentationPage({ params, searchParams }: L
   const nextLesson = getNextLesson(validSlug, data.lesson.id);
   const previousLesson = getPreviousLesson(validSlug, data.lesson.id);
 
+  const totalSlides = data.lesson.slides?.length || 1;
+  let initialSlideIndex = 0;
+  if (slide === "last" || slide === "final") {
+    initialSlideIndex = Math.max(0, totalSlides - 1);
+  } else if (slide !== undefined && !isNaN(parseInt(slide, 10))) {
+    initialSlideIndex = Math.min(Math.max(0, parseInt(slide, 10)), totalSlides - 1);
+  }
+
   return (
     <SlideViewer
+      key={`${data.lesson.id}-${initialSlideIndex}`}
       course={data.course}
       module={data.module}
       lesson={data.lesson}
       nextLesson={nextLesson}
       previousLesson={previousLesson}
+      initialSlideIndex={initialSlideIndex}
       initialFormat={format === "written" ? "written" : "presentation"}
     />
   );
