@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ChevronDown, Check } from "lucide-react";
 import {
   DATING_PLAYBOOK_MODULES,
@@ -10,10 +11,12 @@ import {
 
 interface DatingPlaybookCurriculumProps {
   onOpenCheckout?: (slug?: "men" | "women") => void;
+  hasAccess?: boolean;
 }
 
 export default function DatingPlaybookCurriculum({
   onOpenCheckout,
+  hasAccess = false,
 }: DatingPlaybookCurriculumProps) {
   const [openModuleIds, setOpenModuleIds] = useState<string[]>([]);
 
@@ -130,19 +133,37 @@ export default function DatingPlaybookCurriculum({
               </li>
             </ul>
           </div>
-          <button
-            type="button"
-            onClick={() => onOpenCheckout?.("men")}
-            className="btn btn-primary"
-            data-cta="curriculum-final"
-          >
-            <span className="btn-dot" aria-hidden="true" />
-            <span>Get the playbook for $3 →</span>
-          </button>
-          <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
-            <p className="m-0">One-time payment · Instant access</p>
-            <p className="m-0">Pay once. Keep it forever.</p>
-          </div>
+          {hasAccess ? (
+            <>
+              <Link
+                href="/learn/men"
+                className="btn btn-primary"
+                data-cta="curriculum-final"
+              >
+                <span className="btn-dot" aria-hidden="true" />
+                <span>Go to Playbook →</span>
+              </Link>
+              <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
+                <p className="m-0">You have permanent access to The Dating Playbook.</p>
+              </div>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                onClick={() => onOpenCheckout?.("men")}
+                className="btn btn-primary"
+                data-cta="curriculum-final"
+              >
+                <span className="btn-dot" aria-hidden="true" />
+                <span>Get the playbook for $3 →</span>
+              </button>
+              <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
+                <p className="m-0">One-time payment · Instant access</p>
+                <p className="m-0">Pay once. Keep it forever.</p>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

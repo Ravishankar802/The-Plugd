@@ -27,7 +27,11 @@ const DRAFT_TESTIMONIALS = [
   },
 ];
 
-export default function HomePageClient() {
+export default function HomePageClient({
+  hasAccess = false,
+}: {
+  hasAccess?: boolean;
+}) {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [selectedCourseSlug, setSelectedCourseSlug] = useState<"men" | "women">("men");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -120,7 +124,7 @@ export default function HomePageClient() {
   return (
     <div className="min-h-screen bg-[#f6f6f4] text-[#1c1917] font-sans antialiased selection:bg-[#f97316] selection:text-white relative">
       {/* Clean Sticky Header matching Attention Playbook */}
-      <Header isLanding={true} onOpenCheckout={handleOpenCheckout} />
+      <Header isLanding={true} onOpenCheckout={handleOpenCheckout} hasAccess={hasAccess} />
 
       {/* HERO SECTION — EXACT ATTENTION PLAYBOOK REPLICATION */}
       <section className="relative pt-12 pb-16 lg:pt-16 lg:pb-24 overflow-hidden">
@@ -156,14 +160,25 @@ export default function HomePageClient() {
 
               {/* Hero Purchase CTA */}
               <div className="mt-[34px] flex flex-col items-start gap-4">
-                <button
-                  onClick={() => handleOpenCheckout("men")}
-                  className="btn btn-primary w-full sm:w-auto"
-                  data-cta="hero"
-                >
-                  <span className="btn-dot" aria-hidden="true" />
-                  <span>Get the playbook for $3</span>
-                </button>
+                {hasAccess ? (
+                  <Link
+                    href="/learn/men"
+                    className="btn btn-primary w-full sm:w-auto"
+                    data-cta="hero"
+                  >
+                    <span className="btn-dot" aria-hidden="true" />
+                    <span>Go to Playbook →</span>
+                  </Link>
+                ) : (
+                  <button
+                    onClick={() => handleOpenCheckout("men")}
+                    className="btn btn-primary w-full sm:w-auto"
+                    data-cta="hero"
+                  >
+                    <span className="btn-dot" aria-hidden="true" />
+                    <span>Get the playbook for $3</span>
+                  </button>
+                )}
               </div>
             </div>
 
@@ -248,18 +263,36 @@ export default function HomePageClient() {
       {/* SECTION: PURCHASE CTA */}
       <section className="pt-10 sm:pt-14 pb-8 sm:pb-10 relative bg-[#f6f6f4]">
         <div className="mx-auto max-w-3xl px-6 text-center flex flex-col items-center">
-          <button
-            onClick={() => handleOpenCheckout("men")}
-            className="btn btn-primary"
-            data-cta="inline"
-          >
-            <span className="btn-dot" aria-hidden="true" />
-            <span>Get the playbook for $3</span>
-          </button>
-          <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
-            <p className="m-0">One-time payment · Instant access</p>
-            <p className="m-0">Pay once. Keep it forever.</p>
-          </div>
+          {hasAccess ? (
+            <>
+              <Link
+                href="/learn/men"
+                className="btn btn-primary"
+                data-cta="inline"
+              >
+                <span className="btn-dot" aria-hidden="true" />
+                <span>Go to Playbook →</span>
+              </Link>
+              <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
+                <p className="m-0">You have permanent access to The Dating Playbook.</p>
+              </div>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => handleOpenCheckout("men")}
+                className="btn btn-primary"
+                data-cta="inline"
+              >
+                <span className="btn-dot" aria-hidden="true" />
+                <span>Get the playbook for $3</span>
+              </button>
+              <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
+                <p className="m-0">One-time payment · Instant access</p>
+                <p className="m-0">Pay once. Keep it forever.</p>
+              </div>
+            </>
+          )}
         </div>
       </section>
 
@@ -293,7 +326,7 @@ export default function HomePageClient() {
       </section>
 
       {/* SECTION: 10-MODULE DATING PLAYBOOK CURRICULUM */}
-      <DatingPlaybookCurriculum onOpenCheckout={handleOpenCheckout} />
+      <DatingPlaybookCurriculum onOpenCheckout={handleOpenCheckout} hasAccess={hasAccess} />
 
       {/* SECTION: AUDIENCE FIT ("IS THE DATING PLAYBOOK RIGHT FOR YOU?") */}
       <AudienceFitSection />
@@ -349,18 +382,36 @@ export default function HomePageClient() {
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1c1917] mb-6">
             The Dating Playbook
           </h2>
-          <button
-            onClick={() => handleOpenCheckout("men")}
-            className="btn btn-primary"
-            data-cta="final-bottom"
-          >
-            <span className="btn-dot" aria-hidden="true" />
-            <span>Get the playbook for $3 →</span>
-          </button>
-          <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
-            <p className="m-0">One-time payment · Instant access</p>
-            <p className="m-0">Pay once. Keep it forever.</p>
-          </div>
+          {hasAccess ? (
+            <>
+              <Link
+                href="/learn/men"
+                className="btn btn-primary"
+                data-cta="final-bottom"
+              >
+                <span className="btn-dot" aria-hidden="true" />
+                <span>Go to Playbook →</span>
+              </Link>
+              <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
+                <p className="m-0">You have permanent access to The Dating Playbook.</p>
+              </div>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => handleOpenCheckout("men")}
+                className="btn btn-primary"
+                data-cta="final-bottom"
+              >
+                <span className="btn-dot" aria-hidden="true" />
+                <span>Get the playbook for $3 →</span>
+              </button>
+              <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
+                <p className="m-0">One-time payment · Instant access</p>
+                <p className="m-0">Pay once. Keep it forever.</p>
+              </div>
+            </>
+          )}
         </div>
       </section>
 
@@ -417,6 +468,7 @@ export default function HomePageClient() {
         price={3}
         isVisible={isStickyBarVisible}
         onOpenCheckout={handleOpenCheckout}
+        hasAccess={hasAccess}
       />
 
       {/* CHECKOUT MODAL */}

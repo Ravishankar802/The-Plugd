@@ -18,17 +18,8 @@ export const MODULE_02_LESSONS: ExtendedLesson[] = [
       "Your appearance is not a trick to deceive women; it is the physical translation of your standards. When you take care of yourself, the world treats you accordingly.",
     slides: [
       {
-        id: "s-0201-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "MODULE 02 · LESSON 2.1",
-        headline: "APPEARANCE, GROOMING & PERSONAL PRESENTATION.",
-        subheadline:
-          "How intentional self-presentation communicates self-respect, competence, and attention to detail before you speak a single word.",
-      },
-      {
         id: "s-0201-2",
-        order: 2,
+        order: 1,
         type: "BIG_STATEMENT",
         headline: "Your appearance is the visual translation of your self-respect and standards.",
         subheadline:
@@ -36,7 +27,7 @@ export const MODULE_02_LESSONS: ExtendedLesson[] = [
       },
       {
         id: "s-0201-3",
-        order: 3,
+        order: 2,
         type: "FRAMEWORK",
         headline: "The Hierarchy of Personal Presentation",
         subheadline:
@@ -64,7 +55,7 @@ export const MODULE_02_LESSONS: ExtendedLesson[] = [
       },
       {
         id: "s-0201-4",
-        order: 4,
+        order: 3,
         type: "COMPARISON",
         headline: "The Neglected Baseline vs. The Intentional Aesthetic",
         comparison: {
@@ -86,7 +77,7 @@ export const MODULE_02_LESSONS: ExtendedLesson[] = [
       },
       {
         id: "s-0201-5",
-        order: 5,
+        order: 4,
         type: "MYTH_REALITY",
         headline: "The 'Only Male Model Genetics Matter' Fallacy",
         mythReality: {
@@ -99,7 +90,7 @@ export const MODULE_02_LESSONS: ExtendedLesson[] = [
       },
       {
         id: "s-0201-6",
-        order: 6,
+        order: 5,
         type: "CHECKLIST",
         headline: "The Daily 5-Minute Grooming Audit",
         checklist: [
@@ -132,7 +123,7 @@ export const MODULE_02_LESSONS: ExtendedLesson[] = [
       },
       {
         id: "s-0201-7",
-        order: 7,
+        order: 6,
         type: "SCENARIO",
         headline: "Real-World Context: The First Date Wardrobe",
         scenario: {
@@ -148,7 +139,7 @@ export const MODULE_02_LESSONS: ExtendedLesson[] = [
       },
       {
         id: "s-0201-8",
-        order: 8,
+        order: 7,
         type: "EXERCISE",
         headline: "Action Step: The Closet & Barber Reset",
         exercise: {
@@ -166,7 +157,7 @@ export const MODULE_02_LESSONS: ExtendedLesson[] = [
       },
       {
         id: "s-0201-9",
-        order: 9,
+        order: 8,
         type: "RECAP",
         headline: "Key Takeaways: Appearance & Personal Presentation",
         recapPoints: [
@@ -178,7 +169,7 @@ export const MODULE_02_LESSONS: ExtendedLesson[] = [
       },
       {
         id: "s-0201-10",
-        order: 10,
+        order: 9,
         type: "CHAPTER_END",
         headline: "LESSON 2.1 COMPLETE",
         subheadline: "Continue to 2.2: Fitness, Health, Energy & Lifestyle.",
@@ -274,17 +265,8 @@ Even a tailored suit looks unconvincing on a man who slouches with his chin jutt
       "Vitality is magnetic. A healthy body produces vocal depth, emotional resilience, and steady focus. Build fitness to amplify your life, not as a substitute for personality.",
     slides: [
       {
-        id: "s-0202-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "MODULE 02 · LESSON 2.2",
-        headline: "FITNESS, HEALTH, ENERGY & LIFESTYLE.",
-        subheadline:
-          "Building physical vitality, hormonal health, and daily energy that radiates through your interactions without gym obsession.",
-      },
-      {
         id: "s-0202-2",
-        order: 2,
+        order: 1,
         type: "BIG_STATEMENT",
         headline: "Physical vitality and metabolic energy are fundamentally magnetic.",
         subheadline:
@@ -292,7 +274,7 @@ Even a tailored suit looks unconvincing on a man who slouches with his chin jutt
       },
       {
         id: "s-0202-3",
-        order: 3,
+        order: 2,
         type: "FRAMEWORK",
         headline: "The Triad of Physical Vitality",
         subheadline:
@@ -320,7 +302,7 @@ Even a tailored suit looks unconvincing on a man who slouches with his chin jutt
       },
       {
         id: "s-0202-4",
-        order: 4,
+        order: 3,
         type: "COMPARISON",
         headline: "Fitness as an Amplifier vs. Fitness as a Neurosis",
         comparison: {
@@ -342,7 +324,7 @@ Even a tailored suit looks unconvincing on a man who slouches with his chin jutt
       },
       {
         id: "s-0202-5",
-        order: 5,
+        order: 4,
         type: "MYTH_REALITY",
         headline: "The 'Bodybuilder Physique' Myth",
         mythReality: {
@@ -355,7 +337,7 @@ Even a tailored suit looks unconvincing on a man who slouches with his chin jutt
       },
       {
         id: "s-0202-6",
-        order: 6,
+        order: 5,
         type: "CHECKLIST",
         headline: "The High-Energy Daily Baseline",
         checklist: [
@@ -383,7 +365,7 @@ Even a tailored suit looks unconvincing on a man who slouches with his chin jutt
       },
       {
         id: "s-0202-7",
-        order: 7,
+        order: 6,
         type: "SCENARIO",
         headline: "Real-World Context: The Fatigued Date vs. The Energized Date",
         scenario: {
@@ -399,7 +381,7 @@ Even a tailored suit looks unconvincing on a man who slouches with his chin jutt
       },
       {
         id: "s-0202-8",
-        order: 8,
+        order: 7,
         type: "EXERCISE",
         headline: "Action Step: The 14-Day Energy Architecture Reset",
         exercise: {
@@ -417,7 +399,7 @@ Even a tailored suit looks unconvincing on a man who slouches with his chin jutt
       },
       {
         id: "s-0202-9",
-        order: 9,
+        order: 8,
         type: "RECAP",
         headline: "Key Takeaways: Fitness, Health & Lifestyle",
         recapPoints: [
@@ -429,7 +411,7 @@ Even a tailored suit looks unconvincing on a man who slouches with his chin jutt
       },
       {
         id: "s-0202-10",
-        order: 10,
+        order: 9,
         type: "CHAPTER_END",
         headline: "LESSON 2.2 COMPLETE",
         subheadline: "Continue to 2.3: Building a Life That Makes You Interesting.",
@@ -520,17 +502,8 @@ To maintain high energy and physical attraction without letting fitness dominate
       "The most compelling men are not trying to appear interesting; they are deeply engaged in an interesting life. When your world is rich and autonomous, women want to be part of it.",
     slides: [
       {
-        id: "s-0203-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "MODULE 02 · LESSON 2.3",
-        headline: "BUILDING A LIFE THAT MAKES YOU INTERESTING.",
-        subheadline:
-          "Cultivating genuine passions, a loyal social circle, and personal competence that make romance an addition to your life, not its center.",
-      },
-      {
         id: "s-0203-2",
-        order: 2,
+        order: 1,
         type: "BIG_STATEMENT",
         headline: "A woman wants to join an exciting, purpose-driven world—not be your entire world.",
         subheadline:
@@ -538,7 +511,7 @@ To maintain high energy and physical attraction without letting fitness dominate
       },
       {
         id: "s-0203-3",
-        order: 3,
+        order: 2,
         type: "FRAMEWORK",
         headline: "The Four Quadrants of Personal Depth",
         subheadline:
@@ -566,7 +539,7 @@ To maintain high energy and physical attraction without letting fitness dominate
       },
       {
         id: "s-0203-4",
-        order: 4,
+        order: 3,
         type: "COMPARISON",
         headline: "The Passive Consumer vs. The Autonomous Creator",
         comparison: {
@@ -588,7 +561,7 @@ To maintain high energy and physical attraction without letting fitness dominate
       },
       {
         id: "s-0203-5",
-        order: 5,
+        order: 4,
         type: "MYTH_REALITY",
         headline: "The 'High-Status Hobbies' Fallacy",
         mythReality: {
@@ -601,7 +574,7 @@ To maintain high energy and physical attraction without letting fitness dominate
       },
       {
         id: "s-0203-6",
-        order: 6,
+        order: 5,
         type: "SCENARIO",
         headline: "Real-World Context: The Friday Night Dynamic",
         scenario: {
@@ -617,7 +590,7 @@ To maintain high energy and physical attraction without letting fitness dominate
       },
       {
         id: "s-0203-7",
-        order: 7,
+        order: 6,
         type: "LIST",
         headline: "The Cornerstones of a High-Value Male Social Circle",
         listItems: [
@@ -649,7 +622,7 @@ To maintain high energy and physical attraction without letting fitness dominate
       },
       {
         id: "s-0203-8",
-        order: 8,
+        order: 7,
         type: "EXERCISE",
         headline: "Action Step: The Life Audit & Mastery Project",
         exercise: {
@@ -667,7 +640,7 @@ To maintain high energy and physical attraction without letting fitness dominate
       },
       {
         id: "s-0203-9",
-        order: 9,
+        order: 8,
         type: "RECAP",
         headline: "Key Takeaways: Building an Interesting Life",
         recapPoints: [
@@ -679,7 +652,7 @@ To maintain high energy and physical attraction without letting fitness dominate
       },
       {
         id: "s-0203-10",
-        order: 10,
+        order: 9,
         type: "CHAPTER_END",
         headline: "LESSON 2.3 COMPLETE",
         subheadline: "Continue to 2.4: Self-Respect, Standards & Personal Boundaries.",
@@ -780,17 +753,8 @@ When your life is filled with engaging commitments, you naturally become less av
       "You teach people how to treat you by what you tolerate. True boundaries govern your own behavior and presence, not the other person's freedom.",
     slides: [
       {
-        id: "s-0204-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "MODULE 02 · LESSON 2.4",
-        headline: "SELF-RESPECT, STANDARDS & PERSONAL BOUNDARIES.",
-        subheadline:
-          "Defining your non-negotiables, communicating limits with calm firmness, and distinguishing healthy self-respect from control.",
-      },
-      {
         id: "s-0204-2",
-        order: 2,
+        order: 1,
         type: "BIG_STATEMENT",
         headline: "You teach people how to treat you by what you accept, tolerate, and walk away from.",
         subheadline:
@@ -798,7 +762,7 @@ When your life is filled with engaging commitments, you naturally become less av
       },
       {
         id: "s-0204-3",
-        order: 3,
+        order: 2,
         type: "FRAMEWORK",
         headline: "The Anatomy of Healthy Boundaries",
         subheadline:
@@ -826,7 +790,7 @@ When your life is filled with engaging commitments, you naturally become less av
       },
       {
         id: "s-0204-4",
-        order: 4,
+        order: 3,
         type: "COMPARISON",
         headline: "Healthy Boundaries vs. Insecure Controlling Behavior",
         comparison: {
@@ -848,7 +812,7 @@ When your life is filled with engaging commitments, you naturally become less av
       },
       {
         id: "s-0204-5",
-        order: 5,
+        order: 4,
         type: "MYTH_REALITY",
         headline: "The 'Boundaries Drive Women Away' Fallacy",
         mythReality: {
@@ -861,7 +825,7 @@ When your life is filled with engaging commitments, you naturally become less av
       },
       {
         id: "s-0204-6",
-        order: 6,
+        order: 5,
         type: "SCENARIO",
         headline: "Real-World Context: The Last-Minute Flake",
         scenario: {
@@ -877,7 +841,7 @@ When your life is filled with engaging commitments, you naturally become less av
       },
       {
         id: "s-0204-7",
-        order: 7,
+        order: 6,
         type: "CHECKLIST",
         headline: "The Self-Respect Litmus Test in Dating",
         checklist: [
@@ -905,7 +869,7 @@ When your life is filled with engaging commitments, you naturally become less av
       },
       {
         id: "s-0204-8",
-        order: 8,
+        order: 7,
         type: "EXERCISE",
         headline: "Action Step: The Non-Negotiables Inventory",
         exercise: {
@@ -923,7 +887,7 @@ When your life is filled with engaging commitments, you naturally become less av
       },
       {
         id: "s-0204-9",
-        order: 9,
+        order: 8,
         type: "RECAP",
         headline: "Key Takeaways: Standards & Personal Boundaries",
         recapPoints: [
@@ -935,7 +899,7 @@ When your life is filled with engaging commitments, you naturally become less av
       },
       {
         id: "s-0204-10",
-        order: 10,
+        order: 9,
         type: "CHAPTER_END",
         headline: "LESSON 2.4 COMPLETE",
         subheadline: "Continue to 2.5: Confidence Without Arrogance or Performance.",
@@ -1042,17 +1006,8 @@ When you know in your bones that you will be completely fine alone—that your l
       "Arrogance requires an audience to feel superior. True confidence is comfortable being ordinary while knowing its own worth. Speak quietly, listen deeply, and hold your ground.",
     slides: [
       {
-        id: "s-0205-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "MODULE 02 · LESSON 2.5",
-        headline: "CONFIDENCE WITHOUT ARROGANCE OR PERFORMANCE.",
-        subheadline:
-          "The difference between authentic quiet self-assurance and noisy insecurity, and how to stay grounded under uncertainty.",
-      },
-      {
         id: "s-0205-2",
-        order: 2,
+        order: 1,
         type: "BIG_STATEMENT",
         headline: "Arrogance is noisy insecurity. True confidence is quiet competence.",
         subheadline:
@@ -1060,7 +1015,7 @@ When you know in your bones that you will be completely fine alone—that your l
       },
       {
         id: "s-0205-3",
-        order: 3,
+        order: 2,
         type: "FRAMEWORK",
         headline: "The Spectrum of Self-Assurance",
         subheadline:
@@ -1088,7 +1043,7 @@ When you know in your bones that you will be completely fine alone—that your l
       },
       {
         id: "s-0205-4",
-        order: 4,
+        order: 3,
         type: "COMPARISON",
         headline: "The Performer vs. The Grounded Man",
         comparison: {
@@ -1110,7 +1065,7 @@ When you know in your bones that you will be completely fine alone—that your l
       },
       {
         id: "s-0205-5",
-        order: 5,
+        order: 4,
         type: "MYTH_REALITY",
         headline: "The 'Alpha Male' Bravado Myth",
         mythReality: {
@@ -1123,7 +1078,7 @@ When you know in your bones that you will be completely fine alone—that your l
       },
       {
         id: "s-0205-6",
-        order: 6,
+        order: 5,
         type: "SCENARIO",
         headline: "Real-World Context: The Playful Tease on a Date",
         scenario: {
@@ -1139,7 +1094,7 @@ When you know in your bones that you will be completely fine alone—that your l
       },
       {
         id: "s-0205-7",
-        order: 7,
+        order: 6,
         type: "LIST",
         headline: "The Nonverbal Signals of Authentic Confidence",
         listItems: [
@@ -1171,7 +1126,7 @@ When you know in your bones that you will be completely fine alone—that your l
       },
       {
         id: "s-0205-8",
-        order: 8,
+        order: 7,
         type: "EXERCISE",
         headline: "Action Step: The Non-Performative Social Drill",
         exercise: {
@@ -1189,7 +1144,7 @@ When you know in your bones that you will be completely fine alone—that your l
       },
       {
         id: "s-0205-9",
-        order: 9,
+        order: 8,
         type: "RECAP",
         headline: "Key Takeaways: Confidence Without Arrogance",
         recapPoints: [
@@ -1201,7 +1156,7 @@ When you know in your bones that you will be completely fine alone—that your l
       },
       {
         id: "s-0205-10",
-        order: 10,
+        order: 9,
         type: "CHAPTER_END",
         headline: "LESSON 2.5 COMPLETE",
         subheadline: "Continue to 2.6: Emotional Independence and the Need for Validation.",
@@ -1308,17 +1263,8 @@ When you allow other people to shine in your presence, they associate you with w
       "If her approval makes you a king, her disinterest will make you a beggar. True emotional independence means your self-worth was settled long before you walked into the room.",
     slides: [
       {
-        id: "s-0206-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "MODULE 02 · LESSON 2.6",
-        headline: "EMOTIONAL INDEPENDENCE AND THE NEED FOR VALIDATION.",
-        subheadline:
-          "Decoupling your self-worth from female attention, ending reassurance-seeking, and building internal emotional stability.",
-      },
-      {
         id: "s-0206-2",
-        order: 2,
+        order: 1,
         type: "BIG_STATEMENT",
         headline: "If her approval makes you a king, her disinterest will make you a beggar.",
         subheadline:
@@ -1326,7 +1272,7 @@ When you allow other people to shine in your presence, they associate you with w
       },
       {
         id: "s-0206-3",
-        order: 3,
+        order: 2,
         type: "FRAMEWORK",
         headline: "The Toxic Validation Loop in Modern Dating",
         subheadline:
@@ -1354,7 +1300,7 @@ When you allow other people to shine in your presence, they associate you with w
       },
       {
         id: "s-0206-4",
-        order: 4,
+        order: 3,
         type: "COMPARISON",
         headline: "The Validation-Addicted vs. The Emotionally Sovereign Man",
         comparison: {
@@ -1376,7 +1322,7 @@ When you allow other people to shine in your presence, they associate you with w
       },
       {
         id: "s-0206-5",
-        order: 5,
+        order: 4,
         type: "MYTH_REALITY",
         headline: "The 'Rejection Defines My Worth' Fallacy",
         mythReality: {
@@ -1389,7 +1335,7 @@ When you allow other people to shine in your presence, they associate you with w
       },
       {
         id: "s-0206-6",
-        order: 6,
+        order: 5,
         type: "SCENARIO",
         headline: "Real-World Context: The Unanswered Message",
         scenario: {
@@ -1405,7 +1351,7 @@ When you allow other people to shine in your presence, they associate you with w
       },
       {
         id: "s-0206-7",
-        order: 7,
+        order: 6,
         type: "CHECKLIST",
         headline: "Micro-Behaviors of Subconscious Validation-Seeking",
         checklist: [
@@ -1433,7 +1379,7 @@ When you allow other people to shine in your presence, they associate you with w
       },
       {
         id: "s-0206-8",
-        order: 8,
+        order: 7,
         type: "EXERCISE",
         headline: "Action Step: The 48-Hour Digital & Validation Detox",
         exercise: {
@@ -1451,7 +1397,7 @@ When you allow other people to shine in your presence, they associate you with w
       },
       {
         id: "s-0206-9",
-        order: 9,
+        order: 8,
         type: "RECAP",
         headline: "Key Takeaways: Emotional Independence",
         recapPoints: [
@@ -1463,7 +1409,7 @@ When you allow other people to shine in your presence, they associate you with w
       },
       {
         id: "s-0206-10",
-        order: 10,
+        order: 9,
         type: "CHAPTER_END",
         headline: "LESSON 2.6 COMPLETE",
         subheadline: "Continue to 2.7: Becoming Comfortable With Who You Are.",
@@ -1571,17 +1517,8 @@ When your self-worth is reinforced every single day by physical discipline, prof
       "The most charismatic men are not flawless; they are simply completely at peace with who they are. When you stop apologizing for your existence, the world stops doubting your value.",
     slides: [
       {
-        id: "s-0207-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "MODULE 02 · LESSON 2.7",
-        headline: "BECOMING COMFORTABLE WITH WHO YOU ARE.",
-        subheadline:
-          "Embracing self-acceptance, eliminating toxic comparison, and growing into your authentic masculine identity without apology.",
-      },
-      {
         id: "s-0207-2",
-        order: 2,
+        order: 1,
         type: "BIG_STATEMENT",
         headline: "The most magnetic men are not flawless; they are completely at peace with who they are.",
         subheadline:
@@ -1589,7 +1526,7 @@ When your self-worth is reinforced every single day by physical discipline, prof
       },
       {
         id: "s-0207-3",
-        order: 3,
+        order: 2,
         type: "FRAMEWORK",
         headline: "The Pillars of Authentic Self-Acceptance",
         subheadline:
@@ -1617,7 +1554,7 @@ When your self-worth is reinforced every single day by physical discipline, prof
       },
       {
         id: "s-0207-4",
-        order: 4,
+        order: 3,
         type: "COMPARISON",
         headline: "Complacency vs. Grounded Self-Acceptance",
         comparison: {
@@ -1639,7 +1576,7 @@ When your self-worth is reinforced every single day by physical discipline, prof
       },
       {
         id: "s-0207-5",
-        order: 5,
+        order: 4,
         type: "MYTH_REALITY",
         headline: "The 'Pick-Up Archetype' Fallacy",
         mythReality: {
@@ -1652,7 +1589,7 @@ When your self-worth is reinforced every single day by physical discipline, prof
       },
       {
         id: "s-0207-6",
-        order: 6,
+        order: 5,
         type: "SCENARIO",
         headline: "Real-World Context: Owning An Unconventional Trait",
         scenario: {
@@ -1668,7 +1605,7 @@ When your self-worth is reinforced every single day by physical discipline, prof
       },
       {
         id: "s-0207-7",
-        order: 7,
+        order: 6,
         type: "LIST",
         headline: "The Liberating Truths of Polarizing Authenticity",
         listItems: [
@@ -1700,7 +1637,7 @@ When your self-worth is reinforced every single day by physical discipline, prof
       },
       {
         id: "s-0207-8",
-        order: 8,
+        order: 7,
         type: "EXERCISE",
         headline: "Action Step: The Radical Self-Inventory & Reframe",
         exercise: {
@@ -1718,7 +1655,7 @@ When your self-worth is reinforced every single day by physical discipline, prof
       },
       {
         id: "s-0207-9",
-        order: 9,
+        order: 8,
         type: "RECAP",
         headline: "Module 02 Final Synthesis: Becoming the Man",
         recapPoints: [
@@ -1733,7 +1670,7 @@ When your self-worth is reinforced every single day by physical discipline, prof
       },
       {
         id: "s-0207-10",
-        order: 10,
+        order: 9,
         type: "CHAPTER_END",
         headline: "MODULE 02 COMPLETE",
         subheadline:

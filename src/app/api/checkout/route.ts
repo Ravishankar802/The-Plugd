@@ -49,7 +49,7 @@ export async function POST(req: Request) {
         success: true,
         complimentary: true,
         message: "Complimentary lifetime access verified.",
-        redirectUrl: "/my-playbooks?access=granted",
+        redirectUrl: "/learn/men?access=granted",
       });
 
       res.cookies.set("plugd_access_key", customer.accessKey, {
@@ -68,7 +68,7 @@ export async function POST(req: Request) {
       const res = NextResponse.json({
         success: true,
         message: "You already have access to The Dating Playbook.",
-        redirectUrl: "/my-playbooks",
+        redirectUrl: "/learn/men",
       });
 
       res.cookies.set("plugd_access_key", customer.accessKey, {
@@ -88,7 +88,7 @@ export async function POST(req: Request) {
     const dodoProductId = process.env.DODO_COURSE_PRODUCT_ID || process.env.DODO_PAYMENTS_PRODUCT_ID;
     if (isDodoConfigured() && dodoProductId) {
       try {
-        const returnUrl = `${origin}/my-playbooks?session_id={CHECKOUT_SESSION_ID}&purchased=men`;
+        const returnUrl = `${origin}/learn/men?session_id={CHECKOUT_SESSION_ID}&purchased=men`;
 
         const checkoutSession = await dodoClient.checkoutSessions.create({
           product_cart: [
@@ -139,7 +139,7 @@ export async function POST(req: Request) {
     const res = NextResponse.json({
       success: true,
       message: "The Dating Playbook unlocked successfully",
-      redirectUrl: "/my-playbooks?purchased=men",
+      redirectUrl: "/learn/men?purchased=men",
     });
 
     res.cookies.set("plugd_access_key", customer.accessKey, {

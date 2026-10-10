@@ -54,7 +54,7 @@ export default function CheckoutModal({
       } else if (data.redirectUrl) {
         router.push(data.redirectUrl);
       } else {
-        router.push("/my-playbooks?purchased=men");
+        router.push("/learn/men?purchased=men");
       }
     } catch (err: any) {
       console.error(err);

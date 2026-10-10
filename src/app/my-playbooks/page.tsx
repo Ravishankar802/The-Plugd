@@ -31,5 +31,5 @@ export default async function MyPlaybooksPage() {
     redirect("/?checkout=true");
   }
 
-  return <MyPlaybooksClient />;
+  redirect("/learn/men");
 }

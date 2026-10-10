@@ -1,5 +1,7 @@
 import { Metadata } from "next";
+import { cookies } from "next/headers";
 import HomePageClient from "@/components/HomePageClient";
+import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 
 export const metadata: Metadata = {
   title: "The Dating Playbook — Everything you need to get a girl",
@@ -14,6 +16,20 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default function HomePage() {
-  return <HomePageClient />;
+export default async function HomePage() {
+  let hasAccess = false;
+  try {
+    const cookieStore = await cookies();
+    const accessKey = cookieStore.get("plugd_access_key")?.value;
+    if (accessKey) {
+      const customer = await getCustomerByAccessKey(accessKey);
+      if (customer) {
+        hasAccess = await hasUserAccessToCourse(customer.id, "men", customer.email);
+      }
+    }
+  } catch (err) {
+    console.error("[HOME_AUTH_CHECK_ERROR]", err);
+  }
+
+  return <HomePageClient hasAccess={hasAccess} />;
 }

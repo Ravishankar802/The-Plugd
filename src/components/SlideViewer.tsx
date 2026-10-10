@@ -48,8 +48,10 @@ export default function SlideViewer({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [slideDirection, setSlideDirection] = useState<"next" | "prev">("next");
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isModuleDropdownOpen, setIsModuleDropdownOpen] = useState(false);
+  const [isLessonDropdownOpen, setIsLessonDropdownOpen] = useState(false);
+  const moduleDropdownRef = useRef<HTMLDivElement>(null);
+  const lessonDropdownRef = useRef<HTMLDivElement>(null);
 
   // Synchronize index when navigating with initialSlideIndex or across lessons
   useEffect(() => {
@@ -98,13 +100,17 @@ export default function SlideViewer({
     }
   }, [currentIndex, previousLesson, course.slug, goToSlide, router]);
 
-  // Close dropdown on outside click
+  // Close dropdowns on outside click
   useEffect(() => {
-    if (!isDropdownOpen) return;
+    if (!isModuleDropdownOpen && !isLessonDropdownOpen) return;
 
     const handlePointerDown = (e: MouseEvent | TouchEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setIsDropdownOpen(false);
+      const target = e.target as Node;
+      if (moduleDropdownRef.current && !moduleDropdownRef.current.contains(target)) {
+        setIsModuleDropdownOpen(false);
+      }
+      if (lessonDropdownRef.current && !lessonDropdownRef.current.contains(target)) {
+        setIsLessonDropdownOpen(false);
       }
     };
 
@@ -114,18 +120,19 @@ export default function SlideViewer({
       document.removeEventListener("mousedown", handlePointerDown);
       document.removeEventListener("touchstart", handlePointerDown);
     };
-  }, [isDropdownOpen]);
+  }, [isModuleDropdownOpen, isLessonDropdownOpen]);
 
   // Keyboard Navigation
   useEffect(() => {
     if (viewFormat === "written") return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (isDropdownOpen) {
+      if (isModuleDropdownOpen || isLessonDropdownOpen) {
         if (e.key === "Escape") {
           e.preventDefault();
           e.stopPropagation();
-          setIsDropdownOpen(false);
+          setIsModuleDropdownOpen(false);
+          setIsLessonDropdownOpen(false);
           return;
         }
       }
@@ -147,7 +154,16 @@ export default function SlideViewer({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleNext, handlePrev, isFullscreen, course.slug, router, viewFormat, isDropdownOpen]);
+  }, [
+    handleNext,
+    handlePrev,
+    isFullscreen,
+    course.slug,
+    router,
+    viewFormat,
+    isModuleDropdownOpen,
+    isLessonDropdownOpen,
+  ]);
 
   // Touch Swipe for Mobile
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -210,29 +226,32 @@ export default function SlideViewer({
             : "border-neutral-800/80 bg-[#121216]/90 text-white"
         }`}
       >
-        {/* Left: Syllabus Navigation */}
-        <div className="flex items-center gap-3">
+        {/* Left: Syllabus Navigation & Module/Lesson Selectors */}
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <Link
             href={`/learn/${course.slug}`}
-            className={`flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors shadow-xs ${
+            className={`flex items-center gap-1.5 rounded-full border px-2.5 sm:px-3.5 py-1.5 text-xs font-semibold transition-colors shadow-xs shrink-0 ${
               isModule1
                 ? "border-[#e7e5e4] bg-white text-[#57534e] hover:border-[#1c1917] hover:text-[#1c1917]"
                 : "border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-800 hover:text-white"
             }`}
           >
             <BookOpen className="h-3.5 w-3.5" />
-            <span>Syllabus</span>
+            <span className="hidden sm:inline">Syllabus</span>
           </Link>
 
-          {/* Module Lesson Dropdown */}
-          <div className="relative" ref={dropdownRef}>
+          {/* Dropdown 1: Module Selector */}
+          <div className="relative shrink-0" ref={moduleDropdownRef}>
             <button
               type="button"
-              onClick={() => setIsDropdownOpen((prev) => !prev)}
-              aria-expanded={isDropdownOpen}
+              onClick={() => {
+                setIsModuleDropdownOpen((prev) => !prev);
+                setIsLessonDropdownOpen(false);
+              }}
+              aria-expanded={isModuleDropdownOpen}
               aria-haspopup="listbox"
-              aria-label={`Select lesson from Module ${module.number}`}
-              className={`flex items-center gap-1.5 sm:gap-2 rounded-xl border px-2.5 sm:px-3 py-1.5 text-xs font-mono transition-all text-left shadow-xs ${
+              aria-label="Select module"
+              className={`flex items-center gap-1.5 rounded-xl border px-2.5 sm:px-3 py-1.5 text-xs font-mono transition-all text-left shadow-xs ${
                 isModule1
                   ? "border-[#e7e5e4] bg-white text-[#1c1917] hover:border-[#d6d3d1] hover:bg-[#faf8f5]"
                   : "border-neutral-800 bg-neutral-900 text-neutral-200 hover:border-neutral-700 hover:bg-neutral-800"
@@ -241,18 +260,129 @@ export default function SlideViewer({
               <span className={`font-bold shrink-0 ${isModule1 ? "text-[#f97316]" : "text-[#FF5500]"}`}>
                 MODULE {String(module.number).padStart(2, "0")}
               </span>
-              <span className={isModule1 ? "text-[#a8a29e]" : "text-neutral-500"}>/</span>
-              <span className="truncate max-w-[110px] sm:max-w-[180px] md:max-w-xs font-medium">
-                {lesson.number} {lesson.title}
-              </span>
               <ChevronDown
                 className={`h-3.5 w-3.5 shrink-0 transition-transform duration-200 ${
-                  isDropdownOpen ? "rotate-180" : ""
+                  isModuleDropdownOpen ? "rotate-180" : ""
                 } ${isModule1 ? "text-[#78716c]" : "text-neutral-400"}`}
               />
             </button>
 
-            {isDropdownOpen && (
+            {isModuleDropdownOpen && (
+              <div
+                role="listbox"
+                aria-label="Modules"
+                className={`absolute left-0 top-full mt-2 w-72 sm:w-80 max-w-[calc(100vw-2rem)] rounded-2xl border p-2 shadow-2xl backdrop-blur-xl z-50 animate-in fade-in slide-in-from-top-1 duration-150 ${
+                  isModule1
+                    ? "border-[#e7e5e4] bg-white/95 text-[#1c1917]"
+                    : "border-neutral-800 bg-[#16161a]/95 text-white"
+                }`}
+              >
+                <div
+                  className={`px-3 py-2 border-b mb-1 flex items-center justify-between ${
+                    isModule1 ? "border-[#e7e5e4]" : "border-neutral-800"
+                  }`}
+                >
+                  <span
+                    className={`text-[11px] font-mono font-bold tracking-wider uppercase ${
+                      isModule1 ? "text-[#f97316]" : "text-[#FF5500]"
+                    }`}
+                  >
+                    CURRICULUM · 10 MODULES
+                  </span>
+                  <span
+                    className={`text-[10px] font-mono ${
+                      isModule1 ? "text-[#a8a29e]" : "text-neutral-500"
+                    }`}
+                  >
+                    {course.modules.length} modules
+                  </span>
+                </div>
+
+                <div className="max-h-[60vh] overflow-y-auto space-y-1 py-1 pr-1 scrollbar-thin">
+                  {course.modules.map((m) => {
+                    const isActive = m.id === module.id || m.number === module.number;
+                    const firstLesson = m.lessons[0];
+                    return (
+                      <button
+                        key={m.id}
+                        type="button"
+                        role="option"
+                        aria-selected={isActive}
+                        onClick={() => {
+                          setIsModuleDropdownOpen(false);
+                          if (firstLesson) {
+                            router.push(`/learn/${course.slug}/${firstLesson.id}`);
+                          }
+                        }}
+                        className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${
+                          isActive
+                            ? isModule1
+                              ? "bg-[#f97316]/10 text-[#f97316] font-bold"
+                              : "bg-[#FF5500]/15 text-[#FF5500] font-bold"
+                            : isModule1
+                            ? "text-[#44403c] hover:bg-[#f5f3ef] hover:text-[#1c1917]"
+                            : "text-neutral-300 hover:bg-neutral-800/80 hover:text-white"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <span
+                            className={`font-mono shrink-0 text-[11px] font-bold ${
+                              isActive
+                                ? isModule1
+                                  ? "text-[#f97316]"
+                                  : "text-[#FF5500]"
+                                : isModule1
+                                ? "text-[#78716c]"
+                                : "text-neutral-400"
+                            }`}
+                          >
+                            MOD {String(m.number).padStart(2, "0")}
+                          </span>
+                          <span className="truncate">{m.title}</span>
+                        </div>
+                        {isActive && (
+                          <Check
+                            className={`h-3.5 w-3.5 shrink-0 ${
+                              isModule1 ? "text-[#f97316]" : "text-[#FF5500]"
+                            }`}
+                          />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Dropdown 2: Lesson Selector */}
+          <div className="relative min-w-0" ref={lessonDropdownRef}>
+            <button
+              type="button"
+              onClick={() => {
+                setIsLessonDropdownOpen((prev) => !prev);
+                setIsModuleDropdownOpen(false);
+              }}
+              aria-expanded={isLessonDropdownOpen}
+              aria-haspopup="listbox"
+              aria-label={`Select lesson from Module ${module.number}`}
+              className={`flex items-center gap-1.5 sm:gap-2 rounded-xl border px-2.5 sm:px-3 py-1.5 text-xs font-mono transition-all text-left shadow-xs ${
+                isModule1
+                  ? "border-[#e7e5e4] bg-white text-[#1c1917] hover:border-[#d6d3d1] hover:bg-[#faf8f5]"
+                  : "border-neutral-800 bg-neutral-900 text-neutral-200 hover:border-neutral-700 hover:bg-neutral-800"
+              }`}
+            >
+              <span className="truncate max-w-[90px] sm:max-w-[160px] md:max-w-xs font-medium">
+                {lesson.number} / {lesson.title}
+              </span>
+              <ChevronDown
+                className={`h-3.5 w-3.5 shrink-0 transition-transform duration-200 ${
+                  isLessonDropdownOpen ? "rotate-180" : ""
+                } ${isModule1 ? "text-[#78716c]" : "text-neutral-400"}`}
+              />
+            </button>
+
+            {isLessonDropdownOpen && (
               <div
                 role="listbox"
                 aria-label={`Module ${module.number} Lessons`}
@@ -293,7 +423,7 @@ export default function SlideViewer({
                         role="option"
                         aria-selected={isActive}
                         onClick={() => {
-                          setIsDropdownOpen(false);
+                          setIsLessonDropdownOpen(false);
                           router.push(`/learn/${course.slug}/${l.id}`);
                         }}
                         className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${

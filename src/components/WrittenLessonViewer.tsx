@@ -38,23 +38,30 @@ export default function WrittenLessonViewer({
 }: WrittenLessonViewerProps) {
   const router = useRouter();
   const [isCompleted, setIsCompleted] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isModuleDropdownOpen, setIsModuleDropdownOpen] = useState(false);
+  const [isLessonDropdownOpen, setIsLessonDropdownOpen] = useState(false);
+  const moduleDropdownRef = useRef<HTMLDivElement>(null);
+  const lessonDropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown on outside click or Escape
+  // Close dropdowns on outside click or Escape
   useEffect(() => {
-    if (!isDropdownOpen) return;
+    if (!isModuleDropdownOpen && !isLessonDropdownOpen) return;
 
     const handlePointerDown = (e: MouseEvent | TouchEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setIsDropdownOpen(false);
+      const target = e.target as Node;
+      if (moduleDropdownRef.current && !moduleDropdownRef.current.contains(target)) {
+        setIsModuleDropdownOpen(false);
+      }
+      if (lessonDropdownRef.current && !lessonDropdownRef.current.contains(target)) {
+        setIsLessonDropdownOpen(false);
       }
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         e.preventDefault();
-        setIsDropdownOpen(false);
+        setIsModuleDropdownOpen(false);
+        setIsLessonDropdownOpen(false);
       }
     };
 
@@ -66,7 +73,7 @@ export default function WrittenLessonViewer({
       document.removeEventListener("touchstart", handlePointerDown);
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isDropdownOpen]);
+  }, [isModuleDropdownOpen, isLessonDropdownOpen]);
 
   const extendedLesson = lesson as ExtendedLesson;
   const writtenContent = extendedLesson.writtenLesson || lesson.summary;
@@ -263,41 +270,121 @@ export default function WrittenLessonViewer({
     <div className="min-h-screen bg-[#faf8f5] text-[#1c1917] font-sans antialiased selection:bg-[#f97316] selection:text-white">
       {/* Sticky Header Navigation */}
       <header className="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-[#e7e5e4] bg-[#faf8f5]/90 px-4 sm:px-8 backdrop-blur-md">
-        {/* Left: Syllabus Navigation */}
-        <div className="flex items-center gap-3">
+        {/* Left: Syllabus Navigation & Module/Lesson Selectors */}
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <Link
             href={`/learn/${course.slug}`}
-            className="flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#57534e] transition-colors hover:border-[#1c1917] hover:text-[#1c1917] shadow-xs"
+            className="flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-2.5 sm:px-3.5 py-1.5 text-xs font-semibold text-[#57534e] transition-colors hover:border-[#1c1917] hover:text-[#1c1917] shadow-xs shrink-0"
           >
             <BookOpen className="h-3.5 w-3.5 text-[#f97316]" />
-            <span>Syllabus</span>
+            <span className="hidden sm:inline">Syllabus</span>
           </Link>
 
-          {/* Module Lesson Dropdown */}
-          <div className="relative" ref={dropdownRef}>
+          {/* Dropdown 1: Module Selector */}
+          <div className="relative shrink-0" ref={moduleDropdownRef}>
             <button
               type="button"
-              onClick={() => setIsDropdownOpen((prev) => !prev)}
-              aria-expanded={isDropdownOpen}
+              onClick={() => {
+                setIsModuleDropdownOpen((prev) => !prev);
+                setIsLessonDropdownOpen(false);
+              }}
+              aria-expanded={isModuleDropdownOpen}
               aria-haspopup="listbox"
-              aria-label={`Select lesson from Module ${module.number}`}
-              className="flex items-center gap-1.5 sm:gap-2 rounded-xl border border-[#e7e5e4] bg-white px-2.5 sm:px-3 py-1.5 text-xs font-mono transition-all text-left shadow-xs text-[#1c1917] hover:border-[#d6d3d1] hover:bg-[#faf8f5]"
+              aria-label="Select module"
+              className="flex items-center gap-1.5 rounded-xl border border-[#e7e5e4] bg-white px-2.5 sm:px-3 py-1.5 text-xs font-mono transition-all text-left shadow-xs text-[#1c1917] hover:border-[#d6d3d1] hover:bg-[#faf8f5]"
             >
               <span className="font-bold shrink-0 text-[#f97316]">
                 MODULE {String(module.number).padStart(2, "0")}
               </span>
-              <span className="text-[#a8a29e]">/</span>
-              <span className="truncate max-w-[120px] sm:max-w-[200px] md:max-w-xs font-medium">
-                {lesson.number} {lesson.title}
-              </span>
               <ChevronDown
                 className={`h-3.5 w-3.5 shrink-0 transition-transform duration-200 text-[#78716c] ${
-                  isDropdownOpen ? "rotate-180" : ""
+                  isModuleDropdownOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
 
-            {isDropdownOpen && (
+            {isModuleDropdownOpen && (
+              <div
+                role="listbox"
+                aria-label="Modules"
+                className="absolute left-0 top-full mt-2 w-72 sm:w-80 max-w-[calc(100vw-2rem)] rounded-2xl border border-[#e7e5e4] bg-white/95 p-2 shadow-2xl backdrop-blur-xl z-50 text-[#1c1917] animate-in fade-in slide-in-from-top-1 duration-150"
+              >
+                <div className="px-3 py-2 border-b border-[#e7e5e4] mb-1 flex items-center justify-between">
+                  <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#f97316]">
+                    CURRICULUM · 10 MODULES
+                  </span>
+                  <span className="text-[10px] font-mono text-[#a8a29e]">
+                    {course.modules.length} modules
+                  </span>
+                </div>
+
+                <div className="max-h-[60vh] overflow-y-auto space-y-1 py-1 pr-1 scrollbar-thin">
+                  {course.modules.map((m) => {
+                    const isActive = m.id === module.id || m.number === module.number;
+                    const firstLesson = m.lessons[0];
+                    return (
+                      <button
+                        key={m.id}
+                        type="button"
+                        role="option"
+                        aria-selected={isActive}
+                        onClick={() => {
+                          setIsModuleDropdownOpen(false);
+                          if (firstLesson) {
+                            router.push(`/learn/${course.slug}/${firstLesson.id}?format=written`);
+                          }
+                        }}
+                        className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${
+                          isActive
+                            ? "bg-[#f97316]/10 text-[#f97316] font-bold"
+                            : "text-[#44403c] hover:bg-[#f5f3ef] hover:text-[#1c1917]"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <span
+                            className={`font-mono shrink-0 text-[11px] font-bold ${
+                              isActive ? "text-[#f97316]" : "text-[#78716c]"
+                            }`}
+                          >
+                            MOD {String(m.number).padStart(2, "0")}
+                          </span>
+                          <span className="truncate">{m.title}</span>
+                        </div>
+                        {isActive && (
+                          <Check className="h-3.5 w-3.5 shrink-0 text-[#f97316]" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Dropdown 2: Lesson Selector */}
+          <div className="relative min-w-0" ref={lessonDropdownRef}>
+            <button
+              type="button"
+              onClick={() => {
+                setIsLessonDropdownOpen((prev) => !prev);
+                setIsModuleDropdownOpen(false);
+              }}
+              aria-expanded={isLessonDropdownOpen}
+              aria-haspopup="listbox"
+              aria-label={`Select lesson from Module ${module.number}`}
+              className="flex items-center gap-1.5 sm:gap-2 rounded-xl border border-[#e7e5e4] bg-white px-2.5 sm:px-3 py-1.5 text-xs font-mono transition-all text-left shadow-xs text-[#1c1917] hover:border-[#d6d3d1] hover:bg-[#faf8f5]"
+            >
+              <span className="truncate max-w-[90px] sm:max-w-[160px] md:max-w-xs font-medium">
+                {lesson.number} / {lesson.title}
+              </span>
+              <ChevronDown
+                className={`h-3.5 w-3.5 shrink-0 transition-transform duration-200 text-[#78716c] ${
+                  isLessonDropdownOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {isLessonDropdownOpen && (
               <div
                 role="listbox"
                 aria-label={`Module ${module.number} Lessons`}
@@ -322,7 +409,7 @@ export default function WrittenLessonViewer({
                         role="option"
                         aria-selected={isActive}
                         onClick={() => {
-                          setIsDropdownOpen(false);
+                          setIsLessonDropdownOpen(false);
                           router.push(`/learn/${course.slug}/${l.id}?format=written`);
                         }}
                         className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${

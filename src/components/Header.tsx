@@ -9,10 +9,12 @@ export default function Header({
   activeCourse,
   onOpenCheckout,
   isLanding = false,
+  hasAccess = false,
 }: {
   activeCourse?: string;
   onOpenCheckout?: (slug?: "men" | "women") => void;
   isLanding?: boolean;
+  hasAccess?: boolean;
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -70,24 +72,34 @@ export default function Header({
                 FAQ
               </a>
               <Link
-                href="/my-playbooks"
+                href="/learn/men"
                 className="inline-flex items-center gap-1.5 text-[14px] font-medium text-[#1c1917] transition-colors hover:text-[#78716c]"
               >
                 <BookOpen className="h-3.5 w-3.5 text-[#f97316]" />
-                <span>My Playbooks</span>
+                <span>Playbook</span>
               </Link>
             </nav>
 
             {/* Header Purchase CTA */}
             <div className="hidden sm:block">
-              <button
-                onClick={() => (onOpenCheckout ? onOpenCheckout("men") : undefined)}
-                className="btn btn-surface btn-small cursor-pointer"
-                data-cta="nav"
-              >
-                <span className="btn-dot" aria-hidden="true" />
-                <span>Get the playbook for $3</span>
-              </button>
+              {hasAccess ? (
+                <Link
+                  href="/learn/men"
+                  className="btn btn-surface btn-small cursor-pointer"
+                >
+                  <span className="btn-dot" aria-hidden="true" />
+                  <span>Go to Playbook →</span>
+                </Link>
+              ) : (
+                <button
+                  onClick={() => (onOpenCheckout ? onOpenCheckout("men") : undefined)}
+                  className="btn btn-surface btn-small cursor-pointer"
+                  data-cta="nav"
+                >
+                  <span className="btn-dot" aria-hidden="true" />
+                  <span>Get the playbook for $3</span>
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -106,15 +118,15 @@ export default function Header({
           <a href="#faq" className="nav-pill">
             FAQ
           </a>
-          <Link href="/my-playbooks" className="nav-pill">
-            My Playbooks
+          <Link href="/learn/men" className="nav-pill">
+            Playbook
           </Link>
         </nav>
       </header>
     );
   }
 
-  // Non-Landing Header (e.g. /my-playbooks, /learn/men, etc.)
+  // Non-Landing Header (e.g. /learn/men, presentations, etc.)
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[#e7e5e4] bg-[#faf8f5]/95 backdrop-blur-md transition-all">
       <div className="mx-auto flex h-[68px] max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -158,15 +170,6 @@ export default function Header({
             <LogOut className="h-3.5 w-3.5 text-[#78716c]" />
             <span>Log out</span>
           </button>
-
-          {onOpenCheckout && (
-            <button
-              onClick={() => onOpenCheckout("men")}
-              className="inline-flex items-center gap-2 rounded-full bg-[#1c1917] px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-neutral-800 transition-colors cursor-pointer"
-            >
-              <span>Get The Playbook · $3</span>
-            </button>
-          )}
         </div>
 
         {/* Mobile Actions */}
@@ -174,7 +177,7 @@ export default function Header({
           <button
             type="button"
             onClick={performLogout}
-            className="inline-flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-3 py-1.5 text-xs font-medium text-[#78716c] hover:text-[#1c1917] cursor-pointer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-3.5 py-1.5 text-xs font-medium text-[#78716c] hover:text-[#1c1917] cursor-pointer"
           >
             <LogOut className="h-3 w-3" />
             <span>Log out</span>
