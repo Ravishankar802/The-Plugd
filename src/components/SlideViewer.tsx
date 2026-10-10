@@ -61,7 +61,11 @@ export default function SlideViewer({
   const totalSlides = lesson.slides?.length || 1;
   const currentSlide: Slide = lesson.slides?.[currentIndex] || lesson.slides?.[0];
 
-  const isModule1 = module.number === "01" || module.number === "02" || module.number === "03";
+  const isModule1 =
+    module.number === "01" ||
+    module.number === "02" ||
+    module.number === "03" ||
+    module.number === "04";
 
   const goToSlide = useCallback(
     (index: number, direction: "next" | "prev" = "next") => {
