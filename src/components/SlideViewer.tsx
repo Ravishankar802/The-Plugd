@@ -70,7 +70,8 @@ export default function SlideViewer({
     module.number === "06" ||
     module.number === "07" ||
     module.number === "08" ||
-    module.number === "09";
+    module.number === "09" ||
+    module.number === "10";
 
   const goToSlide = useCallback(
     (index: number, direction: "next" | "prev" = "next") => {
