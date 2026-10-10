@@ -6,6 +6,7 @@ import { MODULE_05_DATA } from "./module-05-content";
 import { MODULE_06_DATA } from "./module-06-content";
 import { MODULE_07_DATA } from "./module-07-content";
 import { MODULE_08_DATA } from "./module-08-content";
+import { MODULE_09_DATA } from "./module-09-content";
 import { DATING_PLAYBOOK_MODULES } from "./dating-playbook-curriculum";
 
 export type SlideType =
@@ -158,9 +159,9 @@ export interface Course {
   }[];
 }
 
-// Construct modules 09-10 from the approved 10-module, 69-lesson curriculum
+// Construct module 10 from the approved 10-module, 69-lesson curriculum
 function buildRemainingModules(): Module[] {
-  return DATING_PLAYBOOK_MODULES.slice(8).map((curriculumMod) => {
+  return DATING_PLAYBOOK_MODULES.slice(9).map((curriculumMod) => {
     const lessons: Lesson[] = curriculumMod.lessons.map((curriculumLesson) => ({
       id: curriculumLesson.id,
       number: curriculumLesson.number,
@@ -249,6 +250,7 @@ const ALL_PLAYBOOK_MODULES: Module[] = [
   MODULE_06_DATA,
   MODULE_07_DATA,
   MODULE_08_DATA,
+  MODULE_09_DATA,
   ...buildRemainingModules(),
 ];
 
