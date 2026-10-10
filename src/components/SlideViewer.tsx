@@ -949,6 +949,68 @@ export default function SlideViewer({
             </div>
           )}
 
+          {/* SLIDE TYPE: CHECKLIST */}
+          {currentSlide?.type === "CHECKLIST" && (
+            <div className="py-4">
+              <h2
+                className={`text-2xl sm:text-4xl font-bold tracking-tight mb-2 ${
+                  isModule1 ? "text-[#1c1917]" : "text-white"
+                }`}
+              >
+                {currentSlide.headline}
+              </h2>
+              {currentSlide.subheadline && (
+                <p
+                  className={`text-sm sm:text-base mb-6 ${
+                    isModule1 ? "text-[#57534e]" : "text-neutral-400"
+                  }`}
+                >
+                  {currentSlide.subheadline}
+                </p>
+              )}
+              <div className="space-y-3 mt-6">
+                {currentSlide.checklist?.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className={`flex items-start gap-4 rounded-2xl border p-4 sm:p-5 transition-colors ${
+                      isModule1
+                        ? "border-[#e7e5e4] bg-[#faf8f5] hover:border-[#fed7aa]"
+                        : "border-neutral-800 bg-neutral-900/60 hover:border-neutral-700"
+                    }`}
+                  >
+                    <div
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-xl font-bold text-xs ${
+                        isModule1
+                          ? "bg-[#fff7ed] border border-[#fed7aa] text-[#f97316]"
+                          : "bg-[#FF5500]/10 border border-[#FF5500]/30 text-[#FF5500]"
+                      }`}
+                    >
+                      <Check className="h-4 w-4" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div
+                        className={`text-sm sm:text-base font-bold mb-1 ${
+                          isModule1 ? "text-[#1c1917]" : "text-white"
+                        }`}
+                      >
+                        {item.label}
+                      </div>
+                      {item.note && (
+                        <p
+                          className={`text-xs sm:text-sm leading-relaxed ${
+                            isModule1 ? "text-[#57534e]" : "text-neutral-400"
+                          }`}
+                        >
+                          {item.note}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* SLIDE TYPE: SCENARIO */}
           {currentSlide?.type === "SCENARIO" && (
             <div className="py-4">
@@ -1189,6 +1251,41 @@ export default function SlideViewer({
                   <span>Course Syllabus</span>
                   <BookOpen className="h-4 w-4" />
                 </Link>
+              )}
+            </div>
+          )}
+
+          {/* FALLBACK SLIDE HANDLER (Guarantees no slide renders as an empty card) */}
+          {![
+            "TITLE",
+            "BIG_STATEMENT",
+            "QUOTE",
+            "FRAMEWORK",
+            "COMPARISON",
+            "MYTH_REALITY",
+            "LIST",
+            "CHECKLIST",
+            "SCENARIO",
+            "EXERCISE",
+            "RECAP",
+            "CHAPTER_END",
+          ].includes(currentSlide?.type) && (
+            <div className="py-6 sm:py-12">
+              <h2
+                className={`text-3xl sm:text-5xl font-bold tracking-tight leading-tight mb-6 ${
+                  isModule1 ? "text-[#1c1917]" : "text-white"
+                }`}
+              >
+                {currentSlide?.headline}
+              </h2>
+              {currentSlide?.subheadline && (
+                <p
+                  className={`text-base sm:text-xl font-medium leading-relaxed ${
+                    isModule1 ? "text-[#57534e]" : "text-neutral-400 font-light"
+                  }`}
+                >
+                  {currentSlide.subheadline}
+                </p>
               )}
             </div>
           )}
