@@ -1,37 +1,50 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import { dodoClient } from "@/lib/dodopayments";
-import { recordCoursePurchase } from "@/lib/playbooks";
+import { dodoClient, isDodoConfigured, getDodoCourseProductId } from "@/lib/dodopayments";
+import { getOrCreateCustomer, recordCoursePurchase } from "@/lib/playbooks";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
   try {
-    const rawBody = await req.text();
-    const webhookKey = process.env.DODO_PAYMENTS_WEBHOOK_KEY;
-
-    let event: any;
-    if (webhookKey) {
-      const headers: Record<string, string> = {};
-      req.headers.forEach((val, key) => {
-        headers[key.toLowerCase()] = val;
-      });
-      event = dodoClient.webhooks.unwrap(rawBody, { headers, key: webhookKey });
-    } else {
-      event = JSON.parse(rawBody);
+    const webhookKey = process.env.DODO_PAYMENTS_WEBHOOK_KEY?.trim();
+    if (!webhookKey) {
+      console.error("[DODO_WEBHOOK_ERROR] DODO_PAYMENTS_WEBHOOK_KEY is not configured");
+      return NextResponse.json(
+        { error: "Webhook signing key not configured" },
+        { status: 500 }
+      );
     }
 
-    const type = event?.type || event?.event_type;
-    const data = event?.data || {};
+    const rawBody = await req.text();
+    const headers: Record<string, string> = {};
+    req.headers.forEach((val, key) => {
+      headers[key.toLowerCase()] = val;
+    });
+
+    let event: any;
+    try {
+      event = dodoClient.webhooks.unwrap(rawBody, { headers, key: webhookKey });
+    } catch (sigErr: any) {
+      console.error("[DODO_WEBHOOK_ERROR] Signature verification failed:", sigErr?.message || sigErr);
+      return NextResponse.json(
+        { error: "Invalid webhook signature" },
+        { status: 400 }
+      );
+    }
+
+    const type = event?.type;
+    const data = event?.data;
 
     const eventId = (
       req.headers.get("webhook-id") ||
       req.headers.get("x-webhook-id") ||
       event?.event_id ||
       event?.id ||
-      `${type}_${data?.payment_id || "event"}_${Date.now()}`
-    ).trim();
+      (data?.payment_id ? `evt_${data.payment_id}` : "")
+    )?.trim();
 
+    // 1. Check for duplicate processed events
     if (eventId) {
       const alreadyProcessed = await prisma.processedWebhook.findUnique({
         where: { id: eventId },
@@ -45,50 +58,187 @@ export async function POST(req: Request) {
       }
     }
 
-    const metadata = data?.metadata || {};
-    const paymentId = data?.payment_id || null;
-    const courseSlug = (metadata?.courseSlug || "men").toLowerCase();
-    let customerId = metadata?.customerId || null;
-    const customerEmail = metadata?.customerEmail || data?.customer?.email || null;
-    const amount = Number(metadata?.amount) || 3.0;
-
-    if (type === "payment.succeeded") {
-      if (!customerId && customerEmail) {
-        const customer = await prisma.customer.upsert({
-          where: { email: customerEmail.trim().toLowerCase() },
-          update: {},
-          create: {
-            email: customerEmail.trim().toLowerCase(),
-            accessKey: Math.random().toString(36).substring(2) + Date.now().toString(36),
+    // 2. Accept only the correct successful payment event type
+    if (type !== "payment.succeeded") {
+      if (eventId) {
+        await prisma.processedWebhook.create({
+          data: {
+            id: eventId,
+            eventType: String(type || "unknown"),
           },
-        });
-        customerId = customer.id;
+        }).catch(() => {});
       }
+      return NextResponse.json(
+        { received: true, ignored: true },
+        { status: 200 }
+      );
+    }
 
-      if (customerId) {
-        await recordCoursePurchase({
-          customerId,
-          courseSlug,
-          amount,
-          paymentId: paymentId || undefined,
-        });
+    if (!data) {
+      console.warn("[DODO_WEBHOOK_REJECTED] Missing event data");
+      return NextResponse.json(
+        { error: "Missing event data" },
+        { status: 400 }
+      );
+    }
+
+    // 3. Authoritative product validation (matches The Dating Playbook product ID)
+    const expectedProductId = getDodoCourseProductId();
+    let productMatches = false;
+    if (Array.isArray(data.product_cart) && data.product_cart.length > 0) {
+      productMatches = data.product_cart.some(
+        (item: any) => item?.product_id === expectedProductId
+      );
+    }
+
+    // Fallback: If product_cart is omitted from the webhook payload, perform authoritative server-side lookup
+    if (!productMatches && data.payment_id && isDodoConfigured()) {
+      try {
+        const authoritativePayment = await dodoClient.payments.retrieve(data.payment_id);
+        if (
+          Array.isArray(authoritativePayment.product_cart) &&
+          authoritativePayment.product_cart.some(
+            (item: any) => item?.product_id === expectedProductId
+          )
+        ) {
+          productMatches = true;
+        }
+      } catch (lookupErr: any) {
+        console.error("[DODO_WEBHOOK_LOOKUP_ERROR]", lookupErr?.message || lookupErr);
       }
     }
 
-    if (eventId) {
-      await prisma.processedWebhook.create({
-        data: {
-          id: eventId,
-          eventType: String(type),
-        },
+    if (!productMatches) {
+      console.warn(`[DODO_WEBHOOK_REJECTED] Product ID mismatch for payment: ${data.payment_id}`);
+      return NextResponse.json(
+        { error: "Product mismatch" },
+        { status: 400 }
+      );
+    }
+
+    // 4. Currency validation (must be USD)
+    const currency = data.currency?.toUpperCase();
+    if (currency !== "USD") {
+      console.warn(`[DODO_WEBHOOK_REJECTED] Currency mismatch: ${currency}`);
+      return NextResponse.json(
+        { error: "Currency mismatch" },
+        { status: 400 }
+      );
+    }
+
+    // 5. Amount validation: In Dodo SDK, total_amount is in smallest currency unit (cents).
+    // Exactly $3.00 USD must be 300 cents.
+    if (data.total_amount !== 300) {
+      console.warn(`[DODO_WEBHOOK_REJECTED] Amount mismatch: total_amount=${data.total_amount}`);
+      return NextResponse.json(
+        { error: "Amount mismatch" },
+        { status: 400 }
+      );
+    }
+
+    // 6. Metadata and course validation (must specifically target 'men' without defaulting)
+    const metadata = data.metadata || {};
+    const courseSlug = metadata.courseSlug?.toLowerCase();
+    if (courseSlug !== "men") {
+      console.warn(`[DODO_WEBHOOK_REJECTED] Invalid or missing courseSlug metadata: ${courseSlug}`);
+      return NextResponse.json(
+        { error: "Invalid course metadata" },
+        { status: 400 }
+      );
+    }
+
+    // 7. Customer validation
+    const customerEmail = (data.customer?.email || metadata.customerEmail || "").trim().toLowerCase();
+    if (!customerEmail || !customerEmail.includes("@")) {
+      console.warn("[DODO_WEBHOOK_REJECTED] Missing or invalid customer email");
+      return NextResponse.json(
+        { error: "Missing required customer email" },
+        { status: 400 }
+      );
+    }
+
+    const paymentId = data.payment_id;
+    if (!paymentId) {
+      console.warn("[DODO_WEBHOOK_REJECTED] Missing payment_id");
+      return NextResponse.json(
+        { error: "Missing payment ID" },
+        { status: 400 }
+      );
+    }
+
+    // 8. Atomic database fulfillment with transaction
+    try {
+      await prisma.$transaction(async (tx) => {
+        // Re-check eventId inside transaction to prevent concurrent duplicate delivery race conditions
+        if (eventId) {
+          const existingInTx = await tx.processedWebhook.findUnique({
+            where: { id: eventId },
+          });
+          if (existingInTx) {
+            return;
+          }
+        }
+
+        const customer = await getOrCreateCustomer(customerEmail, tx);
+
+        await recordCoursePurchase({
+          customerId: customer.id,
+          courseSlug: "men",
+          amount: 3.0,
+          paymentId,
+          client: tx,
+        });
+
+        if (eventId) {
+          await tx.processedWebhook.create({
+            data: {
+              id: eventId,
+              eventType: String(type),
+            },
+          });
+        }
       });
+    } catch (fulfillmentError: any) {
+      // 1. Cross-account payment reuse or invalid client state
+      if (fulfillmentError?.message?.includes("Payment ID already associated with another customer account")) {
+        console.warn("[DODO_WEBHOOK_REJECTED]", fulfillmentError.message);
+        return NextResponse.json(
+          { error: fulfillmentError.message },
+          { status: 400 }
+        );
+      }
+
+      // 2. Concurrency handling: If a concurrent delivery won the race, handle P2002 gracefully.
+      // Confirm that the corresponding event or purchase was actually committed before treating as duplicate.
+      if (fulfillmentError?.code === "P2002") {
+        const confirmedEvent = eventId
+          ? await prisma.processedWebhook.findUnique({ where: { id: eventId } })
+          : null;
+        const confirmedPurchase = paymentId
+          ? await prisma.coursePurchase.findFirst({ where: { paymentId } })
+          : null;
+
+        if (confirmedEvent || confirmedPurchase) {
+          console.info("[DODO_WEBHOOK_CONCURRENT_DUPLICATE] Handled concurrent duplicate race condition successfully");
+          return NextResponse.json(
+            { success: true, message: "Duplicate webhook event already processed" },
+            { status: 200 }
+          );
+        }
+      }
+
+      console.error("[DODO_WEBHOOK_FULFILLMENT_ERROR]", fulfillmentError?.message || fulfillmentError);
+      return NextResponse.json(
+        { error: "Database fulfillment failed, please retry" },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    console.error("[DODO_WEBHOOK_ERROR]", error?.message || error);
+    console.error("[DODO_WEBHOOK_HANDLER_ERROR]", error?.message || error);
     return NextResponse.json(
-      { error: error?.message || "Webhook processing failed" },
+      { error: "Webhook processing failed" },
       { status: 400 }
     );
   }

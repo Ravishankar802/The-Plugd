@@ -1,23 +1,48 @@
+import { randomBytes } from "crypto";
 import prisma from "@/lib/prisma";
+import type { Customer, Prisma, PrismaClient } from "@prisma/client";
 
-export async function getOrCreateCustomer(email: string) {
+type DbClient = PrismaClient | Prisma.TransactionClient;
+
+export function generateSecureAccessKey(): string {
+  return randomBytes(24).toString("hex");
+}
+
+export async function getOrCreateCustomer(email: string, client: DbClient = prisma): Promise<Customer> {
   const cleanEmail = email.trim().toLowerCase();
-  let customer = await prisma.customer.findUnique({
+  let customer = await client.customer.findUnique({
     where: { email: cleanEmail },
   });
 
   if (!customer) {
-    const accessKey =
-      Math.random().toString(36).substring(2, 10) +
-      Date.now().toString(36) +
-      Math.random().toString(36).substring(2, 8);
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        const accessKey = generateSecureAccessKey();
+        customer = await client.customer.create({
+          data: {
+            email: cleanEmail,
+            accessKey,
+          },
+        });
+        break;
+      } catch (err: unknown) {
+        const error = err as { code?: string; meta?: { target?: string[] } };
+        if (error?.code === "P2002" && error?.meta?.target?.includes("accessKey") && attempt < 2) {
+          continue;
+        }
+        if (error?.code === "P2002" && error?.meta?.target?.includes("email")) {
+          customer = await client.customer.findUnique({
+            where: { email: cleanEmail },
+          });
+          if (customer) break;
+        }
+        throw err;
+      }
+    }
+  }
 
-    customer = await prisma.customer.create({
-      data: {
-        email: cleanEmail,
-        accessKey,
-      },
-    });
+  if (!customer) {
+    throw new Error(`Failed to retrieve or create customer account for ${cleanEmail}`);
   }
 
   return customer;
@@ -122,29 +147,66 @@ export async function recordCoursePurchase({
   courseSlug,
   amount = 3.0,
   paymentId,
+  client = prisma,
 }: {
   customerId: string;
   courseSlug: string;
   amount?: number;
   paymentId?: string;
+  client?: DbClient;
 }) {
   const cleanSlug = courseSlug.toLowerCase();
-  return await prisma.coursePurchase.upsert({
+
+  // 1. Cross-account reuse check: prevent reusing paymentId across different accounts
+  if (paymentId) {
+    const existingWithPayment = await client.coursePurchase.findFirst({
+      where: { paymentId },
+    });
+    if (existingWithPayment && existingWithPayment.customerId !== customerId) {
+      console.warn(
+        `[PAYMENT_REUSE_REJECTED] Payment ${paymentId} is already associated with another customer account`
+      );
+      throw new Error("Payment ID already associated with another customer account");
+    }
+  }
+
+  // 2. Prevent overwriting existing paymentId or corrupting existing progress
+  const existingPurchase = await client.coursePurchase.findUnique({
     where: {
       customerId_courseSlug: {
         customerId,
         courseSlug: cleanSlug,
       },
     },
-    update: {
-      amount,
-      paymentId: paymentId || undefined,
-      updatedAt: new Date(),
-    },
-    create: {
+  });
+
+  if (existingPurchase) {
+    // If already has a paymentId and incoming paymentId is different, do NOT overwrite
+    if (existingPurchase.paymentId && paymentId && existingPurchase.paymentId !== paymentId) {
+      console.warn(
+        `[PURCHASE_PRESERVED] Customer ${customerId} already has purchase for ${cleanSlug} with paymentId ${existingPurchase.paymentId}. Preserving original purchase record.`
+      );
+      return existingPurchase;
+    }
+
+    // If existing purchase had no paymentId, attach it without modifying progress or amount
+    if (!existingPurchase.paymentId && paymentId) {
+      return await client.coursePurchase.update({
+        where: { id: existingPurchase.id },
+        data: { paymentId, updatedAt: new Date() },
+      });
+    }
+
+    return existingPurchase;
+  }
+
+  // 3. New purchase creation
+  return await client.coursePurchase.create({
+    data: {
       customerId,
       courseSlug: cleanSlug,
       amount,
+      currency: "USD",
       paymentId: paymentId || null,
       progress: {
         completedLessons: [],

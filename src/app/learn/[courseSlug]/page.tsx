@@ -3,12 +3,23 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { Play, BookOpen, Layers, Presentation } from "lucide-react";
 import Header from "@/components/Header";
+import PendingPurchaseView from "@/components/PendingPurchaseView";
 import { COURSES, Course } from "@/lib/playbooks-data";
-import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
+import {
+  getCustomerByAccessKey,
+  hasUserAccessToCourse,
+  getOrCreateCustomer,
+  recordCoursePurchase,
+} from "@/lib/playbooks";
+import { dodoClient, isDodoConfigured, getDodoCourseProductId } from "@/lib/dodopayments";
 
 interface LearnPageProps {
   params: Promise<{
     courseSlug: string;
+  }>;
+  searchParams?: Promise<{
+    session_id?: string;
+    purchased?: string;
   }>;
 }
 
@@ -24,8 +35,9 @@ export async function generateMetadata({ params }: LearnPageProps) {
   };
 }
 
-export default async function LearnCoursePage({ params }: LearnPageProps) {
+export default async function LearnCoursePage({ params, searchParams }: LearnPageProps) {
   const { courseSlug } = await params;
+  const { session_id, purchased } = (await searchParams) || {};
   const course: Course = COURSES[courseSlug as "men" | "women"];
 
   if (!course) {
@@ -34,11 +46,12 @@ export default async function LearnCoursePage({ params }: LearnPageProps) {
 
   // Server-side Authorization Check
   let hasAccess = false;
+  let customer = null;
   try {
     const cookieStore = await cookies();
     const accessKey = cookieStore.get("plugd_access_key")?.value;
     if (accessKey) {
-      const customer = await getCustomerByAccessKey(accessKey);
+      customer = await getCustomerByAccessKey(accessKey);
       if (customer) {
         hasAccess = await hasUserAccessToCourse(customer.id, "men", customer.email);
       }
@@ -47,7 +60,69 @@ export default async function LearnCoursePage({ params }: LearnPageProps) {
     console.error("[LEARN_AUTH_CHECK_ERROR]", err);
   }
 
+  // Authoritative server-side verification for returning checkout session
+  if (!hasAccess && session_id && typeof session_id === "string" && isDodoConfigured()) {
+    try {
+      const session = await dodoClient.checkoutSessions.retrieve(session_id);
+      if (session?.payment_status === "succeeded" && session?.payment_id) {
+        const payment = await dodoClient.payments.retrieve(session.payment_id);
+        const expectedProductId = getDodoCourseProductId();
+        const hasProduct = Array.isArray(payment.product_cart) && payment.product_cart.some(
+          (item: any) => item?.product_id === expectedProductId
+        );
+        const isCorrectAmount = payment.total_amount === 300;
+        const isCorrectCurrency = payment.currency?.toUpperCase() === "USD";
+        const sessionMetadata = ((session as any)?.metadata || {}) as Record<string, string>;
+        const paymentMetadata = (payment.metadata || {}) as Record<string, string>;
+        const courseSlugMetadata = paymentMetadata.courseSlug || sessionMetadata.courseSlug;
+        const isCorrectCourse = courseSlugMetadata === "men";
+
+        if (hasProduct && isCorrectAmount && isCorrectCurrency && isCorrectCourse) {
+          // Verify customer association between session/payment metadata and authenticated browser customer
+          const sessionCustomerId = paymentMetadata.customerId || sessionMetadata.customerId;
+          const sessionCustomerEmail = (paymentMetadata.customerEmail || sessionMetadata.customerEmail)?.trim().toLowerCase();
+          const paymentCustomerEmail = (payment.customer?.email || session.customer_email || "").trim().toLowerCase();
+
+          // Must have trusted customer metadata from session creation
+          if (!sessionCustomerId && !sessionCustomerEmail) {
+            console.warn("[CHECKOUT_RETURN_REJECTED] Session lacks trusted customer metadata");
+          } else if (!customer) {
+            console.warn("[CHECKOUT_RETURN_UNAUTHENTICATED] No customer cookie found to associate with session");
+          } else {
+            const idMatches = sessionCustomerId ? customer.id === sessionCustomerId : true;
+            const emailMatches = sessionCustomerEmail ? customer.email.toLowerCase() === sessionCustomerEmail : true;
+            const paymentEmailMatches = paymentCustomerEmail ? customer.email.toLowerCase() === paymentCustomerEmail : true;
+
+            if (idMatches && emailMatches && paymentEmailMatches) {
+              await recordCoursePurchase({
+                customerId: customer.id,
+                courseSlug: "men",
+                amount: 3.0,
+                paymentId: payment.payment_id,
+              });
+              hasAccess = true;
+            } else {
+              console.warn("[CHECKOUT_RETURN_MISMATCH] Session customer does not match authenticated browser customer");
+            }
+          }
+        }
+      }
+    } catch (verifyErr: any) {
+      console.warn("[CHECKOUT_RETURN_VERIFY_PENDING]", verifyErr?.message || verifyErr);
+    }
+  }
+
   if (!hasAccess) {
+    // If customer returned from Dodo checkout but webhook fulfillment hasn't finished yet
+    if (session_id || purchased === "men") {
+      return (
+        <PendingPurchaseView
+          courseSlug={course.slug}
+          courseTitle={course.title}
+        />
+      );
+    }
+
     redirect("/?checkout=true");
   }
 

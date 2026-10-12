@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { dodoClient, isDodoConfigured } from "@/lib/dodopayments";
+import { dodoClient, isDodoConfigured, getDodoCourseProductId } from "@/lib/dodopayments";
 import {
   getOrCreateCustomer,
-  recordCoursePurchase,
   getCustomerByAccessKey,
   hasComplimentaryAccess,
   hasUserPurchasedCourse,
@@ -81,65 +80,65 @@ export async function POST(req: Request) {
       return res;
     }
 
-    // 3. One-time payment of exactly $3 USD
-    const price = 3.0;
-
-    // Dodo Payments integration (if configured in production)
-    const dodoProductId = process.env.DODO_COURSE_PRODUCT_ID || process.env.DODO_PAYMENTS_PRODUCT_ID;
-    if (isDodoConfigured() && dodoProductId) {
-      try {
-        const returnUrl = `${origin}/learn/men?session_id={CHECKOUT_SESSION_ID}&purchased=men`;
-
-        const checkoutSession = await dodoClient.checkoutSessions.create({
-          product_cart: [
-            {
-              product_id: dodoProductId,
-              quantity: 1,
-            },
-          ],
-          customer: {
-            email: customer.email,
-            name: name || "Customer",
-          },
-          return_url: returnUrl,
-          metadata: {
-            customerId: customer.id,
-            customerEmail: customer.email,
-            courseSlug: "men",
-            amount: "3.00",
-          },
-        });
-
-        if (checkoutSession.checkout_url) {
-          const res = NextResponse.json({
-            checkoutUrl: checkoutSession.checkout_url,
-          });
-
-          res.cookies.set("plugd_access_key", customer.accessKey, {
-            path: "/",
-            httpOnly: false,
-            maxAge: 60 * 60 * 24 * 365,
-            sameSite: "lax",
-          });
-
-          return res;
-        }
-      } catch (dodoError: any) {
-        console.warn("[DODO_COURSE_CHECKOUT_FALLBACK]", dodoError?.message);
-      }
+    // 3. One-time payment of exactly $3 USD via Dodo Payments
+    if (!isDodoConfigured()) {
+      console.error("[CHECKOUT_ERROR] Dodo Payments API key is not configured");
+      return NextResponse.json(
+        { error: "Payment service is currently unavailable. Please try again later." },
+        { status: 503 }
+      );
     }
 
-    // Direct Instant Access Flow (one-time $3 payment recorded)
-    await recordCoursePurchase({
-      customerId: customer.id,
-      courseSlug: "men",
-      amount: price,
-    });
+    const dodoProductId = getDodoCourseProductId();
+    if (!dodoProductId) {
+      console.error("[CHECKOUT_ERROR] Course product ID is not configured");
+      return NextResponse.json(
+        { error: "Payment service is currently unavailable. Please try again later." },
+        { status: 503 }
+      );
+    }
+
+    let checkoutSession;
+    try {
+      const returnUrl = `${origin}/learn/men?session_id={CHECKOUT_SESSION_ID}&purchased=men`;
+
+      checkoutSession = await dodoClient.checkoutSessions.create({
+        product_cart: [
+          {
+            product_id: dodoProductId,
+            quantity: 1,
+          },
+        ],
+        customer: {
+          email: customer.email,
+          name: name || "Customer",
+        },
+        return_url: returnUrl,
+        metadata: {
+          customerId: customer.id,
+          customerEmail: customer.email,
+          courseSlug: "men",
+          amount: "3.00",
+        },
+      });
+    } catch (dodoError: any) {
+      console.error("[DODO_CHECKOUT_SESSION_ERROR]", dodoError?.message || dodoError);
+      return NextResponse.json(
+        { error: "Failed to initialize checkout. Please try again." },
+        { status: 502 }
+      );
+    }
+
+    if (!checkoutSession?.checkout_url) {
+      console.error("[DODO_CHECKOUT_SESSION_ERROR] No checkout URL returned by Dodo Payments");
+      return NextResponse.json(
+        { error: "Failed to initialize checkout. Please try again." },
+        { status: 502 }
+      );
+    }
 
     const res = NextResponse.json({
-      success: true,
-      message: "The Dating Playbook unlocked successfully",
-      redirectUrl: "/learn/men?purchased=men",
+      checkoutUrl: checkoutSession.checkout_url,
     });
 
     res.cookies.set("plugd_access_key", customer.accessKey, {
@@ -151,9 +150,9 @@ export async function POST(req: Request) {
 
     return res;
   } catch (error: any) {
-    console.error("[COURSE_CHECKOUT_ERROR]", error);
+    console.error("[COURSE_CHECKOUT_ERROR]", error?.message || error);
     return NextResponse.json(
-      { error: error?.message || "Failed to process checkout" },
+      { error: "Failed to process checkout. Please try again." },
       { status: 500 }
     );
   }

@@ -11,7 +11,16 @@ export const dodoClient = new DodoPayments({
 });
 
 export const DODO_GIFT_PRODUCT_ID = process.env.DODO_PAYMENTS_PRODUCT_ID || "";
+export const DODO_DATING_PLAYBOOK_PRODUCT_ID = "pdt_0NpUSu9EmAAsRoz2l3ZNV";
+
+export function getDodoCourseProductId(): string {
+  return (
+    process.env.DODO_COURSE_PRODUCT_ID ||
+    process.env.DODO_PAYMENTS_PRODUCT_ID ||
+    DODO_DATING_PLAYBOOK_PRODUCT_ID
+  );
+}
 
 export function isDodoConfigured(): boolean {
-  return Boolean(process.env.DODO_PAYMENTS_API_KEY && process.env.DODO_PAYMENTS_API_KEY.length > 5);
+  return Boolean(process.env.DODO_PAYMENTS_API_KEY && process.env.DODO_PAYMENTS_API_KEY.trim().length > 5);
 }
