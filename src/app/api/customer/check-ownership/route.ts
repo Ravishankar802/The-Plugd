@@ -64,16 +64,40 @@ export async function GET(req: Request) {
           const payment = await dodoClient.payments.retrieve(session.payment_id);
           const expectedProductId = getDodoCourseProductId();
           const hasProduct = Array.isArray(payment.product_cart) && payment.product_cart.some(
-            (item: { product_id?: string }) => item?.product_id === expectedProductId
+            (item: { product_id?: string; quantity?: number }) =>
+              item?.product_id === expectedProductId && (item?.quantity ?? 1) === 1
           );
-          const isCorrectAmount = payment.total_amount === 300;
-          const isCorrectCurrency = payment.currency?.toUpperCase() === "USD";
+          const paymentCurrency = payment.currency?.toUpperCase();
+          const totalAmount = typeof payment.total_amount === "number" ? payment.total_amount : 0;
+          const tax = typeof payment.tax === "number" ? payment.tax : 0;
+          const settlementCurrency = (payment as { settlement_currency?: string }).settlement_currency?.toUpperCase();
+          const rawSettlementAmount = (payment as { settlement_amount?: number }).settlement_amount;
+          const settlementAmount = typeof rawSettlementAmount === "number" ? rawSettlementAmount : undefined;
+          const rawSettlementTax = (payment as { settlement_tax?: number }).settlement_tax;
+          const settlementTax = typeof rawSettlementTax === "number" ? rawSettlementTax : 0;
+          const hasDiscount = Boolean((payment as { discount_id?: string }).discount_id);
+
+          const isDirectUsd =
+            !hasDiscount &&
+            paymentCurrency === "USD" &&
+            (totalAmount === 300 || (totalAmount > 300 && totalAmount - tax === 300));
+          const isAdaptiveSettlement =
+            !hasDiscount &&
+            settlementCurrency === "USD" &&
+            totalAmount > 0 &&
+            settlementAmount !== undefined &&
+            settlementAmount > 0 &&
+            settlementAmount <= 300 + settlementTax;
+          const isValidCurrencyAndAmount = isDirectUsd || isAdaptiveSettlement;
+
           const sessionMetadata = ((session as unknown as { metadata?: Record<string, string> })?.metadata || {}) as Record<string, string>;
           const paymentMetadata = (payment.metadata || {}) as Record<string, string>;
           const courseSlugMetadata = (paymentMetadata.courseSlug || sessionMetadata.courseSlug || "").toLowerCase();
           const isCorrectCourse = courseSlugMetadata === "men";
+          const metadataAmount = paymentMetadata.amount || sessionMetadata.amount;
+          const isCorrectMetadataAmount = !metadataAmount || metadataAmount === "3.00";
 
-          if (hasProduct && isCorrectAmount && isCorrectCurrency && isCorrectCourse) {
+          if (hasProduct && isValidCurrencyAndAmount && isCorrectCourse && isCorrectMetadataAmount) {
             const sessionCheckoutToken = paymentMetadata.checkoutToken || sessionMetadata.checkoutToken;
 
             // Validate matching secure checkout token

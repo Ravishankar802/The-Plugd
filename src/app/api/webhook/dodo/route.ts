@@ -85,20 +85,21 @@ export async function POST(req: Request) {
     // 3. Authoritative product validation (matches The Dating Playbook product ID)
     const expectedProductId = getDodoCourseProductId();
     let productMatches = false;
-    if (Array.isArray(data.product_cart) && data.product_cart.length > 0) {
+    const hasProductCart = Array.isArray(data.product_cart) && data.product_cart.length > 0;
+    if (hasProductCart) {
       productMatches = data.product_cart.some(
-        (item: any) => item?.product_id === expectedProductId
+        (item: any) => item?.product_id === expectedProductId && (item?.quantity ?? 1) === 1
       );
     }
 
     // Fallback: If product_cart is omitted from the webhook payload, perform authoritative server-side lookup
-    if (!productMatches && data.payment_id && isDodoConfigured()) {
+    if (!productMatches && !hasProductCart && data.payment_id && isDodoConfigured()) {
       try {
         const authoritativePayment = await dodoClient.payments.retrieve(data.payment_id);
         if (
           Array.isArray(authoritativePayment.product_cart) &&
           authoritativePayment.product_cart.some(
-            (item: any) => item?.product_id === expectedProductId
+            (item: any) => item?.product_id === expectedProductId && (item?.quantity ?? 1) === 1
           )
         ) {
           productMatches = true;
@@ -116,20 +117,47 @@ export async function POST(req: Request) {
       );
     }
 
-    // 4. Currency validation (must be USD)
-    const currency = data.currency?.toUpperCase();
-    if (currency !== "USD") {
-      console.warn(`[DODO_WEBHOOK_REJECTED] Currency mismatch: ${currency}`);
-      return NextResponse.json(
-        { error: "Currency mismatch" },
-        { status: 400 }
-      );
-    }
+    // 4. Currency and amount validation:
+    // - For direct USD: pre-tax customer amount must equal exactly 300 cents ($3.00 USD).
+    // - For Adaptive Currency: customer pays in local currency (e.g. INR), Dodo settles into the
+    //   merchant's USD balance (settlement_currency === "USD"), net settlement is positive and does
+    //   not exceed the $3.00 base product price plus settlement tax, and no unauthorized discount was applied.
+    const paymentCurrency = data.currency?.toUpperCase();
+    const totalAmount = typeof data.total_amount === "number" ? data.total_amount : 0;
+    const tax = typeof data.tax === "number" ? data.tax : 0;
+    const settlementCurrency = data.settlement_currency?.toUpperCase();
+    const settlementAmount = typeof data.settlement_amount === "number" ? data.settlement_amount : undefined;
+    const settlementTax = typeof data.settlement_tax === "number" ? data.settlement_tax : 0;
+    const hasDiscount = Boolean(data.discount_id);
 
-    // 5. Amount validation: In Dodo SDK, total_amount is in smallest currency unit (cents).
-    // Exactly $3.00 USD must be 300 cents.
-    if (data.total_amount !== 300) {
-      console.warn(`[DODO_WEBHOOK_REJECTED] Amount mismatch: total_amount=${data.total_amount}`);
+    // Direct USD: exactly 300 cents base price pre-tax, no unauthorized discount
+    const isDirectUsd =
+      !hasDiscount &&
+      paymentCurrency === "USD" &&
+      (totalAmount === 300 || (totalAmount > 300 && totalAmount - tax === 300));
+
+    // Adaptive Currency: settled in USD for the fixed $3.00 catalog product, positive settlement, no discount
+    const isAdaptiveSettlement =
+      !hasDiscount &&
+      settlementCurrency === "USD" &&
+      totalAmount > 0 &&
+      settlementAmount !== undefined &&
+      settlementAmount > 0 &&
+      settlementAmount <= 300 + settlementTax;
+
+    if (!isDirectUsd && !isAdaptiveSettlement) {
+      if (paymentCurrency !== "USD" && settlementCurrency !== "USD") {
+        console.warn(
+          `[DODO_WEBHOOK_REJECTED] Currency mismatch: currency=${paymentCurrency}, settlement_currency=${settlementCurrency}`
+        );
+        return NextResponse.json(
+          { error: "Currency mismatch" },
+          { status: 400 }
+        );
+      }
+      console.warn(
+        `[DODO_WEBHOOK_REJECTED] Amount mismatch: total_amount=${totalAmount}, tax=${tax}, settlement_amount=${settlementAmount}, hasDiscount=${hasDiscount}`
+      );
       return NextResponse.json(
         { error: "Amount mismatch" },
         { status: 400 }
@@ -143,6 +171,13 @@ export async function POST(req: Request) {
       console.warn(`[DODO_WEBHOOK_REJECTED] Invalid or missing courseSlug metadata: ${courseSlug}`);
       return NextResponse.json(
         { error: "Invalid course metadata" },
+        { status: 400 }
+      );
+    }
+    if (metadata.amount && metadata.amount !== "3.00") {
+      console.warn(`[DODO_WEBHOOK_REJECTED] Metadata amount mismatch: ${metadata.amount}`);
+      return NextResponse.json(
+        { error: "Amount mismatch" },
         { status: 400 }
       );
     }

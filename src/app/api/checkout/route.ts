@@ -131,7 +131,6 @@ export async function POST(req: Request) {
           amount: 300,
         },
       ],
-      billing_currency: "USD",
       return_url: returnUrl,
       metadata,
     };

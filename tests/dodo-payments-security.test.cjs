@@ -1193,7 +1193,7 @@ test("Scenario 25: Direct checkout without email - creates checkout session with
     assert.strictEqual(json.checkoutUrl, "https://checkout.dodopayments.com/buy/direct_session_123");
     assert.strictEqual(capturedParams.product_cart[0].product_id, TEST_PRODUCT_ID);
     assert.strictEqual(capturedParams.product_cart[0].amount, 300);
-    assert.strictEqual(capturedParams.billing_currency, "USD");
+    assert.strictEqual(capturedParams.billing_currency, undefined, "billing_currency must be omitted so Adaptive Currency selects customer's local currency");
     assert.strictEqual(capturedParams.customer, undefined);
     assert.ok(capturedParams.metadata.checkoutToken, "Must pass checkoutToken in session metadata");
 
@@ -1773,4 +1773,409 @@ test("Scenario 35: Course product ID does not fall back to legacy DODO_PAYMENTS_
     process.env.DODO_COURSE_PRODUCT_ID = origCourse;
     process.env.DODO_PAYMENTS_PRODUCT_ID = origLegacy;
   }
+});
+
+test("Scenario 36: Adaptive Currency - legitimate INR payment with processing fees and tax is accepted by webhook", async () => {
+  mockPrisma.reset();
+  process.env.DODO_PAYMENTS_WEBHOOK_KEY = TEST_SECRET;
+  process.env.DODO_COURSE_PRODUCT_ID = TEST_PRODUCT_ID;
+
+  // Realistic INR payment with 18% GST (tax) and ~39c net processing fee deducted
+  const eventPayload = {
+    type: "payment.succeeded",
+    data: {
+      payment_id: "pay_adaptive_inr_100",
+      total_amount: 30090, // 25,500 base + 4,590 GST = ₹300.90 INR
+      tax: 4590,
+      currency: "INR",
+      settlement_currency: "USD",
+      settlement_amount: 261, // $2.61 USD credited net of $0.39 processing fees
+      settlement_tax: 41, // $0.41 USD tax component
+      product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+      customer: { email: "delhibuyer@example.com" },
+      metadata: {
+        courseSlug: "men",
+        amount: "3.00",
+        customerEmail: "delhibuyer@example.com",
+      },
+    },
+  };
+
+  const { req } = createSignedWebhookRequest(eventPayload, TEST_SECRET);
+  const res = await webhookRoute.POST(req);
+  const json = await res.json();
+
+  assert.strictEqual(res.status, 200);
+  assert.strictEqual(json.success, true);
+
+  const customer = await mockPrisma.customer.findUnique({ where: { email: "delhibuyer@example.com" } });
+  assert.ok(customer, "Customer should be created in database");
+
+  const purchase = await mockPrisma.coursePurchase.findUnique({
+    where: { customerId_courseSlug: { customerId: customer.id, courseSlug: "men" } },
+  });
+  assert.ok(purchase, "Course purchase should be recorded");
+  assert.strictEqual(purchase.amount, 3.0);
+  assert.strictEqual(purchase.currency, "USD");
+  assert.strictEqual(purchase.paymentId, "pay_adaptive_inr_100");
+});
+
+test("Scenario 37: Adaptive Currency - legitimate INR payment with processing fees and tax grants access in check-ownership", async () => {
+  mockPrisma.reset();
+  mockBrowserCookies.clear();
+  process.env.DODO_COURSE_PRODUCT_ID = TEST_PRODUCT_ID;
+
+  const buyerEmail = "mumbaibuyer@example.com";
+  const checkoutToken = "tok_adaptive_inr_200";
+  const sessionId = "session_adaptive_inr_200";
+  const paymentId = "pay_adaptive_inr_200";
+
+  // Webhook has already fulfilled the purchase in database
+  const customer = await playbooks.getOrCreateCustomer(buyerEmail, mockPrisma);
+  await playbooks.recordCoursePurchase({
+    customerId: customer.id,
+    courseSlug: "men",
+    amount: 3.0,
+    paymentId,
+    client: mockPrisma,
+  });
+
+  const origRetrieveSession = dodopayments.dodoClient.checkoutSessions.retrieve;
+  const origRetrievePayment = dodopayments.dodoClient.payments.retrieve;
+
+  dodopayments.dodoClient.checkoutSessions.retrieve = async () => ({
+    id: sessionId,
+    payment_status: "succeeded",
+    payment_id: paymentId,
+    customer_email: buyerEmail,
+    metadata: { checkoutToken, courseSlug: "men", amount: "3.00" },
+  });
+
+  dodopayments.dodoClient.payments.retrieve = async () => ({
+    payment_id: paymentId,
+    status: "succeeded",
+    total_amount: 30090, // ₹300.90 INR
+    tax: 4590,
+    currency: "INR",
+    settlement_currency: "USD",
+    settlement_amount: 261, // Net of processing fees ($2.61 USD)
+    settlement_tax: 41,
+    product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+    customer: { email: buyerEmail },
+    metadata: { checkoutToken, courseSlug: "men", amount: "3.00" },
+  });
+
+  try {
+    const req = new Request(`https://theplugd.com/api/customer/check-ownership?courseSlug=men&session_id=${sessionId}`, {
+      method: "GET",
+      headers: { cookie: `plugd_checkout_token=${checkoutToken}` },
+    });
+
+    const res = await checkOwnershipRoute.GET(req);
+    const json = await res.json();
+
+    assert.strictEqual(res.status, 200);
+    assert.strictEqual(json.owned, true);
+    assert.strictEqual(json.email, buyerEmail);
+
+    const cookies = res.cookies.getAll();
+    const accessCookie = cookies.find((c) => c.name === "plugd_access_key");
+    assert.ok(accessCookie, "Must issue plugd_access_key cookie for Adaptive Currency purchase");
+    assert.strictEqual(accessCookie.value, customer.accessKey);
+  } finally {
+    dodopayments.dodoClient.checkoutSessions.retrieve = origRetrieveSession;
+    dodopayments.dodoClient.payments.retrieve = origRetrievePayment;
+  }
+});
+
+test("Scenario 38: Adaptive Currency - tampered settlement amount, unauthorized discount, currency, or product is rejected in webhook and check-ownership", async () => {
+  mockPrisma.reset();
+  mockBrowserCookies.clear();
+  process.env.DODO_PAYMENTS_WEBHOOK_KEY = TEST_SECRET;
+  process.env.DODO_COURSE_PRODUCT_ID = TEST_PRODUCT_ID;
+
+  // Case A: Webhook with excessive settlement amount exceeding base product price (500 cents vs 300 cents max)
+  const excessiveSettlementPayload = {
+    type: "payment.succeeded",
+    data: {
+      payment_id: "pay_tampered_amt",
+      total_amount: 50000,
+      currency: "INR",
+      settlement_currency: "USD",
+      settlement_amount: 500, // Exceeds $3.00 USD
+      product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+      customer: { email: "cheat@example.com" },
+      metadata: { courseSlug: "men" },
+    },
+  };
+  const reqA = createSignedWebhookRequest(excessiveSettlementPayload, TEST_SECRET).req;
+  const resA = await webhookRoute.POST(reqA);
+  const jsonA = await resA.json();
+  assert.strictEqual(resA.status, 400);
+  assert.strictEqual(jsonA.error, "Amount mismatch");
+  assert.strictEqual(mockPrisma._coursePurchases.size, 0);
+
+  // Case B: Webhook with wrong settlement currency (EUR instead of USD)
+  const wrongSettlementPayload = {
+    type: "payment.succeeded",
+    data: {
+      payment_id: "pay_wrong_settlement_curr",
+      total_amount: 25500,
+      currency: "INR",
+      settlement_currency: "EUR",
+      settlement_amount: 261,
+      product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+      customer: { email: "cheat@example.com" },
+      metadata: { courseSlug: "men" },
+    },
+  };
+  const reqB = createSignedWebhookRequest(wrongSettlementPayload, TEST_SECRET).req;
+  const resB = await webhookRoute.POST(reqB);
+  const jsonB = await resB.json();
+  assert.strictEqual(resB.status, 400);
+  assert.strictEqual(jsonB.error, "Currency mismatch");
+  assert.strictEqual(mockPrisma._coursePurchases.size, 0);
+
+  // Case C: Check-ownership with zero settlement payment
+  const token = "tok_tampered_adaptive";
+  const origRetrieveSession = dodopayments.dodoClient.checkoutSessions.retrieve;
+  const origRetrievePayment = dodopayments.dodoClient.payments.retrieve;
+
+  dodopayments.dodoClient.checkoutSessions.retrieve = async () => ({
+    id: "session_tampered_adaptive",
+    payment_status: "succeeded",
+    payment_id: "pay_tampered_adaptive",
+    customer_email: "cheat@example.com",
+    metadata: { checkoutToken: token, courseSlug: "men" },
+  });
+
+  dodopayments.dodoClient.payments.retrieve = async () => ({
+    payment_id: "pay_tampered_adaptive",
+    status: "succeeded",
+    total_amount: 5000,
+    currency: "INR",
+    settlement_currency: "USD",
+    settlement_amount: 0, // Invalid zero settlement
+    product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+    customer: { email: "cheat@example.com" },
+    metadata: { checkoutToken: token, courseSlug: "men" },
+  });
+
+  try {
+    const reqC = new Request("https://theplugd.com/api/customer/check-ownership?courseSlug=men&session_id=session_tampered_adaptive", {
+      method: "GET",
+      headers: { cookie: `plugd_checkout_token=${token}` },
+    });
+    const resC = await checkOwnershipRoute.GET(reqC);
+    const jsonC = await resC.json();
+    assert.strictEqual(jsonC.owned, false);
+    assert.strictEqual(resC.cookies.getAll().filter((c) => c.name === "plugd_access_key").length, 0);
+  } finally {
+    dodopayments.dodoClient.checkoutSessions.retrieve = origRetrieveSession;
+    dodopayments.dodoClient.payments.retrieve = origRetrievePayment;
+  }
+
+  // Case D: Zero settlement amount in webhook
+  const zeroSettlementPayload = {
+    type: "payment.succeeded",
+    data: {
+      payment_id: "pay_zero_settlement",
+      total_amount: 100,
+      currency: "INR",
+      settlement_currency: "USD",
+      settlement_amount: 0,
+      product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+      customer: { email: "cheat@example.com" },
+      metadata: { courseSlug: "men" },
+    },
+  };
+  const reqD = createSignedWebhookRequest(zeroSettlementPayload, TEST_SECRET).req;
+  const resD = await webhookRoute.POST(reqD);
+  const jsonD = await resD.json();
+  assert.strictEqual(resD.status, 400);
+  assert.strictEqual(jsonD.error, "Amount mismatch");
+
+  // Case E: Wrong product ID in Adaptive Currency
+  const origRetrieveE = dodopayments.dodoClient.payments.retrieve;
+  dodopayments.dodoClient.payments.retrieve = async () => ({
+    payment_id: "pay_wrong_product_adaptive",
+    status: "succeeded",
+    total_amount: 25500,
+    currency: "INR",
+    settlement_currency: "USD",
+    settlement_amount: 261,
+    product_cart: [{ product_id: "pdt_OTHER_PRODUCT", quantity: 1 }],
+    customer: { email: "cheat@example.com" },
+    metadata: { courseSlug: "men" },
+  });
+
+  try {
+    const wrongProductPayload = {
+      type: "payment.succeeded",
+      data: {
+        payment_id: "pay_wrong_product_adaptive",
+        total_amount: 25500,
+        currency: "INR",
+        settlement_currency: "USD",
+        settlement_amount: 261,
+        product_cart: [{ product_id: "pdt_OTHER_PRODUCT", quantity: 1 }],
+        customer: { email: "cheat@example.com" },
+        metadata: { courseSlug: "men" },
+      },
+    };
+    const reqE = createSignedWebhookRequest(wrongProductPayload, TEST_SECRET).req;
+    const resE = await webhookRoute.POST(reqE);
+    const jsonE = await resE.json();
+    assert.strictEqual(resE.status, 400);
+    assert.strictEqual(jsonE.error, "Product mismatch");
+  } finally {
+    dodopayments.dodoClient.payments.retrieve = origRetrieveE;
+  }
+
+  // Case F: Unauthorized discount code applied to payment
+  const discountedPayload = {
+    type: "payment.succeeded",
+    data: {
+      payment_id: "pay_discounted_adaptive",
+      total_amount: 15000,
+      currency: "INR",
+      settlement_currency: "USD",
+      settlement_amount: 150,
+      discount_id: "disc_unauthorized_coupon",
+      product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+      customer: { email: "cheat@example.com" },
+      metadata: { courseSlug: "men" },
+    },
+  };
+  const reqF = createSignedWebhookRequest(discountedPayload, TEST_SECRET).req;
+  const resF = await webhookRoute.POST(reqF);
+  const jsonF = await resF.json();
+  assert.strictEqual(resF.status, 400);
+  assert.strictEqual(jsonF.error, "Amount mismatch");
+  assert.strictEqual(mockPrisma._coursePurchases.size, 0);
+
+  // Case G: Webhook with tampered metadata.amount ($1.00 instead of $3.00)
+  const tamperedMetadataPayload = {
+    type: "payment.succeeded",
+    data: {
+      payment_id: "pay_tampered_meta_amount",
+      total_amount: 25500,
+      currency: "INR",
+      settlement_currency: "USD",
+      settlement_amount: 261,
+      product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+      customer: { email: "cheat@example.com" },
+      metadata: { courseSlug: "men", amount: "1.00" }, // Tampered metadata amount
+    },
+  };
+  const reqG = createSignedWebhookRequest(tamperedMetadataPayload, TEST_SECRET).req;
+  const resG = await webhookRoute.POST(reqG);
+  const jsonG = await resG.json();
+  assert.strictEqual(resG.status, 400);
+  assert.strictEqual(jsonG.error, "Amount mismatch");
+  assert.strictEqual(mockPrisma._coursePurchases.size, 0);
+
+  // Case H: Check-ownership with tampered metadata.amount ($1.00 instead of $3.00)
+  const origRetrieveH1 = dodopayments.dodoClient.checkoutSessions.retrieve;
+  const origRetrieveH2 = dodopayments.dodoClient.payments.retrieve;
+  const tokenH = "tok_tampered_meta_ownership";
+
+  dodopayments.dodoClient.checkoutSessions.retrieve = async () => ({
+    id: "session_tampered_meta",
+    payment_status: "succeeded",
+    payment_id: "pay_tampered_meta",
+    customer_email: "cheat@example.com",
+    metadata: { checkoutToken: tokenH, courseSlug: "men", amount: "1.00" },
+  });
+
+  dodopayments.dodoClient.payments.retrieve = async () => ({
+    payment_id: "pay_tampered_meta",
+    status: "succeeded",
+    total_amount: 25500,
+    currency: "INR",
+    settlement_currency: "USD",
+    settlement_amount: 261,
+    product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+    customer: { email: "cheat@example.com" },
+    metadata: { checkoutToken: tokenH, courseSlug: "men", amount: "1.00" },
+  });
+
+  try {
+    const reqH = new Request("https://theplugd.com/api/customer/check-ownership?courseSlug=men&session_id=session_tampered_meta", {
+      method: "GET",
+      headers: { cookie: `plugd_checkout_token=${tokenH}` },
+    });
+    const resH = await checkOwnershipRoute.GET(reqH);
+    const jsonH = await resH.json();
+    assert.strictEqual(jsonH.owned, false);
+    assert.strictEqual(resH.cookies.getAll().filter((c) => c.name === "plugd_access_key").length, 0);
+  } finally {
+    dodopayments.dodoClient.checkoutSessions.retrieve = origRetrieveH1;
+    dodopayments.dodoClient.payments.retrieve = origRetrieveH2;
+  }
+});
+
+test("Scenario 39: Direct USD payment with customer-paid sales tax is correctly verified", async () => {
+  mockPrisma.reset();
+  process.env.DODO_PAYMENTS_WEBHOOK_KEY = TEST_SECRET;
+  process.env.DODO_COURSE_PRODUCT_ID = TEST_PRODUCT_ID;
+
+  // Customer paid $3.00 base + $0.25 sales tax = $3.25 USD (325 cents)
+  const eventPayload = {
+    type: "payment.succeeded",
+    data: {
+      payment_id: "pay_usd_with_tax_100",
+      total_amount: 325,
+      tax: 25,
+      currency: "USD",
+      product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+      customer: { email: "taxpayer@example.com" },
+      metadata: {
+        courseSlug: "men",
+        amount: "3.00",
+        customerEmail: "taxpayer@example.com",
+      },
+    },
+  };
+
+  const { req } = createSignedWebhookRequest(eventPayload, TEST_SECRET);
+  const res = await webhookRoute.POST(req);
+  const json = await res.json();
+
+  assert.strictEqual(res.status, 200);
+  assert.strictEqual(json.success, true);
+
+  const purchase = await mockPrisma.coursePurchase.findFirst({
+    where: { paymentId: "pay_usd_with_tax_100" },
+  });
+  assert.ok(purchase, "Purchase must be recorded for USD payment with tax");
+  assert.strictEqual(purchase.amount, 3.0);
+  assert.strictEqual(purchase.currency, "USD");
+});
+
+test("Scenario 40: Multi-layered verification rejects payment if catalog quantity is tampered or product is invalid", async () => {
+  mockPrisma.reset();
+  process.env.DODO_PAYMENTS_WEBHOOK_KEY = TEST_SECRET;
+  process.env.DODO_COURSE_PRODUCT_ID = TEST_PRODUCT_ID;
+
+  // Webhook event with quantity: 2 (bulk attempt)
+  const bulkPayload = {
+    type: "payment.succeeded",
+    data: {
+      payment_id: "pay_bulk_qty",
+      total_amount: 51000,
+      currency: "INR",
+      settlement_currency: "USD",
+      settlement_amount: 261,
+      product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 2 }],
+      customer: { email: "bulk@example.com" },
+      metadata: { courseSlug: "men", amount: "3.00" },
+    },
+  };
+  const req = createSignedWebhookRequest(bulkPayload, TEST_SECRET).req;
+  const res = await webhookRoute.POST(req);
+  const json = await res.json();
+  assert.strictEqual(res.status, 400);
+  assert.strictEqual(json.error, "Product mismatch");
+  assert.strictEqual(mockPrisma._coursePurchases.size, 0);
 });
