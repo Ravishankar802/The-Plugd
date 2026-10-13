@@ -26,15 +26,46 @@ export async function getOrCreateCustomer(email: string, client: DbClient = pris
         });
         break;
       } catch (err: unknown) {
-        const error = err as { code?: string; meta?: { target?: string[] } };
-        if (error?.code === "P2002" && error?.meta?.target?.includes("accessKey") && attempt < 2) {
+        const error = err as { code?: string; meta?: { target?: string[] | string } };
+        const isAccessKeyTarget =
+          error?.code === "P2002" &&
+          ((Array.isArray(error?.meta?.target) &&
+            error.meta.target.some(
+              (t: string) => typeof t === "string" && (t === "accessKey" || t.includes("accessKey"))
+            )) ||
+            (typeof error?.meta?.target === "string" && error.meta.target.includes("accessKey")) ||
+            (typeof (err as Error)?.message === "string" &&
+              ((err as Error).message.includes("Customer_accessKey_key") ||
+                (err as Error).message.includes("accessKey"))));
+
+        if (isAccessKeyTarget && attempt < 2) {
           continue;
         }
-        if (error?.code === "P2002" && error?.meta?.target?.includes("email")) {
+
+        const isEmailTarget =
+          error?.code === "P2002" &&
+          ((Array.isArray(error?.meta?.target) &&
+            error.meta.target.some(
+              (t: string) => typeof t === "string" && (t === "email" || t.includes("email"))
+            )) ||
+            (typeof error?.meta?.target === "string" && error.meta.target.includes("email")) ||
+            (typeof (err as Error)?.message === "string" &&
+              ((err as Error).message.includes("Customer_email_key") ||
+                (err as Error).message.includes("email"))));
+
+        if (isEmailTarget) {
           customer = await client.customer.findUnique({
             where: { email: cleanEmail },
           });
           if (customer) break;
+          if (attempt < 2) {
+            await new Promise((r) => setTimeout(r, 20 * (attempt + 1)));
+            customer = await client.customer.findUnique({
+              where: { email: cleanEmail },
+            });
+            if (customer) break;
+            continue;
+          }
         }
         throw err;
       }

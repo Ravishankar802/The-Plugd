@@ -1,3 +1,19 @@
+/**
+ * CUSTOMER LOGIN SECURITY TEST SUITE (6-Digit Numeric OTP)
+ *
+ * NOTE ON TEST ENVIRONMENT & CONCURRENCY MODELING:
+ * These tests run using an in-memory Prisma mock (`InMemoryPrismaMock`) that models
+ * PostgreSQL's READ COMMITTED transaction semantics, row-level locking (`FOR UPDATE`),
+ * and atomic conditional update expressions (`{ increment: 1 }`).
+ *
+ * DISTINCTION FROM LIVE DATABASE:
+ * - Mock-Level Tests: Validate application logic, input validation, cryptographic hashing,
+ *   timing-safe checks, lifecycle state transitions, rate limits, and concurrent race
+ *   resolution using granular entity-level locks rather than a global serialized mutex.
+ * - Live PostgreSQL Verification: Real database constraints, write-ahead logs, and Neon
+ *   connection pooling are verified during staging/production database testing.
+ */
+
 const test = require("node:test");
 const assert = require("node:assert");
 const path = require("node:path");
@@ -44,7 +60,7 @@ Module._resolveFilename = function (request, parent, isMain) {
   return origResolveFilename.call(this, request, parent, isMain);
 };
 
-// In-Memory Database Mock with Transaction Concurrency Locking
+// In-Memory Database Mock with Per-Entity Row Locking (modeling PostgreSQL concurrency)
 class InMemoryPrismaMock {
   constructor() {
     this.reset();
@@ -55,7 +71,23 @@ class InMemoryPrismaMock {
     this._coursePurchases = new Map();
     this._complimentaryAccess = new Map();
     this._otpTokens = new Map();
-    this._txLock = false;
+    this._rowLocks = new Map(); // key -> Promise resolver
+  }
+
+  // Simulates acquiring an exclusive row-level lock (e.g. FOR UPDATE)
+  async _acquireLock(key) {
+    while (this._rowLocks.has(key)) {
+      await new Promise((r) => setTimeout(r, 2));
+    }
+    let release;
+    const lockPromise = new Promise((resolve) => {
+      release = resolve;
+    });
+    this._rowLocks.set(key, { promise: lockPromise, release });
+    return () => {
+      this._rowLocks.delete(key);
+      release();
+    };
   }
 
   get customer() {
@@ -80,8 +112,27 @@ class InMemoryPrismaMock {
         return null;
       },
       create: async ({ data }) => {
+        // Model real asynchronous database latency tick
+        await new Promise((r) => setTimeout(r, 2));
+
+        const email = data.email.toLowerCase();
+        for (const c of this._customers.values()) {
+          if (c.email.toLowerCase() === email) {
+            const p2002 = new Error("Unique constraint failed on the fields: (`email`)");
+            p2002.code = "P2002";
+            p2002.meta = { target: ["email"] };
+            throw p2002;
+          }
+          if (c.accessKey === data.accessKey) {
+            const p2002 = new Error("Unique constraint failed on the fields: (`accessKey`)");
+            p2002.code = "P2002";
+            p2002.meta = { target: ["accessKey"] };
+            throw p2002;
+          }
+        }
+
         const id = "cust_" + Math.random().toString(36).slice(2, 10);
-        const record = { id, ...data, email: data.email.toLowerCase() };
+        const record = { id, ...data, email };
         this._customers.set(id, record);
         return { ...record };
       },
@@ -131,34 +182,66 @@ class InMemoryPrismaMock {
 
   get otpToken() {
     return {
-      findFirst: async ({ where }) => {
+      findFirst: async ({ where, orderBy }) => {
+        let matches = [];
         for (const t of this._otpTokens.values()) {
+          if (where.email && t.email.toLowerCase() !== where.email.toLowerCase()) continue;
           if (where.code && t.code !== where.code) continue;
           if (where.used !== undefined && t.used !== where.used) continue;
           if (where.expiresAt && where.expiresAt.gt && t.expiresAt <= where.expiresAt.gt) continue;
-          return { ...t };
+          if (where.createdAt && where.createdAt.gt && t.createdAt <= where.createdAt.gt) continue;
+          matches.push({ ...t });
         }
-        return null;
+        if (orderBy && orderBy.createdAt === "desc") {
+          matches.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+        }
+        return matches.length > 0 ? matches[0] : null;
       },
       create: async ({ data }) => {
         const id = "otp_" + Math.random().toString(36).slice(2, 10);
-        const record = { id, ...data, email: data.email.toLowerCase() };
+        const record = {
+          id,
+          attempts: 0,
+          createdAt: new Date(),
+          ...data,
+          email: data.email.toLowerCase(),
+        };
         this._otpTokens.set(id, record);
         return { ...record };
       },
       update: async ({ where, data }) => {
         const existing = this._otpTokens.get(where.id);
         if (!existing) throw new Error("OtpToken not found");
-        const updated = { ...existing, ...data };
+        let newAttempts = existing.attempts;
+        if (data.attempts !== undefined) {
+          if (typeof data.attempts === "object" && data.attempts.increment) {
+            newAttempts = existing.attempts + data.attempts.increment;
+          } else {
+            newAttempts = data.attempts;
+          }
+        }
+        const updated = { ...existing, ...data, attempts: newAttempts };
         this._otpTokens.set(where.id, updated);
         return { ...updated };
       },
       updateMany: async ({ where, data }) => {
         let count = 0;
         for (const [id, t] of this._otpTokens.entries()) {
+          if (where.id && t.id !== where.id) continue;
           if (where.email && t.email.toLowerCase() !== where.email.toLowerCase()) continue;
           if (where.used !== undefined && t.used !== where.used) continue;
-          this._otpTokens.set(id, { ...t, ...data });
+          if (where.attempts && where.attempts.lt !== undefined && t.attempts >= where.attempts.lt) continue;
+
+          let newAttempts = t.attempts;
+          if (data.attempts !== undefined) {
+            if (typeof data.attempts === "object" && data.attempts.increment) {
+              newAttempts = t.attempts + data.attempts.increment;
+            } else {
+              newAttempts = data.attempts;
+            }
+          }
+
+          this._otpTokens.set(id, { ...t, ...data, attempts: newAttempts });
           count++;
         }
         return { count };
@@ -166,17 +249,45 @@ class InMemoryPrismaMock {
     };
   }
 
-  async $transaction(fn) {
-    while (this._txLock) {
-      await new Promise((r) => setTimeout(r, 2));
+  async $queryRaw(strings, ...values) {
+    const query = strings.join("?");
+    // Simulate Customer row-level lock
+    if (query.includes('FROM "Customer"') && query.includes("FOR UPDATE")) {
+      const email = values[0];
+      const unlock = await this._acquireLock(`customer:${email.toLowerCase()}`);
+      if (this._currentTxLocks) this._currentTxLocks.push(unlock);
+      const cust = await this.customer.findUnique({ where: { email } });
+      return cust ? [{ id: cust.id }] : [];
     }
-    this._txLock = true;
+    // Simulate OtpToken row-level lock
+    if (query.includes('FROM "OtpToken"') && query.includes("FOR UPDATE")) {
+      const email = values[0];
+      const unlock = await this._acquireLock(`otp:${email.toLowerCase()}`);
+      if (this._currentTxLocks) this._currentTxLocks.push(unlock);
+      const row = await this.otpToken.findFirst({
+        where: { email, used: false, expiresAt: { gt: new Date() } },
+        orderBy: { createdAt: "desc" },
+      });
+      return row ? [row] : [];
+    }
+    return [];
+  }
+
+  // Transactions run CONCURRENTLY; locks are held per entity row, not globally
+  async $transaction(fn) {
+    const txLocks = [];
+    const txClient = Object.create(this);
+    txClient._currentTxLocks = txLocks;
+
     try {
-      // Simulate real I/O latency to stress-test concurrent transaction isolation
+      // Simulate real I/O tick so concurrent requests interleave realistically
       await new Promise((r) => setTimeout(r, 2));
-      return await fn(this);
+      return await fn(txClient);
     } finally {
-      this._txLock = false;
+      // Release all row locks acquired during this transaction
+      for (const unlock of txLocks) {
+        unlock();
+      }
     }
   }
 }
@@ -213,7 +324,7 @@ async function seedOwner(email, courseSlug = "men") {
   return customer;
 }
 
-test("Scenario 1: Non-owner login attempt returns generic response without creating token or leaking state", async () => {
+test("Scenario 1: Non-owner login attempt returns generic response without creating OTP or leaking state", async () => {
   mockPrisma.reset();
   resetLoginRateLimit();
 
@@ -240,7 +351,7 @@ test("Scenario 1: Non-owner login attempt returns generic response without creat
   assert.strictEqual(capturedEmail, null);
 });
 
-test("Scenario 2: Valid owner login generates cryptographically hashed token and dispatches magic link with /login/verify", async () => {
+test("Scenario 2: Valid owner login generates 6-digit numeric code, stores salted hash, and dispatches email", async () => {
   mockPrisma.reset();
   resetLoginRateLimit();
   await seedOwner("buyer@example.com");
@@ -262,85 +373,82 @@ test("Scenario 2: Valid owner login generates cryptographically hashed token and
   assert.strictEqual(res.status, 200);
   assert.strictEqual(json.success, true);
 
-  // Email dispatched with confirmation link
+  // Email dispatched with 6-digit numeric code
   assert.ok(dispatchedData);
   assert.strictEqual(dispatchedData.email, "buyer@example.com");
-  assert.strictEqual(dispatchedData.token.length, 64); // 256 bits hex
-  assert.ok(dispatchedData.magicLink.includes(`/login/verify?token=${dispatchedData.token}`));
+  assert.strictEqual(typeof dispatchedData.code, "string");
+  assert.strictEqual(dispatchedData.code.length, 6);
+  assert.ok(/^\d{6}$/.test(dispatchedData.code));
 
-  // Token is stored HASHED in the database (raw token is never in DB)
+  // Token is stored SALTED and HASHED in the database (raw numeric code is never in DB)
   assert.strictEqual(mockPrisma._otpTokens.size, 1);
   const storedOtp = Array.from(mockPrisma._otpTokens.values())[0];
-  assert.notStrictEqual(storedOtp.code, dispatchedData.token);
-  const expectedHash = crypto.createHash("sha256").update(dispatchedData.token).digest("hex");
-  assert.strictEqual(storedOtp.code, expectedHash);
+  assert.notStrictEqual(storedOtp.code, dispatchedData.code);
+
+  const parts = storedOtp.code.split(":");
+  assert.strictEqual(parts.length, 2);
+  const [salt, hash] = parts;
+  const expectedHash = crypto.createHash("sha256").update(salt + dispatchedData.code).digest("hex");
+  assert.strictEqual(hash, expectedHash);
+
+  assert.strictEqual(storedOtp.attempts, 0);
   assert.strictEqual(storedOtp.used, false);
   assert.ok(storedOtp.expiresAt > new Date());
 });
 
-test("Scenario 3: Scanner GET request or prefetch does NOT consume token and does NOT issue cookie", async () => {
+test("Scenario 3: Resend cooldown (60s) rejects duplicate code requests with HTTP 429", async () => {
   mockPrisma.reset();
   resetLoginRateLimit();
-  await seedOwner("scanner-test@example.com");
+  await seedOwner("cooldown@example.com");
 
-  let captured = null;
-  emailService.setTestEmailInterceptor((data) => {
-    captured = data;
-  });
+  emailService.setTestEmailInterceptor(() => {});
 
-  const loginReq = new Request("https://theplugd.com/api/auth/login", {
+  // First request succeeds
+  const req1 = new Request("https://theplugd.com/api/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email: "scanner-test@example.com" }),
+    body: JSON.stringify({ email: "cooldown@example.com" }),
   });
-  await loginRoute.POST(loginReq);
+  const res1 = await loginRoute.POST(req1);
+  assert.strictEqual(res1.status, 200);
 
-  // 1. Scanner GET request to /api/auth/verify?token=...
-  const scannerReq = new Request(`https://theplugd.com/api/auth/verify?token=${captured.token}`, { method: "GET" });
-  const scannerRes = await verifyRoute.GET(scannerReq);
-
-  // Must redirect to confirmation page, NOT consume token, NOT issue cookie
-  assert.strictEqual(scannerRes.status, 307);
-  assert.ok(scannerRes.headers.get("location").includes(`/login/verify?token=${captured.token}`));
-  assert.strictEqual(scannerRes.cookies.get("plugd_access_key"), undefined);
-
-  // Token must STILL be unused in DB
-  const storedOtp = Array.from(mockPrisma._otpTokens.values())[0];
-  assert.strictEqual(storedOtp.used, false);
-
-  // 2. Prefetch header request
-  const prefetchReq = new Request(`https://theplugd.com/api/auth/verify?token=${captured.token}`, {
-    method: "GET",
-    headers: { "purpose": "prefetch" },
+  // Immediate second request triggers cooldown
+  const req2 = new Request("https://theplugd.com/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: "cooldown@example.com" }),
   });
-  const prefetchRes = await verifyRoute.GET(prefetchReq);
-  assert.strictEqual(prefetchRes.status, 204);
-  assert.strictEqual(storedOtp.used, false);
+  const res2 = await loginRoute.POST(req2);
+  const json2 = await res2.json();
+
+  assert.strictEqual(res2.status, 429);
+  assert.ok(json2.error.includes("Please wait"));
+  assert.ok(res2.headers.get("retry-after"));
 });
 
-test("Scenario 4: Explicit user confirmation via POST consumes token atomically and sets session cookie", async () => {
+test("Scenario 4: Valid code verification restores session and redirects to course", async () => {
   mockPrisma.reset();
   resetLoginRateLimit();
-  const owner = await seedOwner("validcustomer@example.com");
+  const owner = await seedOwner("verified@example.com");
 
-  let captured = null;
+  let dispatched = null;
   emailService.setTestEmailInterceptor((data) => {
-    captured = data;
+    dispatched = data;
   });
 
-  // Request login
+  // Request code
   const loginReq = new Request("https://theplugd.com/api/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email: "validcustomer@example.com" }),
+    body: JSON.stringify({ email: "verified@example.com" }),
   });
   await loginRoute.POST(loginReq);
 
-  // Explicit POST confirmation
+  // Verify code
   const verifyReq = new Request("https://theplugd.com/api/auth/verify", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token: captured.token }),
+    body: JSON.stringify({ email: "verified@example.com", code: dispatched.code }),
   });
   const verifyRes = await verifyRoute.POST(verifyReq);
   const verifyJson = await verifyRes.json();
@@ -362,192 +470,309 @@ test("Scenario 4: Explicit user confirmation via POST consumes token atomically 
   assert.strictEqual(storedOtp.used, true);
 });
 
-test("Scenario 5: Form submission POST confirmation succeeds and redirects with 303", async () => {
+test("Scenario 5: Incorrect code increments attempts counter and returns remaining attempts", async () => {
   mockPrisma.reset();
   resetLoginRateLimit();
-  const owner = await seedOwner("formbuyer@example.com");
+  await seedOwner("wrongcode@example.com");
 
-  let captured = null;
+  let dispatched = null;
   emailService.setTestEmailInterceptor((data) => {
-    captured = data;
+    dispatched = data;
   });
 
   const loginReq = new Request("https://theplugd.com/api/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email: "formbuyer@example.com" }),
+    body: JSON.stringify({ email: "wrongcode@example.com" }),
   });
   await loginRoute.POST(loginReq);
 
-  // Form POST submission
-  const formData = new FormData();
-  formData.append("token", captured.token);
-
-  const formReq = new Request("https://theplugd.com/api/auth/verify", {
+  // Wrong code
+  const wrongReq = new Request("https://theplugd.com/api/auth/verify", {
     method: "POST",
-    body: formData,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: "wrongcode@example.com", code: "000000" }),
   });
-  const formRes = await verifyRoute.POST(formReq);
+  const wrongRes = await verifyRoute.POST(wrongReq);
+  const wrongJson = await wrongRes.json();
 
-  assert.strictEqual(formRes.status, 303);
-  assert.ok(formRes.headers.get("location").endsWith("/learn/men"));
-  const cookie = formRes.cookies.get("plugd_access_key");
-  assert.ok(cookie);
-  assert.strictEqual(cookie.value, owner.accessKey);
+  assert.strictEqual(wrongRes.status, 400);
+  assert.ok(wrongJson.error.includes("4 attempts remaining"));
+  assert.strictEqual(wrongRes.cookies.get("plugd_access_key"), undefined);
 
+  // Stored token is NOT used, but attempts incremented to 1
   const storedOtp = Array.from(mockPrisma._otpTokens.values())[0];
-  assert.strictEqual(storedOtp.used, true);
+  assert.strictEqual(storedOtp.attempts, 1);
+  assert.strictEqual(storedOtp.used, false);
 });
 
-test("Scenario 6: Reusing a consumed token via POST is rejected", async () => {
+test("Scenario 6: Max 5 failed attempts deactivates the code permanently", async () => {
+  mockPrisma.reset();
+  resetLoginRateLimit();
+  await seedOwner("bruteforce@example.com");
+
+  let dispatched = null;
+  emailService.setTestEmailInterceptor((data) => {
+    dispatched = data;
+  });
+
+  const loginReq = new Request("https://theplugd.com/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: "bruteforce@example.com" }),
+  });
+  await loginRoute.POST(loginReq);
+
+  // Submit 4 incorrect attempts
+  for (let i = 1; i <= 4; i++) {
+    const res = await verifyRoute.POST(
+      new Request("https://theplugd.com/api/auth/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "bruteforce@example.com", code: "00000" + i }),
+      })
+    );
+    assert.strictEqual(res.status, 400);
+  }
+
+  // 5th attempt locks the code
+  const res5 = await verifyRoute.POST(
+    new Request("https://theplugd.com/api/auth/verify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "bruteforce@example.com", code: "000005" }),
+    })
+  );
+  const json5 = await res5.json();
+  assert.strictEqual(res5.status, 400);
+  assert.ok(json5.error.includes("Maximum attempts reached"));
+
+  const storedOtp = Array.from(mockPrisma._otpTokens.values())[0];
+  assert.strictEqual(storedOtp.attempts, 5);
+  assert.strictEqual(storedOtp.used, true);
+
+  // 6th attempt (even with CORRECT code) is rejected because code was deactivated
+  const res6 = await verifyRoute.POST(
+    new Request("https://theplugd.com/api/auth/verify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "bruteforce@example.com", code: dispatched.code }),
+    })
+  );
+  assert.strictEqual(res6.status, 400);
+  assert.strictEqual(res6.cookies.get("plugd_access_key"), undefined);
+});
+
+test("Scenario 7: Reusing an already consumed code is rejected", async () => {
   mockPrisma.reset();
   resetLoginRateLimit();
   await seedOwner("reuser@example.com");
 
-  let captured = null;
+  let dispatched = null;
   emailService.setTestEmailInterceptor((data) => {
-    captured = data;
+    dispatched = data;
   });
 
-  const loginReq = new Request("https://theplugd.com/api/auth/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email: "reuser@example.com" }),
-  });
-  await loginRoute.POST(loginReq);
+  await loginRoute.POST(
+    new Request("https://theplugd.com/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "reuser@example.com" }),
+    })
+  );
 
-  // First use succeeds
-  const verifyReq1 = new Request("https://theplugd.com/api/auth/verify", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token: captured.token }),
-  });
-  const verifyRes1 = await verifyRoute.POST(verifyReq1);
-  assert.strictEqual(verifyRes1.status, 200);
-  assert.ok(verifyRes1.cookies.get("plugd_access_key"));
+  // 1st verify succeeds
+  const res1 = await verifyRoute.POST(
+    new Request("https://theplugd.com/api/auth/verify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "reuser@example.com", code: dispatched.code }),
+    })
+  );
+  assert.strictEqual(res1.status, 200);
 
-  // Second use fails
-  const verifyReq2 = new Request("https://theplugd.com/api/auth/verify", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token: captured.token }),
-  });
-  const verifyRes2 = await verifyRoute.POST(verifyReq2);
-  const verifyJson2 = await verifyRes2.json();
-  assert.strictEqual(verifyRes2.status, 400);
-  assert.strictEqual(verifyJson2.error, "expired_or_invalid");
-  assert.strictEqual(verifyRes2.cookies.get("plugd_access_key"), undefined);
+  // 2nd verify fails
+  const res2 = await verifyRoute.POST(
+    new Request("https://theplugd.com/api/auth/verify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "reuser@example.com", code: dispatched.code }),
+    })
+  );
+  assert.strictEqual(res2.status, 400);
+  assert.strictEqual(res2.cookies.get("plugd_access_key"), undefined);
 });
 
-test("Scenario 7: Expired token on POST is rejected", async () => {
+test("Scenario 8: Expired code (>10 minutes) is rejected", async () => {
   mockPrisma.reset();
   resetLoginRateLimit();
   await seedOwner("expired@example.com");
 
-  const rawToken = crypto.randomBytes(32).toString("hex");
-  const hashedToken = crypto.createHash("sha256").update(rawToken).digest("hex");
+  const salt = crypto.randomBytes(16).toString("hex");
+  const hash = crypto.createHash("sha256").update(salt + "123456").digest("hex");
 
-  // Insert token with past expiresAt
+  // Create expired OTP
   await mockPrisma.otpToken.create({
     data: {
       email: "expired@example.com",
-      code: hashedToken,
-      expiresAt: new Date(Date.now() - 1000 * 60), // Expired 1 minute ago
+      code: `${salt}:${hash}`,
+      attempts: 0,
+      expiresAt: new Date(Date.now() - 1000 * 60), // Expired 1 min ago
       used: false,
     },
   });
 
-  const verifyReq = new Request("https://theplugd.com/api/auth/verify", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token: rawToken }),
-  });
-  const verifyRes = await verifyRoute.POST(verifyReq);
-  const json = await verifyRes.json();
+  const res = await verifyRoute.POST(
+    new Request("https://theplugd.com/api/auth/verify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "expired@example.com", code: "123456" }),
+    })
+  );
+  const json = await res.json();
 
-  assert.strictEqual(verifyRes.status, 400);
-  assert.strictEqual(json.error, "expired_or_invalid");
-  assert.strictEqual(verifyRes.cookies.get("plugd_access_key"), undefined);
+  assert.strictEqual(res.status, 400);
+  assert.ok(json.error.includes("Invalid or expired"));
+  assert.strictEqual(res.cookies.get("plugd_access_key"), undefined);
 });
 
-test("Scenario 8: Malformed or invalid token on POST is rejected", async () => {
+test("Scenario 9: Malformed or non-numeric code is rejected with 400", async () => {
   mockPrisma.reset();
   resetLoginRateLimit();
 
-  const verifyReq = new Request("https://theplugd.com/api/auth/verify", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token: "short_or_invalid_123" }),
-  });
-  const verifyRes = await verifyRoute.POST(verifyReq);
-  const json = await verifyRes.json();
-
-  assert.strictEqual(verifyRes.status, 400);
-  assert.strictEqual(json.error, "invalid_token");
-  assert.strictEqual(verifyRes.cookies.get("plugd_access_key"), undefined);
+  const testCodes = ["12345", "1234567", "abcdef", "123a56", ""];
+  for (const c of testCodes) {
+    const res = await verifyRoute.POST(
+      new Request("https://theplugd.com/api/auth/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "test@example.com", code: c }),
+      })
+    );
+    assert.strictEqual(res.status, 400);
+    const json = await res.json();
+    assert.ok(json.error.includes("valid 6-digit"));
+  }
 });
 
-test("Scenario 9: Token verified for email that does not have course purchase is rejected with no_access", async () => {
+test("Scenario 10: Valid code for email without course entitlement is rejected with 403", async () => {
   mockPrisma.reset();
   resetLoginRateLimit();
 
-  // Insert valid token for an email that has NO purchase in database
-  const rawToken = crypto.randomBytes(32).toString("hex");
-  const hashedToken = crypto.createHash("sha256").update(rawToken).digest("hex");
+  const salt = crypto.randomBytes(16).toString("hex");
+  const hash = crypto.createHash("sha256").update(salt + "654321").digest("hex");
 
+  // Insert valid code for an email that has NO purchase in database
   await mockPrisma.otpToken.create({
     data: {
       email: "nopurchase@example.com",
-      code: hashedToken,
-      expiresAt: new Date(Date.now() + 1000 * 60 * 15),
+      code: `${salt}:${hash}`,
+      attempts: 0,
+      expiresAt: new Date(Date.now() + 1000 * 60 * 10),
       used: false,
     },
   });
 
-  const verifyReq = new Request("https://theplugd.com/api/auth/verify", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token: rawToken }),
-  });
-  const verifyRes = await verifyRoute.POST(verifyReq);
-  const json = await verifyRes.json();
+  const res = await verifyRoute.POST(
+    new Request("https://theplugd.com/api/auth/verify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "nopurchase@example.com", code: "654321" }),
+    })
+  );
+  const json = await res.json();
 
-  assert.strictEqual(verifyRes.status, 403);
-  assert.strictEqual(json.error, "no_access");
-  assert.strictEqual(verifyRes.cookies.get("plugd_access_key"), undefined);
+  assert.strictEqual(res.status, 403);
+  assert.ok(json.error.includes("No purchase"));
+  assert.strictEqual(res.cookies.get("plugd_access_key"), undefined);
 });
 
-test("Scenario 10: Concurrent POST attempts race safely and allow only one to succeed", async () => {
+test("Scenario 11: Concurrency - Simultaneous incorrect attempts do not lose increments and properly track attempts", async () => {
   mockPrisma.reset();
   resetLoginRateLimit();
-  await seedOwner("concurrent@example.com");
+  await seedOwner("simul-wrong@example.com");
 
-  let captured = null;
+  let dispatched = null;
   emailService.setTestEmailInterceptor((data) => {
-    captured = data;
+    dispatched = data;
   });
 
-  const loginReq = new Request("https://theplugd.com/api/auth/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email: "concurrent@example.com" }),
-  });
-  await loginRoute.POST(loginReq);
+  await loginRoute.POST(
+    new Request("https://theplugd.com/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "simul-wrong@example.com" }),
+    })
+  );
 
-  // Execute two concurrent POST verification requests
-  const [res1, res2] = await Promise.all([
+  // Send 3 simultaneous incorrect verification attempts without global serialization
+  const results = await Promise.all([
     verifyRoute.POST(
       new Request("https://theplugd.com/api/auth/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: captured.token }),
+        body: JSON.stringify({ email: "simul-wrong@example.com", code: "000001" }),
       })
     ),
     verifyRoute.POST(
       new Request("https://theplugd.com/api/auth/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: captured.token }),
+        body: JSON.stringify({ email: "simul-wrong@example.com", code: "000002" }),
+      })
+    ),
+    verifyRoute.POST(
+      new Request("https://theplugd.com/api/auth/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "simul-wrong@example.com", code: "000003" }),
+      })
+    ),
+  ]);
+
+  // All 3 rejected with 400
+  for (const res of results) {
+    assert.strictEqual(res.status, 400);
+  }
+
+  // Durable attempt count must be 3 (zero lost increments)
+  const storedOtp = Array.from(mockPrisma._otpTokens.values())[0];
+  assert.strictEqual(storedOtp.attempts, 3);
+  assert.strictEqual(storedOtp.used, false);
+});
+
+test("Scenario 12: Concurrency - Simultaneous correct attempts allow exactly ONE to succeed and consume code", async () => {
+  mockPrisma.reset();
+  resetLoginRateLimit();
+  await seedOwner("simul-correct@example.com");
+
+  let dispatched = null;
+  emailService.setTestEmailInterceptor((data) => {
+    dispatched = data;
+  });
+
+  await loginRoute.POST(
+    new Request("https://theplugd.com/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "simul-correct@example.com" }),
+    })
+  );
+
+  // Execute two concurrent verification requests with the correct code
+  const [res1, res2] = await Promise.all([
+    verifyRoute.POST(
+      new Request("https://theplugd.com/api/auth/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "simul-correct@example.com", code: dispatched.code }),
+      })
+    ),
+    verifyRoute.POST(
+      new Request("https://theplugd.com/api/auth/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "simul-correct@example.com", code: dispatched.code }),
       })
     ),
   ]);
@@ -561,7 +786,44 @@ test("Scenario 10: Concurrent POST attempts race safely and allow only one to su
   assert.strictEqual(storedOtp.used, true);
 });
 
-test("Scenario 11: Complimentary access recipient can log in and receives access cookie", async () => {
+test("Scenario 13: Concurrency - Simultaneous resend requests serialize and leave exactly ONE active OTP", async () => {
+  mockPrisma.reset();
+  resetLoginRateLimit();
+  await seedOwner("simul-resend@example.com");
+
+  emailService.setTestEmailInterceptor(() => {});
+
+  // Send two simultaneous code generation requests
+  const [res1, res2] = await Promise.all([
+    loginRoute.POST(
+      new Request("https://theplugd.com/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "simul-resend@example.com" }),
+      })
+    ),
+    loginRoute.POST(
+      new Request("https://theplugd.com/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "simul-resend@example.com" }),
+      })
+    ),
+  ]);
+
+  const statuses = [res1.status, res2.status].sort();
+  // One succeeds (200) and the other is throttled by durable cooldown (429)
+  assert.strictEqual(statuses[0], 200);
+  assert.strictEqual(statuses[1], 429);
+
+  // Exactly ONE active unused OTP exists in database
+  const activeTokens = Array.from(mockPrisma._otpTokens.values()).filter(
+    (t) => t.email === "simul-resend@example.com" && !t.used
+  );
+  assert.strictEqual(activeTokens.length, 1);
+});
+
+test("Scenario 14: Complimentary access recipient (ravx003@gmail.com) logs in with 6-digit code", async () => {
   mockPrisma.reset();
   resetLoginRateLimit();
 
@@ -581,25 +843,27 @@ test("Scenario 11: Complimentary access recipient can log in and receives access
     },
   });
 
-  let captured = null;
+  let dispatched = null;
   emailService.setTestEmailInterceptor((data) => {
-    captured = data;
+    dispatched = data;
   });
 
-  const loginReq = new Request("https://theplugd.com/api/auth/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email: "ravx003@gmail.com" }),
-  });
-  await loginRoute.POST(loginReq);
+  await loginRoute.POST(
+    new Request("https://theplugd.com/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "ravx003@gmail.com" }),
+    })
+  );
 
-  assert.ok(captured);
-  const verifyReq = new Request("https://theplugd.com/api/auth/verify", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token: captured.token }),
-  });
-  const verifyRes = await verifyRoute.POST(verifyReq);
+  assert.ok(dispatched);
+  const verifyRes = await verifyRoute.POST(
+    new Request("https://theplugd.com/api/auth/verify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "ravx003@gmail.com", code: dispatched.code }),
+    })
+  );
 
   assert.strictEqual(verifyRes.status, 200);
   const cookie = verifyRes.cookies.get("plugd_access_key");
@@ -607,35 +871,34 @@ test("Scenario 11: Complimentary access recipient can log in and receives access
   assert.strictEqual(cookie.value, customer.accessKey);
 });
 
-test("Scenario 12: Resend API provider failure returns HTTP 503 generic error without false success claim", async () => {
+test("Scenario 15: Resend API provider failure returns HTTP 503 generic error without false success claim", async () => {
   mockPrisma.reset();
   resetLoginRateLimit();
   await seedOwner("provider-failure@example.com");
 
-  // Force sendLoginEmail to fail as if Resend returned an error
   const origSendLoginEmail = emailService.sendLoginEmail;
   emailService.sendLoginEmail = async () => {
     return { success: false, error: "Resend API connection error" };
   };
 
   try {
-    const loginReq = new Request("https://theplugd.com/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: "provider-failure@example.com" }),
-    });
-    const res = await loginRoute.POST(loginReq);
+    const res = await loginRoute.POST(
+      new Request("https://theplugd.com/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "provider-failure@example.com" }),
+      })
+    );
     const json = await res.json();
 
     assert.strictEqual(res.status, 503);
-    assert.strictEqual(json.error, "Unable to send sign-in link at this time. Please try again in a few moments.");
-    assert.strictEqual(json.success, undefined);
+    assert.strictEqual(json.error, "Unable to send verification code at this time. Please try again in a few moments.");
   } finally {
     emailService.sendLoginEmail = origSendLoginEmail;
   }
 });
 
-test("Scenario 13: Rate limiting triggers HTTP 429 when threshold is exceeded", async () => {
+test("Scenario 16: Rate limiting triggers HTTP 429 when IP or email threshold is exceeded", async () => {
   mockPrisma.reset();
   resetLoginRateLimit();
   await seedOwner("ratelimited@example.com");
@@ -644,6 +907,7 @@ test("Scenario 13: Rate limiting triggers HTTP 429 when threshold is exceeded", 
 
   // Send 5 allowed requests
   for (let i = 0; i < 5; i++) {
+    mockPrisma._otpTokens.clear();
     const req = new Request("https://theplugd.com/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-forwarded-for": "192.0.2.1" },
@@ -667,7 +931,7 @@ test("Scenario 13: Rate limiting triggers HTTP 429 when threshold is exceeded", 
   assert.ok(spamRes.headers.get("retry-after"));
 });
 
-test("Scenario 14: Logout clears session cookie with maxAge 0", async () => {
+test("Scenario 17: Logout clears session cookie with maxAge 0", async () => {
   const req = new Request("https://theplugd.com/api/auth/logout", { method: "POST" });
   const res = await logoutRoute.POST(req);
   const json = await res.json();
@@ -679,4 +943,90 @@ test("Scenario 14: Logout clears session cookie with maxAge 0", async () => {
   assert.ok(cookie);
   assert.strictEqual(cookie.maxAge, 0);
   assert.strictEqual(cookie.value, "");
+});
+
+test("Scenario 18: First-time login race - Simultaneous requests for new complimentary email create at most ONE Customer and ONE active OTP without unhandled P2002", async () => {
+  mockPrisma.reset();
+  resetLoginRateLimit();
+
+  // Create complimentary access entitlement, but NO Customer record
+  await mockPrisma.complimentaryAccess.create({
+    data: {
+      email: "ravx003@gmail.com",
+      courseSlug: "men",
+      reason: "LIFETIME_FREE_ACCESS",
+    },
+  });
+
+  // Verify that NO customer record exists beforehand
+  const initialCustomer = await mockPrisma.customer.findUnique({
+    where: { email: "ravx003@gmail.com" },
+  });
+  assert.strictEqual(initialCustomer, null);
+
+  const dispatchedEmails = [];
+  emailService.setTestEmailInterceptor((data) => {
+    dispatchedEmails.push(data);
+  });
+
+  // Fire two simultaneous first-time login requests for the uncreated Customer
+  const [res1, res2] = await Promise.all([
+    loginRoute.POST(
+      new Request("https://theplugd.com/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "ravx003@gmail.com" }),
+      })
+    ),
+    loginRoute.POST(
+      new Request("https://theplugd.com/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "ravx003@gmail.com" }),
+      })
+    ),
+  ]);
+
+  const statuses = [res1.status, res2.status].sort();
+  // One request succeeds with 200, the other is gracefully throttled with 429
+  // Neither request returns 500 or an unhandled P2002 error
+  assert.strictEqual(statuses[0], 200);
+  assert.strictEqual(statuses[1], 429);
+
+  // Exactly ONE Customer record must exist in the database
+  const customers = Array.from(mockPrisma._customers.values()).filter(
+    (c) => c.email === "ravx003@gmail.com"
+  );
+  assert.strictEqual(customers.length, 1);
+  const establishedCustomer = customers[0];
+  assert.ok(establishedCustomer.accessKey);
+
+  // Exactly ONE active (unused) OTP must exist
+  const activeTokens = Array.from(mockPrisma._otpTokens.values()).filter(
+    (t) => t.email === "ravx003@gmail.com" && !t.used
+  );
+  assert.strictEqual(activeTokens.length, 1);
+
+  // Exactly ONE email must have been sent
+  assert.strictEqual(dispatchedEmails.length, 1);
+  assert.strictEqual(dispatchedEmails[0].email, "ravx003@gmail.com");
+
+  // Verify that the code dispatched can authenticate and restore session
+  const verifyRes = await verifyRoute.POST(
+    new Request("https://theplugd.com/api/auth/verify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: "ravx003@gmail.com",
+        code: dispatchedEmails[0].code,
+      }),
+    })
+  );
+
+  assert.strictEqual(verifyRes.status, 200);
+  const verifyJson = await verifyRes.json();
+  assert.strictEqual(verifyJson.success, true);
+  const cookie = verifyRes.cookies.get("plugd_access_key");
+  assert.ok(cookie);
+  assert.strictEqual(cookie.value, establishedCustomer.accessKey);
 });
