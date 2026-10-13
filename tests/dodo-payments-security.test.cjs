@@ -1196,6 +1196,7 @@ test("Scenario 25: Direct checkout without email - creates checkout session with
     assert.strictEqual(capturedParams.billing_currency, "USD");
     assert.strictEqual(capturedParams.customer, undefined);
     assert.ok(capturedParams.metadata.checkoutToken, "Must pass checkoutToken in session metadata");
+    assert.strictEqual(capturedParams.feature_flags?.single_page, true, "Must enable single_page checkout feature flag");
 
     const setCookies = res.cookies.getAll();
     const tokenCookie = setCookies.find((c) => c.name === "plugd_checkout_token");

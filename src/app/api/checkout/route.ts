@@ -134,6 +134,9 @@ export async function POST(req: Request) {
       billing_currency: "USD",
       return_url: returnUrl,
       metadata,
+      feature_flags: {
+        single_page: true,
+      },
     };
 
     if (customer) {
