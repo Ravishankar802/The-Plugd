@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, BookOpen, Layers, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { performLogout } from "@/lib/auth-client";
 
 export default function Header({
@@ -16,7 +15,6 @@ export default function Header({
   isLanding?: boolean;
   hasAccess?: boolean;
 }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   if (isLanding) {
     return (
@@ -72,11 +70,10 @@ export default function Header({
                 FAQ
               </a>
               <Link
-                href="/learn/men"
-                className="inline-flex items-center gap-1.5 text-[14px] font-medium text-[#1c1917] transition-colors hover:text-[#78716c]"
+                href="/login"
+                className="text-[14px] font-medium text-[#1c1917] transition-colors hover:text-[#78716c]"
               >
-                <BookOpen className="h-3.5 w-3.5 text-[#f97316]" />
-                <span>Playbook</span>
+                Log in
               </Link>
             </nav>
 
@@ -118,8 +115,8 @@ export default function Header({
           <a href="#faq" className="nav-pill">
             FAQ
           </a>
-          <Link href="/learn/men" className="nav-pill">
-            Playbook
+          <Link href="/login" className="nav-pill">
+            Log in
           </Link>
         </nav>
       </header>
