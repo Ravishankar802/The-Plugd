@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 interface StickyPurchaseBarProps {
@@ -35,14 +36,14 @@ export default function StickyPurchaseBar({
           </p>
         </div>
         {hasAccess ? (
-          <a
+          <Link
             href="/learn/men"
             className="btn btn-invert sticky-btn"
             data-cta="sticky"
           >
             <span className="btn-dot" aria-hidden="true" />
             <span>Go to Playbook →</span>
-          </a>
+          </Link>
         ) : (
           <button
             onClick={() => onOpenCheckout(courseSlug || "men")}

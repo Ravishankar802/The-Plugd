@@ -16,7 +16,6 @@ export const DODO_DATING_PLAYBOOK_PRODUCT_ID = "pdt_0NpUSu9EmAAsRoz2l3ZNV";
 export function getDodoCourseProductId(): string {
   return (
     process.env.DODO_COURSE_PRODUCT_ID ||
-    process.env.DODO_PAYMENTS_PRODUCT_ID ||
     DODO_DATING_PLAYBOOK_PRODUCT_ID
   );
 }

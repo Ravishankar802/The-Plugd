@@ -12,7 +12,8 @@ export async function POST() {
   // Expire and clear the session cookie
   response.cookies.set("plugd_access_key", "", {
     path: "/",
-    httpOnly: false,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
     maxAge: 0,
     expires: new Date(0),
     sameSite: "lax",
@@ -26,7 +27,8 @@ export async function GET(req: Request) {
 
   response.cookies.set("plugd_access_key", "", {
     path: "/",
-    httpOnly: false,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
     maxAge: 0,
     expires: new Date(0),
     sameSite: "lax",

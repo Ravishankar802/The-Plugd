@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import Header from "@/components/Header";
 import StickyPurchaseBar from "@/components/StickyPurchaseBar";
-import CheckoutModal from "@/components/CheckoutModal";
 import DatingPlaybookCurriculum from "@/components/DatingPlaybookCurriculum";
 import AudienceFitSection from "@/components/AudienceFitSection";
 
@@ -32,11 +31,42 @@ export default function HomePageClient({
 }: {
   hasAccess?: boolean;
 }) {
-  const [checkoutOpen, setCheckoutOpen] = useState(false);
-  const [selectedCourseSlug, setSelectedCourseSlug] = useState<"men" | "women">("men");
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const [checkoutError, setCheckoutError] = useState("");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [isStickyBarVisible, setIsStickyBarVisible] = useState(false);
   const stickyTriggerRef = useRef<HTMLParagraphElement | null>(null);
+
+  const handleDirectCheckout = async (slug?: "men" | "women") => {
+    try {
+      setIsCheckingOut(true);
+      setCheckoutError("");
+
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          courseSlug: slug || "men",
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to start checkout. Please try again.");
+      }
+
+      if (data.checkoutUrl) {
+        window.location.href = data.checkoutUrl;
+      } else if (data.redirectUrl) {
+        window.location.href = data.redirectUrl;
+      }
+    } catch (err: any) {
+      console.error("[DIRECT_CHECKOUT_ERROR]", err);
+      setCheckoutError(err?.message || "Failed to initiate checkout. Please try again.");
+      setIsCheckingOut(false);
+    }
+  };
 
   useEffect(() => {
     const el = stickyTriggerRef.current;
@@ -65,11 +95,11 @@ export default function HomePageClient({
       setIsStickyBarVisible(true);
     }
 
-    // Auto-open checkout modal if redirected from protected content
+    // Auto-initiate checkout if redirected from protected content
     try {
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.get("checkout") === "true") {
-        setCheckoutOpen(true);
+        handleDirectCheckout("men");
       }
     } catch {}
 
@@ -77,11 +107,6 @@ export default function HomePageClient({
       observer.disconnect();
     };
   }, []);
-
-  const handleOpenCheckout = (slug?: "men" | "women") => {
-    if (slug) setSelectedCourseSlug(slug);
-    setCheckoutOpen(true);
-  };
 
   const faqs = [
     {
@@ -124,7 +149,7 @@ export default function HomePageClient({
   return (
     <div className="min-h-screen bg-[#f6f6f4] text-[#1c1917] font-sans antialiased selection:bg-[#f97316] selection:text-white relative">
       {/* Clean Sticky Header matching Attention Playbook */}
-      <Header isLanding={true} onOpenCheckout={handleOpenCheckout} hasAccess={hasAccess} />
+      <Header isLanding={true} onOpenCheckout={handleDirectCheckout} hasAccess={hasAccess} />
 
       {/* HERO SECTION — EXACT ATTENTION PLAYBOOK REPLICATION */}
       <section className="relative pt-12 pb-16 lg:pt-16 lg:pb-24 overflow-hidden">
@@ -160,6 +185,11 @@ export default function HomePageClient({
 
               {/* Hero Purchase CTA */}
               <div className="mt-[34px] flex flex-col items-start gap-4">
+                {checkoutError && (
+                  <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-xs text-red-700">
+                    {checkoutError}
+                  </div>
+                )}
                 {hasAccess ? (
                   <Link
                     href="/learn/men"
@@ -171,12 +201,13 @@ export default function HomePageClient({
                   </Link>
                 ) : (
                   <button
-                    onClick={() => handleOpenCheckout("men")}
+                    onClick={() => handleDirectCheckout("men")}
+                    disabled={isCheckingOut}
                     className="btn btn-primary w-full sm:w-auto"
                     data-cta="hero"
                   >
                     <span className="btn-dot" aria-hidden="true" />
-                    <span>Get the playbook for $3</span>
+                    <span>{isCheckingOut ? "Connecting to Checkout..." : "Get the playbook for $3"}</span>
                   </button>
                 )}
               </div>
@@ -280,12 +311,13 @@ export default function HomePageClient({
           ) : (
             <>
               <button
-                onClick={() => handleOpenCheckout("men")}
+                onClick={() => handleDirectCheckout("men")}
+                disabled={isCheckingOut}
                 className="btn btn-primary"
                 data-cta="inline"
               >
                 <span className="btn-dot" aria-hidden="true" />
-                <span>Get the playbook for $3</span>
+                <span>{isCheckingOut ? "Connecting to Checkout..." : "Get the playbook for $3"}</span>
               </button>
               <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
                 <p className="m-0">One-time payment · Instant access</p>
@@ -326,7 +358,7 @@ export default function HomePageClient({
       </section>
 
       {/* SECTION: 10-MODULE DATING PLAYBOOK CURRICULUM */}
-      <DatingPlaybookCurriculum onOpenCheckout={handleOpenCheckout} hasAccess={hasAccess} />
+      <DatingPlaybookCurriculum onOpenCheckout={handleDirectCheckout} hasAccess={hasAccess} />
 
       {/* SECTION: AUDIENCE FIT ("IS THE DATING PLAYBOOK RIGHT FOR YOU?") */}
       <AudienceFitSection />
@@ -399,12 +431,13 @@ export default function HomePageClient({
           ) : (
             <>
               <button
-                onClick={() => handleOpenCheckout("men")}
+                onClick={() => handleDirectCheckout("men")}
+                disabled={isCheckingOut}
                 className="btn btn-primary"
                 data-cta="final-bottom"
               >
                 <span className="btn-dot" aria-hidden="true" />
-                <span>Get the playbook for $3 →</span>
+                <span>{isCheckingOut ? "Connecting to Checkout..." : "Get the playbook for $3 →"}</span>
               </button>
               <div className="mt-3.5 flex flex-col items-center gap-1 text-[13.5px] sm:text-[14px] text-[#78716c] leading-normal">
                 <p className="m-0">One-time payment · Instant access</p>
@@ -467,15 +500,8 @@ export default function HomePageClient({
         isLanding={true}
         price={3}
         isVisible={isStickyBarVisible}
-        onOpenCheckout={handleOpenCheckout}
+        onOpenCheckout={handleDirectCheckout}
         hasAccess={hasAccess}
-      />
-
-      {/* CHECKOUT MODAL */}
-      <CheckoutModal
-        isOpen={checkoutOpen}
-        onClose={() => setCheckoutOpen(false)}
-        defaultCourseSlug={selectedCourseSlug}
       />
     </div>
   );

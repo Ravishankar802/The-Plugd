@@ -78,32 +78,38 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
         const isCorrectCourse = courseSlugMetadata === "men";
 
         if (hasProduct && isCorrectAmount && isCorrectCurrency && isCorrectCourse) {
-          // Verify customer association between session/payment metadata and authenticated browser customer
           const sessionCustomerId = paymentMetadata.customerId || sessionMetadata.customerId;
           const sessionCustomerEmail = (paymentMetadata.customerEmail || sessionMetadata.customerEmail)?.trim().toLowerCase();
           const paymentCustomerEmail = (payment.customer?.email || session.customer_email || "").trim().toLowerCase();
 
-          // Must have trusted customer metadata from session creation
-          if (!sessionCustomerId && !sessionCustomerEmail) {
-            console.warn("[CHECKOUT_RETURN_REJECTED] Session lacks trusted customer metadata");
-          } else if (!customer) {
-            console.warn("[CHECKOUT_RETURN_UNAUTHENTICATED] No customer cookie found to associate with session");
-          } else {
-            const idMatches = sessionCustomerId ? customer.id === sessionCustomerId : true;
-            const emailMatches = sessionCustomerEmail ? customer.email.toLowerCase() === sessionCustomerEmail : true;
-            const paymentEmailMatches = paymentCustomerEmail ? customer.email.toLowerCase() === paymentCustomerEmail : true;
+          const hasValidCustomerMatch = Boolean(
+            customer &&
+            (
+              (sessionCustomerId && customer.id === sessionCustomerId) ||
+              (sessionCustomerEmail && customer.email.toLowerCase() === sessionCustomerEmail)
+            ) &&
+            (!paymentCustomerEmail || customer.email.toLowerCase() === paymentCustomerEmail)
+          );
 
-            if (idMatches && emailMatches && paymentEmailMatches) {
+          if (hasValidCustomerMatch && customer) {
+            const targetEmail = paymentCustomerEmail || customer.email || sessionCustomerEmail;
+            if (targetEmail) {
+              const targetCustomer = await getOrCreateCustomer(targetEmail);
               await recordCoursePurchase({
-                customerId: customer.id,
+                customerId: targetCustomer.id,
                 courseSlug: "men",
                 amount: 3.0,
                 paymentId: payment.payment_id,
               });
               hasAccess = true;
-            } else {
-              console.warn("[CHECKOUT_RETURN_MISMATCH] Session customer does not match authenticated browser customer");
             }
+          } else if (!customer) {
+            // Direct checkout without customer cookie:
+            // Do NOT grant access directly in Server Component because RSC cannot set response cookies.
+            // Leave hasAccess = false so PendingPurchaseView executes client handoff to /api/customer/check-ownership,
+            // which reliably issues the persistent plugd_access_key cookie to the browser.
+          } else {
+            console.warn("[CHECKOUT_RETURN_MISMATCH] Session customer does not match authenticated browser customer");
           }
         }
       }

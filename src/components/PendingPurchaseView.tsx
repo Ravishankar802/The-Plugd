@@ -24,7 +24,15 @@ export default function PendingPurchaseView({
   const checkStatus = async () => {
     try {
       setChecking(true);
-      const res = await fetch(`/api/customer/check-ownership?courseSlug=${courseSlug}`, {
+      let url = `/api/customer/check-ownership?courseSlug=${courseSlug}`;
+      if (typeof window !== "undefined") {
+        const params = new URLSearchParams(window.location.search);
+        const sid = params.get("session_id");
+        if (sid) {
+          url += `&session_id=${encodeURIComponent(sid)}`;
+        }
+      }
+      const res = await fetch(url, {
         cache: "no-store",
       });
       if (res.ok) {
@@ -45,22 +53,35 @@ export default function PendingPurchaseView({
   };
 
   useEffect(() => {
+    let isMounted = true;
     let attempts = 0;
-    const interval = setInterval(async () => {
-      attempts += 1;
-      const verified = await checkStatus();
-      if (verified || attempts >= 15) {
-        clearInterval(interval);
-        if (!verified && attempts >= 15) {
-          setTimedOut(true);
-          setStatusMessage(
-            "Confirmation is taking longer than expected. Please check your email or refresh shortly."
-          );
-        }
-      }
-    }, 2500);
+    let interval: ReturnType<typeof setInterval> | null = null;
 
-    return () => clearInterval(interval);
+    const runPoll = async () => {
+      const verified = await checkStatus();
+      if (verified || !isMounted) return;
+
+      interval = setInterval(async () => {
+        attempts += 1;
+        const verifiedAgain = await checkStatus();
+        if (verifiedAgain || attempts >= 15) {
+          if (interval) clearInterval(interval);
+          if (!verifiedAgain && attempts >= 15 && isMounted) {
+            setTimedOut(true);
+            setStatusMessage(
+              "Confirmation is taking longer than expected. Please check your email or refresh shortly."
+            );
+          }
+        }
+      }, 2500);
+    };
+
+    runPoll();
+
+    return () => {
+      isMounted = false;
+      if (interval) clearInterval(interval);
+    };
   }, [courseSlug]);
 
   return (

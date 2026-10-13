@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { randomBytes } from "crypto";
 import { dodoClient, isDodoConfigured, getDodoCourseProductId } from "@/lib/dodopayments";
+import type { Customer } from "@prisma/client";
 import {
   getOrCreateCustomer,
   getCustomerByAccessKey,
@@ -12,12 +14,13 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
+    const body = await req.json().catch(() => ({}));
     const courseSlug = "men"; // The Dating Playbook
-    const email = (body.email || "").trim().toLowerCase();
-    const name = (body.name || "").trim();
+    const rawEmail = typeof body?.email === "string" ? body.email.trim().toLowerCase() : "";
+    const name = typeof body?.name === "string" ? body.name.trim() : "";
 
-    if (!email || !email.includes("@")) {
+    // If an invalid email was explicitly provided, fail fast
+    if (body?.email && (!rawEmail || !rawEmail.includes("@"))) {
       return NextResponse.json(
         { error: "Please enter a valid email address to receive your playbook access." },
         { status: 400 }
@@ -39,45 +42,54 @@ export async function POST(req: Request) {
       accessKeyCookie = match ? match[1] : undefined;
     }
 
-    let customer = await getOrCreateCustomer(email);
-
-    // 1. Verify Complimentary Access Entitlement (e.g. lifetime free accounts)
-    const isComp = await hasComplimentaryAccess(customer.email, courseSlug);
-    if (isComp) {
-      const res = NextResponse.json({
-        success: true,
-        complimentary: true,
-        message: "Complimentary lifetime access verified.",
-        redirectUrl: "/learn/men?access=granted",
-      });
-
-      res.cookies.set("plugd_access_key", customer.accessKey, {
-        path: "/",
-        httpOnly: false,
-        maxAge: 60 * 60 * 24 * 365, // 1 year
-        sameSite: "lax",
-      });
-
-      return res;
+    let customer: Customer | null = null;
+    if (rawEmail && rawEmail.includes("@")) {
+      customer = await getOrCreateCustomer(rawEmail);
+    } else if (accessKeyCookie) {
+      customer = await getCustomerByAccessKey(accessKeyCookie);
     }
 
-    // 2. Check if customer already owns the playbook
-    const alreadyPurchased = await hasUserPurchasedCourse(customer.id, courseSlug);
-    if (alreadyPurchased) {
-      const res = NextResponse.json({
-        success: true,
-        message: "You already have access to The Dating Playbook.",
-        redirectUrl: "/learn/men",
-      });
+    // 1. Verify Complimentary Access Entitlement (e.g. lifetime free accounts)
+    if (customer) {
+      const isComp = await hasComplimentaryAccess(customer.email, courseSlug);
+      if (isComp) {
+        const res = NextResponse.json({
+          success: true,
+          complimentary: true,
+          message: "Complimentary lifetime access verified.",
+          redirectUrl: "/learn/men?access=granted",
+        });
 
-      res.cookies.set("plugd_access_key", customer.accessKey, {
-        path: "/",
-        httpOnly: false,
-        maxAge: 60 * 60 * 24 * 365,
-        sameSite: "lax",
-      });
+        res.cookies.set("plugd_access_key", customer.accessKey, {
+          path: "/",
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          maxAge: 60 * 60 * 24 * 365, // 1 year
+          sameSite: "lax",
+        });
 
-      return res;
+        return res;
+      }
+
+      // 2. Check if customer already owns the playbook
+      const alreadyPurchased = await hasUserPurchasedCourse(customer.id, courseSlug);
+      if (alreadyPurchased) {
+        const res = NextResponse.json({
+          success: true,
+          message: "You already have access to The Dating Playbook.",
+          redirectUrl: "/learn/men",
+        });
+
+        res.cookies.set("plugd_access_key", customer.accessKey, {
+          path: "/",
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          maxAge: 60 * 60 * 24 * 365,
+          sameSite: "lax",
+        });
+
+        return res;
+      }
     }
 
     // 3. One-time payment of exactly $3 USD via Dodo Payments
@@ -98,29 +110,42 @@ export async function POST(req: Request) {
       );
     }
 
+    const checkoutToken = randomBytes(24).toString("hex");
+    const returnUrl = `${origin}/learn/men?session_id={CHECKOUT_SESSION_ID}&purchased=men`;
+
+    const metadata: Record<string, string> = {
+      courseSlug: "men",
+      amount: "3.00",
+      checkoutToken,
+    };
+    if (customer) {
+      metadata.customerId = customer.id;
+      metadata.customerEmail = customer.email;
+    }
+
+    const sessionParams: any = {
+      product_cart: [
+        {
+          product_id: dodoProductId,
+          quantity: 1,
+          amount: 300,
+        },
+      ],
+      billing_currency: "USD",
+      return_url: returnUrl,
+      metadata,
+    };
+
+    if (customer) {
+      sessionParams.customer = {
+        email: customer.email,
+        name: name || "Customer",
+      };
+    }
+
     let checkoutSession;
     try {
-      const returnUrl = `${origin}/learn/men?session_id={CHECKOUT_SESSION_ID}&purchased=men`;
-
-      checkoutSession = await dodoClient.checkoutSessions.create({
-        product_cart: [
-          {
-            product_id: dodoProductId,
-            quantity: 1,
-          },
-        ],
-        customer: {
-          email: customer.email,
-          name: name || "Customer",
-        },
-        return_url: returnUrl,
-        metadata: {
-          customerId: customer.id,
-          customerEmail: customer.email,
-          courseSlug: "men",
-          amount: "3.00",
-        },
-      });
+      checkoutSession = await dodoClient.checkoutSessions.create(sessionParams);
     } catch (dodoError: any) {
       console.error("[DODO_CHECKOUT_SESSION_ERROR]", dodoError?.message || dodoError);
       return NextResponse.json(
@@ -141,10 +166,21 @@ export async function POST(req: Request) {
       checkoutUrl: checkoutSession.checkout_url,
     });
 
-    res.cookies.set("plugd_access_key", customer.accessKey, {
+    if (customer) {
+      res.cookies.set("plugd_access_key", customer.accessKey, {
+        path: "/",
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 60 * 60 * 24 * 365,
+        sameSite: "lax",
+      });
+    }
+
+    res.cookies.set("plugd_checkout_token", checkoutToken, {
       path: "/",
-      httpOnly: false,
-      maxAge: 60 * 60 * 24 * 365,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 60 * 60 * 24,
       sameSite: "lax",
     });
 

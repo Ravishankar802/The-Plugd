@@ -247,6 +247,7 @@ require.cache[require.resolve("next/navigation")] = {
 const dodopayments = require("@/lib/dodopayments.ts");
 const checkoutRoute = require("@/app/api/checkout/route.ts");
 const webhookRoute = require("@/app/api/webhook/dodo/route.ts");
+const checkOwnershipRoute = require("@/app/api/customer/check-ownership/route.ts");
 const playbooks = require("@/lib/playbooks.ts");
 const LearnCoursePage = require("@/app/learn/[courseSlug]/page.tsx").default;
 
@@ -1161,4 +1162,615 @@ test("Scenario 24: Legitimate checkout return with matching customer cookie gran
   assert.ok(purchase, "Purchase must be recorded in database");
   assert.strictEqual(purchase.paymentId, paymentId);
   assert.strictEqual(purchase.amount, 3.0);
+});
+
+test("Scenario 25: Direct checkout without email - creates checkout session with $3.00 USD, sets checkoutToken cookie, records no purchase", async () => {
+  mockPrisma.reset();
+  process.env.DODO_PAYMENTS_API_KEY = "live_test_api_key_12345";
+  process.env.DODO_COURSE_PRODUCT_ID = TEST_PRODUCT_ID;
+
+  let capturedParams = null;
+  const origCreate = dodopayments.dodoClient.checkoutSessions.create;
+  dodopayments.dodoClient.checkoutSessions.create = async (params) => {
+    capturedParams = params;
+    return {
+      checkout_url: "https://checkout.dodopayments.com/buy/direct_session_123",
+      session_id: "direct_session_123",
+    };
+  };
+
+  try {
+    const req = new Request("https://theplugd.com/api/checkout", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ courseSlug: "men" }),
+    });
+
+    const res = await checkoutRoute.POST(req);
+    const json = await res.json();
+
+    assert.strictEqual(res.status, 200);
+    assert.strictEqual(json.checkoutUrl, "https://checkout.dodopayments.com/buy/direct_session_123");
+    assert.strictEqual(capturedParams.product_cart[0].product_id, TEST_PRODUCT_ID);
+    assert.strictEqual(capturedParams.product_cart[0].amount, 300);
+    assert.strictEqual(capturedParams.billing_currency, "USD");
+    assert.strictEqual(capturedParams.customer, undefined);
+    assert.ok(capturedParams.metadata.checkoutToken, "Must pass checkoutToken in session metadata");
+
+    const setCookies = res.cookies.getAll();
+    const tokenCookie = setCookies.find((c) => c.name === "plugd_checkout_token");
+    assert.ok(tokenCookie, "Must set plugd_checkout_token cookie");
+    assert.strictEqual(tokenCookie.value, capturedParams.metadata.checkoutToken);
+
+    // Free access must never be granted
+    assert.strictEqual(mockPrisma._coursePurchases.size, 0);
+  } finally {
+    dodopayments.dodoClient.checkoutSessions.create = origCreate;
+  }
+});
+
+test("Scenario 26: Return polling cannot create purchase before webhook; once webhook fulfills, correct access cookie is issued", async () => {
+  mockPrisma.reset();
+  mockBrowserCookies.clear();
+
+  const checkoutToken = "tok_test_checkout_secret_12345";
+  mockBrowserCookies.set("plugd_checkout_token", checkoutToken);
+
+  const sessionId = "session_direct_return_test";
+  const paymentId = "pay_direct_return_100";
+  const buyerEmail = "buyer_direct@example.com";
+
+  dodopayments.dodoClient.checkoutSessions.retrieve = async () => ({
+    id: sessionId,
+    payment_status: "succeeded",
+    payment_id: paymentId,
+    customer_email: buyerEmail,
+    metadata: {
+      checkoutToken,
+      courseSlug: "men",
+      amount: "3.00",
+    },
+  });
+
+  dodopayments.dodoClient.payments.retrieve = async () => ({
+    payment_id: paymentId,
+    status: "succeeded",
+    total_amount: 300,
+    currency: "USD",
+    product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+    customer: { email: buyerEmail },
+    metadata: {
+      checkoutToken,
+      courseSlug: "men",
+      amount: "3.00",
+    },
+  });
+
+  const checkReq = new Request(`https://theplugd.com/api/customer/check-ownership?courseSlug=men&session_id=${sessionId}`, {
+    method: "GET",
+    headers: {
+      cookie: `plugd_checkout_token=${checkoutToken}`,
+    },
+  });
+
+  // Phase 1: Polling BEFORE webhook fulfillment must return owned: false, set NO cookies, and create NO purchases
+  const preWebhookRes = await checkOwnershipRoute.GET(checkReq);
+  const preWebhookJson = await preWebhookRes.json();
+  assert.strictEqual(preWebhookJson.owned, false, "Must return owned: false before webhook fulfillment");
+  assert.strictEqual(preWebhookRes.cookies.getAll().length, 0, "No access cookie issued before webhook fulfillment");
+  assert.strictEqual(mockPrisma._coursePurchases.size, 0, "Polling endpoint must NOT create purchase records");
+
+  // Phase 2: Authoritative webhook arrives and fulfills the purchase
+  const webhookPayload = {
+    type: "payment.succeeded",
+    data: {
+      payment_id: paymentId,
+      total_amount: 300,
+      currency: "USD",
+      product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+      customer: { email: buyerEmail },
+      metadata: { courseSlug: "men", checkoutToken },
+    },
+  };
+  const { req: whReq } = createSignedWebhookRequest(webhookPayload, TEST_SECRET, { eventId: "evt_wh_direct_return" });
+  const whRes = await webhookRoute.POST(whReq);
+  assert.strictEqual(whRes.status, 200, "Webhook fulfillment must succeed");
+  assert.strictEqual(mockPrisma._coursePurchases.size, 1, "Webhook must persist the purchase record");
+
+  // Phase 3: Now client polling verifies purchase persistence, sets hardened cookie, and confirms access
+  const postWebhookRes = await checkOwnershipRoute.GET(checkReq);
+  const postWebhookJson = await postWebhookRes.json();
+  assert.strictEqual(postWebhookJson.owned, true, "Must return owned: true after webhook fulfillment");
+  assert.strictEqual(postWebhookJson.email, buyerEmail);
+
+  const setCookies = postWebhookRes.cookies.getAll();
+  const accessKeyCookie = setCookies.find((c) => c.name === "plugd_access_key");
+  assert.ok(accessKeyCookie, "Must set plugd_access_key cookie");
+  assert.strictEqual(accessKeyCookie.httpOnly, true, "Access key cookie must be httpOnly");
+  assert.strictEqual(accessKeyCookie.sameSite, "lax");
+
+  const customer = await mockPrisma.customer.findUnique({ where: { email: buyerEmail } });
+  assert.ok(customer, "Customer must exist in database");
+  assert.strictEqual(accessKeyCookie.value, customer.accessKey);
+
+  // Phase 4: Subsequent navigation with the issued cookie without session_id grants full course access
+  mockBrowserCookies.set("plugd_access_key", customer.accessKey);
+  const authPageResult = await LearnCoursePage({
+    params: Promise.resolve({ courseSlug: "men" }),
+    searchParams: Promise.resolve({}),
+  });
+  assert.strictEqual(typeof authPageResult, "object");
+  assert.notStrictEqual(authPageResult.type?.name, "PendingPurchaseView", "Authenticated user receives course view");
+});
+
+test("Scenario 27: Page refresh after purchase retains access without session_id in URL", async () => {
+  mockPrisma.reset();
+  mockBrowserCookies.clear();
+
+  const customer = await playbooks.getOrCreateCustomer("returning_student@example.com", mockPrisma);
+  await playbooks.recordCoursePurchase({
+    customerId: customer.id,
+    courseSlug: "men",
+    amount: 3.0,
+    paymentId: "pay_refresh_test",
+    client: mockPrisma,
+  });
+
+  mockBrowserCookies.set("plugd_access_key", customer.accessKey);
+
+  // First page visit
+  const firstVisit = await LearnCoursePage({
+    params: Promise.resolve({ courseSlug: "men" }),
+    searchParams: Promise.resolve({}),
+  });
+  assert.notStrictEqual(firstVisit.type?.name, "PendingPurchaseView");
+
+  // Page refresh (second visit with identical cookie)
+  const refreshVisit = await LearnCoursePage({
+    params: Promise.resolve({ courseSlug: "men" }),
+    searchParams: Promise.resolve({}),
+  });
+  assert.notStrictEqual(refreshVisit.type?.name, "PendingPurchaseView");
+});
+
+test("Scenario 28: Existing owner still gets immediate access in check-ownership without Dodo session lookup", async () => {
+  mockPrisma.reset();
+  mockBrowserCookies.clear();
+
+  const existingCustomer = await playbooks.getOrCreateCustomer("already_owner@example.com", mockPrisma);
+  await playbooks.recordCoursePurchase({
+    customerId: existingCustomer.id,
+    courseSlug: "men",
+    amount: 3.0,
+    paymentId: "pay_existing_owner_1",
+    client: mockPrisma,
+  });
+
+  mockBrowserCookies.set("plugd_access_key", existingCustomer.accessKey);
+
+  const req = new Request("https://theplugd.com/api/customer/check-ownership?courseSlug=men", {
+    method: "GET",
+    headers: {
+      cookie: `plugd_access_key=${existingCustomer.accessKey}`,
+    },
+  });
+
+  const res = await checkOwnershipRoute.GET(req);
+  const json = await res.json();
+
+  assert.strictEqual(json.owned, true);
+  assert.strictEqual(json.email, existingCustomer.email);
+});
+
+test("Scenario 29: Regression test (SEC-02): Customer with access cookie for another course does not early-return false when session_id is present", async () => {
+  mockPrisma.reset();
+  mockBrowserCookies.clear();
+
+  // Customer owns 'women' course, but NOT 'men'
+  const customer = await playbooks.getOrCreateCustomer("cross_course_user@example.com", mockPrisma);
+  await playbooks.recordCoursePurchase({
+    customerId: customer.id,
+    courseSlug: "women",
+    amount: 3.0,
+    paymentId: "pay_women_course_1",
+    client: mockPrisma,
+  });
+
+  mockBrowserCookies.set("plugd_access_key", customer.accessKey);
+
+  const checkoutToken = "tok_cross_course_sec02";
+  mockBrowserCookies.set("plugd_checkout_token", checkoutToken);
+
+  const sessionId = "session_sec02_test";
+  const paymentId = "pay_sec02_test";
+
+  dodopayments.dodoClient.checkoutSessions.retrieve = async () => ({
+    id: sessionId,
+    payment_status: "succeeded",
+    payment_id: paymentId,
+    customer_email: customer.email,
+    metadata: { checkoutToken, courseSlug: "men", amount: "3.00" },
+  });
+
+  dodopayments.dodoClient.payments.retrieve = async () => ({
+    payment_id: paymentId,
+    status: "succeeded",
+    total_amount: 300,
+    currency: "USD",
+    product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+    customer: { email: customer.email },
+    metadata: { checkoutToken, courseSlug: "men", amount: "3.00" },
+  });
+
+  const req = new Request(`https://theplugd.com/api/customer/check-ownership?courseSlug=men&session_id=${sessionId}`, {
+    method: "GET",
+    headers: {
+      cookie: `plugd_access_key=${customer.accessKey}; plugd_checkout_token=${checkoutToken}`,
+    },
+  });
+
+  // Step 1: When webhook is pending, must NOT return early with unassociated false; must evaluate session flow and return pending
+  const preRes = await checkOwnershipRoute.GET(req);
+  const preJson = await preRes.json();
+  assert.strictEqual(preJson.owned, false);
+
+  // Step 2: Webhook fulfills 'men' course purchase for this customer
+  const webhookPayload = {
+    type: "payment.succeeded",
+    data: {
+      payment_id: paymentId,
+      total_amount: 300,
+      currency: "USD",
+      product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+      customer: { email: customer.email },
+      metadata: { courseSlug: "men", checkoutToken },
+    },
+  };
+  const { req: whReq } = createSignedWebhookRequest(webhookPayload, TEST_SECRET, { eventId: "evt_sec02_wh" });
+  await webhookRoute.POST(whReq);
+
+  // Step 3: Now check-ownership confirms purchase and returns owned: true
+  const postRes = await checkOwnershipRoute.GET(req);
+  const postJson = await postRes.json();
+  assert.strictEqual(postJson.owned, true, "Must recognize newly fulfilled course ownership without being blocked by prior cookie");
+  assert.strictEqual(postJson.email, customer.email);
+});
+
+test("Scenario 30: Missing or mismatched checkout token is rejected in check-ownership even if webhook fulfilled", async () => {
+  mockPrisma.reset();
+  mockBrowserCookies.clear();
+
+  const sessionId = "session_stolen_token_test";
+  const paymentId = "pay_stolen_123";
+  const genuineEmail = "victim@example.com";
+
+  // Pre-seed purchase in DB (as if webhook fulfilled for victim)
+  const victimCustomer = await playbooks.getOrCreateCustomer(genuineEmail, mockPrisma);
+  await playbooks.recordCoursePurchase({
+    customerId: victimCustomer.id,
+    courseSlug: "men",
+    amount: 3.0,
+    paymentId,
+    client: mockPrisma,
+  });
+
+  dodopayments.dodoClient.checkoutSessions.retrieve = async () => ({
+    id: sessionId,
+    payment_status: "succeeded",
+    payment_id: paymentId,
+    customer_email: genuineEmail,
+    metadata: {
+      checkoutToken: "genuine_token_abc",
+      courseSlug: "men",
+      amount: "3.00",
+    },
+  });
+
+  dodopayments.dodoClient.payments.retrieve = async () => ({
+    payment_id: paymentId,
+    status: "succeeded",
+    total_amount: 300,
+    currency: "USD",
+    product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+    customer: { email: genuineEmail },
+    metadata: {
+      checkoutToken: "genuine_token_abc",
+      courseSlug: "men",
+      amount: "3.00",
+    },
+  });
+
+  // Attacker provides wrong checkout token
+  const reqMismatched = new Request(`https://theplugd.com/api/customer/check-ownership?courseSlug=men&session_id=${sessionId}`, {
+    method: "GET",
+    headers: {
+      cookie: "plugd_checkout_token=attacker_wrong_token",
+    },
+  });
+
+  const resMismatched = await checkOwnershipRoute.GET(reqMismatched);
+  const jsonMismatched = await resMismatched.json();
+  assert.strictEqual(jsonMismatched.owned, false);
+  assert.strictEqual(resMismatched.cookies.getAll().length, 0, "No access cookie must be issued to mismatched token");
+
+  // Caller provides NO checkout token
+  const reqMissing = new Request(`https://theplugd.com/api/customer/check-ownership?courseSlug=men&session_id=${sessionId}`, {
+    method: "GET",
+  });
+
+  const resMissing = await checkOwnershipRoute.GET(reqMissing);
+  const jsonMissing = await resMissing.json();
+  assert.strictEqual(jsonMissing.owned, false);
+  assert.strictEqual(resMissing.cookies.getAll().length, 0, "No access cookie must be issued when token is missing");
+});
+
+test("Scenario 31: Unsuccessful payment, wrong product, amount, or currency rejected in check-ownership", async () => {
+  mockPrisma.reset();
+  mockBrowserCookies.clear();
+
+  const token = "tok_test_rejects";
+  const sessionId = "sess_rejects";
+
+  // Case A: Unsuccessful payment
+  dodopayments.dodoClient.checkoutSessions.retrieve = async () => ({
+    id: sessionId,
+    payment_status: "failed",
+    payment_id: "pay_failed_1",
+    metadata: { checkoutToken: token, courseSlug: "men" },
+  });
+
+  const reqA = new Request(`https://theplugd.com/api/customer/check-ownership?courseSlug=men&session_id=${sessionId}`, {
+    method: "GET",
+    headers: { cookie: `plugd_checkout_token=${token}` },
+  });
+  const resA = await checkOwnershipRoute.GET(reqA);
+  const jsonA = await resA.json();
+  assert.strictEqual(jsonA.owned, false);
+  assert.strictEqual(resA.cookies.getAll().length, 0);
+
+  // Case B: Wrong product ID
+  dodopayments.dodoClient.checkoutSessions.retrieve = async () => ({
+    id: sessionId,
+    payment_status: "succeeded",
+    payment_id: "pay_wrong_prod",
+    metadata: { checkoutToken: token, courseSlug: "men" },
+  });
+  dodopayments.dodoClient.payments.retrieve = async () => ({
+    payment_id: "pay_wrong_prod",
+    status: "succeeded",
+    total_amount: 300,
+    currency: "USD",
+    product_cart: [{ product_id: "pdt_WRONG_PRODUCT", quantity: 1 }],
+    customer: { email: "test@example.com" },
+    metadata: { checkoutToken: token, courseSlug: "men" },
+  });
+
+  const resB = await checkOwnershipRoute.GET(reqA);
+  const jsonB = await resB.json();
+  assert.strictEqual(jsonB.owned, false);
+
+  // Case C: Wrong amount ($1 instead of $3)
+  dodopayments.dodoClient.payments.retrieve = async () => ({
+    payment_id: "pay_wrong_amt",
+    status: "succeeded",
+    total_amount: 100,
+    currency: "USD",
+    product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+    customer: { email: "test@example.com" },
+    metadata: { checkoutToken: token, courseSlug: "men" },
+  });
+
+  const resC = await checkOwnershipRoute.GET(reqA);
+  const jsonC = await resC.json();
+  assert.strictEqual(jsonC.owned, false);
+
+  // Case D: Wrong currency (EUR instead of USD)
+  dodopayments.dodoClient.payments.retrieve = async () => ({
+    payment_id: "pay_wrong_curr",
+    status: "succeeded",
+    total_amount: 300,
+    currency: "EUR",
+    product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+    customer: { email: "test@example.com" },
+    metadata: { checkoutToken: token, courseSlug: "men" },
+  });
+
+  const resD = await checkOwnershipRoute.GET(reqA);
+  const jsonD = await resD.json();
+  assert.strictEqual(jsonD.owned, false);
+});
+
+test("Scenario 32: Delayed or failed webhook leaves the customer pending rather than granting access", async () => {
+  mockPrisma.reset();
+  mockBrowserCookies.clear();
+
+  const checkoutToken = "tok_delayed_wh_test";
+  const sessionId = "session_delayed_wh";
+  const paymentId = "pay_delayed_wh";
+  const buyerEmail = "delayed_buyer@example.com";
+
+  dodopayments.dodoClient.checkoutSessions.retrieve = async () => ({
+    id: sessionId,
+    payment_status: "succeeded",
+    payment_id: paymentId,
+    customer_email: buyerEmail,
+    metadata: { checkoutToken, courseSlug: "men", amount: "3.00" },
+  });
+
+  dodopayments.dodoClient.payments.retrieve = async () => ({
+    payment_id: paymentId,
+    status: "succeeded",
+    total_amount: 300,
+    currency: "USD",
+    product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+    customer: { email: buyerEmail },
+    metadata: { checkoutToken, courseSlug: "men", amount: "3.00" },
+  });
+
+  const req = new Request(`https://theplugd.com/api/customer/check-ownership?courseSlug=men&session_id=${sessionId}`, {
+    method: "GET",
+    headers: { cookie: `plugd_checkout_token=${checkoutToken}` },
+  });
+
+  // Webhook failed due to database connection error
+  mockPrisma.simulateTxFailure = true;
+  const webhookPayload = {
+    type: "payment.succeeded",
+    data: {
+      payment_id: paymentId,
+      total_amount: 300,
+      currency: "USD",
+      product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+      customer: { email: buyerEmail },
+      metadata: { courseSlug: "men", checkoutToken },
+    },
+  };
+  const { req: whReq } = createSignedWebhookRequest(webhookPayload, TEST_SECRET, { eventId: "evt_delayed_fail" });
+  const whRes = await webhookRoute.POST(whReq);
+  assert.strictEqual(whRes.status, 500, "Failed webhook returns 500");
+  mockPrisma.simulateTxFailure = false;
+
+  // Polling must leave user pending (owned: false, no cookie)
+  const pollRes = await checkOwnershipRoute.GET(req);
+  const pollJson = await pollRes.json();
+  assert.strictEqual(pollJson.owned, false, "Must return owned: false when webhook has not fulfilled");
+  assert.strictEqual(pollRes.cookies.getAll().length, 0, "No access cookie issued");
+  assert.strictEqual(mockPrisma._coursePurchases.size, 0, "No purchase in database");
+});
+
+test("Scenario 33: Customer email recovered from verified payment when absent from session", async () => {
+  mockPrisma.reset();
+  mockBrowserCookies.clear();
+
+  const checkoutToken = "tok_email_recovery_test";
+  const sessionId = "session_no_session_email";
+  const paymentId = "pay_recovered_email_456";
+  const verifiedPaymentEmail = "verified_on_payment@example.com";
+
+  // Pre-fulfill via webhook for this verified payment email
+  const customer = await playbooks.getOrCreateCustomer(verifiedPaymentEmail, mockPrisma);
+  await playbooks.recordCoursePurchase({
+    customerId: customer.id,
+    courseSlug: "men",
+    amount: 3.0,
+    paymentId,
+    client: mockPrisma,
+  });
+
+  // Session has NO customer_email
+  dodopayments.dodoClient.checkoutSessions.retrieve = async () => ({
+    id: sessionId,
+    payment_status: "succeeded",
+    payment_id: paymentId,
+    customer_email: null,
+    metadata: {
+      checkoutToken,
+      courseSlug: "men",
+      amount: "3.00",
+    },
+  });
+
+  // Payment contains the verified email collected on Dodo's hosted page
+  dodopayments.dodoClient.payments.retrieve = async () => ({
+    payment_id: paymentId,
+    status: "succeeded",
+    total_amount: 300,
+    currency: "USD",
+    product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+    customer: { email: verifiedPaymentEmail },
+    metadata: {
+      checkoutToken,
+      courseSlug: "men",
+      amount: "3.00",
+    },
+  });
+
+  const req = new Request(`https://theplugd.com/api/customer/check-ownership?courseSlug=men&session_id=${sessionId}`, {
+    method: "GET",
+    headers: {
+      cookie: `plugd_checkout_token=${checkoutToken}`,
+    },
+  });
+
+  const res = await checkOwnershipRoute.GET(req);
+  const json = await res.json();
+
+  assert.strictEqual(json.owned, true);
+  assert.strictEqual(json.email, verifiedPaymentEmail, "Email must be recovered from payment.customer.email");
+});
+
+test("Scenario 34: Cookie security attributes are hardened (httpOnly, secure in production, sameSite=lax)", async () => {
+  const origNodeEnv = process.env.NODE_ENV;
+  process.env.NODE_ENV = "production";
+
+  try {
+    mockPrisma.reset();
+    mockBrowserCookies.clear();
+
+    const checkoutToken = "tok_cookie_sec_check";
+    const sessionId = "session_cookie_sec";
+    const paymentId = "pay_cookie_sec";
+    const buyerEmail = "sec_buyer@example.com";
+
+    // Pre-fulfill via webhook
+    const customer = await playbooks.getOrCreateCustomer(buyerEmail, mockPrisma);
+    await playbooks.recordCoursePurchase({
+      customerId: customer.id,
+      courseSlug: "men",
+      amount: 3.0,
+      paymentId,
+      client: mockPrisma,
+    });
+
+    dodopayments.dodoClient.checkoutSessions.retrieve = async () => ({
+      id: sessionId,
+      payment_status: "succeeded",
+      payment_id: paymentId,
+      customer_email: buyerEmail,
+      metadata: { checkoutToken, courseSlug: "men", amount: "3.00" },
+    });
+
+    dodopayments.dodoClient.payments.retrieve = async () => ({
+      payment_id: paymentId,
+      status: "succeeded",
+      total_amount: 300,
+      currency: "USD",
+      product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+      customer: { email: buyerEmail },
+      metadata: { checkoutToken, courseSlug: "men", amount: "3.00" },
+    });
+
+    const req = new Request(`https://theplugd.com/api/customer/check-ownership?courseSlug=men&session_id=${sessionId}`, {
+      method: "GET",
+      headers: { cookie: `plugd_checkout_token=${checkoutToken}` },
+    });
+
+    const res = await checkOwnershipRoute.GET(req);
+    const cookies = res.cookies.getAll();
+    const accessCookie = cookies.find((c) => c.name === "plugd_access_key");
+
+    assert.ok(accessCookie, "Must set plugd_access_key");
+    assert.strictEqual(accessCookie.httpOnly, true, "Must be httpOnly");
+    assert.strictEqual(accessCookie.secure, true, "Must be secure in production");
+    assert.strictEqual(accessCookie.sameSite, "lax", "Must be sameSite=lax");
+    assert.strictEqual(accessCookie.path, "/", "Must be path=/");
+  } finally {
+    process.env.NODE_ENV = origNodeEnv;
+  }
+});
+
+test("Scenario 35: Course product ID does not fall back to legacy DODO_PAYMENTS_PRODUCT_ID", () => {
+  const origCourse = process.env.DODO_COURSE_PRODUCT_ID;
+  const origLegacy = process.env.DODO_PAYMENTS_PRODUCT_ID;
+
+  try {
+    delete process.env.DODO_COURSE_PRODUCT_ID;
+    process.env.DODO_PAYMENTS_PRODUCT_ID = "pdt_legacy_yearly_299";
+
+    const resolved = dodopayments.getDodoCourseProductId();
+    assert.strictEqual(resolved, "pdt_0NpUSu9EmAAsRoz2l3ZNV", "Must use canonical product ID instead of legacy $299 product");
+  } finally {
+    process.env.DODO_COURSE_PRODUCT_ID = origCourse;
+    process.env.DODO_PAYMENTS_PRODUCT_ID = origLegacy;
+  }
 });
