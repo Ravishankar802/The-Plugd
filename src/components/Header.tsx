@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { LogOut } from "lucide-react";
 import { performLogout } from "@/lib/auth-client";
@@ -26,22 +27,14 @@ export default function Header({
             className="group inline-flex items-center gap-2.5 text-[#1c1917] transition-colors"
             aria-label="The Dating Playbook, home"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="180 180 664 664"
-              width="28"
-              height="28"
-              aria-hidden="true"
-              className="shrink-0"
-            >
-              <rect x="180" y="180" width="664" height="664" rx="120" fill="#1C1917" />
-              <path
-                d="M232 512 C 352 318, 672 318, 792 512 C 672 706, 352 706, 232 512 Z"
-                fill="#F6F6F4"
-              />
-              <circle cx="512" cy="512" r="108" fill="#F97316" />
-              <circle cx="512" cy="512" r="42" fill="#1C1917" />
-            </svg>
+            <Image
+              src="/icon.png"
+              alt="The Dating Playbook"
+              width={28}
+              height={28}
+              className="rounded-md shrink-0"
+              priority
+            />
             <span className="text-[16px] font-semibold tracking-[-0.01em] text-[#1c1917] transition-colors group-hover:text-[#78716c]">
               The Dating Playbook
             </span>
@@ -134,22 +127,14 @@ export default function Header({
             className="group inline-flex items-center gap-2.5 text-[#1c1917] transition-colors"
             aria-label="The Dating Playbook, home"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="180 180 664 664"
-              width="28"
-              height="28"
-              aria-hidden="true"
-              className="shrink-0"
-            >
-              <rect x="180" y="180" width="664" height="664" rx="120" fill="#1C1917" />
-              <path
-                d="M232 512 C 352 318, 672 318, 792 512 C 672 706, 352 706, 232 512 Z"
-                fill="#F6F6F4"
-              />
-              <circle cx="512" cy="512" r="108" fill="#F97316" />
-              <circle cx="512" cy="512" r="42" fill="#1C1917" />
-            </svg>
+            <Image
+              src="/icon.png"
+              alt="The Dating Playbook"
+              width={28}
+              height={28}
+              className="rounded-md shrink-0"
+              priority
+            />
             <span className="text-[16px] font-semibold tracking-[-0.01em] text-[#1c1917] transition-colors group-hover:text-[#78716c]">
               The Dating Playbook
             </span>

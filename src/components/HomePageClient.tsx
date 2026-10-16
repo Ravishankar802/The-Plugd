@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import Header from "@/components/Header";
 import StickyPurchaseBar from "@/components/StickyPurchaseBar";
@@ -456,21 +457,13 @@ export default function HomePageClient({
               href="/"
               className="inline-flex items-center gap-2.5 text-[#1c1917] hover:text-[#78716c] transition-colors"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="180 180 664 664"
-                width="22"
-                height="22"
-                aria-hidden="true"
-              >
-                <rect x="180" y="180" width="664" height="664" rx="120" fill="#1C1917" />
-                <path
-                  d="M232 512 C 352 318, 672 318, 792 512 C 672 706, 352 706, 232 512 Z"
-                  fill="#F6F6F4"
-                />
-                <circle cx="512" cy="512" r="108" fill="#F97316" />
-                <circle cx="512" cy="512" r="42" fill="#1C1917" />
-              </svg>
+              <Image
+                src="/icon.png"
+                alt="The Dating Playbook"
+                width={22}
+                height={22}
+                className="rounded-md shrink-0"
+              />
               <span className="font-semibold text-[15px] text-[#1c1917]">The Dating Playbook</span>
             </Link>
           </div>
