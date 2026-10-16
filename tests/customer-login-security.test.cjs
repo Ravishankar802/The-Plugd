@@ -304,6 +304,38 @@ const loginRoute = require("@/app/api/auth/login/route");
 const verifyRoute = require("@/app/api/auth/verify/route");
 const logoutRoute = require("@/app/api/auth/logout/route");
 
+// Mock next/headers and next/navigation for server component & metadata tests
+const mockBrowserCookies = new Map();
+require.cache[require.resolve("next/headers")] = {
+  id: require.resolve("next/headers"),
+  filename: require.resolve("next/headers"),
+  loaded: true,
+  exports: {
+    cookies: async () => ({
+      get: (name) => (mockBrowserCookies.has(name) ? { value: mockBrowserCookies.get(name) } : undefined),
+    }),
+  },
+};
+
+let mockRedirectUrl = null;
+require.cache[require.resolve("next/navigation")] = {
+  id: require.resolve("next/navigation"),
+  filename: require.resolve("next/navigation"),
+  loaded: true,
+  exports: {
+    redirect: (url) => {
+      mockRedirectUrl = url;
+      throw new Error(`NEXT_REDIRECT:${url}`);
+    },
+    notFound: () => {
+      throw new Error("NEXT_NOT_FOUND");
+    },
+  },
+};
+
+const lessonPageModule = require("@/app/learn/[courseSlug]/[lessonId]/page.tsx");
+const { generateMetadata, default: LessonPresentationPage } = lessonPageModule;
+
 // Helper to seed owner
 async function seedOwner(email, courseSlug = "men") {
   const customer = await mockPrisma.customer.create({
@@ -1029,4 +1061,90 @@ test("Scenario 18: First-time login race - Simultaneous requests for new complim
   const cookie = verifyRes.cookies.get("plugd_access_key");
   assert.ok(cookie);
   assert.strictEqual(cookie.value, establishedCustomer.accessKey);
+});
+
+test("Scenario 19: Lesson metadata access control - Unauthenticated visitor receives generic fallback metadata without private lesson title or summary, while entitled customer receives full metadata", async () => {
+  mockPrisma.reset();
+  resetLoginRateLimit();
+  mockBrowserCookies.clear();
+  mockRedirectUrl = null;
+
+  const params = Promise.resolve({ courseSlug: "men", lessonId: "01-1" });
+
+  // 1. Unauthenticated visitor (no cookie)
+  const unauthMeta = await generateMetadata({ params });
+  assert.strictEqual(unauthMeta.title, "The Dating Playbook — Lesson");
+  assert.strictEqual(unauthMeta.description, "Sign in to access your copy of The Dating Playbook.");
+  assert.strictEqual(unauthMeta.openGraph?.title, "The Dating Playbook — Lesson");
+  assert.strictEqual(unauthMeta.openGraph?.description, "Sign in to access your copy of The Dating Playbook.");
+  assert.strictEqual(unauthMeta.twitter?.title, "The Dating Playbook — Lesson");
+  assert.strictEqual(unauthMeta.twitter?.description, "Sign in to access your copy of The Dating Playbook.");
+
+  // Confirm private lesson title and summary are NOT exposed in any field
+  assert.strictEqual(unauthMeta.title.includes("Anatomy of Romantic Attraction"), false);
+  assert.strictEqual(unauthMeta.description.includes("neurobiological"), false);
+
+  // Unauthenticated page render must redirect
+  let unauthRedirected = false;
+  try {
+    await LessonPresentationPage({ params });
+  } catch (err) {
+    if (err.message.startsWith("NEXT_REDIRECT")) {
+      unauthRedirected = true;
+    }
+  }
+  assert.strictEqual(unauthRedirected, true);
+  assert.strictEqual(mockRedirectUrl, "/?checkout=true&lesson=01-1");
+
+  // 2. Forged / invalid access key
+  mockBrowserCookies.set("plugd_access_key", "forged_nonexistent_key_9999");
+  const forgedMeta = await generateMetadata({ params });
+  assert.strictEqual(forgedMeta.title, "The Dating Playbook — Lesson");
+  assert.strictEqual(forgedMeta.description, "Sign in to access your copy of The Dating Playbook.");
+
+  // 3. Customer exists in database, but does NOT own course
+  const nonOwner = await mockPrisma.customer.create({
+    data: {
+      email: "noaccess@example.com",
+      accessKey: "acc_noaccess_12345",
+    },
+  });
+  mockBrowserCookies.set("plugd_access_key", nonOwner.accessKey);
+  const nonOwnerMeta = await generateMetadata({ params });
+  assert.strictEqual(nonOwnerMeta.title, "The Dating Playbook — Lesson");
+  assert.strictEqual(nonOwnerMeta.description, "Sign in to access your copy of The Dating Playbook.");
+
+  // 4. Authorized owner (purchased course)
+  const owner = await seedOwner("owner_meta@example.com");
+  mockBrowserCookies.set("plugd_access_key", owner.accessKey);
+  const ownerMeta = await generateMetadata({ params });
+
+  assert.ok(ownerMeta.title.includes("1.1 The Anatomy of Romantic Attraction"));
+  assert.ok(ownerMeta.title.includes("The Dating Playbook"));
+  assert.ok(ownerMeta.description.includes("neurobiological and psychological mechanisms"));
+  assert.ok(ownerMeta.openGraph?.title.includes("1.1 The Anatomy of Romantic Attraction"));
+  assert.ok(ownerMeta.twitter?.title.includes("1.1 The Anatomy of Romantic Attraction"));
+
+  // 5. Complimentary access recipient
+  mockPrisma.reset();
+  await mockPrisma.complimentaryAccess.create({
+    data: {
+      email: "ravx003@gmail.com",
+      courseSlug: "men",
+      reason: "LIFETIME_FREE_ACCESS",
+    },
+  });
+  const compCust = await mockPrisma.customer.create({
+    data: {
+      email: "ravx003@gmail.com",
+      accessKey: "acc_comp_meta_9876",
+    },
+  });
+  mockBrowserCookies.set("plugd_access_key", compCust.accessKey);
+  const compMeta = await generateMetadata({ params });
+  assert.ok(compMeta.title.includes("1.1 The Anatomy of Romantic Attraction"));
+  assert.ok(compMeta.description.includes("neurobiological and psychological mechanisms"));
+
+  // Cleanup
+  mockBrowserCookies.clear();
 });

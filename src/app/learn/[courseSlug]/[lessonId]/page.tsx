@@ -1,6 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
+import { cache } from "react";
 import SlideViewer from "@/components/SlideViewer";
 import { getLesson, getNextLesson, getPreviousLesson, COURSES } from "@/lib/playbooks-data";
 import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
@@ -18,10 +19,48 @@ interface LessonPageProps {
 
 export const dynamic = "force-dynamic";
 
+const checkLessonAccess = cache(async (accessKey?: string): Promise<boolean> => {
+  if (!accessKey) return false;
+  try {
+    const customer = await getCustomerByAccessKey(accessKey);
+    if (customer) {
+      return await hasUserAccessToCourse(customer.id, "men", customer.email);
+    }
+  } catch (err) {
+    console.error("[LESSON_AUTH_CHECK_ERROR]", err);
+  }
+  return false;
+});
+
 export async function generateMetadata({ params }: LessonPageProps): Promise<Metadata> {
   const { courseSlug, lessonId } = await params;
   const course = COURSES[courseSlug as "men" | "women"] || COURSES.men;
   if (!course) return { title: "Lesson · The Dating Playbook" };
+
+  let accessKey: string | undefined;
+  try {
+    const cookieStore = await cookies();
+    accessKey = cookieStore.get("plugd_access_key")?.value;
+  } catch (err) {
+    console.error("[LESSON_METADATA_COOKIE_ERROR]", err);
+  }
+
+  const hasAccess = await checkLessonAccess(accessKey);
+
+  if (!hasAccess) {
+    return {
+      title: "The Dating Playbook — Lesson",
+      description: "Sign in to access your copy of The Dating Playbook.",
+      openGraph: {
+        title: "The Dating Playbook — Lesson",
+        description: "Sign in to access your copy of The Dating Playbook.",
+      },
+      twitter: {
+        title: "The Dating Playbook — Lesson",
+        description: "Sign in to access your copy of The Dating Playbook.",
+      },
+    };
+  }
 
   const data = getLesson(courseSlug, lessonId);
   if (!data) return { title: `${course.title} · The Dating Playbook` };
@@ -29,6 +68,14 @@ export async function generateMetadata({ params }: LessonPageProps): Promise<Met
   return {
     title: `${data.lesson.number} ${data.lesson.title} · ${course.title}`,
     description: data.lesson.summary,
+    openGraph: {
+      title: `${data.lesson.number} ${data.lesson.title} · ${course.title}`,
+      description: data.lesson.summary,
+    },
+    twitter: {
+      title: `${data.lesson.number} ${data.lesson.title} · ${course.title}`,
+      description: data.lesson.summary,
+    },
   };
 }
 
@@ -43,19 +90,15 @@ export default async function LessonPresentationPage({ params, searchParams }: L
   }
 
   // Server-side Authorization Check
-  let hasAccess = false;
+  let accessKey: string | undefined;
   try {
     const cookieStore = await cookies();
-    const accessKey = cookieStore.get("plugd_access_key")?.value;
-    if (accessKey) {
-      const customer = await getCustomerByAccessKey(accessKey);
-      if (customer) {
-        hasAccess = await hasUserAccessToCourse(customer.id, "men", customer.email);
-      }
-    }
+    accessKey = cookieStore.get("plugd_access_key")?.value;
   } catch (err) {
-    console.error("[LESSON_AUTH_CHECK_ERROR]", err);
+    console.error("[LESSON_PAGE_COOKIE_ERROR]", err);
   }
+
+  const hasAccess = await checkLessonAccess(accessKey);
 
   if (!hasAccess) {
     redirect(`/?checkout=true&lesson=${lessonId}`);
