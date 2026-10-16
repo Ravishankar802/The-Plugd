@@ -214,8 +214,18 @@ export default function HomePageClient({
               </div>
             </div>
 
-            {/* Right Hero Column — LEAVE EMPTY (Clean Negative Space, No images, No placeholders) */}
-            <div className="hidden lg:block min-h-[340px] xl:min-h-[400px]" aria-hidden="true" />
+            {/* Right Hero Column */}
+            <div className="w-full max-w-[640px] lg:max-w-none flex items-center justify-center lg:justify-end">
+              <Image
+                src="/dating-couple-collage.png"
+                alt="The Dating Playbook romantic couple collage"
+                width={1024}
+                height={576}
+                sizes="(max-width: 1024px) 100vw, 640px"
+                priority
+                className="w-full h-auto block"
+              />
+            </div>
           </div>
         </div>
       </section>
