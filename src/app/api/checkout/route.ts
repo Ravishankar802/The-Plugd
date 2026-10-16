@@ -133,6 +133,9 @@ export async function POST(req: Request) {
       ],
       return_url: returnUrl,
       metadata,
+      customization: {
+        theme: "light",
+      },
     };
 
     if (customer) {
