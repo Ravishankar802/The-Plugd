@@ -223,19 +223,7 @@ export default function HomePageClient({
                 height={576}
                 sizes="(max-width: 1024px) 100vw, 640px"
                 priority
-                className="w-full h-auto block select-none"
-                style={{
-                  WebkitMaskImage:
-                    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 576'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='32' y='63' width='531' height='448' rx='4'/%3E%3Crect x='582' y='63' width='411' height='206' rx='4'/%3E%3Crect x='582' y='285' width='194' height='226' rx='4'/%3E%3Crect x='796' y='285' width='197' height='226' rx='4'/%3E%3C/clipPath%3E%3Cfilter id='b' x='-5%25' y='-5%25' width='110%25' height='110%25'%3E%3CfeGaussianBlur stdDeviation='3'/%3E%3C/filter%3E%3C/defs%3E%3Cg clip-path='url(%23c)' filter='url(%23b)' fill='black'%3E%3Crect x='34' y='65' width='527' height='444' rx='4'/%3E%3Crect x='584' y='65' width='407' height='202' rx='4'/%3E%3Crect x='584' y='287' width='190' height='222' rx='4'/%3E%3Crect x='798' y='287' width='193' height='222' rx='4'/%3E%3C/g%3E%3C/svg%3E\"), linear-gradient(to bottom, transparent 0%, transparent 10.9%, rgba(0,0,0,0.32) 13.2%, rgba(0,0,0,0.8) 16.2%, #000 19.5%, #000 80.5%, rgba(0,0,0,0.8) 83.8%, rgba(0,0,0,0.32) 86.8%, transparent 88.8%, transparent 100%), linear-gradient(to right, transparent 0%, transparent 3.1%, rgba(0,0,0,0.32) 4.6%, rgba(0,0,0,0.8) 6.8%, #000 9.6%, #000 90.4%, rgba(0,0,0,0.8) 93.2%, rgba(0,0,0,0.32) 95.4%, transparent 96.9%, transparent 100%)",
-                  maskImage:
-                    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 576'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='32' y='63' width='531' height='448' rx='4'/%3E%3Crect x='582' y='63' width='411' height='206' rx='4'/%3E%3Crect x='582' y='285' width='194' height='226' rx='4'/%3E%3Crect x='796' y='285' width='197' height='226' rx='4'/%3E%3C/clipPath%3E%3Cfilter id='b' x='-5%25' y='-5%25' width='110%25' height='110%25'%3E%3CfeGaussianBlur stdDeviation='3'/%3E%3C/filter%3E%3C/defs%3E%3Cg clip-path='url(%23c)' filter='url(%23b)' fill='black'%3E%3Crect x='34' y='65' width='527' height='444' rx='4'/%3E%3Crect x='584' y='65' width='407' height='202' rx='4'/%3E%3Crect x='584' y='287' width='190' height='222' rx='4'/%3E%3Crect x='798' y='287' width='193' height='222' rx='4'/%3E%3C/g%3E%3C/svg%3E\"), linear-gradient(to bottom, transparent 0%, transparent 10.9%, rgba(0,0,0,0.32) 13.2%, rgba(0,0,0,0.8) 16.2%, #000 19.5%, #000 80.5%, rgba(0,0,0,0.8) 83.8%, rgba(0,0,0,0.32) 86.8%, transparent 88.8%, transparent 100%), linear-gradient(to right, transparent 0%, transparent 3.1%, rgba(0,0,0,0.32) 4.6%, rgba(0,0,0,0.8) 6.8%, #000 9.6%, #000 90.4%, rgba(0,0,0,0.8) 93.2%, rgba(0,0,0,0.32) 95.4%, transparent 96.9%, transparent 100%)",
-                  WebkitMaskSize: "100% 100%",
-                  maskSize: "100% 100%",
-                  WebkitMaskRepeat: "no-repeat",
-                  maskRepeat: "no-repeat",
-                  WebkitMaskComposite: "source-in",
-                  maskComposite: "intersect",
-                }}
+                className="w-full h-auto block"
               />
             </div>
           </div>
