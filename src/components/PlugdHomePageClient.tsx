@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { X } from "lucide-react";
 import Header from "@/components/Header";
 import PlaybookFeedCard from "@/components/PlaybookFeedCard";
 import type { PlaybookSummary } from "@/lib/categories";
@@ -42,14 +42,12 @@ export default function PlugdHomePageClient({
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const chipsContainerRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Check scroll positions for chip bar arrows
+  // Check scroll positions for right-edge fade indicator
   const checkScroll = () => {
     const el = chipsContainerRef.current;
     if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 4);
     setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
   };
 
@@ -58,13 +56,6 @@ export default function PlugdHomePageClient({
     window.addEventListener("resize", checkScroll);
     return () => window.removeEventListener("resize", checkScroll);
   }, []);
-
-  const scrollChips = (direction: "left" | "right") => {
-    const el = chipsContainerRef.current;
-    if (!el) return;
-    const amount = direction === "left" ? -240 : 240;
-    el.scrollBy({ left: amount, behavior: "smooth" });
-  };
 
   // Real client-side filtering combining category and search query
   const filteredPlaybooks = useMemo(() => {
@@ -105,20 +96,6 @@ export default function PlugdHomePageClient({
         {/* YouTube-Inspired Horizontal Category Chips Bar */}
         <div className="sticky top-[56px] z-40 bg-[#f6f6f4]/95 backdrop-blur-md border-b border-[#e7e5e4] py-2.5 px-3 sm:px-6">
           <div className="mx-auto max-w-[1600px] relative flex items-center">
-            {/* Left Scroll Arrow */}
-            {canScrollLeft && (
-              <div className="absolute left-0 top-0 bottom-0 z-10 hidden sm:flex items-center pr-3 bg-gradient-to-r from-[#f6f6f4] via-[#f6f6f4]/90 to-transparent">
-                <button
-                  type="button"
-                  onClick={() => scrollChips("left")}
-                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white border border-[#d6d3d1] shadow-xs text-[#1c1917] hover:bg-[#eceae7] transition-colors cursor-pointer"
-                  aria-label="Scroll categories left"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-              </div>
-            )}
-
             {/* Scrollable Chips Container */}
             <div
               ref={chipsContainerRef}
@@ -150,19 +127,13 @@ export default function PlugdHomePageClient({
               })}
             </div>
 
-            {/* Right Scroll Arrow */}
-            {canScrollRight && (
-              <div className="absolute right-0 top-0 bottom-0 z-10 hidden sm:flex items-center pl-3 bg-gradient-to-l from-[#f6f6f4] via-[#f6f6f4]/90 to-transparent">
-                <button
-                  type="button"
-                  onClick={() => scrollChips("right")}
-                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white border border-[#d6d3d1] shadow-xs text-[#1c1917] hover:bg-[#eceae7] transition-colors cursor-pointer"
-                  aria-label="Scroll categories right"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-              </div>
-            )}
+            {/* Subtle Right-Edge Fade Indicator */}
+            <div
+              className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#f6f6f4] via-[#f6f6f4]/80 to-transparent transition-opacity duration-200 z-10 ${
+                canScrollRight ? "opacity-100" : "opacity-0"
+              }`}
+              aria-hidden="true"
+            />
           </div>
         </div>
 
