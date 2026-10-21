@@ -2,6 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import type { PlaybookSummary } from "@/lib/categories";
 
+/**
+ * YouTube-style Playbook Card Component
+ * Refined layout: Bottom-right high-contrast price badge, aligned icon & title, and category/relative date metadata
+ */
 interface PlaybookFeedCardProps {
   playbook: PlaybookSummary;
 }
