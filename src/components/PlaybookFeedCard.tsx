@@ -1,14 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Star } from "lucide-react";
 import type { PlaybookSummary } from "@/lib/categories";
 
 /**
  * Reusable Playbook Card Component (Matches Reference Product Card Layout)
  * Structure:
  * 1. Thumbnail without price overlay
- * 2. Icon on the left, Title on the right (horizontally aligned, wraps multiline cleanly)
+ * 2. Title aligned to the thumbnail's left edge, without a separate Playbook icon
  * 3. Category & publication date beneath title (no separator dot: "Dating     3 days ago")
- * 4. Dedicated price & Add to cart row: Prominent $3 current price, struck-through $9 comparison price, and Add to cart button to the right
+ * 4. Optional Bestseller/rating metadata row (Bestseller badge, 4.7 star rating, 1,201 ratings)
+ * 5. Price & Add to cart row: Prominent $3 current price, struck-through $9 comparison price, and Add to cart button to the right
  */
 interface PlaybookFeedCardProps {
   playbook: PlaybookSummary;
@@ -76,31 +78,44 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
           )}
         </div>
 
-        {/* Title and Icon Row */}
-        <div className="mt-3 flex items-start gap-3">
-          {/* Playbook Icon on the Left */}
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white border border-[#e7e5e4] shadow-xs overflow-hidden mt-0.5">
-            <Image
-              src="/icon.png"
-              alt="Plugd"
-              width={24}
-              height={24}
-              className="rounded-full"
-            />
+        {/* Title and Metadata (Left-aligned with thumbnail, no circular icon) */}
+        <div className="mt-3">
+          <h3 className="text-[15px] sm:text-[15.5px] font-semibold text-[#1c1917] leading-snug line-clamp-2 group-hover:text-[#f97316] transition-colors">
+            {playbook.title}
+          </h3>
+
+          {/* Category and Publication Date (No separator dot) */}
+          <div className="mt-1 flex items-center gap-2 text-[13px] text-[#57534e]">
+            <span className="font-medium text-[#44403c]">{playbook.categoryName}</span>
+            <span>{relativeTime}</span>
           </div>
 
-          {/* Title and Metadata on the Right (Horizontally Aligned Column) */}
-          <div className="flex-1 min-w-0">
-            <h3 className="text-[15px] sm:text-[15.5px] font-semibold text-[#1c1917] leading-snug line-clamp-2 group-hover:text-[#f97316] transition-colors">
-              {playbook.title}
-            </h3>
-
-            {/* Category and Publication Date (No separator dot) */}
-            <div className="mt-1 flex items-center gap-2 text-[13px] text-[#57534e]">
-              <span className="font-medium text-[#44403c]">{playbook.categoryName}</span>
-              <span>{relativeTime}</span>
+          {/* Optional Bestseller & Ratings Row */}
+          {(playbook.badge || playbook.rating) && (
+            <div className="mt-2.5 flex items-center gap-1.5 flex-wrap text-xs">
+              {playbook.badge && (
+                <span className="inline-flex items-center rounded-md bg-[#ccfbf1] px-2 py-0.5 text-[11px] font-bold text-[#0f766e] tracking-tight">
+                  {playbook.badge}
+                </span>
+              )}
+              {playbook.rating && (
+                <div className="inline-flex items-center gap-1 rounded-md border border-[#e7e5e4] bg-white px-1.5 py-0.5 text-[11px] font-semibold text-[#1c1917] shadow-2xs">
+                  <Star className="h-3 w-3 fill-[#d97706] text-[#d97706]" />
+                  <span className="font-bold">{playbook.rating}</span>
+                </div>
+              )}
+              {playbook.ratingCount && (
+                <div className="inline-flex items-center rounded-md border border-[#e7e5e4] bg-white px-1.5 py-0.5 text-[11px] text-[#78716c] shadow-2xs">
+                  <span>
+                    {typeof playbook.ratingCount === "number"
+                      ? playbook.ratingCount.toLocaleString()
+                      : playbook.ratingCount}{" "}
+                    ratings
+                  </span>
+                </div>
+              )}
             </div>
-          </div>
+          )}
         </div>
       </Link>
 

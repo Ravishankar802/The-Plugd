@@ -26,6 +26,8 @@ export interface PlaybookSummary {
   accentColor?: string;
   thumbnail?: string;
   publishedAt?: string;
+  rating?: number;
+  ratingCount?: number | string;
 }
 
 export const CATEGORIES: Category[] = [
@@ -175,7 +177,9 @@ export const DATING_PLAYBOOK_SUMMARY: PlaybookSummary = {
   lessonsCount: 69,
   hoursOfMaterial: "8.5 hours",
   href: "/men",
-  badge: "Available Now",
+  badge: "Bestseller",
+  rating: 4.7,
+  ratingCount: "1,201",
   accentColor: "#f97316",
   thumbnail: "/dating-couple-collage.png",
   publishedAt: "2026-10-18T10:00:00Z",
