@@ -2,29 +2,48 @@
 
 import { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { X } from "lucide-react";
+import {
+  X,
+  LayoutGrid,
+  Bot,
+  ShoppingBag,
+  Flame,
+  DollarSign,
+  Video,
+  UserCheck,
+  Laptop,
+  Target,
+  Code2,
+  Store,
+  RefreshCw,
+  Users,
+  MapPin,
+  BookOpen,
+  Mail,
+  Heart,
+} from "lucide-react";
 import Header from "@/components/Header";
 import PlaybookFeedCard from "@/components/PlaybookFeedCard";
 import type { PlaybookSummary } from "@/lib/categories";
 
 const CATEGORY_CHIPS = [
-  { label: "All", slug: "all" },
-  { label: "AI Businesses", slug: "ai-businesses" },
-  { label: "E-commerce", slug: "ecommerce" },
-  { label: "Side Hustles", slug: "side-hustles" },
-  { label: "Online Income", slug: "online-income" },
-  { label: "Creator Economy", slug: "creator-economy" },
-  { label: "Personal Branding", slug: "personal-branding" },
-  { label: "Remote Work", slug: "remote-work" },
-  { label: "Lead Generation", slug: "lead-generation" },
-  { label: "Micro-SaaS", slug: "micro-saas" },
-  { label: "Online Marketplace", slug: "online-marketplace" },
-  { label: "Reselling", slug: "reselling" },
-  { label: "Paid Communities", slug: "paid-communities" },
-  { label: "Local Business", slug: "local-business" },
-  { label: "Digital Publishing", slug: "digital-publishing" },
-  { label: "Newsletter Business", slug: "newsletter-business" },
-  { label: "Dating", slug: "dating" },
+  { label: "All", slug: "all", icon: LayoutGrid },
+  { label: "AI Businesses", slug: "ai-businesses", icon: Bot },
+  { label: "E-commerce", slug: "ecommerce", icon: ShoppingBag },
+  { label: "Side Hustles", slug: "side-hustles", icon: Flame },
+  { label: "Online Income", slug: "online-income", icon: DollarSign },
+  { label: "Creator Economy", slug: "creator-economy", icon: Video },
+  { label: "Personal Branding", slug: "personal-branding", icon: UserCheck },
+  { label: "Remote Work", slug: "remote-work", icon: Laptop },
+  { label: "Lead Generation", slug: "lead-generation", icon: Target },
+  { label: "Micro-SaaS", slug: "micro-saas", icon: Code2 },
+  { label: "Online Marketplace", slug: "online-marketplace", icon: Store },
+  { label: "Reselling", slug: "reselling", icon: RefreshCw },
+  { label: "Paid Communities", slug: "paid-communities", icon: Users },
+  { label: "Local Business", slug: "local-business", icon: MapPin },
+  { label: "Digital Publishing", slug: "digital-publishing", icon: BookOpen },
+  { label: "Newsletter Business", slug: "newsletter-business", icon: Mail },
+  { label: "Dating", slug: "dating", icon: Heart },
 ];
 
 interface PlugdHomePageClientProps {
@@ -106,6 +125,7 @@ export default function PlugdHomePageClient({
             >
               {CATEGORY_CHIPS.map((chip) => {
                 const isSelected = selectedCategory === chip.slug;
+                const Icon = chip.icon;
                 return (
                   <button
                     key={chip.slug}
@@ -118,9 +138,13 @@ export default function PlugdHomePageClient({
                         : "bg-[#eceae7] text-[#1c1917] hover:bg-[#e2ded9]"
                     }`}
                   >
-                    {isSelected && chip.slug !== "all" && (
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#f97316]" aria-hidden="true" />
-                    )}
+                    <Icon
+                      className={`h-3.5 w-3.5 shrink-0 transition-colors duration-150 ${
+                        isSelected ? "text-white" : "text-[#57534e]"
+                      }`}
+                      strokeWidth={2}
+                      aria-hidden="true"
+                    />
                     <span>{chip.label}</span>
                   </button>
                 );
