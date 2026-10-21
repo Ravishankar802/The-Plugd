@@ -9,14 +9,21 @@ import type { PlaybookSummary } from "@/lib/categories";
 
 const CATEGORY_CHIPS = [
   { label: "All", slug: "all" },
-  { label: "AI & Automation", slug: "ai-automation" },
+  { label: "AI Businesses", slug: "ai-businesses" },
   { label: "E-commerce", slug: "ecommerce" },
   { label: "Side Hustles", slug: "side-hustles" },
-  { label: "Freelancing", slug: "freelancing" },
-  { label: "Content Creation", slug: "content-creation" },
-  { label: "Digital Products", slug: "digital-products" },
-  { label: "Online Business", slug: "online-business" },
-  { label: "Affiliate Marketing", slug: "affiliate-marketing" },
+  { label: "Online Income", slug: "online-income" },
+  { label: "Creator Economy", slug: "creator-economy" },
+  { label: "Personal Branding", slug: "personal-branding" },
+  { label: "Remote Work", slug: "remote-work" },
+  { label: "Lead Generation", slug: "lead-generation" },
+  { label: "Micro-SaaS", slug: "micro-saas" },
+  { label: "Online Marketplace", slug: "online-marketplace" },
+  { label: "Reselling", slug: "reselling" },
+  { label: "Paid Communities", slug: "paid-communities" },
+  { label: "Local Business", slug: "local-business" },
+  { label: "Digital Publishing", slug: "digital-publishing" },
+  { label: "Newsletter Business", slug: "newsletter-business" },
   { label: "Dating", slug: "dating" },
 ];
 
