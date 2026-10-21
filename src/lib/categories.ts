@@ -24,6 +24,7 @@ export interface PlaybookSummary {
   href: string;
   badge?: string;
   accentColor?: string;
+  thumbnail?: string;
 }
 
 export const CATEGORIES: Category[] = [
@@ -119,6 +120,7 @@ export const DATING_PLAYBOOK_SUMMARY: PlaybookSummary = {
   href: "/men",
   badge: "Available Now",
   accentColor: "#f97316",
+  thumbnail: "/dating-couple-collage.png",
 };
 
 export const PLAYBOOKS: PlaybookSummary[] = [DATING_PLAYBOOK_SUMMARY];

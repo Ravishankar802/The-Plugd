@@ -2,26 +2,26 @@ import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import PlugdHomePageClient from "@/components/PlugdHomePageClient";
-import { getAllCategories, getAllPlaybooks } from "@/lib/categories";
+import { getAllPlaybooks } from "@/lib/categories";
 import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 
 export const metadata: Metadata = {
-  title: "Plugd — Your next move starts here",
+  title: "Plugd — Discover Practical Playbooks",
   description:
-    "Explore practical Playbooks for AI, online businesses, freelancing, digital products, and more. Step-by-step guides built for real-world execution.",
+    "Discover practical, outcome-focused Playbooks across AI, online business, freelancing, digital products, and more.",
   openGraph: {
-    title: "Plugd — Your next move starts here",
+    title: "Plugd — Discover Practical Playbooks",
     description:
-      "Explore practical Playbooks for AI, online businesses, freelancing, digital products, and more.",
+      "Discover practical, outcome-focused Playbooks across AI, online business, freelancing, digital products, and more.",
     url: "https://theplugd.com",
     siteName: "Plugd",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Plugd — Your next move starts here",
+    title: "Plugd — Discover Practical Playbooks",
     description:
-      "Explore practical Playbooks for AI, online businesses, freelancing, digital products, and more.",
+      "Discover practical, outcome-focused Playbooks across AI, online business, freelancing, digital products, and more.",
   },
 };
 
@@ -31,6 +31,7 @@ interface HomePageProps {
   searchParams?: Promise<{
     checkout?: string;
     lesson?: string;
+    category?: string;
   }>;
 }
 
@@ -59,14 +60,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     console.error("[HOME_AUTH_CHECK_ERROR]", err);
   }
 
-  const categories = getAllCategories();
   const playbooks = getAllPlaybooks();
+  const initialCategorySlug = resolvedSearchParams.category || "all";
 
   return (
     <PlugdHomePageClient
-      categories={categories}
       playbooks={playbooks}
       hasAccess={hasAccess}
+      initialCategorySlug={initialCategorySlug}
     />
   );
 }
