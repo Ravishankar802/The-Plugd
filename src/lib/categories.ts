@@ -25,6 +25,7 @@ export interface PlaybookSummary {
   badge?: string;
   accentColor?: string;
   thumbnail?: string;
+  publishedAt?: string;
 }
 
 export const CATEGORIES: Category[] = [
@@ -121,6 +122,7 @@ export const DATING_PLAYBOOK_SUMMARY: PlaybookSummary = {
   badge: "Available Now",
   accentColor: "#f97316",
   thumbnail: "/dating-couple-collage.png",
+  publishedAt: "2026-10-18T10:00:00Z",
 };
 
 export const PLAYBOOKS: PlaybookSummary[] = [DATING_PLAYBOOK_SUMMARY];

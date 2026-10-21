@@ -6,7 +6,34 @@ interface PlaybookFeedCardProps {
   playbook: PlaybookSummary;
 }
 
+function formatRelativeTime(dateString?: string): string {
+  if (!dateString) return "Recently added";
+  try {
+    const published = new Date(dateString).getTime();
+    const now = Date.now();
+    const diffSeconds = Math.max(0, Math.floor((now - published) / 1000));
+
+    if (diffSeconds < 60) return "just now";
+    const diffMinutes = Math.floor(diffSeconds / 60);
+    if (diffMinutes < 60) return `${diffMinutes} minute${diffMinutes === 1 ? "" : "s"} ago`;
+    const diffHours = Math.floor(diffMinutes / 60);
+    if (diffHours < 24) return `${diffHours} hour${diffHours === 1 ? "" : "s"} ago`;
+    const diffDays = Math.floor(diffHours / 24);
+    if (diffDays < 7) return `${diffDays} day${diffDays === 1 ? "" : "s"} ago`;
+    const diffWeeks = Math.floor(diffDays / 7);
+    if (diffWeeks < 5) return `${diffWeeks} week${diffWeeks === 1 ? "" : "s"} ago`;
+    const diffMonths = Math.floor(diffDays / 30);
+    if (diffMonths < 12) return `${diffMonths} month${diffMonths === 1 ? "" : "s"} ago`;
+    const diffYears = Math.floor(diffDays / 365);
+    return `${diffYears} year${diffYears === 1 ? "" : "s"} ago`;
+  } catch {
+    return "Recently added";
+  }
+}
+
 export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
+  const relativeTime = formatRelativeTime(playbook.publishedAt);
+
   return (
     <Link
       href={playbook.href}
@@ -38,20 +65,20 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
           </div>
         )}
 
-        {/* Modules & Lessons Overlay Badge (Bottom Right — YouTube Timestamp Style) */}
-        <div className="absolute bottom-2 right-2 rounded bg-black/85 px-2 py-0.5 text-[11px] font-mono font-medium text-white tracking-wide shadow-xs pointer-events-none">
+        {/* Modules & Lessons Count Overlay (Bottom Left) */}
+        <div className="absolute bottom-2 left-2 rounded bg-black/80 backdrop-blur-xs px-2 py-0.5 text-[11px] font-mono font-medium text-white tracking-wide shadow-xs pointer-events-none">
           {playbook.modulesCount} MODS · {playbook.lessonsCount} LESSONS
         </div>
 
-        {/* Price Tag Overlay (Top Left) */}
-        <div className="absolute top-2 left-2 rounded bg-[#1c1917]/90 backdrop-blur-xs px-2.5 py-0.5 text-xs font-bold font-mono text-white shadow-xs pointer-events-none">
+        {/* High-Contrast Price Badge (Bottom Right — YouTube Duration Position) */}
+        <div className="absolute bottom-2 right-2 rounded bg-white/95 text-[#1c1917] px-2 py-0.5 text-[11px] sm:text-xs font-bold font-mono tracking-tight shadow-xs border border-black/10 pointer-events-none">
           ${playbook.price} USD
         </div>
       </div>
 
-      {/* Info Row Below Thumbnail */}
-      <div className="mt-3.5 flex items-start gap-3">
-        {/* Playbook / Brand Avatar */}
+      {/* YouTube-Style Info Row Below Thumbnail */}
+      <div className="mt-3 flex items-start gap-3">
+        {/* Playbook Icon on the Left */}
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white border border-[#e7e5e4] shadow-xs overflow-hidden mt-0.5">
           <Image
             src="/icon.png"
@@ -62,20 +89,17 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
           />
         </div>
 
-        {/* Title & Metadata */}
+        {/* Title and Metadata on the Right (Horizontally Aligned Column) */}
         <div className="flex-1 min-w-0">
           <h3 className="text-[15px] sm:text-[15.5px] font-semibold text-[#1c1917] leading-snug line-clamp-2 group-hover:text-[#f97316] transition-colors">
             {playbook.title}
           </h3>
 
+          {/* Category · Relative Publication Time */}
           <div className="mt-1 flex items-center gap-1.5 text-[13px] text-[#57534e]">
             <span className="font-medium text-[#44403c]">{playbook.categoryName}</span>
-            <span className="text-[#a8a29e]">•</span>
-            <span>${playbook.price} one-time</span>
-          </div>
-
-          <div className="mt-0.5 text-[12px] text-[#78716c]">
-            {playbook.hoursOfMaterial} · Slide & Written format
+            <span className="text-[#a8a29e]">·</span>
+            <span>{relativeTime}</span>
           </div>
         </div>
       </div>
