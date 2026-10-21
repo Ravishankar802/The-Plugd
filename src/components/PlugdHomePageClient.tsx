@@ -113,8 +113,8 @@ export default function PlugdHomePageClient({
         />
 
         {/* YouTube-Inspired Horizontal Category Chips Bar */}
-        <div className="sticky top-[56px] z-40 bg-[#f6f6f4]/95 backdrop-blur-md border-b border-[#e7e5e4] py-2.5 px-3 sm:px-6">
-          <div className="mx-auto max-w-[1600px] relative flex items-center">
+        <div className="sticky top-[56px] z-40 bg-[#f6f6f4]/95 backdrop-blur-md border-b border-[#e7e5e4] py-2.5">
+          <div className="mx-auto max-w-[1600px] px-3 sm:px-6 lg:px-8 relative flex items-center">
             {/* Scrollable Chips Container */}
             <div
               ref={chipsContainerRef}
@@ -153,7 +153,7 @@ export default function PlugdHomePageClient({
 
             {/* Subtle Right-Edge Fade Indicator */}
             <div
-              className={`pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#f6f6f4] via-[#f6f6f4]/80 to-transparent transition-opacity duration-200 z-10 ${
+              className={`pointer-events-none absolute right-3 sm:right-6 lg:right-8 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#f6f6f4] via-[#f6f6f4]/80 to-transparent transition-opacity duration-200 z-10 ${
                 canScrollRight ? "opacity-100" : "opacity-0"
               }`}
               aria-hidden="true"
