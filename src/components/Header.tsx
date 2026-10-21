@@ -10,14 +10,134 @@ export default function Header({
   onOpenCheckout,
   isLanding = false,
   hasAccess = false,
+  variant,
 }: {
   activeCourse?: string;
   onOpenCheckout?: (slug?: "men" | "women") => void;
   isLanding?: boolean;
   hasAccess?: boolean;
+  variant?: "platform" | "dating" | "app";
 }) {
+  const mode = variant || (isLanding ? "dating" : "app");
 
-  if (isLanding) {
+  // Platform Header (for Homepage & Category pages)
+  if (mode === "platform") {
+    return (
+      <header className="sticky top-0 z-40 w-full border-b border-[#e7e5e4] bg-[#f6f6f4]/95 backdrop-blur-md transition-all">
+        <div className="mx-auto flex h-[68px] max-w-[1200px] items-center justify-between px-6">
+          {/* Brand Logo & Lockup */}
+          <Link
+            href="/"
+            className="group inline-flex items-center gap-2.5 text-[#1c1917] transition-colors"
+            aria-label="Plugd home"
+          >
+            <Image
+              src="/icon.png"
+              alt="Plugd"
+              width={28}
+              height={28}
+              className="rounded-md shrink-0"
+              priority
+            />
+            <span className="text-[17px] font-bold tracking-tight text-[#1c1917] transition-colors group-hover:text-[#78716c]">
+              Plugd
+            </span>
+          </Link>
+
+          {/* Right Navigation */}
+          <div className="flex items-center gap-7">
+            {/* Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-6" aria-label="Main Navigation">
+              <a
+                href="/#categories"
+                className="text-[14px] font-medium text-[#1c1917] transition-colors hover:text-[#78716c]"
+              >
+                Categories
+              </a>
+              <a
+                href="/#playbooks"
+                className="text-[14px] font-medium text-[#1c1917] transition-colors hover:text-[#78716c]"
+              >
+                Playbooks
+              </a>
+              <a
+                href="/#why-plugd"
+                className="text-[14px] font-medium text-[#1c1917] transition-colors hover:text-[#78716c]"
+              >
+                Why Plugd
+              </a>
+              {hasAccess ? (
+                <Link
+                  href="/my-playbooks"
+                  className="text-[14px] font-medium text-[#1c1917] transition-colors hover:text-[#78716c]"
+                >
+                  My Playbooks
+                </Link>
+              ) : (
+                <Link
+                  href="/login"
+                  className="text-[14px] font-medium text-[#1c1917] transition-colors hover:text-[#78716c]"
+                >
+                  Log in
+                </Link>
+              )}
+            </nav>
+
+            {/* Header Action Button */}
+            <div className="hidden sm:block">
+              {hasAccess ? (
+                <button
+                  type="button"
+                  onClick={performLogout}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-3.5 py-1.5 text-xs font-mono font-semibold uppercase tracking-wider text-[#78716c] hover:border-[#1c1917] hover:text-[#1c1917] transition-colors shadow-xs cursor-pointer"
+                  title="Log out"
+                >
+                  <LogOut className="h-3.5 w-3.5 text-[#78716c]" />
+                  <span>Log out</span>
+                </button>
+              ) : (
+                <a
+                  href="/#playbooks"
+                  className="btn btn-surface btn-small cursor-pointer"
+                >
+                  <span className="btn-dot" aria-hidden="true" />
+                  <span>Explore Playbooks</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Pills */}
+        <nav
+          className="flex lg:hidden overflow-x-auto gap-2 px-6 pb-3 pt-0 no-scrollbar"
+          aria-label="Sections"
+        >
+          <a href="/#categories" className="nav-pill">
+            Categories
+          </a>
+          <a href="/#playbooks" className="nav-pill">
+            Playbooks
+          </a>
+          <a href="/#why-plugd" className="nav-pill">
+            Why Plugd
+          </a>
+          {hasAccess ? (
+            <Link href="/my-playbooks" className="nav-pill">
+              My Playbooks
+            </Link>
+          ) : (
+            <Link href="/login" className="nav-pill">
+              Log in
+            </Link>
+          )}
+        </nav>
+      </header>
+    );
+  }
+
+  // Dating Playbook Landing Header
+  if (mode === "dating") {
     return (
       <header className="sticky top-0 z-40 w-full border-b border-[#e7e5e4] bg-[#f6f6f4]/95 backdrop-blur-md transition-all">
         <div className="mx-auto flex h-[68px] max-w-[1200px] items-center justify-between px-6">
@@ -116,7 +236,7 @@ export default function Header({
     );
   }
 
-  // Non-Landing Header (e.g. /learn/men, presentations, etc.)
+  // Non-Landing Header (e.g. /learn/men, presentations, login, etc.)
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[#e7e5e4] bg-[#faf8f5]/95 backdrop-blur-md transition-all">
       <div className="mx-auto flex h-[68px] max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -125,18 +245,18 @@ export default function Header({
           <Link
             href="/"
             className="group inline-flex items-center gap-2.5 text-[#1c1917] transition-colors"
-            aria-label="The Dating Playbook, home"
+            aria-label="Plugd, home"
           >
             <Image
               src="/icon.png"
-              alt="The Dating Playbook"
+              alt="Plugd"
               width={28}
               height={28}
               className="rounded-md shrink-0"
               priority
             />
             <span className="text-[16px] font-semibold tracking-[-0.01em] text-[#1c1917] transition-colors group-hover:text-[#78716c]">
-              The Dating Playbook
+              {activeCourse ? "The Dating Playbook" : "Plugd"}
             </span>
           </Link>
         </div>

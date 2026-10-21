@@ -22,21 +22,24 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://theplugd.com"),
-  title: "The Dating Playbook — Everything you need to get a girl",
+  title: {
+    default: "Plugd — Your next move starts here",
+    template: "%s · Plugd",
+  },
   description:
-    "Learn how to attract women, build confidence, and get the girl you want. Practical lessons on attraction, confidence, flirting, texting, and dating.",
+    "Explore practical Playbooks for AI, online businesses, freelancing, digital products, and more.",
   openGraph: {
-    title: "The Dating Playbook — Everything you need to get a girl",
+    title: "Plugd — Your next move starts here",
     description:
-      "Learn how to attract women, build confidence, and get the girl you want. Instant digital access. One-time payment. Lifetime access.",
+      "Explore practical Playbooks for AI, online businesses, freelancing, digital products, and more.",
     url: "https://theplugd.com",
-    siteName: "The Dating Playbook",
+    siteName: "Plugd",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Dating Playbook",
-    description: "Everything you need to get a girl.",
+    title: "Plugd — Your next move starts here",
+    description: "Explore practical Playbooks for AI, online businesses, freelancing, digital products, and more.",
   },
   icons: {
     icon: [

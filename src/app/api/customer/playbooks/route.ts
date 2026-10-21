@@ -46,6 +46,8 @@ export async function GET() {
       playbooks.push({
         id: p.id,
         courseSlug: "men",
+        categorySlug: "dating",
+        categoryName: "Dating",
         title: course.title,
         shortTitle: course.shortTitle,
         audience: course.audience,
@@ -71,6 +73,8 @@ export async function GET() {
       playbooks.push({
         id: "comp-dating-playbook",
         courseSlug: "men",
+        categorySlug: "dating",
+        categoryName: "Dating",
         title: course.title,
         shortTitle: course.shortTitle,
         audience: course.audience,

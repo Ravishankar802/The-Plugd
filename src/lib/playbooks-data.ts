@@ -127,6 +127,8 @@ export interface Module {
 export interface Course {
   id: string;
   slug: "men" | "women";
+  categorySlug?: string;
+  categoryName?: string;
   title: string;
   shortTitle: string;
   audience: "Men" | "Women";
@@ -259,6 +261,8 @@ const ALL_PLAYBOOK_MODULES: Module[] = [
 export const DATING_PLAYBOOK_COURSE: Course = {
   id: "dating-playbook",
   slug: "men",
+  categorySlug: "dating",
+  categoryName: "Dating",
   title: "The Dating Playbook",
   shortTitle: "The Dating Playbook",
   audience: "Men",

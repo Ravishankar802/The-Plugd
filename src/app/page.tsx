@@ -1,22 +1,50 @@
 import { Metadata } from "next";
 import { cookies } from "next/headers";
-import HomePageClient from "@/components/HomePageClient";
+import { redirect } from "next/navigation";
+import PlugdHomePageClient from "@/components/PlugdHomePageClient";
+import { getAllCategories, getAllPlaybooks } from "@/lib/categories";
 import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 
 export const metadata: Metadata = {
-  title: "The Dating Playbook — Everything you need to get a girl",
+  title: "Plugd — Your next move starts here",
   description:
-    "Learn how to attract women, build confidence, and get the girl you want. Practical lessons on attraction, confidence, flirting, texting, and dating.",
+    "Explore practical Playbooks for AI, online businesses, freelancing, digital products, and more. Step-by-step guides built for real-world execution.",
   openGraph: {
-    title: "The Dating Playbook — Everything you need to get a girl",
+    title: "Plugd — Your next move starts here",
     description:
-      "Learn how to attract women, build confidence, and get the girl you want. Instant digital access. One-time payment. Lifetime access.",
+      "Explore practical Playbooks for AI, online businesses, freelancing, digital products, and more.",
+    url: "https://theplugd.com",
+    siteName: "Plugd",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Plugd — Your next move starts here",
+    description:
+      "Explore practical Playbooks for AI, online businesses, freelancing, digital products, and more.",
   },
 };
 
 export const dynamic = "force-dynamic";
 
-export default async function HomePage() {
+interface HomePageProps {
+  searchParams?: Promise<{
+    checkout?: string;
+    lesson?: string;
+  }>;
+}
+
+export default async function HomePage({ searchParams }: HomePageProps) {
+  const resolvedSearchParams = (await searchParams) || {};
+
+  // If redirecting from a course or protected link with checkout=true, route to The Dating Playbook sales page checkout
+  if (resolvedSearchParams.checkout === "true") {
+    const lessonParam = resolvedSearchParams.lesson
+      ? `&lesson=${encodeURIComponent(resolvedSearchParams.lesson)}`
+      : "";
+    redirect(`/men?checkout=true${lessonParam}`);
+  }
+
   let hasAccess = false;
   try {
     const cookieStore = await cookies();
@@ -31,5 +59,14 @@ export default async function HomePage() {
     console.error("[HOME_AUTH_CHECK_ERROR]", err);
   }
 
-  return <HomePageClient hasAccess={hasAccess} />;
+  const categories = getAllCategories();
+  const playbooks = getAllPlaybooks();
+
+  return (
+    <PlugdHomePageClient
+      categories={categories}
+      playbooks={playbooks}
+      hasAccess={hasAccess}
+    />
+  );
 }

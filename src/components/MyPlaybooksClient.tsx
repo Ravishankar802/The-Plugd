@@ -131,9 +131,15 @@ export default function MyPlaybooksClient() {
             >
               <div>
                 <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                  <div className="inline-flex items-center gap-2 rounded-full bg-[#fbf5ef] border border-[#fed7aa] px-3.5 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[#f97316]">
-                    <Sparkles className="h-3 w-3" />
-                    <span>10 MODULES · 69 LESSONS</span>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#fed7aa] bg-[#fff7ed] px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[#f97316]">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#f97316]" />
+                      <span>DATING</span>
+                    </span>
+                    <div className="inline-flex items-center gap-2 rounded-full bg-[#fbf5ef] border border-[#fed7aa] px-3.5 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[#f97316]">
+                      <Sparkles className="h-3 w-3" />
+                      <span>10 MODULES · 69 LESSONS</span>
+                    </div>
                   </div>
                   <span className="font-mono text-xs font-semibold text-[#78716c]">
                     {item.completedCount} / {item.totalLessons || 69} Lessons Completed
