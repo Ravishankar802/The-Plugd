@@ -4,49 +4,25 @@ import { Star } from "lucide-react";
 import type { PlaybookSummary } from "@/lib/categories";
 
 /**
- * Reusable Playbook Card Component (Matches Reference Product Card Layout)
+ * Reusable Playbook Card Component
  * Structure:
  * 1. Thumbnail without price overlay
- * 2. Title aligned to the thumbnail's left edge, without a separate Playbook icon
- * 3. Category & publication date beneath title (no separator dot: "Dating     3 days ago")
- * 4. Optional Bestseller/rating metadata row (Bestseller badge, 4.7 star rating, 1,201 ratings)
- * 5. Price & Add to cart row: Prominent $3 current price, struck-through $9 comparison price, and Add to cart button to the right
+ * 2. Playbook title aligned to the thumbnail's left edge
+ * 3. Category beneath the title, without publication date
+ * 4. Optional Bestseller badge, rating, and rating count
+ * 5. Current price ($3.00), struck-through comparison price ($9.00), and Add to cart button
+ * 6. Full-card outline with rounded corners
+ * 7. Subtle animated lift and highlight on hover (with reduced-motion support)
  */
 interface PlaybookFeedCardProps {
   playbook: PlaybookSummary;
 }
 
-function formatRelativeTime(dateString?: string): string {
-  if (!dateString) return "Recently added";
-  try {
-    const published = new Date(dateString).getTime();
-    const now = Date.now();
-    const diffSeconds = Math.max(0, Math.floor((now - published) / 1000));
-
-    if (diffSeconds < 60) return "just now";
-    const diffMinutes = Math.floor(diffSeconds / 60);
-    if (diffMinutes < 60) return `${diffMinutes} minute${diffMinutes === 1 ? "" : "s"} ago`;
-    const diffHours = Math.floor(diffMinutes / 60);
-    if (diffHours < 24) return `${diffHours} hour${diffHours === 1 ? "" : "s"} ago`;
-    const diffDays = Math.floor(diffHours / 24);
-    if (diffDays < 7) return `${diffDays} day${diffDays === 1 ? "" : "s"} ago`;
-    const diffWeeks = Math.floor(diffDays / 7);
-    if (diffWeeks < 5) return `${diffWeeks} week${diffWeeks === 1 ? "" : "s"} ago`;
-    const diffMonths = Math.floor(diffDays / 30);
-    if (diffMonths < 12) return `${diffMonths} month${diffMonths === 1 ? "" : "s"} ago`;
-    const diffYears = Math.floor(diffDays / 365);
-    return `${diffYears} year${diffYears === 1 ? "" : "s"} ago`;
-  } catch {
-    return "Recently added";
-  }
-}
-
 export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
-  const relativeTime = formatRelativeTime(playbook.publishedAt);
   const formattedPrice = playbook.price ? Number(playbook.price).toFixed(2) : "3.00";
 
   return (
-    <div className="group relative flex flex-col justify-between rounded-2xl bg-white border border-[#e7e5e4] p-3 sm:p-3.5 shadow-2xs hover:border-[#d6d3d1] hover:shadow-xs transition-all duration-200">
+    <div className="group relative flex flex-col justify-between rounded-2xl bg-white border border-[#e7e5e4] p-3 sm:p-3.5 shadow-2xs hover:border-[#d6d3d1] hover:shadow-md motion-safe:hover:-translate-y-1 motion-reduce:hover:transform-none transition-all duration-200 ease-out">
       {/* Clickable Card Body linking to Playbook */}
       <Link
         href={playbook.href}
@@ -79,16 +55,15 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
           )}
         </div>
 
-        {/* Title and Metadata (Left-aligned with thumbnail, no circular icon) */}
+        {/* Title and Category (Left-aligned with thumbnail, no circular icon) */}
         <div className="mt-3">
           <h3 className="text-[15px] sm:text-[15.5px] font-semibold text-[#1c1917] leading-snug line-clamp-2 group-hover:text-[#f97316] transition-colors">
             {playbook.title}
           </h3>
 
-          {/* Category and Publication Date (No separator dot) */}
-          <div className="mt-1 flex items-center gap-2 text-[13px] text-[#57534e]">
+          {/* Category beneath Title (Publication date removed) */}
+          <div className="mt-1 text-[13px] text-[#57534e]">
             <span className="font-medium text-[#44403c]">{playbook.categoryName}</span>
-            <span>{relativeTime}</span>
           </div>
 
           {/* Optional Bestseller & Ratings Row */}
@@ -120,8 +95,8 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
         </div>
       </Link>
 
-      {/* Price and Add to Cart Row (Reduced vertical gap, balanced spacing) */}
-      <div className="mt-2.5 sm:mt-3 flex items-center justify-between gap-2">
+      {/* Price and Add to Cart Row (With subtle increased breathing room below metadata) */}
+      <div className="mt-4 sm:mt-5 flex items-center justify-between gap-2">
         <div className="flex items-baseline gap-2">
           {/* Prominent Current Price ($3.00) */}
           <span className="text-[17px] sm:text-[18px] font-bold text-[#1c1917] tracking-tight">
