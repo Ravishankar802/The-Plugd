@@ -4,7 +4,11 @@ import type { PlaybookSummary } from "@/lib/categories";
 
 /**
  * YouTube-style Playbook Card Component
- * Refined layout: Bottom-right high-contrast price badge, aligned icon & title, and category/relative date metadata
+ * Refined layout:
+ * 1. Price badge enlarged in bottom-right corner of thumbnail (YouTube duration style)
+ * 2. Modules & lessons badge removed from thumbnail
+ * 3. Category & relative date on same line without separator dot (e.g. "Dating  3 days ago")
+ * 4. Subtle, rounded card-level hover highlight extending behind thumbnail and info row
  */
 interface PlaybookFeedCardProps {
   playbook: PlaybookSummary;
@@ -41,18 +45,18 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
   return (
     <Link
       href={playbook.href}
-      className="group flex flex-col focus:outline-none cursor-pointer"
+      className="group flex flex-col p-2.5 -m-2.5 rounded-2xl transition-colors duration-150 hover:bg-black/[0.04] focus-visible:bg-black/[0.04] focus:outline-none cursor-pointer"
       aria-label={`${playbook.title} — ${playbook.categoryName} Playbook`}
     >
       {/* 16:9 Thumbnail Container */}
-      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#e7e5e4] border border-[#e7e5e4] shadow-xs group-hover:shadow-md transition-all duration-200">
+      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#e7e5e4] border border-[#e7e5e4] shadow-xs">
         {playbook.thumbnail ? (
           <Image
             src={playbook.thumbnail}
             alt={playbook.title}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-            className="object-cover object-center transition-transform duration-200 group-hover:scale-[1.02]"
+            className="object-cover object-center"
             priority
           />
         ) : (
@@ -69,13 +73,8 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
           </div>
         )}
 
-        {/* Modules & Lessons Count Overlay (Bottom Left) */}
-        <div className="absolute bottom-2 left-2 rounded bg-black/80 backdrop-blur-xs px-2 py-0.5 text-[11px] font-mono font-medium text-white tracking-wide shadow-xs pointer-events-none">
-          {playbook.modulesCount} MODS · {playbook.lessonsCount} LESSONS
-        </div>
-
-        {/* High-Contrast Price Badge (Bottom Right — YouTube Duration Position) */}
-        <div className="absolute bottom-2 right-2 rounded bg-white/95 text-[#1c1917] px-2 py-0.5 text-[11px] sm:text-xs font-bold font-mono tracking-tight shadow-xs border border-black/10 pointer-events-none">
+        {/* Noticeably Larger High-Contrast Price Badge (Bottom Right — YouTube Duration Position) */}
+        <div className="absolute bottom-2.5 right-2.5 rounded-md bg-white text-[#1c1917] px-2.5 py-1 text-xs sm:text-[13px] font-bold font-mono tracking-tight shadow-sm border border-black/15 pointer-events-none leading-none">
           ${playbook.price} USD
         </div>
       </div>
@@ -99,10 +98,9 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
             {playbook.title}
           </h3>
 
-          {/* Category · Relative Publication Time */}
-          <div className="mt-1 flex items-center gap-1.5 text-[13px] text-[#57534e]">
+          {/* Category & Relative Publication Time (No Separator Dot) */}
+          <div className="mt-1 flex items-center gap-2 text-[13px] text-[#57534e]">
             <span className="font-medium text-[#44403c]">{playbook.categoryName}</span>
-            <span className="text-[#a8a29e]">·</span>
             <span>{relativeTime}</span>
           </div>
         </div>
