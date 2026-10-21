@@ -43,9 +43,10 @@ function formatRelativeTime(dateString?: string): string {
 
 export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
   const relativeTime = formatRelativeTime(playbook.publishedAt);
+  const formattedPrice = playbook.price ? Number(playbook.price).toFixed(2) : "3.00";
 
   return (
-    <div className="group relative flex flex-col justify-between p-2.5 -m-2.5 rounded-2xl transition-colors duration-150 hover:bg-black/[0.04] focus-within:bg-black/[0.04]">
+    <div className="group relative flex flex-col justify-between rounded-2xl bg-white border border-[#e7e5e4] p-3 sm:p-3.5 shadow-2xs hover:border-[#d6d3d1] hover:shadow-xs transition-all duration-200">
       {/* Clickable Card Body linking to Playbook */}
       <Link
         href={playbook.href}
@@ -53,7 +54,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
         aria-label={`${playbook.title} — ${playbook.categoryName} Playbook`}
       >
         {/* 16:9 Thumbnail Container (Without price badge overlay) */}
-        <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#e7e5e4] border border-[#e7e5e4] shadow-xs">
+        <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#e7e5e4] border border-[#e7e5e4]/80">
           {playbook.thumbnail ? (
             <Image
               src={playbook.thumbnail}
@@ -119,16 +120,16 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
         </div>
       </Link>
 
-      {/* Price and Add to Cart Row */}
-      <div className="mt-3.5 flex items-center justify-between gap-2 pt-2.5 border-t border-[#e7e5e4]/70">
+      {/* Price and Add to Cart Row (Reduced vertical gap, balanced spacing) */}
+      <div className="mt-2.5 sm:mt-3 flex items-center justify-between gap-2">
         <div className="flex items-baseline gap-2">
-          {/* Prominent Current Price */}
+          {/* Prominent Current Price ($3.00) */}
           <span className="text-[17px] sm:text-[18px] font-bold text-[#1c1917] tracking-tight">
-            ${playbook.price}
+            ${formattedPrice}
           </span>
-          {/* Original Muted Price with Strikethrough */}
+          {/* Original Muted Price with Strikethrough ($9.00) */}
           <span className="text-[13px] sm:text-[13.5px] text-[#a8a29e] line-through font-medium">
-            $9
+            $9.00
           </span>
         </div>
 
