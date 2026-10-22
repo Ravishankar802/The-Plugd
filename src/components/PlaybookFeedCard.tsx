@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Star } from "lucide-react";
@@ -12,7 +11,7 @@ import type { PlaybookSummary } from "@/lib/categories";
  * 1. 16:9 Thumbnail container
  * 2. Playbook title and category label
  * 3. Optional Bestseller badge, rating, and rating count
- * 4. Card footer: Price ($3.00 / $9.00) on left, Add to cart + Buy buttons on right
+ * 4. Card footer: Price ($3.00 / $9.00) on left, Add to cart button on right
  * 5. Full-card outline with rounded corners and subtle hover lift
  */
 interface PlaybookFeedCardProps {
@@ -20,36 +19,7 @@ interface PlaybookFeedCardProps {
 }
 
 export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
-  const [isBuying, setIsBuying] = useState(false);
   const formattedPrice = playbook.price ? Number(playbook.price).toFixed(2) : "3.00";
-
-  const handleBuy = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (isBuying) return;
-
-    try {
-      setIsBuying(true);
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ courseSlug: playbook.slug }),
-      });
-
-      const data = await res.json();
-      if (data.checkoutUrl) {
-        window.location.href = data.checkoutUrl;
-        return;
-      }
-      // Fallback to playbook page with checkout query param
-      window.location.href = `${playbook.href}?checkout=true`;
-    } catch (err) {
-      console.error("[BUY_NOW_ERROR]", err);
-      window.location.href = `${playbook.href}?checkout=true`;
-    } finally {
-      setIsBuying(false);
-    }
-  };
 
   return (
     <div className="group relative flex flex-col justify-between rounded-2xl bg-white border border-[#e7e5e4] p-3 sm:p-3.5 shadow-2xs hover:border-[#d6d3d1] hover:shadow-md motion-safe:hover:-translate-y-1 motion-reduce:hover:transform-none transition-all duration-200 ease-out">
@@ -115,7 +85,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
         </div>
       </Link>
 
-      {/* Price and Card Action Buttons: Add to cart & Buy side-by-side */}
+      {/* Price and Add to cart Action */}
       <div className="mt-4 sm:mt-5 flex items-center justify-between gap-2 pt-2 border-t border-[#f5f4f0]">
         <div className="flex items-baseline gap-1.5 shrink-0">
           {/* Prominent Current Price ($3.00) */}
@@ -128,24 +98,14 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
           </span>
         </div>
 
-        {/* Action Buttons: Add to cart & Buy */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          <Link
-            href={playbook.href}
-            onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center justify-center rounded-lg border border-[#2563eb] bg-white px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-[#2563eb] hover:bg-[#eff6ff] transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer"
-          >
-            Add to cart
-          </Link>
-          <button
-            type="button"
-            onClick={handleBuy}
-            disabled={isBuying}
-            className="inline-flex items-center justify-center rounded-lg bg-[#2563eb] px-3 sm:px-3.5 py-1.5 text-xs font-semibold text-white hover:bg-[#1d4ed8] active:bg-[#1e40af] disabled:opacity-60 transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer"
-          >
-            {isBuying ? "..." : "Buy"}
-          </button>
-        </div>
+        {/* Add to cart Action Button */}
+        <Link
+          href={playbook.href}
+          onClick={(e) => e.stopPropagation()}
+          className="inline-flex items-center justify-center rounded-lg border border-[#2563eb] bg-white px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-[#2563eb] hover:bg-[#eff6ff] transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
+        >
+          Add to cart
+        </Link>
       </div>
     </div>
   );
