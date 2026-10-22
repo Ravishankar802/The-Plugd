@@ -1,3 +1,5 @@
+import { ALL_PLAYBOOK_SUMMARIES } from "./playbooks-catalog";
+
 export interface Category {
   id: string;
   name: string;
@@ -185,7 +187,7 @@ export const DATING_PLAYBOOK_SUMMARY: PlaybookSummary = {
   publishedAt: "2026-10-18T10:00:00Z",
 };
 
-export const PLAYBOOKS: PlaybookSummary[] = [DATING_PLAYBOOK_SUMMARY];
+export const PLAYBOOKS: PlaybookSummary[] = ALL_PLAYBOOK_SUMMARIES;
 
 export function getAllCategories(): Category[] {
   return [...CATEGORIES].sort((a, b) => a.displayOrder - b.displayOrder);

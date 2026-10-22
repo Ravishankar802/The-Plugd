@@ -21,6 +21,8 @@ import {
   BookOpen,
   Mail,
   Heart,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import Header from "@/components/Header";
 import PlaybookFeedCard from "@/components/PlaybookFeedCard";
@@ -97,6 +99,43 @@ export default function PlugdHomePageClient({
       return true;
     });
   }, [playbooks, selectedCategory, searchQuery]);
+
+  // Group playbooks by category
+  const playbooksByCategory = useMemo(() => {
+    const map: Record<string, PlaybookSummary[]> = {};
+    for (const p of playbooks) {
+      if (!map[p.categorySlug]) {
+        map[p.categorySlug] = [];
+      }
+      map[p.categorySlug].push(p);
+    }
+    return map;
+  }, [playbooks]);
+
+  // Deterministic curated trending collection (exactly 20 playbooks)
+  // Takes the flagship (#1) playbook from all 16 categories, plus #2 from the first 4 categories
+  const trendingPlaybooks = useMemo(() => {
+    const trending: PlaybookSummary[] = [];
+    const categories = CATEGORY_CHIPS.filter((c) => c.slug !== "all");
+
+    // 1. Pick the 1st playbook from each of the 16 categories (16 playbooks)
+    for (const cat of categories) {
+      const list = playbooksByCategory[cat.slug] || [];
+      if (list[0]) {
+        trending.push(list[0]);
+      }
+    }
+
+    // 2. Pick the 2nd playbook from the first 4 categories (4 playbooks) to reach exactly 20
+    for (const cat of categories.slice(0, 4)) {
+      const list = playbooksByCategory[cat.slug] || [];
+      if (list[1]) {
+        trending.push(list[1]);
+      }
+    }
+
+    return trending.slice(0, 20);
+  }, [playbooksByCategory]);
 
   const selectedChipData = CATEGORY_CHIPS.find((c) => c.slug === selectedCategory);
 
@@ -195,8 +234,51 @@ export default function PlugdHomePageClient({
             </div>
           )}
 
-          {/* YouTube-Style Video Grid Feed */}
-          {filteredPlaybooks.length > 0 ? (
+          {/* Render Default "All" View with Trending + 16 Horizontal Category Rails */}
+          {selectedCategory === "all" && !searchQuery.trim() ? (
+            <div>
+              {/* SECTION: 20 Trending Curated Playbooks */}
+              <section aria-label="Trending Playbooks">
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center gap-2.5">
+                    <Flame className="h-5 w-5 text-[#f97316] shrink-0" strokeWidth={2.5} />
+                    <h2 className="text-xl sm:text-2xl font-bold text-[#1c1917] tracking-tight">
+                      Trending Playbooks
+                    </h2>
+                  </div>
+                  <span className="text-xs font-mono text-[#78716c] font-medium">
+                    20 Curated Playbooks
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-7 sm:gap-x-5 sm:gap-y-8">
+                  {trendingPlaybooks.map((playbook) => (
+                    <PlaybookFeedCard key={`trending-${playbook.id}`} playbook={playbook} />
+                  ))}
+                </div>
+              </section>
+
+              {/* SECTION: 16 Category Horizontal Rails */}
+              <div className="mt-14 sm:mt-16 space-y-12 sm:space-y-14">
+                {CATEGORY_CHIPS.filter((c) => c.slug !== "all").map((cat) => {
+                  const catPlaybooks = playbooksByCategory[cat.slug] || [];
+                  if (catPlaybooks.length === 0) return null;
+                  return (
+                    <CategoryRail
+                      key={cat.slug}
+                      category={cat}
+                      playbooks={catPlaybooks}
+                      onSelectCategory={(slug) => {
+                        setSelectedCategory(slug);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          ) : filteredPlaybooks.length > 0 ? (
+            /* Filtered Category / Search Results in Grid Feed */
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-7 sm:gap-x-5 sm:gap-y-8">
               {filteredPlaybooks.map((playbook) => (
                 <PlaybookFeedCard key={playbook.id} playbook={playbook} />
@@ -257,5 +339,115 @@ export default function PlugdHomePageClient({
         </div>
       </footer>
     </div>
+  );
+}
+
+interface CategoryRailProps {
+  category: (typeof CATEGORY_CHIPS)[number];
+  playbooks: PlaybookSummary[];
+  onSelectCategory: (slug: string) => void;
+}
+
+function CategoryRail({
+  category,
+  playbooks,
+  onSelectCategory,
+}: CategoryRailProps) {
+  const railRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkRailScroll = () => {
+    const el = railRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 6);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 6);
+  };
+
+  useEffect(() => {
+    checkRailScroll();
+    window.addEventListener("resize", checkRailScroll);
+    return () => window.removeEventListener("resize", checkRailScroll);
+  }, [playbooks]);
+
+  const scroll = (direction: "left" | "right") => {
+    const el = railRef.current;
+    if (!el) return;
+    const scrollAmount = Math.max(el.clientWidth * 0.75, 300);
+    el.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
+  const Icon = category.icon;
+
+  return (
+    <section className="relative">
+      {/* Category Section Header */}
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2.5">
+          <Icon className="h-5 w-5 text-[#f97316] shrink-0" strokeWidth={2} />
+          <h2 className="text-xl sm:text-[22px] font-bold text-[#1c1917] tracking-tight">
+            {category.label}
+          </h2>
+        </div>
+
+        <div className="flex items-center gap-2 sm:gap-3">
+          <button
+            type="button"
+            onClick={() => onSelectCategory(category.slug)}
+            className="text-xs sm:text-sm font-semibold text-[#f97316] hover:underline cursor-pointer"
+          >
+            View all 20 →
+          </button>
+
+          {/* Left/Right Navigation Controls */}
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              onClick={() => scroll("left")}
+              disabled={!canScrollLeft}
+              aria-label={`Scroll ${category.label} left`}
+              className={`h-7 w-7 rounded-full border border-[#d6d3d1] bg-white flex items-center justify-center transition-colors cursor-pointer shadow-2xs ${
+                canScrollLeft
+                  ? "text-[#1c1917] hover:border-[#1c1917]"
+                  : "text-[#a8a29e] opacity-40 cursor-not-allowed"
+              }`}
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scroll("right")}
+              disabled={!canScrollRight}
+              aria-label={`Scroll ${category.label} right`}
+              className={`h-7 w-7 rounded-full border border-[#d6d3d1] bg-white flex items-center justify-center transition-colors cursor-pointer shadow-2xs ${
+                canScrollRight
+                  ? "text-[#1c1917] hover:border-[#1c1917]"
+                  : "text-[#a8a29e] opacity-40 cursor-not-allowed"
+              }`}
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Horizontal Scrollable Rail */}
+      <div
+        ref={railRef}
+        onScroll={checkRailScroll}
+        className="flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-3 pt-1 px-0.5"
+        role="region"
+        aria-label={`${category.label} Playbooks`}
+      >
+        {playbooks.map((playbook) => (
+          <div key={playbook.id} className="w-[280px] sm:w-[320px] shrink-0">
+            <PlaybookFeedCard playbook={playbook} />
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }

@@ -41,17 +41,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
               priority
             />
           ) : (
-            <div className="h-full w-full bg-linear-to-br from-[#1c1917] to-[#292524] p-5 flex flex-col justify-between text-white">
-              <span className="text-xs font-mono text-[#f97316] font-semibold uppercase tracking-wider">
-                {playbook.categoryName}
-              </span>
-              <div className="text-lg font-bold leading-tight">
-                {playbook.title}
-              </div>
-              <span className="text-[11px] font-mono text-[#a8a29e]">
-                Playbook Edition
-              </span>
-            </div>
+            <div className="h-full w-full bg-[#ebe8e4]" />
           )}
         </div>
 
