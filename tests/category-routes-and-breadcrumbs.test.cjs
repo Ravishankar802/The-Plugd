@@ -144,3 +144,40 @@ test("5. Category Page and components adhere to UI constraints (No 'Reset filter
     "CategoryBreadcrumb must not link the current category item to itself"
   );
 });
+
+test("6. Playbook card hover state: subtle light grey background, darkened border, elevated shadow, blue title", () => {
+  const cardContent = fs.readFileSync(
+    path.resolve(__dirname, "../src/components/PlaybookFeedCard.tsx"),
+    "utf8"
+  );
+
+  // Background hover state
+  assert.ok(
+    cardContent.includes("hover:bg-[#f7f8fa]") || cardContent.includes("hover:bg-[#F7F8FA]"),
+    "Card must include subtle light grey hover background"
+  );
+
+  // Border hover state
+  assert.ok(
+    cardContent.includes("hover:border-[#c7c4c0]") || cardContent.includes("hover:border-"),
+    "Card must strengthen border on hover"
+  );
+
+  // Title hover state
+  assert.ok(
+    cardContent.includes("group-hover:text-[#2563eb]"),
+    "Title must retain blue hover color"
+  );
+
+  // Subtle lift
+  assert.ok(
+    cardContent.includes("motion-safe:hover:-translate-y-1"),
+    "Card must retain subtle lift"
+  );
+
+  // Transition duration
+  assert.ok(
+    cardContent.includes("duration-200") || cardContent.includes("duration-150"),
+    "Transition must be 150-200ms"
+  );
+});

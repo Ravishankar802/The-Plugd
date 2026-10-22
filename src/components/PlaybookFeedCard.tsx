@@ -22,7 +22,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
   const formattedPrice = playbook.price ? Number(playbook.price).toFixed(2) : "3.00";
 
   return (
-    <div className="group relative flex flex-col justify-between rounded-2xl bg-white border border-[#e7e5e4] p-3 sm:p-3.5 shadow-2xs hover:border-[#d6d3d1] hover:shadow-md motion-safe:hover:-translate-y-1 motion-reduce:hover:transform-none transition-all duration-200 ease-out">
+    <div className="group relative flex flex-col justify-between rounded-2xl bg-white hover:bg-[#f7f8fa] border border-[#e7e5e4] hover:border-[#c7c4c0] p-3 sm:p-3.5 shadow-2xs hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_4px_8px_-2px_rgba(0,0,0,0.04)] motion-safe:hover:-translate-y-1 motion-reduce:hover:transform-none transition-all duration-200 ease-out">
       {/* Clickable Card Body linking to Playbook */}
       <Link
         href={playbook.href}
@@ -86,7 +86,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
       </Link>
 
       {/* Price and Add to cart Action */}
-      <div className="mt-4 sm:mt-5 flex items-center justify-between gap-2 pt-2 border-t border-[#f5f4f0]">
+      <div className="mt-4 sm:mt-5 flex items-center justify-between gap-2 pt-2 border-t border-[#f5f4f0] group-hover:border-[#eae8e4] transition-colors duration-200">
         <div className="flex items-baseline gap-1.5 shrink-0">
           {/* Prominent Current Price ($3.00) */}
           <span className="text-[16px] sm:text-[17px] font-bold text-[#1c1917] tracking-tight">
