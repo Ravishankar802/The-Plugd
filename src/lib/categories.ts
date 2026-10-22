@@ -187,7 +187,12 @@ export const DATING_PLAYBOOK_SUMMARY: PlaybookSummary = {
   publishedAt: "2026-10-18T10:00:00Z",
 };
 
-export const PLAYBOOKS: PlaybookSummary[] = ALL_PLAYBOOK_SUMMARIES;
+export const PLAYBOOKS: PlaybookSummary[] = [
+  DATING_PLAYBOOK_SUMMARY,
+  ...ALL_PLAYBOOK_SUMMARIES.filter(
+    (p) => p.id !== DATING_PLAYBOOK_SUMMARY.id && p.slug !== DATING_PLAYBOOK_SUMMARY.slug
+  ),
+];
 
 export function getAllCategories(): Category[] {
   return [...CATEGORIES].sort((a, b) => a.displayOrder - b.displayOrder);
