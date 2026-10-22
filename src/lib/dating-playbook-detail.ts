@@ -127,7 +127,6 @@ export const DATING_PLAYBOOK_DETAIL: PlaybookDetailData = {
   instructorCourses: 1,
   lastUpdated: "10/2026",
   language: "English",
-  subtitles: "English [Auto]",
   thumbnail: "/dating-couple-collage.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 10,
@@ -151,9 +150,7 @@ export const DATING_PLAYBOOK_DETAIL: PlaybookDetailData = {
     "Relationships",
   ],
   requirements: [
-    "No prior dating experience or confidence required — the curriculum starts from fundamentals.",
-    "A computer, tablet, or smartphone with an internet connection to view the slide lessons.",
-    "An open mind and genuine willingness to practise real-world social skills and honest communication.",
+    "No requirements.",
   ],
   descriptionSections: {
     intro: [
@@ -260,11 +257,6 @@ export const DATING_PLAYBOOK_DETAIL: PlaybookDetailData = {
       question: "Will I get lifetime access?",
       answer:
         "Yes. Your $3 purchase gives you permanent lifetime access to The Dating Playbook, including all future lesson updates.",
-    },
-    {
-      question: "What is your refund policy?",
-      answer:
-        "We want you to be completely satisfied with your purchase. If you have any issues accessing or using the playbook, contact our support team and we will assist you immediately.",
     },
   ],
 };

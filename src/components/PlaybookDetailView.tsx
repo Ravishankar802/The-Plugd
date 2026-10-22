@@ -205,35 +205,35 @@ export default function PlaybookDetailView({
         </div>
       </div>
 
-      {/* SECTION: UDEMY-STYLE HERO (Dark background) */}
-      <section className="bg-[#1c1d1f] text-white pt-6 pb-8 lg:pt-8 lg:pb-10 relative overflow-hidden">
+      {/* SECTION: HERO (Strong, Clean Off-White Background) */}
+      <section className="bg-[#f6f6f4] text-[#1c1917] border-b border-[#e7e5e4] pt-6 pb-8 lg:pt-8 lg:pb-10 relative overflow-hidden">
         <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
           <div className="lg:w-[65%] xl:w-[68%] pr-0 lg:pr-8">
             {/* Breadcrumb Navigation */}
-            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs sm:text-sm mb-3 font-semibold text-[#cec0fc]">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs sm:text-sm mb-3 font-semibold text-[#5022c3]">
               <Link href="/" className="hover:underline">
                 Plugd
               </Link>
-              <span className="text-zinc-500 font-normal">›</span>
+              <span className="text-[#a8a29e] font-normal">›</span>
               <Link
                 href={`/categories/${playbook.categorySlug}`}
                 className="hover:underline"
               >
                 {playbook.categoryName}
               </Link>
-              <span className="text-zinc-500 font-normal">›</span>
-              <span className="text-zinc-300 font-normal truncate max-w-[200px] sm:max-w-none">
+              <span className="text-[#a8a29e] font-normal">›</span>
+              <span className="text-[#57534e] font-normal truncate max-w-[200px] sm:max-w-none">
                 {playbook.title}
               </span>
             </nav>
 
             {/* Playbook Title */}
-            <h1 className="text-2xl sm:text-3xl lg:text-[34px] font-bold text-white tracking-tight leading-[1.2] mt-2">
+            <h1 className="text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#1c1917] tracking-tight leading-[1.2] mt-2">
               {playbook.title}
             </h1>
 
             {/* Short Subtitle / Description */}
-            <p className="mt-3 text-base sm:text-lg text-zinc-200 leading-relaxed max-w-3xl">
+            <p className="mt-3 text-base sm:text-lg text-[#44403c] leading-relaxed max-w-3xl">
               {playbook.description}
             </p>
 
@@ -246,7 +246,7 @@ export default function PlaybookDetailView({
               )}
 
               <div className="flex items-center gap-1.5">
-                <span className="font-bold text-[#f3ca8c] text-sm sm:text-base">
+                <span className="font-bold text-[#b4690e] text-sm sm:text-base">
                   {playbook.rating}
                 </span>
                 <div className="flex items-center">
@@ -257,47 +257,37 @@ export default function PlaybookDetailView({
                     />
                   ))}
                 </div>
-                <a href="#reviews" className="text-[#cec0fc] underline ml-1 hover:text-white transition-colors">
+                <a href="#reviews" className="text-[#5022c3] underline ml-1 hover:text-[#3b198f] transition-colors">
                   ({playbook.ratingCount} ratings)
                 </a>
               </div>
-
-              <span className="text-zinc-400">·</span>
-              <span className="text-zinc-200">{playbook.studentsCount} students</span>
             </div>
 
             {/* Creator / Date / Language Row */}
-            <div className="mt-3 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm text-zinc-300">
+            <div className="mt-3 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm text-[#57534e]">
               <div className="flex items-center gap-1">
                 <span>Created by</span>
-                <span className="text-[#cec0fc] underline font-medium cursor-pointer">
+                <span className="text-[#5022c3] underline font-medium cursor-pointer">
                   {playbook.instructorName}
                 </span>
               </div>
 
               <div className="flex items-center gap-1.5">
-                <Clock className="h-3.5 w-3.5 text-zinc-400" />
+                <Clock className="h-3.5 w-3.5 text-[#78716c]" />
                 <span>Last updated {playbook.lastUpdated}</span>
               </div>
 
               <div className="flex items-center gap-1.5">
-                <Globe className="h-3.5 w-3.5 text-zinc-400" />
+                <Globe className="h-3.5 w-3.5 text-[#78716c]" />
                 <span>{playbook.language}</span>
               </div>
-
-              {playbook.subtitles && (
-                <div className="flex items-center gap-1.5">
-                  <Subtitles className="h-3.5 w-3.5 text-zinc-400" />
-                  <span>{playbook.subtitles}</span>
-                </div>
-              )}
             </div>
 
             {/* Mobile-Only Purchase Card within Hero */}
             <div ref={heroCtaRef} className="block lg:hidden mt-6">
-              <div className="rounded-xs border border-zinc-700 bg-white text-[#1c1917] overflow-hidden shadow-lg">
-                {/* Thumbnail Preview */}
-                <div className="relative aspect-video w-full bg-zinc-900">
+              <div className="rounded-none border border-[#d1d7dc] bg-white text-[#1c1917] overflow-hidden shadow-lg">
+                {/* Static Thumbnail Preview (No overlay / play button) */}
+                <div className="relative aspect-video w-full bg-zinc-100 overflow-hidden">
                   <Image
                     src={playbook.thumbnail}
                     alt={playbook.title}
@@ -306,16 +296,11 @@ export default function PlaybookDetailView({
                     className="object-cover"
                     priority
                   />
-                  <div className="absolute inset-0 bg-black/25 flex items-center justify-center">
-                    <div className="h-12 w-12 rounded-full bg-white/90 text-[#1c1917] flex items-center justify-center shadow-lg">
-                      <Play className="h-5 w-5 fill-[#1c1917] ml-0.5" />
-                    </div>
-                  </div>
                 </div>
 
                 {/* Mobile Purchase Actions */}
                 <div className="p-4 sm:p-5">
-                  <div className="flex items-baseline gap-2 mb-3">
+                  <div className="flex items-baseline gap-2 mb-4">
                     <span className="text-3xl font-extrabold text-[#1c1917] tracking-tight">
                       ${formattedPrice}
                     </span>
@@ -336,17 +321,17 @@ export default function PlaybookDetailView({
                   {hasAccess ? (
                     <Link
                       href={`/learn/${playbook.slug}`}
-                      className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-xs transition-colors flex items-center justify-center shadow-sm"
+                      className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors flex items-center justify-center shadow-sm"
                     >
                       Go to Playbook →
                     </Link>
                   ) : (
-                    <div className="space-y-2">
+                    <div className="space-y-2.5">
                       <button
                         type="button"
                         onClick={handleCheckout}
                         disabled={isCheckingOut}
-                        className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-xs transition-colors shadow-sm cursor-pointer"
+                        className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm cursor-pointer"
                       >
                         {isCheckingOut ? "Connecting to Checkout..." : "Add to cart"}
                       </button>
@@ -354,16 +339,12 @@ export default function PlaybookDetailView({
                         type="button"
                         onClick={handleCheckout}
                         disabled={isCheckingOut}
-                        className="w-full h-12 bg-white hover:bg-zinc-50 text-[#1c1917] font-bold text-base rounded-xs border border-[#1c1917] transition-colors cursor-pointer"
+                        className="w-full h-12 bg-white hover:bg-purple-50/60 text-[#a435f0] font-bold text-base rounded-none border border-[#a435f0] transition-colors cursor-pointer"
                       >
                         Buy now
                       </button>
                     </div>
                   )}
-
-                  <p className="mt-2 text-center text-xs text-zinc-500">
-                    Instant digital access · One-time payment · Lifetime access
-                  </p>
                 </div>
               </div>
             </div>
@@ -413,6 +394,31 @@ export default function PlaybookDetailView({
                   </div>
                 </div>
               )}
+
+              {/* Section: "This course includes:" (Immediately above Course content) */}
+              <div className="mb-8">
+                <h2 className="text-xl sm:text-2xl font-bold text-[#1c1917] mb-4">
+                  This course includes:
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-[#2d2f31]">
+                  <div className="flex items-center gap-3">
+                    <Layers className="h-4 w-4 text-zinc-600 shrink-0" />
+                    <span>10 structured, progressive modules</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <FileText className="h-4 w-4 text-zinc-600 shrink-0" />
+                    <span>69 comprehensive slide &amp; text lessons</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Smartphone className="h-4 w-4 text-zinc-600 shrink-0" />
+                    <span>Access on mobile, tablet &amp; desktop</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <InfinityIcon className="h-4 w-4 text-zinc-600 shrink-0" />
+                    <span>Full lifetime digital access</span>
+                  </div>
+                </div>
+              </div>
 
               {/* 3. "Course content" Accordion Section */}
               <div id="content" className="mb-10 scroll-mt-24">
@@ -765,30 +771,22 @@ export default function PlaybookDetailView({
             {/* RIGHT COLUMN: DESKTOP FLOATING PURCHASE CARD (UDEMY PATTERN) */}
             <div className="hidden lg:block relative">
               <div className="sticky top-6 -mt-[310px] z-30 w-full bg-white text-[#1c1917] border border-[#d1d7dc] shadow-2xl rounded-none overflow-hidden">
-                {/* 16:9 Thumbnail with Play Overlay */}
-                <div className="relative aspect-video w-full bg-zinc-900 overflow-hidden group">
+                {/* 16:9 Static Thumbnail (No preview overlay / play button) */}
+                <div className="relative aspect-video w-full bg-zinc-100 overflow-hidden">
                   <Image
                     src={playbook.thumbnail}
                     alt={playbook.title}
                     fill
                     sizes="(max-width: 1280px) 340px, 370px"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-cover"
                     priority
                   />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex flex-col items-center justify-center">
-                    <div className="h-14 w-14 rounded-full bg-white text-[#1c1917] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                      <Play className="h-6 w-6 fill-[#1c1917] ml-0.5" />
-                    </div>
-                    <span className="text-white text-xs font-bold mt-2 drop-shadow">
-                      Preview this playbook
-                    </span>
-                  </div>
                 </div>
 
                 {/* Card Interior */}
                 <div className="p-5 xl:p-6">
                   {/* Pricing row */}
-                  <div className="flex items-baseline gap-2.5 mb-1">
+                  <div className="flex items-baseline gap-2.5 mb-4">
                     <span className="text-3xl font-extrabold text-[#1c1917] tracking-tight">
                       ${formattedPrice}
                     </span>
@@ -799,10 +797,6 @@ export default function PlaybookDetailView({
                       {playbook.discountPercentage}% off
                     </span>
                   </div>
-
-                  <p className="text-xs text-[#b32d0f] font-semibold mb-4">
-                    Special launch price · Lifetime access
-                  </p>
 
                   {/* Checkout Error Alert */}
                   {checkoutError && (
@@ -820,12 +814,9 @@ export default function PlaybookDetailView({
                       >
                         Go to Playbook →
                       </Link>
-                      <p className="text-center text-xs text-zinc-500 pt-1">
-                        ✓ You own lifetime access to this playbook
-                      </p>
                     </div>
                   ) : (
-                    <div className="space-y-2">
+                    <div className="space-y-2.5">
                       <button
                         type="button"
                         onClick={handleCheckout}
@@ -838,47 +829,12 @@ export default function PlaybookDetailView({
                         type="button"
                         onClick={handleCheckout}
                         disabled={isCheckingOut}
-                        className="w-full h-12 bg-white hover:bg-zinc-50 text-[#1c1917] font-bold text-base rounded-none border border-[#1c1917] transition-colors cursor-pointer"
+                        className="w-full h-12 bg-white hover:bg-purple-50/60 text-[#a435f0] font-bold text-base rounded-none border border-[#a435f0] transition-colors cursor-pointer"
                       >
                         Buy now
                       </button>
-                      <p className="text-center text-[11.5px] text-zinc-500 pt-1">
-                        Instant digital access · One-time payment
-                      </p>
                     </div>
                   )}
-
-                  {/* "This course includes:" Feature Inclusions */}
-                  <div className="mt-6 pt-5 border-t border-zinc-200">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-[#1c1917] mb-3">
-                      This playbook includes:
-                    </h3>
-                    <ul className="space-y-2.5 text-xs text-[#2d2f31]">
-                      {playbook.includes.map((inc, idx) => (
-                        <li key={idx} className="flex items-center gap-3">
-                          {inc.iconName === "video" && (
-                            <Video className="h-4 w-4 text-zinc-500 shrink-0" />
-                          )}
-                          {inc.iconName === "layers" && (
-                            <Layers className="h-4 w-4 text-zinc-500 shrink-0" />
-                          )}
-                          {inc.iconName === "file-text" && (
-                            <FileText className="h-4 w-4 text-zinc-500 shrink-0" />
-                          )}
-                          {inc.iconName === "smartphone" && (
-                            <Smartphone className="h-4 w-4 text-zinc-500 shrink-0" />
-                          )}
-                          {inc.iconName === "infinity" && (
-                            <InfinityIcon className="h-4 w-4 text-zinc-500 shrink-0" />
-                          )}
-                          {inc.iconName === "shield-check" && (
-                            <ShieldCheck className="h-4 w-4 text-zinc-500 shrink-0" />
-                          )}
-                          <span>{inc.text}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
 
                   {/* Share & Links */}
                   <div className="mt-5 pt-4 border-t border-zinc-200 flex items-center justify-between text-xs font-bold text-[#1c1917]">
