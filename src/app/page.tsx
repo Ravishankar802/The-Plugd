@@ -46,6 +46,15 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     redirect(`/men?checkout=true${lessonParam}`);
   }
 
+  // Canonical redirect if category query param is passed
+  if (resolvedSearchParams.category) {
+    const targetSlug =
+      resolvedSearchParams.category === "ecommerce"
+        ? "e-commerce"
+        : resolvedSearchParams.category;
+    redirect(`/${targetSlug}`);
+  }
+
   let hasAccess = false;
   try {
     const cookieStore = await cookies();
@@ -61,13 +70,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   }
 
   const playbooks = getAllPlaybooks();
-  const initialCategorySlug = resolvedSearchParams.category || "all";
 
   return (
     <PlugdHomePageClient
       playbooks={playbooks}
       hasAccess={hasAccess}
-      initialCategorySlug={initialCategorySlug}
     />
   );
 }

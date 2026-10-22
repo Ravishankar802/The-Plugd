@@ -35,7 +35,7 @@ export default function CategoryCard({ category, playbookCount = 0 }: CategoryCa
 
   return (
     <Link
-      href={`/categories/${category.slug}`}
+      href={`/${category.slug}`}
       className="group relative flex flex-col justify-between rounded-2xl border border-[#e7e5e4] bg-white p-6 sm:p-7 shadow-xs hover:border-[#d6d3d1] hover:shadow-md transition-all duration-200"
     >
       <div>

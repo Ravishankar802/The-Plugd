@@ -15,7 +15,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-02",
@@ -31,7 +31,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-03",
@@ -47,7 +47,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-04",
@@ -63,7 +63,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-05",
@@ -79,7 +79,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-06",
@@ -95,7 +95,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-07",
@@ -111,7 +111,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-08",
@@ -127,7 +127,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-09",
@@ -143,7 +143,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-10",
@@ -159,7 +159,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-11",
@@ -175,7 +175,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-12",
@@ -191,7 +191,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-13",
@@ -207,7 +207,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-14",
@@ -223,7 +223,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-15",
@@ -239,7 +239,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-16",
@@ -255,7 +255,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-17",
@@ -271,7 +271,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-18",
@@ -287,7 +287,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-19",
@@ -303,7 +303,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ai-businesses-20",
@@ -319,7 +319,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ai-businesses",
+    href: "/ai-businesses",
   },
   {
     id: "ecommerce-01",
@@ -327,7 +327,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "50 Product Ideas to Find Your First Profitable E-commerce Niche",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -335,7 +335,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-02",
@@ -343,7 +343,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "Launch an Online Store in 7 Days Without Buying Bulk Inventory",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -351,7 +351,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-03",
@@ -359,7 +359,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "The First 100 Orders: A 30-Day Plan for a New Online Store",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -367,7 +367,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-04",
@@ -375,7 +375,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "5 Low-Cost Ways to Test Product Demand Before Spending ₹10,000",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -383,7 +383,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-05",
@@ -391,7 +391,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "Find 3 Winning Products Without Copying the Biggest Brands",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -399,7 +399,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-06",
@@ -407,7 +407,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "Turn 1 Product Into 5 Revenue Streams With Bundles and Upsells",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -415,7 +415,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-07",
@@ -423,7 +423,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "7 Product Page Fixes That Can Turn More Visitors Into Paying Customers",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -431,7 +431,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-08",
@@ -439,7 +439,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "Build a ₹1 Lakh/Month Store: Understand the Sales, Margins and Costs",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -447,7 +447,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-09",
@@ -455,7 +455,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "10 Ways to Source Products Without Owning a Factory",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -463,7 +463,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-10",
@@ -471,7 +471,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "The 30-Day Print-on-Demand Business: Sell Designs Without Holding Stock",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -479,7 +479,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-11",
@@ -487,7 +487,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "5 E-commerce Niches Where Small Stores Can Compete With Bigger Brands",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -495,7 +495,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-12",
@@ -503,7 +503,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "Recover Lost Sales With 8 Abandoned-Cart Revenue Tactics",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -511,7 +511,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-13",
@@ -519,7 +519,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "Turn 20 Customer Reviews Into a Better-Converting Product Offer",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -527,7 +527,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-14",
@@ -535,7 +535,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "Build a Profitable Store With 5 Essential E-commerce Tools",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -543,7 +543,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-15",
@@ -551,7 +551,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "7 Ways to Increase Order Value Without Finding More Customers",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -559,7 +559,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-16",
@@ -567,7 +567,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "The ₹500 Product Challenge: Test a Business Idea on a Lean Budget",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -575,7 +575,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-17",
@@ -583,7 +583,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "Sell Products Through 3 Channels Instead of Depending on One Marketplace",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -591,7 +591,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-18",
@@ -599,7 +599,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "From First Purchase to Repeat Orders: 6 Ways to Earn More From Existing Customers",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -607,7 +607,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-19",
@@ -615,7 +615,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "Find a Profitable Product Bundle With 15 Simple Pricing Experiments",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -623,7 +623,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "ecommerce-20",
@@ -631,7 +631,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     title: "The Lean E-commerce Blueprint: Validate, Launch and Scale Your First Product",
     headline: "",
     description: "",
-    categorySlug: "ecommerce",
+    categorySlug: "e-commerce",
     categoryName: "E-commerce",
     price: 3,
     originalPrice: 9,
@@ -639,7 +639,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/ecommerce",
+    href: "/e-commerce",
   },
   {
     id: "side-hustles-01",
@@ -655,7 +655,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-02",
@@ -671,7 +671,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-03",
@@ -687,7 +687,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-04",
@@ -703,7 +703,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-05",
@@ -719,7 +719,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-06",
@@ -735,7 +735,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-07",
@@ -751,7 +751,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-08",
@@ -767,7 +767,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-09",
@@ -783,7 +783,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-10",
@@ -799,7 +799,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-11",
@@ -815,7 +815,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-12",
@@ -831,7 +831,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-13",
@@ -847,7 +847,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-14",
@@ -863,7 +863,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-15",
@@ -879,7 +879,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-16",
@@ -895,7 +895,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-17",
@@ -911,7 +911,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-18",
@@ -927,7 +927,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-19",
@@ -943,7 +943,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "side-hustles-20",
@@ -959,7 +959,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/side-hustles",
+    href: "/side-hustles",
   },
   {
     id: "online-income-01",
@@ -975,7 +975,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-02",
@@ -991,7 +991,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-03",
@@ -1007,7 +1007,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-04",
@@ -1023,7 +1023,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-05",
@@ -1039,7 +1039,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-06",
@@ -1055,7 +1055,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-07",
@@ -1071,7 +1071,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-08",
@@ -1087,7 +1087,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-09",
@@ -1103,7 +1103,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-10",
@@ -1119,7 +1119,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-11",
@@ -1135,7 +1135,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-12",
@@ -1151,7 +1151,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-13",
@@ -1167,7 +1167,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-14",
@@ -1183,7 +1183,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-15",
@@ -1199,7 +1199,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-16",
@@ -1215,7 +1215,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-17",
@@ -1231,7 +1231,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-18",
@@ -1247,7 +1247,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-19",
@@ -1263,7 +1263,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "online-income-20",
@@ -1279,7 +1279,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-income",
+    href: "/online-income",
   },
   {
     id: "creator-economy-01",
@@ -1295,7 +1295,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-02",
@@ -1311,7 +1311,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-03",
@@ -1327,7 +1327,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-04",
@@ -1343,7 +1343,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-05",
@@ -1359,7 +1359,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-06",
@@ -1375,7 +1375,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-07",
@@ -1391,7 +1391,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-08",
@@ -1407,7 +1407,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-09",
@@ -1423,7 +1423,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-10",
@@ -1439,7 +1439,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-11",
@@ -1455,7 +1455,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-12",
@@ -1471,7 +1471,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-13",
@@ -1487,7 +1487,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-14",
@@ -1503,7 +1503,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-15",
@@ -1519,7 +1519,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-16",
@@ -1535,7 +1535,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-17",
@@ -1551,7 +1551,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-18",
@@ -1567,7 +1567,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-19",
@@ -1583,7 +1583,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "creator-economy-20",
@@ -1599,7 +1599,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/creator-economy",
+    href: "/creator-economy",
   },
   {
     id: "personal-branding-01",
@@ -1615,7 +1615,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-02",
@@ -1631,7 +1631,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-03",
@@ -1647,7 +1647,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-04",
@@ -1663,7 +1663,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-05",
@@ -1679,7 +1679,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-06",
@@ -1695,7 +1695,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-07",
@@ -1711,7 +1711,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-08",
@@ -1727,7 +1727,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-09",
@@ -1743,7 +1743,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-10",
@@ -1759,7 +1759,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-11",
@@ -1775,7 +1775,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-12",
@@ -1791,7 +1791,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-13",
@@ -1807,7 +1807,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-14",
@@ -1823,7 +1823,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-15",
@@ -1839,7 +1839,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-16",
@@ -1855,7 +1855,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-17",
@@ -1871,7 +1871,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-18",
@@ -1887,7 +1887,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-19",
@@ -1903,7 +1903,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "personal-branding-20",
@@ -1919,7 +1919,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/personal-branding",
+    href: "/personal-branding",
   },
   {
     id: "remote-work-01",
@@ -1935,7 +1935,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-02",
@@ -1951,7 +1951,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-03",
@@ -1967,7 +1967,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-04",
@@ -1983,7 +1983,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-05",
@@ -1999,7 +1999,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-06",
@@ -2015,7 +2015,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-07",
@@ -2031,7 +2031,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-08",
@@ -2047,7 +2047,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-09",
@@ -2063,7 +2063,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-10",
@@ -2079,7 +2079,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-11",
@@ -2095,7 +2095,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-12",
@@ -2111,7 +2111,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-13",
@@ -2127,7 +2127,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-14",
@@ -2143,7 +2143,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-15",
@@ -2159,7 +2159,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-16",
@@ -2175,7 +2175,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-17",
@@ -2191,7 +2191,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-18",
@@ -2207,7 +2207,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-19",
@@ -2223,7 +2223,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "remote-work-20",
@@ -2239,7 +2239,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/remote-work",
+    href: "/remote-work",
   },
   {
     id: "lead-generation-01",
@@ -2255,7 +2255,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-02",
@@ -2271,7 +2271,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-03",
@@ -2287,7 +2287,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-04",
@@ -2303,7 +2303,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-05",
@@ -2319,7 +2319,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-06",
@@ -2335,7 +2335,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-07",
@@ -2351,7 +2351,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-08",
@@ -2367,7 +2367,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-09",
@@ -2383,7 +2383,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-10",
@@ -2399,7 +2399,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-11",
@@ -2415,7 +2415,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-12",
@@ -2431,7 +2431,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-13",
@@ -2447,7 +2447,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-14",
@@ -2463,7 +2463,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-15",
@@ -2479,7 +2479,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-16",
@@ -2495,7 +2495,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-17",
@@ -2511,7 +2511,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-18",
@@ -2527,7 +2527,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-19",
@@ -2543,7 +2543,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "lead-generation-20",
@@ -2559,7 +2559,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/lead-generation",
+    href: "/lead-generation",
   },
   {
     id: "micro-saas-01",
@@ -2575,7 +2575,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-02",
@@ -2591,7 +2591,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-03",
@@ -2607,7 +2607,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-04",
@@ -2623,7 +2623,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-05",
@@ -2639,7 +2639,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-06",
@@ -2655,7 +2655,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-07",
@@ -2671,7 +2671,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-08",
@@ -2687,7 +2687,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-09",
@@ -2703,7 +2703,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-10",
@@ -2719,7 +2719,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-11",
@@ -2735,7 +2735,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-12",
@@ -2751,7 +2751,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-13",
@@ -2767,7 +2767,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-14",
@@ -2783,7 +2783,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-15",
@@ -2799,7 +2799,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-16",
@@ -2815,7 +2815,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-17",
@@ -2831,7 +2831,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-18",
@@ -2847,7 +2847,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-19",
@@ -2863,7 +2863,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "micro-saas-20",
@@ -2879,7 +2879,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/micro-saas",
+    href: "/micro-saas",
   },
   {
     id: "online-marketplace-01",
@@ -2895,7 +2895,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-02",
@@ -2911,7 +2911,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-03",
@@ -2927,7 +2927,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-04",
@@ -2943,7 +2943,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-05",
@@ -2959,7 +2959,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-06",
@@ -2975,7 +2975,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-07",
@@ -2991,7 +2991,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-08",
@@ -3007,7 +3007,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-09",
@@ -3023,7 +3023,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-10",
@@ -3039,7 +3039,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-11",
@@ -3055,7 +3055,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-12",
@@ -3071,7 +3071,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-13",
@@ -3087,7 +3087,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-14",
@@ -3103,7 +3103,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-15",
@@ -3119,7 +3119,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-16",
@@ -3135,7 +3135,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-17",
@@ -3151,7 +3151,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-18",
@@ -3167,7 +3167,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-19",
@@ -3183,7 +3183,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "online-marketplace-20",
@@ -3199,7 +3199,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/online-marketplace",
+    href: "/online-marketplace",
   },
   {
     id: "reselling-01",
@@ -3215,7 +3215,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-02",
@@ -3231,7 +3231,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-03",
@@ -3247,7 +3247,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-04",
@@ -3263,7 +3263,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-05",
@@ -3279,7 +3279,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-06",
@@ -3295,7 +3295,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-07",
@@ -3311,7 +3311,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-08",
@@ -3327,7 +3327,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-09",
@@ -3343,7 +3343,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-10",
@@ -3359,7 +3359,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-11",
@@ -3375,7 +3375,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-12",
@@ -3391,7 +3391,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-13",
@@ -3407,7 +3407,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-14",
@@ -3423,7 +3423,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-15",
@@ -3439,7 +3439,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-16",
@@ -3455,7 +3455,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-17",
@@ -3471,7 +3471,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-18",
@@ -3487,7 +3487,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-19",
@@ -3503,7 +3503,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "reselling-20",
@@ -3519,7 +3519,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/reselling",
+    href: "/reselling",
   },
   {
     id: "paid-communities-01",
@@ -3535,7 +3535,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-02",
@@ -3551,7 +3551,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-03",
@@ -3567,7 +3567,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-04",
@@ -3583,7 +3583,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-05",
@@ -3599,7 +3599,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-06",
@@ -3615,7 +3615,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-07",
@@ -3631,7 +3631,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-08",
@@ -3647,7 +3647,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-09",
@@ -3663,7 +3663,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-10",
@@ -3679,7 +3679,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-11",
@@ -3695,7 +3695,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-12",
@@ -3711,7 +3711,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-13",
@@ -3727,7 +3727,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-14",
@@ -3743,7 +3743,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-15",
@@ -3759,7 +3759,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-16",
@@ -3775,7 +3775,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-17",
@@ -3791,7 +3791,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-18",
@@ -3807,7 +3807,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-19",
@@ -3823,7 +3823,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "paid-communities-20",
@@ -3839,7 +3839,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/paid-communities",
+    href: "/paid-communities",
   },
   {
     id: "local-business-01",
@@ -3855,7 +3855,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-02",
@@ -3871,7 +3871,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-03",
@@ -3887,7 +3887,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-04",
@@ -3903,7 +3903,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-05",
@@ -3919,7 +3919,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-06",
@@ -3935,7 +3935,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-07",
@@ -3951,7 +3951,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-08",
@@ -3967,7 +3967,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-09",
@@ -3983,7 +3983,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-10",
@@ -3999,7 +3999,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-11",
@@ -4015,7 +4015,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-12",
@@ -4031,7 +4031,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-13",
@@ -4047,7 +4047,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-14",
@@ -4063,7 +4063,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-15",
@@ -4079,7 +4079,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-16",
@@ -4095,7 +4095,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-17",
@@ -4111,7 +4111,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-18",
@@ -4127,7 +4127,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-19",
@@ -4143,7 +4143,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "local-business-20",
@@ -4159,7 +4159,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/local-business",
+    href: "/local-business",
   },
   {
     id: "digital-publishing-01",
@@ -4175,7 +4175,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-02",
@@ -4191,7 +4191,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-03",
@@ -4207,7 +4207,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-04",
@@ -4223,7 +4223,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-05",
@@ -4239,7 +4239,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-06",
@@ -4255,7 +4255,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-07",
@@ -4271,7 +4271,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-08",
@@ -4287,7 +4287,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-09",
@@ -4303,7 +4303,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-10",
@@ -4319,7 +4319,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-11",
@@ -4335,7 +4335,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-12",
@@ -4351,7 +4351,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-13",
@@ -4367,7 +4367,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-14",
@@ -4383,7 +4383,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-15",
@@ -4399,7 +4399,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-16",
@@ -4415,7 +4415,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-17",
@@ -4431,7 +4431,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-18",
@@ -4447,7 +4447,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-19",
@@ -4463,7 +4463,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "digital-publishing-20",
@@ -4479,7 +4479,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/digital-publishing",
+    href: "/digital-publishing",
   },
   {
     id: "newsletter-business-01",
@@ -4495,7 +4495,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-02",
@@ -4511,7 +4511,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-03",
@@ -4527,7 +4527,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-04",
@@ -4543,7 +4543,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-05",
@@ -4559,7 +4559,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-06",
@@ -4575,7 +4575,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-07",
@@ -4591,7 +4591,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-08",
@@ -4607,7 +4607,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-09",
@@ -4623,7 +4623,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-10",
@@ -4639,7 +4639,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-11",
@@ -4655,7 +4655,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-12",
@@ -4671,7 +4671,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-13",
@@ -4687,7 +4687,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-14",
@@ -4703,7 +4703,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-15",
@@ -4719,7 +4719,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-16",
@@ -4735,7 +4735,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-17",
@@ -4751,7 +4751,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-18",
@@ -4767,7 +4767,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-19",
@@ -4783,7 +4783,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "newsletter-business-20",
@@ -4799,7 +4799,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/newsletter-business",
+    href: "/newsletter-business",
   },
   {
     id: "dating-01",
@@ -4815,7 +4815,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-02",
@@ -4831,7 +4831,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-03",
@@ -4847,7 +4847,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-04",
@@ -4863,7 +4863,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-05",
@@ -4879,7 +4879,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-06",
@@ -4895,7 +4895,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-07",
@@ -4911,7 +4911,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-08",
@@ -4927,7 +4927,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-09",
@@ -4943,7 +4943,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-10",
@@ -4959,7 +4959,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-11",
@@ -4975,7 +4975,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-12",
@@ -4991,7 +4991,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-13",
@@ -5007,7 +5007,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-14",
@@ -5023,7 +5023,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-15",
@@ -5039,7 +5039,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-16",
@@ -5055,7 +5055,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-17",
@@ -5071,7 +5071,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-18",
@@ -5087,7 +5087,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-19",
@@ -5103,7 +5103,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
   {
     id: "dating-20",
@@ -5119,7 +5119,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     modulesCount: 0,
     lessonsCount: 0,
     hoursOfMaterial: "",
-    href: "/categories/dating",
+    href: "/dating",
   },
 ];
 

@@ -216,7 +216,7 @@ export default function PlaybookDetailView({
               </Link>
               <span className="text-[#a8a29e] font-normal">›</span>
               <Link
-                href={`/categories/${playbook.categorySlug}`}
+                href={`/${playbook.categorySlug === "ecommerce" ? "e-commerce" : playbook.categorySlug}`}
                 className="hover:underline"
               >
                 {playbook.categoryName}
@@ -407,7 +407,7 @@ export default function PlaybookDetailView({
                     {playbook.relatedTopics.map((topic) => (
                       <Link
                         key={topic}
-                        href={`/categories/${playbook.categorySlug}`}
+                        href={`/${playbook.categorySlug === "ecommerce" ? "e-commerce" : playbook.categorySlug}`}
                         className="inline-flex items-center px-4 py-2 rounded-full border border-[#d1d7dc] bg-white hover:bg-zinc-50 text-sm font-semibold text-[#1c1917] transition-colors"
                       >
                         {topic}

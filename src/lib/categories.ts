@@ -42,9 +42,9 @@ export const CATEGORIES: Category[] = [
     displayOrder: 1,
   },
   {
-    id: "ecommerce",
+    id: "e-commerce",
     name: "E-commerce",
-    slug: "ecommerce",
+    slug: "e-commerce",
     description: "Launch and scale storefronts with proven fulfillment, positioning, and merchandising playbooks.",
     iconName: "ShoppingBag",
     displayOrder: 2,
@@ -204,7 +204,7 @@ export function getCategoryBySlug(rawSlug: string): Category | undefined {
   return CATEGORIES.find(
     (c) =>
       c.slug === normalized ||
-      (c.slug === "ecommerce" && normalized === "e-commerce") ||
+      (c.slug === "e-commerce" && (normalized === "ecommerce" || normalized === "e-commerce")) ||
       (c.slug === "ai-businesses" && (normalized === "ai-automation" || normalized === "ai" || normalized === "automation"))
   );
 }
@@ -212,7 +212,11 @@ export function getCategoryBySlug(rawSlug: string): Category | undefined {
 export function getPlaybooksForCategory(categorySlug: string): PlaybookSummary[] {
   const category = getCategoryBySlug(categorySlug);
   if (!category) return [];
-  return PLAYBOOKS.filter((p) => p.categorySlug === category.slug);
+  return PLAYBOOKS.filter(
+    (p) =>
+      p.categorySlug === category.slug ||
+      (category.slug === "e-commerce" && (p.categorySlug === "ecommerce" || p.categorySlug === "e-commerce"))
+  );
 }
 
 export function getAllPlaybooks(): PlaybookSummary[] {
