@@ -205,8 +205,8 @@ export default function PlaybookDetailView({
         </div>
       </div>
 
-      {/* SECTION: HERO (Strong, Clean Off-White Background) */}
-      <section className="bg-[#f6f6f4] text-[#1c1917] border-b border-[#e7e5e4] pt-6 pb-8 lg:pt-8 lg:pb-10 relative overflow-hidden">
+      {/* SECTION: HERO (Soft off-white / light gray, distinct from pure-white content below) */}
+      <section className="bg-[#eeece7] text-[#1c1917] border-b border-[#dedbd5] pt-6 pb-8 lg:pt-8 lg:pb-10 relative overflow-hidden">
         <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
           <div className="lg:w-[65%] xl:w-[68%] pr-0 lg:pr-8">
             {/* Breadcrumb Navigation */}
@@ -286,15 +286,22 @@ export default function PlaybookDetailView({
             {/* Mobile-Only Purchase Card within Hero */}
             <div ref={heroCtaRef} className="block lg:hidden mt-6">
               <div className="rounded-none border border-[#d1d7dc] bg-white text-[#1c1917] overflow-hidden shadow-lg">
-                {/* Static Thumbnail Preview (No overlay / play button) */}
-                <div className="relative aspect-video w-full bg-zinc-100 overflow-hidden">
+                {/* Static Thumbnail fitting entire image area edge-to-edge */}
+                <div className="relative aspect-[961/448] w-full overflow-hidden bg-black">
                   <Image
                     src={playbook.thumbnail}
                     alt={playbook.title}
-                    fill
+                    width={1024}
+                    height={576}
                     sizes="100vw"
-                    className="object-cover"
                     priority
+                    className="absolute max-w-none"
+                    style={{
+                      width: "106.56%",
+                      height: "128.57%",
+                      left: "-3.33%",
+                      top: "-14.06%",
+                    }}
                   />
                 </div>
 
@@ -318,33 +325,48 @@ export default function PlaybookDetailView({
                     </div>
                   )}
 
-                  {hasAccess ? (
-                    <Link
-                      href={`/learn/${playbook.slug}`}
-                      className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors flex items-center justify-center shadow-sm"
+                  {/* Lifetime access above buttons */}
+                  <div className="text-xs text-[#57534e] mb-3 font-normal">
+                    Full lifetime access
+                  </div>
+
+                  {/* CTAs */}
+                  <div className="space-y-2.5">
+                    <button
+                      type="button"
+                      onClick={handleCheckout}
+                      disabled={isCheckingOut}
+                      className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm cursor-pointer flex items-center justify-center"
                     >
-                      Go to Playbook →
-                    </Link>
-                  ) : (
-                    <div className="space-y-2.5">
-                      <button
-                        type="button"
-                        onClick={handleCheckout}
-                        disabled={isCheckingOut}
-                        className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm cursor-pointer"
-                      >
-                        {isCheckingOut ? "Connecting to Checkout..." : "Add to cart"}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={handleCheckout}
-                        disabled={isCheckingOut}
-                        className="w-full h-12 bg-white hover:bg-purple-50/60 text-[#a435f0] font-bold text-base rounded-none border border-[#a435f0] transition-colors cursor-pointer"
-                      >
-                        Buy now
-                      </button>
-                    </div>
-                  )}
+                      {isCheckingOut ? "Connecting to Checkout..." : "Add to cart"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleCheckout}
+                      disabled={isCheckingOut}
+                      className="w-full h-12 bg-white hover:bg-purple-50/60 text-[#a435f0] font-bold text-base rounded-none border border-[#a435f0] transition-colors cursor-pointer flex items-center justify-center"
+                    >
+                      Buy now
+                    </button>
+                  </div>
+
+                  {/* Bottom Action Area: Sleek Share Icon on the Right */}
+                  <div className="mt-4 pt-3 border-t border-zinc-200 flex items-center justify-end">
+                    <button
+                      type="button"
+                      onClick={handleShare}
+                      title={copiedLink ? "Link copied!" : "Share playbook"}
+                      aria-label="Share playbook"
+                      className="inline-flex items-center justify-center p-2 rounded-full text-zinc-700 hover:text-[#5022c3] hover:bg-zinc-100 transition-colors cursor-pointer relative"
+                    >
+                      <Share2 className="h-5 w-5" />
+                      {copiedLink && (
+                        <span className="absolute right-full mr-2 px-2 py-0.5 text-[11px] font-semibold bg-[#1c1917] text-white rounded whitespace-nowrap shadow-sm">
+                          Link copied!
+                        </span>
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -771,15 +793,22 @@ export default function PlaybookDetailView({
             {/* RIGHT COLUMN: DESKTOP FLOATING PURCHASE CARD (UDEMY PATTERN) */}
             <div className="hidden lg:block relative">
               <div className="sticky top-6 -mt-[310px] z-30 w-full bg-white text-[#1c1917] border border-[#d1d7dc] shadow-2xl rounded-none overflow-hidden">
-                {/* 16:9 Static Thumbnail (No preview overlay / play button) */}
-                <div className="relative aspect-video w-full bg-zinc-100 overflow-hidden">
+                {/* Static Thumbnail fitting entire image area edge-to-edge */}
+                <div className="relative aspect-[961/448] w-full overflow-hidden bg-black">
                   <Image
                     src={playbook.thumbnail}
                     alt={playbook.title}
-                    fill
+                    width={1024}
+                    height={576}
                     sizes="(max-width: 1280px) 340px, 370px"
-                    className="object-cover"
                     priority
+                    className="absolute max-w-none"
+                    style={{
+                      width: "106.56%",
+                      height: "128.57%",
+                      left: "-3.33%",
+                      top: "-14.06%",
+                    }}
                   />
                 </div>
 
@@ -805,51 +834,47 @@ export default function PlaybookDetailView({
                     </div>
                   )}
 
-                  {/* CTAs */}
-                  {hasAccess ? (
-                    <div className="space-y-2">
-                      <Link
-                        href={`/learn/${playbook.slug}`}
-                        className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors flex items-center justify-center shadow-sm"
-                      >
-                        Go to Playbook →
-                      </Link>
-                    </div>
-                  ) : (
-                    <div className="space-y-2.5">
-                      <button
-                        type="button"
-                        onClick={handleCheckout}
-                        disabled={isCheckingOut}
-                        className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm cursor-pointer"
-                      >
-                        {isCheckingOut ? "Connecting to Checkout..." : "Add to cart"}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={handleCheckout}
-                        disabled={isCheckingOut}
-                        className="w-full h-12 bg-white hover:bg-purple-50/60 text-[#a435f0] font-bold text-base rounded-none border border-[#a435f0] transition-colors cursor-pointer"
-                      >
-                        Buy now
-                      </button>
-                    </div>
-                  )}
+                  {/* Lifetime access above buttons */}
+                  <div className="text-xs text-[#57534e] mb-3 font-normal">
+                    Full lifetime access
+                  </div>
 
-                  {/* Share & Links */}
-                  <div className="mt-5 pt-4 border-t border-zinc-200 flex items-center justify-between text-xs font-bold text-[#1c1917]">
+                  {/* CTAs */}
+                  <div className="space-y-2.5">
+                    <button
+                      type="button"
+                      onClick={handleCheckout}
+                      disabled={isCheckingOut}
+                      className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm cursor-pointer flex items-center justify-center"
+                    >
+                      {isCheckingOut ? "Connecting to Checkout..." : "Add to cart"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleCheckout}
+                      disabled={isCheckingOut}
+                      className="w-full h-12 bg-white hover:bg-purple-50/60 text-[#a435f0] font-bold text-base rounded-none border border-[#a435f0] transition-colors cursor-pointer flex items-center justify-center"
+                    >
+                      Buy now
+                    </button>
+                  </div>
+
+                  {/* Bottom Action Area: Sleek Share Icon on the Right */}
+                  <div className="mt-5 pt-4 border-t border-zinc-200 flex items-center justify-end">
                     <button
                       type="button"
                       onClick={handleShare}
-                      className="inline-flex items-center gap-1.5 hover:text-[#5022c3] cursor-pointer"
+                      title={copiedLink ? "Link copied!" : "Share playbook"}
+                      aria-label="Share playbook"
+                      className="inline-flex items-center justify-center p-2 rounded-full text-zinc-700 hover:text-[#5022c3] hover:bg-zinc-100 transition-colors cursor-pointer relative"
                     >
-                      <Share2 className="h-3.5 w-3.5" />
-                      <span>{copiedLink ? "Link copied!" : "Share"}</span>
+                      <Share2 className="h-5 w-5" />
+                      {copiedLink && (
+                        <span className="absolute right-full mr-2 px-2 py-0.5 text-[11px] font-semibold bg-[#1c1917] text-white rounded whitespace-nowrap shadow-sm">
+                          Link copied!
+                        </span>
+                      )}
                     </button>
-                    <span className="text-zinc-300">|</span>
-                    <a href="#faq" className="hover:text-[#5022c3]">
-                      Apply Coupon
-                    </a>
                   </div>
                 </div>
               </div>
