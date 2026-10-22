@@ -38,7 +38,7 @@ export default function HomePageClient({
   const [isStickyBarVisible, setIsStickyBarVisible] = useState(false);
   const stickyTriggerRef = useRef<HTMLParagraphElement | null>(null);
 
-  const handleDirectCheckout = async (slug?: "men" | "women") => {
+  const handleDirectCheckout = async (slug?: string) => {
     try {
       setIsCheckingOut(true);
       setCheckoutError("");

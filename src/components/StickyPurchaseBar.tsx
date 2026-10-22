@@ -6,8 +6,8 @@ import { ArrowRight } from "lucide-react";
 interface StickyPurchaseBarProps {
   courseTitle?: string;
   price?: number;
-  onOpenCheckout: (courseSlug?: "men" | "women") => void;
-  courseSlug?: "men" | "women";
+  onOpenCheckout: (courseSlug?: string) => void;
+  courseSlug?: string;
   isLanding?: boolean;
   isVisible?: boolean;
   hasAccess?: boolean;

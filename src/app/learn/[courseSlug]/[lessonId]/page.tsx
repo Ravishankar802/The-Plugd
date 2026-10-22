@@ -19,12 +19,15 @@ interface LessonPageProps {
 
 export const dynamic = "force-dynamic";
 
-const checkLessonAccess = cache(async (accessKey?: string): Promise<boolean> => {
+const checkLessonAccess = cache(async (accessKey?: string, targetSlug: string = "men"): Promise<boolean> => {
   if (!accessKey) return false;
   try {
     const customer = await getCustomerByAccessKey(accessKey);
     if (customer) {
-      return await hasUserAccessToCourse(customer.id, "men", customer.email);
+      return (
+        (await hasUserAccessToCourse(customer.id, targetSlug, customer.email)) ||
+        (await hasUserAccessToCourse(customer.id, "men", customer.email))
+      );
     }
   } catch (err) {
     console.error("[LESSON_AUTH_CHECK_ERROR]", err);
@@ -34,8 +37,8 @@ const checkLessonAccess = cache(async (accessKey?: string): Promise<boolean> => 
 
 export async function generateMetadata({ params }: LessonPageProps): Promise<Metadata> {
   const { courseSlug, lessonId } = await params;
-  const course = COURSES[courseSlug as "men" | "women"] || COURSES.men;
-  if (!course) return { title: "Lesson · The Dating Playbook" };
+  const course = COURSES[courseSlug] || COURSES.men;
+  if (!course) return { title: "Lesson · Plugd" };
 
   let accessKey: string | undefined;
   try {
@@ -45,25 +48,25 @@ export async function generateMetadata({ params }: LessonPageProps): Promise<Met
     console.error("[LESSON_METADATA_COOKIE_ERROR]", err);
   }
 
-  const hasAccess = await checkLessonAccess(accessKey);
+  const hasAccess = await checkLessonAccess(accessKey, course.slug);
 
   if (!hasAccess) {
     return {
-      title: "The Dating Playbook — Lesson",
-      description: "Sign in to access your copy of The Dating Playbook.",
+      title: `${course.title} — Lesson`,
+      description: `Sign in to access your copy of ${course.title}.`,
       openGraph: {
-        title: "The Dating Playbook — Lesson",
-        description: "Sign in to access your copy of The Dating Playbook.",
+        title: `${course.title} — Lesson`,
+        description: `Sign in to access your copy of ${course.title}.`,
       },
       twitter: {
-        title: "The Dating Playbook — Lesson",
-        description: "Sign in to access your copy of The Dating Playbook.",
+        title: `${course.title} — Lesson`,
+        description: `Sign in to access your copy of ${course.title}.`,
       },
     };
   }
 
   const data = getLesson(courseSlug, lessonId);
-  if (!data) return { title: `${course.title} · The Dating Playbook` };
+  if (!data) return { title: `${course.title} · Plugd` };
 
   return {
     title: `${data.lesson.number} ${data.lesson.title} · ${course.title}`,
@@ -82,9 +85,8 @@ export async function generateMetadata({ params }: LessonPageProps): Promise<Met
 export default async function LessonPresentationPage({ params, searchParams }: LessonPageProps) {
   const { courseSlug, lessonId } = await params;
   const { format, slide } = (await searchParams) || {};
-  const validSlug = courseSlug as "men" | "women";
 
-  const course = COURSES[validSlug] || COURSES.men;
+  const course = COURSES[courseSlug] || COURSES.men;
   if (!course) {
     notFound();
   }
@@ -98,19 +100,21 @@ export default async function LessonPresentationPage({ params, searchParams }: L
     console.error("[LESSON_PAGE_COOKIE_ERROR]", err);
   }
 
-  const hasAccess = await checkLessonAccess(accessKey);
+  const hasAccess = await checkLessonAccess(accessKey, course.slug);
 
   if (!hasAccess) {
-    redirect(`/?checkout=true&lesson=${lessonId}`);
+    const redirectBase =
+      course.slug === "men" || course.slug === "women" ? "" : course.slug;
+    redirect(`/${redirectBase}?checkout=true&lesson=${lessonId}`);
   }
 
-  const data = getLesson(validSlug, lessonId);
+  const data = getLesson(courseSlug, lessonId);
   if (!data) {
     notFound();
   }
 
-  const nextLesson = getNextLesson(validSlug, data.lesson.id);
-  const previousLesson = getPreviousLesson(validSlug, data.lesson.id);
+  const nextLesson = getNextLesson(courseSlug, data.lesson.id);
+  const previousLesson = getPreviousLesson(courseSlug, data.lesson.id);
 
   const totalSlides = data.lesson.slides?.length || 1;
   let initialSlideIndex = 0;

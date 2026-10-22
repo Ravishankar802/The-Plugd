@@ -15,7 +15,10 @@ export const dynamic = "force-dynamic";
 export async function POST(req: Request) {
   try {
     const body = await req.json().catch(() => ({}));
-    const courseSlug = "men"; // The Dating Playbook
+    const courseSlug =
+      typeof body?.courseSlug === "string" && body.courseSlug.trim()
+        ? body.courseSlug.trim()
+        : "men";
     const rawEmail = typeof body?.email === "string" ? body.email.trim().toLowerCase() : "";
     const name = typeof body?.name === "string" ? body.name.trim() : "";
 
@@ -57,7 +60,7 @@ export async function POST(req: Request) {
           success: true,
           complimentary: true,
           message: "Complimentary lifetime access verified.",
-          redirectUrl: "/learn/men?access=granted",
+          redirectUrl: `/learn/${courseSlug}?access=granted`,
         });
 
         res.cookies.set("plugd_access_key", customer.accessKey, {
@@ -76,8 +79,8 @@ export async function POST(req: Request) {
       if (alreadyPurchased) {
         const res = NextResponse.json({
           success: true,
-          message: "You already have access to The Dating Playbook.",
-          redirectUrl: "/learn/men",
+          message: "You already have access to this playbook.",
+          redirectUrl: `/learn/${courseSlug}`,
         });
 
         res.cookies.set("plugd_access_key", customer.accessKey, {
@@ -111,10 +114,10 @@ export async function POST(req: Request) {
     }
 
     const checkoutToken = randomBytes(24).toString("hex");
-    const returnUrl = `${origin}/learn/men?session_id={CHECKOUT_SESSION_ID}&purchased=men`;
+    const returnUrl = `${origin}/learn/${courseSlug}?session_id={CHECKOUT_SESSION_ID}&purchased=${courseSlug}`;
 
     const metadata: Record<string, string> = {
-      courseSlug: "men",
+      courseSlug,
       amount: "3.00",
       checkoutToken,
     };

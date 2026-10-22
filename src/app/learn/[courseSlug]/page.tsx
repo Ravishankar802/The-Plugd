@@ -27,7 +27,7 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: LearnPageProps) {
   const { courseSlug } = await params;
-  const course = COURSES[courseSlug as "men" | "women"];
+  const course = COURSES[courseSlug];
   if (!course) return { title: "Course · Plugd" };
   return {
     title: `${course.title} · Syllabus · Plugd`,
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: LearnPageProps) {
 export default async function LearnCoursePage({ params, searchParams }: LearnPageProps) {
   const { courseSlug } = await params;
   const { session_id, purchased } = (await searchParams) || {};
-  const course: Course = COURSES[courseSlug as "men" | "women"];
+  const course: Course = COURSES[courseSlug];
 
   if (!course) {
     notFound();
@@ -53,7 +53,9 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
     if (accessKey) {
       customer = await getCustomerByAccessKey(accessKey);
       if (customer) {
-        hasAccess = await hasUserAccessToCourse(customer.id, "men", customer.email);
+        hasAccess =
+          (await hasUserAccessToCourse(customer.id, course.slug, customer.email)) ||
+          (await hasUserAccessToCourse(customer.id, courseSlug, customer.email));
       }
     }
   } catch (err) {
@@ -75,7 +77,10 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
         const sessionMetadata = ((session as any)?.metadata || {}) as Record<string, string>;
         const paymentMetadata = (payment.metadata || {}) as Record<string, string>;
         const courseSlugMetadata = paymentMetadata.courseSlug || sessionMetadata.courseSlug;
-        const isCorrectCourse = courseSlugMetadata === "men";
+        const isCorrectCourse =
+          courseSlugMetadata === "men" ||
+          courseSlugMetadata === course.slug ||
+          courseSlugMetadata === courseSlug;
 
         if (hasProduct && isCorrectAmount && isCorrectCurrency && isCorrectCourse) {
           const sessionCustomerId = paymentMetadata.customerId || sessionMetadata.customerId;
@@ -97,7 +102,7 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
               const targetCustomer = await getOrCreateCustomer(targetEmail);
               await recordCoursePurchase({
                 customerId: targetCustomer.id,
-                courseSlug: "men",
+                courseSlug: courseSlugMetadata || course.slug || "men",
                 amount: 3.0,
                 paymentId: payment.payment_id,
               });
@@ -120,7 +125,7 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
 
   if (!hasAccess) {
     // If customer returned from Dodo checkout but webhook fulfillment hasn't finished yet
-    if (session_id || purchased === "men") {
+    if (session_id || purchased === "men" || purchased === course.slug || purchased === courseSlug) {
       return (
         <PendingPurchaseView
           courseSlug={course.slug}
@@ -129,7 +134,11 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
       );
     }
 
-    redirect("/?checkout=true");
+    const redirectTarget =
+      course.slug === "men" || course.slug === "women"
+        ? "/?checkout=true"
+        : `/${course.slug}?checkout=true`;
+    redirect(redirectTarget);
   }
 
   const firstLessonId = course.modules[0]?.lessons[0]?.id || "01-1";

@@ -287,22 +287,26 @@ export default function PlaybookDetailView({
             <div ref={heroCtaRef} className="block lg:hidden mt-6">
               <div className="rounded-none border border-[#d1d7dc] bg-white text-[#1c1917] overflow-hidden shadow-lg">
                 {/* Static Thumbnail fitting entire image area edge-to-edge */}
-                <div className="relative aspect-[961/448] w-full overflow-hidden bg-black">
-                  <Image
-                    src={playbook.thumbnail}
-                    alt={playbook.title}
-                    width={1024}
-                    height={576}
-                    sizes="100vw"
-                    priority
-                    className="absolute max-w-none"
-                    style={{
-                      width: "106.56%",
-                      height: "128.57%",
-                      left: "-3.33%",
-                      top: "-14.06%",
-                    }}
-                  />
+                <div className="relative aspect-[961/448] w-full overflow-hidden bg-[#ebe8e4]">
+                  {playbook.thumbnail ? (
+                    <Image
+                      src={playbook.thumbnail}
+                      alt={playbook.title}
+                      width={1024}
+                      height={576}
+                      sizes="100vw"
+                      priority
+                      className="absolute max-w-none"
+                      style={{
+                        width: "106.56%",
+                        height: "128.57%",
+                        left: "-3.33%",
+                        top: "-14.06%",
+                      }}
+                    />
+                  ) : (
+                    <div className="h-full w-full bg-[#ebe8e4]" />
+                  )}
                 </div>
 
                 {/* Mobile Purchase Actions */}
@@ -794,22 +798,26 @@ export default function PlaybookDetailView({
             <div className="hidden lg:block relative">
               <div className="sticky top-6 -mt-[310px] z-30 w-full bg-white text-[#1c1917] border border-[#d1d7dc] shadow-2xl rounded-none overflow-hidden">
                 {/* Static Thumbnail fitting entire image area edge-to-edge */}
-                <div className="relative aspect-[961/448] w-full overflow-hidden bg-black">
-                  <Image
-                    src={playbook.thumbnail}
-                    alt={playbook.title}
-                    width={1024}
-                    height={576}
-                    sizes="(max-width: 1280px) 340px, 370px"
-                    priority
-                    className="absolute max-w-none"
-                    style={{
-                      width: "106.56%",
-                      height: "128.57%",
-                      left: "-3.33%",
-                      top: "-14.06%",
-                    }}
-                  />
+                <div className="relative aspect-[961/448] w-full overflow-hidden bg-[#ebe8e4]">
+                  {playbook.thumbnail ? (
+                    <Image
+                      src={playbook.thumbnail}
+                      alt={playbook.title}
+                      width={1024}
+                      height={576}
+                      sizes="(max-width: 1280px) 340px, 370px"
+                      priority
+                      className="absolute max-w-none"
+                      style={{
+                        width: "106.56%",
+                        height: "128.57%",
+                        left: "-3.33%",
+                        top: "-14.06%",
+                      }}
+                    />
+                  ) : (
+                    <div className="h-full w-full bg-[#ebe8e4]" />
+                  )}
                 </div>
 
                 {/* Card Interior */}
