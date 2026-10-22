@@ -61,10 +61,10 @@ export default function DatingPlaybookCurriculum({
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0 flex-1">
-                      <div className="text-xs font-mono font-bold text-[#f97316] uppercase tracking-wider mb-1">
+                      <div className="text-xs font-mono font-bold text-[#2563eb] uppercase tracking-wider mb-1">
                         Module {module.number}
                       </div>
-                      <h3 className="text-base sm:text-[18px] font-bold text-[#1c1917] tracking-tight group-hover:text-[#f97316] transition-colors leading-snug">
+                      <h3 className="text-base sm:text-[18px] font-bold text-[#1c1917] tracking-tight group-hover:text-[#2563eb] transition-colors leading-snug">
                         {module.title}
                       </h3>
                       {isOpen && (

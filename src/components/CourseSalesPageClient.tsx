@@ -32,7 +32,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
   const totalLessons = course.modules.reduce((sum, m) => sum + (m.lessons?.length || m.lessonsCount), 0);
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#0E0E10] font-sans antialiased selection:bg-[#FF5500] selection:text-white">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#0E0E10] font-sans antialiased selection:bg-[#2563EB] selection:text-white">
       {/* Background grid */}
       <div className="fixed inset-0 bg-subtle-grid opacity-70 pointer-events-none -z-10" />
 
@@ -48,7 +48,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
           <div className="text-center max-w-4xl mx-auto">
             {/* Pill Eyebrow */}
             <div className="inline-flex items-center gap-2 rounded-full border border-[#E6E1D7] bg-white px-4 py-1.5 text-xs font-mono tracking-widest text-[#646059] uppercase mb-8 shadow-xs">
-              <span className="h-2 w-2 rounded-full bg-[#FF5500] animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-[#2563EB] animate-pulse" />
               <span>THE OFFICIAL PLAYBOOK {course.audience === "Men" ? "FOR MEN" : "FOR WOMEN"}</span>
             </div>
 
@@ -65,15 +65,15 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
             {/* Quick Metrics Bar */}
             <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12 mb-10 text-xs font-mono text-[#0E0E10]">
               <div className="flex items-center gap-2">
-                <Layers className="h-4 w-4 text-[#FF5500]" />
+                <Layers className="h-4 w-4 text-[#2563EB]" />
                 <span className="font-bold">{course.modulesCount} MODULES</span>
               </div>
               <div className="flex items-center gap-2">
-                <BookOpen className="h-4 w-4 text-[#FF5500]" />
+                <BookOpen className="h-4 w-4 text-[#2563EB]" />
                 <span className="font-bold">{totalLessons} SLIDE LESSONS</span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-[#FF5500]" />
+                <Clock className="h-4 w-4 text-[#2563EB]" />
                 <span className="font-bold">{course.hoursOfMaterial} OF CONTENT</span>
               </div>
             </div>
@@ -103,7 +103,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
       <section className="py-20 sm:py-28 border-b border-[#E8E4DC] bg-white/60">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-16">
-            <div className="text-[11px] font-mono tracking-widest text-[#FF5500] uppercase font-bold mb-3">
+            <div className="text-[11px] font-mono tracking-widest text-[#2563EB] uppercase font-bold mb-3">
               WHAT YOU WILL LEARN
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0E0E10]">
@@ -121,7 +121,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
                 className="rounded-3xl border border-[#E6E1D7] bg-white p-6 sm:p-8 shadow-xs hover:border-[#D2CBC0] transition-colors"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="font-mono text-sm font-bold text-[#FF5500]">
+                  <span className="font-mono text-sm font-bold text-[#2563EB]">
                     {m.number}
                   </span>
                   <span className="text-[11px] font-mono uppercase tracking-widest text-[#8E8A82]">
@@ -147,7 +147,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
       <section id="curriculum" className="py-20 sm:py-28 border-y border-[#E8E4DC] bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
-            <div className="text-[11px] font-mono tracking-widest text-[#FF5500] uppercase font-bold mb-2">
+            <div className="text-[11px] font-mono tracking-widest text-[#2563EB] uppercase font-bold mb-2">
               CURRICULUM BREAKDOWN
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0E0E10]">
@@ -183,7 +183,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
       <section className="py-20 sm:py-28 border-b border-[#E8E4DC] bg-[#FAF8F5]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="text-[11px] font-mono tracking-widest text-[#FF5500] uppercase font-bold mb-2">
+            <div className="text-[11px] font-mono tracking-widest text-[#2563EB] uppercase font-bold mb-2">
               IN THEIR WORDS
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0E0E10]">
@@ -198,9 +198,9 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
                 className="rounded-3xl border border-[#E6E1D7] bg-white p-6 sm:p-8 shadow-xs flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center gap-1 text-[#FF5500] mb-4">
+                  <div className="flex items-center gap-1 text-[#2563EB] mb-4">
                     {[...Array(5)].map((_, idx) => (
-                      <Star key={idx} className="h-3.5 w-3.5 fill-[#FF5500]" />
+                      <Star key={idx} className="h-3.5 w-3.5 fill-[#2563EB]" />
                     ))}
                   </div>
                   <p className="text-sm text-[#0E0E10] leading-relaxed italic mb-6">
@@ -224,7 +224,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
       <section id="faq" className="py-20 sm:py-28 border-b border-[#E8E4DC] bg-white">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="text-[11px] font-mono tracking-widest text-[#FF5500] uppercase font-bold mb-2">
+            <div className="text-[11px] font-mono tracking-widest text-[#2563EB] uppercase font-bold mb-2">
               FAQ
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0E0E10]">
@@ -241,7 +241,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
                     onClick={() => setOpenFaqIndex(isOpen ? null : index)}
                     className="w-full flex items-center justify-between text-left group focus:outline-none"
                   >
-                    <span className="text-base sm:text-lg font-bold text-[#0E0E10] group-hover:text-[#FF5500] transition-colors pr-4">
+                    <span className="text-base sm:text-lg font-bold text-[#0E0E10] group-hover:text-[#2563EB] transition-colors pr-4">
                       {faq.question}
                     </span>
                     <div
@@ -269,7 +269,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
       <section className="py-20 sm:py-28 bg-[#FAF8F5] text-center border-b border-[#E8E4DC]">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl border border-[#0E0E10] bg-[#0E0E10] p-8 sm:p-16 text-white shadow-2xl relative overflow-hidden">
-            <span className="inline-block rounded-full bg-[#FF5500] px-3.5 py-1 text-[11px] font-mono font-bold uppercase tracking-wider text-white mb-6">
+            <span className="inline-block rounded-full bg-[#2563EB] px-3.5 py-1 text-[11px] font-mono font-bold uppercase tracking-wider text-white mb-6">
               INSTANT ACCESS
             </span>
             <h2 className="font-editorial-title text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
@@ -280,7 +280,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
             </p>
             <button
               onClick={() => setCheckoutOpen(true)}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF5500] px-10 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-[#E04B00] hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#2563EB] px-10 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-[#1D4ED8] hover:scale-105"
             >
               <span>GET THE PLAYBOOK → ${course.price}</span>
             </button>

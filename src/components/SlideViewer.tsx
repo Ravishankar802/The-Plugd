@@ -224,8 +224,8 @@ export default function SlideViewer({
       onTouchEnd={handleTouchEnd}
       className={`relative flex min-h-screen flex-col font-sans antialiased ${
         isModule1
-          ? "bg-[#faf8f5] text-[#1c1917] selection:bg-[#f97316] selection:text-white"
-          : "bg-[#0A0A0C] text-white selection:bg-[#FF5500] selection:text-white"
+          ? "bg-[#faf8f5] text-[#1c1917] selection:bg-[#2563eb] selection:text-white"
+          : "bg-[#0A0A0C] text-white selection:bg-[#2563eb] selection:text-white"
       } ${isFullscreen ? "p-0" : ""}`}
     >
       {/* Top Header Controls Bar */}
@@ -267,7 +267,7 @@ export default function SlideViewer({
                   : "border-neutral-800 bg-neutral-900 text-neutral-200 hover:border-neutral-700 hover:bg-neutral-800"
               }`}
             >
-              <span className={`font-bold shrink-0 ${isModule1 ? "text-[#f97316]" : "text-[#FF5500]"}`}>
+              <span className={`font-bold shrink-0 ${isModule1 ? "text-[#2563eb]" : "text-[#2563eb]"}`}>
                 MODULE {String(module.number).padStart(2, "0")}
               </span>
               <ChevronDown
@@ -293,9 +293,7 @@ export default function SlideViewer({
                   }`}
                 >
                   <span
-                    className={`text-[11px] font-mono font-bold tracking-wider uppercase ${
-                      isModule1 ? "text-[#f97316]" : "text-[#FF5500]"
-                    }`}
+                    className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#2563eb]"
                   >
                     CURRICULUM · 10 MODULES
                   </span>
@@ -326,9 +324,7 @@ export default function SlideViewer({
                         }}
                         className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${
                           isActive
-                            ? isModule1
-                              ? "bg-[#f97316]/10 text-[#f97316] font-bold"
-                              : "bg-[#FF5500]/15 text-[#FF5500] font-bold"
+                            ? "bg-[#2563eb]/15 text-[#2563eb] font-bold"
                             : isModule1
                             ? "text-[#44403c] hover:bg-[#f5f3ef] hover:text-[#1c1917]"
                             : "text-neutral-300 hover:bg-neutral-800/80 hover:text-white"
@@ -338,9 +334,7 @@ export default function SlideViewer({
                           <span
                             className={`font-mono shrink-0 text-[11px] font-bold ${
                               isActive
-                                ? isModule1
-                                  ? "text-[#f97316]"
-                                  : "text-[#FF5500]"
+                                ? "text-[#2563eb]"
                                 : isModule1
                                 ? "text-[#78716c]"
                                 : "text-neutral-400"
@@ -352,9 +346,7 @@ export default function SlideViewer({
                         </div>
                         {isActive && (
                           <Check
-                            className={`h-3.5 w-3.5 shrink-0 ${
-                              isModule1 ? "text-[#f97316]" : "text-[#FF5500]"
-                            }`}
+                            className="h-3.5 w-3.5 shrink-0 text-[#2563eb]"
                           />
                         )}
                       </button>
@@ -408,9 +400,7 @@ export default function SlideViewer({
                   }`}
                 >
                   <span
-                    className={`text-[11px] font-mono font-bold tracking-wider uppercase ${
-                      isModule1 ? "text-[#f97316]" : "text-[#FF5500]"
-                    }`}
+                    className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#2563eb]"
                   >
                     MODULE {String(module.number).padStart(2, "0")} · LESSONS
                   </span>
@@ -438,9 +428,7 @@ export default function SlideViewer({
                         }}
                         className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${
                           isActive
-                            ? isModule1
-                              ? "bg-[#f97316]/10 text-[#f97316] font-bold"
-                              : "bg-[#FF5500]/15 text-[#FF5500] font-bold"
+                            ? "bg-[#2563eb]/15 text-[#2563eb] font-bold"
                             : isModule1
                             ? "text-[#44403c] hover:bg-[#f5f3ef] hover:text-[#1c1917]"
                             : "text-neutral-300 hover:bg-neutral-800/80 hover:text-white"
@@ -450,9 +438,7 @@ export default function SlideViewer({
                           <span
                             className={`font-mono shrink-0 text-[11px] ${
                               isActive
-                                ? isModule1
-                                  ? "text-[#f97316] font-bold"
-                                  : "text-[#FF5500] font-bold"
+                                ? "text-[#2563eb] font-bold"
                                 : isModule1
                                 ? "text-[#78716c]"
                                 : "text-neutral-400"
@@ -464,9 +450,7 @@ export default function SlideViewer({
                         </div>
                         {isActive && (
                           <Check
-                            className={`h-3.5 w-3.5 shrink-0 ${
-                              isModule1 ? "text-[#f97316]" : "text-[#FF5500]"
-                            }`}
+                            className="h-3.5 w-3.5 shrink-0 text-[#2563eb]"
                           />
                         )}
                       </button>
@@ -497,7 +481,7 @@ export default function SlideViewer({
                   : "bg-neutral-800 text-white"
               }`}
             >
-              <Presentation className={`h-3.5 w-3.5 ${isModule1 ? "text-[#f97316]" : "text-[#FF5500]"}`} />
+              <Presentation className="h-3.5 w-3.5 text-[#2563eb]" />
               <span className="hidden sm:inline">Presentation</span>
             </button>
             <button
@@ -533,9 +517,7 @@ export default function SlideViewer({
               }`}
             >
               <div
-                className={`h-full transition-all duration-300 ${
-                  isModule1 ? "bg-[#f97316]" : "bg-[#FF5500]"
-                }`}
+                className="h-full transition-all duration-300 bg-[#2563eb]"
                 style={{ width: `${((currentIndex + 1) / totalSlides) * 100}%` }}
               />
             </div>
@@ -591,14 +573,12 @@ export default function SlideViewer({
             <div
               className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1 text-[11px] font-mono tracking-widest uppercase font-bold ${
                 isModule1
-                  ? "border-[#fed7aa] bg-[#fff7ed] text-[#f97316]"
+                  ? "border-[#bfdbfe] bg-[#eff6ff] text-[#2563eb]"
                   : "border-neutral-800 bg-neutral-900/90 text-neutral-400"
               }`}
             >
               <span
-                className={`h-1.5 w-1.5 rounded-full ${
-                  isModule1 ? "bg-[#f97316]" : "bg-[#FF5500]"
-                }`}
+                className="h-1.5 w-1.5 rounded-full bg-[#2563eb]"
               />
               {currentSlide?.eyebrow || `MODULE ${module.number} · LESSON ${lesson.number}`}
             </div>
@@ -646,9 +626,7 @@ export default function SlideViewer({
               </h2>
               {currentSlide.subheadline && (
                 <p
-                  className={`text-base sm:text-xl font-medium leading-relaxed ${
-                    isModule1 ? "text-[#f97316]" : "text-[#FF5500] font-mono"
-                  }`}
+                  className="text-base sm:text-xl font-medium leading-relaxed text-[#2563eb] font-mono"
                 >
                   {currentSlide.subheadline}
                 </p>
@@ -660,9 +638,7 @@ export default function SlideViewer({
           {currentSlide?.type === "QUOTE" && (
             <div className="py-8 sm:py-12 max-w-3xl">
               <div
-                className={`text-5xl sm:text-6xl font-serif mb-2 ${
-                  isModule1 ? "text-[#f97316]" : "text-[#FF5500]"
-                }`}
+                className="text-5xl sm:text-6xl font-serif mb-2 text-[#2563eb]"
               >
                 “
               </div>
@@ -722,11 +698,7 @@ export default function SlideViewer({
                   >
                     {pillar.badge && (
                       <span
-                        className={`inline-block rounded-full px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider mb-3 ${
-                          isModule1
-                            ? "border border-[#fed7aa] bg-[#fff7ed] text-[#f97316]"
-                            : "bg-[#FF5500]/10 text-[#FF5500]"
-                        }`}
+                        className="inline-block rounded-full px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider mb-3 border border-[#bfdbfe] bg-[#eff6ff] text-[#2563eb]"
                       >
                         {pillar.badge}
                       </span>
@@ -793,14 +765,12 @@ export default function SlideViewer({
                 <div
                   className={`rounded-2xl border p-6 ${
                     isModule1
-                      ? "border-[#fed7aa] bg-[#fff7ed]"
-                      : "border-[#FF5500]/40 bg-[#FF5500]/5"
+                      ? "border-[#bfdbfe] bg-[#eff6ff]"
+                      : "border-[#2563eb]/40 bg-[#2563eb]/5"
                   }`}
                 >
                   <div
-                    className={`flex items-center gap-2 text-xs font-mono uppercase font-bold tracking-wider mb-4 ${
-                      isModule1 ? "text-[#ea580c]" : "text-[#FF5500]"
-                    }`}
+                    className="flex items-center gap-2 text-xs font-mono uppercase font-bold tracking-wider mb-4 text-[#2563eb]"
                   >
                     <Check className="h-4 w-4" />
                     <span>{currentSlide.comparison?.rightTitle}</span>
@@ -814,9 +784,7 @@ export default function SlideViewer({
                         }`}
                       >
                         <span
-                          className={`font-bold shrink-0 ${
-                            isModule1 ? "text-[#f97316]" : "text-[#FF5500]"
-                          }`}
+                          className="font-bold shrink-0 text-[#2563eb]"
                         >
                           ✓
                         </span>
@@ -867,14 +835,12 @@ export default function SlideViewer({
                 <div
                   className={`rounded-2xl border p-5 sm:p-6 ${
                     isModule1
-                      ? "border-[#fed7aa] bg-[#fff7ed]"
-                      : "border-[#FF5500]/30 bg-[#FF5500]/10"
+                      ? "border-[#bfdbfe] bg-[#eff6ff]"
+                      : "border-[#2563eb]/30 bg-[#2563eb]/10"
                   }`}
                 >
                   <div
-                    className={`flex items-center gap-2 text-xs font-mono uppercase tracking-widest mb-2 font-bold ${
-                      isModule1 ? "text-[#ea580c]" : "text-[#FF5500]"
-                    }`}
+                    className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest mb-2 font-bold text-[#2563eb]"
                   >
                     <Sparkles className="h-4 w-4" />
                     <span>The Evidence-Informed Reality</span>
@@ -889,11 +855,11 @@ export default function SlideViewer({
                   <div
                     className={`text-xs font-mono pt-3 border-t ${
                       isModule1
-                        ? "text-[#44403c] border-[#f1e6da]"
+                        ? "text-[#44403c] border-[#dbeafe]"
                         : "text-neutral-300 border-neutral-800"
                     }`}
                   >
-                    <span className={isModule1 ? "text-[#ea580c] font-bold" : "text-[#FF5500]"}>
+                    <span className="text-[#2563eb] font-bold">
                       PRACTICAL TAKEAWAY:{" "}
                     </span>
                     {currentSlide.mythReality?.takeaway}
@@ -933,9 +899,7 @@ export default function SlideViewer({
                     }`}
                   >
                     <div
-                      className={`text-xs font-mono font-bold mb-1 ${
-                        isModule1 ? "text-[#f97316]" : "text-[#FF5500]"
-                      }`}
+                      className="text-xs font-mono font-bold mb-1 text-[#2563eb]"
                     >
                       {item.number}
                     </div>
@@ -984,15 +948,15 @@ export default function SlideViewer({
                     key={idx}
                     className={`flex items-start gap-4 rounded-2xl border p-4 sm:p-5 transition-colors ${
                       isModule1
-                        ? "border-[#e7e5e4] bg-[#faf8f5] hover:border-[#fed7aa]"
+                        ? "border-[#e7e5e4] bg-[#faf8f5] hover:border-[#bfdbfe]"
                         : "border-neutral-800 bg-neutral-900/60 hover:border-neutral-700"
                     }`}
                   >
                     <div
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-xl font-bold text-xs ${
                         isModule1
-                          ? "bg-[#fff7ed] border border-[#fed7aa] text-[#f97316]"
-                          : "bg-[#FF5500]/10 border border-[#FF5500]/30 text-[#FF5500]"
+                          ? "bg-[#eff6ff] border border-[#bfdbfe] text-[#2563eb]"
+                          : "bg-[#2563eb]/15 border border-[#2563eb]/30 text-[#2563eb]"
                       }`}
                     >
                       <Check className="h-4 w-4" />
@@ -1068,14 +1032,12 @@ export default function SlideViewer({
                   <div
                     className={`rounded-2xl border p-5 ${
                       isModule1
-                        ? "border-[#fed7aa] bg-[#fff7ed]"
-                        : "border-[#FF5500]/40 bg-[#FF5500]/10"
+                        ? "border-[#bfdbfe] bg-[#eff6ff]"
+                        : "border-[#2563eb]/40 bg-[#2563eb]/15"
                     }`}
                   >
                     <span
-                      className={`text-xs font-mono uppercase tracking-wider font-bold block mb-1 ${
-                        isModule1 ? "text-[#ea580c]" : "text-[#FF5500]"
-                      }`}
+                      className="text-xs font-mono uppercase tracking-wider font-bold block mb-1 text-[#2563eb]"
                     >
                       Calibrated Move:
                     </span>
@@ -1092,7 +1054,7 @@ export default function SlideViewer({
                         : "border-neutral-800 bg-neutral-900/40 text-neutral-300"
                     }`}
                   >
-                    <span className={isModule1 ? "text-[#f97316] font-bold" : "text-[#FF5500] font-bold"}>
+                    <span className="text-[#2563eb] font-bold">
                       WHY IT WORKS:{" "}
                     </span>
                     {currentSlide.scenario.whyItWorks}
@@ -1115,8 +1077,8 @@ export default function SlideViewer({
               <div
                 className={`rounded-2xl border p-6 sm:p-8 mt-6 ${
                   isModule1
-                    ? "border-[#fed7aa] bg-[#fff7ed]"
-                    : "border-[#FF5500]/40 bg-gradient-to-r from-neutral-900 to-[#1A1A20]"
+                    ? "border-[#bfdbfe] bg-[#eff6ff]"
+                    : "border-[#2563eb]/40 bg-gradient-to-r from-neutral-900 to-[#1A1A20]"
                 }`}
               >
                 <div className="flex items-center justify-between mb-4">
@@ -1128,11 +1090,7 @@ export default function SlideViewer({
                     {currentSlide.exercise?.title}
                   </div>
                   <span
-                    className={`rounded-full px-3 py-1 text-xs font-mono font-bold uppercase ${
-                      isModule1
-                        ? "bg-[#f97316] text-white"
-                        : "bg-[#FF5500] text-white"
-                    }`}
+                    className="rounded-full px-3 py-1 text-xs font-mono font-bold uppercase bg-[#2563eb] text-white"
                   >
                     {currentSlide.exercise?.timeframe}
                   </span>
@@ -1160,8 +1118,8 @@ export default function SlideViewer({
                       <span
                         className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-mono font-bold ${
                           isModule1
-                            ? "bg-[#f97316] text-white"
-                            : "bg-[#FF5500]/20 text-[#FF5500]"
+                            ? "bg-[#2563eb] text-white"
+                            : "bg-[#2563eb]/20 text-[#2563eb]"
                         }`}
                       >
                         {i + 1}
@@ -1195,11 +1153,7 @@ export default function SlideViewer({
                     }`}
                   >
                     <div
-                      className={`rounded-lg p-2 shrink-0 ${
-                        isModule1
-                          ? "bg-[#f97316]/10 text-[#f97316]"
-                          : "bg-[#FF5500]/10 text-[#FF5500]"
-                      }`}
+                      className="rounded-lg p-2 shrink-0 bg-[#2563eb]/15 text-[#2563eb]"
                     >
                       <CheckCircle2 className="h-5 w-5" />
                     </div>
@@ -1220,11 +1174,7 @@ export default function SlideViewer({
           {currentSlide?.type === "CHAPTER_END" && (
             <div className="py-8 sm:py-14 text-center max-w-xl mx-auto">
               <div
-                className={`mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full ${
-                  isModule1
-                    ? "bg-[#f97316]/10 text-[#f97316]"
-                    : "bg-[#FF5500]/20 text-[#FF5500]"
-                }`}
+                className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#2563eb]/15 text-[#2563eb]"
               >
                 <Sparkles className="h-8 w-8" />
               </div>
@@ -1246,9 +1196,7 @@ export default function SlideViewer({
               {nextLesson ? (
                 <button
                   onClick={() => router.push(`/learn/${course.slug}/${nextLesson.lesson.id}`)}
-                  className={`inline-flex items-center gap-2 rounded-2xl px-8 py-4 text-sm font-bold text-white shadow-md transition-transform hover:scale-105 active:scale-95 ${
-                    isModule1 ? "bg-[#f97316] hover:bg-[#ea580c]" : "bg-[#FF5500]"
-                  }`}
+                  className="inline-flex items-center gap-2 rounded-2xl px-8 py-4 text-sm font-bold text-white shadow-md transition-transform hover:scale-105 active:scale-95 bg-[#2563eb] hover:bg-[#1d4ed8]"
                 >
                   <span>Continue to {nextLesson.lesson.number}</span>
                   <ArrowRight className="h-4 w-4" />

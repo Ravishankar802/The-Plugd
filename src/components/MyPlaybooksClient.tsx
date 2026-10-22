@@ -73,7 +73,7 @@ export default function MyPlaybooksClient() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-[#1c1917] font-sans antialiased selection:bg-[#f97316] selection:text-white">
+    <div className="min-h-screen bg-[#faf8f5] text-[#1c1917] font-sans antialiased selection:bg-[#2563eb] selection:text-white">
       {/* Background grid */}
       <div className="fixed inset-0 bg-subtle-grid opacity-70 pointer-events-none -z-10" />
 
@@ -82,8 +82,8 @@ export default function MyPlaybooksClient() {
       <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
         {/* Page Header */}
         <div className="mb-10 border-b border-[#e7e5e4] pb-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#fed7aa] bg-[#fff7ed] px-3.5 py-1 text-xs font-mono font-bold tracking-widest text-[#f97316] uppercase mb-4 shadow-xs">
-            <span className="h-2 w-2 rounded-full bg-[#f97316]" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#bfdbfe] bg-[#eff6ff] px-3.5 py-1 text-xs font-mono font-bold tracking-widest text-[#2563eb] uppercase mb-4 shadow-xs">
+            <span className="h-2 w-2 rounded-full bg-[#2563eb]" />
             <span>PLAYBOOK LIBRARY</span>
           </div>
 
@@ -114,7 +114,7 @@ export default function MyPlaybooksClient() {
             ) : (
               <button
                 onClick={() => setCheckoutOpen(true)}
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#f97316] hover:text-[#ea580c] transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#2563eb] hover:text-[#1d4ed8] transition-colors"
               >
                 <span>Access with email →</span>
               </button>
@@ -132,11 +132,11 @@ export default function MyPlaybooksClient() {
               <div>
                 <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#fed7aa] bg-[#fff7ed] px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[#f97316]">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#f97316]" />
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#bfdbfe] bg-[#eff6ff] px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[#2563eb]">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#2563eb]" />
                       <span>DATING</span>
                     </span>
-                    <div className="inline-flex items-center gap-2 rounded-full bg-[#fbf5ef] border border-[#fed7aa] px-3.5 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[#f97316]">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-[#eff6ff] border border-[#bfdbfe] px-3.5 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[#2563eb]">
                       <Sparkles className="h-3 w-3" />
                       <span>10 MODULES · 69 LESSONS</span>
                     </div>
@@ -162,7 +162,7 @@ export default function MyPlaybooksClient() {
                   </div>
                   <div className="h-2.5 w-full rounded-full bg-[#f0eee9] overflow-hidden">
                     <div
-                      className="h-full bg-[#f97316] transition-all duration-500 rounded-full"
+                      className="h-full bg-[#2563eb] transition-all duration-500 rounded-full"
                       style={{ width: `${Math.max(item.percent, 3)}%` }}
                     />
                   </div>

@@ -212,8 +212,8 @@ export default function LoginForm({ initialError }: LoginFormProps) {
     return (
       <div className="w-full max-w-md rounded-2xl border border-[#e7e5e4] bg-white p-8 sm:p-10 shadow-sm">
         <div className="text-center mb-6">
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#fef3c7] text-[#f59e0b]">
-            <ShieldCheck className="h-6 w-6 text-[#f97316]" />
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#eff6ff] text-[#2563eb]">
+            <ShieldCheck className="h-6 w-6 text-[#2563eb]" />
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-[#1c1917]">
             Enter verification code
@@ -295,7 +295,7 @@ export default function LoginForm({ initialError }: LoginFormProps) {
               type="button"
               onClick={handleResend}
               disabled={isSubmitting}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#f97316] hover:text-[#ea580c] transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#2563eb] hover:text-[#1d4ed8] transition-colors cursor-pointer"
             >
               <RefreshCw className="h-3.5 w-3.5" />
               <span>Resend code</span>
@@ -313,8 +313,8 @@ export default function LoginForm({ initialError }: LoginFormProps) {
   return (
     <div className="w-full max-w-md rounded-2xl border border-[#e7e5e4] bg-white p-8 sm:p-10 shadow-sm">
       <div className="text-center mb-6">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#faf8f5] border border-[#e7e5e4]">
-          <Mail className="h-5 w-5 text-[#f97316]" />
+        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#eff6ff] border border-[#bfdbfe]">
+          <Mail className="h-5 w-5 text-[#2563eb]" />
         </div>
         <h1 className="text-2xl font-bold tracking-tight text-[#1c1917]">
           Sign in to your playbook
@@ -376,7 +376,7 @@ export default function LoginForm({ initialError }: LoginFormProps) {
         <span>Don&apos;t have The Dating Playbook yet? </span>
         <Link
           href="/"
-          className="font-semibold text-[#1c1917] hover:text-[#f97316] transition-colors"
+          className="font-semibold text-[#1c1917] hover:text-[#2563eb] transition-colors"
         >
           Get it for $3
         </Link>

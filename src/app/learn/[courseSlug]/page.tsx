@@ -139,7 +139,7 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
   );
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#0E0E10] font-sans antialiased selection:bg-[#FF5500] selection:text-white">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#0E0E10] font-sans antialiased selection:bg-[#2563EB] selection:text-white">
       <div className="fixed inset-0 bg-subtle-grid opacity-70 pointer-events-none -z-10" />
 
       <Header activeCourse={course.slug} />
@@ -149,7 +149,7 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
         <div className="rounded-3xl border border-[#E6E1D7] bg-white p-8 sm:p-12 shadow-sm mb-12">
           <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
             <div>
-              <span className="inline-block rounded-full bg-[#FAF8F5] border border-[#E6E1D7] px-3.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[#FF5500] mb-4">
+              <span className="inline-block rounded-full bg-[#FAF8F5] border border-[#E6E1D7] px-3.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[#2563EB] mb-4">
                 {course.shortTitle} · OFFICIAL SYLLABUS
               </span>
               <h1 className="font-editorial-title text-3xl sm:text-5xl font-black tracking-tight text-[#0E0E10] mb-4 leading-tight">
@@ -172,11 +172,11 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
           {/* Stats Bar */}
           <div className="mt-8 flex flex-wrap items-center gap-8 border-t border-[#EFECE6] pt-6 text-xs font-mono text-[#646059]">
             <div className="flex items-center gap-2">
-              <Layers className="h-4 w-4 text-[#FF5500]" />
+              <Layers className="h-4 w-4 text-[#2563EB]" />
               <span>{course.modules.length} MODULES</span>
             </div>
             <div className="flex items-center gap-2">
-              <BookOpen className="h-4 w-4 text-[#FF5500]" />
+              <BookOpen className="h-4 w-4 text-[#2563EB]" />
               <span>{totalLessons} LESSONS</span>
             </div>
           </div>
@@ -197,7 +197,7 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
               <div className="flex items-start justify-between gap-4 border-b border-[#EFECE6] pb-4 mb-4">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-mono text-xs font-bold text-[#FF5500]">
+                    <span className="font-mono text-xs font-bold text-[#2563EB]">
                       MODULE {mod.number}
                     </span>
                     <span className="text-neutral-400">•</span>
@@ -228,7 +228,7 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
                       <span className="font-mono text-xs font-semibold text-[#8E8A82] group-hover:text-[#0E0E10] w-12 shrink-0">
                         {lesson.number}
                       </span>
-                      <span className="text-sm font-semibold text-[#0E0E10] group-hover:text-[#FF5500] transition-colors truncate">
+                      <span className="text-sm font-semibold text-[#0E0E10] group-hover:text-[#2563EB] transition-colors truncate">
                         {lesson.title}
                       </span>
                     </Link>
@@ -251,10 +251,10 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
                       {/* Written Lesson Link */}
                       <Link
                         href={`/learn/${course.slug}/${lesson.id}?format=written`}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-[#E6E1D7] bg-white text-xs font-medium text-[#646059] hover:text-[#FF5500] hover:border-[#FF5500] transition-colors shadow-xs"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-[#E6E1D7] bg-white text-xs font-medium text-[#646059] hover:text-[#2563EB] hover:border-[#2563EB] transition-colors shadow-xs"
                         title="Read written lesson"
                       >
-                        <BookOpen className="h-3.5 w-3.5 text-[#FF5500]" />
+                        <BookOpen className="h-3.5 w-3.5 text-[#2563EB]" />
                         <span>Written</span>
                       </Link>
 

@@ -182,7 +182,7 @@ export const DATING_PLAYBOOK_SUMMARY: PlaybookSummary = {
   badge: "Bestseller",
   rating: 4.7,
   ratingCount: "1,201",
-  accentColor: "#f97316",
+  accentColor: "#2563eb",
   thumbnail: "/dating-couple-collage.png",
   publishedAt: "2026-10-18T10:00:00Z",
 };

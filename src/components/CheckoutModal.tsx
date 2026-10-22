@@ -84,8 +84,8 @@ export default function CheckoutModal({
 
         {/* Modal Header */}
         <div className="mb-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#FED7AA] bg-[#FFF7ED] px-3 py-1 text-[11px] font-mono tracking-wider text-[#FF5500] uppercase mb-3 font-bold">
-            <span className="h-2 w-2 rounded-full bg-[#FF5500]" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#BFDBFE] bg-[#EFF6FF] px-3 py-1 text-[11px] font-mono tracking-wider text-[#2563EB] uppercase mb-3 font-bold">
+            <span className="h-2 w-2 rounded-full bg-[#2563EB]" />
             Direct Instant Access
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0E0E10]">
@@ -122,7 +122,7 @@ export default function CheckoutModal({
 
           <div className="mt-4 pt-3.5 border-t border-[#F0EEE9] flex flex-wrap items-center justify-between gap-2 text-xs text-[#646059]">
             <span className="flex items-center gap-1.5 font-medium">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#FF5500]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#2563EB]" />
               One-time payment
             </span>
             <span className="flex items-center gap-1.5 font-medium">

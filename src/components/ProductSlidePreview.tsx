@@ -50,7 +50,7 @@ export default function ProductSlidePreview() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#E6E1D7] bg-white px-3.5 py-1 text-[11px] font-mono tracking-widest text-[#646059] uppercase mb-4">
-            <span className="h-2 w-2 rounded-full bg-[#FF5500] animate-pulse" />
+            <span className="h-2 w-2 rounded-full bg-[#2563EB] animate-pulse" />
             The Presentation Engine
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0E0E10]">
@@ -64,7 +64,7 @@ export default function ProductSlidePreview() {
         {/* 3D Layered Presentation Preview Container */}
         <div className="relative mx-auto max-w-5xl">
           {/* Subtle Ambient Glow Behind Frame */}
-          <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/10 via-amber-500/5 to-rose-500/10 blur-2xl -z-10 rounded-3xl" />
+          <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 via-indigo-500/5 to-cyan-500/10 blur-2xl -z-10 rounded-3xl" />
 
           {/* Background Perspective Slide Layer 2 (Behind) */}
           <div className="hidden sm:block absolute -top-6 -right-4 w-full h-full rounded-3xl border border-neutral-300/60 bg-[#ECE7DC] opacity-40 transform rotate-1 scale-[0.98] -z-10 pointer-events-none" />
@@ -93,7 +93,7 @@ export default function ProductSlidePreview() {
                 </span>
                 <div className="h-1.5 w-24 rounded-full bg-neutral-800 overflow-hidden ml-2">
                   <div
-                    className="h-full bg-[#FF5500] transition-all duration-300"
+                    className="h-full bg-[#2563EB] transition-all duration-300"
                     style={{
                       width: `${((currentSlideIndex + 1) / previewSlides.length) * 100}%`,
                     }}
@@ -107,7 +107,7 @@ export default function ProductSlidePreview() {
               {/* Slide Meta Eyebrow */}
               <div className="flex items-center justify-between">
                 <div className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/80 px-3 py-1 font-mono text-[10px] text-neutral-300 uppercase tracking-widest">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#FF5500]" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#2563EB]" />
                   {slide.moduleTag} · {slide.topic}
                 </div>
                 <div className="hidden sm:flex items-center gap-1 text-[11px] font-mono text-neutral-500">
@@ -128,11 +128,11 @@ export default function ProductSlidePreview() {
                 {slide.type === "statement" && (
                   <div className="mt-8 rounded-2xl border border-neutral-800 bg-neutral-900/60 p-5 max-w-xl">
                     <div className="flex items-start gap-3">
-                      <div className="rounded-lg bg-[#FF5500]/10 p-2 text-[#FF5500]">
+                      <div className="rounded-lg bg-[#2563EB]/15 p-2 text-[#2563EB]">
                         <Sparkles className="h-4 w-4" />
                       </div>
                       <div>
-                        <div className="text-xs font-mono text-[#FF5500] font-semibold uppercase tracking-wider mb-1">
+                        <div className="text-xs font-mono text-[#2563EB] font-semibold uppercase tracking-wider mb-1">
                           {slide.metric}
                         </div>
                         <div className="text-sm text-neutral-300">
@@ -153,7 +153,7 @@ export default function ProductSlidePreview() {
                         <div
                           className={`max-w-[80%] rounded-2xl px-4 py-2 text-xs sm:text-sm font-medium ${
                             msg.sender === "you"
-                              ? "bg-[#FF5500] text-white rounded-br-xs"
+                              ? "bg-[#2563EB] text-white rounded-br-xs"
                               : "bg-neutral-800 text-neutral-200 rounded-bl-xs"
                           }`}
                         >
@@ -174,7 +174,7 @@ export default function ProductSlidePreview() {
                         key={i}
                         className="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-4"
                       >
-                        <div className="text-xs font-mono text-[#FF5500] font-bold mb-1">
+                        <div className="text-xs font-mono text-[#2563EB] font-bold mb-1">
                           {p.label}
                         </div>
                         <div className="text-xs text-neutral-300 leading-snug">

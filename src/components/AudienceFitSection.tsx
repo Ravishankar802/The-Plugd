@@ -21,16 +21,16 @@ export default function AudienceFitSection() {
           </h2>
         </div>
 
-        {/* Audience Fit Checklist Card — Warm Cream Card with Subtle Orange Border */}
-        <div className="rounded-2xl border border-[#fed7aa] bg-[#fff7ed] shadow-xs overflow-hidden">
-          <ul className="divide-y divide-[#f1e6da] list-none p-0 m-0">
+        {/* Audience Fit Checklist Card — Subtle Blue Tinted Card */}
+        <div className="rounded-2xl border border-[#bfdbfe] bg-[#eff6ff] shadow-xs overflow-hidden">
+          <ul className="divide-y divide-[#dbeafe] list-none p-0 m-0">
             {checklistItems.map((text, idx) => (
               <li
                 key={idx}
                 className="py-4 sm:py-5 px-6 sm:px-8 flex items-start gap-4 text-[15.5px] sm:text-[16px] text-[#1c1917] leading-relaxed"
               >
                 <Check
-                  className="h-5 w-5 text-[#f97316] shrink-0 mt-0.5 stroke-[2.5]"
+                  className="h-5 w-5 text-[#2563eb] shrink-0 mt-0.5 stroke-[2.5]"
                   aria-hidden="true"
                 />
                 <span>{text}</span>

@@ -63,7 +63,7 @@ export default function StickyPurchaseBar({
         <div className="flex items-center justify-between gap-4 rounded-2xl bg-[#0E0E10] px-5 py-3.5 text-white shadow-2xl shadow-black/30 border border-neutral-800 backdrop-blur-lg">
           {/* Left Info */}
           <div className="flex items-center gap-3 overflow-hidden">
-            <div className="flex h-2.5 w-2.5 shrink-0 rounded-full bg-[#FF5500] animate-pulse" />
+            <div className="flex h-2.5 w-2.5 shrink-0 rounded-full bg-[#2563EB] animate-pulse" />
             <div className="truncate">
               <div className="flex items-center gap-2">
                 <span className="font-mono text-xs font-black tracking-wider text-neutral-300">

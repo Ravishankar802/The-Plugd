@@ -123,7 +123,7 @@ export default function WrittenLessonViewer({
                 key={idx}
                 className="flex items-start gap-3 text-[16px] sm:text-[17px] text-[#3b3836] leading-relaxed"
               >
-                <span className="h-2 w-2 rounded-full bg-[#f97316] shrink-0 mt-2.5" />
+                <span className="h-2 w-2 rounded-full bg-[#2563eb] shrink-0 mt-2.5" />
                 <span>{renderInline(item)}</span>
               </li>
             ))}
@@ -140,7 +140,7 @@ export default function WrittenLessonViewer({
           <div key={key} className="my-8 overflow-x-auto rounded-2xl border border-[#e7e5e4] bg-white shadow-xs">
             <table className="w-full text-left border-collapse text-sm sm:text-base">
               {header && (
-                <thead className="bg-[#fbf5ef] border-b border-[#e7e5e4]">
+                <thead className="bg-[#f8fafc] border-b border-[#e7e5e4]">
                   <tr>
                     {header.map((col, idx) => (
                       <th
@@ -236,7 +236,7 @@ export default function WrittenLessonViewer({
         elements.push(
           <blockquote
             key={`bq-${index}`}
-            className="my-7 rounded-2xl border-l-4 border-[#f97316] bg-[#fbf5ef] py-4 px-5 sm:px-6 italic text-[16px] sm:text-[17px] text-[#44403c] leading-relaxed shadow-xs"
+            className="my-7 rounded-2xl border-l-4 border-[#2563eb] bg-[#eff6ff] py-4 px-5 sm:px-6 italic text-[16px] sm:text-[17px] text-[#44403c] leading-relaxed shadow-xs"
           >
             {renderInline(trimmed.replace("> ", ""))}
           </blockquote>
@@ -267,7 +267,7 @@ export default function WrittenLessonViewer({
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-[#1c1917] font-sans antialiased selection:bg-[#f97316] selection:text-white">
+    <div className="min-h-screen bg-[#faf8f5] text-[#1c1917] font-sans antialiased selection:bg-[#2563eb] selection:text-white">
       {/* Sticky Header Navigation */}
       <header className="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-[#e7e5e4] bg-[#faf8f5]/90 px-4 sm:px-8 backdrop-blur-md">
         {/* Left: Syllabus Navigation & Module/Lesson Selectors */}
@@ -276,7 +276,7 @@ export default function WrittenLessonViewer({
             href={`/learn/${course.slug}`}
             className="flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-2.5 sm:px-3.5 py-1.5 text-xs font-semibold text-[#57534e] transition-colors hover:border-[#1c1917] hover:text-[#1c1917] shadow-xs shrink-0"
           >
-            <BookOpen className="h-3.5 w-3.5 text-[#f97316]" />
+            <BookOpen className="h-3.5 w-3.5 text-[#2563eb]" />
             <span className="hidden sm:inline">Syllabus</span>
           </Link>
 
@@ -293,7 +293,7 @@ export default function WrittenLessonViewer({
               aria-label="Select module"
               className="flex items-center gap-1.5 rounded-xl border border-[#e7e5e4] bg-white px-2.5 sm:px-3 py-1.5 text-xs font-mono transition-all text-left shadow-xs text-[#1c1917] hover:border-[#d6d3d1] hover:bg-[#faf8f5]"
             >
-              <span className="font-bold shrink-0 text-[#f97316]">
+              <span className="font-bold shrink-0 text-[#2563eb]">
                 MODULE {String(module.number).padStart(2, "0")}
               </span>
               <ChevronDown
@@ -310,7 +310,7 @@ export default function WrittenLessonViewer({
                 className="absolute left-0 top-full mt-2 w-72 sm:w-80 max-w-[calc(100vw-2rem)] rounded-2xl border border-[#e7e5e4] bg-white/95 p-2 shadow-2xl backdrop-blur-xl z-50 text-[#1c1917] animate-in fade-in slide-in-from-top-1 duration-150"
               >
                 <div className="px-3 py-2 border-b border-[#e7e5e4] mb-1 flex items-center justify-between">
-                  <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#f97316]">
+                  <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#2563eb]">
                     CURRICULUM · 10 MODULES
                   </span>
                   <span className="text-[10px] font-mono text-[#a8a29e]">
@@ -336,14 +336,14 @@ export default function WrittenLessonViewer({
                         }}
                         className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${
                           isActive
-                            ? "bg-[#f97316]/10 text-[#f97316] font-bold"
+                            ? "bg-[#2563eb]/10 text-[#2563eb] font-bold"
                             : "text-[#44403c] hover:bg-[#f5f3ef] hover:text-[#1c1917]"
                         }`}
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
                           <span
                             className={`font-mono shrink-0 text-[11px] font-bold ${
-                              isActive ? "text-[#f97316]" : "text-[#78716c]"
+                              isActive ? "text-[#2563eb]" : "text-[#78716c]"
                             }`}
                           >
                             MOD {String(m.number).padStart(2, "0")}
@@ -351,7 +351,7 @@ export default function WrittenLessonViewer({
                           <span className="truncate">{m.title}</span>
                         </div>
                         {isActive && (
-                          <Check className="h-3.5 w-3.5 shrink-0 text-[#f97316]" />
+                          <Check className="h-3.5 w-3.5 shrink-0 text-[#2563eb]" />
                         )}
                       </button>
                     );
@@ -391,7 +391,7 @@ export default function WrittenLessonViewer({
                 className="absolute left-0 top-full mt-2 w-72 sm:w-88 max-w-[calc(100vw-2rem)] rounded-2xl border border-[#e7e5e4] bg-white/95 p-2 shadow-2xl backdrop-blur-xl z-50 text-[#1c1917] animate-in fade-in slide-in-from-top-1 duration-150"
               >
                 <div className="px-3 py-2 border-b border-[#e7e5e4] mb-1 flex items-center justify-between">
-                  <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#f97316]">
+                  <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#2563eb]">
                     MODULE {String(module.number).padStart(2, "0")} · LESSONS
                   </span>
                   <span className="text-[10px] font-mono text-[#a8a29e]">
@@ -414,14 +414,14 @@ export default function WrittenLessonViewer({
                         }}
                         className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${
                           isActive
-                            ? "bg-[#f97316]/10 text-[#f97316] font-bold"
+                            ? "bg-[#2563eb]/10 text-[#2563eb] font-bold"
                             : "text-[#44403c] hover:bg-[#f5f3ef] hover:text-[#1c1917]"
                         }`}
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
                           <span
                             className={`font-mono shrink-0 text-[11px] ${
-                              isActive ? "text-[#f97316] font-bold" : "text-[#78716c]"
+                              isActive ? "text-[#2563eb] font-bold" : "text-[#78716c]"
                             }`}
                           >
                             {l.number}
@@ -429,7 +429,7 @@ export default function WrittenLessonViewer({
                           <span className="truncate">{l.title}</span>
                         </div>
                         {isActive && (
-                          <Check className="h-3.5 w-3.5 shrink-0 text-[#f97316]" />
+                          <Check className="h-3.5 w-3.5 shrink-0 text-[#2563eb]" />
                         )}
                       </button>
                     );
@@ -455,7 +455,7 @@ export default function WrittenLessonViewer({
             disabled
             className="flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1 text-xs font-bold text-[#1c1917] shadow-xs"
           >
-            <BookOpen className="h-3.5 w-3.5 text-[#f97316]" />
+            <BookOpen className="h-3.5 w-3.5 text-[#2563eb]" />
             <span>Written Lesson</span>
           </button>
         </div>
@@ -488,7 +488,7 @@ export default function WrittenLessonViewer({
       <main className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
         {/* Lesson Breadcrumb & Title */}
         <div className="mb-10 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#fed7aa] bg-[#fff7ed] px-3.5 py-1 text-xs font-mono font-bold uppercase tracking-widest text-[#f97316] mb-4">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#bfdbfe] bg-[#eff6ff] px-3.5 py-1 text-xs font-mono font-bold uppercase tracking-widest text-[#2563eb] mb-4">
             <span>MODULE {module.number} · LESSON {lesson.number}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1c1917] leading-tight mb-4">
@@ -501,7 +501,7 @@ export default function WrittenLessonViewer({
           {/* Learning Objective Callout */}
           {extendedLesson.learningObjective && (
             <div className="mt-8 rounded-2xl border border-[#e7e5e4] bg-white p-5 sm:p-6 shadow-xs flex items-start gap-4 text-left">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f97316]/10 text-[#f97316] shrink-0 mt-0.5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2563eb]/10 text-[#2563eb] shrink-0 mt-0.5">
                 <Sparkles className="h-4 w-4" />
               </div>
               <div>
@@ -523,8 +523,8 @@ export default function WrittenLessonViewer({
 
         {/* Core Takeaway Card */}
         {extendedLesson.takeaway && (
-          <div className="mt-12 rounded-3xl border border-[#fed7aa] bg-[#fff7ed] p-6 sm:p-8 shadow-xs">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#f97316] uppercase tracking-wider mb-2">
+          <div className="mt-12 rounded-3xl border border-[#bfdbfe] bg-[#eff6ff] p-6 sm:p-8 shadow-xs">
+            <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#2563eb] uppercase tracking-wider mb-2">
               <Sparkles className="h-4 w-4" />
               <span>Core Principle Takeaway</span>
             </div>
@@ -564,7 +564,7 @@ export default function WrittenLessonViewer({
             {nextLesson ? (
               <Link
                 href={`/learn/${course.slug}/${nextLesson.lesson.id}?format=written`}
-                className="flex items-center gap-2 rounded-2xl bg-[#f97316] px-5 py-3 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-[#ea580c] transition-all hover:scale-[1.02]"
+                className="flex items-center gap-2 rounded-2xl bg-[#2563eb] px-5 py-3 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-[#1d4ed8] transition-all hover:scale-[1.02]"
               >
                 <span>Continue to {nextLesson.lesson.number}</span>
                 <ArrowRight className="h-4 w-4" />

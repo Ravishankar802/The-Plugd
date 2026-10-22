@@ -278,7 +278,7 @@ export const DATING_PLAYBOOK_COURSE: Course = {
   modulesCount: 10,
   lessonsCount: 69,
   hoursOfMaterial: "8.5 hours",
-  accentColor: "#FF5500",
+  accentColor: "#2563eb",
   stats: [
     { label: "Modules", value: "10" },
     { label: "Lessons", value: "69" },

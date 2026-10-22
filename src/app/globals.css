@@ -11,14 +11,14 @@
   --muted: #78716c;
   --line: #e7e5e4;
   --line-strong: #d6d3d1;
-  --accent: #f97316;
-  --link: #c2410c;
-  --tint: #ffedd5;
-  --warm-wash: #fbf5ef;
-  --warm-line: #f1e6da;
-  --warm-card: #fff7ed;
-  --warm-border: #fed7aa;
-  --warm-accent: #fdba74;
+  --accent: #2563eb;
+  --link: #1d4ed8;
+  --tint: #eff6ff;
+  --warm-wash: #f8fafc;
+  --warm-line: #e2e8f0;
+  --warm-card: #eff6ff;
+  --warm-border: #bfdbfe;
+  --warm-accent: #93c5fd;
   --money: #15803d;
   --col: 720px;
   --mid: 960px;
@@ -81,7 +81,7 @@ body {
 
 .hero-aurora {
   pointer-events: none;
-  background: radial-gradient(closest-side, rgba(249, 115, 22, 0.08), rgba(249, 115, 22, 0));
+  background: radial-gradient(closest-side, rgba(37, 99, 235, 0.08), rgba(37, 99, 235, 0));
   width: 62%;
   height: 78%;
   animation: 40s ease-in-out infinite alternate hero-aurora;
@@ -153,11 +153,11 @@ body {
   width: 10px;
   height: 10px;
   transition: box-shadow 0.15s;
-  box-shadow: 0 0 8px rgba(249, 115, 22, 0.55);
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.55);
 }
 
 .btn:hover .btn-dot {
-  box-shadow: 0 0 12px rgba(249, 115, 22, 0.8);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.8);
 }
 
 .btn-surface {
@@ -219,7 +219,7 @@ body {
 
 .checks li:before {
   content: "";
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3 3 7-7' fill='none' stroke='%23FB923C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 50%/16px 16px no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3 3 7-7' fill='none' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 50%/16px 16px no-repeat;
   width: 16px;
   height: 16px;
   position: absolute;

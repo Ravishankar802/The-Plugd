@@ -148,7 +148,7 @@ export default function HomePageClient({
   ];
 
   return (
-    <div className="min-h-screen bg-[#f6f6f4] text-[#1c1917] font-sans antialiased selection:bg-[#f97316] selection:text-white relative">
+    <div className="min-h-screen bg-[#f6f6f4] text-[#1c1917] font-sans antialiased selection:bg-[#2563eb] selection:text-white relative">
       {/* Clean Sticky Header matching Attention Playbook */}
       <Header isLanding={true} onOpenCheckout={handleDirectCheckout} hasAccess={hasAccess} />
 
@@ -393,13 +393,13 @@ export default function HomePageClient({
                     className="w-full flex items-center justify-between text-left group focus:outline-none cursor-pointer"
                     aria-expanded={isOpen}
                   >
-                    <span className="text-base sm:text-lg font-bold text-[#1c1917] group-hover:text-[#f97316] transition-colors pr-4">
+                    <span className="text-base sm:text-lg font-bold text-[#1c1917] group-hover:text-[#2563eb] transition-colors pr-4">
                       {faq.question}
                     </span>
                     <div
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all duration-200 ${
                         isOpen
-                          ? "rotate-180 bg-[#f97316] text-white border-[#f97316]"
+                          ? "rotate-180 bg-[#2563eb] text-white border-[#2563eb]"
                           : "border-[#e7e5e4] bg-[#f6f6f4] text-[#1c1917] group-hover:border-[#d6d3d1]"
                       }`}
                     >
@@ -408,7 +408,7 @@ export default function HomePageClient({
                   </button>
 
                   {isOpen && (
-                    <div className="mt-4 text-[15px] sm:text-[15.5px] text-[#44403c] leading-relaxed pr-8 border-l-2 border-[#f97316] pl-4">
+                    <div className="mt-4 text-[15px] sm:text-[15.5px] text-[#44403c] leading-relaxed pr-8 border-l-2 border-[#2563eb] pl-4">
                       {faq.answer}
                     </div>
                   )}

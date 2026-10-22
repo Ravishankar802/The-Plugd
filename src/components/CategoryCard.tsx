@@ -46,8 +46,8 @@ export default function CategoryCard({ category, playbookCount = 0 }: CategoryCa
           </div>
 
           {playbookCount > 0 ? (
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#fed7aa] bg-[#fff7ed] px-2.5 py-1 text-[11px] font-mono font-semibold tracking-wide text-[#f97316]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#f97316]" />
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#bfdbfe] bg-[#eff6ff] px-2.5 py-1 text-[11px] font-mono font-semibold tracking-wide text-[#1d4ed8]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#2563eb]" />
               {playbookCount} {playbookCount === 1 ? "Playbook" : "Playbooks"}
             </span>
           ) : (
@@ -58,7 +58,7 @@ export default function CategoryCard({ category, playbookCount = 0 }: CategoryCa
         </div>
 
         {/* Category Name */}
-        <h3 className="text-[19px] font-bold tracking-tight text-[#1c1917] group-hover:text-[#f97316] transition-colors duration-150">
+        <h3 className="text-[19px] font-bold tracking-tight text-[#1c1917] group-hover:text-[#2563eb] transition-colors duration-150">
           {category.name}
         </h3>
 
@@ -69,7 +69,7 @@ export default function CategoryCard({ category, playbookCount = 0 }: CategoryCa
       </div>
 
       {/* Footer link cue */}
-      <div className="mt-6 flex items-center gap-1.5 text-[13px] font-semibold text-[#1c1917] group-hover:text-[#f97316] transition-colors">
+      <div className="mt-6 flex items-center gap-1.5 text-[13px] font-semibold text-[#1c1917] group-hover:text-[#2563eb] transition-colors">
         <span>Explore category</span>
         <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
       </div>

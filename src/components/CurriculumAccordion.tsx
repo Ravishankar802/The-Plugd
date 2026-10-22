@@ -33,15 +33,15 @@ export default function CurriculumAccordion({
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E6E1D7] pb-6 mb-8 text-xs font-mono text-[#646059]">
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2">
-            <Layers className="h-4 w-4 text-[#FF5500]" />
+            <Layers className="h-4 w-4 text-[#2563EB]" />
             <span className="font-bold text-[#0E0E10]">{modules.length} MODULES</span>
           </div>
           <div className="flex items-center gap-2">
-            <BookOpen className="h-4 w-4 text-[#FF5500]" />
+            <BookOpen className="h-4 w-4 text-[#2563EB]" />
             <span className="font-bold text-[#0E0E10]">{totalLessons} LESSONS</span>
           </div>
           <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-[#FF5500]" />
+            <Clock className="h-4 w-4 text-[#2563EB]" />
             <span className="font-bold text-[#0E0E10]">6+ HOURS OF SLIDES</span>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function CurriculumAccordion({
               >
                 <div className="flex items-start gap-4 sm:gap-6">
                   {/* Big Module Number */}
-                  <span className="font-mono text-sm sm:text-base font-bold text-[#FF5500] pt-0.5">
+                  <span className="font-mono text-sm sm:text-base font-bold text-[#2563EB] pt-0.5">
                     {mod.number}
                   </span>
 
@@ -74,7 +74,7 @@ export default function CurriculumAccordion({
                         MODULE {mod.number}
                       </span>
                     </div>
-                    <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-[#0E0E10] group-hover:text-[#FF5500] transition-colors">
+                    <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-[#0E0E10] group-hover:text-[#2563EB] transition-colors">
                       {mod.title}
                     </h3>
                     <p className="mt-1 text-xs sm:text-sm text-[#646059] max-w-2xl line-clamp-2">

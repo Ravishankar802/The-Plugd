@@ -85,22 +85,22 @@ export default function PendingPurchaseView({
   }, [courseSlug]);
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#0E0E10] font-sans antialiased selection:bg-[#FF5500] selection:text-white">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#0E0E10] font-sans antialiased selection:bg-[#2563EB] selection:text-white">
       <div className="fixed inset-0 bg-subtle-grid opacity-70 pointer-events-none -z-10" />
 
       <Header activeCourse={courseSlug} />
 
       <main className="mx-auto max-w-xl px-4 sm:px-6 py-20 sm:py-28 text-center">
         <div className="rounded-3xl border border-[#E6E1D7] bg-white p-8 sm:p-12 shadow-sm">
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#FFF7ED] border border-[#FED7AA]">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EFF6FF] border border-[#BFDBFE]">
             {isConfirmed ? (
               <CheckCircle2 className="h-8 w-8 text-emerald-600" />
             ) : (
-              <Loader2 className="h-8 w-8 animate-spin text-[#FF5500]" />
+              <Loader2 className="h-8 w-8 animate-spin text-[#2563EB]" />
             )}
           </div>
 
-          <span className="inline-block rounded-full bg-[#FAF8F5] border border-[#E6E1D7] px-3.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[#FF5500] mb-3">
+          <span className="inline-block rounded-full bg-[#FAF8F5] border border-[#E6E1D7] px-3.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[#2563EB] mb-3">
             {isConfirmed ? "Access Verified" : "Processing Payment"}
           </span>
 

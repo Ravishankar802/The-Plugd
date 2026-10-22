@@ -21,8 +21,6 @@ import {
   BookOpen,
   Mail,
   Heart,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 import Header from "@/components/Header";
 import PlaybookFeedCard from "@/components/PlaybookFeedCard";
@@ -61,15 +59,22 @@ export default function PlugdHomePageClient({
 }: PlugdHomePageClientProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategorySlug);
   const [searchQuery, setSearchQuery] = useState<string>("");
-
   const chipsContainerRef = useRef<HTMLDivElement>(null);
-  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [canScrollRight, setCanScrollRight] = useState(false);
 
-  // Check scroll positions for right-edge fade indicator
+  // Sync initialCategorySlug if route query changes
+  useEffect(() => {
+    if (initialCategorySlug) {
+      setSelectedCategory(initialCategorySlug);
+    }
+  }, [initialCategorySlug]);
+
+  // Determine if chips bar has overflow to display gradient cue
   const checkScroll = () => {
     const el = chipsContainerRef.current;
     if (!el) return;
-    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+    const hasMoreRight = el.scrollWidth > el.clientWidth + el.scrollLeft + 4;
+    setCanScrollRight(hasMoreRight);
   };
 
   useEffect(() => {
@@ -78,29 +83,30 @@ export default function PlugdHomePageClient({
     return () => window.removeEventListener("resize", checkScroll);
   }, []);
 
-  // Real client-side filtering combining category and search query
+  // Filtered Playbooks based on category selection & live search
   const filteredPlaybooks = useMemo(() => {
-    return playbooks.filter((p) => {
-      // Category filter
-      if (selectedCategory !== "all" && p.categorySlug !== selectedCategory) {
-        return false;
-      }
+    let result = playbooks;
 
-      // Search query filter
-      if (searchQuery.trim()) {
-        const q = searchQuery.trim().toLowerCase();
-        const inTitle = p.title.toLowerCase().includes(q);
-        const inCategory = p.categoryName.toLowerCase().includes(q);
-        const inDesc = p.description.toLowerCase().includes(q);
-        const inHeadline = p.headline.toLowerCase().includes(q);
-        return inTitle || inCategory || inDesc || inHeadline;
-      }
+    // Filter by selected category chip
+    if (selectedCategory !== "all") {
+      result = result.filter((p) => p.categorySlug === selectedCategory);
+    }
 
-      return true;
-    });
+    // Filter by search query across title, description, and category
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      result = result.filter(
+        (p) =>
+          p.title.toLowerCase().includes(q) ||
+          p.description.toLowerCase().includes(q) ||
+          p.categoryName.toLowerCase().includes(q)
+      );
+    }
+
+    return result;
   }, [playbooks, selectedCategory, searchQuery]);
 
-  // Group playbooks by category
+  // Group playbooks by category slug for the default "All" view rails
   const playbooksByCategory = useMemo(() => {
     const map: Record<string, PlaybookSummary[]> = {};
     for (const p of playbooks) {
@@ -140,7 +146,7 @@ export default function PlugdHomePageClient({
   const selectedChipData = CATEGORY_CHIPS.find((c) => c.slug === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-[#f6f6f4] text-[#1c1917] font-sans antialiased selection:bg-[#f97316] selection:text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-[#f6f6f4] text-[#1c1917] font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col justify-between">
       <div>
         {/* Compact YouTube-Style Sticky Header */}
         <Header
@@ -225,7 +231,7 @@ export default function PlugdHomePageClient({
                     setSelectedCategory("all");
                     setSearchQuery("");
                   }}
-                  className="inline-flex items-center gap-1 text-[#f97316] hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-1 text-[#2563eb] hover:text-[#1d4ed8] hover:underline cursor-pointer"
                 >
                   <X className="h-3 w-3" />
                   <span>Reset filters</span>
@@ -239,27 +245,31 @@ export default function PlugdHomePageClient({
             <div>
               {/* SECTION: 20 Trending Curated Playbooks */}
               <section aria-label="Trending Playbooks">
-                <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2.5">
-                    <Flame className="h-5 w-5 text-[#f97316] shrink-0" strokeWidth={2.5} />
+                    <Flame className="h-5 w-5 text-[#2563eb] shrink-0" strokeWidth={2.5} />
                     <h2 className="text-xl sm:text-2xl font-bold text-[#1c1917] tracking-tight">
                       Trending Playbooks
                     </h2>
                   </div>
-                  <span className="text-xs font-mono text-[#78716c] font-medium">
-                    20 Curated Playbooks
-                  </span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-7 sm:gap-x-5 sm:gap-y-8">
+                {/* Horizontal Rail for Trending Playbooks - Never wraps onto second row */}
+                <div
+                  className="flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-3 pt-1 px-0.5"
+                  role="region"
+                  aria-label="Trending Playbooks"
+                >
                   {trendingPlaybooks.map((playbook) => (
-                    <PlaybookFeedCard key={`trending-${playbook.id}`} playbook={playbook} />
+                    <div key={`trending-${playbook.id}`} className="w-[280px] sm:w-[320px] shrink-0">
+                      <PlaybookFeedCard playbook={playbook} />
+                    </div>
                   ))}
                 </div>
               </section>
 
               {/* SECTION: 16 Category Horizontal Rails */}
-              <div className="mt-14 sm:mt-16 space-y-12 sm:space-y-14">
+              <div className="mt-12 sm:mt-14 space-y-10 sm:space-y-12">
                 {CATEGORY_CHIPS.filter((c) => c.slug !== "all").map((cat) => {
                   const catPlaybooks = playbooksByCategory[cat.slug] || [];
                   if (catPlaybooks.length === 0) return null;
@@ -285,7 +295,7 @@ export default function PlugdHomePageClient({
               ))}
             </div>
           ) : (
-            /* Compact Intentional Empty State (Per Specification) */
+            /* Compact Intentional Empty State */
             <div className="py-24 text-center max-w-md mx-auto">
               <p className="text-[15px] sm:text-[16px] font-medium text-[#78716c]">
                 {searchQuery
@@ -353,91 +363,31 @@ function CategoryRail({
   playbooks,
   onSelectCategory,
 }: CategoryRailProps) {
-  const railRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const checkRailScroll = () => {
-    const el = railRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 6);
-    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 6);
-  };
-
-  useEffect(() => {
-    checkRailScroll();
-    window.addEventListener("resize", checkRailScroll);
-    return () => window.removeEventListener("resize", checkRailScroll);
-  }, [playbooks]);
-
-  const scroll = (direction: "left" | "right") => {
-    const el = railRef.current;
-    if (!el) return;
-    const scrollAmount = Math.max(el.clientWidth * 0.75, 300);
-    el.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
-  };
-
   const Icon = category.icon;
 
   return (
-    <section className="relative">
-      {/* Category Section Header */}
+    <section className="relative" aria-label={category.label}>
+      {/* Category Section Header: Title on Left, See All > on Right */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2.5">
-          <Icon className="h-5 w-5 text-[#f97316] shrink-0" strokeWidth={2} />
+          <Icon className="h-5 w-5 text-[#2563eb] shrink-0" strokeWidth={2} />
           <h2 className="text-xl sm:text-[22px] font-bold text-[#1c1917] tracking-tight">
             {category.label}
           </h2>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
-          <button
-            type="button"
-            onClick={() => onSelectCategory(category.slug)}
-            className="text-xs sm:text-sm font-semibold text-[#f97316] hover:underline cursor-pointer"
-          >
-            View all 20 →
-          </button>
-
-          {/* Left/Right Navigation Controls */}
-          <div className="flex items-center gap-1">
-            <button
-              type="button"
-              onClick={() => scroll("left")}
-              disabled={!canScrollLeft}
-              aria-label={`Scroll ${category.label} left`}
-              className={`h-7 w-7 rounded-full border border-[#d6d3d1] bg-white flex items-center justify-center transition-colors cursor-pointer shadow-2xs ${
-                canScrollLeft
-                  ? "text-[#1c1917] hover:border-[#1c1917]"
-                  : "text-[#a8a29e] opacity-40 cursor-not-allowed"
-              }`}
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scroll("right")}
-              disabled={!canScrollRight}
-              aria-label={`Scroll ${category.label} right`}
-              className={`h-7 w-7 rounded-full border border-[#d6d3d1] bg-white flex items-center justify-center transition-colors cursor-pointer shadow-2xs ${
-                canScrollRight
-                  ? "text-[#1c1917] hover:border-[#1c1917]"
-                  : "text-[#a8a29e] opacity-40 cursor-not-allowed"
-              }`}
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
+        <button
+          type="button"
+          onClick={() => onSelectCategory(category.slug)}
+          className="inline-flex items-center text-xs sm:text-sm font-semibold text-[#2563eb] hover:text-[#1d4ed8] hover:underline focus:outline-none focus:ring-2 focus:ring-[#2563eb]/20 rounded px-1.5 py-0.5 transition-colors cursor-pointer"
+          aria-label={`See all ${category.label} playbooks`}
+        >
+          See All &gt;
+        </button>
       </div>
 
-      {/* Horizontal Scrollable Rail */}
+      {/* Horizontal Scrollable Rail - All 20 Playbooks in one single row */}
       <div
-        ref={railRef}
-        onScroll={checkRailScroll}
         className="flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-3 pt-1 px-0.5"
         role="region"
         aria-label={`${category.label} Playbooks`}

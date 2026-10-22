@@ -91,7 +91,7 @@ export default function Header({
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Link
               href="/my-playbooks"
-              className="text-[13px] sm:text-[13.5px] font-medium text-[#1c1917] hover:text-[#f97316] px-2.5 sm:px-3 py-1.5 rounded-full hover:bg-black/5 transition-colors whitespace-nowrap"
+              className="text-[13px] sm:text-[13.5px] font-medium text-[#1c1917] hover:text-[#2563eb] px-2.5 sm:px-3 py-1.5 rounded-full hover:bg-black/5 transition-colors whitespace-nowrap"
             >
               My Playbooks
             </Link>
