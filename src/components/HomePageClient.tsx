@@ -148,7 +148,7 @@ export default function HomePageClient({
   ];
 
   return (
-    <div className="min-h-screen bg-[#f6f6f4] text-[#1c1917] font-sans antialiased selection:bg-[#2563eb] selection:text-white relative">
+    <div className="min-h-screen bg-[#e7e4dd] text-[#1c1917] font-sans antialiased selection:bg-[#2563eb] selection:text-white relative">
       {/* Clean Sticky Header matching Attention Playbook */}
       <Header isLanding={true} onOpenCheckout={handleDirectCheckout} hasAccess={hasAccess} />
 
@@ -303,7 +303,7 @@ export default function HomePageClient({
       </section>
 
       {/* SECTION: PURCHASE CTA */}
-      <section className="pt-10 sm:pt-14 pb-8 sm:pb-10 relative bg-[#f6f6f4]">
+      <section className="pt-10 sm:pt-14 pb-8 sm:pb-10 relative bg-[#e7e4dd]">
         <div className="mx-auto max-w-3xl px-6 text-center flex flex-col items-center">
           {hasAccess ? (
             <>
@@ -340,7 +340,7 @@ export default function HomePageClient({
       </section>
 
       {/* SECTION: SOCIAL PROOF ("IN THEIR WORDS") */}
-      <section id="testimonials" className="pt-8 sm:pt-10 pb-16 sm:pb-24 border-b border-[#e7e5e4] bg-[#f6f6f4] scroll-mt-20">
+      <section id="testimonials" className="pt-8 sm:pt-10 pb-16 sm:pb-24 border-b border-[#dcd8d0] bg-[#e7e4dd] scroll-mt-20">
         <div className="mx-auto max-w-[1200px] px-6">
           <div className="text-center mb-12 sm:mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1c1917]">
@@ -400,7 +400,7 @@ export default function HomePageClient({
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all duration-200 ${
                         isOpen
                           ? "rotate-180 bg-[#2563eb] text-white border-[#2563eb]"
-                          : "border-[#e7e5e4] bg-[#f6f6f4] text-[#1c1917] group-hover:border-[#d6d3d1]"
+                          : "border-[#dcd8d0] bg-[#ded9d0] text-[#1c1917] group-hover:border-[#c7c4bc]"
                       }`}
                     >
                       <ChevronDown className="h-3.5 w-3.5" />
@@ -420,7 +420,7 @@ export default function HomePageClient({
       </section>
 
       {/* SECTION: FINAL PURCHASE CTA */}
-      <section className="py-20 sm:py-24 border-b border-[#e7e5e4] bg-[#f6f6f4]">
+      <section className="py-20 sm:py-24 border-b border-[#dcd8d0] bg-[#e7e4dd]">
         <div className="mx-auto max-w-xl px-6 text-center flex flex-col items-center">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1c1917] mb-6">
             The Dating Playbook
@@ -460,7 +460,7 @@ export default function HomePageClient({
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-[#f6f6f4] py-10 pb-28 sm:pb-32 text-[14.5px] text-[#78716c]">
+      <footer className="bg-[#ded9d0] border-t border-[#dcd8d0] py-10 pb-28 sm:pb-32 text-[14.5px] text-[#57534e]">
         <div className="mx-auto max-w-[1200px] px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <Link

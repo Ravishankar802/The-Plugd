@@ -82,7 +82,7 @@ export default function CategoryChipsBar({ selectedCategory }: CategoryChipsBarP
   }, [selectedCategory]);
 
   return (
-    <div className="sticky top-[56px] z-40 bg-[#f6f6f4]/95 backdrop-blur-md border-b border-[#e7e5e4] py-2.5">
+    <div className="sticky top-[56px] z-40 bg-[#e7e4dd]/95 backdrop-blur-md border-b border-[#dcd8d0] py-2.5">
       <div className="mx-auto max-w-[1600px] px-3 sm:px-6 lg:px-8 relative flex items-center">
         {/* Scrollable Chips Container */}
         <div
@@ -105,7 +105,7 @@ export default function CategoryChipsBar({ selectedCategory }: CategoryChipsBarP
                 className={`inline-flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-[13px] sm:text-[13.5px] font-medium whitespace-nowrap transition-colors duration-150 cursor-pointer shrink-0 ${
                   isSelected
                     ? "bg-[#1c1917] text-white shadow-xs"
-                    : "bg-[#eceae7] text-[#1c1917] hover:bg-[#e2ded9]"
+                    : "bg-[#ded9d0] text-[#1c1917] hover:bg-[#d5cfc5]"
                 }`}
               >
                 <Icon
@@ -123,7 +123,7 @@ export default function CategoryChipsBar({ selectedCategory }: CategoryChipsBarP
 
         {/* Subtle Right-Edge Fade Indicator */}
         <div
-          className={`pointer-events-none absolute right-3 sm:right-6 lg:right-8 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#f6f6f4] via-[#f6f6f4]/80 to-transparent transition-opacity duration-200 z-10 ${
+          className={`pointer-events-none absolute right-3 sm:right-6 lg:right-8 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#e7e4dd] via-[#e7e4dd]/80 to-transparent transition-opacity duration-200 z-10 ${
             canScrollRight ? "opacity-100" : "opacity-0"
           }`}
           aria-hidden="true"

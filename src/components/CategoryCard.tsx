@@ -36,12 +36,12 @@ export default function CategoryCard({ category, playbookCount = 0 }: CategoryCa
   return (
     <Link
       href={`/${category.slug}`}
-      className="group relative flex flex-col justify-between rounded-2xl border border-[#e7e5e4] bg-white p-6 sm:p-7 shadow-xs hover:border-[#d6d3d1] hover:shadow-md transition-all duration-200"
+      className="group relative flex flex-col justify-between rounded-2xl border border-[#dcd8d0] bg-white p-6 sm:p-7 shadow-[0_1px_3px_rgba(28,25,23,0.06),0_1px_2px_rgba(28,25,23,0.04)] hover:border-[#c7c4c0] hover:shadow-md transition-all duration-200"
     >
       <div>
         {/* Header row with Icon and Badge */}
         <div className="flex items-center justify-between gap-3 mb-5">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#e7e5e4] bg-[#faf8f5] text-[#1c1917] group-hover:bg-[#1c1917] group-hover:text-white transition-colors duration-200">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#dcd8d0] bg-[#ded9d0] text-[#1c1917] group-hover:bg-[#1c1917] group-hover:text-white transition-colors duration-200">
             <IconComponent className="h-5 w-5" />
           </div>
 
@@ -51,7 +51,7 @@ export default function CategoryCard({ category, playbookCount = 0 }: CategoryCa
               {playbookCount} {playbookCount === 1 ? "Playbook" : "Playbooks"}
             </span>
           ) : (
-            <span className="inline-flex items-center rounded-full border border-[#e7e5e4] bg-[#f6f6f4] px-2.5 py-1 text-[11px] font-mono font-medium text-[#78716c]">
+            <span className="inline-flex items-center rounded-full border border-[#dcd8d0] bg-[#e7e4dd] px-2.5 py-1 text-[11px] font-mono font-medium text-[#78716c]">
               Coming soon
             </span>
           )}

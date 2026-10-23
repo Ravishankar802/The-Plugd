@@ -29,7 +29,7 @@ export default function Header({
   // Platform Header (YouTube-inspired top navigation)
   if (mode === "platform") {
     return (
-      <header className="sticky top-0 z-50 w-full border-b border-[#e7e5e4] bg-[#f6f6f4]/95 backdrop-blur-md">
+      <header className="sticky top-0 z-50 w-full border-b border-[#dcd8d0] bg-[#e7e4dd]/95 backdrop-blur-md">
         <div className="mx-auto flex h-[56px] w-full max-w-[1600px] items-center justify-between px-3 sm:px-6 gap-2 sm:gap-4">
           {/* Left: Brand Logo & Lockup */}
           <div className="flex items-center shrink-0">
@@ -69,7 +69,7 @@ export default function Header({
                     <button
                       type="button"
                       onClick={() => onSearchChange?.("")}
-                      className="absolute right-2.5 text-[#78716c] hover:text-[#1c1917] p-0.5 rounded-full hover:bg-[#e7e5e4] transition-colors cursor-pointer"
+                      className="absolute right-2.5 text-[#78716c] hover:text-[#1c1917] p-0.5 rounded-full hover:bg-[#dcd8d0] transition-colors cursor-pointer"
                       title="Clear search"
                     >
                       <X className="h-3.5 w-3.5" />
@@ -78,7 +78,7 @@ export default function Header({
                 </div>
 
                 <div
-                  className="h-9 sm:h-10 px-4 sm:px-5 rounded-r-full border-y border-r border-[#d6d3d1] bg-[#eceae7] text-[#44403c] flex items-center justify-center shrink-0"
+                  className="h-9 sm:h-10 px-4 sm:px-5 rounded-r-full border-y border-r border-[#d6d3d1] bg-[#ded9d0] text-[#44403c] flex items-center justify-center shrink-0"
                   aria-hidden="true"
                 >
                   <Search className="h-4 w-4 text-[#57534e]" />
@@ -123,7 +123,7 @@ export default function Header({
   // Dating Playbook Landing Header
   if (mode === "dating") {
     return (
-      <header className="sticky top-0 z-40 w-full border-b border-[#e7e5e4] bg-[#f6f6f4]/95 backdrop-blur-md transition-all">
+      <header className="sticky top-0 z-40 w-full border-b border-[#dcd8d0] bg-[#e7e4dd]/95 backdrop-blur-md transition-all">
         <div className="mx-auto flex h-[68px] max-w-[1200px] items-center justify-between px-6">
           {/* Brand Logo & Lockup */}
           <Link

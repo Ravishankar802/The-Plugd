@@ -22,7 +22,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
   const formattedPrice = playbook.price ? Number(playbook.price).toFixed(2) : "3.00";
 
   return (
-    <div className="group relative flex flex-col justify-between rounded-2xl bg-white hover:bg-[#f7f8fa] border border-[#e7e5e4] hover:border-[#c7c4c0] p-3 sm:p-3.5 shadow-2xs hover:shadow-lg motion-safe:hover:-translate-y-1 motion-reduce:hover:transform-none transition-all duration-200 ease-out">
+    <div className="group relative flex flex-col justify-between rounded-2xl bg-white hover:bg-[#f7f8fa] border border-[#dcd8d0] hover:border-[#c7c4c0] p-3 sm:p-3.5 shadow-[0_1px_3px_rgba(28,25,23,0.06),0_1px_2px_rgba(28,25,23,0.04)] hover:shadow-lg motion-safe:hover:-translate-y-1 motion-reduce:hover:transform-none transition-all duration-200 ease-out">
       {/* Clickable Card Body linking to Playbook */}
       <Link
         href={playbook.href}
@@ -30,7 +30,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
         aria-label={`${playbook.title} — ${playbook.categoryName} Playbook`}
       >
         {/* 16:9 Thumbnail Container */}
-        <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#e7e5e4] border border-[#e7e5e4]/80">
+        <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#eeebe5] border border-[#e5e1d8]">
           {playbook.thumbnail ? (
             <Image
               src={playbook.thumbnail}
@@ -41,7 +41,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
               priority
             />
           ) : (
-            <div className="h-full w-full bg-[#ebe8e4]" />
+            <div className="h-full w-full bg-[#eeebe5]" />
           )}
         </div>
 
@@ -86,7 +86,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
       </Link>
 
       {/* Price and Add to cart Action */}
-      <div className="mt-4 sm:mt-5 flex items-center justify-between gap-2 pt-2 border-t border-[#f5f4f0]">
+      <div className="mt-4 sm:mt-5 flex items-center justify-between gap-2 pt-2 border-t border-[#f2efe9]">
         <div className="flex items-baseline gap-1.5 shrink-0">
           {/* Prominent Current Price ($3.00) */}
           <span className="text-[16px] sm:text-[17px] font-bold text-[#1c1917] tracking-tight">

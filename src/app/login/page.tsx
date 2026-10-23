@@ -43,14 +43,14 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const error = resolvedSearchParams.error;
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#f6f6f4] text-[#1c1917]">
+    <div className="flex min-h-screen flex-col bg-[#e7e4dd] text-[#1c1917]">
       <Header isLanding={false} />
 
       <main className="flex flex-1 items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
         <LoginForm initialError={error} />
       </main>
 
-      <footer className="border-t border-[#e7e5e4] bg-[#faf8f5] py-8 text-center text-xs text-[#78716c]">
+      <footer className="border-t border-[#dcd8d0] bg-[#ded9d0] py-8 text-center text-xs text-[#57534e]">
         <div className="mx-auto max-w-6xl px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© {new Date().getFullYear()} The Dating Playbook. Lifetime access.</p>
           <div className="flex items-center gap-6">

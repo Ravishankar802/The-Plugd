@@ -12,7 +12,7 @@ export default function AudienceFitSection() {
   ];
 
   return (
-    <section className="pt-11 sm:pt-13 pb-20 sm:pb-28 border-b border-[#e7e5e4] bg-[#f6f6f4]">
+    <section className="pt-11 sm:pt-13 pb-20 sm:pb-28 border-b border-[#dcd8d0] bg-[#e7e4dd]">
       <div className="mx-auto max-w-[720px] px-6">
         {/* Section Heading */}
         <div className="text-center mb-10 sm:mb-12">

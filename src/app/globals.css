@@ -4,18 +4,18 @@
 
 :root {
   /* Attention Playbook Official Palette & Variables */
-  --bg: #f6f6f4;
+  --bg: #e7e4dd;
   --ink: #1c1917;
   --ink-hover: #292524;
   --body: #44403c;
   --muted: #78716c;
-  --line: #e7e5e4;
-  --line-strong: #d6d3d1;
+  --line: #dcd8d0;
+  --line-strong: #c7c4bc;
   --accent: #2563eb;
   --link: #1d4ed8;
   --tint: #eff6ff;
-  --warm-wash: #f8fafc;
-  --warm-line: #e2e8f0;
+  --warm-wash: #ded9d0;
+  --warm-line: #dcd8d0;
   --warm-card: #eff6ff;
   --warm-border: #bfdbfe;
   --warm-accent: #93c5fd;
@@ -24,16 +24,16 @@
   --mid: 960px;
   --wide: 1200px;
   --radius: 16px;
-  --shadow: 0 1px 2px #1c19170a, 0 18px 48px -28px #1c19172e;
+  --shadow: 0 1px 3px rgba(28, 25, 23, 0.06), 0 1px 2px rgba(28, 25, 23, 0.04);
   --font: "Instrument Sans", var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --surface: #fbfbfa;
+  --surface: #ffffff;
   --ease: cubic-bezier(.2, .7, .2, 1);
 
   /* Compatibility bindings */
   --background: var(--bg);
   --foreground: var(--ink);
   --card: #ffffff;
-  --card-subtle: var(--surface);
+  --card-subtle: #ffffff;
   --border: var(--line);
   --orange: var(--accent);
 }

@@ -35,7 +35,7 @@ export default function CategoryPageClient({
   }, [playbooks, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[#f6f6f4] text-[#1c1917] font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-[#e7e4dd] text-[#1c1917] font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col justify-between">
       <div>
         {/* Compact YouTube-Style Sticky Header */}
         <Header
@@ -85,7 +85,7 @@ export default function CategoryPageClient({
       </div>
 
       {/* Minimal Footer */}
-      <footer className="border-t border-[#e7e5e4] bg-[#faf8f5] py-8 text-xs text-[#78716c]">
+      <footer className="border-t border-[#dcd8d0] bg-[#ded9d0] py-8 text-xs text-[#57534e]">
         <div className="mx-auto max-w-[1600px] px-3 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="font-bold text-[#1c1917]">Plugd</span>

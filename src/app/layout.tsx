@@ -66,7 +66,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} min-h-screen bg-[#f6f6f4] text-[#1c1917] selection:bg-[#2563eb] selection:text-white antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} min-h-screen bg-[#e7e4dd] text-[#1c1917] selection:bg-[#2563eb] selection:text-white antialiased`}
       >
         <div className="flex min-h-screen flex-col">
           {children}
