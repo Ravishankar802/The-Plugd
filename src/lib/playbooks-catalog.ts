@@ -4,9 +4,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
     id: "ai-businesses-01",
     slug: "7-ai-automations",
-    title: "7 AI Automations That Could Make You $10,000+ Each",
-    headline: "Master 7 enterprise-grade AI automation architectures capable of delivering $10,000+ in business value.",
-    description: "Step-by-step blueprints, system architectures, production-ready workflows, and deployment frameworks for 7 mission-critical AI automations.",
+    title: "7 AI Automation Tools That Could Make You $10,000+",
+    headline: "Learn 7 accessible AI automation tools to save businesses time, offer simple services, and build real income streams.",
+    description: "A practical, no-code guide to 7 accessible AI automation tools. Learn how to set up time-saving workflows, package them into valuable client services, and reach the $10,000 milestone.",
     categorySlug: "ai-businesses",
     categoryName: "AI Businesses",
     price: 3,

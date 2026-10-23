@@ -35,15 +35,15 @@ export const AI_AUTOMATIONS_PLAYBOOK_COURSE: Course = {
   slug: "7-ai-automations" as any,
   categorySlug: "ai-businesses",
   categoryName: "AI Businesses",
-  title: "7 AI Automations That Could Make You $10,000+ Each",
-  shortTitle: "7 AI Automations",
-  audience: "Entrepreneurs, Consultants & AI Engineers" as any,
+  title: "7 AI Automation Tools That Could Make You $10,000+",
+  shortTitle: "7 AI Automation Tools",
+  audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,
   targetGender: "for-all" as any,
-  headline: "Master 7 enterprise-grade AI automation architectures capable of delivering $10,000+ in business value.",
+  headline: "Learn 7 accessible AI automation tools to save businesses time, offer simple services, and build real income streams.",
   subheadline:
-    "Production-ready blueprints, system architectures, workflows, and deployment frameworks for mission-critical business automations.",
+    "A practical, beginner-friendly guide to 7 no-code AI tools. Learn how to set up time-saving workflows, package them into valuable client services, and reach the $10,000 income milestone.",
   description:
-    "Step-by-step blueprints, system architectures, production-ready workflows, and deployment frameworks for 7 mission-critical AI automations that eliminate administrative overhead, recover revenue, and command five-figure implementation fees.",
+    "A step-by-step, no-code playbook teaching complete beginners how to master 7 practical AI automation tools. Learn how to connect everyday business apps, build custom assistants, automate social media DMs, repurpose videos, and land paying clients with zero coding experience.",
   price: 3,
   originalPrice: 9,
   currency: "USD",
@@ -58,53 +58,53 @@ export const AI_AUTOMATIONS_PLAYBOOK_COURSE: Course = {
     { label: "Access", value: "Lifetime" },
   ],
   highlights: [
-    "Enterprise AI Economics: The $10,000 value threshold, discovery audits, and infrastructure scoping",
-    "Omnichannel Support & Resolution: Multi-agent routing, RAG retrieval, and real-time CRM mutations",
-    "High-Velocity Inbound Lead Pipeline: Instant enrichment, AI ICP fit scoring, and automated booking",
-    "Intelligent Document Processing: Vision model OCR, Pydantic validation, and accounting ERP sync",
-    "Autonomous Executive Reporting: Metric variance reasoning, branded PDF decks, and scheduled delivery",
-    "Conversational Voice AI: Sub-600ms latency telephony stack, calendar function calling, and barge-in",
-    "Enterprise Knowledge RAG Copilot: Hybrid BM25/vector search, Cohere re-ranking, and database RBAC",
-    "Supply Chain & Inventory Engine: Dynamic reorder equations, PO automation, and 1-click Slack approvals",
-    "Enterprise Delivery & Handover: Airtight SOWs, UAT testing protocols, and $2,000+/mo maintenance retainers",
+    "No-Code Fundamentals: Understanding AI automation in plain English without technical jargon",
+    "Tool 1 (Make.com): Connecting forms, spreadsheets, and emails into automatic lead notification flows",
+    "Tool 2 (Custom GPTs): Building tailored AI helpers loaded with custom instructions and guidelines",
+    "Tool 3 (ManyChat): Automated Instagram comment-to-DM funnels that capture leads 24/7",
+    "Tool 4 (Notion AI): Centralizing company operations, project trackers, and client hubs",
+    "Tool 5 (Opus Clip & Descript): Turning 1 long video into 10 viral captioned short-form clips",
+    "Tool 6 (Canva Magic Studio): Bulk-creating 30 branded social media graphics and marketing packs",
+    "Tool 7 (Perplexity AI): Fast market research, competitor audits, and verified lead list sourcing",
+    "Client Acquisition Blueprint: Packaging simple services, warm outreach, and monthly retainers",
   ],
   modules: AI_AUTOMATIONS_MODULES,
   faqs: [
     {
-      question: "What is included in 7 AI Automations That Could Make You $10,000+ Each?",
+      question: "What is included in 7 AI Automation Tools That Could Make You $10,000+?",
       answer:
-        "The Playbook contains 9 comprehensive modules and 36 full lessons with dual slide presentations and in-depth written engineering guides, code snippets, architectural flowcharts, and operational checklists covering 7 enterprise-grade AI automations.",
+        "The Playbook contains 9 beginner-friendly modules and 36 complete lessons with interactive slide presentations and in-depth written walkthroughs, step-by-step screenshots, real-world pricing guides, and practical action tasks covering 7 distinct no-code AI tools.",
     },
     {
-      question: "Do I need to be a senior machine learning researcher to build these automations?",
+      question: "Do I need any programming or technical skills to use this Playbook?",
       answer:
-        "No. You do not need to train custom foundation models from scratch. These automations leverage production APIs (OpenAI, Anthropic Claude, Groq), modern workflow orchestrators (n8n, LangGraph), and cloud databases (Supabase, Postgres, Redis).",
+        "No. There are zero prerequisites. You do not need to know coding, software engineering, APIs, or databases. All 7 tools are visual, drag-and-drop, or conversational tools that anyone with a computer can master.",
     },
     {
-      question: "Why is the title focused on $10,000+ potential value?",
+      question: "Why does the title say 'Could Make You $10,000+'?",
       answer:
-        "The $10,000 figure represents the realistic commercial project value and operational savings delivered to mid-market organizations by eliminating manual labor, preventing lead decay, and automating complex document workflows.",
+        "The $10,000 figure is a realistic cumulative milestone broken down mathematically throughout the course (for example, 10 client projects at $1,000 each, or 5 monthly clients on a $400/month retainer over 5 months). It is an achievable target based on real client services, not an overnight guarantee.",
     },
     {
       question: "Is this a one-time purchase?",
       answer:
-        "Yes, exactly $3 USD one-time payment with lifetime access. Includes both interactive slide presentations and written guides with full ongoing updates.",
+        "Yes, exactly $3 USD one-time payment with lifetime access. Includes both the presentation slide decks and comprehensive written guides with all future updates.",
     },
   ],
   testimonials: [
     {
       name: "Marcus Vance",
       handle: "@marcus_v",
-      role: "Operations Consultant",
+      role: "Freelance Consultant",
       quote:
-        "The architecture diagrams and schema validation patterns alone saved us weeks of trial and error. We deployed the document processing pipeline for a client and it performed flawlessly.",
+        "The step-by-step walkthroughs make everything click. Setting up the Make.com lead notification took me 30 minutes, and I closed my first local contractor client for $450 the following week.",
     },
     {
       name: "Devon Reed",
       handle: "@devon_ai",
-      role: "AI Agency Founder",
+      role: "Agency Founder",
       quote:
-        "The breakdown of deterministic vs probabilistic execution is the best practical guide to enterprise AI I have seen. This is real systems engineering, not just prompt tips.",
+        "The explanation of how to package simple services without tech jargon is worth 100x the price. Breaking down $10,000 into bite-sized projects makes the goal feel completely realistic.",
     },
   ],
 };

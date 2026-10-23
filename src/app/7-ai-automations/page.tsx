@@ -5,13 +5,13 @@ import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 import { AI_AUTOMATIONS_DETAIL_DATA } from "@/lib/ai-automations-detail";
 
 export const metadata: Metadata = {
-  title: "7 AI Automations That Could Make You $10,000+ Each | Plugd",
+  title: "7 AI Automation Tools That Could Make You $10,000+ | Plugd",
   description:
-    "Master 7 enterprise-grade AI automation architectures capable of delivering $10,000+ in business value. Complete blueprints, system architectures, and production workflows.",
+    "Learn 7 accessible AI automation tools to save businesses time, offer simple services, and build real income streams. Practical, beginner-friendly walkthroughs.",
   openGraph: {
-    title: "7 AI Automations That Could Make You $10,000+ Each | Plugd",
+    title: "7 AI Automation Tools That Could Make You $10,000+ | Plugd",
     description:
-      "Master 7 enterprise-grade AI automation architectures capable of delivering $10,000+ in business value. Complete blueprints, system architectures, and production workflows.",
+      "Learn 7 accessible AI automation tools to save businesses time, offer simple services, and build real income streams. Practical, beginner-friendly walkthroughs.",
   },
 };
 

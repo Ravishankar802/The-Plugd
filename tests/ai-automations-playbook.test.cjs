@@ -9,7 +9,7 @@ test("1. Exact title verification in catalog and codebase", () => {
     "utf8"
   );
 
-  const exactExpectedTitle = "7 AI Automations That Could Make You $10,000+ Each";
+  const exactExpectedTitle = "7 AI Automation Tools That Could Make You $10,000+";
 
   // Must contain exact new title
   assert.ok(
@@ -17,7 +17,11 @@ test("1. Exact title verification in catalog and codebase", () => {
     `playbooks-catalog.ts must contain exact title "${exactExpectedTitle}"`
   );
 
-  // Must NOT contain old title
+  // Must NOT contain old titles
+  assert.ok(
+    !catalogContent.includes("7 AI Automations That Could Make You $10,000+ Each"),
+    "playbooks-catalog.ts must NOT contain the old title with 'Each'"
+  );
   assert.ok(
     !catalogContent.includes("7 AI Automations You Can Sell to Businesses for ₹10,000+ Each"),
     "playbooks-catalog.ts must NOT contain the old title with ₹10,000 or 'sell to businesses'"
@@ -40,7 +44,7 @@ test("2. Detail view data and curriculum integrity", async () => {
     "utf8"
   );
   assert.ok(
-    detailFile.includes('title: "7 AI Automations That Could Make You $10,000+ Each"'),
+    detailFile.includes('title: "7 AI Automation Tools That Could Make You $10,000+"'),
     "Detail data must use exact title"
   );
   assert.ok(
@@ -51,6 +55,7 @@ test("2. Detail view data and curriculum integrity", async () => {
   assert.ok(detailFile.includes("originalPrice: 9"), "Original price must be 9");
   assert.ok(detailFile.includes("modulesCount: 9"), "Must have 9 modules");
   assert.ok(detailFile.includes("lessonsCount: 36"), "Must have 36 lessons");
+  assert.ok(detailFile.includes("No coding, programming, or previous technical experience required"));
 });
 
 test("3. All 9 modules and 36 lessons exist with slides and written content", () => {
@@ -111,7 +116,7 @@ test("5. Detail page route and redirect exist", () => {
     "utf8"
   );
   assert.ok(detailPage.includes("AI_AUTOMATIONS_DETAIL_DATA"));
-  assert.ok(detailPage.includes("7 AI Automations That Could Make You $10,000+ Each"));
+  assert.ok(detailPage.includes("7 AI Automation Tools That Could Make You $10,000+"));
 });
 
 test("6. The Dating Playbook preservation", () => {
