@@ -56,9 +56,11 @@ export default function CategoryPageClient({
 
           {/* Grid of Category Playbooks or Search Empty State */}
           {filteredPlaybooks.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-7 sm:gap-x-5 sm:gap-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-7 sm:gap-x-5 sm:gap-y-8 items-stretch">
               {filteredPlaybooks.map((playbook) => (
-                <PlaybookFeedCard key={playbook.id} playbook={playbook} />
+                <div key={playbook.id} className="flex flex-col h-full">
+                  <PlaybookFeedCard playbook={playbook} />
+                </div>
               ))}
             </div>
           ) : (

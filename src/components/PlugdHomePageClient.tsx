@@ -124,12 +124,12 @@ export default function PlugdHomePageClient({
 
                 {/* Horizontal Rail for Trending Playbooks - Never wraps onto second row */}
                 <div
-                  className="flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-3 pt-1 px-0.5"
+                  className="flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-3 pt-1 px-0.5 items-stretch"
                   role="region"
                   aria-label="Trending Playbooks"
                 >
                   {trendingPlaybooks.map((playbook) => (
-                    <div key={`trending-${playbook.id}`} className="w-[280px] sm:w-[320px] shrink-0">
+                    <div key={`trending-${playbook.id}`} className="w-[280px] sm:w-[320px] shrink-0 flex flex-col">
                       <PlaybookFeedCard playbook={playbook} />
                     </div>
                   ))}
@@ -153,9 +153,11 @@ export default function PlugdHomePageClient({
             </div>
           ) : filteredPlaybooks.length > 0 ? (
             /* Search Results in Grid Feed */
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-7 sm:gap-x-5 sm:gap-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-7 sm:gap-x-5 sm:gap-y-8 items-stretch">
               {filteredPlaybooks.map((playbook) => (
-                <PlaybookFeedCard key={playbook.id} playbook={playbook} />
+                <div key={playbook.id} className="flex flex-col h-full">
+                  <PlaybookFeedCard playbook={playbook} />
+                </div>
               ))}
             </div>
           ) : (
@@ -237,12 +239,12 @@ function CategoryRail({
 
       {/* Horizontal Scrollable Rail - All Playbooks in one single row */}
       <div
-        className="flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-3 pt-1 px-0.5"
+        className="flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-3 pt-1 px-0.5 items-stretch"
         role="region"
         aria-label={`${category.label} Playbooks`}
       >
         {playbooks.map((playbook) => (
-          <div key={playbook.id} className="w-[280px] sm:w-[320px] shrink-0">
+          <div key={playbook.id} className="w-[280px] sm:w-[320px] shrink-0 flex flex-col">
             <PlaybookFeedCard playbook={playbook} />
           </div>
         ))}

@@ -22,7 +22,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
   const formattedPrice = playbook.price ? Number(playbook.price).toFixed(2) : "3.00";
 
   return (
-    <div className="group relative flex flex-col justify-between rounded-2xl bg-white hover:bg-[#f7f8fa] border border-[#dcd8d0] hover:border-[#c7c4c0] p-3 sm:p-3.5 shadow-[0_1px_3px_rgba(28,25,23,0.06),0_1px_2px_rgba(28,25,23,0.04)] hover:shadow-lg motion-safe:hover:-translate-y-1 motion-reduce:hover:transform-none transition-all duration-200 ease-out">
+    <div className="group relative flex flex-col justify-between h-full w-full rounded-2xl bg-white hover:bg-[#f7f8fa] border border-[#dcd8d0] hover:border-[#c7c4c0] p-3 sm:p-3.5 shadow-[0_1px_3px_rgba(28,25,23,0.06),0_1px_2px_rgba(28,25,23,0.04)] hover:shadow-lg motion-safe:hover:-translate-y-1 motion-reduce:hover:transform-none transition-all duration-200 ease-out">
       {/* Clickable Card Body linking to Playbook */}
       <Link
         href={playbook.href}
@@ -30,7 +30,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
         aria-label={`${playbook.title} — ${playbook.categoryName} Playbook`}
       >
         {/* 16:9 Thumbnail Container */}
-        <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#eeebe5] border border-[#e5e1d8]">
+        <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#eeebe5] border border-[#e5e1d8] shrink-0">
           {playbook.thumbnail ? (
             <Image
               src={playbook.thumbnail}
@@ -46,47 +46,45 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
         </div>
 
         {/* Title and Category */}
-        <div className="mt-3">
-          <h3 className="text-[15px] sm:text-[15.5px] font-semibold text-[#1c1917] leading-snug line-clamp-2 group-hover:text-[#2563eb] transition-colors">
+        <div className="mt-3 flex flex-col flex-1">
+          <h3 className="text-[15px] sm:text-[15.5px] font-semibold text-[#1c1917] leading-snug line-clamp-2 h-[42px] sm:h-[44px] group-hover:text-[#2563eb] transition-colors">
             {playbook.title}
           </h3>
 
           {/* Category beneath Title */}
-          <div className="mt-1 text-[13px] text-[#57534e]">
+          <div className="mt-1 text-[13px] text-[#57534e] truncate">
             <span className="font-medium text-[#44403c]">{playbook.categoryName}</span>
           </div>
 
-          {/* Optional Bestseller & Ratings Row */}
-          {(playbook.badge || playbook.rating) && (
-            <div className="mt-2.5 flex items-center gap-1.5 flex-wrap text-xs">
-              {playbook.badge && (
-                <span className="inline-flex items-center rounded-md bg-[#eff6ff] px-2 py-0.5 text-[11px] font-bold text-[#1d4ed8] tracking-tight">
-                  {playbook.badge}
+          {/* Metadata Row — Fixed height container so cards are always identical in size */}
+          <div className="mt-2.5 flex items-center gap-1.5 text-xs h-[24px] overflow-hidden">
+            {playbook.badge && (
+              <span className="inline-flex items-center rounded-md bg-[#eff6ff] px-2 py-0.5 text-[11px] font-bold text-[#1d4ed8] tracking-tight shrink-0">
+                {playbook.badge}
+              </span>
+            )}
+            {playbook.rating && (
+              <div className="inline-flex items-center gap-1 rounded-md border border-[#e7e5e4] bg-white px-1.5 py-0.5 text-[11px] font-semibold text-[#1c1917] shadow-2xs shrink-0">
+                <Star className="h-3 w-3 fill-[#d97706] text-[#d97706]" />
+                <span className="font-bold">{playbook.rating}</span>
+              </div>
+            )}
+            {playbook.ratingCount && (
+              <div className="inline-flex items-center rounded-md border border-[#e7e5e4] bg-white px-1.5 py-0.5 text-[11px] text-[#78716c] shadow-2xs shrink-0">
+                <span>
+                  {typeof playbook.ratingCount === "number"
+                    ? playbook.ratingCount.toLocaleString()
+                    : playbook.ratingCount}{" "}
+                  ratings
                 </span>
-              )}
-              {playbook.rating && (
-                <div className="inline-flex items-center gap-1 rounded-md border border-[#e7e5e4] bg-white px-1.5 py-0.5 text-[11px] font-semibold text-[#1c1917] shadow-2xs">
-                  <Star className="h-3 w-3 fill-[#d97706] text-[#d97706]" />
-                  <span className="font-bold">{playbook.rating}</span>
-                </div>
-              )}
-              {playbook.ratingCount && (
-                <div className="inline-flex items-center rounded-md border border-[#e7e5e4] bg-white px-1.5 py-0.5 text-[11px] text-[#78716c] shadow-2xs">
-                  <span>
-                    {typeof playbook.ratingCount === "number"
-                      ? playbook.ratingCount.toLocaleString()
-                      : playbook.ratingCount}{" "}
-                    ratings
-                  </span>
-                </div>
-              )}
-            </div>
-          )}
+              </div>
+            )}
+          </div>
         </div>
       </Link>
 
       {/* Price and Add to cart Action */}
-      <div className="mt-4 sm:mt-5 flex items-center justify-between gap-2">
+      <div className="mt-4 sm:mt-5 flex items-center justify-between gap-2 shrink-0">
         <div className="flex items-baseline gap-1.5 shrink-0">
           {/* Prominent Current Price ($3.00) */}
           <span className="text-[16px] sm:text-[17px] font-bold text-[#1c1917] tracking-tight">
