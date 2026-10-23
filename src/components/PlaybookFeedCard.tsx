@@ -86,7 +86,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
       </Link>
 
       {/* Price and Add to cart Action */}
-      <div className="mt-4 sm:mt-5 flex items-center justify-between gap-2 pt-2 border-t border-[#f2efe9]">
+      <div className="mt-4 sm:mt-5 flex items-center justify-between gap-2">
         <div className="flex items-baseline gap-1.5 shrink-0">
           {/* Prominent Current Price ($3.00) */}
           <span className="text-[16px] sm:text-[17px] font-bold text-[#1c1917] tracking-tight">
