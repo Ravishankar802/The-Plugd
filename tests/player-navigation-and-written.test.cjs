@@ -133,3 +133,92 @@ test('3. Player components feature parity: outside-click capture listener & boun
     }
   });
 });
+
+test('4. Standardized header layout across all slide player templates and viewers', () => {
+  const slideTemplates = [
+    'src/components/SlideViewer.tsx',
+    'src/components/WrittenLessonViewer.tsx',
+    'src/components/slide-templates/AgencyRevenueSlideView.tsx',
+    'src/components/slide-templates/AgenticMatrixSlideView.tsx',
+    'src/components/slide-templates/QuadrantRevenueSlideView.tsx',
+    'src/components/slide-templates/AgencyChronicleSlideView.tsx',
+    'src/components/slide-templates/CatalogServiceSlideView.tsx',
+    'src/components/slide-templates/CodeTerminalSlideView.tsx',
+    'src/components/slide-templates/ConversationalFlowSlideView.tsx',
+  ];
+
+  const forbiddenHeaderPhrases = [
+    'AGENTIC MATRIX OS',
+    '4-QUADRANT REVENUE HUD',
+    'DAY 1-30 CHRONICLE',
+    'SMB SERVICE SPEC SHEET',
+    'BRANCH: main',
+    'CONVERSATIONAL FLOW STUDIO',
+    'Written Guide',
+  ];
+
+  slideTemplates.forEach(relPath => {
+    const filePath = path.join(__dirname, '..', relPath);
+    const code = fs.readFileSync(filePath, 'utf8');
+
+    // 1. Back to Playbook button
+    assert.ok(
+      code.includes('Back to Playbook'),
+      `${relPath} must contain "Back to Playbook" navigation link`
+    );
+
+    // 2. No forbidden custom badges or old Written Guide button in header
+    forbiddenHeaderPhrases.forEach(phrase => {
+      assert.ok(
+        !code.includes(phrase),
+        `${relPath} must not contain forbidden legacy badge/button: "${phrase}"`
+      );
+    });
+
+    // 3. Must have performLogout / Log out
+    assert.ok(
+      code.includes('performLogout') && code.includes('Log out'),
+      `${relPath} must contain logout control in header`
+    );
+  });
+});
+
+test('5. Dynamic module lesson progress dots rendered in footer of all slide players', () => {
+  const slidePlayerFiles = [
+    'src/components/SlideViewer.tsx',
+    'src/components/slide-templates/AgencyRevenueSlideView.tsx',
+    'src/components/slide-templates/AgenticMatrixSlideView.tsx',
+    'src/components/slide-templates/QuadrantRevenueSlideView.tsx',
+    'src/components/slide-templates/AgencyChronicleSlideView.tsx',
+    'src/components/slide-templates/CatalogServiceSlideView.tsx',
+    'src/components/slide-templates/CodeTerminalSlideView.tsx',
+    'src/components/slide-templates/ConversationalFlowSlideView.tsx',
+  ];
+
+  slidePlayerFiles.forEach(relPath => {
+    const filePath = path.join(__dirname, '..', relPath);
+    const code = fs.readFileSync(filePath, 'utf8');
+
+    // Must map over module.lessons to render dynamic dots
+    assert.ok(
+      code.includes('module.lessons.map'),
+      `${relPath} must map over module.lessons to render dynamic progress dots`
+    );
+
+    // Must style active lesson dot distinctly (scale, ring, or active highlight)
+    assert.ok(
+      code.includes('l.id === lesson.id') || code.includes('isActive'),
+      `${relPath} must highlight active lesson dot`
+    );
+  });
+});
+
+test('6. Global Header branding displays "Plugd" for non-dating playbooks', () => {
+  const headerPath = path.join(__dirname, '../src/components/Header.tsx');
+  const code = fs.readFileSync(headerPath, 'utf8');
+
+  assert.ok(
+    code.includes('activeCourse === "men"') && code.includes('"The Dating Playbook"') && code.includes('"Plugd"'),
+    'Header.tsx must display "Plugd" unless activeCourse is a dating playbook'
+  );
+});

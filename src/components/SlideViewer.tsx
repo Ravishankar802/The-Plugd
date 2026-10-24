@@ -382,7 +382,8 @@ export default function SlideViewer({
             }`}
           >
             <BookOpen className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">Syllabus</span>
+            <span className="hidden sm:inline">Back to Playbook</span>
+            <span className="sm:hidden">Back</span>
           </Link>
 
           {/* Dropdown 1: Module Selector */}
@@ -1341,7 +1342,7 @@ export default function SlideViewer({
                   href={`/learn/${course.slug}`}
                   className="inline-flex items-center gap-2 rounded-2xl bg-[#1c1917] px-8 py-4 text-sm font-bold text-white shadow-md transition-transform hover:scale-105"
                 >
-                  <span>Course Syllabus</span>
+                  <span>Back to Playbook</span>
                   <BookOpen className="h-4 w-4" />
                 </Link>
               )}
@@ -1409,6 +1410,34 @@ export default function SlideViewer({
           </span>
           <span className="sm:hidden">Prev</span>
         </button>
+
+        {/* Lesson Progress Dots in Module */}
+        <div className="flex items-center gap-2 px-2" role="tablist" aria-label="Lessons in module">
+          {module.lessons.map((l) => {
+            const isActive = l.id === lesson.id;
+            return (
+              <button
+                key={l.id}
+                type="button"
+                onClick={() => {
+                  if (!isActive) {
+                    router.push(`/learn/${course.slug}/${l.id}`);
+                  }
+                }}
+                className={`rounded-full transition-all cursor-pointer ${
+                  isActive
+                    ? "h-2.5 w-2.5 sm:h-3 sm:w-3 bg-[#2563eb] ring-2 ring-[#2563eb]/40 shadow-xs scale-110"
+                    : isModule1
+                    ? "h-2 w-2 bg-[#d6d3d1] hover:bg-[#a8a29e]"
+                    : "h-2 w-2 bg-neutral-800 hover:bg-neutral-700"
+                }`}
+                title={`Lesson ${l.number}: ${l.title}`}
+                aria-label={`Lesson ${l.number}: ${l.title}`}
+                aria-current={isActive ? "step" : undefined}
+              />
+            );
+          })}
+        </div>
 
         {/* Next Button */}
         <button

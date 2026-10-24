@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: LearnPageProps) {
   const course = COURSES[courseSlug];
   if (!course) return { title: "Course · Plugd" };
   return {
-    title: `${course.title} · Syllabus · Plugd`,
+    title: `${course.title} · Playbook · Plugd`,
     description: course.description,
   };
 }
@@ -165,7 +165,7 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
           <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
             <div>
               <span className="inline-block rounded-full bg-[#FAF8F5] border border-[#E6E1D7] px-3.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[#2563EB] mb-4">
-                {course.shortTitle} · OFFICIAL SYLLABUS
+                {course.shortTitle} · OFFICIAL PLAYBOOK
               </span>
               <h1 className="font-editorial-title text-3xl sm:text-5xl font-black tracking-tight text-[#0E0E10] mb-4 leading-tight">
                 {course.title}

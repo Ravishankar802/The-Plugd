@@ -21,6 +21,7 @@ import {
   Network,
   Activity,
   Layers,
+  LogOut,
 } from "lucide-react";
 import { Slide, Lesson, Module, Course } from "@/lib/playbooks-data";
 import WrittenLessonViewer from "@/components/WrittenLessonViewer";
@@ -222,7 +223,8 @@ export default function AgenticMatrixSlideView({
             className="flex items-center gap-1.5 rounded-full border border-purple-500/30 bg-purple-950/40 px-2.5 sm:px-3.5 py-1.5 text-xs font-semibold text-purple-300 hover:bg-purple-900/50 transition-colors shrink-0"
           >
             <BookOpen className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">Syllabus</span>
+            <span className="hidden sm:inline">Back to Playbook</span>
+            <span className="sm:hidden">Back</span>
           </Link>
 
           {/* Module Selector */}
@@ -315,26 +317,57 @@ export default function AgenticMatrixSlideView({
           </div>
         </div>
 
-        {/* Right Status Badge & Controls */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <div className="hidden lg:flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-950/30 px-3 py-1 text-xs font-mono text-purple-300">
-            <span className="h-2 w-2 rounded-full bg-purple-400 animate-pulse" />
-            <span>AGENTIC MATRIX OS</span>
+        {/* Center: Format Selector & Slide Counter */}
+        <div className="flex items-center gap-4">
+          <div className="flex items-center rounded-full border border-slate-800 bg-slate-900/90 p-0.5 shadow-xs">
+            <button
+              type="button"
+              disabled
+              className="flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold bg-purple-500/20 border border-purple-500/40 text-purple-300 shadow-xs"
+            >
+              <Presentation className="h-3.5 w-3.5 text-purple-400" />
+              <span className="hidden sm:inline">Presentation</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewFormat("written")}
+              className="flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer"
+            >
+              <BookOpen className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Written Lesson</span>
+            </button>
           </div>
 
-          <button
-            onClick={() => setViewFormat("written")}
-            className="flex items-center gap-1.5 rounded-full border border-slate-800 bg-slate-900/80 px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white"
-          >
-            <BookOpen className="h-3.5 w-3.5 text-purple-400" />
-            <span className="hidden sm:inline">Written Guide</span>
-          </button>
+          <div className="hidden sm:flex items-center gap-3">
+            <span className="font-mono text-xs font-semibold text-slate-300">
+              {currentIndex + 1} <span className="text-slate-600">/</span> {totalSlides}
+            </span>
+            <div className="h-1.5 w-16 sm:w-24 rounded-full overflow-hidden bg-slate-800">
+              <div
+                className="h-full transition-all duration-300 bg-purple-400 shadow-[0_0_8px_rgba(168,85,247,0.5)]"
+                style={{ width: `${((currentIndex + 1) / totalSlides) * 100}%` }}
+              />
+            </div>
+          </div>
+        </div>
 
+        {/* Right: Fullscreen & Logout */}
+        <div className="flex items-center gap-2">
           <button
             onClick={toggleFullscreen}
-            className="hidden sm:flex h-8 w-8 items-center justify-center rounded-full border border-slate-800 bg-slate-900/80 text-slate-300 hover:text-white"
+            className="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white transition-colors cursor-pointer"
+            title="Toggle Fullscreen"
           >
-            {isFullscreen ? <Minimize2 className="h-3.5 w-3.5" /> : <Maximize2 className="h-3.5 w-3.5" />}
+            {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+          </button>
+          <button
+            type="button"
+            onClick={performLogout}
+            className="flex items-center gap-1.5 rounded-full border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition-colors cursor-pointer"
+            title="Log out"
+          >
+            <LogOut className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">Log out</span>
           </button>
         </div>
       </header>
@@ -423,17 +456,30 @@ export default function AgenticMatrixSlideView({
             </span>
           </button>
 
-          {/* Progress Dots */}
-          <div className="flex items-center gap-2">
-            {Array.from({ length: totalSlides }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goToSlide(i)}
-                className={`h-2 rounded-full transition-all ${
-                  i === currentIndex ? "w-8 bg-purple-400" : "w-2 bg-slate-700 hover:bg-slate-500"
-                }`}
-              />
-            ))}
+          {/* Lesson Progress Dots in Module */}
+          <div className="flex items-center gap-2 px-2" role="tablist" aria-label="Lessons in module">
+            {module.lessons.map((l) => {
+              const isActive = l.id === lesson.id;
+              return (
+                <button
+                  key={l.id}
+                  type="button"
+                  onClick={() => {
+                    if (!isActive) {
+                      router.push(`/learn/${course.slug}/${l.id}`);
+                    }
+                  }}
+                  className={`rounded-full transition-all cursor-pointer ${
+                    isActive
+                      ? "h-2.5 w-2.5 sm:h-3 sm:w-3 bg-purple-400 ring-2 ring-purple-400/40 shadow-[0_0_8px_rgba(168,85,247,0.6)] scale-110"
+                      : "h-2 w-2 bg-slate-800 hover:bg-slate-700 opacity-60 hover:opacity-100"
+                  }`}
+                  title={`Lesson ${l.number}: ${l.title}`}
+                  aria-label={`Lesson ${l.number}: ${l.title}`}
+                  aria-current={isActive ? "step" : undefined}
+                />
+              );
+            })}
           </div>
 
           <button

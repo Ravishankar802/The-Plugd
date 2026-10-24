@@ -288,7 +288,8 @@ export default function WrittenLessonViewer({
             className="flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-2.5 sm:px-3.5 py-1.5 text-xs font-semibold text-[#57534e] transition-colors hover:border-[#1c1917] hover:text-[#1c1917] shadow-xs shrink-0"
           >
             <BookOpen className="h-3.5 w-3.5 text-[#2563eb]" />
-            <span className="hidden sm:inline">Syllabus</span>
+            <span className="hidden sm:inline">Back to Playbook</span>
+            <span className="sm:hidden">Back</span>
           </Link>
 
           {/* Dropdown 1: Module Selector */}
@@ -585,7 +586,7 @@ export default function WrittenLessonViewer({
                 href={`/learn/${course.slug}`}
                 className="flex items-center gap-2 rounded-2xl bg-white border border-[#e7e5e4] px-5 py-3 text-xs sm:text-sm font-bold text-[#1c1917] shadow-xs hover:border-[#1c1917]"
               >
-                <span>Course Syllabus</span>
+                <span>Back to Playbook</span>
               </Link>
             )}
           </div>

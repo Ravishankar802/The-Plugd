@@ -240,7 +240,9 @@ export default function Header({
               priority
             />
             <span className="text-[16px] font-semibold tracking-[-0.01em] text-[#1c1917] transition-colors group-hover:text-[#78716c]">
-              {activeCourse ? "The Dating Playbook" : "Plugd"}
+              {activeCourse === "men" || activeCourse === "women" || activeCourse === "dating-playbook"
+                ? "The Dating Playbook"
+                : "Plugd"}
             </span>
           </Link>
         </div>

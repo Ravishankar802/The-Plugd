@@ -15,9 +15,12 @@ import {
   PhoneCall,
   Check,
   Zap,
+  Presentation,
+  LogOut,
 } from "lucide-react";
 import { Slide, Lesson, Module, Course } from "@/lib/playbooks-data";
 import WrittenLessonViewer from "@/components/WrittenLessonViewer";
+import { performLogout } from "@/lib/auth-client";
 
 interface ConversationalFlowSlideViewProps {
   course: Course;
@@ -211,7 +214,8 @@ export default function ConversationalFlowSlideView({
             className="flex items-center gap-1.5 rounded-full border border-teal-200 bg-teal-50 px-3 py-1.5 text-xs font-semibold text-teal-800 hover:bg-teal-100 transition-colors shrink-0"
           >
             <BookOpen className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">Syllabus</span>
+            <span className="hidden sm:inline">Back to Playbook</span>
+            <span className="sm:hidden">Back</span>
           </Link>
 
           {/* Module Selector */}
@@ -304,18 +308,57 @@ export default function ConversationalFlowSlideView({
           </div>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
-          <div className="hidden lg:flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-mono font-bold text-teal-800">
-            <Smartphone className="h-3.5 w-3.5 text-teal-600" />
-            <span>CONVERSATIONAL FLOW STUDIO</span>
+        {/* Center: Format Selector & Slide Counter */}
+        <div className="flex items-center gap-4">
+          <div className="flex items-center rounded-full border border-gray-200 bg-gray-100 p-0.5 shadow-xs">
+            <button
+              type="button"
+              disabled
+              className="flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold bg-teal-100 border border-teal-200 text-teal-800 shadow-xs"
+            >
+              <Presentation className="h-3.5 w-3.5 text-teal-600" />
+              <span className="hidden sm:inline">Presentation</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewFormat("written")}
+              className="flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
+            >
+              <BookOpen className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Written Lesson</span>
+            </button>
           </div>
 
+          <div className="hidden sm:flex items-center gap-3">
+            <span className="font-mono text-xs font-semibold text-gray-700">
+              {currentIndex + 1} <span className="text-gray-400">/</span> {totalSlides}
+            </span>
+            <div className="h-1.5 w-16 sm:w-24 rounded-full overflow-hidden bg-gray-200">
+              <div
+                className="h-full transition-all duration-300 bg-teal-600 shadow-[0_0_8px_rgba(13,148,136,0.4)]"
+                style={{ width: `${((currentIndex + 1) / totalSlides) * 100}%` }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Fullscreen & Logout */}
+        <div className="flex items-center gap-2">
           <button
-            onClick={() => setViewFormat("written")}
-            className="flex items-center gap-1.5 rounded-full border border-gray-300 bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-200"
+            onClick={toggleFullscreen}
+            className="rounded-lg p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors cursor-pointer"
+            title="Toggle Fullscreen"
           >
-            <BookOpen className="h-3.5 w-3.5 text-teal-700" />
-            <span className="hidden sm:inline">Written Guide</span>
+            {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+          </button>
+          <button
+            type="button"
+            onClick={performLogout}
+            className="flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors cursor-pointer"
+            title="Log out"
+          >
+            <LogOut className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">Log out</span>
           </button>
         </div>
       </header>
@@ -393,16 +436,30 @@ export default function ConversationalFlowSlideView({
             </span>
           </button>
 
-          <div className="flex items-center gap-2">
-            {Array.from({ length: totalSlides }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goToSlide(i)}
-                className={`h-2 rounded-full transition-all ${
-                  i === currentIndex ? "w-8 bg-teal-600" : "w-2 bg-gray-300"
-                }`}
-              />
-            ))}
+          {/* Lesson Progress Dots in Module */}
+          <div className="flex items-center gap-2 px-2" role="tablist" aria-label="Lessons in module">
+            {module.lessons.map((l) => {
+              const isActive = l.id === lesson.id;
+              return (
+                <button
+                  key={l.id}
+                  type="button"
+                  onClick={() => {
+                    if (!isActive) {
+                      router.push(`/learn/${course.slug}/${l.id}`);
+                    }
+                  }}
+                  className={`rounded-full transition-all cursor-pointer ${
+                    isActive
+                      ? "h-2.5 w-2.5 sm:h-3 sm:w-3 bg-teal-600 ring-2 ring-teal-600/40 shadow-xs scale-110"
+                      : "h-2 w-2 bg-gray-300 hover:bg-gray-400 opacity-70 hover:opacity-100"
+                  }`}
+                  title={`Lesson ${l.number}: ${l.title}`}
+                  aria-label={`Lesson ${l.number}: ${l.title}`}
+                  aria-current={isActive ? "step" : undefined}
+                />
+              );
+            })}
           </div>
 
           <button

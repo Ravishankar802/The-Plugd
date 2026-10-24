@@ -234,7 +234,8 @@ export default function AgencyRevenueSlideView({
             className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/40 px-2.5 sm:px-3.5 py-1.5 text-xs font-semibold text-emerald-400 hover:bg-emerald-900/50 hover:text-emerald-300 transition-colors shadow-xs shrink-0"
           >
             <BookOpen className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">Syllabus</span>
+            <span className="hidden sm:inline">Back to Playbook</span>
+            <span className="sm:hidden">Back</span>
           </Link>
 
           {/* Module Selector Dropdown */}
@@ -725,7 +726,7 @@ export default function AgencyRevenueSlideView({
                   href={`/learn/${course.slug}`}
                   className="inline-flex items-center gap-2 rounded-2xl bg-emerald-600 px-8 py-4 text-sm font-bold text-white shadow-lg transition-transform hover:scale-105"
                 >
-                  <span>Complete Course Syllabus</span>
+                  <span>Back to Playbook</span>
                   <BookOpen className="h-4 w-4" />
                 </Link>
               )}
@@ -777,20 +778,30 @@ export default function AgencyRevenueSlideView({
           </span>
         </button>
 
-        {/* Slide Position Dots */}
-        <div className="flex items-center gap-1.5 overflow-x-auto max-w-[200px] sm:max-w-md px-2 scrollbar-none">
-          {Array.from({ length: totalSlides }).map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => goToSlide(idx, idx > currentIndex ? "next" : "prev")}
-              className={`h-2 rounded-full transition-all cursor-pointer ${
-                idx === currentIndex
-                  ? "w-6 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]"
-                  : "w-2 bg-slate-800 hover:bg-slate-700"
-              }`}
-              title={`Go to slide ${idx + 1}`}
-            />
-          ))}
+        {/* Lesson Progress Dots in Module */}
+        <div className="flex items-center gap-2 px-2" role="tablist" aria-label="Lessons in module">
+          {module.lessons.map((l) => {
+            const isActive = l.id === lesson.id;
+            return (
+              <button
+                key={l.id}
+                type="button"
+                onClick={() => {
+                  if (!isActive) {
+                    router.push(`/learn/${course.slug}/${l.id}`);
+                  }
+                }}
+                className={`rounded-full transition-all cursor-pointer ${
+                  isActive
+                    ? "h-2.5 w-2.5 sm:h-3 sm:w-3 bg-emerald-400 ring-2 ring-emerald-400/40 shadow-[0_0_8px_rgba(52,211,153,0.6)] scale-110"
+                    : "h-2 w-2 bg-slate-800 hover:bg-slate-700 opacity-60 hover:opacity-100"
+                }`}
+                title={`Lesson ${l.number}: ${l.title}`}
+                aria-label={`Lesson ${l.number}: ${l.title}`}
+                aria-current={isActive ? "step" : undefined}
+              />
+            );
+          })}
         </div>
 
         <button
