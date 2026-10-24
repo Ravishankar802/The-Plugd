@@ -22,6 +22,8 @@ import {
 import { Slide, Lesson, Module, Course } from "@/lib/playbooks-data";
 import WrittenLessonViewer from "@/components/WrittenLessonViewer";
 import { performLogout } from "@/lib/auth-client";
+import { getTemplateForPlaybook } from "@/lib/slide-templates/registry";
+import AgencyRevenueSlideView from "@/components/slide-templates/AgencyRevenueSlideView";
 
 interface SlideViewerProps {
   course: Course;
@@ -217,7 +219,23 @@ export default function SlideViewer({
     );
   }
 
-  // Presentation View
+  // Check unique template registry assignment
+  const template = getTemplateForPlaybook(course.slug);
+  if (template.templateId === "agency-revenue-os") {
+    return (
+      <AgencyRevenueSlideView
+        course={course}
+        module={module}
+        lesson={lesson}
+        nextLesson={nextLesson}
+        previousLesson={previousLesson}
+        initialSlideIndex={initialSlideIndex}
+        initialFormat={initialFormat}
+      />
+    );
+  }
+
+  // Presentation View (Reference Blueprint Template)
   return (
     <div
       onTouchStart={handleTouchStart}

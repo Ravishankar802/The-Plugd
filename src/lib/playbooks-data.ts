@@ -10,6 +10,7 @@ import { MODULE_09_DATA } from "./module-09-content";
 import { MODULE_10_DATA } from "./module-10-content";
 import { DATING_PLAYBOOK_MODULES } from "./dating-playbook-curriculum";
 import { AI_AUTOMATIONS_PLAYBOOK_COURSE } from "./ai-automations-course";
+import { AI_SERVICE_BUSINESS_PLAYBOOK_COURSE } from "./ai-service-business-course";
 
 export type SlideType =
   | "TITLE"
@@ -316,7 +317,7 @@ export const DATING_PLAYBOOK_COURSE: Course = {
   ],
 };
 
-export { AI_AUTOMATIONS_PLAYBOOK_COURSE };
+export { AI_AUTOMATIONS_PLAYBOOK_COURSE, AI_SERVICE_BUSINESS_PLAYBOOK_COURSE };
 
 export const COURSES: Record<string, Course> = {
   men: DATING_PLAYBOOK_COURSE,
@@ -324,6 +325,7 @@ export const COURSES: Record<string, Course> = {
   "dating-playbook": DATING_PLAYBOOK_COURSE,
   "7-ai-automations": AI_AUTOMATIONS_PLAYBOOK_COURSE,
   "ai-businesses-01": AI_AUTOMATIONS_PLAYBOOK_COURSE,
+  "ai-businesses-02": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
 };
 
 export function getCourse(slug: string = "men"): Course {
@@ -331,7 +333,7 @@ export function getCourse(slug: string = "men"): Course {
 }
 
 export function getAllCourses(): Course[] {
-  return [DATING_PLAYBOOK_COURSE, AI_AUTOMATIONS_PLAYBOOK_COURSE];
+  return [DATING_PLAYBOOK_COURSE, AI_AUTOMATIONS_PLAYBOOK_COURSE, AI_SERVICE_BUSINESS_PLAYBOOK_COURSE];
 }
 
 export function getLesson(
