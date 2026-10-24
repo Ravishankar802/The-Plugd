@@ -53,19 +53,20 @@ for (const mod of courseData.modules) {
 }
 console.log("✔ 4. AI Automation Playbook content is 100% intact (7 modules, 28 lessons, all slides and written lessons preserved).");
 
-// 5. Confirm that /side-hustles and all its existing content remain unchanged
+// 5. Confirm that /side-hustles and all its existing content remain intact and categorized under AI Businesses
 const sideHustlesPb = ALL_PLAYBOOK_SUMMARIES[1];
 assert.strictEqual(sideHustlesPb.title, "10 Ways to Find Paying Customers Without Spending on Ads");
 assert.strictEqual(sideHustlesPb.slug, "side-hustles");
 assert.strictEqual(sideHustlesPb.href, "/side-hustles");
-const sideHustleCategoryPlaybooks = getPlaybooksForCategory("side-hustles");
-assert.strictEqual(sideHustleCategoryPlaybooks.length, 1);
-assert.strictEqual(sideHustleCategoryPlaybooks[0].title, "10 Ways to Find Paying Customers Without Spending on Ads");
-console.log("✔ 5. /side-hustles and all its content remain intact and accessible.");
+assert.strictEqual(sideHustlesPb.categorySlug, "ai-businesses");
+assert.strictEqual(sideHustlesPb.categoryName, "AI Businesses");
+const aiCategoryPlaybooks = getPlaybooksForCategory("ai-businesses");
+assert.strictEqual(aiCategoryPlaybooks.length, 2, "AI Businesses category now contains both playbooks");
+console.log("✔ 5. /side-hustles and all its content remain intact and categorized under AI Businesses.");
 
 // 6. Check homepage sections, category pages, search results, recommendations, and metadata for references to removed Playbooks
 const { CATEGORY_CHIPS } = require('../src/components/CategoryChipsBar.tsx');
-assert.strictEqual(CATEGORY_CHIPS.length, 3, "Only active categories (All, AI Businesses, Side Hustles) are surfaced");
+assert.strictEqual(CATEGORY_CHIPS.length, 2, "Only active categories (All, AI Businesses) are surfaced");
 assert.ok(ARCHIVED_PLAYBOOK_SUMMARIES.length >= 300, "Removed playbooks safely archived and excluded from public listings");
 console.log("✔ 6. Zero empty categories surfaced in UI; all 300+ non-active playbooks safely archived.");
 

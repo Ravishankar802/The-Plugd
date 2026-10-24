@@ -35,19 +35,19 @@ export default function Header({
           <div className="flex items-center shrink-0">
             <Link
               href="/"
-              className="group inline-flex items-center gap-2 text-[#1c1917] transition-colors"
-              aria-label="Plugd home"
+              className="group inline-flex items-center gap-2.5 text-[#1c1917] transition-colors"
+              aria-label="Plugd Playbooks home"
             >
               <Image
                 src="/icon.png"
-                alt="Plugd"
+                alt="Plugd Playbooks"
                 width={28}
                 height={28}
                 className="rounded-md shrink-0"
                 priority
               />
               <span className="text-[18px] font-bold tracking-tight text-[#1c1917]">
-                Plugd
+                Plugd Playbooks
               </span>
             </Link>
           </div>

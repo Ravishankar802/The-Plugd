@@ -84,27 +84,25 @@ test("3. getPlaybooksForCategory returns playbooks for active categories and 0 f
   assert.ok(ARCHIVED_PLAYBOOK_SUMMARIES.length >= 300, "ARCHIVED_PLAYBOOK_SUMMARIES preserves archived playbooks");
 
   const aiPlaybooks = getPlaybooksForCategory("ai-businesses");
-  assert.strictEqual(aiPlaybooks.length, 1, "AI Businesses category has exactly 1 playbook");
+  assert.strictEqual(aiPlaybooks.length, 2, "AI Businesses category has both playbooks");
   assert.strictEqual(aiPlaybooks[0].title, "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)");
+  assert.strictEqual(aiPlaybooks[1].title, "10 Ways to Find Paying Customers Without Spending on Ads");
 
   const sideHustlesPlaybooks = getPlaybooksForCategory("side-hustles");
-  assert.strictEqual(sideHustlesPlaybooks.length, 1, "Side Hustles category has exactly 1 playbook");
-  assert.strictEqual(sideHustlesPlaybooks[0].title, "10 Ways to Find Paying Customers Without Spending on Ads");
+  assert.strictEqual(sideHustlesPlaybooks.length, 0, "Side Hustles category has 0 playbooks now that the second is under AI Businesses");
 
   const ecommercePlaybooks = getPlaybooksForCategory("e-commerce");
   assert.strictEqual(ecommercePlaybooks.length, 0, "Inactive categories return 0 playbooks");
 });
 
-test("4. CATEGORY_CHIPS contains All + active categories (AI Businesses, Side Hustles)", () => {
+test("4. CATEGORY_CHIPS contains All + active category (AI Businesses)", () => {
   const { CATEGORY_CHIPS, ALL_CATEGORY_CHIPS } = require("../src/components/CategoryChipsBar.tsx");
 
-  assert.strictEqual(CATEGORY_CHIPS.length, 3, "Must have exactly 3 active chips (All, AI Businesses, Side Hustles)");
+  assert.strictEqual(CATEGORY_CHIPS.length, 2, "Must have exactly 2 active chips (All, AI Businesses)");
   assert.strictEqual(CATEGORY_CHIPS[0].slug, "all");
   assert.strictEqual(CATEGORY_CHIPS[0].href, "/");
   assert.strictEqual(CATEGORY_CHIPS[1].slug, "ai-businesses");
   assert.strictEqual(CATEGORY_CHIPS[1].href, "/ai-businesses");
-  assert.strictEqual(CATEGORY_CHIPS[2].slug, "side-hustles");
-  assert.strictEqual(CATEGORY_CHIPS[2].href, "/side-hustles");
 
   assert.ok(ALL_CATEGORY_CHIPS.length >= 16, "ALL_CATEGORY_CHIPS preserves full category definitions");
 });

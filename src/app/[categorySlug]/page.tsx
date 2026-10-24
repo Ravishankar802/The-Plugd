@@ -7,6 +7,7 @@ import {
   getCategoryBySlug,
   getPlaybooksForCategory,
 } from "@/lib/categories";
+import { ALL_PLAYBOOK_SUMMARIES } from "@/lib/playbooks-catalog";
 import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 
 interface CategoryPageProps {
@@ -79,10 +80,17 @@ export default async function CategoryRoute({ params }: CategoryPageProps) {
     console.error("[CATEGORY_AUTH_CHECK_ERROR]", err);
   }
 
-  const playbooks = getPlaybooksForCategory(category.slug);
+  let playbooks = getPlaybooksForCategory(category.slug);
 
   if (playbooks.length === 0) {
-    redirect("/");
+    const matchingPlaybook = ALL_PLAYBOOK_SUMMARIES.find(
+      (p) => p.slug === categorySlug || p.href === `/${categorySlug}`
+    );
+    if (matchingPlaybook) {
+      playbooks = [matchingPlaybook];
+    } else {
+      redirect("/");
+    }
   }
 
   return (

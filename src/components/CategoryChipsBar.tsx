@@ -57,7 +57,6 @@ export const ALL_CATEGORY_CHIPS: CategoryChipItem[] = [
 export const CATEGORY_CHIPS: CategoryChipItem[] = [
   { label: "All", slug: "all", href: "/", icon: LayoutGrid },
   { label: "AI Businesses", slug: "ai-businesses", href: "/ai-businesses", icon: Bot },
-  { label: "Side Hustles", slug: "side-hustles", href: "/side-hustles", icon: Flame },
 ];
 
 interface CategoryChipsBarProps {
