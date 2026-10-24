@@ -24,6 +24,12 @@ import WrittenLessonViewer from "@/components/WrittenLessonViewer";
 import { performLogout } from "@/lib/auth-client";
 import { getTemplateForPlaybook } from "@/lib/slide-templates/registry";
 import AgencyRevenueSlideView from "@/components/slide-templates/AgencyRevenueSlideView";
+import AgenticMatrixSlideView from "@/components/slide-templates/AgenticMatrixSlideView";
+import QuadrantRevenueSlideView from "@/components/slide-templates/QuadrantRevenueSlideView";
+import AgencyChronicleSlideView from "@/components/slide-templates/AgencyChronicleSlideView";
+import CatalogServiceSlideView from "@/components/slide-templates/CatalogServiceSlideView";
+import CodeTerminalSlideView from "@/components/slide-templates/CodeTerminalSlideView";
+import ConversationalFlowSlideView from "@/components/slide-templates/ConversationalFlowSlideView";
 
 interface SlideViewerProps {
   course: Course;
@@ -224,6 +230,90 @@ export default function SlideViewer({
   if (template.templateId === "agency-revenue-os") {
     return (
       <AgencyRevenueSlideView
+        course={course}
+        module={module}
+        lesson={lesson}
+        nextLesson={nextLesson}
+        previousLesson={previousLesson}
+        initialSlideIndex={initialSlideIndex}
+        initialFormat={initialFormat}
+      />
+    );
+  }
+
+  if (template.templateId === "agentic-workflow-matrix") {
+    return (
+      <AgenticMatrixSlideView
+        course={course}
+        module={module}
+        lesson={lesson}
+        nextLesson={nextLesson}
+        previousLesson={previousLesson}
+        initialSlideIndex={initialSlideIndex}
+        initialFormat={initialFormat}
+      />
+    );
+  }
+
+  if (template.templateId === "quadrant-revenue-stream") {
+    return (
+      <QuadrantRevenueSlideView
+        course={course}
+        module={module}
+        lesson={lesson}
+        nextLesson={nextLesson}
+        previousLesson={previousLesson}
+        initialSlideIndex={initialSlideIndex}
+        initialFormat={initialFormat}
+      />
+    );
+  }
+
+  if (template.templateId === "agency-chronicle-calendar") {
+    return (
+      <AgencyChronicleSlideView
+        course={course}
+        module={module}
+        lesson={lesson}
+        nextLesson={nextLesson}
+        previousLesson={previousLesson}
+        initialSlideIndex={initialSlideIndex}
+        initialFormat={initialFormat}
+      />
+    );
+  }
+
+  if (template.templateId === "catalog-service-index") {
+    return (
+      <CatalogServiceSlideView
+        course={course}
+        module={module}
+        lesson={lesson}
+        nextLesson={nextLesson}
+        previousLesson={previousLesson}
+        initialSlideIndex={initialSlideIndex}
+        initialFormat={initialFormat}
+      />
+    );
+  }
+
+  if (template.templateId === "code-terminal-compiler") {
+    return (
+      <CodeTerminalSlideView
+        course={course}
+        module={module}
+        lesson={lesson}
+        nextLesson={nextLesson}
+        previousLesson={previousLesson}
+        initialSlideIndex={initialSlideIndex}
+        initialFormat={initialFormat}
+      />
+    );
+  }
+
+  if (template.templateId === "conversational-flow-studio") {
+    return (
+      <ConversationalFlowSlideView
         course={course}
         module={module}
         lesson={lesson}

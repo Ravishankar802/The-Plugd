@@ -11,6 +11,12 @@ import { MODULE_10_DATA } from "./module-10-content";
 import { DATING_PLAYBOOK_MODULES } from "./dating-playbook-curriculum";
 import { AI_AUTOMATIONS_PLAYBOOK_COURSE } from "./ai-automations-course";
 import { AI_SERVICE_BUSINESS_PLAYBOOK_COURSE } from "./ai-service-business-course";
+import { AGENT_SOLUTIONS_COURSE, AGENT_SOLUTIONS_SLUG, AGENT_SOLUTIONS_ID } from "./playbooks/agent-solutions-data";
+import { FREELANCE_INCOME_COURSE, FREELANCE_INCOME_SLUG, FREELANCE_INCOME_ID } from "./playbooks/freelance-income-data";
+import { AGENCY_BLUEPRINT_COURSE, AGENCY_BLUEPRINT_SLUG, AGENCY_BLUEPRINT_ID } from "./playbooks/agency-blueprint-data";
+import { SMB_SERVICES_COURSE, SMB_SERVICES_SLUG, SMB_SERVICES_ID } from "./playbooks/smb-services-data";
+import { MICRO_SAAS_COURSE, MICRO_SAAS_SLUG, MICRO_SAAS_ID } from "./playbooks/micro-saas-data";
+import { LOCAL_CHATBOTS_COURSE, LOCAL_CHATBOTS_SLUG, LOCAL_CHATBOTS_ID } from "./playbooks/local-chatbots-data";
 
 export type SlideType =
   | "TITLE"
@@ -49,6 +55,10 @@ export interface Slide {
   eyebrow?: string;
   headline: string;
   subheadline?: string;
+  title?: string;
+  subtitle?: string;
+  bulletPoints?: string[];
+  takeaway?: string;
   quote?: {
     text: string;
     author: string;
@@ -141,17 +151,22 @@ export interface Course {
   price: number;
   originalPrice: number;
   currency: string;
+  badge?: string;
+  rating?: number;
+  ratingCount?: number;
+  primaryColor?: string;
+  outcomes?: string[];
   modulesCount: number;
   lessonsCount: number;
   hoursOfMaterial: string;
   accentColor: string;
-  stats: {
+  stats?: {
     label: string;
     value: string;
   }[];
-  highlights: string[];
+  highlights?: string[];
   modules: Module[];
-  faqs: {
+  faqs?: {
     question: string;
     answer: string;
   }[];
@@ -317,7 +332,16 @@ export const DATING_PLAYBOOK_COURSE: Course = {
   ],
 };
 
-export { AI_AUTOMATIONS_PLAYBOOK_COURSE, AI_SERVICE_BUSINESS_PLAYBOOK_COURSE };
+export {
+  AI_AUTOMATIONS_PLAYBOOK_COURSE,
+  AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
+  AGENT_SOLUTIONS_COURSE,
+  FREELANCE_INCOME_COURSE,
+  AGENCY_BLUEPRINT_COURSE,
+  SMB_SERVICES_COURSE,
+  MICRO_SAAS_COURSE,
+  LOCAL_CHATBOTS_COURSE,
+};
 
 export const COURSES: Record<string, Course> = {
   men: DATING_PLAYBOOK_COURSE,
@@ -327,6 +351,24 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-01": AI_AUTOMATIONS_PLAYBOOK_COURSE,
   "ai-businesses-02": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
   "build-a-10000-month-ai-service-business-with-just-3-core-tools": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
+  // 3. 5 AI Agents
+  "ai-businesses-03": AGENT_SOLUTIONS_COURSE,
+  "5-ai-agents-you-can-build-and-sell-without-training-your-own-model": AGENT_SOLUTIONS_COURSE,
+  // 4. Turn 1 AI Skill
+  "ai-businesses-04": FREELANCE_INCOME_COURSE,
+  "turn-1-ai-skill-into-4-different-freelance-income-streams": FREELANCE_INCOME_COURSE,
+  // 5. 30-Day AI Agency Blueprint
+  "ai-businesses-05": AGENCY_BLUEPRINT_COURSE,
+  "the-30-day-ai-agency-blueprint-from-zero-portfolio-to-paying-clients": AGENCY_BLUEPRINT_COURSE,
+  // 6. 12 AI Services for SMBs
+  "ai-businesses-06": SMB_SERVICES_COURSE,
+  "12-ai-services-small-businesses-need-but-rarely-know-how-to-build": SMB_SERVICES_COURSE,
+  // 7. Build a Micro-SaaS
+  "ai-businesses-07": MICRO_SAAS_COURSE,
+  "build-a-micro-saas-with-ai-in-7-days-instead-of-spending-months-coding": MICRO_SAAS_COURSE,
+  // 8. Sell AI Chatbots
+  "ai-businesses-08": LOCAL_CHATBOTS_COURSE,
+  "sell-ai-chatbots-to-10-local-businesses-without-hiring-a-developer": LOCAL_CHATBOTS_COURSE,
 };
 
 export function getCourse(slug: string = "men"): Course {
@@ -334,7 +376,17 @@ export function getCourse(slug: string = "men"): Course {
 }
 
 export function getAllCourses(): Course[] {
-  return [DATING_PLAYBOOK_COURSE, AI_AUTOMATIONS_PLAYBOOK_COURSE, AI_SERVICE_BUSINESS_PLAYBOOK_COURSE];
+  return [
+    DATING_PLAYBOOK_COURSE,
+    AI_AUTOMATIONS_PLAYBOOK_COURSE,
+    AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
+    AGENT_SOLUTIONS_COURSE,
+    FREELANCE_INCOME_COURSE,
+    AGENCY_BLUEPRINT_COURSE,
+    SMB_SERVICES_COURSE,
+    MICRO_SAAS_COURSE,
+    LOCAL_CHATBOTS_COURSE,
+  ];
 }
 
 export function getLesson(

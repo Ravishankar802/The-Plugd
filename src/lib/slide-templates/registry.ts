@@ -120,6 +120,198 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
       "ai-businesses-02",
     ],
   },
+
+  // 4. Playbook 3: 5 AI Agents You Can Build and Sell Without Training Your Own Model
+  "agentic-workflow-matrix": {
+    templateId: "agentic-workflow-matrix",
+    name: "Agentic Workflow & Autonomous Systems Studio",
+    categoryTheme: "Multi-Agent Orchestration & Tool-Calling Systems",
+    description:
+      "Cyber-slate canvas (#0f172a) with neon violet (#8b5cf6) and bright amber (#f59e0b) node-calling blocks, multi-agent status badges, and interactive tool schemas.",
+    colorPalette: {
+      canvasBg: "#0f172a",
+      stageBg: "linear-gradient(145deg, #1e1b4b, #0f172a)",
+      border: "rgba(139, 92, 246, 0.3)",
+      primaryText: "#f8fafc",
+      secondaryText: "#cbd5e1",
+      accent: "#8b5cf6",
+      accentSecondary: "#f59e0b",
+      highlightPillBg: "rgba(139, 92, 246, 0.15)",
+      highlightPillText: "#c084fc",
+    },
+    visualMotifs: [
+      "Multi-node agent execution graph",
+      "Tool-calling execution blocks with JSON schema previews",
+      "Active agent status chips (IDLE | REASONING | TOOL CALL | COMPLETE)",
+      "Autonomous reasoning loop diagrams",
+    ],
+    layoutArchitecture: "Agent studio terminal with left tool-calling rail and center reasoning node canvas",
+    assignedPlaybookIds: ["ai-businesses-03"],
+    assignedPlaybookSlugs: [
+      "5-ai-agents-you-can-build-and-sell-without-training-your-own-model",
+      "ai-businesses-03",
+    ],
+  },
+
+  // 5. Playbook 4: Turn 1 AI Skill Into 4 Different Freelance Income Streams
+  "quadrant-revenue-stream": {
+    templateId: "quadrant-revenue-stream",
+    name: "Modular Multi-Stream Revenue Dashboard",
+    categoryTheme: "Freelance Monetization & Productized Services",
+    description:
+      "Warm editorial parchment (#faf7f2) with deep terracotta (#c2410c) and forest sage (#15803d) split meters, 4-quadrant cashflow progression cards, and client lifetime value metrics.",
+    colorPalette: {
+      canvasBg: "#faf7f2",
+      stageBg: "#ffffff",
+      border: "#e5e0d8",
+      primaryText: "#1c1917",
+      secondaryText: "#57534e",
+      accent: "#c2410c",
+      accentSecondary: "#15803d",
+      highlightPillBg: "#ffedd5",
+      highlightPillText: "#c2410c",
+    },
+    visualMotifs: [
+      "4-Quadrant revenue distribution meters (Sprints, Retainers, Digital SOPs, Advisory)",
+      "Monthly revenue target dials and yield percentages",
+      "Client conversion cross-sell flowcharts",
+      "Warm dual-column editorial layout",
+    ],
+    layoutArchitecture: "Editorial parchment dashboard with 4-quadrant metric HUD and dual-column delivery cards",
+    assignedPlaybookIds: ["ai-businesses-04"],
+    assignedPlaybookSlugs: [
+      "turn-1-ai-skill-into-4-different-freelance-income-streams",
+      "ai-businesses-04",
+    ],
+  },
+
+  // 6. Playbook 5: The 30-Day AI Agency Blueprint: From Zero Portfolio to Paying Clients
+  "agency-chronicle-calendar": {
+    templateId: "agency-chronicle-calendar",
+    name: "Chronological 30-Day Milestone Dossier",
+    categoryTheme: "Agency Incubation & Rapid Deployment",
+    description:
+      "Deep carbon canvas (#121316) with burnt amber (#d97706) and electric sky blue (#38bdf8), 30-day timeline progress bar, daily sprint dossier cards, and diagnostic discovery scripts.",
+    colorPalette: {
+      canvasBg: "#121316",
+      stageBg: "linear-gradient(160deg, #181a20, #0f1013)",
+      border: "rgba(217, 119, 6, 0.28)",
+      primaryText: "#f9fafb",
+      secondaryText: "#9ca3af",
+      accent: "#d97706",
+      accentSecondary: "#38bdf8",
+      highlightPillBg: "rgba(217, 119, 6, 0.14)",
+      highlightPillText: "#fbbf24",
+    },
+    visualMotifs: [
+      "Day 1 to Day 30 chronological timeline scrubber across top",
+      "Daily sprint milestone checklist dossiers",
+      "Video audit cold outreach sequence badges",
+      "Carbon executive styling with glowing amber highlights",
+    ],
+    layoutArchitecture: "Chronological campaign dashboard with top week-by-week scrubber and daily execution dossier card",
+    assignedPlaybookIds: ["ai-businesses-05"],
+    assignedPlaybookSlugs: [
+      "the-30-day-ai-agency-blueprint-from-zero-portfolio-to-paying-clients",
+      "ai-businesses-05",
+    ],
+  },
+
+  // 7. Playbook 6: 12 AI Services Small Businesses Need but Rarely Know How to Build
+  "catalog-service-index": {
+    templateId: "catalog-service-index",
+    name: "Commercial Service Catalog & Delivery Spec",
+    categoryTheme: "SMB Turn-Key Systems & Operational Automations",
+    description:
+      "Clean light zinc canvas (#f4f4f5) with deep cobalt (#1e40af) and bright seafoam teal (#0d9488), structured 2-column service catalog cards, tool stack badges, and deliverable complexity ratings.",
+    colorPalette: {
+      canvasBg: "#f4f4f5",
+      stageBg: "#ffffff",
+      border: "#e4e4e7",
+      primaryText: "#18181b",
+      secondaryText: "#52525b",
+      accent: "#1e40af",
+      accentSecondary: "#0d9488",
+      highlightPillBg: "#eff6ff",
+      highlightPillText: "#1e40af",
+    },
+    visualMotifs: [
+      "Structured 2-column service catalog cards",
+      "Deliverable complexity meters (Level 1–5)",
+      "Integration tool tags (Make + Twilio + Airtable + OpenAI)",
+      "Client ROI and payback period callout cards",
+    ],
+    layoutArchitecture: "Structured catalog spec sheet with left service index and right implementation architecture",
+    assignedPlaybookIds: ["ai-businesses-06"],
+    assignedPlaybookSlugs: [
+      "12-ai-services-small-businesses-need-but-rarely-know-how-to-build",
+      "ai-businesses-06",
+    ],
+  },
+
+  // 8. Playbook 7: Build a Micro-SaaS With AI in 7 Days Instead of Spending Months Coding
+  "code-terminal-compiler": {
+    templateId: "code-terminal-compiler",
+    name: "Developer IDE & Code Compiler Canvas",
+    categoryTheme: "Full-Stack Micro-SaaS & AI Software Engineering",
+    description:
+      "Dark code editor terminal (#0d1117) with syntax-highlighted code editor cards, git branch commit diagrams, Day 1 of 7 countdown badge, and terminal prompt headers.",
+    colorPalette: {
+      canvasBg: "#0d1117",
+      stageBg: "#161b22",
+      border: "#30363d",
+      primaryText: "#e6edf3",
+      secondaryText: "#8b949e",
+      accent: "#38bdf8",
+      accentSecondary: "#84cc16",
+      highlightPillBg: "rgba(56, 189, 248, 0.12)",
+      highlightPillText: "#38bdf8",
+    },
+    visualMotifs: [
+      "Tabbed IDE code editor mockup (day-0X.ts)",
+      "Syntax-highlighted code cards with copy-paste actions",
+      "Git commit hash tags and branch status diagrams",
+      "Next.js 15 App Router directory tree diagrams",
+    ],
+    layoutArchitecture: "Developer IDE workspace with file tabs header, syntax code stage, and bottom compiler output console",
+    assignedPlaybookIds: ["ai-businesses-07"],
+    assignedPlaybookSlugs: [
+      "build-a-micro-saas-with-ai-in-7-days-instead-of-spending-months-coding",
+      "ai-businesses-07",
+    ],
+  },
+
+  // 9. Playbook 8: Sell AI Chatbots to 10 Local Businesses Without Hiring a Developer
+  "conversational-flow-studio": {
+    templateId: "conversational-flow-studio",
+    name: "Live Chatbot Simulator & Sales Walkthrough",
+    categoryTheme: "Conversational AI & Local Agency Sales",
+    description:
+      "Warm subtle studio grey (#f3f4f6) with deep emerald teal (#0f766e) and vivid coral (#f43f5e), live interactive smartphone chat bubble simulation cards, customer intent branching nodes, and local sales callout blocks.",
+    colorPalette: {
+      canvasBg: "#f3f4f6",
+      stageBg: "#ffffff",
+      border: "#e5e7eb",
+      primaryText: "#111827",
+      secondaryText: "#4b5563",
+      accent: "#0f766e",
+      accentSecondary: "#f43f5e",
+      highlightPillBg: "#ccfbf1",
+      highlightPillText: "#0f766e",
+    },
+    visualMotifs: [
+      "Smartphone mobile mockup frame with live chat dialogue bubbles",
+      "Intent classification branching trees and quick-reply chips",
+      "Trojan Horse video demo script callouts",
+      "Local business trade icons and 1-click booking preview",
+    ],
+    layoutArchitecture: "Split studio canvas with left conversational phone mockup and right commercial sales framework",
+    assignedPlaybookIds: ["ai-businesses-08"],
+    assignedPlaybookSlugs: [
+      "sell-ai-chatbots-to-10-local-businesses-without-hiring-a-developer",
+      "ai-businesses-08",
+    ],
+  },
 };
 
 /**

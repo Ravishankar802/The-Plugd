@@ -233,7 +233,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
           </div>
 
           <div className="divide-y divide-[#E6E1D7] border-y border-[#E6E1D7]">
-            {course.faqs.map((faq, index) => {
+            {(course.faqs || []).map((faq, index) => {
               const isOpen = openFaqIndex === index;
               return (
                 <div key={index} className="py-6">

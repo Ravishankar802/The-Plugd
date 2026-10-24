@@ -21,6 +21,7 @@ export interface PlaybookDetailData {
   id: string;
   slug: string;
   title: string;
+  subtitle?: string;
   headline: string;
   description: string;
   categoryName: string;
@@ -30,6 +31,8 @@ export interface PlaybookDetailData {
   currency: string;
   discountPercentage: number;
   badge?: string;
+  primaryColor?: string;
+  accentColor?: string;
   rating: number;
   ratingCount: string | number;
   studentsCount: string | number;
