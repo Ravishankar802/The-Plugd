@@ -18,7 +18,7 @@ const detailModules: PlaybookDetailModule[] = AI_SERVICE_BUSINESS_MODULES_METADA
 
 export const AI_SERVICE_BUSINESS_DETAIL_DATA: PlaybookDetailData = {
   id: "ai-businesses-02",
-  slug: "ai-businesses-02",
+  slug: "build-a-10000-month-ai-service-business-with-just-3-core-tools",
   title: "Build a $10,000/Month AI Service Business With Just 3 Core Tools",
   headline:
     "Master the 3 high-leverage tools to build, package, and sell high-ticket AI automation services to B2B clients.",

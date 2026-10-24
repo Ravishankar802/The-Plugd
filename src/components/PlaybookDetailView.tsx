@@ -519,7 +519,7 @@ export default function PlaybookDetailView({
                   {playbook.modules.map((module) => {
                     const isOpen = openModuleIds.includes(module.id);
                     return (
-                      <div key={module.id} className="group">
+                      <div key={module.id}>
                         {/* Module Header Button */}
                         <button
                           type="button"
@@ -557,8 +557,8 @@ export default function PlaybookDetailView({
                               const lessonContent = (
                                 <>
                                   <div className="flex items-center gap-3 min-w-0">
-                                    <FileText className="h-3.5 w-3.5 text-zinc-500 group-hover:text-[#5022c3] shrink-0" />
-                                    <span className="truncate group-hover:underline">
+                                    <FileText className="h-3.5 w-3.5 text-zinc-500 group-hover/lesson:text-[#5022c3] shrink-0" />
+                                    <span className="truncate group-hover/lesson:underline">
                                       {lesson.number} {lesson.title}
                                     </span>
                                   </div>
@@ -570,7 +570,7 @@ export default function PlaybookDetailView({
                                       </span>
                                     )}
                                     {canAccess && (
-                                      <span className="text-[#5022c3] text-xs font-semibold">
+                                      <span className="text-[#5022c3] text-xs font-semibold group-hover/lesson:translate-x-0.5 transition-transform">
                                         Open →
                                       </span>
                                     )}
@@ -585,14 +585,14 @@ export default function PlaybookDetailView({
                                 <Link
                                   key={lesson.id}
                                   href={`/learn/${playbook.slug}/${lesson.id}`}
-                                  className="group px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs sm:text-sm text-[#2d2f31] hover:bg-purple-50/40 transition-colors"
+                                  className="group/lesson px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs sm:text-sm text-[#2d2f31] hover:bg-purple-50/40 transition-colors"
                                 >
                                   {lessonContent}
                                 </Link>
                               ) : (
                                 <div
                                   key={lesson.id}
-                                  className="group px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs sm:text-sm text-[#2d2f31] hover:bg-zinc-50 transition-colors"
+                                  className="group/lesson px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs sm:text-sm text-[#2d2f31] hover:bg-zinc-50 transition-colors"
                                 >
                                   {lessonContent}
                                 </div>

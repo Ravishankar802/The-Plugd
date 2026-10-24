@@ -30,7 +30,7 @@ export const AI_SERVICE_BUSINESS_MODULES: Module[] = AI_SERVICE_BUSINESS_MODULES
 
 export const AI_SERVICE_BUSINESS_PLAYBOOK_COURSE: Course = {
   id: "ai-businesses-02",
-  slug: "ai-businesses-02",
+  slug: "build-a-10000-month-ai-service-business-with-just-3-core-tools",
   categorySlug: "ai-businesses",
   categoryName: "AI Businesses",
   title: "Build a $10,000/Month AI Service Business With Just 3 Core Tools",

@@ -45,6 +45,11 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
     notFound();
   }
 
+  // Canonical redirect for legacy numbered slugs
+  if (courseSlug === "ai-businesses-02" || courseSlug === "ai-businesses-01") {
+    redirect(`/learn/${course.slug}`);
+  }
+
   // Server-side Authorization Check
   let hasAccess = Boolean(IS_REVIEW_PHASE_FREE_ACCESS);
   let customer = null;

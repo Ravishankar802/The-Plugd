@@ -326,6 +326,7 @@ export const COURSES: Record<string, Course> = {
   "7-ai-automations": AI_AUTOMATIONS_PLAYBOOK_COURSE,
   "ai-businesses-01": AI_AUTOMATIONS_PLAYBOOK_COURSE,
   "ai-businesses-02": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
+  "build-a-10000-month-ai-service-business-with-just-3-core-tools": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
 };
 
 export function getCourse(slug: string = "men"): Course {

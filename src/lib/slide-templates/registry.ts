@@ -115,7 +115,10 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     layoutArchitecture:
       "Technical executive terminal with top telemetry HUD, dual-tone card borders, and multi-tier pipeline blocks",
     assignedPlaybookIds: ["ai-businesses-02"],
-    assignedPlaybookSlugs: ["ai-businesses-02"],
+    assignedPlaybookSlugs: [
+      "build-a-10000-month-ai-service-business-with-just-3-core-tools",
+      "ai-businesses-02",
+    ],
   },
 };
 

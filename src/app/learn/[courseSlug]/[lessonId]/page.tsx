@@ -93,6 +93,11 @@ export default async function LessonPresentationPage({ params, searchParams }: L
     notFound();
   }
 
+  // Canonical redirect for legacy numbered slugs
+  if (courseSlug === "ai-businesses-02" || courseSlug === "ai-businesses-01") {
+    redirect(`/learn/${course.slug}/${lessonId}`);
+  }
+
   // Server-side Authorization Check
   let accessKey: string | undefined;
   try {

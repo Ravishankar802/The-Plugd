@@ -44,8 +44,8 @@ test("2. Detail view data and curriculum integrity", () => {
     "ID must be ai-businesses-02"
   );
   assert.ok(
-    detailFile.includes('slug: "ai-businesses-02"'),
-    "Slug must be ai-businesses-02"
+    detailFile.includes('slug: "build-a-10000-month-ai-service-business-with-just-3-core-tools"'),
+    "Slug must be clean descriptive title-based slug"
   );
   assert.ok(detailFile.includes("price: 3"), "Price must be 3");
   assert.ok(detailFile.includes("originalPrice: 9"), "Original price must be 9");
@@ -66,8 +66,12 @@ test("3. Course object and playbooks-data integration", () => {
     "playbooks-data.ts must import and export AI_SERVICE_BUSINESS_PLAYBOOK_COURSE"
   );
   assert.ok(
+    playbooksDataFile.includes('"build-a-10000-month-ai-service-business-with-just-3-core-tools": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE'),
+    "COURSES map must include canonical title-based slug"
+  );
+  assert.ok(
     playbooksDataFile.includes('"ai-businesses-02": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE'),
-    "COURSES map must include ai-businesses-02"
+    "COURSES map must retain legacy ai-businesses-02 mapping for backwards compatibility"
   );
 });
 
@@ -81,8 +85,8 @@ test("4. Unique PPT template registry and verification", () => {
     "Registry must include 'agency-revenue-os' template"
   );
   assert.ok(
-    registryFile.includes('"ai-businesses-02"'),
-    "agency-revenue-os template must be assigned to ai-businesses-02"
+    registryFile.includes('"build-a-10000-month-ai-service-business-with-just-3-core-tools"'),
+    "agency-revenue-os template must be assigned to canonical title slug"
   );
   assert.ok(
     registryFile.includes("verifyTemplateUniqueness"),
@@ -103,21 +107,56 @@ test("4. Unique PPT template registry and verification", () => {
   );
 });
 
-test("5. Landing page route /ai-businesses-02 exists", () => {
-  const pagePath = path.join(__dirname, "../src/app/ai-businesses-02/page.tsx");
-  assert.ok(fs.existsSync(pagePath), "Page file src/app/ai-businesses-02/page.tsx must exist");
-  const content = fs.readFileSync(pagePath, "utf8");
+test("5. Landing page routes: canonical title-based slug and legacy redirect", () => {
+  const canonicalPagePath = path.join(
+    __dirname,
+    "../src/app/build-a-10000-month-ai-service-business-with-just-3-core-tools/page.tsx"
+  );
+  assert.ok(fs.existsSync(canonicalPagePath), "Canonical title slug landing page must exist");
+  const canonicalContent = fs.readFileSync(canonicalPagePath, "utf8");
   assert.ok(
-    content.includes("AI_SERVICE_BUSINESS_DETAIL_DATA"),
+    canonicalContent.includes("AI_SERVICE_BUSINESS_DETAIL_DATA"),
     "Page must use AI_SERVICE_BUSINESS_DETAIL_DATA"
   );
   assert.ok(
-    content.includes("PlaybookDetailView"),
+    canonicalContent.includes("PlaybookDetailView"),
     "Page must render PlaybookDetailView"
+  );
+
+  const legacyPagePath = path.join(__dirname, "../src/app/ai-businesses-02/page.tsx");
+  assert.ok(fs.existsSync(legacyPagePath), "Legacy route file src/app/ai-businesses-02/page.tsx must exist");
+  const legacyContent = fs.readFileSync(legacyPagePath, "utf8");
+  assert.ok(
+    legacyContent.includes("redirect(") &&
+      legacyContent.includes("/build-a-10000-month-ai-service-business-with-just-3-core-tools"),
+    "Legacy /ai-businesses-02 page must redirect to canonical title-based slug"
   );
 });
 
-test("6. Dynamic course-includes metadata calculation in PlaybookDetailView", () => {
+test("6. Isolated lecture hover styling in PlaybookDetailView", () => {
+  const detailViewContent = fs.readFileSync(
+    path.join(__dirname, "../src/components/PlaybookDetailView.tsx"),
+    "utf8"
+  );
+
+  // Module container must NOT have unqualified 'className="group"' which causes all child lectures to underline
+  assert.ok(
+    !detailViewContent.includes('<div key={module.id} className="group">'),
+    "Module container must NOT have 'className=\"group\"' that causes module-wide hover cascade"
+  );
+
+  // Lecture links must use scoped group/lesson
+  assert.ok(
+    detailViewContent.includes("group/lesson"),
+    "Lecture items must use scoped 'group/lesson'"
+  );
+  assert.ok(
+    detailViewContent.includes("group-hover/lesson:underline"),
+    "Lecture text must use scoped 'group-hover/lesson:underline'"
+  );
+});
+
+test("7. Dynamic course-includes metadata calculation in PlaybookDetailView", () => {
   const detailViewContent = fs.readFileSync(
     path.join(__dirname, "../src/components/PlaybookDetailView.tsx"),
     "utf8"
@@ -152,7 +191,7 @@ test("6. Dynamic course-includes metadata calculation in PlaybookDetailView", ()
   );
 });
 
-test("7. Global free review access configuration and entitlement bypass", () => {
+test("8. Global free review access configuration and entitlement bypass", () => {
   const configFile = fs.readFileSync(
     path.join(__dirname, "../src/lib/config.ts"),
     "utf8"
@@ -200,5 +239,32 @@ test("7. Global free review access configuration and entitlement bypass", () => 
   assert.ok(
     lessonViewerFile.includes("IS_REVIEW_PHASE_FREE_ACCESS"),
     "Lesson viewer page must bypass gate during review phase"
+  );
+});
+
+test("9. Catalog-wide title slug generation without arbitrary numbered suffixes", () => {
+  const catalogContent = fs.readFileSync(
+    path.join(__dirname, "../src/lib/playbooks-catalog.ts"),
+    "utf8"
+  );
+
+  // Must contain canonical title-derived slug for target playbook
+  assert.ok(
+    catalogContent.includes('slug: "build-a-10000-month-ai-service-business-with-just-3-core-tools"'),
+    "playbooks-catalog.ts must contain exact title-derived slug for Build a $10,000/Month AI Service Business"
+  );
+  assert.ok(
+    catalogContent.includes('href: "/build-a-10000-month-ai-service-business-with-just-3-core-tools"'),
+    "playbooks-catalog.ts must contain exact canonical href"
+  );
+
+  // Must NOT have numbered slug in slug: "ai-businesses-02"
+  assert.ok(
+    !catalogContent.includes('slug: "ai-businesses-02"'),
+    "playbooks-catalog.ts must NOT use numbered slug 'ai-businesses-02'"
+  );
+  assert.ok(
+    !catalogContent.includes('slug: "ai-businesses-03"'),
+    "playbooks-catalog.ts must NOT use numbered slug 'ai-businesses-03'"
   );
 });

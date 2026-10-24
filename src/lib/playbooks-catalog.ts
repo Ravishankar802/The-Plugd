@@ -22,7 +22,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-02",
-    slug: "ai-businesses-02",
+    slug: "build-a-10000-month-ai-service-business-with-just-3-core-tools",
     title: "Build a $10,000/Month AI Service Business With Just 3 Core Tools",
     headline: "Master the 3 high-leverage tools to build, package, and sell high-ticket AI automation services to B2B clients.",
     description: "A comprehensive, practical roadmap teaching you how to build a 5-figure monthly recurring AI service business using Airtable, Claude 3.7, and Make.com.",
@@ -37,11 +37,11 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     badge: "High Demand",
     rating: 4.9,
     ratingCount: 247,
-    href: "/ai-businesses-02",
+    href: "/build-a-10000-month-ai-service-business-with-just-3-core-tools",
   },
   {
     id: "ai-businesses-03",
-    slug: "ai-businesses-03",
+    slug: "5-ai-agents-you-can-build-and-sell-without-training-your-own-model",
     title: "5 AI Agents You Can Build and Sell Without Training Your Own Model",
     headline: "",
     description: "",
@@ -57,7 +57,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-04",
-    slug: "ai-businesses-04",
+    slug: "turn-1-ai-skill-into-4-different-freelance-income-streams",
     title: "Turn 1 AI Skill Into 4 Different Freelance Income Streams",
     headline: "",
     description: "",
@@ -73,7 +73,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-05",
-    slug: "ai-businesses-05",
+    slug: "the-30-day-ai-agency-blueprint-from-zero-portfolio-to-paying-clients",
     title: "The 30-Day AI Agency Blueprint: From Zero Portfolio to Paying Clients",
     headline: "",
     description: "",
@@ -89,7 +89,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-06",
-    slug: "ai-businesses-06",
+    slug: "12-ai-services-small-businesses-need-but-rarely-know-how-to-build",
     title: "12 AI Services Small Businesses Need but Rarely Know How to Build",
     headline: "",
     description: "",
@@ -105,7 +105,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-07",
-    slug: "ai-businesses-07",
+    slug: "build-a-micro-saas-with-ai-in-7-days-instead-of-spending-months-coding",
     title: "Build a Micro-SaaS With AI in 7 Days Instead of Spending Months Coding",
     headline: "",
     description: "",
@@ -121,7 +121,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-08",
-    slug: "ai-businesses-08",
+    slug: "sell-ai-chatbots-to-10-local-businesses-without-hiring-a-developer",
     title: "Sell AI Chatbots to 10 Local Businesses Without Hiring a Developer",
     headline: "",
     description: "",
@@ -137,7 +137,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-09",
-    slug: "ai-businesses-09",
+    slug: "5-ai-powered-digital-products-you-can-create-in-one-weekend",
     title: "5 AI-Powered Digital Products You Can Create in One Weekend",
     headline: "",
     description: "",
@@ -153,7 +153,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-10",
-    slug: "ai-businesses-10",
+    slug: "make-money-with-ai-workflows-package-20-repetitive-tasks-into-a-paid-service",
     title: "Make Money With AI Workflows: Package 20 Repetitive Tasks Into a Paid Service",
     headline: "",
     description: "",
@@ -169,7 +169,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-11",
-    slug: "ai-businesses-11",
+    slug: "the-0-ai-business-stack-launch-a-sellable-service-without-expensive-software",
     title: "The $0 AI Business Stack: Launch a Sellable Service Without Expensive Software",
     headline: "",
     description: "",
@@ -185,7 +185,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-12",
-    slug: "ai-businesses-12",
+    slug: "build-an-ai-lead-generation-system-you-can-sell-to-3-different-industries",
     title: "Build an AI Lead-Generation System You Can Sell to 3 Different Industries",
     headline: "",
     description: "",
@@ -201,7 +201,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-13",
-    slug: "ai-businesses-13",
+    slug: "6-ai-automation-niches-where-businesses-pay-to-save-time",
     title: "6 AI Automation Niches Where Businesses Pay to Save Time",
     headline: "",
     description: "",
@@ -217,7 +217,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-14",
-    slug: "ai-businesses-14",
+    slug: "turn-one-ai-workflow-into-a-product-you-can-sell-repeatedly",
     title: "Turn One AI Workflow Into a Product You Can Sell Repeatedly",
     headline: "",
     description: "",
@@ -233,7 +233,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-15",
-    slug: "ai-businesses-15",
+    slug: "create-and-sell-ai-powered-websites-for-clients-in-48-hours",
     title: "Create and Sell AI-Powered Websites for Clients in 48 Hours",
     headline: "",
     description: "",
@@ -249,7 +249,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-16",
-    slug: "ai-businesses-16",
+    slug: "the-5-tool-ai-content-business-sell-monthly-packages-instead-of-one-off-work",
     title: "The 5-Tool AI Content Business: Sell Monthly Packages Instead of One-Off Work",
     headline: "",
     description: "",
@@ -265,7 +265,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-17",
-    slug: "ai-businesses-17",
+    slug: "7-ai-research-services-you-can-sell-without-being-a-data-scientist",
     title: "7 AI Research Services You Can Sell Without Being a Data Scientist",
     headline: "",
     description: "",
@@ -281,7 +281,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-18",
-    slug: "ai-businesses-18",
+    slug: "build-a-profitable-ai-newsletter-business-with-30-minutes-of-research-a-day",
     title: "Build a Profitable AI Newsletter Business With 30 Minutes of Research a Day",
     headline: "",
     description: "",
@@ -297,7 +297,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-19",
-    slug: "ai-businesses-19",
+    slug: "from-1-client-to-10-the-ai-agency-system-for-repeatable-monthly-revenue",
     title: "From 1 Client to 10: The AI Agency System for Repeatable Monthly Revenue",
     headline: "",
     description: "",
@@ -313,7 +313,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ai-businesses-20",
-    slug: "ai-businesses-20",
+    slug: "10-ai-business-ideas-you-can-validate-before-spending-your-first-1000",
     title: "10 AI Business Ideas You Can Validate Before Spending Your First ₹1,000",
     headline: "",
     description: "",
@@ -329,7 +329,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-01",
-    slug: "ecommerce-01",
+    slug: "50-product-ideas-to-find-your-first-profitable-e-commerce-niche",
     title: "50 Product Ideas to Find Your First Profitable E-commerce Niche",
     headline: "",
     description: "",
@@ -345,7 +345,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-02",
-    slug: "ecommerce-02",
+    slug: "launch-an-online-store-in-7-days-without-buying-bulk-inventory",
     title: "Launch an Online Store in 7 Days Without Buying Bulk Inventory",
     headline: "",
     description: "",
@@ -361,7 +361,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-03",
-    slug: "ecommerce-03",
+    slug: "the-first-100-orders-a-30-day-plan-for-a-new-online-store",
     title: "The First 100 Orders: A 30-Day Plan for a New Online Store",
     headline: "",
     description: "",
@@ -377,7 +377,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-04",
-    slug: "ecommerce-04",
+    slug: "5-low-cost-ways-to-test-product-demand-before-spending-10000",
     title: "5 Low-Cost Ways to Test Product Demand Before Spending ₹10,000",
     headline: "",
     description: "",
@@ -393,7 +393,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-05",
-    slug: "ecommerce-05",
+    slug: "find-3-winning-products-without-copying-the-biggest-brands",
     title: "Find 3 Winning Products Without Copying the Biggest Brands",
     headline: "",
     description: "",
@@ -409,7 +409,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-06",
-    slug: "ecommerce-06",
+    slug: "turn-1-product-into-5-revenue-streams-with-bundles-and-upsells",
     title: "Turn 1 Product Into 5 Revenue Streams With Bundles and Upsells",
     headline: "",
     description: "",
@@ -425,7 +425,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-07",
-    slug: "ecommerce-07",
+    slug: "7-product-page-fixes-that-can-turn-more-visitors-into-paying-customers",
     title: "7 Product Page Fixes That Can Turn More Visitors Into Paying Customers",
     headline: "",
     description: "",
@@ -441,7 +441,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-08",
-    slug: "ecommerce-08",
+    slug: "build-a-1-lakh-month-store-understand-the-sales-margins-and-costs",
     title: "Build a ₹1 Lakh/Month Store: Understand the Sales, Margins and Costs",
     headline: "",
     description: "",
@@ -457,7 +457,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-09",
-    slug: "ecommerce-09",
+    slug: "10-ways-to-source-products-without-owning-a-factory",
     title: "10 Ways to Source Products Without Owning a Factory",
     headline: "",
     description: "",
@@ -473,7 +473,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-10",
-    slug: "ecommerce-10",
+    slug: "the-30-day-print-on-demand-business-sell-designs-without-holding-stock",
     title: "The 30-Day Print-on-Demand Business: Sell Designs Without Holding Stock",
     headline: "",
     description: "",
@@ -489,7 +489,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-11",
-    slug: "ecommerce-11",
+    slug: "5-e-commerce-niches-where-small-stores-can-compete-with-bigger-brands",
     title: "5 E-commerce Niches Where Small Stores Can Compete With Bigger Brands",
     headline: "",
     description: "",
@@ -505,7 +505,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-12",
-    slug: "ecommerce-12",
+    slug: "recover-lost-sales-with-8-abandoned-cart-revenue-tactics",
     title: "Recover Lost Sales With 8 Abandoned-Cart Revenue Tactics",
     headline: "",
     description: "",
@@ -521,7 +521,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-13",
-    slug: "ecommerce-13",
+    slug: "turn-20-customer-reviews-into-a-better-converting-product-offer",
     title: "Turn 20 Customer Reviews Into a Better-Converting Product Offer",
     headline: "",
     description: "",
@@ -537,7 +537,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-14",
-    slug: "ecommerce-14",
+    slug: "build-a-profitable-store-with-5-essential-e-commerce-tools",
     title: "Build a Profitable Store With 5 Essential E-commerce Tools",
     headline: "",
     description: "",
@@ -553,7 +553,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-15",
-    slug: "ecommerce-15",
+    slug: "7-ways-to-increase-order-value-without-finding-more-customers",
     title: "7 Ways to Increase Order Value Without Finding More Customers",
     headline: "",
     description: "",
@@ -569,7 +569,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-16",
-    slug: "ecommerce-16",
+    slug: "the-500-product-challenge-test-a-business-idea-on-a-lean-budget",
     title: "The ₹500 Product Challenge: Test a Business Idea on a Lean Budget",
     headline: "",
     description: "",
@@ -585,7 +585,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-17",
-    slug: "ecommerce-17",
+    slug: "sell-products-through-3-channels-instead-of-depending-on-one-marketplace",
     title: "Sell Products Through 3 Channels Instead of Depending on One Marketplace",
     headline: "",
     description: "",
@@ -601,7 +601,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-18",
-    slug: "ecommerce-18",
+    slug: "from-first-purchase-to-repeat-orders-6-ways-to-earn-more-from-existing-customers",
     title: "From First Purchase to Repeat Orders: 6 Ways to Earn More From Existing Customers",
     headline: "",
     description: "",
@@ -617,7 +617,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-19",
-    slug: "ecommerce-19",
+    slug: "find-a-profitable-product-bundle-with-15-simple-pricing-experiments",
     title: "Find a Profitable Product Bundle With 15 Simple Pricing Experiments",
     headline: "",
     description: "",
@@ -633,7 +633,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "ecommerce-20",
-    slug: "ecommerce-20",
+    slug: "the-lean-e-commerce-blueprint-validate-launch-and-scale-your-first-product",
     title: "The Lean E-commerce Blueprint: Validate, Launch and Scale Your First Product",
     headline: "",
     description: "",
@@ -649,7 +649,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-01",
-    slug: "side-hustles-01",
+    slug: "12-side-hustles-you-can-start-with-less-than-1000",
     title: "12 Side Hustles You Can Start With Less Than ₹1,000",
     headline: "",
     description: "",
@@ -665,7 +665,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-02",
-    slug: "side-hustles-02",
+    slug: "your-first-10000-online-7-ways-to-sell-a-skill-without-an-audience",
     title: "Your First ₹10,000 Online: 7 Ways to Sell a Skill Without an Audience",
     headline: "",
     description: "",
@@ -681,7 +681,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-03",
-    slug: "side-hustles-03",
+    slug: "5-service-businesses-you-can-start-this-weekend-with-a-laptop",
     title: "5 Service Businesses You Can Start This Weekend With a Laptop",
     headline: "",
     description: "",
@@ -697,7 +697,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-04",
-    slug: "side-hustles-04",
+    slug: "the-30-day-side-hustle-challenge-find-a-problem-sell-a-solution",
     title: "The 30-Day Side Hustle Challenge: Find a Problem, Sell a Solution",
     headline: "",
     description: "",
@@ -713,7 +713,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-05",
-    slug: "side-hustles-05",
+    slug: "8-digital-side-hustles-you-can-run-without-buying-inventory",
     title: "8 Digital Side Hustles You Can Run Without Buying Inventory",
     headline: "",
     description: "",
@@ -729,7 +729,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-06",
-    slug: "side-hustles-06",
+    slug: "turn-1-skill-into-3-income-streams-without-getting-a-second-job",
     title: "Turn 1 Skill Into 3 Income Streams Without Getting a Second Job",
     headline: "",
     description: "",
@@ -745,7 +745,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-07",
-    slug: "side-hustles-07",
+    slug: "the-weekend-business-build-a-sellable-service-in-48-hours",
     title: "The Weekend Business: Build a Sellable Service in 48 Hours",
     headline: "",
     description: "",
@@ -761,7 +761,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-08",
-    slug: "side-hustles-08",
+    slug: "10-ways-to-find-paying-customers-without-spending-on-ads",
     title: "10 Ways to Find Paying Customers Without Spending on Ads",
     headline: "",
     description: "",
@@ -777,7 +777,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-09",
-    slug: "side-hustles-09",
+    slug: "5-ai-assisted-side-hustles-you-can-run-without-hiring-anyone",
     title: "5 AI-Assisted Side Hustles You Can Run Without Hiring Anyone",
     headline: "",
     description: "",
@@ -793,7 +793,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-10",
-    slug: "side-hustles-10",
+    slug: "make-money-from-a-small-audience-7-offers-you-can-sell-to-100-followers",
     title: "Make Money From a Small Audience: 7 Offers You Can Sell to 100 Followers",
     headline: "",
     description: "",
@@ -809,7 +809,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-11",
-    slug: "side-hustles-11",
+    slug: "the-0-startup-challenge-validate-a-side-hustle-before-spending-money",
     title: "The ₹0 Startup Challenge: Validate a Side Hustle Before Spending Money",
     headline: "",
     description: "",
@@ -825,7 +825,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-12",
-    slug: "side-hustles-12",
+    slug: "6-boring-services-you-can-sell-to-businesses-for-recurring-income",
     title: "6 Boring Services You Can Sell to Businesses for Recurring Income",
     headline: "",
     description: "",
@@ -841,7 +841,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-13",
-    slug: "side-hustles-13",
+    slug: "build-a-25000-month-side-hustle-with-5-recurring-clients",
     title: "Build a ₹25,000/Month Side Hustle With 5 Recurring Clients",
     headline: "",
     description: "",
@@ -857,7 +857,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-14",
-    slug: "side-hustles-14",
+    slug: "15-side-hustle-ideas-ranked-by-startup-cost-skill-and-earning-potential",
     title: "15 Side Hustle Ideas Ranked by Startup Cost, Skill and Earning Potential",
     headline: "",
     description: "",
@@ -873,7 +873,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-15",
-    slug: "side-hustles-15",
+    slug: "turn-one-local-business-problem-into-a-service-you-can-sell-10-times",
     title: "Turn One Local Business Problem Into a Service You Can Sell 10 Times",
     headline: "",
     description: "",
@@ -889,7 +889,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-16",
-    slug: "side-hustles-16",
+    slug: "the-2-hour-a-day-income-plan-build-a-side-business-around-your-schedule",
     title: "The 2-Hour-a-Day Income Plan: Build a Side Business Around Your Schedule",
     headline: "",
     description: "",
@@ -905,7 +905,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-17",
-    slug: "side-hustles-17",
+    slug: "7-ways-to-make-your-first-online-sale-without-creating-a-product",
     title: "7 Ways to Make Your First Online Sale Without Creating a Product",
     headline: "",
     description: "",
@@ -921,7 +921,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-18",
-    slug: "side-hustles-18",
+    slug: "the-100-prospect-method-find-your-first-side-hustle-customers",
     title: "The 100-Prospect Method: Find Your First Side-Hustle Customers",
     headline: "",
     description: "",
@@ -937,7 +937,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-19",
-    slug: "side-hustles-19",
+    slug: "create-a-monthly-income-stream-from-a-problem-people-already-pay-to-solve",
     title: "Create a Monthly Income Stream From a Problem People Already Pay to Solve",
     headline: "",
     description: "",
@@ -953,7 +953,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "side-hustles-20",
-    slug: "side-hustles-20",
+    slug: "stop-trying-10-side-hustles-validate-1-idea-in-7-days",
     title: "Stop Trying 10 Side Hustles: Validate 1 Idea in 7 Days",
     headline: "",
     description: "",
@@ -969,7 +969,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-01",
-    slug: "online-income-01",
+    slug: "9-online-business-models-you-can-start-with-less-than-10000",
     title: "9 Online Business Models You Can Start With Less Than ₹10,000",
     headline: "",
     description: "",
@@ -985,7 +985,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-02",
-    slug: "online-income-02",
+    slug: "build-a-one-person-internet-business-with-5-revenue-systems",
     title: "Build a One-Person Internet Business With 5 Revenue Systems",
     headline: "",
     description: "",
@@ -1001,7 +1001,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-03",
-    slug: "online-income-03",
+    slug: "the-30-day-business-validation-sprint-find-paying-demand-before-you-build",
     title: "The 30-Day Business Validation Sprint: Find Paying Demand Before You Build",
     headline: "",
     description: "",
@@ -1017,7 +1017,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-04",
-    slug: "online-income-04",
+    slug: "one-problem-one-offer-one-landing-page-launch-a-lean-online-business",
     title: "One Problem, One Offer, One Landing Page: Launch a Lean Online Business",
     headline: "",
     description: "",
@@ -1033,7 +1033,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-05",
-    slug: "online-income-05",
+    slug: "7-tiny-internet-businesses-that-solve-boring-problems-people-pay-for",
     title: "7 Tiny Internet Businesses That Solve Boring Problems People Pay For",
     headline: "",
     description: "",
@@ -1049,7 +1049,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-06",
-    slug: "online-income-06",
+    slug: "from-idea-to-first-customer-in-14-days-the-online-business-blueprint",
     title: "From Idea to First Customer in 14 Days: The Online Business Blueprint",
     headline: "",
     description: "",
@@ -1065,7 +1065,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-07",
-    slug: "online-income-07",
+    slug: "the-1000-business-experiment-test-demand-before-committing-your-savings",
     title: "The ₹1,000 Business Experiment: Test Demand Before Committing Your Savings",
     headline: "",
     description: "",
@@ -1081,7 +1081,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-08",
-    slug: "online-income-08",
+    slug: "build-a-business-with-3-automated-systems-instead-of-working-all-day",
     title: "Build a Business With 3 Automated Systems Instead of Working All Day",
     headline: "",
     description: "",
@@ -1097,7 +1097,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-09",
-    slug: "online-income-09",
+    slug: "5-revenue-models-that-turn-a-useful-website-into-a-business",
     title: "5 Revenue Models That Turn a Useful Website Into a Business",
     headline: "",
     description: "",
@@ -1113,7 +1113,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-10",
-    slug: "online-income-10",
+    slug: "get-your-first-10-customers-without-spending-money-on-ads",
     title: "Get Your First 10 Customers Without Spending Money on Ads",
     headline: "",
     description: "",
@@ -1129,7 +1129,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-11",
-    slug: "online-income-11",
+    slug: "turn-a-repetitive-business-task-into-a-sellable-online-service",
     title: "Turn a Repetitive Business Task Into a Sellable Online Service",
     headline: "",
     description: "",
@@ -1145,7 +1145,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-12",
-    slug: "online-income-12",
+    slug: "the-micro-saas-blueprint-find-a-niche-build-a-tool-and-charge-for-it",
     title: "The Micro-SaaS Blueprint: Find a Niche, Build a Tool and Charge for It",
     headline: "",
     description: "",
@@ -1161,7 +1161,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-13",
-    slug: "online-income-13",
+    slug: "build-a-paid-community-around-1-valuable-outcome-in-30-days",
     title: "Build a Paid Community Around 1 Valuable Outcome in 30 Days",
     headline: "",
     description: "",
@@ -1177,7 +1177,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-14",
-    slug: "online-income-14",
+    slug: "7-ways-to-monetize-a-website-without-depending-on-display-ads",
     title: "7 Ways to Monetize a Website Without Depending on Display Ads",
     headline: "",
     description: "",
@@ -1193,7 +1193,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-15",
-    slug: "online-income-15",
+    slug: "turn-100-free-users-into-paying-customers-with-5-conversion-experiments",
     title: "Turn 100 Free Users Into Paying Customers With 5 Conversion Experiments",
     headline: "",
     description: "",
@@ -1209,7 +1209,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-16",
-    slug: "online-income-16",
+    slug: "the-subscription-business-blueprint-build-recurring-revenue-around-one-problem",
     title: "The Subscription Business Blueprint: Build Recurring Revenue Around One Problem",
     headline: "",
     description: "",
@@ -1225,7 +1225,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-17",
-    slug: "online-income-17",
+    slug: "launch-a-digital-marketplace-with-3-revenue-models-to-test",
     title: "Launch a Digital Marketplace With 3 Revenue Models to Test",
     headline: "",
     description: "",
@@ -1241,7 +1241,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-18",
-    slug: "online-income-18",
+    slug: "the-90-day-online-business-plan-validate-sell-and-improve-one-offer",
     title: "The 90-Day Online Business Plan: Validate, Sell and Improve One Offer",
     headline: "",
     description: "",
@@ -1257,7 +1257,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-19",
-    slug: "online-income-19",
+    slug: "5-ways-to-make-money-from-industry-knowledge-without-becoming-an-influencer",
     title: "5 Ways to Make Money From Industry Knowledge Without Becoming an Influencer",
     headline: "",
     description: "",
@@ -1273,7 +1273,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-income-20",
-    slug: "online-income-20",
+    slug: "build-a-1-lakh-month-business-model-work-backward-from-price-and-customer-count",
     title: "Build a ₹1 Lakh/Month Business Model: Work Backward From Price and Customer Count",
     headline: "",
     description: "",
@@ -1289,7 +1289,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-01",
-    slug: "creator-economy-01",
+    slug: "the-first-1000-youtube-subscribers-7-steps-toward-monetization",
     title: "The First 1,000 YouTube Subscribers: 7 Steps Toward Monetization",
     headline: "",
     description: "",
@@ -1305,7 +1305,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-02",
-    slug: "creator-economy-02",
+    slug: "build-a-faceless-youtube-channel-with-5-repeatable-video-formats",
     title: "Build a Faceless YouTube Channel With 5 Repeatable Video Formats",
     headline: "",
     description: "",
@@ -1321,7 +1321,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-03",
-    slug: "creator-economy-03",
+    slug: "30-video-ideas-that-can-attract-buyers-not-just-views",
     title: "30 Video Ideas That Can Attract Buyers, Not Just Views",
     headline: "",
     description: "",
@@ -1337,7 +1337,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-04",
-    slug: "creator-economy-04",
+    slug: "turn-1-youtube-video-into-10-pieces-of-content-and-more-monetization-opportunities",
     title: "Turn 1 YouTube Video Into 10 Pieces of Content and More Monetization Opportunities",
     headline: "",
     description: "",
@@ -1353,7 +1353,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-05",
-    slug: "creator-economy-05",
+    slug: "the-90-day-youtube-business-build-an-audience-you-can-monetize",
     title: "The 90-Day YouTube Business: Build an Audience You Can Monetize",
     headline: "",
     description: "",
@@ -1369,7 +1369,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-06",
-    slug: "creator-economy-06",
+    slug: "7-ways-to-make-money-on-youtube-before-you-qualify-for-ad-revenue",
     title: "7 Ways to Make Money on YouTube Before You Qualify for Ad Revenue",
     headline: "",
     description: "",
@@ -1385,7 +1385,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-07",
-    slug: "creator-economy-07",
+    slug: "build-a-50000-month-creator-business-with-3-revenue-streams",
     title: "Build a ₹50,000/Month Creator Business With 3 Revenue Streams",
     headline: "",
     description: "",
@@ -1401,7 +1401,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-08",
-    slug: "creator-economy-08",
+    slug: "the-5-second-hook-system-win-attention-and-turn-it-into-revenue",
     title: "The 5-Second Hook System: Win Attention and Turn It Into Revenue",
     headline: "",
     description: "",
@@ -1417,7 +1417,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-09",
-    slug: "creator-economy-09",
+    slug: "monetize-1000-true-fans-6-offers-beyond-brand-deals",
     title: "Monetize 1,000 True Fans: 6 Offers Beyond Brand Deals",
     headline: "",
     description: "",
@@ -1433,7 +1433,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-10",
-    slug: "creator-economy-10",
+    slug: "turn-100-short-videos-into-a-distribution-engine-for-your-paid-product",
     title: "Turn 100 Short Videos Into a Distribution Engine for Your Paid Product",
     headline: "",
     description: "",
@@ -1449,7 +1449,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-11",
-    slug: "creator-economy-11",
+    slug: "the-newsletter-business-earn-from-1000-engaged-readers-with-5-monetization-models",
     title: "The Newsletter Business: Earn From 1,000 Engaged Readers With 5 Monetization Models",
     headline: "",
     description: "",
@@ -1465,7 +1465,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-12",
-    slug: "creator-economy-12",
+    slug: "5-creator-services-you-can-sell-before-you-become-an-influencer",
     title: "5 Creator Services You Can Sell Before You Become an Influencer",
     headline: "",
     description: "",
@@ -1481,7 +1481,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-13",
-    slug: "creator-economy-13",
+    slug: "use-ai-to-produce-30-days-of-monetizable-content-in-one-weekend",
     title: "Use AI to Produce 30 Days of Monetizable Content in One Weekend",
     headline: "",
     description: "",
@@ -1497,7 +1497,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-14",
-    slug: "creator-economy-14",
+    slug: "7-sponsorship-pitch-fixes-that-help-small-creators-win-brand-deals",
     title: "7 Sponsorship Pitch Fixes That Help Small Creators Win Brand Deals",
     headline: "",
     description: "",
@@ -1513,7 +1513,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-15",
-    slug: "creator-economy-15",
+    slug: "turn-a-niche-instagram-page-into-a-business-with-4-income-streams",
     title: "Turn a Niche Instagram Page Into a Business With 4 Income Streams",
     headline: "",
     description: "",
@@ -1529,7 +1529,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-16",
-    slug: "creator-economy-16",
+    slug: "build-a-paid-community-around-1-audience-problem-people-want-solved",
     title: "Build a Paid Community Around 1 Audience Problem People Want Solved",
     headline: "",
     description: "",
@@ -1545,7 +1545,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-17",
-    slug: "creator-economy-17",
+    slug: "from-0-to-your-first-digital-product-sale-use-content-as-your-sales-funnel",
     title: "From 0 to Your First Digital Product Sale: Use Content as Your Sales Funnel",
     headline: "",
     description: "",
@@ -1561,7 +1561,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-18",
-    slug: "creator-economy-18",
+    slug: "the-affiliate-creator-blueprint-monetize-helpful-content-with-5-offer-types",
     title: "The Affiliate Creator Blueprint: Monetize Helpful Content With 5 Offer Types",
     headline: "",
     description: "",
@@ -1577,7 +1577,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-19",
-    slug: "creator-economy-19",
+    slug: "100-titles-10-thumbnails-1-winning-concept-package-content-for-growth",
     title: "100 Titles, 10 Thumbnails, 1 Winning Concept: Package Content for Growth",
     headline: "",
     description: "",
@@ -1593,7 +1593,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "creator-economy-20",
-    slug: "creator-economy-20",
+    slug: "build-a-creator-business-that-earns-from-products-services-and-partnerships",
     title: "Build a Creator Business That Earns From Products, Services and Partnerships",
     headline: "",
     description: "",
@@ -1609,7 +1609,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-01",
-    slug: "personal-branding-01",
+    slug: "7-personal-branding-moves-that-can-turn-your-expertise-into-paid-opportunities",
     title: "7 Personal Branding Moves That Can Turn Your Expertise Into Paid Opportunities",
     headline: "",
     description: "",
@@ -1625,7 +1625,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-02",
-    slug: "personal-branding-02",
+    slug: "build-a-50000-month-personal-brand-with-3-revenue-streams",
     title: "Build a ₹50,000/Month Personal Brand With 3 Revenue Streams",
     headline: "",
     description: "",
@@ -1641,7 +1641,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-03",
-    slug: "personal-branding-03",
+    slug: "30-days-to-a-stronger-personal-brand-attract-clients-without-going-viral",
     title: "30 Days to a Stronger Personal Brand: Attract Clients Without Going Viral",
     headline: "",
     description: "",
@@ -1657,7 +1657,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-04",
-    slug: "personal-branding-04",
+    slug: "turn-1-professional-skill-into-5-paid-opportunities-through-personal-branding",
     title: "Turn 1 Professional Skill Into 5 Paid Opportunities Through Personal Branding",
     headline: "",
     description: "",
@@ -1673,7 +1673,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-05",
-    slug: "personal-branding-05",
+    slug: "the-100-post-personal-brand-blueprint-build-trust-before-selling-anything",
     title: "The 100-Post Personal Brand Blueprint: Build Trust Before Selling Anything",
     headline: "",
     description: "",
@@ -1689,7 +1689,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-06",
-    slug: "personal-branding-06",
+    slug: "7-linkedin-profile-fixes-that-help-potential-clients-understand-your-value",
     title: "7 LinkedIn Profile Fixes That Help Potential Clients Understand Your Value",
     headline: "",
     description: "",
@@ -1705,7 +1705,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-07",
-    slug: "personal-branding-07",
+    slug: "from-unknown-to-in-demand-5-ways-to-become-the-go-to-person-in-your-niche",
     title: "From Unknown to In-Demand: 5 Ways to Become the Go-To Person in Your Niche",
     headline: "",
     description: "",
@@ -1721,7 +1721,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-08",
-    slug: "personal-branding-08",
+    slug: "build-a-personal-brand-with-30-minutes-a-day-and-zero-ad-spend",
     title: "Build a Personal Brand With 30 Minutes a Day and Zero Ad Spend",
     headline: "",
     description: "",
@@ -1737,7 +1737,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-09",
-    slug: "personal-branding-09",
+    slug: "10-content-ideas-that-turn-your-knowledge-into-consulting-leads",
     title: "10 Content Ideas That Turn Your Knowledge Into Consulting Leads",
     headline: "",
     description: "",
@@ -1753,7 +1753,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-10",
-    slug: "personal-branding-10",
+    slug: "the-0-personal-branding-system-build-credibility-without-expensive-equipment",
     title: "The ₹0 Personal Branding System: Build Credibility Without Expensive Equipment",
     headline: "",
     description: "",
@@ -1769,7 +1769,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-11",
-    slug: "personal-branding-11",
+    slug: "turn-500-followers-into-business-opportunities-with-5-strategic-offers",
     title: "Turn 500 Followers Into Business Opportunities With 5 Strategic Offers",
     headline: "",
     description: "",
@@ -1785,7 +1785,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-12",
-    slug: "personal-branding-12",
+    slug: "7-ways-to-monetize-your-expertise-without-becoming-a-full-time-influencer",
     title: "7 Ways to Monetize Your Expertise Without Becoming a Full-Time Influencer",
     headline: "",
     description: "",
@@ -1801,7 +1801,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-13",
-    slug: "personal-branding-13",
+    slug: "the-30-day-authority-challenge-become-more-visible-in-one-profitable-niche",
     title: "The 30-Day Authority Challenge: Become More Visible in One Profitable Niche",
     headline: "",
     description: "",
@@ -1817,7 +1817,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-14",
-    slug: "personal-branding-14",
+    slug: "turn-1-case-study-into-10-pieces-of-content-that-attract-buyers",
     title: "Turn 1 Case Study Into 10 Pieces of Content That Attract Buyers",
     headline: "",
     description: "",
@@ -1833,7 +1833,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-15",
-    slug: "personal-branding-15",
+    slug: "5-personal-brand-assets-that-keep-generating-opportunities-after-you-log-off",
     title: "5 Personal Brand Assets That Keep Generating Opportunities After You Log Off",
     headline: "",
     description: "",
@@ -1849,7 +1849,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-16",
-    slug: "personal-branding-16",
+    slug: "build-a-premium-consulting-brand-with-3-proof-driven-content-formats",
     title: "Build a Premium Consulting Brand With 3 Proof-Driven Content Formats",
     headline: "",
     description: "",
@@ -1865,7 +1865,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-17",
-    slug: "personal-branding-17",
+    slug: "the-50-connection-method-turn-professional-networking-into-paid-work",
     title: "The 50-Connection Method: Turn Professional Networking Into Paid Work",
     headline: "",
     description: "",
@@ -1881,7 +1881,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-18",
-    slug: "personal-branding-18",
+    slug: "7-ways-to-stand-out-in-a-crowded-niche-without-faking-your-success",
     title: "7 Ways to Stand Out in a Crowded Niche Without Faking Your Success",
     headline: "",
     description: "",
@@ -1897,7 +1897,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-19",
-    slug: "personal-branding-19",
+    slug: "from-portfolio-to-personal-brand-package-3-projects-into-a-client-magnet",
     title: "From Portfolio to Personal Brand: Package 3 Projects Into a Client Magnet",
     headline: "",
     description: "",
@@ -1913,7 +1913,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "personal-branding-20",
-    slug: "personal-branding-20",
+    slug: "create-a-personal-brand-that-sells-services-products-and-expertise",
     title: "Create a Personal Brand That Sells Services, Products and Expertise",
     headline: "",
     description: "",
@@ -1929,7 +1929,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-01",
-    slug: "remote-work-01",
+    slug: "land-your-first-25000-in-freelance-work-with-3-portfolio-projects",
     title: "Land Your First ₹25,000 in Freelance Work With 3 Portfolio Projects",
     headline: "",
     description: "",
@@ -1945,7 +1945,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-02",
-    slug: "remote-work-02",
+    slug: "7-freelance-skills-you-can-monetize-without-a-college-degree",
     title: "7 Freelance Skills You Can Monetize Without a College Degree",
     headline: "",
     description: "",
@@ -1961,7 +1961,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-03",
-    slug: "remote-work-03",
+    slug: "turn-1-skill-into-a-premium-service-you-can-sell-for-10000",
     title: "Turn 1 Skill Into a Premium Service You Can Sell for ₹10,000+",
     headline: "",
     description: "",
@@ -1977,7 +1977,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-04",
-    slug: "remote-work-04",
+    slug: "the-100-prospect-blueprint-find-freelance-clients-without-upwork",
     title: "The 100-Prospect Blueprint: Find Freelance Clients Without Upwork",
     headline: "",
     description: "",
@@ -1993,7 +1993,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-05",
-    slug: "remote-work-05",
+    slug: "5-ways-to-get-freelance-clients-without-posting-every-day",
     title: "5 Ways to Get Freelance Clients Without Posting Every Day",
     headline: "",
     description: "",
@@ -2009,7 +2009,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-06",
-    slug: "remote-work-06",
+    slug: "build-a-freelance-portfolio-in-7-days-without-having-a-real-client",
     title: "Build a Freelance Portfolio in 7 Days Without Having a Real Client",
     headline: "",
     description: "",
@@ -2025,7 +2025,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-07",
-    slug: "remote-work-07",
+    slug: "sell-3-fixed-price-packages-instead-of-charging-by-the-hour",
     title: "Sell 3 Fixed-Price Packages Instead of Charging by the Hour",
     headline: "",
     description: "",
@@ -2041,7 +2041,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-08",
-    slug: "remote-work-08",
+    slug: "the-0-client-acquisition-system-find-your-first-5-paying-clients",
     title: "The ₹0 Client Acquisition System: Find Your First 5 Paying Clients",
     headline: "",
     description: "",
@@ -2057,7 +2057,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-09",
-    slug: "remote-work-09",
+    slug: "6-ai-workflows-that-help-freelancers-deliver-more-work-in-less-time",
     title: "6 AI Workflows That Help Freelancers Deliver More Work in Less Time",
     headline: "",
     description: "",
@@ -2073,7 +2073,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-10",
-    slug: "remote-work-10",
+    slug: "turn-one-off-freelance-projects-into-5-monthly-retainer-clients",
     title: "Turn One-Off Freelance Projects Into 5 Monthly Retainer Clients",
     headline: "",
     description: "",
@@ -2089,7 +2089,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-11",
-    slug: "remote-work-11",
+    slug: "7-high-value-services-you-can-sell-to-businesses-with-basic-tech-skills",
     title: "7 High-Value Services You Can Sell to Businesses With Basic Tech Skills",
     headline: "",
     description: "",
@@ -2105,7 +2105,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-12",
-    slug: "remote-work-12",
+    slug: "the-30-day-freelance-launch-from-no-portfolio-to-your-first-invoice",
     title: "The 30-Day Freelance Launch: From No Portfolio to Your First Invoice",
     headline: "",
     description: "",
@@ -2121,7 +2121,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-13",
-    slug: "remote-work-13",
+    slug: "charge-more-for-the-same-skill-8-ways-to-make-your-offer-stand-out",
     title: "Charge More for the Same Skill: 8 Ways to Make Your Offer Stand Out",
     headline: "",
     description: "",
@@ -2137,7 +2137,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-14",
-    slug: "remote-work-14",
+    slug: "build-a-one-person-agency-with-3-services-and-1-clear-target-market",
     title: "Build a One-Person Agency With 3 Services and 1 Clear Target Market",
     headline: "",
     description: "",
@@ -2153,7 +2153,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-15",
-    slug: "remote-work-15",
+    slug: "the-cold-email-playbook-turn-50-targeted-messages-into-sales-conversations",
     title: "The Cold Email Playbook: Turn 50 Targeted Messages Into Sales Conversations",
     headline: "",
     description: "",
@@ -2169,7 +2169,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-16",
-    slug: "remote-work-16",
+    slug: "5-ways-to-make-money-from-website-building-without-being-a-senior-developer",
     title: "5 Ways to Make Money From Website Building Without Being a Senior Developer",
     headline: "",
     description: "",
@@ -2185,7 +2185,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-17",
-    slug: "remote-work-17",
+    slug: "package-your-knowledge-into-a-consulting-offer-clients-can-buy-repeatedly",
     title: "Package Your Knowledge Into a Consulting Offer Clients Can Buy Repeatedly",
     headline: "",
     description: "",
@@ -2201,7 +2201,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-18",
-    slug: "remote-work-18",
+    slug: "the-2-hour-delivery-system-complete-freelance-projects-faster-and-protect-your-margins",
     title: "The 2-Hour Delivery System: Complete Freelance Projects Faster and Protect Your Margins",
     headline: "",
     description: "",
@@ -2217,7 +2217,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-19",
-    slug: "remote-work-19",
+    slug: "from-10000-to-1-lakh-a-month-model-the-clients-pricing-and-workload-required",
     title: "From ₹10,000 to ₹1 Lakh a Month: Model the Clients, Pricing and Workload Required",
     headline: "",
     description: "",
@@ -2233,7 +2233,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "remote-work-20",
-    slug: "remote-work-20",
+    slug: "7-freelance-negotiation-tactics-to-win-better-paying-projects",
     title: "7 Freelance Negotiation Tactics to Win Better-Paying Projects",
     headline: "",
     description: "",
@@ -2249,7 +2249,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-01",
-    slug: "lead-generation-01",
+    slug: "100-targeted-leads-in-7-days-build-a-prospect-list-without-paid-tools",
     title: "100 Targeted Leads in 7 Days: Build a Prospect List Without Paid Tools",
     headline: "",
     description: "",
@@ -2265,7 +2265,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-02",
-    slug: "lead-generation-02",
+    slug: "sell-lead-generation-as-a-service-with-3-simple-packages",
     title: "Sell Lead Generation as a Service With 3 Simple Packages",
     headline: "",
     description: "",
@@ -2281,7 +2281,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-03",
-    slug: "lead-generation-03",
+    slug: "the-50-prospect-challenge-find-your-first-lead-generation-client",
     title: "The 50-Prospect Challenge: Find Your First Lead Generation Client",
     headline: "",
     description: "",
@@ -2297,7 +2297,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-04",
-    slug: "lead-generation-04",
+    slug: "7-lead-magnets-that-turn-website-visitors-into-potential-customers",
     title: "7 Lead Magnets That Turn Website Visitors Into Potential Customers",
     headline: "",
     description: "",
@@ -2313,7 +2313,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-05",
-    slug: "lead-generation-05",
+    slug: "build-a-25000-month-lead-generation-service-with-5-recurring-clients",
     title: "Build a ₹25,000/Month Lead Generation Service With 5 Recurring Clients",
     headline: "",
     description: "",
@@ -2329,7 +2329,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-06",
-    slug: "lead-generation-06",
+    slug: "find-500-business-prospects-using-4-repeatable-research-methods",
     title: "Find 500 Business Prospects Using 4 Repeatable Research Methods",
     headline: "",
     description: "",
@@ -2345,7 +2345,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-07",
-    slug: "lead-generation-07",
+    slug: "turn-1-local-business-niche-into-a-lead-generation-offer-you-can-sell",
     title: "Turn 1 Local Business Niche Into a Lead Generation Offer You Can Sell",
     headline: "",
     description: "",
@@ -2361,7 +2361,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-08",
-    slug: "lead-generation-08",
+    slug: "5-cold-outreach-fixes-that-can-turn-more-prospects-into-sales-conversations",
     title: "5 Cold Outreach Fixes That Can Turn More Prospects Into Sales Conversations",
     headline: "",
     description: "",
@@ -2377,7 +2377,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-09",
-    slug: "lead-generation-09",
+    slug: "build-a-lead-list-in-2-hours-without-buying-expensive-databases",
     title: "Build a Lead List in 2 Hours Without Buying Expensive Databases",
     headline: "",
     description: "",
@@ -2393,7 +2393,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-10",
-    slug: "lead-generation-10",
+    slug: "30-days-to-your-first-lead-generation-client-the-beginners-blueprint",
     title: "30 Days to Your First Lead Generation Client: The Beginner's Blueprint",
     headline: "",
     description: "",
@@ -2409,7 +2409,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-11",
-    slug: "lead-generation-11",
+    slug: "7-ways-to-generate-b2b-leads-without-running-ads",
     title: "7 Ways to Generate B2B Leads Without Running Ads",
     headline: "",
     description: "",
@@ -2425,7 +2425,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-12",
-    slug: "lead-generation-12",
+    slug: "turn-3-public-data-sources-into-a-useful-prospect-research-service",
     title: "Turn 3 Public Data Sources Into a Useful Prospect Research Service",
     headline: "",
     description: "",
@@ -2441,7 +2441,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-13",
-    slug: "lead-generation-13",
+    slug: "the-100-email-system-test-your-offer-before-scaling-outreach",
     title: "The 100-Email System: Test Your Offer Before Scaling Outreach",
     headline: "",
     description: "",
@@ -2457,7 +2457,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-14",
-    slug: "lead-generation-14",
+    slug: "generate-better-leads-with-5-landing-page-changes",
     title: "Generate Better Leads With 5 Landing Page Changes",
     headline: "",
     description: "",
@@ -2473,7 +2473,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-15",
-    slug: "lead-generation-15",
+    slug: "sell-qualified-appointment-setting-instead-of-charging-for-raw-contact-lists",
     title: "Sell Qualified Appointment Setting Instead of Charging for Raw Contact Lists",
     headline: "",
     description: "",
@@ -2489,7 +2489,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-16",
-    slug: "lead-generation-16",
+    slug: "10-lead-generation-niches-where-businesses-need-a-steady-flow-of-prospects",
     title: "10 Lead Generation Niches Where Businesses Need a Steady Flow of Prospects",
     headline: "",
     description: "",
@@ -2505,7 +2505,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-17",
-    slug: "lead-generation-17",
+    slug: "build-an-automated-lead-capture-system-with-4-affordable-tools",
     title: "Build an Automated Lead Capture System With 4 Affordable Tools",
     headline: "",
     description: "",
@@ -2521,7 +2521,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-18",
-    slug: "lead-generation-18",
+    slug: "from-0-to-10-sales-calls-a-practical-b2b-outreach-playbook",
     title: "From 0 to 10 Sales Calls: A Practical B2B Outreach Playbook",
     headline: "",
     description: "",
@@ -2537,7 +2537,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-19",
-    slug: "lead-generation-19",
+    slug: "5-ways-to-build-a-lead-generation-business-without-hiring-a-team",
     title: "5 Ways to Build a Lead Generation Business Without Hiring a Team",
     headline: "",
     description: "",
@@ -2553,7 +2553,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "lead-generation-20",
-    slug: "lead-generation-20",
+    slug: "turn-one-successful-lead-campaign-into-a-repeatable-monthly-service",
     title: "Turn One Successful Lead Campaign Into a Repeatable Monthly Service",
     headline: "",
     description: "",
@@ -2569,7 +2569,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-01",
-    slug: "micro-saas-01",
+    slug: "7-micro-saas-ideas-you-can-validate-before-writing-a-line-of-code",
     title: "7 Micro-SaaS Ideas You Can Validate Before Writing a Line of Code",
     headline: "",
     description: "",
@@ -2585,7 +2585,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-02",
-    slug: "micro-saas-02",
+    slug: "build-a-1000-month-micro-saas-around-one-annoying-business-problem",
     title: "Build a $1,000/Month Micro-SaaS Around One Annoying Business Problem",
     headline: "",
     description: "",
@@ -2601,7 +2601,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-03",
-    slug: "micro-saas-03",
+    slug: "launch-a-micro-saas-in-14-days-using-ai-and-no-code-tools",
     title: "Launch a Micro-SaaS in 14 Days Using AI and No-Code Tools",
     headline: "",
     description: "",
@@ -2617,7 +2617,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-04",
-    slug: "micro-saas-04",
+    slug: "5-tiny-software-products-you-can-build-for-a-specific-paying-audience",
     title: "5 Tiny Software Products You Can Build for a Specific Paying Audience",
     headline: "",
     description: "",
@@ -2633,7 +2633,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-05",
-    slug: "micro-saas-05",
+    slug: "the-30-customer-micro-saas-challenge-validate-demand-before-scaling",
     title: "The 30-Customer Micro-SaaS Challenge: Validate Demand Before Scaling",
     headline: "",
     description: "",
@@ -2649,7 +2649,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-06",
-    slug: "micro-saas-06",
+    slug: "turn-1-spreadsheet-workflow-into-a-subscription-software-product",
     title: "Turn 1 Spreadsheet Workflow Into a Subscription Software Product",
     headline: "",
     description: "",
@@ -2665,7 +2665,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-07",
-    slug: "micro-saas-07",
+    slug: "build-a-micro-saas-with-3-core-features-instead-of-30-unnecessary-ones",
     title: "Build a Micro-SaaS With 3 Core Features Instead of 30 Unnecessary Ones",
     headline: "",
     description: "",
@@ -2681,7 +2681,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-08",
-    slug: "micro-saas-08",
+    slug: "10-boring-software-problems-that-could-become-small-online-businesses",
     title: "10 Boring Software Problems That Could Become Small Online Businesses",
     headline: "",
     description: "",
@@ -2697,7 +2697,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-09",
-    slug: "micro-saas-09",
+    slug: "the-0-validation-method-test-a-micro-saas-idea-before-paying-for-development",
     title: "The ₹0 Validation Method: Test a Micro-SaaS Idea Before Paying for Development",
     headline: "",
     description: "",
@@ -2713,7 +2713,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-10",
-    slug: "micro-saas-10",
+    slug: "from-one-customer-request-to-a-paid-saas-a-7-step-build-plan",
     title: "From One Customer Request to a Paid SaaS: A 7-Step Build Plan",
     headline: "",
     description: "",
@@ -2729,7 +2729,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-11",
-    slug: "micro-saas-11",
+    slug: "5-pricing-experiments-to-find-what-customers-will-pay-for-your-software",
     title: "5 Pricing Experiments to Find What Customers Will Pay for Your Software",
     headline: "",
     description: "",
@@ -2745,7 +2745,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-12",
-    slug: "micro-saas-12",
+    slug: "build-a-useful-ai-micro-saas-without-training-your-own-model",
     title: "Build a Useful AI Micro-SaaS Without Training Your Own Model",
     headline: "",
     description: "",
@@ -2761,7 +2761,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-13",
-    slug: "micro-saas-13",
+    slug: "get-your-first-10-saas-users-through-4-free-distribution-channels",
     title: "Get Your First 10 SaaS Users Through 4 Free Distribution Channels",
     headline: "",
     description: "",
@@ -2777,7 +2777,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-14",
-    slug: "micro-saas-14",
+    slug: "turn-a-one-time-tool-into-recurring-revenue-with-3-subscription-models",
     title: "Turn a One-Time Tool Into Recurring Revenue With 3 Subscription Models",
     headline: "",
     description: "",
@@ -2793,7 +2793,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-15",
-    slug: "micro-saas-15",
+    slug: "the-7-day-micro-saas-audit-find-a-problem-worth-solving",
     title: "The 7-Day Micro-SaaS Audit: Find a Problem Worth Solving",
     headline: "",
     description: "",
@@ -2809,7 +2809,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-16",
-    slug: "micro-saas-16",
+    slug: "build-a-saas-landing-page-that-tests-demand-before-you-build-the-product",
     title: "Build a SaaS Landing Page That Tests Demand Before You Build the Product",
     headline: "",
     description: "",
@@ -2825,7 +2825,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-17",
-    slug: "micro-saas-17",
+    slug: "5-ways-to-find-micro-saas-customers-without-competing-with-tech-giants",
     title: "5 Ways to Find Micro-SaaS Customers Without Competing With Tech Giants",
     headline: "",
     description: "",
@@ -2841,7 +2841,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-18",
-    slug: "micro-saas-18",
+    slug: "from-0-to-first-subscription-a-practical-micro-saas-launch-blueprint",
     title: "From $0 to First Subscription: A Practical Micro-SaaS Launch Blueprint",
     headline: "",
     description: "",
@@ -2857,7 +2857,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-19",
-    slug: "micro-saas-19",
+    slug: "3-automation-features-that-can-make-a-small-saas-more-valuable",
     title: "3 Automation Features That Can Make a Small SaaS More Valuable",
     headline: "",
     description: "",
@@ -2873,7 +2873,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "micro-saas-20",
-    slug: "micro-saas-20",
+    slug: "build-a-one-person-saas-business-with-5-lean-operating-systems",
     title: "Build a One-Person SaaS Business With 5 Lean Operating Systems",
     headline: "",
     description: "",
@@ -2889,7 +2889,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-01",
-    slug: "online-marketplace-01",
+    slug: "7-marketplace-business-models-you-can-test-without-holding-inventory",
     title: "7 Marketplace Business Models You Can Test Without Holding Inventory",
     headline: "",
     description: "",
@@ -2905,7 +2905,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-02",
-    slug: "online-marketplace-02",
+    slug: "build-a-niche-marketplace-with-3-revenue-streams-instead-of-one",
     title: "Build a Niche Marketplace With 3 Revenue Streams Instead of One",
     headline: "",
     description: "",
@@ -2921,7 +2921,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-03",
-    slug: "online-marketplace-03",
+    slug: "the-first-100-listings-launch-a-marketplace-before-building-every-feature",
     title: "The First 100 Listings: Launch a Marketplace Before Building Every Feature",
     headline: "",
     description: "",
@@ -2937,7 +2937,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-04",
-    slug: "online-marketplace-04",
+    slug: "5-ways-to-get-your-first-50-buyers-and-sellers-without-paid-ads",
     title: "5 Ways to Get Your First 50 Buyers and Sellers Without Paid Ads",
     headline: "",
     description: "",
@@ -2953,7 +2953,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-05",
-    slug: "online-marketplace-05",
+    slug: "build-a-two-sided-marketplace-in-30-days-with-one-focused-niche",
     title: "Build a Two-Sided Marketplace in 30 Days With One Focused Niche",
     headline: "",
     description: "",
@@ -2969,7 +2969,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-06",
-    slug: "online-marketplace-06",
+    slug: "turn-1-underserved-community-into-a-marketplace-opportunity",
     title: "Turn 1 Underserved Community Into a Marketplace Opportunity",
     headline: "",
     description: "",
@@ -2985,7 +2985,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-07",
-    slug: "online-marketplace-07",
+    slug: "10-marketplace-niches-where-specialization-can-beat-a-general-platform",
     title: "10 Marketplace Niches Where Specialization Can Beat a General Platform",
     headline: "",
     description: "",
@@ -3001,7 +3001,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-08",
-    slug: "online-marketplace-08",
+    slug: "earn-from-every-transaction-with-4-marketplace-fee-structures",
     title: "Earn From Every Transaction With 4 Marketplace Fee Structures",
     headline: "",
     description: "",
@@ -3017,7 +3017,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-09",
-    slug: "online-marketplace-09",
+    slug: "the-10000-marketplace-experiment-validate-supply-and-demand-on-a-lean-budget",
     title: "The ₹10,000 Marketplace Experiment: Validate Supply and Demand on a Lean Budget",
     headline: "",
     description: "",
@@ -3033,7 +3033,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-10",
-    slug: "online-marketplace-10",
+    slug: "solve-the-empty-marketplace-problem-with-7-practical-seeding-strategies",
     title: "Solve the Empty Marketplace Problem With 7 Practical Seeding Strategies",
     headline: "",
     description: "",
@@ -3049,7 +3049,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-11",
-    slug: "online-marketplace-11",
+    slug: "build-a-digital-product-marketplace-without-managing-physical-inventory",
     title: "Build a Digital Product Marketplace Without Managing Physical Inventory",
     headline: "",
     description: "",
@@ -3065,7 +3065,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-12",
-    slug: "online-marketplace-12",
+    slug: "5-ways-to-make-sellers-join-before-you-have-thousands-of-buyers",
     title: "5 Ways to Make Sellers Join Before You Have Thousands of Buyers",
     headline: "",
     description: "",
@@ -3081,7 +3081,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-13",
-    slug: "online-marketplace-13",
+    slug: "from-20-sellers-to-a-real-marketplace-the-first-customer-playbook",
     title: "From 20 Sellers to a Real Marketplace: The First-Customer Playbook",
     headline: "",
     description: "",
@@ -3097,7 +3097,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-14",
-    slug: "online-marketplace-14",
+    slug: "7-trust-features-that-help-buyers-feel-safer-on-a-new-marketplace",
     title: "7 Trust Features That Help Buyers Feel Safer on a New Marketplace",
     headline: "",
     description: "",
@@ -3113,7 +3113,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-15",
-    slug: "online-marketplace-15",
+    slug: "launch-a-service-marketplace-with-3-categories-and-one-clear-audience",
     title: "Launch a Service Marketplace With 3 Categories and One Clear Audience",
     headline: "",
     description: "",
@@ -3129,7 +3129,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-16",
-    slug: "online-marketplace-16",
+    slug: "4-marketplace-growth-loops-that-can-bring-buyers-and-sellers-together",
     title: "4 Marketplace Growth Loops That Can Bring Buyers and Sellers Together",
     headline: "",
     description: "",
@@ -3145,7 +3145,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-17",
-    slug: "online-marketplace-17",
+    slug: "build-a-marketplace-mvp-with-5-essential-features",
     title: "Build a Marketplace MVP With 5 Essential Features",
     headline: "",
     description: "",
@@ -3161,7 +3161,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-18",
-    slug: "online-marketplace-18",
+    slug: "30-days-to-marketplace-validation-test-listings-demand-and-monetization",
     title: "30 Days to Marketplace Validation: Test Listings, Demand and Monetization",
     headline: "",
     description: "",
@@ -3177,7 +3177,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-19",
-    slug: "online-marketplace-19",
+    slug: "6-ways-to-earn-from-a-marketplace-without-charging-every-user-upfront",
     title: "6 Ways to Earn From a Marketplace Without Charging Every User Upfront",
     headline: "",
     description: "",
@@ -3193,7 +3193,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "online-marketplace-20",
-    slug: "online-marketplace-20",
+    slug: "turn-a-small-niche-directory-into-a-marketplace-with-5-upgrade-steps",
     title: "Turn a Small Niche Directory Into a Marketplace With 5 Upgrade Steps",
     headline: "",
     description: "",
@@ -3209,7 +3209,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-01",
-    slug: "reselling-01",
+    slug: "15-reselling-ideas-you-can-test-with-less-than-2000",
     title: "15 Reselling Ideas You Can Test With Less Than ₹2,000",
     headline: "",
     description: "",
@@ -3225,7 +3225,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-02",
-    slug: "reselling-02",
+    slug: "make-your-first-10000-in-reselling-a-margin-first-action-plan",
     title: "Make Your First ₹10,000 in Reselling: A Margin-First Action Plan",
     headline: "",
     description: "",
@@ -3241,7 +3241,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-03",
-    slug: "reselling-03",
+    slug: "7-product-categories-to-research-before-starting-a-reselling-business",
     title: "7 Product Categories to Research Before Starting a Reselling Business",
     headline: "",
     description: "",
@@ -3257,7 +3257,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-04",
-    slug: "reselling-04",
+    slug: "start-reselling-without-bulk-inventory-using-5-low-risk-tests",
     title: "Start Reselling Without Bulk Inventory Using 5 Low-Risk Tests",
     headline: "",
     description: "",
@@ -3273,7 +3273,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-05",
-    slug: "reselling-05",
+    slug: "turn-10-carefully-chosen-products-into-a-small-online-reselling-store",
     title: "Turn 10 Carefully Chosen Products Into a Small Online Reselling Store",
     headline: "",
     description: "",
@@ -3289,7 +3289,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-06",
-    slug: "reselling-06",
+    slug: "the-30-day-reselling-challenge-find-products-test-prices-and-make-your-first-sale",
     title: "The 30-Day Reselling Challenge: Find Products, Test Prices and Make Your First Sale",
     headline: "",
     description: "",
@@ -3305,7 +3305,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-07",
-    slug: "reselling-07",
+    slug: "5-ways-to-find-underpriced-products-without-guessing-their-resale-value",
     title: "5 Ways to Find Underpriced Products Without Guessing Their Resale Value",
     headline: "",
     description: "",
@@ -3321,7 +3321,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-08",
-    slug: "reselling-08",
+    slug: "build-a-25000-month-reselling-model-by-working-backward-from-your-margins",
     title: "Build a ₹25,000/Month Reselling Model by Working Backward From Your Margins",
     headline: "",
     description: "",
@@ -3337,7 +3337,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-09",
-    slug: "reselling-09",
+    slug: "10-pricing-mistakes-that-quietly-destroy-reselling-profits",
     title: "10 Pricing Mistakes That Quietly Destroy Reselling Profits",
     headline: "",
     description: "",
@@ -3353,7 +3353,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-10",
-    slug: "reselling-10",
+    slug: "flip-5-products-profitably-a-beginners-guide-to-buying-and-reselling",
     title: "Flip 5 Products Profitably: A Beginner's Guide to Buying and Reselling",
     headline: "",
     description: "",
@@ -3369,7 +3369,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-11",
-    slug: "reselling-11",
+    slug: "sell-through-3-channels-instead-of-depending-on-one-marketplace",
     title: "Sell Through 3 Channels Instead of Depending on One Marketplace",
     headline: "",
     description: "",
@@ -3385,7 +3385,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-12",
-    slug: "reselling-12",
+    slug: "7-ways-to-make-a-reselling-offer-more-valuable-without-cutting-prices",
     title: "7 Ways to Make a Reselling Offer More Valuable Without Cutting Prices",
     headline: "",
     description: "",
@@ -3401,7 +3401,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-13",
-    slug: "reselling-13",
+    slug: "the-500-reselling-test-learn-demand-before-investing-more-money",
     title: "The ₹500 Reselling Test: Learn Demand Before Investing More Money",
     headline: "",
     description: "",
@@ -3417,7 +3417,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-14",
-    slug: "reselling-14",
+    slug: "turn-1-product-source-into-3-customer-segments",
     title: "Turn 1 Product Source Into 3 Customer Segments",
     headline: "",
     description: "",
@@ -3433,7 +3433,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-15",
-    slug: "reselling-15",
+    slug: "5-ways-to-find-repeat-buyers-in-a-reselling-business",
     title: "5 Ways to Find Repeat Buyers in a Reselling Business",
     headline: "",
     description: "",
@@ -3449,7 +3449,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-16",
-    slug: "reselling-16",
+    slug: "from-first-flip-to-repeat-sales-build-a-30-day-reselling-system",
     title: "From First Flip to Repeat Sales: Build a 30-Day Reselling System",
     headline: "",
     description: "",
@@ -3465,7 +3465,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-17",
-    slug: "reselling-17",
+    slug: "8-reselling-metrics-to-track-before-scaling-your-inventory",
     title: "8 Reselling Metrics to Track Before Scaling Your Inventory",
     headline: "",
     description: "",
@@ -3481,7 +3481,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-18",
-    slug: "reselling-18",
+    slug: "build-a-niche-reselling-business-around-20-products-customers-already-search-for",
     title: "Build a Niche Reselling Business Around 20 Products Customers Already Search For",
     headline: "",
     description: "",
@@ -3497,7 +3497,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-19",
-    slug: "reselling-19",
+    slug: "6-supplier-checks-that-help-you-avoid-costly-reselling-mistakes",
     title: "6 Supplier Checks That Help You Avoid Costly Reselling Mistakes",
     headline: "",
     description: "",
@@ -3513,7 +3513,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "reselling-20",
-    slug: "reselling-20",
+    slug: "scale-a-small-reselling-business-with-4-systems-for-sourcing-pricing-and-fulfilment",
     title: "Scale a Small Reselling Business With 4 Systems for Sourcing, Pricing and Fulfilment",
     headline: "",
     description: "",
@@ -3529,7 +3529,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-01",
-    slug: "paid-communities-01",
+    slug: "build-a-1000-month-paid-community-with-100-members-at-10",
     title: "Build a $1,000/Month Paid Community With 100 Members at $10",
     headline: "",
     description: "",
@@ -3545,7 +3545,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-02",
-    slug: "paid-communities-02",
+    slug: "7-paid-community-ideas-people-might-pay-to-join",
     title: "7 Paid Community Ideas People Might Pay to Join",
     headline: "",
     description: "",
@@ -3561,7 +3561,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-03",
-    slug: "paid-communities-03",
+    slug: "get-your-first-25-paying-members-with-a-30-day-launch-plan",
     title: "Get Your First 25 Paying Members With a 30-Day Launch Plan",
     headline: "",
     description: "",
@@ -3577,7 +3577,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-04",
-    slug: "paid-communities-04",
+    slug: "turn-1-audience-problem-into-a-paid-community-with-5-useful-benefits",
     title: "Turn 1 Audience Problem Into a Paid Community With 5 Useful Benefits",
     headline: "",
     description: "",
@@ -3593,7 +3593,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-05",
-    slug: "paid-communities-05",
+    slug: "the-100-member-community-blueprint-build-recurring-revenue-around-one-outcome",
     title: "The 100-Member Community Blueprint: Build Recurring Revenue Around One Outcome",
     headline: "",
     description: "",
@@ -3609,7 +3609,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-06",
-    slug: "paid-communities-06",
+    slug: "5-ways-to-validate-a-paid-community-before-creating-a-membership-site",
     title: "5 Ways to Validate a Paid Community Before Creating a Membership Site",
     headline: "",
     description: "",
@@ -3625,7 +3625,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-07",
-    slug: "paid-communities-07",
+    slug: "launch-a-paid-community-with-3-core-features-instead-of-20",
     title: "Launch a Paid Community With 3 Core Features Instead of 20",
     headline: "",
     description: "",
@@ -3641,7 +3641,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-08",
-    slug: "paid-communities-08",
+    slug: "30-days-of-community-content-that-gives-members-a-reason-to-stay",
     title: "30 Days of Community Content That Gives Members a Reason to Stay",
     headline: "",
     description: "",
@@ -3657,7 +3657,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-09",
-    slug: "paid-communities-09",
+    slug: "turn-10-free-members-into-your-first-paying-community-customers",
     title: "Turn 10 Free Members Into Your First Paying Community Customers",
     headline: "",
     description: "",
@@ -3673,7 +3673,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-10",
-    slug: "paid-communities-10",
+    slug: "7-retention-systems-that-help-reduce-paid-membership-churn",
     title: "7 Retention Systems That Help Reduce Paid Membership Churn",
     headline: "",
     description: "",
@@ -3689,7 +3689,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-11",
-    slug: "paid-communities-11",
+    slug: "build-a-50000-month-community-model-by-calculating-price-and-member-count",
     title: "Build a ₹50,000/Month Community Model by Calculating Price and Member Count",
     headline: "",
     description: "",
@@ -3705,7 +3705,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-12",
-    slug: "paid-communities-12",
+    slug: "5-ways-to-monetize-a-community-without-making-every-conversation-an-advertisement",
     title: "5 Ways to Monetize a Community Without Making Every Conversation an Advertisement",
     headline: "",
     description: "",
@@ -3721,7 +3721,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-13",
-    slug: "paid-communities-13",
+    slug: "from-discord-group-to-paid-membership-a-6-step-launch-plan",
     title: "From Discord Group to Paid Membership: A 6-Step Launch Plan",
     headline: "",
     description: "",
@@ -3737,7 +3737,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-14",
-    slug: "paid-communities-14",
+    slug: "create-a-premium-learning-community-with-4-repeatable-member-experiences",
     title: "Create a Premium Learning Community With 4 Repeatable Member Experiences",
     headline: "",
     description: "",
@@ -3753,7 +3753,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-15",
-    slug: "paid-communities-15",
+    slug: "10-community-events-that-can-turn-passive-members-into-active-participants",
     title: "10 Community Events That Can Turn Passive Members Into Active Participants",
     headline: "",
     description: "",
@@ -3769,7 +3769,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-16",
-    slug: "paid-communities-16",
+    slug: "build-a-paid-accountability-group-around-1-measurable-goal",
     title: "Build a Paid Accountability Group Around 1 Measurable Goal",
     headline: "",
     description: "",
@@ -3785,7 +3785,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-17",
-    slug: "paid-communities-17",
+    slug: "the-0-community-launch-find-your-first-members-without-paid-promotion",
     title: "The ₹0 Community Launch: Find Your First Members Without Paid Promotion",
     headline: "",
     description: "",
@@ -3801,7 +3801,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-18",
-    slug: "paid-communities-18",
+    slug: "5-membership-tiers-that-make-your-community-offer-easier-to-understand",
     title: "5 Membership Tiers That Make Your Community Offer Easier to Understand",
     headline: "",
     description: "",
@@ -3817,7 +3817,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-19",
-    slug: "paid-communities-19",
+    slug: "turn-member-questions-into-20-valuable-resources-for-your-paid-community",
     title: "Turn Member Questions Into 20 Valuable Resources for Your Paid Community",
     headline: "",
     description: "",
@@ -3833,7 +3833,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "paid-communities-20",
-    slug: "paid-communities-20",
+    slug: "grow-a-sustainable-membership-business-with-3-retention-and-revenue-loops",
     title: "Grow a Sustainable Membership Business With 3 Retention and Revenue Loops",
     headline: "",
     description: "",
@@ -3849,7 +3849,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-01",
-    slug: "local-business-01",
+    slug: "7-local-business-services-you-can-sell-for-10000-per-client",
     title: "7 Local Business Services You Can Sell for ₹10,000+ Per Client",
     headline: "",
     description: "",
@@ -3865,7 +3865,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-02",
-    slug: "local-business-02",
+    slug: "build-a-50000-month-local-marketing-service-with-5-recurring-clients",
     title: "Build a ₹50,000/Month Local Marketing Service With 5 Recurring Clients",
     headline: "",
     description: "",
@@ -3881,7 +3881,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-03",
-    slug: "local-business-03",
+    slug: "find-your-first-10-local-business-clients-with-a-30-day-outreach-plan",
     title: "Find Your First 10 Local Business Clients With a 30-Day Outreach Plan",
     headline: "",
     description: "",
@@ -3897,7 +3897,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-04",
-    slug: "local-business-04",
+    slug: "5-google-business-profile-fixes-that-can-help-local-businesses-get-discovered",
     title: "5 Google Business Profile Fixes That Can Help Local Businesses Get Discovered",
     headline: "",
     description: "",
@@ -3913,7 +3913,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-05",
-    slug: "local-business-05",
+    slug: "turn-1-neighbourhood-into-a-lead-generation-business-with-3-service-packages",
     title: "Turn 1 Neighbourhood Into a Lead Generation Business With 3 Service Packages",
     headline: "",
     description: "",
@@ -3929,7 +3929,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-06",
-    slug: "local-business-06",
+    slug: "10-problems-local-businesses-pay-to-solve-that-dont-require-a-big-agency",
     title: "10 Problems Local Businesses Pay to Solve That Don't Require a Big Agency",
     headline: "",
     description: "",
@@ -3945,7 +3945,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-07",
-    slug: "local-business-07",
+    slug: "the-0-local-business-blueprint-find-customers-before-buying-tools",
     title: "The ₹0 Local Business Blueprint: Find Customers Before Buying Tools",
     headline: "",
     description: "",
@@ -3961,7 +3961,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-08",
-    slug: "local-business-08",
+    slug: "sell-website-upgrades-to-5-local-businesses-without-building-complex-software",
     title: "Sell Website Upgrades to 5 Local Businesses Without Building Complex Software",
     headline: "",
     description: "",
@@ -3977,7 +3977,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-09",
-    slug: "local-business-09",
+    slug: "7-ways-to-help-restaurants-get-more-direct-orders-and-repeat-customers",
     title: "7 Ways to Help Restaurants Get More Direct Orders and Repeat Customers",
     headline: "",
     description: "",
@@ -3993,7 +3993,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-10",
-    slug: "local-business-10",
+    slug: "build-a-local-seo-service-with-4-deliverables-clients-can-understand",
     title: "Build a Local SEO Service With 4 Deliverables Clients Can Understand",
     headline: "",
     description: "",
@@ -4009,7 +4009,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-11",
-    slug: "local-business-11",
+    slug: "turn-20-local-business-listings-into-a-targeted-prospecting-campaign",
     title: "Turn 20 Local Business Listings Into a Targeted Prospecting Campaign",
     headline: "",
     description: "",
@@ -4025,7 +4025,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-12",
-    slug: "local-business-12",
+    slug: "the-48-hour-website-offer-build-a-simple-site-for-a-local-business",
     title: "The 48-Hour Website Offer: Build a Simple Site for a Local Business",
     headline: "",
     description: "",
@@ -4041,7 +4041,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-13",
-    slug: "local-business-13",
+    slug: "5-recurring-services-you-can-sell-to-clinics-salons-and-restaurants",
     title: "5 Recurring Services You Can Sell to Clinics, Salons and Restaurants",
     headline: "",
     description: "",
@@ -4057,7 +4057,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-14",
-    slug: "local-business-14",
+    slug: "earn-from-local-business-referrals-with-3-transparent-partnership-models",
     title: "Earn From Local Business Referrals With 3 Transparent Partnership Models",
     headline: "",
     description: "",
@@ -4073,7 +4073,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-15",
-    slug: "local-business-15",
+    slug: "30-days-to-your-first-local-marketing-retainer-the-practical-playbook",
     title: "30 Days to Your First Local Marketing Retainer: The Practical Playbook",
     headline: "",
     description: "",
@@ -4089,7 +4089,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-16",
-    slug: "local-business-16",
+    slug: "help-10-local-businesses-improve-their-online-presence-with-one-repeatable-system",
     title: "Help 10 Local Businesses Improve Their Online Presence With One Repeatable System",
     headline: "",
     description: "",
@@ -4105,7 +4105,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-17",
-    slug: "local-business-17",
+    slug: "6-ways-to-find-local-clients-without-door-to-door-sales",
     title: "6 Ways to Find Local Clients Without Door-to-Door Sales",
     headline: "",
     description: "",
@@ -4121,7 +4121,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-18",
-    slug: "local-business-18",
+    slug: "build-a-niche-local-directory-with-100-listings-and-3-monetization-options",
     title: "Build a Niche Local Directory With 100 Listings and 3 Monetization Options",
     headline: "",
     description: "",
@@ -4137,7 +4137,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-19",
-    slug: "local-business-19",
+    slug: "5-simple-automations-that-save-local-businesses-time-and-labour",
     title: "5 Simple Automations That Save Local Businesses Time and Labour",
     headline: "",
     description: "",
@@ -4153,7 +4153,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "local-business-20",
-    slug: "local-business-20",
+    slug: "from-one-local-client-to-10-build-a-repeatable-service-delivery-system",
     title: "From One Local Client to 10: Build a Repeatable Service Delivery System",
     headline: "",
     description: "",
@@ -4169,7 +4169,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-01",
-    slug: "digital-publishing-01",
+    slug: "10-digital-publishing-ideas-you-can-launch-without-a-traditional-publisher",
     title: "10 Digital Publishing Ideas You Can Launch Without a Traditional Publisher",
     headline: "",
     description: "",
@@ -4185,7 +4185,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-02",
-    slug: "digital-publishing-02",
+    slug: "turn-1-expertise-based-ebook-into-5-products-with-different-price-points",
     title: "Turn 1 Expertise-Based Ebook Into 5 Products With Different Price Points",
     headline: "",
     description: "",
@@ -4201,7 +4201,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-03",
-    slug: "digital-publishing-03",
+    slug: "the-7-day-ebook-business-research-publish-and-test-your-first-offer",
     title: "The 7-Day Ebook Business: Research, Publish and Test Your First Offer",
     headline: "",
     description: "",
@@ -4217,7 +4217,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-04",
-    slug: "digital-publishing-04",
+    slug: "sell-100-copies-of-a-practical-guide-with-7-organic-distribution-tactics",
     title: "Sell 100 Copies of a Practical Guide With 7 Organic Distribution Tactics",
     headline: "",
     description: "",
@@ -4233,7 +4233,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-05",
-    slug: "digital-publishing-05",
+    slug: "build-a-999-digital-guide-that-solves-one-expensive-customer-problem",
     title: "Build a ₹999 Digital Guide That Solves One Expensive Customer Problem",
     headline: "",
     description: "",
@@ -4249,7 +4249,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-06",
-    slug: "digital-publishing-06",
+    slug: "5-ways-to-turn-public-research-into-an-original-valuable-paid-report",
     title: "5 Ways to Turn Public Research Into an Original, Valuable Paid Report",
     headline: "",
     description: "",
@@ -4265,7 +4265,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-07",
-    slug: "digital-publishing-07",
+    slug: "publish-3-niche-guides-before-investing-in-a-full-digital-catalog",
     title: "Publish 3 Niche Guides Before Investing in a Full Digital Catalog",
     headline: "",
     description: "",
@@ -4281,7 +4281,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-08",
-    slug: "digital-publishing-08",
+    slug: "the-0-publishing-stack-create-and-sell-digital-books-with-free-tools",
     title: "The ₹0 Publishing Stack: Create and Sell Digital Books With Free Tools",
     headline: "",
     description: "",
@@ -4297,7 +4297,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-09",
-    slug: "digital-publishing-09",
+    slug: "20-reader-questions-that-can-reveal-your-next-profitable-ebook-topic",
     title: "20 Reader Questions That Can Reveal Your Next Profitable Ebook Topic",
     headline: "",
     description: "",
@@ -4313,7 +4313,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-10",
-    slug: "digital-publishing-10",
+    slug: "turn-one-long-guide-into-10-short-sellable-resources",
     title: "Turn One Long Guide Into 10 Short, Sellable Resources",
     headline: "",
     description: "",
@@ -4329,7 +4329,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-11",
-    slug: "digital-publishing-11",
+    slug: "7-ebook-cover-and-description-fixes-that-make-your-offer-clearer",
     title: "7 Ebook Cover and Description Fixes That Make Your Offer Clearer",
     headline: "",
     description: "",
@@ -4345,7 +4345,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-12",
-    slug: "digital-publishing-12",
+    slug: "build-a-digital-publishing-business-with-4-repeatable-content-formats",
     title: "Build a Digital Publishing Business With 4 Repeatable Content Formats",
     headline: "",
     description: "",
@@ -4361,7 +4361,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-13",
-    slug: "digital-publishing-13",
+    slug: "from-first-draft-to-first-sale-a-30-day-ebook-publishing-plan",
     title: "From First Draft to First Sale: A 30-Day Ebook Publishing Plan",
     headline: "",
     description: "",
@@ -4377,7 +4377,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-14",
-    slug: "digital-publishing-14",
+    slug: "5-pricing-models-for-selling-guides-without-undervaluing-your-work",
     title: "5 Pricing Models for Selling Guides Without Undervaluing Your Work",
     headline: "",
     description: "",
@@ -4393,7 +4393,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-15",
-    slug: "digital-publishing-15",
+    slug: "create-a-research-report-in-7-steps-that-customers-can-actually-use",
     title: "Create a Research Report in 7 Steps That Customers Can Actually Use",
     headline: "",
     description: "",
@@ -4409,7 +4409,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-16",
-    slug: "digital-publishing-16",
+    slug: "turn-1-industry-niche-into-a-catalog-of-12-practical-digital-publications",
     title: "Turn 1 Industry Niche Into a Catalog of 12 Practical Digital Publications",
     headline: "",
     description: "",
@@ -4425,7 +4425,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-17",
-    slug: "digital-publishing-17",
+    slug: "sell-more-guides-with-3-bundles-instead-of-constant-discounts",
     title: "Sell More Guides With 3 Bundles Instead of Constant Discounts",
     headline: "",
     description: "",
@@ -4441,7 +4441,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-18",
-    slug: "digital-publishing-18",
+    slug: "7-ways-to-distribute-digital-publications-without-depending-on-one-platform",
     title: "7 Ways to Distribute Digital Publications Without Depending on One Platform",
     headline: "",
     description: "",
@@ -4457,7 +4457,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-19",
-    slug: "digital-publishing-19",
+    slug: "build-a-small-publishing-brand-around-1-audience-and-3-recurring-problems",
     title: "Build a Small Publishing Brand Around 1 Audience and 3 Recurring Problems",
     headline: "",
     description: "",
@@ -4473,7 +4473,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "digital-publishing-20",
-    slug: "digital-publishing-20",
+    slug: "from-one-ebook-to-a-digital-catalog-the-90-day-publishing-blueprint",
     title: "From One Ebook to a Digital Catalog: The 90-Day Publishing Blueprint",
     headline: "",
     description: "",
@@ -4489,7 +4489,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-01",
-    slug: "newsletter-business-01",
+    slug: "build-a-1000-month-newsletter-with-3-revenue-streams",
     title: "Build a $1,000/Month Newsletter With 3 Revenue Streams",
     headline: "",
     description: "",
@@ -4505,7 +4505,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-02",
-    slug: "newsletter-business-02",
+    slug: "the-first-1000-subscribers-7-ways-to-grow-a-newsletter-without-paid-ads",
     title: "The First 1,000 Subscribers: 7 Ways to Grow a Newsletter Without Paid Ads",
     headline: "",
     description: "",
@@ -4521,7 +4521,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-03",
-    slug: "newsletter-business-03",
+    slug: "launch-a-niche-newsletter-in-7-days-with-one-clear-reader-promise",
     title: "Launch a Niche Newsletter in 7 Days With One Clear Reader Promise",
     headline: "",
     description: "",
@@ -4537,7 +4537,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-04",
-    slug: "newsletter-business-04",
+    slug: "5-newsletter-niches-you-can-monetize-without-becoming-an-influencer",
     title: "5 Newsletter Niches You Can Monetize Without Becoming an Influencer",
     headline: "",
     description: "",
@@ -4553,7 +4553,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-05",
-    slug: "newsletter-business-05",
+    slug: "turn-1-weekly-newsletter-into-4-business-opportunities",
     title: "Turn 1 Weekly Newsletter Into 4 Business Opportunities",
     headline: "",
     description: "",
@@ -4569,7 +4569,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-06",
-    slug: "newsletter-business-06",
+    slug: "the-30-day-newsletter-challenge-publish-consistently-and-find-your-first-readers",
     title: "The 30-Day Newsletter Challenge: Publish Consistently and Find Your First Readers",
     headline: "",
     description: "",
@@ -4585,7 +4585,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-07",
-    slug: "newsletter-business-07",
+    slug: "monetize-500-engaged-subscribers-with-5-offers-beyond-sponsorships",
     title: "Monetize 500 Engaged Subscribers With 5 Offers Beyond Sponsorships",
     headline: "",
     description: "",
@@ -4601,7 +4601,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-08",
-    slug: "newsletter-business-08",
+    slug: "10-newsletter-formats-that-save-research-time-and-give-readers-a-reason-to-return",
     title: "10 Newsletter Formats That Save Research Time and Give Readers a Reason to Return",
     headline: "",
     description: "",
@@ -4617,7 +4617,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-09",
-    slug: "newsletter-business-09",
+    slug: "turn-a-free-newsletter-into-a-paid-product-funnel-with-3-simple-steps",
     title: "Turn a Free Newsletter Into a Paid Product Funnel With 3 Simple Steps",
     headline: "",
     description: "",
@@ -4633,7 +4633,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-10",
-    slug: "newsletter-business-10",
+    slug: "build-a-25000-month-newsletter-business-by-modelling-price-audience-and-sales",
     title: "Build a ₹25,000/Month Newsletter Business by Modelling Price, Audience and Sales",
     headline: "",
     description: "",
@@ -4649,7 +4649,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-11",
-    slug: "newsletter-business-11",
+    slug: "7-ways-to-find-newsletter-subscribers-through-communities-you-already-know",
     title: "7 Ways to Find Newsletter Subscribers Through Communities You Already Know",
     headline: "",
     description: "",
@@ -4665,7 +4665,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-12",
-    slug: "newsletter-business-12",
+    slug: "sell-your-first-newsletter-sponsorship-with-a-1-page-media-kit",
     title: "Sell Your First Newsletter Sponsorship With a 1-Page Media Kit",
     headline: "",
     description: "",
@@ -4681,7 +4681,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-13",
-    slug: "newsletter-business-13",
+    slug: "the-100-subscriber-test-validate-a-newsletter-idea-before-scaling-it",
     title: "The 100-Subscriber Test: Validate a Newsletter Idea Before Scaling It",
     headline: "",
     description: "",
@@ -4697,7 +4697,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-14",
-    slug: "newsletter-business-14",
+    slug: "turn-1-industry-trend-into-5-useful-newsletter-editions",
     title: "Turn 1 Industry Trend Into 5 Useful Newsletter Editions",
     headline: "",
     description: "",
@@ -4713,7 +4713,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-15",
-    slug: "newsletter-business-15",
+    slug: "build-a-paid-research-newsletter-with-3-repeatable-content-sources",
     title: "Build a Paid Research Newsletter With 3 Repeatable Content Sources",
     headline: "",
     description: "",
@@ -4729,7 +4729,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-16",
-    slug: "newsletter-business-16",
+    slug: "5-welcome-email-fixes-that-help-new-subscribers-discover-your-best-content",
     title: "5 Welcome Email Fixes That Help New Subscribers Discover Your Best Content",
     headline: "",
     description: "",
@@ -4745,7 +4745,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-17",
-    slug: "newsletter-business-17",
+    slug: "from-0-to-10-paying-readers-launch-a-premium-newsletter-in-30-days",
     title: "From 0 to 10 Paying Readers: Launch a Premium Newsletter in 30 Days",
     headline: "",
     description: "",
@@ -4761,7 +4761,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-18",
-    slug: "newsletter-business-18",
+    slug: "earn-from-software-referrals-with-a-newsletter-built-around-1-useful-niche",
     title: "Earn From Software Referrals With a Newsletter Built Around 1 Useful Niche",
     headline: "",
     description: "",
@@ -4777,7 +4777,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-19",
-    slug: "newsletter-business-19",
+    slug: "4-newsletter-products-you-can-sell-before-you-reach-5000-subscribers",
     title: "4 Newsletter Products You Can Sell Before You Reach 5,000 Subscribers",
     headline: "",
     description: "",
@@ -4793,7 +4793,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "newsletter-business-20",
-    slug: "newsletter-business-20",
+    slug: "build-a-newsletter-business-that-earns-from-sponsorships-products-and-memberships",
     title: "Build a Newsletter Business That Earns From Sponsorships, Products and Memberships",
     headline: "",
     description: "",
@@ -4809,7 +4809,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-01",
-    slug: "dating-01",
+    slug: "the-dating-profile-makeover-7-changes-to-get-more-quality-matches",
     title: "The Dating Profile Makeover: 7 Changes to Get More Quality Matches",
     headline: "",
     description: "",
@@ -4825,7 +4825,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-02",
-    slug: "dating-02",
+    slug: "5-first-date-conversation-skills-that-make-a-better-impression",
     title: "5 First-Date Conversation Skills That Make a Better Impression",
     headline: "",
     description: "",
@@ -4841,7 +4841,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-03",
-    slug: "dating-03",
+    slug: "the-30-day-dating-confidence-plan-build-better-habits-and-meet-more-people",
     title: "The 30-Day Dating Confidence Plan: Build Better Habits and Meet More People",
     headline: "",
     description: "",
@@ -4857,7 +4857,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-04",
-    slug: "dating-04",
+    slug: "7-texting-mistakes-that-can-undermine-a-promising-connection",
     title: "7 Texting Mistakes That Can Undermine a Promising Connection",
     headline: "",
     description: "",
@@ -4873,7 +4873,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-05",
-    slug: "dating-05",
+    slug: "turn-dating-advice-into-a-digital-product-5-offers-you-can-build-ethically",
     title: "Turn Dating Advice Into a Digital Product: 5 Offers You Can Build Ethically",
     headline: "",
     description: "",
@@ -4889,7 +4889,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-06",
-    slug: "dating-06",
+    slug: "the-dating-coach-business-3-services-you-can-offer-without-a-huge-audience",
     title: "The Dating Coach Business: 3 Services You Can Offer Without a Huge Audience",
     headline: "",
     description: "",
@@ -4905,7 +4905,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-07",
-    slug: "dating-07",
+    slug: "build-a-dating-advice-newsletter-with-30-days-of-useful-content",
     title: "Build a Dating Advice Newsletter With 30 Days of Useful Content",
     headline: "",
     description: "",
@@ -4921,7 +4921,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-08",
-    slug: "dating-08",
+    slug: "5-dating-profile-audits-you-can-turn-into-a-paid-service",
     title: "5 Dating Profile Audits You Can Turn Into a Paid Service",
     headline: "",
     description: "",
@@ -4937,7 +4937,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-09",
-    slug: "dating-09",
+    slug: "the-999-dating-guide-package-practical-advice-into-a-sellable-digital-product",
     title: "The ₹999 Dating Guide: Package Practical Advice Into a Sellable Digital Product",
     headline: "",
     description: "",
@@ -4953,7 +4953,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-10",
-    slug: "dating-10",
+    slug: "7-ways-dating-creators-can-monetize-content-beyond-brand-deals",
     title: "7 Ways Dating Creators Can Monetize Content Beyond Brand Deals",
     headline: "",
     description: "",
@@ -4969,7 +4969,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-11",
-    slug: "dating-11",
+    slug: "from-0-to-your-first-10-coaching-clients-a-dating-advice-business-blueprint",
     title: "From 0 to Your First 10 Coaching Clients: A Dating Advice Business Blueprint",
     headline: "",
     description: "",
@@ -4985,7 +4985,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-12",
-    slug: "dating-12",
+    slug: "build-a-dating-advice-community-with-5-features-members-actually-value",
     title: "Build a Dating Advice Community With 5 Features Members Actually Value",
     headline: "",
     description: "",
@@ -5001,7 +5001,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-13",
-    slug: "dating-13",
+    slug: "30-dating-content-ideas-that-can-attract-an-audience-for-a-paid-guide",
     title: "30 Dating Content Ideas That Can Attract an Audience for a Paid Guide",
     headline: "",
     description: "",
@@ -5017,7 +5017,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-14",
-    slug: "dating-14",
+    slug: "turn-1-dating-topic-into-5-products-guide-checklist-workshop-and-more",
     title: "Turn 1 Dating Topic Into 5 Products: Guide, Checklist, Workshop and More",
     headline: "",
     description: "",
@@ -5033,7 +5033,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-15",
-    slug: "dating-15",
+    slug: "the-7-day-dating-profile-service-package-feedback-into-a-clear-paid-offer",
     title: "The 7-Day Dating Profile Service: Package Feedback Into a Clear Paid Offer",
     headline: "",
     description: "",
@@ -5049,7 +5049,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-16",
-    slug: "dating-16",
+    slug: "5-ethical-ways-to-monetize-relationship-content-without-selling-false-promises",
     title: "5 Ethical Ways to Monetize Relationship Content Without Selling False Promises",
     headline: "",
     description: "",
@@ -5065,7 +5065,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-17",
-    slug: "dating-17",
+    slug: "create-a-dating-communication-workshop-in-10-practical-lessons",
     title: "Create a Dating Communication Workshop in 10 Practical Lessons",
     headline: "",
     description: "",
@@ -5081,7 +5081,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-18",
-    slug: "dating-18",
+    slug: "the-dating-creator-funnel-turn-helpful-posts-into-email-subscribers-and-customers",
     title: "The Dating Creator Funnel: Turn Helpful Posts Into Email Subscribers and Customers",
     headline: "",
     description: "",
@@ -5097,7 +5097,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-19",
-    slug: "dating-19",
+    slug: "build-a-relationship-advice-brand-with-3-content-formats-and-1-clear-audience",
     title: "Build a Relationship Advice Brand With 3 Content Formats and 1 Clear Audience",
     headline: "",
     description: "",
@@ -5113,7 +5113,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     id: "dating-20",
-    slug: "dating-20",
+    slug: "from-free-dating-tips-to-a-paid-playbook-the-5-step-product-launch",
     title: "From Free Dating Tips to a Paid Playbook: The 5-Step Product Launch",
     headline: "",
     description: "",

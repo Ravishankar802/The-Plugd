@@ -129,7 +129,13 @@ export async function hasComplimentaryAccess(
   }
 
   if (grant) {
-    return grant.courseSlug === "*" || grant.courseSlug === cleanSlug;
+    if (grant.courseSlug === "*" || grant.courseSlug === cleanSlug) return true;
+    if (
+      (cleanSlug === "build-a-10000-month-ai-service-business-with-just-3-core-tools" && grant.courseSlug === "ai-businesses-02") ||
+      (cleanSlug === "ai-businesses-02" && grant.courseSlug === "build-a-10000-month-ai-service-business-with-just-3-core-tools")
+    ) {
+      return true;
+    }
   }
 
   return false;
@@ -163,7 +169,14 @@ export async function hasUserAccessToCourse(
 
   // 2. Check purchased course
   if (customerId) {
-    return await hasUserPurchasedCourse(customerId, cleanSlug);
+    const purchased = await hasUserPurchasedCourse(customerId, cleanSlug);
+    if (purchased) return true;
+    if (cleanSlug === "build-a-10000-month-ai-service-business-with-just-3-core-tools") {
+      return await hasUserPurchasedCourse(customerId, "ai-businesses-02");
+    }
+    if (cleanSlug === "ai-businesses-02") {
+      return await hasUserPurchasedCourse(customerId, "build-a-10000-month-ai-service-business-with-just-3-core-tools");
+    }
   }
 
   return false;

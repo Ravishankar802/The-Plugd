@@ -105,6 +105,21 @@ When provided with only a Playbook title (for example: `Build a Micro-SaaS With 
 
 ---
 
+## 7. Lecture Hover Styling & Descriptive Playbook URL Slugs
+
+### Core Rules for Lecture Link Hover:
+1. **Isolated Lecture Hover Styling:** Lecture hover styling must affect only the individual lecture being hovered, never all lecture links in the same module.
+2. **Implementation Requirement:** Do not place an unqualified `group` class on parent module containers that wraps multiple lecture links with `group-hover:underline`. Use dedicated `group/lesson` scoping so hover styling applies exclusively to the individual interactive lecture element.
+
+### Core Rules for Playbook URL Slugs:
+1. **Descriptive, Title-Derived Slugs:** Every Playbook must have a clean, descriptive, stable URL slug derived directly from its own title (via `slugifyTitle(title)`).
+2. **Catalog-Wide Applicability:** Apply these slug rules consistently across the entire catalog and all categories, not just individual Playbooks.
+3. **No Arbitrary Numbered Suffixes:** Arbitrary numbered suffixes such as `-02` or `-03` must never be used simply because a Playbook shares a category or a similar title.
+4. **Collision Suffixes Only When Genuinely Necessary:** Add a numeric counter suffix (e.g. `-2`) only when genuinely necessary to resolve a slug collision between different Playbooks in the catalog.
+5. **Backwards Compatibility & Stable Redirects:** Where appropriate, preserve previous URLs through redirects to their new canonical URLs so existing bookmarks and external links remain intact.
+
+---
+
 ## Final Rule
 
 **One canonical blueprint. One persistent registry. Hundreds of unique, complete Playbooks with 100% distinct PPT slide designs.**
