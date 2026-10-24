@@ -5,6 +5,7 @@ import { cache } from "react";
 import SlideViewer from "@/components/SlideViewer";
 import { getLesson, getNextLesson, getPreviousLesson, COURSES } from "@/lib/playbooks-data";
 import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
+import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 
 interface LessonPageProps {
   params: Promise<{
@@ -20,6 +21,7 @@ interface LessonPageProps {
 export const dynamic = "force-dynamic";
 
 const checkLessonAccess = cache(async (accessKey?: string, targetSlug: string = "men"): Promise<boolean> => {
+  if (IS_REVIEW_PHASE_FREE_ACCESS) return true;
   if (!accessKey) return false;
   try {
     const customer = await getCustomerByAccessKey(accessKey);

@@ -14,6 +14,9 @@
  *   connection pooling are verified during staging/production database testing.
  */
 
+// Disable review phase free access during security regression suite to test paid access locks
+process.env.NEXT_PUBLIC_REVIEW_PHASE_FREE_ACCESS = "false";
+
 const test = require("node:test");
 const assert = require("node:assert");
 const path = require("node:path");

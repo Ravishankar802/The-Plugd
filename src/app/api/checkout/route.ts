@@ -9,6 +9,7 @@ import {
   hasComplimentaryAccess,
   hasUserPurchasedCourse,
 } from "@/lib/playbooks";
+import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +20,17 @@ export async function POST(req: Request) {
       typeof body?.courseSlug === "string" && body.courseSlug.trim()
         ? body.courseSlug.trim()
         : "men";
+
+    // Direct access during content review phase
+    if (IS_REVIEW_PHASE_FREE_ACCESS) {
+      return NextResponse.json({
+        success: true,
+        complimentary: true,
+        message: "Free content review phase active. Direct access granted.",
+        redirectUrl: `/learn/${courseSlug}`,
+      });
+    }
+
     const rawEmail = typeof body?.email === "string" ? body.email.trim().toLowerCase() : "";
     const name = typeof body?.name === "string" ? body.name.trim() : "";
 

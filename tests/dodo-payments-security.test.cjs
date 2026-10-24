@@ -1,3 +1,6 @@
+// Disable review phase free access during payment suite to test direct checkout & webhook verification
+process.env.NEXT_PUBLIC_REVIEW_PHASE_FREE_ACCESS = "false";
+
 const test = require("node:test");
 const assert = require("node:assert");
 const path = require("node:path");

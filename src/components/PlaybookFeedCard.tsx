@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Star } from "lucide-react";
+import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 import type { PlaybookSummary } from "@/lib/categories";
 
 /**
@@ -83,27 +84,50 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
         </div>
       </Link>
 
-      {/* Price and Add to cart Action */}
+      {/* Price and CTA Action */}
       <div className="mt-4 sm:mt-5 flex items-center justify-between gap-2 shrink-0">
-        <div className="flex items-baseline gap-1.5 shrink-0">
-          {/* Prominent Current Price ($3.00) */}
-          <span className="text-[16px] sm:text-[17px] font-bold text-[#1c1917] tracking-tight">
-            ${formattedPrice}
-          </span>
-          {/* Original Muted Price with Strikethrough ($9.00) */}
-          <span className="text-[12px] sm:text-[12.5px] text-[#a8a29e] line-through font-medium">
-            $9.00
-          </span>
-        </div>
+        {IS_REVIEW_PHASE_FREE_ACCESS ? (
+          <>
+            <div className="flex items-center gap-1.5 shrink-0">
+              <span className="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-200">
+                Free
+              </span>
+              <span className="text-[11px] text-[#78716c] font-medium hidden xs:inline">
+                Review Access
+              </span>
+            </div>
 
-        {/* Add to cart Action Button */}
-        <Link
-          href={playbook.href}
-          onClick={(e) => e.stopPropagation()}
-          className="inline-flex items-center justify-center rounded-lg border border-[#2563eb] bg-white px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-[#2563eb] hover:bg-[#eff6ff] transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
-        >
-          Add to cart
-        </Link>
+            <Link
+              href={playbook.href}
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center justify-center rounded-lg bg-[#2563eb] hover:bg-[#1d4ed8] px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-white transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
+            >
+              Start Learning
+            </Link>
+          </>
+        ) : (
+          <>
+            <div className="flex items-baseline gap-1.5 shrink-0">
+              {/* Prominent Current Price ($3.00) */}
+              <span className="text-[16px] sm:text-[17px] font-bold text-[#1c1917] tracking-tight">
+                ${formattedPrice}
+              </span>
+              {/* Original Muted Price with Strikethrough ($9.00) */}
+              <span className="text-[12px] sm:text-[12.5px] text-[#a8a29e] line-through font-medium">
+                $9.00
+              </span>
+            </div>
+
+            {/* Add to cart Action Button */}
+            <Link
+              href={playbook.href}
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center justify-center rounded-lg border border-[#2563eb] bg-white px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-[#2563eb] hover:bg-[#eff6ff] transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
+            >
+              Add to cart
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

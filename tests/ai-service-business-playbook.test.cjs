@@ -116,3 +116,89 @@ test("5. Landing page route /ai-businesses-02 exists", () => {
     "Page must render PlaybookDetailView"
   );
 });
+
+test("6. Dynamic course-includes metadata calculation in PlaybookDetailView", () => {
+  const detailViewContent = fs.readFileSync(
+    path.join(__dirname, "../src/components/PlaybookDetailView.tsx"),
+    "utf8"
+  );
+
+  // Must not have hardcoded 10 modules or 69 lessons in the JSX
+  assert.ok(
+    !detailViewContent.includes("<span>10 structured, progressive modules</span>"),
+    "PlaybookDetailView must NOT have hardcoded '10 structured, progressive modules'"
+  );
+  assert.ok(
+    !detailViewContent.includes("<span>69 comprehensive slide &amp; text lessons</span>"),
+    "PlaybookDetailView must NOT have hardcoded '69 comprehensive slide & text lessons'"
+  );
+
+  // Must dynamically compute actualModulesCount and actualLessonsCount
+  assert.ok(
+    detailViewContent.includes("actualModulesCount"),
+    "PlaybookDetailView must dynamically compute actualModulesCount"
+  );
+  assert.ok(
+    detailViewContent.includes("actualLessonsCount"),
+    "PlaybookDetailView must dynamically compute actualLessonsCount"
+  );
+  assert.ok(
+    detailViewContent.includes("{actualModulesCount} structured, progressive modules"),
+    "PlaybookDetailView must render actualModulesCount dynamically"
+  );
+  assert.ok(
+    detailViewContent.includes("{actualLessonsCount} comprehensive slide &amp; text lessons"),
+    "PlaybookDetailView must render actualLessonsCount dynamically"
+  );
+});
+
+test("7. Global free review access configuration and entitlement bypass", () => {
+  const configFile = fs.readFileSync(
+    path.join(__dirname, "../src/lib/config.ts"),
+    "utf8"
+  );
+  assert.ok(
+    configFile.includes("IS_REVIEW_PHASE_FREE_ACCESS"),
+    "config.ts must export IS_REVIEW_PHASE_FREE_ACCESS"
+  );
+
+  const playbooksFile = fs.readFileSync(
+    path.join(__dirname, "../src/lib/playbooks.ts"),
+    "utf8"
+  );
+  assert.ok(
+    playbooksFile.includes("IS_REVIEW_PHASE_FREE_ACCESS"),
+    "playbooks.ts must reference IS_REVIEW_PHASE_FREE_ACCESS"
+  );
+
+  const checkoutApiFile = fs.readFileSync(
+    path.join(__dirname, "../src/app/api/checkout/route.ts"),
+    "utf8"
+  );
+  assert.ok(
+    checkoutApiFile.includes("IS_REVIEW_PHASE_FREE_ACCESS"),
+    "checkout route must reference IS_REVIEW_PHASE_FREE_ACCESS"
+  );
+
+  const feedCardFile = fs.readFileSync(
+    path.join(__dirname, "../src/components/PlaybookFeedCard.tsx"),
+    "utf8"
+  );
+  assert.ok(
+    feedCardFile.includes("IS_REVIEW_PHASE_FREE_ACCESS"),
+    "PlaybookFeedCard must reference IS_REVIEW_PHASE_FREE_ACCESS"
+  );
+  assert.ok(
+    feedCardFile.includes("Start Learning"),
+    "PlaybookFeedCard must offer 'Start Learning' during review phase"
+  );
+
+  const lessonViewerFile = fs.readFileSync(
+    path.join(__dirname, "../src/app/learn/[courseSlug]/[lessonId]/page.tsx"),
+    "utf8"
+  );
+  assert.ok(
+    lessonViewerFile.includes("IS_REVIEW_PHASE_FREE_ACCESS"),
+    "Lesson viewer page must bypass gate during review phase"
+  );
+});

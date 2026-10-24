@@ -1,6 +1,7 @@
 import { randomBytes } from "crypto";
 import prisma from "@/lib/prisma";
 import type { Customer, Prisma, PrismaClient } from "@prisma/client";
+import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 
 type DbClient = PrismaClient | Prisma.TransactionClient;
 
@@ -97,6 +98,10 @@ export async function hasComplimentaryAccess(
   email?: string | null,
   courseSlug: string = "men"
 ): Promise<boolean> {
+  // During review phase, grant free access across all playbooks (current and future)
+  if (IS_REVIEW_PHASE_FREE_ACCESS) {
+    return true;
+  }
   if (!email) return false;
   const cleanEmail = email.trim().toLowerCase();
   const cleanSlug = courseSlug.toLowerCase();
@@ -135,6 +140,10 @@ export async function hasUserAccessToCourse(
   courseSlug: string = "men",
   email?: string | null
 ): Promise<boolean> {
+  // During review phase, grant free access across all playbooks (current and future)
+  if (IS_REVIEW_PHASE_FREE_ACCESS) {
+    return true;
+  }
   const cleanSlug = courseSlug.toLowerCase();
 
   // 1. Check complimentary entitlement

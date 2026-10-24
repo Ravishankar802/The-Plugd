@@ -12,6 +12,7 @@ import {
   recordCoursePurchase,
 } from "@/lib/playbooks";
 import { dodoClient, isDodoConfigured, getDodoCourseProductId } from "@/lib/dodopayments";
+import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 
 interface LearnPageProps {
   params: Promise<{
@@ -45,7 +46,7 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
   }
 
   // Server-side Authorization Check
-  let hasAccess = false;
+  let hasAccess = Boolean(IS_REVIEW_PHASE_FREE_ACCESS);
   let customer = null;
   try {
     const cookieStore = await cookies();

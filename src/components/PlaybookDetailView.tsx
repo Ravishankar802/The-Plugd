@@ -21,8 +21,10 @@ import {
   Share2,
   Heart,
   Info,
+  ArrowRight,
 } from "lucide-react";
 import Header from "@/components/Header";
+import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 import type { PlaybookDetailData } from "@/lib/dating-playbook-detail";
 
 interface PlaybookDetailViewProps {
@@ -46,9 +48,18 @@ export default function PlaybookDetailView({
 
   const heroCtaRef = useRef<HTMLDivElement | null>(null);
 
+  const isFreeReview = Boolean(IS_REVIEW_PHASE_FREE_ACCESS);
+  const canAccess = hasAccess || isFreeReview;
+
+  // Dynamic curriculum statistics derived directly from the actual published content
+  const actualModulesCount = playbook.modules?.length ?? playbook.modulesCount ?? 0;
+  const actualLessonsCount =
+    playbook.modules?.reduce((acc, m) => acc + (m.lessons?.length || 0), 0) ||
+    playbook.lessonsCount || 0;
+
   // Direct checkout handler (triggers Dodo checkout session)
   const handleCheckout = async () => {
-    if (hasAccess) {
+    if (canAccess) {
       window.location.href = `/learn/${playbook.slug}`;
       return;
     }
@@ -175,21 +186,29 @@ export default function PlaybookDetailView({
 
           {/* Right: Price & CTA */}
           <div className="flex items-center gap-3 shrink-0">
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-lg sm:text-xl font-bold text-white">
-                ${formattedPrice}
-              </span>
-              <span className="text-xs text-zinc-400 line-through">
-                ${formattedOriginalPrice}
-              </span>
-            </div>
+            {isFreeReview ? (
+              <div className="flex items-center gap-1.5">
+                <span className="px-2 py-0.5 text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded">
+                  Free Access
+                </span>
+              </div>
+            ) : (
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-lg sm:text-xl font-bold text-white">
+                  ${formattedPrice}
+                </span>
+                <span className="text-xs text-zinc-400 line-through">
+                  ${formattedOriginalPrice}
+                </span>
+              </div>
+            )}
 
-            {hasAccess ? (
+            {canAccess ? (
               <Link
                 href={`/learn/${playbook.slug}`}
                 className="inline-flex items-center justify-center px-4 py-2 bg-[#a435f0] hover:bg-[#8710d8] text-white text-xs sm:text-sm font-bold rounded-xs transition-colors"
               >
-                Go to Playbook →
+                {isFreeReview ? "Start Learning →" : "Go to Playbook →"}
               </Link>
             ) : (
               <button
@@ -311,17 +330,35 @@ export default function PlaybookDetailView({
 
                 {/* Mobile Purchase Actions */}
                 <div className="p-4 sm:p-5">
-                  <div className="flex items-baseline gap-2 mb-4">
-                    <span className="text-3xl font-extrabold text-[#1c1917] tracking-tight">
-                      ${formattedPrice}
-                    </span>
-                    <span className="text-base text-zinc-500 line-through">
-                      ${formattedOriginalPrice}
-                    </span>
-                    <span className="text-sm font-semibold text-[#1c1917]">
-                      {playbook.discountPercentage}% off
-                    </span>
-                  </div>
+                  {isFreeReview ? (
+                    <div className="mb-4">
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-50 text-emerald-800 text-xs font-semibold border border-emerald-200 mb-2">
+                        <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                        Free Content Review Phase
+                      </div>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-3xl font-extrabold text-[#1c1917] tracking-tight">
+                          Free
+                        </span>
+                        <span className="text-xs text-[#57534e]">Full catalog access</span>
+                      </div>
+                      <p className="text-xs text-[#57534e] mt-1">
+                        All slide decks, exercises, and written lesson materials are unlocked for review.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="flex items-baseline gap-2 mb-4">
+                      <span className="text-3xl font-extrabold text-[#1c1917] tracking-tight">
+                        ${formattedPrice}
+                      </span>
+                      <span className="text-base text-zinc-500 line-through">
+                        ${formattedOriginalPrice}
+                      </span>
+                      <span className="text-sm font-semibold text-[#1c1917]">
+                        {playbook.discountPercentage}% off
+                      </span>
+                    </div>
+                  )}
 
                   {checkoutError && (
                     <div className="rounded border border-red-200 bg-red-50 p-2 text-xs text-red-700 mb-3">
@@ -331,28 +368,38 @@ export default function PlaybookDetailView({
 
                   {/* Lifetime access above buttons */}
                   <div className="text-xs text-[#57534e] mb-3 font-normal">
-                    Full lifetime access
+                    {isFreeReview ? "Instant unrestricted access" : "Full lifetime access"}
                   </div>
 
                   {/* CTAs */}
-                  <div className="space-y-2.5">
-                    <button
-                      type="button"
-                      onClick={handleCheckout}
-                      disabled={isCheckingOut}
-                      className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm cursor-pointer flex items-center justify-center"
+                  {canAccess ? (
+                    <Link
+                      href={`/learn/${playbook.slug}`}
+                      className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm flex items-center justify-center gap-2"
                     >
-                      {isCheckingOut ? "Connecting to Checkout..." : "Add to cart"}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleCheckout}
-                      disabled={isCheckingOut}
-                      className="w-full h-12 bg-white hover:bg-purple-50/60 text-[#a435f0] font-bold text-base rounded-none border border-[#a435f0] transition-colors cursor-pointer flex items-center justify-center"
-                    >
-                      Buy now
-                    </button>
-                  </div>
+                      <span>{isFreeReview ? "Start Learning" : "Open Playbook"}</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  ) : (
+                    <div className="space-y-2.5">
+                      <button
+                        type="button"
+                        onClick={handleCheckout}
+                        disabled={isCheckingOut}
+                        className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm cursor-pointer flex items-center justify-center"
+                      >
+                        {isCheckingOut ? "Connecting to Checkout..." : "Add to cart"}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleCheckout}
+                        disabled={isCheckingOut}
+                        className="w-full h-12 bg-white hover:bg-purple-50/60 text-[#a435f0] font-bold text-base rounded-none border border-[#a435f0] transition-colors cursor-pointer flex items-center justify-center"
+                      >
+                        Buy now
+                      </button>
+                    </div>
+                  )}
 
                   {/* Bottom Action Area: Sleek Share Icon on the Right */}
                   <div className="mt-4 pt-3 border-t border-zinc-200 flex items-center justify-end">
@@ -429,11 +476,11 @@ export default function PlaybookDetailView({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-[#2d2f31]">
                   <div className="flex items-center gap-3">
                     <Layers className="h-4 w-4 text-zinc-600 shrink-0" />
-                    <span>10 structured, progressive modules</span>
+                    <span>{actualModulesCount} structured, progressive modules</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <FileText className="h-4 w-4 text-zinc-600 shrink-0" />
-                    <span>69 comprehensive slide &amp; text lessons</span>
+                    <span>{actualLessonsCount} comprehensive slide &amp; text lessons</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Smartphone className="h-4 w-4 text-zinc-600 shrink-0" />
@@ -455,7 +502,7 @@ export default function PlaybookDetailView({
                 {/* Subtitle & Expand all toggle */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm text-[#6a6f73] mb-3 gap-2">
                   <span>
-                    {playbook.modulesCount} sections • {playbook.lessonsCount} lectures •{" "}
+                    {actualModulesCount} sections • {actualLessonsCount} lectures •{" "}
                     {playbook.hoursOfMaterial} total length
                   </span>
                   <button
@@ -506,30 +553,51 @@ export default function PlaybookDetailView({
                                 {module.description}
                               </div>
                             )}
-                            {module.lessons.map((lesson) => (
-                              <div
-                                key={lesson.id}
-                                className="px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs sm:text-sm text-[#2d2f31] hover:bg-zinc-50 transition-colors"
-                              >
-                                <div className="flex items-center gap-3 min-w-0">
-                                  <FileText className="h-3.5 w-3.5 text-zinc-500 shrink-0" />
-                                  <span className="truncate">
-                                    {lesson.number} {lesson.title}
-                                  </span>
-                                </div>
-
-                                <div className="flex items-center gap-3 shrink-0 ml-3">
-                                  {lesson.isPreview && (
-                                    <span className="text-[#5022c3] text-xs font-semibold underline">
-                                      Preview
+                            {module.lessons.map((lesson) => {
+                              const lessonContent = (
+                                <>
+                                  <div className="flex items-center gap-3 min-w-0">
+                                    <FileText className="h-3.5 w-3.5 text-zinc-500 group-hover:text-[#5022c3] shrink-0" />
+                                    <span className="truncate group-hover:underline">
+                                      {lesson.number} {lesson.title}
                                     </span>
-                                  )}
-                                  <span className="text-zinc-500 text-xs">
-                                    {lesson.duration}
-                                  </span>
+                                  </div>
+
+                                  <div className="flex items-center gap-3 shrink-0 ml-3">
+                                    {lesson.isPreview && !canAccess && (
+                                      <span className="text-[#5022c3] text-xs font-semibold underline">
+                                        Preview
+                                      </span>
+                                    )}
+                                    {canAccess && (
+                                      <span className="text-[#5022c3] text-xs font-semibold">
+                                        Open →
+                                      </span>
+                                    )}
+                                    <span className="text-zinc-500 text-xs">
+                                      {lesson.duration}
+                                    </span>
+                                  </div>
+                                </>
+                              );
+
+                              return canAccess ? (
+                                <Link
+                                  key={lesson.id}
+                                  href={`/learn/${playbook.slug}/${lesson.id}`}
+                                  className="group px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs sm:text-sm text-[#2d2f31] hover:bg-purple-50/40 transition-colors"
+                                >
+                                  {lessonContent}
+                                </Link>
+                              ) : (
+                                <div
+                                  key={lesson.id}
+                                  className="group px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs sm:text-sm text-[#2d2f31] hover:bg-zinc-50 transition-colors"
+                                >
+                                  {lessonContent}
                                 </div>
-                              </div>
-                            ))}
+                              );
+                            })}
                           </div>
                         )}
                       </div>
@@ -823,17 +891,35 @@ export default function PlaybookDetailView({
                 {/* Card Interior */}
                 <div className="p-5 xl:p-6">
                   {/* Pricing row */}
-                  <div className="flex items-baseline gap-2.5 mb-4">
-                    <span className="text-3xl font-extrabold text-[#1c1917] tracking-tight">
-                      ${formattedPrice}
-                    </span>
-                    <span className="text-base text-zinc-500 line-through">
-                      ${formattedOriginalPrice}
-                    </span>
-                    <span className="text-sm font-semibold text-[#1c1917]">
-                      {playbook.discountPercentage}% off
-                    </span>
-                  </div>
+                  {isFreeReview ? (
+                    <div className="mb-4">
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-50 text-emerald-800 text-xs font-semibold border border-emerald-200 mb-2">
+                        <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                        Free Content Review Phase
+                      </div>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-3xl font-extrabold text-[#1c1917] tracking-tight">
+                          Free
+                        </span>
+                        <span className="text-xs text-[#57534e]">Full catalog access</span>
+                      </div>
+                      <p className="text-xs text-[#57534e] mt-1">
+                        All slide decks, exercises, and written lesson materials are unlocked for review.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="flex items-baseline gap-2.5 mb-4">
+                      <span className="text-3xl font-extrabold text-[#1c1917] tracking-tight">
+                        ${formattedPrice}
+                      </span>
+                      <span className="text-base text-zinc-500 line-through">
+                        ${formattedOriginalPrice}
+                      </span>
+                      <span className="text-sm font-semibold text-[#1c1917]">
+                        {playbook.discountPercentage}% off
+                      </span>
+                    </div>
+                  )}
 
                   {/* Checkout Error Alert */}
                   {checkoutError && (
@@ -844,28 +930,38 @@ export default function PlaybookDetailView({
 
                   {/* Lifetime access above buttons */}
                   <div className="text-xs text-[#57534e] mb-3 font-normal">
-                    Full lifetime access
+                    {isFreeReview ? "Instant unrestricted access" : "Full lifetime access"}
                   </div>
 
                   {/* CTAs */}
-                  <div className="space-y-2.5">
-                    <button
-                      type="button"
-                      onClick={handleCheckout}
-                      disabled={isCheckingOut}
-                      className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm cursor-pointer flex items-center justify-center"
+                  {canAccess ? (
+                    <Link
+                      href={`/learn/${playbook.slug}`}
+                      className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm flex items-center justify-center gap-2"
                     >
-                      {isCheckingOut ? "Connecting to Checkout..." : "Add to cart"}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleCheckout}
-                      disabled={isCheckingOut}
-                      className="w-full h-12 bg-white hover:bg-purple-50/60 text-[#a435f0] font-bold text-base rounded-none border border-[#a435f0] transition-colors cursor-pointer flex items-center justify-center"
-                    >
-                      Buy now
-                    </button>
-                  </div>
+                      <span>{isFreeReview ? "Start Learning" : "Open Playbook"}</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  ) : (
+                    <div className="space-y-2.5">
+                      <button
+                        type="button"
+                        onClick={handleCheckout}
+                        disabled={isCheckingOut}
+                        className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm cursor-pointer flex items-center justify-center"
+                      >
+                        {isCheckingOut ? "Connecting to Checkout..." : "Add to cart"}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleCheckout}
+                        disabled={isCheckingOut}
+                        className="w-full h-12 bg-white hover:bg-purple-50/60 text-[#a435f0] font-bold text-base rounded-none border border-[#a435f0] transition-colors cursor-pointer flex items-center justify-center"
+                      >
+                        Buy now
+                      </button>
+                    </div>
+                  )}
 
                   {/* Bottom Action Area: Sleek Share Icon on the Right */}
                   <div className="mt-5 pt-4 border-t border-zinc-200 flex items-center justify-end">
@@ -898,26 +994,35 @@ export default function PlaybookDetailView({
         }`}
       >
         <div className="flex items-center justify-between gap-4 max-w-md mx-auto">
-          <div>
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-xl font-extrabold text-[#1c1917]">
-                ${formattedPrice}
-              </span>
-              <span className="text-xs text-zinc-400 line-through">
-                ${formattedOriginalPrice}
+          {isFreeReview ? (
+            <div>
+              <div className="text-xl font-extrabold text-[#1c1917]">Free</div>
+              <span className="text-[11px] text-emerald-700 font-semibold">
+                Content Review Phase
               </span>
             </div>
-            <span className="text-[11px] text-[#b32d0f] font-semibold">
-              {playbook.discountPercentage}% off
-            </span>
-          </div>
+          ) : (
+            <div>
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-xl font-extrabold text-[#1c1917]">
+                  ${formattedPrice}
+                </span>
+                <span className="text-xs text-zinc-400 line-through">
+                  ${formattedOriginalPrice}
+                </span>
+              </div>
+              <span className="text-[11px] text-[#b32d0f] font-semibold">
+                {playbook.discountPercentage}% off
+              </span>
+            </div>
+          )}
 
-          {hasAccess ? (
+          {canAccess ? (
             <Link
               href={`/learn/${playbook.slug}`}
-              className="px-5 py-2.5 bg-[#a435f0] text-white font-bold text-sm rounded-xs transition-colors shrink-0"
+              className="px-5 py-2.5 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-sm rounded-xs transition-colors shrink-0"
             >
-              Go to Playbook →
+              {isFreeReview ? "Start Learning →" : "Go to Playbook →"}
             </Link>
           ) : (
             <button
