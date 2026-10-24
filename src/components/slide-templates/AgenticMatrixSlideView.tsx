@@ -54,11 +54,13 @@ export default function AgenticMatrixSlideView({
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [isModuleDropdownOpen, setIsModuleDropdownOpen] = useState(false);
   const [isLessonDropdownOpen, setIsLessonDropdownOpen] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
   const moduleDropdownRef = useRef<HTMLDivElement>(null);
   const lessonDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setCurrentIndex(initialSlideIndex);
+    setIsNavigating(false);
   }, [initialSlideIndex, lesson.id]);
 
   const totalSlides = lesson.slides?.length || 1;
@@ -87,26 +89,74 @@ export default function AgenticMatrixSlideView({
   );
 
   const handleNext = useCallback(() => {
+    if (isNavigating) return;
     if (currentIndex < totalSlides - 1) {
       goToSlide(currentIndex + 1, "next");
     } else if (nextLesson) {
-      router.push(`/learn/${course.slug}/${nextLesson.lesson.id}`);
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}/${nextLesson.lesson.id}${viewFormat === "written" ? "?format=written" : ""}`);
+    } else {
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}`);
     }
-  }, [currentIndex, totalSlides, nextLesson, goToSlide, router, course.slug]);
+  }, [currentIndex, totalSlides, nextLesson, goToSlide, router, course.slug, isNavigating, viewFormat]);
 
   const handlePrev = useCallback(() => {
+    if (isNavigating) return;
     if (currentIndex > 0) {
       goToSlide(currentIndex - 1, "prev");
     } else if (previousLesson) {
-      router.push(`/learn/${course.slug}/${previousLesson.lesson.id}`);
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}/${previousLesson.lesson.id}?slide=last${viewFormat === "written" ? "&format=written" : ""}`);
     }
-  }, [currentIndex, previousLesson, goToSlide, router, course.slug]);
+  }, [currentIndex, previousLesson, goToSlide, router, course.slug, isNavigating, viewFormat]);
+
+  // Dropdown close handlers with capture phase for reliable outside clicks
+  useEffect(() => {
+    if (!isModuleDropdownOpen && !isLessonDropdownOpen) return;
+    const handlePointerDown = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node;
+      if (moduleDropdownRef.current && !moduleDropdownRef.current.contains(target)) {
+        setIsModuleDropdownOpen(false);
+      }
+      if (lessonDropdownRef.current && !lessonDropdownRef.current.contains(target)) {
+        setIsLessonDropdownOpen(false);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsModuleDropdownOpen(false);
+        setIsLessonDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handlePointerDown, true);
+    document.addEventListener("touchstart", handlePointerDown, true);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown, true);
+      document.removeEventListener("touchstart", handlePointerDown, true);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isModuleDropdownOpen, isLessonDropdownOpen]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (viewFormat !== "presentation") return;
-      if (isModuleDropdownOpen || isLessonDropdownOpen) return;
-      if (e.key === "ArrowRight" || e.key === "Space") {
+      if (isModuleDropdownOpen || isLessonDropdownOpen) {
+        if (e.key === "Escape") {
+          e.preventDefault();
+          setIsModuleDropdownOpen(false);
+          setIsLessonDropdownOpen(false);
+          return;
+        }
+      }
+      if (e.key === "ArrowRight" || e.key === " ") {
         e.preventDefault();
         handleNext();
       } else if (e.key === "ArrowLeft") {
@@ -179,7 +229,11 @@ export default function AgenticMatrixSlideView({
           <div className="relative" ref={moduleDropdownRef}>
             <button
               type="button"
-              onClick={() => setIsModuleDropdownOpen(!isModuleDropdownOpen)}
+              onClick={() => {
+                setIsModuleDropdownOpen(!isModuleDropdownOpen);
+                setIsLessonDropdownOpen(false);
+              }}
+              aria-expanded={isModuleDropdownOpen}
               className="flex items-center gap-1.5 rounded-full border border-slate-800 bg-slate-900/90 px-3 py-1.5 text-xs font-medium text-slate-300 hover:border-purple-500/50"
             >
               <Cpu className="h-3.5 w-3.5 text-purple-400 shrink-0" />
@@ -187,9 +241,10 @@ export default function AgenticMatrixSlideView({
               <ChevronDown className="h-3 w-3 text-slate-500" />
             </button>
             {isModuleDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-72 rounded-2xl border border-purple-500/30 bg-[#0d1021] p-2 shadow-2xl z-50">
-                <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-purple-400 border-b border-slate-800">
-                  AGENT MODULE PIPELINE ({course.modules.length})
+              <div className="absolute left-0 mt-2 w-72 sm:w-80 rounded-2xl border border-purple-500/30 bg-[#0d1021] p-2 shadow-2xl z-50">
+                <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-purple-400 border-b border-slate-800 mb-1 flex items-center justify-between">
+                  <span>AGENT PIPELINE ({course.modules.length})</span>
+                  <span className="text-[10px] text-slate-500">{course.modules.length} modules</span>
                 </div>
                 <div className="max-h-64 overflow-y-auto space-y-1 py-1">
                   {course.modules.map((m) => (
@@ -205,7 +260,7 @@ export default function AgenticMatrixSlideView({
                       }`}
                     >
                       <span className="truncate">{m.number}. {m.title}</span>
-                      {m.id === module.id && <Check className="h-3.5 w-3.5 text-purple-400" />}
+                      {m.id === module.id && <Check className="h-3.5 w-3.5 text-purple-400 shrink-0" />}
                     </button>
                   ))}
                 </div>
@@ -217,13 +272,46 @@ export default function AgenticMatrixSlideView({
           <div className="relative" ref={lessonDropdownRef}>
             <button
               type="button"
-              onClick={() => setIsLessonDropdownOpen(!isLessonDropdownOpen)}
+              onClick={() => {
+                setIsLessonDropdownOpen(!isLessonDropdownOpen);
+                setIsModuleDropdownOpen(false);
+              }}
+              aria-expanded={isLessonDropdownOpen}
               className="flex items-center gap-1.5 rounded-full border border-slate-800 bg-slate-900/90 px-3 py-1.5 text-xs font-medium text-slate-300 hover:border-purple-500/50 max-w-[150px] sm:max-w-[240px]"
             >
-              <span className="font-mono text-purple-400 font-bold">{lesson.number}</span>
+              <span className="font-mono text-purple-400 font-bold shrink-0">{lesson.number}</span>
               <span className="truncate text-slate-200">{lesson.title}</span>
               <ChevronDown className="h-3 w-3 text-slate-500 shrink-0" />
             </button>
+            {isLessonDropdownOpen && (
+              <div className="absolute left-0 mt-2 w-80 sm:w-96 rounded-2xl border border-purple-500/30 bg-[#0d1021] p-2 shadow-2xl z-50">
+                <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-purple-400 border-b border-slate-800 mb-1 flex items-center justify-between">
+                  <span>MODULE {module.number} NODES</span>
+                  <span className="text-[10px] text-slate-500">{module.lessons.length} lessons</span>
+                </div>
+                <div className="max-h-64 overflow-y-auto space-y-1 py-1">
+                  {module.lessons.map((l) => (
+                    <button
+                      key={l.id}
+                      type="button"
+                      onClick={() => {
+                        setIsLessonDropdownOpen(false);
+                        router.push(`/learn/${course.slug}/${l.id}`);
+                      }}
+                      className={`w-full flex items-center justify-between rounded-xl px-3 py-2 text-left text-xs ${
+                        l.id === lesson.id ? "bg-purple-500/20 text-purple-300 font-bold" : "text-slate-300 hover:bg-slate-800"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2 truncate">
+                        <span className="font-mono text-purple-400 font-bold shrink-0">{l.number}</span>
+                        <span className="truncate">{l.title}</span>
+                      </div>
+                      {l.id === lesson.id && <Check className="h-3.5 w-3.5 text-purple-400 shrink-0" />}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -328,7 +416,11 @@ export default function AgenticMatrixSlideView({
             className="flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/80 px-4 py-2.5 text-xs font-medium text-slate-300 hover:border-purple-500/50 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all"
           >
             <ChevronLeft className="h-4 w-4" />
-            <span>Previous</span>
+            <span>
+              {currentIndex === 0 && previousLesson
+                ? `Prev Lesson (${previousLesson.lesson.number})`
+                : "Previous"}
+            </span>
           </button>
 
           {/* Progress Dots */}
@@ -348,7 +440,13 @@ export default function AgenticMatrixSlideView({
             onClick={handleNext}
             className="flex items-center gap-2 rounded-full bg-purple-600 hover:bg-purple-500 px-5 py-2.5 text-xs font-bold text-white shadow-lg shadow-purple-950/40 transition-all hover:scale-105 active:scale-95"
           >
-            <span>{currentIndex === totalSlides - 1 ? (nextLesson ? "Next Lesson" : "Finish") : "Next Slide"}</span>
+            <span>
+              {currentIndex === totalSlides - 1
+                ? nextLesson
+                  ? `Next Lesson (${nextLesson.lesson.number})`
+                  : "Finish"
+                : "Next Slide"}
+            </span>
             <ChevronRight className="h-4 w-4" />
           </button>
         </div>

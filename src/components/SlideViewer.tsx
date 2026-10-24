@@ -62,8 +62,11 @@ export default function SlideViewer({
   const lessonDropdownRef = useRef<HTMLDivElement>(null);
 
   // Synchronize index when navigating with initialSlideIndex or across lessons
+  const [isNavigating, setIsNavigating] = useState(false);
+
   useEffect(() => {
     setCurrentIndex(initialSlideIndex);
+    setIsNavigating(false);
   }, [initialSlideIndex, lesson.id]);
 
   const totalSlides = lesson.slides?.length || 1;
@@ -105,20 +108,35 @@ export default function SlideViewer({
   );
 
   const handleNext = useCallback(() => {
+    if (isNavigating) return;
     if (currentIndex < totalSlides - 1) {
       goToSlide(currentIndex + 1, "next");
+    } else if (nextLesson) {
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}/${nextLesson.lesson.id}${viewFormat === "written" ? "?format=written" : ""}`);
+    } else {
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}`);
     }
-  }, [currentIndex, totalSlides, goToSlide]);
+  }, [currentIndex, totalSlides, nextLesson, course.slug, goToSlide, router, isNavigating, viewFormat]);
 
   const handlePrev = useCallback(() => {
+    if (isNavigating) return;
     if (currentIndex > 0) {
       goToSlide(currentIndex - 1, "prev");
     } else if (previousLesson) {
-      router.push(`/learn/${course.slug}/${previousLesson.lesson.id}?slide=last`);
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}/${previousLesson.lesson.id}?slide=last${viewFormat === "written" ? "&format=written" : ""}`);
     }
-  }, [currentIndex, previousLesson, course.slug, goToSlide, router]);
+  }, [currentIndex, previousLesson, course.slug, goToSlide, router, isNavigating, viewFormat]);
 
-  // Close dropdowns on outside click
+  // Close dropdowns on outside click with capture phase to guarantee dismissal on clicking slide canvas, content, or controls
   useEffect(() => {
     if (!isModuleDropdownOpen && !isLessonDropdownOpen) return;
 
@@ -132,11 +150,20 @@ export default function SlideViewer({
       }
     };
 
-    document.addEventListener("mousedown", handlePointerDown);
-    document.addEventListener("touchstart", handlePointerDown);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsModuleDropdownOpen(false);
+        setIsLessonDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown, true);
+    document.addEventListener("touchstart", handlePointerDown, true);
+    window.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
-      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("mousedown", handlePointerDown, true);
+      document.removeEventListener("touchstart", handlePointerDown, true);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isModuleDropdownOpen, isLessonDropdownOpen]);
 
@@ -403,7 +430,7 @@ export default function SlideViewer({
                   <span
                     className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#2563eb]"
                   >
-                    CURRICULUM · 10 MODULES
+                    CURRICULUM · {course.modules.length} MODULES
                   </span>
                   <span
                     className={`text-[10px] font-mono ${
@@ -1372,30 +1399,38 @@ export default function SlideViewer({
           disabled={currentIndex === 0 && !previousLesson}
           className={`flex items-center gap-2 rounded-xl border px-4 py-2.5 text-xs sm:text-sm font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
             isModule1
-              ? "border-[#e7e5e4] bg-white text-[#57534e] hover:border-[#1c1917] hover:text-[#1c1917] shadow-xs"
-              : "border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-800 hover:text-white"
+              ? "border-[#e7e5e4] bg-white text-[#57534e] hover:border-[#1c1917] hover:text-[#1c1917] shadow-xs cursor-pointer"
+              : "border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-800 hover:text-white cursor-pointer"
           }`}
         >
           <ChevronLeft className="h-4 w-4" />
-          <span className="hidden sm:inline">Previous Slide</span>
+          <span className="hidden sm:inline">
+            {currentIndex === 0 && previousLesson ? `Prev Lesson (${previousLesson.lesson.number})` : "Previous Slide"}
+          </span>
           <span className="sm:hidden">Prev</span>
         </button>
 
         {/* Next Button */}
         <button
           onClick={handleNext}
-          disabled={currentIndex === totalSlides - 1}
+          disabled={currentIndex === totalSlides - 1 && !nextLesson}
           className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs sm:text-sm font-bold shadow-md transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
-            currentIndex === totalSlides - 1
+            currentIndex === totalSlides - 1 && !nextLesson
               ? isModule1
                 ? "border border-[#e7e5e4] bg-[#f5f5f4] text-[#a8a29e]"
                 : "border border-neutral-800 bg-neutral-900 text-neutral-500"
               : isModule1
-              ? "bg-[#1c1917] text-white hover:bg-neutral-800 hover:scale-[1.02] active:scale-[0.98]"
-              : "bg-white text-[#0E0E10] hover:bg-neutral-200 hover:scale-[1.02] active:scale-[0.98]"
+              ? "bg-[#1c1917] text-white hover:bg-neutral-800 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+              : "bg-white text-[#0E0E10] hover:bg-neutral-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
           }`}
         >
-          <span>Next Slide</span>
+          <span>
+            {currentIndex === totalSlides - 1
+              ? nextLesson
+                ? `Next Lesson (${nextLesson.lesson.number})`
+                : "Complete Course"
+              : "Next Slide"}
+          </span>
           <ChevronRight className="h-4 w-4" />
         </button>
       </footer>

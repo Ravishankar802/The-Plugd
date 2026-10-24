@@ -50,11 +50,13 @@ export default function QuadrantRevenueSlideView({
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [isModuleDropdownOpen, setIsModuleDropdownOpen] = useState(false);
   const [isLessonDropdownOpen, setIsLessonDropdownOpen] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
   const moduleDropdownRef = useRef<HTMLDivElement>(null);
   const lessonDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setCurrentIndex(initialSlideIndex);
+    setIsNavigating(false);
   }, [initialSlideIndex, lesson.id]);
 
   const totalSlides = lesson.slides?.length || 1;
@@ -83,26 +85,74 @@ export default function QuadrantRevenueSlideView({
   );
 
   const handleNext = useCallback(() => {
+    if (isNavigating) return;
     if (currentIndex < totalSlides - 1) {
       goToSlide(currentIndex + 1, "next");
     } else if (nextLesson) {
-      router.push(`/learn/${course.slug}/${nextLesson.lesson.id}`);
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}/${nextLesson.lesson.id}${viewFormat === "written" ? "?format=written" : ""}`);
+    } else {
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}`);
     }
-  }, [currentIndex, totalSlides, nextLesson, goToSlide, router, course.slug]);
+  }, [currentIndex, totalSlides, nextLesson, goToSlide, router, course.slug, isNavigating, viewFormat]);
 
   const handlePrev = useCallback(() => {
+    if (isNavigating) return;
     if (currentIndex > 0) {
       goToSlide(currentIndex - 1, "prev");
     } else if (previousLesson) {
-      router.push(`/learn/${course.slug}/${previousLesson.lesson.id}`);
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}/${previousLesson.lesson.id}?slide=last${viewFormat === "written" ? "&format=written" : ""}`);
     }
-  }, [currentIndex, previousLesson, goToSlide, router, course.slug]);
+  }, [currentIndex, previousLesson, goToSlide, router, course.slug, isNavigating, viewFormat]);
+
+  // Dropdown close handlers with capture phase for reliable outside clicks
+  useEffect(() => {
+    if (!isModuleDropdownOpen && !isLessonDropdownOpen) return;
+    const handlePointerDown = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node;
+      if (moduleDropdownRef.current && !moduleDropdownRef.current.contains(target)) {
+        setIsModuleDropdownOpen(false);
+      }
+      if (lessonDropdownRef.current && !lessonDropdownRef.current.contains(target)) {
+        setIsLessonDropdownOpen(false);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsModuleDropdownOpen(false);
+        setIsLessonDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handlePointerDown, true);
+    document.addEventListener("touchstart", handlePointerDown, true);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown, true);
+      document.removeEventListener("touchstart", handlePointerDown, true);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isModuleDropdownOpen, isLessonDropdownOpen]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (viewFormat !== "presentation") return;
-      if (isModuleDropdownOpen || isLessonDropdownOpen) return;
-      if (e.key === "ArrowRight" || e.key === "Space") {
+      if (isModuleDropdownOpen || isLessonDropdownOpen) {
+        if (e.key === "Escape") {
+          e.preventDefault();
+          setIsModuleDropdownOpen(false);
+          setIsLessonDropdownOpen(false);
+          return;
+        }
+      }
+      if (e.key === "ArrowRight" || e.key === " ") {
         e.preventDefault();
         handleNext();
       } else if (e.key === "ArrowLeft") {
@@ -167,10 +217,94 @@ export default function QuadrantRevenueSlideView({
             <span className="hidden sm:inline">Syllabus</span>
           </Link>
 
-          <span className="font-mono text-xs font-bold text-orange-700 bg-orange-100/70 border border-orange-200 px-2.5 py-1 rounded-full">
-            MOD {module.number} · {lesson.number}
-          </span>
-          <span className="truncate text-xs font-semibold text-stone-800 hidden sm:inline">{lesson.title}</span>
+          {/* Module Selector */}
+          <div className="relative shrink-0" ref={moduleDropdownRef}>
+            <button
+              type="button"
+              onClick={() => {
+                setIsModuleDropdownOpen(!isModuleDropdownOpen);
+                setIsLessonDropdownOpen(false);
+              }}
+              aria-expanded={isModuleDropdownOpen}
+              className="flex items-center gap-1.5 rounded-full border border-orange-200 bg-orange-50 px-3 py-1.5 text-xs font-medium text-orange-900 hover:bg-orange-100"
+            >
+              <PieChart className="h-3.5 w-3.5 text-orange-600 shrink-0" />
+              <span className="font-mono font-bold text-orange-800">MOD {module.number}</span>
+              <ChevronDown className="h-3 w-3 text-orange-500" />
+            </button>
+            {isModuleDropdownOpen && (
+              <div className="absolute left-0 mt-2 w-72 sm:w-80 rounded-2xl border border-stone-200 bg-white p-2 shadow-2xl z-50">
+                <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-orange-700 border-b border-stone-100 mb-1 flex items-center justify-between">
+                  <span>MODULES ({course.modules.length})</span>
+                  <span className="text-[10px] text-stone-400">{course.modules.length} modules</span>
+                </div>
+                <div className="max-h-64 overflow-y-auto space-y-1 py-1">
+                  {course.modules.map((m) => (
+                    <button
+                      key={m.id}
+                      type="button"
+                      onClick={() => {
+                        setIsModuleDropdownOpen(false);
+                        router.push(`/learn/${course.slug}/${m.lessons[0].id}`);
+                      }}
+                      className={`w-full flex items-center justify-between rounded-xl px-3 py-2 text-left text-xs transition-colors ${
+                        m.id === module.id ? "bg-orange-100 text-orange-900 font-bold" : "text-stone-700 hover:bg-stone-50"
+                      }`}
+                    >
+                      <span className="truncate">{m.number}. {m.title}</span>
+                      {m.id === module.id && <Check className="h-3.5 w-3.5 text-orange-600 shrink-0" />}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Lesson Selector */}
+          <div className="relative min-w-0" ref={lessonDropdownRef}>
+            <button
+              type="button"
+              onClick={() => {
+                setIsLessonDropdownOpen(!isLessonDropdownOpen);
+                setIsModuleDropdownOpen(false);
+              }}
+              aria-expanded={isLessonDropdownOpen}
+              className="flex items-center gap-1.5 rounded-full border border-stone-200 bg-stone-50 px-3 py-1.5 text-xs font-medium text-stone-800 hover:bg-stone-100 max-w-[140px] sm:max-w-[240px]"
+            >
+              <span className="font-mono font-bold text-orange-700 shrink-0">{lesson.number}</span>
+              <span className="truncate">{lesson.title}</span>
+              <ChevronDown className="h-3 w-3 text-stone-500 shrink-0" />
+            </button>
+            {isLessonDropdownOpen && (
+              <div className="absolute left-0 mt-2 w-80 sm:w-96 rounded-2xl border border-stone-200 bg-white p-2 shadow-2xl z-50">
+                <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-orange-700 border-b border-stone-100 mb-1 flex items-center justify-between">
+                  <span>MODULE {module.number} LESSONS</span>
+                  <span className="text-[10px] text-stone-400">{module.lessons.length} lessons</span>
+                </div>
+                <div className="max-h-64 overflow-y-auto space-y-1 py-1">
+                  {module.lessons.map((l) => (
+                    <button
+                      key={l.id}
+                      type="button"
+                      onClick={() => {
+                        setIsLessonDropdownOpen(false);
+                        router.push(`/learn/${course.slug}/${l.id}`);
+                      }}
+                      className={`w-full flex items-center justify-between rounded-xl px-3 py-2 text-left text-xs transition-colors ${
+                        l.id === lesson.id ? "bg-orange-100 text-orange-900 font-bold" : "text-stone-700 hover:bg-stone-50"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2 truncate">
+                        <span className="font-mono font-bold text-orange-700 shrink-0">{l.number}</span>
+                        <span className="truncate">{l.title}</span>
+                      </div>
+                      {l.id === lesson.id && <Check className="h-3.5 w-3.5 text-orange-600 shrink-0" />}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
@@ -264,10 +398,14 @@ export default function QuadrantRevenueSlideView({
           <button
             onClick={handlePrev}
             disabled={currentIndex === 0 && !previousLesson}
-            className="flex items-center gap-2 rounded-full border border-stone-300 bg-white px-4 py-2.5 text-xs font-medium text-stone-700 hover:bg-stone-100 disabled:opacity-40"
+            className="flex items-center gap-2 rounded-full border border-stone-300 bg-white px-4 py-2.5 text-xs font-medium text-stone-700 hover:bg-stone-100 disabled:opacity-40 transition-all"
           >
             <ChevronLeft className="h-4 w-4" />
-            <span>Previous</span>
+            <span>
+              {currentIndex === 0 && previousLesson
+                ? `Prev Lesson (${previousLesson.lesson.number})`
+                : "Previous"}
+            </span>
           </button>
 
           <div className="flex items-center gap-2">
@@ -286,7 +424,13 @@ export default function QuadrantRevenueSlideView({
             onClick={handleNext}
             className="flex items-center gap-2 rounded-full bg-orange-600 hover:bg-orange-700 px-5 py-2.5 text-xs font-bold text-white shadow-md transition-all hover:scale-105"
           >
-            <span>{currentIndex === totalSlides - 1 ? (nextLesson ? "Next Lesson" : "Finish") : "Next Slide"}</span>
+            <span>
+              {currentIndex === totalSlides - 1
+                ? nextLesson
+                  ? `Next Lesson (${nextLesson.lesson.number})`
+                  : "Finish"
+                : "Next Slide"}
+            </span>
             <ChevronRight className="h-4 w-4" />
           </button>
         </div>

@@ -120,6 +120,16 @@ When provided with only a Playbook title (for example: `Build a Micro-SaaS With 
 
 ---
 
+## 8. PPT Player Functionality, Boundary Navigation, and Dual-Format Delivery
+
+### Core Rules for Player Interactions & Architecture:
+1. **Dropdown Outside-Click Handling:** Every dropdown in any Playbook learning experience (Module and Lesson selectors) must close reliably when clicking outside, including clicks on slides, slide canvas cards, text elements, controls, and other interactive elements. Implement using capture-phase event listeners (`addEventListener("mousedown", ..., true)` and `touchstart`) alongside Escape key dismissal and mutual exclusivity.
+2. **Cross-Module Boundary Navigation:** In every Playbook, Previous/Next lesson navigation must seamlessly cross module boundaries. Navigating past the last lesson of a module must open the first lesson of the next module. Navigating before the first lesson of a module must open the last lesson of the previous module. Reaching the end of a module is never the end of the Playbook; only the true final lesson of the final module exhibits completion behavior.
+3. **Dual-Format Requirement:** Every Playbook must have both a full PPT slide presentation and a complete, actionable written lesson for every lesson. Neither format may be omitted, and written lessons must never be mere summaries, single sentences, or placeholders. Both formats must be switchable via the format toggle button.
+4. **Player Feature Parity Across Templates:** When unique PPT slide templates are created for Playbooks, all player functionality (dropdowns, navigation, format toggling, keyboard shortcuts, swipe gestures, fullscreen, and progress tracking) must work identically and reliably across all templates. Unique visual styling or theme differentiation never exempts a template from full feature parity.
+
+---
+
 ## Final Rule
 
 **One canonical blueprint. One persistent registry. Hundreds of unique, complete Playbooks with 100% distinct PPT slide designs.**

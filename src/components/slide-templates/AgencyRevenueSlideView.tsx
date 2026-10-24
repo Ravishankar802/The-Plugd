@@ -58,8 +58,11 @@ export default function AgencyRevenueSlideView({
   const moduleDropdownRef = useRef<HTMLDivElement>(null);
   const lessonDropdownRef = useRef<HTMLDivElement>(null);
 
+  const [isNavigating, setIsNavigating] = useState(false);
+
   useEffect(() => {
     setCurrentIndex(initialSlideIndex);
+    setIsNavigating(false);
   }, [initialSlideIndex, lesson.id]);
 
   const totalSlides = lesson.slides?.length || 1;
@@ -88,22 +91,35 @@ export default function AgencyRevenueSlideView({
   );
 
   const handleNext = useCallback(() => {
+    if (isNavigating) return;
     if (currentIndex < totalSlides - 1) {
       goToSlide(currentIndex + 1, "next");
     } else if (nextLesson) {
-      router.push(`/learn/${course.slug}/${nextLesson.lesson.id}`);
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}/${nextLesson.lesson.id}${viewFormat === "written" ? "?format=written" : ""}`);
+    } else {
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}`);
     }
-  }, [currentIndex, totalSlides, nextLesson, course.slug, goToSlide, router]);
+  }, [currentIndex, totalSlides, nextLesson, course.slug, goToSlide, router, isNavigating, viewFormat]);
 
   const handlePrev = useCallback(() => {
+    if (isNavigating) return;
     if (currentIndex > 0) {
       goToSlide(currentIndex - 1, "prev");
     } else if (previousLesson) {
-      router.push(`/learn/${course.slug}/${previousLesson.lesson.id}?slide=last`);
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}/${previousLesson.lesson.id}?slide=last${viewFormat === "written" ? "&format=written" : ""}`);
     }
-  }, [currentIndex, previousLesson, course.slug, goToSlide, router]);
+  }, [currentIndex, previousLesson, course.slug, goToSlide, router, isNavigating, viewFormat]);
 
-  // Dropdown close handlers
+  // Dropdown close handlers with capture phase for reliable outside clicks
   useEffect(() => {
     if (!isModuleDropdownOpen && !isLessonDropdownOpen) return;
     const handlePointerDown = (e: MouseEvent | TouchEvent) => {
@@ -115,11 +131,19 @@ export default function AgencyRevenueSlideView({
         setIsLessonDropdownOpen(false);
       }
     };
-    document.addEventListener("mousedown", handlePointerDown);
-    document.addEventListener("touchstart", handlePointerDown);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsModuleDropdownOpen(false);
+        setIsLessonDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handlePointerDown, true);
+    document.addEventListener("touchstart", handlePointerDown, true);
+    window.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
-      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("mousedown", handlePointerDown, true);
+      document.removeEventListener("touchstart", handlePointerDown, true);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isModuleDropdownOpen, isLessonDropdownOpen]);
 
@@ -748,7 +772,9 @@ export default function AgencyRevenueSlideView({
           }`}
         >
           <ChevronLeft className="h-4 w-4" />
-          <span className="hidden sm:inline">Previous Slide</span>
+          <span className="hidden sm:inline">
+            {currentIndex === 0 && previousLesson ? `Prev Lesson (${previousLesson.lesson.number})` : "Previous Slide"}
+          </span>
         </button>
 
         {/* Slide Position Dots */}

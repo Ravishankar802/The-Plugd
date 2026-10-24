@@ -47,11 +47,13 @@ export default function CodeTerminalSlideView({
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [isModuleDropdownOpen, setIsModuleDropdownOpen] = useState(false);
   const [isLessonDropdownOpen, setIsLessonDropdownOpen] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
   const moduleDropdownRef = useRef<HTMLDivElement>(null);
   const lessonDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setCurrentIndex(initialSlideIndex);
+    setIsNavigating(false);
   }, [initialSlideIndex, lesson.id]);
 
   const totalSlides = lesson.slides?.length || 1;
@@ -80,26 +82,74 @@ export default function CodeTerminalSlideView({
   );
 
   const handleNext = useCallback(() => {
+    if (isNavigating) return;
     if (currentIndex < totalSlides - 1) {
       goToSlide(currentIndex + 1, "next");
     } else if (nextLesson) {
-      router.push(`/learn/${course.slug}/${nextLesson.lesson.id}`);
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}/${nextLesson.lesson.id}${viewFormat === "written" ? "?format=written" : ""}`);
+    } else {
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}`);
     }
-  }, [currentIndex, totalSlides, nextLesson, goToSlide, router, course.slug]);
+  }, [currentIndex, totalSlides, nextLesson, goToSlide, router, course.slug, isNavigating, viewFormat]);
 
   const handlePrev = useCallback(() => {
+    if (isNavigating) return;
     if (currentIndex > 0) {
       goToSlide(currentIndex - 1, "prev");
     } else if (previousLesson) {
-      router.push(`/learn/${course.slug}/${previousLesson.lesson.id}`);
+      setIsNavigating(true);
+      setIsModuleDropdownOpen(false);
+      setIsLessonDropdownOpen(false);
+      router.push(`/learn/${course.slug}/${previousLesson.lesson.id}?slide=last${viewFormat === "written" ? "&format=written" : ""}`);
     }
-  }, [currentIndex, previousLesson, goToSlide, router, course.slug]);
+  }, [currentIndex, previousLesson, goToSlide, router, course.slug, isNavigating, viewFormat]);
+
+  // Dropdown close handlers with capture phase for reliable outside clicks
+  useEffect(() => {
+    if (!isModuleDropdownOpen && !isLessonDropdownOpen) return;
+    const handlePointerDown = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node;
+      if (moduleDropdownRef.current && !moduleDropdownRef.current.contains(target)) {
+        setIsModuleDropdownOpen(false);
+      }
+      if (lessonDropdownRef.current && !lessonDropdownRef.current.contains(target)) {
+        setIsLessonDropdownOpen(false);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsModuleDropdownOpen(false);
+        setIsLessonDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handlePointerDown, true);
+    document.addEventListener("touchstart", handlePointerDown, true);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown, true);
+      document.removeEventListener("touchstart", handlePointerDown, true);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isModuleDropdownOpen, isLessonDropdownOpen]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (viewFormat !== "presentation") return;
-      if (isModuleDropdownOpen || isLessonDropdownOpen) return;
-      if (e.key === "ArrowRight" || e.key === "Space") {
+      if (isModuleDropdownOpen || isLessonDropdownOpen) {
+        if (e.key === "Escape") {
+          e.preventDefault();
+          setIsModuleDropdownOpen(false);
+          setIsLessonDropdownOpen(false);
+          return;
+        }
+      }
+      if (e.key === "ArrowRight" || e.key === " ") {
         e.preventDefault();
         handleNext();
       } else if (e.key === "ArrowLeft") {
@@ -158,19 +208,100 @@ export default function CodeTerminalSlideView({
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <Link
             href={`/learn/${course.slug}`}
-            className="flex items-center gap-1.5 rounded-full border border-sky-500/30 bg-sky-950/40 px-3 py-1.5 text-xs font-semibold text-sky-300 hover:bg-sky-900/50"
+            className="flex items-center gap-1.5 rounded-full border border-sky-500/30 bg-sky-950/40 px-3 py-1.5 text-xs font-semibold text-sky-300 hover:bg-sky-900/50 transition-colors shrink-0"
           >
             <BookOpen className="h-3.5 w-3.5" />
             <span className="hidden sm:inline">Syllabus</span>
           </Link>
 
-          {/* Code File Tab */}
-          <div className="flex items-center gap-1.5 rounded-md border border-[#30363d] bg-[#0d1117] px-3 py-1 text-xs font-mono text-sky-400">
-            <Terminal className="h-3.5 w-3.5" />
-            <span>day-{module.number}.ts</span>
+          {/* Module Selector */}
+          <div className="relative shrink-0" ref={moduleDropdownRef}>
+            <button
+              type="button"
+              onClick={() => {
+                setIsModuleDropdownOpen(!isModuleDropdownOpen);
+                setIsLessonDropdownOpen(false);
+              }}
+              aria-expanded={isModuleDropdownOpen}
+              className="flex items-center gap-1.5 rounded-md border border-[#30363d] bg-[#0d1117] px-3 py-1 text-xs font-mono text-sky-400 hover:border-sky-500/50"
+            >
+              <Terminal className="h-3.5 w-3.5" />
+              <span>day-{module.number}.ts</span>
+              <ChevronDown className="h-3 w-3 text-sky-400/80" />
+            </button>
+            {isModuleDropdownOpen && (
+              <div className="absolute left-0 mt-2 w-72 sm:w-80 rounded-xl border border-[#30363d] bg-[#161b22] p-2 shadow-2xl z-50">
+                <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-sky-400 border-b border-[#30363d] mb-1 flex items-center justify-between">
+                  <span>MICRO-SAAS SPRINT FILES ({course.modules.length})</span>
+                  <span className="text-[10px] text-slate-500">{course.modules.length} files</span>
+                </div>
+                <div className="max-h-64 overflow-y-auto space-y-1 py-1">
+                  {course.modules.map((m) => (
+                    <button
+                      key={m.id}
+                      type="button"
+                      onClick={() => {
+                        setIsModuleDropdownOpen(false);
+                        router.push(`/learn/${course.slug}/${m.lessons[0].id}`);
+                      }}
+                      className={`w-full flex items-center justify-between rounded-lg px-3 py-2 text-left font-mono text-xs transition-colors ${
+                        m.id === module.id ? "bg-sky-500/20 text-sky-300 font-bold" : "text-slate-300 hover:bg-[#21262d]"
+                      }`}
+                    >
+                      <span className="truncate">day-{m.number}.ts ({m.title})</span>
+                      {m.id === module.id && <Check className="h-3.5 w-3.5 text-sky-400 shrink-0" />}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
-          <span className="truncate text-xs font-mono text-slate-400 hidden sm:inline">{lesson.title}</span>
+          {/* Lesson Selector */}
+          <div className="relative min-w-0" ref={lessonDropdownRef}>
+            <button
+              type="button"
+              onClick={() => {
+                setIsLessonDropdownOpen(!isLessonDropdownOpen);
+                setIsModuleDropdownOpen(false);
+              }}
+              aria-expanded={isLessonDropdownOpen}
+              className="flex items-center gap-1.5 rounded-md border border-[#30363d] bg-[#161b22] px-3 py-1 text-xs font-mono text-slate-300 hover:text-white max-w-[140px] sm:max-w-[240px]"
+            >
+              <span className="text-sky-400 shrink-0 font-bold">{lesson.number}</span>
+              <span className="truncate">{lesson.title}</span>
+              <ChevronDown className="h-3 w-3 text-slate-500 shrink-0" />
+            </button>
+            {isLessonDropdownOpen && (
+              <div className="absolute left-0 mt-2 w-80 sm:w-96 rounded-xl border border-[#30363d] bg-[#161b22] p-2 shadow-2xl z-50">
+                <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-sky-400 border-b border-[#30363d] mb-1 flex items-center justify-between">
+                  <span>DAY {module.number} FUNCTIONS</span>
+                  <span className="text-[10px] text-slate-500">{module.lessons.length} lessons</span>
+                </div>
+                <div className="max-h-64 overflow-y-auto space-y-1 py-1">
+                  {module.lessons.map((l) => (
+                    <button
+                      key={l.id}
+                      type="button"
+                      onClick={() => {
+                        setIsLessonDropdownOpen(false);
+                        router.push(`/learn/${course.slug}/${l.id}`);
+                      }}
+                      className={`w-full flex items-center justify-between rounded-lg px-3 py-2 text-left font-mono text-xs transition-colors ${
+                        l.id === lesson.id ? "bg-sky-500/20 text-sky-300 font-bold" : "text-slate-300 hover:bg-[#21262d]"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2 truncate">
+                        <span className="text-sky-400 shrink-0 font-bold">{l.number}</span>
+                        <span className="truncate">{l.title}</span>
+                      </div>
+                      {l.id === lesson.id && <Check className="h-3.5 w-3.5 text-sky-400 shrink-0" />}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
@@ -245,10 +376,14 @@ export default function CodeTerminalSlideView({
           <button
             onClick={handlePrev}
             disabled={currentIndex === 0 && !previousLesson}
-            className="flex items-center gap-2 rounded-full border border-[#30363d] bg-[#161b22] px-4 py-2.5 text-xs font-medium text-slate-300 hover:text-white disabled:opacity-40"
+            className="flex items-center gap-2 rounded-full border border-[#30363d] bg-[#161b22] px-4 py-2.5 text-xs font-medium text-slate-300 hover:text-white disabled:opacity-40 transition-all"
           >
             <ChevronLeft className="h-4 w-4" />
-            <span>Previous</span>
+            <span>
+              {currentIndex === 0 && previousLesson
+                ? `Prev Lesson (${previousLesson.lesson.number})`
+                : "Previous"}
+            </span>
           </button>
 
           <div className="flex items-center gap-2">
@@ -267,7 +402,13 @@ export default function CodeTerminalSlideView({
             onClick={handleNext}
             className="flex items-center gap-2 rounded-full bg-sky-500 hover:bg-sky-400 px-5 py-2.5 text-xs font-bold text-slate-950 shadow-lg transition-all hover:scale-105"
           >
-            <span>{currentIndex === totalSlides - 1 ? (nextLesson ? "Next Lesson" : "Finish") : "Next Slide"}</span>
+            <span>
+              {currentIndex === totalSlides - 1
+                ? nextLesson
+                  ? `Next Lesson (${nextLesson.lesson.number})`
+                  : "Finish"
+                : "Next Slide"}
+            </span>
             <ChevronRight className="h-4 w-4" />
           </button>
         </div>

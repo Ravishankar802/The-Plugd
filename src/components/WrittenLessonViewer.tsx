@@ -65,18 +65,29 @@ export default function WrittenLessonViewer({
       }
     };
 
-    document.addEventListener("mousedown", handlePointerDown);
-    document.addEventListener("touchstart", handlePointerDown);
+    // Use capture phase so any click on article, slide, or controls closes dropdowns
+    document.addEventListener("mousedown", handlePointerDown, true);
+    document.addEventListener("touchstart", handlePointerDown, true);
     window.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
-      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("mousedown", handlePointerDown, true);
+      document.removeEventListener("touchstart", handlePointerDown, true);
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isModuleDropdownOpen, isLessonDropdownOpen]);
 
   const extendedLesson = lesson as ExtendedLesson;
-  const writtenContent = extendedLesson.writtenLesson || lesson.summary;
+  const writtenContent =
+    extendedLesson.writtenLesson ||
+    (lesson as any).writtenContent ||
+    lesson.summary;
+  const learningObjective =
+    extendedLesson.learningObjective ||
+    (lesson as any).learningObjective;
+  const coreTakeaway =
+    extendedLesson.takeaway ||
+    (lesson as any).takeaway ||
+    (lesson.slides?.[0] as any)?.takeaway;
 
   const handleMarkComplete = () => {
     setIsCompleted(true);
@@ -311,7 +322,7 @@ export default function WrittenLessonViewer({
               >
                 <div className="px-3 py-2 border-b border-[#e7e5e4] mb-1 flex items-center justify-between">
                   <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#2563eb]">
-                    CURRICULUM · 10 MODULES
+                    CURRICULUM · {course.modules.length} MODULES
                   </span>
                   <span className="text-[10px] font-mono text-[#a8a29e]">
                     {course.modules.length} modules
@@ -499,7 +510,7 @@ export default function WrittenLessonViewer({
           </p>
 
           {/* Learning Objective Callout */}
-          {extendedLesson.learningObjective && (
+          {learningObjective && (
             <div className="mt-8 rounded-2xl border border-[#e7e5e4] bg-white p-5 sm:p-6 shadow-xs flex items-start gap-4 text-left">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2563eb]/10 text-[#2563eb] shrink-0 mt-0.5">
                 <Sparkles className="h-4 w-4" />
@@ -509,7 +520,7 @@ export default function WrittenLessonViewer({
                   Learning Objective
                 </div>
                 <div className="text-sm sm:text-[15px] font-medium text-[#1c1917] leading-relaxed">
-                  {extendedLesson.learningObjective}
+                  {learningObjective}
                 </div>
               </div>
             </div>
@@ -522,14 +533,14 @@ export default function WrittenLessonViewer({
         </article>
 
         {/* Core Takeaway Card */}
-        {extendedLesson.takeaway && (
+        {coreTakeaway && (
           <div className="mt-12 rounded-3xl border border-[#bfdbfe] bg-[#eff6ff] p-6 sm:p-8 shadow-xs">
             <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#2563eb] uppercase tracking-wider mb-2">
               <Sparkles className="h-4 w-4" />
               <span>Core Principle Takeaway</span>
             </div>
             <p className="text-base sm:text-lg font-bold text-[#1c1917] leading-snug">
-              &ldquo;{extendedLesson.takeaway}&rdquo;
+              &ldquo;{coreTakeaway}&rdquo;
             </p>
           </div>
         )}
