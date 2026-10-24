@@ -4,706 +4,433 @@ const courseSlug = "12-ai-services-small-businesses-need-but-rarely-know-how-to-
 
 const modulesData = [
   {
-    num: 1,
-    id: "module-01",
-    title: "SMB Pain Matrix & High-Demand AI Service Selection",
-    description: "Understand the acute operational bottlenecks of small businesses and master the criteria for selecting high-margin, repeatable AI services.",
-    duration: "55m",
-    lessons: [
+    "num": 1,
+    "id": "module-01",
+    "title": "SMB Pain Matrix & High-Demand AI Service Selection",
+    "description": "Understand the acute operational bottlenecks of small businesses and master the criteria for selecting high-margin, repeatable AI services.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "The Small Business Reality: Chaos, Leaky Buckets & Labor Shortages",
-        duration: "8m",
-        summary: "Examine the real-world operational challenges of Main Street businesses and why generic AI tools fail to solve their problems.",
-        bulletPoints: [
+        "lesNum": 1,
+        "title": "The Small Business Reality: Chaos, Leaky Buckets & Labor Shortages",
+        "duration": "15m",
+        "summary": "Examine the real-world operational challenges of Main Street businesses and why generic AI tools fail to solve their problems.",
+        "bulletPoints": [
           "Small business owners are overwhelmed operators juggling phone calls, staffing gaps, inventory, and bookkeeping simultaneously.",
           "The Leaky Bucket Problem: Why SMBs lose 30%+ of potential revenue from missed calls, delayed replies, and forgotten follow-ups.",
           "Why SMBs Don't Use ChatGPT: Business owners lack time to write prompts; they need autonomous systems that run silently in the background.",
-          "The Automation Consultant Opportunity: Positioning yourself not as a tech vendor, but as an operational problem solver who stops revenue leakage.",
+          "The Automation Consultant Opportunity: Positioning yourself not as a tech vendor, but as an operational problem solver who stops revenue leakage."
         ],
-        takeaway: "Small business owners don't want AI software—they want their phone answered, their invoices paid, and their reviews managed automatically.",
+        "takeaway": "Small business owners don't want AI software—they want their phone answered, their invoices paid, and their reviews managed automatically."
       },
       {
-        lesNum: 2,
-        title: "The 12 Core Services Selection Matrix",
-        duration: "8m",
-        summary: "Analyze the 12 high-demand SMB services across technical complexity, delivery speed, and client revenue impact.",
-        bulletPoints: [
+        "lesNum": 2,
+        "title": "The 12 Core Services Selection Matrix",
+        "duration": "15m",
+        "summary": "Analyze the 12 high-demand SMB services across technical complexity, delivery speed, and client revenue impact.",
+        "bulletPoints": [
           "The Service Evaluation Grid: Scoring services on Build Time (under 4 hours), Setup Fee ($500–$2,500), and Monthly Retainer Potential ($150–$500/mo).",
           "The 4 Operational Clusters: Lead Acquisition, Customer Retention, Back-Office Administration, and Operational Scheduling.",
           "Repeatability: Selecting services that use identical logic across plumbing, HVAC, dental, legal, and roofing verticals.",
-          "The Low-Touch Rule: Prioritizing services that require zero daily maintenance once deployed.",
+          "The Low-Touch Rule: Prioritizing services that require zero daily maintenance once deployed."
         ],
-        takeaway: "Focus on services with low build complexity and immediate, quantifiable revenue impact for the business owner.",
+        "takeaway": "Focus on services with low build complexity and immediate, quantifiable revenue impact for the business owner."
       },
       {
-        lesNum: 3,
-        title: "Identifying High-Value SMB Verticals",
-        duration: "8m",
-        summary: "Identify the top 5 small business industries with the highest willingness and financial capability to pay for automation.",
-        bulletPoints: [
+        "lesNum": 3,
+        "title": "Identifying High-Value SMB Verticals",
+        "duration": "15m",
+        "summary": "Identify the top 5 small business industries with the highest willingness and financial capability to pay for automation.",
+        "bulletPoints": [
           "Home Services & Contractors: HVAC, plumbing, roofing, electrical—high ticket transactions ($3K–$15K) where 1 missed call costs thousands.",
           "Health & Wellness Practices: Medspas, dental clinics, chiropractors—high recurring appointment volume and staff scheduling burdens.",
           "Professional Services: Boutique accounting firms, regional insurance agencies, title companies—paperwork and document-heavy workflows.",
           "Auto Repair & Specialty Trades: High customer inquiry volume with intense technician utilization challenges.",
-          "Avoiding Low-Margin Businesses: Why independent coffee shops and small boutiques rarely have the budget for automation services.",
+          "Avoiding Low-Margin Businesses: Why independent coffee shops and small boutiques rarely have the budget for automation services."
         ],
-        takeaway: "Pick industries where a single converted customer or saved employee hour is worth hundreds of dollars.",
+        "takeaway": "Pick industries where a single converted customer or saved employee hour is worth hundreds of dollars."
       },
       {
-        lesNum: 4,
-        title: "The Universal SMB Technology Stack",
-        duration: "8m",
-        summary: "Standardize on an affordable, rock-solid technology architecture that connects effortlessly to legacy SMB software.",
-        bulletPoints: [
-          "The SMB Core Stack: Twilio / LeadConnector for telephony, Make.com for orchestration, OpenAI / Claude for extraction, Airtable / Google Sheets for state.",
-          "Connecting to Legacy Software: Handling legacy CRMs (Jobber, ServiceTitan, Clio, Dentrix) via webhooks, email triggers, or Zapier bridges.",
-          "Managing Twilio & Phone Carrier Compliance: A2P 10DLC registration, Brand approvals, and toll-free verification to ensure 100% SMS delivery.",
-          "Zero Client Software Overhead: Designing solutions that integrate into the tools the client already uses without forcing them to learn new platforms.",
+        "lesNum": 4,
+        "title": "Universal SMB Architecture, Retainer Psychology & Local Data Compliance",
+        "duration": "15m",
+        "summary": "Master the lightweight SMB tech stack, pricing retainer structures, and regional privacy compliance rules for local businesses.",
+        "bulletPoints": [
+          "The Universal SMB Stack: Twilio for SMS, Make/n8n for routing, and native webhook connectors to HubSpot, Jobber, and ServiceTitan.",
+          "Pricing Psychology: Replacing hourly billing with value-anchored setup fees ($1,500-$3,500) paired with monthly retainers ($250-$500/mo).",
+          "Data Privacy & Security: Enforcing strict PII redaction and local SMS opt-in compliance (A2P 10DLC) before sending automated client texts.",
+          "Operational Longevity: Designing zero-maintenance automations with automated error alerts to prevent client support tickets."
         ],
-        takeaway: "Meet small businesses where they already work rather than forcing them to adopt complex new software ecosystems.",
-      },
-      {
-        lesNum: 5,
-        title: "Pricing Psychology: Fixed Setup vs Monthly Peace-of-Mind Retainers",
-        duration: "8m",
-        summary: "Structure your service pricing to ensure rapid client approval while securing recurring monthly cash flow.",
-        bulletPoints: [
-          "The Anchor Setup Fee: Charging $750 to $1,500 for initial workflow configuration and phone integration.",
-          "The $199–$399/Month Maintenance Retainer: Covering API costs, carrier compliance, monitoring, and 1 hour of monthly adjustments.",
-          "The 'One Lost Deal' Framing: Showing contractors that saving just one missed $4,000 roofing job pays for your system for an entire year.",
-          "Avoiding Usage-Based Pricing: Why quoting 'per API token' or 'per SMS' confuses SMB owners and creates decision paralysis.",
-        ],
-        takeaway: "Price your services around business outcomes; a flat monthly retainer gives the owner predictability and gives you recurring revenue.",
-      },
-      {
-        lesNum: 6,
-        title: "Security, Privacy & Local Data Compliance for SMBs",
-        duration: "8m",
-        summary: "Implement necessary privacy safeguards and compliance standards to protect client data and avoid liability.",
-        bulletPoints: [
-          "SMS Consent & TCPA Compliance: Ensuring all automated text-backs include mandatory opt-out language ('Reply STOP to unsubscribe').",
-          "HIPAA & Medical Nuances: What you can and cannot automate for healthcare practices without dedicated BAA agreements.",
-          "Customer Data Isolation: Maintaining separate database tables and API keys for each client to prevent cross-account data leaks.",
-          "Zero-Retention API Configuration: Ensuring client customer data is never used to train frontier public AI models.",
-        ],
-        takeaway: "Strict regulatory compliance and data privacy protect both your agency and your small business clients.",
-      },
-      {
-        lesNum: 7,
-        title: "Module 1 Review & Service Selection Blueprint",
-        duration: "7m",
-        summary: "Finalize your selection of 2 to 3 initial beachhead services to bring to market before expanding to the full catalog.",
-        bulletPoints: [
-          "The Beachhead Rule: Start with 1 customer acquisition service and 1 back-office service before pitching all 12 simultaneously.",
-          "Creating the Service Catalog One-Pager: Designing a clean, non-technical brochure highlighting problem, solution, and pricing.",
-          "Testing Your Logic: Running end-to-end sandbox simulations of the chosen workflows using test phone numbers and sample data.",
-          "Readiness Check: Transitioning into detailed architectural blueprints for Services 1 through 12 in the upcoming modules.",
-        ],
-        takeaway: "Master your first two repeatable services, build your sandbox demos, and prepare to execute the technical blueprints.",
-      },
-    ],
+        "takeaway": "Charge for operational peace of mind, not hours worked. High retainers are justified by reliability and zero client overhead."
+      }
+    ]
   },
   {
-    num: 2,
-    id: "module-02",
-    title: "Customer Acquisition & Speed-to-Lead Services (Services 1–3)",
-    description: "Architect and deploy the top 3 revenue-generating services: Missed-Call AI Text-Back, Instant Web Form Quoter, and Multi-Channel Triage.",
-    duration: "54m",
-    lessons: [
+    "num": 2,
+    "id": "module-02",
+    "title": "Speed-to-Lead & Customer Acquisition Systems (Services 1–3)",
+    "description": "Deploy the top three inbound lead capture and conversion automations that eliminate response latency for high-ticket local businesses.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "Service #1: The Autonomous Missed-Call AI Text-Back Engine",
-        duration: "8m",
-        summary: "Build an automated system that intercepts unanswered phone calls and sends an intelligent conversational SMS within 15 seconds.",
-        bulletPoints: [
-          "The Missed-Call Epidemic: 62% of calls to small service businesses go unanswered; 85% of those callers call a competitor immediately.",
-          "The 15-Second Rule: Triggering an immediate text ('Hi, this is Mike's Plumbing! Sorry I missed your call—how can I help you right now?').",
-          "The Twilio Webhook Architecture: Intercepting call status events (`no-answer`, `busy`, `failed`) and initiating conversational SMS flows.",
-          "Conversational Intake: Using Claude 3.7 to extract customer name, address, urgency level, and job description via natural back-and-forth SMS.",
+        "lesNum": 1,
+        "title": "Service #1: Autonomous Missed-Call AI Text-Back & Voice Response Engine",
+        "duration": "15m",
+        "summary": "Build and deploy an automated text-back system that intercepts unanswered incoming calls within 15 seconds to rescue high-ticket leads.",
+        "bulletPoints": [
+          "The 15-Second Lead Capture SLA: Why 78% of local service buyers hire the first business that responds to their inquiry.",
+          "Twilio Call-Status Webhook Trigger: Capturing missed, busy, and uncompleted inbound calls instantly with caller metadata.",
+          "Conversational AI Lead Qualification: Asking 2-3 essential qualification questions via SMS using OpenAI or Claude APIs.",
+          "Automated Calendar Booking & Owner SMS Dispatch: Locking in appointments directly onto the business owner Google Calendar."
         ],
-        takeaway: "The Missed-Call Text-Back engine stops immediate revenue leakage and is the easiest $1,500 service to sell to any local contractor.",
+        "takeaway": "Missed calls are immediate revenue leaks. Responding in under 30 seconds turns a lost caller into a booked estimate."
       },
       {
-        lesNum: 2,
-        title: "Service #1 Deep Dive: Qualification, Calendar Booking & Dispatch",
-        duration: "8m",
-        summary: "Extend the missed-call engine to qualify emergency leads and book service consultations directly into the client's calendar.",
-        bulletPoints: [
-          "Emergency Keyword Routing: Detecting urgent keywords ('water leak', 'no heat', 'power out') and triggering an instant owner alert.",
-          "Autonomous Calendar Scheduling: Passing available time slots from Google Calendar or Calendly directly into the SMS conversation.",
-          "Creating the Job in the CRM: Automatically creating a new customer card in ServiceTitan, Jobber, or Airtable upon booking.",
-          "Owner Notification: Sending the business owner an instant summary notification via SMS or Telegram with full lead details.",
+        "lesNum": 2,
+        "title": "Service #2: Instant Web Form Quoter & Dynamic AI Cost Estimator",
+        "duration": "15m",
+        "summary": "Construct an interactive web estimation engine that delivers instant customized pricing ranges and automated PDF quotes.",
+        "bulletPoints": [
+          "Frictionless Intake: Replacing generic Contact Us forms with structured estimation widgets that capture project scope parameters.",
+          "Dynamic Cost Modeling: Feeding square footage, materials, and timeline variables into a deterministic calculation prompt.",
+          "Instant PDF Proposal Generation: Programmatically compiling branded estimates using DocuSeal or PDF generation APIs.",
+          "High-Intent Lead Routing: Flagging high-budget quote requests directly to the business owner phone via priority notification."
         ],
-        takeaway: "Turning missed phone calls into booked appointments on autopilot delivers unmistakable, immediate ROI.",
+        "takeaway": "Instant pricing eliminates competitive comparison shopping. Homeowners book the contractor who quotes them immediately."
       },
       {
-        lesNum: 3,
-        title: "Service #2: Instant Web Form Quoter & AI Estimator",
-        duration: "8m",
-        summary: "Build an automated quoting engine that reviews inbound website form submissions and returns structured ballpark estimates in 90 seconds.",
-        bulletPoints: [
-          "The Speed-to-Lead Problem: Most SMBs take 24–48 hours to reply to website quote requests; by then, the prospect has hired someone else.",
-          "The Instant Estimator Architecture: Website form (Typeform/Tally) -> Make.com webhook -> AI Estimation Logic -> PDF Quote -> SMS/Email Delivery.",
-          "Formulaic Range Estimation: Teaching Claude to parse square footage, service type, and zip code against predefined pricing matrices.",
-          "Disclaimers & Human Inspection: Including clear language that estimates are preliminary, with instant calendar link to confirm onsite inspection.",
+        "lesNum": 3,
+        "title": "Service #3: Multi-Channel Inbound Lead Triage & Unified Inbound Router",
+        "duration": "15m",
+        "summary": "Aggregate disparate inbound inquiries from Facebook, Instagram, Google Maps, and website chat into a single automated pipeline.",
+        "bulletPoints": [
+          "Multi-Channel Inbound Chaos: Why SMBs fail to monitor DMs, emails, and form fills scattered across four distinct platforms.",
+          "Unified Webhook Ingestion: Consolidating inquiries into a centralized Make.com or n8n orchestration router.",
+          "LLM Intent Classification: Categorizing incoming messages into Urgent Service, General Question, or Spam within 2 seconds.",
+          "Automated CRM Sync & De-duplication: Syncing leads to HubSpot or GoHighLevel without creating duplicate contact records."
         ],
-        takeaway: "Delivering a preliminary quote in 90 seconds wins the customer before competitors even check their inbox.",
+        "takeaway": "A unified inbox engine ensures zero inbound inquiries slip through the cracks, regardless of which channel the lead uses."
       },
       {
-        lesNum: 4,
-        title: "Service #2 Deep Dive: Dynamic PDF Proposal Generation",
-        duration: "8m",
-        summary: "Automate the generation and delivery of branded PDF proposal documents customized to the prospect's project details.",
-        bulletPoints: [
-          "Dynamic PDF Generation: Using Docupilot, Bannerbear, or HTML-to-PDF APIs to generate clean, branded estimates with client logos.",
-          "Breakdown Components: Scope of work description, materials estimate, labor range, estimated timeline, and terms of service.",
-          "Multi-Channel Delivery: Sending the PDF via both high-priority SMS and branded email simultaneously.",
-          "Open Tracking & Follow-Up: Triggering an automated follow-up SMS if the customer hasn't viewed the proposal within 4 hours.",
+        "lesNum": 4,
+        "title": "Inbound Automation Testing, Webhook Handshakes & Client Acceptance Gates",
+        "duration": "15m",
+        "summary": "Implement rigorous end-to-end testing protocols, webhook signature verification, and client sign-off procedures for Services 1-3.",
+        "bulletPoints": [
+          "End-to-End Latency Auditing: Testing Twilio call events across 5 simulated carrier networks to verify sub-30-second SMS responses.",
+          "Webhook Handshake Security: Enforcing HMAC signature verification to safeguard client endpoints against spoofed requests.",
+          "Fail-Safe Human Fallbacks: Diverting unrecognized user intents to the business owner phone with full transcript context.",
+          "Client Acceptance Checklist: Running live test scenarios in front of the business owner before handing over the keys."
         ],
-        takeaway: "Branded, instantaneous PDF estimates create a level of professionalism that SMB competitors cannot match.",
-      },
-      {
-        lesNum: 5,
-        title: "Service #3: Multi-Channel Lead Triage & Unified Inbound Router",
-        duration: "8m",
-        summary: "Unify leads from Facebook Ads, Google Local Services, website forms, and Yelp into a single AI triage pipeline.",
-        bulletPoints: [
-          "The Inbound Fragmentation Chaos: SMB owners miss leads because inquiries are scattered across email, Facebook Messenger, Yelp, and Angi.",
-          "The Unified Inbound Webhook: Consolidating incoming webhooks from all lead sources into a single Make.com normalization engine.",
-          "AI Intent & Urgency Scoring: Scoring leads from 1 to 10 based on intent, budget, and geographic proximity.",
-          "Centralized Routing: Pushing high-intent leads to the owner's phone via SMS, while routing standard inquiries to email nurturing.",
-        ],
-        takeaway: "Unifying fragmented lead channels into a single prioritized stream ensures zero missed opportunities.",
-      },
-      {
-        lesNum: 6,
-        title: "Service #3 Deep Dive: CRM Sync & Lead Deduplication Logic",
-        duration: "7m",
-        summary: "Implement robust lead deduplication and CRM synchronization logic to keep client databases pristine.",
-        bulletPoints: [
-          "Deduplication Architecture: Checking existing CRM records by phone number and email before creating new customer entries.",
-          "Updating Existing Records: Appending new inquiry notes to existing customer profiles without overwriting past history.",
-          "Tagging Lead Sources: Accurately attributing leads to Google Ads, Yelp, or organic search to provide marketing clarity to the owner.",
-          "Weekly Lead Summary: Generating an automated weekly lead report showing total inquiries, booking percentage, and top channels.",
-        ],
-        takeaway: "Clean, deduplicated CRM data gives small business owners complete visibility into their marketing investments.",
-      },
-      {
-        lesNum: 7,
-        title: "Module 2 Milestone: Testing & Bundling Services 1–3",
-        duration: "7m",
-        summary: "Package Services 1 through 3 into 'The Revenue Leakage Shield' offer and execute simulated end-to-end stress tests.",
-        bulletPoints: [
-          "The Offer Bundle: Packaging Missed-Call Text-Back + Instant Quoter + Lead Triage as 'The 24/7 Inbound Revenue Engine' ($2,500 setup + $350/mo).",
-          "End-to-End Stress Testing: Calling the test Twilio number, triggering web forms, and verifying CRM sync in under 60 seconds.",
-          "Client Demonstration Walkthrough: Creating a 3-minute video showing the exact customer experience across all three channels.",
-          "Transitioning to Customer Retention: Moving to reputation and review automation in Module 3.",
-        ],
-        takeaway: "Bundling Services 1–3 provides an all-in-one revenue capture system that every local service company urgently needs.",
-      },
-    ],
+        "takeaway": "Never declare an inbound automation live until you have proven the fail-safe human handoff in front of the client."
+      }
+    ]
   },
   {
-    num: 3,
-    id: "module-03",
-    title: "Reputation & Customer Retention Services (Services 4–6)",
-    description: "Build high-impact reputation systems: Automated Google Review Harvesters, Post-Service Feedback Sentinels, and Churn Risk Radars.",
-    duration: "53m",
-    lessons: [
+    "num": 3,
+    "id": "module-03",
+    "title": "Reputation & Customer Retention Systems (Services 4–6)",
+    "description": "Automate post-service review harvesting, sentiment interception, and customer lifetime value expansion for local service businesses.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "Service #4: Automated Google Review Harvester & AI Responder",
-        duration: "8m",
-        summary: "Build an automated review engine that requests Google reviews at the optimal moment and drafts personalized, SEO-rich AI responses.",
-        bulletPoints: [
-          "The Local SEO Currency: Google reviews are the #1 ranking factor for local Map Pack rankings; SMBs with 100+ reviews dominate search.",
-          "The Perfect Trigger Moment: Triggering the review request SMS exactly 2 hours after a technician marks a job complete in the CRM.",
-          "The Direct-to-Google Review Link: Generating clean Google Review URLs that open the 5-star rating interface with a single tap.",
-          "Autonomous Review Replies: Using Claude to draft unique, professional responses thanking the customer and mentioning specific services.",
+        "lesNum": 1,
+        "title": "Service #4: Automated Google Review Harvester & AI Sentiment Responder",
+        "duration": "15m",
+        "summary": "Build an automated review generation engine that systematically converts satisfied customers into 5-star Google Business ratings.",
+        "bulletPoints": [
+          "The Local SEO Power of Reviews: Why Google map pack rankings are 40% determined by review velocity, count, and freshness.",
+          "Triggering Post-Job Review Requests: Firing automated SMS requests 2 hours after a job is marked completed in the client CRM.",
+          "Negative Review Interception: Routing ratings under 4 stars to a private internal feedback form before they hit public directories.",
+          "Automated AI Review Responses: Generating personalized, keyword-optimized replies to public reviews using Google Business Profile API."
         ],
-        takeaway: "Automated review harvesting systematically propels local businesses to the top of Google Maps search results.",
+        "takeaway": "Automating review generation turns every completed job into an evergreen SEO asset that drives organic inbound calls."
       },
       {
-        lesNum: 2,
-        title: "Service #4 Deep Dive: Sentiment Filtering & Negative Review Interception",
-        duration: "8m",
-        summary: "Deploy an internal feedback buffer that routes satisfied customers to Google while privately escalating unhappy customers to the owner.",
-        bulletPoints: [
-          "The Sentiment Pre-Check: Asking 'On a scale of 1-5, how was your service today?' via SMS before sharing the public review link.",
-          "Routing 5-Star Customers: Immediately redirecting 4- and 5-star ratings to the public Google Review page.",
-          "Intercepting 1- to 3-Star Feedback: Directing unhappy customers to a private feedback form and instantly sending an urgent alert to the owner's phone.",
-          "Compliance Safeguards: Ensuring the review flow adheres to Google's review gating policies by making public review links accessible.",
+        "lesNum": 2,
+        "title": "Service #5: Post-Service Quality Assurance & Warranty Follow-Up Sentinel",
+        "duration": "15m",
+        "summary": "Deploy automated satisfaction checkpoints and scheduled seasonal maintenance reminders that protect customer loyalty.",
+        "bulletPoints": [
+          "The Retention Blind Spot: Why SMBs ignore past customers until equipment breaks or the customer switches to a competitor.",
+          "Day-7 and Day-30 Checkpoints: Automated check-in texts that confirm satisfactory service and catch simmering complaints early.",
+          "Automated Seasonal Warranty Reminders: Triggering filter replacement or tune-up offers 6 months post-installation.",
+          "Referral Generation Sequences: Offering incentives for friend referrals when customer NPS scores exceed 9 out of 10."
         ],
-        takeaway: "Intercepting negative feedback before it hits Google protects the business's online reputation and enables service recovery.",
+        "takeaway": "Customer retention is 5x cheaper than acquisition. Automated post-service check-ins unlock easy repeat revenue."
       },
       {
-        lesNum: 3,
-        title: "Service #5: Post-Service Feedback Sentinel & Quality Assurance",
-        duration: "8m",
-        summary: "Create an autonomous quality control system that surveys completed jobs and extracts actionable operational insights for management.",
-        bulletPoints: [
-          "Beyond Stars: Gathering qualitative feedback on technician punctuality, cleanliness, communication, and pricing fairness.",
-          "Conversational Surveying: Using interactive SMS micro-questions rather than tedious 20-question web forms that nobody fills out.",
-          "Extracting Operational Trends: Categorizing customer responses in Airtable to identify repeat issues with specific technicians or services.",
-          "The Monthly QA Scorecard: Generating an executive summary for the owner highlighting technician performance and customer satisfaction.",
+        "lesNum": 3,
+        "title": "Service #6: Churn Risk Radar & VIP Customer Care Automation",
+        "duration": "15m",
+        "summary": "Implement behavioral churn detection algorithms that flag slipping commercial accounts and trigger proactive intervention.",
+        "bulletPoints": [
+          "Identifying Churn Signals: Monitoring booking frequency drops, delayed payment trends, and unanswered outbound emails.",
+          "Automated Account Health Scoring: Calculating dynamic risk scores based on CRM interaction frequency and transaction recency.",
+          "Proactive VIP Escalation: Alerting the business owner when high-margin commercial accounts show 45+ days of inactivity.",
+          "Automated Win-Back Offers: Delivering tailored reactivation discounts to past accounts without manual staff effort."
         ],
-        takeaway: "Automated feedback extraction gives business owners real-time visibility into field technician performance.",
+        "takeaway": "Preventing churn in high-value accounts protects the foundational revenue of any recurring local service business."
       },
       {
-        lesNum: 4,
-        title: "Service #5 Deep Dive: Automated Warranty & Maintenance Follow-Ups",
-        duration: "8m",
-        summary: "Turn completed one-time jobs into recurring maintenance contracts through timed, seasonal check-in automations.",
-        bulletPoints: [
-          "The Forgotten Customer Goldmine: Most SMBs never contact past customers, losing predictable repeat business and seasonal maintenance.",
-          "The 6-Month Maintenance Trigger: Triggering an automated seasonal check-in SMS 180 days after a furnace or AC service.",
-          "Personalized Work History: Referencing the exact equipment model and past service date to make the check-in highly personal.",
-          "One-Click Booking: Providing a direct link to book their annual maintenance inspection with special preferred-client pricing.",
+        "lesNum": 4,
+        "title": "Retention Pipeline Orchestration, Database Health & SMS Compliance",
+        "duration": "15m",
+        "summary": "Ensure compliance with SMS marketing regulations, clean customer contact databases, and integrate retention workflows into operations.",
+        "bulletPoints": [
+          "A2P 10DLC Compliance: Registering brand campaigns and verifying explicit customer opt-in consent for automated messaging.",
+          "Database Sanitization: Scrubbing landlines, disconnected numbers, and duplicate entries to maintain high delivery rates.",
+          "Quiet Hours Guardrails: Restricting automated SMS dispatch strictly between 9:00 AM and 7:00 PM in the client local timezone.",
+          "Deliverability Monitoring: Tracking carrier bounce rates and setting up automated alerts for failed SMS transmissions."
         ],
-        takeaway: "Automated 6-month check-ins reactivate past customers and generate thousands in high-margin repeat service calls.",
-      },
-      {
-        lesNum: 5,
-        title: "Service #6: Churn Risk Radar & VIP Customer Care Bot",
-        duration: "7m",
-        summary: "Detect declining customer engagement and proactively trigger automated retention incentives before accounts churn.",
-        bulletPoints: [
-          "Identifying Churn Signals: Monitoring customer purchase intervals, appointment frequency drops, or missed membership payments.",
-          "The Dormant Customer Trigger: Flagging customers who haven't booked in 90 days when their historical average is 30 days.",
-          "The VIP Win-Back Offer: Delivering a personalized re-engagement SMS with an exclusive loyalty credit or complimentary upgrade.",
-          "Owner Notification: Alerting the business owner if a top 10% lifetime-value customer triggers churn risk signals.",
-        ],
-        takeaway: "Preventing customer churn is 5x cheaper than acquiring new leads; the Churn Radar protects recurring revenue.",
-      },
-      {
-        lesNum: 6,
-        title: "Service #6 Deep Dive: Membership & Loyalty Tier Synchronization",
-        duration: "7m",
-        summary: "Automate recurring membership clubs (e.g. VIP HVAC Club, Monthly Dental Plan) and track member perks seamlessly.",
-        bulletPoints: [
-          "The SMB Membership Model: Why local businesses are shifting toward $19–$49/month recurring maintenance clubs.",
-          "Automating Member Benefits: Tracking used vs unused annual inspections and automatically notifying members to claim perks.",
-          "Stripe Billing Sync: Updating customer CRM status when recurring membership subscriptions renew or fail.",
-          "Dunning Recovery for Subscriptions: Handling failed credit card updates via friendly, automated SMS payment links.",
-        ],
-        takeaway: "Automating membership club administration unlocks steady recurring subscription revenue for local business clients.",
-      },
-      {
-        lesNum: 7,
-        title: "Module 3 Milestone: Testing & Bundling Services 4–6",
-        duration: "7m",
-        summary: "Package Services 4 through 6 into 'The 5-Star Reputation & Retention Suite' and stress-test review and feedback flows.",
-        bulletPoints: [
-          "The Reputation Offer: Packaging Review Harvester + Feedback Sentinel + Win-Back Radar as a $1,800 setup + $250/mo retainer.",
-          "Review Automation Walkthrough: Simulating a completed job trigger, receiving the review request SMS, and testing response generation.",
-          "Demonstrating ROI to SMBs: Proving that 30 new 5-star reviews and 15 reactivated past clients easily generate $10K+ in annual revenue.",
-          "Transitioning to Back-Office Automation: Moving to invoice processing and financial workflows in Module 4.",
-        ],
-        takeaway: "Reputation and retention systems provide high perceived value with zero operational disruption for the business owner.",
-      },
-    ],
+        "takeaway": "Strict SMS compliance protects your client from regulatory fines and ensures 98%+ message delivery rates."
+      }
+    ]
   },
   {
-    num: 4,
-    id: "module-04",
-    title: "Back-Office & Financial Automation Services (Services 7–9)",
-    description: "Automate tedious SMB back-office workflows: Vendor Invoice Auto-Parsers, Dynamic Estimate Builders, and Accounts Receivable Dunning Bots.",
-    duration: "55m",
-    lessons: [
+    "num": 4,
+    "id": "module-04",
+    "title": "Back-Office & Financial Automation Systems (Services 7–9)",
+    "description": "Eliminate tedious bookkeeping, invoice parsing, and unpaid receivable follow-ups with intelligent financial automations.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "Service #7: Vendor Invoice & Receipt Auto-Parser",
-        duration: "8m",
-        summary: "Build an intelligent document processing engine that extracts line items from vendor invoices and syncs directly to QuickBooks or Xero.",
-        bulletPoints: [
-          "The Shoebox Syndrome: SMB owners spend Sunday nights manually entering receipts, supplier bills, and supply house invoices into accounting tools.",
-          "The Ingestion Email Webhook: Setting up a dedicated `invoices@clientbusiness.com` forwarding address connected to Make.com.",
-          "Multimodal Extraction with Claude 3.7: Extracting Vendor Name, Invoice #, Date, Line Items, Sales Tax, and Total with 99%+ accuracy.",
-          "Job Costing Attribution: Matching supplier invoices to specific customer job IDs in Airtable to calculate true gross profit margins.",
+        "lesNum": 1,
+        "title": "Service #7: Vendor Invoice & Receipt OCR Parser with Accounting Sync",
+        "duration": "15m",
+        "summary": "Construct an AI document extraction pipeline that ingests supplier receipts and maps line items directly into QuickBooks or Xero.",
+        "bulletPoints": [
+          "The Paperwork Nightmare: Business owners wasting 8+ hours weekly manually typing vendor receipts into accounting software.",
+          "Multimodal Vision & OCR Ingestion: Passing messy receipt photos and PDF invoices into Claude 3.5 Sonnet for structured JSON extraction.",
+          "Automated Line-Item Reconciliation: Matching vendor invoices against existing purchase orders and inventory categories.",
+          "Direct QuickBooks / Xero API Sync: Writing categorized bills and receipt attachments directly to the accounting ledger."
         ],
-        takeaway: "Automated invoice parsing eliminates hours of tedious data entry and gives owners accurate, real-time job costing.",
+        "takeaway": "Automating receipt entry gives business owners real-time cash flow visibility while saving hours of manual data entry."
       },
       {
-        lesNum: 2,
-        title: "Service #7 Deep Dive: Direct QuickBooks / Xero Accounting Sync",
-        duration: "8m",
-        summary: "Map extracted invoice data into QuickBooks Online or Xero APIs, handling chart-of-accounts mapping and duplicate checks.",
-        bulletPoints: [
-          "QuickBooks Online API Integration: Authenticating OAuth2 connections and pushing vendor bills into Pending Review status.",
-          "Chart of Accounts Matching: Teaching AI to automatically categorize line items (e.g. 'Copper Piping' -> Job Materials; 'Safety Gloves' -> Shop Supplies).",
-          "Duplicate Bill Detection: Querying existing bills by vendor name and invoice number before creation to prevent double payments.",
-          "Human-in-the-Loop Approval: Creating a 1-click Slack or email approval interface for bills exceeding $1,000.",
+        "lesNum": 2,
+        "title": "Service #8: Dynamic Good-Better-Best Proposal Builder & E-Sign Engine",
+        "duration": "15m",
+        "summary": "Deploy an automated proposal generation tool that creates tiered estimates with embedded e-signature contracts.",
+        "bulletPoints": [
+          "The Power of Tiered Bidding: Why presenting Good-Better-Best proposals increases average job size by 24% to 35%.",
+          "Dynamic Scope Compilation: Populating equipment specs, warranty terms, and financing options from a simple technician form.",
+          "DocuSign & DocuSeal Automation: Generating dynamic contract envelopes and sending e-sign links directly to homeowner phones.",
+          "Deposit Collection Integration: Requiring an instant 20% credit card or ACH deposit upon contract signature."
         ],
-        takeaway: "Seamless accounting integration ensures financial records are always audit-ready without manual data entry.",
+        "takeaway": "Tiered proposals unlock higher contract values while embedded e-signatures lock in client commitments on the spot."
       },
       {
-        lesNum: 3,
-        title: "Service #8: Dynamic Estimate & Custom Proposal Builder",
-        duration: "8m",
-        summary: "Build an automated proposal generator that takes technician field notes or voice memos and transforms them into professional client estimates.",
-        bulletPoints: [
-          "The Field Technician Dilemma: Technicians hate paperwork and often write sloppy, unformatted notes that delay quoting for days.",
-          "Voice Memo to Estimate: Allowing technicians to record a 60-second voice note on WhatsApp or Telegram detailing parts and labor needed.",
-          "Whisper Transcription & AI Structuring: Transcribing the audio and structuring parts, labor hours, and pricing into a formal proposal.",
-          "Automated Customer Delivery: Pushing the finished proposal to the customer via SMS/email within 15 minutes of the technician leaving the site.",
+        "lesNum": 3,
+        "title": "Service #9: Accounts Receivable Dunning Bot & Automated Payment Recovery",
+        "duration": "15m",
+        "summary": "Build an automated collection engine that politely and persistently recovers overdue invoices without damaging client relationships.",
+        "bulletPoints": [
+          "The Aging AR Crisis: Why SMBs routinely carry $25K to $75K in 60+ day unpaid invoices due to timid manual follow-ups.",
+          "Automated Aging Milestones: Triggering automated reminders at Net+3, Net+14, Net+30, and Net+45 days post-invoice.",
+          "Dynamic Tone Escalation: Progressing from friendly courtesy reminders to formal legal notifications as invoices age.",
+          "Embedded 1-Click Payment Links: Providing direct Stripe or QuickBooks payment links directly within SMS and email dunning messages."
         ],
-        takeaway: "Transforming voice memos into polished customer proposals in 15 minutes increases quote closing rates by 40%.",
+        "takeaway": "Consistent, polite dunning automations recover 70%+ of past-due receivables without putting strain on staff."
       },
       {
-        lesNum: 4,
-        title: "Service #8 Deep Dive: Dynamic Pricing Rules & Good-Better-Best Proposals",
-        duration: "8m",
-        summary: "Configure automated multi-tier proposal generation that presents Good, Better, Best service options to maximize average job size.",
-        bulletPoints: [
-          "The Power of 3 Options in Home Services: How presenting Standard, Premium, and Ultimate options increases average ticket size by 28%.",
-          "AI Proposal Generator Logic: Automatically generating the standard repair option, plus upgraded replacement and extended warranty options.",
-          "Digital Signature Integration: Embedding DocuSign or PandaDoc links so homeowners can approve and sign the proposal on their mobile phone.",
-          "Deposit Collection: Triggering a Stripe or Square deposit payment link immediately upon proposal acceptance.",
+        "lesNum": 4,
+        "title": "Financial Workflow Reconciliation, Bank Feed Safety & Audit Logging",
+        "duration": "15m",
+        "summary": "Implement robust security controls, audit trails, and human-in-the-loop approval thresholds for all financial automations.",
+        "bulletPoints": [
+          "The Human-in-the-Loop Threshold: Requiring manual owner sign-off for any invoice or payout exceeding $1,000.",
+          "Immutable Audit Logging: Storing full transaction payloads and extraction confidence scores in an append-only database.",
+          "Reconciliation Safeguards: Verifying total invoice amounts match line-item sums before triggering ledger entries.",
+          "Disaster Recovery Protocols: Building automated rollback mechanisms in the event of third-party accounting API failures."
         ],
-        takeaway: "Automated 3-tier proposals lift average deal sizes while streamlining customer approval and deposit collection.",
-      },
-      {
-        lesNum: 5,
-        title: "Service #9: Accounts Receivable Dunning & Payment Recovery Bot",
-        duration: "8m",
-        summary: "Deploy an empathetic yet persistent automated collections engine that chases overdue invoices and collects payments via SMS.",
-        bulletPoints: [
-          "The Cash Flow Bleed: Small businesses often have $30,000 to $100,000+ tied up in unpaid 30-, 60-, and 90-day overdue invoices.",
-          "The Polite Multi-Touch Sequence: Day +1 (Friendly Reminder) -> Day +7 (System Follow-Up) -> Day +14 (Firm Notice) -> Day +30 (Executive Escalation).",
-          "One-Click SMS Payment Links: Sending direct Stripe / QuickBooks pay links so customers can settle balances from their phone in 10 seconds.",
-          "Handling Disputes: Using conversational AI to detect if a customer has a service complaint, pausing dunning and alerting the owner.",
-        ],
-        takeaway: "An automated accounts receivable bot recovers thousands in trapped cash flow without uncomfortable owner collection calls.",
-      },
-      {
-        lesNum: 6,
-        title: "Service #9 Deep Dive: Partial Payments, Payment Plans & Aging Reports",
-        duration: "8m",
-        summary: "Empower the dunning bot to negotiate automated partial payment plans and deliver real-time aging reports to management.",
-        bulletPoints: [
-          "Automating Payment Plans: Allowing overdue customers to split large balances into 2 or 3 bi-weekly payments with automated billing.",
-          "AR Aging Dashboard: Building an Airtable dashboard visualizing Current, 30-Day, 60-Day, and 90-Day accounts receivable balances.",
-          "Payment Confirmation Workflows: Sending instant receipts and thanking the customer immediately upon balance clearance.",
-          "Financial ROI Demonstration: Showing the business owner how collecting $15,000 in overdue receivables paid for your agency services instantly.",
-        ],
-        takeaway: "Flexible payment plans and automated tracking turn delinquent accounts into collected revenue.",
-      },
-      {
-        lesNum: 7,
-        title: "Module 4 Milestone: Testing & Bundling Services 7–9",
-        duration: "7m",
-        summary: "Package Services 7 through 9 into 'The Automated Finance & Back-Office Suite' and execute live testing.",
-        bulletPoints: [
-          "The Back-Office Package: Positioning Invoice Parser + Proposal Builder + AR Dunning as 'The Cash Flow Accelerator' ($3,000 setup + $400/mo).",
-          "Simulating an Invoice Extraction: Forwarding a sample supplier PDF and verifying data accuracy in QuickBooks test sandbox.",
-          "Simulating AR Dunning: Triggering an overdue invoice alert and testing the payment link checkout experience.",
-          "Transitioning to Scheduling & Operations: Moving to dispatcher bots and operational workflows in Module 5.",
-        ],
-        takeaway: "Automating back-office finance saves business owners 10+ hours of admin work every week and accelerates cash collection.",
-      },
-    ],
+        "takeaway": "Financial automations must always prioritize accuracy over speed. Require human review for large transactions."
+      }
+    ]
   },
   {
-    num: 5,
-    id: "module-05",
-    title: "Operational & Scheduling Systems (Services 10–12)",
-    description: "Deploy mission-critical operational systems: 24/7 Smart Appointment Dispatchers, Inventory Reorder Predictors, and Employee Onboarding Bots.",
-    duration: "54m",
-    lessons: [
+    "num": 5,
+    "id": "module-05",
+    "title": "Operations & Field Dispatch Automation Systems (Services 10–12)",
+    "description": "Optimize technician scheduling, route planning, inventory restocking, and field compliance for trade businesses.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "Service #10: 24/7 Smart Appointment Dispatcher & Route Optimizer",
-        duration: "8m",
-        summary: "Build an automated scheduling system that books appointments based on technician skills, geographic location, and real-time availability.",
-        bulletPoints: [
-          "The Dispatch Scheduling Nightmare: Dispatchers spend hours manually mapping technician routes, leading to wasted drive time and gas.",
-          "Geographic Cluster Scheduling: Using AI to group appointments by zip code clusters to minimize technician travel times.",
-          "Skill-Based Matching: Matching complex jobs (e.g. commercial boiler repair) only to certified senior technicians in the schedule.",
-          "Two-Way Customer Confirmation: Sending automated SMS confirmations with 'Reply YES to confirm' to prevent costly customer no-shows.",
+        "lesNum": 1,
+        "title": "Service #10: 24/7 Smart Appointment Dispatcher & Route Optimizer",
+        "duration": "15m",
+        "summary": "Build an intelligent dispatch engine that clusters technician routes by geographic proximity to cut fuel and travel time.",
+        "bulletPoints": [
+          "The Drive-Time Drain: Why unoptimized field routes waste 90+ minutes per technician daily in unnecessary traffic.",
+          "Geographic Clustering Algorithms: Grouping service calls by zip code and traffic patterns using Google Maps Distance Matrix API.",
+          "Dynamic Emergency Insertion: Automatically rerouting the nearest available technician when high-priority emergencies arrive.",
+          "Automated Technician SMS Alerts: Dispatching customer notes, gate codes, and job histories directly to field technician phones."
         ],
-        takeaway: "Smart dispatching reduces drive time, cuts fuel costs, and eliminates scheduling chaos for service businesses.",
+        "takeaway": "Route optimization adds an extra billable service call per technician each day without adding working hours."
       },
       {
-        lesNum: 2,
-        title: "Service #10 Deep Dive: Automated Rescheduling & Cancellation Fillers",
-        duration: "8m",
-        summary: "Implement autonomous cancellation filling that instantly texts waitlisted customers when a schedule opening arises.",
-        bulletPoints: [
-          "The Cost of Cancellations: A last-minute technician cancellation burns $200–$500 in lost revenue and idle payroll.",
-          "Autonomous Cancellation Detection: Detecting appointment cancellations via webhook and identifying the open time slot immediately.",
-          "Waitlist Blast: Querying the CRM waitlist and texting 5 nearby clients: 'We have an opening today at 2:00 PM—first to reply YES gets it!'",
-          "Automated Slot Filling: Assigning the slot to the first respondent and notifying the technician in under 3 minutes.",
+        "lesNum": 2,
+        "title": "Service #11: Predictive Inventory Reorder Alert & Truck Stock Tracker",
+        "duration": "15m",
+        "summary": "Implement inventory tracking automations that monitor common parts consumption and trigger automatic supplier restock orders.",
+        "bulletPoints": [
+          "The Missing Part Dilemma: How running out of basic capacitors or fittings derails high-margin repair jobs.",
+          "Job-Completion Parts Logging: Prompting technicians to select used parts from a 10-second mobile drop-down upon job completion.",
+          "Automated Restock Thresholds: Generating automated purchase orders to local suppliers when truck inventory falls below minimums.",
+          "Supplier Price Auditing: Tracking price changes across multiple local distributors to secure the lowest wholesale costs."
         ],
-        takeaway: "Automatically filling canceled appointment slots recovers thousands in lost operational capacity.",
+        "takeaway": "Automated truck restocking ensures technicians always have parts on hand to complete jobs on the first visit."
       },
       {
-        lesNum: 3,
-        title: "Service #11: Inventory Reorder Predictor & Supply Chain Alert",
-        duration: "8m",
-        summary: "Build a lightweight inventory tracker that monitors parts consumption and alerts management before critical supplies run out.",
-        bulletPoints: [
-          "Stockout Costs: Technicians arriving on job sites without necessary parts waste hours driving to supply houses mid-day.",
-          "Tracking Parts Consumption: Automatically deducting parts used based on completed job invoices or technician field logs.",
-          "Reorder Threshold Alerts: Alerting the warehouse manager or owner via Slack/SMS when stock falls below minimum safety levels.",
-          "One-Click Purchase Order Generation: Pre-populating a purchase order email to the preferred local supply house for owner approval.",
+        "lesNum": 3,
+        "title": "Service #12: Employee Onboarding & Safety Certification Sentinel",
+        "duration": "15m",
+        "summary": "Automate trade licensing verification, safety audit logging, and new apprentice onboarding checklists.",
+        "bulletPoints": [
+          "Compliance Vulnerabilities: The heavy fines and insurance liabilities of lapsed technician licenses or missed safety audits.",
+          "Automated Certification Expiration Tracking: Monitoring EPA, OSHA, and trade license expiration dates 60 days in advance.",
+          "Daily Mobile Tailgate Safety Sign-Offs: Enforcing digital safety checklists before technicians can view their daily dispatch schedule.",
+          "Streamlined Apprentice Onboarding: Guiding new hires through document submission, tax forms, and tool assignments via WhatsApp."
         ],
-        takeaway: "Preventing inventory stockouts keeps technicians working productively in the field instead of running errands.",
+        "takeaway": "Automating safety compliance protects the business owner from insurance liability and costly OSHA penalties."
       },
       {
-        lesNum: 4,
-        title: "Service #11 Deep Dive: Multi-Truck Stock Auditing & Tool Tracking",
-        duration: "8m",
-        summary: "Deploy mobile-friendly digital checklists for technicians to audit truck inventory and report broken tools effortlessly.",
-        bulletPoints: [
-          "The Monday Morning Truck Audit: Sending an automated mobile checklist every Monday morning for technicians to verify truck stock.",
-          "Broken Tool Reporting: Allowing technicians to snap a photo of damaged equipment and request immediate replacement via Telegram.",
-          "Centralized Equipment Inventory: Maintaining a centralized Airtable database tracking serial numbers, calibration dates, and warranties.",
-          "Loss Prevention: Reducing missing equipment and shrinkage across the company's vehicle fleet.",
+        "lesNum": 4,
+        "title": "Multi-Truck Field Deployment, Mobile Webhooks & Offline Resiliency",
+        "duration": "15m",
+        "summary": "Deploy field automations across multi-vehicle fleets with offline caching, cellular dead-zone tolerance, and sync retries.",
+        "bulletPoints": [
+          "Cellular Dead-Zone Engineering: Caching field form inputs locally in mobile browser storage when technicians lose connectivity.",
+          "Conflict-Free Syncing: Resolving concurrent updates when multiple technicians update shared inventory ledgers simultaneously.",
+          "Field Hardware Considerations: Optimizing UI interactions for rugged tablets, outdoor glare, and one-handed mobile entry.",
+          "End-of-Day Fleet Reconciliation: Running automated evening checks that verify all dispatched jobs were closed and billed."
         ],
-        takeaway: "Standardized digital truck audits ensure every service vehicle is fully stocked and ready to generate revenue.",
-      },
-      {
-        lesNum: 5,
-        title: "Service #12: Employee Onboarding & Compliance Bot",
-        duration: "8m",
-        summary: "Automate the new hire intake process, document collection, safety certifications, and company SOP training for SMBs.",
-        bulletPoints: [
-          "The SMB Hiring Burden: Hiring new technicians or admin staff involves chasing W-4s, I-9s, driver's licenses, and safety certifications.",
-          "The Onboarding Flow: Triggering an automated onboarding checklist via SMS/email the moment a candidate accepts a job offer.",
-          "Document OCR Verification: Extracting and verifying driver's license expiration dates, trade licenses, and insurance cards automatically.",
-          "Interactive SOP Training: Delivering daily bite-sized company safety guidelines and quiz questions during the employee's first week.",
-        ],
-        takeaway: "An automated onboarding bot ensures full compliance and gets new employees productive in days instead of weeks.",
-      },
-      {
-        lesNum: 6,
-        title: "Service #12 Deep Dive: Certification Expiration Sentinel & Safety Audits",
-        duration: "7m",
-        summary: "Build an autonomous tracking system that monitors trade licenses, OSHA certs, and insurance renewals to prevent compliance penalties.",
-        bulletPoints: [
-          "Compliance Risks: Operating with an expired trade license or lapsed vehicle insurance exposes business owners to severe fines and liability.",
-          "The 60-Day Renewal Trigger: Alerting technicians and the HR manager 60, 30, and 14 days before license or certification expiration.",
-          "Collecting Updated Renewals: Providing a mobile upload link where employees submit renewed documentation directly.",
-          "Executive Compliance Report: Giving owners a clean dashboard proving 100% compliance across all active staff and vehicles.",
-        ],
-        takeaway: "Autonomous compliance tracking protects business owners from devastating regulatory fines and legal liability.",
-      },
-      {
-        lesNum: 7,
-        title: "Module 5 Milestone: Testing & Bundling Services 10–12",
-        duration: "7m",
-        summary: "Package Services 10 through 12 into 'The Operational Efficiency Suite' and verify all scheduling and inventory triggers.",
-        bulletPoints: [
-          "The Operations Package: Positioning Dispatcher + Inventory Predictor + Onboarding Bot as 'The Operations Engine' ($2,500 setup + $350/mo).",
-          "Simulating a Route Optimization: Testing appointment booking logic across multiple zip codes and verifying calendar assignment.",
-          "Simulating Inventory Alert: Triggering a stockout threshold and verifying the automated supplier PO draft.",
-          "Preparing for Packaging & Sales: Moving to bundling, pricing, and client acquisition in Modules 6 and 7.",
-        ],
-        takeaway: "Operational workflows transform chaotic small businesses into smooth, predictable, scalable enterprises.",
-      },
-    ],
+        "takeaway": "Field systems must be built for the real world. Ensure offline caching so lost cell service never halts operations."
+      }
+    ]
   },
   {
-    num: 6,
-    id: "module-06",
-    title: "Packaging, Retainer Bundles & The SMB Pricing Playbook",
-    description: "Package the 12 services into irresistible tiered bundles, establish value-anchored pricing, and build predictable monthly recurring revenue.",
-    duration: "53m",
-    lessons: [
+    "num": 6,
+    "id": "module-06",
+    "title": "Packaging, Retainer Bundles & The SMB Pricing Playbook",
+    "description": "Structure high-converting service bundles, price with value-anchored retainers, and enforce rock-solid client service agreements.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "The Danger of Selling 12 Services Individually (The Menu Trap)",
-        duration: "8m",
-        summary: "Understand why presenting a 12-item menu overwhelms small business owners and leads to decision paralysis and lost sales.",
-        bulletPoints: [
-          "The Paradox of Choice: Presenting 12 individual services forces the client to evaluate 12 separate purchasing decisions.",
-          "Why Menu Pricing Fails: Clients pick the cheapest $200 service, experience minimal impact, and churn within 60 days.",
-          "The Transformation Framing: Bundling complementary services into complete operational systems that deliver unmistakable business outcomes.",
-          "The 3 Packaged Systems: The Revenue Shield, The Operations Engine, and The Full Autonomous Business.",
+        "lesNum": 1,
+        "title": "The Menu Trap: Transitioning from Point Solutions to Transformation Bundles",
+        "duration": "15m",
+        "summary": "Why selling individual automations invites price resistance and how to package outcomes that business owners eagerly buy.",
+        "bulletPoints": [
+          "The Menu Trap: Why presenting a list of 12 distinct tools confuses clients and leads to analysis paralysis.",
+          "Selling Outcomes Over Features: Framing your services around revenue generation, labor reduction, and peace of mind.",
+          "The 3-Tier Bundle Architecture: Structuring entry-level, standard, and comprehensive transformation tiers.",
+          "Positioning Against In-House Staff: Demonstrating that a $499/month automation bundle replaces a $3,500/month administrative hire."
         ],
-        takeaway: "Never sell a menu of 12 standalone tools; sell 3 packaged operational transformations that solve complete problems.",
+        "takeaway": "Never sell a technology menu. Sell complete operational solutions that solve one major business headache end-to-end."
       },
       {
-        lesNum: 2,
-        title: "Bundle #1: 'The Revenue Leakage Shield' ($1,800 Setup + $299/mo)",
-        duration: "8m",
-        summary: "Package Services 1, 2, and 4 into the ultimate front-of-house customer acquisition and reputation bundle for local service businesses.",
-        bulletPoints: [
-          "What's Included: Missed-Call AI Text-Back (Service 1) + Instant Web Quoter (Service 2) + Automated Google Review Harvester (Service 4).",
-          "The Target Market: Contractors, plumbers, roofers, dentists, and auto mechanics who miss phone calls and want more 5-star reviews.",
-          "The Irresistible Pitch: 'We guarantee you will capture at least 3 leads and 10 reviews in your first 30 days or we refund your setup fee.'",
-          "Unit Economics: $1,800 upfront cash flow + $299/mo recurring maintenance with under 1 hour of monthly maintenance.",
+        "lesNum": 2,
+        "title": "The Three Core Offer Bundles: Revenue Shield, Cash Flow & Autonomous OS",
+        "duration": "15m",
+        "summary": "Master the exact specifications, pricing points, and deliverables for the three high-converting SMB automation packages.",
+        "bulletPoints": [
+          "Bundle 1: The Revenue Leakage Shield ($1,800 setup + $299/mo): Missed-call text back, review harvester, and speed-to-lead triage.",
+          "Bundle 2: The Back-Office Cash Flow Accelerator ($2,800 setup + $399/mo): Invoice parser, proposal generator, and AR dunning engine.",
+          "Bundle 3: The Complete Autonomous OS ($4,800 setup + $699/mo): Inbound capture, financial workflows, and smart dispatch operations.",
+          "Custom Add-Ons: Monetizing custom API bridges and additional technician seats at $50/month each."
         ],
-        takeaway: "The Revenue Leakage Shield is the highest-converting introductory package in the entire SMB automation catalog.",
+        "takeaway": "Offer three clear tiers. Most clients will choose the middle package while your highest-margin clients take the top tier."
       },
       {
-        lesNum: 3,
-        title: "Bundle #2: 'The Back-Office Cash Flow Accelerator' ($2,800 Setup + $399/mo)",
-        duration: "8m",
-        summary: "Package Services 7, 8, and 9 into a high-ROI back-office automation system that accelerates invoicing and recovers unpaid accounts.",
-        bulletPoints: [
-          "What's Included: Vendor Invoice Auto-Parser (Service 7) + Dynamic Estimate Builder (Service 8) + AR Dunning Bot (Service 9).",
-          "The Target Market: Growing trade businesses with 5–25 field technicians struggling with paperwork, billing delays, and late payments.",
-          "The Value Pitch: 'Save 15 hours of weekend bookkeeping and recover $10,000+ in overdue invoices in your first 3 weeks.'",
-          "Delivery Speed: Deployed in 10 business days using standardized Make.com and QuickBooks integrations.",
+        "lesNum": 3,
+        "title": "Crafting the 1-Page SMB Service Level Agreement, SOW & Scope Containment",
+        "duration": "15m",
+        "summary": "Protect your margins with a battle-tested 1-page service contract that defines exact deliverables and prevents scope creep.",
+        "bulletPoints": [
+          "The 1-Page Plain-English Contract: Why 15-page legal agreements intimidate small business owners and delay closing.",
+          "Defining Service Boundaries: Explicitly enumerating what is included versus what requires an additional paid change order.",
+          "SLA Expectations: Setting realistic expectations for webhook uptime, API maintenance, and support turnaround times.",
+          "Payment Terms & Auto-Renewal: Enforcing automatic credit card billing on the 1st of every month with 30-day cancellation notice."
         ],
-        takeaway: "The Cash Flow Accelerator targets the owner's personal pain: wasting evenings and weekends on tedious administrative paperwork.",
+        "takeaway": "A clear, concise contract builds trust with local owners while firmly protecting your agency against scope creep."
       },
       {
-        lesNum: 4,
-        title: "Bundle #3: 'The Complete Autonomous Operating System' ($4,800 Setup + $699/mo)",
-        duration: "8m",
-        summary: "Combine all 4 operational clusters into an enterprise-grade automation partnership for premier regional service companies.",
-        bulletPoints: [
-          "What's Included: All 12 services deployed across customer acquisition, retention, financial processing, and operational scheduling.",
-          "The Target Market: Established multi-million-dollar SMBs ($2M–$10M ARR) ready to dominate their regional territory.",
-          "Dedicated Partnership SLA: Priority 4-hour support, monthly architecture reviews, and continuous prompt and workflow optimization.",
-          "The Transformational ROI: Eliminates the need to hire 1 to 2 full-time office coordinators, saving $70,000+ in annual overhead.",
+        "lesNum": 4,
+        "title": "Automated Stripe Retainer Billing, Usage Metering & Churn Prevention",
+        "duration": "15m",
+        "summary": "Set up recurring billing infrastructure, manage third-party software pass-through costs, and keep client churn near zero.",
+        "bulletPoints": [
+          "Stripe Billing Architecture: Setting up recurring subscriptions with automatic dunning for failed client cards.",
+          "Handling Software Costs: Requiring clients to maintain their own Twilio and Make accounts to eliminate pass-through liability.",
+          "The Monthly Value Report: Sending an automated 1-page report detailing exact missed calls saved and reviews generated.",
+          "Proactive Health Check-Ins: Conducting quarterly 15-minute optimization reviews to demonstrate ongoing agency value."
         ],
-        takeaway: "The Complete Autonomous OS positions your agency as the fractional Chief Technology Officer for premier local businesses.",
-      },
-      {
-        lesNum: 5,
-        title: "Crafting the 1-Page SMB Service Agreement & SOW",
-        duration: "7m",
-        summary: "Design a simple, transparent 1-page agreement that eliminates legal friction and facilitates instant client signatures.",
-        bulletPoints: [
-          "Why 20-Page Legal Contracts Kill SMB Deals: Small business owners do not have legal departments and will delay signing for weeks.",
-          "The 4 Essential Components: Scope of Services, Milestone Delivery Timeline (14 Days), Pricing & Retainer Terms, and Mutual Responsibilities.",
-          "Phone Carrier Pass-Through: Explicitly noting that third-party phone carrier fees (Twilio SMS ~$10–$30/mo) are billed directly to their card.",
-          "No Long-Term Lock-In: Offering a 30-day cancellation policy on retainers to eliminate client purchasing risk.",
-        ],
-        takeaway: "A clean, 1-page service agreement builds trust, speeds up signing, and protects both parties.",
-      },
-      {
-        lesNum: 6,
-        title: "Managing Retainer Billing & Automated Stripe Invoicing",
-        duration: "7m",
-        summary: "Automate retainer collection, subscription management, and credit card update dunning using Stripe Billing.",
-        bulletPoints: [
-          "Setting Up Stripe Subscriptions: Automating monthly retainer charges on the 1st or 15th of every month.",
-          "Automated Card Expiration Reminders: Letting Stripe automatically email clients when their card on file is expiring.",
-          "Failed Payment Automation: Retrying failed cards 3 times before pausing automated workflows and alerting management.",
-          "Financial Reporting: Tracking Monthly Recurring Revenue (MRR), Churn Rate, and Customer Lifetime Value in real time.",
-        ],
-        takeaway: "Automated subscription billing ensures your monthly retainer cash flow hits your bank account without manual invoicing.",
-      },
-      {
-        lesNum: 7,
-        title: "Module 6 Milestone: Packaging Review & Offer Readiness",
-        duration: "7m",
-        summary: "Review your bundle packaging, proposal templates, and pricing materials ahead of local client acquisition.",
-        bulletPoints: [
-          "Finalizing the 3-Tier Offer Sheet: Creating clean visual PDF and Notion versions of the three core bundles.",
-          "Rehearsing the Value Explanation: Practicing how to explain the ROI of each bundle to a busy business owner in under 2 minutes.",
-          "Preparing Sandbox Demos for Each Bundle: Ensuring live demo links are ready for immediate sharing during sales conversations.",
-          "Transitioning to Client Acquisition: Moving to local outreach and closing strategies in Module 7.",
-        ],
-        takeaway: "With packaged bundles and value-anchored pricing established, client acquisition becomes a simple numbers game.",
-      },
-    ],
+        "takeaway": "Monthly proof-of-performance reports make your retainer feel indispensable and virtually eliminate client churn."
+      }
+    ]
   },
   {
-    num: 7,
-    id: "module-07",
-    title: "The Local SMB Client Engine — Acquisition, Delivery SOWs & Scale",
-    description: "Execute proven local client acquisition strategies, streamline delivery assembly lines, and scale to $15,000/month in recurring revenue.",
-    duration: "55m",
-    lessons: [
+    "num": 7,
+    "id": "module-07",
+    "title": "Local SMB Client Acquisition, 7-Day Delivery SOWs & Retainer Scaling",
+    "description": "Execute proven local client outreach strategies, run rapid 7-day deployments, and scale to $15,000/month in recurring revenue.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "The 'Secret Shopper' Acquisition Strategy: The Ultimate SMB Door Opener",
-        duration: "8m",
-        summary: "Call target service businesses after hours, document their missed call response, and use the findings as an irresistible outreach hook.",
-        bulletPoints: [
-          "The Secret Shopper Method: Calling 10 local plumbers or roofers at 6:30 PM and recording how many go to voicemail without follow-up.",
-          "The Follow-Up Audit Video: Recording a 3-minute Loom: 'I called your business yesterday at 6:30 PM with an urgent inquiry... here's what happened.'",
-          "Demonstrating the Solution: Showing what their customer experience could look like with an instant 15-second conversational text-back.",
-          "The Unbeatable Conversion Rate: Achieving a 45%+ response rate because the audit exposes a real, quantifiable revenue loss.",
+        "lesNum": 1,
+        "title": "The Secret Shopper Inbound Audit Strategy: The Ultimate SMB Door Opener",
+        "duration": "15m",
+        "summary": "How to audit local business response times to generate irresistible, data-backed outreach that books sales calls on demand.",
+        "bulletPoints": [
+          "The Secret Shopper Audit: Calling 20 local contractors after 5:30 PM and submitting website inquiries to measure response times.",
+          "Recording the Proof Video: Creating a 2-minute Loom showing their missed call and the competitor who responded in 3 minutes.",
+          "The Non-Pushy Outreach Script: Sending the audit video directly to the owner via text or LinkedIn with zero hard sales pitch.",
+          "Conversion Metrics: How secret shopper audits consistently generate 35%+ positive response rates from local business owners."
         ],
-        takeaway: "Secret shopper audits expose live revenue leakage that business owners cannot ignore.",
+        "takeaway": "Showing a business owner their own lost revenue in real time is 10x more compelling than any cold sales pitch."
       },
       {
-        lesNum: 2,
-        title: "In-Person Local Blitzing: Chambers, Trade Shows & BNI Groups",
-        duration: "8m",
-        summary: "Leverage face-to-face local networking to build high-trust relationships with influential business owners and trade leaders.",
-        bulletPoints: [
-          "The Local Trust Premium: Main Street business owners trust someone they can meet for coffee far more than a remote agency on Twitter.",
-          "Attending Home Builder & Contractor Associations: Networking where commercial contractors and specialty trade owners gather.",
-          "The 30-Second Elevator Pitch: 'We build automated phone and booking engines for contractors so they never lose a $5,000 job to a missed call.'",
-          "Booking the Free Audit: Never selling on the spot; offering a complimentary 15-minute operational audit over coffee or Zoom.",
+        "lesNum": 2,
+        "title": "High-Conversion Local Acquisition: In-Person Blitzes, BNI & Cold Teardowns",
+        "duration": "15m",
+        "summary": "Master local networking channels, trade association sponsorships, and strategic referral partnerships that yield qualified leads.",
+        "bulletPoints": [
+          "Local BNI & Chamber Blitzes: Positioning yourself as the exclusive automation specialist in your geographic region.",
+          "Strategic Alliances: Partnering with local CPA firms and web design agencies who eagerly refer their SMB clients.",
+          "Targeted Direct Mail Teardowns: Sending physical 1-page operational audit letters to licensed contractor business addresses.",
+          "Leveraging Early Client Case Studies: Transforming your first successful local deployment into 5 neighborhood referrals."
         ],
-        takeaway: "High-trust local networking turns 30-minute coffee meetings into signed $2,500 automation contracts.",
+        "takeaway": "Local business runs on trust and relationships. Combine digital audits with personal local presence to dominate your market."
       },
       {
-        lesNum: 3,
-        title: "Running Targeted Local Cold Email & Direct Mail Teardowns",
-        duration: "8m",
-        summary: "Combine hyper-targeted cold email with physical direct-mail audit postcards to capture the attention of busy business owners.",
-        bulletPoints: [
-          "Building the Local ICP List: Curating 150 local service companies with 5–25 employees and active Google Ads campaigns.",
-          "The 3-Sentence Local Cold Email: Referencing their local community, their Google Ads spend, and their current speed-to-lead gap.",
-          "The Direct-Mail Postcard Teardown: Sending a high-gloss postcard featuring a QR code linking to their personalized Loom video audit.",
-          "Follow-Up Cadence: Calling the business 3 days after postcard delivery to ask if the owner reviewed their operational teardown.",
+        "lesNum": 3,
+        "title": "The 30-Minute Coffee / Zoom Closing Framework & Objection Handling",
+        "duration": "15m",
+        "summary": "Conduct consultative sales conversations that dismantle objections around cost, tech complexity, and staff adoption.",
+        "bulletPoints": [
+          "The 30-Minute Discovery Structure: Diagnosing current operational bottlenecks for 20 minutes before presenting any solution.",
+          "Overcoming I Am Not Tech-Savvy: Reassuring the owner that your team handles 100% of the technical setup and maintenance.",
+          "Overcoming My Staff Won Not Use It: Demonstrating that the automations run silently in the background with zero staff training required.",
+          "Securing the Commitment: Collecting the initial setup deposit on the call before scheduling the onboarding kickoff."
         ],
-        takeaway: "Combining digital outreach with tangible direct mail achieves 3x higher response rates from traditional business owners.",
+        "takeaway": "Focus entirely on the business problem during sales calls. The less you talk about technology, the faster they buy."
       },
       {
-        lesNum: 4,
-        title: "The 30-Minute Coffee / Zoom Closing Framework",
-        duration: "8m",
-        summary: "Lead a high-converting consultative sales conversation that leads naturally to signing Bundle #1 or Bundle #2.",
-        bulletPoints: [
-          "The Meeting Flow: Diagnosing current workflow pains (10 min), Demonstrating the Sandbox Solution (10 min), Presenting the Bundle (10 min).",
-          "Quantifying Lost Revenue: Showing the owner how capturing just 2 additional service calls per month pays for the entire system 4x over.",
-          "Overcoming the 'I'm Not Tech-Savvy' Fear: Reassuring the owner that your team handles 100% of the technical setup and maintenance.",
-          "Closing on the Spot: Collecting the 50% deposit via a mobile Stripe link before leaving the meeting.",
+        "lesNum": 4,
+        "title": "Standardized 7-Day Rapid Deployment Assembly Line & Scaling to $15K MRR",
+        "duration": "15m",
+        "summary": "Execute a standardized 7-day deployment blueprint to deliver client results rapidly and scale your agency to 25+ retainers.",
+        "bulletPoints": [
+          "The 7-Day Deployment Sprint: Day 1 credentials, Day 2-3 build, Day 4 testing, Day 5 owner sign-off, Day 6-7 live monitoring.",
+          "Standardized Template Libraries: Reusing pre-configured Make blueprints and Twilio flows to cut build times to under 3 hours.",
+          "The 20-Client Retainer Math: How 20 SMB clients paying an average $400/month generates $8,000/month recurring plus $40K in setup fees.",
+          "The Solo Operator Scaling Blueprint: Operating a $15,000/month agency with zero full-time staff using modular contractors."
         ],
-        takeaway: "Focus the sales conversation entirely on captured revenue and peace of mind, not technical software mechanics.",
-      },
-      {
-        lesNum: 5,
-        title: "Standardized 7-Day Rapid Deployment Assembly Line",
-        duration: "8m",
-        summary: "Deploy client automation bundles in under 7 days using pre-built Make.com templates, Airtable bases, and standardized onboarding SOPs.",
-        bulletPoints: [
-          "The 7-Day Sprint Timeline: Day 1 Kickoff & Phone Handshake; Day 3 Core Workflow Configuration; Day 5 Testing; Day 7 Live Handoff.",
-          "Cloning Pre-Built Blueprints: Exporting and importing modular Make.com JSON templates to assemble 85% of logic in under 60 minutes.",
-          "Standardized Client Onboarding Form: Gathering Twilio auth, CRM API keys, and staff phone numbers via a clean 5-minute Typeform.",
-          "Staff Training in 15 Minutes: Providing a simple 1-page PDF guide showing staff how to review notifications and approve jobs.",
-        ],
-        takeaway: "Standardized deployment blueprints allow you to deliver projects in 7 days while maintaining 85%+ profit margins.",
-      },
-      {
-        lesNum: 6,
-        title: "Scaling to $15,000/Month: The 20-Client Retainer Mathematics",
-        duration: "8m",
-        summary: "Master the mathematical growth engine of signing 2 new clients per month and stacking recurring retainers to $15,000/mo.",
-        bulletPoints: [
-          "The Agency Growth Math: 2 new sprint setups per month ($5,000) + 20 stacked retainers at $350/mo ($7,000) = $12,000/mo within 10 months.",
-          "Upselling Additional Services: Introducing Back-Office Finance (Bundle 2) or Operations (Bundle 3) to satisfied Bundle 1 clients.",
-          "Low Churn Dynamics: Local businesses rarely cancel software that actively books calls and generates Google reviews.",
-          "Hiring a Part-Time Automation Assistant: Delegating routine client maintenance and Twilio monitoring at 15 active retainer clients.",
-        ],
-        takeaway: "Stacking $350/mo retainers across 20 to 30 sticky local clients builds a bulletproof, high-margin $15K/mo recurring revenue engine.",
-      },
-      {
-        lesNum: 7,
-        title: "The Master Capstone: Launching Your SMB Automation Agency",
-        duration: "7m",
-        summary: "Synthesize the complete 12 AI Services curriculum and take decisive action to acquire your first local business client this week.",
-        bulletPoints: [
-          "The 48-Hour Challenge: Conduct 5 secret shopper calls to local contractors and send 5 personalized video teardowns within 48 hours.",
-          "Embracing Imperfect Action: Remembering that local business owners are desperate for solutions to labor shortages and missed calls.",
-          "Continuous Catalog Expansion: Adding new specialized services as frontier AI capabilities evolve.",
-          "Official Graduation: Stepping forward as a trusted local automation authority and business transformation partner.",
-        ],
-        takeaway: "Execution separates dreamers from agency founders; take immediate action and land your first local client this week.",
-      },
-    ],
-  },
+        "takeaway": "Standardize your delivery templates so every new client takes under 4 hours to deploy. That is how you scale profitably."
+      }
+    ]
+  }
 ];
 
 module.exports = {

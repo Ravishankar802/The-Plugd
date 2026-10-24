@@ -22,57 +22,36 @@ export const AI_SERVICE_BUSINESS_MODULES_METADATA: ModuleMetadata[] = [
     "number": "01",
     "title": "The 3-Tool Architecture & $10,000/Month Business Model",
     "description": "Understand why 3 focused tools outperform complex bloated stacks, master the business model math, and identify high-margin B2B clients.",
-    "duration": "1h 45m",
-    "lessonsCount": 7,
+    "duration": "56m",
+    "lessonsCount": 4,
     "lessons": [
       {
         "id": "01-1",
         "number": "1.1",
         "title": "Why 3 Tools Outperform Complex 20-App Software Stacks",
-        "duration": "15m",
-        "summary": "Discover how mastering Airtable, Claude 3.7, and Make.com provides 100% of the leverage needed to deliver high-ticket enterprise workflows."
+        "duration": "14m",
+        "summary": "Discover how standardizing on Airtable, Claude 3.7, and Make.com provides 100% of the leverage needed to deliver high-ticket enterprise workflows."
       },
       {
         "id": "01-2",
         "number": "1.2",
         "title": "The Core Roles: Airtable (Memory), Claude 3.7 (Reasoning), Make.com (Execution)",
-        "duration": "15m",
+        "duration": "14m",
         "summary": "Deep-dive into the architectural responsibility of each pillar and how they interlock to form an autonomous operating system."
       },
       {
         "id": "01-3",
         "number": "1.3",
         "title": "Unit Economics of the $10K Business: Setup Sprints & Recurring Retainers",
-        "duration": "15m",
+        "duration": "14m",
         "summary": "Deconstruct the exact financial model required to reach $10,000/month: charging $3,000 setup fees and $1,000/month retainers."
       },
       {
         "id": "01-4",
         "number": "1.4",
-        "title": "Selecting High-Margin B2B Niches with Manual Administrative Bottlenecks",
-        "duration": "15m",
-        "summary": "Identify lucrative target industries where administrative waste is rampant and willingness-to-pay is exceptionally high."
-      },
-      {
-        "id": "01-5",
-        "number": "1.5",
-        "title": "Pricing Philosophy: Value-Anchored Fixed Sprints vs. Hourly Traps",
-        "duration": "15m",
-        "summary": "Learn how to anchor pricing against customer operational savings, allowing you to charge $3,500 for a 4-hour build."
-      },
-      {
-        "id": "01-6",
-        "number": "1.6",
-        "title": "Setting Up Agency Multi-Tenant Workspaces & API Infrastructure",
-        "duration": "15m",
-        "summary": "Establish professional agency workspaces across Airtable, Anthropic Console, and Make.com with clean client segregation."
-      },
-      {
-        "id": "01-7",
-        "number": "1.7",
-        "title": "Module 1 Checkpoint: Your $10K Business Model & Flagship Service Blueprint",
-        "duration": "15m",
-        "summary": "Define your chosen target niche, select your initial flagship service offering, and construct your 90-day financial roadmap."
+        "title": "Target Market Selection: B2B Industries with High Transaction Values",
+        "duration": "14m",
+        "summary": "Pinpoint the exact commercial verticals with high transaction sizes, manual data entry headaches, and immediate budget authority."
       }
     ]
   },
@@ -80,117 +59,75 @@ export const AI_SERVICE_BUSINESS_MODULES_METADATA: ModuleMetadata[] = [
     "id": "module-02",
     "number": "02",
     "title": "Core Tool 1 — Airtable as the Enterprise Relational Database",
-    "description": "Design relational database architectures, audit trails, and client portal interfaces that act as the single source of truth.",
-    "duration": "1h 45m",
-    "lessonsCount": 7,
+    "description": "Design production relational schemas, linked record architectures, role-based interfaces, and automated state pipelines.",
+    "duration": "56m",
+    "lessonsCount": 4,
     "lessons": [
       {
         "id": "02-1",
         "number": "2.1",
-        "title": "Designing Relational Data Schemas for Complex Operations",
-        "duration": "15m",
-        "summary": "Master data modeling principles to structure multi-table business operations cleanly without data duplication."
+        "title": "Relational Schema Architecture: Normalization vs Spreadsheet Thinking",
+        "duration": "14m",
+        "summary": "Transition from flat spreadsheet thinking to relational data architecture with linked tables, foreign keys, and rollups."
       },
       {
         "id": "02-2",
         "number": "2.2",
-        "title": "Normalized Linking: Companies, Contacts, Invoices & Work Orders",
-        "duration": "15m",
-        "summary": "Build an interconnected business CRM schema linking accounts, individual stakeholders, project milestones, and billing records."
+        "title": "Building Role-Based Interfaces That Replace $10,000 Custom Software",
+        "duration": "14m",
+        "summary": "Design interactive Airtable Interfaces that allow non-technical client staff to manage data and approve actions securely."
       },
       {
         "id": "02-3",
         "number": "2.3",
-        "title": "Data Validation: Field Types, Enums & Status Pipeline Triggers",
-        "duration": "15m",
-        "summary": "Enforce strict data integrity with specialized field formats, single-select enums, and automated pipeline status gates."
+        "title": "Airtable Native Automations & High-Speed Webhook Triggers",
+        "duration": "14m",
+        "summary": "Leverage Airtable's built-in automation engine for sub-second record updates and outbound webhook dispatching."
       },
       {
         "id": "02-4",
         "number": "2.4",
-        "title": "Rollups, Lookups & Calculated Operational Velocity Metrics",
-        "duration": "15m",
-        "summary": "Compute real-time operational KPIs, revenue aggregates, and processing latency directly within your relational base."
-      },
-      {
-        "id": "02-5",
-        "number": "2.5",
-        "title": "Native Airtable Automations vs. External Orchestration Triggers",
-        "duration": "15m",
-        "summary": "Know exactly when to use native Airtable automations and when to hand off complex logic to Make.com."
-      },
-      {
-        "id": "02-6",
-        "number": "2.6",
-        "title": "Building Client Interface Dashboards with Role-Based Permissions",
-        "duration": "15m",
-        "summary": "Deploy Airtable Interfaces to give clients and internal staff customized dashboards without exposing underlying raw tables."
-      },
-      {
-        "id": "02-7",
-        "number": "2.7",
-        "title": "Module 2 Project: The Autonomous Client CRM & Work Order Hub",
-        "duration": "15m",
-        "summary": "Build, configure, and test a complete multi-client CRM and automated work order intake and tracking repository."
+        "title": "Audit Logging, Data Sanitization & State Machine Design",
+        "duration": "14m",
+        "summary": "Implement immutable audit logs, data cleaning routines, and deterministic state transitions that prevent system corruption."
       }
     ]
   },
   {
     "id": "module-03",
     "number": "03",
-    "title": "Core Tool 2 — Claude 3.7 for Reasoning, Synthesis & Decision Engines",
-    "description": "Harness Claude 3.7 Sonnet for complex document parsing, deep reasoning, structured JSON schemas, and zero-hallucination outputs.",
-    "duration": "1h 45m",
-    "lessonsCount": 7,
+    "title": "Core Tool 2 — Claude 3.7 for Reasoning, Synthesis & Extraction",
+    "description": "Harness Claude 3.7 Sonnet for multimodal document extraction, reasoning loops, strict JSON output adherence, and token optimization.",
+    "duration": "55m",
+    "lessonsCount": 4,
     "lessons": [
       {
         "id": "03-1",
         "number": "3.1",
-        "title": "The Power of Claude 3.7: Hybrid Thinking & Complex Document Extraction",
-        "duration": "15m",
-        "summary": "Understand why Claude 3.7 Sonnet is the premier model for high-stakes enterprise reasoning and structured document synthesis."
+        "title": "Why Claude 3.7 Sonnet Dominates B2B Enterprise Extraction",
+        "duration": "14m",
+        "summary": "Understand Claude 3.7's superior multimodal vision, nuanced reasoning, long context window, and industry-leading JSON schema adherence."
       },
       {
         "id": "03-2",
         "number": "3.2",
-        "title": "Crafting Deterministic System Instructions That Eliminate Hallucinations",
-        "duration": "15m",
-        "summary": "Engineer bulletproof system prompts with explicit operational role definitions, boundary constraints, and fallback protocols."
+        "title": "Engineering Deterministic JSON Schemas with Pydantic & Zod Standards",
+        "duration": "14m",
+        "summary": "Enforce strict, parseable JSON output from Claude 3.7 with zero conversational chatter or markdown syntax errors."
       },
       {
         "id": "03-3",
         "number": "3.3",
-        "title": "Processing 50+ Page PDF Invoices, Statements & Legal Contracts",
-        "duration": "15m",
-        "summary": "Pass complex multi-page document images and PDFs to Claude 3.7 to extract table data, line items, and contractual clauses."
+        "title": "Confidence Scoring & Automated Human-in-the-Loop Routing",
+        "duration": "14m",
+        "summary": "Instruct Claude 3.7 to evaluate its own extraction certainty and route ambiguous edge cases to a human review queue."
       },
       {
         "id": "03-4",
         "number": "3.4",
-        "title": "Defining Structured JSON Output Schemas for Downstream Reliability",
-        "duration": "15m",
-        "summary": "Enforce strict JSON formatting so Claude's output plugs directly into Airtable and Make.com without parsing errors."
-      },
-      {
-        "id": "03-5",
-        "number": "3.5",
-        "title": "Multi-Step Evaluation Chains: Confidence Scores & Fallback Flags",
-        "duration": "15m",
-        "summary": "Build cognitive evaluation pipelines where the model scores its own certainty and triggers human review when ambiguous."
-      },
-      {
-        "id": "03-6",
-        "number": "3.6",
-        "title": "Managing Token Economics & Latency Across High-Volume Operations",
-        "duration": "15m",
-        "summary": "Optimize API margins by caching repetitive prompt contexts, selecting model tiers, and managing throughput limits."
-      },
-      {
-        "id": "03-7",
-        "number": "3.7",
-        "title": "Module 3 Project: The Cognitive Invoice Audit & Discrepancy Flagging Engine",
-        "duration": "15m",
-        "summary": "Build an autonomous accounting assistant that ingests supplier invoices, extracts line items, and flags billing discrepancies."
+        "title": "Token Optimization, Prompt Caching & Client API Cost Management",
+        "duration": "13m",
+        "summary": "Drastically reduce client API bills by utilizing Anthropic prompt caching, context trimming, and efficient system instruction design."
       }
     ]
   },
@@ -198,235 +135,151 @@ export const AI_SERVICE_BUSINESS_MODULES_METADATA: ModuleMetadata[] = [
     "id": "module-04",
     "number": "04",
     "title": "Core Tool 3 — Make.com for Frictionless Orchestration & Integrations",
-    "description": "Wire Airtable and Claude 3.7 together with external apps, manage error directives, and deploy rock-solid execution pipelines.",
-    "duration": "1h 45m",
-    "lessonsCount": 7,
+    "description": "Wire resilient Make.com scenarios connecting Airtable and Claude 3.7 to hundreds of commercial B2B apps without crashing.",
+    "duration": "56m",
+    "lessonsCount": 4,
     "lessons": [
       {
         "id": "04-1",
         "number": "4.1",
-        "title": "Architecture of Enterprise Make.com Scenarios: Routers & Flow Control",
-        "duration": "15m",
-        "summary": "Master the visual scenario builder, modular sub-routines, data bundle flow, and conditional routing filters."
+        "title": "Scenario Architecture: Connecting Airtable and Claude 3.7 Flawlessly",
+        "duration": "14m",
+        "summary": "Build the foundational Make.com pipeline that listens for database events, dispatches to Claude, and updates records."
       },
       {
         "id": "04-2",
         "number": "4.2",
-        "title": "Ingesting Webhooks from Email, Webforms, Stripe & Client Software",
-        "duration": "15m",
-        "summary": "Configure custom webhook listeners that receive real-time JSON payloads from external software platforms."
+        "title": "Advanced Data Manipulation: Regex, Iterators, and Aggregators",
+        "duration": "14m",
+        "summary": "Handle complex multi-line transactions, parse nested arrays, and aggregate disparate data items in a single scenario run."
       },
       {
         "id": "04-3",
         "number": "4.3",
-        "title": "Wiring Airtable to Claude 3.7: Passing Context & Receiving Clean JSON",
-        "duration": "15m",
-        "summary": "Build the core cognitive bridge: querying Airtable for operational context, calling Claude API, and saving outputs."
+        "title": "Enterprise Error Directives: Break, Resume, Rollback, and Commit",
+        "duration": "14m",
+        "summary": "Protect scenarios from fatal crashes using Make.com error directives that handle third-party API downtimes automatically."
       },
       {
         "id": "04-4",
         "number": "4.4",
-        "title": "Error Handlers: Resume, Break, and Rollback Directives in Production",
-        "duration": "15m",
-        "summary": "Protect client workflows against API downtime and malformed data using enterprise error directives."
-      },
-      {
-        "id": "04-5",
-        "number": "4.5",
-        "title": "Complex Data Iterators & Aggregators for Multi-Line Transactions",
-        "duration": "15m",
-        "summary": "Deconstruct arrays of line items with Iterators, process each item through logic checks, and aggregate results."
-      },
-      {
-        "id": "04-6",
-        "number": "4.6",
-        "title": "Automated Failure Alerting & Dead-Letter Staging Repositories",
-        "duration": "15m",
-        "summary": "Configure instant Slack and SMS alerts to notify your agency team the moment an unexpected exception occurs."
-      },
-      {
-        "id": "04-7",
-        "number": "4.7",
-        "title": "Module 4 Project: The End-to-End Autonomous Work Order Pipeline",
-        "duration": "15m",
-        "summary": "Connect all 3 tools into a complete, bulletproof work order intake, cognitive processing, and client delivery engine."
+        "title": "Automated Error Telemetry: Instant Alerts to Slack and Discord",
+        "duration": "14m",
+        "summary": "Build an automated telemetry loop that captures failed execution payloads and alerts engineering via Slack/Discord instantly."
       }
     ]
   },
   {
     "id": "module-05",
     "number": "05",
-    "title": "Packaging 3 High-Ticket Recurring Services",
-    "description": "Productize your 3-tool capabilities into three high-demand B2B service packages priced between $2,500 and $7,500.",
-    "duration": "1h 45m",
-    "lessonsCount": 7,
+    "title": "Packaging 3 High-Ticket Commercial Services ($2,500–$4,500 Sprints)",
+    "description": "Package the 3-tool architecture into three standardized, high-margin commercial service offerings that solve expensive bottlenecks.",
+    "duration": "55m",
+    "lessonsCount": 4,
     "lessons": [
       {
         "id": "05-1",
         "number": "5.1",
-        "title": "The 3 Core Sellable Services: Inbound Lead Triage, Invoice Auditor, Client Portal",
-        "duration": "15m",
-        "summary": "Stop selling generic 'AI services'; package capabilities into 3 concrete operational outcomes that solve obvious pain."
+        "title": "Service #1: The Inbound Speed-to-Lead Triage Engine ($2,500)",
+        "duration": "14m",
+        "summary": "Build and package an automated system that intercepts web leads, enriches company data, scores intent, and alerts sales in 90 seconds."
       },
       {
         "id": "05-2",
         "number": "5.2",
-        "title": "Service 1 Blueprint: 90-Second Lead Response, Enrichment & Auto-Proposal",
-        "duration": "15m",
-        "summary": "Step-by-step technical and commercial blueprint for selling and delivering speed-to-lead automation engines."
+        "title": "Service #2: The Accounts Payable Invoice Auditor ($3,500)",
+        "duration": "14m",
+        "summary": "Build an automated document processing pipeline that extracts line items from vendor bills, matches purchase orders, and syncs to QuickBooks."
       },
       {
         "id": "05-3",
         "number": "5.3",
-        "title": "Service 2 Blueprint: Multimodal Invoice Ingestion & Accounting Sync",
-        "duration": "15m",
-        "summary": "Step-by-step blueprint for automating accounts payable, PDF extraction, PO matching, and QuickBooks/Xero synchronization."
+        "title": "Service #3: The Custom Operations & Dispatch Command Hub ($4,500)",
+        "duration": "14m",
+        "summary": "Build a complete operational operating system with Airtable Interfaces, automated scheduling, technician dispatch, and client portals."
       },
       {
         "id": "05-4",
         "number": "5.4",
-        "title": "Service 3 Blueprint: Custom Client Portal & Automated Project Tracking",
-        "duration": "15m",
-        "summary": "Step-by-step blueprint for deploying Airtable Interfaces and Softr client hubs with automated notification pipelines."
-      },
-      {
-        "id": "05-5",
-        "number": "5.5",
-        "title": "Pricing Matrix: $2,500-$4,000 Setup Fees + $650-$1,250/mo Retainers",
-        "duration": "15m",
-        "summary": "Master the psychology of multi-tier pricing, value anchoring, and structuring mandatory ongoing maintenance retainers."
-      },
-      {
-        "id": "05-6",
-        "number": "5.6",
-        "title": "Drafting Clear SOWs That Eliminate Scope Creep Completely",
-        "duration": "15m",
-        "summary": "Protect your time and agency margins using airtight Statement of Work templates with explicit deliverable boundaries."
-      },
-      {
-        "id": "05-7",
-        "number": "5.7",
-        "title": "Module 5 Project: Packaging Your 3-Tier Commercial Offer Deck",
-        "duration": "15m",
-        "summary": "Create a professional, branded 1-page offer sheet and capability deck ready to send to prospective B2B clients."
+        "title": "Pricing Strategy: Fixed-Scope Sprints vs Open-Ended Hourly Rates",
+        "duration": "13m",
+        "summary": "Master the psychology of value-based sprint pricing to eliminate client scope creep and protect high profit margins."
       }
     ]
   },
   {
     "id": "module-06",
     "number": "06",
-    "title": "Client Acquisition & Pain-First Discovery Process",
-    "description": "Execute outbound lead sourcing, master the 5-minute Trojan Horse Loom audit, and close 50%+ of discovery calls.",
-    "duration": "1h 45m",
-    "lessonsCount": 7,
+    "title": "Client Acquisition & The 5-Minute 'Trojan Horse' Loom Audit",
+    "description": "Land high-paying commercial clients without cold calling using personalized video teardowns and consultative discovery conversations.",
+    "duration": "56m",
+    "lessonsCount": 4,
     "lessons": [
       {
         "id": "06-1",
         "number": "6.1",
-        "title": "Sourcing High-Value B2B Accounts: Scraping Directories & Verifying Pain",
-        "duration": "15m",
-        "summary": "Build targeted prospect lists of high-margin companies experiencing acute operational and administrative bottlenecks."
+        "title": "The Trojan Horse Strategy: Proving Value Before Pitching",
+        "duration": "14m",
+        "summary": "Understand the psychological power of demonstrating working prototypes and diagnosing live operational bottlenecks before reaching out."
       },
       {
         "id": "06-2",
         "number": "6.2",
-        "title": "The 5-Minute 'Trojan Horse' Loom Audit That Books Discovery Calls",
-        "duration": "15m",
-        "summary": "Master the personalized video audit formula that demonstrates a prospect's specific bottleneck and books calls on autopilot."
+        "title": "Crafting the 5-Minute Loom Teardown Video",
+        "duration": "14m",
+        "summary": "Master the step-by-step video script that achieves a 35%+ reply rate from busy commercial decision-makers."
       },
       {
         "id": "06-3",
         "number": "6.3",
-        "title": "Cold Email & LinkedIn Outbound Sequences with 25%+ Booking Rates",
-        "duration": "15m",
-        "summary": "Deploy short, hyper-personalized outreach sequences that deliver your Loom audit directly to executive decision-makers."
+        "title": "Multi-Touch Outbound Cadence: Cold Email, LinkedIn & Video Tracking",
+        "duration": "14m",
+        "summary": "Deploy a disciplined 3-touch outreach sequence combining video links, follow-up benchmarks, and view notification timing."
       },
       {
         "id": "06-4",
         "number": "6.4",
-        "title": "The 4-Stage Consultative Discovery Call: Uncovering Hidden Labor Costs",
-        "duration": "15m",
-        "summary": "Conduct consultative sales conversations that guide the prospect to calculate their own operational waste and demand your solution."
-      },
-      {
-        "id": "06-5",
-        "number": "6.5",
-        "title": "Live Architecture Mapping: Showing Clients Their Future Efficiency On-Call",
-        "duration": "15m",
-        "summary": "Share your screen during discovery calls to live-map their automated workflow, building overwhelming trust and authority."
-      },
-      {
-        "id": "06-6",
-        "number": "6.6",
-        "title": "Overcoming Enterprise Security Objections, Compliance & IT Concerns",
-        "duration": "15m",
-        "summary": "Confidently handle questions regarding data privacy, model training, SOC2 compliance, and API security."
-      },
-      {
-        "id": "06-7",
-        "number": "6.7",
-        "title": "Module 6 Project: Executing Your 30-Day Prospect Outreach Campaign",
-        "duration": "15m",
-        "summary": "Source 50 verified target accounts, record 10 personalized Trojan Horse Loom audits, and book your first 3 client calls."
+        "title": "The 30-Minute Consultative Discovery-to-Close Framework",
+        "duration": "14m",
+        "summary": "Lead a high-status diagnostic sales call that uncovers the client's true operational costs and leads naturally to a signed sprint contract."
       }
     ]
   },
   {
     "id": "module-07",
     "number": "07",
-    "title": "Operations, SLA Management & Scaling to $10,000/Month",
-    "description": "Systematize delivery, provide automated monthly client value reports, retain 100% of accounts, and hit $10,000/month.",
-    "duration": "1h 45m",
-    "lessonsCount": 7,
+    "title": "Operations, SLA Contracts & Scaling to $10,000/Month Retainers",
+    "description": "Deliver projects on time, structure airtight SLA contracts, convert sprints into monthly retainers, and scale to $10K/mo solo.",
+    "duration": "55m",
+    "lessonsCount": 4,
     "lessons": [
       {
         "id": "07-1",
         "number": "7.1",
-        "title": "Systematic Client Onboarding: 48-Hour Setup & Credential Handover",
-        "duration": "15m",
-        "summary": "Deploy a white-glove onboarding intake system that collects API keys, brand assets, and account permissions in 48 hours."
+        "title": "The 14-Day Sprint Delivery Assembly Line",
+        "duration": "14m",
+        "summary": "Execute client implementation sprints smoothly in 14 days using standardized onboarding SOPs and milestone checkpoints."
       },
       {
         "id": "07-2",
         "number": "7.2",
-        "title": "Staging-to-Production Migration Protocol with Zero Downtime",
-        "duration": "15m",
-        "summary": "Follow enterprise deployment procedures to migrate workflows from sandbox environments to live client systems safely."
+        "title": "Drafting Airtight SOWs, IP Licensing & SLA Agreements",
+        "duration": "14m",
+        "summary": "Protect your agency with professional Master Service Agreements (MSAs), Statements of Work (SOWs), and Service Level Agreements (SLAs)."
       },
       {
         "id": "07-3",
         "number": "7.3",
-        "title": "Recording 15-Minute Loom Video SOPs for Client Staff Training",
-        "duration": "15m",
-        "summary": "Deliver clear, recorded operational training walkthroughs that empower client staff to interact with the system effortlessly."
+        "title": "The Friday Executive Snapshot: Retainer Retaining & Zero Churn",
+        "duration": "14m",
+        "summary": "Automate a weekly executive digest that visibly proves the value of your monthly retainer and prevents client cancellations."
       },
       {
         "id": "07-4",
         "number": "7.4",
-        "title": "Proactive Maintenance: Monthly Health Checks, API Audits & Retainer Justification",
-        "duration": "15m",
-        "summary": "Perform scheduled monthly system optimizations that take you under 60 minutes while justifying ongoing retainer fees."
-      },
-      {
-        "id": "07-5",
-        "number": "7.5",
-        "title": "Automated Client Value Reports Proving Return on Investment",
-        "duration": "15m",
-        "summary": "Generate and send automated monthly PDF digests proving exact hours saved, transactions processed, and dollars created."
-      },
-      {
-        "id": "07-6",
-        "number": "7.6",
-        "title": "Managing 6 to 10 Retainers in Under 15 Hours a Week",
-        "duration": "15m",
-        "summary": "Organize your agency operations, automated diagnostics, and ticket queues to scale income without sacrificing personal time."
-      },
-      {
-        "id": "07-7",
-        "number": "7.7",
-        "title": "Capstone Project: Achieving the $10,000 Monthly Recurring Milestone",
-        "duration": "15m",
-        "summary": "Synthesize all 7 modules into your complete operational agency roadmap and cross the $10,000/month recurring threshold."
+        "title": "Solo Founder Freedom: Managing 10 Clients in Under 15 Hours/Week",
+        "duration": "13m",
+        "summary": "Master the mathematical growth engine of managing 10 ongoing retainers with automated telemetry, reaching $10K/mo solo."
       }
     ]
   }
@@ -434,7 +287,7 @@ export const AI_SERVICE_BUSINESS_MODULES_METADATA: ModuleMetadata[] = [
 
 export const AI_SERVICE_BUSINESS_CURRICULUM = {
   totalModules: 7,
-  totalLessons: 49,
+  totalLessons: 28,
   estimatedHours: "7.0 hours",
   modules: AI_SERVICE_BUSINESS_MODULES_METADATA,
 };

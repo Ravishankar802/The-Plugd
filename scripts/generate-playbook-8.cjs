@@ -4,705 +4,432 @@ const courseSlug = "sell-ai-chatbots-to-10-local-businesses-without-hiring-a-dev
 
 const modulesData = [
   {
-    num: 1,
-    id: "module-01",
-    title: "The Local Chatbot Opportunity & No-Code Builder Architecture",
-    description: "Understand why local businesses desperately need 24/7 automated website receptionists and select the optimal visual builder.",
-    duration: "55m",
-    lessons: [
+    "num": 1,
+    "id": "module-01",
+    "title": "The Local Chatbot Opportunity & No-Code Builder Architecture",
+    "description": "Understand local business lead leakage, evaluate visual AI builder platforms, and construct the foundational conversational architecture.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "The Main Street Reality: Lost Leads After 5:00 PM",
-        duration: "8m",
-        summary: "Understand why 50%+ of local business website visitors bounce after hours and how an AI receptionist converts visitors into appointments.",
-        bulletPoints: [
-          "The After-Hours Blindspot: High-intent consumers browse for dental work, roof repairs, and legal help at 8:00 PM when offices are closed.",
-          "The Traditional Contact Form Failure: Static 'Contact Us' forms have sub-2% conversion rates because consumers want immediate answers.",
-          "The 24/7 Digital Concierge: An AI chatbot acts as a tireless, friendly receptionist answering questions and capturing phone numbers 24/7.",
-          "The Local ROI Equation: Capturing just 2 additional customers a month covers a $150/month chatbot retainer 10x over for any local business.",
+        "lesNum": 1,
+        "title": "The Main Street Opportunity: Why Local Businesses Bleed Leads After 5:00 PM",
+        "duration": "15m",
+        "summary": "Examine why local service businesses lose 60%+ of their website visitors outside business hours and how conversational AI captures them.",
+        "bulletPoints": [
+          "The After-Hours Blindspot: Why 62% of local service inquiries occur between 5:00 PM and 8:00 AM when office phones are off.",
+          "The Contact Form Graveyard: How standard web forms suffer from dismal 2-3% conversion rates compared to 15%+ on conversational widgets.",
+          "The Immediate Response Expectation: Consumers expect instant answers to pricing, availability, and emergency services.",
+          "The Agency Positioning: Packaging conversational capture not as complicated AI, but as an 24/7 automated front-desk receptionist."
         ],
-        takeaway: "Local businesses don't need advanced software; they need a polite, tireless 24/7 receptionist on their website.",
+        "takeaway": "Local businesses do not need another website redesign. They need an automated receptionist that captures leads while they sleep."
       },
       {
-        lesNum: 2,
-        title: "Evaluating No-Code Builders: Voiceflow vs Botpress vs Stack AI",
-        duration: "8m",
-        summary: "Compare the top visual chatbot builders and select the best platform for rapid deployment, client handoff, and zero coding.",
-        bulletPoints: [
-          "Voiceflow: The gold standard for intuitive conversational flow design, client-friendly canvas navigation, and built-in knowledge bases.",
-          "Botpress: Excellent open-source flexibility, powerful webhook execution, and robust integrations with CRM platforms.",
-          "Stack AI: Ideal for complex multi-model workflows and document processing pipelines.",
-          "The Agency Verdict: Why Voiceflow's visual interface allows you to build complete, client-ready bots in under 3 hours without touching code.",
+        "lesNum": 2,
+        "title": "No-Code Builder Architecture: Voiceflow vs Botpress vs Stack AI Evaluation",
+        "duration": "15m",
+        "summary": "Compare top visual conversation design platforms to select the fastest, most reliable engine for client chatbot deployments.",
+        "bulletPoints": [
+          "Voiceflow Advantages: Visual node-based canvas, rapid client prototyping, powerful built-in CMS, and seamless team collaboration.",
+          "Botpress Enterprise Features: Deep native integrations, code-block flexibility, and robust autonomous action execution.",
+          "Stack AI Workflows: Ideal for complex multi-model pipelines and specialized document parsing integrations.",
+          "The Platform Verdict: Why Voiceflow remains the highest-velocity builder for local agency deployments under 4 hours."
         ],
-        takeaway: "Voiceflow offers the fastest build speed and cleanest client presentation interface for local agency operators.",
+        "takeaway": "Standardize on a single visual builder platform so your team can deploy client bots in hours rather than days."
       },
       {
-        lesNum: 3,
-        title: "The Anatomy of a High-Converting Local Chatbot",
-        duration: "8m",
-        summary: "Master the 4 core components every local business bot must have: Greeting Hook, FAQ Knowledge Base, Lead Capture, and Booking Link.",
-        bulletPoints: [
-          "Component 1: The Attention-Grabbing Greeting Bubble ('Hi there! Need a quick quote or have a question about our services?').",
-          "Component 2: Quick-Action Buttons (e.g. 'View Pricing', 'Book Appointment', 'Emergency Service', 'Speak to Owner').",
-          "Component 3: RAG Knowledge Base answering 90%+ of common customer questions instantly from verified business facts.",
-          "Component 4: Low-Friction Lead Capture securing name, phone number, and problem description in under 45 seconds.",
+        "lesNum": 3,
+        "title": "Anatomy of a High-Converting Local Bot & Persona Prompting",
+        "duration": "15m",
+        "summary": "Design conversational flows that build immediate trust, reflect brand tone, and guide visitors toward booking consultations.",
+        "bulletPoints": [
+          "The 3-Second Welcome Hook: Greeting visitors with a warm, contextual message and 3 clickable quick-reply chips.",
+          "Local Business Persona Prompting: Crafting system instructions that sound friendly, professional, empathetic, and regionally authentic.",
+          "Conversation Guardrails: Preventing conversational rambling by steering every interaction back to the primary conversion goal.",
+          "Graceful Escalation Logic: Knowing exactly when to offer direct phone contact or route an urgent inquiry to the owner."
         ],
-        takeaway: "Keep conversation paths short, helpful, and laser-focused on capturing contact details for the business owner.",
+        "takeaway": "A great chatbot does not pretend to be human. It is transparently an automated assistant that gets the customer immediate help."
       },
       {
-        lesNum: 4,
-        title: "Prompt Engineering for Local Business Personas & Tone",
-        duration: "8m",
-        summary: "Craft customized system prompts that embody the local business's brand voice, warmth, and professional boundaries.",
-        bulletPoints: [
-          "The Warm Local Persona: Balancing professional competence with friendly, welcoming community warmth.",
-          "Strict Anti-Hallucination Guardrails: Instructing the bot to say 'I want to make sure I give you the exact details—let me have our manager text you!' when uncertain.",
-          "Never Inventing Prices: Instructing the bot to quote verified standard ranges while directing custom estimates to an onsite inspection.",
-          "Defending Against Prompt Injection: Preventing cheeky website visitors from tricking the bot into writing poems or revealing backend prompts.",
+        "lesNum": 4,
+        "title": "Website Widget Integration, Styling & Multi-Client Workspaces",
+        "duration": "15m",
+        "summary": "Embed custom-styled chat widgets on client websites, match brand aesthetics, and organize multi-client agency workspaces.",
+        "bulletPoints": [
+          "Widget Customization: Styling launcher icons, color schemes, brand avatars, and font hierarchies to match the client site.",
+          "1-Line Script Embedding: Injecting the lightweight JavaScript bundle into headers across WordPress, Webflow, and Squarespace.",
+          "Multi-Tenant Agency Workspace: Organizing client bots into isolated workspaces with dedicated API credentials and usage tracking.",
+          "Day 1 Milestone Review: Deploying a fully styled sandbox widget on a live test staging URL within 45 minutes."
         ],
-        takeaway: "Strict guardrails ensure the bot remains polite, professional, and completely accurate at all times.",
-      },
-      {
-        lesNum: 5,
-        title: "Website Widget Embedding & Styling Integration",
-        duration: "8m",
-        summary: "Embed the chatbot onto any WordPress, Squarespace, Wix, or Shopify website with clean styling that matches client branding.",
-        bulletPoints: [
-          "The 1-Line Embed Script: Copying the Voiceflow/Botpress script tag into the client's website `<header>` or footer.",
-          "Customizing Colors & Avatars: Matching brand primary colors, rounded corners, and uploading a friendly professional staff photo avatar.",
-          "Trigger Rules: Setting the widget to pop open automatically after 8 seconds on desktop or when the user scrolls 50% down the page.",
-          "Mobile Optimization: Ensuring the chat widget opens full-screen on mobile devices without obscuring phone navigation.",
-        ],
-        takeaway: "A well-styled chat widget that matches the client's brand colors looks like a native $20,000 custom website feature.",
-      },
-      {
-        lesNum: 6,
-        title: "Multi-Client Workspace Architecture & Account Management",
-        duration: "8m",
-        summary: "Organize your agency workspace to manage dozens of client chatbots efficiently from a single dashboard.",
-        bulletPoints: [
-          "The Agency Multi-Tenant Structure: Setting up individual client workspaces or tagged projects in your master Voiceflow account.",
-          "Client Read-Only Access: Giving business owners access to their analytics and chat transcripts without risking accidental flow edits.",
-          "API Key Management: Centralizing LLM API costs under your agency account to bill back clients with healthy profit margins.",
-          "Version Control & Backups: Exporting project JSON backups before making updates to live client bots.",
-        ],
-        takeaway: "Centralized workspace management allows one solo operator to manage 25+ local chatbots effortlessly.",
-      },
-      {
-        lesNum: 7,
-        title: "Module 1 Milestone: The Sandbox Starter Bot Operational",
-        duration: "7m",
-        summary: "Build and stress-test your first baseline local business chatbot template in Voiceflow and verify all conversational branches.",
-        bulletPoints: [
-          "Testing Greeting Loops: Verifying quick-action buttons guide users smoothly into lead capture.",
-          "Verifying Guardrail Responses: Testing edge-case questions and confirming the bot handles uncertainty gracefully.",
-          "Exporting the Master Template: Saving your clean baseline bot as a reusable agency asset for future client builds.",
-          "Entering Module 2: Preparing to engineer intelligent Retrieval-Augmented Generation (RAG) knowledge bases.",
-        ],
-        takeaway: "Module 1 ends with a tested, reusable chatbot foundation ready for custom client knowledge base ingestion.",
-      },
-    ],
+        "takeaway": "Make your widget look native to the client website. Polished visual cohesion immediately earns client trust."
+      }
+    ]
   },
   {
-    num: 2,
-    id: "module-02",
-    title: "Knowledge Base Engineering & Local RAG Architecture",
-    description: "Ingest client menus, service catalogs, pricing guides, and FAQs into vector knowledge bases with zero hallucinations.",
-    duration: "54m",
-    lessons: [
+    "num": 2,
+    "id": "module-02",
+    "title": "Knowledge Base Engineering & Local RAG Architecture",
+    "description": "Transform client FAQs and operational policies into high-precision vector knowledge bases that eliminate hallucinations.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "The RAG Revolution for Local Businesses",
-        duration: "8m",
-        summary: "Understand how Retrieval-Augmented Generation (RAG) grounds AI models in verified company facts without expensive fine-tuning.",
-        bulletPoints: [
-          "Why Fine-Tuning is the Wrong Approach: Fine-tuning is slow, expensive, and fails when business hours or menu prices change next week.",
-          "How RAG Works in Practice: Chunking client PDFs and website text into searchable vector embeddings queried in real time.",
-          "The Deterministic Guarantee: Forcing the LLM to synthesize answers exclusively from retrieved context chunks.",
-          "Zero Technical Coding: Utilizing Voiceflow's built-in vector database to achieve enterprise-grade RAG in minutes.",
+        "lesNum": 1,
+        "title": "The Local Business RAG Revolution & The Client Fact Sheet Method",
+        "duration": "15m",
+        "summary": "Use Retrieval-Augmented Generation to ground chatbot answers strictly in verified business facts, pricing, and operating hours.",
+        "bulletPoints": [
+          "Why Pure Prompting Fails: How relying on raw LLM training data causes bots to hallucinate incorrect pricing and services.",
+          "Retrieval-Augmented Generation (RAG): Dynamically querying verified client knowledge chunks before formulating responses.",
+          "The Client Fact Sheet Method: A 1-page structured questionnaire that extracts 95% of all required business knowledge in 20 minutes.",
+          "Structuring Service Offerings: Formatting pricing ranges, service areas, and warranties for optimal vector retrieval."
         ],
-        takeaway: "RAG grounds the chatbot in verified business data, ensuring 100% accurate customer answers with zero coding.",
+        "takeaway": "Ground your bot in a structured client fact sheet. If the information is not in the fact sheet, the bot must not guess."
       },
       {
-        lesNum: 2,
-        title: "The Client Fact Sheet Method: Gathering Pristine Knowledge",
-        duration: "8m",
-        summary: "Deploy a structured 1-page intake questionnaire that extracts the exact 20 facts needed to build a comprehensive knowledge base.",
-        bulletPoints: [
-          "The 20 Essential Facts: Hours of Operation, Service Area / Zip Codes, Parking Details, Insurance Accepted, Emergency Policies, and Pricing Ranges.",
-          "Scraping the Client's Existing Website: Using Firecrawl or Voiceflow's URL scraper to ingest their entire public site in 60 seconds.",
-          "Cleaning the Ingested Text: Removing outdated promotions, expired coupons, and duplicate phone numbers from the knowledge chunks.",
-          "The Client Approval Gate: Having the business owner review the 1-page Fact Sheet before finalizing the knowledge base.",
+        "lesNum": 2,
+        "title": "Structuring Knowledge Chunks for Precision Retrieval & Semantic Search",
+        "duration": "15m",
+        "summary": "Break down complex business documentation into atomic, semantic chunks optimized for high-accuracy embedding search.",
+        "bulletPoints": [
+          "Chunk Size Optimization: Balancing 250-500 token chunk sizes to capture complete context without diluting semantic similarity.",
+          "Question-and-Answer Chunking: Pairing common customer questions directly with authoritative answers for exact matches.",
+          "Metadata Tagging: Attaching category, location, and seasonal tags to knowledge chunks for filtered vector queries.",
+          "Eliminating Redundancies: Scrubbing contradictory information from outdated client PDFs before ingestion."
         ],
-        takeaway: "Clean, structured input data guarantees accurate, high-quality answers in the customer chat experience.",
+        "takeaway": "The quality of your chatbot responses is 90% determined by how cleanly you chunk and structure the underlying knowledge."
       },
       {
-        lesNum: 3,
-        title: "Structuring Knowledge Chunks for Maximum Retrieval Accuracy",
-        duration: "8m",
-        summary: "Format and chunk knowledge documents so vector search retrieves the exact relevant snippet every single time.",
-        bulletPoints: [
-          "The Chunking Sweet Spot: Breaking information into 300- to 500-token chunks with clear thematic headings.",
-          "Question-and-Answer Formatting: Formatting complex policies as explicit Q&A pairs (e.g. 'Q: What is your emergency fee after 6 PM? A: ...').",
-          "Semantic Overlap: Including key terms (e.g. 'pricing', 'cost', 'fee', 'rates') to match diverse user query phrasing.",
-          "Testing Retrieval Scores: Inspecting similarity match scores in the builder to confirm top chunks rank above 0.82 relevance.",
+        "lesNum": 3,
+        "title": "Negative Constraints, Hallucination Prevention & Out-of-Scope Fallbacks",
+        "duration": "15m",
+        "summary": "Implement ironclad negative constraints that prevent the bot from making promises, quoting exact figures, or answering out-of-scope topics.",
+        "bulletPoints": [
+          "Hard Negative Constraints: Explicitly forbidding the bot from diagnosing medical conditions, giving legal advice, or binding contracts.",
+          "Pricing Guardrails: Training the bot to provide estimates as ranges while encouraging an in-person assessment for exact figures.",
+          "The Polite Fallback Pattern: Responding with transparency when queries fall outside the verified knowledge base.",
+          "Human Handoff Trigger: Prompting users to leave their phone number whenever the bot encounters an unresolved query."
         ],
-        takeaway: "Structuring knowledge chunks with explicit Q&A headers maximizes vector search accuracy and eliminates confusion.",
+        "takeaway": "Strict negative constraints protect your agency and your client from liability. When in doubt, the bot must escalate."
       },
       {
-        lesNum: 4,
-        title: "Handling Negative Constraints & Out-of-Scope Queries",
-        duration: "8m",
-        summary: "Teach the chatbot what it does NOT do, preventing embarrassing promises on unoffered services.",
-        bulletPoints: [
-          "The Negative Service List: Explicitly listing services the business does NOT provide (e.g. a residential plumber who does not do septic pumping).",
-          "Polite Disqualification Flow: 'We specialize in residential indoor plumbing, so we don't handle outdoor septic systems, but I recommend...'",
-          "Capturing Unserved Demand: Logging out-of-scope requests in an Airtable table so the owner can evaluate new service opportunities.",
-          "Preventing Legal / Medical Advice: Adding strict disclaimers for law firms and medical clinics directing users to a formal consultation.",
+        "lesNum": 4,
+        "title": "Dynamic Knowledge Syncing (Google Sheets/Notion) & The 50-Question Gauntlet",
+        "duration": "15m",
+        "summary": "Enable live knowledge updates via Google Sheets and stress-test the chatbot against 50 real-world customer inquiry scenarios.",
+        "bulletPoints": [
+          "Live Google Sheets Sync: Allowing business owners to update holiday hours and daily specials without touching builder code.",
+          "The 50-Question Stress-Test Gauntlet: Testing edge cases, angry customers, competitor comparisons, and typo-heavy queries.",
+          "Calculating Knowledge Accuracy: Ensuring the bot achieves a 96%+ accurate response rate across all test queries.",
+          "Day 2 Milestone Certification: Signing off on the certified knowledge engine before integrating lead capture mechanisms."
         ],
-        takeaway: "Defining what the business does not do is just as important as defining what it does.",
-      },
-      {
-        lesNum: 5,
-        title: "Dynamic Knowledge Updates: Syncing Google Sheets & Notion",
-        duration: "8m",
-        summary: "Connect your chatbot to a live Google Sheet or Notion database so clients can update daily specials and hours in real time.",
-        bulletPoints: [
-          "The Real-Time Sync Need: Restaurants changing daily soups, dental clinics updating holiday hours, or realtors updating listings.",
-          "The Google Sheets API Connector: Querying a live spreadsheet tab during conversation flow via webhook.",
-          "The Client-Friendly Interface: Letting non-technical owners edit a simple spreadsheet row rather than logging into Voiceflow.",
-          "Caching & Latency Considerations: Ensuring spreadsheet lookups execute in under 300ms to maintain conversation fluidness.",
-        ],
-        takeaway: "Empowering clients to update daily info via Google Sheets provides immense perceived value with zero maintenance for your agency.",
-      },
-      {
-        lesNum: 6,
-        title: "Knowledge Base Stress-Testing: The 50-Question Gauntlet",
-        duration: "7m",
-        summary: "Execute an automated 50-question test gauntlet to uncover edge cases, ambiguous answers, and prompt leaks before client review.",
-        bulletPoints: [
-          "The 50-Question Gauntlet: Testing common inquiries, misspelled questions, slang, trick questions, and aggressive competitor comparisons.",
-          "Evaluating Accuracy Scores: Grading responses on Accuracy, Tone, Brevity, and Action-Orientation.",
-          "Refining Ambiguous Chunks: Editing knowledge chunks that produced vague or overly long responses.",
-          "The Zero-Hallucination Sign-Off: Certifying that 100% of responses are strictly grounded in verified facts.",
-        ],
-        takeaway: "Running a 50-question stress-test ensures your chatbot never embarrasses the business owner in front of real customers.",
-      },
-      {
-        lesNum: 7,
-        title: "Module 2 Milestone: Certified Knowledge Engine",
-        duration: "7m",
-        summary: "Review the finalized knowledge base architecture and verify that all conversational paths retrieve verified information.",
-        bulletPoints: [
-          "Validating Retrieval Speeds: Confirming knowledge base lookups complete in under 500ms.",
-          "Documenting Knowledge Sources: Providing the client with a copy of all ingested sources for transparency.",
-          "Exporting Tested Blueprints: Saving the knowledge structure as a repeatable vertical template (e.g. 'Dental Clinic Knowledge Pack').",
-          "Entering Module 3: Moving to lead capture, appointment booking, and CRM integrations.",
-        ],
-        takeaway: "A bulletproof knowledge base establishes technical credibility and prepares your bot for live lead capture.",
-      },
-    ],
+        "takeaway": "Run the 50-question gauntlet on every bot before launch. Finding gaps in staging prevents embarrassing errors in production."
+      }
+    ]
   },
   {
-    num: 3,
-    id: "module-03",
-    title: "Lead Capture, Booking Integrations & CRM Handshakes",
-    description: "Transform your informative bot into a revenue engine: capture qualified leads, schedule appointments, and push data to CRMs.",
-    duration: "53m",
-    lessons: [
+    "num": 3,
+    "id": "module-03",
+    "title": "Lead Capture, Booking Integrations & CRM Handshakes",
+    "description": "Engineer high-converting lead capture conversational funnels, direct calendar booking, and real-time CRM webhook bridges.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "The Conversational Lead Capture Formula: Frictionless Intake",
-        duration: "8m",
-        summary: "Design an engaging, step-by-step lead capture flow that collects name, phone number, and project details with an 80%+ completion rate.",
-        bulletPoints: [
-          "Why Long Forms Fail: Asking for 6 fields simultaneously causes immediate abandonment; asking one conversational question at a time converts.",
-          "The Golden Question Sequence: Step 1 Problem Description -> Step 2 Zip Code -> Step 3 First Name -> Step 4 Mobile Phone Number.",
-          "Value Exchange Framing: 'Where can our master technician text you the estimate and available appointment times?'",
-          "Validating Phone Numbers: Using regex validation in Voiceflow to ensure users input valid 10-digit mobile numbers.",
+        "lesNum": 1,
+        "title": "The Conversational Lead Capture Formula: Frictionless Intake Sequencing",
+        "duration": "15m",
+        "summary": "Capture visitor contact details smoothly inside conversation flows without feeling like an aggressive interrogation.",
+        "bulletPoints": [
+          "The Value-First Capture Sequence: Providing a helpful answer to the visitor question before asking for contact info.",
+          "Progressive Field Intake: Asking for Name, Phone, and Problem Description one question at a time to reduce cognitive load.",
+          "Input Validation Regex: Verifying phone numbers and email formats on the fly to prevent fake or mistyped contact info.",
+          "SMS Opt-In Disclosure: Embedding standard TCPA/CTIA consent language when collecting mobile numbers for automated text follow-up."
         ],
-        takeaway: "Conversational intake feels like a helpful human conversation, capturing contact info with triple the conversion of static forms.",
+        "takeaway": "Give value before asking for contact details. Answering their question first increases lead capture rates by over 40%."
       },
       {
-        lesNum: 2,
-        title: "Direct Calendar Booking: Calendly & Google Calendar Integrations",
-        duration: "8m",
-        summary: "Embed interactive calendar scheduling directly inside the chat window, allowing visitors to book appointments in real time.",
-        bulletPoints: [
-          "In-Chat Calendar Embedding: Displaying a clean Calendly or Cal.com iframe directly inside the chat window upon lead qualification.",
-          "Direct API Booking: Querying available Google Calendar slots and letting the user select time options via native buttons.",
-          "Buffer Times & Service Duration: Configuring 30-minute travel buffers between appointments to protect technician schedules.",
-          "Instant Confirmation SMS: Triggering an immediate SMS confirmation to the customer's phone upon booking completion.",
+        "lesNum": 2,
+        "title": "Direct Calendar Booking: Calendly, Cal.com & Google Calendar Bridges",
+        "duration": "15m",
+        "summary": "Embed real-time appointment scheduling directly inside the chat interface to lock in high-intent prospects immediately.",
+        "bulletPoints": [
+          "In-Chat Scheduling vs External Links: Why sending users to an external link drops booking conversion by 30%.",
+          "Voiceflow Calendly Block: Integrating native calendar booking widgets directly within the active conversation window.",
+          "Availability Rules: Buffering 15 minutes between appointments and restricting bookings within standard business operating hours.",
+          "Automated Calendar Invites: Sending instant calendar invites with Google Meet or in-person address details to both parties."
         ],
-        takeaway: "Enabling in-chat calendar booking turns website visitors into confirmed consultations while their buying intent is at its peak.",
+        "takeaway": "Eliminate scheduling ping-pong. Locking in appointments directly inside the chat turns cold traffic into booked revenue."
       },
       {
-        lesNum: 3,
-        title: "Pushing Leads to CRMs: Zapier & Make.com Webhook Bridges",
-        duration: "8m",
-        summary: "Connect your chatbot to the client's existing CRM (HubSpot, Jobber, ServiceTitan, or Airtable) using automated webhooks.",
-        bulletPoints: [
-          "The Outbound Webhook Trigger: Configuring Voiceflow to trigger a POST request to Make.com the moment a lead completes capture.",
-          "Payload Formatting: Passing clean JSON containing `name`, `phone`, `email`, `issue_description`, `urgency_level`, and `chat_transcript`.",
-          "Creating the Opportunity: Mapping fields into the client's CRM pipeline under 'New Inbound Website Lead'.",
-          "Preventing Duplicates: Querying the CRM by phone number to update existing customer records rather than creating duplicates.",
+        "lesNum": 3,
+        "title": "CRM Webhook Handshakes: Pushing Qualified Leads to GoHighLevel & Zapier",
+        "duration": "15m",
+        "summary": "Transmit captured leads, conversation transcripts, and tags to client CRMs in real time using webhooks and Make.com.",
+        "bulletPoints": [
+          "Webhook POST Payload Design: Structuring clean JSON payloads containing lead name, phone, email, tags, and summary.",
+          "GoHighLevel Integration: Automatically creating contact records, assigning pipeline stages, and triggering follow-up workflows.",
+          "Zapier & Make.com Routers: Connecting the chatbot to Jobber, ServiceTitan, HubSpot, and Salesforce without code.",
+          "Conversation Transcript Archiving: Appending the full chat history directly to the CRM contact activity feed for staff review."
         ],
-        takeaway: "Seamless CRM integration ensures leads appear instantly in the client's existing sales workflow with zero manual data entry.",
+        "takeaway": "Deliver full chat transcripts to the CRM so the sales team knows the exact context before making their follow-up call."
       },
       {
-        lesNum: 4,
-        title: "The 90-Second Owner Alert: SMS, Email & Telegram Notifications",
-        duration: "8m",
-        summary: "Alert the business owner within 90 seconds of lead capture via high-priority SMS and email with full conversation transcripts.",
-        bulletPoints: [
-          "The Speed-to-Lead Rule: Contacting a lead within 5 minutes results in a 21x higher closing rate than waiting 30 minutes.",
-          "The Owner SMS Notification: Sending a direct text via Twilio: 'NEW LEAD: John Doe (555-0192) needs water heater repair in Austin. Tap to call.'",
-          "One-Tap Calling: Formatting the phone number in the SMS notification so the owner can tap and call the prospect with a single touch.",
-          "Delivering the Full Transcript: Sending a branded email summary containing the full chat transcript for context before the call.",
+        "lesNum": 4,
+        "title": "The 90-Second Owner Alert (SMS/Email) & Client Lead Hub Architecture",
+        "duration": "15m",
+        "summary": "Notify business owners via instant SMS within 90 seconds of lead capture and maintain a centralized Airtable lead database.",
+        "bulletPoints": [
+          "The 90-Second Owner Alert: Sending a high-priority SMS to the owner phone via Twilio the instant a qualified lead submits their info.",
+          "1-Click Call Button: Formatting the SMS alert with a clickable tel: link so the owner can call the hot lead in one tap.",
+          "The Client Lead Hub: Maintaining a clean Airtable or Google Sheet backup where owners can see every captured lead in real time.",
+          "Day 3 Milestone Certification: Testing the full capture loop from website chat to instant owner phone alert."
         ],
-        takeaway: "Instant SMS alerts empower business owners to call interested prospects within 2 minutes, winning deals before competitors wake up.",
-      },
-      {
-        lesNum: 5,
-        title: "Building the Airtable / Google Sheets Client Lead Hub",
-        duration: "7m",
-        summary: "Equip your clients with an organized, cloud-based Lead Tracker dashboard if they do not have an existing CRM.",
-        bulletPoints: [
-          "The Free CRM Alternative: Why many small contractors don't use complex CRMs and prefer a clean Airtable base.",
-          "The Lead Tracker Schema: Columns for Date, Customer Name, Phone, Service Requested, Status (New, Contacted, Booked, Won), and Value.",
-          "One-Click Status Updates: Allowing owners to update lead statuses easily from their smartphone.",
-          "Automated Monthly Value Calculations: Calculating total revenue generated from chatbot leads to prove ongoing agency ROI.",
-        ],
-        takeaway: "Providing a clean Airtable Lead Tracker gives non-technical owners complete visibility into every lead generated.",
-      },
-      {
-        lesNum: 6,
-        title: "Live Lead Capture Simulation & Webhook Verification",
-        duration: "7m",
-        summary: "Run end-to-end simulations of the entire lead capture and notification pipeline to certify reliability.",
-        bulletPoints: [
-          "Simulating a Live Visitor: Entering a test lead on the embedded chatbot widget with real phone numbers.",
-          "Verifying Webhook Execution: Checking Make.com execution logs to confirm 200 OK status codes and correct JSON parsing.",
-          "Timing the Owner Alert: Verifying the SMS notification hits the test phone within 15 seconds of chat completion.",
-          "Checking CRM / Airtable Sync: Confirming all fields populate accurately with zero truncation.",
-        ],
-        takeaway: "Rigorous simulation testing guarantees flawless lead capture and instant notification delivery.",
-      },
-      {
-        lesNum: 7,
-        title: "Module 3 Milestone: Full Revenue Engine Operational",
-        duration: "7m",
-        summary: "Review the integrated lead capture, calendar booking, and notification infrastructure ahead of commercial packaging.",
-        bulletPoints: [
-          "The Complete Loop: Greeting -> Question Answered -> Phone Captured -> Calendar Booked -> Owner Texted -> CRM Synced.",
-          "Packaging as an Asset: Documenting the exact webhook schemas and Make.com blueprints for instant duplication.",
-          "Client Demonstration Readiness: Preparing to showcase the end-to-end live flow to prospective clients in Module 4.",
-          "Entering Module 4: Transitioning to the irresistible 'Trojan Horse' demo strategy.",
-        ],
-        takeaway: "With lead capture, scheduling, and notifications running seamlessly, you possess a finished, highly valuable commercial asset.",
-      },
-    ],
+        "takeaway": "Alerting the owner within 90 seconds gives them the speed-to-lead superpower that closes high-ticket jobs on the spot."
+      }
+    ]
   },
   {
-    num: 4,
-    id: "module-04",
-    title: "The 'Trojan Horse' Live Sandbox Demo Strategy",
-    description: "Build working, branded prototype chatbots for prospective clients before reaching out, eliminating sales friction and skepticism.",
-    duration: "54m",
-    lessons: [
+    "num": 4,
+    "id": "module-04",
+    "title": "The Trojan Horse Live Sandbox Demo Strategy",
+    "description": "Pre-build custom branded chatbot prototypes for targeted local prospects to create irresistible, show-don't-tell sales demonstrations.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "The Psychology of the Trojan Horse: Show, Don't Pitch",
-        duration: "8m",
-        summary: "Understand why building a live, working prototype tailored to the prospect's business before contacting them achieves 5x higher response rates.",
-        bulletPoints: [
-          "Why Traditional Sales Pitches Fail: Business owners receive 20 generic pitches a day for 'AI services' and ignore all of them.",
-          "The Power of the Tangible Prototype: Showing an owner their own logo, their exact services, and their actual staff photos on a live bot.",
-          "The Psychological Shift: Moving the prospect's mindset from 'Is this a sales scam?' to 'Wait, this person already built this for me.'",
-          "The 30-Minute Build Assembly: How to use templates to build a fully customized, branded prototype in under 30 minutes.",
+        "lesNum": 1,
+        "title": "The Trojan Horse Strategy: Why Building Before Pitching Closes Deals",
+        "duration": "15m",
+        "summary": "Replace generic sales pitches with a live, functioning prototype built specifically for the prospect business.",
+        "bulletPoints": [
+          "The Pitch Fatigue Problem: Local business owners receive 10+ spam sales emails weekly offering vague digital marketing services.",
+          "The Trojan Horse Psychology: Demonstrating that you have already invested time into understanding their specific business.",
+          "Show, Don’t Tell: Letting the prospect talk to a bot that already knows their services, staff names, and pricing ranges.",
+          "The Unfair Advantage: How pre-built prototypes generate an immediate 40%+ response rate from busy business owners."
         ],
-        takeaway: "Building a live, personalized prototype before outreach turns cold prospects into enthusiastic buyers.",
+        "takeaway": "Never pitch what you could build. Show them what you have already built for them, and the sales resistance evaporates."
       },
       {
-        lesNum: 2,
-        title: "Sourcing Prospect Assets & Branding in 10 Minutes",
-        duration: "8m",
-        summary: "Rapidly extract logos, brand hex colors, service lists, and testimonials from the target business's public website and social media.",
-        bulletPoints: [
-          "Extracting Brand Hex Colors: Using Chrome extensions (ColorZilla) to grab exact primary and secondary brand colors in 10 seconds.",
-          "Downloading High-Res Logos: Inspecting website headers or grabbing clean SVG/PNG logos from Google Images or Facebook.",
-          "Ingesting Top 3 Services: Copying their 3 highest-margin service descriptions directly into your Voiceflow template.",
-          "Finding Staff / Owner Photos: Sourcing a friendly staff photo from their 'About Us' page for the chatbot avatar to build instant rapport.",
+        "lesNum": 2,
+        "title": "10-Minute Rapid Prospect Asset Mining: Logos, Color Codes & Services",
+        "duration": "15m",
+        "summary": "Extract branding assets, service lists, FAQs, and testimonials from a prospect website and social pages in under 10 minutes.",
+        "bulletPoints": [
+          "High-Speed Asset Extraction: Using browser extensions to grab hex colors, high-res logos, and favicon graphics in 60 seconds.",
+          "Scraping the Core Services: Copying the top 3 high-margin services and pricing packages from their live website.",
+          "Mining Customer Reviews: Identifying common praise points and FAQs from their 5-star Google Business Profile reviews.",
+          "Rapid Template Cloning: Duplicating your master Voiceflow template and populating the prospect data in under 8 minutes."
         ],
-        takeaway: "10 minutes of research allows you to style a prototype that looks like a native feature built specifically for their company.",
+        "takeaway": "Standardize your prospect mining workflow. 10 minutes of preparation produces a hyper-personalized demo that blows the owner away."
       },
       {
-        lesNum: 3,
-        title: "Hosting the Prototype on a Branded Client Demo Landing Page",
-        duration: "8m",
-        summary: "Create a private, executive preview landing page (e.g. `clientname.plugdpreview.com` or Carrd) displaying the live bot in context.",
-        bulletPoints: [
-          "The Mockup Staging Environment: Embedding the chatbot onto a clean, 1-page Carrd or Notion template mimicking their website.",
-          "The Personalized Greeting: Adding a bold banner: 'Exclusive Preview: 24/7 AI Receptionist Prepared for [Business Name]'.",
-          "The Interactive Instructions: Including a short guide: 'Test me! Ask about your emergency rates, hours, or try booking an appointment.'",
-          "Securing the Staging Link: Password-protecting or using unlisted links to give the demo an exclusive, bespoke executive feel.",
+        "lesNum": 3,
+        "title": "Building the Branded Sandbox Demo & The 3-Minute Personalized Loom Script",
+        "duration": "15m",
+        "summary": "Host the chatbot on a customized demo landing page and record a punchy 3-minute video walkthrough that hooks the owner.",
+        "bulletPoints": [
+          "The Branded Sandbox Page: Hosting the widget on a clean demonstration URL featuring the client business logo and branding.",
+          "The 3-Minute Loom Structure: 0:00-0:30 the hook & compliment, 0:30-1:45 the live bot demo, 1:45-3:00 the missed revenue ROI.",
+          "Demonstrating the Mobile Experience: Showing the bot functioning seamlessly on an iPhone frame to reflect real customer usage.",
+          "The Low-Friction Call-to-Action: Inviting them to test the live link themselves or book a 10-minute chat to customize it further."
         ],
-        takeaway: "Presenting the chatbot embedded on a live preview page allows the owner to experience the exact customer journey firsthand.",
+        "takeaway": "Keep your demo video under 3 minutes. Focus entirely on how many after-hours leads this bot will capture for their business."
       },
       {
-        lesNum: 4,
-        title: "Recording the 3-Minute Trojan Horse Loom Walkthrough",
-        duration: "8m",
-        summary: "Record a personalized, high-converting video walkthrough showing the business owner how the bot captures leads on their site.",
-        bulletPoints: [
-          "The 3-Minute Script: 0:00 Compliment their business; 0:45 Point out after-hours lead loss; 1:30 Trigger the live bot demo; 2:45 The zero-risk offer.",
-          "Showing the Magic Moment: Demonstrating how an after-hours visitor asks a question, gets an instant answer, and submits their phone number.",
-          "Displaying the Owner Notification: Showing your phone receiving the simulated SMS alert in real time on camera.",
-          "The Soft Call to Action: 'I already built this for your website. If you'd like to turn it live this week, let me know and we'll connect for 10 minutes.'",
+        "lesNum": 4,
+        "title": "Watermarking IP, Client Sandboxes & The 3-Touch Follow-Up Sequence",
+        "duration": "15m",
+        "summary": "Protect your intellectual property with demo rate limits and execute a disciplined 3-touch follow-up campaign.",
+        "bulletPoints": [
+          "Protecting Your Work: Capping demo sessions and watermarking sandbox links so prospects cannot scrape your prompt architecture.",
+          "Touch 1 (Day 0): Delivering the personalized Loom video via direct LinkedIn message or personal business email.",
+          "Touch 2 (Day 2): A polite text or phone follow-up referencing the specific video and highlighting a key feature.",
+          "Touch 3 (Day 5): The takeaway message offering to archive the demo or transfer ownership to their live domain."
         ],
-        takeaway: "A 3-minute personalized Loom demonstrating their own live bot makes saying no practically impossible.",
-      },
-      {
-        lesNum: 5,
-        title: "Protecting Your Work: Watermarking & Intellectual Property Safeguards",
-        duration: "8m",
-        summary: "Ensure prospective clients cannot steal your chatbot architecture or embed it without paying your setup fee.",
-        bulletPoints: [
-          "Keeping the Embed Code Gated: Never send the `<script>` tag before contract signature and initial 50% deposit payment.",
-          "Hosting on Your Domain: Keeping the prototype hosted exclusively on your agency staging domain during the review phase.",
-          "Watermarking the Widget: Adding a subtle 'Powered by [Your Agency]' badge in the preview widget footer.",
-          "Expiring Test Links: Configuring demo links to expire after 7 days to create natural urgency and follow-up timing.",
-        ],
-        takeaway: "Maintain control of embed scripts and hosting until contracts are signed and deposits are confirmed.",
-      },
-      {
-        lesNum: 6,
-        title: "The 3-Touch Trojan Horse Follow-Up Sequence",
-        duration: "7m",
-        summary: "Deploy a high-response follow-up cadence that leverages video watch tracking to re-engage prospective business owners.",
-        bulletPoints: [
-          "Touch 1 (Day 1): The Personalized Loom Video & Staging Link sent via email and LinkedIn/Instagram DM.",
-          "Touch 2 (Day 3): The Screenshot Follow-Up: 'Saw you checked out the demo! Here is what a customer inquiry looks like in your lead hub.'",
-          "Touch 3 (Day 6): The Courtesy Removal Notice: 'Hey [Name], clearing out our staging servers this Friday—let me know if you want to keep the bot live.'",
-          "Handling Video Notifications: Calling or messaging prospects within 20 minutes of receiving a Loom notification that they watched the video.",
-        ],
-        takeaway: "Structured follow-ups combined with video watch telemetry capture 65%+ of all booked closing conversations.",
-      },
-      {
-        lesNum: 7,
-        title: "Module 4 Milestone: 3 Trojan Horse Demos Ready for Outreach",
-        duration: "7m",
-        summary: "Assemble 3 customized Trojan Horse prototype demos for real local businesses and prepare for active outreach in Module 5.",
-        bulletPoints: [
-          "Selecting 3 Local Targets: 1 Dentist, 1 Commercial Roofer, and 1 High-End Auto Detailer.",
-          "Verifying All 3 Staging Links: Ensuring bots answer industry-specific questions accurately.",
-          "Recording All 3 Videos: Ensuring audio quality is crisp and video length remains under 3.5 minutes.",
-          "Entering Module 5: Preparing to launch the 10-client acquisition pipeline.",
-        ],
-        takeaway: "With 3 live, customized Trojan Horse demos ready to deliver, you enter the market with an unfair competitive advantage.",
-      },
-    ],
+        "takeaway": "Most deals close on the second or third touch. Consistent, respectful follow-up turns initial curiosity into signed contracts."
+      }
+    ]
   },
   {
-    num: 5,
-    id: "module-05",
-    title: "Local Client Outreach, Loom Audits & The 10-Client Pipeline",
-    description: "Launch multi-channel outreach across local businesses, overcome common objections, and fill your pipeline with 10 paying clients.",
-    duration: "55m",
-    lessons: [
+    "num": 5,
+    "id": "module-05",
+    "title": "Local Client Outreach, Loom Audits & The 10-Client Pipeline",
+    "description": "Build a targeted local prospect list, execute multi-channel outreach, and close your first 10 paying chatbot clients.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "Building Your Local Hit List of 50 High-Value Targets",
-        duration: "8m",
-        summary: "Identify and filter 50 local service businesses with active marketing, high transaction sizes, and slow website response times.",
-        bulletPoints: [
-          "The High-Value Criteria: Average customer ticket size over $1,000 (cosmetic dentistry, roofing, HVAC, legal, high-end remodeling).",
-          "Finding Active Spenders: Sourcing companies running active Google Ads or Facebook Ads (they are already spending money to acquire traffic).",
-          "Auditing Their Current Site: Inspecting their website to confirm they currently lack an interactive chatbot or live chat receptionist.",
-          "Identifying the Owner's Name: Checking the 'About' page, state corporate registry, or LinkedIn to find the actual owner or managing partner.",
+        "lesNum": 1,
+        "title": "Sourcing Your Local 50-Target Hit List: High-Ticket Service Verticals",
+        "duration": "15m",
+        "summary": "Identify and qualify 50 local service businesses in your geographic area that possess the budget and lead volume to justify a chatbot.",
+        "bulletPoints": [
+          "The Sweet-Spot Verticals: Cosmetic dentists, medspas, roofers, HVAC contractors, personal injury attorneys, and luxury remodelers.",
+          "Qualification Criteria: Google Maps rating of 4.2+ with at least 30 reviews (proving active business) but an outdated website.",
+          "Finding the Decision-Maker: Sourcing owner and managing partner names and personal emails using LinkedIn and Apollo.io.",
+          "Organizing the Outreach CRM: Tracking prospect status, Loom recording links, and follow-up dates in a structured pipeline."
         ],
-        takeaway: "Target companies that already spend money on advertising but fail to capture the website traffic they pay for.",
+        "takeaway": "Target businesses with high customer transaction values ($2K-$10K+). For them, capturing just 1 extra lead pays for your bot for a year."
       },
       {
-        lesNum: 2,
-        title: "The Multi-Channel Delivery Strategy: Email, LinkedIn, Phone & Direct Mail",
-        duration: "8m",
-        summary: "Deliver your Trojan Horse demo across multiple touchpoints to guarantee the business owner actually sees your video.",
-        bulletPoints: [
-          "Channel 1: Executive Cold Email with an animated GIF preview of their chatbot in the email body.",
-          "Channel 2: Instagram / Facebook Business Page DM: Messaging their page where the owner or marketing manager actively checks messages.",
-          "Channel 3: The 90-Second Phone Warm Call: 'Hi, I built a quick prototype for [Owner] showing how to capture more leads from your website...'",
-          "Channel 4: The QR Code Postcard: Mailing a clean postcard with a QR code linking directly to their personalized demo video.",
+        "lesNum": 2,
+        "title": "Multi-Channel Outreach Execution: Direct Video DM, Email & Phone Blitzes",
+        "duration": "15m",
+        "summary": "Deploy personalized Loom videos across email, LinkedIn, Instagram DMs, and follow-up phone calls for maximum response rates.",
+        "bulletPoints": [
+          "The Personalized Email Subject Line: Using patterns like \"Quick question regarding {BusinessName} website\" for 65%+ open rates.",
+          "LinkedIn Outreach: Connecting with local business owners and sharing the demo link directly inside the private message thread.",
+          "The Direct Instagram DM Strategy: Sending a 15-second screen recording of the bot working on mobile to local aesthetic clinics.",
+          "The 2-Minute Follow-Up Phone Script: Calling the front desk, confirming the owner received the video, and scheduling a brief chat."
         ],
-        takeaway: "Multi-channel delivery ensures your personalized video demo cuts through the noise and reaches the decision-maker.",
+        "takeaway": "Combine email with LinkedIn and phone outreach. Multi-channel touchpoints dramatically increase your likelihood of reaching the owner."
       },
       {
-        lesNum: 3,
-        title: "Overcoming Gatekeepers & Reaching the Decision-Maker",
-        duration: "8m",
-        summary: "Navigate office managers and receptionists with professional, consultative framing that gets your demo forwarded to the owner.",
-        bulletPoints: [
-          "The Gatekeeper Mindset: Receptionists are paid to screen annoying sales reps, not to block genuine operational improvements.",
-          "The Collaborative Script: 'I actually put together a short video showing how to help your team handle after-hours patient inquiries...'",
-          "Asking for the Correct Email: 'What's the best email to send this 2-minute video to for Dr. Smith so he can take a look?'",
-          "Following Up with the Office Manager: Treating the office manager as an ally who will directly benefit from fewer repetitive phone calls.",
+        "lesNum": 3,
+        "title": "The 15-Minute Zoom / Coffee Shop Demo & Objection Dismantling",
+        "duration": "15m",
+        "summary": "Run an efficient 15-minute consultative closing meeting that resolves client concerns and secures a credit card payment.",
+        "bulletPoints": [
+          "The 15-Minute Meeting Agenda: 5 mins reviewing their current lead loss, 5 mins customizing the live bot live, 5 mins next steps.",
+          "Dismantling \"We Already Have A Contact Form\": Showing that forms convert at 2% while interactive bots convert at 15%.",
+          "Dismantling \"What If It Says Something Wrong?\": Demonstrating the strict RAG constraints and instant human handoff triggers.",
+          "Securing the Commitment: Asking \"Would you like me to install this on your live site by Friday?\" to transition directly into setup."
         ],
-        takeaway: "Treat gatekeepers as valued allies; positioning the chatbot as a tool that reduces their administrative workload wins their support.",
+        "takeaway": "Never get defensive about objections. Use them as opportunities to show the exact guardrails built into the system."
       },
       {
-        lesNum: 4,
-        title: "The 15-Minute Zoom / In-Person Closing Conversation",
-        duration: "8m",
-        summary: "Lead a relaxed, consultative 15-minute meeting that demonstrates the bot, answers questions, and secures the setup agreement.",
-        bulletPoints: [
-          "Meeting Structure: Recap their website traffic (3 min), Walk through the Live Demo together (5 min), Present Pricing (3 min), Q&A (4 min).",
-          "Letting the Owner Play: Having the business owner type their own test questions into the bot on screen to experience the accuracy.",
-          "Highlighting Captured Revenue: Reminding the owner that capturing just one single roof replacement ($8,000) covers the chatbot for 4 years.",
-          "The Easy Close: 'We can have this embedded on your live website by Thursday afternoon. Should we get started?'",
+        "lesNum": 4,
+        "title": "Closing the Deal: Deposit Collection, Pipeline Velocity & First 10 Clients",
+        "duration": "15m",
+        "summary": "Collect setup fees on the sales call, maintain steady pipeline momentum, and sign your first 10 paying local clients.",
+        "bulletPoints": [
+          "Collecting the Setup Fee: Sending a Stripe checkout invoice link directly in the Zoom chat or taking credit card details live.",
+          "Pipeline Velocity Metrics: Calculating that sending 10 Trojan Horse demos weekly yields 3 sales meetings and 1-2 closed clients.",
+          "The 30-Day Path to 10 Clients: Executing 50 personalized outreach touches over 4 weeks to lock in your first 10 accounts.",
+          "Day 5 Milestone Review: Celebrating the signing of your foundational clients and locking in their onboarding kickoff dates."
         ],
-        takeaway: "When the client has already seen and tested their own bot, the closing conversation is short, consultative, and low-pressure.",
-      },
-      {
-        lesNum: 5,
-        title: "Handling the 4 Classic Local Business Objections",
-        duration: "8m",
-        summary: "Overcome common objections regarding existing staff, technical updates, contract lock-ins, and AI reliability.",
-        bulletPoints: [
-          "Objection 1: 'Our front desk answers all phone calls' -> Pointing out the 5:00 PM to 8:00 AM after-hours gap where 50% of traffic browses.",
-          "Objection 2: 'Will it say something incorrect to a customer?' -> Explaining strict RAG constraints and the safe handover protocol.",
-          "Objection 3: 'Who updates it when our hours or prices change?' -> Reassuring them that your $150/mo retainer includes all monthly updates.",
-          "Objection 4: 'We don't want a long contract' -> Offering a month-to-month retainer with zero long-term cancellation penalties.",
-        ],
-        takeaway: "Address objections by highlighting after-hours revenue capture, strict factual guardrails, and risk-free month-to-month terms.",
-      },
-      {
-        lesNum: 6,
-        title: "Tracking Pipeline Velocity: Reaching Your First 10 Signed Clients",
-        duration: "8m",
-        summary: "Master the outreach mathematics to systematically sign 10 local businesses in 45 days through disciplined daily action.",
-        bulletPoints: [
-          "The 10-Client Formula: 50 personalized demos sent -> 25 videos watched -> 15 discovery calls -> 10 signed clients.",
-          "Daily Prospecting Cadence: Building 2 customized demos and sending 2 personalized videos every single business day.",
-          "Pipeline Tracking in Notion: Tracking status: Researched -> Demo Built -> Video Sent -> Watched -> Meeting Scheduled -> Won.",
-          "Celebrating Small Wins: Using early momentum to build confidence and refine your video delivery style.",
-        ],
-        takeaway: "Disciplined execution of 2 demos per day mathematically produces 10 signed clients in under 6 weeks.",
-      },
-      {
-        lesNum: 7,
-        title: "Module 5 Milestone: First 3 Paying Clients Signed",
-        duration: "7m",
-        summary: "Celebrate closing your first 3 local business clients, review early sales metrics, and prepare for onboarding.",
-        bulletPoints: [
-          "Sales Retrospective: Reviewing which video hooks got the fastest responses and which verticals closed most readily.",
-          "Deposit Confirmation: Confirming initial setup deposits have cleared Stripe.",
-          "Setting Client Delivery Expectations: Confirming the 3-day embed timeline in writing.",
-          "Entering Module 6: Structuring the recurring retainer and pricing agreements.",
-        ],
-        takeaway: "Closing your first 3 clients proves your offer in the local market and kicks off monthly recurring cash flow.",
-      },
-    ],
+        "takeaway": "Momentum is everything. Keep sending 10 custom demos every single week until you hit your target client count."
+      }
+    ]
   },
   {
-    num: 6,
-    id: "module-06",
-    title: "The Local Business Pricing Playbook: $750 Setup + $150/Month Retainer",
-    description: "Structure high-margin pricing models, design frictionless 1-page contracts, and automate monthly recurring retainer billing.",
-    duration: "53m",
-    lessons: [
+    "num": 6,
+    "id": "module-06",
+    "title": "The Local Business Pricing Playbook: $750 Setup + $150/Month Retainer",
+    "description": "Master value-anchored pricing models, draft clear 1-page client agreements, and build recurring monthly subscription revenue.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "The Psychology of $750 Setup + $150/Month: The Impulse-Buy Sweet Spot",
-        duration: "8m",
-        summary: "Understand why $750 upfront and $150/month fits below the owner's corporate approval threshold and guarantees long-term retention.",
-        bulletPoints: [
-          "The Corporate Card Threshold: Most business owners can swipe an expense card for under $1,000 without partner or board meetings.",
-          "The Stickiness of $150/Month: At $150/month, the cost is so low compared to the value of captured leads that owners practically never cancel.",
-          "Agency Unit Economics: 10 clients at $150/mo = $1,500/mo MRR; 25 clients = $3,750/mo MRR with under $100 in total software costs.",
-          "Gross Margins Over 90%: Software and API token costs per client typically remain under $12/month, leaving $138+ in pure profit per client.",
+        "lesNum": 1,
+        "title": "Pricing Psychology: The $750 Setup + $150/Month Impulse-Buy Formula",
+        "duration": "15m",
+        "summary": "Why $750 setup plus $150/month sits squarely in the business owner discretionary budget without requiring committee approval.",
+        "bulletPoints": [
+          "The Discretionary Expense Ceiling: How keeping initial setup under $1,000 allows local owners to pay via business credit card instantly.",
+          "The $150/Month No-Brainer: Framing $5/day against the cost of a single cup of coffee or an hour of minimum-wage receptionist labor.",
+          "Cash Flow Dynamics: How 10 clients at $750 setup generates $7,500 immediate cash plus $1,500/month in recurring retainer baseline.",
+          "Avoiding Hourly Pricing: Never quoting by the hour; charge for the operational capability and after-hours lead capture."
         ],
-        takeaway: "The $750 setup + $150/month model provides an impulse-buy price point for the owner and high-margin recurring cash flow for you.",
+        "takeaway": "Keep your entry pricing an impulse buy. Once you are embedded in their business, expanding retainers is simple."
       },
       {
-        lesNum: 2,
-        title: "The 3-Tier Chatbot Pricing Menu (Good, Better, Best)",
-        duration: "8m",
-        summary: "Offer 3 tiered packages to capture diverse budgets and upsell multi-channel SMS and calendar booking capabilities.",
-        bulletPoints: [
-          "Tier 1: Standard AI Receptionist ($500 setup + $100/mo) — Website widget, basic FAQs, email lead capture.",
-          "Tier 2: The 24/7 Booking Concierge ($750 setup + $150/mo - Most Popular) — Direct calendar booking, instant SMS owner alerts, CRM sync.",
-          "Tier 3: The Multi-Channel Omnichannel Bot ($1,500 setup + $299/mo) — Website chat, Instagram DM automation, and SMS missed-call text-back.",
-          "The Decoy Effect: How Tier 1 anchors affordability while Tier 3 makes Tier 2 feel like an irresistible bargain.",
+        "lesNum": 2,
+        "title": "The 3-Tier Chatbot Service Menu (Starter, Growth, VIP Automated Desk)",
+        "duration": "15m",
+        "summary": "Structure a 3-tier offer menu that gives clients choice while nudging them toward your most profitable middle tier.",
+        "bulletPoints": [
+          "Tier 1: Starter Bot ($500 setup + $99/mo): Basic FAQ answering, lead capture form, and email notifications.",
+          "Tier 2: Growth Receptionist ($750 setup + $150/mo): Full RAG knowledge base, live calendar booking, CRM sync, and 90-second SMS alerts.",
+          "Tier 3: VIP Automated Front-Desk ($1,500 setup + $299/mo): Multi-channel routing, missed-call text-back integration, and monthly ROI reports.",
+          "Anchor Pricing Strategy: Using the VIP tier to make the Growth Receptionist package look extraordinarily affordable."
         ],
-        takeaway: "A 3-tier menu allows budget-conscious owners to start small while driving 70%+ of clients to the $150/month middle tier.",
+        "takeaway": "A 3-tier menu eliminates the question of whether to buy, shifting the client mindset to which package fits best."
       },
       {
-        lesNum: 3,
-        title: "Drafting the 1-Page 'Plain English' Chatbot Service Agreement",
-        duration: "8m",
-        summary: "Create a simple, transparent 1-page agreement covering deliverables, monthly maintenance, and clear liability protections.",
-        bulletPoints: [
-          "Eliminating Legal Red Tape: Using a 1-page agreement that an owner can review and sign on their phone in 2 minutes.",
-          "Core Deliverables: Custom Knowledge Base setup, website widget embedding, lead capture routing, and ongoing maintenance.",
-          "What the Retainer Covers: Software hosting, API token consumption, up to 1 hour of monthly content updates, and technical support.",
-          "Cancellation Terms: Simple 30-day notice with zero cancellation penalties, eliminating client commitment anxiety.",
+        "lesNum": 3,
+        "title": "The 1-Page Plain English Service Agreement & Scope Guardrails",
+        "duration": "15m",
+        "summary": "Protect your agency margins with a clear, 1-page service contract that outlines deliverables, hosting terms, and revision limits.",
+        "bulletPoints": [
+          "The 1-Page Plain-English SOW: Eliminating legal intimidation to close contracts on the same day the proposal is sent.",
+          "Defining Scope Limits: Permitting 2 monthly knowledge base updates within the retainer, billing additional custom work at $100/hr.",
+          "Platform Hosting Clause: Explaining that the monthly retainer covers third-party LLM API token consumption and server uptime.",
+          "Auto-Renew & Cancellation Policy: Setting monthly credit card auto-renewal with standard 30-day written cancellation notice."
         ],
-        takeaway: "A clean 1-page service agreement builds client trust and eliminates weeks of legal review delays.",
+        "takeaway": "Clear scope boundaries prevent scope creep. Enforce that major logic changes outside the SOW require a separate quote."
       },
       {
-        lesNum: 4,
-        title: "Automating Retainer Collection with Stripe Billing",
-        duration: "7m",
-        summary: "Configure automated recurring monthly subscriptions and card update dunning so you never chase invoices.",
-        bulletPoints: [
-          "Setting Up the Subscription Product: Creating a recurring $150/month product in Stripe Billing with automatic receipts.",
-          "Collecting the Setup Deposit: Sending a combined invoice for $750 setup + first month's $150 retainer upon contract signing.",
-          "Automated Card Expiration Dunning: Letting Stripe automatically email the client when their card on file is expiring.",
-          "Zero Accounts Receivable: Recurring billing happens automatically on the 1st of every month without manual invoicing.",
+        "lesNum": 4,
+        "title": "Stripe Subscription Billing, Automated Value Reports & Workflow Upsells",
+        "duration": "15m",
+        "summary": "Automate monthly subscription billing with Stripe, deliver monthly ROI reports that prevent churn, and sell additional automations.",
+        "bulletPoints": [
+          "Stripe Recurring Subscriptions: Setting up automated monthly credit card billing with automatic dunning retries on failed payments.",
+          "The Monthly ROI Snapshot Email: Sending an automated 1st-of-the-month report detailing total conversations and leads captured.",
+          "Calculating Value Delivered: Showing that capturing 8 leads at a $500 client value generated $4,000 from their $150 retainer.",
+          "Upselling Secondary Workflows: Introducing missed-call text-back and Google review harvesting once trust is established."
         ],
-        takeaway: "Automated Stripe subscriptions guarantee on-time payment and eliminate awkward invoice collection conversations.",
-      },
-      {
-        lesNum: 5,
-        title: "The 'Monthly ROI Snapshot' Email That Eliminates Churn",
-        duration: "8m",
-        summary: "Automate an executive monthly performance report that proves the exact dollar value the chatbot delivered to the business.",
-        bulletPoints: [
-          "Why Local Clients Churn: If clients don't actively think about the chatbot, they forget it's running and question the $150 invoice.",
-          "The Monthly Snapshot Template: An automated email sent on the 1st: 'Your Chatbot Performance: 42 conversations, 18 leads captured, ~$14,000 in pipeline value.'",
-          "Highlighting After-Hours Wins: '11 of your 18 leads were captured between 6 PM and 7 AM while your office was closed.'",
-          "The Result: The owner reads the report, realizes the bot made them thousands, and happily pays your $150 invoice forever.",
-        ],
-        takeaway: "Proving that the chatbot captured after-hours leads makes your $150 retainer impossible to cancel.",
-      },
-      {
-        lesNum: 6,
-        title: "Upselling Additional Workflows to Existing Chatbot Clients",
-        duration: "7m",
-        summary: "Leverage your trusted relationship with satisfied chatbot clients to upsell missed-call text-back and review automation services.",
-        bulletPoints: [
-          "The Trusted Advisor Advantage: Once an owner trusts you with their website chatbot, selling additional automations is 5x easier.",
-          "Upsell 1: Automated Google Review Harvester (+$500 setup + $100/mo retainer).",
-          "Upsell 2: Missed-Call AI Text-Back (+$750 setup + $150/mo retainer).",
-          "Expanding Client Lifetime Value: Turning a single $150/mo chatbot client into a $400/mo full automation retainer.",
-        ],
-        takeaway: "Existing satisfied chatbot clients are your most profitable source of additional automation revenue.",
-      },
-      {
-        lesNum: 7,
-        title: "Module 6 Milestone: Certified Pricing & Billing Infrastructure",
-        duration: "7m",
-        summary: "Verify Stripe subscription links, 1-page contract templates, and the automated monthly ROI snapshot report.",
-        bulletPoints: [
-          "Testing Stripe Payment Links: Running a test transaction and confirming subscription status.",
-          "PandaDoc / DocuSign Template Check: Ensuring signature fields and contract terms are locked.",
-          "Snapshot Email Automation: Scheduling the monthly client performance digest template.",
-          "Entering Module 7: Moving to rapid client onboarding and scaling to 25+ retainers.",
-        ],
-        takeaway: "With automated billing and performance reporting in place, your agency is built for scalable, low-stress recurring revenue.",
-      },
-    ],
+        "takeaway": "Sending a monthly value report makes your retainer bulletproof. Clients will gladly keep paying when they see the exact ROI."
+      }
+    ]
   },
   {
-    num: 7,
-    id: "module-07",
-    title: "Client Onboarding, Hand-Off Protocols & Scaling to 25+ Local Retainers",
-    description: "Streamline client onboarding into a 48-hour assembly line, train client staff, and scale your local chatbot agency to $5,000+/mo.",
-    duration: "55m",
-    lessons: [
+    "num": 7,
+    "id": "module-07",
+    "title": "Client Onboarding, Hand-Off Protocols & Scaling to 25+ Local Retainers",
+    "description": "Execute rapid 48-hour client onboarding, install embed widgets across all major CMS platforms, and scale to $5,000/month solo MRR.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "The 48-Hour Rapid Onboarding & Deployment Assembly Line",
-        duration: "8m",
-        summary: "Deploy live client chatbots in under 48 hours using pre-built vertical templates and standardized asset intake forms.",
-        bulletPoints: [
-          "The 48-Hour SLA: Impressing clients by having their custom chatbot live on their website within 2 business days of deposit payment.",
-          "Day 1: Automated intake questionnaire collects logo, primary services, phone numbers, and website access.",
-          "Day 2: Ingest knowledge into Voiceflow template, embed the script on their website, and execute the 5-point test gauntlet.",
-          "Client Notification: Sending a video confirming the bot is officially live with instructions on how to test it.",
+        "lesNum": 1,
+        "title": "The 48-Hour Rapid Onboarding & Deployment Assembly Line",
+        "duration": "15m",
+        "summary": "Execute a standardized 48-hour onboarding workflow from signed agreement to live website deployment.",
+        "bulletPoints": [
+          "The 48-Hour Onboarding Timeline: Day 0 welcome email & fact sheet, Day 1 bot configuration, Day 2 client review and live embed.",
+          "Automated Onboarding Welcome Kit: Sending an automated email with the Client Fact Sheet form and CMS credential request.",
+          "Client Sign-Off Protocol: Conducting a 10-minute staging walkthrough where the client verifies responses before going live.",
+          "The Launch Announcement: Notifying the client that their 24/7 automated receptionist is officially active and capturing leads."
         ],
-        takeaway: "Deploying in 48 hours shocks local clients accustomed to slow agencies and establishes immediate authority.",
+        "takeaway": "Deploying within 48 hours shocks clients in an industry known for delays. Rapid execution triggers immediate word-of-mouth praise."
       },
       {
-        lesNum: 2,
-        title: "Website Embedding Protocols for All Major CMS Platforms",
-        duration: "8m",
-        summary: "Master the step-by-step installation process for WordPress, Squarespace, Wix, Shopify, and Webflow without breaking site styles.",
-        bulletPoints: [
-          "WordPress: Inserting code into `header.php` via 'WPCode' plugin or theme header settings in under 3 minutes.",
-          "Squarespace: Adding script into Settings -> Advanced -> Code Injection -> Footer.",
-          "Wix: Navigating to Settings -> Custom Code -> Body - End.",
-          "Handling Webmaster Permissions: What to do when a client says 'Talk to our web guy'—sending a pre-written, friendly 2-sentence instruction email.",
+        "lesNum": 2,
+        "title": "CMS Widget Embedding (WordPress, Squarespace, Wix, Shopify) & QA",
+        "duration": "15m",
+        "summary": "Embed the chatbot script across every major website builder and perform cross-device visual quality assurance.",
+        "bulletPoints": [
+          "WordPress Installation: Adding the script tag to header.php or using a lightweight header injection plugin like WPCode.",
+          "Squarespace & Wix Integration: Injecting code into Settings > Advanced > Code Injection or Custom Tracking Tools.",
+          "Shopify & Webflow Deployment: Pasting script snippets before the closing </body> tag in theme liquid files or custom code panels.",
+          "Cross-Device Mobile QA: Testing widget opening, closing, keyboard scrolling, and button clicks on iOS Safari and Android Chrome."
         ],
-        takeaway: "Embedding code takes under 5 minutes on any modern CMS when you follow standardized platform SOPs.",
+        "takeaway": "Master embed protocols across the top 4 CMS platforms. Never leave a client site until mobile responsiveness is verified."
       },
       {
-        lesNum: 3,
-        title: "Staff Training & The 1-Page Receptionist Hand-Off Guide",
-        duration: "8m",
-        summary: "Train front-desk staff to handle incoming chatbot leads with enthusiasm rather than viewing technology as a threat.",
-        bulletPoints: [
-          "Alleviating Staff Anxiety: Assuring receptionists that the bot only handles repetitive FAQs and captures leads while they are busy or away.",
-          "The 1-Page Staff Runbook: A simple guide showing staff what SMS alerts look like, how to open the lead card, and recommended call-back phrasing.",
-          "The Warm Callback Script: 'Hi [Name], I saw you were chatting on our website just a few minutes ago regarding [Issue]—I'm calling right back to help!'",
-          "Designating the Lead Champion: Identifying one staff member responsible for ensuring all incoming leads are contacted within 15 minutes.",
+        "lesNum": 3,
+        "title": "The 1-Page Front-Desk Hand-Off Guide & Staff Training Protocol",
+        "duration": "15m",
+        "summary": "Train client front-desk staff to embrace the chatbot as their assistant and follow up on captured leads within minutes.",
+        "bulletPoints": [
+          "Overcoming Front-Desk Skepticism: Assuring staff that the bot handles repetitive FAQs so they can focus on high-value client care.",
+          "The 1-Page Receptionist Hand-Off Sheet: A simple laminated guide explaining where lead alerts arrive and how to follow up.",
+          "Speed-to-Lead Protocol: Training staff to call back within 5 minutes when a lead alert arrives during operating hours.",
+          "Designating an Agency Champion: Identifying one enthusiastic office staff member to act as the primary liaison for updates."
         ],
-        takeaway: "Training front-desk staff ensures rapid lead follow-up and turns employees into enthusiastic supporters of your chatbot.",
+        "takeaway": "Win over the front-desk staff. When receptionists love the chatbot, the business owner will keep paying your retainer forever."
       },
       {
-        lesNum: 4,
-        title: "Building the Centralized Agency Monitoring Dashboard",
-        duration: "8m",
-        summary: "Monitor all 25+ client chatbots from a centralized dashboard tracking conversation volume, errors, and lead conversions.",
-        bulletPoints: [
-          "The Multi-Bot Monitoring Hub: A unified Airtable or Coda base tracking active client widgets, monthly conversation counts, and billing status.",
-          "Proactive Error Alerts: Configuring webhooks that ping your private Slack/Discord if a chatbot encounters an unhandled API error.",
-          "Managing Token Consumption: Auditing OpenAI / Anthropic usage across client bots to maintain 90%+ gross profit margins.",
-          "Routine Maintenance SOP: Spending 15 minutes every Monday reviewing conversation transcripts to identify new FAQ opportunities.",
+        "lesNum": 4,
+        "title": "Centralized Monitoring, The Referral Flywheel & Scaling to $5,000 MRR",
+        "duration": "15m",
+        "summary": "Manage 25+ client bots from a unified dashboard, turn happy clients into referral engines, and achieve $5,000 MRR freedom.",
+        "bulletPoints": [
+          "Centralized Agency Monitoring: Checking error rates, API credit quotas, and uptime across all client bots in 15 minutes weekly.",
+          "The Referral Flywheel: Asking \"Who are 2 other local business owners who need after-hours lead capture?\" at Day 30 review.",
+          "The $5,000 MRR Milestone: Managing 25 clients at an average $200/month retainer with under 5 hours of total weekly maintenance.",
+          "The Master Capstone: Graduating to an authoritative local agency brand that commands premium retainers across your region."
         ],
-        takeaway: "Centralized monitoring allows one solo operator to maintain 25 to 50 active client bots in under 3 hours per week.",
-      },
-      {
-        lesNum: 5,
-        title: "The Referral Flywheel: Generating 3 Referrals from Every Client",
-        duration: "8m",
-        summary: "Turn satisfied local business clients into a continuous source of high-trust introductions to peer business owners.",
-        bulletPoints: [
-          "The Day 14 Referral Window: Asking for referrals on Day 14 after the client receives their first few qualified leads from the bot.",
-          "The Referral Script: 'Who are 2 other business owners in your local business association who could benefit from after-hours lead capture?'",
-          "The Referral Incentive: Offering a free month of maintenance or a $100 Amazon gift card for every introduced business that signs.",
-          "Drafting the Introduction Email: Giving the client a pre-written 3-sentence introduction template to forward to peer owners.",
-        ],
-        takeaway: "Delighted business owners love bragging about their new technology; ask for introductions while early results are fresh.",
-      },
-      {
-        lesNum: 6,
-        title: "The Mathematical Road to 25 Retainers: $5,000/Month Solo Freedom",
-        duration: "8m",
-        summary: "Master the unit economics and operational rhythms of scaling to 25 local clients paying $150–$250/month in recurring retainers.",
-        bulletPoints: [
-          "The 25-Client Milestone: 25 clients at $175 average retainer = $4,375/mo MRR + 2 new setups/mo ($1,500) = $5,875/month consistent cash flow.",
-          "Time Commitment at Scale: Managing 25 bots requires under 6 hours of total weekly maintenance, providing immense solo founder lifestyle freedom.",
-          "Reinvesting in Growth: Reinvesting 10% of monthly revenue into paid local prospecting ads or hiring a part-time outreach assistant.",
-          "The Ultimate Enterprise Exit: Packaging your portfolio of 25 to 50 active recurring clients for sale to a regional digital marketing agency.",
-        ],
-        takeaway: "25 sticky local business retainers provide consistent cash flow, 90%+ profit margins, and true business freedom.",
-      },
-      {
-        lesNum: 7,
-        title: "The Master Capstone: Launching Your Local Chatbot Agency",
-        duration: "7m",
-        summary: "Synthesize the complete local chatbot business model and commit to building your first Trojan Horse demo today.",
-        bulletPoints: [
-          "The 24-Hour Commitment: Select 1 local business, build their customized Trojan Horse prototype, and send a 3-minute video today.",
-          "Remembering the Transformation: You are not selling code; you are giving local business owners their time back and stopping lost revenue.",
-          "Embracing Consistency: Sending 2 personalized videos every single day guarantees 10 paying clients within 6 weeks.",
-          "Official Graduation: Stepping into your local market as a confident, trusted AI automation specialist.",
-        ],
-        takeaway: "Execution creates momentum; build your first Trojan Horse demo today and take the first step toward 25 paying local clients.",
-      },
-    ],
-  },
+        "takeaway": "25 clients at $200/month is $5,000/month recurring income. A solo operator can easily manage this in 5 hours a week."
+      }
+    ]
+  }
 ];
 
 module.exports = {

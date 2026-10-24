@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-const { courseTitle, modulesData } = require('./generate-playbook-1.cjs');
-const { createLesson } = require('./curriculum-builder-helper.cjs');
+const { courseTitle, courseId, courseSlug, modulesData } = require('./generate-playbook-1.cjs');
+const { createDeepLesson } = require('./curriculum-builder-helper.cjs');
 
-console.log("Writing Playbook 1 files...");
+console.log("Writing Playbook 1 files (7 modules, 28 lessons)...");
 
 // 1. Build metadata
 const metadata = modulesData.map((m) => {
@@ -49,7 +49,7 @@ export const AI_AUTOMATIONS_MODULES_METADATA: ModuleMetadata[] = ${JSON.stringif
 export const AI_AUTOMATIONS_CURRICULUM = {
   totalModules: ${metadata.length},
   totalLessons: ${metadata.reduce((acc, m) => acc + m.lessons.length, 0)},
-  estimatedHours: "7.5 hours",
+  estimatedHours: "7.0 hours",
   modules: AI_AUTOMATIONS_MODULES_METADATA,
 };
 `;
@@ -59,20 +59,22 @@ console.log("Updated src/lib/ai-automations-curriculum.ts");
 
 // Helper to build lessons array for a range of modules
 function buildModuleLessons(startIdx, endIdx) {
-  let output = `import { Lesson, Module } from "@/lib/playbooks-data";\n\n`;
+  let output = `import { Lesson } from "@/lib/playbooks-data";\n\n`;
   output += `export interface ExtendedLesson extends Lesson {\n  learningObjective: string;\n  writtenLesson: string;\n  takeaway: string;\n}\n\n`;
 
   for (let idx = startIdx; idx < endIdx; idx++) {
     const m = modulesData[idx];
     const fullLessons = m.lessons.map((l) => {
-      const lesObj = createLesson({
+      const lesObj = createDeepLesson({
         modNum: m.num,
         lesNum: l.lesNum,
         title: l.title,
         duration: l.duration,
         summary: l.summary,
-        bulletPoints: l.bulletPoints,
-        takeaway: l.takeaway,
+        bulletPointsSlide1: l.bulletPoints,
+        takeawaySlide1: l.takeaway,
+        workedCalculations: l.workedCalculations,
+        codeOrSchema: l.codeOrSchema,
         courseTitle,
         modTitle: m.title,
       });
@@ -90,17 +92,94 @@ function buildModuleLessons(startIdx, endIdx) {
   return output;
 }
 
-// Write content-1 (Modules 1, 2, 3)
-fs.writeFileSync(path.join(__dirname, '../src/lib/ai-automations-content-1.ts'), buildModuleLessons(0, 3), 'utf8');
+// Write content-1 (Modules 1, 2)
+fs.writeFileSync(path.join(__dirname, '../src/lib/ai-automations-content-1.ts'), buildModuleLessons(0, 2), 'utf8');
 console.log("Updated src/lib/ai-automations-content-1.ts");
 
-// Write content-2 (Modules 4, 5, 6)
-fs.writeFileSync(path.join(__dirname, '../src/lib/ai-automations-content-2.ts'), buildModuleLessons(3, 6), 'utf8');
+// Write content-2 (Modules 3, 4, 5)
+fs.writeFileSync(path.join(__dirname, '../src/lib/ai-automations-content-2.ts'), buildModuleLessons(2, 5), 'utf8');
 console.log("Updated src/lib/ai-automations-content-2.ts");
 
-// Write content-3 (Modules 7, 8, 9)
-fs.writeFileSync(path.join(__dirname, '../src/lib/ai-automations-content-3.ts'), buildModuleLessons(6, 9), 'utf8');
+// Write content-3 (Modules 6, 7)
+fs.writeFileSync(path.join(__dirname, '../src/lib/ai-automations-content-3.ts'), buildModuleLessons(5, 7), 'utf8');
 console.log("Updated src/lib/ai-automations-content-3.ts");
+
+// Write ai-automations-course.ts
+const courseTs = `import type { Course, Module, Lesson } from "./playbooks-data";
+import { AI_AUTOMATIONS_MODULES_METADATA } from "./ai-automations-curriculum";
+import { MODULE_01_LESSONS, MODULE_02_LESSONS } from "./ai-automations-content-1";
+import { MODULE_03_LESSONS, MODULE_04_LESSONS, MODULE_05_LESSONS } from "./ai-automations-content-2";
+import { MODULE_06_LESSONS, MODULE_07_LESSONS } from "./ai-automations-content-3";
+
+const ALL_LESSON_COLLECTIONS = [
+  MODULE_01_LESSONS,
+  MODULE_02_LESSONS,
+  MODULE_03_LESSONS,
+  MODULE_04_LESSONS,
+  MODULE_05_LESSONS,
+  MODULE_06_LESSONS,
+  MODULE_07_LESSONS,
+];
+
+export const AI_AUTOMATIONS_MODULES: Module[] = AI_AUTOMATIONS_MODULES_METADATA.map((meta, idx) => {
+  const lessons: Lesson[] = ALL_LESSON_COLLECTIONS[idx] || [];
+  return {
+    id: meta.id,
+    number: meta.number,
+    title: meta.title,
+    subtitle: \`Module \${meta.number} · \${meta.lessons.length} Lessons\`,
+    description: meta.description,
+    duration: meta.duration,
+    lessonsCount: lessons.length,
+    lessons,
+  };
+});
+
+export const AI_AUTOMATIONS_PLAYBOOK_COURSE: Course = {
+  id: "ai-businesses-01",
+  slug: "7-ai-automations" as any,
+  categorySlug: "ai-businesses",
+  categoryName: "AI Businesses",
+  title: "7 AI Automation Tools That Could Make You $10,000+",
+  shortTitle: "7 AI Automation Tools",
+  audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,
+  targetGender: "for-all" as any,
+  headline: "Learn 7 accessible AI automation tools to save businesses time, offer simple services, and build real income streams.",
+  subheadline:
+    "A practical, beginner-friendly guide to 7 no-code AI tools. Learn how to set up time-saving workflows, package them into valuable client services, and reach the $10,000 income milestone.",
+  description:
+    "A step-by-step, no-code playbook teaching complete beginners how to master 7 practical AI automation tools. Learn how to connect everyday business apps, build custom assistants, automate social media DMs, repurpose videos, and land paying clients with zero coding experience.",
+  price: 3,
+  originalPrice: 9,
+  currency: "USD",
+  badge: "Bestseller",
+  rating: 4.9,
+  ratingCount: 384,
+  hoursOfMaterial: "7.0 hours",
+  modulesCount: AI_AUTOMATIONS_MODULES.length,
+  lessonsCount: AI_AUTOMATIONS_MODULES.reduce((acc, m) => acc + m.lessons.length, 0),
+  primaryColor: "#0f766e",
+  accentColor: "#f59e0b",
+  outcomes: [
+    "Master the 7 foundational no-code automation tools",
+    "Build custom OpenAI Assistants with tool calling and grounded RAG",
+    "Design relational databases in Airtable and publish client portals in Softr",
+    "Deploy 15-second missed-call text-back systems with Twilio",
+    "Package high-ticket services into $2,500 sprints and $850/mo retainers",
+  ],
+  modules: AI_AUTOMATIONS_MODULES,
+  testimonials: [
+    {
+      name: "Marcus Vance",
+      role: "Operations Consultant",
+      quote: "The Make.com and Airtable client portal blueprints allowed me to close a $3,500 operations hub for a boutique real estate firm on my second week.",
+      handle: "@marcus_ops",
+    },
+  ],
+};
+`;
+fs.writeFileSync(path.join(__dirname, '../src/lib/ai-automations-course.ts'), courseTs, 'utf8');
+console.log("Updated src/lib/ai-automations-course.ts");
 
 // Update detail-data and detail.ts
 const totalLessonsCount = metadata.reduce((acc, m) => acc + m.lessons.length, 0);
@@ -138,7 +217,7 @@ export const DETAIL_AI_AUTOMATIONS_DATA: PlaybookDetailData = {
   language: "English",
   subtitles: "English [Auto]",
   thumbnail: "",
-  hoursOfMaterial: "7.5 hours",
+  hoursOfMaterial: "7.0 hours",
   modulesCount: ${metadata.length},
   lessonsCount: ${totalLessonsCount},
   whatYouWillLearn: [
@@ -172,17 +251,15 @@ export const DETAIL_AI_AUTOMATIONS_DATA: PlaybookDetailData = {
       "By mastering 7 practical visual tools, you gain the technical leverage to build complete operational hubs for clients in days instead of months. When you solve high-friction bottlenecks, business owners happily pay premium setup fees and ongoing monthly retainers.",
       "This Playbook delivers end-to-end curriculum, visual slide presentations, and step-by-step written implementation blueprints for each tool, guiding you all the way from zero experience to a thriving $10,000/month service business.",
     ],
-    keyPointsTitle: "Comprehensive 9-Module Curriculum Overview",
+    keyPointsTitle: "Comprehensive 7-Module Curriculum Overview",
     keyPoints: [
-      "Module 1: The $10,000 Milestone & Core Automation Ingredients",
-      "Module 2: Make.com Visual Scenarios, Routers & Error Handlers",
-      "Module 3: n8n Self-Hosted Workflows & Enterprise Data Sovereignty",
-      "Module 4: OpenAI Assistants API, Tool Calling & Strict JSON Schemas",
-      "Module 5: Airtable Relational Databases & Softr Client Portals",
-      "Module 6: ElevenLabs Voice Cloning & HeyGen Dynamic Video Prospecting",
-      "Module 7: Perplexity & DeepSeek Live Market Intelligence Systems",
-      "Module 8: Twilio & WhatsApp Business Missed-Call & Booking Automations",
-      "Module 9: 3-Tier Commercial Packaging, Trojan Horse Audits & $10K Retainers",
+      "Module 1: The Automation Business Model & The $10,000 Milestone",
+      "Module 2: Tool 1 — Make.com Visual Orchestration & Error Routing",
+      "Module 3: Tool 2 — n8n Self-Hosted Automation & Data Privacy",
+      "Module 4: Tools 3 & 4 — OpenAI Assistants API & Claude 3.7 Tool Calling",
+      "Module 5: Tool 5 — Airtable Relational Databases & Softr Portals",
+      "Module 6: Tools 6 & 7 — Multimodal Prospecting & Speed-to-Lead Telephony",
+      "Module 7: Commercial Packaging, Loom Audits & Retainer Retaining",
     ],
     closing: [
       "Every single lesson contains both an interactive executive slide presentation and a comprehensive written implementation guide.",
@@ -256,16 +333,12 @@ export const DETAIL_AI_AUTOMATIONS_DATA: PlaybookDetailData = {
     },
   ],
 };
+
+export const AI_AUTOMATIONS_DETAIL_DATA = DETAIL_AI_AUTOMATIONS_DATA;
 `;
 
 fs.writeFileSync(path.join(__dirname, '../src/lib/ai-automations-detail-data.ts'), detailDataTs, 'utf8');
-console.log("Updated src/lib/ai-automations-detail-data.ts");
-
-const detailTs = `import { DETAIL_AI_AUTOMATIONS_DATA } from "./ai-automations-detail-data";
-export { DETAIL_AI_AUTOMATIONS_DATA };
-export const AI_AUTOMATIONS_DETAIL_DATA = DETAIL_AI_AUTOMATIONS_DATA;
-`;
-fs.writeFileSync(path.join(__dirname, '../src/lib/ai-automations-detail.ts'), detailTs, 'utf8');
-console.log("Updated src/lib/ai-automations-detail.ts");
+fs.writeFileSync(path.join(__dirname, '../src/lib/ai-automations-detail.ts'), detailDataTs, 'utf8');
+console.log("Updated src/lib/ai-automations-detail-data.ts & detail.ts");
 
 console.log("Playbook 1 files written successfully!");

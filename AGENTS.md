@@ -130,27 +130,32 @@ When provided with only a Playbook title (for example: `Build a Micro-SaaS With 
 
 ---
 
-## 9. Mandatory Curriculum Structure Standard (7–10 Modules, 7–10 Lessons/Module)
+## 9. Mandatory Curriculum Structure Standard (6–7 Modules, Exactly 4 Lessons/Module)
 
-Every current and future Playbook across the entire catalog must strictly adhere to the following mandatory structural constraints:
+Every current and future Playbook across the entire catalog must strictly adhere to the following permanent content standard:
+
+### PLUGD PLAYBOOK CONTENT STANDARD
+
+Every current and future Plugd Playbook must contain **6–7 modules**, with **exactly 4 lessons per module** (24–28 total lessons per Playbook). Every lesson must have both a substantive Presentation and a complementary Written Lesson.
 
 | Requirement | Mandatory Rule |
 |---|---|
-| **Minimum modules** | 7 |
-| **Preferred modules** | 7–8 |
-| **Maximum modules** | 10 |
-| **Minimum lessons per module** | 7 |
-| **Preferred lessons per module** | 7–8 |
-| **Maximum lessons per module** | 10 |
+| **Minimum modules** | 6 |
+| **Preferred / Standard modules** | 7 |
+| **Maximum modules** | 7 |
+| **Lessons per module** | **Exactly 4** |
+| **Total lessons per Playbook** | **24–28 lessons** |
 
-### Core Curriculum Rules:
-1. **Hard Structural Constraints:** Every Playbook must contain **7–10 modules**, and every module must contain **7–10 lessons** (minimum 49 lessons per Playbook, e.g. 7×7=49 or 8×7=56).
+### Core Content Depth & Quality Rules:
+1. **Hard Structural Constraints:** Every Playbook must contain **6–7 modules**, and every module must contain **exactly 4 lessons** (total 24–28 lessons per Playbook).
 2. **Substantive Dual-Format Content:** Every lesson must contain:
-   - Full presentation slides (`slides` array with comprehensive title, subtitle, 4 detailed educational bullet points, and key takeaway).
-   - In-depth written lesson (`writtenLesson` string of substantive length >300 characters, detailing architecture, implementation steps, realistic examples, templates, and checklists).
-3. **Zero Placeholders:** No empty, placeholder, or stub lessons are permitted. Lessons must never contain "coming soon" or duplicated content simply to meet counts.
-4. **Dynamic Metadata:** Module and lesson counts displayed in UI headers, catalog summaries, and detail pages must always be dynamically calculated from the verified curriculum.
-5. **Programmatic Validation:** All Playbooks must pass `validateCurriculumStructure()` before publication.
+   - Full presentation slides (`slides` array with multiple substantive slides per lesson, each featuring title, subtitle, 4 detailed educational bullet points, and key takeaways).
+   - In-depth written lesson (`writtenLesson` string of substantive length >2,000 characters, detailing conceptual foundations, step-by-step implementation, architectural decision matrices, worked economic calculations, production code/schemas, failure analysis tables, practical implementation exercises, and actionable takeaways).
+3. **Deep, Actionable Instruction:** A title and a few lines of text do not constitute a complete lesson. Lessons must provide deep, practical, topic-specific instruction with detailed explanations, step-by-step implementation, worked examples, relevant tables, diagrams, charts, calculations, code or configuration examples where applicable, decision frameworks, templates, troubleshooting, exercises, and realistic case studies.
+4. **Zero Placeholders & Zero Thin Content:** Never create thin, generic, repetitive, or filler content merely to populate the curriculum. The learner must receive enough detail to understand and apply the subject.
+5. **Accuracy, Credibility & Factual Rigor:** Use factual, verifiable information; clearly label illustrative scenarios and financial assumptions; never invent results or promise earnings.
+6. **Dynamic Metadata:** Module and lesson counts displayed in UI headers, catalog summaries, and detail pages must always be dynamically calculated from the verified curriculum.
+7. **Programmatic Validation:** All Playbooks must pass `validateCurriculumStructure()` before publication.
 
 ---
 

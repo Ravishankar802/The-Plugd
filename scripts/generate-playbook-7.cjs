@@ -4,705 +4,432 @@ const courseSlug = "build-a-micro-saas-with-ai-in-7-days-instead-of-spending-mon
 
 const modulesData = [
   {
-    num: 1,
-    id: "module-01",
-    title: "Day 1 — Problem Validation, Wireframing & Scope Containment",
-    description: "Validate a high-intent micro-SaaS problem in 24 hours, wireframe the core utility, and ruthlessly cut non-essential features.",
-    duration: "55m",
-    lessons: [
+    "num": 1,
+    "id": "module-01",
+    "title": "Day 1 — Problem Validation, Wireframing & Scope Containment",
+    "description": "Validate expensive B2B pain points within 24 hours, enforce ruthless MVP scope boundaries, and lock in the rapid architecture.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "The Micro-SaaS Paradigm: Solving One Expensive Pain Point Exceptionally Well",
-        duration: "8m",
-        summary: "Understand why targeted, single-utility micro-SaaS products outperform bloated platforms in profitability, speed, and solo maintainability.",
-        bulletPoints: [
-          "The Trap of the 'All-in-One' Platform: Why solo developers burn out attempting to build massive platforms over 9 months without revenue.",
-          "The Single-Utility Advantage: A laser-focused tool solving one acute workflow pain (e.g. converting messy bank PDFs into clean CSVs) commands high retention.",
-          "The B2B Micro-SaaS Sweet Spot: Target products priced between $29 and $99/month solving business friction where expense accounts pay.",
-          "Solo Founder Economics: 150 customers paying $49/month = $7,350/mo recurring revenue with 92% gross margins and under 5 hours of weekly support.",
+        "lesNum": 1,
+        "title": "The Micro-SaaS Paradigm & 24-Hour B2B Problem Discovery",
+        "duration": "15m",
+        "summary": "Identify narrow, high-urgency B2B problems where businesses already pay for clumsy workarounds or manual labor.",
+        "bulletPoints": [
+          "The Micro-SaaS Edge: Solving one specific workflow 10x better than bloated enterprise software suites.",
+          "Validation Mining: Searching Reddit, G2 1-star reviews, and trade forums where businesses explicitly complain about existing tools.",
+          "Willingness to Pay Signal: Verifying that prospects currently hire virtual assistants or spend 5+ hours weekly on the problem.",
+          "The 24-Hour Validation Sprint: Testing proposition clarity with 10 cold outreach messages before writing a single line of code."
         ],
-        takeaway: "Win by solving one specific, expensive operational problem 10x faster and simpler than existing legacy software.",
+        "takeaway": "Never build software looking for a problem. Find where businesses are already losing money and automate that exact pain point."
       },
       {
-        lesNum: 2,
-        title: "24-Hour Market Validation: Searching Where Buyers Complain",
-        duration: "8m",
-        summary: "Validate paid demand before writing a line of code by mining customer complaints on Reddit, G2, Trustpilot, and Zapier forums.",
-        bulletPoints: [
-          "The Complaint Mining Method: Searching 'how to export', 'Zapier doesn't support', and 'manual workaround for' on industry forums.",
-          "G2 and Capterra 1-Star Reviews: Reading 2- and 3-star reviews of enterprise software to identify specific neglected features.",
-          "Validating Willingness to Pay: Asking prospective users 'What is your current workaround, and how many hours does it take your team per week?'",
-          "The Validation Threshold: Securing at least 5 business operators who state they would pay $49/mo immediately for a working prototype.",
+        "lesNum": 2,
+        "title": "Ruthless MVP Scoping: The 1-Core-Action Rule & Excalidraw Wireframing",
+        "duration": "15m",
+        "summary": "Strip away non-essential features and design a streamlined 3-screen user journey focused on delivering immediate time-to-value.",
+        "bulletPoints": [
+          "The 1-Core-Action Rule: Limiting your V1 product to a single primary user input and a single magical output.",
+          "Cutting Feature Creep: Deferring team permissions, dark mode, and complex settings until after initial revenue.",
+          "Rapid Excalidraw Wireframing: Sketching the Landing Page, Auth Gate, and Core App Dashboard in under 90 minutes.",
+          "Defining Time-to-Value: Ensuring a new user experiences the core utility of the app within 60 seconds of registration."
         ],
-        takeaway: "Never build on speculation; mine active user frustrations and validate willingness to pay before opening your code editor.",
+        "takeaway": "Your MVP is not a smaller version of a large product; it is the absolute simplest vehicle that solves the core problem."
       },
       {
-        lesNum: 3,
-        title: "The Ruthless MVP Scope Cutter: The 1-Core-Action Rule",
-        duration: "8m",
-        summary: "Strip your proposed product down to a single core input-output action to guarantee completion within the 7-day sprint.",
-        bulletPoints: [
-          "The 1-Core-Action Rule: If your software cannot deliver its primary 'Aha!' moment in under 60 seconds from signup, scope is bloated.",
-          "Features to Ruthlessly Eliminate for V1: Dark mode, complex team permissions, custom integrations, social logins, and multi-tier workspaces.",
-          "The Core User Loop: Input (File, URL, or Text) -> AI Transformation -> Clean Download / Output -> Instant Value Delivered.",
-          "Scope Creep Defense: Maintaining an ironclad 'V2 Wishlist' document for every cool idea that doesn't directly solve Day 1's core pain.",
+        "lesNum": 3,
+        "title": "The Speed-Optimized Modern Stack: Next.js 15, Tailwind & Supabase",
+        "duration": "15m",
+        "summary": "Establish an opinionated, high-velocity tech stack designed for rapid development, built-in security, and low hosting overhead.",
+        "bulletPoints": [
+          "Next.js 15 App Router: Leveraging Server Actions and React Server Components for minimal boilerplate and instant data mutations.",
+          "Tailwind CSS & Shadcn UI: Assembling polished, accessible, production-grade interfaces using copy-paste headless components.",
+          "Supabase as Backend: Instant PostgreSQL, built-in authentication, database webhooks, and automatic REST/GraphQL endpoints.",
+          "Vercel Deployment Pipeline: Zero-configuration Git-based CI/CD with instant preview branches and global edge network delivery."
         ],
-        takeaway: "An MVP is not a half-baked platform; it is a complete, polished solution to a single, narrow problem.",
+        "takeaway": "A standardized tech stack eliminates architectural hesitation and lets you focus 100% of your energy on the core AI feature."
       },
       {
-        lesNum: 4,
-        title: "Low-Fidelity Wireframing & UX Flow in Excalidraw",
-        duration: "8m",
-        summary: "Design the complete 3-screen user journey in under 60 minutes to eliminate UI ambiguity before coding.",
-        bulletPoints: [
-          "The 3-Screen SaaS Architecture: Screen 1 Landing Page & Auth; Screen 2 Main App Workspace; Screen 3 Billing & API Key Settings.",
-          "Designing in Excalidraw: Keeping wireframes black-and-white to focus entirely on layout, button hierarchies, and data inputs.",
-          "The Loading State UX: Designing engaging skeleton screens and progress indicators to handle AI model latency gracefully.",
-          "Mobile Responsiveness Considerations: Ensuring core buttons and tables render cleanly on mobile viewports.",
+        "lesNum": 4,
+        "title": "AI Coding Workflows: Cursor Rules, Copilot & Day 1 Milestone Lock",
+        "duration": "15m",
+        "summary": "Configure AI pair-programming assistants with project-specific rules, schemas, and design constraints to 5x coding speed.",
+        "bulletPoints": [
+          "Cursor .cursorrules Configuration: Feeding project tech stack, conventions, and database schemas directly to the AI model.",
+          "Context-Aware Prompting: Referencing documentation files (@docs) and database types to generate hallucination-free React components.",
+          "Prompt-Driven Component Building: Generating form validation, state management, and API clients in seconds.",
+          "Day 1 Milestone Audit: Freezing product specifications and creating repository scaffolding before starting Day 2 implementation."
         ],
-        takeaway: "Designing the complete 3-screen flow in 60 minutes provides the exact blueprint needed for rapid AI-assisted code generation.",
-      },
-      {
-        lesNum: 5,
-        title: "Choosing Your Tech Stack for Maximum Velocity: Next.js 15, Tailwind & Supabase",
-        duration: "8m",
-        summary: "Lock in the modern full-stack development stack optimized for rapid AI code generation, edge performance, and zero DevOps.",
-        bulletPoints: [
-          "The Modern Velocity Stack: Next.js 15 (App Router), Tailwind CSS, Shadcn UI, TypeScript, Supabase (Postgres & Auth), and Vercel hosting.",
-          "Why Next.js 15: Server Components eliminate redundant API boilerplate; Server Actions streamline database mutations.",
-          "Why Supabase: Instant PostgreSQL database, built-in Row Level Security, auto-generated TypeScript types, and integrated Auth.",
-          "Zero DevOps Overhead: Zero server provisioning, zero Docker orchestration; push to GitHub and deploy globally in seconds.",
-        ],
-        takeaway: "Standardize on Next.js 15 and Supabase to maximize development speed and eliminate infrastructure maintenance.",
-      },
-      {
-        lesNum: 6,
-        title: "Structuring Your AI Prompt & Coding Assistant Workflow (Cursor / Copilot)",
-        duration: "8m",
-        summary: "Configure your IDE with custom `.cursorrules` and prompt templates to generate production-grade TypeScript code 5x faster.",
-        bulletPoints: [
-          "The Modern AI Pair Programming Workflow: Using Cursor or GitHub Copilot with Claude 3.7 Sonnet as your lead full-stack engineer.",
-          "Authoring the `.cursorrules` File: Enforcing Next.js 15 App Router conventions, TypeScript strict mode, and Shadcn component patterns.",
-          "Prompting for Server Actions: Giving AI exact database schemas to generate type-safe mutation functions without hallucinated fields.",
-          "Iterative Code Review: Verifying generated code in small chunks (under 100 lines) rather than asking AI to build the entire app at once.",
-        ],
-        takeaway: "A well-configured AI coding assistant acts as a senior full-stack engineer, turning 2 months of manual coding into 7 days.",
-      },
-      {
-        lesNum: 7,
-        title: "Day 1 Milestone Checklist: Spec Locked & Ready to Scaffold",
-        duration: "7m",
-        summary: "Audit your Day 1 deliverables to ensure your problem statement, wireframes, and technical specifications are completely locked.",
-        bulletPoints: [
-          "The Day 1 Audit Gate: Verified willingness to pay from 5 prospects, 3-screen wireframe exported, and GitHub repository initialized.",
-          "Domain & Identity: Securing a clean `.com` or `.co` domain on Namecheap or Cloudflare and setting up a project README.",
-          "Mental Commit: Committing to the 7-day build schedule without second-guessing features or pivoting midway.",
-          "Entering Day 2: Transitioning from concept and design to active code scaffolding and database modeling.",
-        ],
-        takeaway: "Day 1 ends with crystal-clear specifications and zero ambiguity—ready to scaffold the full codebase on Day 2.",
-      },
-    ],
+        "takeaway": "Configuring Cursor rules upfront turns an AI code assistant into a senior engineer who knows your exact architecture."
+      }
+    ]
   },
   {
-    num: 2,
-    id: "module-02",
-    title: "Day 2 — Modern Full-Stack Scaffolding & Database Architecture",
-    description: "Scaffold the Next.js 15 application, install Shadcn UI components, and design a scalable Supabase PostgreSQL relational schema.",
-    duration: "54m",
-    lessons: [
+    "num": 2,
+    "id": "module-02",
+    "title": "Day 2 — Full-Stack Scaffolding & Database Architecture",
+    "description": "Scaffold the Next.js application, configure PostgreSQL schemas in Supabase, and enforce rock-solid Row Level Security.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "Scaffolding the Next.js 15 App with TypeScript & Tailwind CSS",
-        duration: "8m",
-        summary: "Initialize the Next.js 15 project with App Router, TypeScript strict mode, Tailwind CSS, and optimized package configurations.",
-        bulletPoints: [
-          "Project Initialization: Running `npx create-next-app@latest` with App Router, TypeScript, Tailwind, and ESLint enabled.",
-          "Clean Directory Structure: Organizing `/src/app`, `/src/components/ui`, `/src/lib`, `/src/types`, and `/src/actions` for clarity.",
-          "Path Aliases: Configuring `@/*` path mapping in `tsconfig.json` for clean, readable import statements.",
-          "Font & Metadata Optimization: Configuring `next/font` with Inter or Geist for zero layout shift and rapid initial render times.",
+        "lesNum": 1,
+        "title": "Next.js 15 App Scaffolding, TypeScript & Shadcn UI Theming",
+        "duration": "15m",
+        "summary": "Initialize the production Next.js 15 project, install Tailwind utilities, and configure a cohesive design system.",
+        "bulletPoints": [
+          "Clean Next.js Initialization: Scaffolding with TypeScript, ESLint, Tailwind CSS, and App Router directory structure.",
+          "Shadcn UI Installation: Adding core UI primitives including Button, Dialog, DropdownMenu, Card, and Input components.",
+          "Global Theme Customization: Configuring color tokens, typography scales, and subtle border radius values for a modern aesthetic.",
+          "Project Structure Standards: Organizing server actions, database helpers, hooks, and UI components into maintainable directories."
         ],
-        takeaway: "A clean, modular directory structure keeps your codebase maintainable and easily understood by AI coding assistants.",
+        "takeaway": "A clean component foundation ensures your UI looks enterprise-ready from day one without wasting hours on custom CSS."
       },
       {
-        lesNum: 2,
-        title: "Installing & Theming Shadcn UI Component Library",
-        duration: "8m",
-        summary: "Integrate Shadcn UI components to build a sleek, accessible, modern SaaS interface without writing bespoke CSS.",
-        bulletPoints: [
-          "Why Shadcn UI Dominates: Accessible Radix UI primitives with copy-paste Tailwind styling owned entirely in your repository.",
-          "Installing Core Components: Initializing `Button`, `Input`, `Dialog`, `DropdownMenu`, `Card`, `Badge`, `Tabs`, and `Toast` notifications.",
-          "Custom Theme Palette: Defining brand primary and accent colors in `globals.css` using HSL variables for dark/light adaptability.",
-          "Component Composition: Building reusable composite components (`PageHeader`, `EmptyState`, `StatCard`) for consistent UI patterns.",
+        "lesNum": 2,
+        "title": "Supabase Postgres Architecture: Relational Data Modeling & Enums",
+        "duration": "15m",
+        "summary": "Design normalized database tables for users, subscriptions, credits, and AI-generated assets with foreign key constraints.",
+        "bulletPoints": [
+          "Core Schema Architecture: Modeling users, subscriptions, usage_ledger, and projects tables in PostgreSQL.",
+          "Postgres Enums & Check Constraints: Enforcing strict data integrity for subscription tiers (free, pro, enterprise) and task statuses.",
+          "Automated Timestamp Triggers: Utilizing Postgres functions to automatically maintain created_at and updated_at fields.",
+          "Cascading Deletes: Ensuring user-generated data is cleanly purged or archived when accounts are deleted."
         ],
-        takeaway: "Shadcn UI delivers enterprise-grade polish and accessibility out of the box in minutes.",
+        "takeaway": "Spend time designing your schema correctly on Day 2. A clean relational model makes every subsequent feature easy to build."
       },
       {
-        lesNum: 3,
-        title: "Supabase Project Setup & Local Environment Configuration",
-        duration: "8m",
-        summary: "Provision a new Supabase cloud project, configure local environment variables, and establish secure database connection pools.",
-        bulletPoints: [
-          "Creating the Supabase Project: Selecting AWS region closest to your primary target market and generating database credentials.",
-          "Environment Variable Security: Configuring `.env.local` with `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY`.",
-          "Client Initialization: Setting up browser client (`createBrowserClient`) and server client (`createServerClient`) using `@supabase/ssr`.",
-          "Connection Pooling: Utilizing Supabase's transaction pooler (port 6543) to prevent connection exhaustion in serverless edge environments.",
+        "lesNum": 3,
+        "title": "Row Level Security (RLS) Policies & Data Isolation",
+        "duration": "15m",
+        "summary": "Implement ironclad database security policies ensuring users can only read, write, and delete their own private data.",
+        "bulletPoints": [
+          "The Supabase Security Model: Why client-side queries are completely safe only when RLS is enabled on every table.",
+          "Crafting RLS Policies: Writing SQL expressions using auth.uid() to restrict SELECT, INSERT, UPDATE, and DELETE operations.",
+          "Admin Bypass Mechanisms: Using Supabase service_role keys strictly within secure Next.js Server Actions for elevated mutations.",
+          "Testing RLS Boundaries: Simulating cross-user unauthorized access attempts to verify zero data leakage."
         ],
-        takeaway: "Proper Supabase client architecture ensures seamless authentication and lightning-fast database queries in Next.js Server Components.",
+        "takeaway": "Never ship a database without RLS enabled. It is your primary defense against multi-tenant data breaches."
       },
       {
-        lesNum: 4,
-        title: "Relational Schema Design: Users, Organizations, & Core Assets",
-        duration: "8m",
-        summary: "Model a robust relational database schema in PostgreSQL supporting users, usage credits, and customer-generated assets.",
-        bulletPoints: [
-          "The Core Tables: `users` (profiles), `subscriptions` (Stripe status), `documents` (processed assets), and `usage_logs` (token tracking).",
-          "Primary Keys & Foreign Keys: Using `UUID` primary keys with `ON DELETE CASCADE` constraints for clean relational integrity.",
-          "Timestamps & Tracking: Adding `created_at` and `updated_at` triggers on every table for audit trails.",
-          "Indexes for Performance: Adding B-tree indexes on `user_id`, `created_at`, and `status` columns to ensure sub-10ms query times.",
+        "lesNum": 4,
+        "title": "End-to-End Type Safety: Auto-Generating TypeScript Types & Verification",
+        "duration": "15m",
+        "summary": "Generate TypeScript definitions directly from your live database schema to guarantee compile-time type safety across your app.",
+        "bulletPoints": [
+          "Supabase CLI Type Generation: Running supabase gen types typescript to create a single source of truth for database models.",
+          "Typed Server Actions: Typing server inputs and database returns to catch schema mismatches during compilation.",
+          "Zod Form Validation: Pairing client-side React Hook Form validation with server-side Zod schemas for total input sanitization.",
+          "Day 2 Milestone Certification: Verifying that all CRUD operations execute flawlessly against the secured Supabase database."
         ],
-        takeaway: "A well-indexed relational schema prevents future data migration headaches and keeps queries fast as user volume grows.",
-      },
-      {
-        lesNum: 5,
-        title: "Implementing Supabase Row Level Security (RLS) Policies",
-        duration: "8m",
-        summary: "Lock down your database at the engine level using PostgreSQL Row Level Security to prevent unauthorized cross-tenant data access.",
-        bulletPoints: [
-          "The RLS Imperative: In modern SaaS architectures, application security must be enforced directly at the database engine.",
-          "Enabling RLS: Executing `ALTER TABLE documents ENABLE ROW LEVEL SECURITY;` across every user-facing table.",
-          "Authoring Granular Policies: Writing `auth.uid() = user_id` policies for `SELECT`, `INSERT`, `UPDATE`, and `DELETE` operations.",
-          "Testing Tenant Isolation: Verifying in Supabase SQL editor that User A can never query, modify, or delete User B's assets.",
-        ],
-        takeaway: "Row Level Security ensures bulletproof multi-tenant isolation, guaranteeing complete data privacy between customers.",
-      },
-      {
-        lesNum: 6,
-        title: "Generating Type-Safe TypeScript Definitions from Supabase Schema",
-        duration: "7m",
-        summary: "Use the Supabase CLI to generate end-to-end TypeScript definitions directly from your PostgreSQL schema.",
-        bulletPoints: [
-          "The Supabase Typegen Command: Running `npx supabase gen types typescript --project-id ... > src/types/database.types.ts`.",
-          "End-to-End Type Safety: Ensuring database column names and nullability automatically reflect in your frontend components.",
-          "Eliminating Runtime Bugs: Catching missing fields and type mismatches at compile time before deploying to production.",
-          "Automating Type Generation: Adding a `npm run update-types` script in `package.json` for instant schema syncing.",
-        ],
-        takeaway: "Automated schema typegen ensures complete type safety from your database tables all the way to your React UI components.",
-      },
-      {
-        lesNum: 7,
-        title: "Day 2 Milestone Checklist: Full-Stack Foundation Operational",
-        duration: "7m",
-        summary: "Validate that your Next.js application, Shadcn components, Supabase database, and RLS policies are fully functional.",
-        bulletPoints: [
-          "Testing Database Connectivity: Querying the database from a Next.js Server Component and rendering test records.",
-          "Testing UI Components: Verifying responsive layout, modal dialogs, and button state animations across screen sizes.",
-          "Git Commit & Vercel Preview: Pushing Day 2 progress to GitHub and checking automatic Vercel preview deployment.",
-          "Entering Day 3: Preparing to integrate LLM APIs and construct the core AI processing engine.",
-        ],
-        takeaway: "Day 2 ends with a fully scaffolded, type-safe full-stack application and secure database—ready for core AI integration.",
-      },
-    ],
+        "takeaway": "Auto-generated types eliminate an entire class of runtime bugs and provide instant autocomplete across your full stack."
+      }
+    ]
   },
   {
-    num: 3,
-    id: "module-03",
-    title: "Day 3 — LLM Orchestration, Prompt Engineering & API Integration",
-    description: "Integrate Claude 3.7 and OpenAI APIs, engineer deterministic JSON prompts, handle streaming responses, and build the core AI engine.",
-    duration: "55m",
-    lessons: [
+    "num": 3,
+    "id": "module-03",
+    "title": "Day 3 — LLM Orchestration, Prompt Engineering & Streaming APIs",
+    "description": "Integrate frontier AI models, enforce deterministic structured outputs with Zod, and deliver real-time streaming interfaces.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "Frontier LLM Selection: Claude 3.7 Sonnet vs GPT-4o for Micro-SaaS",
-        duration: "8m",
-        summary: "Choose the optimal AI model for your application based on reasoning capability, JSON adherence, latency, and token economics.",
-        bulletPoints: [
-          "Model Evaluation Matrix: Comparing Claude 3.7 Sonnet, GPT-4o, and GPT-4o-mini across cost, speed, and accuracy.",
-          "When to Choose Claude 3.7 Sonnet: Superior reasoning, code generation, nuanced document extraction, and complex analytical tasks.",
-          "When to Choose GPT-4o-mini: High-volume, low-latency simple transformations where token cost must remain under $0.001 per run.",
-          "Fallback Architecture: Configuring automatic failover to a secondary model provider if the primary API experiences downtime.",
+        "lesNum": 1,
+        "title": "Frontier LLM Selection & Token Economics: Claude 3.5 Sonnet vs GPT-4o",
+        "duration": "15m",
+        "summary": "Evaluate frontier models for reasoning quality, latency, token costs, and structured JSON reliability to maximize gross margins.",
+        "bulletPoints": [
+          "Model Comparison: Claude 3.5 Sonnet for superior coding and nuanced reasoning vs GPT-4o for ultra-fast conversational latency.",
+          "Token Economics & Gross Margins: Calculating per-request API costs ($0.003-$0.02) to ensure a 90%+ software margin on subscription plans.",
+          "Prompt Caching Strategies: Utilizing Anthropic and OpenAI prompt caching to slash input token costs by up to 90% on large system prompts.",
+          "Fallback Routing: Designing multi-provider failover logic if primary LLM APIs experience rate limits or downtime."
         ],
-        takeaway: "Match your model to your specific transformation complexity to balance output quality with healthy profit margins.",
+        "takeaway": "Keep token costs under 10% of subscription revenue by caching system prompts and choosing the right model for each task."
       },
       {
-        lesNum: 2,
-        title: "Engineering Deterministic JSON Output with Pydantic / Zod Schemas",
-        duration: "8m",
-        summary: "Force LLMs to return strict, parseable JSON conforming to Zod schemas without conversational fluff or markdown formatting.",
-        bulletPoints: [
-          "The Problem of Hallucinated Syntax: Dealing with unexpected markdown ticks (```json) or missing brackets that break parsers.",
-          "Defining Strict Zod Schemas: Authoring TypeScript Zod schemas defining exact keys, data types, arrays, and enum constraints.",
-          "Utilizing Structured Outputs / Tool-Calling: Using API parameter `response_format: { type: 'json_object' }` or tool schemas.",
-          "Defensive Parsing & Validation: Parsing API responses through `schema.safeParse()` with automatic retry logic if validation fails.",
+        "lesNum": 2,
+        "title": "Deterministic JSON Generation with Pydantic & Zod Schemas",
+        "duration": "15m",
+        "summary": "Force LLM responses into strict, validated JSON structures to prevent UI crashes and ensure flawless downstream parsing.",
+        "bulletPoints": [
+          "The Hallucinated JSON Problem: Why free-text LLM generation breaks frontend components and parsing pipelines.",
+          "OpenAI & Anthropic Structured Outputs: Passing JSON Schema definitions to force strict schema adherence at the decoding layer.",
+          "Zod Runtime Parsing: Parsing raw LLM responses through Zod schemas with automated self-healing retry prompts on validation errors.",
+          "Extracting Complex Nested Data: Structuring schemas for multi-step outputs, tables, and categorized analytical reports."
         ],
-        takeaway: "Strict Zod schema enforcement ensures your AI engine returns clean, reliable JSON every single time.",
+        "takeaway": "Never parse LLM output with regex or raw JSON.parse. Enforce strict JSON schema guarantees at the API boundary."
       },
       {
-        lesNum: 3,
-        title: "Building Real-Time Streaming Responses with Vercel AI SDK",
-        duration: "8m",
-        summary: "Implement lightning-fast streaming text generation using the Vercel AI SDK to deliver instant perceived performance.",
-        bulletPoints: [
-          "The Perceived Speed Advantage: Streaming the first token in 400ms vs making the user stare at a spinning loader for 12 seconds.",
-          "Installing Vercel AI SDK: Integrating `ai` and `@ai-sdk/anthropic` / `@ai-sdk/openai` packages in Next.js Server Actions.",
-          "The `streamText` & `useCompletion` Hooks: Connecting server-side token streaming to frontend React state with minimal code.",
-          "Streaming Structured Data: Using `streamObject` to render incoming JSON keys progressively in the user interface.",
+        "lesNum": 3,
+        "title": "Real-Time Streaming Responses with Vercel AI SDK & SSE",
+        "duration": "15m",
+        "summary": "Implement Server-Sent Events (SSE) streaming so users see tokens appear instantly instead of staring at blank loading spinners.",
+        "bulletPoints": [
+          "Perceived Latency Psychology: Why streaming an immediate response feels 5x faster than waiting 8 seconds for a complete payload.",
+          "Vercel AI SDK Core: Utilizing streamText and useCompletion / useChat hooks for effortless streaming state management.",
+          "Server Action Streaming: Piping OpenAI / Anthropic streams directly through Next.js App Router edge routes.",
+          "Handling Stream Interruptions: Gracefully catching client abort signals and saving partial generations to the database."
         ],
-        takeaway: "Streaming responses transform slow AI model latency into an engaging, dynamic user experience.",
+        "takeaway": "Instant streaming transforms an AI application from sluggish to magical. It is mandatory for premium Micro-SaaS UX."
       },
       {
-        lesNum: 4,
-        title: "File Ingestion & Multimodal Parsing (PDFs, Images, CSVs)",
-        duration: "8m",
-        summary: "Build an upload pipeline allowing users to submit messy PDFs, images, or spreadsheets and extract clean text for AI processing.",
-        bulletPoints: [
-          "Direct-to-Storage Uploads: Uploading files directly to Supabase Storage buckets using signed URLs to prevent server memory bloat.",
-          "Multimodal Vision Extraction: Passing high-resolution document images directly to Claude 3.7's multimodal API for instant parsing.",
-          "Text Extraction for Large Files: Using `pdf-parse` or PapaParse for structured local text and CSV extraction before LLM ingestion.",
-          "File Size & Token Constraints: Implementing client-side file compression and truncation limits to protect API cost budgets.",
+        "lesNum": 4,
+        "title": "Multimodal Parsing (PDFs/Images), Token Caching & Error Guardrails",
+        "duration": "15m",
+        "summary": "Process client-uploaded documents and images, protect against prompt injection, and gracefully recover from API errors.",
+        "bulletPoints": [
+          "Multimodal File Processing: Passing user-uploaded PDFs and screenshots into Claude 3.5 Sonnet Vision for instant extraction.",
+          "Token Budgeting Guardrails: Enforcing maximum input size limits and truncating context windows to prevent runaway API billing.",
+          "Prompt Injection Defenses: Sanitizing user inputs with XML tags and system prompt boundary delimiters to prevent jailbreaks.",
+          "Day 3 Milestone Verification: Stress-testing the core AI feature with 20 varied inputs to verify 100% output reliability."
         ],
-        takeaway: "Direct-to-storage file uploads and multimodal vision allow your micro-SaaS to process real-world business documents effortlessly.",
-      },
-      {
-        lesNum: 5,
-        title: "Token Optimization, Prompt Caching & Margin Protection",
-        duration: "8m",
-        summary: "Drastically reduce your API bills by implementing prompt caching, token trimming, and efficient system prompt design.",
-        bulletPoints: [
-          "The Anatomy of Anthropic Prompt Caching: Reusing static system prompts and few-shot examples for a 90% discount on cached input tokens.",
-          "Trimming Context Bloat: Stripping unnecessary whitespace, HTML tags, and redundant metadata from inputs before sending to the model.",
-          "Cost Modeling per User Run: Calculating the exact cost per execution ($0.015) vs customer subscription price ($49/mo) to ensure 85%+ margins.",
-          "Alerting on Token Spikes: Setting up API usage thresholds and alerts to prevent accidental billing surprises.",
-        ],
-        takeaway: "Prompt caching and context trimming turn a break-even AI tool into an 85%+ gross margin SaaS business.",
-      },
-      {
-        lesNum: 6,
-        title: "Error Handling, Timeouts & Graceful User Messaging",
-        duration: "8m",
-        summary: "Implement robust error boundaries, API timeout retries, and friendly user-facing messages for edge-case failures.",
-        bulletPoints: [
-          "Handling API Outages: Catching 429 (Rate Limit) and 503 (Server Overload) errors with exponential backoff retries.",
-          "Timeout Management: Setting reasonable 30-second timeout limits on Server Actions to prevent hung client connections.",
-          "Empathetic User Error Messages: Explaining errors in plain human language with a clear action ('Document was blurry; please upload a clearer scan').",
-          "Logging Failures in Supabase: Storing failed prompt executions in a private admin table for prompt debugging and refinement.",
-        ],
-        takeaway: "Graceful error handling and automated retries ensure your application feels rock-solid even when upstream APIs experience hiccups.",
-      },
-      {
-        lesNum: 7,
-        title: "Day 3 Milestone Checklist: Core AI Engine Fully Functional",
-        duration: "7m",
-        summary: "Test the core AI transformation loop from file upload to structured output and verify execution speed and margin metrics.",
-        bulletPoints: [
-          "The End-to-End Core Test: Uploading a messy test document, triggering the AI engine, and receiving clean structured output in under 5 seconds.",
-          "Validating Output Schema: Ensuring 100% of test runs pass Zod schema validation without runtime errors.",
-          "Verifying Token Costs: Checking API console to confirm token usage per execution is within budget targets.",
-          "Entering Day 4: Preparing to wrap the core engine in user authentication, multi-tenancy, and usage credit limits.",
-        ],
-        takeaway: "Day 3 ends with your product's core value engine fully built and tested—the hard technical part is officially solved.",
-      },
-    ],
+        "takeaway": "Defend your AI pipeline against abusive inputs and runaway token usage with hard token caps and defensive system prompts."
+      }
+    ]
   },
   {
-    num: 4,
-    id: "module-04",
-    title: "Day 4 — Authentication, Multi-Tenancy & Usage-Based Metering",
-    description: "Implement Supabase Auth, secure protected dashboard routes, build credit-based usage metering, and enforce multi-tenant limits.",
-    duration: "53m",
-    lessons: [
+    "num": 4,
+    "id": "module-04",
+    "title": "Day 4 — Authentication, Multi-Tenancy & Usage Metering",
+    "description": "Implement seamless social authentication, user profile provisioning, credit metering, and workspace permissions.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "Implementing Supabase Auth with Next.js Server Components",
-        duration: "8m",
-        summary: "Deploy passwordless Magic Links and Google OAuth authentication using Next.js 15 Server Components and middleware.",
-        bulletPoints: [
-          "Why Magic Links & Google OAuth: Eliminating password reset friction and dramatically boosting initial signup conversion rates.",
-          "The Auth Callback Route: Setting up `/auth/callback` route handler to exchange auth code for user session tokens securely.",
-          "Next.js Middleware Protection: Writing `middleware.ts` to inspect session tokens and redirect unauthenticated users to `/login`.",
-          "Server Component Session Hydration: Accessing `await supabase.auth.getUser()` in layout components without client-side flicker.",
+        "lesNum": 1,
+        "title": "Supabase Auth with Next.js Server Components & Middleware Guards",
+        "duration": "15m",
+        "summary": "Configure passwordless magic links, Google OAuth, and Next.js middleware route protection for private dashboard routes.",
+        "bulletPoints": [
+          "SSR-Compatible Authentication: Utilizing @supabase/ssr to seamlessly handle auth cookies across Server Components and Client Components.",
+          "Next.js Middleware Gatekeeper: Protecting /dashboard and /app routes with lightning-fast edge redirection for unauthenticated visitors.",
+          "Google & GitHub Social OAuth: Enabling 1-click social logins to slash signup friction by up to 50%.",
+          "Secure Session Refreshing: Automatically refreshing expired auth tokens in middleware to prevent unexpected user logouts."
         ],
-        takeaway: "Frictionless authentication with Next.js middleware protects dashboard routes while maximizing signup conversion.",
+        "takeaway": "Authentication should be frictionless for legitimate users and airtight against unauthorized requests."
       },
       {
-        lesNum: 2,
-        title: "Automated User Profile Provisioning via Supabase Triggers",
-        duration: "8m",
-        summary: "Write a PostgreSQL trigger that automatically creates a matching user profile, subscription record, and credit balance upon signup.",
-        bulletPoints: [
-          "The Signup Race Condition: Why relying on frontend API calls to create user records often fails or leaves orphaned auth users.",
-          "The Database Trigger Solution: Writing a PL/pgSQL function triggered `AFTER INSERT ON auth.users`.",
-          "Provisioning Initial Credits: Automatically seeding new users with 5 free trial credits upon account creation.",
-          "Storing User Metadata: Syncing user full name, avatar URL, and email into the public `profiles` table automatically.",
+        "lesNum": 2,
+        "title": "Automated User Profile Provisioning via Database Triggers",
+        "duration": "15m",
+        "summary": "Use PostgreSQL triggers to instantly create user profile records and assign starter trial credits upon user registration.",
+        "bulletPoints": [
+          "The Disconnected Auth Problem: Why creating profiles in client code causes race conditions and orphaned accounts.",
+          "PostgreSQL on_auth_user_created Trigger: Writing an automated SQL trigger that fires instantly when a user confirms their email.",
+          "Assigning Trial Credits: Automatically populating the user usage_ledger with 10 free generations upon account initialization.",
+          "Populating Default Preferences: Seeding user settings, default workspaces, and notification preferences automatically."
         ],
-        takeaway: "Database triggers guarantee reliable user profile provisioning and credit seeding every single time someone signs up.",
+        "takeaway": "Database triggers guarantee that every new user has a perfectly initialized profile and starter credits without code race conditions."
       },
       {
-        lesNum: 3,
-        title: "Designing the Credit-Based Usage Metering System",
-        duration: "8m",
-        summary: "Architect a resilient credit consumption model that tracks user runs, prevents abuse, and enforces subscription tier limits.",
-        bulletPoints: [
-          "Credits vs Unlimited Usage: Why offering 'unlimited' AI runs bankrupts SaaS founders, and why credit systems protect your margins.",
-          "The Credit Economics: Mapping 1 Credit = 1 Document Transformation = $0.02 API cost; charging $29 for 150 credits.",
-          "Atomic Credit Deductions: Using PostgreSQL stored procedures with row-locking (`FOR UPDATE`) to prevent double-spending.",
-          "Real-Time Balance Display: Showing the user their remaining credits in the app header with a one-click 'Upgrade' button.",
+        "lesNum": 3,
+        "title": "Credit-Based Usage Metering & Pre-Flight Token Gates",
+        "duration": "15m",
+        "summary": "Build a bulletproof credit consumption engine that intercepts zero-credit requests and prompts users to upgrade.",
+        "bulletPoints": [
+          "Credit System Architecture: Decoupling raw LLM token costs into intuitive user-facing credits (e.g. 1 generation = 1 credit).",
+          "Atomic Credit Deductions: Utilizing Postgres functions to atomically decrement user credits and prevent double-spend race conditions.",
+          "Pre-Flight Balance Check: Halting execution in Server Actions before firing expensive LLM API calls if credit balance is zero.",
+          "Low-Balance UI Warnings: Displaying persistent credit counters and upgrade modal prompts when balance drops below 20%."
         ],
-        takeaway: "Credit-based metering protects your profitability and establishes a natural, frictionless pathway to upgrade.",
+        "takeaway": "Atomic credit checks protect your API budget. Never generate an AI response without first verifying available credits."
       },
       {
-        lesNum: 4,
-        title: "Building the User Dashboard & Document History Views",
-        duration: "8m",
-        summary: "Build an organized, responsive dashboard showing recent document transformations, status badges, and download options.",
-        bulletPoints: [
-          "The Dashboard Layout: Clean sidebar navigation, credit balance widget, user menu, and primary action button ('New Run').",
-          "The Document Table: Displaying Date, File Name, Status (Completed, Failed, Processing), Credits Used, and Action menu.",
-          "Pagination & Search: Implementing server-side pagination and text search to keep dashboard rendering fast as records grow.",
-          "Export Capabilities: One-click export options (CSV, JSON, PDF) allowing users to consume their transformed data immediately.",
+        "lesNum": 4,
+        "title": "Multi-Tenant Workspaces, Team Seats & Document History UI",
+        "duration": "15m",
+        "summary": "Create the primary user dashboard, document history archive, and multi-user workspace sharing capabilities.",
+        "bulletPoints": [
+          "Document Library Architecture: Storing all generated outputs in PostgreSQL with full-text search and tagging capabilities.",
+          "Optimistic UI Updates: Updating the frontend document list immediately while the database write finishes in the background.",
+          "Multi-Tenant Team Invitations: Allowing paying users to invite collaborators with read-only or editor role permissions.",
+          "Day 4 Milestone Review: Verifying that user registration, credit deduction, and generation history work seamlessly end-to-end."
         ],
-        takeaway: "A clean, responsive dashboard gives users complete visibility into their past outputs and proves ongoing software value.",
-      },
-      {
-        lesNum: 5,
-        title: "Implementing Multi-Tenant Data Isolation & Team Workspaces",
-        duration: "7m",
-        summary: "Structure your database to support multi-user team workspaces while strictly enforcing organization-level data boundaries.",
-        bulletPoints: [
-          "Solo vs Team Workspaces: When to introduce `organizations` and `memberships` tables without adding unnecessary MVP complexity.",
-          "Workspace Context in Server Actions: Ensuring every mutation verifies the active workspace ID against user permissions.",
-          "Inviting Teammates: Creating secure, time-limited invitation links allowing colleagues to join a shared credit pool.",
-          "Role Permissions: Defining simple `owner` and `member` roles to control billing access vs standard execution privileges.",
-        ],
-        takeaway: "Lightweight team workspaces enable enterprise expansion and allow corporate cards to pay for shared credit pools.",
-      },
-      {
-        lesNum: 6,
-        title: "Pre-Flight Usage Gate: Intercepting Zero-Credit Requests",
-        duration: "7m",
-        summary: "Build an elegant UI paywall that intercepts transformation requests when credits are depleted and guides users to upgrade.",
-        bulletPoints: [
-          "The Pre-Flight Credit Check: Verifying `profile.credits_remaining > 0` before triggering the LLM API Server Action.",
-          "The Upgrade Paywall Modal: Presenting a high-converting dialog: 'You've reached your free limit! Upgrade to Pro for 500 monthly credits.'",
-          "Preserving Draft Data: Storing the user's uploaded file or input in local state so they can execute immediately after purchasing.",
-          "Trial-to-Paid Conversion Psychology: Delivering immense value in the first 5 free runs so upgrading feels like a no-brainer.",
-        ],
-        takeaway: "Intercepting zero-credit requests with an upgrade modal converts active, motivated users at the exact moment of peak intent.",
-      },
-      {
-        lesNum: 7,
-        title: "Day 4 Milestone Checklist: Auth & Metering Verified",
-        duration: "7m",
-        summary: "Stress-test authentication, session persistence, credit deduction accuracy, and zero-credit upgrade interceptors.",
-        bulletPoints: [
-          "Testing Signup to Credit Deduction: Creating a test account, verifying 5 free credits seed, running an execution, and checking 4 credits remain.",
-          "Testing Zero-Credit Interception: Exhausting credits to 0 and verifying that the upgrade paywall modal triggers gracefully.",
-          "Testing Session Expiration: Verifying middleware redirects unauthenticated requests cleanly to `/login`.",
-          "Entering Day 5: Preparing to integrate Stripe checkout, recurring subscriptions, and webhook fulfillment.",
-        ],
-        takeaway: "Day 4 ends with secure authentication, multi-tenant safety, and reliable credit metering fully operational.",
-      },
-    ],
+        "takeaway": "A clean document history gives users a reason to return daily, creating strong product stickiness and low churn."
+      }
+    ]
   },
   {
-    num: 5,
-    id: "module-05",
-    title: "Day 5 — Stripe Subscriptions, Checkout & Webhook Reconciliation",
-    description: "Integrate Stripe Checkout, customer billing portals, recurring subscription webhooks, and automated credit renewal logic.",
-    duration: "54m",
-    lessons: [
+    "num": 5,
+    "id": "module-05",
+    "title": "Day 5 — Stripe Subscriptions, Checkout & Webhook Reconciliation",
+    "description": "Connect Stripe Billing, build checkout sessions with Next.js Server Actions, and handle webhooks with idempotent reconciliation.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "Stripe Architecture: Products, Prices, & Customer Portals",
-        duration: "8m",
-        summary: "Configure Stripe Products and recurring Price IDs for Starter ($29/mo) and Pro ($79/mo) tiers with automated billing portal access.",
-        bulletPoints: [
-          "Setting Up Stripe Dashboard: Creating recurring monthly subscription products and obtaining `price_xxx` IDs.",
-          "Configuring Customer Portal: Enabling self-service cancellation, credit card updates, and invoice downloads in Stripe settings.",
-          "The 2-Tier Pricing Strategy: Starter ($29/mo for 200 credits) vs Pro ($79/mo for 750 credits - Best Value).",
-          "Annual Discount Switch: Adding a toggle for annual billing (2 months free) to capture upfront annual cash flow.",
+        "lesNum": 1,
+        "title": "Stripe Billing Architecture: Tiered Pricing, Usage Records & Customer Portals",
+        "duration": "15m",
+        "summary": "Configure recurring subscription products, price IDs, and self-service customer billing management in the Stripe Dashboard.",
+        "bulletPoints": [
+          "SaaS Pricing Structure: Setting up Starter ($19/mo), Pro ($49/mo), and Agency ($99/mo) recurring subscription products.",
+          "Annual Discount Incentives: Offering 2 months free on annual plans to pull forward cash flow and reduce annualized churn.",
+          "Stripe Customer Portal: Enabling self-service credit card updates, invoice downloads, and plan changes with zero custom code.",
+          "Test vs Production Mode: Managing isolated Stripe API keys and webhook secrets across staging and live environments."
         ],
-        takeaway: "A clean 2-tier subscription model with self-service Stripe billing portal eliminates 100% of routine billing support emails.",
+        "takeaway": "Leverage Stripe Customer Portal to handle 100% of billing inquiries, card updates, and cancellations automatically."
       },
       {
-        lesNum: 2,
-        title: "Building the Stripe Checkout Session Server Action",
-        duration: "8m",
-        summary: "Implement a Next.js Server Action that initializes a Stripe Checkout session and redirects the user with their customer ID metadata.",
-        bulletPoints: [
-          "Installing Stripe SDK: Adding `stripe` package and initializing the server-side client with restricted API keys.",
-          "Passing Metadata: Attaching `user_id` and `supabase_profile_id` to the Stripe Checkout session metadata for reliable fulfillment.",
-          "Success & Cancel URLs: Defining dynamic return URLs (`/dashboard?payment=success` and `/pricing?payment=cancelled`).",
-          "Handling Existing Customers: Querying `stripe_customer_id` from Supabase to prevent duplicate customer records in Stripe.",
+        "lesNum": 2,
+        "title": "Stripe Checkout Sessions via Next.js Server Actions",
+        "duration": "15m",
+        "summary": "Build type-safe Server Actions that generate Stripe Checkout URLs and redirect users to secure payment flows.",
+        "bulletPoints": [
+          "Server Action Checkout Initiator: Validating authenticated user session and fetching or creating their stripe_customer_id.",
+          "Dynamic Metadata Attachment: Passing internal user_id in Stripe session metadata to ensure accurate downstream reconciliation.",
+          "Success and Cancel Redirects: Routing users back to /dashboard?session_id={CHECKOUT_SESSION_ID} with celebration UI.",
+          "Preventing Duplicate Customers: Querying existing Stripe customers by email before creating new customer records."
         ],
-        takeaway: "Attaching Supabase user IDs to Stripe session metadata ensures 100% reliable subscription fulfillment upon checkout.",
+        "takeaway": "Server Actions make initiating Stripe checkout effortless and secure without exposing secret keys to the browser."
       },
       {
-        lesNum: 3,
-        title: "Stripe Webhook Architecture: Securing the Endpoint",
-        duration: "8m",
-        summary: "Create a hardened Next.js route handler at `/api/webhooks/stripe` with cryptographic signature verification.",
-        bulletPoints: [
-          "Why Webhooks Are Non-Negotiable: Never fulfill orders on frontend redirect; webhooks provide asynchronous, tamper-proof proof of payment.",
-          "Disabling Body Parsing: Reading the raw request buffer to allow Stripe cryptographic signature verification (`stripe.webhooks.constructEvent`).",
-          "Securing Webhook Secrets: Configuring `STRIPE_WEBHOOK_SECRET` securely in production and testing locally via Stripe CLI.",
-          "Instant 200 OK Response: Acknowledging webhook delivery within 3 seconds to prevent Stripe retry storms, then processing async.",
+        "lesNum": 3,
+        "title": "Webhook Security: Signature Verification & Idempotent Event Processing",
+        "duration": "15m",
+        "summary": "Construct an ironclad webhook endpoint that validates cryptographic signatures and protects against replay attacks.",
+        "bulletPoints": [
+          "Raw Body Ingestion: Capturing the unparsed request body in Next.js App Router for strict stripe.webhooks.constructEvent verification.",
+          "Webhook Signature Verification: Rejecting any payload that fails cryptographic signature check with a 400 Bad Request.",
+          "Idempotency Table Architecture: Recording processed Stripe event IDs in PostgreSQL to prevent double-crediting on retried events.",
+          "Sub-2-Second Webhook Response: Acknowledging events immediately with HTTP 200 before executing background state updates."
         ],
-        takeaway: "Cryptographically verified webhook endpoints prevent payment spoofing and ensure bulletproof order fulfillment.",
+        "takeaway": "Always verify Stripe webhook signatures and record processed event IDs to prevent double-crediting users on webhook retries."
       },
       {
-        lesNum: 4,
-        title: "Fulfilling `checkout.session.completed` & Upgrading User Tier",
-        duration: "8m",
-        summary: "Process successful checkout events to update user subscription status, store customer IDs, and credit user accounts instantly.",
-        bulletPoints: [
-          "Handling `checkout.session.completed`: Extracting `user_id`, `customer_id`, and `subscription_id` from the verified event payload.",
-          "Updating the Database: Setting `is_subscribed = true`, `tier = 'pro'`, and adding purchased monthly credits to their profile balance.",
-          "Storing Stripe IDs: Saving `stripe_customer_id` and `stripe_subscription_id` in Supabase for future subscription lifecycle events.",
-          "Sending Welcome Email: Triggering an automated transactional email welcoming the user to Pro with getting-started tips.",
+        "lesNum": 4,
+        "title": "Full Subscription Lifecycle: Upgrades, Downgrades, Cancellations & Dunning",
+        "duration": "15m",
+        "summary": "Handle all core Stripe lifecycle events: customer.subscription.created, updated, deleted, and invoice.payment_failed.",
+        "bulletPoints": [
+          "Fulfilling checkout.session.completed: Upgrading user status to active and provisioning monthly credits immediately.",
+          "Managing Renewals: Listening for invoice.paid to reset monthly generation credits on the billing cycle anniversary date.",
+          "Handling Payment Failures: Listening for invoice.payment_failed to downgrade accounts to past_due and send polite recovery alerts.",
+          "Day 5 Milestone Verification: Simulating complete checkout, renewal, and cancellation cycles using Stripe CLI test triggers."
         ],
-        takeaway: "Instant webhook fulfillment updates user credits and subscription status the millisecond payment clears.",
-      },
-      {
-        lesNum: 5,
-        title: "Handling Subscription Renewals, Upgrades, & Cancellations",
-        duration: "8m",
-        summary: "Handle the complete subscription lifecycle: `invoice.paid` for monthly credit top-ups and `customer.subscription.deleted` for cancellations.",
-        bulletPoints: [
-          "The Monthly Reset with `invoice.paid`: Resetting or topping up monthly credits on the recurring billing anniversary date.",
-          "Handling Failed Payments with `invoice.payment_failed`: Gracefully notifying the user and marking subscription as `past_due`.",
-          "Handling Cancellations with `customer.subscription.deleted`: Reverting user tier back to `free` at the end of their billing period.",
-          "Mid-Cycle Upgrades: Handling tier upgrades with prorated Stripe billing seamlessly.",
-        ],
-        takeaway: "Managing the full subscription lifecycle ensures automated credit replenishment and accurate access control.",
-      },
-      {
-        lesNum: 6,
-        title: "Integrating the Self-Service Billing Portal Link",
-        duration: "7m",
-        summary: "Give users a 1-click button in their account settings that redirects to Stripe's hosted portal for card updates and cancellations.",
-        bulletPoints: [
-          "Creating Portal Sessions: Calling `stripe.billingPortal.sessions.create()` with the user's `stripe_customer_id`.",
-          "Return URL Configuration: Setting return destination back to `/dashboard/settings` upon portal completion.",
-          "Zero Support Burden: Allowing users to update expired cards, download VAT/tax invoices, and cancel without emailing you.",
-          "The Cancellation Retention Flow: Configuring Stripe's built-in exit survey to capture churn feedback automatically.",
-        ],
-        takeaway: "Stripe's customer billing portal empowers users to manage their own subscriptions, eliminating 100% of billing support.",
-      },
-      {
-        lesNum: 7,
-        title: "Day 5 Milestone Checklist: Payment Engine Fully Certified",
-        duration: "7m",
-        summary: "Execute simulated test purchases using Stripe test cards, trigger webhook lifecycle events, and verify database state.",
-        bulletPoints: [
-          "Testing Test-Card Checkouts: Running test purchases with `4242 4242...` and verifying credits reflect instantly in the app.",
-          "Testing Subscription Cancellation: Cancelling subscription in Stripe dashboard and confirming user status reverts correctly.",
-          "Testing Customer Portal: Clicking 'Manage Subscription' and verifying seamless redirect and return navigation.",
-          "Entering Day 6: Preparing for production hardening, Redis rate limiting, and telemetry logging.",
-        ],
-        takeaway: "Day 5 ends with a certified Stripe payment and subscription billing system ready to accept real credit cards.",
-      },
-    ],
+        "takeaway": "A robust webhook handler is the revenue spine of your SaaS. Test every subscription state transition thoroughly."
+      }
+    ]
   },
   {
-    num: 6,
-    id: "module-06",
-    title: "Day 6 — Production Hardening, Rate Limiting & Telemetry",
-    description: "Harden the application against abuse using Upstash Redis rate limiting, configure Sentry error tracking, and optimize performance.",
-    duration: "53m",
-    lessons: [
+    "num": 6,
+    "id": "module-06",
+    "title": "Day 6 — Production Hardening, Rate Limiting & Telemetry",
+    "description": "Deploy edge rate limiting with Redis, configure real-time error tracking with Sentry, and audit database query performance.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "Deploying Upstash Redis Rate Limiting at the Edge",
-        duration: "8m",
-        summary: "Protect your AI API budget and serverless endpoints against bot spam and DDoS attacks using edge-based Redis rate limiters.",
-        bulletPoints: [
-          "The Financial DDoS Threat: How malicious bots or scripts can rack up thousands in API bills by spamming unprotected AI endpoints.",
-          "Setting Up Upstash Serverless Redis: Provisioning a low-latency serverless Redis instance on Upstash.",
-          "Implementing Sliding Window Rate Limiting: Restricting IP addresses and user IDs to a maximum of 10 requests per minute.",
-          "Returning HTTP 429 Responses: Returning clean rate-limit headers (`Retry-After`, `X-RateLimit-Remaining`) when limits are breached.",
+        "lesNum": 1,
+        "title": "Edge Rate Limiting with Upstash Redis & Token Bucket Algorithms",
+        "duration": "15m",
+        "summary": "Deploy ultra-fast Redis rate limiting at the edge to protect your endpoints from DDoS attacks, scrapers, and API abuse.",
+        "bulletPoints": [
+          "The Threat of API Abuse: How malicious actors or buggy client loops can rack up thousands of dollars in LLM API bills.",
+          "Upstash Serverless Redis: Initializing an HTTP-based Redis instance with sub-10ms global edge lookup latency.",
+          "Implementing Sliding Window Rate Limiting: Restricting unauthenticated endpoints to 10 req/min and authenticated users to 60 req/min.",
+          "Returning HTTP 429 Too Many Requests: Providing clear Retry-After headers so legitimate clients can throttle requests gracefully."
         ],
-        takeaway: "Edge rate limiting with Upstash Redis prevents runaway API costs and protects your endpoints from automated abuse.",
+        "takeaway": "Edge rate limiting is mandatory for any AI application to prevent unexpected financial losses from rogue scripts."
       },
       {
-        lesNum: 2,
-        title: "Configuring Sentry for Real-Time Full-Stack Error Monitoring",
-        duration: "8m",
-        summary: "Integrate Sentry to capture frontend exceptions, server action crashes, and API timeout events in real time.",
-        bulletPoints: [
-          "Why Production Telemetry Matters: Users who experience silent crashes churn immediately without sending a bug report.",
-          "Installing `@sentry/nextjs`: Running the automated setup wizard to configure client, server, and edge error monitoring.",
-          "Filtering Noise & Sensitive Data: Scrubbing customer passwords, API keys, and sensitive document text from crash traces.",
-          "Instant Slack & Email Alerts: Configuring Sentry alerts to notify your phone within 60 seconds of any new production error.",
+        "lesNum": 2,
+        "title": "Full-Stack Error Monitoring & Tracing with Sentry",
+        "duration": "15m",
+        "summary": "Install and configure Sentry across Next.js client, server, and edge runtimes to catch crashes before users report them.",
+        "bulletPoints": [
+          "Sentry Next.js Wizard: Automatically configuring sentry.client.config, sentry.server.config, and sentry.edge.config.",
+          "Context Enrichment: Attaching user_id, subscription_tier, and route parameters to error breadcrumbs for instant debugging.",
+          "Filtering Sensitive Data: Redacting auth tokens, passwords, and client PII before transmitting exception payloads.",
+          "Slack & Discord Crash Alerts: Routing critical production errors directly to a dedicated developer notification channel."
         ],
-        takeaway: "Sentry telemetry alerts you to bugs and edge cases before customers even have a chance to complain.",
+        "takeaway": "Fix bugs before your customers notice them. Real-time error alerts with stack traces make rapid debugging effortless."
       },
       {
-        lesNum: 3,
-        title: "Optimizing Core Web Vitals & Edge Caching",
-        duration: "8m",
-        summary: "Fine-tune Next.js bundle sizes, optimize static asset delivery, and achieve 95+ Google Lighthouse performance scores.",
-        bulletPoints: [
-          "Targeting 95+ Lighthouse Scores: Optimizing Largest Contentful Paint (LCP) and Cumulative Layout Shift (CLS) on the landing page.",
-          "Static Generation for Marketing Pages: Ensuring `/`, `/pricing`, and `/blog` routes are statically generated (`statically rendered`).",
-          "Dynamic Component Imports: Code-splitting heavy libraries (e.g. PDF viewers, charts) using `next/dynamic` to shrink initial JS bundle.",
-          "Vercel Edge Network: Leveraging Vercel's global CDN edge caching for static assets and images.",
+        "lesNum": 3,
+        "title": "Performance Optimization: Edge Caching, Dynamic OG & SEO Metadata",
+        "duration": "15m",
+        "summary": "Maximize Core Web Vitals, implement dynamic OpenGraph social share cards, and generate automated XML sitemaps.",
+        "bulletPoints": [
+          "Next.js 15 Caching Rules: Leveraging unstable_cache and revalidation tags to cache expensive public database queries.",
+          "Dynamic OpenGraph Image Generation: Using @vercel/og to dynamically generate branded preview cards for social media sharing.",
+          "Automated Metadata & Sitemap: Programmatically creating sitemap.xml and robots.txt using Next.js route handlers.",
+          "Font & Image Optimization: Utilizing next/font and next/image to achieve perfect 95+ Google PageSpeed performance scores."
         ],
-        takeaway: "A sub-second loading speed improves landing page SEO, builds user trust, and boosts trial signup rates.",
+        "takeaway": "Fast load times and beautiful social share images dramatically improve viral conversion when users share your app."
       },
       {
-        lesNum: 4,
-        title: "SEO Foundation: Dynamic Metadata, OpenGraph & Sitemap Generation",
-        duration: "8m",
-        summary: "Configure automated XML sitemaps, robots.txt, dynamic OpenGraph social preview images, and canonical URL tags.",
-        bulletPoints: [
-          "Dynamic Metadata in Next.js 15: Implementing `generateMetadata()` for programmatic titles, descriptions, and keywords.",
-          "Automated OpenGraph Images: Using `@vercel/og` to generate eye-catching social preview cards dynamically based on page titles.",
-          "Automated `sitemap.ts` and `robots.ts`: Generating dynamic search engine sitemaps directly within the App Router.",
-          "Structured Data (Schema.org): Embedding `SoftwareApplication` JSON-LD schema to secure rich Google search snippets.",
+        "lesNum": 4,
+        "title": "Database Indexing, Query Profiling, Terms of Service & Security Auditing",
+        "duration": "15m",
+        "summary": "Audit database performance with Postgres indexes, implement legal policies, and certify production launch readiness.",
+        "bulletPoints": [
+          "Postgres Index Auditing: Adding B-Tree indexes on user_id, created_at, and lookup keys to maintain sub-5ms query performance.",
+          "EXPLAIN ANALYZE Profiling: Benchmarking the slowest SQL queries under simulated 10,000-row table loads.",
+          "Essential Legal Pages: Deploying standard Terms of Service, Privacy Policy, and AI Disclaimer generated from verified templates.",
+          "Day 6 Milestone Certification: Running a complete end-to-end security, performance, and legal readiness audit."
         ],
-        takeaway: "Search engine optimization and dynamic social preview cards ensure high viral click-through rates from Twitter and LinkedIn shares.",
-      },
-      {
-        lesNum: 5,
-        title: "Database Indexing & Query Performance Auditing",
-        duration: "7m",
-        summary: "Analyze PostgreSQL query execution plans in Supabase to eliminate slow full-table scans before opening to public traffic.",
-        bulletPoints: [
-          "Running `EXPLAIN ANALYZE`: Identifying slow sequential scans on user tables and replacing them with index scans.",
-          "Composite Indexes: Adding multi-column indexes for common query patterns (e.g. `WHERE user_id = $1 AND status = 'completed'`).",
-          "Limiting Returned Columns: Selecting only necessary fields (`select('id, name, created_at')`) instead of `select('*')`.",
-          "Database Connection Pooling Health: Ensuring transaction pool limits accommodate sudden traffic spikes.",
-        ],
-        takeaway: "Proper database indexing guarantees fast sub-15ms dashboard loads even with thousands of active user records.",
-      },
-      {
-        lesNum: 6,
-        title: "Legal & Compliance: Terms of Service, Privacy Policy & Cookie Banner",
-        duration: "7m",
-        summary: "Deploy professional Terms of Service, Privacy Policy, and GDPR-compliant cookie consent notices in under 30 minutes.",
-        bulletPoints: [
-          "Essential SaaS Legal Clauses: Limitation of liability, AI output accuracy disclaimer, refund policy, and acceptable use restrictions.",
-          "GDPR & CCPA Compliance: Providing clear disclosure of data processors (Supabase, Stripe, OpenAI, Anthropic).",
-          "Generating Compliant Policies: Utilizing vetted templates tailored for AI SaaS products without paying $5,000 for bespoke legal drafting.",
-          "Cookie Consent & Analytics: Deploying privacy-friendly analytics (Plausible or PostHog) that don't require intrusive cookie banners.",
-        ],
-        takeaway: "Clear terms and transparent privacy policies establish enterprise legitimacy and protect you from liability.",
-      },
-      {
-        lesNum: 7,
-        title: "Day 6 Milestone Checklist: Production Hardening Certified",
-        duration: "7m",
-        summary: "Perform final load testing, verify Sentry alerts, test rate limiting thresholds, and certify the production deployment.",
-        bulletPoints: [
-          "Testing Rate Limiting: Sending 15 rapid requests and confirming HTTP 429 response on request 11.",
-          "Testing Error Reporting: Triggering a deliberate test exception and verifying Sentry notification hits your phone.",
-          "Checking Lighthouse Scores: Confirming 90+ scores across Performance, Accessibility, Best Practices, and SEO.",
-          "Entering Day 7: Preparing for launch day, distribution execution, and acquiring your first 100 paying customers.",
-        ],
-        takeaway: "Day 6 ends with a battle-hardened, secure, high-performance production SaaS ready for global public launch.",
-      },
-    ],
+        "takeaway": "Index your foreign keys and publish clear legal terms before launching to protect your business and ensure smooth scaling."
+      }
+    ]
   },
   {
-    num: 7,
-    id: "module-07",
-    title: "Day 7 — Launch Architecture, Product Hunt, First 100 Paying Users & Scale",
-    description: "Execute the Day 7 launch playbook: Product Hunt launch, Twitter/X distribution, Reddit viral loops, and scaling to $5,000/mo.",
-    duration: "55m",
-    lessons: [
+    "num": 7,
+    "id": "module-07",
+    "title": "Day 7 — Launch Architecture, Distribution & Scaling to $5K MRR",
+    "description": "Execute the high-impact Product Hunt launch playbook, drive organic traffic through build-in-public channels, and scale to $5,000 MRR.",
+    "duration": "60m",
+    "lessons": [
       {
-        lesNum: 1,
-        title: "The Product Hunt Launch Blueprint: Top 5 Product of the Day Strategy",
-        duration: "8m",
-        summary: "Execute the proven Product Hunt launch playbook to drive 1,500+ targeted visitors and secure a top 5 badge on launch day.",
-        bulletPoints: [
-          "The 12:01 AM PST Rule: Scheduling your launch at the exact start of Product Hunt's daily cycle to maximize 24-hour voting visibility.",
-          "Crafting the Maker Comment: Writing an authentic, human founder story explaining the exact pain that led you to build the product.",
-          "Visual Assets That Pop: Creating high-contrast, animated GIF thumbnails and clean product screenshot carousels.",
-          "Engaging the Community: Responding to every single comment within 10 minutes throughout the 24-hour launch window.",
+        "lesNum": 1,
+        "title": "The Product Hunt Playbook: Hunter Outreach & Top 5 Product of the Day Strategy",
+        "duration": "15m",
+        "summary": "Orchestrate a winning Product Hunt launch campaign that captures thousands of visitors and reaches the front page leaderboard.",
+        "bulletPoints": [
+          "Launch Asset Preparation: Crafting high-converting gallery GIFs, a 60-second product demo video, and a punchy tagline.",
+          "Timing & Scheduling: Launching at exactly 12:01 AM PST on a Tuesday or Wednesday for maximum global voting exposure.",
+          "The First-Comment Narrative: Writing a vulnerable, transparent maker comment explaining the problem and offering a launch discount.",
+          "Community Activation: Rallying early supporters and social followers throughout the day without violating PH voting guidelines."
         ],
-        takeaway: "A disciplined Product Hunt launch generates initial user velocity, valuable backlinks, and paying trial conversions.",
+        "takeaway": "A top 5 finish on Product Hunt delivers an immediate surge of early adopters, backlinks, and valuable feedback."
       },
       {
-        lesNum: 2,
-        title: "Twitter / X 'Build in Public' Distribution & Viral Video Demos",
-        duration: "8m",
-        summary: "Craft viral 60-second video demonstrations and build-in-public threads that convert social views into active signups.",
-        bulletPoints: [
-          "The 60-Second Video Format: 0:00 Show the painful manual way; 0:15 Drop the file into your tool; 0:30 Show the magic instant result.",
-          "The 'Why I Built This' Story Thread: Sharing the 7-day build journey, screenshots of early wireframes, and revenue milestones.",
-          "Tagging Tool Ecosystems: Mentioning Supabase, Next.js, and Vercel in technical posts for amplification from official accounts.",
-          "The Bio Optimization: Directing social traffic to a clean, tracking-tagged signup link in your profile bio.",
+        "lesNum": 2,
+        "title": "High-Leverage Distribution: X/Twitter Build in Public & Video Demos",
+        "duration": "15m",
+        "summary": "Leverage short-form video demonstrations and transparent building updates to generate consistent organic inbound users.",
+        "bulletPoints": [
+          "The 45-Second Demo Formula: Hook the problem in 3 seconds, show the magical AI transformation, and finish with a clear CTA.",
+          "Build in Public Metrics: Sharing real revenue screenshots, technical challenges, and early customer milestones on X and LinkedIn.",
+          "Repurposing Content: Cross-posting high-performing demo videos to YouTube Shorts, TikTok, and Instagram Reels.",
+          "Engaging Niche Communities: Participating in conversations where your ideal customers ask for software recommendations."
         ],
-        takeaway: "Concise, visual video demonstrations showing before-and-after transformations achieve viral reach on Twitter/X.",
+        "takeaway": "Authentic demo videos that show the product solving a painful task outperform polished commercial ads every single time."
       },
       {
-        lesNum: 3,
-        title: "Ethical Reddit & Community Seeding: Sourcing Targeted Customers",
-        duration: "8m",
-        summary: "Acquire your first 50 paying users from niche subreddits and professional forums without getting banned for self-promotion.",
-        bulletPoints: [
-          "The 90/10 Community Rule: Providing 90% genuine, detailed advice on forum threads before mentioning your product in 10% of cases.",
-          "Finding High-Intent Threads: Searching Google with `site:reddit.com inurl:r/[niche] 'how to' OR 'tool for'` to find active pain points.",
-          "The Consultative Reply: Answering the user's question thoroughly, then adding: 'I actually built a free tool to automate this exact step if anyone wants to test it.'",
-          "Converting Free Testers: Engaging directly with commenters to gather feedback and convert them into discounted lifetime or annual plans.",
+        "lesNum": 3,
+        "title": "Community Infiltration: Ethical Reddit, Slack & Discord Lead Sourcing",
+        "duration": "15m",
+        "summary": "Source your first 50 paying customers from relevant subreddits and professional communities without spamming.",
+        "bulletPoints": [
+          "The Value-First Reddit Formula: Writing detailed, educational guides that solve 80% of the problem with text, referencing your tool as the automation.",
+          "Searching High-Intent Keywords: Setting up keyword alerts for \"how do I automate X\" or \"recommend a tool for Y\".",
+          "Direct Founder Outreach: Messaging users who recently posted about the exact pain point with a free extended trial code.",
+          "Niche Slack & Discord Groups: Building relationships in professional micro-communities where your target buyers congregate."
         ],
-        takeaway: "Solving active forum complaints with genuine helpfulness builds high-trust customer relationships and initial revenue.",
+        "takeaway": "Help people genuinely in public forums. When you demonstrate deep domain expertise, users will naturally seek out your software."
       },
       {
-        lesNum: 4,
-        title: "The Free-to-Paid Conversion Funnel: Email Onboarding Drips",
-        duration: "8m",
-        summary: "Deploy an automated 4-email onboarding sequence via Resend to convert free trial users into paying monthly subscribers.",
-        bulletPoints: [
-          "Email 1 (Immediate): The Welcome & Quickstart Guide — Getting the user to execute their first transformation within 5 minutes.",
-          "Email 2 (Day 2): The Case Study & Hidden Pro Feature — Showcasing how a power user saves 4 hours a week with Pro.",
-          "Email 3 (Day 4): The Credit Expiration Notice — Warning users that their trial credits are running low.",
-          "Email 4 (Day 6): The Limited Launch Discount — Offering 20% off their first 3 months with code `LAUNCH20`.",
+        "lesNum": 4,
+        "title": "Free-to-Paid Conversion Funnels, Churn Control & The Path to $5,000/Month MRR",
+        "duration": "15m",
+        "summary": "Optimize onboarding email sequences, monitor feature adoption, and map the mathematical trajectory to $5,000 MRR.",
+        "bulletPoints": [
+          "The 3-Part Onboarding Email Drip: Welcome & Quick Start (Day 0), Core Feature Deep Dive (Day 2), Expiring Trial Urgency (Day 5).",
+          "Churn Telemetry: Tracking the exact drop-off points where free users fail to convert or paid users stop logging in.",
+          "The $5,000/Month MRR Blueprint: 100 customers at $49/mo or 170 customers at $29/mo with under 5% monthly churn.",
+          "The Solo SaaS Lifestyle: Operating a high-margin, automated software business with zero employees and total personal freedom."
         ],
-        takeaway: "An automated 4-step onboarding sequence doubles free-to-paid conversion by guiding users to quick wins.",
-      },
-      {
-        lesNum: 5,
-        title: "Collecting User Feedback & Rapid V1.1 Feature Iteration",
-        duration: "8m",
-        summary: "Gather qualitative feedback from your initial 100 users, identify critical usability friction, and push V1.1 improvements.",
-        bulletPoints: [
-          "The 1-Question Feedback Prompt: Asking active users: 'What is the one thing preventing this from being an indispensable daily tool?'",
-          "Analyzing User Drop-Off: Using session recordings (PostHog / Clarity) to see where users hesitate or abandon tasks.",
-          "The 24-Hour Bug Fix Sprints: Fixing user-reported bugs within hours to build intense customer loyalty and word-of-mouth praise.",
-          "Public Roadmap Voting: Setting up a simple Canny or feature request board to let paying customers vote on future priorities.",
-        ],
-        takeaway: "Listening to initial users and shipping improvements within 24 hours creates fanatical customer advocates.",
-      },
-      {
-        lesNum: 6,
-        title: "Unit Economics, Churn Reduction, & The Path to $5,000/Month MRR",
-        duration: "8m",
-        summary: "Master the mathematical growth engine of micro-SaaS: churn control, annual plan upgrades, and stacking $49/mo subscriptions.",
-        bulletPoints: [
-          "The $5,000/mo Mathematics: 102 paying users at $49/month = $5,000/month MRR; achieving this requires just 3 new signups per day.",
-          "Controlling Churn: Keeping monthly churn under 5% by monitoring inactive users and sending automated re-engagement nudges.",
-          "Annual Plan Upgrades: Prompting monthly subscribers after 30 days of active usage with an offer to switch to an annual plan for 2 months free.",
-          "Reinvesting Cash Flow: Allocating 20% of monthly revenue into targeted Google Search Ads capturing high-intent keyword searches.",
-        ],
-        takeaway: "Reaching $5,000/month MRR is a matter of consistent daily acquisition and relentless churn reduction.",
-      },
-      {
-        lesNum: 7,
-        title: "The Solo Founder Graduation: Operating Your Cash-Flow Engine",
-        duration: "7m",
-        summary: "Synthesize the entire 7-day build journey and establish an operating routine requiring under 5 hours of weekly maintenance.",
-        bulletPoints: [
-          "The Solo Maintenance Routine: Dedicating 30 minutes each morning to Sentry logs, Stripe webhooks, and customer support queries.",
-          "Automated Infrastructure: Letting Vercel, Supabase, and Stripe handle 100% of scaling, backups, security patches, and billing.",
-          "Celebrating the Transformation: From zero code to a revenue-generating, production-hardened micro-SaaS in 7 focused days.",
-          "The Next Horizon: Choosing whether to scale your micro-SaaS to $20K/month or package your blueprint into a portfolio of niche tools.",
-        ],
-        takeaway: "Building a micro-SaaS in 7 days proves that leverage, modern tooling, and decisive execution beat months of over-engineering.",
-      },
-    ],
-  },
+        "takeaway": "Scale to $5,000 MRR by obsessing over user retention. Keep churn low, and steady organic acquisition will compound your revenue."
+      }
+    ]
+  }
 ];
 
 module.exports = {

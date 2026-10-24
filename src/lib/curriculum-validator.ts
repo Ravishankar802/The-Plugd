@@ -11,12 +11,13 @@ export interface CurriculumValidationResult {
 }
 
 /**
- * Validates that a Playbook curriculum strictly conforms to the mandatory
- * curriculum standard:
- * - 7 to 10 modules (inclusive)
- * - 7 to 10 lessons per module (inclusive)
- * - Every lesson contains rich slides
- * - Every lesson contains substantive written content (>300 characters, no placeholders)
+ * Validates that a Playbook curriculum strictly conforms to the permanent
+ * PLUGD PLAYBOOK CONTENT STANDARD:
+ * - 6 to 7 modules (inclusive)
+ * - Exactly 4 lessons per module
+ * - Total lessons: 24 to 28
+ * - Every lesson contains substantive presentation slides
+ * - Every lesson contains in-depth written content (>500 characters, no placeholders)
  */
 export function validateCurriculumStructure(course: Course): CurriculumValidationResult {
   const errors: string[] = [];
@@ -24,9 +25,9 @@ export function validateCurriculumStructure(course: Course): CurriculumValidatio
   const lessonsPerModule: number[] = [];
   let totalLessonsCount = 0;
 
-  if (modulesCount < 7 || modulesCount > 10) {
+  if (modulesCount < 6 || modulesCount > 7) {
     errors.push(
-      `Course "${course.title}" has ${modulesCount} modules. Mandatory curriculum requirement: 7 to 10 modules.`
+      `Course "${course.title}" has ${modulesCount} modules. Mandatory curriculum requirement: 6 to 7 modules.`
     );
   }
 
@@ -36,9 +37,9 @@ export function validateCurriculumStructure(course: Course): CurriculumValidatio
       lessonsPerModule.push(lessonCount);
       totalLessonsCount += lessonCount;
 
-      if (lessonCount < 7 || lessonCount > 10) {
+      if (lessonCount !== 4) {
         errors.push(
-          `Module ${mod.number || modIdx + 1} ("${mod.title}") in "${course.title}" has ${lessonCount} lessons. Mandatory standard: 7 to 10 lessons per module.`
+          `Module ${mod.number || modIdx + 1} ("${mod.title}") in "${course.title}" has ${lessonCount} lessons. Mandatory standard: exactly 4 lessons per module.`
         );
       }
 
@@ -47,22 +48,42 @@ export function validateCurriculumStructure(course: Course): CurriculumValidatio
           errors.push(
             `Lesson ${lesson.id || lesson.number} in Module ${mod.number} has no presentation slides.`
           );
+        } else {
+          // Check that slides are substantive
+          lesson.slides.forEach((slide, sIdx) => {
+            if (!slide.headline || slide.headline.trim().length === 0) {
+              errors.push(
+                `Slide ${sIdx + 1} in lesson ${lesson.id} has an empty headline.`
+              );
+            }
+            if (!slide.bulletPoints || slide.bulletPoints.length === 0) {
+              errors.push(
+                `Slide ${sIdx + 1} in lesson ${lesson.id} has no bullet points.`
+              );
+            }
+          });
         }
 
         const written = lesson.writtenLesson || (lesson as any).writtenContent || "";
-        if (!written || written.trim().length < 300) {
+        if (typeof written !== "string" || written.trim().length < 500) {
           errors.push(
-            `Lesson ${lesson.id || lesson.number} in Module ${mod.number} has insufficient written content (length: ${written.length}). Must be at least 300 characters.`
+            `Lesson ${lesson.id || lesson.number} in Module ${mod.number} has insufficient written content (length: ${written.length}, minimum: 500 characters).`
           );
         }
 
         if (written.toLowerCase().includes("coming soon") || written.toLowerCase().includes("placeholder")) {
           errors.push(
-            `Lesson ${lesson.id || lesson.number} in Module ${mod.number} contains placeholder text.`
+            `Lesson ${lesson.id || lesson.number} contains placeholder text.`
           );
         }
       });
     });
+  }
+
+  if (totalLessonsCount < 24 || totalLessonsCount > 28) {
+    errors.push(
+      `Course "${course.title}" has ${totalLessonsCount} total lessons. Standard: 24 to 28 lessons (6-7 modules × 4 lessons).`
+    );
   }
 
   return {

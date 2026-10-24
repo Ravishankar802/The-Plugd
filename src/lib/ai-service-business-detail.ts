@@ -33,7 +33,7 @@ export const DETAIL_AI_SERVICE_BUSINESS_DATA: PlaybookDetailData = {
   thumbnail: "",
   hoursOfMaterial: "7.0 hours",
   modulesCount: 7,
-  lessonsCount: 49,
+  lessonsCount: 28,
   whatYouWillLearn: [
     "Master the 3-tool architecture (Airtable, Claude 3.7, Make.com) that runs 95% of commercial B2B automations",
     "Design relational database schemas with normalized linked tables and role-based client interfaces",
@@ -68,14 +68,14 @@ export const DETAIL_AI_SERVICE_BUSINESS_DATA: PlaybookDetailData = {
     keyPoints: [
       "Module 1: The 3-Tool Architecture & $10,000/Month Business Model",
       "Module 2: Core Tool 1 — Airtable as the Enterprise Relational Database",
-      "Module 3: Core Tool 2 — Claude 3.7 for Reasoning, Synthesis & Decision Engines",
+      "Module 3: Core Tool 2 — Claude 3.7 for Reasoning, Synthesis & Extraction",
       "Module 4: Core Tool 3 — Make.com for Frictionless Orchestration & Integrations",
-      "Module 5: Packaging 3 High-Ticket Recurring Services ($2,500–$4,500 Sprints)",
+      "Module 5: Packaging 3 High-Ticket Commercial Services ($2,500–$4,500 Sprints)",
       "Module 6: Client Acquisition & The 5-Minute 'Trojan Horse' Loom Audit",
-      "Module 7: Operations, SLA Management & Scaling to $10,000/Month",
+      "Module 7: Operations, SLA Contracts & Scaling to $10,000/Month Retainers",
     ],
     closing: [
-      "Every single one of the 49 lessons contains both a complete visual slide presentation and an in-depth, step-by-step written implementation guide.",
+      "Every single one of the 28 lessons contains both a complete visual slide presentation and an in-depth, step-by-step written implementation guide.",
       "Whether you are launching your first freelance offer or expanding an established consulting agency, this Playbook gives you the exact tactical blueprints to deliver tangible commercial value.",
     ],
   },
@@ -86,7 +86,7 @@ export const DETAIL_AI_SERVICE_BUSINESS_DATA: PlaybookDetailData = {
     "Professionals wanting to build a location-independent $10,000/month business with zero employees",
   ],
   includes: [
-    { iconName: "layers", text: "7 Structured Modules & 49 Comprehensive Lessons" },
+    { iconName: "layers", text: "7 Structured Modules & 28 Comprehensive Lessons" },
     { iconName: "file-text", text: "Interactive Slide Presentations & Complete Step-by-Step Written Guides" },
     { iconName: "video", text: "Ready-to-Import Airtable Schemas, Claude Prompts & Make.com Blueprints" },
     { iconName: "file-text", text: "Tested Video Audit Pitch Scripts, Statement of Work Agreements & Retainer Contracts" },
@@ -138,7 +138,7 @@ export const DETAIL_AI_SERVICE_BUSINESS_DATA: PlaybookDetailData = {
     },
     {
       question: "Are both slide decks and full written lessons included?",
-      answer: "Yes! Every single one of the 49 lessons includes a complete executive slide deck and an extensive, step-by-step written lesson switchable with a single click.",
+      answer: "Yes! Every single one of the 28 lessons includes a complete executive slide deck and an extensive, step-by-step written lesson switchable with a single click.",
     },
     {
       question: "Can I use these blueprints directly for my own paying clients?",

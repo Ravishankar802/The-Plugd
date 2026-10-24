@@ -8,51 +8,38 @@ const modulesData = [
     id: "module-01",
     title: "Agency Foundation & Offer Engineering (Week 1, Days 1-7)",
     description: "Lay the legal, commercial, and technical foundations of your AI agency and craft an irresistible high-ticket transformation offer.",
-    duration: "55m",
+    duration: "56m",
     lessons: [
       {
         lesNum: 1,
         title: "The Zero-Portfolio Reality: What High-Paying Clients Actually Buy",
-        duration: "8m",
+        duration: "14m",
         summary: "Understand why clients hire agencies for business outcomes, operational speed, and risk mitigation rather than artificial prestige or fancy logos.",
         bulletPoints: [
-          "Enterprise and mid-market clients do not care about agency age or team size; they care about operational bottleneck resolution and measurable ROI.",
           "The Trap of Vanity: Avoid wasting Weeks 1-2 on logos, complex websites, LLC registration, or business cards before securing paying demand.",
           "Outcome-Based Value: Positioning your agency around quantifiable metrics (hours saved, speed-to-lead under 2 minutes, revenue captured).",
+          "Selecting Your Beachhead Vertical: Evaluating Commercial Roofing, Real Estate Syndication, Boutique Law Firms, and Medical Practices.",
           "The Day 1 Mindset: Transitioning from an uncertain technical experimenter to a confident business process automation partner.",
         ],
         takeaway: "Clients don't buy your portfolio—they buy certainty that you can eliminate an expensive bottleneck faster than they can internally.",
       },
       {
         lesNum: 2,
-        title: "Selecting Your High-Margin Beachhead Niche",
-        duration: "8m",
-        summary: "Evaluate and select a profitable vertical market with high transaction values, manual operational overhead, and immediate budget authority.",
-        bulletPoints: [
-          "The Niche Selection Matrix: Evaluating industries based on Average Deal Size, Manual Process Intensity, and Tech Stack Accessibility.",
-          "Top Beachhead Verticals: Commercial Roofing, Real Estate Syndication, Boutique Law Firms, Medical Specialty Practices, and Logistics.",
-          "Avoiding Low-Budget Traps: Why local restaurants and micro-retailers lack budget authority and require disproportionate hand-holding.",
-          "Competitive Whitespace: Identifying the gap between generic Zapier freelancers and enterprise systems integrators charging $100K+.",
-        ],
-        takeaway: "Pick a single vertical where saving 10 hours a week or capturing 2 additional deals covers your fee 5x over.",
-      },
-      {
-        lesNum: 3,
-        title: "The High-Ticket Transformation Offer Formula",
-        duration: "8m",
-        summary: "Structure a compelling $3,500 to $7,500 core agency transformation offer that commands immediate respect and urgent client buy-in.",
+        title: "The High-Ticket Transformation Offer Formula ($3,500–$7,500)",
+        duration: "14m",
+        summary: "Structure a compelling core agency transformation offer that commands immediate respect and urgent commercial buy-in.",
         bulletPoints: [
           "The Offer Equation: Dream Outcome + Perceived Likelihood of Achievement ÷ (Time Delay × Effort & Sacrifice).",
-          "Transforming Commodity Tasks into Core Assets: Moving from 'We build Make.com automations' to 'The 7-Day Autonomous Lead-to-Close Engine'.",
+          "Transforming Tasks into Assets: Moving from 'We build Make.com automations' to 'The 7-Day Autonomous Lead-to-Close Engine'.",
           "Scope Boundaries: Defining exactly what is included (3 core tools, 2 workflows, 1 human-in-the-loop dashboard) to prevent creep.",
-          "The Guarantee Structure: Crafting performance-backed assurances (e.g. 'If your system doesn't save 15 hours in 30 days, we work free until it does').",
+          "The Performance Guarantee: Crafting performance-backed assurances (e.g. 'If your system doesn't save 15 hours in 30 days, we work free until it does').",
         ],
         takeaway: "Sell a finished, operational business asset with defined boundaries rather than open-ended consulting hours.",
       },
       {
-        lesNum: 4,
+        lesNum: 3,
         title: "Core Technology Stack Selection & Standardization",
-        duration: "8m",
+        duration: "14m",
         summary: "Select and lock your agency's foundational technology stack to ensure rapid, repeatable deployments without software bloat.",
         bulletPoints: [
           "The Core 3 Agency Stack: Claude 3.7 / GPT-4o for cognitive extraction, Make.com for orchestration, Airtable/Supabase for structured state.",
@@ -63,22 +50,9 @@ const modulesData = [
         takeaway: "A standardized tech stack turns custom client work into repeatable, modular assembly lines.",
       },
       {
-        lesNum: 5,
-        title: "Agency Pricing Models: Sprints vs Retainers vs Performance",
-        duration: "8m",
-        summary: "Master the three primary agency pricing structures and understand exactly when and how to deploy each for maximum cash flow.",
-        bulletPoints: [
-          "The Implementation Sprint: Charging $3,500–$5,000 for a 14-day build with 50% upfront deposit upon contract signing.",
-          "The Monthly Operational Retainer: Recurring $1,000–$2,000/mo for system monitoring, schema maintenance, and quarterly optimization.",
-          "The Performance Hybrid: Structuring base retainers plus success kickers ($50 per qualified booking or $500 per closed contract).",
-          "Avoiding Hourly Quotes: Why hourly rates penalize technical competence and invite micromanagement from uneducated buyers.",
-        ],
-        takeaway: "Anchor every project with a 50% upfront implementation sprint, seamlessly converting clients into monthly maintenance retainers.",
-      },
-      {
-        lesNum: 6,
+        lesNum: 4,
         title: "Legal Essentials: Agreements, SOWs, IP Ownership, & SLA Guardrails",
-        duration: "8m",
+        duration: "14m",
         summary: "Protect your agency with ironclad Master Service Agreements (MSAs), Statements of Work (SOWs), and intellectual property safeguards.",
         bulletPoints: [
           "The 4 Critical Clauses: Scope Boundaries, Client Asset Delivery Timelines, IP Ownership, and API Cost Responsibility.",
@@ -88,32 +62,19 @@ const modulesData = [
         ],
         takeaway: "Professional contracts establish authority, prevent scope creep, and ensure prompt milestone payments.",
       },
-      {
-        lesNum: 7,
-        title: "Day 1-7 Milestone Checklist: Ready for Market Launch",
-        duration: "7m",
-        summary: "Execute the Week 1 milestone checklist to ensure your agency foundation, one-page asset, and offer are fully primed for outreach.",
-        bulletPoints: [
-          "The 1-Page Agency Positioning Asset: A clean, Notion or Carrd executive summary highlighting your beachhead transformation.",
-          "Legal & Financial Setup: Business banking, Stripe payment links, and DocuSign/PandaDoc templates ready for signature.",
-          "Outreach Workspace Configuration: Domain warmup, dedicated cold email mailboxes, and CRM tracking base.",
-          "The Week 1 Audit Gate: Verifying offer clarity, pricing confidence, and operational readiness before sending the first outreach message.",
-        ],
-        takeaway: "Week 1 ends with a crystal-clear offer, standardized stack, and bulletproof contracts—ready to acquire paying clients.",
-      },
     ],
   },
   {
     num: 2,
     id: "module-02",
-    title: "The Proof Engine — Audits, Demos & Case Studies Without Clients (Week 1-2)",
+    title: "The Proof Engine — Audits & Synthetic Demos Without Clients (Week 1-2)",
     description: "Generate undeniable commercial proof, interactive demo sandboxes, and reverse-engineered case studies before signing your first client.",
-    duration: "54m",
+    duration: "55m",
     lessons: [
       {
         lesNum: 1,
         title: "The Synthetic Case Study Method: Turning Sandbox Builds into Proof",
-        duration: "8m",
+        duration: "14m",
         summary: "Build realistic, end-to-end prototype systems that demonstrate tangible operational savings without needing an existing client logo.",
         bulletPoints: [
           "The Reality of Case Studies: Prospects want to see the workflow in action, the data schemas, and the time-to-value, not famous logos.",
@@ -126,7 +87,7 @@ const modulesData = [
       {
         lesNum: 2,
         title: "Building Your Flagship Interactive Demo Sandbox",
-        duration: "8m",
+        duration: "14m",
         summary: "Create a live, clickable demonstration environment that allows prospects to test your AI automation with their own live inputs.",
         bulletPoints: [
           "The Interactive Sandbox Architecture: A public Typeform or Tally front-end connected to an active Make.com webhook and Airtable view.",
@@ -139,7 +100,7 @@ const modulesData = [
       {
         lesNum: 3,
         title: "The Reverse-Engineered Bottleneck Audit",
-        duration: "8m",
+        duration: "14m",
         summary: "Identify high-friction operational flaws in target companies by analyzing their public digital footprint and customer intake points.",
         bulletPoints: [
           "The Public Audit Trail: Analyzing target websites, contact forms, appointment booking flows, and job postings for automation clues.",
@@ -151,55 +112,16 @@ const modulesData = [
       },
       {
         lesNum: 4,
-        title: "Crafting the 5-Minute Video Teardown Asset",
-        duration: "8m",
+        title: "Crafting the 5-Minute Video Teardown & ROI Calculator Asset",
+        duration: "13m",
         summary: "Record high-converting, personalized Loom video audits that diagnose bottlenecks and present the automated solution visually.",
         bulletPoints: [
           "The 5-Minute Loom Anatomy: 0:00 Hook & Proof of Research; 1:00 The Bottleneck Diagnosis; 2:30 The Live Prototype Demo; 4:00 The Next Step.",
           "Visual Pacing: Keeping the prospect's website and your demo architecture on split-screen to maintain visual relevance.",
-          "Avoiding the Sales Pitch: Positioning the video as an educational systems teardown rather than an aggressive sales pitch.",
+          "Interactive ROI Calculator: Demonstrating dynamic financial models that quantify labor savings, error reduction, and revenue capture.",
           "The Micro-Call to Action: Offering a complimentary 15-minute architecture roadmap call rather than demanding a sales meeting.",
         ],
         takeaway: "A personalized 5-minute video teardown achieves a 35%+ response rate because it delivers immense value upfront.",
-      },
-      {
-        lesNum: 5,
-        title: "Creating Interactive ROI & Labor Savings Calculators",
-        duration: "8m",
-        summary: "Equip your agency with dynamic financial models that quantify labor savings, error reduction, and revenue capture for CFOs.",
-        bulletPoints: [
-          "The Three Financial Levers: Direct Labor Replacement Hours, Reduced Data-Entry Errors, and Increased Lead Conversion Velocity.",
-          "Building the Calculator in Coda or Notion: Sliders for Team Size, Average Hourly Wage ($25–$45/hr), and Manual Hours Per Week.",
-          "The Cost of Inaction Metric: Demonstrating that delaying implementation by 60 days costs the client more than your entire sprint fee.",
-          "Presenting Financials to Non-Technical Executives: Translating technical workflow speed into annual EBIT margin improvements.",
-        ],
-        takeaway: "When your ROI calculator proves a $40,000 annual labor savings, your $4,500 sprint fee becomes an easy financial decision.",
-      },
-      {
-        lesNum: 6,
-        title: "Packaging Your Agency's 'Proof Vault' Notion Doc",
-        duration: "7m",
-        summary: "Organize your synthetic case studies, demo sandboxes, Loom teardowns, and architecture diagrams into a client-facing Proof Vault.",
-        bulletPoints: [
-          "Structure of the Proof Vault: Clean Notion page featuring Architecture Schemas, Live Demo Links, and Video Walkthroughs.",
-          "Categorization by Workflow: Inbound Lead Processing, Document Extraction, and CRM Data Hygiene sections.",
-          "Access Control & Password Protection: Creating an exclusive, gated feel for qualified prospective clients.",
-          "Tracking Engagement: Using Notion analytics or link tracking (Dub.co) to monitor prospect interaction and timing follow-ups.",
-        ],
-        takeaway: "A centralized Proof Vault allows prospects to explore your technical capabilities at their own pace.",
-      },
-      {
-        lesNum: 7,
-        title: "Week 2 Milestone Checklist: Proof Engine Validation",
-        duration: "7m",
-        summary: "Review and stress-test your proof assets, interactive demo sandboxes, and video teardowns ahead of live client outreach.",
-        bulletPoints: [
-          "The 3-Point Quality Gate: Test sandbox response latency, verify video audio clarity, and ensure all demo links load without auth errors.",
-          "Peer Review: Testing your demo flow on 2 non-technical colleagues to verify intuitive understanding.",
-          "Asset Library Finalization: 3 tailored Loom templates, 1 live demo sandbox, and 1 financial ROI calculator ready for active deployment.",
-          "Transitioning to Outbound: Entering Week 3 with complete confidence in your technical capability and proof engine.",
-        ],
-        takeaway: "With proven sandbox demonstrations and high-value teardown assets in place, outbound prospecting becomes effortless.",
       },
     ],
   },
@@ -208,12 +130,12 @@ const modulesData = [
     id: "module-03",
     title: "High-Conversion Client Acquisition & Loom Teardowns (Week 2, Days 8-14)",
     description: "Launch multi-channel client acquisition using targeted cold email, LinkedIn executive outreach, and high-impact video audits.",
-    duration: "53m",
+    duration: "56m",
     lessons: [
       {
         lesNum: 1,
         title: "Target Account Prospecting & Lead List Curation",
-        duration: "8m",
+        duration: "14m",
         summary: "Build ultra-targeted prospect lists of 100 to 200 verified decision-makers matching your ideal customer profile (ICP).",
         bulletPoints: [
           "Defining Decision-Maker Titles: CEO, COO, VP of Operations, Managing Partner, and Director of Revenue Operations.",
@@ -226,7 +148,7 @@ const modulesData = [
       {
         lesNum: 2,
         title: "Cold Email Architecture: Deliverability, Domains, & Copywriting",
-        duration: "8m",
+        duration: "14m",
         summary: "Set up secondary outreach domains, configure SPF/DKIM/DMARC records, and write short, high-response B2B cold emails.",
         bulletPoints: [
           "Technical Deliverability Setup: Purchasing 2 secondary domains, setting up Google Workspace/Outlook, and configuring DNS records.",
@@ -238,8 +160,8 @@ const modulesData = [
       },
       {
         lesNum: 3,
-        title: "The Loom Outreach Sequence: 3-Touch Execution",
-        duration: "8m",
+        title: "The Loom Outreach Sequence: 3-Touch Execution Cadence",
+        duration: "14m",
         summary: "Deploy the proven 3-touch outreach sequence combining personalized video teardowns with strategic follow-ups.",
         bulletPoints: [
           "Touch 1 (Day 1): The Observation & Loom Teardown Link (or GIF preview) showcasing their specific workflow friction.",
@@ -252,68 +174,29 @@ const modulesData = [
       {
         lesNum: 4,
         title: "LinkedIn Executive Social Selling & DM Prospecting",
-        duration: "8m",
+        duration: "14m",
         summary: "Utilize organic LinkedIn authority, targeted profile optimization, and direct messaging to connect directly with business owners.",
         bulletPoints: [
           "Profile as a Landing Page: Transforming your headline and featured section into a case-study driven client acquisition asset.",
           "Connection Request Strategy: Blank connection requests vs ultra-short context notes ('Enjoyed your recent post on operational scaling').",
-          "The Permission-Based DM: Asking permission before sending a resource ('Noticed your team is hiring 3 intake coordinators—mind if I share a 2-min breakdown of how similar firms automated that step?').",
+          "The Permission-Based DM: Asking permission before sending a resource ('Noticed your team is hiring 3 intake coordinators—mind if I share a 2-min breakdown?').",
           "Transitioning from DM to Discovery: Moving warm conversations off LinkedIn and onto your calendar using a dedicated booking link.",
         ],
         takeaway: "Permission-based direct messaging turns cold social connections into warm, scheduled strategy consultations.",
-      },
-      {
-        lesNum: 5,
-        title: "Strategic Local Networking & Chamber Teardowns",
-        duration: "7m",
-        summary: "Tap into high-trust local commercial markets by conducting live automation workshops and B2B executive breakfast presentations.",
-        bulletPoints: [
-          "The Local Trust Advantage: Business owners often prefer hiring local partners they can meet in person or connect with through regional networks.",
-          "Securing Speaking Slots: Offering local business groups, trade associations, and BNI chapters an educational talk on 'Practical AI for SMBs'.",
-          "The Live Audit Demonstration: Conducting a live, volunteer workflow audit from the stage to demonstrate immediate expertise.",
-          "Collecting In-Room Leads: Using QR codes linked to an executive assessment tool to capture attendee contact details for follow-up.",
-        ],
-        takeaway: "A 20-minute educational presentation to 15 local business owners consistently yields 2 to 4 high-ticket sprint projects.",
-      },
-      {
-        lesNum: 6,
-        title: "Managing the Outbound Pipeline: Daily Cadence & KPIs",
-        duration: "7m",
-        summary: "Establish a disciplined daily outbound routine to generate predictable sales pipeline without burning out.",
-        bulletPoints: [
-          "The Daily 20 Cadence: Sending 5 personalized Loom videos, 15 tailored emails, and 10 LinkedIn connection requests every morning.",
-          "Key Performance Indicators: Tracking Deliverability (>98%), Open Rate (>60%), Reply Rate (>12%), and Call Booking Rate (>35% of replies).",
-          "Pipeline Management in Airtable: Moving leads from Cold -> Reached Out -> Loom Watched -> Call Booked -> Proposal Sent.",
-          "Iterative Copy Refinement: Testing new subject lines and video angles every 50 sends to continuously optimize conversion.",
-        ],
-        takeaway: "Disciplined, consistent daily outreach transforms client acquisition from guesswork into predictable mathematics.",
-      },
-      {
-        lesNum: 7,
-        title: "Week 2 Milestone Checklist: 10 Discovery Calls Booked",
-        duration: "7m",
-        summary: "Audit your outbound performance, address reply friction, and prepare your calendar for back-to-back discovery conversations.",
-        bulletPoints: [
-          "Evaluating Early Outreach Data: Analyzing response rates, objections, and engagement times across your initial 100 targets.",
-          "Overcoming Common Gatekeeper Replies: Handling 'Send info to info@' and 'We're not interested' with consultative re-framing.",
-          "Calendar Pre-Flight: Ensuring automated confirmation reminders and calendar invites include the client intake brief.",
-          "Entering the Sales Phase: Stepping into Week 3 ready to convert scheduled discovery calls into signed $3,500+ client agreements.",
-        ],
-        takeaway: "Consistent execution of the outreach playbook fills your sales calendar with qualified, interested decision-makers.",
       },
     ],
   },
   {
     num: 4,
     id: "module-04",
-    title: "The Discovery-to-Close Sales Process & Contract Frameworks (Week 3, Days 15-21)",
+    title: "The Discovery-to-Close Sales Process & 3-Option Proposals (Week 3, Days 15-21)",
     description: "Master the 2-call consultative sales framework, handle high-friction client objections, and close high-ticket sprint contracts.",
     duration: "55m",
     lessons: [
       {
         lesNum: 1,
         title: "The 30-Minute Consultative Discovery Framework",
-        duration: "8m",
+        duration: "14m",
         summary: "Structure discovery conversations as high-status diagnostic consultations that uncover the client's deepest operational costs.",
         bulletPoints: [
           "Setting the Frame: Establishing yourself as an operational diagnostician rather than an eager vendor pitching software.",
@@ -325,8 +208,8 @@ const modulesData = [
       },
       {
         lesNum: 2,
-        title: "Mapping the Client's Current State vs Future State Architecture",
-        duration: "8m",
+        title: "Mapping Current State vs Automated Future State Architecture",
+        duration: "14m",
         summary: "Translate messy client interview notes into a clear, visually arresting Current State vs Automated Future State system diagram.",
         bulletPoints: [
           "Visualizing Operational Friction: Building a Mermaid or Whimsical diagram showing redundant human handoffs and manual delays.",
@@ -339,7 +222,7 @@ const modulesData = [
       {
         lesNum: 3,
         title: "The 3-Option Proposal Architecture That Eliminates Price Resistance",
-        duration: "8m",
+        duration: "14m",
         summary: "Structure high-converting proposals with three strategic pricing tiers to anchor high perceived value and protect your margins.",
         bulletPoints: [
           "Option 1: The Essential Core ($2,800) — Single workflow automation, foundational database setup, standard 14-day turnaround.",
@@ -351,55 +234,16 @@ const modulesData = [
       },
       {
         lesNum: 4,
-        title: "Mastering the Demo & Closing Presentation (Call #2)",
-        duration: "8m",
-        summary: "Deliver a compelling 45-minute closing presentation that walks through the future-state architecture, proposal, and next steps.",
+        title: "Defeating the 5 Fatal Client Objections & 50% Deposit Collection",
+        duration: "13m",
+        summary: "Overcome common objections around pricing, timing, existing IT staff, and AI security, then collect the initial deposit smoothly.",
         bulletPoints: [
-          "Presentation Flow: Recap findings (5 min), Present Future State Architecture (15 min), Reveal Proposal Tiers (10 min), Address Questions (15 min).",
-          "Handling Silence After Price Reveal: Stating the investment calmly and pausing completely while the client processes.",
-          "Securing Verbal Commitment: Asking 'Based on what we've reviewed, which of these three paths aligns best with your goals this quarter?'",
-          "Moving to Agreement: Sending the DocuSign agreement and invoice link while still on the call.",
+          "Handling Price Hesitation: Re-anchoring to the $40K+ annual labor bleed identified in discovery.",
+          "The 'Internal Developer' Objection: Explaining why internal IT lacks time and specialized AI knowledge for rapid maintenance.",
+          "Enterprise Data Security: Explaining zero-data-retention API policies and encryption standards calmly and authoritatively.",
+          "Contract Execution: Sending pre-populated agreements via PandaDoc/DocuSign with automated Stripe deposit collection.",
         ],
-        takeaway: "Confidence and calm delivery during the price reveal convert verbal interest into immediate contractual commitments.",
-      },
-      {
-        lesNum: 5,
-        title: "Defeating the 5 Fatal Client Objections",
-        duration: "8m",
-        summary: "Overcome common objections around pricing, timing, existing IT staff, and AI security with proven consultative responses.",
-        bulletPoints: [
-          "Objection 1: 'The price is higher than we expected' -> Re-anchoring to the $40K+ annual labor bleed identified in discovery.",
-          "Objection 2: 'Can our internal IT / developer build this?' -> Highlighting maintenance burdens, API nuance, and speed-to-value.",
-          "Objection 3: 'Is our sensitive company data safe with AI?' -> Explaining enterprise zero-data-retention API policies and encryption.",
-          "Objection 4: 'Let's revisit this next quarter' -> Quantifying the 90-day cost of inaction ($10K+ in wasted manual payroll).",
-        ],
-        takeaway: "Objections are requests for clarification; address them with empathy, mathematical logic, and security assurances.",
-      },
-      {
-        lesNum: 6,
-        title: "Contract Execution & 50% Upfront Deposit Collection",
-        duration: "8m",
-        summary: "Execute the contract, collect the initial 50% deposit, and set formal project kickoff boundaries immediately.",
-        bulletPoints: [
-          "Seamless Digital Contracting: Sending pre-populated agreements via PandaDoc or DocuSign with automated signing fields.",
-          "Automated Deposit Invoicing: Connecting Stripe Invoicing to trigger automatic card payments or ACH bank transfers.",
-          "The Golden Rule of Agency Delivery: Zero engineering or workflow configuration begins before the initial deposit is confirmed.",
-          "The Welcome Onboarding Kit: Immediately redirecting paying clients to an intake portal to schedule the kickoff call.",
-        ],
-        takeaway: "Never write a single line of automation logic before the 50% deposit is deposited in your account.",
-      },
-      {
-        lesNum: 7,
-        title: "Week 3 Milestone Checklist: First $3,500+ Client Closed",
-        duration: "7m",
-        summary: "Celebrate closing your first client, review sales performance data, and initiate onboarding protocols.",
-        bulletPoints: [
-          "Closing Retrospective: Documenting what worked in discovery, what objections arose, and where proposals can be streamlined.",
-          "Updating Financial Forecasts: Allocating 50% deposit to operating reserves, software licenses, and project delivery.",
-          "Setting Client Expectations: Confirming the 14-day delivery sprint timeline and key milestone checkpoints in writing.",
-          "Transitioning to Week 4: Shifting gears from sales to flawless, high-speed project implementation.",
-        ],
-        takeaway: "Closing your first paying client validates your offer and kicks off the 14-day delivery sprint.",
+        takeaway: "Address objections with empathy and mathematical logic, then collect the 50% deposit before writing a single line of logic.",
       },
     ],
   },
@@ -408,12 +252,12 @@ const modulesData = [
     id: "module-05",
     title: "Rapid Client Onboarding & Project Management (Week 3-4)",
     description: "Streamline client asset collection, API credential handshakes, and sprint milestones to prevent scope creep and delays.",
-    duration: "52m",
+    duration: "56m",
     lessons: [
       {
         lesNum: 1,
         title: "The 24-Hour Frictionless Client Onboarding Workflow",
-        duration: "8m",
+        duration: "14m",
         summary: "Deploy an automated client intake flow that collects all necessary assets, credentials, and documentation within 24 hours of signing.",
         bulletPoints: [
           "The Automated Welcome Flow: Webhook triggered by contract signature creating a dedicated client Airtable portal and Slack channel.",
@@ -426,7 +270,7 @@ const modulesData = [
       {
         lesNum: 2,
         title: "Secure Credential Handshakes: Bitwarden & Workspace Permissions",
-        duration: "7m",
+        duration: "14m",
         summary: "Gather API keys, third-party software logins, and CRM permissions without compromising enterprise security standards.",
         bulletPoints: [
           "Never Accept Passwords in Plaintext: Using Bitwarden Collections or 1Password Guest Shares for encrypted credential transfers.",
@@ -438,8 +282,8 @@ const modulesData = [
       },
       {
         lesNum: 3,
-        title: "The 45-Minute Project Kickoff Strategy Session",
-        duration: "8m",
+        title: "The 45-Minute Kickoff Session & Edge-Case Identification",
+        duration: "14m",
         summary: "Lead a structured kickoff call that aligns executive expectations, confirms edge cases, and sets firm sprint milestones.",
         bulletPoints: [
           "Kickoff Agenda: Review SOW deliverables, confirm sample data sets, establish communication channels, and lock the calendar.",
@@ -451,21 +295,8 @@ const modulesData = [
       },
       {
         lesNum: 4,
-        title: "Building the Client-Facing Project Hub in Notion / Airtable",
-        duration: "7m",
-        summary: "Give clients a transparent, real-time dashboard displaying sprint progress, milestone statuses, and upcoming review gates.",
-        bulletPoints: [
-          "Components of the Project Hub: Sprint Roadmap, Milestone Progress Bar, Action Items Pending Client Review, and Resource Library.",
-          "Automated Status Updates: Linking Make.com development tickets to the client dashboard so status changes update automatically.",
-          "Reducing 'Where are we at?' Inquiries: Empowering executives to check project progress anytime without messaging you.",
-          "Client Deliverable Approvals: Providing one-click approval buttons directly within the portal.",
-        ],
-        takeaway: "A transparent project portal reduces client anxiety and eliminates 80% of status check-in messages.",
-      },
-      {
-        lesNum: 5,
-        title: "Managing Scope Creep & The 'Phase 2' Parking Lot",
-        duration: "8m",
+        title: "Managing Scope Creep & The 'Phase 2' Parking Lot Technique",
+        duration: "14m",
         summary: "Handle mid-project client feature requests diplomatically without inflating your delivery hours or blowing past deadlines.",
         bulletPoints: [
           "The Inevitable Scope Request: What to do when a client says, 'Can it also do this additional workflow while you're in there?'",
@@ -475,45 +306,19 @@ const modulesData = [
         ],
         takeaway: "Park new client ideas into 'Phase 2' to protect your sprint deadline while creating immediate upsell opportunities.",
       },
-      {
-        lesNum: 6,
-        title: "Mid-Sprint Milestones & Async Progress Reporting",
-        duration: "7m",
-        summary: "Deliver high-impact asynchronous progress reports on Day 5 and Day 10 to maintain momentum and build client excitement.",
-        bulletPoints: [
-          "The Day 5 Architecture Milestone: Sending a 3-minute Loom video walking through the verified data schemas and connector webhooks.",
-          "The Day 10 End-to-End Test Milestone: Demonstrating the workflow successfully executing live test data from end to end.",
-          "Highlighting Caught Edge Cases: Proactively pointing out edge cases your validation logic caught to showcase engineering thoroughness.",
-          "Async Client Sign-Offs: Securing milestone approval via email/Loom comments ahead of final delivery.",
-        ],
-        takeaway: "Regular asynchronous updates reassure clients that progress is rapid and completely under control.",
-      },
-      {
-        lesNum: 7,
-        title: "Week 4 Project Health Audit: Preparing for Delivery",
-        duration: "7m",
-        summary: "Run a pre-delivery audit to verify all system logic, error alerts, and documentation ahead of final client handoff.",
-        bulletPoints: [
-          "The Pre-Delivery Stress Test: Running 20 diverse test payloads through the pipeline to verify error handling and webhook retry logic.",
-          "Verifying Error Notification Webhooks: Ensuring failed executions trigger instant Slack alerts to prevent silent failures.",
-          "Documentation Package Assembly: Finalizing the system manual, video walkthrough, and operator runbook.",
-          "Scheduling the Final Delivery & Training Session: Inviting executive stakeholders to the formal project handoff.",
-        ],
-        takeaway: "A rigorous pre-delivery audit guarantees a flawless final presentation and rapid final milestone sign-off.",
-      },
     ],
   },
   {
     num: 6,
     id: "module-06",
-    title: "Delivery Architecture & Hand-Off SOW Protocols (Week 4, Days 22-28)",
+    title: "14-Day Delivery SOW Architecture & Milestone Sign-Off (Week 4, Days 22-28)",
     description: "Conduct formal client hand-off presentations, train staff, collect final milestone payments, and secure video testimonials.",
-    duration: "54m",
+    duration: "55m",
     lessons: [
       {
         lesNum: 1,
         title: "Conducting the 45-Minute Executive Handoff Call",
-        duration: "8m",
+        duration: "14m",
         summary: "Lead a polished final walkthrough that demonstrates system results, celebrates operational savings, and transfers system ownership.",
         bulletPoints: [
           "Framing the Handoff: Celebrating the operational transformation and congratulating the client team on modernizing their infrastructure.",
@@ -526,7 +331,7 @@ const modulesData = [
       {
         lesNum: 2,
         title: "Creating the 'Operator Runbook' & Video SOP Library",
-        duration: "8m",
+        duration: "14m",
         summary: "Build an intuitive, modular documentation library and video guide that allows client staff to operate the system independently.",
         bulletPoints: [
           "The Operator Runbook Structure: Overview, Daily Workflow Checklist, How to Review Low-Confidence Alerts, and Troubleshooting.",
@@ -538,21 +343,8 @@ const modulesData = [
       },
       {
         lesNum: 3,
-        title: "Staff Training Protocols & User Adoption Strategies",
-        duration: "8m",
-        summary: "Ensure client team adoption and eliminate resistance by conducting supportive, role-specific interactive training sessions.",
-        bulletPoints: [
-          "Overcoming Team Hesitation: Positioning the automation as a 'digital assistant' that removes boring administrative data entry.",
-          "Interactive Hands-On Practice: Having team members trigger test workflows and approve flagged items while you observe.",
-          "The 'Grace Period' Policy: Providing 14 days of dedicated Slack support so staff feel fully supported as they transition.",
-          "Measuring Initial Adoption: Monitoring execution volume during Week 1 to ensure team members are utilizing the new system.",
-        ],
-        takeaway: "Successful client outcomes depend on staff adoption; invest time training the operators who actually touch the system.",
-      },
-      {
-        lesNum: 4,
-        title: "The Final Sign-Off Acceptance Protocol & 50% Balance Collection",
-        duration: "8m",
+        title: "Final Acceptance Sign-Off & 50% Milestone Balance Collection",
+        duration: "14m",
         summary: "Execute the formal project acceptance certificate and trigger the final 50% milestone payment smoothly.",
         bulletPoints: [
           "The Acceptance Certificate: A clean, 1-page digital form confirming all deliverables in the SOW have been successfully deployed.",
@@ -563,43 +355,17 @@ const modulesData = [
         takeaway: "A formal acceptance certificate confirms milestone satisfaction and ensures prompt release of the remaining 50% fee.",
       },
       {
-        lesNum: 5,
-        title: "Harvesting 5-Star Video Testimonials & Case Study Assets",
-        duration: "8m",
+        lesNum: 4,
+        title: "Harvesting 5-Star Video Testimonials & Referral Introductions",
+        duration: "13m",
         summary: "Capture glowing video testimonials, quantifiable ROI statistics, and executive quotes at the moment of peak client gratitude.",
         bulletPoints: [
           "The Peak Gratitude Window: Requesting a testimonial immediately following the successful handoff call when excitement is highest.",
           "The 3-Question Testimonial Prompt: (1) Where were you before? (2) What was the experience working together? (3) What results are you seeing?",
           "Async Video Collection: Using Senja or VideoAsk to collect high-definition video testimonials with zero scheduling friction.",
-          "Anonymized vs Branded Case Studies: Securing permission to feature their company logo or publishing an anonymized case study.",
+          "The Peer Referral Question: Asking for introductions to 2 peer business owners who could benefit from similar operational automation.",
         ],
-        takeaway: "Always collect the testimonial at the moment of delivery when the client is most impressed with their new system.",
-      },
-      {
-        lesNum: 6,
-        title: "Generating Inbound Referral Momentum From Day 1 Clients",
-        duration: "7m",
-        summary: "Turn satisfied clients into a continuous source of high-quality peer referrals across their industry network.",
-        bulletPoints: [
-          "The Peer Referral Question: 'Who are 2 other business owners in your network who could benefit from saving 15 hours a week?'",
-          "The Referral Incentive: Offering a complimentary month of system maintenance or a $500 referral credit for introduced clients.",
-          "Drafting the Introduction Email: Providing a pre-written, 3-sentence introduction email the client can forward directly to their peers.",
-          "Referral Pipeline Tracking: Tracking referred leads separately and prioritizing them for rapid discovery scheduling.",
-        ],
-        takeaway: "Delighted clients are your most effective sales team; ask for peer introductions while the results are fresh.",
-      },
-      {
-        lesNum: 7,
-        title: "Week 4 Milestone Checklist: 100% Delivery & Cash Collected",
-        duration: "7m",
-        summary: "Complete the sprint delivery retrospective, balance collection, and verify that the client is fully primed for a retainer offer.",
-        bulletPoints: [
-          "Financial Reconcile: Confirming 100% of sprint fees have cleared your business bank account.",
-          "Testimonial Vault Update: Uploading the new video review and ROI metrics to your agency website and sales deck.",
-          "Archiving Project Files: Securing exported workflow JSON blueprints in your private agency repository.",
-          "Transitioning to Retainer: Moving seamlessly from sprint completion into the monthly recurring maintenance retainer conversation.",
-        ],
-        takeaway: "Completing your first delivery sprint with full payment and a video testimonial sets the stage for predictable recurring retainers.",
+        takeaway: "Always collect testimonials and referrals at the moment of delivery when the client is most impressed with their new system.",
       },
     ],
   },
@@ -608,12 +374,12 @@ const modulesData = [
     id: "module-07",
     title: "The Retention Engine — Converting Sprints to Monthly Retainers (Week 4+, Days 29-30)",
     description: "Transition sprint clients into predictable $1,000 to $2,000/month recurring maintenance contracts to build an enduring $15K/mo agency.",
-    duration: "55m",
+    duration: "56m",
     lessons: [
       {
         lesNum: 1,
-        title: "The Retention Imperative: Why Sprints Alone Are an Exhausting Treadmill",
-        duration: "8m",
+        title: "The Retention Imperative: Escaping the One-Time Sprint Treadmill",
+        duration: "14m",
         summary: "Understand the agency mathematics of combining one-time sprint cash flow with sticky, high-margin monthly recurring revenue (MRR).",
         bulletPoints: [
           "The Sprint Treadmill: Needing 3 to 4 new clients every single month to sustain cash flow creates chronic stress and revenue volatility.",
@@ -626,7 +392,7 @@ const modulesData = [
       {
         lesNum: 2,
         title: "Structuring the $1,250/Month 'Systems & SLA' Retainer Offer",
-        duration: "8m",
+        duration: "14m",
         summary: "Package a high-value monthly maintenance retainer that provides ongoing peace of mind, error monitoring, and minor tuning.",
         bulletPoints: [
           "The 4 Retainer Pillars: Proactive Webhook & Error Monitoring, API Version Updates, Monthly Security Audits, and Dedicated Support SLA.",
@@ -639,7 +405,7 @@ const modulesData = [
       {
         lesNum: 3,
         title: "The 'Friday Executive Snapshot': The Ultimate Retainer Retention Secret",
-        duration: "8m",
+        duration: "14m",
         summary: "Automate a weekly executive digest that visibly proves the value of your retainer and prevents client cancellations.",
         bulletPoints: [
           "The Retainer Churn Risk: If a system runs smoothly without issues, clients forget you are maintaining it and question the monthly invoice.",
@@ -651,48 +417,9 @@ const modulesData = [
       },
       {
         lesNum: 4,
-        title: "The Seamless Retainer Transition Script (Pitching on Day 25)",
-        duration: "8m",
-        summary: "Deploy the exact conversation script to transition sprint clients into long-term monthly retainers during the final project phase.",
-        bulletPoints: [
-          "Timing the Conversation: Introducing the retainer on Day 25 when the system is proven but the 14-day warranty is approaching conclusion.",
-          "The Consultative Retainer Script: 'Now that the engine is live and saving your team 15 hours a week, you have two choices for maintenance...'",
-          "Choice A vs Choice B: Letting their internal staff monitor APIs and handle breakages vs having your team manage everything proactively.",
-          "The Seamless Agreement Addendum: Executing the recurring Stripe subscription with a single click before the sprint warranty expires.",
-        ],
-        takeaway: "Presenting the retainer as the natural, low-stress operational choice achieves an 80%+ conversion rate from sprint clients.",
-      },
-      {
-        lesNum: 5,
-        title: "Automated Maintenance: Setting Up Centralized Telemetry & Alerts",
-        duration: "8m",
-        summary: "Build an agency-wide monitoring dashboard that tracks all client workflows, API health, and credit consumption in one place.",
-        bulletPoints: [
-          "The Centralized Agency Telemetry Hub: A unified Airtable or Datadog dashboard tracking execution status across all client accounts.",
-          "Instant Discord/Slack Emergency Alerts: Configuring webhooks that notify your phone within 60 seconds if any client automation throws a 500 error.",
-          "Automated Self-Healing Loops: Incorporating retry logic and fallback models (e.g. falling back from Claude 3.7 to GPT-4o) automatically.",
-          "Quarterly Architecture Reviews: Scheduling a 20-minute quarterly call to present performance metrics and propose new sprint initiatives.",
-        ],
-        takeaway: "Centralized monitoring allows one technician to manage 25+ client retainers effortlessly without manual daily inspections.",
-      },
-      {
-        lesNum: 6,
-        title: "Scaling the Agency: Hiring Contractors & Building SOP Assembly Lines",
-        duration: "8m",
-        summary: "Scale your agency from a solo operator to an automated business by delegating routine workflow building and outreach.",
-        bulletPoints: [
-          "The Scaling Threshold: When to hire your first technical contractor (typically after reaching $8,000/month in consistent revenue).",
-          "Hiring Vetted Make.com / AI Builders: Sourcing skilled contractors on Upwork by testing them with a paid 3-hour sandbox assignment.",
-          "Building the Internal Agency Playbook: Creating step-by-step SOPs that allow contractors to assemble 80% of client workflows.",
-          "The Owner's Role at Scale: Shifting your focus exclusively to high-level architecture design, consultative closing, and strategic partnerships.",
-        ],
-        takeaway: "Delegate assembly line execution to contractors so you can focus entirely on high-value client acquisition and advisory.",
-      },
-      {
-        lesNum: 7,
-        title: "The 30-Day Master Milestone: The $15,000/Month Roadmap",
-        duration: "7m",
-        summary: "Synthesize the entire 30-day agency sprint and review your mathematical pathway to $15,000/month and beyond.",
+        title: "The 30-Day Master Milestone: Scaling to $15,000/Month and Beyond",
+        duration: "14m",
+        summary: "Synthesize the entire 30-day agency sprint and review your mathematical pathway to $15,000/month and solo founder freedom.",
         bulletPoints: [
           "The Agency Unit Economics: 3 Sprints per month ($12,000) + 6 Retainers ($7,500) = $19,500/month gross revenue with 80%+ profit margin.",
           "Reviewing the 30-Day Journey: From Zero Portfolio and No Offer to a validated, high-ticket agency with paying clients and recurring revenue.",

@@ -50,7 +50,7 @@ test("2. Detail view data and curriculum integrity", () => {
   assert.ok(detailFile.includes("price: 3"), "Price must be 3");
   assert.ok(detailFile.includes("originalPrice: 9"), "Original price must be 9");
   assert.ok(detailFile.includes("modulesCount: 7"), "Must have 7 modules");
-  assert.ok(detailFile.includes("lessonsCount: 49"), "Must have 49 lessons");
+  assert.ok(detailFile.includes("lessonsCount: 28"), "Must have 28 lessons");
   assert.ok(detailFile.includes("Airtable"), "Must include Airtable tool");
   assert.ok(detailFile.includes("Claude 3.7"), "Must include Claude 3.7 tool");
   assert.ok(detailFile.includes("Make.com"), "Must include Make.com tool");

@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-const { courseTitle, modulesData } = require('./generate-playbook-2.cjs');
-const { createLesson } = require('./curriculum-builder-helper.cjs');
+const { courseTitle, courseId, courseSlug, modulesData } = require('./generate-playbook-2.cjs');
+const { createDeepLesson } = require('./curriculum-builder-helper.cjs');
 
-console.log("Writing Playbook 2 files...");
+console.log("Writing Playbook 2 files (7 modules, 28 lessons)...");
 
 // 1. Build metadata
 const metadata = modulesData.map((m) => {
@@ -59,20 +59,22 @@ console.log("Updated src/lib/ai-service-business-curriculum.ts");
 
 // Helper to build lessons array for a range of modules
 function buildModuleLessons(startIdx, endIdx) {
-  let output = `import { Lesson, Module } from "@/lib/playbooks-data";\n\n`;
+  let output = `import { Lesson } from "@/lib/playbooks-data";\n\n`;
   output += `export interface ExtendedLesson extends Lesson {\n  learningObjective: string;\n  writtenLesson: string;\n  takeaway: string;\n}\n\n`;
 
   for (let idx = startIdx; idx < endIdx; idx++) {
     const m = modulesData[idx];
     const fullLessons = m.lessons.map((l) => {
-      const lesObj = createLesson({
+      const lesObj = createDeepLesson({
         modNum: m.num,
         lesNum: l.lesNum,
         title: l.title,
         duration: l.duration,
         summary: l.summary,
-        bulletPoints: l.bulletPoints,
-        takeaway: l.takeaway,
+        bulletPointsSlide1: l.bulletPoints,
+        takeawaySlide1: l.takeaway,
+        workedCalculations: l.workedCalculations,
+        codeOrSchema: l.codeOrSchema,
         courseTitle,
         modTitle: m.title,
       });
@@ -94,13 +96,90 @@ function buildModuleLessons(startIdx, endIdx) {
 fs.writeFileSync(path.join(__dirname, '../src/lib/ai-service-business-content-1.ts'), buildModuleLessons(0, 2), 'utf8');
 console.log("Updated src/lib/ai-service-business-content-1.ts");
 
-// Write content-2 (Modules 3, 4)
-fs.writeFileSync(path.join(__dirname, '../src/lib/ai-service-business-content-2.ts'), buildModuleLessons(2, 4), 'utf8');
+// Write content-2 (Modules 3, 4, 5)
+fs.writeFileSync(path.join(__dirname, '../src/lib/ai-service-business-content-2.ts'), buildModuleLessons(2, 5), 'utf8');
 console.log("Updated src/lib/ai-service-business-content-2.ts");
 
-// Write content-3 (Modules 5, 6, 7)
-fs.writeFileSync(path.join(__dirname, '../src/lib/ai-service-business-content-3.ts'), buildModuleLessons(4, 7), 'utf8');
+// Write content-3 (Modules 6, 7)
+fs.writeFileSync(path.join(__dirname, '../src/lib/ai-service-business-content-3.ts'), buildModuleLessons(5, 7), 'utf8');
 console.log("Updated src/lib/ai-service-business-content-3.ts");
+
+// Write ai-service-business-course.ts
+const courseTs = `import type { Course, Module, Lesson } from "./playbooks-data";
+import { AI_SERVICE_BUSINESS_MODULES_METADATA } from "./ai-service-business-curriculum";
+import { MODULE_01_LESSONS, MODULE_02_LESSONS } from "./ai-service-business-content-1";
+import { MODULE_03_LESSONS, MODULE_04_LESSONS, MODULE_05_LESSONS } from "./ai-service-business-content-2";
+import { MODULE_06_LESSONS, MODULE_07_LESSONS } from "./ai-service-business-content-3";
+
+const ALL_LESSON_COLLECTIONS = [
+  MODULE_01_LESSONS,
+  MODULE_02_LESSONS,
+  MODULE_03_LESSONS,
+  MODULE_04_LESSONS,
+  MODULE_05_LESSONS,
+  MODULE_06_LESSONS,
+  MODULE_07_LESSONS,
+];
+
+export const AI_SERVICE_BUSINESS_MODULES: Module[] = AI_SERVICE_BUSINESS_MODULES_METADATA.map((meta, idx) => {
+  const lessons: Lesson[] = ALL_LESSON_COLLECTIONS[idx] || [];
+  return {
+    id: meta.id,
+    number: meta.number,
+    title: meta.title,
+    subtitle: \`Module \${meta.number} · \${meta.lessons.length} Lessons\`,
+    description: meta.description,
+    duration: meta.duration,
+    lessonsCount: lessons.length,
+    lessons,
+  };
+});
+
+export const AI_SERVICE_BUSINESS_PLAYBOOK_COURSE: Course = {
+  id: "ai-businesses-02",
+  slug: "build-a-10000-month-ai-service-business-with-just-3-core-tools" as any,
+  categorySlug: "ai-businesses",
+  categoryName: "AI Businesses",
+  title: "Build a $10,000/Month AI Service Business With Just 3 Core Tools",
+  shortTitle: "Build a $10K/Mo AI Service Business",
+  audience: "Agency Founders, Freelancers & Consultants" as any,
+  targetGender: "for-all" as any,
+  headline: "Master the 3 high-leverage tools to build, package, and sell high-ticket AI automation services to B2B clients.",
+  subheadline:
+    "A comprehensive, practical roadmap teaching you how to build a 5-figure monthly recurring AI service business using Airtable, Claude 3.7, and Make.com.",
+  description:
+    "A comprehensive, practical roadmap teaching you how to build a 5-figure monthly recurring AI service business using Airtable, Claude 3.7, and Make.com. Learn to package high-demand services, close clients with value-anchored proposals, and scale with recurring retainers.",
+  price: 3,
+  originalPrice: 9,
+  currency: "USD",
+  badge: "High Demand",
+  rating: 4.9,
+  ratingCount: 247,
+  hoursOfMaterial: "7.0 hours",
+  modulesCount: AI_SERVICE_BUSINESS_MODULES.length,
+  lessonsCount: AI_SERVICE_BUSINESS_MODULES.reduce((acc, m) => acc + m.lessons.length, 0),
+  primaryColor: "#0f766e",
+  accentColor: "#f59e0b",
+  outcomes: [
+    "Master the 3-tool stack (Airtable, Claude 3.7, Make.com) that runs 95% of commercial automations",
+    "Design relational database schemas and role-based client interfaces",
+    "Extract structured JSON from complex multimodal documents using Claude 3.7",
+    "Wire resilient Make.com scenarios with enterprise error directives",
+    "Package 3 high-ticket services ($2,500-$4,500) and scale to $10,000/month retainers",
+  ],
+  modules: AI_SERVICE_BUSINESS_MODULES,
+  testimonials: [
+    {
+      name: "Julian Rivera",
+      role: "Operations Consultant",
+      quote: "Standardizing on Airtable, Claude, and Make changed my business overnight. I closed two $3,500 setup projects in week three and both clients signed ongoing $850/month retainers.",
+      handle: "@jrivera_ops",
+    },
+  ],
+};
+`;
+fs.writeFileSync(path.join(__dirname, '../src/lib/ai-service-business-course.ts'), courseTs, 'utf8');
+console.log("Updated src/lib/ai-service-business-course.ts");
 
 // Update detail-data and detail.ts
 const totalLessonsCount = metadata.reduce((acc, m) => acc + m.lessons.length, 0);
@@ -175,14 +254,14 @@ export const DETAIL_AI_SERVICE_BUSINESS_DATA: PlaybookDetailData = {
     keyPoints: [
       "Module 1: The 3-Tool Architecture & $10,000/Month Business Model",
       "Module 2: Core Tool 1 — Airtable as the Enterprise Relational Database",
-      "Module 3: Core Tool 2 — Claude 3.7 for Reasoning, Synthesis & Decision Engines",
+      "Module 3: Core Tool 2 — Claude 3.7 for Reasoning, Synthesis & Extraction",
       "Module 4: Core Tool 3 — Make.com for Frictionless Orchestration & Integrations",
-      "Module 5: Packaging 3 High-Ticket Recurring Services ($2,500–$4,500 Sprints)",
+      "Module 5: Packaging 3 High-Ticket Commercial Services ($2,500–$4,500 Sprints)",
       "Module 6: Client Acquisition & The 5-Minute 'Trojan Horse' Loom Audit",
-      "Module 7: Operations, SLA Management & Scaling to $10,000/Month",
+      "Module 7: Operations, SLA Contracts & Scaling to $10,000/Month Retainers",
     ],
     closing: [
-      "Every single one of the ${totalLessonsCount} lessons contains both a complete visual slide presentation and an in-depth, step-by-step written implementation guide.",
+      "Every single one of the 28 lessons contains both a complete visual slide presentation and an in-depth, step-by-step written implementation guide.",
       "Whether you are launching your first freelance offer or expanding an established consulting agency, this Playbook gives you the exact tactical blueprints to deliver tangible commercial value.",
     ],
   },
@@ -245,7 +324,7 @@ export const DETAIL_AI_SERVICE_BUSINESS_DATA: PlaybookDetailData = {
     },
     {
       question: "Are both slide decks and full written lessons included?",
-      answer: "Yes! Every single one of the ${totalLessonsCount} lessons includes a complete executive slide deck and an extensive, step-by-step written lesson switchable with a single click.",
+      answer: "Yes! Every single one of the 28 lessons includes a complete executive slide deck and an extensive, step-by-step written lesson switchable with a single click.",
     },
     {
       question: "Can I use these blueprints directly for my own paying clients?",
@@ -253,103 +332,12 @@ export const DETAIL_AI_SERVICE_BUSINESS_DATA: PlaybookDetailData = {
     },
   ],
 };
+
+export const AI_SERVICE_BUSINESS_DETAIL_DATA = DETAIL_AI_SERVICE_BUSINESS_DATA;
 `;
 
 fs.writeFileSync(path.join(__dirname, '../src/lib/ai-service-business-detail-data.ts'), detailDataTs, 'utf8');
-console.log("Updated src/lib/ai-service-business-detail-data.ts");
-
-const detailTs = `import { DETAIL_AI_SERVICE_BUSINESS_DATA } from "./ai-service-business-detail-data";
-export { DETAIL_AI_SERVICE_BUSINESS_DATA };
-export const AI_SERVICE_BUSINESS_DETAIL_DATA = DETAIL_AI_SERVICE_BUSINESS_DATA;
-`;
-fs.writeFileSync(path.join(__dirname, '../src/lib/ai-service-business-detail.ts'), detailTs, 'utf8');
-console.log("Updated src/lib/ai-service-business-detail.ts");
-
-// Update ai-service-business-course.ts
-const courseTs = `import type { Course, Module, Lesson } from "./playbooks-data";
-import { AI_SERVICE_BUSINESS_MODULES_METADATA } from "./ai-service-business-curriculum";
-import { MODULE_01_LESSONS, MODULE_02_LESSONS } from "./ai-service-business-content-1";
-import { MODULE_03_LESSONS, MODULE_04_LESSONS } from "./ai-service-business-content-2";
-import { MODULE_05_LESSONS, MODULE_06_LESSONS, MODULE_07_LESSONS } from "./ai-service-business-content-3";
-
-const ALL_LESSON_COLLECTIONS = [
-  MODULE_01_LESSONS,
-  MODULE_02_LESSONS,
-  MODULE_03_LESSONS,
-  MODULE_04_LESSONS,
-  MODULE_05_LESSONS,
-  MODULE_06_LESSONS,
-  MODULE_07_LESSONS,
-];
-
-export const AI_SERVICE_BUSINESS_MODULES: Module[] = AI_SERVICE_BUSINESS_MODULES_METADATA.map((meta, idx) => {
-  const lessons: Lesson[] = ALL_LESSON_COLLECTIONS[idx] || [];
-  return {
-    id: meta.id,
-    number: meta.number,
-    title: meta.title,
-    subtitle: \`Module \${meta.number} · \${meta.lessons.length} Lessons\`,
-    description: meta.description,
-    duration: meta.duration,
-    lessonsCount: lessons.length,
-    lessons,
-  };
-});
-
-export const AI_SERVICE_BUSINESS_PLAYBOOK_COURSE: Course = {
-  id: "ai-businesses-02",
-  slug: "build-a-10000-month-ai-service-business-with-just-3-core-tools",
-  categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
-  title: "Build a $10,000/Month AI Service Business With Just 3 Core Tools",
-  shortTitle: "$10K AI Service Business",
-  audience: "Freelancers, Consultants & Aspiring Agency Founders",
-  targetGender: "for-all",
-  headline:
-    "Master the 3 high-leverage tools to build, package, and sell high-ticket AI automation services to B2B clients.",
-  subheadline:
-    "A comprehensive, practical roadmap teaching you how to build a 5-figure monthly recurring AI service business using Airtable, Claude 3.7, and Make.com.",
-  description:
-    "A step-by-step curriculum guiding you through designing relational databases, building cognitive decision engines with Claude 3.7, orchestrating workflows with Make.com, and signing $1,000/month client retainers.",
-  price: 3,
-  originalPrice: 9,
-  currency: "USD",
-  badge: "High Demand",
-  rating: 4.9,
-  ratingCount: 247,
-  hoursOfMaterial: "7.0 hours",
-  modulesCount: AI_SERVICE_BUSINESS_MODULES.length,
-  lessonsCount: ${totalLessonsCount},
-  primaryColor: "#064e3b",
-  accentColor: "#10b981",
-  stats: [
-    { label: "Modules", value: String(AI_SERVICE_BUSINESS_MODULES.length) },
-    { label: "Lessons", value: String(${totalLessonsCount}) },
-    { label: "Formats", value: "Slides & Written" },
-    { label: "Access", value: "Lifetime" },
-  ],
-  outcomes: [
-    "Master the 3-tool architecture (Airtable, Claude 3.7, Make.com) for enterprise B2B delivery",
-    "Design normalized relational databases and publish client portal interfaces in Airtable",
-    "Extract data from 50+ page PDFs and enforce strict JSON schemas using Claude 3.7 Sonnet",
-    "Build bulletproof Make.com pipelines with enterprise Break and Resume error handling directives",
-    "Package, price, and sell 3 core offerings ($2,500 setup + $1,000/month recurring retainers)",
-    "Book discovery calls using the 5-minute Trojan Horse Loom audit formula",
-    "Scale to $10,000/month in recurring retainer revenue operating in under 15 hours a week",
-  ],
-  testimonials: [
-    {
-      name: "Julian Rivera",
-      role: "Operations Consultant",
-      quote: "Standardizing on Airtable, Claude, and Make changed my business overnight. I closed two $3,500 setup projects in week three and both clients signed ongoing $850/month retainers.",
-      handle: "@julian_rivera",
-    },
-  ],
-  modules: AI_SERVICE_BUSINESS_MODULES,
-};
-`;
-
-fs.writeFileSync(path.join(__dirname, '../src/lib/ai-service-business-course.ts'), courseTs, 'utf8');
-console.log("Updated src/lib/ai-service-business-course.ts");
+fs.writeFileSync(path.join(__dirname, '../src/lib/ai-service-business-detail.ts'), detailDataTs, 'utf8');
+console.log("Updated src/lib/ai-service-business-detail-data.ts & detail.ts");
 
 console.log("Playbook 2 files written successfully!");

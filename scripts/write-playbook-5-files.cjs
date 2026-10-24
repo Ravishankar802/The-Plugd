@@ -1,20 +1,20 @@
 const fs = require('fs');
 const path = require('path');
 const { courseTitle, courseId, courseSlug, modulesData } = require('./generate-playbook-5.cjs');
-const { createLesson } = require('./curriculum-builder-helper.cjs');
+const { createDeepLesson } = require('./curriculum-builder-helper.cjs');
 
-console.log("Writing Playbook 5 (agency-blueprint-data.ts)...");
+console.log("Writing Playbook 5 (agency-blueprint-data.ts) - 7 modules, 28 lessons...");
 
 const processedModules = modulesData.map((m) => {
   const lessons = m.lessons.map((l) => {
-    return createLesson({
+    return createDeepLesson({
       modNum: m.num,
       lesNum: l.lesNum,
       title: l.title,
       duration: l.duration,
       summary: l.summary,
-      bulletPoints: l.bulletPoints,
-      takeaway: l.takeaway,
+      bulletPointsSlide1: l.bulletPoints,
+      takeawaySlide1: l.takeaway,
       courseTitle,
       modTitle: m.title,
     });
