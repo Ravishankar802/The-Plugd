@@ -2,6 +2,51 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+    "id": "ai-businesses-01",
+    "slug": "7-ai-automations",
+    "title": "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)",
+    "headline": "Learn 7 accessible AI automation tools to save businesses time, offer simple services, and build real income streams.",
+    "description": "A practical, no-code guide to 7 accessible AI automation tools. Learn how to set up time-saving workflows, package them into valuable client services, and reach the $10,000 milestone.",
+    "categorySlug": "ai-businesses",
+    "categoryName": "AI Businesses",
+    "price": 3,
+    "originalPrice": 9,
+    "currency": "USD",
+    "modulesCount": 7,
+    "lessonsCount": 28,
+    "hoursOfMaterial": "7.0 hours",
+    "badge": "Bestseller",
+    "rating": 4.9,
+    "ratingCount": 384,
+    "href": "/7-ai-automations"
+  },
+  {
+    "id": "side-hustles-08",
+    "slug": "side-hustles",
+    "title": "10 Ways to Find Paying Customers Without Spending on Ads",
+    "headline": "Discover 10 zero-ad customer acquisition strategies to find and close paying clients for your side business.",
+    "description": "A battle-tested tactical guide to finding paying clients organically through direct outreach, community channels, content leverage, and partnerships without spending a single dollar on ads.",
+    "categorySlug": "side-hustles",
+    "categoryName": "Side Hustles",
+    "price": 3,
+    "originalPrice": 9,
+    "currency": "USD",
+    "modulesCount": 0,
+    "lessonsCount": 0,
+    "hoursOfMaterial": "",
+    "badge": "High Demand",
+    "rating": 4.9,
+    "ratingCount": 247,
+    "href": "/side-hustles"
+  }
+];
+
+/**
+ * Safely archived playbooks preserved for reference and existing student access records.
+ * Excluded from the active public catalog per catalog specification.
+ */
+export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
+  {
     id: "ai-businesses-01",
     slug: "7-ai-automations",
     title: "7 AI Automation Tools That Could Make You $10,000+",

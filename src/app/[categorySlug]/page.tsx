@@ -81,6 +81,10 @@ export default async function CategoryRoute({ params }: CategoryPageProps) {
 
   const playbooks = getPlaybooksForCategory(category.slug);
 
+  if (playbooks.length === 0) {
+    redirect("/");
+  }
+
   return (
     <CategoryPageClient
       category={category}

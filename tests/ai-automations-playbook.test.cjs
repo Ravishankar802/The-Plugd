@@ -9,7 +9,7 @@ test("1. Exact title verification in catalog and codebase", () => {
     "utf8"
   );
 
-  const exactExpectedTitle = "7 AI Automation Tools That Could Make You $10,000+";
+  const exactExpectedTitle = "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)";
 
   // Must contain exact new title
   assert.ok(
@@ -44,7 +44,7 @@ test("2. Detail view data and curriculum integrity", async () => {
     "utf8"
   );
   assert.ok(
-    detailFile.includes('title: "7 AI Automation Tools That Could Make You $10,000+"'),
+    detailFile.includes('title: "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)"'),
     "Detail data must use exact title"
   );
   assert.ok(
@@ -114,7 +114,7 @@ test("5. Detail page route and redirect exist", () => {
     "utf8"
   );
   assert.ok(detailPage.includes("AI_AUTOMATIONS_DETAIL_DATA"));
-  assert.ok(detailPage.includes("7 AI Automation Tools That Could Make You $10,000+"));
+  assert.ok(detailPage.includes("These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)"));
 });
 
 test("6. The Dating Playbook preservation", () => {

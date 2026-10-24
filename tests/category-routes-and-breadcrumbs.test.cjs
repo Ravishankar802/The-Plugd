@@ -75,37 +75,38 @@ test("2. getCategoryBySlug resolves each of the 16 category slugs and legacy ali
   assert.strictEqual(aiAlias.slug, "ai-businesses");
 });
 
-test("3. getPlaybooksForCategory returns full catalog playbooks for all 16 categories", () => {
-  const { getPlaybooksForCategory } = require("../src/lib/categories.ts");
+test("3. getPlaybooksForCategory returns playbooks for active categories and 0 for empty categories", () => {
+  const { getPlaybooksForCategory, getAllPlaybooks } = require("../src/lib/categories.ts");
+  const { ALL_PLAYBOOK_SUMMARIES, ARCHIVED_PLAYBOOK_SUMMARIES } = require("../src/lib/playbooks-catalog.ts");
 
-  let totalPlaybooks = 0;
-  for (const expected of EXPECTED_CATEGORIES) {
-    const playbooks = getPlaybooksForCategory(expected.slug);
-    assert.strictEqual(
-      playbooks.length,
-      expected.expectedCount,
-      `Category '${expected.slug}' must contain ${expected.expectedCount} playbooks, but got ${playbooks.length}`
-    );
-    totalPlaybooks += playbooks.length;
-  }
+  assert.strictEqual(ALL_PLAYBOOK_SUMMARIES.length, 2, "Active public catalog must contain exactly 2 playbooks");
+  assert.strictEqual(getAllPlaybooks().length, 2, "getAllPlaybooks() must return exactly 2 playbooks");
+  assert.ok(ARCHIVED_PLAYBOOK_SUMMARIES.length >= 300, "ARCHIVED_PLAYBOOK_SUMMARIES preserves archived playbooks");
 
-  assert.strictEqual(totalPlaybooks, 321, "Total playbooks across 16 categories must be 321");
+  const aiPlaybooks = getPlaybooksForCategory("ai-businesses");
+  assert.strictEqual(aiPlaybooks.length, 1, "AI Businesses category has exactly 1 playbook");
+  assert.strictEqual(aiPlaybooks[0].title, "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)");
+
+  const sideHustlesPlaybooks = getPlaybooksForCategory("side-hustles");
+  assert.strictEqual(sideHustlesPlaybooks.length, 1, "Side Hustles category has exactly 1 playbook");
+  assert.strictEqual(sideHustlesPlaybooks[0].title, "10 Ways to Find Paying Customers Without Spending on Ads");
+
+  const ecommercePlaybooks = getPlaybooksForCategory("e-commerce");
+  assert.strictEqual(ecommercePlaybooks.length, 0, "Inactive categories return 0 playbooks");
 });
 
-test("4. CATEGORY_CHIPS contains All + 16 category links with dedicated URLs", () => {
-  const { CATEGORY_CHIPS } = require("../src/components/CategoryChipsBar.tsx");
+test("4. CATEGORY_CHIPS contains All + active categories (AI Businesses, Side Hustles)", () => {
+  const { CATEGORY_CHIPS, ALL_CATEGORY_CHIPS } = require("../src/components/CategoryChipsBar.tsx");
 
-  assert.strictEqual(CATEGORY_CHIPS.length, 17, "Must have 17 chips (All + 16 categories)");
+  assert.strictEqual(CATEGORY_CHIPS.length, 3, "Must have exactly 3 active chips (All, AI Businesses, Side Hustles)");
   assert.strictEqual(CATEGORY_CHIPS[0].slug, "all");
   assert.strictEqual(CATEGORY_CHIPS[0].href, "/");
+  assert.strictEqual(CATEGORY_CHIPS[1].slug, "ai-businesses");
+  assert.strictEqual(CATEGORY_CHIPS[1].href, "/ai-businesses");
+  assert.strictEqual(CATEGORY_CHIPS[2].slug, "side-hustles");
+  assert.strictEqual(CATEGORY_CHIPS[2].href, "/side-hustles");
 
-  for (let i = 0; i < EXPECTED_CATEGORIES.length; i++) {
-    const expected = EXPECTED_CATEGORIES[i];
-    const chip = CATEGORY_CHIPS[i + 1];
-    assert.strictEqual(chip.label, expected.name);
-    assert.strictEqual(chip.slug, expected.slug);
-    assert.strictEqual(chip.href, `/${expected.slug}`);
-  }
+  assert.ok(ALL_CATEGORY_CHIPS.length >= 16, "ALL_CATEGORY_CHIPS preserves full category definitions");
 });
 
 test("5. Category Page and components adhere to UI constraints (No 'Reset filters', No 'Showing ... in ...', Has Breadcrumbs)", () => {

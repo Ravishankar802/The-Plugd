@@ -4,7 +4,7 @@ import { AI_AUTOMATIONS_MODULES_METADATA } from "./ai-automations-curriculum";
 export const DETAIL_AI_AUTOMATIONS_DATA: PlaybookDetailData = {
   id: "ai-businesses-01",
   slug: "7-ai-automations",
-  title: "7 AI Automation Tools That Could Make You $10,000+",
+  title: "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)",
   headline:
     "Learn 7 accessible AI automation tools to save businesses time, offer simple services, and build real income streams.",
   description:

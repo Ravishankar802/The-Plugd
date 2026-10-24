@@ -18,53 +18,38 @@ require.extensions[".ts"] = function (module, filename) {
   module._compile(result.outputText, filename);
 };
 
-test("1. The original The Dating Playbook is restored in the catalog", () => {
+test("1. The active catalog contains exactly 2 playbooks and excludes The Dating Playbook", () => {
   const { getAllPlaybooks, DATING_PLAYBOOK_SUMMARY } = require("../src/lib/categories.ts");
   const playbooks = getAllPlaybooks();
 
-  const datingPlaybook = playbooks.find((p) => p.slug === "men" || p.id === "dating-playbook");
-  assert.ok(datingPlaybook, "The Dating Playbook must be present in PLAYBOOKS");
-  assert.strictEqual(datingPlaybook.title, "The Dating Playbook");
-  assert.strictEqual(datingPlaybook.categorySlug, "dating");
-  assert.strictEqual(datingPlaybook.price, 3);
-  assert.strictEqual(datingPlaybook.href, "/men");
-  assert.strictEqual(datingPlaybook.modulesCount, 10);
-  assert.strictEqual(datingPlaybook.lessonsCount, 69);
-  assert.strictEqual(datingPlaybook.badge, "Bestseller");
+  assert.strictEqual(playbooks.length, 2, "Active public catalog must contain exactly 2 playbooks");
+  const datingInCatalog = playbooks.find((p) => p.slug === "men" || p.id === "dating-playbook");
+  assert.strictEqual(datingInCatalog, undefined, "The Dating Playbook must NOT be in active public catalog");
+
+  // But DATING_PLAYBOOK_SUMMARY itself is preserved in code
+  assert.strictEqual(DATING_PLAYBOOK_SUMMARY.title, "The Dating Playbook");
+  assert.strictEqual(DATING_PLAYBOOK_SUMMARY.modulesCount, 10);
+  assert.strictEqual(DATING_PLAYBOOK_SUMMARY.lessonsCount, 69);
 });
 
-test("2. The Dating category contains The Dating Playbook plus all 20 new Dating Playbooks", () => {
+test("2. The Dating category in public catalog returns 0 playbooks per catalog reduction", () => {
   const { getPlaybooksForCategory } = require("../src/lib/categories.ts");
   const datingPlaybooks = getPlaybooksForCategory("dating");
 
-  assert.strictEqual(datingPlaybooks.length, 21, "Dating category must contain exactly 21 playbooks (1 original + 20 new)");
-
-  // 1st item is the flagship The Dating Playbook
-  assert.strictEqual(datingPlaybooks[0].slug, "men");
-  assert.strictEqual(datingPlaybooks[0].title, "The Dating Playbook");
-  assert.strictEqual(datingPlaybooks[0].price, 3);
-
-  // Subsequent 20 items are dating-01 through dating-20
-  for (let i = 1; i <= 20; i++) {
-    const numStr = String(i).padStart(2, "0");
-    const expectedId = `dating-${numStr}`;
-    const p = datingPlaybooks[i];
-    assert.strictEqual(p.id, expectedId, `Expected ${expectedId} at position ${i}`);
-    assert.strictEqual(p.categorySlug, "dating");
-  }
+  assert.strictEqual(datingPlaybooks.length, 0, "Dating category must contain 0 active playbooks");
 });
 
-test("3. Total catalog count is 321 (320 playbooks across 16 categories + 1 restored Dating Playbook)", () => {
+test("3. Total active catalog count is exactly 2 playbooks with unique IDs and slugs", () => {
   const { getAllPlaybooks } = require("../src/lib/categories.ts");
   const playbooks = getAllPlaybooks();
-  assert.strictEqual(playbooks.length, 321);
+  assert.strictEqual(playbooks.length, 2, "Must contain exactly 2 playbooks");
 
   // Verify no duplicate IDs or slugs
   const idSet = new Set();
   const slugSet = new Set();
   for (const p of playbooks) {
-    assert.ok(!idSet.has(p.id), `Duplicate playbook ID found: ${p.id}`);
-    assert.ok(!slugSet.has(p.slug), `Duplicate playbook slug found: ${p.slug}`);
+    assert.ok(!idSet.has(p.id), `Duplicate ID ${p.id}`);
+    assert.ok(!slugSet.has(p.slug), `Duplicate slug ${p.slug}`);
     idSet.add(p.id);
     slugSet.add(p.slug);
   }

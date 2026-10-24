@@ -30,7 +30,7 @@ export interface CategoryChipItem {
   icon: LucideIcon;
 }
 
-export const CATEGORY_CHIPS: CategoryChipItem[] = [
+export const ALL_CATEGORY_CHIPS: CategoryChipItem[] = [
   { label: "All", slug: "all", href: "/", icon: LayoutGrid },
   { label: "AI Businesses", slug: "ai-businesses", href: "/ai-businesses", icon: Bot },
   { label: "E-commerce", slug: "e-commerce", href: "/e-commerce", icon: ShoppingBag },
@@ -48,6 +48,16 @@ export const CATEGORY_CHIPS: CategoryChipItem[] = [
   { label: "Digital Publishing", slug: "digital-publishing", href: "/digital-publishing", icon: BookOpen },
   { label: "Newsletter Business", slug: "newsletter-business", href: "/newsletter-business", icon: Mail },
   { label: "Dating", slug: "dating", href: "/dating", icon: Heart },
+];
+
+/**
+ * Active category chips for the public catalog.
+ * Only displays categories with active, available Playbooks.
+ */
+export const CATEGORY_CHIPS: CategoryChipItem[] = [
+  { label: "All", slug: "all", href: "/", icon: LayoutGrid },
+  { label: "AI Businesses", slug: "ai-businesses", href: "/ai-businesses", icon: Bot },
+  { label: "Side Hustles", slug: "side-hustles", href: "/side-hustles", icon: Flame },
 ];
 
 interface CategoryChipsBarProps {
