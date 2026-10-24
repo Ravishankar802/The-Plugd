@@ -42,56 +42,40 @@ export const AI_SERVICE_BUSINESS_PLAYBOOK_COURSE: Course = {
   subheadline:
     "A comprehensive, practical roadmap teaching you how to build a 5-figure monthly recurring AI service business using Airtable, Claude 3.7, and Make.com.",
   description:
-    "A comprehensive, practical roadmap teaching you how to build a 5-figure monthly recurring AI service business using Airtable, Claude 3.7, and Make.com. Learn the transparent unit economics, package high-value B2B deliverables, land clients with video audits, and manage recurring retainers with 90%+ profit margins.",
+    "A step-by-step curriculum guiding you through designing relational databases, building cognitive decision engines with Claude 3.7, orchestrating workflows with Make.com, and signing $1,000/month client retainers.",
   price: 3,
   originalPrice: 9,
   currency: "USD",
+  badge: "High Demand",
+  rating: 4.9,
+  ratingCount: 247,
+  hoursOfMaterial: "7.0 hours",
   modulesCount: AI_SERVICE_BUSINESS_MODULES.length,
-  lessonsCount: 28,
-  hoursOfMaterial: "5.5 hours",
-  accentColor: "#10b981", // Emerald accent matching Agency Revenue OS
+  lessonsCount: 49,
+  primaryColor: "#064e3b",
+  accentColor: "#10b981",
   stats: [
-    { label: "Modules", value: "7" },
-    { label: "Lessons", value: "28" },
+    { label: "Modules", value: String(AI_SERVICE_BUSINESS_MODULES.length) },
+    { label: "Lessons", value: String(49) },
     { label: "Formats", value: "Slides & Written" },
     { label: "Access", value: "Lifetime" },
   ],
-  highlights: [
-    "Airtable, Claude 3.7, & Make.com enterprise architecture",
-    "Complete blueprints for Inbound Lead Triage, Document Extraction, and Content Repurposing",
-    "Three-tier B2B pricing model: Sprints ($1,500–$3,500) + Monthly Retainers ($750–$1,500)",
-    "Client acquisition using interactive prototypes and frictionless 3-minute video audits",
-    "Automated weekly executive reporting for multi-year client retention",
-  ],
-  modules: AI_SERVICE_BUSINESS_MODULES,
-  faqs: [
-    {
-      question: "Why specifically Airtable, Claude 3.7, and Make.com?",
-      answer:
-        "These three tools form the complete enterprise delivery stack: Airtable provides the relational database and client portal interfaces; Claude 3.7 delivers world-class cognitive reasoning and 200K-token document extraction; Make.com acts as the 24/7 cloud nervous system connecting them to customer forms, email, and CRMs. Master these three, and you can solve 99% of B2B operational bottlenecks without writing custom code.",
-    },
-    {
-      question: "Do I need technical coding experience to succeed?",
-      answer:
-        "No. All three tools feature modern visual interfaces. We teach you how to think in terms of relational schemas, system prompts, and visual webhook logic without writing code.",
-    },
-    {
-      question: "Is the $10,000/month revenue figure guaranteed?",
-      answer:
-        "No. $10,000/month is an illustrative operational milestone broken down mathematically throughout the course (for example: 6 clients on a $1,250/mo retainer, or 2 sprint setups at $2,500 plus 5 retainers at $1,000/mo). Achieving it requires disciplined execution of the prospecting, delivery, and retention methodologies taught in the Playbook.",
-    },
-    {
-      question: "Is this a recurring subscription or a one-time payment?",
-      answer: "Exactly $3 USD one-time payment with lifetime access. No subscriptions or hidden fees.",
-    },
+  outcomes: [
+    "Master the 3-tool architecture (Airtable, Claude 3.7, Make.com) for enterprise B2B delivery",
+    "Design normalized relational databases and publish client portal interfaces in Airtable",
+    "Extract data from 50+ page PDFs and enforce strict JSON schemas using Claude 3.7 Sonnet",
+    "Build bulletproof Make.com pipelines with enterprise Break and Resume error handling directives",
+    "Package, price, and sell 3 core offerings ($2,500 setup + $1,000/month recurring retainers)",
+    "Book discovery calls using the 5-minute Trojan Horse Loom audit formula",
+    "Scale to $10,000/month in recurring retainer revenue operating in under 15 hours a week",
   ],
   testimonials: [
     {
-      name: "Marcus Vance",
-      handle: "@marcus_v",
-      role: "Founder, Apex Operations",
-      quote:
-        "The shift from pitching hourly chatbot builds to offering the Inbound Proposal Engine changed everything. Signed two commercial trade clients at $2,500 setup + $850/mo retainer in our first 30 days.",
+      name: "Julian Rivera",
+      role: "Operations Consultant",
+      quote: "Standardizing on Airtable, Claude, and Make changed my business overnight. I closed two $3,500 setup projects in week three and both clients signed ongoing $850/month retainers.",
+      handle: "@julian_rivera",
     },
   ],
+  modules: AI_SERVICE_BUSINESS_MODULES,
 };

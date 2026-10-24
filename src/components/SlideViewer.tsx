@@ -19,7 +19,7 @@ import {
   Check,
   LogOut,
 } from "lucide-react";
-import { Slide, Lesson, Module, Course } from "@/lib/playbooks-data";
+import { Slide, Lesson, Module, Course, getPlaybookOverviewUrl } from "@/lib/playbooks-data";
 import WrittenLessonViewer from "@/components/WrittenLessonViewer";
 import { performLogout } from "@/lib/auth-client";
 import { getTemplateForPlaybook } from "@/lib/slide-templates/registry";
@@ -120,7 +120,7 @@ export default function SlideViewer({
       setIsNavigating(true);
       setIsModuleDropdownOpen(false);
       setIsLessonDropdownOpen(false);
-      router.push(`/learn/${course.slug}`);
+      router.push(getPlaybookOverviewUrl(course.slug));
     }
   }, [currentIndex, totalSlides, nextLesson, course.slug, goToSlide, router, isNavigating, viewFormat]);
 
@@ -192,7 +192,7 @@ export default function SlideViewer({
         if (isFullscreen) {
           setIsFullscreen(false);
         } else {
-          router.push(`/learn/${course.slug}`);
+          router.push(getPlaybookOverviewUrl(course.slug));
         }
       }
     };
@@ -374,7 +374,7 @@ export default function SlideViewer({
         {/* Left: Syllabus Navigation & Module/Lesson Selectors */}
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <Link
-            href={`/learn/${course.slug}`}
+            href={getPlaybookOverviewUrl(course.slug)}
             className={`flex items-center gap-1.5 rounded-full border px-2.5 sm:px-3.5 py-1.5 text-xs font-semibold transition-colors shadow-xs shrink-0 ${
               isModule1
                 ? "border-[#e7e5e4] bg-white text-[#57534e] hover:border-[#1c1917] hover:text-[#1c1917]"
@@ -632,31 +632,6 @@ export default function SlideViewer({
               <BookOpen className="h-3.5 w-3.5" />
               <span className="hidden sm:inline">Written Lesson</span>
             </button>
-          </div>
-
-          {/* Slide Position Counter */}
-          <div className="hidden sm:flex items-center gap-3">
-            <span
-              className={`font-mono text-xs font-semibold ${
-                isModule1 ? "text-[#57534e]" : "text-neutral-300"
-              }`}
-            >
-              {currentIndex + 1}{" "}
-              <span className={isModule1 ? "text-[#a8a29e]" : "text-neutral-600 font-normal"}>
-                /
-              </span>{" "}
-              {totalSlides}
-            </span>
-            <div
-              className={`h-1.5 w-16 sm:w-24 rounded-full overflow-hidden ${
-                isModule1 ? "bg-[#e7e5e4]" : "bg-neutral-800"
-              }`}
-            >
-              <div
-                className="h-full transition-all duration-300 bg-[#2563eb]"
-                style={{ width: `${((currentIndex + 1) / totalSlides) * 100}%` }}
-              />
-            </div>
           </div>
         </div>
 
@@ -1339,7 +1314,7 @@ export default function SlideViewer({
                 </button>
               ) : (
                 <Link
-                  href={`/learn/${course.slug}`}
+                  href={getPlaybookOverviewUrl(course.slug)}
                   className="inline-flex items-center gap-2 rounded-2xl bg-[#1c1917] px-8 py-4 text-sm font-bold text-white shadow-md transition-transform hover:scale-105"
                 >
                   <span>Back to Playbook</span>

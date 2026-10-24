@@ -130,6 +130,40 @@ When provided with only a Playbook title (for example: `Build a Micro-SaaS With 
 
 ---
 
+## 9. Mandatory Curriculum Structure Standard (7–10 Modules, 7–10 Lessons/Module)
+
+Every current and future Playbook across the entire catalog must strictly adhere to the following mandatory structural constraints:
+
+| Requirement | Mandatory Rule |
+|---|---|
+| **Minimum modules** | 7 |
+| **Preferred modules** | 7–8 |
+| **Maximum modules** | 10 |
+| **Minimum lessons per module** | 7 |
+| **Preferred lessons per module** | 7–8 |
+| **Maximum lessons per module** | 10 |
+
+### Core Curriculum Rules:
+1. **Hard Structural Constraints:** Every Playbook must contain **7–10 modules**, and every module must contain **7–10 lessons** (minimum 49 lessons per Playbook, e.g. 7×7=49 or 8×7=56).
+2. **Substantive Dual-Format Content:** Every lesson must contain:
+   - Full presentation slides (`slides` array with comprehensive title, subtitle, 4 detailed educational bullet points, and key takeaway).
+   - In-depth written lesson (`writtenLesson` string of substantive length >300 characters, detailing architecture, implementation steps, realistic examples, templates, and checklists).
+3. **Zero Placeholders:** No empty, placeholder, or stub lessons are permitted. Lessons must never contain "coming soon" or duplicated content simply to meet counts.
+4. **Dynamic Metadata:** Module and lesson counts displayed in UI headers, catalog summaries, and detail pages must always be dynamically calculated from the verified curriculum.
+5. **Programmatic Validation:** All Playbooks must pass `validateCurriculumStructure()` before publication.
+
+---
+
+## 10. Back to Playbook Overview Navigation & Clean Presentation UI
+
+### Core Rules for Presentation UI and Overview Navigation:
+1. **Back to Playbook Target:** The **Back to Playbook** button must always return directly to the Playbook's canonical overview page (`/${courseSlug}` or `/dating-playbook`), featuring breadcrumbs, ratings, creator info, "What you'll learn", and purchase/start access. It must never navigate to `/learn/${courseSlug}` or separate syllabus/start pages.
+2. **Clean Header (No Fraction or Progress Bar):** Presentation player headers must not display lesson fractions (e.g. `1 / 1`) or horizontal progress bars beside them. The header remains dedicated to Back to Playbook, module selector, lesson selector, format toggle, fullscreen, and logout.
+3. **Prohibited Technical UI Labels:** Presentation views must never render extraneous artificial labels or badges such as `EXECUTION NODE 1 OF 1`, `TOOL SCHEMA: DETERMINISTIC`, `ORCHESTRATOR: ACTIVE`, or `AUTONOMOUS AGENT STUDIO`.
+4. **Footer Lesson Dots:** Slide footers must feature dynamic module lesson dots representing every lesson in the current module, with the active lesson enlarged and highlighted.
+
+---
+
 ## Final Rule
 
 **One canonical blueprint. One persistent registry. Hundreds of unique, complete Playbooks with 100% distinct PPT slide designs.**

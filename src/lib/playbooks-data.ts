@@ -480,3 +480,13 @@ export function getPreviousLesson(
 
   return null;
 }
+
+export function getPlaybookOverviewUrl(courseSlug: string = "men"): string {
+  const resolvedSlug = COURSES[courseSlug]?.slug || courseSlug;
+  if (resolvedSlug === "men" || resolvedSlug === "women" || resolvedSlug === "dating-playbook") {
+    return "/dating-playbook";
+  }
+  return `/${resolvedSlug}`;
+}
+
+export { validateCurriculumStructure } from "./curriculum-validator";

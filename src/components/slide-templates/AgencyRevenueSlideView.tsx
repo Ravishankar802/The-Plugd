@@ -24,7 +24,7 @@ import {
   DollarSign,
   TrendingUp,
 } from "lucide-react";
-import { Slide, Lesson, Module, Course } from "@/lib/playbooks-data";
+import { Slide, Lesson, Module, Course, getPlaybookOverviewUrl } from "@/lib/playbooks-data";
 import WrittenLessonViewer from "@/components/WrittenLessonViewer";
 import { performLogout } from "@/lib/auth-client";
 
@@ -103,7 +103,7 @@ export default function AgencyRevenueSlideView({
       setIsNavigating(true);
       setIsModuleDropdownOpen(false);
       setIsLessonDropdownOpen(false);
-      router.push(`/learn/${course.slug}`);
+      router.push(getPlaybookOverviewUrl(course.slug));
     }
   }, [currentIndex, totalSlides, nextLesson, course.slug, goToSlide, router, isNavigating, viewFormat]);
 
@@ -230,7 +230,7 @@ export default function AgencyRevenueSlideView({
         {/* Left: Syllabus Navigation & Module/Lesson Selectors */}
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <Link
-            href={`/learn/${course.slug}`}
+            href={getPlaybookOverviewUrl(course.slug)}
             className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/40 px-2.5 sm:px-3.5 py-1.5 text-xs font-semibold text-emerald-400 hover:bg-emerald-900/50 hover:text-emerald-300 transition-colors shadow-xs shrink-0"
           >
             <BookOpen className="h-3.5 w-3.5" />
@@ -343,8 +343,8 @@ export default function AgencyRevenueSlideView({
           </div>
         </div>
 
-        {/* Center: Format Selector & Slide Counter */}
-        <div className="flex items-center gap-4">
+        {/* Center: Format Selector */}
+        <div className="flex items-center gap-2">
           <div className="flex items-center rounded-full border border-slate-800 bg-slate-900/90 p-0.5 shadow-xs">
             <button
               type="button"
@@ -362,18 +362,6 @@ export default function AgencyRevenueSlideView({
               <BookOpen className="h-3.5 w-3.5" />
               <span className="hidden sm:inline">Written Lesson</span>
             </button>
-          </div>
-
-          <div className="hidden sm:flex items-center gap-3">
-            <span className="font-mono text-xs font-semibold text-slate-300">
-              {currentIndex + 1} <span className="text-slate-600">/</span> {totalSlides}
-            </span>
-            <div className="h-1.5 w-16 sm:w-24 rounded-full overflow-hidden bg-slate-800">
-              <div
-                className="h-full transition-all duration-300 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]"
-                style={{ width: `${((currentIndex + 1) / totalSlides) * 100}%` }}
-              />
-            </div>
           </div>
         </div>
 

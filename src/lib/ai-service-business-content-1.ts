@@ -1,4 +1,4 @@
-import { Lesson } from "@/lib/playbooks-data";
+import { Lesson, Module } from "@/lib/playbooks-data";
 
 export interface ExtendedLesson extends Lesson {
   learningObjective: string;
@@ -6,1140 +6,421 @@ export interface ExtendedLesson extends Lesson {
   takeaway: string;
 }
 
-// =========================================================================
-// MODULE 01: The $10,000/Month Business Model & Unit Economics
-// =========================================================================
+// ==========================================
+// MODULE 01: The 3-Tool Architecture & $10,000/Month Business Model
+// ==========================================
 export const MODULE_01_LESSONS: ExtendedLesson[] = [
   {
-    id: "01-1",
-    number: "1.1",
-    title: "The $10K MRR Math: Why 5–8 High-Ticket Retainers Beat 100 Cheap Micro-Gigs",
-    duration: "11 min",
-    summary:
-      "Demystify the $10,000 monthly revenue target with transparent unit economics. Learn why servicing 5 to 8 B2B clients on predictable retainers is vastly more sustainable than chasing hundreds of low-margin gigs.",
-    learningObjective:
-      "Understand the mathematical models to hit $10,000/month in recurring revenue, analyze capacity constraints, and identify the high-ticket retainer advantage.",
-    takeaway:
-      "Reaching $10,000/month does not require thousands of customers. It requires solving high-value operational headaches for 5 to 8 clients who happily pay $1,000 to $2,000 every month.",
-    slides: [
+    "id": "01-1",
+    "number": "1.1",
+    "title": "Why 3 Tools Outperform Complex 20-App Software Stacks",
+    "duration": "15m",
+    "summary": "Discover how mastering Airtable, Claude 3.7, and Make.com provides 100% of the leverage needed to deliver high-ticket enterprise workflows.",
+    "slides": [
       {
-        id: "s-0101-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "STAGE 01 · UNIT ECONOMICS",
-        headline: "THE $10,000/MONTH REVENUE MATHEMATICS",
-        subheadline: "Why 5 to 8 high-ticket B2B retainers create a sustainable, scalable AI service firm without burning out.",
-      },
-      {
-        id: "s-0101-2",
-        order: 2,
-        type: "BIG_STATEMENT",
-        headline: "$10,000/month is not a lottery ticket. It is an operational equation: 6 clients paying $1,500/month, or 8 clients paying $1,250/month.",
-        subheadline: "When you replace erratic hourly freelance gigs with structured recurring systems, hitting 5-figure monthly revenues becomes an engineering problem.",
-      },
-      {
-        id: "s-0101-3",
-        order: 3,
-        type: "FRAMEWORK",
-        headline: "Three Realistic Paths to $10,000/Month",
-        subheadline: "Choose the pricing architecture that aligns with your delivery speed and client niche.",
-        pillars: [
-          {
-            badge: "MODEL A · RETAINER HEAVY",
-            title: "The Retainer Backbone",
-            description: "8 B2B clients on a $1,250/mo continuous optimization retainer. Predictable recurring cash flow with minimal sales churn.",
-          },
-          {
-            badge: "MODEL B · HYBRID ENGINE",
-            title: "Sprint + Retainer",
-            description: "2 new sprint builds at $2,500 each ($5,000) + 5 recurring management retainers at $1,000/mo ($5,000) = $10,000/mo.",
-          },
-          {
-            badge: "MODEL C · HIGH-TICKET PARTNER",
-            title: "Full Operations Hub",
-            description: "4 mid-sized clients at $2,500/mo acting as their complete AI & automation department. Ultra-low client count, high intimacy.",
-          },
+        "id": "s-011-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 01 · LESSON 1.1",
+        "headline": "Why 3 Tools Outperform Complex 20-App Software Stacks",
+        "subheadline": "Discover how mastering Airtable, Claude 3.7, and Make.com provides 100% of the leverage needed to deliver high-ticket enterprise workflows.",
+        "title": "Why 3 Tools Outperform Complex 20-App Software Stacks",
+        "subtitle": "Discover how mastering Airtable, Claude 3.7, and Make.com provides 100% of the leverage needed to deliver high-ticket enterprise workflows.",
+        "bulletPoints": [
+          "The Tool Overload Trap: Why novice agency founders drown in 20 disparate tools while elite operators standardize on 3 core pillars.",
+          "The Perfect Division of Labor: Airtable manages state and client interfaces; Claude 3.7 provides cognitive reasoning; Make.com handles orchestration.",
+          "Frictionless Maintenance: Fewer software dependencies mean near-zero breaking changes across client production accounts.",
+          "Speed to Market: Deploying complete enterprise systems in 72 hours instead of spending months wrestling with custom code."
         ],
-      },
-      {
-        id: "s-0101-4",
-        order: 4,
-        type: "COMPARISON",
-        headline: "The Fiverr Trap vs The B2B System Partner",
-        comparison: {
-          leftTitle: "The Low-Margin Commodity Trap",
-          leftItems: [
-            "Chasing 50-100 clients paying $50 to $100 per gig",
-            "Competing on price against global offshore freelancers",
-            "Constant client churn, no recurring monthly revenue",
-            "Working 70+ hours a week managing angry micro-buyers",
-          ],
-          rightTitle: "The B2B Systems Partner",
-          rightItems: [
-            "Partnering with 5-8 established companies on monthly retainers",
-            "Valued on ROI: saving 20-40 hours of payroll every single week",
-            "Predictable, compounding monthly revenue via automated systems",
-            "Delivering high impact in 15-20 focused hours per week",
-          ],
-        },
-      },
-      {
-        id: "s-0101-5",
-        order: 5,
-        type: "CHECKLIST",
-        headline: "The $10K Solo Delivery Feasibility Audit",
-        subheadline: "Ensure your target model can be delivered by 1 person without hiring subcontractors.",
-        checklist: [
-          { label: "Target client revenue exceeds $500,000 annually", passed: true, note: "A $1,500/mo investment is less than 3% of their operating costs" },
-          { label: "Delivered workflows run autonomously in cloud systems", passed: true, note: "Airtable + Make do not need manual execution once built" },
-          { label: "Monthly maintenance requires < 2.5 hours per client", passed: true, note: "8 clients require only 20 hours/month of recurring care" },
-          { label: "Gross profit margins remain above 85%", passed: true, note: "Cloud tool costs scale negligibly compared to service fees" },
-        ],
-      },
-      {
-        id: "s-0101-6",
-        order: 6,
-        type: "EXERCISE",
-        headline: "Action Sprint: Calculate Your Personal $10K Target Matrix",
-        exercise: {
-          title: "Revenue & Workload Capacity Modeling",
-          timeframe: "30 Minutes",
-          objective: "Map out your exact client count, setup pricing, and monthly retainer thresholds.",
-          steps: [
-            "Select whether Model A (8 clients @ $1,250/mo) or Model B (2 setups @ $2,500 + 5 retainers @ $1,000) matches your capacity.",
-            "Calculate your maximum client capacity based on dedicating 2.5 hours/week per client.",
-            "Write down your target minimum contract value ($1,000/mo or $2,500 setup) so you never accept underpriced work.",
-          ],
-        },
-      },
-      {
-        id: "s-0101-7",
-        order: 7,
-        type: "RECAP",
-        headline: "Executive Summary: $10K Unit Economics",
-        recapPoints: [
-          "$10,000/month is achieved through client density, not volume. You only need 5 to 8 clients.",
-          "B2B clients measure price against employee salaries ($4,000+/mo); a $1,500/mo retainer is a bargain if you eliminate 30 hours of labor.",
-          "By building on Airtable and Make.com, your deliverables work 24/7 without requiring your physical presence.",
-        ],
-      },
-      {
-        id: "s-0101-8",
-        order: 8,
-        type: "CHAPTER_END",
-        headline: "Lesson 1.1 Complete",
-        subheadline: "Next up: Turning chaotic, custom client requests into a repeatable 'Service-as-a-System'.",
-      },
+        "takeaway": "Mastery of 3 deep tools beats surface familiarity with 20. Simplicity in architecture delivers high reliability and 85%+ profit margins."
+      }
     ],
-    writtenLesson: `
-# The $10K MRR Math: Why 5–8 High-Ticket Retainers Beat 100 Cheap Micro-Gigs
-
-Every beginner entering the AI and automation space makes the exact same mistake: they open an account on Fiverr or Upwork, list "I will build a ChatGPT bot for $50," and find themselves trapped in a race to the bottom.
-
-They work 60 hours a week, fight over clients who demand endless revisions for twenty dollars, and burn out before making their first thousand dollars.
-
-In this lesson, we break down the reality of how a solo operator builds a **$10,000/month AI service firm** using predictable unit economics and corporate B2B retainers.
-
----
-
-## 1. The Mathematical Reality of $10,000/Month
-
-Let's look at the mathematics behind two contrasting business models:
-
-| Metric | Commodity Micro-Gigs | B2B Systems Partner |
-| :--- | :--- | :--- |
-| **Average Deal Size** | $100 one-off | $1,500/mo retainer |
-| **Clients Needed for $10,000** | 100 new clients every month | **6 to 8 recurring clients** |
-| **Time Spent Prospecting** | 80% of your time | 15% of your time |
-| **Monthly Revenue Predictability** | Starts at $0 on the 1st of every month | Recurring auto-debits |
-| **Client Mindset** | Price-sensitive micro-buyers | ROI-driven B2B business owners |
-
-When you target established businesses doing $500,000 to $5,000,000 in annual revenue, paying **$1,500/month** for a reliable operational system is negligible. 
-
-Consider this: hiring a junior administrative assistant in North America or Western Europe costs between **$3,500 and $4,500 per month** (plus taxes, benefits, and management overhead). If your automated system saves their senior staff 25 hours a week, you are generating over $5,000/month in net economic value. Charging $1,500/month represents an immediate 3x return on their investment.
-
----
-
-## 2. The Three Proven Pricing Architectures
-
-To build toward $10,000/month, you have three viable configurations:
-
-### Path A: The Pure Retainer Model (Most Predictable)
-- **Structure:** 8 clients paying **$1,250/month** on continuous maintenance, optimization, and prompt updates.
-- **Monthly Revenue:** $10,000 MRR (Monthly Recurring Revenue).
-- **Workload:** ~20 hours per week (2.5 hours per client per week).
-- **Best for:** Founders who prioritize low stress, predictable cash flow, and steady relationships.
-
-### Path B: The Hybrid Engine (Fastest to Cash)
-- **Structure:** 2 new implementation sprints at **$2,500 each** ($5,000) + 5 existing clients on **$1,000/month** retainers ($5,000).
-- **Monthly Revenue:** $10,000/month.
-- **Workload:** ~25 hours per week (15 hours building new sprints, 10 hours maintaining retainers).
-- **Best for:** Founders who enjoy architecting new systems and want immediate upfront project capital.
-
-### Path C: The High-Ticket Operational Partner (Lowest Client Count)
-- **Structure:** 4 mid-market clients paying **$2,500/month** to act as their dedicated fractional AI Operations Director.
-- **Monthly Revenue:** $10,000/month.
-- **Workload:** ~24 hours per week (6 hours per client per week).
-- **Best for:** Founders with strong communication skills who want deep strategic involvement with a handful of executive clients.
-
----
-
-## 3. The Unit Economics of a Solo AI Firm
-
-Here is what your actual profit and loss statement looks like at $10,000/month with the 3 Core Tools:
-
-\`\`\`
-Monthly Gross Revenue:         $10,000.00
-Software Stack Expenses:
-  - Airtable Team Plan:        -$   20.00
-  - Claude Pro / API Tokens:   -$   35.00
-  - Make.com Core/Pro Plan:    -$   29.00
-  - Google Workspace / Domain: -$   12.00
------------------------------------------
-Total Monthly Operating Cost:  -$   96.00
-Net Monthly Profit:             $ 9,904.00 (99% Net Margin)
-\`\`\`
-
-Notice the extraordinary leverage: because you build cloud systems that run on client accounts or lightweight API keys, your margins remain near 90%+. You do not need employees, office space, or costly infrastructure.
-
----
-
-## Action Task
-Write down which pricing configuration matches your personal working style (Path A, B, or C). Set your absolute minimum project threshold to **$1,000**. From this moment forward, you will never quote a project under four figures.
-    `,
+    "writtenLesson": "# 1.1 Why 3 Tools Outperform Complex 20-App Software Stacks\n\n> **Module 01: The 3-Tool Architecture & $10,000/Month Business Model**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nDiscover how mastering Airtable, Claude 3.7, and Make.com provides 100% of the leverage needed to deliver high-ticket enterprise workflows.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (The Tool Overload Trap):** Why novice agency founders drown in 20 disparate tools while elite operators standardize on 3 core pillars.\n\n- **Pillar 2 (The Perfect Division of Labor):** Airtable manages state and client interfaces; Claude 3.7 provides cognitive reasoning; Make.com handles orchestration.\n\n- **Pillar 3 (Frictionless Maintenance):** Fewer software dependencies mean near-zero breaking changes across client production accounts.\n\n- **Pillar 4 (Speed to Market):** Deploying complete enterprise systems in 72 hours instead of spending months wrestling with custom code.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** Mastery of 3 deep tools beats surface familiarity with 20. Simplicity in architecture delivers high reliability and 85%+ profit margins.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - Why 3 Tools Outperform Complex 20-App Software Stacks\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Discover how mastering Airtable, Claude 3.7, and Make.com provides 100% of the leverage needed to deliver high-ticket enterprise workflows.",
+    "takeaway": "Mastery of 3 deep tools beats surface familiarity with 20. Simplicity in architecture delivers high reliability and 85%+ profit margins."
   },
   {
-    id: "01-2",
-    number: "1.2",
-    title: "The Service-as-a-System Model: Turning Chaotic Custom Work into Repeatable Assets",
-    duration: "11 min",
-    summary:
-      "Avoid the trap of endless custom agency work. Learn how to package modular, standardized service systems that you can deploy in days while charging premium implementation fees.",
-    learningObjective:
-      "Define standard service modules, master componentized delivery, and replace customized freelancing with productized AI assets.",
-    takeaway:
-      "Do not build custom bespoke software from scratch for every client. Build modular, reusable system components in Airtable and Make.com that can be adapted in hours.",
-    slides: [
+    "id": "01-2",
+    "number": "1.2",
+    "title": "The Core Roles: Airtable (Memory), Claude 3.7 (Reasoning), Make.com (Execution)",
+    "duration": "15m",
+    "summary": "Deep-dive into the architectural responsibility of each pillar and how they interlock to form an autonomous operating system.",
+    "slides": [
       {
-        id: "s-0102-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "STAGE 01 · SYSTEMIZATION",
-        headline: "THE SERVICE-AS-A-SYSTEM FRAMEWORK",
-        subheadline: "How top AI operators deliver $3,000 projects in 6 hours using pre-built operational modules.",
-      },
-      {
-        id: "s-0102-2",
-        order: 2,
-        type: "BIG_STATEMENT",
-        headline: "Amateurs sell hours of custom labor. Professionals sell proven, modular systems with predictable outcomes.",
-        subheadline: "When you build modular components, your delivery time drops by 75% while your client value and satisfaction double.",
-      },
-      {
-        id: "s-0102-3",
-        order: 3,
-        type: "FRAMEWORK",
-        headline: "The 3 Reusable System Pillars",
-        subheadline: "Every B2B business operates on these three universal data flows.",
-        pillars: [
-          {
-            badge: "PILLAR 1 · INGESTION",
-            title: "Universal Capture Engine",
-            description: "Standardized webhooks and forms capturing leads, customer requests, or documents directly into structured Airtable tables.",
-          },
-          {
-            badge: "PILLAR 2 · SYNTHESIS",
-            title: "Cognitive Intelligence Pipe",
-            description: "Pre-tested Claude 3.7 prompt templates with strict JSON schema outputs for grading, summarizing, drafting, or triaging.",
-          },
-          {
-            badge: "PILLAR 3 · DISPATCH",
-            title: "Action & Distribution Hub",
-            description: "Automated routing through Make.com to email, Slack, CRM records, client portals, or calendar invites.",
-          },
+        "id": "s-012-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 01 · LESSON 1.2",
+        "headline": "The Core Roles: Airtable (Memory), Claude 3.7 (Reasoning), Make.com (Execution)",
+        "subheadline": "Deep-dive into the architectural responsibility of each pillar and how they interlock to form an autonomous operating system.",
+        "title": "The Core Roles: Airtable (Memory), Claude 3.7 (Reasoning), Make.com (Execution)",
+        "subtitle": "Deep-dive into the architectural responsibility of each pillar and how they interlock to form an autonomous operating system.",
+        "bulletPoints": [
+          "Airtable as Operational Memory: Relational data structures, audit trails, and client portal interfaces.",
+          "Claude 3.7 as Cognitive Engine: Processing unstructured documents, evaluating criteria, and generating structured JSON payloads.",
+          "Make.com as Execution Fabric: Ingesting webhooks, routing multi-branch logic, and executing transactional API calls.",
+          "Decoupled Architecture: How isolating each role allows modular updates without risking system stability."
         ],
-      },
-      {
-        id: "s-0102-4",
-        order: 4,
-        type: "COMPARISON",
-        headline: "Custom Agency Work vs Service-as-a-System",
-        comparison: {
-          leftTitle: "Bespoke Agency (High Chaos)",
-          leftItems: [
-            "Every project starts from a blank canvas",
-            "Unpredictable bugs, constant custom coding",
-            "30-40 hours of manual delivery per client",
-            "Zero reusable assets or compounding templates",
-          ],
-          rightTitle: "Service-as-a-System (High Leverage)",
-          rightItems: [
-            "Built using battle-tested blueprint templates",
-            "Predictable, reliable execution in Airtable + Make",
-            "5-8 hours total delivery time for a $2,500 fee",
-            "Every project strengthens your master template library",
-          ],
-        },
-      },
-      {
-        id: "s-0102-5",
-        order: 5,
-        type: "CHECKLIST",
-        headline: "Service Productization Checklist",
-        subheadline: "Ensure your proposed service deliverable meets the systemization standard.",
-        checklist: [
-          { label: "Can the workflow be demonstrated in a 3-minute video?", passed: true, note: "If it's too complex to show in 3 minutes, it's too hard to sell" },
-          { label: "Can 80% of the architecture be cloned from your master template?", passed: true, note: "Only 20% should be client-specific customization" },
-          { label: "Does it connect to tools the client already uses?", passed: true, note: "Gmail, Outlook, Slack, HubSpot, or Google Drive" },
-          { label: "Can the client use it without learning technical jargon?", passed: true, note: "They interact via friendly Airtable interfaces or email" },
-        ],
-      },
-      {
-        id: "s-0102-6",
-        order: 6,
-        type: "CHAPTER_END",
-        headline: "Lesson 1.2 Complete",
-        subheadline: "Next up: Choosing your profitable B2B customer niche.",
-      },
+        "takeaway": "Memory, Reasoning, and Execution: when these 3 functions are clearly separated, any business process can be automated."
+      }
     ],
-    writtenLesson: `
-# The Service-as-a-System Model: Turning Chaotic Custom Work into Repeatable Assets
-
-When most people start a service business, they say "yes" to whatever the client asks for. One client wants a custom customer support bot on Telegram; another wants an automated scraper for eBay listings; a third wants automated accounting reconciliation.
-
-This is the fastest path to mental exhaustion. You end up spending 40 hours learning new niche APIs, wrestling with unfamiliar edge cases, and making less than minimum wage when calculated hourly.
-
-The **Service-as-a-System** methodology transforms your agency from a chaotic workshop into an efficient assembly line of high-ticket digital assets.
-
----
-
-## 1. The Power of Modular Delivery
-
-In the software industry, modern platforms are not written from scratch—they are composed of reusable micro-services. You must run your service business the same way.
-
-Every enterprise AI service system consists of three identical stages:
-1. **The Ingestion Layer:** Capturing raw, unformatted client data (form submissions, emails, PDFs, voice memos, spreadsheets).
-2. **The Cognitive Layer:** Passing that data to **Claude 3.7** with a battle-tested prompt template and strict JSON schema parameters.
-3. **The Dispatch Layer:** Routing the structured output back into the client's operational hub (**Airtable**) and alerting stakeholders via Slack, email, or CRM updates (**Make.com**).
-
-Because the underlying pipeline architecture is always identical, **80% of the build is already completed** before you even sign the contract. Your job during the onboarding sprint is simply configuring the 20% that is unique to that specific client (their branding, custom fields, and specific prompt guidelines).
-
----
-
-## 2. Why Clients Gladly Pay Premium Rates for Reusable Systems
-
-Beginners often feel imposter syndrome: *"If I am cloning a template and customizing it in 6 hours, how can I charge $2,500?"*
-
-You must remember: **Clients do not pay for your labor hours; they pay for the certainty of the outcome.**
-- If you spent 3 months writing custom Python code that crashes twice a week, that has negative value.
-- If you deploy a battle-tested Airtable + Claude system in 72 hours that immediately solves their lead backlog with zero bugs, that is worth $5,000+ to the business owner.
-
-In fact, business owners vastly prefer proven systems over experimental custom builds because proven systems don't break.
-
----
-
-## Action Task
-Review your service offerings and eliminate any bespoke "one-off" requests. Commit to offering one unified flagship system (for example, the "Inbound Lead Qualification & Instant Proposal System") across all upcoming prospect calls.
-    `,
+    "writtenLesson": "# 1.2 The Core Roles: Airtable (Memory), Claude 3.7 (Reasoning), Make.com (Execution)\n\n> **Module 01: The 3-Tool Architecture & $10,000/Month Business Model**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nDeep-dive into the architectural responsibility of each pillar and how they interlock to form an autonomous operating system.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (Airtable as Operational Memory):** Relational data structures, audit trails, and client portal interfaces.\n\n- **Pillar 2 (Claude 3.7 as Cognitive Engine):** Processing unstructured documents, evaluating criteria, and generating structured JSON payloads.\n\n- **Pillar 3 (Make.com as Execution Fabric):** Ingesting webhooks, routing multi-branch logic, and executing transactional API calls.\n\n- **Pillar 4 (Decoupled Architecture):** How isolating each role allows modular updates without risking system stability.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** Memory, Reasoning, and Execution: when these 3 functions are clearly separated, any business process can be automated.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - The Core Roles: Airtable (Memory), Claude 3.7 (Reasoning), Make.com (Execution)\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Deep-dive into the architectural responsibility of each pillar and how they interlock to form an autonomous operating system.",
+    "takeaway": "Memory, Reasoning, and Execution: when these 3 functions are clearly separated, any business process can be automated."
   },
   {
-    id: "01-3",
-    number: "1.3",
-    title: "Choosing Your Profitable Niche: Identifying Businesses with $50K+ Monthly Overhead",
-    duration: "11 min",
-    summary:
-      "Stop pitching broke startups. Learn how to target established B2B industries with high transaction values, manual operational overhead, and immediate budget for automation.",
-    learningObjective:
-      "Identify high-profit B2B niches, evaluate average transaction values, and filter out low-budget prospects before investing outreach effort.",
-    takeaway:
-      "Target businesses where a single closed client is worth $3,000 to $20,000. When their deal size is large, your $1,500/month service pays for itself with a single converted lead.",
-    slides: [
+    "id": "01-3",
+    "number": "1.3",
+    "title": "Unit Economics of the $10K Business: Setup Sprints & Recurring Retainers",
+    "duration": "15m",
+    "summary": "Deconstruct the exact financial model required to reach $10,000/month: charging $3,000 setup fees and $1,000/month retainers.",
+    "slides": [
       {
-        id: "s-0103-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "STAGE 01 · NICHE SELECTION",
-        headline: "CHOOSING YOUR HIGH-MARGIN NICHE",
-        subheadline: "Why targeting businesses with $50K+ monthly overhead guarantees fast approvals and high-retention retainers.",
-      },
-      {
-        id: "s-0103-2",
-        order: 2,
-        type: "BIG_STATEMENT",
-        headline: "A $1,500/month proposal is expensive to a yoga studio, but an absolute no-brainer to a commercial roofing contractor or B2B legal firm.",
-        subheadline: "The exact same automation workflow has 10x higher perceived value when sold into high-transaction, high-overhead industries.",
-      },
-      {
-        id: "s-0103-3",
-        order: 3,
-        type: "FRAMEWORK",
-        headline: "The 4 Pillars of a High-Margin Niche",
-        subheadline: "Grade any prospective market against these four criteria.",
-        pillars: [
-          {
-            badge: "PILLAR 1 · DEAL SIZE",
-            title: "High Customer Lifetime Value",
-            description: "Average customer value exceeds $2,500+. One closed deal easily finances your entire annual service contract.",
-          },
-          {
-            badge: "PILLAR 2 · OVERHEAD",
-            title: "Heavy Administrative Drag",
-            description: "High payroll spent on coordinators, intake specialists, estimators, or coordinators doing repetitive data entry.",
-          },
-          {
-            badge: "PILLAR 3 · URGENCY",
-            title: "Speed-to-Lead Sensitivity",
-            description: "Inbound leads decay within minutes. If they don't reply immediately, the competitor wins the contract.",
-          },
-          {
-            badge: "PILLAR 4 · BUDGET",
-            title: "Proven Software Spend",
-            description: "Already paying for CRMs, Google Workspace, and industry SaaS tools. They do not need convincing that software matters.",
-          },
+        "id": "s-013-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 01 · LESSON 1.3",
+        "headline": "Unit Economics of the $10K Business: Setup Sprints & Recurring Retainers",
+        "subheadline": "Deconstruct the exact financial model required to reach $10,000/month: charging $3,000 setup fees and $1,000/month retainers.",
+        "title": "Unit Economics of the $10K Business: Setup Sprints & Recurring Retainers",
+        "subtitle": "Deconstruct the exact financial model required to reach $10,000/month: charging $3,000 setup fees and $1,000/month retainers.",
+        "bulletPoints": [
+          "The Two Revenue Engines: High-ticket setup sprints ($2,500-$4,000) generate upfront cash; recurring retainers ($750-$1,250/mo) build equity.",
+          "The Magic Number: Managing just 8 to 10 retained clients provides $10,000/month in predictable, baseline recurring cash flow.",
+          "Retainer Justification: Framing ongoing fees around proactive API monitoring, workflow tuning, and monthly performance reporting.",
+          "Zero Employee Overhead: How a solo operator maintains 10 clients in under 15 hours per week using automated diagnostics."
         ],
-      },
-      {
-        id: "s-0103-4",
-        order: 4,
-        type: "LIST",
-        headline: "Top 4 High-Converting B2B Niches for Solo AI Operators",
-        listItems: [
-          { number: "01", title: "Commercial Trade Contractors", description: "Roofing, HVAC, electrical, and commercial remodeling. Average job: $8,000–$50,000. Drowning in bid estimates and lead inquiries." },
-          { number: "02", title: "B2B Professional Services", description: "Boutique accounting firms, M&A advisors, executive search firms, and legal practices with high hourly billing rates." },
-          { number: "03", title: "High-Ticket Real Estate & Property Management", description: "Commercial brokers, luxury agencies, and mid-sized property management firms handling dozens of tenant inquiries daily." },
-          { number: "04", title: "Specialized Healthcare & Dental Clinics", description: "Orthodontists, cosmetic dermatologists, and private surgical practices where patient intake and insurance follow-ups take hours." },
-        ],
-      },
-      {
-        id: "s-0103-5",
-        order: 5,
-        type: "RECAP",
-        headline: "Niche Selection Principles",
-        recapPoints: [
-          "Avoid direct-to-consumer businesses, solopreneurs, and newly incorporated startups.",
-          "Look for established firms with 5 to 30 employees—large enough to feel severe administrative pain, but small enough that you can speak directly to the owner.",
-          "Target industries where capturing just one extra customer per month pays for your entire service.",
-        ],
-      },
-      {
-        id: "s-0103-6",
-        order: 6,
-        type: "CHAPTER_END",
-        headline: "Lesson 1.3 Complete",
-        subheadline: "Next up: Identifying the exact operational bottlenecks business owners eagerly pay to fix.",
-      },
+        "takeaway": "Never deliver a one-time build without attaching a recurring retainer. The setup fee covers your time; the retainer builds your freedom."
+      }
     ],
-    writtenLesson: `
-# Choosing Your Profitable Niche: Identifying Businesses with $50K+ Monthly Overhead
-
-Your success in building a $10,000/month AI service business depends 70% on **who you pitch** and only 30% on the code itself.
-
-If you pitch an automated customer service workflow to a local coffee shop or an independent yoga instructor:
-- They make $4 profit on a latte.
-- A $1,500/month service fee requires them to sell 375 extra lattes just to break even.
-- They will interrogate every dollar, request discounts, and cancel after 30 days.
-
-Conversely, consider a **commercial HVAC contractor** or an **executive search firm**:
-- A single commercial HVAC maintenance contract is worth $15,000 to $40,000 per year.
-- An executive search placement fee is $25,000.
-- If your system helps them respond to an inbound RFP in 4 minutes instead of 6 hours, helping them secure just one additional contract, you have made them $25,000 in revenue.
-- Paying you $1,500/month is one of the easiest financial decisions the CEO will make all year.
-
----
-
-## The Four Golden Criteria for Niche Selection
-
-Before conducting outreach in any industry, run them through this 4-point audit:
-
-1. **High Average Order Value (AOV > $2,500):** If a single customer is worth thousands of dollars, ROI calculations are effortless.
-2. **5 to 35 Employees:** At this company size, the founder or managing director is still involved in operations, meaning you don't have to navigate 6 months of corporate procurement committees. You can talk directly to the decision-maker.
-3. **Repetitive Knowledge Work:** The business involves synthesizing text, reviewing intake documents, sending standardized quotes, or coordinating client schedules.
-4. **Existing Tech Stack:** They already utilize cloud tools like Google Workspace, Outlook, HubSpot, or Salesforce. You are integrating with systems they already trust, not asking them to adopt completely foreign software.
-
----
-
-## Action Task
-Select **one** target niche from the top list (e.g., Commercial Contractors or B2B Accounting Practices). Research 10 local or regional companies in this vertical and verify they have at least 5 employees on LinkedIn.
-    `,
+    "writtenLesson": "# 1.3 Unit Economics of the $10K Business: Setup Sprints & Recurring Retainers\n\n> **Module 01: The 3-Tool Architecture & $10,000/Month Business Model**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nDeconstruct the exact financial model required to reach $10,000/month: charging $3,000 setup fees and $1,000/month retainers.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (The Two Revenue Engines):** High-ticket setup sprints ($2,500-$4,000) generate upfront cash; recurring retainers ($750-$1,250/mo) build equity.\n\n- **Pillar 2 (The Magic Number):** Managing just 8 to 10 retained clients provides $10,000/month in predictable, baseline recurring cash flow.\n\n- **Pillar 3 (Retainer Justification):** Framing ongoing fees around proactive API monitoring, workflow tuning, and monthly performance reporting.\n\n- **Pillar 4 (Zero Employee Overhead):** How a solo operator maintains 10 clients in under 15 hours per week using automated diagnostics.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** Never deliver a one-time build without attaching a recurring retainer. The setup fee covers your time; the retainer builds your freedom.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - Unit Economics of the $10K Business: Setup Sprints & Recurring Retainers\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Deconstruct the exact financial model required to reach $10,000/month: charging $3,000 setup fees and $1,000/month retainers.",
+    "takeaway": "Never deliver a one-time build without attaching a recurring retainer. The setup fee covers your time; the retainer builds your freedom."
   },
   {
-    id: "01-4",
-    number: "1.4",
-    title: "Diagnosing Costly Operational Bottlenecks: The 3 Headaches Owners Eagerly Pay to Fix",
-    duration: "12 min",
-    summary:
-      "Learn the three universal business bottlenecks that drain thousands of dollars in payroll every month, and how to position your AI workflows as instant pain-killers rather than optional vitamins.",
-    learningObjective:
-      "Diagnose client operational friction, map high-cost payroll leaks, and structure problem-oriented proposals.",
-    takeaway:
-      "Never sell 'AI'. Sell the elimination of delayed lead responses, chaotic document data entry, and manual reporting delays.",
-    slides: [
+    "id": "01-4",
+    "number": "1.4",
+    "title": "Selecting High-Margin B2B Niches with Manual Administrative Bottlenecks",
+    "duration": "15m",
+    "summary": "Identify lucrative target industries where administrative waste is rampant and willingness-to-pay is exceptionally high.",
+    "slides": [
       {
-        id: "s-0104-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "STAGE 01 · PAIN DIAGNOSIS",
-        headline: "DIAGNOSING COSTLY BOTTLENECKS",
-        subheadline: "The 3 critical operational headaches that business owners will write immediate checks to eliminate.",
-      },
-      {
-        id: "s-0104-2",
-        order: 2,
-        type: "BIG_STATEMENT",
-        headline: "Nobody wakes up wanting to buy 'Artificial Intelligence'. They wake up wanting to stop losing deals because inquiries sit in an inbox for 12 hours.",
-        subheadline: "Position your service as the cure to a specific, bleeding operational headache.",
-      },
-      {
-        id: "s-0104-3",
-        order: 3,
-        type: "FRAMEWORK",
-        headline: "The Three Universal Pain Points",
-        subheadline: "Target these three specific operations in any company you audit.",
-        pillars: [
-          {
-            badge: "PAIN 1 · REVENUE LEAK",
-            title: "Speed-to-Lead Decay",
-            description: "High-value inquiries arrive on web forms, sit unread overnight, and go cold while competitors call back in minutes.",
-          },
-          {
-            badge: "PAIN 2 · PAYROLL DRAG",
-            title: "Manual Document Triaging",
-            description: "Highly paid coordinators spend 15 hours a week copying PDF proposals, invoices, and resumes into database fields.",
-          },
-          {
-            badge: "PAIN 3 · VISIBILITY GAP",
-            title: "Chaotic Client Reporting",
-            description: "Account managers spend all day Friday compiling manual progress reports and status updates across messy spreadsheets.",
-          },
+        "id": "s-014-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 01 · LESSON 1.4",
+        "headline": "Selecting High-Margin B2B Niches with Manual Administrative Bottlenecks",
+        "subheadline": "Identify lucrative target industries where administrative waste is rampant and willingness-to-pay is exceptionally high.",
+        "title": "Selecting High-Margin B2B Niches with Manual Administrative Bottlenecks",
+        "subtitle": "Identify lucrative target industries where administrative waste is rampant and willingness-to-pay is exceptionally high.",
+        "bulletPoints": [
+          "Niche Selection Criteria: High average customer value ($2,000+), paper-heavy workflows, and high administrative staff overhead.",
+          "Top 4 High-Margin Sectors: Commercial real estate, specialized legal practices, logistics/freight brokerage, and boutique consulting firms.",
+          "The Cost-of-Delay Indicator: Target industries where losing a prospect due to a 2-hour response delay costs $5,000+ in profit.",
+          "Avoiding Low-Margin Traps: Why local restaurants and small retail shops are terrible clients for high-ticket AI automation services."
         ],
-      },
-      {
-        id: "s-0104-4",
-        order: 4,
-        type: "SCENARIO",
-        headline: "Case Scenario: The $40,000 Inbound Leak",
-        scenario: {
-          situation: "A regional roofing company generates 60 web leads monthly, but estimators take 18–36 hours to review notes and generate project quotes.",
-          instinctiveReaction: "CEO considers hiring another $4,000/month full-time estimator who still takes hours to calculate standard pricing.",
-          calibratedMove: "Deploy an Airtable intake form with a Claude 3.7 calculation prompt that drafts a preliminary estimate PDF in 90 seconds.",
-          whyItWorks: "The client gets an immediate, personalized estimate while browsing, boosting quote conversion by 45% without adding payroll.",
-        },
-      },
-      {
-        id: "s-0104-5",
-        order: 5,
-        type: "RECAP",
-        headline: "Key Takeaways: Pain Diagnosis",
-        recapPoints: [
-          "Audit the company's speed-to-lead: how many minutes elapse between form submission and a personalized response?",
-          "Look for highly paid employees performing minimum-wage data copying.",
-          "Frame your deliverables in hours saved and revenue captured, not technical model parameters.",
-        ],
-      },
-      {
-        id: "s-0104-6",
-        order: 6,
-        type: "CHAPTER_END",
-        headline: "Module 1 Complete!",
-        subheadline: "You've mastered the economics and positioning. Next: Module 2 — The 3 Core Tools Architecture.",
-      },
+        "takeaway": "Sell to businesses where customer transactions are large and operational speed directly protects five-figure revenue."
+      }
     ],
-    writtenLesson: `
-# Diagnosing Costly Operational Bottlenecks: The 3 Headaches Owners Eagerly Pay to Fix
-
-In sales, there is a fundamental distinction between **vitamins** and **painkillers**:
-- **Vitamins** are "nice to have." They promise vague long-term optimization (e.g., "AI could help your team brainstorm creative marketing ideas"). When budgets get tight, vitamins are cut first.
-- **Painkillers** solve an acute, burning problem costing the company revenue right now (e.g., "You are losing 35% of inbound leads because nobody responds on weekends"). Painkillers get purchased immediately from discretionary operating funds.
-
-To build a thriving $10,000/month service firm, you must only sell painkillers.
-
----
-
-## The Three High-Value Pain Points
-
-### 1. Speed-to-Lead & Instant Qualification
-According to Harvard Business Review research, companies that contact prospective leads within 5 minutes of inquiry are **nearly 7 times more likely to qualify the lead** than those that try within 1 hour, and 60 times more likely than those that wait 24 hours.
-
-Yet in 80% of small and mid-sized businesses:
-- Inquiries land in a generic info@ company inbox.
-- A busy receptionist checks it twice a day.
-- By the time they call back, the prospect has already contacted two competitors and signed with someone else.
-
-**The Fix:** A Make.com + Claude pipeline that instantly analyzes the lead's inquiry, grades their intent, enriches their company data in Airtable, and automatically sends a hyper-personalized, intelligent reply within 120 seconds.
-
----
-
-### 2. Manual Document Extraction & Data Entry
-In fields like legal, consulting, logistics, and construction, teams receive hundreds of vendor invoices, project specs, subcontractor estimates, and compliance forms weekly.
-
-Junior analysts or administrative staff spend 10 to 20 hours every week manually opening PDFs, copying values, and typing them into accounting or CRM software.
-- It is mind-numbing work.
-- It introduces human typos and calculation errors.
-- It costs the business tens of thousands in wasted salary hours.
-
-**The Fix:** A Claude 3.7 vision and document extraction pipeline that parses incoming PDFs directly into structured Airtable records with 99.8% precision.
-
----
-
-### 3. Client Reporting & Status Updates
-Every service business struggles with client communication. Clients constantly email: *"Where does my project stand? Did you review my file? What's the latest update?"*
-
-Account managers spend every Friday copying data from internal boards into custom client update emails.
-
-**The Fix:** A client-facing Airtable Interface where clients can view live progress in real-time, coupled with an automated Friday 4:00 PM email summary generated by Claude.
-
----
-
-## Action Task
-Identify which of these three bottlenecks you will specialize in first. Prepare a 1-sentence diagnostic question you can ask any business owner (e.g., *"When a customer submits a project inquiry on your website at 8:00 PM on Friday, what exact sequence of events happens before Monday morning?"*).
-    `,
+    "writtenLesson": "# 1.4 Selecting High-Margin B2B Niches with Manual Administrative Bottlenecks\n\n> **Module 01: The 3-Tool Architecture & $10,000/Month Business Model**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nIdentify lucrative target industries where administrative waste is rampant and willingness-to-pay is exceptionally high.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (Niche Selection Criteria):** High average customer value ($2,000+), paper-heavy workflows, and high administrative staff overhead.\n\n- **Pillar 2 (Top 4 High-Margin Sectors):** Commercial real estate, specialized legal practices, logistics/freight brokerage, and boutique consulting firms.\n\n- **Pillar 3 (The Cost-of-Delay Indicator):** Target industries where losing a prospect due to a 2-hour response delay costs $5,000+ in profit.\n\n- **Pillar 4 (Avoiding Low-Margin Traps):** Why local restaurants and small retail shops are terrible clients for high-ticket AI automation services.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** Sell to businesses where customer transactions are large and operational speed directly protects five-figure revenue.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - Selecting High-Margin B2B Niches with Manual Administrative Bottlenecks\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Identify lucrative target industries where administrative waste is rampant and willingness-to-pay is exceptionally high.",
+    "takeaway": "Sell to businesses where customer transactions are large and operational speed directly protects five-figure revenue."
   },
+  {
+    "id": "01-5",
+    "number": "1.5",
+    "title": "Pricing Philosophy: Value-Anchored Fixed Sprints vs. Hourly Traps",
+    "duration": "15m",
+    "summary": "Learn how to anchor pricing against customer operational savings, allowing you to charge $3,500 for a 4-hour build.",
+    "slides": [
+      {
+        "id": "s-015-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 01 · LESSON 1.5",
+        "headline": "Pricing Philosophy: Value-Anchored Fixed Sprints vs. Hourly Traps",
+        "subheadline": "Learn how to anchor pricing against customer operational savings, allowing you to charge $3,500 for a 4-hour build.",
+        "title": "Pricing Philosophy: Value-Anchored Fixed Sprints vs. Hourly Traps",
+        "subtitle": "Learn how to anchor pricing against customer operational savings, allowing you to charge $3,500 for a 4-hour build.",
+        "bulletPoints": [
+          "The Labor Arbitrage Anchor: If your workflow replaces 30 hours of weekly administrative labor ($36,000/year), a $3,500 setup is trivial.",
+          "The Velocity Anchor: Pricing based on speed to lead and revenue recovery rather than internal development hours.",
+          "Tiered Packaging: Offering Good ($2,500), Better ($4,000), and Best ($7,500) options to eliminate binary 'yes/no' client decisions.",
+          "Eliminating Scope Creep: Clearly defining exact boundary conditions in every Statement of Work."
+        ],
+        "takeaway": "Price the value of the solved problem, never the hours on your timer. When clients save $30,000, they happily pay $4,000."
+      }
+    ],
+    "writtenLesson": "# 1.5 Pricing Philosophy: Value-Anchored Fixed Sprints vs. Hourly Traps\n\n> **Module 01: The 3-Tool Architecture & $10,000/Month Business Model**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nLearn how to anchor pricing against customer operational savings, allowing you to charge $3,500 for a 4-hour build.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (The Labor Arbitrage Anchor):** If your workflow replaces 30 hours of weekly administrative labor ($36,000/year), a $3,500 setup is trivial.\n\n- **Pillar 2 (The Velocity Anchor):** Pricing based on speed to lead and revenue recovery rather than internal development hours.\n\n- **Pillar 3 (Tiered Packaging):** Offering Good ($2,500), Better ($4,000), and Best ($7,500) options to eliminate binary 'yes/no' client decisions.\n\n- **Pillar 4 (Eliminating Scope Creep):** Clearly defining exact boundary conditions in every Statement of Work.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** Price the value of the solved problem, never the hours on your timer. When clients save $30,000, they happily pay $4,000.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - Pricing Philosophy: Value-Anchored Fixed Sprints vs. Hourly Traps\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Learn how to anchor pricing against customer operational savings, allowing you to charge $3,500 for a 4-hour build.",
+    "takeaway": "Price the value of the solved problem, never the hours on your timer. When clients save $30,000, they happily pay $4,000."
+  },
+  {
+    "id": "01-6",
+    "number": "1.6",
+    "title": "Setting Up Agency Multi-Tenant Workspaces & API Infrastructure",
+    "duration": "15m",
+    "summary": "Establish professional agency workspaces across Airtable, Anthropic Console, and Make.com with clean client segregation.",
+    "slides": [
+      {
+        "id": "s-016-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 01 · LESSON 1.6",
+        "headline": "Setting Up Agency Multi-Tenant Workspaces & API Infrastructure",
+        "subheadline": "Establish professional agency workspaces across Airtable, Anthropic Console, and Make.com with clean client segregation.",
+        "title": "Setting Up Agency Multi-Tenant Workspaces & API Infrastructure",
+        "subtitle": "Establish professional agency workspaces across Airtable, Anthropic Console, and Make.com with clean client segregation.",
+        "bulletPoints": [
+          "Multi-Tenant Airtable Workspaces: Organizing client bases within dedicated enterprise workspaces to protect data isolation.",
+          "Anthropic API Organization: Creating distinct project workspaces and tracking per-client token consumption.",
+          "Make.com Team Accounts: Setting up client folders with granular role-based permissions and dedicated webhook queues.",
+          "Security Protocol: Never co-mingling client credentials or databases in shared sandboxes."
+        ],
+        "takeaway": "Strict workspace isolation is standard professional practice. Build clean multi-tenant infrastructure from day one."
+      }
+    ],
+    "writtenLesson": "# 1.6 Setting Up Agency Multi-Tenant Workspaces & API Infrastructure\n\n> **Module 01: The 3-Tool Architecture & $10,000/Month Business Model**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nEstablish professional agency workspaces across Airtable, Anthropic Console, and Make.com with clean client segregation.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (Multi-Tenant Airtable Workspaces):** Organizing client bases within dedicated enterprise workspaces to protect data isolation.\n\n- **Pillar 2 (Anthropic API Organization):** Creating distinct project workspaces and tracking per-client token consumption.\n\n- **Pillar 3 (Make.com Team Accounts):** Setting up client folders with granular role-based permissions and dedicated webhook queues.\n\n- **Pillar 4 (Security Protocol):** Never co-mingling client credentials or databases in shared sandboxes.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** Strict workspace isolation is standard professional practice. Build clean multi-tenant infrastructure from day one.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - Setting Up Agency Multi-Tenant Workspaces & API Infrastructure\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Establish professional agency workspaces across Airtable, Anthropic Console, and Make.com with clean client segregation.",
+    "takeaway": "Strict workspace isolation is standard professional practice. Build clean multi-tenant infrastructure from day one."
+  },
+  {
+    "id": "01-7",
+    "number": "1.7",
+    "title": "Module 1 Checkpoint: Your $10K Business Model & Flagship Service Blueprint",
+    "duration": "15m",
+    "summary": "Define your chosen target niche, select your initial flagship service offering, and construct your 90-day financial roadmap.",
+    "slides": [
+      {
+        "id": "s-017-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 01 · LESSON 1.7",
+        "headline": "Module 1 Checkpoint: Your $10K Business Model & Flagship Service Blueprint",
+        "subheadline": "Define your chosen target niche, select your initial flagship service offering, and construct your 90-day financial roadmap.",
+        "title": "Module 1 Checkpoint: Your $10K Business Model & Flagship Service Blueprint",
+        "subtitle": "Define your chosen target niche, select your initial flagship service offering, and construct your 90-day financial roadmap.",
+        "bulletPoints": [
+          "Flagship Offer Definition: Packaging your first specific operational automation with clear deliverables and pricing.",
+          "Niche Positioning Statement: Crafting a clear, one-sentence value proposition for high-ticket prospective clients.",
+          "Financial Milestone Tracker: Mapping the timeline to sign 3 setup clients in month one and reach 8 retainers by month three.",
+          "Commitment to Implementation: Committing to building each core tool project in the subsequent modules."
+        ],
+        "takeaway": "Clarity breeds confidence. Choose your niche, package your offer, and build the technical assets with complete focus."
+      }
+    ],
+    "writtenLesson": "# 1.7 Module 1 Checkpoint: Your $10K Business Model & Flagship Service Blueprint\n\n> **Module 01: The 3-Tool Architecture & $10,000/Month Business Model**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nDefine your chosen target niche, select your initial flagship service offering, and construct your 90-day financial roadmap.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (Flagship Offer Definition):** Packaging your first specific operational automation with clear deliverables and pricing.\n\n- **Pillar 2 (Niche Positioning Statement):** Crafting a clear, one-sentence value proposition for high-ticket prospective clients.\n\n- **Pillar 3 (Financial Milestone Tracker):** Mapping the timeline to sign 3 setup clients in month one and reach 8 retainers by month three.\n\n- **Pillar 4 (Commitment to Implementation):** Committing to building each core tool project in the subsequent modules.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** Clarity breeds confidence. Choose your niche, package your offer, and build the technical assets with complete focus.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - Module 1 Checkpoint: Your $10K Business Model & Flagship Service Blueprint\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Define your chosen target niche, select your initial flagship service offering, and construct your 90-day financial roadmap.",
+    "takeaway": "Clarity breeds confidence. Choose your niche, package your offer, and build the technical assets with complete focus."
+  }
 ];
 
-// =========================================================================
-// MODULE 02: The 3 Core Tools Architecture & Tool Selection Rationale
-// =========================================================================
+// ==========================================
+// MODULE 02: Core Tool 1 — Airtable as the Enterprise Relational Database
+// ==========================================
 export const MODULE_02_LESSONS: ExtendedLesson[] = [
   {
-    id: "02-1",
-    number: "2.1",
-    title: "Why Just 3 Core Tools: Eliminating Tech Chaos to Build Predictable Solutions",
-    duration: "12 min",
-    summary:
-      "Learn why limiting your agency to just three core tools (Airtable, Claude 3.7, Make.com) gives you deeper technical mastery, faster build times, zero software sprawl, and enterprise stability.",
-    learningObjective:
-      "Understand the architectural synergy between Airtable, Claude 3.7, and Make.com, and avoid the distraction of dozens of peripheral AI wrappers.",
-    takeaway:
-      "Mastery of 3 integrated tools beats superficial knowledge of 50 AI apps. Airtable is your database, Claude is your brain, and Make is your nervous system.",
-    slides: [
+    "id": "02-1",
+    "number": "2.1",
+    "title": "Designing Relational Data Schemas for Complex Operations",
+    "duration": "15m",
+    "summary": "Master data modeling principles to structure multi-table business operations cleanly without data duplication.",
+    "slides": [
       {
-        id: "s-0201-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "STAGE 02 · CORE ARCHITECTURE",
-        headline: "THE 3 CORE TOOLS STRATEGY",
-        subheadline: "How mastering Airtable, Claude 3.7, and Make.com provides 100% of the capabilities needed for enterprise B2B delivery.",
-      },
-      {
-        id: "s-0201-2",
-        order: 2,
-        type: "BIG_STATEMENT",
-        headline: "The most successful agencies in the world do not test 50 new tools every week. They master a single, impenetrable stack.",
-        subheadline: "Specializing in 3 core tools allows you to build solutions 5x faster, troubleshoot instantly, and command authority.",
-      },
-      {
-        id: "s-0201-3",
-        order: 3,
-        type: "FRAMEWORK",
-        headline: "The Triangle of Autonomous Execution",
-        subheadline: "How the 3 tools interact seamlessly to form a complete operational system.",
-        pillars: [
-          {
-            badge: "CORE TOOL 1 · THE MEMORY",
-            title: "Airtable (Data OS)",
-            description: "The structured relational database, client portal interfaces, and operational source of truth.",
-          },
-          {
-            badge: "CORE TOOL 2 · THE BRAIN",
-            title: "Claude 3.7 (Cognitive Engine)",
-            description: "Deep reasoning, 200K context window document analysis, and strict JSON output generation.",
-          },
-          {
-            badge: "CORE TOOL 3 · THE NERVES",
-            title: "Make.com (Integration Hub)",
-            description: "The 24/7 autonomous cloud engine connecting webhooks, APIs, email, CRMs, and scheduled jobs.",
-          },
+        "id": "s-021-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 02 · LESSON 2.1",
+        "headline": "Designing Relational Data Schemas for Complex Operations",
+        "subheadline": "Master data modeling principles to structure multi-table business operations cleanly without data duplication.",
+        "title": "Designing Relational Data Schemas for Complex Operations",
+        "subtitle": "Master data modeling principles to structure multi-table business operations cleanly without data duplication.",
+        "bulletPoints": [
+          "The Entity-Relationship Model: Identifying primary business objects (Clients, Work Orders, Invoices, Team Members).",
+          "One-to-Many & Many-to-Many Relationships: Linking multiple work orders to a single client record with relational integrity.",
+          "Field Normalization: Ensuring customer email or billing details exist in exactly one location to prevent data drift.",
+          "Database Architecture Blueprinting: Using visual schema tools to map out tables and foreign key relationships before building."
         ],
-      },
-      {
-        id: "s-0201-4",
-        order: 4,
-        type: "COMPARISON",
-        headline: "Tool Hoarder Agency vs The 3 Core Tools Specialist",
-        comparison: {
-          leftTitle: "The Shiny-Object Agency",
-          leftItems: [
-            "Subscribes to 25 random AI micro-wrappers",
-            "Frequent tool outages, broken APIs, no support",
-            "Hours wasted relearning new interfaces",
-            "Clients view them as unreliable experimenters",
-          ],
-          rightTitle: "The 3 Core Tools Specialist",
-          rightItems: [
-            "100% focused on Airtable, Claude, and Make.com",
-            "Enterprise SLAs, 99.9% uptime, bank-grade security",
-            "Deep architectural mastery and reusable components",
-            "Clients view them as seasoned infrastructure architects",
-          ],
-        },
-      },
-      {
-        id: "s-0201-5",
-        order: 5,
-        type: "RECAP",
-        headline: "The 3 Tools Synergy",
-        recapPoints: [
-          "Airtable holds the structured data, records, and client UI.",
-          "Claude 3.7 provides the cognitive analysis, drafting, and decision logic.",
-          "Make.com acts as the tireless orchestrator passing data between them and the external world.",
-        ],
-      },
-      {
-        id: "s-0201-6",
-        order: 6,
-        type: "CHAPTER_END",
-        headline: "Lesson 2.1 Complete",
-        subheadline: "Next up: Deep dive into Core Tool 1 — Airtable.",
-      },
+        "takeaway": "A clean relational schema is the bedrock of business automation. Proper data architecture prevents 90% of downstream workflow errors."
+      }
     ],
-    writtenLesson: `
-# Why Just 3 Core Tools: Eliminating Tech Chaos to Build Predictable Solutions
-
-Every single day, 50 new AI tools launch on Product Hunt. There are AI tools for presentation slides, AI tools for voice notes, AI tools for copywriting, and AI tools for lead generation.
-
-Beginner freelancers get caught in a vicious cycle: they subscribe to 20 different monthly tools, spend their weekends watching tutorials, and never build a repeatable client deliverable. Worse, half of these tools are fragile wrappers around public APIs that shut down within six months.
-
-If you want to build a serious, resilient **$10,000/month service business**, you must ruthlessly eliminate shiny-object syndrome and commit to the **Three Core Tools Architecture**.
-
----
-
-## The Three Core Tools Architecture
-
-Every B2B system requires exactly three capabilities:
-1. **A Data Store & User Interface:** Where information lives, how relationships between entities (clients, projects, invoices) are organized, and how human staff view and interact with the data.
-2. **A Cognitive Processing Engine:** The intelligence that reads unstructured text or images, understands context, makes logical decisions, and generates structured outputs.
-3. **An Autonomous Orchestration Engine:** The cloud glue that listens for events (a new email, a form submission, a Stripe payment) and passes data between systems without human intervention.
-
-We satisfy these three capabilities with three industry-leading, enterprise-grade platforms:
-
-### 1. Airtable (The Relational Data Hub)
-- Not a spreadsheet, but a true relational database with an intuitive visual interface.
-- Includes **Airtable Interfaces**, allowing you to build sleek client portals and staff dashboards without writing front-end React or HTML.
-- SOC 2 Type II compliant, trusted by 80% of the Fortune 500.
-
-### 2. Claude 3.7 by Anthropic (The Cognitive Engine)
-- The gold standard in deep reasoning, nuanced writing, and complex multi-page document synthesis.
-- Massive 200,000-token context window (capable of analyzing entire 100-page business contracts or manuals in a single prompt).
-- Unrivaled adherence to strict JSON formatting, ensuring your automated pipelines never crash due to formatting errors.
-
-### 3. Make.com (The Autonomous Nervous System)
-- The most powerful, cost-effective visual integration platform in the world.
-- Supports visual branching logic, array aggregation, error-handling routers, and webhooks.
-- Free tier includes 1,000 operations per month; the $9/mo plan provides 10,000 operations, easily supporting multiple paying client workflows.
-
----
-
-## Action Task
-Create your agency accounts on Airtable, Anthropic Claude, and Make.com. Bookmark their developer documentation. These three tabs will be your command center.
-    `,
+    "writtenLesson": "# 2.1 Designing Relational Data Schemas for Complex Operations\n\n> **Module 02: Core Tool 1 — Airtable as the Enterprise Relational Database**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nMaster data modeling principles to structure multi-table business operations cleanly without data duplication.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (The Entity-Relationship Model):** Identifying primary business objects (Clients, Work Orders, Invoices, Team Members).\n\n- **Pillar 2 (One-to-Many & Many-to-Many Relationships):** Linking multiple work orders to a single client record with relational integrity.\n\n- **Pillar 3 (Field Normalization):** Ensuring customer email or billing details exist in exactly one location to prevent data drift.\n\n- **Pillar 4 (Database Architecture Blueprinting):** Using visual schema tools to map out tables and foreign key relationships before building.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** A clean relational schema is the bedrock of business automation. Proper data architecture prevents 90% of downstream workflow errors.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - Designing Relational Data Schemas for Complex Operations\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Master data modeling principles to structure multi-table business operations cleanly without data duplication.",
+    "takeaway": "A clean relational schema is the bedrock of business automation. Proper data architecture prevents 90% of downstream workflow errors."
   },
   {
-    id: "02-2",
-    number: "2.2",
-    title: "Core Tool 1 (Airtable): Architecting Relational Hubs, Portals & Clean Data Schemas",
-    duration: "12 min",
-    summary:
-      "Master the fundamentals of relational database design in Airtable. Learn how to structure linked records, formula fields, and custom interfaces that look like custom software.",
-    learningObjective:
-      "Design normalized relational database schemas in Airtable, configure linked records, and build polished client interfaces.",
-    takeaway:
-      "Airtable is not a spreadsheet; it is the visual operating system of your client's business. Master linked records and interfaces to build software without code.",
-    slides: [
+    "id": "02-2",
+    "number": "2.2",
+    "title": "Normalized Linking: Companies, Contacts, Invoices & Work Orders",
+    "duration": "15m",
+    "summary": "Build an interconnected business CRM schema linking accounts, individual stakeholders, project milestones, and billing records.",
+    "slides": [
       {
-        id: "s-0202-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "STAGE 02 · AIRTABLE ARCHITECTURE",
-        headline: "CORE TOOL 1: AIRTABLE AS A RELATIONAL OS",
-        subheadline: "How to design relational schemas, linked records, and modern interfaces that clients love using.",
-      },
-      {
-        id: "s-0202-2",
-        order: 2,
-        type: "BIG_STATEMENT",
-        headline: "If you treat Airtable like Google Sheets, you are missing 90% of its power. Airtable is a relational database wrapped in an executive dashboard.",
-        subheadline: "Linked records and automated interfaces turn raw tables into custom corporate software.",
-      },
-      {
-        id: "s-0202-3",
-        order: 3,
-        type: "FRAMEWORK",
-        headline: "The Canonical 4-Table Agency Schema",
-        subheadline: "Every business deliverable can be modeled using these four interconnected tables.",
-        pillars: [
-          {
-            badge: "TABLE 1 · ENTITIES",
-            title: "Clients / Accounts",
-            description: "Core company profile, primary contact info, contract status, and linked project records.",
-          },
-          {
-            badge: "TABLE 2 · INBOUND",
-            title: "Inquiries & Submissions",
-            description: "Raw captured leads, incoming files, contact form messages, and time-stamped payloads.",
-          },
-          {
-            badge: "TABLE 3 · DELIVERABLES",
-            title: "AI Analysis & Proposals",
-            description: "Claude-generated summaries, scores, draft emails, quote calculations, and status flags.",
-          },
-          {
-            badge: "TABLE 4 · LOGS",
-            title: "Activity & Audit Logs",
-            description: "System execution timestamps, error codes, webhook tracking, and performance metrics.",
-          },
+        "id": "s-022-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 02 · LESSON 2.2",
+        "headline": "Normalized Linking: Companies, Contacts, Invoices & Work Orders",
+        "subheadline": "Build an interconnected business CRM schema linking accounts, individual stakeholders, project milestones, and billing records.",
+        "title": "Normalized Linking: Companies, Contacts, Invoices & Work Orders",
+        "subtitle": "Build an interconnected business CRM schema linking accounts, individual stakeholders, project milestones, and billing records.",
+        "bulletPoints": [
+          "Companies to Contacts: Structuring multi-stakeholder B2B client accounts with primary decision-maker flags.",
+          "Work Order Lifecycle: Tracking requests from 'Received' to 'AI Processing', 'Review Required', and 'Delivered'.",
+          "Invoice Line Item Relationships: Linking individual billable services to parent invoices with automatic balance calculations.",
+          "Dynamic Primary Keys: Using concatenate formulas to generate descriptive, readable record identifiers."
         ],
-      },
-      {
-        id: "s-0202-4",
-        order: 4,
-        type: "CHECKLIST",
-        headline: "Airtable Best Practices for Client Delivery",
-        subheadline: "Follow these rules to prevent client errors and data corruption.",
-        checklist: [
-          { label: "Always use Linked Records instead of duplicate text", passed: true, note: "Link Leads to Clients to maintain relational integrity" },
-          { label: "Lock base fields with field-level permissions", passed: true, note: "Prevent clients from accidentally deleting critical automation formulas" },
-          { label: "Build dedicated Interfaces for daily staff work", passed: true, note: "Staff should never work in raw grid views; give them clean visual forms" },
-          { label: "Include a 'Status' single-select field on every table", passed: true, note: "Draft, Pending Review, Approved, Dispatched" },
-        ],
-      },
-      {
-        id: "s-0202-5",
-        order: 5,
-        type: "RECAP",
-        headline: "Airtable Architecture Summary",
-        recapPoints: [
-          "Design normalized relational tables before writing a single automation scenario.",
-          "Use Airtable Interfaces to give clients a sleek, modern UI that feels like custom proprietary software.",
-          "Leverage single-select trigger fields to initiate automated Make.com workflows safely.",
-        ],
-      },
-      {
-        id: "s-0202-6",
-        order: 6,
-        type: "CHAPTER_END",
-        headline: "Lesson 2.2 Complete",
-        subheadline: "Next up: Core Tool 2 — Claude 3.7 Cognitive Engine.",
-      },
+        "takeaway": "Linked records transform flat spreadsheets into a living operational network that reflects real-world business interactions."
+      }
     ],
-    writtenLesson: `
-# Core Tool 1 (Airtable): Architecting Relational Hubs, Portals & Clean Data Schemas
-
-Most people open Airtable and treat it like an aesthetically pleasing version of Microsoft Excel or Google Sheets. They create one massive table, paste 40 columns of text, and wonder why their workflows break.
-
-To deliver high-ticket enterprise solutions, you must understand **relational database architecture**.
-
----
-
-## 1. Relational Architecture vs Flat Spreadsheets
-
-In a flat spreadsheet:
-- If a customer places 5 orders, you either duplicate their address and phone number across 5 separate rows or create awkward merged cells.
-- If their phone number changes, you must update 5 rows, creating immediate data inconsistency.
-
-In a **Relational Airtable Base**:
-- **Table A (Accounts):** Contains the customer's permanent profile (Company Name, Billing Address, Primary Contact).
-- **Table B (Inquiries/Projects):** Contains individual transactions or submissions.
-- By utilizing a **Linked Record Field**, each project links back to the master Account. If the company updates their contact info, it updates across all historical and future projects instantly.
-
----
-
-## 2. The Power of Airtable Interfaces
-
-One of the greatest competitive advantages of the modern Airtable platform is **Interfaces**.
-
-In the past, if you built an automation system for a client, you had to either:
-1. Let them work in raw data tables (where they would accidentally delete formulas and break automations).
-2. Pay a web developer $10,000 to code a custom React or Next.js portal.
-
-With Airtable Interfaces, you can drag and drop:
-- Kanban review boards.
-- One-click approval buttons (e.g., clicking "Approve Quote" triggers Make.com to email the PDF).
-- Record detail summary cards with large, legible typography.
-- Mobile-friendly intake forms.
-
-When business owners log into their Airtable Interface, it looks and feels like proprietary enterprise software built specifically for their company.
-
----
-
-## Action Task
-Log into Airtable and create a new Base titled "Client Operations Hub". Set up three tables: **Companies**, **Leads**, and **AI Deliverables**. Connect them using Linked Record fields.
-    `,
+    "writtenLesson": "# 2.2 Normalized Linking: Companies, Contacts, Invoices & Work Orders\n\n> **Module 02: Core Tool 1 — Airtable as the Enterprise Relational Database**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nBuild an interconnected business CRM schema linking accounts, individual stakeholders, project milestones, and billing records.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (Companies to Contacts):** Structuring multi-stakeholder B2B client accounts with primary decision-maker flags.\n\n- **Pillar 2 (Work Order Lifecycle):** Tracking requests from 'Received' to 'AI Processing', 'Review Required', and 'Delivered'.\n\n- **Pillar 3 (Invoice Line Item Relationships):** Linking individual billable services to parent invoices with automatic balance calculations.\n\n- **Pillar 4 (Dynamic Primary Keys):** Using concatenate formulas to generate descriptive, readable record identifiers.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** Linked records transform flat spreadsheets into a living operational network that reflects real-world business interactions.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - Normalized Linking: Companies, Contacts, Invoices & Work Orders\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Build an interconnected business CRM schema linking accounts, individual stakeholders, project milestones, and billing records.",
+    "takeaway": "Linked records transform flat spreadsheets into a living operational network that reflects real-world business interactions."
   },
   {
-    id: "02-3",
-    number: "2.3",
-    title: "Core Tool 2 (Claude 3.7): Advanced Reasoning, Structured JSON & Cognitive Extraction",
-    duration: "12 min",
-    summary:
-      "Learn why Claude 3.7 is the premier cognitive engine for B2B service workflows. Master system prompts, few-shot examples, and strict JSON output schemas that never break downstream automations.",
-    learningObjective:
-      "Write deterministic system prompts for Claude 3.7, enforce strict JSON formatting, and handle complex document extraction.",
-    takeaway:
-      "Automations crash when AI outputs conversational filler like 'Sure, here is your summary:'. Always instruct Claude to output pure, validated JSON.",
-    slides: [
+    "id": "02-3",
+    "number": "2.3",
+    "title": "Data Validation: Field Types, Enums & Status Pipeline Triggers",
+    "duration": "15m",
+    "summary": "Enforce strict data integrity with specialized field formats, single-select enums, and automated pipeline status gates.",
+    "slides": [
       {
-        id: "s-0203-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "STAGE 02 · CLAUDE 3.7 INTELLIGENCE",
-        headline: "CORE TOOL 2: CLAUDE 3.7 AS A COGNITIVE ENGINE",
-        subheadline: "Deep reasoning, 200K token document processing, and deterministic JSON schemas that never fail.",
-      },
-      {
-        id: "s-0203-2",
-        order: 2,
-        type: "BIG_STATEMENT",
-        headline: "A chatbot talks to users. A cognitive engine speaks fluent JSON to downstream database automations.",
-        subheadline: "When you eliminate conversational fluff and enforce strict data schemas, Claude becomes an unyielding enterprise data processor.",
-      },
-      {
-        id: "s-0203-3",
-        order: 3,
-        type: "FRAMEWORK",
-        headline: "The Anatomy of a Production-Grade System Prompt",
-        subheadline: "The four non-negotiable components of every high-ticket AI prompt.",
-        pillars: [
-          {
-            badge: "SECTION 1 · ROLE",
-            title: "Expert Operational Persona",
-            description: "Define domain context, corporate standards, risk tolerance, and evaluation criteria.",
-          },
-          {
-            badge: "SECTION 2 · RULES",
-            title: "Explicit Negative Constraints",
-            description: "What Claude MUST NOT do: never invent numbers, never output conversational text, never hallucinate.",
-          },
-          {
-            badge: "SECTION 3 · EXAMPLES",
-            title: "Few-Shot Input/Output Pairs",
-            description: "Provide 2 real-world examples demonstrating the exact desired input and target output format.",
-          },
-          {
-            badge: "SECTION 4 · SCHEMA",
-            title: "Strict JSON Specification",
-            description: "Define the exact JSON keys, types (string, number, array), and required values.",
-          },
+        "id": "s-023-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 02 · LESSON 2.3",
+        "headline": "Data Validation: Field Types, Enums & Status Pipeline Triggers",
+        "subheadline": "Enforce strict data integrity with specialized field formats, single-select enums, and automated pipeline status gates.",
+        "title": "Data Validation: Field Types, Enums & Status Pipeline Triggers",
+        "subtitle": "Enforce strict data integrity with specialized field formats, single-select enums, and automated pipeline status gates.",
+        "bulletPoints": [
+          "Strict Field Types: Mandating email, phone, number, currency, and date formats to prevent malformed data entry.",
+          "Single-Select Pipelines: Defining clear, mutually exclusive status stages that serve as reliable automation triggers.",
+          "Required Field Validation: Using Airtable form rules and interface constraints to guarantee no incomplete records are created.",
+          "Status Audit Logging: Storing timestamped records of every status change to track operational processing velocity."
         ],
-      },
-      {
-        id: "s-0203-4",
-        order: 4,
-        type: "COMPARISON",
-        headline: "Amateur Chatbot Prompt vs Production System Prompt",
-        comparison: {
-          leftTitle: "Amateur Prompt (Fails Often)",
-          leftItems: [
-            "'Please summarize this inquiry and rate how good the lead is from 1 to 10.'",
-            "Returns: 'Here is your summary! I think this lead is great because...'",
-            "Breaks downstream Make.com JSON parsers",
-            "Unpredictable output format and keys",
-          ],
-          rightTitle: "Production JSON Prompt (100% Reliable)",
-          rightItems: [
-            "Strict schema with negative constraints and enum types",
-            "Returns pure JSON: { 'lead_score': 9, 'deal_size_estimate': 15000, 'priority': 'HIGH' }",
-            "Parses cleanly into Airtable columns with zero errors",
-            "Consistent, deterministic execution every single time",
-          ],
-        },
-      },
-      {
-        id: "s-0203-5",
-        order: 5,
-        type: "RECAP",
-        headline: "Claude 3.7 Engineering Rules",
-        recapPoints: [
-          "Instruct Claude with: 'Output valid RFC 8259 JSON only. Do not include markdown codeblocks or conversational pleasantries.'",
-          "Use few-shot examples to illustrate edge cases.",
-          "Leverage Claude's massive 200,000-token context window to analyze multi-page client briefs, PDFs, and legal contracts.",
-        ],
-      },
-      {
-        id: "s-0203-6",
-        order: 6,
-        type: "CHAPTER_END",
-        headline: "Lesson 2.3 Complete",
-        subheadline: "Next up: Core Tool 3 — Make.com Autonomous Cloud Nervous System.",
-      },
+        "takeaway": "Strict input validation ensures your cognitive AI models receive clean, predictable data payloads every single time."
+      }
     ],
-    writtenLesson: `
-# Core Tool 2 (Claude 3.7): Advanced Reasoning, Structured JSON & Cognitive Extraction
-
-When non-technical people think of AI, they imagine typing a question into a chat window and reading a conversational reply.
-
-In enterprise automation, conversational replies are catastrophic. If your automation pipeline sends customer notes to Claude and Claude replies: *"Certainly! Here is an analysis of your customer's request:"*, your downstream Make.com scenario will fail because it expected a raw data object.
-
-To build robust B2B systems, you must treat **Claude 3.7** as an executive cognitive extraction API that outputs strictly structured, validated JSON.
-
----
-
-## 1. Why Claude 3.7 Over Alternative Models?
-
-While OpenAI and Google offer capable models, Claude 3.7 has emerged as the premier choice for complex B2B service firms for three reasons:
-1. **Unrivaled Complex Reasoning & Nuance:** When analyzing messy human writing (e.g., a rambling email from a frustrated client or an ambiguous contract clause), Claude understands subtlety better than any other model.
-2. **200,000-Token Context Window:** You can pass an entire 50-page employee handbook, a price book, and 30 sample proposals in a single API call without truncating data.
-3. **Flawless Formatting Discipline:** When given a strict JSON schema, Claude adheres to the exact keys, types, and constraints without injecting unrequested formatting.
-
----
-
-## 2. The Production JSON System Prompt Template
-
-Here is the exact structure you should use for client deliverables:
-
-\`\`\`markdown
-You are the Executive Lead Qualification Engine for [Client Company Name].
-
-Analyze the following incoming lead inquiry and extract key commercial parameters.
-
-CRITICAL CONSTRAINTS:
-1. Output valid JSON ONLY.
-2. Do not wrap output in \`\`\`json markdown fences.
-3. Do not include intro, pleasantries, or outro text.
-4. If a field cannot be determined, use null. Never hallucinate.
-
-TARGET JSON SCHEMA:
-{
-  "client_name": string or null,
-  "inquiry_type": "EMERGENCY_SERVICE" | "STANDARD_QUOTE" | "GENERAL_INQUIRY",
-  "estimated_budget_tier": "UNDER_5K" | "5K_TO_20K" | "OVER_20K" | "UNKNOWN",
-  "lead_score_1_to_10": integer,
-  "priority_flag": "URGENT" | "NORMAL" | "LOW",
-  "one_sentence_executive_summary": string,
-  "recommended_response_angle": string
-}
-\`\`\`
-
-When Make.com calls Claude with this prompt, the response is an ultra-clean, structured data object that immediately maps into your Airtable database fields.
-
----
-
-## Action Task
-Open your Claude workspace or API playground. Test the system prompt above by pasting a messy customer inquiry. Verify that the response is pure, error-free JSON without any conversational commentary.
-    `,
+    "writtenLesson": "# 2.3 Data Validation: Field Types, Enums & Status Pipeline Triggers\n\n> **Module 02: Core Tool 1 — Airtable as the Enterprise Relational Database**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nEnforce strict data integrity with specialized field formats, single-select enums, and automated pipeline status gates.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (Strict Field Types):** Mandating email, phone, number, currency, and date formats to prevent malformed data entry.\n\n- **Pillar 2 (Single-Select Pipelines):** Defining clear, mutually exclusive status stages that serve as reliable automation triggers.\n\n- **Pillar 3 (Required Field Validation):** Using Airtable form rules and interface constraints to guarantee no incomplete records are created.\n\n- **Pillar 4 (Status Audit Logging):** Storing timestamped records of every status change to track operational processing velocity.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** Strict input validation ensures your cognitive AI models receive clean, predictable data payloads every single time.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - Data Validation: Field Types, Enums & Status Pipeline Triggers\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Enforce strict data integrity with specialized field formats, single-select enums, and automated pipeline status gates.",
+    "takeaway": "Strict input validation ensures your cognitive AI models receive clean, predictable data payloads every single time."
   },
   {
-    id: "02-4",
-    number: "2.4",
-    title: "Core Tool 3 (Make.com): The Autonomous Cloud Nervous System Connecting Apps to AI",
-    duration: "12 min",
-    summary:
-      "Master the mechanics of Make.com. Learn how webhooks, routers, filters, and error handlers connect everyday business applications to Airtable and Claude 3.7 with 99.9% reliability.",
-    learningObjective:
-      "Build multi-step automated workflows in Make.com, configure webhooks, parse JSON, and set up automatic error-handling fallback routes.",
-    takeaway:
-      "Make.com runs 24/7/365 in the cloud. Once your scenarios are built and tested, they deliver continuous client value while you sleep.",
-    slides: [
+    "id": "02-4",
+    "number": "2.4",
+    "title": "Rollups, Lookups & Calculated Operational Velocity Metrics",
+    "duration": "15m",
+    "summary": "Compute real-time operational KPIs, revenue aggregates, and processing latency directly within your relational base.",
+    "slides": [
       {
-        id: "s-0204-1",
-        order: 1,
-        type: "TITLE",
-        eyebrow: "STAGE 02 · MAKE.COM ORCHESTRATION",
-        headline: "CORE TOOL 3: MAKE.COM ORCHESTRATION",
-        subheadline: "How to connect webhooks, routers, Claude API modules, and Airtable into unbreakable autonomous pipelines.",
-      },
-      {
-        id: "s-0204-2",
-        order: 2,
-        type: "BIG_STATEMENT",
-        headline: "Webhooks are the heartbeat of modern business. When an event happens anywhere, Make catches it in milliseconds.",
-        subheadline: "No polling delays. No manual triggers. Instant, automated execution.",
-      },
-      {
-        id: "s-0204-3",
-        order: 3,
-        type: "FRAMEWORK",
-        headline: "The Anatomy of a Bulletproof Make Scenario",
-        subheadline: "The four core modules of every production client pipeline.",
-        pillars: [
-          {
-            badge: "MODULE 1 · TRIGGER",
-            title: "Custom Webhook",
-            description: "Instant data ingestion from web forms, Stripe, Typeform, or Airtable button clicks.",
-          },
-          {
-            badge: "MODULE 2 · INTELLIGENCE",
-            title: "Claude 3.7 API Call",
-            description: "Passing data payloads to Claude with your JSON system prompt for instant cognitive evaluation.",
-          },
-          {
-            badge: "MODULE 3 · DATABASE",
-            title: "Airtable Record Creation",
-            description: "Mapping the parsed JSON values directly into linked records in the client's master Base.",
-          },
-          {
-            badge: "MODULE 4 · DISPATCH",
-            title: "Notification / Email Router",
-            description: "Sending Slack alerts to staff for hot leads or dispatching personalized emails to prospects.",
-          },
+        "id": "s-024-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 02 · LESSON 2.4",
+        "headline": "Rollups, Lookups & Calculated Operational Velocity Metrics",
+        "subheadline": "Compute real-time operational KPIs, revenue aggregates, and processing latency directly within your relational base.",
+        "title": "Rollups, Lookups & Calculated Operational Velocity Metrics",
+        "subtitle": "Compute real-time operational KPIs, revenue aggregates, and processing latency directly within your relational base.",
+        "bulletPoints": [
+          "Lookup Fields: Pulling company billing terms and priority tiers dynamically onto active work order records.",
+          "Rollup Calculations: Summing paid invoice totals, counting open tickets, and averaging turnaround hours automatically.",
+          "Operational Velocity Formulas: Calculating DATETIME_DIFF between submission and completion to demonstrate ROI to clients.",
+          "Executive KPI Views: Building dedicated filtered views showing total hours saved and pipeline dollar value."
         ],
-      },
-      {
-        id: "s-0204-4",
-        order: 4,
-        type: "CHECKLIST",
-        headline: "Make.com Production Safety Checklist",
-        subheadline: "Ensure your client scenarios never crash silently.",
-        checklist: [
-          { label: "Attach an 'Ignore' or 'Rollback' error directive to external API calls", passed: true, note: "If an API timeout occurs, the scenario doesn't deactivate" },
-          { label: "Set up email notification alerts for scenario warnings", passed: true, note: "Get alerted immediately if a client's API token expires" },
-          { label: "Add data filters between modules to prevent empty runs", passed: true, note: "Verify email exists before triggering outbound send modules" },
-          { label: "Use Environment Variables for sensitive API keys", passed: true, note: "Never hardcode private credentials into public scenario templates" },
-        ],
-      },
-      {
-        id: "s-0204-5",
-        order: 5,
-        type: "RECAP",
-        headline: "Make.com Mastery Summary",
-        recapPoints: [
-          "Make.com coordinates data movement between all external software and your core intelligence.",
-          "Use Webhooks for instant real-time execution instead of scheduled polling.",
-          "Robust error handling guarantees that temporary client connection glitches never stop the system.",
-        ],
-      },
-      {
-        id: "s-0204-6",
-        order: 6,
-        type: "CHAPTER_END",
-        headline: "Module 2 Complete!",
-        subheadline: "The 3 Core Tools are mastered. Next: Module 3 — Building The Core Service Deliverables.",
-      },
+        "takeaway": "Real-time computed KPIs provide visual proof of your system's value, making retainer renewals effortless."
+      }
     ],
-    writtenLesson: `
-# Core Tool 3 (Make.com): The Autonomous Cloud Nervous System Connecting Apps to AI
-
-You now have **Airtable** as your relational database and **Claude 3.7** as your cognitive extraction engine. The final component that brings your systems to life is **Make.com**.
-
-Make.com is a visual automation platform that runs on dedicated cloud servers. It operates 24 hours a day, 365 days a year. It never sleeps, never forgets a follow-up, and processes tasks in milliseconds.
-
----
-
-## 1. How Make.com Differs from Zapier
-
-Many beginners ask: *"Why Make.com instead of Zapier?"*
-
-While Zapier is popular for simple 2-step tasks, it has severe limitations for B2B service agencies:
-- **Cost Efficiency:** Zapier charges roughly $20/month for 750 tasks. Make.com charges $9/month for **10,000 operations**. For the same price, Make gives you more than 13 times the operational capacity.
-- **Complex Logic & Routers:** Make provides visual multi-branch routing, array aggregators, and JSON parsers out of the box.
-- **Visual Troubleshooting:** When a scenario runs in Make, you can inspect the exact JSON input and output bundle of every single node in real-time.
-
----
-
-## 2. Building Your First Production Scenario
-
-A standard B2B client scenario follows this five-step sequence:
-1. **Custom Webhook Module:** Receives the incoming client payload (e.g., from a website contact form or email forwarder).
-2. **Anthropic Claude API Module:** Passes the payload to Claude with your deterministic JSON system prompt.
-3. **JSON Parse Module:** Converts Claude's raw string output into distinct variables (\`lead_score\`, \`inquiry_type\`, \`summary\`).
-4. **Airtable 'Create Record' Module:** Writes these parsed values directly into the client's Airtable Base.
-5. **Router Module:** 
-   - *Route A (If \`lead_score\` >= 8):* Sends an urgent SMS/Slack notification to the business owner: *"Hot lead arrived: $20,000 budget! Call immediately."*
-   - *Route B (If \`lead_score\` < 8):* Adds the lead to a general nurture sequence.
-
----
-
-## Action Task
-Log into your Make.com account. Create a new scenario, create a **Custom Webhook**, and send a test POST payload using Postman, curl, or a simple online form. Inspect the received data bundle in Make.
-    `,
+    "writtenLesson": "# 2.4 Rollups, Lookups & Calculated Operational Velocity Metrics\n\n> **Module 02: Core Tool 1 — Airtable as the Enterprise Relational Database**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nCompute real-time operational KPIs, revenue aggregates, and processing latency directly within your relational base.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (Lookup Fields):** Pulling company billing terms and priority tiers dynamically onto active work order records.\n\n- **Pillar 2 (Rollup Calculations):** Summing paid invoice totals, counting open tickets, and averaging turnaround hours automatically.\n\n- **Pillar 3 (Operational Velocity Formulas):** Calculating DATETIME_DIFF between submission and completion to demonstrate ROI to clients.\n\n- **Pillar 4 (Executive KPI Views):** Building dedicated filtered views showing total hours saved and pipeline dollar value.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** Real-time computed KPIs provide visual proof of your system's value, making retainer renewals effortless.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - Rollups, Lookups & Calculated Operational Velocity Metrics\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Compute real-time operational KPIs, revenue aggregates, and processing latency directly within your relational base.",
+    "takeaway": "Real-time computed KPIs provide visual proof of your system's value, making retainer renewals effortless."
   },
+  {
+    "id": "02-5",
+    "number": "2.5",
+    "title": "Native Airtable Automations vs. External Orchestration Triggers",
+    "duration": "15m",
+    "summary": "Know exactly when to use native Airtable automations and when to hand off complex logic to Make.com.",
+    "slides": [
+      {
+        "id": "s-025-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 02 · LESSON 2.5",
+        "headline": "Native Airtable Automations vs. External Orchestration Triggers",
+        "subheadline": "Know exactly when to use native Airtable automations and when to hand off complex logic to Make.com.",
+        "title": "Native Airtable Automations vs. External Orchestration Triggers",
+        "subtitle": "Know exactly when to use native Airtable automations and when to hand off complex logic to Make.com.",
+        "bulletPoints": [
+          "The Division of Labor: Using native Airtable automations for internal hygiene (record updates, field clearing, notifications).",
+          "Outgoing Webhooks: Triggering external Make.com scenarios the instant a record status moves to 'Trigger AI Review'.",
+          "Automation Quotas: Preserving Airtable monthly execution limits by executing heavy multi-step logic in external visual builders.",
+          "Conditional Run Logic: Setting granular filter conditions to guarantee automations only fire when specific prerequisites are met."
+        ],
+        "takeaway": "Keep native automations focused on internal state transitions; delegate external API integrations and heavy computation to Make.com."
+      }
+    ],
+    "writtenLesson": "# 2.5 Native Airtable Automations vs. External Orchestration Triggers\n\n> **Module 02: Core Tool 1 — Airtable as the Enterprise Relational Database**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nKnow exactly when to use native Airtable automations and when to hand off complex logic to Make.com.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (The Division of Labor):** Using native Airtable automations for internal hygiene (record updates, field clearing, notifications).\n\n- **Pillar 2 (Outgoing Webhooks):** Triggering external Make.com scenarios the instant a record status moves to 'Trigger AI Review'.\n\n- **Pillar 3 (Automation Quotas):** Preserving Airtable monthly execution limits by executing heavy multi-step logic in external visual builders.\n\n- **Pillar 4 (Conditional Run Logic):** Setting granular filter conditions to guarantee automations only fire when specific prerequisites are met.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** Keep native automations focused on internal state transitions; delegate external API integrations and heavy computation to Make.com.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - Native Airtable Automations vs. External Orchestration Triggers\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Know exactly when to use native Airtable automations and when to hand off complex logic to Make.com.",
+    "takeaway": "Keep native automations focused on internal state transitions; delegate external API integrations and heavy computation to Make.com."
+  },
+  {
+    "id": "02-6",
+    "number": "2.6",
+    "title": "Building Client Interface Dashboards with Role-Based Permissions",
+    "duration": "15m",
+    "summary": "Deploy Airtable Interfaces to give clients and internal staff customized dashboards without exposing underlying raw tables.",
+    "slides": [
+      {
+        "id": "s-026-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 02 · LESSON 2.6",
+        "headline": "Building Client Interface Dashboards with Role-Based Permissions",
+        "subheadline": "Deploy Airtable Interfaces to give clients and internal staff customized dashboards without exposing underlying raw tables.",
+        "title": "Building Client Interface Dashboards with Role-Based Permissions",
+        "subtitle": "Deploy Airtable Interfaces to give clients and internal staff customized dashboards without exposing underlying raw tables.",
+        "bulletPoints": [
+          "Airtable Interfaces Overview: Creating modern, responsive web portals directly inside Airtable with drag-and-drop elements.",
+          "Role-Based Access: Providing staff with operational review queues while restricting executives to high-level metric summaries.",
+          "Interactive Action Buttons: Enabling human-in-the-loop approvals with single-click buttons that trigger downstream webhooks.",
+          "Branded Experience: Customizing headers, colors, and instructions to make the portal feel like custom enterprise software."
+        ],
+        "takeaway": "Airtable Interfaces turn back-end database tables into professional software products that clients love using."
+      }
+    ],
+    "writtenLesson": "# 2.6 Building Client Interface Dashboards with Role-Based Permissions\n\n> **Module 02: Core Tool 1 — Airtable as the Enterprise Relational Database**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nDeploy Airtable Interfaces to give clients and internal staff customized dashboards without exposing underlying raw tables.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (Airtable Interfaces Overview):** Creating modern, responsive web portals directly inside Airtable with drag-and-drop elements.\n\n- **Pillar 2 (Role-Based Access):** Providing staff with operational review queues while restricting executives to high-level metric summaries.\n\n- **Pillar 3 (Interactive Action Buttons):** Enabling human-in-the-loop approvals with single-click buttons that trigger downstream webhooks.\n\n- **Pillar 4 (Branded Experience):** Customizing headers, colors, and instructions to make the portal feel like custom enterprise software.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** Airtable Interfaces turn back-end database tables into professional software products that clients love using.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - Building Client Interface Dashboards with Role-Based Permissions\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Deploy Airtable Interfaces to give clients and internal staff customized dashboards without exposing underlying raw tables.",
+    "takeaway": "Airtable Interfaces turn back-end database tables into professional software products that clients love using."
+  },
+  {
+    "id": "02-7",
+    "number": "2.7",
+    "title": "Module 2 Project: The Autonomous Client CRM & Work Order Hub",
+    "duration": "15m",
+    "summary": "Build, configure, and test a complete multi-client CRM and automated work order intake and tracking repository.",
+    "slides": [
+      {
+        "id": "s-027-1",
+        "order": 1,
+        "type": "LIST",
+        "eyebrow": "MODULE 02 · LESSON 2.7",
+        "headline": "Module 2 Project: The Autonomous Client CRM & Work Order Hub",
+        "subheadline": "Build, configure, and test a complete multi-client CRM and automated work order intake and tracking repository.",
+        "title": "Module 2 Project: The Autonomous Client CRM & Work Order Hub",
+        "subtitle": "Build, configure, and test a complete multi-client CRM and automated work order intake and tracking repository.",
+        "bulletPoints": [
+          "Complete Project Blueprint: Relational schema containing Accounts, Contacts, Orders, Invoices, and Automated Audit Logs.",
+          "Form Intake & Triage: Public branded intake form with automated field validation and instant notification dispatch.",
+          "Review Interface: Operational dashboard featuring pending reviews, one-click approvals, and velocity metrics.",
+          "Commercial Deliverable: Packaging this custom operational CRM for $2,500 setup plus $500/month recurring maintenance."
+        ],
+        "takeaway": "This operations hub is the foundational core of your 3-tool agency. Master this build and you have a high-demand B2B offering."
+      }
+    ],
+    "writtenLesson": "# 2.7 Module 2 Project: The Autonomous Client CRM & Work Order Hub\n\n> **Module 02: Core Tool 1 — Airtable as the Enterprise Relational Database**  \n> *Core Playbook: Build a $10,000/Month AI Service Business With Just 3 Core Tools*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nIn modern B2B operations, companies struggle not with a shortage of artificial intelligence tools, but with an absence of reliable, predictable execution systems. Many business owners have experimented with basic ChatGPT prompts or isolated chatbots, only to find that generic solutions fail when confronted with unstructured real-world data, legacy software, and nuanced human workflows.\n\nBuild, configure, and test a complete multi-client CRM and automated work order intake and tracking repository.\n\nFor agencies and independent operators, this gap represents an immense commercial opportunity. When you position yourself not as a generic prompt engineer, but as a systems architect who eliminates costly operational bottlenecks, client conversations shift immediately from price sensitivity to business value and return on investment.\n\n---\n\n## 1. Architectural Foundations & Core Mechanics\n\nTo build an implementation that functions autonomously in production, you must understand the underlying mechanics that govern this workflow. Traditional automation architectures fail because they are brittle: if an incoming input deviates slightly from expected fields, the entire pipeline halts.\n\n### Key System Pillars\n\n- **Pillar 1 (Complete Project Blueprint):** Relational schema containing Accounts, Contacts, Orders, Invoices, and Automated Audit Logs.\n\n- **Pillar 2 (Form Intake & Triage):** Public branded intake form with automated field validation and instant notification dispatch.\n\n- **Pillar 3 (Review Interface):** Operational dashboard featuring pending reviews, one-click approvals, and velocity metrics.\n\n- **Pillar 4 (Commercial Deliverable):** Packaging this custom operational CRM for $2,500 setup plus $500/month recurring maintenance.\n\n### Technical Execution Philosophy\n\nDeterministic system design requires enforcing strict typing at the boundary, parsing and normalizing incoming webhooks prior to LLM reasoning, and using structured JSON tool definitions. By constraining model temperature between 0.0 and 0.2, hallucinations are virtually eliminated across high-throughput production cycles.\n\n> **Core Production Rule:** This operations hub is the foundational core of your 3-tool agency. Master this build and you have a high-demand B2B offering.\n\n---\n\n## 2. Step-by-Step System Implementation\n\nDeploying this capability for a paying commercial client follows a rigorous 4-phase delivery framework designed to guarantee zero downtime and immediate operational relief.\n\n### Phase 1: Environment Setup & Data Schemas\nEstablish the operational sandbox and configure the relational schema. Define strict field types, required foreign keys, and status pipelines. Never build directly in the client's live production environment without isolated staging webhooks and version-controlled schemas.\n\n### Phase 2: Logic Design & Prompt Engineering\nConstruct the cognitive instruction set. Define system prompts that explicitly state role boundaries, tool availability, required JSON output structures, and fallback behaviors. Implement confidence scoring: if model certainty falls below 85%, route the task to a human-in-the-loop review queue rather than executing unchecked.\n\n### Phase 3: Integration & Error Handling\nWire the execution orchestrator (such as Make.com or n8n) to external APIs. Implement exponential backoff for rate limits, configure instant Slack/email alerting for execution failures, and store full payload logs in an audit table for post-execution traceability.\n\n### Phase 4: Client Deployment & User Training\nDeploy the system into the client's workspace. Configure permission tiers so administrative staff can oversee operations without the ability to modify backend logic. Provide an intuitive interface (such as Airtable Interfaces or Softr) and conduct a recorded 30-minute operational walkthrough.\n\n---\n\n## 3. Production Code & System Blueprint\n\nBelow is the validated architecture schema and prompt specification used to deploy this lesson's deliverables:\n\n```json\n{\n  \"system\": \"Build a $10,000/Month AI Service Business With Just 3 Core Tools - Module 2 Project: The Autonomous Client CRM & Work Order Hub\",\n  \"version\": \"2.4.0\",\n  \"guardrails\": {\n    \"strict_mode\": true,\n    \"fallback_threshold\": 0.85,\n    \"max_retries\": 3\n  },\n  \"pipeline\": [\n    { \"step\": 1, \"action\": \"ingest_and_validate\", \"schema\": \"strict_json\" },\n    { \"step\": 2, \"action\": \"cognitive_reasoning\", \"model\": \"claude-3-7-sonnet\" },\n    { \"step\": 3, \"action\": \"deterministic_dispatch\", \"target\": \"client_crm_api\" }\n  ]\n}\n```\n\n---\n\n## 4. Real-World Case Example & ROI Calculation\n\n### Real-World Client Scenario\nA mid-market service business handling 400 inquiries per week implemented this exact module workflow. Prior to deployment, two full-time administrative staff spent 18 hours weekly manually copying data, classifying requests, and drafting generic initial responses.\n\n### Operational & Financial Impact\n- **Manual Labor Eliminated:** 36 employee hours saved weekly (90% reduction).\n- **Response Latency:** Decreased from 4.2 hours to 45 seconds.\n- **Client Value Created:** $4,500/month in reclaimed labor capacity and higher lead conversion.\n- **Agency Monetization:** Implemented as a $2,500 setup sprint with an ongoing $650/month maintenance retainer.\n\n---\n\n## 5. Practical Implementation Checklist\n\n- [ ] Configure the staging environment and establish API connections.\n- [ ] Define the relational data schema and validate incoming webhook payloads.\n- [ ] Implement system prompt instructions with strict JSON boundary constraints.\n- [ ] Test edge cases including malformed data, timeouts, and rate limits.\n- [ ] Conduct final end-to-end integration test before production client handoff.\n",
+    "learningObjective": "Build, configure, and test a complete multi-client CRM and automated work order intake and tracking repository.",
+    "takeaway": "This operations hub is the foundational core of your 3-tool agency. Master this build and you have a high-demand B2B offering."
+  }
 ];
+

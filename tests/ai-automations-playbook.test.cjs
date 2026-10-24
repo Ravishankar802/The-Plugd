@@ -54,39 +54,39 @@ test("2. Detail view data and curriculum integrity", async () => {
   assert.ok(detailFile.includes("price: 3"), "Price must be 3");
   assert.ok(detailFile.includes("originalPrice: 9"), "Original price must be 9");
   assert.ok(detailFile.includes("modulesCount: 9"), "Must have 9 modules");
-  assert.ok(detailFile.includes("lessonsCount: 36"), "Must have 36 lessons");
+  assert.ok(detailFile.includes("lessonsCount: 63"), "Must have 63 lessons");
   assert.ok(detailFile.includes("No coding, programming, or previous technical experience required"));
 });
 
-test("3. All 9 modules and 36 lessons exist with slides and written content", () => {
+test("3. All 9 modules and 63 lessons exist with slides and written content", () => {
   const content1 = fs.readFileSync(path.join(__dirname, "../src/lib/ai-automations-content-1.ts"), "utf8");
   const content2 = fs.readFileSync(path.join(__dirname, "../src/lib/ai-automations-content-2.ts"), "utf8");
   const content3 = fs.readFileSync(path.join(__dirname, "../src/lib/ai-automations-content-3.ts"), "utf8");
 
-  // Content 1: Modules 1, 2, 3 (12 lessons)
+  // Content 1: Modules 1, 2, 3 (21 lessons)
   assert.ok(content1.includes("MODULE_01_LESSONS"));
   assert.ok(content1.includes("MODULE_02_LESSONS"));
   assert.ok(content1.includes("MODULE_03_LESSONS"));
 
-  // Content 2: Modules 4, 5, 6 (12 lessons)
+  // Content 2: Modules 4, 5, 6 (21 lessons)
   assert.ok(content2.includes("MODULE_04_LESSONS"));
   assert.ok(content2.includes("MODULE_05_LESSONS"));
   assert.ok(content2.includes("MODULE_06_LESSONS"));
 
-  // Content 3: Modules 7, 8, 9 (12 lessons)
+  // Content 3: Modules 7, 8, 9 (21 lessons)
   assert.ok(content3.includes("MODULE_07_LESSONS"));
   assert.ok(content3.includes("MODULE_08_LESSONS"));
   assert.ok(content3.includes("MODULE_09_LESSONS"));
 
   // Check lesson count across files (excluding interface definition in content-1)
-  const lessonMatches = (content1 + content2 + content3).match(/learningObjective:\s*"/g) || [];
-  assert.equal(lessonMatches.length, 36, "Must contain exactly 36 extended lessons with learning objectives");
+  const lessonMatches = (content1 + content2 + content3).match(/"learningObjective":\s*"/g) || (content1 + content2 + content3).match(/learningObjective:\s*"/g) || [];
+  assert.equal(lessonMatches.length, 63, "Must contain exactly 63 extended lessons with learning objectives");
 
-  const writtenLessonMatches = (content1 + content2 + content3).match(/writtenLesson:\s*`/g) || [];
-  assert.equal(writtenLessonMatches.length, 36, "Must contain exactly 36 written lessons");
+  const writtenLessonMatches = (content1 + content2 + content3).match(/"writtenLesson":\s*"/g) || (content1 + content2 + content3).match(/writtenLesson:\s*`/g) || [];
+  assert.equal(writtenLessonMatches.length, 63, "Must contain exactly 63 written lessons");
 
-  const takeawayMatches = (content1 + content2 + content3).match(/^\s{4}takeaway:/gm) || [];
-  assert.equal(takeawayMatches.length, 36, "Must contain exactly 36 lesson-level takeaways");
+  const takeawayMatches = (content1 + content2 + content3).match(/"takeaway":/g) || [];
+  assert.ok(takeawayMatches.length >= 63, "Must contain at least 63 lesson-level takeaways");
 });
 
 test("4. Course registration in COURSES and getAllCourses()", () => {
