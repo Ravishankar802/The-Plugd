@@ -22,8 +22,6 @@ import {
 import { Slide, Lesson, Module, Course, getPlaybookOverviewUrl } from "@/lib/playbooks-data";
 import WrittenLessonViewer from "@/components/WrittenLessonViewer";
 import { performLogout } from "@/lib/auth-client";
-import { getTemplateForPlaybook } from "@/lib/slide-templates/registry";
-import TemplateMotifHeader from "@/components/slide-templates/TemplateMotifHeader";
 
 interface SlideViewerProps {
   course: Course;
@@ -246,29 +244,24 @@ export default function SlideViewer({
     );
   }
 
-  // Check unique template registry assignment
-  const template = getTemplateForPlaybook(course.slug);
-
-  // Presentation View (Applied Unique PPT Template)
+  // Unified Canonical Template for all Playbooks (1 - 32)
+  // Presentation View (Reference Blueprint Template)
   return (
     <div
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      style={{
-        backgroundColor: template.colorPalette.canvasBg,
-      }}
       className={`relative flex min-h-screen flex-col font-sans antialiased ${
-        isFullscreen ? "p-0" : ""
-      }`}
+        isModule1
+          ? "bg-[#faf8f5] text-[#1c1917] selection:bg-[#2563eb] selection:text-white"
+          : "bg-[#0A0A0C] text-white selection:bg-[#2563eb] selection:text-white"
+      } ${isFullscreen ? "p-0" : ""}`}
     >
       {/* Top Header Controls Bar */}
       <header
-        style={{
-          borderColor: template.colorPalette.border,
-          backgroundColor: isModule1 ? "rgba(250, 248, 245, 0.95)" : "rgba(14, 14, 18, 0.9)",
-        }}
         className={`sticky top-0 z-50 flex h-16 items-center justify-between border-b px-4 sm:px-8 backdrop-blur-md ${
-          isModule1 ? "text-[#1c1917]" : "text-white"
+          isModule1
+            ? "border-[#e7e5e4] bg-[#faf8f5]/90 text-[#1c1917]"
+            : "border-neutral-800/80 bg-[#121216]/90 text-white"
         }`}
       >
         {/* Left: Syllabus Navigation & Module/Lesson Selectors */}
@@ -303,7 +296,7 @@ export default function SlideViewer({
                   : "border-neutral-800 bg-neutral-900 text-neutral-200 hover:border-neutral-700 hover:bg-neutral-800"
               }`}
             >
-              <span className="font-bold shrink-0" style={{ color: template.colorPalette.accent }}>
+              <span className={`font-bold shrink-0 ${isModule1 ? "text-[#2563eb]" : "text-[#2563eb]"}`}>
                 MODULE {String(module.number).padStart(2, "0")}
               </span>
               <ChevronDown
@@ -329,8 +322,7 @@ export default function SlideViewer({
                   }`}
                 >
                   <span
-                    className="text-[11px] font-mono font-bold tracking-wider uppercase"
-                    style={{ color: template.colorPalette.accent }}
+                    className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#2563eb]"
                   >
                     CURRICULUM · {course.modules.length} MODULES
                   </span>
@@ -361,19 +353,11 @@ export default function SlideViewer({
                         }}
                         className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${
                           isActive
-                            ? "font-bold"
+                            ? "bg-[#2563eb]/15 text-[#2563eb] font-bold"
                             : isModule1
                             ? "text-[#44403c] hover:bg-[#f5f3ef] hover:text-[#1c1917]"
                             : "text-neutral-300 hover:bg-neutral-800/80 hover:text-white"
                         }`}
-                        style={
-                          isActive
-                            ? {
-                                backgroundColor: `${template.colorPalette.accent}20`,
-                                color: template.colorPalette.accent,
-                              }
-                            : undefined
-                        }
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
                           <span
@@ -445,8 +429,7 @@ export default function SlideViewer({
                   }`}
                 >
                   <span
-                    className="text-[11px] font-mono font-bold tracking-wider uppercase"
-                    style={{ color: template.colorPalette.accent }}
+                    className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#2563eb]"
                   >
                     MODULE {String(module.number).padStart(2, "0")} · LESSONS
                   </span>
@@ -474,19 +457,11 @@ export default function SlideViewer({
                         }}
                         className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${
                           isActive
-                            ? "font-bold"
+                            ? "bg-[#2563eb]/15 text-[#2563eb] font-bold"
                             : isModule1
                             ? "text-[#44403c] hover:bg-[#f5f3ef] hover:text-[#1c1917]"
                             : "text-neutral-300 hover:bg-neutral-800/80 hover:text-white"
                         }`}
-                        style={
-                          isActive
-                            ? {
-                                backgroundColor: `${template.colorPalette.accent}20`,
-                                color: template.colorPalette.accent,
-                              }
-                            : undefined
-                        }
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
                           <span
@@ -591,41 +566,27 @@ export default function SlideViewer({
       <main className="relative flex flex-1 items-center justify-center p-4 sm:p-8 lg:p-14 overflow-hidden">
         <div
           key={`${lesson.id}-${currentIndex}`}
-          style={{
-            backgroundColor: isModule1 ? "#ffffff" : undefined,
-            background: isModule1 ? undefined : template.colorPalette.stageBg,
-            borderColor: template.colorPalette.border,
-            boxShadow: isModule1
-              ? "0 4px 20px rgba(0,0,0,0.04)"
-              : `0 20px 50px -10px ${template.colorPalette.accent}20, 0 0 1px ${template.colorPalette.border}`,
-          }}
-          className={`relative w-full max-w-5xl rounded-3xl p-6 sm:p-12 lg:p-16 transition-all border ${
-            isModule1 ? "text-[#1c1917]" : "text-white"
+          className={`relative w-full max-w-5xl rounded-3xl p-6 sm:p-12 lg:p-16 transition-all ${
+            isModule1
+              ? "border border-[#e7e5e4] bg-white shadow-xs text-[#1c1917]"
+              : "border border-neutral-800/80 bg-gradient-to-b from-[#141418] via-[#101014] to-[#0D0D10] shadow-2xl text-white"
           } ${slideDirection === "next" ? "animate-slide-right" : "animate-slide-left"}`}
         >
-          {/* Distinct Template Visual Motif Header */}
-          <TemplateMotifHeader
-            templateId={template.templateId}
-            templateName={template.name}
-            accentColor={template.colorPalette.accent}
-            isModule1={isModule1}
-          />
-
           {/* Slide Top Eyebrow Tag */}
           <div className="flex items-center justify-between mb-8 sm:mb-12">
             <div
-              style={{
-                borderColor: `${template.colorPalette.highlightPillText}40`,
-                backgroundColor: template.colorPalette.highlightPillBg,
-                color: template.colorPalette.highlightPillText,
-              }}
-              className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1 text-[11px] font-mono tracking-widest uppercase font-bold"
+              className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1 text-[11px] font-mono tracking-widest uppercase font-bold ${
+                isModule1
+                  ? "border-[#bfdbfe] bg-[#eff6ff] text-[#2563eb]"
+                  : "border-neutral-800 bg-neutral-900/90 text-neutral-400"
+              }`}
             >
               <span
-                style={{ backgroundColor: template.colorPalette.accent }}
-                className="h-1.5 w-1.5 rounded-full"
+                className="h-1.5 w-1.5 rounded-full bg-[#2563eb]"
               />
-              {currentSlide?.eyebrow || `MODULE ${module.number} · LESSON ${lesson.number}`}
+              {currentSlide?.eyebrow && !currentSlide.eyebrow.includes("ACT") && !currentSlide.eyebrow.includes("SCENE")
+                ? currentSlide.eyebrow
+                : `MODULE ${String(module.number).padStart(2, "0")} · LESSON ${lesson.number}`}
             </div>
 
             <div
@@ -671,8 +632,7 @@ export default function SlideViewer({
               </h2>
               {currentSlide.subheadline && (
                 <p
-                  style={{ color: template.colorPalette.accent }}
-                  className="text-base sm:text-xl font-medium leading-relaxed font-mono"
+                  className="text-base sm:text-xl font-medium leading-relaxed text-[#2563eb] font-mono"
                 >
                   {currentSlide.subheadline}
                 </p>
@@ -684,8 +644,7 @@ export default function SlideViewer({
           {currentSlide?.type === "QUOTE" && (
             <div className="py-8 sm:py-12 max-w-3xl">
               <div
-                style={{ color: template.colorPalette.accent }}
-                className="text-5xl sm:text-6xl font-serif mb-2"
+                className="text-5xl sm:text-6xl font-serif mb-2 text-[#2563eb]"
               >
                 “
               </div>
@@ -947,7 +906,7 @@ export default function SlideViewer({
                           : "border-neutral-800 bg-neutral-900/60"
                       }`}
                     >
-                      <div className="text-xs font-mono font-bold mb-1" style={{ color: template.colorPalette.accent }}>
+                      <div className="text-xs font-mono font-bold mb-1 text-[#2563eb]">
                         {item.number}
                       </div>
                       <div
@@ -988,7 +947,7 @@ export default function SlideViewer({
                               : "border-neutral-800 bg-neutral-900/60"
                           }`}
                         >
-                          <div className="text-xs font-mono font-bold mb-1" style={{ color: template.colorPalette.accent }}>
+                          <div className="text-xs font-mono font-bold mb-1 text-[#2563eb]">
                             0{idx + 1}
                           </div>
                           <div
@@ -1353,7 +1312,7 @@ export default function SlideViewer({
                   <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
                     {mg.label}
                   </div>
-                  <div className="text-xl sm:text-2xl font-bold tracking-tight" style={{ color: template.colorPalette.accent }}>
+                  <div className="text-xl sm:text-2xl font-bold text-[#2563eb] tracking-tight">
                     {mg.val}
                   </div>
                   {mg.note && (
@@ -1379,8 +1338,8 @@ export default function SlideViewer({
                     isModule1 ? "text-[#2563eb]" : "text-[#3b82f6]"
                   }`}
                 >
-                  <span className="h-2 w-2 rounded-full" style={{ backgroundColor: template.colorPalette.accent }} />
-                  <span style={{ color: template.colorPalette.accent }}>SYSTEM ARCHITECTURE: {currentSlide.diagram.title}</span>
+                  <span className="h-2 w-2 rounded-full bg-[#2563eb]" />
+                  <span>SYSTEM ARCHITECTURE: {currentSlide.diagram.title}</span>
                 </div>
               )}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -1394,7 +1353,7 @@ export default function SlideViewer({
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full text-white" style={{ backgroundColor: template.colorPalette.accent }}>
+                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#2563eb] text-white">
                         {st.step}
                       </span>
                       {st.tech && (
@@ -1450,8 +1409,8 @@ export default function SlideViewer({
                     isModule1 ? "text-[#2563eb]" : "text-[#3b82f6]"
                   }`}
                 >
-                  <span className="h-2 w-2 rounded-full" style={{ backgroundColor: template.colorPalette.accent }} />
-                  <span style={{ color: template.colorPalette.accent }}>DATA MATRIX: {currentSlide.chart.title}</span>
+                  <span className="h-2 w-2 rounded-full bg-[#2563eb]" />
+                  <span>DATA MATRIX: {currentSlide.chart.title}</span>
                 </div>
               )}
               <div className="space-y-2.5">
@@ -1479,7 +1438,7 @@ export default function SlideViewer({
                           </span>
                         )}
                       </div>
-                      <span className="font-mono font-bold text-xs" style={{ color: template.colorPalette.accent }}>
+                      <span className="font-mono font-bold text-xs text-[#2563eb]">
                         {cd.value}
                       </span>
                     </div>
@@ -1509,23 +1468,17 @@ export default function SlideViewer({
           {/* DYNAMIC KEY OPERATIONAL TAKEAWAY BANNER */}
           {currentSlide?.takeaway && (
             <div
-              style={{
-                borderColor: `${template.colorPalette.accent}40`,
-                backgroundColor: isModule1 ? "#eff6ff" : `${template.colorPalette.accent}15`,
-              }}
-              className="mt-6 flex items-start gap-3 rounded-2xl border p-4 sm:p-5 shadow-xs transition-all text-white"
+              className={`mt-6 flex items-start gap-3 rounded-2xl border p-4 sm:p-5 shadow-xs transition-all ${
+                isModule1
+                  ? "border-[#bfdbfe] bg-[#eff6ff] text-[#1c1917]"
+                  : "border-[#2563eb]/40 bg-[#2563eb]/10 text-white"
+              }`}
             >
-              <div
-                style={{ backgroundColor: template.colorPalette.accent }}
-                className="rounded-lg p-1.5 shrink-0 text-white shadow-xs"
-              >
+              <div className="rounded-lg p-1.5 shrink-0 bg-[#2563eb] text-white shadow-xs">
                 <Sparkles className="h-4 w-4" />
               </div>
               <div className="flex-1 min-w-0">
-                <div
-                  style={{ color: template.colorPalette.accent }}
-                  className="text-[10px] font-mono font-bold uppercase tracking-wider mb-0.5"
-                >
+                <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#2563eb] mb-0.5">
                   KEY OPERATIONAL TAKEAWAY
                 </div>
                 <p
@@ -1581,19 +1534,11 @@ export default function SlideViewer({
                 }}
                 className={`rounded-full transition-all cursor-pointer ${
                   isActive
-                    ? "h-2.5 w-2.5 sm:h-3 sm:w-3 scale-110"
+                    ? "h-2.5 w-2.5 sm:h-3 sm:w-3 bg-[#2563eb] ring-2 ring-[#2563eb]/40 shadow-xs scale-110"
                     : isModule1
                     ? "h-2 w-2 bg-[#d6d3d1] hover:bg-[#a8a29e]"
                     : "h-2 w-2 bg-neutral-800 hover:bg-neutral-700"
                 }`}
-                style={
-                  isActive
-                    ? {
-                        backgroundColor: template.colorPalette.accent,
-                        boxShadow: `0 0 10px ${template.colorPalette.accent}80`,
-                      }
-                    : undefined
-                }
                 title={`Lesson ${l.number}: ${l.title}`}
                 aria-label={`Lesson ${l.number}: ${l.title}`}
                 aria-current={isActive ? "step" : undefined}
@@ -1613,15 +1558,8 @@ export default function SlideViewer({
                 : "border border-neutral-800 bg-neutral-900 text-neutral-500"
               : isModule1
               ? "bg-[#1c1917] text-white hover:bg-neutral-800 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-              : "text-white hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg"
+              : "bg-white text-[#0E0E10] hover:bg-neutral-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
           }`}
-          style={
-            currentIndex === totalSlides - 1 && !nextLesson
-              ? undefined
-              : isModule1
-              ? undefined
-              : { backgroundColor: template.colorPalette.accent }
-          }
         >
           <span>
             {currentIndex === totalSlides - 1
