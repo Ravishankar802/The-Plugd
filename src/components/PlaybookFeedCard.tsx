@@ -48,12 +48,12 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
 
         {/* Title and Category */}
         <div className="mt-3 flex flex-col flex-1">
-          <h3 className="text-[14.5px] sm:text-[15px] font-semibold text-[#1c1917] leading-[1.35] line-clamp-4 h-[84px] sm:h-[88px] group-hover:text-[#2563eb] transition-colors">
+          <h3 className="text-[14.5px] sm:text-[15px] font-semibold text-[#1c1917] leading-[1.35] line-clamp-2 h-[40px] sm:h-[42px] group-hover:text-[#2563eb] transition-colors">
             {playbook.title}
           </h3>
 
           {/* Category beneath Title */}
-          <div className="mt-1 text-[13px] text-[#57534e] truncate">
+          <div className="mt-1.5 sm:mt-2 text-[13px] text-[#57534e] truncate">
             <span className="font-medium text-[#44403c]">{playbook.categoryName}</span>
           </div>
 
