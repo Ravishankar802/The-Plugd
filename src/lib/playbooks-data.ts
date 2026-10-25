@@ -68,6 +68,7 @@ import { HONEST_ADVICE_GET_RICH_COURSE } from "./playbooks/honest-advice-want-ge
 import { FACELESS_SHORTS_30K_COURSE } from "./playbooks/faceless-shorts-30k-month-data";
 import { BUILD_10K_WEBSITES_CLAUDE_COURSE } from "./playbooks/build-10k-websites-claude-ai-data";
 import { MASTER_HIGGSFIELD_AI_COURSE } from "./playbooks/master-higgsfield-ai-tutorial-data";
+import { STARTED_OVER_ZERO_TO_1M_COURSE } from "./playbooks/started-over-zero-plan-to-1m-data";
 
 export type SlideType =
   | "TITLE"
@@ -616,6 +617,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-51": BUILD_10K_WEBSITES_CLAUDE_COURSE,
   "master-higgsfield-ai-in-20-minutes-beginner-tutorial": MASTER_HIGGSFIELD_AI_COURSE,
   "ai-businesses-52": MASTER_HIGGSFIELD_AI_COURSE,
+  "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m": STARTED_OVER_ZERO_TO_1M_COURSE,
+  "ai-businesses-53": STARTED_OVER_ZERO_TO_1M_COURSE,
 
   // Backward compatibility legacy mappings
   "ai-businesses-02": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
@@ -686,7 +689,8 @@ export function getAllCourses(): Course[] {
     HONEST_ADVICE_GET_RICH_COURSE,
     FACELESS_SHORTS_30K_COURSE,
     BUILD_10K_WEBSITES_CLAUDE_COURSE,
-    MASTER_HIGGSFIELD_AI_COURSE
+    MASTER_HIGGSFIELD_AI_COURSE,
+    STARTED_OVER_ZERO_TO_1M_COURSE
   ];
 }
 
