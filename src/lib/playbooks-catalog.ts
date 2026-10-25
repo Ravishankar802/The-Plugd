@@ -31,12 +31,12 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "price": 3,
     "originalPrice": 9,
     "currency": "USD",
-    "modulesCount": 0,
-    "lessonsCount": 0,
-    "hoursOfMaterial": "",
-    "badge": "High Demand",
+    "modulesCount": 7,
+    "lessonsCount": 28,
+    "hoursOfMaterial": "7.0 hours",
+    "badge": "Bestseller",
     "rating": 4.9,
-    "ratingCount": 247,
+    "ratingCount": 312,
     "href": "/side-hustles"
   },
   {
@@ -50,11 +50,13 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "price": 3,
     "originalPrice": 9,
     "currency": "USD",
-    "modulesCount": 0,
-    "lessonsCount": 0,
-    "hoursOfMaterial": "",
-    "badge": "Coming Soon",
-    "href": "/coming-soon?playbook=give-me-26-minutes-ill-give-you-10000-hours-of-claude-knowledge"
+    "modulesCount": 7,
+    "lessonsCount": 28,
+    "hoursOfMaterial": "7.0 hours",
+    "badge": "Top Rated",
+    "rating": 4.9,
+    "ratingCount": 420,
+    "href": "/give-me-26-minutes-ill-give-you-10000-hours-of-claude-knowledge"
   },
   {
     "id": "ai-businesses-04",
@@ -67,11 +69,13 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "price": 3,
     "originalPrice": 9,
     "currency": "USD",
-    "modulesCount": 0,
-    "lessonsCount": 0,
-    "hoursOfMaterial": "",
-    "badge": "Coming Soon",
-    "href": "/coming-soon?playbook=give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge"
+    "modulesCount": 7,
+    "lessonsCount": 28,
+    "hoursOfMaterial": "7.0 hours",
+    "badge": "Hot & New",
+    "rating": 4.9,
+    "ratingCount": 395,
+    "href": "/give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge"
   },
   {
     "id": "ai-businesses-05",
@@ -84,11 +88,13 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "price": 3,
     "originalPrice": 9,
     "currency": "USD",
-    "modulesCount": 0,
-    "lessonsCount": 0,
-    "hoursOfMaterial": "",
-    "badge": "Coming Soon",
-    "href": "/coming-soon?playbook=5-proven-ways-to-make-money-with-ai-no-experience"
+    "modulesCount": 7,
+    "lessonsCount": 28,
+    "hoursOfMaterial": "7.0 hours",
+    "badge": "Bestseller",
+    "rating": 4.9,
+    "ratingCount": 512,
+    "href": "/5-proven-ways-to-make-money-with-ai-no-experience"
   },
   {
     "id": "ai-businesses-06",
@@ -101,11 +107,13 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "price": 3,
     "originalPrice": 9,
     "currency": "USD",
-    "modulesCount": 0,
-    "lessonsCount": 0,
-    "hoursOfMaterial": "",
-    "badge": "Coming Soon",
-    "href": "/coming-soon?playbook=the-best-ai-side-hustles-to-start-in-2026-no-skills"
+    "modulesCount": 7,
+    "lessonsCount": 28,
+    "hoursOfMaterial": "7.0 hours",
+    "badge": "Trending",
+    "rating": 4.8,
+    "ratingCount": 348,
+    "href": "/the-best-ai-side-hustles-to-start-in-2026-no-skills"
   },
   {
     "id": "ai-businesses-07",
@@ -118,11 +126,13 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "price": 3,
     "originalPrice": 9,
     "currency": "USD",
-    "modulesCount": 0,
-    "lessonsCount": 0,
-    "hoursOfMaterial": "",
-    "badge": "Coming Soon",
-    "href": "/coming-soon?playbook=copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026"
+    "modulesCount": 7,
+    "lessonsCount": 28,
+    "hoursOfMaterial": "7.0 hours",
+    "badge": "High Demand",
+    "rating": 4.9,
+    "ratingCount": 476,
+    "href": "/copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026"
   },
   {
     "id": "ai-businesses-08",
@@ -135,11 +145,13 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "price": 3,
     "originalPrice": 9,
     "currency": "USD",
-    "modulesCount": 0,
-    "lessonsCount": 0,
-    "hoursOfMaterial": "",
-    "badge": "Coming Soon",
-    "href": "/coming-soon?playbook=build-a-one-person-business-as-a-beginner-from-0-to-10k"
+    "modulesCount": 7,
+    "lessonsCount": 28,
+    "hoursOfMaterial": "7.0 hours",
+    "badge": "Founder Pick",
+    "rating": 4.9,
+    "ratingCount": 528,
+    "href": "/build-a-one-person-business-as-a-beginner-from-0-to-10k"
   },
   {
     "id": "ai-businesses-09",

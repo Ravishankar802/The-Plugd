@@ -1,0 +1,897 @@
+[00:00] So look, if you're happy doing the same
+[00:02] boring, repetitive tasks every day for
+[00:05] the rest of your life, well then you can
+[00:06] click off right now because the next 30
+[00:08] minutes are for people who want out of
+[00:10] that. You see, most people use Chat GBT
+[00:13] to plan their groceries or to be their
+[00:15] therapist after 5 hours of doom
+[00:17] scrolling on TikTok wondering why life
+[00:20] is so tough. And look, if that's you, I
+[00:22] hate to say it, but you're probably only
+[00:23] using about 2% of what it can actually
+[00:26] do. And that's not your fault. I mean,
+[00:28] this thing doesn't come with an
+[00:29] instruction manual. Now, if you're happy
+[00:30] paying 100% of the price to use 2% of
+[00:33] its features, well, then be my guest.
+[00:35] But this video probably isn't for you
+[00:37] because today I'm going to show you how
+[00:39] to learn 98% of ChachiBT. In the next 20
+[00:42] to 30 minutes, I'm going to give you my
+[00:44] favorite beginner, intermediate, and
+[00:46] advanced tips that will help save you
+[00:48] time and get ahead of 99% of people who
+[00:51] pay to use it the wrong way. So, let's
+[00:53] start nice and easy. You see, every
+[00:55] single time that you open up ChateBT and
+[00:58] you ask it something, you're literally
+[01:00] talking to a stranger. I'm not joking.
+[01:02] You see, by default, ChatBT knows
+[01:04] nothing about you. Nothing about your
+[01:06] job, what you do, how you like things
+[01:08] explained, what you don't like,
+[01:10] literally [music] nothing. So, imagine
+[01:12] you hire a personal assistant. This is
+[01:14] the smartest person you've ever met. And
+[01:16] they can help you with almost anything.
+[01:18] But every morning, they wake up and
+[01:20] forget everything about you. who you
+[01:22] are, what you do, how you want things
+[01:24] done. Look, you wouldn't want that. It
+[01:25] would drive you insane, right? And yet,
+[01:27] that's exactly what most people do when
+[01:29] they use Chat GBT. They open it, they
+[01:31] hit a new chat, and they start from
+[01:33] scratch every single time. Now, what if
+[01:35] I told you there was actually a setting
+[01:36] in here that changes all of that, and it
+[01:39] only takes about 1 minute to fix this?
+[01:41] Well, congratulations, because it
+[01:42] exists, and it's actually called custom
+[01:44] instructions. Here is where you find it.
+[01:46] You're going to go to settings. Then
+[01:47] you're going to go to personalization.
+[01:49] And in there, you're actually going to
+[01:50] see the custom instructions right there.
+[01:52] Inside of it, add what you want chat to
+[01:54] know about you. Tell it who you are,
+[01:56] what you do for work, what you're trying
+[01:58] to get done, and anything else that
+[02:00] helps it understand the context. And
+[02:02] then tell it how you want it to respond.
+[02:05] The more specific you can be here, the
+[02:07] better your outputs are going to be. Do
+[02:09] you want short, direct answers, or do
+[02:12] you want it to explain its thinking? Do
+[02:13] you want a certain tone? And just as
+[02:16] important, what do you wanted to avoid?
+[02:18] Now, look, I know that sitting there
+[02:19] trying to write all of this from scratch
+[02:21] is a lot. So, what I've gone ahead and
+[02:23] done is I've actually added my prompt
+[02:25] that I use below this video. I actually
+[02:27] use this to set up my own chat GBT. It
+[02:29] interviews you one question at a time,
+[02:31] [music] and it actually hands you back
+[02:33] exactly what to paste into that box. So,
+[02:35] it's in the description section below. I
+[02:37] want to say I know that this is tedious
+[02:39] work but trust me once it's done it's
+[02:41] out of the way and you will thank me
+[02:43] later for showing you this hidden
+[02:45] feature. Now once you've done that there
+[02:47] is actually a second layer sitting right
+[02:49] next to it that you also may have missed
+[02:51] as well and people mix these [music] two
+[02:53] up all the time. So I want to make the
+[02:54] difference clear inside of this video.
+[02:56] Custom instructions are what you tell it
+[02:58] once and whatever you add there stays
+[03:00] there unless you go back in and actually
+[03:02] change it. Memory is different. Memory
+[03:05] is actually what it picks up over time
+[03:07] the more that you actually use it. I
+[03:08] want you to think about it like this.
+[03:09] Custom instructions is like giving
+[03:11] someone you work with a one-page brief
+[03:13] on day one. Here's who I am. Here's what
+[03:15] I need. Here's how I like things done.
+[03:17] It's as applicable on day 100 as it is
+[03:20] on day one. Memory is actually what
+[03:22] happens from that point on. It's every
+[03:24] conversation. It's every project. It's
+[03:26] every time [music]
+[03:27] that you corrected it. Every time you
+[03:29] said no, not like that. Like this
+[03:31] instead. It's basically like you
+[03:32] training your chachi BT. And with this
+[03:34] feature, it only gets better over time.
+[03:36] But here's the weird part though. Most
+[03:39] people never even bother to turn the
+[03:41] memory feature on, which is absolutely
+[03:43] insane to me because why not make your
+[03:45] chatbt better and stronger every single
+[03:47] day. It's like hiring someone knowing
+[03:49] that they will never get better at what
+[03:51] they do. It makes no sense. So, here is
+[03:54] how to activate the memory feature.
+[03:55] You're going to go to settings. Then,
+[03:57] you're going to go to personalization.
+[03:58] Inside of it, you're going to see memory
+[04:00] sitting right there underneath the
+[04:01] custom instructions. Please make sure
+[04:03] it's switched on. And there's actually
+[04:05] quite a cool feature here as well. If
+[04:07] you're curious or you ever want to see
+[04:08] exactly what it's picked up about you,
+[04:10] you can actually go to manage memories
+[04:12] and it's all there. And if something's
+[04:13] ever wrong, the cool part is is that you
+[04:15] can manually go in and edit it yourself.
+[04:17] But people have a big misconception with
+[04:19] this. They think that Chanty BT only
+[04:21] gets better when Open AI actually
+[04:23] updates their models. And sure, that's
+[04:24] partly true, but sometimes it's also
+[04:26] true that it gets worse. We've all been
+[04:28] there. They've updated a new model.
+[04:29] We're like, "This was so good last week.
+[04:31] Why did you ruin it?" But my point is is
+[04:32] that this is actually another way that
+[04:34] you can upgrade your ChachiBT. It's a
+[04:36] mini upgrade, if you will. Okay, with
+[04:38] this feature, you are training your
+[04:39] ChachiBT to slowly learn how you think.
+[04:42] Now, sure, it's not the most
+[04:43] groundbreaking feature I'm going to
+[04:44] share here today, but it's easy to set
+[04:46] up and it will make your experience 10
+[04:48] times better. So, with that said, let's
+[04:49] move on to probably one of my favorite
+[04:51] tips in today's video. Tip three is
+[04:53] devil's advocate. Now, this last
+[04:55] beginner tip will pretty much go against
+[04:56] everything that every other video tells
+[04:58] you to do, or better yet, just forgets
+[05:00] to tell you to do. It's what I call
+[05:02] devil's advocate. And honestly, this is
+[05:04] one of the most important beginner tips.
+[05:06] Let me ask you a question. Have you ever
+[05:07] used chatb and felt like it's just
+[05:09] agreeing with everything that you say?
+[05:10] You're going to type in, "Am I right in
+[05:12] thinking that the world is flat?" And
+[05:14] it's going to find a hundred ways to
+[05:15] agree [music] with you. Look, I've been
+[05:16] there before. And that's why for this
+[05:18] final tip, I want you to force your
+[05:20] chatbt to disagree with you. Force it to
+[05:22] play devil's advocate. You see, most
+[05:24] people are using chatbt for validation
+[05:27] to stroke their ego. As I said, you
+[05:28] could type in the most egregious
+[05:30] question and chatbt will still find a
+[05:32] way to go, yes, you're absolutely right.
+[05:35] That was a great question. And look, if
+[05:36] you think about it, the reason it does
+[05:38] this makes total sense. Okay, Open AI is
+[05:40] a business. And just like any other good
+[05:42] business, what is their number one main
+[05:45] objective? It was built to agree with
+[05:47] you, to keep you happy, so that way you
+[05:49] keep coming back. But that's also
+[05:51] dangerous. Which is why if you don't
+[05:52] know what you are doing, chatbt is just
+[05:55] going to run laps around you. And if you
+[05:57] use AI just to agree with everything
+[05:59] that you already think, well then you're
+[06:00] just training yourself to trust [music]
+[06:02] it without any filter, which is exactly
+[06:05] what I want you to avoid. You [music]
+[06:06] still need to be the person steering the
+[06:08] ship, the one in control. Look, I'm
+[06:11] going to give you an example of this.
+[06:12] One of the questions that I always ask
+[06:14] my team here at our company
+[06:15] consulting.com is, "What are my blind
+[06:18] spots? What am I missing in this
+[06:20] situation?" Now, you might be wondering,
+[06:21] okay, why do you like to ask your team
+[06:22] these questions? Because I know that
+[06:24] sometimes I don't have the full picture.
+[06:26] So, before you ask ChateBT anything
+[06:28] important, tell it what to do. Tell it
+[06:31] to tell you your blind spots. Tell it to
+[06:33] play devil's advocate. Don't just ask a
+[06:35] question hoping they will give you the
+[06:37] answer you want it to give you. You can
+[06:39] explicitly say things like, "Don't agree
+[06:41] with me. Play devil's advocate.
+[06:43] Challenge my thinking." Or things like,
+[06:45] "Give me the strongest possible case for
+[06:47] why I could actually be wrong." And
+[06:49] look, when you do this, you go from
+[06:50] speaking to a yesmen to someone who's
+[06:53] actually going to challenge your
+[06:54] viewpoints and your worldview. So that
+[06:56] way, you can make better decisions and
+[06:57] make much more well-rounded conclusions.
+[06:59] And by the way, while we're on this
+[07:01] topic, one more thing I want you to be
+[07:02] aware of. ChachiBT is known for
+[07:05] hallucinating. [music] It will
+[07:06] occasionally get things wrong with 100%
+[07:08] complete confidence. But the problem is,
+[07:10] how do you know when it's hallucinating?
+[07:12] You don't. Which is why you have to be
+[07:14] hyper aware of this. So here's the
+[07:16] system that I have personally developed
+[07:18] to help me detect when my chat GPT is
+[07:20] hallucinating at the start of any chat.
+[07:22] Before I do anything else, I will always
+[07:24] tell it to refer to me by my first name.
+[07:26] Then if it ever answers questions
+[07:28] without great question, for example,
+[07:30] then that is a sign that it's probably
+[07:32] losing the plot. At that point, I'm
+[07:34] actually going to stop and doublech
+[07:35] checkck all the information that it gave
+[07:37] me. And that is how I keep it in check.
+[07:39] All right, there we go. So with all that
+[07:41] being said, that is the beginner tips
+[07:43] done. Most of them once you sit down and
+[07:45] do it are pretty simple. You've got
+[07:47] custom instructions, memory, keeping
+[07:49] your chats organized, and forcing it to
+[07:51] play devil's advocate. Those are the
+[07:53] foundations. Now, we're stepping it up a
+[07:55] notch with the intermediate tips. So,
+[07:57] now that we know how to get chatbt to
+[07:59] understand us better, let's look at how
+[08:01] we can actually understand chatbt
+[08:03] better. You see, chatbt isn't just a
+[08:05] tool. It's really a stack of different
+[08:07] modes where each mode serves a different
+[08:09] purpose. And understanding what modes
+[08:10] are best for each task is what will get
+[08:13] you closer to learning 98% of ChachiBeT.
+[08:16] Knowing this alone can put you ahead of
+[08:18] 98% of people because most people are
+[08:21] not switching modes. They are just using
+[08:23] the standard mode for every task. There
+[08:25] are actually six modes that I want you
+[08:27] to pay close attention to. There's voice
+[08:29] mode, canvas mode, study mode, agent
+[08:31] mode, image mode, and deep research
+[08:33] mode. But before we continue, I could
+[08:36] sit here and give you all the tips and
+[08:37] the tricks in the world. But what's the
+[08:39] point if you haven't got a way to take
+[08:41] advantage of it? So today, I'm going to
+[08:42] give away another MacBook. To win the
+[08:44] MacBook, all you have to do is watch the
+[08:46] rest of the video and let me know which
+[08:48] tip did you find most useful. And by the
+[08:50] way, if your comment is an AI comment,
+[08:52] trust me, I can tell you will not be
+[08:54] selected. So watch the rest of the
+[08:55] video, leave your favorite tip and why
+[08:57] was your favorite tip, as well as leave
+[08:59] a like. And that's all you have to do.
+[09:00] I'm going to pick a winner and post it
+[09:02] as a pin comment and in the description
+[09:04] of next week's video. Oh, and by the
+[09:05] way, the winner from last video is
+[09:07] actually in the pin comments below along
+[09:09] with instructions on how to claim it.
+[09:10] So, with that being said, let's actually
+[09:12] start with the first intermediate tip.
+[09:14] This is one that fixes something that's
+[09:15] been a real pain for you in the past.
+[09:17] You see, you ask Chat GPT for something
+[09:19] and it comes back with something close
+[09:20] to what you wanted, but not quite there.
+[09:23] Maybe one paragraph needs a little bit
+[09:24] of work. Maybe the tone is slightly off
+[09:27] in one or two sections. And normally,
+[09:29] what would you do in this situation?
+[09:30] Well, just like most people, you're
+[09:32] probably going to spend time retyping
+[09:34] the whole thing, hoping that it fixes
+[09:35] just that one bit. And half the time, it
+[09:37] changes another section that you were
+[09:39] actually happy with. And look, I know
+[09:41] how annoying that is because it's
+[09:42] happened to me so many times. And look,
+[09:44] I don't think I'm the only one, right?
+[09:45] You see, that was until I found this
+[09:48] small feature called canvas mode. It
+[09:49] works just like I guess you would say an
+[09:51] artist canvas does, which [music] is
+[09:53] you're not trying to finish the
+[09:54] painting, but you're focusing on the
+[09:56] place where you can shape the work to
+[09:58] your liking. What it does is it actually
+[09:59] opens up an additional editing workspace
+[10:01] right next to your chat. And instead of
+[10:03] just getting a wall of text back, you
+[10:05] can actually get something that you can
+[10:06] work with directly. You can refine and
+[10:08] tweak as you like. You can highlight the
+[10:09] bits that you want changed. You can ask
+[10:11] for just that section to be rewritten.
+[10:13] You can adjust the tone and it only
+[10:15] touches the bits that you ask it to
+[10:17] amend. everything else can be kept the
+[10:19] same. Now, once you've actually used
+[10:20] this a couple of times, going back to
+[10:21] the old way of just retyping the whole
+[10:23] thing is going to feel absolutely
+[10:25] absurd. Trust me, you will never do that
+[10:27] again. The problem is most people don't
+[10:29] even know that this mode exists. And
+[10:31] that's why they only end up using 2% of
+[10:33] what chatbt actually has to offer. Now,
+[10:35] speaking about getting more out of
+[10:37] chatb, here's one that might actually
+[10:39] remind you of your time at school.
+[10:40] Einstein once said something along the
+[10:42] lines of, "Education is actually what
+[10:44] remains after one has forgotten what
+[10:46] they actually learn in school." Look, I
+[10:48] never even finished high school, but I
+[10:49] would say that I've learned a lot in my
+[10:50] life. [clears throat] And that's the
+[10:51] point. Real learning isn't what you can
+[10:53] repeat the day after you read it. It's
+[10:55] what's still in your head weeks or even
+[10:57] years after you've learned it. Look, do
+[10:59] you know that feeling where you read
+[11:00] something or maybe you watch a video and
+[11:02] you walk away thinking, "Yeah, I I get
+[11:04] that." And then someone actually asks
+[11:06] you a question about it and you realize
+[11:07] that you only understood half of it.
+[11:09] That is the difference between feeling
+[11:11] like you know something and actually
+[11:13] knowing it. And that is exactly what
+[11:15] study mode allows you to do. If you're
+[11:17] learning a new topic, you can actually
+[11:19] ask study mode to actually give you a
+[11:20] breakdown of that topic and then it will
+[11:22] test you on it. It's actually going to
+[11:24] give you some multiple choice questions
+[11:25] to test if you really understood the
+[11:27] topic. Look, this one reminds me of
+[11:29] being back at school taking an exam. Not
+[11:31] something that I would say I
+[11:32] particularly miss, but definitely a
+[11:34] useful tool that you can use to make
+[11:36] sure that you speed up your learning
+[11:37] process. I don't use this feature too
+[11:39] much, but when I really want to learn
+[11:41] something quickly and make sure that it
+[11:43] sticks, then this is the first thing I
+[11:44] go to. So, to actually activate this
+[11:46] mode, all you have to do is click the
+[11:48] plus button, type in at study, and then
+[11:50] select the study mode. Then, literally
+[11:52] paste in whatever it is that you're
+[11:53] trying to learn, and it will take it
+[11:55] from there. All right, so next up is
+[11:56] image generation. If you saw my Claude
+[11:58] video, maybe you remember me saying that
+[12:00] image generation was actually one of its
+[12:02] weak spots, whereas with Chat GBT, it's
+[12:04] one of its biggest strengths. So, I
+[12:05] actually asked it to create an image of
+[12:07] me, Eman Gajji, drinking coffee just to
+[12:09] see what it would do. And the output
+[12:11] actually kind of surprised me. It looks
+[12:12] like me, and I actually get my editors
+[12:14] to throw it up on screen. Now, to use
+[12:16] it, here's what you're going to do.
+[12:17] You're going to describe exactly what
+[12:18] you want. And then, look, if it gets
+[12:20] close, but something's slightly off. You
+[12:22] don't need to start over. Just tell it
+[12:24] what to change in the same chat, similar
+[12:26] to what I showed you with canvas mode.
+[12:28] And you can actually also upload your
+[12:30] own photo and have it edited from that.
+[12:32] Now, look, to be honest, I don't use it
+[12:33] too much. Well, when I was doing the
+[12:34] interior design for our office, I
+[12:36] actually did use it for that function.
+[12:38] But in general, I'm not really sitting
+[12:39] here creating images all day. And
+[12:41] honestly, my designers have told me that
+[12:43] it's not really replacing their design
+[12:44] work either. But for the average person
+[12:47] who just needs some quick images here
+[12:49] and there, it actually does the job
+[12:50] quite well. Now, the last three modes,
+[12:52] which is canvas, study, and image, are
+[12:55] quite straightforward because you can
+[12:56] use them easily without changing your
+[12:58] settings. This next one is a small step
+[13:00] up, which is actually why I left it for
+[13:02] a little bit later on in the
+[13:04] intermediate category, but trust me,
+[13:06] it's worth it because it completely
+[13:07] changes how you do work. Look, if you're
+[13:09] anything like me, you hate typing, okay?
+[13:11] I hate it with a passion. My team knows
+[13:13] it. I would rather just get on the phone
+[13:15] or even better, send a voice note. So,
+[13:16] if you're anything like me, I have some
+[13:18] good news for you. ChachiBT actually has
+[13:19] a voice mode and it is a game changer.
+[13:22] But let me tell you where this has
+[13:23] actually come in clutch for me. I do
+[13:25] this thing called Russian BA every
+[13:27] Sunday night. It's my Sunday night
+[13:28] ritual. I book out the whole place and
+[13:30] what I do is I sit there, I sweat it
+[13:32] out, I clear my mind and normally that's
+[13:34] a couple hours where my phone is in my
+[13:36] locker and my brain is just switched
+[13:37] off. But a couple months back, I decided
+[13:39] to try something out. I had my AirPods
+[13:41] in Chat GBT voice mode on and instead of
+[13:43] just sitting there in silence, you know,
+[13:44] once I was actually outside the sauna, I
+[13:46] started talking to it. Okay, I had a
+[13:48] full-blown back and forth convo with it
+[13:51] about a specific business problem that I
+[13:52] was having. And I actually ended up
+[13:54] having a very similar conversation to
+[13:55] what I would have with my own COO. And
+[13:57] that's really when I realized that
+[13:59] chatbt isn't just a typing tool. I can
+[14:01] actually use it in times where I would
+[14:03] just be ruminating about stuff in my
+[14:04] head on a drive walking waiting for a
+[14:07] coffee. If you set this thing up
+[14:09] properly, it gets even better. What
+[14:10] you're going to do is you're going to
+[14:11] pick one device as your main hub and
+[14:13] that is where all of your core work
+[14:16] lives. Then you're going to install the
+[14:17] chatbt app on your other devices. So
+[14:19] maybe if you have another phone or a
+[14:21] laptop or iPad, then you're going to go
+[14:23] into settings and set up connections.
+[14:25] Inside of here, you're going to connect
+[14:26] your apps and devices so everything can
+[14:28] talk to each other. Now, wherever you
+[14:30] are, you can actually turn on voice
+[14:32] mode. You can brief it on where your
+[14:34] projects are at. And you can actually
+[14:36] ask it for next steps and talk through
+[14:38] the work in real time. And what's super
+[14:40] cool is that if you ever need to draft
+[14:41] something, let's say you need to
+[14:42] organize a file or maybe update a doc
+[14:44] and then email it to someone, well then
+[14:46] you can just say it out loud and it will
+[14:47] do it for you on your main device. And
+[14:49] I'll come back to that in just a second.
+[14:51] But here's an insane part about this.
+[14:53] And you know what? In all fairness,
+[14:54] maybe I should have put this in the
+[14:55] advanced section, but whatever. I'll
+[14:56] mention it now cuz we're discussing it.
+[14:58] There's actually an advanced version
+[14:59] [clears throat] of this that lets you
+[15:00] share your screen or camera in real
+[15:02] time. Meaning you can literally say that
+[15:04] you are stuck on something like let's
+[15:06] say a spreadsheet or whatever and share
+[15:08] it directly and just say here's where
+[15:09] I'm stuck. What should I do? And it can
+[15:11] see what you are seeing and talk you
+[15:13] through the fix step by step instead of
+[15:15] you having to spend time describing the
+[15:17] problem or even worse having to type it
+[15:20] in. Oh, and by the way, there's actually
+[15:21] one more thing worth setting up here. If
+[15:23] you've got a compatible Apple device,
+[15:24] you can actually turn on your Siri,
+[15:26] which is normally pretty useless, let's
+[15:27] be honest. And you can turn it into chat
+[15:29] GBT via Apple intelligence, meaning you
+[15:31] get actual answers instead of Siri just
+[15:34] giving you the top results of a web
+[15:35] search. That means you can ask a more
+[15:37] complex stuff, not just timers and
+[15:39] weather. And that means that you get one
+[15:41] consistent assistant [music]
+[15:43] across your phone instead of trying to
+[15:44] bounce between Siri for basic things and
+[15:47] then chat GBT for everything else. This
+[15:49] is so cool because you can literally
+[15:51] work from anywhere after you set this
+[15:53] up. Now, you know that whole connection
+[15:55] setting that we just set up for the
+[15:56] voice mode? Well, that actually leads me
+[15:58] onto the next tip. I want you to think
+[16:00] about when you first got your
+[16:01] smartphone. Whatever you needed to do,
+[16:03] well, there was an app for it. To check
+[16:05] the weather, you would just download
+[16:06] your favorite weather app on your phone.
+[16:08] Or to book a flight, you would just
+[16:09] download another app for this. For
+[16:11] music, another one. And what happened is
+[16:13] that with time, your whole phone slowly
+[16:15] started turning into this home screen of
+[16:18] tiny little tools. Each one of them
+[16:20] doing their own separate job. And I'm
+[16:22] sure that if you don't live under a
+[16:23] rock, that's still how you do things.
+[16:24] Now, what if I told you ChateBT has its
+[16:27] own version of this? It actually has its
+[16:29] own in-built app store. And what if I
+[16:31] told you that most people never even
+[16:32] knew it existed or how to use it. So
+[16:34] instead of downloading separate apps for
+[16:36] everything, you can just connect them
+[16:37] straight into your Chat GBT. And the
+[16:39] even better news is this. Once they're
+[16:41] connected, ChatBT can do the work inside
+[16:44] of those apps for you. As I mentioned in
+[16:46] the previous tip that I gave you, let's
+[16:48] say you need an email sent. Let's say
+[16:49] you need to check your calendar. Let's
+[16:51] say you need to book a flight. Well,
+[16:52] congratulations because Chachi PT can do
+[16:54] all of that for you. That is your first
+[16:56] step in having your own personal
+[16:58] assistant. Look, I'm sure that every
+[16:59] single person who's watching this
+[17:00] channel, especially if you've been
+[17:01] watching for a few years, will get to
+[17:03] the point where you are incredibly
+[17:05] successful and you hire a personal
+[17:07] assistant. And by the way, I can tell
+[17:08] you that once you get there, it is
+[17:10] honestly one of the best ways that you
+[17:11] can spend money in your life. But until
+[17:14] you do, you can start here, okay? You
+[17:16] don't have to go spend 50 or 100 grand a
+[17:18] year on an EA or a PA. All you need to
+[17:20] do for now is just connect the right
+[17:23] apps. On the left sidebar, click on
+[17:25] plugins and connect any apps that you
+[17:27] want to. The first two that I would set
+[17:29] up are Gmail and Google Calendar. That's
+[17:31] a pretty good starting point. Now, look,
+[17:33] I'll be honest, I'm not really a morning
+[17:34] person. I never have been. I never will.
+[17:36] So, the first 30 minutes of every single
+[17:38] day, my brain is not fully awake yet.
+[17:40] And the last thing I want to do is open
+[17:42] up my inbox and get hit with 50 emails
+[17:45] before I've even had a coffee. So,
+[17:47] here's what I do. I ask chat to
+[17:49] summarize everything that came in
+[17:50] overnight. And then I ask it to filter
+[17:53] out what needs a reply today, what can
+[17:55] wait, and so on. And by the time I am
+[17:57] fully awake, I've already removed all of
+[18:00] the unnecessary clutter. Same thing with
+[18:02] my calendar, by the way. I ask it where
+[18:04] the gaps are in the week. So that way I
+[18:06] don't need to think about where I can
+[18:07] squeeze in a tennis session or some
+[18:09] boxing. And by the way, it gets even
+[18:10] better. There are some extra apps as
+[18:12] well. If you like music while you work,
+[18:13] you can actually connect your Spotify. I
+[18:15] like listening to Brain FM, so I get it
+[18:17] to play some of that. There's even
+[18:18] Booking.com there. Yes, it can actually
+[18:21] help you look at flights and hotels,
+[18:22] too. The point is Chat GPT doesn't need
+[18:25] to be just you asking a questions. You
+[18:27] can actually get stuff done for you. And
+[18:29] hold on to this because later in this
+[18:30] video, I'm actually going to show you
+[18:32] how this will connect to an advanced
+[18:33] tip. So, I'm going to share that with
+[18:34] you in just a little bit. For now, what
+[18:36] you need to understand is that once
+[18:38] these apps are connected here, Chant can
+[18:40] actually go and use them for you. You
+[18:42] see, now that you've got your apps
+[18:43] connected, here's another cool use of
+[18:45] it. Schedule tasks. Look, if you feel
+[18:47] like you have a lot on your plate and
+[18:49] you want to be more efficient, this is a
+[18:51] great one. This is where you give
+[18:52] ChachiT the power to do stuff for you
+[18:55] when you want it to. It's funny because
+[18:57] I used it for this very video. You see,
+[18:59] every week, or at least I try my best,
+[19:01] every week, I put out a new YouTube
+[19:02] video exactly like the one you're seeing
+[19:04] here right now. And every week, the
+[19:06] video needs to be posted on time. Now,
+[19:08] do I want to rely on my memory for that
+[19:09] and remember to do this myself every
+[19:11] week? Absolutely not. Do I want to chase
+[19:13] someone else down every single week and
+[19:14] remind them? Even worse. So, I literally
+[19:17] have a schedule task for this. What it
+[19:18] does is it automatically sends a message
+[19:20] to my head designer every week reminding
+[19:22] him that the video needs to go up. I
+[19:24] don't write it every time. I don't think
+[19:26] about it every week. I said it once and
+[19:28] now it turns into a background task for
+[19:30] me. And that's why I love this feature.
+[19:32] It's leverage. [music]
+[19:33] You set it once and it keeps working for
+[19:35] you without you having to carry around
+[19:37] all these thoughts in your head. Now,
+[19:38] you might be asking yourself, well,
+[19:39] Eman, how do I know which tasks should
+[19:42] be scheduled and which ones shouldn't?
+[19:43] Well, the way you should think about it
+[19:44] is this. Anything that is monotonous
+[19:47] should be automated. If something
+[19:48] happens on a schedule, it should be
+[19:50] scheduled. But you also don't want to
+[19:52] schedule your whole life away. Okay? You
+[19:54] need to be intentional about it. For
+[19:56] example, I wouldn't schedule it to send
+[19:58] me some random motivational quote every
+[19:59] morning. Sure, I guess that's cute, but
+[20:01] it's not actually doing anything for me.
+[20:03] Also, I wouldn't get it to book a table
+[20:05] for me for a one-time dinner on a random
+[20:07] Thursday. So, to actually set it up,
+[20:09] what you're going to do is you're going
+[20:10] to go to the scheduled on the left
+[20:12] sidebar, and it's probably going to give
+[20:13] you some options to get started. You're
+[20:15] going to pick the date and the time, and
+[20:17] you're going to tell it exactly what you
+[20:19] want it to do. Now, it could be a
+[20:20] reminder to someone on your team. It
+[20:22] could be a weekly check-in on a project
+[20:23] or anything else that you find yourself
+[20:25] doing over and over again. And then once
+[20:28] it's set, you don't have to think about
+[20:29] it again. Now, before we get to tip
+[20:32] number 10, I'm going to be very honest
+[20:33] with you. If you're someone who's got
+[20:35] all the time in the world to waste, well
+[20:36] then this tip isn't for you. You can
+[20:38] skip to the next one. But if you're
+[20:40] someone who never has enough time in the
+[20:41] day, or you're like me and you need to
+[20:43] learn [music] something, but you're too
+[20:45] impatient slash maybe sometimes lazy to
+[20:47] dig through 50 different articles or
+[20:49] documentaries before getting an answer.
+[20:51] Well, then congratulations, this one is
+[20:53] for you. It's called deep research mode.
+[20:54] And the name kind of says it all. You're
+[20:56] going to give it a proper research
+[20:57] question, not some throwaway oneliner, a
+[20:59] question that you need a real detailed
+[21:02] answer to. Then it goes to work. It
+[21:04] searches, it reads, it cross references
+[21:06] different sources, and a few minutes
+[21:08] later, it comes back with a structured
+[21:10] report. Now, I actually use this a lot,
+[21:12] by the way, and it's actually part of
+[21:13] the reason that this very video exists.
+[21:15] You see, every few weeks, I like to
+[21:17] understand what is actually working on
+[21:19] this channel. What is it that you guys
+[21:21] are enjoying, and what are you guys
+[21:22] enjoying on other channels? What kind of
+[21:24] content that I'm putting out, do you
+[21:25] like, and what do you find useful to
+[21:27] you? AI content seems to be resonating
+[21:30] right now, but I'm also looking for what
+[21:32] other creators are covering that [music]
+[21:33] we haven't touched yet, as well as where
+[21:35] the gaps are. So, I gave deep research
+[21:38] that exact task. I told it to go look
+[21:40] into how AI content is performing across
+[21:43] YouTube right now, what themes keep
+[21:44] coming up, what audiences are asking
+[21:46] for, and what's not being covered well.
+[21:48] [music] And then a few minutes later, it
+[21:51] came back with a full breakdown. And
+[21:52] that's actually part of what shaped this
+[21:54] video. I also gave it some data on my
+[21:56] channel and I saw that the feedback on
+[21:58] the claude video a [music] few weeks ago
+[22:00] was insane. Now look, I'll be honest.
+[22:01] Could I have done that manually?
+[22:03] Absolutely. But that would have taken
+[22:04] hours [music] of me scrolling through
+[22:06] channels, comments, trying to spot
+[22:08] stuff. Whereas with this mode, it did
+[22:10] all that for me in a few minutes. So, is
+[22:11] this something that you absolutely 100%
+[22:13] need? Not really. But is this something
+[22:16] that will 10x [music] your efficiency,
+[22:17] especially if a lot of your decisions
+[22:19] rely on you doing research? 100%. So, to
+[22:22] use it, it's actually quite simple. All
+[22:24] you have to do is click the plus button
+[22:25] next to where [music] you normally type
+[22:26] your message. You're going to select
+[22:28] deep research and give it a specific
+[22:29] question. The more specific the
+[22:31] question, the better. Remember, this is
+[22:33] not for quick questions. Save this one
+[22:35] for the stuff where you would have to do
+[22:37] a lot of research. There we have it. The
+[22:38] six chat should be modes. Now, [music]
+[22:40] there's one final mode I haven't spoken
+[22:42] about yet, and there's a reason for it.
+[22:44] You see, the intermediate modes that
+[22:45] we've covered so far are quite
+[22:47] straightforward. This last one is a
+[22:49] little bit more advanced, so please
+[22:50] don't worry about this if you're just
+[22:52] getting started. focus on the beginner
+[22:53] and intermediate ones at first. They
+[22:55] should give you a massive advantage over
+[22:58] 95% of people. If you're a bit more
+[22:59] familiar with chatbt, I actually want to
+[23:01] take things up to the next level. Here's
+[23:03] how. You see, this last mode is the
+[23:05] closest thing to having chatbt as your
+[23:08] personal assistant. This is where you
+[23:09] give chatbt full autonomy of your screen
+[23:12] so that way it can actually go ahead and
+[23:14] do things for you. I want you to think
+[23:15] about that one annoying task that is a
+[23:18] pain in the ass every single day. It's
+[23:19] not the hardest task, but it's
+[23:21] repetitive. It's filling out the same
+[23:22] repetitive form for the 10th time this
+[23:24] month. It's comparing flight prices
+[23:26] between different sites to check which
+[23:28] one is ripping you off the least. Those
+[23:30] are all things that agent mode can do
+[23:32] for you. All you have to do is give it
+[23:34] some instructions like find me the three
+[23:36] best reviewed hotels in Lisbon under
+[23:39] $200 a night with a pool. And there we
+[23:41] go. It goes off. It opens a browser. It
+[23:43] navigates through different websites and
+[23:45] it comes back with the best options for
+[23:47] you. Now, do you remember that tip where
+[23:49] I showed you how to connect different
+[23:51] apps within your chat GBT and how it's
+[23:53] kind of like you having your own app
+[23:54] store within chat? Well, once you have
+[23:55] those apps connected, things like your
+[23:57] Gmail and your calendar, you can
+[23:59] actually use agent mode to then do stuff
+[24:01] for you within those places. As in, just
+[24:03] you understand, it can literally do
+[24:05] things inside of the apps that you've
+[24:07] connected. And sure, the average person
+[24:09] might know that they can actually ask
+[24:10] Chach PT to go find some good hotels in
+[24:13] Greece, but I want you to take it a step
+[24:15] further. With this mode, you're going to
+[24:17] go from, "Hey, go find me some good
+[24:18] hotels to go find me some hotels, then
+[24:21] check my calendar to check when I'm
+[24:22] actually free, and then book it in for
+[24:25] me and draft me an email to confirm
+[24:27] this." All of that in one go because
+[24:29] everything's connected. Do you see how
+[24:31] when you do this over a long period of
+[24:33] time, you are going to end up running
+[24:35] laps around everyone else simply because
+[24:38] you're going to be 10 times more
+[24:39] efficient than them? Now, here's the
+[24:40] important thing, though. With this mode,
+[24:42] I want you to still be the one in
+[24:44] control. ChatBT is not going to go and
+[24:46] book something or buy something or
+[24:48] submit a form without checking in with
+[24:50] you first. You will always have the
+[24:51] final approval. Anytime it's going to do
+[24:53] something that commits you, for example,
+[24:55] like spending money or sending something
+[24:57] or confirming a booking, it will ask you
+[24:59] first. You're going to then sign off on
+[25:01] it. All it is doing is just a boring leg
+[25:03] work on your behalf. I hope you
+[25:05] understand how this also gives you more
+[25:07] time to make better decisions because
+[25:09] you don't need to do the repetitive
+[25:10] work. So, to activate agent mode, here's
+[25:13] what you do. And then all you have to do
+[25:15] is lally just tell it what you want it
+[25:16] to do and it will take it from there.
+[25:18] But real quick, just one practical tip
+[25:20] though. Before you run any task, I want
+[25:23] you to make sure that you close out any
+[25:24] tabs with sensitive info. I'm talking
+[25:26] about banking, personal accounts,
+[25:28] anything that you just wouldn't want it
+[25:29] near, just in case. I would also
+[25:31] recommend that you actually start with
+[25:33] something that's low stakes so that way
+[25:34] you can kind of get a feel for how it
+[25:36] works. There you have it. My top tips
+[25:38] for learning 98% of chatbt in under 30
+[25:41] minutes. Just by knowing what I gave you
+[25:42] today, you are already ahead of 95% of
+[25:45] people. Look, Chad Chippy is a great
+[25:47] all-around tool. It can write, it can
+[25:49] plan, it can organize, it can even take
+[25:51] actions for you. [music] It is useful,
+[25:53] no doubt. It's the same thing I saw with
+[25:55] Claude. Every tool has their strengths
+[25:57] and limits. For example, Claude wasn't
+[25:59] really good at image generation and
+[26:00] Chachi BT hallucinates. It's just what
+[26:02] happens when something is built to do a
+[26:04] 100 things well instead of one thing
+[26:06] exceptionally well. It's kind of like
+[26:08] hiring. A generalist employee is useful,
+[26:11] okay? You can hand them many different
+[26:12] tasks and they will get most of them
+[26:14] done [music] to a pretty decent level,
+[26:16] but they're never going to be
+[26:17] spectacular. For that, you would need to
+[26:19] go find a specialist or think of a
+[26:21] doctor. If you needed to get brain
+[26:23] surgery done, would you want a general
+[26:25] practitioner to handle it or would you
+[26:27] want a brain surgeon? Well, the exact
+[26:29] same thing applies to AI tools. The
+[26:32] point is, it's not about which tool is
+[26:34] the best. It's about which one is the
+[26:35] best for what you are trying to do. And
+[26:37] the more specific the task or outcome
+[26:39] gets, the more nuance there is, which is
+[26:42] typically [music] what tools like ChatBT
+[26:44] struggle with. Think about specific
+[26:45] tasks like how to make $10,000 a month
+[26:47] online or [clears throat] how to solve
+[26:49] this one specific problem for a specific
+[26:51] person or business. Try using ChatBT for
+[26:54] that and let me know how it goes. Let's
+[26:55] say when it comes to something ultra
+[26:57] specific like making $10,000 a month
+[26:59] with a marketing agency, for example,
+[27:01] there are direct ways to make money and
+[27:02] there are [music] indirect ways. A
+[27:04] direct way would be something that
+[27:05] identifies specific businesses that need
+[27:08] help with their marketing and helps you
+[27:09] build the solution for them. An indirect
+[27:12] way would be using tools like ChachiBT
+[27:14] to save you time. So that way you can
+[27:15] spend more time on figuring out how to
+[27:17] make money elsewhere. Do you see the
+[27:19] difference? Don't get me wrong, ChachiBT
+[27:21] is an incredibly valuable tool. But as I
+[27:23] said, it's not going to make you a
+[27:24] millionaire. For specific outcomes, you
+[27:26] need specialized tools [music] that are
+[27:27] built for that specific thing. But look,
+[27:29] to be honest, that is a topic for
+[27:30] another day. If you want to be the
+[27:32] winner of the MacBook, once again, leave
+[27:33] a like and drop a comment of your
+[27:35] favorite tip. And with all that being
+[27:36] said, as always, I'm watching [music]
+[27:37] from afar and I'm rooting for you.

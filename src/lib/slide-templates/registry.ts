@@ -3,7 +3,7 @@
  *
  * Mandatory requirement: Every Playbook must have its own distinct PPT slide template/design.
  * A template assigned to one Playbook must NEVER be reused for another.
- * This registry enforces programmatic uniqueness across all 300+ Playbooks.
+ * This registry enforces programmatic uniqueness across all Playbooks.
  */
 
 export interface SlideTemplateDefinition {
@@ -30,7 +30,7 @@ export interface SlideTemplateDefinition {
 
 // Master persistent registry of slide templates
 export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
-  // 1. Reference Blueprint Template (7 AI Automation Tools)
+  // 1. Reference Blueprint Template (7 AI Automation Tools / These 3 AI Businesses)
   "blueprint-light-canvas": {
     templateId: "blueprint-light-canvas",
     name: "Editorial Blueprint Canvas",
@@ -86,231 +86,207 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookSlugs: ["men", "women", "dating-playbook"],
   },
 
-  // 3. New Unique Template for Playbook 2: Build a $10,000/Month AI Service Business With Just 3 Core Tools
-  "agency-revenue-os": {
-    templateId: "agency-revenue-os",
-    name: "B2B Agency Revenue OS (Executive Terminal)",
-    categoryTheme: "High-Ticket AI Services & Agency Systems",
+  // 3. Playbook 2: 10 Ways to Find Paying Customers Without Spending on Ads
+  "organic-acquisition-dossier": {
+    templateId: "organic-acquisition-dossier",
+    name: "Zero-Ad Tactical Acquisition Dossier",
+    categoryTheme: "Organic B2B Client Acquisition & Teardowns",
     description:
-      "Deep technical slate/navy canvas (#0b0f19) with an ambient cyan/emerald dot-grid matrix, dual-border glassmorphism terminal card, financial milestone HUD with $10K MRR stage trackers, pipeline workflow cards, and emerald (#10b981) + cyan (#06b6d4) revenue accents.",
+      "Deep tactical slate canvas (#090d16) with warm amber (#f59e0b) and crisp emerald (#10b981) badges, video audit frames, and pipeline conversion metrics.",
     colorPalette: {
-      canvasBg: "#0b0f19",
-      stageBg: "linear-gradient(145deg, rgba(15,23,42,0.95), rgba(11,15,25,0.98))",
-      border: "rgba(16, 185, 129, 0.25)",
-      primaryText: "#f8fafc",
-      secondaryText: "#94a3b8",
-      accent: "#10b981", // Emerald revenue accent
-      accentSecondary: "#06b6d4", // Cyan pipeline accent
-      highlightPillBg: "rgba(16, 185, 129, 0.12)",
-      highlightPillText: "#34d399",
-    },
-    visualMotifs: [
-      "Technical dot-grid background matrix (24px cyan/emerald grid)",
-      "Executive Terminal HUD status header with live Stage & Revenue Milestones ($10,000/mo MRR KPI)",
-      "Stack indicator tags: AIRTABLE + CLAUDE + MAKE",
-      "Step-by-step deliverable pipeline cards with status flags (SOP READY, CLIENT APPROVED)",
-      "Financial ROI and transparent unit economics badges",
-      "High-ticket client negotiation and objection scripts",
-    ],
-    layoutArchitecture:
-      "Technical executive terminal with top telemetry HUD, dual-tone card borders, and multi-tier pipeline blocks",
-    assignedPlaybookIds: ["ai-businesses-02"],
-    assignedPlaybookSlugs: [
-      "build-a-10000-month-ai-service-business-with-just-3-core-tools",
-      "ai-businesses-02",
-    ],
-  },
-
-  // 4. Playbook 3: 5 AI Agents You Can Build and Sell Without Training Your Own Model
-  "agentic-workflow-matrix": {
-    templateId: "agentic-workflow-matrix",
-    name: "Agentic Workflow & Autonomous Systems Studio",
-    categoryTheme: "Multi-Agent Orchestration & Tool-Calling Systems",
-    description:
-      "Cyber-slate canvas (#0f172a) with neon violet (#8b5cf6) and bright amber (#f59e0b) node-calling blocks, multi-agent status badges, and interactive tool schemas.",
-    colorPalette: {
-      canvasBg: "#0f172a",
-      stageBg: "linear-gradient(145deg, #1e1b4b, #0f172a)",
-      border: "rgba(139, 92, 246, 0.3)",
-      primaryText: "#f8fafc",
-      secondaryText: "#cbd5e1",
-      accent: "#8b5cf6",
-      accentSecondary: "#f59e0b",
-      highlightPillBg: "rgba(139, 92, 246, 0.15)",
-      highlightPillText: "#c084fc",
-    },
-    visualMotifs: [
-      "Multi-node agent execution graph",
-      "Tool-calling execution blocks with JSON schema previews",
-      "Active agent status chips (IDLE | REASONING | TOOL CALL | COMPLETE)",
-      "Autonomous reasoning loop diagrams",
-    ],
-    layoutArchitecture: "Agent studio terminal with left tool-calling rail and center reasoning node canvas",
-    assignedPlaybookIds: ["ai-businesses-03"],
-    assignedPlaybookSlugs: [
-      "5-ai-agents-you-can-build-and-sell-without-training-your-own-model",
-      "ai-businesses-03",
-    ],
-  },
-
-  // 5. Playbook 4: Turn 1 AI Skill Into 4 Different Freelance Income Streams
-  "quadrant-revenue-stream": {
-    templateId: "quadrant-revenue-stream",
-    name: "Modular Multi-Stream Revenue Dashboard",
-    categoryTheme: "Freelance Monetization & Productized Services",
-    description:
-      "Warm editorial parchment (#faf7f2) with deep terracotta (#c2410c) and forest sage (#15803d) split meters, 4-quadrant cashflow progression cards, and client lifetime value metrics.",
-    colorPalette: {
-      canvasBg: "#faf7f2",
-      stageBg: "#ffffff",
-      border: "#e5e0d8",
-      primaryText: "#1c1917",
-      secondaryText: "#57534e",
-      accent: "#c2410c",
-      accentSecondary: "#15803d",
-      highlightPillBg: "#ffedd5",
-      highlightPillText: "#c2410c",
-    },
-    visualMotifs: [
-      "4-Quadrant revenue distribution meters (Sprints, Retainers, Digital SOPs, Advisory)",
-      "Monthly revenue target dials and yield percentages",
-      "Client conversion cross-sell flowcharts",
-      "Warm dual-column editorial layout",
-    ],
-    layoutArchitecture: "Editorial parchment dashboard with 4-quadrant metric HUD and dual-column delivery cards",
-    assignedPlaybookIds: ["ai-businesses-04"],
-    assignedPlaybookSlugs: [
-      "turn-1-ai-skill-into-4-different-freelance-income-streams",
-      "ai-businesses-04",
-    ],
-  },
-
-  // 6. Playbook 5: The 30-Day AI Agency Blueprint: From Zero Portfolio to Paying Clients
-  "agency-chronicle-calendar": {
-    templateId: "agency-chronicle-calendar",
-    name: "Chronological 30-Day Milestone Dossier",
-    categoryTheme: "Agency Incubation & Rapid Deployment",
-    description:
-      "Deep carbon canvas (#121316) with burnt amber (#d97706) and electric sky blue (#38bdf8), 30-day timeline progress bar, daily sprint dossier cards, and diagnostic discovery scripts.",
-    colorPalette: {
-      canvasBg: "#121316",
-      stageBg: "linear-gradient(160deg, #181a20, #0f1013)",
-      border: "rgba(217, 119, 6, 0.28)",
+      canvasBg: "#090d16",
+      stageBg: "linear-gradient(150deg, #111827, #0b0f19)",
+      border: "rgba(245, 158, 11, 0.28)",
       primaryText: "#f9fafb",
       secondaryText: "#9ca3af",
-      accent: "#d97706",
-      accentSecondary: "#38bdf8",
-      highlightPillBg: "rgba(217, 119, 6, 0.14)",
+      accent: "#f59e0b",
+      accentSecondary: "#10b981",
+      highlightPillBg: "rgba(245, 158, 11, 0.12)",
       highlightPillText: "#fbbf24",
     },
     visualMotifs: [
-      "Day 1 to Day 30 chronological timeline scrubber across top",
-      "Daily sprint milestone checklist dossiers",
-      "Video audit cold outreach sequence badges",
-      "Carbon executive styling with glowing amber highlights",
+      "Tactical client acquisition pipeline diagram",
+      "Video audit frame markers (Loom 3-minute teardown indicator)",
+      "Zero-ad CAC vs LTV comparison charts",
+      "High-contrast amber focus states",
     ],
-    layoutArchitecture: "Chronological campaign dashboard with top week-by-week scrubber and daily execution dossier card",
+    layoutArchitecture: "Tactical mission dashboard with top channel indicator and bottom pipeline conversion bar",
+    assignedPlaybookIds: ["side-hustles-08"],
+    assignedPlaybookSlugs: ["side-hustles"],
+  },
+
+  // 4. Playbook 3: Give Me 26 Minutes, I'll Give You 10,000 Hours of Claude Knowledge
+  "anthropic-claude-architect": {
+    templateId: "anthropic-claude-architect",
+    name: "Anthropic Claude Systems Architect",
+    categoryTheme: "Advanced Claude 3.5 Sonnet Engineering & Artifacts",
+    description:
+      "Warm terracotta ivory canvas (#faf6f0) with vibrant terracotta orange (#d97706) and deep indigo slate (#312e81), XML tag prompt visualizers, and React Artifact preview frames.",
+    colorPalette: {
+      canvasBg: "#faf6f0",
+      stageBg: "#ffffff",
+      border: "#e7dfd5",
+      primaryText: "#1f1d1a",
+      secondaryText: "#635e57",
+      accent: "#d97706",
+      accentSecondary: "#312e81",
+      highlightPillBg: "#fef3c7",
+      highlightPillText: "#b45309",
+    },
+    visualMotifs: [
+      "XML prompt tag syntax highlights (<operational_context>)",
+      "Live interactive React Artifact frame with code preview tab",
+      "Anthropic model selector indicator (Haiku / Sonnet 3.5 / Opus)",
+      "Warm editorial typography with terracotta accents",
+    ],
+    layoutArchitecture: "Cognitive split architecture with prompt logic rail and interactive execution canvas",
+    assignedPlaybookIds: ["ai-businesses-03"],
+    assignedPlaybookSlugs: ["give-me-26-minutes-ill-give-you-10000-hours-of-claude-knowledge"],
+  },
+
+  // 5. Playbook 4: Give Me 28 Minutes, I'll Give You 10,000 Hours of ChatGPT Knowledge
+  "openai-gpt-synthesizer": {
+    templateId: "openai-gpt-synthesizer",
+    name: "OpenAI GPT Deep Reasoning Synthesizer",
+    categoryTheme: "ChatGPT-4o & OpenAI Reasoning Architectures",
+    description:
+      "Dark obsidian navy canvas (#030712) with OpenAI emerald teal (#10a37f) and electric violet (#8b5cf6), Custom GPT instruction schemas, and o1/o3 reasoning step badges.",
+    colorPalette: {
+      canvasBg: "#030712",
+      stageBg: "linear-gradient(155deg, #0b1329, #030712)",
+      border: "rgba(16, 163, 127, 0.3)",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#10a37f",
+      accentSecondary: "#8b5cf6",
+      highlightPillBg: "rgba(16, 163, 127, 0.12)",
+      highlightPillText: "#34d399",
+    },
+    visualMotifs: [
+      "o1/o3 Chain-of-thought reasoning step badges (Thought for 12 seconds)",
+      "Custom GPT schema editor block with OpenAPI action tabs",
+      "Devil's Advocate critical stress-test alert callouts",
+      "OpenAI green luminous accents against deep obsidian",
+    ],
+    layoutArchitecture: "Reasoning telemetry matrix with top model mode switcher and bottom thought trace log",
+    assignedPlaybookIds: ["ai-businesses-04"],
+    assignedPlaybookSlugs: ["give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge"],
+  },
+
+  // 6. Playbook 5: 5 Proven Ways To Make Money With AI (No Experience)
+  "monetization-playbook-canvas": {
+    templateId: "monetization-playbook-canvas",
+    name: "Zero-Experience AI Monetization Canvas",
+    categoryTheme: "Beginner AI Monetization & Business Packaging",
+    description:
+      "Light minimalist pearl canvas (#f8fafc) with Royal Sapphire (#1d4ed8) and Lime Emerald (#65a30d), clear step-by-step business model cards, and 5-criteria scorecard meters.",
+    colorPalette: {
+      canvasBg: "#f8fafc",
+      stageBg: "#ffffff",
+      border: "#e2e8f0",
+      primaryText: "#0f172a",
+      secondaryText: "#475569",
+      accent: "#1d4ed8",
+      accentSecondary: "#65a30d",
+      highlightPillBg: "#dbeafe",
+      highlightPillText: "#1d4ed8",
+    },
+    visualMotifs: [
+      "5-Criteria score meter (Longevity, Effort, Scalability, Autonomy, Margin)",
+      "Clean client delivery spec cards with tool tags",
+      "Transparent unit economics calculator cards",
+      "Sapphire blue verified checkmarks and badges",
+    ],
+    layoutArchitecture: "Structured business model scorecard with top criteria gauge and dual delivery cards",
     assignedPlaybookIds: ["ai-businesses-05"],
-    assignedPlaybookSlugs: [
-      "the-30-day-ai-agency-blueprint-from-zero-portfolio-to-paying-clients",
-      "ai-businesses-05",
-    ],
+    assignedPlaybookSlugs: ["5-proven-ways-to-make-money-with-ai-no-experience"],
   },
 
-  // 7. Playbook 6: 12 AI Services Small Businesses Need but Rarely Know How to Build
-  "catalog-service-index": {
-    templateId: "catalog-service-index",
-    name: "Commercial Service Catalog & Delivery Spec",
-    categoryTheme: "SMB Turn-Key Systems & Operational Automations",
+  // 7. Playbook 6: The Best AI Side Hustles To Start In 2026 (No Skills)
+  "future-sidehustle-terminal": {
+    templateId: "future-sidehustle-terminal",
+    name: "2026 Side Hustle Tier-List Terminal",
+    categoryTheme: "2026 AI Micro-Enterprises & Tier-Ranked Systems",
     description:
-      "Clean light zinc canvas (#f4f4f5) with deep cobalt (#1e40af) and bright seafoam teal (#0d9488), structured 2-column service catalog cards, tool stack badges, and deliverable complexity ratings.",
+      "Modern dark slate canvas (#0f172a) with Neon Cyan (#06b6d4) and Sunburst Orange (#f97316), S-Tier to F-Tier ranking indicators, and anti-commodity quality filters.",
     colorPalette: {
-      canvasBg: "#f4f4f5",
-      stageBg: "#ffffff",
-      border: "#e4e4e7",
-      primaryText: "#18181b",
-      secondaryText: "#52525b",
-      accent: "#1e40af",
-      accentSecondary: "#0d9488",
-      highlightPillBg: "#eff6ff",
-      highlightPillText: "#1e40af",
+      canvasBg: "#0f172a",
+      stageBg: "linear-gradient(150deg, #1e293b, #0f172a)",
+      border: "rgba(6, 182, 212, 0.3)",
+      primaryText: "#f8fafc",
+      secondaryText: "#cbd5e1",
+      accent: "#06b6d4",
+      accentSecondary: "#f97316",
+      highlightPillBg: "rgba(6, 182, 212, 0.14)",
+      highlightPillText: "#22d3ee",
     },
     visualMotifs: [
-      "Structured 2-column service catalog cards",
-      "Deliverable complexity meters (Level 1–5)",
-      "Integration tool tags (Make + Twilio + Airtable + OpenAI)",
-      "Client ROI and payback period callout cards",
+      "S-Tier / A-Tier / B-Tier / F-Tier rank badges with dynamic color coding",
+      "Anti-AI Slop quality checklist with passed/failed badges",
+      "Make.com / Airtable / Claude integration flowcharts",
+      "Cyan glow telemetry cards with orange action highlights",
     ],
-    layoutArchitecture: "Structured catalog spec sheet with left service index and right implementation architecture",
+    layoutArchitecture: "Tier-list comparative terminal with left rank indicator and right implementation framework",
     assignedPlaybookIds: ["ai-businesses-06"],
-    assignedPlaybookSlugs: [
-      "12-ai-services-small-businesses-need-but-rarely-know-how-to-build",
-      "ai-businesses-06",
-    ],
+    assignedPlaybookSlugs: ["the-best-ai-side-hustles-to-start-in-2026-no-skills"],
   },
 
-  // 8. Playbook 7: Build a Micro-SaaS With AI in 7 Days Instead of Spending Months Coding
-  "code-terminal-compiler": {
-    templateId: "code-terminal-compiler",
-    name: "Developer IDE & Code Compiler Canvas",
-    categoryTheme: "Full-Stack Micro-SaaS & AI Software Engineering",
+  // 8. Playbook 7: Copy & Paste THIS Strategy to Make $13k/Month with AI in 2026
+  "copy-paste-13k-framework": {
+    templateId: "copy-paste-13k-framework",
+    name: "AI Shadow Operator $13k Blueprint",
+    categoryTheme: "High-Margin Creator Monetization & Whop Engines",
     description:
-      "Dark code editor terminal (#0d1117) with syntax-highlighted code editor cards, git branch commit diagrams, Day 1 of 7 countdown badge, and terminal prompt headers.",
+      "Executive deep space black canvas (#09090b) with Bright Gold (#eab308) and Cyber Emerald (#22c55e), $13,500 MRR cashflow boards, and 70/30 creator revenue split calculators.",
     colorPalette: {
-      canvasBg: "#0d1117",
-      stageBg: "#161b22",
-      border: "#30363d",
-      primaryText: "#e6edf3",
-      secondaryText: "#8b949e",
-      accent: "#38bdf8",
-      accentSecondary: "#84cc16",
-      highlightPillBg: "rgba(56, 189, 248, 0.12)",
-      highlightPillText: "#38bdf8",
+      canvasBg: "#09090b",
+      stageBg: "linear-gradient(155deg, #18181b, #09090b)",
+      border: "rgba(234, 179, 8, 0.3)",
+      primaryText: "#fafafa",
+      secondaryText: "#a1a1aa",
+      accent: "#eab308",
+      accentSecondary: "#22c55e",
+      highlightPillBg: "rgba(234, 179, 8, 0.12)",
+      highlightPillText: "#facc15",
     },
     visualMotifs: [
-      "Tabbed IDE code editor mockup (day-0X.ts)",
-      "Syntax-highlighted code cards with copy-paste actions",
-      "Git commit hash tags and branch status diagrams",
-      "Next.js 15 App Router directory tree diagrams",
+      "70/30 Asymmetric revenue share mathematical breakdown dial",
+      "Whop platform checkout & digital vault simulator",
+      "7-Day social warm-up calendar with story hooks",
+      "Gold and cyber-emerald executive financial status bar",
     ],
-    layoutArchitecture: "Developer IDE workspace with file tabs header, syntax code stage, and bottom compiler output console",
+    layoutArchitecture: "Executive shadow operator console with top cashflow HUD and central partnership launch framework",
     assignedPlaybookIds: ["ai-businesses-07"],
-    assignedPlaybookSlugs: [
-      "build-a-micro-saas-with-ai-in-7-days-instead-of-spending-months-coding",
-      "ai-businesses-07",
-    ],
+    assignedPlaybookSlugs: ["copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026"],
   },
 
-  // 9. Playbook 8: Sell AI Chatbots to 10 Local Businesses Without Hiring a Developer
-  "conversational-flow-studio": {
-    templateId: "conversational-flow-studio",
-    name: "Live Chatbot Simulator & Sales Walkthrough",
-    categoryTheme: "Conversational AI & Local Agency Sales",
+  // 9. Playbook 8: Build A One-Person Business As A Beginner (From $0 To $10K)
+  "solopreneur-zero-to-ten": {
+    templateId: "solopreneur-zero-to-ten",
+    name: "Solopreneur Zero-to-$10K Blueprint",
+    categoryTheme: "Solo Founder Validation & Leveraged Digital Assets",
     description:
-      "Warm subtle studio grey (#f3f4f6) with deep emerald teal (#0f766e) and vivid coral (#f43f5e), live interactive smartphone chat bubble simulation cards, customer intent branching nodes, and local sales callout blocks.",
+      "Warm parchment editorial canvas (#fdfbf7) with Deep Crimson Wine (#991b1b) and Rich Navy (#1e3a8a), 3-stage validation funnel cards, and customer discovery matrices.",
     colorPalette: {
-      canvasBg: "#f3f4f6",
+      canvasBg: "#fdfbf7",
       stageBg: "#ffffff",
-      border: "#e5e7eb",
-      primaryText: "#111827",
-      secondaryText: "#4b5563",
-      accent: "#0f766e",
-      accentSecondary: "#f43f5e",
-      highlightPillBg: "#ccfbf1",
-      highlightPillText: "#0f766e",
+      border: "#ede7df",
+      primaryText: "#1c1917",
+      secondaryText: "#57534e",
+      accent: "#991b1b",
+      accentSecondary: "#1e3a8a",
+      highlightPillBg: "#fee2e2",
+      highlightPillText: "#991b1b",
     },
     visualMotifs: [
-      "Smartphone mobile mockup frame with live chat dialogue bubbles",
-      "Intent classification branching trees and quick-reply chips",
-      "Trojan Horse video demo script callouts",
-      "Local business trade icons and 1-click booking preview",
+      "Rule of Ones clarity pillar (1 Audience, 1 Offer, 1 Channel)",
+      "7-Day validation milestone progress tracker",
+      "Build-once, sell-forever compounding asset curves",
+      "Crimson editorial typography with crisp navy supporting frames",
     ],
-    layoutArchitecture: "Split studio canvas with left conversational phone mockup and right commercial sales framework",
+    layoutArchitecture: "Editorial founder journal with top milestone tracker and center validation framework",
     assignedPlaybookIds: ["ai-businesses-08"],
-    assignedPlaybookSlugs: [
-      "sell-ai-chatbots-to-10-local-businesses-without-hiring-a-developer",
-      "ai-businesses-08",
-    ],
+    assignedPlaybookSlugs: ["build-a-one-person-business-as-a-beginner-from-0-to-10k"],
   },
 };
 
@@ -367,49 +343,43 @@ export function getTemplateForPlaybook(playbookSlugOrId: string): SlideTemplateD
 
 /**
  * Programmatic verification helper to ensure catalog-wide uniqueness
- * Throws or returns an audit report confirming zero collision.
  */
 export function verifyTemplateUniqueness(): {
-  isValid: boolean;
+  valid: boolean;
   totalTemplates: number;
   assignedPlaybooksCount: number;
-  report: string[];
+  collisions: string[];
 } {
-  const seenPlaybookIds = new Map<string, string>();
-  const seenPlaybookSlugs = new Map<string, string>();
-  const report: string[] = [];
-  let isValid = true;
+  const seenIds = new Map<string, string>();
+  const seenSlugs = new Map<string, string>();
+  const collisions: string[] = [];
 
-  for (const [tmplId, tmpl] of Object.entries(SLIDE_TEMPLATES)) {
-    report.push(`[TEMPLATE: ${tmplId}] -> ${tmpl.name} (${tmpl.assignedPlaybookSlugs.join(", ")})`);
-
-    for (const pId of tmpl.assignedPlaybookIds) {
-      if (seenPlaybookIds.has(pId)) {
-        isValid = false;
-        report.push(`❌ ERROR: Duplicate Playbook ID '${pId}' in '${tmplId}' and '${seenPlaybookIds.get(pId)}'`);
+  for (const [templateId, def] of Object.entries(SLIDE_TEMPLATES)) {
+    for (const pId of def.assignedPlaybookIds) {
+      if (seenIds.has(pId)) {
+        collisions.push(
+          `Collision on Playbook ID '${pId}': assigned to both '${seenIds.get(pId)}' and '${templateId}'`
+        );
       } else {
-        seenPlaybookIds.set(pId, tmplId);
+        seenIds.set(pId, templateId);
       }
     }
 
-    for (const slug of tmpl.assignedPlaybookSlugs) {
-      if (seenPlaybookSlugs.has(slug)) {
-        isValid = false;
-        report.push(`❌ ERROR: Duplicate Playbook Slug '${slug}' in '${tmplId}' and '${seenPlaybookSlugs.get(slug)}'`);
+    for (const slug of def.assignedPlaybookSlugs) {
+      if (seenSlugs.has(slug)) {
+        collisions.push(
+          `Collision on Playbook Slug '${slug}': assigned to both '${seenSlugs.get(slug)}' and '${templateId}'`
+        );
       } else {
-        seenPlaybookSlugs.set(slug, tmplId);
+        seenSlugs.set(slug, templateId);
       }
     }
-  }
-
-  if (isValid) {
-    report.push(`✅ SUCCESS: All ${seenPlaybookSlugs.size} assigned Playbooks have 100% unique slide templates.`);
   }
 
   return {
-    isValid,
+    valid: collisions.length === 0,
     totalTemplates: Object.keys(SLIDE_TEMPLATES).length,
-    assignedPlaybooksCount: seenPlaybookSlugs.size,
-    report,
+    assignedPlaybooksCount: seenIds.size,
+    collisions,
   };
 }

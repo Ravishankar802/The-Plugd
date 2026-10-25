@@ -17,6 +17,13 @@ import { AGENCY_BLUEPRINT_COURSE, AGENCY_BLUEPRINT_SLUG, AGENCY_BLUEPRINT_ID } f
 import { SMB_SERVICES_COURSE, SMB_SERVICES_SLUG, SMB_SERVICES_ID } from "./playbooks/smb-services-data";
 import { MICRO_SAAS_COURSE, MICRO_SAAS_SLUG, MICRO_SAAS_ID } from "./playbooks/micro-saas-data";
 import { LOCAL_CHATBOTS_COURSE, LOCAL_CHATBOTS_SLUG, LOCAL_CHATBOTS_ID } from "./playbooks/local-chatbots-data";
+import { ZERO_AD_CUSTOMERS_COURSE } from "./playbooks/zero-ad-customers-data";
+import { CLAUDE_KNOWLEDGE_COURSE } from "./playbooks/claude-knowledge-data";
+import { CHATGPT_KNOWLEDGE_COURSE } from "./playbooks/chatgpt-knowledge-data";
+import { FIVE_PROVEN_WAYS_COURSE } from "./playbooks/five-proven-ways-data";
+import { AI_SIDE_HUSTLES_2026_COURSE } from "./playbooks/ai-side-hustles-2026-data";
+import { COPY_PASTE_13K_COURSE } from "./playbooks/copy-paste-13k-data";
+import { ONE_PERSON_BUSINESS_COURSE } from "./playbooks/one-person-business-data";
 
 export type SlideType =
   | "TITLE"
@@ -360,6 +367,13 @@ export const DATING_PLAYBOOK_COURSE: Course = {
 
 export {
   AI_AUTOMATIONS_PLAYBOOK_COURSE,
+  ZERO_AD_CUSTOMERS_COURSE,
+  CLAUDE_KNOWLEDGE_COURSE,
+  CHATGPT_KNOWLEDGE_COURSE,
+  FIVE_PROVEN_WAYS_COURSE,
+  AI_SIDE_HUSTLES_2026_COURSE,
+  COPY_PASTE_13K_COURSE,
+  ONE_PERSON_BUSINESS_COURSE,
   AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
   AGENT_SOLUTIONS_COURSE,
   FREELANCE_INCOME_COURSE,
@@ -373,27 +387,47 @@ export const COURSES: Record<string, Course> = {
   men: DATING_PLAYBOOK_COURSE,
   women: DATING_PLAYBOOK_COURSE,
   "dating-playbook": DATING_PLAYBOOK_COURSE,
+
+  // 1. These 3 AI Businesses
   "7-ai-automations": AI_AUTOMATIONS_PLAYBOOK_COURSE,
   "ai-businesses-01": AI_AUTOMATIONS_PLAYBOOK_COURSE,
+
+  // 2. 10 Ways to Find Paying Customers Without Spending on Ads
+  "side-hustles": ZERO_AD_CUSTOMERS_COURSE,
+  "side-hustles-08": ZERO_AD_CUSTOMERS_COURSE,
+
+  // 3. Give Me 26 Minutes, I'll Give You 10,000 Hours of Claude Knowledge
+  "give-me-26-minutes-ill-give-you-10000-hours-of-claude-knowledge": CLAUDE_KNOWLEDGE_COURSE,
+  "ai-businesses-03": CLAUDE_KNOWLEDGE_COURSE,
+
+  // 4. Give Me 28 Minutes, I'll Give You 10,000 Hours of ChatGPT Knowledge
+  "give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge": CHATGPT_KNOWLEDGE_COURSE,
+  "ai-businesses-04": CHATGPT_KNOWLEDGE_COURSE,
+
+  // 5. 5 Proven Ways To Make Money With AI (No Experience)
+  "5-proven-ways-to-make-money-with-ai-no-experience": FIVE_PROVEN_WAYS_COURSE,
+  "ai-businesses-05": FIVE_PROVEN_WAYS_COURSE,
+
+  // 6. The Best AI Side Hustles To Start In 2026 (No Skills)
+  "the-best-ai-side-hustles-to-start-in-2026-no-skills": AI_SIDE_HUSTLES_2026_COURSE,
+  "ai-businesses-06": AI_SIDE_HUSTLES_2026_COURSE,
+
+  // 7. Copy & Paste THIS Strategy to Make $13k/Month with AI in 2026
+  "copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026": COPY_PASTE_13K_COURSE,
+  "ai-businesses-07": COPY_PASTE_13K_COURSE,
+
+  // 8. Build A One-Person Business As A Beginner (From $0 To $10K)
+  "build-a-one-person-business-as-a-beginner-from-0-to-10k": ONE_PERSON_BUSINESS_COURSE,
+  "ai-businesses-08": ONE_PERSON_BUSINESS_COURSE,
+
+  // Backward compatibility legacy mappings
   "ai-businesses-02": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
   "build-a-10000-month-ai-service-business-with-just-3-core-tools": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
-  // 3. 5 AI Agents
-  "ai-businesses-03": AGENT_SOLUTIONS_COURSE,
   "5-ai-agents-you-can-build-and-sell-without-training-your-own-model": AGENT_SOLUTIONS_COURSE,
-  // 4. Turn 1 AI Skill
-  "ai-businesses-04": FREELANCE_INCOME_COURSE,
   "turn-1-ai-skill-into-4-different-freelance-income-streams": FREELANCE_INCOME_COURSE,
-  // 5. 30-Day AI Agency Blueprint
-  "ai-businesses-05": AGENCY_BLUEPRINT_COURSE,
   "the-30-day-ai-agency-blueprint-from-zero-portfolio-to-paying-clients": AGENCY_BLUEPRINT_COURSE,
-  // 6. 12 AI Services for SMBs
-  "ai-businesses-06": SMB_SERVICES_COURSE,
   "12-ai-services-small-businesses-need-but-rarely-know-how-to-build": SMB_SERVICES_COURSE,
-  // 7. Build a Micro-SaaS
-  "ai-businesses-07": MICRO_SAAS_COURSE,
   "build-a-micro-saas-with-ai-in-7-days-instead-of-spending-months-coding": MICRO_SAAS_COURSE,
-  // 8. Sell AI Chatbots
-  "ai-businesses-08": LOCAL_CHATBOTS_COURSE,
   "sell-ai-chatbots-to-10-local-businesses-without-hiring-a-developer": LOCAL_CHATBOTS_COURSE,
 };
 
@@ -405,13 +439,13 @@ export function getAllCourses(): Course[] {
   return [
     DATING_PLAYBOOK_COURSE,
     AI_AUTOMATIONS_PLAYBOOK_COURSE,
-    AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
-    AGENT_SOLUTIONS_COURSE,
-    FREELANCE_INCOME_COURSE,
-    AGENCY_BLUEPRINT_COURSE,
-    SMB_SERVICES_COURSE,
-    MICRO_SAAS_COURSE,
-    LOCAL_CHATBOTS_COURSE,
+    ZERO_AD_CUSTOMERS_COURSE,
+    CLAUDE_KNOWLEDGE_COURSE,
+    CHATGPT_KNOWLEDGE_COURSE,
+    FIVE_PROVEN_WAYS_COURSE,
+    AI_SIDE_HUSTLES_2026_COURSE,
+    COPY_PASTE_13K_COURSE,
+    ONE_PERSON_BUSINESS_COURSE,
   ];
 }
 
