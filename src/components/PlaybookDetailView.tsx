@@ -22,6 +22,7 @@ import {
   Heart,
   Info,
   ArrowRight,
+  Presentation,
 } from "lucide-react";
 import Header from "@/components/Header";
 import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
@@ -56,6 +57,18 @@ export default function PlaybookDetailView({
   const actualLessonsCount =
     playbook.modules?.reduce((acc, m) => acc + (m.lessons?.length || 0), 0) ||
     playbook.lessonsCount || 0;
+  const actualSlidesCount =
+    playbook.slidesCount ||
+    playbook.modules?.reduce(
+      (acc, m) =>
+        acc +
+        (m.lessons?.reduce(
+          (lAcc: number, l: any) => lAcc + (l.slides?.length || 4),
+          0
+        ) || 0),
+      0
+    ) ||
+    actualLessonsCount * 4;
 
   // Direct checkout handler (triggers Dodo checkout session)
   const handleCheckout = async () => {
@@ -476,11 +489,15 @@ export default function PlaybookDetailView({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-[#2d2f31]">
                   <div className="flex items-center gap-3">
                     <Layers className="h-4 w-4 text-zinc-600 shrink-0" />
-                    <span>{actualModulesCount} structured, progressive modules</span>
+                    <span>{actualModulesCount} structured, progressive sections</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Presentation className="h-4 w-4 text-zinc-600 shrink-0" />
+                    <span>{actualSlidesCount} visual presentation slides</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <FileText className="h-4 w-4 text-zinc-600 shrink-0" />
-                    <span>{actualLessonsCount} comprehensive slide &amp; text lessons</span>
+                    <span>{actualLessonsCount} comprehensive in-depth written lessons</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Smartphone className="h-4 w-4 text-zinc-600 shrink-0" />
@@ -502,7 +519,7 @@ export default function PlaybookDetailView({
                 {/* Subtitle & Expand all toggle */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm text-[#6a6f73] mb-3 gap-2">
                   <span>
-                    {actualModulesCount} sections • {actualLessonsCount} lectures •{" "}
+                    {actualModulesCount} sections • {actualLessonsCount} lectures • {actualSlidesCount} slides •{" "}
                     {playbook.hoursOfMaterial} total length
                   </span>
                   <button

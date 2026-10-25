@@ -71,13 +71,24 @@ MODULES_DEF = [
     },
     {
         "num": "07",
-        "title": "Scaling to $10,000/Month Solo Client Operations",
+        "title": "High-Converting Discovery Calls & Retainer Negotiations",
+        "desc": "Execute frictionless 15-minute qualification calls, dismantle price objections with mathematical precision, and close $2,000/month retainers without sales friction.",
+        "lessons": [
+            ("07-1", "07.1", "The 15-Minute Frictionless Discovery Call Framework", 18),
+            ("07-2", "07.2", "Neutralizing 'Send Me a Proposal' & 'We Don't Have Budget'", 19),
+            ("07-3", "07.3", "The Three-Tier Retainer Closing Architecture ($1,500 / $2,500 / $5,000)", 20),
+            ("07-4", "07.4", "Live Contract Execution & Upfront Payment Collection", 21),
+        ]
+    },
+    {
+        "num": "08",
+        "title": "Client Retention, Referral Loops & Scaling to $10,000/Month",
         "desc": "Synthesize the 10 customer acquisition channels into a 60-minute daily operating cadence, optimize client retention, and secure predictable $10,000/month recurring income.",
         "lessons": [
-            ("07-1", "07.1", "Unit Economics: 5 Retainers @ $2,000/mo vs 10 @ $1,000/mo", 20),
-            ("07-2", "07.2", "The 60-Minute Daily Client Acquisition Protocol", 18),
-            ("07-3", "07.3", "Overcoming Price Resistance & Retainer Negotiations", 19),
-            ("07-4", "07.4", "SOP Automation: Delegating Lead Gen to AI Agents", 22),
+            ("08-1", "08.1", "Unit Economics: 5 Retainers @ $2,000/mo vs 10 @ $1,000/mo", 20),
+            ("08-2", "08.2", "The 60-Minute Daily Client Acquisition Protocol", 18),
+            ("08-3", "08.3", "Client Onboarding & Retention Systems to Prevent Churn", 19),
+            ("08-4", "08.4", "SOP Automation: Delegating Lead Gen to AI Agents", 22),
         ]
     }
 ]
@@ -298,7 +309,8 @@ export const ZERO_AD_CUSTOMERS_COURSE: Course = {{
   badge: "Bestseller",
   rating: 4.9,
   ratingCount: 312,
-  hoursOfMaterial: "7.0 hours",
+  hoursOfMaterial: "8.5 hours",
+  slidesCount: 128,
   modulesCount: ZERO_AD_CUSTOMERS_MODULES.length,
   lessonsCount: ZERO_AD_CUSTOMERS_MODULES.reduce((acc, m) => acc + m.lessons.length, 0),
   primaryColor: "#090d16",
@@ -353,9 +365,10 @@ export const ZERO_AD_CUSTOMERS_DETAIL_DATA: PlaybookDetailData = {{
   language: "English",
   subtitles: "English [Auto]",
   thumbnail: "",
-  hoursOfMaterial: "7.0 hours",
-  modulesCount: 7,
-  lessonsCount: 28,
+  hoursOfMaterial: "8.5 hours",
+  modulesCount: 8,
+  lessonsCount: 32,
+  slidesCount: 128,
   whatYouWillLearn: [
     "Deploy 10 distinct, proven client acquisition methods that require zero ad spend",
     "Master the 3-minute Loom video audit framework that turns cold prospects into enthusiastic buyers",
@@ -386,7 +399,7 @@ export const ZERO_AD_CUSTOMERS_DETAIL_DATA: PlaybookDetailData = {{
       "From high-converting 3-minute video audits and reverse job board hijacking to non-competing agency partnerships and organic spear posts, every method is broken down with step-by-step implementation guides, outreach scripts, decision matrices, and real-world unit economics.",
       "Designed specifically for solo operators, agency founders, and consultants who want to reach $10,000+/month with 95%+ profit margins."
     ],
-    keyPointsTitle: "The 10 Client Acquisition Methods Curriculum",
+    keyPointsTitle: "The 8-Module Client Acquisition Curriculum",
     keyPoints: [
       "Module 1: The Zero-Ad Paradigm & Client Acquisition Foundations",
       "Module 2: Inbound Organic Flywheels (Methods 1 & 2)",
@@ -394,7 +407,8 @@ export const ZERO_AD_CUSTOMERS_DETAIL_DATA: PlaybookDetailData = {{
       "Module 4: Network & Partner Multipliers (Methods 5 & 6)",
       "Module 5: Authority Assets & Organic Spear Posts (Methods 7 & 8)",
       "Module 6: Direct Sprints & Referral Loops (Methods 9 & 10)",
-      "Module 7: Scaling to $10,000/Month Solo Client Operations"
+      "Module 7: High-Converting Discovery Calls & Retainer Negotiations",
+      "Module 8: Client Retention, Referral Loops & Scaling to $10,000/Month"
     ],
     closing: [
       "Every single lesson provides both interactive executive presentation slides and a comprehensive written lesson detailing step-by-step execution.",

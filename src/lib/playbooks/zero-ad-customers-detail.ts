@@ -28,9 +28,10 @@ export const ZERO_AD_CUSTOMERS_DETAIL_DATA: PlaybookDetailData = {
   language: "English",
   subtitles: "English [Auto]",
   thumbnail: "",
-  hoursOfMaterial: "7.0 hours",
-  modulesCount: 7,
-  lessonsCount: 28,
+  hoursOfMaterial: "8.5 hours",
+  modulesCount: 8,
+  lessonsCount: 32,
+  slidesCount: 128,
   whatYouWillLearn: [
     "Deploy 10 distinct, proven client acquisition methods that require zero ad spend",
     "Master the 3-minute Loom video audit framework that turns cold prospects into enthusiastic buyers",
@@ -61,7 +62,7 @@ export const ZERO_AD_CUSTOMERS_DETAIL_DATA: PlaybookDetailData = {
       "From high-converting 3-minute video audits and reverse job board hijacking to non-competing agency partnerships and organic spear posts, every method is broken down with step-by-step implementation guides, outreach scripts, decision matrices, and real-world unit economics.",
       "Designed specifically for solo operators, agency founders, and consultants who want to reach $10,000+/month with 95%+ profit margins."
     ],
-    keyPointsTitle: "The 10 Client Acquisition Methods Curriculum",
+    keyPointsTitle: "The 8-Module Client Acquisition Curriculum",
     keyPoints: [
       "Module 1: The Zero-Ad Paradigm & Client Acquisition Foundations",
       "Module 2: Inbound Organic Flywheels (Methods 1 & 2)",
@@ -69,7 +70,8 @@ export const ZERO_AD_CUSTOMERS_DETAIL_DATA: PlaybookDetailData = {
       "Module 4: Network & Partner Multipliers (Methods 5 & 6)",
       "Module 5: Authority Assets & Organic Spear Posts (Methods 7 & 8)",
       "Module 6: Direct Sprints & Referral Loops (Methods 9 & 10)",
-      "Module 7: Scaling to $10,000/Month Solo Client Operations"
+      "Module 7: High-Converting Discovery Calls & Retainer Negotiations",
+      "Module 8: Client Retention, Referral Loops & Scaling to $10,000/Month"
     ],
     closing: [
       "Every single lesson provides both interactive executive presentation slides and a comprehensive written lesson detailing step-by-step execution.",

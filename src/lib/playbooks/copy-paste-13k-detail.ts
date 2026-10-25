@@ -5,8 +5,8 @@ export const COPY_PASTE_13K_DETAIL_DATA: PlaybookDetailData = {
   id: "ai-businesses-07",
   slug: "copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026",
   title: "Copy & Paste THIS Strategy to Make $13k/Month with AI in 2026",
-  headline: "A step-by-step masterclass on partnering with 30k\u201350k micro-creators, launching digital knowledge assets on Whop, and generating $13,500/month on 70/30 revenue splits.",
-  description: "The complete operational blueprint for the AI Shadow Operating model. Discover how to identify starving micro-audiences in high-passion niches, package premium digital playbooks using specialized AI tools in 72 hours, pitch creators on a zero-risk 70/30 revenue share, execute 7-day organic launch sequences on creator socials, and generate $13,500/month from a single partnership.",
+  headline: "A step-by-step masterclass on partnering with micro-creators on 70/30 revenue-share digital product launches yielding $13,500+/month with zero audience.",
+  description: "The definitive blueprint for the AI Shadow Operating model. Discover how to identify and partner with 30k\u201350k follower micro-creators, turn their existing content into $150 digital courses using AI in 4 hours, execute a 7-day organic launch to 300 buyers, and generate $13,500/month in net revenue-share income without showing your face or building a personal following.",
   categoryName: "AI Businesses",
   categorySlug: "ai-businesses",
   price: 3,
@@ -16,21 +16,22 @@ export const COPY_PASTE_13K_DETAIL_DATA: PlaybookDetailData = {
   badge: "High Demand",
   rating: 4.9,
   ratingCount: 476,
-  studentsCount: "1,890",
+  studentsCount: "1,820",
   instructorName: "Plugd Enterprise Team",
   instructorTitle: "Senior AI Systems Architects & Solo Strategists",
   instructorBio: "The Plugd Enterprise Team advises founders, solo operators, and creators on deploying high-margin AI workflows, zero-ad client acquisition flywheels, and scalable digital assets.",
   instructorRating: 4.9,
   instructorReviews: "476",
-  instructorStudents: "1,890",
+  instructorStudents: "1,820",
   instructorCourses: 5,
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
   thumbnail: "",
-  hoursOfMaterial: "7.0 hours",
+  hoursOfMaterial: "7.5 hours",
   modulesCount: 7,
   lessonsCount: 28,
+  slidesCount: 112,
   whatYouWillLearn: [
     "Master the end-to-end framework of Copy & Paste THIS Strategy to Make $13k/Month with AI in 2026",
     "Implement step-by-step workflows with zero coding or machine learning background required",
@@ -56,7 +57,7 @@ export const COPY_PASTE_13K_DETAIL_DATA: PlaybookDetailData = {
   ],
   descriptionSections: {
     intro: [
-      "The complete operational blueprint for the AI Shadow Operating model. Discover how to identify starving micro-audiences in high-passion niches, package premium digital playbooks using specialized AI tools in 72 hours, pitch creators on a zero-risk 70/30 revenue share, execute 7-day organic launch sequences on creator socials, and generate $13,500/month from a single partnership.",
+      "The definitive blueprint for the AI Shadow Operating model. Discover how to identify and partner with 30k\u201350k follower micro-creators, turn their existing content into $150 digital courses using AI in 4 hours, execute a 7-day organic launch to 300 buyers, and generate $13,500/month in net revenue-share income without showing your face or building a personal following.",
       "Every single lesson in this comprehensive 7-module curriculum combines interactive executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and real-world failure mitigation strategies.",
       "Engineered specifically for solo operators and founders looking to build a sustainable, highly lucrative business with 95%+ net profit margins."
     ],
@@ -64,11 +65,11 @@ export const COPY_PASTE_13K_DETAIL_DATA: PlaybookDetailData = {
     keyPoints: [
       "Module 01: The Micro-Creator Goldmine & The $13,500/Month Math",
       "Module 02: The Starving Crowd Principle & Creator Vetting",
-      "Module 03: Specialized AI Tools & Rapid Digital Product Packaging",
-      "Module 04: The 70/30 Creator Partnership Pitch & Legal Architecture",
-      "Module 05: The 7-Day Organic Launch Sequence on Creator Socials",
-      "Module 06: Backend Membership Retention & Recurring MRR Stacking",
-      "Module 07: Scaling to $25,000+/Month Across Multiple Creator Alliances"
+      "Module 03: The Value-First Zero-Risk Pitch Framework",
+      "Module 04: The 4-Hour AI Digital Product & Curriculum Assembly Line",
+      "Module 05: The Organic Launch Blueprint: Infiltrating the Creator's Audience",
+      "Module 06: Automated Operations, Whop/Skool Infrastructure & Delivery",
+      "Module 07: Compounding Partnerships: Scaling to $13,500\u2013$25,000/Month"
 ],
     closing: [
       "Every lesson includes both presentation slides and a comprehensive written implementation guide.",
@@ -76,10 +77,10 @@ export const COPY_PASTE_13K_DETAIL_DATA: PlaybookDetailData = {
     ]
   },
   targetAudience: [
-    "Aspiring operators who want to make $13,000+/month without having their own audience or showing their face",
-    "Individuals looking to partner with micro-creators on asymmetric 70/30 revenue splits",
-    "Digital marketers seeking to deploy high-converting community launches and playbooks on Whop",
-    "Entrepreneurs wanting to stack recurring monthly memberships and compound cash flow"
+    "Individuals who want to build a $13k+/month online income without building a personal brand",
+    "Growth operators who want to leverage existing creator attention rather than fighting for algorithms",
+    "Product builders who want to create and launch profitable digital courses in under 4 hours with AI",
+    "Operators looking for asymmetric revenue-share deals with 70/30 creator profit splits"
 ],
   includes: [
     { iconName: "layers", text: "7 Structured Modules & 28 Production Lessons" },

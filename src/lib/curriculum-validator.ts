@@ -13,9 +13,9 @@ export interface CurriculumValidationResult {
 /**
  * Validates that a Playbook curriculum strictly conforms to the permanent
  * PLUGD PLAYBOOK CONTENT STANDARD:
- * - 6 to 7 modules (inclusive)
+ * - 6 to 8 modules (inclusive)
  * - Exactly 4 lessons per module
- * - Total lessons: 24 to 28
+ * - Total lessons: 24 to 32
  * - Every lesson contains substantive presentation slides
  * - Every lesson contains in-depth written content (>500 characters, no placeholders)
  */
@@ -25,9 +25,9 @@ export function validateCurriculumStructure(course: Course): CurriculumValidatio
   const lessonsPerModule: number[] = [];
   let totalLessonsCount = 0;
 
-  if (modulesCount < 6 || modulesCount > 7) {
+  if (modulesCount < 6 || modulesCount > 8) {
     errors.push(
-      `Course "${course.title}" has ${modulesCount} modules. Mandatory curriculum requirement: 6 to 7 modules.`
+      `Course "${course.title}" has ${modulesCount} modules. Mandatory curriculum requirement: 6 to 8 modules.`
     );
   }
 

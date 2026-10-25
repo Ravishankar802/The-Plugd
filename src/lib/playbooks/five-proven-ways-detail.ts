@@ -28,9 +28,10 @@ export const FIVE_PROVEN_WAYS_DETAIL_DATA: PlaybookDetailData = {
   language: "English",
   subtitles: "English [Auto]",
   thumbnail: "",
-  hoursOfMaterial: "7.0 hours",
-  modulesCount: 7,
-  lessonsCount: 28,
+  hoursOfMaterial: "8.5 hours",
+  modulesCount: 8,
+  lessonsCount: 32,
+  slidesCount: 128,
   whatYouWillLearn: [
     "Master the end-to-end framework of 5 Proven Ways To Make Money With AI (No Experience)",
     "Implement step-by-step workflows with zero coding or machine learning background required",
@@ -57,10 +58,10 @@ export const FIVE_PROVEN_WAYS_DETAIL_DATA: PlaybookDetailData = {
   descriptionSections: {
     intro: [
       "A grounded, realistic roadmap breaking down the 5 most viable AI business models for newcomers. Evaluated through the 5-criteria scorecard (Longevity, Effort, Scalability, Autonomy, Margin), this playbook details step-by-step implementation, tech stacks, client closing scripts, and exact unit economics to build a $10,000/month income stream with zero employees.",
-      "Every single lesson in this comprehensive 7-module curriculum combines interactive executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and real-world failure mitigation strategies.",
+      "Every single lesson in this comprehensive 8-module curriculum combines interactive executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and real-world failure mitigation strategies.",
       "Engineered specifically for solo operators and founders looking to build a sustainable, highly lucrative business with 95%+ net profit margins."
     ],
-    keyPointsTitle: "The 7-Module Comprehensive Curriculum",
+    keyPointsTitle: "The 8-Module Comprehensive Curriculum",
     keyPoints: [
       "Module 01: The 5-Criteria Evaluation Matrix & Model Selection",
       "Module 02: Proven Model #1: AI User-Generated Content (UGC) for E-Commerce",
@@ -68,7 +69,8 @@ export const FIVE_PROVEN_WAYS_DETAIL_DATA: PlaybookDetailData = {
       "Module 04: Proven Model #3: AI Short-Form Content & Clipping for Creators",
       "Module 05: Proven Model #4: AI B2B Lead Generation & Automated Outreach",
       "Module 06: Proven Model #5: AI Digital Products & Niche Playbooks",
-      "Module 07: The $10,000/Month Solo Blueprint: Stacking & Operating"
+      "Module 07: Client Acquisition & Deal Closing for Beginners",
+      "Module 08: The $10,000/Month Solo Blueprint: Systems, Stacking & Autonomy"
 ],
     closing: [
       "Every lesson includes both presentation slides and a comprehensive written implementation guide.",

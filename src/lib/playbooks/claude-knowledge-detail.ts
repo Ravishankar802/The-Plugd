@@ -28,9 +28,10 @@ export const CLAUDE_KNOWLEDGE_DETAIL_DATA: PlaybookDetailData = {
   language: "English",
   subtitles: "English [Auto]",
   thumbnail: "",
-  hoursOfMaterial: "7.0 hours",
-  modulesCount: 7,
-  lessonsCount: 28,
+  hoursOfMaterial: "6.5 hours",
+  modulesCount: 6,
+  lessonsCount: 24,
+  slidesCount: 96,
   whatYouWillLearn: [
     "Master the end-to-end framework of Give Me 26 Minutes, I'll Give You 10,000 Hours of Claude Knowledge",
     "Implement step-by-step workflows with zero coding or machine learning background required",
@@ -57,18 +58,17 @@ export const CLAUDE_KNOWLEDGE_DETAIL_DATA: PlaybookDetailData = {
   descriptionSections: {
     intro: [
       "A comprehensive, practical playbook distilling 10,000 hours of Anthropic Claude expertise into an actionable curriculum. Learn memory setup, Haiku vs Sonnet vs Opus token optimization, project context architecture, native Gmail/Calendar connectors, mobile dispatch, interactive React Artifacts, and building a $10,000/month workflow automation practice.",
-      "Every single lesson in this comprehensive 7-module curriculum combines interactive executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and real-world failure mitigation strategies.",
+      "Every single lesson in this comprehensive 6-module curriculum combines interactive executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and real-world failure mitigation strategies.",
       "Engineered specifically for solo operators and founders looking to build a sustainable, highly lucrative business with 95%+ net profit margins."
     ],
-    keyPointsTitle: "The 7-Module Comprehensive Curriculum",
+    keyPointsTitle: "The 6-Module Comprehensive Curriculum",
     keyPoints: [
       "Module 01: Account Permanence & The Memory Calibration Protocol",
       "Module 02: Model Architecture & Token Economy: Haiku vs Sonnet vs Opus",
       "Module 03: Context Window Architecture: The Reality of Claude Projects",
       "Module 04: Connectors & Real-World Operating Integration",
       "Module 05: Desktop Co-Work & Remote Dispatch Automation",
-      "Module 06: Interactive Artifacts & Rapid Full-Stack Prototyping",
-      "Module 07: Commercializing Claude Systems: Scaling to $10,000/Month"
+      "Module 06: Interactive Artifacts & Commercializing to $10,000/Month"
 ],
     closing: [
       "Every lesson includes both presentation slides and a comprehensive written implementation guide.",

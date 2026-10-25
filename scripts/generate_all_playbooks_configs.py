@@ -58,24 +58,13 @@ P3_MODULES = [
     },
     {
         "num": "06",
-        "title": "Interactive Artifacts & Rapid Full-Stack Prototyping",
-        "desc": "Eliminate frontend engineering and UI design bottlenecks by commanding Claude Artifacts to generate interactive React dashboards, games, and visual tools.",
+        "title": "Interactive Artifacts & Commercializing to $10,000/Month",
+        "desc": "Eliminate frontend bottlenecks by generating interactive React dashboards with Claude Artifacts, packaging solutions into $2,500 retainers, and scaling a solo agency.",
         "lessons": [
             ("06-1", "06.1", "Artifacts Architecture: Real-Time Interactive Code Compilation", 18),
             ("06-2", "06.2", "Prototyping Production Web Apps & Dashboards in Under 10 Minutes", 20),
-            ("06-3", "06.3", "Claude Design: Bypassing Graphic Designers for Commercial Assets", 19),
-            ("06-4", "06.4", "Exporting Artifacts to Production Next.js & Tailwind Systems", 21),
-        ]
-    },
-    {
-        "num": "07",
-        "title": "Commercializing Claude Systems: Scaling to $10,000/Month",
-        "desc": "Package advanced Claude workflows into high-ticket B2B operational transformations, client internal copilots, and predictable $10,000/month recurring retainers.",
-        "lessons": [
-            ("07-1", "07.1", "Packaging Claude Workflows as High-Ticket $2,500 Setup Services", 20),
-            ("07-2", "07.2", "The 4-Client Path to $10,000/Month Recurring Maintenance Retainers", 22),
-            ("07-3", "07.3", "Auditing Client Bottlenecks & Presenting the Operational ROI", 19),
-            ("07-4", "07.4", "The Autonomous Solo Operator Cadence: Running a 95% Margin Agency", 21),
+            ("06-3", "06.3", "Packaging Claude Systems into $2,500/Month High-Ticket Services", 21),
+            ("06-4", "06.4", "The 4-Client Path to $10,000/Month Recurring Solopreneurship", 22),
         ]
     }
 ]
@@ -149,13 +138,24 @@ P4_MODULES = [
     },
     {
         "num": "07",
+        "title": "Enterprise Knowledge Ingestion & Advanced Retrieval Workflows",
+        "desc": "Clean and chunk proprietary enterprise documents, eliminate hallucinations with structured grounding, and connect GPTs to Notion, Slack, and Google Drive.",
+        "lessons": [
+            ("07-1", "07.1", "Cleaning and Chunking Enterprise Knowledge Bases for Custom GPTs", 18),
+            ("07-2", "07.2", "Semantic Search & Vector Retrieval Grounding to Eliminate Hallucinations", 20),
+            ("07-3", "07.3", "Integrating Custom GPTs with Notion, Slack, and Google Drive", 19),
+            ("07-4", "07.4", "Automated Knowledge Refresh Pipelines & Access Control Security", 21),
+        ]
+    },
+    {
+        "num": "08",
         "title": "Monetizing ChatGPT Expertise to $10,000/Month Solo Income",
         "desc": "Package your deep ChatGPT mastery into high-margin consulting offers, corporate workflow integrations, and sustainable $10,000/month recurring income.",
         "lessons": [
-            ("07-1", "07.1", "The Commercial AI Architect: Auditing High-Cost Corporate Inefficiencies", 20),
-            ("07-2", "07.2", "Selling Custom GPT Implementation Packages for $3,500 Upfront", 21),
-            ("07-3", "07.3", "The $10,000/Month Retainer Model: Maintenance, Tuning & Optimization", 22),
-            ("07-4", "07.4", "The Solo Executive Playbook: Managing 4 Retainers with 10 Hours/Week", 20),
+            ("08-1", "08.1", "The Commercial AI Architect: Auditing High-Cost Corporate Inefficiencies", 20),
+            ("08-2", "08.2", "Selling Custom GPT Implementation Packages for $3,500 Upfront", 21),
+            ("08-3", "08.3", "The $10,000/Month Retainer Model: Maintenance, Tuning & Optimization", 22),
+            ("08-4", "08.4", "The Solo Executive Playbook: Managing 4 Retainers with 10 Hours/Week", 20),
         ]
     }
 ]
@@ -212,7 +212,7 @@ P5_MODULES = [
         "lessons": [
             ("05-1", "05.1", "Why B2B Lead Generation Commands the Highest Agency Retainers", 19),
             ("05-2", "05.2", "Building Automated Scraping & Enrichment Lists (Apollo + Clay)", 21),
-            ("05-3", "05.3", "AI Cold Outreach Personalization & Deliverability Guardrails", 20),
+            ("05-3", "05.4", "AI Cold Outreach Personalization & Deliverability Guardrails", 20),
             ("05-4", "05.4", "Performance Pricing: Charging $2,500/mo + $100 Per Qualified Meeting", 22),
         ]
     },
@@ -229,13 +229,24 @@ P5_MODULES = [
     },
     {
         "num": "07",
-        "title": "The $10,000/Month Solo Blueprint: Stacking & Operating",
+        "title": "Client Acquisition & Deal Closing for Beginners",
+        "desc": "Overcome imposter syndrome and acquire paying clients without ad spend using 3-minute video audits, risk-free pilots, and upfront contract execution.",
+        "lessons": [
+            ("07-1", "07.1", "The Beginner's Zero-Ad Client Acquisition Playbook", 18),
+            ("07-2", "07.2", "Conducting 15-Minute Video Audits That Close Deals Organically", 20),
+            ("07-3", "07.3", "Overcoming Imposter Syndrome & Experience Objections", 19),
+            ("07-4", "07.4", "The Contract & Upfront Payment Collection Protocol", 21),
+        ]
+    },
+    {
+        "num": "08",
+        "title": "The $10,000/Month Solo Blueprint: Systems, Stacking & Autonomy",
         "desc": "Map out your exact milestone roadmap, control software overhead under $200/month, and scale cleanly to $10,000+/month with zero employees.",
         "lessons": [
-            ("07-1", "07.1", "Unit Economics Comparison: Which of the 5 Models Hits $10k Fastest", 20),
-            ("07-2", "07.2", "Avoiding Operational Chaos: Scaling 1 Model to $10k Before Stacking", 19),
-            ("07-3", "07.3", "The $180/Month Solo Tech Stack: Running 95%+ Net Margins", 18),
-            ("07-4", "07.4", "The 90-Day Beginner Execution Calendar: From Zero to $10,000/Month", 22),
+            ("08-1", "08.1", "Unit Economics Comparison: Which of the 5 Models Hits $10k Fastest", 20),
+            ("08-2", "08.2", "Avoiding Operational Chaos: Scaling 1 Model to $10k Before Stacking", 19),
+            ("08-3", "08.3", "The $180/Month Solo Tech Stack: Running 95%+ Net Margins", 18),
+            ("08-4", "08.4", "The 90-Day Beginner Execution Calendar: From Zero to $10,000/Month", 22),
         ]
     }
 ]
@@ -276,46 +287,35 @@ P6_MODULES = [
     },
     {
         "num": "04",
-        "title": "B-Tier Traps & Strategic Upgrades: Content, Sites & Micro-SaaS",
+        "title": "B-Tier Upgrades & Moat Building: Escaping Commodity Slop",
         "desc": "Navigate the crowded middle tier of AI clipping, website design, and micro-SaaS by transitioning from commoditized deliverables to revenue-generating outcomes.",
         "lessons": [
             ("04-1", "04.1", "AI Short-Form Video: Escaping the Low-Price Race to the Bottom", 18),
             ("04-2", "04.2", "AI Websites: Selling Customer Conversion Rather Than Pretty Pixels", 19),
-            ("04-3", "04.3", "The Micro-SaaS Trap: Why Distribution Always Trumps Coding Speed", 21),
-            ("04-4", "04.4", "Pivoting B-Tier Skills into High-Ticket Bundled Service Packages", 20),
+            ("04-3", "04.3", "Building Custom Client SOP Systems That Cannot Be Cloned", 20),
+            ("04-4", "04.4", "Pivoting B-Tier Skills into High-Ticket Bundled Service Packages", 21),
         ]
     },
     {
         "num": "05",
-        "title": "Escaping Commodity Status: Eliminating AI Slop & Building Moats",
-        "desc": "Build uncopyable competitive moats by blending artificial intelligence with human synthesis, custom business logic, and proprietary client SOPs.",
+        "title": "Zero-Ad Client Acquisition & The Trojan Horse Audit",
+        "desc": "Sign high-paying business clients without running paid ads using 3-minute video audits, hiring trigger detection, and risk-reversal guarantees.",
         "lessons": [
-            ("05-1", "05.1", "The Dangers of Low-Barrier AI Services: Why Copycats Fail", 18),
-            ("05-2", "05.2", "Injecting Proprietary Domain Logic & Bespoke Human Oversight", 20),
-            ("05-3", "05.3", "Building Custom Client SOP Systems That Cannot Be Cloned", 19),
-            ("05-4", "05.4", "Creating High Switching Costs to Guarantee Client Retention", 21),
+            ("05-1", "05.1", "The 3-Minute Video Audit That Exposes Expensive Manual Bottlenecks", 19),
+            ("05-2", "05.2", "Hiring Trigger Scouring: Pitching Solutions to Actively Hiring Teams", 21),
+            ("05-3", "05.3", "Risk-Reversal Guarantees: 'Measurable ROI in 14 Days or Full Refund'", 20),
+            ("05-4", "05.4", "Converting Initial Project Audits into $2,000/Month Ongoing Retainers", 22),
         ]
     },
     {
         "num": "06",
-        "title": "Zero-Ad Client Acquisition & The Trojan Horse Audit",
-        "desc": "Sign high-paying business clients without running paid ads using 3-minute video audits, hiring trigger detection, and risk-reversal guarantees.",
-        "lessons": [
-            ("06-1", "06.1", "The 3-Minute Video Audit That Exposes Expensive Manual Bottlenecks", 19),
-            ("06-2", "06.2", "Hiring Trigger Scouring: Pitching Solutions to Actively Hiring Teams", 21),
-            ("06-3", "06.3", "Risk-Reversal Guarantees: 'Measurable ROI in 14 Days or Full Refund'", 20),
-            ("06-4", "06.4", "Converting Initial Project Audits into $2,000/Month Ongoing Retainers", 22),
-        ]
-    },
-    {
-        "num": "07",
         "title": "The 2026 Solo Operator Playbook: Scaling to $10,000/Month",
         "desc": "Execute the mathematical blueprint to $10,000/month recurring income with just 4 to 5 high-ticket B2B clients and an automated daily routine.",
         "lessons": [
-            ("07-1", "07.1", "Unit Economics: 4 Clients @ $2,500/mo vs 10 Clients @ $1,000/mo", 21),
-            ("07-2", "07.2", "The 90-Minute Daily Execution Protocol for Part-Time Operators", 19),
-            ("07-3", "07.3", "Streamlining Fulfillment: Automated Client Onboarding & Reporting", 20),
-            ("07-4", "07.4", "Scaling Beyond $10k: Transitioning from Side Hustle to Full Independence", 22),
+            ("06-1", "06.1", "Unit Economics: 4 Clients @ $2,500/mo vs 10 Clients @ $1,000/mo", 21),
+            ("06-2", "06.2", "The 90-Minute Daily Execution Protocol for Part-Time Operators", 19),
+            ("06-3", "06.3", "Streamlining Fulfillment: Automated Client Onboarding & Reporting", 20),
+            ("06-4", "06.4", "Scaling Beyond $10k: Transitioning from Side Hustle to Full Independence", 22),
         ]
     }
 ]
@@ -338,64 +338,64 @@ P7_MODULES = [
         "desc": "Identify obsessive micro-niches with passionate, credit-card-ready followings, and audit engagement metrics to separate vanity numbers from true buyers.",
         "lessons": [
             ("02-1", "02.1", "The Starving Crowd Principle: Why Audience Trumps Product Perfection", 19),
-            ("02-2", "02.2", "Targeting High-Converting Micro-Niches (Matcha, Jiu-Jitsu, Coffee, Excel)", 21),
-            ("02-3", "02.3", "Auditing Creator Followings: Spotting Fake Engagement and Bot Traffic", 20),
-            ("02-4", "02.4", "The 5-Point Creator Qualification Scorecard Before Pitching", 18),
+            ("02-2", "02.2", "Vetting Creators: Filtering for True High-Engagement Fanbases", 20),
+            ("02-3", "02.3", "Red Flags to Avoid: Podcasters, Entertainment & Disengaged Followings", 18),
+            ("02-4", "02.4", "Building Your 20-Creator High-Probability Target Roster", 21),
         ]
     },
     {
         "num": "03",
-        "title": "Specialized AI Tools & Rapid Digital Product Packaging",
-        "desc": "Leverage specialized generative tools to research, structure, and assemble world-class digital playbooks and community assets in under 72 hours.",
+        "title": "The Value-First Zero-Risk Pitch Framework",
+        "desc": "Structure an irresistible, no-brainer proposal that lands top micro-creators by assuming 100% of the financial and production risk upfront.",
         "lessons": [
-            ("03-1", "03.1", "Synthesize AI & Specialized Knowledge Engines: Zero-to-Draft in 48 Hours", 20),
-            ("03-2", "03.2", "Structuring Premium Digital Assets: Playbooks, Toolkits & SOP Vaults", 21),
-            ("03-3", "03.3", "Deploying on Whop: 1-Click Payments, Gated Access & Frictionless Onboarding", 22),
-            ("03-4", "03.4", "Pricing Psychology: Why Under $1,000 Is Inexpensive in Knowledge Commerce", 19),
+            ("03-1", "03.1", "The No-Risk Pitch Architecture: 'I Do 100% of the Work, You Keep 70%'", 20),
+            ("03-2", "03.2", "Outreach Script Engineering: Email, Instagram DM & Loom Teardowns", 19),
+            ("03-3", "03.3", "Handling Creator Skepticism: Proving Competence Before Signing", 21),
+            ("03-4", "03.4", "The Standard 70/30 Revenue-Share Legal Term Sheet", 18),
         ]
     },
     {
         "num": "04",
-        "title": "The 70/30 Creator Partnership Pitch & Legal Architecture",
-        "desc": "Approach micro-creators with an irresistible 'zero cost, pure upside' proposal, overcome brand protection objections, and lock in seamless automated payouts.",
+        "title": "The 4-Hour AI Digital Product & Curriculum Assembly Line",
+        "desc": "Synthesize the creator's best YouTube videos and posts into high-value video masterclasses, worksheets, and slide decks in a single afternoon using AI.",
         "lessons": [
-            ("04-1", "04.1", "The 'Zero Cost, Pure Upside' Pitch: Turning Skeptics into Partners", 19),
-            ("04-2", "04.2", "The 3-Sentence Direct Message & Email Script That Books Calls", 20),
-            ("04-3", "04.3", "Structuring the 70/30 Split Agreement & Automated Whop Payouts", 21),
-            ("04-4", "04.4", "Overcoming Creator Hesitations: Protecting Authenticity & Community Trust", 18),
+            ("04-1", "04.1", "Ingesting Creator Content: Transcripts to Structured Curriculum", 20),
+            ("04-2", "04.2", "Drafting High-Converting Presentation Decks & Written Guides with AI", 22),
+            ("04-3", "04.3", "Generating Workbooks, Checklists & Actionable Implementation Frameworks", 19),
+            ("04-4", "04.4", "Packaging the $150 Flagship Course Deliverable in Under 4 Hours", 21),
         ]
     },
     {
         "num": "05",
-        "title": "The 7-Day Organic Launch Sequence on Creator Socials",
-        "desc": "Execute a high-converting, non-salesy 7-day warm-up sequence across the creator's social channels to generate overwhelming organic launch day demand.",
+        "title": "The Organic Launch Blueprint: Infiltrating the Creator's Audience",
+        "desc": "Orchestrate a high-converting 7-day launch campaign across the creator's social channels using organic teaser posts, stories, and countdown sequences.",
         "lessons": [
-            ("05-1", "05.1", "The 7-Day Story & Reel Warm-Up Architecture: Curiosity Over Pitching", 20),
-            ("05-2", "05.2", "Deploying Inbound Comment Triggers & Automated DM Funnels", 21),
-            ("05-3", "05.3", "The Live Q&A Pre-Launch Event: Demonstrating Massive Proof", 19),
-            ("05-4", "05.4", "Executing Launch Day: Scarcity Mechanics, Fast-Action Bonuses & Urgency", 22),
+            ("05-1", "05.1", "The 7-Day Organic Launch Sequence Architecture", 20),
+            ("05-2", "05.2", "Drafting High-Converting Instagram Stories, YouTube Community Posts & Tweets", 19),
+            ("05-3", "05.3", "Scarcity & Urgency Triggers: 48-Hour Founding Member Pricing Sprints", 21),
+            ("05-4", "05.4", "Executing the 300-Buyer Milestone on Launch Day ($45,000 Gross / $13,500 Take-Home)", 22),
         ]
     },
     {
         "num": "06",
-        "title": "Backend Membership Retention & Recurring MRR Stacking",
-        "desc": "Transform one-time buyers into loyal recurring members paying $49/month, gamify community participation, and automate member support with custom AI bots.",
+        "title": "Automated Operations, Whop/Skool Infrastructure & Delivery",
+        "desc": "Set up frictionless digital storefronts, automated payment processing, instant member onboarding, and zero-headache customer support.",
         "lessons": [
-            ("06-1", "06.1", "The Backend Upsell: Converting $150 One-Time Buyers into $49/mo Members", 20),
-            ("06-2", "06.2", "Gamifying Community Retention: Streaks, Leaderboards & Monthly Challenges", 21),
-            ("06-3", "06.3", "Automating Support & Moderation with Custom AI Community Assistants", 19),
-            ("06-4", "06.4", "The Monthly Recurring Revenue (MRR) Compounding Flywheel", 22),
+            ("06-1", "06.1", "Whop vs Skool vs Stan Store: Choosing the Optimal Checkout Platform", 18),
+            ("06-2", "06.2", "Automating License Provisioning, Member Onboarding & Welcome DMs", 20),
+            ("06-3", "06.3", "Setting Up AI-Powered Student Support Agents to Handle Questions 24/7", 19),
+            ("06-4", "06.4", "Automated Accounting & Split-Payout P&L Tracking", 17),
         ]
     },
     {
         "num": "07",
-        "title": "Scaling to $25,000+/Month Across Multiple Creator Alliances",
-        "desc": "Systematize your shadow operating workflows, manage 3 parallel creator partnerships in under 15 hours per week, and build an enduring, saleable asset.",
+        "title": "Compounding Partnerships: Scaling to $13,500–$25,000/Month",
+        "desc": "Transition single launches into evergreen monthly subscriptions, sign complementary creators, and build a multi-creator digital education network.",
         "lessons": [
-            ("07-1", "07.1", "Managing 3 Simultaneous Creator Partnerships with Lean AI Workflows", 22),
-            ("07-2", "07.2", "The $150/Month Solo Tech Stack: Running at 98% Net Profit Margins", 19),
-            ("07-3", "07.3", "Scaling from $13,500 to $25,000+/Month: The Expansion Playbook", 21),
-            ("07-4", "07.4", "Enterprise Asset Value: Building a Saleable Digital Publishing Brand", 20),
+            ("07-1", "07.1", "Evergreen Funnel Architecture: Converting Daily Traffic into Daily Sales", 21),
+            ("07-2", "07.2", "Adding a $49/Month Community Tier to Build Predictable MRR", 20),
+            ("07-3", "07.3", "Signing Your 2nd and 3rd Creator Partners Using Real Proof of Revenue", 22),
+            ("07-4", "07.4", "The Autonomous Portfolio Model: Running Multiple Creators in 15 Hours/Week", 23),
         ]
     }
 ]
@@ -403,46 +403,46 @@ P7_MODULES = [
 P8_MODULES = [
     {
         "num": "01",
-        "title": "The Solopreneur Mindset & Eradicating Complexity",
-        "desc": "Cut through the confusing online noise, escape the deadly trap of overcomplication, and focus exclusively on the single lever that produces $10,000/month.",
+        "title": "The One-Person Business Architecture & The Solopreneur Mindset",
+        "desc": "Deconstruct the advantages of a zero-employee, high-margin solo operation, dismantle capital fallacies, and adopt the ruthless founder psychology.",
         "lessons": [
-            ("01-1", "01.1", "The Trap of Overcomplication: Why Beginners Fail Before Launching", 17),
-            ("01-2", "01.2", "The $10,000/Month North Star: Radical Clarity Over Feature Creep", 19),
-            ("01-3", "01.3", "The Rule of Ones: 1 Target Customer, 1 High-Value Offer, 1 Channel", 18),
-            ("01-4", "01.4", "Consistency Over Intelligence: Why Relentless Execution Trumps Strategy", 20),
+            ("01-1", "01.1", "Why the 1-Person Business Beats Traditional Startups in 2026", 17),
+            ("01-2", "01.2", "The 95%+ Margin Rule: Eliminating Salaries, Offices & Overhead", 19),
+            ("01-3", "01.3", "Founder Psychology: Moving from Employee Mindset to Autonomous Operator", 18),
+            ("01-4", "01.4", "The Anti-Burnout Operating Cadence: Working 4 Deep Hours Daily", 20),
         ]
     },
     {
         "num": "02",
-        "title": "Rapid Offer Validation & The 7-Day Pre-Sale Framework",
-        "desc": "Stop building products in isolation. Validate market demand in 7 days, conduct high-signal discovery interviews, and pre-sell your offer before writing code.",
+        "title": "Selecting Your Unfair Advantage & The Specific Knowledge Niche",
+        "desc": "Audit your natural competencies, identify high-ticket market problems, and position your offer at the intersection of skill, leverage, and demand.",
         "lessons": [
-            ("02-1", "02.1", "Ideas Are a Dime a Dozen: Validating True Commercial Demand in 7 Days", 18),
-            ("02-2", "02.2", "Designing the Minimum Viable Offer (MVO) for Painful Problems", 20),
-            ("02-3", "02.3", "Conducting 10 Customer Discovery Interviews to Uncover Bleeding Pain", 19),
-            ("02-4", "02.4", "Securing Your First 3 Paid Beta Customers Before Building the Full Asset", 22),
+            ("02-1", "02.1", "The Specific Knowledge Audit: Identifying What Feels Like Play to You", 18),
+            ("02-2", "02.2", "Evaluating Market Willingness to Pay: The Urgent vs Nice-to-Have Test", 20),
+            ("02-3", "02.3", "Defining the Narrow ICP Sniper Persona: Target Wealthy Operators", 19),
+            ("02-4", "02.4", "Competitor Teardown: Finding Uncontested White Space in Saturated Markets", 21),
         ]
     },
     {
         "num": "03",
-        "title": "High-Resonance Messaging & The 'Talking Directly to Me' Effect",
-        "desc": "Master the psychological copywriting frameworks that cause ideal prospects to stop scrolling and feel like you are speaking directly to their deepest struggles.",
+        "title": "Crafting the Irresistible Minimum Viable Offer (MVO)",
+        "desc": "Package your core expertise into a crystal-clear, high-ticket solution with bold risk-reversal guarantees that make saying yes completely frictionless.",
         "lessons": [
-            ("03-1", "03.1", "The 'Talking Directly to Me' Phenomenon: Extreme Target Specificity", 18),
-            ("03-2", "03.2", "Crafting the Transformation Statement: Moving from Pain A to Outcome B", 20),
-            ("03-3", "03.3", "Systematically Disarming Every Buyer Objection in Advance", 19),
-            ("03-4", "03.4", "Building a High-Converting 1-Page Landing Funnel in Under 2 Hours", 21),
+            ("03-1", "03.1", "The Minimum Viable Offer Framework: Selling Outcomes, Never Hours", 19),
+            ("03-2", "03.2", "Pricing Psychology: Anchoring Your Service at $2,000–$2,500/Month", 21),
+            ("03-3", "03.3", "Risk-Reversal Guarantees: Eliminating Buyer Hesitation Instantly", 20),
+            ("03-4", "03.4", "Drafting the One-Page Scope of Work & Deliverables Agreement", 18),
         ]
     },
     {
         "num": "04",
-        "title": "The Build-Once, Sell-Forever Digital Asset Engine",
-        "desc": "Escape the trading-time-for-dollars hamster wheel by transforming your expertise into scalable digital playbooks and automated membership communities.",
+        "title": "The Frictionless Sales Funnel & High-Converting Landing Page",
+        "desc": "Build a minimalist, high-converting digital storefront using Framer, Stripe, and Loom that converts qualified prospects into booked appointments.",
         "lessons": [
-            ("04-1", "04.1", "Linear Time vs Digital Asset Leverage: The Compounding Cashflow Matrix", 19),
-            ("04-2", "04.2", "Packaging High-Impact Playbooks, SOP Systems & Proprietary Toolkits", 21),
-            ("04-3", "04.3", "Automated Onboarding & Frictionless Member Delivery with Zero Manual Work", 20),
-            ("04-4", "04.4", "Case Study: Scaling to Multiple 5-Figures Monthly with 1 Digital Product", 22),
+            ("04-1", "04.1", "The Minimalist 1-Page Funnel: Clean Copy That Drives Action", 18),
+            ("04-2", "04.2", "Recording the 2-Minute Founder Loom Video That Sells For You", 20),
+            ("04-3", "04.3", "Cal.com & Stripe Checkout Integration: Removing All Sales Friction", 17),
+            ("04-4", "04.4", "Tracking Conversion Analytics & Eliminating Drop-Off Bottlenecks", 19),
         ]
     },
     {
@@ -469,13 +469,24 @@ P8_MODULES = [
     },
     {
         "num": "07",
+        "title": "Client Delivery, Extreme Quality & Referral Loops",
+        "desc": "Over-deliver dramatically in the first 7 days, eliminate buyer remorse with proactive progress reports, and turn single clients into referral flywheels.",
+        "lessons": [
+            ("07-1", "07.1", "Over-Delivering in the First 7 Days to Cement Client Loyalty", 19),
+            ("07-2", "07.2", "Eliminating Buyer Remorse with Proactive Progress Reports", 18),
+            ("07-3", "07.3", "The Asymmetrical Referral Ask: Turning 1 Client into 3", 20),
+            ("07-4", "07.4", "Collecting Video Testimonials That Convert Cold Traffic", 21),
+        ]
+    },
+    {
+        "num": "08",
         "title": "The Step-by-Step Roadmap from $0 to $10,000/Month",
         "desc": "Follow the structured 3-milestone sequence from your first $1,000 in revenue to a dependable, sustainable $10,000/month solo business empire.",
         "lessons": [
-            ("07-1", "07.1", "Milestone 1: Crossing Your First $1,000 (The Psychological Anchor)", 19),
-            ("07-2", "07.2", "Milestone 2: Scaling from $1,000 to $3,000/Month (Systematizing Delivery)", 20),
-            ("07-3", "07.3", "Milestone 3: Scaling from $3,000 to $10,000/Month (Retention & Volume)", 22),
-            ("07-4", "07.4", "The Sustainable Solo Empire: Autonomy, Time Freedom & Lasting Wealth", 21),
+            ("08-1", "08.1", "Milestone 1: Crossing Your First $1,000 (The Psychological Anchor)", 19),
+            ("08-2", "08.2", "Milestone 2: Scaling from $1,000 to $3,000/Month (Systematizing Delivery)", 20),
+            ("08-3", "08.3", "Milestone 3: Scaling from $3,000 to $10,000/Month (Retention & Volume)", 22),
+            ("08-4", "08.4", "The Sustainable Solo Empire: Autonomy, Time Freedom & Lasting Wealth", 21),
         ]
     }
 ]
@@ -489,6 +500,7 @@ ALL_PLAYBOOKS_CONFIG = [
         "short_desc": "A high-leverage distillation of advanced Claude 3.5 Sonnet capabilities, prompt architectures, memory calibration, Artifact prototyping, and desktop Co-work automation.",
         "full_desc": "A comprehensive, practical playbook distilling 10,000 hours of Anthropic Claude expertise into an actionable curriculum. Learn memory setup, Haiku vs Sonnet vs Opus token optimization, project context architecture, native Gmail/Calendar connectors, mobile dispatch, interactive React Artifacts, and building a $10,000/month workflow automation practice.",
         "modules": P3_MODULES,
+        "hours_of_material": "6.5 hours",
         "badge": "Top Rated",
         "rating": 4.9,
         "rating_count": 420,
@@ -508,6 +520,7 @@ ALL_PLAYBOOKS_CONFIG = [
         "short_desc": "A concentrated masterclass on ChatGPT customization, counter-sycophancy Devil's Advocate reasoning, OpenAI o1/o3 architectures, scheduled automations, and Custom GPTs.",
         "full_desc": "An exhaustive, battle-tested masterclass decoding the advanced capabilities of ChatGPT. Move beyond standard chat into custom instructions, counteracting AI sycophancy with Devil's Advocate stress-testing, commanding OpenAI o1 and o3-mini reasoning, hands-free mobile audio synthesis, autonomous screen execution, and packaging Custom GPTs to hit $10,000+/month.",
         "modules": P4_MODULES,
+        "hours_of_material": "8.0 hours",
         "badge": "Hot & New",
         "rating": 4.9,
         "rating_count": 395,
@@ -527,6 +540,7 @@ ALL_PLAYBOOKS_CONFIG = [
         "short_desc": "Five accessible, verified AI business models designed for complete beginners: AI UGC, local website modernization, video clipping, B2B lead generation, and digital playbooks.",
         "full_desc": "A grounded, realistic roadmap breaking down the 5 most viable AI business models for newcomers. Evaluated through the 5-criteria scorecard (Longevity, Effort, Scalability, Autonomy, Margin), this playbook details step-by-step implementation, tech stacks, client closing scripts, and exact unit economics to build a $10,000/month income stream with zero employees.",
         "modules": P5_MODULES,
+        "hours_of_material": "8.5 hours",
         "badge": "Bestseller",
         "rating": 4.9,
         "rating_count": 512,
@@ -546,15 +560,16 @@ ALL_PLAYBOOKS_CONFIG = [
         "short_desc": "The definitive 2026 tier list ranking 17 side hustles from S-tier to F-tier, detailing how to avoid commodity AI slop and build high-ticket workflow automations and media assets.",
         "full_desc": "An unfiltered commercial breakdown ranking 17 popular AI side hustles. Learn why AI trading bots and generic prompt packs belong in F-tier, why workflow automations dominate S-tier, how to avoid the low-price race to the bottom, and how to close $2,500/month business clients using 3-minute video audits without spending money on ads.",
         "modules": P6_MODULES,
+        "hours_of_material": "6.5 hours",
         "badge": "Trending",
         "rating": 4.8,
         "rating_count": 348,
-        "students": "1,290",
+        "students": "1,390",
         "target_audience": [
-            "Side hustlers overwhelmed by conflicting online advice looking for an honest tier-list breakdown",
-            "Operators looking to build high-margin S-tier Make.com and Claude workflow automations",
-            "Content creators who want to build durable niche media assets and newsletters",
-            "Full-time employees seeking a 90-minute daily operating cadence to scale an AI business to $10,000/mo"
+            "Side hustlers confused by conflicting online claims about AI income opportunities",
+            "Operators who want to avoid commoditized AI deliverables and build real pricing power",
+            "Professionals seeking an S-tier workflow automation agency model with $1,000/month retainers",
+            "Creators wanting to turn curated niche industry content into profitable media assets"
         ]
     },
     {
@@ -562,18 +577,19 @@ ALL_PLAYBOOKS_CONFIG = [
         "course_id": "ai-businesses-07",
         "slug": "copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026",
         "title": "Copy & Paste THIS Strategy to Make $13k/Month with AI in 2026",
-        "short_desc": "A step-by-step masterclass on partnering with 30k–50k micro-creators, launching digital knowledge assets on Whop, and generating $13,500/month on 70/30 revenue splits.",
-        "full_desc": "The complete operational blueprint for the AI Shadow Operating model. Discover how to identify starving micro-audiences in high-passion niches, package premium digital playbooks using specialized AI tools in 72 hours, pitch creators on a zero-risk 70/30 revenue share, execute 7-day organic launch sequences on creator socials, and generate $13,500/month from a single partnership.",
+        "short_desc": "A step-by-step masterclass on partnering with micro-creators on 70/30 revenue-share digital product launches yielding $13,500+/month with zero audience.",
+        "full_desc": "The definitive blueprint for the AI Shadow Operating model. Discover how to identify and partner with 30k–50k follower micro-creators, turn their existing content into $150 digital courses using AI in 4 hours, execute a 7-day organic launch to 300 buyers, and generate $13,500/month in net revenue-share income without showing your face or building a personal following.",
         "modules": P7_MODULES,
+        "hours_of_material": "7.5 hours",
         "badge": "High Demand",
         "rating": 4.9,
         "rating_count": 476,
-        "students": "1,890",
+        "students": "1,820",
         "target_audience": [
-            "Aspiring operators who want to make $13,000+/month without having their own audience or showing their face",
-            "Individuals looking to partner with micro-creators on asymmetric 70/30 revenue splits",
-            "Digital marketers seeking to deploy high-converting community launches and playbooks on Whop",
-            "Entrepreneurs wanting to stack recurring monthly memberships and compound cash flow"
+            "Individuals who want to build a $13k+/month online income without building a personal brand",
+            "Growth operators who want to leverage existing creator attention rather than fighting for algorithms",
+            "Product builders who want to create and launch profitable digital courses in under 4 hours with AI",
+            "Operators looking for asymmetric revenue-share deals with 70/30 creator profit splits"
         ]
     },
     {
@@ -581,18 +597,19 @@ ALL_PLAYBOOKS_CONFIG = [
         "course_id": "ai-businesses-08",
         "slug": "build-a-one-person-business-as-a-beginner-from-0-to-10k",
         "title": "Build A One-Person Business As A Beginner (From $0 To $10K)",
-        "short_desc": "A grounded, fluff-free beginner roadmap for solo founders: avoiding overcomplication, validating offers in 7 days, building leverage with digital assets, and scaling from $0 to $10k.",
-        "full_desc": "The definitive beginner's roadmap to building a profitable, stress-free solo business from scratch. Master the Rule of Ones (1 target audience, 1 core offer, 1 acquisition channel), validate painful customer problems in 7 days, craft messaging that speaks directly to ideal buyers, deploy build-once-sell-forever digital assets, and follow the 3 milestones to $10,000/month with zero employees.",
+        "short_desc": "The complete zero-to-$10k roadmap for beginner solo founders: finding specific knowledge, crafting an MVO, setting up a 1-page funnel, and scaling with AI.",
+        "full_desc": "A comprehensive operational blueprint guiding first-time entrepreneurs from absolute zero to $10,000/month. Discover how to identify your unfair advantage, package a minimum viable offer at $2,000/month, build a frictionless 1-page conversion funnel, acquire clients without ad spend, automate delivery with AI, and maintain extreme 95%+ profit margins.",
         "modules": P8_MODULES,
+        "hours_of_material": "8.5 hours",
         "badge": "Founder Pick",
         "rating": 4.9,
         "rating_count": 528,
-        "students": "2,350",
+        "students": "2,380",
         "target_audience": [
-            "Beginners overwhelmed by complex business models who want a simple, direct roadmap to $10k/month",
-            "Solo founders wanting to validate their offer with real paying customers before investing months of work",
-            "Freelancers ready to transition into build-once, sell-forever leveraged digital assets",
-            "Individuals seeking time freedom, 4-hour deep work days, and an overhead under $100/month"
+            "Aspiring solopreneurs stuck in analysis paralysis who need a verified zero-to-$10k blueprint",
+            "Employees planning a clean, low-risk transition from corporate employment to solo autonomy",
+            "Service providers wanting to escape the hourly billing trap and sell high-ticket outcomes",
+            "Beginner founders wanting to keep software overhead under $100/month with zero staff"
         ]
     }
 ]

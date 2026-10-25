@@ -50,6 +50,7 @@ export interface PlaybookDetailData {
   hoursOfMaterial: string;
   modulesCount: number;
   lessonsCount: number;
+  slidesCount?: number;
   whatYouWillLearn: string[];
   relatedTopics: string[];
   requirements: string[];
@@ -61,7 +62,7 @@ export interface PlaybookDetailData {
   };
   targetAudience: string[];
   includes: {
-    iconName: "video" | "file-text" | "smartphone" | "infinity" | "shield-check" | "layers";
+    iconName: "video" | "file-text" | "smartphone" | "infinity" | "shield-check" | "layers" | "presentation";
     text: string;
   }[];
   modules: PlaybookDetailModule[];

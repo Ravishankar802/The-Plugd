@@ -5,8 +5,8 @@ export const ONE_PERSON_BUSINESS_DETAIL_DATA: PlaybookDetailData = {
   id: "ai-businesses-08",
   slug: "build-a-one-person-business-as-a-beginner-from-0-to-10k",
   title: "Build A One-Person Business As A Beginner (From $0 To $10K)",
-  headline: "A grounded, fluff-free beginner roadmap for solo founders: avoiding overcomplication, validating offers in 7 days, building leverage with digital assets, and scaling from $0 to $10k.",
-  description: "The definitive beginner's roadmap to building a profitable, stress-free solo business from scratch. Master the Rule of Ones (1 target audience, 1 core offer, 1 acquisition channel), validate painful customer problems in 7 days, craft messaging that speaks directly to ideal buyers, deploy build-once-sell-forever digital assets, and follow the 3 milestones to $10,000/month with zero employees.",
+  headline: "The complete zero-to-$10k roadmap for beginner solo founders: finding specific knowledge, crafting an MVO, setting up a 1-page funnel, and scaling with AI.",
+  description: "A comprehensive operational blueprint guiding first-time entrepreneurs from absolute zero to $10,000/month. Discover how to identify your unfair advantage, package a minimum viable offer at $2,000/month, build a frictionless 1-page conversion funnel, acquire clients without ad spend, automate delivery with AI, and maintain extreme 95%+ profit margins.",
   categoryName: "AI Businesses",
   categorySlug: "ai-businesses",
   price: 3,
@@ -16,21 +16,22 @@ export const ONE_PERSON_BUSINESS_DETAIL_DATA: PlaybookDetailData = {
   badge: "Founder Pick",
   rating: 4.9,
   ratingCount: 528,
-  studentsCount: "2,350",
+  studentsCount: "2,380",
   instructorName: "Plugd Enterprise Team",
   instructorTitle: "Senior AI Systems Architects & Solo Strategists",
   instructorBio: "The Plugd Enterprise Team advises founders, solo operators, and creators on deploying high-margin AI workflows, zero-ad client acquisition flywheels, and scalable digital assets.",
   instructorRating: 4.9,
   instructorReviews: "528",
-  instructorStudents: "2,350",
+  instructorStudents: "2,380",
   instructorCourses: 5,
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
   thumbnail: "",
-  hoursOfMaterial: "7.0 hours",
-  modulesCount: 7,
-  lessonsCount: 28,
+  hoursOfMaterial: "8.5 hours",
+  modulesCount: 8,
+  lessonsCount: 32,
+  slidesCount: 128,
   whatYouWillLearn: [
     "Master the end-to-end framework of Build A One-Person Business As A Beginner (From $0 To $10K)",
     "Implement step-by-step workflows with zero coding or machine learning background required",
@@ -56,19 +57,20 @@ export const ONE_PERSON_BUSINESS_DETAIL_DATA: PlaybookDetailData = {
   ],
   descriptionSections: {
     intro: [
-      "The definitive beginner's roadmap to building a profitable, stress-free solo business from scratch. Master the Rule of Ones (1 target audience, 1 core offer, 1 acquisition channel), validate painful customer problems in 7 days, craft messaging that speaks directly to ideal buyers, deploy build-once-sell-forever digital assets, and follow the 3 milestones to $10,000/month with zero employees.",
-      "Every single lesson in this comprehensive 7-module curriculum combines interactive executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and real-world failure mitigation strategies.",
+      "A comprehensive operational blueprint guiding first-time entrepreneurs from absolute zero to $10,000/month. Discover how to identify your unfair advantage, package a minimum viable offer at $2,000/month, build a frictionless 1-page conversion funnel, acquire clients without ad spend, automate delivery with AI, and maintain extreme 95%+ profit margins.",
+      "Every single lesson in this comprehensive 8-module curriculum combines interactive executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and real-world failure mitigation strategies.",
       "Engineered specifically for solo operators and founders looking to build a sustainable, highly lucrative business with 95%+ net profit margins."
     ],
-    keyPointsTitle: "The 7-Module Comprehensive Curriculum",
+    keyPointsTitle: "The 8-Module Comprehensive Curriculum",
     keyPoints: [
-      "Module 01: The Solopreneur Mindset & Eradicating Complexity",
-      "Module 02: Rapid Offer Validation & The 7-Day Pre-Sale Framework",
-      "Module 03: High-Resonance Messaging & The 'Talking Directly to Me' Effect",
-      "Module 04: The Build-Once, Sell-Forever Digital Asset Engine",
+      "Module 01: The One-Person Business Architecture & The Solopreneur Mindset",
+      "Module 02: Selecting Your Unfair Advantage & The Specific Knowledge Niche",
+      "Module 03: Crafting the Irresistible Minimum Viable Offer (MVO)",
+      "Module 04: The Frictionless Sales Funnel & High-Converting Landing Page",
       "Module 05: Zero-Ad Customer Acquisition & Inbound Pull Content",
       "Module 06: Lean Operations, AI Automation & Deep Work Discipline",
-      "Module 07: The Step-by-Step Roadmap from $0 to $10,000/Month"
+      "Module 07: Client Delivery, Extreme Quality & Referral Loops",
+      "Module 08: The Step-by-Step Roadmap from $0 to $10,000/Month"
 ],
     closing: [
       "Every lesson includes both presentation slides and a comprehensive written implementation guide.",
@@ -76,10 +78,10 @@ export const ONE_PERSON_BUSINESS_DETAIL_DATA: PlaybookDetailData = {
     ]
   },
   targetAudience: [
-    "Beginners overwhelmed by complex business models who want a simple, direct roadmap to $10k/month",
-    "Solo founders wanting to validate their offer with real paying customers before investing months of work",
-    "Freelancers ready to transition into build-once, sell-forever leveraged digital assets",
-    "Individuals seeking time freedom, 4-hour deep work days, and an overhead under $100/month"
+    "Aspiring solopreneurs stuck in analysis paralysis who need a verified zero-to-$10k blueprint",
+    "Employees planning a clean, low-risk transition from corporate employment to solo autonomy",
+    "Service providers wanting to escape the hourly billing trap and sell high-ticket outcomes",
+    "Beginner founders wanting to keep software overhead under $100/month with zero staff"
 ],
   includes: [
     { iconName: "layers", text: "7 Structured Modules & 28 Production Lessons" },

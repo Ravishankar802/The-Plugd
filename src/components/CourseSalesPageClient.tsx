@@ -30,6 +30,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   const totalLessons = course.modules.reduce((sum, m) => sum + (m.lessons?.length || m.lessonsCount), 0);
+  const totalSlides = course.slidesCount || course.modules.reduce((acc, m) => acc + (m.lessons?.reduce((lAcc: number, l: any) => lAcc + (l.slides?.length || 4), 0) || 0), 0) || (totalLessons * 4);
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-[#0E0E10] font-sans antialiased selection:bg-[#2563EB] selection:text-white">
@@ -70,7 +71,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
               </div>
               <div className="flex items-center gap-2">
                 <BookOpen className="h-4 w-4 text-[#2563EB]" />
-                <span className="font-bold">{totalLessons} SLIDE LESSONS</span>
+                <span className="font-bold">{totalLessons} LESSONS · {totalSlides} SLIDES</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4 text-[#2563EB]" />
@@ -154,7 +155,7 @@ export default function CourseSalesPageClient({ course }: CourseSalesPageClientP
               What's inside the course.
             </h2>
             <p className="mt-3 text-base sm:text-lg text-[#646059]">
-              {course.modulesCount} modules · {totalLessons} lessons · {course.hoursOfMaterial} of interactive slide material.
+              {course.modulesCount} modules · {totalLessons} lessons · {totalSlides} slides · {course.hoursOfMaterial} of interactive material.
             </p>
           </div>
 

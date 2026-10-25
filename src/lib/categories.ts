@@ -22,6 +22,7 @@ export interface PlaybookSummary {
   currency: string;
   modulesCount: number;
   lessonsCount: number;
+  slidesCount?: number;
   hoursOfMaterial: string;
   href: string;
   badge?: string;

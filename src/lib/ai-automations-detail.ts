@@ -31,9 +31,10 @@ export const DETAIL_AI_AUTOMATIONS_DATA: PlaybookDetailData = {
   language: "English",
   subtitles: "English [Auto]",
   thumbnail: "",
-  hoursOfMaterial: "7.0 hours",
+  hoursOfMaterial: "7.5 hours",
   modulesCount: 7,
   lessonsCount: 28,
+  slidesCount: 112,
   whatYouWillLearn: [
     "Evaluate the 3 dominant zero-employee AI businesses using the 5-criteria matrix: Difficulty, Time, Scalability, Income, and Stress",
     "Master the rigorous unit economics required to build a predictable $10,000+/month recurring income stream solo",
@@ -87,8 +88,8 @@ export const DETAIL_AI_AUTOMATIONS_DATA: PlaybookDetailData = {
     "Operators and educators who want to partner with creators on high-upside Skool community launches",
   ],
   includes: [
-    { iconName: "layers", text: "7 Structured Modules & 28 Comprehensive Lessons" },
-    { iconName: "file-text", text: "Interactive Slide Presentations & Complete Step-by-Step Written Guides" },
+    { iconName: "layers", text: "7 Structured Modules & 28 Production Lessons" },
+    { iconName: "presentation", text: "112 Visual Presentation Slides & 28 In-Depth Written Guides" },
     { iconName: "video", text: "Ready-to-Deploy Make.com Blueprints, Skool Course Architecture & DM Scripts" },
     { iconName: "file-text", text: "Diagnostic Loom Teardown Templates & 70/30 Revenue-Share Legal Agreements" },
     { iconName: "infinity", text: "Full Lifetime Digital Access & All Future Curriculum Updates" },

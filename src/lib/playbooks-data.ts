@@ -191,6 +191,7 @@ export interface Course {
   outcomes?: string[];
   modulesCount: number;
   lessonsCount: number;
+  slidesCount?: number;
   hoursOfMaterial: string;
   accentColor: string;
   stats?: {

@@ -16,21 +16,22 @@ export const AI_SIDE_HUSTLES_2026_DETAIL_DATA: PlaybookDetailData = {
   badge: "Trending",
   rating: 4.8,
   ratingCount: 348,
-  studentsCount: "1,290",
+  studentsCount: "1,390",
   instructorName: "Plugd Enterprise Team",
   instructorTitle: "Senior AI Systems Architects & Solo Strategists",
   instructorBio: "The Plugd Enterprise Team advises founders, solo operators, and creators on deploying high-margin AI workflows, zero-ad client acquisition flywheels, and scalable digital assets.",
   instructorRating: 4.8,
   instructorReviews: "348",
-  instructorStudents: "1,290",
+  instructorStudents: "1,390",
   instructorCourses: 5,
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
   thumbnail: "",
-  hoursOfMaterial: "7.0 hours",
-  modulesCount: 7,
-  lessonsCount: 28,
+  hoursOfMaterial: "6.5 hours",
+  modulesCount: 6,
+  lessonsCount: 24,
+  slidesCount: 96,
   whatYouWillLearn: [
     "Master the end-to-end framework of The Best AI Side Hustles To Start In 2026 (No Skills)",
     "Implement step-by-step workflows with zero coding or machine learning background required",
@@ -57,18 +58,17 @@ export const AI_SIDE_HUSTLES_2026_DETAIL_DATA: PlaybookDetailData = {
   descriptionSections: {
     intro: [
       "An unfiltered commercial breakdown ranking 17 popular AI side hustles. Learn why AI trading bots and generic prompt packs belong in F-tier, why workflow automations dominate S-tier, how to avoid the low-price race to the bottom, and how to close $2,500/month business clients using 3-minute video audits without spending money on ads.",
-      "Every single lesson in this comprehensive 7-module curriculum combines interactive executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and real-world failure mitigation strategies.",
+      "Every single lesson in this comprehensive 6-module curriculum combines interactive executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and real-world failure mitigation strategies.",
       "Engineered specifically for solo operators and founders looking to build a sustainable, highly lucrative business with 95%+ net profit margins."
     ],
-    keyPointsTitle: "The 7-Module Comprehensive Curriculum",
+    keyPointsTitle: "The 6-Module Comprehensive Curriculum",
     keyPoints: [
       "Module 01: The 2026 Side Hustle Tier List & Market Reality Check",
       "Module 02: S-Tier Dominance: AI Workflow Automation Agencies",
       "Module 03: A-Tier High-Yield Models: B2B Lead Gen & Niche Media Assets",
-      "Module 04: B-Tier Traps & Strategic Upgrades: Content, Sites & Micro-SaaS",
-      "Module 05: Escaping Commodity Status: Eliminating AI Slop & Building Moats",
-      "Module 06: Zero-Ad Client Acquisition & The Trojan Horse Audit",
-      "Module 07: The 2026 Solo Operator Playbook: Scaling to $10,000/Month"
+      "Module 04: B-Tier Upgrades & Moat Building: Escaping Commodity Slop",
+      "Module 05: Zero-Ad Client Acquisition & The Trojan Horse Audit",
+      "Module 06: The 2026 Solo Operator Playbook: Scaling to $10,000/Month"
 ],
     closing: [
       "Every lesson includes both presentation slides and a comprehensive written implementation guide.",
@@ -76,10 +76,10 @@ export const AI_SIDE_HUSTLES_2026_DETAIL_DATA: PlaybookDetailData = {
     ]
   },
   targetAudience: [
-    "Side hustlers overwhelmed by conflicting online advice looking for an honest tier-list breakdown",
-    "Operators looking to build high-margin S-tier Make.com and Claude workflow automations",
-    "Content creators who want to build durable niche media assets and newsletters",
-    "Full-time employees seeking a 90-minute daily operating cadence to scale an AI business to $10,000/mo"
+    "Side hustlers confused by conflicting online claims about AI income opportunities",
+    "Operators who want to avoid commoditized AI deliverables and build real pricing power",
+    "Professionals seeking an S-tier workflow automation agency model with $1,000/month retainers",
+    "Creators wanting to turn curated niche industry content into profitable media assets"
 ],
   includes: [
     { iconName: "layers", text: "7 Structured Modules & 28 Production Lessons" },

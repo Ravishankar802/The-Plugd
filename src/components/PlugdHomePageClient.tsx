@@ -536,6 +536,12 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
                 <span>{playbook.modulesCount} modules</span>
                 <span className="text-[#d6d3d1]">·</span>
                 <span>{playbook.lessonsCount} lessons</span>
+                {playbook.slidesCount && (
+                  <>
+                    <span className="text-[#d6d3d1]">·</span>
+                    <span>{playbook.slidesCount} slides</span>
+                  </>
+                )}
               </>
             )}
             {playbook.hoursOfMaterial && (

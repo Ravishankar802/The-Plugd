@@ -28,9 +28,10 @@ export const CHATGPT_KNOWLEDGE_DETAIL_DATA: PlaybookDetailData = {
   language: "English",
   subtitles: "English [Auto]",
   thumbnail: "",
-  hoursOfMaterial: "7.0 hours",
-  modulesCount: 7,
-  lessonsCount: 28,
+  hoursOfMaterial: "8.0 hours",
+  modulesCount: 8,
+  lessonsCount: 32,
+  slidesCount: 128,
   whatYouWillLearn: [
     "Master the end-to-end framework of Give Me 28 Minutes, I'll Give You 10,000 Hours of ChatGPT Knowledge",
     "Implement step-by-step workflows with zero coding or machine learning background required",
@@ -57,10 +58,10 @@ export const CHATGPT_KNOWLEDGE_DETAIL_DATA: PlaybookDetailData = {
   descriptionSections: {
     intro: [
       "An exhaustive, battle-tested masterclass decoding the advanced capabilities of ChatGPT. Move beyond standard chat into custom instructions, counteracting AI sycophancy with Devil's Advocate stress-testing, commanding OpenAI o1 and o3-mini reasoning, hands-free mobile audio synthesis, autonomous screen execution, and packaging Custom GPTs to hit $10,000+/month.",
-      "Every single lesson in this comprehensive 7-module curriculum combines interactive executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and real-world failure mitigation strategies.",
+      "Every single lesson in this comprehensive 8-module curriculum combines interactive executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and real-world failure mitigation strategies.",
       "Engineered specifically for solo operators and founders looking to build a sustainable, highly lucrative business with 95%+ net profit margins."
     ],
-    keyPointsTitle: "The 7-Module Comprehensive Curriculum",
+    keyPointsTitle: "The 8-Module Comprehensive Curriculum",
     keyPoints: [
       "Module 01: Custom Instructions & Personalization Architecture",
       "Module 02: Countering Sycophancy & The Devil's Advocate Protocol",
@@ -68,7 +69,8 @@ export const CHATGPT_KNOWLEDGE_DETAIL_DATA: PlaybookDetailData = {
       "Module 04: Mobile Audio Hub & Walking Brainstorming Workflows",
       "Module 05: Scheduled Automations & Autonomous Screen Control",
       "Module 06: Specialist Custom GPTs & API Tool-Calling Architecture",
-      "Module 07: Monetizing ChatGPT Expertise to $10,000/Month Solo Income"
+      "Module 07: Enterprise Knowledge Ingestion & Advanced Retrieval Workflows",
+      "Module 08: Monetizing ChatGPT Expertise to $10,000/Month Solo Income"
 ],
     closing: [
       "Every lesson includes both presentation slides and a comprehensive written implementation guide.",

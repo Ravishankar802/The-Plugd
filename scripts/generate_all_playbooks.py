@@ -241,9 +241,10 @@ export const {const_prefix}_COURSE: Course = {{
   badge: "{pb['badge']}",
   rating: {pb['rating']},
   ratingCount: {pb['rating_count']},
-  hoursOfMaterial: "7.0 hours",
+  hoursOfMaterial: "{pb['hours_of_material']}",
   modulesCount: {const_prefix}_MODULES.length,
   lessonsCount: {const_prefix}_MODULES.reduce((acc, m) => acc + m.lessons.length, 0),
+  slidesCount: {const_prefix}_MODULES.reduce((acc, m) => acc + m.lessons.length, 0) * 4,
   primaryColor: "#0f172a",
   accentColor: "#2563eb",
   outcomes: [
@@ -303,9 +304,10 @@ export const {const_prefix}_DETAIL_DATA: PlaybookDetailData = {{
   language: "English",
   subtitles: "English [Auto]",
   thumbnail: "",
-  hoursOfMaterial: "7.0 hours",
-  modulesCount: 7,
-  lessonsCount: 28,
+  hoursOfMaterial: "{pb['hours_of_material']}",
+  modulesCount: {len(modules)},
+  lessonsCount: {len(modules) * 4},
+  slidesCount: {len(modules) * 16},
   whatYouWillLearn: {json.dumps(what_you_will_learn, indent=4)},
   relatedTopics: [
     "AI Businesses",
@@ -323,10 +325,10 @@ export const {const_prefix}_DETAIL_DATA: PlaybookDetailData = {{
   descriptionSections: {{
     intro: [
       {json.dumps(full_desc)},
-      "Every single lesson in this comprehensive 7-module curriculum combines interactive executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and real-world failure mitigation strategies.",
+      "Every single lesson in this comprehensive {len(modules)}-module curriculum combines interactive executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and real-world failure mitigation strategies.",
       "Engineered specifically for solo operators and founders looking to build a sustainable, highly lucrative business with 95%+ net profit margins."
     ],
-    keyPointsTitle: "The 7-Module Comprehensive Curriculum",
+    keyPointsTitle: "The {len(modules)}-Module Comprehensive Curriculum",
     keyPoints: {json.dumps([f"Module {m['num']}: {m['title']}" for m in modules], indent=6)},
     closing: [
       "Every lesson includes both presentation slides and a comprehensive written implementation guide.",
