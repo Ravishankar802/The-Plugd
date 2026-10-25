@@ -8,8 +8,8 @@ const POPULATED_PLAYBOOKS = [
     id: "ai-businesses-01",
     slug: "7-ai-automations",
     title: "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)",
-    dataFile: "src/lib/ai-automations-course.ts",
-    detailFile: "src/lib/ai-automations-detail.ts",
+    dataFile: "src/lib/playbooks/three-ai-businesses-data.ts",
+    detailFile: "src/lib/playbooks/three-ai-businesses-detail.ts",
     routeDir: "src/app/7-ai-automations",
     expectedModules: 7,
     expectedLessons: 28,
@@ -197,18 +197,6 @@ test("1. All 16 populated playbooks have catalog entries with accurate modules, 
 
 test("2. All 16 playbooks have varied modules (6, 7, or 8) and exact slides (96, 112, 128) with written content", () => {
   for (const pb of POPULATED_PLAYBOOKS) {
-    if (pb.slug === "7-ai-automations") {
-      const c1 = fs.readFileSync(path.join(__dirname, "../src/lib/ai-automations-content-1.ts"), "utf8");
-      const c2 = fs.readFileSync(path.join(__dirname, "../src/lib/ai-automations-content-2.ts"), "utf8");
-      const c3 = fs.readFileSync(path.join(__dirname, "../src/lib/ai-automations-content-3.ts"), "utf8");
-      assert.ok(!c1.includes("373") && !c2.includes("373") && !c3.includes("373"), "Contains 373");
-      const lCount = (c1.match(/"id":\s*"0[1-2]-\d"/g) || []).length +
-                     (c2.match(/"id":\s*"0[3-5]-\d"/g) || []).length +
-                     (c3.match(/"id":\s*"0[6-7]-\d"/g) || []).length;
-      assert.equal(lCount, pb.expectedLessons, `7-ai-automations must have ${pb.expectedLessons} lessons`);
-      continue;
-    }
-
     const dataPath = path.join(__dirname, "..", pb.dataFile);
     assert.ok(fs.existsSync(dataPath), `Data file must exist: ${dataPath}`);
     const content = fs.readFileSync(dataPath, "utf8");
@@ -223,6 +211,13 @@ test("2. All 16 playbooks have varied modules (6, 7, or 8) and exact slides (96,
     // Check slides count
     const slideMatches = content.match(/"id":\s*"s-/g) || [];
     assert.equal(slideMatches.length, pb.expectedSlides, `${pb.title} must have exactly ${pb.expectedSlides} slides`);
+
+    // Check cinematic storytelling structure (Scene and Act keywords)
+    assert.ok(content.includes("SCENE 01: THE INCITING INCIDENT"), `${pb.title} must have Scene 01`);
+    assert.ok(content.includes("SCENE 02: THE TURNING POINT"), `${pb.title} must have Scene 02`);
+    assert.ok(content.includes("SCENE 03: THE EXECUTION CLIMAX"), `${pb.title} must have Scene 03`);
+    assert.ok(content.includes("SCENE 04: THE SOVEREIGN PAYOFF"), `${pb.title} must have Scene 04`);
+    assert.ok(content.includes("Act I: The Cold Open"), `${pb.title} must have Act I in written lesson`);
   }
 });
 

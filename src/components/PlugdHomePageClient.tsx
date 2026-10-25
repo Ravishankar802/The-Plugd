@@ -507,7 +507,7 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
           </div>
 
           <Link href={playbook.href} className="focus:outline-none block">
-            <h3 className="text-base sm:text-lg font-semibold text-[#1c1917] leading-snug group-hover:text-[#2563eb] transition-colors line-clamp-2">
+            <h3 className="text-base sm:text-lg font-semibold text-[#1c1917] leading-snug group-hover:text-[#2563eb] transition-colors line-clamp-4">
               {playbook.title}
             </h3>
           </Link>
