@@ -1,0 +1,510 @@
+[00:00] Last year my company's did over $250,000
+[00:01] in aggregate revenue. I've been in
+[00:03] business for over a decade and a half.
+[00:04] Uh in this video, I'll show you how we
+[00:05] use AI to make our business better,
+[00:07] cheaper, faster, and less risky for our
+[00:09] customers. I'll also walk you through
+[00:10] some real examples of every department.
+[00:12] Number one, how do we actually make the
+[00:13] business better? So, if we think about
+[00:16] each of the functions of the business,
+[00:17] you're going to be turning raw attention
+[00:19] into some sort of profit. Right? Like if
+[00:21] we look at businesses that are to
+[00:22] manufacturing about. And the first, I
+[00:25] think, misconception that people have
+[00:26] around implementing AI into their
+[00:28] business is they think they must become
+[00:29] an AI business, which is not true at
+[00:31] all. And so, the easiest analogy I can
+[00:32] give is the internet. Right? So, almost
+[00:34] every business is on the internet. You
+[00:36] don't have to be an internet business,
+[00:38] you just use the internet as one of the
+[00:41] many tools that you use to deliver
+[00:42] whatever it is that you sell. And so, I
+[00:44] think the first mistake that I'm seeing
+[00:46] businesses make is assuming that either
+[00:48] they have to become tech companies. Now,
+[00:49] there's a component of being tech
+[00:51] forward, uh but like are you tech
+[00:53] forward for having web page? Not
+[00:55] anymore, but you used to be. And the
+[00:57] people who got there first got
+[00:58] disproportionate returns. The second
+[01:00] kind of big thing that is being a
+[01:01] mistake is assuming that like one of the
+[01:03] tech nerds is going to do it for you.
+[01:05] Now, one of the the big advantages of
+[01:07] the thing that I've had that's that's
+[01:09] led to some disproportionate outcomes
+[01:10] for me has been what I'll consider cloud
+[01:12] to dirt knowledge. So, like vertical
+[01:14] integration of knowledge. So, being able
+[01:16] to do the high-level strategy, being
+[01:18] able to handle the people stuff,
+[01:20] communication, marketing, all the way
+[01:22] down to the granularity of like how do
+[01:24] we connect this API to this other API.
+[01:26] And the reason I think that cloud to
+[01:28] dirt understanding of all systems within
+[01:31] the business is valuable is because
+[01:32] you're the only one who's going to
+[01:33] understand what is possible. So, even if
+[01:35] you have some tech nerd, right, who's
+[01:37] next to you, you would then ask them,
+[01:39] "Well, what is possible?" And they're
+[01:41] going to answer within their limited
+[01:42] context of business. And so, if you know
+[01:44] your business better than them, which
+[01:44] you should if you're the owner, then you
+[01:46] can see how different pieces, if applied
+[01:49] together, would be really valuable. They
+[01:51] won't see that inherent value, and so
+[01:52] they're going to default to things that
+[01:53] they've seen before um that people have
+[01:55] done, which largely will be what I would
+[01:57] consider commoditized automations,
+[01:59] right? And so, where you get the true
+[02:01] alpha or the true kind of big
+[02:03] improvements in the business are going
+[02:04] to become come from your business acumen
+[02:07] getting overlaid on top of technical
+[02:09] acumen. Now, you probably don't consider
+[02:11] yourself to be a tech person. I
+[02:13] certainly don't. In fact, I would say
+[02:15] that I I don't even like saying it, but
+[02:16] I largely dislike technology. Um but I
+[02:20] see it as a necessary evil, being, you
+[02:22] know, emphasis on the necessary part,
+[02:24] which is that you've got to get good at
+[02:25] this So, I'm going to give you a
+[02:26] couple of things that you can do, and
+[02:27] then I'll give you some examples of the
+[02:28] stuff we've done. But, things that you
+[02:30] can do today right now is there's a
+[02:33] zillion videos on YouTube on how to
+[02:35] automate a specific thing or task within
+[02:37] a business. They exist, you can find
+[02:39] them on your own time.
+[02:40] What I would encourage you to do is take
+[02:42] the link, take the transcript, and then
+[02:44] say, "Hey, I want help building this
+[02:46] thing." And then plug that into whatever
+[02:49] AI you want,
+[02:50] and then follow the directions. And when
+[02:53] you get stuck, take a screenshot of the
+[02:55] page and say, "What do I do now?" and
+[02:56] put it in the chat. And do that over and
+[02:58] over and over again. So, from marketing
+[03:01] perspective, um we have an AI SDR right
+[03:04] now who's who's matching our our human
+[03:07] team. Okay. Now, one of the big mess-ups
+[03:10] though is that people will install
+[03:13] business owners will install a
+[03:14] half-built function of AI into their
+[03:18] business, compare it to something that's
+[03:20] been optimized over the last 6 years or
+[03:22] 10 years or 20 years, and say, "See, it
+[03:25] doesn't work as well. John Henry wins
+[03:27] again." Right? For those of you don't
+[03:29] know that, well, you know, you were born
+[03:31] probably after 2000. Anyways. So, so the
+[03:33] the idea here is you have to do an
+[03:35] apples-to-apples comparison, which is
+[03:38] how long did you work on training and
+[03:40] putting all the SOPs together? Okay,
+[03:41] great. Well, then you have to apply that
+[03:43] same methodology to the AI. So, let me
+[03:45] give you a different example of this.
+[03:47] So, the reason that I think that like
+[03:48] people who have like sales called sales
+[03:50] AI agencies
+[03:52] um will struggle is that you have to
+[03:55] know more than just tech and just how to
+[03:57] sell in order to implement sales into
+[04:00] different businesses. And as somebody
+[04:01] who's been very good at acquiring
+[04:03] customers via checkout page, via
+[04:04] webinar, via in-person sales, via phone
+[04:07] sales,
+[04:08] most of the ways that you know how to
+[04:09] acquire customers, we've gotten pretty
+[04:10] good at over the years, and it's just
+[04:11] probably been an obsession of mine. But,
+[04:13] the thing is is that if I were to go
+[04:15] into a company and they say, "Hey, Alex,
+[04:17] can we use your AI setter to apply to my
+[04:20] whatever XYZ business?" I would say,
+[04:22] "Well, it's going to it's not going to
+[04:23] be like a simple drag and drop. It would
+[04:25] be like saying, 'Hey, can I take one of
+[04:26] your sales guys and put them in my
+[04:27] business?'" The first shot, you think
+[04:29] they're going to be good? Of course not.
+[04:31] They're going to suck. They're going to
+[04:32] be terrible, and you're going to be
+[04:33] like, "How is How is that good?" Now,
+[04:35] it's even worse if you don't even have a
+[04:36] very good sales process as is, and then
+[04:39] saying, "Oh, well, now that I have an AI
+[04:40] sales person or AI setter, I'm going to
+[04:42] run an ad and then have the AI setter,
+[04:44] you know, call every single person who
+[04:46] opts in." Well, would you have a human
+[04:47] call every single person that opts in?
+[04:49] You can then make the argument, "Well,
+[04:50] it'd be cheaper." It's like, "Yeah, but
+[04:51] would it be effective?" Most times
+[04:53] there's a certain amount There's a sales
+[04:54] motion. There's a sales process. Like AI
+[04:57] will make the things that you're doing
+[04:59] right now easier and faster. It doesn't
+[05:01] mean that you still don't have to do
+[05:02] them. Real quick, I'm going to show you
+[05:03] the exact 10-stage roadmap from zero to
+[05:06] 100 million plus that less than 1% of
+[05:09] companies finish. I've now done multiple
+[05:11] times, and so I can say with a lot of
+[05:12] confidence that these are the stages, as
+[05:14] head count increases, that you need to
+[05:16] get through. And I broke each of these
+[05:18] down by eight different functions of the
+[05:19] business, what the constraint feels
+[05:21] like, like what are the symptoms of it
+[05:23] when you're going through it, and then
+[05:24] what steps we actually took to graduate.
+[05:26] And we've done this across software,
+[05:28] physical products, uh service
+[05:30] businesses, brick and mortar, all of
+[05:31] this, and it works. And it's my gift to
+[05:34] you. It's absolutely free. And so, the
+[05:35] link's in the description, but you just
+[05:36] go acquisition.com/roadmap,
+[05:38] just enter your info, and it'll spit it
+[05:39] right back to you, all free. So, humans
+[05:41] aren't going to change. Our ability to
+[05:44] be persuaded, the things that we find
+[05:46] interesting and important, those aren't
+[05:47] going to change. The psychology of
+[05:49] humans is is largely going to remain
+[05:51] unchanged. And so, whatever you do in
+[05:52] order to persuade people will still have
+[05:54] to happen. It's not that all of a sudden
+[05:56] all the rules of persuasion are broken.
+[05:58] And to the same degree, if your business
+[05:59] now starts using AI, I wouldn't
+[06:01] advertise that you're using AI. No one
+[06:03] cares. They just care that they get
+[06:05] their stuff faster, that they get it
+[06:07] cheaper, that they make it better, and
+[06:08] that it's risk-free. And so, let's just
+[06:10] hit those ones really quickly.
+[06:12] So, from a risk-free perspective, how
+[06:14] can AI reduce the risk in a business?
+[06:16] So, on a global level, right? Um I think
+[06:19] PayPal reduced its fraud uh team by a
+[06:21] gigantic amount, and more importantly,
+[06:23] they've reduced their fraud losses by
+[06:25] $700 million in a single year just by
+[06:28] having AI start recognizing patterns uh
+[06:31] uh faster. Now, to the same degree, on a
+[06:33] human savings level, uh JP Morgan had
+[06:36] Coin, which was their kind of like their
+[06:37] AI engine for, I think, like credit
+[06:40] agreements or something like that. But,
+[06:41] it basically saved like 350,000 lawyer
+[06:43] hours, right, which they were able to
+[06:45] just basically do 12,000 credit
+[06:47] agreements in seconds rather than having
+[06:49] these lawyers review them over and over
+[06:50] again. That is another use case. Now,
+[06:52] some of these seem like these big global
+[06:53] companies, but you're like, "How the
+[06:54] hell am I going to do this uh in my in
+[06:56] my in my small business?" Well, Clara
+[06:57] replaced 700 customer service agents
+[06:59] with AI and saved 40 million bucks in a
+[07:00] year. For us, when we did our book
+[07:03] launch, this is before people were
+[07:04] talking about agencies as much,
+[07:06] we spun up five agents that handled I
+[07:09] think it was like
+[07:11] somewhere in the neighborhood of like
+[07:12] 120,000 support tickets. And it was
+[07:15] mostly just like, "Hey, can you tell me
+[07:16] where I get the free stuff?" Right? But,
+[07:18] we were able to resolve 90% of all
+[07:21] tickets without any human intervention.
+[07:23] You have to find a time, and maybe
+[07:26] that's weekends, maybe that's evenings,
+[07:27] maybe that's early mornings, maybe
+[07:28] that's middle of the day, whatever that
+[07:29] thing is for you or that time period is
+[07:31] for you, where you have to fully
+[07:33] dedicate yourself and actually go soup
+[07:35] to nuts, click to close, beginning to
+[07:37] end, on just automating one portion of
+[07:40] your day. That is my only ask. Now,
+[07:41] people have an incredibly hard time um
+[07:44] with this for two reasons. One, because
+[07:45] everyone's afraid of AI, which by the
+[07:47] way, if you're watching this and you
+[07:48] have workflows,
+[07:49] who do you think would be best served to
+[07:51] automate the workflow? Someone else or
+[07:53] you?
+[07:55] You should automate your workflow,
+[07:57] because then that will give you time to
+[07:58] figure out what else you can do that's
+[08:00] more valuable. Now,
+[08:02] every single time you think about your
+[08:03] workflow, whenever you want to put what
+[08:06] I'll just call magic or mysticism in in,
+[08:08] it's where you say,
+[08:11] "Well, I just I just kind of know or I
+[08:13] have a gut feeling or I have intuition
+[08:14] or instinct" or whatever you want to
+[08:15] call it, I just you to think pattern
+[08:18] recognition.
+[08:19] Because that takes all of this magic
+[08:21] away from it. Because you are an
+[08:23] organism that has been exposed to
+[08:25] different stimuli, and then you had
+[08:26] reinforcement cycles that occurred where
+[08:28] you realized that this, like when we
+[08:30] say, "Oh, I think that looks cool," it's
+[08:31] because we've seen things that look
+[08:32] similar to that. We generalize this All
+[08:35] right? That's how it works. And so, if
+[08:37] you can just erase your romanticism
+[08:39] around whatever niche specialized
+[08:41] knowledge you believe to have, and
+[08:42] believe me, I'm somebody who who who
+[08:44] thinks for a living. I would be the most
+[08:46] threatened by AI, right? You still have
+[08:48] to approach it with an observable lens,
+[08:51] which is what are the actual behaviors
+[08:53] that I do in order to get this outcome.
+[08:56] And so, even something as simple as
+[08:57] like, "Okay, I have to think of a cool
+[08:59] idea for this YouTube video," right?
+[09:03] We have different ways. I'm sure you
+[09:04] have some ways where you're like, "Okay,
+[09:05] well, I think about what I did that
+[09:06] week." Okay. So, could a could a bot
+[09:10] look at your calendar?
+[09:12] Okay, step one. Step two, can you record
+[09:14] all of the calls that you take and have
+[09:16] those transcribed? Okay, that's now more
+[09:19] interesting, cuz now I have a bot that
+[09:20] not only sees the calendar, it can also
+[09:22] know what all the conversations were.
+[09:24] Okay, can I then ask that bot to say,
+[09:26] "Hey,
+[09:27] any interesting situation or decision
+[09:30] that came up over the last week, I want
+[09:32] you to put the top five most interesting
+[09:34] ones into a document for me." And then
+[09:36] run it. And then great, now you've got
+[09:38] the five most interesting moments. What
+[09:39] does it also create? True stories and
+[09:42] narratives, which is do epic talk
+[09:44] about the epic you did. Right? So,
+[09:46] you don't have to make stuff up. The the
+[09:48] big the big difficulty that people will
+[09:50] have in the in the world of AI content
+[09:52] creation is proof. That's the issue.
+[09:55] That's the problem. And so, like there
+[09:57] will be amount Now, on the on the on the
+[09:59] consumer side,
+[10:00] they won't be as sensitive. On the B2B
+[10:02] side, abs- it still matters. Like,
+[10:03] imagine tomorrow
+[10:05] there's a B2B AI avatar, right? For
+[10:09] sure. Why do I think that that won't
+[10:11] work that well?
+[10:13] Because the same reason it doesn't work
+[10:14] for other people
+[10:16] who don't have any proof. The first
+[10:17] thing that's Like, again, human
+[10:19] psychology is not going to change.
+[10:21] People are still going to wonder, "Why
+[10:22] should I listen to you?
+[10:24] Why should I listen to this AI bot?"
+[10:25] Well, if that AI bot has no proof about
+[10:27] why it is good or what it's achieved or
+[10:29] what or what what real-world outcome
+[10:31] it's had, it's just it's just words.
+[10:33] It's just GPT words, right?
+[10:35] And so, what what then happens is like
+[10:37] it has to be backed by somebody who has
+[10:38] done some extraordinary thing. Maybe you
+[10:40] sold an e-commerce store. Maybe you did
+[10:42] uh maybe you're an amazing trader. Maybe
+[10:44] you're really good at real estate
+[10:45] investing. Maybe whatever your thing is,
+[10:46] right? You have to have the proof.
+[10:48] And so,
+[10:50] in a consumer world, it is easier
+[10:52] because and this is I mean again,
+[10:54] psychology doesn't change. If you have a
+[10:56] beautiful AI avatar talking about skin
+[10:58] care, people are going to see the
+[10:59] beautiful AI avatar, and then the way
+[11:01] the avatar looks
+[11:02] gives proof to the thing. Now, we can be
+[11:04] clear that obviously it's just purely
+[11:06] pixels and generated, but I think that
+[11:08] the the human psychology part, I don't
+[11:10] think that's going to matter.
+[11:11] Right? But, on the on the B2B side, I
+[11:13] still think it will. And so, I use all
+[11:14] these examples to say and hopefully
+[11:16] drive point a drive home a single point,
+[11:18] which is that
+[11:20] the internet is here.
+[11:23] It's just
+[11:24] you know, 25, 30 years later and it's
+[11:26] AI.
+[11:27] And
+[11:28] your business doesn't have to become an
+[11:30] AI business, but you do need to use AI
+[11:33] in your business. You don't need to
+[11:34] advertise that you use AI, just like I
+[11:36] don't advertise that I use the internet.
+[11:39] Right? I just use it. Just like you do.
+[11:43] And so, we use the tools to get the
+[11:45] outcomes. We don't advertise the tools
+[11:47] we use. I don't talk about my CRM. I
+[11:49] don't talk about, you know, what call
+[11:51] service we have or or you know, what
+[11:52] specific training I'm doing for a
+[11:54] specific rep. Probably not. I don't talk
+[11:55] about that. Cuz no one cares. They just
+[11:57] care about the outcome. And whether I'm
+[11:59] good at it is whether they buy again.
+[12:01] And that will come down to your skill.
+[12:02] And so, my big encouragement is is that
+[12:04] you are not too busy to do this. You
+[12:05] have other things that are less
+[12:06] important, and you need to start
+[12:07] prioritizing this. So, the AI equivalent
+[12:11] of the webpage in the internet era is is
+[12:14] is a different type of response because
+[12:17] the internet was all about connection.
+[12:20] And so, the website became a calling
+[12:21] card, right? It was a means for people
+[12:23] to contact. So, it was really it was it
+[12:25] was in some way single-faceted.
+[12:28] From an AI perspective,
+[12:31] anything a human touches
+[12:33] an AI can can interact with at a basic
+[12:35] level. And so, if we think about the
+[12:38] departments, right? There's going to be
+[12:40] AI that's going to be involved in
+[12:43] marketing. But, let me give you some
+[12:44] examples of many different ones that
+[12:45] small businesses use.
+[12:47] You can have an AI that helps you create
+[12:50] the ideas behind your marketing.
+[12:52] You can have an AI that helps you script
+[12:54] and package the ideas, meaning the
+[12:56] headlines, the thumbnails, even the
+[12:58] topics themselves, right? It's a little
+[13:00] bit kind of like the ideas. Uh
+[13:02] you can have AI run the tests for
+[13:04] different thumbnails automatically that
+[13:06] it generates, and then creates a skill
+[13:09] based on what it sees over time of
+[13:11] what's winning. That's on the organic
+[13:13] side. Now, again, you can also include
+[13:15] trend research there. What are the
+[13:16] trending formats? What are the trending
+[13:17] hooks? What are the trending visual
+[13:19] hooks, not just verbal hooks? And then
+[13:21] take all of that information and then
+[13:23] cross-reference it with past content or
+[13:26] subject matter that you would show your
+[13:28] AI that you associate with, which means
+[13:30] AKA brand, right? And so, you say,
+[13:32] "Okay, these are trending formats,
+[13:34] hooks, intros, visuals, and this is what
+[13:37] I do. Come up with the Venn diagram, the
+[13:39] cross-pollination of those things, and
+[13:41] give me 10 of those." And of those 10,
+[13:43] you'll pick the one you find
+[13:43] interesting. You click that button, and
+[13:45] now it starts generating the idea, the
+[13:46] headline, the scripts, whatever. That is
+[13:49] on the content side.
+[13:50] On the ad side, this is where it gets
+[13:52] very interesting, too, is that you can
+[13:54] create self-looking ice cream cones. Um
+[13:57] which means that I can make content, and
+[13:59] I can have the content immediately get
+[14:01] overlaid with a CTA, which immediately
+[14:03] gets put uh directly into an ad campaign
+[14:05] that launches every single day with
+[14:07] yesterday's content. You can create
+[14:08] endless amount of statics, static
+[14:10] images,
+[14:11] off of different data sets. So, for
+[14:14] example, if you run a community on
+[14:15] school, you could have, "Hey, I have one
+[14:17] tab where people list their wins."
+[14:19] Great. Any new win that gets added to
+[14:21] that immediately gets transferred over.
+[14:23] Um and then runs through six visual
+[14:26] templates that we know are high
+[14:27] converting. And then we will run those
+[14:30] as ads towards Vantage, which is our
+[14:32] million-dollar-plus community that we
+[14:33] have there, right? All of that
+[14:35] automated.
+[14:37] Pretty slick, right? And so, all of
+[14:40] these things like And that's again, all
+[14:42] of those examples are just marketing,
+[14:43] right? Sales, you can apply all the way
+[14:45] across the bat, too, which is like, "How
+[14:46] can I enrich the leads? How can I
+[14:48] respond to them quickly in terms of Can
+[14:49] I send an automated voice note? Can I
+[14:51] send um an image or text that's
+[14:54] obviously personalized to their
+[14:55] business, which we can dynamically
+[14:56] pull?" Yes, of course you can. Can you
+[14:57] do that via DM on Instagram? Yes, you
+[14:59] can, right? All of That's That's just on
+[15:01] the nurture side, right? On the
+[15:02] scheduling, can we do more dynamic
+[15:04] scheduling because we have one AI who
+[15:06] hands off to another AI? Yeah, is
+[15:07] availability less of an issue? Sure.
+[15:09] That means speed to contact goes through
+[15:10] the roof. Yes. Now, the thing is is that
+[15:12] we got 18 months. We have about 18
+[15:14] months where there's just a huge amount
+[15:16] of wealth that can be created by people
+[15:17] who have nothing.
+[15:18] It's a very big opportunity.
+[15:20] And so, no matter where you're at right
+[15:22] now, if you had an army of these agents
+[15:25] working on autonomous tasks for you,
+[15:29] you could get a lot more done than you
+[15:30] currently are.
+[15:32] And I think you should do that.
+[15:34] >> [gasps]
+[15:34] >> Um but I mean, it works across the
+[15:36] board. My legal team, you know, like I
+[15:37] can have one general counsel that
+[15:39] instead of having 100 paralegals run all
+[15:41] the different stuff that we have for
+[15:42] deals and lawsuits and whatever else
+[15:44] that we have going on,
+[15:46] she can just run it all through
+[15:47] different agents that have different
+[15:48] tasks, right? First response, second
+[15:50] response, cease and desist, all that
+[15:52] stuff that we have to do every day.
