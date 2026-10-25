@@ -1,0 +1,5147 @@
+[
+  {
+    "text": "I feel like I use AI in a very [music]",
+    "start": 0.08,
+    "duration": 4.08
+  },
+  {
+    "text": "unique way. And whenever I share how I",
+    "start": 2.08,
+    "duration": 4.239
+  },
+  {
+    "text": "use AI with other people, it seems like",
+    "start": 4.16,
+    "duration": 3.92
+  },
+  {
+    "text": "it unlocks something in their brain.",
+    "start": 6.319,
+    "duration": 3.2
+  },
+  {
+    "text": "They feel like they discovered a new",
+    "start": 8.08,
+    "duration": 3.36
+  },
+  {
+    "text": "superpower. They feel like they can do",
+    "start": 9.519,
+    "duration": 3.581
+  },
+  {
+    "text": "almost anything. They can build the",
+    "start": 11.44,
+    "duration": 3.04
+  },
+  {
+    "text": "[music] business faster. They can learn",
+    "start": 13.1,
+    "duration": 3.38
+  },
+  {
+    "text": "new skills faster. They can understand",
+    "start": 14.48,
+    "duration": 3.84
+  },
+  {
+    "text": "topics faster. They can effectively get",
+    "start": 16.48,
+    "duration": 4.48
+  },
+  {
+    "text": "ahead of 99% of people who use AI",
+    "start": 18.32,
+    "duration": 4.64
+  },
+  {
+    "text": "because most people treat AI as a slot",
+    "start": 20.96,
+    "duration": 3.6
+  },
+  {
+    "text": "machine rather than something you can",
+    "start": 22.96,
+    "duration": 3.28
+  },
+  {
+    "text": "program to do exactly [music] what you",
+    "start": 24.56,
+    "duration": 4.719
+  },
+  {
+    "text": "want it to. AI is a cool new way to ask",
+    "start": 26.24,
+    "duration": 5.119
+  },
+  {
+    "text": "questions and get answers. It's the new",
+    "start": 29.279,
+    "duration": 4.081
+  },
+  {
+    "text": "Google search, so to say. But most",
+    "start": 31.359,
+    "duration": 3.36
+  },
+  {
+    "text": "people stop there. [music] They don't",
+    "start": 33.36,
+    "duration": 4.08
+  },
+  {
+    "text": "see the power under the hood. AI was",
+    "start": 34.719,
+    "duration": 4.881
+  },
+  {
+    "text": "supposed to be this life-changing thing.",
+    "start": 37.44,
+    "duration": 3.92
+  },
+  {
+    "text": "There was so much hype around it. There",
+    "start": 39.6,
+    "duration": 3.279
+  },
+  {
+    "text": "were people fighting on both sides. And",
+    "start": 41.36,
+    "duration": 3.12
+  },
+  {
+    "text": "now it seems like that's kind of died",
+    "start": 42.879,
+    "duration": 3.52
+  },
+  {
+    "text": "off. And if you were to ask someone",
+    "start": 44.48,
+    "duration": 4.32
+  },
+  {
+    "text": "like, \"Hey, has AI changed your life to",
+    "start": 46.399,
+    "duration": 4.32
+  },
+  {
+    "text": "any reasonable extent?\" Some people",
+    "start": 48.8,
+    "duration": 3.439
+  },
+  {
+    "text": "would say yes. A certain amount of",
+    "start": 50.719,
+    "duration": 2.961
+  },
+  {
+    "text": "people would say yes. But I would argue",
+    "start": 52.239,
+    "duration": 3.361
+  },
+  {
+    "text": "that the majority of people, the average",
+    "start": 53.68,
+    "duration": 4.24
+  },
+  {
+    "text": "person would say no. Now, I've only",
+    "start": 55.6,
+    "duration": 4.08
+  },
+  {
+    "text": "talked about my process a handful of",
+    "start": 57.92,
+    "duration": 3.92
+  },
+  {
+    "text": "times in public. I went on a podcast and",
+    "start": 59.68,
+    "duration": 4.0
+  },
+  {
+    "text": "people really like that. But I've never",
+    "start": 61.84,
+    "duration": 4.4
+  },
+  {
+    "text": "really gone in detail. I've never really",
+    "start": 63.68,
+    "duration": 5.04
+  },
+  {
+    "text": "created like a full course, so to say,",
+    "start": 66.24,
+    "duration": 4.32
+  },
+  {
+    "text": "of my entire process with multiple",
+    "start": 68.72,
+    "duration": 3.759
+  },
+  {
+    "text": "examples. So, that's why I want to",
+    "start": 70.56,
+    "duration": 3.44
+  },
+  {
+    "text": "create this video is I want an",
+    "start": 72.479,
+    "duration": 3.921
+  },
+  {
+    "text": "immediately actionable guide on how to",
+    "start": 74.0,
+    "duration": 5.119
+  },
+  {
+    "text": "use AI in an incredible way. And when I",
+    "start": 76.4,
+    "duration": 5.44
+  },
+  {
+    "text": "say AI here, I mean LLMs. I mean like a",
+    "start": 79.119,
+    "duration": 5.921
+  },
+  {
+    "text": "chat box. I mean, you can do this in",
+    "start": 81.84,
+    "duration": 5.36
+  },
+  {
+    "text": "your average everyday chat, GPT or",
+    "start": 85.04,
+    "duration": 3.759
+  },
+  {
+    "text": "Claude. You don't need anything special.",
+    "start": 87.2,
+    "duration": 3.36
+  },
+  {
+    "text": "We're not doing anything with video or",
+    "start": 88.799,
+    "duration": 3.841
+  },
+  {
+    "text": "graphics. We're just using text. First,",
+    "start": 90.56,
+    "duration": 3.84
+  },
+  {
+    "text": "I'm going to show you my little secret.",
+    "start": 92.64,
+    "duration": 3.119
+  },
+  {
+    "text": "This is something that I use all the",
+    "start": 94.4,
+    "duration": 2.88
+  },
+  {
+    "text": "time. We're going to cover that first.",
+    "start": 95.759,
+    "duration": 3.521
+  },
+  {
+    "text": "And hopefully that section is enough to",
+    "start": 97.28,
+    "duration": 3.28
+  },
+  {
+    "text": "kind of [snorts] blow your mind to be",
+    "start": 99.28,
+    "duration": 3.68
+  },
+  {
+    "text": "like, \"Oh, okay. I get AI now.\" And",
+    "start": 100.56,
+    "duration": 3.44
+  },
+  {
+    "text": "that's going to take a bit, but I",
+    "start": 102.96,
+    "duration": 2.799
+  },
+  {
+    "text": "promise if you stick through it, this is",
+    "start": 104.0,
+    "duration": 3.119
+  },
+  {
+    "text": "a learning type video. You're going to",
+    "start": 105.759,
+    "duration": 2.64
+  },
+  {
+    "text": "have to take notes. You're going to have",
+    "start": 107.119,
+    "duration": 2.881
+  },
+  {
+    "text": "to sit down and actually watch this. So,",
+    "start": 108.399,
+    "duration": 2.961
+  },
+  {
+    "text": "if you don't have the time to right now,",
+    "start": 110.0,
+    "duration": 3.92
+  },
+  {
+    "text": "I want you to hit watch later so that",
+    "start": 111.36,
+    "duration": 4.079
+  },
+  {
+    "text": "you remember to watch it later. And then",
+    "start": 113.92,
+    "duration": 2.96
+  },
+  {
+    "text": "after that section, I'm going to go over",
+    "start": 115.439,
+    "duration": 3.521
+  },
+  {
+    "text": "a few examples and kind of just run",
+    "start": 116.88,
+    "duration": 3.599
+  },
+  {
+    "text": "through them. And if you follow along,",
+    "start": 118.96,
+    "duration": 2.72
+  },
+  {
+    "text": "you'll be able to have this little",
+    "start": 120.479,
+    "duration": 3.68
+  },
+  {
+    "text": "library of prompts for business, for",
+    "start": 121.68,
+    "duration": 4.16
+  },
+  {
+    "text": "creative thinking, for intellectual",
+    "start": 124.159,
+    "duration": 3.441
+  },
+  {
+    "text": "thinking, for content creation, and",
+    "start": 125.84,
+    "duration": 4.32
+  },
+  {
+    "text": "really anything else you want to do. So,",
+    "start": 127.6,
+    "duration": 4.48
+  },
+  {
+    "text": "on to the first section. We're going to",
+    "start": 130.16,
+    "duration": 4.719
+  },
+  {
+    "text": "call this how to do anything with AI.",
+    "start": 132.08,
+    "duration": 4.799
+  },
+  {
+    "text": "And you can see here I have this nice",
+    "start": 134.879,
+    "duration": 4.241
+  },
+  {
+    "text": "little canvas and we're just going to",
+    "start": 136.879,
+    "duration": 4.561
+  },
+  {
+    "text": "walk through all of this. Now, this is",
+    "start": 139.12,
+    "duration": 4.4
+  },
+  {
+    "text": "the most important part. If you actually",
+    "start": 141.44,
+    "duration": 4.08
+  },
+  {
+    "text": "follow and understand all of this",
+    "start": 143.52,
+    "duration": 5.6
+  },
+  {
+    "text": "process, this is how you go from AI slop",
+    "start": 145.52,
+    "duration": 6.32
+  },
+  {
+    "text": "to imposing your own sense of taste on",
+    "start": 149.12,
+    "duration": 5.199
+  },
+  {
+    "text": "the AI. Now, to do this well, you need",
+    "start": 151.84,
+    "duration": 5.84
+  },
+  {
+    "text": "to think of AI as this sort of digital",
+    "start": 154.319,
+    "duration": 5.681
+  },
+  {
+    "text": "employee that will do exactly what you",
+    "start": 157.68,
+    "duration": 4.72
+  },
+  {
+    "text": "tell it to do. Meaning, if you don't",
+    "start": 160.0,
+    "duration": 4.239
+  },
+  {
+    "text": "know how to do the thing that you're",
+    "start": 162.4,
+    "duration": 3.76
+  },
+  {
+    "text": "trying to do well, or you don't know how",
+    "start": 164.239,
+    "duration": 4.161
+  },
+  {
+    "text": "to guide the AI to finding how to do it",
+    "start": 166.16,
+    "duration": 3.92
+  },
+  {
+    "text": "well, then it probably won't do well,",
+    "start": 168.4,
+    "duration": 3.199
+  },
+  {
+    "text": "and you're going to be disappointed with",
+    "start": 170.08,
+    "duration": 2.879
+  },
+  {
+    "text": "the output, and then you're going to",
+    "start": 171.599,
+    "duration": 3.601
+  },
+  {
+    "text": "resort back to the slot machine style",
+    "start": 172.959,
+    "duration": 4.0
+  },
+  {
+    "text": "guessing game. Because that's the exact",
+    "start": 175.2,
+    "duration": 3.679
+  },
+  {
+    "text": "thing. If you don't tell it exactly what",
+    "start": 176.959,
+    "duration": 4.64
+  },
+  {
+    "text": "you want, the LLM has to guess what you",
+    "start": 178.879,
+    "duration": 4.801
+  },
+  {
+    "text": "want. And in order to do that, it pulls",
+    "start": 181.599,
+    "duration": 4.961
+  },
+  {
+    "text": "from this onslaught of mediocre methods",
+    "start": 183.68,
+    "duration": 4.639
+  },
+  {
+    "text": "that are all over the internet. and it",
+    "start": 186.56,
+    "duration": 3.599
+  },
+  {
+    "text": "may spit out something that's slightly",
+    "start": 188.319,
+    "duration": 4.481
+  },
+  {
+    "text": "good but not good enough to get outsized",
+    "start": 190.159,
+    "duration": 4.16
+  },
+  {
+    "text": "results because anyone can do that.",
+    "start": 192.8,
+    "duration": 3.519
+  },
+  {
+    "text": "Anyone can type into AI. So, how do you",
+    "start": 194.319,
+    "duration": 4.321
+  },
+  {
+    "text": "use it differently that allows you to",
+    "start": 196.319,
+    "duration": 4.161
+  },
+  {
+    "text": "get ahead of other people using it? In",
+    "start": 198.64,
+    "duration": 3.84
+  },
+  {
+    "text": "other words, you can't rely on how the",
+    "start": 200.48,
+    "duration": 4.32
+  },
+  {
+    "text": "AI is programmed by default because",
+    "start": 202.48,
+    "duration": 5.119
+  },
+  {
+    "text": "think of it the AI chat GPT claude it's",
+    "start": 204.8,
+    "duration": 4.719
+  },
+  {
+    "text": "packaged up. It's tuned. It's given a",
+    "start": 207.599,
+    "duration": 4.801
+  },
+  {
+    "text": "personality for the average individual.",
+    "start": 209.519,
+    "duration": 4.321
+  },
+  {
+    "text": "I hope that you're not an average",
+    "start": 212.4,
+    "duration": 2.8
+  },
+  {
+    "text": "individual and you don't have the mind",
+    "start": 213.84,
+    "duration": 2.959
+  },
+  {
+    "text": "of an average individual because that's",
+    "start": 215.2,
+    "duration": 3.92
+  },
+  {
+    "text": "what consumer products do. They dumb it",
+    "start": 216.799,
+    "duration": 4.481
+  },
+  {
+    "text": "down so that it can be useful and",
+    "start": 219.12,
+    "duration": 4.32
+  },
+  {
+    "text": "sicopantic and make you feel good for",
+    "start": 221.28,
+    "duration": 3.599
+  },
+  {
+    "text": "using it and give you your cheap little",
+    "start": 223.44,
+    "duration": 3.519
+  },
+  {
+    "text": "dopamine hits so you keep coming back to",
+    "start": 224.879,
+    "duration": 3.36
+  },
+  {
+    "text": "the slot machine. We don't want to use",
+    "start": 226.959,
+    "duration": 3.601
+  },
+  {
+    "text": "it like that. Now, here's an example. If",
+    "start": 228.239,
+    "duration": 4.481
+  },
+  {
+    "text": "I were to just type generate a viral",
+    "start": 230.56,
+    "duration": 3.599
+  },
+  {
+    "text": "YouTube script on the topic of",
+    "start": 232.72,
+    "duration": 3.92
+  },
+  {
+    "text": "productivity into chat GPT, which I did",
+    "start": 234.159,
+    "duration": 4.881
+  },
+  {
+    "text": "here, it'll come up with something and",
+    "start": 236.64,
+    "duration": 5.04
+  },
+  {
+    "text": "it's okay. But is it anywhere near the",
+    "start": 239.04,
+    "duration": 4.88
+  },
+  {
+    "text": "best? Is this something that you'd watch",
+    "start": 241.68,
+    "duration": 4.88
+  },
+  {
+    "text": "on the like a YouTube channel with 1",
+    "start": 243.92,
+    "duration": 4.879
+  },
+  {
+    "text": "million subscribers? No. Length 4 to 6",
+    "start": 246.56,
+    "duration": 3.599
+  },
+  {
+    "text": "minutes. We're already off to a bad",
+    "start": 248.799,
+    "duration": 4.08
+  },
+  {
+    "text": "start there because one, you're in the",
+    "start": 250.159,
+    "duration": 4.401
+  },
+  {
+    "text": "decision of that. If you just go with 4",
+    "start": 252.879,
+    "duration": 3.2
+  },
+  {
+    "text": "to 6 minutes because this script told",
+    "start": 254.56,
+    "duration": 3.04
+  },
+  {
+    "text": "you to, like you don't know what you're",
+    "start": 256.079,
+    "duration": 3.521
+  },
+  {
+    "text": "doing, that doesn't automatically lead",
+    "start": 257.6,
+    "duration": 3.68
+  },
+  {
+    "text": "to high views and engagement, tone,",
+    "start": 259.6,
+    "duration": 3.28
+  },
+  {
+    "text": "fast, energetic, highly sharable. What",
+    "start": 261.28,
+    "duration": 3.44
+  },
+  {
+    "text": "if that's not your personality? Cold",
+    "start": 262.88,
+    "duration": 3.759
+  },
+  {
+    "text": "open. Okay. What if you don't want to",
+    "start": 264.72,
+    "duration": 3.919
+  },
+  {
+    "text": "add custom B-roll? What if you don't",
+    "start": 266.639,
+    "duration": 3.361
+  },
+  {
+    "text": "want to add B-roll at all? What if you",
+    "start": 268.639,
+    "duration": 2.721
+  },
+  {
+    "text": "just want to talk to the camera? What if",
+    "start": 270.0,
+    "duration": 2.72
+  },
+  {
+    "text": "you want to use your phone? What if this",
+    "start": 271.36,
+    "duration": 3.04
+  },
+  {
+    "text": "isn't even a topic that you're an expert",
+    "start": 272.72,
+    "duration": 3.68
+  },
+  {
+    "text": "in or even have any knowledge in? When",
+    "start": 274.4,
+    "duration": 5.12
+  },
+  {
+    "text": "you think of Ali Abdal or Alex Herozi or",
+    "start": 276.4,
+    "duration": 4.64
+  },
+  {
+    "text": "really anyone that you follow on",
+    "start": 279.52,
+    "duration": 3.44
+  },
+  {
+    "text": "YouTube, you understand that they don't",
+    "start": 281.04,
+    "duration": 4.159
+  },
+  {
+    "text": "have the exact same videos. Over time,",
+    "start": 282.96,
+    "duration": 4.08
+  },
+  {
+    "text": "they have cultivated and created their",
+    "start": 285.199,
+    "duration": 3.601
+  },
+  {
+    "text": "own frameworks and methods that made",
+    "start": 287.04,
+    "duration": 4.48
+  },
+  {
+    "text": "their videos do well and stand out next",
+    "start": 288.8,
+    "duration": 4.32
+  },
+  {
+    "text": "to each other. They all have their own",
+    "start": 291.52,
+    "duration": 3.44
+  },
+  {
+    "text": "ideas and their speaking style and their",
+    "start": 293.12,
+    "duration": 4.079
+  },
+  {
+    "text": "personality and their little quirks that",
+    "start": 294.96,
+    "duration": 3.92
+  },
+  {
+    "text": "people get to know them for. They have",
+    "start": 297.199,
+    "duration": 3.681
+  },
+  {
+    "text": "their own brand style and therefore",
+    "start": 298.88,
+    "duration": 4.16
+  },
+  {
+    "text": "presentation style in the actual video",
+    "start": 300.88,
+    "duration": 4.56
+  },
+  {
+    "text": "itself. So, is there any one best way to",
+    "start": 303.04,
+    "duration": 4.8
+  },
+  {
+    "text": "coming up with a YouTube script? No. In",
+    "start": 305.44,
+    "duration": 4.4
+  },
+  {
+    "text": "other words, if you just ask Chad GPT to",
+    "start": 307.84,
+    "duration": 3.919
+  },
+  {
+    "text": "generate a viral YouTube script for you,",
+    "start": 309.84,
+    "duration": 3.28
+  },
+  {
+    "text": "it's not going to work. That's not a",
+    "start": 311.759,
+    "duration": 3.041
+  },
+  {
+    "text": "long-term strategy. And you're not",
+    "start": 313.12,
+    "duration": 3.76
+  },
+  {
+    "text": "learning anything. You're just reciting",
+    "start": 314.8,
+    "duration": 4.56
+  },
+  {
+    "text": "what this box told you to do. The AI",
+    "start": 316.88,
+    "duration": 4.0
+  },
+  {
+    "text": "doesn't have any of your specific",
+    "start": 319.36,
+    "duration": 4.559
+  },
+  {
+    "text": "context or instructions on what to do.",
+    "start": 320.88,
+    "duration": 4.8
+  },
+  {
+    "text": "If you were to take Alex Formosi and Ali",
+    "start": 323.919,
+    "duration": 4.481
+  },
+  {
+    "text": "Abdoll and give them chat GBT, they",
+    "start": 325.68,
+    "duration": 4.88
+  },
+  {
+    "text": "would tell it exactly what to do to",
+    "start": 328.4,
+    "duration": 3.84
+  },
+  {
+    "text": "match their style and then it probably",
+    "start": 330.56,
+    "duration": 3.12
+  },
+  {
+    "text": "still wouldn't be up to par. So, they'd",
+    "start": 332.24,
+    "duration": 3.36
+  },
+  {
+    "text": "redo it over and over again until it",
+    "start": 333.68,
+    "duration": 3.84
+  },
+  {
+    "text": "gets close enough to being useful.",
+    "start": 335.6,
+    "duration": 3.84
+  },
+  {
+    "text": "That's what we're trying to do here. So,",
+    "start": 337.52,
+    "duration": 4.239
+  },
+  {
+    "text": "in order to get AI to do something well",
+    "start": 339.44,
+    "duration": 4.24
+  },
+  {
+    "text": "in a high-quality way, you need to teach",
+    "start": 341.759,
+    "duration": 4.241
+  },
+  {
+    "text": "the AI exactly how you would create the",
+    "start": 343.68,
+    "duration": 4.239
+  },
+  {
+    "text": "YouTube video. At that point, it's not",
+    "start": 346.0,
+    "duration": 3.84
+  },
+  {
+    "text": "randomly generated slop. It's an",
+    "start": 347.919,
+    "duration": 3.521
+  },
+  {
+    "text": "employee that's acting on your",
+    "start": 349.84,
+    "duration": 3.359
+  },
+  {
+    "text": "instruction and learning as you refine",
+    "start": 351.44,
+    "duration": 3.92
+  },
+  {
+    "text": "the process by correcting mistakes. In",
+    "start": 353.199,
+    "duration": 4.0
+  },
+  {
+    "text": "other words, you're going to be writing",
+    "start": 355.36,
+    "duration": 4.48
+  },
+  {
+    "text": "500 to 2,000word prompts. Not one",
+    "start": 357.199,
+    "duration": 5.121
+  },
+  {
+    "text": "sentence, not one paragraph like you see",
+    "start": 359.84,
+    "duration": 3.919
+  },
+  {
+    "text": "all over the internet of like, \"Oh,",
+    "start": 362.32,
+    "duration": 3.04
+  },
+  {
+    "text": "here, steal this prompt. Sure, some of",
+    "start": 363.759,
+    "duration": 3.201
+  },
+  {
+    "text": "those can be helpful.\" But the shorter",
+    "start": 365.36,
+    "duration": 4.559
+  },
+  {
+    "text": "the prompt, the more guessing the AI has",
+    "start": 366.96,
+    "duration": 4.88
+  },
+  {
+    "text": "to do. The more of your agency you",
+    "start": 369.919,
+    "duration": 4.481
+  },
+  {
+    "text": "outsource to the agent, and the more the",
+    "start": 371.84,
+    "duration": 5.52
+  },
+  {
+    "text": "output increases on the slop spectrum.",
+    "start": 374.4,
+    "duration": 5.04
+  },
+  {
+    "text": "But all of that still leaves a big",
+    "start": 377.36,
+    "duration": 4.72
+  },
+  {
+    "text": "problem. What if you don't know how to",
+    "start": 379.44,
+    "duration": 4.319
+  },
+  {
+    "text": "do what you're trying to do with AI?",
+    "start": 382.08,
+    "duration": 3.44
+  },
+  {
+    "text": "What if you can't just write 500 to",
+    "start": 383.759,
+    "duration": 3.761
+  },
+  {
+    "text": "2,000 words as a prompt because you",
+    "start": 385.52,
+    "duration": 4.239
+  },
+  {
+    "text": "don't know specifically what to tell the",
+    "start": 387.52,
+    "duration": 4.08
+  },
+  {
+    "text": "AI to do? What if you haven't already",
+    "start": 389.759,
+    "duration": 4.241
+  },
+  {
+    "text": "created hundreds of YouTube videos or",
+    "start": 391.6,
+    "duration": 4.4
+  },
+  {
+    "text": "thousands of YouTube videos leading to",
+    "start": 394.0,
+    "duration": 3.44
+  },
+  {
+    "text": "you becoming an expert in actually",
+    "start": 396.0,
+    "duration": 3.36
+  },
+  {
+    "text": "knowing what your method or process is?",
+    "start": 397.44,
+    "duration": 3.68
+  },
+  {
+    "text": "So, let's start there. We're going to go",
+    "start": 399.36,
+    "duration": 4.88
+  },
+  {
+    "text": "over four different options to actually",
+    "start": 401.12,
+    "duration": 4.96
+  },
+  {
+    "text": "teach the AI how to do what to do. And",
+    "start": 404.24,
+    "duration": 4.079
+  },
+  {
+    "text": "these all can be used in different",
+    "start": 406.08,
+    "duration": 4.16
+  },
+  {
+    "text": "situations. It really depends. But that",
+    "start": 408.319,
+    "duration": 3.6
+  },
+  {
+    "text": "is step one as a whole is you need to",
+    "start": 410.24,
+    "duration": 4.48
+  },
+  {
+    "text": "create detailed instructions for the AI.",
+    "start": 411.919,
+    "duration": 4.081
+  },
+  {
+    "text": "That's what we're doing here. This isn't",
+    "start": 414.72,
+    "duration": 3.599
+  },
+  {
+    "text": "the magic step yet, but this is the",
+    "start": 416.0,
+    "duration": 4.319
+  },
+  {
+    "text": "prerequisite to getting to the magic",
+    "start": 418.319,
+    "duration": 5.121
+  },
+  {
+    "text": "step. So creating detailed instructions,",
+    "start": 420.319,
+    "duration": 4.961
+  },
+  {
+    "text": "this will all make sense. I promise. So",
+    "start": 423.44,
+    "duration": 3.36
+  },
+  {
+    "text": "whether I want the AI to create a",
+    "start": 425.28,
+    "duration": 3.84
+  },
+  {
+    "text": "YouTube script or landing page, or if I",
+    "start": 426.8,
+    "duration": 3.839
+  },
+  {
+    "text": "just want it to have a stimulating",
+    "start": 429.12,
+    "duration": 3.6
+  },
+  {
+    "text": "conversation with me, I need to instruct",
+    "start": 430.639,
+    "duration": 4.241
+  },
+  {
+    "text": "it on exactly what to do. So you have",
+    "start": 432.72,
+    "duration": 4.56
+  },
+  {
+    "text": "four options here. So that leads to",
+    "start": 434.88,
+    "duration": 5.039
+  },
+  {
+    "text": "option one, which is to just write out",
+    "start": 437.28,
+    "duration": 4.24
+  },
+  {
+    "text": "the detailed instructions, right? You",
+    "start": 439.919,
+    "duration": 3.68
+  },
+  {
+    "text": "write them all out yourself. And the",
+    "start": 441.52,
+    "duration": 4.72
+  },
+  {
+    "text": "example here is the first actual prompt",
+    "start": 443.599,
+    "duration": 4.481
+  },
+  {
+    "text": "that I tried to create. I really put",
+    "start": 446.24,
+    "duration": 4.16
+  },
+  {
+    "text": "effort into this. I studied how to",
+    "start": 448.08,
+    "duration": 4.0
+  },
+  {
+    "text": "structure prompts a good amount. And I",
+    "start": 450.4,
+    "duration": 3.6
+  },
+  {
+    "text": "wanted I I just wanted to see the power",
+    "start": 452.08,
+    "duration": 4.88
+  },
+  {
+    "text": "of AI. Could I get it to replicate my",
+    "start": 454.0,
+    "duration": 5.52
+  },
+  {
+    "text": "tweets, how I write? And so when I first",
+    "start": 456.96,
+    "duration": 4.56
+  },
+  {
+    "text": "did this, this wasn't the prompt that I",
+    "start": 459.52,
+    "duration": 3.92
+  },
+  {
+    "text": "wrote at first, right? My first prompt",
+    "start": 461.52,
+    "duration": 3.84
+  },
+  {
+    "text": "was like, \"Hey, write a viral tweet for",
+    "start": 463.44,
+    "duration": 4.64
+  },
+  {
+    "text": "me.\" Okay, now hey, here's actually how",
+    "start": 465.36,
+    "duration": 4.8
+  },
+  {
+    "text": "I write. Try emulating this with",
+    "start": 468.08,
+    "duration": 3.92
+  },
+  {
+    "text": "different topics. And then over time, it",
+    "start": 470.16,
+    "duration": 3.36
+  },
+  {
+    "text": "just started getting more and more",
+    "start": 472.0,
+    "duration": 3.039
+  },
+  {
+    "text": "because I've written so many tweets. I",
+    "start": 473.52,
+    "duration": 3.92
+  },
+  {
+    "text": "know exactly what to do if I actually",
+    "start": 475.039,
+    "duration": 4.321
+  },
+  {
+    "text": "deconstruct how I write the tweets, how",
+    "start": 477.44,
+    "duration": 3.759
+  },
+  {
+    "text": "I think about it, how I generate ideas,",
+    "start": 479.36,
+    "duration": 3.6
+  },
+  {
+    "text": "how I structure certain ideas, and I",
+    "start": 481.199,
+    "duration": 4.72
+  },
+  {
+    "text": "need to give all of those requirements",
+    "start": 482.96,
+    "duration": 5.04
+  },
+  {
+    "text": "to AI. So, I wrote this out. You can",
+    "start": 485.919,
+    "duration": 3.84
+  },
+  {
+    "text": "stop and pause and read this if you'd",
+    "start": 488.0,
+    "duration": 3.919
+  },
+  {
+    "text": "like, but you can see that I have a list",
+    "start": 489.759,
+    "duration": 4.16
+  },
+  {
+    "text": "of requirements. I have post examples",
+    "start": 491.919,
+    "duration": 4.72
+  },
+  {
+    "text": "like one-s sentence posts from myself,",
+    "start": 493.919,
+    "duration": 6.321
+  },
+  {
+    "text": "multi-line paragraph posts and listical",
+    "start": 496.639,
+    "duration": 5.68
+  },
+  {
+    "text": "posts like bulletoint style posts. And",
+    "start": 500.24,
+    "duration": 4.079
+  },
+  {
+    "text": "then I have the output format where I",
+    "start": 502.319,
+    "duration": 3.6
+  },
+  {
+    "text": "just tell it how to output for me",
+    "start": 504.319,
+    "duration": 2.961
+  },
+  {
+    "text": "because otherwise it's just going to",
+    "start": 505.919,
+    "duration": 3.601
+  },
+  {
+    "text": "give it to me in this weird output. So",
+    "start": 507.28,
+    "duration": 4.24
+  },
+  {
+    "text": "here we're already controlling quite a",
+    "start": 509.52,
+    "duration": 4.079
+  },
+  {
+    "text": "bit and these tweets come out pretty",
+    "start": 511.52,
+    "duration": 4.079
+  },
+  {
+    "text": "good when I give them a topic, but it's",
+    "start": 513.599,
+    "duration": 3.841
+  },
+  {
+    "text": "still generating. It's still guessing.",
+    "start": 515.599,
+    "duration": 4.32
+  },
+  {
+    "text": "This isn't really the best yet, but it",
+    "start": 517.44,
+    "duration": 4.56
+  },
+  {
+    "text": "works quite well. It doesn't cover the",
+    "start": 519.919,
+    "duration": 4.48
+  },
+  {
+    "text": "entire spectrum of like how my mind",
+    "start": 522.0,
+    "duration": 5.12
+  },
+  {
+    "text": "works when I write specific content. And",
+    "start": 524.399,
+    "duration": 4.081
+  },
+  {
+    "text": "most people when they do this, they're",
+    "start": 527.12,
+    "duration": 2.88
+  },
+  {
+    "text": "going to give one or two examples and",
+    "start": 528.48,
+    "duration": 3.039
+  },
+  {
+    "text": "then all of their tweets are just going",
+    "start": 530.0,
+    "duration": 2.72
+  },
+  {
+    "text": "to look the same. They're going to look",
+    "start": 531.519,
+    "duration": 3.121
+  },
+  {
+    "text": "homogeneous and it's going to be an easy",
+    "start": 532.72,
+    "duration": 4.48
+  },
+  {
+    "text": "tell that you're using AI to do this. So",
+    "start": 534.64,
+    "duration": 4.48
+  },
+  {
+    "text": "that leads to option number two, which",
+    "start": 537.2,
+    "duration": 4.639
+  },
+  {
+    "text": "is to ask AI to create a detailed guide.",
+    "start": 539.12,
+    "duration": 5.2
+  },
+  {
+    "text": "And for this one, the topic has to be",
+    "start": 541.839,
+    "duration": 5.12
+  },
+  {
+    "text": "relatively well-known. It can't have",
+    "start": 544.32,
+    "duration": 4.88
+  },
+  {
+    "text": "much degree of variation depending on",
+    "start": 546.959,
+    "duration": 4.401
+  },
+  {
+    "text": "the person, right? Like with Ali Abdal",
+    "start": 549.2,
+    "duration": 4.48
+  },
+  {
+    "text": "and Alex Hormosi creating YouTube videos",
+    "start": 551.36,
+    "duration": 4.8
+  },
+  {
+    "text": "in a different way. You can't really do",
+    "start": 553.68,
+    "duration": 5.279
+  },
+  {
+    "text": "it this way. You kind of can, but you'll",
+    "start": 556.16,
+    "duration": 4.16
+  },
+  {
+    "text": "understand what I'm saying here. This",
+    "start": 558.959,
+    "duration": 3.44
+  },
+  {
+    "text": "can't require much creative thought. So,",
+    "start": 560.32,
+    "duration": 3.519
+  },
+  {
+    "text": "if we use it for something like creating",
+    "start": 562.399,
+    "duration": 3.521
+  },
+  {
+    "text": "a customer avatar, that's been talked",
+    "start": 563.839,
+    "duration": 4.56
+  },
+  {
+    "text": "about so many different times before",
+    "start": 565.92,
+    "duration": 4.8
+  },
+  {
+    "text": "that and it's it's not really variable.",
+    "start": 568.399,
+    "duration": 3.841
+  },
+  {
+    "text": "It's kind of obvious. There isn't a",
+    "start": 570.72,
+    "duration": 3.52
+  },
+  {
+    "text": "better way to create a customer avatar.",
+    "start": 572.24,
+    "duration": 3.44
+  },
+  {
+    "text": "Kind of sort of, but it doesn't really",
+    "start": 574.24,
+    "duration": 2.88
+  },
+  {
+    "text": "matter. So, that's when I'm going to",
+    "start": 575.68,
+    "duration": 3.279
+  },
+  {
+    "text": "type in a chat, give me a detailed guide",
+    "start": 577.12,
+    "duration": 3.52
+  },
+  {
+    "text": "on how to create the most comprehensive",
+    "start": 578.959,
+    "duration": 3.44
+  },
+  {
+    "text": "customer avatar in the world. And then",
+    "start": 580.64,
+    "duration": 3.52
+  },
+  {
+    "text": "it does that and it's pretty dang",
+    "start": 582.399,
+    "duration": 4.721
+  },
+  {
+    "text": "comprehensive. So, now look, step one is",
+    "start": 584.16,
+    "duration": 5.359
+  },
+  {
+    "text": "done, right? I have a detailed list of",
+    "start": 587.12,
+    "duration": 3.92
+  },
+  {
+    "text": "instructions. So, just keep this in",
+    "start": 589.519,
+    "duration": 4.0
+  },
+  {
+    "text": "mind. This is one option. So, if we're",
+    "start": 591.04,
+    "duration": 4.96
+  },
+  {
+    "text": "creating, let's say, a prompt that helps",
+    "start": 593.519,
+    "duration": 5.361
+  },
+  {
+    "text": "us uh create a customer avatar. I have",
+    "start": 596.0,
+    "duration": 5.04
+  },
+  {
+    "text": "how to create the customer avatar, but",
+    "start": 598.88,
+    "duration": 4.399
+  },
+  {
+    "text": "then I need to turn this into a prompt",
+    "start": 601.04,
+    "duration": 6.72
+  },
+  {
+    "text": "that interviews me specifically to fill",
+    "start": 603.279,
+    "duration": 6.401
+  },
+  {
+    "text": "out all areas of the customer avatar so",
+    "start": 607.76,
+    "duration": 3.92
+  },
+  {
+    "text": "that it can actually generate the",
+    "start": 609.68,
+    "duration": 4.399
+  },
+  {
+    "text": "customer avatar for me. And then I have",
+    "start": 611.68,
+    "duration": 4.88
+  },
+  {
+    "text": "this superdetailed customer avatar that",
+    "start": 614.079,
+    "duration": 5.2
+  },
+  {
+    "text": "most people don't have. And since I'm",
+    "start": 616.56,
+    "duration": 5.2
+  },
+  {
+    "text": "doing this with AI, I'm not just staring",
+    "start": 619.279,
+    "duration": 4.641
+  },
+  {
+    "text": "at this blank template where it's like a",
+    "start": 621.76,
+    "duration": 3.519
+  },
+  {
+    "text": "customer avatar template and I'm",
+    "start": 623.92,
+    "duration": 3.84
+  },
+  {
+    "text": "expected to fill in, oh, what keeps the",
+    "start": 625.279,
+    "duration": 4.161
+  },
+  {
+    "text": "customer up at night and what are the",
+    "start": 627.76,
+    "duration": 3.199
+  },
+  {
+    "text": "goals of the customer? And I have to go",
+    "start": 629.44,
+    "duration": 3.36
+  },
+  {
+    "text": "and go through Reddit and all these",
+    "start": 630.959,
+    "duration": 3.601
+  },
+  {
+    "text": "other things. I'm talking to AI. So, as",
+    "start": 632.8,
+    "duration": 3.76
+  },
+  {
+    "text": "it's asking me the questions, I can ask",
+    "start": 634.56,
+    "duration": 4.48
+  },
+  {
+    "text": "it, what do you think? Go and research",
+    "start": 636.56,
+    "duration": 4.16
+  },
+  {
+    "text": "Reddit and tell me what they are. So,",
+    "start": 639.04,
+    "duration": 3.6
+  },
+  {
+    "text": "this speeds up your process and leads to",
+    "start": 640.72,
+    "duration": 4.48
+  },
+  {
+    "text": "a much more detailed part of your",
+    "start": 642.64,
+    "duration": 4.48
+  },
+  {
+    "text": "marketing strategy. And that's only one",
+    "start": 645.2,
+    "duration": 4.24
+  },
+  {
+    "text": "example. Now, option number three is to",
+    "start": 647.12,
+    "duration": 4.719
+  },
+  {
+    "text": "find an expert source of information if",
+    "start": 649.44,
+    "duration": 4.079
+  },
+  {
+    "text": "you don't know what to do. So, when it",
+    "start": 651.839,
+    "duration": 3.601
+  },
+  {
+    "text": "comes to offer creation, right? You have",
+    "start": 653.519,
+    "duration": 3.44
+  },
+  {
+    "text": "a product and you're trying to create an",
+    "start": 655.44,
+    "duration": 2.639
+  },
+  {
+    "text": "offer around it. You're trying to make",
+    "start": 656.959,
+    "duration": 3.201
+  },
+  {
+    "text": "it more compelling. You, yeah, you could",
+    "start": 658.079,
+    "duration": 4.081
+  },
+  {
+    "text": "ask AI to create a guide on how to",
+    "start": 660.16,
+    "duration": 4.64
+  },
+  {
+    "text": "create a compelling offer, but we",
+    "start": 662.16,
+    "duration": 4.56
+  },
+  {
+    "text": "already know that Alex Hormosi is the",
+    "start": 664.8,
+    "duration": 4.159
+  },
+  {
+    "text": "expert on that and his methods work. So,",
+    "start": 666.72,
+    "duration": 4.72
+  },
+  {
+    "text": "I could take his PDF, plug it into a",
+    "start": 668.959,
+    "duration": 4.961
+  },
+  {
+    "text": "chat, and then tell it to give me a",
+    "start": 671.44,
+    "duration": 4.48
+  },
+  {
+    "text": "detailed guide on how to create an",
+    "start": 673.92,
+    "duration": 4.0
+  },
+  {
+    "text": "offer. And then I could turn that into a",
+    "start": 675.92,
+    "duration": 3.84
+  },
+  {
+    "text": "prompt, which we'll learn how to do,",
+    "start": 677.92,
+    "duration": 3.599
+  },
+  {
+    "text": "that asks me questions and eventually",
+    "start": 679.76,
+    "duration": 4.079
+  },
+  {
+    "text": "spits out my offer. And now think about",
+    "start": 681.519,
+    "duration": 4.241
+  },
+  {
+    "text": "doing this with a landing page or",
+    "start": 683.839,
+    "duration": 3.841
+  },
+  {
+    "text": "actually creating a product or creating",
+    "start": 685.76,
+    "duration": 4.079
+  },
+  {
+    "text": "social media posts or doing something",
+    "start": 687.68,
+    "duration": 3.92
+  },
+  {
+    "text": "unique like what we're going to do over",
+    "start": 689.839,
+    "duration": 4.24
+  },
+  {
+    "text": "here where we're going to take two",
+    "start": 691.6,
+    "duration": 4.4
+  },
+  {
+    "text": "YouTube videos on how to build a",
+    "start": 694.079,
+    "duration": 3.521
+  },
+  {
+    "text": "personal brand and we're going to turn",
+    "start": 696.0,
+    "duration": 4.0
+  },
+  {
+    "text": "that into a personal brand coach that",
+    "start": 697.6,
+    "duration": 5.04
+  },
+  {
+    "text": "guides you on what your content pillars",
+    "start": 700.0,
+    "duration": 4.72
+  },
+  {
+    "text": "are, how to write posts and it will",
+    "start": 702.64,
+    "duration": 3.92
+  },
+  {
+    "text": "grade you on the writing post. Like this",
+    "start": 704.72,
+    "duration": 4.4
+  },
+  {
+    "text": "can get pretty crazy. So before we get",
+    "start": 706.56,
+    "duration": 5.36
+  },
+  {
+    "text": "into that, here is the last option which",
+    "start": 709.12,
+    "duration": 5.92
+  },
+  {
+    "text": "is to emulate an example you like. So",
+    "start": 711.92,
+    "duration": 4.72
+  },
+  {
+    "text": "whenever I'm brainstorming",
+    "start": 715.04,
+    "duration": 3.039
+  },
+  {
+    "text": "copyrightiting for a landing page,",
+    "start": 716.64,
+    "duration": 4.639
+  },
+  {
+    "text": "right? Be it for Eden, this software, or",
+    "start": 718.079,
+    "duration": 5.041
+  },
+  {
+    "text": "my own digital products or another",
+    "start": 721.279,
+    "duration": 5.201
+  },
+  {
+    "text": "company or whatever it may be, I like to",
+    "start": 723.12,
+    "duration": 5.68
+  },
+  {
+    "text": "find a page that has really good copy",
+    "start": 726.48,
+    "duration": 4.96
+  },
+  {
+    "text": "because yeah, I could just ask AI to",
+    "start": 728.8,
+    "duration": 4.56
+  },
+  {
+    "text": "tell me how to create copy and it'll",
+    "start": 731.44,
+    "duration": 3.76
+  },
+  {
+    "text": "work. It's actually pretty good, but",
+    "start": 733.36,
+    "duration": 3.76
+  },
+  {
+    "text": "that it's still not that unique and",
+    "start": 735.2,
+    "duration": 3.68
+  },
+  {
+    "text": "it'll probably give you like this",
+    "start": 737.12,
+    "duration": 4.0
+  },
+  {
+    "text": "copyrightiting that sounds like it",
+    "start": 738.88,
+    "duration": 4.0
+  },
+  {
+    "text": "belongs on a ClickFunnels landing page",
+    "start": 741.12,
+    "duration": 3.44
+  },
+  {
+    "text": "with a countdown timer. So, I want to",
+    "start": 742.88,
+    "duration": 4.32
+  },
+  {
+    "text": "find something unique and this page in",
+    "start": 744.56,
+    "duration": 5.12
+  },
+  {
+    "text": "specific, this anti-metal page has a",
+    "start": 747.2,
+    "duration": 5.12
+  },
+  {
+    "text": "really cool storytelling structure that",
+    "start": 749.68,
+    "duration": 4.399
+  },
+  {
+    "text": "is very attention-grabbing and",
+    "start": 752.32,
+    "duration": 3.6
+  },
+  {
+    "text": "compelling. So, what I could do is I",
+    "start": 754.079,
+    "duration": 4.241
+  },
+  {
+    "text": "could copy paste the content from that",
+    "start": 755.92,
+    "duration": 4.88
+  },
+  {
+    "text": "website into a chat and then say this, I",
+    "start": 758.32,
+    "duration": 4.24
+  },
+  {
+    "text": "love this landing page copy. Break down",
+    "start": 760.8,
+    "duration": 3.039
+  },
+  {
+    "text": "the overall structure, what",
+    "start": 762.56,
+    "duration": 4.16
+  },
+  {
+    "text": "psychological tactics it uses, why it",
+    "start": 763.839,
+    "duration": 4.721
+  },
+  {
+    "text": "works, then break down each line",
+    "start": 766.72,
+    "duration": 3.6
+  },
+  {
+    "text": "individually. Write this as if you are",
+    "start": 768.56,
+    "duration": 3.92
+  },
+  {
+    "text": "teaching me how to do it step by step.",
+    "start": 770.32,
+    "duration": 3.759
+  },
+  {
+    "text": "And then what this will do is it creates",
+    "start": 772.48,
+    "duration": 3.599
+  },
+  {
+    "text": "this guide on how to replicate the",
+    "start": 774.079,
+    "duration": 3.681
+  },
+  {
+    "text": "landing page. And then if I were to turn",
+    "start": 776.079,
+    "duration": 3.521
+  },
+  {
+    "text": "that into a prompt, like we're going to",
+    "start": 777.76,
+    "duration": 3.759
+  },
+  {
+    "text": "learn how to do right now. Then I can",
+    "start": 779.6,
+    "duration": 3.84
+  },
+  {
+    "text": "tell it to ask me, okay, what's my",
+    "start": 781.519,
+    "duration": 4.161
+  },
+  {
+    "text": "product? What's my customer avatar? What",
+    "start": 783.44,
+    "duration": 3.92
+  },
+  {
+    "text": "are the pain points? What are all these",
+    "start": 785.68,
+    "duration": 3.599
+  },
+  {
+    "text": "things? It'll quiz me on everything that",
+    "start": 787.36,
+    "duration": 4.4
+  },
+  {
+    "text": "it needs to rewrite the landing page",
+    "start": 789.279,
+    "duration": 4.8
+  },
+  {
+    "text": "with that structure in my own words and",
+    "start": 791.76,
+    "duration": 4.4
+  },
+  {
+    "text": "with my own product and then it spits",
+    "start": 794.079,
+    "duration": 4.241
+  },
+  {
+    "text": "out the landing page. Now, before we get",
+    "start": 796.16,
+    "duration": 4.0
+  },
+  {
+    "text": "into step two, if you're wondering what",
+    "start": 798.32,
+    "duration": 4.16
+  },
+  {
+    "text": "this software is, the time has finally",
+    "start": 800.16,
+    "duration": 4.72
+  },
+  {
+    "text": "come. This software is called Eden. And",
+    "start": 802.48,
+    "duration": 4.88
+  },
+  {
+    "text": "this canvas feature is only one of many.",
+    "start": 804.88,
+    "duration": 4.639
+  },
+  {
+    "text": "You can think of it as file storage. So,",
+    "start": 807.36,
+    "duration": 3.76
+  },
+  {
+    "text": "you can paste YouTube links, you can",
+    "start": 809.519,
+    "duration": 3.601
+  },
+  {
+    "text": "paste Instagram reels, you can paste",
+    "start": 811.12,
+    "duration": 3.68
+  },
+  {
+    "text": "tweets, you can paste substack articles.",
+    "start": 813.12,
+    "duration": 4.0
+  },
+  {
+    "text": "And what it does is it downloads and",
+    "start": 814.8,
+    "duration": 5.52
+  },
+  {
+    "text": "transcribes and autotags all of those so",
+    "start": 817.12,
+    "duration": 5.36
+  },
+  {
+    "text": "that you can search for frames within",
+    "start": 820.32,
+    "duration": 4.24
+  },
+  {
+    "text": "them. So if I were to paste this YouTube",
+    "start": 822.48,
+    "duration": 3.44
+  },
+  {
+    "text": "video into there because I want to",
+    "start": 824.56,
+    "duration": 2.8
+  },
+  {
+    "text": "connect it to a chat and ask it",
+    "start": 825.92,
+    "duration": 3.2
+  },
+  {
+    "text": "questions, which you can do, and I were",
+    "start": 827.36,
+    "duration": 4.479
+  },
+  {
+    "text": "to search microphone, it would bring up",
+    "start": 829.12,
+    "duration": 4.56
+  },
+  {
+    "text": "every frame with a microphone inside of",
+    "start": 831.839,
+    "duration": 3.921
+  },
+  {
+    "text": "it. So if I was looking for B-roll for a",
+    "start": 833.68,
+    "duration": 3.76
+  },
+  {
+    "text": "YouTube video or just wanted to remember",
+    "start": 835.76,
+    "duration": 3.68
+  },
+  {
+    "text": "a specific part and then be able to clip",
+    "start": 837.44,
+    "duration": 4.48
+  },
+  {
+    "text": "that out and download it because it's",
+    "start": 839.44,
+    "duration": 4.48
+  },
+  {
+    "text": "file storage, then I can do that. But",
+    "start": 841.92,
+    "duration": 4.32
+  },
+  {
+    "text": "there's also notes. There's AI chats",
+    "start": 843.92,
+    "duration": 4.56
+  },
+  {
+    "text": "like normal, but you can use any model",
+    "start": 846.24,
+    "duration": 4.0
+  },
+  {
+    "text": "inside of here. And eventually there",
+    "start": 848.48,
+    "duration": 3.44
+  },
+  {
+    "text": "will be prompt items, so you can store",
+    "start": 850.24,
+    "duration": 2.88
+  },
+  {
+    "text": "all of your prompts in here and",
+    "start": 851.92,
+    "duration": 3.2
+  },
+  {
+    "text": "automatically execute them inside of a",
+    "start": 853.12,
+    "duration": 4.079
+  },
+  {
+    "text": "canvas or a chat. But the thing here is",
+    "start": 855.12,
+    "duration": 4.48
+  },
+  {
+    "text": "that this is early access. We're only",
+    "start": 857.199,
+    "duration": 4.801
+  },
+  {
+    "text": "opening Edin for Black Friday weekend,",
+    "start": 859.6,
+    "duration": 4.4
+  },
+  {
+    "text": "so it will be slightly discounted, but",
+    "start": 862.0,
+    "duration": 3.279
+  },
+  {
+    "text": "if you want to get in and you're",
+    "start": 864.0,
+    "duration": 2.88
+  },
+  {
+    "text": "watching this video, it may be very",
+    "start": 865.279,
+    "duration": 3.841
+  },
+  {
+    "text": "close to that time. So go to the link in",
+    "start": 866.88,
+    "duration": 3.68
+  },
+  {
+    "text": "the description, either sign up for the",
+    "start": 869.12,
+    "duration": 3.279
+  },
+  {
+    "text": "wait list or you can join directly if",
+    "start": 870.56,
+    "duration": 4.399
+  },
+  {
+    "text": "it's open and consider signing up. Now",
+    "start": 872.399,
+    "duration": 4.481
+  },
+  {
+    "text": "for all of the Cortex users who wonder",
+    "start": 874.959,
+    "duration": 3.12
+  },
+  {
+    "text": "what's happening, you've been receiving",
+    "start": 876.88,
+    "duration": 2.959
+  },
+  {
+    "text": "emails, so go check your emails. But",
+    "start": 878.079,
+    "duration": 4.721
+  },
+  {
+    "text": "this is the next iteration of Cortex. So",
+    "start": 879.839,
+    "duration": 4.641
+  },
+  {
+    "text": "it's the better version of Cortex with",
+    "start": 882.8,
+    "duration": 3.12
+  },
+  {
+    "text": "all of the features that you've been",
+    "start": 884.48,
+    "duration": 3.28
+  },
+  {
+    "text": "waiting for. So now we're on to step two",
+    "start": 885.92,
+    "duration": 4.0
+  },
+  {
+    "text": "where we're going to turn our detailed",
+    "start": 887.76,
+    "duration": 4.639
+  },
+  {
+    "text": "instructions into a prompt. So we have",
+    "start": 889.92,
+    "duration": 4.08
+  },
+  {
+    "text": "the detailed instructions to feed the",
+    "start": 892.399,
+    "duration": 3.601
+  },
+  {
+    "text": "AI, but we're still missing something.",
+    "start": 894.0,
+    "duration": 4.079
+  },
+  {
+    "text": "We're missing the personal context. So,",
+    "start": 896.0,
+    "duration": 4.079
+  },
+  {
+    "text": "if I have the instructions on how to",
+    "start": 898.079,
+    "duration": 3.841
+  },
+  {
+    "text": "create a high-converting landing page,",
+    "start": 900.079,
+    "duration": 3.44
+  },
+  {
+    "text": "how is the AI going to actually write",
+    "start": 901.92,
+    "duration": 3.68
+  },
+  {
+    "text": "that copy without understanding my",
+    "start": 903.519,
+    "duration": 4.161
+  },
+  {
+    "text": "company, my product, my customer avatar,",
+    "start": 905.6,
+    "duration": 3.44
+  },
+  {
+    "text": "and everything else that goes into",
+    "start": 907.68,
+    "duration": 3.2
+  },
+  {
+    "text": "writing compelling copy? I can't just",
+    "start": 909.04,
+    "duration": 4.56
+  },
+  {
+    "text": "tell it, hey, write me a good landing",
+    "start": 910.88,
+    "duration": 5.199
+  },
+  {
+    "text": "page for a software company. It doesn't",
+    "start": 913.6,
+    "duration": 4.4
+  },
+  {
+    "text": "work that way. So, this is where the",
+    "start": 916.079,
+    "duration": 3.921
+  },
+  {
+    "text": "magic happens. And first off, you're",
+    "start": 918.0,
+    "duration": 4.959
+  },
+  {
+    "text": "going to save this prompt, this meta",
+    "start": 920.0,
+    "duration": 4.88
+  },
+  {
+    "text": "prompt, somewhere safe. Again, I'll",
+    "start": 922.959,
+    "duration": 3.521
+  },
+  {
+    "text": "leave a link to that in the description.",
+    "start": 924.88,
+    "duration": 3.84
+  },
+  {
+    "text": "And this alone will change how you use",
+    "start": 926.48,
+    "duration": 4.799
+  },
+  {
+    "text": "AI as a whole. So, please just save this",
+    "start": 928.72,
+    "duration": 4.32
+  },
+  {
+    "text": "somewhere safe. This is the bread and",
+    "start": 931.279,
+    "duration": 3.441
+  },
+  {
+    "text": "butter. This is the secret sauce. So,",
+    "start": 933.04,
+    "duration": 4.08
+  },
+  {
+    "text": "what this does is it is a prompt that",
+    "start": 934.72,
+    "duration": 4.16
+  },
+  {
+    "text": "helps you create a prompt because most",
+    "start": 937.12,
+    "duration": 4.079
+  },
+  {
+    "text": "people suck at writing prompts and",
+    "start": 938.88,
+    "duration": 4.24
+  },
+  {
+    "text": "prompts have a pretty predictable",
+    "start": 941.199,
+    "duration": 3.601
+  },
+  {
+    "text": "structure, right? So, if we're writing",
+    "start": 943.12,
+    "duration": 3.839
+  },
+  {
+    "text": "long complex prompts here to do",
+    "start": 944.8,
+    "duration": 5.44
+  },
+  {
+    "text": "something great, then it really helps to",
+    "start": 946.959,
+    "duration": 5.761
+  },
+  {
+    "text": "pretty much tell AI exactly how to do",
+    "start": 950.24,
+    "duration": 4.24
+  },
+  {
+    "text": "that. So it saves us a lot of time. So",
+    "start": 952.72,
+    "duration": 3.919
+  },
+  {
+    "text": "you don't need to write for an hour, two",
+    "start": 954.48,
+    "duration": 4.08
+  },
+  {
+    "text": "hours, three hours refining the prompt",
+    "start": 956.639,
+    "duration": 3.76
+  },
+  {
+    "text": "over and over again. You start with this",
+    "start": 958.56,
+    "duration": 4.16
+  },
+  {
+    "text": "incredible first draft that you can then",
+    "start": 960.399,
+    "duration": 4.161
+  },
+  {
+    "text": "refine. So what I'm going to do here is",
+    "start": 962.72,
+    "duration": 4.08
+  },
+  {
+    "text": "a few things. First, I personally like",
+    "start": 964.56,
+    "duration": 5.68
+  },
+  {
+    "text": "to do most of this with Claude Opus 4.1.",
+    "start": 966.8,
+    "duration": 4.959
+  },
+  {
+    "text": "So you can use that in Claude. I don't",
+    "start": 970.24,
+    "duration": 4.399
+  },
+  {
+    "text": "really like Chat GPT at all personally,",
+    "start": 971.759,
+    "duration": 4.32
+  },
+  {
+    "text": "just personal preference. But I also",
+    "start": 974.639,
+    "duration": 3.361
+  },
+  {
+    "text": "don't like Claude Sonet 4.5, the newest",
+    "start": 976.079,
+    "duration": 4.161
+  },
+  {
+    "text": "model, because it it just tells me that",
+    "start": 978.0,
+    "duration": 4.16
+  },
+  {
+    "text": "I can't do certain things. It doesn't",
+    "start": 980.24,
+    "duration": 4.24
+  },
+  {
+    "text": "allow me to be harsh. Like I say, hey,",
+    "start": 982.16,
+    "duration": 4.16
+  },
+  {
+    "text": "be as harsh as possible. And it's like,",
+    "start": 984.48,
+    "duration": 3.279
+  },
+  {
+    "text": "you know, I don't feel comfortable doing",
+    "start": 986.32,
+    "duration": 3.36
+  },
+  {
+    "text": "that. I don't feel being I don't feel",
+    "start": 987.759,
+    "duration": 3.2
+  },
+  {
+    "text": "like being harsh to other people. It's",
+    "start": 989.68,
+    "duration": 3.44
+  },
+  {
+    "text": "like, dude, shut up and just do what I",
+    "start": 990.959,
+    "duration": 4.0
+  },
+  {
+    "text": "want you to do. So, if you aren't using",
+    "start": 993.12,
+    "duration": 3.12
+  },
+  {
+    "text": "a canvas like this, you're going to",
+    "start": 994.959,
+    "duration": 2.88
+  },
+  {
+    "text": "quite literally just copy paste this",
+    "start": 996.24,
+    "duration": 3.68
+  },
+  {
+    "text": "prompt into a claw chat. But here, I'm",
+    "start": 997.839,
+    "duration": 3.44
+  },
+  {
+    "text": "just saying, help me create a prompt",
+    "start": 999.92,
+    "duration": 3.279
+  },
+  {
+    "text": "using the meta prompt. It read the meta",
+    "start": 1001.279,
+    "duration": 3.841
+  },
+  {
+    "text": "prompt. And now, what it says next is,",
+    "start": 1003.199,
+    "duration": 3.44
+  },
+  {
+    "text": "\"What is the topic or role of the prompt",
+    "start": 1005.12,
+    "duration": 3.04
+  },
+  {
+    "text": "you want to create? Share any details",
+    "start": 1006.639,
+    "duration": 3.841
+  },
+  {
+    "text": "you have.\" Gives me some examples. Now,",
+    "start": 1008.16,
+    "duration": 4.88
+  },
+  {
+    "text": "what I need is the instructions. I need",
+    "start": 1010.48,
+    "duration": 4.4
+  },
+  {
+    "text": "the expert instructions for how to do",
+    "start": 1013.04,
+    "duration": 3.359
+  },
+  {
+    "text": "what we're trying to do. And here, we're",
+    "start": 1014.88,
+    "duration": 3.519
+  },
+  {
+    "text": "trying to create a personal brand coach.",
+    "start": 1016.399,
+    "duration": 3.921
+  },
+  {
+    "text": "So, I have two videos here. I'm actually",
+    "start": 1018.399,
+    "duration": 4.961
+  },
+  {
+    "text": "only going to use one just to this is a",
+    "start": 1020.32,
+    "duration": 4.719
+  },
+  {
+    "text": "six-hour long video. I love this video.",
+    "start": 1023.36,
+    "duration": 4.319
+  },
+  {
+    "text": "Go watch it by Caleb Rston. But here we",
+    "start": 1025.039,
+    "duration": 4.0
+  },
+  {
+    "text": "have a shorter video, and we're just",
+    "start": 1027.679,
+    "duration": 3.441
+  },
+  {
+    "text": "going to use this as an example because",
+    "start": 1029.039,
+    "duration": 3.76
+  },
+  {
+    "text": "I don't want to clog up the context. I",
+    "start": 1031.12,
+    "duration": 3.12
+  },
+  {
+    "text": "don't want to waste your time. So, we're",
+    "start": 1032.799,
+    "duration": 4.0
+  },
+  {
+    "text": "going to go to let's say Claude 4.1",
+    "start": 1034.24,
+    "duration": 4.48
+  },
+  {
+    "text": "again, and we're going to say this. So,",
+    "start": 1036.799,
+    "duration": 3.441
+  },
+  {
+    "text": "I said, \"I want you to give me an",
+    "start": 1038.72,
+    "duration": 3.44
+  },
+  {
+    "text": "extremely detailed step-by-step guide on",
+    "start": 1040.24,
+    "duration": 3.679
+  },
+  {
+    "text": "how to build a personal brand in 30",
+    "start": 1042.16,
+    "duration": 3.279
+  },
+  {
+    "text": "days. You are the expert here. Give me",
+    "start": 1043.919,
+    "duration": 3.201
+  },
+  {
+    "text": "the necessary education and steps.\" So,",
+    "start": 1045.439,
+    "duration": 2.961
+  },
+  {
+    "text": "when I write these out, when I'm trying",
+    "start": 1047.12,
+    "duration": 3.12
+  },
+  {
+    "text": "to get the AI to break down the",
+    "start": 1048.4,
+    "duration": 4.72
+  },
+  {
+    "text": "instructions of an expert source like a",
+    "start": 1050.24,
+    "duration": 4.88
+  },
+  {
+    "text": "YouTube video or a PDF or even a",
+    "start": 1053.12,
+    "duration": 4.08
+  },
+  {
+    "text": "website, I tend to write something like",
+    "start": 1055.12,
+    "duration": 4.799
+  },
+  {
+    "text": "this. And another thing is that if",
+    "start": 1057.2,
+    "duration": 4.16
+  },
+  {
+    "text": "you're trying to do this with a YouTube",
+    "start": 1059.919,
+    "duration": 3.601
+  },
+  {
+    "text": "video, you can't really do that in any",
+    "start": 1061.36,
+    "duration": 4.559
+  },
+  {
+    "text": "other app. So, inside of Eden here, you",
+    "start": 1063.52,
+    "duration": 4.08
+  },
+  {
+    "text": "can just click paste a link, paste it",
+    "start": 1065.919,
+    "duration": 3.441
+  },
+  {
+    "text": "in, or if you're in a canvas, you can",
+    "start": 1067.6,
+    "duration": 4.24
+  },
+  {
+    "text": "just press command or controlV and it'll",
+    "start": 1069.36,
+    "duration": 4.08
+  },
+  {
+    "text": "paste the YouTube video in, but you have",
+    "start": 1071.84,
+    "duration": 2.959
+  },
+  {
+    "text": "to wait for it to be downloaded,",
+    "start": 1073.44,
+    "duration": 3.44
+  },
+  {
+    "text": "transcribed, etc. And so, I sent that,",
+    "start": 1074.799,
+    "duration": 3.841
+  },
+  {
+    "text": "it read the YouTube video transcript,",
+    "start": 1076.88,
+    "duration": 4.159
+  },
+  {
+    "text": "and then it started creating the expert",
+    "start": 1078.64,
+    "duration": 3.84
+  },
+  {
+    "text": "level instructions, pretty much",
+    "start": 1081.039,
+    "duration": 3.121
+  },
+  {
+    "text": "summarizing the video, but in the form",
+    "start": 1082.48,
+    "duration": 3.52
+  },
+  {
+    "text": "of an actionable guide. And so, here it",
+    "start": 1084.16,
+    "duration": 4.48
+  },
+  {
+    "text": "just breaks down day one, day two, day",
+    "start": 1086.0,
+    "duration": 5.2
+  },
+  {
+    "text": "three, day four, etc., etc. I believe",
+    "start": 1088.64,
+    "duration": 5.279
+  },
+  {
+    "text": "it's still going. Writing out each day.",
+    "start": 1091.2,
+    "duration": 5.76
+  },
+  {
+    "text": "Right. So now what we're going to do is",
+    "start": 1093.919,
+    "duration": 5.76
+  },
+  {
+    "text": "one, we'll wait for this to go, but",
+    "start": 1096.96,
+    "duration": 5.04
+  },
+  {
+    "text": "we're going to take the expert",
+    "start": 1099.679,
+    "duration": 5.681
+  },
+  {
+    "text": "instructions and put it into a new chat",
+    "start": 1102.0,
+    "duration": 5.44
+  },
+  {
+    "text": "where the prompt is because what we're",
+    "start": 1105.36,
+    "duration": 5.12
+  },
+  {
+    "text": "trying to do is we're creating a prompt",
+    "start": 1107.44,
+    "duration": 5.2
+  },
+  {
+    "text": "with the expert instructions. So, if",
+    "start": 1110.48,
+    "duration": 3.84
+  },
+  {
+    "text": "you're doing this just in a regular",
+    "start": 1112.64,
+    "duration": 3.919
+  },
+  {
+    "text": "chat, you're going to send the",
+    "start": 1114.32,
+    "duration": 5.12
+  },
+  {
+    "text": "metaprompt and then you're going to get",
+    "start": 1116.559,
+    "duration": 5.041
+  },
+  {
+    "text": "the expert instructions. So, whether",
+    "start": 1119.44,
+    "duration": 4.08
+  },
+  {
+    "text": "that be for creating a landing page or",
+    "start": 1121.6,
+    "duration": 3.76
+  },
+  {
+    "text": "creating an offer or creating a customer",
+    "start": 1123.52,
+    "duration": 4.0
+  },
+  {
+    "text": "avatar and then you're going to take",
+    "start": 1125.36,
+    "duration": 4.24
+  },
+  {
+    "text": "those expert instructions, either paste",
+    "start": 1127.52,
+    "duration": 4.08
+  },
+  {
+    "text": "it into a note or just be able to copy",
+    "start": 1129.6,
+    "duration": 4.0
+  },
+  {
+    "text": "paste it into here so that you can",
+    "start": 1131.6,
+    "duration": 3.92
+  },
+  {
+    "text": "reference it and you're going to include",
+    "start": 1133.6,
+    "duration": 4.24
+  },
+  {
+    "text": "that with your instructions to actually",
+    "start": 1135.52,
+    "duration": 5.44
+  },
+  {
+    "text": "create the prompt. So here I wrote this",
+    "start": 1137.84,
+    "duration": 5.36
+  },
+  {
+    "text": "little prompt which is I want to create",
+    "start": 1140.96,
+    "duration": 3.76
+  },
+  {
+    "text": "a prompt that coaches me through",
+    "start": 1143.2,
+    "duration": 3.52
+  },
+  {
+    "text": "building a personal brand for 30 days.",
+    "start": 1144.72,
+    "duration": 4.079
+  },
+  {
+    "text": "You will execute this in three phases.",
+    "start": 1146.72,
+    "duration": 4.319
+  },
+  {
+    "text": "This is how I like to create prompts is",
+    "start": 1148.799,
+    "duration": 3.921
+  },
+  {
+    "text": "I like to break them down into phases.",
+    "start": 1151.039,
+    "duration": 3.76
+  },
+  {
+    "text": "And this does require some thinking. So",
+    "start": 1152.72,
+    "duration": 4.319
+  },
+  {
+    "text": "phase one is context gathering. So break",
+    "start": 1154.799,
+    "duration": 3.601
+  },
+  {
+    "text": "down everything you need from me in",
+    "start": 1157.039,
+    "duration": 3.121
+  },
+  {
+    "text": "order to best build a personal brand.",
+    "start": 1158.4,
+    "duration": 3.6
+  },
+  {
+    "text": "And that's important because otherwise",
+    "start": 1160.16,
+    "duration": 4.0
+  },
+  {
+    "text": "like how is it going to know how to",
+    "start": 1162.0,
+    "duration": 4.4
+  },
+  {
+    "text": "coach me best? This is usually the first",
+    "start": 1164.16,
+    "duration": 4.639
+  },
+  {
+    "text": "phase in any prompt you create is you",
+    "start": 1166.4,
+    "duration": 5.12
+  },
+  {
+    "text": "need to tell it to get the context for",
+    "start": 1168.799,
+    "duration": 4.721
+  },
+  {
+    "text": "you. You tell it to get everything it",
+    "start": 1171.52,
+    "duration": 4.08
+  },
+  {
+    "text": "needs in order to best do what it's",
+    "start": 1173.52,
+    "duration": 4.0
+  },
+  {
+    "text": "trying to do and then interview me to",
+    "start": 1175.6,
+    "duration": 3.84
+  },
+  {
+    "text": "gather all of that information and ask",
+    "start": 1177.52,
+    "duration": 3.76
+  },
+  {
+    "text": "one question at a time. Then phase two",
+    "start": 1179.44,
+    "duration": 3.52
+  },
+  {
+    "text": "is the action plan. So I'm just telling",
+    "start": 1181.28,
+    "duration": 4.08
+  },
+  {
+    "text": "it like, hey, output the 30-day action",
+    "start": 1182.96,
+    "duration": 4.4
+  },
+  {
+    "text": "plan based on what I told you. And then",
+    "start": 1185.36,
+    "duration": 3.76
+  },
+  {
+    "text": "phase three is the coaching. So after",
+    "start": 1187.36,
+    "duration": 3.439
+  },
+  {
+    "text": "that, it's going to just coach me one",
+    "start": 1189.12,
+    "duration": 3.04
+  },
+  {
+    "text": "day at a time. It's probably going to",
+    "start": 1190.799,
+    "duration": 3.521
+  },
+  {
+    "text": "say like, okay, we're starting day one.",
+    "start": 1192.16,
+    "duration": 3.92
+  },
+  {
+    "text": "here's what you're going to do. Please",
+    "start": 1194.32,
+    "duration": 3.76
+  },
+  {
+    "text": "let me know if you need any help. And",
+    "start": 1196.08,
+    "duration": 4.56
+  },
+  {
+    "text": "that's incredible. I know of softwares",
+    "start": 1198.08,
+    "duration": 5.28
+  },
+  {
+    "text": "out there that are literally personal",
+    "start": 1200.64,
+    "duration": 5.12
+  },
+  {
+    "text": "brand coaches, right? They take an AI",
+    "start": 1203.36,
+    "duration": 4.559
+  },
+  {
+    "text": "chat and they put a prompt like this in",
+    "start": 1205.76,
+    "duration": 4.56
+  },
+  {
+    "text": "there that coaches you on how to build a",
+    "start": 1207.919,
+    "duration": 5.441
+  },
+  {
+    "text": "personal brand and they charge $30 to",
+    "start": 1210.32,
+    "duration": 5.04
+  },
+  {
+    "text": "$50 a month. So, if you can simply",
+    "start": 1213.36,
+    "duration": 3.36
+  },
+  {
+    "text": "create a prompt around this, put it",
+    "start": 1215.36,
+    "duration": 3.679
+  },
+  {
+    "text": "behind a payw wall for 10 bucks and sell",
+    "start": 1216.72,
+    "duration": 4.48
+  },
+  {
+    "text": "it, a lot of people will buy that.",
+    "start": 1219.039,
+    "duration": 3.841
+  },
+  {
+    "text": "understanding this skill alone, just how",
+    "start": 1221.2,
+    "duration": 3.599
+  },
+  {
+    "text": "to create prompts and selling the",
+    "start": 1222.88,
+    "duration": 4.88
+  },
+  {
+    "text": "prompts, you can make a lot of money",
+    "start": 1224.799,
+    "duration": 6.0
+  },
+  {
+    "text": "doing that. All right, so I connected",
+    "start": 1227.76,
+    "duration": 5.36
+  },
+  {
+    "text": "the expert instructions that came out",
+    "start": 1230.799,
+    "duration": 5.841
+  },
+  {
+    "text": "here to the prompt that we're going to",
+    "start": 1233.12,
+    "duration": 5.439
+  },
+  {
+    "text": "create. And you would just copy paste",
+    "start": 1236.64,
+    "duration": 3.6
+  },
+  {
+    "text": "this if you're not using a canvas like",
+    "start": 1238.559,
+    "duration": 4.081
+  },
+  {
+    "text": "this. And then I can take this, pop it",
+    "start": 1240.24,
+    "duration": 4.799
+  },
+  {
+    "text": "in here, and hit send. All right, so",
+    "start": 1242.64,
+    "duration": 5.36
+  },
+  {
+    "text": "that spit out the prompt, right? uh",
+    "start": 1245.039,
+    "duration": 4.721
+  },
+  {
+    "text": "30-day personal brand coach prompt with",
+    "start": 1248.0,
+    "duration": 5.28
+  },
+  {
+    "text": "the five pillars system from here, the",
+    "start": 1249.76,
+    "duration": 5.44
+  },
+  {
+    "text": "five pillars framework. And I mean, you",
+    "start": 1253.28,
+    "duration": 3.84
+  },
+  {
+    "text": "can read through this if you want, but",
+    "start": 1255.2,
+    "duration": 3.76
+  },
+  {
+    "text": "it just has all of the phases. Phase",
+    "start": 1257.12,
+    "duration": 4.0
+  },
+  {
+    "text": "one, it asks a bunch of questions. Phase",
+    "start": 1258.96,
+    "duration": 4.32
+  },
+  {
+    "text": "two, here's what you're going to do.",
+    "start": 1261.12,
+    "duration": 4.24
+  },
+  {
+    "text": "Pillar three, pillar four, all of those",
+    "start": 1263.28,
+    "duration": 3.279
+  },
+  {
+    "text": "things. Now, I'm not going to go",
+    "start": 1265.36,
+    "duration": 3.04
+  },
+  {
+    "text": "entirely through this prompt, but if I",
+    "start": 1266.559,
+    "duration": 3.6
+  },
+  {
+    "text": "wanted to, I could branch out another",
+    "start": 1268.4,
+    "duration": 3.68
+  },
+  {
+    "text": "chat and I could just say like, \"Help me",
+    "start": 1270.159,
+    "duration": 3.441
+  },
+  {
+    "text": "build a personal brand.\" And so then",
+    "start": 1272.08,
+    "duration": 3.04
+  },
+  {
+    "text": "what that does is it takes the prompt.",
+    "start": 1273.6,
+    "duration": 2.8
+  },
+  {
+    "text": "What you would do is you would copy",
+    "start": 1275.12,
+    "duration": 3.28
+  },
+  {
+    "text": "paste this prompt into a new chat and it",
+    "start": 1276.4,
+    "duration": 3.279
+  },
+  {
+    "text": "would say something like this. Let's",
+    "start": 1278.4,
+    "duration": 2.639
+  },
+  {
+    "text": "begin your personal brand journey",
+    "start": 1279.679,
+    "duration": 3.281
+  },
+  {
+    "text": "question one of 15. Then you answer the",
+    "start": 1281.039,
+    "duration": 3.12
+  },
+  {
+    "text": "questions and it guides you through it",
+    "start": 1282.96,
+    "duration": 2.48
+  },
+  {
+    "text": "and then it creates the personal brand",
+    "start": 1284.159,
+    "duration": 2.801
+  },
+  {
+    "text": "strategy and coaches you every day.",
+    "start": 1285.44,
+    "duration": 3.599
+  },
+  {
+    "text": "Okay, so we got the entire process down",
+    "start": 1286.96,
+    "duration": 3.44
+  },
+  {
+    "text": "and you can use that for almost",
+    "start": 1289.039,
+    "duration": 3.12
+  },
+  {
+    "text": "anything. Just get creative with it. But",
+    "start": 1290.4,
+    "duration": 3.2
+  },
+  {
+    "text": "in order to do that, I'm going to show",
+    "start": 1292.159,
+    "duration": 4.801
+  },
+  {
+    "text": "you a few examples that I feel like are",
+    "start": 1293.6,
+    "duration": 5.6
+  },
+  {
+    "text": "the most life-changing or I guess the",
+    "start": 1296.96,
+    "duration": 4.24
+  },
+  {
+    "text": "most helpful. But in review, here's how",
+    "start": 1299.2,
+    "duration": 4.479
+  },
+  {
+    "text": "you use AI better than 99% of people.",
+    "start": 1301.2,
+    "duration": 5.12
+  },
+  {
+    "text": "First, you use AI to create or extract",
+    "start": 1303.679,
+    "duration": 4.88
+  },
+  {
+    "text": "detailed expert level instructions. You",
+    "start": 1306.32,
+    "duration": 4.239
+  },
+  {
+    "text": "do not allow the AI to guess what it",
+    "start": 1308.559,
+    "duration": 4.0
+  },
+  {
+    "text": "should do. You create a new chat and",
+    "start": 1310.559,
+    "duration": 3.921
+  },
+  {
+    "text": "send the meta prompt. Then, you give",
+    "start": 1312.559,
+    "duration": 3.521
+  },
+  {
+    "text": "details about what prompt you want to",
+    "start": 1314.48,
+    "duration": 3.36
+  },
+  {
+    "text": "create. You add a context gathering",
+    "start": 1316.08,
+    "duration": 4.32
+  },
+  {
+    "text": "phase if needed and an execution phase.",
+    "start": 1317.84,
+    "duration": 4.719
+  },
+  {
+    "text": "And then you paste the instructions into",
+    "start": 1320.4,
+    "duration": 4.0
+  },
+  {
+    "text": "the prompt and tell it what you want. In",
+    "start": 1322.559,
+    "duration": 3.681
+  },
+  {
+    "text": "essence, when you use AI this way, you",
+    "start": 1324.4,
+    "duration": 4.24
+  },
+  {
+    "text": "are using AI to both learn and build at",
+    "start": 1326.24,
+    "duration": 4.0
+  },
+  {
+    "text": "the same time. And that's incredible.",
+    "start": 1328.64,
+    "duration": 3.519
+  },
+  {
+    "text": "You are orchestrating. You're not",
+    "start": 1330.24,
+    "duration": 4.16
+  },
+  {
+    "text": "guessing anymore. you are in as much",
+    "start": 1332.159,
+    "duration": 4.721
+  },
+  {
+    "text": "control as you can be with AI. And if",
+    "start": 1334.4,
+    "duration": 4.08
+  },
+  {
+    "text": "you're already skilled at what you're",
+    "start": 1336.88,
+    "duration": 3.52
+  },
+  {
+    "text": "trying to accomplish, you can do what",
+    "start": 1338.48,
+    "duration": 4.24
+  },
+  {
+    "text": "you were already going to do, but faster",
+    "start": 1340.4,
+    "duration": 4.0
+  },
+  {
+    "text": "and potentially at a higher quality",
+    "start": 1342.72,
+    "duration": 3.52
+  },
+  {
+    "text": "because you can iterate through drafts",
+    "start": 1344.4,
+    "duration": 3.759
+  },
+  {
+    "text": "faster. Now, I want you to think of this",
+    "start": 1346.24,
+    "duration": 4.799
+  },
+  {
+    "text": "as documenting your own processes with",
+    "start": 1348.159,
+    "duration": 5.601
+  },
+  {
+    "text": "AI. So, imagine if you built this prompt",
+    "start": 1351.039,
+    "duration": 4.88
+  },
+  {
+    "text": "library. This is actually what I have is",
+    "start": 1353.76,
+    "duration": 4.159
+  },
+  {
+    "text": "I have a list of prompts that I use for",
+    "start": 1355.919,
+    "duration": 4.481
+  },
+  {
+    "text": "specific things like creating a coach,",
+    "start": 1357.919,
+    "duration": 4.481
+  },
+  {
+    "text": "creating an advisor, creating a thought",
+    "start": 1360.4,
+    "duration": 3.68
+  },
+  {
+    "text": "partner, being able to write landing",
+    "start": 1362.4,
+    "duration": 4.48
+  },
+  {
+    "text": "pages, being able to do research. And by",
+    "start": 1364.08,
+    "duration": 4.4
+  },
+  {
+    "text": "doing this, I think that you bring",
+    "start": 1366.88,
+    "duration": 3.279
+  },
+  {
+    "text": "yourself to a higher level of thinking",
+    "start": 1368.48,
+    "duration": 3.36
+  },
+  {
+    "text": "rather than a lower level. You can",
+    "start": 1370.159,
+    "duration": 3.76
+  },
+  {
+    "text": "refine and iterate on your processes in",
+    "start": 1371.84,
+    "duration": 4.0
+  },
+  {
+    "text": "a tangible way. Like it's literally like",
+    "start": 1373.919,
+    "duration": 3.76
+  },
+  {
+    "text": "having a list of instructions as a",
+    "start": 1375.84,
+    "duration": 3.839
+  },
+  {
+    "text": "prompt that you can change as you get",
+    "start": 1377.679,
+    "duration": 3.921
+  },
+  {
+    "text": "better. And by doing this also you",
+    "start": 1379.679,
+    "duration": 3.761
+  },
+  {
+    "text": "reduce your cognitive load of just",
+    "start": 1381.6,
+    "duration": 3.6
+  },
+  {
+    "text": "storing all of that in your head. So",
+    "start": 1383.44,
+    "duration": 3.84
+  },
+  {
+    "text": "example one was actually just creating",
+    "start": 1385.2,
+    "duration": 4.16
+  },
+  {
+    "text": "the personal brand coach. But example",
+    "start": 1387.28,
+    "duration": 4.32
+  },
+  {
+    "text": "two is an intellectual sparring partner",
+    "start": 1389.36,
+    "duration": 4.96
+  },
+  {
+    "text": "because personally I don't like just",
+    "start": 1391.6,
+    "duration": 5.36
+  },
+  {
+    "text": "asking the base AI questions. Right?",
+    "start": 1394.32,
+    "duration": 4.08
+  },
+  {
+    "text": "When I'm trying to acquire deep",
+    "start": 1396.96,
+    "duration": 3.52
+  },
+  {
+    "text": "knowledge, I know that the AI isn't",
+    "start": 1398.4,
+    "duration": 3.44
+  },
+  {
+    "text": "going to give that to me unless I",
+    "start": 1400.48,
+    "duration": 3.12
+  },
+  {
+    "text": "instruct it to. But even then it's still",
+    "start": 1401.84,
+    "duration": 3.6
+  },
+  {
+    "text": "guessing and giving me random things.",
+    "start": 1403.6,
+    "duration": 4.319
+  },
+  {
+    "text": "And if your mind takes the shape of",
+    "start": 1405.44,
+    "duration": 5.359
+  },
+  {
+    "text": "those that you learn from, I personally",
+    "start": 1407.919,
+    "duration": 5.361
+  },
+  {
+    "text": "want to learn from these very high-level",
+    "start": 1410.799,
+    "duration": 4.481
+  },
+  {
+    "text": "thinkers. And for me, a few people come",
+    "start": 1413.28,
+    "duration": 4.32
+  },
+  {
+    "text": "to mind like Naval Ravocant, Daniel",
+    "start": 1415.28,
+    "duration": 4.399
+  },
+  {
+    "text": "Schmokenberger, Krishna Murdy, and Mihi",
+    "start": 1417.6,
+    "duration": 4.48
+  },
+  {
+    "text": "Chick Mihi. Now, I could do more, but",
+    "start": 1419.679,
+    "duration": 4.24
+  },
+  {
+    "text": "what I'm going to do here is I'm going",
+    "start": 1422.08,
+    "duration": 3.92
+  },
+  {
+    "text": "to take each of these people and I'm",
+    "start": 1423.919,
+    "duration": 3.921
+  },
+  {
+    "text": "going to write this prompt in it. So, I",
+    "start": 1426.0,
+    "duration": 3.2
+  },
+  {
+    "text": "want you to break down the entire",
+    "start": 1427.84,
+    "duration": 3.76
+  },
+  {
+    "text": "worldview of the person, his core",
+    "start": 1429.2,
+    "duration": 3.68
+  },
+  {
+    "text": "principles, how he thinks through",
+    "start": 1431.6,
+    "duration": 2.8
+  },
+  {
+    "text": "problems, his main discoveries or",
+    "start": 1432.88,
+    "duration": 3.6
+  },
+  {
+    "text": "insights, and all of the ideas that best",
+    "start": 1434.4,
+    "duration": 3.68
+  },
+  {
+    "text": "illustrate his philosophy. This should",
+    "start": 1436.48,
+    "duration": 3.76
+  },
+  {
+    "text": "be a comprehensive document as if I am",
+    "start": 1438.08,
+    "duration": 3.76
+  },
+  {
+    "text": "diving into the entirety of his mind.",
+    "start": 1440.24,
+    "duration": 3.76
+  },
+  {
+    "text": "So, I'm going to go and paste this into",
+    "start": 1441.84,
+    "duration": 4.0
+  },
+  {
+    "text": "each of these chats and break it down.",
+    "start": 1444.0,
+    "duration": 4.0
+  },
+  {
+    "text": "And for this, you should probably enable",
+    "start": 1445.84,
+    "duration": 4.079
+  },
+  {
+    "text": "web search so that it can look through",
+    "start": 1448.0,
+    "duration": 3.919
+  },
+  {
+    "text": "articles and other things that summarize",
+    "start": 1449.919,
+    "duration": 4.0
+  },
+  {
+    "text": "a lot of the principles and worldviews",
+    "start": 1451.919,
+    "duration": 3.841
+  },
+  {
+    "text": "of these people. Another thing I could",
+    "start": 1453.919,
+    "duration": 4.161
+  },
+  {
+    "text": "do is I could take a podcast from them",
+    "start": 1455.76,
+    "duration": 4.399
+  },
+  {
+    "text": "and I could talk to that podcast if it",
+    "start": 1458.08,
+    "duration": 4.479
+  },
+  {
+    "text": "overviews their uh worldview quite well.",
+    "start": 1460.159,
+    "duration": 3.841
+  },
+  {
+    "text": "So I broke those down in each of their",
+    "start": 1462.559,
+    "duration": 3.6
+  },
+  {
+    "text": "AI chats and if you're just using a",
+    "start": 1464.0,
+    "duration": 3.919
+  },
+  {
+    "text": "separate chat you can just copy paste",
+    "start": 1466.159,
+    "duration": 3.841
+  },
+  {
+    "text": "all of the responses so all of the",
+    "start": 1467.919,
+    "duration": 4.321
+  },
+  {
+    "text": "people's worldviews into separate notes",
+    "start": 1470.0,
+    "duration": 3.919
+  },
+  {
+    "text": "or something of that nature or you can",
+    "start": 1472.24,
+    "duration": 4.24
+  },
+  {
+    "text": "go to like a chat GBT project or claude",
+    "start": 1473.919,
+    "duration": 4.401
+  },
+  {
+    "text": "project and you can paste all of them",
+    "start": 1476.48,
+    "duration": 3.6
+  },
+  {
+    "text": "inside of there and then you can start a",
+    "start": 1478.32,
+    "duration": 4.08
+  },
+  {
+    "text": "chat with that specifically. But in here",
+    "start": 1480.08,
+    "duration": 5.36
+  },
+  {
+    "text": "now I can just ask any question uh or",
+    "start": 1482.4,
+    "duration": 5.12
+  },
+  {
+    "text": "problem or or get perspective on a",
+    "start": 1485.44,
+    "duration": 3.44
+  },
+  {
+    "text": "problem that I'm having in my life or",
+    "start": 1487.52,
+    "duration": 3.2
+  },
+  {
+    "text": "maybe my business. So I'll try one of",
+    "start": 1488.88,
+    "duration": 3.44
+  },
+  {
+    "text": "those. So here I wrote I'm struggling",
+    "start": 1490.72,
+    "duration": 3.28
+  },
+  {
+    "text": "with how I should best manage projects",
+    "start": 1492.32,
+    "duration": 3.2
+  },
+  {
+    "text": "for a software company with a small",
+    "start": 1494.0,
+    "duration": 3.039
+  },
+  {
+    "text": "team. Can you give me perspective on how",
+    "start": 1495.52,
+    "duration": 3.2
+  },
+  {
+    "text": "I can best do this? Just a little",
+    "start": 1497.039,
+    "duration": 3.76
+  },
+  {
+    "text": "question goes through the meta problem",
+    "start": 1498.72,
+    "duration": 4.24
+  },
+  {
+    "text": "perspective from Daniel Schmokenberger.",
+    "start": 1500.799,
+    "duration": 4.641
+  },
+  {
+    "text": "Leverage and long-term games approach.",
+    "start": 1502.96,
+    "duration": 5.44
+  },
+  {
+    "text": "Play long-term games flow state design.",
+    "start": 1505.44,
+    "duration": 4.96
+  },
+  {
+    "text": "Pretty cool awareness-based approach.",
+    "start": 1508.4,
+    "duration": 4.639
+  },
+  {
+    "text": "practical synthesis and it just gives me",
+    "start": 1510.4,
+    "duration": 4.32
+  },
+  {
+    "text": "some cool things to do and of course I",
+    "start": 1513.039,
+    "duration": 3.441
+  },
+  {
+    "text": "could ask much more specific questions",
+    "start": 1514.72,
+    "duration": 4.16
+  },
+  {
+    "text": "than I did here. But I think you get the",
+    "start": 1516.48,
+    "duration": 4.72
+  },
+  {
+    "text": "point. So now example number three will",
+    "start": 1518.88,
+    "duration": 4.88
+  },
+  {
+    "text": "be a creative thought partner prompt",
+    "start": 1521.2,
+    "duration": 5.2
+  },
+  {
+    "text": "because thinking in my opinion is not",
+    "start": 1523.76,
+    "duration": 4.88
+  },
+  {
+    "text": "just a random process. There are good",
+    "start": 1526.4,
+    "duration": 4.32
+  },
+  {
+    "text": "ways to think and bad ways to think.",
+    "start": 1528.64,
+    "duration": 3.6
+  },
+  {
+    "text": "Successful writers, creators,",
+    "start": 1530.72,
+    "duration": 4.16
+  },
+  {
+    "text": "filmmakers, and other successful people",
+    "start": 1532.24,
+    "duration": 5.36
+  },
+  {
+    "text": "have soft processes for how they think",
+    "start": 1534.88,
+    "duration": 4.32
+  },
+  {
+    "text": "best. And it usually involves",
+    "start": 1537.6,
+    "duration": 3.199
+  },
+  {
+    "text": "questioning their thoughts or ideas in a",
+    "start": 1539.2,
+    "duration": 3.599
+  },
+  {
+    "text": "very specific way. For myself, whenever",
+    "start": 1540.799,
+    "duration": 3.921
+  },
+  {
+    "text": "I write, I tend to cycle through the",
+    "start": 1542.799,
+    "duration": 3.521
+  },
+  {
+    "text": "same questions when I'm filling out an",
+    "start": 1544.72,
+    "duration": 3.28
+  },
+  {
+    "text": "outline. So things like, what's the big",
+    "start": 1546.32,
+    "duration": 3.44
+  },
+  {
+    "text": "problem relating to the topic? What's",
+    "start": 1548.0,
+    "duration": 3.76
+  },
+  {
+    "text": "the consequential cascade of not solving",
+    "start": 1549.76,
+    "duration": 3.76
+  },
+  {
+    "text": "the problem? What's the ideal life I",
+    "start": 1551.76,
+    "duration": 3.519
+  },
+  {
+    "text": "want to inspire people to move toward?",
+    "start": 1553.52,
+    "duration": 3.519
+  },
+  {
+    "text": "What are novel concepts, perspectives,",
+    "start": 1555.279,
+    "duration": 3.601
+  },
+  {
+    "text": "or personal experiences that shine an",
+    "start": 1557.039,
+    "duration": 3.841
+  },
+  {
+    "text": "interesting light on this topic without",
+    "start": 1558.88,
+    "duration": 3.84
+  },
+  {
+    "text": "using someone else's advice? What is an",
+    "start": 1560.88,
+    "duration": 3.44
+  },
+  {
+    "text": "effective step-by-step process to",
+    "start": 1562.72,
+    "duration": 3.28
+  },
+  {
+    "text": "overcoming the problem and moving toward",
+    "start": 1564.32,
+    "duration": 3.359
+  },
+  {
+    "text": "the ideal life? What are compelling",
+    "start": 1566.0,
+    "duration": 3.36
+  },
+  {
+    "text": "quotes, anecdotes, studies, or",
+    "start": 1567.679,
+    "duration": 3.441
+  },
+  {
+    "text": "statistics that add to the argument that",
+    "start": 1569.36,
+    "duration": 3.199
+  },
+  {
+    "text": "I'm trying to make? And by answering",
+    "start": 1571.12,
+    "duration": 2.88
+  },
+  {
+    "text": "those, I usually have a pretty",
+    "start": 1572.559,
+    "duration": 3.36
+  },
+  {
+    "text": "compelling brain dump of ideas that I",
+    "start": 1574.0,
+    "duration": 3.76
+  },
+  {
+    "text": "can then use to go and write. Now, I",
+    "start": 1575.919,
+    "duration": 3.281
+  },
+  {
+    "text": "don't do this all the time. Most of the",
+    "start": 1577.76,
+    "duration": 3.039
+  },
+  {
+    "text": "time, I just do it in my head. But if",
+    "start": 1579.2,
+    "duration": 4.4
+  },
+  {
+    "text": "you are worried about having AI do all",
+    "start": 1580.799,
+    "duration": 4.961
+  },
+  {
+    "text": "of the writing for you, then I would try",
+    "start": 1583.6,
+    "duration": 4.0
+  },
+  {
+    "text": "this out. So what we're going to do here",
+    "start": 1585.76,
+    "duration": 3.519
+  },
+  {
+    "text": "is what we've already done. I have a",
+    "start": 1587.6,
+    "duration": 3.6
+  },
+  {
+    "text": "YouTube video on first principles",
+    "start": 1589.279,
+    "duration": 3.921
+  },
+  {
+    "text": "thinking. So that's just one way to",
+    "start": 1591.2,
+    "duration": 3.68
+  },
+  {
+    "text": "think out of many. You can find many",
+    "start": 1593.2,
+    "duration": 3.44
+  },
+  {
+    "text": "different ways to think. Just look up a",
+    "start": 1594.88,
+    "duration": 3.039
+  },
+  {
+    "text": "YouTube video on how to think",
+    "start": 1596.64,
+    "duration": 4.32
+  },
+  {
+    "text": "intelligently or like a genius. Or you",
+    "start": 1597.919,
+    "duration": 5.521
+  },
+  {
+    "text": "can take a YouTube video from Daniel",
+    "start": 1600.96,
+    "duration": 4.719
+  },
+  {
+    "text": "Schmokenberger or Naval and ask it to",
+    "start": 1603.44,
+    "duration": 5.28
+  },
+  {
+    "text": "break down how they think, how they",
+    "start": 1605.679,
+    "duration": 4.48
+  },
+  {
+    "text": "think through things. and you'll",
+    "start": 1608.72,
+    "duration": 2.959
+  },
+  {
+    "text": "typically come to something pretty cool.",
+    "start": 1610.159,
+    "duration": 3.201
+  },
+  {
+    "text": "And then you'll have a guide on how they",
+    "start": 1611.679,
+    "duration": 3.841
+  },
+  {
+    "text": "think. And by reading that guide, you're",
+    "start": 1613.36,
+    "duration": 4.4
+  },
+  {
+    "text": "learning more than you would by just",
+    "start": 1615.52,
+    "duration": 4.56
+  },
+  {
+    "text": "watching the video. All right, so here's",
+    "start": 1617.76,
+    "duration": 4.48
+  },
+  {
+    "text": "what I sent. And then it's breaking down",
+    "start": 1620.08,
+    "duration": 4.0
+  },
+  {
+    "text": "a guide to thinking from first",
+    "start": 1622.24,
+    "duration": 4.08
+  },
+  {
+    "text": "principles, right? But the thing is is",
+    "start": 1624.08,
+    "duration": 4.079
+  },
+  {
+    "text": "most people can watch these videos. Most",
+    "start": 1626.32,
+    "duration": 3.76
+  },
+  {
+    "text": "people can get this guide, but then they",
+    "start": 1628.159,
+    "duration": 3.921
+  },
+  {
+    "text": "still don't practice it. They don't",
+    "start": 1630.08,
+    "duration": 3.599
+  },
+  {
+    "text": "practice thinking from first principles,",
+    "start": 1632.08,
+    "duration": 3.52
+  },
+  {
+    "text": "right? So how are you going to lock that",
+    "start": 1633.679,
+    "duration": 3.521
+  },
+  {
+    "text": "in as a mental habit if you don't",
+    "start": 1635.6,
+    "duration": 3.52
+  },
+  {
+    "text": "actually practice it? Well, creating a",
+    "start": 1637.2,
+    "duration": 4.24
+  },
+  {
+    "text": "prompt out of it is a way to practice",
+    "start": 1639.12,
+    "duration": 3.919
+  },
+  {
+    "text": "it. So, we're going to do the same",
+    "start": 1641.44,
+    "duration": 2.56
+  },
+  {
+    "text": "thing. We're going to send the",
+    "start": 1643.039,
+    "duration": 2.961
+  },
+  {
+    "text": "metaprompt and then we'll create a",
+    "start": 1644.0,
+    "duration": 3.44
+  },
+  {
+    "text": "prompt from it. All right. So, you can",
+    "start": 1646.0,
+    "duration": 3.52
+  },
+  {
+    "text": "act as if I sent the metaprompt to a new",
+    "start": 1647.44,
+    "duration": 4.239
+  },
+  {
+    "text": "chat and now it's here. And then I'm",
+    "start": 1649.52,
+    "duration": 4.24
+  },
+  {
+    "text": "going to send this to guide it on what",
+    "start": 1651.679,
+    "duration": 3.681
+  },
+  {
+    "text": "kind of prompt I want to create. So, now",
+    "start": 1653.76,
+    "duration": 3.6
+  },
+  {
+    "text": "I'll need to connect this to here. And",
+    "start": 1655.36,
+    "duration": 3.679
+  },
+  {
+    "text": "I'll send I want to create a prompt that",
+    "start": 1657.36,
+    "duration": 3.6
+  },
+  {
+    "text": "helps me arrive at clear novel insights",
+    "start": 1659.039,
+    "duration": 3.281
+  },
+  {
+    "text": "through first principles questioning",
+    "start": 1660.96,
+    "duration": 3.28
+  },
+  {
+    "text": "according to the attached guide. I want",
+    "start": 1662.32,
+    "duration": 4.4
+  },
+  {
+    "text": "you to act as purely observational clear",
+    "start": 1664.24,
+    "duration": 4.4
+  },
+  {
+    "text": "eyes that does not give me the exact",
+    "start": 1666.72,
+    "duration": 4.24
+  },
+  {
+    "text": "answer but guides me to it. So this is a",
+    "start": 1668.64,
+    "duration": 3.76
+  },
+  {
+    "text": "unique way of creating this prompt",
+    "start": 1670.96,
+    "duration": 3.04
+  },
+  {
+    "text": "because I'm not I'm telling it not to",
+    "start": 1672.4,
+    "duration": 3.519
+  },
+  {
+    "text": "give me the answer. I want it to help me",
+    "start": 1674.0,
+    "duration": 4.0
+  },
+  {
+    "text": "think not do the thinking for me. First",
+    "start": 1675.919,
+    "duration": 4.081
+  },
+  {
+    "text": "you will ask what topic idea or problem",
+    "start": 1678.0,
+    "duration": 4.399
+  },
+  {
+    "text": "I want to discuss. Then you will ask one",
+    "start": 1680.0,
+    "duration": 3.919
+  },
+  {
+    "text": "question at a time following the",
+    "start": 1682.399,
+    "duration": 2.961
+  },
+  {
+    "text": "thinking instructions. Please ask",
+    "start": 1683.919,
+    "duration": 3.12
+  },
+  {
+    "text": "clarifying questions before creating the",
+    "start": 1685.36,
+    "duration": 3.52
+  },
+  {
+    "text": "prompt so that it comes out the best it",
+    "start": 1687.039,
+    "duration": 3.921
+  },
+  {
+    "text": "can. Now, this last sentence, this is",
+    "start": 1688.88,
+    "duration": 3.519
+  },
+  {
+    "text": "something I like to do when I'm creating",
+    "start": 1690.96,
+    "duration": 3.68
+  },
+  {
+    "text": "prompts because then it asks me",
+    "start": 1692.399,
+    "duration": 4.481
+  },
+  {
+    "text": "questions that will lead to a better",
+    "start": 1694.64,
+    "duration": 4.0
+  },
+  {
+    "text": "prompt. Okay, so it asks a few",
+    "start": 1696.88,
+    "duration": 3.44
+  },
+  {
+    "text": "clarifying questions like the depth of",
+    "start": 1698.64,
+    "duration": 3.6
+  },
+  {
+    "text": "questioning style, response format,",
+    "start": 1700.32,
+    "duration": 4.0
+  },
+  {
+    "text": "scaffolding level, domain flexibility,",
+    "start": 1702.24,
+    "duration": 4.799
+  },
+  {
+    "text": "progress tracking, all of these things.",
+    "start": 1704.32,
+    "duration": 5.12
+  },
+  {
+    "text": "And now it's writing the prompt. And",
+    "start": 1707.039,
+    "duration": 4.24
+  },
+  {
+    "text": "here it is. Now you can copy paste this",
+    "start": 1709.44,
+    "duration": 4.0
+  },
+  {
+    "text": "into a new chat whenever you want to",
+    "start": 1711.279,
+    "duration": 4.0
+  },
+  {
+    "text": "think through a problem through first",
+    "start": 1713.44,
+    "duration": 3.44
+  },
+  {
+    "text": "principles. And the more you practice",
+    "start": 1715.279,
+    "duration": 4.0
+  },
+  {
+    "text": "this, because habit formation comes",
+    "start": 1716.88,
+    "duration": 4.32
+  },
+  {
+    "text": "through practice, the more you form the",
+    "start": 1719.279,
+    "duration": 3.921
+  },
+  {
+    "text": "habit of first principles thinking. Now,",
+    "start": 1721.2,
+    "duration": 3.76
+  },
+  {
+    "text": "to go through two more examples, we're",
+    "start": 1723.2,
+    "duration": 3.359
+  },
+  {
+    "text": "just going to run through these because",
+    "start": 1724.96,
+    "duration": 3.52
+  },
+  {
+    "text": "doing it on a canvas like you understand",
+    "start": 1726.559,
+    "duration": 3.36
+  },
+  {
+    "text": "what we're trying to do here. So, I just",
+    "start": 1728.48,
+    "duration": 3.28
+  },
+  {
+    "text": "want to give you subtle guides so that",
+    "start": 1729.919,
+    "duration": 3.36
+  },
+  {
+    "text": "you can do these things on your own. But",
+    "start": 1731.76,
+    "duration": 3.68
+  },
+  {
+    "text": "this is where things get really",
+    "start": 1733.279,
+    "duration": 4.0
+  },
+  {
+    "text": "interesting and it shows how much you",
+    "start": 1735.44,
+    "duration": 3.76
+  },
+  {
+    "text": "can do with this. So, when it comes to",
+    "start": 1737.279,
+    "duration": 3.76
+  },
+  {
+    "text": "building, let's say, a business,",
+    "start": 1739.2,
+    "duration": 3.92
+  },
+  {
+    "text": "especially as one person, it's not as",
+    "start": 1741.039,
+    "duration": 4.321
+  },
+  {
+    "text": "simple as just telling an agent to do it",
+    "start": 1743.12,
+    "duration": 4.559
+  },
+  {
+    "text": "or downloading a business software or",
+    "start": 1745.36,
+    "duration": 4.88
+  },
+  {
+    "text": "business AI and having it do you do it",
+    "start": 1747.679,
+    "duration": 4.801
+  },
+  {
+    "text": "for you. In fact, to build a business",
+    "start": 1750.24,
+    "duration": 4.799
+  },
+  {
+    "text": "with AI, you're doing all of the same",
+    "start": 1752.48,
+    "duration": 4.24
+  },
+  {
+    "text": "things that you normally would have done",
+    "start": 1755.039,
+    "duration": 3.36
+  },
+  {
+    "text": "by yourself, but now you're doing it",
+    "start": 1756.72,
+    "duration": 3.76
+  },
+  {
+    "text": "with this process. You're building a",
+    "start": 1758.399,
+    "duration": 4.4
+  },
+  {
+    "text": "library of prompts that help you do the",
+    "start": 1760.48,
+    "duration": 4.319
+  },
+  {
+    "text": "things you need to do in business well,",
+    "start": 1762.799,
+    "duration": 3.841
+  },
+  {
+    "text": "like writing content, building a digital",
+    "start": 1764.799,
+    "duration": 3.681
+  },
+  {
+    "text": "product, writing promotions, writing",
+    "start": 1766.64,
+    "duration": 3.919
+  },
+  {
+    "text": "emails, crafting an offer, and writing",
+    "start": 1768.48,
+    "duration": 3.84
+  },
+  {
+    "text": "landing page copy. So, as I said, we're",
+    "start": 1770.559,
+    "duration": 3.041
+  },
+  {
+    "text": "just going to run through these quick",
+    "start": 1772.32,
+    "duration": 2.959
+  },
+  {
+    "text": "and you can do what you want with this.",
+    "start": 1773.6,
+    "duration": 3.6
+  },
+  {
+    "text": "So, for writing content, create a prompt",
+    "start": 1775.279,
+    "duration": 3.841
+  },
+  {
+    "text": "for a personal brand strategy. Find a",
+    "start": 1777.2,
+    "duration": 3.359
+  },
+  {
+    "text": "YouTube video that teaches it and turn",
+    "start": 1779.12,
+    "duration": 3.2
+  },
+  {
+    "text": "it into a prompt. Create a prompt for",
+    "start": 1780.559,
+    "duration": 3.921
+  },
+  {
+    "text": "content ideas. Paste 10 high-erforming",
+    "start": 1782.32,
+    "duration": 4.16
+  },
+  {
+    "text": "content pieces into AI and have it teach",
+    "start": 1784.48,
+    "duration": 3.52
+  },
+  {
+    "text": "you how to replicate them. Create a",
+    "start": 1786.48,
+    "duration": 3.199
+  },
+  {
+    "text": "prompt for newsletters. Paste two to",
+    "start": 1788.0,
+    "duration": 3.6
+  },
+  {
+    "text": "three newsletters you like and have AI",
+    "start": 1789.679,
+    "duration": 3.521
+  },
+  {
+    "text": "break down their structure. Of course, I",
+    "start": 1791.6,
+    "duration": 3.439
+  },
+  {
+    "text": "don't personally recommend having AI",
+    "start": 1793.2,
+    "duration": 3.68
+  },
+  {
+    "text": "write for you. So, consider creating a",
+    "start": 1795.039,
+    "duration": 3.281
+  },
+  {
+    "text": "prompt that guides you through the",
+    "start": 1796.88,
+    "duration": 3.039
+  },
+  {
+    "text": "process or coaches you through the",
+    "start": 1798.32,
+    "duration": 3.44
+  },
+  {
+    "text": "process like we created instead of",
+    "start": 1799.919,
+    "duration": 3.601
+  },
+  {
+    "text": "telling it to write the thing for you.",
+    "start": 1801.76,
+    "duration": 3.36
+  },
+  {
+    "text": "Now, for building a digital product,",
+    "start": 1803.52,
+    "duration": 3.36
+  },
+  {
+    "text": "preferably have an idea for a product",
+    "start": 1805.12,
+    "duration": 4.08
+  },
+  {
+    "text": "you already want to build. Ask AI how",
+    "start": 1806.88,
+    "duration": 4.48
+  },
+  {
+    "text": "those products are structured and how to",
+    "start": 1809.2,
+    "duration": 3.52
+  },
+  {
+    "text": "build them in a way that ensures the",
+    "start": 1811.36,
+    "duration": 3.12
+  },
+  {
+    "text": "buyer uses and benefits the most from",
+    "start": 1812.72,
+    "duration": 3.52
+  },
+  {
+    "text": "the product. Create a prompt that guides",
+    "start": 1814.48,
+    "duration": 3.52
+  },
+  {
+    "text": "you through the product creation process",
+    "start": 1816.24,
+    "duration": 3.52
+  },
+  {
+    "text": "with the instructions from the last",
+    "start": 1818.0,
+    "duration": 4.08
+  },
+  {
+    "text": "bullet point section by section. Now for",
+    "start": 1819.76,
+    "duration": 4.159
+  },
+  {
+    "text": "offer creation, create a customer avatar",
+    "start": 1822.08,
+    "duration": 3.52
+  },
+  {
+    "text": "prompt like we discussed earlier. Create",
+    "start": 1823.919,
+    "duration": 2.961
+  },
+  {
+    "text": "a prompt that guides you through",
+    "start": 1825.6,
+    "duration": 3.28
+  },
+  {
+    "text": "creating a compelling offer blueprint.",
+    "start": 1826.88,
+    "duration": 4.72
+  },
+  {
+    "text": "Ask AI how Alexi creates offers for the",
+    "start": 1828.88,
+    "duration": 4.56
+  },
+  {
+    "text": "instructions portion and then use the",
+    "start": 1831.6,
+    "duration": 3.439
+  },
+  {
+    "text": "offer blueprint for any of your other",
+    "start": 1833.44,
+    "duration": 3.2
+  },
+  {
+    "text": "marketing materials. And now you can",
+    "start": 1835.039,
+    "duration": 4.721
+  },
+  {
+    "text": "feed that to AI when you need to provide",
+    "start": 1836.64,
+    "duration": 4.96
+  },
+  {
+    "text": "your product information. Now, for",
+    "start": 1839.76,
+    "duration": 3.84
+  },
+  {
+    "text": "copywriting, find a respected book on",
+    "start": 1841.6,
+    "duration": 3.28
+  },
+  {
+    "text": "copywriting like breakthrough",
+    "start": 1843.6,
+    "duration": 3.84
+  },
+  {
+    "text": "advertising and/or great leads. Upload",
+    "start": 1844.88,
+    "duration": 5.039
+  },
+  {
+    "text": "the PDF to AI and ask it to turn it into",
+    "start": 1847.44,
+    "duration": 4.32
+  },
+  {
+    "text": "a detailed actionable guide. Find a",
+    "start": 1849.919,
+    "duration": 3.601
+  },
+  {
+    "text": "landing page structure or structure of",
+    "start": 1851.76,
+    "duration": 3.12
+  },
+  {
+    "text": "whatever type of promotion you are",
+    "start": 1853.52,
+    "duration": 3.519
+  },
+  {
+    "text": "trying to create via email or social",
+    "start": 1854.88,
+    "duration": 4.48
+  },
+  {
+    "text": "promotion. Paste it into AI and have it",
+    "start": 1857.039,
+    "duration": 4.401
+  },
+  {
+    "text": "break down why it works. Add both the",
+    "start": 1859.36,
+    "duration": 4.0
+  },
+  {
+    "text": "structure breakdown and copyrightiting",
+    "start": 1861.44,
+    "duration": 4.08
+  },
+  {
+    "text": "guide to AI and create a prompt that",
+    "start": 1863.36,
+    "duration": 4.16
+  },
+  {
+    "text": "interviews you for your offer, customer",
+    "start": 1865.52,
+    "duration": 3.759
+  },
+  {
+    "text": "avatar, and other contexts to write the",
+    "start": 1867.52,
+    "duration": 4.48
+  },
+  {
+    "text": "copy. So that's four or five prompts",
+    "start": 1869.279,
+    "duration": 4.721
+  },
+  {
+    "text": "that allow you to build a business and",
+    "start": 1872.0,
+    "duration": 3.36
+  },
+  {
+    "text": "you don't need to spend so much time",
+    "start": 1874.0,
+    "duration": 2.88
+  },
+  {
+    "text": "learning the skills before you actually",
+    "start": 1875.36,
+    "duration": 2.88
+  },
+  {
+    "text": "start building the business. You learn",
+    "start": 1876.88,
+    "duration": 3.84
+  },
+  {
+    "text": "and do at the same time. Now the last",
+    "start": 1878.24,
+    "duration": 4.319
+  },
+  {
+    "text": "example here is just the YouTube",
+    "start": 1880.72,
+    "duration": 3.199
+  },
+  {
+    "text": "workflow. So if you want to be a",
+    "start": 1882.559,
+    "duration": 2.961
+  },
+  {
+    "text": "YouTuber or you just want to learn how",
+    "start": 1883.919,
+    "duration": 3.041
+  },
+  {
+    "text": "to do this in a more creative way, how",
+    "start": 1885.52,
+    "duration": 3.12
+  },
+  {
+    "text": "to do the AI stuff in a more creative",
+    "start": 1886.96,
+    "duration": 3.52
+  },
+  {
+    "text": "way, listen to this because it makes",
+    "start": 1888.64,
+    "duration": 3.44
+  },
+  {
+    "text": "sense. Because when you think of using",
+    "start": 1890.48,
+    "duration": 3.36
+  },
+  {
+    "text": "AI for YouTube, you're kind of thinking",
+    "start": 1892.08,
+    "duration": 3.52
+  },
+  {
+    "text": "like, okay, how do I have it create the",
+    "start": 1893.84,
+    "duration": 3.6
+  },
+  {
+    "text": "entire video for me? That's not what",
+    "start": 1895.6,
+    "duration": 3.439
+  },
+  {
+    "text": "we're trying to do. To create a YouTube",
+    "start": 1897.44,
+    "duration": 3.359
+  },
+  {
+    "text": "video, you need a compelling title.",
+    "start": 1899.039,
+    "duration": 3.681
+  },
+  {
+    "text": "After that, you need the key points, a",
+    "start": 1900.799,
+    "duration": 4.081
+  },
+  {
+    "text": "gripping introduction, a full script,",
+    "start": 1902.72,
+    "duration": 4.799
+  },
+  {
+    "text": "B-roll ideas, the video description, and",
+    "start": 1904.88,
+    "duration": 4.639
+  },
+  {
+    "text": "then potentially a coach that walks you",
+    "start": 1907.519,
+    "duration": 4.0
+  },
+  {
+    "text": "through the video creation process. All",
+    "start": 1909.519,
+    "duration": 4.321
+  },
+  {
+    "text": "seven of those things can be turned into",
+    "start": 1911.519,
+    "duration": 3.76
+  },
+  {
+    "text": "prompts. And each time you go to create",
+    "start": 1913.84,
+    "duration": 2.8
+  },
+  {
+    "text": "a YouTube video, you can run through",
+    "start": 1915.279,
+    "duration": 3.041
+  },
+  {
+    "text": "each one, and your YouTube videos are",
+    "start": 1916.64,
+    "duration": 3.039
+  },
+  {
+    "text": "going to see a notable increase in",
+    "start": 1918.32,
+    "duration": 2.719
+  },
+  {
+    "text": "quality. Now, again, for the sake of",
+    "start": 1919.679,
+    "duration": 3.201
+  },
+  {
+    "text": "brevity, we're just going to run through",
+    "start": 1921.039,
+    "duration": 4.0
+  },
+  {
+    "text": "bullet points here, and you can try to",
+    "start": 1922.88,
+    "duration": 3.76
+  },
+  {
+    "text": "practice and do this on your own. So,",
+    "start": 1925.039,
+    "duration": 3.681
+  },
+  {
+    "text": "for the title prompt, find five to 10",
+    "start": 1926.64,
+    "duration": 3.519
+  },
+  {
+    "text": "accounts in your niche. Filter their",
+    "start": 1928.72,
+    "duration": 3.76
+  },
+  {
+    "text": "videos by most popular. Copy 10 to 20",
+    "start": 1930.159,
+    "duration": 4.4
+  },
+  {
+    "text": "titles into AI and ask it to break them",
+    "start": 1932.48,
+    "duration": 4.079
+  },
+  {
+    "text": "down into instructions on how to",
+    "start": 1934.559,
+    "duration": 3.521
+  },
+  {
+    "text": "replicate them. Then, you turn those",
+    "start": 1936.559,
+    "duration": 3.36
+  },
+  {
+    "text": "instructions into a prompt that ingests",
+    "start": 1938.08,
+    "duration": 3.92
+  },
+  {
+    "text": "your video topic idea and spits out",
+    "start": 1939.919,
+    "duration": 3.841
+  },
+  {
+    "text": "potential titles for it. Now, the key",
+    "start": 1942.0,
+    "duration": 4.0
+  },
+  {
+    "text": "points prompt. Ask AI to create a guide",
+    "start": 1943.76,
+    "duration": 4.48
+  },
+  {
+    "text": "on how to outline a YouTube video topic",
+    "start": 1946.0,
+    "duration": 4.08
+  },
+  {
+    "text": "into compelling key points that keep the",
+    "start": 1948.24,
+    "duration": 3.6
+  },
+  {
+    "text": "viewer engaged while ensuring that the",
+    "start": 1950.08,
+    "duration": 3.52
+  },
+  {
+    "text": "video is novel and valuable. For the",
+    "start": 1951.84,
+    "duration": 3.36
+  },
+  {
+    "text": "introduction prompt, find a YouTube",
+    "start": 1953.6,
+    "duration": 3.12
+  },
+  {
+    "text": "video that teaches how to create a good",
+    "start": 1955.2,
+    "duration": 3.44
+  },
+  {
+    "text": "video introduction. Turn that into",
+    "start": 1956.72,
+    "duration": 3.52
+  },
+  {
+    "text": "instructions and turn those into a",
+    "start": 1958.64,
+    "duration": 3.6
+  },
+  {
+    "text": "prompt. For the script video, find a",
+    "start": 1960.24,
+    "duration": 3.52
+  },
+  {
+    "text": "YouTube video that teaches how to create",
+    "start": 1962.24,
+    "duration": 3.76
+  },
+  {
+    "text": "a good script or find a video script you",
+    "start": 1963.76,
+    "duration": 4.32
+  },
+  {
+    "text": "want to emulate and have AI turn it into",
+    "start": 1966.0,
+    "duration": 4.159
+  },
+  {
+    "text": "a guide. And then turn that guide into a",
+    "start": 1968.08,
+    "duration": 3.76
+  },
+  {
+    "text": "prompt that gathers your topic, key",
+    "start": 1970.159,
+    "duration": 3.841
+  },
+  {
+    "text": "points, and intro as context. Then the",
+    "start": 1971.84,
+    "duration": 4.319
+  },
+  {
+    "text": "B-roll ideas prompt. Ask the AI for",
+    "start": 1974.0,
+    "duration": 4.24
+  },
+  {
+    "text": "B-roll and retention best practices as",
+    "start": 1976.159,
+    "duration": 3.681
+  },
+  {
+    "text": "instructions. Turn that into a prompt",
+    "start": 1978.24,
+    "duration": 3.52
+  },
+  {
+    "text": "that adds B-roll ideas for each line of",
+    "start": 1979.84,
+    "duration": 4.16
+  },
+  {
+    "text": "your script. feed that prompt into each",
+    "start": 1981.76,
+    "duration": 4.0
+  },
+  {
+    "text": "individual section of your script. Now,",
+    "start": 1984.0,
+    "duration": 3.36
+  },
+  {
+    "text": "in Eden, the software I was talking",
+    "start": 1985.76,
+    "duration": 2.96
+  },
+  {
+    "text": "about that's going to be open for Black",
+    "start": 1987.36,
+    "duration": 3.12
+  },
+  {
+    "text": "Friday only until we close it and then",
+    "start": 1988.72,
+    "duration": 3.679
+  },
+  {
+    "text": "relaunch it when we're ready with the",
+    "start": 1990.48,
+    "duration": 3.439
+  },
+  {
+    "text": "desktop app, mobile app, all of that",
+    "start": 1992.399,
+    "duration": 3.12
+  },
+  {
+    "text": "stuff. It is kind of like a file",
+    "start": 1993.919,
+    "duration": 3.6
+  },
+  {
+    "text": "storage. Any video like your YouTube",
+    "start": 1995.519,
+    "duration": 4.081
+  },
+  {
+    "text": "video that you upload to it will be",
+    "start": 1997.519,
+    "duration": 3.921
+  },
+  {
+    "text": "automatically autotagged, transcribed,",
+    "start": 1999.6,
+    "duration": 3.76
+  },
+  {
+    "text": "and all of the frames will be analyzed.",
+    "start": 2001.44,
+    "duration": 3.68
+  },
+  {
+    "text": "So, you can add it to a canvas or just",
+    "start": 2003.36,
+    "duration": 3.679
+  },
+  {
+    "text": "reference it in an AI chat and be like,",
+    "start": 2005.12,
+    "duration": 4.32
+  },
+  {
+    "text": "\"Hey, give me B-roll ideas for each line",
+    "start": 2007.039,
+    "duration": 4.161
+  },
+  {
+    "text": "of this video.\" And it will. And then",
+    "start": 2009.44,
+    "duration": 3.44
+  },
+  {
+    "text": "you can pass that off to your editor or",
+    "start": 2011.2,
+    "duration": 3.68
+  },
+  {
+    "text": "have them in the workspace for you. It's",
+    "start": 2012.88,
+    "duration": 4.0
+  },
+  {
+    "text": "a pretty cool tool if I do say so",
+    "start": 2014.88,
+    "duration": 3.6
+  },
+  {
+    "text": "myself. Now for the video description",
+    "start": 2016.88,
+    "duration": 3.519
+  },
+  {
+    "text": "prompt, you paste the meta prompt first",
+    "start": 2018.48,
+    "duration": 3.6
+  },
+  {
+    "text": "and you ask it to create a prompt with",
+    "start": 2020.399,
+    "duration": 3.921
+  },
+  {
+    "text": "three sections. A keyword friendly brief",
+    "start": 2022.08,
+    "duration": 4.479
+  },
+  {
+    "text": "description of the video, your links. So",
+    "start": 2024.32,
+    "duration": 3.76
+  },
+  {
+    "text": "write out what your links are that you",
+    "start": 2026.559,
+    "duration": 3.041
+  },
+  {
+    "text": "would include in the description and",
+    "start": 2028.08,
+    "duration": 3.76
+  },
+  {
+    "text": "video chapters with exact timestamps",
+    "start": 2029.6,
+    "duration": 3.52
+  },
+  {
+    "text": "that are attention grabbing and",
+    "start": 2031.84,
+    "duration": 2.88
+  },
+  {
+    "text": "keywordfriendly. So now you're off to",
+    "start": 2033.12,
+    "duration": 3.36
+  },
+  {
+    "text": "recording a YouTube video like a pro in",
+    "start": 2034.72,
+    "duration": 4.4
+  },
+  {
+    "text": "a day rather than 6 months. So hopefully",
+    "start": 2036.48,
+    "duration": 4.559
+  },
+  {
+    "text": "all of that was helpful. This is what I",
+    "start": 2039.12,
+    "duration": 3.84
+  },
+  {
+    "text": "wish I knew when I had first started",
+    "start": 2041.039,
+    "duration": 4.0
+  },
+  {
+    "text": "learning AI. So, let me know if this",
+    "start": 2042.96,
+    "duration": 3.839
+  },
+  {
+    "text": "helps you at all. If you want more tips",
+    "start": 2045.039,
+    "duration": 5.12
+  },
+  {
+    "text": "on how to use AI or writing or anything",
+    "start": 2046.799,
+    "duration": 5.28
+  },
+  {
+    "text": "skill acquisition related, join my",
+    "start": 2050.159,
+    "duration": 3.841
+  },
+  {
+    "text": "newsletter. It's free. A lot of people",
+    "start": 2052.079,
+    "duration": 3.441
+  },
+  {
+    "text": "have been liking it lately. And just",
+    "start": 2054.0,
+    "duration": 2.879
+  },
+  {
+    "text": "check out links in the description for",
+    "start": 2055.52,
+    "duration": 2.559
+  },
+  {
+    "text": "everything mentioned in this video.",
+    "start": 2056.879,
+    "duration": 2.72
+  },
+  {
+    "text": "Like, subscribe while you're here. Thank",
+    "start": 2058.079,
+    "duration": 5.04
+  },
+  {
+    "text": "you again for watching. Bye.",
+    "start": 2059.599,
+    "duration": 3.52
+  }
+]

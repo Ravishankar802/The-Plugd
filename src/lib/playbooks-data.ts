@@ -40,6 +40,14 @@ import { CATCH_UP_IN_LIFE_LOGIC_COURSE } from "./playbooks/catch-up-in-life-logi
 import { PERFECT_BUSINESS_5_THINGS_COURSE } from "./playbooks/perfect-business-5-things-data";
 import { USE_AI_IN_BUSINESS_2026_COURSE } from "./playbooks/use-ai-in-business-2026-data";
 import { MULTIPLE_INTERESTS_ONE_PERSON_COURSE } from "./playbooks/multiple-interests-one-person-data";
+import { LEARN_THIS_SKILL_COURSE } from "./playbooks/learn-this-skill-win-next-years-data";
+import { BUILD_1M_SOLO_FASTER_COURSE } from "./playbooks/build-1m-one-person-faster-ai-data";
+import { THINK_STRATEGIC_GENIUS_COURSE } from "./playbooks/think-strategic-genius-5d-data";
+import { USE_AI_BETTER_99_COURSE } from "./playbooks/use-ai-better-99-percent-data";
+import { STUCK_IN_MATRIX_ESCAPE_COURSE } from "./playbooks/stuck-in-matrix-escape-data";
+import { FIVE_YEARS_GET_RICH_AI_COURSE } from "./playbooks/five-years-get-rich-before-ai-data";
+import { INVESTING_BEGINNERS_25M_COURSE } from "./playbooks/investing-beginners-25-mins-data";
+import { LAZIEST_WAYS_AI_BEGINNERS_COURSE } from "./playbooks/laziest-ways-money-ai-beginners-data";
 
 export type SlideType =
   | "TITLE"
@@ -501,6 +509,37 @@ export const COURSES: Record<string, Course> = {
   // 24. If You Have Multiple Interests, Please Start a One-Person Business
   "if-you-have-multiple-interests-please-start-a-one-person-business": MULTIPLE_INTERESTS_ONE_PERSON_COURSE,
   "ai-businesses-24": MULTIPLE_INTERESTS_ONE_PERSON_COURSE,
+  // 25. Learn This Skill If You Want To Win In The Next 2-3 Years
+  "learn-this-skill-if-you-want-to-win-in-the-next-2-3-years": LEARN_THIS_SKILL_COURSE,
+  "ai-businesses-25": LEARN_THIS_SKILL_COURSE,
+
+  // 26. How To Build A $1M One-Person Business Faster With AI
+  "how-to-build-a-1m-one-person-business-faster-with-ai": BUILD_1M_SOLO_FASTER_COURSE,
+  "ai-businesses-26": BUILD_1M_SOLO_FASTER_COURSE,
+
+  // 27. How To Think Like A Strategic Genius (5-Dimensional Thinking)
+  "how-to-think-like-a-strategic-genius-5-dimensional-thinking": THINK_STRATEGIC_GENIUS_COURSE,
+  "ai-businesses-27": THINK_STRATEGIC_GENIUS_COURSE,
+
+  // 28. How To Use AI Better Than 99% Of People (This Changed My Life)
+  "how-to-use-ai-better-than-99-of-people-this-changed-my-life": USE_AI_BETTER_99_COURSE,
+  "ai-businesses-28": USE_AI_BETTER_99_COURSE,
+
+  // 29. You're Stuck In The Matrix, Here's How You Escape
+  "youre-stuck-in-the-matrix-heres-how-you-escape": STUCK_IN_MATRIX_ESCAPE_COURSE,
+  "ai-businesses-29": STUCK_IN_MATRIX_ESCAPE_COURSE,
+
+  // 30. You Have 5 Years to Get Rich Before AI Takes Over
+  "you-have-5-years-to-get-rich-before-ai-takes-over": FIVE_YEARS_GET_RICH_AI_COURSE,
+  "ai-businesses-30": FIVE_YEARS_GET_RICH_AI_COURSE,
+
+  // 31. Investing For Beginners in 25 Minutes
+  "investing-for-beginners-in-25-minutes": INVESTING_BEGINNERS_25M_COURSE,
+  "ai-businesses-31": INVESTING_BEGINNERS_25M_COURSE,
+
+  // 32. Laziest Ways to Make Money with AI (For Beginners)
+  "laziest-ways-to-make-money-with-ai-for-beginners": LAZIEST_WAYS_AI_BEGINNERS_COURSE,
+  "ai-businesses-32": LAZIEST_WAYS_AI_BEGINNERS_COURSE,
 
   // Backward compatibility legacy mappings
   "ai-businesses-02": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
@@ -544,6 +583,14 @@ export function getAllCourses(): Course[] {
     PERFECT_BUSINESS_5_THINGS_COURSE,
     USE_AI_IN_BUSINESS_2026_COURSE,
     MULTIPLE_INTERESTS_ONE_PERSON_COURSE,
+    LEARN_THIS_SKILL_COURSE,
+    BUILD_1M_SOLO_FASTER_COURSE,
+    THINK_STRATEGIC_GENIUS_COURSE,
+    USE_AI_BETTER_99_COURSE,
+    STUCK_IN_MATRIX_ESCAPE_COURSE,
+    FIVE_YEARS_GET_RICH_AI_COURSE,
+    INVESTING_BEGINNERS_25M_COURSE,
+    LAZIEST_WAYS_AI_BEGINNERS_COURSE
   ];
 }
 
