@@ -7,11 +7,11 @@ import { AI_AUTOMATIONS_DETAIL_DATA } from "@/lib/ai-automations-detail";
 export const metadata: Metadata = {
   title: "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees) | Plugd",
   description:
-    "Learn 7 accessible AI automation tools to save businesses time, offer simple services, and build real income streams. Practical, beginner-friendly walkthroughs.",
+    "Master the 3 proven AI business models to reach $10,000+/month as a solo operator with zero employees. Detailed slide decks and written lessons.",
   openGraph: {
     title: "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees) | Plugd",
     description:
-      "Learn 7 accessible AI automation tools to save businesses time, offer simple services, and build real income streams. Practical, beginner-friendly walkthroughs.",
+      "Master the 3 proven AI business models to reach $10,000+/month as a solo operator with zero employees. Detailed slide decks and written lessons.",
   },
 };
 

@@ -37,11 +37,11 @@ export const AI_AUTOMATIONS_PLAYBOOK_COURSE: Course = {
   shortTitle: "3 AI Businesses to $10k+/Month",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,
   targetGender: "for-all" as any,
-  headline: "Learn 7 accessible AI automation tools to save businesses time, offer simple services, and build real income streams.",
+  headline: "Master the 3 proven AI business models to reach $10,000+/month as a solo operator with zero employees.",
   subheadline:
-    "A practical, beginner-friendly guide to 7 no-code AI tools. Learn how to set up time-saving workflows, package them into valuable client services, and reach the $10,000 income milestone.",
+    "A practical, comprehensive guide to the 3 dominant zero-employee AI businesses: AI Automation Agency, Short-Form Content Studio, and AI Shadow Operating. Reach $373/day with zero employees.",
   description:
-    "A step-by-step, no-code playbook teaching complete beginners how to master 7 practical AI automation tools. Learn how to connect everyday business apps, build custom assistants, automate social media DMs, repurpose videos, and land paying clients with zero coding experience.",
+    "A comprehensive, practical playbook breaking down the 3 dominant zero-employee AI businesses: AI Workflow Automation Agency (AAA), AI Short-Form Content Studio, and AI Shadow Operating. Learn the unit economics of $373/day, the 5-criteria evaluation framework, no-code tool stacks, client acquisition without ad spend, and asymmetric 70/30 creator revenue shares.",
   price: 3,
   originalPrice: 9,
   currency: "USD",
@@ -54,19 +54,25 @@ export const AI_AUTOMATIONS_PLAYBOOK_COURSE: Course = {
   primaryColor: "#0f766e",
   accentColor: "#f59e0b",
   outcomes: [
-    "Master the 7 foundational no-code automation tools",
-    "Build custom OpenAI Assistants with tool calling and grounded RAG",
-    "Design relational databases in Airtable and publish client portals in Softr",
-    "Deploy 15-second missed-call text-back systems with Twilio",
-    "Package high-ticket services into $2,500 sprints and $850/mo retainers",
+    "Evaluate AI opportunities using the 5-criteria matrix: Difficulty, Time, Scalability, Income, and Stress",
+    "Master the $373/day unit economics required to build an $11,200/month recurring income stream solo",
+    "Build speed-to-lead and operations automation engines using Make.com, Airtable, and OpenAI APIs",
+    "Deploy a batch short-form video assembly line producing 30 vertical assets in 4 hours",
+    "Partner with 15k–75k micro-creators on 70/30 revenue-share Skool launches with zero upfront capital",
   ],
   modules: AI_AUTOMATIONS_MODULES,
   testimonials: [
     {
       name: "Marcus Vance",
       role: "Operations Consultant",
-      quote: "The Make.com and Airtable client portal blueprints allowed me to close a $3,500 operations hub for a boutique real estate firm on my second week.",
+      quote: "The unit economics breakdown in Module 1 and the 3-minute Loom teardown strategy in Module 6 helped me land 3 local business retainers at $2,000/month each in less than 3 weeks.",
       handle: "@marcus_ops",
+    },
+    {
+      name: "Elena Rostova",
+      role: "AI Creative Studio Founder",
+      quote: "The batch short-form production pipeline saved my sanity. I produce 30 vertical videos in a single afternoon and manage 4 founder retainers at $2,500/month solo.",
+      handle: "@elena_creative",
     },
   ],
 };

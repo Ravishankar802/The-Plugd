@@ -1,0 +1,325 @@
+const MODULE_03_LESSONS = [
+  {
+    id: "03-1",
+    number: "3.1",
+    title: "The Attention Economy & The High-Ticket Short-Form Bottleneck",
+    duration: "14m",
+    summary: "Capitalize on the explosive demand for short-form video (Reels, TikTok, Shorts) among brands and founders who lack the time or tools to produce content.",
+    learningObjective: "Analyze the commercial demand for high-velocity short-form content, evaluate founder time constraints, and structure an AI-powered content studio offer.",
+    takeaway: "Every business founder knows organic short-form video is essential for brand growth, but none have the 20 hours per week required to film and edit it manually.",
+    slides: [
+      {
+        id: "s-031-1",
+        order: 1,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.1",
+        headline: "The Organic Attention Crisis",
+        subheadline: "Why modern algorithms prioritize high-volume vertical video over traditional static ads.",
+        title: "The Organic Attention Crisis",
+        subtitle: "Why modern algorithms prioritize high-volume vertical video over traditional static ads.",
+        bulletPoints: [
+          "The Shift to Algorithmic Feeds: TikTok, Instagram Reels, and YouTube Shorts prioritize watch time and retention curves over existing follower counts.",
+          "The Paid Ad Fatigue Problem: Rising customer acquisition costs (CAC) on Meta and Google force brands to invest aggressively in organic distribution.",
+          "The Founder Dilemma: CEOs, authors, and agency owners understand they need daily video presence, but cannot afford 20 hours a week to write, film, and edit.",
+          "The AI Production Opportunity: Using AI tools to script, voice, and generate visual B-roll allows a solo studio to produce 30 polished videos in under 4 hours."
+        ],
+        takeaway: "The demand for high-quality short-form content is virtually limitless; your job is to remove the production bottleneck for busy founders."
+      },
+      {
+        id: "s-031-2",
+        order: 2,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.1",
+        headline: "The Anatomy of a High-Retention Vertical Video",
+        subheadline: "The structural elements required to hook viewers in the first 2 seconds and maintain 80%+ completion rates.",
+        title: "The Anatomy of a High-Retention Vertical Video",
+        subtitle: "The structural elements required to hook viewers in the first 2 seconds and maintain 80%+ completion rates.",
+        bulletPoints: [
+          "The 2-Second Visual & Audio Hook: Provocative question, contrarian thesis, or high-contrast visual that disrupts passive mindless scrolling.",
+          "The Narrative Body Loop: Fast-paced delivery of 3 concise insights or case points with visual scene transitions every 2.5 to 3.5 seconds.",
+          "Kinetic Subtitles & Sound Design: Animated word-by-word typography with emphasis highlights paired with subtle sound effects (whooshes, risers).",
+          "The Engagement or Conversion CTA: Guiding viewers to comment a specific keyword for an automated resource link via DM."
+        ],
+        takeaway: "A great short-form video is an engineered psychological experience designed to optimize algorithmic retention metrics."
+      },
+      {
+        id: "s-031-3",
+        order: 3,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.1",
+        headline: "Studio Unit Economics: Retainers vs. Hourly Billing",
+        subheadline: "Structuring monthly recurring content packages that generate predictable $2,500/month fees per account.",
+        title: "Studio Unit Economics: Retainers vs. Hourly Billing",
+        subtitle: "Structuring monthly recurring content packages that generate predictable $2,500/month fees per account.",
+        bulletPoints: [
+          "The Freelancer Flaw: Charging $50 per edited video forces you to edit 50 videos a month just to make $2,500, leading to immediate creative exhaustion.",
+          "The Retainer Transformation: Package 20 to 30 fully edited vertical videos with captions, B-roll, and hooks into a flat $2,500/month retainer.",
+          "The $10,000/Month Target: Exactly 4 monthly retainer clients at $2,500 each equals $10,000/month in gross studio revenue.",
+          "Operational Fulfillments: Leveraging batch AI generation allows you to fulfill one client's entire monthly quota in a single 4-hour production sprint."
+        ],
+        takeaway: "Never sell individual video files; sell a turnkey monthly organic growth engine on a recurring retainer."
+      },
+      {
+        id: "s-031-4",
+        order: 4,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.1",
+        headline: "The 5-Criteria Profile of the Content Studio Model",
+        subheadline: "Evaluating the pros and operational constraints of running an AI creative agency.",
+        title: "The 5-Criteria Profile of the Content Studio Model",
+        subtitle: "Evaluating the pros and operational constraints of running an AI creative agency.",
+        bulletPoints: [
+          "Difficulty: Moderate (2.5/5) — Accessible consumer tools like ElevenLabs and Higgsfield make technical execution straightforward.",
+          "Time Intensity: High (4/5) — Video requires aesthetic curation, rendering checks, and creative pacing.",
+          "Scalability: Moderate (2.5/5) — Creative review cycles limit solo capacity to 4 or 5 active accounts without hiring assistance.",
+          "Income Potential: Moderate (3/5) — Generates reliable $8k to $15k/month, but lacks the explosive upside of creator rev-share.",
+          "Stress Level: Moderate (3/5) — Lower urgency than broken enterprise code, but client creative revisions require firm management."
+        ],
+        takeaway: "The Content Studio is ideal for visually creative entrepreneurs seeking their first $10k/month, provided client revisions are strictly governed."
+      }
+    ],
+    writtenLesson: `# 3.1 The Attention Economy & The High-Ticket Short-Form Bottleneck\n\n> **Module 03: Business #2 — AI Creative & Short-Form Content Studio**  \n> *Playbook: These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)*\n\n---\n\n## Executive Overview & Commercial Opportunity\n\nThe second business model in the master framework is the **AI Creative & Short-Form Content Studio**.\n\nAcross every digital platform—TikTok, Instagram Reels, YouTube Shorts, and LinkedIn—organic distribution has consolidated around high-velocity vertical video. Algorithms are no longer indexed purely on social graphs (who follows whom); they are indexed almost entirely on **viewer retention, watch time, and completion rate**.\n\nThis dynamic has created an unprecedented commercial crisis for business founders, executives, real estate developers, and personal brands:\n1. **Rising Paid Ad Costs:** Meta and Google ad costs have surged over 40% in recent cycles, making paid customer acquisition increasingly unaffordable for boutique operators.\n2. **Insatiable Organic Appetite:** To maintain top-of-mind awareness and feed platform algorithms, brands must publish 15 to 30 pieces of polished vertical video every single month.\n3. **The Founder Time Bottleneck:** A CEO or consultant simply does not have the 20 hours each week required to brainstorm hooks, write scripts, record B-roll, edit captions, and format videos across three platforms.\n\nAs an AI Content Studio operator, you do not need a film degree, an expensive camera studio, or a team of editors in the Philippines. **By combining frontier LLMs for viral script architectures with specialized generative AI video tools (Higgsfield AI, Midjourney, ElevenLabs), a single operator can produce 30 broadcast-quality short-form videos in 4 hours of focused work.**\n\n---\n\n## 1. The Anatomy of an Algorithmic High-Retention Video\n\nTo justify charging a premium $2,500/month retainer, your deliverables must consistently outperform amateur iPhone recordings. Modern algorithmic video adheres to a precise psychological formula:\n\n\`\`\`\n[0:00 - 0:02]  Hook Phase: High-contrast visual + Contrarian audio thesis\n[0:02 - 0:10]  Context Loop: Agitate problem & preview high-value payoff\n[0:10 - 0:45]  Delivery Phase: 3 rapid value points with scene changes every 2.5s\n[0:45 - 0:55]  Action Call: Drive comments via keyword automation (e.g. \"Comment 'AUDIT'\")\n\`\`\`\n\n### 1. The 2-Second Multi-Sensory Hook\nViewers scroll through feeds in a state of passive hypnotic trance. Your video has less than 2.0 seconds to interrupt that pattern:\n- **Audio Hook:** A bold, counter-intuitive statement (*"Why hiring a 5-person agency is the fastest way to bankrupt your business in 2026."*).\n- **Visual Disruption:** Fast cinematic motion or unusual imagery generated via AI rather than a static talking head.\n\n### 2. High-Frequency Visual Pacing\nHuman attention spans on mobile devices require visual stimulation every 2.5 to 3.5 seconds. If a video remains on a single camera angle for 8 seconds, 50% of the audience drops off. Using AI B-roll generators, you insert relevant cinematic cutaways, animated diagrams, and contextual overlays that reset viewer attention continuously.\n\n### 3. Kinetic Typography & Micro-Sound Design\nOver 60% of short-form video is consumed with sound muted or at low volume in public environments. Dynamic word-by-word subtitles with high-contrast color highlights (yellow, cyan, white) and animated transitions are mandatory for retention.\n\n---\n\n## 2. Studio Unit Economics: Reaching $10,000/Month\n\nAmateur video editors sell their time on Fiverr or Upwork for $30 to $50 per video. This is a fatal business model: to earn $5,000, you must source, negotiate, and deliver 100 individual video projects every month.\n\nProfessional AI studio operators package their services into **Monthly Organic Growth Retainers**:\n\n| Retainer Package Tier | Monthly Deliverables | Production Time (Batch AI) | Monthly Retainer (USD) | Client Roster Needed for $10k/mo |\n|---|---|---|---|---|\n| **Tier 1: Starter Engine** | 12 Vertical Videos (3/week) | 2.5 hours / month | $1,500 / month | 7 clients |\n| **Tier 2: Daily Authority (Target)** | **24 Vertical Videos (6/week)** | **4.0 hours / month** | **$2,500 / month** | **Exactly 4 clients** |\n| **Tier 3: Omnichannel Domination** | 30 Videos + 15 X/LinkedIn Carousels | 6.0 hours / month | $3,500 / month | 3 clients |\n\nNotice the mathematical clarity of **Tier 2**:\n- You sign exactly **4 founder or brand accounts** at $2,500/month.\n- Gross Revenue = **$10,000 / month**.\n- Total monthly production time = 16 hours of batch editing.\n- Software costs (Higgsfield, ElevenLabs, CapCut, Claude) = ~$160/month.\n- **Net Founder Margin = 98.4%!**\n\n---\n\n## 3. The 5-Criteria Profile Audit for the Content Studio\n\nBefore choosing this model, review how it scored in our master framework:\n\n| Framework Dimension | Studio Score | Real-World Operational Context |\n|---|---|---|\n| **General Difficulty** | **2.5 / 5.0 (Moderate)** | Highly accessible; modern AI tools have intuitive user interfaces and preset workflows. |\n| **Time Intensity** | **4.0 / 5.0 (High)** | Requires active visual curation, checking render artifacts, and verifying subtitle spelling. |\n| **Scalability Ceiling** | **2.5 / 5.0 (Moderate)** | Hard solo cap at 5–6 accounts. Beyond 6 accounts, manual rendering bottlenecks emerge. |\n| **Income Potential** | **3.0 / 5.0 (Moderate)** | Comfortably generates $8,000 to $15,000/month; difficult to reach $50k/mo without staff. |\n| **Operational Stress** | **3.0 / 5.0 (Moderate)** | Clients can be subjective about creative aesthetics; requires strict revision governance. |\n\n---\n\n## 4. Production Service Level Agreement & Boundary Scope\n\nTo prevent \"creative revision creep,\" incorporate these rigid boundaries into your client onboarding document:\n\n\`\`\`json\n{\n  \"service_tier\": \"daily_authority_ai_video_retainer\",\n  \"monthly_deliverables\": {\n    \"total_vertical_videos\": 24,\n    \"distribution_formats\": [\"tiktok_9x16\", \"instagram_reels\", \"youtube_shorts\"],\n    \"asset_specifications\": \"1080x1920_60fps_prores_or_h264\"\n  },\n  \"client_collaboration_rules\": {\n    \"script_approval_window_hours\": 48,\n    \"batch_delivery_cadence\": \"delivered_on_the_1st_and_15th_of_every_month\",\n    \"maximum_revisions_per_video\": 1,\n    \"revision_criteria\": \"factual_or_pronunciation_errors_only\",\n    \"subjective_stylistic_overhauls\": \"billed_at_125_usd_per_video\"\n  }\n}\n\`\`\`\n\n---\n\n## 5. Diagnostic Failure Analysis\n\n| Failure Mode | Root Mechanism | Tactical Remedy |\n|---|---|---|\n| **Endless Client Revisions** | Client treats you like an on-demand personal animator | Limit revisions strictly to 1 round per batch and require timestamped Loom feedback. |\n| **Robotic AI Voice Tone** | Using default robotic text-to-speech models | Use ElevenLabs Voice Cloning trained on 15 minutes of the founder's authentic audio. |\n| **Repetitive Generic Stock B-Roll** | Overusing standard Pexels/Unsplash video clips | Generate bespoke cinematic scenes in Higgsfield AI or Midjourney for unique aesthetic value. |\n\n---\n\n## 6. Practical Implementation Exercise\n\n1. **Audit a Target Founder's Profile:** Find a successful boutique agency owner or consultant on LinkedIn or X with 5,000+ followers who rarely posts video.\n2. **Identify Their Top Written Post:** Select their highest-engagement written post or article.\n3. **Deconstruct into a 45-Second Video Hook:** Turn their written insight into a compelling 3-part script using the 2-second hook framework.\n\n---\n\n## 7. Key Actionable Takeaways\n\n1. **Short-form video is the new SEO:** Every founder needs organic video presence to combat rising paid ad costs.\n2. **Sell monthly retainers, not individual clips:** 4 clients at $2,500/month generates a predictable $10,000/month income.\n3. **Pacing drives algorithm retention:** Cut away every 2.5 to 3.5 seconds using AI-generated visual assets.\n4. **Enforce a strict 1-revision limit:** Never allow clients to endlessly tweak subjective creative preferences without paying extra.\n`
+  },
+  {
+    id: "03-2",
+    number: "3.2",
+    title: "The AI Creative Pipeline: Scripting, Voice Synthesis & Visual Generation",
+    duration: "14m",
+    summary: "Harness LLMs for high-retention storytelling hooks, ElevenLabs for voice cloning, and Higgsfield AI, Midjourney & Runway for cinematic B-roll.",
+    learningObjective: "Build a standardized production pipeline connecting LLM prompt engineering, voice synthesis, and generative video tools to batch-create high-performing assets.",
+    takeaway: "True video studio efficiency comes from pipeline modularity: decouple scripting, audio synthesis, and visual rendering into a repeatable assembly line.",
+    slides: [
+      {
+        id: "s-032-1",
+        order: 1,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.2",
+        headline: "The 3-Stage Generative Production Pipeline",
+        subheadline: "How to decouple the creation process into an efficient, repeatable assembly line.",
+        title: "The 3-Stage Generative Production Pipeline",
+        subtitle: "How to decouple the creation process into an efficient, repeatable assembly line.",
+        bulletPoints: [
+          "Stage 1: Cognitive Script Architecture — Using Claude 3.5 Sonnet to draft 30 viral retention scripts from client audio transcripts or long-form blogs in 45 minutes.",
+          "Stage 2: Synthetic Voice Cloning (ElevenLabs) — Generating studio-grade voiceovers using professional voice clones trained on the client's authentic voice.",
+          "Stage 3: Generative Visual Synthesis — Producing high-contrast cinematic B-roll using Higgsfield AI, Midjourney v6, and Runway Gen-3.",
+          "The Solo Advantage: Decoupling these phases allows you to batch 30 scripts on Monday morning, generate all audio in 30 minutes, and render visuals on Tuesday."
+        ],
+        takeaway: "Treat video creation like an industrial manufacturing line: batch each component stage separately to maximize output velocity."
+      },
+      {
+        id: "s-032-2",
+        order: 2,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.2",
+        headline: "Engineering High-Retention Script Prompts",
+        subheadline: "Configuring LLM prompts that write natural, spoken dialogue rather than stiff written essays.",
+        title: "Engineering High-Retention Script Prompts",
+        subtitle: "Configuring LLM prompts that write natural, spoken dialogue rather than stiff written essays.",
+        bulletPoints: [
+          "Banish the Academic Tone: LLMs naturally default to corporate vocabulary ('delve', 'moreover', 'testament'); force prompts into 5th-grade conversational cadence.",
+          "Punctuation for Audio Cadence: Use commas, dashes, and ellipses to force natural breath pauses and vocal inflection in downstream synthesis engines.",
+          "The Script Constraint Formula: Enforce strict word counts (110–135 words for 45 seconds; 140–165 words for 60 seconds).",
+          "Hook Generation Multipliers: Require the model to output 5 alternative opening hooks for every script to select the most viral angle."
+        ],
+        takeaway: "Scripts must be engineered for the human ear, not the eye; write for spoken rhythm and emotional pacing."
+      },
+      {
+        id: "s-032-3",
+        order: 3,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.2",
+        headline: "Voice Cloning & Audio Mastery in ElevenLabs",
+        subheadline: "Creating indistinguishable synthetic audio that sounds authentic, energetic, and professional.",
+        title: "Voice Cloning & Audio Mastery in ElevenLabs",
+        subtitle: "Creating indistinguishable synthetic audio that sounds authentic, energetic, and professional.",
+        bulletPoints: [
+          "Professional Voice Cloning (PVC): Upload 15 to 20 minutes of high-fidelity, room-noise-free audio of the client speaking passionately.",
+          "Stability & Clarity Calibration: Set Stability to 45% and Similarity to 85% to achieve natural emotional variation without vocal artifacts.",
+          "Speech-to-Speech (STS) Dynamic Inflection: Record your own voice providing the exact cadence and pacing, then transform it into the client's vocal timbre.",
+          "Exporting Multi-Track Stems: Download 48kHz WAV audio files for crystal-clear fidelity in downstream editing software."
+        ],
+        takeaway: "Professional Voice Cloning allows clients to publish daily content without ever stepping in front of a microphone."
+      },
+      {
+        id: "s-032-4",
+        order: 4,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.2",
+        headline: "Visual Asset Synthesis with Higgsfield AI & Runway",
+        subheadline: "Generating bespoke cinematic video clips that elevate production value beyond commodity stock footage.",
+        title: "Visual Asset Synthesis with Higgsfield AI & Runway",
+        subtitle: "Visual Asset Synthesis with Higgsfield AI & Runway",
+        bulletPoints: [
+          "The Higgsfield AI Advantage: Specialized generative video engine tailored for commercial marketing, dynamic camera moves, and human action.",
+          "Camera Motion Control: Utilize prompt motion directives ('cinematic push-in', 'slow motion orbital 4k', 'anamorphic lens flare') to create drama.",
+          "Image-to-Video Continuity: Generate high-resolution base frames in Midjourney v6 and animate them using Runway Gen-3 Alpha for consistent visual style.",
+          "Asset Library Organization: Build a categorized cloud folder of generic high-performing B-roll clips (luxury office, cyber data streams, trading desks) for instant reuse."
+        ],
+        takeaway: "Generative video tools allow solo creators to deploy Hollywood-level cinematic visual B-roll on a shoestring budget."
+      }
+    ],
+    writtenLesson: `# 3.2 The AI Creative Pipeline: Scripting, Voice Synthesis & Visual Generation\n\n> **Module 03: Business #2 — AI Creative & Short-Form Content Studio**  \n> *Playbook: These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)*\n\n---\n\n## Executive Overview & Pipeline Architecture\n\nThe primary reason most video editing agencies struggle to scale is that their workflow is chaotic and linear: an editor sits down, writes one script, records one audio track, searches for B-roll clips for 2 hours, edits the video, renders it, and repeats the cycle 30 times.\n\nThis linear method caps personal production at 15 to 20 videos per month and guarantees burnout.\n\nTo operate as a zero-employee **AI Creative Studio** generating $10,000/month, you must operate like a modern micro-manufacturing plant. You **decouple the production stages into discrete, batched pipelines**:\n\n\`\`\`\n[Stage 1: Script Engine]   --->   [Stage 2: Voice Cloning]   --->   [Stage 3: Visual Synthesis]\n (Claude 3.5 Sonnet)             (ElevenLabs PVC Model)            (Higgsfield / Runway Gen-3)\n      |                                |                                   |\n Batch 30 Scripts                Generate 30 Audio Stems           Render 60 Cinematic B-Rolls\n (Time: 45 minutes)              (Time: 30 minutes)                (Time: 90 minutes)\n\`\`\`\n\nBy batching each phase across an entire month's deliverables, your total active production time per client drops to **under 4 hours per month**.\n\n---\n\n## 1. Stage 1: Frontier LLM Scriptwriting Architecture\n\nStiff, corporate text kills short-form video instantly. If your AI prompt generates sentences like *\"In today's fast-paced digital landscape, innovation is paramount\"*, viewers scroll past within 0.8 seconds.\n\nSpoken dialogue requires short sentences, natural breath pauses, casual vocabulary, and intense emotional curiosity loops.\n\n### Production System Prompt: The Viral Short-Form Scriptwriter\nDeploy this exact prompt inside Claude 3.5 Sonnet or ChatGPT-4o:\n\n\`\`\`\nYou are an elite short-form retention director specializing in viral vertical video for YouTube Shorts and Instagram Reels.\nYour objective is to adapt the provided source topic into a high-retention 45-second script.\n\nRULES:\n1. WORD COUNT: Exactly 115 to 130 words (approx. 45 seconds at 160 WPM).\n2. READING LEVEL: 5th-grade conversational English. Banish words like \"delve\", \"testament\", \"tapestry\", \"moreover\", \"crucial\".\n3. PACING: Break sentences into short clauses (5-10 words max) separated by dashes or commas to guide synthetic voice breathing.\n4. STRUCTURE:\n   - [0-2s] HOOK: A contrarian or curiosity-driven hook. Provide 3 alternative options.\n   - [2-10s] CONTEXT: The high-stakes problem that 90% of people get wrong.\n   - [10-38s] VALUE POINTS: 3 distinct, tactical insights.\n   - [38-45s] CALL TO ACTION: A single clear keyword directive (e.g., \"Comment 'BLUEPRINT' below and I'll DM you the system.\").\n\nOUTPUT FORMAT:\nReturn strictly structured JSON matching this schema:\n{\n  \"topic\": \"string\",\n  \"hook_variations\": [\"Hook A\", \"Hook B\", \"Hook C\"],\n  \"selected_script_text\": \"string\",\n  \"b_roll_visual_prompts\": [\"Visual 1 prompt\", \"Visual 2 prompt\", \"Visual 3 prompt\"]\n}\n\`\`\`\n\n---\n\n## 2. Stage 2: Authentic Synthetic Audio in ElevenLabs\n\nVoice cloning technology has crossed the threshold of human perceptual indistinguishability. When calibrated correctly, your clients' own followers will not realize the voiceover was synthesized by AI.\n\n### Calibration Protocol for Professional Voice Cloning (PVC):\n1. **Source Audio Ingestion:** Obtain 15 to 20 minutes of clean, dry microphone audio from the client (interviews, podcast appearances, or voice notes). Ensure there is zero background music, echo, or room noise.\n2. **Model Selection:** Use the **Eleven Multilingual v2** or **Eleven Turbo v2.5** model for lowest latency and highest vocal stability.\n3. **Parameter Calibration Matrix:**\n   - **Stability:** \`0.45\` (Lower values introduce emotional inflection, breath sounds, and vocal dynamism; higher values sound monotone).\n   - **Similarity:** \`0.85\` (Ensures fidelity to the original voice timbre while allowing natural phonetic variations).\n   - **Style Exaggeration:** \`0.15\` (Adds subtle enthusiasm without distorting vowels).\n   - **Speaker Boost:** \`Enabled\` (Enhances vocal clarity and presence in mobile speakers).\n\n---\n\n## 3. Stage 3: Generative Visual Synthesis with Higgsfield AI & Runway\n\nTo elevate your client's videos above commodity competitors who use overused stock video clips from Pexels or Storyblocks, you engineer custom generative B-roll.\n\n### Using Higgsfield AI for High-Impact Commercial Action:\nHiggsfield AI is engineered specifically for dynamic social media video, featuring native camera motion controls and realistic character expressions.\n- **Cinematic Lighting Directives:** Prompt with lighting specifications: *\"cinematic 35mm lens, volumetric god rays, high-contrast chiaroscuro, muted corporate teal-and-orange grading\"*.\n- **Motion Controls:** Direct the camera movement explicitly: *\"slow orbital camera push-in towards the character's focused eyes, 60fps slow-motion\"*.\n\n### The Midjourney-to-Runway Gen-3 Pipeline:\nWhen you require absolute aesthetic control over a scene:\n1. **Base Frame Generation in Midjourney v6:**\n   \`\`\`\n   /imagine prompt: A high-end luxury minimalist office at night, glowing Bloomberg financial terminals, rain on floor-to-ceiling windows, hyper-realistic 8k, cinematic lighting --ar 9:16 --v 6.0\n   \`\`\`\n2. **Motion Animation in Runway Gen-3 Alpha:** Upload the 9:16 vertical image into Runway Image-to-Video.\n3. **Motion Prompt:** *\"Slow cinematic dolly zoom into the financial monitors, rain droplets rolling down the window glass, subtle ambient neon glow, photorealistic.\"*\n4. **Export:** Render in 1080x1920 at 24 or 30 fps.\n\n---\n\n## 4. Production Code: Automated Audio Generation Script (Node.js)\n\nAutomate the batch generation of voice files via the ElevenLabs REST API:\n\n\`\`\`javascript\nconst fs = require('fs');\nconst axios = require('axios');\n\nasync function synthesizeVoiceover({ voiceId, apiKey, scriptText, outputPath }) {\n  const url = \\`https://api.elevenlabs.io/v1/text-to-speech/\\\${voiceId}\\`;\n  \n  const payload = {\n    text: scriptText,\n    model_id: \"eleven_turbo_v2_5\",\n    voice_settings: {\n      stability: 0.45,\n      similarity_boost: 0.85,\n      style: 0.15,\n      use_speaker_boost: true\n    }\n  };\n\n  const response = await axios.post(url, payload, {\n    headers: {\n      'xi-api-key': apiKey,\n      'Content-Type': 'application/json',\n      'Accept': 'audio/mpeg'\n    },\n    responseType: 'arraybuffer'\n  });\n\n  fs.writeFileSync(outputPath, Buffer.from(response.data));\n  console.log(\\`✅ Voiceover synthesized and saved to \\\${outputPath}\\`);\n}\n\`\`\`\n\n---\n\n## 5. Diagnostic Failure Analysis\n\n| Failure Mode | Root Mechanism | Diagnostic Remedy |\n|---|---|---|\n| **AI Vocal Drift** | ElevenLabs voice sounds robotic or changes accent mid-sentence | Increase Stability to 0.55 or split the paragraph into separate shorter audio clips. |\n| **Generative Video Morphing** | Character's hands or faces distort during AI video generation | Use Runway Gen-3 with image-to-video anchoring rather than pure text-to-video prompting. |\n| **Pacing Desynchronization** | Audio is 48 seconds but B-roll footage is only 30 seconds | Render 6 to 8 distinct 4-second B-roll clips per script to ensure 100% visual coverage. |\n\n---\n\n## 6. Practical Implementation Exercise\n\n1. **Record a 60-Second Audio Sample:** Use your smartphone voice memo app to record yourself reading a 1-paragraph business tip.\n2. **Generate an Instant Voice Clone:** Create a free account on ElevenLabs, upload the audio sample, and synthesize a test script.\n3. **Generate 1 Cinematic B-Roll Clip:** In Higgsfield AI or Runway Gen-3, generate a 4-second vertical video depicting a modern tech entrepreneur working on a laptop.\n\n---\n\n## 7. Key Actionable Takeaways\n\n1. **Decouple the creation pipeline:** Batch scripts, voiceovers, and visual renders separately to achieve 10x production speed.\n2. **Prompt for spoken cadence:** Use short sentences, natural breath marks, and conversational 5th-grade English.\n3. **Calibrate ElevenLabs parameters:** Stability at 0.45 and Similarity at 0.85 delivers optimal emotional realism.\n4. **Image-to-video yields the highest quality:** Create base frames in Midjourney v6 and animate them in Runway Gen-3.\n`
+  },
+  {
+    id: "03-3",
+    number: "3.3",
+    title: "Automated Video Assembly, Pacing & Faceless Channel Systems",
+    duration: "14m",
+    summary: "Standardize rapid video assembly, dynamic subtitle animation, B-roll pacing, and audio mixing to produce 30 high-performing video assets in 4 hours.",
+    learningObjective: "Master the assembly and templating workflows that allow a solo operator to edit, caption, and export 30 vertical videos in under 4 hours.",
+    takeaway: "Editing is not about reinventing the wheel on every clip; it is about building standardized timeline templates and leveraging automated caption engines.",
+    slides: [
+      {
+        id: "s-033-1",
+        order: 1,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.3",
+        headline: "The Standardized Timeline Architecture",
+        subheadline: "Structuring editing timelines for maximum assembly speed and visual consistency.",
+        title: "The Standardized Timeline Architecture",
+        subtitle: "Structuring editing timelines for maximum assembly speed and visual consistency.",
+        bulletPoints: [
+          "Track 1 (Voiceover Master): Normalized to -14 LUFS with dynamic EQ and subtle compression for maximum mobile punchiness.",
+          "Track 2 (Background Ambience): Lo-fi or dark cinematic instrumental track ducked automatically to -24 dB beneath speech.",
+          "Track 3 (Visual B-Roll Layer): Generative AI video clips cut precisely at 2.5 to 3.5-second intervals on downbeats.",
+          "Track 4 (Kinetic Subtitles & Overlays): Dynamic auto-caption layer with custom brand colors, drop shadows, and word animations."
+        ],
+        takeaway: "A locked timeline template cuts manual editing time from 45 minutes down to 8 minutes per video."
+      },
+      {
+        id: "s-033-2",
+        order: 2,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.3",
+        headline: "Kinetic Auto-Captions & Subtitle Styling",
+        subheadline: "Why dynamic subtitles drive watch time and how to configure them with sub-second accuracy.",
+        title: "Kinetic Auto-Captions & Subtitle Styling",
+        subtitle: "Why dynamic subtitles drive watch time and how to configure them with sub-second accuracy.",
+        bulletPoints: [
+          "The Read-Along Psychology: Viewers subconsciously read subtitles faster than speech, creating continuous visual forward momentum.",
+          "Word-by-Word Highlight Animation: Highlighting the active spoken word in vibrant yellow (#FFE500) or neon green (#00FF66).",
+          "Typography Hierarchy: Heavy, clean sans-serif fonts (The Bold Font, Montserrat Black, Futura Heavy) with black stroke borders.",
+          "Automated Caption Generators: Tools like Submagic, CapCut Pro, or Auto-Cut transcribe and animate subtitles in 60 seconds with 98% accuracy."
+        ],
+        takeaway: "High-contrast dynamic captions keep silent viewers glued to the screen across all social media platforms."
+      },
+      {
+        id: "s-033-3",
+        order: 3,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.3",
+        headline: "Faceless Channels vs. Branded Founder Channels",
+        subheadline: "Comparing the two dominant video agency models and their commercial positioning.",
+        title: "Faceless Channels vs. Branded Founder Channels",
+        subtitle: "Comparing the two dominant video agency models and their commercial positioning.",
+        bulletPoints: [
+          "The Faceless Channel Model: 100% synthetic audio, generative AI B-roll, zero camera presence; monetized via TikTok Creator Rewards and affiliate links.",
+          "The Branded Founder Studio: Repurposing executive interviews or voice cloning founders to drive inbound B2B consulting leads.",
+          "Commercial Stability Comparison: Founder studios command predictable $2,500/month retainers; faceless channels rely on algorithm ad revenue.",
+          "The Hybrid Approach: Provide busy founders with a 'Done-for-You' faceless studio that represents their corporate brand without requiring their face on camera."
+        ],
+        takeaway: "Branded founder studios provide higher, more stable monthly retainers than speculative faceless consumer channels."
+      },
+      {
+        id: "s-033-4",
+        order: 4,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.3",
+        headline: "Batch Exporting & Quality Assurance Protocol",
+        subheadline: "Ensuring flawless video exports with zero audio clipping or visual compression artifacts.",
+        title: "Batch Exporting & Quality Assurance Protocol",
+        subtitle: "Ensuring flawless video exports with zero audio clipping or visual compression artifacts.",
+        bulletPoints: [
+          "Export Preset Standards: H.264 MP4, 1080x1920 vertical resolution, 30fps or 60fps, variable bitrate (VBR 2-pass) target 15 Mbps.",
+          "Mobile Audio Check: Test rendered video audio on smartphone speakers to ensure the voiceover cuts through ambient room noise.",
+          "Safe-Zone Verification: Keep captions and critical visual elements within the 1080x1400 center safe zone to prevent UI button overlap.",
+          "Cloud Delivery Staging: Organize exported files in Google Drive or Frame.io with clear naming conventions (e.g., 'Client_Video_01_HookA.mp4')."
+        ],
+        takeaway: "Strict export standards and safe-zone compliance ensure deliverables look flawless inside native mobile app interfaces."
+      }
+    ],
+    writtenLesson: `# 3.3 Automated Video Assembly, Pacing & Faceless Channel Systems\n\n> **Module 03: Business #2 — AI Creative & Short-Form Content Studio**  \n> *Playbook: These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)*\n\n---\n\n## Executive Overview & Assembly Architecture\n\nWhen video editors attempt to craft every video from scratch on an empty timeline, they waste 40 minutes per video arranging clips, syncing audio, adjusting volume levels, and manually setting font styles.\n\nIn an **AI Content Studio**, you do not edit from scratch. You work inside a **locked, modular timeline master template**.\n\nBy establishing a rigid 4-track timeline structure and leveraging automated speech-to-text caption engines, your manual editing time drops from 40 minutes down to **6 to 8 minutes per video**. That means a full monthly package of 24 videos is assembled, captioned, and queued for export in under 3.5 hours.\n\n---\n\n## 1. The 4-Track Master Timeline Architecture\n\nConfigure your master project in CapCut Pro, Adobe Premiere Pro, or DaVinci Resolve using this strict hierarchy:\n\n\`\`\`\nTrack 4 [Video Top]:     Kinetic Subtitles & Keyword Overlays (Dynamic Text Engine)\nTrack 3 [Video Mid]:     Visual B-Roll Layer (Generative AI Clips cut every 2.5–3.5s)\nTrack 2 [Audio Sub]:     Background Ambient Music (Sidechain Ducked to -24 dB)\nTrack 1 [Audio Master]:  Normalized AI Voiceover (-14 LUFS, High-Pass Filter @ 80Hz)\n\`\`\`\n\n### Track 1: Voiceover Normalization & EQ\n- **Gain Staging:** Normalize the synthetic voiceover stem to **-14 LUFS** (integrated loudness) with peak ceiling at **-1.0 dB**.\n- **EQ & Dynamics:** Apply a gentle high-pass filter cutting frequencies below 80 Hz (eliminates synthetic sub-rumble) and boost presence around 3.5 kHz for vocal clarity on mobile speakers.\n\n### Track 2: Background Music & Sidechain Compression\n- Select rhythmic, non-intrusive instrumental tracks (lo-fi hip-hop, tech house, or cinematic percussion).\n- Configure **sidechain ducking**: whenever the voiceover on Track 1 is active, the background music volume automatically drops by -10 dB to prevent vocal masking.\n\n### Track 3: B-Roll Pacing & Transition Logic\n- Lay down generative AI video clips or stock footage in 2.5 to 3.5-second segments.\n- Align visual cuts with vocal sentence breaks or rhythmic beats in the background track.\n- Avoid tacky, amateur 3D transitions (page curls, star wipes); use clean hard cuts, subtle optical zoom punches (105% scale), or fast motion blur whips.\n\n### Track 4: Kinetic Typography & Visual Safe Zones\n- Keep all animated subtitles strictly within the **Mobile Platform Safe Zone** (between 300px from the top and 450px from the bottom) so platform UI elements (like buttons, comments, account handles, sound discs) do not obscure text.\n\n---\n\n## 2. Dynamic Kinetic Subtitle Configuration\n\nSubtitles are not merely an accessibility aid; they are the primary psychological driver of viewer retention on mobile feeds.\n\n### The Subtitle Styling Rulebook:\n1. **Font Family:** Heavy, condensed sans-serif fonts with thick strokes:\n   - *Montserrat Black*\n   - *The Bold Font*\n   - *Komika Axis*\n   - *Futura Bold*\n2. **Font Size:** 18pt to 22pt relative to 1080x1920 canvas.\n3. **Stroke & Shadow:** White fill with a 4px black outer stroke and a subtle 25% black drop shadow. This guarantees legibility across white, bright, and dark backgrounds.\n4. **Active Word Coloring:** Set the active spoken word to illuminate in high-visibility neon:\n   - Primary: Electric Yellow (\`#FFE500\`)\n   - Secondary / Action: Neon Green (\`#00FF66\`)\n   - Urgency: Bright Coral (\`#FF3B30\`)\n\n---\n\n## 3. Faceless Channels vs. Branded Executive Studios\n\nWhen launching an AI Content Studio, you will encounter two primary operating styles:\n\n| Feature Dimension | Faceless AI Channels | Branded Executive Studio (Recommended) |\n|---|---|---|\n| **Target Audience** | Mass consumer entertainment / trivia | B2B founders, consultants, luxury brands |\n| **Monetization Engine** | Ad revenue (TikTok Rewards, YouTube AdSense) | **Fixed monthly retainers ($2,500/mo)** |\n| **Revenue Predictability** | Highly volatile (algorithm swings) | Highly stable (contracted monthly payments) |\n| **Client Interaction** | None (you own the channel) | Low (asynchronous monthly batch reviews) |\n| **Time to $10,000/Month** | 6 to 12 months of daily uploading | **30 to 60 days (4 retainer clients)** |\n| **Strategic Advantage** | Passive asset ownership | Immediate, high-margin cash flow |\n\n**Strategic Directive:** Prioritize the **Branded Executive Studio**. Signing 4 business owners who pay you $2,500 every single month provides instant, stress-free $10k cash flow without gambling on platform algorithmic monetization policies.\n\n---\n\n## 4. Production Code: Video Safe-Zone Overlay Specifications\n\n\`\`\`json\n{\n  \"canvas_resolution\": {\n    \"width_px\": 1080,\n    \"height_px\": 1920,\n    \"aspect_ratio\": \"9:16\",\n    \"framerate\": 30\n  },\n  \"mobile_ui_safe_zones\": {\n    \"top_safe_margin_px\": 280,\n    \"bottom_safe_margin_px\": 420,\n    \"left_safe_margin_px\": 60,\n    \"right_safe_margin_px\": 140,\n    \"subtitle_anchor_y_px\": 1280\n  },\n  \"audio_standards\": {\n    \"target_lufs\": -14.0,\n    \"true_peak_max_db\": -1.0,\n    \"music_ducking_attenuation_db\": -12.0\n  }\n}\n\`\`\`\n\n---\n\n## 5. Diagnostic Failure Analysis\n\n| Assembly Error | Root Cause | Preventive Measure |\n|---|---|---|\n| **Subtitles Blocked by UI** | Placing text too low on the 9:16 canvas | Anchor all caption blocks at Y: 1280px (above TikTok caption box and account name). |\n| **Muffled Mobile Audio** | Over-boosting low-end bass in background music | Cut all music frequencies below 120 Hz; keep voiceover crisp and bright in the 2–5 kHz range. |\n| **Visual Stutter / Lag** | Exporting at mismatched variable framerates | Lock project sequence strictly to constant 30.0 fps or 60.0 fps before rendering. |\n\n---\n\n## 6. Practical Implementation Exercise\n\n1. **Set Up a Master CapCut or Premiere Project:** Create a 1080x1920 vertical sequence.\n2. **Apply the 4-Track Structure:** Configure Track 1 (Voice), Track 2 (Music), Track 3 (B-Roll), Track 4 (Captions).\n3. **Assemble a 30-Second Video:** Import your ElevenLabs voiceover stem, add 8 AI B-roll clips, generate auto-captions, and export a test MP4 in under 10 minutes.\n\n---\n\n## 7. Key Actionable Takeaways\n\n1. **Use locked timeline templates:** Never edit from an empty canvas; templates cut production time by 80%.\n2. **Dynamic subtitles are non-negotiable:** Over 60% of mobile users watch without sound; animated text drives retention.\n3. **Target B2B founders over faceless channels:** 4 retainers @ $2,500/mo is far more reliable than chasing viral ad revenue.\n4. **Respect mobile safe zones:** Keep critical text and visuals between Y: 280px and Y: 1500px to avoid platform UI interference.\n`
+  },
+  {
+    id: "03-4",
+    number: "3.4",
+    title: "Managing Revision Traps, Client Boundaries & Defending Studio Margins",
+    duration: "14m",
+    summary: "Protect agency profitability from endless client revisions using rigid review portals, asynchronous approval gates, and clear deliverable caps.",
+    learningObjective: "Implement boundary-management protocols, design an asynchronous client review portal, and protect 90%+ studio profit margins against creative scope creep.",
+    takeaway: "In creative agencies, profit is not lost on production; it is lost in endless rounds of unpaid, subjective client revisions.",
+    slides: [
+      {
+        id: "s-034-1",
+        order: 1,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.4",
+        headline: "The Creative Agency Revision Trap",
+        subheadline: "Why subjective client feedback rapidly destroys effective hourly rates and causes burnout.",
+        title: "The Creative Agency Revision Trap",
+        subtitle: "Why subjective client feedback rapidly destroys effective hourly rates and causes burnout.",
+        bulletPoints: [
+          "The Subjectivity Hazard: In software automation, code either works or fails; in video editing, every client believes they are an art director.",
+          "The Endless Tweak Cycle: 'Can you make the blue slightly warmer? Can you change the music track? What if we tried a different font?'",
+          "Effective Hourly Rate Collapse: Spending 5 hours tweaking a single $100 video reduces your earnings to $20/hour.",
+          "The Professional Antidote: Establish definitive, non-negotiable boundary frameworks during the initial onboarding handshake."
+        ],
+        takeaway: "Client revisions must be strictly governed by contractual rules, not subjective emotional whims."
+      },
+      {
+        id: "s-034-2",
+        order: 2,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.4",
+        headline: "The 2-Stage Asynchronous Approval Gate",
+        subheadline: "How to decouple script validation from visual rendering to eliminate wasted editing hours.",
+        title: "The 2-Stage Asynchronous Approval Gate",
+        subtitle: "How to decouple script validation from visual rendering to eliminate wasted editing hours.",
+        bulletPoints: [
+          "Gate 1: Script & Concept Sign-Off — Client reviews and approves written scripts in Airtable/Notion before a single frame of video is rendered.",
+          "The 48-Hour Silence Protocol: If the client does not request script edits within 48 hours, scripts are marked automatically as approved.",
+          "Gate 2: Final Visual Assembly Check — Client receives the assembled video batch with a strict limit of 1 round of minor timestamped revisions.",
+          "Zero Live Zoom Reviews: Banish live review meetings; require all feedback via timestamped comments in Frame.io or Loom."
+        ],
+        takeaway: "Never render video without an approved script; separating words from visuals eliminates 90% of structural revisions."
+      },
+      {
+        id: "s-034-3",
+        order: 3,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.4",
+        headline: "Packaging Deliverables with Frame.io & Airtable",
+        subheadline: "Providing an enterprise-grade review experience that reinforces your premium positioning.",
+        title: "Packaging Deliverables with Frame.io & Airtable",
+        subtitle: "Providing an enterprise-grade review experience that reinforces your premium positioning.",
+        bulletPoints: [
+          "Frame.io Review Links: Clients click directly on the video timeline to leave timestamped notes rather than typing vague paragraphs.",
+          "Airtable Content Calendar Portal: Clients view their upcoming monthly queue with status tags ('In Production', 'Pending Review', 'Ready to Publish').",
+          "Automated Publishing Integrations: Connect approved videos directly to Metricool, Buffer, or repurpose.io for hands-off publishing.",
+          "The Premium Perception: A clean, branded portal makes clients feel like they are working with a 20-person production house."
+        ],
+        takeaway: "Structured review portals elevate perceived client value while enforcing strict revision boundaries."
+      },
+      {
+        id: "s-034-4",
+        order: 4,
+        type: "LIST",
+        eyebrow: "MODULE 03 · LESSON 3.4",
+        headline: "Protecting 90%+ Net Margins as a Solo Studio",
+        subheadline: "The economic discipline required to scale to $10,000/month without margin compression.",
+        title: "Protecting 90%+ Net Margins as a Solo Studio",
+        subtitle: "The economic discipline required to scale to $10,000/month without margin compression.",
+        bulletPoints: [
+          "The $125 Out-of-Scope Fee: Charge a flat $125 fee for any stylistic overhaul requested after script sign-off.",
+          "Software Cost Control: Limit studio tool subscriptions to $200/month (Higgsfield, ElevenLabs, CapCut, Frame.io).",
+          "Batch Production Discipline: Schedule dedicated editing blocks (e.g., Tuesday and Thursday mornings) to preserve deep creative focus.",
+          "Capacity Governance: Cap your active client roster at 4 retainers ($10,000/month); only accept client #5 if a current client churns or upgrades."
+        ],
+        takeaway: "Disciplined boundary management and batch scheduling allow you to earn $10k/month while working just 15 hours per week."
+      }
+    ],
+    writtenLesson: `# 3.4 Managing Revision Traps, Client Boundaries & Defending Studio Margins\n\n> **Module 03: Business #2 — AI Creative & Short-Form Content Studio**  \n> *Playbook: These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)*\n\n---\n\n## Executive Overview & The Revision Crisis\n\nIn our 5-Dimensional Business Evaluation Framework, the **AI Creative & Short-Form Content Studio** model scored a **3.0 out of 5.0 on Operational Stress Level**.\n\nIt is crucial to analyze why this stress arises:\nIn the AI Automation Agency model, performance is binary and objective: the webhook either successfully fires and populates Airtable, or it throws an error code. There is no subjective debate about whether the data looks \"stylish.\"\n\nIn creative content, however, **every client considers themselves a visual expert**. Without rigid operational governance, you will inevitably encounter the \"Revision Trap\":\n- A client approves a script, watches the finished 60-second video, and says: *\"I don't love the vibe of the music. Can you try something more jazz-fusion?\"*\n- You swap the music, and they say: *\"Now the font feels too aggressive. Can we make it softer? And can we change the opening hook entirely?\"*\n- Three rounds of revisions later, you have spent 4 hours on a single video, completely destroying your hourly profitability.\n\nTo operate a sustainable, stress-free AI Content Studio netting $10,000/month with zero employees, **you must replace subjective emotional back-and-forth with an automated, gated approval architecture**.\n\n---\n\n## 1. The 2-Stage Asynchronous Approval Gate\n\nTo eliminate 90% of client revision requests, decouple the **Words (Script)** from the **Visuals (Assembly)**:\n\n\`\`\`\n[Stage 1: Script Approval Gate]\n Client reviews written script in Airtable.\n Must approve within 48 hours or auto-approved.\n                |\n                v (Script Locked)\n[Stage 2: Assembly & Visual Render]\n AI Voiceover synthesized + B-Roll placed + Captions added.\n                |\n                v\n[Stage 3: Single Final Review Pass]\n Timestamped Frame.io comments only (Factual/Pronunciation errors).\n Subjective stylistic overhauls billed at $125/video.\n\`\`\`\n\n### Rule 1: Never Render on an Unlocked Script\nA script takes 3 minutes to edit in text; an assembled video takes 30 minutes to re-voice, re-cut, and re-export. Never record a single line of synthetic audio or animate B-roll until the client has explicitly signed off on the written script.\n\n### Rule 2: The 48-Hour Silence Protocol\nClients are notoriously slow at reviewing deliverables. In your agreement, state:  \n*\"Scripts are delivered on the 1st of the month. If feedback is not received within 48 business hours, the batch is deemed approved and progresses directly to production.\"*\n\n### Rule 3: Zero Live Zoom Review Sessions\nNever allow a client to \"hop on a quick 15-minute Zoom call\" to review videos together. Live review calls turn into rambling 60-minute brainstorming sessions. Mandate that all feedback must be submitted via timestamped comments in Frame.io or recorded as a 2-minute Loom teardown.\n\n---\n\n## 2. Review Portal Architecture: Frame.io + Airtable\n\nAmateur freelancers send unlisted YouTube links or MP4 files via Google Drive and ask: *\"What do you think?\"*\n\nThis invites vague, unstructured feedback like: *\"Around the middle, can you make it punchier?\"*\n\nProfessional studios deploy **Frame.io**:\n1. Upload the 24-video batch into a private Frame.io project.\n2. The client receives a single secure review link.\n3. To leave feedback, the client pauses the video at the exact second (e.g., \`0:14.2\`) and types their note directly on the frame: *\"Please fix spelling of 'Proprietary' here.\"*\n4. You receive a clean, actionable checklist of timestamped tasks. You resolve all items in 20 minutes and mark the batch closed.\n\n---\n\n## 3. Scope of Work (SOW) Contract Clause: Revision Boundaries\n\nCopy and paste this contractual term into your client retainers:\n\n\`\`\`\nREVISION & APPROVAL POLICY:\n1. Script Phase: Client is entitled to one (1) round of structural revisions during the initial script delivery window. Once approved, the script is locked.\n2. Video Assembly Phase: Client is entitled to one (1) consolidated round of minor technical revisions per video batch. \"Technical revisions\" are strictly defined as: factual errors, mispronounced company names, or incorrect subtitle spelling.\n3. Out-of-Scope Revisions: Any request to alter an approved script, re-record voiceovers, change agreed-upon visual styles, or replace approved background music after production has commenced will incur an Out-of-Scope Production Fee of $125.00 USD per video asset.\n\`\`\`\n\nWhen a client realizes that changing their mind about background music will cost them $125 per video across 10 videos ($1,250), their sudden desire to tweak subjective details evaporates immediately.\n\n---\n\n## 4. Financial Health Matrix: Protecting 90%+ Studio Margins\n\n| Cost Category | Monthly Allocation (4 Retainer Clients = $10k/mo) | Percentage of Gross |\n|---|---|---|\n| **Higgsfield AI Pro** | $39.00 / month | 0.39% |\n| **ElevenLabs Creator** | $22.00 / month | 0.22% |\n| **CapCut Pro / Adobe Cloud** | $20.00 / month | 0.20% |\n| **Frame.io Pro Tier** | $15.00 / month | 0.15% |\n| **Stripe Merchant Processing (2.9%)** | $290.00 / month | 2.90% |\n| **Total Operational Costs** | **$386.00 / month** | **3.86%** |\n| **Net Founder Take-Home Profit** | **$9,614.00 / month** | **96.14% Net Margin** |\n\n---\n\n## 5. Diagnostic Failure Analysis\n\n| Margin Trap | Underlying Cause | Tactical Correction |\n|---|---|---|\n| **Scope Creep via Slack** | Client texting ad-hoc requests outside the formal portal | Politely redirect: *\"Hey Mark! Please drop that note into Frame.io so our production pipeline tracks it accurately.\"* |\n| **Delayed Monthly Payments** | Invoicing after the work is delivered | Require automated Stripe recurring subscriptions charged on the 1st of every month prior to production. |\n| **Over-Delivering Unused Content** | Creating 40 videos when the contract specified 24 | Deliver exactly the contracted 24 assets; offer remaining concepts as an upsell for an extra $1,000. |\n\n---\n\n## 6. Practical Implementation Exercise\n\n1. **Create a Free Frame.io Account:** Set up an isolated project named \`Client Review Demo\`.\n2. **Upload a Sample 30-Second Video:** Test leaving a timestamped comment at \`0:05\` and verify how the notification appears.\n3. **Draft Your 1-Page Revision Policy:** Prepare a PDF document clearly explaining the 2-stage approval process and the $125 out-of-scope fee.\n\n---\n\n## 7. Key Actionable Takeaways\n\n1. **Decouple scripts from assembly:** Always lock scripts in text before recording voiceovers or rendering visuals.\n2. **Enforce the 48-hour auto-approval protocol:** Never let slow client review cycles stall your production schedule.\n3. **Mandate timestamped Frame.io feedback:** Banish unstructured feedback and live Zoom review calls entirely.\n4. **Attach a price tag to subjective changes:** Charging $125 per out-of-scope edit protects your margins and trains clients to respect your time.\n`
+  }
+];
+
+module.exports = { MODULE_03_LESSONS };

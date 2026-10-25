@@ -169,6 +169,17 @@ Every current and future Plugd Playbook must contain **6–7 modules**, with **e
 
 ---
 
+## 11. Source YouTube Video Knowledge Extraction & Curriculum Architecture
+
+When a source YouTube video is provided for any Plugd Playbook:
+1. **Extract & Study Actual Source Content First:** Retrieve and analyze the actual video transcript, chapters, speaker insights, mental models, tool recommendations, unit economics, case studies, and practical workflows before generating any curriculum.
+2. **Faithful Knowledge Translation:** Ground the educational structure in the video's actual teaching. Do not invent fictitious systems or swap out the core business models taught by the creator.
+3. **Structured Commercial Adaptation:** Bridge casual video soundbites into rigorous, production-grade business curricula. Translate daily revenue targets (e.g., $373/day) into monthly milestones ($10,000+/month) with realistic unit economics, cost structures, margin analysis, and non-guaranteed financial modeling.
+4. **Adherence to Mandatory Content Standard:** Expand the extracted knowledge into 6–7 modules, with exactly 4 lessons per module (24–28 total lessons). Every lesson must deliver dual-format depth: multi-slide presentations with diagrams and tables, accompanied by in-depth written lessons (>2,000 characters).
+5. **Preserve Architectural Boundaries:** Maintain existing landing page routes, auth flows, checkout logic, and unique slide template assignments while upgrading all underlying curriculum content and page metadata to reflect the verified video curriculum.
+
+---
+
 ## Final Rule
 
 **One canonical blueprint. One persistent registry. Hundreds of unique, complete Playbooks with 100% distinct PPT slide designs.**

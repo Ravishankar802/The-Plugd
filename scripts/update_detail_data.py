@@ -1,0 +1,169 @@
+import os
+
+detail_ts = '''import type { PlaybookDetailData } from "./dating-playbook-detail";
+import { AI_AUTOMATIONS_MODULES_METADATA } from "./ai-automations-curriculum";
+
+export const DETAIL_AI_AUTOMATIONS_DATA: PlaybookDetailData = {
+  id: "ai-businesses-01",
+  slug: "7-ai-automations",
+  title: "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)",
+  headline:
+    "Master the 3 proven AI business models to reach $10,000+/month as a solo operator with zero employees.",
+  description:
+    "A comprehensive, practical playbook breaking down the 3 dominant zero-employee AI businesses: AI Workflow Automation Agency (AAA), AI Short-Form Content Studio, and AI Shadow Operating. Learn the unit economics of $373/day, the 5-criteria evaluation framework, no-code tool stacks, client acquisition without ad spend, and asymmetric 70/30 creator revenue shares.",
+  categoryName: "AI Businesses",
+  categorySlug: "ai-businesses",
+  price: 3,
+  originalPrice: 9,
+  currency: "USD",
+  discountPercentage: 67,
+  badge: "Bestseller",
+  rating: 4.9,
+  ratingCount: 384,
+  studentsCount: "1,420",
+  instructorName: "Plugd Automation Team",
+  instructorTitle: "Systems Architects & Solo Operator Strategists",
+  instructorBio:
+    "The Plugd Automation Team advises solo founders, creators, and consulting operators on deploying high-margin AI automations, content production assembly lines, and high-leverage creator monetization partnerships.",
+  instructorRating: 4.9,
+  instructorReviews: "384",
+  instructorStudents: "1,420",
+  instructorCourses: 4,
+  lastUpdated: "10/2026",
+  language: "English",
+  subtitles: "English [Auto]",
+  thumbnail: "",
+  hoursOfMaterial: "7.0 hours",
+  modulesCount: 7,
+  lessonsCount: 28,
+  whatYouWillLearn: [
+    "Evaluate the 3 dominant zero-employee AI businesses using the 5-criteria matrix: Difficulty, Time, Scalability, Income, and Stress",
+    "Master the $373/day unit economics required to build an $11,200/month recurring income stream solo",
+    "Architect speed-to-lead and operations automation engines using Make.com, Airtable, and OpenAI APIs",
+    "Deploy the high-velocity AI creative assembly line to produce 30 short-form video assets in 4 hours",
+    "Infiltrate and sign 15k–75k micro-creators on 70/30 revenue-share partnerships with zero upfront costs",
+    "Design and launch proprietary digital courses and paid communities on Skool generating $10k–$50k per launch",
+    "Land high-ticket B2B clients organically using value-first 3-minute Loom video teardowns without ad spend",
+    "Run your entire solo enterprise on a lean software overhead capped at under $250/month with 95%+ net margins",
+  ],
+  relatedTopics: [
+    "AI Businesses",
+    "AI Automation Agency",
+    "Short-Form Content Studio",
+    "AI Shadow Operating",
+    "Solopreneurship",
+    "Make.com",
+    "Creator Monetization",
+    "Skool Communities",
+  ],
+  requirements: [
+    "No coding, programming, or previous technical experience required",
+    "A computer with an internet connection and modern web browser",
+    "Willingness to execute value-first outreach and commit to a single business model for 30 days",
+  ],
+  descriptionSections: {
+    intro: [
+      "Building a six-figure business in the modern economy no longer requires renting offices, managing payroll, or burning venture capital. In this definitive playbook based directly on battle-tested frameworks, you will learn how a single solo operator can achieve $10,000+/month ($373/day) across the three dominant AI business models: AI Workflow Automation Agency (AAA), AI Short-Form Content Studio, and AI Shadow Operating for Micro-Creators.",
+      "Rather than chasing temporary AI trends or selling thin software wrappers, this curriculum teaches you how to evaluate opportunities through the rigorous 5-criteria lens—Difficulty, Time Intensity, Scalability, Income Potential, and Stress Level. You will master the exact operational workflows, software architectures, outreach scripts, and client-closing mechanics required to generate dependable recurring cash flow.",
+      "Every lesson combines executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and production-ready frameworks that enable immediate execution.",
+    ],
+    keyPointsTitle: "The 7-Module Solo Operator Curriculum",
+    keyPoints: [
+      "Module 1: Foundations & The 5-Criteria Business Evaluation Framework",
+      "Module 2: Business #1 — The AI Workflow Automation Agency (AAA)",
+      "Module 3: Business #2 — The AI Creative & Short-Form Content Studio",
+      "Module 4: Business #3 — AI Shadow Operating for Micro-Creators",
+      "Module 5: The AI Shadow Operator Launch & Monetization Engine",
+      "Module 6: Client Acquisition & Partner Pitching (Zero Ad Spend)",
+      "Module 7: The Solo Scaling Roadmap & Path to $10,000+/Month",
+    ],
+    closing: [
+      "Every single lesson contains both an interactive executive slide presentation and a comprehensive written implementation guide.",
+      "Whether you choose the stability of agency retainers, the creative speed of short-form video, or the asymmetric leverage of creator shadow operating, this playbook gives you the complete blueprint to build an enduring solo enterprise.",
+    ],
+  },
+  targetAudience: [
+    "Aspiring solopreneurs wanting to build a $10,000+/month business with zero employees",
+    "Freelancers looking to transition from low-paying gigs to high-ticket AI agency retainers",
+    "Video editors and content creators who want to build a recurring-revenue AI content studio",
+    "Operators and educators who want to partner with creators on high-upside Skool community launches",
+  ],
+  includes: [
+    { iconName: "layers", text: "7 Structured Modules & 28 Comprehensive Lessons" },
+    { iconName: "file-text", text: "Interactive Slide Presentations & Complete Step-by-Step Written Guides" },
+    { iconName: "video", text: "Ready-to-Deploy Make.com Blueprints, Skool Course Architecture & DM Scripts" },
+    { iconName: "file-text", text: "Diagnostic Loom Teardown Templates & 70/30 Revenue-Share Legal Agreements" },
+    { iconName: "infinity", text: "Full Lifetime Digital Access & All Future Curriculum Updates" },
+    { iconName: "shield-check", text: "Official Certificate of Completion from The Plugd" },
+  ],
+  modules: AI_AUTOMATIONS_MODULES_METADATA.map((mod) => ({
+    id: mod.id,
+    number: mod.number,
+    title: mod.title,
+    description: mod.description,
+    duration: mod.duration,
+    lessonsCount: mod.lessons.length,
+    lessons: mod.lessons.map((les) => ({
+      id: les.id,
+      number: les.number,
+      title: les.title,
+      duration: les.duration,
+      summary: les.summary,
+      isPreview: les.id === "01-1",
+    })),
+  })),
+  testimonials: [
+    {
+      name: "Marcus Vance",
+      role: "Operations Consultant",
+      rating: 5,
+      quote: "The unit economics breakdown in Module 1 and the 3-minute Loom teardown strategy in Module 6 helped me land 3 local business retainers at $2,000/month each in less than 3 weeks.",
+      initials: "MV",
+      date: "October 2026",
+    },
+    {
+      name: "Elena Rostova",
+      role: "AI Creative Studio Founder",
+      rating: 5,
+      quote: "The batch short-form production pipeline saved my sanity. I produce 30 vertical videos in a single afternoon and manage 4 founder retainers at $2,500/month solo.",
+      initials: "ER",
+      date: "October 2026",
+    },
+    {
+      name: "Julian Mercer",
+      role: "AI Shadow Operator",
+      rating: 5,
+      quote: "Signed my first 42k fitness creator on a 70/30 split using the DM script. Our initial 5-day Skool launch generated $38,000 gross. Total game-changer.",
+      initials: "JM",
+      date: "October 2026",
+    },
+  ],
+  faqs: [
+    {
+      question: "Do I need any coding or programming experience?",
+      answer: "No. All three business models utilize visual automation platforms (Make.com), pre-built AI APIs (OpenAI, Claude, ElevenLabs), and intuitive community engines (Skool, Airtable, Notion). Zero programming required.",
+    },
+    {
+      question: "How does the $373/day math get me to $10,000+/month?",
+      answer: "As broken down in Module 1, $373.33 per day equals $11,200 per month. A solo operator hits this with just 4 to 5 agency retainers ($2,000 to $2,500/mo) or a single quarterly creator course launch (100 sales @ $500 = $50k gross, yielding $15,000 at a 30% operator share).",
+    },
+    {
+      question: "Which of the 3 businesses should I start first?",
+      answer: "Module 1 guides you through the 5-criteria framework (Difficulty, Time Intensity, Scalability, Income Potential, Stress Level) so you can choose the exact model matching your skills, schedule, and capital requirements.",
+    },
+    {
+      question: "Do I get both slide presentations and full written lessons?",
+      answer: "Yes! Every single one of the 28 lessons contains both an interactive visual slide presentation and an extensive, in-depth written guide with code examples, prompts, workflows, and exercises.",
+    },
+  ],
+};
+
+export const AI_AUTOMATIONS_DETAIL_DATA = DETAIL_AI_AUTOMATIONS_DATA;
+'''
+
+with open('src/lib/ai-automations-detail-data.ts', 'w', encoding='utf-8') as f:
+    f.write(detail_ts)
+with open('src/lib/ai-automations-detail.ts', 'w', encoding='utf-8') as f:
+    f.write(detail_ts)
+
+print("Updated ai-automations-detail-data.ts and ai-automations-detail.ts successfully!")
