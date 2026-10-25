@@ -18,11 +18,11 @@ require.extensions[".ts"] = function (module, filename) {
   module._compile(result.outputText, filename);
 };
 
-test("1. The active catalog contains exactly 2 playbooks and excludes The Dating Playbook", () => {
+test("1. The active catalog contains 13 playbooks and excludes The Dating Playbook", () => {
   const { getAllPlaybooks, DATING_PLAYBOOK_SUMMARY } = require("../src/lib/categories.ts");
   const playbooks = getAllPlaybooks();
 
-  assert.strictEqual(playbooks.length, 2, "Active public catalog must contain exactly 2 playbooks");
+  assert.strictEqual(playbooks.length, 13, "Active public catalog must contain 13 playbooks");
   const datingInCatalog = playbooks.find((p) => p.slug === "men" || p.id === "dating-playbook");
   assert.strictEqual(datingInCatalog, undefined, "The Dating Playbook must NOT be in active public catalog");
 
@@ -39,10 +39,10 @@ test("2. The Dating category in public catalog returns 0 playbooks per catalog r
   assert.strictEqual(datingPlaybooks.length, 0, "Dating category must contain 0 active playbooks");
 });
 
-test("3. Total active catalog count is exactly 2 playbooks with unique IDs and slugs", () => {
+test("3. Total active catalog count is 13 playbooks with unique IDs and slugs", () => {
   const { getAllPlaybooks } = require("../src/lib/categories.ts");
   const playbooks = getAllPlaybooks();
-  assert.strictEqual(playbooks.length, 2, "Must contain exactly 2 playbooks");
+  assert.strictEqual(playbooks.length, 13, "Must contain exactly 13 playbooks (2 active + 11 upcoming cards)");
 
   // Verify no duplicate IDs or slugs
   const idSet = new Set();

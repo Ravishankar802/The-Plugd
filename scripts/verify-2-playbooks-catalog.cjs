@@ -4,13 +4,13 @@ const path = require('path');
 
 console.log("=== RUNNING VERIFICATION FOR 2 PLAYBOOKS CATALOG ===");
 
-// 1. Confirm that the public catalog displays exactly two Playbooks
+// 1. Confirm that the public catalog displays 13 Playbooks (2 active + 11 upcoming cards)
 const { ALL_PLAYBOOK_SUMMARIES, ARCHIVED_PLAYBOOK_SUMMARIES } = require('../src/lib/playbooks-catalog.ts');
 const { getAllPlaybooks, getPlaybooksForCategory } = require('../src/lib/categories.ts');
 
-assert.strictEqual(ALL_PLAYBOOK_SUMMARIES.length, 2, "ALL_PLAYBOOK_SUMMARIES must have exactly 2 playbooks");
-assert.strictEqual(getAllPlaybooks().length, 2, "getAllPlaybooks() must return exactly 2 playbooks");
-console.log("✔ 1. Public catalog contains exactly 2 Playbooks:");
+assert.strictEqual(ALL_PLAYBOOK_SUMMARIES.length, 13, "ALL_PLAYBOOK_SUMMARIES must have 13 playbooks");
+assert.strictEqual(getAllPlaybooks().length, 13, "getAllPlaybooks() must return 13 playbooks");
+console.log("✔ 1. Public catalog contains 13 Playbooks (2 active + 11 upcoming):");
 ALL_PLAYBOOK_SUMMARIES.forEach((p, idx) => console.log(`   ${idx + 1}. [${p.slug}] ${p.title} (${p.categoryName})`));
 
 // 2. Confirm that /7-ai-automations displays the new title everywhere appropriate
@@ -61,7 +61,7 @@ assert.strictEqual(sideHustlesPb.href, "/side-hustles");
 assert.strictEqual(sideHustlesPb.categorySlug, "ai-businesses");
 assert.strictEqual(sideHustlesPb.categoryName, "AI Businesses");
 const aiCategoryPlaybooks = getPlaybooksForCategory("ai-businesses");
-assert.strictEqual(aiCategoryPlaybooks.length, 2, "AI Businesses category now contains both playbooks");
+assert.strictEqual(aiCategoryPlaybooks.length, 13, "AI Businesses category now contains all 13 playbooks");
 console.log("✔ 5. /side-hustles and all its content remain intact and categorized under AI Businesses.");
 
 // 6. Check homepage sections, category pages, search results, recommendations, and metadata for references to removed Playbooks

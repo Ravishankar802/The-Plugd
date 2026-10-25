@@ -63,6 +63,12 @@ export default async function CategoryRoute({ params }: CategoryPageProps) {
   const category = getCategoryBySlug(categorySlug);
 
   if (!category) {
+    const placeholderPlaybook = ALL_PLAYBOOK_SUMMARIES.find(
+      (p) => p.slug === categorySlug
+    );
+    if (placeholderPlaybook) {
+      redirect(`/coming-soon?playbook=${categorySlug}`);
+    }
     notFound();
   }
 

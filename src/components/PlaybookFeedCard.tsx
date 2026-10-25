@@ -86,7 +86,26 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
 
       {/* Price and CTA Action */}
       <div className="mt-4 sm:mt-5 flex items-center justify-between gap-2 shrink-0">
-        {IS_REVIEW_PHASE_FREE_ACCESS ? (
+        {playbook.badge === "Coming Soon" ? (
+          <>
+            <div className="flex items-center gap-1.5 shrink-0">
+              <span className="inline-flex items-center rounded-md bg-stone-100 px-2 py-0.5 text-xs font-bold text-stone-600 border border-stone-200">
+                Coming Soon
+              </span>
+              <span className="text-[11px] text-[#78716c] font-medium hidden xs:inline">
+                In Production
+              </span>
+            </div>
+
+            <Link
+              href={playbook.href}
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center justify-center rounded-lg bg-stone-100 hover:bg-stone-200 border border-stone-300 px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-stone-700 transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
+            >
+              Coming Soon
+            </Link>
+          </>
+        ) : IS_REVIEW_PHASE_FREE_ACCESS ? (
           <>
             <div className="flex items-center gap-1.5 shrink-0">
               <span className="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-200">

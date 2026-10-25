@@ -551,7 +551,16 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
       {/* Pricing & CTA Button */}
       <div className="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-3 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-[#f0eee9]">
         <div className="text-right">
-          {IS_REVIEW_PHASE_FREE_ACCESS ? (
+          {playbook.badge === "Coming Soon" ? (
+            <div className="flex items-center gap-1.5">
+              <span className="inline-flex items-center rounded-md bg-stone-100 px-2 py-0.5 text-xs font-bold text-stone-600 border border-stone-200">
+                Coming Soon
+              </span>
+              <span className="text-[11px] text-[#78716c] font-medium hidden xs:inline">
+                In Production
+              </span>
+            </div>
+          ) : IS_REVIEW_PHASE_FREE_ACCESS ? (
             <div className="flex items-center gap-1.5">
               <span className="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-200">
                 Free
@@ -574,13 +583,22 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
           )}
         </div>
 
-        <Link
-          href={playbook.href}
-          className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#1c1917] hover:bg-[#2563eb] text-white px-4 py-2 text-xs font-semibold shadow-xs transition-colors"
-        >
-          <span>Start Learning</span>
-          <ArrowRight className="h-3.5 w-3.5" />
-        </Link>
+        {playbook.badge === "Coming Soon" ? (
+          <Link
+            href={playbook.href}
+            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-700 px-4 py-2 text-xs font-semibold shadow-xs transition-colors"
+          >
+            <span>Coming Soon</span>
+          </Link>
+        ) : (
+          <Link
+            href={playbook.href}
+            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#1c1917] hover:bg-[#2563eb] text-white px-4 py-2 text-xs font-semibold shadow-xs transition-colors"
+          >
+            <span>Start Learning</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        )}
       </div>
     </div>
   );

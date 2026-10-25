@@ -79,12 +79,12 @@ test("3. getPlaybooksForCategory returns playbooks for active categories and 0 f
   const { getPlaybooksForCategory, getAllPlaybooks } = require("../src/lib/categories.ts");
   const { ALL_PLAYBOOK_SUMMARIES, ARCHIVED_PLAYBOOK_SUMMARIES } = require("../src/lib/playbooks-catalog.ts");
 
-  assert.strictEqual(ALL_PLAYBOOK_SUMMARIES.length, 2, "Active public catalog must contain exactly 2 playbooks");
-  assert.strictEqual(getAllPlaybooks().length, 2, "getAllPlaybooks() must return exactly 2 playbooks");
+  assert.strictEqual(ALL_PLAYBOOK_SUMMARIES.length, 13, "Active public catalog must contain 13 playbooks");
+  assert.strictEqual(getAllPlaybooks().length, 13, "getAllPlaybooks() must return 13 playbooks");
   assert.ok(ARCHIVED_PLAYBOOK_SUMMARIES.length >= 300, "ARCHIVED_PLAYBOOK_SUMMARIES preserves archived playbooks");
 
   const aiPlaybooks = getPlaybooksForCategory("ai-businesses");
-  assert.strictEqual(aiPlaybooks.length, 2, "AI Businesses category has both playbooks");
+  assert.strictEqual(aiPlaybooks.length, 13, "AI Businesses category has all 13 playbooks");
   assert.strictEqual(aiPlaybooks[0].title, "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)");
   assert.strictEqual(aiPlaybooks[1].title, "10 Ways to Find Paying Customers Without Spending on Ads");
 
