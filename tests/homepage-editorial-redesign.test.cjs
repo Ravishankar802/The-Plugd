@@ -86,11 +86,11 @@ test('4. Old repeated category sections and trending rails are completely remove
   assert.ok(!code.includes('CategoryRail'), 'Homepage must no longer render old CategoryRail sections');
 });
 
-test('5. Catalog integrity: 13 playbooks on homepage, all categorized under AI Businesses', () => {
+test('5. Catalog integrity: 50 playbooks on homepage, all categorized under AI Businesses', () => {
   const { ALL_PLAYBOOK_SUMMARIES } = require('../src/lib/playbooks-catalog.ts');
   const { getPlaybooksForCategory } = require('../src/lib/categories.ts');
 
-  assert.strictEqual(ALL_PLAYBOOK_SUMMARIES.length, 13, 'Active catalog must have exactly 13 playbooks');
+  assert.strictEqual(ALL_PLAYBOOK_SUMMARIES.length, 50, 'Active catalog must have exactly 50 playbooks');
 
   const p1 = ALL_PLAYBOOK_SUMMARIES[0];
   assert.strictEqual(p1.slug, '7-ai-automations');
@@ -104,5 +104,5 @@ test('5. Catalog integrity: 13 playbooks on homepage, all categorized under AI B
   assert.strictEqual(p2.href, '/side-hustles');
 
   const aiPlaybooks = getPlaybooksForCategory('ai-businesses');
-  assert.strictEqual(aiPlaybooks.length, 13, 'All 13 playbooks are accessible under AI Businesses');
+  assert.strictEqual(aiPlaybooks.length, 50, 'All 50 playbooks are accessible under AI Businesses');
 });

@@ -30,6 +30,7 @@ export interface PlaybookSummary {
   publishedAt?: string;
   rating?: number;
   ratingCount?: number | string;
+  sourceUrl?: string;
 }
 
 export const CATEGORIES: Category[] = [
