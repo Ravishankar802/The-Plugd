@@ -109,6 +109,32 @@ export interface Slide {
     steps: string[];
   };
   recapPoints?: string[];
+  diagram?: {
+    title?: string;
+    steps: {
+      step: string;
+      title: string;
+      desc: string;
+      tech?: string;
+      metric?: string;
+    }[];
+  };
+  chart?: {
+    title?: string;
+    data: {
+      label: string;
+      value: string | number;
+      barPct?: number;
+      badge?: string;
+      note?: string;
+    }[];
+  };
+  metricsGrid?: {
+    label: string;
+    val: string;
+    change?: string;
+    note?: string;
+  }[];
   nextLessonTitle?: string;
   transitionType?: "horizontal" | "vertical" | "scale" | "perspective" | "morph";
 }

@@ -21,7 +21,7 @@ export const AI_AUTOMATIONS_MODULES_METADATA: ModuleMetadata[] = [
     id: "module-01",
     number: "01",
     title: "The Zero-Employee AI Revolution & The $10,000 Milestone",
-    description: "Understand the seismic shift from labor to software leverage, deconstruct the $373/day unit economics into a $10,000/month solo roadmap, and master the 5-dimensional business scoring framework.",
+    description: "Understand the seismic shift from labor to software leverage, master the mathematical pathways to $10,000/month as a solo operator, and navigate the 5-dimensional business scoring framework.",
     duration: "58m",
     lessonsCount: 4,
     lessons: [
@@ -35,7 +35,7 @@ export const AI_AUTOMATIONS_MODULES_METADATA: ModuleMetadata[] = [
       {
         id: "01-2",
         number: "1.2",
-        title: "Deconstructing $373/Day into a $10,000+/Month Unit Economics Model",
+        title: "The $10,000+/Month Unit Economics Model: Math, Margins & Offer Architecture",
         duration: "15m",
         summary: "Deconstruct the exact mathematical pathways to $10,000/month: comparing client retainers, setup fees, and revenue-share splits with realistic margins and cost structures.",
       },

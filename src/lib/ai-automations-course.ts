@@ -39,9 +39,9 @@ export const AI_AUTOMATIONS_PLAYBOOK_COURSE: Course = {
   targetGender: "for-all" as any,
   headline: "Master the 3 proven AI business models to reach $10,000+/month as a solo operator with zero employees.",
   subheadline:
-    "A practical, comprehensive guide to the 3 dominant zero-employee AI businesses: AI Automation Agency, Short-Form Content Studio, and AI Shadow Operating. Reach $373/day with zero employees.",
+    "A practical, comprehensive guide to the 3 dominant zero-employee AI businesses: AI Automation Agency, Short-Form Content Studio, and AI Shadow Operating. Reach $10,000+/month with zero employees.",
   description:
-    "A comprehensive, practical playbook breaking down the 3 dominant zero-employee AI businesses: AI Workflow Automation Agency (AAA), AI Short-Form Content Studio, and AI Shadow Operating. Learn the unit economics of $373/day, the 5-criteria evaluation framework, no-code tool stacks, client acquisition without ad spend, and asymmetric 70/30 creator revenue shares.",
+    "A comprehensive, practical playbook breaking down the 3 dominant zero-employee AI businesses: AI Workflow Automation Agency (AAA), AI Short-Form Content Studio, and AI Shadow Operating. Learn the unit economics of $10,000/month, the 5-criteria evaluation framework, no-code tool stacks, client acquisition without ad spend, and asymmetric 70/30 creator revenue shares.",
   price: 3,
   originalPrice: 9,
   currency: "USD",
@@ -55,7 +55,7 @@ export const AI_AUTOMATIONS_PLAYBOOK_COURSE: Course = {
   accentColor: "#f59e0b",
   outcomes: [
     "Evaluate AI opportunities using the 5-criteria matrix: Difficulty, Time, Scalability, Income, and Stress",
-    "Master the $373/day unit economics required to build an $11,200/month recurring income stream solo",
+    "Master the rigorous unit economics required to build a predictable $10,000+/month recurring income stream solo",
     "Build speed-to-lead and operations automation engines using Make.com, Airtable, and OpenAI APIs",
     "Deploy a batch short-form video assembly line producing 30 vertical assets in 4 hours",
     "Partner with 15k–75k micro-creators on 70/30 revenue-share Skool launches with zero upfront capital",

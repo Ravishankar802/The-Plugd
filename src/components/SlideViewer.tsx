@@ -982,7 +982,7 @@ export default function SlideViewer({
 
           {/* SLIDE TYPE: LIST */}
           {currentSlide?.type === "LIST" && (
-            <div className="py-4">
+            <div className="py-2">
               <h2
                 className={`text-2xl sm:text-4xl font-bold tracking-tight mb-2 ${
                   isModule1 ? "text-[#1c1917]" : "text-white"
@@ -999,38 +999,81 @@ export default function SlideViewer({
                   {currentSlide.subheadline}
                 </p>
               )}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {currentSlide.listItems?.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className={`rounded-2xl border p-5 ${
-                      isModule1
-                        ? "border-[#e7e5e4] bg-[#faf8f5]"
-                        : "border-neutral-800 bg-neutral-900/60"
-                    }`}
-                  >
+              {/* If listItems exists */}
+              {currentSlide.listItems && currentSlide.listItems.length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {currentSlide.listItems.map((item, idx) => (
                     <div
-                      className="text-xs font-mono font-bold mb-1 text-[#2563eb]"
-                    >
-                      {item.number}
-                    </div>
-                    <div
-                      className={`text-base font-bold mb-2 ${
-                        isModule1 ? "text-[#1c1917]" : "text-white"
+                      key={idx}
+                      className={`rounded-2xl border p-5 ${
+                        isModule1
+                          ? "border-[#e7e5e4] bg-[#faf8f5]"
+                          : "border-neutral-800 bg-neutral-900/60"
                       }`}
                     >
-                      {item.title}
+                      <div className="text-xs font-mono font-bold mb-1 text-[#2563eb]">
+                        {item.number}
+                      </div>
+                      <div
+                        className={`text-base font-bold mb-2 ${
+                          isModule1 ? "text-[#1c1917]" : "text-white"
+                        }`}
+                      >
+                        {item.title}
+                      </div>
+                      <p
+                        className={`text-xs sm:text-sm leading-relaxed ${
+                          isModule1 ? "text-[#57534e]" : "text-neutral-300"
+                        }`}
+                      >
+                        {item.description}
+                      </p>
                     </div>
-                    <p
-                      className={`text-xs sm:text-sm leading-relaxed ${
-                        isModule1 ? "text-[#57534e]" : "text-neutral-300"
-                      }`}
-                    >
-                      {item.description}
-                    </p>
+                  ))}
+                </div>
+              )}
+              {/* Fallback to bulletPoints if listItems is not present */}
+              {(!currentSlide.listItems || currentSlide.listItems.length === 0) &&
+                currentSlide.bulletPoints &&
+                currentSlide.bulletPoints.length > 0 && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {currentSlide.bulletPoints.map((bullet, idx) => {
+                      const colonIdx = bullet.indexOf(":");
+                      const title =
+                        colonIdx > -1 ? bullet.substring(0, colonIdx).trim() : `Point ${idx + 1}`;
+                      const description =
+                        colonIdx > -1 ? bullet.substring(colonIdx + 1).trim() : bullet;
+                      return (
+                        <div
+                          key={idx}
+                          className={`rounded-2xl border p-5 ${
+                            isModule1
+                              ? "border-[#e7e5e4] bg-[#faf8f5]"
+                              : "border-neutral-800 bg-neutral-900/60"
+                          }`}
+                        >
+                          <div className="text-xs font-mono font-bold mb-1 text-[#2563eb]">
+                            0{idx + 1}
+                          </div>
+                          <div
+                            className={`text-base font-bold mb-2 ${
+                              isModule1 ? "text-[#1c1917]" : "text-white"
+                            }`}
+                          >
+                            {title}
+                          </div>
+                          <p
+                            className={`text-xs sm:text-sm leading-relaxed ${
+                              isModule1 ? "text-[#57534e]" : "text-neutral-300"
+                            }`}
+                          >
+                            {description}
+                          </p>
+                        </div>
+                      );
+                    })}
                   </div>
-                ))}
-              </div>
+                )}
             </div>
           )}
 
@@ -1356,6 +1399,201 @@ export default function SlideViewer({
                   {currentSlide.subheadline}
                 </p>
               )}
+            </div>
+          )}
+
+          {/* DYNAMIC METRICS KPI GRID */}
+          {currentSlide?.metricsGrid && currentSlide.metricsGrid.length > 0 && (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-4">
+              {currentSlide.metricsGrid.map((mg, midx) => (
+                <div
+                  key={midx}
+                  className={`rounded-2xl border p-4 text-center transition-all ${
+                    isModule1
+                      ? "border-[#e7e5e4] bg-[#faf8f5] shadow-xs"
+                      : "border-neutral-800 bg-neutral-900/60"
+                  }`}
+                >
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                    {mg.label}
+                  </div>
+                  <div className="text-xl sm:text-2xl font-bold text-[#2563eb] tracking-tight">
+                    {mg.val}
+                  </div>
+                  {mg.note && (
+                    <div
+                      className={`text-[10px] mt-1 ${
+                        isModule1 ? "text-[#78716c]" : "text-neutral-400"
+                      }`}
+                    >
+                      {mg.note}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* DYNAMIC SYSTEM ARCHITECTURE & PROCESS FLOW DIAGRAM */}
+          {currentSlide?.diagram && currentSlide.diagram.steps?.length > 0 && (
+            <div className="mt-5 mb-3">
+              {currentSlide.diagram.title && (
+                <div
+                  className={`text-xs font-mono font-bold uppercase tracking-wider mb-3 flex items-center gap-2 ${
+                    isModule1 ? "text-[#2563eb]" : "text-[#3b82f6]"
+                  }`}
+                >
+                  <span className="h-2 w-2 rounded-full bg-[#2563eb]" />
+                  <span>SYSTEM ARCHITECTURE: {currentSlide.diagram.title}</span>
+                </div>
+              )}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                {currentSlide.diagram.steps.map((st, sidx) => (
+                  <div
+                    key={sidx}
+                    className={`relative rounded-2xl border p-4 transition-all ${
+                      isModule1
+                        ? "border-[#e7e5e4] bg-[#faf8f5] hover:border-[#bfdbfe]"
+                        : "border-neutral-800 bg-neutral-900/60 hover:border-neutral-700"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#2563eb] text-white">
+                        {st.step}
+                      </span>
+                      {st.tech && (
+                        <span
+                          className={`text-[10px] font-mono px-2 py-0.5 rounded-md ${
+                            isModule1
+                              ? "bg-white border border-[#e7e5e4] text-[#57534e]"
+                              : "bg-neutral-800 text-neutral-300"
+                          }`}
+                        >
+                          {st.tech}
+                        </span>
+                      )}
+                    </div>
+                    <div
+                      className={`text-xs font-bold mb-1 ${
+                        isModule1 ? "text-[#1c1917]" : "text-white"
+                      }`}
+                    >
+                      {st.title}
+                    </div>
+                    <p
+                      className={`text-[11px] leading-relaxed ${
+                        isModule1 ? "text-[#57534e]" : "text-neutral-400"
+                      }`}
+                    >
+                      {st.desc}
+                    </p>
+                    {st.metric && (
+                      <div
+                        className={`mt-2 pt-2 border-t text-[10px] font-mono font-bold flex items-center justify-between ${
+                          isModule1
+                            ? "border-[#e7e5e4] text-[#2563eb]"
+                            : "border-neutral-800 text-[#60a5fa]"
+                        }`}
+                      >
+                        <span className="text-neutral-400 font-normal">LATENCY / BENCHMARK</span>
+                        <span>{st.metric}</span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* DYNAMIC DATA MATRIX & CONVERSION BENCHMARK CHART */}
+          {currentSlide?.chart && currentSlide.chart.data?.length > 0 && (
+            <div className="mt-5 mb-3">
+              {currentSlide.chart.title && (
+                <div
+                  className={`text-xs font-mono font-bold uppercase tracking-wider mb-3 flex items-center gap-2 ${
+                    isModule1 ? "text-[#2563eb]" : "text-[#3b82f6]"
+                  }`}
+                >
+                  <span className="h-2 w-2 rounded-full bg-[#2563eb]" />
+                  <span>DATA MATRIX: {currentSlide.chart.title}</span>
+                </div>
+              )}
+              <div className="space-y-2.5">
+                {currentSlide.chart.data.map((cd, cidx) => (
+                  <div
+                    key={cidx}
+                    className={`rounded-xl border p-3 transition-all ${
+                      isModule1
+                        ? "border-[#e7e5e4] bg-[#faf8f5]"
+                        : "border-neutral-800 bg-neutral-900/60"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between text-xs mb-1.5">
+                      <div className="flex items-center gap-2">
+                        <span
+                          className={`font-semibold ${
+                            isModule1 ? "text-[#1c1917]" : "text-white"
+                          }`}
+                        >
+                          {cd.label}
+                        </span>
+                        {cd.badge && (
+                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#eff6ff] text-[#2563eb] border border-[#bfdbfe]">
+                            {cd.badge}
+                          </span>
+                        )}
+                      </div>
+                      <span className="font-mono font-bold text-xs text-[#2563eb]">
+                        {cd.value}
+                      </span>
+                    </div>
+                    {cd.barPct !== undefined && (
+                      <div className="w-full h-2 rounded-full bg-neutral-200 dark:bg-neutral-800 overflow-hidden">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-500"
+                          style={{ width: `${Math.min(100, Math.max(0, cd.barPct))}%` }}
+                        />
+                      </div>
+                    )}
+                    {cd.note && (
+                      <div
+                        className={`text-[11px] mt-1.5 ${
+                          isModule1 ? "text-[#78716c]" : "text-neutral-400"
+                        }`}
+                      >
+                        {cd.note}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* DYNAMIC KEY OPERATIONAL TAKEAWAY BANNER */}
+          {currentSlide?.takeaway && (
+            <div
+              className={`mt-6 flex items-start gap-3 rounded-2xl border p-4 sm:p-5 shadow-xs transition-all ${
+                isModule1
+                  ? "border-[#bfdbfe] bg-[#eff6ff] text-[#1c1917]"
+                  : "border-[#2563eb]/40 bg-[#2563eb]/10 text-white"
+              }`}
+            >
+              <div className="rounded-lg p-1.5 shrink-0 bg-[#2563eb] text-white shadow-xs">
+                <Sparkles className="h-4 w-4" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#2563eb] mb-0.5">
+                  KEY OPERATIONAL TAKEAWAY
+                </div>
+                <p
+                  className={`text-xs sm:text-sm font-semibold leading-relaxed ${
+                    isModule1 ? "text-[#1e3a8a]" : "text-neutral-200"
+                  }`}
+                >
+                  {currentSlide.takeaway}
+                </p>
+              </div>
             </div>
           )}
         </div>

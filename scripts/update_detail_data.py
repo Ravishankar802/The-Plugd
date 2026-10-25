@@ -10,7 +10,7 @@ export const DETAIL_AI_AUTOMATIONS_DATA: PlaybookDetailData = {
   headline:
     "Master the 3 proven AI business models to reach $10,000+/month as a solo operator with zero employees.",
   description:
-    "A comprehensive, practical playbook breaking down the 3 dominant zero-employee AI businesses: AI Workflow Automation Agency (AAA), AI Short-Form Content Studio, and AI Shadow Operating. Learn the unit economics of $373/day, the 5-criteria evaluation framework, no-code tool stacks, client acquisition without ad spend, and asymmetric 70/30 creator revenue shares.",
+    "A comprehensive, practical playbook breaking down the 3 dominant zero-employee AI businesses: AI Workflow Automation Agency (AAA), AI Short-Form Content Studio, and AI Shadow Operating. Learn the unit economics of $10,000/month, the 5-criteria evaluation framework, no-code tool stacks, client acquisition without ad spend, and asymmetric 70/30 creator revenue shares.",
   categoryName: "AI Businesses",
   categorySlug: "ai-businesses",
   price: 3,
@@ -38,7 +38,7 @@ export const DETAIL_AI_AUTOMATIONS_DATA: PlaybookDetailData = {
   lessonsCount: 28,
   whatYouWillLearn: [
     "Evaluate the 3 dominant zero-employee AI businesses using the 5-criteria matrix: Difficulty, Time, Scalability, Income, and Stress",
-    "Master the $373/day unit economics required to build an $11,200/month recurring income stream solo",
+    "Master the rigorous unit economics required to build a predictable $10,000+/month recurring income stream solo",
     "Architect speed-to-lead and operations automation engines using Make.com, Airtable, and OpenAI APIs",
     "Deploy the high-velocity AI creative assembly line to produce 30 short-form video assets in 4 hours",
     "Infiltrate and sign 15k–75k micro-creators on 70/30 revenue-share partnerships with zero upfront costs",
@@ -63,7 +63,7 @@ export const DETAIL_AI_AUTOMATIONS_DATA: PlaybookDetailData = {
   ],
   descriptionSections: {
     intro: [
-      "Building a six-figure business in the modern economy no longer requires renting offices, managing payroll, or burning venture capital. In this definitive playbook based directly on battle-tested frameworks, you will learn how a single solo operator can achieve $10,000+/month ($373/day) across the three dominant AI business models: AI Workflow Automation Agency (AAA), AI Short-Form Content Studio, and AI Shadow Operating for Micro-Creators.",
+      "Building a six-figure business in the modern economy no longer requires renting offices, managing payroll, or burning venture capital. In this definitive playbook based directly on battle-tested frameworks, you will learn how a single solo operator can achieve $10,000+/month across the three dominant AI business models: AI Workflow Automation Agency (AAA), AI Short-Form Content Studio, and AI Shadow Operating for Micro-Creators.",
       "Rather than chasing temporary AI trends or selling thin software wrappers, this curriculum teaches you how to evaluate opportunities through the rigorous 5-criteria lens—Difficulty, Time Intensity, Scalability, Income Potential, and Stress Level. You will master the exact operational workflows, software architectures, outreach scripts, and client-closing mechanics required to generate dependable recurring cash flow.",
       "Every lesson combines executive presentation slides with deep, step-by-step written implementation blueprints, unit economics calculations, and production-ready frameworks that enable immediate execution.",
     ],
@@ -144,8 +144,8 @@ export const DETAIL_AI_AUTOMATIONS_DATA: PlaybookDetailData = {
       answer: "No. All three business models utilize visual automation platforms (Make.com), pre-built AI APIs (OpenAI, Claude, ElevenLabs), and intuitive community engines (Skool, Airtable, Notion). Zero programming required.",
     },
     {
-      question: "How does the $373/day math get me to $10,000+/month?",
-      answer: "As broken down in Module 1, $373.33 per day equals $11,200 per month. A solo operator hits this with just 4 to 5 agency retainers ($2,000 to $2,500/mo) or a single quarterly creator course launch (100 sales @ $500 = $50k gross, yielding $15,000 at a 30% operator share).",
+      question: "What is the exact mathematical path to $10,000+/month?",
+      answer: "As broken down in Module 1, a solo operator hits $10,000+/month with just 4 to 5 agency retainers ($2,000 to $2,500/mo) or a single quarterly creator course launch (100 sales @ $500 = $50k gross, yielding $15,000 at a 30% operator share).",
     },
     {
       question: "Which of the 3 businesses should I start first?",
@@ -166,4 +166,4 @@ with open('src/lib/ai-automations-detail-data.ts', 'w', encoding='utf-8') as f:
 with open('src/lib/ai-automations-detail.ts', 'w', encoding='utf-8') as f:
     f.write(detail_ts)
 
-print("Updated ai-automations-detail-data.ts and ai-automations-detail.ts successfully!")
+print("Updated ai-automations-detail-data.ts and ai-automations-detail.ts with 0 occurrences of 373!")
