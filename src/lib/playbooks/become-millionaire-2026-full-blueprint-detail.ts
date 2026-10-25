@@ -4,7 +4,7 @@ import { BECOME_MILLIONAIRE_2026_BLUEPRINT_MODULES } from "./become-millionaire-
 export const BECOME_MILLIONAIRE_2026_BLUEPRINT_DETAIL_DATA: PlaybookDetailData = {
   id: "ai-businesses-54",
   slug: "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint",
-  title: "If I Wanted To Become a Millionaire in 2026, This Is What I'd Do [FULL BLUEPRINT]",
+  title: "If I Wanted To Become a Millionaire in 2026, This Is What I'd Do",
   headline: "The definitive step-by-step master execution blueprint to build an unassailable seven-figure net worth in 2026 using modern leverage and asymmetric systems.",
   description: "A comprehensive operational masterclass breaking down the exact modern mechanics of wealth: mastering asymmetric skills, engineering high-ticket irresistible offers, deploying the Rule of 100 acquisition engine, scaling productized operations, and defending capital into a permanent $1,000,000 fortress.",
   categoryName: "AI Businesses",
@@ -55,7 +55,7 @@ export const BECOME_MILLIONAIRE_2026_BLUEPRINT_DETAIL_DATA: PlaybookDetailData =
   ],
   descriptionSections: {
     intro: [
-      "Welcome to the definitive masterclass on If I Wanted To Become a Millionaire in 2026, This Is What I'd Do [FULL BLUEPRINT]. This playbook is engineered for ambitious operators who refuse to accept linear employment, corporate busywork, and financial fragility.",
+      "Welcome to the definitive masterclass on If I Wanted To Become a Millionaire in 2026, This Is What I'd Do. This playbook is engineered for ambitious operators who refuse to accept linear employment, corporate busywork, and financial fragility.",
       "Rather than teaching fleeting hacks or theoretical daydreaming, this curriculum delivers battle-tested systems, worked unit economics, tactical battle decision matrices, and complete production-grade blueprints.",
       "Every single lesson provides both an interactive, cinematic slide deck presentation and a comprehensive, in-depth written guide (>2,500 words) detailing the exact step-by-step implementation."
     ],

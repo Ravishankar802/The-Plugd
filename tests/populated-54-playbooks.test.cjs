@@ -660,7 +660,7 @@ test("5. Dedicated route page.tsx exists for all 54 populated playbooks", () => 
     assert.ok(fs.existsSync(pagePath), `Route page.tsx must exist: $    {
         "id": "ai-businesses-54",
         "slug": "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint",
-        "title": "If I Wanted To Become a Millionaire in 2026, This Is What I'd Do [FULL BLUEPRINT]",
+        "title": "If I Wanted To Become a Millionaire in 2026, This Is What I'd Do",
         "dataFile": "src/lib/playbooks/become-millionaire-2026-full-blueprint-data.ts",
         "detailFile": "src/lib/playbooks/become-millionaire-2026-full-blueprint-detail.ts",
         "routeDir": "src/app/if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint",

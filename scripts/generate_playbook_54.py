@@ -14,7 +14,7 @@ from build_storytelling_helpers import (
 CONFIG_54 = {
     "id": "ai-businesses-54",
     "slug": "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint",
-    "title": "If I Wanted To Become a Millionaire in 2026, This Is What I'd Do [FULL BLUEPRINT]",
+    "title": "If I Wanted To Become a Millionaire in 2026, This Is What I'd Do",
     "headline": "The definitive step-by-step master execution blueprint to build an unassailable seven-figure net worth in 2026 using modern leverage and asymmetric systems.",
     "description": "A comprehensive operational masterclass breaking down the exact modern mechanics of wealth: mastering asymmetric skills, engineering high-ticket irresistible offers, deploying the Rule of 100 acquisition engine, scaling productized operations, and defending capital into a permanent $1,000,000 fortress.",
     "hoursOfMaterial": "8.5 hours",
