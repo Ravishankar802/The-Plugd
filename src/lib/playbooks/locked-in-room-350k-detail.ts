@@ -6,7 +6,7 @@ export const LOCKED_IN_ROOM_350K_DETAIL_DATA: PlaybookDetailData = {
   slug: "i-locked-myself-in-a-room-until-i-built-a-350-000-mo-business",
   title: "I Locked Myself In a Room Until I Built a $350,000/mo Business",
   headline: "The raw story of falling from $144k in 24 hours to rock bottom, and the 180-day sensory deprivation monk-mode sprint that rebuilt a $350,000/month verified empire.",
-  description: "A cinematic, deeply personal masterclass detailing Sebastian Ghiorghiu's journey from poverty to making $144,000 in 24 hours, losing it all to complacency and supercars, and entering a 180-day radical monk-mode isolation chamber. Learn the exact daily routine, psychological discipline, high-ticket offer architecture, and media flywheel that generated $350,000/month verified net profit.",
+  description: "A cinematic, deeply personal masterclass detailing The Solo Founder's journey from poverty to making $144,000 in 24 hours, losing it all to complacency and supercars, and entering a 180-day radical monk-mode isolation chamber. Learn the exact daily routine, psychological discipline, high-ticket offer architecture, and media flywheel that generated $350,000/month verified net profit.",
   categoryName: "AI Businesses",
   categorySlug: "ai-businesses",
   price: 3,
@@ -57,7 +57,7 @@ export const LOCKED_IN_ROOM_350K_DETAIL_DATA: PlaybookDetailData = {
   ],
   descriptionSections: {
     intro: [
-      "A cinematic, deeply personal masterclass detailing Sebastian Ghiorghiu's journey from poverty to making $144,000 in 24 hours, losing it all to complacency and supercars, and entering a 180-day radical monk-mode isolation chamber. Learn the exact daily routine, psychological discipline, high-ticket offer architecture, and media flywheel that generated $350,000/month verified net profit.",
+      "A cinematic, deeply personal masterclass detailing The Solo Founder's journey from poverty to making $144,000 in 24 hours, losing it all to complacency and supercars, and entering a 180-day radical monk-mode isolation chamber. Learn the exact daily routine, psychological discipline, high-ticket offer architecture, and media flywheel that generated $350,000/month verified net profit.",
       "Every single lesson in this cinematic 8-Act storytelling masterclass combines immersive, movie-like executive slides with deep written case breakdowns, hard mathematical unit economics, and actionable battle checklists.",
       "Engineered specifically for ambitious operators and founders determined to break out of the matrix and claim undeniable sovereignty in 2026."
     ],

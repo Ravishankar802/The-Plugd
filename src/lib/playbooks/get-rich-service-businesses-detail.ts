@@ -6,7 +6,7 @@ export const GET_RICH_SERVICE_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
   slug: "how-to-get-rich-for-service-based-businesses-thank-me-later",
   title: "How to Get Rich for Service-Based Businesses (Thank Me Later)",
   headline: "Step-by-step masterclass taking a service business from $55k/year to $25k+/month in 90 days: speed-to-lead, Grand Slam offers, consultative closing, and day-zero upsells.",
-  description: "Step inside Alex Hormozi's live consulting room as he transforms a real service business owner from working 70 hours a week for $55k/year into a $25k/month profit machine. Master sub-5-minute speed-to-lead follow-up, value-based Grand Slam pricing, doctor-patient diagnostic sales calls, day-zero ascension upsells, and automated fulfillment SOPs.",
+  description: "Step inside The Lead Strategist's live consulting room as he transforms a real service business owner from working 70 hours a week for $55k/year into a $25k/month profit machine. Master sub-5-minute speed-to-lead follow-up, value-based Grand Slam pricing, doctor-patient diagnostic sales calls, day-zero ascension upsells, and automated fulfillment SOPs.",
   categoryName: "AI Businesses",
   categorySlug: "ai-businesses",
   price: 3,

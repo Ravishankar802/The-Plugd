@@ -6,7 +6,7 @@ export const GET_RICH_SERVICE_BUSINESSES_MODULES: Module[] = [
     "number": "01",
     "title": "Act I: The 90-Day Challenge: Deconstructing Joey's $55k/Year Plateau",
     "subtitle": "Act 01 \u00b7 4 Scenes",
-    "description": "Step inside Alex Hormozi's real-world consulting crucible: diagnosing why a service business owner working 70 hours a week is trapped at $55k/year.",
+    "description": "Step inside The Lead Strategist's real-world consulting crucible: diagnosing why a service business owner working 70 hours a week is trapped at $55k/year.",
     "duration": "70 min",
     "lessonsCount": 4,
     "lessons": [
@@ -4306,7 +4306,7 @@ export const GET_RICH_SERVICE_BUSINESSES_MODULES: Module[] = [
     "number": "05",
     "title": "Act V: The Immediate Upsell & Ascension Engine: Monetizing Day Zero",
     "subtitle": "Act 05 \u00b7 4 Scenes",
-    "description": "Unpack Hormozi's secret weapon: offering an immediate complementary upsell right after the initial purchase when client buying euphoria is at its peak.",
+    "description": "Unpack The Strategist's secret weapon: offering an immediate complementary upsell right after the initial purchase when client buying euphoria is at its peak.",
     "duration": "78 min",
     "lessonsCount": 4,
     "lessons": [
@@ -7531,7 +7531,7 @@ export const GET_RICH_SERVICE_BUSINESSES_MODULES: Module[] = [
     "number": "08",
     "title": "Act VIII: The 90-Day Verdict: Reaching $20k+/Month & Sovereign Net Profit",
     "subtitle": "Act 08 \u00b7 4 Scenes",
-    "description": "Analyze the real-world results of applying the Hormozi service playbook: watching Joey cross $25,000/month net profit with predictable recurring cashflow.",
+    "description": "Analyze the real-world results of applying the The Strategist service playbook: watching Joey cross $25,000/month net profit with predictable recurring cashflow.",
     "duration": "82 min",
     "lessonsCount": 4,
     "lessons": [
@@ -8614,7 +8614,7 @@ export const GET_RICH_SERVICE_BUSINESSES_COURSE: Course = {
   targetGender: "for-all" as any,
   headline: "Step-by-step masterclass taking a service business from $55k/year to $25k+/month in 90 days: speed-to-lead, Grand Slam offers, consultative closing, and day-zero upsells.",
   subheadline: "Step-by-step masterclass taking a service business from $55k/year to $25k+/month in 90 days: speed-to-lead, Grand Slam offers, consultative closing, and day-zero upsells.",
-  description: "Step inside Alex Hormozi's live consulting room as he transforms a real service business owner from working 70 hours a week for $55k/year into a $25k/month profit machine. Master sub-5-minute speed-to-lead follow-up, value-based Grand Slam pricing, doctor-patient diagnostic sales calls, day-zero ascension upsells, and automated fulfillment SOPs.",
+  description: "Step inside The Lead Strategist's live consulting room as he transforms a real service business owner from working 70 hours a week for $55k/year into a $25k/month profit machine. Master sub-5-minute speed-to-lead follow-up, value-based Grand Slam pricing, doctor-patient diagnostic sales calls, day-zero ascension upsells, and automated fulfillment SOPs.",
   price: 3,
   originalPrice: 9,
   currency: "USD",

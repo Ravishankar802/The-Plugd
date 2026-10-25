@@ -6,7 +6,7 @@ export const PERFECT_BUSINESS_5_THINGS_MODULES: Module[] = [
     "number": "01",
     "title": "Act I: The Vehicle Selection Law: Why 80% of Success is the Business Model",
     "subtitle": "Act 01 \u00b7 4 Scenes",
-    "description": "Alex Hormozi proves why the hardest worker in a broken, low-margin business stays poor while an average operator in a high-leverage vehicle gets wealthy with ease.",
+    "description": "The Lead Strategist proves why the hardest worker in a broken, low-margin business stays poor while an average operator in a high-leverage vehicle gets wealthy with ease.",
     "duration": "70 min",
     "lessonsCount": 4,
     "lessons": [
@@ -6464,7 +6464,7 @@ export const PERFECT_BUSINESS_5_THINGS_COURSE: Course = {
   targetGender: "for-all" as any,
   headline: "The 5 unfair advantages that make any business 10x easier to grow: 85%+ gross margins, high barriers to entry, pricing power, customer stickiness, and secular tailwinds.",
   subheadline: "The 5 unfair advantages that make any business 10x easier to grow: 85%+ gross margins, high barriers to entry, pricing power, customer stickiness, and secular tailwinds.",
-  description: "Alex Hormozi breaks down why vehicle selection accounts for 80% of entrepreneurial success. Master the 5 fundamental structural advantages: extreme 85%+ gross margins, high barriers to entry that prevent competitors from copying you, pricing power that beats inflation, customer stickiness that creates negative churn, and secular market tailwinds.",
+  description: "The Lead Strategist breaks down why vehicle selection accounts for 80% of entrepreneurial success. Master the 5 fundamental structural advantages: extreme 85%+ gross margins, high barriers to entry that prevent competitors from copying you, pricing power that beats inflation, customer stickiness that creates negative churn, and secular market tailwinds.",
   price: 3,
   originalPrice: 9,
   currency: "USD",

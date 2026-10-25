@@ -6,7 +6,7 @@ export const NEW_WAY_CONTENT_AI_MODULES: Module[] = [
     "number": "01",
     "title": "Act I: The 21 Million Follower Proof & The AI Content Sea of Mediocrity",
     "subtitle": "Act 01 \u00b7 4 Scenes",
-    "description": "Alex Hormozi breaks down why AI has flooded the internet with billions of commoditized, generic posts, and why Proof of Work is the only surviving moat.",
+    "description": "The Lead Strategist breaks down why AI has flooded the internet with billions of commoditized, generic posts, and why Proof of Work is the only surviving moat.",
     "duration": "70 min",
     "lessonsCount": 4,
     "lessons": [
@@ -1081,7 +1081,7 @@ export const NEW_WAY_CONTENT_AI_MODULES: Module[] = [
     "number": "02",
     "title": "Act II: The 3 Pillars of Uncopyable Content: Proof, Beliefs & Mechanics",
     "subtitle": "Act 02 \u00b7 4 Scenes",
-    "description": "Deconstruct the exact three-part framework Hormozi uses across all 21M followers to produce content that converts viewers into high-LTV business partners.",
+    "description": "Deconstruct the exact three-part framework The Strategist uses across all 21M followers to produce content that converts viewers into high-LTV business partners.",
     "duration": "74 min",
     "lessonsCount": 4,
     "lessons": [
@@ -4306,7 +4306,7 @@ export const NEW_WAY_CONTENT_AI_MODULES: Module[] = [
     "number": "05",
     "title": "Act V: The Solo Creator Production Blueprint for 2026",
     "subtitle": "Act 05 \u00b7 4 Scenes",
-    "description": "How a solo operator with a smartphone and a microphone can out-produce legacy media agencies by adhering to the Hormozi batching and recording protocol.",
+    "description": "How a solo operator with a smartphone and a microphone can out-produce legacy media agencies by adhering to the The Strategist batching and recording protocol.",
     "duration": "82 min",
     "lessonsCount": 4,
     "lessons": [
@@ -6464,7 +6464,7 @@ export const NEW_WAY_CONTENT_AI_COURSE: Course = {
   targetGender: "for-all" as any,
   headline: "How to build an untouchable personal brand across 21M+ followers in spite of AI by mastering Proof of Work, credibility arbitrage, and high-signal storytelling.",
   subheadline: "How to build an untouchable personal brand across 21M+ followers in spite of AI by mastering Proof of Work, credibility arbitrage, and high-signal storytelling.",
-  description: "Alex Hormozi breaks down how to build an iconic personal brand in the age of artificial intelligence. Discover why generic AI content fails, how to leverage the Proof of Work moat, the 3 pillars of uncopyable content (Proof, Beliefs, Mechanics), how to use AI strictly as a production assistant rather than an author, and how to convert attention into enterprise value.",
+  description: "The Lead Strategist breaks down how to build an iconic personal brand in the age of artificial intelligence. Discover why generic AI content fails, how to leverage the Proof of Work moat, the 3 pillars of uncopyable content (Proof, Beliefs, Mechanics), how to use AI strictly as a production assistant rather than an author, and how to convert attention into enterprise value.",
   price: 3,
   originalPrice: 9,
   currency: "USD",

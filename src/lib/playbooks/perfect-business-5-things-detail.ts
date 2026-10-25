@@ -6,7 +6,7 @@ export const PERFECT_BUSINESS_5_THINGS_DETAIL_DATA: PlaybookDetailData = {
   slug: "what-makes-the-perfect-business-5-things",
   title: "What Makes The Perfect Business (5 Things)",
   headline: "The 5 unfair advantages that make any business 10x easier to grow: 85%+ gross margins, high barriers to entry, pricing power, customer stickiness, and secular tailwinds.",
-  description: "Alex Hormozi breaks down why vehicle selection accounts for 80% of entrepreneurial success. Master the 5 fundamental structural advantages: extreme 85%+ gross margins, high barriers to entry that prevent competitors from copying you, pricing power that beats inflation, customer stickiness that creates negative churn, and secular market tailwinds.",
+  description: "The Lead Strategist breaks down why vehicle selection accounts for 80% of entrepreneurial success. Master the 5 fundamental structural advantages: extreme 85%+ gross margins, high barriers to entry that prevent competitors from copying you, pricing power that beats inflation, customer stickiness that creates negative churn, and secular market tailwinds.",
   categoryName: "AI Businesses",
   categorySlug: "ai-businesses",
   price: 3,

@@ -6,7 +6,7 @@ export const NEW_WAY_CONTENT_AI_DETAIL_DATA: PlaybookDetailData = {
   slug: "the-new-way-of-making-content-in-the-age-of-ai",
   title: "The New Way of Making Content In The Age of AI",
   headline: "How to build an untouchable personal brand across 21M+ followers in spite of AI by mastering Proof of Work, credibility arbitrage, and high-signal storytelling.",
-  description: "Alex Hormozi breaks down how to build an iconic personal brand in the age of artificial intelligence. Discover why generic AI content fails, how to leverage the Proof of Work moat, the 3 pillars of uncopyable content (Proof, Beliefs, Mechanics), how to use AI strictly as a production assistant rather than an author, and how to convert attention into enterprise value.",
+  description: "The Lead Strategist breaks down how to build an iconic personal brand in the age of artificial intelligence. Discover why generic AI content fails, how to leverage the Proof of Work moat, the 3 pillars of uncopyable content (Proof, Beliefs, Mechanics), how to use AI strictly as a production assistant rather than an author, and how to convert attention into enterprise value.",
   categoryName: "AI Businesses",
   categorySlug: "ai-businesses",
   price: 3,

@@ -8554,7 +8554,7 @@ export const LOCKED_IN_ROOM_350K_COURSE: Course = {
   targetGender: "for-all" as any,
   headline: "The raw story of falling from $144k in 24 hours to rock bottom, and the 180-day sensory deprivation monk-mode sprint that rebuilt a $350,000/month verified empire.",
   subheadline: "The raw story of falling from $144k in 24 hours to rock bottom, and the 180-day sensory deprivation monk-mode sprint that rebuilt a $350,000/month verified empire.",
-  description: "A cinematic, deeply personal masterclass detailing Sebastian Ghiorghiu's journey from poverty to making $144,000 in 24 hours, losing it all to complacency and supercars, and entering a 180-day radical monk-mode isolation chamber. Learn the exact daily routine, psychological discipline, high-ticket offer architecture, and media flywheel that generated $350,000/month verified net profit.",
+  description: "A cinematic, deeply personal masterclass detailing The Solo Founder's journey from poverty to making $144,000 in 24 hours, losing it all to complacency and supercars, and entering a 180-day radical monk-mode isolation chamber. Learn the exact daily routine, psychological discipline, high-ticket offer architecture, and media flywheel that generated $350,000/month verified net profit.",
   price: 3,
   originalPrice: 9,
   currency: "USD",

@@ -48,6 +48,14 @@ import { STUCK_IN_MATRIX_ESCAPE_COURSE } from "./playbooks/stuck-in-matrix-escap
 import { FIVE_YEARS_GET_RICH_AI_COURSE } from "./playbooks/five-years-get-rich-before-ai-data";
 import { INVESTING_BEGINNERS_25M_COURSE } from "./playbooks/investing-beginners-25-mins-data";
 import { LAZIEST_WAYS_AI_BEGINNERS_COURSE } from "./playbooks/laziest-ways-money-ai-beginners-data";
+import { TRADING_212_GUIDE_COURSE } from "./playbooks/trading-212-investing-guide-data";
+import { SIDE_HUSTLES_STUDENTS_2026_COURSE } from "./playbooks/side-hustles-students-2026-data";
+import { MAKING_MONEY_ONLINE_EASY_COURSE } from "./playbooks/making-money-online-easy-copy-data";
+import { FIRST_10K_TEEN_COURSE } from "./playbooks/first-10k-teen-simple-data";
+import { ONLY_INVESTING_VIDEO_100_COURSE } from "./playbooks/only-investing-video-100-data";
+import { SEVEN_PROVEN_WAYS_AI_NO_EXP_COURSE } from "./playbooks/seven-proven-ways-ai-no-exp-data";
+import { ACTUALLY_LOCK_IN_GUIDE_COURSE } from "./playbooks/actually-lock-in-guide-data";
+import { EIGHTEEN_YEARS_UGLY_ADVICE_COURSE } from "./playbooks/eighteen-years-ugly-advice-data";
 
 export type SlideType =
   | "TITLE"
@@ -540,6 +548,38 @@ export const COURSES: Record<string, Course> = {
   // 32. Laziest Ways to Make Money with AI (For Beginners)
   "laziest-ways-to-make-money-with-ai-for-beginners": LAZIEST_WAYS_AI_BEGINNERS_COURSE,
   "ai-businesses-32": LAZIEST_WAYS_AI_BEGINNERS_COURSE,
+
+  // 33. How to Use Trading 212 in 2026 (Full Investing Guide)
+  "how-to-use-trading-212-in-2026-full-investing-guide": TRADING_212_GUIDE_COURSE,
+  "ai-businesses-33": TRADING_212_GUIDE_COURSE,
+
+  // 34. 7 Side Hustles Students Can Start In 2026
+  "7-side-hustles-students-can-start-in-2026": SIDE_HUSTLES_STUDENTS_2026_COURSE,
+  "ai-businesses-34": SIDE_HUSTLES_STUDENTS_2026_COURSE,
+
+  // 35. Making Money Online is Easy, Actually (Just Copy Me)
+  "making-money-online-is-easy-actually-just-copy-me": MAKING_MONEY_ONLINE_EASY_COURSE,
+  "ai-businesses-35": MAKING_MONEY_ONLINE_EASY_COURSE,
+
+  // 36. How to Make Your First $10,000 As a Teen (Stupid Simple)
+  "how-to-make-your-first-10-000-as-a-teen-stupid-simple": FIRST_10K_TEEN_COURSE,
+  "ai-businesses-36": FIRST_10K_TEEN_COURSE,
+
+  // 37. The Only Investing Video You'll Ever Need (Start With $100)
+  "the-only-investing-video-youll-ever-need-start-with-100": ONLY_INVESTING_VIDEO_100_COURSE,
+  "ai-businesses-37": ONLY_INVESTING_VIDEO_100_COURSE,
+
+  // 38. 7 Proven Ways to Make Money With AI (No Experience)
+  "7-proven-ways-to-make-money-with-ai-no-experience": SEVEN_PROVEN_WAYS_AI_NO_EXP_COURSE,
+  "ai-businesses-38": SEVEN_PROVEN_WAYS_AI_NO_EXP_COURSE,
+
+  // 39. How to ACTUALLY Lock In (No Bullsh*t Guide)
+  "how-to-actually-lock-in-no-bullsh-t-guide": ACTUALLY_LOCK_IN_GUIDE_COURSE,
+  "ai-businesses-39": ACTUALLY_LOCK_IN_GUIDE_COURSE,
+
+  // 40. 18 Years Of UGLY Business Advice In 19 Minutes
+  "18-years-of-ugly-business-advice-in-19-minutes": EIGHTEEN_YEARS_UGLY_ADVICE_COURSE,
+  "ai-businesses-40": EIGHTEEN_YEARS_UGLY_ADVICE_COURSE,
 
   // Backward compatibility legacy mappings
   "ai-businesses-02": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
