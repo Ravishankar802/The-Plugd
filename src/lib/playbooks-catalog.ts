@@ -21,7 +21,27 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "ratingCount": 1420,
     "href": "/if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m"
   },
-  {
+    {
+    "id": "ai-businesses-54",
+    "slug": "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint",
+    "title": "If I Wanted To Become a Millionaire in 2026, This Is What I'd Do [FULL BLUEPRINT]",
+    "headline": "The definitive step-by-step master execution blueprint to build an unassailable seven-figure net worth in 2026 using modern leverage and asymmetric systems.",
+    "description": "A comprehensive operational masterclass breaking down the exact modern mechanics of wealth: mastering asymmetric skills, engineering high-ticket irresistible offers, deploying the Rule of 100 acquisition engine, scaling productized operations, and defending capital into a permanent $1,000,000 fortress.",
+    "categorySlug": "ai-businesses",
+    "categoryName": "AI Businesses",
+    "price": 3,
+    "originalPrice": 9,
+    "currency": "USD",
+    "modulesCount": 8,
+    "lessonsCount": 32,
+    "slidesCount": 128,
+    "hoursOfMaterial": "8.5 hours",
+    "badge": "Hot & New",
+    "rating": 4.9,
+    "ratingCount": 1680,
+    "href": "/if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint"
+  },
+{
     "id": "ai-businesses-01",
     "slug": "7-ai-automations",
     "title": "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)",
