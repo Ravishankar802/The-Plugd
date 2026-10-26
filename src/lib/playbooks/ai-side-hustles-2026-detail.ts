@@ -27,7 +27,7 @@ export const AI_SIDE_HUSTLES_2026_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017436/The_Best_AI_Side_Hustles_To_Start_In_2026_No_Skills.png",
   hoursOfMaterial: "6.5 hours",
   modulesCount: 6,
   lessonsCount: 24,

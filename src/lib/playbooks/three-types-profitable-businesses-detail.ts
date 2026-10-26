@@ -27,7 +27,7 @@ export const THREE_TYPES_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017441/There_Are_Only_3_Types_Of_Profitable_Businesses_Pick_ONE.png",
   hoursOfMaterial: "8.0 hours",
   modulesCount: 8,
   lessonsCount: 32,

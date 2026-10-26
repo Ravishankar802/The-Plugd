@@ -148,6 +148,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-06",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017436/The_Best_AI_Side_Hustles_To_Start_In_2026_No_Skills.png",
     "slug": "the-best-ai-side-hustles-to-start-in-2026-no-skills",
     "title": "The Best AI Side Hustles To Start In 2026 (No Skills)",
     "headline": "Modern, low-barrier side projects powered by contemporary AI tools and workflows.",
@@ -231,6 +232,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-10",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017436/The_Blueprint_To_Go_From_0_To_1_000_000.png",
     "slug": "the-blueprint-to-go-from-0-to-1000000",
     "title": "The Blueprint To Go From $0 To $1,000,000",
     "headline": "The 3-stage master roadmap from zero to $1M: active skills, operational leverage, and capital defense.",
@@ -271,6 +273,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-12",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017435/The_5_Money_Principles_that_will_make_anyone_RICH_in_their_20s.png",
     "slug": "the-5-money-principles-that-will-make-anyone-rich-in-their-20s",
     "title": "The 5 Money Principles that will make anyone RICH in their 20s",
     "headline": "The five stoic commandments that build permanent multi-millionaire wealth before age 30.",
@@ -333,6 +336,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-15",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017434/The_4_Levels_To_Getting_RICH_in_2026.png",
     "slug": "the-4-levels-to-getting-rich-in-2026",
     "title": "The 4 Levels To Getting RICH in 2026",
     "headline": "How to break through the 4 levels of financial consciousness—from Jeffrey to Sovereign Architect.",
@@ -353,6 +357,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-16",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017438/The_A.I._Revolution_8_Ways_to_get_RICH.png",
     "slug": "the-a-i-revolution-8-ways-to-get-rich",
     "title": "The A.I. Revolution: 8 Ways to get RICH",
     "headline": "The 8 proven vehicles to build wealth in the AI revolution: Value Arbitrage, bots, and micro-SaaS.",
@@ -438,6 +443,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-20",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017435/The_New_Way_of_Making_Content_In_The_Age_of_AI.png",
     "slug": "the-new-way-of-making-content-in-the-age-of-ai",
     "title": "The New Way of Making Content In The Age of AI",
     "headline": "The next-generation AI content creation system for 10x output speed without sacrificing voice or quality.",
@@ -797,6 +803,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-37",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017440/The_Only_Investing_Video_You_ll_Ever_Need_Start_With_100.png",
     "slug": "the-only-investing-video-youll-ever-need-start-with-100",
     "title": "The Only Investing Video You'll Ever Need (Start With $100)",
     "headline": "A comprehensive wealth-building primer comparing 5 core assets and laying down the mathematics of long-term freedom.",
@@ -899,6 +906,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-42",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017441/There_Are_Only_3_Types_Of_Profitable_Businesses_Pick_ONE.png",
     "slug": "there-are-only-3-types-of-profitable-businesses-pick-one",
     "title": "There Are Only 3 Types Of Profitable Businesses (Pick ONE)",
     "headline": "A definitive strategic breakdown of the only three business vehicles that generate durable, long-term wealth.",
@@ -1065,6 +1073,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-50",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017431/The_30KMonth_Al_Faceless_Shorts_Method_Nobody_s_Talking_About.png",
     "slug": "the-30k-month-al-faceless-shorts-method-nobodys-talking-about",
     "title": "The $30K/Month Al Faceless Shorts Method Nobody's Talking About",
     "headline": "A step-by-step masterclass to building a high-RPM, faceless YouTube Shorts channel using AI video generation.",

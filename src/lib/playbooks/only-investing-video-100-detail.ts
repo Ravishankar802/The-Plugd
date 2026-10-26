@@ -27,7 +27,7 @@ export const ONLY_INVESTING_VIDEO_100_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017440/The_Only_Investing_Video_You_ll_Ever_Need_Start_With_100.png",
   hoursOfMaterial: "7.5 hours",
   modulesCount: 7,
   lessonsCount: 28,

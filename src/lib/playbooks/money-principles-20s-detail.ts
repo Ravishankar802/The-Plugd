@@ -27,7 +27,7 @@ export const MONEY_PRINCIPLES_20S_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017435/The_5_Money_Principles_that_will_make_anyone_RICH_in_their_20s.png",
   hoursOfMaterial: "7.5 hours",
   modulesCount: 7,
   lessonsCount: 28,

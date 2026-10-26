@@ -27,7 +27,7 @@ export const BLUEPRINT_0_TO_1M_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017436/The_Blueprint_To_Go_From_0_To_1_000_000.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 8,
   lessonsCount: 32,

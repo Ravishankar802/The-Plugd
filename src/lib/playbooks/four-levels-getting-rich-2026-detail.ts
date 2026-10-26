@@ -27,7 +27,7 @@ export const FOUR_LEVELS_GETTING_RICH_2026_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017434/The_4_Levels_To_Getting_RICH_in_2026.png",
   hoursOfMaterial: "6.5 hours",
   modulesCount: 6,
   lessonsCount: 24,

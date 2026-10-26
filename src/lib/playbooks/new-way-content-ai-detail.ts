@@ -27,7 +27,7 @@ export const NEW_WAY_CONTENT_AI_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017435/The_New_Way_of_Making_Content_In_The_Age_of_AI.png",
   hoursOfMaterial: "6.5 hours",
   modulesCount: 6,
   lessonsCount: 24,

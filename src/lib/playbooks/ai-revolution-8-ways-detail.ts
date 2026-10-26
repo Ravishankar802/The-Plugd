@@ -27,7 +27,7 @@ export const AI_REVOLUTION_8_WAYS_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017438/The_A.I._Revolution_8_Ways_to_get_RICH.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 8,
   lessonsCount: 32,
