@@ -27,7 +27,7 @@ export const SALES_TACTIC_10M_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793019691/Want_to_made_god-tier_money_Use_this_sales_tactic_Made_me_10M.png",
   hoursOfMaterial: "7.0 hours",
   modulesCount: 7,
   lessonsCount: 28,

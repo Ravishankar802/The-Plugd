@@ -849,6 +849,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-39",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793019690/How_to_ACTUALLY_Lock_In_No_Bullsht_Guide.png",
     "slug": "how-to-actually-lock-in-no-bullsh-t-guide",
     "title": "How to ACTUALLY Lock In (No Bullsh*t Guide)",
     "headline": "A ruthless, uncompromising manual to breaking brain rot, eliminating cheap dopamine, and executing deep work relentlessly.",
@@ -890,6 +891,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
     {
     "id": "ai-businesses-41",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793019691/Want_to_made_god-tier_money_Use_this_sales_tactic_Made_me_10M.png",
     "slug": "want-to-made-god-tier-money-use-this-sales-tactic-made-me-10m",
     "title": "Want to made god-tier money? Use this sales tactic (Made me $10M)",
     "headline": "A masterclass in high-ticket diagnostic selling: quantifying client financial pain and closing enterprise deals without pressure.",

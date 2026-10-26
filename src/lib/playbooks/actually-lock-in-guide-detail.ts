@@ -27,7 +27,7 @@ export const ACTUALLY_LOCK_IN_GUIDE_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793019690/How_to_ACTUALLY_Lock_In_No_Bullsht_Guide.png",
   hoursOfMaterial: "7.5 hours",
   modulesCount: 7,
   lessonsCount: 28,
