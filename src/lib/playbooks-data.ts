@@ -70,6 +70,13 @@ import { BUILD_10K_WEBSITES_CLAUDE_COURSE } from "./playbooks/build-10k-websites
 import { MASTER_HIGGSFIELD_AI_COURSE } from "./playbooks/master-higgsfield-ai-tutorial-data";
 import { STARTED_OVER_ZERO_TO_1M_COURSE } from "./playbooks/started-over-zero-plan-to-1m-data";
 import { BECOME_MILLIONAIRE_2026_BLUEPRINT_COURSE } from "./playbooks/become-millionaire-2026-full-blueprint-data";
+import { WIN_IN_20S_COURSE } from "./playbooks/win-in-your-20s-at-anything-data";
+import { CAPITALIZE_AI_GOLD_RUSH_COURSE } from "./playbooks/smartest-way-capitalize-ai-gold-rush-data";
+import { STUDENT_HUSTLES_2027_COURSE } from "./playbooks/seven-side-hustles-students-2027-data";
+import { SELL_PDFS_WITH_AI_COURSE } from "./playbooks/sell-pdfs-with-ai-changed-life-data";
+import { THREE_BEST_AI_BIZ_2027_COURSE } from "./playbooks/three-best-ai-businesses-before-2027-data";
+import { FIVE_SIMPLE_APPS_10K_COURSE } from "./playbooks/five-simple-apps-10k-month-ai-data";
+
 
 export type SlideType =
   | "TITLE"
@@ -622,6 +629,18 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-53": STARTED_OVER_ZERO_TO_1M_COURSE,
   "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint": BECOME_MILLIONAIRE_2026_BLUEPRINT_COURSE,
   "ai-businesses-54": BECOME_MILLIONAIRE_2026_BLUEPRINT_COURSE,
+  "if-youre-in-your-20s-heres-how-to-win-at-anything": WIN_IN_20S_COURSE,
+  "ai-businesses-55": WIN_IN_20S_COURSE,
+  "the-smartest-way-to-capitalize-on-the-ai-gold-rush": CAPITALIZE_AI_GOLD_RUSH_COURSE,
+  "ai-businesses-56": CAPITALIZE_AI_GOLD_RUSH_COURSE,
+  "7-side-hustles-students-can-start-in-2027": STUDENT_HUSTLES_2027_COURSE,
+  "ai-businesses-57": STUDENT_HUSTLES_2027_COURSE,
+  "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything": SELL_PDFS_WITH_AI_COURSE,
+  "ai-businesses-58": SELL_PDFS_WITH_AI_COURSE,
+  "3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today": THREE_BEST_AI_BIZ_2027_COURSE,
+  "ai-businesses-59": THREE_BEST_AI_BIZ_2027_COURSE,
+  "5-simple-apps-making-10-000-month-that-you-can-build-with-ai": FIVE_SIMPLE_APPS_10K_COURSE,
+  "ai-businesses-60": FIVE_SIMPLE_APPS_10K_COURSE,
 
   // Backward compatibility legacy mappings
   "ai-businesses-02": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
@@ -694,7 +713,13 @@ export function getAllCourses(): Course[] {
     BUILD_10K_WEBSITES_CLAUDE_COURSE,
     MASTER_HIGGSFIELD_AI_COURSE,
     STARTED_OVER_ZERO_TO_1M_COURSE,
-    BECOME_MILLIONAIRE_2026_BLUEPRINT_COURSE
+    BECOME_MILLIONAIRE_2026_BLUEPRINT_COURSE,
+    WIN_IN_20S_COURSE,
+    CAPITALIZE_AI_GOLD_RUSH_COURSE,
+    STUDENT_HUSTLES_2027_COURSE,
+    SELL_PDFS_WITH_AI_COURSE,
+    THREE_BEST_AI_BIZ_2027_COURSE,
+    FIVE_SIMPLE_APPS_10K_COURSE
   ];
 }
 
