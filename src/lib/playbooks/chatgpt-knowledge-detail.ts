@@ -27,7 +27,7 @@ export const CHATGPT_KNOWLEDGE_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013301/Give_Me_28_Minutes_I_ll_Give_You_10_000_Hours_of_ChatGPT_Knowledge.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 8,
   lessonsCount: 32,

@@ -27,7 +27,7 @@ export const SEVEN_REMOTE_JOBS_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013298/7_Remote_Jobs_You_Can_Do_From_Home.png",
   hoursOfMaterial: "7.0 hours",
   modulesCount: 7,
   lessonsCount: 28,

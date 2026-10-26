@@ -83,6 +83,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-03",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013299/Give_Me_26_Minutes_I_ll_Give_You_10_000_Hours_of_Claude_Knowledge.png",
     "slug": "give-me-26-minutes-ill-give-you-10000-hours-of-claude-knowledge",
     "title": "Give Me 26 Minutes, I'll Give You 10,000 Hours of Claude Knowledge",
     "headline": "A high-leverage distillation of advanced Claude techniques, prompt architectures, and practical workflows.",
@@ -103,6 +104,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-04",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013301/Give_Me_28_Minutes_I_ll_Give_You_10_000_Hours_of_ChatGPT_Knowledge.png",
     "slug": "give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge",
     "title": "Give Me 28 Minutes, I'll Give You 10,000 Hours of ChatGPT Knowledge",
     "headline": "A concentrated breakdown of ChatGPT capabilities, custom GPTs, and real-world task acceleration.",
@@ -164,6 +166,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-07",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013302/Copy_Paste_THIS_Strategy_to_Make_13kMonth_with_AI_in_2026_7.png",
     "slug": "copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026",
     "title": "Copy & Paste THIS Strategy to Make $13k/Month with AI in 2026",
     "headline": "A structured workflow for packaging and delivering high-value AI solutions to businesses.",
@@ -184,6 +187,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-08",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013304/Build_A_One-Person_Business_As_A_Beginner_From_0_To_10K.png",
     "slug": "build-a-one-person-business-as-a-beginner-from-0-to-10k",
     "title": "Build A One-Person Business As A Beginner (From $0 To $10K)",
     "headline": "A step-by-step roadmap for starting, validating, and growing a solo business venture.",
@@ -712,6 +716,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-34",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013300/7_Side_Hustles_Students_Can_Start_In_2026.png",
     "slug": "7-side-hustles-students-can-start-in-2026",
     "title": "7 Side Hustles Students Can Start In 2026",
     "headline": "A battle-tested blueprint for students to generate $3,000 to $5,000/month around classes without upfront capital.",
@@ -792,6 +797,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-38",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013084/7_Proven_Ways_to_Make_Money_With_AI_No_Experience.png",
     "slug": "7-proven-ways-to-make-money-with-ai-no-experience",
     "title": "7 Proven Ways to Make Money With AI (No Experience)",
     "headline": "A practical roadmap to profiting from the AI revolution by providing implementation services rather than competing with tech giants.",
@@ -832,6 +838,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-40",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013301/18_Years_Of_UGLY_Business_Advice_In_19_Minutes.png",
     "slug": "18-years-of-ugly-business-advice-in-19-minutes",
     "title": "18 Years Of UGLY Business Advice In 19 Minutes",
     "headline": "Raw, unvarnished, battle-tested operational truth from nearly two decades in the entrepreneurial trenches.",
@@ -932,6 +939,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-45",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013302/Copy_Paste_THIS_Strategy_To_Make_Your_First_5_000_Online.png",
     "slug": "copy-paste-this-strategy-to-make-your-first-5-000-online",
     "title": "Copy & Paste THIS Strategy To Make Your First $5,000 Online",
     "headline": "A copy-and-paste playbook to launch, grow, and monetize a high-value niche newsletter to $5,000/month.",
@@ -952,6 +960,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-46",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013298/7_Remote_Jobs_You_Can_Do_From_Home.png",
     "slug": "7-remote-jobs-you-can-do-from-home",
     "title": "7 Remote Jobs You Can Do From Home",
     "headline": "A practical guide to landing high-paying, location-independent remote roles with real utility and career leverage.",

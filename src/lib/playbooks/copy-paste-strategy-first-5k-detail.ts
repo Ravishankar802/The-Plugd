@@ -27,7 +27,7 @@ export const COPY_PASTE_FIRST_5K_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013302/Copy_Paste_THIS_Strategy_To_Make_Your_First_5_000_Online.png",
   hoursOfMaterial: "8.0 hours",
   modulesCount: 8,
   lessonsCount: 32,

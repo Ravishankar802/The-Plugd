@@ -27,7 +27,7 @@ export const SEVEN_PROVEN_WAYS_AI_NO_EXP_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013084/7_Proven_Ways_to_Make_Money_With_AI_No_Experience.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 8,
   lessonsCount: 32,

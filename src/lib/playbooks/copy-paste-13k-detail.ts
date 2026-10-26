@@ -27,7 +27,7 @@ export const COPY_PASTE_13K_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013302/Copy_Paste_THIS_Strategy_to_Make_13kMonth_with_AI_in_2026_7.png",
   hoursOfMaterial: "7.5 hours",
   modulesCount: 7,
   lessonsCount: 28,

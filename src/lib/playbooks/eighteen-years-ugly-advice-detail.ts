@@ -27,7 +27,7 @@ export const EIGHTEEN_YEARS_UGLY_ADVICE_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013301/18_Years_Of_UGLY_Business_Advice_In_19_Minutes.png",
   hoursOfMaterial: "8.0 hours",
   modulesCount: 8,
   lessonsCount: 32,

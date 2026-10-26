@@ -27,7 +27,7 @@ export const CLAUDE_KNOWLEDGE_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793013299/Give_Me_26_Minutes_I_ll_Give_You_10_000_Hours_of_Claude_Knowledge.png",
   hoursOfMaterial: "6.5 hours",
   modulesCount: 6,
   lessonsCount: 24,
