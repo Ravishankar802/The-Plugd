@@ -27,7 +27,7 @@ export const BUILD_1M_SOLO_FASTER_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015288/How_To_Build_A_1M_One-Person_Business_Faster_With_AI.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 8,
   lessonsCount: 32,

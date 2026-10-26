@@ -27,7 +27,7 @@ export const USE_AI_BETTER_99_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015290/How_To_Use_AI_Better_Than_99_Of_People_This_Changed_My_Life.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 8,
   lessonsCount: 32,

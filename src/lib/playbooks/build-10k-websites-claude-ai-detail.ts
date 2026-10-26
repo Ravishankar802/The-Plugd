@@ -27,7 +27,7 @@ export const BUILD_10K_WEBSITES_CLAUDE_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015288/How_to_Build_10K_Websites_in_Minutes_Claude_AI.png",
   hoursOfMaterial: "7.0 hours",
   modulesCount: 7,
   lessonsCount: 28,

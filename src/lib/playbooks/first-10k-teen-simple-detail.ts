@@ -27,7 +27,7 @@ export const FIRST_10K_TEEN_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015289/How_to_Make_Your_First_10_000_As_a_Teen_Stupid_Simple.png",
   hoursOfMaterial: "8.0 hours",
   modulesCount: 8,
   lessonsCount: 32,

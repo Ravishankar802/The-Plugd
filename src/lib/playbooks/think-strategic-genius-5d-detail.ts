@@ -27,7 +27,7 @@ export const THINK_STRATEGIC_GENIUS_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015291/How_To_Think_Like_A_Strategic_Genius_5-Dimensional_Thinking.png",
   hoursOfMaterial: "7.5 hours",
   modulesCount: 7,
   lessonsCount: 28,

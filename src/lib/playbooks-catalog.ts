@@ -368,6 +368,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-17",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015287/How_I_turned_300_to_100_000_At_19_My_Side_Hustles.png",
     "slug": "how-i-turned-300-to-100-000-at-19-my-side-hustles",
     "title": "How I turned $300 to $100,000 At 19 (My Side Hustles)",
     "headline": "A raw, tactical breakdown of turning $300 into $100,000 at 19 through aggressive side hustle compounding.",
@@ -388,6 +389,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-18",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015288/How_to_become_rich_with_social_media_my_exact_playbook.png",
     "slug": "how-to-become-rich-with-social-media-my-exact-playbook",
     "title": "How to become rich with social media (my exact playbook)",
     "headline": "The exact social media distribution engine and monetization blueprint that turns attention into millions.",
@@ -409,6 +411,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-19",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015290/How_to_Get_Rich_for_Service-Based_Businesses_Thank_Me_Later.png",
     "slug": "how-to-get-rich-for-service-based-businesses-thank-me-later",
     "title": "How to Get Rich for Service-Based Businesses (Thank Me Later)",
     "headline": "The institutional playbook for escaping hourly billing, scaling retainers, and productizing service businesses.",
@@ -451,6 +454,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-21",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015289/How_to_Catch_Up_In_Life_Using_Logic.png",
     "slug": "how-to-catch-up-in-life-using-logic",
     "title": "How to Catch Up In Life (Using Logic)",
     "headline": "A ruthlessly logical, first-principles framework to compress a decade of financial and personal progress into 2 years.",
@@ -556,6 +560,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-26",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015288/How_To_Build_A_1M_One-Person_Business_Faster_With_AI.png",
     "slug": "how-to-build-a-1m-one-person-business-faster-with-ai",
     "title": "How To Build A $1M One-Person Business Faster With AI",
     "headline": "The complete operating blueprint to architect, scale, and automate a $1,000,000/year one-person empire with AI leverage.",
@@ -576,6 +581,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-27",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015291/How_To_Think_Like_A_Strategic_Genius_5-Dimensional_Thinking.png",
     "slug": "how-to-think-like-a-strategic-genius-5-dimensional-thinking",
     "title": "How To Think Like A Strategic Genius (5-Dimensional Thinking)",
     "headline": "Upgrade your cognitive operating system with 5-Dimensional Integral Thinking to make unassailable strategic moves.",
@@ -596,6 +602,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-28",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015290/How_To_Use_AI_Better_Than_99_Of_People_This_Changed_My_Life.png",
     "slug": "how-to-use-ai-better-than-99-of-people-this-changed-my-life",
     "title": "How To Use AI Better Than 99% Of People (This Changed My Life)",
     "headline": "Unlock the top 1% cognitive workflow frameworks to transform AI into an intellectual sparring partner and output multiplier.",
@@ -757,6 +764,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-36",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015289/How_to_Make_Your_First_10_000_As_a_Teen_Stupid_Simple.png",
     "slug": "how-to-make-your-first-10-000-as-a-teen-stupid-simple",
     "title": "How to Make Your First $10,000 As a Teen (Stupid Simple)",
     "headline": "A practical, zero-bullshit roadmap for teens and young adults to bank their first $10,000 in net profit.",
@@ -1061,6 +1069,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-51",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015288/How_to_Build_10K_Websites_in_Minutes_Claude_AI.png",
     "slug": "how-to-build-10k-websites-in-minutes-claude-ai",
     "title": "How to Build $10K Websites in Minutes (Claude AI)",
     "headline": "A production-grade agency blueprint to generating bespoke, high-converting $10k websites in minutes using Claude AI.",

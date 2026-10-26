@@ -27,7 +27,7 @@ export const GET_RICH_SERVICE_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015290/How_to_Get_Rich_for_Service-Based_Businesses_Thank_Me_Later.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 8,
   lessonsCount: 32,
