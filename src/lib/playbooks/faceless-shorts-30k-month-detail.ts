@@ -27,7 +27,7 @@ export const FACELESS_SHORTS_30K_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017431/The_30KMonth_Al_Faceless_Shorts_Method_Nobody_s_Talking_About.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793019211/The_30KMonth_Al_Faceless_Shorts_Method_Nobody_s_Talking_About.png",
   hoursOfMaterial: "8.0 hours",
   modulesCount: 8,
   lessonsCount: 32,

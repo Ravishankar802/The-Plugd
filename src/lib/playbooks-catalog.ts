@@ -1078,7 +1078,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-50",
-    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017431/The_30KMonth_Al_Faceless_Shorts_Method_Nobody_s_Talking_About.png",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793019211/The_30KMonth_Al_Faceless_Shorts_Method_Nobody_s_Talking_About.png",
     "slug": "the-30k-month-al-faceless-shorts-method-nobodys-talking-about",
     "title": "The $30K/Month Al Faceless Shorts Method Nobody's Talking About",
     "headline": "A step-by-step masterclass to building a high-RPM, faceless YouTube Shorts channel using AI video generation.",
