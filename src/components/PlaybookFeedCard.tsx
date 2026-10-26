@@ -28,7 +28,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
       {/* Clickable Card Body linking to Playbook */}
       <Link
         href={playbook.href}
-        className="flex flex-col flex-1 focus:outline-none cursor-pointer"
+        className="flex flex-col flex-1 w-full focus:outline-none cursor-pointer"
         aria-label={`${playbook.title} — ${playbook.categoryName} Playbook`}
       >
         {/* 16:9 Thumbnail Container */}
@@ -48,18 +48,18 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
         </div>
 
         {/* Title and Category */}
-        <div className="mt-3 flex flex-col flex-1">
+        <div className="mt-3 flex flex-col flex-1 w-full">
           <h3 className="text-[14.5px] sm:text-[15px] font-semibold text-[#1c1917] leading-[1.35] line-clamp-2 h-[40px] sm:h-[42px] group-hover:text-[#2563eb] transition-colors">
             {playbook.title}
           </h3>
 
           {/* Category beneath Title */}
-          <div className="mt-1.5 sm:mt-2 text-[13px] text-[#57534e] truncate">
+          <div className="mt-1.5 sm:mt-2 text-[13px] text-[#57534e] truncate w-full">
             <span className="font-medium text-[#44403c]">{playbook.categoryName}</span>
           </div>
 
           {/* Metadata Row — Fixed height container so cards are always identical in size */}
-          <div className="mt-2.5 flex items-center gap-1.5 text-xs h-[24px] overflow-hidden">
+          <div className="mt-2.5 flex items-center gap-1.5 text-xs h-[24px] overflow-hidden w-full">
             {playbook.badge && (
               <span className="inline-flex items-center rounded-md bg-[#eff6ff] px-2 py-0.5 text-[11px] font-bold text-[#1d4ed8] tracking-tight shrink-0">
                 {playbook.badge}
@@ -86,7 +86,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
       </Link>
 
       {/* Price and CTA Action */}
-      <div className="mt-4 sm:mt-5 flex items-center justify-between gap-2 shrink-0">
+      <div className="w-full mt-4 sm:mt-5 flex items-center justify-between gap-2 shrink-0">
         {playbook.badge === "Coming Soon" ? (
           <>
             <div className="flex items-center gap-1.5 shrink-0">
