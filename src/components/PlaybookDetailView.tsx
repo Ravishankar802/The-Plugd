@@ -317,9 +317,9 @@ export default function PlaybookDetailView({
 
             {/* Mobile-Only Purchase Card within Hero */}
             <div ref={heroCtaRef} className="block lg:hidden mt-6">
-              <div className="rounded-none border border-[#d1d7dc] bg-white text-[#1c1917] overflow-hidden shadow-lg">
-                {/* Static Thumbnail fitting entire image area edge-to-edge */}
-                <div className="relative aspect-video w-full overflow-hidden bg-[#ebe8e4]">
+              <div className="rounded-2xl border border-[#dcd8d0] bg-white text-[#1c1917] overflow-hidden shadow-lg p-3.5 sm:p-4">
+                {/* 16:9 Thumbnail Container with frame and curved corners just like Playbook Cards */}
+                <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#eeebe5] border border-[#e5e1d8] shrink-0">
                   {playbook.thumbnail ? (
                     <Image
                       src={playbook.thumbnail}
@@ -330,12 +330,12 @@ export default function PlaybookDetailView({
                       className="object-cover object-center"
                     />
                   ) : (
-                    <div className="h-full w-full bg-[#ebe8e4]" />
+                    <div className="h-full w-full bg-[#eeebe5]" />
                   )}
                 </div>
 
                 {/* Mobile Purchase Actions */}
-                <div className="p-4 sm:p-5">
+                <div className="pt-4 sm:pt-5 pb-1">
                   {isFreeReview ? (
                     <div className="mb-4">
                       <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-50 text-emerald-800 text-xs font-semibold border border-emerald-200 mb-2">
@@ -874,9 +874,9 @@ export default function PlaybookDetailView({
 
             {/* RIGHT COLUMN: DESKTOP FLOATING PURCHASE CARD (UDEMY PATTERN) */}
             <div className="hidden lg:block relative">
-              <div className="sticky top-6 -mt-[310px] z-30 w-full bg-white text-[#1c1917] border border-[#d1d7dc] shadow-2xl rounded-none overflow-hidden">
-                {/* Static Thumbnail fitting entire image area edge-to-edge */}
-                <div className="relative aspect-video w-full overflow-hidden bg-[#ebe8e4]">
+              <div className="sticky top-6 -mt-[310px] z-30 w-full bg-white text-[#1c1917] border border-[#dcd8d0] shadow-2xl rounded-2xl overflow-hidden p-3.5 sm:p-4">
+                {/* 16:9 Thumbnail Container with frame and curved corners just like Playbook Cards */}
+                <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#eeebe5] border border-[#e5e1d8] shrink-0">
                   {playbook.thumbnail ? (
                     <Image
                       src={playbook.thumbnail}
@@ -887,12 +887,12 @@ export default function PlaybookDetailView({
                       className="object-cover object-center"
                     />
                   ) : (
-                    <div className="h-full w-full bg-[#ebe8e4]" />
+                    <div className="h-full w-full bg-[#eeebe5]" />
                   )}
                 </div>
 
                 {/* Card Interior */}
-                <div className="p-5 xl:p-6">
+                <div className="pt-4 sm:pt-5 pb-1">
                   {/* Pricing row */}
                   {isFreeReview ? (
                     <div className="mb-4">
