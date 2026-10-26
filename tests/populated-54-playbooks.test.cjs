@@ -547,7 +547,7 @@ const POPULATED_PLAYBOOKS = [
   {
       "id": "ai-businesses-49",
       "slug": "my-honest-advice-to-someone-who-wants-to-get-rich",
-      "title": "My honest advice to someone who wants to get rich.",
+      "title": "My honest advice to someone who wants to get rich",
       "dataFile": "src/lib/playbooks/honest-advice-want-get-rich-data.ts",
       "detailFile": "src/lib/playbooks/honest-advice-want-get-rich-detail.ts",
       "routeDir": "src/app/my-honest-advice-to-someone-who-wants-to-get-rich",

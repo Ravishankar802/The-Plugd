@@ -27,7 +27,7 @@ export const LEARN_THIS_SKILL_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016811/Learn_This_Skill_If_You_Want_To_Win_In_The_Next_2-3_Years.png",
   hoursOfMaterial: "7.5 hours",
   modulesCount: 7,
   lessonsCount: 28,

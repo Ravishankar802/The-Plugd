@@ -210,6 +210,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-09",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016809/Laziest_Way_to_Make_Money_Online_in_2026_500day.png",
     "slug": "laziest-way-to-make-money-online-in-2026-500-day",
     "title": "Laziest Way to Make Money Online in 2026 ($500/day)",
     "headline": "High-leverage, asynchronous digital cash engines generating $500/day with 98% net margins.",
@@ -290,6 +291,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-13",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016809/It_s_Boring_But_Will_Make_Even_Beginners_Millionaires_in_2026.png",
     "slug": "its-boring-but-will-make-even-beginners-millionaires-in-2026",
     "title": "It's Boring, But Will Make Even Beginners Millionaires in 2026",
     "headline": "Why unsexy B2B workflow and compliance cash engines silently build eight-figure net worths.",
@@ -544,6 +546,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-25",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016811/Learn_This_Skill_If_You_Want_To_Win_In_The_Next_2-3_Years.png",
     "slug": "learn-this-skill-if-you-want-to-win-in-the-next-2-3-years",
     "title": "Learn This Skill If You Want To Win In The Next 2-3 Years",
     "headline": "Master the ultimate meta-skill of writing, synthesis, and framing to out-compete and thrive over the next 2-3 years.",
@@ -689,6 +692,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-32",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016813/Laziest_Ways_to_Make_Money_with_AI_For_Beginners.png",
     "slug": "laziest-ways-to-make-money-with-ai-for-beginners",
     "title": "Laziest Ways to Make Money with AI (For Beginners)",
     "headline": "A beginner's turnkey guide to low-maintenance AI income streams with zero inventory, minimal effort, and global laptop freedom.",
@@ -751,6 +755,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-35",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016811/Making_Money_Online_is_Easy_Actually_Just_Copy_Me.png",
     "slug": "making-money-online-is-easy-actually-just-copy-me",
     "title": "Making Money Online is Easy, Actually (Just Copy Me)",
     "headline": "A veteran entrepreneur's simplified blueprint to stripping away noise and generating consistent online cash flow.",
@@ -1039,8 +1044,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-49",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016810/My_honest_advice_to_someone_who_wants_to_get_rich..png",
     "slug": "my-honest-advice-to-someone-who-wants-to-get-rich",
-    "title": "My honest advice to someone who wants to get rich.",
+    "title": "My honest advice to someone who wants to get rich",
     "headline": "Raw, unfiltered, battle-tested advice for young founders: maximizing youth leverage, cutting lifestyle drag, and executing relentlessly.",
     "description": "No motivational platitudes. This playbook delivers the direct, unvarnished advice every ambitious individual needs: how to leverage your twenties, why living dirt cheap creates infinite runway, the mathematics of skill-stacking, and how to out-execute the comfortable middle class.",
     "categorySlug": "ai-businesses",
@@ -1100,6 +1106,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-52",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016812/Master_Higgsfield_AI_in_20_Minutes_Beginner_Tutorial.png",
     "slug": "master-higgsfield-ai-in-20-minutes-beginner-tutorial",
     "title": "Master Higgsfield AI in 20 Minutes (Beginner Tutorial)",
     "headline": "A comprehensive beginner tutorial to mastering Higgsfield AI, image-to-video, and Cinema Studio consistent character pipelines.",

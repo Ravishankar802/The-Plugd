@@ -27,7 +27,7 @@ export const LAZIEST_WAY_500_DAY_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016809/Laziest_Way_to_Make_Money_Online_in_2026_500day.png",
   hoursOfMaterial: "7.5 hours",
   modulesCount: 7,
   lessonsCount: 28,

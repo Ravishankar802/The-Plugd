@@ -27,7 +27,7 @@ export const BORING_MILLIONAIRES_2026_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016809/It_s_Boring_But_Will_Make_Even_Beginners_Millionaires_in_2026.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 8,
   lessonsCount: 32,

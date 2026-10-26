@@ -4,7 +4,7 @@ import { HONEST_ADVICE_GET_RICH_MODULES } from "./honest-advice-want-get-rich-da
 export const HONEST_ADVICE_GET_RICH_DETAIL_DATA: PlaybookDetailData = {
   id: "ai-businesses-49",
   slug: "my-honest-advice-to-someone-who-wants-to-get-rich",
-  title: "My honest advice to someone who wants to get rich.",
+  title: "My honest advice to someone who wants to get rich",
   headline: "Raw, unfiltered, battle-tested advice for young founders: maximizing youth leverage, cutting lifestyle drag, and executing relentlessly.",
   description: "No motivational platitudes. This playbook delivers the direct, unvarnished advice every ambitious individual needs: how to leverage your twenties, why living dirt cheap creates infinite runway, the mathematics of skill-stacking, and how to out-execute the comfortable middle class.",
   categoryName: "AI Businesses",
@@ -27,7 +27,7 @@ export const HONEST_ADVICE_GET_RICH_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016810/My_honest_advice_to_someone_who_wants_to_get_rich..png",
   hoursOfMaterial: "7.0 hours",
   modulesCount: 7,
   lessonsCount: 28,

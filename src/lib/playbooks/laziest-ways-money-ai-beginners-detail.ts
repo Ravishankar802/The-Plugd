@@ -27,7 +27,7 @@ export const LAZIEST_WAYS_AI_BEGINNERS_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016813/Laziest_Ways_to_Make_Money_with_AI_For_Beginners.png",
   hoursOfMaterial: "7.5 hours",
   modulesCount: 7,
   lessonsCount: 28,

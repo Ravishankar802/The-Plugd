@@ -7533,7 +7533,7 @@ export const HONEST_ADVICE_GET_RICH_COURSE: Course = {
   slug: "my-honest-advice-to-someone-who-wants-to-get-rich" as any,
   categorySlug: "ai-businesses",
   categoryName: "AI Businesses",
-  title: "My honest advice to someone who wants to get rich.",
+  title: "My honest advice to someone who wants to get rich",
   shortTitle: "My honest advice to someone wh",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,
   targetGender: "for-all" as any,

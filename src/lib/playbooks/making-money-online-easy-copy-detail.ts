@@ -27,7 +27,7 @@ export const MAKING_MONEY_ONLINE_EASY_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016811/Making_Money_Online_is_Easy_Actually_Just_Copy_Me.png",
   hoursOfMaterial: "6.5 hours",
   modulesCount: 6,
   lessonsCount: 24,

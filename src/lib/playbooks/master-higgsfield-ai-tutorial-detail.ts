@@ -27,7 +27,7 @@ export const MASTER_HIGGSFIELD_AI_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793016812/Master_Higgsfield_AI_in_20_Minutes_Beginner_Tutorial.png",
   hoursOfMaterial: "6.0 hours",
   modulesCount: 6,
   lessonsCount: 24,

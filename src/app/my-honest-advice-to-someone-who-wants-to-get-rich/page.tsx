@@ -5,10 +5,10 @@ import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 import { HONEST_ADVICE_GET_RICH_DETAIL } from "@/lib/playbooks/honest-advice-want-get-rich-detail";
 
 export const metadata: Metadata = {
-  title: "My honest advice to someone who wants to get rich. | Plugd",
+  title: "My honest advice to someone who wants to get rich | Plugd",
   description: "Raw, unfiltered, battle-tested advice for young founders: maximizing youth leverage, cutting lifestyle drag, and executing relentlessly.",
   openGraph: {
-    title: "My honest advice to someone who wants to get rich. | Plugd",
+    title: "My honest advice to someone who wants to get rich | Plugd",
     description: "Raw, unfiltered, battle-tested advice for young founders: maximizing youth leverage, cutting lifestyle drag, and executing relentlessly.",
   },
 };
