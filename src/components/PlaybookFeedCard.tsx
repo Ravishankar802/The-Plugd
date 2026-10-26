@@ -21,6 +21,7 @@ interface PlaybookFeedCardProps {
 
 export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
   const formattedPrice = playbook.price ? Number(playbook.price).toFixed(2) : "3.00";
+  const formattedOriginalPrice = (playbook.originalPrice ? Number(playbook.originalPrice) : 9).toFixed(2);
 
   return (
     <div className="group relative flex flex-col justify-between h-full w-full rounded-2xl bg-white hover:bg-[#f7f8fa] border border-[#dcd8d0] hover:border-[#c7c4c0] p-3 sm:p-3.5 shadow-[0_1px_3px_rgba(28,25,23,0.06),0_1px_2px_rgba(28,25,23,0.04)] hover:shadow-lg motion-safe:hover:-translate-y-1 motion-reduce:hover:transform-none transition-all duration-200 ease-out">
@@ -131,9 +132,9 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
               <span className="text-[16px] sm:text-[17px] font-bold text-[#1c1917] tracking-tight">
                 ${formattedPrice}
               </span>
-              {/* Original Muted Price with Strikethrough ($9.00) */}
+              {/* Original Muted Price with Strikethrough */}
               <span className="text-[12px] sm:text-[12.5px] text-[#a8a29e] line-through font-medium">
-                $9.00
+                ${formattedOriginalPrice}
               </span>
             </div>
 

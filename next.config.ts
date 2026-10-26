@@ -17,6 +17,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/if-i-wanted-to-become-a-millionaire-in-2027-this-is-what-id-do-full-blueprint',
+        destination: '/if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

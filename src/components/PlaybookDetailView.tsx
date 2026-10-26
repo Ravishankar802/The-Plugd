@@ -161,8 +161,12 @@ export default function PlaybookDetailView({
     } catch {}
   };
 
-  const formattedPrice = Number(playbook.price).toFixed(2);
-  const formattedOriginalPrice = Number(playbook.originalPrice).toFixed(2);
+  const formattedPrice = Number(playbook.price || 3).toFixed(2);
+  const originalPriceVal = playbook.originalPrice ?? 9;
+  const formattedOriginalPrice = Number(originalPriceVal).toFixed(2);
+  const discountPercentage =
+    playbook.discountPercentage ??
+    Math.max(0, Math.round(((originalPriceVal - Number(playbook.price || 3)) / originalPriceVal) * 100));
 
   return (
     <div className="min-h-screen bg-white text-[#1c1917] font-sans antialiased selection:bg-[#a435f0] selection:text-white">
@@ -361,7 +365,7 @@ export default function PlaybookDetailView({
                         ${formattedOriginalPrice}
                       </span>
                       <span className="text-sm font-semibold text-[#1c1917]">
-                        {playbook.discountPercentage}% off
+                        {discountPercentage}% off
                       </span>
                     </div>
                   )}
@@ -919,7 +923,7 @@ export default function PlaybookDetailView({
                         ${formattedOriginalPrice}
                       </span>
                       <span className="text-sm font-semibold text-[#1c1917]">
-                        {playbook.discountPercentage}% off
+                        {discountPercentage}% off
                       </span>
                     </div>
                   )}
@@ -1015,7 +1019,7 @@ export default function PlaybookDetailView({
                 </span>
               </div>
               <span className="text-[11px] text-[#b32d0f] font-semibold">
-                {playbook.discountPercentage}% off
+                {discountPercentage}% off
               </span>
             </div>
           )}

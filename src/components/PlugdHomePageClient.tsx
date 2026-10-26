@@ -580,11 +580,9 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
               <span className="text-base sm:text-lg font-bold text-[#1c1917]">
                 ${formattedPrice}
               </span>
-              {playbook.originalPrice && (
-                <span className="text-xs text-[#a8a29e] line-through">
-                  ${playbook.originalPrice.toFixed(2)}
-                </span>
-              )}
+              <span className="text-xs text-[#a8a29e] line-through">
+                ${(playbook.originalPrice ?? 9).toFixed(2)}
+              </span>
             </div>
           )}
         </div>
@@ -601,7 +599,7 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
             href={playbook.href}
             className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#1c1917] hover:bg-[#2563eb] text-white px-4 py-2 text-xs font-semibold shadow-xs transition-colors"
           >
-            <span>Start Learning</span>
+            <span>Add to cart</span>
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         )}

@@ -4,27 +4,27 @@ import { BECOME_MILLIONAIRE_2026_BLUEPRINT_MODULES } from "./become-millionaire-
 export const BECOME_MILLIONAIRE_2026_BLUEPRINT_DETAIL_DATA: PlaybookDetailData = {
   id: "ai-businesses-54",
   slug: "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint",
-  title: "If I Wanted To Become a Millionaire in 2026, This Is What I'd Do",
-  headline: "The definitive step-by-step master execution blueprint to build an unassailable seven-figure net worth in 2026 using modern leverage and asymmetric systems.",
+  title: "If I Wanted To Become a Millionaire in 2027, This Is What I'd Do",
+  headline: "The definitive step-by-step master execution blueprint to build an unassailable seven-figure net worth in 2027 using modern leverage and asymmetric systems.",
   description: "A comprehensive operational masterclass breaking down the exact modern mechanics of wealth: mastering asymmetric skills, engineering high-ticket irresistible offers, deploying the Rule of 100 acquisition engine, scaling productized operations, and defending capital into a permanent $1,000,000 fortress.",
   categoryName: "AI Businesses",
   categorySlug: "ai-businesses",
-  price: 3,
+  price: 6,
   originalPrice: 9,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 33,
   badge: "Hot & New",
-  rating: 4.9,
-  ratingCount: 1680,
+  rating: 4.8,
+  ratingCount: 80,
   studentsCount: "3,890",
   instructorName: "Plugd Systems Architect",
   instructorTitle: "Principal Sovereign Operator & Systems Architect",
   instructorBio: "Advising ambitious solopreneurs, digital architects, and agency operators on deploying high-margin autonomous systems, high-ticket services, and sovereign digital holding companies.",
-  instructorRating: 4.9,
-  instructorReviews: "1680",
+  instructorRating: 4.8,
+  instructorReviews: "80",
   instructorStudents: "3,890",
   instructorCourses: 8,
-  lastUpdated: "10/2026",
+  lastUpdated: "10/2027",
   language: "English",
   subtitles: "English [Auto]",
   thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015891/If_I_Wanted_To_Become_a_Millionaire_in_2026_This_Is_What_I_d_Do.png",
@@ -33,7 +33,7 @@ export const BECOME_MILLIONAIRE_2026_BLUEPRINT_DETAIL_DATA: PlaybookDetailData =
   lessonsCount: 32,
   slidesCount: 128,
   whatYouWillLearn: [
-    "Deconstruct and master the complete 2026 seven-figure blueprint from scratch",
+    "Deconstruct and master the complete 2027 seven-figure blueprint from scratch",
     "Identify and monetize high-barrier asymmetric digital skills that command $3k-$10k retainers",
     "Formulate irresistible high-ticket offers backed by risk reversal and outcome guarantees",
     "Execute the Rule of 100 customer acquisition framework with zero paid ad spend",
@@ -55,14 +55,14 @@ export const BECOME_MILLIONAIRE_2026_BLUEPRINT_DETAIL_DATA: PlaybookDetailData =
   ],
   descriptionSections: {
     intro: [
-      "Welcome to the definitive masterclass on If I Wanted To Become a Millionaire in 2026, This Is What I'd Do. This playbook is engineered for ambitious operators who refuse to accept linear employment, corporate busywork, and financial fragility.",
+      "Welcome to the definitive masterclass on If I Wanted To Become a Millionaire in 2027, This Is What I'd Do. This playbook is engineered for ambitious operators who refuse to accept linear employment, corporate busywork, and financial fragility.",
       "Rather than teaching fleeting hacks or theoretical daydreaming, this curriculum delivers battle-tested systems, worked unit economics, tactical battle decision matrices, and complete production-grade blueprints.",
       "Every single lesson provides both an interactive, cinematic slide deck presentation and a comprehensive, in-depth written guide (>2,500 words) detailing the exact step-by-step implementation."
     ],
     keyPointsTitle: "The Master Curriculum Overview",
     keyPoints: [
-      "Act 01: The 2026 Economic Landscape & The 4 Leverage Levers",
-      "Act 02: Selecting High-Demand Asymmetric Skills for 2026",
+      "Act 01: The 2027 Economic Landscape & The 4 Leverage Levers",
+      "Act 02: Selecting High-Demand Asymmetric Skills for 2027",
       "Act 03: Constructing the Irresistible High-Ticket Offer",
       "Act 04: The Core Acquisition Engine: The Rule of 100",
       "Act 05: Scaling Beyond Yourself: Systems, Delegation & SOPs",
@@ -76,7 +76,7 @@ export const BECOME_MILLIONAIRE_2026_BLUEPRINT_DETAIL_DATA: PlaybookDetailData =
     ]
   },
   targetAudience: [
-    "Ambitious individuals looking to build a dependable seven-figure asset base in 2026",
+    "Ambitious individuals looking to build a dependable seven-figure asset base in 2027",
     "Freelancers and agency operators seeking to transition from chaotic custom labor to productized leverage",
     "Operators who want to master the Rule of 100 customer acquisition system with zero ad burn",
     "Anyone seeking the strategic discipline and operational systems to achieve permanent spatial and temporal freedom"
@@ -111,7 +111,7 @@ export const BECOME_MILLIONAIRE_2026_BLUEPRINT_DETAIL_DATA: PlaybookDetailData =
     "rating": 5,
     "quote": "This isn't a course\u2014it felt like watching a high-stakes documentary on my own potential. Reached $18,500/month by applying the exact operational blueprint.",
     "initials": "KM",
-    "date": "October 2026"
+    "date": "October 2027"
   },
   {
     "name": "Soraya Chen",
@@ -119,7 +119,7 @@ export const BECOME_MILLIONAIRE_2026_BLUEPRINT_DETAIL_DATA: PlaybookDetailData =
     "rating": 5,
     "quote": "The storytelling approach completely changed my psychology. I stopped chasing shiny fads and built a bulletproof 96% margin business in 60 days.",
     "initials": "SC",
-    "date": "October 2026"
+    "date": "October 2027"
   },
   {
     "name": "Damian Cole",
@@ -127,7 +127,7 @@ export const BECOME_MILLIONAIRE_2026_BLUEPRINT_DETAIL_DATA: PlaybookDetailData =
     "rating": 5,
     "quote": "The financial math and monk-mode discipline in this playbook saved me years of wasted trial and error. Best investment I have ever made.",
     "initials": "DC",
-    "date": "October 2026"
+    "date": "October 2027"
   }
 ],
   faqs: [
