@@ -7543,9 +7543,9 @@ export const THREE_BEST_AI_BIZ_2027_COURSE: Course = {
   price: 7,
   originalPrice: 12,
   currency: "USD",
-  badge: "Trending",
-  rating: 4.9,
-  ratingCount: 1380,
+
+  rating: 4.8,
+  ratingCount: "4.2k",
   hoursOfMaterial: "7.5 hours",
   slidesCount: 112,
   modulesCount: 7,

@@ -8618,9 +8618,9 @@ export const MULTIPLE_INTERESTS_ONE_PERSON_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Founder Pick",
-  rating: 4.9,
-  ratingCount: 718,
+
+  rating: 4.6,
+  ratingCount: "3.5k",
   hoursOfMaterial: "8.5 hours",
   slidesCount: 128,
   modulesCount: 8,

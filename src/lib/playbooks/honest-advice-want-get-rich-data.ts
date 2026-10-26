@@ -7543,9 +7543,9 @@ export const HONEST_ADVICE_GET_RICH_COURSE: Course = {
   price: 5,
   originalPrice: 9,
   currency: "USD",
-  badge: "Bestseller",
+
   rating: 4.9,
-  ratingCount: 1240,
+  ratingCount: "5.2k",
   hoursOfMaterial: "7.0 hours",
   slidesCount: 112,
   modulesCount: 7,

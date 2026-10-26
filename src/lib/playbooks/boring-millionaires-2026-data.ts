@@ -8558,9 +8558,9 @@ export const BORING_MILLIONAIRES_2026_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "High Demand",
-  rating: 4.9,
-  ratingCount: 481,
+
+  rating: 4.8,
+  ratingCount: "5.9k",
   hoursOfMaterial: "8.5 hours",
   modulesCount: BORING_MILLIONAIRES_2026_MODULES.length,
   lessonsCount: BORING_MILLIONAIRES_2026_MODULES.reduce((acc, m) => acc + m.lessons.length, 0),

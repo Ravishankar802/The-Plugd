@@ -8618,9 +8618,9 @@ export const CHATGPT_KNOWLEDGE_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Hot & New",
-  rating: 4.9,
-  ratingCount: 395,
+
+  rating: 4.8,
+  ratingCount: "5.4k",
   hoursOfMaterial: "8.5 hours",
   slidesCount: 128,
   modulesCount: 8,

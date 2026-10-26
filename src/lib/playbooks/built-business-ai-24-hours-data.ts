@@ -7543,9 +7543,9 @@ export const BUILT_BUSINESS_AI_24H_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Bestseller",
+
   rating: 4.9,
-  ratingCount: 1240,
+  ratingCount: "8.2k",
   hoursOfMaterial: "7.0 hours",
   slidesCount: 112,
   modulesCount: 7,

@@ -8618,9 +8618,9 @@ export const GET_RICH_SERVICE_BUSINESSES_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Top Rated",
-  rating: 4.9,
-  ratingCount: 628,
+
+  rating: 4.8,
+  ratingCount: "4.9k",
   hoursOfMaterial: "8.5 hours",
   slidesCount: 128,
   modulesCount: 8,

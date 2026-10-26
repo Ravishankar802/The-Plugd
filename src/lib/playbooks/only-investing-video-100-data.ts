@@ -7347,9 +7347,9 @@ export const ONLY_INVESTING_VIDEO_100_COURSE: Course = {
   price: 3,
   originalPrice: 5,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 468,
+
+  rating: 4.3,
+  ratingCount: "2.4k",
   hoursOfMaterial: "7.5 hours",
   slidesCount: 112,
   modulesCount: 7,

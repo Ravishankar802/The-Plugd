@@ -6468,9 +6468,9 @@ export const NEW_WAY_CONTENT_AI_COURSE: Course = {
   price: 7,
   originalPrice: 12,
   currency: "USD",
-  badge: "Hot & New",
-  rating: 4.9,
-  ratingCount: 542,
+
+  rating: 4.6,
+  ratingCount: "3.4k",
   hoursOfMaterial: "6.5 hours",
   slidesCount: 96,
   modulesCount: 6,

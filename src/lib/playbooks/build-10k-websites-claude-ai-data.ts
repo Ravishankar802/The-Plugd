@@ -7543,9 +7543,9 @@ export const BUILD_10K_WEBSITES_CLAUDE_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Bestseller",
+
   rating: 4.9,
-  ratingCount: 1240,
+  ratingCount: "7.9k",
   hoursOfMaterial: "7.0 hours",
   slidesCount: 112,
   modulesCount: 7,

@@ -6424,9 +6424,9 @@ export const FIRST_1M_IS_SIMPLE_COURSE: Course = {
   price: 15,
   originalPrice: 25,
   currency: "USD",
-  badge: "Founder Pick",
-  rating: 4.9,
-  ratingCount: 467,
+
+  rating: 4.8,
+  ratingCount: "5.3k",
   hoursOfMaterial: "6.5 hours",
   modulesCount: FIRST_1M_IS_SIMPLE_MODULES.length,
   lessonsCount: FIRST_1M_IS_SIMPLE_MODULES.reduce((acc, m) => acc + m.lessons.length, 0),

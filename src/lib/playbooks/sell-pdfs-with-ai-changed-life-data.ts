@@ -7543,9 +7543,9 @@ export const SELL_PDFS_WITH_AI_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Bestseller",
+
   rating: 4.9,
-  ratingCount: 1640,
+  ratingCount: "5.2k",
   hoursOfMaterial: "8.0 hours",
   slidesCount: 112,
   modulesCount: 7,

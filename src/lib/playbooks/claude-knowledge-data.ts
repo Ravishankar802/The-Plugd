@@ -6468,9 +6468,9 @@ export const CLAUDE_KNOWLEDGE_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Top Rated",
+
   rating: 4.9,
-  ratingCount: 420,
+  ratingCount: "4.2k",
   hoursOfMaterial: "6.5 hours",
   slidesCount: 96,
   modulesCount: 6,

@@ -7347,9 +7347,9 @@ export const TRADING_212_GUIDE_COURSE: Course = {
   price: 5,
   originalPrice: 9,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 468,
+
+  rating: 4.7,
+  ratingCount: "6.1k",
   hoursOfMaterial: "7.0 hours",
   slidesCount: 112,
   modulesCount: 7,

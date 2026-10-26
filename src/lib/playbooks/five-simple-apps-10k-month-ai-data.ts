@@ -7543,9 +7543,9 @@ export const FIVE_SIMPLE_APPS_10K_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Hot & New",
-  rating: 4.9,
-  ratingCount: 1590,
+
+  rating: 4.7,
+  ratingCount: "5.8k",
   hoursOfMaterial: "8.0 hours",
   slidesCount: 112,
   modulesCount: 7,

@@ -6468,9 +6468,9 @@ export const AI_SIDE_HUSTLES_2026_COURSE: Course = {
   price: 5,
   originalPrice: 9,
   currency: "USD",
-  badge: "Trending",
+
   rating: 4.8,
-  ratingCount: 348,
+  ratingCount: "6.2k",
   hoursOfMaterial: "6.5 hours",
   slidesCount: 96,
   modulesCount: 6,

@@ -8618,9 +8618,9 @@ export const BEST_BUSINESS_BOOKS_COURSE: Course = {
   price: 3,
   originalPrice: 5,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 1240,
+
+  rating: 4.7,
+  ratingCount: "4.0k",
   hoursOfMaterial: "8.0 hours",
   slidesCount: 128,
   modulesCount: 8,

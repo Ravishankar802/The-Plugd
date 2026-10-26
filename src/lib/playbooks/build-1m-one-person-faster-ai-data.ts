@@ -8394,9 +8394,9 @@ export const BUILD_1M_SOLO_FASTER_COURSE: Course = {
   price: 19,
   originalPrice: 30,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 614,
+
+  rating: 4.8,
+  ratingCount: "5.9k",
   hoursOfMaterial: "8.5 hours",
   slidesCount: 128,
   modulesCount: 8,

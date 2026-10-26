@@ -7347,9 +7347,9 @@ export const LEARN_THIS_SKILL_COURSE: Course = {
   price: 19,
   originalPrice: 30,
   currency: "USD",
-  badge: "Hot & New",
-  rating: 4.9,
-  ratingCount: 472,
+
+  rating: 4.7,
+  ratingCount: "6.2k",
   hoursOfMaterial: "7.5 hours",
   slidesCount: 112,
   modulesCount: 7,

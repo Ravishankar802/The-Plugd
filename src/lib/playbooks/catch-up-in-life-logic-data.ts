@@ -7543,9 +7543,9 @@ export const CATCH_UP_IN_LIFE_LOGIC_COURSE: Course = {
   price: 5,
   originalPrice: 9,
   currency: "USD",
-  badge: "Founder Pick",
-  rating: 4.9,
-  ratingCount: 596,
+
+  rating: 4.7,
+  ratingCount: "4.0k",
   hoursOfMaterial: "7.5 hours",
   slidesCount: 112,
   modulesCount: 7,

@@ -7543,9 +7543,9 @@ export const STUDENT_HUSTLES_2027_COURSE: Course = {
   price: 3,
   originalPrice: 5,
   currency: "USD",
-  badge: "Trending",
-  rating: 4.9,
-  ratingCount: 1410,
+
+  rating: 4.8,
+  ratingCount: "4.2k",
   hoursOfMaterial: "7.5 hours",
   slidesCount: 112,
   modulesCount: 7,

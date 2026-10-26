@@ -6300,9 +6300,9 @@ export const STUCK_IN_MATRIX_ESCAPE_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Founder Pick",
+
   rating: 4.9,
-  ratingCount: 511,
+  ratingCount: "5.2k",
   hoursOfMaterial: "6.5 hours",
   slidesCount: 96,
   modulesCount: 6,

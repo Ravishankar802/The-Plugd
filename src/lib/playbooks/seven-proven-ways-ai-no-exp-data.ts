@@ -8394,9 +8394,9 @@ export const SEVEN_PROVEN_WAYS_AI_NO_EXP_COURSE: Course = {
   price: 5,
   originalPrice: 9,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 468,
+
+  rating: 4.6,
+  ratingCount: "3.5k",
   hoursOfMaterial: "8.5 hours",
   slidesCount: 128,
   modulesCount: 8,

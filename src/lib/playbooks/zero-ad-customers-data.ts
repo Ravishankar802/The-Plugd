@@ -8618,9 +8618,9 @@ export const ZERO_AD_CUSTOMERS_COURSE: Course = {
   price: 15,
   originalPrice: 25,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 312,
+
+  rating: 4.7,
+  ratingCount: "3.9k",
   hoursOfMaterial: "8.5 hours",
   slidesCount: 128,
   modulesCount: 8,

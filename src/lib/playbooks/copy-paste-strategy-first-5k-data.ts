@@ -8618,9 +8618,9 @@ export const COPY_PASTE_FIRST_5K_COURSE: Course = {
   price: 7,
   originalPrice: 12,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 1240,
+
+  rating: 4.8,
+  ratingCount: "5.8k",
   hoursOfMaterial: "8.0 hours",
   slidesCount: 128,
   modulesCount: 8,

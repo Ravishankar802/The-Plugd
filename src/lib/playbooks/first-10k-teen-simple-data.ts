@@ -8394,9 +8394,9 @@ export const FIRST_10K_TEEN_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 468,
+
+  rating: 4.8,
+  ratingCount: "5.6k",
   hoursOfMaterial: "8.0 hours",
   slidesCount: 128,
   modulesCount: 8,

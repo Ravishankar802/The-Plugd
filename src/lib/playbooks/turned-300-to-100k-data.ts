@@ -7543,9 +7543,9 @@ export const TURNED_300_TO_100K_COURSE: Course = {
   price: 7,
   originalPrice: 12,
   currency: "USD",
-  badge: "Hot & New",
-  rating: 4.9,
-  ratingCount: 512,
+
+  rating: 4.4,
+  ratingCount: "3.9k",
   hoursOfMaterial: "7.5 hours",
   slidesCount: 112,
   modulesCount: 7,

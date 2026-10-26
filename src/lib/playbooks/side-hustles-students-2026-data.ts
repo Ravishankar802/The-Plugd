@@ -8394,9 +8394,9 @@ export const SIDE_HUSTLES_STUDENTS_2026_COURSE: Course = {
   price: 3,
   originalPrice: 5,
   currency: "USD",
-  badge: "Bestseller",
+
   rating: 4.9,
-  ratingCount: 468,
+  ratingCount: "7.8k",
   hoursOfMaterial: "8.0 hours",
   slidesCount: 128,
   modulesCount: 8,

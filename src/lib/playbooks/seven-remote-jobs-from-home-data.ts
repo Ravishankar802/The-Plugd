@@ -7543,9 +7543,9 @@ export const SEVEN_REMOTE_JOBS_COURSE: Course = {
   price: 12,
   originalPrice: 20,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 1240,
+
+  rating: 4.7,
+  ratingCount: "4.3k",
   hoursOfMaterial: "7.0 hours",
   slidesCount: 112,
   modulesCount: 7,

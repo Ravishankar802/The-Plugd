@@ -8618,9 +8618,9 @@ export const RICH_WITH_SOCIAL_MEDIA_COURSE: Course = {
   price: 5,
   originalPrice: 9,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 684,
+
+  rating: 4.5,
+  ratingCount: "3.6k",
   hoursOfMaterial: "8.5 hours",
   slidesCount: 128,
   modulesCount: 8,

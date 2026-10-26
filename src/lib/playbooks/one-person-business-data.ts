@@ -8618,9 +8618,9 @@ export const ONE_PERSON_BUSINESS_COURSE: Course = {
   price: 12,
   originalPrice: 20,
   currency: "USD",
-  badge: "Founder Pick",
+
   rating: 4.9,
-  ratingCount: 528,
+  ratingCount: "5.8k",
   hoursOfMaterial: "8.5 hours",
   slidesCount: 128,
   modulesCount: 8,

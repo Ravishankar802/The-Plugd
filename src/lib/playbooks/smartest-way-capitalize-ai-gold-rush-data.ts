@@ -7543,9 +7543,9 @@ export const CAPITALIZE_AI_GOLD_RUSH_COURSE: Course = {
   price: 15,
   originalPrice: 25,
   currency: "USD",
-  badge: "Hot & New",
-  rating: 4.9,
-  ratingCount: 1520,
+
+  rating: 4.7,
+  ratingCount: "3.8k",
   hoursOfMaterial: "8.0 hours",
   slidesCount: 112,
   modulesCount: 7,

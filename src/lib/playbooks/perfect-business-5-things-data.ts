@@ -6468,9 +6468,9 @@ export const PERFECT_BUSINESS_5_THINGS_COURSE: Course = {
   price: 15,
   originalPrice: 25,
   currency: "USD",
-  badge: "High Demand",
-  rating: 4.9,
-  ratingCount: 489,
+
+  rating: 4.8,
+  ratingCount: "5.3k",
   hoursOfMaterial: "6.5 hours",
   slidesCount: 96,
   modulesCount: 6,

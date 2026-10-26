@@ -8558,9 +8558,9 @@ export const LOCKED_IN_ROOM_350K_COURSE: Course = {
   price: 15,
   originalPrice: 25,
   currency: "USD",
-  badge: "Trending",
+
   rating: 4.9,
-  ratingCount: 634,
+  ratingCount: "6.6k",
   hoursOfMaterial: "8.5 hours",
   modulesCount: LOCKED_IN_ROOM_350K_MODULES.length,
   lessonsCount: LOCKED_IN_ROOM_350K_MODULES.reduce((acc, m) => acc + m.lessons.length, 0),

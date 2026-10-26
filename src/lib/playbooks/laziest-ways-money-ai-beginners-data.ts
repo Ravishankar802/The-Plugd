@@ -7347,9 +7347,9 @@ export const LAZIEST_WAYS_AI_BEGINNERS_COURSE: Course = {
   price: 3,
   originalPrice: 5,
   currency: "USD",
-  badge: "Hot & New",
+
   rating: 4.8,
-  ratingCount: 429,
+  ratingCount: "5.3k",
   hoursOfMaterial: "7.5 hours",
   slidesCount: 112,
   modulesCount: 7,

@@ -8618,9 +8618,9 @@ export const THREE_TYPES_BUSINESSES_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 1240,
+
+  rating: 4.7,
+  ratingCount: "4.3k",
   hoursOfMaterial: "8.0 hours",
   slidesCount: 128,
   modulesCount: 8,

@@ -6468,9 +6468,9 @@ export const UNDERSTAND_LEADERSHIP_COURSE: Course = {
   price: 7,
   originalPrice: 12,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 1240,
+
+  rating: 4.8,
+  ratingCount: "5.6k",
   hoursOfMaterial: "6.0 hours",
   slidesCount: 96,
   modulesCount: 6,

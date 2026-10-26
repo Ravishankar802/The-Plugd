@@ -8618,9 +8618,9 @@ export const BECOME_MILLIONAIRE_2026_BLUEPRINT_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Hot & New",
-  rating: 4.9,
-  ratingCount: 1680,
+
+  rating: 4.8,
+  ratingCount: "6.3k",
   hoursOfMaterial: "8.5 hours",
   slidesCount: 128,
   modulesCount: 8,

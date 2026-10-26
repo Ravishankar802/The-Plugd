@@ -7543,9 +7543,9 @@ export const COPY_PASTE_13K_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "High Demand",
-  rating: 4.9,
-  ratingCount: 476,
+
+  rating: 4.7,
+  ratingCount: "5.1k",
   hoursOfMaterial: "7.5 hours",
   slidesCount: 112,
   modulesCount: 7,

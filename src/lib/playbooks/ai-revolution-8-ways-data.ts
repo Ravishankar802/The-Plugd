@@ -8558,9 +8558,9 @@ export const AI_REVOLUTION_8_WAYS_COURSE: Course = {
   price: 12,
   originalPrice: 20,
   currency: "USD",
-  badge: "Hot & New",
+
   rating: 4.9,
-  ratingCount: 592,
+  ratingCount: "5.7k",
   hoursOfMaterial: "8.5 hours",
   modulesCount: AI_REVOLUTION_8_WAYS_MODULES.length,
   lessonsCount: AI_REVOLUTION_8_WAYS_MODULES.reduce((acc, m) => acc + m.lessons.length, 0),

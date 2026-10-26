@@ -7543,9 +7543,9 @@ export const THREE_AI_BUSINESSES_COURSE: Course = {
   price: 12,
   originalPrice: 20,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 384,
+
+  rating: 4.6,
+  ratingCount: "4.1k",
   hoursOfMaterial: "7.5 hours",
   slidesCount: 112,
   modulesCount: 7,

@@ -7543,9 +7543,9 @@ export const SALES_TACTIC_10M_COURSE: Course = {
   price: 15,
   originalPrice: 25,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 1240,
+
+  rating: 4.8,
+  ratingCount: "6.7k",
   hoursOfMaterial: "7.0 hours",
   slidesCount: 112,
   modulesCount: 7,

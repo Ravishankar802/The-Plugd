@@ -6300,9 +6300,9 @@ export const FIVE_YEARS_GET_RICH_AI_COURSE: Course = {
   price: 15,
   originalPrice: 25,
   currency: "USD",
-  badge: "High Demand",
-  rating: 4.9,
-  ratingCount: 487,
+
+  rating: 4.8,
+  ratingCount: "6.4k",
   hoursOfMaterial: "6.5 hours",
   slidesCount: 96,
   modulesCount: 6,

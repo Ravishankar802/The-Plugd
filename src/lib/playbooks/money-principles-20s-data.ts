@@ -7491,9 +7491,9 @@ export const MONEY_PRINCIPLES_20S_COURSE: Course = {
   price: 3,
   originalPrice: 5,
   currency: "USD",
-  badge: "Top Rated",
-  rating: 4.9,
-  ratingCount: 524,
+
+  rating: 4.7,
+  ratingCount: "3.5k",
   hoursOfMaterial: "7.5 hours",
   modulesCount: MONEY_PRINCIPLES_20S_MODULES.length,
   lessonsCount: MONEY_PRINCIPLES_20S_MODULES.reduce((acc, m) => acc + m.lessons.length, 0),

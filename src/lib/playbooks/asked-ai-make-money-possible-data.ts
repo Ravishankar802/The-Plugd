@@ -6468,9 +6468,9 @@ export const ASKED_AI_MAKE_MONEY_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 1240,
+
+  rating: 4.8,
+  ratingCount: "3.8k",
   hoursOfMaterial: "6.0 hours",
   slidesCount: 96,
   modulesCount: 6,

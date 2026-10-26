@@ -8618,9 +8618,9 @@ export const FIVE_PROVEN_WAYS_COURSE: Course = {
   price: 3,
   originalPrice: 5,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 512,
+
+  rating: 4.5,
+  ratingCount: "7.3k",
   hoursOfMaterial: "8.5 hours",
   slidesCount: 128,
   modulesCount: 8,

@@ -7543,9 +7543,9 @@ export const USE_AI_IN_BUSINESS_2026_COURSE: Course = {
   price: 19,
   originalPrice: 30,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 645,
+
+  rating: 4.7,
+  ratingCount: "6.2k",
   hoursOfMaterial: "7.5 hours",
   slidesCount: 112,
   modulesCount: 7,

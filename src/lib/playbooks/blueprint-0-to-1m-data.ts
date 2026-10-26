@@ -8558,9 +8558,9 @@ export const BLUEPRINT_0_TO_1M_COURSE: Course = {
   price: 9,
   originalPrice: 15,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 589,
+
+  rating: 4.7,
+  ratingCount: "7.1k",
   hoursOfMaterial: "8.5 hours",
   modulesCount: BLUEPRINT_0_TO_1M_MODULES.length,
   lessonsCount: BLUEPRINT_0_TO_1M_MODULES.reduce((acc, m) => acc + m.lessons.length, 0),

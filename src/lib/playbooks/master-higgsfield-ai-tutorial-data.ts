@@ -6468,9 +6468,9 @@ export const MASTER_HIGGSFIELD_AI_COURSE: Course = {
   price: 15,
   originalPrice: 25,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 1240,
+
+  rating: 4.8,
+  ratingCount: "6.5k",
   hoursOfMaterial: "6.0 hours",
   slidesCount: 96,
   modulesCount: 6,

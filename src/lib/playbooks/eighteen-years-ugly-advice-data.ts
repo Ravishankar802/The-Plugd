@@ -8394,9 +8394,9 @@ export const EIGHTEEN_YEARS_UGLY_ADVICE_COURSE: Course = {
   price: 19,
   originalPrice: 30,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 468,
+
+  rating: 4.8,
+  ratingCount: "5.2k",
   hoursOfMaterial: "8.0 hours",
   slidesCount: 128,
   modulesCount: 8,

@@ -8394,9 +8394,9 @@ export const INVESTING_BEGINNERS_25M_COURSE: Course = {
   price: 7,
   originalPrice: 12,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 689,
+
+  rating: 4.4,
+  ratingCount: "3.2k",
   hoursOfMaterial: "8.5 hours",
   slidesCount: 128,
   modulesCount: 8,

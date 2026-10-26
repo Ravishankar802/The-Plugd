@@ -7543,9 +7543,9 @@ export const STARTED_OVER_ZERO_TO_1M_COURSE: Course = {
   price: 19,
   originalPrice: 30,
   currency: "USD",
-  badge: "Bestseller",
+
   rating: 4.9,
-  ratingCount: 1420,
+  ratingCount: "4.5k",
   hoursOfMaterial: "7.5 hours",
   slidesCount: 112,
   modulesCount: 7,

@@ -239,7 +239,7 @@ export interface Course {
   currency: string;
   badge?: string;
   rating?: number;
-  ratingCount?: number;
+  ratingCount?: number | string;
   primaryColor?: string;
   outcomes?: string[];
   modulesCount: number;

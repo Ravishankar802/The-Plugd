@@ -7347,9 +7347,9 @@ export const THINK_STRATEGIC_GENIUS_COURSE: Course = {
   price: 7,
   originalPrice: 12,
   currency: "USD",
-  badge: "Top Rated",
-  rating: 4.9,
-  ratingCount: 539,
+
+  rating: 4.6,
+  ratingCount: "4.9k",
   hoursOfMaterial: "7.5 hours",
   slidesCount: 112,
   modulesCount: 7,

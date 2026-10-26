@@ -6424,9 +6424,9 @@ export const FOUR_LEVELS_GETTING_RICH_2026_COURSE: Course = {
   price: 7,
   originalPrice: 12,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 558,
+
+  rating: 4.7,
+  ratingCount: "4.1k",
   hoursOfMaterial: "6.5 hours",
   modulesCount: FOUR_LEVELS_GETTING_RICH_2026_MODULES.length,
   lessonsCount: FOUR_LEVELS_GETTING_RICH_2026_MODULES.reduce((acc, m) => acc + m.lessons.length, 0),

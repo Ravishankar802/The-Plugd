@@ -7491,9 +7491,9 @@ export const LAZIEST_WAY_500_DAY_COURSE: Course = {
   price: 3,
   originalPrice: 5,
   currency: "USD",
-  badge: "Hot & New",
-  rating: 4.9,
-  ratingCount: 412,
+
+  rating: 4.8,
+  ratingCount: "4.3k",
   hoursOfMaterial: "7.5 hours",
   modulesCount: LAZIEST_WAY_500_DAY_MODULES.length,
   lessonsCount: LAZIEST_WAY_500_DAY_MODULES.reduce((acc, m) => acc + m.lessons.length, 0),

@@ -7543,9 +7543,9 @@ export const WIN_IN_20S_COURSE: Course = {
   price: 19,
   originalPrice: 30,
   currency: "USD",
-  badge: "Bestseller",
-  rating: 4.9,
-  ratingCount: 1340,
+
+  rating: 4.8,
+  ratingCount: "4.2k",
   hoursOfMaterial: "7.5 hours",
   slidesCount: 112,
   modulesCount: 7,
