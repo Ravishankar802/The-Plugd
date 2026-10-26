@@ -27,7 +27,7 @@ export const CAPITALIZE_AI_GOLD_RUSH_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023915/The_SMARTEST_Way_to_Capitalize_On_The_AI_Gold_Rush.png",
   hoursOfMaterial: "8.0 hours",
   modulesCount: 7,
   lessonsCount: 28,

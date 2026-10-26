@@ -27,7 +27,7 @@ export const SELL_PDFS_WITH_AI_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023913/I_Sell_PDFs_With_AI_and_It_Changed_My_LIfe_Revealing_Everything.png",
   hoursOfMaterial: "8.0 hours",
   modulesCount: 7,
   lessonsCount: 28,

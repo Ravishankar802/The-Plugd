@@ -27,7 +27,7 @@ export const FIVE_SIMPLE_APPS_10K_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/5_Simple_Apps_Making_10_000_Month_That_You_Can_Build_With_AI.png",
   hoursOfMaterial: "8.0 hours",
   modulesCount: 7,
   lessonsCount: 28,

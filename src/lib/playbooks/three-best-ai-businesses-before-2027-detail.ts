@@ -27,7 +27,7 @@ export const THREE_BEST_AI_BIZ_2027_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/3_best_AI_businesses_to_start_before_2027_and_the_one_i_d_start_today.png",
   hoursOfMaterial: "7.5 hours",
   modulesCount: 7,
   lessonsCount: 28,

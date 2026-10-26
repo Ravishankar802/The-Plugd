@@ -19,7 +19,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": 1410,
       "accentColor": "#2563eb",
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/7_Side_Hustles_Students_Can_Start_In_2027.png",
       "href": "/7-side-hustles-students-can-start-in-2027"
   },
   {
@@ -40,7 +40,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": 1640,
       "accentColor": "#2563eb",
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023913/I_Sell_PDFs_With_AI_and_It_Changed_My_LIfe_Revealing_Everything.png",
       "href": "/i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything"
   },
   {
@@ -61,7 +61,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": 1380,
       "accentColor": "#2563eb",
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/3_best_AI_businesses_to_start_before_2027_and_the_one_i_d_start_today.png",
       "href": "/3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today"
   },
   {
@@ -82,7 +82,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": 1590,
       "accentColor": "#2563eb",
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/5_Simple_Apps_Making_10_000_Month_That_You_Can_Build_With_AI.png",
       "href": "/5-simple-apps-making-10-000-month-that-you-can-build-with-ai"
   },
   {
@@ -103,7 +103,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": 1340,
       "accentColor": "#2563eb",
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_You_re_In_Your_20s_Here_s_How_To_Win_At_Anything.png",
       "href": "/if-youre-in-your-20s-heres-how-to-win-at-anything"
   },
   {
@@ -124,7 +124,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": 1520,
       "accentColor": "#2563eb",
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023915/The_SMARTEST_Way_to_Capitalize_On_The_AI_Gold_Rush.png",
       "href": "/the-smartest-way-to-capitalize-on-the-ai-gold-rush"
   },
   {
@@ -171,6 +171,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 {
     "id": "ai-businesses-01",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023912/These_3_AI_Businesses_Will_Make_You_10k_Month_With_Zero_Employees.png",
     "slug": "7-ai-automations",
     "title": "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)",
     "headline": "Master the 3 proven AI business models to reach $10,000+/month as a solo operator with zero employees.",
