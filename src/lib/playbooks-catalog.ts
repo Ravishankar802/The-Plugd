@@ -123,6 +123,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-05",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793012004/5_Proven_Ways_To_Make_Money_With_AI_No_Experience.png",
     "slug": "5-proven-ways-to-make-money-with-ai-no-experience",
     "title": "5 Proven Ways To Make Money With AI (No Experience)",
     "headline": "Five accessible AI-powered business models and services designed for complete beginners.",
