@@ -27,7 +27,7 @@ export const STUCK_IN_MATRIX_ESCAPE_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017864/You_re_Stuck_In_The_Matrix_Here_s_How_You_Escape.png",
   hoursOfMaterial: "6.5 hours",
   modulesCount: 6,
   lessonsCount: 24,

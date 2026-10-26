@@ -253,6 +253,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-11",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017862/Your_First_1M_Is_Simple_Here_s_How.png",
     "slug": "your-first-1m-is-simple-heres-how",
     "title": "Your First $1M Is Simple (Here's How)",
     "headline": "Why making your first million is mathematically simple once you master core high-income skill stacks.",
@@ -487,6 +488,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-22",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017860/What_Makes_The_Perfect_Business_5_Things.png",
     "slug": "what-makes-the-perfect-business-5-things",
     "title": "What Makes The Perfect Business (5 Things)",
     "headline": "The 5 structural criteria of the world's most profitable, resilient, and enjoyable wealth machines.",
@@ -637,6 +639,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-29",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017864/You_re_Stuck_In_The_Matrix_Here_s_How_You_Escape.png",
     "slug": "youre-stuck-in-the-matrix-heres-how-you-escape",
     "title": "You're Stuck In The Matrix, Here's How You Escape",
     "headline": "Deconstruct the societal programming running in your head and build sovereign financial and cognitive autonomy.",
@@ -657,6 +660,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-30",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017864/You_Have_5_Years_to_Get_Rich_Before_AI_Takes_Over.png",
     "slug": "you-have-5-years-to-get-rich-before-ai-takes-over",
     "title": "You Have 5 Years to Get Rich Before AI Takes Over",
     "headline": "A macro roadmap to front-run the greatest wealth transfer in history and accumulate sovereign assets before 2031.",
@@ -1032,6 +1036,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-48",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017859/These_Are_The_Best_Business_Books_To_Read_7_Billionaire_Books.png",
     "slug": "these-are-the-best-business-books-to-read-7-billionaire-books",
     "title": "These Are The Best Business Books To Read (7 Billionaire Books)",
     "headline": "A ruthless breakdown of the 7 business masterworks written by and about self-made billionaire founders.",
