@@ -27,7 +27,7 @@ export const UNDERSTAND_LEADERSHIP_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015893/If_You_Don_t_Understand_Leadership_You_ll_Never_Win.png",
   hoursOfMaterial: "6.0 hours",
   modulesCount: 6,
   lessonsCount: 24,

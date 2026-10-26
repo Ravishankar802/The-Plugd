@@ -3,6 +3,7 @@ import type { PlaybookSummary } from "./categories";
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
     "id": "ai-businesses-53",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015897/If_I_Started_Over_With_0_Here_s_My_Exact_Plan_to_get_to_1M.png",
     "slug": "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m",
     "title": "If I Started Over With $0, Here\u2019s My Exact Plan to get to $1M",
     "headline": "The uncompromising step-by-step master plan to rebuild from absolute zero to $1,000,000 net worth using high-leverage skills and modern systems.",
@@ -23,6 +24,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
     {
     "id": "ai-businesses-54",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015891/If_I_Wanted_To_Become_a_Millionaire_in_2026_This_Is_What_I_d_Do.png",
     "slug": "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint",
     "title": "If I Wanted To Become a Millionaire in 2026, This Is What I'd Do",
     "headline": "The definitive step-by-step master execution blueprint to build an unassailable seven-figure net worth in 2026 using modern leverage and asymmetric systems.",
@@ -308,6 +310,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-14",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015893/I_Locked_Myself_In_a_Room_Until_I_Built_a_350_000mo_Business.png",
     "slug": "i-locked-myself-in-a-room-until-i-built-a-350-000-mo-business",
     "title": "I Locked Myself In a Room Until I Built a $350,000/mo Business",
     "headline": "The raw story and 180-day monk-mode sprint that rebuilt a $350,000/month verified empire.",
@@ -497,6 +500,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-23",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015889/How_to_Use_AI_in_Your_Business_in_2026.png",
     "slug": "how-to-use-ai-in-your-business-in-2026",
     "title": "How to Use AI in Your Business in 2026",
     "headline": "The forward-looking operational guide to deploying autonomous agents, multi-modal workflows, and AI infrastructure.",
@@ -518,6 +522,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-24",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015894/If_You_Have_Multiple_Interests_Please_Start_a_One-Person_Business.png",
     "slug": "if-you-have-multiple-interests-please-start-a-one-person-business",
     "title": "If You Have Multiple Interests, Please Start a One-Person Business",
     "headline": "Synthesize your diverse curiosities into a sovereign, high-margin, one-person media and product empire.",
@@ -663,6 +668,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-31",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015894/Investing_For_Beginners_in_25_Minutes.png",
     "slug": "investing-for-beginners-in-25-minutes",
     "title": "Investing For Beginners in 25 Minutes",
     "headline": "A 40-year veteran investor's ultimate masterclass condensed into 25 minutes of pure wealth-building mechanics.",
@@ -703,6 +709,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-33",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015890/How_to_Use_Trading_212_in_2026_Full_Investing_Guide.png",
     "slug": "how-to-use-trading-212-in-2026-full-investing-guide",
     "title": "How to Use Trading 212 in 2026 (Full Investing Guide)",
     "headline": "A comprehensive, practical guide to building an automated compounding wealth machine using Trading 212.",
@@ -907,6 +914,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-43",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015893/If_You_Don_t_Understand_Leadership_You_ll_Never_Win.png",
     "slug": "if-you-dont-understand-leadership-youll-never-win",
     "title": "If You Don't Understand Leadership, You'll Never Win",
     "headline": "A practical framework for founders to ditch people-pleasing, delegate without bounce-back, and build high-performance teams.",
@@ -927,6 +935,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-44",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015892/I_Built_A_Business_With_AI_In_24_Hours.png",
     "slug": "i-built-a-business-with-ai-in-24-hours",
     "title": "I Built A Business With AI In 24 Hours",
     "headline": "A practical 24-hour sprint blueprint to validating an offer, launching a live brand, and securing your first paying customer using AI.",
@@ -989,6 +998,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "ai-businesses-47",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015891/I_Asked_AI_To_Make_Me_As_Much_Money_As_Possible.png",
     "slug": "i-asked-ai-to-make-me-as-much-money-as-possible",
     "title": "I Asked AI To Make Me As Much Money As Possible",
     "headline": "A practical experiment in using AI as an autonomous commercial co-worker to generate cash flow from scratch.",

@@ -27,7 +27,7 @@ export const TRADING_212_GUIDE_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015890/How_to_Use_Trading_212_in_2026_Full_Investing_Guide.png",
   hoursOfMaterial: "7.0 hours",
   modulesCount: 7,
   lessonsCount: 28,

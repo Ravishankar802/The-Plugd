@@ -27,7 +27,7 @@ export const STARTED_OVER_ZERO_TO_1M_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015897/If_I_Started_Over_With_0_Here_s_My_Exact_Plan_to_get_to_1M.png",
   hoursOfMaterial: "7.5 hours",
   modulesCount: 7,
   lessonsCount: 28,

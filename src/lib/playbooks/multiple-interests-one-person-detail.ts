@@ -27,7 +27,7 @@ export const MULTIPLE_INTERESTS_ONE_PERSON_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015894/If_You_Have_Multiple_Interests_Please_Start_a_One-Person_Business.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 8,
   lessonsCount: 32,

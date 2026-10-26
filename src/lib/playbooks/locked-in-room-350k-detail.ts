@@ -27,7 +27,7 @@ export const LOCKED_IN_ROOM_350K_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015893/I_Locked_Myself_In_a_Room_Until_I_Built_a_350_000mo_Business.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 8,
   lessonsCount: 32,

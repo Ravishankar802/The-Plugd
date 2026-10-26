@@ -27,7 +27,7 @@ export const ASKED_AI_MAKE_MONEY_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015891/I_Asked_AI_To_Make_Me_As_Much_Money_As_Possible.png",
   hoursOfMaterial: "6.0 hours",
   modulesCount: 6,
   lessonsCount: 24,
