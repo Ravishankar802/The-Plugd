@@ -127,7 +127,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
           </>
         ) : (
           <>
-            <div className="flex items-baseline gap-1.5 shrink-0 pl-2">
+            <div className="flex items-baseline gap-1.5 shrink-0">
               {/* Prominent Current Price ($3.00) */}
               <span className="text-[16px] sm:text-[17px] font-bold text-[#1c1917] tracking-tight">
                 ${formattedPrice}
