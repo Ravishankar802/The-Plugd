@@ -27,7 +27,7 @@ export const ZERO_AD_CUSTOMERS_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793024664/10_Ways_to_Find_Paying_Customers_Without_Spending_on_Ads.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 8,
   lessonsCount: 32,

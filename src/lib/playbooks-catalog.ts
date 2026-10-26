@@ -192,6 +192,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
   {
     "id": "side-hustles-08",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793024664/10_Ways_to_Find_Paying_Customers_Without_Spending_on_Ads.png",
     "slug": "side-hustles",
     "title": "10 Ways to Find Paying Customers Without Spending on Ads",
     "headline": "Discover 10 zero-ad customer acquisition strategies to find and close paying clients for your side business.",
