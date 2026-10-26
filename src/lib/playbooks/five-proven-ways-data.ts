@@ -8616,7 +8616,7 @@ export const FIVE_PROVEN_WAYS_COURSE: Course = {
   subheadline: "5 battle-tested zero-experience business models: Midjourney art assets, automated faceless video channels, programmatic SEO blogs, local merchant email retainers, and executive resumes.",
   description: "A zero-fluff beginner masterclass revealing 5 proven business vehicles you can start with modern AI tools and zero coding experience. Discover how to create commercial print-on-demand art, run automated faceless video channels, build passive programmatic SEO blogs, land local merchant email retainers, and transform executive resumes for high-paying clients.",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 5,
   currency: "USD",
   badge: "Bestseller",
   rating: 4.9,

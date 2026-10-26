@@ -8616,7 +8616,7 @@ export const CHATGPT_KNOWLEDGE_COURSE: Course = {
   subheadline: "Concentrated ChatGPT mastery: o1/o3 reasoning models, precision custom instructions, Canvas collaboration, Custom GPTs with OpenAPI Actions, and Advanced Voice.",
   description: "An authoritative, comprehensive guide to OpenAI's advanced AI ecosystem. Master the frontier reasoning capabilities of o1 and o3, craft surgical custom instructions that eliminate sycophancy, co-edit high-ticket assets in Canvas, build custom GPTs with real-world OpenAPI Actions, and conduct live sales roleplay with Advanced Voice Mode.",
   price: 9,
-  originalPrice: 19,
+  originalPrice: 15,
   currency: "USD",
   badge: "Hot & New",
   rating: 4.9,

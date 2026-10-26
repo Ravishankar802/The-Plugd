@@ -7344,7 +7344,7 @@ export const TRADING_212_GUIDE_COURSE: Course = {
   headline: "A comprehensive, practical guide to building an automated compounding wealth machine using Trading 212.",
   subheadline: "A comprehensive, practical guide to building an automated compounding wealth machine using Trading 212.",
   description: "Learn the exact step-by-step blueprint to set up tax-advantaged accounts, configure automated Pies, leverage fractional shares, enable DRIP dividend reinvestment, and construct an all-weather portfolio with rock-bottom fees.",
-  price: 3,
+  price: 5,
   originalPrice: 9,
   currency: "USD",
   badge: "Bestseller",

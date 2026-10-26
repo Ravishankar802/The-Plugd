@@ -7489,7 +7489,7 @@ export const MONEY_PRINCIPLES_20S_COURSE: Course = {
   subheadline: "The 5 stoic commandments that separate young men and women who look rich from those who become permanently wealthy before age 30.",
   description: "A profound, narrative-driven blueprint on behavioral finance and economic sovereignty in your twenties. Master the 5 sacred commandments: living off operational surplus rather than investments, ruthlessly quarantining lifestyle creep, keeping deep liquid war chests, taking convex asymmetric bets, and curating your inner circle as an asset class.",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 5,
   currency: "USD",
   badge: "Top Rated",
   rating: 4.9,

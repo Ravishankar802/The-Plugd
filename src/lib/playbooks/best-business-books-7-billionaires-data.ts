@@ -8616,7 +8616,7 @@ export const BEST_BUSINESS_BOOKS_COURSE: Course = {
   subheadline: "A ruthless breakdown of the 7 business masterworks written by and about self-made billionaire founders.",
   description: "Skip generic motivational books. Deconstruct the operational, strategic, and psychological blueprints of history's greatest business builders: Sam Walton (Walmart), Charlie Munger, Bob Iger (Disney), Steve Jobs (Apple), Elon Musk (Tesla/SpaceX), Bernie Marcus & Arthur Blank (Home Depot), and Sam Zell.",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 5,
   currency: "USD",
   badge: "Bestseller",
   rating: 4.9,

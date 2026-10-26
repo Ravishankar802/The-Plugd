@@ -7541,7 +7541,7 @@ export const STUDENT_HUSTLES_2027_COURSE: Course = {
   subheadline: "The battle-tested, zero-capital side hustle roadmap engineered specifically for students entering the 2027 digital economy.",
   description: "Cut through outdated student hustle noise like surveys and print-on-demand. Discover the 7 validated digital models designed for flexible student schedules: AI store curation, productized PDF engines, local business optimization, short-form clipping, and newsletter syndication.",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 5,
   currency: "USD",
   badge: "Trending",
   rating: 4.9,

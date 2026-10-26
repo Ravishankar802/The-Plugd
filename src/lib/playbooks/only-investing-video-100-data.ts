@@ -7345,7 +7345,7 @@ export const ONLY_INVESTING_VIDEO_100_COURSE: Course = {
   subheadline: "A comprehensive wealth-building primer comparing 5 core assets and laying down the mathematics of long-term freedom.",
   description: "Experience an empirical breakdown of what happens when you invest $100 across 5 different asset classes over multiple years. Master compound interest, index fund allocations, tax-advantaged account stacking, and the rules of generational wealth creation.",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 5,
   currency: "USD",
   badge: "Bestseller",
   rating: 4.9,

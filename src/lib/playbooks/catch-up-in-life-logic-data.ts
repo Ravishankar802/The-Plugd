@@ -7540,7 +7540,7 @@ export const CATCH_UP_IN_LIFE_LOGIC_COURSE: Course = {
   headline: "The 6 logical actions that took The Lead Strategist from $1,000 liquid to $100M+ net worth: asymmetric skill stacking, volume metrics, ruthless subtraction, and zero-day latency.",
   subheadline: "The 6 logical actions that took The Lead Strategist from $1,000 liquid to $100M+ net worth: asymmetric skill stacking, volume metrics, ruthless subtraction, and zero-day latency.",
   description: "A cold, rational masterclass on overcoming the feeling of being behind in life. Discover why human progress is non-linear, how to stack top-20% complementary skills into an unfair market advantage, the mathematical power of 100-attempt volume, ruthless subtraction of toxic friction, zero-day implementation latency, and compounding liquid capital.",
-  price: 3,
+  price: 5,
   originalPrice: 9,
   currency: "USD",
   badge: "Founder Pick",

@@ -6465,7 +6465,7 @@ export const AI_SIDE_HUSTLES_2026_COURSE: Course = {
   headline: "The 2026 high-margin side hustle landscape: Google Maps review armor, podcast audio repurposing, AI real estate staging, Voiceflow FAQ support bots, and B2B newsletters.",
   subheadline: "The 2026 high-margin side hustle landscape: Google Maps review armor, podcast audio repurposing, AI real estate staging, Voiceflow FAQ support bots, and B2B newsletters.",
   description: "A realistic, forward-looking guide to the side hustles that actually work in the 2026 AI landscape. Discover how to install Google Maps reputation systems for local contractors, repurpose long-form podcast audio into viral clips, offer virtual staging to real estate brokerages, deploy Voiceflow customer support agents, and curate profitable industry newsletters.",
-  price: 3,
+  price: 5,
   originalPrice: 9,
   currency: "USD",
   badge: "Trending",

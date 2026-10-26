@@ -8392,7 +8392,7 @@ export const SIDE_HUSTLES_STUDENTS_2026_COURSE: Course = {
   subheadline: "A battle-tested blueprint for students to generate $3,000 to $5,000/month around classes without upfront capital.",
   description: "Discover 7 proven, low-friction side hustles designed specifically for students. Learn to leverage existing campus demand, digital arbitrage, creative services, and automated digital products to achieve financial independence.",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 5,
   currency: "USD",
   badge: "Bestseller",
   rating: 4.9,

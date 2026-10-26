@@ -7345,7 +7345,7 @@ export const LAZIEST_WAYS_AI_BEGINNERS_COURSE: Course = {
   subheadline: "A beginner's turnkey guide to low-maintenance AI income streams with zero inventory, minimal effort, and global laptop freedom.",
   description: "Discover genuinely passive and zero-friction AI income models that complete beginners can set up in a weekend: automated digital storefronts, AI-generated design assets, low-maintenance print-on-demand, and evergreen digital products.",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 5,
   currency: "USD",
   badge: "Hot & New",
   rating: 4.8,

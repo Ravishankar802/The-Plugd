@@ -7345,7 +7345,7 @@ export const ACTUALLY_LOCK_IN_GUIDE_COURSE: Course = {
   subheadline: "A ruthless, uncompromising manual to breaking brain rot, eliminating cheap dopamine, and executing deep work relentlessly.",
   description: "Tired of fake motivation, failed 5:00 AM routines, and perpetual procrastination? This playbook provides the definitive protocol to purge distractions, redesign your neurochemical baseline, construct an impenetrable work sanctuary, and sustain 6 to 8 hours of daily high-leverage execution.",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 5,
   currency: "USD",
   badge: "Bestseller",
   rating: 4.9,

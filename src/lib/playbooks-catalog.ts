@@ -9,15 +9,15 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "description": "Cut through outdated student hustle noise like surveys and print-on-demand. Discover the 7 validated digital models designed for flexible student schedules: AI store curation, productized PDF engines, local business optimization, short-form clipping, and newsletter syndication.",
       "categorySlug": "ai-businesses",
       "categoryName": "AI Businesses",
-      "price": 3,
-      "originalPrice": 9,
+      "price": 15,
+      "originalPrice": 25,
       "currency": "USD",
       "modulesCount": 7,
       "lessonsCount": 28,
       "hoursOfMaterial": "7.5 hours",
-      "badge": "Trending",
-      "rating": 4.7,
-      "ratingCount": 210,
+
+      "rating": 4.8,
+      "ratingCount": "6.5k",
       "accentColor": "#2563eb",
       "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/7_Side_Hustles_Students_Can_Start_In_2027.png",
       "href": "/7-side-hustles-students-can-start-in-2027"
@@ -36,7 +36,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "hoursOfMaterial": "8.0 hours",
-      "badge": "Bestseller",
+
       "rating": 4.8,
       "ratingCount": 418,
       "accentColor": "#2563eb",
@@ -57,7 +57,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "hoursOfMaterial": "7.5 hours",
-      "badge": "Trending",
+
       "rating": 4.8,
       "ratingCount": 280,
       "accentColor": "#2563eb",
@@ -78,7 +78,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "hoursOfMaterial": "8.0 hours",
-      "badge": "Hot & New",
+
       "rating": 4.8,
       "ratingCount": 190,
       "accentColor": "#2563eb",
@@ -99,7 +99,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "hoursOfMaterial": "7.5 hours",
-      "badge": "Bestseller",
+
       "rating": 4.8,
       "ratingCount": 341,
       "accentColor": "#2563eb",
@@ -120,7 +120,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "hoursOfMaterial": "8.0 hours",
-      "badge": "Hot & New",
+
       "rating": 4.7,
       "ratingCount": 120,
       "accentColor": "#2563eb",
@@ -143,7 +143,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.5 hours",
-    "badge": "Bestseller",
+
     "rating": 4.8,
     "ratingCount": 429,
     "href": "/if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m"
@@ -164,7 +164,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Hot & New",
+
     "rating": 4.8,
     "ratingCount": 80,
     "href": "/if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint"
@@ -185,7 +185,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.5 hours",
-    "badge": "Bestseller",
+
     "rating": 4.7,
     "ratingCount": 384,
     "href": "/7-ai-automations"
@@ -206,7 +206,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Bestseller",
+
     "rating": 4.6,
     "ratingCount": 312,
     "href": "/side-hustles"
@@ -227,7 +227,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 24,
     "slidesCount": 96,
     "hoursOfMaterial": "6.5 hours",
-    "badge": "Top Rated",
+
     "rating": 4.9,
     "ratingCount": 282,
     "href": "/give-me-26-minutes-ill-give-you-10000-hours-of-claude-knowledge"
@@ -248,7 +248,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.0 hours",
-    "badge": "Hot & New",
+
     "rating": 4.8,
     "ratingCount": 95,
     "href": "/give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge"
@@ -269,7 +269,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 512,
     "href": "/5-proven-ways-to-make-money-with-ai-no-experience"
@@ -290,7 +290,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 24,
     "slidesCount": 96,
     "hoursOfMaterial": "6.5 hours",
-    "badge": "Trending",
+
     "rating": 4.8,
     "ratingCount": 348,
     "href": "/the-best-ai-side-hustles-to-start-in-2026-no-skills"
@@ -311,7 +311,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.5 hours",
-    "badge": "High Demand",
+
     "rating": 4.9,
     "ratingCount": 476,
     "href": "/copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026"
@@ -332,7 +332,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Founder Pick",
+
     "rating": 4.9,
     "ratingCount": 528,
     "href": "/build-a-one-person-business-as-a-beginner-from-0-to-10k"
@@ -353,7 +353,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.5 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 412,
     "href": "/laziest-way-to-make-money-online-in-2026-500-day"
@@ -374,7 +374,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 589,
     "href": "/the-blueprint-to-go-from-0-to-1000000"
@@ -395,7 +395,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 24,
     "slidesCount": 96,
     "hoursOfMaterial": "6.5 hours",
-    "badge": "Founder Pick",
+
     "rating": 4.9,
     "ratingCount": 467,
     "href": "/your-first-1m-is-simple-heres-how"
@@ -416,7 +416,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.5 hours",
-    "badge": "Top Rated",
+
     "rating": 4.9,
     "ratingCount": 524,
     "href": "/the-5-money-principles-that-will-make-anyone-rich-in-their-20s"
@@ -437,7 +437,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "High Demand",
+
     "rating": 4.9,
     "ratingCount": 481,
     "href": "/its-boring-but-will-make-even-beginners-millionaires-in-2026"
@@ -458,7 +458,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Trending",
+
     "rating": 4.9,
     "ratingCount": 634,
     "href": "/i-locked-myself-in-a-room-until-i-built-a-350-000-mo-business"
@@ -479,7 +479,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 24,
     "slidesCount": 96,
     "hoursOfMaterial": "6.5 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 558,
     "href": "/the-4-levels-to-getting-rich-in-2026"
@@ -500,7 +500,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 592,
     "href": "/the-a-i-revolution-8-ways-to-get-rich"
@@ -521,7 +521,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.5 hours",
-    "badge": "Top Rated",
+
     "rating": 4.9,
     "ratingCount": 462,
     "href": "/how-i-turned-300-to-100-000-at-19-my-side-hustles"
@@ -542,7 +542,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 583,
     "href": "/how-to-become-rich-with-social-media-my-exact-playbook",
@@ -564,7 +564,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Founder Pick",
+
     "rating": 4.9,
     "ratingCount": 519,
     "href": "/how-to-get-rich-for-service-based-businesses-thank-me-later",
@@ -586,7 +586,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 24,
     "slidesCount": 96,
     "hoursOfMaterial": "6.5 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 377,
     "href": "/the-new-way-of-making-content-in-the-age-of-ai",
@@ -608,7 +608,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.5 hours",
-    "badge": "High Demand",
+
     "rating": 4.9,
     "ratingCount": 441,
     "href": "/how-to-catch-up-in-life-using-logic",
@@ -630,7 +630,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 24,
     "slidesCount": 96,
     "hoursOfMaterial": "6.5 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 612,
     "href": "/what-makes-the-perfect-business-5-things",
@@ -652,7 +652,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.5 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 389,
     "href": "/how-to-use-ai-in-your-business-in-2026",
@@ -674,7 +674,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Founder Pick",
+
     "rating": 4.9,
     "ratingCount": 498,
     "href": "/if-you-have-multiple-interests-please-start-a-one-person-business",
@@ -696,7 +696,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.5 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 472,
     "href": "/learn-this-skill-if-you-want-to-win-in-the-next-2-3-years",
@@ -718,7 +718,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 614,
     "href": "/how-to-build-a-1m-one-person-business-faster-with-ai",
@@ -739,7 +739,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.5 hours",
-    "badge": "Top Rated",
+
     "rating": 4.9,
     "ratingCount": 539,
     "href": "/how-to-think-like-a-strategic-genius-5-dimensional-thinking",
@@ -760,7 +760,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 628,
     "href": "/how-to-use-ai-better-than-99-of-people-this-changed-my-life",
@@ -781,7 +781,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 24,
     "slidesCount": 96,
     "hoursOfMaterial": "6.5 hours",
-    "badge": "Founder Pick",
+
     "rating": 4.9,
     "ratingCount": 511,
     "href": "/youre-stuck-in-the-matrix-heres-how-you-escape",
@@ -802,7 +802,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 24,
     "slidesCount": 96,
     "hoursOfMaterial": "6.5 hours",
-    "badge": "High Demand",
+
     "rating": 4.9,
     "ratingCount": 487,
     "href": "/you-have-5-years-to-get-rich-before-ai-takes-over",
@@ -823,7 +823,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 689,
     "href": "/investing-for-beginners-in-25-minutes",
@@ -844,7 +844,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.5 hours",
-    "badge": "Hot & New",
+
     "rating": 4.8,
     "ratingCount": 429,
     "href": "/laziest-ways-to-make-money-with-ai-for-beginners",
@@ -865,7 +865,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.0 hours",
-    "badge": "Top Rated",
+
     "rating": 4.9,
     "ratingCount": 420,
     "href": "/how-to-use-trading-212-in-2026-full-investing-guide"
@@ -886,7 +886,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.0 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 388,
     "href": "/7-side-hustles-students-can-start-in-2026"
@@ -907,7 +907,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 24,
     "slidesCount": 96,
     "hoursOfMaterial": "6.5 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 512,
     "href": "/making-money-online-is-easy-actually-just-copy-me"
@@ -928,7 +928,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.0 hours",
-    "badge": "Top Rated",
+
     "rating": 4.9,
     "ratingCount": 445,
     "href": "/how-to-make-your-first-10-000-as-a-teen-stupid-simple"
@@ -949,7 +949,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.5 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 476,
     "href": "/the-only-investing-video-youll-ever-need-start-with-100"
@@ -970,7 +970,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 590,
     "href": "/7-proven-ways-to-make-money-with-ai-no-experience"
@@ -991,7 +991,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.5 hours",
-    "badge": "Top Rated",
+
     "rating": 4.9,
     "ratingCount": 614,
     "href": "/how-to-actually-lock-in-no-bullsh-t-guide"
@@ -1012,7 +1012,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.0 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 680,
     "href": "/18-years-of-ugly-business-advice-in-19-minutes"
@@ -1033,7 +1033,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.0 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 620,
     "href": "/want-to-made-god-tier-money-use-this-sales-tactic-made-me-10m"
@@ -1054,7 +1054,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.0 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 665,
     "href": "/there-are-only-3-types-of-profitable-businesses-pick-one"
@@ -1075,7 +1075,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 24,
     "slidesCount": 96,
     "hoursOfMaterial": "6.0 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 710,
     "href": "/if-you-dont-understand-leadership-youll-never-win"
@@ -1096,7 +1096,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.0 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 755,
     "href": "/i-built-a-business-with-ai-in-24-hours"
@@ -1117,7 +1117,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.0 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 800,
     "href": "/copy-paste-this-strategy-to-make-your-first-5-000-online"
@@ -1138,7 +1138,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.0 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 845,
     "href": "/7-remote-jobs-you-can-do-from-home"
@@ -1159,7 +1159,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 24,
     "slidesCount": 96,
     "hoursOfMaterial": "6.0 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 890,
     "href": "/i-asked-ai-to-make-me-as-much-money-as-possible"
@@ -1180,7 +1180,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.0 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 935,
     "href": "/these-are-the-best-business-books-to-read-7-billionaire-books"
@@ -1201,7 +1201,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.0 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 980,
     "href": "/my-honest-advice-to-someone-who-wants-to-get-rich"
@@ -1222,7 +1222,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 32,
     "slidesCount": 128,
     "hoursOfMaterial": "8.0 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 1025,
     "href": "/the-30k-month-al-faceless-shorts-method-nobodys-talking-about"
@@ -1243,7 +1243,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 28,
     "slidesCount": 112,
     "hoursOfMaterial": "7.0 hours",
-    "badge": "Bestseller",
+
     "rating": 4.9,
     "ratingCount": 1070,
     "href": "/how-to-build-10k-websites-in-minutes-claude-ai"
@@ -1264,7 +1264,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "lessonsCount": 24,
     "slidesCount": 96,
     "hoursOfMaterial": "6.0 hours",
-    "badge": "Hot & New",
+
     "rating": 4.9,
     "ratingCount": 1115,
     "href": "/master-higgsfield-ai-in-20-minutes-beginner-tutorial"

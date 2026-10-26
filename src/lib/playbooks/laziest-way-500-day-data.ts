@@ -7489,7 +7489,7 @@ export const LAZIEST_WAY_500_DAY_COURSE: Course = {
   subheadline: "The cinematic blueprint to building high-leverage, asynchronous cash engines that generate $500/day ($15,000/month) with 98% net margins and zero employee overhead.",
   description: "A narrative-driven, battle-tested playbook revealing the 'laziest' and most lucrative online business models in 2026. Discover how to deploy software arbitrage, automated content clipping, curated newsletters, and permission-based outreach to hit a consistent $500/day in passive cashflow while working just 90 minutes daily.",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 5,
   currency: "USD",
   badge: "Hot & New",
   rating: 4.9,

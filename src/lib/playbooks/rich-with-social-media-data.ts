@@ -8615,7 +8615,7 @@ export const RICH_WITH_SOCIAL_MEDIA_COURSE: Course = {
   headline: "The Lead Strategist's exact playbook: generating 3 billion impressions across 35,000 content pieces and converting attention into multi-million-dollar equity and retainers.",
   subheadline: "The Lead Strategist's exact playbook: generating 3 billion impressions across 35,000 content pieces and converting attention into multi-million-dollar equity and retainers.",
   description: "The definitive commercial attention playbook by The Lead Strategist. Discover why empty reach leaves creators broke, how to target high-net-worth buyers with purchasing power, the 4 pillars of high-LTV content, multi-platform syndication workflows, and how to trade organic audience attention for equity in multi-million-dollar private companies.",
-  price: 3,
+  price: 5,
   originalPrice: 9,
   currency: "USD",
   badge: "Bestseller",

@@ -8391,7 +8391,7 @@ export const SEVEN_PROVEN_WAYS_AI_NO_EXP_COURSE: Course = {
   headline: "A practical roadmap to profiting from the AI revolution by providing implementation services rather than competing with tech giants.",
   subheadline: "A practical roadmap to profiting from the AI revolution by providing implementation services rather than competing with tech giants.",
   description: "Avoid the fatal mistake of building AI software to compete with billion-dollar labs. Instead, master 7 proven service and workflow business models that solve real operational bottlenecks for paying clients today using accessible AI tools.",
-  price: 3,
+  price: 5,
   originalPrice: 9,
   currency: "USD",
   badge: "Bestseller",

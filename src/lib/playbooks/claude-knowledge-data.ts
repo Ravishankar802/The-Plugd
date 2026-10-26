@@ -6466,7 +6466,7 @@ export const CLAUDE_KNOWLEDGE_COURSE: Course = {
   subheadline: "The ultimate distillation of Claude 3.5 & 3.7 mastery: XML tag prompting, Artifacts rapid prototyping, persistent Projects memory, MCP tools, and Computer Use.",
   description: "A high-leverage masterclass uncovering the profound capabilities of Anthropic's Claude models. Master XML tag prompting (<rules>, <context>), rapid React and UI prototyping via Artifacts, persistent organizational memory with Projects, connecting external tools with Model Context Protocol (MCP), and autonomous desktop execution with Computer Use.",
   price: 9,
-  originalPrice: 19,
+  originalPrice: 15,
   currency: "USD",
   badge: "Top Rated",
   rating: 4.9,
