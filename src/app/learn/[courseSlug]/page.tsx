@@ -56,7 +56,10 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
   // Web Book Reader for complete online book reading experience
   if (
     course.slug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
-    courseSlug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything"
+    courseSlug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
+    course.slug === "7-side-hustles-students-can-start-in-2027" ||
+    courseSlug === "7-side-hustles-students-can-start-in-2027" ||
+    courseSlug === "ai-businesses-57"
   ) {
     return <WebBookReader courseSlug={course.slug} courseTitle={course.title} />;
   }
@@ -65,7 +68,10 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
   let hasAccess =
     Boolean(IS_REVIEW_PHASE_FREE_ACCESS) ||
     course.slug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
-    courseSlug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything";
+    courseSlug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
+    course.slug === "7-side-hustles-students-can-start-in-2027" ||
+    courseSlug === "7-side-hustles-students-can-start-in-2027" ||
+    courseSlug === "ai-businesses-57";
   let customer = null;
   try {
     const cookieStore = await cookies();

@@ -1,34 +1,50 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Download, List, X } from "lucide-react";
 import {
   SELL_PDFS_WITH_AI_BOOK_PAGES,
-  TOTAL_BOOK_PAGES,
+  WebBookPage,
 } from "@/lib/book-content/sell-pdfs-with-ai-book";
+import { SEVEN_SIDE_HUSTLES_2027_BOOK_PAGES } from "@/lib/book-content/seven-side-hustles-students-2027-book";
 
 interface WebBookReaderProps {
   courseSlug: string;
   courseTitle: string;
+  pages?: WebBookPage[];
 }
+
+// Global registry of digital book manuscripts
+const BOOK_REGISTRY: Record<string, WebBookPage[]> = {
+  "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything": SELL_PDFS_WITH_AI_BOOK_PAGES,
+  "7-side-hustles-students-can-start-in-2027": SEVEN_SIDE_HUSTLES_2027_BOOK_PAGES,
+  "ai-businesses-57": SEVEN_SIDE_HUSTLES_2027_BOOK_PAGES,
+};
 
 // Classic book-style serif font stack explicitly used inside the book
 const CLASSIC_BOOK_FONT =
   '"Georgia", "Palatino Linotype", "Book Antiqua", Palatino, "Baskerville", serif';
 
-export default function WebBookReader({ courseSlug, courseTitle }: WebBookReaderProps) {
+export default function WebBookReader({ courseSlug, courseTitle, pages }: WebBookReaderProps) {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [tocOpen, setTocOpen] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const pageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const isScrollingFromCodeRef = useRef(false);
 
+  // Determine active book pages and total count
+  const bookPages = useMemo(() => {
+    return pages || BOOK_REGISTRY[courseSlug] || SELL_PDFS_WITH_AI_BOOK_PAGES;
+  }, [pages, courseSlug]);
+
+  const totalPages = bookPages.length;
+
   // Scroll vertically to a specific page
   const scrollToPage = useCallback(
     (page: number, smooth = true) => {
-      const target = Math.max(1, Math.min(page, TOTAL_BOOK_PAGES));
+      const target = Math.max(1, Math.min(page, totalPages));
       const targetEl = pageRefs.current[target - 1];
       if (targetEl && scrollContainerRef.current) {
         isScrollingFromCodeRef.current = true;
@@ -47,7 +63,7 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
         }, 500);
       }
     },
-    [courseSlug]
+    [courseSlug, totalPages]
   );
 
   // Load last read page on mount
@@ -58,7 +74,7 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
         const savedPage = localStorage.getItem(`plugd_book_page_${courseSlug}`);
         if (savedPage) {
           const p = parseInt(savedPage, 10);
-          if (!isNaN(p) && p >= 1 && p <= TOTAL_BOOK_PAGES && p > 1) {
+          if (!isNaN(p) && p >= 1 && p <= totalPages && p > 1) {
             setTimeout(() => {
               scrollToPage(p, false);
             }, 150);
@@ -68,7 +84,7 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
         console.warn(e);
       }
     }
-  }, [courseSlug, scrollToPage]);
+  }, [courseSlug, scrollToPage, totalPages]);
 
   // Track active page on natural vertical scroll
   const handleScroll = useCallback(() => {
@@ -125,6 +141,26 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
     }
   };
 
+  // Structured Table of Contents entries
+  const tocEntries = useMemo(() => {
+    return bookPages.filter((p, idx) => {
+      if (p.type === "cover") return true;
+      if (p.type === "toc" && bookPages.findIndex((bp) => bp.type === "toc") === idx) return true;
+      if (p.type === "chapter-start") return true;
+      if (
+        p.header?.includes("PREFACE") &&
+        bookPages.findIndex((bp) => bp.header?.includes("PREFACE")) === idx
+      )
+        return true;
+      if (
+        p.partTitle?.includes("EPILOGUE") &&
+        bookPages.findIndex((bp) => bp.partTitle?.includes("EPILOGUE")) === idx
+      )
+        return true;
+      return false;
+    });
+  }, [bookPages]);
+
   return (
     <div
       className="flex flex-col h-screen w-screen bg-[#EBE7E1] text-[#1c1917] select-none overflow-hidden"
@@ -151,7 +187,7 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
         <div className="absolute left-1/2 -translate-x-1/2 flex items-center pointer-events-none">
           <span className="text-xs sm:text-[13px] text-stone-600 font-sans">
             Page <strong className="font-semibold text-black">{currentPage}</strong> of{" "}
-            {TOTAL_BOOK_PAGES}
+            {totalPages}
           </span>
         </div>
 
@@ -188,7 +224,7 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
           className="flex-1 h-full w-full overflow-y-auto overflow-x-hidden flex flex-col items-center py-6 sm:py-10 px-4 sm:px-6 md:px-8 space-y-8 sm:space-y-12 scroll-smooth"
           style={{ scrollbarWidth: "thin" }}
         >
-          {SELL_PDFS_WITH_AI_BOOK_PAGES.map((page, idx) => {
+          {bookPages.map((page, idx) => {
             const isCover = page.type === "cover";
 
             return (
@@ -373,13 +409,7 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
               className="flex-1 overflow-y-auto p-4 space-y-1.5 text-xs sm:text-[13.5px]"
               style={{ fontFamily: CLASSIC_BOOK_FONT }}
             >
-              {SELL_PDFS_WITH_AI_BOOK_PAGES.filter(
-                (p) =>
-                  p.type === "cover" ||
-                  p.type === "toc" ||
-                  p.type === "chapter-start" ||
-                  (p.chapterTitle && (p.pageNumber === 7 || p.pageNumber === 206))
-              ).map((item) => (
+              {tocEntries.map((item) => (
                 <button
                   key={item.pageNumber}
                   type="button"
