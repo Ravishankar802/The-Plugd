@@ -3,16 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowLeft,
-  ChevronUp,
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  Download,
-  List,
-  X,
-} from "lucide-react";
+import { ArrowLeft, Download, List, X } from "lucide-react";
 import {
   SELL_PDFS_WITH_AI_BOOK_PAGES,
   TOTAL_BOOK_PAGES,
@@ -23,7 +14,7 @@ interface WebBookReaderProps {
   courseTitle: string;
 }
 
-// Classic book-style serif font stack explicitly requested by user
+// Classic book-style serif font stack explicitly used inside the book
 const CLASSIC_BOOK_FONT =
   '"Georgia", "Palatino Linotype", "Book Antiqua", Palatino, "Baskerville", serif';
 
@@ -128,14 +119,6 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentPage, scrollToPage, tocOpen]);
 
-  const prevPage = useCallback(() => {
-    scrollToPage(currentPage - 1);
-  }, [currentPage, scrollToPage]);
-
-  const nextPage = useCallback(() => {
-    scrollToPage(currentPage + 1);
-  }, [currentPage, scrollToPage]);
-
   const handlePrintPdf = () => {
     if (typeof window !== "undefined") {
       window.print();
@@ -148,42 +131,36 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
       style={{ fontFamily: CLASSIC_BOOK_FONT }}
     >
       {/* Top Header Bar */}
-      <header className="h-13 bg-white border-b border-stone-200 px-4 sm:px-6 flex items-center justify-between shrink-0 z-30 shadow-2xs font-sans">
-        {/* Left: Back to Playbook */}
-        <div className="flex items-center gap-3">
+      <header className="relative h-13 bg-white border-b border-stone-200 px-4 sm:px-6 flex items-center justify-between shrink-0 z-30 shadow-2xs font-sans">
+        {/* Left: Back (shortened and moved left) + Title */}
+        <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 max-w-[40%] sm:max-w-[45%]">
           <Link
             href={`/${courseSlug}`}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-950 text-xs sm:text-[13px] font-semibold transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-950 text-xs sm:text-[13px] font-semibold transition-colors shrink-0 font-sans"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span>Back to Playbook</span>
+            <span>Back</span>
           </Link>
-          <span className="hidden sm:inline text-stone-300">|</span>
-          <span
-            className="hidden md:inline text-xs text-stone-700 font-medium truncate max-w-sm"
-            style={{ fontFamily: CLASSIC_BOOK_FONT }}
-          >
+          <span className="hidden sm:inline text-stone-300 shrink-0">|</span>
+          <span className="hidden sm:inline text-xs text-stone-700 font-medium truncate font-sans">
             {courseTitle}
           </span>
         </div>
 
-        {/* Center: Page Counter */}
-        <div
-          className="flex items-center gap-2 text-xs text-stone-700"
-          style={{ fontFamily: CLASSIC_BOOK_FONT }}
-        >
-          <span>
+        {/* Center: Page Counter (Exactly in the middle using absolute centering) */}
+        <div className="absolute left-1/2 -translate-x-1/2 flex items-center pointer-events-none">
+          <span className="text-xs sm:text-[13px] text-stone-600 font-sans">
             Page <strong className="font-semibold text-black">{currentPage}</strong> of{" "}
             {TOTAL_BOOK_PAGES}
           </span>
         </div>
 
-        {/* Right: Table of Contents & Download PDF */}
+        {/* Right: Table of Contents & Download PDF (Homepage font-sans) */}
         <div className="flex items-center gap-2 font-sans">
           <button
             onClick={() => setTocOpen(!tocOpen)}
             type="button"
-            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer font-sans"
             title="Table of Contents"
           >
             <List className="h-4 w-4" />
@@ -193,7 +170,7 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
           <button
             onClick={handlePrintPdf}
             type="button"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-stone-800 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-stone-800 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer font-sans"
             title="Download / Print PDF"
           >
             <Download className="h-3.5 w-3.5" />
@@ -204,30 +181,6 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
 
       {/* Main Reading Stage: Natural Vertical Scroll of Centered A4 Pages */}
       <div className="relative flex-1 w-full overflow-hidden flex justify-center">
-        {/* Floating Quick Navigation Buttons on Right Side */}
-        <div className="fixed right-4 sm:right-8 bottom-20 z-30 flex flex-col gap-2 font-sans">
-          <button
-            onClick={prevPage}
-            disabled={currentPage === 1}
-            type="button"
-            aria-label="Previous Page"
-            className="p-3 rounded-full bg-white/95 hover:bg-white text-stone-800 hover:text-black border border-stone-300/80 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed transition-all cursor-pointer"
-            title="Previous Page"
-          >
-            <ChevronUp className="h-5 w-5" />
-          </button>
-          <button
-            onClick={nextPage}
-            disabled={currentPage === TOTAL_BOOK_PAGES}
-            type="button"
-            aria-label="Next Page"
-            className="p-3 rounded-full bg-white/95 hover:bg-white text-stone-800 hover:text-black border border-stone-300/80 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed transition-all cursor-pointer"
-            title="Next Page"
-          >
-            <ChevronDown className="h-5 w-5" />
-          </button>
-        </div>
-
         {/* Vertical Scroll Track: Pages Stacked Vertically with Empty Margins on Left/Right */}
         <div
           ref={scrollContainerRef}
@@ -393,44 +346,7 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
         </div>
       </div>
 
-      {/* Bottom Control Bar with Page Slider & Jump */}
-      <footer className="h-14 bg-white border-t border-stone-200 px-4 sm:px-8 flex items-center justify-between shrink-0 z-30 font-sans">
-        <button
-          onClick={prevPage}
-          disabled={currentPage === 1}
-          type="button"
-          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-stone-700 hover:bg-stone-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
-        >
-          <ChevronLeft className="h-4 w-4" />
-          <span>Previous</span>
-        </button>
-
-        {/* Slider */}
-        <div className="flex-1 max-w-md mx-4 flex items-center gap-3">
-          <span className="text-[11px] font-mono text-stone-400">1</span>
-          <input
-            type="range"
-            min={1}
-            max={TOTAL_BOOK_PAGES}
-            value={currentPage}
-            onChange={(e) => scrollToPage(parseInt(e.target.value, 10))}
-            className="flex-1 h-1.5 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-black"
-          />
-          <span className="text-[11px] font-mono text-stone-400">{TOTAL_BOOK_PAGES}</span>
-        </div>
-
-        <button
-          onClick={nextPage}
-          disabled={currentPage === TOTAL_BOOK_PAGES}
-          type="button"
-          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-stone-700 hover:bg-stone-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
-        >
-          <span>Next</span>
-          <ChevronRight className="h-4 w-4" />
-        </button>
-      </footer>
-
-      {/* Table of Contents Drawer */}
+      {/* Table of Contents Drawer: classic book font for title and all entries */}
       {tocOpen && (
         <div className="fixed inset-0 z-50 flex justify-end bg-black/40 backdrop-blur-xs font-sans">
           <div
@@ -438,17 +354,25 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
             style={{ fontFamily: CLASSIC_BOOK_FONT }}
           >
             <div className="p-4 border-b border-stone-200 flex items-center justify-between">
-              <h3 className="font-bold text-base text-black">Table of Contents</h3>
+              <h3
+                className="font-bold text-lg text-black"
+                style={{ fontFamily: CLASSIC_BOOK_FONT }}
+              >
+                Table of Contents
+              </h3>
               <button
                 onClick={() => setTocOpen(false)}
                 type="button"
-                className="p-1.5 rounded-lg hover:bg-stone-100 text-stone-500 hover:text-black cursor-pointer"
+                className="p-1.5 rounded-lg hover:bg-stone-100 text-stone-500 hover:text-black cursor-pointer font-sans"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 space-y-2 text-xs sm:text-sm">
+            <div
+              className="flex-1 overflow-y-auto p-4 space-y-1.5 text-xs sm:text-[13.5px]"
+              style={{ fontFamily: CLASSIC_BOOK_FONT }}
+            >
               {SELL_PDFS_WITH_AI_BOOK_PAGES.filter(
                 (p) =>
                   p.type === "cover" ||
@@ -466,17 +390,26 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
                   className={`w-full text-left p-2.5 rounded-lg flex items-center justify-between transition-colors cursor-pointer ${
                     currentPage === item.pageNumber
                       ? "bg-black text-white font-semibold"
-                      : "hover:bg-stone-100 text-stone-800"
+                      : "hover:bg-stone-100 text-stone-900"
                   }`}
+                  style={{ fontFamily: CLASSIC_BOOK_FONT }}
                 >
-                  <span className="truncate pr-2">
+                  <span
+                    className="truncate pr-2"
+                    style={{ fontFamily: CLASSIC_BOOK_FONT }}
+                  >
                     {item.type === "cover"
                       ? "Cover Page"
                       : item.type === "toc"
                       ? "Table of Contents"
                       : item.chapterTitle || `Page ${item.pageNumber}`}
                   </span>
-                  <span className="shrink-0 text-xs opacity-60">p. {item.pageNumber}</span>
+                  <span
+                    className="shrink-0 text-xs opacity-70"
+                    style={{ fontFamily: CLASSIC_BOOK_FONT }}
+                  >
+                    p. {item.pageNumber}
+                  </span>
                 </button>
               ))}
             </div>
