@@ -9,6 +9,12 @@ import {
   WebBookPage,
 } from "@/lib/book-content/sell-pdfs-with-ai-book";
 import { SEVEN_SIDE_HUSTLES_2027_BOOK_PAGES } from "@/lib/book-content/seven-side-hustles-students-2027-book";
+import { THREE_BEST_AI_BUSINESSES_2027_BOOK_PAGES } from "@/lib/book-content/three-best-ai-businesses-2027-book";
+import { FIVE_SIMPLE_APPS_10K_BOOK_PAGES } from "@/lib/book-content/five-simple-apps-10k-month-book";
+import { WIN_IN_YOUR_20S_BOOK_PAGES } from "@/lib/book-content/win-in-your-20s-book";
+import { SMARTEST_WAY_AI_GOLD_RUSH_BOOK_PAGES } from "@/lib/book-content/smartest-way-ai-gold-rush-book";
+import { STARTED_OVER_ZERO_PLAN_1M_BOOK_PAGES } from "@/lib/book-content/started-over-zero-plan-1m-book";
+import { BECOME_MILLIONAIRE_2027_BOOK_PAGES } from "@/lib/book-content/become-millionaire-2027-book";
 
 interface WebBookReaderProps {
   courseSlug: string;
@@ -21,6 +27,14 @@ const BOOK_REGISTRY: Record<string, WebBookPage[]> = {
   "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything": SELL_PDFS_WITH_AI_BOOK_PAGES,
   "7-side-hustles-students-can-start-in-2027": SEVEN_SIDE_HUSTLES_2027_BOOK_PAGES,
   "ai-businesses-57": SEVEN_SIDE_HUSTLES_2027_BOOK_PAGES,
+  "3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today": THREE_BEST_AI_BUSINESSES_2027_BOOK_PAGES,
+  "5-simple-apps-making-10-000-month-that-you-can-build-with-ai": FIVE_SIMPLE_APPS_10K_BOOK_PAGES,
+  "if-youre-in-your-20s-heres-how-to-win-at-anything": WIN_IN_YOUR_20S_BOOK_PAGES,
+  "the-smartest-way-to-capitalize-on-the-ai-gold-rush": SMARTEST_WAY_AI_GOLD_RUSH_BOOK_PAGES,
+  "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m": STARTED_OVER_ZERO_PLAN_1M_BOOK_PAGES,
+  "ai-businesses-53": STARTED_OVER_ZERO_PLAN_1M_BOOK_PAGES,
+  "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint": BECOME_MILLIONAIRE_2027_BOOK_PAGES,
+  "ai-businesses-54": BECOME_MILLIONAIRE_2027_BOOK_PAGES,
 };
 
 // Classic book-style serif font stack explicitly used inside the book

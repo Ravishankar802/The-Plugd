@@ -39,6 +39,20 @@ export async function generateMetadata({ params }: LearnPageProps) {
   };
 }
 
+const BOOK_READER_SLUGS = new Set([
+  "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything",
+  "7-side-hustles-students-can-start-in-2027",
+  "ai-businesses-57",
+  "3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today",
+  "5-simple-apps-making-10-000-month-that-you-can-build-with-ai",
+  "if-youre-in-your-20s-heres-how-to-win-at-anything",
+  "the-smartest-way-to-capitalize-on-the-ai-gold-rush",
+  "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m",
+  "ai-businesses-53",
+  "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint",
+  "ai-businesses-54",
+]);
+
 export default async function LearnCoursePage({ params, searchParams }: LearnPageProps) {
   const { courseSlug } = await params;
   const { session_id, purchased } = (await searchParams) || {};
@@ -54,24 +68,15 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
   }
 
   // Web Book Reader for complete online book reading experience
-  if (
-    course.slug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
-    courseSlug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
-    course.slug === "7-side-hustles-students-can-start-in-2027" ||
-    courseSlug === "7-side-hustles-students-can-start-in-2027" ||
-    courseSlug === "ai-businesses-57"
-  ) {
+  if (BOOK_READER_SLUGS.has(course.slug) || BOOK_READER_SLUGS.has(courseSlug)) {
     return <WebBookReader courseSlug={course.slug} courseTitle={course.title} />;
   }
 
   // Server-side Authorization Check
   let hasAccess =
     Boolean(IS_REVIEW_PHASE_FREE_ACCESS) ||
-    course.slug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
-    courseSlug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
-    course.slug === "7-side-hustles-students-can-start-in-2027" ||
-    courseSlug === "7-side-hustles-students-can-start-in-2027" ||
-    courseSlug === "ai-businesses-57";
+    BOOK_READER_SLUGS.has(course.slug) ||
+    BOOK_READER_SLUGS.has(courseSlug);
   let customer = null;
   try {
     const cookieStore = await cookies();
