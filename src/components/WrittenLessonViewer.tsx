@@ -1,23 +1,28 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   ChevronLeft,
   ChevronRight,
   ChevronDown,
-  Presentation,
   BookOpen,
   CheckCircle2,
   Sparkles,
   ArrowRight,
   Check,
   LogOut,
+  Type,
+  Sun,
+  Moon,
+  BookMarked,
+  Sliders,
 } from "lucide-react";
 import { performLogout } from "@/lib/auth-client";
 import { Lesson, Module, Course, getPlaybookOverviewUrl } from "@/lib/playbooks-data";
 import { ExtendedLesson } from "@/lib/module-01-content";
+import { getPlaybookPageCount, getChapterPageRange } from "@/lib/book-utils";
 
 interface WrittenLessonViewerProps {
   course: Course;
@@ -34,38 +39,40 @@ export default function WrittenLessonViewer({
   lesson,
   nextLesson,
   previousLesson,
-  onSwitchToPresentation,
 }: WrittenLessonViewerProps) {
   const router = useRouter();
   const [isCompleted, setIsCompleted] = useState(false);
-  const [isModuleDropdownOpen, setIsModuleDropdownOpen] = useState(false);
-  const [isLessonDropdownOpen, setIsLessonDropdownOpen] = useState(false);
-  const moduleDropdownRef = useRef<HTMLDivElement>(null);
-  const lessonDropdownRef = useRef<HTMLDivElement>(null);
+  const [isTocDropdownOpen, setIsTocDropdownOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [fontFamily, setFontFamily] = useState<"serif" | "sans">("serif");
+  const [fontSize, setFontSize] = useState<"normal" | "large" | "xl">("normal");
+  const [readerTheme, setReaderTheme] = useState<"paper" | "white" | "dark">("paper");
+
+  const tocDropdownRef = useRef<HTMLDivElement>(null);
+  const settingsDropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdowns on outside click or Escape
   useEffect(() => {
-    if (!isModuleDropdownOpen && !isLessonDropdownOpen) return;
+    if (!isTocDropdownOpen && !isSettingsOpen) return;
 
     const handlePointerDown = (e: MouseEvent | TouchEvent) => {
       const target = e.target as Node;
-      if (moduleDropdownRef.current && !moduleDropdownRef.current.contains(target)) {
-        setIsModuleDropdownOpen(false);
+      if (tocDropdownRef.current && !tocDropdownRef.current.contains(target)) {
+        setIsTocDropdownOpen(false);
       }
-      if (lessonDropdownRef.current && !lessonDropdownRef.current.contains(target)) {
-        setIsLessonDropdownOpen(false);
+      if (settingsDropdownRef.current && !settingsDropdownRef.current.contains(target)) {
+        setIsSettingsOpen(false);
       }
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         e.preventDefault();
-        setIsModuleDropdownOpen(false);
-        setIsLessonDropdownOpen(false);
+        setIsTocDropdownOpen(false);
+        setIsSettingsOpen(false);
       }
     };
 
-    // Use capture phase so any click on article, slide, or controls closes dropdowns
     document.addEventListener("mousedown", handlePointerDown, true);
     document.addEventListener("touchstart", handlePointerDown, true);
     window.addEventListener("keydown", handleKeyDown);
@@ -74,7 +81,47 @@ export default function WrittenLessonViewer({
       document.removeEventListener("touchstart", handlePointerDown, true);
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isModuleDropdownOpen, isLessonDropdownOpen]);
+  }, [isTocDropdownOpen, isSettingsOpen]);
+
+  const totalPages = useMemo(
+    () => getPlaybookPageCount(course.price, course.slug),
+    [course.price, course.slug]
+  );
+
+  // Flattened chapters across all modules
+  const allChapters = useMemo(() => {
+    const list: {
+      lesson: Lesson;
+      module: Module;
+      index: number;
+      partIndex: number;
+    }[] = [];
+
+    let count = 0;
+    course.modules?.forEach((m, mIdx) => {
+      m.lessons?.forEach((l) => {
+        list.push({
+          lesson: l,
+          module: m,
+          index: count++,
+          partIndex: mIdx + 1,
+        });
+      });
+    });
+
+    return list;
+  }, [course.modules]);
+
+  const currentChapterInfo = useMemo(() => {
+    const found = allChapters.find((c) => c.lesson.id === lesson.id);
+    const index = found ? found.index : 0;
+    const pageRange = getChapterPageRange(index, allChapters.length, totalPages);
+    return {
+      index,
+      partIndex: found ? found.partIndex : 1,
+      pageRange,
+    };
+  }, [allChapters, lesson.id, totalPages]);
 
   const extendedLesson = lesson as ExtendedLesson;
   const writtenContent =
@@ -89,509 +136,366 @@ export default function WrittenLessonViewer({
     (lesson as any).takeaway ||
     (lesson.slides?.[0] as any)?.takeaway;
 
-  const handleMarkComplete = () => {
-    setIsCompleted(true);
-    fetch("/api/progress", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        courseSlug: course.slug,
-        lessonId: lesson.id,
-        isCompleted: true,
-      }),
-    }).catch(() => {});
+  const handleNext = () => {
+    if (nextLesson) {
+      router.push(`/learn/${course.slug}/${nextLesson.lesson.id}`);
+    }
   };
 
-  // Simple Markdown parser for editorial rendering
-  const renderMarkdown = (content: string) => {
-    const lines = content.split("\n");
-    const elements: React.ReactNode[] = [];
-    let currentParagraph: string[] = [];
-    let currentList: string[] = [];
-    let inTable = false;
-    let tableRows: string[][] = [];
-
-    const flushParagraph = (key: string) => {
-      if (currentParagraph.length > 0) {
-        elements.push(
-          <p
-            key={key}
-            className="text-[16.5px] sm:text-[17.5px] text-[#3b3836] leading-[1.8] mb-6 tracking-normal"
-          >
-            {renderInline(currentParagraph.join(" "))}
-          </p>
-        );
-        currentParagraph = [];
-      }
-    };
-
-    const flushList = (key: string) => {
-      if (currentList.length > 0) {
-        elements.push(
-          <ul key={key} className="space-y-3.5 my-6 pl-2 list-none">
-            {currentList.map((item, idx) => (
-              <li
-                key={idx}
-                className="flex items-start gap-3 text-[16px] sm:text-[17px] text-[#3b3836] leading-relaxed"
-              >
-                <span className="h-2 w-2 rounded-full bg-[#2563eb] shrink-0 mt-2.5" />
-                <span>{renderInline(item)}</span>
-              </li>
-            ))}
-          </ul>
-        );
-        currentList = [];
-      }
-    };
-
-    const flushTable = (key: string) => {
-      if (tableRows.length > 0) {
-        const [header, , ...body] = tableRows;
-        elements.push(
-          <div key={key} className="my-8 overflow-x-auto rounded-2xl border border-[#e7e5e4] bg-white shadow-xs">
-            <table className="w-full text-left border-collapse text-sm sm:text-base">
-              {header && (
-                <thead className="bg-[#f8fafc] border-b border-[#e7e5e4]">
-                  <tr>
-                    {header.map((col, idx) => (
-                      <th
-                        key={idx}
-                        className="py-3 px-4 font-bold text-[#1c1917] font-mono text-xs uppercase tracking-wider"
-                      >
-                        {col.trim()}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-              )}
-              <tbody className="divide-y divide-[#f0eee9]">
-                {body.map((row, rIdx) => (
-                  <tr key={rIdx} className="hover:bg-[#fbfbfa]">
-                    {row.map((cell, cIdx) => (
-                      <td key={cIdx} className="py-3.5 px-4 text-[#44403c] leading-relaxed">
-                        {renderInline(cell.trim())}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        );
-        tableRows = [];
-        inTable = false;
-      }
-    };
-
-    const renderInline = (text: string): React.ReactNode => {
-      // Bold **text**
-      const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g);
-      return parts.map((part, i) => {
-        if (part.startsWith("**") && part.endsWith("**")) {
-          return (
-            <strong key={i} className="font-semibold text-[#1c1917]">
-              {part.slice(2, -2)}
-            </strong>
-          );
-        }
-        if (part.startsWith("*") && part.endsWith("*")) {
-          return (
-            <em key={i} className="italic text-[#1c1917]">
-              {part.slice(1, -1)}
-            </em>
-          );
-        }
-        return part;
-      });
-    };
-
-    lines.forEach((line, index) => {
-      const trimmed = line.trim();
-
-      if (trimmed.startsWith("|") && trimmed.endsWith("|")) {
-        flushParagraph(`p-${index}`);
-        flushList(`l-${index}`);
-        inTable = true;
-        const cols = trimmed.slice(1, -1).split("|");
-        tableRows.push(cols);
-        return;
-      } else if (inTable) {
-        flushTable(`t-${index}`);
-      }
-
-      if (trimmed.startsWith("### ")) {
-        flushParagraph(`p-${index}`);
-        flushList(`l-${index}`);
-        elements.push(
-          <h2
-            key={`h3-${index}`}
-            className="text-2xl sm:text-[28px] font-bold tracking-tight text-[#1c1917] mt-12 mb-4 pt-4 border-t border-[#f0eee9]"
-          >
-            {trimmed.replace("### ", "")}
-          </h2>
-        );
-      } else if (trimmed.startsWith("#### ")) {
-        flushParagraph(`p-${index}`);
-        flushList(`l-${index}`);
-        elements.push(
-          <h3
-            key={`h4-${index}`}
-            className="text-lg sm:text-xl font-bold tracking-tight text-[#1c1917] mt-8 mb-3"
-          >
-            {trimmed.replace("#### ", "")}
-          </h3>
-        );
-      } else if (trimmed.startsWith("> ")) {
-        flushParagraph(`p-${index}`);
-        flushList(`l-${index}`);
-        elements.push(
-          <blockquote
-            key={`bq-${index}`}
-            className="my-7 rounded-2xl border-l-4 border-[#2563eb] bg-[#eff6ff] py-4 px-5 sm:px-6 italic text-[16px] sm:text-[17px] text-[#44403c] leading-relaxed shadow-xs"
-          >
-            {renderInline(trimmed.replace("> ", ""))}
-          </blockquote>
-        );
-      } else if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
-        flushParagraph(`p-${index}`);
-        currentList.push(trimmed.slice(2));
-      } else if (/^\d+\.\s/.test(trimmed)) {
-        flushParagraph(`p-${index}`);
-        currentList.push(trimmed.replace(/^\d+\.\s/, ""));
-      } else if (trimmed === "---") {
-        flushParagraph(`p-${index}`);
-        flushList(`l-${index}`);
-        elements.push(<hr key={`hr-${index}`} className="my-10 border-[#e7e5e4]" />);
-      } else if (trimmed === "") {
-        flushParagraph(`p-${index}`);
-        flushList(`l-${index}`);
-      } else {
-        currentParagraph.push(trimmed);
-      }
-    });
-
-    flushParagraph("final-p");
-    flushList("final-l");
-    if (inTable) flushTable("final-t");
-
-    return elements;
+  const handlePrevious = () => {
+    if (previousLesson) {
+      router.push(`/learn/${course.slug}/${previousLesson.lesson.id}`);
+    }
   };
+
+  const themeClasses = {
+    paper: "bg-[#FAF8F5] text-[#1c1917]",
+    white: "bg-white text-[#1c1917]",
+    dark: "bg-[#18181b] text-[#f4f4f5]",
+  }[readerTheme];
+
+  const cardThemeClasses = {
+    paper: "bg-white border-[#E6E1D7] text-[#1c1917]",
+    white: "bg-stone-50 border-stone-200 text-[#1c1917]",
+    dark: "bg-[#27272a] border-stone-700 text-[#f4f4f5]",
+  }[readerTheme];
+
+  const fontClasses = fontFamily === "serif" ? "font-serif" : "font-sans";
+
+  const fontSizeClasses = {
+    normal: "text-[15px] sm:text-base leading-[1.8]",
+    large: "text-base sm:text-lg leading-[1.85]",
+    xl: "text-lg sm:text-xl leading-[1.9]",
+  }[fontSize];
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-[#1c1917] font-sans antialiased selection:bg-[#2563eb] selection:text-white">
-      {/* Sticky Header Navigation */}
-      <header className="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-[#e7e5e4] bg-[#faf8f5]/90 px-4 sm:px-8 backdrop-blur-md">
-        {/* Left: Syllabus Navigation & Module/Lesson Selectors */}
-        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+    <div className={`min-h-screen ${themeClasses} transition-colors duration-200 antialiased`}>
+      {/* Top Sticky Book Reader Header */}
+      <header className={`sticky top-0 z-40 border-b backdrop-blur-md ${
+        readerTheme === "dark"
+          ? "bg-[#18181b]/95 border-stone-800"
+          : "bg-[#FAF8F5]/95 border-[#E6E1D7]"
+      }`}>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+          
+          {/* Back to Book Overview */}
           <Link
-            href={getPlaybookOverviewUrl(course.slug)}
-            className="flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-2.5 sm:px-3.5 py-1.5 text-xs font-semibold text-[#57534e] transition-colors hover:border-[#1c1917] hover:text-[#1c1917] shadow-xs shrink-0"
+            href={`/${course.slug}`}
+            className="flex items-center gap-1.5 text-xs font-medium text-stone-600 hover:text-stone-900 transition-colors shrink-0"
           >
-            <BookOpen className="h-3.5 w-3.5 text-[#2563eb]" />
-            <span className="hidden sm:inline">Back to Playbook</span>
-            <span className="sm:hidden">Back</span>
+            <ChevronLeft className="h-4 w-4" />
+            <span className="hidden sm:inline">Back to Book</span>
           </Link>
 
-          {/* Dropdown 1: Module Selector */}
-          <div className="relative shrink-0" ref={moduleDropdownRef}>
+          {/* Book Title & Chapter Selector */}
+          <div className="relative flex-1 max-w-md text-center" ref={tocDropdownRef}>
             <button
               type="button"
-              onClick={() => {
-                setIsModuleDropdownOpen((prev) => !prev);
-                setIsLessonDropdownOpen(false);
-              }}
-              aria-expanded={isModuleDropdownOpen}
-              aria-haspopup="listbox"
-              aria-label="Select module"
-              className="flex items-center gap-1.5 rounded-xl border border-[#e7e5e4] bg-white px-2.5 sm:px-3 py-1.5 text-xs font-mono transition-all text-left shadow-xs text-[#1c1917] hover:border-[#d6d3d1] hover:bg-[#faf8f5]"
+              onClick={() => setIsTocDropdownOpen(!isTocDropdownOpen)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-black/5 text-xs font-semibold max-w-full truncate cursor-pointer transition-colors"
             >
-              <span className="font-bold shrink-0 text-[#2563eb]">
-                MODULE {String(module.number).padStart(2, "0")}
+              <BookOpen className="h-3.5 w-3.5 shrink-0 text-stone-500" />
+              <span className="truncate">
+                Ch. {currentChapterInfo.index + 1}: {lesson.title}
               </span>
-              <ChevronDown
-                className={`h-3.5 w-3.5 shrink-0 transition-transform duration-200 text-[#78716c] ${
-                  isModuleDropdownOpen ? "rotate-180" : ""
-                }`}
-              />
+              <ChevronDown className="h-3 w-3 shrink-0 text-stone-400" />
             </button>
 
-            {isModuleDropdownOpen && (
-              <div
-                role="listbox"
-                aria-label="Modules"
-                className="absolute left-0 top-full mt-2 w-72 sm:w-80 max-w-[calc(100vw-2rem)] rounded-2xl border border-[#e7e5e4] bg-white/95 p-2 shadow-2xl backdrop-blur-xl z-50 text-[#1c1917] animate-in fade-in slide-in-from-top-1 duration-150"
-              >
-                <div className="px-3 py-2 border-b border-[#e7e5e4] mb-1 flex items-center justify-between">
-                  <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#2563eb]">
-                    CURRICULUM · {course.modules.length} MODULES
-                  </span>
-                  <span className="text-[10px] font-mono text-[#a8a29e]">
-                    {course.modules.length} modules
-                  </span>
+            {/* Table of Contents Dropdown */}
+            {isTocDropdownOpen && (
+              <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-2 w-80 sm:w-96 max-h-[70vh] overflow-y-auto rounded-xl border shadow-xl p-2 z-50 text-left ${
+                readerTheme === "dark" ? "bg-[#27272a] border-stone-700" : "bg-white border-stone-200"
+              }`}>
+                <div className="px-3 py-2 border-b border-stone-100 flex items-center justify-between text-xs font-semibold text-stone-500">
+                  <span>Table of Contents</span>
+                  <span>{totalPages} Pages</span>
                 </div>
 
-                <div className="max-h-[60vh] overflow-y-auto space-y-1 py-1 pr-1 scrollbar-thin">
-                  {course.modules.map((m) => {
-                    const isActive = m.id === module.id || m.number === module.number;
-                    const firstLesson = m.lessons[0];
-                    return (
-                      <button
-                        key={m.id}
-                        type="button"
-                        role="option"
-                        aria-selected={isActive}
-                        onClick={() => {
-                          setIsModuleDropdownOpen(false);
-                          if (firstLesson) {
-                            router.push(`/learn/${course.slug}/${firstLesson.id}?format=written`);
-                          }
-                        }}
-                        className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${
-                          isActive
-                            ? "bg-[#2563eb]/10 text-[#2563eb] font-bold"
-                            : "text-[#44403c] hover:bg-[#f5f3ef] hover:text-[#1c1917]"
-                        }`}
-                      >
-                        <div className="flex items-center gap-2.5 min-w-0">
-                          <span
-                            className={`font-mono shrink-0 text-[11px] font-bold ${
-                              isActive ? "text-[#2563eb]" : "text-[#78716c]"
+                <div className="py-1 divide-y divide-stone-100/60">
+                  {course.modules.map((m, mIdx) => (
+                    <div key={m.id} className="py-1.5">
+                      <span className="px-3 text-[10px] font-bold uppercase tracking-wider text-stone-400 block pb-1">
+                        Part {mIdx + 1}: {m.title}
+                      </span>
+                      {m.lessons.map((l) => {
+                        const chIdx = allChapters.findIndex((c) => c.lesson.id === l.id);
+                        const range = getChapterPageRange(chIdx, allChapters.length, totalPages);
+                        const isCurrent = l.id === lesson.id;
+
+                        return (
+                          <Link
+                            key={l.id}
+                            href={`/learn/${course.slug}/${l.id}`}
+                            onClick={() => setIsTocDropdownOpen(false)}
+                            className={`flex items-center justify-between px-3 py-1.5 rounded-md text-xs transition-colors ${
+                              isCurrent
+                                ? "bg-stone-900 text-white font-semibold"
+                                : "hover:bg-stone-100 text-stone-700"
                             }`}
                           >
-                            MOD {String(m.number).padStart(2, "0")}
-                          </span>
-                          <span className="truncate">{m.title}</span>
-                        </div>
-                        {isActive && (
-                          <Check className="h-3.5 w-3.5 shrink-0 text-[#2563eb]" />
-                        )}
-                      </button>
-                    );
-                  })}
+                            <span className="truncate pr-2">{l.title}</span>
+                            <span className="text-[10px] font-mono opacity-70 shrink-0">
+                              pp. {range.startPage}–{range.endPage}
+                            </span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
           </div>
 
-          {/* Dropdown 2: Lesson Selector */}
-          <div className="relative min-w-0" ref={lessonDropdownRef}>
+          {/* Reader Display Settings & Logout */}
+          <div className="flex items-center gap-1 shrink-0 relative" ref={settingsDropdownRef}>
             <button
               type="button"
-              onClick={() => {
-                setIsLessonDropdownOpen((prev) => !prev);
-                setIsModuleDropdownOpen(false);
-              }}
-              aria-expanded={isLessonDropdownOpen}
-              aria-haspopup="listbox"
-              aria-label={`Select lesson from Module ${module.number}`}
-              className="flex items-center gap-1.5 sm:gap-2 rounded-xl border border-[#e7e5e4] bg-white px-2.5 sm:px-3 py-1.5 text-xs font-mono transition-all text-left shadow-xs text-[#1c1917] hover:border-[#d6d3d1] hover:bg-[#faf8f5]"
+              onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+              className="p-1.5 rounded-full hover:bg-black/5 text-stone-600 transition-colors cursor-pointer"
+              title="Reading Appearance"
             >
-              <span className="truncate max-w-[90px] sm:max-w-[160px] md:max-w-xs font-medium">
-                {lesson.number} / {lesson.title}
-              </span>
-              <ChevronDown
-                className={`h-3.5 w-3.5 shrink-0 transition-transform duration-200 text-[#78716c] ${
-                  isLessonDropdownOpen ? "rotate-180" : ""
-                }`}
-              />
+              <Type className="h-4 w-4" />
             </button>
 
-            {isLessonDropdownOpen && (
-              <div
-                role="listbox"
-                aria-label={`Module ${module.number} Lessons`}
-                className="absolute left-0 top-full mt-2 w-72 sm:w-88 max-w-[calc(100vw-2rem)] rounded-2xl border border-[#e7e5e4] bg-white/95 p-2 shadow-2xl backdrop-blur-xl z-50 text-[#1c1917] animate-in fade-in slide-in-from-top-1 duration-150"
-              >
-                <div className="px-3 py-2 border-b border-[#e7e5e4] mb-1 flex items-center justify-between">
-                  <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#2563eb]">
-                    MODULE {String(module.number).padStart(2, "0")} · LESSONS
+            {isSettingsOpen && (
+              <div className={`absolute right-0 top-full mt-2 w-56 rounded-xl border shadow-xl p-3 z-50 text-xs space-y-3 ${
+                readerTheme === "dark" ? "bg-[#27272a] border-stone-700" : "bg-white border-stone-200"
+              }`}>
+                <div>
+                  <span className="text-stone-400 block text-[10px] font-bold uppercase tracking-wider mb-1">
+                    Typeface
                   </span>
-                  <span className="text-[10px] font-mono text-[#a8a29e]">
-                    {module.lessons.length} lessons
-                  </span>
+                  <div className="grid grid-cols-2 gap-1">
+                    <button
+                      type="button"
+                      onClick={() => setFontFamily("serif")}
+                      className={`py-1 rounded font-serif cursor-pointer ${
+                        fontFamily === "serif" ? "bg-stone-800 text-white" : "bg-stone-100 text-stone-800"
+                      }`}
+                    >
+                      Book Serif
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFontFamily("sans")}
+                      className={`py-1 rounded font-sans cursor-pointer ${
+                        fontFamily === "sans" ? "bg-stone-800 text-white" : "bg-stone-100 text-stone-800"
+                      }`}
+                    >
+                      Clean Sans
+                    </button>
+                  </div>
                 </div>
 
-                <div className="max-h-[60vh] overflow-y-auto space-y-1 py-1 pr-1 scrollbar-thin">
-                  {module.lessons.map((l) => {
-                    const isActive = l.id === lesson.id;
-                    return (
+                <div>
+                  <span className="text-stone-400 block text-[10px] font-bold uppercase tracking-wider mb-1">
+                    Font Size
+                  </span>
+                  <div className="grid grid-cols-3 gap-1">
+                    {(["normal", "large", "xl"] as const).map((s) => (
                       <button
-                        key={l.id}
+                        key={s}
                         type="button"
-                        role="option"
-                        aria-selected={isActive}
-                        onClick={() => {
-                          setIsLessonDropdownOpen(false);
-                          router.push(`/learn/${course.slug}/${l.id}?format=written`);
-                        }}
-                        className={`w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition-all ${
-                          isActive
-                            ? "bg-[#2563eb]/10 text-[#2563eb] font-bold"
-                            : "text-[#44403c] hover:bg-[#f5f3ef] hover:text-[#1c1917]"
+                        onClick={() => setFontSize(s)}
+                        className={`py-1 rounded capitalize cursor-pointer ${
+                          fontSize === s ? "bg-stone-800 text-white" : "bg-stone-100 text-stone-800"
                         }`}
                       >
-                        <div className="flex items-center gap-2.5 min-w-0">
-                          <span
-                            className={`font-mono shrink-0 text-[11px] ${
-                              isActive ? "text-[#2563eb] font-bold" : "text-[#78716c]"
-                            }`}
-                          >
-                            {l.number}
-                          </span>
-                          <span className="truncate">{l.title}</span>
-                        </div>
-                        {isActive && (
-                          <Check className="h-3.5 w-3.5 shrink-0 text-[#2563eb]" />
-                        )}
+                        {s}
                       </button>
-                    );
-                  })}
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <span className="text-stone-400 block text-[10px] font-bold uppercase tracking-wider mb-1">
+                    Paper Theme
+                  </span>
+                  <div className="grid grid-cols-3 gap-1">
+                    <button
+                      type="button"
+                      onClick={() => setReaderTheme("paper")}
+                      className={`py-1 rounded cursor-pointer ${
+                        readerTheme === "paper" ? "ring-2 ring-stone-800" : ""
+                      } bg-[#FAF8F5] text-stone-900 border border-stone-200`}
+                    >
+                      Paper
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setReaderTheme("white")}
+                      className={`py-1 rounded cursor-pointer ${
+                        readerTheme === "white" ? "ring-2 ring-stone-800" : ""
+                      } bg-white text-stone-900 border border-stone-200`}
+                    >
+                      White
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setReaderTheme("dark")}
+                      className={`py-1 rounded cursor-pointer ${
+                        readerTheme === "dark" ? "ring-2 ring-stone-400" : ""
+                      } bg-[#18181b] text-white border border-stone-700`}
+                    >
+                      Dark
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
-          </div>
-        </div>
 
-        {/* Center: Format Selector Toggle */}
-        <div className="flex items-center rounded-full border border-[#e7e5e4] bg-[#f0eee9] p-0.5 shadow-xs">
-          <button
-            type="button"
-            onClick={onSwitchToPresentation}
-            className="flex items-center gap-1.5 rounded-full px-3.5 py-1 text-xs font-semibold text-[#57534e] hover:text-[#1c1917] transition-colors"
-          >
-            <Presentation className="h-3.5 w-3.5" />
-            <span>Presentation</span>
-          </button>
-          <button
-            type="button"
-            disabled
-            className="flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1 text-xs font-bold text-[#1c1917] shadow-xs"
-          >
-            <BookOpen className="h-3.5 w-3.5 text-[#2563eb]" />
-            <span>Written Lesson</span>
-          </button>
-        </div>
-
-        {/* Right: Next / Logout Control */}
-        <div className="flex items-center gap-2">
-          {nextLesson && (
-            <Link
-              href={`/learn/${course.slug}/${nextLesson.lesson.id}?format=written`}
-              className="flex items-center gap-1 rounded-full border border-[#e7e5e4] bg-white px-3 py-1.5 text-xs font-semibold text-[#57534e] hover:border-[#1c1917] hover:text-[#1c1917] transition-colors shadow-xs"
+            <button
+              onClick={() => performLogout()}
+              className="p-1.5 rounded-full hover:bg-black/5 text-stone-400 hover:text-red-600 transition-colors cursor-pointer"
+              title="Log out"
             >
-              <span className="hidden sm:inline">Next Lesson</span>
-              <ChevronRight className="h-3.5 w-3.5" />
-            </Link>
-          )}
+              <LogOut className="h-4 w-4" />
+            </button>
+          </div>
 
-          <button
-            type="button"
-            onClick={performLogout}
-            className="flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-3 py-1.5 text-xs font-semibold text-[#57534e] hover:border-[#1c1917] hover:text-[#1c1917] transition-colors shadow-xs cursor-pointer"
-            title="Log out of your account"
-          >
-            <LogOut className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">Log out</span>
-          </button>
         </div>
       </header>
 
-      {/* Main Reading Container */}
-      <main className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-        {/* Lesson Breadcrumb & Title */}
-        <div className="mb-10 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#bfdbfe] bg-[#eff6ff] px-3.5 py-1 text-xs font-mono font-bold uppercase tracking-widest text-[#2563eb] mb-4">
-            <span>MODULE {module.number} · LESSON {lesson.number}</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1c1917] leading-tight mb-4">
-            {lesson.title}
-          </h1>
-          <p className="text-base sm:text-lg text-[#57534e] leading-relaxed max-w-2xl">
-            {lesson.summary}
-          </p>
-
-          {/* Learning Objective Callout */}
-          {learningObjective && (
-            <div className="mt-8 rounded-2xl border border-[#e7e5e4] bg-white p-5 sm:p-6 shadow-xs flex items-start gap-4 text-left">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2563eb]/10 text-[#2563eb] shrink-0 mt-0.5">
-                <Sparkles className="h-4 w-4" />
-              </div>
-              <div>
-                <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#78716c] mb-1">
-                  Learning Objective
-                </div>
-                <div className="text-sm sm:text-[15px] font-medium text-[#1c1917] leading-relaxed">
-                  {learningObjective}
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Written Essay Body */}
-        <article className="prose prose-neutral max-w-none border-t border-[#e7e5e4] pt-8">
-          {renderMarkdown(writtenContent)}
-        </article>
-
-        {/* Core Takeaway Card */}
-        {coreTakeaway && (
-          <div className="mt-12 rounded-3xl border border-[#bfdbfe] bg-[#eff6ff] p-6 sm:p-8 shadow-xs">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#2563eb] uppercase tracking-wider mb-2">
-              <Sparkles className="h-4 w-4" />
-              <span>Core Principle Takeaway</span>
-            </div>
-            <p className="text-base sm:text-lg font-bold text-[#1c1917] leading-snug">
-              &ldquo;{coreTakeaway}&rdquo;
+      {/* Main Book Reader Container */}
+      <main className="max-w-3xl mx-auto px-5 sm:px-8 py-10 sm:py-16">
+        
+        {/* Front Matter Notice for Chapter 1 */}
+        {currentChapterInfo.index === 0 && (
+          <div className="mb-12 pb-8 border-b border-stone-200/80 text-center space-y-2">
+            <span className="text-xs uppercase tracking-widest text-stone-400 font-mono">
+              PLUGD DIGITAL PLAYBOOK EDITION
+            </span>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight">
+              {course.title}
+            </h2>
+            <p className="text-xs text-stone-500 font-serif italic">
+              First Edition · {totalPages} Pages · Published by Plugd Systems Research
             </p>
           </div>
         )}
 
-        {/* Completion & Next Lesson Section */}
-        <div className="mt-14 border-t border-[#e7e5e4] pt-10 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <button
-            type="button"
-            onClick={handleMarkComplete}
-            disabled={isCompleted}
-            className={`flex items-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-bold shadow-xs transition-all ${
-              isCompleted
-                ? "bg-emerald-600 text-white cursor-default"
-                : "bg-[#1c1917] text-white hover:bg-neutral-800 hover:scale-[1.02]"
-            }`}
-          >
-            <CheckCircle2 className="h-4 w-4" />
-            <span>{isCompleted ? "Completed" : "Mark as Completed"}</span>
-          </button>
-
-          <div className="flex items-center gap-3">
-            {previousLesson && (
-              <Link
-                href={`/learn/${course.slug}/${previousLesson.lesson.id}?format=written`}
-                className="flex items-center gap-1.5 rounded-2xl border border-[#e7e5e4] bg-white px-4 py-3 text-xs sm:text-sm font-semibold text-[#57534e] hover:border-[#1c1917] hover:text-[#1c1917] transition-colors shadow-xs"
-              >
-                <ChevronLeft className="h-4 w-4" />
-                <span>Prev Lesson</span>
-              </Link>
-            )}
-
-            {nextLesson ? (
-              <Link
-                href={`/learn/${course.slug}/${nextLesson.lesson.id}?format=written`}
-                className="flex items-center gap-2 rounded-2xl bg-[#2563eb] px-5 py-3 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-[#1d4ed8] transition-all hover:scale-[1.02]"
-              >
-                <span>Continue to {nextLesson.lesson.number}</span>
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            ) : (
-              <Link
-                href={getPlaybookOverviewUrl(course.slug)}
-                className="flex items-center gap-2 rounded-2xl bg-white border border-[#e7e5e4] px-5 py-3 text-xs sm:text-sm font-bold text-[#1c1917] shadow-xs hover:border-[#1c1917]"
-              >
-                <span>Back to Playbook</span>
-              </Link>
-            )}
+        {/* Chapter Header */}
+        <div className="space-y-3 mb-8">
+          <div className="flex items-center justify-between text-xs text-stone-500 font-mono">
+            <span className="uppercase tracking-wider">
+              Part {currentChapterInfo.partIndex} · {module.title}
+            </span>
+            <span className="px-2 py-0.5 rounded-full border border-stone-200 bg-white/50 text-[11px]">
+              pp. {currentChapterInfo.pageRange.startPage} – {currentChapterInfo.pageRange.endPage} of {totalPages}
+            </span>
           </div>
+
+          <h1 className="font-serif text-2xl sm:text-4xl font-bold leading-tight tracking-tight">
+            Chapter {currentChapterInfo.index + 1}: {lesson.title}
+          </h1>
+
+          {learningObjective && (
+            <p className="font-serif italic text-sm sm:text-base text-stone-600 border-l-2 border-stone-400 pl-4 py-1">
+              {learningObjective}
+            </p>
+          )}
         </div>
+
+        {/* Chapter Body (Rendered as Book Pages) */}
+        <article className={`${fontClasses} ${fontSizeClasses} space-y-6 pt-2`}>
+          {writtenContent ? (
+            <div
+              className="prose prose-stone max-w-none text-inherit leading-relaxed"
+              dangerouslySetInnerHTML={{
+                __html: formatBookMarkdown(writtenContent),
+              }}
+            />
+          ) : (
+            <div className="space-y-4">
+              <p className="first-letter:text-5xl first-letter:font-serif first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:leading-none">
+                {lesson.summary || "This chapter delivers foundational operational frameworks and strategic directives."}
+              </p>
+            </div>
+          )}
+        </article>
+
+        {/* Core Directives / Key Takeaway Box */}
+        {coreTakeaway && (
+          <div className={`mt-12 p-6 rounded-xl border ${cardThemeClasses} space-y-2 shadow-2xs`}>
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-500">
+              <Sparkles className="h-3.5 w-3.5 text-amber-500" />
+              <span>Chapter Action Directive</span>
+            </div>
+            <p className="font-serif text-sm sm:text-base leading-relaxed font-medium">
+              {coreTakeaway}
+            </p>
+          </div>
+        )}
+
+        {/* Chapter Navigation Footer */}
+        <div className="mt-14 pt-8 border-t border-stone-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+          {previousLesson ? (
+            <button
+              onClick={handlePrevious}
+              className="w-full sm:w-auto flex items-center gap-2 px-4 py-2.5 rounded-lg border border-stone-200 bg-white hover:bg-stone-50 text-xs font-medium text-stone-800 transition-colors shadow-2xs cursor-pointer"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              <div className="text-left">
+                <span className="text-[10px] text-stone-400 block">Previous Chapter</span>
+                <span className="font-serif truncate max-w-[180px] block">{previousLesson.lesson.title}</span>
+              </div>
+            </button>
+          ) : (
+            <div />
+          )}
+
+          <div className="text-center text-xs text-stone-400 font-mono">
+            Page {currentChapterInfo.pageRange.endPage} of {totalPages}
+          </div>
+
+          {nextLesson ? (
+            <button
+              onClick={handleNext}
+              className="w-full sm:w-auto flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#1c1917] hover:bg-stone-800 text-white text-xs font-medium transition-colors shadow-xs cursor-pointer"
+            >
+              <div className="text-right">
+                <span className="text-[10px] text-stone-400 block">Next Chapter</span>
+                <span className="font-serif truncate max-w-[180px] block">{nextLesson.lesson.title}</span>
+              </div>
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          ) : (
+            <Link
+              href={`/${course.slug}`}
+              className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-medium transition-colors shadow-xs flex items-center justify-center gap-2"
+            >
+              <CheckCircle2 className="h-4 w-4" />
+              <span>Complete Playbook</span>
+            </Link>
+          )}
+        </div>
+
       </main>
     </div>
   );
+}
+
+/**
+ * Converts markdown-style headings, bolding, lists, and tables into book typography
+ */
+function formatBookMarkdown(content: string): string {
+  if (!content) return "";
+
+  let html = content
+    // Headings
+    .replace(/^### (.*$)/gim, '<h3 class="font-serif font-bold text-lg text-stone-900 mt-6 mb-2 tracking-tight">$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2 class="font-serif font-bold text-xl text-stone-900 mt-8 mb-3 border-b border-stone-200/60 pb-1.5 tracking-tight">$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1 class="font-serif font-bold text-2xl text-stone-900 mt-10 mb-4 tracking-tight">$1</h1>')
+    // Bold / italic
+    .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-stone-900">$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
+    // Blockquotes / Zero-to-One principles
+    .replace(/^\> (.*$)/gim, '<blockquote class="border-l-2 border-stone-800 pl-4 py-1.5 my-4 italic text-stone-700 bg-stone-50/50 rounded-r">$1</blockquote>')
+    // Bullet points
+    .replace(/^\- (.*$)/gim, '<li class="ml-4 list-disc text-stone-700">$1</li>')
+    // Line breaks & paragraphs
+    .replace(/\n\n/g, '</p><p class="my-4 text-stone-800 leading-relaxed font-serif">');
+
+  return `<p class="my-4 text-stone-800 leading-relaxed font-serif first-letter:text-4xl first-letter:font-serif first-letter:font-bold first-letter:float-left first-letter:mr-2.5 first-letter:leading-none">${html}</p>`;
 }

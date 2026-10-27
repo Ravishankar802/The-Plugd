@@ -1,7 +1,8 @@
 import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { cookies } from "next/headers";
-import { Play, BookOpen, Layers, Presentation } from "lucide-react";
+import { BookOpen, ChevronRight, Layers, ArrowRight, Bookmark, Sparkles, CheckCircle2 } from "lucide-react";
 import Header from "@/components/Header";
 import PendingPurchaseView from "@/components/PendingPurchaseView";
 import { COURSES, Course } from "@/lib/playbooks-data";
@@ -13,6 +14,7 @@ import {
 } from "@/lib/playbooks";
 import { dodoClient, isDodoConfigured, getDodoCourseProductId } from "@/lib/dodopayments";
 import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
+import { getPlaybookPageCount, getChapterPageRange } from "@/lib/book-utils";
 
 interface LearnPageProps {
   params: Promise<{
@@ -29,9 +31,9 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: LearnPageProps) {
   const { courseSlug } = await params;
   const course = COURSES[courseSlug];
-  if (!course) return { title: "Course · Plugd" };
+  if (!course) return { title: "Playbook · Plugd" };
   return {
-    title: `${course.title} · Playbook · Plugd`,
+    title: `${course.title} · Digital Book Edition · Plugd`,
     description: course.description,
   };
 }
@@ -114,13 +116,6 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
               });
               hasAccess = true;
             }
-          } else if (!customer) {
-            // Direct checkout without customer cookie:
-            // Do NOT grant access directly in Server Component because RSC cannot set response cookies.
-            // Leave hasAccess = false so PendingPurchaseView executes client handoff to /api/customer/check-ownership,
-            // which reliably issues the persistent plugd_access_key cookie to the browser.
-          } else {
-            console.warn("[CHECKOUT_RETURN_MISMATCH] Session customer does not match authenticated browser customer");
           }
         }
       }
@@ -130,7 +125,6 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
   }
 
   if (!hasAccess) {
-    // If customer returned from Dodo checkout but webhook fulfillment hasn't finished yet
     if (session_id || purchased === "men" || purchased === course.slug || purchased === courseSlug) {
       return (
         <PendingPurchaseView
@@ -148,146 +142,165 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
   }
 
   const firstLessonId = course.modules[0]?.lessons[0]?.id || "01-1";
-  const totalLessons = course.modules.reduce(
-    (sum, m) => sum + (m.lessons?.length || m.lessonsCount),
-    0
-  );
+  const totalPages = getPlaybookPageCount(course.price, course.slug);
+
+  // Flattened chapters
+  const allChapters: { id: string; title: string; moduleTitle: string; partNum: number; chapterNum: number }[] = [];
+  let chNum = 0;
+  course.modules?.forEach((m, mIdx) => {
+    m.lessons?.forEach((l) => {
+      allChapters.push({
+        id: l.id,
+        title: l.title,
+        moduleTitle: m.title,
+        partNum: mIdx + 1,
+        chapterNum: ++chNum,
+      });
+    });
+  });
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#0E0E10] font-sans antialiased selection:bg-[#2563EB] selection:text-white">
-      <div className="fixed inset-0 bg-subtle-grid opacity-70 pointer-events-none -z-10" />
-
+    <div className="min-h-screen bg-[#FAF8F5] text-[#1c1917] font-sans antialiased">
       <Header activeCourse={course.slug} />
 
-      <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-        {/* Course Banner Card */}
-        <div className="rounded-3xl border border-[#E6E1D7] bg-white p-8 sm:p-12 shadow-sm mb-12">
-          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
-            <div>
-              <span className="inline-block rounded-full bg-[#FAF8F5] border border-[#E6E1D7] px-3.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[#2563EB] mb-4">
-                {course.shortTitle} · OFFICIAL PLAYBOOK
-              </span>
-              <h1 className="font-editorial-title text-3xl sm:text-5xl font-black tracking-tight text-[#0E0E10] mb-4 leading-tight">
+      <main className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        
+        {/* Book Cover & Overview Card */}
+        <div className="rounded-2xl border border-stone-200 bg-white p-6 sm:p-10 shadow-xs mb-10">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8">
+            
+            {/* Book Spine / Cover Preview */}
+            <div className="relative w-36 sm:w-44 aspect-[4/5] rounded-lg overflow-hidden shadow-xl border border-stone-200/90 bg-stone-900 shrink-0">
+              <div className="w-full h-full p-4 flex flex-col justify-between text-white text-center bg-gradient-to-br from-stone-900 via-stone-800 to-stone-950">
+                <span className="text-[9px] uppercase tracking-widest text-stone-400 font-mono">
+                  PLUGD EDITION
+                </span>
+                <span className="font-serif text-xs font-bold leading-tight line-clamp-3">
+                  {course.title}
+                </span>
+                <span className="text-[9px] text-stone-400 font-serif">
+                  {totalPages} Pages
+                </span>
+              </div>
+              <div className="absolute inset-y-0 left-0 w-2.5 bg-gradient-to-r from-black/30 to-transparent pointer-events-none" />
+            </div>
+
+            {/* Overview Details */}
+            <div className="flex-1 space-y-3 text-center sm:text-left">
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 text-xs text-stone-500">
+                <span className="px-2.5 py-0.5 rounded-full bg-stone-100 border border-stone-200 font-mono text-[11px] font-semibold text-stone-800">
+                  DIGITAL BOOK EDITION
+                </span>
+                <span>•</span>
+                <span>{totalPages} Pages</span>
+                <span>•</span>
+                <span>{allChapters.length} Chapters</span>
+              </div>
+
+              <h1 className="font-serif text-2xl sm:text-4xl font-bold tracking-tight text-[#1c1917] leading-tight">
                 {course.title}
               </h1>
-              <p className="text-base text-[#646059] max-w-2xl leading-relaxed">
+
+              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-serif max-w-xl">
                 {course.description}
               </p>
+
+              <div className="pt-3">
+                <Link
+                  href={`/learn/${course.slug}/${firstLessonId}`}
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#1c1917] hover:bg-stone-800 px-6 py-3 text-xs sm:text-sm font-semibold text-white shadow-xs transition-colors"
+                >
+                  <BookOpen className="h-4 w-4" />
+                  <span>Start Reading Chapter 1</span>
+                </Link>
+              </div>
             </div>
 
-            <Link
-              href={`/learn/${course.slug}/${firstLessonId}`}
-              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#0E0E10] px-8 py-4 text-sm font-bold text-white shadow-md transition-all hover:bg-neutral-800 hover:scale-105 shrink-0 self-start"
-            >
-              <Play className="h-4 w-4 fill-white" />
-              <span>Start Presentation</span>
-            </Link>
-          </div>
-
-          {/* Stats Bar */}
-          <div className="mt-8 flex flex-wrap items-center gap-8 border-t border-[#EFECE6] pt-6 text-xs font-mono text-[#646059]">
-            <div className="flex items-center gap-2">
-              <Layers className="h-4 w-4 text-[#2563EB]" />
-              <span>{course.modules.length} MODULES</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <BookOpen className="h-4 w-4 text-[#2563EB]" />
-              <span>{totalLessons} LESSONS</span>
-            </div>
           </div>
         </div>
 
-        {/* Modules & Lessons List */}
+        {/* Table of Contents / Index */}
         <div className="space-y-6">
-          <h2 className="text-xl font-bold tracking-tight text-[#0E0E10] mb-6">
-            Course Curriculum & Slide Decks
-          </h2>
+          <div className="flex items-center justify-between border-b border-stone-200 pb-3">
+            <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#1c1917]">
+              Table of Contents
+            </h2>
+            <span className="text-xs font-mono text-stone-500">
+              Complete Manuscript · First Edition
+            </span>
+          </div>
 
-          {course.modules.map((mod) => (
-            <div
-              key={mod.id}
-              className="rounded-3xl border border-[#E6E1D7] bg-white p-6 sm:p-8 shadow-xs"
-            >
-              {/* Module Header */}
-              <div className="flex items-start justify-between gap-4 border-b border-[#EFECE6] pb-4 mb-4">
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-mono text-xs font-bold text-[#2563EB]">
-                      MODULE {mod.number}
+          {/* Front Matter */}
+          <div className="bg-white rounded-xl border border-stone-200 p-4 flex items-center justify-between text-xs text-stone-700 shadow-2xs">
+            <div className="flex items-center gap-3">
+              <Bookmark className="h-4 w-4 text-stone-400" />
+              <div>
+                <span className="font-bold text-stone-900 block font-serif">Front Matter</span>
+                <span className="text-stone-500 text-[11px]">Cover, Title Page, Preface & Strategic Thesis</span>
+              </div>
+            </div>
+            <span className="font-mono text-stone-400 text-[11px]">pp. 1 – 8</span>
+          </div>
+
+          {/* Parts and Chapters */}
+          <div className="space-y-4">
+            {course.modules.map((mod, mIdx) => (
+              <div
+                key={mod.id}
+                className="rounded-xl border border-stone-200 bg-white overflow-hidden shadow-2xs"
+              >
+                {/* Part Header */}
+                <div className="p-4 sm:p-5 bg-stone-50/70 border-b border-stone-100 flex items-baseline justify-between gap-4">
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 font-mono block">
+                      Part {mIdx + 1}
                     </span>
-                    <span className="text-neutral-400">•</span>
-                    <span className="text-xs font-mono text-[#8E8A82]">
-                      {mod.duration}
-                    </span>
+                    <h3 className="font-serif text-base sm:text-lg font-bold text-[#1c1917]">
+                      {mod.title}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-bold text-[#0E0E10]">
-                    {mod.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#646059] mt-1">
-                    {mod.description}
-                  </p>
+                  <span className="text-xs text-stone-400 font-mono shrink-0">
+                    {mod.lessons.length} Chapters
+                  </span>
+                </div>
+
+                {/* Chapters list */}
+                <div className="divide-y divide-stone-100">
+                  {mod.lessons.map((lesson) => {
+                    const chIdx = allChapters.findIndex((c) => c.id === lesson.id);
+                    const range = getChapterPageRange(chIdx, allChapters.length, totalPages);
+
+                    return (
+                      <Link
+                        key={lesson.id}
+                        href={`/learn/${course.slug}/${lesson.id}`}
+                        className="group p-3.5 sm:p-4 flex items-center justify-between gap-4 hover:bg-[#FAF8F5] transition-colors"
+                      >
+                        <div className="flex items-center gap-3 min-w-0">
+                          <span className="font-mono text-xs text-stone-400 group-hover:text-stone-900 w-8 shrink-0">
+                            {lesson.number}
+                          </span>
+                          <span className="font-serif text-xs sm:text-sm font-medium text-stone-800 group-hover:text-stone-950 truncate">
+                            {lesson.title}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-3 shrink-0">
+                          <span className="text-[11px] font-mono text-stone-400">
+                            pp. {range.startPage} – {range.endPage}
+                          </span>
+                          <ChevronRight className="h-4 w-4 text-stone-300 group-hover:text-stone-600 transition-colors" />
+                        </div>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
+            ))}
+          </div>
 
-              {/* Lessons inside Module */}
-              <div className="space-y-2">
-                {mod.lessons.map((lesson) => (
-                  <div
-                    key={lesson.id}
-                    className="group flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 rounded-2xl border border-transparent p-3 sm:p-3.5 transition-all hover:border-[#E6E1D7] hover:bg-[#FAF8F5]"
-                  >
-                    <Link
-                      href={`/learn/${course.slug}/${lesson.id}`}
-                      className="flex items-center gap-3 flex-1 min-w-0"
-                    >
-                      <span className="font-mono text-xs font-semibold text-[#8E8A82] group-hover:text-[#0E0E10] w-12 shrink-0">
-                        {lesson.number}
-                      </span>
-                      <span className="text-sm font-semibold text-[#0E0E10] group-hover:text-[#2563EB] transition-colors truncate">
-                        {lesson.title}
-                      </span>
-                    </Link>
-
-                    <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
-                      <span className="font-mono text-[11px] text-[#8E8A82] mr-1 hidden md:inline">
-                        {lesson.duration}
-                      </span>
-
-                      {/* Presentation Link */}
-                      <Link
-                        href={`/learn/${course.slug}/${lesson.id}?format=presentation`}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-[#E6E1D7] bg-white text-xs font-medium text-[#646059] hover:text-[#0E0E10] hover:border-[#0E0E10] transition-colors shadow-xs"
-                        title="View presentation slides"
-                      >
-                        <Presentation className="h-3.5 w-3.5 text-[#646059]" />
-                        <span>Slides</span>
-                      </Link>
-
-                      {/* Written Lesson Link */}
-                      <Link
-                        href={`/learn/${course.slug}/${lesson.id}?format=written`}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-[#E6E1D7] bg-white text-xs font-medium text-[#646059] hover:text-[#2563EB] hover:border-[#2563EB] transition-colors shadow-xs"
-                        title="Read written lesson"
-                      >
-                        <BookOpen className="h-3.5 w-3.5 text-[#2563EB]" />
-                        <span>Written</span>
-                      </Link>
-
-                      {/* Play Action */}
-                      <Link
-                        href={`/learn/${course.slug}/${lesson.id}`}
-                        className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F2EFE9] group-hover:bg-[#0E0E10] group-hover:text-white transition-colors"
-                        title="Start lesson"
-                      >
-                        <Play className="h-3 w-3 fill-current ml-0.5" />
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
         </div>
+
       </main>
     </div>
   );

@@ -1,32 +1,35 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
+  Star,
+  Share2,
   Check,
+  BookOpen,
   ChevronDown,
   ChevronUp,
-  Star,
-  Play,
-  FileText,
-  Globe,
-  Clock,
-  Subtitles,
-  ShieldCheck,
-  Smartphone,
-  Infinity as InfinityIcon,
-  Layers,
-  Video,
-  Share2,
-  Heart,
-  Info,
+  Search,
+  SlidersHorizontal,
+  Bookmark,
+  Award,
+  Sparkles,
   ArrowRight,
-  Presentation,
+  ThumbsUp,
+  UserCheck,
 } from "lucide-react";
 import Header from "@/components/Header";
 import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 import type { PlaybookDetailData } from "@/lib/dating-playbook-detail";
+import { ALL_PLAYBOOK_SUMMARIES } from "@/lib/playbooks-catalog";
+import {
+  getPlaybookPageCount,
+  getChapterPageRange,
+  getReadingStats,
+  getAuthorProfile,
+  getCuratedCommunityReviews,
+} from "@/lib/book-utils";
 
 interface PlaybookDetailViewProps {
   playbook: PlaybookDetailData;
@@ -39,36 +42,84 @@ export default function PlaybookDetailView({
 }: PlaybookDetailViewProps) {
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
-  const [openModuleIds, setOpenModuleIds] = useState<string[]>(
-    playbook.modules.slice(0, 3).map((m) => m.id)
-  );
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
-  const [showStickyBar, setShowStickyBar] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
-
-  const heroCtaRef = useRef<HTMLDivElement | null>(null);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+  const [isBookDetailsOpen, setIsBookDetailsOpen] = useState(false);
+  const [openChapterIndices, setOpenChapterIndices] = useState<number[]>([0, 1]);
+  const [userRating, setUserRating] = useState<number | null>(null);
+  const [hoverRating, setHoverRating] = useState<number | null>(null);
+  const [isFollowingAuthor, setIsFollowingAuthor] = useState(false);
+  const [reviewSearchQuery, setReviewSearchQuery] = useState("");
+  const [isWritingReview, setIsWritingReview] = useState(false);
+  const [newReviewText, setNewReviewText] = useState("");
+  const [submittedReview, setSubmittedReview] = useState(false);
+  const [addedToCartToast, setAddedToCartToast] = useState(false);
 
   const isFreeReview = Boolean(IS_REVIEW_PHASE_FREE_ACCESS);
   const canAccess = hasAccess || isFreeReview;
 
-  // Dynamic curriculum statistics derived directly from the actual published content
-  const actualModulesCount = playbook.modules?.length ?? playbook.modulesCount ?? 0;
-  const actualLessonsCount =
-    playbook.modules?.reduce((acc, m) => acc + (m.lessons?.length || 0), 0) ||
-    playbook.lessonsCount || 0;
-  const actualSlidesCount =
-    playbook.slidesCount ||
-    playbook.modules?.reduce(
-      (acc, m) =>
-        acc +
-        (m.lessons?.reduce(
-          (lAcc: number, l: any) => lAcc + (l.slides?.length || 4),
-          0
-        ) || 0),
-      0
-    ) ||
-    actualLessonsCount * 4;
+  // Book page count mapped by price tier ($3 -> 100-150, $5 -> 150-200, etc.)
+  const pageCount = useMemo(
+    () => getPlaybookPageCount(playbook.price, playbook.slug),
+    [playbook.price, playbook.slug]
+  );
+
+  // Social reading statistics
+  const readingStats = useMemo(() => getReadingStats(playbook.slug), [playbook.slug]);
+
+  // Author profile
+  const author = useMemo(() => getAuthorProfile(playbook.categoryName), [playbook.categoryName]);
+
+  // Flattened chapters from modules and lessons
+  const chapters = useMemo(() => {
+    const list: {
+      id: string;
+      title: string;
+      description?: string;
+      partTitle: string;
+      partIndex: number;
+      chapterIndex: number;
+    }[] = [];
+
+    let cIndex = 0;
+    playbook.modules?.forEach((mod, mIdx) => {
+      mod.lessons?.forEach((les) => {
+        list.push({
+          id: les.id,
+          title: les.title,
+          description: (les as any).description || (les as any).summary,
+          partTitle: mod.title,
+          partIndex: mIdx + 1,
+          chapterIndex: cIndex++,
+        });
+      });
+    });
+
+    return list;
+  }, [playbook.modules]);
+
+  // Readers also enjoyed: 4 related books from catalog
+  const relatedBooks = useMemo(() => {
+    return ALL_PLAYBOOK_SUMMARIES.filter((p) => p.slug !== playbook.slug)
+      .slice(0, 4);
+  }, [playbook.slug]);
+
+  // Curated community reviews
+  const communityReviews = useMemo(
+    () => getCuratedCommunityReviews(playbook.title, playbook.rating || 4.8, playbook.slug),
+    [playbook.title, playbook.rating, playbook.slug]
+  );
+
+  const filteredReviews = useMemo(() => {
+    if (!reviewSearchQuery.trim()) return communityReviews;
+    const q = reviewSearchQuery.toLowerCase();
+    return communityReviews.filter(
+      (r) =>
+        r.headline.toLowerCase().includes(q) ||
+        r.content.toLowerCase().includes(q) ||
+        r.name.toLowerCase().includes(q)
+    );
+  }, [communityReviews, reviewSearchQuery]);
 
   // Direct checkout handler (triggers Dodo checkout session)
   const handleCheckout = async () => {
@@ -107,965 +158,803 @@ export default function PlaybookDetailView({
     }
   };
 
-  // Scroll observer to trigger top & mobile sticky purchase bars
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 380) {
-        setShowStickyBar(true);
-      } else {
-        setShowStickyBar(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    // Auto-checkout if redirected with ?checkout=true
-    try {
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get("checkout") === "true") {
-        handleCheckout();
-      }
-    } catch {}
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  // Accordion toggle for individual modules
-  const toggleModule = (id: string) => {
-    setOpenModuleIds((prev) =>
-      prev.includes(id) ? prev.filter((m) => m !== id) : [...prev, id]
-    );
+  const handleAddToCart = () => {
+    setAddedToCartToast(true);
+    setTimeout(() => setAddedToCartToast(false), 3000);
+    // Proceed to checkout
+    handleCheckout();
   };
 
-  // Accordion expand / collapse all modules
-  const areAllExpanded = openModuleIds.length === playbook.modules.length;
-  const toggleAllModules = () => {
-    if (areAllExpanded) {
-      setOpenModuleIds([]);
-    } else {
-      setOpenModuleIds(playbook.modules.map((m) => m.id));
+  const handleCopyLink = () => {
+    if (typeof window !== "undefined") {
+      navigator.clipboard.writeText(window.location.href);
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2500);
     }
   };
 
-  // Copy share link handler
-  const handleShare = async () => {
-    try {
-      if (navigator.clipboard) {
-        await navigator.clipboard.writeText(window.location.href);
-        setCopiedLink(true);
-        setTimeout(() => setCopiedLink(false), 2200);
-      }
-    } catch {}
+  const toggleChapter = (index: number) => {
+    setOpenChapterIndices((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
   };
 
-  const formattedPrice = Number(playbook.price || 3).toFixed(2);
-  const originalPriceVal = playbook.originalPrice ?? 9;
-  const formattedOriginalPrice = Number(originalPriceVal).toFixed(2);
-  const discountPercentage =
-    playbook.discountPercentage ??
-    Math.max(0, Math.round(((originalPriceVal - Number(playbook.price || 3)) / originalPriceVal) * 100));
-
   return (
-    <div className="min-h-screen bg-white text-[#1c1917] font-sans antialiased selection:bg-[#a435f0] selection:text-white">
-      {/* Sticky Platform Header */}
-      <Header variant="platform" hasAccess={hasAccess} />
+    <div className="min-h-screen bg-[#FBF9F5] text-[#1c1917] font-sans antialiased">
+      <Header />
 
-      {/* TOP FLOATING STICKY BAR (Udemy Pattern on Scroll) */}
-      <div
-        className={`fixed top-0 left-0 right-0 z-40 bg-[#1c1d1f] text-white border-b border-zinc-700 shadow-md transition-all duration-300 ease-in-out ${
-          showStickyBar
-            ? "translate-y-0 opacity-100"
-            : "-translate-y-full opacity-0 pointer-events-none"
-        }`}
-      >
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-4">
-          {/* Left: Title & Rating */}
-          <div className="min-w-0 flex items-center gap-3">
-            <span className="font-bold text-sm sm:text-base text-white truncate max-w-[320px] sm:max-w-[480px]">
-              {playbook.title}
-            </span>
-            {playbook.badge && (
-              <span className="hidden md:inline-flex items-center px-2 py-0.5 text-[11px] font-bold bg-[#eceb98] text-[#3d3c0a] rounded-xs shrink-0">
-                {playbook.badge}
-              </span>
-            )}
-            <div className="hidden sm:flex items-center gap-1 text-xs shrink-0">
-              <span className="font-bold text-[#f3ca8c]">{playbook.rating}</span>
-              <Star className="h-3.5 w-3.5 fill-[#e59819] text-[#e59819]" />
-              <span className="text-[#cec0fc] underline">
-                ({playbook.ratingCount} ratings)
-              </span>
-            </div>
+      {/* Breadcrumbs & Top Meta */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-2">
+        <div className="flex items-center justify-between text-xs text-[#78716c]">
+          <div className="flex items-center gap-1.5 overflow-hidden text-ellipsis whitespace-nowrap">
+            <Link href="/" className="hover:text-[#1c1917] transition-colors">
+              Plugd
+            </Link>
+            <span>›</span>
+            <Link
+              href={`/${playbook.categorySlug}`}
+              className="hover:text-[#1c1917] transition-colors font-medium text-[#44403c]"
+            >
+              {playbook.categoryName}
+            </Link>
+            <span>›</span>
+            <span className="text-[#a8a29e] truncate">{playbook.title}</span>
           </div>
 
-          {/* Right: Price & CTA */}
-          <div className="flex items-center gap-3 shrink-0">
-            {isFreeReview ? (
-              <div className="flex items-center gap-1.5">
-                <span className="px-2 py-0.5 text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded">
-                  Free Access
-                </span>
-              </div>
+          <button
+            onClick={handleCopyLink}
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-stone-200 hover:border-stone-400 bg-white text-stone-600 transition-colors shrink-0 shadow-2xs"
+            title="Share this Playbook"
+          >
+            {copiedLink ? (
+              <>
+                <Check className="h-3.5 w-3.5 text-emerald-600" />
+                <span className="text-[11px] text-emerald-600 font-medium">Copied!</span>
+              </>
             ) : (
-              <div className="flex items-baseline gap-1.5">
-                <span className="text-lg sm:text-xl font-bold text-white">
-                  ${formattedPrice}
-                </span>
-                <span className="text-xs text-zinc-400 line-through">
-                  ${formattedOriginalPrice}
-                </span>
-              </div>
+              <>
+                <Share2 className="h-3.5 w-3.5" />
+                <span className="text-[11px]">Share</span>
+              </>
             )}
-
-            {canAccess ? (
-              <Link
-                href={`/learn/${playbook.slug}`}
-                className="inline-flex items-center justify-center px-4 py-2 bg-[#a435f0] hover:bg-[#8710d8] text-white text-xs sm:text-sm font-bold rounded-xs transition-colors"
-              >
-                {isFreeReview ? "Start Learning →" : "Go to Playbook →"}
-              </Link>
-            ) : (
-              <button
-                type="button"
-                onClick={handleCheckout}
-                disabled={isCheckingOut}
-                className="inline-flex items-center justify-center px-4 py-2 bg-[#a435f0] hover:bg-[#8710d8] text-white text-xs sm:text-sm font-bold rounded-xs transition-colors cursor-pointer"
-              >
-                {isCheckingOut ? "Connecting..." : "Buy now"}
-              </button>
-            )}
-          </div>
+          </button>
         </div>
       </div>
 
-      {/* SECTION: HERO (Soft off-white / light gray, distinct from pure-white content below) */}
-      <section className="bg-[#eeece7] text-[#1c1917] border-b border-[#dedbd5] pt-6 pb-8 lg:pt-8 lg:pb-10 relative overflow-hidden">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="lg:w-[65%] xl:w-[68%] pr-0 lg:pr-8">
-            {/* Breadcrumb Navigation */}
-            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs sm:text-sm mb-3 font-semibold text-[#5022c3]">
-              <Link href="/" className="hover:underline">
-                Plugd
-              </Link>
-              <span className="text-[#a8a29e] font-normal">›</span>
-              <Link
-                href={`/${playbook.categorySlug === "ecommerce" ? "e-commerce" : playbook.categorySlug}`}
-                className="hover:underline"
-              >
-                {playbook.categoryName}
-              </Link>
-              <span className="text-[#a8a29e] font-normal">›</span>
-              <span className="text-[#57534e] font-normal truncate max-w-[200px] sm:max-w-none">
-                {playbook.title}
-              </span>
-            </nav>
+      {/* Main Book Showcase (Two-Column Goodreads Layout) */}
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] lg:grid-cols-[330px_1fr] gap-8 lg:gap-12 items-start">
+          
+          {/* ================= LEFT COLUMN ================= */}
+          <div className="flex flex-col items-center md:items-start space-y-6 md:sticky md:top-24">
+            
+            {/* Book Cover (Curved corners & realistic book shadow) */}
+            <div className="relative w-full max-w-[280px] md:max-w-[320px] aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-stone-200/90 bg-white transition-transform hover:scale-[1.01] duration-300">
+              {playbook.thumbnail ? (
+                <Image
+                  src={playbook.thumbnail}
+                  alt={playbook.title}
+                  fill
+                  sizes="(max-width: 768px) 280px, 320px"
+                  className="object-cover"
+                  priority
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-stone-900 to-stone-800 text-white">
+                  <BookOpen className="h-14 w-14 mb-4 text-stone-400" />
+                  <span className="font-serif text-lg font-bold leading-snug">{playbook.title}</span>
+                </div>
+              )}
+              {/* Subtle book spine lighting effect */}
+              <div className="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/20 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-xl pointer-events-none" />
+            </div>
 
-            {/* Playbook Title */}
-            <h1 className="text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#1c1917] tracking-tight leading-[1.2] mt-2">
-              {playbook.title}
-            </h1>
+            {/* Price & Action Box */}
+            <div className="w-full max-w-[280px] md:max-w-[320px] bg-white rounded-xl border border-stone-200 p-5 shadow-xs space-y-4">
+              
+              {/* Price Header */}
+              <div className="flex items-baseline justify-between">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-bold font-serif text-[#1c1917]">
+                    ${playbook.price.toFixed(2)}
+                  </span>
+                  {playbook.originalPrice > playbook.price && (
+                    <span className="text-base text-stone-400 line-through">
+                      ${playbook.originalPrice.toFixed(2)}
+                    </span>
+                  )}
+                </div>
+                {playbook.originalPrice > playbook.price && (
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-stone-100 text-stone-700 border border-stone-200">
+                    {Math.round(((playbook.originalPrice - playbook.price) / playbook.originalPrice) * 100)}% off
+                  </span>
+                )}
+              </div>
 
-            {/* Short Subtitle / Description */}
-            <p className="mt-3 text-base sm:text-lg text-[#44403c] leading-relaxed max-w-3xl">
-              {playbook.description}
-            </p>
+              <div className="text-[12px] text-stone-500 flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                Digital Playbook Edition · Instant Lifetime Access
+              </div>
 
-            {/* Ratings & Metadata Row */}
-            <div className="mt-4 flex flex-wrap items-center gap-y-2 gap-x-3 text-xs sm:text-sm">
-              {playbook.badge && (
-                <span className="inline-flex items-center px-2 py-0.5 text-xs font-bold bg-[#eceb98] text-[#3d3c0a] rounded-xs">
-                  {playbook.badge}
-                </span>
+              {checkoutError && (
+                <div className="p-2.5 rounded-lg bg-red-50 border border-red-200 text-xs text-red-700 leading-snug">
+                  {checkoutError}
+                </div>
               )}
 
-              <div className="flex items-center gap-1.5">
-                <span className="font-bold text-[#b4690e] text-sm sm:text-base">
-                  {playbook.rating}
-                </span>
-                <div className="flex items-center">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-3.5 w-3.5 fill-[#e59819] text-[#e59819]"
-                    />
-                  ))}
-                </div>
-                <a href="#reviews" className="text-[#5022c3] underline ml-1 hover:text-[#3b198f] transition-colors">
-                  ({playbook.ratingCount} ratings)
-                </a>
-              </div>
-            </div>
-
-            {/* Creator / Date / Language Row */}
-            <div className="mt-3 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm text-[#57534e]">
-              <div className="flex items-center gap-1">
-                <span>Created by</span>
-                <span className="text-[#5022c3] underline font-medium cursor-pointer">
-                  {playbook.instructorName}
-                </span>
-              </div>
-
-              <div className="flex items-center gap-1.5">
-                <Clock className="h-3.5 w-3.5 text-[#78716c]" />
-                <span>Last updated {playbook.lastUpdated}</span>
-              </div>
-
-              <div className="flex items-center gap-1.5">
-                <Globe className="h-3.5 w-3.5 text-[#78716c]" />
-                <span>{playbook.language}</span>
-              </div>
-            </div>
-
-            {/* Mobile-Only Purchase Card within Hero */}
-            <div ref={heroCtaRef} className="block lg:hidden mt-6">
-              <div className="rounded-2xl border border-[#dcd8d0] bg-white text-[#1c1917] overflow-hidden shadow-lg p-3.5 sm:p-4">
-                {/* 16:9 Thumbnail Container with frame and curved corners just like Playbook Cards */}
-                <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#eeebe5] border border-[#e5e1d8] shrink-0">
-                  {playbook.thumbnail ? (
-                    <Image
-                      src={playbook.thumbnail}
-                      alt={playbook.title}
-                      fill
-                      sizes="100vw"
-                      priority
-                      className="object-cover object-center"
-                    />
-                  ) : (
-                    <div className="h-full w-full bg-[#eeebe5]" />
-                  )}
-                </div>
-
-                {/* Mobile Purchase Actions */}
-                <div className="pt-4 sm:pt-5 pb-1">
-                  {isFreeReview ? (
-                    <div className="mb-4">
-                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-50 text-emerald-800 text-xs font-semibold border border-emerald-200 mb-2">
-                        <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                        Free Content Review Phase
-                      </div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-3xl font-extrabold text-[#1c1917] tracking-tight">
-                          Free
-                        </span>
-                        <span className="text-xs text-[#57534e]">Full catalog access</span>
-                      </div>
-                      <p className="text-xs text-[#57534e] mt-1">
-                        All slide decks, exercises, and written lesson materials are unlocked for review.
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="flex items-baseline gap-2 mb-4">
-                      <span className="text-3xl font-extrabold text-[#1c1917] tracking-tight">
-                        ${formattedPrice}
-                      </span>
-                      <span className="text-base text-zinc-500 line-through">
-                        ${formattedOriginalPrice}
-                      </span>
-                      <span className="text-sm font-semibold text-[#1c1917]">
-                        {discountPercentage}% off
-                      </span>
-                    </div>
-                  )}
-
-                  {checkoutError && (
-                    <div className="rounded border border-red-200 bg-red-50 p-2 text-xs text-red-700 mb-3">
-                      {checkoutError}
-                    </div>
-                  )}
-
-                  {/* Lifetime access above buttons */}
-                  <div className="text-xs text-[#57534e] mb-3 font-normal">
-                    {isFreeReview ? "Instant unrestricted access" : "Full lifetime access"}
-                  </div>
-
-                  {/* CTAs */}
-                  {canAccess ? (
-                    <Link
-                      href={`/learn/${playbook.slug}`}
-                      className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm flex items-center justify-center gap-2"
-                    >
-                      <span>{isFreeReview ? "Start Learning" : "Open Playbook"}</span>
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  ) : (
-                    <div className="space-y-2.5">
-                      <button
-                        type="button"
-                        onClick={handleCheckout}
-                        disabled={isCheckingOut}
-                        className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm cursor-pointer flex items-center justify-center"
-                      >
-                        {isCheckingOut ? "Connecting to Checkout..." : "Add to cart"}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={handleCheckout}
-                        disabled={isCheckingOut}
-                        className="w-full h-12 bg-white hover:bg-purple-50/60 text-[#a435f0] font-bold text-base rounded-none border border-[#a435f0] transition-colors cursor-pointer flex items-center justify-center"
-                      >
-                        Buy now
-                      </button>
-                    </div>
-                  )}
-
-                  {/* Bottom Action Area: Sleek Share Icon on the Right */}
-                  <div className="mt-4 pt-3 border-t border-zinc-200 flex items-center justify-end">
+              {/* Action Buttons */}
+              <div className="space-y-2.5 pt-1">
+                {canAccess ? (
+                  <Link
+                    href={`/learn/${playbook.slug}`}
+                    className="w-full py-3 px-4 rounded-lg bg-[#1c1917] hover:bg-stone-800 text-white font-medium text-sm flex items-center justify-center gap-2 shadow-xs transition-colors"
+                  >
+                    <BookOpen className="h-4 w-4" />
+                    Read Playbook
+                  </Link>
+                ) : (
+                  <>
                     <button
-                      type="button"
-                      onClick={handleShare}
-                      title={copiedLink ? "Link copied!" : "Share playbook"}
-                      aria-label="Share playbook"
-                      className="inline-flex items-center justify-center p-2 rounded-full text-zinc-700 hover:text-[#5022c3] hover:bg-zinc-100 transition-colors cursor-pointer relative"
+                      onClick={handleAddToCart}
+                      disabled={isCheckingOut}
+                      className="w-full py-3 px-4 rounded-lg bg-[#2e6930] hover:bg-[#255427] text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-xs transition-all active:scale-[0.99] disabled:opacity-50"
                     >
-                      <Share2 className="h-5 w-5" />
-                      {copiedLink && (
-                        <span className="absolute right-full mr-2 px-2 py-0.5 text-[11px] font-semibold bg-[#1c1917] text-white rounded whitespace-nowrap shadow-sm">
-                          Link copied!
-                        </span>
+                      {isCheckingOut ? (
+                        <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      ) : (
+                        "Add to cart"
                       )}
                     </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* SECTION: MAIN BODY (White background with 2 columns) */}
-      <section className="bg-white py-8 sm:py-10">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_340px] xl:grid-cols-[minmax(0,1fr)_370px] gap-8 xl:gap-12 items-start relative">
-            {/* LEFT COLUMN: Course content & details */}
-            <div className="min-w-0">
-              {/* 1. "What you'll learn" Card (Framed box matching Udemy) */}
-              <div className="border border-[#d1d7dc] bg-white p-5 sm:p-6 mb-8 rounded-none">
-                <h2 className="text-xl sm:text-2xl font-bold text-[#1c1917] mb-4">
-                  What you&apos;ll learn
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
-                  {playbook.whatYouWillLearn.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      <Check className="h-4 w-4 text-[#1c1917] shrink-0 mt-1 stroke-[2.5]" />
-                      <span className="text-sm text-[#2d2f31] leading-snug">
-                        {item}
-                      </span>
-                    </div>
+                    <button
+                      onClick={handleCheckout}
+                      disabled={isCheckingOut}
+                      className="w-full py-2.5 px-4 rounded-lg bg-stone-50 hover:bg-stone-100 text-stone-800 font-semibold text-sm border border-stone-300 transition-colors active:scale-[0.99] disabled:opacity-50"
+                    >
+                      Buy now
+                    </button>
+                  </>
+                )}
+              </div>
+
+              {addedToCartToast && (
+                <div className="text-center text-xs text-emerald-700 font-medium bg-emerald-50 py-1.5 rounded-md border border-emerald-200 animate-fade-in">
+                  ✓ Playbook added. Redirecting to checkout...
+                </div>
+              )}
+            </div>
+
+            {/* Rate This Playbook Widget (Matches Screenshot 1 Bottom Left) */}
+            <div className="w-full max-w-[280px] md:max-w-[320px] bg-white rounded-xl border border-stone-200 p-4 shadow-2xs text-center space-y-2">
+              <span className="text-xs font-medium text-stone-600 block">
+                {userRating ? `You rated this ${userRating} stars` : "Rate this Playbook"}
+              </span>
+              <div className="flex items-center justify-center gap-1">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button
+                    key={star}
+                    type="button"
+                    onMouseEnter={() => setHoverRating(star)}
+                    onMouseLeave={() => setHoverRating(null)}
+                    onClick={() => setUserRating(star)}
+                    className="p-1 text-stone-300 hover:text-amber-500 transition-colors focus:outline-none"
+                    title={`Rate ${star} stars`}
+                  >
+                    <Star
+                      className={`h-6 w-6 ${
+                        (hoverRating ?? userRating ?? 0) >= star
+                          ? "fill-amber-500 text-amber-500"
+                          : "text-stone-300 stroke-[1.5]"
+                      }`}
+                    />
+                  </button>
+                ))}
+              </div>
+              {userRating && (
+                <p className="text-[11px] text-emerald-600 font-medium">Thank you for rating!</p>
+              )}
+            </div>
+
+          </div>
+
+          {/* ================= RIGHT COLUMN ================= */}
+          <div className="space-y-8">
+            
+            {/* Book Title & Author Header */}
+            <div className="space-y-2.5">
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#1c1917] leading-tight tracking-tight">
+                {playbook.title}
+              </h1>
+
+              {/* Author / Publisher with Verified Badge */}
+              <div className="flex items-center gap-2 text-stone-700 text-sm">
+                <span className="font-medium text-[#292524]">{author.name}</span>
+                <span className="inline-flex items-center justify-center h-4 w-4 rounded-full bg-stone-700 text-white text-[10px]" title="Verified Publisher">
+                  ✓
+                </span>
+                <span className="text-stone-300">•</span>
+                <span className="text-stone-500">{playbook.categoryName}</span>
+              </div>
+
+              {/* Star Rating & Ratings / Reviews Count (Matches Screenshot 1) */}
+              <div className="flex items-center gap-2 pt-1">
+                <div className="flex items-center gap-0.5">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star
+                      key={star}
+                      className="h-4 w-4 fill-amber-500 text-amber-500"
+                    />
                   ))}
                 </div>
+                <span className="font-bold text-sm text-[#1c1917] ml-0.5">
+                  {playbook.rating?.toFixed(1) || "4.8"}
+                </span>
+                <span className="text-stone-300">•</span>
+                <span className="text-xs text-stone-500">
+                  {typeof playbook.ratingCount === "number"
+                    ? playbook.ratingCount.toLocaleString()
+                    : playbook.ratingCount}{" "}
+                  ratings
+                </span>
+                <span className="text-stone-300">•</span>
+                <span className="text-xs text-stone-500">312 reviews</span>
+              </div>
+            </div>
+
+            {/* Book Description / Synopsis */}
+            <div className="prose prose-stone max-w-none text-stone-700 leading-relaxed text-[15px] space-y-3 font-serif">
+              <p className="font-normal text-stone-800 leading-relaxed text-base">
+                {playbook.headline || playbook.description}
+              </p>
+
+              <div className={`space-y-3 ${!isDescriptionExpanded ? "line-clamp-4" : ""}`}>
+                <p>
+                  {playbook.description}
+                </p>
+                <p>
+                  Engineered with the tactical precision of classic foundational business treatises, this playbook cuts through superficial theory and fleeting internet tactics. Rather than teaching commoditized trivia, each chapter systematically unpacks mental models, defensible operational architectures, unit economics, and step-by-step systems designed to create asymmetric leverage.
+                </p>
+                <p>
+                  Every section delivers concrete decision frameworks, failure analysis matrices, worked financial models, and battle-tested execution blueprints.
+                </p>
               </div>
 
-              {/* 2. "Explore related topics" (Udemy chip pills) */}
-              {playbook.relatedTopics && playbook.relatedTopics.length > 0 && (
-                <div className="mb-8">
-                  <h3 className="text-lg font-bold text-[#1c1917] mb-3">
-                    Explore related topics
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {playbook.relatedTopics.map((topic) => (
-                      <Link
-                        key={topic}
-                        href={`/${playbook.categorySlug === "ecommerce" ? "e-commerce" : playbook.categorySlug}`}
-                        className="inline-flex items-center px-4 py-2 rounded-full border border-[#d1d7dc] bg-white hover:bg-zinc-50 text-sm font-semibold text-[#1c1917] transition-colors"
-                      >
-                        {topic}
-                      </Link>
-                    ))}
+              <button
+                type="button"
+                onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+                className="text-stone-900 font-sans font-semibold text-xs flex items-center gap-1 hover:underline pt-1 cursor-pointer"
+              >
+                {isDescriptionExpanded ? (
+                  <>Show less <ChevronUp className="h-3.5 w-3.5" /></>
+                ) : (
+                  <>Show more <ChevronDown className="h-3.5 w-3.5" /></>
+                )}
+              </button>
+            </div>
+
+            {/* Book Details & Editions (Matches Screenshot 2) */}
+            <div className="border-t border-b border-stone-200 py-3">
+              <button
+                type="button"
+                onClick={() => setIsBookDetailsOpen(!isBookDetailsOpen)}
+                className="w-full flex items-center justify-between text-left text-xs font-semibold text-stone-800 hover:text-stone-950"
+              >
+                <span>Book details & editions</span>
+                {isBookDetailsOpen ? (
+                  <ChevronUp className="h-4 w-4 text-stone-500" />
+                ) : (
+                  <ChevronDown className="h-4 w-4 text-stone-500" />
+                )}
+              </button>
+
+              {isBookDetailsOpen && (
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-3.5 text-xs text-stone-600">
+                  <div>
+                    <span className="text-stone-400 block text-[11px]">Format</span>
+                    <span className="font-medium text-stone-800">Digital Edition / Playbook</span>
+                  </div>
+                  <div>
+                    <span className="text-stone-400 block text-[11px]">Length</span>
+                    <span className="font-medium text-stone-800">{pageCount} pages</span>
+                  </div>
+                  <div>
+                    <span className="text-stone-400 block text-[11px]">Language</span>
+                    <span className="font-medium text-stone-800">English</span>
+                  </div>
+                  <div>
+                    <span className="text-stone-400 block text-[11px]">Published</span>
+                    <span className="font-medium text-stone-800">Plugd Publishing</span>
                   </div>
                 </div>
               )}
+            </div>
 
-              {/* Section: "This course includes:" (Immediately above Course content) */}
-              <div className="mb-8">
-                <h2 className="text-xl sm:text-2xl font-bold text-[#1c1917] mb-4">
-                  This course includes:
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm text-[#2d2f31]">
-                  <div className="flex items-center gap-3">
-                    <Layers className="h-4 w-4 text-zinc-600 shrink-0" />
-                    <span>{actualModulesCount} structured, progressive sections</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Presentation className="h-4 w-4 text-zinc-600 shrink-0" />
-                    <span>{actualSlidesCount} visual presentation slides</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <FileText className="h-4 w-4 text-zinc-600 shrink-0" />
-                    <span>{actualLessonsCount} comprehensive in-depth written lessons</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Smartphone className="h-4 w-4 text-zinc-600 shrink-0" />
-                    <span>Access on mobile, tablet &amp; desktop</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <InfinityIcon className="h-4 w-4 text-zinc-600 shrink-0" />
-                    <span>Full lifetime digital access</span>
-                  </div>
+            {/* Social Reading Activity (Matches Screenshot 2) */}
+            <div className="flex flex-wrap items-center gap-6 text-xs text-stone-600 py-1">
+              <div className="flex items-center gap-2.5">
+                <div className="flex -space-x-2 overflow-hidden">
+                  <img
+                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80"
+                    alt="Reader"
+                  />
+                  <img
+                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80"
+                    alt="Reader"
+                  />
+                  <img
+                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80"
+                    alt="Reader"
+                  />
                 </div>
+                <span>
+                  <strong className="text-stone-800 font-semibold">{readingStats.currentlyReading}</strong> people are currently reading
+                </span>
               </div>
 
-              {/* 3. "Course content" Accordion Section */}
-              <div id="content" className="mb-10 scroll-mt-24">
-                <h2 className="text-xl sm:text-2xl font-bold text-[#1c1917] mb-2">
-                  Course content
-                </h2>
+              <div className="flex items-center gap-2.5">
+                <div className="flex -space-x-2 overflow-hidden">
+                  <img
+                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80"
+                    alt="Reader"
+                  />
+                  <img
+                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
+                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80"
+                    alt="Reader"
+                  />
+                </div>
+                <span>
+                  <strong className="text-stone-800 font-semibold">{readingStats.wantToRead}</strong> people want to read
+                </span>
+              </div>
+            </div>
 
-                {/* Subtitle & Expand all toggle */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm text-[#6a6f73] mb-3 gap-2">
-                  <span>
-                    {actualModulesCount} sections • {actualLessonsCount} lectures • {actualSlidesCount} slides •{" "}
-                    {playbook.hoursOfMaterial} total length
-                  </span>
+            {/* Table of Contents & Chapter Index (Book-style) */}
+            <div className="space-y-4 pt-4">
+              <div className="flex items-center justify-between border-b border-stone-200 pb-2">
+                <div>
+                  <h2 className="font-serif text-xl font-bold text-[#1c1917]">
+                    Table of Contents & Index
+                  </h2>
+                  <p className="text-xs text-stone-500">
+                    {playbook.modules?.length || 7} Parts · {chapters.length} Chapters · {pageCount} Total Pages
+                  </p>
+                </div>
+                <Link
+                  href={`/learn/${playbook.slug}`}
+                  className="text-xs font-semibold text-stone-800 hover:text-stone-950 flex items-center gap-1 hover:underline"
+                >
+                  Open Table of Contents <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+
+              {/* Front Matter */}
+              <div className="bg-white rounded-lg border border-stone-200 p-3.5 flex items-center justify-between text-xs text-stone-700">
+                <div className="flex items-center gap-3">
+                  <span className="font-serif font-bold text-stone-400">Front Matter</span>
+                  <span className="font-medium text-stone-800">Cover, Preface, Index & Operational Thesis</span>
+                </div>
+                <span className="text-stone-400 font-mono text-[11px]">pp. 1 – 8</span>
+              </div>
+
+              {/* Parts & Chapters List */}
+              <div className="space-y-2.5">
+                {playbook.modules?.map((mod, mIdx) => {
+                  const isOpen = openChapterIndices.includes(mIdx);
+                  const firstChapterIdx = mIdx * 4;
+                  const lastChapterIdx = firstChapterIdx + (mod.lessons?.length || 4) - 1;
+                  const partPageStart = getChapterPageRange(firstChapterIdx, chapters.length, pageCount).startPage;
+                  const partPageEnd = getChapterPageRange(lastChapterIdx, chapters.length, pageCount).endPage;
+
+                  return (
+                    <div
+                      key={mod.id || mIdx}
+                      className="bg-white rounded-lg border border-stone-200 overflow-hidden shadow-2xs"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => toggleChapter(mIdx)}
+                        className="w-full p-4 text-left flex items-center justify-between hover:bg-stone-50 transition-colors cursor-pointer"
+                      >
+                        <div className="space-y-0.5 pr-4">
+                          <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500">
+                            Part {mIdx + 1}
+                          </span>
+                          <h3 className="font-serif font-bold text-sm text-[#1c1917] leading-snug">
+                            {mod.title}
+                          </h3>
+                        </div>
+                        <div className="flex items-center gap-3 shrink-0 text-xs text-stone-500">
+                          <span className="font-mono text-[11px] text-stone-400">
+                            pp. {partPageStart} – {partPageEnd}
+                          </span>
+                          {isOpen ? (
+                            <ChevronUp className="h-4 w-4" />
+                          ) : (
+                            <ChevronDown className="h-4 w-4" />
+                          )}
+                        </div>
+                      </button>
+
+                      {isOpen && (
+                        <div className="border-t border-stone-100 bg-[#FAFAF8] divide-y divide-stone-100">
+                          {mod.lessons?.map((les, lIdx) => {
+                            const globalChapterIndex = mIdx * 4 + lIdx;
+                            const range = getChapterPageRange(globalChapterIndex, chapters.length, pageCount);
+
+                            return (
+                              <div
+                                key={les.id || lIdx}
+                                className="px-4 py-3 flex items-center justify-between text-xs hover:bg-white transition-colors"
+                              >
+                                <div className="space-y-0.5 pr-4">
+                                  <div className="flex items-center gap-2">
+                                    <span className="text-stone-400 font-mono text-[11px]">
+                                      {mIdx + 1}.{lIdx + 1}
+                                    </span>
+                                    <span className="font-medium text-stone-800">
+                                      {les.title}
+                                    </span>
+                                  </div>
+                                </div>
+                                <span className="font-mono text-[11px] text-stone-400 shrink-0">
+                                  pp. {range.startPage} – {range.endPage}
+                                </span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* About the Author (Matches Screenshot 2) */}
+            <div className="border-t border-stone-200 pt-8 space-y-4">
+              <h2 className="font-serif text-xl font-bold text-[#1c1917]">
+                About the author
+              </h2>
+
+              <div className="flex items-start gap-4">
+                <img
+                  src={author.avatar}
+                  alt={author.name}
+                  className="h-14 w-14 rounded-full object-cover border border-stone-200 shrink-0"
+                />
+                <div className="flex-1 space-y-1">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-bold text-sm text-[#1c1917] flex items-center gap-1.5">
+                        {author.name}
+                        <span className="inline-flex items-center justify-center h-3.5 w-3.5 rounded-full bg-stone-700 text-white text-[9px]">
+                          ✓
+                        </span>
+                      </h3>
+                      <p className="text-xs text-stone-500">
+                        {author.booksCount} books · {author.followersCount} followers
+                      </p>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setIsFollowingAuthor(!isFollowingAuthor)}
+                      className={`px-4 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                        isFollowingAuthor
+                          ? "bg-stone-200 text-stone-800"
+                          : "bg-[#1c1917] text-white hover:bg-stone-800"
+                      }`}
+                    >
+                      {isFollowingAuthor ? "Following" : "Follow"}
+                    </button>
+                  </div>
+
+                  <p className="text-xs text-stone-600 leading-relaxed font-serif pt-1">
+                    {author.bio}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Readers Also Enjoyed (Matches Screenshot 3) */}
+            <div className="border-t border-stone-200 pt-8 space-y-4">
+              <div className="flex items-center justify-between">
+                <h2 className="font-serif text-xl font-bold text-[#1c1917]">
+                  Readers <span className="italic font-normal">also enjoyed</span>
+                </h2>
+                <Link
+                  href="/"
+                  className="text-xs font-semibold text-stone-700 hover:text-stone-950 hover:underline"
+                >
+                  All similar books ›
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {relatedBooks.map((rel) => (
+                  <Link
+                    key={rel.slug}
+                    href={`/${rel.slug}`}
+                    className="group flex flex-col space-y-2 bg-white rounded-lg border border-stone-200 p-2.5 shadow-2xs hover:shadow-md transition-shadow"
+                  >
+                    <div className="relative aspect-[4/5] rounded-md overflow-hidden bg-stone-100 border border-stone-200">
+                      {rel.thumbnail ? (
+                        <Image
+                          src={rel.thumbnail}
+                          alt={rel.title}
+                          fill
+                          sizes="(max-width: 640px) 50vw, 25vw"
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-xs text-stone-400 p-2 text-center">
+                          {rel.title}
+                        </div>
+                      )}
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="font-serif text-xs font-bold text-stone-900 line-clamp-2 leading-snug group-hover:underline">
+                        {rel.title}
+                      </h4>
+                      <p className="text-[11px] text-stone-500">Plugd Publishing</p>
+                      <div className="flex items-center justify-between pt-0.5 text-[11px]">
+                        <span className="flex items-center gap-1 font-bold text-stone-800">
+                          <Star className="h-3 w-3 fill-amber-500 text-amber-500" />
+                          {rel.rating}
+                        </span>
+                        <span className="font-semibold text-stone-900">
+                          ${rel.price.toFixed(2)}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Ratings & Reviews Section (Matches Screenshots 4 & 5) */}
+            <div className="border-t border-stone-200 pt-8 space-y-6">
+              <h2 className="font-serif text-2xl font-bold text-[#1c1917]">
+                Ratings & Reviews
+              </h2>
+
+              {/* What Do You Think? Box (Matches Screenshot 4) */}
+              <div className="bg-white rounded-xl border border-stone-200 p-6 text-center space-y-3 shadow-2xs">
+                <div className="h-10 w-10 mx-auto rounded-full bg-stone-100 flex items-center justify-center text-stone-400">
+                  <UserCheck className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-lg font-bold text-stone-900">
+                    What do <span className="italic font-normal">you</span> think?
+                  </h3>
+                  <p className="text-xs text-stone-500">Share your thoughts with other operators</p>
+                </div>
+
+                <div className="flex items-center justify-center gap-1.5 py-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      type="button"
+                      onClick={() => setUserRating(star)}
+                      className="text-stone-300 hover:text-amber-500 transition-colors p-1 cursor-pointer"
+                    >
+                      <Star
+                        className={`h-6 w-6 ${
+                          (userRating ?? 0) >= star
+                            ? "fill-amber-500 text-amber-500"
+                            : "stroke-[1.5]"
+                        }`}
+                      />
+                    </button>
+                  ))}
+                </div>
+
+                <div>
                   <button
                     type="button"
-                    onClick={toggleAllModules}
-                    className="font-bold text-[#5022c3] hover:text-[#3b198f] self-start sm:self-auto cursor-pointer"
+                    onClick={() => setIsWritingReview(!isWritingReview)}
+                    className="px-5 py-2 rounded-full bg-[#1c1917] text-white hover:bg-stone-800 text-xs font-semibold shadow-xs transition-colors cursor-pointer"
                   >
-                    {areAllExpanded ? "Collapse all sections" : "Expand all sections"}
+                    Write a Review
                   </button>
                 </div>
 
-                {/* Modules Accordion */}
-                <div className="border border-[#d1d7dc] divide-y divide-[#d1d7dc] bg-[#f7f9fa]">
-                  {playbook.modules.map((module) => {
-                    const isOpen = openModuleIds.includes(module.id);
-                    return (
-                      <div key={module.id}>
-                        {/* Module Header Button */}
-                        <button
-                          type="button"
-                          onClick={() => toggleModule(module.id)}
-                          aria-expanded={isOpen}
-                          className="w-full px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between gap-3 text-left hover:bg-[#f1f3f5] transition-colors cursor-pointer"
-                        >
-                          <div className="flex items-center gap-3 min-w-0">
-                            <ChevronDown
-                              className={`h-4 w-4 text-[#1c1917] shrink-0 transition-transform duration-200 ${
-                                isOpen ? "rotate-180" : ""
-                              }`}
-                            />
-                            <span className="font-bold text-[#2d2f31] text-sm sm:text-[15.5px] leading-snug">
-                              Module {module.number}: {module.title}
-                            </span>
-                          </div>
-
-                          <div className="text-xs text-[#6a6f73] shrink-0 whitespace-nowrap ml-2">
-                            <span>
-                              {module.lessons.length} lectures • {module.duration}
-                            </span>
-                          </div>
-                        </button>
-
-                        {/* Module Expanded Lessons List */}
-                        {isOpen && (
-                          <div className="bg-white border-t border-[#d1d7dc] divide-y divide-zinc-100">
-                            {module.description && (
-                              <div className="px-4 sm:px-6 py-2.5 text-xs sm:text-[13px] text-zinc-600 bg-zinc-50/70 italic">
-                                {module.description}
-                              </div>
-                            )}
-                            {module.lessons.map((lesson) => {
-                              const lessonContent = (
-                                <>
-                                  <div className="flex items-center gap-3 min-w-0">
-                                    <FileText className="h-3.5 w-3.5 text-zinc-500 group-hover/lesson:text-[#5022c3] shrink-0" />
-                                    <span className="truncate group-hover/lesson:underline">
-                                      {lesson.number} {lesson.title}
-                                    </span>
-                                  </div>
-
-                                  <div className="flex items-center gap-3 shrink-0 ml-3">
-                                    {lesson.isPreview && !canAccess && (
-                                      <span className="text-[#5022c3] text-xs font-semibold underline">
-                                        Preview
-                                      </span>
-                                    )}
-                                    {canAccess && (
-                                      <span className="text-[#5022c3] text-xs font-semibold group-hover/lesson:translate-x-0.5 transition-transform">
-                                        Open →
-                                      </span>
-                                    )}
-                                    <span className="text-zinc-500 text-xs">
-                                      {lesson.duration}
-                                    </span>
-                                  </div>
-                                </>
-                              );
-
-                              return canAccess ? (
-                                <Link
-                                  key={lesson.id}
-                                  href={`/learn/${playbook.slug}/${lesson.id}`}
-                                  className="group/lesson px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs sm:text-sm text-[#2d2f31] hover:bg-purple-50/40 transition-colors"
-                                >
-                                  {lessonContent}
-                                </Link>
-                              ) : (
-                                <div
-                                  key={lesson.id}
-                                  className="group/lesson px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs sm:text-sm text-[#2d2f31] hover:bg-zinc-50 transition-colors"
-                                >
-                                  {lessonContent}
-                                </div>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* 4. "Requirements" Section */}
-              <div className="mb-10">
-                <h2 className="text-xl sm:text-2xl font-bold text-[#1c1917] mb-3">
-                  Requirements
-                </h2>
-                <ul className="list-disc pl-5 space-y-1.5 text-sm text-[#2d2f31]">
-                  {playbook.requirements.map((req, idx) => (
-                    <li key={idx} className="leading-relaxed">
-                      {req}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* 5. "Description" Section (with Show more toggle) */}
-              <div className="mb-10">
-                <h2 className="text-xl sm:text-2xl font-bold text-[#1c1917] mb-3">
-                  Description
-                </h2>
-
-                <div
-                  className={`relative text-sm sm:text-[14.5px] text-[#2d2f31] leading-relaxed space-y-3.5 overflow-hidden transition-all ${
-                    isDescriptionExpanded ? "max-h-none" : "max-h-[260px]"
-                  }`}
-                >
-                  {playbook.descriptionSections.intro.map((p, idx) => (
-                    <p key={idx}>{p}</p>
-                  ))}
-
-                  {playbook.descriptionSections.keyPointsTitle && (
-                    <h3 className="font-bold text-[#1c1917] text-base pt-2">
-                      {playbook.descriptionSections.keyPointsTitle}
-                    </h3>
-                  )}
-
-                  {playbook.descriptionSections.keyPoints && (
-                    <ul className="list-disc pl-5 space-y-1">
-                      {playbook.descriptionSections.keyPoints.map((pt, idx) => (
-                        <li key={idx}>{pt}</li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {playbook.descriptionSections.closing &&
-                    playbook.descriptionSections.closing.map((p, idx) => (
-                      <p key={idx}>{p}</p>
-                    ))}
-
-                  {/* Gradient Fade when collapsed */}
-                  {!isDescriptionExpanded && (
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
-                  )}
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
-                  className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#5022c3] hover:text-[#3b198f] cursor-pointer"
-                >
-                  <span>{isDescriptionExpanded ? "Show less" : "Show more"}</span>
-                  {isDescriptionExpanded ? (
-                    <ChevronUp className="h-4 w-4" />
-                  ) : (
-                    <ChevronDown className="h-4 w-4" />
-                  )}
-                </button>
-              </div>
-
-              {/* 6. "Who this course is for" Section */}
-              <div className="mb-10">
-                <h2 className="text-xl sm:text-2xl font-bold text-[#1c1917] mb-3">
-                  Who this course is for:
-                </h2>
-                <ul className="list-disc pl-5 space-y-1.5 text-sm text-[#2d2f31]">
-                  {playbook.targetAudience.map((audience, idx) => (
-                    <li key={idx} className="leading-relaxed">
-                      {audience}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* 7. "Instructor" Section */}
-              <div className="mb-12 border-t border-zinc-200 pt-8">
-                <h2 className="text-xl sm:text-2xl font-bold text-[#1c1917] mb-4">
-                  Instructor
-                </h2>
-
-                <div>
-                  <h3 className="text-lg font-bold text-[#5022c3] underline cursor-pointer">
-                    {playbook.instructorName}
-                  </h3>
-                  <p className="text-sm text-zinc-600 mt-0.5">
-                    {playbook.instructorTitle}
-                  </p>
-
-                  <div className="mt-4 flex items-center gap-4">
-                    <div className="h-24 w-24 rounded-full border border-zinc-200 overflow-hidden bg-zinc-100 shrink-0 relative">
-                      <Image
-                        src="/icon.png"
-                        alt={playbook.instructorName}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-
-                    <div className="space-y-1 text-xs sm:text-sm text-[#2d2f31]">
-                      <div className="flex items-center gap-2">
-                        <Star className="h-4 w-4 fill-[#e59819] text-[#e59819]" />
-                        <span>{playbook.instructorRating} Instructor Rating</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Info className="h-4 w-4 text-zinc-500" />
-                        <span>{playbook.instructorReviews} Reviews</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Layers className="h-4 w-4 text-zinc-500" />
-                        <span>{playbook.instructorStudents} Students</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Play className="h-4 w-4 text-zinc-500" />
-                        <span>{playbook.instructorCourses} Course</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="mt-4 text-sm text-[#2d2f31] leading-relaxed max-w-2xl">
-                    {playbook.instructorBio}
-                  </p>
-                </div>
-              </div>
-
-              {/* 8. Student Feedback & Testimonials */}
-              <div id="reviews" className="mb-12 border-t border-zinc-200 pt-8 scroll-mt-24">
-                <h2 className="text-xl sm:text-2xl font-bold text-[#1c1917] mb-6">
-                  Student feedback
-                </h2>
-
-                {/* Rating Aggregate Score */}
-                <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-8">
-                  <div className="flex flex-col items-center justify-center p-6 bg-zinc-50 rounded border border-zinc-200 sm:w-48 text-center">
-                    <span className="text-5xl font-extrabold text-[#b4690e]">
-                      {playbook.rating}
-                    </span>
-                    <div className="flex items-center gap-0.5 mt-2">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-4 w-4 fill-[#e59819] text-[#e59819]"
-                        />
-                      ))}
-                    </div>
-                    <span className="text-xs font-bold text-[#b4690e] mt-1">
-                      Course Rating
-                    </span>
-                  </div>
-
-                  {/* Rating Breakdown Bars */}
-                  <div className="flex-1 space-y-2 text-xs text-zinc-600">
-                    {[
-                      { star: 5, pct: "78%" },
-                      { star: 4, pct: "16%" },
-                      { star: 3, pct: "4%" },
-                      { star: 2, pct: "1%" },
-                      { star: 1, pct: "1%" },
-                    ].map((row) => (
-                      <div key={row.star} className="flex items-center gap-3">
-                        <div className="w-14 shrink-0 flex items-center gap-1">
-                          <span>{row.star} stars</span>
-                        </div>
-                        <div className="flex-1 h-2 bg-zinc-200 rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-zinc-600"
-                            style={{ width: row.pct }}
-                          />
-                        </div>
-                        <span className="w-10 text-right">{row.pct}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Reviews List */}
-                <div className="divide-y divide-zinc-200">
-                  {playbook.testimonials.map((t, idx) => (
-                    <div key={idx} className="py-6 first:pt-0">
-                      <div className="flex items-start gap-4">
-                        <div className="h-10 w-10 rounded-full bg-zinc-800 text-white font-bold text-sm flex items-center justify-center shrink-0">
-                          {t.initials}
-                        </div>
-
-                        <div className="flex-1">
-                          <div className="font-bold text-sm text-[#1c1917]">
-                            {t.name}
-                          </div>
-                          <div className="flex items-center gap-2 mt-0.5">
-                            <div className="flex items-center">
-                              {[...Array(t.rating)].map((_, i) => (
-                                <Star
-                                  key={i}
-                                  className="h-3.5 w-3.5 fill-[#e59819] text-[#e59819]"
-                                />
-                              ))}
-                            </div>
-                            <span className="text-xs text-zinc-500">{t.date}</span>
-                          </div>
-
-                          <p className="mt-2 text-sm text-[#2d2f31] leading-relaxed">
-                            {t.quote}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* 9. FAQs */}
-              <div id="faq" className="border-t border-zinc-200 pt-8 scroll-mt-24">
-                <h2 className="text-xl sm:text-2xl font-bold text-[#1c1917] mb-6">
-                  Frequently Asked Questions
-                </h2>
-
-                <div className="divide-y divide-zinc-200 border-y border-zinc-200">
-                  {playbook.faqs.map((faq, idx) => {
-                    const isOpen = openFaqIndex === idx;
-                    return (
-                      <div key={idx} className="py-4">
-                        <button
-                          type="button"
-                          onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                          aria-expanded={isOpen}
-                          className="w-full flex items-center justify-between text-left group cursor-pointer focus:outline-none"
-                        >
-                          <span className="font-bold text-sm sm:text-base text-[#1c1917] group-hover:text-[#5022c3] transition-colors pr-4">
-                            {faq.question}
-                          </span>
-                          <ChevronDown
-                            className={`h-4 w-4 text-zinc-500 shrink-0 transition-transform duration-200 ${
-                              isOpen ? "rotate-180" : ""
-                            }`}
-                          />
-                        </button>
-
-                        {isOpen && (
-                          <div className="mt-2.5 text-sm text-zinc-600 leading-relaxed pr-8">
-                            {faq.answer}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT COLUMN: DESKTOP FLOATING PURCHASE CARD (UDEMY PATTERN) */}
-            <div className="hidden lg:block relative">
-              <div className="sticky top-6 -mt-[310px] z-30 w-full bg-white text-[#1c1917] border border-[#dcd8d0] shadow-2xl rounded-2xl overflow-hidden p-3.5 sm:p-4">
-                {/* 16:9 Thumbnail Container with frame and curved corners just like Playbook Cards */}
-                <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#eeebe5] border border-[#e5e1d8] shrink-0">
-                  {playbook.thumbnail ? (
-                    <Image
-                      src={playbook.thumbnail}
-                      alt={playbook.title}
-                      fill
-                      sizes="(max-width: 1280px) 340px, 370px"
-                      priority
-                      className="object-cover object-center"
+                {isWritingReview && (
+                  <div className="pt-3 max-w-lg mx-auto space-y-2.5 text-left">
+                    <textarea
+                      rows={3}
+                      value={newReviewText}
+                      onChange={(e) => setNewReviewText(e.target.value)}
+                      placeholder="Write your detailed review about the book's frameworks, mental models, and practical utility..."
+                      className="w-full text-xs p-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-1 focus:ring-stone-800"
                     />
-                  ) : (
-                    <div className="h-full w-full bg-[#eeebe5]" />
-                  )}
-                </div>
-
-                {/* Card Interior */}
-                <div className="pt-4 sm:pt-5 pb-1">
-                  {/* Pricing row */}
-                  {isFreeReview ? (
-                    <div className="mb-4">
-                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-50 text-emerald-800 text-xs font-semibold border border-emerald-200 mb-2">
-                        <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                        Free Content Review Phase
-                      </div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-3xl font-extrabold text-[#1c1917] tracking-tight">
-                          Free
-                        </span>
-                        <span className="text-xs text-[#57534e]">Full catalog access</span>
-                      </div>
-                      <p className="text-xs text-[#57534e] mt-1">
-                        All slide decks, exercises, and written lesson materials are unlocked for review.
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="flex items-baseline gap-2.5 mb-4">
-                      <span className="text-3xl font-extrabold text-[#1c1917] tracking-tight">
-                        ${formattedPrice}
-                      </span>
-                      <span className="text-base text-zinc-500 line-through">
-                        ${formattedOriginalPrice}
-                      </span>
-                      <span className="text-sm font-semibold text-[#1c1917]">
-                        {discountPercentage}% off
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Checkout Error Alert */}
-                  {checkoutError && (
-                    <div className="rounded border border-red-200 bg-red-50 p-2.5 text-xs text-red-700 mb-3">
-                      {checkoutError}
-                    </div>
-                  )}
-
-                  {/* Lifetime access above buttons */}
-                  <div className="text-xs text-[#57534e] mb-3 font-normal">
-                    {isFreeReview ? "Instant unrestricted access" : "Full lifetime access"}
-                  </div>
-
-                  {/* CTAs */}
-                  {canAccess ? (
-                    <Link
-                      href={`/learn/${playbook.slug}`}
-                      className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm flex items-center justify-center gap-2"
-                    >
-                      <span>{isFreeReview ? "Start Learning" : "Open Playbook"}</span>
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  ) : (
-                    <div className="space-y-2.5">
+                    <div className="flex justify-end gap-2">
                       <button
                         type="button"
-                        onClick={handleCheckout}
-                        disabled={isCheckingOut}
-                        className="w-full h-12 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-base rounded-none transition-colors shadow-sm cursor-pointer flex items-center justify-center"
+                        onClick={() => setIsWritingReview(false)}
+                        className="px-3 py-1.5 text-xs text-stone-600 hover:text-stone-900 cursor-pointer"
                       >
-                        {isCheckingOut ? "Connecting to Checkout..." : "Add to cart"}
+                        Cancel
                       </button>
                       <button
                         type="button"
-                        onClick={handleCheckout}
-                        disabled={isCheckingOut}
-                        className="w-full h-12 bg-white hover:bg-purple-50/60 text-[#a435f0] font-bold text-base rounded-none border border-[#a435f0] transition-colors cursor-pointer flex items-center justify-center"
+                        onClick={() => {
+                          setSubmittedReview(true);
+                          setIsWritingReview(false);
+                          setNewReviewText("");
+                        }}
+                        className="px-4 py-1.5 rounded-lg bg-emerald-700 text-white text-xs font-semibold hover:bg-emerald-800 cursor-pointer"
                       >
-                        Buy now
+                        Submit Review
                       </button>
                     </div>
-                  )}
+                  </div>
+                )}
 
-                  {/* Bottom Action Area: Sleek Share Icon on the Right */}
-                  <div className="mt-5 pt-4 border-t border-zinc-200 flex items-center justify-end">
-                    <button
-                      type="button"
-                      onClick={handleShare}
-                      title={copiedLink ? "Link copied!" : "Share playbook"}
-                      aria-label="Share playbook"
-                      className="inline-flex items-center justify-center p-2 rounded-full text-zinc-700 hover:text-[#5022c3] hover:bg-zinc-100 transition-colors cursor-pointer relative"
-                    >
-                      <Share2 className="h-5 w-5" />
-                      {copiedLink && (
-                        <span className="absolute right-full mr-2 px-2 py-0.5 text-[11px] font-semibold bg-[#1c1917] text-white rounded whitespace-nowrap shadow-sm">
-                          Link copied!
-                        </span>
-                      )}
-                    </button>
+                {submittedReview && (
+                  <p className="text-xs text-emerald-600 font-medium">
+                    ✓ Your review has been submitted for verified reader publication!
+                  </p>
+                )}
+              </div>
+
+              {/* Community Reviews Breakdown (Matches Screenshot 5) */}
+              <div className="space-y-5">
+                <h3 className="font-serif text-lg font-bold text-stone-900">
+                  Community Reviews
+                </h3>
+
+                {/* Score & Histogram */}
+                <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-6 items-center bg-white rounded-xl border border-stone-200 p-5 shadow-2xs">
+                  <div className="text-center sm:text-left space-y-1">
+                    <div className="flex items-center justify-center sm:justify-start gap-1">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="h-4 w-4 fill-amber-500 text-amber-500" />
+                      ))}
+                    </div>
+                    <div className="font-serif text-3xl font-bold text-stone-900">
+                      {playbook.rating?.toFixed(1) || "4.8"}
+                    </div>
+                    <div className="text-xs text-stone-500">
+                      {typeof playbook.ratingCount === "number"
+                        ? playbook.ratingCount.toLocaleString()
+                        : playbook.ratingCount}{" "}
+                      ratings · 312 reviews
+                    </div>
+                  </div>
+
+                  {/* Rating Histogram */}
+                  <div className="space-y-1.5 text-xs text-stone-600">
+                    <div className="flex items-center gap-3">
+                      <span className="w-12 text-stone-500">5 stars</span>
+                      <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
+                        <div className="h-full bg-amber-500 rounded-full" style={{ width: "72%" }} />
+                      </div>
+                      <span className="w-16 text-right text-stone-400">72%</span>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <span className="w-12 text-stone-500">4 stars</span>
+                      <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
+                        <div className="h-full bg-amber-500 rounded-full" style={{ width: "20%" }} />
+                      </div>
+                      <span className="w-16 text-right text-stone-400">20%</span>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <span className="w-12 text-stone-500">3 stars</span>
+                      <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
+                        <div className="h-full bg-amber-500 rounded-full" style={{ width: "5%" }} />
+                      </div>
+                      <span className="w-16 text-right text-stone-400">5%</span>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <span className="w-12 text-stone-500">2 stars</span>
+                      <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
+                        <div className="h-full bg-amber-500 rounded-full" style={{ width: "2%" }} />
+                      </div>
+                      <span className="w-16 text-right text-stone-400">2%</span>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <span className="w-12 text-stone-500">1 star</span>
+                      <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
+                        <div className="h-full bg-amber-500 rounded-full" style={{ width: "1%" }} />
+                      </div>
+                      <span className="w-16 text-right text-stone-400">1%</span>
+                    </div>
                   </div>
                 </div>
+
+                {/* Search / Filter Reviews Input (Matches Screenshot 5) */}
+                <div className="flex items-center gap-2">
+                  <div className="relative flex-1">
+                    <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-stone-400" />
+                    <input
+                      type="text"
+                      value={reviewSearchQuery}
+                      onChange={(e) => setReviewSearchQuery(e.target.value)}
+                      placeholder="Search review text..."
+                      className="w-full text-xs pl-9 pr-4 py-2.5 rounded-full border border-stone-200 bg-white focus:outline-none focus:ring-1 focus:ring-stone-800 placeholder-stone-400"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    className="flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-stone-200 bg-white text-xs font-medium text-stone-700 hover:bg-stone-50 shadow-2xs"
+                  >
+                    <SlidersHorizontal className="h-3 w-3" />
+                    <span>Filters</span>
+                  </button>
+                </div>
+
+                {/* Display Reviews List */}
+                <div className="space-y-4 pt-2">
+                  {filteredReviews.map((rev) => (
+                    <div
+                      key={rev.id}
+                      className="bg-white rounded-xl border border-stone-200 p-5 shadow-2xs space-y-3"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <img
+                            src={rev.avatar}
+                            alt={rev.name}
+                            className="h-10 w-10 rounded-full object-cover border border-stone-200"
+                          />
+                          <div>
+                            <span className="font-bold text-xs text-stone-900 block">{rev.name}</span>
+                            <div className="flex items-center gap-2 text-[11px] text-stone-500">
+                              <span className="flex items-center gap-0.5">
+                                {[...Array(rev.rating)].map((_, i) => (
+                                  <Star key={i} className="h-3 w-3 fill-amber-500 text-amber-500" />
+                                ))}
+                              </span>
+                              <span>•</span>
+                              <span>{rev.date}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <span className="text-[11px] text-stone-400">Verified Reader</span>
+                      </div>
+
+                      <div className="space-y-1 text-xs">
+                        <h4 className="font-serif font-bold text-stone-900 text-[13px]">
+                          {rev.headline}
+                        </h4>
+                        <p className="text-stone-700 leading-relaxed font-serif">
+                          {rev.content}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between pt-2 border-t border-stone-100 text-[11px] text-stone-500">
+                        <button
+                          type="button"
+                          className="flex items-center gap-1 text-stone-500 hover:text-stone-900 transition-colors"
+                        >
+                          <ThumbsUp className="h-3 w-3" />
+                          <span>Helpful ({rev.likes})</span>
+                        </button>
+                        <span>Verified purchase</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* MOBILE FIXED BOTTOM PURCHASE BAR */}
-      <div
-        className={`lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-zinc-200 p-3 shadow-2xl transition-all duration-300 ${
-          showStickyBar ? "translate-y-0" : "translate-y-full pointer-events-none"
-        }`}
-      >
-        <div className="flex items-center justify-between gap-4 max-w-md mx-auto">
-          {isFreeReview ? (
-            <div>
-              <div className="text-xl font-extrabold text-[#1c1917]">Free</div>
-              <span className="text-[11px] text-emerald-700 font-semibold">
-                Content Review Phase
-              </span>
-            </div>
-          ) : (
-            <div>
-              <div className="flex items-baseline gap-1.5">
-                <span className="text-xl font-extrabold text-[#1c1917]">
-                  ${formattedPrice}
-                </span>
-                <span className="text-xs text-zinc-400 line-through">
-                  ${formattedOriginalPrice}
-                </span>
-              </div>
-              <span className="text-[11px] text-[#b32d0f] font-semibold">
-                {discountPercentage}% off
-              </span>
-            </div>
-          )}
-
-          {canAccess ? (
-            <Link
-              href={`/learn/${playbook.slug}`}
-              className="px-5 py-2.5 bg-[#a435f0] hover:bg-[#8710d8] text-white font-bold text-sm rounded-xs transition-colors shrink-0"
-            >
-              {isFreeReview ? "Start Learning →" : "Go to Playbook →"}
-            </Link>
-          ) : (
-            <button
-              type="button"
-              onClick={handleCheckout}
-              disabled={isCheckingOut}
-              className="px-6 py-2.5 bg-[#a435f0] text-white font-bold text-sm rounded-xs transition-colors shrink-0 cursor-pointer"
-            >
-              {isCheckingOut ? "Connecting..." : "Buy now"}
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* MINIMAL FOOTER */}
-      <footer className="border-t border-[#e7e5e4] bg-[#faf8f5] py-10 text-xs text-[#78716c] pb-24 lg:pb-10">
-        <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-[#1c1917]">Plugd</span>
-            <span>·</span>
-            <span>Outcome-focused Playbooks</span>
           </div>
 
-          <div className="flex items-center gap-6">
-            <Link href="/terms-of-service" className="hover:text-[#1c1917] transition-colors">
-              Terms
-            </Link>
-            <Link href="/privacy-policy" className="hover:text-[#1c1917] transition-colors">
-              Privacy
-            </Link>
-            <a href="mailto:ravx003@gmail.com" className="hover:text-[#1c1917] transition-colors">
-              Contact
-            </a>
-          </div>
         </div>
-      </footer>
+      </main>
     </div>
   );
 }
