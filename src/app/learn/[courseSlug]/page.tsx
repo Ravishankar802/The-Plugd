@@ -2,12 +2,10 @@ import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { cookies } from "next/headers";
-import fs from "fs";
-import path from "path";
 import { BookOpen, ChevronRight, Layers, ArrowRight, Bookmark, Sparkles, CheckCircle2 } from "lucide-react";
 import Header from "@/components/Header";
 import PendingPurchaseView from "@/components/PendingPurchaseView";
-import PlaybookPdfReader from "@/components/PlaybookPdfReader";
+import WebBookReader from "@/components/WebBookReader";
 import { COURSES, Course } from "@/lib/playbooks-data";
 import {
   getCustomerByAccessKey,
@@ -55,12 +53,12 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
     redirect(`/learn/${course.slug}`);
   }
 
-  // If viewing this PDF book, redirect directly to the static PDF file in the browser tab
+  // Web Book Reader for complete online book reading experience
   if (
     course.slug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
     courseSlug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything"
   ) {
-    redirect(`/books/${course.slug}.pdf`);
+    return <WebBookReader courseSlug={course.slug} courseTitle={course.title} />;
   }
 
   // Server-side Authorization Check
@@ -153,18 +151,6 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
         ? "/?checkout=true"
         : `/${course.slug}?checkout=true`;
     redirect(redirectTarget);
-  }
-
-  // If a publication-grade PDF book exists for this Playbook, render the full-height PDF reader
-  const pdfDiskPath = path.join(process.cwd(), "public", "books", `${course.slug}.pdf`);
-  if (fs.existsSync(pdfDiskPath)) {
-    return (
-      <PlaybookPdfReader
-        courseSlug={course.slug}
-        courseTitle={course.title}
-        pdfUrl={`/books/${course.slug}.pdf`}
-      />
-    );
   }
 
   const firstLessonId = course.modules[0]?.lessons[0]?.id || "01-1";
