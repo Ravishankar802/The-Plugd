@@ -122,7 +122,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
               onClick={(e) => e.stopPropagation()}
               className="inline-flex items-center justify-center rounded-lg bg-[#2563eb] hover:bg-[#1d4ed8] px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-white transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
             >
-              Start Learning
+              Start Reading
             </Link>
           </>
         ) : (
