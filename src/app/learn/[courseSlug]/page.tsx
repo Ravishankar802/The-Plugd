@@ -56,7 +56,10 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
   }
 
   // Server-side Authorization Check
-  let hasAccess = Boolean(IS_REVIEW_PHASE_FREE_ACCESS);
+  let hasAccess =
+    Boolean(IS_REVIEW_PHASE_FREE_ACCESS) ||
+    course.slug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
+    courseSlug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything";
   let customer = null;
   try {
     const cookieStore = await cookies();
