@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -55,9 +55,44 @@ export default function PlaybookDetailView({
   const [newReviewText, setNewReviewText] = useState("");
   const [submittedReview, setSubmittedReview] = useState(false);
   const [addedToCartToast, setAddedToCartToast] = useState(false);
+  const [hasStartedReading, setHasStartedReading] = useState(false);
+  const [clientHasAccess, setClientHasAccess] = useState(hasAccess);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const started = localStorage.getItem(`plugd_started_${playbook.slug}`);
+      if (started) {
+        setHasStartedReading(true);
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      if (
+        urlParams.get("purchased") === "true" ||
+        urlParams.get("purchased") === playbook.slug ||
+        urlParams.get("access") === "true" ||
+        urlParams.get("session_id")
+      ) {
+        setClientHasAccess(true);
+        try {
+          localStorage.setItem(`plugd_owned_${playbook.slug}`, "true");
+        } catch {}
+      } else if (localStorage.getItem(`plugd_owned_${playbook.slug}`) === "true") {
+        setClientHasAccess(true);
+      }
+    }
+  }, [playbook.slug]);
 
   const isFreeReview = Boolean(IS_REVIEW_PHASE_FREE_ACCESS);
-  const canAccess = hasAccess || isFreeReview;
+  const canAccess = hasAccess || isFreeReview || clientHasAccess;
+
+  const handleStartReading = () => {
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.setItem(`plugd_started_${playbook.slug}`, "true");
+        setHasStartedReading(true);
+      } catch {}
+    }
+  };
 
   // Book page count mapped by price tier ($3 -> 100-150, $5 -> 150-200, etc.)
   const pageCount = useMemo(
@@ -319,10 +354,11 @@ export default function PlaybookDetailView({
                 {canAccess ? (
                   <Link
                     href={`/learn/${playbook.slug}`}
-                    className="w-full py-2.5 px-4 rounded-xl bg-[#1c1917] hover:bg-stone-800 text-white font-medium text-sm flex items-center justify-center gap-2 shadow-xs transition-colors"
+                    onClick={handleStartReading}
+                    className="w-full py-2.5 px-4 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-xs transition-all active:scale-[0.99] cursor-pointer"
                   >
                     <BookOpen className="h-4 w-4" />
-                    Read Playbook
+                    <span>{hasStartedReading ? "Continue Reading" : "Start Reading"}</span>
                   </Link>
                 ) : (
                   <>
@@ -543,108 +579,6 @@ export default function PlaybookDetailView({
                 <span>
                   <strong className="text-stone-800 font-semibold">{readingStats.wantToRead}</strong> people want to read
                 </span>
-              </div>
-            </div>
-
-            {/* Table of Contents & Chapter Index */}
-            <div className="space-y-4 pt-4">
-              <div className="flex items-center justify-between border-b border-stone-200 pb-2">
-                <div>
-                  <h2 className="text-xl font-bold text-[#1c1917]">
-                    Table of Contents & Index
-                  </h2>
-                  <p className="text-xs text-stone-500 font-medium">
-                    {playbook.modules?.length || 7} Parts · {chapters.length} Chapters · {pageCount} Total Pages
-                  </p>
-                </div>
-                <Link
-                  href={`/learn/${playbook.slug}`}
-                  className="text-xs font-semibold text-stone-800 hover:text-stone-950 flex items-center gap-1 hover:underline"
-                >
-                  Open Table of Contents <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-
-              {/* Front Matter */}
-              <div className="bg-white rounded-xl border border-stone-200 p-3.5 flex items-center justify-between text-xs text-stone-700 shadow-2xs">
-                <div className="flex items-center gap-3">
-                  <span className="font-bold text-stone-500">Front Matter</span>
-                  <span className="font-semibold text-stone-800">Cover, Preface, Index & Operational Thesis</span>
-                </div>
-                <span className="text-stone-500 font-medium text-[11px]">pp. 1 – 8</span>
-              </div>
-
-              {/* Parts & Chapters List */}
-              <div className="space-y-2.5">
-                {playbook.modules?.map((mod, mIdx) => {
-                  const isOpen = openChapterIndices.includes(mIdx);
-                  const firstChapterIdx = mIdx * 4;
-                  const lastChapterIdx = firstChapterIdx + (mod.lessons?.length || 4) - 1;
-                  const partPageStart = getChapterPageRange(firstChapterIdx, chapters.length, pageCount).startPage;
-                  const partPageEnd = getChapterPageRange(lastChapterIdx, chapters.length, pageCount).endPage;
-
-                  return (
-                    <div
-                      key={mod.id || mIdx}
-                      className="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-2xs"
-                    >
-                      <button
-                        type="button"
-                        onClick={() => toggleChapter(mIdx)}
-                        className="w-full p-4 text-left flex items-center justify-between hover:bg-stone-50 transition-colors cursor-pointer"
-                      >
-                        <div className="space-y-0.5 pr-4">
-                          <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500">
-                            Part {mIdx + 1}
-                          </span>
-                          <h3 className="font-bold text-sm text-[#1c1917] leading-snug">
-                            {mod.title}
-                          </h3>
-                        </div>
-                        <div className="flex items-center gap-3 shrink-0 text-xs text-stone-500">
-                          <span className="text-[11px] font-medium text-stone-500">
-                            pp. {partPageStart} – {partPageEnd}
-                          </span>
-                          {isOpen ? (
-                            <ChevronUp className="h-4 w-4" />
-                          ) : (
-                            <ChevronDown className="h-4 w-4" />
-                          )}
-                        </div>
-                      </button>
-
-                      {isOpen && (
-                        <div className="border-t border-stone-100 bg-[#FAFAF8] divide-y divide-stone-100">
-                          {mod.lessons?.map((les, lIdx) => {
-                            const globalChapterIndex = mIdx * 4 + lIdx;
-                            const range = getChapterPageRange(globalChapterIndex, chapters.length, pageCount);
-
-                            return (
-                              <div
-                                key={les.id || lIdx}
-                                className="px-4 py-3 flex items-center justify-between text-xs hover:bg-white transition-colors"
-                              >
-                                <div className="space-y-0.5 pr-4">
-                                  <div className="flex items-center gap-2">
-                                    <span className="text-stone-400 font-semibold text-[11px]">
-                                      {mIdx + 1}.{lIdx + 1}
-                                    </span>
-                                    <span className="font-medium text-stone-800">
-                                      {les.title}
-                                    </span>
-                                  </div>
-                                </div>
-                                <span className="text-[11px] font-medium text-stone-500 shrink-0">
-                                  pp. {range.startPage} – {range.endPage}
-                                </span>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
               </div>
             </div>
 
