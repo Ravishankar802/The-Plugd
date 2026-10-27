@@ -697,19 +697,14 @@ export default function PlaybookDetailView({
             {/* Readers Also Enjoyed (With Homepage Sized Cards & Smooth Horizontal Scroll) */}
             <div className="border-t border-stone-200 pt-8 space-y-4">
               <div className="flex items-center justify-between">
-                <div>
-                  <h2 className="text-xl font-bold text-[#1c1917]">
-                    Readers also enjoyed
-                  </h2>
-                  <p className="text-xs text-stone-500 font-medium">
-                    Scroll horizontally to explore related playbooks
-                  </p>
-                </div>
+                <h2 className="text-xl font-bold text-[#1c1917]">
+                  Readers also enjoyed
+                </h2>
                 <Link
                   href="/"
                   className="text-xs font-semibold text-stone-700 hover:text-stone-950 hover:underline"
                 >
-                  All playbooks ›
+                  See All &gt;
                 </Link>
               </div>
 
