@@ -5,17 +5,17 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   ArrowLeft,
+  ChevronUp,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   Download,
   List,
   X,
-  BookOpen,
 } from "lucide-react";
 import {
   SELL_PDFS_WITH_AI_BOOK_PAGES,
   TOTAL_BOOK_PAGES,
-  WebBookPage,
 } from "@/lib/book-content/sell-pdfs-with-ai-book";
 
 interface WebBookReaderProps {
@@ -34,7 +34,7 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
   const pageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const isScrollingFromCodeRef = useRef(false);
 
-  // Scroll to a specific page
+  // Scroll vertically to a specific page
   const scrollToPage = useCallback(
     (page: number, smooth = true) => {
       const target = Math.max(1, Math.min(page, TOTAL_BOOK_PAGES));
@@ -43,8 +43,7 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
         isScrollingFromCodeRef.current = true;
         targetEl.scrollIntoView({
           behavior: smooth ? "smooth" : "auto",
-          inline: "center",
-          block: "nearest",
+          block: "start",
         });
         setCurrentPage(target);
         if (typeof window !== "undefined") {
@@ -68,10 +67,10 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
         const savedPage = localStorage.getItem(`plugd_book_page_${courseSlug}`);
         if (savedPage) {
           const p = parseInt(savedPage, 10);
-          if (!isNaN(p) && p >= 1 && p <= TOTAL_BOOK_PAGES) {
+          if (!isNaN(p) && p >= 1 && p <= TOTAL_BOOK_PAGES && p > 1) {
             setTimeout(() => {
               scrollToPage(p, false);
-            }, 100);
+            }, 150);
           }
         }
       } catch (e) {
@@ -80,23 +79,23 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
     }
   }, [courseSlug, scrollToPage]);
 
-  // Track active page on horizontal scroll
+  // Track active page on natural vertical scroll
   const handleScroll = useCallback(() => {
     if (isScrollingFromCodeRef.current) return;
     const container = scrollContainerRef.current;
     if (!container) return;
 
-    const scrollLeft = container.scrollLeft;
-    const containerWidth = container.clientWidth;
-    const center = scrollLeft + containerWidth / 2;
+    const scrollTop = container.scrollTop;
+    const containerHeight = container.clientHeight;
+    const probeY = scrollTop + containerHeight * 0.35;
 
     let closestPage = 1;
     let minDistance = Infinity;
 
     pageRefs.current.forEach((el, idx) => {
       if (!el) return;
-      const elCenter = el.offsetLeft + el.offsetWidth / 2;
-      const dist = Math.abs(elCenter - center);
+      const elTop = el.offsetTop;
+      const dist = Math.abs(elTop - probeY);
       if (dist < minDistance) {
         minDistance = dist;
         closestPage = idx + 1;
@@ -113,32 +112,15 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
     }
   }, [currentPage, courseSlug]);
 
-  // Mouse wheel: translate vertical scroll to horizontal scroll
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const onWheel = (e: WheelEvent) => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-        container.scrollBy({
-          left: e.deltaY * 1.5,
-          behavior: "auto",
-        });
-      }
-    };
-
-    container.addEventListener("wheel", onWheel, { passive: false });
-    return () => container.removeEventListener("wheel", onWheel);
-  }, []);
-
-  // Keyboard navigation (Arrow keys)
+  // Keyboard navigation (Arrow keys, PageUp/Down)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (tocOpen) return;
-      if (e.key === "ArrowLeft" || e.key === "PageUp") {
+      if (e.key === "ArrowUp" || e.key === "PageUp") {
+        e.preventDefault();
         scrollToPage(currentPage - 1);
-      } else if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+      } else if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") {
+        e.preventDefault();
         scrollToPage(currentPage + 1);
       }
     };
@@ -166,7 +148,7 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
       style={{ fontFamily: CLASSIC_BOOK_FONT }}
     >
       {/* Top Header Bar */}
-      <header className="h-13 bg-white border-b border-stone-200 px-4 sm:px-6 flex items-center justify-between shrink-0 z-20 shadow-2xs font-sans">
+      <header className="h-13 bg-white border-b border-stone-200 px-4 sm:px-6 flex items-center justify-between shrink-0 z-30 shadow-2xs font-sans">
         {/* Left: Back to Playbook */}
         <div className="flex items-center gap-3">
           <Link
@@ -220,24 +202,37 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
         </div>
       </header>
 
-      {/* Main Reading Stage: Horizontal Scroll Gallery */}
-      <div className="relative flex-1 w-full flex items-center overflow-hidden">
-        {/* Floating Left Chevron */}
-        <button
-          onClick={prevPage}
-          disabled={currentPage === 1}
-          type="button"
-          aria-label="Previous Page"
-          className="absolute left-3 sm:left-6 z-30 p-3 rounded-full bg-white/95 hover:bg-white text-stone-800 hover:text-black border border-stone-300/80 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed transition-all cursor-pointer font-sans"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
+      {/* Main Reading Stage: Natural Vertical Scroll of Centered A4 Pages */}
+      <div className="relative flex-1 w-full overflow-hidden flex justify-center">
+        {/* Floating Quick Navigation Buttons on Right Side */}
+        <div className="fixed right-4 sm:right-8 bottom-20 z-30 flex flex-col gap-2 font-sans">
+          <button
+            onClick={prevPage}
+            disabled={currentPage === 1}
+            type="button"
+            aria-label="Previous Page"
+            className="p-3 rounded-full bg-white/95 hover:bg-white text-stone-800 hover:text-black border border-stone-300/80 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed transition-all cursor-pointer"
+            title="Previous Page"
+          >
+            <ChevronUp className="h-5 w-5" />
+          </button>
+          <button
+            onClick={nextPage}
+            disabled={currentPage === TOTAL_BOOK_PAGES}
+            type="button"
+            aria-label="Next Page"
+            className="p-3 rounded-full bg-white/95 hover:bg-white text-stone-800 hover:text-black border border-stone-300/80 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed transition-all cursor-pointer"
+            title="Next Page"
+          >
+            <ChevronDown className="h-5 w-5" />
+          </button>
+        </div>
 
-        {/* Horizontal Scroll Track */}
+        {/* Vertical Scroll Track: Pages Stacked Vertically with Empty Margins on Left/Right */}
         <div
           ref={scrollContainerRef}
           onScroll={handleScroll}
-          className="flex-1 h-full w-full overflow-x-auto overflow-y-hidden flex items-center py-4 sm:py-6 px-12 sm:px-20 md:px-32 gap-8 sm:gap-12 md:gap-16 snap-x snap-mandatory scroll-smooth"
+          className="flex-1 h-full w-full overflow-y-auto overflow-x-hidden flex flex-col items-center py-6 sm:py-10 px-4 sm:px-6 md:px-8 space-y-8 sm:space-y-12 scroll-smooth"
           style={{ scrollbarWidth: "thin" }}
         >
           {SELL_PDFS_WITH_AI_BOOK_PAGES.map((page, idx) => {
@@ -249,10 +244,10 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
                 ref={(el) => {
                   pageRefs.current[idx] = el;
                 }}
-                className={`shrink-0 snap-center select-text transition-transform duration-200 ${
+                className={`select-text transition-transform duration-200 ${
                   isCover
-                    ? "w-[85vw] max-w-[700px] aspect-[16/9] rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.25)] bg-black border border-stone-300 relative flex items-center justify-center"
-                    : "h-[calc(100vh-140px)] min-h-[580px] max-h-[840px] w-auto aspect-[210/297] bg-white rounded-md border border-stone-300 shadow-[0_4px_30px_rgba(0,0,0,0.12)] p-7 sm:p-9 md:p-11 flex flex-col justify-between overflow-y-auto"
+                    ? "w-full max-w-[760px] aspect-[16/9] rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.22)] bg-black border border-stone-300 relative shrink-0"
+                    : "w-full max-w-[760px] aspect-[210/297] min-h-[960px] sm:min-h-[1040px] bg-white rounded-md border border-stone-300 shadow-[0_4px_30px_rgba(0,0,0,0.10)] p-8 sm:p-12 md:p-16 flex flex-col justify-between shrink-0"
                 }`}
                 style={{ fontFamily: CLASSIC_BOOK_FONT }}
               >
@@ -273,7 +268,7 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
                   /* A4 Pages: Flowing paragraphs one below the other */
                   <div className="w-full h-full flex flex-col justify-between text-black leading-relaxed">
                     {/* Header / Running Head */}
-                    <div className="border-b border-stone-200 pb-2 flex items-center justify-between text-[10px] sm:text-[11px] text-stone-500 uppercase tracking-widest">
+                    <div className="border-b border-stone-200 pb-2.5 flex items-center justify-between text-[10px] sm:text-[11px] text-stone-500 uppercase tracking-widest">
                       <span className="truncate max-w-[75%] font-medium">
                         {page.header || page.partTitle || courseTitle}
                       </span>
@@ -281,20 +276,20 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
                     </div>
 
                     {/* Page Body: Real paragraphs one below the other */}
-                    <div className="flex-1 py-4 sm:py-5 flex flex-col justify-start space-y-3.5 sm:space-y-4 overflow-y-auto">
+                    <div className="flex-1 py-5 sm:py-6 flex flex-col justify-start space-y-4 sm:space-y-4.5">
                       {page.type === "title" && (
-                        <div className="text-center space-y-4 my-auto py-8">
-                          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-black leading-tight">
+                        <div className="text-center space-y-5 my-auto py-12">
+                          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-black leading-tight">
                             {page.content[0]}
                           </h1>
-                          <p className="text-base sm:text-lg italic text-stone-700">
+                          <p className="text-base sm:text-xl italic text-stone-700">
                             {page.content[1]}
                           </p>
-                          <div className="w-16 h-0.5 bg-black mx-auto my-6" />
-                          <p className="text-xs sm:text-sm text-stone-600 max-w-sm mx-auto leading-relaxed">
+                          <div className="w-20 h-0.5 bg-black mx-auto my-8" />
+                          <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto leading-relaxed">
                             {page.content[2]}
                           </p>
-                          <p className="text-xs font-bold text-black uppercase tracking-wider pt-8">
+                          <p className="text-xs font-bold text-black uppercase tracking-wider pt-10">
                             {page.content[3]}
                           </p>
                           <p className="text-[11px] text-stone-500">{page.content[4]}</p>
@@ -302,18 +297,18 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
                       )}
 
                       {page.type === "half-title" && (
-                        <div className="text-center space-y-3 my-auto py-16">
-                          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-black leading-snug">
+                        <div className="text-center space-y-4 my-auto py-24">
+                          <h2 className="text-xl sm:text-3xl font-bold tracking-tight text-black leading-snug">
                             {page.content[0]}
                           </h2>
-                          <p className="text-xs sm:text-sm italic text-stone-600">
+                          <p className="text-xs sm:text-base italic text-stone-600">
                             {page.content[1]}
                           </p>
                         </div>
                       )}
 
                       {page.type === "copyright" && (
-                        <div className="max-w-md mx-auto text-[11px] sm:text-xs text-stone-800 leading-relaxed space-y-3.5 my-auto py-6">
+                        <div className="max-w-lg mx-auto text-xs sm:text-[13px] text-stone-800 leading-relaxed space-y-4 my-auto py-10">
                           {page.content.map((p, pIdx) => (
                             <p key={pIdx}>{p}</p>
                           ))}
@@ -321,18 +316,18 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
                       )}
 
                       {page.type === "toc" && (
-                        <div className="space-y-2 py-2 w-full my-auto">
-                          <h2 className="text-base sm:text-lg font-bold text-black border-b border-black pb-1 mb-3 uppercase tracking-wider text-center">
+                        <div className="space-y-3 py-4 w-full my-auto">
+                          <h2 className="text-base sm:text-lg font-bold text-black border-b border-black pb-1.5 mb-4 uppercase tracking-wider text-center">
                             {page.content[0]}
                           </h2>
-                          <div className="space-y-1.5 text-xs sm:text-[13px] text-stone-900 leading-normal">
+                          <div className="space-y-2 text-xs sm:text-[13.5px] text-stone-900 leading-normal">
                             {page.content.slice(1).map((item, iIdx) => {
                               const isPart = item.startsWith("PART ");
                               return (
                                 <div
                                   key={iIdx}
                                   className={`flex justify-between items-baseline ${
-                                    isPart ? "font-bold text-black pt-2" : "text-stone-800 pl-3"
+                                    isPart ? "font-bold text-black pt-2.5" : "text-stone-800 pl-3"
                                   }`}
                                 >
                                   <span className="truncate pr-2">{item}</span>
@@ -344,19 +339,19 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
                       )}
 
                       {page.type === "chapter-start" && (
-                        <div className="space-y-3.5 py-1">
-                          <span className="text-[11px] font-bold text-stone-500 uppercase tracking-widest block">
+                        <div className="space-y-4 py-2">
+                          <span className="text-xs font-bold text-stone-500 uppercase tracking-widest block">
                             {page.partTitle}
                           </span>
-                          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-black leading-snug">
+                          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black leading-snug">
                             {page.chapterTitle}
                           </h2>
-                          <div className="w-12 h-0.5 bg-black my-2" />
-                          <div className="space-y-3 pt-1">
+                          <div className="w-16 h-0.5 bg-black my-2.5" />
+                          <div className="space-y-3.5 pt-2">
                             {page.content.map((para, paraIdx) => (
                               <p
                                 key={paraIdx}
-                                className="text-[13px] sm:text-[14px] text-stone-950 leading-[1.75] text-justify"
+                                className="text-[14px] sm:text-[15px] text-stone-950 leading-[1.8] text-justify"
                               >
                                 {para}
                               </p>
@@ -366,17 +361,17 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
                       )}
 
                       {page.type === "content" && (
-                        <div className="space-y-3.5 py-1">
+                        <div className="space-y-4 py-2">
                           {page.chapterTitle && (
-                            <h3 className="text-[15px] sm:text-base font-bold text-black pb-1 border-b border-stone-200">
+                            <h3 className="text-base sm:text-lg font-bold text-black pb-1.5 border-b border-stone-200">
                               {page.chapterTitle}
                             </h3>
                           )}
-                          <div className="space-y-3.5">
+                          <div className="space-y-3.5 pt-1">
                             {page.content.map((para, paraIdx) => (
                               <p
                                 key={paraIdx}
-                                className="text-[13px] sm:text-[14px] text-stone-950 leading-[1.75] text-justify"
+                                className="text-[14px] sm:text-[15px] text-stone-950 leading-[1.8] text-justify"
                               >
                                 {para}
                               </p>
@@ -387,7 +382,7 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
                     </div>
 
                     {/* Footer: Centered Page Number */}
-                    <div className="border-t border-stone-100 pt-2 text-center text-xs text-stone-400">
+                    <div className="border-t border-stone-100 pt-3 text-center text-xs text-stone-400">
                       — {page.pageNumber} —
                     </div>
                   </div>
@@ -396,21 +391,10 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
             );
           })}
         </div>
-
-        {/* Floating Right Chevron */}
-        <button
-          onClick={nextPage}
-          disabled={currentPage === TOTAL_BOOK_PAGES}
-          type="button"
-          aria-label="Next Page"
-          className="absolute right-3 sm:right-6 z-30 p-3 rounded-full bg-white/95 hover:bg-white text-stone-800 hover:text-black border border-stone-300/80 shadow-lg disabled:opacity-20 disabled:cursor-not-allowed transition-all cursor-pointer font-sans"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
       </div>
 
       {/* Bottom Control Bar with Page Slider & Jump */}
-      <footer className="h-14 bg-white border-t border-stone-200 px-4 sm:px-8 flex items-center justify-between shrink-0 z-20 font-sans">
+      <footer className="h-14 bg-white border-t border-stone-200 px-4 sm:px-8 flex items-center justify-between shrink-0 z-30 font-sans">
         <button
           onClick={prevPage}
           disabled={currentPage === 1}
