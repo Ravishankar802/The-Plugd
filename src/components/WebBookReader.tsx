@@ -221,8 +221,8 @@ export default function WebBookReader({ courseSlug, courseTitle }: WebBookReader
                   /* A4 Pages: Flowing paragraphs one below the other */
                   <div className="w-full h-full flex flex-col justify-between text-black leading-relaxed">
                     {/* Header / Running Head */}
-                    <div className="border-b border-stone-200 pb-2.5 flex items-center justify-between text-[10px] sm:text-[11px] text-stone-500 uppercase tracking-widest">
-                      <span className="truncate max-w-[75%] font-medium">
+                    <div className="border-b border-stone-200 pb-2.5 flex items-center justify-between text-[10px] sm:text-[11px] text-stone-500 uppercase tracking-wider">
+                      <span className="font-medium pr-4">
                         {page.header || page.partTitle || courseTitle}
                       </span>
                       <span className="shrink-0 font-medium">{page.pageNumber}</span>
