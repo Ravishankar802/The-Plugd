@@ -329,7 +329,7 @@ export default function PlaybookDetailView({
                     <button
                       onClick={handleAddToCart}
                       disabled={isCheckingOut}
-                      className="w-full py-2.5 px-4 rounded-xl bg-[#2e6930] hover:bg-[#255427] text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-xs transition-all active:scale-[0.99] disabled:opacity-50 cursor-pointer"
+                      className="w-full py-2.5 px-4 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-xs transition-all active:scale-[0.99] disabled:opacity-50 cursor-pointer"
                     >
                       {isCheckingOut ? (
                         <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -341,7 +341,7 @@ export default function PlaybookDetailView({
                     <button
                       onClick={handleCheckout}
                       disabled={isCheckingOut}
-                      className="w-full py-2 px-4 rounded-xl bg-white hover:bg-stone-50 text-stone-800 font-semibold text-sm border border-stone-300 transition-colors active:scale-[0.99] disabled:opacity-50 cursor-pointer"
+                      className="w-full py-2 px-4 rounded-xl bg-white hover:bg-[#eff6ff] text-[#2563eb] font-semibold text-sm border border-[#2563eb] transition-colors active:scale-[0.99] disabled:opacity-50 cursor-pointer"
                     >
                       Buy now
                     </button>
