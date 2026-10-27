@@ -44,7 +44,7 @@ export default function WrittenLessonViewer({
   const [isCompleted, setIsCompleted] = useState(false);
   const [isTocDropdownOpen, setIsTocDropdownOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [fontFamily, setFontFamily] = useState<"serif" | "sans">("serif");
+  const [fontFamily, setFontFamily] = useState<"serif" | "sans">("sans");
   const [fontSize, setFontSize] = useState<"normal" | "large" | "xl">("normal");
   const [readerTheme, setReaderTheme] = useState<"paper" | "white" | "dark">("paper");
 

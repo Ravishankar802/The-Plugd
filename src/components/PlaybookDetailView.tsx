@@ -99,10 +99,9 @@ export default function PlaybookDetailView({
     return list;
   }, [playbook.modules]);
 
-  // Readers also enjoyed: 4 related books from catalog
+  // Readers also enjoyed: 8 related playbooks from catalog for smooth horizontal scroll
   const relatedBooks = useMemo(() => {
-    return ALL_PLAYBOOK_SUMMARIES.filter((p) => p.slug !== playbook.slug)
-      .slice(0, 4);
+    return ALL_PLAYBOOK_SUMMARIES.filter((p) => p.slug !== playbook.slug).slice(0, 8);
   }, [playbook.slug]);
 
   // Curated community reviews
@@ -180,6 +179,10 @@ export default function PlaybookDetailView({
     );
   };
 
+  const discountPercentage = playbook.originalPrice > playbook.price
+    ? Math.round(((playbook.originalPrice - playbook.price) / playbook.originalPrice) * 100)
+    : 0;
+
   return (
     <div className="min-h-screen bg-[#FBF9F5] text-[#1c1917] font-sans antialiased">
       <Header />
@@ -187,7 +190,7 @@ export default function PlaybookDetailView({
       {/* Breadcrumbs & Top Meta */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-2">
         <div className="flex items-center justify-between text-xs text-[#78716c]">
-          <div className="flex items-center gap-1.5 overflow-hidden text-ellipsis whitespace-nowrap">
+          <div className="flex items-center gap-1.5 overflow-hidden text-ellipsis whitespace-nowrap font-medium">
             <Link href="/" className="hover:text-[#1c1917] transition-colors">
               Plugd
             </Link>
@@ -204,7 +207,7 @@ export default function PlaybookDetailView({
 
           <button
             onClick={handleCopyLink}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-stone-200 hover:border-stone-400 bg-white text-stone-600 transition-colors shrink-0 shadow-2xs"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-stone-200 hover:border-stone-400 bg-white text-stone-600 transition-colors shrink-0 shadow-2xs cursor-pointer"
             title="Share this Playbook"
           >
             {copiedLink ? (
@@ -222,57 +225,87 @@ export default function PlaybookDetailView({
         </div>
       </div>
 
-      {/* Main Book Showcase (Two-Column Goodreads Layout) */}
+      {/* Main Book Showcase (Two-Column Layout) */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] lg:grid-cols-[330px_1fr] gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-[330px_1fr] lg:grid-cols-[360px_1fr] gap-8 lg:gap-12 items-start">
           
-          {/* ================= LEFT COLUMN ================= */}
-          <div className="flex flex-col items-center md:items-start space-y-6 md:sticky md:top-24">
+          {/* ================= LEFT COLUMN: UNIFIED HOMEPAGE-STYLE CARD ================= */}
+          <div className="flex flex-col items-center md:items-start md:sticky md:top-24 w-full">
             
-            {/* Playbook Thumbnail (Plugd Card 16:9 ratio with curved corners) */}
-            <div className="relative aspect-video w-full max-w-[320px] md:max-w-[340px] overflow-hidden rounded-2xl bg-[#eeebe5] border border-[#e5e1d8] shadow-[0_1px_3px_rgba(28,25,23,0.06),0_1px_2px_rgba(28,25,23,0.04)] shrink-0">
-              {playbook.thumbnail ? (
-                <Image
-                  src={playbook.thumbnail}
-                  alt={playbook.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 340px"
-                  className="object-cover object-center"
-                  priority
-                />
-              ) : (
-                <div className="h-full w-full flex flex-col items-center justify-center p-6 text-center bg-[#eeebe5] text-stone-600">
-                  <BookOpen className="h-10 w-10 mb-2 text-stone-400" />
-                  <span className="font-semibold text-xs leading-snug">{playbook.title}</span>
-                </div>
-              )}
-            </div>
-
-            {/* Price & Action Box */}
-            <div className="w-full max-w-[320px] md:max-w-[340px] bg-white rounded-2xl border border-[#dcd8d0] p-5 shadow-[0_1px_3px_rgba(28,25,23,0.06),0_1px_2px_rgba(28,25,23,0.04)] space-y-4">
+            {/* Unified Playbook Card (Matches Homepage Card Architecture with Add to Cart + Buy Now) */}
+            <div className="w-full max-w-[340px] lg:max-w-[360px] rounded-2xl bg-white border border-[#dcd8d0] p-3.5 sm:p-4 shadow-[0_1px_3px_rgba(28,25,23,0.06),0_1px_2px_rgba(28,25,23,0.04)] space-y-3.5">
               
-              {/* Price Header */}
-              <div className="flex items-baseline justify-between">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-bold font-serif text-[#1c1917]">
-                    ${playbook.price.toFixed(2)}
-                  </span>
-                  {playbook.originalPrice > playbook.price && (
-                    <span className="text-base text-stone-400 line-through">
-                      ${playbook.originalPrice.toFixed(2)}
-                    </span>
-                  )}
-                </div>
-                {playbook.originalPrice > playbook.price && (
-                  <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-stone-100 text-stone-700 border border-stone-200">
-                    {Math.round(((playbook.originalPrice - playbook.price) / playbook.originalPrice) * 100)}% off
-                  </span>
+              {/* 16:9 Thumbnail Container */}
+              <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#eeebe5] border border-[#e5e1d8] shrink-0">
+                {playbook.thumbnail ? (
+                  <Image
+                    src={playbook.thumbnail}
+                    alt={playbook.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 360px"
+                    className="object-cover object-center"
+                    priority
+                  />
+                ) : (
+                  <div className="h-full w-full flex flex-col items-center justify-center p-6 text-center bg-[#eeebe5] text-stone-600">
+                    <BookOpen className="h-10 w-10 mb-2 text-stone-400" />
+                    <span className="font-semibold text-xs leading-snug">{playbook.title}</span>
+                  </div>
                 )}
               </div>
 
-              <div className="text-[12px] text-stone-500 flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                Digital Playbook Edition · Instant Lifetime Access
+              {/* Title and Category */}
+              <div className="space-y-1">
+                <h3 className="text-[15px] sm:text-base font-semibold text-[#1c1917] leading-snug line-clamp-2">
+                  {playbook.title}
+                </h3>
+                <div className="text-[13px] text-[#57534e]">
+                  {playbook.categoryName}
+                </div>
+              </div>
+
+              {/* Rating & Ratings Count */}
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 text-[13px] font-bold text-[#1c1917]">
+                  <Star className="h-3 w-3 fill-[#d97706] text-[#d97706]" />
+                  <span>{playbook.rating?.toFixed(1) || "4.8"}</span>
+                </div>
+                {playbook.ratingCount && (
+                  <div className="inline-flex items-center rounded-md border border-[#e7e5e4] bg-white px-1.5 py-0.5 text-[11px] text-[#78716c] shadow-2xs shrink-0 font-medium">
+                    <span>
+                      {typeof playbook.ratingCount === "number"
+                        ? playbook.ratingCount.toLocaleString()
+                        : playbook.ratingCount}{" "}
+                      ratings
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Pricing Section */}
+              <div className="pt-2 border-t border-[#f0eee6] space-y-2">
+                <div className="flex items-baseline justify-between">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-2xl font-bold text-[#1c1917]">
+                      ${playbook.price.toFixed(2)}
+                    </span>
+                    {playbook.originalPrice > playbook.price && (
+                      <span className="text-sm text-[#a8a29e] line-through">
+                        ${playbook.originalPrice.toFixed(2)}
+                      </span>
+                    )}
+                  </div>
+                  {discountPercentage > 0 && (
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-stone-100 text-stone-700 border border-stone-200">
+                      {discountPercentage}% off
+                    </span>
+                  )}
+                </div>
+
+                <div className="text-[11.5px] text-[#78716c] flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+                  <span>Digital Playbook Edition · Instant Access</span>
+                </div>
               </div>
 
               {checkoutError && (
@@ -281,12 +314,12 @@ export default function PlaybookDetailView({
                 </div>
               )}
 
-              {/* Action Buttons */}
-              <div className="space-y-2.5 pt-1">
+              {/* Action Buttons: Add to cart & Buy now */}
+              <div className="space-y-2 pt-1">
                 {canAccess ? (
                   <Link
                     href={`/learn/${playbook.slug}`}
-                    className="w-full py-3 px-4 rounded-lg bg-[#1c1917] hover:bg-stone-800 text-white font-medium text-sm flex items-center justify-center gap-2 shadow-xs transition-colors"
+                    className="w-full py-2.5 px-4 rounded-xl bg-[#1c1917] hover:bg-stone-800 text-white font-medium text-sm flex items-center justify-center gap-2 shadow-xs transition-colors"
                   >
                     <BookOpen className="h-4 w-4" />
                     Read Playbook
@@ -296,7 +329,7 @@ export default function PlaybookDetailView({
                     <button
                       onClick={handleAddToCart}
                       disabled={isCheckingOut}
-                      className="w-full py-3 px-4 rounded-lg bg-[#2e6930] hover:bg-[#255427] text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-xs transition-all active:scale-[0.99] disabled:opacity-50"
+                      className="w-full py-2.5 px-4 rounded-xl bg-[#2e6930] hover:bg-[#255427] text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-xs transition-all active:scale-[0.99] disabled:opacity-50 cursor-pointer"
                     >
                       {isCheckingOut ? (
                         <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -308,7 +341,7 @@ export default function PlaybookDetailView({
                     <button
                       onClick={handleCheckout}
                       disabled={isCheckingOut}
-                      className="w-full py-2.5 px-4 rounded-lg bg-stone-50 hover:bg-stone-100 text-stone-800 font-semibold text-sm border border-stone-300 transition-colors active:scale-[0.99] disabled:opacity-50"
+                      className="w-full py-2 px-4 rounded-xl bg-white hover:bg-stone-50 text-stone-800 font-semibold text-sm border border-stone-300 transition-colors active:scale-[0.99] disabled:opacity-50 cursor-pointer"
                     >
                       Buy now
                     </button>
@@ -321,53 +354,54 @@ export default function PlaybookDetailView({
                   ✓ Playbook added. Redirecting to checkout...
                 </div>
               )}
-            </div>
 
-            {/* Rate This Playbook Widget (Matches Screenshot 1 Bottom Left) */}
-            <div className="w-full max-w-[320px] md:max-w-[340px] bg-white rounded-2xl border border-[#dcd8d0] p-4 shadow-2xs text-center space-y-2">
-              <span className="text-xs font-medium text-stone-600 block">
-                {userRating ? `You rated this ${userRating} stars` : "Rate this Playbook"}
-              </span>
-              <div className="flex items-center justify-center gap-1">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <button
-                    key={star}
-                    type="button"
-                    onMouseEnter={() => setHoverRating(star)}
-                    onMouseLeave={() => setHoverRating(null)}
-                    onClick={() => setUserRating(star)}
-                    className="p-1 text-stone-300 hover:text-amber-500 transition-colors focus:outline-none"
-                    title={`Rate ${star} stars`}
-                  >
-                    <Star
-                      className={`h-6 w-6 ${
-                        (hoverRating ?? userRating ?? 0) >= star
-                          ? "fill-amber-500 text-amber-500"
-                          : "text-stone-300 stroke-[1.5]"
-                      }`}
-                    />
-                  </button>
-                ))}
+              {/* Rate This Playbook (Integrated into Bottom of Card) */}
+              <div className="pt-3 border-t border-[#f0eee6] text-center space-y-1">
+                <span className="text-[11.5px] font-medium text-stone-600 block">
+                  {userRating ? `You rated this ${userRating} stars` : "Rate this Playbook"}
+                </span>
+                <div className="flex items-center justify-center gap-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      type="button"
+                      onMouseEnter={() => setHoverRating(star)}
+                      onMouseLeave={() => setHoverRating(null)}
+                      onClick={() => setUserRating(star)}
+                      className="p-1 text-stone-300 hover:text-amber-500 transition-colors focus:outline-none cursor-pointer"
+                      title={`Rate ${star} stars`}
+                    >
+                      <Star
+                        className={`h-5 w-5 ${
+                          (hoverRating ?? userRating ?? 0) >= star
+                            ? "fill-amber-500 text-amber-500"
+                            : "text-stone-300 stroke-[1.5]"
+                        }`}
+                      />
+                    </button>
+                  ))}
+                </div>
+                {userRating && (
+                  <p className="text-[11px] text-emerald-600 font-medium">Thank you for rating!</p>
+                )}
               </div>
-              {userRating && (
-                <p className="text-[11px] text-emerald-600 font-medium">Thank you for rating!</p>
-              )}
+
             </div>
 
           </div>
 
           {/* ================= RIGHT COLUMN ================= */}
-          <div className="space-y-8">
+          <div className="space-y-8 min-w-0">
             
             {/* Book Title & Author Header */}
             <div className="space-y-2.5">
-              <h1 className="font-serif text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#1c1917] leading-tight tracking-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1c1917] leading-tight tracking-tight">
                 {playbook.title}
               </h1>
 
               {/* Author / Publisher with Verified Badge */}
               <div className="flex items-center gap-2 text-stone-700 text-sm">
-                <span className="font-medium text-[#292524]">{author.name}</span>
+                <span className="font-semibold text-[#292524]">{author.name}</span>
                 <span className="inline-flex items-center justify-center h-4 w-4 rounded-full bg-stone-700 text-white text-[10px]" title="Verified Publisher">
                   ✓
                 </span>
@@ -375,7 +409,7 @@ export default function PlaybookDetailView({
                 <span className="text-stone-500">{playbook.categoryName}</span>
               </div>
 
-              {/* Star Rating & Ratings / Reviews Count (Matches Screenshot 1) */}
+              {/* Star Rating & Ratings / Reviews Count */}
               <div className="flex items-center gap-2 pt-1">
                 <div className="flex items-center gap-0.5">
                   {[1, 2, 3, 4, 5].map((star) => (
@@ -401,8 +435,8 @@ export default function PlaybookDetailView({
             </div>
 
             {/* Book Description / Synopsis */}
-            <div className="prose prose-stone max-w-none text-stone-700 leading-relaxed text-[15px] space-y-3 font-serif">
-              <p className="font-normal text-stone-800 leading-relaxed text-base">
+            <div className="text-stone-700 leading-relaxed text-[15px] space-y-3">
+              <p className="font-medium text-stone-900 leading-relaxed text-base">
                 {playbook.headline || playbook.description}
               </p>
 
@@ -411,7 +445,7 @@ export default function PlaybookDetailView({
                   {playbook.description}
                 </p>
                 <p>
-                  Engineered with the tactical precision of classic foundational business treatises, this playbook cuts through superficial theory and fleeting internet tactics. Rather than teaching commoditized trivia, each chapter systematically unpacks mental models, defensible operational architectures, unit economics, and step-by-step systems designed to create asymmetric leverage.
+                  Engineered with tactical precision, this playbook cuts through superficial theory and fleeting internet tactics. Rather than teaching commoditized trivia, each chapter systematically unpacks mental models, defensible operational architectures, unit economics, and step-by-step systems designed to create asymmetric leverage.
                 </p>
                 <p>
                   Every section delivers concrete decision frameworks, failure analysis matrices, worked financial models, and battle-tested execution blueprints.
@@ -421,7 +455,7 @@ export default function PlaybookDetailView({
               <button
                 type="button"
                 onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
-                className="text-stone-900 font-sans font-semibold text-xs flex items-center gap-1 hover:underline pt-1 cursor-pointer"
+                className="text-stone-900 font-semibold text-xs flex items-center gap-1 hover:underline pt-1 cursor-pointer"
               >
                 {isDescriptionExpanded ? (
                   <>Show less <ChevronUp className="h-3.5 w-3.5" /></>
@@ -431,12 +465,12 @@ export default function PlaybookDetailView({
               </button>
             </div>
 
-            {/* Book Details & Editions (Matches Screenshot 2) */}
+            {/* Book Details & Editions */}
             <div className="border-t border-b border-stone-200 py-3">
               <button
                 type="button"
                 onClick={() => setIsBookDetailsOpen(!isBookDetailsOpen)}
-                className="w-full flex items-center justify-between text-left text-xs font-semibold text-stone-800 hover:text-stone-950"
+                className="w-full flex items-center justify-between text-left text-xs font-semibold text-stone-800 hover:text-stone-950 cursor-pointer"
               >
                 <span>Book details & editions</span>
                 {isBookDetailsOpen ? (
@@ -450,25 +484,25 @@ export default function PlaybookDetailView({
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-3.5 text-xs text-stone-600">
                   <div>
                     <span className="text-stone-400 block text-[11px]">Format</span>
-                    <span className="font-medium text-stone-800">Digital Edition / Playbook</span>
+                    <span className="font-semibold text-stone-800">Digital Edition / Playbook</span>
                   </div>
                   <div>
                     <span className="text-stone-400 block text-[11px]">Length</span>
-                    <span className="font-medium text-stone-800">{pageCount} pages</span>
+                    <span className="font-semibold text-stone-800">{pageCount} pages</span>
                   </div>
                   <div>
                     <span className="text-stone-400 block text-[11px]">Language</span>
-                    <span className="font-medium text-stone-800">English</span>
+                    <span className="font-semibold text-stone-800">English</span>
                   </div>
                   <div>
                     <span className="text-stone-400 block text-[11px]">Published</span>
-                    <span className="font-medium text-stone-800">Plugd Publishing</span>
+                    <span className="font-semibold text-stone-800">Plugd Publishing</span>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Social Reading Activity (Matches Screenshot 2) */}
+            {/* Social Reading Activity */}
             <div className="flex flex-wrap items-center gap-6 text-xs text-stone-600 py-1">
               <div className="flex items-center gap-2.5">
                 <div className="flex -space-x-2 overflow-hidden">
@@ -512,14 +546,14 @@ export default function PlaybookDetailView({
               </div>
             </div>
 
-            {/* Table of Contents & Chapter Index (Book-style) */}
+            {/* Table of Contents & Chapter Index */}
             <div className="space-y-4 pt-4">
               <div className="flex items-center justify-between border-b border-stone-200 pb-2">
                 <div>
-                  <h2 className="font-serif text-xl font-bold text-[#1c1917]">
+                  <h2 className="text-xl font-bold text-[#1c1917]">
                     Table of Contents & Index
                   </h2>
-                  <p className="text-xs text-stone-500">
+                  <p className="text-xs text-stone-500 font-medium">
                     {playbook.modules?.length || 7} Parts · {chapters.length} Chapters · {pageCount} Total Pages
                   </p>
                 </div>
@@ -532,12 +566,12 @@ export default function PlaybookDetailView({
               </div>
 
               {/* Front Matter */}
-              <div className="bg-white rounded-lg border border-stone-200 p-3.5 flex items-center justify-between text-xs text-stone-700">
+              <div className="bg-white rounded-xl border border-stone-200 p-3.5 flex items-center justify-between text-xs text-stone-700 shadow-2xs">
                 <div className="flex items-center gap-3">
-                  <span className="font-serif font-bold text-stone-400">Front Matter</span>
-                  <span className="font-medium text-stone-800">Cover, Preface, Index & Operational Thesis</span>
+                  <span className="font-bold text-stone-500">Front Matter</span>
+                  <span className="font-semibold text-stone-800">Cover, Preface, Index & Operational Thesis</span>
                 </div>
-                <span className="text-stone-400 font-mono text-[11px]">pp. 1 – 8</span>
+                <span className="text-stone-500 font-medium text-[11px]">pp. 1 – 8</span>
               </div>
 
               {/* Parts & Chapters List */}
@@ -552,7 +586,7 @@ export default function PlaybookDetailView({
                   return (
                     <div
                       key={mod.id || mIdx}
-                      className="bg-white rounded-lg border border-stone-200 overflow-hidden shadow-2xs"
+                      className="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-2xs"
                     >
                       <button
                         type="button"
@@ -563,12 +597,12 @@ export default function PlaybookDetailView({
                           <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500">
                             Part {mIdx + 1}
                           </span>
-                          <h3 className="font-serif font-bold text-sm text-[#1c1917] leading-snug">
+                          <h3 className="font-bold text-sm text-[#1c1917] leading-snug">
                             {mod.title}
                           </h3>
                         </div>
                         <div className="flex items-center gap-3 shrink-0 text-xs text-stone-500">
-                          <span className="font-mono text-[11px] text-stone-400">
+                          <span className="text-[11px] font-medium text-stone-500">
                             pp. {partPageStart} – {partPageEnd}
                           </span>
                           {isOpen ? (
@@ -592,7 +626,7 @@ export default function PlaybookDetailView({
                               >
                                 <div className="space-y-0.5 pr-4">
                                   <div className="flex items-center gap-2">
-                                    <span className="text-stone-400 font-mono text-[11px]">
+                                    <span className="text-stone-400 font-semibold text-[11px]">
                                       {mIdx + 1}.{lIdx + 1}
                                     </span>
                                     <span className="font-medium text-stone-800">
@@ -600,7 +634,7 @@ export default function PlaybookDetailView({
                                     </span>
                                   </div>
                                 </div>
-                                <span className="font-mono text-[11px] text-stone-400 shrink-0">
+                                <span className="text-[11px] font-medium text-stone-500 shrink-0">
                                   pp. {range.startPage} – {range.endPage}
                                 </span>
                               </div>
@@ -614,9 +648,9 @@ export default function PlaybookDetailView({
               </div>
             </div>
 
-            {/* About the Author (Matches Screenshot 2) */}
+            {/* About the Author */}
             <div className="border-t border-stone-200 pt-8 space-y-4">
-              <h2 className="font-serif text-xl font-bold text-[#1c1917]">
+              <h2 className="text-xl font-bold text-[#1c1917]">
                 About the author
               </h2>
 
@@ -635,7 +669,7 @@ export default function PlaybookDetailView({
                           ✓
                         </span>
                       </h3>
-                      <p className="text-xs text-stone-500">
+                      <p className="text-xs text-stone-500 font-medium">
                         {author.booksCount} books · {author.followersCount} followers
                       </p>
                     </div>
@@ -643,7 +677,7 @@ export default function PlaybookDetailView({
                     <button
                       type="button"
                       onClick={() => setIsFollowingAuthor(!isFollowingAuthor)}
-                      className={`px-4 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                      className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-colors cursor-pointer ${
                         isFollowingAuthor
                           ? "bg-stone-200 text-stone-800"
                           : "bg-[#1c1917] text-white hover:bg-stone-800"
@@ -653,48 +687,58 @@ export default function PlaybookDetailView({
                     </button>
                   </div>
 
-                  <p className="text-xs text-stone-600 leading-relaxed font-serif pt-1">
+                  <p className="text-xs text-stone-600 leading-relaxed pt-1">
                     {author.bio}
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Readers Also Enjoyed (Matches Screenshot 3) */}
+            {/* Readers Also Enjoyed (With Homepage Sized Cards & Smooth Horizontal Scroll) */}
             <div className="border-t border-stone-200 pt-8 space-y-4">
               <div className="flex items-center justify-between">
-                <h2 className="font-serif text-xl font-bold text-[#1c1917]">
-                  Readers <span className="italic font-normal">also enjoyed</span>
-                </h2>
+                <div>
+                  <h2 className="text-xl font-bold text-[#1c1917]">
+                    Readers also enjoyed
+                  </h2>
+                  <p className="text-xs text-stone-500 font-medium">
+                    Scroll horizontally to explore related playbooks
+                  </p>
+                </div>
                 <Link
                   href="/"
                   className="text-xs font-semibold text-stone-700 hover:text-stone-950 hover:underline"
                 >
-                  All similar books ›
+                  All playbooks ›
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {relatedBooks.map((rel) => (
-                  <PlaybookFeedCard key={rel.slug} playbook={rel} />
-                ))}
+              {/* Horizontal Scroll Row - each card matches exact homepage sizing */}
+              <div className="relative -mx-4 sm:mx-0 px-4 sm:px-0">
+                <div className="flex gap-5 overflow-x-auto pb-4 pt-1 scroll-smooth no-scrollbar">
+                  {relatedBooks.map((rel) => (
+                    <div key={rel.slug} className="w-[280px] min-w-[280px] shrink-0">
+                      <PlaybookFeedCard playbook={rel} />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Ratings & Reviews Section (Matches Screenshots 4 & 5) */}
+            {/* Ratings & Reviews Section */}
             <div className="border-t border-stone-200 pt-8 space-y-6">
-              <h2 className="font-serif text-2xl font-bold text-[#1c1917]">
+              <h2 className="text-2xl font-bold text-[#1c1917]">
                 Ratings & Reviews
               </h2>
 
-              {/* What Do You Think? Box (Matches Screenshot 4) */}
+              {/* What Do You Think? Box */}
               <div className="bg-white rounded-xl border border-stone-200 p-6 text-center space-y-3 shadow-2xs">
                 <div className="h-10 w-10 mx-auto rounded-full bg-stone-100 flex items-center justify-center text-stone-400">
                   <UserCheck className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-stone-900">
-                    What do <span className="italic font-normal">you</span> think?
+                  <h3 className="text-lg font-bold text-stone-900">
+                    What do you think?
                   </h3>
                   <p className="text-xs text-stone-500">Share your thoughts with other operators</p>
                 </div>
@@ -734,7 +778,7 @@ export default function PlaybookDetailView({
                       rows={3}
                       value={newReviewText}
                       onChange={(e) => setNewReviewText(e.target.value)}
-                      placeholder="Write your detailed review about the book's frameworks, mental models, and practical utility..."
+                      placeholder="Write your review about the playbook's frameworks, mental models, and practical utility..."
                       className="w-full text-xs p-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-1 focus:ring-stone-800"
                     />
                     <div className="flex justify-end gap-2">
@@ -767,9 +811,9 @@ export default function PlaybookDetailView({
                 )}
               </div>
 
-              {/* Community Reviews Breakdown (Matches Screenshot 5) */}
+              {/* Community Reviews Breakdown */}
               <div className="space-y-5">
-                <h3 className="font-serif text-lg font-bold text-stone-900">
+                <h3 className="text-lg font-bold text-stone-900">
                   Community Reviews
                 </h3>
 
@@ -781,10 +825,10 @@ export default function PlaybookDetailView({
                         <Star key={star} className="h-4 w-4 fill-amber-500 text-amber-500" />
                       ))}
                     </div>
-                    <div className="font-serif text-3xl font-bold text-stone-900">
+                    <div className="text-3xl font-bold text-stone-900">
                       {playbook.rating?.toFixed(1) || "4.8"}
                     </div>
-                    <div className="text-xs text-stone-500">
+                    <div className="text-xs text-stone-500 font-medium">
                       {typeof playbook.ratingCount === "number"
                         ? playbook.ratingCount.toLocaleString()
                         : playbook.ratingCount}{" "}
@@ -793,7 +837,7 @@ export default function PlaybookDetailView({
                   </div>
 
                   {/* Rating Histogram */}
-                  <div className="space-y-1.5 text-xs text-stone-600">
+                  <div className="space-y-1.5 text-xs text-stone-600 font-medium">
                     <div className="flex items-center gap-3">
                       <span className="w-12 text-stone-500">5 stars</span>
                       <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
@@ -836,7 +880,7 @@ export default function PlaybookDetailView({
                   </div>
                 </div>
 
-                {/* Search / Filter Reviews Input (Matches Screenshot 5) */}
+                {/* Search / Filter Reviews Input */}
                 <div className="flex items-center gap-2">
                   <div className="relative flex-1">
                     <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-stone-400" />
@@ -850,7 +894,7 @@ export default function PlaybookDetailView({
                   </div>
                   <button
                     type="button"
-                    className="flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-stone-200 bg-white text-xs font-medium text-stone-700 hover:bg-stone-50 shadow-2xs"
+                    className="flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-stone-200 bg-white text-xs font-semibold text-stone-700 hover:bg-stone-50 shadow-2xs cursor-pointer"
                   >
                     <SlidersHorizontal className="h-3 w-3" />
                     <span>Filters</span>
@@ -873,7 +917,7 @@ export default function PlaybookDetailView({
                           />
                           <div>
                             <span className="font-bold text-xs text-stone-900 block">{rev.name}</span>
-                            <div className="flex items-center gap-2 text-[11px] text-stone-500">
+                            <div className="flex items-center gap-2 text-[11px] text-stone-500 font-medium">
                               <span className="flex items-center gap-0.5">
                                 {[...Array(rev.rating)].map((_, i) => (
                                   <Star key={i} className="h-3 w-3 fill-amber-500 text-amber-500" />
@@ -885,14 +929,14 @@ export default function PlaybookDetailView({
                           </div>
                         </div>
 
-                        <span className="text-[11px] text-stone-400">Verified Reader</span>
+                        <span className="text-[11px] text-stone-400 font-medium">Verified Reader</span>
                       </div>
 
                       <div className="space-y-1 text-xs">
-                        <h4 className="font-serif font-bold text-stone-900 text-[13px]">
+                        <h4 className="font-bold text-stone-900 text-[13px]">
                           {rev.headline}
                         </h4>
-                        <p className="text-stone-700 leading-relaxed font-serif">
+                        <p className="text-stone-700 leading-relaxed">
                           {rev.content}
                         </p>
                       </div>
@@ -900,12 +944,12 @@ export default function PlaybookDetailView({
                       <div className="flex items-center justify-between pt-2 border-t border-stone-100 text-[11px] text-stone-500">
                         <button
                           type="button"
-                          className="flex items-center gap-1 text-stone-500 hover:text-stone-900 transition-colors"
+                          className="flex items-center gap-1 text-stone-500 hover:text-stone-900 transition-colors cursor-pointer font-medium"
                         >
                           <ThumbsUp className="h-3 w-3" />
                           <span>Helpful ({rev.likes})</span>
                         </button>
-                        <span>Verified purchase</span>
+                        <span className="font-medium">Verified purchase</span>
                       </div>
                     </div>
                   ))}

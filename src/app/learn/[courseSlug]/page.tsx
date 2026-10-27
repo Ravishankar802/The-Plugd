@@ -175,10 +175,10 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
                 <span className="text-[9px] uppercase tracking-widest text-stone-400 font-mono">
                   PLUGD EDITION
                 </span>
-                <span className="font-serif text-xs font-bold leading-tight line-clamp-3">
+                <span className="font-sans text-xs font-bold leading-tight line-clamp-3">
                   {course.title}
                 </span>
-                <span className="text-[9px] text-stone-400 font-serif">
+                <span className="text-[9px] text-stone-400 font-sans">
                   {totalPages} Pages
                 </span>
               </div>
@@ -197,11 +197,11 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
                 <span>{allChapters.length} Chapters</span>
               </div>
 
-              <h1 className="font-serif text-2xl sm:text-4xl font-bold tracking-tight text-[#1c1917] leading-tight">
+              <h1 className="font-sans text-2xl sm:text-4xl font-bold tracking-tight text-[#1c1917] leading-tight">
                 {course.title}
               </h1>
 
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-serif max-w-xl">
+              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans max-w-xl">
                 {course.description}
               </p>
 
@@ -222,7 +222,7 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
         {/* Table of Contents / Index */}
         <div className="space-y-6">
           <div className="flex items-center justify-between border-b border-stone-200 pb-3">
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#1c1917]">
+            <h2 className="font-sans text-xl sm:text-2xl font-bold text-[#1c1917]">
               Table of Contents
             </h2>
             <span className="text-xs font-mono text-stone-500">
@@ -235,7 +235,7 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
             <div className="flex items-center gap-3">
               <Bookmark className="h-4 w-4 text-stone-400" />
               <div>
-                <span className="font-bold text-stone-900 block font-serif">Front Matter</span>
+                <span className="font-bold text-stone-900 block font-sans">Front Matter</span>
                 <span className="text-stone-500 text-[11px]">Cover, Title Page, Preface & Strategic Thesis</span>
               </div>
             </div>
@@ -255,7 +255,7 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
                     <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 font-mono block">
                       Part {mIdx + 1}
                     </span>
-                    <h3 className="font-serif text-base sm:text-lg font-bold text-[#1c1917]">
+                    <h3 className="font-sans text-base sm:text-lg font-bold text-[#1c1917]">
                       {mod.title}
                     </h3>
                   </div>
@@ -280,7 +280,7 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
                           <span className="font-mono text-xs text-stone-400 group-hover:text-stone-900 w-8 shrink-0">
                             {lesson.number}
                           </span>
-                          <span className="font-serif text-xs sm:text-sm font-medium text-stone-800 group-hover:text-stone-950 truncate">
+                          <span className="font-sans text-xs sm:text-sm font-medium text-stone-800 group-hover:text-stone-950 truncate">
                             {lesson.title}
                           </span>
                         </div>
