@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function PlaybookPage() {
-  let hasAccess = false;
+  let hasAccess = true;
   try {
     const cookieStore = await cookies();
     const accessKey = cookieStore.get("plugd_access_key")?.value;

@@ -34,7 +34,7 @@ export const SELL_PDFS_WITH_AI_BOOK_PAGES: WebBookPage[] = [
       "I SELL PDFs WITH AI AND IT CHANGED MY LIFE",
       "Revealing Everything",
       "The Complete Operating Manual for Engineering High-Margin Digital Assets with Artificial Intelligence",
-      "By Plugd Research & Editorial",
+      "Independent Digital Edition",
       "San Francisco \u00b7 New York \u00b7 London"
     ],
     "header": "I SELL PDFs WITH AI AND IT CHANGED MY LIFE (REVEALING EVERYTHING)"

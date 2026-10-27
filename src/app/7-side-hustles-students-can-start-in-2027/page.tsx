@@ -15,7 +15,7 @@ export const dynamic = "force-dynamic";
 
 export default async function PlaybookPage() {
   // Access granted for previewing purchased state
-  const hasAccess = true;
+  let hasAccess = true;
 
   return <PlaybookDetailView playbook={STUDENT_HUSTLES_2027_DETAIL} hasAccess={hasAccess} />;
 }
