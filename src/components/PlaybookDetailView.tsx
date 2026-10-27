@@ -20,6 +20,7 @@ import {
   UserCheck,
 } from "lucide-react";
 import Header from "@/components/Header";
+import PlaybookFeedCard from "@/components/PlaybookFeedCard";
 import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 import type { PlaybookDetailData } from "@/lib/dating-playbook-detail";
 import { ALL_PLAYBOOK_SUMMARIES } from "@/lib/playbooks-catalog";
@@ -228,30 +229,27 @@ export default function PlaybookDetailView({
           {/* ================= LEFT COLUMN ================= */}
           <div className="flex flex-col items-center md:items-start space-y-6 md:sticky md:top-24">
             
-            {/* Book Cover (Curved corners & realistic book shadow) */}
-            <div className="relative w-full max-w-[280px] md:max-w-[320px] aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-stone-200/90 bg-white transition-transform hover:scale-[1.01] duration-300">
+            {/* Playbook Thumbnail (Plugd Card 16:9 ratio with curved corners) */}
+            <div className="relative aspect-video w-full max-w-[320px] md:max-w-[340px] overflow-hidden rounded-2xl bg-[#eeebe5] border border-[#e5e1d8] shadow-[0_1px_3px_rgba(28,25,23,0.06),0_1px_2px_rgba(28,25,23,0.04)] shrink-0">
               {playbook.thumbnail ? (
                 <Image
                   src={playbook.thumbnail}
                   alt={playbook.title}
                   fill
-                  sizes="(max-width: 768px) 280px, 320px"
-                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 340px"
+                  className="object-cover object-center"
                   priority
                 />
               ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-stone-900 to-stone-800 text-white">
-                  <BookOpen className="h-14 w-14 mb-4 text-stone-400" />
-                  <span className="font-serif text-lg font-bold leading-snug">{playbook.title}</span>
+                <div className="h-full w-full flex flex-col items-center justify-center p-6 text-center bg-[#eeebe5] text-stone-600">
+                  <BookOpen className="h-10 w-10 mb-2 text-stone-400" />
+                  <span className="font-semibold text-xs leading-snug">{playbook.title}</span>
                 </div>
               )}
-              {/* Subtle book spine lighting effect */}
-              <div className="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/20 to-transparent pointer-events-none" />
-              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-xl pointer-events-none" />
             </div>
 
             {/* Price & Action Box */}
-            <div className="w-full max-w-[280px] md:max-w-[320px] bg-white rounded-xl border border-stone-200 p-5 shadow-xs space-y-4">
+            <div className="w-full max-w-[320px] md:max-w-[340px] bg-white rounded-2xl border border-[#dcd8d0] p-5 shadow-[0_1px_3px_rgba(28,25,23,0.06),0_1px_2px_rgba(28,25,23,0.04)] space-y-4">
               
               {/* Price Header */}
               <div className="flex items-baseline justify-between">
@@ -326,7 +324,7 @@ export default function PlaybookDetailView({
             </div>
 
             {/* Rate This Playbook Widget (Matches Screenshot 1 Bottom Left) */}
-            <div className="w-full max-w-[280px] md:max-w-[320px] bg-white rounded-xl border border-stone-200 p-4 shadow-2xs text-center space-y-2">
+            <div className="w-full max-w-[320px] md:max-w-[340px] bg-white rounded-2xl border border-[#dcd8d0] p-4 shadow-2xs text-center space-y-2">
               <span className="text-xs font-medium text-stone-600 block">
                 {userRating ? `You rated this ${userRating} stars` : "Rate this Playbook"}
               </span>
@@ -676,44 +674,9 @@ export default function PlaybookDetailView({
                 </Link>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {relatedBooks.map((rel) => (
-                  <Link
-                    key={rel.slug}
-                    href={`/${rel.slug}`}
-                    className="group flex flex-col space-y-2 bg-white rounded-lg border border-stone-200 p-2.5 shadow-2xs hover:shadow-md transition-shadow"
-                  >
-                    <div className="relative aspect-[4/5] rounded-md overflow-hidden bg-stone-100 border border-stone-200">
-                      {rel.thumbnail ? (
-                        <Image
-                          src={rel.thumbnail}
-                          alt={rel.title}
-                          fill
-                          sizes="(max-width: 640px) 50vw, 25vw"
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-xs text-stone-400 p-2 text-center">
-                          {rel.title}
-                        </div>
-                      )}
-                    </div>
-                    <div className="space-y-1">
-                      <h4 className="font-serif text-xs font-bold text-stone-900 line-clamp-2 leading-snug group-hover:underline">
-                        {rel.title}
-                      </h4>
-                      <p className="text-[11px] text-stone-500">Plugd Publishing</p>
-                      <div className="flex items-center justify-between pt-0.5 text-[11px]">
-                        <span className="flex items-center gap-1 font-bold text-stone-800">
-                          <Star className="h-3 w-3 fill-amber-500 text-amber-500" />
-                          {rel.rating}
-                        </span>
-                        <span className="font-semibold text-stone-900">
-                          ${rel.price.toFixed(2)}
-                        </span>
-                      </div>
-                    </div>
-                  </Link>
+                  <PlaybookFeedCard key={rel.slug} playbook={rel} />
                 ))}
               </div>
             </div>
