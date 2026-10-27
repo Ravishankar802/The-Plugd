@@ -352,14 +352,14 @@ export default function PlaybookDetailView({
               {/* Action Buttons: Add to cart & Buy now */}
               <div className="space-y-2 pt-1">
                 {canAccess ? (
-                  <Link
-                    href={`/learn/${playbook.slug}`}
+                  <a
+                    href={`/books/${playbook.slug}.pdf`}
                     onClick={handleStartReading}
                     className="w-full py-2.5 px-4 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-xs transition-all active:scale-[0.99] cursor-pointer"
                   >
                     <BookOpen className="h-4 w-4" />
                     <span>{hasStartedReading ? "Continue Reading" : "Start Reading"}</span>
-                  </Link>
+                  </a>
                 ) : (
                   <>
                     <button

@@ -55,6 +55,14 @@ export default async function LearnCoursePage({ params, searchParams }: LearnPag
     redirect(`/learn/${course.slug}`);
   }
 
+  // If viewing this PDF book, redirect directly to the static PDF file in the browser tab
+  if (
+    course.slug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
+    courseSlug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything"
+  ) {
+    redirect(`/books/${course.slug}.pdf`);
+  }
+
   // Server-side Authorization Check
   let hasAccess =
     Boolean(IS_REVIEW_PHASE_FREE_ACCESS) ||
