@@ -199,7 +199,20 @@ def build(slug, reg):
         h = p.get("header")
         assert not (h and h.endswith("...")), h
 
-    ts = '// Book manuscript, %d pages\n// Title: %s\n\nimport { WebBookPage } from "./sell-pdfs-with-ai-book";\n\nexport const %s: WebBookPage[] = %s;\n\nexport const TOTAL_%s = %s.length;\n' % (len(pages), title, export, blob, export, export)
+    if fname == "sell-pdfs-with-ai-book":
+        import_stmt = """export interface WebBookPage {
+  pageNumber: number;
+  type: "cover" | "half-title" | "title" | "copyright" | "toc" | "chapter-start" | "content";
+  partTitle?: string;
+  chapterTitle?: string;
+  header?: string;
+  content: string[];
+  imageUrl?: string;
+}"""
+    else:
+        import_stmt = 'import { WebBookPage } from "./sell-pdfs-with-ai-book";'
+
+    ts = '// Book manuscript, %d pages\n// Title: %s\n\n%s\n\nexport const %s: WebBookPage[] = %s;\n\nexport const TOTAL_%s = %s.length;\n' % (len(pages), title, import_stmt, export, blob, export, export)
     open(out_path, "w", encoding="utf-8").write(ts)
 
     words = sum(wc(" ".join(p["content"])) for p in pages)

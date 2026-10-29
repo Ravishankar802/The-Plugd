@@ -1,7 +1,15 @@
 // Book manuscript, 361 pages
 // Title: I SELL PDFS WITH AI AND IT CHANGED MY LIFE (REVEALING EVERYTHING)
 
-import { WebBookPage } from "./sell-pdfs-with-ai-book";
+export interface WebBookPage {
+  pageNumber: number;
+  type: "cover" | "half-title" | "title" | "copyright" | "toc" | "chapter-start" | "content";
+  partTitle?: string;
+  chapterTitle?: string;
+  header?: string;
+  content: string[];
+  imageUrl?: string;
+}
 
 export const SELL_PDFS_WITH_AI_BOOK_PAGES: WebBookPage[] = [
   {
