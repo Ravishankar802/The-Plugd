@@ -14,6 +14,7 @@ export default function Header({
   searchQuery = "",
   onSearchChange,
   showSearch = true,
+  darkMode = false,
 }: {
   activeCourse?: string;
   onOpenCheckout?: (slug?: "men" | "women") => void;
@@ -23,19 +24,28 @@ export default function Header({
   searchQuery?: string;
   onSearchChange?: (val: string) => void;
   showSearch?: boolean;
+  darkMode?: boolean;
 }) {
   const mode = variant || (isLanding ? "dating" : "app");
 
   // Platform Header (YouTube-inspired top navigation)
   if (mode === "platform") {
     return (
-      <header className="sticky top-0 z-50 w-full border-b border-[#dcd8d0] bg-[#e7e4dd]/95 backdrop-blur-md">
+      <header
+        className={`sticky top-0 z-50 w-full border-b backdrop-blur-md ${
+          darkMode
+            ? "border-[#272727] bg-[#0f0f0f]/95 text-white"
+            : "border-[#dcd8d0] bg-[#e7e4dd]/95"
+        }`}
+      >
         <div className="mx-auto flex h-[56px] w-full max-w-[1600px] items-center justify-between px-3 sm:px-6 gap-2 sm:gap-4">
           {/* Left: Brand Logo & Lockup */}
           <div className="flex items-center shrink-0">
             <Link
               href="/"
-              className="group inline-flex items-center gap-2.5 text-[#1c1917] transition-colors"
+              className={`group inline-flex items-center gap-2.5 transition-colors ${
+                darkMode ? "text-white" : "text-[#1c1917]"
+              }`}
               aria-label="Plugd Playbooks home"
             >
               <Image
@@ -46,7 +56,11 @@ export default function Header({
                 className="rounded-md shrink-0"
                 priority
               />
-              <span className="text-[18px] font-bold tracking-tight text-[#1c1917]">
+              <span
+                className={`text-[18px] font-bold tracking-tight ${
+                  darkMode ? "text-white" : "text-[#1c1917]"
+                }`}
+              >
                 Plugd Playbooks
               </span>
             </Link>
@@ -57,19 +71,31 @@ export default function Header({
             <div className="flex flex-1 items-center justify-center max-w-[620px] px-1 sm:px-4">
               <div className="w-full flex items-center">
                 <div className="relative flex-1 flex items-center">
-                  <Search className="absolute left-3.5 h-4 w-4 text-[#78716c] pointer-events-none" />
+                  <Search
+                    className={`absolute left-3.5 h-4 w-4 pointer-events-none ${
+                      darkMode ? "text-[#aaaaaa]" : "text-[#78716c]"
+                    }`}
+                  />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => onSearchChange?.(e.target.value)}
                     placeholder="Search Playbooks"
-                    className="w-full h-9 sm:h-10 pl-9 pr-8 rounded-l-full border border-[#d6d3d1] bg-white text-[13.5px] sm:text-sm text-[#1c1917] placeholder:text-[#a8a29e] focus:outline-none focus:border-[#1c1917] transition-all"
+                    className={`w-full h-9 sm:h-10 pl-9 pr-8 rounded-l-full border text-[13.5px] sm:text-sm focus:outline-none transition-all ${
+                      darkMode
+                        ? "border-[#303030] bg-[#121212] text-white placeholder:text-[#888888] focus:border-[#3ea6ff]"
+                        : "border-[#d6d3d1] bg-white text-[#1c1917] placeholder:text-[#a8a29e] focus:border-[#1c1917]"
+                    }`}
                   />
                   {searchQuery && (
                     <button
                       type="button"
                       onClick={() => onSearchChange?.("")}
-                      className="absolute right-2.5 text-[#78716c] hover:text-[#1c1917] p-0.5 rounded-full hover:bg-[#dcd8d0] transition-colors cursor-pointer"
+                      className={`absolute right-2.5 p-0.5 rounded-full transition-colors cursor-pointer ${
+                        darkMode
+                          ? "text-[#aaaaaa] hover:text-white hover:bg-[#272727]"
+                          : "text-[#78716c] hover:text-[#1c1917] hover:bg-[#dcd8d0]"
+                      }`}
                       title="Clear search"
                     >
                       <X className="h-3.5 w-3.5" />
@@ -78,10 +104,18 @@ export default function Header({
                 </div>
 
                 <div
-                  className="h-9 sm:h-10 px-4 sm:px-5 rounded-r-full border-y border-r border-[#d6d3d1] bg-[#ded9d0] text-[#44403c] flex items-center justify-center shrink-0"
+                  className={`h-9 sm:h-10 px-4 sm:px-5 rounded-r-full border-y border-r flex items-center justify-center shrink-0 ${
+                    darkMode
+                      ? "border-[#303030] bg-[#222222] text-[#aaaaaa]"
+                      : "border-[#d6d3d1] bg-[#ded9d0] text-[#44403c]"
+                  }`}
                   aria-hidden="true"
                 >
-                  <Search className="h-4 w-4 text-[#57534e]" />
+                  <Search
+                    className={`h-4 w-4 ${
+                      darkMode ? "text-[#aaaaaa]" : "text-[#57534e]"
+                    }`}
+                  />
                 </div>
               </div>
             </div>
@@ -91,7 +125,11 @@ export default function Header({
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Link
               href="/my-playbooks"
-              className="text-[13px] sm:text-[13.5px] font-medium text-[#1c1917] hover:text-[#2563eb] px-2.5 sm:px-3 py-1.5 rounded-full hover:bg-black/5 transition-colors whitespace-nowrap"
+              className={`text-[13px] sm:text-[13.5px] font-medium px-2.5 sm:px-3 py-1.5 rounded-full transition-colors whitespace-nowrap ${
+                darkMode
+                  ? "text-[#f1f1f1] hover:text-[#3ea6ff] hover:bg-white/10"
+                  : "text-[#1c1917] hover:text-[#2563eb] hover:bg-black/5"
+              }`}
             >
               My Playbooks
             </Link>
@@ -100,16 +138,28 @@ export default function Header({
               <button
                 type="button"
                 onClick={performLogout}
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-3 py-1.5 text-xs font-mono font-semibold uppercase tracking-wider text-[#78716c] hover:border-[#1c1917] hover:text-[#1c1917] transition-colors shadow-xs cursor-pointer"
+                className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-mono font-semibold uppercase tracking-wider transition-colors shadow-xs cursor-pointer ${
+                  darkMode
+                    ? "border-[#303030] bg-[#212121] text-[#aaaaaa] hover:border-[#555555] hover:text-white"
+                    : "border-[#e7e5e4] bg-white text-[#78716c] hover:border-[#1c1917] hover:text-[#1c1917]"
+                }`}
                 title="Log out"
               >
-                <LogOut className="h-3.5 w-3.5 text-[#78716c]" />
+                <LogOut
+                  className={`h-3.5 w-3.5 ${
+                    darkMode ? "text-[#aaaaaa]" : "text-[#78716c]"
+                  }`}
+                />
                 <span className="hidden sm:inline">Log out</span>
               </button>
             ) : (
               <Link
                 href="/login"
-                className="inline-flex items-center justify-center rounded-full border border-[#d6d3d1] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#1c1917] hover:bg-black/5 hover:border-[#1c1917] transition-colors shadow-xs"
+                className={`inline-flex items-center justify-center rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors shadow-xs ${
+                  darkMode
+                    ? "border-[#303030] bg-white text-black hover:bg-[#d9d9d9]"
+                    : "border-[#d6d3d1] bg-white text-[#1c1917] hover:bg-black/5 hover:border-[#1c1917]"
+                }`}
               >
                 Log in
               </Link>

@@ -149,13 +149,14 @@ export default function PlugdHomePageClient({
   }`;
 
   return (
-    <div className="min-h-screen bg-[#e7e4dd] text-[#1c1917] font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-[#0f0f0f] text-[#f1f1f1] font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col justify-between">
       <div>
         {/* Sticky Header with "Plugd Playbooks" Branding */}
         <Header
           variant="platform"
           hasAccess={hasAccess}
           showSearch={false}
+          darkMode={true}
         />
 
         <main className="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-10 pt-8 sm:pt-12 pb-20">
@@ -165,17 +166,17 @@ export default function PlugdHomePageClient({
           <section className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-14 pt-2 pb-6">
             {/* Left Column: Eyebrow, Editorial Title, Description */}
             <div className="flex-1 max-w-2xl text-left">
-              <div className="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-widest text-[#78716c] font-semibold mb-3">
+              <div className="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-widest text-[#aaaaaa] font-semibold mb-3">
                 <span>A DIRECTORY</span>
                 <span>·</span>
                 <span>2026</span>
               </div>
 
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#1c1917] leading-[1.08]">
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
                 Plugd Playbooks
               </h1>
 
-              <p className="mt-4 sm:mt-5 text-[15px] sm:text-base text-[#57534e] leading-relaxed max-w-xl font-normal">
+              <p className="mt-4 sm:mt-5 text-[15px] sm:text-base text-[#aaaaaa] leading-relaxed max-w-xl font-normal">
                 Practical playbooks for building AI businesses, finding customers,
                 and creating income online. Explore actionable knowledge, proven
                 frameworks, and step-by-step guides designed to help you turn ideas into
@@ -192,7 +193,7 @@ export default function PlugdHomePageClient({
           {/* ========================================================= */}
           {/* 2. SUBTLE DIVIDER LINE */}
           {/* ========================================================= */}
-          <div className="border-t border-[#dcd8d0] my-6 sm:my-8" />
+          <div className="border-t border-[#272727] my-6 sm:my-8" />
 
           {/* ========================================================= */}
           {/* 3. SEARCH & FILTER TOOLBAR (Inspired by Screenshot 3) */}
@@ -200,20 +201,20 @@ export default function PlugdHomePageClient({
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 mb-5">
             {/* Left: Search input */}
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#78716c] pointer-events-none" />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#aaaaaa] pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search Playbooks..."
-                className="w-full h-10 pl-9 pr-9 rounded-xl border border-[#d6d3d1] bg-white text-[13.5px] sm:text-sm text-[#1c1917] placeholder:text-[#a8a29e] focus:outline-none focus:border-[#1c1917] shadow-2xs transition-all"
+                className="w-full h-10 pl-9 pr-9 rounded-xl border border-[#303030] bg-[#121212] text-[13.5px] sm:text-sm text-white placeholder:text-[#717171] focus:outline-none focus:border-[#3ea6ff] shadow-2xs transition-all"
                 aria-label="Search Playbooks"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#78716c] hover:text-[#1c1917] p-1 rounded-full hover:bg-[#ded9d0] transition-colors cursor-pointer"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#aaaaaa] hover:text-white p-1 rounded-full hover:bg-[#272727] transition-colors cursor-pointer"
                   title="Clear search"
                   aria-label="Clear search input"
                 >
@@ -232,21 +233,21 @@ export default function PlugdHomePageClient({
                     setIsCategoryOpen(!isCategoryOpen);
                     setIsSortOpen(false);
                   }}
-                  className="inline-flex items-center gap-2 h-10 px-3.5 rounded-xl border border-[#d6d3d1] bg-white text-xs sm:text-[13px] font-medium text-[#1c1917] hover:border-[#a8a29e] shadow-2xs transition-all cursor-pointer"
+                  className="inline-flex items-center gap-2 h-10 px-3.5 rounded-xl border border-[#303030] bg-[#212121] text-xs sm:text-[13px] font-medium text-[#f1f1f1] hover:border-[#444444] hover:bg-[#272727] shadow-2xs transition-all cursor-pointer"
                   aria-expanded={isCategoryOpen}
                   aria-haspopup="listbox"
                 >
-                  <span className="text-[#78716c]">Category:</span>
-                  <span className="font-semibold">{categoryLabels[selectedCategory]}</span>
+                  <span className="text-[#aaaaaa]">Category:</span>
+                  <span className="font-semibold text-white">{categoryLabels[selectedCategory]}</span>
                   <ChevronDown
-                    className={`h-3.5 w-3.5 text-[#78716c] transition-transform duration-150 ${
+                    className={`h-3.5 w-3.5 text-[#aaaaaa] transition-transform duration-150 ${
                       isCategoryOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
 
                 {isCategoryOpen && (
-                  <div className="absolute right-0 sm:left-0 sm:right-auto mt-1.5 w-48 rounded-xl border border-[#dcd8d0] bg-white p-1.5 shadow-lg z-30 animate-in fade-in zoom-in-95 duration-100">
+                  <div className="absolute right-0 sm:left-0 sm:right-auto mt-1.5 w-48 rounded-xl border border-[#383838] bg-[#212121] p-1.5 shadow-2xl z-30 animate-in fade-in zoom-in-95 duration-100">
                     {(["all", "ai-businesses"] as CategoryFilter[]).map((catKey) => {
                       const isSelected = selectedCategory === catKey;
                       return (
@@ -259,14 +260,14 @@ export default function PlugdHomePageClient({
                           }}
                           className={`w-full flex items-center justify-between px-3 py-2 text-xs sm:text-[13px] rounded-lg transition-colors cursor-pointer ${
                             isSelected
-                              ? "bg-[#eff6ff] text-[#2563eb] font-semibold"
-                              : "text-[#44403c] hover:bg-[#f7f8fa]"
+                              ? "bg-[#2a2a2a] text-[#3ea6ff] font-semibold"
+                              : "text-[#f1f1f1] hover:bg-[#303030]"
                           }`}
                           role="option"
                           aria-selected={isSelected}
                         >
                           <span>{categoryLabels[catKey]}</span>
-                          {isSelected && <Check className="h-3.5 w-3.5 text-[#2563eb]" />}
+                          {isSelected && <Check className="h-3.5 w-3.5 text-[#3ea6ff]" />}
                         </button>
                       );
                     })}
@@ -282,21 +283,21 @@ export default function PlugdHomePageClient({
                     setIsSortOpen(!isSortOpen);
                     setIsCategoryOpen(false);
                   }}
-                  className="inline-flex items-center gap-2 h-10 px-3.5 rounded-xl border border-[#d6d3d1] bg-white text-xs sm:text-[13px] font-medium text-[#1c1917] hover:border-[#a8a29e] shadow-2xs transition-all cursor-pointer"
+                  className="inline-flex items-center gap-2 h-10 px-3.5 rounded-xl border border-[#303030] bg-[#212121] text-xs sm:text-[13px] font-medium text-[#f1f1f1] hover:border-[#444444] hover:bg-[#272727] shadow-2xs transition-all cursor-pointer"
                   aria-expanded={isSortOpen}
                   aria-haspopup="listbox"
                 >
-                  <span className="text-[#78716c]">Sort:</span>
-                  <span className="font-semibold">{sortLabels[sortOption]}</span>
+                  <span className="text-[#aaaaaa]">Sort:</span>
+                  <span className="font-semibold text-white">{sortLabels[sortOption]}</span>
                   <ChevronDown
-                    className={`h-3.5 w-3.5 text-[#78716c] transition-transform duration-150 ${
+                    className={`h-3.5 w-3.5 text-[#aaaaaa] transition-transform duration-150 ${
                       isSortOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
 
                 {isSortOpen && (
-                  <div className="absolute right-0 mt-1.5 w-44 rounded-xl border border-[#dcd8d0] bg-white p-1.5 shadow-lg z-30 animate-in fade-in zoom-in-95 duration-100">
+                  <div className="absolute right-0 mt-1.5 w-44 rounded-xl border border-[#383838] bg-[#212121] p-1.5 shadow-2xl z-30 animate-in fade-in zoom-in-95 duration-100">
                     {(["featured", "newest", "oldest", "az"] as SortOption[]).map((optKey) => {
                       const isSelected = sortOption === optKey;
                       return (
@@ -309,14 +310,14 @@ export default function PlugdHomePageClient({
                           }}
                           className={`w-full flex items-center justify-between px-3 py-2 text-xs sm:text-[13px] rounded-lg transition-colors cursor-pointer ${
                             isSelected
-                              ? "bg-[#eff6ff] text-[#2563eb] font-semibold"
-                              : "text-[#44403c] hover:bg-[#f7f8fa]"
+                              ? "bg-[#2a2a2a] text-[#3ea6ff] font-semibold"
+                              : "text-[#f1f1f1] hover:bg-[#303030]"
                           }`}
                           role="option"
                           aria-selected={isSelected}
                         >
                           <span>{sortLabels[optKey]}</span>
-                          {isSelected && <Check className="h-3.5 w-3.5 text-[#2563eb]" />}
+                          {isSelected && <Check className="h-3.5 w-3.5 text-[#3ea6ff]" />}
                         </button>
                       );
                     })}
@@ -326,7 +327,7 @@ export default function PlugdHomePageClient({
 
               {/* Grid / List View Toggle */}
               <div
-                className="inline-flex items-center rounded-xl border border-[#d6d3d1] bg-white p-1 shadow-2xs"
+                className="inline-flex items-center rounded-xl border border-[#303030] bg-[#212121] p-1 shadow-2xs"
                 role="group"
                 aria-label="View layout switcher"
               >
@@ -335,8 +336,8 @@ export default function PlugdHomePageClient({
                   onClick={() => setViewMode("grid")}
                   className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                     viewMode === "grid"
-                      ? "bg-[#1c1917] text-white"
-                      : "text-[#78716c] hover:text-[#1c1917] hover:bg-[#f2eee3]"
+                      ? "bg-white text-black"
+                      : "text-[#aaaaaa] hover:text-white hover:bg-[#272727]"
                   }`}
                   title="Grid view"
                   aria-label="Switch to grid view"
@@ -349,8 +350,8 @@ export default function PlugdHomePageClient({
                   onClick={() => setViewMode("list")}
                   className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                     viewMode === "list"
-                      ? "bg-[#1c1917] text-white"
-                      : "text-[#78716c] hover:text-[#1c1917] hover:bg-[#f2eee3]"
+                      ? "bg-white text-black"
+                      : "text-[#aaaaaa] hover:text-white hover:bg-[#272727]"
                   }`}
                   title="List view"
                   aria-label="Switch to list view"
@@ -365,13 +366,13 @@ export default function PlugdHomePageClient({
           {/* ========================================================= */}
           {/* 4. RESULT COUNT & ACTIVE FILTER PILLS */}
           {/* ========================================================= */}
-          <div className="flex items-center justify-between gap-4 mb-6 text-xs font-mono text-[#78716c]">
+          <div className="flex items-center justify-between gap-4 mb-6 text-xs font-mono text-[#aaaaaa]">
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-[#44403c]">{countText}</span>
+              <span className="font-semibold text-white">{countText}</span>
               {searchQuery.trim() && (
                 <span>
                   matching &ldquo;
-                  <strong className="text-[#1c1917] font-semibold">{searchQuery}</strong>
+                  <strong className="text-white font-semibold">{searchQuery}</strong>
                   &rdquo;
                 </span>
               )}
@@ -385,7 +386,7 @@ export default function PlugdHomePageClient({
                   setSelectedCategory("all");
                   setSortOption("featured");
                 }}
-                className="inline-flex items-center gap-1 text-[#2563eb] hover:text-[#1d4ed8] hover:underline cursor-pointer"
+                className="inline-flex items-center gap-1 text-[#3ea6ff] hover:text-[#65b8ff] hover:underline cursor-pointer"
               >
                 <span>Reset filters</span>
               </button>
@@ -401,7 +402,7 @@ export default function PlugdHomePageClient({
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-7 items-stretch">
                 {filteredAndSortedPlaybooks.map((playbook) => (
                   <div key={playbook.id} className="flex flex-col h-full">
-                    <PlaybookFeedCard playbook={playbook} />
+                    <PlaybookFeedCard playbook={playbook} darkMode={true} />
                   </div>
                 ))}
               </div>
@@ -416,7 +417,7 @@ export default function PlugdHomePageClient({
           ) : (
             /* EMPTY STATE */
             <div className="py-24 text-center max-w-md mx-auto">
-              <p className="text-[15px] sm:text-base font-medium text-[#78716c]">
+              <p className="text-[15px] sm:text-base font-medium text-[#aaaaaa]">
                 No Playbooks found matching &ldquo;{searchQuery}&rdquo;.
               </p>
               <div className="mt-4 flex items-center justify-center gap-3">
@@ -427,7 +428,7 @@ export default function PlugdHomePageClient({
                     setSelectedCategory("all");
                     setSortOption("featured");
                   }}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#d6d3d1] bg-white px-4 py-1.5 text-xs font-mono font-semibold text-[#1c1917] hover:border-[#1c1917] transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#383838] bg-[#212121] px-4 py-1.5 text-xs font-mono font-semibold text-white hover:border-[#555555] transition-colors cursor-pointer"
                 >
                   Reset filters
                 </button>
@@ -440,22 +441,22 @@ export default function PlugdHomePageClient({
       {/* ========================================================= */}
       {/* 6. MINIMAL EDITORIAL FOOTER */}
       {/* ========================================================= */}
-      <footer className="border-t border-[#dcd8d0] bg-[#ded9d0] py-8 text-xs text-[#57534e]">
+      <footer className="border-t border-[#272727] bg-[#0f0f0f] py-8 text-xs text-[#aaaaaa]">
         <div className="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-[#1c1917]">Plugd Playbooks</span>
+            <span className="font-bold text-white">Plugd Playbooks</span>
             <span>·</span>
             <span>Outcome-focused Playbooks</span>
           </div>
 
           <div className="flex items-center gap-6">
-            <Link href="/terms-of-service" className="hover:text-[#1c1917] transition-colors">
+            <Link href="/terms-of-service" className="hover:text-white transition-colors">
               Terms
             </Link>
-            <Link href="/privacy-policy" className="hover:text-[#1c1917] transition-colors">
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">
               Privacy
             </Link>
-            <a href="mailto:ravx003@gmail.com" className="hover:text-[#1c1917] transition-colors">
+            <a href="mailto:ravx003@gmail.com" className="hover:text-white transition-colors">
               Contact
             </a>
           </div>
@@ -472,12 +473,12 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
   const formattedPrice = playbook.price ? Number(playbook.price).toFixed(2) : "3.00";
 
   return (
-    <div className="group relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 p-4 sm:p-5 rounded-2xl bg-white hover:bg-[#f7f8fa] border border-[#dcd8d0] hover:border-[#c7c4c0] shadow-[0_1px_3px_rgba(28,25,23,0.04)] hover:shadow-md transition-all duration-200">
+    <div className="group relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 p-4 sm:p-5 rounded-2xl bg-[#181818] hover:bg-[#222222] border border-[#272727] hover:border-[#3e3e3e] shadow-[0_2px_8px_rgba(0,0,0,0.5)] hover:shadow-xl transition-all duration-200">
       <div className="flex items-start sm:items-center gap-4 sm:gap-5 flex-1 min-w-0">
         {/* Thumbnail Preview */}
         <Link
           href={playbook.href}
-          className="relative aspect-video w-32 sm:w-44 shrink-0 overflow-hidden rounded-xl bg-[#eeebe5] border border-[#e5e1d8] focus:outline-none"
+          className="relative aspect-video w-32 sm:w-44 shrink-0 overflow-hidden rounded-xl bg-[#212121] border border-[#272727] focus:outline-none"
           tabIndex={-1}
           aria-hidden="true"
         >
@@ -489,40 +490,40 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
               className="object-cover"
             />
           ) : (
-            <div className="h-full w-full bg-[#eeebe5]" />
+            <div className="h-full w-full bg-[#212121]" />
           )}
         </Link>
 
         {/* Text & Metadata */}
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-2 mb-1">
-            <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[#eff6ff] text-[11px] font-semibold text-[#1d4ed8]">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[#2563eb]/20 text-[11px] font-semibold text-[#60a5fa] border border-[#2563eb]/30">
               {playbook.categoryName}
             </span>
             {playbook.badge && (
-              <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[#f5f5f4] text-[11px] font-bold text-[#44403c] border border-[#e7e5e4]">
+              <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[#272727] text-[11px] font-bold text-[#f1f1f1] border border-[#383838]">
                 {playbook.badge}
               </span>
             )}
           </div>
 
           <Link href={playbook.href} className="focus:outline-none block">
-            <h3 className="text-base sm:text-lg font-semibold text-[#1c1917] leading-snug group-hover:text-[#2563eb] transition-colors line-clamp-4">
+            <h3 className="text-base sm:text-lg font-semibold text-[#f1f1f1] leading-snug group-hover:text-[#3ea6ff] transition-colors line-clamp-4">
               {playbook.title}
             </h3>
           </Link>
 
-          <p className="mt-1 text-xs sm:text-[13px] text-[#57534e] line-clamp-2 max-w-3xl">
+          <p className="mt-1 text-xs sm:text-[13px] text-[#aaaaaa] line-clamp-2 max-w-3xl">
             {playbook.description}
           </p>
 
-          <div className="mt-2.5 flex items-center flex-wrap gap-2 sm:gap-3 text-xs text-[#78716c]">
+          <div className="mt-2.5 flex items-center flex-wrap gap-2 sm:gap-3 text-xs text-[#888888]">
             {playbook.rating && (
-              <div className="inline-flex items-center gap-1 font-semibold text-[#1c1917]">
+              <div className="inline-flex items-center gap-1 font-semibold text-white">
                 <Star className="h-3 w-3 fill-[#d97706] text-[#d97706]" />
                 <span>{playbook.rating}</span>
                 {playbook.ratingCount && (
-                  <span className="text-[#78716c] font-normal">
+                  <span className="text-[#888888] font-normal">
                     ({typeof playbook.ratingCount === "number"
                       ? playbook.ratingCount.toLocaleString()
                       : playbook.ratingCount})
@@ -532,13 +533,13 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
             )}
             {playbook.modulesCount > 0 && (
               <>
-                <span className="text-[#d6d3d1]">·</span>
+                <span className="text-[#383838]">·</span>
                 <span>{playbook.modulesCount} modules</span>
-                <span className="text-[#d6d3d1]">·</span>
+                <span className="text-[#383838]">·</span>
                 <span>{playbook.lessonsCount} lessons</span>
                 {playbook.slidesCount && (
                   <>
-                    <span className="text-[#d6d3d1]">·</span>
+                    <span className="text-[#383838]">·</span>
                     <span>{playbook.slidesCount} slides</span>
                   </>
                 )}
@@ -546,7 +547,7 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
             )}
             {playbook.hoursOfMaterial && (
               <>
-                <span className="text-[#d6d3d1]">·</span>
+                <span className="text-[#383838]">·</span>
                 <span>{playbook.hoursOfMaterial}</span>
               </>
             )}
@@ -555,32 +556,32 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
       </div>
 
       {/* Pricing & CTA Button */}
-      <div className="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-3 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-[#f0eee9]">
+      <div className="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-3 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-[#272727]">
         <div className="text-right">
           {playbook.badge === "Coming Soon" ? (
             <div className="flex items-center gap-1.5">
-              <span className="inline-flex items-center rounded-md bg-stone-100 px-2 py-0.5 text-xs font-bold text-stone-600 border border-stone-200">
+              <span className="inline-flex items-center rounded-md bg-[#272727] px-2 py-0.5 text-xs font-bold text-[#aaaaaa] border border-[#383838]">
                 Coming Soon
               </span>
-              <span className="text-[11px] text-[#78716c] font-medium hidden xs:inline">
+              <span className="text-[11px] text-[#888888] font-medium hidden xs:inline">
                 In Production
               </span>
             </div>
           ) : IS_REVIEW_PHASE_FREE_ACCESS ? (
             <div className="flex items-center gap-1.5">
-              <span className="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-200">
+              <span className="inline-flex items-center rounded-md bg-emerald-950/60 px-2 py-0.5 text-xs font-bold text-emerald-400 border border-emerald-800">
                 Free
               </span>
-              <span className="text-[11px] text-[#78716c] font-medium hidden xs:inline">
+              <span className="text-[11px] text-[#888888] font-medium hidden xs:inline">
                 Review Access
               </span>
             </div>
           ) : (
             <div className="flex items-baseline gap-1.5">
-              <span className="text-base sm:text-lg font-bold text-[#1c1917]">
+              <span className="text-base sm:text-lg font-bold text-white">
                 ${formattedPrice}
               </span>
-              <span className="text-xs text-[#a8a29e] line-through">
+              <span className="text-xs text-[#717171] line-through">
                 ${(playbook.originalPrice ?? 9).toFixed(2)}
               </span>
             </div>
@@ -590,7 +591,7 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
         {playbook.badge === "Coming Soon" ? (
           <Link
             href={playbook.href}
-            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-700 px-4 py-2 text-xs font-semibold shadow-xs transition-colors"
+            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#272727] hover:bg-[#333333] border border-[#383838] text-[#aaaaaa] px-4 py-2 text-xs font-semibold shadow-xs transition-colors"
           >
             <span>Coming Soon</span>
           </Link>
@@ -605,7 +606,7 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
         ) : (
           <Link
             href={playbook.href}
-            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#1c1917] hover:bg-[#2563eb] text-white px-4 py-2 text-xs font-semibold shadow-xs transition-colors"
+            className="inline-flex items-center justify-center gap-1.5 rounded-full border border-[#3ea6ff] text-[#3ea6ff] hover:bg-[#3ea6ff]/15 bg-transparent px-4 py-2 text-xs font-semibold shadow-xs transition-colors"
           >
             <span>Add to cart</span>
             <ArrowRight className="h-3.5 w-3.5" />
@@ -637,18 +638,18 @@ function OrbitEmblem() {
           cx="160"
           cy="160"
           r="152"
-          stroke="#78716c"
+          stroke="#333333"
           strokeWidth="0.75"
           strokeDasharray="2 4"
-          opacity="0.35"
+          opacity="0.5"
         />
         <circle
           cx="160"
           cy="160"
           r="140"
-          stroke="#78716c"
+          stroke="#333333"
           strokeWidth="0.5"
-          opacity="0.25"
+          opacity="0.35"
         />
 
         {/* Slow Clockwise Rotating Orbit Layer */}
@@ -658,9 +659,9 @@ function OrbitEmblem() {
             cx="160"
             cy="160"
             r="124"
-            stroke="#57534e"
+            stroke="#444444"
             strokeWidth="0.9"
-            opacity="0.45"
+            opacity="0.6"
           />
 
           {/* 8 Geometric Tick Marks on Ring */}
@@ -671,9 +672,9 @@ function OrbitEmblem() {
               y1="34"
               x2="160"
               y2="40"
-              stroke="#1c1917"
+              stroke="#ffffff"
               strokeWidth="1"
-              opacity="0.6"
+              opacity="0.8"
               transform={`rotate(${deg} 160 160)`}
             />
           ))}
@@ -684,16 +685,16 @@ function OrbitEmblem() {
             cy="160"
             rx="132"
             ry="58"
-            stroke="#2563eb"
+            stroke="#3ea6ff"
             strokeWidth="0.85"
-            opacity="0.55"
+            opacity="0.75"
             transform="rotate(32 160 160)"
           />
 
           {/* Node on Orbital Ellipse 1 */}
           <g transform="rotate(32 160 160)">
-            <circle cx="292" cy="160" r="3.5" fill="#2563eb" />
-            <circle cx="292" cy="160" r="7" stroke="#2563eb" strokeWidth="0.5" opacity="0.4" />
+            <circle cx="292" cy="160" r="3.5" fill="#3ea6ff" />
+            <circle cx="292" cy="160" r="7" stroke="#3ea6ff" strokeWidth="0.5" opacity="0.6" />
           </g>
         </g>
 
@@ -705,10 +706,10 @@ function OrbitEmblem() {
             cy="160"
             rx="128"
             ry="62"
-            stroke="#78716c"
+            stroke="#555555"
             strokeWidth="0.85"
             strokeDasharray="4 4"
-            opacity="0.45"
+            opacity="0.55"
             transform="rotate(-38 160 160)"
           />
 
@@ -717,15 +718,15 @@ function OrbitEmblem() {
             cx="160"
             cy="160"
             r="92"
-            stroke="#1c1917"
+            stroke="#ffffff"
             strokeWidth="0.8"
             strokeDasharray="3 5"
-            opacity="0.4"
+            opacity="0.3"
           />
 
           {/* Node on Ring */}
-          <circle cx="160" cy="68" r="3" fill="#1c1917" />
-          <circle cx="160" cy="252" r="2.5" fill="#78716c" opacity="0.7" />
+          <circle cx="160" cy="68" r="3" fill="#ffffff" />
+          <circle cx="160" cy="252" r="2.5" fill="#aaaaaa" opacity="0.7" />
         </g>
 
         {/* Center Geometric Core: Knowledge Spark / Diamond */}
@@ -733,35 +734,35 @@ function OrbitEmblem() {
           cx="160"
           cy="160"
           r="54"
-          stroke="#78716c"
+          stroke="#333333"
           strokeWidth="0.75"
-          opacity="0.3"
+          opacity="0.4"
         />
         <circle
           cx="160"
           cy="160"
           r="36"
-          stroke="#78716c"
+          stroke="#333333"
           strokeWidth="0.5"
           strokeDasharray="2 2"
-          opacity="0.4"
+          opacity="0.5"
         />
 
         {/* Central Geometric Symbol */}
         <polygon
           points="160,136 177,160 160,184 143,160"
           fill="none"
-          stroke="#2563eb"
+          stroke="#3ea6ff"
           strokeWidth="1.5"
         />
         <polygon
           points="160,143 172,160 160,177 148,160"
           fill="none"
-          stroke="#1c1917"
+          stroke="#ffffff"
           strokeWidth="0.75"
-          opacity="0.6"
+          opacity="0.7"
         />
-        <circle cx="160" cy="160" r="3" fill="#2563eb" />
+        <circle cx="160" cy="160" r="3" fill="#3ea6ff" />
       </svg>
     </div>
   );
