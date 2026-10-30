@@ -1,0 +1,141 @@
+import os, json, re
+
+batch_5a = [
+    {
+        "slug": "3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today",
+        "title": "3 Best AI Businesses to Start Before 2027 and the One I Would Start Today",
+        "subtitle": "A Definitive Commercial Architecture on High-Margin Automated Cash Flow Enterprises",
+        "chapters": [
+            ("01-the-2027-ai-commercial-inflection-window.md", "The 2027 AI Commercial Inflection Window"),
+            ("02-why-generic-wrappers-and-chatbots-fail.md", "Why Generic Wrappers and Chatbots Fail"),
+            ("03-business-model-one-workflow-automation-agencies.md", "Business Model One: Workflow Automation Agencies"),
+            ("04-unit-economics-of-internal-workflow-retained-services.md", "Unit Economics of Internal Workflow Retained Services"),
+            ("05-business-model-two-verticalized-knowledge-publishing.md", "Business Model Two: Verticalized Knowledge Publishing"),
+            ("06-building-high-margin-digital-intelligence-portals.md", "Building High-Margin Digital Intelligence Portals"),
+            ("07-business-model-three-micro-saas-operational-utilities.md", "Business Model Three: Micro-SaaS Operational Utilities"),
+            ("08-software-without-developers-the-no-code-advantage.md", "Software Without Developers: The No-Code Advantage"),
+            ("09-the-winner-revealed-the-business-i-would-launch-today.md", "The Winner Revealed: The Business I Would Launch Today"),
+            ("10-architecting-the-definitive-day-one-offer.md", "Architecting the Definitive Day-One Offer"),
+            ("11-systematic-client-acquisition-without-inbound-fame.md", "Systematic Client Acquisition Without Inbound Fame"),
+            ("12-cold-outreach-protocols-for-high-value-b2b-buyers.md", "Cold Outreach Protocols for High-Value B2B Buyers"),
+            ("13-delivering-autonomous-systems-with-military-precision.md", "Delivering Autonomous Systems with Military Precision"),
+            ("14-pricing-models-from-setup-fees-to-equity-participation.md", "Pricing Models: From Setup Fees to Equity Participation"),
+            ("15-protecting-your-agency-against-platform-risk.md", "Protecting Your Agency Against Platform Risk"),
+            ("16-operational-delegation-and-subcontracting-talent.md", "Operational Delegation and Subcontracting Talent"),
+            ("17-cash-flow-management-and-tax-shield-mechanics.md", "Cash Flow Management and Tax Shield Mechanics"),
+            ("18-scaling-from-ten-thousand-to-fifty-thousand-a-month.md", "Scaling from Ten Thousand to Fifty Thousand a Month"),
+            ("19-defending-your-competitive-moat-in-changing-markets.md", "Defending Your Competitive Moat in Changing Markets"),
+            ("20-the-five-year-autonomous-enterprise-horizon.md", "The Five-Year Autonomous Enterprise Horizon")
+        ]
+    },
+    {
+        "slug": "the-4-levels-to-getting-rich-in-2026",
+        "title": "The 4 Levels to Getting Rich in 2026",
+        "subtitle": "The Definitive Capital Escalation Ladder from Wage Earner to High-Leverage Wealth Builder",
+        "chapters": [
+            ("01-the-brutal-arithmetic-of-modern-wealth-creation.md", "The Brutal Arithmetic of Modern Wealth Creation"),
+            ("02-level-one-the-linear-labor-trap.md", "Level One: The Linear Labor Trap"),
+            ("03-escaping-hour-for-dollar-compensation-models.md", "Escaping Hour-for-Dollar Compensation Models"),
+            ("04-building-the-ten-thousand-dollar-liquidity-cushion.md", "Building the Ten Thousand Dollar Liquidity Cushion"),
+            ("05-level-two-the-specialized-service-provider.md", "Level Two: The Specialized Service Provider"),
+            ("06-productizing-your-skills-into-repeatable-deliverables.md", "Productizing Your Skills into Repeatable Deliverables"),
+            ("07-the-one-hundred-thousand-dollar-service-milestone.md", "The One Hundred Thousand Dollar Service Milestone"),
+            ("08-delegating-fulfillment-and-buying-back-your-time.md", "Delegating Fulfillment and Buying Back Your Time"),
+            ("09-level-three-the-scalable-digital-asset-owner.md", "Level Three: The Scalable Digital Asset Owner"),
+            ("10-software-media-and-intellectual-property-leverage.md", "Software, Media, and Intellectual Property Leverage"),
+            ("11-the-half-million-dollar-operational-flywheel.md", "The Half-Million Dollar Operational Flywheel"),
+            ("12-navigating-overhead-margin-compression-and-churn.md", "Navigating Overhead, Margin Compression, and Churn"),
+            ("13-level-four-the-strategic-capital-allocator.md", "Level Four: The Strategic Capital Allocator"),
+            ("14-reinvesting-cash-flow-into-high-yield-equities.md", "Reinvesting Cash Flow into High-Yield Equities"),
+            ("15-acquiring-undervalued-cash-flowing-digital-businesses.md", "Acquiring Undervalued Cash-Flowing Digital Businesses"),
+            ("16-the-psychology-of-wealth-preservation-and-risk.md", "The Psychology of Wealth Preservation and Risk"),
+            ("17-building-impenetrable-asset-protection-structures.md", "Building Impenetrable Asset Protection Structures"),
+            ("18-the-eight-figure-liquidity-milestone.md", "The Eight-Figure Liquidity Milestone"),
+            ("19-avoiding-lifestyle-inflation-and-ego-traps.md", "Avoiding Lifestyle Inflation and Ego Traps"),
+            ("20-the-perpetual-wealth-compounding-manifesto.md", "The Perpetual Wealth Compounding Manifesto")
+        ]
+    },
+    {
+        "slug": "how-i-turned-300-to-100-000-at-19-my-side-hustles",
+        "title": "How I Turned 300 to 100,000 at 19: My Side Hustles",
+        "subtitle": "The Raw Tactical Blueprint of Starting with Pocket Money and Building Serious Capital",
+        "chapters": [
+            ("01-the-three-hundred-dollar-starting-line.md", "The Three Hundred Dollar Starting Line"),
+            ("02-the-psychological-reset-of-extreme-frugality.md", "The Psychological Reset of Extreme Frugality"),
+            ("03-hustle-one-hyper-local-service-arbitrage.md", "Hustle One: Hyper-Local Service Arbitrage"),
+            ("04-landing-your-first-three-paying-neighborhood-clients.md", "Landing Your First Three Paying Neighborhood Clients"),
+            ("05-the-first-one-thousand-dollar-bankroll-milestone.md", "The First One Thousand Dollar Bankroll Milestone"),
+            ("06-hustle-two-digital-media-clipping-and-repurposing.md", "Hustle Two: Digital Media Clipping and Repurposing"),
+            ("07-pitching-podcasters-and-creators-with-free-samples.md", "Pitching Podcasters and Creators with Free Samples"),
+            ("08-converting-free-audits-into-monthly-retainers.md", "Converting Free Audits into Monthly Retainers"),
+            ("09-the-ten-thousand-dollar-inflection-point.md", "The Ten Thousand Dollar Inflection Point"),
+            ("10-managing-burnout-while-working-seventy-hour-weeks.md", "Managing Burnout While Working Seventy-Hour Weeks"),
+            ("11-hustle-three-productized-local-business-automation.md", "Hustle Three: Productized Local Business Automation"),
+            ("12-selling-instant-response-systems-to-contractors.md", "Selling Instant-Response Systems to Contractors"),
+            ("13-the-fifty-thousand-dollar-operational-hurdle.md", "The Fifty Thousand Dollar Operational Hurdle"),
+            ("14-hiring-your-first-freelance-assistants.md", "Hiring Your First Freelance Assistants"),
+            ("15-bankroll-management-quarantine-rules-for-young-operators.md", "Bankroll Management Quarantine Rules for Young Operators"),
+            ("16-avoiding-bad-influences-and-distracting-peer-pressure.md", "Avoiding Bad Influences and Distracting Peer Pressure"),
+            ("17-the-final-sprint-to-one-hundred-thousand-dollars.md", "The Final Sprint to One Hundred Thousand Dollars"),
+            ("18-tax-strategy-and-corporate-setup-for-young-earners.md", "Tax Strategy and Corporate Setup for Young Earners"),
+            ("19-what-one-hundred-thousand-dollars-actually-changes.md", "What One Hundred Thousand Dollars Actually Changes"),
+            ("20-the-next-million-dollar-commercial-horizon.md", "The Next Million Dollar Commercial Horizon")
+        ]
+    },
+    {
+        "slug": "the-new-way-of-making-content-in-the-age-of-ai",
+        "title": "The New Way of Making Content in the Age of AI",
+        "subtitle": "Building a High-Leverage Media Machine with Autonomous Tools and Human Voice",
+        "chapters": [
+            ("01-the-death-of-low-effort-generic-content.md", "The Death of Low-Effort Generic Content"),
+            ("02-why-automated-spam-destroys-creator-credibility.md", "Why Automated Spam Destroys Creator Credibility"),
+            ("03-the-hybrid-model-ai-muscle-and-human-taste.md", "The Hybrid Model: AI Muscle and Human Taste"),
+            ("04-engineering-the-deep-editorial-context-dossier.md", "Engineering the Deep Editorial Context Dossier"),
+            ("05-topic-mining-and-commercial-intent-discovery.md", "Topic Mining and Commercial Intent Discovery"),
+            ("06-architecting-magnetic-hook-mechanics-that-convert.md", "Architecting Magnetic Hook Mechanics That Convert"),
+            ("07-the-ten-minute-long-form-editorial-workflow.md", "The Ten-Minute Long-Form Editorial Workflow"),
+            ("08-video-script-generation-with-conversational-cadence.md", "Video Script Generation with Conversational Cadence"),
+            ("09-multi-platform-repurposing-without-quality-decay.md", "Multi-Platform Repurposing Without Quality Decay"),
+            ("10-short-form-video-assembly-with-intelligent-tools.md", "Short-Form Video Assembly with Intelligent Tools"),
+            ("11-visual-branding-and-thumbnail-design-pipelines.md", "Visual Branding and Thumbnail Design Pipelines"),
+            ("12-audience-engagement-and-automated-community-nurture.md", "Audience Engagement and Automated Community Nurture"),
+            ("13-monetizing-attention-through-digital-products.md", "Monetizing Attention Through Digital Products"),
+            ("14-launching-high-ticket-consulting-and-cohorts.md", "Launching High-Ticket Consulting and Cohorts"),
+            ("15-sponsorship-negotiations-and-brand-deal-mechanics.md", "Sponsorship Negotiations and Brand Deal Mechanics"),
+            ("16-analytics-deep-dive-optimizing-retention-metrics.md", "Analytics Deep Dive: Optimizing Retention Metrics"),
+            ("17-building-a-bulletproof-content-publishing-calendar.md", "Building a Bulletproof Content Publishing Calendar"),
+            ("18-delegating-production-to-specialized-virtual-editors.md", "Delegating Production to Specialized Virtual Editors"),
+            ("19-defending-your-personal-brand-against-algorithm-shifts.md", "Defending Your Personal Brand Against Algorithm Shifts"),
+            ("20-the-future-of-creator-led-digital-conglomerates.md", "The Future of Creator-Led Digital Conglomerates")
+        ]
+    },
+    {
+        "slug": "how-to-think-like-a-strategic-genius-5-dimensional-thinking",
+        "title": "How to Think Like a Strategic Genius: 5-Dimensional Thinking",
+        "subtitle": "The Elite Mental Frameworks for High-Stakes Decision Making and Commercial Dominance",
+        "chapters": [
+            ("01-the-failure-of-linear-tactical-thinking.md", "The Failure of Linear Tactical Thinking"),
+            ("02-what-separates-great-strategists-from-operators.md", "What Separates Great Strategists from Operators"),
+            ("03-dimension-one-second-and-third-order-consequences.md", "Dimension One: Second and Third Order Consequences"),
+            ("04-mapping-unintended-systemic-ripple-effects.md", "Mapping Unintended Systemic Ripple Effects"),
+            ("05-dimension-two-asymmetric-risk-reward-geometry.md", "Dimension Two: High-Leverage Risk-Reward Geometry"),
+            ("06-positioning-for-unlimited-upside-with-capped-downside.md", "Positioning for Unlimited Upside with Capped Downside"),
+            ("07-dimension-three-incentive-structures-and-game-theory.md", "Dimension Three: Incentive Structures and Game Theory"),
+            ("08-decoding-hidden-motives-in-negotiations-and-partnerships.md", "Decoding Hidden Motives in Negotiations and Partnerships"),
+            ("09-dimension-four-temporal-horizon-arbitrage.md", "Dimension Four: Temporal Horizon Arbitrage"),
+            ("10-playing-twenty-year-games-in-two-year-markets.md", "Playing Twenty-Year Games in Two-Year Markets"),
+            ("11-dimension-five-information-asymmetry-and-moat-design.md", "Dimension Five: Information Advantage and Moat Design"),
+            ("12-constructing-proprietary-feedback-loops-competitors-cannot-see.md", "Constructing Proprietary Feedback Loops Competitors Cannot See"),
+            ("13-integrating-all-five-dimensions-into-a-unified-operating-system.md", "Integrating All Five Dimensions into a Unified Operating System"),
+            ("14-decision-making-under-conditions-of-extreme-uncertainty.md", "Decision Making Under Conditions of Extreme Uncertainty"),
+            ("15-mental-models-for-allocating-capital-talent-and-energy.md", "Mental Models for Allocating Capital, Talent, and Energy"),
+            ("16-inversion-thinking-avoiding-catastrophic-blindspots.md", "Inversion Thinking: Avoiding Catastrophic Blindspots"),
+            ("17-emotional-regulation-and-detachment-in-turbulent-markets.md", "Emotional Regulation and Detachment in Turbulent Markets"),
+            ("18-stress-testing-commercial-hypotheses-before-capital-deployment.md", "Stress-Testing Commercial Hypotheses Before Capital Deployment"),
+            ("19-the-art-of-strategic-patience-and-decisive-aggression.md", "The Art of Strategic Patience and Decisive Aggression"),
+            ("20-the-autonomous-strategists-lifelong-commandment.md", "The Autonomous Strategist's Lifelong Commandment")
+        ]
+    }
+]
+
+print("Batch 5A Setup plan ready.")
