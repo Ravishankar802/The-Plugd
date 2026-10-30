@@ -1,0 +1,45 @@
+"""
+Generate outline.json for 'the-30k-month-al-faceless-shorts-method-nobodys-talking-about'
+"""
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from batch5b_author_engine import write_outline
+
+SLUG = "the-30k-month-al-faceless-shorts-method-nobodys-talking-about"
+
+chapters = [
+    ("01-the-faceless-media-empire-architecture.md", "The Faceless Media Empire Architecture"),
+    ("02-the-mathematics-of-short-form-virality.md", "The Mathematics of Short-Form Virality"),
+    ("03-high-rpm-niche-selection-and-audience-arbitrage.md", "High-RPM Niche Selection and Audience Arbitrage"),
+    ("04-the-psychological-hook-matrix-and-pattern-interrupts.md", "The Psychological Hook Matrix and Pattern Interrupts"),
+    ("05-retention-engineering-and-the-open-loop-protocol.md", "Retention Engineering and the Open-Loop Protocol"),
+    ("06-algorithmic-scriptwriting-and-emotional-arcs.md", "Algorithmic Scriptwriting and Emotional Arcs"),
+    ("07-hyper-realistic-voice-synthesis-and-pacing.md", "Hyper-Realistic Voice Synthesis and Pacing"),
+    ("08-visual-storytelling-b-roll-and-dynamic-pacing.md", "Visual Storytelling, B-Roll, and Dynamic Pacing"),
+    ("09-motion-graphics-kinetic-typography-and-subtitles.md", "Motion Graphics, Kinetic Typography, and Subtitles"),
+    ("10-sound-design-audio-atmospheres-and-frequency-anchors.md", "Sound Design, Audio Atmospheres, and Frequency Anchors"),
+    ("11-the-automated-production-pipeline-and-sop-workflows.md", "The Automated Production Pipeline and SOP Workflows"),
+    ("12-multi-platform-distribution-and-metadata-optimization.md", "Multi-Platform Distribution and Metadata Optimization"),
+    ("13-channel-incubation-testing-and-algorithmic-seeding.md", "Channel Incubation, Testing, and Algorithmic Seeding"),
+    ("14-monetization-tier-one-creator-fund-and-ad-revenue.md", "Monetization Tier One: Creator Fund and Ad Revenue"),
+    ("15-monetization-tier-two-high-converting-affiliate-funnels.md", "Monetization Tier Two: High-Converting Affiliate Funnels"),
+    ("16-monetization-tier-three-digital-products-and-info-arbitrage.md", "Monetization Tier Three: Digital Products and Info Arbitrage"),
+    ("17-monetization-tier-four-high-ticket-sponsorship-sales.md", "Monetization Tier Four: High-Ticket Sponsorship Sales"),
+    ("18-building-a-portfolio-of-ten-automated-channels.md", "Building a Portfolio of Ten Automated Channels"),
+    ("19-team-delegation-and-hiring-video-editors-at-scale.md", "Team Delegation and Hiring Video Editors at Scale"),
+    ("20-the-30k-monthly-media-holding-company-blueprint.md", "The $30k Monthly Media Holding Company Blueprint")
+]
+
+outline_data = {
+    "slug": SLUG,
+    "title": "The $30k/Month AI Faceless Shorts Method Nobody's Talking About",
+    "subtitle": "The Complete Engineering Blueprint for Building Automated Short-Form Media Empires That Generate Five-Figure Monthly Cash Flow",
+    "label": "MEDIA ENGINE",
+    "tagline": "How to engineer, automate, and monetize high-retention faceless short-form video channels across YouTube Shorts, TikTok, and Instagram Reels.",
+    "dedication": "Dedicated to the digital media architects who look past superficial influencer vanity, recognize the algorithmic power of automated storytelling, and build scalable media holding companies.",
+    "chapters": chapters
+}
+
+write_outline(SLUG, outline_data)
+print(f"[{SLUG}] outline.json written successfully.")
