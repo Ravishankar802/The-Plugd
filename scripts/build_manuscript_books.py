@@ -110,6 +110,12 @@ def build(slug, reg):
     elif price >= 9:
         content_words = 160
         start_words = 105
+    elif price >= 7:
+        content_words = 162
+        start_words = 108
+    elif price >= 5:
+        content_words = 155
+        start_words = 100
     else:
         content_words = 168
         start_words = 110
