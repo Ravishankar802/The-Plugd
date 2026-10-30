@@ -151,7 +151,10 @@ export default function WebBookReader({ courseSlug, courseTitle, pages }: WebBoo
 
   const handlePrintPdf = () => {
     if (typeof window !== "undefined") {
-      window.print();
+      setTocOpen(false);
+      setTimeout(() => {
+        window.print();
+      }, 60);
     }
   };
 
@@ -177,11 +180,98 @@ export default function WebBookReader({ courseSlug, courseTitle, pages }: WebBoo
 
   return (
     <div
-      className="flex flex-col h-screen w-screen bg-[#EBE7E1] text-[#1c1917] select-none overflow-hidden"
+      className="web-book-reader-root flex flex-col h-screen w-screen bg-[#EBE7E1] text-[#1c1917] select-none overflow-hidden print:h-auto print:w-auto print:overflow-visible print:bg-white print:block"
       style={{ fontFamily: CLASSIC_BOOK_FONT }}
     >
+      {/* Global Print / PDF Download Stylesheet */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            @media print {
+              @page {
+                size: A4 portrait;
+                margin: 0;
+              }
+              html, body, body > div {
+                height: auto !important;
+                min-height: 0 !important;
+                max-height: none !important;
+                overflow: visible !important;
+                overflow-x: visible !important;
+                overflow-y: visible !important;
+                background: #ffffff !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+              }
+              header, nav, button, .web-book-header, .web-book-toc, .print\\:hidden {
+                display: none !important;
+              }
+              .web-book-reader-root,
+              .web-book-reader-stage,
+              .web-book-reader-track {
+                height: auto !important;
+                min-height: 0 !important;
+                max-height: none !important;
+                width: 100% !important;
+                overflow: visible !important;
+                overflow-x: visible !important;
+                overflow-y: visible !important;
+                background: #ffffff !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                display: block !important;
+                position: static !important;
+              }
+              .web-book-page {
+                page-break-before: auto !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-height: 96vh !important;
+                height: auto !important;
+                box-sizing: border-box !important;
+                padding: 20mm 20mm 15mm 20mm !important;
+                margin: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                background: #ffffff !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
+                position: relative !important;
+              }
+              .web-book-page:last-child {
+                page-break-after: auto !important;
+                break-after: auto !important;
+              }
+              .web-book-cover {
+                min-height: 100vh !important;
+                height: 100vh !important;
+                max-height: 100vh !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                background: #000000 !important;
+                overflow: hidden !important;
+                page-break-after: always !important;
+                break-after: page !important;
+              }
+              .web-book-cover img {
+                object-fit: cover !important;
+                object-position: center !important;
+              }
+            }
+          `,
+        }}
+      />
+
       {/* Top Header Bar */}
-      <header className="relative h-13 bg-white border-b border-stone-200 px-4 sm:px-6 flex items-center justify-between shrink-0 z-30 shadow-2xs font-sans">
+      <header className="web-book-header relative h-13 bg-white border-b border-stone-200 px-4 sm:px-6 flex items-center justify-between shrink-0 z-30 shadow-2xs font-sans print:hidden">
         {/* Left: Back (shortened and moved left) + Title */}
         <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 max-w-[40%] sm:max-w-[45%]">
           <Link
@@ -230,12 +320,12 @@ export default function WebBookReader({ courseSlug, courseTitle, pages }: WebBoo
       </header>
 
       {/* Main Reading Stage: Natural Vertical Scroll of Centered A4 Pages */}
-      <div className="relative flex-1 w-full overflow-hidden flex justify-center">
+      <div className="web-book-reader-stage relative flex-1 w-full overflow-hidden flex justify-center print:h-auto print:w-full print:overflow-visible print:block print:p-0">
         {/* Vertical Scroll Track: Pages Stacked Vertically with Empty Margins on Left/Right */}
         <div
           ref={scrollContainerRef}
           onScroll={handleScroll}
-          className="flex-1 h-full w-full overflow-y-auto overflow-x-hidden flex flex-col items-center py-6 sm:py-10 px-4 sm:px-6 md:px-8 space-y-8 sm:space-y-12 scroll-smooth"
+          className="web-book-reader-track flex-1 h-full w-full overflow-y-auto overflow-x-hidden flex flex-col items-center py-6 sm:py-10 px-4 sm:px-6 md:px-8 space-y-8 sm:space-y-12 scroll-smooth print:h-auto print:w-full print:overflow-visible print:p-0 print:m-0 print:space-y-0 print:block"
           style={{ scrollbarWidth: "thin" }}
         >
           {bookPages.map((page, idx) => {
@@ -247,10 +337,10 @@ export default function WebBookReader({ courseSlug, courseTitle, pages }: WebBoo
                 ref={(el) => {
                   pageRefs.current[idx] = el;
                 }}
-                className={`select-text transition-transform duration-200 ${
+                className={`select-text transition-transform duration-200 web-book-page print:m-0 print:shadow-none print:border-none print:rounded-none print:w-full print:max-w-none print:box-border ${
                   isCover
-                    ? "w-full max-w-[760px] aspect-[16/9] rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.22)] bg-black border border-stone-300 relative shrink-0"
-                    : "w-full max-w-[760px] aspect-[210/297] min-h-[960px] sm:min-h-[1040px] bg-white rounded-md border border-stone-300 shadow-[0_4px_30px_rgba(0,0,0,0.10)] p-8 sm:p-12 md:p-16 flex flex-col justify-between shrink-0"
+                    ? "web-book-cover w-full max-w-[760px] aspect-[16/9] rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.22)] bg-black border border-stone-300 relative shrink-0 print:aspect-auto print:h-screen print:max-h-screen print:p-0"
+                    : "web-book-content-page w-full max-w-[760px] aspect-[210/297] min-h-[960px] sm:min-h-[1040px] bg-white rounded-md border border-stone-300 shadow-[0_4px_30px_rgba(0,0,0,0.10)] p-8 sm:p-12 md:p-16 flex flex-col justify-between shrink-0 print:aspect-auto print:min-h-[96vh] print:h-auto print:p-12 print:justify-between"
                 }`}
                 style={{ fontFamily: CLASSIC_BOOK_FONT }}
               >
@@ -398,7 +488,7 @@ export default function WebBookReader({ courseSlug, courseTitle, pages }: WebBoo
 
       {/* Table of Contents Drawer: classic book font for title and all entries */}
       {tocOpen && (
-        <div className="fixed inset-0 z-50 flex justify-end bg-black/40 backdrop-blur-xs font-sans">
+        <div className="web-book-toc print:hidden fixed inset-0 z-50 flex justify-end bg-black/40 backdrop-blur-xs font-sans">
           <div
             className="w-full max-w-md h-full bg-white shadow-2xl flex flex-col"
             style={{ fontFamily: CLASSIC_BOOK_FONT }}
