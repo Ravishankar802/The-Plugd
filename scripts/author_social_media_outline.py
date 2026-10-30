@@ -1,0 +1,49 @@
+"""
+Create outline.json for 'how-to-become-rich-with-social-media-my-exact-playbook'
+"""
+import json
+import os
+
+SLUG = "how-to-become-rich-with-social-media-my-exact-playbook"
+dir_path = os.path.join("book-manuscripts", SLUG)
+os.makedirs(dir_path, exist_ok=True)
+
+outline = {
+    "slug": SLUG,
+    "label": "ATTENTION CAPITAL",
+    "title": "How to Become Rich with Social Media: My Exact Playbook",
+    "subtitle": "The Systematic Blueprint for Converting Digital Attention into Enterprise Value and Generational Wealth",
+    "parts": [
+        {"number": 1, "title": "The Architecture of Attention Capital"},
+        {"number": 2, "title": "The Production Machine and Algorithmic Distribution"},
+        {"number": 3, "title": "The Four-Tier Monetization Engine"},
+        {"number": 4, "title": "Equity, Operations, and Generational Wealth"}
+    ],
+    "chapters": [
+        {"number": 1, "filename": "01-the-great-divergence-vanity-metrics-versus-enterprise-equity.md", "title": "The Great Divergence: Vanity Metrics versus Enterprise Equity", "part": 1, "partTitle": "The Architecture of Attention Capital"},
+        {"number": 2, "filename": "02-the-attention-liquidity-spectrum-views-trust-and-transaction-velocity.md", "title": "The Attention Liquidity Spectrum: Views, Trust, and Transaction Velocity", "part": 1, "partTitle": "The Architecture of Attention Capital"},
+        {"number": 3, "filename": "03-selecting-high-yield-commercial-niches-escaping-entertainment-poverty.md", "title": "Selecting High-Yield Commercial Niches: Escaping Entertainment Poverty", "part": 1, "partTitle": "The Architecture of Attention Capital"},
+        {"number": 4, "filename": "04-the-core-narrative-identity-engineering-irreplaceable-market-positioning.md", "title": "The Core Narrative Identity: Engineering Irreplaceable Market Positioning", "part": 1, "partTitle": "The Architecture of Attention Capital"},
+        {"number": 5, "filename": "05-audience-demographics-the-mathematics-of-high-net-worth-reach.md", "title": "Audience Demographics: The Mathematics of High-Net-Worth Reach", "part": 1, "partTitle": "The Architecture of Attention Capital"},
+        {"number": 6, "filename": "06-the-media-factory-blueprint-decoupling-production-from-founder-hours.md", "title": "The Media Factory Blueprint: Decoupling Production from Founder Hours", "part": 2, "partTitle": "The Production Machine and Algorithmic Distribution"},
+        {"number": 7, "filename": "07-the-3-second-psychological-hook-dominating-mobile-feed-scanners.md", "title": "The 3-Second Psychological Hook: Dominating Mobile Feed Scanners", "part": 2, "partTitle": "The Production Machine and Algorithmic Distribution"},
+        {"number": 8, "filename": "08-narrative-retention-architecture-pacing-tension-and-emotional-anchors.md", "title": "Narrative Retention Architecture: Pacing, Tension, and Emotional Anchors", "part": 2, "partTitle": "The Production Machine and Algorithmic Distribution"},
+        {"number": 9, "filename": "09-multi-platform-audience-syndication-one-asset-four-algorithmic-feeds.md", "title": "Multi-Platform Audience Syndication: One Asset, Four Algorithmic Feeds", "part": 2, "partTitle": "The Production Machine and Algorithmic Distribution"},
+        {"number": 10, "filename": "10-community-engineering-transforming-passive-scrollers-into-fanatical-believers.md", "title": "Community Engineering: Transforming Passive Scrollers into Fanatical Believers", "part": 2, "partTitle": "The Production Machine and Algorithmic Distribution"},
+        {"number": 11, "filename": "11-monetization-tier-one-low-ticket-digital-assets-and-impulse-products.md", "title": "Monetization Tier One: Low-Ticket Digital Assets and Impulse Products", "part": 3, "partTitle": "The Four-Tier Monetization Engine"},
+        {"number": 12, "filename": "12-monetization-tier-two-high-converting-affiliate-ecosystems.md", "title": "Monetization Tier Two: High-Converting Affiliate Ecosystems", "part": 3, "partTitle": "The Four-Tier Monetization Engine"},
+        {"number": 13, "filename": "13-monetization-tier-three-enterprise-brand-sponsorships-and-media-buys.md", "title": "Monetization Tier Three: Enterprise Brand Sponsorships and Media Buys", "part": 3, "partTitle": "The Four-Tier Monetization Engine"},
+        {"number": 14, "filename": "14-monetization-tier-four-high-ticket-service-and-consulting-arbitrage.md", "title": "Monetization Tier Four: High-Ticket Service and Consulting Arbitrage", "part": 3, "partTitle": "The Four-Tier Monetization Engine"},
+        {"number": 15, "filename": "15-owned-audience-fortresses-building-unkillable-email-newsletters.md", "title": "Owned Audience Fortresses: Building Unkillable Email Newsletters", "part": 3, "partTitle": "The Four-Tier Monetization Engine"},
+        {"number": 16, "filename": "16-the-equity-shift-transitioning-from-creator-to-enterprise-asset-owner.md", "title": "The Equity Shift: Transitioning from Creator to Enterprise Asset Owner", "part": 4, "partTitle": "Equity, Operations, and Generational Wealth"},
+        {"number": 17, "filename": "17-assembling-the-autonomous-operations-tier-editors-writers-and-managers.md", "title": "Assembling the Autonomous Operations Tier: Editors, Writers, and Managers", "part": 4, "partTitle": "Equity, Operations, and Generational Wealth"},
+        {"number": 18, "filename": "18-protecting-intellectual-property-brand-trademarks-and-digital-contracts.md", "title": "Protecting Intellectual Property, Brand Trademarks, and Digital Contracts", "part": 4, "partTitle": "Equity, Operations, and Generational Wealth"},
+        {"number": 19, "filename": "19-corporate-entity-structuring-banking-infrastructure-and-tax-shielding.md", "title": "Corporate Entity Structuring, Banking Infrastructure, and Tax Shielding", "part": 4, "partTitle": "Equity, Operations, and Generational Wealth"},
+        {"number": 20, "filename": "20-the-50k-month-media-holding-company-blueprint.md", "title": "The $50k/Month Media Holding Company Blueprint", "part": 4, "partTitle": "Equity, Operations, and Generational Wealth"}
+    ]
+}
+
+with open(os.path.join(dir_path, "outline.json"), "w", encoding="utf-8") as f:
+    json.dump(outline, f, indent=2)
+
+print("Created outline.json for", SLUG)
