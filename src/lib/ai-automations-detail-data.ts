@@ -4,12 +4,12 @@ import { AI_AUTOMATIONS_MODULES_METADATA } from "./ai-automations-curriculum";
 export const DETAIL_AI_AUTOMATIONS_DATA: PlaybookDetailData = {
   id: "ai-businesses-01",
   slug: "7-ai-automations",
-  title: "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)",
+  title: "These 3 AI Will Make You $10k+/Month (With Zero Employees)",
   headline:
     "Master the 3 proven AI business models to reach $10,000+/month as a solo operator with zero employees.",
   description:
     "A comprehensive, practical playbook breaking down the 3 dominant zero-employee AI businesses: AI Workflow Automation Agency (AAA), AI Short-Form Content Studio, and AI Shadow Operating. Learn the unit economics of $10,000/month, the 5-criteria evaluation framework, no-code tool stacks, client acquisition without ad spend, and asymmetric 70/30 creator revenue shares.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 9,
@@ -46,7 +46,7 @@ export const DETAIL_AI_AUTOMATIONS_DATA: PlaybookDetailData = {
     "Run your entire solo enterprise on a lean software overhead capped at under $250/month with 95%+ net margins",
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "AI Automation Agency",
     "Short-Form Content Studio",
     "AI Shadow Operating",

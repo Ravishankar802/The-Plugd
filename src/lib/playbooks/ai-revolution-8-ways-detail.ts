@@ -7,7 +7,7 @@ export const AI_REVOLUTION_8_WAYS_DETAIL_DATA: PlaybookDetailData = {
   title: "The A.I. Revolution: 8 Ways to get RICH",
   headline: "The 8 proven vehicles to build wealth in the AI revolution: Value Arbitrage, trading bots, autonomous customer support, synthetic media studios, and micro-SaaS.",
   description: "An actionable, comprehensive guide to the 8 dominant wealth pathways unleashed by the artificial intelligence revolution. Master the core law of Value Arbitrage (packaging open-source foundation models into targeted consumer products), building PineScript trading strategies, deploying automated B2B customer support bots, and running a 95% net margin solo AI solutions firm.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 12,
   originalPrice: 20,

@@ -6457,7 +6457,7 @@ export const PERFECT_BUSINESS_5_THINGS_COURSE: Course = {
   id: "ai-businesses-22",
   slug: "what-makes-the-perfect-business-5-things" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "What Makes The Perfect Business (5 Things)",
   shortTitle: "What Makes The Perfect Busines",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

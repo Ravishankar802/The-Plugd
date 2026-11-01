@@ -32,7 +32,7 @@ export interface CategoryChipItem {
 
 export const ALL_CATEGORY_CHIPS: CategoryChipItem[] = [
   { label: "All", slug: "all", href: "/", icon: LayoutGrid },
-  { label: "AI Businesses", slug: "ai-businesses", href: "/ai-businesses", icon: Bot },
+  { label: "AI", slug: "ai-businesses", href: "/ai-businesses", icon: Bot },
   { label: "E-commerce", slug: "e-commerce", href: "/e-commerce", icon: ShoppingBag },
   { label: "Side Hustles", slug: "side-hustles", href: "/side-hustles", icon: Flame },
   { label: "Online Income", slug: "online-income", href: "/online-income", icon: DollarSign },
@@ -56,7 +56,7 @@ export const ALL_CATEGORY_CHIPS: CategoryChipItem[] = [
  */
 export const CATEGORY_CHIPS: CategoryChipItem[] = [
   { label: "All", slug: "all", href: "/", icon: LayoutGrid },
-  { label: "AI Businesses", slug: "ai-businesses", href: "/ai-businesses", icon: Bot },
+  { label: "AI", slug: "ai-businesses", href: "/ai-businesses", icon: Bot },
 ];
 
 interface CategoryChipsBarProps {

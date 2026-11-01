@@ -6289,7 +6289,7 @@ export const MAKING_MONEY_ONLINE_EASY_COURSE: Course = {
   id: "ai-businesses-35",
   slug: "making-money-online-is-easy-actually-just-copy-me" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Making Money Online is Easy, Actually (Just Copy Me)",
   shortTitle: "Making Money Online is Easy, A",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

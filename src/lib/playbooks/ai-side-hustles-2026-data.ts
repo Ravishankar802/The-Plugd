@@ -6457,7 +6457,7 @@ export const AI_SIDE_HUSTLES_2026_COURSE: Course = {
   id: "ai-businesses-06",
   slug: "the-best-ai-side-hustles-to-start-in-2026-no-skills" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "The Best AI Side Hustles To Start In 2026 (No Skills)",
   shortTitle: "The Best AI Side Hustles To St",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

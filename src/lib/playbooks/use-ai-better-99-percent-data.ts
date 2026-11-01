@@ -8383,7 +8383,7 @@ export const USE_AI_BETTER_99_COURSE: Course = {
   id: "ai-businesses-28",
   slug: "how-to-use-ai-better-than-99-of-people-this-changed-my-life" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "How To Use AI Better Than 99% Of People (This Changed My Life)",
   shortTitle: "How To Use AI Better Than 99% ",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

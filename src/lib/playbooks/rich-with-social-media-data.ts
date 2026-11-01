@@ -8607,7 +8607,7 @@ export const RICH_WITH_SOCIAL_MEDIA_COURSE: Course = {
   id: "ai-businesses-18",
   slug: "how-to-become-rich-with-social-media-my-exact-playbook" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "How to become rich with social media (my exact playbook)",
   shortTitle: "How to become rich with social",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

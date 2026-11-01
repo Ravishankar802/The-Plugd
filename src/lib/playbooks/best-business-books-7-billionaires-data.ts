@@ -8607,7 +8607,7 @@ export const BEST_BUSINESS_BOOKS_COURSE: Course = {
   id: "ai-businesses-48",
   slug: "these-are-the-best-business-books-to-read-7-billionaire-books" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "These Are The Best Business Books To Read (7 Billionaire Books)",
   shortTitle: "These Are The Best Business Bo",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

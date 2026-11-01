@@ -442,7 +442,7 @@ export const COURSES: Record<string, Course> = {
   women: DATING_PLAYBOOK_COURSE,
   "dating-playbook": DATING_PLAYBOOK_COURSE,
 
-  // 1. These 3 AI Businesses
+  // 1. These 3 AI
   "7-ai-automations": AI_AUTOMATIONS_PLAYBOOK_COURSE,
   "ai-businesses-01": AI_AUTOMATIONS_PLAYBOOK_COURSE,
 

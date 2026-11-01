@@ -6457,7 +6457,7 @@ export const ASKED_AI_MAKE_MONEY_COURSE: Course = {
   id: "ai-businesses-47",
   slug: "i-asked-ai-to-make-me-as-much-money-as-possible" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "I Asked AI To Make Me As Much Money As Possible",
   shortTitle: "I Asked AI To Make Me As Much ",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

@@ -8607,7 +8607,7 @@ export const COPY_PASTE_FIRST_5K_COURSE: Course = {
   id: "ai-businesses-45",
   slug: "copy-paste-this-strategy-to-make-your-first-5-000-online" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Copy & Paste THIS Strategy To Make Your First $5,000 Online",
   shortTitle: "Copy & Paste THIS Strategy To ",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

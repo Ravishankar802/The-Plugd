@@ -8607,7 +8607,7 @@ export const ONE_PERSON_BUSINESS_COURSE: Course = {
   id: "ai-businesses-08",
   slug: "build-a-one-person-business-as-a-beginner-from-0-to-10k" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Build A One-Person Business As A Beginner (From $0 To $10K)",
   shortTitle: "Build A One-Person Business As",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

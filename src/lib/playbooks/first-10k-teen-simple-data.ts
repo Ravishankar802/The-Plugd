@@ -8383,7 +8383,7 @@ export const FIRST_10K_TEEN_COURSE: Course = {
   id: "ai-businesses-36",
   slug: "how-to-make-your-first-10-000-as-a-teen-stupid-simple" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "How to Make Your First $10,000 As a Teen (Stupid Simple)",
   shortTitle: "How to Make Your First $10,000",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

@@ -8607,7 +8607,7 @@ export const ZERO_AD_CUSTOMERS_COURSE: Course = {
   id: "side-hustles-08",
   slug: "side-hustles" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "10 Ways to Find Paying Customers Without Spending on Ads",
   shortTitle: "10 Ways to Find Paying Custome",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

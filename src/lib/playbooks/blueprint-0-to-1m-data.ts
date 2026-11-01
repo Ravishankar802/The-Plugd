@@ -8547,7 +8547,7 @@ export const BLUEPRINT_0_TO_1M_COURSE: Course = {
   id: BLUEPRINT_0_TO_1M_ID,
   slug: BLUEPRINT_0_TO_1M_SLUG as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: BLUEPRINT_0_TO_1M_TITLE,
   shortTitle: "The Blueprint To Go From $0 To $",
   audience: "Entrepreneurs, Creators & Sovereign Operators" as any,

@@ -8383,7 +8383,7 @@ export const INVESTING_BEGINNERS_25M_COURSE: Course = {
   id: "ai-businesses-31",
   slug: "investing-for-beginners-in-25-minutes" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Investing For Beginners in 25 Minutes",
   shortTitle: "Investing For Beginners in 25 ",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

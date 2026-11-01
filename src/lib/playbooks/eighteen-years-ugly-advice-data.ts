@@ -8383,7 +8383,7 @@ export const EIGHTEEN_YEARS_UGLY_ADVICE_COURSE: Course = {
   id: "ai-businesses-40",
   slug: "18-years-of-ugly-business-advice-in-19-minutes" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "18 Years Of UGLY Business Advice In 19 Minutes",
   shortTitle: "18 Years Of UGLY Business Advi",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

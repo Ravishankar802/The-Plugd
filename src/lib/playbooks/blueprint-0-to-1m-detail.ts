@@ -7,7 +7,7 @@ export const BLUEPRINT_0_TO_1M_DETAIL_DATA: PlaybookDetailData = {
   title: "The Blueprint To Go From $0 To $1,000,000",
   headline: "The 3-stage master roadmap taking you from zero to your first $1,000,000: active cashflow generation, operational scaling, and defensive wealth preservation.",
   description: "An exhaustive, cinematic masterclass breaking down the three distinct evolutionary stages of wealth creation. Learn why copying a billionaire's portfolio when you have under $100k is financial suicide, how to weaponize high-income skills, scale an operational agency engine to $40k/month, and fortress your capital with global jurisdiction arbitrage.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,

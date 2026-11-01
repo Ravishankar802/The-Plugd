@@ -8607,7 +8607,7 @@ export const MULTIPLE_INTERESTS_ONE_PERSON_COURSE: Course = {
   id: "ai-businesses-24",
   slug: "if-you-have-multiple-interests-please-start-a-one-person-business" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "If You Have Multiple Interests, Please Start a One-Person Business",
   shortTitle: "If You Have Multiple Interests",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

@@ -7532,7 +7532,7 @@ export const THREE_BEST_AI_BIZ_2027_COURSE: Course = {
   id: "ai-businesses-59",
   slug: "3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "3 best AI businesses to start before 2027 (and the one i'd start today)",
   shortTitle: "3 best AI businesses to start ",
   audience: "Beginners, Solopreneurs & Aspiring Builders" as any,

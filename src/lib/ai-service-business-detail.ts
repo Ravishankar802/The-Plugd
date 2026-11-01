@@ -9,7 +9,7 @@ export const DETAIL_AI_SERVICE_BUSINESS_DATA: PlaybookDetailData = {
     "Master the 3 high-leverage tools to build, package, and sell high-ticket AI automation services to B2B clients.",
   description:
     "A comprehensive, practical roadmap teaching you how to build a 5-figure monthly recurring AI service business using Airtable, Claude 3.7, and Make.com. Learn to package high-demand services, close clients with value-anchored proposals, and scale with recurring retainers.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 9,

@@ -4,11 +4,11 @@ export const HOW_TO_BUILD_10K_WEBSITES_ARTICLE: PlaybookArticle = {
   slug: "how-to-build-10k-websites-in-minutes-claude-ai",
   title: "How to Build $10K Websites in Minutes (Claude AI)",
   readingTime: "25 min read",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015288/How_to_Build_10K_Websites_in_Minutes_Claude_AI.png",
   publishedDate: "2026",
-  authorName: "Plugd Systems Architect",
+  authorName: "Caleb Sterling",
   authorTitle: "Principal Sovereign Operator & Systems Architect",
   introParagraphs: [
     "In this Playbook, I'm going to tell you how to build a $10,000 website using Claude Code.",

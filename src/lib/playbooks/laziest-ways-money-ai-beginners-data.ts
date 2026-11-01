@@ -7336,7 +7336,7 @@ export const LAZIEST_WAYS_AI_BEGINNERS_COURSE: Course = {
   id: "ai-businesses-32",
   slug: "laziest-ways-to-make-money-with-ai-for-beginners" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Laziest Ways to Make Money with AI (For Beginners)",
   shortTitle: "Laziest Ways to Make Money wit",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

@@ -7,7 +7,7 @@ export const CAPITALIZE_AI_GOLD_RUSH_DETAIL_DATA: PlaybookDetailData = {
   title: "The SMARTEST Way to Capitalize on the AI Gold Rush",
   headline: "The institutional playbook to profit from the $1.8T AI boom without building models or selling commoditized wrappers.",
   description: "The 1849 gold rush made miners broke and pick-and-shovel sellers rich. The $1.8 trillion AI market is 900x larger. Discover why thin wrappers fail, how to deploy specialized agentic infrastructure, and how to own distribution in high-margin enterprise verticals.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 15,
   originalPrice: 25,
@@ -41,7 +41,7 @@ export const CAPITALIZE_AI_GOLD_RUSH_DETAIL_DATA: PlaybookDetailData = {
     "Scale from initial cashflow to an unassailable sovereign holding portfolio"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Digital Leverage",
     "Solopreneurship",
     "Sovereign Assets",

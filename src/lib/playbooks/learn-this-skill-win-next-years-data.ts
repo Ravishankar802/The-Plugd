@@ -7336,7 +7336,7 @@ export const LEARN_THIS_SKILL_COURSE: Course = {
   id: "ai-businesses-25",
   slug: "learn-this-skill-if-you-want-to-win-in-the-next-2-3-years" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Learn This Skill If You Want To Win In The Next 2-3 Years",
   shortTitle: "Learn This Skill If You Want T",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

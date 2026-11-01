@@ -6413,7 +6413,7 @@ export const FIRST_1M_IS_SIMPLE_COURSE: Course = {
   id: FIRST_1M_IS_SIMPLE_ID,
   slug: FIRST_1M_IS_SIMPLE_SLUG as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: FIRST_1M_IS_SIMPLE_TITLE,
   shortTitle: "Your First $1M Is Simple (Here's",
   audience: "Entrepreneurs, Creators & Sovereign Operators" as any,

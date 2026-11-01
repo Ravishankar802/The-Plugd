@@ -7,7 +7,7 @@ export const ONLY_INVESTING_VIDEO_100_DETAIL_DATA: PlaybookDetailData = {
   title: "The Only Investing Video You'll Ever Need (Start With $100)",
   headline: "A comprehensive wealth-building primer comparing 5 core assets and laying down the mathematics of long-term freedom.",
   description: "Experience an empirical breakdown of what happens when you invest $100 across 5 different asset classes over multiple years. Master compound interest, index fund allocations, tax-advantaged account stacking, and the rules of generational wealth creation.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 5,
@@ -41,7 +41,7 @@ export const ONLY_INVESTING_VIDEO_100_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $1,000,000+ Compounded Wealth Engine with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

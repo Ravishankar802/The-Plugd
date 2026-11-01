@@ -7,7 +7,7 @@ export const RICH_WITH_SOCIAL_MEDIA_DETAIL_DATA: PlaybookDetailData = {
   title: "How to become rich with social media (my exact playbook)",
   headline: "The Lead Strategist's exact playbook: generating 3 billion impressions across 35,000 content pieces and converting attention into multi-million-dollar equity and retainers.",
   description: "The definitive commercial attention playbook by The Lead Strategist. Discover why empty reach leaves creators broke, how to target high-net-worth buyers with purchasing power, the 4 pillars of high-LTV content, multi-platform syndication workflows, and how to trade organic audience attention for equity in multi-million-dollar private companies.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 5,
   originalPrice: 9,
@@ -41,7 +41,7 @@ export const RICH_WITH_SOCIAL_MEDIA_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $20,000–$50,000/Month Net Profit & Enterprise Equity with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

@@ -4,10 +4,10 @@ import { THREE_AI_BUSINESSES_MODULES } from "./three-ai-businesses-data";
 export const THREE_AI_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
   id: "ai-businesses-01",
   slug: "7-ai-automations",
-  title: "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)",
+  title: "These 3 AI Will Make You $10k+/Month (With Zero Employees)",
   headline: "Master the 3 proven zero-employee AI business models to reach $10,000+/month with 95% net margins: AI Automation Agency, Short-Form Studio, and Shadow Operating.",
   description: "A cinematic, deeply practical masterclass detailing how a solo operator can generate $10,000+/month across three dominant AI business models: AI Workflow Automation Agency (AAA), AI Short-Form Content Studio, and AI Shadow Operating. Learn exact unit economics, speed-to-lead automations with Make.com and OpenAI APIs, value-first Loom outreach, and asymmetric 70/30 creator revenue shares.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 12,
   originalPrice: 20,
@@ -33,7 +33,7 @@ export const THREE_AI_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
   lessonsCount: 28,
   slidesCount: 112,
   whatYouWillLearn: [
-    "Deconstruct and master the exact operational mechanics of These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees)",
+    "Deconstruct and master the exact operational mechanics of These 3 AI Will Make You $10k+/Month (With Zero Employees)",
     "Deploy high-margin no-code software systems, AI pipelines, and automated client workflows",
     "Acquire high-ticket clients and customers organically with zero ad spend using diagnostic teardowns",
     "Structure irresistible, high-conviction offers that command premium upfront retainers",
@@ -41,7 +41,7 @@ export const THREE_AI_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $10,000+/Month ($120,000+/Year) with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",
@@ -55,7 +55,7 @@ export const THREE_AI_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
   ],
   descriptionSections: {
     intro: [
-      "Welcome to the definitive masterclass on These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees). This playbook is engineered for ambitious operators who refuse to accept linear employment, corporate busywork, and fragile business models.",
+      "Welcome to the definitive masterclass on These 3 AI Will Make You $10k+/Month (With Zero Employees). This playbook is engineered for ambitious operators who refuse to accept linear employment, corporate busywork, and fragile business models.",
       "Rather than teaching fleeting hacks or superficial theories, this curriculum delivers battle-tested systems, worked unit economics, tactical battle decision matrices, and complete production-grade blueprints.",
       "Every single lesson provides both an interactive, cinematic slide deck presentation and a comprehensive, in-depth written guide (>2,500 words) detailing the exact step-by-step implementation."
     ],

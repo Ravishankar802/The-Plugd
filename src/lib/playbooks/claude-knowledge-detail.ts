@@ -7,7 +7,7 @@ export const CLAUDE_KNOWLEDGE_DETAIL_DATA: PlaybookDetailData = {
   title: "Give Me 26 Minutes, I'll Give You 10,000 Hours of Claude Knowledge",
   headline: "The ultimate distillation of Claude 3.5 & 3.7 mastery: XML tag prompting, Artifacts rapid prototyping, persistent Projects memory, MCP tools, and Computer Use.",
   description: "A high-leverage masterclass uncovering the profound capabilities of Anthropic's Claude models. Master XML tag prompting (<rules>, <context>), rapid React and UI prototyping via Artifacts, persistent organizational memory with Projects, connecting external tools with Model Context Protocol (MCP), and autonomous desktop execution with Computer Use.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const CLAUDE_KNOWLEDGE_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding 10x Engineering Velocity & $15,000/Month with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

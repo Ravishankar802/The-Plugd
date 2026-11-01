@@ -7,7 +7,7 @@ export const ONE_PERSON_BUSINESS_DETAIL_DATA: PlaybookDetailData = {
   title: "Build A One-Person Business As A Beginner (From $0 To $10K)",
   headline: "The complete roadmap from $0 to $10,000/month as a solo beginner: skill stacking, $2,500 Grand Slam offers, minimum viable audience, and asynchronous fulfillment.",
   description: "An exhaustive, step-by-step roadmap for launching, validating, and scaling a high-leverage one-person business from scratch. Master the art of stacking high-income skills, engineering $2,500 Grand Slam offers with risk reversal, building an audience of 500 targeted buyers, converting prospects in organic DMs, and fulfilling client results asynchronously without burnout.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 12,
   originalPrice: 20,
@@ -41,7 +41,7 @@ export const ONE_PERSON_BUSINESS_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $10,000+/Month ($120,000+/Year) with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

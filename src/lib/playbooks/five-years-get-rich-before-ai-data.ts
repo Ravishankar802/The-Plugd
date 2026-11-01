@@ -6289,7 +6289,7 @@ export const FIVE_YEARS_GET_RICH_AI_COURSE: Course = {
   id: "ai-businesses-30",
   slug: "you-have-5-years-to-get-rich-before-ai-takes-over" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "You Have 5 Years to Get Rich Before AI Takes Over",
   shortTitle: "You Have 5 Years to Get Rich B",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

@@ -7532,7 +7532,7 @@ export const COPY_PASTE_13K_COURSE: Course = {
   id: "ai-businesses-07",
   slug: "copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Copy & Paste THIS Strategy to Make $13k/Month with AI in 2026",
   shortTitle: "Copy & Paste THIS Strategy to ",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

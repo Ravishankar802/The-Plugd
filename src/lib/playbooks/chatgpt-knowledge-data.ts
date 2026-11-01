@@ -8607,7 +8607,7 @@ export const CHATGPT_KNOWLEDGE_COURSE: Course = {
   id: "ai-businesses-04",
   slug: "give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Give Me 28 Minutes, I'll Give You 10,000 Hours of ChatGPT Knowledge",
   shortTitle: "Give Me 28 Minutes, I'll Give ",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

@@ -7,7 +7,7 @@ export const LEARN_THIS_SKILL_DETAIL_DATA: PlaybookDetailData = {
   title: "Learn This Skill If You Want To Win In The Next 2-3 Years",
   headline: "Master the ultimate meta-skill of writing, synthesis, and framing to out-compete and thrive over the next 2-3 years.",
   description: "A high-agency masterclass breaking down the core leverage skill that compounds all others: meta-writing, contextual synthesis, solving lower-order survival needs, and engineering a sovereign intellectual monopoly.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 19,
   originalPrice: 30,
@@ -41,7 +41,7 @@ export const LEARN_THIS_SKILL_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $25,000+/Month Sovereign Synthesis Retainers with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

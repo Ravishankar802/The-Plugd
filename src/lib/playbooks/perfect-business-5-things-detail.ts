@@ -7,7 +7,7 @@ export const PERFECT_BUSINESS_5_THINGS_DETAIL_DATA: PlaybookDetailData = {
   title: "What Makes The Perfect Business (5 Things)",
   headline: "The 5 unfair advantages that make any business 10x easier to grow: 85%+ gross margins, high barriers to entry, pricing power, customer stickiness, and secular tailwinds.",
   description: "The Lead Strategist breaks down why vehicle selection accounts for 80% of entrepreneurial success. Master the 5 fundamental structural advantages: extreme 85%+ gross margins, high barriers to entry that prevent competitors from copying you, pricing power that beats inflation, customer stickiness that creates negative churn, and secular market tailwinds.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 15,
   originalPrice: 25,
@@ -41,7 +41,7 @@ export const PERFECT_BUSINESS_5_THINGS_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $30,000–$50,000/Month 85% Net Margin Cashflow with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

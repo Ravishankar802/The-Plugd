@@ -7532,7 +7532,7 @@ export const SELL_PDFS_WITH_AI_COURSE: Course = {
   id: "ai-businesses-58",
   slug: "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "I Sell PDFs With AI and It Changed My Life (Revealing Everything)",
   shortTitle: "I Sell PDFs With AI and It Cha",
   audience: "Beginners, Solopreneurs & Aspiring Builders" as any,

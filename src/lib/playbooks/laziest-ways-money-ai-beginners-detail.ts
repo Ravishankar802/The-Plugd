@@ -7,7 +7,7 @@ export const LAZIEST_WAYS_AI_BEGINNERS_DETAIL_DATA: PlaybookDetailData = {
   title: "Laziest Ways to Make Money with AI (For Beginners)",
   headline: "A beginner's turnkey guide to low-maintenance AI income streams with zero inventory, minimal effort, and global laptop freedom.",
   description: "Discover genuinely passive and zero-friction AI income models that complete beginners can set up in a weekend: automated digital storefronts, AI-generated design assets, low-maintenance print-on-demand, and evergreen digital products.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 5,
@@ -41,7 +41,7 @@ export const LAZIEST_WAYS_AI_BEGINNERS_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $5,000$10,000/Month Zero-Friction Passive Flow with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

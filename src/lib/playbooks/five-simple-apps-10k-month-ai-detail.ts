@@ -7,7 +7,7 @@ export const FIVE_SIMPLE_APPS_10K_DETAIL_DATA: PlaybookDetailData = {
   title: "5 Simple Apps Making $10,000/month That You Can Build with AI",
   headline: "How tiny, single-utility micro-apps quietly make $10,000+/month\u2014and how to build them with AI in days.",
   description: "Skip the multi-year venture startup. Master the single-screen micro-app revolution: fasting timers, water trackers, mood journals, ambient soundscapes, and receipt scanners. Learn how to prompt the code with modern AI tools, package freemium paywalls, and drive organic App Store / TikTok users.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const FIVE_SIMPLE_APPS_10K_DETAIL_DATA: PlaybookDetailData = {
     "Scale from initial cashflow to an unassailable sovereign holding portfolio"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Digital Leverage",
     "Solopreneurship",
     "Sovereign Assets",

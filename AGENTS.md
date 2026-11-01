@@ -198,8 +198,10 @@ When a source YouTube video is provided for any Plugd Playbook:
 2. **No Share Button:** Playbook articles are premium paid digital assets; never render a public share button or link copy on playbook article headers.
 3. **Article Header Navigation & Spacing:** The sticky top header must feature `← Back to Playbook Overview` placed with ample spacing on the far left and the reading duration badge (e.g. 25 min read) on the far right.
 4. **Top Thumbnail & Prominent Reading Time:** Every playbook article must display its high-resolution thumbnail at the very top of all content, with the reading duration (e.g. 25 min read) clearly visible in the sticky header and metadata eyebrow.
-5. **Signature Vertical Reading Progress Bar on Right Edge:** Maintain the vertical progress indicator fixed on the right edge of the screen featuring subtle tick marks and an active #1c1917 indicator bar that moves smoothly as the reader scrolls through the article.
-6. **Standardized Reusable Architecture:** All current and future playbook articles inherit this exact light mode editorial structure (PlaybookArticleReader.tsx and src/lib/playbook-articles/).
+5. **Author Name & Colorful Avatar (No Generic Roles):** Inside the playbook article header and metadata, always display the specific Author / Instructor name (e.g. `Caleb Sterling`) with their colorful initials avatar circle (`getAvatarBgColor(authorName)`), never generic labels like "Plugd Systems Architect" or "Official Playbook Guide".
+6. **Universal "AI" Category Standard:** The category name across all surfaces, feeds, chips, headers, and articles is strictly `"AI"` (never `"AI Businesses"`).
+7. **Signature Vertical Reading Progress Bar on Right Edge:** Maintain the vertical progress indicator fixed on the right edge of the screen featuring subtle tick marks and an active #1c1917 indicator bar that moves smoothly as the reader scrolls through the article.
+8. **Standardized Reusable Architecture:** All current and future playbook articles inherit this exact light mode editorial structure (PlaybookArticleReader.tsx and src/lib/playbook-articles/).
 
 ---
 

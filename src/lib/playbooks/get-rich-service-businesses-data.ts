@@ -8607,7 +8607,7 @@ export const GET_RICH_SERVICE_BUSINESSES_COURSE: Course = {
   id: "ai-businesses-19",
   slug: "how-to-get-rich-for-service-based-businesses-thank-me-later" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "How to Get Rich for Service-Based Businesses (Thank Me Later)",
   shortTitle: "How to Get Rich for Service-Ba",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

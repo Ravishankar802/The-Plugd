@@ -8607,7 +8607,7 @@ export const BECOME_MILLIONAIRE_2026_BLUEPRINT_COURSE: Course = {
   id: "ai-businesses-54",
   slug: "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "If I Wanted To Become a Millionaire in 2027, This Is What I'd Do",
   shortTitle: "If I Wanted To Become a Millio",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

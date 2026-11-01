@@ -7,7 +7,7 @@ export const FACELESS_SHORTS_30K_DETAIL_DATA: PlaybookDetailData = {
   title: "The $30K/Month Al Faceless Shorts Method Nobody's Talking About",
   headline: "A step-by-step masterclass to building a high-RPM, faceless YouTube Shorts channel using AI video generation.",
   description: "Unlock the high-retention, ranking-style video format that is generating millions of views and massive RPM payouts on YouTube Shorts. Master competitor gap analysis with Claude and VidIQ, automated editing workflows, the custom retention shuffle trick, and multi-channel syndication.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 7,
   originalPrice: 12,
@@ -41,7 +41,7 @@ export const FACELESS_SHORTS_30K_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $30,000/Month Media Syndication Network with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

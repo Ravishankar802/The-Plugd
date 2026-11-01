@@ -7,7 +7,7 @@ export const FOUR_LEVELS_GETTING_RICH_2026_DETAIL_DATA: PlaybookDetailData = {
   title: "The 4 Levels To Getting RICH in 2026",
   headline: "The definitive economic caste breakdown: how to break through the 4 levels of financial consciousness\u2014from Jeffrey to Sovereign Architect\u2014in 2026.",
   description: "A hard-hitting philosophical and tactical breakdown of the four levels of financial freedom. Discover how to escape Level 1 (Jeffrey dopamine traps), break out of Level 2 (the Average Man wage cage), evolve past Level 3 (the High-Earner Operator bottleneck), and achieve Level 4 Sovereign Architecture with autonomous digital cashflow and generational assets in 2026.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 7,
   originalPrice: 12,

@@ -7532,7 +7532,7 @@ export const TURNED_300_TO_100K_COURSE: Course = {
   id: "ai-businesses-17",
   slug: "how-i-turned-300-to-100-000-at-19-my-side-hustles" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "How I turned $300 to $100,000 At 19 (My Side Hustles)",
   shortTitle: "How I turned $300 to $100,000 ",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

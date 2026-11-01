@@ -1821,7 +1821,7 @@ export const LOCAL_CHATBOTS_DETAIL_DATA: PlaybookDetailData = {
     "Master the complete no-code operational system to build, package, and sell high-converting AI receptionists and chatbots to 10 local businesses without writing software code.",
   description:
     "A comprehensive, highly actionable masterclass detailing how to launch a profitable local AI chatbot agency without hiring software engineers. Learn how to architect smart visual chatbots in Voiceflow, engineer RAG knowledge bases with zero hallucinations, automate calendar booking and SMS owner alerts, deploy the high-converting 'Trojan Horse' live sandbox demo, package $750 setup fees with $150/month retainers, and scale to 25+ local clients.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 9,
@@ -1955,7 +1955,7 @@ export const LOCAL_CHATBOTS_COURSE: Course = {
   id: LOCAL_CHATBOTS_ID,
   slug: LOCAL_CHATBOTS_SLUG,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Sell AI Chatbots to 10 Local Businesses Without Hiring a Developer",
   shortTitle: "Sell AI Chatbots to 10 Local Businesses",
   audience: "Agency Founders, Freelancers & Non-Technical Builders",

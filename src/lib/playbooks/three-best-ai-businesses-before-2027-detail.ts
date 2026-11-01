@@ -7,7 +7,7 @@ export const THREE_BEST_AI_BIZ_2027_DETAIL_DATA: PlaybookDetailData = {
   title: "3 best AI businesses to start before 2027 (and the one i'd start today)",
   headline: "The objective comparison of the top 3 AI business models\u2014and the exact low-drag asset system to launch today.",
   description: "An honest breakdown of the three dominant AI models: AI Automation Agencies (high cash, high client touch), AI Micro-SaaS (high recurring, technical maintenance), and AI Digital Subscription Products (low drag, pure margins, automated). Master unit economics, trade-offs, and rapid deployment.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 7,
   originalPrice: 12,
@@ -41,7 +41,7 @@ export const THREE_BEST_AI_BIZ_2027_DETAIL_DATA: PlaybookDetailData = {
     "Scale from initial cashflow to an unassailable sovereign holding portfolio"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Digital Leverage",
     "Solopreneurship",
     "Sovereign Assets",

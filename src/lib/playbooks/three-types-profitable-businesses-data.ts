@@ -8607,7 +8607,7 @@ export const THREE_TYPES_BUSINESSES_COURSE: Course = {
   id: "ai-businesses-42",
   slug: "there-are-only-3-types-of-profitable-businesses-pick-one" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "There Are Only 3 Types Of Profitable Businesses (Pick ONE)",
   shortTitle: "There Are Only 3 Types Of Prof",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

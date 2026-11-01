@@ -141,7 +141,7 @@ export default function PlugdHomePageClient({
 
   const categoryLabels: Record<CategoryFilter, string> = {
     all: "All Categories",
-    "ai-businesses": "AI Businesses",
+    "ai-businesses": "AI",
   };
 
   const countText = `${filteredAndSortedPlaybooks.length} ${

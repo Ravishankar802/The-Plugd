@@ -7532,7 +7532,7 @@ export const FIVE_SIMPLE_APPS_10K_COURSE: Course = {
   id: "ai-businesses-60",
   slug: "5-simple-apps-making-10-000-month-that-you-can-build-with-ai" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "5 Simple Apps Making $10,000/month That You Can Build with AI",
   shortTitle: "5 Simple Apps Making $10,000/m",
   audience: "Beginners, Solopreneurs & Aspiring Builders" as any,

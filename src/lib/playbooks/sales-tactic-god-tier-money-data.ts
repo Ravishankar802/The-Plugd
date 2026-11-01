@@ -7532,7 +7532,7 @@ export const SALES_TACTIC_10M_COURSE: Course = {
   id: "ai-businesses-41",
   slug: "want-to-made-god-tier-money-use-this-sales-tactic-made-me-10m" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Want to made god-tier money? Use this sales tactic (Made me $10M)",
   shortTitle: "Want to made god-tier money? U",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

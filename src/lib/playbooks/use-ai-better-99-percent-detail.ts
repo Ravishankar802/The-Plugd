@@ -7,7 +7,7 @@ export const USE_AI_BETTER_99_DETAIL_DATA: PlaybookDetailData = {
   title: "How To Use AI Better Than 99% Of People (This Changed My Life)",
   headline: "Unlock the top 1% cognitive workflow frameworks to transform AI into an intellectual sparring partner and output multiplier.",
   description: "Stop using AI like a basic chatbot. Master advanced prompt architectures, recursive context steering, structured book distillation, and end-to-end cognitive augmentation that delivers superhuman business velocity.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const USE_AI_BETTER_99_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding 10x Superhuman Output Velocity & Cognitive Monopoly with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

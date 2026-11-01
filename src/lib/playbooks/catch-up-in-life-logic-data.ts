@@ -7532,7 +7532,7 @@ export const CATCH_UP_IN_LIFE_LOGIC_COURSE: Course = {
   id: "ai-businesses-21",
   slug: "how-to-catch-up-in-life-using-logic" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "How to Catch Up In Life (Using Logic)",
   shortTitle: "How to Catch Up In Life (Using",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

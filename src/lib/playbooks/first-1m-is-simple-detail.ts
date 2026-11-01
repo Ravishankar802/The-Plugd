@@ -7,7 +7,7 @@ export const FIRST_1M_IS_SIMPLE_DETAIL_DATA: PlaybookDetailData = {
   title: "Your First $1M Is Simple (Here's How)",
   headline: "Why making your first million is mathematically simple once you break through the gravitational pull of the middle class and master the 4 core skill stacks.",
   description: "A hard-hitting, cinematic breakdown of the physics of wealth creation. Learn why making the first million requires 80% of your lifetime effort while every subsequent million flows with ease, how to stack copywriting, sales, media, and systems into an unfair advantage, and how to price and deliver high-ticket retainers to reach $1M without burnout.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 15,
   originalPrice: 25,

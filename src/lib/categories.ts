@@ -37,7 +37,7 @@ export interface PlaybookSummary {
 export const CATEGORIES: Category[] = [
   {
     id: "ai-businesses",
-    name: "AI Businesses",
+    name: "AI",
     slug: "ai-businesses",
     description: "Build software-leveraged tools, agency services, and scalable AI solutions.",
     iconName: "Bot",

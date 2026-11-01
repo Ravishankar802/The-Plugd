@@ -7336,7 +7336,7 @@ export const ONLY_INVESTING_VIDEO_100_COURSE: Course = {
   id: "ai-businesses-37",
   slug: "the-only-investing-video-youll-ever-need-start-with-100" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "The Only Investing Video You'll Ever Need (Start With $100)",
   shortTitle: "The Only Investing Video You'l",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

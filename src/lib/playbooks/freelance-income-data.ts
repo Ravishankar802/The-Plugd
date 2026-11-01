@@ -1821,7 +1821,7 @@ export const FREELANCE_INCOME_DETAIL_DATA: PlaybookDetailData = {
     "Master one high-leverage AI capability and monetize it through 4 distinct revenue models: Sprints, Retainers, Paid Audits, and Digital Systems.",
   description:
     "An exhaustive operational guide for modern freelancers, developers, and consultants seeking to escape the hourly billing trap and build a resilient multi-stream income engine. Master Structured Document AI and workflow orchestration, then turn that single core skill into high-ticket sprints, recurring retainers, paid audits, and digital system hubs.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 9,
@@ -1955,7 +1955,7 @@ export const FREELANCE_INCOME_COURSE: Course = {
   id: FREELANCE_INCOME_ID,
   slug: FREELANCE_INCOME_SLUG,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Turn 1 AI Skill Into 4 Different Freelance Income Streams",
   shortTitle: "1 AI Skill into 4 Income Streams",
   audience: "Freelancers, Consultants & Solo Operators",

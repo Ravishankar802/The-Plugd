@@ -7,7 +7,7 @@ export const TRADING_212_GUIDE_DETAIL_DATA: PlaybookDetailData = {
   title: "How to Use Trading 212 in 2026 (Full Investing Guide)",
   headline: "A comprehensive, practical guide to building an automated compounding wealth machine using Trading 212.",
   description: "Learn the exact step-by-step blueprint to set up tax-advantaged accounts, configure automated Pies, leverage fractional shares, enable DRIP dividend reinvestment, and construct an all-weather portfolio with rock-bottom fees.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 5,
   originalPrice: 9,
@@ -41,7 +41,7 @@ export const TRADING_212_GUIDE_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding 8-10% Compound Annual Return on Autopilot with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

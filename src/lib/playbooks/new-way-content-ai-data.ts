@@ -6457,7 +6457,7 @@ export const NEW_WAY_CONTENT_AI_COURSE: Course = {
   id: "ai-businesses-20",
   slug: "the-new-way-of-making-content-in-the-age-of-ai" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "The New Way of Making Content In The Age of AI",
   shortTitle: "The New Way of Making Content ",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

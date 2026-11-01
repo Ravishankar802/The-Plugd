@@ -30,7 +30,7 @@ export interface SlideTemplateDefinition {
 
 // Master persistent registry of slide templates
 export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
-  // 1. Reference Blueprint Template (7 AI Automation Tools / These 3 AI Businesses)
+  // 1. Reference Blueprint Template (7 AI Automation Tools / These 3 AI)
   "blueprint-light-canvas": {
     templateId: "blueprint-light-canvas",
     name: "Editorial Blueprint Canvas",

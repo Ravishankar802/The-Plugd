@@ -7532,7 +7532,7 @@ export const CAPITALIZE_AI_GOLD_RUSH_COURSE: Course = {
   id: "ai-businesses-56",
   slug: "the-smartest-way-to-capitalize-on-the-ai-gold-rush" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "The SMARTEST Way to Capitalize on the AI Gold Rush",
   shortTitle: "The SMARTEST Way to Capitalize",
   audience: "Beginners, Solopreneurs & Aspiring Builders" as any,

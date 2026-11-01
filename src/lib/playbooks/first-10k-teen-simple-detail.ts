@@ -7,7 +7,7 @@ export const FIRST_10K_TEEN_DETAIL_DATA: PlaybookDetailData = {
   title: "How to Make Your First $10,000 As a Teen (Stupid Simple)",
   headline: "A practical, zero-bullshit roadmap for teens and young adults to bank their first $10,000 in net profit.",
   description: "Forget complicated business models and expensive courses. This playbook details the exact steps a young entrepreneur takes to identify high-leverage local and digital opportunities, execute outreach with zero fear, close paying clients, and hit the life-changing $10,000 milestone.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const FIRST_10K_TEEN_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding First $10,000 Cash in the Bank with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Clock, Sparkles, Terminal } from "lucide-react";
 import { PlaybookArticle } from "@/lib/playbook-articles";
+import { getAuthorProfile, getAvatarBgColor } from "@/lib/book-utils";
 
 interface PlaybookArticleReaderProps {
   slug: string;
@@ -22,10 +23,11 @@ export default function PlaybookArticleReader({
   slug,
   title,
   thumbnail,
-  categoryName = "AI Businesses",
+  categoryName = "AI",
   readingTime = "25 min read",
   article,
 }: PlaybookArticleReaderProps) {
+  const authorName = article?.authorName || getAuthorProfile(categoryName, slug).name;
   const [scrollProgress, setScrollProgress] = useState(0);
   const [copiedPrompt, setCopiedPrompt] = useState<string | null>(null);
   const articleContainerRef = useRef<HTMLDivElement>(null);
@@ -239,15 +241,15 @@ export default function PlaybookArticleReader({
         {/* Author / Publication Meta */}
         <div className="flex items-center justify-between py-4 border-y border-[#e7e5e4] mb-8 text-xs text-[#78716c] font-sans">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-[#1c1917] text-white flex items-center justify-center font-bold text-xs uppercase shadow-2xs">
-              PL
+            <div
+              className="w-9 h-9 rounded-full text-white flex items-center justify-center font-bold text-xs uppercase shadow-2xs"
+              style={{ backgroundColor: getAvatarBgColor(authorName) }}
+            >
+              {authorName.charAt(0)}
             </div>
             <div>
               <div className="font-semibold text-[#1c1917]">
-                {article?.authorName || "Plugd Systems Architect"}
-              </div>
-              <div className="text-[11px] text-[#78716c] font-mono">
-                Official Playbook Guide
+                {authorName}
               </div>
             </div>
           </div>

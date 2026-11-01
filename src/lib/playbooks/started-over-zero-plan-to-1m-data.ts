@@ -7532,7 +7532,7 @@ export const STARTED_OVER_ZERO_TO_1M_COURSE: Course = {
   id: "ai-businesses-53",
   slug: "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "If I Started Over With $0, Here\u2019s My Exact Plan to get to $1M",
   shortTitle: "If I Started Over With $0, Her",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

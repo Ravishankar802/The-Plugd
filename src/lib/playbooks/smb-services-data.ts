@@ -1822,7 +1822,7 @@ export const SMB_SERVICES_DETAIL_DATA: PlaybookDetailData = {
     "Master the technical architectures, delivery blueprints, and commercial packaging for 12 high-impact AI services small businesses urgently need and gladly pay for.",
   description:
     "An exhaustive, practical masterclass teaching you how to build and monetize 12 essential AI services for local businesses. Cover speed-to-lead missed-call text-backs, dynamic form quoters, automated Google review harvesters, vendor invoice auto-parsers, smart appointment dispatchers, and accounts receivable bots. Package them into high-converting bundles and build a predictable $15,000/month recurring agency.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 9,
@@ -1959,7 +1959,7 @@ export const SMB_SERVICES_COURSE: Course = {
   id: SMB_SERVICES_ID,
   slug: SMB_SERVICES_SLUG,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "12 AI Services Small Businesses Need but Rarely Know How to Build",
   shortTitle: "12 AI Services for Small Businesses",
   audience: "Agency Founders, Consultants & Operators",

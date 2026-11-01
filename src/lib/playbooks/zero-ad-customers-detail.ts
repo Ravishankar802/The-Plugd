@@ -7,7 +7,7 @@ export const ZERO_AD_CUSTOMERS_DETAIL_DATA: PlaybookDetailData = {
   title: "10 Ways to Find Paying Customers Without Spending on Ads",
   headline: "The 10 battle-tested organic customer acquisition systems to land high-paying clients without spending a single dollar on advertising.",
   description: "A battle-tested tactical masterclass breaking down 10 zero-dollar customer acquisition channels. Master diagnostic cold Loom audits, parasite SEO, database reactivation sprints, partner co-marketing alliances, podcast guest tours, and viral bounty referral loops to build a dependable $20k\u2013$40k/month client pipeline with zero ad spend.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 15,
   originalPrice: 25,
@@ -41,7 +41,7 @@ export const ZERO_AD_CUSTOMERS_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $20,000–$40,000/Month Net Inflow with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

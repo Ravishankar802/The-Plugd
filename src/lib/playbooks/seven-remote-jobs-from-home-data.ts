@@ -7532,7 +7532,7 @@ export const SEVEN_REMOTE_JOBS_COURSE: Course = {
   id: "ai-businesses-46",
   slug: "7-remote-jobs-you-can-do-from-home" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "7 Remote Jobs You Can Do From Home",
   shortTitle: "7 Remote Jobs You Can Do From ",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

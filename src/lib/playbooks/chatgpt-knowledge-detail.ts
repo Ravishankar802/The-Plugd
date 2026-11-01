@@ -7,7 +7,7 @@ export const CHATGPT_KNOWLEDGE_DETAIL_DATA: PlaybookDetailData = {
   title: "Give Me 28 Minutes, I'll Give You 10,000 Hours of ChatGPT Knowledge",
   headline: "Concentrated ChatGPT mastery: o1/o3 reasoning models, precision custom instructions, Canvas collaboration, Custom GPTs with OpenAPI Actions, and Advanced Voice.",
   description: "An authoritative, comprehensive guide to OpenAI's advanced AI ecosystem. Master the frontier reasoning capabilities of o1 and o3, craft surgical custom instructions that eliminate sycophancy, co-edit high-ticket assets in Canvas, build custom GPTs with real-world OpenAPI Actions, and conduct live sales roleplay with Advanced Voice Mode.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const CHATGPT_KNOWLEDGE_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding 10x Operational Speed & $15,000/Month with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

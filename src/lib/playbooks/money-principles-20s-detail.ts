@@ -7,7 +7,7 @@ export const MONEY_PRINCIPLES_20S_DETAIL_DATA: PlaybookDetailData = {
   title: "The 5 Money Principles that will make anyone RICH in their 20s",
   headline: "The 5 stoic commandments that separate young men and women who look rich from those who become permanently wealthy before age 30.",
   description: "A profound, narrative-driven blueprint on behavioral finance and economic sovereignty in your twenties. Master the 5 sacred commandments: living off operational surplus rather than investments, ruthlessly quarantining lifestyle creep, keeping deep liquid war chests, taking convex asymmetric bets, and curating your inner circle as an asset class.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 5,

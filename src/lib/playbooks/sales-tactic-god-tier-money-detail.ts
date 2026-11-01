@@ -7,7 +7,7 @@ export const SALES_TACTIC_10M_DETAIL_DATA: PlaybookDetailData = {
   title: "Want to made god-tier money? Use this sales tactic (Made me $10M)",
   headline: "A masterclass in high-ticket diagnostic selling: quantifying client financial pain and closing enterprise deals without pressure.",
   description: "Forget aggressive closing tricks and high-pressure manipulation. Master the institutional diagnostic framework that quantifies a prospect's exact daily financial bleeding, builds undeniable buying conviction, eliminates product derailers, and closes multi-million-dollar contracts with complete integrity.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 15,
   originalPrice: 25,
@@ -41,7 +41,7 @@ export const SALES_TACTIC_10M_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $10,000,000 Sales Conversion Engine with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

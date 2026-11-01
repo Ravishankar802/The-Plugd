@@ -7,7 +7,7 @@ export const WIN_IN_20S_DETAIL_DATA: PlaybookDetailData = {
   title: "If You're In Your 20s, Here's How To Win (At Anything)",
   headline: "The definitive operating manual for 20-somethings to weaponize biological leverage, master asymmetric skills, and win relentlessly.",
   description: "Stop wasting your 20s on linear career traps, cheap dopamine, and comparison paralysis. Master the high-agency playbook to build character capital, execute deep skill acquisition sprints, choose high-leverage vehicles, and engineer an unassailable life advantage.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 19,
   originalPrice: 30,
@@ -41,7 +41,7 @@ export const WIN_IN_20S_DETAIL_DATA: PlaybookDetailData = {
     "Scale from initial cashflow to an unassailable sovereign holding portfolio"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Digital Leverage",
     "Solopreneurship",
     "Sovereign Assets",

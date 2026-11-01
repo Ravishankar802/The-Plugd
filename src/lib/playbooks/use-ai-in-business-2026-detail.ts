@@ -7,7 +7,7 @@ export const USE_AI_IN_BUSINESS_2026_DETAIL_DATA: PlaybookDetailData = {
   title: "How to Use AI in Your Business in 2026",
   headline: "How The Lead Strategist uses AI across his $250M+ portfolio to make businesses Better, Cheaper, Faster, and Less Risky: front-end lead engines, fulfillment acceleration, and agentic workflows.",
   description: "An executive masterclass on deploying artificial intelligence across real-world commercial operations. Learn how The Strategist's $250M portfolio implements AI across customer acquisition (sub-60s lead response, conversational SMS/voice), middle-office delivery (70% faster fulfillment), back-office automation (accounting, legal triage), and autonomous multi-agent systems via Make and MCP.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 19,
   originalPrice: 30,
@@ -41,7 +41,7 @@ export const USE_AI_IN_BUSINESS_2026_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $25,000+/Month Autonomous Profit Engine with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

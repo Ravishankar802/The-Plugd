@@ -6457,7 +6457,7 @@ export const MASTER_HIGGSFIELD_AI_COURSE: Course = {
   id: "ai-businesses-52",
   slug: "master-higgsfield-ai-in-20-minutes-beginner-tutorial" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Master Higgsfield AI in 20 Minutes (Beginner Tutorial)",
   shortTitle: "Master Higgsfield AI in 20 Min",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

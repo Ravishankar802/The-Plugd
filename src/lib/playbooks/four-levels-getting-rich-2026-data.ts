@@ -6413,7 +6413,7 @@ export const FOUR_LEVELS_GETTING_RICH_2026_COURSE: Course = {
   id: FOUR_LEVELS_GETTING_RICH_2026_ID,
   slug: FOUR_LEVELS_GETTING_RICH_2026_SLUG as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: FOUR_LEVELS_GETTING_RICH_2026_TITLE,
   shortTitle: "The 4 Levels To Getting RICH in ",
   audience: "Entrepreneurs, Creators & Sovereign Operators" as any,

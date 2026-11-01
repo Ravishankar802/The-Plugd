@@ -8383,7 +8383,7 @@ export const SEVEN_PROVEN_WAYS_AI_NO_EXP_COURSE: Course = {
   id: "ai-businesses-38",
   slug: "7-proven-ways-to-make-money-with-ai-no-experience" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "7 Proven Ways to Make Money With AI (No Experience)",
   shortTitle: "7 Proven Ways to Make Money Wi",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

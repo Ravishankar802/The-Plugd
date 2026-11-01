@@ -7,7 +7,7 @@ export const HONEST_ADVICE_GET_RICH_DETAIL_DATA: PlaybookDetailData = {
   title: "My honest advice to someone who wants to get rich",
   headline: "Raw, unfiltered, battle-tested advice for young founders: maximizing youth leverage, cutting lifestyle drag, and executing relentlessly.",
   description: "No motivational platitudes. This playbook delivers the direct, unvarnished advice every ambitious individual needs: how to leverage your twenties, why living dirt cheap creates infinite runway, the mathematics of skill-stacking, and how to out-execute the comfortable middle class.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 5,
   originalPrice: 9,
@@ -41,7 +41,7 @@ export const HONEST_ADVICE_GET_RICH_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding Uncompromising Wealth Accumulation Engine with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

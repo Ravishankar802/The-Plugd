@@ -7532,7 +7532,7 @@ export const BUILD_10K_WEBSITES_CLAUDE_COURSE: Course = {
   id: "ai-businesses-51",
   slug: "how-to-build-10k-websites-in-minutes-claude-ai" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "How to Build $10K Websites in Minutes (Claude AI)",
   shortTitle: "How to Build $10K Websites in ",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

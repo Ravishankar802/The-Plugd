@@ -7,7 +7,7 @@ export const MASTER_HIGGSFIELD_AI_DETAIL_DATA: PlaybookDetailData = {
   title: "Master Higgsfield AI in 20 Minutes (Beginner Tutorial)",
   headline: "A comprehensive beginner tutorial to mastering Higgsfield AI, image-to-video, and Cinema Studio consistent character pipelines.",
   description: "Master one of the most powerful generative video suites on the web. Learn the complete Higgsfield AI platform workflow: generating branded reference images, creating cinematic motion clips with native sound, scripting text-to-speech voiceovers, locking in persistent characters with Cinema Studio, and producing complete commercial video ads.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 15,
   originalPrice: 25,
@@ -41,7 +41,7 @@ export const MASTER_HIGGSFIELD_AI_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding World-Class Generative Video Production Pipeline with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

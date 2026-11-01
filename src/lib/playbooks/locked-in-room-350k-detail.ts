@@ -7,7 +7,7 @@ export const LOCKED_IN_ROOM_350K_DETAIL_DATA: PlaybookDetailData = {
   title: "I Locked Myself In a Room Until I Built a $350,000/mo Business",
   headline: "The raw story of falling from $144k in 24 hours to rock bottom, and the 180-day sensory deprivation monk-mode sprint that rebuilt a $350,000/month verified empire.",
   description: "A cinematic, deeply personal masterclass detailing The Solo Founder's journey from poverty to making $144,000 in 24 hours, losing it all to complacency and supercars, and entering a 180-day radical monk-mode isolation chamber. Learn the exact daily routine, psychological discipline, high-ticket offer architecture, and media flywheel that generated $350,000/month verified net profit.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 15,
   originalPrice: 25,

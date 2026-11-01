@@ -7,7 +7,7 @@ export const BUILT_BUSINESS_AI_24H_DETAIL_DATA: PlaybookDetailData = {
   title: "I Built A Business With AI In 24 Hours",
   headline: "A practical 24-hour sprint blueprint to validating an offer, launching a live brand, and securing your first paying customer using AI.",
   description: "Stop overthinking and spending months coding. Experience a real-time, zero-to-cash sprint using modern AI agents. Learn the RRT Validation Test, target avatar research, rapid web deployment with tools like Lovable, automated customer support setups, and live outbound closing.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const BUILT_BUSINESS_AI_24H_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding 24-Hour Rapid Launch Cash Machine with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

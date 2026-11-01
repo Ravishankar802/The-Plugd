@@ -7,7 +7,7 @@ export const STARTED_OVER_ZERO_TO_1M_DETAIL_DATA: PlaybookDetailData = {
   title: "If I Started Over With $0, Here’s My Exact Plan to get to $1M",
   headline: "The uncompromising step-by-step master plan to rebuild from absolute zero to $1,000,000 net worth using high-leverage skills and modern systems.",
   description: "If you lost everything tomorrow\u2014no money, no audience, and zero network\u2014this is the exact phased playbook to engineer survival cashflow, scale high-ticket service operations, productize into digital leverage, and accumulate an unassailable $1,000,000 asset fortress.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 19,
   originalPrice: 30,
@@ -41,7 +41,7 @@ export const STARTED_OVER_ZERO_TO_1M_DETAIL_DATA: PlaybookDetailData = {
     "Establish the monastic profit-sweeping protocol that guarantees generational wealth preservation"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Wealth Creation",
     "From Scratch to $1M",
     "Productized Services",

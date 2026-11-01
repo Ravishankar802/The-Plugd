@@ -7,7 +7,7 @@ export const BUILD_1M_SOLO_FASTER_DETAIL_DATA: PlaybookDetailData = {
   title: "How To Build A $1M One-Person Business Faster With AI",
   headline: "The complete operating blueprint to architect, scale, and automate a $1,000,000/year one-person empire with AI leverage.",
   description: "Learn how modern solo operators build 7-figure digital monopolies by combining personal brand gravity, high-converting offer architectures, and automated agent swarms\u2014without hiring a single full-time employee.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 19,
   originalPrice: 30,
@@ -41,7 +41,7 @@ export const BUILD_1M_SOLO_FASTER_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $83,333/Month ($1,000,000/Year Net Cash) with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

@@ -7,7 +7,7 @@ export const AI_SIDE_HUSTLES_2026_DETAIL_DATA: PlaybookDetailData = {
   title: "The Best AI Side Hustles To Start In 2026 (No Skills)",
   headline: "The 2026 high-margin side hustle landscape: Google Maps review armor, podcast audio repurposing, AI real estate staging, Voiceflow FAQ support bots, and B2B newsletters.",
   description: "A realistic, forward-looking guide to the side hustles that actually work in the 2026 AI landscape. Discover how to install Google Maps reputation systems for local contractors, repurpose long-form podcast audio into viral clips, offer virtual staging to real estate brokerages, deploy Voiceflow customer support agents, and curate profitable industry newsletters.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 5,
   originalPrice: 9,
@@ -41,7 +41,7 @@ export const AI_SIDE_HUSTLES_2026_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $20,000–$40,000/Month Net Inflow with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

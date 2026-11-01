@@ -32,7 +32,7 @@ export const AI_SERVICE_BUSINESS_PLAYBOOK_COURSE: Course = {
   id: "ai-businesses-02",
   slug: "build-a-10000-month-ai-service-business-with-just-3-core-tools" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Build a $10,000/Month AI Service Business With Just 3 Core Tools",
   shortTitle: "Build a $10K/Mo AI Service Business",
   audience: "Agency Founders, Freelancers & Consultants" as any,

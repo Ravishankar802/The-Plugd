@@ -7480,7 +7480,7 @@ export const MONEY_PRINCIPLES_20S_COURSE: Course = {
   id: MONEY_PRINCIPLES_20S_ID,
   slug: MONEY_PRINCIPLES_20S_SLUG as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: MONEY_PRINCIPLES_20S_TITLE,
   shortTitle: "The 5 Money Principles that will",
   audience: "Entrepreneurs, Creators & Sovereign Operators" as any,

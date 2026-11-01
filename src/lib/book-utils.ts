@@ -91,7 +91,7 @@ export function getReadingStats(slug = ""): {
 /**
  * Author profile for About the Author section
  */
-export function getAuthorProfile(categoryName = "AI Businesses", slug = ""): AuthorProfile {
+export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (slug === "how-to-build-10k-websites-in-minutes-claude-ai") {
     return {
       name: "Caleb Sterling",

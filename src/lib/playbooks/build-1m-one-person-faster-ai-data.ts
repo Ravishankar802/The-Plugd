@@ -8383,7 +8383,7 @@ export const BUILD_1M_SOLO_FASTER_COURSE: Course = {
   id: "ai-businesses-26",
   slug: "how-to-build-a-1m-one-person-business-faster-with-ai" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "How To Build A $1M One-Person Business Faster With AI",
   shortTitle: "How To Build A $1M One-Person ",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

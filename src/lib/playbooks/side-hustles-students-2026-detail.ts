@@ -7,7 +7,7 @@ export const SIDE_HUSTLES_STUDENTS_2026_DETAIL_DATA: PlaybookDetailData = {
   title: "7 Side Hustles Students Can Start In 2026",
   headline: "A battle-tested blueprint for students to generate $3,000 to $5,000/month around classes without upfront capital.",
   description: "Discover 7 proven, low-friction side hustles designed specifically for students. Learn to leverage existing campus demand, digital arbitrage, creative services, and automated digital products to achieve financial independence.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 5,
@@ -41,7 +41,7 @@ export const SIDE_HUSTLES_STUDENTS_2026_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $3,000-$5,000/Month Around Class Schedules with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

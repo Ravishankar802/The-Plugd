@@ -7,7 +7,7 @@ export const GET_RICH_SERVICE_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
   title: "How to Get Rich for Service-Based Businesses (Thank Me Later)",
   headline: "Step-by-step masterclass taking a service business from $55k/year to $25k+/month in 90 days: speed-to-lead, Grand Slam offers, consultative closing, and day-zero upsells.",
   description: "Step inside The Lead Strategist's live consulting room as he transforms a real service business owner from working 70 hours a week for $55k/year into a $25k/month profit machine. Master sub-5-minute speed-to-lead follow-up, value-based Grand Slam pricing, doctor-patient diagnostic sales calls, day-zero ascension upsells, and automated fulfillment SOPs.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const GET_RICH_SERVICE_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $25,000+/Month ($300,000/Year Net Cash) with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

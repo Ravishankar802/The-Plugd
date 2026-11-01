@@ -7,7 +7,7 @@ export const MULTIPLE_INTERESTS_ONE_PERSON_DETAIL_DATA: PlaybookDetailData = {
   title: "If You Have Multiple Interests, Please Start a One-Person Business",
   headline: "The Solopreneur Architect's polymath blueprint: why niching down kills creative passion, and how to monetize multiple interests into an authentic, eight-figure one-person media enterprise.",
   description: "The celebrated Renaissance Polymath framework by The Solopreneur Architect. Discover why traditional advice to niche down into one tiny topic destroys creative fulfillment, how to curate your interest constellation into a personal monopoly, the weekly long-form essay atomization engine, packaging problem-solving digital products, building software holding assets (Eden model), and designing the 4-hour monastic workday.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const MULTIPLE_INTERESTS_ONE_PERSON_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $15,000–$30,000/Month Sovereign Polymath MRR with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

@@ -7,7 +7,7 @@ export const SELL_PDFS_WITH_AI_DETAIL_DATA: PlaybookDetailData = {
   title: "I Sell PDFs With AI and It Changed My Life (Revealing Everything)",
   headline: "The complete blueprint to engineering and selling simple, high-converting digital PDFs with AI for 95%+ net profit margins.",
   description: "How a former minimum-wage fast-food worker generated over $32 million selling simple digital guides, prompt packs, and PDF templates without expert credentials or paid ads. Learn the exact pain-point discovery system, AI document creation, 7-second viral short hooks, and automated checkout funnels.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const SELL_PDFS_WITH_AI_DETAIL_DATA: PlaybookDetailData = {
     "Scale from initial cashflow to an unassailable sovereign holding portfolio"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Digital Leverage",
     "Solopreneurship",
     "Sovereign Assets",

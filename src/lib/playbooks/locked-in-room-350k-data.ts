@@ -8547,7 +8547,7 @@ export const LOCKED_IN_ROOM_350K_COURSE: Course = {
   id: LOCKED_IN_ROOM_350K_ID,
   slug: LOCKED_IN_ROOM_350K_SLUG as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: LOCKED_IN_ROOM_350K_TITLE,
   shortTitle: "I Locked Myself In a Room Until ",
   audience: "Entrepreneurs, Creators & Sovereign Operators" as any,

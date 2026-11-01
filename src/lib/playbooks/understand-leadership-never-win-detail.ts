@@ -7,7 +7,7 @@ export const UNDERSTAND_LEADERSHIP_DETAIL_DATA: PlaybookDetailData = {
   title: "If You Don't Understand Leadership, You'll Never Win",
   headline: "A practical framework for founders to ditch people-pleasing, delegate without bounce-back, and build high-performance teams.",
   description: "Leadership is not charisma, democracy, or being liked. It is the disciplined architecture of clarity, accountability, emotional regulation, and high-standard culture. Discover how elite founders eliminate bottlenecks, stop micromanaging, and lead organizations that execute flawlessly.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 7,
   originalPrice: 12,
@@ -41,7 +41,7 @@ export const UNDERSTAND_LEADERSHIP_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding High-Performance Autonomous Organization with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

@@ -6457,7 +6457,7 @@ export const UNDERSTAND_LEADERSHIP_COURSE: Course = {
   id: "ai-businesses-43",
   slug: "if-you-dont-understand-leadership-youll-never-win" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "If You Don't Understand Leadership, You'll Never Win",
   shortTitle: "If You Don't Understand Leader",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

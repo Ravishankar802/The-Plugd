@@ -7336,7 +7336,7 @@ export const ACTUALLY_LOCK_IN_GUIDE_COURSE: Course = {
   id: "ai-businesses-39",
   slug: "how-to-actually-lock-in-no-bullsh-t-guide" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "How to ACTUALLY Lock In (No Bullsh*t Guide)",
   shortTitle: "How to ACTUALLY Lock In (No Bu",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

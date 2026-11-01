@@ -7,7 +7,7 @@ export const STUCK_IN_MATRIX_ESCAPE_DETAIL_DATA: PlaybookDetailData = {
   title: "You're Stuck In The Matrix, Here's How You Escape",
   headline: "Deconstruct the societal programming running in your head and build sovereign financial and cognitive autonomy.",
   description: "A radical, practical guide to diagnosing the default cultural script, mastering your psycho-cybernetic guidance mechanism, and systematically building an autonomous life and income beyond societal conditioning.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const STUCK_IN_MATRIX_ESCAPE_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding 100% Financial & Temporal Sovereignty with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

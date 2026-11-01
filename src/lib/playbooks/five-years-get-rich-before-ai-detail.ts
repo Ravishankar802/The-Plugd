@@ -7,7 +7,7 @@ export const FIVE_YEARS_GET_RICH_AI_DETAIL_DATA: PlaybookDetailData = {
   title: "You Have 5 Years to Get Rich Before AI Takes Over",
   headline: "A macro roadmap to front-run the greatest wealth transfer in history and accumulate sovereign assets before 2031.",
   description: "Analyze the accelerating divergence between capital owners and labor. Learn how to position yourself on the winning side of the AI economic transition through hard-asset accumulation, proprietary media channels, and high-margin AI cash engines.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 15,
   originalPrice: 25,
@@ -41,7 +41,7 @@ export const FIVE_YEARS_GET_RICH_AI_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding 7-Figure Permanent Hard-Asset Fortress with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

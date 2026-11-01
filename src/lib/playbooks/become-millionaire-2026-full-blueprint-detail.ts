@@ -7,7 +7,7 @@ export const BECOME_MILLIONAIRE_2026_BLUEPRINT_DETAIL_DATA: PlaybookDetailData =
   title: "If I Wanted To Become a Millionaire in 2027, This Is What I'd Do",
   headline: "The definitive step-by-step master execution blueprint to build an unassailable seven-figure net worth in 2027 using modern leverage and asymmetric systems.",
   description: "A comprehensive operational masterclass breaking down the exact modern mechanics of wealth: mastering asymmetric skills, engineering high-ticket irresistible offers, deploying the Rule of 100 acquisition engine, scaling productized operations, and defending capital into a permanent $1,000,000 fortress.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const BECOME_MILLIONAIRE_2026_BLUEPRINT_DETAIL_DATA: PlaybookDetailData =
     "Deploy the monastic wealth defense system that shields and compounds profits into $1,000,000 Sovereign Liquid Net Worth"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Seven-Figure Blueprint",
     "High-Ticket Sales",
     "Rule of 100",

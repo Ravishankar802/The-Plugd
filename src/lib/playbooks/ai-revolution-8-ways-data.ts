@@ -8547,7 +8547,7 @@ export const AI_REVOLUTION_8_WAYS_COURSE: Course = {
   id: AI_REVOLUTION_8_WAYS_ID,
   slug: AI_REVOLUTION_8_WAYS_SLUG as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: AI_REVOLUTION_8_WAYS_TITLE,
   shortTitle: "The A.I. Revolution: 8 Ways to g",
   audience: "Entrepreneurs, Creators & Sovereign Operators" as any,

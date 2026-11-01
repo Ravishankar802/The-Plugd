@@ -1821,7 +1821,7 @@ export const AGENCY_BLUEPRINT_DETAIL_DATA: PlaybookDetailData = {
     "Follow the exact day-by-day 30-day roadmap to build, launch, and scale a high-ticket AI automation agency with zero prior portfolio or case studies.",
   description:
     "A comprehensive, execution-ready masterclass detailing the exact 30-day operational blueprint to launch a profitable AI agency. Master high-ticket offer engineering, synthetic sandbox case studies, 5-minute Loom teardown outreach, 2-call discovery-to-close frameworks, rapid 14-day delivery protocols, and monthly recurring retainers that scale to $15,000/month.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 9,
@@ -1955,7 +1955,7 @@ export const AGENCY_BLUEPRINT_COURSE: Course = {
   id: AGENCY_BLUEPRINT_ID,
   slug: AGENCY_BLUEPRINT_SLUG,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "The 30-Day AI Agency Blueprint: From Zero Portfolio to Paying Clients",
   shortTitle: "30-Day AI Agency Blueprint",
   audience: "Agency Founders, Freelancers & Operators",

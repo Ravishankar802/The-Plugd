@@ -7,7 +7,7 @@ export const TURNED_300_TO_100K_DETAIL_DATA: PlaybookDetailData = {
   title: "How I turned $300 to $100,000 At 19 (My Side Hustles)",
   headline: "The Solo Founder's raw story of going from hospital night shifts and a $300 bank account to $100,000 liquid savings at 19 by stacking velocity side hustles.",
   description: "An authentic, deeply personal masterclass detailing The Solo Founder's journey from washing cars and caregiving night shifts to saving $100,000 liquid cash at 19. Master local phone flipping, Instagram theme page shoutout arbitrage, viral product validation, high-ticket local business retainers, and house hacking cashflow real estate.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 7,
   originalPrice: 12,
@@ -41,7 +41,7 @@ export const TURNED_300_TO_100K_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $100,000 Liquid Savings with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

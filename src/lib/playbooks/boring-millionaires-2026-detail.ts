@@ -7,7 +7,7 @@ export const BORING_MILLIONAIRES_2026_DETAIL_DATA: PlaybookDetailData = {
   title: "It's Boring, But Will Make Even Beginners Millionaires in 2026",
   headline: "Why flashy businesses crash while unsexy B2B workflow and compliance cash engines silently build eight-figure net worths with zero competition.",
   description: "An unfiltered commercial breakdown of why 80% of wealth is timing and vehicle selection. Discover how to identify and monopolize dull, unsexy B2B problems (medical clinic follow-ups, contractor billing, document ingestion), build bulletproof automations, land 20 clients paying $2,500/month, and generate $50,000/month net profit with zero hype.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,

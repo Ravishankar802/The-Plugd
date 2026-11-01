@@ -7,7 +7,7 @@ export const THREE_TYPES_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
   title: "There Are Only 3 Types Of Profitable Businesses (Pick ONE)",
   headline: "A definitive strategic breakdown of the only three business vehicles that generate durable, long-term wealth.",
   description: "Stop chasing speculative hype. Every successful commercial enterprise belongs to one of three categories: High-Margin Services, Boring Cash-Flow Assets, or Scalable Software. Discover how to evaluate your unfair advantages, pick the single vehicle tailored to your capital and skills, and dominate your category.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const THREE_TYPES_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding High-Margin Sovereign Asset Model with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

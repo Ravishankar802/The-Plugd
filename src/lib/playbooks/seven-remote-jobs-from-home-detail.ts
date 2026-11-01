@@ -7,7 +7,7 @@ export const SEVEN_REMOTE_JOBS_DETAIL_DATA: PlaybookDetailData = {
   title: "7 Remote Jobs You Can Do From Home",
   headline: "A practical guide to landing high-paying, location-independent remote roles with real utility and career leverage.",
   description: "Escape the commute and the corporate cubicle. Explore 7 practical, high-utility remote roles that businesses urgently need. Master portfolio creation, remote interview strategy, digital workplace tooling, and how to command $3,000 to $6,000/month working from anywhere in the world.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 12,
   originalPrice: 20,
@@ -41,7 +41,7 @@ export const SEVEN_REMOTE_JOBS_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $10,000/Month Sovereign Remote Infrastructure with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

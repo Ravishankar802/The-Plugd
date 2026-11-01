@@ -7480,7 +7480,7 @@ export const LAZIEST_WAY_500_DAY_COURSE: Course = {
   id: LAZIEST_WAY_500_DAY_ID,
   slug: LAZIEST_WAY_500_DAY_SLUG as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: LAZIEST_WAY_500_DAY_TITLE,
   shortTitle: "Laziest Way to Make Money Online",
   audience: "Entrepreneurs, Creators & Sovereign Operators" as any,

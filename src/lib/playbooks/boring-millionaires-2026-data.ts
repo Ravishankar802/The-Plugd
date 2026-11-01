@@ -8547,7 +8547,7 @@ export const BORING_MILLIONAIRES_2026_COURSE: Course = {
   id: BORING_MILLIONAIRES_2026_ID,
   slug: BORING_MILLIONAIRES_2026_SLUG as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: BORING_MILLIONAIRES_2026_TITLE,
   shortTitle: "It's Boring, But Will Make Even ",
   audience: "Entrepreneurs, Creators & Sovereign Operators" as any,

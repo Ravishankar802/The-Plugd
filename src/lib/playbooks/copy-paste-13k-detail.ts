@@ -7,7 +7,7 @@ export const COPY_PASTE_13K_DETAIL_DATA: PlaybookDetailData = {
   title: "Copy & Paste THIS Strategy to Make $13k/Month with AI in 2026",
   headline: "The exact step-by-step copy-and-paste B2B system: scrape leads with Apify, send personalized cold emails, offer 48-hour pilot trials, and close $1,500/month retainers.",
   description: "A step-by-step tactical playbook detailing the exact B2B lead generation and automation system that scales to $13,000/month. Learn how to scrape qualified decision-makers using Google Maps and Apify, set up multi-inbox cold email infrastructure with 99% deliverability, offer zero-risk 48-hour pilot trials, and close 9 clients paying $1,500/month on automated retainers.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const COPY_PASTE_13K_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $13,000/Month ($156,000/Year) with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

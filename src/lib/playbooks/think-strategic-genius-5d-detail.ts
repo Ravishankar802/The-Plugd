@@ -7,7 +7,7 @@ export const THINK_STRATEGIC_GENIUS_DETAIL_DATA: PlaybookDetailData = {
   title: "How To Think Like A Strategic Genius (5-Dimensional Thinking)",
   headline: "Upgrade your cognitive operating system with 5-Dimensional Integral Thinking to make unassailable strategic moves.",
   description: "Learn the 4-quadrant integral model and 5th-dimensional synthesis that separates high-IQ failures from hyper-successful strategic thinkers in business, investing, and life.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 7,
   originalPrice: 12,
@@ -41,7 +41,7 @@ export const THINK_STRATEGIC_GENIUS_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding Unassailable Strategic Moats & Enterprise Control with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

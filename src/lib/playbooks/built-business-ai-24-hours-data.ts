@@ -7532,7 +7532,7 @@ export const BUILT_BUSINESS_AI_24H_COURSE: Course = {
   id: "ai-businesses-44",
   slug: "i-built-a-business-with-ai-in-24-hours" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "I Built A Business With AI In 24 Hours",
   shortTitle: "I Built A Business With AI In ",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

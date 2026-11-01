@@ -1820,7 +1820,7 @@ export const AGENT_SOLUTIONS_DETAIL_DATA: PlaybookDetailData = {
     "Master the architectural blueprints, tool-calling schemas, and commercial playbooks to build and sell 5 high-demand autonomous AI agents to B2B clients.",
   description:
     "A practical, implementation-focused masterclass teaching you how to architect, assemble, and monetize five distinct commercial AI agents using Claude 3.7, GPT-4o, Make.com, and Airtable. Learn how to qualify leads, extract market intelligence, automate customer support, process invoices, and package recurring B2B agency retainers without training custom machine learning models.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 9,
@@ -1955,7 +1955,7 @@ export const AGENT_SOLUTIONS_COURSE: Course = {
   id: AGENT_SOLUTIONS_ID,
   slug: AGENT_SOLUTIONS_SLUG,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "5 AI Agents You Can Build and Sell Without Training Your Own Model",
   shortTitle: "5 AI Agents to Build & Sell",
   audience: "Agency Founders, Freelancers & Automation Specialists",

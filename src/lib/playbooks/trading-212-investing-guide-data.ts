@@ -7336,7 +7336,7 @@ export const TRADING_212_GUIDE_COURSE: Course = {
   id: "ai-businesses-33",
   slug: "how-to-use-trading-212-in-2026-full-investing-guide" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "How to Use Trading 212 in 2026 (Full Investing Guide)",
   shortTitle: "How to Use Trading 212 in 2026",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

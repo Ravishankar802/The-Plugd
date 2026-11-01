@@ -7,7 +7,7 @@ export const FIVE_PROVEN_WAYS_DETAIL_DATA: PlaybookDetailData = {
   title: "5 Proven Ways To Make Money With AI (No Experience)",
   headline: "5 battle-tested zero-experience business models: Midjourney art assets, automated faceless video channels, programmatic SEO blogs, local merchant email retainers, and executive resumes.",
   description: "A zero-fluff beginner masterclass revealing 5 proven business vehicles you can start with modern AI tools and zero coding experience. Discover how to create commercial print-on-demand art, run automated faceless video channels, build passive programmatic SEO blogs, land local merchant email retainers, and transform executive resumes for high-paying clients.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 5,
@@ -41,7 +41,7 @@ export const FIVE_PROVEN_WAYS_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $10,000+/Month ($120,000+/Year) with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

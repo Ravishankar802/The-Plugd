@@ -6289,7 +6289,7 @@ export const STUCK_IN_MATRIX_ESCAPE_COURSE: Course = {
   id: "ai-businesses-29",
   slug: "youre-stuck-in-the-matrix-heres-how-you-escape" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "You're Stuck In The Matrix, Here's How You Escape",
   shortTitle: "You're Stuck In The Matrix, He",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

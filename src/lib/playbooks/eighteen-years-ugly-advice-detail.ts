@@ -7,7 +7,7 @@ export const EIGHTEEN_YEARS_UGLY_ADVICE_DETAIL_DATA: PlaybookDetailData = {
   title: "18 Years Of UGLY Business Advice In 19 Minutes",
   headline: "Raw, unvarnished, battle-tested operational truth from nearly two decades in the entrepreneurial trenches.",
   description: "No motivational fluff or academic theories. This playbook distills 18 painful years of building, scaling, surviving recessions, hiring, firing, and protecting capital into concrete rules that separate surviving enterprises from bankrupt dreams.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 19,
   originalPrice: 30,
@@ -41,7 +41,7 @@ export const EIGHTEEN_YEARS_UGLY_ADVICE_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding 70%+ Gross Margin Recession-Proof Cash Flow with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

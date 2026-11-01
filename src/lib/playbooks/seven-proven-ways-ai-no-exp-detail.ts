@@ -7,7 +7,7 @@ export const SEVEN_PROVEN_WAYS_AI_NO_EXP_DETAIL_DATA: PlaybookDetailData = {
   title: "7 Proven Ways to Make Money With AI (No Experience)",
   headline: "A practical roadmap to profiting from the AI revolution by providing implementation services rather than competing with tech giants.",
   description: "Avoid the fatal mistake of building AI software to compete with billion-dollar labs. Instead, master 7 proven service and workflow business models that solve real operational bottlenecks for paying clients today using accessible AI tools.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 5,
   originalPrice: 9,
@@ -41,7 +41,7 @@ export const SEVEN_PROVEN_WAYS_AI_NO_EXP_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $10,000+/Month High-Margin AI Services with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

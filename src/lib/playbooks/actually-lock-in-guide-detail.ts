@@ -7,7 +7,7 @@ export const ACTUALLY_LOCK_IN_GUIDE_DETAIL_DATA: PlaybookDetailData = {
   title: "How to ACTUALLY Lock In (No Bullsh*t Guide)",
   headline: "A ruthless, uncompromising manual to breaking brain rot, eliminating cheap dopamine, and executing deep work relentlessly.",
   description: "Tired of fake motivation, failed 5:00 AM routines, and perpetual procrastination? This playbook provides the definitive protocol to purge distractions, redesign your neurochemical baseline, construct an impenetrable work sanctuary, and sustain 6 to 8 hours of daily high-leverage execution.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 5,
@@ -41,7 +41,7 @@ export const ACTUALLY_LOCK_IN_GUIDE_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding 6-8 Hours Daily Uninterrupted Flow State with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

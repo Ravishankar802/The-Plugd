@@ -5,11 +5,11 @@ import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 import { AI_AUTOMATIONS_DETAIL_DATA } from "@/lib/ai-automations-detail";
 
 export const metadata: Metadata = {
-  title: "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees) | Plugd",
+  title: "These 3 AI Will Make You $10k+/Month (With Zero Employees) | Plugd",
   description:
     "Master the 3 proven AI business models to reach $10,000+/month as a solo operator with zero employees. Detailed slide decks and written lessons.",
   openGraph: {
-    title: "These 3 AI Businesses Will Make You $10k+/Month (With Zero Employees) | Plugd",
+    title: "These 3 AI Will Make You $10k+/Month (With Zero Employees) | Plugd",
     description:
       "Master the 3 proven AI business models to reach $10,000+/month as a solo operator with zero employees. Detailed slide decks and written lessons.",
   },

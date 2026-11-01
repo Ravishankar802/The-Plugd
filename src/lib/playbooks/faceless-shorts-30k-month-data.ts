@@ -8607,7 +8607,7 @@ export const FACELESS_SHORTS_30K_COURSE: Course = {
   id: "ai-businesses-50",
   slug: "the-30k-month-al-faceless-shorts-method-nobodys-talking-about" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "The $30K/Month Al Faceless Shorts Method Nobody's Talking About",
   shortTitle: "The $30K/Month Al Faceless Sho",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

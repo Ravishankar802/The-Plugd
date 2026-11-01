@@ -7,7 +7,7 @@ export const INVESTING_BEGINNERS_25M_DETAIL_DATA: PlaybookDetailData = {
   title: "Investing For Beginners in 25 Minutes",
   headline: "A 40-year veteran investor's ultimate masterclass condensed into 25 minutes of pure wealth-building mechanics.",
   description: "Learn the timeless laws of capital allocation, index compounding, corporate balance sheets, dividend reinvestment, and crash survival\u2014distilled into 25 minutes of zero-filler instruction that will transform your financial future.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 7,
   originalPrice: 12,
@@ -41,7 +41,7 @@ export const INVESTING_BEGINNERS_25M_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding 25-Minute Compounding Wealth Machine with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

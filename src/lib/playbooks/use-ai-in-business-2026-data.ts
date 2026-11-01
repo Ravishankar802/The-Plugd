@@ -7532,7 +7532,7 @@ export const USE_AI_IN_BUSINESS_2026_COURSE: Course = {
   id: "ai-businesses-23",
   slug: "how-to-use-ai-in-your-business-in-2026" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "How to Use AI in Your Business in 2026",
   shortTitle: "How to Use AI in Your Business",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

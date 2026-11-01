@@ -7532,7 +7532,7 @@ export const WIN_IN_20S_COURSE: Course = {
   id: "ai-businesses-55",
   slug: "if-youre-in-your-20s-heres-how-to-win-at-anything" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "If You're In Your 20s, Here's How To Win (At Anything)",
   shortTitle: "If You're In Your 20s, Here's ",
   audience: "Beginners, Solopreneurs & Aspiring Builders" as any,

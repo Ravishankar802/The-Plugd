@@ -7336,7 +7336,7 @@ export const THINK_STRATEGIC_GENIUS_COURSE: Course = {
   id: "ai-businesses-27",
   slug: "how-to-think-like-a-strategic-genius-5-dimensional-thinking" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "How To Think Like A Strategic Genius (5-Dimensional Thinking)",
   shortTitle: "How To Think Like A Strategic ",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

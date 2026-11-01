@@ -7,7 +7,7 @@ export const COPY_PASTE_FIRST_5K_DETAIL_DATA: PlaybookDetailData = {
   title: "Copy & Paste THIS Strategy To Make Your First $5,000 Online",
   headline: "A copy-and-paste playbook to launch, grow, and monetize a high-value niche newsletter to $5,000/month.",
   description: "Discover the proven media business model that requires zero inventory, near-zero overhead, and scales infinitely. Master niche selection, Beehiiv platform setup, AI content drafting workflows, organic audience acquisition, and triple-stream monetization.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 7,
   originalPrice: 12,
@@ -41,7 +41,7 @@ export const COPY_PASTE_FIRST_5K_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $5,000/Month Baseline Cashflow with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

@@ -51,7 +51,7 @@ export default async function LearnCoursePage({ params }: LearnPageProps) {
       slug={course.slug}
       title={course.title}
       thumbnail={thumbnail}
-      categoryName={course.categoryName || catalogEntry?.categoryName || "AI Businesses"}
+      categoryName={course.categoryName || catalogEntry?.categoryName || "AI"}
       readingTime={article?.readingTime || "25 min read"}
       article={article}
     />

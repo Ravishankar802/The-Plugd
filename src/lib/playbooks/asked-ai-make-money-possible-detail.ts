@@ -7,7 +7,7 @@ export const ASKED_AI_MAKE_MONEY_DETAIL_DATA: PlaybookDetailData = {
   title: "I Asked AI To Make Me As Much Money As Possible",
   headline: "A practical experiment in using AI as an autonomous commercial co-worker to generate cash flow from scratch.",
   description: "Move beyond basic ChatGPT prompts. Discover how an investor tasked AI with finding opportunities, negotiating transactions, generating marketing copy, and closing online deals in real time. Learn to deploy AI as your primary commercial execution engine.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -41,7 +41,7 @@ export const ASKED_AI_MAKE_MONEY_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding Autonomous AI-Driven Revenue Pipeline with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

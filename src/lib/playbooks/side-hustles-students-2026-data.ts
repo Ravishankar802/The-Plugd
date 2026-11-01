@@ -8383,7 +8383,7 @@ export const SIDE_HUSTLES_STUDENTS_2026_COURSE: Course = {
   id: "ai-businesses-34",
   slug: "7-side-hustles-students-can-start-in-2026" as any,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "7 Side Hustles Students Can Start In 2026",
   shortTitle: "7 Side Hustles Students Can St",
   audience: "Beginners, Freelancers & Aspiring Entrepreneurs" as any,

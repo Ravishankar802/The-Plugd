@@ -7,7 +7,7 @@ export const MAKING_MONEY_ONLINE_EASY_DETAIL_DATA: PlaybookDetailData = {
   title: "Making Money Online is Easy, Actually (Just Copy Me)",
   headline: "A veteran entrepreneur's simplified blueprint to stripping away noise and generating consistent online cash flow.",
   description: "Discover how a traditional retail veteran transitioned to the digital economy by recognizing core commercial laws. Master high-signal skill acquisition, irresistible offer design, zero-friction client acquisition, and scalable recurring income.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 7,
   originalPrice: 12,
@@ -41,7 +41,7 @@ export const MAKING_MONEY_ONLINE_EASY_DETAIL_DATA: PlaybookDetailData = {
     "Build a diversified, untouchable sovereign enterprise yielding $10,000/Month Net Profit ($120,000/Year) with zero employees"
   ],
   relatedTopics: [
-    "AI Businesses",
+    "AI",
     "Solopreneurship",
     "High-Ticket Retainers",
     "No-Code Automation",

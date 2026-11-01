@@ -1821,7 +1821,7 @@ export const MICRO_SAAS_DETAIL_DATA: PlaybookDetailData = {
     "Follow the proven 7-day sprint blueprint to architect, build, monetize, and launch a profitable B2B micro-SaaS with AI, Next.js 15, and Supabase.",
   description:
     "An exhaustive, practical, day-by-day technical masterclass that guides you through building a production-ready AI micro-SaaS in 7 days. Master 24-hour problem validation, Next.js 15 App Router scaffolding, Supabase PostgreSQL with Row Level Security, frontier LLM streaming integration (Claude 3.7 & GPT-4o), credit-based usage metering, Stripe subscription billing, Upstash Redis edge rate limiting, and Product Hunt launch distribution.",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
   originalPrice: 9,
@@ -1955,7 +1955,7 @@ export const MICRO_SAAS_COURSE: Course = {
   id: MICRO_SAAS_ID,
   slug: MICRO_SAAS_SLUG,
   categorySlug: "ai-businesses",
-  categoryName: "AI Businesses",
+  categoryName: "AI",
   title: "Build a Micro-SaaS With AI in 7 Days Instead of Spending Months Coding",
   shortTitle: "Build a Micro-SaaS in 7 Days",
   audience: "Software Engineers, Solo Founders & Technical Builders",
