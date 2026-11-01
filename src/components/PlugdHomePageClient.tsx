@@ -162,31 +162,24 @@ export default function PlugdHomePageClient({
           {/* ========================================================= */}
           {/* 1. EDITORIAL HERO SECTION (Inspired by Billion Dollar PDFs) */}
           {/* ========================================================= */}
-          <section className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-14 pt-2 pb-6 max-w-[1100px]">
-            {/* Left Column: Eyebrow, Editorial Title, Description */}
-            <div className="flex-1 max-w-2xl text-left">
-              <div className="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-widest text-[#78716c] font-semibold mb-3">
-                <span>A DIRECTORY</span>
-                <span>·</span>
-                <span>2026</span>
-              </div>
-
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#1c1917] leading-[1.08]">
-                Plugd Playbooks
-              </h1>
-
-              <p className="mt-4 sm:mt-5 text-[15px] sm:text-base text-[#57534e] leading-relaxed max-w-xl font-normal">
-                Practical playbooks for building AI businesses, finding customers,
-                and creating income online. Explore actionable knowledge, proven
-                frameworks, and step-by-step guides designed to help you turn ideas into
-                execution.
-              </p>
+          <section className="pt-2 pb-6 max-w-2xl text-left">
+            {/* Eyebrow, Editorial Title, Description */}
+            <div className="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-widest text-[#78716c] font-semibold mb-3">
+              <span>A DIRECTORY</span>
+              <span>·</span>
+              <span>2026</span>
             </div>
 
-            {/* Right Column: Decorative Animated Geometric Orbit Emblem */}
-            <div className="shrink-0 flex items-center justify-center">
-              <OrbitEmblem />
-            </div>
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#1c1917] leading-[1.08]">
+              Plugd Playbooks
+            </h1>
+
+            <p className="mt-4 sm:mt-5 text-[15px] sm:text-base text-[#57534e] leading-relaxed max-w-xl font-normal">
+              Practical playbooks for building AI businesses, finding customers,
+              and creating income online. Explore actionable knowledge, proven
+              frameworks, and step-by-step guides designed to help you turn ideas into
+              execution.
+            </p>
           </section>
 
           {/* ========================================================= */}
@@ -621,127 +614,5 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
  * Uses lightweight pure SVG with slow gentle rotation and prefers-reduced-motion fallback.
  */
 function OrbitEmblem() {
-  // 60 milled rim edge dentils
-  const dentils = Array.from({ length: 60 }, (_, i) => i * 6);
-  // 24 primary sweeping rosette petals
-  const primaryPetals = Array.from({ length: 24 }, (_, i) => i * 15);
-  // 24 secondary harmonic security petals
-  const harmonicPetals = Array.from({ length: 24 }, (_, i) => i * 15 + 7.5);
-
-  return (
-    <div
-      className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-52 lg:h-52 select-none pointer-events-none flex items-center justify-center shrink-0"
-      aria-hidden="true"
-    >
-      <svg
-        viewBox="0 0 320 320"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full"
-      >
-        {/* Outer Coin Rim & Concentric Security Rings */}
-        <circle cx="160" cy="160" r="150" stroke="#57534e" strokeWidth="1.25" />
-        <circle cx="160" cy="160" r="145" stroke="#78716c" strokeWidth="0.75" />
-
-        {/* Subtle Milled Rim Dentils */}
-        {dentils.map((deg) => (
-          <line
-            key={`dentil-${deg}`}
-            x1="160"
-            y1="13"
-            x2="160"
-            y2="17"
-            stroke="#78716c"
-            strokeWidth="0.75"
-            opacity="0.6"
-            transform={`rotate(${deg} 160 160)`}
-          />
-        ))}
-
-        <circle cx="160" cy="160" r="132" stroke="#57534e" strokeWidth="1" />
-        <circle
-          cx="160"
-          cy="160"
-          r="128"
-          stroke="#a8a29e"
-          strokeWidth="0.5"
-          strokeDasharray="2 3"
-        />
-
-        {/* Guilloche Rosette Petals (Primary & Harmonic Security Lattice) */}
-        <g>
-          {primaryPetals.map((deg) => (
-            <ellipse
-              key={`petal-1-${deg}`}
-              cx="160"
-              cy="80"
-              rx="38"
-              ry="48"
-              stroke="#78716c"
-              strokeWidth="0.85"
-              opacity="0.7"
-              transform={`rotate(${deg} 160 160)`}
-            />
-          ))}
-          {harmonicPetals.map((deg) => (
-            <ellipse
-              key={`petal-2-${deg}`}
-              cx="160"
-              cy="88"
-              rx="28"
-              ry="40"
-              stroke="#a8a29e"
-              strokeWidth="0.5"
-              opacity="0.45"
-              transform={`rotate(${deg} 160 160)`}
-            />
-          ))}
-        </g>
-
-        {/* Inner Currency Medallion Disc */}
-        <circle
-          cx="160"
-          cy="160"
-          r="46"
-          fill="#f5f3ee"
-          stroke="#57534e"
-          strokeWidth="1.5"
-        />
-        <circle
-          cx="160"
-          cy="160"
-          r="41"
-          fill="none"
-          stroke="#78716c"
-          strokeWidth="0.75"
-        />
-        <circle
-          cx="160"
-          cy="160"
-          r="37"
-          fill="none"
-          stroke="#a8a29e"
-          strokeWidth="0.5"
-          strokeDasharray="2 2"
-        />
-
-        {/* Central Serif Currency Dollar Symbol */}
-        <text
-          x="160"
-          y="161"
-          textAnchor="middle"
-          dominantBaseline="central"
-          style={{
-            fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
-            fontSize: "44px",
-            fontWeight: 400,
-            fontStyle: "italic",
-            fill: "#1c1917",
-          }}
-        >
-          $
-        </text>
-      </svg>
-    </div>
-  );
+  return null;
 }
