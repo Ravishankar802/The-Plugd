@@ -621,14 +621,28 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
  * Uses lightweight pure SVG with slow gentle rotation and prefers-reduced-motion fallback.
  */
 function OrbitEmblem() {
-  // Precomputed rotation angles for static precision rendering
-  const dentils = Array.from({ length: 72 }, (_, i) => i * 5);
-  const primaryPetals = Array.from({ length: 24 }, (_, i) => i * 15);
-  const secondaryPetals = Array.from({ length: 24 }, (_, i) => i * 15 + 7.5);
+  // Precomputed geometry for clean static rendering
+  const dentils = Array.from({ length: 48 }, (_, i) => i * 7.5);
+  const rays = Array.from({ length: 16 }, (_, i) => ({
+    deg: i * 22.5,
+    isMajor: i % 2 === 0,
+    yEnd: i % 2 === 0 ? 36 : 54,
+  }));
+  const diamondTips = Array.from({ length: 8 }, (_, i) => i * 45);
+
+  // 8-Pointed Geometric Treasury Star polygon points
+  const starPoints = Array.from({ length: 16 }, (_, i) => {
+    const deg = i * 22.5;
+    const rad = (deg * Math.PI) / 180;
+    const r = i % 2 === 0 ? 112 : 82;
+    const x = 160 + r * Math.sin(rad);
+    const y = 160 - r * Math.cos(rad);
+    return `${x.toFixed(2)},${y.toFixed(2)}`;
+  }).join(" ");
 
   return (
     <div
-      className="relative w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 select-none pointer-events-none flex items-center justify-center"
+      className="relative w-36 h-36 sm:w-44 sm:h-44 lg:w-52 lg:h-52 select-none pointer-events-none flex items-center justify-center"
       aria-hidden="true"
     >
       <svg
@@ -637,70 +651,96 @@ function OrbitEmblem() {
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-full"
       >
-        {/* Outer Coin Border Rings */}
+        {/* Outer Milled Coin Border */}
         <circle cx="160" cy="160" r="148" stroke="#57534e" strokeWidth="1.5" />
-        <circle cx="160" cy="160" r="143" stroke="#78716c" strokeWidth="0.75" />
+        <circle cx="160" cy="160" r="144" stroke="#78716c" strokeWidth="0.75" />
 
-        {/* Dentils (Milled Coin Rim) */}
+        {/* Coin Rim Dentils (Milled Edge) */}
         {dentils.map((deg) => (
           <line
             key={`dentil-${deg}`}
             x1="160"
-            y1="18"
+            y1="17"
             x2="160"
             y2="23"
             stroke="#78716c"
-            strokeWidth="0.75"
-            opacity="0.55"
+            strokeWidth="1"
+            opacity="0.65"
             transform={`rotate(${deg} 160 160)`}
           />
         ))}
 
-        <circle cx="160" cy="160" r="133" stroke="#57534e" strokeWidth="1" />
+        <circle cx="160" cy="160" r="135" stroke="#57534e" strokeWidth="1.2" />
         <circle
           cx="160"
           cy="160"
-          r="129"
+          r="130"
           stroke="#a8a29e"
           strokeWidth="0.5"
           strokeDasharray="2 3"
         />
 
-        {/* Guilloche Rosette Petals (Primary & Secondary Banknote Security Lattice) */}
-        <g>
-          {primaryPetals.map((deg) => (
-            <ellipse
-              key={`petal-1-${deg}`}
-              cx="160"
-              cy="74"
-              rx="34"
-              ry="46"
-              stroke="#78716c"
-              strokeWidth="0.75"
-              opacity="0.65"
-              transform={`rotate(${deg} 160 160)`}
-            />
-          ))}
-          {secondaryPetals.map((deg) => (
-            <ellipse
-              key={`petal-2-${deg}`}
-              cx="160"
-              cy="78"
-              rx="26"
-              ry="42"
-              stroke="#a8a29e"
-              strokeWidth="0.5"
-              opacity="0.45"
-              transform={`rotate(${deg} 160 160)`}
-            />
-          ))}
-        </g>
+        {/* 16-Ray Financial Sunburst */}
+        {rays.map(({ deg, isMajor, yEnd }) => (
+          <line
+            key={`ray-${deg}`}
+            x1="160"
+            y1="104"
+            x2="160"
+            y2={yEnd}
+            stroke="#57534e"
+            strokeWidth={isMajor ? 1.25 : 0.75}
+            opacity={isMajor ? 0.75 : 0.45}
+            transform={`rotate(${deg} 160 160)`}
+          />
+        ))}
 
-        {/* Inner Currency Medallion Disc */}
+        {/* Major Ray Diamond Tips */}
+        {diamondTips.map((deg) => (
+          <polygon
+            key={`diamond-${deg}`}
+            points="160,33 163.5,38 160,43 156.5,38"
+            fill="none"
+            stroke="#57534e"
+            strokeWidth="1"
+            opacity="0.75"
+            transform={`rotate(${deg} 160 160)`}
+          />
+        ))}
+
+        {/* 8-Pointed Geometric Treasury Star */}
+        <polygon
+          points={starPoints}
+          fill="none"
+          stroke="#78716c"
+          strokeWidth="0.85"
+          opacity="0.6"
+        />
+
+        {/* Concentric Security Guideline Rings */}
         <circle
           cx="160"
           cy="160"
-          r="46"
+          r="78"
+          stroke="#a8a29e"
+          strokeWidth="0.75"
+          strokeDasharray="3 3"
+          opacity="0.6"
+        />
+        <circle
+          cx="160"
+          cy="160"
+          r="64"
+          stroke="#78716c"
+          strokeWidth="0.5"
+          opacity="0.5"
+        />
+
+        {/* Inner Polished Coin Medallion Disc */}
+        <circle
+          cx="160"
+          cy="160"
+          r="48"
           fill="#f5f3ee"
           stroke="#57534e"
           strokeWidth="1.5"
@@ -708,7 +748,7 @@ function OrbitEmblem() {
         <circle
           cx="160"
           cy="160"
-          r="40"
+          r="42"
           fill="none"
           stroke="#78716c"
           strokeWidth="0.75"
@@ -716,14 +756,14 @@ function OrbitEmblem() {
         <circle
           cx="160"
           cy="160"
-          r="36"
+          r="38"
           fill="none"
           stroke="#a8a29e"
           strokeWidth="0.5"
           strokeDasharray="2 2"
         />
 
-        {/* Central Currency Dollar Symbol */}
+        {/* Center Serif Currency Dollar Symbol */}
         <text
           x="160"
           y="161"
