@@ -127,8 +127,8 @@ export function getCuratedCommunityReviews(
         avatar: "",
         date: "October 14, 2026",
         rating: 5,
-        headline: "The rare business playbook with zero filler — pure tactical signal.",
-        content: "The rare business playbook with zero filler — pure tactical signal. I absolutely love this playbook, you cannot find this anywhere else but on Plugd Playbooks bc the instagram scammers are everywhere trying to sell you fake tips",
+        headline: "The rare AI playbook with zero filler — pure tactical signal.",
+        content: "The rare AI playbook with zero filler — pure tactical signal. I absolutely love this playbook, you cannot find this anywhere else but on Plugd Playbooks bc the instagram scammers are everywhere trying to sell you fake tips",
         likes: 84,
       },
       {
@@ -148,7 +148,7 @@ export function getCuratedCommunityReviews(
         date: "October 02, 2026",
         rating: 5,
         headline: "Extremely deep and practical. Dense with actionable insights.",
-        content: "Extremely deep and practical. Dense with actionable insights. You answered all of the questions I didn't know I had until watching this.  This is a FANTASTIC RESOURCE!! ",
+        content: "Extremely deep and practical. Dense with actionable insights. You answered all of the questions I didn't know I had until reading this. This is a FANTASTIC RESOURCE!!",
         likes: 42,
       },
       {
@@ -171,7 +171,7 @@ export function getCuratedCommunityReviews(
       avatar: "",
       date: "October 14, 2026",
       rating: 5,
-      headline: "The rare business playbook with zero filler — pure tactical signal.",
+      headline: "The rare AI playbook with zero filler — pure tactical signal.",
       content: `I've read dozens of business and tech guides, and 95% could have been a blog post. "${title}" is the complete opposite. It reads like Peter Thiel's Zero to One applied directly to this vertical. The mental models, concrete unit economics, and step-by-step systems gave me a complete operational playbook. Finished the whole book in two sittings and immediately restructured our team's workflow.`,
       likes: 84,
     },

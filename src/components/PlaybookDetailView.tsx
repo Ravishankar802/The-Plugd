@@ -538,7 +538,7 @@ export default function PlaybookDetailView({
                   <h3 className="text-lg font-bold text-stone-900">
                     What do you think?
                   </h3>
-                  <p className="text-xs text-stone-500">Share your thoughts with other operators</p>
+                  <p className="text-xs text-stone-500">Share your thoughts with other readers</p>
                 </div>
 
                 <div className="flex items-center justify-center gap-1.5 py-1">
