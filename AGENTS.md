@@ -184,7 +184,7 @@ When a source YouTube video is provided for any Plugd Playbook:
 
 ### Core Rules for Playbook Feed Cards:
 1. **Light Mode Foundation:** Playbook feed cards, catalog views, and platform surfaces use the canonical warm light editorial design system (`#e7e4dd` page, `#ffffff` card surface, `#1c1917` text, `#dcd8d0` borders).
-2. **Mandatory Full-Width Horizontal Divider:** Every Playbook card (across all current 60 playbooks and any added in the future) must feature a crisp, full-width horizontal line divider (`border-t border-[#e7e5e4]`, `-mx-3 sm:-mx-3.5 px-3 sm:px-3.5 pt-3 sm:pt-3.5 mt-3.5 sm:mt-4`) separating the upper card body (thumbnail, title, category, ratings) from the bottom row (price and action button/Start Reading).
+2. **Mandatory Full-Width Horizontal Divider:** Every Playbook card (across all current 60 playbooks and any added in the future) must feature a crisp, full-width horizontal line divider (`border-t-2 border-[#a8a29e]`, `-mx-3 sm:-mx-3.5 px-3 sm:px-3.5 pt-3 sm:pt-3.5 mt-3.5 sm:mt-4`) separating the upper card body (thumbnail, title, category, ratings) from the bottom row (price and action button/Start Reading).
 
 ---
 
