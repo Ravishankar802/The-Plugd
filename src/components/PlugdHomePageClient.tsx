@@ -621,6 +621,11 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
  * Uses lightweight pure SVG with slow gentle rotation and prefers-reduced-motion fallback.
  */
 function OrbitEmblem() {
+  // Precomputed rotation angles for static precision rendering
+  const dentils = Array.from({ length: 72 }, (_, i) => i * 5);
+  const primaryPetals = Array.from({ length: 24 }, (_, i) => i * 15);
+  const secondaryPetals = Array.from({ length: 24 }, (_, i) => i * 15 + 7.5);
+
   return (
     <div
       className="relative w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 select-none pointer-events-none flex items-center justify-center"
@@ -632,136 +637,108 @@ function OrbitEmblem() {
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-full"
       >
-        {/* Static Background Guide Rings */}
-        <circle
-          cx="160"
-          cy="160"
-          r="152"
-          stroke="#78716c"
-          strokeWidth="0.75"
-          strokeDasharray="2 4"
-          opacity="0.35"
-        />
-        <circle
-          cx="160"
-          cy="160"
-          r="140"
-          stroke="#78716c"
-          strokeWidth="0.5"
-          opacity="0.25"
-        />
+        {/* Outer Coin Border Rings */}
+        <circle cx="160" cy="160" r="148" stroke="#57534e" strokeWidth="1.5" />
+        <circle cx="160" cy="160" r="143" stroke="#78716c" strokeWidth="0.75" />
 
-        {/* Slow Clockwise Rotating Orbit Layer */}
-        <g className="origin-center animate-[spin_60s_linear_infinite] motion-reduce:animate-none">
-          {/* Main Circular Ring */}
-          <circle
-            cx="160"
-            cy="160"
-            r="124"
-            stroke="#57534e"
-            strokeWidth="0.9"
-            opacity="0.45"
+        {/* Dentils (Milled Coin Rim) */}
+        {dentils.map((deg) => (
+          <line
+            key={`dentil-${deg}`}
+            x1="160"
+            y1="18"
+            x2="160"
+            y2="23"
+            stroke="#78716c"
+            strokeWidth="0.75"
+            opacity="0.55"
+            transform={`rotate(${deg} 160 160)`}
           />
+        ))}
 
-          {/* 8 Geometric Tick Marks on Ring */}
-          {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
-            <line
-              key={`tick-${deg}`}
-              x1="160"
-              y1="34"
-              x2="160"
-              y2="40"
-              stroke="#1c1917"
-              strokeWidth="1"
-              opacity="0.6"
+        <circle cx="160" cy="160" r="133" stroke="#57534e" strokeWidth="1" />
+        <circle
+          cx="160"
+          cy="160"
+          r="129"
+          stroke="#a8a29e"
+          strokeWidth="0.5"
+          strokeDasharray="2 3"
+        />
+
+        {/* Guilloche Rosette Petals (Primary & Secondary Banknote Security Lattice) */}
+        <g>
+          {primaryPetals.map((deg) => (
+            <ellipse
+              key={`petal-1-${deg}`}
+              cx="160"
+              cy="74"
+              rx="34"
+              ry="46"
+              stroke="#78716c"
+              strokeWidth="0.75"
+              opacity="0.65"
               transform={`rotate(${deg} 160 160)`}
             />
           ))}
-
-          {/* Tilted Orbital Ellipse 1 (at 32 deg) */}
-          <ellipse
-            cx="160"
-            cy="160"
-            rx="132"
-            ry="58"
-            stroke="#2563eb"
-            strokeWidth="0.85"
-            opacity="0.55"
-            transform="rotate(32 160 160)"
-          />
-
-          {/* Node on Orbital Ellipse 1 */}
-          <g transform="rotate(32 160 160)">
-            <circle cx="292" cy="160" r="3.5" fill="#2563eb" />
-            <circle cx="292" cy="160" r="7" stroke="#2563eb" strokeWidth="0.5" opacity="0.4" />
-          </g>
+          {secondaryPetals.map((deg) => (
+            <ellipse
+              key={`petal-2-${deg}`}
+              cx="160"
+              cy="78"
+              rx="26"
+              ry="42"
+              stroke="#a8a29e"
+              strokeWidth="0.5"
+              opacity="0.45"
+              transform={`rotate(${deg} 160 160)`}
+            />
+          ))}
         </g>
 
-        {/* Counter-Clockwise Rotating Orbit Layer */}
-        <g className="origin-center animate-[spin_48s_linear_infinite_reverse] motion-reduce:animate-none">
-          {/* Tilted Orbital Ellipse 2 (at -38 deg) */}
-          <ellipse
-            cx="160"
-            cy="160"
-            rx="128"
-            ry="62"
-            stroke="#78716c"
-            strokeWidth="0.85"
-            strokeDasharray="4 4"
-            opacity="0.45"
-            transform="rotate(-38 160 160)"
-          />
-
-          {/* Inner Dashed Concentric Ring */}
-          <circle
-            cx="160"
-            cy="160"
-            r="92"
-            stroke="#1c1917"
-            strokeWidth="0.8"
-            strokeDasharray="3 5"
-            opacity="0.4"
-          />
-
-          {/* Node on Ring */}
-          <circle cx="160" cy="68" r="3" fill="#1c1917" />
-          <circle cx="160" cy="252" r="2.5" fill="#78716c" opacity="0.7" />
-        </g>
-
-        {/* Center Geometric Core: Knowledge Spark / Diamond */}
+        {/* Inner Currency Medallion Disc */}
         <circle
           cx="160"
           cy="160"
-          r="54"
+          r="46"
+          fill="#f5f3ee"
+          stroke="#57534e"
+          strokeWidth="1.5"
+        />
+        <circle
+          cx="160"
+          cy="160"
+          r="40"
+          fill="none"
           stroke="#78716c"
           strokeWidth="0.75"
-          opacity="0.3"
         />
         <circle
           cx="160"
           cy="160"
           r="36"
-          stroke="#78716c"
+          fill="none"
+          stroke="#a8a29e"
           strokeWidth="0.5"
           strokeDasharray="2 2"
-          opacity="0.4"
         />
 
-        {/* Central Geometric Symbol */}
-        <polygon
-          points="160,136 177,160 160,184 143,160"
-          fill="none"
-          stroke="#2563eb"
-          strokeWidth="1.5"
-        />
-        <polygon
-          points="160,143 172,160 160,177 148,160"
-          fill="none"
-          stroke="#1c1917"
-          strokeWidth="0.75"
-          opacity="0.6"
-        />
-        <circle cx="160" cy="160" r="3" fill="#2563eb" />
+        {/* Central Currency Dollar Symbol */}
+        <text
+          x="160"
+          y="161"
+          textAnchor="middle"
+          dominantBaseline="central"
+          style={{
+            fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
+            fontSize: "44px",
+            fontWeight: 500,
+            fontStyle: "italic",
+            fill: "#1c1917",
+          }}
+        >
+          $
+        </text>
       </svg>
     </div>
   );
