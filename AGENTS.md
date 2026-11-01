@@ -195,9 +195,26 @@ When a source YouTube video is provided for any Plugd Playbook:
 ### Core Rules for Playbook Article Content & Learning Views:
 1. **100% Light Mode Editorial Foundation:** All playbook articles must be rendered strictly in warm editorial light mode matching the homepage and overview pages (#FBF9F5 / #FAF8F5 background, #1c1917 primary serif text Charter, Georgia, serif, #78716c secondary metadata, #e7e5e4 subtle dividers).
 2. **No Share Button:** Playbook articles are premium paid digital assets; never render a public share button or link copy on playbook article headers.
-3. **Top Thumbnail & Prominent Reading Time:** Every playbook article must display its high-resolution thumbnail at the very top of all content, with the reading duration (e.g. 25 min read) clearly visible in the sticky header and metadata eyebrow.
-4. **Signature Vertical Reading Progress Bar on Right Edge:** Maintain the vertical progress indicator fixed on the right edge of the screen featuring subtle tick marks and an active #1c1917 indicator bar that moves smoothly as the reader scrolls through the article.
-5. **Standardized Reusable Architecture:** All current and future playbook articles inherit this exact light mode editorial structure (PlaybookArticleReader.tsx and src/lib/playbook-articles/).
+3. **Article Header Navigation & Spacing:** The sticky top header must feature `← Back to Playbook Overview` placed with ample spacing on the far left and the reading duration badge (e.g. 25 min read) on the far right.
+4. **Top Thumbnail & Prominent Reading Time:** Every playbook article must display its high-resolution thumbnail at the very top of all content, with the reading duration (e.g. 25 min read) clearly visible in the sticky header and metadata eyebrow.
+5. **Signature Vertical Reading Progress Bar on Right Edge:** Maintain the vertical progress indicator fixed on the right edge of the screen featuring subtle tick marks and an active #1c1917 indicator bar that moves smoothly as the reader scrolls through the article.
+6. **Standardized Reusable Architecture:** All current and future playbook articles inherit this exact light mode editorial structure (PlaybookArticleReader.tsx and src/lib/playbook-articles/).
+
+---
+
+## 14. Playbook Overview Page Architecture & Design Standards
+
+### Core Rules for Playbook Overview Pages:
+1. **Back Navigation:** The top breadcrumb row is replaced with a clean `← Back to all playbooks` link pointing to the homepage (`/`).
+2. **Streamlined Meta Layout:**
+   - Remove social reading activity ("X people are currently reading / Y people want to read").
+   - Remove the "Book details & editions" collapsible accordion.
+3. **Ratings Section & Clean UI:**
+   - Section heading is strictly "Ratings" (never "Community Reviews").
+   - Remove the search bar and filter button from below the ratings summary histogram.
+4. **Review Avatar & Badges:**
+   - Author / reviewer avatars must render an initials circle with the first letter of their name (`{name.charAt(0)}`) on a solid dark circle (`bg-[#1c1917] text-white font-bold text-xs`), never stock profile images.
+   - Do not render "Verified Reader" badges on reviews.
 
 ## Final Rule
 

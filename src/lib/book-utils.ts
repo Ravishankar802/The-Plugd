@@ -91,10 +91,20 @@ export function getReadingStats(slug = ""): {
 /**
  * Author profile for About the Author section
  */
-export function getAuthorProfile(categoryName = "AI Businesses"): AuthorProfile {
+export function getAuthorProfile(categoryName = "AI Businesses", slug = ""): AuthorProfile {
+  if (slug === "how-to-build-10k-websites-in-minutes-claude-ai") {
+    return {
+      name: "Caleb Sterling",
+      avatar: "",
+      booksCount: 6,
+      followersCount: "18.4k",
+      bio: "Your go-to source for in-depth playbooks on the best website builders and online platforms. Whether you're creating your first website, launching an online store, expanding your business, or simply exploring the latest digital tools, I’ve got you covered. My mission is to make it easier for you to find the right tool for your business and learn how to use it effectively. Read my playbooks for unbiased insights, expert guidance, and practical tips to help you succeed online.",
+    };
+  }
+
   return {
     name: "Plugd Research & Editorial",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+    avatar: "",
     booksCount: 60,
     followersCount: "34.2k",
     bio: "Plugd Research & Editorial publishes authoritative, zero-fluff digital playbooks for modern entrepreneurs, digital builders, and independent operators. Grounded in first-principles thinking, operational unit economics, and production systems.",
@@ -109,21 +119,66 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "how-to-build-10k-websites-in-minutes-claude-ai") {
+    return [
+      {
+        id: "rev-1",
+        name: "Jose Vidal",
+        avatar: "",
+        date: "October 14, 2026",
+        rating: 5,
+        headline: "The rare business playbook with zero filler — pure tactical signal.",
+        content: "The rare business playbook with zero filler — pure tactical signal. I absolutely love this playbook, you cannot find this anywhere else but on Plugd Playbooks bc the instagram scammers are everywhere trying to sell you fake tips",
+        likes: 84,
+      },
+      {
+        id: "rev-2",
+        name: "Raissa Asman",
+        avatar: "",
+        date: "September 28, 2026",
+        rating: 5,
+        headline: "Worth 50x the price. Structured like an elite executive briefing. Thanks a lot. keep it up 👍",
+        content: "Worth 50x the price. Structured like an elite executive briefing. Thanks a lot. keep it up 👍",
+        likes: 67,
+      },
+      {
+        id: "rev-3",
+        name: "David Chen",
+        avatar: "",
+        date: "October 02, 2026",
+        rating: 5,
+        headline: "Extremely deep and practical. Dense with actionable insights.",
+        content: "Extremely deep and practical. Dense with actionable insights. You answered all of the questions I didn't know I had until watching this.  This is a FANTASTIC RESOURCE!! ",
+        likes: 42,
+      },
+      {
+        id: "rev-4",
+        name: "Sarah Jenkins",
+        avatar: "",
+        date: "August 19, 2026",
+        rating: 5,
+        headline: "Thanks to you, I've built and deployed on my VPS the best-looking website I've ever made!",
+        content: "Thanks to you, I've built and deployed on my VPS the best-looking website I've ever made!\nThanks a lot!",
+        likes: 31,
+      },
+    ];
+  }
+
   return [
     {
       id: "rev-1",
       name: "Marcus Vance",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80",
+      avatar: "",
       date: "October 14, 2026",
       rating: 5,
-      headline: "The rare business book with zero filler — pure tactical signal.",
+      headline: "The rare business playbook with zero filler — pure tactical signal.",
       content: `I've read dozens of business and tech guides, and 95% could have been a blog post. "${title}" is the complete opposite. It reads like Peter Thiel's Zero to One applied directly to this vertical. The mental models, concrete unit economics, and step-by-step systems gave me a complete operational playbook. Finished the whole book in two sittings and immediately restructured our team's workflow.`,
       likes: 84,
     },
     {
       id: "rev-2",
       name: "Elena Rostova",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80",
+      avatar: "",
       date: "September 28, 2026",
       rating: 5,
       headline: "Worth 50x the price. Structured like an elite executive briefing.",
@@ -133,7 +188,7 @@ export function getCuratedCommunityReviews(
     {
       id: "rev-3",
       name: "David Chen",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
+      avatar: "",
       date: "October 02, 2026",
       rating: 4,
       headline: "Extremely deep and practical. Dense with actionable insights.",
@@ -143,7 +198,7 @@ export function getCuratedCommunityReviews(
     {
       id: "rev-4",
       name: "Sarah Jenkins",
-      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
+      avatar: "",
       date: "August 19, 2026",
       rating: 5,
       headline: "Masterpiece in concise, high-leverage instruction.",

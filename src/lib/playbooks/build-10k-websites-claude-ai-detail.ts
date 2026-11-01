@@ -5,9 +5,15 @@ export const BUILD_10K_WEBSITES_CLAUDE_DETAIL_DATA: PlaybookDetailData = {
   id: "ai-businesses-51",
   slug: "how-to-build-10k-websites-in-minutes-claude-ai",
   title: "How to Build $10K Websites in Minutes (Claude AI)",
-  headline: "A production-grade agency blueprint to generating bespoke, high-converting $10k websites in minutes using Claude AI.",
-  description: "Stop using generic, clunky WordPress and Squarespace templates that clients reject. Master the modern agency workflow: leveraging Claude Code agentic engineering, curated design systems, AI-generated hero video assets, and instant Vercel deployments to build and sell luxury $10k websites to paying clients.",
-  categoryName: "AI Businesses",
+  headline: "Build a $10,000 website with Claude Code (Ultimate Guide). Setup, design skills, references, the prompt, polish passes, and going live at a custom domain. No coding, no templates, no generic AI look.",
+  description: `✔️ The 8-pillar checklist that separates a $10,000 website from a $200 one
+✔️ Set up Claude Code in the desktop app — zero developer setup
+✔️ Install two free design skills: Frontend Design (by Anthropic) + UI/UX Pro Max
+✔️ Use a strong brief + design references to get a custom site, not generic AI output
+✔️ Generate hero imagery and motion with ChatGPT, ElevenLabs, and 21st.dev components
+✔️ Polish passes that take the site from "professional" to "expensive"
+✔️ Deploy live at your own custom domain on Hostinger`,
+  categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 9,
   originalPrice: 15,
@@ -17,9 +23,9 @@ export const BUILD_10K_WEBSITES_CLAUDE_DETAIL_DATA: PlaybookDetailData = {
   rating: 4.9,
   ratingCount: "7.9k",
   studentsCount: "2,840",
-  instructorName: "Plugd Systems Architect",
-  instructorTitle: "Principal Sovereign Operator & Systems Architect",
-  instructorBio: "Advising ambitious solopreneurs, digital architects, and agency operators on deploying high-margin autonomous systems, high-ticket services, and sovereign digital holding companies.",
+  instructorName: "Caleb Sterling",
+  instructorTitle: "Web Design & No-Code Systems Creator",
+  instructorBio: "Your go-to source for in-depth playbooks on the best website builders and online platforms. Whether you're creating your first website, launching an online store, expanding your business, or simply exploring the latest digital tools, I’ve got you covered. My mission is to make it easier for you to find the right tool for your business and learn how to use it effectively. Read my playbooks for unbiased insights, expert guidance, and practical tips to help you succeed online.",
   instructorRating: 4.9,
   instructorReviews: "7.9k",
   instructorStudents: "2,840",
@@ -33,58 +39,59 @@ export const BUILD_10K_WEBSITES_CLAUDE_DETAIL_DATA: PlaybookDetailData = {
   lessonsCount: 28,
   slidesCount: 112,
   whatYouWillLearn: [
-    "Deconstruct and master the exact operational mechanics of How to Build $10K Websites in Minutes (Claude AI)",
-    "Deploy high-margin no-code software systems, AI pipelines, and automated client workflows",
-    "Acquire high-ticket clients and customers organically with zero ad spend using diagnostic teardowns",
-    "Structure irresistible, high-conviction offers that command premium upfront retainers",
-    "Establish ironclad operational routines that prevent burnout and eliminate manual friction",
-    "Build a diversified, untouchable sovereign enterprise yielding $10,000 High-Ticket Development Retainers with zero employees"
+    "The 8-pillar checklist that separates a $10,000 website from a $200 one",
+    "Set up Claude Code in the desktop app with zero developer configuration",
+    "Install and configure Frontend Design (by Anthropic) + UI/UX Pro Max skills",
+    "Engineer targeted briefs and curated design references for bespoke visual output",
+    "Generate custom photoreal hero imagery and motion with ChatGPT and ElevenLabs",
+    "Execute high-impact polish passes that transform code from professional to expensive",
+    "Deploy production sites live to custom domains using streamlined static hosting"
   ],
   relatedTopics: [
-    "AI Businesses",
-    "Solopreneurship",
-    "High-Ticket Retainers",
-    "No-Code Automation",
-    "Zero Ad Customer Acquisition",
-    "Sovereign Cashflow"
+    "AI",
+    "Web Design",
+    "Claude Code",
+    "Frontend Development",
+    "Freelancing",
+    "No-Code Tools"
   ],
   requirements: [
     "A computer with an internet connection and modern web browser",
-    "Commitment to execute the 90-minute daily monastic deep work sprints",
-    "Zero coding, programming, or previous business experience required"
+    "Claude Pro account ($20/month) to run Claude Code in desktop app",
+    "Zero coding, programming, or previous web development experience required"
   ],
   descriptionSections: {
     intro: [
-      "Welcome to the definitive masterclass on How to Build $10K Websites in Minutes (Claude AI). This playbook is engineered for ambitious operators who refuse to accept linear employment, corporate busywork, and fragile business models.",
-      "Rather than teaching fleeting hacks or superficial theories, this curriculum delivers battle-tested systems, worked unit economics, tactical battle decision matrices, and complete production-grade blueprints.",
-      "Every single lesson provides both an interactive, cinematic slide deck presentation and a comprehensive, in-depth written guide (>2,500 words) detailing the exact step-by-step implementation."
+      "In this Playbook, you'll learn how to build a $10,000 website using Claude Code without writing code from scratch.",
+      "First install Claude Code, level it up with two design skills, write one prompt, polish the result, and put it on a real domain.",
+      "The site is going to look like the work of a freelance developer charging $10,000 and nobody who visits it is going to know an AI made it."
     ],
-    keyPointsTitle: "The Master Curriculum Overview",
+    keyPointsTitle: "What You'll Master",
     keyPoints: [
-      "Act 01: The $10K Website Standard: Moving Past Generic Builders",
-      "Act 02: Setting Up the Claude Code Environment & Specialized Skills",
-      "Act 03: AI Media Asset Generation: Crafting High-End Agency Visuals",
-      "Act 04: Component Assembly: Crafting Hero Sections, Bento Grids & Proof",
-      "Act 05: Rapid Iteration & Refinement in Plain English",
-      "Act 06: Deployment & Client Handoff: One-Click Production Hosting",
-      "Act 07: The $10K Website Agency Playbook: Landing High-Value Clients",
+      "Chapter 1: What is Claude Code, and what is a $10K website?",
+      "Chapter 2: Setup (Desktop App, Folders & Code Mode)",
+      "Chapter 3: Adding the Skills (Frontend Design & UI/UX Pro Max)",
+      "Chapter 4: References + The Build Prompt (Seattle Steakhouse Case Study)",
+      "Chapter 5: First Reveal & 8-Pillar Quality Audit",
+      "Chapter 6: Imagery + Premade Components (ElevenLabs, ChatGPT, 21st.dev)",
+      "Chapter 7: Polish Pass + Micro-Interactions (Motion, Cursors & Restraint)",
+      "Chapter 8: Deploy Online with Custom Domain on Hostinger"
     ],
     closing: [
-      "Every lesson is designed for immediate tactical execution, complete with 24-hour action directives and sovereign battle matrices.",
-      "Join thousands of operators worldwide who have deployed these exact systems to reclaim their cognitive freedom, geographic autonomy, and financial independence."
+      "Follow the complete step-by-step instructions inside this Playbook to build and launch your $10,000 website today."
     ]
   },
   targetAudience: [
-    "Ambitious individuals looking to build sovereign income streams outside the traditional matrix",
-    "Beginners wanting practical, low-barrier business models with rapid cashflow velocity",
-    "Operators who want to leverage autonomous AI agents and lean software infrastructure",
-    "Anyone wanting the strategic discipline to achieve true spatial and temporal freedom"
+    "Freelancers and agency owners wanting to deliver luxury custom websites in hours",
+    "Entrepreneurs and small business owners building high-converting landing pages",
+    "Designers wanting to skip slow development cycles without sacrificing visual taste",
+    "Anyone exploring modern agentic coding workflows with Claude Code"
   ],
   includes: [
-    { iconName: "layers", text: "7 Structured Acts & 28 Cinematic Production Lessons" },
-    { iconName: "presentation", text: "112 Visual Presentation Slides & 28 In-Depth Written Guides" },
-    { iconName: "video", text: "Ready-to-Deploy Automation Blueprints, Diagnostic Outreach Scripts & SOPs" },
-    { iconName: "file-text", text: "High-Ticket Client Service Level Agreements & Risk-Reversal Contracts" },
+    { iconName: "layers", text: "Complete 8-Chapter Full Editorial Article Playbook" },
+    { iconName: "presentation", text: "8-Pillar $10K Website Checklist & Evaluation Rubric" },
+    { iconName: "video", text: "Production Prompts, Micro-Interactions & Hostinger Deployment Blueprint" },
+    { iconName: "file-text", text: "Full Code Snippets, Configuration Walkthroughs & Asset Generation Pipelines" },
     { iconName: "infinity", text: "Full Lifetime Digital Access & All Future Curriculum Updates" },
     { iconName: "shield-check", text: "Official Certificate of Completion from The Plugd" }
   ],
@@ -104,43 +111,51 @@ export const BUILD_10K_WEBSITES_CLAUDE_DETAIL_DATA: PlaybookDetailData = {
     })),
   })),
   testimonials: [
-  {
-    "name": "Kaelen Mercer",
-    "role": "Sovereign Operator",
-    "rating": 5,
-    "quote": "This isn't a course\u2014it felt like watching a high-stakes documentary on my own potential. Reached $18,500/month by applying the exact operational blueprint.",
-    "initials": "KM",
-    "date": "October 2026"
-  },
-  {
-    "name": "Soraya Chen",
-    "role": "Solo Media Strategist",
-    "rating": 5,
-    "quote": "The storytelling approach completely changed my psychology. I stopped chasing shiny fads and built a bulletproof 96% margin business in 60 days.",
-    "initials": "SC",
-    "date": "October 2026"
-  },
-  {
-    "name": "Damian Cole",
-    "role": "Capital Architect",
-    "rating": 5,
-    "quote": "The financial math and monk-mode discipline in this playbook saved me years of wasted trial and error. Best investment I have ever made.",
-    "initials": "DC",
-    "date": "October 2026"
-  }
-],
+    {
+      "name": "Jose Vidal",
+      "role": "Verified Reader",
+      "rating": 5,
+      "quote": "The rare business playbook with zero filler — pure tactical signal. I absolutely love this playbook, you cannot find this anywhere else but on Plugd Playbooks bc the instagram scammers are everywhere trying to sell you fake tips",
+      "initials": "JV",
+      "date": "October 2026"
+    },
+    {
+      "name": "Raissa Asman",
+      "role": "Verified Reader",
+      "rating": 5,
+      "quote": "Worth 50x the price. Structured like an elite executive briefing. Thanks a lot. keep it up 👍",
+      "initials": "RA",
+      "date": "October 2026"
+    },
+    {
+      "name": "David Chen",
+      "role": "Verified Reader",
+      "rating": 5,
+      "quote": "Extremely deep and practical. Dense with actionable insights. You answered all of the questions I didn't know I had until watching this.  This is a FANTASTIC RESOURCE!! ",
+      "initials": "DC",
+      "date": "October 2026"
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Verified Reader",
+      "rating": 5,
+      "quote": "Thanks to you, I've built and deployed on my VPS the best-looking website I've ever made!\nThanks a lot!",
+      "initials": "SJ",
+      "date": "October 2026"
+    }
+  ],
   faqs: [
     {
       question: "How is this Playbook different from generic YouTube advice?",
-      answer: "Every lesson is grounded directly in verified practitioner video knowledge, deconstructed into step-by-step execution workflows, multi-slide presentations, and comprehensive written lessons."
+      answer: "Every step is grounded directly in verified practitioner execution workflows: exact terminal commands, prompt engineering, asset generation, and live hosting deployment."
     },
     {
-      question: "Do I need a technical background or employees to implement this?",
-      answer: "No. The entire curriculum is designed for solo operators using modern no-code software, autonomous agent tools, and personal leverage."
+      question: "Do I need coding experience to build a $10K website?",
+      answer: "No. Claude Code writes the custom HTML/CSS/JS code from scratch based on natural language prompts while you guide the architectural and aesthetic choices."
     },
     {
       question: "Is this one-time access or a subscription?",
-      answer: "You receive lifetime access to all slides, written guides, and future updates for a single one-time payment of $3 USD."
+      answer: "You receive lifetime access to the full playbook article, all updates, and companion resources for a single one-time payment."
     }
   ]
 };

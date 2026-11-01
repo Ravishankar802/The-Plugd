@@ -16,6 +16,7 @@ import {
   Award,
   Sparkles,
   ArrowRight,
+  ArrowLeft,
   ThumbsUp,
   UserCheck,
 } from "lucide-react";
@@ -104,7 +105,10 @@ export default function PlaybookDetailView({
   const readingStats = useMemo(() => getReadingStats(playbook.slug), [playbook.slug]);
 
   // Author profile
-  const author = useMemo(() => getAuthorProfile(playbook.categoryName), [playbook.categoryName]);
+  const author = useMemo(
+    () => getAuthorProfile(playbook.categoryName, playbook.slug),
+    [playbook.categoryName, playbook.slug]
+  );
 
   // Flattened chapters from modules and lessons
   const chapters = useMemo(() => {
@@ -222,42 +226,15 @@ export default function PlaybookDetailView({
     <div className="min-h-screen bg-[#FBF9F5] text-[#1c1917] font-sans antialiased">
       <Header />
 
-      {/* Breadcrumbs & Top Meta */}
+      {/* Back to all playbooks navigation */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-2">
-        <div className="flex items-center justify-between text-xs text-[#78716c]">
-          <div className="flex items-center gap-1.5 overflow-hidden text-ellipsis whitespace-nowrap font-medium">
-            <Link href="/" className="hover:text-[#1c1917] transition-colors">
-              Plugd
-            </Link>
-            <span>›</span>
-            <Link
-              href={`/${playbook.categorySlug}`}
-              className="hover:text-[#1c1917] transition-colors font-medium text-[#44403c]"
-            >
-              {playbook.categoryName}
-            </Link>
-            <span>›</span>
-            <span className="text-[#a8a29e] truncate">{playbook.title}</span>
-          </div>
-
-          <button
-            onClick={handleCopyLink}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-stone-200 hover:border-stone-400 bg-white text-stone-600 transition-colors shrink-0 shadow-2xs cursor-pointer"
-            title="Share this Playbook"
-          >
-            {copiedLink ? (
-              <>
-                <Check className="h-3.5 w-3.5 text-emerald-600" />
-                <span className="text-[11px] text-emerald-600 font-medium">Copied!</span>
-              </>
-            ) : (
-              <>
-                <Share2 className="h-3.5 w-3.5" />
-                <span className="text-[11px]">Share</span>
-              </>
-            )}
-          </button>
-        </div>
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#78716c] hover:text-[#1c1917] transition-colors"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          <span>Back to all playbooks</span>
+        </Link>
       </div>
 
       {/* Main Book Showcase (Two-Column Layout) */}
@@ -465,8 +442,6 @@ export default function PlaybookDetailView({
                     : playbook.ratingCount}{" "}
                   ratings
                 </span>
-                <span className="text-stone-300">•</span>
-                <span className="text-xs text-stone-500">312 reviews</span>
               </div>
             </div>
 
@@ -476,16 +451,8 @@ export default function PlaybookDetailView({
                 {playbook.headline || playbook.description}
               </p>
 
-              <div className={`space-y-3 ${!isDescriptionExpanded ? "line-clamp-4" : ""}`}>
-                <p>
-                  {playbook.description}
-                </p>
-                <p>
-                  Engineered with tactical precision, this playbook cuts through superficial theory and fleeting internet tactics. Rather than teaching commoditized trivia, each chapter systematically unpacks mental models, defensible operational architectures, unit economics, and step-by-step systems designed to create asymmetric leverage.
-                </p>
-                <p>
-                  Every section delivers concrete decision frameworks, failure analysis matrices, worked financial models, and battle-tested execution blueprints.
-                </p>
+              <div className={`space-y-3 whitespace-pre-line ${!isDescriptionExpanded ? "line-clamp-6" : ""}`}>
+                {playbook.description}
               </div>
 
               <button
@@ -501,87 +468,6 @@ export default function PlaybookDetailView({
               </button>
             </div>
 
-            {/* Book Details & Editions */}
-            <div className="border-t border-b border-stone-200 py-3">
-              <button
-                type="button"
-                onClick={() => setIsBookDetailsOpen(!isBookDetailsOpen)}
-                className="w-full flex items-center justify-between text-left text-xs font-semibold text-stone-800 hover:text-stone-950 cursor-pointer"
-              >
-                <span>Book details & editions</span>
-                {isBookDetailsOpen ? (
-                  <ChevronUp className="h-4 w-4 text-stone-500" />
-                ) : (
-                  <ChevronDown className="h-4 w-4 text-stone-500" />
-                )}
-              </button>
-
-              {isBookDetailsOpen && (
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-3.5 text-xs text-stone-600">
-                  <div>
-                    <span className="text-stone-400 block text-[11px]">Format</span>
-                    <span className="font-semibold text-stone-800">Digital Edition / Playbook</span>
-                  </div>
-                  <div>
-                    <span className="text-stone-400 block text-[11px]">Length</span>
-                    <span className="font-semibold text-stone-800">{pageCount} pages</span>
-                  </div>
-                  <div>
-                    <span className="text-stone-400 block text-[11px]">Language</span>
-                    <span className="font-semibold text-stone-800">English</span>
-                  </div>
-                  <div>
-                    <span className="text-stone-400 block text-[11px]">Published</span>
-                    <span className="font-semibold text-stone-800">Plugd Publishing</span>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Social Reading Activity */}
-            <div className="flex flex-wrap items-center gap-6 text-xs text-stone-600 py-1">
-              <div className="flex items-center gap-2.5">
-                <div className="flex -space-x-2 overflow-hidden">
-                  <img
-                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80"
-                    alt="Reader"
-                  />
-                  <img
-                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80"
-                    alt="Reader"
-                  />
-                  <img
-                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80"
-                    alt="Reader"
-                  />
-                </div>
-                <span>
-                  <strong className="text-stone-800 font-semibold">{readingStats.currentlyReading}</strong> people are currently reading
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2.5">
-                <div className="flex -space-x-2 overflow-hidden">
-                  <img
-                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
-                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80"
-                    alt="Reader"
-                  />
-                  <img
-                    className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
-                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80"
-                    alt="Reader"
-                  />
-                </div>
-                <span>
-                  <strong className="text-stone-800 font-semibold">{readingStats.wantToRead}</strong> people want to read
-                </span>
-              </div>
-            </div>
-
             {/* About the Author */}
             <div className="border-t border-stone-200 pt-8 space-y-4">
               <h2 className="text-xl font-bold text-[#1c1917]">
@@ -589,11 +475,9 @@ export default function PlaybookDetailView({
               </h2>
 
               <div className="flex items-start gap-4">
-                <img
-                  src={author.avatar}
-                  alt={author.name}
-                  className="h-14 w-14 rounded-full object-cover border border-stone-200 shrink-0"
-                />
+                <div className="h-14 w-14 rounded-full bg-[#1c1917] text-white flex items-center justify-center font-bold text-lg uppercase shrink-0 shadow-2xs">
+                  {author.name.charAt(0)}
+                </div>
                 <div className="flex-1 space-y-1">
                   <div className="flex items-center justify-between">
                     <div>
@@ -743,7 +627,7 @@ export default function PlaybookDetailView({
               {/* Community Reviews Breakdown */}
               <div className="space-y-5">
                 <h3 className="text-lg font-bold text-stone-900">
-                  Community Reviews
+                  Ratings
                 </h3>
 
                 {/* Score & Histogram */}
@@ -761,7 +645,7 @@ export default function PlaybookDetailView({
                       {typeof playbook.ratingCount === "number"
                         ? playbook.ratingCount.toLocaleString()
                         : playbook.ratingCount}{" "}
-                      ratings · 312 reviews
+                      ratings
                     </div>
                   </div>
 
@@ -809,41 +693,18 @@ export default function PlaybookDetailView({
                   </div>
                 </div>
 
-                {/* Search / Filter Reviews Input */}
-                <div className="flex items-center gap-2">
-                  <div className="relative flex-1">
-                    <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-stone-400" />
-                    <input
-                      type="text"
-                      value={reviewSearchQuery}
-                      onChange={(e) => setReviewSearchQuery(e.target.value)}
-                      placeholder="Search review text..."
-                      className="w-full text-xs pl-9 pr-4 py-2.5 rounded-full border border-stone-200 bg-white focus:outline-none focus:ring-1 focus:ring-stone-800 placeholder-stone-400"
-                    />
-                  </div>
-                  <button
-                    type="button"
-                    className="flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-stone-200 bg-white text-xs font-semibold text-stone-700 hover:bg-stone-50 shadow-2xs cursor-pointer"
-                  >
-                    <SlidersHorizontal className="h-3 w-3" />
-                    <span>Filters</span>
-                  </button>
-                </div>
-
                 {/* Display Reviews List */}
                 <div className="space-y-4 pt-2">
-                  {filteredReviews.map((rev) => (
+                  {communityReviews.map((rev) => (
                     <div
                       key={rev.id}
                       className="bg-white rounded-xl border border-stone-200 p-5 shadow-2xs space-y-3"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <img
-                            src={rev.avatar}
-                            alt={rev.name}
-                            className="h-10 w-10 rounded-full object-cover border border-stone-200"
-                          />
+                          <div className="h-10 w-10 rounded-full bg-[#1c1917] text-white flex items-center justify-center font-bold text-xs uppercase shadow-2xs shrink-0">
+                            {rev.name.charAt(0)}
+                          </div>
                           <div>
                             <span className="font-bold text-xs text-stone-900 block">{rev.name}</span>
                             <div className="flex items-center gap-2 text-[11px] text-stone-500 font-medium">
@@ -857,8 +718,6 @@ export default function PlaybookDetailView({
                             </div>
                           </div>
                         </div>
-
-                        <span className="text-[11px] text-stone-400 font-medium">Verified Reader</span>
                       </div>
 
                       <div className="space-y-1 text-xs">

@@ -169,14 +169,14 @@ export default function PlaybookArticleReader({
   return (
     <div className="min-h-screen bg-[#FBF9F5] text-[#1c1917] selection:bg-[#2563eb] selection:text-white relative font-sans antialiased">
       {/* Sticky Top Navigation Bar */}
-      <header className="sticky top-0 z-30 bg-[#FBF9F5]/90 backdrop-blur-md border-b border-[#e7e5e4] px-4 sm:px-8 py-3.5 transition-all">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
+      <header className="sticky top-0 z-30 bg-[#FBF9F5]/90 backdrop-blur-md border-b border-[#e7e5e4] px-4 sm:px-8 lg:px-12 py-3.5 transition-all">
+        <div className="w-full flex items-center justify-between">
           <Link
             href={`/${slug}`}
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#78716c] hover:text-[#1c1917] transition-colors cursor-pointer"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span>Back to Playbook</span>
+            <span>Back to Playbook Overview</span>
           </Link>
 
           <div className="flex items-center gap-3">
