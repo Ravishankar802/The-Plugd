@@ -188,6 +188,17 @@ When a source YouTube video is provided for any Plugd Playbook:
 
 ---
 
+---
+
+## 13. Playbook Article Design System & Architecture (Light Mode Editorial & Vertical Progress Bar)
+
+### Core Rules for Playbook Article Content & Learning Views:
+1. **100% Light Mode Editorial Foundation:** All playbook articles must be rendered strictly in warm editorial light mode matching the homepage and overview pages (#FBF9F5 / #FAF8F5 background, #1c1917 primary serif text Charter, Georgia, serif, #78716c secondary metadata, #e7e5e4 subtle dividers).
+2. **No Share Button:** Playbook articles are premium paid digital assets; never render a public share button or link copy on playbook article headers.
+3. **Top Thumbnail & Prominent Reading Time:** Every playbook article must display its high-resolution thumbnail at the very top of all content, with the reading duration (e.g. 25 min read) clearly visible in the sticky header and metadata eyebrow.
+4. **Signature Vertical Reading Progress Bar on Right Edge:** Maintain the vertical progress indicator fixed on the right edge of the screen featuring subtle tick marks and an active #1c1917 indicator bar that moves smoothly as the reader scrolls through the article.
+5. **Standardized Reusable Architecture:** All current and future playbook articles inherit this exact light mode editorial structure (PlaybookArticleReader.tsx and src/lib/playbook-articles/).
+
 ## Final Rule
 
 **One canonical blueprint. One persistent registry. Hundreds of unique, complete Playbooks with 100% distinct PPT slide designs.**
