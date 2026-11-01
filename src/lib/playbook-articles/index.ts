@@ -1,11 +1,14 @@
 import { PlaybookArticle } from "./types";
 import { HOW_TO_BUILD_10K_WEBSITES_ARTICLE } from "./how-to-build-10k-websites";
+import { FACELESS_SHORTS_30K_ARTICLE } from "./faceless-shorts-30k";
 
 export * from "./types";
 
 export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "how-to-build-10k-websites-in-minutes-claude-ai": HOW_TO_BUILD_10K_WEBSITES_ARTICLE,
   "ai-businesses-51": HOW_TO_BUILD_10K_WEBSITES_ARTICLE,
+  "the-30k-month-al-faceless-shorts-method-nobodys-talking-about": FACELESS_SHORTS_30K_ARTICLE,
+  "ai-businesses-50": FACELESS_SHORTS_30K_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

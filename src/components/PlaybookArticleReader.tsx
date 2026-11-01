@@ -79,7 +79,9 @@ export default function PlaybookArticleReader({
   // Markdown-like link and code parser for paragraphs
   const renderFormattedParagraph = (text: string, pIdx: number) => {
     // Check if the paragraph is a prompt (starts with / or is a full prompt line)
-    const isPromptBlock = text.startsWith("/ui-ux-pro-max");
+    const isPromptBlock =
+      text.startsWith("/ui-ux-pro-max") ||
+      text.startsWith("Based on the competitor breakdown");
 
     if (isPromptBlock) {
       return (
@@ -90,7 +92,7 @@ export default function PlaybookArticleReader({
           <div className="flex items-center justify-between pb-3 mb-3 border-b border-stone-800 text-xs text-stone-400 font-mono">
             <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
               <Terminal className="h-3.5 w-3.5" />
-              Claude Code Prompt
+              Prompt Template
             </span>
             <button
               onClick={() => handleCopyCode(text, `p-${pIdx}`)}
@@ -103,6 +105,63 @@ export default function PlaybookArticleReader({
             {text}
           </pre>
         </div>
+      );
+    }
+
+    // Subheading format (### Subtitle)
+    if (text.startsWith("### ")) {
+      return (
+        <h3
+          key={pIdx}
+          className="text-xl sm:text-2xl font-bold text-[#1c1917] mt-10 mb-3 pt-2"
+          style={{ fontFamily: SERIF_EDITORIAL_FONT }}
+        >
+          {text.replace(/^###\s*/, "")}
+        </h3>
+      );
+    }
+
+    // Bullet / Checklist format (e.g. - [ ] ... or - ...)
+    if (text.includes("\n") && (text.match(/^-\s*\[/m) || text.match(/^-\s+/m))) {
+      const items = text.split("\n").filter((l) => l.trim().length > 0);
+      return (
+        <ul key={pIdx} className="my-6 space-y-2.5 pl-2 sm:pl-4">
+          {items.map((item, idx) => {
+            const checkMatch = item.match(/^-\s*\[([ xX])\]\s*(.*)/);
+            if (checkMatch) {
+              const isChecked = checkMatch[1].toLowerCase() === "x";
+              const label = checkMatch[2];
+              return (
+                <li
+                  key={idx}
+                  className="text-[17px] sm:text-[19px] text-[#1c1917] leading-[1.8] flex items-start gap-3"
+                  style={{ fontFamily: SERIF_EDITORIAL_FONT }}
+                >
+                  <span
+                    className={`inline-flex items-center justify-center w-5 h-5 rounded border ${
+                      isChecked
+                        ? "bg-emerald-600 border-emerald-600 text-white font-bold"
+                        : "border-stone-400 bg-white"
+                    } text-xs mt-1 shrink-0`}
+                  >
+                    {isChecked ? "✓" : ""}
+                  </span>
+                  <span>{label}</span>
+                </li>
+              );
+            }
+            return (
+              <li
+                key={idx}
+                className="text-[17px] sm:text-[19px] text-[#1c1917] leading-[1.8] flex items-baseline gap-3"
+                style={{ fontFamily: SERIF_EDITORIAL_FONT }}
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-[#1c1917] mt-3 shrink-0" />
+                <span>{item.replace(/^-\s*/, "")}</span>
+              </li>
+            );
+          })}
+        </ul>
       );
     }
 
