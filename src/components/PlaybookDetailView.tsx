@@ -31,6 +31,7 @@ import {
   getReadingStats,
   getAuthorProfile,
   getCuratedCommunityReviews,
+  getAvatarBgColor,
 } from "@/lib/book-utils";
 
 interface PlaybookDetailViewProps {
@@ -266,13 +267,13 @@ export default function PlaybookDetailView({
                 )}
               </div>
 
-              {/* Title and Category */}
+              {/* Title and Author */}
               <div className="space-y-1">
                 <h3 className="text-[15px] sm:text-base font-semibold text-[#1c1917] leading-snug line-clamp-2">
                   {playbook.title}
                 </h3>
                 <div className="text-[13px] text-[#57534e]">
-                  {playbook.categoryName}
+                  {author.name}
                 </div>
               </div>
 
@@ -475,35 +476,19 @@ export default function PlaybookDetailView({
               </h2>
 
               <div className="flex items-start gap-4">
-                <div className="h-14 w-14 rounded-full bg-[#1c1917] text-white flex items-center justify-center font-bold text-lg uppercase shrink-0 shadow-2xs">
+                <div
+                  className="h-14 w-14 rounded-full text-white flex items-center justify-center font-bold text-lg uppercase shrink-0 shadow-2xs"
+                  style={{ backgroundColor: getAvatarBgColor(author.name) }}
+                >
                   {author.name.charAt(0)}
                 </div>
                 <div className="flex-1 space-y-1">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="font-bold text-sm text-[#1c1917] flex items-center gap-1.5">
-                        {author.name}
-                        <span className="inline-flex items-center justify-center h-3.5 w-3.5 rounded-full bg-stone-700 text-white text-[9px]">
-                          ✓
-                        </span>
-                      </h3>
-                      <p className="text-xs text-stone-500 font-medium">
-                        {author.booksCount} books · {author.followersCount} followers
-                      </p>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => setIsFollowingAuthor(!isFollowingAuthor)}
-                      className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-colors cursor-pointer ${
-                        isFollowingAuthor
-                          ? "bg-stone-200 text-stone-800"
-                          : "bg-[#1c1917] text-white hover:bg-stone-800"
-                      }`}
-                    >
-                      {isFollowingAuthor ? "Following" : "Follow"}
-                    </button>
-                  </div>
+                  <h3 className="font-bold text-sm text-[#1c1917] flex items-center gap-1.5">
+                    {author.name}
+                    <span className="inline-flex items-center justify-center h-3.5 w-3.5 rounded-full bg-stone-700 text-white text-[9px]">
+                      ✓
+                    </span>
+                  </h3>
 
                   <p className="text-xs text-stone-600 leading-relaxed pt-1">
                     {author.bio}
@@ -695,14 +680,17 @@ export default function PlaybookDetailView({
 
                 {/* Display Reviews List */}
                 <div className="space-y-4 pt-2">
-                  {communityReviews.map((rev) => (
+                  {communityReviews.map((rev, revIdx) => (
                     <div
                       key={rev.id}
                       className="bg-white rounded-xl border border-stone-200 p-5 shadow-2xs space-y-3"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="h-10 w-10 rounded-full bg-[#1c1917] text-white flex items-center justify-center font-bold text-xs uppercase shadow-2xs shrink-0">
+                          <div
+                            className="h-10 w-10 rounded-full text-white flex items-center justify-center font-bold text-xs uppercase shadow-2xs shrink-0"
+                            style={{ backgroundColor: getAvatarBgColor(rev.name, revIdx) }}
+                          >
                             {rev.name.charAt(0)}
                           </div>
                           <div>
@@ -720,10 +708,7 @@ export default function PlaybookDetailView({
                         </div>
                       </div>
 
-                      <div className="space-y-1 text-xs">
-                        <h4 className="font-bold text-stone-900 text-[13px]">
-                          {rev.headline}
-                        </h4>
+                      <div className="text-xs">
                         <p className="text-stone-700 leading-relaxed">
                           {rev.content}
                         </p>

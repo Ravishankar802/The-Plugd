@@ -207,3 +207,27 @@ export function getCuratedCommunityReviews(
     },
   ];
 }
+
+/**
+ * Deterministic vibrant background color for initials avatars
+ */
+export function getAvatarBgColor(name: string, index = 0): string {
+  if (!name) return "#1c1917";
+  const PALETTE = [
+    "#059669", // emerald
+    "#2563eb", // blue
+    "#7c3aed", // violet
+    "#d97706", // amber
+    "#e11d48", // rose
+    "#4f46e5", // indigo
+    "#0d9488", // teal
+    "#ea580c", // orange
+    "#0891b2", // cyan
+    "#9333ea", // purple
+  ];
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = (hash * 31 + name.charCodeAt(i)) & 0xffffffff;
+  }
+  return PALETTE[Math.abs(hash + index) % PALETTE.length];
+}

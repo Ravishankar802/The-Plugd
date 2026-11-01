@@ -184,7 +184,8 @@ When a source YouTube video is provided for any Plugd Playbook:
 
 ### Core Rules for Playbook Feed Cards:
 1. **Light Mode Foundation:** Playbook feed cards, catalog views, and platform surfaces use the canonical warm light editorial design system (`#e7e4dd` page, `#ffffff` card surface, `#1c1917` text, `#dcd8d0` borders).
-2. **Mandatory Full-Width Horizontal Divider:** Every Playbook card (across all current 60 playbooks and any added in the future) must feature a crisp, full-width horizontal line divider (`border-t border-[#e7e5e4]`, `-mx-3 sm:-mx-3.5 px-3 sm:px-3.5 pt-3 sm:pt-3.5 mt-3.5 sm:mt-4`) separating the upper card body (thumbnail, title, category, ratings) from the bottom row (price and action button/Start Reading).
+2. **Author Name Under Title:** Every Playbook card (both on homepage feeds, category feeds, and overview page cards) must display the Author / Instructor name (e.g. `Caleb Sterling`) directly beneath the title rather than generic category names.
+3. **Mandatory Full-Width Horizontal Divider:** Every Playbook card (across all current 60 playbooks and any added in the future) must feature a crisp, full-width horizontal line divider (`border-t border-[#e7e5e4]`, `-mx-3 sm:-mx-3.5 px-3 sm:px-3.5 pt-3 sm:pt-3.5 mt-3.5 sm:mt-4`) separating the upper card body (thumbnail, title, author, ratings) from the bottom row (price and action button/Start Reading).
 
 ---
 
@@ -209,11 +210,16 @@ When a source YouTube video is provided for any Plugd Playbook:
 2. **Streamlined Meta Layout:**
    - Remove social reading activity ("X people are currently reading / Y people want to read").
    - Remove the "Book details & editions" collapsible accordion.
-3. **Ratings Section & Clean UI:**
+3. **Author Profile Section:**
+   - Remove books and follower stats (e.g. "6 books · 18.4k followers").
+   - Remove the "Follow" button.
+   - Keep only the author name with checkmark badge and their biography.
+4. **Ratings Section & Clean Review UI:**
    - Section heading is strictly "Ratings" (never "Community Reviews").
    - Remove the search bar and filter button from below the ratings summary histogram.
-4. **Review Avatar & Badges:**
-   - Author / reviewer avatars must render an initials circle with the first letter of their name (`{name.charAt(0)}`) on a solid dark circle (`bg-[#1c1917] text-white font-bold text-xs`), never stock profile images.
+   - No duplicate headlines: render only the normal review body text; do not repeat a bold headline above the content.
+5. **Colorful Initials Avatars:**
+   - Avatars for both author and reviewers must render an initials circle with the first letter of their name (`{name.charAt(0)}`) with white text on distinct, vibrant colors (`getAvatarBgColor()`), never uniform black or external images.
    - Do not render "Verified Reader" badges on reviews.
 
 ## Final Rule
