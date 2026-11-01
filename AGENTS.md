@@ -224,6 +224,17 @@ When a source YouTube video is provided for any Plugd Playbook:
    - Avatars for both author and reviewers must render an initials circle with the first letter of their name (`{name.charAt(0)}`) with white text on distinct, vibrant colors (`getAvatarBgColor()`), never uniform black or external images.
    - Do not render "Verified Reader" badges on reviews.
 
+---
+
+## 15. Deployment and Git Workflow Safety Standard (Strict Option 1 Rule)
+
+**CRITICAL RULE: NEVER run git push unless the user explicitly commands to deploy.**
+
+To guarantee 100% Zero Vercel Risk and conserve Vercel deployment storage:
+1. **Strictly Option 1 (Local Commits Only):** Always save, verify, and commit changes locally to Git (git commit). Nothing is sent to GitHub. Because GitHub receives no data, zero webhooks are fired to Vercel, zero builds are triggered, and zero storage is consumed.
+2. **No Branch Pushes:** Do NOT push to any branch (including dev or feature branches) because Vercel preview deployments could trigger and consume storage.
+3. **Push to Main Only on Explicit Command:** Only execute git push origin main when the user explicitly gives the command: *'Push and deploy'* or *'deploy to Vercel'*.
+
 ## Final Rule
 
 **One canonical blueprint. One persistent registry. Hundreds of unique, complete Playbooks with 100% distinct PPT slide designs.**
