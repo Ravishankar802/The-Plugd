@@ -158,35 +158,7 @@ export default function PlugdHomePageClient({
           showSearch={false}
         />
 
-        <main className="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-10 pt-8 sm:pt-12 pb-20">
-          {/* ========================================================= */}
-          {/* 1. EDITORIAL HERO SECTION (Inspired by Billion Dollar PDFs) */}
-          {/* ========================================================= */}
-          <section className="pt-2 pb-6 max-w-2xl text-left">
-            {/* Eyebrow, Editorial Title, Description */}
-            <div className="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-widest text-[#78716c] font-semibold mb-3">
-              <span>A DIRECTORY</span>
-              <span>·</span>
-              <span>2026</span>
-            </div>
-
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#1c1917] leading-[1.08]">
-              Plugd Playbooks
-            </h1>
-
-            <p className="mt-4 sm:mt-5 text-[15px] sm:text-base text-[#57534e] leading-relaxed max-w-xl font-normal">
-              Practical playbooks for building AI businesses, finding customers,
-              and creating income online. Explore actionable knowledge, proven
-              frameworks, and step-by-step guides designed to help you turn ideas into
-              execution.
-            </p>
-          </section>
-
-          {/* ========================================================= */}
-          {/* 2. SUBTLE DIVIDER LINE */}
-          {/* ========================================================= */}
-          <div className="border-t border-[#dcd8d0] my-6 sm:my-8" />
-
+        <main className="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-10 pt-6 sm:pt-8 pb-20">
           {/* ========================================================= */}
           {/* 3. SEARCH & FILTER TOOLBAR (Inspired by Screenshot 3) */}
           {/* ========================================================= */}
@@ -613,6 +585,3 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
  * Original decorative animated geometric orbit emblem.
  * Uses lightweight pure SVG with slow gentle rotation and prefers-reduced-motion fallback.
  */
-function OrbitEmblem() {
-  return null;
-}
