@@ -87,7 +87,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
       </Link>
 
       {/* Horizontal Line Divider above Price and CTA Action */}
-      <div className="-mx-3 sm:-mx-3.5 border-t-2 border-[#a8a29e] mt-3.5 sm:mt-4 pt-3 sm:pt-3.5 px-3 sm:px-3.5 flex items-center justify-between gap-2 shrink-0">
+      <div className="-mx-3 sm:-mx-3.5 border-t border-[#e7e5e4] mt-3.5 sm:mt-4 pt-3 sm:pt-3.5 px-3 sm:px-3.5 flex items-center justify-between gap-2 shrink-0">
         {playbook.badge === "Coming Soon" ? (
           <>
             <div className="flex items-center gap-1.5 shrink-0">
