@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "my-honest-advice-to-someone-who-wants-to-get-rich") {
+    return {
+      name: "Kunal Raj",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "the-30k-month-al-faceless-shorts-method-nobodys-talking-about") {
     return {
       name: "Seiji Kai-Lun",
@@ -129,6 +139,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "my-honest-advice-to-someone-who-wants-to-get-rich") {
+    return [
+      {
+        id: "rev-1",
+        name: "Rohan Mehta",
+        avatar: "",
+        date: "October 18, 2026",
+        rating: 5,
+        headline: "A genuinely inspiring and practical playbook! I loved how it explains the importance of starting early, developing valuable skills, and making smart financial decisions. The 90-day plan makes everything feel achievable. Highly recommended!",
+        content: "A genuinely inspiring and practical playbook! I loved how it explains the importance of starting early, developing valuable skills, and making smart financial decisions. The 90-day plan makes everything feel achievable. Highly recommended!",
+        likes: 28,
+      },
+      {
+        id: "rev-2",
+        name: "Clara Bennett",
+        avatar: "",
+        date: "September 18, 2026",
+        rating: 5,
+        headline: "Excellent guide for anyone serious about building long-term wealth! The chapters are well organised, easy to understand, and full of valuable lessons. A great reminder that small steps taken today can create amazing opportunities in the future.",
+        content: "Excellent guide for anyone serious about building long-term wealth! The chapters are well organised, easy to understand, and full of valuable lessons. A great reminder that small steps taken today can create amazing opportunities in the future.",
+        likes: 61,
+      },
+      {
+        id: "rev-3",
+        name: "Arjun Nair",
+        avatar: "",
+        date: "October 01, 2026",
+        rating: 5,
+        headline: "This playbook completely changed how I think about personal growth and financial success. The focus on skill development, consistency, and calculated risks is especially valuable. Definitely a resource worth revisiting!",
+        content: "This playbook completely changed how I think about personal growth and financial success. The focus on skill development, consistency, and calculated risks is especially valuable. Definitely a resource worth revisiting!",
+        likes: 43,
+      },
+      {
+        id: "rev-4",
+        name: "Elise Laurent",
+        avatar: "",
+        date: "August 11, 2026",
+        rating: 5,
+        headline: "Such a motivating and insightful read! I particularly enjoyed the practical advice on turning small achievements into bigger opportunities. It offers a clear direction for young people who want to build a better financial future.",
+        content: "Such a motivating and insightful read! I particularly enjoyed the practical advice on turning small achievements into bigger opportunities. It offers a clear direction for young people who want to build a better financial future.",
+        likes: 89,
+      },
+    ];
+  }
+
   if (slug === "the-30k-month-al-faceless-shorts-method-nobodys-talking-about") {
     return [
       {
