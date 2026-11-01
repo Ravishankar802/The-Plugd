@@ -3,39 +3,14 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Download, List, X } from "lucide-react";
-import {
-  SELL_PDFS_WITH_AI_BOOK_PAGES,
-  WebBookPage,
-} from "@/lib/book-content/sell-pdfs-with-ai-book";
-import { SEVEN_SIDE_HUSTLES_2027_BOOK_PAGES } from "@/lib/book-content/seven-side-hustles-students-2027-book";
-import { THREE_BEST_AI_BUSINESSES_2027_BOOK_PAGES } from "@/lib/book-content/three-best-ai-businesses-2027-book";
-import { FIVE_SIMPLE_APPS_10K_BOOK_PAGES } from "@/lib/book-content/five-simple-apps-10k-month-book";
-import { WIN_IN_YOUR_20S_BOOK_PAGES } from "@/lib/book-content/win-in-your-20s-book";
-import { SMARTEST_WAY_AI_GOLD_RUSH_BOOK_PAGES } from "@/lib/book-content/smartest-way-ai-gold-rush-book";
-import { STARTED_OVER_ZERO_PLAN_1M_BOOK_PAGES } from "@/lib/book-content/started-over-zero-plan-1m-book";
-import { BECOME_MILLIONAIRE_2027_BOOK_PAGES } from "@/lib/book-content/become-millionaire-2027-book";
+import { ArrowLeft, Download, List, X, BookOpen } from "lucide-react";
+import { WebBookPage } from "@/lib/book-content";
 
 interface WebBookReaderProps {
   courseSlug: string;
   courseTitle: string;
   pages?: WebBookPage[];
 }
-
-// Global registry of digital book manuscripts
-const BOOK_REGISTRY: Record<string, WebBookPage[]> = {
-  "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything": SELL_PDFS_WITH_AI_BOOK_PAGES,
-  "7-side-hustles-students-can-start-in-2027": SEVEN_SIDE_HUSTLES_2027_BOOK_PAGES,
-  "ai-businesses-57": SEVEN_SIDE_HUSTLES_2027_BOOK_PAGES,
-  "3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today": THREE_BEST_AI_BUSINESSES_2027_BOOK_PAGES,
-  "5-simple-apps-making-10-000-month-that-you-can-build-with-ai": FIVE_SIMPLE_APPS_10K_BOOK_PAGES,
-  "if-youre-in-your-20s-heres-how-to-win-at-anything": WIN_IN_YOUR_20S_BOOK_PAGES,
-  "the-smartest-way-to-capitalize-on-the-ai-gold-rush": SMARTEST_WAY_AI_GOLD_RUSH_BOOK_PAGES,
-  "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m": STARTED_OVER_ZERO_PLAN_1M_BOOK_PAGES,
-  "ai-businesses-53": STARTED_OVER_ZERO_PLAN_1M_BOOK_PAGES,
-  "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint": BECOME_MILLIONAIRE_2027_BOOK_PAGES,
-  "ai-businesses-54": BECOME_MILLIONAIRE_2027_BOOK_PAGES,
-};
 
 // Classic book-style serif font stack explicitly used inside the book
 const CLASSIC_BOOK_FONT =
@@ -50,10 +25,61 @@ export default function WebBookReader({ courseSlug, courseTitle, pages }: WebBoo
 
   // Determine active book pages and total count
   const bookPages = useMemo(() => {
-    return pages || BOOK_REGISTRY[courseSlug] || SELL_PDFS_WITH_AI_BOOK_PAGES;
-  }, [pages, courseSlug]);
+    return pages || [];
+  }, [pages]);
 
   const totalPages = bookPages.length;
+
+  if (totalPages === 0) {
+    return (
+      <div className="min-h-screen bg-[#f3f0e8] text-[#1c1917] font-sans antialiased flex flex-col">
+        {/* Header */}
+        <header className="sticky top-0 z-40 bg-[#f7f5f0] border-b border-[#e5e0d4] px-4 py-3 sm:px-6">
+          <div className="max-w-5xl mx-auto flex items-center justify-between">
+            <Link
+              href={`/${courseSlug}`}
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#78716c] hover:text-[#1c1917] transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              <span>Back to Playbook</span>
+            </Link>
+            <div className="text-xs text-[#78716c] font-medium truncate max-w-[200px] sm:max-w-md">
+              {courseTitle}
+            </div>
+          </div>
+        </header>
+
+        {/* Content Coming Soon Card */}
+        <div className="flex-1 flex items-center justify-center p-6 sm:p-12">
+          <div className="max-w-lg w-full bg-white rounded-2xl border border-stone-200/80 p-8 sm:p-10 text-center shadow-xs">
+            <div className="w-14 h-14 rounded-2xl bg-stone-100 border border-stone-200 flex items-center justify-center mx-auto mb-5 text-[#1c1917]">
+              <BookOpen className="h-7 w-7 text-stone-700" />
+            </div>
+
+            <span className="inline-block text-[11px] font-mono font-semibold uppercase tracking-wider text-stone-500 bg-stone-100 border border-stone-200 px-2.5 py-1 rounded-full mb-3">
+              Content in Preparation
+            </span>
+
+            <h1 className="text-xl sm:text-2xl font-bold text-[#1c1917] mb-2 font-serif tracking-tight">
+              {courseTitle}
+            </h1>
+
+            <p className="text-sm text-stone-600 mb-8 leading-relaxed max-w-md mx-auto">
+              The full digital edition for this playbook is currently in development. We will be publishing the complete content soon.
+            </p>
+
+            <Link
+              href={`/${courseSlug}`}
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#1c1917] hover:bg-stone-800 text-white font-medium text-xs sm:text-sm shadow-xs transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              <span>Back to Playbook Overview</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // Scroll vertically to a specific page
   const scrollToPage = useCallback(
