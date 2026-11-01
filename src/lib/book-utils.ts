@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "the-30k-month-al-faceless-shorts-method-nobodys-talking-about") {
+    return {
+      name: "Seiji Kai-Lun",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "how-to-build-10k-websites-in-minutes-claude-ai") {
     return {
       name: "Caleb Sterling",
@@ -119,6 +129,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "the-30k-month-al-faceless-shorts-method-nobodys-talking-about") {
+    return [
+      {
+        id: "rev-1",
+        name: "Zayden Okafor",
+        avatar: "",
+        date: "October 21, 2026",
+        rating: 5,
+        headline: "An incredible playbook! Everything is explained perfectly, and the workflow makes starting a faceless YouTube Shorts channel feel achievable. Definitely worth reading!",
+        content: "An incredible playbook! Everything is explained perfectly, and the workflow makes starting a faceless YouTube Shorts channel feel achievable. Definitely worth reading!",
+        likes: 35,
+      },
+      {
+        id: "rev-2",
+        name: "Adrian",
+        avatar: "",
+        date: "September 30, 2026",
+        rating: 5,
+        headline: "Absolutely loved this guide! The Claude, VidIQ, and RankReel combination is brilliant, and the step-by-step instructions make the entire process so much easier. Highly recommended!",
+        content: "Absolutely loved this guide! The Claude, VidIQ, and RankReel combination is brilliant, and the step-by-step instructions make the entire process so much easier. Highly recommended!",
+        likes: 60,
+      },
+      {
+        id: "rev-3",
+        name: "Emilia",
+        avatar: "",
+        date: "October 08, 2026",
+        rating: 5,
+        headline: "One of the most practical guides I've come across! Packed with useful strategies, amazing tools, and actionable ideas. A fantastic resource for anyone starting their YouTube journey!",
+        content: "One of the most practical guides I've come across! Packed with useful strategies, amazing tools, and actionable ideas. A fantastic resource for anyone starting their YouTube journey!",
+        likes: 43,
+      },
+      {
+        id: "rev-4",
+        name: "Thiago Moretti",
+        avatar: "",
+        date: "October 1, 2026",
+        rating: 5,
+        headline: "Outstanding playbook! I love how everything is organised into simple steps, making content research and video creation much less overwhelming. This is genuinely inspiring!",
+        content: "Outstanding playbook! I love how everything is organised into simple steps, making content research and video creation much less overwhelming. This is genuinely inspiring!",
+        likes: 20,
+      },
+    ];
+  }
+
   if (slug === "how-to-build-10k-websites-in-minutes-claude-ai") {
     return [
       {

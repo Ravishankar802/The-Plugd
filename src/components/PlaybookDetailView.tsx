@@ -490,9 +490,11 @@ export default function PlaybookDetailView({
                     </span>
                   </h3>
 
-                  <p className="text-xs text-stone-600 leading-relaxed pt-1">
-                    {author.bio}
-                  </p>
+                  {author.bio ? (
+                    <p className="text-xs text-stone-600 leading-relaxed pt-1">
+                      {author.bio}
+                    </p>
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -680,6 +682,9 @@ export default function PlaybookDetailView({
 
                 {/* Display Reviews List */}
                 <div className="space-y-4 pt-2">
+                  <h4 className="text-base font-bold text-stone-900 pt-2">
+                    Reviews
+                  </h4>
                   {communityReviews.map((rev, revIdx) => (
                     <div
                       key={rev.id}
