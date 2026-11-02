@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "these-are-the-best-business-books-to-read-7-billionaire-books") {
+    return {
+      name: "Sneha Mishra",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "master-higgsfield-ai-in-20-minutes-beginner-tutorial") {
     return {
       name: "Nathan Cole",
@@ -149,6 +159,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "these-are-the-best-business-books-to-read-7-billionaire-books") {
+    return [
+      {
+        id: "rev-1",
+        name: "Ananya Kulkarni",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "A very practical and insightful playbook. I liked how it brings together lessons from different business leaders and turns them into actionable principles. The 30-day implementation plan makes it especially useful.",
+        content: "A very practical and insightful playbook. I liked how it brings together lessons from different business leaders and turns them into actionable principles. The 30-day implementation plan makes it especially useful.",
+        likes: 81,
+      },
+      {
+        id: "rev-2",
+        name: "Rohan Malhotra",
+        avatar: "",
+        date: "September 02 2026",
+        rating: 5,
+        headline: "An excellent resource for anyone interested in entrepreneurship and building a successful business. The chapters offer valuable perspectives on leadership, customer relationships, decision-making, and investing. Easy to follow and full of useful takeaways.",
+        content: "An excellent resource for anyone interested in entrepreneurship and building a successful business. The chapters offer valuable perspectives on leadership, customer relationships, decision-making, and investing. Easy to follow and full of useful takeaways.",
+        likes: 68,
+      },
+      {
+        id: "rev-3",
+        name: "Kunal Deshmukh",
+        avatar: "",
+        date: "October 07, 2026",
+        rating: 5,
+        headline: "A well-structured collection of business insights. The emphasis on customer obsession, disciplined thinking, operational excellence, and managing risk makes this a valuable read. I especially appreciated the final checklist for putting the lessons into practice.",
+        content: "A well-structured collection of business insights. The emphasis on customer obsession, disciplined thinking, operational excellence, and managing risk makes this a valuable read. I especially appreciated the final checklist for putting the lessons into practice.",
+        likes: 42,
+      },
+      {
+        id: "rev-4",
+        name: "Meera Iyer",
+        avatar: "",
+        date: "September 20 2026",
+        rating: 5,
+        headline: "What I enjoyed most was the practical approach. Instead of simply discussing the achievements of successful entrepreneurs, the playbook explains the thinking behind their decisions and how we can apply those lessons in our own professional journeys.",
+        content: "What I enjoyed most was the practical approach. Instead of simply discussing the achievements of successful entrepreneurs, the playbook explains the thinking behind their decisions and how we can apply those lessons in our own professional journeys.",
+        likes: 30,
+      },
+    ];
+  }
+
   if (slug === "master-higgsfield-ai-in-20-minutes-beginner-tutorial") {
     return [
       {

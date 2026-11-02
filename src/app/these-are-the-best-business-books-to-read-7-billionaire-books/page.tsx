@@ -6,10 +6,10 @@ import { BEST_BUSINESS_BOOKS_DETAIL } from "@/lib/playbooks/best-business-books-
 
 export const metadata: Metadata = {
   title: "These Are The Best Business Books To Read (7 Billionaire Books) | Plugd",
-  description: "A ruthless breakdown of the 7 business masterworks written by and about self-made billionaire founders.",
+  description: "Seven influential business books distilled into one practical playbook on building successful businesses. Learn the principles of great entrepreneurs, investors, and leaders to make smarter decisions and create lasting value.",
   openGraph: {
     title: "These Are The Best Business Books To Read (7 Billionaire Books) | Plugd",
-    description: "A ruthless breakdown of the 7 business masterworks written by and about self-made billionaire founders.",
+    description: "Seven influential business books distilled into one practical playbook on building successful businesses. Learn the principles of great entrepreneurs, investors, and leaders to make smarter decisions and create lasting value.",
   },
 };
 
