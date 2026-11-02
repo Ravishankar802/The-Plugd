@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "7-proven-ways-to-make-money-with-ai-no-experience") {
+    return {
+      name: "Jack Robertson",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "how-to-actually-lock-in-no-bullsh-t-guide") {
     return {
       name: "Jacob Wilson",
@@ -249,6 +259,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "7-proven-ways-to-make-money-with-ai-no-experience") {
+    return [
+      {
+        id: "rev-1",
+        name: "Jonathan Morris",
+        avatar: "",
+        date: "September 02 2026",
+        rating: 5,
+        headline: "I've been interested in making money with AI but never really knew where to start.",
+        content: "I've been interested in making money with AI but never really knew where to start. This playbook breaks everything down into practical business opportunities that actually make sense. I especially love the client acquisition strategies and step-by-step launch plan. Definitely worth reading!",
+        likes: 77,
+      },
+      {
+        id: "rev-2",
+        name: "Patrick Murphy",
+        avatar: "",
+        date: "September 01 2026",
+        rating: 5,
+        headline: "What I love most about this guide is that it focuses on selling real business solutions rather than just playing around with AI tools.",
+        content: "What I love most about this guide is that it focuses on selling real business solutions rather than just playing around with AI tools. The six business models gave me several ideas I could realistically start exploring right away. Clear, actionable, and packed with value.",
+        likes: 65,
+      },
+      {
+        id: "rev-3",
+        name: "Scott Reynolds",
+        avatar: "",
+        date: "October 12, 2026",
+        rating: 5,
+        headline: "So many AI guides talk about building the next big app or becoming a tech expert.",
+        content: "So many AI guides talk about building the next big app or becoming a tech expert. This playbook takes a much more practical approach. It shows how to use tools that already exist to solve problems businesses are willing to pay for. The pricing, outreach examples, and recurring revenue strategies make it especially useful.",
+        likes: 59,
+      },
+      {
+        id: "rev-4",
+        name: "Tyler Richardson",
+        avatar: "",
+        date: "October 17 2026",
+        rating: 5,
+        headline: "This guide connects all the dots, from choosing a profitable service and finding potential clients to delivering quality work and building monthly retainers.",
+        content: "This guide connects all the dots, from choosing a profitable service and finding potential clients to delivering quality work and building monthly retainers. The templates and 30-day action plan are excellent additions. If you're serious about turning AI skills into a service business, this is a great place to start.",
+        likes: 43,
+      },
+    ];
+  }
+
   if (slug === "how-to-actually-lock-in-no-bullsh-t-guide") {
     return [
       {

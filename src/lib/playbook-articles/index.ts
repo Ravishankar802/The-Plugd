@@ -13,6 +13,7 @@ import { THREE_TYPES_BUSINESSES_ARTICLE } from "./three-types-profitable-busines
 import { SALES_TACTIC_10M_ARTICLE } from "./sales-tactic-god-tier-money";
 import { EIGHTEEN_YEARS_UGLY_ADVICE_ARTICLE } from "./eighteen-years-ugly-advice";
 import { HOW_TO_ACTUALLY_LOCK_IN_ARTICLE } from "./how-to-actually-lock-in";
+import { SEVEN_PROVEN_WAYS_AI_ARTICLE } from "./seven-proven-ways-ai";
 
 export * from "./types";
 
@@ -45,6 +46,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-40": EIGHTEEN_YEARS_UGLY_ADVICE_ARTICLE,
   "how-to-actually-lock-in-no-bullsh-t-guide": HOW_TO_ACTUALLY_LOCK_IN_ARTICLE,
   "ai-businesses-39": HOW_TO_ACTUALLY_LOCK_IN_ARTICLE,
+  "7-proven-ways-to-make-money-with-ai-no-experience": SEVEN_PROVEN_WAYS_AI_ARTICLE,
+  "ai-businesses-38": SEVEN_PROVEN_WAYS_AI_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

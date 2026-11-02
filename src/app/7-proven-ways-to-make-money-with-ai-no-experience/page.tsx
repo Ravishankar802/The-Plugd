@@ -5,11 +5,11 @@ import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 import { SEVEN_PROVEN_WAYS_AI_NO_EXP_DETAIL } from "@/lib/playbooks/seven-proven-ways-ai-no-exp-detail";
 
 export const metadata: Metadata = {
-  title: "7 Proven Ways to Make Money With AI (No Experience) | Plugd",
-  description: "A practical roadmap to profiting from the AI revolution by providing implementation services rather than competing with tech giants.",
+  title: "7 Proven Ways to Make Money With AI (No Experience) | Jack Robertson | Plugd",
+  description: "Turn AI Tools Into a Profitable Service Business. Discover 6 practical AI-powered business models, land clients, deliver valuable results, and build recurring revenue without creating your own AI software.",
   openGraph: {
     title: "7 Proven Ways to Make Money With AI (No Experience) | Plugd",
-    description: "A practical roadmap to profiting from the AI revolution by providing implementation services rather than competing with tech giants.",
+    description: "Turn AI Tools Into a Profitable Service Business. Discover 6 practical AI-powered business models, land clients, deliver valuable results, and build recurring revenue without creating your own AI software.",
   },
 };
 
