@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "how-to-actually-lock-in-no-bullsh-t-guide") {
+    return {
+      name: "Jacob Wilson",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "18-years-of-ugly-business-advice-in-19-minutes") {
     return {
       name: "Alex Turner",
@@ -239,6 +249,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "how-to-actually-lock-in-no-bullsh-t-guide") {
+    return [
+      {
+        id: "rev-1",
+        name: "Matthew Parker",
+        avatar: "",
+        date: "September 06 2026",
+        rating: 5,
+        headline: "I've read countless productivity guides, but this one actually breaks everything down into actionable steps.",
+        content: "I've read countless productivity guides, but this one actually breaks everything down into actionable steps. The three-cut principle and daily scorecard made it so much easier to identify where my time was going. Simple, direct, and genuinely useful.",
+        likes: 87,
+      },
+      {
+        id: "rev-2",
+        name: "Christopher Reed",
+        avatar: "",
+        date: "September 13 2026",
+        rating: 5,
+        headline: "This playbook completely changed how I look at discipline and focus.",
+        content: "This playbook completely changed how I look at discipline and focus. I especially loved the idea of a 90-day season because it gives you a clear direction without feeling overwhelming. It's not about doing everything; it's about doing what matters. Highly recommend!",
+        likes: 52,
+      },
+      {
+        id: "rev-3",
+        name: "Benjamin Cooper",
+        avatar: "",
+        date: "October 10, 2026",
+        rating: 5,
+        headline: "What I appreciate most is how practical this is.",
+        content: "What I appreciate most is how practical this is. Instead of throwing random motivational quotes at you, it gives you an actual system to follow. The worksheets, habit tracking, and weekly reviews make it easy to stay accountable. A great resource for anyone serious about personal growth.",
+        likes: 49,
+      },
+      {
+        id: "rev-4",
+        name: "Andrew Phillips",
+        avatar: "",
+        date: "September 27 2026",
+        rating: 5,
+        headline: "This made me realise how much of my day was being wasted on things that weren't moving me forward.",
+        content: "This made me realise how much of my day was being wasted on things that weren't moving me forward. The sections on distractions, delayed gratification, and building self-trust really stood out. If you're ready to stop making excuses and start taking your goals seriously, this is worth reading.",
+        likes: 53,
+      },
+    ];
+  }
+
   if (slug === "18-years-of-ugly-business-advice-in-19-minutes") {
     return [
       {

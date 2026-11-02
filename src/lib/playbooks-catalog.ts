@@ -981,7 +981,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "slug": "how-to-actually-lock-in-no-bullsh-t-guide",
     "title": "How to ACTUALLY Lock In (No Bullsh*t Guide)",
     "headline": "A ruthless, uncompromising manual to breaking brain rot, eliminating cheap dopamine, and executing deep work relentlessly.",
-    "description": "Tired of fake motivation, failed 5:00 AM routines, and perpetual procrastination? This playbook provides the definitive protocol to purge distractions, redesign your neurochemical baseline, construct an impenetrable work sanctuary, and sustain 6 to 8 hours of daily high-leverage execution.",
+    "description": "Your goals aren't the problem. Your distractions, inconsistent habits, and divided attention are.  How to ACTUALLY Lock In is your practical blueprint for stepping away from the noise, cutting out what holds you back, and committing to what truly matters. Build a focused daily routine, master your impulses, protect your energy, and develop the discipline to keep showing up—even when motivation disappears.  Inside, you'll get actionable strategies, daily scorecards, weekly reviews, and structured 30-, 90-, and 365-day plans to turn your intentions into measurable progress.  No empty motivation. No complicated productivity hacks. Just a clear system for getting your life together and making serious progress.  Less distraction. More discipline. Real results. It's time to lock in.",
     "categorySlug": "ai-businesses",
     "categoryName": "AI",
     "price": 3,

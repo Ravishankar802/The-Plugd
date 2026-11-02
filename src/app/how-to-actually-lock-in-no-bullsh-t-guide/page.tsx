@@ -5,7 +5,7 @@ import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 import { ACTUALLY_LOCK_IN_GUIDE_DETAIL } from "@/lib/playbooks/actually-lock-in-guide-detail";
 
 export const metadata: Metadata = {
-  title: "How to ACTUALLY Lock In (No Bullsh*t Guide) | Plugd",
+  title: "How to ACTUALLY Lock In (No Bullsh*t Guide) | Jacob Wilson | Plugd",
   description: "A ruthless, uncompromising manual to breaking brain rot, eliminating cheap dopamine, and executing deep work relentlessly.",
   openGraph: {
     title: "How to ACTUALLY Lock In (No Bullsh*t Guide) | Plugd",
