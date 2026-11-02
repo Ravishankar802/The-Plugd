@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "if-you-dont-understand-leadership-youll-never-win") {
+    return {
+      name: "Stefan Müller",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "i-built-a-business-with-ai-in-24-hours") {
     return {
       name: "Rishabh Jain",
@@ -199,6 +209,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "if-you-dont-understand-leadership-youll-never-win") {
+    return [
+      {
+        id: "rev-1",
+        name: "Mike Fishbein",
+        avatar: "",
+        date: "September 03 2026",
+        rating: 5,
+        headline: "A very practical guide to leadership. I particularly liked the sections on delegation and communication. The frameworks make it easier to understand where leadership often goes wrong and how to improve.",
+        content: "A very practical guide to leadership. I particularly liked the sections on delegation and communication. The frameworks make it easier to understand where leadership often goes wrong and how to improve.",
+        likes: 69,
+      },
+      {
+        id: "rev-2",
+        name: "Sidd Chauhan",
+        avatar: "",
+        date: "September 14 2026",
+        rating: 5,
+        headline: "This playbook offers a refreshing approach to managing people and building teams. The hiring and performance management chapters were especially useful. A valuable resource for anyone managing a growing business.",
+        content: "This playbook offers a refreshing approach to managing people and building teams. The hiring and performance management chapters were especially useful. A valuable resource for anyone managing a growing business.",
+        likes: 55,
+      },
+      {
+        id: "rev-3",
+        name: "Richelle Delia",
+        avatar: "",
+        date: "October 11, 2026",
+        rating: 5,
+        headline: "What I enjoyed most was how actionable everything is. The templates, checklists, and practical examples make it much more than just another leadership book. It genuinely helps you rethink how to run a team.",
+        content: "What I enjoyed most was how actionable everything is. The templates, checklists, and practical examples make it much more than just another leadership book. It genuinely helps you rethink how to run a team.",
+        likes: 41,
+      },
+      {
+        id: "rev-4",
+        name: "Mark Hinkle",
+        avatar: "",
+        date: "September 29 2026",
+        rating: 5,
+        headline: "An insightful and well-structured playbook for business owners who want to move beyond managing daily tasks. The focus on accountability, employee development, and building independent systems makes it particularly worthwhile.",
+        content: "An insightful and well-structured playbook for business owners who want to move beyond managing daily tasks. The focus on accountability, employee development, and building independent systems makes it particularly worthwhile.",
+        likes: 38,
+      },
+    ];
+  }
+
   if (slug === "i-built-a-business-with-ai-in-24-hours") {
     return [
       {

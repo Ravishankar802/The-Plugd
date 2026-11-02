@@ -6,10 +6,10 @@ import { UNDERSTAND_LEADERSHIP_DETAIL } from "@/lib/playbooks/understand-leaders
 
 export const metadata: Metadata = {
   title: "If You Don't Understand Leadership, You'll Never Win | Plugd",
-  description: "A practical framework for founders to ditch people-pleasing, delegate without bounce-back, and build high-performance teams.",
+  description: "A practical leadership guide to building high-performing teams, learn to delegate effectively, communicate with confidence, hire the right people, reward performance, and lead with clarity.",
   openGraph: {
     title: "If You Don't Understand Leadership, You'll Never Win | Plugd",
-    description: "A practical framework for founders to ditch people-pleasing, delegate without bounce-back, and build high-performance teams.",
+    description: "A practical leadership guide to building high-performing teams, learn to delegate effectively, communicate with confidence, hire the right people, reward performance, and lead with clarity.",
   },
 };
 
