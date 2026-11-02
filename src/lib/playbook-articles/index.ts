@@ -3,6 +3,7 @@ import { HOW_TO_BUILD_10K_WEBSITES_ARTICLE } from "./how-to-build-10k-websites";
 import { FACELESS_SHORTS_30K_ARTICLE } from "./faceless-shorts-30k";
 import { HONEST_ADVICE_GET_RICH_ARTICLE } from "./honest-advice-get-rich";
 import { MASTER_HIGGSFIELD_TUTORIAL_ARTICLE } from "./master-higgsfield-tutorial";
+import { BEST_BUSINESS_BOOKS_ARTICLE } from "./best-business-books-7-billionaires";
 
 export * from "./types";
 
@@ -15,6 +16,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-49": HONEST_ADVICE_GET_RICH_ARTICLE,
   "master-higgsfield-ai-in-20-minutes-beginner-tutorial": MASTER_HIGGSFIELD_TUTORIAL_ARTICLE,
   "ai-businesses-52": MASTER_HIGGSFIELD_TUTORIAL_ARTICLE,
+  "these-are-the-best-business-books-to-read-7-billionaire-books": BEST_BUSINESS_BOOKS_ARTICLE,
+  "ai-businesses-48": BEST_BUSINESS_BOOKS_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {
