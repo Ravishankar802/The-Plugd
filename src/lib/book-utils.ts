@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "the-only-investing-video-youll-ever-need-start-with-100") {
+    return {
+      name: "Jiho Kim",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "7-proven-ways-to-make-money-with-ai-no-experience") {
     return {
       name: "Jack Robertson",
@@ -259,6 +269,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "the-only-investing-video-youll-ever-need-start-with-100") {
+    return [
+      {
+        id: "rev-1",
+        name: "Brandon Walker",
+        avatar: "",
+        date: "September 05 2026",
+        rating: 5,
+        headline: "I've always wanted to start investing but never knew where to begin.",
+        content: "I've always wanted to start investing but never knew where to begin. This playbook breaks everything down in such a simple and practical way. I finally understand the difference between stocks, REITs, crypto, gold, and index funds. A fantastic starting point!",
+        likes: 90,
+      },
+      {
+        id: "rev-2",
+        name: "Connor Walsh",
+        avatar: "",
+        date: "September 13 2026",
+        rating: 5,
+        headline: "What I loved most is how this guide explains both the opportunities and risks of investing.",
+        content: "What I loved most is how this guide explains both the opportunities and risks of investing. The $100 comparisons made everything easier to understand, and the worksheets are incredibly useful. Definitely worth reading!",
+        likes: 78,
+      },
+      {
+        id: "rev-3",
+        name: "Nathaniel Price",
+        avatar: "",
+        date: "October 09, 2026",
+        rating: 5,
+        headline: "This is exactly the kind of investing guide I was looking for.",
+        content: "This is exactly the kind of investing guide I was looking for. It's well-organised, beginner-friendly, and packed with valuable information. I especially enjoyed learning about diversification, compounding, and how to evaluate different investment options.",
+        likes: 66,
+      },
+      {
+        id: "rev-4",
+        name: "Cameron Stewart",
+        avatar: "",
+        date: "October 16 2026",
+        rating: 5,
+        headline: "A brilliant resource for anyone looking to become more financially confident.",
+        content: "A brilliant resource for anyone looking to become more financially confident. It doesn't just tell you what investments are; it teaches you how to think about risk, make informed decisions, and avoid common beginner mistakes. Practical, informative, and motivating!",
+        likes: 43,
+      },
+    ];
+  }
+
   if (slug === "7-proven-ways-to-make-money-with-ai-no-experience") {
     return [
       {

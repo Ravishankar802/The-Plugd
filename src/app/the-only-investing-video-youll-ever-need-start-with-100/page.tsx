@@ -5,11 +5,11 @@ import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 import { ONLY_INVESTING_VIDEO_100_DETAIL } from "@/lib/playbooks/only-investing-video-100-detail";
 
 export const metadata: Metadata = {
-  title: "The Only Investing Video You'll Ever Need (Start With $100) | Plugd",
-  description: "A comprehensive wealth-building primer comparing 5 core assets and laying down the mathematics of long-term freedom.",
+  title: "The Only Investing Guide You'll Ever Need (Start With $100) | Jiho Kim | Plugd",
+  description: "The Beginner’s Investing Playbook is your no-nonsense guide to understanding five popular investment options, mastering the basics of risk and returns, and making your first investment with confidence.",
   openGraph: {
     title: "The Only Investing Video You'll Ever Need (Start With $100) | Plugd",
-    description: "A comprehensive wealth-building primer comparing 5 core assets and laying down the mathematics of long-term freedom.",
+    description: "The Beginner’s Investing Playbook is your no-nonsense guide to understanding five popular investment options, mastering the basics of risk and returns, and making your first investment with confidence.",
   },
 };
 
