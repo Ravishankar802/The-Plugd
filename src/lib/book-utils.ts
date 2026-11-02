@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "18-years-of-ugly-business-advice-in-19-minutes") {
+    return {
+      name: "Alex Turner",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "want-to-made-god-tier-money-use-this-sales-tactic-made-me-10m") {
     return {
       name: "Alex Turner",
@@ -229,6 +239,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "18-years-of-ugly-business-advice-in-19-minutes") {
+    return [
+      {
+        id: "rev-1",
+        name: "Thomas Fischer",
+        avatar: "",
+        date: "September 01 2026",
+        rating: 5,
+        headline: "An incredibly insightful playbook that goes beyond the usual business advice. I especially appreciated the focus on personal growth, strategic thinking, and building a business that lasts. The practical exercises make it easy to put the lessons into action.",
+        content: "An incredibly insightful playbook that goes beyond the usual business advice. I especially appreciated the focus on personal growth, strategic thinking, and building a business that lasts. The practical exercises make it easy to put the lessons into action.",
+        likes: 93,
+      },
+      {
+        id: "rev-2",
+        name: "Jakob Hoffmann",
+        avatar: "",
+        date: "September 07 2026",
+        rating: 5,
+        headline: "What I loved most about this playbook is how it breaks down complex entrepreneurial decisions into simple, manageable steps. The sections on cash flow, equity, and customer validation are particularly valuable. A great resource for anyone serious about building a sustainable business.",
+        content: "What I loved most about this playbook is how it breaks down complex entrepreneurial decisions into simple, manageable steps. The sections on cash flow, equity, and customer validation are particularly valuable. A great resource for anyone serious about building a sustainable business.",
+        likes: 81,
+      },
+      {
+        id: "rev-3",
+        name: "Lukas Hartmann",
+        avatar: "",
+        date: "October 04, 2026",
+        rating: 5,
+        headline: "This playbook completely changed how I think about business growth. It highlights the importance of evolving as a founder while making thoughtful decisions about the business itself. The 90-day action plan is an excellent way to turn insights into meaningful progress.",
+        content: "This playbook completely changed how I think about business growth. It highlights the importance of evolving as a founder while making thoughtful decisions about the business itself. The 90-day action plan is an excellent way to turn insights into meaningful progress.",
+        likes: 66,
+      },
+      {
+        id: "rev-4",
+        name: "Matthias Braun",
+        avatar: "",
+        date: "September 21 2026",
+        rating: 5,
+        headline: "A well-structured and refreshing guide that addresses the realities of entrepreneurship, not just the success stories. I found the emphasis on sustainable growth, ownership, and finding meaningful work especially powerful. Definitely a resource worth revisiting at every stage of the entrepreneurial journey.",
+        content: "A well-structured and refreshing guide that addresses the realities of entrepreneurship, not just the success stories. I found the emphasis on sustainable growth, ownership, and finding meaningful work especially powerful. Definitely a resource worth revisiting at every stage of the entrepreneurial journey.",
+        likes: 53,
+      },
+    ];
+  }
+
   if (slug === "want-to-made-god-tier-money-use-this-sales-tactic-made-me-10m") {
     return [
       {
