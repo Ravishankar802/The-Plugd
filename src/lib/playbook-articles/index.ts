@@ -9,6 +9,7 @@ import { SEVEN_REMOTE_JOBS_ARTICLE } from "./seven-remote-jobs";
 import { COPY_PASTE_FIRST_5K_ARTICLE } from "./copy-paste-strategy-first-5k";
 import { BUILT_BUSINESS_AI_24H_ARTICLE } from "./built-business-ai-24-hours";
 import { UNDERSTAND_LEADERSHIP_ARTICLE } from "./understand-leadership";
+import { THREE_TYPES_BUSINESSES_ARTICLE } from "./three-types-profitable-businesses";
 
 export * from "./types";
 
@@ -33,6 +34,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-44": BUILT_BUSINESS_AI_24H_ARTICLE,
   "if-you-dont-understand-leadership-youll-never-win": UNDERSTAND_LEADERSHIP_ARTICLE,
   "ai-businesses-43": UNDERSTAND_LEADERSHIP_ARTICLE,
+  "there-are-only-3-types-of-profitable-businesses-pick-one": THREE_TYPES_BUSINESSES_ARTICLE,
+  "ai-businesses-42": THREE_TYPES_BUSINESSES_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

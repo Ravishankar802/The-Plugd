@@ -6,10 +6,10 @@ import { THREE_TYPES_BUSINESSES_DETAIL } from "@/lib/playbooks/three-types-profi
 
 export const metadata: Metadata = {
   title: "There Are Only 3 Types Of Profitable Businesses (Pick ONE) | Plugd",
-  description: "A definitive strategic breakdown of the only three business vehicles that generate durable, long-term wealth.",
+  description: "A practical guide to choosing the right business path and building wealth on your terms. Discover how to scale, create a profitable lifestyle business, or build a company ready for a successful exit.",
   openGraph: {
     title: "There Are Only 3 Types Of Profitable Businesses (Pick ONE) | Plugd",
-    description: "A definitive strategic breakdown of the only three business vehicles that generate durable, long-term wealth.",
+    description: "A practical guide to choosing the right business path and building wealth on your terms. Discover how to scale, create a profitable lifestyle business, or build a company ready for a successful exit.",
   },
 };
 

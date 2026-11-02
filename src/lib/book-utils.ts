@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "there-are-only-3-types-of-profitable-businesses-pick-one") {
+    return {
+      name: "Elias Andersen",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "if-you-dont-understand-leadership-youll-never-win") {
     return {
       name: "Stefan Müller",
@@ -209,6 +219,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "there-are-only-3-types-of-profitable-businesses-pick-one") {
+    return [
+      {
+        id: "rev-1",
+        name: "Oliver Bennett",
+        avatar: "",
+        date: "September 01 2026",
+        rating: 5,
+        headline: "An incredibly useful guide for anyone trying to figure out what they actually want from their business. I especially liked how it breaks down the differences between scaling, lifestyle, and exit strategies. The practical checklists make it much easier to put the ideas into action.",
+        content: "An incredibly useful guide for anyone trying to figure out what they actually want from their business. I especially liked how it breaks down the differences between scaling, lifestyle, and exit strategies. The practical checklists make it much easier to put the ideas into action.",
+        likes: 84,
+      },
+      {
+        id: "rev-2",
+        name: "Adrian Costa",
+        avatar: "",
+        date: "September 09 2026",
+        rating: 5,
+        headline: "What I appreciated most was the focus on building a business around the life you want. The lifestyle business section gave me a fresh perspective on profitability, delegation, and managing my time. A very practical and insightful read.",
+        content: "What I appreciated most was the focus on building a business around the life you want. The lifestyle business section gave me a fresh perspective on profitability, delegation, and managing my time. A very practical and insightful read.",
+        likes: 71,
+      },
+      {
+        id: "rev-3",
+        name: "Nathaniel Brooks",
+        avatar: "",
+        date: "October 04, 2026",
+        rating: 5,
+        headline: "This playbook connects business strategy with real-world execution exceptionally well. The sections on product-market fit, recurring revenue, and exit readiness are particularly valuable. It offers a clear framework for making better long-term decisions.",
+        content: "This playbook connects business strategy with real-world execution exceptionally well. The sections on product-market fit, recurring revenue, and exit readiness are particularly valuable. It offers a clear framework for making better long-term decisions.",
+        likes: 50,
+      },
+      {
+        id: "rev-4",
+        name: "Luca Moretti",
+        avatar: "",
+        date: "September 25 2026",
+        rating: 5,
+        headline: "A well-structured and actionable resource for entrepreneurs. I loved the templates, financial reviews, and 30-day implementation plan. Instead of simply talking about wealth creation, it explains the decisions and systems needed to build a business with a clear purpose.",
+        content: "A well-structured and actionable resource for entrepreneurs. I loved the templates, financial reviews, and 30-day implementation plan. Instead of simply talking about wealth creation, it explains the decisions and systems needed to build a business with a clear purpose.",
+        likes: 63,
+      },
+    ];
+  }
+
   if (slug === "if-you-dont-understand-leadership-youll-never-win") {
     return [
       {
