@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "i-asked-ai-to-make-me-as-much-money-as-possible") {
+    return {
+      name: "Sneha Mishra",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "these-are-the-best-business-books-to-read-7-billionaire-books") {
     return {
       name: "Sneha Mishra",
@@ -159,6 +169,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "i-asked-ai-to-make-me-as-much-money-as-possible") {
+    return [
+      {
+        id: "rev-1",
+        name: "Siddharth Rao",
+        avatar: "",
+        date: "September 17 2026",
+        rating: 5,
+        headline: "I really liked how this playbook breaks down the entire resale process. The AI prompts and sourcing strategies make it much easier to understand how to get started without feeling overwhelmed. A very useful business guide.",
+        content: "I really liked how this playbook breaks down the entire resale process. The AI prompts and sourcing strategies make it much easier to understand how to get started without feeling overwhelmed. A very useful business guide.",
+        likes: 73,
+      },
+      {
+        id: "rev-2",
+        name: "Devika Nair",
+        avatar: "",
+        date: "September 11 2026",
+        rating: 5,
+        headline: "This is a refreshing take on starting a small business with AI. I especially liked the sections on product research, pricing, and automating repetitive tasks. It provides practical ideas that can actually be implemented.",
+        content: "This is a refreshing take on starting a small business with AI. I especially liked the sections on product research, pricing, and automating repetitive tasks. It provides practical ideas that can actually be implemented.",
+        likes: 59,
+      },
+      {
+        id: "rev-3",
+        name: "Nisha Bhatia",
+        avatar: "",
+        date: "September 28, 2026",
+        rating: 5,
+        headline: "The playbook covers everything from finding products to completing a sale. The profit calculations, checklists, and seven-day launch plan make it particularly valuable. I appreciate the realistic approach to risks and business growth.",
+        content: "The playbook covers everything from finding products to completing a sale. The profit calculations, checklists, and seven-day launch plan make it particularly valuable. I appreciate the realistic approach to risks and business growth.",
+        likes: 47,
+      },
+      {
+        id: "rev-4",
+        name: "Arjun Deshmukh",
+        avatar: "",
+        date: "September 22 2026",
+        rating: 5,
+        headline: "A well-organised guide with plenty of actionable information. The idea of using separate AI assistants for sourcing, valuation, logistics, and listings is especially interesting. It has given me a much clearer picture of how to build a repeatable resale operation.",
+        content: "A well-organised guide with plenty of actionable information. The idea of using separate AI assistants for sourcing, valuation, logistics, and listings is especially interesting. It has given me a much clearer picture of how to build a repeatable resale operation.",
+        likes: 40,
+      },
+    ];
+  }
+
   if (slug === "these-are-the-best-business-books-to-read-7-billionaire-books") {
     return [
       {

@@ -6,10 +6,10 @@ import { ASKED_AI_MAKE_MONEY_DETAIL } from "@/lib/playbooks/asked-ai-make-money-
 
 export const metadata: Metadata = {
   title: "I Asked AI To Make Me As Much Money As Possible | Plugd",
-  description: "A practical experiment in using AI as an autonomous commercial co-worker to generate cash flow from scratch.",
+  description: "Turn AI into your resale business partner. Learn how to find undervalued products, automate research, coordinate deliveries, create listings, and build a profitable second-hand selling operation.",
   openGraph: {
     title: "I Asked AI To Make Me As Much Money As Possible | Plugd",
-    description: "A practical experiment in using AI as an autonomous commercial co-worker to generate cash flow from scratch.",
+    description: "Turn AI into your resale business partner. Learn how to find undervalued products, automate research, coordinate deliveries, create listings, and build a profitable second-hand selling operation.",
   },
 };
 
