@@ -76,154 +76,419 @@ export default function PlaybookArticleReader({
     Math.max(0, Math.round(scrollProgress * (TOTAL_TICKS - 1)))
   );
 
-  // Markdown-like link and code parser for paragraphs
-  const renderFormattedParagraph = (text: string, pIdx: number) => {
-    // Check if the paragraph is a prompt (starts with / or is a full prompt line)
-    const isPromptBlock =
-      text.startsWith("/ui-ux-pro-max") ||
-      text.startsWith("Based on the competitor breakdown");
-
-    if (isPromptBlock) {
-      return (
-        <div
-          key={pIdx}
-          className="my-7 rounded-xl bg-[#1c1917] border border-stone-800 p-4 sm:p-5 relative group shadow-xs"
-        >
-          <div className="flex items-center justify-between pb-3 mb-3 border-b border-stone-800 text-xs text-stone-400 font-mono">
-            <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
-              <Terminal className="h-3.5 w-3.5" />
-              Prompt Template
-            </span>
-            <button
-              onClick={() => handleCopyCode(text, `p-${pIdx}`)}
-              className="px-2.5 py-1 rounded bg-stone-800 hover:bg-stone-700 text-stone-300 hover:text-white transition-colors cursor-pointer text-[11px]"
-            >
-              {copiedPrompt === `p-${pIdx}` ? "Copied!" : "Copy Prompt"}
-            </button>
-          </div>
-          <pre className="font-mono text-xs sm:text-[13.5px] text-stone-200 whitespace-pre-wrap leading-relaxed select-text">
-            {text}
-          </pre>
-        </div>
-      );
-    }
-
-    // Subheading format (### Subtitle)
-    if (text.startsWith("### ")) {
-      return (
-        <h3
-          key={pIdx}
-          className="text-xl sm:text-2xl font-bold text-[#1c1917] mt-10 mb-3 pt-2"
-          style={{ fontFamily: SERIF_EDITORIAL_FONT }}
-        >
-          {text.replace(/^###\s*/, "")}
-        </h3>
-      );
-    }
-
-    // Bullet / Checklist format (e.g. - [ ] ... or - ...)
-    if (text.includes("\n") && (text.match(/^-\s*\[/m) || text.match(/^-\s+/m))) {
-      const items = text.split("\n").filter((l) => l.trim().length > 0);
-      return (
-        <ul key={pIdx} className="my-6 space-y-2.5 pl-2 sm:pl-4">
-          {items.map((item, idx) => {
-            const checkMatch = item.match(/^-\s*\[([ xX])\]\s*(.*)/);
-            if (checkMatch) {
-              const isChecked = checkMatch[1].toLowerCase() === "x";
-              const label = checkMatch[2];
-              return (
-                <li
-                  key={idx}
-                  className="text-[17px] sm:text-[19px] text-[#1c1917] leading-[1.8] flex items-start gap-3"
-                  style={{ fontFamily: SERIF_EDITORIAL_FONT }}
-                >
-                  <span
-                    className={`inline-flex items-center justify-center w-5 h-5 rounded border ${
-                      isChecked
-                        ? "bg-emerald-600 border-emerald-600 text-white font-bold"
-                        : "border-stone-400 bg-white"
-                    } text-xs mt-1 shrink-0`}
-                  >
-                    {isChecked ? "✓" : ""}
-                  </span>
-                  <span>{label}</span>
-                </li>
-              );
-            }
-            return (
-              <li
-                key={idx}
-                className="text-[17px] sm:text-[19px] text-[#1c1917] leading-[1.8] flex items-baseline gap-3"
-                style={{ fontFamily: SERIF_EDITORIAL_FONT }}
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-[#1c1917] mt-3 shrink-0" />
-                <span>{item.replace(/^-\s*/, "")}</span>
-              </li>
-            );
-          })}
-        </ul>
-      );
-    }
-
-    // Numbered list format (e.g. 1. Point of view \n 2. Typography...)
-    if (text.includes("\n") && text.match(/^\d\./m)) {
-      const items = text.split("\n").filter((l) => l.trim().length > 0);
-      return (
-        <ol key={pIdx} className="my-6 space-y-2.5 pl-2 sm:pl-4">
-          {items.map((item, idx) => (
-            <li
-              key={idx}
-              className="text-[17px] sm:text-[19px] text-[#1c1917] leading-[1.8] flex items-baseline gap-3"
-              style={{ fontFamily: SERIF_EDITORIAL_FONT }}
-            >
-              <span className="font-mono text-xs sm:text-sm font-semibold text-[#78716c] shrink-0">
-                0{idx + 1}
-              </span>
-              <span>{item.replace(/^\d+\.\s*/, "")}</span>
-            </li>
-          ))}
-        </ol>
-      );
-    }
-
-    // Parse inline markdown links: [text](url)
-    const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
-    const parts: React.ReactNode[] = [];
+  // Inline markdown parser: **bold**, *italic*, `code`, [link](url)
+  const renderInlineText = (text: string, keyPrefix: string): React.ReactNode => {
+    const tokenRegex = /(\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|\*\*([^*]+)\*\*|\*([^*]+)\*|`([^`]+)`)/g;
     let lastIndex = 0;
     let match: RegExpExecArray | null;
+    const parts: React.ReactNode[] = [];
 
-    while ((match = linkRegex.exec(text)) !== null) {
+    while ((match = tokenRegex.exec(text)) !== null) {
       if (match.index > lastIndex) {
         parts.push(text.substring(lastIndex, match.index));
       }
-      const label = match[1];
-      const url = match[2];
-      parts.push(
-        <a
-          key={`${pIdx}-${match.index}`}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[#2563eb] hover:text-[#1d4ed8] underline underline-offset-4 decoration-[#2563eb]/40 hover:decoration-[#2563eb] font-medium transition-colors"
-        >
-          {label}
-        </a>
-      );
-      lastIndex = linkRegex.lastIndex;
+      if (match[2] && match[3]) {
+        // Link [label](url)
+        parts.push(
+          <a
+            key={`${keyPrefix}-link-${match.index}`}
+            href={match[3]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#2563eb] hover:text-[#1d4ed8] underline underline-offset-4 decoration-[#2563eb]/40 hover:decoration-[#2563eb] font-medium transition-colors"
+          >
+            {match[2]}
+          </a>
+        );
+      } else if (match[4]) {
+        // Bold **text**
+        parts.push(
+          <strong key={`${keyPrefix}-b-${match.index}`} className="font-bold text-[#1c1917]">
+            {match[4]}
+          </strong>
+        );
+      } else if (match[5]) {
+        // Italic *text*
+        parts.push(
+          <em key={`${keyPrefix}-i-${match.index}`} className="italic">
+            {match[5]}
+          </em>
+        );
+      } else if (match[6]) {
+        // Code `text`
+        parts.push(
+          <code
+            key={`${keyPrefix}-c-${match.index}`}
+            className="px-1.5 py-0.5 rounded bg-stone-200/70 font-mono text-xs sm:text-sm text-[#1c1917]"
+          >
+            {match[6]}
+          </code>
+        );
+      }
+      lastIndex = tokenRegex.lastIndex;
     }
 
     if (lastIndex < text.length) {
       parts.push(text.substring(lastIndex));
     }
 
+    return parts.length > 0 ? parts : text;
+  };
+
+  type ContentBlock =
+    | { type: "prompt"; content: string }
+    | { type: "heading"; content: string }
+    | { type: "formula"; content: string }
+    | { type: "table"; rows: string[][] }
+    | { type: "bullet"; items: { text: string }[] }
+    | { type: "check"; items: { checked: boolean; text: string }[] }
+    | { type: "numbered"; items: { number?: string; text: string }[] }
+    | { type: "paragraph"; content: string };
+
+  const parseBlocks = (rawText: string): ContentBlock[] => {
+    const text = rawText.replace(/\r\n/g, "\n").trim();
+    if (!text) return [];
+
+    // Full prompt blocks
+    if (
+      text.startsWith("/ui-ux-pro-max") ||
+      text.startsWith("Based on the competitor breakdown")
+    ) {
+      return [{ type: "prompt", content: text }];
+    }
+
+    const rawLines = text.split("\n");
+    const blocks: ContentBlock[] = [];
+    let currentParagraphLines: string[] = [];
+    let currentListItems: any[] = [];
+    let currentListType: "bullet" | "check" | "numbered" | null = null;
+    let currentTableLines: string[][] = [];
+
+    const flushParagraph = () => {
+      if (currentParagraphLines.length > 0) {
+        const pText = currentParagraphLines.join(" ").trim();
+        if (pText) {
+          blocks.push({ type: "paragraph", content: pText });
+        }
+        currentParagraphLines = [];
+      }
+    };
+
+    const flushList = () => {
+      if (currentListItems.length > 0 && currentListType) {
+        if (currentListType === "bullet") {
+          blocks.push({ type: "bullet", items: [...currentListItems] });
+        } else if (currentListType === "check") {
+          blocks.push({ type: "check", items: [...currentListItems] });
+        } else if (currentListType === "numbered") {
+          blocks.push({ type: "numbered", items: [...currentListItems] });
+        }
+        currentListItems = [];
+        currentListType = null;
+      }
+    };
+
+    const flushTable = () => {
+      if (currentTableLines.length > 0) {
+        blocks.push({ type: "table", rows: [...currentTableLines] });
+        currentTableLines = [];
+      }
+    };
+
+    const flushAll = () => {
+      flushParagraph();
+      flushList();
+      flushTable();
+    };
+
+    for (let i = 0; i < rawLines.length; i++) {
+      const line = rawLines[i].trim();
+      if (!line) {
+        flushAll();
+        continue;
+      }
+
+      // Check if line is a table row (has tab or markdown |...|)
+      if (line.includes("\t") || (line.startsWith("|") && line.endsWith("|"))) {
+        flushParagraph();
+        flushList();
+        if (line.includes("\t")) {
+          currentTableLines.push(line.split("\t").map((c) => c.trim()));
+        } else {
+          if (!line.match(/^\|[\s\-:|]+\|$/)) {
+            currentTableLines.push(line.split("|").slice(1, -1).map((c) => c.trim()));
+          }
+        }
+        continue;
+      } else if (currentTableLines.length > 0) {
+        flushTable();
+      }
+
+      // Check if line is a prompt template start
+      if (line.startsWith("### Prompt:") || line.startsWith("Prompt:")) {
+        flushAll();
+        const promptLines = [line.replace(/^###\s*/, "")];
+        i++;
+        while (i < rawLines.length) {
+          promptLines.push(rawLines[i]);
+          i++;
+        }
+        blocks.push({ type: "prompt", content: promptLines.join("\n") });
+        break;
+      }
+
+      // Check if line is heading with ###
+      if (line.startsWith("### ")) {
+        flushAll();
+        blocks.push({ type: "heading", content: line.replace(/^###\s*/, "") });
+        continue;
+      }
+
+      // Section or takeaway heading pattern like "8.2 Know...", "Week 1: ...", "Phase 1: ...", "Step 1: ...", "Chapter Takeaway"
+      const isHeadingPattern =
+        line.match(/^\d+\.\d+\s+[A-Za-z]/) ||
+        line.match(/^(Week|Phase|Step|Rule|Stage)\s+\d+[:\s]/i) ||
+        line.match(/^Chapter Takeaway$/i);
+
+      if (isHeadingPattern) {
+        flushAll();
+        blocks.push({ type: "heading", content: line });
+        continue;
+      }
+
+      // Check if line is checklist item: - [ ] or - [x]
+      const checkMatch = line.match(/^-\s*\[([ xX])\]\s*(.*)/);
+      if (checkMatch) {
+        flushParagraph();
+        flushTable();
+        if (currentListType && currentListType !== "check") flushList();
+        currentListType = "check";
+        currentListItems.push({
+          checked: checkMatch[1].toLowerCase() === "x",
+          text: checkMatch[2],
+        });
+        continue;
+      }
+
+      // Check if line is bullet list: - or *
+      const bulletMatch = line.match(/^[-*]\s+(.*)/);
+      if (bulletMatch) {
+        flushParagraph();
+        flushTable();
+        if (currentListType && currentListType !== "bullet") flushList();
+        currentListType = "bullet";
+        currentListItems.push({ text: bulletMatch[1] });
+        continue;
+      }
+
+      // Check if line is numbered list item: 1. or 2.
+      const numberedMatch = line.match(/^(\d+)\.\s+(.*)/);
+      if (numberedMatch) {
+        flushParagraph();
+        flushTable();
+        if (currentListType && currentListType !== "numbered") flushList();
+        currentListType = "numbered";
+        currentListItems.push({ number: numberedMatch[1], text: numberedMatch[2] });
+        continue;
+      }
+
+      // Check if line is a mathematical formula
+      const isFormula =
+        line.startsWith("\\[") ||
+        line.endsWith("\\]") ||
+        line.includes("\\frac") ||
+        (line.includes(" = ") &&
+          (line.includes("÷") || line.includes("×") || line.includes("−") || line.includes("+") || line.includes("%")) &&
+          !line.endsWith("."));
+
+      if (isFormula) {
+        flushAll();
+        blocks.push({
+          type: "formula",
+          content: line.replace(/\\\[|\\\]/g, "").trim(),
+        });
+        continue;
+      }
+
+      if (currentListType) flushList();
+      if (currentTableLines.length > 0) flushTable();
+
+      currentParagraphLines.push(line);
+    }
+
+    flushAll();
+    return blocks;
+  };
+
+  const renderBlock = (block: ContentBlock, blockKey: string) => {
+    switch (block.type) {
+      case "prompt":
+        return (
+          <div
+            key={blockKey}
+            className="my-7 rounded-xl bg-[#1c1917] border border-stone-800 p-4 sm:p-5 relative group shadow-xs"
+          >
+            <div className="flex items-center justify-between pb-3 mb-3 border-b border-stone-800 text-xs text-stone-400 font-mono">
+              <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
+                <Terminal className="h-3.5 w-3.5" />
+                Prompt Template
+              </span>
+              <button
+                onClick={() => handleCopyCode(block.content, blockKey)}
+                className="px-2.5 py-1 rounded bg-stone-800 hover:bg-stone-700 text-stone-300 hover:text-white transition-colors cursor-pointer text-[11px]"
+              >
+                {copiedPrompt === blockKey ? "Copied!" : "Copy Prompt"}
+              </button>
+            </div>
+            <pre className="font-mono text-xs sm:text-[13.5px] text-stone-200 whitespace-pre-wrap leading-relaxed select-text">
+              {block.content}
+            </pre>
+          </div>
+        );
+
+      case "heading":
+        return (
+          <h3
+            key={blockKey}
+            className="text-xl sm:text-2xl font-bold text-[#1c1917] mt-10 mb-3 pt-2 tracking-tight"
+            style={{ fontFamily: SERIF_EDITORIAL_FONT }}
+          >
+            {renderInlineText(block.content, blockKey)}
+          </h3>
+        );
+
+      case "formula":
+        return (
+          <div
+            key={blockKey}
+            className="my-6 p-4 sm:p-5 rounded-xl bg-[#FAF8F5] border border-stone-300/80 font-mono text-sm sm:text-base text-stone-900 flex items-center justify-center text-center overflow-x-auto shadow-2xs font-semibold"
+          >
+            {renderInlineText(block.content, blockKey)}
+          </div>
+        );
+
+      case "table":
+        return (
+          <div
+            key={blockKey}
+            className="my-7 overflow-x-auto rounded-lg border border-[#e7e5e4] bg-white shadow-2xs"
+          >
+            <table className="w-full text-left text-sm sm:text-base border-collapse">
+              {block.rows.length > 0 && (
+                <thead>
+                  <tr className="bg-stone-100/90 border-b border-[#e7e5e4] text-[#1c1917] font-semibold text-xs sm:text-sm uppercase tracking-wider">
+                    {block.rows[0].map((cell, cIdx) => (
+                      <th key={cIdx} className="px-4 py-3 font-semibold text-[#1c1917]">
+                        {renderInlineText(cell, `${blockKey}-th-${cIdx}`)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+              )}
+              <tbody className="divide-y divide-[#e7e5e4]">
+                {block.rows.slice(1).map((row, rIdx) => (
+                  <tr
+                    key={rIdx}
+                    className={rIdx % 2 === 0 ? "bg-white" : "bg-stone-50/50"}
+                  >
+                    {row.map((cell, cIdx) => (
+                      <td
+                        key={cIdx}
+                        className="px-4 py-3 text-stone-800 text-[15px] sm:text-[16px] leading-relaxed"
+                      >
+                        {renderInlineText(cell, `${blockKey}-td-${rIdx}-${cIdx}`)}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+
+      case "bullet":
+        return (
+          <ul key={blockKey} className="my-6 space-y-2.5 pl-2 sm:pl-4">
+            {block.items.map((item, idx) => (
+              <li
+                key={idx}
+                className="text-[17px] sm:text-[19px] text-[#1c1917] leading-[1.8] flex items-baseline gap-3"
+                style={{ fontFamily: SERIF_EDITORIAL_FONT }}
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-[#1c1917] mt-3 shrink-0" />
+                <span>{renderInlineText(item.text, `${blockKey}-li-${idx}`)}</span>
+              </li>
+            ))}
+          </ul>
+        );
+
+      case "check":
+        return (
+          <ul key={blockKey} className="my-6 space-y-2.5 pl-2 sm:pl-4">
+            {block.items.map((item, idx) => (
+              <li
+                key={idx}
+                className="text-[17px] sm:text-[19px] text-[#1c1917] leading-[1.8] flex items-start gap-3"
+                style={{ fontFamily: SERIF_EDITORIAL_FONT }}
+              >
+                <span
+                  className={`inline-flex items-center justify-center w-5 h-5 rounded border ${
+                    item.checked
+                      ? "bg-emerald-600 border-emerald-600 text-white font-bold"
+                      : "border-stone-400 bg-white"
+                  } text-xs mt-1 shrink-0`}
+                >
+                  {item.checked ? "✓" : ""}
+                </span>
+                <span>{renderInlineText(item.text, `${blockKey}-chk-${idx}`)}</span>
+              </li>
+            ))}
+          </ul>
+        );
+
+      case "numbered":
+        return (
+          <ol key={blockKey} className="my-6 space-y-2.5 pl-2 sm:pl-4">
+            {block.items.map((item, idx) => (
+              <li
+                key={idx}
+                className="text-[17px] sm:text-[19px] text-[#1c1917] leading-[1.8] flex items-baseline gap-3"
+                style={{ fontFamily: SERIF_EDITORIAL_FONT }}
+              >
+                <span className="font-mono text-xs sm:text-sm font-semibold text-[#78716c] shrink-0">
+                  {item.number
+                    ? parseInt(item.number) < 10
+                      ? `0${item.number}`
+                      : item.number
+                    : `0${idx + 1}`}
+                </span>
+                <span>{renderInlineText(item.text, `${blockKey}-num-${idx}`)}</span>
+              </li>
+            ))}
+          </ol>
+        );
+
+      case "paragraph":
+      default:
+        return (
+          <p
+            key={blockKey}
+            className="my-6 sm:my-7 text-[17px] sm:text-[19px] text-[#292524] leading-[1.85] tracking-[-0.003em]"
+            style={{ fontFamily: SERIF_EDITORIAL_FONT }}
+          >
+            {renderInlineText(block.content, blockKey)}
+          </p>
+        );
+    }
+  };
+
+  const renderFormattedParagraph = (text: string, pIdx: number) => {
+    const blocks = parseBlocks(text);
+    if (blocks.length === 0) return null;
     return (
-      <p
-        key={pIdx}
-        className="my-6 sm:my-7 text-[17px] sm:text-[19px] text-[#292524] leading-[1.85] tracking-[-0.003em]"
-        style={{ fontFamily: SERIF_EDITORIAL_FONT }}
-      >
-        {parts.length > 0 ? parts : text}
-      </p>
+      <React.Fragment key={pIdx}>
+        {blocks.map((block, bIdx) => renderBlock(block, `p-${pIdx}-${bIdx}`))}
+      </React.Fragment>
     );
   };
 
