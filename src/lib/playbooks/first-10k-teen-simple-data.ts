@@ -8390,7 +8390,7 @@ export const FIRST_10K_TEEN_COURSE: Course = {
   targetGender: "for-all" as any,
   headline: "A practical, zero-bullshit roadmap for teens and young adults to bank their first $10,000 in net profit.",
   subheadline: "A practical, zero-bullshit roadmap for teens and young adults to bank their first $10,000 in net profit.",
-  description: "Forget complicated business models and expensive courses. This playbook details the exact steps a young entrepreneur takes to identify high-leverage local and digital opportunities, execute outreach with zero fear, close paying clients, and hit the life-changing $10,000 milestone.",
+  description: "Stop waiting for the perfect opportunity. Start building one.\n\nThe First $10,000 Playbook is your practical roadmap to turning a valuable skill into a real income-generating business. Discover four proven income engines, master the art of positioning, leverage, reach, and automation, and learn how to attract clients, deliver value, and scale your earnings.\n\nWith actionable strategies, real-world examples, practical worksheets, client templates, and a 90-day execution framework, this playbook takes you from your first idea to your first paying customers.\n\nBuild the skill. Create the offer. Earn the money. Keep the wealth. Your journey starts with the first $10,000.",
   price: 9,
   originalPrice: 15,
   currency: "USD",

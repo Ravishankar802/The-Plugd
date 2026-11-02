@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "how-to-make-your-first-10-000-as-a-teen-stupid-simple") {
+    return {
+      name: "Yash Thakur",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "the-only-investing-video-youll-ever-need-start-with-100") {
     return {
       name: "Jiho Kim",
@@ -269,6 +279,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "how-to-make-your-first-10-000-as-a-teen-stupid-simple") {
+    return [
+      {
+        id: "rev-1",
+        name: "Varun Choudhary",
+        avatar: "",
+        date: "October 10 2026",
+        rating: 5,
+        headline: "",
+        content: "This playbook breaks down the entire process of making money from your skills into simple, actionable steps. I especially loved the four income engines and the skill pyramid. Instead of just talking about success, it shows you exactly what to focus on and how to get started. A must-read for anyone serious about building an income stream!",
+        likes: 99,
+      },
+      {
+        id: "rev-2",
+        name: "Saurabh Tripathi",
+        avatar: "",
+        date: "October 14 2026",
+        rating: 5,
+        headline: "",
+        content: "What makes this playbook stand out is that it doesn't stop at earning money. It teaches you how to find clients, position your services, build systems, manage cash flow, and eventually turn your income into wealth. The practical templates and 90-day roadmap make it incredibly useful. Definitely worth reading!",
+        likes: 63,
+      },
+      {
+        id: "rev-3",
+        name: "Karthik Subramanian",
+        avatar: "",
+        date: "October 05 2026",
+        rating: 5,
+        headline: "",
+        content: "I used to feel overwhelmed by all the different ways to make money online. This playbook helped me understand the options and choose a direction instead of jumping between random business ideas. The explanations are straightforward, the examples are relatable, and the action steps make everything feel achievable. A genuinely valuable resource!",
+        likes: 59,
+      },
+      {
+        id: "rev-4",
+        name: "Arvind Krishnan",
+        avatar: "",
+        date: "October 22 2026",
+        rating: 5,
+        headline: "",
+        content: "My biggest takeaway was learning that earning money is only the beginning. Building a valuable skill, creating a repeatable business, managing what you earn, and investing for the future are all connected. This playbook brings those ideas together beautifully. It's the kind of guide you'll want to revisit as you grow.",
+        likes: 42,
+      },
+    ];
+  }
+
   if (slug === "the-only-investing-video-youll-ever-need-start-with-100") {
     return [
       {

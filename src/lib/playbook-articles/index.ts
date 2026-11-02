@@ -15,6 +15,7 @@ import { EIGHTEEN_YEARS_UGLY_ADVICE_ARTICLE } from "./eighteen-years-ugly-advice
 import { HOW_TO_ACTUALLY_LOCK_IN_ARTICLE } from "./how-to-actually-lock-in";
 import { SEVEN_PROVEN_WAYS_AI_ARTICLE } from "./seven-proven-ways-ai";
 import { THE_ONLY_INVESTING_GUIDE_ARTICLE } from "./the-only-investing-guide";
+import { FIRST_10K_TEEN_SIMPLE_ARTICLE } from "./first-10k-teen-simple";
 
 export * from "./types";
 
@@ -51,6 +52,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-38": SEVEN_PROVEN_WAYS_AI_ARTICLE,
   "the-only-investing-video-youll-ever-need-start-with-100": THE_ONLY_INVESTING_GUIDE_ARTICLE,
   "ai-businesses-37": THE_ONLY_INVESTING_GUIDE_ARTICLE,
+  "how-to-make-your-first-10-000-as-a-teen-stupid-simple": FIRST_10K_TEEN_SIMPLE_ARTICLE,
+  "ai-businesses-36": FIRST_10K_TEEN_SIMPLE_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {
