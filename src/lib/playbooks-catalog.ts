@@ -1086,7 +1086,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "slug": "i-built-a-business-with-ai-in-24-hours",
     "title": "I Built A Business With AI In 24 Hours",
     "headline": "A practical 24-hour sprint blueprint to validating an offer, launching a live brand, and securing your first paying customer using AI.",
-    "description": "Stop overthinking and spending months coding. Experience a real-time, zero-to-cash sprint using modern AI agents. Learn the RRT Validation Test, target avatar research, rapid web deployment with tools like Lovable, automated customer support setups, and live outbound closing.",
+    "description": "Building an AI-Powered Business from Zero is a hands-on playbook that shows you how to turn an idea into a structured, market-ready business. Explore proven frameworks for identifying demand, understanding your ideal customers, developing a brand, and creating websites that convert. Learn to use AI tools for research, content creation, advertising, and customer support while making smarter business decisions. Whether you're starting from scratch or refining an existing idea, this guide gives you a practical roadmap from concept to launch.",
     "categorySlug": "ai-businesses",
     "categoryName": "AI",
     "price": 9,

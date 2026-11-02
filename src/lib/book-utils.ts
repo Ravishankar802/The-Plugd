@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "i-built-a-business-with-ai-in-24-hours") {
+    return {
+      name: "Rishabh Jain",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "copy-paste-this-strategy-to-make-your-first-5-000-online") {
     return {
       name: "Liam Foster",
@@ -189,6 +199,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "i-built-a-business-with-ai-in-24-hours") {
+    return [
+      {
+        id: "rev-1",
+        name: "Nikhil",
+        avatar: "",
+        date: "September 09 2026",
+        rating: 5,
+        headline: "A really helpful playbook for anyone starting from zero. The step-by-step approach makes business building feel much less overwhelming. I particularly liked the practical AI prompts and branding strategies.",
+        content: "A really helpful playbook for anyone starting from zero. The step-by-step approach makes business building feel much less overwhelming. I particularly liked the practical AI prompts and branding strategies.",
+        likes: 88,
+      },
+      {
+        id: "rev-2",
+        name: "Vihaan",
+        avatar: "",
+        date: "September 19 2026",
+        rating: 5,
+        headline: "I always wanted to start something of my own but never knew where to begin. This playbook breaks everything down into manageable steps. The AI tool recommendations and customer research sections were especially helpful.",
+        content: "I always wanted to start something of my own but never knew where to begin. This playbook breaks everything down into manageable steps. The AI tool recommendations and customer research sections were especially helpful.",
+        likes: 65,
+      },
+      {
+        id: "rev-3",
+        name: "Sana Chatterjee",
+        avatar: "",
+        date: "October 08, 2026",
+        rating: 5,
+        headline: "Dense, highly technical yet completely accessible. The decision frameworks and worked examples make execution feel inevitable if you put in the hours. Highly recommend printing or keeping the reference charts close by.",
+        content: "Dense, highly technical yet completely accessible. The decision frameworks and worked examples make execution feel inevitable if you put in the hours. Highly recommend printing or keeping the reference charts close by.",
+        likes: 33,
+      },
+      {
+        id: "rev-4",
+        name: "Tara Srinivasan",
+        avatar: "",
+        date: "September 21 2026",
+        rating: 5,
+        headline: "A great resource for aspiring entrepreneurs. Everything is explained in a structured way, and the implementation checklist makes it easy to turn the concepts into action. Very useful and practical.",
+        content: "A great resource for aspiring entrepreneurs. Everything is explained in a structured way, and the implementation checklist makes it easy to turn the concepts into action. Very useful and practical.",
+        likes: 46,
+      },
+    ];
+  }
+
   if (slug === "copy-paste-this-strategy-to-make-your-first-5-000-online") {
     return [
       {
