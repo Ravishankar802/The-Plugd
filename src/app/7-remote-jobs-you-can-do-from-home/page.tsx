@@ -6,10 +6,10 @@ import { SEVEN_REMOTE_JOBS_DETAIL } from "@/lib/playbooks/seven-remote-jobs-from
 
 export const metadata: Metadata = {
   title: "7 Remote Jobs You Can Do From Home | Plugd",
-  description: "A practical guide to landing high-paying, location-independent remote roles with real utility and career leverage.",
+  description: "Explore seven practical work-from-home side hustles and discover how to turn your skills, interests, and laptop into income opportunities.",
   openGraph: {
     title: "7 Remote Jobs You Can Do From Home | Plugd",
-    description: "A practical guide to landing high-paying, location-independent remote roles with real utility and career leverage.",
+    description: "Explore seven practical work-from-home side hustles and discover how to turn your skills, interests, and laptop into income opportunities.",
   },
 };
 

@@ -5,6 +5,7 @@ import { HONEST_ADVICE_GET_RICH_ARTICLE } from "./honest-advice-get-rich";
 import { MASTER_HIGGSFIELD_TUTORIAL_ARTICLE } from "./master-higgsfield-tutorial";
 import { BEST_BUSINESS_BOOKS_ARTICLE } from "./best-business-books-7-billionaires";
 import { ASKED_AI_MAKE_MONEY_ARTICLE } from "./asked-ai-make-money";
+import { SEVEN_REMOTE_JOBS_ARTICLE } from "./seven-remote-jobs";
 
 export * from "./types";
 
@@ -21,6 +22,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-48": BEST_BUSINESS_BOOKS_ARTICLE,
   "i-asked-ai-to-make-me-as-much-money-as-possible": ASKED_AI_MAKE_MONEY_ARTICLE,
   "ai-businesses-47": ASKED_AI_MAKE_MONEY_ARTICLE,
+  "7-remote-jobs-you-can-do-from-home": SEVEN_REMOTE_JOBS_ARTICLE,
+  "ai-businesses-46": SEVEN_REMOTE_JOBS_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

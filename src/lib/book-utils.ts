@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "7-remote-jobs-you-can-do-from-home") {
+    return {
+      name: "Ronit Meitei",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "i-asked-ai-to-make-me-as-much-money-as-possible") {
     return {
       name: "Sneha Mishra",
@@ -169,6 +179,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "7-remote-jobs-you-can-do-from-home") {
+    return [
+      {
+        id: "rev-1",
+        name: "Varun Chawla",
+        avatar: "",
+        date: "September 15 2026",
+        rating: 5,
+        headline: "A genuinely helpful guide for anyone looking to earn from home. I loved how it breaks down different opportunities and explains exactly where to begin. The practical checklists make everything feel achievable.",
+        content: "A genuinely helpful guide for anyone looking to earn from home. I loved how it breaks down different opportunities and explains exactly where to begin. The practical checklists make everything feel achievable.",
+        likes: 83,
+      },
+      {
+        id: "rev-2",
+        name: "Sakshi Pillai",
+        avatar: "",
+        date: "September 07 2026",
+        rating: 5,
+        headline: "What I enjoyed most is the variety of side hustles covered. It helped me understand which options match my skills and available time. The step-by-step approach makes getting started much less overwhelming.",
+        content: "What I enjoyed most is the variety of side hustles covered. It helped me understand which options match my skills and available time. The step-by-step approach makes getting started much less overwhelming.",
+        likes: 60,
+      },
+      {
+        id: "rev-3",
+        name: "Ishita Menon",
+        avatar: "",
+        date: "September 23, 2026",
+        rating: 5,
+        headline: "An excellent resource for beginners! The explanations are straightforward, practical, and easy to follow. I especially liked the 30-day plan because it gives you a clear direction instead of leaving you wondering what to do next.",
+        content: "An excellent resource for beginners! The explanations are straightforward, practical, and easy to follow. I especially liked the 30-day plan because it gives you a clear direction instead of leaving you wondering what to do next.",
+        likes: 44,
+      },
+      {
+        id: "rev-4",
+        name: "Nikhil Sethi",
+        avatar: "",
+        date: "October 04 2026",
+        rating: 5,
+        headline: "This playbook offers a refreshing look at making money online without unrealistic promises. The different business models, practical tips, and launch checklists make it a valuable guide for anyone wanting to build an additional income stream.",
+        content: "This playbook offers a refreshing look at making money online without unrealistic promises. The different business models, practical tips, and launch checklists make it a valuable guide for anyone wanting to build an additional income stream.",
+        likes: 39,
+      },
+    ];
+  }
+
   if (slug === "i-asked-ai-to-make-me-as-much-money-as-possible") {
     return [
       {
