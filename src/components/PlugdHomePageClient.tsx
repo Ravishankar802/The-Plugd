@@ -12,12 +12,17 @@ import {
   List,
   Star,
   ArrowRight,
+  Terminal,
+  Shield,
+  Zap,
+  Activity,
+  Radio,
+  Cpu,
   Sparkles,
 } from "lucide-react";
-import Header from "@/components/Header";
-import PlaybookFeedCard from "@/components/PlaybookFeedCard";
 import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 import type { PlaybookSummary } from "@/lib/categories";
+import { getAuthorProfile, getAvatarBgColor } from "@/lib/book-utils";
 
 interface PlugdHomePageClientProps {
   playbooks: PlaybookSummary[];
@@ -36,6 +41,22 @@ export default function PlugdHomePageClient({
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>("all");
   const [sortOption, setSortOption] = useState<SortOption>("featured");
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
+
+  // Telemetry real-time clock for sci-fi terminal effect
+  const [timecode, setTimecode] = useState<string>("07:22:20 UTC");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const hours = String(now.getUTCHours()).padStart(2, "0");
+      const minutes = String(now.getUTCMinutes()).padStart(2, "0");
+      const seconds = String(now.getUTCSeconds()).padStart(2, "0");
+      setTimecode(`${hours}:${minutes}:${seconds} UTC`);
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Dropdown states
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
@@ -81,11 +102,9 @@ export default function PlugdHomePageClient({
   const filteredAndSortedPlaybooks = useMemo(() => {
     let result = [...playbooks];
 
-    // 1. Category filter: only 'all' or 'ai-businesses'
+    // 1. Category filter
     if (selectedCategory === "ai-businesses") {
-      result = result.filter(
-        (p) => p.categorySlug === "ai-businesses"
-      );
+      result = result.filter((p) => p.categorySlug === "ai-businesses");
     }
 
     // 2. Search filter
@@ -103,7 +122,6 @@ export default function PlugdHomePageClient({
     // 3. Sorting
     switch (sortOption) {
       case "newest":
-        // Sort newest first by publishedAt or reverse catalog order
         result.sort((a, b) => {
           if (a.publishedAt && b.publishedAt) {
             return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
@@ -112,7 +130,6 @@ export default function PlugdHomePageClient({
         });
         break;
       case "oldest":
-        // Sort oldest first
         result.sort((a, b) => {
           if (a.publishedAt && b.publishedAt) {
             return new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime();
@@ -125,7 +142,6 @@ export default function PlugdHomePageClient({
         break;
       case "featured":
       default:
-        // Default preserved catalog order
         break;
     }
 
@@ -133,52 +149,184 @@ export default function PlugdHomePageClient({
   }, [playbooks, selectedCategory, searchQuery, sortOption]);
 
   const sortLabels: Record<SortOption, string> = {
-    featured: "Featured",
-    newest: "Newest",
-    oldest: "Oldest",
-    az: "A–Z",
+    featured: "FEATURED_STREAM",
+    newest: "NEWEST_INCEPT",
+    oldest: "OLDEST_ARCHIVE",
+    az: "ALPHA_INDEX [A-Z]",
   };
 
   const categoryLabels: Record<CategoryFilter, string> = {
-    all: "All Categories",
-    "ai-businesses": "AI",
+    all: "ALL_FREQUENCIES",
+    "ai-businesses": "AI_SYSTEMS",
   };
 
   const countText = `${filteredAndSortedPlaybooks.length} ${
-    filteredAndSortedPlaybooks.length === 1 ? "Playbook" : "Playbooks"
-  }`;
+    filteredAndSortedPlaybooks.length === 1 ? "NODE" : "NODES"
+  } ACTIVE`;
 
   return (
-    <div className="min-h-screen bg-[#e7e4dd] text-[#1c1917] font-sans antialiased selection:bg-[#2563eb] selection:text-white flex flex-col justify-between">
-      <div>
-        {/* Sticky Header with "Plugd Playbooks" Branding */}
-        <Header
-          variant="platform"
-          hasAccess={hasAccess}
-          showSearch={false}
-        />
+    <div
+      className="min-h-screen text-[#f1f5f9] font-sans antialiased selection:bg-cyan-500 selection:text-black flex flex-col justify-between relative overflow-x-hidden"
+      style={{
+        backgroundColor: "#070a11",
+        backgroundImage: `
+          radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12), transparent 40%),
+          radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.08), transparent 35%),
+          linear-gradient(rgba(14, 165, 233, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(14, 165, 233, 0.04) 1px, transparent 1px)
+        `,
+        backgroundSize: "100% 100%, 100% 100%, 32px 32px, 32px 32px",
+      }}
+    >
+      {/* Ambient Cyber Scanline Overlay */}
+      <div
+        className="pointer-events-none fixed inset-0 z-40 opacity-[0.035]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg, #000, #000 1px, transparent 1px, transparent 2px)",
+          backgroundSize: "100% 2px",
+        }}
+      />
 
-        <main className="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-10 pt-6 sm:pt-8 pb-20">
+      <div>
+        {/* ========================================================= */}
+        {/* 1. SCI-FI RETRO CYBER TERMINAL HEADER */}
+        {/* ========================================================= */}
+        <header className="sticky top-0 z-50 w-full border-b border-cyan-500/25 bg-[#070a11]/90 backdrop-blur-md">
+          <div className="mx-auto flex h-[58px] w-full max-w-[1600px] items-center justify-between px-3 sm:px-6 gap-2 sm:gap-4">
+            {/* Left: Terminal System Lockup */}
+            <div className="flex items-center gap-3 shrink-0">
+              <Link
+                href="/"
+                className="group inline-flex items-center gap-2.5 text-cyan-300 transition-colors focus:outline-none"
+                aria-label="Plugd System Terminal"
+              >
+                <div className="relative flex items-center justify-center h-8 w-8 rounded-lg bg-cyan-950/80 border border-cyan-400/50 shadow-[0_0_12px_rgba(56,189,248,0.35)] group-hover:border-cyan-300 transition-colors">
+                  <Terminal className="h-4 w-4 text-cyan-400 group-hover:scale-110 transition-transform" />
+                  <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-cyan-400 animate-ping opacity-75" />
+                  <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-cyan-400" />
+                </div>
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-mono text-xs font-bold uppercase tracking-wider text-white group-hover:text-cyan-300 transition-colors">
+                      PLUGD // NEURAL_ARCHIVE
+                    </span>
+                    <span className="text-[10px] font-mono text-cyan-400/80 bg-cyan-950/60 border border-cyan-500/40 px-1 py-0.2 rounded">
+                      v2.6
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-mono text-slate-400 tracking-tight hidden sm:inline">
+                    CLASSIFIED OPERATIONAL PLAYBOOKS
+                  </span>
+                </div>
+              </Link>
+            </div>
+
+            {/* Center: Live Telemetry Ticker */}
+            <div className="hidden lg:flex items-center gap-3 font-mono text-[11px] text-slate-300 bg-[#0c121e]/80 border border-cyan-500/30 px-3.5 py-1.5 rounded-full shadow-[0_0_15px_rgba(14,165,233,0.15)]">
+              <div className="flex items-center gap-1.5 text-emerald-400">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>SYS_ONLINE</span>
+              </div>
+              <span className="text-cyan-500/50">|</span>
+              <div className="flex items-center gap-1 text-cyan-300">
+                <Activity className="h-3 w-3 text-cyan-400" />
+                <span>LATENCY: 14ms</span>
+              </div>
+              <span className="text-cyan-500/50">|</span>
+              <div className="flex items-center gap-1 text-indigo-300">
+                <Cpu className="h-3 w-3 text-indigo-400" />
+                <span>{timecode}</span>
+              </div>
+            </div>
+
+            {/* Right: Auth / System Access */}
+            <div className="flex items-center gap-2.5">
+              {hasAccess ? (
+                <div className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-500/50 px-3 py-1.5 rounded-lg shadow-[0_0_10px_rgba(52,211,153,0.25)]">
+                  <Shield className="h-3.5 w-3.5 text-emerald-400" />
+                  <span>ACCESS_AUTHORIZED</span>
+                </div>
+              ) : (
+                <Link
+                  href="/login"
+                  className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-cyan-300 bg-cyan-950/60 hover:bg-cyan-500 hover:text-black border border-cyan-400/50 hover:border-cyan-300 px-3.5 py-1.5 rounded-lg shadow-[0_0_12px_rgba(56,189,248,0.2)] hover:shadow-[0_0_18px_rgba(56,189,248,0.5)] transition-all cursor-pointer"
+                >
+                  <Zap className="h-3.5 w-3.5 text-cyan-400" />
+                  <span>[ LOGIN // PORTAL ]</span>
+                </Link>
+              )}
+            </div>
+          </div>
+        </header>
+
+        {/* ========================================================= */}
+        {/* 2. SCI-FI RETRO HERO / HUD DOSSIER BANNER */}
+        {/* ========================================================= */}
+        <section className="relative mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-10 pt-8 sm:pt-10 pb-6">
+          <div className="relative rounded-2xl border border-cyan-500/30 bg-[#0c121e]/85 p-5 sm:p-7 backdrop-blur-md shadow-[0_0_30px_rgba(14,165,233,0.12)] overflow-hidden">
+            {/* Reticle corner marks '+' */}
+            <span className="absolute -top-1 -left-1 text-cyan-400 font-mono text-sm select-none pointer-events-none">+</span>
+            <span className="absolute -top-1 -right-1 text-cyan-400 font-mono text-sm select-none pointer-events-none">+</span>
+            <span className="absolute -bottom-1 -left-1 text-cyan-400 font-mono text-sm select-none pointer-events-none">+</span>
+            <span className="absolute -bottom-1 -right-1 text-cyan-400 font-mono text-sm select-none pointer-events-none">+</span>
+
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+              <div className="space-y-2 max-w-3xl">
+                <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs tracking-widest uppercase">
+                  <Radio className="h-3.5 w-3.5 text-cyan-400 animate-pulse" />
+                  <span>SEC_LVL_01 // PUBLIC INTELLIGENCE DATABASE</span>
+                </div>
+                <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-100 to-indigo-300">
+                  OPERATIONAL PLAYBOOK DIRECTORY
+                </h1>
+                <p className="text-xs sm:text-sm font-mono text-slate-300 leading-relaxed">
+                  DIRECT EXECUTION BLUEPRINTS. HIGH-MARGIN AI ARCHITECTURES, VERIFIED UNIT ECONOMICS, AND PRODUCTION FRAMEWORKS BUILT FOR IMMEDIATE DEPLOYMENT.
+                </p>
+              </div>
+
+              {/* Sci-Fi Status Terminal Widget */}
+              <div className="shrink-0 flex flex-col gap-2 font-mono text-[11px] bg-[#070b13] border border-cyan-500/40 p-3 sm:p-4 rounded-xl shadow-inner min-w-[240px]">
+                <div className="flex items-center justify-between text-slate-400 border-b border-cyan-500/20 pb-1.5">
+                  <span>TERMINAL ID:</span>
+                  <span className="text-cyan-300 font-bold">PLUGD-SYS-9000</span>
+                </div>
+                <div className="flex items-center justify-between text-slate-400 border-b border-cyan-500/20 pb-1.5">
+                  <span>ACTIVE REPO:</span>
+                  <span className="text-indigo-300 font-bold">{playbooks.length} PROTOCOLS</span>
+                </div>
+                <div className="flex items-center justify-between text-slate-400">
+                  <span>TIER ACCESS:</span>
+                  <span className="text-emerald-400 font-bold">$3.00 LIFETIME</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <main className="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-10 pb-20">
           {/* ========================================================= */}
-          {/* 3. SEARCH & FILTER TOOLBAR (Inspired by Screenshot 3) */}
+          {/* 3. SCI-FI RETRO SEARCH & COMMAND TOOLBAR */}
           {/* ========================================================= */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 mb-5">
-            {/* Left: Search input */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 mb-6">
+            {/* Left: Sci-Fi Command Prompt Search */}
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#78716c] pointer-events-none" />
+              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 font-mono text-xs text-cyan-400 pointer-events-none select-none">
+                &gt;
+              </span>
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search Playbooks..."
-                className="w-full h-10 pl-9 pr-9 rounded-xl border border-[#d6d3d1] bg-white text-[13.5px] sm:text-sm text-[#1c1917] placeholder:text-[#a8a29e] focus:outline-none focus:border-[#1c1917] shadow-2xs transition-all"
-                aria-label="Search Playbooks"
+                placeholder="QUERY_PLAYBOOKS_..."
+                className="w-full h-10 pl-8 pr-9 rounded-xl border border-cyan-500/35 bg-[#0c121e]/90 font-mono text-xs text-cyan-200 placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 shadow-[0_0_15px_rgba(56,189,248,0.15)] transition-all"
+                aria-label="Query Playbooks"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#78716c] hover:text-[#1c1917] p-1 rounded-full hover:bg-[#ded9d0] transition-colors cursor-pointer"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-cyan-300 p-1 rounded hover:bg-cyan-950/50 transition-colors cursor-pointer"
                   title="Clear search"
                   aria-label="Clear search input"
                 >
@@ -187,8 +335,8 @@ export default function PlugdHomePageClient({
               )}
             </div>
 
-            {/* Right: Controls (Category Dropdown, Sort Dropdown, Grid/List Toggle) */}
-            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+            {/* Right: Controls (Category Frequency, Sort Option, Grid/List Mode) */}
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 font-mono text-xs">
               {/* Category Dropdown */}
               <div className="relative" ref={categoryDropdownRef}>
                 <button
@@ -197,21 +345,21 @@ export default function PlugdHomePageClient({
                     setIsCategoryOpen(!isCategoryOpen);
                     setIsSortOpen(false);
                   }}
-                  className="inline-flex items-center gap-2 h-10 px-3.5 rounded-xl border border-[#d6d3d1] bg-white text-xs sm:text-[13px] font-medium text-[#1c1917] hover:border-[#a8a29e] shadow-2xs transition-all cursor-pointer"
+                  className="inline-flex items-center gap-2 h-10 px-3.5 rounded-xl border border-cyan-500/35 bg-[#0c121e]/90 text-cyan-300 hover:border-cyan-400 shadow-[0_0_12px_rgba(56,189,248,0.1)] transition-all cursor-pointer"
                   aria-expanded={isCategoryOpen}
                   aria-haspopup="listbox"
                 >
-                  <span className="text-[#78716c]">Category:</span>
-                  <span className="font-semibold">{categoryLabels[selectedCategory]}</span>
+                  <span className="text-slate-400">CHANNEL:</span>
+                  <span className="font-bold text-white">{categoryLabels[selectedCategory]}</span>
                   <ChevronDown
-                    className={`h-3.5 w-3.5 text-[#78716c] transition-transform duration-150 ${
+                    className={`h-3.5 w-3.5 text-cyan-400 transition-transform duration-150 ${
                       isCategoryOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
 
                 {isCategoryOpen && (
-                  <div className="absolute right-0 sm:left-0 sm:right-auto mt-1.5 w-48 rounded-xl border border-[#dcd8d0] bg-white p-1.5 shadow-lg z-30 animate-in fade-in zoom-in-95 duration-100">
+                  <div className="absolute right-0 sm:left-0 sm:right-auto mt-1.5 w-52 rounded-xl border border-cyan-500/40 bg-[#0a0e17] p-1.5 shadow-[0_0_20px_rgba(14,165,233,0.3)] z-30 animate-in fade-in zoom-in-95 duration-100">
                     {(["all", "ai-businesses"] as CategoryFilter[]).map((catKey) => {
                       const isSelected = selectedCategory === catKey;
                       return (
@@ -222,16 +370,16 @@ export default function PlugdHomePageClient({
                             setSelectedCategory(catKey);
                             setIsCategoryOpen(false);
                           }}
-                          className={`w-full flex items-center justify-between px-3 py-2 text-xs sm:text-[13px] rounded-lg transition-colors cursor-pointer ${
+                          className={`w-full flex items-center justify-between px-3 py-2 text-xs rounded-lg transition-colors cursor-pointer ${
                             isSelected
-                              ? "bg-[#eff6ff] text-[#2563eb] font-semibold"
-                              : "text-[#44403c] hover:bg-[#f7f8fa]"
+                              ? "bg-cyan-950/80 text-cyan-300 font-bold border border-cyan-500/50"
+                              : "text-slate-300 hover:bg-[#111927] hover:text-white"
                           }`}
                           role="option"
                           aria-selected={isSelected}
                         >
                           <span>{categoryLabels[catKey]}</span>
-                          {isSelected && <Check className="h-3.5 w-3.5 text-[#2563eb]" />}
+                          {isSelected && <Check className="h-3.5 w-3.5 text-cyan-400" />}
                         </button>
                       );
                     })}
@@ -247,21 +395,21 @@ export default function PlugdHomePageClient({
                     setIsSortOpen(!isSortOpen);
                     setIsCategoryOpen(false);
                   }}
-                  className="inline-flex items-center gap-2 h-10 px-3.5 rounded-xl border border-[#d6d3d1] bg-white text-xs sm:text-[13px] font-medium text-[#1c1917] hover:border-[#a8a29e] shadow-2xs transition-all cursor-pointer"
+                  className="inline-flex items-center gap-2 h-10 px-3.5 rounded-xl border border-cyan-500/35 bg-[#0c121e]/90 text-cyan-300 hover:border-cyan-400 shadow-[0_0_12px_rgba(56,189,248,0.1)] transition-all cursor-pointer"
                   aria-expanded={isSortOpen}
                   aria-haspopup="listbox"
                 >
-                  <span className="text-[#78716c]">Sort:</span>
-                  <span className="font-semibold">{sortLabels[sortOption]}</span>
+                  <span className="text-slate-400">SORT:</span>
+                  <span className="font-bold text-white">{sortLabels[sortOption]}</span>
                   <ChevronDown
-                    className={`h-3.5 w-3.5 text-[#78716c] transition-transform duration-150 ${
+                    className={`h-3.5 w-3.5 text-cyan-400 transition-transform duration-150 ${
                       isSortOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
 
                 {isSortOpen && (
-                  <div className="absolute right-0 mt-1.5 w-44 rounded-xl border border-[#dcd8d0] bg-white p-1.5 shadow-lg z-30 animate-in fade-in zoom-in-95 duration-100">
+                  <div className="absolute right-0 mt-1.5 w-52 rounded-xl border border-cyan-500/40 bg-[#0a0e17] p-1.5 shadow-[0_0_20px_rgba(14,165,233,0.3)] z-30 animate-in fade-in zoom-in-95 duration-100">
                     {(["featured", "newest", "oldest", "az"] as SortOption[]).map((optKey) => {
                       const isSelected = sortOption === optKey;
                       return (
@@ -272,16 +420,16 @@ export default function PlugdHomePageClient({
                             setSortOption(optKey);
                             setIsSortOpen(false);
                           }}
-                          className={`w-full flex items-center justify-between px-3 py-2 text-xs sm:text-[13px] rounded-lg transition-colors cursor-pointer ${
+                          className={`w-full flex items-center justify-between px-3 py-2 text-xs rounded-lg transition-colors cursor-pointer ${
                             isSelected
-                              ? "bg-[#eff6ff] text-[#2563eb] font-semibold"
-                              : "text-[#44403c] hover:bg-[#f7f8fa]"
+                              ? "bg-cyan-950/80 text-cyan-300 font-bold border border-cyan-500/50"
+                              : "text-slate-300 hover:bg-[#111927] hover:text-white"
                           }`}
                           role="option"
                           aria-selected={isSelected}
                         >
                           <span>{sortLabels[optKey]}</span>
-                          {isSelected && <Check className="h-3.5 w-3.5 text-[#2563eb]" />}
+                          {isSelected && <Check className="h-3.5 w-3.5 text-cyan-400" />}
                         </button>
                       );
                     })}
@@ -289,22 +437,22 @@ export default function PlugdHomePageClient({
                 )}
               </div>
 
-              {/* Grid / List View Toggle */}
+              {/* Grid / List HUD Switcher */}
               <div
-                className="inline-flex items-center rounded-xl border border-[#d6d3d1] bg-white p-1 shadow-2xs"
+                className="inline-flex items-center rounded-xl border border-cyan-500/35 bg-[#0c121e]/90 p-1 shadow-[0_0_12px_rgba(56,189,248,0.1)]"
                 role="group"
-                aria-label="View layout switcher"
+                aria-label="HUD layout switcher"
               >
                 <button
                   type="button"
                   onClick={() => setViewMode("grid")}
                   className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                     viewMode === "grid"
-                      ? "bg-[#1c1917] text-white"
-                      : "text-[#78716c] hover:text-[#1c1917] hover:bg-[#f2eee3]"
+                      ? "bg-cyan-500 text-black font-bold shadow-[0_0_10px_rgba(56,189,248,0.5)]"
+                      : "text-slate-400 hover:text-cyan-300 hover:bg-cyan-950/40"
                   }`}
-                  title="Grid view"
-                  aria-label="Switch to grid view"
+                  title="Grid HUD"
+                  aria-label="Switch to grid HUD"
                   aria-pressed={viewMode === "grid"}
                 >
                   <LayoutGrid className="h-4 w-4" />
@@ -314,11 +462,11 @@ export default function PlugdHomePageClient({
                   onClick={() => setViewMode("list")}
                   className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                     viewMode === "list"
-                      ? "bg-[#1c1917] text-white"
-                      : "text-[#78716c] hover:text-[#1c1917] hover:bg-[#f2eee3]"
+                      ? "bg-cyan-500 text-black font-bold shadow-[0_0_10px_rgba(56,189,248,0.5)]"
+                      : "text-slate-400 hover:text-cyan-300 hover:bg-cyan-950/40"
                   }`}
-                  title="List view"
-                  aria-label="Switch to list view"
+                  title="List HUD"
+                  aria-label="Switch to list HUD"
                   aria-pressed={viewMode === "list"}
                 >
                   <List className="h-4 w-4" />
@@ -328,15 +476,15 @@ export default function PlugdHomePageClient({
           </div>
 
           {/* ========================================================= */}
-          {/* 4. RESULT COUNT & ACTIVE FILTER PILLS */}
+          {/* 4. TELEMETRY STATUS ROW & ACTIVE FILTER RESET */}
           {/* ========================================================= */}
-          <div className="flex items-center justify-between gap-4 mb-6 text-xs font-mono text-[#78716c]">
+          <div className="flex items-center justify-between gap-4 mb-6 font-mono text-xs text-slate-400 border-b border-cyan-500/20 pb-2">
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-[#44403c]">{countText}</span>
+              <span className="text-cyan-400 font-bold tracking-wider">[ {countText} ]</span>
               {searchQuery.trim() && (
                 <span>
-                  matching &ldquo;
-                  <strong className="text-[#1c1917] font-semibold">{searchQuery}</strong>
+                  QUERY: &ldquo;
+                  <strong className="text-white font-bold">{searchQuery}</strong>
                   &rdquo;
                 </span>
               )}
@@ -350,41 +498,42 @@ export default function PlugdHomePageClient({
                   setSelectedCategory("all");
                   setSortOption("featured");
                 }}
-                className="inline-flex items-center gap-1 text-[#2563eb] hover:text-[#1d4ed8] hover:underline cursor-pointer"
+                className="inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 hover:underline cursor-pointer tracking-wider"
               >
-                <span>Reset filters</span>
+                <span>[ RESET_FILTERS ]</span>
               </button>
             )}
           </div>
 
           {/* ========================================================= */}
-          {/* 5. DIRECTORY CONTENT (GRID OR LIST VIEW) */}
+          {/* 5. PLAYBOOK REPOSITORY (GRID OR LIST) */}
           {/* ========================================================= */}
           {filteredAndSortedPlaybooks.length > 0 ? (
             viewMode === "grid" ? (
-              /* GRID VIEW: Responsive 1-to-4 column grid */
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-7 items-stretch">
-                {filteredAndSortedPlaybooks.map((playbook) => (
+                {filteredAndSortedPlaybooks.map((playbook, idx) => (
                   <div key={playbook.id} className="flex flex-col h-full">
-                    <PlaybookFeedCard playbook={playbook} />
+                    <SciFiPlaybookCard playbook={playbook} index={idx} />
                   </div>
                 ))}
               </div>
             ) : (
-              /* LIST VIEW: Clean horizontal editorial rows */
               <div className="space-y-4">
-                {filteredAndSortedPlaybooks.map((playbook) => (
-                  <PlaybookListRow key={playbook.id} playbook={playbook} />
+                {filteredAndSortedPlaybooks.map((playbook, idx) => (
+                  <SciFiPlaybookListRow key={playbook.id} playbook={playbook} index={idx} />
                 ))}
               </div>
             )
           ) : (
-            /* EMPTY STATE */
-            <div className="py-24 text-center max-w-md mx-auto">
-              <p className="text-[15px] sm:text-base font-medium text-[#78716c]">
-                No Playbooks found matching &ldquo;{searchQuery}&rdquo;.
+            <div className="py-24 text-center max-w-md mx-auto rounded-2xl border border-cyan-500/30 bg-[#0c121e]/70 p-8 shadow-[0_0_25px_rgba(56,189,248,0.1)]">
+              <Terminal className="h-10 w-10 text-cyan-400 mx-auto mb-3 animate-pulse" />
+              <p className="font-mono text-sm text-cyan-300">
+                [ ERROR: ZERO_NODES_LOCATED ]
               </p>
-              <div className="mt-4 flex items-center justify-center gap-3">
+              <p className="mt-1 text-xs font-mono text-slate-400">
+                No matching data entries for query &ldquo;{searchQuery}&rdquo;.
+              </p>
+              <div className="mt-5 flex justify-center">
                 <button
                   type="button"
                   onClick={() => {
@@ -392,9 +541,9 @@ export default function PlugdHomePageClient({
                     setSelectedCategory("all");
                     setSortOption("featured");
                   }}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#d6d3d1] bg-white px-4 py-1.5 text-xs font-mono font-semibold text-[#1c1917] hover:border-[#1c1917] transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-cyan-400 bg-cyan-950/80 px-4 py-2 font-mono text-xs font-bold text-cyan-300 hover:bg-cyan-500 hover:text-black transition-all cursor-pointer shadow-[0_0_15px_rgba(56,189,248,0.25)]"
                 >
-                  Reset filters
+                  RESET_QUERY
                 </button>
               </div>
             </div>
@@ -403,25 +552,25 @@ export default function PlugdHomePageClient({
       </div>
 
       {/* ========================================================= */}
-      {/* 6. MINIMAL EDITORIAL FOOTER */}
+      {/* 6. SCI-FI RETRO TERMINAL FOOTER */}
       {/* ========================================================= */}
-      <footer className="border-t border-[#dcd8d0] bg-[#ded9d0] py-8 text-xs text-[#57534e]">
+      <footer className="border-t border-cyan-500/25 bg-[#05070c] py-8 font-mono text-xs text-slate-400">
         <div className="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-[#1c1917]">Plugd Playbooks</span>
-            <span>·</span>
-            <span>Outcome-focused Playbooks</span>
+            <span className="font-bold text-cyan-400">PLUGD // NEURAL_TERMINAL</span>
+            <span className="text-slate-600">·</span>
+            <span className="text-slate-400">DATA_TRANSMISSION: SECURED</span>
           </div>
 
-          <div className="flex items-center gap-6">
-            <Link href="/terms-of-service" className="hover:text-[#1c1917] transition-colors">
-              Terms
+          <div className="flex items-center gap-6 text-slate-400">
+            <Link href="/terms-of-service" className="hover:text-cyan-300 transition-colors">
+              [ TERMS ]
             </Link>
-            <Link href="/privacy-policy" className="hover:text-[#1c1917] transition-colors">
-              Privacy
+            <Link href="/privacy-policy" className="hover:text-cyan-300 transition-colors">
+              [ PRIVACY ]
             </Link>
-            <a href="mailto:ravx003@gmail.com" className="hover:text-[#1c1917] transition-colors">
-              Contact
+            <a href="mailto:ravx003@gmail.com" className="hover:text-cyan-300 transition-colors">
+              [ CONTACT_HQ ]
             </a>
           </div>
         </div>
@@ -431,88 +580,317 @@ export default function PlugdHomePageClient({
 }
 
 /**
- * Editorial List Row Component for List View mode
+ * Sci-Fi Retro Playbook Card Component
+ * Preserves the exact original thumbnail image while transforming the chassis,
+ * reticle brackets, dossier metadata, corner crosses, and glowing cyber CTA button.
  */
-function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
+function SciFiPlaybookCard({
+  playbook,
+  index,
+}: {
+  playbook: PlaybookSummary;
+  index: number;
+}) {
+  const authorName =
+    (playbook as any).authorName ||
+    getAuthorProfile(playbook.categoryName, playbook.slug).name;
   const formattedPrice = playbook.price ? Number(playbook.price).toFixed(2) : "3.00";
+  const formattedOriginalPrice = (
+    playbook.originalPrice ? Number(playbook.originalPrice) : 9
+  ).toFixed(2);
+
+  const nodeIndex = String(index + 1).padStart(2, "0");
 
   return (
-    <div className="group relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 p-4 sm:p-5 rounded-2xl bg-white hover:bg-[#f7f8fa] border border-[#dcd8d0] hover:border-[#c7c4c0] shadow-[0_1px_3px_rgba(28,25,23,0.04)] hover:shadow-md transition-all duration-200">
-      <div className="flex items-start sm:items-center gap-4 sm:gap-5 flex-1 min-w-0">
-        {/* Thumbnail Preview */}
-        <Link
-          href={playbook.href}
-          className="relative aspect-video w-32 sm:w-44 shrink-0 overflow-hidden rounded-xl bg-[#eeebe5] border border-[#e5e1d8] focus:outline-none"
-          tabIndex={-1}
-          aria-hidden="true"
-        >
+    <div className="group relative flex flex-col justify-between h-full w-full rounded-xl bg-[#090e17]/95 border border-cyan-500/30 hover:border-cyan-300 p-3 sm:p-3.5 shadow-[0_0_15px_rgba(14,165,233,0.08)] hover:shadow-[0_0_25px_rgba(56,189,248,0.25)] transition-all duration-200 ease-out">
+      {/* 4 Corner Crosshairs '+' */}
+      <span className="absolute -top-1.5 -left-1.5 text-cyan-400 font-mono text-xs select-none pointer-events-none">+</span>
+      <span className="absolute -top-1.5 -right-1.5 text-cyan-400 font-mono text-xs select-none pointer-events-none">+</span>
+      <span className="absolute -bottom-1.5 -left-1.5 text-cyan-400 font-mono text-xs select-none pointer-events-none">+</span>
+      <span className="absolute -bottom-1.5 -right-1.5 text-cyan-400 font-mono text-xs select-none pointer-events-none">+</span>
+
+      {/* Top Chassis HUD Banner */}
+      <div className="flex items-center justify-between pb-2 mb-2 border-b border-cyan-500/20 font-mono text-[10px] text-slate-400">
+        <span className="text-cyan-400 font-bold tracking-wider">NODE // PK-{nodeIndex}</span>
+        <div className="flex items-center gap-1.5 text-cyan-300">
+          <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+          <span className="tracking-widest">LIVE_FEED</span>
+        </div>
+      </div>
+
+      {/* Clickable Card Body */}
+      <Link
+        href={playbook.href}
+        className="flex flex-col flex-1 w-full focus:outline-none cursor-pointer"
+        aria-label={`${playbook.title} — ${playbook.categoryName} Playbook`}
+      >
+        {/* 16:9 Thumbnail Viewport with Tactical Reticle Corners */}
+        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#04060a] border border-cyan-500/35 shrink-0 group-hover:border-cyan-400 transition-colors">
+          {/* Tactical Corner Reticle Brackets ┌ ┐ └ ┘ */}
+          <div className="pointer-events-none absolute inset-0 z-20 p-1.5 flex flex-col justify-between">
+            <div className="flex justify-between">
+              <span className="text-cyan-400 font-mono text-xs leading-none drop-shadow">┌</span>
+              <span className="text-cyan-400 font-mono text-xs leading-none drop-shadow">┐</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-cyan-400 font-mono text-xs leading-none drop-shadow">└</span>
+              <span className="text-cyan-400 font-mono text-xs leading-none drop-shadow">┘</span>
+            </div>
+          </div>
+
+          {/* Tactical Viewport Overlay Badges */}
+          <div className="pointer-events-none absolute top-2 left-2 z-20">
+            <span className="inline-flex items-center gap-1 font-mono text-[9px] font-bold text-cyan-300 bg-black/80 border border-cyan-500/40 px-1.5 py-0.5 rounded shadow">
+              1080P_DATA
+            </span>
+          </div>
+
+          {playbook.hoursOfMaterial && (
+            <div className="pointer-events-none absolute bottom-2 right-2 z-20">
+              <span className="inline-flex items-center gap-1 font-mono text-[9px] font-bold text-slate-200 bg-black/80 border border-cyan-500/40 px-1.5 py-0.5 rounded shadow">
+                {playbook.hoursOfMaterial}
+              </span>
+            </div>
+          )}
+
+          {/* Exact Original Thumbnail Image */}
           {playbook.thumbnail ? (
             <Image
               src={playbook.thumbnail}
               alt={playbook.title}
               fill
-              className="object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
+              priority
             />
           ) : (
-            <div className="h-full w-full bg-[#eeebe5]" />
+            <div className="h-full w-full bg-[#070b13]" />
+          )}
+        </div>
+
+        {/* Text & Dossier Content */}
+        <div className="mt-3 flex flex-col flex-1 w-full">
+          {/* Operator Dossier Row */}
+          <div className="flex items-center gap-2 mb-1.5">
+            <div
+              className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold text-white shadow-xs shrink-0 ring-1 ring-cyan-400/50"
+              style={{ backgroundColor: getAvatarBgColor(authorName) }}
+            >
+              {authorName.charAt(0)}
+            </div>
+            <div className="font-mono text-xs truncate w-full">
+              <span className="text-cyan-400/80 mr-1">OPERATOR //</span>
+              <span className="text-slate-200 font-semibold">{authorName}</span>
+            </div>
+          </div>
+
+          {/* Title */}
+          <h3 className="text-[14px] sm:text-[14.5px] font-bold text-white leading-[1.35] line-clamp-2 h-[38px] sm:h-[40px] group-hover:text-cyan-300 transition-colors">
+            {playbook.title}
+          </h3>
+
+          {/* Metadata & Telemetry Row */}
+          <div className="mt-2.5 flex items-center gap-1.5 font-mono text-[11px] h-[22px] overflow-hidden w-full">
+            {playbook.badge && (
+              <span className="inline-flex items-center rounded bg-cyan-950/80 px-1.5 py-0.5 text-[10px] font-bold text-cyan-300 border border-cyan-500/40 shrink-0">
+                {playbook.badge}
+              </span>
+            )}
+            {playbook.rating && (
+              <div className="inline-flex items-center gap-1 rounded bg-[#070b13] border border-cyan-500/30 px-1.5 py-0.5 text-[10px] font-bold text-amber-400 shrink-0">
+                <Star className="h-2.5 w-2.5 fill-amber-400 text-amber-400" />
+                <span>{playbook.rating}</span>
+              </div>
+            )}
+            {playbook.ratingCount && (
+              <div className="inline-flex items-center rounded bg-[#070b13] border border-cyan-500/30 px-1.5 py-0.5 text-[10px] text-slate-400 shrink-0">
+                <span>
+                  [
+                  {typeof playbook.ratingCount === "number"
+                    ? playbook.ratingCount.toLocaleString()
+                    : playbook.ratingCount}
+                  ]
+                </span>
+              </div>
+            )}
+            {playbook.modulesCount > 0 && (
+              <span className="text-slate-500 text-[10px] hidden sm:inline">
+                {playbook.modulesCount}M·{playbook.lessonsCount}L
+              </span>
+            )}
+          </div>
+        </div>
+      </Link>
+
+      {/* Horizontal Line Divider with Center Reticle Marker */}
+      <div className="-mx-3 sm:-mx-3.5 border-t border-cyan-500/25 mt-3.5 pt-3 px-3 sm:px-3.5 flex items-center justify-between gap-2 shrink-0 relative">
+        <span className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-4 h-[5px] bg-cyan-500/30 rounded-xs" />
+
+        {/* Left: Price Readout */}
+        <div className="font-mono">
+          {playbook.badge === "Coming Soon" ? (
+            <div className="flex items-center gap-1">
+              <span className="inline-flex items-center rounded bg-slate-900 px-1.5 py-0.5 text-[11px] font-bold text-slate-400 border border-slate-700">
+                IN_PROD
+              </span>
+            </div>
+          ) : IS_REVIEW_PHASE_FREE_ACCESS ? (
+            <div className="flex items-baseline gap-1">
+              <span className="text-sm font-bold text-emerald-400">
+                [ FREE_ACCESS ]
+              </span>
+            </div>
+          ) : (
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-sm font-bold text-cyan-300">
+                ${formattedPrice}
+              </span>
+              <span className="text-[10px] text-slate-500 line-through">
+                ${formattedOriginalPrice}
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* Right: Sci-Fi HUD Action Button */}
+        <div>
+          {playbook.badge === "Coming Soon" ? (
+            <Link
+              href={playbook.href}
+              className="inline-flex items-center justify-center gap-1 font-mono text-[11px] font-bold text-slate-400 bg-slate-900 border border-slate-700 px-3 py-1.5 rounded transition-colors"
+            >
+              <span>[ LOCKED ]</span>
+            </Link>
+          ) : IS_REVIEW_PHASE_FREE_ACCESS ? (
+            <Link
+              href={playbook.href}
+              className="inline-flex items-center justify-center gap-1.5 font-mono text-[11px] font-bold text-black bg-cyan-400 hover:bg-cyan-300 px-3 py-1.5 rounded shadow-[0_0_12px_rgba(56,189,248,0.5)] transition-all cursor-pointer"
+            >
+              <span>ACCESS</span>
+              <ArrowRight className="h-3 w-3" />
+            </Link>
+          ) : (
+            <Link
+              href={playbook.href}
+              className="inline-flex items-center justify-center gap-1.5 font-mono text-[11px] font-bold text-cyan-300 bg-cyan-950/60 hover:bg-cyan-400 hover:text-black border border-cyan-400/60 px-3 py-1.5 rounded shadow-[0_0_10px_rgba(56,189,248,0.2)] hover:shadow-[0_0_18px_rgba(56,189,248,0.6)] transition-all cursor-pointer"
+            >
+              <span>[ ACCESS → ]</span>
+            </Link>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Sci-Fi Retro List Row Component for List View Mode
+ */
+function SciFiPlaybookListRow({
+  playbook,
+  index,
+}: {
+  playbook: PlaybookSummary;
+  index: number;
+}) {
+  const authorName =
+    (playbook as any).authorName ||
+    getAuthorProfile(playbook.categoryName, playbook.slug).name;
+  const formattedPrice = playbook.price ? Number(playbook.price).toFixed(2) : "3.00";
+  const formattedOriginalPrice = (
+    playbook.originalPrice ? Number(playbook.originalPrice) : 9
+  ).toFixed(2);
+  const nodeIndex = String(index + 1).padStart(2, "0");
+
+  return (
+    <div className="group relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-xl bg-[#090e17]/95 border border-cyan-500/30 hover:border-cyan-300 shadow-[0_0_15px_rgba(14,165,233,0.08)] hover:shadow-[0_0_25px_rgba(56,189,248,0.2)] transition-all duration-200">
+      {/* 4 Corner Crosshairs */}
+      <span className="absolute -top-1 -left-1 text-cyan-400 font-mono text-xs pointer-events-none">+</span>
+      <span className="absolute -top-1 -right-1 text-cyan-400 font-mono text-xs pointer-events-none">+</span>
+      <span className="absolute -bottom-1 -left-1 text-cyan-400 font-mono text-xs pointer-events-none">+</span>
+      <span className="absolute -bottom-1 -right-1 text-cyan-400 font-mono text-xs pointer-events-none">+</span>
+
+      <div className="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+        {/* Thumbnail Preview with Corner Reticles */}
+        <Link
+          href={playbook.href}
+          className="relative aspect-video w-32 sm:w-44 shrink-0 overflow-hidden rounded-lg bg-[#04060a] border border-cyan-500/35 focus:outline-none"
+          tabIndex={-1}
+          aria-hidden="true"
+        >
+          <div className="pointer-events-none absolute inset-0 z-20 p-1 flex flex-col justify-between">
+            <div className="flex justify-between">
+              <span className="text-cyan-400 font-mono text-[10px] leading-none">┌</span>
+              <span className="text-cyan-400 font-mono text-[10px] leading-none">┐</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-cyan-400 font-mono text-[10px] leading-none">└</span>
+              <span className="text-cyan-400 font-mono text-[10px] leading-none">┘</span>
+            </div>
+          </div>
+          {playbook.thumbnail ? (
+            <Image
+              src={playbook.thumbnail}
+              alt={playbook.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform"
+            />
+          ) : (
+            <div className="h-full w-full bg-[#070b13]" />
           )}
         </Link>
 
-        {/* Text & Metadata */}
+        {/* Text & Dossier Info */}
         <div className="flex-1 min-w-0">
-          <div className="flex flex-wrap items-center gap-2 mb-1">
-            <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[#eff6ff] text-[11px] font-semibold text-[#1d4ed8]">
-              {playbook.categoryName}
-            </span>
+          <div className="flex flex-wrap items-center gap-2 mb-1.5 font-mono text-[10px]">
+            <span className="text-cyan-400 font-bold">NODE // PK-{nodeIndex}</span>
+            <span className="text-slate-600">·</span>
+            <span className="text-slate-400">OPERATOR: {authorName}</span>
             {playbook.badge && (
-              <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[#f5f5f4] text-[11px] font-bold text-[#44403c] border border-[#e7e5e4]">
+              <span className="rounded bg-cyan-950/80 px-1.5 py-0.5 font-bold text-cyan-300 border border-cyan-500/40">
                 {playbook.badge}
               </span>
             )}
           </div>
 
           <Link href={playbook.href} className="focus:outline-none block">
-            <h3 className="text-base sm:text-lg font-semibold text-[#1c1917] leading-snug group-hover:text-[#2563eb] transition-colors line-clamp-4">
+            <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-2">
               {playbook.title}
             </h3>
           </Link>
 
-          <p className="mt-1 text-xs sm:text-[13px] text-[#57534e] line-clamp-2 max-w-3xl">
+          <p className="mt-1 text-xs font-mono text-slate-400 line-clamp-1 max-w-2xl">
             {playbook.description}
           </p>
 
-          <div className="mt-2.5 flex items-center flex-wrap gap-2 sm:gap-3 text-xs text-[#78716c]">
+          <div className="mt-2 flex items-center flex-wrap gap-2 sm:gap-3 font-mono text-[11px] text-slate-400">
             {playbook.rating && (
-              <div className="inline-flex items-center gap-1 font-semibold text-[#1c1917]">
-                <Star className="h-3 w-3 fill-[#d97706] text-[#d97706]" />
+              <div className="inline-flex items-center gap-1 font-bold text-amber-400">
+                <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
                 <span>{playbook.rating}</span>
                 {playbook.ratingCount && (
-                  <span className="text-[#78716c] font-normal">
-                    ({typeof playbook.ratingCount === "number"
+                  <span className="text-slate-500 font-normal">
+                    (
+                    {typeof playbook.ratingCount === "number"
                       ? playbook.ratingCount.toLocaleString()
-                      : playbook.ratingCount})
+                      : playbook.ratingCount}
+                    )
                   </span>
                 )}
               </div>
             )}
             {playbook.modulesCount > 0 && (
               <>
-                <span className="text-[#d6d3d1]">·</span>
-                <span>{playbook.modulesCount} modules</span>
-                <span className="text-[#d6d3d1]">·</span>
-                <span>{playbook.lessonsCount} lessons</span>
-                {playbook.slidesCount && (
-                  <>
-                    <span className="text-[#d6d3d1]">·</span>
-                    <span>{playbook.slidesCount} slides</span>
-                  </>
-                )}
+                <span className="text-slate-600">·</span>
+                <span>{playbook.modulesCount} MODS</span>
+                <span className="text-slate-600">·</span>
+                <span>{playbook.lessonsCount} LESSONS</span>
               </>
             )}
             {playbook.hoursOfMaterial && (
               <>
-                <span className="text-[#d6d3d1]">·</span>
-                <span>{playbook.hoursOfMaterial}</span>
+                <span className="text-slate-600">·</span>
+                <span className="text-cyan-400">{playbook.hoursOfMaterial}</span>
               </>
             )}
           </div>
@@ -520,68 +898,27 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
       </div>
 
       {/* Pricing & CTA Button */}
-      <div className="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-3 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-[#f0eee9]">
-        <div className="text-right">
-          {playbook.badge === "Coming Soon" ? (
-            <div className="flex items-center gap-1.5">
-              <span className="inline-flex items-center rounded-md bg-stone-100 px-2 py-0.5 text-xs font-bold text-stone-600 border border-stone-200">
-                Coming Soon
-              </span>
-              <span className="text-[11px] text-[#78716c] font-medium hidden xs:inline">
-                In Production
-              </span>
-            </div>
-          ) : IS_REVIEW_PHASE_FREE_ACCESS ? (
-            <div className="flex items-center gap-1.5">
-              <span className="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-200">
-                Free
-              </span>
-              <span className="text-[11px] text-[#78716c] font-medium hidden xs:inline">
-                Review Access
-              </span>
-            </div>
+      <div className="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-3 shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-cyan-500/20 font-mono">
+        <div>
+          {IS_REVIEW_PHASE_FREE_ACCESS ? (
+            <span className="text-xs font-bold text-emerald-400">[ FREE ]</span>
           ) : (
             <div className="flex items-baseline gap-1.5">
-              <span className="text-base sm:text-lg font-bold text-[#1c1917]">
-                ${formattedPrice}
-              </span>
-              <span className="text-xs text-[#a8a29e] line-through">
-                ${(playbook.originalPrice ?? 9).toFixed(2)}
+              <span className="text-base font-bold text-cyan-300">${formattedPrice}</span>
+              <span className="text-[10px] text-slate-500 line-through">
+                ${formattedOriginalPrice}
               </span>
             </div>
           )}
         </div>
 
-        {playbook.badge === "Coming Soon" ? (
-          <Link
-            href={playbook.href}
-            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-700 px-4 py-2 text-xs font-semibold shadow-xs transition-colors"
-          >
-            <span>Coming Soon</span>
-          </Link>
-        ) : IS_REVIEW_PHASE_FREE_ACCESS ? (
-          <Link
-            href={playbook.href}
-            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-4 py-2 text-xs font-semibold shadow-xs transition-colors"
-          >
-            <span>Start Reading</span>
-            <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
-        ) : (
-          <Link
-            href={playbook.href}
-            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#1c1917] hover:bg-[#2563eb] text-white px-4 py-2 text-xs font-semibold shadow-xs transition-colors"
-          >
-            <span>Add to cart</span>
-            <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
-        )}
+        <Link
+          href={playbook.href}
+          className="inline-flex items-center justify-center gap-1.5 font-mono text-xs font-bold text-cyan-300 bg-cyan-950/60 hover:bg-cyan-400 hover:text-black border border-cyan-400/60 px-4 py-1.5 rounded shadow-[0_0_10px_rgba(56,189,248,0.2)] hover:shadow-[0_0_18px_rgba(56,189,248,0.6)] transition-all cursor-pointer"
+        >
+          <span>[ ACCESS_DATA → ]</span>
+        </Link>
       </div>
     </div>
   );
 }
-
-/**
- * Original decorative animated geometric orbit emblem.
- * Uses lightweight pure SVG with slow gentle rotation and prefers-reduced-motion fallback.
- */
