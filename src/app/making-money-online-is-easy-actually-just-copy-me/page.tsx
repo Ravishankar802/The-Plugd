@@ -6,10 +6,10 @@ import { MAKING_MONEY_ONLINE_EASY_DETAIL } from "@/lib/playbooks/making-money-on
 
 export const metadata: Metadata = {
   title: "Making Money Online is Easy, Actually (Just Copy Me) | Plugd",
-  description: "A veteran entrepreneur's simplified blueprint to stripping away noise and generating consistent online cash flow.",
+  description: "Stop chasing online business ideas. Start building one that actually works.",
   openGraph: {
     title: "Making Money Online is Easy, Actually (Just Copy Me) | Plugd",
-    description: "A veteran entrepreneur's simplified blueprint to stripping away noise and generating consistent online cash flow.",
+    description: "Stop chasing online business ideas. Start building one that actually works.",
   },
 };
 

@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "making-money-online-is-easy-actually-just-copy-me") {
+    return {
+      name: "Naveen Shetty",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "how-to-make-your-first-10-000-as-a-teen-stupid-simple") {
     return {
       name: "Yash Thakur",
@@ -279,6 +289,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "making-money-online-is-easy-actually-just-copy-me") {
+    return [
+      {
+        id: "rev-1",
+        name: "Praveen Gowda",
+        avatar: "",
+        date: "August 19 2026",
+        rating: 5,
+        headline: "",
+        content: "This playbook breaks down the entire online business journey in a way that's easy to understand and actually follow. I especially loved the four-stage framework because it helped me identify where I was going wrong and what I needed to focus on next. Definitely worth reading!",
+        likes: 82,
+      },
+      {
+        id: "rev-2",
+        name: "Abhinav Bhat",
+        avatar: "",
+        date: "September 14 2026",
+        rating: 5,
+        headline: "",
+        content: "I've consumed so much online business content, but this playbook brings everything together in one place. From choosing a business model to understanding customers, creating content, and reinvesting profits, it covers the bigger picture. Practical, straightforward, and genuinely valuable.",
+        likes: 78,
+      },
+      {
+        id: "rev-3",
+        name: "Harish Murthy",
+        avatar: "",
+        date: "October 15 2026",
+        rating: 5,
+        headline: "",
+        content: "What I liked most is that it doesn't make starting an online business sound effortless or promise overnight success. It explains the process, highlights common mistakes, and gives you actionable checklists and templates. A great resource for anyone serious about building an online income stream.",
+        likes: 67,
+      },
+      {
+        id: "rev-4",
+        name: "Shubham Jaiswal",
+        avatar: "",
+        date: "October 14 2026",
+        rating: 5,
+        headline: "",
+        content: "The section on Shiny Object Syndrome really hit home! I used to jump between different business ideas without giving any of them enough attention. This playbook helped me understand the importance of consistency, customer research, and making decisions based on evidence. It's a fantastic guide for anyone ready to stop overthinking and start executing.",
+        likes: 49,
+      },
+    ];
+  }
+
   if (slug === "how-to-make-your-first-10-000-as-a-teen-stupid-simple") {
     return [
       {
