@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "want-to-made-god-tier-money-use-this-sales-tactic-made-me-10m") {
+    return {
+      name: "Alex Turner",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "there-are-only-3-types-of-profitable-businesses-pick-one") {
     return {
       name: "Elias Andersen",
@@ -219,6 +229,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "want-to-made-god-tier-money-use-this-sales-tactic-made-me-10m") {
+    return [
+      {
+        id: "rev-1",
+        name: "Theo Martin",
+        avatar: "",
+        date: "September 10 2026",
+        rating: 5,
+        headline: "This playbook completely changed how I approach sales conversations. Instead of jumping straight into pitching, I now focus on understanding the customer's actual challenges. The discovery questions and call structure are especially useful. A great resource for anyone looking to improve their sales process.",
+        content: "This playbook completely changed how I approach sales conversations. Instead of jumping straight into pitching, I now focus on understanding the customer's actual challenges. The discovery questions and call structure are especially useful. A great resource for anyone looking to improve their sales process.",
+        likes: 79,
+      },
+      {
+        id: "rev-2",
+        name: "Dylan Hayes",
+        avatar: "",
+        date: "September 05 2026",
+        rating: 5,
+        headline: "I really appreciate how this playbook breaks down the entire sales journey into manageable steps. The sections on qualifying leads, demonstrating value, and handling objections are particularly helpful. It provides a clear framework that makes sales conversations more natural, focused, and productive.",
+        content: "I really appreciate how this playbook breaks down the entire sales journey into manageable steps. The sections on qualifying leads, demonstrating value, and handling objections are particularly helpful. It provides a clear framework that makes sales conversations more natural, focused, and productive.",
+        likes: 61,
+      },
+      {
+        id: "rev-3",
+        name: "Matteo Rossi",
+        avatar: "",
+        date: "October 09, 2026",
+        rating: 5,
+        headline: "What makes this playbook stand out is its emphasis on solving real customer problems rather than pushing products. The value calculation examples, discovery worksheets, and practical scripts make it easy to put the concepts into action. It's an excellent guide for building a more thoughtful and effective sales strategy.",
+        content: "What makes this playbook stand out is its emphasis on solving real customer problems rather than pushing products. The value calculation examples, discovery worksheets, and practical scripts make it easy to put the concepts into action. It's an excellent guide for building a more thoughtful and effective sales strategy.",
+        likes: 56,
+      },
+      {
+        id: "rev-4",
+        name: "Leo Andersson",
+        avatar: "",
+        date: "August 31 2026",
+        rating: 5,
+        headline: "A well-organised resource that covers everything from the first sales conversation to customer onboarding. I especially liked the focus on demonstrating relevant solutions, setting realistic expectations, and building trust. It offers practical advice that both new and experienced sales professionals can apply to their daily work.",
+        content: "A well-organised resource that covers everything from the first sales conversation to customer onboarding. I especially liked the focus on demonstrating relevant solutions, setting realistic expectations, and building trust. It offers practical advice that both new and experienced sales professionals can apply to their daily work.",
+        likes: 73,
+      },
+    ];
+  }
+
   if (slug === "there-are-only-3-types-of-profitable-businesses-pick-one") {
     return [
       {
