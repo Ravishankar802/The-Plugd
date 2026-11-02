@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "copy-paste-this-strategy-to-make-your-first-5-000-online") {
+    return {
+      name: "Liam Foster",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "7-remote-jobs-you-can-do-from-home") {
     return {
       name: "Ronit Meitei",
@@ -179,6 +189,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "copy-paste-this-strategy-to-make-your-first-5-000-online") {
+    return [
+      {
+        id: "rev-1",
+        name: "Nico",
+        avatar: "",
+        date: "September 19 2026",
+        rating: 5,
+        headline: "A genuinely useful guide for anyone looking to start a newsletter business. I particularly liked how it breaks down audience building, product creation, and monetisation into manageable steps. The 30-day plan makes it much easier to take action instead of getting stuck planning.",
+        content: "A genuinely useful guide for anyone looking to start a newsletter business. I particularly liked how it breaks down audience building, product creation, and monetisation into manageable steps. The 30-day plan makes it much easier to take action instead of getting stuck planning.",
+        likes: 78,
+      },
+      {
+        id: "rev-2",
+        name: "Kathy Reagan Young",
+        avatar: "",
+        date: "September 30 2026",
+        rating: 5,
+        headline: "What I appreciated most about this playbook is its practical approach. It doesn't just focus on getting subscribers but explains how to turn an audience into actual customers. The product development and pricing chapters were especially helpful. Definitely worth reading.",
+        content: "What I appreciated most about this playbook is its practical approach. It doesn't just focus on getting subscribers but explains how to turn an audience into actual customers. The product development and pricing chapters were especially helpful. Definitely worth reading.",
+        likes: 63,
+      },
+      {
+        id: "rev-3",
+        name: "Chris Daughtrey",
+        avatar: "",
+        date: "September 21, 2026",
+        rating: 5,
+        headline: "This playbook gave me a much clearer understanding of how a newsletter can become a real business. The frameworks are straightforward, the examples are easy to follow, and the checklists make implementation simple. A great resource for creators and independent professionals.",
+        content: "This playbook gave me a much clearer understanding of how a newsletter can become a real business. The frameworks are straightforward, the examples are easy to follow, and the checklists make implementation simple. A great resource for creators and independent professionals.",
+        likes: 41,
+      },
+      {
+        id: "rev-4",
+        name: "Adam Gower",
+        avatar: "",
+        date: "October 01 2026",
+        rating: 5,
+        headline: "An excellent resource for anyone who wants to monetise their knowledge without building a complicated business from day one. I found the audience research, email strategy, and product launch sections particularly valuable. It provides a clear direction and a realistic starting point.",
+        content: "An excellent resource for anyone who wants to monetise their knowledge without building a complicated business from day one. I found the audience research, email strategy, and product launch sections particularly valuable. It provides a clear direction and a realistic starting point.",
+        likes: 31,
+      },
+    ];
+  }
+
   if (slug === "7-remote-jobs-you-can-do-from-home") {
     return [
       {

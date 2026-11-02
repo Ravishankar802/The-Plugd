@@ -6,10 +6,10 @@ import { COPY_PASTE_FIRST_5K_DETAIL } from "@/lib/playbooks/copy-paste-strategy-
 
 export const metadata: Metadata = {
   title: "Copy & Paste THIS Strategy To Make Your First $5,000 Online | Plugd",
-  description: "A copy-and-paste playbook to launch, grow, and monetize a high-value niche newsletter to $5,000/month.",
+  description: "Build a newsletter business from scratch in just 30 days. Learn how to attract the right audience, turn your expertise into a profitable digital product, and create a repeatable revenue system.",
   openGraph: {
     title: "Copy & Paste THIS Strategy To Make Your First $5,000 Online | Plugd",
-    description: "A copy-and-paste playbook to launch, grow, and monetize a high-value niche newsletter to $5,000/month.",
+    description: "Build a newsletter business from scratch in just 30 days. Learn how to attract the right audience, turn your expertise into a profitable digital product, and create a repeatable revenue system.",
   },
 };
 
