@@ -217,7 +217,7 @@ When a source YouTube video is provided for any Plugd Playbook:
    - Remove the "Follow" button.
    - Keep only the author name with checkmark badge and their biography.
 4. **Ratings Section & Clean Review UI:**
-   - Section heading is strictly "Ratings" (never "Community Reviews").
+   - Section heading is strictly "Ratings & Reviews" (never "Community Reviews"), and remove any redundant sub-heading "Ratings" above the ratings summary histogram.
    - Remove the search bar and filter button from below the ratings summary histogram.
    - No duplicate headlines: render only the normal review body text; do not repeat a bold headline above the content.
 5. **Colorful Initials Avatars:**

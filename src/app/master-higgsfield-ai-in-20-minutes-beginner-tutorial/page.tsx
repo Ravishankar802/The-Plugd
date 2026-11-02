@@ -6,10 +6,10 @@ import { MASTER_HIGGSFIELD_AI_DETAIL } from "@/lib/playbooks/master-higgsfield-a
 
 export const metadata: Metadata = {
   title: "Master Higgsfield AI in 20 Minutes (Beginner Tutorial) | Plugd",
-  description: "A comprehensive beginner tutorial to mastering Higgsfield AI, image-to-video, and Cinema Studio consistent character pipelines.",
+  description: "Learn to create stunning AI images, cinematic videos, realistic voiceovers, and complete visual projects. Turn your creative ideas into professional-quality content with a practical, step-by-step workflow.",
   openGraph: {
     title: "Master Higgsfield AI in 20 Minutes (Beginner Tutorial) | Plugd",
-    description: "A comprehensive beginner tutorial to mastering Higgsfield AI, image-to-video, and Cinema Studio consistent character pipelines.",
+    description: "Learn to create stunning AI images, cinematic videos, realistic voiceovers, and complete visual projects. Turn your creative ideas into professional-quality content with a practical, step-by-step workflow.",
   },
 };
 

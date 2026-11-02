@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "master-higgsfield-ai-in-20-minutes-beginner-tutorial") {
+    return {
+      name: "Nathan Cole",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "my-honest-advice-to-someone-who-wants-to-get-rich") {
     return {
       name: "Kunal Raj",
@@ -139,6 +149,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "master-higgsfield-ai-in-20-minutes-beginner-tutorial") {
+    return [
+      {
+        id: "rev-1",
+        name: "Matteo Ricci",
+        avatar: "",
+        date: "August 14, 2026",
+        rating: 5,
+        headline: "An excellent and well-organised playbook! It breaks down Higgsfield AI's features in a way that's easy to understand, even for beginners. I especially loved the practical prompt templates and Cinema Studio workflows. Definitely worth reading!",
+        content: "An excellent and well-organised playbook! It breaks down Higgsfield AI's features in a way that's easy to understand, even for beginners. I especially loved the practical prompt templates and Cinema Studio workflows. Definitely worth reading!",
+        likes: 59,
+      },
+      {
+        id: "rev-2",
+        name: "Freya Collins",
+        avatar: "",
+        date: "September 18, 2026",
+        rating: 5,
+        headline: "Absolutely fantastic guide! I learned so much about AI image generation, cinematic videos, and voiceovers. The step-by-step explanations make it much easier to turn creative ideas into complete projects. Highly recommended!",
+        content: "Absolutely fantastic guide! I learned so much about AI image generation, cinematic videos, and voiceovers. The step-by-step explanations make it much easier to turn creative ideas into complete projects. Highly recommended!",
+        likes: 36,
+      },
+      {
+        id: "rev-3",
+        name: "Daniel Weber",
+        avatar: "",
+        date: "September 02, 2026",
+        rating: 5,
+        headline: "What I appreciate most is the practical approach. Rather than just explaining the tools, the playbook shows how to bring them together into a complete production workflow. The credit management advice and final checklist are valuable additions.",
+        content: "What I appreciate most is the practical approach. Rather than just explaining the tools, the playbook shows how to bring them together into a complete production workflow. The credit management advice and final checklist are valuable additions.",
+        likes: 45,
+      },
+      {
+        id: "rev-4",
+        name: "Amara Williams",
+        avatar: "",
+        date: "August 15, 2026",
+        rating: 5,
+        headline: "Really impressed with this playbook! Everything is explained clearly, and the practical workflows make Higgsfield feel much less overwhelming. It's a fantastic resource for creators who want to take their visual content to the next level.",
+        content: "Really impressed with this playbook! Everything is explained clearly, and the practical workflows make Higgsfield feel much less overwhelming. It's a fantastic resource for creators who want to take their visual content to the next level.",
+        likes: 75,
+      },
+    ];
+  }
+
   if (slug === "my-honest-advice-to-someone-who-wants-to-get-rich") {
     return [
       {

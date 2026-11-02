@@ -613,9 +613,6 @@ export default function PlaybookDetailView({
 
               {/* Community Reviews Breakdown */}
               <div className="space-y-5">
-                <h3 className="text-lg font-bold text-stone-900">
-                  Ratings
-                </h3>
 
                 {/* Score & Histogram */}
                 <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-6 items-center bg-white rounded-xl border border-stone-200 p-5 shadow-2xs">
