@@ -93,6 +93,21 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "side-hustles" ||
+    slug === "side-hustles-08" ||
+    slug === "5-ways-to-find-paying-customers-without-spending-on-ads" ||
+    slug === "10-ways-to-find-paying-customers-without-spending-on-ads"
+  ) {
+    return {
+      name: "Kyle Donovan",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "give-me-26-minutes-ill-give-you-10000-hours-of-claude-knowledge" ||
     slug === "ai-businesses-03" ||
     slug === "give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge" ||
@@ -589,6 +604,56 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "side-hustles" ||
+    slug === "side-hustles-08" ||
+    slug === "5-ways-to-find-paying-customers-without-spending-on-ads" ||
+    slug === "10-ways-to-find-paying-customers-without-spending-on-ads"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Niklas",
+        avatar: "",
+        date: "September 10 2026",
+        rating: 5,
+        headline: "",
+        content: "A genuinely useful guide to getting customers without burning money on ads. I especially liked how it explains the role of each platform and how to turn attention into actual enquiries.",
+        likes: 90,
+      },
+      {
+        id: "rev-2",
+        name: "Thijs Smit",
+        avatar: "",
+        date: "September 19 2026",
+        rating: 5,
+        headline: "",
+        content: "The five-channel breakdown makes organic marketing much easier to understand. The content prompts, email templates, and 30-day plan make this something you can actually put into practice.",
+        likes: 71,
+      },
+      {
+        id: "rev-3",
+        name: "Romain",
+        avatar: "",
+        date: "October 08 2026",
+        rating: 5,
+        headline: "",
+        content: "My biggest takeaway was learning to focus on qualified leads instead of chasing views and followers. The conversion funnel and channel selection frameworks are excellent.",
+        likes: 63,
+      },
+      {
+        id: "rev-4",
+        name: "Jelle Bos",
+        avatar: "",
+        date: "October 14 2026",
+        rating: 5,
+        headline: "",
+        content: "Perfect for small businesses and beginners who want to grow organically. It covers everything from content creation and Pinterest SEO to email marketing and customer follow-ups in a very practical way.",
+        likes: 49,
+      },
+    ];
+  }
+
   if (slug === "give-me-26-minutes-ill-give-you-10000-hours-of-claude-knowledge" || slug === "ai-businesses-03") {
     return [
       {

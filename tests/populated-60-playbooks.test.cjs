@@ -95,7 +95,7 @@ const POPULATED_PLAYBOOKS = [
   {
     id: "side-hustles-08",
     slug: "side-hustles",
-    title: "10 Ways to Find Paying Customers Without Spending on Ads",
+    title: "5 Ways to Find Paying Customers Without Spending on Ads",
     dataFile: "src/lib/playbooks/zero-ad-customers-data.ts",
     detailFile: "src/lib/playbooks/zero-ad-customers-detail.ts",
     routeDir: "src/app/side-hustles",

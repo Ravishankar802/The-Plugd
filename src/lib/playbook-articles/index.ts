@@ -44,6 +44,7 @@ import { BEST_AI_SIDE_HUSTLES_2026_ARTICLE } from "./best-ai-side-hustles-2026";
 import { FIVE_PROVEN_WAYS_AI_ARTICLE } from "./five-proven-ways-ai-no-experience";
 import { CHATGPT_KNOWLEDGE_ARTICLE } from "./chatgpt-10000-hours";
 import { CLAUDE_KNOWLEDGE_ARTICLE } from "./claude-10000-hours";
+import { ZERO_AD_CUSTOMERS_ARTICLE } from "./zero-ad-customers";
 
 export * from "./types";
 
@@ -138,6 +139,10 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-04": CHATGPT_KNOWLEDGE_ARTICLE,
   "give-me-26-minutes-ill-give-you-10000-hours-of-claude-knowledge": CLAUDE_KNOWLEDGE_ARTICLE,
   "ai-businesses-03": CLAUDE_KNOWLEDGE_ARTICLE,
+  "side-hustles": ZERO_AD_CUSTOMERS_ARTICLE,
+  "side-hustles-08": ZERO_AD_CUSTOMERS_ARTICLE,
+  "5-ways-to-find-paying-customers-without-spending-on-ads": ZERO_AD_CUSTOMERS_ARTICLE,
+  "10-ways-to-find-paying-customers-without-spending-on-ads": ZERO_AD_CUSTOMERS_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

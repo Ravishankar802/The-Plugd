@@ -5,11 +5,11 @@ import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 import { ZERO_AD_CUSTOMERS_DETAIL_DATA } from "@/lib/playbooks/zero-ad-customers-detail";
 
 export const metadata: Metadata = {
-  title: "10 Ways to Find Paying Customers Without Spending on Ads | Plugd",
-  description: "10 Ways to Find Paying Customers Without Spending on Ads. Comprehensive slide decks and deep written lessons.",
+  title: "5 Ways to Find Paying Customers Without Spending on Ads | Plugd",
+  description: "Discover how to attract customers through Threads, Pinterest, email marketing, short-form video, and YouTube without depending on advertising budgets. Learn how to choose the right platforms, create content people actually care about, and build a clear path from discovery to purchase. Turn one piece of content into multiple marketing assets, capture leads, and build an audience you can reach again. Includes ready-to-use AI prompts, content templates, practical checklists, tracking frameworks, and a 30-day organic customer acquisition plan.",
   openGraph: {
-    title: "10 Ways to Find Paying Customers Without Spending on Ads | Plugd",
-    description: "10 Ways to Find Paying Customers Without Spending on Ads. Comprehensive slide decks and deep written lessons.",
+    title: "5 Ways to Find Paying Customers Without Spending on Ads | Plugd",
+    description: "Discover how to attract customers through Threads, Pinterest, email marketing, short-form video, and YouTube without depending on advertising budgets. Learn how to choose the right platforms, create content people actually care about, and build a clear path from discovery to purchase. Turn one piece of content into multiple marketing assets, capture leads, and build an audience you can reach again. Includes ready-to-use AI prompts, content templates, practical checklists, tracking frameworks, and a 30-day organic customer acquisition plan.",
   },
 };
 
