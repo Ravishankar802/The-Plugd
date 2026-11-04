@@ -51,6 +51,7 @@ import { START_OVER_ZERO_PLAN_1M_ARTICLE } from "./start-over-zero-plan-1m";
 import { SMARTEST_WAY_AI_GOLD_RUSH_ARTICLE } from "./smartest-way-capitalize-ai-gold-rush";
 import { WIN_IN_YOUR_20S_ARTICLE } from "./win-in-your-20s-at-anything";
 import { FIVE_SIMPLE_APPS_10K_ARTICLE } from "./five-simple-apps-10k";
+import { THREE_BEST_AI_BUSINESSES_ARTICLE } from "./three-best-ai-businesses";
 
 export * from "./types";
 
@@ -164,6 +165,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-55": WIN_IN_YOUR_20S_ARTICLE,
   "5-simple-apps-making-10-000-month-that-you-can-build-with-ai": FIVE_SIMPLE_APPS_10K_ARTICLE,
   "ai-businesses-60": FIVE_SIMPLE_APPS_10K_ARTICLE,
+  "3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today": THREE_BEST_AI_BUSINESSES_ARTICLE,
+  "ai-businesses-59": THREE_BEST_AI_BUSINESSES_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

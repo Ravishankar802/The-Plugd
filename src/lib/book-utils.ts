@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today" ||
+    slug === "ai-businesses-59"
+  ) {
+    return {
+      name: "Bryce Holloway",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "5-simple-apps-making-10-000-month-that-you-can-build-with-ai" ||
     slug === "ai-businesses-60"
   ) {
@@ -685,6 +698,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today" ||
+    slug === "ai-businesses-59"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Ziyang Ma",
+        avatar: "",
+        date: "October 05 2026",
+        rating: 5,
+        headline: "",
+        content: "Really useful breakdown of three business models. I especially liked how it explains the actual trade-offs instead of making everything sound easy.",
+        likes: 66,
+      },
+      {
+        id: "rev-2",
+        name: "Naoki",
+        avatar: "",
+        date: "October 11 2026",
+        rating: 5,
+        headline: "",
+        content: "The digital products section alone makes this worth reading. The prompts, validation steps, and launch roadmap give you a clear place to start.",
+        likes: 53,
+      },
+      {
+        id: "rev-3",
+        name: "Tatsuya",
+        avatar: "",
+        date: "October 14 2026",
+        rating: 5,
+        headline: "",
+        content: "Finally, an AI business guide that focuses on customers, distribution, and profitability instead of just throwing tools at you. Very practical.",
+        likes: 50,
+      },
+      {
+        id: "rev-4",
+        name: "Kenta",
+        avatar: "",
+        date: "October 20 2026",
+        rating: 5,
+        headline: "",
+        content: "Loved the comparison between all three models. It helped me understand which business fits my resources and why validating an idea matters before building.",
+        likes: 30,
+      },
+    ];
+  }
+
   if (
     slug === "5-simple-apps-making-10-000-month-that-you-can-build-with-ai" ||
     slug === "ai-businesses-60"
