@@ -92,7 +92,12 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
-  if (slug === "how-to-use-ai-better-than-99-of-people-this-changed-my-life" || slug === "ai-businesses-28") {
+  if (
+    slug === "how-to-think-like-a-strategic-genius-5-dimensional-thinking" ||
+    slug === "ai-businesses-27" ||
+    slug === "how-to-use-ai-better-than-99-of-people-this-changed-my-life" ||
+    slug === "ai-businesses-28"
+  ) {
     return {
       name: "Ryan Walsh",
       avatar: "",
@@ -359,6 +364,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "how-to-think-like-a-strategic-genius-5-dimensional-thinking" || slug === "ai-businesses-27") {
+    return [
+      {
+        id: "rev-1",
+        name: "Bram Jansen",
+        avatar: "",
+        date: "August 20 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most interesting frameworks I've come across. The five dimensions gave me a completely different way to approach problems instead of jumping to the first explanation.",
+        likes: 89,
+      },
+      {
+        id: "rev-2",
+        name: "Hugo",
+        avatar: "",
+        date: "September 25 2026",
+        rating: 5,
+        headline: "",
+        content: "The four perspectives chapter alone is worth reading. I started applying it to business decisions and realised how many factors I was completely overlooking.",
+        likes: 66,
+      },
+      {
+        id: "rev-3",
+        name: "Daan de Vries",
+        avatar: "",
+        date: "October 03 2026",
+        rating: 5,
+        headline: "",
+        content: "I loved the distinction between knowing more and actually understanding more. It's a great reminder that collecting information doesn't automatically make you a better thinker.",
+        likes: 59,
+      },
+      {
+        id: "rev-4",
+        name: "Javier Martínez",
+        avatar: "",
+        date: "October 18 2026",
+        rating: 5,
+        headline: "",
+        content: "Not your typical motivational ebook. The historical thinking, identity, and systems perspectives make you question your own assumptions. The exercises make it practical too.",
+        likes: 47,
+      },
+    ];
+  }
+
   if (slug === "how-to-use-ai-better-than-99-of-people-this-changed-my-life" || slug === "ai-businesses-28") {
     return [
       {

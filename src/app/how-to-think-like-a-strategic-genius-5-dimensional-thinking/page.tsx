@@ -6,10 +6,10 @@ import { THINK_STRATEGIC_GENIUS_DETAIL } from "@/lib/playbooks/think-strategic-g
 
 export const metadata: Metadata = {
   title: "How To Think Like A Strategic Genius (5-Dimensional Thinking) | Plugd",
-  description: "Upgrade your cognitive operating system with 5-Dimensional Integral Thinking to make unassailable strategic moves.",
+  description: "Think beyond the obvious. Master the five dimensions of strategic thinking and learn to see connections, uncover hidden problems, and make smarter decisions.",
   openGraph: {
     title: "How To Think Like A Strategic Genius (5-Dimensional Thinking) | Plugd",
-    description: "Upgrade your cognitive operating system with 5-Dimensional Integral Thinking to make unassailable strategic moves.",
+    description: "Think beyond the obvious. Master the five dimensions of strategic thinking and learn to see connections, uncover hidden problems, and make smarter decisions.",
   },
 };
 

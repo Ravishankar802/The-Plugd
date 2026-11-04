@@ -24,6 +24,7 @@ import { INVESTING_BEGINNERS_25M_ARTICLE } from "./investing-beginners-in-25-min
 import { FIVE_YEARS_GET_RICH_AI_ARTICLE } from "./five-years-get-rich-before-ai";
 import { STUCK_IN_MATRIX_ESCAPE_ARTICLE } from "./stuck-in-matrix-escape";
 import { USE_AI_BETTER_99_ARTICLE } from "./use-ai-better-99-percent";
+import { STRATEGIC_GENIUS_THINKING_ARTICLE } from "./strategic-genius-thinking";
 
 export * from "./types";
 
@@ -78,6 +79,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-29": STUCK_IN_MATRIX_ESCAPE_ARTICLE,
   "how-to-use-ai-better-than-99-of-people-this-changed-my-life": USE_AI_BETTER_99_ARTICLE,
   "ai-businesses-28": USE_AI_BETTER_99_ARTICLE,
+  "how-to-think-like-a-strategic-genius-5-dimensional-thinking": STRATEGIC_GENIUS_THINKING_ARTICLE,
+  "ai-businesses-27": STRATEGIC_GENIUS_THINKING_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {
