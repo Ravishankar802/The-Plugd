@@ -6,10 +6,10 @@ import { RICH_WITH_SOCIAL_MEDIA_DETAIL_DATA } from "@/lib/playbooks/rich-with-so
 
 export const metadata: Metadata = {
   title: "How to become rich with social media (my exact playbook) | Plugd",
-  description: "How to become rich with social media (my exact playbook). Comprehensive slide decks and deep written lessons.",
+  description: "Stop chasing viral views and start turning social media into a revenue engine—attract the right buyers, build trust, and convert content into paying customers.",
   openGraph: {
     title: "How to become rich with social media (my exact playbook) | Plugd",
-    description: "How to become rich with social media (my exact playbook). Comprehensive slide decks and deep written lessons.",
+    description: "Stop chasing viral views and start turning social media into a revenue engine—attract the right buyers, build trust, and convert content into paying customers.",
   },
 };
 

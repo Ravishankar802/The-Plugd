@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "how-to-become-rich-with-social-media-my-exact-playbook" ||
+    slug === "ai-businesses-18"
+  ) {
+    return {
+      name: "Owen Bradley",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "how-to-get-rich-for-service-based-businesses-thank-me-later" ||
     slug === "ai-businesses-19"
   ) {
@@ -457,6 +470,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "how-to-become-rich-with-social-media-my-exact-playbook" || slug === "ai-businesses-18") {
+    return [
+      {
+        id: "rev-1",
+        name: "Declan Byrne",
+        avatar: "",
+        date: "August 27 2026",
+        rating: 5,
+        headline: "",
+        content: "A refreshing take on social media. It completely changes how you think about followers, views, and what actually makes content valuable to a business.",
+        likes: 85,
+      },
+      {
+        id: "rev-2",
+        name: "Rory Fitzgerald",
+        avatar: "",
+        date: "September 14 2026",
+        rating: 5,
+        headline: "",
+        content: "The customer research and buyer-focused content frameworks are incredibly useful. I finally have a clear strategy instead of randomly posting and hoping something works.",
+        likes: 72,
+      },
+      {
+        id: "rev-3",
+        name: "Dominic Walsh",
+        avatar: "",
+        date: "September 19 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most practical social media playbooks I've read. The tracking, conversion, and content measurement sections make it especially valuable.",
+        likes: 74,
+      },
+      {
+        id: "rev-4",
+        name: "Elliot Graham",
+        avatar: "",
+        date: "September 28 2026",
+        rating: 5,
+        headline: "",
+        content: "The biggest lesson for me was that 5,000 relevant views can be worth more than 500,000 random ones. Simple, actionable, and genuinely insightful.",
+        likes: 50,
+      },
+    ];
+  }
+
   if (slug === "how-to-get-rich-for-service-based-businesses-thank-me-later" || slug === "ai-businesses-19") {
     return [
       {
