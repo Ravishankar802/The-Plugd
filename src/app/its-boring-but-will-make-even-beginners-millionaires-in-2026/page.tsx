@@ -6,10 +6,10 @@ import { BORING_MILLIONAIRES_2026_DETAIL_DATA } from "@/lib/playbooks/boring-mil
 
 export const metadata: Metadata = {
   title: "It's Boring, But Will Make Even Beginners Millionaires in 2026 | Plugd",
-  description: "It's Boring, But Will Make Even Beginners Millionaires in 2026. Comprehensive slide decks and deep written lessons.",
+  description: "Discover the simple, often-overlooked business principles that help beginners turn practical opportunities into real income and long-term growth. Forget complicated business ideas and endless preparation.",
   openGraph: {
     title: "It's Boring, But Will Make Even Beginners Millionaires in 2026 | Plugd",
-    description: "It's Boring, But Will Make Even Beginners Millionaires in 2026. Comprehensive slide decks and deep written lessons.",
+    description: "Discover the simple, often-overlooked business principles that help beginners turn practical opportunities into real income and long-term growth. Forget complicated business ideas and endless preparation.",
   },
 };
 

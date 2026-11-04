@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "its-boring-but-will-make-even-beginners-millionaires-in-2026" ||
+    slug === "ai-businesses-13"
+  ) {
+    return {
+      name: "Diego Valera",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "the-5-money-principles-that-will-make-anyone-rich-in-their-20s" ||
     slug === "ai-businesses-12" ||
     slug === "i-locked-myself-in-a-room-until-i-built-a-350-000-mo-business" ||
@@ -765,6 +778,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "its-boring-but-will-make-even-beginners-millionaires-in-2026" ||
+    slug === "ai-businesses-13"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Emiliano",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "This is exactly what beginners need. Instead of pushing complicated startup ideas, it explains how to find a real problem, start small, and get your first customers. Very practical.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Manuel",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "The market timing and career timing concepts were eye-opening. I finally understand why copying someone else's business model doesn't necessarily make sense for where I am right now.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Luciano Godoy",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "Loved the emphasis on implementation over endless learning. The minimum viable business chapter and 90-day roadmap make this feel like something you can actually follow, not just read and forget.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Martín",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "A refreshing take on entrepreneurship. It makes starting a business feel less intimidating and shows how much you can accomplish by solving one small problem really well. Great read.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "the-5-money-principles-that-will-make-anyone-rich-in-their-20s" ||
     slug === "ai-businesses-12"
