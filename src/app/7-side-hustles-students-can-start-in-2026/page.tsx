@@ -6,10 +6,10 @@ import { SIDE_HUSTLES_STUDENTS_2026_DETAIL } from "@/lib/playbooks/side-hustles-
 
 export const metadata: Metadata = {
   title: "7 Side Hustles Students Can Start In 2026 | Plugd",
-  description: "A battle-tested blueprint for students to generate $3,000 to $5,000/month around classes without upfront capital.",
+  description: "Stop chasing ideas. Find a proven business model, make it yours, and build your way to $10K/month.",
   openGraph: {
     title: "7 Side Hustles Students Can Start In 2026 | Plugd",
-    description: "A battle-tested blueprint for students to generate $3,000 to $5,000/month around classes without upfront capital.",
+    description: "Stop chasing ideas. Find a proven business model, make it yours, and build your way to $10K/month.",
   },
 };
 

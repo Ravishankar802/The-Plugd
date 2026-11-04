@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "7-side-hustles-students-can-start-in-2026" || slug === "ai-businesses-34") {
+    return {
+      name: "Austin Bailey",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "making-money-online-is-easy-actually-just-copy-me") {
     return {
       name: "Naveen Shetty",
@@ -289,6 +299,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "7-side-hustles-students-can-start-in-2026" || slug === "ai-businesses-34") {
+    return [
+      {
+        id: "rev-1",
+        name: "Ethan Miller",
+        avatar: "",
+        date: "August 17 2026",
+        rating: 5,
+        headline: "",
+        content: "I've gone through so many side hustle videos, but this actually puts everything together. Loved the breakdown of each business model and how to get started.",
+        likes: 88,
+      },
+      {
+        id: "rev-2",
+        name: "Ryan",
+        avatar: "",
+        date: "September 04 2026",
+        rating: 5,
+        headline: "",
+        content: "The 30-day plan is my favourite part. Instead of just reading about opportunities, you actually get a clear direction on what to do next.",
+        likes: 68,
+      },
+      {
+        id: "rev-3",
+        name: "Brandon Wilson",
+        avatar: "",
+        date: "October 01 2026",
+        rating: 5,
+        headline: "",
+        content: "I never really considered brand-deal brokerage or short-form content strategy before. The explanations made these business models surprisingly easy to understand.",
+        likes: 76,
+      },
+      {
+        id: "rev-4",
+        name: "Tyler",
+        avatar: "",
+        date: "October 12 2026",
+        rating: 5,
+        headline: "",
+        content: "Straightforward, well-organised, and genuinely useful. I especially appreciate the focus on understanding costs, finding customers, and testing ideas before spending money.",
+        likes: 45,
+      },
+    ];
+  }
+
   if (slug === "making-money-online-is-easy-actually-just-copy-me") {
     return [
       {
