@@ -42,6 +42,7 @@ import { LAZIEST_WAY_500_DAY_ARTICLE } from "./laziest-way-500-day";
 import { ONE_PERSON_BUSINESS_0_TO_10K_ARTICLE } from "./one-person-business-0-to-10k";
 import { BEST_AI_SIDE_HUSTLES_2026_ARTICLE } from "./best-ai-side-hustles-2026";
 import { FIVE_PROVEN_WAYS_AI_ARTICLE } from "./five-proven-ways-ai-no-experience";
+import { CHATGPT_KNOWLEDGE_ARTICLE } from "./chatgpt-10000-hours";
 
 export * from "./types";
 
@@ -132,6 +133,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-06": BEST_AI_SIDE_HUSTLES_2026_ARTICLE,
   "5-proven-ways-to-make-money-with-ai-no-experience": FIVE_PROVEN_WAYS_AI_ARTICLE,
   "ai-businesses-05": FIVE_PROVEN_WAYS_AI_ARTICLE,
+  "give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge": CHATGPT_KNOWLEDGE_ARTICLE,
+  "ai-businesses-04": CHATGPT_KNOWLEDGE_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

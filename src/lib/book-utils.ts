@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge" ||
+    slug === "ai-businesses-04"
+  ) {
+    return {
+      name: "Sean Mitchell",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "5-proven-ways-to-make-money-with-ai-no-experience" ||
     slug === "ai-businesses-05"
   ) {
@@ -574,6 +587,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge" || slug === "ai-businesses-04") {
+    return [
+      {
+        id: "rev-1",
+        name: "Derek",
+        avatar: "",
+        date: "September 15 2026",
+        rating: 5,
+        headline: "",
+        content: "This completely changed how I think about using ChatGPT. Instead of just asking random questions, I now understand how to build workflows around my everyday tasks.",
+        likes: 87,
+      },
+      {
+        id: "rev-2",
+        name: "Grant Douglas",
+        avatar: "",
+        date: "September 21 2026",
+        rating: 5,
+        headline: "",
+        content: "Packed with practical prompts and genuinely useful examples. The sections on research, study workflows, and agent-style execution are especially valuable.",
+        likes: 71,
+      },
+      {
+        id: "rev-3",
+        name: "Owen",
+        avatar: "",
+        date: "October 10 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most useful ChatGPT guides I've read. It explains not just what the features do, but when and how to use them effectively.",
+        likes: 63,
+      },
+      {
+        id: "rev-4",
+        name: "Declan Byrne",
+        avatar: "",
+        date: "October 14 2026",
+        rating: 5,
+        headline: "",
+        content: "The 7-day upgrade plan makes everything feel achievable. I especially appreciate the focus on accuracy, privacy, and using AI responsibly instead of blindly trusting it.",
+        likes: 44,
+      },
+    ];
+  }
+
   if (slug === "5-proven-ways-to-make-money-with-ai-no-experience" || slug === "ai-businesses-05") {
     return [
       {
