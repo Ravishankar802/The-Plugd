@@ -93,6 +93,20 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint" ||
+    slug === "ai-businesses-54" ||
+    slug === "if-i-wanted-to-become-a-millionaire-in-2027-this-is-what-id-do"
+  ) {
+    return {
+      name: "Alistair Boyd",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "7-ai-automations" ||
     slug === "ai-businesses-01" ||
     slug === "these-3-ai-businesses-will-make-you-10k-month-with-zero-employees" ||
@@ -619,6 +633,55 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint" ||
+    slug === "ai-businesses-54" ||
+    slug === "if-i-wanted-to-become-a-millionaire-in-2027-this-is-what-id-do"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Rhys",
+        avatar: "",
+        date: "October 03 2026",
+        rating: 5,
+        headline: "",
+        content: "This is much more than another millionaire motivation guide. It actually explains how to build the business, acquire customers, improve sales, and create the systems needed for long-term growth. The frameworks are incredibly useful.",
+        likes: 51,
+      },
+      {
+        id: "rev-2",
+        name: "Cillian",
+        avatar: "",
+        date: "October 09 2026",
+        rating: 5,
+        headline: "",
+        content: "The biggest takeaway for me was understanding that revenue and actual wealth are two completely different things. The customer economics, offer design, and acquisition chapters made everything feel much more practical and achievable.",
+        likes: 47,
+      },
+      {
+        id: "rev-3",
+        name: "Conor",
+        avatar: "",
+        date: "October 15 2026",
+        rating: 5,
+        headline: "",
+        content: "I loved how everything connects. It takes you from choosing a market to building an offer, getting customers, improving retention, and eventually creating leverage. The 2027 roadmap makes it especially actionable.",
+        likes: 33,
+      },
+      {
+        id: "rev-4",
+        name: "Benedikt Maier",
+        avatar: "",
+        date: "October 25 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most comprehensive business playbooks I've gone through. The CLOSER framework, management systems, and practical worksheets are worth revisiting. It makes you think like a business owner instead of someone just chasing money.",
+        likes: 30,
+      },
+    ];
+  }
+
   if (
     slug === "7-ai-automations" ||
     slug === "ai-businesses-01" ||
