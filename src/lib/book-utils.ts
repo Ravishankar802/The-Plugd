@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "7-side-hustles-students-can-start-in-2027" ||
+    slug === "ai-businesses-57"
+  ) {
+    return {
+      name: "Terence Chew",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
     slug === "ai-businesses-58"
   ) {
@@ -711,6 +724,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "7-side-hustles-students-can-start-in-2027" ||
+    slug === "ai-businesses-57"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Dongwoo Jang",
+        avatar: "",
+        date: "October 03 2026",
+        rating: 5,
+        headline: "",
+        content: "Really helpful for anyone trying to earn while studying. I liked that it covers different types of side hustles instead of pretending there's one perfect opportunity for everyone.",
+        likes: 70,
+      },
+      {
+        id: "rev-2",
+        name: "Kofi Gyamfi",
+        avatar: "",
+        date: "October 13 2026",
+        rating: 5,
+        headline: "",
+        content: "The AI app and UGC sections were my favourites. The step-by-step plans make it much easier to understand how to go from an idea to actually testing it.",
+        likes: 59,
+      },
+      {
+        id: "rev-3",
+        name: "Nicolas Valenzuela",
+        avatar: "",
+        date: "October 17 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the more realistic student business guides I've read. It explains the risks, costs, and time commitment instead of just throwing impressive income numbers around.",
+        likes: 40,
+      },
+      {
+        id: "rev-4",
+        name: "Cristian",
+        avatar: "",
+        date: "October 22 2026",
+        rating: 5,
+        headline: "",
+        content: "Loved the comparison tables and 90-day roadmap. It helped me narrow down which side hustle makes sense for my skills, budget, and college schedule.",
+        likes: 35,
+      },
+    ];
+  }
+
   if (
     slug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
     slug === "ai-businesses-58"

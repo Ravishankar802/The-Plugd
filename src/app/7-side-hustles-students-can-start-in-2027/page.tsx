@@ -4,10 +4,10 @@ import { STUDENT_HUSTLES_2027_DETAIL } from "@/lib/playbooks/seven-side-hustles-
 
 export const metadata: Metadata = {
   title: "7 Side Hustles Students Can Start In 2027 | Plugd",
-  description: "The battle-tested, zero-capital side hustle roadmap engineered specifically for students entering the 2027 digital economy.",
+  description: "7 realistic side hustles to help you earn, build valuable skills, and create opportunities while you're still in college.",
   openGraph: {
     title: "7 Side Hustles Students Can Start In 2027 | Plugd",
-    description: "The battle-tested, zero-capital side hustle roadmap engineered specifically for students entering the 2027 digital economy.",
+    description: "7 realistic side hustles to help you earn, build valuable skills, and create opportunities while you're still in college.",
   },
 };
 
