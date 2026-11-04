@@ -6,10 +6,10 @@ import { USE_AI_IN_BUSINESS_2026_DETAIL_DATA } from "@/lib/playbooks/use-ai-in-b
 
 export const metadata: Metadata = {
   title: "How to Use AI in Your Business in 2026 | Plugd",
-  description: "How to Use AI in Your Business in 2026. Comprehensive slide decks and deep written lessons.",
+  description: "Stop chasing AI trends and start building a smarter business—automate the right workflows, improve performance, and turn AI into a real competitive advantage.",
   openGraph: {
     title: "How to Use AI in Your Business in 2026 | Plugd",
-    description: "How to Use AI in Your Business in 2026. Comprehensive slide decks and deep written lessons.",
+    description: "Stop chasing AI trends and start building a smarter business—automate the right workflows, improve performance, and turn AI into a real competitive advantage.",
   },
 };
 

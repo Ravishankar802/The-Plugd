@@ -28,6 +28,7 @@ import { STRATEGIC_GENIUS_THINKING_ARTICLE } from "./strategic-genius-thinking";
 import { LEARN_SKILL_WIN_NEXT_YEARS_ARTICLE } from "./learn-this-skill-win-next-years";
 import { BUILD_1M_ONE_PERSON_BUSINESS_ARTICLE } from "./build-1m-one-person-business";
 import { MULTIPLE_INTERESTS_ONE_PERSON_BIZ_ARTICLE } from "./multiple-interests-one-person-biz";
+import { USE_AI_IN_BUSINESS_2026_ARTICLE } from "./use-ai-in-business-2026";
 
 export * from "./types";
 
@@ -90,6 +91,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-26": BUILD_1M_ONE_PERSON_BUSINESS_ARTICLE,
   "if-you-have-multiple-interests-please-start-a-one-person-business": MULTIPLE_INTERESTS_ONE_PERSON_BIZ_ARTICLE,
   "ai-businesses-24": MULTIPLE_INTERESTS_ONE_PERSON_BIZ_ARTICLE,
+  "how-to-use-ai-in-your-business-in-2026": USE_AI_IN_BUSINESS_2026_ARTICLE,
+  "ai-businesses-23": USE_AI_IN_BUSINESS_2026_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

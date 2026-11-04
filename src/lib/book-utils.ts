@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "how-to-use-ai-in-your-business-in-2026" ||
+    slug === "ai-businesses-23"
+  ) {
+    return {
+      name: "Jason Teo",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "if-you-have-multiple-interests-please-start-a-one-person-business" ||
     slug === "ai-businesses-24"
   ) {
@@ -392,6 +405,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "how-to-use-ai-in-your-business-in-2026" || slug === "ai-businesses-23") {
+    return [
+      {
+        id: "rev-1",
+        name: "Daniel Tan",
+        avatar: "",
+        date: "May 17 2026",
+        rating: 5,
+        headline: "",
+        content: "Finally, an AI business guide that focuses on actual business problems instead of hyping up random tools. The workflow-first approach makes so much sense.",
+        likes: 140,
+      },
+      {
+        id: "rev-2",
+        name: "Ziad Faris",
+        avatar: "",
+        date: "June 20 2026",
+        rating: 5,
+        headline: "",
+        content: "The section about training AI like a real employee was a game changer. I never thought about giving AI proper SOPs, examples, and quality standards before.",
+        likes: 129,
+      },
+      {
+        id: "rev-3",
+        name: "Sai Charan",
+        avatar: "",
+        date: "July 14 2026",
+        rating: 5,
+        headline: "",
+        content: "Very actionable and well structured. I especially liked the marketing, sales, and customer support workflows. The 30-day plan gives you a clear starting point.",
+        likes: 97,
+      },
+      {
+        id: "rev-4",
+        name: "Deepak Kumar",
+        avatar: "",
+        date: "September 02 2026",
+        rating: 5,
+        headline: "",
+        content: "What I liked most is the focus on measuring actual results. It explains how to use AI responsibly without blindly automating everything. Definitely worth reading.",
+        likes: 60,
+      },
+    ];
+  }
+
   if (slug === "if-you-have-multiple-interests-please-start-a-one-person-business" || slug === "ai-businesses-24") {
     return [
       {
