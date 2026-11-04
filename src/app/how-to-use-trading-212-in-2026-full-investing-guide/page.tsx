@@ -6,10 +6,10 @@ import { TRADING_212_GUIDE_DETAIL } from "@/lib/playbooks/trading-212-investing-
 
 export const metadata: Metadata = {
   title: "How to Use Trading 212 in 2026 (Full Investing Guide) | Plugd",
-  description: "A comprehensive, practical guide to building an automated compounding wealth machine using Trading 212.",
+  description: "Build wealth with a smarter investing strategy — from your first investment to a diversified portfolio designed for the long game.",
   openGraph: {
     title: "How to Use Trading 212 in 2026 (Full Investing Guide) | Plugd",
-    description: "A comprehensive, practical guide to building an automated compounding wealth machine using Trading 212.",
+    description: "Build wealth with a smarter investing strategy — from your first investment to a diversified portfolio designed for the long game.",
   },
 };
 

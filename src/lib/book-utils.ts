@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "how-to-use-trading-212-in-2026-full-investing-guide" || slug === "ai-businesses-33") {
+    return {
+      name: "Dylan Scott",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "7-side-hustles-students-can-start-in-2026" || slug === "ai-businesses-34") {
     return {
       name: "Austin Bailey",
@@ -299,6 +309,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "how-to-use-trading-212-in-2026-full-investing-guide" || slug === "ai-businesses-33") {
+    return [
+      {
+        id: "rev-1",
+        name: "Matthew Collins",
+        avatar: "",
+        date: "August 20 2026",
+        rating: 5,
+        headline: "",
+        content: "I've always found investing confusing, especially when it comes to choosing funds and building a portfolio. This explained everything in a really simple and structured way.",
+        likes: 73,
+      },
+      {
+        id: "rev-2",
+        name: "Nathan",
+        avatar: "",
+        date: "September 06 2026",
+        rating: 5,
+        headline: "",
+        content: "The three-fund portfolio section was my favourite. I finally understand how diversification works and why you don't need dozens of different stocks to get started.",
+        likes: 59,
+      },
+      {
+        id: "rev-3",
+        name: "Jordan",
+        avatar: "",
+        date: "October 10 2026",
+        rating: 5,
+        headline: "",
+        content: "Really appreciate that this goes beyond explaining what investing is. It walks through account setup, order types, recurring contributions, and portfolio management. Very useful.",
+        likes: 61,
+      },
+      {
+        id: "rev-4",
+        name: "Justin Parker",
+        avatar: "",
+        date: "October 22 2026",
+        rating: 5,
+        headline: "",
+        content: "Loved the emphasis on consistency, patience, and avoiding emotional decisions. It helped me understand that building wealth is a long-term process, not about chasing quick profits.",
+        likes: 50,
+      },
+    ];
+  }
+
   if (slug === "7-side-hustles-students-can-start-in-2026" || slug === "ai-businesses-34") {
     return [
       {
