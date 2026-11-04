@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "the-new-way-of-making-content-in-the-age-of-ai" ||
+    slug === "ai-businesses-20"
+  ) {
+    return {
+      name: "Rafael Mendes",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "how-to-catch-up-in-life-using-logic" ||
     slug === "ai-businesses-21"
   ) {
@@ -431,6 +444,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "the-new-way-of-making-content-in-the-age-of-ai" || slug === "ai-businesses-20") {
+    return [
+      {
+        id: "rev-1",
+        name: "Blake Harrison",
+        avatar: "",
+        date: "August 23 2026",
+        rating: 5,
+        headline: "",
+        content: "The proof-engine concept is brilliant. I especially liked how it connects customer delivery, demonstrations, and content creation into one repeatable system instead of treating content as a separate job.",
+        likes: 87,
+      },
+      {
+        id: "rev-2",
+        name: "Vincent Howard",
+        avatar: "",
+        date: "September 05 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most relevant content strategies for the AI era. The shift from simply creating content to demonstrating actual expertise is something every creator and founder should understand.",
+        likes: 73,
+      },
+      {
+        id: "rev-3",
+        name: "Wesley Grant",
+        avatar: "",
+        date: "September 10 2026",
+        rating: 5,
+        headline: "",
+        content: "Packed with practical ideas and genuinely useful AI prompts. The meeting-to-content workflow alone makes this playbook worth going through.",
+        likes: 70,
+      },
+      {
+        id: "rev-4",
+        name: "Cameron Ellis",
+        avatar: "",
+        date: "September 25 2026",
+        rating: 5,
+        headline: "",
+        content: "Finally, a content playbook that focuses on substance over vanity metrics. The frameworks for building credibility, showing real work, and capturing content naturally are excellent.",
+        likes: 58,
+      },
+    ];
+  }
+
   if (slug === "how-to-catch-up-in-life-using-logic" || slug === "ai-businesses-21") {
     return [
       {

@@ -31,6 +31,7 @@ import { MULTIPLE_INTERESTS_ONE_PERSON_BIZ_ARTICLE } from "./multiple-interests-
 import { USE_AI_IN_BUSINESS_2026_ARTICLE } from "./use-ai-in-business-2026";
 import { PERFECT_BUSINESS_5_THINGS_ARTICLE } from "./perfect-business-5-things";
 import { CATCH_UP_IN_LIFE_LOGIC_ARTICLE } from "./catch-up-in-life-logic";
+import { NEW_WAY_CONTENT_AI_ARTICLE } from "./new-way-content-ai";
 
 export * from "./types";
 
@@ -99,6 +100,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-22": PERFECT_BUSINESS_5_THINGS_ARTICLE,
   "how-to-catch-up-in-life-using-logic": CATCH_UP_IN_LIFE_LOGIC_ARTICLE,
   "ai-businesses-21": CATCH_UP_IN_LIFE_LOGIC_ARTICLE,
+  "the-new-way-of-making-content-in-the-age-of-ai": NEW_WAY_CONTENT_AI_ARTICLE,
+  "ai-businesses-20": NEW_WAY_CONTENT_AI_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

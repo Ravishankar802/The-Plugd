@@ -1,0 +1,393 @@
+import { PlaybookArticle } from "./types";
+
+export const NEW_WAY_CONTENT_AI_ARTICLE: PlaybookArticle = {
+  slug: "the-new-way-of-making-content-in-the-age-of-ai",
+  title: "The New Way of Making Content In The Age of AI",
+  readingTime: "35 min read",
+  categoryName: "AI",
+  categorySlug: "ai-businesses",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793017435/The_New_Way_of_Making_Content_In_The_Age_of_AI.png",
+  publishedDate: "2026",
+  authorName: "Rafael Mendes",
+  authorTitle: "Media Architect & Proof-Led Content Strategist",
+  introParagraphs: [
+  "The New Way of Making Content In The Age of AI\nA Practical Playbook for Building Trust, Demonstrating Expertise, and Capturing Content at Scale\nIntroduction: The Advantage Is Moving From Production to Proof\nAI has made it easier to produce content. A creator can generate scripts, captions, images, voiceovers, avatars, and polished videos with less time and technical effort than before.",
+  "That changes the competitive environment. When more people can produce plausible content, simply publishing more of it is less likely to be a durable advantage. The important question becomes: why should someone believe you, pay attention to you, or act on what you say?",
+  "The central framework in this playbook is that AI does not affect every type of creator equally. The level of disruption depends partly on what the audience is being asked to do after consuming the content—and how much risk is involved in doing it.",
+  "A person watching a comedy clip risks very little. A person following financial or business advice may be making decisions that affect their savings, livelihood, or company. As the stakes rise, audiences have stronger reasons to look for credible evidence.",
+  "That creates an opportunity for creators who can show real work, demonstrate expertise, and make proof part of their normal business activity.",
+  "This playbook develops five connected ideas:\n1. Understand where your content sits on the risk spectrum.\n2. Build credibility through evidence, not merely confident presentation.\n3. Demonstrate expertise in real time.\n4. Design your work and customer experience to generate proof naturally.\n5. Capture content from activities you already perform instead of manufacturing every post from scratch.\nThe goal is not to reject AI. It is to use AI to make the capture, organisation, editing, and distribution of real work more efficient—while keeping the underlying evidence genuine."
+],
+  chapters: [
+  {
+    "id": "chapter-1",
+    "number": 1,
+    "title": "AI Changes the Cost of Making Content",
+    "paragraphs": [
+      "1.1 Production is becoming easier to imitate\nAI tools can help create:\n- Short-form scripts and hooks.\n- Educational outlines and explainers.\n- Images, illustrations, and thumbnails.\n- Synthetic presenters and voiceovers.\n- Captions, translations, and repurposed clips.\n- Drafts of posts, newsletters, and video descriptions.\n- Multiple versions of the same idea for different platforms.\nThese capabilities can be useful. They reduce the time required to move from an idea to a publishable asset.",
+      "But if many creators can produce similar-looking content, the appearance of quality becomes less distinctive. A polished video does not, by itself, establish that the person presenting the advice has done the work.",
+      "The strategic question therefore shifts from:",
+      "“How can I produce more content?”",
+      "to:",
+      "“What can I show that makes this content worth believing?”",
+      "1.2 The difference between information and evidence\nAI can generate an explanation of how to build a sales team. That explanation may be clear, organised, and persuasive.",
+      "But there is a difference between:\n- Explaining a method.\n- Having applied the method.\n- Showing the method being applied.\n- Showing the result and the conditions under which it occurred.\nThese are different levels of evidence.",
+      "A creator who has built and managed sales teams may be able to draw on practical judgment, failed attempts, unusual situations, and trade-offs that are difficult to reproduce through generic synthesis alone.",
+      "This does not mean experience automatically makes every claim correct. Experienced people can be wrong, and AI-generated explanations can be accurate. The point is that demonstrable experience gives an audience an additional reason to trust the source and evaluate the advice.",
+      "1.3 AI as an assistant, not a substitute for reality\nA useful division of labour is:\n| Work | AI can help with | Human responsibility |\n| --- | --- | --- |\n| Research preparation | Organise questions and summarise supplied material | Check sources and relevance |\n| Content ideation | Generate angles and formats | Choose what is true and useful |\n| Transcription | Convert recordings into text | Confirm accuracy and consent |\n| Highlight discovery | Identify potentially interesting moments | Decide which moments matter |\n| Drafting | Create scripts, captions, and outlines | Add judgment, context, and experience |\n| Editing support | Suggest cuts and variations | Preserve meaning and authenticity |\n| Distribution | Adapt a piece for multiple platforms | Ensure the message fits each audience |",
+      "The strongest workflow uses AI to reduce repetitive production work while the creator supplies the real-world activity, decisions, evidence, and interpretation."
+    ]
+  },
+  {
+    "id": "chapter-2",
+    "number": 2,
+    "title": "Place Your Content on the Risk Spectrum",
+    "paragraphs": [
+      "2.1 Why audience risk matters\nNot all content asks the audience to take the same kind of risk.",
+      "Watching a funny clip may cost someone a few seconds. Trying a beauty technique may cost a little time and money. Following financial advice can affect savings. Making a business decision based on a creator's recommendation can affect employees, customers, and a company's future.",
+      "The higher the possible consequence, the more important credibility becomes.",
+      "A useful question for every creator is:\nWhat is the audience being asked to risk if they believe this content and act on it?",
+      "The answer helps determine how much evidence, qualification, and demonstration the content should include.",
+      "2.2 The five practical zones\nThe source framework describes a continuum that moves from entertainment through consumer education and financial or professional advice to business-to-business expertise. The labels below organise that continuum into five practical zones; they are not rigid categories.",
+      "Zone 1: Entertainment\nPurpose: The content itself is the product.",
+      "Examples:\n- Memes.\n- Comedy clips.\n- Sketches.\n- Funny observations.\n- Short-form entertainment.\nThe value is largely delivered when the audience watches and enjoys the content. There may be no further action required.",
+      "Audience risk: Usually low. The main cost is attention and time.",
+      "What tends to matter:\n- Originality.\n- Timing.\n- Relatability.\n- Storytelling.\n- Performance.\n- Strong packaging and pacing.\nAI can produce or remix entertainment formats, so a creator should not assume that volume alone will protect their position. Distinctive taste, a recognisable point of view, and an actual connection with an audience can still matter.",
+      "Zone 2: Consumer education and demonstrations\nPurpose: Help an individual learn or try something.",
+      "Examples:\n- Hair and makeup tutorials.\n- Product demonstrations.\n- Basic fitness instruction.\n- Everyday how-to content.\n- General lifestyle tips.\nThe audience may change a behaviour after watching. The consequences are often limited, although they vary by topic. A cosmetic technique and a health recommendation do not carry the same risk.",
+      "Audience risk: Low to moderate, depending on the subject and the advice.",
+      "What tends to matter:\n- Showing the process.\n- Demonstrating the product or technique.\n- Before-and-after evidence where appropriate.\n- Clear instructions.\n- Honest disclosure of limitations.\nA real demonstration can make a tutorial more persuasive than a generic explanation. The viewer can see the technique, the product, and the result rather than relying only on a claim.",
+      "Zone 3: Financial and other consequential consumer advice\nPurpose: Help individuals make decisions with meaningful personal consequences.",
+      "Examples:\n- Saving and investing.\n- Debt and credit decisions.\n- Financial disputes and refunds.\n- Insurance choices.\n- Other advice where a poor decision may create material cost.\nAudience risk: Moderate to high. A wrong decision can affect a person's finances or security.",
+      "What tends to matter:\n- Relevant professional qualifications or experience.\n- Clear evidence and transparent reasoning.\n- Accurate explanations of uncertainty.\n- Distinguishing general education from individual advice.\n- Showing the basis for a recommendation.\nA creator's professional background may help an audience assess credibility. However, credentials should be relevant and accurately represented. A qualification does not remove the need to explain assumptions, risks, and limits.",
+      "Financial content also needs particular care: rules vary by jurisdiction, and a general video should not be presented as personalised financial, tax, or legal advice.",
+      "Zone 4: Professional and business-to-business education\nPurpose: Influence decisions made by professionals, operators, teams, or organisations.",
+      "Examples:\n- Sales-team management.\n- Marketing strategy.\n- Business operations.\n- Hiring and leadership.\n- Agency delivery.\n- Software implementation.\n- Commercial growth advice.\nAudience risk: Often high. The audience may invest money, change a process, hire people, or alter the direction of a business.",
+      "What tends to matter:\n- Direct experience.\n- Relevant case studies.\n- Demonstrations of the work.\n- Verifiable outcomes.\n- Clear explanations of context and trade-offs.\n- Evidence that the method has been applied in practice.\nA generic list of business tips may be easy to generate. Showing how a real campaign was analysed, how a process was improved, or how a team handled a difficult situation provides more context.",
+      "Zone 5: Live, high-accountability expertise\nThis is a practical extension of the same risk logic: the creator allows the audience to observe expertise being applied in a real or realistic situation.",
+      "Examples:\n- A live business audit.\n- A customer consultation with permission.\n- A product installation or test.\n- A working session.\n- A question-and-answer session with practitioners.\n- A transparent walkthrough of a decision and its consequences.\nThe creator is not simply stating, “I know how to do this.” They are showing how they approach a real problem.",
+      "2.3 The continuum is not a set of boxes\nA creator does not have to choose one category forever. Different pieces of content can sit at different points on the spectrum.",
+      "One video may combine:\n- An entertaining opening.\n- A simple educational explanation.\n- A demonstration.\n- A business lesson.\n- A call to take a more consequential action.\nThe important thing is to recognise when the content moves from low-stakes entertainment into advice that could influence a significant decision.",
+      "As the stakes rise, increase the quality and transparency of the evidence.",
+      "2.4 A simple content-risk audit\nBefore publishing, ask:\n1. What action might a viewer take after watching?\n2. What could happen if the advice is wrong?\n3. What experience or evidence supports the claim?\n4. What assumptions or limitations should be stated?\n5. Does this require a professional qualification or specialist review?\n6. Am I making the content sound more certain than the evidence allows?",
+      "Chapter exercise — Map your content",
+      "List your five most common content topics. For each, record the likely audience action, potential downside, and evidence needed.\n| Topic | What might the viewer do? | Possible downside | Evidence needed |\n| --- | --- | --- | --- |\n| Example: Landing-page advice | Change a sales page | Lost conversions or wasted spend | Real examples, test conditions, results |"
+    ]
+  },
+  {
+    "id": "chapter-3",
+    "number": 3,
+    "title": "Credibility Is a Risk-Reduction Signal",
+    "paragraphs": [
+      "3.1 Why people look for proof\nWhen people follow advice, they often accept some degree of risk. Proof helps them decide whether that risk is reasonable.",
+      "Imagine two creators publish the same six recommendations for improving a sales team.\n- One has never sold anything or managed a sales team.\n- The other has built and managed multiple sales teams and can explain what happened when the recommendations were applied.\nThe words may be identical. The audience's reason to trust them is not.",
+      "The second creator has a relevant history that supports the advice. That history does not guarantee correctness, but it gives the audience something beyond presentation quality to evaluate.",
+      "3.2 Four layers of credibility\nA practical credibility model has four layers:",
+      "1. Identity and qualifications",
+      "Who are you, and what relevant background do you have?",
+      "Examples:\n- Professional qualifications.\n- Relevant roles.\n- Training.\n- Years of practice, when accurately stated.\n- Responsibility for a particular type of work.\n2. Track record",
+      "What have you actually done?",
+      "Examples:\n- Projects completed.\n- Products launched.\n- Teams managed.\n- Customers served.\n- Measurable outcomes.\n- Relevant failures and lessons.\n3. Demonstrated competence",
+      "Can the audience see you apply the skill?",
+      "Examples:\n- Live walkthroughs.\n- Product demonstrations.\n- Audits.\n- Working sessions.\n- Problem-solving examples.\n- Before-and-after process comparisons.\n4. Third-party evidence",
+      "Can someone or something beyond your own claim support the result?",
+      "Examples:\n- Customer testimony with permission.\n- Public case studies.\n- Independent reviews.\n- Verifiable project artefacts.\n- Published results with sufficient context.\n- Repeat usage or referrals, where relevant.\nThe strongest credibility often combines several layers. A title alone may not demonstrate practical ability. A result without context may be misleading. A demonstration without a track record may still be useful, but the audience should understand what it does and does not establish.",
+      "3.3 Proof is stronger when it is specific\nCompare:\n- “I help businesses grow.”\n- “Here is the campaign, the audience it targeted, the changes we made, the period measured, and the outcome.”\nThe second statement gives the audience more to inspect.",
+      "Useful proof answers questions such as:\n- What was the starting point?\n- What problem existed?\n- What action was taken?\n- What changed?\n- Over what period?\n- What other factors may have influenced the result?\n- What were the costs or trade-offs?\n- Can the result be independently checked?\nAvoid reporting only the most impressive number. Explain what the number represents.",
+      "3.4 Separate evidence from interpretation\nA case study should distinguish:",
+      "Observed fact: What was measured or directly observed.",
+      "Interpretation: What you believe caused the result.",
+      "Recommendation: What you think another person should consider doing.",
+      "For example:\n- Fact: A landing-page change was followed by a higher conversion rate during a defined test.\n- Interpretation: The clearer explanation may have reduced confusion.\n- Recommendation: Test clearer explanations when users do not understand the next step.\nThe interpretation may be plausible without being proven as the sole cause. Keep that distinction visible.",
+      "3.5 Proof does not mean boasting\nA creator can demonstrate credibility without constantly announcing achievements.",
+      "Instead of repeatedly saying that you are experienced, show:\n- How you diagnose a problem.\n- What questions you ask.\n- Which details you notice.\n- How you make a decision.\n- What you would change.\n- What happened when you tested the approach.\nThe audience can evaluate the work itself.",
+      "3.6 The proof gap\nUse this table to find the difference between what you claim and what you can currently demonstrate.\n| Claim I make | Evidence I currently have | What is missing? | How I can demonstrate it |\n| --- | --- | --- | --- |\n| Example: I improve onboarding | A live product and user feedback | A clear walkthrough of the changes | Record an onboarding audit |\n|  |  |  |  |\n|  |  |  |  |",
+      "Do not make the claim stronger than the evidence. If you are still learning, say so and show the process honestly."
+    ]
+  },
+  {
+    "id": "chapter-4",
+    "number": 4,
+    "title": "Demonstrate Expertise in Real Time",
+    "paragraphs": [
+      "4.1 Accomplishments and demonstrations do different jobs\nAn accomplishment is a result from the past. It can establish relevant experience.",
+      "A demonstration shows what you can do now.",
+      "Both are useful:\n- A past result provides context.\n- A live demonstration lets the audience inspect your thinking and execution.\nFor example, saying that you have managed a large number of campaigns is a track-record claim. Walking through a campaign, explaining its objective, analysing the data, identifying a problem, and showing the next decision is a demonstration.",
+      "Real-time demonstration is valuable because it makes the work visible rather than asking the audience to rely entirely on a summary.",
+      "4.2 What counts as a demonstration?\nA demonstration does not always require a stage, studio, or livestream.",
+      "It can be:\n- A screen recording of a real workflow.\n- A live audit of a website.\n- A product being used in its intended setting.\n- A working session with a customer.\n- A problem being diagnosed.\n- A before-and-after comparison.\n- A Q&A where a practitioner answers specific questions.\n- A recorded walkthrough of a decision.\nThe key is that the audience sees the skill being applied to something concrete.",
+      "4.3 A demonstration structure\nUse this sequence:",
+      "1. Set the context",
+      "Explain the situation and the goal.",
+      "2. Show the starting point",
+      "Let the audience see the existing product, process, problem, or data.",
+      "3. Explain the diagnosis",
+      "Describe what you notice and why it matters.",
+      "4. Perform the work",
+      "Show the relevant actions. Avoid hiding every difficult step behind a polished conclusion.",
+      "5. Explain the decisions",
+      "Tell the audience why you chose one approach over another.",
+      "6. Show the result",
+      "Display the output or the immediate change.",
+      "7. State the limits",
+      "Explain what the demonstration does not prove, what remains uncertain, and what should happen next.",
+      "This structure works for tutorials, professional services, product demonstrations, and case studies.",
+      "4.4 Make the reasoning visible\nA demonstration is more educational when the creator explains the judgment behind the action.",
+      "For example, a website audit should not only show a list of edits. It should explain:\n- What the page is trying to achieve.\n- Which user is expected to visit.\n- Where the message becomes unclear.\n- Which change is most important.\n- Why a particular section should be tested.\n- What metric would indicate improvement.\nShowing the decision process gives viewers something they can transfer to their own work.",
+      "4.5 Live does not automatically mean credible\nA live or unedited format can make a process more observable, but it is not proof that every claim is true.",
+      "A creator can still:\n- Select a misleading example.\n- Hide important context.\n- Use a staged scenario.\n- Show an outcome that is not representative.\n- Misinterpret data in real time.\nMaintain the same standards of accuracy and disclosure in live content as in edited content.",
+      "4.6 Demonstration ideas by business type\n| Business or skill | Demonstration format |\n| --- | --- |\n| Marketing agency | Walk through a campaign, explain decisions, and review results |\n| Design service | Show a design critique and the revision process |\n| Software product | Demonstrate a real user workflow and explain what the product does |\n| E-commerce product | Use the product and show its features, limitations, and care |\n| Fitness coaching | Demonstrate appropriate movements and explain who they are suitable for |\n| Education service | Teach a lesson and show how a learner applies it |\n| Consulting | Work through a defined problem and explain the analysis |\n| Repair service | Show a diagnosis and repair process with customer permission |\n| Recruitment service | Explain a role brief, evaluation criteria, and anonymised process |\n| Financial education | Work through an illustrative calculation and state assumptions clearly |",
+      "Chapter exercise — Plan three demonstrations",
+      "Choose three pieces of expertise you want people to recognise. For each, design a demonstration that makes the work visible.\n| Expertise | Real example to use | What the viewer will see | What it will prove |\n| --- | --- | --- | --- |"
+    ]
+  },
+  {
+    "id": "chapter-5",
+    "number": 5,
+    "title": "Turn Customer Delivery Into a Proof Engine",
+    "paragraphs": [
+      "5.1 Do not treat content as a separate activity\nA common content workflow looks like this:\n1. Finish the day's work.\n2. Sit down separately to invent content ideas.\n3. Write scripts.\n4. Record videos.\n5. Edit and publish.\nThis can become exhausting, especially when the creator is already delivering a service or operating a business.",
+      "A more efficient approach is to look at the work that already happens and ask:\nWhere can I capture genuine evidence while delivering value to customers?",
+      "If the business already includes consultations, installations, audits, reviews, support calls, product use, or customer results, those activities may contain useful content.",
+      "The aim is to capture the work—not to turn every customer interaction into a performance.",
+      "5.2 Map the customer journey\nStart by listing the stages of delivery.",
+      "A service business might have:\n1. Initial enquiry.\n2. Discovery conversation.\n3. Diagnosis or audit.\n4. Proposal.\n5. Delivery.\n6. Review.\n7. Follow-up.\n8. Repeat purchase or referral.\nAt each stage, ask:\n- Is there a useful decision being made?\n- Is there a problem that can be explained?\n- Is there a visible process?\n- Is there a result that can be documented?\n- Can this be captured without compromising privacy or service quality?",
+      "5.3 Build proof into the delivery process\nExamples:",
+      "Marketing agency\n- Review a campaign with the client.\n- Explain the target audience and objective.\n- Show the creative and landing page.\n- Walk through the performance data.\n- Discuss what changed and what remains uncertain.\nConsultant\n- Record a permitted working session.\n- Explain the diagnosis.\n- Show the framework used.\n- Document the recommendations.\n- Follow up on implementation and results.\nConsumer product business\n- Demonstrate how the product is used.\n- Show materials, features, and limitations.\n- Record a real installation or setup.\n- Answer common customer questions.\n- Share customer feedback with permission.\nEducation business\n- Capture a teaching session.\n- Show a learner applying a concept, with permission.\n- Explain a common mistake.\n- Demonstrate how feedback improves the work.",
+      "5.4 Create a customer-to-content loop\nThe source describes a self-reinforcing business loop: customers buy, the product or service creates an experience worth documenting, that documentation attracts more potential customers, and some of those customers buy and create further opportunities for proof.",
+      "A practical version:\nCustomer discovers the business\n        ↓\nCustomer buys or engages\n        ↓\nThe business delivers real value\n        ↓\nA useful part of the delivery is documented\n        ↓\nThe documentation becomes educational content\n        ↓\nRelevant people discover the business\n        ↓\nSome become new customers\nThis loop can support both marketing and service improvement. It should not be confused with guaranteed growth. The loop only works when the product creates real value and the content reaches relevant people.",
+      "5.5 Make proof a by-product of good service\nThe best proof systems do not require the business to manufacture dramatic events.",
+      "They make ordinary valuable work easier to document:\n- A product is used.\n- A customer problem is solved.\n- A campaign is reviewed.\n- A process is improved.\n- A question is answered.\n- A result is measured.\nIf the content process begins to damage the customer experience, redesign it. Delivery comes first.",
+      "5.6 A proof-engine planning worksheet\n| Customer activity | Evidence created | Content format | Permission needed? |\n| --- | --- | --- | --- |\n| Discovery call | Customer's problem and context | Anonymised lesson or Q&A | Yes, for identifiable recording or quotation |\n| Website audit | Specific usability or messaging issues | Screen-recorded walkthrough | Yes, if the site or client is identifiable |\n| Product installation | Real use and process | Demonstration | Yes, for people and private locations |\n| Campaign review | Decisions and performance data | Case study | Yes, for confidential client information |\n| Customer feedback | Experience and outcome | Testimonial | Explicit permission and accurate context |",
+      "5.7 Build a repeatable proof library\nStore evidence in an organised way:\n- Original recording.\n- Transcript.\n- Date and context.\n- Customer or project permission status.\n- Relevant claims and metrics.\n- Anonymisation requirements.\n- Potential content angles.\n- Final published links.\nKeep raw material separate from approved public content. Do not assume that because a conversation was recorded internally, it can be published."
+    ]
+  },
+  {
+    "id": "chapter-6",
+    "number": 6,
+    "title": "Use Real Conversations as a Content Source",
+    "paragraphs": [
+      "6.1 Your calendar may already contain content\nIf you regularly speak with customers, colleagues, students, or business owners, those conversations may contain:\n- Questions that recur.\n- Misunderstandings that need clarification.\n- Decisions that reveal useful judgment.\n- Common objections.\n- Unexpected edge cases.\n- Practical examples.\n- Lessons from completed work.\nInstead of inventing every topic, capture the questions and situations that already arise.",
+      "6.2 A meeting-to-content workflow\nA practical workflow:",
+      "Step 1: Identify suitable conversations",
+      "Choose meetings or sessions where recording is appropriate and everyone involved has given informed permission.",
+      "Step 2: Record or take notes",
+      "Use a reliable recording or note-taking process. Make the purpose clear. Some conversations should never be recorded or repurposed.",
+      "Step 3: Transcribe the material",
+      "AI can turn approved recordings into text. Check the transcript for errors, especially names, figures, technical terms, and context.",
+      "Step 4: Ask AI to identify candidate moments",
+      "Useful categories include:\n- Questions asked repeatedly.\n- Surprising observations.\n- Clear explanations.\n- Important decisions.\n- Common mistakes.\n- Examples that illustrate a principle.\n- Moments where a misconception was corrected.",
+      "Step 5: Review the candidates",
+      "The AI output is a shortlist, not an editorial decision. Check whether each moment is accurate, useful, appropriate to share, and understandable outside the original conversation.",
+      "Step 6: Create content",
+      "Turn selected moments into:\n- Short clips.\n- Written posts.\n- Carousels.\n- Tutorials.\n- FAQs.\n- Longer explainers.\n- Case-study sections.",
+      "Step 7: Verify and approve",
+      "Check the final version against the original source. Remove private information and obtain any additional approval required.",
+      "6.3 Example AI prompt: find useful moments\nUse this with a transcript you are authorised to process:\nYou are helping me identify useful content from a real business conversation.",
+      "Read the transcript and identify candidate moments in these categories:\n1. Questions that are likely to matter to the intended audience.\n2. Clear explanations of a difficult concept.\n3. Practical examples or demonstrations.\n4. Surprising observations.\n5. Common mistakes or misconceptions.\n6. Decisions and the reasoning behind them.\n7. Advice that includes useful qualifications or limitations.",
+      "For every candidate:\n- Give the exact supporting excerpt.\n- Explain why it may be useful.\n- Suggest a content format.\n- Identify any missing context needed to understand it.\n- Flag confidential, personal, sensitive, or unverified information.",
+      "Do not invent quotes, outcomes, or details.\nDo not turn uncertain statements into facts.\nDo not select material merely because it sounds dramatic.",
+      "6.4 Example AI prompt: turn a moment into a draft\nTurn the selected transcript excerpt into a draft for [platform and format].",
+      "Audience: [describe the intended audience]\nPurpose: [teach, demonstrate, explain, or document]\nTone: [describe the desired voice]",
+      "Requirements:\n- Preserve the original meaning.\n- Keep factual claims tied to the source excerpt.\n- Do not invent results, credentials, or customer details.\n- Explain any context a new viewer would need.\n- Retain important caveats.\n- Do not present an opinion as a proven fact.\n- Mark anything that requires human verification.",
+      "Provide:\n1. A clear opening.\n2. The core explanation.\n3. The practical takeaway.\n4. A concise closing.\n5. A list of claims that need checking.",
+      "6.5 Protect the people in your conversations\nThis workflow requires serious privacy controls.",
+      "Before recording or using a transcript:\n- Tell participants what is being recorded and why.\n- Obtain appropriate consent.\n- Explain whether the material may be used publicly.\n- Respect confidentiality agreements and professional duties.\n- Remove personal and sensitive information when it is not necessary.\n- Do not upload confidential material to an AI service unless the data handling terms and permissions allow it.\n- Keep access restricted.\n- Honour requests not to publish.\nFor regulated or sensitive industries, obtain appropriate legal or compliance guidance. Consent to record a meeting is not automatically consent to publish every part of it.",
+      "6.6 Make content extraction an editorial process\nAI can identify candidate moments, but a human should decide:\n- Whether the point is genuinely useful.\n- Whether the excerpt is representative.\n- Whether the context has been preserved.\n- Whether the speaker intended it as a public statement.\n- Whether the material is accurate.\n- Whether it could mislead the audience when removed from the original conversation.\nThe objective is to scale capture, not scale careless publishing."
+    ]
+  },
+  {
+    "id": "chapter-7",
+    "number": 7,
+    "title": "Design Opportunities to Demonstrate Your Work",
+    "paragraphs": [
+      "7.1 Do not wait for proof to appear by accident\nSome creators assume that their work is too ordinary to become content. They spend most of the day at a computer and believe there is nothing visual or interesting to document.",
+      "Often, the problem is not a lack of work. It is that the work has not been organised into a demonstrable format.",
+      "You can create a useful demonstration by:\n- Auditing a public example.\n- Answering a real question.\n- Reviewing a process.\n- Showing a product in use.\n- Explaining a decision.\n- Offering a small, clearly scoped sample service.\n- Comparing a starting point with an improved version.\nThe example should be genuine. Do not stage a fake customer, fabricate a result, or imply that a speculative exercise was paid client work.",
+      "7.2 Public audits and sample work\nIf you do not yet have many customers, you can demonstrate your skill using public or volunteer examples.",
+      "For example, a small marketing agency could:\n- Select a public website.\n- Explain that the review is an independent educational audit.\n- Identify a few specific issues.\n- Show how it would improve the page.\n- Explain the assumptions and limitations.\n- Invite the owner to discuss the findings if appropriate.\nAnother option is to offer a limited number of free audits or sample projects in exchange for permission to document the process.",
+      "Be clear about the arrangement:\n- Is the work free?\n- What is included?\n- What is not included?\n- Does the recipient agree to public documentation?\n- Can they decline publication?\n- Who owns the resulting work?\nFree work should be bounded. It should not become an unlimited promise of unpaid labour.",
+      "7.3 Turn questions into demonstrations\nA question can become a content opportunity when you answer it by doing the work.",
+      "Examples:\n- “Why is this landing page confusing?” → perform a page audit.\n- “How do I choose between these two product options?” → compare the relevant features and trade-offs.\n- “Why is this campaign underperforming?” → walk through the available data and explain possible causes.\n- “How should I structure this database?” → build a small example and explain the design.\n- “How do I improve this presentation?” → revise one slide and explain the decisions.\nThe question provides the context. The demonstration provides the proof.",
+      "7.4 Make the demonstration useful even if nobody buys\nA strong public demonstration should deliver standalone value.",
+      "The viewer should learn something even if they never become a customer. This creates a better relationship than using a demonstration only as a disguised sales pitch.",
+      "A useful format:\n1. Explain the problem.\n2. Show the example.\n3. Identify the most important issue.\n4. Demonstrate a possible improvement.\n5. Explain the reasoning.\n6. State what further work would be required.",
+      "7.5 Avoid misleading demonstrations\nA demonstration can become deceptive when:\n- The example is presented as a real customer project when it is not.\n- A mock-up is described as a live result.\n- A test result is presented as a guaranteed outcome.\n- Important conditions are hidden.\n- The creator edits out all failures and implies the process was effortless.\n- A customer is shown without permission.\nLabel sample work, hypothetical examples, simulations, and illustrative numbers accurately."
+    ]
+  },
+  {
+    "id": "chapter-8",
+    "number": 8,
+    "title": "Product Demonstrations and Service Demonstrations",
+    "paragraphs": [
+      "8.1 Consumer products: let people see the product work\nFor physical products, demonstration may be straightforward:\n- Show the product being used.\n- Explain how it is set up.\n- Show what is included.\n- Compare it with a relevant alternative.\n- Explain its limitations.\n- Demonstrate care or maintenance.\n- Answer common questions.\nA product demonstration should show the real product under conditions that are reasonably representative. Avoid editing that conceals defects or creates an unrealistic impression.",
+      "8.2 Services: show the work, not just the promise\nServices can be harder to demonstrate because the value may be intellectual or operational.",
+      "Make the work visible:\n- A consultant can show how a diagnosis is formed.\n- An agency can walk through a campaign review.\n- A designer can explain a design critique.\n- A developer can demonstrate a feature and its underlying workflow.\n- A coach can show how a session is structured, within appropriate boundaries.\n- An educator can teach a concept and show a learner applying it.\nThe aim is to make the invisible parts of service delivery understandable.",
+      "8.3 Case studies that teach\nA useful case study includes:\n1. Context: Who or what was involved? Use only details that can be shared.\n2. Starting point: What was the situation?\n3. Problem: What needed to change?\n4. Approach: What did you do?\n5. Reasoning: Why did you choose that approach?\n6. Outcome: What happened?\n7. Limitations: What else may have influenced the result?\n8. Lesson: What can another person learn?\nA case study should not hide the conditions that made the result possible. A result achieved with a large budget, experienced team, or unusual market conditions may not transfer directly to a beginner.",
+      "8.4 The demonstration-to-offer connection\nDemonstrations can naturally lead to commercial conversations, but the transition should be honest.",
+      "A simple sequence:\n- Teach something useful.\n- Show the limits of a self-service approach.\n- Explain what additional work a professional service includes.\n- State who the service is suitable for.\n- Invite people to ask questions or request a proposal.\nDo not imply that every viewer needs your service. The demonstration should help people make a better decision, including the decision not to buy."
+    ]
+  },
+  {
+    "id": "chapter-9",
+    "number": 9,
+    "title": "Capture First, Create Second",
+    "paragraphs": [
+      "9.1 Why capture can scale better than constant recording\nIf you want to publish a high volume of content, recording every piece as a separate performance can consume the entire working day.",
+      "The source's operational insight is that a creator can produce more content by capturing activities they already enjoy and perform, then extracting useful material from them.",
+      "For example:\n- A person who enjoys answering business questions can capture Q&A sessions.\n- A consultant can document permitted client work.\n- A teacher can record lessons and identify useful explanations.\n- A product founder can capture product testing and customer feedback.\n- A practitioner can record working sessions and later extract short lessons.\nThis is not zero-effort content. It moves effort from repeatedly inventing and recording isolated posts toward designing good capture opportunities and reviewing the material.",
+      "9.2 Identify your natural content activities\nMake a list of activities you already do well or enjoy:\n- Customer Q&A.\n- Team discussions.\n- Product testing.\n- Teaching.\n- Audits.\n- Consultations.\n- Presentations.\n- Workshops.\n- Interviews.\n- Troubleshooting.\n- Reviewing work.\n- Explaining decisions.\nThen ask:\n- Which activities contain useful lessons?\n- Which can be captured responsibly?\n- Which produce clear visual or audio material?\n- Which can be repeated without harming the work?\n- Which do I genuinely enjoy enough to sustain?\nBuild around activities that fit your personality and business rather than copying someone else's format.",
+      "9.3 Create a capture system\nA simple system has five stages:",
+      "1. Capture",
+      "Record approved sessions, screen demonstrations, product use, or notes.",
+      "2. Store",
+      "Save the original material in an organised location with dates, project context, and permissions.",
+      "3. Transcribe and tag",
+      "Use AI to create transcripts and identify topics, questions, examples, and possible clips.",
+      "4. Review and edit",
+      "Select the strongest moments, verify accuracy, remove sensitive information, and add context.",
+      "5. Publish and learn",
+      "Distribute the content, observe meaningful audience responses, and record what questions or misunderstandings recur.",
+      "9.4 Build a content source library\nSuggested fields:\n| Field | Example |\n| --- | --- |\n| Asset ID | QNA-2026-001 |\n| Capture date | 4 November 2026 |\n| Source type | Customer Q&A |\n| Topic | Landing-page messaging |\n| Original file | Recording location |\n| Transcript | Transcript location |\n| Permission status | Approved for public use |\n| Sensitive details | Removed |\n| Candidate moments | Three timestamps or excerpts |\n| Formats | Short clip, post, FAQ |\n| Verification status | Reviewed |\n| Publication status | Draft |",
+      "The system should make it easy to trace a published claim back to its source.",
+      "9.5 Repurpose without flattening the message\nOne source conversation can produce multiple assets, but each format has different requirements.\n| Format | Best use |\n| --- | --- |\n| Short video | One clear point or demonstration |\n| Long video | Full explanation and context |\n| Text post | A concise observation or lesson |\n| Carousel | A sequence of steps or comparisons |\n| Newsletter | A deeper explanation with nuance |\n| FAQ | A direct answer to a recurring question |\n| Case study | A complete account of a project and its outcome |",
+      "Do not cut a nuanced statement into a short clip that reverses its meaning. Sometimes the best editorial decision is not to repurpose a moment."
+    ]
+  },
+  {
+    "id": "chapter-10",
+    "number": 10,
+    "title": "The AI-Assisted Content Workflow",
+    "paragraphs": [
+      "10.1 A practical end-to-end process\nUse AI at specific stages rather than asking it to invent an entire content identity.",
+      "Stage 1 — Plan the source activity",
+      "Decide what real work, conversation, demonstration, or question will create useful material.",
+      "Stage 2 — Capture",
+      "Record or document the activity with appropriate permission.",
+      "Stage 3 — Transcribe",
+      "Convert approved audio or video into text.",
+      "Stage 4 — Extract",
+      "Ask AI to find candidate questions, explanations, examples, and decisions.",
+      "Stage 5 — Select",
+      "Choose moments based on audience relevance, evidence, clarity, and usefulness.",
+      "Stage 6 — Draft",
+      "Ask AI to adapt the selected material into the intended format.",
+      "Stage 7 — Verify",
+      "Check facts, quotations, figures, context, privacy, and claims.",
+      "Stage 8 — Edit",
+      "Improve pacing, structure, clarity, captions, and visual presentation.",
+      "Stage 9 — Publish",
+      "Use a format and distribution channel suited to the audience.",
+      "Stage 10 — Review",
+      "Study meaningful responses and identify new questions to answer.",
+      "10.2 Prompt: build a content plan from real work\nAct as an editorial strategist.",
+      "I will provide a description of my work, the people I serve, and the activities I regularly perform.",
+      "Help me identify content opportunities that can be captured from real work rather than invented from scratch.",
+      "My field:\n[Field]",
+      "Audience:\n[Audience]",
+      "What I do:\n[Activities, services, products, or projects]",
+      "Questions I regularly receive:\n[Questions]",
+      "Evidence I can show:\n[Demonstrations, projects, outcomes, processes]",
+      "Create:\n1. A list of repeatable capture opportunities.\n2. The audience problem each opportunity addresses.\n3. A suitable content format.\n4. What proof or context should be included.\n5. Any permission, privacy, or accuracy concerns.\n6. A realistic weekly capture schedule.",
+      "Do not invent credentials, customers, outcomes, or proof.\nPrioritise activities that naturally fit my existing work.",
+      "10.3 Prompt: turn a demonstration into a script\nTurn the following real demonstration notes into a clear video script.",
+      "Audience:\n[Audience]",
+      "Demonstration:\n[Describe the actual work shown]",
+      "Objective:\n[What the viewer should understand]",
+      "Structure:\n1. Briefly introduce the problem.\n2. Show the starting point.\n3. Explain the diagnosis.\n4. Walk through the action.\n5. Explain the important decisions.\n6. Show the result.\n7. State the limitations or next steps.",
+      "Rules:\n- Use only facts supported by the notes.\n- Do not invent results or customer reactions.\n- Keep the reasoning visible.\n- Avoid exaggerated claims.\n- Mark missing information as [NEEDS VERIFICATION].\n- Make the script understandable to someone who has not seen the original work.",
+      "10.4 Prompt: generate multiple formats without changing the facts\nRepurpose the approved source material into these formats:\n1. One short-form video script.\n2. One concise text post.\n3. One educational carousel outline.\n4. One FAQ answer.\n5. One longer newsletter outline.",
+      "Audience:\n[Audience]",
+      "Source:\n[Approved material]",
+      "Preserve:\n- The same factual claims.\n- Important qualifications.\n- The original meaning.\n- The distinction between observation and opinion.",
+      "Do not:\n- Add unsupported statistics.\n- Invent customer testimonials.\n- Exaggerate outcomes.\n- Remove caveats that change the meaning.\n- Present a hypothetical example as a real case.",
+      "For each format, list any context that may be lost during repurposing.",
+      "10.5 Human review checklist\nBefore publication, verify:\n- The original source supports every factual claim.\n- The speaker's meaning has not been changed.\n- Figures, names, dates, and technical terms are correct.\n- The content is not misleading when viewed without its original context.\n- Customer or participant permissions are in place.\n- Private and sensitive details are removed.\n- Demonstrations are accurately labelled.\n- Results are not presented as guaranteed.\n- AI-generated visuals or voices are disclosed where necessary or expected.\n- The final piece provides value beyond merely sounding authoritative."
+    ]
+  },
+  {
+    "id": "chapter-11",
+    "number": 11,
+    "title": "Measure Trust and Business Value, Not Just Output Volume",
+    "paragraphs": [
+      "11.1 More content is not automatically better content\nThe ability to create many assets does not mean every asset deserves to be published.",
+      "Track several dimensions:",
+      "Production\n- Useful source sessions captured.\n- Candidate moments extracted.\n- Approved pieces produced.\n- Time spent on review and editing.\nAudience response\n- Relevant comments and questions.\n- Saves and shares.\n- Meaningful conversations.\n- Repeat viewers.\n- Questions that indicate genuine understanding or interest.\nTrust and credibility\n- People referring to a specific demonstration.\n- Requests for further explanation.\n- Referrals from existing customers.\n- Willingness to participate in a case study.\n- Repeat engagement from the intended audience.\nBusiness outcomes\n- Qualified enquiries.\n- Product trials.\n- Sales conversations.\n- Conversion to customers.\n- Retention and repeat purchases.\n- Customer outcomes, where measurable.\nDo not assume a high view count means high trust or commercial value.",
+      "11.2 Track the full path\nA simple measurement chain:\n1. Content is published.\n2. The intended audience encounters it.\n3. Some viewers engage.\n4. Some take a meaningful next step.\n5. Some become customers or collaborators.\n6. The business delivers value.\n7. The delivery creates new learning and potential proof.\nMeasure the stages you can observe. Avoid claiming that a piece of content caused a sale unless you have reasonable evidence for that connection.",
+      "11.3 Use content feedback to improve the product\nQuestions and objections are not only content ideas. They may reveal problems in:\n- Product design.\n- Onboarding.\n- Pricing.\n- Documentation.\n- Customer support.\n- Service delivery.\n- Positioning.\nFeed those observations back into the business. The best content system can improve both communication and the underlying customer experience."
+    ]
+  },
+  {
+    "id": "chapter-12",
+    "number": 12,
+    "title": "Build Your Proof-Driven Content System in 30 Days",
+    "paragraphs": [
+      "This plan is designed for a creator, professional, founder, or service business that wants to move from isolated content production toward capturing real work.\nWeek 1 — Audit your content and proof\nObjective: understand your current position.",
+      "Actions:\n- List your main content topics.\n- Map them to the risk spectrum.\n- Identify the claims you make most often.\n- List the evidence supporting those claims.\n- Identify gaps between your claims and demonstrations.\n- List activities that could be captured from your normal work.\nDeliverables:\n- A content-risk map.\n- A proof-gap worksheet.\n- A list of five possible demonstrations.\n- A list of capture opportunities.\nWeek 2 — Design your demonstrations\nObjective: make your expertise visible.",
+      "Actions:\n- Choose two or three demonstrations.\n- Define the audience and problem for each.\n- Gather real examples or sample material.\n- Create a simple demonstration outline.\n- Obtain permissions where necessary.\n- Record at least one demonstration.\n- Review it for clarity and accuracy.\nDeliverables:\n- One completed demonstration.\n- Two additional demonstration plans.\n- A repeatable recording checklist.\nWeek 3 — Install the capture workflow\nObjective: turn normal work into a source of content.",
+      "Actions:\n- Identify suitable meetings, Q&As, product tests, or working sessions.\n- Establish consent and recording rules.\n- Choose a storage and naming system.\n- Transcribe approved material.\n- Use AI to identify candidate moments.\n- Review and approve the strongest selections.\n- Create several pieces in different formats.\nDeliverables:\n- A content source library.\n- A reviewed transcript.\n- A shortlist of content moments.\n- A small batch of approved content.\nWeek 4 — Publish, learn, and improve\nObjective: connect proof-driven content to audience and business feedback.",
+      "Actions:\n- Publish the strongest demonstrations and explanations.\n- Respond to relevant questions.\n- Record objections and recurring misunderstandings.\n- Review which pieces generated meaningful conversations.\n- Identify one improvement to the customer experience.\n- Plan the next month's capture opportunities.\nDeliverables:\n- A first month of proof-led content.\n- A record of audience questions.\n- A revised demonstration plan.\n- A repeatable weekly operating rhythm."
+    ]
+  },
+  {
+    "id": "chapter-13",
+    "number": 13,
+    "title": "The Proof Inventory",
+    "paragraphs": [
+      "Use this worksheet to organise what you can credibly show.\n| Proof category | What I have | Where it can be seen | What needs qualification? |\n| --- | --- | --- | --- |\n| Qualifications |  |  |  |\n| Relevant experience |  |  |  |\n| Projects completed |  |  |  |\n| Demonstrations |  |  |  |\n| Customer feedback |  |  |  |\n| Measurable outcomes |  |  |  |\n| Third-party evidence |  |  |  |\n| Lessons from mistakes |  |  |  |",
+      "A blank section is not a reason to invent proof. It is a signal to create more experience and better documentation."
+    ]
+  },
+  {
+    "id": "chapter-14",
+    "number": 14,
+    "title": "The Weekly Content Capture Calendar",
+    "paragraphs": [
+      "| Activity | What to capture | Possible output | Permission or review |\n| --- | --- | --- | --- |\n| Customer Q&A | Recurring questions | Short clips, FAQs | Participant consent |\n| Product testing | Features and limitations | Demonstration | Product and claim review |\n| Project review | Decisions and trade-offs | Case study | Client approval |\n| Teaching session | Clear explanations | Tutorial | Learner privacy |\n| Team working session | Process improvements | Behind-the-scenes lesson | Team and company approval |\n| Public audit | Visible issues and reasoning | Educational walkthrough | Avoid private data and unfair claims |"
+    ]
+  },
+  {
+    "id": "chapter-15",
+    "number": 15,
+    "title": "The Demonstration Brief",
+    "paragraphs": [
+      "Title:\n[What will the demonstration show?]",
+      "Audience:\n[Who should find this useful?]",
+      "Problem:\n[What question or challenge does it address?]",
+      "Starting point:\n[What real example, product, process, or data will be shown?]",
+      "Action:\n[What will you do?]",
+      "Reasoning:\n[Why are you taking these steps?]",
+      "Evidence:\n[What can the audience directly inspect?]",
+      "Limitations:\n[What does this not prove?]",
+      "Permission and privacy:\n[Who has approved the use of this material?]",
+      "Call to action:\n[What is the useful next step, if any?]"
+    ]
+  },
+  {
+    "id": "chapter-16",
+    "number": 16,
+    "title": "The Content Quality Gate",
+    "paragraphs": [
+      "A piece should pass these checks before publication.",
+      "Evidence\n- Is the central claim supported?\n- Can the audience see or understand the basis for it?\n- Are numbers and outcomes contextualised?",
+      "Usefulness\n- Does the content answer a real question?\n- Does it teach, demonstrate, or clarify something?\n- Is the takeaway understandable?",
+      "Authenticity\n- Does it reflect actual work or a clearly labelled illustration?\n- Are AI-assisted elements used responsibly?\n- Does it avoid fabricated proof?",
+      "Safety and privacy\n- Are permissions in place?\n- Is confidential information removed?\n- Could the content expose someone to avoidable harm?",
+      "Clarity\n- Is the context sufficient?\n- Have important caveats survived editing?\n- Does the format suit the message?",
+      "If a piece fails a critical check, revise it or do not publish it."
+    ]
+  },
+  {
+    "id": "chapter-17",
+    "number": 17,
+    "title": "In an AI Content Market, Make the Work Visible",
+    "paragraphs": [
+      "AI reduces the effort required to create many kinds of content. That makes production more accessible, but it also makes generic content easier to imitate.",
+      "A stronger strategy is to build around what can be demonstrated.",
+      "The core principles are:\n1. Understand audience risk. Entertainment, consumer education, financial advice, and business expertise do not require the same level of proof.\n2. Build credibility through evidence. Relevant experience, track record, demonstrations, and third-party support help audiences evaluate claims.\n3. Show expertise in action. Make your reasoning and process visible through real examples.\n4. Engineer proof into delivery. Customer work, product use, audits, and Q&A can create useful evidence when documented responsibly.\n5. Capture rather than constantly perform. Build content from activities that already happen in your work.\n6. Use AI to accelerate the workflow. Transcribe, organise, extract, draft, and repurpose—but verify the result.\n7. Protect trust. Respect consent, privacy, context, and the difference between a demonstration and a guaranteed outcome.\nThe practical shift is from inventing content every day to creating a system in which valuable work produces material worth sharing.",
+      "You do not need to turn every moment into a post. You need to recognise the moments that genuinely demonstrate something, capture them responsibly, and explain why they matter.",
+      "In the age of AI, do not compete only on how much content you can generate. Build a body of work that people can inspect, understand, and trust."
+    ]
+  }
+]
+};

@@ -6,10 +6,10 @@ import { NEW_WAY_CONTENT_AI_DETAIL_DATA } from "@/lib/playbooks/new-way-content-
 
 export const metadata: Metadata = {
   title: "The New Way of Making Content In The Age of AI | Plugd",
-  description: "The New Way of Making Content In The Age of AI. Comprehensive slide decks and deep written lessons.",
+  description: "Stop competing with AI on content volume—make your real expertise, results, and behind-the-scenes work impossible to imitate.",
   openGraph: {
     title: "The New Way of Making Content In The Age of AI | Plugd",
-    description: "The New Way of Making Content In The Age of AI. Comprehensive slide decks and deep written lessons.",
+    description: "Stop competing with AI on content volume—make your real expertise, results, and behind-the-scenes work impossible to imitate.",
   },
 };
 
