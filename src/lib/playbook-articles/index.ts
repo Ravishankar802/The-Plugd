@@ -45,6 +45,7 @@ import { FIVE_PROVEN_WAYS_AI_ARTICLE } from "./five-proven-ways-ai-no-experience
 import { CHATGPT_KNOWLEDGE_ARTICLE } from "./chatgpt-10000-hours";
 import { CLAUDE_KNOWLEDGE_ARTICLE } from "./claude-10000-hours";
 import { ZERO_AD_CUSTOMERS_ARTICLE } from "./zero-ad-customers";
+import { THREE_AI_BUSINESSES_ARTICLE } from "./three-ai-businesses";
 
 export * from "./types";
 
@@ -143,6 +144,10 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "side-hustles-08": ZERO_AD_CUSTOMERS_ARTICLE,
   "5-ways-to-find-paying-customers-without-spending-on-ads": ZERO_AD_CUSTOMERS_ARTICLE,
   "10-ways-to-find-paying-customers-without-spending-on-ads": ZERO_AD_CUSTOMERS_ARTICLE,
+  "7-ai-automations": THREE_AI_BUSINESSES_ARTICLE,
+  "ai-businesses-01": THREE_AI_BUSINESSES_ARTICLE,
+  "these-3-ai-businesses-will-make-you-10k-month-with-zero-employees": THREE_AI_BUSINESSES_ARTICLE,
+  "these-3-ai-will-make-you-10k-month-with-zero-employees": THREE_AI_BUSINESSES_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

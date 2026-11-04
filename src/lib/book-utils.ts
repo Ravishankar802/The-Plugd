@@ -93,6 +93,21 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "7-ai-automations" ||
+    slug === "ai-businesses-01" ||
+    slug === "these-3-ai-businesses-will-make-you-10k-month-with-zero-employees" ||
+    slug === "these-3-ai-will-make-you-10k-month-with-zero-employees"
+  ) {
+    return {
+      name: "Byron Matthews",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "side-hustles" ||
     slug === "side-hustles-08" ||
     slug === "5-ways-to-find-paying-customers-without-spending-on-ads" ||
@@ -604,6 +619,56 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "7-ai-automations" ||
+    slug === "ai-businesses-01" ||
+    slug === "these-3-ai-businesses-will-make-you-10k-month-with-zero-employees" ||
+    slug === "these-3-ai-will-make-you-10k-month-with-zero-employees"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Quincy",
+        avatar: "",
+        date: "October 11 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the clearest breakdowns of AI business opportunities I've read. The comparison between automation, content agencies, and shadow operating makes it much easier to decide which direction to pursue.",
+        likes: 58,
+      },
+      {
+        id: "rev-2",
+        name: "Spencer",
+        avatar: "",
+        date: "October 14 2026",
+        rating: 5,
+        headline: "",
+        content: "The shadow-operating model was the standout for me. I never really considered partnering with creators and handling the business side of their digital products. The outreach scripts and partnership frameworks are incredibly useful.",
+        likes: 49,
+      },
+      {
+        id: "rev-3",
+        name: "Wesley",
+        avatar: "",
+        date: "October 16 2026",
+        rating: 5,
+        headline: "",
+        content: "This goes beyond throwing AI tools at random business ideas. It explains how to find real problems, build valuable services, price them, deliver consistently, and create systems that can scale.",
+        likes: 42,
+      },
+      {
+        id: "rev-4",
+        name: "Geoffrey",
+        avatar: "",
+        date: "October 22 2026",
+        rating: 5,
+        headline: "",
+        content: "A fantastic resource for anyone interested in starting a one-person AI business. The practical prompts, 90-day roadmap, and detailed workflows make the entire process feel much more approachable.",
+        likes: 36,
+      },
+    ];
+  }
+
   if (
     slug === "side-hustles" ||
     slug === "side-hustles-08" ||
