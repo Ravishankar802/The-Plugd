@@ -93,6 +93,8 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "give-me-26-minutes-ill-give-you-10000-hours-of-claude-knowledge" ||
+    slug === "ai-businesses-03" ||
     slug === "give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge" ||
     slug === "ai-businesses-04"
   ) {
@@ -587,6 +589,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "give-me-26-minutes-ill-give-you-10000-hours-of-claude-knowledge" || slug === "ai-businesses-03") {
+    return [
+      {
+        id: "rev-1",
+        name: "Dominic",
+        avatar: "",
+        date: "September 08 2026",
+        rating: 5,
+        headline: "",
+        content: "This is the kind of Claude guide I was looking for. It goes beyond basic prompting and shows how to build an actual working system around AI. The Skills and Projects sections are especially useful.",
+        likes: 89,
+      },
+      {
+        id: "rev-2",
+        name: "Ewan McKenzie",
+        avatar: "",
+        date: "September 25 2026",
+        rating: 5,
+        headline: "",
+        content: "The progression from beginner to advanced makes everything easy to follow. I particularly liked the practical prompts for automating repetitive tasks and delegating work.",
+        likes: 75,
+      },
+      {
+        id: "rev-3",
+        name: "Aidan",
+        avatar: "",
+        date: "October 11 2026",
+        rating: 5,
+        headline: "",
+        content: "A genuinely practical playbook. The sections on Claude Code, browser assistance, and building reusable Skills helped me see how much more I can accomplish beyond ordinary conversations.",
+        likes: 60,
+      },
+      {
+        id: "rev-4",
+        name: "Lewis Barrett",
+        avatar: "",
+        date: "October 13 2026",
+        rating: 5,
+        headline: "",
+        content: "Well structured, detailed, and packed with useful examples. I appreciate that it also covers permissions, human approval, and quality checks instead of making automation sound effortless.",
+        likes: 46,
+      },
+    ];
+  }
+
   if (slug === "give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge" || slug === "ai-businesses-04") {
     return [
       {

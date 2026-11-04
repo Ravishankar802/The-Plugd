@@ -6,10 +6,10 @@ import { CLAUDE_KNOWLEDGE_DETAIL_DATA } from "@/lib/playbooks/claude-knowledge-d
 
 export const metadata: Metadata = {
   title: "Give Me 26 Minutes, I'll Give You 10,000 Hours of Claude Knowledge | Plugd",
-  description: "Give Me 26 Minutes, I'll Give You 10,000 Hours of Claude Knowledge. Comprehensive slide decks and deep written lessons.",
+  description: "Discover 10 powerful Claude capabilities, organised from beginner to advanced, and learn how to use them to save time and produce better work. Build personalised context, create reusable Skills, organise Projects, connect apps, delegate browser tasks, and automate repeatable workflows. Go further by using Claude Code to build software and Claude Design to create functional interfaces and prototypes. Includes ready-to-use prompts, practical workflows, checklists, and a 7-day implementation plan.",
   openGraph: {
     title: "Give Me 26 Minutes, I'll Give You 10,000 Hours of Claude Knowledge | Plugd",
-    description: "Give Me 26 Minutes, I'll Give You 10,000 Hours of Claude Knowledge. Comprehensive slide decks and deep written lessons.",
+    description: "Discover 10 powerful Claude capabilities, organised from beginner to advanced, and learn how to use them to save time and produce better work. Build personalised context, create reusable Skills, organise Projects, connect apps, delegate browser tasks, and automate repeatable workflows. Go further by using Claude Code to build software and Claude Design to create functional interfaces and prototypes. Includes ready-to-use prompts, practical workflows, checklists, and a 7-day implementation plan.",
   },
 };
 
