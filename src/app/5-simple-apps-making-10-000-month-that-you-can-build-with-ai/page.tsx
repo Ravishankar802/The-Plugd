@@ -4,10 +4,10 @@ import { FIVE_SIMPLE_APPS_10K_DETAIL } from "@/lib/playbooks/five-simple-apps-10
 
 export const metadata: Metadata = {
   title: "5 Simple Apps Making $10,000/month That You Can Build with AI | Plugd",
-  description: "How tiny, single-utility micro-apps quietly make $10,000+/month—and how to build them with AI in days.",
+  description: "Build a tiny app, solve a real problem, and tap into the massive opportunity of subscription-based micro-SaaS.",
   openGraph: {
     title: "5 Simple Apps Making $10,000/month That You Can Build with AI | Plugd",
-    description: "How tiny, single-utility micro-apps quietly make $10,000+/month—and how to build them with AI in days.",
+    description: "Build a tiny app, solve a real problem, and tap into the massive opportunity of subscription-based micro-SaaS.",
   },
 };
 

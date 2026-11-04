@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "5-simple-apps-making-10-000-month-that-you-can-build-with-ai" ||
+    slug === "ai-businesses-60"
+  ) {
+    return {
+      name: "Kelvin Ng",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "if-youre-in-your-20s-heres-how-to-win-at-anything" ||
     slug === "ai-businesses-55"
   ) {
@@ -672,6 +685,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "5-simple-apps-making-10-000-month-that-you-can-build-with-ai" ||
+    slug === "ai-businesses-60"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Darren Low",
+        avatar: "",
+        date: "October 09 2026",
+        rating: 5,
+        headline: "",
+        content: "Absolutely love how practical this is. Instead of throwing out random startup ideas, it shows you how to find existing demand and build something people already understand. The app concepts and AI prompts are incredibly useful.",
+        likes: 63,
+      },
+      {
+        id: "rev-2",
+        name: "Ethan Ho",
+        avatar: "",
+        date: "October 13 2026",
+        rating: 5,
+        headline: "",
+        content: "A fantastic resource for anyone interested in micro-SaaS. The breakdown of each app, its core features, and monetisation strategy makes the whole process feel much more approachable. Definitely gave me ideas worth exploring.",
+        likes: 56,
+      },
+      {
+        id: "rev-3",
+        name: "Faizal Ismail",
+        avatar: "",
+        date: "October 19 2026",
+        rating: 5,
+        headline: "",
+        content: "The competitor research and subscription sections are gold. I especially liked how the playbook explains that you don't need to build a massive platform to create something valuable. Simple, focused, and genuinely actionable.",
+        likes: 41,
+      },
+      {
+        id: "rev-4",
+        name: "Qais Rahal",
+        avatar: "",
+        date: "October 25 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most actionable AI business guides I've come across. The ready-to-use build prompts, MVP breakdowns, and 30-day roadmap make it easy to go from an idea to a working prototype. Great value!",
+        likes: 34,
+      },
+    ];
+  }
+
   if (
     slug === "if-youre-in-your-20s-heres-how-to-win-at-anything" ||
     slug === "ai-businesses-55"
