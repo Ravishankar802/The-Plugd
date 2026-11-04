@@ -6,10 +6,10 @@ import { MONEY_PRINCIPLES_20S_DETAIL_DATA } from "@/lib/playbooks/money-principl
 
 export const metadata: Metadata = {
   title: "The 5 Money Principles that will make anyone RICH in their 20s | Plugd",
-  description: "The 5 Money Principles that will make anyone RICH in their 20s. Comprehensive slide decks and deep written lessons.",
+  description: "Master the five money principles that help you build earning power, develop financial discipline, and create lasting wealth in your 20s. Discover five powerful principles for building wealth early.",
   openGraph: {
     title: "The 5 Money Principles that will make anyone RICH in their 20s | Plugd",
-    description: "The 5 Money Principles that will make anyone RICH in their 20s. Comprehensive slide decks and deep written lessons.",
+    description: "Master the five money principles that help you build earning power, develop financial discipline, and create lasting wealth in your 20s. Discover five powerful principles for building wealth early.",
   },
 };
 

@@ -93,6 +93,8 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "the-5-money-principles-that-will-make-anyone-rich-in-their-20s" ||
+    slug === "ai-businesses-12" ||
     slug === "i-locked-myself-in-a-room-until-i-built-a-350-000-mo-business" ||
     slug === "ai-businesses-14"
   ) {
@@ -763,6 +765,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "the-5-money-principles-that-will-make-anyone-rich-in-their-20s" ||
+    slug === "ai-businesses-12"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Devin",
+        avatar: "",
+        date: "August 01 2026",
+        rating: 5,
+        headline: "",
+        content: "Really liked how this breaks wealth-building down into principles you can actually apply. The 90-day plan makes it much easier to stop overthinking and start taking action.",
+        likes: 127,
+      },
+      {
+        id: "rev-2",
+        name: "Chase Morgan",
+        avatar: "",
+        date: "August 09 2026",
+        rating: 5,
+        headline: "",
+        content: "More than another motivational guide. I loved the practical exercises, weekly reviews, and the way it connects personal discipline with financial progress. Definitely worth reading.",
+        likes: 105,
+      },
+      {
+        id: "rev-3",
+        name: "Riley",
+        avatar: "",
+        date: "August 15 2026",
+        rating: 5,
+        headline: "",
+        content: "The section about investing in your earning power completely changed how I look at money. Building valuable skills first makes so much sense, especially when you're starting with limited capital.",
+        likes: 93,
+      },
+      {
+        id: "rev-4",
+        name: "Evan Foster",
+        avatar: "",
+        date: "August 20 2026",
+        rating: 5,
+        headline: "",
+        content: "The biggest takeaway for me was learning to experiment with different income paths instead of blindly following what works for someone else. Straightforward, practical, and genuinely useful.",
+        likes: 88,
+      },
+    ];
+  }
+
   if (
     slug === "i-locked-myself-in-a-room-until-i-built-a-350-000-mo-business" ||
     slug === "ai-businesses-14"
