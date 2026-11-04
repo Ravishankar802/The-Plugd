@@ -6,10 +6,10 @@ import { FIVE_YEARS_GET_RICH_AI_DETAIL } from "@/lib/playbooks/five-years-get-ri
 
 export const metadata: Metadata = {
   title: "You Have 5 Years to Get Rich Before AI Takes Over | Plugd",
-  description: "A macro roadmap to front-run the greatest wealth transfer in history and accumulate sovereign assets before 2031.",
+  description: "AI is reshaping the economy. Build income, own productive assets, and put yourself in a position to benefit before the next major shift.",
   openGraph: {
     title: "You Have 5 Years to Get Rich Before AI Takes Over | Plugd",
-    description: "A macro roadmap to front-run the greatest wealth transfer in history and accumulate sovereign assets before 2031.",
+    description: "AI is reshaping the economy. Build income, own productive assets, and put yourself in a position to benefit before the next major shift.",
   },
 };
 

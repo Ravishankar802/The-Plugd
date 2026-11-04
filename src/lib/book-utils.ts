@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "you-have-5-years-to-get-rich-before-ai-takes-over" || slug === "ai-businesses-30") {
+    return {
+      name: "Luka Horvat",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "investing-for-beginners-in-25-minutes" || slug === "ai-businesses-31") {
     return {
       name: "Pranav Joshi",
@@ -329,6 +339,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "you-have-5-years-to-get-rich-before-ai-takes-over" || slug === "ai-businesses-30") {
+    return [
+      {
+        id: "rev-1",
+        name: "Andrew Cooper",
+        avatar: "",
+        date: "August 30 2026",
+        rating: 5,
+        headline: "",
+        content: "This genuinely changed how I think about AI and money. The focus on ownership instead of just earning a salary is something I hadn't considered deeply before.",
+        likes: 80,
+      },
+      {
+        id: "rev-2",
+        name: "Nicholas",
+        avatar: "",
+        date: "September 28 2026",
+        rating: 5,
+        headline: "",
+        content: "Loved the practical approach. The 90-day plan gives you something concrete to work on instead of just worrying about what AI might do to the future.",
+        likes: 64,
+      },
+      {
+        id: "rev-3",
+        name: "Daniel Foster",
+        avatar: "",
+        date: "October 04 2026",
+        rating: 5,
+        headline: "",
+        content: "A refreshing perspective. It explains why learning AI alone isn't enough and why understanding customers, building systems, and owning assets actually matter.",
+        likes: 67,
+      },
+      {
+        id: "rev-4",
+        name: "Christopher",
+        avatar: "",
+        date: "October 01 2026",
+        rating: 5,
+        headline: "",
+        content: "Very actionable and well organised. It helped me think beyond my current job and start planning for the long term.",
+        likes: 58,
+      },
+    ];
+  }
+
   if (slug === "investing-for-beginners-in-25-minutes" || slug === "ai-businesses-31") {
     return [
       {

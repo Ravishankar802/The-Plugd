@@ -21,6 +21,7 @@ import { SEVEN_SIDE_HUSTLES_STUDENTS_ARTICLE } from "./seven-side-hustles-studen
 import { TRADING_212_INVESTING_GUIDE_ARTICLE } from "./trading-212-investing-guide";
 import { LAZIEST_WAYS_MAKE_MONEY_AI_ARTICLE } from "./laziest-ways-to-make-money-with-ai";
 import { INVESTING_BEGINNERS_25M_ARTICLE } from "./investing-beginners-in-25-minutes";
+import { FIVE_YEARS_GET_RICH_AI_ARTICLE } from "./five-years-get-rich-before-ai";
 
 export * from "./types";
 
@@ -69,6 +70,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-32": LAZIEST_WAYS_MAKE_MONEY_AI_ARTICLE,
   "investing-for-beginners-in-25-minutes": INVESTING_BEGINNERS_25M_ARTICLE,
   "ai-businesses-31": INVESTING_BEGINNERS_25M_ARTICLE,
+  "you-have-5-years-to-get-rich-before-ai-takes-over": FIVE_YEARS_GET_RICH_AI_ARTICLE,
+  "ai-businesses-30": FIVE_YEARS_GET_RICH_AI_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {
