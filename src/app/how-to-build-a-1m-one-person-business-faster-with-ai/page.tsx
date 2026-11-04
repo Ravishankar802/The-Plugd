@@ -6,10 +6,10 @@ import { BUILD_1M_SOLO_FASTER_DETAIL } from "@/lib/playbooks/build-1m-one-person
 
 export const metadata: Metadata = {
   title: "How To Build A $1M One-Person Business Faster With AI | Plugd",
-  description: "The complete operating blueprint to architect, scale, and automate a $1,000,000/year one-person empire with AI leverage.",
+  description: "Build a business that works like a one-person powerhouse—use AI to create a trusted brand, attract customers, sell valuable offers, and scale smarter.",
   openGraph: {
     title: "How To Build A $1M One-Person Business Faster With AI | Plugd",
-    description: "The complete operating blueprint to architect, scale, and automate a $1,000,000/year one-person empire with AI leverage.",
+    description: "Build a business that works like a one-person powerhouse—use AI to create a trusted brand, attract customers, sell valuable offers, and scale smarter.",
   },
 };
 

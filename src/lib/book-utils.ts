@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "how-to-build-a-1m-one-person-business-faster-with-ai" ||
+    slug === "ai-businesses-26"
+  ) {
+    return {
+      name: "Thomas Visser",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "learn-this-skill-if-you-want-to-win-in-the-next-2-3-years" ||
     slug === "ai-businesses-25" ||
     slug === "how-to-think-like-a-strategic-genius-5-dimensional-thinking" ||
@@ -366,6 +379,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "how-to-build-a-1m-one-person-business-faster-with-ai" || slug === "ai-businesses-26") {
+    return [
+      {
+        id: "rev-1",
+        name: "Pablo Sánchez",
+        avatar: "",
+        date: "August 18 2026",
+        rating: 5,
+        headline: "",
+        content: "This is exactly the kind of practical guide I was looking for. It connects branding, content, offers, and AI into one clear business-building system instead of treating them as separate skills.",
+        likes: 97,
+      },
+      {
+        id: "rev-2",
+        name: "Luca",
+        avatar: "",
+        date: "September 23 2026",
+        rating: 5,
+        headline: "",
+        content: "The AI prompts alone are incredibly useful. I especially liked the sections on customer research and offer creation. It makes starting a business feel much more structured and less overwhelming.",
+        likes: 75,
+      },
+      {
+        id: "rev-3",
+        name: "Jakub",
+        avatar: "",
+        date: "October 09 2026",
+        rating: 5,
+        headline: "",
+        content: "What makes this playbook stand out is that it doesn't pretend AI will magically run your business. It teaches you how to use AI properly while keeping customer value and execution at the centre.",
+        likes: 53,
+      },
+      {
+        id: "rev-4",
+        name: "Ivan",
+        avatar: "",
+        date: "October 21 2026",
+        rating: 5,
+        headline: "",
+        content: "A genuinely solid resource for aspiring solo founders. The 30-day roadmap, landing-page frameworks, outreach templates, and weekly review checklists make it something you can actually put into action.",
+        likes: 50,
+      },
+    ];
+  }
+
   if (slug === "learn-this-skill-if-you-want-to-win-in-the-next-2-3-years" || slug === "ai-businesses-25") {
     return [
       {
