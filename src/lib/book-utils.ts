@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "if-youre-in-your-20s-heres-how-to-win-at-anything" ||
+    slug === "ai-businesses-55"
+  ) {
+    return {
+      name: "Niall Brennan",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "the-smartest-way-to-capitalize-on-the-ai-gold-rush" ||
     slug === "ai-businesses-56"
   ) {
@@ -659,6 +672,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "if-youre-in-your-20s-heres-how-to-win-at-anything" ||
+    slug === "ai-businesses-55"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Pascal Schmitt",
+        avatar: "",
+        date: "October 07 2026",
+        rating: 5,
+        headline: "",
+        content: "This genuinely changed how I approach my goals. The idea of doing more of what already works sounds simple, but the frameworks make it incredibly actionable. A much-needed reminder to stop overthinking and start executing.",
+        likes: 60,
+      },
+      {
+        id: "rev-2",
+        name: "Florian",
+        avatar: "",
+        date: "October 12 2026",
+        rating: 5,
+        headline: "",
+        content: "The best part is the focus on consistency over constant reinvention. I've spent so much time switching strategies instead of giving one approach enough time to work. This playbook puts everything into perspective.",
+        likes: 55,
+      },
+      {
+        id: "rev-3",
+        name: "Koen Willems",
+        avatar: "",
+        date: "October 16 2026",
+        rating: 5,
+        headline: "",
+        content: "Packed with practical frameworks that apply to almost everything—business, learning, career, and personal development. The 90-day plan and weekly review templates make it especially useful.",
+        likes: 50,
+      },
+      {
+        id: "rev-4",
+        name: "Elias",
+        avatar: "",
+        date: "October 23 2026",
+        rating: 5,
+        headline: "",
+        content: "A powerful mindset shift for anyone in their twenties. It teaches you to think bigger, stop getting distracted by shiny new strategies, and build the discipline to follow through. Definitely worth reading.",
+        likes: 36,
+      },
+    ];
+  }
+
   if (
     slug === "the-smartest-way-to-capitalize-on-the-ai-gold-rush" ||
     slug === "ai-businesses-56"
