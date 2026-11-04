@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "what-makes-the-perfect-business-5-things" ||
+    slug === "ai-businesses-22"
+  ) {
+    return {
+      name: "Marco Romano",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "how-to-use-ai-in-your-business-in-2026" ||
     slug === "ai-businesses-23"
   ) {
@@ -405,6 +418,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "what-makes-the-perfect-business-5-things" || slug === "ai-businesses-22") {
+    return [
+      {
+        id: "rev-1",
+        name: "Davide",
+        avatar: "",
+        date: "August 20 2026",
+        rating: 5,
+        headline: "",
+        content: "This is such a powerful framework for evaluating business ideas. The five characteristics make it much easier to understand what separates a genuinely strong business from one that simply generates revenue.",
+        likes: 110,
+      },
+      {
+        id: "rev-2",
+        name: "Miguel",
+        avatar: "",
+        date: "August 31 2026",
+        rating: 5,
+        headline: "",
+        content: "I loved how practical this is. The sections on retention, gross margins, and competitive moats completely changed the way I think about choosing a business model.",
+        likes: 97,
+      },
+      {
+        id: "rev-3",
+        name: "Akash Verma",
+        avatar: "",
+        date: "September 15 2026",
+        rating: 5,
+        headline: "",
+        content: "More than just business theory. The scoring framework, financial formulas, and worksheets make it something you can actually use to evaluate real opportunities.",
+        likes: 74,
+      },
+      {
+        id: "rev-4",
+        name: "Tanvir Hasan",
+        avatar: "",
+        date: "September 28 2026",
+        rating: 5,
+        headline: "",
+        content: "The concept of building a business that becomes stronger over time really stood out to me. A great resource for founders who want sustainable economics instead of chasing revenue numbers.",
+        likes: 56,
+      },
+    ];
+  }
+
   if (slug === "how-to-use-ai-in-your-business-in-2026" || slug === "ai-businesses-23") {
     return [
       {

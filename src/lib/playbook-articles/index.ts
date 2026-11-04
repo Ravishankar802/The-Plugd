@@ -29,6 +29,7 @@ import { LEARN_SKILL_WIN_NEXT_YEARS_ARTICLE } from "./learn-this-skill-win-next-
 import { BUILD_1M_ONE_PERSON_BUSINESS_ARTICLE } from "./build-1m-one-person-business";
 import { MULTIPLE_INTERESTS_ONE_PERSON_BIZ_ARTICLE } from "./multiple-interests-one-person-biz";
 import { USE_AI_IN_BUSINESS_2026_ARTICLE } from "./use-ai-in-business-2026";
+import { PERFECT_BUSINESS_5_THINGS_ARTICLE } from "./perfect-business-5-things";
 
 export * from "./types";
 
@@ -93,6 +94,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-24": MULTIPLE_INTERESTS_ONE_PERSON_BIZ_ARTICLE,
   "how-to-use-ai-in-your-business-in-2026": USE_AI_IN_BUSINESS_2026_ARTICLE,
   "ai-businesses-23": USE_AI_IN_BUSINESS_2026_ARTICLE,
+  "what-makes-the-perfect-business-5-things": PERFECT_BUSINESS_5_THINGS_ARTICLE,
+  "ai-businesses-22": PERFECT_BUSINESS_5_THINGS_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

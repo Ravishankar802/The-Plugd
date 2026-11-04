@@ -6,10 +6,10 @@ import { PERFECT_BUSINESS_5_THINGS_DETAIL_DATA } from "@/lib/playbooks/perfect-b
 
 export const metadata: Metadata = {
   title: "What Makes The Perfect Business (5 Things) | Plugd",
-  description: "What Makes The Perfect Business (5 Things). Comprehensive slide decks and deep written lessons.",
+  description: "Stop chasing AI trends and start building a smarter business—automate the right workflows, improve performance, and turn AI into a real competitive advantage.",
   openGraph: {
     title: "What Makes The Perfect Business (5 Things) | Plugd",
-    description: "What Makes The Perfect Business (5 Things). Comprehensive slide decks and deep written lessons.",
+    description: "Stop chasing AI trends and start building a smarter business—automate the right workflows, improve performance, and turn AI into a real competitive advantage.",
   },
 };
 
