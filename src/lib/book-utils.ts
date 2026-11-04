@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "investing-for-beginners-in-25-minutes" || slug === "ai-businesses-31") {
+    return {
+      name: "Pranav Joshi",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "laziest-ways-to-make-money-with-ai-for-beginners" || slug === "ai-businesses-32") {
     return {
       name: "Felix Weber",
@@ -319,6 +329,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "investing-for-beginners-in-25-minutes" || slug === "ai-businesses-31") {
+    return [
+      {
+        id: "rev-1",
+        name: "Arjun Nair",
+        avatar: "",
+        date: "August 23 2026",
+        rating: 5,
+        headline: "",
+        content: "Finally, an investing guide that explains things in a way beginners can actually understand. The portfolio and diversification sections were especially helpful.",
+        likes: 75,
+      },
+      {
+        id: "rev-2",
+        name: "Rahul",
+        avatar: "",
+        date: "September 02 2026",
+        rating: 5,
+        headline: "",
+        content: "Really well structured. I went from barely understanding ETFs and bonds to having a much clearer idea of how to approach long-term investing.",
+        likes: 51,
+      },
+      {
+        id: "rev-3",
+        name: "Aditya",
+        avatar: "",
+        date: "October 09 2026",
+        rating: 5,
+        headline: "",
+        content: "The best part is that it doesn't just tell you what to buy. It teaches you how to think about risk, research companies, and build a proper investment strategy.",
+        likes: 58,
+      },
+      {
+        id: "rev-4",
+        name: "Karthik",
+        avatar: "",
+        date: "October 15 2026",
+        rating: 5,
+        headline: "",
+        content: "A genuinely useful beginner's resource. The practical checklists and 30-day plan make it much easier to turn the knowledge into an actual routine.",
+        likes: 42,
+      },
+    ];
+  }
+
   if (slug === "laziest-ways-to-make-money-with-ai-for-beginners" || slug === "ai-businesses-32") {
     return [
       {

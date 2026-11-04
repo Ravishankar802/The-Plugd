@@ -6,10 +6,10 @@ import { INVESTING_BEGINNERS_25M_DETAIL } from "@/lib/playbooks/investing-beginn
 
 export const metadata: Metadata = {
   title: "Investing For Beginners in 25 Minutes | Plugd",
-  description: "A 40-year veteran investor's ultimate masterclass condensed into 25 minutes of pure wealth-building mechanics.",
+  description: "Stop guessing with your money. Learn how to build a diversified investment portfolio and grow wealth with a smarter long-term strategy.",
   openGraph: {
     title: "Investing For Beginners in 25 Minutes | Plugd",
-    description: "A 40-year veteran investor's ultimate masterclass condensed into 25 minutes of pure wealth-building mechanics.",
+    description: "Stop guessing with your money. Learn how to build a diversified investment portfolio and grow wealth with a smarter long-term strategy.",
   },
 };
 
