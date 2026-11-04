@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "how-to-get-rich-for-service-based-businesses-thank-me-later" ||
+    slug === "ai-businesses-19"
+  ) {
+    return {
+      name: "Tejas Patil",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "the-new-way-of-making-content-in-the-age-of-ai" ||
     slug === "ai-businesses-20"
   ) {
@@ -444,6 +457,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "how-to-get-rich-for-service-based-businesses-thank-me-later" || slug === "ai-businesses-19") {
+    return [
+      {
+        id: "rev-1",
+        name: "Mayank Jain",
+        avatar: "",
+        date: "August 25 2026",
+        rating: 5,
+        headline: "",
+        content: "A fantastic breakdown of how to build a genuinely profitable service business. The costing and pricing frameworks make it clear why revenue alone doesn't tell the whole story.",
+        likes: 83,
+      },
+      {
+        id: "rev-2",
+        name: "Rishabh",
+        avatar: "",
+        date: "September 01 2026",
+        rating: 5,
+        headline: "",
+        content: "The pricing calculator, ideal customer framework, and sales process improvements are incredibly practical. This is the kind of playbook you can actually implement with your team.",
+        likes: 77,
+      },
+      {
+        id: "rev-3",
+        name: "Irfan Ansari",
+        avatar: "",
+        date: "September 09 2026",
+        rating: 5,
+        headline: "",
+        content: "Loved the emphasis on fixing margins before scaling demand. The 90-day roadmap gives the entire process a clear structure, from understanding costs to building repeatable acquisition.",
+        likes: 72,
+      },
+      {
+        id: "rev-4",
+        name: "Shubham Tiwari",
+        avatar: "",
+        date: "September 18 2026",
+        rating: 5,
+        headline: "",
+        content: "Packed with actionable business frameworks. Especially useful for founders who are too involved in sales and delivery and want to build a company that operates more systematically and profitably.",
+        likes: 61,
+      },
+    ];
+  }
+
   if (slug === "the-new-way-of-making-content-in-the-age-of-ai" || slug === "ai-businesses-20") {
     return [
       {

@@ -6,10 +6,10 @@ import { GET_RICH_SERVICE_BUSINESSES_DETAIL_DATA } from "@/lib/playbooks/get-ric
 
 export const metadata: Metadata = {
   title: "How to Get Rich for Service-Based Businesses (Thank Me Later) | Plugd",
-  description: "How to Get Rich for Service-Based Businesses (Thank Me Later). Comprehensive slide decks and deep written lessons.",
+  description: "Stop competing with AI on content volume—make your real expertise, results, and behind-the-scenes work impossible to imitate.",
   openGraph: {
     title: "How to Get Rich for Service-Based Businesses (Thank Me Later) | Plugd",
-    description: "How to Get Rich for Service-Based Businesses (Thank Me Later). Comprehensive slide decks and deep written lessons.",
+    description: "Stop competing with AI on content volume—make your real expertise, results, and behind-the-scenes work impossible to imitate.",
   },
 };
 
