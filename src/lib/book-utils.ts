@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026" ||
+    slug === "ai-businesses-07"
+  ) {
+    return {
+      name: "Jordan Hayes",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "7-side-hustles-students-can-start-in-2027" ||
     slug === "ai-businesses-57"
   ) {
@@ -724,6 +737,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026" ||
+    slug === "ai-businesses-07"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Corey Bryant",
+        avatar: "",
+        date: "October 04 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the more interesting AI business models I've come across. The shadow operator concept is explained clearly, and the step-by-step process makes it feel much easier to approach.",
+        likes: 75,
+      },
+      {
+        id: "rev-2",
+        name: "Denzel Parker",
+        avatar: "",
+        date: "October 15 2026",
+        rating: 5,
+        headline: "",
+        content: "Loved how practical this is. The creator research framework, outreach scripts, and partnership templates give you an actual starting point instead of just another motivational guide.",
+        likes: 60,
+      },
+      {
+        id: "rev-3",
+        name: "Kaden",
+        avatar: "",
+        date: "October 16 2026",
+        rating: 5,
+        headline: "",
+        content: "The best part is understanding how to combine AI skills with someone else's audience and expertise. It completely changed how I think about building an online business.",
+        likes: 44,
+      },
+      {
+        id: "rev-4",
+        name: "Jaylen",
+        avatar: "",
+        date: "October 20 2026",
+        rating: 5,
+        headline: "",
+        content: "Super detailed and actionable. I especially liked the revenue-sharing breakdown, AI prompts, and 30-day plan. It covers the business side, not just product creation.",
+        likes: 31,
+      },
+    ];
+  }
+
   if (
     slug === "7-side-hustles-students-can-start-in-2027" ||
     slug === "ai-businesses-57"

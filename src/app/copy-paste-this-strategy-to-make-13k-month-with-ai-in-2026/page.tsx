@@ -6,10 +6,10 @@ import { COPY_PASTE_13K_DETAIL_DATA } from "@/lib/playbooks/copy-paste-13k-detai
 
 export const metadata: Metadata = {
   title: "Copy & Paste THIS Strategy to Make $13k/Month with AI in 2026 | Plugd",
-  description: "Copy & Paste THIS Strategy to Make $13k/Month with AI in 2026. Comprehensive slide decks and deep written lessons.",
+  description: "Turn a creator’s audience into a digital product business—use AI to build the offer, launch it, and earn alongside them.",
   openGraph: {
     title: "Copy & Paste THIS Strategy to Make $13k/Month with AI in 2026 | Plugd",
-    description: "Copy & Paste THIS Strategy to Make $13k/Month with AI in 2026. Comprehensive slide decks and deep written lessons.",
+    description: "Turn a creator’s audience into a digital product business—use AI to build the offer, launch it, and earn alongside them.",
   },
 };
 
