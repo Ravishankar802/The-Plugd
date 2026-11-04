@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "your-first-1m-is-simple-heres-how" ||
+    slug === "ai-businesses-11"
+  ) {
+    return {
+      name: "Myles Grant",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "the-a-i-revolution-8-ways-to-get-rich" ||
     slug === "ai-businesses-16"
   ) {
@@ -496,6 +509,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "your-first-1m-is-simple-heres-how" || slug === "ai-businesses-11") {
+    return [
+      {
+        id: "rev-1",
+        name: "Derek",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "Exactly the wake-up call I needed. The chapters on business inertia and radical focus completely changed how I approach my goals. Practical, direct, and genuinely useful.",
+        likes: 85,
+      },
+      {
+        id: "rev-2",
+        name: "Archie",
+        avatar: "",
+        date: "September 05 2026",
+        rating: 5,
+        headline: "",
+        content: "I loved how this playbook turns the million-dollar ambition into smaller, actionable steps. The 30-day and 90-day plans make it much easier to stop overthinking and actually execute.",
+        likes: 80,
+      },
+      {
+        id: "rev-3",
+        name: "Freddie",
+        avatar: "",
+        date: "September 13 2026",
+        rating: 5,
+        headline: "",
+        content: "The focus and monk mode sections are gold. It isn't just about working harder; it's about directing your energy toward the right things while keeping your health and routine in check.",
+        likes: 71,
+      },
+      {
+        id: "rev-4",
+        name: "Toby",
+        avatar: "",
+        date: "September 21 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most practical entrepreneurship guides I've read. The financial milestone tracker, weekly reviews, and business focus plan make this something I'll actually keep coming back to.",
+        likes: 62,
+      },
+    ];
+  }
+
   if (slug === "the-a-i-revolution-8-ways-to-get-rich" || slug === "ai-businesses-16") {
     return [
       {

@@ -6,10 +6,10 @@ import { FIRST_1M_IS_SIMPLE_DETAIL_DATA } from "@/lib/playbooks/first-1m-is-simp
 
 export const metadata: Metadata = {
   title: "Your First $1M Is Simple (Here's How) | Plugd",
-  description: "Your First $1M Is Simple (Here's How). Comprehensive slide decks and deep written lessons.",
+  description: "Your first $1M starts with one decision: stop spreading yourself thin and build unstoppable momentum around what actually matters.",
   openGraph: {
     title: "Your First $1M Is Simple (Here's How) | Plugd",
-    description: "Your First $1M Is Simple (Here's How). Comprehensive slide decks and deep written lessons.",
+    description: "Your first $1M starts with one decision: stop spreading yourself thin and build unstoppable momentum around what actually matters.",
   },
 };
 
