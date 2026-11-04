@@ -93,6 +93,8 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "learn-this-skill-if-you-want-to-win-in-the-next-2-3-years" ||
+    slug === "ai-businesses-25" ||
     slug === "how-to-think-like-a-strategic-genius-5-dimensional-thinking" ||
     slug === "ai-businesses-27" ||
     slug === "how-to-use-ai-better-than-99-of-people-this-changed-my-life" ||
@@ -364,6 +366,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "learn-this-skill-if-you-want-to-win-in-the-next-2-3-years" || slug === "ai-businesses-25") {
+    return [
+      {
+        id: "rev-1",
+        name: "Pablo Sánchez",
+        avatar: "",
+        date: "August 18 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most practical guides I've read on understanding human behaviour. The three tensions and five levers made psychology much easier to apply to real situations.",
+        likes: 97,
+      },
+      {
+        id: "rev-2",
+        name: "Luca",
+        avatar: "",
+        date: "September 23 2026",
+        rating: 5,
+        headline: "",
+        content: "Really useful, especially for anyone interested in business, marketing, or entrepreneurship. It completely changed how I think about communicating value to people.",
+        likes: 75,
+      },
+      {
+        id: "rev-3",
+        name: "Jakub",
+        avatar: "",
+        date: "October 09 2026",
+        rating: 5,
+        headline: "",
+        content: "I loved how actionable this is. Instead of just explaining psychological concepts, it gives you exercises, examples, and a 30-day plan to actually develop the skill.",
+        likes: 53,
+      },
+      {
+        id: "rev-4",
+        name: "Ivan",
+        avatar: "",
+        date: "October 21 2026",
+        rating: 5,
+        headline: "",
+        content: "The ethical persuasion angle is what stood out to me. It teaches you to understand what people genuinely need instead of relying on cheap manipulation tactics. Definitely worth reading.",
+        likes: 50,
+      },
+    ];
+  }
+
   if (slug === "how-to-think-like-a-strategic-genius-5-dimensional-thinking" || slug === "ai-businesses-27") {
     return [
       {

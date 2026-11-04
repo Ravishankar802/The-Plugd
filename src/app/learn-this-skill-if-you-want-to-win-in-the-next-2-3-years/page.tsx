@@ -6,10 +6,10 @@ import { LEARN_THIS_SKILL_DETAIL } from "@/lib/playbooks/learn-this-skill-win-ne
 
 export const metadata: Metadata = {
   title: "Learn This Skill If You Want To Win In The Next 2-3 Years | Plugd",
-  description: "Master the ultimate meta-skill of writing, synthesis, and framing to out-compete and thrive over the next 2-3 years.",
+  description: "Master the psychology behind every sale, every connection, and every opportunity—understand people, communicate value, and persuade with confidence.",
   openGraph: {
     title: "Learn This Skill If You Want To Win In The Next 2-3 Years | Plugd",
-    description: "Master the ultimate meta-skill of writing, synthesis, and framing to out-compete and thrive over the next 2-3 years.",
+    description: "Master the psychology behind every sale, every connection, and every opportunity—understand people, communicate value, and persuade with confidence.",
   },
 };
 
