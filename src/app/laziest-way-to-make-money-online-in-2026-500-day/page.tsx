@@ -6,10 +6,10 @@ import { LAZIEST_WAY_500_DAY_DETAIL_DATA } from "@/lib/playbooks/laziest-way-500
 
 export const metadata: Metadata = {
   title: "Laziest Way to Make Money Online in 2026 ($500/day) | Plugd",
-  description: "Laziest Way to Make Money Online in 2026 ($500/day). Comprehensive slide decks and deep written lessons.",
+  description: "Build a digital product once, put it in front of the right audience, and turn AI into your unfair advantage for making money online.",
   openGraph: {
     title: "Laziest Way to Make Money Online in 2026 ($500/day) | Plugd",
-    description: "Laziest Way to Make Money Online in 2026 ($500/day). Comprehensive slide decks and deep written lessons.",
+    description: "Build a digital product once, put it in front of the right audience, and turn AI into your unfair advantage for making money online.",
   },
 };
 

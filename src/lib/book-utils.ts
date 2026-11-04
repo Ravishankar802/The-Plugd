@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "laziest-way-to-make-money-online-in-2026-500-day" ||
+    slug === "ai-businesses-09"
+  ) {
+    return {
+      name: "Akhil Varma",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "the-blueprint-to-go-from-0-to-1000000" ||
     slug === "ai-businesses-10"
   ) {
@@ -522,6 +535,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "laziest-way-to-make-money-online-in-2026-500-day" || slug === "ai-businesses-09") {
+    return [
+      {
+        id: "rev-1",
+        name: "Nitin",
+        avatar: "",
+        date: "August 09 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the clearest guides I've read on building a digital-product business. The third-layer theory helped me understand why targeting a specific problem is so much better than creating another generic ebook. The influencer strategy is a great addition.",
+        likes: 95,
+      },
+      {
+        id: "rev-2",
+        name: "Lakshya Sethi",
+        avatar: "",
+        date: "September 03 2026",
+        rating: 5,
+        headline: "",
+        content: "I really liked how practical this is. It covers everything from finding an idea and using AI to create the product to getting it in front of actual buyers. The 30-day launch plan makes the whole process feel manageable.",
+        likes: 77,
+      },
+      {
+        id: "rev-3",
+        name: "Shanaya",
+        avatar: "",
+        date: "September 14 2026",
+        rating: 5,
+        headline: "",
+        content: "The micro-influencer partnership model was the biggest takeaway for me. Instead of relying entirely on ads, this shows how to find relevant creators and build performance-based partnerships. Very actionable.",
+        likes: 71,
+      },
+      {
+        id: "rev-4",
+        name: "Ishita",
+        avatar: "",
+        date: "September 23 2026",
+        rating: 5,
+        headline: "",
+        content: "This is much more than a collection of AI prompts. It actually explains the business behind digital products, including research, validation, product quality, distribution, and profit calculations. Definitely worth studying.",
+        likes: 55,
+      },
+    ];
+  }
+
   if (slug === "the-blueprint-to-go-from-0-to-1000000" || slug === "ai-businesses-10") {
     return [
       {
