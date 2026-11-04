@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
+    slug === "ai-businesses-58"
+  ) {
+    return {
+      name: "Shawn Lim",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today" ||
     slug === "ai-businesses-59"
   ) {
@@ -698,6 +711,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything" ||
+    slug === "ai-businesses-58"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Danish Faiz",
+        avatar: "",
+        date: "September 05 2026",
+        rating: 5,
+        headline: "",
+        content: "This completely changed how I think about digital products. Instead of creating something and hoping people buy it, you learn how to find demand first. The research framework is gold.",
+        likes: 86,
+      },
+      {
+        id: "rev-2",
+        name: "Dwi Anggara",
+        avatar: "",
+        date: "September 11 2026",
+        rating: 5,
+        headline: "",
+        content: "The AI prompts and step-by-step PDF creation process are incredibly useful. I especially liked the validation section because it helps avoid wasting time building products nobody wants.",
+        likes: 73,
+      },
+      {
+        id: "rev-3",
+        name: "Aldi Kurnia",
+        avatar: "",
+        date: "September 14 2026",
+        rating: 5,
+        headline: "",
+        content: "A genuinely practical guide. It covers everything from finding a niche to creating the product, pricing it, and getting traffic. No unnecessary fluff.",
+        likes: 61,
+      },
+      {
+        id: "rev-4",
+        name: "Firas Hamdan",
+        avatar: "",
+        date: "September 20 2026",
+        rating: 5,
+        headline: "",
+        content: "Loved how actionable this playbook is. The worksheets, content strategies, and 30-day roadmap make the whole process feel much more manageable. Definitely worth going through.",
+        likes: 50,
+      },
+    ];
+  }
+
   if (
     slug === "3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today" ||
     slug === "ai-businesses-59"

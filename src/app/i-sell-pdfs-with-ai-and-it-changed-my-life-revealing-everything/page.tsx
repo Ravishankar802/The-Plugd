@@ -6,10 +6,10 @@ import { SELL_PDFS_WITH_AI_DETAIL } from "@/lib/playbooks/sell-pdfs-with-ai-chan
 
 export const metadata: Metadata = {
   title: "I Sell PDFs With AI and It Changed My Life (Revealing Everything) | Plugd",
-  description: "The complete blueprint to engineering and selling simple, high-converting digital PDFs with AI for 95%+ net profit margins.",
+  description: "Stop guessing what to sell—discover what people already want, then use AI to turn that demand into a digital product people will pay for.",
   openGraph: {
     title: "I Sell PDFs With AI and It Changed My Life (Revealing Everything) | Plugd",
-    description: "The complete blueprint to engineering and selling simple, high-converting digital PDFs with AI for 95%+ net profit margins.",
+    description: "Stop guessing what to sell—discover what people already want, then use AI to turn that demand into a digital product people will pay for.",
   },
 };
 
