@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "i-locked-myself-in-a-room-until-i-built-a-350-000-mo-business" ||
+    slug === "ai-businesses-14"
+  ) {
+    return {
+      name: "Brady Lawson",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "the-4-levels-to-getting-rich-in-2026" ||
     slug === "ai-businesses-15"
   ) {
@@ -750,6 +763,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "i-locked-myself-in-a-room-until-i-built-a-350-000-mo-business" ||
+    slug === "ai-businesses-14"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Elliot Warren",
+        avatar: "",
+        date: "August 03 2026",
+        rating: 5,
+        headline: "",
+        content: "This is probably one of the most useful SaaS-building guides I've read. It goes beyond the usual startup advice and explains the actual decisions involved in turning a basic tool into a real software business.",
+        likes: 119,
+      },
+      {
+        id: "rev-2",
+        name: "Grant",
+        avatar: "",
+        date: "August 11 2026",
+        rating: 5,
+        headline: "",
+        content: "The sections on MVPs, pricing, subscriptions, and customer retention are incredibly valuable. I especially liked the emphasis on building something people genuinely need instead of endlessly adding features.",
+        likes: 101,
+      },
+      {
+        id: "rev-3",
+        name: "Joel Whitaker",
+        avatar: "",
+        date: "August 17 2026",
+        rating: 5,
+        headline: "",
+        content: "A fantastic resource for aspiring SaaS founders. The founder-independence framework and practical operating templates really stood out. It makes the process of building a proper software company much easier to understand.",
+        likes: 89,
+      },
+      {
+        id: "rev-4",
+        name: "Adrian",
+        avatar: "",
+        date: "August 25 2026",
+        rating: 5,
+        headline: "",
+        content: "What makes this playbook different is how much attention it gives to the difficult parts of entrepreneurship: declining revenue, co-founder conflicts, product improvements, and building a capable team. Very insightful.",
+        likes: 83,
+      },
+    ];
+  }
+
   if (
     slug === "the-4-levels-to-getting-rich-in-2026" ||
     slug === "ai-businesses-15"

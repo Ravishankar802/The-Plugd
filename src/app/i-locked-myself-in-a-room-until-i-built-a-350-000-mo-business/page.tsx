@@ -6,10 +6,10 @@ import { LOCKED_IN_ROOM_350K_DETAIL_DATA } from "@/lib/playbooks/locked-in-room-
 
 export const metadata: Metadata = {
   title: "I Locked Myself In a Room Until I Built a $350,000/mo Business | Plugd",
-  description: "I Locked Myself In a Room Until I Built a $350,000/mo Business. Comprehensive slide decks and deep written lessons.",
+  description: "Learn how to turn a small software idea into a scalable SaaS business by building a product customers genuinely love. Discover the journey from launching a simple MVP to building a thriving subscription-based software company.",
   openGraph: {
     title: "I Locked Myself In a Room Until I Built a $350,000/mo Business | Plugd",
-    description: "I Locked Myself In a Room Until I Built a $350,000/mo Business. Comprehensive slide decks and deep written lessons.",
+    description: "Learn how to turn a small software idea into a scalable SaaS business by building a product customers genuinely love. Discover the journey from launching a simple MVP to building a thriving subscription-based software company.",
   },
 };
 
