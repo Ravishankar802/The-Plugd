@@ -4,10 +4,10 @@ import { CAPITALIZE_AI_GOLD_RUSH_DETAIL } from "@/lib/playbooks/smartest-way-cap
 
 export const metadata: Metadata = {
   title: "The SMARTEST Way to Capitalize on the AI Gold Rush | Plugd",
-  description: "The picks-and-shovels playbook for building durable, cashflowing AI infrastructure without training models.",
+  description: "The AI gold rush is here—learn how to turn powerful AI tools into real business opportunities, scalable products, and lasting leverage.",
   openGraph: {
     title: "The SMARTEST Way to Capitalize on the AI Gold Rush | Plugd",
-    description: "The picks-and-shovels playbook for building durable, cashflowing AI infrastructure without training models.",
+    description: "The AI gold rush is here—learn how to turn powerful AI tools into real business opportunities, scalable products, and lasting leverage.",
   },
 };
 

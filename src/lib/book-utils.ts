@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "the-smartest-way-to-capitalize-on-the-ai-gold-rush" ||
+    slug === "ai-businesses-56"
+  ) {
+    return {
+      name: "Preston McCoy",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m" ||
     slug === "ai-businesses-53"
   ) {
@@ -646,6 +659,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "the-smartest-way-to-capitalize-on-the-ai-gold-rush" ||
+    slug === "ai-businesses-56"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Landon Briggs",
+        avatar: "",
+        date: "October 04 2026",
+        rating: 5,
+        headline: "",
+        content: "Finally, an AI playbook that focuses on building actual businesses instead of just throwing random tools at you. The frameworks are practical, and the productisation section is especially valuable.",
+        likes: 61,
+      },
+      {
+        id: "rev-2",
+        name: "Franklin",
+        avatar: "",
+        date: "October 06 2026",
+        rating: 5,
+        headline: "",
+        content: "I loved the way this breaks down the AI opportunity. It completely changed how I think about using AI—not as the product itself, but as leverage to solve real customer problems.",
+        likes: 52,
+      },
+      {
+        id: "rev-3",
+        name: "Curtis",
+        avatar: "",
+        date: "October 12 2026",
+        rating: 5,
+        headline: "",
+        content: "Packed with actionable ideas without making things unnecessarily complicated. The 14-day sprint and 30-day roadmap make it much easier to stop researching endlessly and actually start building.",
+        likes: 43,
+      },
+      {
+        id: "rev-4",
+        name: "Nolan",
+        avatar: "",
+        date: "October 21 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most useful guides I've read about AI entrepreneurship. The focus on specialised tools, validating demand, and turning services into digital products makes this genuinely worth studying.",
+        likes: 28,
+      },
+    ];
+  }
+
   if (
     slug === "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m" ||
     slug === "ai-businesses-53"
