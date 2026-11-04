@@ -6,10 +6,10 @@ import { STUCK_IN_MATRIX_ESCAPE_DETAIL } from "@/lib/playbooks/stuck-in-matrix-e
 
 export const metadata: Metadata = {
   title: "You're Stuck In The Matrix, Here's How You Escape | Plugd",
-  description: "Deconstruct the societal programming running in your head and build sovereign financial and cognitive autonomy.",
+  description: "Stop living on autopilot. Question what you were taught, take control of your thinking, and build a life you deliberately choose.",
   openGraph: {
     title: "You're Stuck In The Matrix, Here's How You Escape | Plugd",
-    description: "Deconstruct the societal programming running in your head and build sovereign financial and cognitive autonomy.",
+    description: "Stop living on autopilot. Question what you were taught, take control of your thinking, and build a life you deliberately choose.",
   },
 };
 

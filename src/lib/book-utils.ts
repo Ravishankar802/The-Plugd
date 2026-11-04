@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "youre-stuck-in-the-matrix-heres-how-you-escape" || slug === "ai-businesses-29") {
+    return {
+      name: "Sean O'Brien",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "you-have-5-years-to-get-rich-before-ai-takes-over" || slug === "ai-businesses-30") {
     return {
       name: "Luka Horvat",
@@ -339,6 +349,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "youre-stuck-in-the-matrix-heres-how-you-escape" || slug === "ai-businesses-29") {
+    return [
+      {
+        id: "rev-1",
+        name: "Connor",
+        avatar: "",
+        date: "August 19 2026",
+        rating: 5,
+        headline: "",
+        content: "This made me question so many things I had accepted without thinking. The chapters on social conditioning and independent thinking really hit differently.",
+        likes: 80,
+      },
+      {
+        id: "rev-2",
+        name: "Kyle",
+        avatar: "",
+        date: "September 30 2026",
+        rating: 5,
+        headline: "",
+        content: "More than just motivation. I loved how it turns big ideas into actual exercises and a 90-day plan. Definitely made me rethink how I spend my time.",
+        likes: 64,
+      },
+      {
+        id: "rev-3",
+        name: "Harry Clarke",
+        avatar: "",
+        date: "October 14 2026",
+        rating: 5,
+        headline: "",
+        content: "The section about becoming high agency was my favourite. Instead of waiting for opportunities or permission, it pushes you to start solving problems yourself.",
+        likes: 62,
+      },
+      {
+        id: "rev-4",
+        name: "Callum",
+        avatar: "",
+        date: "October 21 2026",
+        rating: 5,
+        headline: "",
+        content: "A genuinely useful read. The ideas about self-directed learning, building your own vision, and creating value are things I wish I had started practising years ago.",
+        likes: 45,
+      },
+    ];
+  }
+
   if (slug === "you-have-5-years-to-get-rich-before-ai-takes-over" || slug === "ai-businesses-30") {
     return [
       {
