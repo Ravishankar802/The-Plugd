@@ -41,6 +41,7 @@ import { BLUEPRINT_0_TO_1M_ARTICLE } from "./blueprint-0-to-1m";
 import { LAZIEST_WAY_500_DAY_ARTICLE } from "./laziest-way-500-day";
 import { ONE_PERSON_BUSINESS_0_TO_10K_ARTICLE } from "./one-person-business-0-to-10k";
 import { BEST_AI_SIDE_HUSTLES_2026_ARTICLE } from "./best-ai-side-hustles-2026";
+import { FIVE_PROVEN_WAYS_AI_ARTICLE } from "./five-proven-ways-ai-no-experience";
 
 export * from "./types";
 
@@ -129,6 +130,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-08": ONE_PERSON_BUSINESS_0_TO_10K_ARTICLE,
   "the-best-ai-side-hustles-to-start-in-2026-no-skills": BEST_AI_SIDE_HUSTLES_2026_ARTICLE,
   "ai-businesses-06": BEST_AI_SIDE_HUSTLES_2026_ARTICLE,
+  "5-proven-ways-to-make-money-with-ai-no-experience": FIVE_PROVEN_WAYS_AI_ARTICLE,
+  "ai-businesses-05": FIVE_PROVEN_WAYS_AI_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

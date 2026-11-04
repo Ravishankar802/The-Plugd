@@ -6,10 +6,10 @@ import { FIVE_PROVEN_WAYS_DETAIL_DATA } from "@/lib/playbooks/five-proven-ways-d
 
 export const metadata: Metadata = {
   title: "5 Proven Ways To Make Money With AI (No Experience) | Plugd",
-  description: "5 Proven Ways To Make Money With AI (No Experience). Comprehensive slide decks and deep written lessons.",
+  description: "Stop scrolling through AI money-making ideas and start building—discover 5 practical AI business models you can launch as a beginner, even with no prior experience.",
   openGraph: {
     title: "5 Proven Ways To Make Money With AI (No Experience) | Plugd",
-    description: "5 Proven Ways To Make Money With AI (No Experience). Comprehensive slide decks and deep written lessons.",
+    description: "Stop scrolling through AI money-making ideas and start building—discover 5 practical AI business models you can launch as a beginner, even with no prior experience.",
   },
 };
 

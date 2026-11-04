@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "5-proven-ways-to-make-money-with-ai-no-experience" ||
+    slug === "ai-businesses-05"
+  ) {
+    return {
+      name: "Andre Simmons",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "the-best-ai-side-hustles-to-start-in-2026-no-skills" ||
     slug === "ai-businesses-06"
   ) {
@@ -561,6 +574,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "5-proven-ways-to-make-money-with-ai-no-experience" || slug === "ai-businesses-05") {
+    return [
+      {
+        id: "rev-1",
+        name: "Sterling Carter",
+        avatar: "",
+        date: "September 15 2026",
+        rating: 5,
+        headline: "",
+        content: "Finally, an AI side-hustle guide that explains the actual business behind the tools. The comparison of all five models made choosing a starting point much easier.",
+        likes: 87,
+      },
+      {
+        id: "rev-2",
+        name: "Javari",
+        avatar: "",
+        date: "September 21 2026",
+        rating: 5,
+        headline: "",
+        content: "I liked how practical everything is. The workflows, outreach examples, and 30-day plan make it much easier to stop researching and actually start.",
+        likes: 71,
+      },
+      {
+        id: "rev-3",
+        name: "Maurice",
+        avatar: "",
+        date: "October 10 2026",
+        rating: 5,
+        headline: "",
+        content: "The CLEAR framework is a great addition. It helped me understand the trade-offs between services and digital products instead of blindly following hype.",
+        likes: 63,
+      },
+      {
+        id: "rev-4",
+        name: "Cameron",
+        avatar: "",
+        date: "October 14 2026",
+        rating: 5,
+        headline: "",
+        content: "A genuinely useful beginner's playbook. It covers how to find customers, create offers, price services, and deliver quality work—not just which AI tools to use.",
+        likes: 44,
+      },
+    ];
+  }
+
   if (slug === "the-best-ai-side-hustles-to-start-in-2026-no-skills" || slug === "ai-businesses-06") {
     return [
       {
