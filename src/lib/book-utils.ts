@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m" ||
+    slug === "ai-businesses-53"
+  ) {
+    return {
+      name: "Martim Neves",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint" ||
     slug === "ai-businesses-54" ||
     slug === "if-i-wanted-to-become-a-millionaire-in-2027-this-is-what-id-do"
@@ -633,6 +646,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m" ||
+    slug === "ai-businesses-53"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Łukasz",
+        avatar: "",
+        date: "October 01 2026",
+        rating: 5,
+        headline: "",
+        content: "Exactly what a beginner needs. Instead of telling you to chase random business ideas, it walks you through finding a real problem, creating an offer, getting customers, and making your first sale. The 30-day sprint is brilliant.",
+        likes: 59,
+      },
+      {
+        id: "rev-2",
+        name: "Patrik",
+        avatar: "",
+        date: "October 07 2026",
+        rating: 5,
+        headline: "",
+        content: "The sales and prospecting sections are incredibly practical. I especially liked the nine-stage selling framework and the AI prompts. It gives you an actual process to follow instead of leaving you with vague advice.",
+        likes: 48,
+      },
+      {
+        id: "rev-3",
+        name: "Petar",
+        avatar: "",
+        date: "October 13 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the best structured business guides I've read. The focus on solving painful problems, pricing properly, and delivering value quickly completely changes how you approach starting a business. Very actionable.",
+        likes: 37,
+      },
+      {
+        id: "rev-4",
+        name: "Hrithik",
+        avatar: "",
+        date: "October 23 2026",
+        rating: 5,
+        headline: "",
+        content: "I loved the combination of business strategy and practical AI workflows. The worksheets make it easy to turn the lessons into actual work, and the weekly scorecard helps you stay focused on what matters. Definitely worth going through.",
+        likes: 32,
+      },
+    ];
+  }
+
   if (
     slug === "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint" ||
     slug === "ai-businesses-54" ||

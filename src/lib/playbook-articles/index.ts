@@ -47,6 +47,7 @@ import { CLAUDE_KNOWLEDGE_ARTICLE } from "./claude-10000-hours";
 import { ZERO_AD_CUSTOMERS_ARTICLE } from "./zero-ad-customers";
 import { THREE_AI_BUSINESSES_ARTICLE } from "./three-ai-businesses";
 import { BECOME_MILLIONAIRE_2027_ARTICLE } from "./become-millionaire-2027";
+import { START_OVER_ZERO_PLAN_1M_ARTICLE } from "./start-over-zero-plan-1m";
 
 export * from "./types";
 
@@ -152,6 +153,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint": BECOME_MILLIONAIRE_2027_ARTICLE,
   "ai-businesses-54": BECOME_MILLIONAIRE_2027_ARTICLE,
   "if-i-wanted-to-become-a-millionaire-in-2027-this-is-what-id-do": BECOME_MILLIONAIRE_2027_ARTICLE,
+  "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m": START_OVER_ZERO_PLAN_1M_ARTICLE,
+  "ai-businesses-53": START_OVER_ZERO_PLAN_1M_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

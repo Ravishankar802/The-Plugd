@@ -4,10 +4,10 @@ import { STARTED_OVER_ZERO_TO_1M_DETAIL } from "@/lib/playbooks/started-over-zer
 
 export const metadata: Metadata = {
   title: "If I Started Over With $0, Here’s My Exact Plan to get to $1M | Plugd",
-  description: "The uncompromising step-by-step master plan to rebuild from absolute zero to $1,000,000 net worth using high-leverage skills and modern systems.",
+  description: "Starting from $0? Here's the exact blueprint to turn one valuable skill, one painful problem, and one paying customer into the foundation of a million-dollar business.",
   openGraph: {
     title: "If I Started Over With $0, Here’s My Exact Plan to get to $1M | Plugd",
-    description: "The uncompromising step-by-step master plan to rebuild from absolute zero to $1,000,000 net worth using high-leverage skills and modern systems.",
+    description: "Starting from $0? Here's the exact blueprint to turn one valuable skill, one painful problem, and one paying customer into the foundation of a million-dollar business.",
   },
 };
 
