@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "how-to-catch-up-in-life-using-logic" ||
+    slug === "ai-businesses-21"
+  ) {
+    return {
+      name: "Manish Yadav",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "what-makes-the-perfect-business-5-things" ||
     slug === "ai-businesses-22"
   ) {
@@ -418,6 +431,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "how-to-catch-up-in-life-using-logic" || slug === "ai-businesses-21") {
+    return [
+      {
+        id: "rev-1",
+        name: "Imran",
+        avatar: "",
+        date: "August 29 2026",
+        rating: 5,
+        headline: "",
+        content: "A genuinely practical perspective on feeling behind in life. The idea of building capacity instead of waiting for the perfect opportunity completely changed how I think about progress.",
+        likes: 93,
+      },
+      {
+        id: "rev-2",
+        name: "Deepak",
+        avatar: "",
+        date: "September 03 2026",
+        rating: 5,
+        headline: "",
+        content: "Loved how everything connects—from financial discipline and skill-building to networking and building an audience. The 90-day plan makes it much easier to take action.",
+        likes: 81,
+      },
+      {
+        id: "rev-3",
+        name: "Vivek",
+        avatar: "",
+        date: "September 11 2026",
+        rating: 5,
+        headline: "",
+        content: "This is the kind of advice I wish I had followed earlier. Instead of chasing random opportunities, it teaches you to become someone who is actually prepared for them.",
+        likes: 75,
+      },
+      {
+        id: "rev-4",
+        name: "Nikhil Reddy",
+        avatar: "",
+        date: "September 28 2026",
+        rating: 5,
+        headline: "",
+        content: "The skill-stack framework, waitlist strategy, and capacity audit are especially useful. It's not just motivation—there are actual systems and exercises you can implement immediately.",
+        likes: 62,
+      },
+    ];
+  }
+
   if (slug === "what-makes-the-perfect-business-5-things" || slug === "ai-businesses-22") {
     return [
       {

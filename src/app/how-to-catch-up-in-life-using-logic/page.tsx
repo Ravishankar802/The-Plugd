@@ -6,10 +6,10 @@ import { CATCH_UP_IN_LIFE_LOGIC_DETAIL_DATA } from "@/lib/playbooks/catch-up-in-
 
 export const metadata: Metadata = {
   title: "How to Catch Up In Life (Using Logic) | Plugd",
-  description: "How to Catch Up In Life (Using Logic). Comprehensive slide decks and deep written lessons.",
+  description: "Stop waiting for life to catch up—build the skills, financial freedom, audience, network, and opportunities that put you back in control.",
   openGraph: {
     title: "How to Catch Up In Life (Using Logic) | Plugd",
-    description: "How to Catch Up In Life (Using Logic). Comprehensive slide decks and deep written lessons.",
+    description: "Stop waiting for life to catch up—build the skills, financial freedom, audience, network, and opportunities that put you back in control.",
   },
 };
 
