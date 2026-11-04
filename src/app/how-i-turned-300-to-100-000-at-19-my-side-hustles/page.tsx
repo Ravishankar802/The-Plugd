@@ -6,10 +6,10 @@ import { TURNED_300_TO_100K_DETAIL_DATA } from "@/lib/playbooks/turned-300-to-10
 
 export const metadata: Metadata = {
   title: "How I turned $300 to $100,000 At 19 (My Side Hustles) | Plugd",
-  description: "How I turned $300 to $100,000 At 19 (My Side Hustles). Comprehensive slide decks and deep written lessons.",
+  description: "Turn your first few dollars into the foundation of something much bigger—discover how to build side hustles, master sales, grow e-commerce businesses, and turn your experience into multiple income streams.",
   openGraph: {
     title: "How I turned $300 to $100,000 At 19 (My Side Hustles) | Plugd",
-    description: "How I turned $300 to $100,000 At 19 (My Side Hustles). Comprehensive slide decks and deep written lessons.",
+    description: "Turn your first few dollars into the foundation of something much bigger—discover how to build side hustles, master sales, grow e-commerce businesses, and turn your experience into multiple income streams.",
   },
 };
 

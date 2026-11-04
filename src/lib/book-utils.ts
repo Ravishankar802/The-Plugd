@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "how-i-turned-300-to-100-000-at-19-my-side-hustles" ||
+    slug === "ai-businesses-17"
+  ) {
+    return {
+      name: "Moritz Klein",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "how-to-become-rich-with-social-media-my-exact-playbook" ||
     slug === "ai-businesses-18"
   ) {
@@ -470,6 +483,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "how-i-turned-300-to-100-000-at-19-my-side-hustles" || slug === "ai-businesses-17") {
+    return [
+      {
+        id: "rev-1",
+        name: "Theo Lambert",
+        avatar: "",
+        date: "August 23 2026",
+        rating: 5,
+        headline: "",
+        content: "I love how this breaks down the entire journey instead of pretending there's one magic side hustle. The lessons on starting small, selling, and reinvesting are genuinely valuable.",
+        likes: 88,
+      },
+      {
+        id: "rev-2",
+        name: "Thijs Smit",
+        avatar: "",
+        date: "September 12 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most practical guides I've come across. The opportunity filters, profit calculations, and 90-day plan make it easy to turn ideas into actual experiments.",
+        likes: 76,
+      },
+      {
+        id: "rev-3",
+        name: "Jelle Bos",
+        avatar: "",
+        date: "September 14 2026",
+        rating: 5,
+        headline: "",
+        content: "The biggest takeaway is that every experiment should teach you something. I especially liked the progression from reselling to e-commerce, content, and digital products.",
+        likes: 74,
+      },
+      {
+        id: "rev-4",
+        name: "Emil Andersen",
+        avatar: "",
+        date: "September 23 2026",
+        rating: 5,
+        headline: "",
+        content: "A fantastic resource for anyone starting with limited money. It doesn't just talk about making money; it explains margins, risks, customer acquisition, and protecting your capital.",
+        likes: 65,
+      },
+    ];
+  }
+
   if (slug === "how-to-become-rich-with-social-media-my-exact-playbook" || slug === "ai-businesses-18") {
     return [
       {

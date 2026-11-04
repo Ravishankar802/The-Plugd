@@ -34,6 +34,7 @@ import { CATCH_UP_IN_LIFE_LOGIC_ARTICLE } from "./catch-up-in-life-logic";
 import { NEW_WAY_CONTENT_AI_ARTICLE } from "./new-way-content-ai";
 import { HOW_TO_GET_RICH_SERVICE_ARTICLE } from "./how-to-get-rich-service";
 import { RICH_WITH_SOCIAL_MEDIA_ARTICLE } from "./rich-with-social-media";
+import { TURNED_300_TO_100K_ARTICLE } from "./turned-300-to-100k";
 
 export * from "./types";
 
@@ -108,6 +109,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-19": HOW_TO_GET_RICH_SERVICE_ARTICLE,
   "how-to-become-rich-with-social-media-my-exact-playbook": RICH_WITH_SOCIAL_MEDIA_ARTICLE,
   "ai-businesses-18": RICH_WITH_SOCIAL_MEDIA_ARTICLE,
+  "how-i-turned-300-to-100-000-at-19-my-side-hustles": TURNED_300_TO_100K_ARTICLE,
+  "ai-businesses-17": TURNED_300_TO_100K_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {
