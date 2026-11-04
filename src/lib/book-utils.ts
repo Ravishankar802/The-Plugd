@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "laziest-ways-to-make-money-with-ai-for-beginners" || slug === "ai-businesses-32") {
+    return {
+      name: "Felix Weber",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "how-to-use-trading-212-in-2026-full-investing-guide" || slug === "ai-businesses-33") {
     return {
       name: "Dylan Scott",
@@ -309,6 +319,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "laziest-ways-to-make-money-with-ai-for-beginners" || slug === "ai-businesses-32") {
+    return [
+      {
+        id: "rev-1",
+        name: "Maxime Leroy",
+        avatar: "",
+        date: "August 31 2026",
+        rating: 5,
+        headline: "",
+        content: "Exactly what I was looking for. Instead of throwing random AI tools at me, it explains actual business models and how to get started with each one.",
+        likes: 90,
+      },
+      {
+        id: "rev-2",
+        name: "Julien Dubois",
+        avatar: "",
+        date: "September 18 2026",
+        rating: 5,
+        headline: "",
+        content: "Really useful breakdown. I especially liked the sections on finding clients, understanding costs, and turning an AI skill into something people will actually pay for.",
+        likes: 51,
+      },
+      {
+        id: "rev-3",
+        name: "Tim Becker",
+        avatar: "",
+        date: "October 11 2026",
+        rating: 5,
+        headline: "",
+        content: "The 30-day plan is my favourite part. It makes everything feel much more actionable instead of just reading about another online business idea.",
+        likes: 58,
+      },
+      {
+        id: "rev-4",
+        name: "Lars Bakker",
+        avatar: "",
+        date: "October 19 2026",
+        rating: 5,
+        headline: "",
+        content: "A solid beginner-friendly guide. It covers seven different opportunities without pretending they're effortless or guaranteed money. Very practical and well organised.",
+        likes: 42,
+      },
+    ];
+  }
+
   if (slug === "how-to-use-trading-212-in-2026-full-investing-guide" || slug === "ai-businesses-33") {
     return [
       {

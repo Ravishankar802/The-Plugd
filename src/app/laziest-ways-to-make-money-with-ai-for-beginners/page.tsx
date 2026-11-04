@@ -6,10 +6,10 @@ import { LAZIEST_WAYS_AI_BEGINNERS_DETAIL } from "@/lib/playbooks/laziest-ways-m
 
 export const metadata: Metadata = {
   title: "Laziest Ways to Make Money with AI (For Beginners) | Plugd",
-  description: "A beginner's turnkey guide to low-maintenance AI income streams with zero inventory, minimal effort, and global laptop freedom.",
+  description: "Seven AI-powered business models. One practical roadmap to turn your skills, tools, and ideas into real online income.",
   openGraph: {
     title: "Laziest Ways to Make Money with AI (For Beginners) | Plugd",
-    description: "A beginner's turnkey guide to low-maintenance AI income streams with zero inventory, minimal effort, and global laptop freedom.",
+    description: "Seven AI-powered business models. One practical roadmap to turn your skills, tools, and ideas into real online income.",
   },
 };
 
