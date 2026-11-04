@@ -6,10 +6,10 @@ import { FOUR_LEVELS_GETTING_RICH_2026_DETAIL_DATA } from "@/lib/playbooks/four-
 
 export const metadata: Metadata = {
   title: "The 4 Levels To Getting RICH in 2026 | Plugd",
-  description: "The 4 Levels To Getting RICH in 2026. Comprehensive slide decks and deep written lessons.",
+  description: "A practical roadmap to go from earning your first dollar to building businesses, investing in assets, and creating lasting wealth.",
   openGraph: {
     title: "The 4 Levels To Getting RICH in 2026 | Plugd",
-    description: "The 4 Levels To Getting RICH in 2026. Comprehensive slide decks and deep written lessons.",
+    description: "A practical roadmap to go from earning your first dollar to building businesses, investing in assets, and creating lasting wealth.",
   },
 };
 

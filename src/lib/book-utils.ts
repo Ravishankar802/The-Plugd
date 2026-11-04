@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "the-4-levels-to-getting-rich-in-2026" ||
+    slug === "ai-businesses-15"
+  ) {
+    return {
+      name: "Austin Mercer",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026" ||
     slug === "ai-businesses-07"
   ) {
@@ -737,6 +750,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "the-4-levels-to-getting-rich-in-2026" ||
+    slug === "ai-businesses-15"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Blake",
+        avatar: "",
+        date: "August 05 2026",
+        rating: 5,
+        headline: "",
+        content: "I love how this breaks wealth-building into actual stages. Instead of throwing random money-making ideas at you, it explains what to focus on depending on where you are financially. Really useful perspective.",
+        likes: 113,
+      },
+      {
+        id: "rev-2",
+        name: "Garrett",
+        avatar: "",
+        date: "August 13 2026",
+        rating: 5,
+        headline: "",
+        content: "The transition from freelancing to building an agency to eventually investing capital is explained brilliantly. It helped me understand why building earning power should come before chasing big investments.",
+        likes: 97,
+      },
+      {
+        id: "rev-3",
+        name: "Spencer Wallace",
+        avatar: "",
+        date: "August 18 2026",
+        rating: 5,
+        headline: "",
+        content: "This is the kind of financial playbook I wish I had read earlier. The different wealth levels, practical checklists, financial worksheets, and 90-day plan make everything feel much more actionable.",
+        likes: 79,
+      },
+      {
+        id: "rev-4",
+        name: "Gavin",
+        avatar: "",
+        date: "August 22 2026",
+        rating: 5,
+        headline: "",
+        content: "A great reminder that getting rich isn't just about earning more. It's about keeping money, building assets, managing risk, creating systems, and surrounding yourself with capable people. Packed with useful ideas.",
+        likes: 80,
+      },
+    ];
+  }
+
   if (
     slug === "copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026" ||
     slug === "ai-businesses-07"
