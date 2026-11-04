@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "the-a-i-revolution-8-ways-to-get-rich" ||
+    slug === "ai-businesses-16"
+  ) {
+    return {
+      name: "Adrian Teoh",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "how-i-turned-300-to-100-000-at-19-my-side-hustles" ||
     slug === "ai-businesses-17"
   ) {
@@ -483,6 +496,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "the-a-i-revolution-8-ways-to-get-rich" || slug === "ai-businesses-16") {
+    return [
+      {
+        id: "rev-1",
+        name: "Bilal Jaber",
+        avatar: "",
+        date: "August 22 2026",
+        rating: 5,
+        headline: "",
+        content: "This is exactly the kind of AI guide I was looking for. Instead of just listing tools, it explains how to actually use AI to become more productive and create economic value.",
+        likes: 85,
+      },
+      {
+        id: "rev-2",
+        name: "Asif Hasan",
+        avatar: "",
+        date: "September 10 2026",
+        rating: 5,
+        headline: "",
+        content: "The eight applications are incredibly useful. I especially liked the sections on AI workflows and becoming the expert who directs and validates AI. That completely changed my perspective.",
+        likes: 80,
+      },
+      {
+        id: "rev-3",
+        name: "Laith Hamdan",
+        avatar: "",
+        date: "September 17 2026",
+        rating: 5,
+        headline: "",
+        content: "A genuinely practical playbook. The prompts, examples, and 30-day plan make it easy to start applying everything instead of getting lost in AI hype.",
+        likes: 71,
+      },
+      {
+        id: "rev-4",
+        name: "Bagas Prakoso",
+        avatar: "",
+        date: "September 26 2026",
+        rating: 5,
+        headline: "",
+        content: "My favourite takeaway is that AI doesn't replace the need for expertise. It makes expertise more powerful. A must-read for anyone serious about staying ahead.",
+        likes: 69,
+      },
+    ];
+  }
+
   if (slug === "how-i-turned-300-to-100-000-at-19-my-side-hustles" || slug === "ai-businesses-17") {
     return [
       {

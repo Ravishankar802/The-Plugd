@@ -35,6 +35,7 @@ import { NEW_WAY_CONTENT_AI_ARTICLE } from "./new-way-content-ai";
 import { HOW_TO_GET_RICH_SERVICE_ARTICLE } from "./how-to-get-rich-service";
 import { RICH_WITH_SOCIAL_MEDIA_ARTICLE } from "./rich-with-social-media";
 import { TURNED_300_TO_100K_ARTICLE } from "./turned-300-to-100k";
+import { AI_REVOLUTION_8_WAYS_ARTICLE } from "./ai-revolution-8-ways";
 
 export * from "./types";
 
@@ -111,6 +112,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-18": RICH_WITH_SOCIAL_MEDIA_ARTICLE,
   "how-i-turned-300-to-100-000-at-19-my-side-hustles": TURNED_300_TO_100K_ARTICLE,
   "ai-businesses-17": TURNED_300_TO_100K_ARTICLE,
+  "the-a-i-revolution-8-ways-to-get-rich": AI_REVOLUTION_8_WAYS_ARTICLE,
+  "ai-businesses-16": AI_REVOLUTION_8_WAYS_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

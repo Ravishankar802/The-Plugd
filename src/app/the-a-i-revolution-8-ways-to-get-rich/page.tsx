@@ -6,10 +6,10 @@ import { AI_REVOLUTION_8_WAYS_DETAIL_DATA } from "@/lib/playbooks/ai-revolution-
 
 export const metadata: Metadata = {
   title: "The A.I. Revolution: 8 Ways to get RICH | Plugd",
-  description: "The A.I. Revolution: 8 Ways to get RICH. Comprehensive slide decks and deep written lessons.",
+  description: "Stop watching the AI revolution happen—learn to use it to multiply your productivity, build valuable skills, create smarter businesses, and get ahead of the competition.",
   openGraph: {
     title: "The A.I. Revolution: 8 Ways to get RICH | Plugd",
-    description: "The A.I. Revolution: 8 Ways to get RICH. Comprehensive slide decks and deep written lessons.",
+    description: "Stop watching the AI revolution happen—learn to use it to multiply your productivity, build valuable skills, create smarter businesses, and get ahead of the competition.",
   },
 };
 
