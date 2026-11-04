@@ -39,6 +39,7 @@ import { AI_REVOLUTION_8_WAYS_ARTICLE } from "./ai-revolution-8-ways";
 import { FIRST_1M_IS_SIMPLE_ARTICLE } from "./first-1m-is-simple";
 import { BLUEPRINT_0_TO_1M_ARTICLE } from "./blueprint-0-to-1m";
 import { LAZIEST_WAY_500_DAY_ARTICLE } from "./laziest-way-500-day";
+import { ONE_PERSON_BUSINESS_0_TO_10K_ARTICLE } from "./one-person-business-0-to-10k";
 
 export * from "./types";
 
@@ -123,6 +124,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-10": BLUEPRINT_0_TO_1M_ARTICLE,
   "laziest-way-to-make-money-online-in-2026-500-day": LAZIEST_WAY_500_DAY_ARTICLE,
   "ai-businesses-09": LAZIEST_WAY_500_DAY_ARTICLE,
+  "build-a-one-person-business-as-a-beginner-from-0-to-10k": ONE_PERSON_BUSINESS_0_TO_10K_ARTICLE,
+  "ai-businesses-08": ONE_PERSON_BUSINESS_0_TO_10K_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

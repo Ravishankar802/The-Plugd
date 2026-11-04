@@ -6,10 +6,10 @@ import { ONE_PERSON_BUSINESS_DETAIL_DATA } from "@/lib/playbooks/one-person-busi
 
 export const metadata: Metadata = {
   title: "Build A One-Person Business As A Beginner (From $0 To $10K) | Plugd",
-  description: "Build A One-Person Business As A Beginner (From $0 To $10K). Comprehensive slide decks and deep written lessons.",
+  description: "Stop dreaming about building a business someday—learn how to turn zero capital, one valuable skill, and one great offer into a lean one-person business.",
   openGraph: {
     title: "Build A One-Person Business As A Beginner (From $0 To $10K) | Plugd",
-    description: "Build A One-Person Business As A Beginner (From $0 To $10K). Comprehensive slide decks and deep written lessons.",
+    description: "Stop dreaming about building a business someday—learn how to turn zero capital, one valuable skill, and one great offer into a lean one-person business.",
   },
 };
 

@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "build-a-one-person-business-as-a-beginner-from-0-to-10k" ||
+    slug === "ai-businesses-08"
+  ) {
+    return {
+      name: "Darshan Hegde",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "laziest-way-to-make-money-online-in-2026-500-day" ||
     slug === "ai-businesses-09"
   ) {
@@ -535,6 +548,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "build-a-one-person-business-as-a-beginner-from-0-to-10k" || slug === "ai-businesses-08") {
+    return [
+      {
+        id: "rev-1",
+        name: "Naveen",
+        avatar: "",
+        date: "August 09 2026",
+        rating: 5,
+        headline: "",
+        content: "Exactly what I needed to stop overthinking and start building. The business model selection and customer research sections made everything feel much more practical.",
+        likes: 95,
+      },
+      {
+        id: "rev-2",
+        name: "Sandeep",
+        avatar: "",
+        date: "September 03 2026",
+        rating: 5,
+        headline: "",
+        content: "I love how this breaks down the entire process without making it unnecessarily complicated. The worksheets and 30-day roadmap are especially useful for beginners.",
+        likes: 77,
+      },
+      {
+        id: "rev-3",
+        name: "Abhinav",
+        avatar: "",
+        date: "September 14 2026",
+        rating: 5,
+        headline: "",
+        content: "The biggest takeaway for me was learning to validate an offer before wasting months building something nobody wants. Very practical advice and actionable frameworks.",
+        likes: 71,
+      },
+      {
+        id: "rev-4",
+        name: "Chirag",
+        avatar: "",
+        date: "September 23 2026",
+        rating: 5,
+        headline: "",
+        content: "A great resource for anyone who wants to start an online business with limited resources. The AI workflows, product ideas, and distribution strategies make it particularly valuable.",
+        likes: 55,
+      },
+    ];
+  }
+
   if (slug === "laziest-way-to-make-money-online-in-2026-500-day" || slug === "ai-businesses-09") {
     return [
       {
