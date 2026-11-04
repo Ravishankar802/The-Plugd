@@ -6,10 +6,10 @@ import { AI_SIDE_HUSTLES_2026_DETAIL_DATA } from "@/lib/playbooks/ai-side-hustle
 
 export const metadata: Metadata = {
   title: "The Best AI Side Hustles To Start In 2026 (No Skills) | Plugd",
-  description: "The Best AI Side Hustles To Start In 2026 (No Skills). Comprehensive slide decks and deep written lessons.",
+  description: "Stop chasing AI hype and start building real income—discover 17 AI-powered side hustles and find the one worth turning into a business.",
   openGraph: {
     title: "The Best AI Side Hustles To Start In 2026 (No Skills) | Plugd",
-    description: "The Best AI Side Hustles To Start In 2026 (No Skills). Comprehensive slide decks and deep written lessons.",
+    description: "Stop chasing AI hype and start building real income—discover 17 AI-powered side hustles and find the one worth turning into a business.",
   },
 };
 

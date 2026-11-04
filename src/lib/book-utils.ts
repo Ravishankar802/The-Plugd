@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "the-best-ai-side-hustles-to-start-in-2026-no-skills" ||
+    slug === "ai-businesses-06"
+  ) {
+    return {
+      name: "Eduardo Martins",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "build-a-one-person-business-as-a-beginner-from-0-to-10k" ||
     slug === "ai-businesses-08"
   ) {
@@ -548,6 +561,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "the-best-ai-side-hustles-to-start-in-2026-no-skills" || slug === "ai-businesses-06") {
+    return [
+      {
+        id: "rev-1",
+        name: "Lwazi",
+        avatar: "",
+        date: "September 15 2026",
+        rating: 5,
+        headline: "",
+        content: "Finally, an AI side-hustle guide that goes beyond listing random business ideas. The tier rankings make it easy to compare opportunities, and the practical breakdowns show what it actually takes to get started.",
+        likes: 87,
+      },
+      {
+        id: "rev-2",
+        name: "Joseph Kiptoo",
+        avatar: "",
+        date: "September 21 2026",
+        rating: 5,
+        headline: "",
+        content: "The best part is how honestly this playbook explains the downsides of each model. It helped me understand the difference between something that's easy to start and something that can actually become a business.",
+        likes: 71,
+      },
+      {
+        id: "rev-3",
+        name: "Themba",
+        avatar: "",
+        date: "October 10 2026",
+        rating: 5,
+        headline: "",
+        content: "Packed with useful ideas and actionable workflows. I particularly liked the sections on digital products, AI automation, and lead generation. The 30-day plan makes it much easier to take action.",
+        likes: 63,
+      },
+      {
+        id: "rev-4",
+        name: "Junseok",
+        avatar: "",
+        date: "October 14 2026",
+        rating: 5,
+        headline: "",
+        content: "Perfect for beginners who want to explore AI business opportunities without getting lost in technical details. The prompts, worksheets, and decision matrix make this a genuinely practical resource.",
+        likes: 44,
+      },
+    ];
+  }
+
   if (slug === "build-a-one-person-business-as-a-beginner-from-0-to-10k" || slug === "ai-businesses-08") {
     return [
       {
