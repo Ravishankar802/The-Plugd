@@ -6,10 +6,10 @@ import { USE_AI_BETTER_99_DETAIL } from "@/lib/playbooks/use-ai-better-99-percen
 
 export const metadata: Metadata = {
   title: "How To Use AI Better Than 99% Of People (This Changed My Life) | Plugd",
-  description: "Unlock the top 1% cognitive workflow frameworks to transform AI into an intellectual sparring partner and output multiplier.",
+  description: "Stop getting generic answers from AI. Build your own AI coaches, advisors, and thought partners that actually know how to get the job done.",
   openGraph: {
     title: "How To Use AI Better Than 99% Of People (This Changed My Life) | Plugd",
-    description: "Unlock the top 1% cognitive workflow frameworks to transform AI into an intellectual sparring partner and output multiplier.",
+    description: "Stop getting generic answers from AI. Build your own AI coaches, advisors, and thought partners that actually know how to get the job done.",
   },
 };
 

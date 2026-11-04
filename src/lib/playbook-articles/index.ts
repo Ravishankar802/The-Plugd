@@ -23,6 +23,7 @@ import { LAZIEST_WAYS_MAKE_MONEY_AI_ARTICLE } from "./laziest-ways-to-make-money
 import { INVESTING_BEGINNERS_25M_ARTICLE } from "./investing-beginners-in-25-minutes";
 import { FIVE_YEARS_GET_RICH_AI_ARTICLE } from "./five-years-get-rich-before-ai";
 import { STUCK_IN_MATRIX_ESCAPE_ARTICLE } from "./stuck-in-matrix-escape";
+import { USE_AI_BETTER_99_ARTICLE } from "./use-ai-better-99-percent";
 
 export * from "./types";
 
@@ -75,6 +76,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-30": FIVE_YEARS_GET_RICH_AI_ARTICLE,
   "youre-stuck-in-the-matrix-heres-how-you-escape": STUCK_IN_MATRIX_ESCAPE_ARTICLE,
   "ai-businesses-29": STUCK_IN_MATRIX_ESCAPE_ARTICLE,
+  "how-to-use-ai-better-than-99-of-people-this-changed-my-life": USE_AI_BETTER_99_ARTICLE,
+  "ai-businesses-28": USE_AI_BETTER_99_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

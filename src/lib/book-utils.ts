@@ -92,6 +92,16 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (slug === "how-to-use-ai-better-than-99-of-people-this-changed-my-life" || slug === "ai-businesses-28") {
+    return {
+      name: "Ryan Walsh",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (slug === "youre-stuck-in-the-matrix-heres-how-you-escape" || slug === "ai-businesses-29") {
     return {
       name: "Sean O'Brien",
@@ -349,6 +359,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "how-to-use-ai-better-than-99-of-people-this-changed-my-life" || slug === "ai-businesses-28") {
+    return [
+      {
+        id: "rev-1",
+        name: "Matthew",
+        avatar: "",
+        date: "August 31 2026",
+        rating: 5,
+        headline: "",
+        content: "This completely changed how I approach AI. Instead of constantly rewriting prompts and hoping for good results, I now understand how to build a proper system around each task.",
+        likes: 89,
+      },
+      {
+        id: "rev-2",
+        name: "Nathan",
+        avatar: "",
+        date: "September 26 2026",
+        rating: 5,
+        headline: "",
+        content: "The four methods for teaching AI a task are incredibly useful. I especially liked the idea of extracting a process from expert material and turning it into a reusable prompt.",
+        likes: 66,
+      },
+      {
+        id: "rev-3",
+        name: "Elliot",
+        avatar: "",
+        date: "October 17 2026",
+        rating: 5,
+        headline: "",
+        content: "The thought partner and intellectual sparring partner sections are gold. I've started using AI to challenge my ideas instead of just agreeing with everything I say.",
+        likes: 59,
+      },
+      {
+        id: "rev-4",
+        name: "Felix",
+        avatar: "",
+        date: "October 25 2026",
+        rating: 5,
+        headline: "",
+        content: "Practical, detailed, and immediately useful. The YouTube workflow and business prompt library gave me a much clearer way to organise my AI workflows. Worth the read.",
+        likes: 40,
+      },
+    ];
+  }
+
   if (slug === "youre-stuck-in-the-matrix-heres-how-you-escape" || slug === "ai-businesses-29") {
     return [
       {
