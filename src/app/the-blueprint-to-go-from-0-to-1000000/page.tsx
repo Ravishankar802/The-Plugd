@@ -6,10 +6,10 @@ import { BLUEPRINT_0_TO_1M_DETAIL_DATA } from "@/lib/playbooks/blueprint-0-to-1m
 
 export const metadata: Metadata = {
   title: "The Blueprint To Go From $0 To $1,000,000 | Plugd",
-  description: "The Blueprint To Go From $0 To $1,000,000. Comprehensive slide decks and deep written lessons.",
+  description: "Stop waiting for money to make you wealthy—build the high-value skills that give you the power to create it.",
   openGraph: {
     title: "The Blueprint To Go From $0 To $1,000,000 | Plugd",
-    description: "The Blueprint To Go From $0 To $1,000,000. Comprehensive slide decks and deep written lessons.",
+    description: "Stop waiting for money to make you wealthy—build the high-value skills that give you the power to create it.",
   },
 };
 

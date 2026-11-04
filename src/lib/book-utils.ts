@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "the-blueprint-to-go-from-0-to-1000000" ||
+    slug === "ai-businesses-10"
+  ) {
+    return {
+      name: "Franco Medina",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "your-first-1m-is-simple-heres-how" ||
     slug === "ai-businesses-11"
   ) {
@@ -509,6 +522,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "the-blueprint-to-go-from-0-to-1000000" || slug === "ai-businesses-10") {
+    return [
+      {
+        id: "rev-1",
+        name: "Andrés",
+        avatar: "",
+        date: "August 15 2026",
+        rating: 5,
+        headline: "",
+        content: "Exactly the wake-up call I needed. The chapters on business inertia and radical focus completely changed how I approach my goals. Practical, direct, and genuinely useful.",
+        likes: 92,
+      },
+      {
+        id: "rev-2",
+        name: "Femi",
+        avatar: "",
+        date: "September 08 2026",
+        rating: 5,
+        headline: "",
+        content: "I loved how this playbook turns the million-dollar ambition into smaller, actionable steps. The 30-day and 90-day plans make it much easier to stop overthinking and actually execute.",
+        likes: 79,
+      },
+      {
+        id: "rev-3",
+        name: "Danish",
+        avatar: "",
+        date: "September 15 2026",
+        rating: 5,
+        headline: "",
+        content: "The focus and monk mode sections are gold. It isn't just about working harder; it's about directing your energy toward the right things while keeping your health and routine in check.",
+        likes: 74,
+      },
+      {
+        id: "rev-4",
+        name: "Muneeb",
+        avatar: "",
+        date: "September 20 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most practical entrepreneurship guides I've read. The financial milestone tracker, weekly reviews, and business focus plan make this something I'll actually keep coming back to.",
+        likes: 57,
+      },
+    ];
+  }
+
   if (slug === "your-first-1m-is-simple-heres-how" || slug === "ai-businesses-11") {
     return [
       {
