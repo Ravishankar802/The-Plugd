@@ -6,10 +6,10 @@ import { MULTIPLE_INTERESTS_ONE_PERSON_DETAIL_DATA } from "@/lib/playbooks/multi
 
 export const metadata: Metadata = {
   title: "If You Have Multiple Interests, Please Start a One-Person Business | Plugd",
-  description: "If You Have Multiple Interests, Please Start a One-Person Business. Comprehensive slide decks and deep written lessons.",
+  description: "Turn your many interests into one powerful business—build a personal brand, attract an audience, and turn what you know into products people want.",
   openGraph: {
     title: "If You Have Multiple Interests, Please Start a One-Person Business | Plugd",
-    description: "If You Have Multiple Interests, Please Start a One-Person Business. Comprehensive slide decks and deep written lessons.",
+    description: "Turn your many interests into one powerful business—build a personal brand, attract an audience, and turn what you know into products people want.",
   },
 };
 

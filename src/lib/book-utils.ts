@@ -93,6 +93,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "if-you-have-multiple-interests-please-start-a-one-person-business" ||
+    slug === "ai-businesses-24"
+  ) {
+    return {
+      name: "Sergio Torres",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "how-to-build-a-1m-one-person-business-faster-with-ai" ||
     slug === "ai-businesses-26"
   ) {
@@ -379,6 +392,51 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug === "if-you-have-multiple-interests-please-start-a-one-person-business" || slug === "ai-businesses-24") {
+    return [
+      {
+        id: "rev-1",
+        name: "Andrea",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "This completely changed how I look at having multiple interests. Instead of seeing them as distractions, I finally understand how to connect them into one clear business direction.",
+        likes: 93,
+      },
+      {
+        id: "rev-2",
+        name: "João Silva",
+        avatar: "",
+        date: "September 25 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most practical guides I've read about personal branding and building a business with AI. The prompts and 30-day plan make it easy to actually get started.",
+        likes: 71,
+      },
+      {
+        id: "rev-3",
+        name: "Mateusz",
+        avatar: "",
+        date: "October 07 2026",
+        rating: 5,
+        headline: "",
+        content: "I especially liked the sections on content systems and the six AI roles. It gives you a proper workflow instead of just telling you to post consistently and hope for the best.",
+        likes: 67,
+      },
+      {
+        id: "rev-4",
+        name: "Marko",
+        avatar: "",
+        date: "October 22 2026",
+        rating: 5,
+        headline: "",
+        content: "A great playbook for anyone who wants to build something independently. It connects branding, content, product creation, and distribution into one understandable system.",
+        likes: 54,
+      },
+    ];
+  }
+
   if (slug === "how-to-build-a-1m-one-person-business-faster-with-ai" || slug === "ai-businesses-26") {
     return [
       {
