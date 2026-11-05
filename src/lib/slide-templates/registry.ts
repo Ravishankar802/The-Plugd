@@ -1551,6 +1551,36 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-80"],
     assignedPlaybookSlugs: ["this-one-book-has-the-power-to-change-your-entire-life"],
   },
+
+  // 54. Playbook: How I Went From $0 to $92K/Month at 19 (My Full Story)
+  "high-velocity-operator-command": {
+    templateId: "high-velocity-operator-command",
+    name: "High-Velocity Operator Command & Agency Scaling Engine",
+    categoryTheme: "Sales Architecture, Appointment Setting & Agency Unit Economics",
+    description:
+      "Deep navy and dark charcoal operations HUD (#090d14) with emerald green execution accents (#10b981), high-visibility amber alerts (#f59e0b), and slate metallic borders (#1f2937), featuring appointment-setting conversion pipelines, agency capacity load gauges, unit economics contribution ledgers, and 100-task operational rebuild protocols.",
+    colorPalette: {
+      canvasBg: "#090d14",
+      stageBg: "#111827",
+      border: "#1f2937",
+      primaryText: "#f9fafb",
+      secondaryText: "#9ca3af",
+      accent: "#10b981",
+      accentSecondary: "#f59e0b",
+      highlightPillBg: "#064e3b",
+      highlightPillText: "#a7f3d0",
+    },
+    visualMotifs: [
+      "Outbound appointment-setting conversion funnel (Contacts -> Qualified DMs -> Booked Calls -> Shows -> Closes)",
+      "Agency unit economics ledger (Client Retainers, Setter Commissions, Manager Overheads, Net Contribution Margin)",
+      "Capacity constraint radar & team operational overhead stress-test cards",
+      "The 100-Task business rebuild architecture and one-page operating system grid",
+    ],
+    layoutArchitecture:
+      "Operational flight deck with multi-channel sales pipeline telemetry, staffing capacity monitors, and profit-margin stress testing ledgers",
+    assignedPlaybookIds: ["ai-businesses-81"],
+    assignedPlaybookSlugs: ["how-i-went-from-0-to-92k-month-at-19-my-full-story"],
+  },
 };
 
 /**

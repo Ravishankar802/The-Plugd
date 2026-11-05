@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "how-i-went-from-0-to-92k-month-at-19-my-full-story" ||
+    slug === "ai-businesses-81"
+  ) {
+    return {
+      name: "Terence Chew",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "this-one-book-has-the-power-to-change-your-entire-life" ||
     slug === "ai-businesses-80"
   ) {
@@ -1042,6 +1055,58 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "how-i-went-from-0-to-92k-month-at-19-my-full-story" ||
+    slug === "ai-businesses-81"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Rivera",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Honestly, the biggest takeaway for me was that revenue doesn't automatically mean you've built a good business. The sections on the $9.9K month, the collapse, and the agency shutdown were incredibly useful. It made me rethink what I should actually be measuring.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Danielle",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I came for the appointment-setting part, but ended up getting much more out of the management and training sections. The breakdown of how to go from doing the work yourself to teaching others and managing a team is particularly valuable. Very actionable.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Elias",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "What I liked most is how practical this is. Pricing, client scope, qualification, capacity planning, contribution margins — these are the things people skip when talking about starting an agency. The worksheets make it much easier to apply everything instead of just reading and forgetting.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Brooke Sullivan",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Finally, a business playbook that doesn't pretend every growth story is a straight line upward. The lessons about chasing shiny objects, hiring too quickly, losing focus, and protecting your personal life felt refreshingly honest. The one-page operating system is something I'll keep coming back to.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "this-one-book-has-the-power-to-change-your-entire-life" ||
     slug === "ai-businesses-80"

@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-81",
+    slug: "how-i-went-from-0-to-92k-month-at-19-my-full-story",
+    title: "How I Went From $0 to $92K/Month at 19 (My Full Story)",
+    dataFile: "src/lib/playbooks/how-i-went-from-0-to-92k-month-at-19-my-full-story-data.ts",
+    detailFile: "src/lib/playbooks/how-i-went-from-0-to-92k-month-at-19-my-full-story-detail.ts",
+    routeDir: "src/app/how-i-went-from-0-to-92k-month-at-19-my-full-story",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-80",
     slug: "this-one-book-has-the-power-to-change-your-entire-life",
     title: "This ONE Book Has The Power to Change Your ENTIRE Life",

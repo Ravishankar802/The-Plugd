@@ -79,6 +79,7 @@ import { NIGHT_AI_MONEY_ARTICLE } from "./the-new-way-to-make-money-with-ai-at-n
 import { FACELESS_CHANNEL_12K_CLAUDE_ARTICLE } from "./how-a-faceless-channel-made-12-804-month-with-claude";
 import { DIGITAL_PRODUCT_IDEAS_35_ARTICLE } from "./i-have-too-many-digital-product-ideas-35-to-steal";
 import { PSYCHO_CYBERNETICS_ONE_BOOK_ARTICLE } from "./this-one-book-has-the-power-to-change-your-entire-life";
+import { HOW_I_WENT_FROM_0_TO_92K_MONTH_AT_19_ARTICLE } from "./how-i-went-from-0-to-92k-month-at-19-my-full-story";
 
 export * from "./types";
 
@@ -250,6 +251,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-79": DIGITAL_PRODUCT_IDEAS_35_ARTICLE,
   "this-one-book-has-the-power-to-change-your-entire-life": PSYCHO_CYBERNETICS_ONE_BOOK_ARTICLE,
   "ai-businesses-80": PSYCHO_CYBERNETICS_ONE_BOOK_ARTICLE,
+  "how-i-went-from-0-to-92k-month-at-19-my-full-story": HOW_I_WENT_FROM_0_TO_92K_MONTH_AT_19_ARTICLE,
+  "ai-businesses-81": HOW_I_WENT_FROM_0_TO_92K_MONTH_AT_19_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

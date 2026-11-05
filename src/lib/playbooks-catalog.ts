@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-81",
+      "slug": "how-i-went-from-0-to-92k-month-at-19-my-full-story",
+      "title": "How I Went From $0 to $92K/Month at 19 (My Full Story)",
+      "headline": "From a $13 freelance job to a reported $92K business month — learn the skills, sales systems, and hard lessons behind building a business that actually lasts.",
+      "description": "From a $13 freelance job to a reported $92K business month — learn the skills, sales systems, and hard lessons behind building a business that actually lasts.\n\nThis is the unfiltered journey of turning small online experiments into a skill-based business, scaling into coaching and agency operations, and discovering why rapid growth can become its own biggest problem. Learn appointment setting, client acquisition, sales management, team training, service delivery, pricing, unit economics, and the systems needed to scale without losing control. Includes practical worksheets, financial dashboards, operating frameworks, and a 30-day roadmap to put the lessons into action.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.1 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#10b981",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_Went_From_0_to_92K_Month_at_19_My_Full_Story.png",
+      "href": "/how-i-went-from-0-to-92k-month-at-19-my-full-story"
+  },
+  {
       "id": "ai-businesses-80",
       "slug": "this-one-book-has-the-power-to-change-your-entire-life",
       "title": "This ONE Book Has The Power to Change Your ENTIRE Life",
@@ -6848,4 +6869,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 340;
+export const TOTAL_PLAYBOOKS_COUNT = 341;
