@@ -1611,6 +1611,36 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-82"],
     assignedPlaybookSlugs: ["its-boring-but-i-make-745-day-in-4-hours-at-22"],
   },
+
+  // 56. Playbook: How I Made $16,705.83 On Whop (as a low iq 21 year old)
+  "performance-clipping-command-matrix": {
+    templateId: "performance-clipping-command-matrix",
+    name: "Performance Video Clipping & Multi-Platform Payout Matrix",
+    categoryTheme: "Whop Video Clipping, Creator Campaigns & Short-Form Arbitrage",
+    description:
+      "Deep obsidian and high-contrast violet console (#0c0714) with electric ultraviolet accents (#8b5cf6), radiant fuchsia pacing meters (#d946ef), and neon lime payout telemetry (#84cc16), featuring Whop campaign scorecard matrices, AI timestamp discovery pipelines, hook-story-payoff narrative rails, and multi-channel YouTube/TikTok/Reels distribution ledgers.",
+    colorPalette: {
+      canvasBg: "#0c0714",
+      stageBg: "#150d24",
+      border: "#2a1b45",
+      primaryText: "#f5f3ff",
+      secondaryText: "#a78bfa",
+      accent: "#8b5cf6",
+      accentSecondary: "#84cc16",
+      highlightPillBg: "#2e1065",
+      highlightPillText: "#ddd6fe",
+    },
+    visualMotifs: [
+      "Whop campaign evaluation scorecard (Creator charisma, RPM rate, budget remaining, moderator responsiveness)",
+      "The 3-act viral clip narrative rail (3-second hook, story development, high-impact payoff)",
+      "AI automated clipping pipeline (Long-form ingest -> Candidate timestamps -> 9:16 smart framing -> Dynamic captions)",
+      "Multi-channel Shorts/TikTok/Instagram publishing matrix and effective hourly earnings calculator",
+    ],
+    layoutArchitecture:
+      "High-velocity video clipping workstation with live campaign RPM telemetry, moment selection scorecards, and cross-platform publishing matrix",
+    assignedPlaybookIds: ["ai-businesses-83"],
+    assignedPlaybookSlugs: ["how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old"],
+  },
 };
 
 /**

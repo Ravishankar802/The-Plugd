@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-83",
+      "slug": "how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old",
+      "title": "How I Made $16,705.83 On Whop (as a low iq 21 year old)",
+      "headline": "Turn other people's long-form videos into short-form content that gets paid — master campaign selection, viral storytelling, AI-assisted clipping, and multi-platform distribution.",
+      "description": "Turn other people's long-form videos into short-form content that gets paid — master campaign selection, viral storytelling, AI-assisted clipping, and multi-platform distribution.\n\nDiscover how to build a performance-based clipping business, from finding worthwhile Whop campaigns to turning the best moments from podcasts and creator videos into engaging Shorts. Learn the hook–story–payoff framework, automate repetitive editing tasks, distribute clips across YouTube, TikTok, and Instagram, and track views, eligible payouts, and earnings per hour. Includes practical workflows, AI prompts, campaign scorecards, publishing trackers, and a 30-day launch plan.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.1 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#8b5cf6",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_Made_16_705_83_On_Whop_as_a_low_iq_21_year_old.png",
+      "href": "/how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old"
+  },
+  {
       "id": "ai-businesses-82",
       "slug": "its-boring-but-i-make-745-day-in-4-hours-at-22",
       "title": "It's boring but i make $745/day in 4 hours at 22",
@@ -6890,4 +6911,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 342;
+export const TOTAL_PLAYBOOKS_COUNT = 343;

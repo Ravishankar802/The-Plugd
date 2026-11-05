@@ -186,6 +186,20 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old" ||
+    slug === "how-i-made-16705-83-on-whop-as-a-low-iq-21-year-old" ||
+    slug === "ai-businesses-83"
+  ) {
+    return {
+      name: "Bryce Holloway",
+      avatar: "",
+      booksCount: 2,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "its-boring-but-i-make-745-day-in-4-hours-at-22" ||
     slug === "ai-businesses-82"
   ) {
@@ -1068,6 +1082,59 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old" ||
+    slug === "how-i-made-16705-83-on-whop-as-a-low-iq-21-year-old" ||
+    slug === "ai-businesses-83"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Bennett",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I thought clipping was just finding a good moment and adding captions. This completely changed how I approach it. The campaign evaluation section alone helped me understand why choosing the right creator matters so much before spending hours editing.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Vasquez",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The hook, story, and payoff framework is incredibly useful. I finally understand why some clips feel engaging while others lose viewers almost immediately. The examples and editing checklist make it easy to apply.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Brooks",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "What I appreciated most was the actual workflow. It covers everything from finding timestamps and using AI clipping tools to publishing and tracking payouts. The templates make this feel like a real operating system rather than another collection of tips.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Anika",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "One of the most practical guides I've read on video clipping. I especially liked the campaign scorecard, 30-day roadmap, and section on calculating earnings per hour. It keeps you focused on building something repeatable instead of blindly uploading hundreds of clips.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "its-boring-but-i-make-745-day-in-4-hours-at-22" ||
     slug === "ai-businesses-82"

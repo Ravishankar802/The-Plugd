@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-83",
+    slug: "how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old",
+    title: "How I Made $16,705.83 On Whop (as a low iq 21 year old)",
+    dataFile: "src/lib/playbooks/how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old-data.ts",
+    detailFile: "src/lib/playbooks/how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old-detail.ts",
+    routeDir: "src/app/how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-82",
     slug: "its-boring-but-i-make-745-day-in-4-hours-at-22",
     title: "It's boring but i make $745/day in 4 hours at 22",

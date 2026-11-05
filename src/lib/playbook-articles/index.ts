@@ -81,6 +81,7 @@ import { DIGITAL_PRODUCT_IDEAS_35_ARTICLE } from "./i-have-too-many-digital-prod
 import { PSYCHO_CYBERNETICS_ONE_BOOK_ARTICLE } from "./this-one-book-has-the-power-to-change-your-entire-life";
 import { HOW_I_WENT_FROM_0_TO_92K_MONTH_AT_19_ARTICLE } from "./how-i-went-from-0-to-92k-month-at-19-my-full-story";
 import { ITS_BORING_745_DAY_ARTICLE } from "./its-boring-but-i-make-745-day-in-4-hours-at-22";
+import { HOW_I_MADE_16K_WHOP_ARTICLE } from "./how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old";
 
 export * from "./types";
 
@@ -256,6 +257,9 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-81": HOW_I_WENT_FROM_0_TO_92K_MONTH_AT_19_ARTICLE,
   "its-boring-but-i-make-745-day-in-4-hours-at-22": ITS_BORING_745_DAY_ARTICLE,
   "ai-businesses-82": ITS_BORING_745_DAY_ARTICLE,
+  "how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old": HOW_I_MADE_16K_WHOP_ARTICLE,
+  "how-i-made-16705-83-on-whop-as-a-low-iq-21-year-old": HOW_I_MADE_16K_WHOP_ARTICLE,
+  "ai-businesses-83": HOW_I_MADE_16K_WHOP_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {
