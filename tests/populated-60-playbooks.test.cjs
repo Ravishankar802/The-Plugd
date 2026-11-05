@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-84",
+    slug: "build-a-10k-month-ai-influencer-in-9-mins",
+    title: "Build a $10k/month Ai influencer in 9 mins...",
+    dataFile: "src/lib/playbooks/build-a-10k-month-ai-influencer-in-9-mins-data.ts",
+    detailFile: "src/lib/playbooks/build-a-10k-month-ai-influencer-in-9-mins-detail.ts",
+    routeDir: "src/app/build-a-10k-month-ai-influencer-in-9-mins",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-83",
     slug: "how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old",
     title: "How I Made $16,705.83 On Whop (as a low iq 21 year old)",

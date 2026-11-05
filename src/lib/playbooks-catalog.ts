@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-84",
+      "slug": "build-a-10k-month-ai-influencer-in-9-mins",
+      "title": "Build a $10k/month Ai influencer in 9 mins...",
+      "headline": "Build a virtual influencer from scratch, turn AI-generated videos into an audience, and monetise that attention through direct brand partnerships — without ever becoming the face of the account.",
+      "description": "Build a virtual influencer from scratch, turn AI-generated videos into an audience, and monetise that attention through direct brand partnerships — without ever becoming the face of the account.\n\nGo from a character idea to a fully functioning AI influencer business with a practical workflow covering character design, consistent AI image and video generation, viral-content research, and social media growth. Then learn to approach relevant brands, negotiate affiliate commissions, set up product links, and track actual sales. Includes reusable AI prompts, character templates, content workflows, brand outreach scripts, commission calculators, and a 30-day launch roadmap.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#38bdf8",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Build_a_10k_month_Ai_influencer_in_9_mins.png",
+      "href": "/build-a-10k-month-ai-influencer-in-9-mins"
+  },
+  {
       "id": "ai-businesses-83",
       "slug": "how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old",
       "title": "How I Made $16,705.83 On Whop (as a low iq 21 year old)",
@@ -6911,4 +6932,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 343;
+export const TOTAL_PLAYBOOKS_COUNT = 344;

@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "build-a-10k-month-ai-influencer-in-9-mins" ||
+    slug === "ai-businesses-84"
+  ) {
+    return {
+      name: "Bryce Holloway",
+      avatar: "",
+      booksCount: 3,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old" ||
     slug === "how-i-made-16705-83-on-whop-as-a-low-iq-21-year-old" ||
     slug === "ai-businesses-83"
@@ -1082,6 +1095,58 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "build-a-10k-month-ai-influencer-in-9-mins" ||
+    slug === "ai-businesses-84"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Adrian",
+        avatar: "",
+        headline: "",
+        rating: 5,
+        date: "August 04 2026",
+        content:
+          "This connects all the pieces instead of just showing how to generate an AI character. The character identity sheet and reference-image workflow are especially helpful. I can actually see how to build a recognisable account rather than generate random AI pictures.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Sofia",
+        avatar: "",
+        headline: "",
+        rating: 5,
+        date: "August 08 2026",
+        content:
+          "The video production section is excellent. I liked how it breaks down successful videos into hooks, scenes, and payoffs, then shows how to create original versions. The prompts make the entire process much easier to follow.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Nathaniel",
+        avatar: "",
+        headline: "",
+        rating: 5,
+        date: "August 14 2026",
+        content:
+          "The monetisation section was the biggest surprise. Most guides stop at getting views, but this explains how to approach brands, negotiate commission structures, understand attribution, and track real payouts. Very useful business perspective.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Kiara",
+        avatar: "",
+        headline: "",
+        rating: 5,
+        date: "August 21 2026",
+        content:
+          "Probably the most complete AI influencer workflow I've come across. From character creation and content production to audience growth and brand partnerships, everything is organised into actionable steps. The 30-day roadmap makes getting started feel much less overwhelming.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old" ||
     slug === "how-i-made-16705-83-on-whop-as-a-low-iq-21-year-old" ||

@@ -1641,6 +1641,34 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-83"],
     assignedPlaybookSlugs: ["how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old"],
   },
+  "synthetic-creator-studio-matrix": {
+    templateId: "synthetic-creator-studio-matrix",
+    name: "Synthetic Persona Studio & Brand Partnership Matrix",
+    categoryTheme: "Virtual Influencers, AI Video Generation & Amazon Brand Affiliate Systems",
+    colorPalette: {
+      canvasBg: "#070b19",
+      stageBg: "#0e162f",
+      border: "#1e294b",
+      primaryText: "#f0f4ff",
+      secondaryText: "#94a3b8",
+      accent: "#38bdf8",
+      accentSecondary: "#f43f5e",
+      highlightPillBg: "#1e3a8a",
+      highlightPillText: "#bfdbfe",
+    },
+    description:
+      "Split creator studio HUD with character identity telemetry, video generation timeline, and affiliate attribution ledger",
+    visualMotifs: [
+      "Character identity parameters (seed control, facial anchors, wardrobe continuity, voice synthesis)",
+      "Multi-modal video production pipeline (LLM scripting -> Keyframe diffusion -> Video motion -> Dynamic captions)",
+      "Direct brand partnership telemetry (80-250% commissions, spillover sales tracking, LTV modeling)",
+      "FTC-compliant synthetic influencer disclosures and automated mobile bio link attribution",
+    ],
+    layoutArchitecture:
+      "Split creator studio HUD with character identity telemetry, video generation timeline, and affiliate attribution ledger",
+    assignedPlaybookIds: ["ai-businesses-84"],
+    assignedPlaybookSlugs: ["build-a-10k-month-ai-influencer-in-9-mins"],
+  },
 };
 
 /**
