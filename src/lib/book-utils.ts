@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this" ||
+    slug === "ai-businesses-64"
+  ) {
+    return {
+      name: "Seiji Kai-Lun",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "give-me-27-minutes-and-ill-make-you-disgustingly-good-at-digital-marketing" ||
     slug === "ai-businesses-63"
   ) {
@@ -1197,6 +1210,54 @@ export function getCuratedCommunityReviews(
         headline: "",
         content: "Loved the comparison between all three models. It helped me understand which business fits my resources and why validating an idea matters before building.",
         likes: 30,
+      },
+    ];
+  }
+
+  if (
+    slug === "if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this" ||
+    slug === "ai-businesses-64"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Arjun",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "The biggest takeaway for me was learning to focus on one primary goal instead of constantly jumping between ideas. The 90-day plan makes it much easier to put that into practice.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Emily Parker",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "I liked how practical this was. The sections on calculated risks, decision-making, and building competence really made me rethink how I've been approaching my career.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Kabir",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "A much-needed reminder that ambition means nothing without execution. The weekly review system and worksheets are particularly useful for staying accountable.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Sophie",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "What stood out was the emphasis on sustainable ambition. It doesn't just tell you to work harder; it explains how to prioritise, improve your skills, and avoid burning yourself out.",
+        likes: 84,
       },
     ];
   }

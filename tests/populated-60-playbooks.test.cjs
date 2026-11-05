@@ -103,6 +103,18 @@ const POPULATED_PLAYBOOKS = [
     expectedLessons: 28,
     expectedSlides: 112
   },
+  {
+    id: "ai-businesses-64",
+    slug: "if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this",
+    title: "If you're ambitious and in your 20s or 30s, please watch this.",
+    dataFile: "src/lib/playbooks/ambitious-in-20s-or-30s-data.ts",
+    detailFile: "src/lib/playbooks/ambitious-in-20s-or-30s-detail.ts",
+    routeDir: "src/app/if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+
 
 
 

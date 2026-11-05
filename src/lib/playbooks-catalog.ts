@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-64",
+      "slug": "if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this",
+      "title": "If you're ambitious and in your 20s or 30s, please watch this.",
+      "headline": "A practical guide to turning ambition into meaningful progress through calculated risks, valuable skills, deep focus, decisive action, and consistent execution.",
+      "description": "Stop spreading yourself thin, waiting for the perfect opportunity, or letting other people's opinions dictate your decisions. This playbook shows you how to choose a direction, build rare competence, take intelligent risks, and stay focused on work that actually moves you forward. Includes a structured 90-day ambition plan, weekly operating system, and practical worksheets to turn big goals into consistent action.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "hoursOfMaterial": "9.1 hours",
+      "rating": 4.9,
+      "ratingCount": "5.4k",
+      "accentColor": "#e11d48",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_you_re_ambitious_and_in_your_20s_or_30s_please_watch_this.png",
+      "href": "/if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this"
+  },
+  {
       "id": "ai-businesses-63",
       "slug": "give-me-27-minutes-and-ill-make-you-disgustingly-good-at-digital-marketing",
       "title": "Give Me 27 Minutes and I'll Make You Disgustingly Good at Digital Marketing",
@@ -6494,4 +6514,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 323;
+export const TOTAL_PLAYBOOKS_COUNT = 324;

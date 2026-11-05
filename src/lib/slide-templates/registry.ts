@@ -1072,6 +1072,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-63"],
     assignedPlaybookSlugs: ["give-me-27-minutes-and-ill-make-you-disgustingly-good-at-digital-marketing"],
   },
+  "monk-mode-asymmetric-ambition-ledger": {
+    templateId: "monk-mode-asymmetric-ambition-ledger",
+    name: "Monk-Mode Asymmetric Ambition Ledger",
+    categoryTheme: "Career Architecture & Sovereign Mastery",
+    description:
+      "Dark slate and carbon stage (#121316) with crimson ruby borders (#e11d48), warm ivory primary typography (#f4f4f5), muted ash secondary (#a1a1aa), and focused monastic minimalism.",
+    colorPalette: {
+      canvasBg: "#090a0c",
+      stageBg: "#121316",
+      border: "#27272a",
+      primaryText: "#f4f4f5",
+      secondaryText: "#a1a1aa",
+      accent: "#e11d48",
+      accentSecondary: "#fb7185",
+      highlightPillBg: "#271219",
+      highlightPillText: "#fb7185",
+    },
+    visualMotifs: [
+      "Asymmetric risk-reward balance quadrant",
+      "Monastic 90-day primary game rail",
+      "Ignorance debt amortization matrix",
+      "Competence ladder progression telemetry",
+    ],
+    layoutArchitecture: "Monastic carbon workstation with asymmetric risk quadrant rail and 90-day execution telemetry",
+    assignedPlaybookIds: ["ai-businesses-64"],
+    assignedPlaybookSlugs: ["if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this"],
+  },
 };
 
 /**
