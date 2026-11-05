@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "give-me-27-minutes-and-ill-make-you-disgustingly-good-at-digital-marketing" ||
+    slug === "ai-businesses-63"
+  ) {
+    return {
+      name: "Caleb String",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "i-built-an-85m-ai-startup-in-5-months-heres-my-playbook" ||
     slug === "ai-businesses-62"
   ) {
@@ -1184,6 +1197,54 @@ export function getCuratedCommunityReviews(
         headline: "",
         content: "Loved the comparison between all three models. It helped me understand which business fits my resources and why validating an idea matters before building.",
         likes: 30,
+      },
+    ];
+  }
+
+  if (
+    slug === "give-me-27-minutes-and-ill-make-you-disgustingly-good-at-digital-marketing" ||
+    slug === "ai-businesses-63"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Oliver Hayes",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "The HALO strategy alone makes this worth reading. I never realised how much better marketing becomes when you actually study what customers say instead of guessing what they want.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Kavya Menon",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "Finally, a marketing guide that goes beyond random ad tips. The examples, swipe-file exercises, and copywriting framework make it something I can genuinely use while working on campaigns.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Ryan Cooper",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "I particularly enjoyed the sections on demand generation and customer awareness. They helped me understand why some ads need to educate people first instead of immediately pushing a product.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Diya Sharma",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "A surprisingly comprehensive resource. The 17-step sales page system and funnel optimisation chapters gave me a much clearer process for writing, testing, and improving marketing campaigns.",
+        likes: 84,
       },
     ];
   }

@@ -1045,6 +1045,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-62"],
     assignedPlaybookSlugs: ["i-built-an-85m-ai-startup-in-5-months-heres-my-playbook"],
   },
+  "halo-direct-response-persuasion-matrix": {
+    templateId: "halo-direct-response-persuasion-matrix",
+    name: "Direct-Response HALO Persuasion Matrix",
+    categoryTheme: "Direct-Response Advertising & Copywriting Systems",
+    description:
+      "Deep midnight indigo stage (#111029) with electric violet border (#4338ca), vibrant iris accents (#6366f1), golden amber highlight badge (#f59e0b), and warm crisp typography.",
+    colorPalette: {
+      canvasBg: "#0a0918",
+      stageBg: "#111029",
+      border: "#282352",
+      primaryText: "#f5f3ff",
+      secondaryText: "#a5b4fc",
+      accent: "#6366f1",
+      accentSecondary: "#f59e0b",
+      highlightPillBg: "#1e1b4b",
+      highlightPillText: "#c7d2fe",
+    },
+    visualMotifs: [
+      "HALO emotional driver quadrants (Pains, Fears, Hopes, Dreams)",
+      "AIDA conversion funnel telemetry",
+      "17-step sales letter architecture rail",
+      "Empirical creative split-test matrix",
+    ],
+    layoutArchitecture: "Midnight indigo direct-response desk with dual HALO psychology telemetry and AIDA acquisition pipeline",
+    assignedPlaybookIds: ["ai-businesses-63"],
+    assignedPlaybookSlugs: ["give-me-27-minutes-and-ill-make-you-disgustingly-good-at-digital-marketing"],
+  },
 };
 
 /**

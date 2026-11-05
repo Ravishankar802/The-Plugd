@@ -92,6 +92,18 @@ const POPULATED_PLAYBOOKS = [
     expectedLessons: 28,
     expectedSlides: 112
   },
+  {
+    id: "ai-businesses-63",
+    slug: "give-me-27-minutes-and-ill-make-you-disgustingly-good-at-digital-marketing",
+    title: "Give Me 27 Minutes and I'll Make You Disgustingly Good at Digital Marketing",
+    dataFile: "src/lib/playbooks/give-me-27-minutes-digital-marketing-data.ts",
+    detailFile: "src/lib/playbooks/give-me-27-minutes-digital-marketing-detail.ts",
+    routeDir: "src/app/give-me-27-minutes-and-ill-make-you-disgustingly-good-at-digital-marketing",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+
 
 
   {

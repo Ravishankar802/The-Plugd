@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-63",
+      "slug": "give-me-27-minutes-and-ill-make-you-disgustingly-good-at-digital-marketing",
+      "title": "Give Me 27 Minutes and I'll Make You Disgustingly Good at Digital Marketing",
+      "headline": "Stop guessing what makes people buy. Learn to capture attention, understand customer psychology, write persuasive ads, and turn clicks into customers.",
+      "description": "What separates an ad people scroll past from one that actually sells? This playbook breaks down the psychology and mechanics behind effective digital marketing—from classic direct-response advertising and the HALO research strategy to creative testing, market awareness, and high-converting sales pages. Includes a 17-step copywriting framework, practical templates, and a 30-day marketing training plan.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "hoursOfMaterial": "9.2 hours",
+      "rating": 4.9,
+      "ratingCount": "5.1k",
+      "accentColor": "#6366f1",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Give_Me_27_Minutes_and_I_ll_Make_You_Disgustingly_Good_at_Digital_Marketing.png",
+      "href": "/give-me-27-minutes-and-ill-make-you-disgustingly-good-at-digital-marketing"
+  },
+  {
       "id": "ai-businesses-62",
       "slug": "i-built-an-85m-ai-startup-in-5-months-heres-my-playbook",
       "title": "I Built An $85M AI Startup in 5 Months (here's my playbook)",
@@ -6474,4 +6494,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 322;
+export const TOTAL_PLAYBOOKS_COUNT = 323;

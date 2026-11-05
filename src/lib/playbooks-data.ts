@@ -77,6 +77,11 @@ import { SELL_PDFS_WITH_AI_COURSE } from "./playbooks/sell-pdfs-with-ai-changed-
 import { THREE_BEST_AI_BIZ_2027_COURSE } from "./playbooks/three-best-ai-businesses-before-2027-data";
 import { FIVE_SIMPLE_APPS_10K_COURSE } from "./playbooks/five-simple-apps-10k-month-ai-data";
 import {
+  GIVE_ME_27_MINS_DIGITAL_MARKETING_COURSE,
+  GIVE_ME_27_MINS_DIGITAL_MARKETING_SLUG,
+  GIVE_ME_27_MINS_DIGITAL_MARKETING_ID
+} from "./playbooks/give-me-27-minutes-digital-marketing-data";
+import {
   BUILT_85M_AI_STARTUP_COURSE,
   BUILT_85M_AI_STARTUP_SLUG,
   BUILT_85M_AI_STARTUP_ID
@@ -655,6 +660,9 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-61": FREE_AI_SIDE_HUSTLE_INDIANS_COURSE,
   "i-built-an-85m-ai-startup-in-5-months-heres-my-playbook": BUILT_85M_AI_STARTUP_COURSE,
   "ai-businesses-62": BUILT_85M_AI_STARTUP_COURSE,
+  "give-me-27-minutes-and-ill-make-you-disgustingly-good-at-digital-marketing": GIVE_ME_27_MINS_DIGITAL_MARKETING_COURSE,
+  "ai-businesses-63": GIVE_ME_27_MINS_DIGITAL_MARKETING_COURSE,
+
 
 
   // Backward compatibility legacy mappings
@@ -736,7 +744,8 @@ export function getAllCourses(): Course[] {
     THREE_BEST_AI_BIZ_2027_COURSE,
     FIVE_SIMPLE_APPS_10K_COURSE,
     FREE_AI_SIDE_HUSTLE_INDIANS_COURSE,
-    BUILT_85M_AI_STARTUP_COURSE
+    BUILT_85M_AI_STARTUP_COURSE,
+    GIVE_ME_27_MINS_DIGITAL_MARKETING_COURSE
   ];
 }
 
