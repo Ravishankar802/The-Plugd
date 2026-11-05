@@ -1669,6 +1669,34 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-84"],
     assignedPlaybookSlugs: ["build-a-10k-month-ai-influencer-in-9-mins"],
   },
+  "iterative-acceleration-engine": {
+    templateId: "iterative-acceleration-engine",
+    name: "Iterative Acceleration & High-Velocity Feedback Engine",
+    categoryTheme: "Rapid Skill Acquisition, Public Iteration & Compounding Performance Systems",
+    description:
+      "High-velocity iteration workstation with feedback triage matrices, bottleneck diagnosis trees, and 30-day sprint progress telemetry",
+    colorPalette: {
+      canvasBg: "#09110e",
+      stageBg: "#11221c",
+      border: "#1c382e",
+      primaryText: "#ecfdf5",
+      secondaryText: "#6ee7b7",
+      accent: "#10b981",
+      accentSecondary: "#f59e0b",
+      highlightPillBg: "#064e3b",
+      highlightPillText: "#a7f3d0",
+    },
+    visualMotifs: [
+      "The Start-Feedback-Improve-Repeat loop flywheel (Attempt -> Observe -> Diagnose -> Adjust -> Retest)",
+      "Feedback triage matrix (Repeated confusion, specific defects, unactionable cringe, safety concerns)",
+      "Bottleneck prioritization scorecards (Impact x Frequency x Confidence / Effort)",
+      "30-Day Progress Sprint execution roadmap & attempt documentation ledgers",
+    ],
+    layoutArchitecture:
+      "High-velocity iteration workstation with feedback triage matrices, bottleneck diagnosis trees, and 30-day sprint progress telemetry",
+    assignedPlaybookIds: ["ai-businesses-85"],
+    assignedPlaybookSlugs: ["how-to-make-progress-faster-than-everyone"],
+  },
 };
 
 /**

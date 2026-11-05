@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "how-to-make-progress-faster-than-everyone" ||
+    slug === "ai-businesses-85"
+  ) {
+    return {
+      name: "Tejas Patil",
+      avatar: "",
+      booksCount: 2,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "build-a-10k-month-ai-influencer-in-9-mins" ||
     slug === "ai-businesses-84"
   ) {
@@ -1095,6 +1108,58 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "how-to-make-progress-faster-than-everyone" ||
+    slug === "ai-businesses-85"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Isaiah",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "This hit differently because it focuses on the part nobody really talks about: getting over the fear of looking inexperienced. The exercises helped me recognise how much time I was wasting trying to make everything perfect before even starting.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Thompson",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I really liked the practical feedback system. Instead of just telling you to work harder, it shows you how to identify weaknesses, ask better questions, and make specific improvements. The iteration log is something I'll actually keep using.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Meera",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The chapter about documenting your journey was my favourite. I used to focus only on finished results, but keeping track of attempts and mistakes makes progress much easier to see. This is a genuinely useful framework for anyone building a skill or project.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Kulkarni",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Simple ideas, but incredibly well organised. The 30-day sprint gives you a clear starting point, and the weekly reviews help turn motivation into an actual routine. My biggest takeaway was learning to take my work seriously without taking every criticism personally.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "build-a-10k-month-ai-influencer-in-9-mins" ||
     slug === "ai-businesses-84"

@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-85",
+      "slug": "how-to-make-progress-faster-than-everyone",
+      "title": "How to make progress faster than everyone",
+      "headline": "Stop waiting to become good. Start creating, put your work out there, learn from every attempt, and turn consistent improvement into an unfair advantage.",
+      "description": "Stop waiting to become good. Start creating, put your work out there, learn from every attempt, and turn consistent improvement into an unfair advantage.\n\nA practical system for overcoming perfectionism, getting comfortable with being a beginner, and making meaningful progress through repetition. Learn how to challenge limiting rules, collect useful feedback, identify your biggest weaknesses, document your journey, and improve your work through a structured 30-day sprint. Includes reflection exercises, iteration trackers, feedback templates, progress scorecards, and reusable workflows.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#10b981",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_to_make_progress_faster_than_everyone.png",
+      "href": "/how-to-make-progress-faster-than-everyone"
+  },
+  {
       "id": "ai-businesses-84",
       "slug": "build-a-10k-month-ai-influencer-in-9-mins",
       "title": "Build a $10k/month Ai influencer in 9 mins...",
@@ -6932,4 +6953,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 344;
+export const TOTAL_PLAYBOOKS_COUNT = 345;

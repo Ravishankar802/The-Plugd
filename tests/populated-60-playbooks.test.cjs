@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-85",
+    slug: "how-to-make-progress-faster-than-everyone",
+    title: "How to make progress faster than everyone",
+    dataFile: "src/lib/playbooks/how-to-make-progress-faster-than-everyone-data.ts",
+    detailFile: "src/lib/playbooks/how-to-make-progress-faster-than-everyone-detail.ts",
+    routeDir: "src/app/how-to-make-progress-faster-than-everyone",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-84",
     slug: "build-a-10k-month-ai-influencer-in-9-mins",
     title: "Build a $10k/month Ai influencer in 9 mins...",

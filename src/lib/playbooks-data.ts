@@ -196,6 +196,11 @@ import {
   BUILD_AI_INFLUENCER_10K_SLUG,
   BUILD_AI_INFLUENCER_10K_ID
 } from "./playbooks/build-a-10k-month-ai-influencer-in-9-mins-data";
+import {
+  HOW_TO_MAKE_PROGRESS_FASTER_COURSE,
+  HOW_TO_MAKE_PROGRESS_FASTER_SLUG,
+  HOW_TO_MAKE_PROGRESS_FASTER_ID
+} from "./playbooks/how-to-make-progress-faster-than-everyone-data";
 
 
 export type SlideType =
@@ -788,6 +793,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-83": HOW_I_MADE_16K_WHOP_COURSE,
   "build-a-10k-month-ai-influencer-in-9-mins": BUILD_AI_INFLUENCER_10K_COURSE,
   "ai-businesses-84": BUILD_AI_INFLUENCER_10K_COURSE,
+  "how-to-make-progress-faster-than-everyone": HOW_TO_MAKE_PROGRESS_FASTER_COURSE,
+  "ai-businesses-85": HOW_TO_MAKE_PROGRESS_FASTER_COURSE,
   "how-i-built-it-400k-month-ios-app": HOW_I_BUILT_400K_IOS_COURSE,
   "ai-businesses-76": HOW_I_BUILT_400K_IOS_COURSE,
     "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck": REINVENT_90_DAYS_COURSE,
@@ -916,7 +923,8 @@ export function getAllCourses(): Course[] {
     HOW_I_WENT_FROM_0_TO_92K_MONTH_AT_19_COURSE,
     ITS_BORING_745_DAY_COURSE,
     HOW_I_MADE_16K_WHOP_COURSE,
-    BUILD_AI_INFLUENCER_10K_COURSE
+    BUILD_AI_INFLUENCER_10K_COURSE,
+    HOW_TO_MAKE_PROGRESS_FASTER_COURSE
   ];
 }
 
