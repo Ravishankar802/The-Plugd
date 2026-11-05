@@ -1018,6 +1018,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-61"],
     assignedPlaybookSlugs: ["i-tried-a-100-free-ai-side-hustle-for-indians-real-results"],
   },
+  "code-framework-hypergrowth-ai-startup": {
+    templateId: "code-framework-hypergrowth-ai-startup",
+    name: "Hypergrowth CODE Framework Terminal Canvas",
+    categoryTheme: "High-Growth AI Startups & GTM Architecture",
+    description:
+      "Deep obsidian stage (#0b0f19) with electric cyan borders (#0284c7), cobalt blue accents (#2563eb), crisp mint status badges (#10b981), and refined institutional typography.",
+    colorPalette: {
+      canvasBg: "#070a12",
+      stageBg: "#0b0f19",
+      border: "#1e293b",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#38bdf8",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#0f172a",
+      highlightPillText: "#38bdf8",
+    },
+    visualMotifs: [
+      "CODE framework telemetry grid",
+      "Single-job MVP execution scalpel",
+      "AEO prompt visibility scanner",
+      "Diagnostic GTM outreach pipeline",
+    ],
+    layoutArchitecture: "Obsidian command station with dual ARR telemetry rail and diagnostic audit viewport",
+    assignedPlaybookIds: ["ai-businesses-62"],
+    assignedPlaybookSlugs: ["i-built-an-85m-ai-startup-in-5-months-heres-my-playbook"],
+  },
 };
 
 /**

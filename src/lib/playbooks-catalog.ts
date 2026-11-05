@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-62",
+      "slug": "i-built-an-85m-ai-startup-in-5-months-heres-my-playbook",
+      "title": "I Built An $85M AI Startup in 5 Months (here's my playbook)",
+      "headline": "Build a high-growth startup from the ground up with a proven framework for validating ideas, launching an MVP, attracting customers, and creating repeatable growth systems.",
+      "description": "Learn how to identify emerging market opportunities, validate real customer demand using the CODE framework, and build a focused MVP without wasting months on unnecessary features. This practical founder's playbook covers audience building, customer feedback, founder-led content, GTM outreach, lead magnets, AI search visibility, and a 90-day execution plan—all inspired by the reported journey behind an $85M AI startup.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "hoursOfMaterial": "9.0 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#3b82f6",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Built_An_85M_AI_Startup_in_5_Months_here_s_my_playbook.png",
+      "href": "/i-built-an-85m-ai-startup-in-5-months-heres-my-playbook"
+  },
+  {
       "id": "ai-businesses-61",
       "slug": "i-tried-a-100-free-ai-side-hustle-for-indians-real-results",
       "title": "I Tried A 100% FREE AI Side Hustle For Indians (Real Results)",
@@ -6454,4 +6474,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 321;
+export const TOTAL_PLAYBOOKS_COUNT = 322;

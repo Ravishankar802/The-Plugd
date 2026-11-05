@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "i-built-an-85m-ai-startup-in-5-months-heres-my-playbook" ||
+    slug === "ai-businesses-62"
+  ) {
+    return {
+      name: "Nathan Cole",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "i-tried-a-100-free-ai-side-hustle-for-indians-real-results" ||
     slug === "ai-businesses-61"
   ) {
@@ -1171,6 +1184,54 @@ export function getCuratedCommunityReviews(
         headline: "",
         content: "Loved the comparison between all three models. It helped me understand which business fits my resources and why validating an idea matters before building.",
         likes: 30,
+      },
+    ];
+  }
+
+  if (
+    slug === "i-built-an-85m-ai-startup-in-5-months-heres-my-playbook" ||
+    slug === "ai-businesses-62"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Corey",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most practical startup guides I've read. The CODE framework completely changed how I evaluate business ideas. I especially liked the focus on validating demand before spending months building.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Jared",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "This connects all the important pieces of building a startup—from finding the opportunity to getting your first customers. The 90-day execution plan makes everything feel much more actionable.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Shane",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "Loved the emphasis on building an audience before launching. The MVP and customer-feedback chapters are especially valuable. It feels like an actual operating manual rather than another motivational startup ebook.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Eric",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "Packed with useful frameworks, checklists, and practical exercises. The sections on distribution, lead magnets, and outbound sales gave me a much clearer picture of how to turn a product into a real business.",
+        likes: 84,
       },
     ];
   }

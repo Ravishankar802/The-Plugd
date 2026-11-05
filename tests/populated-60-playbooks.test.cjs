@@ -81,6 +81,18 @@ const POPULATED_PLAYBOOKS = [
     expectedLessons: 28,
     expectedSlides: 112
   },
+  {
+    id: "ai-businesses-62",
+    slug: "i-built-an-85m-ai-startup-in-5-months-heres-my-playbook",
+    title: "I Built An $85M AI Startup in 5 Months (here's my playbook)",
+    dataFile: "src/lib/playbooks/built-85m-ai-startup-data.ts",
+    detailFile: "src/lib/playbooks/built-85m-ai-startup-detail.ts",
+    routeDir: "src/app/i-built-an-85m-ai-startup-in-5-months-heres-my-playbook",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+
 
   {
       "id": "ai-businesses-54",
