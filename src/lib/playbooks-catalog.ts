@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-67",
+      "slug": "claude-chatgpt-57152-in-90-days",
+      "title": "Claude + ChatGPT = $57,152 In 90 Days",
+      "headline": "Turn Claude and ChatGPT into your faceless YouTube production team—from finding viral-worthy topics to scripting, editing, branding, and publishing Shorts.",
+      "description": "Millions of views don't happen just because you use AI. This playbook breaks down a complete Shorts workflow built around competitor research, original storytelling, AI voiceovers, visual production, and channel branding. Follow the 90-day roadmap, use ready-made prompts, and learn how to measure retention, improve your videos, and build a repeatable content operation.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "9.1 hours",
+      "rating": 4.9,
+      "ratingCount": "4.8k",
+      "accentColor": "#6366f1",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Claude_ChatGPT_57_152_In_90_Days.png",
+      "href": "/claude-chatgpt-57152-in-90-days"
+  },
+  {
       "id": "ai-businesses-66",
       "slug": "its-boring-but-i-make-51-day-in-1-hour-at-22",
       "title": "It’s boring but I make $51/day in 1 hour at 22",
@@ -6554,4 +6575,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 326;
+export const TOTAL_PLAYBOOKS_COUNT = 327;

@@ -1153,6 +1153,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-66"],
     assignedPlaybookSlugs: ["its-boring-but-i-make-51-day-in-1-hour-at-22"],
   },
+  "claude-chatgpt-faceless-shorts-studio": {
+    templateId: "claude-chatgpt-faceless-shorts-studio",
+    name: "Claude & ChatGPT Faceless Shorts Studio",
+    categoryTheme: "Faceless YouTube Shorts Studio & AI Video Engineering",
+    description:
+      "A cinematic vertical production studio combining competitor intelligence telemetry, AI scriptwriting prompts, scene-by-scene storyboard breakdowns, and YouTube retention telemetry.",
+    colorPalette: {
+      canvasBg: "#0f172a",
+      stageBg: "#090d16",
+      border: "#1e293b",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#6366f1",
+      accentSecondary: "#f59e0b",
+      highlightPillBg: "#1e1b4b",
+      highlightPillText: "#a5b4fc",
+    },
+    visualMotifs: [
+      "Vertical 9:16 Shorts timeline framing and audio waveform telemetry",
+      "Claude competitor extraction & prompt engineering terminal",
+      "Scene-by-scene visual production matrix with stock & AI prompt indicators",
+      "YouTube Shorts retention curve & RPM economics dashboard",
+    ],
+    layoutArchitecture: "High-contrast dark-mode vertical studio with prompt terminal inspectors and multi-track video assembly tracks",
+    assignedPlaybookIds: ["ai-businesses-67"],
+    assignedPlaybookSlugs: ["claude-chatgpt-57152-in-90-days"],
+  },
 };
 
 /**

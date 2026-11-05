@@ -77,6 +77,11 @@ import { SELL_PDFS_WITH_AI_COURSE } from "./playbooks/sell-pdfs-with-ai-changed-
 import { THREE_BEST_AI_BIZ_2027_COURSE } from "./playbooks/three-best-ai-businesses-before-2027-data";
 import { FIVE_SIMPLE_APPS_10K_COURSE } from "./playbooks/five-simple-apps-10k-month-ai-data";
 import {
+  CLAUDE_CHATGPT_57K_COURSE,
+  CLAUDE_CHATGPT_57K_SLUG,
+  CLAUDE_CHATGPT_57K_ID
+} from "./playbooks/claude-chatgpt-57152-in-90-days-data";
+import {
   BORING_51_DAY_IN_1_HOUR_COURSE,
   BORING_51_DAY_IN_1_HOUR_SLUG,
   BORING_51_DAY_IN_1_HOUR_ID
@@ -681,6 +686,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-64": AMBITIOUS_IN_20S_OR_30S_COURSE,
   "this-ai-business-will-make-you-10k-month-with-zero-employees": AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE,
   "ai-businesses-65": AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE,
+  "claude-chatgpt-57152-in-90-days": CLAUDE_CHATGPT_57K_COURSE,
+  "ai-businesses-67": CLAUDE_CHATGPT_57K_COURSE,
   "its-boring-but-i-make-51-day-in-1-hour-at-22": BORING_51_DAY_IN_1_HOUR_COURSE,
   "ai-businesses-66": BORING_51_DAY_IN_1_HOUR_COURSE,
 
@@ -770,7 +777,8 @@ export function getAllCourses(): Course[] {
     GIVE_ME_27_MINS_DIGITAL_MARKETING_COURSE,
     AMBITIOUS_IN_20S_OR_30S_COURSE,
     AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE,
-    BORING_51_DAY_IN_1_HOUR_COURSE
+    BORING_51_DAY_IN_1_HOUR_COURSE,
+    CLAUDE_CHATGPT_57K_COURSE
   ];
 }
 

@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-67",
+    slug: "claude-chatgpt-57152-in-90-days",
+    title: "Claude + ChatGPT = $57,152 In 90 Days",
+    dataFile: "src/lib/playbooks/claude-chatgpt-57152-in-90-days-data.ts",
+    detailFile: "src/lib/playbooks/claude-chatgpt-57152-in-90-days-detail.ts",
+    routeDir: "src/app/claude-chatgpt-57152-in-90-days",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-66",
     slug: "its-boring-but-i-make-51-day-in-1-hour-at-22",
     title: "It’s boring but I make $51/day in 1 hour at 22",

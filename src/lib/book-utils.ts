@@ -186,6 +186,20 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "claude-chatgpt-57152-in-90-days" ||
+    slug === "ai-businesses-67"
+  ) {
+    return {
+      name: "Rishabh Jain",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+
+  if (
     slug === "its-boring-but-i-make-51-day-in-1-hour-at-22" ||
     slug === "ai-businesses-66"
   ) {
@@ -856,6 +870,53 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "claude-chatgpt-57152-in-90-days" ||
+    slug === "ai-businesses-67"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Daniel",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "The best part is how the entire process connects. I went from thinking about AI videos as random clips to understanding how research, scripting, storyboarding, and editing fit into one production system.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Felix Morgan",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "Those Claude prompts are incredibly useful. The competitor research and scene breakdown sections gave me a much clearer way to plan videos instead of staring at a blank screen wondering what to make.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Anika Patel",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "I expected another guide promising effortless YouTube money. Instead, it actually explains retention, copyright, monetisation, and production costs. That honest approach made the material much more valuable.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Nandini Shah",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "The branding section was a nice surprise. Having the prompts for channel names, logos, banners, and descriptions alongside the video workflow makes this feel like a complete launch guide.",
+        likes: 84,
+      },
+    ];
+  }
   if (
     slug === "its-boring-but-will-make-even-beginners-millionaires-in-2026" ||
     slug === "ai-businesses-13"

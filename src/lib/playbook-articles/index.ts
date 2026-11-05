@@ -65,6 +65,7 @@ import { GIVE_ME_27_MINS_DIGITAL_MARKETING_ARTICLE } from "./give-me-27-minutes-
 import { AMBITIOUS_IN_20S_OR_30S_ARTICLE } from "./ambitious-in-20s-or-30s";
 import { AI_BUSINESS_10K_ZERO_EMPLOYEES_ARTICLE } from "./ai-business-10k-month-zero-employees";
 import { BORING_51_DAY_IN_1_HOUR_ARTICLE } from "./boring-51-day-in-1-hour";
+import { CLAUDE_CHATGPT_57K_ARTICLE } from "./claude-chatgpt-57152-in-90-days";
 
 export * from "./types";
 
@@ -206,6 +207,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-65": AI_BUSINESS_10K_ZERO_EMPLOYEES_ARTICLE,
   "its-boring-but-i-make-51-day-in-1-hour-at-22": BORING_51_DAY_IN_1_HOUR_ARTICLE,
   "ai-businesses-66": BORING_51_DAY_IN_1_HOUR_ARTICLE,
+  "claude-chatgpt-57152-in-90-days": CLAUDE_CHATGPT_57K_ARTICLE,
+  "ai-businesses-67": CLAUDE_CHATGPT_57K_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {
