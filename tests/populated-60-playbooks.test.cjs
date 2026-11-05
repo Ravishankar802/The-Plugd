@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-91",
+    slug: "i-blew-up-a-youtube-channel-in-24-hours-with-ai",
+    title: "I BLEW UP a YouTube Channel in 24 Hours with AI",
+    dataFile: "src/lib/playbooks/i-blew-up-a-youtube-channel-in-24-hours-with-ai-data.ts",
+    detailFile: "src/lib/playbooks/i-blew-up-a-youtube-channel-in-24-hours-with-ai-detail.ts",
+    routeDir: "src/app/i-blew-up-a-youtube-channel-in-24-hours-with-ai",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-90",
     slug: "if-i-started-with-0-heres-my-exact-plan-to-100k",
     title: "If I Started With $0, Here's My Exact Plan To $100K",

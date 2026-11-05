@@ -1841,6 +1841,35 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-90"],
     assignedPlaybookSlugs: ["if-i-started-with-0-heres-my-exact-plan-to-100k"],
   },
+  // 64. Playbook 64: I BLEW UP a YouTube Channel in 24 Hours with AI
+  "viral-shorts-transformation-studio": {
+    templateId: "viral-shorts-transformation-studio",
+    name: "AI Viral Shorts Transformation Studio & Storytelling Matrix",
+    categoryTheme: "Shorts Reverse-Engineering, 6-Phase Storytelling, Visual Continuity & High-Retention Video Production",
+    description:
+      "Neon cyberpunk crimson canvas (#0f0a14) with electric magenta stages (#1a1025), vivid violet borders (#3b185f), fluorescent coral indicators (#ff4b72), and amber retention gauges (#f59e0b)",
+    colorPalette: {
+      canvasBg: "#0f0a14",
+      stageBg: "#1a1025",
+      border: "#3b185f",
+      primaryText: "#fdf4ff",
+      secondaryText: "#d8b4fe",
+      accent: "#ff4b72",
+      accentSecondary: "#a855f7",
+      highlightPillBg: "#4c0519",
+      highlightPillText: "#fecdd3",
+    },
+    visualMotifs: [
+      "The 6-Phase Storytelling Blueprint: Declare -> Assessment -> Isolate -> Process -> Build -> Reveal",
+      "Dual Reference Anchor Frame (Environment Reference + Subject Reference)",
+      "The Before/After Split Transformation Polaroid Canvas",
+      "The 48-Hour Retention Telemetry & Average Percentage Viewed Waveform",
+    ],
+    layoutArchitecture:
+      "Split cinematic storyboard HUD with scene-by-scene timing tracks, visual continuity reference slots, and retention drop-off analytics",
+    assignedPlaybookIds: ["ai-businesses-91"],
+    assignedPlaybookSlugs: ["i-blew-up-a-youtube-channel-in-24-hours-with-ai"],
+  },
 };
 
 /**

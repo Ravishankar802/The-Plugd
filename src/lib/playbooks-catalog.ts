@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-91",
+      "slug": "i-blew-up-a-youtube-channel-in-24-hours-with-ai",
+      "title": "I BLEW UP a YouTube Channel in 24 Hours with AI",
+      "headline": "Turn AI into your Shorts production studio — reverse-engineer viral storytelling, create original transformation videos, and build a repeatable YouTube content system that can capture millions of views.",
+      "description": "Turn AI into your Shorts production studio — reverse-engineer viral storytelling, create original transformation videos, and build a repeatable YouTube content system that can capture millions of views.\n\nLearn how to take a proven short-form video format and transform it into an original AI-powered YouTube channel. From niche research and six-phase storytelling to consistent AI visuals, animation, voice-overs, editing, publishing, and analytics, this playbook walks you through the entire production process. Includes reusable AI prompts, scene-analysis templates, visual continuity workflows, editing checklists, performance trackers, and a practical 24-hour launch plan.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#ff4b72",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_BLEW_UP_a_YouTube_Channel_in_24_Hours_with_AI.png",
+      "href": "/i-blew-up-a-youtube-channel-in-24-hours-with-ai"
+  },
+  {
       "id": "ai-businesses-90",
       "slug": "if-i-started-with-0-heres-my-exact-plan-to-100k",
       "title": "If I Started With $0, Here's My Exact Plan To $100K",
@@ -7058,4 +7079,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 350;
+export const TOTAL_PLAYBOOKS_COUNT = 351;

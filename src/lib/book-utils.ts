@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "i-blew-up-a-youtube-channel-in-24-hours-with-ai" ||
+    slug === "ai-businesses-91"
+  ) {
+    return {
+      name: "Kelvin Ng",
+      avatar: "",
+      booksCount: 2,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "if-i-started-with-0-heres-my-exact-plan-to-100k" ||
     slug === "ai-businesses-90"
   ) {
@@ -587,7 +600,7 @@ if (
     return {
       name: "Kelvin Ng",
       avatar: "",
-      booksCount: 1,
+      booksCount: 2,
       followersCount: "",
       bio: "",
     };
@@ -1173,6 +1186,59 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "i-blew-up-a-youtube-channel-in-24-hours-with-ai" ||
+    slug === "ai-businesses-91"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Sam",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The six-phase storytelling framework is the real gem here. It explains how to create that curiosity loop that makes people want to see the final reveal. I especially liked how the playbook shows you to study successful formats without simply copying other creators.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Rishi",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Finally, an AI Shorts guide that goes beyond throwing prompts into an image generator. The environment references, subject consistency, scene generation, and animation workflows make the production process much easier to understand.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Zoe",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The case study makes this particularly interesting. I liked seeing the actual production sequence, editing decisions, and analytics breakdown rather than just a screenshot of a huge view count. The templates are useful too.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Pradeep",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "My favourite part is how everything connects, from choosing the niche to scripting, generating visuals, editing, and analysing performance. It feels like a complete content-production system rather than a collection of random AI tricks.",
+        likes: 84,
+      },
+    ];
+  }
+
+
   if (
     slug === "if-i-started-with-0-heres-my-exact-plan-to-100k" ||
     slug === "ai-businesses-90"
