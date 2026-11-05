@@ -4,10 +4,10 @@ import { FREE_AI_SIDE_HUSTLE_INDIANS_DETAIL_DATA } from "@/lib/playbooks/free-ai
 
 export const metadata: Metadata = {
   title: "I Tried A 100% FREE AI Side Hustle For Indians (Real Results) | Plugd",
-  description: "Build a digital-product side hustle from India using free AI tools, Canva, and Pinterest—without spending money on paid advertising.",
+  description: "Build and sell digital products from India using free AI tools — then turn Pinterest searches into a traffic source for your online store.",
   openGraph: {
     title: "I Tried A 100% FREE AI Side Hustle For Indians (Real Results) | Plugd",
-    description: "Build a digital-product side hustle from India using free AI tools, Canva, and Pinterest—without spending money on paid advertising.",
+    description: "Build and sell digital products from India using free AI tools — then turn Pinterest searches into a traffic source for your online store.",
   },
 };
 

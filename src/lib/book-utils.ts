@@ -94,12 +94,14 @@ export function getReadingStats(slug = ""): {
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
     slug === "this-ai-side-hustle-makes-4-lakhs-month-copy-me" ||
-    slug === "ai-businesses-100"
+    slug === "ai-businesses-100" ||
+    slug === "i-tried-a-100-free-ai-side-hustle-for-indians-real-results" ||
+    slug === "ai-businesses-61"
   ) {
     return {
       name: "Ritu Sharma",
       avatar: "",
-      booksCount: 1,
+      booksCount: 2,
       followersCount: "",
       bio: "",
     };
@@ -658,18 +660,7 @@ if (
     };
   }
 
-  if (
-    slug === "i-tried-a-100-free-ai-side-hustle-for-indians-real-results" ||
-    slug === "ai-businesses-61"
-  ) {
-    return {
-      name: "Sneha Mishra",
-      avatar: "",
-      booksCount: 1,
-      followersCount: "",
-      bio: "",
-    };
-  }
+
 
   if (
     slug === "5-simple-apps-making-10-000-month-that-you-can-build-with-ai" ||
@@ -3481,42 +3472,42 @@ if (
     return [
       {
         id: "rev-1",
-        name: "Vedant",
+        name: "Anirudh",
         avatar: "",
         date: "August 04 2026",
         rating: 5,
         headline: "",
-        content: "One of the most practical side-hustle guides I've come across. I especially liked how it explains the entire process, from finding product ideas to creating PDFs and getting traffic through Pinterest. Easy to follow.",
+        content: "I liked how practical this was. Instead of just throwing around AI business ideas, it actually walks you through making a product, setting up the listing, and getting it in front of people on Pinterest. Easy to follow.",
         likes: 121,
       },
       {
         id: "rev-2",
-        name: "Aakash Bhat",
+        name: "Sneha",
         avatar: "",
         date: "August 08 2026",
         rating: 5,
         headline: "",
-        content: "The India-focused payment and storefront section makes this particularly useful. I always found international digital-product selling confusing, but this breaks the process into manageable steps.",
+        content: "The freebie-to-paid-product strategy was my favourite part. I hadn't thought about using a small printable as an entry point to a more complete product. The prompts and worksheets make the whole process much easier to approach.",
         likes: 109,
       },
       {
         id: "rev-3",
-        name: "Ronav",
+        name: "Dhruv",
         avatar: "",
         date: "August 14 2026",
         rating: 5,
         headline: "",
-        content: "Really appreciated the actual experiment and the transparent breakdown of downloads, sales, and revenue. No unrealistic promises about getting rich overnight. Just a clear workflow you can test yourself.",
+        content: "Finally, an AI side hustle guide that doesn't pretend everything is effortless. The Pinterest research, Canva workflow, and Gumroad setup are explained clearly. I especially appreciate the section on tracking actual sales instead of just celebrating downloads.",
         likes: 90,
       },
       {
         id: "rev-4",
-        name: "Abhinandan",
+        name: "Tanvi Bhatia",
         avatar: "",
         date: "August 21 2026",
         rating: 5,
         headline: "",
-        content: "The AI prompts, Canva workflow, and Pinterest Pin strategies are incredibly helpful. I like that everything is explained step by step, especially the free-to-paid product funnel. Great resource for beginners.",
+        content: "Really useful for someone starting without a big budget. I liked that it covers the small details too — product previews, Pin descriptions, destination links, and even what to check when people click but don't buy. It feels like an actual launch plan, not just motivation.",
         likes: 84,
       },
     ];

@@ -7373,9 +7373,9 @@ export const FREE_AI_SIDE_HUSTLE_INDIANS_COURSE: Course = {
   "shortTitle": "Free AI Side Hustle For Indians",
   "audience": "Entrepreneurs, Creators & Sovereign Operators",
   "targetGender": "for-all",
-  "headline": "Build a digital-product side hustle from India using free AI tools, Canva, and Pinterest—without spending money on paid advertising.",
-  "subheadline": "Build a digital-product side hustle from India using free AI tools, Canva, and Pinterest—without spending money on paid advertising.",
-  "description": "Learn how to research profitable digital-product ideas, create planners and printables with AI, design them in Canva, and sell them through an online storefront. This practical playbook walks you through Pinterest marketing, free-to-paid product funnels, payment setup for Indian sellers, and a 30-day launch plan, using a real seven-day experiment as a reference.",
+  "headline": "Build and sell digital products from India using free AI tools — then turn Pinterest searches into a traffic source for your online store.",
+  "subheadline": "Build and sell digital products from India using free AI tools — then turn Pinterest searches into a traffic source for your online store.",
+  "description": "Discover how to research products people are already searching for, create polished printable PDFs with Claude and Canva, and sell them through Gumroad. This playbook walks you through the entire Pinterest marketing funnel, from keyword research and product creation to free-to-paid offers, Pin publishing, and performance tracking — with a practical 7-day launch plan.",
   "price": 3,
   "originalPrice": 9,
   "currency": "USD",
@@ -7398,27 +7398,35 @@ export const FREE_AI_SIDE_HUSTLE_INDIANS_COURSE: Course = {
   modules: FREE_AI_SIDE_HUSTLE_INDIANS_MODULES,
   "testimonials": [
     {
-      "name": "Kaelen Mercer",
-      "handle": "@kaelen_m",
-      "role": "Sovereign Operator",
-      "quote": "This playbook is a tactical masterpiece. Reached $18,500/month by applying the exact operational blueprint and automated leverage taught here.",
-      "metric": "$18.5k/mo Verified"
+      "name": "Anirudh",
+      "handle": "@anirudh",
+      "role": "Digital Publisher",
+      "quote": "I liked how practical this was. Instead of just throwing around AI business ideas, it actually walks you through making a product, setting up the listing, and getting it in front of people on Pinterest. Easy to follow.",
+      "metric": "100% Free Tools"
     },
     {
-      "name": "Soraya Chen",
-      "handle": "@soraya_builds",
-      "role": "Solo Media Strategist",
-      "quote": "The storytelling approach completely changed my psychology. I stopped chasing shiny fads and built a bulletproof 96% margin business in 60 days.",
-      "metric": "100% Zero Debt"
+      "name": "Sneha",
+      "handle": "@sneha",
+      "role": "Printables Creator",
+      "quote": "The freebie-to-paid-product strategy was my favourite part. I hadn't thought about using a small printable as an entry point to a more complete product. The prompts and worksheets make the whole process much easier to approach.",
+      "metric": "Free-to-Paid Funnel"
     },
     {
-      "name": "Damian Cole",
-      "handle": "@damian_c",
-      "role": "Capital Architect",
-      "quote": "The financial math and monk-mode discipline in this playbook saved me years of wasted trial and error. Best investment I have ever made.",
-      "metric": "$350k Milestone"
+      "name": "Dhruv",
+      "handle": "@dhruv",
+      "role": "Independent Operator",
+      "quote": "Finally, an AI side hustle guide that doesn't pretend everything is effortless. The Pinterest research, Canva workflow, and Gumroad setup are explained clearly. I especially appreciate the section on tracking actual sales instead of just celebrating downloads.",
+      "metric": "Verified Sales"
+    },
+    {
+      "name": "Tanvi Bhatia",
+      "handle": "@tanvibhatia",
+      "role": "Digital Creator",
+      "quote": "Really useful for someone starting without a big budget. I liked that it covers the small details too — product previews, Pin descriptions, destination links, and even what to check when people click but don't buy. It feels like an actual launch plan, not just motivation.",
+      "metric": "Launch Plan Complete"
     }
   ],
+  
   "faqs": [
     {
       "question": "How is this different from typical corporate training or video courses?",

@@ -5,8 +5,8 @@ export const FREE_AI_SIDE_HUSTLE_INDIANS_DETAIL_DATA: PlaybookDetailData = {
   id: "ai-businesses-61",
   slug: "i-tried-a-100-free-ai-side-hustle-for-indians-real-results",
   title: "I Tried A 100% FREE AI Side Hustle For Indians (Real Results)",
-  headline: "Build a digital-product side hustle from India using free AI tools, Canva, and Pinterest—without spending money on paid advertising.",
-  description: "Learn how to research profitable digital-product ideas, create planners and printables with AI, design them in Canva, and sell them through an online storefront. This practical playbook walks you through Pinterest marketing, free-to-paid product funnels, payment setup for Indian sellers, and a 30-day launch plan, using a real seven-day experiment as a reference.",
+  headline: "Build and sell digital products from India using free AI tools — then turn Pinterest searches into a traffic source for your online store.",
+  description: "**Build and sell digital products from India using free AI tools — then turn Pinterest searches into a traffic source for your online store.**\n\nDiscover how to research products people are already searching for, create polished printable PDFs with Claude and Canva, and sell them through Gumroad. This playbook walks you through the entire Pinterest marketing funnel, from keyword research and product creation to free-to-paid offers, Pin publishing, and performance tracking — with a practical 7-day launch plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
@@ -17,13 +17,13 @@ export const FREE_AI_SIDE_HUSTLE_INDIANS_DETAIL_DATA: PlaybookDetailData = {
   rating: 4.8,
   ratingCount: "4.8k",
   studentsCount: "2,350",
-  instructorName: "Sneha Mishra",
+  instructorName: "Ritu Sharma",
   instructorTitle: "Digital Publishing Architect & Cross-Border Operator",
   instructorBio: "",
   instructorRating: 4.8,
   instructorReviews: "4.8k",
   instructorStudents: "2,350",
-  instructorCourses: 6,
+  instructorCourses: 2,
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
@@ -105,30 +105,39 @@ export const FREE_AI_SIDE_HUSTLE_INDIANS_DETAIL_DATA: PlaybookDetailData = {
   })),
   testimonials: [
     {
-      name: "Vedant",
+      name: "Anirudh",
       role: "Digital Publisher",
       rating: 5,
-      quote: "One of the most practical side-hustle guides I've come across. I especially liked how it explains the entire process, from finding product ideas to creating PDFs and getting traffic through Pinterest.",
-      initials: "V",
+      quote: "I liked how practical this was. Instead of just throwing around AI business ideas, it actually walks you through making a product, setting up the listing, and getting it in front of people on Pinterest. Easy to follow.",
+      initials: "A",
       date: "August 2026"
     },
     {
-      name: "Aakash Bhat",
-      role: "Cross-Border Operator",
+      name: "Sneha",
+      role: "Printables Creator",
       rating: 5,
-      quote: "The India-focused payment and storefront section makes this particularly useful. I always found international digital-product selling confusing, but this breaks the process into manageable steps.",
-      initials: "AB",
+      quote: "The freebie-to-paid-product strategy was my favourite part. I hadn't thought about using a small printable as an entry point to a more complete product. The prompts and worksheets make the whole process much easier to approach.",
+      initials: "S",
       date: "August 2026"
     },
     {
-      name: "Ronav",
-      role: "Independent Creator",
+      name: "Dhruv",
+      role: "Independent Operator",
       rating: 5,
-      quote: "Really appreciated the actual experiment and the transparent breakdown of downloads, sales, and revenue. No unrealistic promises about getting rich overnight. Just a clear workflow you can test yourself.",
-      initials: "R",
+      quote: "Finally, an AI side hustle guide that doesn't pretend everything is effortless. The Pinterest research, Canva workflow, and Gumroad setup are explained clearly. I especially appreciate the section on tracking actual sales instead of just celebrating downloads.",
+      initials: "D",
+      date: "August 2026"
+    },
+    {
+      name: "Tanvi Bhatia",
+      role: "Digital Creator",
+      rating: 5,
+      quote: "Really useful for someone starting without a big budget. I liked that it covers the small details too — product previews, Pin descriptions, destination links, and even what to check when people click but don't buy. It feels like an actual launch plan, not just motivation.",
+      initials: "TB",
       date: "August 2026"
     }
   ],
+  
   faqs: [
     {
       question: "How is this different from typical corporate training or video courses?",
