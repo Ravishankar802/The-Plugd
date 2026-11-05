@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-93",
+      "slug": "starting-an-ai-side-hustle-is-easy-copy-this-system",
+      "title": "Starting An AI Side Hustle Is EASY (Copy This System)",
+      "headline": "Stop building AI projects nobody wants. Find a problem people will actually pay to solve, create an edge competitors can't easily copy, and turn AI into a real customer-getting business.",
+      "description": "Stop building AI projects nobody wants. Find a problem people will actually pay to solve, create an edge competitors can't easily copy, and turn AI into a real customer-getting business.\n\nAI makes building easier — but finding customers, earning trust, and standing out are still the hard parts. This playbook gives you a four-gate system to validate demand, develop a competitive edge through imagination, focus, and customer context, find the right distribution channels, and build continuous learning loops.\n\nIncludes customer discovery scripts, niche scorecards, AI research prompts, MVP frameworks, distribution experiments, feedback trackers, reusable worksheets, and a practical 30-day execution roadmap.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#06b6d4",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Starting_An_AI_Side_Hustle_Is_EASY_Copy_This_System.png",
+      "href": "/starting-an-ai-side-hustle-is-easy-copy-this-system"
+  },
+  {
       "id": "ai-businesses-92",
       "slug": "im-broke-what-business-do-i-start",
       "title": "\"I'm Broke, What Business Do I Start?\"",
@@ -7100,4 +7121,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 352;
+export const TOTAL_PLAYBOOKS_COUNT = 353;

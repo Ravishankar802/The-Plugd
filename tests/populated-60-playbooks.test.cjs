@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-93",
+    slug: "starting-an-ai-side-hustle-is-easy-copy-this-system",
+    title: "Starting An AI Side Hustle Is EASY (Copy This System)",
+    dataFile: "src/lib/playbooks/starting-an-ai-side-hustle-is-easy-copy-this-system-data.ts",
+    detailFile: "src/lib/playbooks/starting-an-ai-side-hustle-is-easy-copy-this-system-detail.ts",
+    routeDir: "src/app/starting-an-ai-side-hustle-is-easy-copy-this-system",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-92",
     slug: "im-broke-what-business-do-i-start",
     title: "\"I'm Broke, What Business Do I Start?\"",

@@ -192,7 +192,7 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
     return {
       name: "Eduardo Martins",
       avatar: "",
-      booksCount: 2,
+      booksCount: 3,
       followersCount: "",
       bio: "",
     };
@@ -737,7 +737,7 @@ if (
     return {
       name: "Eduardo Martins",
       avatar: "",
-      booksCount: 2,
+      booksCount: 3,
       followersCount: "",
       bio: "",
     };
@@ -1199,6 +1199,58 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "starting-an-ai-side-hustle-is-easy-copy-this-system" ||
+    slug === "ai-businesses-93"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Noah",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Finally, an AI business guide that doesn't just throw 50 side hustle ideas at you. The four-gate framework completely changed how I evaluate opportunities. I especially liked the distinction between being able to build something and having actual evidence that someone wants to buy it.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Aditi",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The section on finding your edge was my favourite. Imagination, focus, and context are such simple concepts, but the explanations made me realise why most AI services look identical. The customer workflow exercises are particularly useful for finding opportunities that aren't obvious at first.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Sebastian",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I used to think distribution was something to figure out after building the product. This playbook makes it clear why that's backwards. The user-versus-buyer distinction and channel selection framework are excellent. It feels like practical business thinking rather than another collection of AI prompts.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Nisha",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The learning loops chapter ties everything together beautifully. Instead of treating the first launch as the finish line, it shows how to use customer feedback to improve the offer, delivery, and positioning. The 30-day plan also makes the whole framework feel manageable rather than overwhelming.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "im-broke-what-business-do-i-start" ||
     slug === "ai-businesses-92"

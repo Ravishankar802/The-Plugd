@@ -1899,6 +1899,35 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-92"],
     assignedPlaybookSlugs: ["im-broke-what-business-do-i-start"],
   },
+  // 66. Playbook 66: "Starting An AI Side Hustle Is EASY (Copy This System)"
+  "four-gate-hustle-architecture": {
+    templateId: "four-gate-hustle-architecture",
+    name: "Four-Gate AI Hustle Architecture & Telemetry Engine",
+    categoryTheme: "The Four-Gate Validation System (Demand, Edge, Access, Learning Loops), Cremona Builder Mindset & F1 Iteration Telemetry",
+    description:
+      "Deep cobalt graphite canvas (#0a0f1d) with midnight navy stages (#111827), indigo hairline borders (#1e293b), electric cyan primary telemetry (#06b6d4), vivid violet edge indicators (#8b5cf6), and lime feedback accents (#84cc16)",
+    colorPalette: {
+      canvasBg: "#0a0f1d",
+      stageBg: "#111827",
+      border: "#1e293b",
+      primaryText: "#f8fafc",
+      secondaryText: "#cbd5e1",
+      accent: "#06b6d4",
+      accentSecondary: "#8b5cf6",
+      highlightPillBg: "#083344",
+      highlightPillText: "#a5f3fc",
+    },
+    visualMotifs: [
+      "The Four-Gate Sequential Funnel (Gate 1 Demand, Gate 2 Edge, Gate 3 Access, Gate 4 Learning Loops)",
+      "The Edge Triad Radar (Imagination, Focus, Context)",
+      "The Formula 1 Telemetry Loop (Observe -> Record -> Analyse -> Decide -> Change -> Measure)",
+      "The Cremona Builder Craftsmanship Matrix (Sensory Judgment vs. Raw AI Output)",
+    ],
+    layoutArchitecture:
+      "Telemetry HUD with four-gate validation checkpoints, buyer vs. user split columns, niche scorecard calculators, and F1 feedback loop cycles",
+    assignedPlaybookIds: ["ai-businesses-93"],
+    assignedPlaybookSlugs: ["starting-an-ai-side-hustle-is-easy-copy-this-system"],
+  },
 };
 
 /**
