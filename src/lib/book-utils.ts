@@ -797,12 +797,14 @@ if (
 
   if (
     slug === "laziest-way-to-make-money-online-in-2026-500-day" ||
-    slug === "ai-businesses-09"
+    slug === "ai-businesses-09" ||
+    slug === "in-18-minutes-youll-understand-generational-wealth" ||
+    slug === "ai-businesses-96"
   ) {
     return {
       name: "Akhil Varma",
       avatar: "",
-      booksCount: 1,
+      booksCount: 2,
       followersCount: "",
       bio: "",
     };
@@ -1238,6 +1240,57 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "in-18-minutes-youll-understand-generational-wealth" ||
+    slug === "ai-businesses-96"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Dominic",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Such an interesting perspective on wealth. I always thought generational wealth was mostly about accumulating enough money to pass down. This made me realise that ownership structures, governance, and succession planning are just as important. The nine-system framework is excellent.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Camila",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The family constitution and governance sections were my favourites. It's easy to imagine how disagreements between heirs can destroy something that took decades to build. The practical examples make these problems feel very real, and the worksheets are genuinely useful.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Isaiah",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I appreciated that this goes beyond investing advice. It explains how trusts, holding companies, liquidity, and long-term ownership fit together. The section on preparing the next generation was especially valuable. Wealth without the knowledge to manage it doesn't last.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Raghavan",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Very well structured and surprisingly practical for such a complex topic. I particularly liked the India-specific section because it makes clear that you can't simply copy American estate-planning strategies. A great introduction to thinking about wealth beyond your own lifetime.",
+        likes: 84,
+      },
+    ];
+  }
       if (
     slug === "if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this" ||
     slug === "ai-businesses-95"

@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-96",
+      "slug": "in-18-minutes-youll-understand-generational-wealth",
+      "title": "In 18 Minutes, You'll Understand Generational Wealth",
+      "headline": "Don't just build a fortune — build a system that keeps it alive for generations. Master the nine systems behind preserving family wealth, protecting ownership, preventing disputes, and preparing the next generation to carry it forward.",
+      "description": "Don't just build a fortune — build a system that keeps it alive for generations. Master the nine systems behind preserving family wealth, protecting ownership, preventing disputes, and preparing the next generation to carry it forward.\n\nMost fortunes aren't lost because families stop making money — they're lost through poor succession planning, fragmented ownership, family conflicts, and a lack of financial education. This playbook breaks down nine systems used to organise, protect, govern, and preserve wealth across generations.\n\nExplore trusts, holding companies, family constitutions, governance councils, liquidity planning, long-term investing, and next-generation training. Includes practical checklists, family governance frameworks, asset inventories, risk registers, worksheets, and an implementation roadmap — with considerations for applying the principles in India.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#10b981",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/In_18_Minutes_You_ll_Understand_Generational_Wealth.png",
+      "href": "/in-18-minutes-youll-understand-generational-wealth"
+  },
+  {
       "id": "ai-businesses-95",
       "slug": "if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this",
       "title": "If I Wanted to Make My First $100K in 12 months, I’d Do This",
@@ -7163,4 +7184,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 355;
+export const TOTAL_PLAYBOOKS_COUNT = 356;

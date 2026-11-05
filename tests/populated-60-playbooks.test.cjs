@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-96",
+    slug: "in-18-minutes-youll-understand-generational-wealth",
+    title: "In 18 Minutes, You'll Understand Generational Wealth",
+    dataFile: "src/lib/playbooks/in-18-minutes-youll-understand-generational-wealth-data.ts",
+    detailFile: "src/lib/playbooks/in-18-minutes-youll-understand-generational-wealth-detail.ts",
+    routeDir: "src/app/in-18-minutes-youll-understand-generational-wealth",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-95",
     slug: "if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this",
     title: "If I Wanted to Make My First $100K in 12 months, I’d Do This",

@@ -1986,6 +1986,36 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-95"],
     assignedPlaybookSlugs: ["if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this"],
   },
+  // Template 61: Dynasty Governance Architecture & 9-System Wealth Vault
+  // Specifically crafted for "In 18 Minutes, You'll Understand Generational Wealth"
+  "dynasty-governance-architecture": {
+    templateId: "dynasty-governance-architecture",
+    name: "Dynasty Governance Architecture & 9-System Wealth Vault",
+    categoryTheme: "Generational Wealth Preservation, Dynasty Trusts, Family Holding Companies, Constitutional Governance & Multi-Generational Stewardship",
+    description:
+      "Deep fiduciary obsidian canvas (#0a1219) with dynasty steel stages (#121e2b), vault steel borders (#1e3247), sovereign emerald primary accents (#10b981), heritage amber secondary highlights (#d97706), and refined silver-white typography",
+    colorPalette: {
+      canvasBg: "#0a1219",
+      stageBg: "#121e2b",
+      border: "#1e3247",
+      primaryText: "#f1f5f9",
+      secondaryText: "#94a3b8",
+      accent: "#10b981",
+      accentSecondary: "#d97706",
+      highlightPillBg: "#064e3b",
+      highlightPillText: "#a7f3d0",
+    },
+    visualMotifs: [
+      "The Nine Systems of Generational Wealth Vault Architecture",
+      "The Four Pillars of Multi-Generational Preservation (Ownership, Control, Liquidity, Succession)",
+      "The Tiered Liquidity Ladder & Family Bank Credit Architecture",
+      "The Tripartite Governance Model (Assembly, Council, Independent Trustees)",
+    ],
+    layoutArchitecture:
+      "Institutional family office HUD with dual-column constitutional matrices, asset risk registers, and multi-generational succession diagrams",
+    assignedPlaybookIds: ["ai-businesses-96"],
+    assignedPlaybookSlugs: ["in-18-minutes-youll-understand-generational-wealth"],
+  },
 };
 
 /**
