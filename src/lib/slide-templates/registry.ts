@@ -1338,6 +1338,36 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-73"],
     assignedPlaybookSlugs: ["if-i-had-1-year-to-make-10m-this-is-my-plan"],
   },
+
+  // 47. Playbook: AI Agents: The Most Valuable Skill You Can Learn in 2027 (Full Course)
+  "agentic-os-nexus": {
+    templateId: "agentic-os-nexus",
+    name: "Agentic OS Nexus & MCP Neural Console",
+    categoryTheme: "Autonomous Agent Operating Systems & Context Architecture",
+    description:
+      "Deep obsidian cyber-grid (#08090d) with vibrant cyan (#06b6d4) and electric violet (#8b5cf6) accents, terminal-style observe-think-act HUD loop indicators, MCP protocol connector trees, and inspectable Markdown context ledgers.",
+    colorPalette: {
+      canvasBg: "#08090d",
+      stageBg: "#0f131a",
+      border: "#1e293b",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#06b6d4",
+      accentSecondary: "#8b5cf6",
+      highlightPillBg: "#083344",
+      highlightPillText: "#38bdf8",
+    },
+    visualMotifs: [
+      "Observe-Think-Act cyclic telemetry loop with deterministic stop conditions",
+      "Model Context Protocol (MCP) server-client interface diagrams with least-privilege badges",
+      "File-system context tree visualization (CLAUDE.md/AGENTS.md, context/, skills/, memory.md)",
+      "Human-in-the-loop approval gate status cards with permission boundary toggles",
+    ],
+    layoutArchitecture:
+      "Terminal HUD system console featuring active loop telemetry, MCP connector status bars, and dual-pane context/skill inspection stages",
+    assignedPlaybookIds: ["ai-businesses-74"],
+    assignedPlaybookSlugs: ["ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course"],
+  },
 };
 
 /**

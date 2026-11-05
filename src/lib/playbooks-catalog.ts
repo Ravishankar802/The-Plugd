@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-74",
+      "slug": "ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course",
+      "title": "AI Agents: The Most Valuable Skill You Can Learn in 2027 (Full Course)",
+      "headline": "A hands-on guide to building your own AI operating system using context, tools, reusable skills, and automated workflows.",
+      "description": "Move beyond asking AI questions and start delegating meaningful work to it. This playbook shows you how to configure agents with business knowledge, connect them to the tools they need, create repeatable procedures, and build workflows that produce real deliverables. It also covers security, memory, team adoption, and a practical 90-day roadmap for making AI part of your everyday operations.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "10.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#06b6d4",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/AI_Agents_The_Most_Valuable_Skill_You_Can_Learn_in_2027_Full_Course.png",
+      "href": "/ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course"
+  },
+  {
       "id": "ai-businesses-73",
       "slug": "if-i-had-1-year-to-make-10m-this-is-my-plan",
       "title": "If I Had 1 Year to Make $10M - This Is My Plan",
@@ -6701,4 +6722,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 333;
+export const TOTAL_PLAYBOOKS_COUNT = 334;

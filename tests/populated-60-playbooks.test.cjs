@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-74",
+    slug: "ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course",
+    title: "AI Agents: The Most Valuable Skill You Can Learn in 2027 (Full Course)",
+    dataFile: "src/lib/playbooks/ai-agents-the-most-valuable-skill-you-can-learn-in-2027-data.ts",
+    detailFile: "src/lib/playbooks/ai-agents-the-most-valuable-skill-you-can-learn-in-2027-detail.ts",
+    routeDir: "src/app/ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-73",
     slug: "if-i-had-1-year-to-make-10m-this-is-my-plan",
     title: "If I Had 1 Year to Make $10M - This Is My Plan",

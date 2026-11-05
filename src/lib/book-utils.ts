@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course" ||
+    slug === "ai-businesses-74"
+  ) {
+    return {
+      name: "Pranav Joshi",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "if-i-had-1-year-to-make-10m-this-is-my-plan" ||
     slug === "ai-businesses-73"
   ) {
@@ -950,6 +963,58 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course" ||
+    slug === "ai-businesses-74"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Samantha",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "This completely changed how I think about using AI. The difference between chatting with a model and actually giving an agent a job is explained brilliantly. I especially liked the employee-onboarding analogy.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Miguel",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The context, tools, and skills framework is incredibly useful. Instead of collecting random prompts, I now have a much clearer picture of how to build something reusable that improves with every task.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Leah",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I came for the AI agent tutorials, but the sections on folder organisation, memory, and reusable skills were what really stood out. The practical templates make getting started much less overwhelming.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Siddharth",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "A surprisingly balanced guide. It covers automation and productivity, but also explains permissions, human approval, context limitations, and reliability. The 30-day and 90-day plans give the whole thing a clear direction.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "if-i-had-1-year-to-make-10m-this-is-my-plan" ||
     slug === "ai-businesses-73"

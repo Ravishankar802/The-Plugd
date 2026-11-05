@@ -77,6 +77,11 @@ import { SELL_PDFS_WITH_AI_COURSE } from "./playbooks/sell-pdfs-with-ai-changed-
 import { THREE_BEST_AI_BIZ_2027_COURSE } from "./playbooks/three-best-ai-businesses-before-2027-data";
 import { FIVE_SIMPLE_APPS_10K_COURSE } from "./playbooks/five-simple-apps-10k-month-ai-data";
 import {
+  AI_AGENTS_2027_COURSE,
+  AI_AGENTS_2027_SLUG,
+  AI_AGENTS_2027_ID
+} from "./playbooks/ai-agents-the-most-valuable-skill-you-can-learn-in-2027-data";
+import {
   YEAR_TO_MAKE_10M_COURSE,
   YEAR_TO_MAKE_10M_SLUG,
   YEAR_TO_MAKE_10M_ID
@@ -716,7 +721,9 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-64": AMBITIOUS_IN_20S_OR_30S_COURSE,
   "this-ai-business-will-make-you-10k-month-with-zero-employees": AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE,
   "ai-businesses-65": AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE,
-    "if-i-had-1-year-to-make-10m-this-is-my-plan": YEAR_TO_MAKE_10M_COURSE,
+    "ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course": AI_AGENTS_2027_COURSE,
+  "ai-businesses-74": AI_AGENTS_2027_COURSE,
+  "if-i-had-1-year-to-make-10m-this-is-my-plan": YEAR_TO_MAKE_10M_COURSE,
   "ai-businesses-73": YEAR_TO_MAKE_10M_COURSE,
   "bro-im-begging-you-to-build-this-4-8m-product-idea": BEGGING_BUILD_PRODUCT_COURSE,
   "ai-businesses-72": BEGGING_BUILD_PRODUCT_COURSE,
@@ -827,7 +834,8 @@ export function getAllCourses(): Course[] {
     HOW_I_BUILD_10CR_AGENCY_COURSE,
     START_BUSINESS_FROM_SCRATCH_COURSE,
     BEGGING_BUILD_PRODUCT_COURSE,
-    YEAR_TO_MAKE_10M_COURSE
+    YEAR_TO_MAKE_10M_COURSE,
+    AI_AGENTS_2027_COURSE
   ];
 }
 
