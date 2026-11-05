@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-103",
+      "slug": "the-1-000-hour-1-person-ai-business",
+      "title": "The $1,000/hour 1-person AI business",
+      "headline": "Turn AI into a one-person growth business: find local companies losing customers, fix their marketing funnels, and build a high-value service around measurable results.",
+      "description": "Turn AI into a one-person growth business: find local companies losing customers, fix their marketing funnels, and build a high-value service around measurable results.\n\nLearn how to build an AI-assisted marketing service for established local businesses, from choosing a profitable niche and finding high-value prospects to auditing websites, building landing pages, and improving lead conversion. This playbook includes the Dream 100 acquisition strategy, outreach templates, pricing frameworks, practical AI prompts, client reporting systems, and a complete 90-day execution roadmap.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "hoursOfMaterial": "9.2 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/The_1_000_hour_1_person_AI_business.png",
+      "href": "/the-1-000-hour-1-person-ai-business"
+  },
+  {
       "id": "ai-businesses-102",
       "slug": "top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked",
       "title": "Top 10 Claude AI Side Hustles That Can Pay A Full-Time Income (Ranked)",
@@ -7306,4 +7326,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 362;
+export const TOTAL_PLAYBOOKS_COUNT = 363;

@@ -93,6 +93,18 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "the-1-000-hour-1-person-ai-business" ||
+    slug === "ai-businesses-103"
+  ) {
+    return {
+      name: "Divya Tiwari",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+  if (
     slug === "i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results" ||
     slug === "ai-businesses-101" ||
     slug === "top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked" ||

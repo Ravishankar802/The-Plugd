@@ -1,3 +1,4 @@
+import { THE_1000_HOUR_1_PERSON_AI_BUSINESS_ARTICLE } from "./the-1000-hour-1-person-ai-business";
 import { PlaybookArticle } from "./types";
 import { HOW_TO_BUILD_10K_WEBSITES_ARTICLE } from "./how-to-build-10k-websites";
 import { FACELESS_SHORTS_30K_ARTICLE } from "./faceless-shorts-30k";
@@ -317,6 +318,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-101": TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_ARTICLE,
   "top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked": TOP_10_CLAUDE_SIDE_HUSTLES_ARTICLE,
   "ai-businesses-102": TOP_10_CLAUDE_SIDE_HUSTLES_ARTICLE,
+  "the-1-000-hour-1-person-ai-business": THE_1000_HOUR_1_PERSON_AI_BUSINESS_ARTICLE,
+  "ai-businesses-103": THE_1000_HOUR_1_PERSON_AI_BUSINESS_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

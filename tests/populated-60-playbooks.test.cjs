@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-103",
+    slug: "the-1-000-hour-1-person-ai-business",
+    title: "The $1,000/hour 1-person AI business",
+    dataFile: "src/lib/playbooks/the-1000-hour-1-person-ai-business-data.ts",
+    detailFile: "src/lib/playbooks/the-1000-hour-1-person-ai-business-detail.ts",
+    routeDir: "src/app/the-1-000-hour-1-person-ai-business",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-102",
     slug: "top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked",
     title: "Top 10 Claude AI Side Hustles That Can Pay A Full-Time Income (Ranked)",

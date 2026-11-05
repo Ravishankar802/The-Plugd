@@ -1,3 +1,8 @@
+import {
+  THE_1000_HOUR_1_PERSON_AI_BUSINESS_COURSE,
+  THE_1000_HOUR_1_PERSON_AI_BUSINESS_SLUG,
+  THE_1000_HOUR_1_PERSON_AI_BUSINESS_ID
+} from "./playbooks/the-1000-hour-1-person-ai-business-data";
 import { MODULE_01_DATA } from "./module-01-content";
 import { MODULE_02_DATA } from "./module-02-content";
 import { MODULE_03_DATA } from "./module-03-content";
@@ -910,6 +915,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-101": TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_COURSE,
   "top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked": TOP_10_CLAUDE_SIDE_HUSTLES_COURSE,
   "ai-businesses-102": TOP_10_CLAUDE_SIDE_HUSTLES_COURSE,
+  "the-1-000-hour-1-person-ai-business": THE_1000_HOUR_1_PERSON_AI_BUSINESS_COURSE,
+  "ai-businesses-103": THE_1000_HOUR_1_PERSON_AI_BUSINESS_COURSE,
   "starting-an-ai-side-hustle-is-easy-copy-this-system": STARTING_AI_SIDE_HUSTLE_COURSE,
   "ai-businesses-93": STARTING_AI_SIDE_HUSTLE_COURSE,
   "im-broke-what-business-do-i-start": IM_BROKE_BUSINESS_COURSE,
@@ -1060,7 +1067,8 @@ export function getAllCourses(): Course[] {
     WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_COURSE,
     THIS_AI_SIDE_HUSTLE_MAKES_4_LAKHS_COURSE,
     TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_COURSE,
-    TOP_10_CLAUDE_SIDE_HUSTLES_COURSE
+    TOP_10_CLAUDE_SIDE_HUSTLES_COURSE,
+    THE_1000_HOUR_1_PERSON_AI_BUSINESS_COURSE
   ];
 }
 

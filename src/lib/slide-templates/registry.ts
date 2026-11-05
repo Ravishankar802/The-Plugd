@@ -2193,98 +2193,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-102"],
     assignedPlaybookSlugs: ["top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked"],
   },
+  "one-person-ai-growth-consulting-engine": {
+    templateId: "one-person-ai-growth-consulting-engine",
+    name: "The $1,000/Hour 1-Person AI Growth & Funnel Engine",
+    categoryTheme:
+      "Main Street B2B Marketing, Conversion Audits, Dream 100 Client Acquisition, Tripwire Funnels & One-Person Agency Operations",
+    description:
+      "A precision engineering HUD and B2B growth terminal featuring charcoal-navy canvas, obsidian-slate stage cards, electric blue conversion accents, amber warning metrics, and structured client audit telemetry.",
+    colorPalette: {
+      canvasBg: "#0b0f19",
+      stageBg: "#111827",
+      border: "#1f293d",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#3b82f6",
+      accentSecondary: "#f59e0b",
+      highlightPillBg: "#1e3a8a",
+      highlightPillText: "#93c5fd",
+    },
+    visualMotifs: [
+      "The Main Street Conversion Leak Audit (Ad-to-Page Congruency & Booking Friction)",
+      "The High-Ticket Trade Selection Matrix ($2M–$20M Revenue & $1,000+ Average Job Value)",
+      "The Multi-Intent Landing Page Blueprint (Call Now vs Instant Online Booking vs Direct Estimate)",
+      "The Dream 100 Relationship Engine (Personalised Video Loom, Lumpy Mail & Value-First Auditing)",
+    ],
+    layoutArchitecture:
+      "Executive growth audit console with conversion leak scorecards, multi-intent wireframe breakdowns, and client pipeline tracking telemetry",
+    assignedPlaybookIds: ["ai-businesses-103"],
+    assignedPlaybookSlugs: ["the-1-000-hour-1-person-ai-business"],
+  },
 };
-
-/**
- * Register or update a slide template
- */
-export function registerTemplate(definition: SlideTemplateDefinition): void {
-  // Check for duplicate templateId
-  if (SLIDE_TEMPLATES[definition.templateId] && SLIDE_TEMPLATES[definition.templateId] !== definition) {
-    throw new Error(`Template with id '${definition.templateId}' already exists.`);
-  }
-
-  // Verify no playbook id is assigned to another template
-  for (const [existingId, tmpl] of Object.entries(SLIDE_TEMPLATES)) {
-    if (existingId !== definition.templateId) {
-      for (const pId of definition.assignedPlaybookIds) {
-        if (tmpl.assignedPlaybookIds.includes(pId)) {
-          throw new Error(
-            `Playbook ID '${pId}' is already assigned to template '${existingId}'. Unique PPT template rule violated!`
-          );
-        }
-      }
-      for (const slug of definition.assignedPlaybookSlugs) {
-        if (tmpl.assignedPlaybookSlugs.includes(slug)) {
-          throw new Error(
-            `Playbook slug '${slug}' is already assigned to template '${existingId}'. Unique PPT template rule violated!`
-          );
-        }
-      }
-    }
-  }
-
-  SLIDE_TEMPLATES[definition.templateId] = definition;
-}
-
-/**
- * Retrieve the unique slide template assigned to a given Playbook slug or ID
- */
-export function getTemplateForPlaybook(playbookSlugOrId: string): SlideTemplateDefinition {
-  const normalized = playbookSlugOrId.trim().toLowerCase();
-
-  for (const template of Object.values(SLIDE_TEMPLATES)) {
-    if (
-      template.assignedPlaybookSlugs.map((s) => s.toLowerCase()).includes(normalized) ||
-      template.assignedPlaybookIds.map((id) => id.toLowerCase()).includes(normalized)
-    ) {
-      return template;
-    }
-  }
-
-  // Fallback to reference blueprint if not explicitly assigned
-  return SLIDE_TEMPLATES["blueprint-light-canvas"];
-}
-
-/**
- * Programmatic verification helper to ensure catalog-wide uniqueness
- */
-export function verifyTemplateUniqueness(): {
-  valid: boolean;
-  totalTemplates: number;
-  assignedPlaybooksCount: number;
-  collisions: string[];
-} {
-  const seenIds = new Map<string, string>();
-  const seenSlugs = new Map<string, string>();
-  const collisions: string[] = [];
-
-  for (const [templateId, def] of Object.entries(SLIDE_TEMPLATES)) {
-    for (const pId of def.assignedPlaybookIds) {
-      if (seenIds.has(pId)) {
-        collisions.push(
-          `Collision on Playbook ID '${pId}': assigned to both '${seenIds.get(pId)}' and '${templateId}'`
-        );
-      } else {
-        seenIds.set(pId, templateId);
-      }
-    }
-
-    for (const slug of def.assignedPlaybookSlugs) {
-      if (seenSlugs.has(slug)) {
-        collisions.push(
-          `Collision on Playbook Slug '${slug}': assigned to both '${seenSlugs.get(slug)}' and '${templateId}'`
-        );
-      } else {
-        seenSlugs.set(slug, templateId);
-      }
-    }
-  }
-
-  return {
-    valid: collisions.length === 0,
-    totalTemplates: Object.keys(SLIDE_TEMPLATES).length,
-    assignedPlaybooksCount: seenIds.size,
-    collisions,
-  };
-}
