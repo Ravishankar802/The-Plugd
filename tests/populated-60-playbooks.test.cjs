@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-72",
+    slug: "bro-im-begging-you-to-build-this-4-8m-product-idea",
+    title: "Bro, I'm BEGGING you to build this $4.8M product idea",
+    dataFile: "src/lib/playbooks/bro-im-begging-you-to-build-this-4-8m-product-idea-data.ts",
+    detailFile: "src/lib/playbooks/bro-im-begging-you-to-build-this-4-8m-product-idea-detail.ts",
+    routeDir: "src/app/bro-im-begging-you-to-build-this-4-8m-product-idea",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-71",
     slug: "if-i-had-to-start-a-business-from-scratch-id-do-this",
     title: "If I Had To Start a Business From Scratch, I'd Do This",

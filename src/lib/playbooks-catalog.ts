@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-72",
+      "slug": "bro-im-begging-you-to-build-this-4-8m-product-idea",
+      "title": "Bro, I'm BEGGING you to build this $4.8M product idea",
+      "headline": "A practical framework for discovering overlooked physical-product opportunities, evaluating their business potential, and validating demand before investing in manufacturing.",
+      "description": "Not every great product idea needs a factory, a huge budget, or a complicated engineering team. This playbook teaches you how to spot everyday frustrations, uncover underserved markets, generate creative product concepts, and evaluate them through two essential lenses: bootstrapability and marketability. From customer interviews and competitor research to prototype testing, landing-page experiments, and unit economics, it takes you through the journey from a rough idea to a well-researched product opportunity.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "9.6 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#f59e0b",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Bro_I_m_BEGGING_you_to_build_this_4_8M_product_idea.png",
+      "href": "/bro-im-begging-you-to-build-this-4-8m-product-idea"
+  },
+  {
       "id": "ai-businesses-71",
       "slug": "if-i-had-to-start-a-business-from-scratch-id-do-this",
       "title": "If I Had To Start a Business From Scratch, I'd Do This",
@@ -6659,4 +6680,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 331;
+export const TOTAL_PLAYBOOKS_COUNT = 332;

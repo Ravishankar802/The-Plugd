@@ -1286,6 +1286,32 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-71"],
     assignedPlaybookSlugs: ["if-i-had-to-start-a-business-from-scratch-id-do-this"],
   },
+  "hardware-bootstrap-matrix": {
+    templateId: "hardware-bootstrap-matrix",
+    name: "Hardware Bootstrap & Product Architecture Matrix",
+    categoryTheme: "Physical Product Bootstrap & Hardware Architecture",
+    description: "A dark industrial command workstation featuring the two-pillar bootstrapability and marketability evaluation dials, profit density footprint meters, bill-of-materials unit economics models, and transparent smoke test rails.",
+    colorPalette: {
+      canvasBg: "#0f1115",
+      stageBg: "#171a21",
+      border: "#282d38",
+      primaryText: "#f1f5f9",
+      secondaryText: "#94a3b8",
+      accent: "#f59e0b",
+      accentSecondary: "#06b6d4",
+      highlightPillBg: "#291b0d",
+      highlightPillText: "#fcd34d",
+    },
+    visualMotifs: [
+      "Two-pillar bootstrapability and marketability decision matrix",
+      "Profit density and physical footprint volumetric calculator",
+      "Double Diamond problem-solution divergence and SCAMPER mutation rail",
+      "Honest pre-launch landing page smoke test and waitlist telemetry",
+    ],
+    layoutArchitecture: "Hardware engineering and prototyping lab console with bill of materials ledgers, volumetric footprint gauges, and validation telemetry",
+    assignedPlaybookIds: ["ai-businesses-72"],
+    assignedPlaybookSlugs: ["bro-im-begging-you-to-build-this-4-8m-product-idea"],
+  },
 };
 
 /**

@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "bro-im-begging-you-to-build-this-4-8m-product-idea" ||
+    slug === "ai-businesses-72"
+  ) {
+    return {
+      name: "Dylan Scott",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "if-i-had-to-start-a-business-from-scratch-id-do-this" ||
     slug === "ai-businesses-71"
   ) {
@@ -924,6 +937,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "bro-im-begging-you-to-build-this-4-8m-product-idea" ||
+    slug === "ai-businesses-72"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Ethan Caldwell",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the better resources I've come across on physical product ideas. The two-pillar framework made me reconsider how I evaluate products. I especially liked the focus on manufacturing complexity and profit density, not just whether an idea sounds exciting.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Mariana",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "I always thought product development started with designing something and then figuring out who would buy it. This playbook flips that approach completely. The customer observation exercises and interview questions are genuinely useful.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Dev Patel",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "The section about validating before manufacturing probably saved me from wasting money on an idea I was getting too attached to. The scorecards, competitor analysis, and concept-testing process make the whole thing feel much more systematic.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Rebecca",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "Packed with interesting ways to think about everyday problems. I particularly enjoyed the SCAMPER techniques and the examples of finding opportunities in traditional industries. It makes you look at ordinary products and wonder what could be improved.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "if-i-had-to-start-a-business-from-scratch-id-do-this" ||
     slug === "ai-businesses-71"
