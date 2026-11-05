@@ -1368,6 +1368,36 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-74"],
     assignedPlaybookSlugs: ["ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course"],
   },
+
+  // 48. Playbook: how to reinvent yourself in 90 days to become rich as f*ck
+  "reinvention-matrix-obsidian": {
+    templateId: "reinvention-matrix-obsidian",
+    name: "Reinvention Matrix & Identity Crucible",
+    categoryTheme: "Radical Personal Reinvention & Behavioral Economics",
+    description:
+      "Deep matte carbon canvas (#090a0f) with high-voltage crimson (#ef4444) and molten gold (#f59e0b) accents, identity-belief hierarchy flowcharts, say-do ratio meters, and 90-day phased execution roadmaps.",
+    colorPalette: {
+      canvasBg: "#090a0f",
+      stageBg: "#12131a",
+      border: "#222330",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#ef4444",
+      accentSecondary: "#f59e0b",
+      highlightPillBg: "#450a0a",
+      highlightPillText: "#fca5a5",
+    },
+    visualMotifs: [
+      "Identity-Belief-Action-Outcome cascading hierarchy diagrams",
+      "Say-Do ratio empirical tracking gauges and proof accumulation ledgers",
+      "Stoic Sparring control boundary matrices (Controllable vs Uncontrollable)",
+      "XP Farming learning-loop compression flowcharts with failure post-mortems",
+    ],
+    layoutArchitecture:
+      "Executive mindset command console with active habit telemetry, risk-budget meters, and weekly deep-work pacing trackers",
+    assignedPlaybookIds: ["ai-businesses-75"],
+    assignedPlaybookSlugs: ["how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck"],
+  },
 };
 
 /**

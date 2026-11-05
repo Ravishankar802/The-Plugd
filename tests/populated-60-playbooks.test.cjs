@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-75",
+    slug: "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck",
+    title: "how to reinvent yourself in 90 days to become rich as f*ck",
+    dataFile: "src/lib/playbooks/how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck-data.ts",
+    detailFile: "src/lib/playbooks/how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck-detail.ts",
+    routeDir: "src/app/how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-74",
     slug: "ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course",
     title: "AI Agents: The Most Valuable Skill You Can Learn in 2027 (Full Course)",

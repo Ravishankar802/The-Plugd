@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck" ||
+    slug === "ai-businesses-75"
+  ) {
+    return {
+      name: "Sean O'Brien",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course" ||
     slug === "ai-businesses-74"
   ) {
@@ -963,6 +976,58 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck" ||
+    slug === "ai-businesses-75"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Valeria",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "What I liked most is that this doesn't just tell you to wake up early and work harder. The identity exercises made me look at why I keep repeating certain behaviours. The 90-day structure gives you something concrete to work on instead of another temporary motivation boost.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Holloway",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The section about focusing on inputs rather than obsessing over outcomes was exactly what I needed. I tend to check results constantly and lose momentum when things don't happen immediately. The weekly review and experiment templates make it much easier to stay objective.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Ethan",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Surprisingly practical. I especially liked the chapters on risk, discomfort, and handling failure. It encourages you to take action, but also reminds you not to make reckless decisions just to prove you're ambitious. That balance makes the advice feel much more grounded.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Neha",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I've read plenty of self-improvement material, but having everything organised into a 90-day plan makes this different. The identity tracker, deep-work sheet, and daily operating template are useful tools I'll actually revisit. It feels less like motivational content and more like a personal operating manual.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course" ||
     slug === "ai-businesses-74"

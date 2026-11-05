@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-75",
+      "slug": "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck",
+      "title": "how to reinvent yourself in 90 days to become rich as f*ck",
+      "headline": "A 90-day personal reinvention blueprint for building a stronger identity, mastering your habits, sharpening execution, and developing the resilience to pursue meaningful success.",
+      "description": "Real change goes beyond motivation and morning routines. This playbook takes you through a structured 90-day process of reshaping your beliefs, managing your attention, overcoming avoidance, and developing consistent work habits. With practical exercises, daily trackers, weekly reviews, and a phased action plan, you'll learn to turn personal standards into measurable progress while building skills, pursuing opportunities, and protecting your health.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "10.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#ef4444",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/how_to_reinvent_yourself_in_90_days_to_become_rich_as_f_ck.png",
+      "href": "/how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck"
+  },
+  {
       "id": "ai-businesses-74",
       "slug": "ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course",
       "title": "AI Agents: The Most Valuable Skill You Can Learn in 2027 (Full Course)",
@@ -6722,4 +6743,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 334;
+export const TOTAL_PLAYBOOKS_COUNT = 335;
