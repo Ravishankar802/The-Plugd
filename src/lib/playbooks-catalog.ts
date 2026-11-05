@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-98",
+      "slug": "i-sold-ai-digital-products-for-7-days-100-free-tools",
+      "title": "I Sold AI Digital Products For 7 Days (100% FREE Tools)",
+      "headline": "Stop guessing what people will buy. Find real problems, create digital products with AI, and turn them into sellable downloads — starting with free tools.",
+      "description": "Stop guessing what people will buy. Find real problems, create digital products with AI, and turn them into sellable downloads — starting with free tools.\n\nLearn how to research profitable product ideas, study competitors, and build digital products for both Indian and US buyers using AI-assisted workflows. From a ₹99 hostel survival guide to an iPad-friendly digital planner, this playbook covers product creation, storefront setup, Instagram and Pinterest marketing, paid ads, and the numbers that actually determine profit. Includes a seven-day execution plan, practical AI prompts, validation scorecards, and revenue trackers.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#14b8a6",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Sold_AI_Digital_Products_For_7_Days_100_FREE_Tools.png",
+      "href": "/i-sold-ai-digital-products-for-7-days-100-free-tools"
+  },
+  {
       "id": "ai-businesses-97",
       "slug": "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me",
       "title": "I Tried A Zero Skill AI Side Hustle For Indians (Copy Me)",
@@ -7205,4 +7226,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 357;
+export const TOTAL_PLAYBOOKS_COUNT = 358;

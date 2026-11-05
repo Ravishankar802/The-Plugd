@@ -94,12 +94,14 @@ export function getReadingStats(slug = ""): {
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
     slug === "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me" ||
-    slug === "ai-businesses-97"
+    slug === "ai-businesses-97" ||
+    slug === "i-sold-ai-digital-products-for-7-days-100-free-tools" ||
+    slug === "ai-businesses-98"
   ) {
     return {
       name: "Pooja Patil",
       avatar: "",
-      booksCount: 1,
+      booksCount: 2,
       followersCount: "",
       bio: "",
     };
@@ -1252,6 +1254,57 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "i-sold-ai-digital-products-for-7-days-100-free-tools" ||
+    slug === "ai-businesses-98"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Ananya",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "This is one of the more practical digital-product guides I've read. It doesn't just tell you to generate an ebook with AI — it walks through researching the audience, finding gaps in existing products, and creating something people might actually pay for. The competitor research section was particularly useful.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Chandana",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I loved seeing the India and US approaches side by side. The hostel guide is such a relatable product idea, and the planner example shows how to think about a completely different audience. The seven-day roadmap makes it much easier to get started.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Renu",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The profit calculations and advertising breakdown are what make this stand out. A lot of guides focus on sales screenshots, but this one explains fees, ad spend, break-even costs, and why revenue isn't the same as profit. Very useful.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Vaishali",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Really appreciated the attention to product quality. The sections on clickable PDFs, mobile-friendly layouts, recipe checking, and planner navigation are things beginners could easily overlook. It feels like a proper workflow from idea to launch, not just an AI prompt collection.",
+        likes: 84,
+      },
+    ];
+  }
   if (
     slug === "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me" ||
     slug === "ai-businesses-97"

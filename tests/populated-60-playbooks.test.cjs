@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-98",
+    slug: "i-sold-ai-digital-products-for-7-days-100-free-tools",
+    title: "I Sold AI Digital Products For 7 Days (100% FREE Tools)",
+    dataFile: "src/lib/playbooks/i-sold-ai-digital-products-for-7-days-100-free-tools-data.ts",
+    detailFile: "src/lib/playbooks/i-sold-ai-digital-products-for-7-days-100-free-tools-detail.ts",
+    routeDir: "src/app/i-sold-ai-digital-products-for-7-days-100-free-tools",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-97",
     slug: "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me",
     title: "I Tried A Zero Skill AI Side Hustle For Indians (Copy Me)",

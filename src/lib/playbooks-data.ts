@@ -252,6 +252,11 @@ import {
   ZERO_SKILL_AI_INDIANS_ID
 } from "./playbooks/i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me-data";
 import {
+  I_SOLD_AI_DIGITAL_PRODUCTS_COURSE,
+  I_SOLD_AI_DIGITAL_PRODUCTS_SLUG,
+  I_SOLD_AI_DIGITAL_PRODUCTS_ID
+} from "./playbooks/i-sold-ai-digital-products-for-7-days-100-free-tools-data";
+import {
   STARTING_AI_SIDE_HUSTLE_COURSE,
   STARTING_AI_SIDE_HUSTLE_SLUG,
   STARTING_AI_SIDE_HUSTLE_ID
@@ -875,6 +880,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-96": GENERATIONAL_WEALTH_COURSE,
   "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me": ZERO_SKILL_AI_INDIANS_COURSE,
   "ai-businesses-97": ZERO_SKILL_AI_INDIANS_COURSE,
+  "i-sold-ai-digital-products-for-7-days-100-free-tools": I_SOLD_AI_DIGITAL_PRODUCTS_COURSE,
+  "ai-businesses-98": I_SOLD_AI_DIGITAL_PRODUCTS_COURSE,
   "starting-an-ai-side-hustle-is-easy-copy-this-system": STARTING_AI_SIDE_HUSTLE_COURSE,
   "ai-businesses-93": STARTING_AI_SIDE_HUSTLE_COURSE,
   "im-broke-what-business-do-i-start": IM_BROKE_BUSINESS_COURSE,
@@ -1020,7 +1027,8 @@ export function getAllCourses(): Course[] {
     ONE_MONEY_PLAYBOOK_COURSE,
     FIRST_100K_12_MONTHS_COURSE,
     GENERATIONAL_WEALTH_COURSE,
-    ZERO_SKILL_AI_INDIANS_COURSE
+    ZERO_SKILL_AI_INDIANS_COURSE,
+    I_SOLD_AI_DIGITAL_PRODUCTS_COURSE
   ];
 }
 
