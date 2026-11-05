@@ -1957,6 +1957,35 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-94"],
     assignedPlaybookSlugs: ["if-you-only-read-one-money-playbook-make-it-this"],
   },
+  // 68. Playbook 68: "If I Wanted to Make My First $100K in 12 months, I’d Do This"
+  "six-figure-momentum-engine": {
+    templateId: "six-figure-momentum-engine",
+    name: "Six-Figure Momentum Engine & 6P Offer Radar",
+    categoryTheme: "The 5-Phase Lifestyle Roadmap, The Six Ps Offer Architecture (Person, Problem, Promise, Plan, Product, Price), Non-Adversarial Discovery & 12-Month Momentum",
+    description:
+      "Deep obsidian slate canvas (#0d131a) with midnight steel stages (#16202c), slate-cyan hairline borders (#233547), electric azure primary telemetry (#38bdf8), bright amber execution indicators (#f59e0b), and crisp ice-blue accents (#7dd3fc)",
+    colorPalette: {
+      canvasBg: "#0d131a",
+      stageBg: "#16202c",
+      border: "#233547",
+      primaryText: "#f0f9ff",
+      secondaryText: "#94a3b8",
+      accent: "#38bdf8",
+      accentSecondary: "#f59e0b",
+      highlightPillBg: "#0c4a6e",
+      highlightPillText: "#bae6fd",
+    },
+    visualMotifs: [
+      "The 5-Phase Lifestyle Business Timeline (Ideation -> Validation -> Momentum -> Leverage -> Freedom)",
+      "The Six Ps Offer Architecture Radar (Person, Problem, Promise, Plan, Product, Price)",
+      "The Diverge-Converge-Emerge Niche Selection Funnel",
+      "The Three-Frame Discovery Call Matrix (Research, Free Coaching, Sales)",
+    ],
+    layoutArchitecture:
+      "Split roadmap workspace HUD with 6P offer engineering blocks, discovery call trackers, and monthly $8,333 run-rate revenue dashboards",
+    assignedPlaybookIds: ["ai-businesses-95"],
+    assignedPlaybookSlugs: ["if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this"],
+  },
 };
 
 /**

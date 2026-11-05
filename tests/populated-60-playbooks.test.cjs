@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-95",
+    slug: "if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this",
+    title: "If I Wanted to Make My First $100K in 12 months, I’d Do This",
+    dataFile: "src/lib/playbooks/if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this-data.ts",
+    detailFile: "src/lib/playbooks/if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this-detail.ts",
+    routeDir: "src/app/if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-94",
     slug: "if-you-only-read-one-money-playbook-make-it-this",
     title: "If You Only Read One Money Playbook, Make It This",

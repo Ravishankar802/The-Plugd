@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-95",
+      "slug": "if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this",
+      "title": "If I Wanted to Make My First $100K in 12 months, I’d Do This",
+      "headline": "Turn your skills into a six-figure business — find a profitable niche, craft an irresistible offer, land your first paying clients, and build towards $100K in annual revenue.",
+      "description": "Turn your skills into a six-figure business — find a profitable niche, craft an irresistible offer, land your first paying clients, and build towards $100K in annual revenue.\n\nStop wasting months brainstorming business ideas and start building something people will actually pay for. This playbook takes you from niche selection and offer creation to customer discovery, sales conversations, and your first paying customer — with a practical roadmap for building momentum towards an $8,333 monthly revenue run rate.\n\nIncludes the Six Ps offer framework, niche-selection worksheets, discovery-call scripts, outreach templates, validation trackers, sales pipeline tools, and a 12-month execution roadmap.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#38bdf8",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Wanted_to_Make_My_First_100K_in_12_months_I_d_Do_This.png",
+      "href": "/if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this"
+  },
+  {
       "id": "ai-businesses-94",
       "slug": "if-you-only-read-one-money-playbook-make-it-this",
       "title": "If You Only Read One Money Playbook, Make It This",
@@ -7142,4 +7163,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 354;
+export const TOTAL_PLAYBOOKS_COUNT = 355;

@@ -92,6 +92,19 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+    if (
+    slug === "if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this" ||
+    slug === "ai-businesses-95"
+  ) {
+    return {
+      name: "Jordan Hayes",
+      avatar: "",
+      booksCount: 4,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
   if (
     slug === "if-you-only-read-one-money-playbook-make-it-this" ||
     slug === "ai-businesses-94"
@@ -99,7 +112,7 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
     return {
       name: "Jordan Hayes",
       avatar: "",
-      booksCount: 3,
+      booksCount: 4,
       followersCount: "",
       bio: "",
     };
@@ -166,7 +179,7 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
     return {
       name: "Jordan Hayes",
       avatar: "",
-      booksCount: 3,
+      booksCount: 4,
       followersCount: "",
       bio: "",
     };
@@ -270,7 +283,7 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
     return {
       name: "Jordan Hayes",
       avatar: "",
-      booksCount: 3,
+      booksCount: 4,
       followersCount: "",
       bio: "",
     };
@@ -1225,7 +1238,59 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
-    if (
+      if (
+    slug === "if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this" ||
+    slug === "ai-businesses-95"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Everett",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I've consumed way too much business content without actually getting anywhere. The niche-selection process finally gave me a way to compare ideas instead of jumping between them. The Six Ps framework is probably my favourite part because it turns a vague business idea into an actual offer.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Mariana",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The discovery-call section is incredibly valuable. I used to think selling meant convincing people to buy, but this explains how to understand their problems first and present an offer that makes sense. The different conversation frameworks are especially helpful for beginners.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Jayden",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "What stood out to me was the emphasis on selling the offer before spending months building the product. The examples, worksheets, and validation tracker make it much easier to take action. It's a refreshing approach compared with all the usual build-a-brand-first advice.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Silva",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I appreciate that the playbook doesn't pretend $100K is guaranteed or that revenue equals profit. It breaks down the actual stages, from choosing a niche to getting the first sale and building momentum. The 12-month roadmap gives you something concrete to work towards without making the process feel mysterious.",
+        likes: 84,
+      },
+    ];
+  }
+
+  if (
     slug === "if-you-only-read-one-money-playbook-make-it-this" ||
     slug === "ai-businesses-94"
   ) {
