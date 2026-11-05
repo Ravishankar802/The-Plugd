@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "i-tried-a-100-free-ai-side-hustle-for-indians-real-results" ||
+    slug === "ai-businesses-61"
+  ) {
+    return {
+      name: "Sneha Mishra",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "5-simple-apps-making-10-000-month-that-you-can-build-with-ai" ||
     slug === "ai-businesses-60"
   ) {
@@ -1158,6 +1171,54 @@ export function getCuratedCommunityReviews(
         headline: "",
         content: "Loved the comparison between all three models. It helped me understand which business fits my resources and why validating an idea matters before building.",
         likes: 30,
+      },
+    ];
+  }
+
+  if (
+    slug === "i-tried-a-100-free-ai-side-hustle-for-indians-real-results" ||
+    slug === "ai-businesses-61"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Vedant",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "One of the most practical side-hustle guides I've come across. I especially liked how it explains the entire process, from finding product ideas to creating PDFs and getting traffic through Pinterest. Easy to follow.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Aakash Bhat",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "The India-focused payment and storefront section makes this particularly useful. I always found international digital-product selling confusing, but this breaks the process into manageable steps.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Ronav",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "Really appreciated the actual experiment and the transparent breakdown of downloads, sales, and revenue. No unrealistic promises about getting rich overnight. Just a clear workflow you can test yourself.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Abhinandan",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "The AI prompts, Canva workflow, and Pinterest Pin strategies are incredibly helpful. I like that everything is explained step by step, especially the free-to-paid product funnel. Great resource for beginners.",
+        likes: 84,
       },
     ];
   }

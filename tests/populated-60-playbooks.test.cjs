@@ -71,6 +71,18 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-61",
+    slug: "i-tried-a-100-free-ai-side-hustle-for-indians-real-results",
+    title: "I Tried A 100% FREE AI Side Hustle For Indians (Real Results)",
+    dataFile: "src/lib/playbooks/free-ai-side-hustle-indians-data.ts",
+    detailFile: "src/lib/playbooks/free-ai-side-hustle-indians-detail.ts",
+    routeDir: "src/app/i-tried-a-100-free-ai-side-hustle-for-indians-real-results",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+
+  {
       "id": "ai-businesses-54",
       "slug": "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m",
       "title": "If I Started Over With $0, Here\u2019s My Exact Plan to get to $1M",

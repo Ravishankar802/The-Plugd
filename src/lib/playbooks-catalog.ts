@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-61",
+      "slug": "i-tried-a-100-free-ai-side-hustle-for-indians-real-results",
+      "title": "I Tried A 100% FREE AI Side Hustle For Indians (Real Results)",
+      "headline": "Build a digital-product side hustle from India using free AI tools, Canva, and Pinterest—without spending money on paid advertising.",
+      "description": "Learn how to research profitable digital-product ideas, create planners and printables with AI, design them in Canva, and sell them through an online storefront. This practical playbook walks you through Pinterest marketing, free-to-paid product funnels, payment setup for Indian sellers, and a 30-day launch plan, using a real seven-day experiment as a reference.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "hoursOfMaterial": "8.0 hours",
+      "rating": 4.9,
+      "ratingCount": "4.8k",
+      "accentColor": "#f59e0b",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Tried_A_100_FREE_AI_Side_Hustle_For_Indians_Real_Results.png",
+      "href": "/i-tried-a-100-free-ai-side-hustle-for-indians-real-results"
+  },
+  {
       "id": "ai-businesses-57",
       "slug": "7-side-hustles-students-can-start-in-2027",
       "title": "7 Side Hustles Students Can Start In 2027",
@@ -6434,4 +6454,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 320;
+export const TOTAL_PLAYBOOKS_COUNT = 321;

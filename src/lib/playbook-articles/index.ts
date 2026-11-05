@@ -59,6 +59,7 @@ import { FOUR_LEVELS_GETTING_RICH_ARTICLE } from "./four-levels-getting-rich";
 import { LOCKED_IN_ROOM_350K_ARTICLE } from "./locked-in-room-350k";
 import { FIVE_MONEY_PRINCIPLES_20S_ARTICLE } from "./five-money-principles-20s";
 import { BORING_MILLIONAIRES_2026_ARTICLE } from "./boring-millionaires-2026";
+import { FREE_AI_SIDE_HUSTLE_INDIANS_ARTICLE } from "./free-ai-side-hustle-indians";
 
 export * from "./types";
 
@@ -188,6 +189,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-12": FIVE_MONEY_PRINCIPLES_20S_ARTICLE,
   "its-boring-but-will-make-even-beginners-millionaires-in-2026": BORING_MILLIONAIRES_2026_ARTICLE,
   "ai-businesses-13": BORING_MILLIONAIRES_2026_ARTICLE,
+  "i-tried-a-100-free-ai-side-hustle-for-indians-real-results": FREE_AI_SIDE_HUSTLE_INDIANS_ARTICLE,
+  "ai-businesses-61": FREE_AI_SIDE_HUSTLE_INDIANS_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

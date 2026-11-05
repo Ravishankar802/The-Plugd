@@ -991,6 +991,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-32"],
     assignedPlaybookSlugs: ["laziest-ways-to-make-money-with-ai-for-beginners"],
   },
+  "pinterest-canva-sovereign-indian-creator": {
+    templateId: "pinterest-canva-sovereign-indian-creator",
+    name: "Indian Sovereign Digital Creator Suite",
+    categoryTheme: "Digital Products & Zero-Ad Funnels",
+    description:
+      "Warm spiced masala & terracotta stage (#18110e) with deep amber border (#3a2518), saffron gold accents (#f59e0b), emerald peacock highlight (#10b981), and warm cream typography.",
+    colorPalette: {
+      canvasBg: "#120c09",
+      stageBg: "#1a120e",
+      border: "#3a2518",
+      primaryText: "#fef3c7",
+      secondaryText: "#d97706",
+      accent: "#f59e0b",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#2d1b0f",
+      highlightPillText: "#fbbf24",
+    },
+    visualMotifs: [
+      "Zero-ad Pinterest organic traffic funnel",
+      "Free-to-paid digital download conversion bridge",
+      "Sovereign Indian payment gateway node",
+      "Canva printable asset generator matrix",
+    ],
+    layoutArchitecture: "Spiced terracotta creator desk with dual funnel telemetry and Pinterest distribution rail",
+    assignedPlaybookIds: ["ai-businesses-61"],
+    assignedPlaybookSlugs: ["i-tried-a-100-free-ai-side-hustle-for-indians-real-results"],
+  },
 };
 
 /**

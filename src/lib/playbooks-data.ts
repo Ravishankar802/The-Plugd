@@ -76,6 +76,11 @@ import { STUDENT_HUSTLES_2027_COURSE } from "./playbooks/seven-side-hustles-stud
 import { SELL_PDFS_WITH_AI_COURSE } from "./playbooks/sell-pdfs-with-ai-changed-life-data";
 import { THREE_BEST_AI_BIZ_2027_COURSE } from "./playbooks/three-best-ai-businesses-before-2027-data";
 import { FIVE_SIMPLE_APPS_10K_COURSE } from "./playbooks/five-simple-apps-10k-month-ai-data";
+import {
+  FREE_AI_SIDE_HUSTLE_INDIANS_COURSE,
+  FREE_AI_SIDE_HUSTLE_INDIANS_SLUG,
+  FREE_AI_SIDE_HUSTLE_INDIANS_ID
+} from "./playbooks/free-ai-side-hustle-indians-data";
 
 
 export type SlideType =
@@ -641,6 +646,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-59": THREE_BEST_AI_BIZ_2027_COURSE,
   "5-simple-apps-making-10-000-month-that-you-can-build-with-ai": FIVE_SIMPLE_APPS_10K_COURSE,
   "ai-businesses-60": FIVE_SIMPLE_APPS_10K_COURSE,
+  "i-tried-a-100-free-ai-side-hustle-for-indians-real-results": FREE_AI_SIDE_HUSTLE_INDIANS_COURSE,
+  "ai-businesses-61": FREE_AI_SIDE_HUSTLE_INDIANS_COURSE,
 
   // Backward compatibility legacy mappings
   "ai-businesses-02": AI_SERVICE_BUSINESS_PLAYBOOK_COURSE,
@@ -719,7 +726,8 @@ export function getAllCourses(): Course[] {
     STUDENT_HUSTLES_2027_COURSE,
     SELL_PDFS_WITH_AI_COURSE,
     THREE_BEST_AI_BIZ_2027_COURSE,
-    FIVE_SIMPLE_APPS_10K_COURSE
+    FIVE_SIMPLE_APPS_10K_COURSE,
+    FREE_AI_SIDE_HUSTLE_INDIANS_COURSE
   ];
 }
 
