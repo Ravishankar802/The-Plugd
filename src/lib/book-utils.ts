@@ -186,6 +186,20 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "marketing-agents-are-too-good-now" ||
+    slug === "ai-businesses-68"
+  ) {
+    return {
+      name: "Jack Robertson",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+
+  if (
     slug === "claude-chatgpt-57152-in-90-days" ||
     slug === "ai-businesses-67"
   ) {
@@ -870,6 +884,53 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "marketing-agents-are-too-good-now" ||
+    slug === "ai-businesses-68"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Harshil Deshmukh",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "I finally understand the difference between an AI automation and an actual agent. The architecture section made the whole concept click, especially how advertising data, CRM activity, and revenue can work together.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Elena Brooks",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "Loved that this goes beyond prompting ChatGPT to write ads. The creative pipeline, feedback loops, and campaign decision systems gave me a much clearer picture of what building a real marketing agent involves.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Karthik Reddy",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "The implementation roadmap is probably my favourite part. It breaks a pretty intimidating project into manageable stages, starting with read-only analysis before moving towards automated actions. Very practical.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Amara Okafor",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "There's a lot more here than just Meta Ads. The WordPress product ideas and other agent opportunities got me thinking about entirely different ways to build AI-powered software. A genuinely useful read.",
+        likes: 84,
+      },
+    ];
+  }
   if (
     slug === "claude-chatgpt-57152-in-90-days" ||
     slug === "ai-businesses-67"

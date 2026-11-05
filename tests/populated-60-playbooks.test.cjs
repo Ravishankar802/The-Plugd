@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-68",
+    slug: "marketing-agents-are-too-good-now",
+    title: "Marketing Agents Are Too Good Now",
+    dataFile: "src/lib/playbooks/marketing-agents-are-too-good-now-data.ts",
+    detailFile: "src/lib/playbooks/marketing-agents-are-too-good-now-detail.ts",
+    routeDir: "src/app/marketing-agents-are-too-good-now",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-67",
     slug: "claude-chatgpt-57152-in-90-days",
     title: "Claude + ChatGPT = $57,152 In 90 Days",

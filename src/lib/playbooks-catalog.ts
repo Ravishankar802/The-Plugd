@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-68",
+      "slug": "marketing-agents-are-too-good-now",
+      "title": "Marketing Agents Are Too Good Now",
+      "headline": "Go beyond basic automations. Learn to build AI marketing agents that understand customer behaviour, create campaigns, manage ads, and improve their decisions using real business data.",
+      "description": "What if your marketing system could do more than follow instructions? This playbook walks through the architecture behind autonomous marketing agents—from connecting analytics, CRM, and revenue data to generating ad creatives, testing campaigns, and learning from performance. It also explores AI-first product opportunities, practical agent workflows, implementation roadmaps, and the safeguards needed before handing AI control of real marketing operations.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "9.5 hours",
+      "rating": 4.9,
+      "ratingCount": "4.8k",
+      "accentColor": "#06b6d4",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Marketing_Agents_Are_Too_Good_Now.png",
+      "href": "/marketing-agents-are-too-good-now"
+  },
+  {
       "id": "ai-businesses-67",
       "slug": "claude-chatgpt-57152-in-90-days",
       "title": "Claude + ChatGPT = $57,152 In 90 Days",
@@ -6575,4 +6596,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 327;
+export const TOTAL_PLAYBOOKS_COUNT = 328;

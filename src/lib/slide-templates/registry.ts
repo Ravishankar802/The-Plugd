@@ -1180,6 +1180,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-67"],
     assignedPlaybookSlugs: ["claude-chatgpt-57152-in-90-days"],
   },
+  "autonomous-marketing-agent-command-center": {
+    templateId: "autonomous-marketing-agent-command-center",
+    name: "Autonomous Marketing Agent Command Center",
+    categoryTheme: "Autonomous Growth Engines & Performance Marketing Telemetry",
+    description:
+      "A dark cyberpunk cyber-command telemetry workstation with real-time ad performance dials, multi-touch attribution DAG graphs, automated vision QC terminal, and bounded spend governor rails.",
+    colorPalette: {
+      canvasBg: "#050d1a",
+      stageBg: "#0b172a",
+      border: "#162a45",
+      primaryText: "#f0f9ff",
+      secondaryText: "#7dd3fc",
+      accent: "#06b6d4",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#083344",
+      highlightPillText: "#67e8f9",
+    },
+    visualMotifs: [
+      "Real-time ClickHouse attribution query terminal and event stream",
+      "Automated multi-modal vision quality control pass/fail inspector",
+      "10-ads-per-day testing pipeline board with winners pool elevator rail",
+      "Bounded autonomy budget governor and emergency kill-switch monitor",
+    ],
+    layoutArchitecture: "High-contrast technical cockpit with multi-column data streaming terminals and live spend allocation controls",
+    assignedPlaybookIds: ["ai-businesses-68"],
+    assignedPlaybookSlugs: ["marketing-agents-are-too-good-now"],
+  },
 };
 
 /**
