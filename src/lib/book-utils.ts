@@ -93,6 +93,18 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "this-ai-side-hustle-makes-4-lakhs-month-copy-me" ||
+    slug === "ai-businesses-100"
+  ) {
+    return {
+      name: "Ritu Sharma",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+  if (
     slug === "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me" ||
     slug === "ai-businesses-97" ||
     slug === "i-sold-ai-digital-products-for-7-days-100-free-tools" ||
@@ -1256,6 +1268,57 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "this-ai-side-hustle-makes-4-lakhs-month-copy-me" ||
+    slug === "ai-businesses-100"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Vikram",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The four-stage progression is what makes this playbook so useful. Instead of trying to launch a full agency immediately, you can start with creator coordination, learn how campaigns work, and gradually add higher-value services. Very actionable.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Sagar",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I especially liked the brand prospecting and outreach sections. The Meta Ads Library workflow, creator database, and email templates give you a much clearer idea of how to find potential clients and approach them professionally.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Samarth",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The AI UGC section was excellent. It explains how to go from brand research to scripts, hooks, video generation, and quality checks. I also appreciate that it doesn't pretend AI-generated ads can replace every real creator.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Namratha",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "This feels more like an actual agency operating manual than a typical side-hustle guide. The campaign trackers, client onboarding checklist, creator agreements, and reporting templates are incredibly practical. Great resource for anyone exploring UGC services.",
+        likes: 84,
+      },
+    ];
+  }
   if (
     slug === "when-i-understood-this-about-investing-my-life-changed" ||
     slug === "ai-businesses-99"

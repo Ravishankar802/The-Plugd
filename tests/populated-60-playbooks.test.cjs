@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-100",
+    slug: "this-ai-side-hustle-makes-4-lakhs-month-copy-me",
+    title: "This AI Side Hustle Makes 4 Lakhs/Month (Copy Me)",
+    dataFile: "src/lib/playbooks/this-ai-side-hustle-makes-4-lakhs-month-copy-me-data.ts",
+    detailFile: "src/lib/playbooks/this-ai-side-hustle-makes-4-lakhs-month-copy-me-detail.ts",
+    routeDir: "src/app/this-ai-side-hustle-makes-4-lakhs-month-copy-me",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-99",
     slug: "when-i-understood-this-about-investing-my-life-changed",
     title: "When I Understood This About Investing. My Life Changed.",

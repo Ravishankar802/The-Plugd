@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-100",
+      "slug": "this-ai-side-hustle-makes-4-lakhs-month-copy-me",
+      "title": "This AI Side Hustle Makes 4 Lakhs/Month (Copy Me)",
+      "headline": "Turn AI skills into a real service business: land brands, manage UGC creators, create scroll-stopping ad content, and build your way toward a full-scale agency.",
+      "description": "Turn AI skills into a real service business: land brands, manage UGC creators, create scroll-stopping ad content, and build your way toward a full-scale agency.\n\nStart with one valuable service: helping brands find creators and manage their UGC campaigns. This playbook shows you how to progress from creator coordination to research-backed scripts, AI-generated UGC ads, and full marketing strategy — with practical outreach templates, AI prompts, creator databases, campaign trackers, and a 30-day beginner roadmap. It also includes an alternative path to offering AI-powered social media and website services to local businesses.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "5.1k",
+      "hoursOfMaterial": "11.2 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/This_AI_Side_Hustle_Makes_4_Lakhs_Month_Copy_Me.png",
+      "href": "/this-ai-side-hustle-makes-4-lakhs-month-copy-me"
+  },
+  {
       "id": "ai-businesses-99",
       "slug": "when-i-understood-this-about-investing-my-life-changed",
       "title": "When I Understood This About Investing. My Life Changed.",
@@ -7246,4 +7266,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 359;
+export const TOTAL_PLAYBOOKS_COUNT = 360;

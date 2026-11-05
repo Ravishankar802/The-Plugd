@@ -2106,6 +2106,36 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-99"],
     assignedPlaybookSlugs: ["when-i-understood-this-about-investing-my-life-changed"],
   },
+  // Template 65: UGC Agency Ladder & AI Creator Production Studio
+  // Specifically crafted for "This AI Side Hustle Makes 4 Lakhs/Month (Copy Me)"
+  "ugc-agency-ladder-growth-engine": {
+    templateId: "ugc-agency-ladder-growth-engine",
+    name: "UGC Agency Ladder & AI Creator Production Studio",
+    categoryTheme: "UGC Creator Coordination, AI-Generated Creator Ads (OpenArt & Claude MCP), Meta Ads Library Prospecting, Brand Creative Briefs & 4-Stage Agency Ladder",
+    description:
+      "Editorial lavender-slate canvas (#0f0d17) with deep violet-plum stages (#1a1528), muted mauve borders (#2d2244), radiant electric violet accents (#8b5cf6), warm coral secondary highlights (#fb7185), and crisp snow typography",
+    colorPalette: {
+      canvasBg: "#0f0d17",
+      stageBg: "#1a1528",
+      border: "#2d2244",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#8b5cf6",
+      accentSecondary: "#fb7185",
+      highlightPillBg: "#2e1065",
+      highlightPillText: "#c4b5fd",
+    },
+    visualMotifs: [
+      "The 4-Stage UGC Agency Ladder (Coordination -> Briefs/Scripts -> AI UGC Ads -> Full Strategy)",
+      "The Meta Ads Library Prospecting Funnel (Active DTC Brands -> Creative Audit -> Email Pitch)",
+      "The OpenArt & Claude MCP Synthetic Studio (Persona Generation -> Scene Prompting -> QA Audit)",
+      "The Monday Morning Performance Matrix (ROAS, Creative Testing, Invoiced Retainers & Net Margins)",
+    ],
+    layoutArchitecture:
+      "Modern agency operations console with creator database sheets, video script storyboard panels, and retainer telemetry cards",
+    assignedPlaybookIds: ["ai-businesses-100"],
+    assignedPlaybookSlugs: ["this-ai-side-hustle-makes-4-lakhs-month-copy-me"],
+  },
 };
 
 /**
