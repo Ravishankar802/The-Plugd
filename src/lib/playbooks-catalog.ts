@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-78",
+      "slug": "how-a-faceless-channel-made-12-804-month-with-claude",
+      "title": "How a Faceless Channel Made $12,804/Month With Claude",
+      "headline": "A practical blueprint for building a faceless YouTube business with a consistent AI-generated host, automated video production, and digital products as a revenue stream.",
+      "description": "Turn Claude and AI video-generation tools into a repeatable content production system. Learn how to develop a virtual presenter, research audience-driven topics, create original videos, and sell digital products that complement your channel. Includes reusable prompts, production workflows, revenue calculations, quality checklists, and a 30-day launch roadmap.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "10.8 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#d97706",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_a_Faceless_Channel_Made_12804_Month_With_Claude.png",
+      "href": "/how-a-faceless-channel-made-12-804-month-with-claude"
+  },
+  {
       "id": "ai-businesses-77",
       "slug": "the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5",
       "title": "The New Way to Make Money with AI at Night (Even If You Have a 9-5)",
@@ -6785,4 +6806,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 337;
+export const TOTAL_PLAYBOOKS_COUNT = 338;

@@ -1458,6 +1458,39 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-77"],
     assignedPlaybookSlugs: ["the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5"],
   },
+
+  // 51. Playbook: How a Faceless Channel Made $12,804/Month With Claude
+  "faceless-avatar-studio": {
+    templateId: "faceless-avatar-studio",
+    name: "Faceless Avatar Studio & Character Continuity Engine",
+    categoryTheme: "AI Presenter Studio & Digital Product Production Pipeline",
+    description:
+      "Warm cinematic terracotta and sage canvas (#0a0d0c) with vintage amber gold (#d97706) and soft herb emerald (#059669) accents, character bible multi-angle matrices, visual continuity checklists, and digital product conversion funnels.",
+    colorPalette: {
+      canvasBg: "#0a0d0c",
+      stageBg: "#121715",
+      border: "#1e2622",
+      primaryText: "#f3f4f3",
+      secondaryText: "#94a39b",
+      accent: "#d97706",
+      accentSecondary: "#059669",
+      highlightPillBg: "#78350f",
+      highlightPillText: "#fef3c7",
+    },
+    visualMotifs: [
+      "Multi-angle AI presenter character continuity sheets (front, 3/4, profile, close-up)",
+      "Higgsfield MCP-to-Claude production shot list & scene flowcharts",
+      "100,000-view digital product revenue conversion funnel diagrams",
+      "Editorial safety & home-remedy boundary matrices",
+    ],
+    layoutArchitecture:
+      "Virtual production control room with character trait continuity monitors, scene timeline rails, and product checkout conversion meters",
+    assignedPlaybookIds: ["ai-businesses-78"],
+    assignedPlaybookSlugs: [
+      "how-a-faceless-channel-made-12-804-month-with-claude",
+      "how-a-faceless-channel-made-12804-month-with-claude"
+    ],
+  },
 };
 
 /**

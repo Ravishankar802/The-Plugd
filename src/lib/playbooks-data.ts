@@ -161,6 +161,11 @@ import {
   FREE_AI_SIDE_HUSTLE_INDIANS_SLUG,
   FREE_AI_SIDE_HUSTLE_INDIANS_ID
 } from "./playbooks/free-ai-side-hustle-indians-data";
+import {
+  FACELESS_CHANNEL_12K_CLAUDE_COURSE,
+  FACELESS_CHANNEL_12K_CLAUDE_SLUG,
+  FACELESS_CHANNEL_12K_CLAUDE_ID
+} from "./playbooks/how-a-faceless-channel-made-12-804-month-with-claude-data";
 
 
 export type SlideType =
@@ -738,6 +743,9 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-65": AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE,
   "the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5": NIGHT_AI_MONEY_COURSE,
   "ai-businesses-77": NIGHT_AI_MONEY_COURSE,
+  "how-a-faceless-channel-made-12-804-month-with-claude": FACELESS_CHANNEL_12K_CLAUDE_COURSE,
+  "how-a-faceless-channel-made-12804-month-with-claude": FACELESS_CHANNEL_12K_CLAUDE_COURSE,
+  "ai-businesses-78": FACELESS_CHANNEL_12K_CLAUDE_COURSE,
   "how-i-built-it-400k-month-ios-app": HOW_I_BUILT_400K_IOS_COURSE,
   "ai-businesses-76": HOW_I_BUILT_400K_IOS_COURSE,
     "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck": REINVENT_90_DAYS_COURSE,
@@ -859,7 +867,8 @@ export function getAllCourses(): Course[] {
     AI_AGENTS_2027_COURSE,
     REINVENT_90_DAYS_COURSE,
     HOW_I_BUILT_400K_IOS_COURSE,
-    NIGHT_AI_MONEY_COURSE
+    NIGHT_AI_MONEY_COURSE,
+    FACELESS_CHANNEL_12K_CLAUDE_COURSE
   ];
 }
 

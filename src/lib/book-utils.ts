@@ -185,7 +185,21 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
     };
   }
 
-    if (
+      if (
+    slug === "how-a-faceless-channel-made-12-804-month-with-claude" ||
+    slug === "how-a-faceless-channel-made-12804-month-with-claude" ||
+    slug === "ai-businesses-78"
+  ) {
+    return {
+      name: "Brady Lawson",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+if (
     slug === "the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5" ||
     slug === "ai-businesses-77"
   ) {
@@ -1002,7 +1016,60 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
-    if (
+      if (
+    slug === "how-a-faceless-channel-made-12-804-month-with-claude" ||
+    slug === "how-a-faceless-channel-made-12804-month-with-claude" ||
+    slug === "ai-businesses-78"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Ananya",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Finally, a guide that explains the entire process instead of just throwing AI tools at you. The character development, scripting, and video production workflows made the business model much easier to understand. Loved the practical prompts.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Vincent",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The digital product strategy was the most interesting part for me. I hadn't considered building revenue around a channel rather than depending entirely on YouTube ads. The examples helped me see how the pieces fit together.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Mehul Shah",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I appreciated how much attention this gives to consistency. Creating an AI presenter is one thing; making that character feel recognisable across dozens of videos is another. The character bible and production templates are genuinely useful.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Ethan",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "More realistic than most AI side-hustle guides. It doesn't pretend that generating videos automatically means making thousands of dollars. The revenue breakdown, quality checks, and 30-day roadmap make this a much better starting point.",
+        likes: 84,
+      },
+    ];
+  }
+
+if (
     slug === "the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5" ||
     slug === "ai-businesses-77"
   ) {

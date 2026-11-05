@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-78",
+    slug: "how-a-faceless-channel-made-12-804-month-with-claude",
+    title: "How a Faceless Channel Made $12,804/Month With Claude",
+    dataFile: "src/lib/playbooks/how-a-faceless-channel-made-12-804-month-with-claude-data.ts",
+    detailFile: "src/lib/playbooks/how-a-faceless-channel-made-12-804-month-with-claude-detail.ts",
+    routeDir: "src/app/how-a-faceless-channel-made-12-804-month-with-claude",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-77",
     slug: "the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5",
     title: "The New Way to Make Money with AI at Night (Even If You Have a 9-5)",
