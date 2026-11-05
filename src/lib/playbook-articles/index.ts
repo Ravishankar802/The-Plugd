@@ -99,6 +99,7 @@ import { ZERO_SKILL_AI_INDIANS_ARTICLE } from "./i-tried-a-zero-skill-ai-side-hu
 import { I_SOLD_AI_DIGITAL_PRODUCTS_ARTICLE } from "./i-sold-ai-digital-products-for-7-days-100-free-tools";
 import { WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_ARTICLE } from "./when-i-understood-this-about-investing-my-life-changed";
 import { THIS_AI_SIDE_HUSTLE_MAKES_4_LAKHS_ARTICLE } from "./this-ai-side-hustle-makes-4-lakhs-month-copy-me";
+import { TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_ARTICLE } from "./tested-3-methods-make-1-lakh-ai-india";
 
 export * from "./types";
 
@@ -311,6 +312,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-99": WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_ARTICLE,
   "this-ai-side-hustle-makes-4-lakhs-month-copy-me": THIS_AI_SIDE_HUSTLE_MAKES_4_LAKHS_ARTICLE,
   "ai-businesses-100": THIS_AI_SIDE_HUSTLE_MAKES_4_LAKHS_ARTICLE,
+  "i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results": TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_ARTICLE,
+  "ai-businesses-101": TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

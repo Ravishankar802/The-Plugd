@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-101",
+      "slug": "i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results",
+      "title": "I Tested 3 Methods To Make ₹1 Lakh With AI in India?(Real Results)",
+      "headline": "Three AI side hustles. 72 hours to find out which business ideas actually show potential in India.",
+      "description": "Three AI side hustles. 72 hours to find out which business ideas actually show potential in India.\n\nExplore three AI-powered business models: creating UGC-style video ads for brands, launching print-on-demand T-shirts, and selling digital colouring books. This playbook breaks down the tools, workflows, prompts, outreach strategies, advertising experiments, and reported results — plus a practical 72-hour testing plan to help you decide what deserves your time and money.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "4.8k",
+      "hoursOfMaterial": "8.5 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Tested_3_Methods_To_Make_1_Lakh_With_AI_in_India_Real_Results.png",
+      "href": "/i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results"
+  },
+  {
       "id": "ai-businesses-100",
       "slug": "this-ai-side-hustle-makes-4-lakhs-month-copy-me",
       "title": "This AI Side Hustle Makes 4 Lakhs/Month (Copy Me)",
@@ -7266,4 +7286,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 360;
+export const TOTAL_PLAYBOOKS_COUNT = 361;

@@ -2136,6 +2136,34 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-100"],
     assignedPlaybookSlugs: ["this-ai-side-hustle-makes-4-lakhs-month-copy-me"],
   },
+  "three-method-rapid-validation-matrix": {
+    templateId: "three-method-rapid-validation-matrix",
+    name: "Three-Method AI Experiment & 72-Hour Rapid Validation Matrix",
+    categoryTheme: "Three-Model AI Experimentation, AI UGC Ads, Print-on-Demand T-Shirts, Digital Colouring Books & 72-Hour Rapid Validation Matrix",
+    description:
+      "A high-contrast experiment dashboard with tri-model diagnostic telemetry, 72-hour timeline gauges, unit economics ledger panels, and rapid hypothesis cards.",
+    colorPalette: {
+      canvasBg: "#090e17",
+      stageBg: "#111a28",
+      border: "#1e2d42",
+      primaryText: "#f1f5f9",
+      secondaryText: "#94a3b8",
+      accent: "#06b6d4",
+      accentSecondary: "#f97316",
+      highlightPillBg: "#164e63",
+      highlightPillText: "#67e8f9",
+    },
+    visualMotifs: [
+      "The 72-Hour Rapid Experiment Timeline (Hours 0-6 Setup -> 6-18 QA -> 18-30 Launch -> 30-72 Reconcile)",
+      "Tri-Model Decision Matrix (AI UGC Ads vs Print-on-Demand vs Digital Colouring Books)",
+      "Unit Economics Ledger (Gross Sales - Base Cost - Shipping - Ads - Fees = Net Contribution)",
+      "Diagnostic Funnel Telemetry (Impressions -> Outbound Clicks -> Checkouts -> Paid Orders)",
+    ],
+    layoutArchitecture:
+      "Tri-column experiment dashboard featuring 72-hour milestone clocks, unit economics ledger tables, and rapid hypothesis validation cards",
+    assignedPlaybookIds: ["ai-businesses-101"],
+    assignedPlaybookSlugs: ["i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results"],
+  },
 };
 
 /**

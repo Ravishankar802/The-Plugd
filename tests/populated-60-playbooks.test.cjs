@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-101",
+    slug: "i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results",
+    title: "I Tested 3 Methods To Make ₹1 Lakh With AI in India?(Real Results)",
+    dataFile: "src/lib/playbooks/tested-3-methods-make-1-lakh-ai-india-data.ts",
+    detailFile: "src/lib/playbooks/tested-3-methods-make-1-lakh-ai-india-detail.ts",
+    routeDir: "src/app/i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-100",
     slug: "this-ai-side-hustle-makes-4-lakhs-month-copy-me",
     title: "This AI Side Hustle Makes 4 Lakhs/Month (Copy Me)",

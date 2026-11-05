@@ -93,6 +93,18 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results" ||
+    slug === "ai-businesses-101"
+  ) {
+    return {
+      name: "Anjali Yadav",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+  if (
     slug === "this-ai-side-hustle-makes-4-lakhs-month-copy-me" ||
     slug === "ai-businesses-100" ||
     slug === "i-tried-a-100-free-ai-side-hustle-for-indians-real-results" ||
