@@ -125,6 +125,18 @@ const POPULATED_PLAYBOOKS = [
     expectedLessons: 28,
     expectedSlides: 112
   },
+  {
+    id: "ai-businesses-66",
+    slug: "its-boring-but-i-make-51-day-in-1-hour-at-22",
+    title: "It’s boring but I make $51/day in 1 hour at 22",
+    dataFile: "src/lib/playbooks/boring-51-day-in-1-hour-data.ts",
+    detailFile: "src/lib/playbooks/boring-51-day-in-1-hour-detail.ts",
+    routeDir: "src/app/its-boring-but-i-make-51-day-in-1-hour-at-22",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+
 
 
 

@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "its-boring-but-i-make-51-day-in-1-hour-at-22" ||
+    slug === "ai-businesses-66"
+  ) {
+    return {
+      name: "Kunal Raj",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "this-ai-business-will-make-you-10k-month-with-zero-employees" ||
     slug === "ai-businesses-65"
   ) {
@@ -1223,6 +1236,54 @@ export function getCuratedCommunityReviews(
         headline: "",
         content: "Loved the comparison between all three models. It helped me understand which business fits my resources and why validating an idea matters before building.",
         likes: 30,
+      },
+    ];
+  }
+
+  if (
+    slug === "its-boring-but-i-make-51-day-in-1-hour-at-22" ||
+    slug === "ai-businesses-66"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Liam Fletcher",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "Finally, a side hustle guide that actually shows you what to look for. The trick of checking how many people have an item in their bag instead of just counting likes was such a useful insight.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Aisha Rahman",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "I went in thinking this would be another generic dropshipping tutorial, but the product photography section completely changed my perspective. The AI image prompts and listing examples alone make this worth reading.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Benjamin Clarke",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "Simple concept, solid execution. I particularly appreciated the profit calculations because it's easy to see a $30 price difference and forget about shipping, fees, and refunds. This explains the numbers properly.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Tara Desai",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "The seven-day challenge is my favourite part! Everything is broken into manageable tasks, from researching your first products to setting up a shop and reviewing the results. No unnecessary complexity, just a clear process to test.",
+        likes: 84,
       },
     ];
   }

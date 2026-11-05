@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-66",
+      "slug": "its-boring-but-i-make-51-day-in-1-hour-at-22",
+      "title": "It’s boring but I make $51/day in 1 hour at 22",
+      "headline": "Find what people want, source it for less, and learn how to turn simple Depop listings into a potential side income using AliExpress and AI.",
+      "description": "What if your next side hustle started with a tote bag and a little product research? Explore the Depop selling method behind a reported $51/day profit experiment, from spotting buying signals and finding affordable suppliers to creating eye-catching AI product images. Get a seven-day launch plan, pricing calculations, listing templates, and a practical one-hour daily workflow, with essential marketplace compliance checks.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "hoursOfMaterial": "8.9 hours",
+      "rating": 4.9,
+      "ratingCount": "4.7k",
+      "accentColor": "#d97706",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/It_s_Boring_But_Will_Make_Even_Beginners_Millionaires_in_2026.png",
+      "href": "/its-boring-but-i-make-51-day-in-1-hour-at-22"
+  },
+  {
       "id": "ai-businesses-65",
       "slug": "this-ai-business-will-make-you-10k-month-with-zero-employees",
       "title": "This AI Business Will Make You $10k/Month (With Zero Employees)",
@@ -6534,4 +6554,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 325;
+export const TOTAL_PLAYBOOKS_COUNT = 326;

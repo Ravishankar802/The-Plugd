@@ -1126,6 +1126,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-65"],
     assignedPlaybookSlugs: ["this-ai-business-will-make-you-10k-month-with-zero-employees"],
   },
+  "marketplace-arbitrage-earth-canvas": {
+    templateId: "marketplace-arbitrage-earth-canvas",
+    name: "Boho Earth Marketplace Arbitrage Canvas",
+    categoryTheme: "Marketplace Arbitrage & Commerce Curation Systems",
+    description:
+      "Warm organic clay and linen stage (#171614) with golden amber (#d97706) borders, terracotta (#c2410c) metric badges, bone ivory typography (#fafaf9), muted taupe secondary (#a8a29e), and a dedicated in-bag intent telemetry rail.",
+    colorPalette: {
+      canvasBg: "#0e0d0b",
+      stageBg: "#171614",
+      border: "#292524",
+      primaryText: "#fafaf9",
+      secondaryText: "#a8a29e",
+      accent: "#d97706",
+      accentSecondary: "#c2410c",
+      highlightPillBg: "#2d1b0d",
+      highlightPillText: "#fbbf24",
+    },
+    visualMotifs: [
+      "Active in-bag addition intent telemetry and offer velocity stream",
+      "AliExpress unit margin calculator and net contribution breakdown rail",
+      "Flat-lay lifestyle photography framing guide and prompt architecture",
+      "60-minute time-boxed daily operator routine matrix",
+    ],
+    layoutArchitecture: "Warm earthy boutique atelier workstation with real-time in-bag demand telemetry and contribution cashflow ledger",
+    assignedPlaybookIds: ["ai-businesses-66"],
+    assignedPlaybookSlugs: ["its-boring-but-i-make-51-day-in-1-hour-at-22"],
+  },
 };
 
 /**
