@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-89",
+      "slug": "31-years-of-wealth-knowledge-in-18-minutes",
+      "title": "31 Years of Wealth Knowledge in 18 Minutes",
+      "headline": "Stop chasing a bigger paycheck and start building real wealth — master the four stages of financial freedom, turn your income into productive assets, and make your money work harder over time.",
+      "description": "Stop chasing a bigger paycheck and start building real wealth — master the four stages of financial freedom, turn your income into productive assets, and make your money work harder over time.\n\nA practical roadmap to building long-term wealth through four essential stages: active income, consistent surplus, productive assets, and passive income. Learn how to increase your earning power, pay your future self first, start investing at a manageable scale, and build income streams that can gradually cover your living expenses. Includes a 90-day implementation plan, Wealth Ladder assessment, monthly money-flow worksheets, asset evaluation checklists, passive-income trackers, and compounding scenarios.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#10b981",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/31_Years_of_Wealth_Knowledge_in_18_Minutes.png",
+      "href": "/31-years-of-wealth-knowledge-in-18-minutes"
+  },
+  {
       "id": "ai-businesses-88",
       "slug": "if-i-wanted-to-make-my-first-100k-in-2027-id-do-this",
       "title": "If I Wanted to Make My First $100K in 2027, I’d Do This",
@@ -7016,4 +7037,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 348;
+export const TOTAL_PLAYBOOKS_COUNT = 349;

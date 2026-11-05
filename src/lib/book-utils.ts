@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "31-years-of-wealth-knowledge-in-18-minutes" ||
+    slug === "ai-businesses-89"
+  ) {
+    return {
+      name: "Martim Neves",
+      avatar: "",
+      booksCount: 2,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "if-i-wanted-to-make-my-first-100k-in-2027-id-do-this" ||
     slug === "ai-businesses-88"
   ) {

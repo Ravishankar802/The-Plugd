@@ -216,6 +216,11 @@ import {
   FIRST_100K_IN_2027_SLUG,
   FIRST_100K_IN_2027_ID
 } from "./playbooks/if-i-wanted-to-make-my-first-100k-in-2027-id-do-this-data";
+import {
+  WEALTH_KNOWLEDGE_31_YEARS_COURSE,
+  WEALTH_KNOWLEDGE_31_YEARS_SLUG,
+  WEALTH_KNOWLEDGE_31_YEARS_ID
+} from "./playbooks/31-years-of-wealth-knowledge-in-18-minutes-data";
 
 
 export type SlideType =
@@ -816,6 +821,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-87": MAKE_3000_ONLINE_90_DAYS_COURSE,
   "if-i-wanted-to-make-my-first-100k-in-2027-id-do-this": FIRST_100K_IN_2027_COURSE,
   "ai-businesses-88": FIRST_100K_IN_2027_COURSE,
+  "31-years-of-wealth-knowledge-in-18-minutes": WEALTH_KNOWLEDGE_31_YEARS_COURSE,
+  "ai-businesses-89": WEALTH_KNOWLEDGE_31_YEARS_COURSE,
   "how-i-built-it-400k-month-ios-app": HOW_I_BUILT_400K_IOS_COURSE,
   "ai-businesses-76": HOW_I_BUILT_400K_IOS_COURSE,
     "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck": REINVENT_90_DAYS_COURSE,
@@ -948,7 +955,8 @@ export function getAllCourses(): Course[] {
     HOW_TO_MAKE_PROGRESS_FASTER_COURSE,
     BUILD_10K_WEBSITE_GPT6_COURSE,
     MAKE_3000_ONLINE_90_DAYS_COURSE,
-    FIRST_100K_IN_2027_COURSE
+    FIRST_100K_IN_2027_COURSE,
+    WEALTH_KNOWLEDGE_31_YEARS_COURSE
   ];
 }
 

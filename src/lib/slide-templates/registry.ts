@@ -1783,6 +1783,35 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-88"],
     assignedPlaybookSlugs: ["if-i-wanted-to-make-my-first-100k-in-2027-id-do-this"],
   },
+  // 62. Playbook 62: 31 Years of Wealth Knowledge in 18 Minutes
+  "wealth-ladder-compounding-matrix": {
+    templateId: "wealth-ladder-compounding-matrix",
+    name: "The Wealth Ladder & Compounding Ascension Matrix",
+    categoryTheme: "Wealth Architecture, Income Stacking, Productive Assets & Long-Term Compounding",
+    description:
+      "Deep forest obsidian canvas (#07130f) with emerald wealth ladder telemetry (#10b981), warm gold cash-flow nodes (#f59e0b), TIGA portfolio ledgers, and passive income coverage ratio gauges",
+    colorPalette: {
+      canvasBg: "#07130f",
+      stageBg: "#0c1f19",
+      border: "#1b382e",
+      primaryText: "#f0fdf4",
+      secondaryText: "#86efac",
+      accent: "#10b981",
+      accentSecondary: "#f59e0b",
+      highlightPillBg: "#064e3b",
+      highlightPillText: "#a7f3d0",
+    },
+    visualMotifs: [
+      "The 4-Rung Wealth Ladder progression: Active Income -> Consistent Surplus -> Productive Assets -> Passive Income",
+      "TIGA (Tiny Income-Generating Assets) reinvestment & income-stacking flywheel",
+      "Passive Income Coverage Ratio gauge (Net Asset Income / Monthly Living Expenses)",
+      "Multi-scenario compounding calculators and purchasing power inflation deflators",
+    ],
+    layoutArchitecture:
+      "Progressive ladder hierarchy console with step-by-step financial health diagnostics, asset cash-flow tables, and compounding projection curves",
+    assignedPlaybookIds: ["ai-businesses-89"],
+    assignedPlaybookSlugs: ["31-years-of-wealth-knowledge-in-18-minutes"],
+  },
 };
 
 /**

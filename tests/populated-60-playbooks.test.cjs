@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-89",
+    slug: "31-years-of-wealth-knowledge-in-18-minutes",
+    title: "31 Years of Wealth Knowledge in 18 Minutes",
+    dataFile: "src/lib/playbooks/31-years-of-wealth-knowledge-in-18-minutes-data.ts",
+    detailFile: "src/lib/playbooks/31-years-of-wealth-knowledge-in-18-minutes-detail.ts",
+    routeDir: "src/app/31-years-of-wealth-knowledge-in-18-minutes",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-88",
     slug: "if-i-wanted-to-make-my-first-100k-in-2027-id-do-this",
     title: "If I Wanted to Make My First $100K in 2027, I’d Do This",
