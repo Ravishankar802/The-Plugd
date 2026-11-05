@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-94",
+      "slug": "if-you-only-read-one-money-playbook-make-it-this",
+      "title": "If You Only Read One Money Playbook, Make It This",
+      "headline": "Stop chasing quick money and start thinking like a wealth builder — master the seven laws of money, understand ownership and leverage, and learn to grow your wealth without risking everything you've built.",
+      "description": "Stop chasing quick money and start thinking like a wealth builder — master the seven laws of money, understand ownership and leverage, and learn to grow your wealth without risking everything you've built.\n\nMaking money is one thing. Building wealth that lasts is another. This playbook breaks down seven powerful money principles into a practical system for understanding compounding, ownership, cash flow, equity, leverage, asymmetric opportunities, and risk management.\n\nLearn how to evaluate investments, understand who controls the money, size your bets intelligently, and protect your financial future. Includes real-world examples, decision frameworks, investment checklists, worksheets, and a practical money operating system.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#10b981",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_You_Only_Read_One_Money_Playbook_Make_It_This.png",
+      "href": "/if-you-only-read-one-money-playbook-make-it-this"
+  },
+  {
       "id": "ai-businesses-93",
       "slug": "starting-an-ai-side-hustle-is-easy-copy-this-system",
       "title": "Starting An AI Side Hustle Is EASY (Copy This System)",
@@ -7121,4 +7142,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 353;
+export const TOTAL_PLAYBOOKS_COUNT = 354;

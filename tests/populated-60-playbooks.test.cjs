@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-94",
+    slug: "if-you-only-read-one-money-playbook-make-it-this",
+    title: "If You Only Read One Money Playbook, Make It This",
+    dataFile: "src/lib/playbooks/if-you-only-read-one-money-playbook-make-it-this-data.ts",
+    detailFile: "src/lib/playbooks/if-you-only-read-one-money-playbook-make-it-this-detail.ts",
+    routeDir: "src/app/if-you-only-read-one-money-playbook-make-it-this",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-93",
     slug: "starting-an-ai-side-hustle-is-easy-copy-this-system",
     title: "Starting An AI Side Hustle Is EASY (Copy This System)",

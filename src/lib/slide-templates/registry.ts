@@ -1928,6 +1928,35 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-93"],
     assignedPlaybookSlugs: ["starting-an-ai-side-hustle-is-easy-copy-this-system"],
   },
+  // 67. Playbook 67: "If You Only Read One Money Playbook, Make It This"
+  "seven-laws-wealth-matrix": {
+    templateId: "seven-laws-wealth-matrix",
+    name: "Seven Laws Wealth Matrix & Asymmetry Radar",
+    categoryTheme: "The Seven Laws of Money (Momentum, Structure, Asymmetry), Ownership & Equity Engineering, Non-Linear Risk Management",
+    description:
+      "Deep obsidian emerald canvas (#0b1411) with rich pine velvet stages (#11201b), muted jade borders (#1c3a30), vibrant electric emerald primary telemetry (#10b981), warm sovereign gold indicators (#eab308), and soft mint accents (#6ee7b7)",
+    colorPalette: {
+      canvasBg: "#0b1411",
+      stageBg: "#11201b",
+      border: "#1c3a30",
+      primaryText: "#f0fdf4",
+      secondaryText: "#cbd5e1",
+      accent: "#10b981",
+      accentSecondary: "#eab308",
+      highlightPillBg: "#064e3b",
+      highlightPillText: "#a7f3d0",
+    },
+    visualMotifs: [
+      "The Three-Pillar Sovereign Architecture (Momentum, Structure, Asymmetry)",
+      "The Seven Laws Triad Radar & Ownership/Control Matrix",
+      "The Asymmetric Payoff Curve (Capped Downside vs. Non-Linear Upside)",
+      "The Risk-Knowledge x Control Quadrant Matrix",
+    ],
+    layoutArchitecture:
+      "Sovereign financial telemetry HUD with risk-control grids, cash-flow vs. equity split balance sheets, and position-sizing limiters",
+    assignedPlaybookIds: ["ai-businesses-94"],
+    assignedPlaybookSlugs: ["if-you-only-read-one-money-playbook-make-it-this"],
+  },
 };
 
 /**

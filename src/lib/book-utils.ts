@@ -93,6 +93,32 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "if-you-only-read-one-money-playbook-make-it-this" ||
+    slug === "ai-businesses-94"
+  ) {
+    return {
+      name: "Jordan Hayes",
+      avatar: "",
+      booksCount: 3,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
+    slug === "starting-an-ai-side-hustle-is-easy-copy-this-system" ||
+    slug === "ai-businesses-93"
+  ) {
+    return {
+      name: "Eduardo Martins",
+      avatar: "",
+      booksCount: 3,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "its-boring-but-will-make-even-beginners-millionaires-in-2026" ||
     slug === "ai-businesses-13"
   ) {
@@ -140,7 +166,7 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
     return {
       name: "Jordan Hayes",
       avatar: "",
-      booksCount: 1,
+      booksCount: 3,
       followersCount: "",
       bio: "",
     };
@@ -244,7 +270,7 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
     return {
       name: "Jordan Hayes",
       avatar: "",
-      booksCount: 2,
+      booksCount: 3,
       followersCount: "",
       bio: "",
     };
@@ -1199,6 +1225,58 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+    if (
+    slug === "if-you-only-read-one-money-playbook-make-it-this" ||
+    slug === "ai-businesses-94"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Julia",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "One of the clearest explanations of wealth-building I've come across. The distinction between earning money and actually owning assets really changed how I look at financial decisions. The seven laws tie everything together beautifully.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Enes",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I especially liked the sections on leverage and position sizing. People talk endlessly about making bigger returns, but rarely explain how to avoid losing everything along the way. This playbook does a great job balancing ambition with financial discipline.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Mark",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The five-question investment framework alone makes this worth reading. I now have a much better way to evaluate opportunities instead of getting distracted by impressive returns or exciting promises. Practical, insightful, and easy to revisit.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Krishnamurthy",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "What stood out to me was the connection between cash flow, equity, ownership, and control. It goes beyond basic saving and investing advice and gets into how wealth actually gets built and protected. The worksheets make the concepts much easier to apply.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "starting-an-ai-side-hustle-is-easy-copy-this-system" ||
     slug === "ai-businesses-93"

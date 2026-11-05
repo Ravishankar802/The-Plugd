@@ -92,6 +92,7 @@ import { ZERO_TO_100K_PLAN_ARTICLE } from "./if-i-started-with-0-heres-my-exact-
 import { BLEW_UP_YOUTUBE_AI_ARTICLE } from "./i-blew-up-a-youtube-channel-in-24-hours-with-ai";
 import { IM_BROKE_BUSINESS_ARTICLE } from "./im-broke-what-business-do-i-start";
 import { STARTING_AI_SIDE_HUSTLE_ARTICLE } from "./starting-an-ai-side-hustle-is-easy-copy-this-system";
+import { ONE_MONEY_PLAYBOOK_ARTICLE } from "./if-you-only-read-one-money-playbook-make-it-this";
 
 export * from "./types";
 
@@ -290,6 +291,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-92": IM_BROKE_BUSINESS_ARTICLE,
   "starting-an-ai-side-hustle-is-easy-copy-this-system": STARTING_AI_SIDE_HUSTLE_ARTICLE,
   "ai-businesses-93": STARTING_AI_SIDE_HUSTLE_ARTICLE,
+  "if-you-only-read-one-money-playbook-make-it-this": ONE_MONEY_PLAYBOOK_ARTICLE,
+  "ai-businesses-94": ONE_MONEY_PLAYBOOK_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {
