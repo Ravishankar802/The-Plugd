@@ -1260,6 +1260,32 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-70"],
     assignedPlaybookSlugs: ["how-i-build-a-10cr-agency-without-any-knowledge"],
   },
+  "service-launchpad-engine": {
+    templateId: "service-launchpad-engine",
+    name: "Service Launchpad & Proof Command Engine",
+    categoryTheme: "Zero-Capital Service Launchpad & Proof Architecture",
+    description: "A high-clarity bronze and deep obsidian operational command workstation featuring the Rule of 300 prospecting grid, pilot commitment agreement matrix, reusable delivery asset pipeline, and continuation retainer economics.",
+    colorPalette: {
+      canvasBg: "#121110",
+      stageBg: "#1a1816",
+      border: "#2b2622",
+      primaryText: "#fafaf9",
+      secondaryText: "#a8a29e",
+      accent: "#f59e0b",
+      accentSecondary: "#d97706",
+      highlightPillBg: "#291b0d",
+      highlightPillText: "#fcd34d",
+    },
+    visualMotifs: [
+      "Rule of 300 attention prospecting sequence and signal mining flow",
+      "High-commitment pilot architecture and permissioned proof indexing matrix",
+      "Productised delivery spreadsheet calculator and onboarding SOP rail",
+      "Ascension continuation retainer model with 60-day graduation review checkpoints",
+    ],
+    layoutArchitecture: "Operational executive studio dashboard with prospecting pipeline telemetry, pilot milestone maps, and recurring unit economics rails",
+    assignedPlaybookIds: ["ai-businesses-71"],
+    assignedPlaybookSlugs: ["if-i-had-to-start-a-business-from-scratch-id-do-this"],
+  },
 };
 
 /**

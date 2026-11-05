@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-71",
+    slug: "if-i-had-to-start-a-business-from-scratch-id-do-this",
+    title: "If I Had To Start a Business From Scratch, I'd Do This",
+    dataFile: "src/lib/playbooks/if-i-had-to-start-a-business-from-scratch-id-do-this-data.ts",
+    detailFile: "src/lib/playbooks/if-i-had-to-start-a-business-from-scratch-id-do-this-detail.ts",
+    routeDir: "src/app/if-i-had-to-start-a-business-from-scratch-id-do-this",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-70",
     slug: "how-i-build-a-10cr-agency-without-any-knowledge",
     title: "How I build a 10cr Agency Without any Knowledge",

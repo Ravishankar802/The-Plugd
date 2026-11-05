@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "if-i-had-to-start-a-business-from-scratch-id-do-this" ||
+    slug === "ai-businesses-71"
+  ) {
+    return {
+      name: "Dylan Scott",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "how-i-build-a-10cr-agency-without-any-knowledge" ||
     slug === "ai-businesses-70"
   ) {
@@ -911,6 +924,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "if-i-had-to-start-a-business-from-scratch-id-do-this" ||
+    slug === "ai-businesses-71"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Natalie",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "Really liked how this breaks down the early stages of starting a business. The advice about getting results before worrying about scaling is something more beginners need to hear. The 30-day sprint makes it much easier to actually begin.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Arjun",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "I used to think I needed a proper website, branding, and a fully developed offer before approaching anyone. This completely changed how I look at starting. The warm outreach and pilot approach feels much more realistic.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Gabriel Santos",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "The section on turning a service into a repeatable system was my favourite. It's not just about getting customers; it explains how to deliver consistently, improve your process, and build something sustainable. Very actionable.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Chloe",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "Straightforward, practical, and refreshingly honest. I especially appreciated the mistakes section and the emphasis on building recurring relationships instead of constantly chasing new clients. Lots of ideas worth putting into practice.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "how-i-build-a-10cr-agency-without-any-knowledge" ||
     slug === "ai-businesses-70"

@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-71",
+      "slug": "if-i-had-to-start-a-business-from-scratch-id-do-this",
+      "title": "If I Had To Start a Business From Scratch, I'd Do This",
+      "headline": "A step-by-step guide to turning your existing skills into a profitable service business through real customer results, referrals, consistent outreach, and repeatable systems.",
+      "description": "You don't need a huge audience, a perfect business idea, or a pile of startup capital to get started. Learn how to find your first customers, offer a low-risk pilot, build credibility through genuine results, and turn that proof into a paid service. From the Rule of 300 and warm outreach to recurring revenue, niche selection, and delivery systems, this playbook walks through the process of building a business one customer at a time.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "9.6 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#f59e0b",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Had_To_Start_a_Business_From_Scratch_I_d_Do_This.png",
+      "href": "/if-i-had-to-start-a-business-from-scratch-id-do-this"
+  },
+  {
       "id": "ai-businesses-70",
       "slug": "how-i-build-a-10cr-agency-without-any-knowledge",
       "title": "How I build a 10cr Agency Without any Knowledge",
@@ -6638,4 +6659,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 330;
+export const TOTAL_PLAYBOOKS_COUNT = 331;

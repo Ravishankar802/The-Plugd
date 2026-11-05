@@ -69,6 +69,7 @@ import { CLAUDE_CHATGPT_57K_ARTICLE } from "./claude-chatgpt-57152-in-90-days";
 import { MARKETING_AGENTS_TOO_GOOD_ARTICLE } from "./marketing-agents-are-too-good-now";
 import { ZERO_TO_1000_DROPSHIPPING_ARTICLE } from "./zero-to-1000-profit-dropshipping-ai-24hours";
 import { HOW_I_BUILD_10CR_AGENCY_ARTICLE } from "./how-i-build-a-10cr-agency-without-any-knowledge";
+import { START_BUSINESS_FROM_SCRATCH_ARTICLE } from "./if-i-had-to-start-a-business-from-scratch-id-do-this";
 
 export * from "./types";
 
@@ -219,6 +220,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-69": ZERO_TO_1000_DROPSHIPPING_ARTICLE,
   "how-i-build-a-10cr-agency-without-any-knowledge": HOW_I_BUILD_10CR_AGENCY_ARTICLE,
   "ai-businesses-70": HOW_I_BUILD_10CR_AGENCY_ARTICLE,
+  "if-i-had-to-start-a-business-from-scratch-id-do-this": START_BUSINESS_FROM_SCRATCH_ARTICLE,
+  "ai-businesses-71": START_BUSINESS_FROM_SCRATCH_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {
