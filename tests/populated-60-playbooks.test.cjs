@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-97",
+    slug: "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me",
+    title: "I Tried A Zero Skill AI Side Hustle For Indians (Copy Me)",
+    dataFile: "src/lib/playbooks/i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me-data.ts",
+    detailFile: "src/lib/playbooks/i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me-detail.ts",
+    routeDir: "src/app/i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-96",
     slug: "in-18-minutes-youll-understand-generational-wealth",
     title: "In 18 Minutes, You'll Understand Generational Wealth",

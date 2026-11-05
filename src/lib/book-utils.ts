@@ -92,6 +92,18 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (
+    slug === "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me" ||
+    slug === "ai-businesses-97"
+  ) {
+    return {
+      name: "Pooja Patil",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
     if (
     slug === "if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this" ||
     slug === "ai-businesses-95"
@@ -1240,6 +1252,57 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me" ||
+    slug === "ai-businesses-97"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Saurav",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I liked that this goes beyond generating pretty AI images. It actually explains how to build a character, create content around it, and connect everything to a monetisation strategy. The two business models make the whole concept much easier to understand.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Bharath",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The character consistency and content-production sections were especially useful. Having prompts and repeatable workflows saves so much guesswork. I also appreciated the emphasis on checking AI-generated visuals instead of blindly publishing everything.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Ashutosh",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Finally, an AI side-hustle guide that explains the business side too. The affiliate funnel, digital-product setup, and revenue tracking sections make this feel like something you can actually test rather than just another collection of AI tools.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Vansh",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The seven-day plan is my favourite part. It breaks a fairly overwhelming idea into manageable steps, from researching a niche to publishing content and reviewing results. The transparency and realistic expectations around earnings make it even better.",
+        likes: 84,
+      },
+    ];
+  }
   if (
     slug === "in-18-minutes-youll-understand-generational-wealth" ||
     slug === "ai-businesses-96"

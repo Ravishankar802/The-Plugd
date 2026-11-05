@@ -2016,6 +2016,36 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-96"],
     assignedPlaybookSlugs: ["in-18-minutes-youll-understand-generational-wealth"],
   },
+  // Template 62: AI Persona Affiliate Engine & Digital Product Studio
+  // Specifically crafted for "I Tried A Zero Skill AI Side Hustle For Indians (Copy Me)"
+  "ai-persona-affiliate-engine": {
+    templateId: "ai-persona-affiliate-engine",
+    name: "AI Persona Affiliate Engine & Digital Product Studio",
+    categoryTheme: "AI Influencer Architecture, Two-Persona Monetization (Indian Amazon Affiliate & Global Digital Products), OpenArt Consistency, Character Continuity & 7-Day Sprint",
+    description:
+      "Deep studio cyber navy canvas (#0c0f17) with persona stage slate (#151b27), clean neon hairline borders (#243044), vibrant saffron ember primary accents (#f97316), electric creative violet secondary highlights (#8b5cf6), and crisp white studio typography",
+    colorPalette: {
+      canvasBg: "#0c0f17",
+      stageBg: "#151b27",
+      border: "#243044",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#f97316",
+      accentSecondary: "#8b5cf6",
+      highlightPillBg: "#431407",
+      highlightPillText: "#fed7aa",
+    },
+    visualMotifs: [
+      "The Two-Persona Monetization Architecture (Indian Affiliate vs. US Digital Storefront)",
+      "The OpenArt Character Sheet & Visual Consistency Pipeline (Face, Lighting, Locations)",
+      "The 7-Day Sprint Milestones (Research -> Creation -> Production -> Funnel -> Scaling)",
+      "The Conversion Funnel Telemetry (Profile Visits, Link CTR, Attributed Cart Conversions)",
+    ],
+    layoutArchitecture:
+      "Modern creator studio HUD with split persona comparison grids, video production prompt blueprints, and real-time affiliate/storefront revenue telemetry",
+    assignedPlaybookIds: ["ai-businesses-97"],
+    assignedPlaybookSlugs: ["i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me"],
+  },
 };
 
 /**

@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-97",
+      "slug": "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me",
+      "title": "I Tried A Zero Skill AI Side Hustle For Indians (Copy Me)",
+      "headline": "Build AI influencers, grow niche audiences, and turn content into income — without needing to be a professional creator.",
+      "description": "Build AI influencers, grow niche audiences, and turn content into income — without needing to be a professional creator.\n\nWhat if you could build a fictional AI influencer and turn it into a creator business? This playbook walks you through creating consistent AI personas, producing short-form content, and monetising through Indian Amazon affiliate links or international digital products. Includes AI prompts, character-building workflows, content systems, a 7-day launch plan, and practical revenue trackers — with real-world safeguards to keep the business transparent and sustainable.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#f97316",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Tried_A_Zero_Skill_AI_Side_Hustle_For_Indians_Copy_Me.png",
+      "href": "/i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me"
+  },
+  {
       "id": "ai-businesses-96",
       "slug": "in-18-minutes-youll-understand-generational-wealth",
       "title": "In 18 Minutes, You'll Understand Generational Wealth",
@@ -7184,4 +7205,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 356;
+export const TOTAL_PLAYBOOKS_COUNT = 357;
