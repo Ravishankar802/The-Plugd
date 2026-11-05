@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-69",
+    slug: "zero-to-1000-profit-with-dropshipping-using-ai-24hours",
+    title: "Zero To $1,000 Profit with Dropshipping Using AI (24HOURS)",
+    dataFile: "src/lib/playbooks/zero-to-1000-profit-dropshipping-ai-24hours-data.ts",
+    detailFile: "src/lib/playbooks/zero-to-1000-profit-dropshipping-ai-24hours-detail.ts",
+    routeDir: "src/app/zero-to-1000-profit-with-dropshipping-using-ai-24hours",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-68",
     slug: "marketing-agents-are-too-good-now",
     title: "Marketing Agents Are Too Good Now",

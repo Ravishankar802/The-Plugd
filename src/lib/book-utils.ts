@@ -186,6 +186,20 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "zero-to-1000-profit-with-dropshipping-using-ai-24hours" ||
+    slug === "zero-to-1-000-profit-with-dropshipping-using-ai-24hours" ||
+    slug === "ai-businesses-69"
+  ) {
+    return {
+      name: "Jiho Kim",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "marketing-agents-are-too-good-now" ||
     slug === "ai-businesses-68"
   ) {
@@ -884,6 +898,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "zero-to-1000-profit-with-dropshipping-using-ai-24hours" ||
+    slug === "zero-to-1-000-profit-with-dropshipping-using-ai-24hours" ||
+    slug === "ai-businesses-69"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Marcus",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "The unit economics section alone makes this worth reading. It's easy to get excited about sales screenshots, but this actually explains how to calculate what you're keeping after product costs, shipping, fees, and ads.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Priyanka",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "I liked how the whole process is connected. Product research flows into store creation, then creative testing and campaign analysis. The prompts are useful too, especially for evaluating products without blindly trusting AI.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Julianne Costa",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "I appreciate that this doesn't just focus on making money. It covers client relationships, tracking, reporting, and the operational side too. The first-client pilot is a particularly useful starting point.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Devonte Harris",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "The competitor ad research and creative testing chapters gave me a better way to think about marketing. Instead of copying whatever is trending, you learn to understand the angle behind an ad and develop your own variations.",
+        likes: 84,
+      },
+    ];
+  }
   if (
     slug === "marketing-agents-are-too-good-now" ||
     slug === "ai-businesses-68"

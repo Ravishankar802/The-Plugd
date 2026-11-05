@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-69",
+      "slug": "zero-to-1000-profit-with-dropshipping-using-ai-24hours",
+      "title": "Zero To $1,000 Profit with Dropshipping Using AI (24HOURS)",
+      "headline": "A fast-paced AI-assisted dropshipping playbook covering product discovery, Shopify store creation, ad creative production, Meta Ads testing, and the numbers behind profitable ecommerce.",
+      "description": "From an empty storefront to your first live campaign, this guide maps out the entire process of launching a product-focused dropshipping business. Learn how to spot demand signals, assess suppliers, build a store with AI tools, develop original UGC-style ads, and interpret campaign data. It also gets into the less glamorous—but essential—side of ecommerce: break-even CPA, fulfilment, cash flow, refunds, and knowing when to stop or scale.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "9.3 hours",
+      "rating": 4.9,
+      "ratingCount": "4.8k",
+      "accentColor": "#10b981",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Zero_To_1_000_Profit_with_Dropshipping_Using_AI_24HOURS.png",
+      "href": "/zero-to-1000-profit-with-dropshipping-using-ai-24hours"
+  },
+  {
       "id": "ai-businesses-68",
       "slug": "marketing-agents-are-too-good-now",
       "title": "Marketing Agents Are Too Good Now",
@@ -6596,4 +6617,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 328;
+export const TOTAL_PLAYBOOKS_COUNT = 329;

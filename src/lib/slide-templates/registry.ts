@@ -1207,6 +1207,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-68"],
     assignedPlaybookSlugs: ["marketing-agents-are-too-good-now"],
   },
+  "ecom-profit-telemetry-engine": {
+    templateId: "ecom-profit-telemetry-engine",
+    name: "E-Commerce Profit & ROAS Telemetry Engine",
+    categoryTheme: "E-Commerce Arbitrage & Rapid Store Testing Systems",
+    description:
+      "A high-precision e-commerce operator dashboard with real-time break-even CPA gauges, 24-hour sprint milestone trackers, AI-UGC creative testing matrices, and payment gateway float reserves.",
+    colorPalette: {
+      canvasBg: "#09111e",
+      stageBg: "#0f1d32",
+      border: "#1e3556",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#10b981",
+      accentSecondary: "#38bdf8",
+      highlightPillBg: "#064e3b",
+      highlightPillText: "#6ee7b7",
+    },
+    visualMotifs: [
+      "Order-level contribution margin and break-even CPA gauge dial",
+      "24-hour launch milestone progress tracker and pre-flight stop-loss rail",
+      "Modular 30-second AI-UGC creative script architecture matrix",
+      "Meta CBO campaign telemetry with 3-way Stop/Iterate/Scale decision rules",
+    ],
+    layoutArchitecture: "Dark nautical cockpit workstation with multi-panel unit economics calculators and live campaign telemetry dials",
+    assignedPlaybookIds: ["ai-businesses-69"],
+    assignedPlaybookSlugs: ["zero-to-1000-profit-with-dropshipping-using-ai-24hours"],
+  },
 };
 
 /**
