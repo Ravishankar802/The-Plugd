@@ -1812,6 +1812,35 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-89"],
     assignedPlaybookSlugs: ["31-years-of-wealth-knowledge-in-18-minutes"],
   },
+  // 63. Playbook 63: If I Started With $0, Here's My Exact Plan To $100K
+  "zero-to-hundred-k-velocity-matrix": {
+    templateId: "zero-to-hundred-k-velocity-matrix",
+    name: "Zero-to-$100K Financial Engine & Profit Zone Velocity Matrix",
+    categoryTheme: "Zero-Capital Foundations, Main-Job Earning Growth, Profit Zone Side Incomes & Systematic $100K Accumulation",
+    description:
+      "Deep midnight sapphire canvas (#090e17) with slate navy stages (#0f172a), electric cyan velocity indicators (#06b6d4), emerald asset accumulation ledgers (#10b981), and 4-4 time reclamation architecture grids",
+    colorPalette: {
+      canvasBg: "#090e17",
+      stageBg: "#0f172a",
+      border: "#1e293b",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#06b6d4",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#164e63",
+      highlightPillText: "#a5f3fc",
+    },
+    visualMotifs: [
+      "The 8-Step Financial Velocity Framework ($0 to $100K Critical Mass)",
+      "The 3-Circle Profit Zone Diagnostic (Enjoyment + Skill + Market Willingness to Pay)",
+      "The 4-4 Time Reclamation Grid (Morning Deep Work & Evening Execution)",
+      "The S&P 500 Daily Compounding Ledger & Lifestyle Inflation Firewall",
+    ],
+    layoutArchitecture:
+      "Split telemetry command HUD with dual metric counters, 3-circle profit intersection diagrams, and step-by-step milestone tracking",
+    assignedPlaybookIds: ["ai-businesses-90"],
+    assignedPlaybookSlugs: ["if-i-started-with-0-heres-my-exact-plan-to-100k"],
+  },
 };
 
 /**

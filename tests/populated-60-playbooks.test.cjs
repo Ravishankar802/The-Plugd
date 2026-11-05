@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-90",
+    slug: "if-i-started-with-0-heres-my-exact-plan-to-100k",
+    title: "If I Started With $0, Here's My Exact Plan To $100K",
+    dataFile: "src/lib/playbooks/if-i-started-with-0-heres-my-exact-plan-to-100k-data.ts",
+    detailFile: "src/lib/playbooks/if-i-started-with-0-heres-my-exact-plan-to-100k-detail.ts",
+    routeDir: "src/app/if-i-started-with-0-heres-my-exact-plan-to-100k",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-89",
     slug: "31-years-of-wealth-knowledge-in-18-minutes",
     title: "31 Years of Wealth Knowledge in 18 Minutes",

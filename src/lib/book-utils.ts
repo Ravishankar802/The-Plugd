@@ -166,7 +166,7 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
     return {
       name: "Shawn Lim",
       avatar: "",
-      booksCount: 1,
+      booksCount: 2,
       followersCount: "",
       bio: "",
     };
@@ -180,6 +180,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
       name: "Bryce Holloway",
       avatar: "",
       booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
+    slug === "if-i-started-with-0-heres-my-exact-plan-to-100k" ||
+    slug === "ai-businesses-90"
+  ) {
+    return {
+      name: "Shawn Lim",
+      avatar: "",
+      booksCount: 2,
       followersCount: "",
       bio: "",
     };
@@ -1160,6 +1173,59 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "if-i-started-with-0-heres-my-exact-plan-to-100k" ||
+    slug === "ai-businesses-90"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Camila",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "What I liked most is that it doesn't immediately tell you to start investing or launch some random business. It starts with fixing your financial foundation and increasing your earning power. The eight-step structure makes the whole process feel much more achievable.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Ankita",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The profit zone concept is genuinely useful. Connecting what you're good at, what you enjoy, and what people actually pay for is a much better way to approach side hustles than blindly following trends. The validation exercises are especially helpful.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Joel",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The sections on salary negotiation and lifestyle inflation stood out to me. People spend so much time looking for extra income that they forget to improve their existing income or keep the money they already make. Very practical advice.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Julia",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I love how actionable this is. The 12-month roadmap, weekly scorecard, and investment tracker make it easier to turn the ideas into an actual routine. It also does a good job explaining that $100K is a milestone to work toward, not an overnight promise.",
+        likes: 84,
+      },
+    ];
+  }
+
+
   if (
     slug === "how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial" ||
     slug === "ai-businesses-86"

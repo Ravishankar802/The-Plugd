@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-90",
+      "slug": "if-i-started-with-0-heres-my-exact-plan-to-100k",
+      "title": "If I Started With $0, Here's My Exact Plan To $100K",
+      "headline": "Starting from $0? Build your first $100K with an eight-step system to cut financial dead weight, increase your income, launch a second income stream, and turn what you earn into lasting wealth.",
+      "description": "Starting from $0? Build your first $100K with an eight-step system to cut financial dead weight, increase your income, launch a second income stream, and turn what you earn into lasting wealth.\n\nForget get-rich-quick schemes. This playbook breaks the journey to your first $100K into eight practical steps, from reducing major expenses and reclaiming productive time to negotiating a better salary, finding your profit zone, and building a second income stream. Includes a 12-month execution roadmap, side-hustle validation frameworks, salary negotiation templates, investment planning worksheets, weekly scorecards, and a $100K milestone tracker.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#06b6d4",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Started_With_0_Here_s_My_Exact_Plan_To_100K.png",
+      "href": "/if-i-started-with-0-heres-my-exact-plan-to-100k"
+  },
+  {
       "id": "ai-businesses-89",
       "slug": "31-years-of-wealth-knowledge-in-18-minutes",
       "title": "31 Years of Wealth Knowledge in 18 Minutes",
@@ -7037,4 +7058,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 349;
+export const TOTAL_PLAYBOOKS_COUNT = 350;

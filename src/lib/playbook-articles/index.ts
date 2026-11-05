@@ -88,6 +88,7 @@ import { BUILD_10K_WEBSITE_GPT6_ARTICLE } from "./how-to-build-a-10000-website-w
 import { MAKE_3000_ONLINE_90_DAYS_ARTICLE } from "./make-your-first-3000-online-in-90days-or-scroll-for-5-37mins";
 import { FIRST_100K_IN_2027_ARTICLE } from "./if-i-wanted-to-make-my-first-100k-in-2027-id-do-this";
 import { WEALTH_KNOWLEDGE_31_YEARS_ARTICLE } from "./31-years-of-wealth-knowledge-in-18-minutes";
+import { ZERO_TO_100K_PLAN_ARTICLE } from "./if-i-started-with-0-heres-my-exact-plan-to-100k";
 
 export * from "./types";
 
@@ -278,6 +279,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-88": FIRST_100K_IN_2027_ARTICLE,
   "31-years-of-wealth-knowledge-in-18-minutes": WEALTH_KNOWLEDGE_31_YEARS_ARTICLE,
   "ai-businesses-89": WEALTH_KNOWLEDGE_31_YEARS_ARTICLE,
+  "if-i-started-with-0-heres-my-exact-plan-to-100k": ZERO_TO_100K_PLAN_ARTICLE,
+  "ai-businesses-90": ZERO_TO_100K_PLAN_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {
