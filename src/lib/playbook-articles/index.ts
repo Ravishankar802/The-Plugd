@@ -71,6 +71,7 @@ import { ZERO_TO_1000_DROPSHIPPING_ARTICLE } from "./zero-to-1000-profit-dropshi
 import { HOW_I_BUILD_10CR_AGENCY_ARTICLE } from "./how-i-build-a-10cr-agency-without-any-knowledge";
 import { START_BUSINESS_FROM_SCRATCH_ARTICLE } from "./if-i-had-to-start-a-business-from-scratch-id-do-this";
 import { BEGGING_BUILD_PRODUCT_ARTICLE } from "./bro-im-begging-you-to-build-this-4-8m-product-idea";
+import { YEAR_TO_MAKE_10M_ARTICLE } from "./if-i-had-1-year-to-make-10m-this-is-my-plan";
 
 export * from "./types";
 
@@ -225,6 +226,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-71": START_BUSINESS_FROM_SCRATCH_ARTICLE,
   "bro-im-begging-you-to-build-this-4-8m-product-idea": BEGGING_BUILD_PRODUCT_ARTICLE,
   "ai-businesses-72": BEGGING_BUILD_PRODUCT_ARTICLE,
+  "if-i-had-1-year-to-make-10m-this-is-my-plan": YEAR_TO_MAKE_10M_ARTICLE,
+  "ai-businesses-73": YEAR_TO_MAKE_10M_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

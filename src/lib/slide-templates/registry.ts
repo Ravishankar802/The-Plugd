@@ -1312,6 +1312,32 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-72"],
     assignedPlaybookSlugs: ["bro-im-begging-you-to-build-this-4-8m-product-idea"],
   },
+  "ecommerce-scale-engine": {
+    templateId: "ecommerce-scale-engine",
+    name: "E-Commerce Scale & Inventory Governance Engine",
+    categoryTheme: "E-Commerce Scaling & Inventory Governance Architecture",
+    description: "A high-precision dark navy and emerald operational control deck featuring dynamic reorder point calculators, ABC inventory classification ledgers, 13-week cash conversion gauges, and product flywheel expansion maps.",
+    colorPalette: {
+      canvasBg: "#0a0e17",
+      stageBg: "#111827",
+      border: "#1f293d",
+      primaryText: "#f9fafb",
+      secondaryText: "#9ca3af",
+      accent: "#10b981",
+      accentSecondary: "#f59e0b",
+      highlightPillBg: "#064e3b",
+      highlightPillText: "#6ee7b7",
+    },
+    visualMotifs: [
+      "Dynamic reorder point formula and inventory lead-time timeline",
+      "Order-level contribution margin and landed COGS breakdown rail",
+      "Three-scenario demand forecasting ledger with working capital safety buffer",
+      "Post-mortem failure analysis matrix for multi-brand sprawl prevention",
+    ],
+    layoutArchitecture: "Operational executive dashboard with inventory position gauges, cash conversion meters, and SKU-level contribution rails",
+    assignedPlaybookIds: ["ai-businesses-73"],
+    assignedPlaybookSlugs: ["if-i-had-1-year-to-make-10m-this-is-my-plan"],
+  },
 };
 
 /**

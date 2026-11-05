@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-73",
+      "slug": "if-i-had-1-year-to-make-10m-this-is-my-plan",
+      "title": "If I Had 1 Year to Make $10M - This Is My Plan",
+      "headline": "A practical e-commerce blueprint for spotting untapped demand, validating products, launching with focus, and scaling without sacrificing profitability.",
+      "description": "A promising product can turn into a thriving business, but rapid growth brings challenges that can undo everything. This playbook breaks down the journey from discovering customer demand and testing a product to building a differentiated brand, managing inventory, controlling cash flow, and creating an accountable team. It also examines the costly mistakes behind a major business downturn, giving you a practical 12-month roadmap and actionable templates for making smarter decisions at every stage.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "9.6 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#f59e0b",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Had_1_Year_to_Make_10M_This_Is_My_Plan.png",
+      "href": "/if-i-had-1-year-to-make-10m-this-is-my-plan"
+  },
+  {
       "id": "ai-businesses-72",
       "slug": "bro-im-begging-you-to-build-this-4-8m-product-idea",
       "title": "Bro, I'm BEGGING you to build this $4.8M product idea",
@@ -6680,4 +6701,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 332;
+export const TOTAL_PLAYBOOKS_COUNT = 333;

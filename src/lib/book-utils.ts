@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "if-i-had-1-year-to-make-10m-this-is-my-plan" ||
+    slug === "ai-businesses-73"
+  ) {
+    return {
+      name: "Felix Weber",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "bro-im-begging-you-to-build-this-4-8m-product-idea" ||
     slug === "ai-businesses-72"
   ) {
@@ -937,6 +950,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "if-i-had-1-year-to-make-10m-this-is-my-plan" ||
+    slug === "ai-businesses-73"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Madison",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "The inventory section was a real eye-opener. I never thought deeply about how much money can get stuck in unsold products while bestsellers run out. The reorder point examples made the concept much easier to understand.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Carlos",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "I liked that this doesn't just celebrate a million-dollar success story. It actually examines what went wrong afterward. The lessons about focus, hiring too quickly, and launching too many brands are incredibly useful.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Tanya",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "The product validation process is probably my favourite part. Finding demand, researching suppliers, ordering samples, and testing preorders gives you a much clearer way to approach your first e-commerce product.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Rohan",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "Finally, an e-commerce guide that talks about cash flow and contribution instead of just revenue screenshots. The weekly founder review and product launch checklists make this something I can actually use while running a business.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "bro-im-begging-you-to-build-this-4-8m-product-idea" ||
     slug === "ai-businesses-72"

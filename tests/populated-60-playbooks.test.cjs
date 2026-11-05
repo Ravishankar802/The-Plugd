@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-73",
+    slug: "if-i-had-1-year-to-make-10m-this-is-my-plan",
+    title: "If I Had 1 Year to Make $10M - This Is My Plan",
+    dataFile: "src/lib/playbooks/if-i-had-1-year-to-make-10m-this-is-my-plan-data.ts",
+    detailFile: "src/lib/playbooks/if-i-had-1-year-to-make-10m-this-is-my-plan-detail.ts",
+    routeDir: "src/app/if-i-had-1-year-to-make-10m-this-is-my-plan",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-72",
     slug: "bro-im-begging-you-to-build-this-4-8m-product-idea",
     title: "Bro, I'm BEGGING you to build this $4.8M product idea",
