@@ -2076,6 +2076,36 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-98"],
     assignedPlaybookSlugs: ["i-sold-ai-digital-products-for-7-days-100-free-tools"],
   },
+  // Template 64: Four-Goods Investment Decision System & Capital-Stack Radar
+  // Specifically crafted for "When I Understood This About Investing. My Life Changed."
+  "four-goods-investment-decision-system": {
+    templateId: "four-goods-investment-decision-system",
+    name: "Four-Goods Investment Decision System & Capital-Stack Radar",
+    categoryTheme: "Systematic Capital Allocation, Capital Stack Priority (Senior Debt to Common Equity), The Four Goods Due-Diligence Engine, 100-Point Investment Scorecard, Friction & After-Tax Compounding",
+    description:
+      "Executive boardroom slate canvas (#090d16) with deep navy-indigo stages (#0f172a), midnight steel borders (#1e293b), luminous emerald green accents (#10b981), warm amber secondary highlights (#f59e0b), and platinum typography",
+    colorPalette: {
+      canvasBg: "#090d16",
+      stageBg: "#0f172a",
+      border: "#1e293b",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#10b981",
+      accentSecondary: "#f59e0b",
+      highlightPillBg: "#064e3b",
+      highlightPillText: "#6ee7b7",
+    },
+    visualMotifs: [
+      "The Capital-Stack Insolvency Waterfall (Senior Debt -> Mezzanine -> Preferred Equity -> Common Equity)",
+      "The Four Goods Due-Diligence Compass (Good People, Good Intentions, Good Rationale, Good Contracts)",
+      "The 100-Point Investment Scorecard Radar (Preservation, Tax Efficiency, Cash Flow, Growth)",
+      "The Net After-Friction Compounding Formula (Gross Yield vs. After-Tax, After-Fee Retained Capital)",
+    ],
+    layoutArchitecture:
+      "Executive investment committee terminal featuring capital-stack priority waterfalls, 100-point scorecard matrices, and scenario stress-test dashboards",
+    assignedPlaybookIds: ["ai-businesses-99"],
+    assignedPlaybookSlugs: ["when-i-understood-this-about-investing-my-life-changed"],
+  },
 };
 
 /**

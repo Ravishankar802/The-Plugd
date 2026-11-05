@@ -810,6 +810,8 @@ if (
   }
 
   if (
+    slug === "when-i-understood-this-about-investing-my-life-changed" ||
+    slug === "ai-businesses-99" ||
     slug === "laziest-way-to-make-money-online-in-2026-500-day" ||
     slug === "ai-businesses-09" ||
     slug === "in-18-minutes-youll-understand-generational-wealth" ||
@@ -818,7 +820,7 @@ if (
     return {
       name: "Akhil Varma",
       avatar: "",
-      booksCount: 2,
+      booksCount: 3,
       followersCount: "",
       bio: "",
     };
@@ -1254,6 +1256,57 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "when-i-understood-this-about-investing-my-life-changed" ||
+    slug === "ai-businesses-99"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Suman",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "This completely changed how I approach investment opportunities. The Four Goods framework is particularly valuable because it forces you to look beyond attractive numbers and examine the people and incentives behind a deal. Definitely something I'll keep coming back to.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Himanshu",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The capital stack explanation was an eye-opener. I never really understood how different investors could have completely different levels of protection in the same company. The examples and checklists make a complicated subject much easier to understand.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Shreya",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I love how practical this is. Instead of telling you which stocks to buy, it teaches you how to evaluate opportunities yourself. The 100-point scorecard is a great way to organise your thinking and compare investments without getting caught up in hype.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Ranjan",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "One of the best things about this playbook is how it connects everything: compounding, taxes, fees, risk, due diligence, and your actual responsibility as an investor. It feels like a proper decision-making system rather than another collection of generic investing tips.",
+        likes: 84,
+      },
+    ];
+  }
   if (
     slug === "i-sold-ai-digital-products-for-7-days-100-free-tools" ||
     slug === "ai-businesses-98"

@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-99",
+      "slug": "when-i-understood-this-about-investing-my-life-changed",
+      "title": "When I Understood This About Investing. My Life Changed.",
+      "headline": "Stop guessing with your money. Learn the investment framework that helps you spot better opportunities, understand what you actually own, protect your downside, and make smarter decisions for long-term wealth.",
+      "description": "Stop guessing with your money. Learn the investment framework that helps you spot better opportunities, understand what you actually own, protect your downside, and make smarter decisions for long-term wealth.\n\nForget chasing trending stocks, predicting market crashes, or blindly trusting impressive return promises. This playbook gives you a repeatable system for evaluating investments through compounding, after-tax returns, capital-stack analysis, and the Four Goods: good people, good intentions, good rationale, and good contracts.\n\nIncludes a 100-point investment scorecard, due-diligence checklists, investment comparison matrices, practical worksheets, and a complete decision-making workflow to help you invest with greater clarity and discipline.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "5.0k",
+      "hoursOfMaterial": "11.2 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/When_I_Understood_This_About_Investing_My_Life_Changed.png",
+      "href": "/when-i-understood-this-about-investing-my-life-changed"
+  },
+  {
       "id": "ai-businesses-98",
       "slug": "i-sold-ai-digital-products-for-7-days-100-free-tools",
       "title": "I Sold AI Digital Products For 7 Days (100% FREE Tools)",
@@ -7226,4 +7246,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 358;
+export const TOTAL_PLAYBOOKS_COUNT = 359;

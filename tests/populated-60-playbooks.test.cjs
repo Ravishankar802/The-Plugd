@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-99",
+    slug: "when-i-understood-this-about-investing-my-life-changed",
+    title: "When I Understood This About Investing. My Life Changed.",
+    dataFile: "src/lib/playbooks/when-i-understood-this-about-investing-my-life-changed-data.ts",
+    detailFile: "src/lib/playbooks/when-i-understood-this-about-investing-my-life-changed-detail.ts",
+    routeDir: "src/app/when-i-understood-this-about-investing-my-life-changed",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-98",
     slug: "i-sold-ai-digital-products-for-7-days-100-free-tools",
     title: "I Sold AI Digital Products For 7 Days (100% FREE Tools)",
