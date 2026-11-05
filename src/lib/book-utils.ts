@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial" ||
+    slug === "ai-businesses-86"
+  ) {
+    return {
+      name: "Diego Valera",
+      avatar: "",
+      booksCount: 2,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "how-to-make-progress-faster-than-everyone" ||
     slug === "ai-businesses-85"
   ) {
@@ -1108,6 +1121,58 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial" ||
+    slug === "ai-businesses-86"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Nathan",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Honestly, this made the whole website-building process feel much less intimidating. I especially liked how it starts with branding and the business brief instead of immediately generating random code. The prompts are incredibly useful.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Gabriela",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The section about turning a finished website into a service was my favourite. Finding businesses with outdated websites, creating a demo, and pitching the actual improvement is a much clearer approach than just trying to sell AI websites.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Ethan",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I've experimented with AI website builders before, but usually ended up with something that looked good and barely worked. The form testing, mobile optimisation, deployment, and launch checklists make this playbook genuinely practical.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Anjali",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Loved the attention to detail. The focused revision prompts alone are worth going through because they help prevent AI from changing five other things when you only wanted one small adjustment. A solid guide from start to finish.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "how-to-make-progress-faster-than-everyone" ||
     slug === "ai-businesses-85"

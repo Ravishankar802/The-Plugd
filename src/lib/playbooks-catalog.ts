@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-86",
+      "slug": "how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial",
+      "title": "How To Build a $10,000 Website with GPT-6 Astra (Full Tutorial)",
+      "headline": "Build premium, client-ready websites with AI — from brand identity and custom design to working forms, deployment, and landing your first paying clients.",
+      "description": "Build premium, client-ready websites with AI — from brand identity and custom design to working forms, deployment, and landing your first paying clients.\n\nLearn how to turn GPT-6 Astra into your website-building partner, taking a project from the initial business brief to a polished, responsive website that's ready for real customers. Master branding, image generation, design refinement, mobile optimisation, lead-form integration, hosting, and deployment — then use your skills to find businesses, create demo websites, and pitch your services.\n\nIncludes reusable AI prompts, brand-kit workflows, website briefs, design checklists, deployment instructions, pricing worksheets, outreach templates, and a practical 7-day launch roadmap.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#0284c7",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_To_Build_a_10_000_Website_with_GPT_6_Astra_Full_Tutorial.png",
+      "href": "/how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial"
+  },
+  {
       "id": "ai-businesses-85",
       "slug": "how-to-make-progress-faster-than-everyone",
       "title": "How to make progress faster than everyone",
@@ -6953,4 +6974,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 345;
+export const TOTAL_PLAYBOOKS_COUNT = 346;

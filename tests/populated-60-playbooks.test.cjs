@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-86",
+    slug: "how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial",
+    title: "How To Build a $10,000 Website with GPT-6 Astra (Full Tutorial)",
+    dataFile: "src/lib/playbooks/how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial-data.ts",
+    detailFile: "src/lib/playbooks/how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial-detail.ts",
+    routeDir: "src/app/how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-85",
     slug: "how-to-make-progress-faster-than-everyone",
     title: "How to make progress faster than everyone",

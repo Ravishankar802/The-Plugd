@@ -1697,6 +1697,34 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-85"],
     assignedPlaybookSlugs: ["how-to-make-progress-faster-than-everyone"],
   },
+  "generative-web-architect-matrix": {
+    templateId: "generative-web-architect-matrix",
+    name: "Generative Web Architect & Production Studio Matrix",
+    categoryTheme: "AI Web Design, Client-Ready Development & High-Ticket Agency Workflows",
+    description:
+      "Full-stack generative web architecture console featuring brand token telemetry, component viewport simulation, and client pitch deployment matrices",
+    colorPalette: {
+      canvasBg: "#070e17",
+      stageBg: "#0c1929",
+      border: "#1a3350",
+      primaryText: "#f0f7ff",
+      secondaryText: "#7dd3fc",
+      accent: "#0284c7",
+      accentSecondary: "#f97316",
+      highlightPillBg: "#0369a1",
+      highlightPillText: "#e0f2fe",
+    },
+    visualMotifs: [
+      "The 8-point client-ready quality checklist (Brand, custom assets, layout hierarchy, mobile readiness, forms, speed, SSL, domain)",
+      "GPT-6 Astra prompt architecture & focused scope-locking syntax ('Do not change anything else')",
+      "Client lead-form verification and end-to-end webhook delivery telemetry",
+      "7-Day Client Website Launch roadmap & B2B demo prospecting scorecards",
+    ],
+    layoutArchitecture:
+      "Full-stack generative web architecture console featuring brand token telemetry, component viewport simulation, and client pitch deployment matrices",
+    assignedPlaybookIds: ["ai-businesses-86"],
+    assignedPlaybookSlugs: ["how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial"],
+  },
 };
 
 /**
