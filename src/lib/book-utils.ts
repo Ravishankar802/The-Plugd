@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "its-boring-but-i-make-745-day-in-4-hours-at-22" ||
+    slug === "ai-businesses-82"
+  ) {
+    return {
+      name: "Myles Grant",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "how-i-went-from-0-to-92k-month-at-19-my-full-story" ||
     slug === "ai-businesses-81"
   ) {
@@ -1055,6 +1068,58 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "its-boring-but-i-make-745-day-in-4-hours-at-22" ||
+    slug === "ai-businesses-82"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Cameron",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I've read plenty of dropshipping guides, but most jump straight into finding a product and running ads. This one actually explains how to evaluate whether a product is worth selling in the first place. The competitor research and product scorecard sections alone make this worth going through.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Valentina",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The unit economics section was a real eye-opener. I used to think good ROAS meant I was making money, but the breakdown of fulfilment, fees, ad spend, and contribution completely changed how I look at ecommerce. Super practical and easy to follow.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Jamal",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "My favourite part is how the entire process connects. Product research flows into the store, the bundle offer, creative testing, and then the daily P&L. It doesn't feel like a collection of random tips. It gives you an actual workflow to follow.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Aria",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Really appreciated the focus on execution over endless store customisation. The AI store-building workflow, bundle planning, and three-angle ad testing gave me a much clearer picture of what to work on first. The launch checklist is especially useful when you're ready to stop researching and start building.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "how-i-went-from-0-to-92k-month-at-19-my-full-story" ||
     slug === "ai-businesses-81"

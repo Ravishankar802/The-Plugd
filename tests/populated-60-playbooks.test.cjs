@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-82",
+    slug: "its-boring-but-i-make-745-day-in-4-hours-at-22",
+    title: "It's boring but i make $745/day in 4 hours at 22",
+    dataFile: "src/lib/playbooks/its-boring-but-i-make-745-day-in-4-hours-at-22-data.ts",
+    detailFile: "src/lib/playbooks/its-boring-but-i-make-745-day-in-4-hours-at-22-detail.ts",
+    routeDir: "src/app/its-boring-but-i-make-745-day-in-4-hours-at-22",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-81",
     slug: "how-i-went-from-0-to-92k-month-at-19-my-full-story",
     title: "How I Went From $0 to $92K/Month at 19 (My Full Story)",

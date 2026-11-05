@@ -1581,6 +1581,36 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-81"],
     assignedPlaybookSlugs: ["how-i-went-from-0-to-92k-month-at-19-my-full-story"],
   },
+
+  // 55. Playbook: It's boring but i make $745/day in 4 hours at 22
+  "ecommerce-ad-arbitrage-terminal": {
+    templateId: "ecommerce-ad-arbitrage-terminal",
+    name: "E-Commerce Ad Arbitrage & Daily Unit Economics Terminal",
+    categoryTheme: "Lean Dropshipping, Meta Creative Testing & Multi-Unit Bundles",
+    description:
+      "Deep maritime obsidian and slate teal console (#070e17) with radiant cyan ad telemetry (#06b6d4), emerald net-profit metrics (#10b981), and steel-blue borders (#1a2c42), featuring competitor ad longevity radars, AI store brief synthesis pipelines, multi-unit bundle margin tables, and 4-hour daily operator workflow schedules.",
+    colorPalette: {
+      canvasBg: "#070e17",
+      stageBg: "#0e1926",
+      border: "#1a2c42",
+      primaryText: "#f1f5f9",
+      secondaryText: "#94a3b8",
+      accent: "#06b6d4",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#164e63",
+      highlightPillText: "#a5f3fc",
+    },
+    visualMotifs: [
+      "Competitor ad longevity signal radar (30+ day run-time filters, copy structure & creative hooks)",
+      "Multi-tier bundle economics matrix (Single unit, Buy 2 Get 1, Buy 3 Get 2 with true contribution margin)",
+      "Meta 3-desire CBO testing architecture (3 distinct angles, 3 ad sets, daily purchase telemetry)",
+      "Daily 4-hour operator time allocation schedule & daily P&L net contribution waterfall",
+    ],
+    layoutArchitecture:
+      "Direct-response commerce command console with real-time Meta campaign ROAS telemetry, bundle margin calculators, and supplier fulfilment audit scorecards",
+    assignedPlaybookIds: ["ai-businesses-82"],
+    assignedPlaybookSlugs: ["its-boring-but-i-make-745-day-in-4-hours-at-22"],
+  },
 };
 
 /**

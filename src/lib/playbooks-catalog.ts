@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-82",
+      "slug": "its-boring-but-i-make-745-day-in-4-hours-at-22",
+      "title": "It's boring but i make $745/day in 4 hours at 22",
+      "headline": "Find products people already want, build a store that sells, and turn Meta ads into a measurable ecommerce system — without wasting weeks guessing what might work.",
+      "description": "Find products people already want, build a store that sells, and turn Meta ads into a measurable ecommerce system — without wasting weeks guessing what might work.\n\nGo from product research to your first validated ecommerce offer with a practical, step-by-step dropshipping playbook. Learn to uncover winning product opportunities through competitor ad research, calculate real profit margins, build a focused Shopify store with AI tools, create profitable bundles, and test different customer desires through Meta ads. Includes ready-to-use prompts, product research scorecards, unit-economics calculators, campaign tracking sheets, daily P&L templates, and a complete launch roadmap.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.1 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#06b6d4",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Its_boring_but_i_make_745_day_in_4_hours_at_22.png",
+      "href": "/its-boring-but-i-make-745-day-in-4-hours-at-22"
+  },
+  {
       "id": "ai-businesses-81",
       "slug": "how-i-went-from-0-to-92k-month-at-19-my-full-story",
       "title": "How I Went From $0 to $92K/Month at 19 (My Full Story)",
@@ -6869,4 +6890,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 341;
+export const TOTAL_PLAYBOOKS_COUNT = 342;
