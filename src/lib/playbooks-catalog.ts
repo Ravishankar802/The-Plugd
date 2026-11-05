@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-77",
+      "slug": "the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5",
+      "title": "The New Way to Make Money with AI at Night (Even If You Have a 9-5)",
+      "headline": "A step-by-step guide to launching an AI-powered service business alongside your 9-to-5, from choosing a profitable niche to landing and delivering your first client project.",
+      "description": "Learn how to spot services businesses already pay for, evaluate opportunities using AI research, and choose an offer that matches your skills and available time. Then build a portfolio with practical samples, identify qualified prospects, write personalised outreach, create a simple service website, and use AI agents to streamline repetitive work. Includes ready-to-use prompts, templates, and a 30-day execution plan.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "10.4 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#f59e0b",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/The_New_Way_to_Make_Money_with_AI_at_Night_Even_If_You_Have_a_9_5.png",
+      "href": "/the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5"
+  },
+  {
       "id": "ai-businesses-76",
       "slug": "how-i-built-it-400k-month-ios-app",
       "title": "How I Built It: $400K/Month iOS App",
@@ -6764,4 +6785,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 336;
+export const TOTAL_PLAYBOOKS_COUNT = 337;

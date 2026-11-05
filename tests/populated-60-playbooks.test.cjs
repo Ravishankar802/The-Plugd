@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-77",
+    slug: "the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5",
+    title: "The New Way to Make Money with AI at Night (Even If You Have a 9-5)",
+    dataFile: "src/lib/playbooks/the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5-data.ts",
+    detailFile: "src/lib/playbooks/the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5-detail.ts",
+    routeDir: "src/app/the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-76",
     slug: "how-i-built-it-400k-month-ios-app",
     title: "How I Built It: $400K/Month iOS App",

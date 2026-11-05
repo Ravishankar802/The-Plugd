@@ -185,7 +185,20 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
     };
   }
 
-  if (
+    if (
+    slug === "the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5" ||
+    slug === "ai-businesses-77"
+  ) {
+    return {
+      name: "Jason Teo",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+if (
     slug === "how-i-built-it-400k-month-ios-app" ||
     slug === "ai-businesses-76"
   ) {
@@ -989,7 +1002,59 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
-  if (
+    if (
+    slug === "the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5" ||
+    slug === "ai-businesses-77"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Caleb Morrison",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I've been wanting to start something on the side but kept getting stuck choosing an idea. The four-filter approach made the decision much clearer. I also liked that it pushes you to create an actual sample instead of spending weeks calling yourself an entrepreneur without having anything to show.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Isabella",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The prospect research and outreach sections are excellent. I especially appreciate the emphasis on finding real buying signals rather than scraping random business contacts. The prompts are detailed enough to adapt, and the advice on personally reviewing every message is important.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Darius",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Finally, an AI side-hustle guide that doesn't pretend you can press a button and wake up with money. The human-plus-AI workflow makes sense, especially for someone working full-time. The evening schedule and 30-day plan make the whole thing feel achievable.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Priya",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "My favourite part is how the playbook connects everything: choosing a service, making proof, finding prospects, getting conversations, and delivering the work. The pilot-scope and weekly-review templates are particularly useful. It's a solid starting point for turning AI skills into an actual service.",
+        likes: 84,
+      },
+    ];
+  }
+
+if (
     slug === "how-i-built-it-400k-month-ios-app" ||
     slug === "ai-businesses-76"
   ) {

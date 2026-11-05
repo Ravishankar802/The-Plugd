@@ -77,6 +77,11 @@ import { SELL_PDFS_WITH_AI_COURSE } from "./playbooks/sell-pdfs-with-ai-changed-
 import { THREE_BEST_AI_BIZ_2027_COURSE } from "./playbooks/three-best-ai-businesses-before-2027-data";
 import { FIVE_SIMPLE_APPS_10K_COURSE } from "./playbooks/five-simple-apps-10k-month-ai-data";
 import {
+  NIGHT_AI_MONEY_COURSE,
+  NIGHT_AI_MONEY_SLUG,
+  NIGHT_AI_MONEY_ID
+} from "./playbooks/the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5-data";
+import {
   HOW_I_BUILT_400K_IOS_COURSE,
   HOW_I_BUILT_400K_IOS_SLUG,
   HOW_I_BUILT_400K_IOS_ID
@@ -731,6 +736,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-64": AMBITIOUS_IN_20S_OR_30S_COURSE,
   "this-ai-business-will-make-you-10k-month-with-zero-employees": AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE,
   "ai-businesses-65": AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE,
+  "the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5": NIGHT_AI_MONEY_COURSE,
+  "ai-businesses-77": NIGHT_AI_MONEY_COURSE,
   "how-i-built-it-400k-month-ios-app": HOW_I_BUILT_400K_IOS_COURSE,
   "ai-businesses-76": HOW_I_BUILT_400K_IOS_COURSE,
     "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck": REINVENT_90_DAYS_COURSE,
@@ -851,7 +858,8 @@ export function getAllCourses(): Course[] {
     YEAR_TO_MAKE_10M_COURSE,
     AI_AGENTS_2027_COURSE,
     REINVENT_90_DAYS_COURSE,
-    HOW_I_BUILT_400K_IOS_COURSE
+    HOW_I_BUILT_400K_IOS_COURSE,
+    NIGHT_AI_MONEY_COURSE
   ];
 }
 

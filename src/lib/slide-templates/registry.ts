@@ -1428,6 +1428,36 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-76"],
     assignedPlaybookSlugs: ["how-i-built-it-400k-month-ios-app"],
   },
+
+  // 50. Playbook: The New Way to Make Money with AI at Night (Even If You Have a 9-5)
+  "nocturnal-operator-console": {
+    templateId: "nocturnal-operator-console",
+    name: "Nocturnal Operator Console & Asynchronous Service Engine",
+    categoryTheme: "Evening Side-Business Operations & Autonomous Service Dispatch",
+    description:
+      "Deep midnight obsidian canvas (#070b12) with radiant amber glow (#f59e0b) and cyber emerald (#10b981) highlights, 9-to-5 firewall schedule matrices, overnight AI research batch pipelines, prospect qualification scorecards, and client pilot delivery boards.",
+    colorPalette: {
+      canvasBg: "#070b12",
+      stageBg: "#0f172a",
+      border: "#1e293b",
+      primaryText: "#f1f5f9",
+      secondaryText: "#94a3b8",
+      accent: "#f59e0b",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#78350f",
+      highlightPillText: "#fde68a",
+    },
+    visualMotifs: [
+      "Evening 10-hour asynchronous operational time budget matrix",
+      "4-filter business opportunity qualification radar (Speed, Simplicity, Demand, Schedule)",
+      "Nightly batch research-to-client delivery pipeline flowcharts",
+      "15-prospect qualification scorecard and outreach permission funnel",
+    ],
+    layoutArchitecture:
+      "Nocturnal command terminal with asynchronous batch status indicators, lead qualification meters, and pilot deliverable trackers",
+    assignedPlaybookIds: ["ai-businesses-77"],
+    assignedPlaybookSlugs: ["the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5"],
+  },
 };
 
 /**
