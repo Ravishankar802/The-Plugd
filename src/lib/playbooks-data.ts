@@ -77,6 +77,11 @@ import { SELL_PDFS_WITH_AI_COURSE } from "./playbooks/sell-pdfs-with-ai-changed-
 import { THREE_BEST_AI_BIZ_2027_COURSE } from "./playbooks/three-best-ai-businesses-before-2027-data";
 import { FIVE_SIMPLE_APPS_10K_COURSE } from "./playbooks/five-simple-apps-10k-month-ai-data";
 import {
+  HOW_I_BUILD_10CR_AGENCY_COURSE,
+  HOW_I_BUILD_10CR_AGENCY_SLUG,
+  HOW_I_BUILD_10CR_AGENCY_ID
+} from "./playbooks/how-i-build-a-10cr-agency-without-any-knowledge-data";
+import {
   ZERO_TO_1000_DROPSHIPPING_COURSE,
   ZERO_TO_1000_DROPSHIPPING_SLUG,
   ZERO_TO_1000_DROPSHIPPING_ID
@@ -696,6 +701,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-64": AMBITIOUS_IN_20S_OR_30S_COURSE,
   "this-ai-business-will-make-you-10k-month-with-zero-employees": AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE,
   "ai-businesses-65": AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE,
+    "how-i-build-a-10cr-agency-without-any-knowledge": HOW_I_BUILD_10CR_AGENCY_COURSE,
+  "ai-businesses-70": HOW_I_BUILD_10CR_AGENCY_COURSE,
   "zero-to-1000-profit-with-dropshipping-using-ai-24hours": ZERO_TO_1000_DROPSHIPPING_COURSE,
   "zero-to-1-000-profit-with-dropshipping-using-ai-24hours": ZERO_TO_1000_DROPSHIPPING_COURSE,
   "ai-businesses-69": ZERO_TO_1000_DROPSHIPPING_COURSE,
@@ -795,7 +802,8 @@ export function getAllCourses(): Course[] {
     BORING_51_DAY_IN_1_HOUR_COURSE,
     CLAUDE_CHATGPT_57K_COURSE,
     MARKETING_AGENTS_TOO_GOOD_COURSE,
-    ZERO_TO_1000_DROPSHIPPING_COURSE
+    ZERO_TO_1000_DROPSHIPPING_COURSE,
+    HOW_I_BUILD_10CR_AGENCY_COURSE
   ];
 }
 

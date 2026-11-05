@@ -1234,6 +1234,32 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-69"],
     assignedPlaybookSlugs: ["zero-to-1000-profit-with-dropshipping-using-ai-24hours"],
   },
+  "agency-founder-command-engine": {
+    templateId: "agency-founder-command-engine",
+    name: "Agency Founder & Retainer Operations Engine",
+    categoryTheme: "Agency Scaling & Service Business Architecture",
+    description: "A high-contrast editorial and operational command dashboard with retainer unit economics gauges, specialized-to-generalized capability matrix, client delivery tracker, and capacity planning rails.",
+    colorPalette: {
+      canvasBg: "#14120e",
+      stageBg: "#1c1915",
+      border: "#2e2924",
+      primaryText: "#fafaf9",
+      secondaryText: "#a8a29e",
+      accent: "#f59e0b",
+      accentSecondary: "#ea580c",
+      highlightPillBg: "#291b0d",
+      highlightPillText: "#fcd34d",
+    },
+    visualMotifs: [
+      "Retainer financial progression table and gross margin gauge",
+      "Specialized-to-generalized team pod structure and capability matrix",
+      "High-rigor 24-hour client outreach sprint tracker and discovery script protocol",
+      "Capacity utilization planner with strict client concentration risk guardrails",
+    ],
+    layoutArchitecture: "Operational executive studio dashboard with retainer progression ledgers, team pod structural maps, and risk telemetry rails",
+    assignedPlaybookIds: ["ai-businesses-70"],
+    assignedPlaybookSlugs: ["how-i-build-a-10cr-agency-without-any-knowledge"],
+  },
 };
 
 /**

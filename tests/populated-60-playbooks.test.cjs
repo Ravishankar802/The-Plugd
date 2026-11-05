@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-70",
+    slug: "how-i-build-a-10cr-agency-without-any-knowledge",
+    title: "How I build a 10cr Agency Without any Knowledge",
+    dataFile: "src/lib/playbooks/how-i-build-a-10cr-agency-without-any-knowledge-data.ts",
+    detailFile: "src/lib/playbooks/how-i-build-a-10cr-agency-without-any-knowledge-detail.ts",
+    routeDir: "src/app/how-i-build-a-10cr-agency-without-any-knowledge",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-69",
     slug: "zero-to-1000-profit-with-dropshipping-using-ai-24hours",
     title: "Zero To $1,000 Profit with Dropshipping Using AI (24HOURS)",

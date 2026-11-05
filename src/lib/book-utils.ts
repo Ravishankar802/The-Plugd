@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "how-i-build-a-10cr-agency-without-any-knowledge" ||
+    slug === "ai-businesses-70"
+  ) {
+    return {
+      name: "Naveen Shetty",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "zero-to-1000-profit-with-dropshipping-using-ai-24hours" ||
     slug === "zero-to-1-000-profit-with-dropshipping-using-ai-24hours" ||
     slug === "ai-businesses-69"
@@ -898,6 +911,54 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "how-i-build-a-10cr-agency-without-any-knowledge" ||
+    slug === "ai-businesses-70"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Andre Whitmore",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "What stood out to me was the progression. It doesn't jump straight into hiring people and chasing big retainers. It explains how to earn your way there through actual skills, client work, and trust.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Saanvi Kulkarni",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "I've been thinking about starting an agency, but always assumed I needed to know everything first. The specialised-to-generalised model changed how I look at it. Build one strong capability, then bring in the missing pieces.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Rafael Dominguez",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "The sections on retainers, team structure, and agency economics are excellent. I especially appreciated the distinction between revenue and actual profit. There's a lot of practical thinking here.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Brooke Anderson",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "My favourite part is the founder mindset chapter. Learning to solve problems, understand the work, and recognise your own weaknesses is more useful than another generic guide about getting rich with an agency.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "zero-to-1000-profit-with-dropshipping-using-ai-24hours" ||
     slug === "zero-to-1-000-profit-with-dropshipping-using-ai-24hours" ||

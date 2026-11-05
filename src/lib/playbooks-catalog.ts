@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-70",
+      "slug": "how-i-build-a-10cr-agency-without-any-knowledge",
+      "title": "How I build a 10cr Agency Without any Knowledge",
+      "headline": "A practical blueprint for turning one marketable skill into a full-service agency with high-value clients, monthly retainers, a capable team, and scalable operations.",
+      "description": "You don't need to start with an office, a big team, or expertise in every marketing discipline. Start with one skill, build a portfolio, land your first clients, and earn their trust through exceptional delivery. This playbook shows how to make the transition from freelancer to agency founder, expand your services, build a team around your strengths, and develop the systems and financial discipline needed to pursue a much bigger business.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "9.5 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#f59e0b",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_build_a_10cr_Agency_Without_any_Knowledge.png",
+      "href": "/how-i-build-a-10cr-agency-without-any-knowledge"
+  },
+  {
       "id": "ai-businesses-69",
       "slug": "zero-to-1000-profit-with-dropshipping-using-ai-24hours",
       "title": "Zero To $1,000 Profit with Dropshipping Using AI (24HOURS)",
@@ -6617,4 +6638,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 329;
+export const TOTAL_PLAYBOOKS_COUNT = 330;
