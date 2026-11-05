@@ -1725,6 +1725,35 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-86"],
     assignedPlaybookSlugs: ["how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial"],
   },
+  // 60. Playbook 60: Make your first $3,000 online in 90days (Or scroll for 5.37mins)
+  "dm-appointment-setter-engine": {
+    templateId: "dm-appointment-setter-engine",
+    name: "DM High-Ticket Appointment Setter & Commission Velocity Engine",
+    categoryTheme: "High-Ticket Sales, DM Qualification, Commission Attribution & Remote Setter Careers",
+    description:
+      "Deep slate navy canvas (#090e15) with emerald green commission telemetry (#059669), sky blue conversation threads (#38bdf8), lead qualification decision matrices, and transparent commission reconciliation ledgers",
+    colorPalette: {
+      canvasBg: "#090e15",
+      stageBg: "#0f172a",
+      border: "#1e293b",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#059669",
+      accentSecondary: "#38bdf8",
+      highlightPillBg: "#064e3b",
+      highlightPillText: "#6ee7b7",
+    },
+    visualMotifs: [
+      "The 7-step respectful DM qualification conversation framework",
+      "Inbound message to qualified booked call to collected commission pipeline",
+      "Attributed revenue, refund risk, and net commission reconciliation ledger",
+      "The 90-day setter progression scorecard and B2B employer evaluation audit",
+    ],
+    layoutArchitecture:
+      "Conversion funnel HUD with dialogue thread wireframes, lead qualification status badges, and commission attribution ledger",
+    assignedPlaybookIds: ["ai-businesses-87"],
+    assignedPlaybookSlugs: ["make-your-first-3000-online-in-90days-or-scroll-for-5-37mins"],
+  },
 };
 
 /**

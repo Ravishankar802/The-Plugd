@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-87",
+      "slug": "make-your-first-3000-online-in-90days-or-scroll-for-5-37mins",
+      "title": "Make your first $3,000 online in 90days (Or scroll for 5.37mins)",
+      "headline": "Learn to turn conversations into commissions — master DM appointment setting, qualify high-ticket prospects, and build a path from beginner to professional sales roles.",
+      "description": "Learn to turn conversations into commissions — master DM appointment setting, qualify high-ticket prospects, and build a path from beginner to professional sales roles.\n\nBreak into high-ticket sales without jumping straight into closing. This playbook walks you through DM appointment setting, natural sales conversations, lead qualification, commission structures, finding legitimate businesses, and securing your first opportunity. Follow a practical 90-day roadmap with ready-to-use scripts, application templates, qualification frameworks, income trackers, and performance scorecards.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#059669",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Make_your_first_3_000_online_in_90days_Or_scroll_for_5_37mins.png",
+      "href": "/make-your-first-3000-online-in-90days-or-scroll-for-5-37mins"
+  },
+  {
       "id": "ai-businesses-86",
       "slug": "how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial",
       "title": "How To Build a $10,000 Website with GPT-6 Astra (Full Tutorial)",
@@ -6974,4 +6995,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 346;
+export const TOTAL_PLAYBOOKS_COUNT = 347;

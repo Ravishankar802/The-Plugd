@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "make-your-first-3000-online-in-90days-or-scroll-for-5-37mins" ||
+    slug === "ai-businesses-87"
+  ) {
+    return {
+      name: "Diego Valera",
+      avatar: "",
+      booksCount: 3,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial" ||
     slug === "ai-businesses-86"
   ) {

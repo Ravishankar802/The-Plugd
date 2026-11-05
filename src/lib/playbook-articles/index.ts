@@ -85,6 +85,7 @@ import { HOW_I_MADE_16K_WHOP_ARTICLE } from "./how-i-made-16-705-83-on-whop-as-a
 import { BUILD_AI_INFLUENCER_10K_ARTICLE } from "./build-a-10k-month-ai-influencer-in-9-mins";
 import { HOW_TO_MAKE_PROGRESS_FASTER_ARTICLE } from "./how-to-make-progress-faster-than-everyone";
 import { BUILD_10K_WEBSITE_GPT6_ARTICLE } from "./how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial";
+import { MAKE_3000_ONLINE_90_DAYS_ARTICLE } from "./make-your-first-3000-online-in-90days-or-scroll-for-5-37mins";
 
 export * from "./types";
 
@@ -269,6 +270,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-85": HOW_TO_MAKE_PROGRESS_FASTER_ARTICLE,
   "how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial": BUILD_10K_WEBSITE_GPT6_ARTICLE,
   "ai-businesses-86": BUILD_10K_WEBSITE_GPT6_ARTICLE,
+  "make-your-first-3000-online-in-90days-or-scroll-for-5-37mins": MAKE_3000_ONLINE_90_DAYS_ARTICLE,
+  "ai-businesses-87": MAKE_3000_ONLINE_90_DAYS_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-87",
+    slug: "make-your-first-3000-online-in-90days-or-scroll-for-5-37mins",
+    title: "Make your first $3,000 online in 90days (Or scroll for 5.37mins)",
+    dataFile: "src/lib/playbooks/make-your-first-3000-online-in-90days-or-scroll-for-5-37mins-data.ts",
+    detailFile: "src/lib/playbooks/make-your-first-3000-online-in-90days-or-scroll-for-5-37mins-detail.ts",
+    routeDir: "src/app/make-your-first-3000-online-in-90days-or-scroll-for-5-37mins",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-86",
     slug: "how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial",
     title: "How To Build a $10,000 Website with GPT-6 Astra (Full Tutorial)",

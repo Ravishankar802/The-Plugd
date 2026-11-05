@@ -206,6 +206,11 @@ import {
   BUILD_10K_WEBSITE_GPT6_SLUG,
   BUILD_10K_WEBSITE_GPT6_ID
 } from "./playbooks/how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial-data";
+import {
+  MAKE_3000_ONLINE_90_DAYS_COURSE,
+  MAKE_3000_ONLINE_90_DAYS_SLUG,
+  MAKE_3000_ONLINE_90_DAYS_ID
+} from "./playbooks/make-your-first-3000-online-in-90days-or-scroll-for-5-37mins-data";
 
 
 export type SlideType =
@@ -802,6 +807,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-85": HOW_TO_MAKE_PROGRESS_FASTER_COURSE,
   "how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial": BUILD_10K_WEBSITE_GPT6_COURSE,
   "ai-businesses-86": BUILD_10K_WEBSITE_GPT6_COURSE,
+  "make-your-first-3000-online-in-90days-or-scroll-for-5-37mins": MAKE_3000_ONLINE_90_DAYS_COURSE,
+  "ai-businesses-87": MAKE_3000_ONLINE_90_DAYS_COURSE,
   "how-i-built-it-400k-month-ios-app": HOW_I_BUILT_400K_IOS_COURSE,
   "ai-businesses-76": HOW_I_BUILT_400K_IOS_COURSE,
     "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck": REINVENT_90_DAYS_COURSE,
@@ -932,7 +939,8 @@ export function getAllCourses(): Course[] {
     HOW_I_MADE_16K_WHOP_COURSE,
     BUILD_AI_INFLUENCER_10K_COURSE,
     HOW_TO_MAKE_PROGRESS_FASTER_COURSE,
-    BUILD_10K_WEBSITE_GPT6_COURSE
+    BUILD_10K_WEBSITE_GPT6_COURSE,
+    MAKE_3000_ONLINE_90_DAYS_COURSE
   ];
 }
 
