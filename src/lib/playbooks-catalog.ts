@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-102",
+      "slug": "top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked",
+      "title": "Top 10 Claude AI Side Hustles That Can Pay A Full-Time Income (Ranked)",
+      "headline": "10 Claude-powered business models, ranked from weakest to strongest — discover what’s actually worth building, how to get customers, and how to turn AI skills into a real income stream.",
+      "description": "10 Claude-powered business models, ranked from weakest to strongest — discover what’s actually worth building, how to get customers, and how to turn AI skills into a real income stream.\n\nExplore 10 AI-assisted business models, from digital products and small apps to AI consulting, specialised services, and building a YouTube personal brand. Learn how to use Claude to create offers, develop products, find customers, and streamline delivery with practical workflows, adapted prompts, and a 30-day execution roadmap. More importantly, understand which opportunities are worth pursuing — and what it takes to make them work.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "hoursOfMaterial": "9.4 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Top_10_Claude_AI_Side_Hustles_That_Can_Pay_A_Full_Time_Income_Ranked.png",
+      "href": "/top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked"
+  },
+  {
       "id": "ai-businesses-101",
       "slug": "i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results",
       "title": "I Tested 3 Methods To Make ₹1 Lakh With AI in India?(Real Results)",
@@ -7286,4 +7306,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 361;
+export const TOTAL_PLAYBOOKS_COUNT = 362;

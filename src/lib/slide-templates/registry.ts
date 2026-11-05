@@ -2164,6 +2164,35 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-101"],
     assignedPlaybookSlugs: ["i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results"],
   },
+  "claude-side-hustles-ranked-hierarchy": {
+    templateId: "claude-side-hustles-ranked-hierarchy",
+    name: "Claude AI Side Hustles Ranked Hierarchy & Business Blueprint",
+    categoryTheme:
+      "Ranked Business Models (#10 to #1), Claude Prompt Engineering, Inbound YouTube Distribution, Specialist Coaching Hybrids & Unit Economics",
+    description:
+      "A high-contrast strategic ranking console featuring emerald and royal gold accents, tiered hierarchical cards, progression ladder motifs, and economic scorecard panels.",
+    colorPalette: {
+      canvasBg: "#081014",
+      stageBg: "#0f1a20",
+      border: "#1c2d37",
+      primaryText: "#f0fdf4",
+      secondaryText: "#94a3b8",
+      accent: "#10b981",
+      accentSecondary: "#f59e0b",
+      highlightPillBg: "#064e3b",
+      highlightPillText: "#6ee7b7",
+    },
+    visualMotifs: [
+      "The 10-Tier Side Hustle Hierarchy (From #10 AI Slop to #1 YouTube Personal Brand)",
+      "The Dual Acquisition Engine (Inbound Magnet Asset vs Outbound Cold Prospecting)",
+      "The Hyper-Specific Hybrid Architecture (Done-For-You + Coaching + Digital Workbooks)",
+      "The 30-Day Execution Matrix (Advantage -> Delivery Prototype -> Proof Body -> Paid Pilots)",
+    ],
+    layoutArchitecture:
+      "Hierarchical ranking ladder with tier badges, economic scorecard grids, and strategic progression telemetry",
+    assignedPlaybookIds: ["ai-businesses-102"],
+    assignedPlaybookSlugs: ["top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked"],
+  },
 };
 
 /**

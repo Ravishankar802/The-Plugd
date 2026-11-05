@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-102",
+    slug: "top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked",
+    title: "Top 10 Claude AI Side Hustles That Can Pay A Full-Time Income (Ranked)",
+    dataFile: "src/lib/playbooks/top-10-claude-side-hustles-data.ts",
+    detailFile: "src/lib/playbooks/top-10-claude-side-hustles-detail.ts",
+    routeDir: "src/app/top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-101",
     slug: "i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results",
     title: "I Tested 3 Methods To Make ₹1 Lakh With AI in India?(Real Results)",

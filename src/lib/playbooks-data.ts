@@ -272,6 +272,11 @@ import {
   TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_ID
 } from "./playbooks/tested-3-methods-make-1-lakh-ai-india-data";
 import {
+  TOP_10_CLAUDE_SIDE_HUSTLES_COURSE,
+  TOP_10_CLAUDE_SIDE_HUSTLES_SLUG,
+  TOP_10_CLAUDE_SIDE_HUSTLES_ID
+} from "./playbooks/top-10-claude-side-hustles-data";
+import {
   STARTING_AI_SIDE_HUSTLE_COURSE,
   STARTING_AI_SIDE_HUSTLE_SLUG,
   STARTING_AI_SIDE_HUSTLE_ID
@@ -903,6 +908,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-100": THIS_AI_SIDE_HUSTLE_MAKES_4_LAKHS_COURSE,
   "i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results": TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_COURSE,
   "ai-businesses-101": TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_COURSE,
+  "top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked": TOP_10_CLAUDE_SIDE_HUSTLES_COURSE,
+  "ai-businesses-102": TOP_10_CLAUDE_SIDE_HUSTLES_COURSE,
   "starting-an-ai-side-hustle-is-easy-copy-this-system": STARTING_AI_SIDE_HUSTLE_COURSE,
   "ai-businesses-93": STARTING_AI_SIDE_HUSTLE_COURSE,
   "im-broke-what-business-do-i-start": IM_BROKE_BUSINESS_COURSE,
@@ -1052,7 +1059,8 @@ export function getAllCourses(): Course[] {
     I_SOLD_AI_DIGITAL_PRODUCTS_COURSE,
     WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_COURSE,
     THIS_AI_SIDE_HUSTLE_MAKES_4_LAKHS_COURSE,
-    TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_COURSE
+    TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_COURSE,
+    TOP_10_CLAUDE_SIDE_HUSTLES_COURSE
   ];
 }
 

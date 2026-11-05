@@ -23,7 +23,7 @@ export const TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_DETAIL_DATA: PlaybookDetailDa
   instructorRating: 4.9,
   instructorReviews: "4.8k",
   instructorStudents: "4,620",
-  instructorCourses: 1,
+  instructorCourses: 2,
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
