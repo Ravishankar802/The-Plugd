@@ -1521,6 +1521,36 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-79"],
     assignedPlaybookSlugs: ["i-have-too-many-digital-product-ideas-35-to-steal"],
   },
+
+  // 53. Playbook: This ONE Book Has The Power to Change Your ENTIRE Life
+  "cybernetic-mind-matrix": {
+    templateId: "cybernetic-mind-matrix",
+    name: "Cybernetic Self-Image Matrix & Neural Rehearsal Engine",
+    categoryTheme: "Psycho-Cybernetics & Behavioral Operating System Architecture",
+    description:
+      "Deep cobalt and obsidian technical cybernetics canvas (#080c16) with radiant cyan laser (#00f2fe), electric indigo (#6366f1), and warm gold telemetry (#f59e0b) accents, cybernetic feedback guidance loops, self-image recalibration radar, mental rehearsal protocols, and 30-day behavioral tracking grids.",
+    colorPalette: {
+      canvasBg: "#080c16",
+      stageBg: "#0f172a",
+      border: "#1e293b",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#00f2fe",
+      accentSecondary: "#6366f1",
+      highlightPillBg: "#1e1b4b",
+      highlightPillText: "#c7d2fe",
+    },
+    visualMotifs: [
+      "Cybernetic feedback-loop steering diagrams (Destination -> Action -> Sensor -> Adjustment)",
+      "Self-image vs external circumstance divergence radar",
+      "5-minute process visualization timeline rail and stress-response protocols",
+      "30-day self-trust behavioral ledger and limiting-belief experiment audit cards",
+    ],
+    layoutArchitecture:
+      "Cognitive engineering console with interactive steering loop telemetry, belief-testing matrices, and daily habit execution meters",
+    assignedPlaybookIds: ["ai-businesses-80"],
+    assignedPlaybookSlugs: ["this-one-book-has-the-power-to-change-your-entire-life"],
+  },
 };
 
 /**

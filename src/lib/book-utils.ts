@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "this-one-book-has-the-power-to-change-your-entire-life" ||
+    slug === "ai-businesses-80"
+  ) {
+    return {
+      name: "Manish Yadav",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "i-have-too-many-digital-product-ideas-35-to-steal" ||
     slug === "ai-businesses-79"
   ) {
@@ -1029,6 +1042,58 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "this-one-book-has-the-power-to-change-your-entire-life" ||
+    slug === "ai-businesses-80"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Rebecca Mitchell",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I didn't expect a book about self-image to be this practical. The self-trust exercises made me realise how often I undermine myself by making promises I don't keep. Starting smaller has actually helped me become more consistent.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Omar Hassan",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The visualization section was my favourite. Instead of just imagining success, it teaches you to mentally walk through the actual process, including the uncomfortable parts. I've started using the five-minute exercise before presentations.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Chloe Martin",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Really liked the way this breaks down limiting beliefs. The belief audit and experiment worksheets are especially useful because they make you question your assumptions instead of simply replacing them with motivational quotes.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Akash",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "It's the 30-day structure that makes this stand out. You get a clear sequence to follow, daily exercises, weekly reviews and trackers. It feels less like reading another self-help guide and more like actually working on yourself.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "i-have-too-many-digital-product-ideas-35-to-steal" ||
     slug === "ai-businesses-79"

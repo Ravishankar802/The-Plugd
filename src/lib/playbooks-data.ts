@@ -171,6 +171,11 @@ import {
   DIGITAL_PRODUCT_IDEAS_35_SLUG,
   DIGITAL_PRODUCT_IDEAS_35_ID
 } from "./playbooks/i-have-too-many-digital-product-ideas-35-to-steal-data";
+import {
+  PSYCHO_CYBERNETICS_ONE_BOOK_COURSE,
+  PSYCHO_CYBERNETICS_ONE_BOOK_SLUG,
+  PSYCHO_CYBERNETICS_ONE_BOOK_ID
+} from "./playbooks/this-one-book-has-the-power-to-change-your-entire-life-data";
 
 
 export type SlideType =
@@ -753,6 +758,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-78": FACELESS_CHANNEL_12K_CLAUDE_COURSE,
   "i-have-too-many-digital-product-ideas-35-to-steal": DIGITAL_PRODUCT_IDEAS_35_COURSE,
   "ai-businesses-79": DIGITAL_PRODUCT_IDEAS_35_COURSE,
+  "this-one-book-has-the-power-to-change-your-entire-life": PSYCHO_CYBERNETICS_ONE_BOOK_COURSE,
+  "ai-businesses-80": PSYCHO_CYBERNETICS_ONE_BOOK_COURSE,
   "how-i-built-it-400k-month-ios-app": HOW_I_BUILT_400K_IOS_COURSE,
   "ai-businesses-76": HOW_I_BUILT_400K_IOS_COURSE,
     "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck": REINVENT_90_DAYS_COURSE,
@@ -876,7 +883,8 @@ export function getAllCourses(): Course[] {
     HOW_I_BUILT_400K_IOS_COURSE,
     NIGHT_AI_MONEY_COURSE,
     FACELESS_CHANNEL_12K_CLAUDE_COURSE,
-    DIGITAL_PRODUCT_IDEAS_35_COURSE
+    DIGITAL_PRODUCT_IDEAS_35_COURSE,
+    PSYCHO_CYBERNETICS_ONE_BOOK_COURSE
   ];
 }
 

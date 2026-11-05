@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-80",
+    slug: "this-one-book-has-the-power-to-change-your-entire-life",
+    title: "This ONE Book Has The Power to Change Your ENTIRE Life",
+    dataFile: "src/lib/playbooks/this-one-book-has-the-power-to-change-your-entire-life-data.ts",
+    detailFile: "src/lib/playbooks/this-one-book-has-the-power-to-change-your-entire-life-detail.ts",
+    routeDir: "src/app/this-one-book-has-the-power-to-change-your-entire-life",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-79",
     slug: "i-have-too-many-digital-product-ideas-35-to-steal",
     title: "I have too many digital product ideas (35+ to steal)",

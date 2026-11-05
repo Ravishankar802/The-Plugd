@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-80",
+      "slug": "this-one-book-has-the-power-to-change-your-entire-life",
+      "title": "This ONE Book Has The Power to Change Your ENTIRE Life",
+      "headline": "A practical guide to reshaping your self-image, breaking limiting beliefs, and using mental rehearsal and goal-setting to change how you approach everyday life.",
+      "description": "Inspired by Maxwell Maltz’s Psycho-Cybernetics, this playbook explores how your beliefs about yourself can influence your decisions, confidence, and behaviour. Work through five core principles with practical exercises, visualization techniques, goal cards, self-reflection worksheets, and a structured 30-day plan designed to turn a healthier self-image into consistent, measurable action.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "10.5 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#00f2fe",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/This_ONE_Book_Has_The_Power_to_Change_Your_ENTIRE_Life.png",
+      "href": "/this-one-book-has-the-power-to-change-your-entire-life"
+  },
+  {
       "id": "ai-businesses-79",
       "slug": "i-have-too-many-digital-product-ideas-35-to-steal",
       "title": "I have too many digital product ideas (35+ to steal)",
@@ -6827,4 +6848,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 339;
+export const TOTAL_PLAYBOOKS_COUNT = 340;
