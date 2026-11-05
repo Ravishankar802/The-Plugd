@@ -1099,6 +1099,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-64"],
     assignedPlaybookSlugs: ["if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this"],
   },
+  "traffic-partner-attribution-ledger": {
+    templateId: "traffic-partner-attribution-ledger",
+    name: "Traffic Partner Attribution Ledger",
+    categoryTheme: "Creator Traffic Architecture & Incremental Attribution Systems",
+    description:
+      "Sleek deep obsidian and graphite stage (#0d131a) with crisp traffic cyan (#0ea5e9) borders, neon mint (#10b981) conversion metrics, luminous ice primary text (#f0f9ff), and a disciplined dual-ledger attribution rail.",
+    colorPalette: {
+      canvasBg: "#070b0f",
+      stageBg: "#0d131a",
+      border: "#1e293b",
+      primaryText: "#f0f9ff",
+      secondaryText: "#94a3b8",
+      accent: "#0ea5e9",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#082f49",
+      highlightPillText: "#38bdf8",
+    },
+    visualMotifs: [
+      "Verifiable UTM attribution stream and click-to-subscriber conversion funnel",
+      "Traffic OS nine-system modular architecture panel",
+      "Incremental revenue baseline reconciliation ledger",
+      "Zero-employee 14-hour capacity allocation matrix",
+    ],
+    layoutArchitecture: "Deep obsidian traffic terminal with multi-platform syndication telemetry and verified attribution ledger",
+    assignedPlaybookIds: ["ai-businesses-65"],
+    assignedPlaybookSlugs: ["this-ai-business-will-make-you-10k-month-with-zero-employees"],
+  },
 };
 
 /**

@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "this-ai-business-will-make-you-10k-month-with-zero-employees" ||
+    slug === "ai-businesses-65"
+  ) {
+    return {
+      name: "Liam Foster",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this" ||
     slug === "ai-businesses-64"
   ) {
@@ -1210,6 +1223,54 @@ export function getCuratedCommunityReviews(
         headline: "",
         content: "Loved the comparison between all three models. It helped me understand which business fits my resources and why validating an idea matters before building.",
         likes: 30,
+      },
+    ];
+  }
+
+  if (
+    slug === "this-ai-business-will-make-you-10k-month-with-zero-employees" ||
+    slug === "ai-businesses-65"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Noah Williams",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content: "The traffic-partner model was something I hadn't considered before. I especially liked the breakdown of attribution and performance-based pricing. It explains how to build a service around measurable value rather than vague promises.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Rhea Kapoor",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content: "Very detailed and surprisingly practical. The nine Traffic OS systems give you a clear picture of how the business operates, while the templates make the whole process feel much more manageable.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Thomas Mitchell",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content: "I appreciate that this doesn't just focus on making money. It covers client relationships, tracking, reporting, and the operational side too. The first-client pilot is a particularly useful starting point.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Zara Fernandes",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content: "The AI workflows and 90-day roadmap are the highlights for me. It takes an unusual business model and breaks it into actual systems you can understand, test, and improve.",
+        likes: 84,
       },
     ];
   }

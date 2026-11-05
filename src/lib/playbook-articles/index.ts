@@ -63,6 +63,7 @@ import { FREE_AI_SIDE_HUSTLE_INDIANS_ARTICLE } from "./free-ai-side-hustle-india
 import { BUILT_85M_AI_STARTUP_ARTICLE } from "./built-85m-ai-startup";
 import { GIVE_ME_27_MINS_DIGITAL_MARKETING_ARTICLE } from "./give-me-27-minutes-digital-marketing";
 import { AMBITIOUS_IN_20S_OR_30S_ARTICLE } from "./ambitious-in-20s-or-30s";
+import { AI_BUSINESS_10K_ZERO_EMPLOYEES_ARTICLE } from "./ai-business-10k-month-zero-employees";
 
 export * from "./types";
 
@@ -200,6 +201,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-63": GIVE_ME_27_MINS_DIGITAL_MARKETING_ARTICLE,
   "if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this": AMBITIOUS_IN_20S_OR_30S_ARTICLE,
   "ai-businesses-64": AMBITIOUS_IN_20S_OR_30S_ARTICLE,
+  "this-ai-business-will-make-you-10k-month-with-zero-employees": AI_BUSINESS_10K_ZERO_EMPLOYEES_ARTICLE,
+  "ai-businesses-65": AI_BUSINESS_10K_ZERO_EMPLOYEES_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

@@ -114,6 +114,18 @@ const POPULATED_PLAYBOOKS = [
     expectedLessons: 28,
     expectedSlides: 112
   },
+  {
+    id: "ai-businesses-65",
+    slug: "this-ai-business-will-make-you-10k-month-with-zero-employees",
+    title: "This AI Business Will Make You $10k/Month (With Zero Employees)",
+    dataFile: "src/lib/playbooks/ai-business-10k-month-zero-employees-data.ts",
+    detailFile: "src/lib/playbooks/ai-business-10k-month-zero-employees-detail.ts",
+    routeDir: "src/app/this-ai-business-will-make-you-10k-month-with-zero-employees",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+
 
 
 

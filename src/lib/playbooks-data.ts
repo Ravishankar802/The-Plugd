@@ -77,6 +77,11 @@ import { SELL_PDFS_WITH_AI_COURSE } from "./playbooks/sell-pdfs-with-ai-changed-
 import { THREE_BEST_AI_BIZ_2027_COURSE } from "./playbooks/three-best-ai-businesses-before-2027-data";
 import { FIVE_SIMPLE_APPS_10K_COURSE } from "./playbooks/five-simple-apps-10k-month-ai-data";
 import {
+  AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE,
+  AI_BUSINESS_10K_ZERO_EMPLOYEES_SLUG,
+  AI_BUSINESS_10K_ZERO_EMPLOYEES_ID
+} from "./playbooks/ai-business-10k-month-zero-employees-data";
+import {
   AMBITIOUS_IN_20S_OR_30S_COURSE,
   AMBITIOUS_IN_20S_OR_30S_SLUG,
   AMBITIOUS_IN_20S_OR_30S_ID
@@ -669,6 +674,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-63": GIVE_ME_27_MINS_DIGITAL_MARKETING_COURSE,
   "if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this": AMBITIOUS_IN_20S_OR_30S_COURSE,
   "ai-businesses-64": AMBITIOUS_IN_20S_OR_30S_COURSE,
+  "this-ai-business-will-make-you-10k-month-with-zero-employees": AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE,
+  "ai-businesses-65": AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE,
 
 
 
@@ -754,7 +761,8 @@ export function getAllCourses(): Course[] {
     FREE_AI_SIDE_HUSTLE_INDIANS_COURSE,
     BUILT_85M_AI_STARTUP_COURSE,
     GIVE_ME_27_MINS_DIGITAL_MARKETING_COURSE,
-    AMBITIOUS_IN_20S_OR_30S_COURSE
+    AMBITIOUS_IN_20S_OR_30S_COURSE,
+    AI_BUSINESS_10K_ZERO_EMPLOYEES_COURSE
   ];
 }
 

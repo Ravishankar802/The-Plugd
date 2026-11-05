@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-65",
+      "slug": "this-ai-business-will-make-you-10k-month-with-zero-employees",
+      "title": "This AI Business Will Make You $10k/Month (With Zero Employees)",
+      "headline": "Build an AI-assisted creator marketing business by helping subscription-based creators attract qualified traffic, gain paying subscribers, and measure the revenue your campaigns generate.",
+      "description": "Discover how to build a lean traffic-partner business without hiring employees or managing creators' entire operations. This playbook walks you through niche research, finding clients, performance-based partnerships, campaign tracking, AI-powered workflows, and the nine-system Traffic OS. It also includes a 90-day launch roadmap, practical templates, and guidance on consent, privacy, platform compliance, and transparent revenue attribution.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "hoursOfMaterial": "9.1 hours",
+      "rating": 4.9,
+      "ratingCount": "4.8k",
+      "accentColor": "#0ea5e9",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023912/These_3_AI_Businesses_Will_Make_You_10k_Month_With_Zero_Employees.png",
+      "href": "/this-ai-business-will-make-you-10k-month-with-zero-employees"
+  },
+  {
       "id": "ai-businesses-64",
       "slug": "if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this",
       "title": "If you're ambitious and in your 20s or 30s, please watch this.",
@@ -6514,4 +6534,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 324;
+export const TOTAL_PLAYBOOKS_COUNT = 325;
