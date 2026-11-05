@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "how-i-built-it-400k-month-ios-app" ||
+    slug === "ai-businesses-76"
+  ) {
+    return {
+      name: "Jason Teo",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck" ||
     slug === "ai-businesses-75"
   ) {
@@ -976,6 +989,58 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "how-i-built-it-400k-month-ios-app" ||
+    slug === "ai-businesses-76"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Jordan Ellis",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I appreciated how much attention this gives to the product itself, not just the revenue story. The sections on finding a narrow problem, creating a distinctive concept, and studying power users helped me rethink how I approach app ideas. Definitely more useful than another generic startup guide.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Camila Reyes",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The analytics and experimentation chapters are the highlight for me. I finally have a clearer picture of what to track after launch, how to identify activation problems, and how to turn user behaviour into product improvements. The templates make the process feel manageable.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Natalie",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Really good breakdown of the journey from idea to distribution. I particularly liked the distinction between getting downloads and acquiring users who actually retain and pay. That alone changes how you think about growth. The 90-day roadmap is a great starting point.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Pierce",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "This is the kind of playbook I'd want before spending months building an app. It covers audience building, MVP scope, subscriptions, acquisition economics, team decisions, and even when to consider going full-time. Practical, structured, and refreshingly honest about what the $400K figure does and doesn't prove.",
+        likes: 84,
+      },
+    ];
+  }
+
   if (
     slug === "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck" ||
     slug === "ai-businesses-75"

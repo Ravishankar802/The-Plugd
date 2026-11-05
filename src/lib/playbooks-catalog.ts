@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-76",
+      "slug": "how-i-built-it-400k-month-ios-app",
+      "title": "How I Built It: $400K/Month iOS App",
+      "headline": "A practical guide to turning a simple iOS app idea into a scalable business through focused product development, user analytics, experimentation, and smart distribution.",
+      "description": "Go behind the growth story of Brain Rot, the screen-time app whose founder reported reaching approximately $400K in monthly revenue. Learn how to identify problems worth solving, build a distinctive mobile product, prepare for launch, understand power users, improve retention, and scale acquisition channels. Includes a 90-day roadmap, recommended tools, analytics frameworks, experiment templates, and launch checklists.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "10.4 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#3b82f6",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_Built_It_400K_Month_iOS_App.png",
+      "href": "/how-i-built-it-400k-month-ios-app"
+  },
+  {
       "id": "ai-businesses-75",
       "slug": "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck",
       "title": "how to reinvent yourself in 90 days to become rich as f*ck",
@@ -6743,4 +6764,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 335;
+export const TOTAL_PLAYBOOKS_COUNT = 336;

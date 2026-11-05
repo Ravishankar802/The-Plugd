@@ -1398,6 +1398,36 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-75"],
     assignedPlaybookSlugs: ["how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck"],
   },
+
+  // 49. Playbook: How I Built It: $400K/Month iOS App
+  "ios-scale-telemetry": {
+    templateId: "ios-scale-telemetry",
+    name: "iOS Scale Telemetry & App Growth Engine",
+    categoryTheme: "Mobile App Economics & Product Growth Telemetry",
+    description:
+      "Sleek Apple Silicon space gray canvas (#0b0d13) with vibrant iOS electric blue (#3b82f6) and neon violet (#8b5cf6) accents, App Store conversion funnels, power-user cohort retention grids, and subscription unit economics ledgers.",
+    colorPalette: {
+      canvasBg: "#0b0d13",
+      stageBg: "#131622",
+      border: "#1f2438",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#3b82f6",
+      accentSecondary: "#8b5cf6",
+      highlightPillBg: "#1e3a8a",
+      highlightPillText: "#93c5fd",
+    },
+    visualMotifs: [
+      "App Store acquisition-to-activation funnel telemetry",
+      "Power-user cohort retention heatmap matrices (Day 1, Day 7, Day 30)",
+      "Subscription economics ledger (ARPU, Blended CAC, LTV, Payback)",
+      "Rapid onboarding A/B test sequence and screen-order flowcharts",
+    ],
+    layoutArchitecture:
+      "Mobile product command center with interactive cohort heatmaps, paywall conversion meters, and live retention gauges",
+    assignedPlaybookIds: ["ai-businesses-76"],
+    assignedPlaybookSlugs: ["how-i-built-it-400k-month-ios-app"],
+  },
 };
 
 /**

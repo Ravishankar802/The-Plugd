@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-76",
+    slug: "how-i-built-it-400k-month-ios-app",
+    title: "How I Built It: $400K/Month iOS App",
+    dataFile: "src/lib/playbooks/how-i-built-it-400k-month-ios-app-data.ts",
+    detailFile: "src/lib/playbooks/how-i-built-it-400k-month-ios-app-detail.ts",
+    routeDir: "src/app/how-i-built-it-400k-month-ios-app",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-75",
     slug: "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck",
     title: "how to reinvent yourself in 90 days to become rich as f*ck",
