@@ -231,6 +231,11 @@ import {
   BLEW_UP_YOUTUBE_AI_SLUG,
   BLEW_UP_YOUTUBE_AI_ID
 } from "./playbooks/i-blew-up-a-youtube-channel-in-24-hours-with-ai-data";
+import {
+  IM_BROKE_BUSINESS_COURSE,
+  IM_BROKE_BUSINESS_SLUG,
+  IM_BROKE_BUSINESS_ID
+} from "./playbooks/im-broke-what-business-do-i-start-data";
 
 
 export type SlideType =
@@ -837,6 +842,8 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-90": ZERO_TO_100K_PLAN_COURSE,
   "i-blew-up-a-youtube-channel-in-24-hours-with-ai": BLEW_UP_YOUTUBE_AI_COURSE,
   "ai-businesses-91": BLEW_UP_YOUTUBE_AI_COURSE,
+  "im-broke-what-business-do-i-start": IM_BROKE_BUSINESS_COURSE,
+  "ai-businesses-92": IM_BROKE_BUSINESS_COURSE,
   "how-i-built-it-400k-month-ios-app": HOW_I_BUILT_400K_IOS_COURSE,
   "ai-businesses-76": HOW_I_BUILT_400K_IOS_COURSE,
     "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck": REINVENT_90_DAYS_COURSE,
@@ -972,7 +979,8 @@ export function getAllCourses(): Course[] {
     FIRST_100K_IN_2027_COURSE,
     WEALTH_KNOWLEDGE_31_YEARS_COURSE,
     ZERO_TO_100K_PLAN_COURSE,
-    BLEW_UP_YOUTUBE_AI_COURSE
+    BLEW_UP_YOUTUBE_AI_COURSE,
+    IM_BROKE_BUSINESS_COURSE
   ];
 }
 

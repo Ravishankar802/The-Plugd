@@ -90,6 +90,7 @@ import { FIRST_100K_IN_2027_ARTICLE } from "./if-i-wanted-to-make-my-first-100k-
 import { WEALTH_KNOWLEDGE_31_YEARS_ARTICLE } from "./31-years-of-wealth-knowledge-in-18-minutes";
 import { ZERO_TO_100K_PLAN_ARTICLE } from "./if-i-started-with-0-heres-my-exact-plan-to-100k";
 import { BLEW_UP_YOUTUBE_AI_ARTICLE } from "./i-blew-up-a-youtube-channel-in-24-hours-with-ai";
+import { IM_BROKE_BUSINESS_ARTICLE } from "./im-broke-what-business-do-i-start";
 
 export * from "./types";
 
@@ -284,6 +285,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-90": ZERO_TO_100K_PLAN_ARTICLE,
   "i-blew-up-a-youtube-channel-in-24-hours-with-ai": BLEW_UP_YOUTUBE_AI_ARTICLE,
   "ai-businesses-91": BLEW_UP_YOUTUBE_AI_ARTICLE,
+  "im-broke-what-business-do-i-start": IM_BROKE_BUSINESS_ARTICLE,
+  "ai-businesses-92": IM_BROKE_BUSINESS_ARTICLE,
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

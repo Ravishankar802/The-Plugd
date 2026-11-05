@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "im-broke-what-business-do-i-start" ||
+    slug === "ai-businesses-92"
+  ) {
+    return {
+      name: "Eduardo Martins",
+      avatar: "",
+      booksCount: 2,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "i-blew-up-a-youtube-channel-in-24-hours-with-ai" ||
     slug === "ai-businesses-91"
   ) {
@@ -724,7 +737,7 @@ if (
     return {
       name: "Eduardo Martins",
       avatar: "",
-      booksCount: 1,
+      booksCount: 2,
       followersCount: "",
       bio: "",
     };
@@ -1186,6 +1199,59 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "im-broke-what-business-do-i-start" ||
+    slug === "ai-businesses-92"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Theo",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I've been stuck in the loop of researching business ideas for months. The Three Ps framework made me look at my existing skills and experiences differently. Instead of chasing another trendy business model, I finally have a direction I can actually test.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Fatima",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The customer avatar and offer-building sections are genuinely useful. I especially liked the idea of explaining what customers get AND what they don't have to deal with anymore. That completely changed how I think about positioning a service.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Ferreira",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The warm outreach section is what made this playbook worth reading for me. The message structure feels natural, not like some aggressive sales script. The examples and tracker make it much easier to actually start conversations instead of endlessly planning.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Kavya",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "What I appreciated most is that it doesn't tell beginners to build a website, create a complicated brand, or spend money before validating anything. It focuses on finding a real problem, making a clear offer, and talking to potential customers. Very practical, especially when you're starting with limited resources.",
+        likes: 84,
+      },
+    ];
+  }
+
+
   if (
     slug === "i-blew-up-a-youtube-channel-in-24-hours-with-ai" ||
     slug === "ai-businesses-91"

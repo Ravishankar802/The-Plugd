@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-92",
+      "slug": "im-broke-what-business-do-i-start",
+      "title": "\"I'm Broke, What Business Do I Start?\"",
+      "headline": "Broke but ready to build? Find a business hiding in your skills, turn a real customer problem into an irresistible offer, and get your first customers without needing a big budget.",
+      "description": "Broke but ready to build? Find a business hiding in your skills, turn a real customer problem into an irresistible offer, and get your first customers without needing a big budget.\n\nYou don't need a perfect idea, expensive tools, or a huge investment to start a business. This playbook walks you through the entire process — from discovering your business idea using the Three Ps (Pain, Profession, Passion) to identifying your ideal customers, crafting an outcome-driven offer, and landing your first five customers through warm outreach.\n\nIncludes customer avatar worksheets, problem-discovery questions, offer-building frameworks, outreach scripts, business validation exercises, and a practical 7-day action plan to take you from idea to real customer conversations.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#f59e0b",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_m_Broke_What_Business_Do_I_Start.png",
+      "href": "/im-broke-what-business-do-i-start"
+  },
+  {
       "id": "ai-businesses-91",
       "slug": "i-blew-up-a-youtube-channel-in-24-hours-with-ai",
       "title": "I BLEW UP a YouTube Channel in 24 Hours with AI",
@@ -7079,4 +7100,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 351;
+export const TOTAL_PLAYBOOKS_COUNT = 352;

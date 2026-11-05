@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-92",
+    slug: "im-broke-what-business-do-i-start",
+    title: "\"I'm Broke, What Business Do I Start?\"",
+    dataFile: "src/lib/playbooks/im-broke-what-business-do-i-start-data.ts",
+    detailFile: "src/lib/playbooks/im-broke-what-business-do-i-start-detail.ts",
+    routeDir: "src/app/im-broke-what-business-do-i-start",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-91",
     slug: "i-blew-up-a-youtube-channel-in-24-hours-with-ai",
     title: "I BLEW UP a YouTube Channel in 24 Hours with AI",

@@ -1870,6 +1870,35 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-91"],
     assignedPlaybookSlugs: ["i-blew-up-a-youtube-channel-in-24-hours-with-ai"],
   },
+  // 65. Playbook 65: "I'm Broke, What Business Do I Start?"
+  "zero-capital-business-catalyst": {
+    templateId: "zero-capital-business-catalyst",
+    name: "Zero-Capital Business Catalyst & 3P Offer Matrix",
+    categoryTheme: "Zero-Capital Entrepreneurship, The Three Ps (Pain, Profession, Passion), Outcome Offer Engineering & Warm Outreach Validation",
+    description:
+      "Warm golden obsidian canvas (#120e08) with rich bronze stages (#1c160c), amber borders (#423018), electric honey gold indicators (#f59e0b), and emerald validation nodes (#10b981)",
+    colorPalette: {
+      canvasBg: "#120e08",
+      stageBg: "#1c160c",
+      border: "#423018",
+      primaryText: "#fefce8",
+      secondaryText: "#d6d3d1",
+      accent: "#f59e0b",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#451a03",
+      highlightPillText: "#fef3c7",
+    },
+    visualMotifs: [
+      "The Three Ps Diagnostic Venn Diagram (Pain, Profession, Passion)",
+      "The Customer Avatar 5-Dimension Radar (Age, Gender, Profession, Pain, Passion)",
+      "The I Help [WHO] achieve [OUTCOME] without [UNWANTED FRICTION] Offer Formula",
+      "The 7-Day Zero-Capital Outreach & Discovery Funnel",
+    ],
+    layoutArchitecture:
+      "Split diagnostic workspace HUD with offer formula builders, customer pain matrices, and warm outreach conversation trackers",
+    assignedPlaybookIds: ["ai-businesses-92"],
+    assignedPlaybookSlugs: ["im-broke-what-business-do-i-start"],
+  },
 };
 
 /**
