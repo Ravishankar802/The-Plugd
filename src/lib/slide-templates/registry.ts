@@ -1491,6 +1491,36 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
       "how-a-faceless-channel-made-12804-month-with-claude"
     ],
   },
+
+  // 52. Playbook: I have too many digital product ideas (35+ to steal)
+  "digital-product-forge": {
+    templateId: "digital-product-forge",
+    name: "Digital Product Forge & 35-Idea Validation Lab",
+    categoryTheme: "Digital Product Portfolio Engineering & Demand Validation Framework",
+    description:
+      "Industrial titanium and copper blueprint canvas (#0c0e12) with electric cyan (#06b6d4) and radiant copper orange (#f97316) accents, 35-opportunity category radars, 10-point idea evaluation scorecards, demand validation funnels, and minimum credible offer architecture.",
+    colorPalette: {
+      canvasBg: "#0c0e12",
+      stageBg: "#151921",
+      border: "#222938",
+      primaryText: "#f1f5f9",
+      secondaryText: "#94a3b8",
+      accent: "#06b6d4",
+      accentSecondary: "#f97316",
+      highlightPillBg: "#164e63",
+      highlightPillText: "#cffafe",
+    },
+    visualMotifs: [
+      "35-idea opportunity classification radar across 6 core product buckets",
+      "10-point idea evaluation scorecard & customer interview decision matrix",
+      "Minimum credible offer (MCO) validation funnel & pre-order intent tracker",
+      "Done-with-you transformation ladder & 30-day execution sprint timeline",
+    ],
+    layoutArchitecture:
+      "Product incubator workbench with interactive idea scorecards, buyer specificity radars, and pre-sale validation meters",
+    assignedPlaybookIds: ["ai-businesses-79"],
+    assignedPlaybookSlugs: ["i-have-too-many-digital-product-ideas-35-to-steal"],
+  },
 };
 
 /**

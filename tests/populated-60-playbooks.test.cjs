@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-79",
+    slug: "i-have-too-many-digital-product-ideas-35-to-steal",
+    title: "I have too many digital product ideas (35+ to steal)",
+    dataFile: "src/lib/playbooks/i-have-too-many-digital-product-ideas-35-to-steal-data.ts",
+    detailFile: "src/lib/playbooks/i-have-too-many-digital-product-ideas-35-to-steal-detail.ts",
+    routeDir: "src/app/i-have-too-many-digital-product-ideas-35-to-steal",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-78",
     slug: "how-a-faceless-channel-made-12-804-month-with-claude",
     title: "How a Faceless Channel Made $12,804/Month With Claude",

@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-79",
+      "slug": "i-have-too-many-digital-product-ideas-35-to-steal",
+      "title": "I have too many digital product ideas (35+ to steal)",
+      "headline": "35 digital product business ideas, with a practical framework for finding the right buyer, validating demand, and turning one promising idea into a product people will pay for.",
+      "description": "Explore 35 opportunities across templates, software, AI workflows, education, communities, and premium offers. Learn how to identify valuable problems, differentiate your product through specificity, test buying intent before building, package and price your solution, and launch with a focused 30-day execution plan. Includes idea evaluation scorecards, customer interview questions, offer templates, and validation checklists.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "10.5 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#06b6d4",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_have_too_many_digital_product_ideas_35_to_steal.png",
+      "href": "/i-have-too-many-digital-product-ideas-35-to-steal"
+  },
+  {
       "id": "ai-businesses-78",
       "slug": "how-a-faceless-channel-made-12-804-month-with-claude",
       "title": "How a Faceless Channel Made $12,804/Month With Claude",
@@ -6806,4 +6827,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 338;
+export const TOTAL_PLAYBOOKS_COUNT = 339;

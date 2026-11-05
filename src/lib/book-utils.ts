@@ -185,6 +185,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
     };
   }
 
+  if (
+    slug === "i-have-too-many-digital-product-ideas-35-to-steal" ||
+    slug === "ai-businesses-79"
+  ) {
+    return {
+      name: "Rafael Mendes",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
       if (
     slug === "how-a-faceless-channel-made-12-804-month-with-claude" ||
     slug === "how-a-faceless-channel-made-12804-month-with-claude" ||
@@ -1016,6 +1029,58 @@ export function getCuratedCommunityReviews(
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (
+    slug === "i-have-too-many-digital-product-ideas-35-to-steal" ||
+    slug === "ai-businesses-79"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Lucia",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "I came in expecting another list of random side-hustle ideas. What I got was a much better way to think about products. The examples showing how to turn generic templates into niche-specific solutions were especially helpful.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Kunal",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The validation section alone saved me from jumping straight into development. I like that it explains how to speak with potential buyers and look for actual buying signals instead of relying on people saying an idea sounds great.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Williams",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "35 ideas, but somehow the biggest takeaway is to stop chasing 35 different projects. The breakdown of product formats and the decision scorecard helped me narrow things down to one offer I can realistically build.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Fernández",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Really liked the section about selling the outcome rather than the number of files included. It changed how I think about pricing and packaging. The 30-day roadmap also makes the whole process feel much more manageable.",
+        likes: 84,
+      },
+    ];
+  }
+
       if (
     slug === "how-a-faceless-channel-made-12-804-month-with-claude" ||
     slug === "how-a-faceless-channel-made-12804-month-with-claude" ||
