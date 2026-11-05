@@ -1754,6 +1754,35 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-87"],
     assignedPlaybookSlugs: ["make-your-first-3000-online-in-90days-or-scroll-for-5-37mins"],
   },
+  // 61. Playbook 61: If I Wanted to Make My First $100K in 2027, I’d Do This
+  "sovereign-capital-accumulator": {
+    templateId: "sovereign-capital-accumulator",
+    name: "Sovereign Capital Accumulator & 100K Savings Matrix",
+    categoryTheme: "Personal Finance, High-Value Skills, Cash Retention & 2027 Wealth Architecture",
+    description:
+      "Obsidian charcoal canvas (#0a0a0c) with burnished gold capital telemetry (#d97706), emerald retention signals (#10b981), surplus cash flow flowcharts, and the 4-4-4 operating split matrix",
+    colorPalette: {
+      canvasBg: "#0a0a0c",
+      stageBg: "#121216",
+      border: "#27272a",
+      primaryText: "#f8fafc",
+      secondaryText: "#a1a1aa",
+      accent: "#d97706",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#451a03",
+      highlightPillText: "#fde68a",
+    },
+    visualMotifs: [
+      "The 4-4-4 Operating Split: 4 Hours Promotion, 4 Hours Delivery, 4 Hours Building",
+      "One Product, One Customer Avatar, One Primary Channel Focus Framework",
+      "The 6-Stage Capital Accumulation Pipeline (Reduce Costs -> Reclaim Time -> Marketable Skill -> Iteration Feedback -> Selective Tooling -> Retained Cash)",
+      "Monthly Net Cash Ledger: Revenue vs Gross Income vs Net Profit vs Accumulated Retained Savings",
+    ],
+    layoutArchitecture:
+      "Sovereign financial balance sheet console with cash-flow surplus gauges, maker/manager block wireframes, and iteration feedback scorecards",
+    assignedPlaybookIds: ["ai-businesses-88"],
+    assignedPlaybookSlugs: ["if-i-wanted-to-make-my-first-100k-in-2027-id-do-this"],
+  },
 };
 
 /**

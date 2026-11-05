@@ -186,6 +186,19 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
   }
 
   if (
+    slug === "if-i-wanted-to-make-my-first-100k-in-2027-id-do-this" ||
+    slug === "ai-businesses-88"
+  ) {
+    return {
+      name: "Jordan Hayes",
+      avatar: "",
+      booksCount: 2,
+      followersCount: "",
+      bio: "",
+    };
+  }
+
+  if (
     slug === "make-your-first-3000-online-in-90days-or-scroll-for-5-37mins" ||
     slug === "ai-businesses-87"
   ) {

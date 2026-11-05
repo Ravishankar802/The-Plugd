@@ -126,6 +126,17 @@ const POPULATED_PLAYBOOKS = [
     expectedSlides: 112
   },
   {
+    id: "ai-businesses-88",
+    slug: "if-i-wanted-to-make-my-first-100k-in-2027-id-do-this",
+    title: "If I Wanted to Make My First $100K in 2027, I’d Do This",
+    dataFile: "src/lib/playbooks/if-i-wanted-to-make-my-first-100k-in-2027-id-do-this-data.ts",
+    detailFile: "src/lib/playbooks/if-i-wanted-to-make-my-first-100k-in-2027-id-do-this-detail.ts",
+    routeDir: "src/app/if-i-wanted-to-make-my-first-100k-in-2027-id-do-this",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-87",
     slug: "make-your-first-3000-online-in-90days-or-scroll-for-5-37mins",
     title: "Make your first $3,000 online in 90days (Or scroll for 5.37mins)",

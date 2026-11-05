@@ -2,6 +2,27 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-88",
+      "slug": "if-i-wanted-to-make-my-first-100k-in-2027-id-do-this",
+      "title": "If I Wanted to Make My First $100K in 2027, I’d Do This",
+      "headline": "Stop chasing revenue screenshots. Build the skills, income, discipline, and financial habits to earn more, spend smarter, and actually keep your first $100K.",
+      "description": "Stop chasing revenue screenshots. Build the skills, income, discipline, and financial habits to earn more, spend smarter, and actually keep your first $100K.\n\nA practical roadmap to building your first $100,000 in savings by combining smarter spending, focused execution, valuable skills, and deliberate income growth. Learn how to identify skills people already pay for, improve through real-world feedback, invest in tools and opportunities without reckless spending, and turn higher earnings into lasting financial progress.\n\nIncludes a 90-day starting plan, a 2027 execution roadmap, skill-selection scorecards, experiment trackers, weekly performance reviews, offer templates, and monthly financial worksheets.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "hoursOfMaterial": "11.2 hours",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "accentColor": "#d97706",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Wanted_to_Make_My_First_100K_in_2027_I_d_Do_This.png",
+      "href": "/if-i-wanted-to-make-my-first-100k-in-2027-id-do-this"
+  },
+  {
       "id": "ai-businesses-87",
       "slug": "make-your-first-3000-online-in-90days-or-scroll-for-5-37mins",
       "title": "Make your first $3,000 online in 90days (Or scroll for 5.37mins)",
@@ -6995,4 +7016,4 @@ export const ARCHIVED_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
 ];
 
-export const TOTAL_PLAYBOOKS_COUNT = 347;
+export const TOTAL_PLAYBOOKS_COUNT = 348;
