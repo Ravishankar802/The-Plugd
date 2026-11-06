@@ -2016,66 +2016,6 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-96"],
     assignedPlaybookSlugs: ["in-18-minutes-youll-understand-generational-wealth"],
   },
-  // Template 62: AI Persona Affiliate Engine & Digital Product Studio
-  // Specifically crafted for "I Tried A Zero Skill AI Side Hustle For Indians (Copy Me)"
-  "ai-persona-affiliate-engine": {
-    templateId: "ai-persona-affiliate-engine",
-    name: "AI Persona Affiliate Engine & Digital Product Studio",
-    categoryTheme: "AI Influencer Architecture, Two-Persona Monetization (Indian Amazon Affiliate & Global Digital Products), OpenArt Consistency, Character Continuity & 7-Day Sprint",
-    description:
-      "Deep studio cyber navy canvas (#0c0f17) with persona stage slate (#151b27), clean neon hairline borders (#243044), vibrant saffron ember primary accents (#f97316), electric creative violet secondary highlights (#8b5cf6), and crisp white studio typography",
-    colorPalette: {
-      canvasBg: "#0c0f17",
-      stageBg: "#151b27",
-      border: "#243044",
-      primaryText: "#f8fafc",
-      secondaryText: "#94a3b8",
-      accent: "#f97316",
-      accentSecondary: "#8b5cf6",
-      highlightPillBg: "#431407",
-      highlightPillText: "#fed7aa",
-    },
-    visualMotifs: [
-      "The Two-Persona Monetization Architecture (Indian Affiliate vs. US Digital Storefront)",
-      "The OpenArt Character Sheet & Visual Consistency Pipeline (Face, Lighting, Locations)",
-      "The 7-Day Sprint Milestones (Research -> Creation -> Production -> Funnel -> Scaling)",
-      "The Conversion Funnel Telemetry (Profile Visits, Link CTR, Attributed Cart Conversions)",
-    ],
-    layoutArchitecture:
-      "Modern creator studio HUD with split persona comparison grids, video production prompt blueprints, and real-time affiliate/storefront revenue telemetry",
-    assignedPlaybookIds: ["ai-businesses-97"],
-    assignedPlaybookSlugs: ["i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me"],
-  },
-  // Template 63: Dual-Market Digital Products Engine & 7-Day Free-Tool Lab
-  // Specifically crafted for "I Sold AI Digital Products For 7 Days (100% FREE Tools)"
-  "dual-market-digital-products-engine": {
-    templateId: "dual-market-digital-products-engine",
-    name: "Dual-Market Digital Products Engine & 7-Day Free-Tool Lab",
-    categoryTheme: "AI Digital Product Engineering, Dual-Market Arbitrage (Indian ₹99 Survival Guides & US $12.99 Planners), Topmate UPI & Gumroad Storefronts, Unit Economics & 7-Day Sprint",
-    description:
-      "Deep studio graphite canvas (#0e1117) with dual-market obsidian stages (#161b22), steel cyan borders (#21262d), electric teal primary accents (#14b8a6), radiant coral secondary highlights (#f43f5e), and clean crisp white typography",
-    colorPalette: {
-      canvasBg: "#0e1117",
-      stageBg: "#161b22",
-      border: "#21262d",
-      primaryText: "#f0f6fc",
-      secondaryText: "#8b949e",
-      accent: "#14b8a6",
-      accentSecondary: "#f43f5e",
-      highlightPillBg: "#134e4a",
-      highlightPillText: "#5eead4",
-    },
-    visualMotifs: [
-      "The Dual-Market Comparison Matrix (India ₹99 UPI vs. US $12.99 Tablet Planners)",
-      "The Competitor-Gap Research Framework (Popular Listings -> Gaps -> Built Product)",
-      "The 7-Day Execution Blueprint (Research -> Outline -> Draft -> Design -> Storefront -> Traffic -> Net Review)",
-      "The True Net Profit & Unit Economics Calculator (Ad Spend, Platform Fees, Contribution per Order)",
-    ],
-    layoutArchitecture:
-      "Dual-market product engineering HUD with side-by-side storefront mockups, clickable PDF inspection checklists, and break-even ad telemetry",
-    assignedPlaybookIds: ["ai-businesses-98"],
-    assignedPlaybookSlugs: ["i-sold-ai-digital-products-for-7-days-100-free-tools"],
-  },
   // Template 64: Four-Goods Investment Decision System & Capital-Stack Radar
   // Specifically crafted for "When I Understood This About Investing. My Life Changed."
   "four-goods-investment-decision-system": {

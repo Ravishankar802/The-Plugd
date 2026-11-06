@@ -96,8 +96,6 @@ import { STARTING_AI_SIDE_HUSTLE_ARTICLE } from "./starting-an-ai-side-hustle-is
 import { ONE_MONEY_PLAYBOOK_ARTICLE } from "./if-you-only-read-one-money-playbook-make-it-this";
 import { FIRST_100K_12_MONTHS_ARTICLE } from "./if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this";
 import { GENERATIONAL_WEALTH_ARTICLE } from "./in-18-minutes-youll-understand-generational-wealth";
-import { ZERO_SKILL_AI_INDIANS_ARTICLE } from "./i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me";
-import { I_SOLD_AI_DIGITAL_PRODUCTS_ARTICLE } from "./i-sold-ai-digital-products-for-7-days-100-free-tools";
 import { WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_ARTICLE } from "./when-i-understood-this-about-investing-my-life-changed";
 import { THIS_AI_SIDE_HUSTLE_MAKES_4_LAKHS_ARTICLE } from "./this-ai-side-hustle-makes-4-lakhs-month-copy-me";
 import { TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_ARTICLE } from "./tested-3-methods-make-1-lakh-ai-india";
@@ -306,10 +304,6 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-95": FIRST_100K_12_MONTHS_ARTICLE,
   "in-18-minutes-youll-understand-generational-wealth": GENERATIONAL_WEALTH_ARTICLE,
   "ai-businesses-96": GENERATIONAL_WEALTH_ARTICLE,
-  "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me": ZERO_SKILL_AI_INDIANS_ARTICLE,
-  "ai-businesses-97": ZERO_SKILL_AI_INDIANS_ARTICLE,
-  "i-sold-ai-digital-products-for-7-days-100-free-tools": I_SOLD_AI_DIGITAL_PRODUCTS_ARTICLE,
-  "ai-businesses-98": I_SOLD_AI_DIGITAL_PRODUCTS_ARTICLE,
   "when-i-understood-this-about-investing-my-life-changed": WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_ARTICLE,
   "ai-businesses-99": WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_ARTICLE,
   "this-ai-side-hustle-makes-4-lakhs-month-copy-me": THIS_AI_SIDE_HUSTLE_MAKES_4_LAKHS_ARTICLE,

@@ -132,20 +132,6 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
       bio: "",
     };
   }
-  if (
-    slug === "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me" ||
-    slug === "ai-businesses-97" ||
-    slug === "i-sold-ai-digital-products-for-7-days-100-free-tools" ||
-    slug === "ai-businesses-98"
-  ) {
-    return {
-      name: "Pooja Patil",
-      avatar: "",
-      booksCount: 2,
-      followersCount: "",
-      bio: "",
-    };
-  }
     if (
     slug === "if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this" ||
     slug === "ai-businesses-95"
@@ -1383,108 +1369,6 @@ export function getCuratedCommunityReviews(
         headline: "",
         content:
           "One of the best things about this playbook is how it connects everything: compounding, taxes, fees, risk, due diligence, and your actual responsibility as an investor. It feels like a proper decision-making system rather than another collection of generic investing tips.",
-        likes: 84,
-      },
-    ];
-  }
-  if (
-    slug === "i-sold-ai-digital-products-for-7-days-100-free-tools" ||
-    slug === "ai-businesses-98"
-  ) {
-    return [
-      {
-        id: "rev-1",
-        name: "Ananya",
-        avatar: "",
-        date: "August 04 2026",
-        rating: 5,
-        headline: "",
-        content:
-          "This is one of the more practical digital-product guides I've read. It doesn't just tell you to generate an ebook with AI — it walks through researching the audience, finding gaps in existing products, and creating something people might actually pay for. The competitor research section was particularly useful.",
-        likes: 121,
-      },
-      {
-        id: "rev-2",
-        name: "Chandana",
-        avatar: "",
-        date: "August 08 2026",
-        rating: 5,
-        headline: "",
-        content:
-          "I loved seeing the India and US approaches side by side. The hostel guide is such a relatable product idea, and the planner example shows how to think about a completely different audience. The seven-day roadmap makes it much easier to get started.",
-        likes: 109,
-      },
-      {
-        id: "rev-3",
-        name: "Renu",
-        avatar: "",
-        date: "August 14 2026",
-        rating: 5,
-        headline: "",
-        content:
-          "The profit calculations and advertising breakdown are what make this stand out. A lot of guides focus on sales screenshots, but this one explains fees, ad spend, break-even costs, and why revenue isn't the same as profit. Very useful.",
-        likes: 90,
-      },
-      {
-        id: "rev-4",
-        name: "Vaishali",
-        avatar: "",
-        date: "August 21 2026",
-        rating: 5,
-        headline: "",
-        content:
-          "Really appreciated the attention to product quality. The sections on clickable PDFs, mobile-friendly layouts, recipe checking, and planner navigation are things beginners could easily overlook. It feels like a proper workflow from idea to launch, not just an AI prompt collection.",
-        likes: 84,
-      },
-    ];
-  }
-  if (
-    slug === "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me" ||
-    slug === "ai-businesses-97"
-  ) {
-    return [
-      {
-        id: "rev-1",
-        name: "Saurav",
-        avatar: "",
-        date: "August 04 2026",
-        rating: 5,
-        headline: "",
-        content:
-          "I liked that this goes beyond generating pretty AI images. It actually explains how to build a character, create content around it, and connect everything to a monetisation strategy. The two business models make the whole concept much easier to understand.",
-        likes: 121,
-      },
-      {
-        id: "rev-2",
-        name: "Bharath",
-        avatar: "",
-        date: "August 08 2026",
-        rating: 5,
-        headline: "",
-        content:
-          "The character consistency and content-production sections were especially useful. Having prompts and repeatable workflows saves so much guesswork. I also appreciated the emphasis on checking AI-generated visuals instead of blindly publishing everything.",
-        likes: 109,
-      },
-      {
-        id: "rev-3",
-        name: "Ashutosh",
-        avatar: "",
-        date: "August 14 2026",
-        rating: 5,
-        headline: "",
-        content:
-          "Finally, an AI side-hustle guide that explains the business side too. The affiliate funnel, digital-product setup, and revenue tracking sections make this feel like something you can actually test rather than just another collection of AI tools.",
-        likes: 90,
-      },
-      {
-        id: "rev-4",
-        name: "Vansh",
-        avatar: "",
-        date: "August 21 2026",
-        rating: 5,
-        headline: "",
-        content:
-          "The seven-day plan is my favourite part. It breaks a fairly overwhelming idea into manageable steps, from researching a niche to publishing content and reviewing results. The transparency and realistic expectations around earnings make it even better.",
         likes: 84,
       },
     ];

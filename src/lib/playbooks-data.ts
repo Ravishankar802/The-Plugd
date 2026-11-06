@@ -252,16 +252,6 @@ import {
   GENERATIONAL_WEALTH_ID
 } from "./playbooks/in-18-minutes-youll-understand-generational-wealth-data";
 import {
-  ZERO_SKILL_AI_INDIANS_COURSE,
-  ZERO_SKILL_AI_INDIANS_SLUG,
-  ZERO_SKILL_AI_INDIANS_ID
-} from "./playbooks/i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me-data";
-import {
-  I_SOLD_AI_DIGITAL_PRODUCTS_COURSE,
-  I_SOLD_AI_DIGITAL_PRODUCTS_SLUG,
-  I_SOLD_AI_DIGITAL_PRODUCTS_ID
-} from "./playbooks/i-sold-ai-digital-products-for-7-days-100-free-tools-data";
-import {
   WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_COURSE,
   WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_SLUG,
   WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_ID
@@ -903,10 +893,6 @@ export const COURSES: Record<string, Course> = {
   "ai-businesses-95": FIRST_100K_12_MONTHS_COURSE,
   "in-18-minutes-youll-understand-generational-wealth": GENERATIONAL_WEALTH_COURSE,
   "ai-businesses-96": GENERATIONAL_WEALTH_COURSE,
-  "i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me": ZERO_SKILL_AI_INDIANS_COURSE,
-  "ai-businesses-97": ZERO_SKILL_AI_INDIANS_COURSE,
-  "i-sold-ai-digital-products-for-7-days-100-free-tools": I_SOLD_AI_DIGITAL_PRODUCTS_COURSE,
-  "ai-businesses-98": I_SOLD_AI_DIGITAL_PRODUCTS_COURSE,
   "when-i-understood-this-about-investing-my-life-changed": WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_COURSE,
   "ai-businesses-99": WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_COURSE,
   "this-ai-side-hustle-makes-4-lakhs-month-copy-me": THIS_AI_SIDE_HUSTLE_MAKES_4_LAKHS_COURSE,
@@ -1062,8 +1048,6 @@ export function getAllCourses(): Course[] {
     ONE_MONEY_PLAYBOOK_COURSE,
     FIRST_100K_12_MONTHS_COURSE,
     GENERATIONAL_WEALTH_COURSE,
-    ZERO_SKILL_AI_INDIANS_COURSE,
-    I_SOLD_AI_DIGITAL_PRODUCTS_COURSE,
     WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_COURSE,
     THIS_AI_SIDE_HUSTLE_MAKES_4_LAKHS_COURSE,
     TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_COURSE,
