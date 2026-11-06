@@ -6,7 +6,7 @@ export const BORING_51_DAY_IN_1_HOUR_ARTICLE: PlaybookArticle = {
   "readingTime": "28 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/It_s_Boring_But_Will_Make_Even_Beginners_Millionaires_in_2026.png",
+  "thumbnail": "",
   "publishedDate": "2026",
   "authorName": "Kunal Raj",
   "authorTitle": "Marketplace Arbitrage Operator & Commerce Strategist",

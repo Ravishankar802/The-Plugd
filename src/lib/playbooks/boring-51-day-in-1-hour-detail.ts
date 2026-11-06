@@ -27,7 +27,7 @@ export const BORING_51_DAY_IN_1_HOUR_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/It_s_Boring_But_Will_Make_Even_Beginners_Millionaires_in_2026.png",
+  thumbnail: "",
   hoursOfMaterial: "8.9 hours",
   modulesCount: 7,
   lessonsCount: 28,

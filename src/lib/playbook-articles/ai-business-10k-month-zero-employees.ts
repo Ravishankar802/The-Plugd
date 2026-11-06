@@ -6,7 +6,7 @@ export const AI_BUSINESS_10K_ZERO_EMPLOYEES_ARTICLE: PlaybookArticle = {
   "readingTime": "32 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023912/These_3_AI_Businesses_Will_Make_You_10k_Month_With_Zero_Employees.png",
+  "thumbnail": "",
   "publishedDate": "2026",
   "authorName": "Liam Foster",
   "authorTitle": "Creator Traffic Architect & Systems Operator",

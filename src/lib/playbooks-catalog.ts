@@ -790,7 +790,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.7k",
       "accentColor": "#d97706",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/It_s_Boring_But_Will_Make_Even_Beginners_Millionaires_in_2026.png",
+      "thumbnail": "",
       "href": "/its-boring-but-i-make-51-day-in-1-hour-at-22"
   },
   {
@@ -810,7 +810,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.8k",
       "accentColor": "#0ea5e9",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023912/These_3_AI_Businesses_Will_Make_You_10k_Month_With_Zero_Employees.png",
+      "thumbnail": "",
       "href": "/this-ai-business-will-make-you-10k-month-with-zero-employees"
   },
   {
