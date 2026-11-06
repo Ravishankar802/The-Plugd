@@ -18,7 +18,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "slidesCount": 112,
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/The_1_000_hour_1_person_AI_business.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996182/The_1_000_hour_1-person_AI_business.png",
       "href": "/the-1-000-hour-1-person-ai-business"
   },
   {
@@ -38,7 +38,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "slidesCount": 112,
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Top_10_Claude_AI_Side_Hustles_That_Can_Pay_A_Full_Time_Income_Ranked.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996186/Top_10_Claude_AI_Side_Hustles_That_Can_Pay_A_Full-Time_Income_Ranked.png",
       "href": "/top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked"
   },
   {
@@ -58,7 +58,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "slidesCount": 112,
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Tested_3_Methods_To_Make_1_Lakh_With_AI_in_India_Real_Results.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996173/I_Tested_3_Methods_To_Make_1_Lakh_With_AI_in_India_Real_Results.png",
       "href": "/i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results"
   },
   {
@@ -78,7 +78,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "slidesCount": 112,
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/This_AI_Side_Hustle_Makes_4_Lakhs_Month_Copy_Me.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996185/This_AI_Side_Hustle_Makes_4_Lakhs_Month_Copy_Me.png",
       "href": "/this-ai-side-hustle-makes-4-lakhs-month-copy-me"
   },
   {
@@ -98,7 +98,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "slidesCount": 112,
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/When_I_Understood_This_About_Investing_My_Life_Changed.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996186/When_I_Understood_This_About_Investing._My_Life_Changed..png",
       "href": "/when-i-understood-this-about-investing-my-life-changed"
   },
   {
@@ -119,7 +119,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#14b8a6",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Sold_AI_Digital_Products_For_7_Days_100_FREE_Tools.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996173/I_Sold_AI_Digital_Products_For_7_Days_100_FREE_Tools.png",
       "href": "/i-sold-ai-digital-products-for-7-days-100-free-tools"
   },
   {
@@ -140,7 +140,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#f97316",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Tried_A_Zero_Skill_AI_Side_Hustle_For_Indians_Copy_Me.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996174/I_Tried_A_Zero_Skill_AI_Side_Hustle_For_Indians_Copy_Me.png",
       "href": "/i-tried-a-zero-skill-ai-side-hustle-for-indians-copy-me"
   },
   {
@@ -161,7 +161,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#10b981",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/In_18_Minutes_You_ll_Understand_Generational_Wealth.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996190/In_18_Minutes_You_ll_Understand_Generational_Wealth.png",
       "href": "/in-18-minutes-youll-understand-generational-wealth"
   },
   {
@@ -182,7 +182,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#38bdf8",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Wanted_to_Make_My_First_100K_in_12_months_I_d_Do_This.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996176/If_I_Wanted_to_Make_My_First_100K_in_12_months_I_d_Do_This.png",
       "href": "/if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this"
   },
   {
@@ -203,7 +203,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#10b981",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_You_Only_Read_One_Money_Playbook_Make_It_This.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996177/If_You_Only_Read_One_Money_Playbook_Make_It_This.png",
       "href": "/if-you-only-read-one-money-playbook-make-it-this"
   },
   {
@@ -224,7 +224,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#06b6d4",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Starting_An_AI_Side_Hustle_Is_EASY_Copy_This_System.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996182/Starting_An_AI_Side_Hustle_Is_EASY_Copy_This_System.png",
       "href": "/starting-an-ai-side-hustle-is-easy-copy-this-system"
   },
   {
@@ -245,7 +245,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#f59e0b",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_m_Broke_What_Business_Do_I_Start.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996181/I_m_Broke_What_Business_Do_I_Start.png",
       "href": "/im-broke-what-business-do-i-start"
   },
   {
@@ -266,7 +266,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#ff4b72",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_BLEW_UP_a_YouTube_Channel_in_24_Hours_with_AI.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996172/I_BLEW_UP_a_YouTube_Channel_in_24_Hours_with_AI.png",
       "href": "/i-blew-up-a-youtube-channel-in-24-hours-with-ai"
   },
   {
@@ -287,7 +287,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#06b6d4",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Started_With_0_Here_s_My_Exact_Plan_To_100K.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996175/If_I_Started_With_0_Here_s_My_Exact_Plan_To_100K.png",
       "href": "/if-i-started-with-0-heres-my-exact-plan-to-100k"
   },
   {
@@ -308,7 +308,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#10b981",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/31_Years_of_Wealth_Knowledge_in_18_Minutes.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/31_Years_of_Wealth_Knowledge_in_18_Minutes.png",
       "href": "/31-years-of-wealth-knowledge-in-18-minutes"
   },
   {
@@ -329,7 +329,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#d97706",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Wanted_to_Make_My_First_100K_in_2027_I_d_Do_This.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996176/If_I_Wanted_to_Make_My_First_100K_in_2027_I_d_Do_This.png",
       "href": "/if-i-wanted-to-make-my-first-100k-in-2027-id-do-this"
   },
   {
@@ -350,7 +350,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#059669",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Make_your_first_3_000_online_in_90days_Or_scroll_for_5_37mins.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996181/Make_your_first_3_000_online_in_90days_Or_scroll_for_5.37mins.png",
       "href": "/make-your-first-3000-online-in-90days-or-scroll-for-5-37mins"
   },
   {
@@ -371,7 +371,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#0284c7",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_To_Build_a_10_000_Website_with_GPT_6_Astra_Full_Tutorial.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996171/How_To_Build_a_10_000_Website_with_GPT-6_Astra_Full_Tutorial.png",
       "href": "/how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial"
   },
   {
@@ -392,7 +392,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#10b981",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_to_make_progress_faster_than_everyone.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996172/How_to_make_progress_faster_than_everyone.png",
       "href": "/how-to-make-progress-faster-than-everyone"
   },
   {
@@ -413,7 +413,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#38bdf8",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Build_a_10k_month_Ai_influencer_in_9_mins.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/Build_a_10k_month_Ai_influencer_in_9_mins....png",
       "href": "/build-a-10k-month-ai-influencer-in-9-mins"
   },
   {
@@ -434,7 +434,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#8b5cf6",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_Made_16_705_83_On_Whop_as_a_low_iq_21_year_old.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/How_I_Made_16_705.83_On_Whop_as_a_low_iq_21_year_old.png",
       "href": "/how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old"
   },
   {
@@ -455,7 +455,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#06b6d4",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Its_boring_but_i_make_745_day_in_4_hours_at_22.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996180/It_s_boring_but_i_make_745_day_in_4_hours_at_22.png",
       "href": "/its-boring-but-i-make-745-day-in-4-hours-at-22"
   },
   {
@@ -476,7 +476,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#10b981",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_Went_From_0_to_92K_Month_at_19_My_Full_Story.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996170/How_I_Went_From_0_to_92K_Month_at_19_My_Full_Story.png",
       "href": "/how-i-went-from-0-to-92k-month-at-19-my-full-story"
   },
   {
@@ -497,7 +497,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#00f2fe",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/This_ONE_Book_Has_The_Power_to_Change_Your_ENTIRE_Life.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996185/This_ONE_Book_Has_The_Power_to_Change_Your_ENTIRE_Life.png",
       "href": "/this-one-book-has-the-power-to-change-your-entire-life"
   },
   {
@@ -518,7 +518,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#06b6d4",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_have_too_many_digital_product_ideas_35_to_steal.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996173/I_have_too_many_digital_product_ideas_35_to_steal.png",
       "href": "/i-have-too-many-digital-product-ideas-35-to-steal"
   },
   {
@@ -539,7 +539,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#d97706",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_a_Faceless_Channel_Made_12804_Month_With_Claude.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996192/How_a_Faceless_Channel_Made_12_804_Month_With_Claude.png",
       "href": "/how-a-faceless-channel-made-12-804-month-with-claude"
   },
   {
@@ -560,7 +560,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#f59e0b",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/The_New_Way_to_Make_Money_with_AI_at_Night_Even_If_You_Have_a_9_5.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996183/The_New_Way_to_Make_Money_with_AI_at_Night_Even_If_You_Have_a_9-5.png",
       "href": "/the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5"
   },
   {
@@ -581,7 +581,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#3b82f6",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_Built_It_400K_Month_iOS_App.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/How_I_Built_It_400KMonth_iOS_App.png",
       "href": "/how-i-built-it-400k-month-ios-app"
   },
   {
@@ -602,7 +602,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#ef4444",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/how_to_reinvent_yourself_in_90_days_to_become_rich_as_f_ck.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996171/how_to_reinvent_yourself_in_90_days_to_become_rich_as_fck.png",
       "href": "/how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck"
   },
   {
@@ -623,7 +623,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#06b6d4",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/AI_Agents_The_Most_Valuable_Skill_You_Can_Learn_in_2027_Full_Course.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/AI_Agents_The_Most_Valuable_Skill_You_Can_Learn_in_2027_Full_Course.png",
       "href": "/ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course"
   },
   {
@@ -644,7 +644,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#f59e0b",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Had_1_Year_to_Make_10M_This_Is_My_Plan.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996174/If_I_Had_1_Year_to_Make_10M_-_This_Is_My_Plan.png",
       "href": "/if-i-had-1-year-to-make-10m-this-is-my-plan"
   },
   {
@@ -665,7 +665,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#f59e0b",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Bro_I_m_BEGGING_you_to_build_this_4_8M_product_idea.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/Bro_I_m_BEGGING_you_to_build_this_4.8M_product_idea.png",
       "href": "/bro-im-begging-you-to-build-this-4-8m-product-idea"
   },
   {
@@ -686,7 +686,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#f59e0b",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Had_To_Start_a_Business_From_Scratch_I_d_Do_This.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996175/If_I_Had_To_Start_a_Business_From_Scratch_I_d_Do_This.png",
       "href": "/if-i-had-to-start-a-business-from-scratch-id-do-this"
   },
   {
@@ -707,7 +707,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#f59e0b",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_build_a_10cr_Agency_Without_any_Knowledge.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996168/How_I_build_a_10cr_Agency_Without_any_Knowledge.png",
       "href": "/how-i-build-a-10cr-agency-without-any-knowledge"
   },
   {
@@ -728,7 +728,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.8k",
       "accentColor": "#10b981",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Zero_To_1_000_Profit_with_Dropshipping_Using_AI_24HOURS.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996187/Zero_To_1_000_Profit_with_Dropshipping_Using_AI_24HOURS.png",
       "href": "/zero-to-1000-profit-with-dropshipping-using-ai-24hours"
   },
   {
@@ -749,7 +749,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.8k",
       "accentColor": "#06b6d4",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Marketing_Agents_Are_Too_Good_Now.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996181/Marketing_Agents_Are_Too_Good_Now.png",
       "href": "/marketing-agents-are-too-good-now"
   },
   {
@@ -770,7 +770,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.8k",
       "accentColor": "#6366f1",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Claude_ChatGPT_57_152_In_90_Days.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996170/Claude_ChatGPT_57_152_In_90_Days.png",
       "href": "/claude-chatgpt-57152-in-90-days"
   },
   {
@@ -790,7 +790,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.7k",
       "accentColor": "#d97706",
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996187/It_s_boring_but_I_make_51_day_in_1_hour_at_22.png",
       "href": "/its-boring-but-i-make-51-day-in-1-hour-at-22"
   },
   {
@@ -810,7 +810,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.8k",
       "accentColor": "#0ea5e9",
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996183/This_AI_Business_Will_Make_You_10k_Month_With_Zero_Employees.png",
       "href": "/this-ai-business-will-make-you-10k-month-with-zero-employees"
   },
   {
@@ -830,7 +830,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "5.4k",
       "accentColor": "#e11d48",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_you_re_ambitious_and_in_your_20s_or_30s_please_watch_this.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996177/If_you_re_ambitious_and_in_your_20s_or_30s_please_watch_this..png",
       "href": "/if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this"
   },
   {
@@ -850,7 +850,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "5.1k",
       "accentColor": "#6366f1",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Give_Me_27_Minutes_and_I_ll_Make_You_Disgustingly_Good_at_Digital_Marketing.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996171/Give_Me_27_Minutes_and_I_ll_Make_You_Disgustingly_Good_at_Digital_Marketing.png",
       "href": "/give-me-27-minutes-and-ill-make-you-disgustingly-good-at-digital-marketing"
   },
   {
@@ -870,7 +870,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#3b82f6",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Built_An_85M_AI_Startup_in_5_Months_here_s_my_playbook.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793998241/I_Built_An_85M_AI_Startup_in_5_Months_here_s_my_playbook.png",
       "href": "/i-built-an-85m-ai-startup-in-5-months-heres-my-playbook"
   },
   {
@@ -890,7 +890,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.8k",
       "accentColor": "#f59e0b",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Tried_A_100_FREE_AI_Side_Hustle_For_Indians_Real_Results.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996173/I_Tried_A_100_FREE_AI_Side_Hustle_For_Indians_Real_Results.png",
       "href": "/i-tried-a-100-free-ai-side-hustle-for-indians-real-results"
   },
   {

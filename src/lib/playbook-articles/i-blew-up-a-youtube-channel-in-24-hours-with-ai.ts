@@ -6,7 +6,7 @@ export const BLEW_UP_YOUTUBE_AI_ARTICLE: PlaybookArticle = {
   readingTime: "35 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_BLEW_UP_a_YouTube_Channel_in_24_Hours_with_AI.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996172/I_BLEW_UP_a_YouTube_Channel_in_24_Hours_with_AI.png",
   publishedDate: "2026",
   authorName: "Kelvin Ng",
   authorTitle: "AI Short-Form Video Producer & YouTube Growth Strategist",

@@ -6,7 +6,7 @@ export const REINVENT_90_DAYS_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/how_to_reinvent_yourself_in_90_days_to_become_rich_as_f_ck.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996171/how_to_reinvent_yourself_in_90_days_to_become_rich_as_fck.png",
   "publishedDate": "2026",
   "authorName": "Sean O'Brien",
   "authorTitle": "High-Performance Strategist & Executive Mentor",

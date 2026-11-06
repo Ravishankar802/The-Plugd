@@ -27,7 +27,7 @@ export const ITS_BORING_745_DAY_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Its_boring_but_i_make_745_day_in_4_hours_at_22.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996180/It_s_boring_but_i_make_745_day_in_4_hours_at_22.png",
   hoursOfMaterial: "11.1 hours",
   modulesCount: 7,
   lessonsCount: 28,

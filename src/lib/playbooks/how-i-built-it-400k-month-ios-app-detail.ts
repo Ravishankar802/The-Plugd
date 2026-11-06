@@ -27,7 +27,7 @@ export const HOW_I_BUILT_400K_IOS_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_Built_It_400K_Month_iOS_App.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/How_I_Built_It_400KMonth_iOS_App.png",
   hoursOfMaterial: "10.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

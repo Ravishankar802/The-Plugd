@@ -27,7 +27,7 @@ export const THE_1000_HOUR_1_PERSON_AI_BUSINESS_DETAIL_DATA: PlaybookDetailData 
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/The_1_000_hour_1_person_AI_business.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996182/The_1_000_hour_1-person_AI_business.png",
   hoursOfMaterial: "9.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

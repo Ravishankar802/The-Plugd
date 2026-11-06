@@ -27,7 +27,7 @@ export const MAKE_3000_ONLINE_90_DAYS_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Make_your_first_3_000_online_in_90days_Or_scroll_for_5_37mins.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996181/Make_your_first_3_000_online_in_90days_Or_scroll_for_5.37mins.png",
   hoursOfMaterial: "11.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

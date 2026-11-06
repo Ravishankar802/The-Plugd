@@ -6,7 +6,7 @@ export const FREE_AI_SIDE_HUSTLE_INDIANS_ARTICLE: PlaybookArticle = {
   "readingTime": "30 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Tried_A_100_FREE_AI_Side_Hustle_For_Indians_Real_Results.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996173/I_Tried_A_100_FREE_AI_Side_Hustle_For_Indians_Real_Results.png",
   "publishedDate": "August 2026",
   "authorName": "Ritu Sharma",
   "authorTitle": "Digital Publishing Architect & Cross-Border Operator",

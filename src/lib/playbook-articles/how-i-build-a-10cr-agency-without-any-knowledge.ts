@@ -6,7 +6,7 @@ export const HOW_I_BUILD_10CR_AGENCY_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_build_a_10cr_Agency_Without_any_Knowledge.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996168/How_I_build_a_10cr_Agency_Without_any_Knowledge.png",
   "publishedDate": "2026",
   "authorName": "Naveen Shetty",
   "authorTitle": "Agency Founder & Creative Operations Strategist",

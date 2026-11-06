@@ -6,7 +6,7 @@ export const THE_1000_HOUR_1_PERSON_AI_BUSINESS_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/The_1_000_hour_1_person_AI_business.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996182/The_1_000_hour_1-person_AI_business.png",
   "publishedDate": "August 2026",
   "authorName": "Divya Tiwari",
   "authorTitle": "Local Growth & Client Acquisition Architect",

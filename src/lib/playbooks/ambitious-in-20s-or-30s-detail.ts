@@ -27,7 +27,7 @@ export const AMBITIOUS_IN_20S_OR_30S_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_you_re_ambitious_and_in_your_20s_or_30s_please_watch_this.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996177/If_you_re_ambitious_and_in_your_20s_or_30s_please_watch_this..png",
   hoursOfMaterial: "9.1 hours",
   modulesCount: 7,
   lessonsCount: 28,

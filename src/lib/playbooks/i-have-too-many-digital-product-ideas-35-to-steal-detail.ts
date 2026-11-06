@@ -27,7 +27,7 @@ export const DIGITAL_PRODUCT_IDEAS_35_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_have_too_many_digital_product_ideas_35_to_steal.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996173/I_have_too_many_digital_product_ideas_35_to_steal.png",
   hoursOfMaterial: "10.5 hours",
   modulesCount: 7,
   lessonsCount: 28,

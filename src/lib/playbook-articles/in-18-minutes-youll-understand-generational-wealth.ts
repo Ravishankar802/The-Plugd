@@ -6,7 +6,7 @@ export const GENERATIONAL_WEALTH_ARTICLE: PlaybookArticle = {
   readingTime: "30 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/In_18_Minutes_You_ll_Understand_Generational_Wealth.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996190/In_18_Minutes_You_ll_Understand_Generational_Wealth.png",
   publishedDate: "August 2026",
   authorName: "Akhil Varma",
   authorTitle: "Family Wealth Strategist & Fiduciary Architect",

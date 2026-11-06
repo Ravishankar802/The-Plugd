@@ -6,7 +6,7 @@ export const ZERO_TO_100K_PLAN_ARTICLE: PlaybookArticle = {
   readingTime: "30 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Started_With_0_Here_s_My_Exact_Plan_To_100K.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996175/If_I_Started_With_0_Here_s_My_Exact_Plan_To_100K.png",
   publishedDate: "2026",
   authorName: "Shawn Lim",
   authorTitle: "Zero-Capital Strategist & Main-Job Income Optimization Architect",

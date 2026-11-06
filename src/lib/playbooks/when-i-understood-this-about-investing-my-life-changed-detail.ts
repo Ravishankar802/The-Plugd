@@ -27,7 +27,7 @@ export const WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_DETAIL_DATA: PlaybookDetailD
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/When_I_Understood_This_About_Investing_My_Life_Changed.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996186/When_I_Understood_This_About_Investing._My_Life_Changed..png",
   hoursOfMaterial: "11.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

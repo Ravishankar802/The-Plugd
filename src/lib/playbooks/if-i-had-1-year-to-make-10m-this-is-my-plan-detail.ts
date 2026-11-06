@@ -27,7 +27,7 @@ export const YEAR_TO_MAKE_10M_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Had_1_Year_to_Make_10M_This_Is_My_Plan.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996174/If_I_Had_1_Year_to_Make_10M_-_This_Is_My_Plan.png",
   hoursOfMaterial: "9.6 hours",
   modulesCount: 7,
   lessonsCount: 28,

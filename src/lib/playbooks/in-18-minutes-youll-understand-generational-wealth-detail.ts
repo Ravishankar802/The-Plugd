@@ -27,7 +27,7 @@ export const GENERATIONAL_WEALTH_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/In_18_Minutes_You_ll_Understand_Generational_Wealth.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996190/In_18_Minutes_You_ll_Understand_Generational_Wealth.png",
   hoursOfMaterial: "11.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

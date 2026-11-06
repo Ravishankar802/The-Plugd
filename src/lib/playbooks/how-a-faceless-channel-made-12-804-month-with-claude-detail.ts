@@ -27,7 +27,7 @@ export const FACELESS_CHANNEL_12K_CLAUDE_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_a_Faceless_Channel_Made_12804_Month_With_Claude.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996192/How_a_Faceless_Channel_Made_12_804_Month_With_Claude.png",
   hoursOfMaterial: "10.8 hours",
   modulesCount: 7,
   lessonsCount: 28,

@@ -6,7 +6,7 @@ export const FACELESS_CHANNEL_12K_CLAUDE_ARTICLE: PlaybookArticle = {
   "readingTime": "32 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_a_Faceless_Channel_Made_12804_Month_With_Claude.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996192/How_a_Faceless_Channel_Made_12_804_Month_With_Claude.png",
   "publishedDate": "2026",
   "authorName": "Brady Lawson",
   "authorTitle": "AI Content Architect & Digital Publisher",

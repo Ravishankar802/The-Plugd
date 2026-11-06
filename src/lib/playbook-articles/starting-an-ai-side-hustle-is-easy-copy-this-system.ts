@@ -6,7 +6,7 @@ export const STARTING_AI_SIDE_HUSTLE_ARTICLE: PlaybookArticle = {
   readingTime: "32 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Starting_An_AI_Side_Hustle_Is_EASY_Copy_This_System.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996182/Starting_An_AI_Side_Hustle_Is_EASY_Copy_This_System.png",
   publishedDate: "2026",
   authorName: "Eduardo Martins",
   authorTitle: "AI Business Architect & Offer Systems Strategist",

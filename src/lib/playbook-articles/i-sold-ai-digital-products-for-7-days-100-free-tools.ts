@@ -6,7 +6,7 @@ export const I_SOLD_AI_DIGITAL_PRODUCTS_ARTICLE: PlaybookArticle = {
   readingTime: "30 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Sold_AI_Digital_Products_For_7_Days_100_FREE_Tools.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996173/I_Sold_AI_Digital_Products_For_7_Days_100_FREE_Tools.png",
   publishedDate: "August 2026",
   authorName: "Pooja Patil",
   authorTitle: "Digital Product Architect & Growth Strategist",

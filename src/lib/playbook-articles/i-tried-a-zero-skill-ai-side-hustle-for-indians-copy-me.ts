@@ -6,7 +6,7 @@ export const ZERO_SKILL_AI_INDIANS_ARTICLE: PlaybookArticle = {
   readingTime: "32 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Tried_A_Zero_Skill_AI_Side_Hustle_For_Indians_Copy_Me.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996174/I_Tried_A_Zero_Skill_AI_Side_Hustle_For_Indians_Copy_Me.png",
   publishedDate: "August 2026",
   authorName: "Pooja Patil",
   authorTitle: "AI Creator Strategist & Digital Monetisation Architect",

@@ -27,7 +27,7 @@ export const TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_DETAIL_DATA: PlaybookDetailDa
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Tested_3_Methods_To_Make_1_Lakh_With_AI_in_India_Real_Results.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996173/I_Tested_3_Methods_To_Make_1_Lakh_With_AI_in_India_Real_Results.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 7,
   lessonsCount: 28,

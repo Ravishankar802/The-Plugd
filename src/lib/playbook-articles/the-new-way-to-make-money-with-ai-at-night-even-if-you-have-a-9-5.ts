@@ -6,7 +6,7 @@ export const NIGHT_AI_MONEY_ARTICLE: PlaybookArticle = {
   "readingTime": "30 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/The_New_Way_to_Make_Money_with_AI_at_Night_Even_If_You_Have_a_9_5.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996183/The_New_Way_to_Make_Money_with_AI_at_Night_Even_If_You_Have_a_9-5.png",
   "publishedDate": "2026",
   "authorName": "Jason Teo",
   "authorTitle": "AI Systems Architect & Digital Operator",

@@ -6,7 +6,7 @@ export const BUILD_AI_INFLUENCER_10K_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Build_a_10k_month_Ai_influencer_in_9_mins.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/Build_a_10k_month_Ai_influencer_in_9_mins....png",
   "publishedDate": "2026",
   "authorName": "Bryce Holloway",
   "authorTitle": "Synthetic Media Strategist & Creator Operator",

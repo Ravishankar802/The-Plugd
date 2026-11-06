@@ -6,7 +6,7 @@ export const BUILD_10K_WEBSITE_GPT6_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_To_Build_a_10_000_Website_with_GPT_6_Astra_Full_Tutorial.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996171/How_To_Build_a_10_000_Website_with_GPT-6_Astra_Full_Tutorial.png",
   "publishedDate": "2026",
   "authorName": "Diego Valera",
   "authorTitle": "Generative Web Architect & Digital Agency Strategist",

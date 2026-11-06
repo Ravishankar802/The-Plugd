@@ -6,7 +6,7 @@ export const AMBITIOUS_IN_20S_OR_30S_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_you_re_ambitious_and_in_your_20s_or_30s_please_watch_this.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996177/If_you_re_ambitious_and_in_your_20s_or_30s_please_watch_this..png",
   "publishedDate": "2026",
   "authorName": "Seiji Kai-Lun",
   "authorTitle": "Founding Strategist & Venture Architect",

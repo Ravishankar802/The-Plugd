@@ -27,7 +27,7 @@ export const BLEW_UP_YOUTUBE_AI_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_BLEW_UP_a_YouTube_Channel_in_24_Hours_with_AI.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996172/I_BLEW_UP_a_YouTube_Channel_in_24_Hours_with_AI.png",
   hoursOfMaterial: "11.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

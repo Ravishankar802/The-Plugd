@@ -6,7 +6,7 @@ export const ZERO_TO_1000_DROPSHIPPING_ARTICLE: PlaybookArticle = {
   "readingTime": "32 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Zero_To_1_000_Profit_with_Dropshipping_Using_AI_24HOURS.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996187/Zero_To_1_000_Profit_with_Dropshipping_Using_AI_24HOURS.png",
   "publishedDate": "2026",
   "authorName": "Jiho Kim",
   "authorTitle": "Ecommerce Systems Architect & Paid Growth Operator",

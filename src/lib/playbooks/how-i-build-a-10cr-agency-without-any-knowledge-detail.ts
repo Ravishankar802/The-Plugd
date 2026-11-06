@@ -27,7 +27,7 @@ export const HOW_I_BUILD_10CR_AGENCY_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_build_a_10cr_Agency_Without_any_Knowledge.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996168/How_I_build_a_10cr_Agency_Without_any_Knowledge.png",
   hoursOfMaterial: "9.5 hours",
   modulesCount: 7,
   lessonsCount: 28,

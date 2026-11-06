@@ -6,7 +6,7 @@ export const ITS_BORING_745_DAY_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Its_boring_but_i_make_745_day_in_4_hours_at_22.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996180/It_s_boring_but_i_make_745_day_in_4_hours_at_22.png",
   "publishedDate": "2026",
   "authorName": "Myles Grant",
   "authorTitle": "E-Commerce Architect & Media Buying Strategist",

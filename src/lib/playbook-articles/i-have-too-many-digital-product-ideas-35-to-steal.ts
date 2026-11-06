@@ -6,7 +6,7 @@ export const DIGITAL_PRODUCT_IDEAS_35_ARTICLE: PlaybookArticle = {
   "readingTime": "34 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_have_too_many_digital_product_ideas_35_to_steal.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996173/I_have_too_many_digital_product_ideas_35_to_steal.png",
   "publishedDate": "2026",
   "authorName": "Rafael Mendes",
   "authorTitle": "Digital Product Architect & Portfolio Strategist",

@@ -27,7 +27,7 @@ export const TOP_10_CLAUDE_SIDE_HUSTLES_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Top_10_Claude_AI_Side_Hustles_That_Can_Pay_A_Full_Time_Income_Ranked.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996186/Top_10_Claude_AI_Side_Hustles_That_Can_Pay_A_Full-Time_Income_Ranked.png",
   hoursOfMaterial: "9.4 hours",
   modulesCount: 7,
   lessonsCount: 28,

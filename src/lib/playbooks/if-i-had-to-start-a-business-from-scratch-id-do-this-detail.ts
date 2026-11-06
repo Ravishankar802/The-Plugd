@@ -27,7 +27,7 @@ export const START_BUSINESS_FROM_SCRATCH_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Had_To_Start_a_Business_From_Scratch_I_d_Do_This.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996175/If_I_Had_To_Start_a_Business_From_Scratch_I_d_Do_This.png",
   hoursOfMaterial: "9.6 hours",
   modulesCount: 7,
   lessonsCount: 28,

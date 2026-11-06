@@ -27,7 +27,7 @@ export const BUILD_AI_INFLUENCER_10K_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Build_a_10k_month_Ai_influencer_in_9_mins.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/Build_a_10k_month_Ai_influencer_in_9_mins....png",
   hoursOfMaterial: "11.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

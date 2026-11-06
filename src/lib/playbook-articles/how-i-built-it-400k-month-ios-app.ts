@@ -6,7 +6,7 @@ export const HOW_I_BUILT_400K_IOS_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_Built_It_400K_Month_iOS_App.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/How_I_Built_It_400KMonth_iOS_App.png",
   "publishedDate": "2026",
   "authorName": "Jason Teo",
   "authorTitle": "iOS App Founder & Growth Engineer",

@@ -6,7 +6,7 @@ export const TOP_10_CLAUDE_SIDE_HUSTLES_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Top_10_Claude_AI_Side_Hustles_That_Can_Pay_A_Full_Time_Income_Ranked.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996186/Top_10_Claude_AI_Side_Hustles_That_Can_Pay_A_Full-Time_Income_Ranked.png",
   "publishedDate": "August 2026",
   "authorName": "Anjali Yadav",
   "authorTitle": "AI Business Strategist & Prompt Operations Architect",

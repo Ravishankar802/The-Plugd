@@ -27,7 +27,7 @@ export const MARKETING_AGENTS_TOO_GOOD_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Marketing_Agents_Are_Too_Good_Now.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996181/Marketing_Agents_Are_Too_Good_Now.png",
   hoursOfMaterial: "9.5 hours",
   modulesCount: 7,
   lessonsCount: 28,

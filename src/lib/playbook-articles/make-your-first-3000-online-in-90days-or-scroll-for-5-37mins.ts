@@ -6,7 +6,7 @@ export const MAKE_3000_ONLINE_90_DAYS_ARTICLE: PlaybookArticle = {
   readingTime: "30 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Make_your_first_3_000_online_in_90days_Or_scroll_for_5_37mins.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996181/Make_your_first_3_000_online_in_90days_Or_scroll_for_5.37mins.png",
   publishedDate: "2026",
   authorName: "Diego Valera",
   authorTitle: "High-Ticket Sales Strategist & DM Pipeline Architect",

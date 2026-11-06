@@ -27,7 +27,7 @@ export const AI_AGENTS_2027_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/AI_Agents_The_Most_Valuable_Skill_You_Can_Learn_in_2027_Full_Course.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/AI_Agents_The_Most_Valuable_Skill_You_Can_Learn_in_2027_Full_Course.png",
   hoursOfMaterial: "10.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

@@ -6,7 +6,7 @@ export const MARKETING_AGENTS_TOO_GOOD_ARTICLE: PlaybookArticle = {
   "readingTime": "30 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Marketing_Agents_Are_Too_Good_Now.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996181/Marketing_Agents_Are_Too_Good_Now.png",
   "publishedDate": "2026",
   "authorName": "Jack Robertson",
   "authorTitle": "Autonomous Systems Architect & Performance Marketing Lead",

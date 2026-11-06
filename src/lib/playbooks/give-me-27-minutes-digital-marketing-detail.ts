@@ -27,7 +27,7 @@ export const GIVE_ME_27_MINS_DIGITAL_MARKETING_DETAIL_DATA: PlaybookDetailData =
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Give_Me_27_Minutes_and_I_ll_Make_You_Disgustingly_Good_at_Digital_Marketing.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996171/Give_Me_27_Minutes_and_I_ll_Make_You_Disgustingly_Good_at_Digital_Marketing.png",
   hoursOfMaterial: "9.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

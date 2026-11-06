@@ -6,7 +6,7 @@ export const BEGGING_BUILD_PRODUCT_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Bro_I_m_BEGGING_you_to_build_this_4_8M_product_idea.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/Bro_I_m_BEGGING_you_to_build_this_4.8M_product_idea.png",
   "publishedDate": "2026",
   "authorName": "Dylan Scott",
   "authorTitle": "Hardware Founder & Physical Product Strategist",

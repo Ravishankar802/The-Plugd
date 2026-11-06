@@ -27,7 +27,7 @@ export const HOW_I_WENT_FROM_0_TO_92K_MONTH_AT_19_DETAIL_DATA: PlaybookDetailDat
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_Went_From_0_to_92K_Month_at_19_My_Full_Story.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996170/How_I_Went_From_0_to_92K_Month_at_19_My_Full_Story.png",
   hoursOfMaterial: "11.1 hours",
   modulesCount: 7,
   lessonsCount: 28,

@@ -27,7 +27,7 @@ export const HOW_I_MADE_16K_WHOP_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_Made_16_705_83_On_Whop_as_a_low_iq_21_year_old.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/How_I_Made_16_705.83_On_Whop_as_a_low_iq_21_year_old.png",
   hoursOfMaterial: "11.1 hours",
   modulesCount: 7,
   lessonsCount: 28,

@@ -6,7 +6,7 @@ export const TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_ARTICLE: PlaybookArticle = {
   "readingTime": "30 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Tested_3_Methods_To_Make_1_Lakh_With_AI_in_India_Real_Results.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996173/I_Tested_3_Methods_To_Make_1_Lakh_With_AI_in_India_Real_Results.png",
   "publishedDate": "August 2026",
   "authorName": "Anjali Yadav",
   "authorTitle": "Rapid AI Prototyping & Venture Validation Strategist",

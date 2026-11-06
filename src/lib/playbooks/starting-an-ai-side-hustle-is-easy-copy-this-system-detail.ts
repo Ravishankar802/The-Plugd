@@ -27,7 +27,7 @@ export const STARTING_AI_SIDE_HUSTLE_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Starting_An_AI_Side_Hustle_Is_EASY_Copy_This_System.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996182/Starting_An_AI_Side_Hustle_Is_EASY_Copy_This_System.png",
   hoursOfMaterial: "11.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

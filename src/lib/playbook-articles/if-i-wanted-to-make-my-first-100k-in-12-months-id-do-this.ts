@@ -6,7 +6,7 @@ export const FIRST_100K_12_MONTHS_ARTICLE: PlaybookArticle = {
   readingTime: "33 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Wanted_to_Make_My_First_100K_in_12_months_I_d_Do_This.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996176/If_I_Wanted_to_Make_My_First_100K_in_12_months_I_d_Do_This.png",
   publishedDate: "2026",
   authorName: "Jordan Hayes",
   authorTitle: "Lifestyle Business Architect & Six-Figure Systems Strategist",

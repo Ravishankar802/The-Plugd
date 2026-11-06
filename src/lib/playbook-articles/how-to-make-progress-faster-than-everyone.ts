@@ -6,7 +6,7 @@ export const HOW_TO_MAKE_PROGRESS_FASTER_ARTICLE: PlaybookArticle = {
   "readingTime": "30 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_to_make_progress_faster_than_everyone.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996172/How_to_make_progress_faster_than_everyone.png",
   "publishedDate": "2026",
   "authorName": "Tejas Patil",
   "authorTitle": "High-Performance Systems & Iterative Growth Strategist",

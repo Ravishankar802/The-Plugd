@@ -27,7 +27,7 @@ export const CLAUDE_CHATGPT_57K_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Claude_ChatGPT_57_152_In_90_Days.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996170/Claude_ChatGPT_57_152_In_90_Days.png",
   hoursOfMaterial: "9.1 hours",
   modulesCount: 7,
   lessonsCount: 28,

@@ -6,7 +6,7 @@ export const WEALTH_KNOWLEDGE_31_YEARS_ARTICLE: PlaybookArticle = {
   readingTime: "30 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/31_Years_of_Wealth_Knowledge_in_18_Minutes.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/31_Years_of_Wealth_Knowledge_in_18_Minutes.png",
   publishedDate: "2026",
   authorName: "Martim Neves",
   authorTitle: "Financial Systems Architect & Wealth Ladder Strategist",

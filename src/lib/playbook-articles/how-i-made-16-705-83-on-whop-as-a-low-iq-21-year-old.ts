@@ -6,7 +6,7 @@ export const HOW_I_MADE_16K_WHOP_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_Made_16_705_83_On_Whop_as_a_low_iq_21_year_old.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996169/How_I_Made_16_705.83_On_Whop_as_a_low_iq_21_year_old.png",
   "publishedDate": "2026",
   "authorName": "Bryce Holloway",
   "authorTitle": "Short-Form Media Strategist & Content Operator",

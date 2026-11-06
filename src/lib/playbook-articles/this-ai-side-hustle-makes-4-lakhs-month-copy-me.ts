@@ -6,7 +6,7 @@ export const THIS_AI_SIDE_HUSTLE_MAKES_4_LAKHS_ARTICLE: PlaybookArticle = {
   "readingTime": "30 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/This_AI_Side_Hustle_Makes_4_Lakhs_Month_Copy_Me.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996185/This_AI_Side_Hustle_Makes_4_Lakhs_Month_Copy_Me.png",
   "publishedDate": "August 2026",
   "authorName": "Ritu Sharma",
   "authorTitle": "UGC Agency Strategist & Creative Operations Architect",

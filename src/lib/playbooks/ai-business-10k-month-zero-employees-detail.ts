@@ -27,7 +27,7 @@ export const AI_BUSINESS_10K_ZERO_EMPLOYEES_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996183/This_AI_Business_Will_Make_You_10k_Month_With_Zero_Employees.png",
   hoursOfMaterial: "9.1 hours",
   modulesCount: 7,
   lessonsCount: 28,

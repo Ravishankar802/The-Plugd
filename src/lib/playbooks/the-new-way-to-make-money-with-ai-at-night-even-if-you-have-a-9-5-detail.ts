@@ -27,7 +27,7 @@ export const NIGHT_AI_MONEY_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/The_New_Way_to_Make_Money_with_AI_at_Night_Even_If_You_Have_a_9_5.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996183/The_New_Way_to_Make_Money_with_AI_at_Night_Even_If_You_Have_a_9-5.png",
   hoursOfMaterial: "10.4 hours",
   modulesCount: 7,
   lessonsCount: 28,

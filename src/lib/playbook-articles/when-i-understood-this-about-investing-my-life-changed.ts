@@ -6,7 +6,7 @@ export const WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_ARTICLE: PlaybookArticle = {
   "readingTime": "30 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/When_I_Understood_This_About_Investing_My_Life_Changed.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996186/When_I_Understood_This_About_Investing._My_Life_Changed..png",
   "publishedDate": "August 2026",
   "authorName": "Akhil Varma",
   "authorTitle": "Fiduciary Strategist & Systematic Capital Allocator",

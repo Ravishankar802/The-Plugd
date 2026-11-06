@@ -27,7 +27,7 @@ export const REINVENT_90_DAYS_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/how_to_reinvent_yourself_in_90_days_to_become_rich_as_f_ck.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996171/how_to_reinvent_yourself_in_90_days_to_become_rich_as_fck.png",
   hoursOfMaterial: "10.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

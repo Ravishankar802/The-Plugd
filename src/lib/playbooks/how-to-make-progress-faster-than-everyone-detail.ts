@@ -27,7 +27,7 @@ export const HOW_TO_MAKE_PROGRESS_FASTER_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_to_make_progress_faster_than_everyone.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996172/How_to_make_progress_faster_than_everyone.png",
   hoursOfMaterial: "11.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

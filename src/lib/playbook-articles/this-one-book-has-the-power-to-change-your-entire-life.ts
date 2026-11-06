@@ -6,7 +6,7 @@ export const PSYCHO_CYBERNETICS_ONE_BOOK_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/This_ONE_Book_Has_The_Power_to_Change_Your_ENTIRE_Life.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996185/This_ONE_Book_Has_The_Power_to_Change_Your_ENTIRE_Life.png",
   "publishedDate": "2026",
   "authorName": "Manish Yadav",
   "authorTitle": "Behavioral Systems Architect & Performance Researcher",

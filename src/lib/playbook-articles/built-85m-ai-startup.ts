@@ -6,7 +6,7 @@ export const BUILT_85M_AI_STARTUP_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Built_An_85M_AI_Startup_in_5_Months_here_s_my_playbook.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793998241/I_Built_An_85M_AI_Startup_in_5_Months_here_s_my_playbook.png",
   "publishedDate": "2026",
   "authorName": "Nathan Cole",
   "authorTitle": "Founder & AI Enterprise Architect",

@@ -27,7 +27,7 @@ export const FREE_AI_SIDE_HUSTLE_INDIANS_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Tried_A_100_FREE_AI_Side_Hustle_For_Indians_Real_Results.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996173/I_Tried_A_100_FREE_AI_Side_Hustle_For_Indians_Real_Results.png",
   hoursOfMaterial: "8.4 hours",
   modulesCount: 7,
   lessonsCount: 28,

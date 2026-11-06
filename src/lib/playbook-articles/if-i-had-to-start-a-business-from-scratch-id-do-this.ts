@@ -6,7 +6,7 @@ export const START_BUSINESS_FROM_SCRATCH_ARTICLE: PlaybookArticle = {
   "readingTime": "35 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_I_Had_To_Start_a_Business_From_Scratch_I_d_Do_This.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996175/If_I_Had_To_Start_a_Business_From_Scratch_I_d_Do_This.png",
   "publishedDate": "2026",
   "authorName": "Dylan Scott",
   "authorTitle": "Founder & Service Business Strategist",

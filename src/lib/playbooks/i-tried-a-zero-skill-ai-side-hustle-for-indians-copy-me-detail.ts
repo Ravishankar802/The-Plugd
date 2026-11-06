@@ -27,7 +27,7 @@ export const ZERO_SKILL_AI_INDIANS_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Tried_A_Zero_Skill_AI_Side_Hustle_For_Indians_Copy_Me.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996174/I_Tried_A_Zero_Skill_AI_Side_Hustle_For_Indians_Copy_Me.png",
   hoursOfMaterial: "11.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

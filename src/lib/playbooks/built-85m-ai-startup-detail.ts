@@ -27,7 +27,7 @@ export const BUILT_85M_AI_STARTUP_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Built_An_85M_AI_Startup_in_5_Months_here_s_my_playbook.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793998241/I_Built_An_85M_AI_Startup_in_5_Months_here_s_my_playbook.png",
   hoursOfMaterial: "9.0 hours",
   modulesCount: 7,
   lessonsCount: 28,

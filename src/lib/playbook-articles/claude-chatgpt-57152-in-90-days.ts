@@ -6,7 +6,7 @@ export const CLAUDE_CHATGPT_57K_ARTICLE: PlaybookArticle = {
   "readingTime": "30 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Claude_ChatGPT_57_152_In_90_Days.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996170/Claude_ChatGPT_57_152_In_90_Days.png",
   "publishedDate": "2026",
   "authorName": "Rishabh Jain",
   "authorTitle": "Faceless Media Strategist & AI Content Architect",

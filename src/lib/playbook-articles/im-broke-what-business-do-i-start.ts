@@ -6,7 +6,7 @@ export const IM_BROKE_BUSINESS_ARTICLE: PlaybookArticle = {
   readingTime: "30 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_m_Broke_What_Business_Do_I_Start.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996181/I_m_Broke_What_Business_Do_I_Start.png",
   publishedDate: "2026",
   authorName: "Eduardo Martins",
   authorTitle: "Zero-Capital Business Strategist & Offer Design Architect",

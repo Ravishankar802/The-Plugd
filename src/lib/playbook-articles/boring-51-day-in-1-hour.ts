@@ -6,7 +6,7 @@ export const BORING_51_DAY_IN_1_HOUR_ARTICLE: PlaybookArticle = {
   "readingTime": "28 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996187/It_s_boring_but_I_make_51_day_in_1_hour_at_22.png",
   "publishedDate": "2026",
   "authorName": "Kunal Raj",
   "authorTitle": "Marketplace Arbitrage Operator & Commerce Strategist",

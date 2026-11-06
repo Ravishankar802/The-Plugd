@@ -27,7 +27,7 @@ export const ZERO_TO_1000_DROPSHIPPING_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "10/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Zero_To_1_000_Profit_with_Dropshipping_Using_AI_24HOURS.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996187/Zero_To_1_000_Profit_with_Dropshipping_Using_AI_24HOURS.png",
   hoursOfMaterial: "9.3 hours",
   modulesCount: 7,
   lessonsCount: 28,

@@ -27,7 +27,7 @@ export const THIS_AI_SIDE_HUSTLE_MAKES_4_LAKHS_DETAIL_DATA: PlaybookDetailData =
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/This_AI_Side_Hustle_Makes_4_Lakhs_Month_Copy_Me.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996185/This_AI_Side_Hustle_Makes_4_Lakhs_Month_Copy_Me.png",
   hoursOfMaterial: "11.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

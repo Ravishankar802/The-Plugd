@@ -27,7 +27,7 @@ export const I_SOLD_AI_DIGITAL_PRODUCTS_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/I_Sold_AI_Digital_Products_For_7_Days_100_FREE_Tools.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996173/I_Sold_AI_Digital_Products_For_7_Days_100_FREE_Tools.png",
   hoursOfMaterial: "11.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

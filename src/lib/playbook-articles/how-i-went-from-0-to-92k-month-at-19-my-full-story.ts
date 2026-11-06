@@ -6,7 +6,7 @@ export const HOW_I_WENT_FROM_0_TO_92K_MONTH_AT_19_ARTICLE: PlaybookArticle = {
   "readingTime": "40 min read",
   "categoryName": "AI",
   "categorySlug": "ai-businesses",
-  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/How_I_Went_From_0_to_92K_Month_at_19_My_Full_Story.png",
+  "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996170/How_I_Went_From_0_to_92K_Month_at_19_My_Full_Story.png",
   "publishedDate": "2026",
   "authorName": "Terence Chew",
   "authorTitle": "Sales Systems Architect & Agency Operator",
