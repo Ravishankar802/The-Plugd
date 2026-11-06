@@ -27,7 +27,7 @@ export const ONE_MONEY_PLAYBOOK_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996177/If_You_Only_Read_One_Money_Playbook_Make_It_This.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793999984/If_You_Only_Read_One_Money_Playbook_Make_It_This.png",
   hoursOfMaterial: "11.2 hours",
   modulesCount: 7,
   lessonsCount: 28,

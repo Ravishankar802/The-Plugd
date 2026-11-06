@@ -6,7 +6,7 @@ export const ONE_MONEY_PLAYBOOK_ARTICLE: PlaybookArticle = {
   readingTime: "34 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996177/If_You_Only_Read_One_Money_Playbook_Make_It_This.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793999984/If_You_Only_Read_One_Money_Playbook_Make_It_This.png",
   publishedDate: "2026",
   authorName: "Jordan Hayes",
   authorTitle: "Capital Allocator & Wealth Systems Strategist",

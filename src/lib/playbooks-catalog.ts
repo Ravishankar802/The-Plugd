@@ -161,7 +161,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#10b981",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996177/If_You_Only_Read_One_Money_Playbook_Make_It_This.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793999984/If_You_Only_Read_One_Money_Playbook_Make_It_This.png",
       "href": "/if-you-only-read-one-money-playbook-make-it-this"
   },
   {
@@ -287,7 +287,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "rating": 4.9,
       "ratingCount": "4.9k",
       "accentColor": "#d97706",
-      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996176/If_I_Wanted_to_Make_My_First_100K_in_2027_I_d_Do_This.png",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794000202/If_I_Wanted_to_Make_My_First_100K_in_2027_I_d_Do_This.png",
       "href": "/if-i-wanted-to-make-my-first-100k-in-2027-id-do-this"
   },
   {

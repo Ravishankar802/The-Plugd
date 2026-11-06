@@ -27,7 +27,7 @@ export const FIRST_100K_IN_2027_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996176/If_I_Wanted_to_Make_My_First_100K_in_2027_I_d_Do_This.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794000202/If_I_Wanted_to_Make_My_First_100K_in_2027_I_d_Do_This.png",
   hoursOfMaterial: "11.2 hours",
   modulesCount: 7,
   lessonsCount: 28,
