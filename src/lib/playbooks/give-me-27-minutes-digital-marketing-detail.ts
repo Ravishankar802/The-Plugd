@@ -17,7 +17,7 @@ export const GIVE_ME_27_MINS_DIGITAL_MARKETING_DETAIL_DATA: PlaybookDetailData =
   rating: 4.9,
   ratingCount: "5.1k",
   studentsCount: "3,840",
-  instructorName: "Caleb String",
+  instructorName: "Caleb Sterling",
   instructorTitle: "Direct-Response Strategist & Growth Architect",
   instructorBio: "",
   instructorRating: 4.9,

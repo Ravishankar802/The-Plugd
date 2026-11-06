@@ -8,7 +8,7 @@ export const GIVE_ME_27_MINS_DIGITAL_MARKETING_ARTICLE: PlaybookArticle = {
   "categorySlug": "ai-businesses",
   "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/Give_Me_27_Minutes_and_I_ll_Make_You_Disgustingly_Good_at_Digital_Marketing.png",
   "publishedDate": "2026",
-  "authorName": "Caleb String",
+  "authorName": "Caleb Sterling",
   "authorTitle": "Direct-Response Strategist & Growth Architect",
   "introParagraphs": [
     "A practical playbook for mastering attention, persuasion, advertising, market research, copywriting, and funnel optimisation.",

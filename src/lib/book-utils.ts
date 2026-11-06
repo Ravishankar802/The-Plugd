@@ -665,7 +665,7 @@ if (
     slug === "ai-businesses-63"
   ) {
     return {
-      name: "Caleb String",
+      name: "Caleb Sterling",
       avatar: "",
       booksCount: 1,
       followersCount: "",
