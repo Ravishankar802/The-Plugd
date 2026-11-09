@@ -1266,11 +1266,5008 @@ if (
 /**
  * High quality, realistic community reviews
  */
+export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = {
+  "the-1-000-hour-1-person-ai-business": [
+    {
+      "id": "rev-1",
+      "name": "Aditya",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Excellent breakdown of how to actually sell AI services to businesses. The focus on fixing real marketing problems instead of pitching random AI automations completely changed how I look at this opportunity.",
+      "likes": 44
+    },
+    {
+      "id": "rev-2",
+      "name": "Sanjana",
+      "avatar": "",
+      "date": "30d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The Dream 100 strategy and personalised audit templates are gold. I especially liked how the playbook explains finding businesses, identifying their conversion gaps, and approaching owners with something genuinely useful.",
+      "likes": 38
+    },
+    {
+      "id": "rev-3",
+      "name": "Raghav",
+      "avatar": "",
+      "date": "22d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Very practical and well structured. The landing-page workflows, pricing logic, client acquisition system, and 90-day roadmap make this feel like an actual business blueprint rather than another AI side-hustle guide.",
+      "likes": 26
+    },
+    {
+      "id": "rev-4",
+      "name": "Devika",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "My favourite part is the emphasis on measurable business results. It explains how to connect marketing improvements to qualified leads and booked jobs instead of blindly selling websites or AI agents. A genuinely valuable read.",
+      "likes": 25
+    }
+  ],
+  "ai-businesses-103": [
+    {
+      "id": "rev-1",
+      "name": "Aditya",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Excellent breakdown of how to actually sell AI services to businesses. The focus on fixing real marketing problems instead of pitching random AI automations completely changed how I look at this opportunity.",
+      "likes": 44
+    },
+    {
+      "id": "rev-2",
+      "name": "Sanjana",
+      "avatar": "",
+      "date": "30d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The Dream 100 strategy and personalised audit templates are gold. I especially liked how the playbook explains finding businesses, identifying their conversion gaps, and approaching owners with something genuinely useful.",
+      "likes": 38
+    },
+    {
+      "id": "rev-3",
+      "name": "Raghav",
+      "avatar": "",
+      "date": "22d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Very practical and well structured. The landing-page workflows, pricing logic, client acquisition system, and 90-day roadmap make this feel like an actual business blueprint rather than another AI side-hustle guide.",
+      "likes": 26
+    },
+    {
+      "id": "rev-4",
+      "name": "Devika",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "My favourite part is the emphasis on measurable business results. It explains how to connect marketing improvements to qualified leads and booked jobs instead of blindly selling websites or AI agents. A genuinely valuable read.",
+      "likes": 25
+    }
+  ],
+  "top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked": [
+    {
+      "id": "rev-1",
+      "name": "Marcus Vance",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "The rare AI playbook with zero filler — pure tactical signal.",
+      "content": "I've read dozens of business and tech guides, and 95% could have been a blog post. \"Top 10 Claude AI Side Hustles That Can Pay A Full-Time Income (Ranked)\" is the complete opposite. It reads like Peter Thiel's Zero to One applied directly to this vertical. The mental models, concrete unit economics, and step-by-step systems gave me a complete operational playbook. Finished the whole book in two sittings and immediately restructured our team's workflow.",
+      "likes": 74
+    },
+    {
+      "id": "rev-2",
+      "name": "Elena Rostova",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "Worth 50x the price. Structured like an elite executive briefing.",
+      "content": "What sets this playbook apart is its rigor. It doesn't promise overnight riches or give vague advice. Instead, it systematically breaks down the architectural foundations, failure points, and competitive moats. The breakdown in Chapter 3 alone saved us months of trial and error. Easily one of my top 3 business reads this year.",
+      "likes": 57
+    },
+    {
+      "id": "rev-3",
+      "name": "David Chen",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 4,
+      "headline": "Extremely deep and practical. Dense with actionable insights.",
+      "content": "Dense, highly technical yet completely accessible. The decision frameworks and worked examples make execution feel inevitable if you put in the hours. Highly recommend printing or keeping the reference charts close by.",
+      "likes": 43
+    },
+    {
+      "id": "rev-4",
+      "name": "Sarah Jenkins",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "Masterpiece in concise, high-leverage instruction.",
+      "content": "This is what business publishing should look like in 2026. Every chapter is disciplined, packed with empirical data and battle-tested directives. You leave with an unfair clarity that other books never deliver.",
+      "likes": 30
+    }
+  ],
+  "ai-businesses-102": [
+    {
+      "id": "rev-1",
+      "name": "Marcus Vance",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "The rare AI playbook with zero filler — pure tactical signal.",
+      "content": "I've read dozens of business and tech guides, and 95% could have been a blog post. \"Top 10 Claude AI Side Hustles That Can Pay A Full-Time Income (Ranked)\" is the complete opposite. It reads like Peter Thiel's Zero to One applied directly to this vertical. The mental models, concrete unit economics, and step-by-step systems gave me a complete operational playbook. Finished the whole book in two sittings and immediately restructured our team's workflow.",
+      "likes": 74
+    },
+    {
+      "id": "rev-2",
+      "name": "Elena Rostova",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "Worth 50x the price. Structured like an elite executive briefing.",
+      "content": "What sets this playbook apart is its rigor. It doesn't promise overnight riches or give vague advice. Instead, it systematically breaks down the architectural foundations, failure points, and competitive moats. The breakdown in Chapter 3 alone saved us months of trial and error. Easily one of my top 3 business reads this year.",
+      "likes": 57
+    },
+    {
+      "id": "rev-3",
+      "name": "David Chen",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 4,
+      "headline": "Extremely deep and practical. Dense with actionable insights.",
+      "content": "Dense, highly technical yet completely accessible. The decision frameworks and worked examples make execution feel inevitable if you put in the hours. Highly recommend printing or keeping the reference charts close by.",
+      "likes": 43
+    },
+    {
+      "id": "rev-4",
+      "name": "Sarah Jenkins",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "Masterpiece in concise, high-leverage instruction.",
+      "content": "This is what business publishing should look like in 2026. Every chapter is disciplined, packed with empirical data and battle-tested directives. You leave with an unfair clarity that other books never deliver.",
+      "likes": 30
+    }
+  ],
+  "i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results": [
+    {
+      "id": "rev-1",
+      "name": "Marcus Vance",
+      "avatar": "",
+      "date": "26d ago",
+      "rating": 5,
+      "headline": "The rare AI playbook with zero filler — pure tactical signal.",
+      "content": "I've read dozens of business and tech guides, and 95% could have been a blog post. \"I Tested 3 Methods To Make ₹1 Lakh With AI in India?(Real Results)\" is the complete opposite. It reads like Peter Thiel's Zero to One applied directly to this vertical. The mental models, concrete unit economics, and step-by-step systems gave me a complete operational playbook. Finished the whole book in two sittings and immediately restructured our team's workflow.",
+      "likes": 64
+    },
+    {
+      "id": "rev-2",
+      "name": "Elena Rostova",
+      "avatar": "",
+      "date": "23d ago",
+      "rating": 5,
+      "headline": "Worth 50x the price. Structured like an elite executive briefing.",
+      "content": "What sets this playbook apart is its rigor. It doesn't promise overnight riches or give vague advice. Instead, it systematically breaks down the architectural foundations, failure points, and competitive moats. The breakdown in Chapter 3 alone saved us months of trial and error. Easily one of my top 3 business reads this year.",
+      "likes": 51
+    },
+    {
+      "id": "rev-3",
+      "name": "David Chen",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 4,
+      "headline": "Extremely deep and practical. Dense with actionable insights.",
+      "content": "Dense, highly technical yet completely accessible. The decision frameworks and worked examples make execution feel inevitable if you put in the hours. Highly recommend printing or keeping the reference charts close by.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Sarah Jenkins",
+      "avatar": "",
+      "date": "10d ago",
+      "rating": 5,
+      "headline": "Masterpiece in concise, high-leverage instruction.",
+      "content": "This is what business publishing should look like in 2026. Every chapter is disciplined, packed with empirical data and battle-tested directives. You leave with an unfair clarity that other books never deliver.",
+      "likes": 21
+    }
+  ],
+  "ai-businesses-101": [
+    {
+      "id": "rev-1",
+      "name": "Marcus Vance",
+      "avatar": "",
+      "date": "26d ago",
+      "rating": 5,
+      "headline": "The rare AI playbook with zero filler — pure tactical signal.",
+      "content": "I've read dozens of business and tech guides, and 95% could have been a blog post. \"I Tested 3 Methods To Make ₹1 Lakh With AI in India?(Real Results)\" is the complete opposite. It reads like Peter Thiel's Zero to One applied directly to this vertical. The mental models, concrete unit economics, and step-by-step systems gave me a complete operational playbook. Finished the whole book in two sittings and immediately restructured our team's workflow.",
+      "likes": 64
+    },
+    {
+      "id": "rev-2",
+      "name": "Elena Rostova",
+      "avatar": "",
+      "date": "23d ago",
+      "rating": 5,
+      "headline": "Worth 50x the price. Structured like an elite executive briefing.",
+      "content": "What sets this playbook apart is its rigor. It doesn't promise overnight riches or give vague advice. Instead, it systematically breaks down the architectural foundations, failure points, and competitive moats. The breakdown in Chapter 3 alone saved us months of trial and error. Easily one of my top 3 business reads this year.",
+      "likes": 51
+    },
+    {
+      "id": "rev-3",
+      "name": "David Chen",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 4,
+      "headline": "Extremely deep and practical. Dense with actionable insights.",
+      "content": "Dense, highly technical yet completely accessible. The decision frameworks and worked examples make execution feel inevitable if you put in the hours. Highly recommend printing or keeping the reference charts close by.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Sarah Jenkins",
+      "avatar": "",
+      "date": "10d ago",
+      "rating": 5,
+      "headline": "Masterpiece in concise, high-leverage instruction.",
+      "content": "This is what business publishing should look like in 2026. Every chapter is disciplined, packed with empirical data and battle-tested directives. You leave with an unfair clarity that other books never deliver.",
+      "likes": 21
+    }
+  ],
+  "this-ai-side-hustle-makes-4-lakhs-month-copy-me": [
+    {
+      "id": "rev-1",
+      "name": "Vikram",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The four-stage progression is what makes this playbook so useful. Instead of trying to launch a full agency immediately, you can start with creator coordination, learn how campaigns work, and gradually add higher-value services. Very actionable.",
+      "likes": 93
+    },
+    {
+      "id": "rev-2",
+      "name": "Sagar",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I especially liked the brand prospecting and outreach sections. The Meta Ads Library workflow, creator database, and email templates give you a much clearer idea of how to find potential clients and approach them professionally.",
+      "likes": 71
+    },
+    {
+      "id": "rev-3",
+      "name": "Samarth",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The AI UGC section was excellent. It explains how to go from brand research to scripts, hooks, video generation, and quality checks. I also appreciate that it doesn't pretend AI-generated ads can replace every real creator.",
+      "likes": 60
+    },
+    {
+      "id": "rev-4",
+      "name": "Namratha",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This feels more like an actual agency operating manual than a typical side-hustle guide. The campaign trackers, client onboarding checklist, creator agreements, and reporting templates are incredibly practical. Great resource for anyone exploring UGC services.",
+      "likes": 44
+    }
+  ],
+  "ai-businesses-100": [
+    {
+      "id": "rev-1",
+      "name": "Vikram",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The four-stage progression is what makes this playbook so useful. Instead of trying to launch a full agency immediately, you can start with creator coordination, learn how campaigns work, and gradually add higher-value services. Very actionable.",
+      "likes": 93
+    },
+    {
+      "id": "rev-2",
+      "name": "Sagar",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I especially liked the brand prospecting and outreach sections. The Meta Ads Library workflow, creator database, and email templates give you a much clearer idea of how to find potential clients and approach them professionally.",
+      "likes": 71
+    },
+    {
+      "id": "rev-3",
+      "name": "Samarth",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The AI UGC section was excellent. It explains how to go from brand research to scripts, hooks, video generation, and quality checks. I also appreciate that it doesn't pretend AI-generated ads can replace every real creator.",
+      "likes": 60
+    },
+    {
+      "id": "rev-4",
+      "name": "Namratha",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This feels more like an actual agency operating manual than a typical side-hustle guide. The campaign trackers, client onboarding checklist, creator agreements, and reporting templates are incredibly practical. Great resource for anyone exploring UGC services.",
+      "likes": 44
+    }
+  ],
+  "i-tried-a-100-free-ai-side-hustle-for-indians-real-results": [
+    {
+      "id": "rev-1",
+      "name": "Anirudh",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I liked how practical this was. Instead of just throwing around AI business ideas, it actually walks you through making a product, setting up the listing, and getting it in front of people on Pinterest. Easy to follow.",
+      "likes": 59
+    },
+    {
+      "id": "rev-2",
+      "name": "Sneha",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The freebie-to-paid-product strategy was my favourite part. I hadn't thought about using a small printable as an entry point to a more complete product. The prompts and worksheets make the whole process much easier to approach.",
+      "likes": 44
+    },
+    {
+      "id": "rev-3",
+      "name": "Dhruv",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI side hustle guide that doesn't pretend everything is effortless. The Pinterest research, Canva workflow, and Gumroad setup are explained clearly. I especially appreciate the section on tracking actual sales instead of just celebrating downloads.",
+      "likes": 30
+    },
+    {
+      "id": "rev-4",
+      "name": "Tanvi Bhatia",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really useful for someone starting without a big budget. I liked that it covers the small details too — product previews, Pin descriptions, destination links, and even what to check when people click but don't buy. It feels like an actual launch plan, not just motivation.",
+      "likes": 21
+    }
+  ],
+  "ai-businesses-61": [
+    {
+      "id": "rev-1",
+      "name": "Anirudh",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I liked how practical this was. Instead of just throwing around AI business ideas, it actually walks you through making a product, setting up the listing, and getting it in front of people on Pinterest. Easy to follow.",
+      "likes": 59
+    },
+    {
+      "id": "rev-2",
+      "name": "Sneha",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The freebie-to-paid-product strategy was my favourite part. I hadn't thought about using a small printable as an entry point to a more complete product. The prompts and worksheets make the whole process much easier to approach.",
+      "likes": 44
+    },
+    {
+      "id": "rev-3",
+      "name": "Dhruv",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI side hustle guide that doesn't pretend everything is effortless. The Pinterest research, Canva workflow, and Gumroad setup are explained clearly. I especially appreciate the section on tracking actual sales instead of just celebrating downloads.",
+      "likes": 30
+    },
+    {
+      "id": "rev-4",
+      "name": "Tanvi Bhatia",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really useful for someone starting without a big budget. I liked that it covers the small details too — product previews, Pin descriptions, destination links, and even what to check when people click but don't buy. It feels like an actual launch plan, not just motivation.",
+      "likes": 21
+    }
+  ],
+  "when-i-understood-this-about-investing-my-life-changed": [
+    {
+      "id": "rev-1",
+      "name": "Suman",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This completely changed how I approach investment opportunities. The Four Goods framework is particularly valuable because it forces you to look beyond attractive numbers and examine the people and incentives behind a deal. Definitely something I'll keep coming back to.",
+      "likes": 110
+    },
+    {
+      "id": "rev-2",
+      "name": "Himanshu",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The capital stack explanation was an eye-opener. I never really understood how different investors could have completely different levels of protection in the same company. The examples and checklists make a complicated subject much easier to understand.",
+      "likes": 81
+    },
+    {
+      "id": "rev-3",
+      "name": "Shreya",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I love how practical this is. Instead of telling you which stocks to buy, it teaches you how to evaluate opportunities yourself. The 100-point scorecard is a great way to organise your thinking and compare investments without getting caught up in hype.",
+      "likes": 68
+    },
+    {
+      "id": "rev-4",
+      "name": "Ranjan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the best things about this playbook is how it connects everything: compounding, taxes, fees, risk, due diligence, and your actual responsibility as an investor. It feels like a proper decision-making system rather than another collection of generic investing tips.",
+      "likes": 54
+    }
+  ],
+  "ai-businesses-99": [
+    {
+      "id": "rev-1",
+      "name": "Suman",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This completely changed how I approach investment opportunities. The Four Goods framework is particularly valuable because it forces you to look beyond attractive numbers and examine the people and incentives behind a deal. Definitely something I'll keep coming back to.",
+      "likes": 110
+    },
+    {
+      "id": "rev-2",
+      "name": "Himanshu",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The capital stack explanation was an eye-opener. I never really understood how different investors could have completely different levels of protection in the same company. The examples and checklists make a complicated subject much easier to understand.",
+      "likes": 81
+    },
+    {
+      "id": "rev-3",
+      "name": "Shreya",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I love how practical this is. Instead of telling you which stocks to buy, it teaches you how to evaluate opportunities yourself. The 100-point scorecard is a great way to organise your thinking and compare investments without getting caught up in hype.",
+      "likes": 68
+    },
+    {
+      "id": "rev-4",
+      "name": "Ranjan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the best things about this playbook is how it connects everything: compounding, taxes, fees, risk, due diligence, and your actual responsibility as an investor. It feels like a proper decision-making system rather than another collection of generic investing tips.",
+      "likes": 54
+    }
+  ],
+  "in-18-minutes-youll-understand-generational-wealth": [
+    {
+      "id": "rev-1",
+      "name": "Dominic",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Such an interesting perspective on wealth. I always thought generational wealth was mostly about accumulating enough money to pass down. This made me realise that ownership structures, governance, and succession planning are just as important. The nine-system framework is excellent.",
+      "likes": 114
+    },
+    {
+      "id": "rev-2",
+      "name": "Camila",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The family constitution and governance sections were my favourites. It's easy to imagine how disagreements between heirs can destroy something that took decades to build. The practical examples make these problems feel very real, and the worksheets are genuinely useful.",
+      "likes": 99
+    },
+    {
+      "id": "rev-3",
+      "name": "Isaiah",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I appreciated that this goes beyond investing advice. It explains how trusts, holding companies, liquidity, and long-term ownership fit together. The section on preparing the next generation was especially valuable. Wealth without the knowledge to manage it doesn't last.",
+      "likes": 60
+    },
+    {
+      "id": "rev-4",
+      "name": "Raghavan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Very well structured and surprisingly practical for such a complex topic. I particularly liked the India-specific section because it makes clear that you can't simply copy American estate-planning strategies. A great introduction to thinking about wealth beyond your own lifetime.",
+      "likes": 44
+    }
+  ],
+  "ai-businesses-96": [
+    {
+      "id": "rev-1",
+      "name": "Dominic",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Such an interesting perspective on wealth. I always thought generational wealth was mostly about accumulating enough money to pass down. This made me realise that ownership structures, governance, and succession planning are just as important. The nine-system framework is excellent.",
+      "likes": 114
+    },
+    {
+      "id": "rev-2",
+      "name": "Camila",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The family constitution and governance sections were my favourites. It's easy to imagine how disagreements between heirs can destroy something that took decades to build. The practical examples make these problems feel very real, and the worksheets are genuinely useful.",
+      "likes": 99
+    },
+    {
+      "id": "rev-3",
+      "name": "Isaiah",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I appreciated that this goes beyond investing advice. It explains how trusts, holding companies, liquidity, and long-term ownership fit together. The section on preparing the next generation was especially valuable. Wealth without the knowledge to manage it doesn't last.",
+      "likes": 60
+    },
+    {
+      "id": "rev-4",
+      "name": "Raghavan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Very well structured and surprisingly practical for such a complex topic. I particularly liked the India-specific section because it makes clear that you can't simply copy American estate-planning strategies. A great introduction to thinking about wealth beyond your own lifetime.",
+      "likes": 44
+    }
+  ],
+  "laziest-way-to-make-money-online-in-2026-500-day": [
+    {
+      "id": "rev-1",
+      "name": "Nitin",
+      "avatar": "",
+      "date": "22d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the clearest guides I've read on building a digital-product business. The third-layer theory helped me understand why targeting a specific problem is so much better than creating another generic ebook. The influencer strategy is a great addition.",
+      "likes": 45
+    },
+    {
+      "id": "rev-2",
+      "name": "Lakshya Sethi",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I really liked how practical this is. It covers everything from finding an idea and using AI to create the product to getting it in front of actual buyers. The 30-day launch plan makes the whole process feel manageable.",
+      "likes": 38
+    },
+    {
+      "id": "rev-3",
+      "name": "Shanaya",
+      "avatar": "",
+      "date": "14d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The micro-influencer partnership model was the biggest takeaway for me. Instead of relying entirely on ads, this shows how to find relevant creators and build performance-based partnerships. Very actionable.",
+      "likes": 31
+    },
+    {
+      "id": "rev-4",
+      "name": "Ishita",
+      "avatar": "",
+      "date": "09 ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This is much more than a collection of AI prompts. It actually explains the business behind digital products, including research, validation, product quality, distribution, and profit calculations. Definitely worth studying.",
+      "likes": 12
+    }
+  ],
+  "ai-businesses-09": [
+    {
+      "id": "rev-1",
+      "name": "Nitin",
+      "avatar": "",
+      "date": "22d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the clearest guides I've read on building a digital-product business. The third-layer theory helped me understand why targeting a specific problem is so much better than creating another generic ebook. The influencer strategy is a great addition.",
+      "likes": 45
+    },
+    {
+      "id": "rev-2",
+      "name": "Lakshya Sethi",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I really liked how practical this is. It covers everything from finding an idea and using AI to create the product to getting it in front of actual buyers. The 30-day launch plan makes the whole process feel manageable.",
+      "likes": 38
+    },
+    {
+      "id": "rev-3",
+      "name": "Shanaya",
+      "avatar": "",
+      "date": "14d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The micro-influencer partnership model was the biggest takeaway for me. Instead of relying entirely on ads, this shows how to find relevant creators and build performance-based partnerships. Very actionable.",
+      "likes": 31
+    },
+    {
+      "id": "rev-4",
+      "name": "Ishita",
+      "avatar": "",
+      "date": "09 ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This is much more than a collection of AI prompts. It actually explains the business behind digital products, including research, validation, product quality, distribution, and profit calculations. Definitely worth studying.",
+      "likes": 12
+    }
+  ],
+  "if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this": [
+    {
+      "id": "rev-1",
+      "name": "Everett",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've consumed way too much business content without actually getting anywhere. The niche-selection process finally gave me a way to compare ideas instead of jumping between them. The Six Ps framework is probably my favourite part because it turns a vague business idea into an actual offer.",
+      "likes": 124
+    },
+    {
+      "id": "rev-2",
+      "name": "Mariana",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The discovery-call section is incredibly valuable. I used to think selling meant convincing people to buy, but this explains how to understand their problems first and present an offer that makes sense. The different conversation frameworks are especially helpful for beginners.",
+      "likes": 93
+    },
+    {
+      "id": "rev-3",
+      "name": "Jayden",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What stood out to me was the emphasis on selling the offer before spending months building the product. The examples, worksheets, and validation tracker make it much easier to take action. It's a refreshing approach compared with all the usual build-a-brand-first advice.",
+      "likes": 71
+    },
+    {
+      "id": "rev-4",
+      "name": "Silva",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I appreciate that the playbook doesn't pretend $100K is guaranteed or that revenue equals profit. It breaks down the actual stages, from choosing a niche to getting the first sale and building momentum. The 12-month roadmap gives you something concrete to work towards without making the process feel mysterious.",
+      "likes": 56
+    }
+  ],
+  "ai-businesses-95": [
+    {
+      "id": "rev-1",
+      "name": "Everett",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've consumed way too much business content without actually getting anywhere. The niche-selection process finally gave me a way to compare ideas instead of jumping between them. The Six Ps framework is probably my favourite part because it turns a vague business idea into an actual offer.",
+      "likes": 124
+    },
+    {
+      "id": "rev-2",
+      "name": "Mariana",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The discovery-call section is incredibly valuable. I used to think selling meant convincing people to buy, but this explains how to understand their problems first and present an offer that makes sense. The different conversation frameworks are especially helpful for beginners.",
+      "likes": 93
+    },
+    {
+      "id": "rev-3",
+      "name": "Jayden",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What stood out to me was the emphasis on selling the offer before spending months building the product. The examples, worksheets, and validation tracker make it much easier to take action. It's a refreshing approach compared with all the usual build-a-brand-first advice.",
+      "likes": 71
+    },
+    {
+      "id": "rev-4",
+      "name": "Silva",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I appreciate that the playbook doesn't pretend $100K is guaranteed or that revenue equals profit. It breaks down the actual stages, from choosing a niche to getting the first sale and building momentum. The 12-month roadmap gives you something concrete to work towards without making the process feel mysterious.",
+      "likes": 56
+    }
+  ],
+  "if-you-only-read-one-money-playbook-make-it-this": [
+    {
+      "id": "rev-1",
+      "name": "Julia",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the clearest explanations of wealth-building I've come across. The distinction between earning money and actually owning assets really changed how I look at financial decisions. The seven laws tie everything together beautifully.",
+      "likes": 92
+    },
+    {
+      "id": "rev-2",
+      "name": "Enes",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I especially liked the sections on leverage and position sizing. People talk endlessly about making bigger returns, but rarely explain how to avoid losing everything along the way. This playbook does a great job balancing ambition with financial discipline.",
+      "likes": 77
+    },
+    {
+      "id": "rev-3",
+      "name": "Mark",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The five-question investment framework alone makes this worth reading. I now have a much better way to evaluate opportunities instead of getting distracted by impressive returns or exciting promises. Practical, insightful, and easy to revisit.",
+      "likes": 50
+    },
+    {
+      "id": "rev-4",
+      "name": "Krishnamurthy",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What stood out to me was the connection between cash flow, equity, ownership, and control. It goes beyond basic saving and investing advice and gets into how wealth actually gets built and protected. The worksheets make the concepts much easier to apply.",
+      "likes": 33
+    }
+  ],
+  "ai-businesses-94": [
+    {
+      "id": "rev-1",
+      "name": "Julia",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the clearest explanations of wealth-building I've come across. The distinction between earning money and actually owning assets really changed how I look at financial decisions. The seven laws tie everything together beautifully.",
+      "likes": 92
+    },
+    {
+      "id": "rev-2",
+      "name": "Enes",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I especially liked the sections on leverage and position sizing. People talk endlessly about making bigger returns, but rarely explain how to avoid losing everything along the way. This playbook does a great job balancing ambition with financial discipline.",
+      "likes": 77
+    },
+    {
+      "id": "rev-3",
+      "name": "Mark",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The five-question investment framework alone makes this worth reading. I now have a much better way to evaluate opportunities instead of getting distracted by impressive returns or exciting promises. Practical, insightful, and easy to revisit.",
+      "likes": 50
+    },
+    {
+      "id": "rev-4",
+      "name": "Krishnamurthy",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What stood out to me was the connection between cash flow, equity, ownership, and control. It goes beyond basic saving and investing advice and gets into how wealth actually gets built and protected. The worksheets make the concepts much easier to apply.",
+      "likes": 33
+    }
+  ],
+  "if-i-wanted-to-make-my-first-100k-in-2027-id-do-this": [
+    {
+      "id": "rev-1",
+      "name": "Marcus Vance",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "The rare AI playbook with zero filler — pure tactical signal.",
+      "content": "I've read dozens of business and tech guides, and 95% could have been a blog post. \"If I Wanted to Make My First $100K in 2027, I’d Do This\" is the complete opposite. It reads like Peter Thiel's Zero to One applied directly to this vertical. The mental models, concrete unit economics, and step-by-step systems gave me a complete operational playbook. Finished the whole book in two sittings and immediately restructured our team's workflow.",
+      "likes": 55
+    },
+    {
+      "id": "rev-2",
+      "name": "Elena Rostova",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "Worth 50x the price. Structured like an elite executive briefing.",
+      "content": "What sets this playbook apart is its rigor. It doesn't promise overnight riches or give vague advice. Instead, it systematically breaks down the architectural foundations, failure points, and competitive moats. The breakdown in Chapter 3 alone saved us months of trial and error. Easily one of my top 3 business reads this year.",
+      "likes": 47
+    },
+    {
+      "id": "rev-3",
+      "name": "David Chen",
+      "avatar": "",
+      "date": "25d ago",
+      "rating": 4,
+      "headline": "Extremely deep and practical. Dense with actionable insights.",
+      "content": "Dense, highly technical yet completely accessible. The decision frameworks and worked examples make execution feel inevitable if you put in the hours. Highly recommend printing or keeping the reference charts close by.",
+      "likes": 32
+    },
+    {
+      "id": "rev-4",
+      "name": "Sarah Jenkins",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "Masterpiece in concise, high-leverage instruction.",
+      "content": "This is what business publishing should look like in 2026. Every chapter is disciplined, packed with empirical data and battle-tested directives. You leave with an unfair clarity that other books never deliver.",
+      "likes": 21
+    }
+  ],
+  "ai-businesses-88": [
+    {
+      "id": "rev-1",
+      "name": "Marcus Vance",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "The rare AI playbook with zero filler — pure tactical signal.",
+      "content": "I've read dozens of business and tech guides, and 95% could have been a blog post. \"If I Wanted to Make My First $100K in 2027, I’d Do This\" is the complete opposite. It reads like Peter Thiel's Zero to One applied directly to this vertical. The mental models, concrete unit economics, and step-by-step systems gave me a complete operational playbook. Finished the whole book in two sittings and immediately restructured our team's workflow.",
+      "likes": 55
+    },
+    {
+      "id": "rev-2",
+      "name": "Elena Rostova",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "Worth 50x the price. Structured like an elite executive briefing.",
+      "content": "What sets this playbook apart is its rigor. It doesn't promise overnight riches or give vague advice. Instead, it systematically breaks down the architectural foundations, failure points, and competitive moats. The breakdown in Chapter 3 alone saved us months of trial and error. Easily one of my top 3 business reads this year.",
+      "likes": 47
+    },
+    {
+      "id": "rev-3",
+      "name": "David Chen",
+      "avatar": "",
+      "date": "25d ago",
+      "rating": 4,
+      "headline": "Extremely deep and practical. Dense with actionable insights.",
+      "content": "Dense, highly technical yet completely accessible. The decision frameworks and worked examples make execution feel inevitable if you put in the hours. Highly recommend printing or keeping the reference charts close by.",
+      "likes": 32
+    },
+    {
+      "id": "rev-4",
+      "name": "Sarah Jenkins",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "Masterpiece in concise, high-leverage instruction.",
+      "content": "This is what business publishing should look like in 2026. Every chapter is disciplined, packed with empirical data and battle-tested directives. You leave with an unfair clarity that other books never deliver.",
+      "likes": 21
+    }
+  ],
+  "copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026": [
+    {
+      "id": "rev-1",
+      "name": "Corey Bryant",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the more interesting AI business models I've come across. The shadow operator concept is explained clearly, and the step-by-step process makes it feel much easier to approach.",
+      "likes": 45
+    },
+    {
+      "id": "rev-2",
+      "name": "Denzel Parker",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved how practical this is. The creator research framework, outreach scripts, and partnership templates give you an actual starting point instead of just another motivational guide.",
+      "likes": 30
+    },
+    {
+      "id": "rev-3",
+      "name": "Kaden",
+      "avatar": "",
+      "date": "16d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The best part is understanding how to combine AI skills with someone else's audience and expertise. It completely changed how I think about building an online business.",
+      "likes": 21
+    },
+    {
+      "id": "rev-4",
+      "name": "Jaylen",
+      "avatar": "",
+      "date": "10d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Super detailed and actionable. I especially liked the revenue-sharing breakdown, AI prompts, and 30-day plan. It covers the business side, not just product creation.",
+      "likes": 18
+    }
+  ],
+  "ai-businesses-07": [
+    {
+      "id": "rev-1",
+      "name": "Corey Bryant",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the more interesting AI business models I've come across. The shadow operator concept is explained clearly, and the step-by-step process makes it feel much easier to approach.",
+      "likes": 45
+    },
+    {
+      "id": "rev-2",
+      "name": "Denzel Parker",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved how practical this is. The creator research framework, outreach scripts, and partnership templates give you an actual starting point instead of just another motivational guide.",
+      "likes": 30
+    },
+    {
+      "id": "rev-3",
+      "name": "Kaden",
+      "avatar": "",
+      "date": "16d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The best part is understanding how to combine AI skills with someone else's audience and expertise. It completely changed how I think about building an online business.",
+      "likes": 21
+    },
+    {
+      "id": "rev-4",
+      "name": "Jaylen",
+      "avatar": "",
+      "date": "10d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Super detailed and actionable. I especially liked the revenue-sharing breakdown, AI prompts, and 30-day plan. It covers the business side, not just product creation.",
+      "likes": 18
+    }
+  ],
+  "starting-an-ai-side-hustle-is-easy-copy-this-system": [
+    {
+      "id": "rev-1",
+      "name": "Noah",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI business guide that doesn't just throw 50 side hustle ideas at you. The four-gate framework completely changed how I evaluate opportunities. I especially liked the distinction between being able to build something and having actual evidence that someone wants to buy it.",
+      "likes": 114
+    },
+    {
+      "id": "rev-2",
+      "name": "Aditi",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section on finding your edge was my favourite. Imagination, focus, and context are such simple concepts, but the explanations made me realise why most AI services look identical. The customer workflow exercises are particularly useful for finding opportunities that aren't obvious at first.",
+      "likes": 94
+    },
+    {
+      "id": "rev-3",
+      "name": "Sebastian",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I used to think distribution was something to figure out after building the product. This playbook makes it clear why that's backwards. The user-versus-buyer distinction and channel selection framework are excellent. It feels like practical business thinking rather than another collection of AI prompts.",
+      "likes": 60
+    },
+    {
+      "id": "rev-4",
+      "name": "Nisha",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The learning loops chapter ties everything together beautifully. Instead of treating the first launch as the finish line, it shows how to use customer feedback to improve the offer, delivery, and positioning. The 30-day plan also makes the whole framework feel manageable rather than overwhelming.",
+      "likes": 43
+    }
+  ],
+  "ai-businesses-93": [
+    {
+      "id": "rev-1",
+      "name": "Noah",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI business guide that doesn't just throw 50 side hustle ideas at you. The four-gate framework completely changed how I evaluate opportunities. I especially liked the distinction between being able to build something and having actual evidence that someone wants to buy it.",
+      "likes": 114
+    },
+    {
+      "id": "rev-2",
+      "name": "Aditi",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section on finding your edge was my favourite. Imagination, focus, and context are such simple concepts, but the explanations made me realise why most AI services look identical. The customer workflow exercises are particularly useful for finding opportunities that aren't obvious at first.",
+      "likes": 94
+    },
+    {
+      "id": "rev-3",
+      "name": "Sebastian",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I used to think distribution was something to figure out after building the product. This playbook makes it clear why that's backwards. The user-versus-buyer distinction and channel selection framework are excellent. It feels like practical business thinking rather than another collection of AI prompts.",
+      "likes": 60
+    },
+    {
+      "id": "rev-4",
+      "name": "Nisha",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The learning loops chapter ties everything together beautifully. Instead of treating the first launch as the finish line, it shows how to use customer feedback to improve the offer, delivery, and positioning. The 30-day plan also makes the whole framework feel manageable rather than overwhelming.",
+      "likes": 43
+    }
+  ],
+  "im-broke-what-business-do-i-start": [
+    {
+      "id": "rev-1",
+      "name": "Theo",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've been stuck in the loop of researching business ideas for months. The Three Ps framework made me look at my existing skills and experiences differently. Instead of chasing another trendy business model, I finally have a direction I can actually test.",
+      "likes": 61
+    },
+    {
+      "id": "rev-2",
+      "name": "Fatima",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The customer avatar and offer-building sections are genuinely useful. I especially liked the idea of explaining what customers get AND what they don't have to deal with anymore. That completely changed how I think about positioning a service.",
+      "likes": 49
+    },
+    {
+      "id": "rev-3",
+      "name": "Ferreira",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The warm outreach section is what made this playbook worth reading for me. The message structure feels natural, not like some aggressive sales script. The examples and tracker make it much easier to actually start conversations instead of endlessly planning.",
+      "likes": 30
+    },
+    {
+      "id": "rev-4",
+      "name": "Kavya",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I appreciated most is that it doesn't tell beginners to build a website, create a complicated brand, or spend money before validating anything. It focuses on finding a real problem, making a clear offer, and talking to potential customers. Very practical, especially when you're starting with limited resources.",
+      "likes": 24
+    }
+  ],
+  "ai-businesses-92": [
+    {
+      "id": "rev-1",
+      "name": "Theo",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've been stuck in the loop of researching business ideas for months. The Three Ps framework made me look at my existing skills and experiences differently. Instead of chasing another trendy business model, I finally have a direction I can actually test.",
+      "likes": 61
+    },
+    {
+      "id": "rev-2",
+      "name": "Fatima",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The customer avatar and offer-building sections are genuinely useful. I especially liked the idea of explaining what customers get AND what they don't have to deal with anymore. That completely changed how I think about positioning a service.",
+      "likes": 49
+    },
+    {
+      "id": "rev-3",
+      "name": "Ferreira",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The warm outreach section is what made this playbook worth reading for me. The message structure feels natural, not like some aggressive sales script. The examples and tracker make it much easier to actually start conversations instead of endlessly planning.",
+      "likes": 30
+    },
+    {
+      "id": "rev-4",
+      "name": "Kavya",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I appreciated most is that it doesn't tell beginners to build a website, create a complicated brand, or spend money before validating anything. It focuses on finding a real problem, making a clear offer, and talking to potential customers. Very practical, especially when you're starting with limited resources.",
+      "likes": 24
+    }
+  ],
+  "the-best-ai-side-hustles-to-start-in-2026-no-skills": [
+    {
+      "id": "rev-1",
+      "name": "Lwazi",
+      "avatar": "",
+      "date": "22d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI side-hustle guide that goes beyond listing random business ideas. The tier rankings make it easy to compare opportunities, and the practical breakdowns show what it actually takes to get started.",
+      "likes": 45
+    },
+    {
+      "id": "rev-2",
+      "name": "Joseph Kiptoo",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The best part is how honestly this playbook explains the downsides of each model. It helped me understand the difference between something that's easy to start and something that can actually become a business.",
+      "likes": 41
+    },
+    {
+      "id": "rev-3",
+      "name": "Themba",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Packed with useful ideas and actionable workflows. I particularly liked the sections on digital products, AI automation, and lead generation. The 30-day plan makes it much easier to take action.",
+      "likes": 27
+    },
+    {
+      "id": "rev-4",
+      "name": "Junseok",
+      "avatar": "",
+      "date": "16d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Perfect for beginners who want to explore AI business opportunities without getting lost in technical details. The prompts, worksheets, and decision matrix make this a genuinely practical resource.",
+      "likes": 20
+    }
+  ],
+  "ai-businesses-06": [
+    {
+      "id": "rev-1",
+      "name": "Lwazi",
+      "avatar": "",
+      "date": "22d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI side-hustle guide that goes beyond listing random business ideas. The tier rankings make it easy to compare opportunities, and the practical breakdowns show what it actually takes to get started.",
+      "likes": 45
+    },
+    {
+      "id": "rev-2",
+      "name": "Joseph Kiptoo",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The best part is how honestly this playbook explains the downsides of each model. It helped me understand the difference between something that's easy to start and something that can actually become a business.",
+      "likes": 41
+    },
+    {
+      "id": "rev-3",
+      "name": "Themba",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Packed with useful ideas and actionable workflows. I particularly liked the sections on digital products, AI automation, and lead generation. The 30-day plan makes it much easier to take action.",
+      "likes": 27
+    },
+    {
+      "id": "rev-4",
+      "name": "Junseok",
+      "avatar": "",
+      "date": "16d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Perfect for beginners who want to explore AI business opportunities without getting lost in technical details. The prompts, worksheets, and decision matrix make this a genuinely practical resource.",
+      "likes": 20
+    }
+  ],
+  "i-blew-up-a-youtube-channel-in-24-hours-with-ai": [
+    {
+      "id": "rev-1",
+      "name": "Sam",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The six-phase storytelling framework is the real gem here. It explains how to create that curiosity loop that makes people want to see the final reveal. I especially liked how the playbook shows you to study successful formats without simply copying other creators.",
+      "likes": 88
+    },
+    {
+      "id": "rev-2",
+      "name": "Rishi",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI Shorts guide that goes beyond throwing prompts into an image generator. The environment references, subject consistency, scene generation, and animation workflows make the production process much easier to understand.",
+      "likes": 69
+    },
+    {
+      "id": "rev-3",
+      "name": "Zoe",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The case study makes this particularly interesting. I liked seeing the actual production sequence, editing decisions, and analytics breakdown rather than just a screenshot of a huge view count. The templates are useful too.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Pradeep",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "My favourite part is how everything connects, from choosing the niche to scripting, generating visuals, editing, and analysing performance. It feels like a complete content-production system rather than a collection of random AI tricks.",
+      "likes": 29
+    }
+  ],
+  "ai-businesses-91": [
+    {
+      "id": "rev-1",
+      "name": "Sam",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The six-phase storytelling framework is the real gem here. It explains how to create that curiosity loop that makes people want to see the final reveal. I especially liked how the playbook shows you to study successful formats without simply copying other creators.",
+      "likes": 88
+    },
+    {
+      "id": "rev-2",
+      "name": "Rishi",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI Shorts guide that goes beyond throwing prompts into an image generator. The environment references, subject consistency, scene generation, and animation workflows make the production process much easier to understand.",
+      "likes": 69
+    },
+    {
+      "id": "rev-3",
+      "name": "Zoe",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The case study makes this particularly interesting. I liked seeing the actual production sequence, editing decisions, and analytics breakdown rather than just a screenshot of a huge view count. The templates are useful too.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Pradeep",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "My favourite part is how everything connects, from choosing the niche to scripting, generating visuals, editing, and analysing performance. It feels like a complete content-production system rather than a collection of random AI tricks.",
+      "likes": 29
+    }
+  ],
+  "5-simple-apps-making-10-000-month-that-you-can-build-with-ai": [
+    {
+      "id": "rev-1",
+      "name": "Darren Low",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Absolutely love how practical this is. Instead of throwing out random startup ideas, it shows you how to find existing demand and build something people already understand. The app concepts and AI prompts are incredibly useful.",
+      "likes": 60
+    },
+    {
+      "id": "rev-2",
+      "name": "Ethan Ho",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A fantastic resource for anyone interested in micro-SaaS. The breakdown of each app, its core features, and monetisation strategy makes the whole process feel much more approachable. Definitely gave me ideas worth exploring.",
+      "likes": 57
+    },
+    {
+      "id": "rev-3",
+      "name": "Faizal Ismail",
+      "avatar": "",
+      "date": "24d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The competitor research and subscription sections are gold. I especially liked how the playbook explains that you don't need to build a massive platform to create something valuable. Simple, focused, and genuinely actionable.",
+      "likes": 44
+    },
+    {
+      "id": "rev-4",
+      "name": "Qais Rahal",
+      "avatar": "",
+      "date": "15d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the most actionable AI business guides I've come across. The ready-to-use build prompts, MVP breakdowns, and 30-day roadmap make it easy to go from an idea to a working prototype. Great value!",
+      "likes": 20
+    }
+  ],
+  "ai-businesses-60": [
+    {
+      "id": "rev-1",
+      "name": "Darren Low",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Absolutely love how practical this is. Instead of throwing out random startup ideas, it shows you how to find existing demand and build something people already understand. The app concepts and AI prompts are incredibly useful.",
+      "likes": 60
+    },
+    {
+      "id": "rev-2",
+      "name": "Ethan Ho",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A fantastic resource for anyone interested in micro-SaaS. The breakdown of each app, its core features, and monetisation strategy makes the whole process feel much more approachable. Definitely gave me ideas worth exploring.",
+      "likes": 57
+    },
+    {
+      "id": "rev-3",
+      "name": "Faizal Ismail",
+      "avatar": "",
+      "date": "24d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The competitor research and subscription sections are gold. I especially liked how the playbook explains that you don't need to build a massive platform to create something valuable. Simple, focused, and genuinely actionable.",
+      "likes": 44
+    },
+    {
+      "id": "rev-4",
+      "name": "Qais Rahal",
+      "avatar": "",
+      "date": "15d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the most actionable AI business guides I've come across. The ready-to-use build prompts, MVP breakdowns, and 30-day roadmap make it easy to go from an idea to a working prototype. Great value!",
+      "likes": 20
+    }
+  ],
+  "if-i-started-with-0-heres-my-exact-plan-to-100k": [
+    {
+      "id": "rev-1",
+      "name": "Camila",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I liked most is that it doesn't immediately tell you to start investing or launch some random business. It starts with fixing your financial foundation and increasing your earning power. The eight-step structure makes the whole process feel much more achievable.",
+      "likes": 91
+    },
+    {
+      "id": "rev-2",
+      "name": "Ankita",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The profit zone concept is genuinely useful. Connecting what you're good at, what you enjoy, and what people actually pay for is a much better way to approach side hustles than blindly following trends. The validation exercises are especially helpful.",
+      "likes": 83
+    },
+    {
+      "id": "rev-3",
+      "name": "Joel",
+      "avatar": "",
+      "date": "28d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The sections on salary negotiation and lifestyle inflation stood out to me. People spend so much time looking for extra income that they forget to improve their existing income or keep the money they already make. Very practical advice.",
+      "likes": 53
+    },
+    {
+      "id": "rev-4",
+      "name": "Julia",
+      "avatar": "",
+      "date": "23 ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I love how actionable this is. The 12-month roadmap, weekly scorecard, and investment tracker make it easier to turn the ideas into an actual routine. It also does a good job explaining that $100K is a milestone to work toward, not an overnight promise.",
+      "likes": 42
+    }
+  ],
+  "ai-businesses-90": [
+    {
+      "id": "rev-1",
+      "name": "Camila",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I liked most is that it doesn't immediately tell you to start investing or launch some random business. It starts with fixing your financial foundation and increasing your earning power. The eight-step structure makes the whole process feel much more achievable.",
+      "likes": 91
+    },
+    {
+      "id": "rev-2",
+      "name": "Ankita",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The profit zone concept is genuinely useful. Connecting what you're good at, what you enjoy, and what people actually pay for is a much better way to approach side hustles than blindly following trends. The validation exercises are especially helpful.",
+      "likes": 83
+    },
+    {
+      "id": "rev-3",
+      "name": "Joel",
+      "avatar": "",
+      "date": "28d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The sections on salary negotiation and lifestyle inflation stood out to me. People spend so much time looking for extra income that they forget to improve their existing income or keep the money they already make. Very practical advice.",
+      "likes": 53
+    },
+    {
+      "id": "rev-4",
+      "name": "Julia",
+      "avatar": "",
+      "date": "23 ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I love how actionable this is. The 12-month roadmap, weekly scorecard, and investment tracker make it easier to turn the ideas into an actual routine. It also does a good job explaining that $100K is a milestone to work toward, not an overnight promise.",
+      "likes": 42
+    }
+  ],
+  "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything": [
+    {
+      "id": "rev-1",
+      "name": "Danish Faiz",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This completely changed how I think about digital products. Instead of creating something and hoping people buy it, you learn how to find demand first. The research framework is gold.",
+      "likes": 46
+    },
+    {
+      "id": "rev-2",
+      "name": "Dwi Anggara",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The AI prompts and step-by-step PDF creation process are incredibly useful. I especially liked the validation section because it helps avoid wasting time building products nobody wants.",
+      "likes": 33
+    },
+    {
+      "id": "rev-3",
+      "name": "Aldi Kurnia",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A genuinely practical guide. It covers everything from finding a niche to creating the product, pricing it, and getting traffic. No unnecessary fluff.",
+      "likes": 31
+    },
+    {
+      "id": "rev-4",
+      "name": "Firas Hamdan",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved how actionable this playbook is. The worksheets, content strategies, and 30-day roadmap make the whole process feel much more manageable. Definitely worth going through.",
+      "likes": 19
+    }
+  ],
+  "ai-businesses-58": [
+    {
+      "id": "rev-1",
+      "name": "Danish Faiz",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This completely changed how I think about digital products. Instead of creating something and hoping people buy it, you learn how to find demand first. The research framework is gold.",
+      "likes": 46
+    },
+    {
+      "id": "rev-2",
+      "name": "Dwi Anggara",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The AI prompts and step-by-step PDF creation process are incredibly useful. I especially liked the validation section because it helps avoid wasting time building products nobody wants.",
+      "likes": 33
+    },
+    {
+      "id": "rev-3",
+      "name": "Aldi Kurnia",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A genuinely practical guide. It covers everything from finding a niche to creating the product, pricing it, and getting traffic. No unnecessary fluff.",
+      "likes": 31
+    },
+    {
+      "id": "rev-4",
+      "name": "Firas Hamdan",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved how actionable this playbook is. The worksheets, content strategies, and 30-day roadmap make the whole process feel much more manageable. Definitely worth going through.",
+      "likes": 19
+    }
+  ],
+  "31-years-of-wealth-knowledge-in-18-minutes": [
+    {
+      "id": "rev-1",
+      "name": "Marcus Vance",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "The rare AI playbook with zero filler — pure tactical signal.",
+      "content": "I've read dozens of business and tech guides, and 95% could have been a blog post. \"31 Years of Wealth Knowledge in 18 Minutes\" is the complete opposite. It reads like Peter Thiel's Zero to One applied directly to this vertical. The mental models, concrete unit economics, and step-by-step systems gave me a complete operational playbook. Finished the whole book in two sittings and immediately restructured our team's workflow.",
+      "likes": 74
+    },
+    {
+      "id": "rev-2",
+      "name": "Elena Rostova",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "Worth 50x the price. Structured like an elite executive briefing.",
+      "content": "What sets this playbook apart is its rigor. It doesn't promise overnight riches or give vague advice. Instead, it systematically breaks down the architectural foundations, failure points, and competitive moats. The breakdown in Chapter 3 alone saved us months of trial and error. Easily one of my top 3 business reads this year.",
+      "likes": 56
+    },
+    {
+      "id": "rev-3",
+      "name": "David Chen",
+      "avatar": "",
+      "date": "24d ago",
+      "rating": 4,
+      "headline": "Extremely deep and practical. Dense with actionable insights.",
+      "content": "Dense, highly technical yet completely accessible. The decision frameworks and worked examples make execution feel inevitable if you put in the hours. Highly recommend printing or keeping the reference charts close by.",
+      "likes": 43
+    },
+    {
+      "id": "rev-4",
+      "name": "Sarah Jenkins",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "Masterpiece in concise, high-leverage instruction.",
+      "content": "This is what business publishing should look like in 2026. Every chapter is disciplined, packed with empirical data and battle-tested directives. You leave with an unfair clarity that other books never deliver.",
+      "likes": 21
+    }
+  ],
+  "ai-businesses-89": [
+    {
+      "id": "rev-1",
+      "name": "Marcus Vance",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "The rare AI playbook with zero filler — pure tactical signal.",
+      "content": "I've read dozens of business and tech guides, and 95% could have been a blog post. \"31 Years of Wealth Knowledge in 18 Minutes\" is the complete opposite. It reads like Peter Thiel's Zero to One applied directly to this vertical. The mental models, concrete unit economics, and step-by-step systems gave me a complete operational playbook. Finished the whole book in two sittings and immediately restructured our team's workflow.",
+      "likes": 74
+    },
+    {
+      "id": "rev-2",
+      "name": "Elena Rostova",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "Worth 50x the price. Structured like an elite executive briefing.",
+      "content": "What sets this playbook apart is its rigor. It doesn't promise overnight riches or give vague advice. Instead, it systematically breaks down the architectural foundations, failure points, and competitive moats. The breakdown in Chapter 3 alone saved us months of trial and error. Easily one of my top 3 business reads this year.",
+      "likes": 56
+    },
+    {
+      "id": "rev-3",
+      "name": "David Chen",
+      "avatar": "",
+      "date": "24d ago",
+      "rating": 4,
+      "headline": "Extremely deep and practical. Dense with actionable insights.",
+      "content": "Dense, highly technical yet completely accessible. The decision frameworks and worked examples make execution feel inevitable if you put in the hours. Highly recommend printing or keeping the reference charts close by.",
+      "likes": 43
+    },
+    {
+      "id": "rev-4",
+      "name": "Sarah Jenkins",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "Masterpiece in concise, high-leverage instruction.",
+      "content": "This is what business publishing should look like in 2026. Every chapter is disciplined, packed with empirical data and battle-tested directives. You leave with an unfair clarity that other books never deliver.",
+      "likes": 21
+    }
+  ],
+  "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m": [
+    {
+      "id": "rev-1",
+      "name": "Łukasz",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Exactly what a beginner needs. Instead of telling you to chase random business ideas, it walks you through finding a real problem, creating an offer, getting customers, and making your first sale. The 30-day sprint is brilliant.",
+      "likes": 39
+    },
+    {
+      "id": "rev-2",
+      "name": "Patrik",
+      "avatar": "",
+      "date": "17d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The sales and prospecting sections are incredibly practical. I especially liked the nine-stage selling framework and the AI prompts. It gives you an actual process to follow instead of leaving you with vague advice.",
+      "likes": 38
+    },
+    {
+      "id": "rev-3",
+      "name": "Petar",
+      "avatar": "",
+      "date": "14d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the best structured business guides I've read. The focus on solving painful problems, pricing properly, and delivering value quickly completely changes how you approach starting a business. Very actionable.",
+      "likes": 27
+    },
+    {
+      "id": "rev-4",
+      "name": "Hrithik",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I loved the combination of business strategy and practical AI workflows. The worksheets make it easy to turn the lessons into actual work, and the weekly scorecard helps you stay focused on what matters. Definitely worth going through.",
+      "likes": 22
+    }
+  ],
+  "ai-businesses-53": [
+    {
+      "id": "rev-1",
+      "name": "Łukasz",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Exactly what a beginner needs. Instead of telling you to chase random business ideas, it walks you through finding a real problem, creating an offer, getting customers, and making your first sale. The 30-day sprint is brilliant.",
+      "likes": 39
+    },
+    {
+      "id": "rev-2",
+      "name": "Patrik",
+      "avatar": "",
+      "date": "17d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The sales and prospecting sections are incredibly practical. I especially liked the nine-stage selling framework and the AI prompts. It gives you an actual process to follow instead of leaving you with vague advice.",
+      "likes": 38
+    },
+    {
+      "id": "rev-3",
+      "name": "Petar",
+      "avatar": "",
+      "date": "14d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the best structured business guides I've read. The focus on solving painful problems, pricing properly, and delivering value quickly completely changes how you approach starting a business. Very actionable.",
+      "likes": 27
+    },
+    {
+      "id": "rev-4",
+      "name": "Hrithik",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I loved the combination of business strategy and practical AI workflows. The worksheets make it easy to turn the lessons into actual work, and the weekly scorecard helps you stay focused on what matters. Definitely worth going through.",
+      "likes": 22
+    }
+  ],
+  "make-your-first-3000-online-in-90days-or-scroll-for-5-37mins": [
+    {
+      "id": "rev-1",
+      "name": "Marcus Vance",
+      "avatar": "",
+      "date": "3m ago",
+      "rating": 5,
+      "headline": "The rare AI playbook with zero filler — pure tactical signal.",
+      "content": "I've read dozens of business and tech guides, and 95% could have been a blog post. \"Make your first $3,000 online in 90days (Or scroll for 5.37mins)\" is the complete opposite. It reads like Peter Thiel's Zero to One applied directly to this vertical. The mental models, concrete unit economics, and step-by-step systems gave me a complete operational playbook. Finished the whole book in two sittings and immediately restructured our team's workflow.",
+      "likes": 104
+    },
+    {
+      "id": "rev-2",
+      "name": "Elena Rostova",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "Worth 50x the price. Structured like an elite executive briefing.",
+      "content": "What sets this playbook apart is its rigor. It doesn't promise overnight riches or give vague advice. Instead, it systematically breaks down the architectural foundations, failure points, and competitive moats. The breakdown in Chapter 3 alone saved us months of trial and error. Easily one of my top 3 business reads this year.",
+      "likes": 87
+    },
+    {
+      "id": "rev-3",
+      "name": "David Chen",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 4,
+      "headline": "Extremely deep and practical. Dense with actionable insights.",
+      "content": "Dense, highly technical yet completely accessible. The decision frameworks and worked examples make execution feel inevitable if you put in the hours. Highly recommend printing or keeping the reference charts close by.",
+      "likes": 62
+    },
+    {
+      "id": "rev-4",
+      "name": "Sarah Jenkins",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "Masterpiece in concise, high-leverage instruction.",
+      "content": "This is what business publishing should look like in 2026. Every chapter is disciplined, packed with empirical data and battle-tested directives. You leave with an unfair clarity that other books never deliver.",
+      "likes": 41
+    }
+  ],
+  "ai-businesses-87": [
+    {
+      "id": "rev-1",
+      "name": "Marcus Vance",
+      "avatar": "",
+      "date": "3m ago",
+      "rating": 5,
+      "headline": "The rare AI playbook with zero filler — pure tactical signal.",
+      "content": "I've read dozens of business and tech guides, and 95% could have been a blog post. \"Make your first $3,000 online in 90days (Or scroll for 5.37mins)\" is the complete opposite. It reads like Peter Thiel's Zero to One applied directly to this vertical. The mental models, concrete unit economics, and step-by-step systems gave me a complete operational playbook. Finished the whole book in two sittings and immediately restructured our team's workflow.",
+      "likes": 104
+    },
+    {
+      "id": "rev-2",
+      "name": "Elena Rostova",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "Worth 50x the price. Structured like an elite executive briefing.",
+      "content": "What sets this playbook apart is its rigor. It doesn't promise overnight riches or give vague advice. Instead, it systematically breaks down the architectural foundations, failure points, and competitive moats. The breakdown in Chapter 3 alone saved us months of trial and error. Easily one of my top 3 business reads this year.",
+      "likes": 87
+    },
+    {
+      "id": "rev-3",
+      "name": "David Chen",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 4,
+      "headline": "Extremely deep and practical. Dense with actionable insights.",
+      "content": "Dense, highly technical yet completely accessible. The decision frameworks and worked examples make execution feel inevitable if you put in the hours. Highly recommend printing or keeping the reference charts close by.",
+      "likes": 62
+    },
+    {
+      "id": "rev-4",
+      "name": "Sarah Jenkins",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "Masterpiece in concise, high-leverage instruction.",
+      "content": "This is what business publishing should look like in 2026. Every chapter is disciplined, packed with empirical data and battle-tested directives. You leave with an unfair clarity that other books never deliver.",
+      "likes": 41
+    }
+  ],
+  "how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial": [
+    {
+      "id": "rev-1",
+      "name": "Nathan",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Honestly, this made the whole website-building process feel much less intimidating. I especially liked how it starts with branding and the business brief instead of immediately generating random code. The prompts are incredibly useful.",
+      "likes": 81
+    },
+    {
+      "id": "rev-2",
+      "name": "Gabriela",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section about turning a finished website into a service was my favourite. Finding businesses with outdated websites, creating a demo, and pitching the actual improvement is a much clearer approach than just trying to sell AI websites.",
+      "likes": 66
+    },
+    {
+      "id": "rev-3",
+      "name": "Ethan",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've experimented with AI website builders before, but usually ended up with something that looked good and barely worked. The form testing, mobile optimisation, deployment, and launch checklists make this playbook genuinely practical.",
+      "likes": 54
+    },
+    {
+      "id": "rev-4",
+      "name": "Anjali",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the attention to detail. The focused revision prompts alone are worth going through because they help prevent AI from changing five other things when you only wanted one small adjustment. A solid guide from start to finish.",
+      "likes": 30
+    }
+  ],
+  "ai-businesses-86": [
+    {
+      "id": "rev-1",
+      "name": "Nathan",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Honestly, this made the whole website-building process feel much less intimidating. I especially liked how it starts with branding and the business brief instead of immediately generating random code. The prompts are incredibly useful.",
+      "likes": 81
+    },
+    {
+      "id": "rev-2",
+      "name": "Gabriela",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section about turning a finished website into a service was my favourite. Finding businesses with outdated websites, creating a demo, and pitching the actual improvement is a much clearer approach than just trying to sell AI websites.",
+      "likes": 66
+    },
+    {
+      "id": "rev-3",
+      "name": "Ethan",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've experimented with AI website builders before, but usually ended up with something that looked good and barely worked. The form testing, mobile optimisation, deployment, and launch checklists make this playbook genuinely practical.",
+      "likes": 54
+    },
+    {
+      "id": "rev-4",
+      "name": "Anjali",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the attention to detail. The focused revision prompts alone are worth going through because they help prevent AI from changing five other things when you only wanted one small adjustment. A solid guide from start to finish.",
+      "likes": 30
+    }
+  ],
+  "its-boring-but-will-make-even-beginners-millionaires-in-2026": [
+    {
+      "id": "rev-1",
+      "name": "Emiliano",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This is exactly what beginners need. Instead of pushing complicated startup ideas, it explains how to find a real problem, start small, and get your first customers. Very practical.",
+      "likes": 72
+    },
+    {
+      "id": "rev-2",
+      "name": "Manuel",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The market timing and career timing concepts were eye-opening. I finally understand why copying someone else's business model doesn't necessarily make sense for where I am right now.",
+      "likes": 55
+    },
+    {
+      "id": "rev-3",
+      "name": "Luciano Godoy",
+      "avatar": "",
+      "date": "23d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the emphasis on implementation over endless learning. The minimum viable business chapter and 90-day roadmap make this feel like something you can actually follow, not just read and forget.",
+      "likes": 29
+    },
+    {
+      "id": "rev-4",
+      "name": "Martín",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A refreshing take on entrepreneurship. It makes starting a business feel less intimidating and shows how much you can accomplish by solving one small problem really well. Great read.",
+      "likes": 23
+    }
+  ],
+  "ai-businesses-13": [
+    {
+      "id": "rev-1",
+      "name": "Emiliano",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This is exactly what beginners need. Instead of pushing complicated startup ideas, it explains how to find a real problem, start small, and get your first customers. Very practical.",
+      "likes": 72
+    },
+    {
+      "id": "rev-2",
+      "name": "Manuel",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The market timing and career timing concepts were eye-opening. I finally understand why copying someone else's business model doesn't necessarily make sense for where I am right now.",
+      "likes": 55
+    },
+    {
+      "id": "rev-3",
+      "name": "Luciano Godoy",
+      "avatar": "",
+      "date": "23d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the emphasis on implementation over endless learning. The minimum viable business chapter and 90-day roadmap make this feel like something you can actually follow, not just read and forget.",
+      "likes": 29
+    },
+    {
+      "id": "rev-4",
+      "name": "Martín",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A refreshing take on entrepreneurship. It makes starting a business feel less intimidating and shows how much you can accomplish by solving one small problem really well. Great read.",
+      "likes": 23
+    }
+  ],
+  "how-to-make-progress-faster-than-everyone": [
+    {
+      "id": "rev-1",
+      "name": "Isaiah",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This hit differently because it focuses on the part nobody really talks about: getting over the fear of looking inexperienced. The exercises helped me recognise how much time I was wasting trying to make everything perfect before even starting.",
+      "likes": 78
+    },
+    {
+      "id": "rev-2",
+      "name": "Thompson",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I really liked the practical feedback system. Instead of just telling you to work harder, it shows you how to identify weaknesses, ask better questions, and make specific improvements. The iteration log is something I'll actually keep using.",
+      "likes": 69
+    },
+    {
+      "id": "rev-3",
+      "name": "Meera",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The chapter about documenting your journey was my favourite. I used to focus only on finished results, but keeping track of attempts and mistakes makes progress much easier to see. This is a genuinely useful framework for anyone building a skill or project.",
+      "likes": 50
+    },
+    {
+      "id": "rev-4",
+      "name": "Kulkarni",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Simple ideas, but incredibly well organised. The 30-day sprint gives you a clear starting point, and the weekly reviews help turn motivation into an actual routine. My biggest takeaway was learning to take my work seriously without taking every criticism personally.",
+      "likes": 44
+    }
+  ],
+  "ai-businesses-85": [
+    {
+      "id": "rev-1",
+      "name": "Isaiah",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This hit differently because it focuses on the part nobody really talks about: getting over the fear of looking inexperienced. The exercises helped me recognise how much time I was wasting trying to make everything perfect before even starting.",
+      "likes": 78
+    },
+    {
+      "id": "rev-2",
+      "name": "Thompson",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I really liked the practical feedback system. Instead of just telling you to work harder, it shows you how to identify weaknesses, ask better questions, and make specific improvements. The iteration log is something I'll actually keep using.",
+      "likes": 69
+    },
+    {
+      "id": "rev-3",
+      "name": "Meera",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The chapter about documenting your journey was my favourite. I used to focus only on finished results, but keeping track of attempts and mistakes makes progress much easier to see. This is a genuinely useful framework for anyone building a skill or project.",
+      "likes": 50
+    },
+    {
+      "id": "rev-4",
+      "name": "Kulkarni",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Simple ideas, but incredibly well organised. The 30-day sprint gives you a clear starting point, and the weekly reviews help turn motivation into an actual routine. My biggest takeaway was learning to take my work seriously without taking every criticism personally.",
+      "likes": 44
+    }
+  ],
+  "how-to-get-rich-for-service-based-businesses-thank-me-later": [
+    {
+      "id": "rev-1",
+      "name": "Mayank Jain",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A fantastic breakdown of how to build a genuinely profitable service business. The costing and pricing frameworks make it clear why revenue alone doesn't tell the whole story.",
+      "likes": 73
+    },
+    {
+      "id": "rev-2",
+      "name": "Rishabh",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The pricing calculator, ideal customer framework, and sales process improvements are incredibly practical. This is the kind of playbook you can actually implement with your team.",
+      "likes": 57
+    },
+    {
+      "id": "rev-3",
+      "name": "Irfan Ansari",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the emphasis on fixing margins before scaling demand. The 90-day roadmap gives the entire process a clear structure, from understanding costs to building repeatable acquisition.",
+      "likes": 42
+    },
+    {
+      "id": "rev-4",
+      "name": "Shubham Tiwari",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Packed with actionable business frameworks. Especially useful for founders who are too involved in sales and delivery and want to build a company that operates more systematically and profitably.",
+      "likes": 21
+    }
+  ],
+  "ai-businesses-19": [
+    {
+      "id": "rev-1",
+      "name": "Mayank Jain",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A fantastic breakdown of how to build a genuinely profitable service business. The costing and pricing frameworks make it clear why revenue alone doesn't tell the whole story.",
+      "likes": 73
+    },
+    {
+      "id": "rev-2",
+      "name": "Rishabh",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The pricing calculator, ideal customer framework, and sales process improvements are incredibly practical. This is the kind of playbook you can actually implement with your team.",
+      "likes": 57
+    },
+    {
+      "id": "rev-3",
+      "name": "Irfan Ansari",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the emphasis on fixing margins before scaling demand. The 90-day roadmap gives the entire process a clear structure, from understanding costs to building repeatable acquisition.",
+      "likes": 42
+    },
+    {
+      "id": "rev-4",
+      "name": "Shubham Tiwari",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Packed with actionable business frameworks. Especially useful for founders who are too involved in sales and delivery and want to build a company that operates more systematically and profitably.",
+      "likes": 21
+    }
+  ],
+  "build-a-10k-month-ai-influencer-in-9-mins": [
+    {
+      "id": "rev-1",
+      "name": "Adrian",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This connects all the pieces instead of just showing how to generate an AI character. The character identity sheet and reference-image workflow are especially helpful. I can actually see how to build a recognisable account rather than generate random AI pictures.",
+      "likes": 106
+    },
+    {
+      "id": "rev-2",
+      "name": "Sofia",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The video production section is excellent. I liked how it breaks down successful videos into hooks, scenes, and payoffs, then shows how to create original versions. The prompts make the entire process much easier to follow.",
+      "likes": 87
+    },
+    {
+      "id": "rev-3",
+      "name": "Nathaniel",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The monetisation section was the biggest surprise. Most guides stop at getting views, but this explains how to approach brands, negotiate commission structures, understand attribution, and track real payouts. Very useful business perspective.",
+      "likes": 62
+    },
+    {
+      "id": "rev-4",
+      "name": "Kiara",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Probably the most complete AI influencer workflow I've come across. From character creation and content production to audience growth and brand partnerships, everything is organised into actionable steps. The 30-day roadmap makes getting started feel much less overwhelming.",
+      "likes": 39
+    }
+  ],
+  "ai-businesses-84": [
+    {
+      "id": "rev-1",
+      "name": "Adrian",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This connects all the pieces instead of just showing how to generate an AI character. The character identity sheet and reference-image workflow are especially helpful. I can actually see how to build a recognisable account rather than generate random AI pictures.",
+      "likes": 106
+    },
+    {
+      "id": "rev-2",
+      "name": "Sofia",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The video production section is excellent. I liked how it breaks down successful videos into hooks, scenes, and payoffs, then shows how to create original versions. The prompts make the entire process much easier to follow.",
+      "likes": 87
+    },
+    {
+      "id": "rev-3",
+      "name": "Nathaniel",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The monetisation section was the biggest surprise. Most guides stop at getting views, but this explains how to approach brands, negotiate commission structures, understand attribution, and track real payouts. Very useful business perspective.",
+      "likes": 62
+    },
+    {
+      "id": "rev-4",
+      "name": "Kiara",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Probably the most complete AI influencer workflow I've come across. From character creation and content production to audience growth and brand partnerships, everything is organised into actionable steps. The 30-day roadmap makes getting started feel much less overwhelming.",
+      "likes": 39
+    }
+  ],
+  "how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old": [
+    {
+      "id": "rev-1",
+      "name": "Bennett",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I thought clipping was just finding a good moment and adding captions. This completely changed how I approach it. The campaign evaluation section alone helped me understand why choosing the right creator matters so much before spending hours editing.",
+      "likes": 81
+    },
+    {
+      "id": "rev-2",
+      "name": "Vasquez",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The hook, story, and payoff framework is incredibly useful. I finally understand why some clips feel engaging while others lose viewers almost immediately. The examples and editing checklist make it easy to apply.",
+      "likes": 59
+    },
+    {
+      "id": "rev-3",
+      "name": "Brooks",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I appreciated most was the actual workflow. It covers everything from finding timestamps and using AI clipping tools to publishing and tracking payouts. The templates make this feel like a real operating system rather than another collection of tips.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Anika",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the most practical guides I've read on video clipping. I especially liked the campaign scorecard, 30-day roadmap, and section on calculating earnings per hour. It keeps you focused on building something repeatable instead of blindly uploading hundreds of clips.",
+      "likes": 32
+    }
+  ],
+  "ai-businesses-83": [
+    {
+      "id": "rev-1",
+      "name": "Bennett",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I thought clipping was just finding a good moment and adding captions. This completely changed how I approach it. The campaign evaluation section alone helped me understand why choosing the right creator matters so much before spending hours editing.",
+      "likes": 81
+    },
+    {
+      "id": "rev-2",
+      "name": "Vasquez",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The hook, story, and payoff framework is incredibly useful. I finally understand why some clips feel engaging while others lose viewers almost immediately. The examples and editing checklist make it easy to apply.",
+      "likes": 59
+    },
+    {
+      "id": "rev-3",
+      "name": "Brooks",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I appreciated most was the actual workflow. It covers everything from finding timestamps and using AI clipping tools to publishing and tracking payouts. The templates make this feel like a real operating system rather than another collection of tips.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Anika",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the most practical guides I've read on video clipping. I especially liked the campaign scorecard, 30-day roadmap, and section on calculating earnings per hour. It keeps you focused on building something repeatable instead of blindly uploading hundreds of clips.",
+      "likes": 32
+    }
+  ],
+  "3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today": [
+    {
+      "id": "rev-1",
+      "name": "Ziyang Ma",
+      "avatar": "",
+      "date": "25d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really useful breakdown of three business models. I especially liked how it explains the actual trade-offs instead of making everything sound easy.",
+      "likes": 46
+    },
+    {
+      "id": "rev-2",
+      "name": "Naoki",
+      "avatar": "",
+      "date": "22d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The digital products section alone makes this worth reading. The prompts, validation steps, and launch roadmap give you a clear place to start.",
+      "likes": 33
+    },
+    {
+      "id": "rev-3",
+      "name": "Tatsuya",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI business guide that focuses on customers, distribution, and profitability instead of just throwing tools at you. Very practical.",
+      "likes": 32
+    },
+    {
+      "id": "rev-4",
+      "name": "Kenta",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the comparison between all three models. It helped me understand which business fits my resources and why validating an idea matters before building.",
+      "likes": 20
+    }
+  ],
+  "ai-businesses-59": [
+    {
+      "id": "rev-1",
+      "name": "Ziyang Ma",
+      "avatar": "",
+      "date": "25d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really useful breakdown of three business models. I especially liked how it explains the actual trade-offs instead of making everything sound easy.",
+      "likes": 46
+    },
+    {
+      "id": "rev-2",
+      "name": "Naoki",
+      "avatar": "",
+      "date": "22d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The digital products section alone makes this worth reading. The prompts, validation steps, and launch roadmap give you a clear place to start.",
+      "likes": 33
+    },
+    {
+      "id": "rev-3",
+      "name": "Tatsuya",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI business guide that focuses on customers, distribution, and profitability instead of just throwing tools at you. Very practical.",
+      "likes": 32
+    },
+    {
+      "id": "rev-4",
+      "name": "Kenta",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the comparison between all three models. It helped me understand which business fits my resources and why validating an idea matters before building.",
+      "likes": 20
+    }
+  ],
+  "its-boring-but-i-make-745-day-in-4-hours-at-22": [
+    {
+      "id": "rev-1",
+      "name": "Cameron",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've read plenty of dropshipping guides, but most jump straight into finding a product and running ads. This one actually explains how to evaluate whether a product is worth selling in the first place. The competitor research and product scorecard sections alone make this worth going through.",
+      "likes": 83
+    },
+    {
+      "id": "rev-2",
+      "name": "Valentina",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The unit economics section was a real eye-opener. I used to think good ROAS meant I was making money, but the breakdown of fulfilment, fees, ad spend, and contribution completely changed how I look at ecommerce. Super practical and easy to follow.",
+      "likes": 50
+    },
+    {
+      "id": "rev-3",
+      "name": "Jamal",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "My favourite part is how the entire process connects. Product research flows into the store, the bundle offer, creative testing, and then the daily P&L. It doesn't feel like a collection of random tips. It gives you an actual workflow to follow.",
+      "likes": 48
+    },
+    {
+      "id": "rev-4",
+      "name": "Aria",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really appreciated the focus on execution over endless store customisation. The AI store-building workflow, bundle planning, and three-angle ad testing gave me a much clearer picture of what to work on first. The launch checklist is especially useful when you're ready to stop researching and start building.",
+      "likes": 35
+    }
+  ],
+  "ai-businesses-82": [
+    {
+      "id": "rev-1",
+      "name": "Cameron",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've read plenty of dropshipping guides, but most jump straight into finding a product and running ads. This one actually explains how to evaluate whether a product is worth selling in the first place. The competitor research and product scorecard sections alone make this worth going through.",
+      "likes": 83
+    },
+    {
+      "id": "rev-2",
+      "name": "Valentina",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The unit economics section was a real eye-opener. I used to think good ROAS meant I was making money, but the breakdown of fulfilment, fees, ad spend, and contribution completely changed how I look at ecommerce. Super practical and easy to follow.",
+      "likes": 50
+    },
+    {
+      "id": "rev-3",
+      "name": "Jamal",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "My favourite part is how the entire process connects. Product research flows into the store, the bundle offer, creative testing, and then the daily P&L. It doesn't feel like a collection of random tips. It gives you an actual workflow to follow.",
+      "likes": 48
+    },
+    {
+      "id": "rev-4",
+      "name": "Aria",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really appreciated the focus on execution over endless store customisation. The AI store-building workflow, bundle planning, and three-angle ad testing gave me a much clearer picture of what to work on first. The launch checklist is especially useful when you're ready to stop researching and start building.",
+      "likes": 35
+    }
+  ],
+  "your-first-1m-is-simple-heres-how": [
+    {
+      "id": "rev-1",
+      "name": "Derek",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Exactly the wake-up call I needed. The chapters on business inertia and radical focus completely changed how I approach my goals. Practical, direct, and genuinely useful.",
+      "likes": 55
+    },
+    {
+      "id": "rev-2",
+      "name": "Archie",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I loved how this playbook turns the million-dollar ambition into smaller, actionable steps. The 30-day and 90-day plans make it much easier to stop overthinking and actually execute.",
+      "likes": 40
+    },
+    {
+      "id": "rev-3",
+      "name": "Freddie",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The focus and monk mode sections are gold. It isn't just about working harder; it's about directing your energy toward the right things while keeping your health and routine in check.",
+      "likes": 24
+    },
+    {
+      "id": "rev-4",
+      "name": "Toby",
+      "avatar": "",
+      "date": "14d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the most practical entrepreneurship guides I've read. The financial milestone tracker, weekly reviews, and business focus plan make this something I'll actually keep coming back to.",
+      "likes": 12
+    }
+  ],
+  "ai-businesses-11": [
+    {
+      "id": "rev-1",
+      "name": "Derek",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Exactly the wake-up call I needed. The chapters on business inertia and radical focus completely changed how I approach my goals. Practical, direct, and genuinely useful.",
+      "likes": 55
+    },
+    {
+      "id": "rev-2",
+      "name": "Archie",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I loved how this playbook turns the million-dollar ambition into smaller, actionable steps. The 30-day and 90-day plans make it much easier to stop overthinking and actually execute.",
+      "likes": 40
+    },
+    {
+      "id": "rev-3",
+      "name": "Freddie",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The focus and monk mode sections are gold. It isn't just about working harder; it's about directing your energy toward the right things while keeping your health and routine in check.",
+      "likes": 24
+    },
+    {
+      "id": "rev-4",
+      "name": "Toby",
+      "avatar": "",
+      "date": "14d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the most practical entrepreneurship guides I've read. The financial milestone tracker, weekly reviews, and business focus plan make this something I'll actually keep coming back to.",
+      "likes": 12
+    }
+  ],
+  "how-i-went-from-0-to-92k-month-at-19-my-full-story": [
+    {
+      "id": "rev-1",
+      "name": "Rivera",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Honestly, the biggest takeaway for me was that revenue doesn't automatically mean you've built a good business. The sections on the $9.9K month, the collapse, and the agency shutdown were incredibly useful. It made me rethink what I should actually be measuring.",
+      "likes": 61
+    },
+    {
+      "id": "rev-2",
+      "name": "Danielle",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I came for the appointment-setting part, but ended up getting much more out of the management and training sections. The breakdown of how to go from doing the work yourself to teaching others and managing a team is particularly valuable. Very actionable.",
+      "likes": 53
+    },
+    {
+      "id": "rev-3",
+      "name": "Elias",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I liked most is how practical this is. Pricing, client scope, qualification, capacity planning, contribution margins — these are the things people skip when talking about starting an agency. The worksheets make it much easier to apply everything instead of just reading and forgetting.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Brooke Sullivan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, a business playbook that doesn't pretend every growth story is a straight line upward. The lessons about chasing shiny objects, hiring too quickly, losing focus, and protecting your personal life felt refreshingly honest. The one-page operating system is something I'll keep coming back to.",
+      "likes": 34
+    }
+  ],
+  "ai-businesses-81": [
+    {
+      "id": "rev-1",
+      "name": "Rivera",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Honestly, the biggest takeaway for me was that revenue doesn't automatically mean you've built a good business. The sections on the $9.9K month, the collapse, and the agency shutdown were incredibly useful. It made me rethink what I should actually be measuring.",
+      "likes": 61
+    },
+    {
+      "id": "rev-2",
+      "name": "Danielle",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I came for the appointment-setting part, but ended up getting much more out of the management and training sections. The breakdown of how to go from doing the work yourself to teaching others and managing a team is particularly valuable. Very actionable.",
+      "likes": 53
+    },
+    {
+      "id": "rev-3",
+      "name": "Elias",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I liked most is how practical this is. Pricing, client scope, qualification, capacity planning, contribution margins — these are the things people skip when talking about starting an agency. The worksheets make it much easier to apply everything instead of just reading and forgetting.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Brooke Sullivan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, a business playbook that doesn't pretend every growth story is a straight line upward. The lessons about chasing shiny objects, hiring too quickly, losing focus, and protecting your personal life felt refreshingly honest. The one-page operating system is something I'll keep coming back to.",
+      "likes": 34
+    }
+  ],
+  "7-side-hustles-students-can-start-in-2027": [
+    {
+      "id": "rev-1",
+      "name": "Dongwoo Jang",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really helpful for anyone trying to earn while studying. I liked that it covers different types of side hustles instead of pretending there's one perfect opportunity for everyone.",
+      "likes": 70
+    },
+    {
+      "id": "rev-2",
+      "name": "Kofi Gyamfi",
+      "avatar": "",
+      "date": "27d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The AI app and UGC sections were my favourites. The step-by-step plans make it much easier to understand how to go from an idea to actually testing it.",
+      "likes": 59
+    },
+    {
+      "id": "rev-3",
+      "name": "Nicolas Valenzuela",
+      "avatar": "",
+      "date": "23d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the more realistic student business guides I've read. It explains the risks, costs, and time commitment instead of just throwing impressive income numbers around.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Cristian",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the comparison tables and 90-day roadmap. It helped me narrow down which side hustle makes sense for my skills, budget, and college schedule.",
+      "likes": 35
+    }
+  ],
+  "ai-businesses-57": [
+    {
+      "id": "rev-1",
+      "name": "Dongwoo Jang",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really helpful for anyone trying to earn while studying. I liked that it covers different types of side hustles instead of pretending there's one perfect opportunity for everyone.",
+      "likes": 70
+    },
+    {
+      "id": "rev-2",
+      "name": "Kofi Gyamfi",
+      "avatar": "",
+      "date": "27d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The AI app and UGC sections were my favourites. The step-by-step plans make it much easier to understand how to go from an idea to actually testing it.",
+      "likes": 59
+    },
+    {
+      "id": "rev-3",
+      "name": "Nicolas Valenzuela",
+      "avatar": "",
+      "date": "23d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the more realistic student business guides I've read. It explains the risks, costs, and time commitment instead of just throwing impressive income numbers around.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Cristian",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the comparison tables and 90-day roadmap. It helped me narrow down which side hustle makes sense for my skills, budget, and college schedule.",
+      "likes": 35
+    }
+  ],
+  "this-one-book-has-the-power-to-change-your-entire-life": [
+    {
+      "id": "rev-1",
+      "name": "Rebecca Mitchell",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I didn't expect a book about self-image to be this practical. The self-trust exercises made me realise how often I undermine myself by making promises I don't keep. Starting smaller has actually helped me become more consistent.",
+      "likes": 61
+    },
+    {
+      "id": "rev-2",
+      "name": "Omar Hassan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The visualization section was my favourite. Instead of just imagining success, it teaches you to mentally walk through the actual process, including the uncomfortable parts. I've started using the five-minute exercise before presentations.",
+      "likes": 54
+    },
+    {
+      "id": "rev-3",
+      "name": "Chloe Martin",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really liked the way this breaks down limiting beliefs. The belief audit and experiment worksheets are especially useful because they make you question your assumptions instead of simply replacing them with motivational quotes.",
+      "likes": 32
+    },
+    {
+      "id": "rev-4",
+      "name": "Akash",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "It's the 30-day structure that makes this stand out. You get a clear sequence to follow, daily exercises, weekly reviews and trackers. It feels less like reading another self-help guide and more like actually working on yourself.",
+      "likes": 29
+    }
+  ],
+  "ai-businesses-80": [
+    {
+      "id": "rev-1",
+      "name": "Rebecca Mitchell",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I didn't expect a book about self-image to be this practical. The self-trust exercises made me realise how often I undermine myself by making promises I don't keep. Starting smaller has actually helped me become more consistent.",
+      "likes": 61
+    },
+    {
+      "id": "rev-2",
+      "name": "Omar Hassan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The visualization section was my favourite. Instead of just imagining success, it teaches you to mentally walk through the actual process, including the uncomfortable parts. I've started using the five-minute exercise before presentations.",
+      "likes": 54
+    },
+    {
+      "id": "rev-3",
+      "name": "Chloe Martin",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really liked the way this breaks down limiting beliefs. The belief audit and experiment worksheets are especially useful because they make you question your assumptions instead of simply replacing them with motivational quotes.",
+      "likes": 32
+    },
+    {
+      "id": "rev-4",
+      "name": "Akash",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "It's the 30-day structure that makes this stand out. You get a clear sequence to follow, daily exercises, weekly reviews and trackers. It feels less like reading another self-help guide and more like actually working on yourself.",
+      "likes": 29
+    }
+  ],
+  "how-to-catch-up-in-life-using-logic": [
+    {
+      "id": "rev-1",
+      "name": "Imran",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A genuinely practical perspective on feeling behind in life. The idea of building capacity instead of waiting for the perfect opportunity completely changed how I think about progress.",
+      "likes": 41
+    },
+    {
+      "id": "rev-2",
+      "name": "Deepak",
+      "avatar": "",
+      "date": "28d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved how everything connects—from financial discipline and skill-building to networking and building an audience. The 90-day plan makes it much easier to take action.",
+      "likes": 34
+    },
+    {
+      "id": "rev-3",
+      "name": "Vivek",
+      "avatar": "",
+      "date": "21d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This is the kind of advice I wish I had followed earlier. Instead of chasing random opportunities, it teaches you to become someone who is actually prepared for them.",
+      "likes": 25
+    },
+    {
+      "id": "rev-4",
+      "name": "Nikhil Reddy",
+      "avatar": "",
+      "date": "14d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The skill-stack framework, waitlist strategy, and capacity audit are especially useful. It's not just motivation—there are actual systems and exercises you can implement immediately.",
+      "likes": 12
+    }
+  ],
+  "ai-businesses-21": [
+    {
+      "id": "rev-1",
+      "name": "Imran",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A genuinely practical perspective on feeling behind in life. The idea of building capacity instead of waiting for the perfect opportunity completely changed how I think about progress.",
+      "likes": 41
+    },
+    {
+      "id": "rev-2",
+      "name": "Deepak",
+      "avatar": "",
+      "date": "28d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved how everything connects—from financial discipline and skill-building to networking and building an audience. The 90-day plan makes it much easier to take action.",
+      "likes": 34
+    },
+    {
+      "id": "rev-3",
+      "name": "Vivek",
+      "avatar": "",
+      "date": "21d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This is the kind of advice I wish I had followed earlier. Instead of chasing random opportunities, it teaches you to become someone who is actually prepared for them.",
+      "likes": 25
+    },
+    {
+      "id": "rev-4",
+      "name": "Nikhil Reddy",
+      "avatar": "",
+      "date": "14d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The skill-stack framework, waitlist strategy, and capacity audit are especially useful. It's not just motivation—there are actual systems and exercises you can implement immediately.",
+      "likes": 12
+    }
+  ],
+  "i-have-too-many-digital-product-ideas-35-to-steal": [
+    {
+      "id": "rev-1",
+      "name": "Lucia",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I came in expecting another list of random side-hustle ideas. What I got was a much better way to think about products. The examples showing how to turn generic templates into niche-specific solutions were especially helpful.",
+      "likes": 47
+    },
+    {
+      "id": "rev-2",
+      "name": "Kunal",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The validation section alone saved me from jumping straight into development. I like that it explains how to speak with potential buyers and look for actual buying signals instead of relying on people saying an idea sounds great.",
+      "likes": 39
+    },
+    {
+      "id": "rev-3",
+      "name": "Williams",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "35 ideas, but somehow the biggest takeaway is to stop chasing 35 different projects. The breakdown of product formats and the decision scorecard helped me narrow things down to one offer I can realistically build.",
+      "likes": 30
+    },
+    {
+      "id": "rev-4",
+      "name": "Fernández",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really liked the section about selling the outcome rather than the number of files included. It changed how I think about pricing and packaging. The 30-day roadmap also makes the whole process feel much more manageable.",
+      "likes": 22
+    }
+  ],
+  "ai-businesses-79": [
+    {
+      "id": "rev-1",
+      "name": "Lucia",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I came in expecting another list of random side-hustle ideas. What I got was a much better way to think about products. The examples showing how to turn generic templates into niche-specific solutions were especially helpful.",
+      "likes": 47
+    },
+    {
+      "id": "rev-2",
+      "name": "Kunal",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The validation section alone saved me from jumping straight into development. I like that it explains how to speak with potential buyers and look for actual buying signals instead of relying on people saying an idea sounds great.",
+      "likes": 39
+    },
+    {
+      "id": "rev-3",
+      "name": "Williams",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "35 ideas, but somehow the biggest takeaway is to stop chasing 35 different projects. The breakdown of product formats and the decision scorecard helped me narrow things down to one offer I can realistically build.",
+      "likes": 30
+    },
+    {
+      "id": "rev-4",
+      "name": "Fernández",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really liked the section about selling the outcome rather than the number of files included. It changed how I think about pricing and packaging. The 30-day roadmap also makes the whole process feel much more manageable.",
+      "likes": 22
+    }
+  ],
+  "the-new-way-of-making-content-in-the-age-of-ai": [
+    {
+      "id": "rev-1",
+      "name": "Blake Harrison",
+      "avatar": "",
+      "date": "28d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The proof-engine concept is brilliant. I especially liked how it connects customer delivery, demonstrations, and content creation into one repeatable system instead of treating content as a separate job.",
+      "likes": 47
+    },
+    {
+      "id": "rev-2",
+      "name": "Vincent Howard",
+      "avatar": "",
+      "date": "22d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the most relevant content strategies for the AI era. The shift from simply creating content to demonstrating actual expertise is something every creator and founder should understand.",
+      "likes": 33
+    },
+    {
+      "id": "rev-3",
+      "name": "Wesley Grant",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Packed with practical ideas and genuinely useful AI prompts. The meeting-to-content workflow alone makes this playbook worth going through.",
+      "likes": 20
+    },
+    {
+      "id": "rev-4",
+      "name": "Cameron Ellis",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, a content playbook that focuses on substance over vanity metrics. The frameworks for building credibility, showing real work, and capturing content naturally are excellent.",
+      "likes": 18
+    }
+  ],
+  "ai-businesses-20": [
+    {
+      "id": "rev-1",
+      "name": "Blake Harrison",
+      "avatar": "",
+      "date": "28d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The proof-engine concept is brilliant. I especially liked how it connects customer delivery, demonstrations, and content creation into one repeatable system instead of treating content as a separate job.",
+      "likes": 47
+    },
+    {
+      "id": "rev-2",
+      "name": "Vincent Howard",
+      "avatar": "",
+      "date": "22d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the most relevant content strategies for the AI era. The shift from simply creating content to demonstrating actual expertise is something every creator and founder should understand.",
+      "likes": 33
+    },
+    {
+      "id": "rev-3",
+      "name": "Wesley Grant",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Packed with practical ideas and genuinely useful AI prompts. The meeting-to-content workflow alone makes this playbook worth going through.",
+      "likes": 20
+    },
+    {
+      "id": "rev-4",
+      "name": "Cameron Ellis",
+      "avatar": "",
+      "date": "18d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, a content playbook that focuses on substance over vanity metrics. The frameworks for building credibility, showing real work, and capturing content naturally are excellent.",
+      "likes": 18
+    }
+  ],
+  "how-a-faceless-channel-made-12-804-month-with-claude": [
+    {
+      "id": "rev-1",
+      "name": "Ananya",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, a guide that explains the entire process instead of just throwing AI tools at you. The character development, scripting, and video production workflows made the business model much easier to understand. Loved the practical prompts.",
+      "likes": 134
+    },
+    {
+      "id": "rev-2",
+      "name": "Vincent",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The digital product strategy was the most interesting part for me. I hadn't considered building revenue around a channel rather than depending entirely on YouTube ads. The examples helped me see how the pieces fit together.",
+      "likes": 103
+    },
+    {
+      "id": "rev-3",
+      "name": "Mehul Shah",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I appreciated how much attention this gives to consistency. Creating an AI presenter is one thing; making that character feel recognisable across dozens of videos is another. The character bible and production templates are genuinely useful.",
+      "likes": 80
+    },
+    {
+      "id": "rev-4",
+      "name": "Ethan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "More realistic than most AI side-hustle guides. It doesn't pretend that generating videos automatically means making thousands of dollars. The revenue breakdown, quality checks, and 30-day roadmap make this a much better starting point.",
+      "likes": 54
+    }
+  ],
+  "ai-businesses-78": [
+    {
+      "id": "rev-1",
+      "name": "Ananya",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, a guide that explains the entire process instead of just throwing AI tools at you. The character development, scripting, and video production workflows made the business model much easier to understand. Loved the practical prompts.",
+      "likes": 134
+    },
+    {
+      "id": "rev-2",
+      "name": "Vincent",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The digital product strategy was the most interesting part for me. I hadn't considered building revenue around a channel rather than depending entirely on YouTube ads. The examples helped me see how the pieces fit together.",
+      "likes": 103
+    },
+    {
+      "id": "rev-3",
+      "name": "Mehul Shah",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I appreciated how much attention this gives to consistency. Creating an AI presenter is one thing; making that character feel recognisable across dozens of videos is another. The character bible and production templates are genuinely useful.",
+      "likes": 80
+    },
+    {
+      "id": "rev-4",
+      "name": "Ethan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "More realistic than most AI side-hustle guides. It doesn't pretend that generating videos automatically means making thousands of dollars. The revenue breakdown, quality checks, and 30-day roadmap make this a much better starting point.",
+      "likes": 54
+    }
+  ],
+  "the-5-money-principles-that-will-make-anyone-rich-in-their-20s": [
+    {
+      "id": "rev-1",
+      "name": "Devin",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really liked how this breaks wealth-building down into principles you can actually apply. The 90-day plan makes it much easier to stop overthinking and start taking action.",
+      "likes": 57
+    },
+    {
+      "id": "rev-2",
+      "name": "Chase Morgan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "More than another motivational guide. I loved the practical exercises, weekly reviews, and the way it connects personal discipline with financial progress. Definitely worth reading.",
+      "likes": 35
+    },
+    {
+      "id": "rev-3",
+      "name": "Riley",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section about investing in your earning power completely changed how I look at money. Building valuable skills first makes so much sense, especially when you're starting with limited capital.",
+      "likes": 33
+    },
+    {
+      "id": "rev-4",
+      "name": "Evan Foster",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The biggest takeaway for me was learning to experiment with different income paths instead of blindly following what works for someone else. Straightforward, practical, and genuinely useful.",
+      "likes": 28
+    }
+  ],
+  "ai-businesses-12": [
+    {
+      "id": "rev-1",
+      "name": "Devin",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really liked how this breaks wealth-building down into principles you can actually apply. The 90-day plan makes it much easier to stop overthinking and start taking action.",
+      "likes": 57
+    },
+    {
+      "id": "rev-2",
+      "name": "Chase Morgan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "More than another motivational guide. I loved the practical exercises, weekly reviews, and the way it connects personal discipline with financial progress. Definitely worth reading.",
+      "likes": 35
+    },
+    {
+      "id": "rev-3",
+      "name": "Riley",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section about investing in your earning power completely changed how I look at money. Building valuable skills first makes so much sense, especially when you're starting with limited capital.",
+      "likes": 33
+    },
+    {
+      "id": "rev-4",
+      "name": "Evan Foster",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The biggest takeaway for me was learning to experiment with different income paths instead of blindly following what works for someone else. Straightforward, practical, and genuinely useful.",
+      "likes": 28
+    }
+  ],
+  "i-locked-myself-in-a-room-until-i-built-a-350-000-mo-business": [
+    {
+      "id": "rev-1",
+      "name": "Elliot Warren",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This is probably one of the most useful SaaS-building guides I've read. It goes beyond the usual startup advice and explains the actual decisions involved in turning a basic tool into a real software business.",
+      "likes": 49
+    },
+    {
+      "id": "rev-2",
+      "name": "Grant",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The sections on MVPs, pricing, subscriptions, and customer retention are incredibly valuable. I especially liked the emphasis on building something people genuinely need instead of endlessly adding features.",
+      "likes": 31
+    },
+    {
+      "id": "rev-3",
+      "name": "Joel Whitaker",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A fantastic resource for aspiring SaaS founders. The founder-independence framework and practical operating templates really stood out. It makes the process of building a proper software company much easier to understand.",
+      "likes": 19
+    },
+    {
+      "id": "rev-4",
+      "name": "Adrian",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What makes this playbook different is how much attention it gives to the difficult parts of entrepreneurship: declining revenue, co-founder conflicts, product improvements, and building a capable team. Very insightful.",
+      "likes": 11
+    }
+  ],
+  "ai-businesses-14": [
+    {
+      "id": "rev-1",
+      "name": "Elliot Warren",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This is probably one of the most useful SaaS-building guides I've read. It goes beyond the usual startup advice and explains the actual decisions involved in turning a basic tool into a real software business.",
+      "likes": 49
+    },
+    {
+      "id": "rev-2",
+      "name": "Grant",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The sections on MVPs, pricing, subscriptions, and customer retention are incredibly valuable. I especially liked the emphasis on building something people genuinely need instead of endlessly adding features.",
+      "likes": 31
+    },
+    {
+      "id": "rev-3",
+      "name": "Joel Whitaker",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A fantastic resource for aspiring SaaS founders. The founder-independence framework and practical operating templates really stood out. It makes the process of building a proper software company much easier to understand.",
+      "likes": 19
+    },
+    {
+      "id": "rev-4",
+      "name": "Adrian",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What makes this playbook different is how much attention it gives to the difficult parts of entrepreneurship: declining revenue, co-founder conflicts, product improvements, and building a capable team. Very insightful.",
+      "likes": 11
+    }
+  ],
+  "the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5": [
+    {
+      "id": "rev-1",
+      "name": "Caleb Morrison",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've been wanting to start something on the side but kept getting stuck choosing an idea. The four-filter approach made the decision much clearer. I also liked that it pushes you to create an actual sample instead of spending weeks calling yourself an entrepreneur without having anything to show.",
+      "likes": 151
+    },
+    {
+      "id": "rev-2",
+      "name": "Isabella",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The prospect research and outreach sections are excellent. I especially appreciate the emphasis on finding real buying signals rather than scraping random business contacts. The prompts are detailed enough to adapt, and the advice on personally reviewing every message is important.",
+      "likes": 129
+    },
+    {
+      "id": "rev-3",
+      "name": "Darius",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI side-hustle guide that doesn't pretend you can press a button and wake up with money. The human-plus-AI workflow makes sense, especially for someone working full-time. The evening schedule and 30-day plan make the whole thing feel achievable.",
+      "likes": 96
+    },
+    {
+      "id": "rev-4",
+      "name": "Priya",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "My favourite part is how the playbook connects everything: choosing a service, making proof, finding prospects, getting conversations, and delivering the work. The pilot-scope and weekly-review templates are particularly useful. It's a solid starting point for turning AI skills into an actual service.",
+      "likes": 88
+    }
+  ],
+  "ai-businesses-77": [
+    {
+      "id": "rev-1",
+      "name": "Caleb Morrison",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've been wanting to start something on the side but kept getting stuck choosing an idea. The four-filter approach made the decision much clearer. I also liked that it pushes you to create an actual sample instead of spending weeks calling yourself an entrepreneur without having anything to show.",
+      "likes": 151
+    },
+    {
+      "id": "rev-2",
+      "name": "Isabella",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The prospect research and outreach sections are excellent. I especially appreciate the emphasis on finding real buying signals rather than scraping random business contacts. The prompts are detailed enough to adapt, and the advice on personally reviewing every message is important.",
+      "likes": 129
+    },
+    {
+      "id": "rev-3",
+      "name": "Darius",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI side-hustle guide that doesn't pretend you can press a button and wake up with money. The human-plus-AI workflow makes sense, especially for someone working full-time. The evening schedule and 30-day plan make the whole thing feel achievable.",
+      "likes": 96
+    },
+    {
+      "id": "rev-4",
+      "name": "Priya",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "My favourite part is how the playbook connects everything: choosing a service, making proof, finding prospects, getting conversations, and delivering the work. The pilot-scope and weekly-review templates are particularly useful. It's a solid starting point for turning AI skills into an actual service.",
+      "likes": 88
+    }
+  ],
+  "how-i-built-it-400k-month-ios-app": [
+    {
+      "id": "rev-1",
+      "name": "Jordan Ellis",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I appreciated how much attention this gives to the product itself, not just the revenue story. The sections on finding a narrow problem, creating a distinctive concept, and studying power users helped me rethink how I approach app ideas. Definitely more useful than another generic startup guide.",
+      "likes": 73
+    },
+    {
+      "id": "rev-2",
+      "name": "Camila Reyes",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The analytics and experimentation chapters are the highlight for me. I finally have a clearer picture of what to track after launch, how to identify activation problems, and how to turn user behaviour into product improvements. The templates make the process feel manageable.",
+      "likes": 65
+    },
+    {
+      "id": "rev-3",
+      "name": "Natalie",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really good breakdown of the journey from idea to distribution. I particularly liked the distinction between getting downloads and acquiring users who actually retain and pay. That alone changes how you think about growth. The 90-day roadmap is a great starting point.",
+      "likes": 50
+    },
+    {
+      "id": "rev-4",
+      "name": "Pierce",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This is the kind of playbook I'd want before spending months building an app. It covers audience building, MVP scope, subscriptions, acquisition economics, team decisions, and even when to consider going full-time. Practical, structured, and refreshingly honest about what the $400K figure does and doesn't prove.",
+      "likes": 49
+    }
+  ],
+  "ai-businesses-76": [
+    {
+      "id": "rev-1",
+      "name": "Jordan Ellis",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I appreciated how much attention this gives to the product itself, not just the revenue story. The sections on finding a narrow problem, creating a distinctive concept, and studying power users helped me rethink how I approach app ideas. Definitely more useful than another generic startup guide.",
+      "likes": 73
+    },
+    {
+      "id": "rev-2",
+      "name": "Camila Reyes",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The analytics and experimentation chapters are the highlight for me. I finally have a clearer picture of what to track after launch, how to identify activation problems, and how to turn user behaviour into product improvements. The templates make the process feel manageable.",
+      "likes": 65
+    },
+    {
+      "id": "rev-3",
+      "name": "Natalie",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really good breakdown of the journey from idea to distribution. I particularly liked the distinction between getting downloads and acquiring users who actually retain and pay. That alone changes how you think about growth. The 90-day roadmap is a great starting point.",
+      "likes": 50
+    },
+    {
+      "id": "rev-4",
+      "name": "Pierce",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This is the kind of playbook I'd want before spending months building an app. It covers audience building, MVP scope, subscriptions, acquisition economics, team decisions, and even when to consider going full-time. Practical, structured, and refreshingly honest about what the $400K figure does and doesn't prove.",
+      "likes": 49
+    }
+  ],
+  "how-to-use-ai-in-your-business-in-2026": [
+    {
+      "id": "rev-1",
+      "name": "Daniel Tan",
+      "avatar": "",
+      "date": "14d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI business guide that focuses on actual business problems instead of hyping up random tools. The workflow-first approach makes so much sense.",
+      "likes": 26
+    },
+    {
+      "id": "rev-2",
+      "name": "Ziad Faris",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section about training AI like a real employee was a game changer. I never thought about giving AI proper SOPs, examples, and quality standards before.",
+      "likes": 19
+    },
+    {
+      "id": "rev-3",
+      "name": "Sai Charan",
+      "avatar": "",
+      "date": "10d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Very actionable and well structured. I especially liked the marketing, sales, and customer support workflows. The 30-day plan gives you a clear starting point.",
+      "likes": 17
+    },
+    {
+      "id": "rev-4",
+      "name": "Deepak Kumar",
+      "avatar": "",
+      "date": "08d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I liked most is the focus on measuring actual results. It explains how to use AI responsibly without blindly automating everything. Definitely worth reading.",
+      "likes": 10
+    }
+  ],
+  "ai-businesses-23": [
+    {
+      "id": "rev-1",
+      "name": "Daniel Tan",
+      "avatar": "",
+      "date": "14d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an AI business guide that focuses on actual business problems instead of hyping up random tools. The workflow-first approach makes so much sense.",
+      "likes": 26
+    },
+    {
+      "id": "rev-2",
+      "name": "Ziad Faris",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section about training AI like a real employee was a game changer. I never thought about giving AI proper SOPs, examples, and quality standards before.",
+      "likes": 19
+    },
+    {
+      "id": "rev-3",
+      "name": "Sai Charan",
+      "avatar": "",
+      "date": "10d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Very actionable and well structured. I especially liked the marketing, sales, and customer support workflows. The 30-day plan gives you a clear starting point.",
+      "likes": 17
+    },
+    {
+      "id": "rev-4",
+      "name": "Deepak Kumar",
+      "avatar": "",
+      "date": "08d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I liked most is the focus on measuring actual results. It explains how to use AI responsibly without blindly automating everything. Definitely worth reading.",
+      "likes": 10
+    }
+  ],
+  "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck": [
+    {
+      "id": "rev-1",
+      "name": "Valeria",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I liked most is that this doesn't just tell you to wake up early and work harder. The identity exercises made me look at why I keep repeating certain behaviours. The 90-day structure gives you something concrete to work on instead of another temporary motivation boost.",
+      "likes": 61
+    },
+    {
+      "id": "rev-2",
+      "name": "Holloway",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section about focusing on inputs rather than obsessing over outcomes was exactly what I needed. I tend to check results constantly and lose momentum when things don't happen immediately. The weekly review and experiment templates make it much easier to stay objective.",
+      "likes": 59
+    },
+    {
+      "id": "rev-3",
+      "name": "Ethan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Surprisingly practical. I especially liked the chapters on risk, discomfort, and handling failure. It encourages you to take action, but also reminds you not to make reckless decisions just to prove you're ambitious. That balance makes the advice feel much more grounded.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Neha",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've read plenty of self-improvement material, but having everything organised into a 90-day plan makes this different. The identity tracker, deep-work sheet, and daily operating template are useful tools I'll actually revisit. It feels less like motivational content and more like a personal operating manual.",
+      "likes": 33
+    }
+  ],
+  "ai-businesses-75": [
+    {
+      "id": "rev-1",
+      "name": "Valeria",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I liked most is that this doesn't just tell you to wake up early and work harder. The identity exercises made me look at why I keep repeating certain behaviours. The 90-day structure gives you something concrete to work on instead of another temporary motivation boost.",
+      "likes": 61
+    },
+    {
+      "id": "rev-2",
+      "name": "Holloway",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section about focusing on inputs rather than obsessing over outcomes was exactly what I needed. I tend to check results constantly and lose momentum when things don't happen immediately. The weekly review and experiment templates make it much easier to stay objective.",
+      "likes": 59
+    },
+    {
+      "id": "rev-3",
+      "name": "Ethan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Surprisingly practical. I especially liked the chapters on risk, discomfort, and handling failure. It encourages you to take action, but also reminds you not to make reckless decisions just to prove you're ambitious. That balance makes the advice feel much more grounded.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Neha",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've read plenty of self-improvement material, but having everything organised into a 90-day plan makes this different. The identity tracker, deep-work sheet, and daily operating template are useful tools I'll actually revisit. It feels less like motivational content and more like a personal operating manual.",
+      "likes": 33
+    }
+  ],
+  "youre-stuck-in-the-matrix-heres-how-you-escape": [
+    {
+      "id": "rev-1",
+      "name": "Connor",
+      "avatar": "",
+      "date": "30d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This made me question so many things I had accepted without thinking. The chapters on social conditioning and independent thinking really hit differently.",
+      "likes": 50
+    },
+    {
+      "id": "rev-2",
+      "name": "Kyle",
+      "avatar": "",
+      "date": "27d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "More than just motivation. I loved how it turns big ideas into actual exercises and a 90-day plan. Definitely made me rethink how I spend my time.",
+      "likes": 34
+    },
+    {
+      "id": "rev-3",
+      "name": "Harry Clarke",
+      "avatar": "",
+      "date": "26d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section about becoming high agency was my favourite. Instead of waiting for opportunities or permission, it pushes you to start solving problems yourself.",
+      "likes": 22
+    },
+    {
+      "id": "rev-4",
+      "name": "Callum",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A genuinely useful read. The ideas about self-directed learning, building your own vision, and creating value are things I wish I had started practising years ago.",
+      "likes": 20
+    }
+  ],
+  "ai-businesses-29": [
+    {
+      "id": "rev-1",
+      "name": "Connor",
+      "avatar": "",
+      "date": "30d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This made me question so many things I had accepted without thinking. The chapters on social conditioning and independent thinking really hit differently.",
+      "likes": 50
+    },
+    {
+      "id": "rev-2",
+      "name": "Kyle",
+      "avatar": "",
+      "date": "27d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "More than just motivation. I loved how it turns big ideas into actual exercises and a 90-day plan. Definitely made me rethink how I spend my time.",
+      "likes": 34
+    },
+    {
+      "id": "rev-3",
+      "name": "Harry Clarke",
+      "avatar": "",
+      "date": "26d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section about becoming high agency was my favourite. Instead of waiting for opportunities or permission, it pushes you to start solving problems yourself.",
+      "likes": 22
+    },
+    {
+      "id": "rev-4",
+      "name": "Callum",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A genuinely useful read. The ideas about self-directed learning, building your own vision, and creating value are things I wish I had started practising years ago.",
+      "likes": 20
+    }
+  ],
+  "ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course": [
+    {
+      "id": "rev-1",
+      "name": "Samantha",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This completely changed how I think about using AI. The difference between chatting with a model and actually giving an agent a job is explained brilliantly. I especially liked the employee-onboarding analogy.",
+      "likes": 13
+    },
+    {
+      "id": "rev-2",
+      "name": "Miguel",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The context, tools, and skills framework is incredibly useful. Instead of collecting random prompts, I now have a much clearer picture of how to build something reusable that improves with every task.",
+      "likes": 56
+    },
+    {
+      "id": "rev-3",
+      "name": "Leah",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I came for the AI agent tutorials, but the sections on folder organisation, memory, and reusable skills were what really stood out. The practical templates make getting started much less overwhelming.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Siddharth",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A surprisingly balanced guide. It covers automation and productivity, but also explains permissions, human approval, context limitations, and reliability. The 30-day and 90-day plans give the whole thing a clear direction.",
+      "likes": 39
+    }
+  ],
+  "ai-businesses-74": [
+    {
+      "id": "rev-1",
+      "name": "Samantha",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This completely changed how I think about using AI. The difference between chatting with a model and actually giving an agent a job is explained brilliantly. I especially liked the employee-onboarding analogy.",
+      "likes": 13
+    },
+    {
+      "id": "rev-2",
+      "name": "Miguel",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The context, tools, and skills framework is incredibly useful. Instead of collecting random prompts, I now have a much clearer picture of how to build something reusable that improves with every task.",
+      "likes": 56
+    },
+    {
+      "id": "rev-3",
+      "name": "Leah",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I came for the AI agent tutorials, but the sections on folder organisation, memory, and reusable skills were what really stood out. The practical templates make getting started much less overwhelming.",
+      "likes": 40
+    },
+    {
+      "id": "rev-4",
+      "name": "Siddharth",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A surprisingly balanced guide. It covers automation and productivity, but also explains permissions, human approval, context limitations, and reliability. The 30-day and 90-day plans give the whole thing a clear direction.",
+      "likes": 39
+    }
+  ],
+  "investing-for-beginners-in-25-minutes": [
+    {
+      "id": "rev-1",
+      "name": "Arjun Nair",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an investing guide that explains things in a way beginners can actually understand. The portfolio and diversification sections were especially helpful.",
+      "likes": 75
+    },
+    {
+      "id": "rev-2",
+      "name": "Rahul",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really well structured. I went from barely understanding ETFs and bonds to having a much clearer idea of how to approach long-term investing.",
+      "likes": 61
+    },
+    {
+      "id": "rev-3",
+      "name": "Aditya",
+      "avatar": "",
+      "date": "31d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The best part is that it doesn't just tell you what to buy. It teaches you how to think about risk, research companies, and build a proper investment strategy.",
+      "likes": 58
+    },
+    {
+      "id": "rev-4",
+      "name": "Karthik",
+      "avatar": "",
+      "date": "25d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A genuinely useful beginner's resource. The practical checklists and 30-day plan make it much easier to turn the knowledge into an actual routine.",
+      "likes": 42
+    }
+  ],
+  "ai-businesses-31": [
+    {
+      "id": "rev-1",
+      "name": "Arjun Nair",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an investing guide that explains things in a way beginners can actually understand. The portfolio and diversification sections were especially helpful.",
+      "likes": 75
+    },
+    {
+      "id": "rev-2",
+      "name": "Rahul",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really well structured. I went from barely understanding ETFs and bonds to having a much clearer idea of how to approach long-term investing.",
+      "likes": 61
+    },
+    {
+      "id": "rev-3",
+      "name": "Aditya",
+      "avatar": "",
+      "date": "31d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The best part is that it doesn't just tell you what to buy. It teaches you how to think about risk, research companies, and build a proper investment strategy.",
+      "likes": 58
+    },
+    {
+      "id": "rev-4",
+      "name": "Karthik",
+      "avatar": "",
+      "date": "25d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A genuinely useful beginner's resource. The practical checklists and 30-day plan make it much easier to turn the knowledge into an actual routine.",
+      "likes": 42
+    }
+  ],
+  "if-i-had-1-year-to-make-10m-this-is-my-plan": [
+    {
+      "id": "rev-1",
+      "name": "Madison",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The inventory section was a real eye-opener. I never thought deeply about how much money can get stuck in unsold products while bestsellers run out. The reorder point examples made the concept much easier to understand.",
+      "likes": 70
+    },
+    {
+      "id": "rev-2",
+      "name": "Carlos",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I liked that this doesn't just celebrate a million-dollar success story. It actually examines what went wrong afterward. The lessons about focus, hiring too quickly, and launching too many brands are incredibly useful.",
+      "likes": 59
+    },
+    {
+      "id": "rev-3",
+      "name": "Tanya",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The product validation process is probably my favourite part. Finding demand, researching suppliers, ordering samples, and testing preorders gives you a much clearer way to approach your first e-commerce product.",
+      "likes": 45
+    },
+    {
+      "id": "rev-4",
+      "name": "Rohan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an e-commerce guide that talks about cash flow and contribution instead of just revenue screenshots. The weekly founder review and product launch checklists make this something I can actually use while running a business.",
+      "likes": 27
+    }
+  ],
+  "ai-businesses-73": [
+    {
+      "id": "rev-1",
+      "name": "Madison",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The inventory section was a real eye-opener. I never thought deeply about how much money can get stuck in unsold products while bestsellers run out. The reorder point examples made the concept much easier to understand.",
+      "likes": 70
+    },
+    {
+      "id": "rev-2",
+      "name": "Carlos",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I liked that this doesn't just celebrate a million-dollar success story. It actually examines what went wrong afterward. The lessons about focus, hiring too quickly, and launching too many brands are incredibly useful.",
+      "likes": 59
+    },
+    {
+      "id": "rev-3",
+      "name": "Tanya",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The product validation process is probably my favourite part. Finding demand, researching suppliers, ordering samples, and testing preorders gives you a much clearer way to approach your first e-commerce product.",
+      "likes": 45
+    },
+    {
+      "id": "rev-4",
+      "name": "Rohan",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, an e-commerce guide that talks about cash flow and contribution instead of just revenue screenshots. The weekly founder review and product launch checklists make this something I can actually use while running a business.",
+      "likes": 27
+    }
+  ],
+  "laziest-ways-to-make-money-with-ai-for-beginners": [
+    {
+      "id": "rev-1",
+      "name": "Maxime Leroy",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Exactly what I was looking for. Instead of throwing random AI tools at me, it explains actual business models and how to get started with each one.",
+      "likes": 80
+    },
+    {
+      "id": "rev-2",
+      "name": "Julien Dubois",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really useful breakdown. I especially liked the sections on finding clients, understanding costs, and turning an AI skill into something people will actually pay for.",
+      "likes": 63
+    },
+    {
+      "id": "rev-3",
+      "name": "Tim Becker",
+      "avatar": "",
+      "date": "29d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The 30-day plan is my favourite part. It makes everything feel much more actionable instead of just reading about another online business idea.",
+      "likes": 51
+    },
+    {
+      "id": "rev-4",
+      "name": "Lars Bakker",
+      "avatar": "",
+      "date": "21d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A solid beginner-friendly guide. It covers seven different opportunities without pretending they're effortless or guaranteed money. Very practical and well organised.",
+      "likes": 39
+    }
+  ],
+  "ai-businesses-32": [
+    {
+      "id": "rev-1",
+      "name": "Maxime Leroy",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Exactly what I was looking for. Instead of throwing random AI tools at me, it explains actual business models and how to get started with each one.",
+      "likes": 80
+    },
+    {
+      "id": "rev-2",
+      "name": "Julien Dubois",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really useful breakdown. I especially liked the sections on finding clients, understanding costs, and turning an AI skill into something people will actually pay for.",
+      "likes": 63
+    },
+    {
+      "id": "rev-3",
+      "name": "Tim Becker",
+      "avatar": "",
+      "date": "29d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The 30-day plan is my favourite part. It makes everything feel much more actionable instead of just reading about another online business idea.",
+      "likes": 51
+    },
+    {
+      "id": "rev-4",
+      "name": "Lars Bakker",
+      "avatar": "",
+      "date": "21d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "A solid beginner-friendly guide. It covers seven different opportunities without pretending they're effortless or guaranteed money. Very practical and well organised.",
+      "likes": 39
+    }
+  ],
+  "bro-im-begging-you-to-build-this-4-8m-product-idea": [
+    {
+      "id": "rev-1",
+      "name": "Ethan Caldwell",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the better resources I've come across on physical product ideas. The two-pillar framework made me reconsider how I evaluate products. I especially liked the focus on manufacturing complexity and profit density, not just whether an idea sounds exciting.",
+      "likes": 144
+    },
+    {
+      "id": "rev-2",
+      "name": "Mariana",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I always thought product development started with designing something and then figuring out who would buy it. This playbook flips that approach completely. The customer observation exercises and interview questions are genuinely useful.",
+      "likes": 129
+    },
+    {
+      "id": "rev-3",
+      "name": "Dev Patel",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section about validating before manufacturing probably saved me from wasting money on an idea I was getting too attached to. The scorecards, competitor analysis, and concept-testing process make the whole thing feel much more systematic.",
+      "likes": 94
+    },
+    {
+      "id": "rev-4",
+      "name": "Rebecca",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Packed with interesting ways to think about everyday problems. I particularly enjoyed the SCAMPER techniques and the examples of finding opportunities in traditional industries. It makes you look at ordinary products and wonder what could be improved.",
+      "likes": 88
+    }
+  ],
+  "ai-businesses-72": [
+    {
+      "id": "rev-1",
+      "name": "Ethan Caldwell",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "One of the better resources I've come across on physical product ideas. The two-pillar framework made me reconsider how I evaluate products. I especially liked the focus on manufacturing complexity and profit density, not just whether an idea sounds exciting.",
+      "likes": 144
+    },
+    {
+      "id": "rev-2",
+      "name": "Mariana",
+      "avatar": "",
+      "date": "3mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I always thought product development started with designing something and then figuring out who would buy it. This playbook flips that approach completely. The customer observation exercises and interview questions are genuinely useful.",
+      "likes": 129
+    },
+    {
+      "id": "rev-3",
+      "name": "Dev Patel",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section about validating before manufacturing probably saved me from wasting money on an idea I was getting too attached to. The scorecards, competitor analysis, and concept-testing process make the whole thing feel much more systematic.",
+      "likes": 94
+    },
+    {
+      "id": "rev-4",
+      "name": "Rebecca",
+      "avatar": "",
+      "date": "2mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Packed with interesting ways to think about everyday problems. I particularly enjoyed the SCAMPER techniques and the examples of finding opportunities in traditional industries. It makes you look at ordinary products and wonder what could be improved.",
+      "likes": 88
+    }
+  ],
+  "if-i-had-to-start-a-business-from-scratch-id-do-this": [
+    {
+      "id": "rev-1",
+      "name": "Natalie",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really liked how this breaks down the early stages of starting a business. The advice about getting results before worrying about scaling is something more beginners need to hear. The 30-day sprint makes it much easier to actually begin.",
+      "likes": 57
+    },
+    {
+      "id": "rev-2",
+      "name": "Arjun",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I used to think I needed a proper website, branding, and a fully developed offer before approaching anyone. This completely changed how I look at starting. The warm outreach and pilot approach feels much more realistic.",
+      "likes": 49
+    },
+    {
+      "id": "rev-3",
+      "name": "Gabriel Santos",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section on turning a service into a repeatable system was my favourite. It's not just about getting customers; it explains how to deliver consistently, improve your process, and build something sustainable. Very actionable.",
+      "likes": 34
+    },
+    {
+      "id": "rev-4",
+      "name": "Chloe",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Straightforward, practical, and refreshingly honest. I especially appreciated the mistakes section and the emphasis on building recurring relationships instead of constantly chasing new clients. Lots of ideas worth putting into practice.",
+      "likes": 29
+    }
+  ],
+  "ai-businesses-71": [
+    {
+      "id": "rev-1",
+      "name": "Natalie",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really liked how this breaks down the early stages of starting a business. The advice about getting results before worrying about scaling is something more beginners need to hear. The 30-day sprint makes it much easier to actually begin.",
+      "likes": 57
+    },
+    {
+      "id": "rev-2",
+      "name": "Arjun",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I used to think I needed a proper website, branding, and a fully developed offer before approaching anyone. This completely changed how I look at starting. The warm outreach and pilot approach feels much more realistic.",
+      "likes": 49
+    },
+    {
+      "id": "rev-3",
+      "name": "Gabriel Santos",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section on turning a service into a repeatable system was my favourite. It's not just about getting customers; it explains how to deliver consistently, improve your process, and build something sustainable. Very actionable.",
+      "likes": 34
+    },
+    {
+      "id": "rev-4",
+      "name": "Chloe",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Straightforward, practical, and refreshingly honest. I especially appreciated the mistakes section and the emphasis on building recurring relationships instead of constantly chasing new clients. Lots of ideas worth putting into practice.",
+      "likes": 29
+    }
+  ],
+  "how-to-use-trading-212-in-2026-full-investing-guide": [
+    {
+      "id": "rev-1",
+      "name": "Matthew Collins",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've always found investing confusing, especially when it comes to choosing funds and building a portfolio. This explained everything in a really simple and structured way.",
+      "likes": 33
+    },
+    {
+      "id": "rev-2",
+      "name": "Nathan",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The three-fund portfolio section was my favourite. I finally understand how diversification works and why you don't need dozens of different stocks to get started.",
+      "likes": 27
+    },
+    {
+      "id": "rev-3",
+      "name": "Jordan",
+      "avatar": "",
+      "date": "16d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really appreciate that this goes beyond explaining what investing is. It walks through account setup, order types, recurring contributions, and portfolio management. Very useful.",
+      "likes": 24
+    },
+    {
+      "id": "rev-4",
+      "name": "Justin Parker",
+      "avatar": "",
+      "date": "11d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the emphasis on consistency, patience, and avoiding emotional decisions. It helped me understand that building wealth is a long-term process, not about chasing quick profits.",
+      "likes": 19
+    }
+  ],
+  "ai-businesses-33": [
+    {
+      "id": "rev-1",
+      "name": "Matthew Collins",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've always found investing confusing, especially when it comes to choosing funds and building a portfolio. This explained everything in a really simple and structured way.",
+      "likes": 33
+    },
+    {
+      "id": "rev-2",
+      "name": "Nathan",
+      "avatar": "",
+      "date": "19d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The three-fund portfolio section was my favourite. I finally understand how diversification works and why you don't need dozens of different stocks to get started.",
+      "likes": 27
+    },
+    {
+      "id": "rev-3",
+      "name": "Jordan",
+      "avatar": "",
+      "date": "16d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Really appreciate that this goes beyond explaining what investing is. It walks through account setup, order types, recurring contributions, and portfolio management. Very useful.",
+      "likes": 24
+    },
+    {
+      "id": "rev-4",
+      "name": "Justin Parker",
+      "avatar": "",
+      "date": "11d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the emphasis on consistency, patience, and avoiding emotional decisions. It helped me understand that building wealth is a long-term process, not about chasing quick profits.",
+      "likes": 19
+    }
+  ],
+  "how-i-build-a-10cr-agency-without-any-knowledge": [
+    {
+      "id": "rev-1",
+      "name": "Andre Whitmore",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What stood out to me was the progression. It doesn't jump straight into hiring people and chasing big retainers. It explains how to earn your way there through actual skills, client work, and trust.",
+      "likes": 67
+    },
+    {
+      "id": "rev-2",
+      "name": "Saanvi Kulkarni",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've been thinking about starting an agency, but always assumed I needed to know everything first. The specialised-to-generalised model changed how I look at it. Build one strong capability, then bring in the missing pieces.",
+      "likes": 59
+    },
+    {
+      "id": "rev-3",
+      "name": "Rafael Dominguez",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The sections on retainers, team structure, and agency economics are excellent. I especially appreciated the distinction between revenue and actual profit. There's a lot of practical thinking here.",
+      "likes": 52
+    },
+    {
+      "id": "rev-4",
+      "name": "Brooke Anderson",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "My favourite part is the founder mindset chapter. Learning to solve problems, understand the work, and recognise your own weaknesses is more useful than another generic guide about getting rich with an agency.",
+      "likes": 44
+    }
+  ],
+  "ai-businesses-70": [
+    {
+      "id": "rev-1",
+      "name": "Andre Whitmore",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What stood out to me was the progression. It doesn't jump straight into hiring people and chasing big retainers. It explains how to earn your way there through actual skills, client work, and trust.",
+      "likes": 67
+    },
+    {
+      "id": "rev-2",
+      "name": "Saanvi Kulkarni",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've been thinking about starting an agency, but always assumed I needed to know everything first. The specialised-to-generalised model changed how I look at it. Build one strong capability, then bring in the missing pieces.",
+      "likes": 59
+    },
+    {
+      "id": "rev-3",
+      "name": "Rafael Dominguez",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The sections on retainers, team structure, and agency economics are excellent. I especially appreciated the distinction between revenue and actual profit. There's a lot of practical thinking here.",
+      "likes": 52
+    },
+    {
+      "id": "rev-4",
+      "name": "Brooke Anderson",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "My favourite part is the founder mindset chapter. Learning to solve problems, understand the work, and recognise your own weaknesses is more useful than another generic guide about getting rich with an agency.",
+      "likes": 44
+    }
+  ],
+  "making-money-online-is-easy-actually-just-copy-me": [
+    {
+      "id": "rev-1",
+      "name": "Praveen Gowda",
+      "avatar": "",
+      "date": "24d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This playbook breaks down the entire online business journey in a way that's easy to understand and actually follow. I especially loved the four-stage framework because it helped me identify where I was going wrong and what I needed to focus on next. Definitely worth reading!",
+      "likes": 32
+    },
+    {
+      "id": "rev-2",
+      "name": "Abhinav Bhat",
+      "avatar": "",
+      "date": "22d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've consumed so much online business content, but this playbook brings everything together in one place. From choosing a business model to understanding customers, creating content, and reinvesting profits, it covers the bigger picture. Practical, straightforward, and genuinely valuable.",
+      "likes": 28
+    },
+    {
+      "id": "rev-3",
+      "name": "Harish Murthy",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I liked most is that it doesn't make starting an online business sound effortless or promise overnight success. It explains the process, highlights common mistakes, and gives you actionable checklists and templates. A great resource for anyone serious about building an online income stream.",
+      "likes": 27
+    },
+    {
+      "id": "rev-4",
+      "name": "Shubham Jaiswal",
+      "avatar": "",
+      "date": "16d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section on Shiny Object Syndrome really hit home! I used to jump between different business ideas without giving any of them enough attention. This playbook helped me understand the importance of consistency, customer research, and making decisions based on evidence. It's a fantastic guide for anyone ready to stop overthinking and start executing.",
+      "likes": 19
+    }
+  ],
+  "ai-businesses-35": [
+    {
+      "id": "rev-1",
+      "name": "Praveen Gowda",
+      "avatar": "",
+      "date": "24d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "This playbook breaks down the entire online business journey in a way that's easy to understand and actually follow. I especially loved the four-stage framework because it helped me identify where I was going wrong and what I needed to focus on next. Definitely worth reading!",
+      "likes": 32
+    },
+    {
+      "id": "rev-2",
+      "name": "Abhinav Bhat",
+      "avatar": "",
+      "date": "22d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I've consumed so much online business content, but this playbook brings everything together in one place. From choosing a business model to understanding customers, creating content, and reinvesting profits, it covers the bigger picture. Practical, straightforward, and genuinely valuable.",
+      "likes": 28
+    },
+    {
+      "id": "rev-3",
+      "name": "Harish Murthy",
+      "avatar": "",
+      "date": "20d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "What I liked most is that it doesn't make starting an online business sound effortless or promise overnight success. It explains the process, highlights common mistakes, and gives you actionable checklists and templates. A great resource for anyone serious about building an online income stream.",
+      "likes": 27
+    },
+    {
+      "id": "rev-4",
+      "name": "Shubham Jaiswal",
+      "avatar": "",
+      "date": "16d ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The section on Shiny Object Syndrome really hit home! I used to jump between different business ideas without giving any of them enough attention. This playbook helped me understand the importance of consistency, customer research, and making decisions based on evidence. It's a fantastic guide for anyone ready to stop overthinking and start executing.",
+      "likes": 19
+    }
+  ],
+  "zero-to-1000-profit-with-dropshipping-using-ai-24hours": [
+    {
+      "id": "rev-1",
+      "name": "Marcus",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The unit economics section alone makes this worth reading. It's easy to get excited about sales screenshots, but this actually explains how to calculate what you're keeping after product costs, shipping, fees, and ads.",
+      "likes": 123
+    },
+    {
+      "id": "rev-2",
+      "name": "Priyanka",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I liked how the whole process is connected. Product research flows into store creation, then creative testing and campaign analysis. The prompts are useful too, especially for evaluating products without blindly trusting AI.",
+      "likes": 119
+    },
+    {
+      "id": "rev-3",
+      "name": "Julianne Costa",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I appreciate that this doesn't just focus on making money. It covers client relationships, tracking, reporting, and the operational side too. The first-client pilot is a particularly useful starting point.",
+      "likes": 98
+    },
+    {
+      "id": "rev-4",
+      "name": "Devonte Harris",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The competitor ad research and creative testing chapters gave me a better way to think about marketing. Instead of copying whatever is trending, you learn to understand the angle behind an ad and develop your own variations.",
+      "likes": 83
+    }
+  ],
+  "ai-businesses-69": [
+    {
+      "id": "rev-1",
+      "name": "Marcus",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The unit economics section alone makes this worth reading. It's easy to get excited about sales screenshots, but this actually explains how to calculate what you're keeping after product costs, shipping, fees, and ads.",
+      "likes": 123
+    },
+    {
+      "id": "rev-2",
+      "name": "Priyanka",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I liked how the whole process is connected. Product research flows into store creation, then creative testing and campaign analysis. The prompts are useful too, especially for evaluating products without blindly trusting AI.",
+      "likes": 119
+    },
+    {
+      "id": "rev-3",
+      "name": "Julianne Costa",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I appreciate that this doesn't just focus on making money. It covers client relationships, tracking, reporting, and the operational side too. The first-client pilot is a particularly useful starting point.",
+      "likes": 98
+    },
+    {
+      "id": "rev-4",
+      "name": "Devonte Harris",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The competitor ad research and creative testing chapters gave me a better way to think about marketing. Instead of copying whatever is trending, you learn to understand the angle behind an ad and develop your own variations.",
+      "likes": 83
+    }
+  ],
+  "the-only-investing-video-youll-ever-need-start-with-100": [
+    {
+      "id": "rev-1",
+      "name": "Brandon Walker",
+      "avatar": "",
+      "date": "14d ago",
+      "rating": 5,
+      "headline": "I've always wanted to start investing but never knew where to begin.",
+      "content": "I've always wanted to start investing but never knew where to begin. This playbook breaks everything down in such a simple and practical way. I finally understand the difference between stocks, REITs, crypto, gold, and index funds. A fantastic starting point!",
+      "likes": 20
+    },
+    {
+      "id": "rev-2",
+      "name": "Connor Walsh",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "What I loved most is how this guide explains both the opportunities and risks of investing.",
+      "content": "What I loved most is how this guide explains both the opportunities and risks of investing. The $100 comparisons made everything easier to understand, and the worksheets are incredibly useful. Definitely worth reading!",
+      "likes": 18
+    },
+    {
+      "id": "rev-3",
+      "name": "Nathaniel Price",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "This is exactly the kind of investing guide I was looking for.",
+      "content": "This is exactly the kind of investing guide I was looking for. It's well-organised, beginner-friendly, and packed with valuable information. I especially enjoyed learning about diversification, compounding, and how to evaluate different investment options.",
+      "likes": 16
+    },
+    {
+      "id": "rev-4",
+      "name": "Cameron Stewart",
+      "avatar": "",
+      "date": "09d ago",
+      "rating": 5,
+      "headline": "A brilliant resource for anyone looking to become more financially confident.",
+      "content": "A brilliant resource for anyone looking to become more financially confident. It doesn't just tell you what investments are; it teaches you how to think about risk, make informed decisions, and avoid common beginner mistakes. Practical, informative, and motivating!",
+      "likes": 10
+    }
+  ],
+  "ai-businesses-37": [
+    {
+      "id": "rev-1",
+      "name": "Brandon Walker",
+      "avatar": "",
+      "date": "14d ago",
+      "rating": 5,
+      "headline": "I've always wanted to start investing but never knew where to begin.",
+      "content": "I've always wanted to start investing but never knew where to begin. This playbook breaks everything down in such a simple and practical way. I finally understand the difference between stocks, REITs, crypto, gold, and index funds. A fantastic starting point!",
+      "likes": 20
+    },
+    {
+      "id": "rev-2",
+      "name": "Connor Walsh",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "What I loved most is how this guide explains both the opportunities and risks of investing.",
+      "content": "What I loved most is how this guide explains both the opportunities and risks of investing. The $100 comparisons made everything easier to understand, and the worksheets are incredibly useful. Definitely worth reading!",
+      "likes": 18
+    },
+    {
+      "id": "rev-3",
+      "name": "Nathaniel Price",
+      "avatar": "",
+      "date": "13d ago",
+      "rating": 5,
+      "headline": "This is exactly the kind of investing guide I was looking for.",
+      "content": "This is exactly the kind of investing guide I was looking for. It's well-organised, beginner-friendly, and packed with valuable information. I especially enjoyed learning about diversification, compounding, and how to evaluate different investment options.",
+      "likes": 16
+    },
+    {
+      "id": "rev-4",
+      "name": "Cameron Stewart",
+      "avatar": "",
+      "date": "09d ago",
+      "rating": 5,
+      "headline": "A brilliant resource for anyone looking to become more financially confident.",
+      "content": "A brilliant resource for anyone looking to become more financially confident. It doesn't just tell you what investments are; it teaches you how to think about risk, make informed decisions, and avoid common beginner mistakes. Practical, informative, and motivating!",
+      "likes": 10
+    }
+  ],
+  "marketing-agents-are-too-good-now": [
+    {
+      "id": "rev-1",
+      "name": "Harshil Deshmukh",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I finally understand the difference between an AI automation and an actual agent. The architecture section made the whole concept click, especially how advertising data, CRM activity, and revenue can work together.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Elena Brooks",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved that this goes beyond prompting ChatGPT to write ads. The creative pipeline, feedback loops, and campaign decision systems gave me a much clearer picture of what building a real marketing agent involves.",
+      "likes": 105
+    },
+    {
+      "id": "rev-3",
+      "name": "Karthik Reddy",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The implementation roadmap is probably my favourite part. It breaks a pretty intimidating project into manageable stages, starting with read-only analysis before moving towards automated actions. Very practical.",
+      "likes": 93
+    },
+    {
+      "id": "rev-4",
+      "name": "Amara Okafor",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "There's a lot more here than just Meta Ads. The WordPress product ideas and other agent opportunities got me thinking about entirely different ways to build AI-powered software. A genuinely useful read.",
+      "likes": 88
+    }
+  ],
+  "ai-businesses-68": [
+    {
+      "id": "rev-1",
+      "name": "Harshil Deshmukh",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "I finally understand the difference between an AI automation and an actual agent. The architecture section made the whole concept click, especially how advertising data, CRM activity, and revenue can work together.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Elena Brooks",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved that this goes beyond prompting ChatGPT to write ads. The creative pipeline, feedback loops, and campaign decision systems gave me a much clearer picture of what building a real marketing agent involves.",
+      "likes": 105
+    },
+    {
+      "id": "rev-3",
+      "name": "Karthik Reddy",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "The implementation roadmap is probably my favourite part. It breaks a pretty intimidating project into manageable stages, starting with read-only analysis before moving towards automated actions. Very practical.",
+      "likes": 93
+    },
+    {
+      "id": "rev-4",
+      "name": "Amara Okafor",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "",
+      "content": "There's a lot more here than just Meta Ads. The WordPress product ideas and other agent opportunities got me thinking about entirely different ways to build AI-powered software. A genuinely useful read.",
+      "likes": 88
+    }
+  ],
+  "7-proven-ways-to-make-money-with-ai-no-experience": [
+    {
+      "id": "rev-1",
+      "name": "Jonathan Morris",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "I've been interested in making money with AI but never really knew where to start.",
+      "content": "I've been interested in making money with AI but never really knew where to start. This playbook breaks everything down into practical business opportunities that actually make sense. I especially love the client acquisition strategies and step-by-step launch plan. Definitely worth reading!",
+      "likes": 78
+    },
+    {
+      "id": "rev-2",
+      "name": "Patrick Murphy",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "What I love most about this guide is that it focuses on selling real business solutions rather than just playing around with AI tools.",
+      "content": "What I love most about this guide is that it focuses on selling real business solutions rather than just playing around with AI tools. The six business models gave me several ideas I could realistically start exploring right away. Clear, actionable, and packed with value.",
+      "likes": 55
+    },
+    {
+      "id": "rev-3",
+      "name": "Scott Reynolds",
+      "avatar": "",
+      "date": "28d ago",
+      "rating": 5,
+      "headline": "So many AI guides talk about building the next big app or becoming a tech expert.",
+      "content": "So many AI guides talk about building the next big app or becoming a tech expert. This playbook takes a much more practical approach. It shows how to use tools that already exist to solve problems businesses are willing to pay for. The pricing, outreach examples, and recurring revenue strategies make it especially useful.",
+      "likes": 49
+    },
+    {
+      "id": "rev-4",
+      "name": "Tyler Richardson",
+      "avatar": "",
+      "date": "23d ago",
+      "rating": 5,
+      "headline": "This guide connects all the dots, from choosing a profitable service and finding potential clients to delivering quality work and building monthly retainers.",
+      "content": "This guide connects all the dots, from choosing a profitable service and finding potential clients to delivering quality work and building monthly retainers. The templates and 30-day action plan are excellent additions. If you're serious about turning AI skills into a service business, this is a great place to start.",
+      "likes": 33
+    }
+  ],
+  "ai-businesses-38": [
+    {
+      "id": "rev-1",
+      "name": "Jonathan Morris",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "I've been interested in making money with AI but never really knew where to start.",
+      "content": "I've been interested in making money with AI but never really knew where to start. This playbook breaks everything down into practical business opportunities that actually make sense. I especially love the client acquisition strategies and step-by-step launch plan. Definitely worth reading!",
+      "likes": 78
+    },
+    {
+      "id": "rev-2",
+      "name": "Patrick Murphy",
+      "avatar": "",
+      "date": "1mo ago",
+      "rating": 5,
+      "headline": "What I love most about this guide is that it focuses on selling real business solutions rather than just playing around with AI tools.",
+      "content": "What I love most about this guide is that it focuses on selling real business solutions rather than just playing around with AI tools. The six business models gave me several ideas I could realistically start exploring right away. Clear, actionable, and packed with value.",
+      "likes": 55
+    },
+    {
+      "id": "rev-3",
+      "name": "Scott Reynolds",
+      "avatar": "",
+      "date": "28d ago",
+      "rating": 5,
+      "headline": "So many AI guides talk about building the next big app or becoming a tech expert.",
+      "content": "So many AI guides talk about building the next big app or becoming a tech expert. This playbook takes a much more practical approach. It shows how to use tools that already exist to solve problems businesses are willing to pay for. The pricing, outreach examples, and recurring revenue strategies make it especially useful.",
+      "likes": 49
+    },
+    {
+      "id": "rev-4",
+      "name": "Tyler Richardson",
+      "avatar": "",
+      "date": "23d ago",
+      "rating": 5,
+      "headline": "This guide connects all the dots, from choosing a profitable service and finding potential clients to delivering quality work and building monthly retainers.",
+      "content": "This guide connects all the dots, from choosing a profitable service and finding potential clients to delivering quality work and building monthly retainers. The templates and 30-day action plan are excellent additions. If you're serious about turning AI skills into a service business, this is a great place to start.",
+      "likes": 33
+    }
+  ]
+};
+
+export const PLAYBOOK_PUBLISHED_DATES: Record<string, string> = {
+  "the-1-000-hour-1-person-ai-business": "2026-10-02",
+  "ai-businesses-103": "2026-10-02",
+  "top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked": "2026-09-15",
+  "ai-businesses-102": "2026-09-15",
+  "i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results": "2026-10-03",
+  "ai-businesses-101": "2026-10-03",
+  "this-ai-side-hustle-makes-4-lakhs-month-copy-me": "2026-09-18",
+  "ai-businesses-100": "2026-09-18",
+  "i-tried-a-100-free-ai-side-hustle-for-indians-real-results": "2026-10-10",
+  "ai-businesses-61": "2026-10-10",
+  "when-i-understood-this-about-investing-my-life-changed": "2026-08-04",
+  "ai-businesses-99": "2026-08-04",
+  "in-18-minutes-youll-understand-generational-wealth": "2026-09-08",
+  "ai-businesses-96": "2026-09-08",
+  "laziest-way-to-make-money-online-in-2026-500-day": "2026-10-16",
+  "ai-businesses-09": "2026-10-16",
+  "if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this": "2026-08-05",
+  "ai-businesses-95": "2026-08-05",
+  "if-you-only-read-one-money-playbook-make-it-this": "2026-09-06",
+  "ai-businesses-94": "2026-09-06",
+  "if-i-wanted-to-make-my-first-100k-in-2027-id-do-this": "2026-09-20",
+  "ai-businesses-88": "2026-09-20",
+  "copy-paste-this-strategy-to-make-13k-month-with-ai-in-2026": "2026-10-13",
+  "ai-businesses-07": "2026-10-13",
+  "starting-an-ai-side-hustle-is-easy-copy-this-system": "2026-08-08",
+  "ai-businesses-93": "2026-08-08",
+  "im-broke-what-business-do-i-start": "2026-09-19",
+  "ai-businesses-92": "2026-09-19",
+  "the-best-ai-side-hustles-to-start-in-2026-no-skills": "2026-10-11",
+  "ai-businesses-06": "2026-10-11",
+  "i-blew-up-a-youtube-channel-in-24-hours-with-ai": "2026-09-16",
+  "ai-businesses-91": "2026-09-16",
+  "5-simple-apps-making-10-000-month-that-you-can-build-with-ai": "2026-10-07",
+  "ai-businesses-60": "2026-10-07",
+  "if-i-started-with-0-heres-my-exact-plan-to-100k": "2026-09-15",
+  "ai-businesses-90": "2026-09-15",
+  "i-sell-pdfs-with-ai-and-it-changed-my-life-revealing-everything": "2026-10-16",
+  "ai-businesses-58": "2026-10-16",
+  "31-years-of-wealth-knowledge-in-18-minutes": "2026-09-11",
+  "ai-businesses-89": "2026-09-11",
+  "if-i-started-over-with-0-heres-my-exact-plan-to-get-to-1m": "2026-10-13",
+  "ai-businesses-53": "2026-10-13",
+  "make-your-first-3000-online-in-90days-or-scroll-for-5-37mins": "2026-08-06",
+  "ai-businesses-87": "2026-08-06",
+  "how-to-build-a-10000-website-with-gpt-6-astra-full-tutorial": "2026-09-01",
+  "ai-businesses-86": "2026-09-01",
+  "its-boring-but-will-make-even-beginners-millionaires-in-2026": "2026-10-08",
+  "ai-businesses-13": "2026-10-08",
+  "how-to-make-progress-faster-than-everyone": "2026-09-04",
+  "ai-businesses-85": "2026-09-04",
+  "how-to-get-rich-for-service-based-businesses-thank-me-later": "2026-10-02",
+  "ai-businesses-19": "2026-10-02",
+  "build-a-10k-month-ai-influencer-in-9-mins": "2026-08-03",
+  "ai-businesses-84": "2026-08-03",
+  "how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old": "2026-09-22",
+  "ai-businesses-83": "2026-09-22",
+  "3-best-ai-businesses-to-start-before-2027-and-the-one-id-start-today": "2026-10-12",
+  "ai-businesses-59": "2026-10-12",
+  "its-boring-but-i-make-745-day-in-4-hours-at-22": "2026-09-09",
+  "ai-businesses-82": "2026-09-09",
+  "your-first-1m-is-simple-heres-how": "2026-10-04",
+  "ai-businesses-11": "2026-10-04",
+  "how-i-went-from-0-to-92k-month-at-19-my-full-story": "2026-09-13",
+  "ai-businesses-81": "2026-09-13",
+  "7-side-hustles-students-can-start-in-2027": "2026-10-03",
+  "ai-businesses-57": "2026-10-03",
+  "this-one-book-has-the-power-to-change-your-entire-life": "2026-09-14",
+  "ai-businesses-80": "2026-09-14",
+  "how-to-catch-up-in-life-using-logic": "2026-10-09",
+  "ai-businesses-21": "2026-10-09",
+  "i-have-too-many-digital-product-ideas-35-to-steal": "2026-09-21",
+  "ai-businesses-79": "2026-09-21",
+  "the-new-way-of-making-content-in-the-age-of-ai": "2026-10-10",
+  "ai-businesses-20": "2026-10-10",
+  "how-a-faceless-channel-made-12-804-month-with-claude": "2026-08-03",
+  "ai-businesses-78": "2026-08-03",
+  "the-5-money-principles-that-will-make-anyone-rich-in-their-20s": "2026-09-13",
+  "ai-businesses-12": "2026-09-13",
+  "i-locked-myself-in-a-room-until-i-built-a-350-000-mo-business": "2026-10-09",
+  "ai-businesses-14": "2026-10-09",
+  "the-new-way-to-make-money-with-ai-at-night-even-if-you-have-a-9-5": "2026-08-07",
+  "ai-businesses-77": "2026-08-07",
+  "how-i-built-it-400k-month-ios-app": "2026-09-14",
+  "ai-businesses-76": "2026-09-14",
+  "how-to-use-ai-in-your-business-in-2026": "2026-10-19",
+  "ai-businesses-23": "2026-10-19",
+  "how-to-reinvent-yourself-in-90-days-to-become-rich-as-f-ck": "2026-09-16",
+  "ai-businesses-75": "2026-09-16",
+  "youre-stuck-in-the-matrix-heres-how-you-escape": "2026-10-10",
+  "ai-businesses-29": "2026-10-10",
+  "ai-agents-the-most-valuable-skill-you-can-learn-in-2027-full-course": "2026-09-22",
+  "ai-businesses-74": "2026-09-22",
+  "investing-for-beginners-in-25-minutes": "2026-10-01",
+  "ai-businesses-31": "2026-10-01",
+  "if-i-had-1-year-to-make-10m-this-is-my-plan": "2026-09-02",
+  "ai-businesses-73": "2026-09-02",
+  "laziest-ways-to-make-money-with-ai-for-beginners": "2026-10-08",
+  "ai-businesses-32": "2026-10-08",
+  "bro-im-begging-you-to-build-this-4-8m-product-idea": "2026-08-04",
+  "ai-businesses-72": "2026-08-04",
+  "if-i-had-to-start-a-business-from-scratch-id-do-this": "2026-09-12",
+  "ai-businesses-71": "2026-09-12",
+  "how-to-use-trading-212-in-2026-full-investing-guide": "2026-10-15",
+  "ai-businesses-33": "2026-10-15",
+  "how-i-build-a-10cr-agency-without-any-knowledge": "2026-09-09",
+  "ai-businesses-70": "2026-09-09",
+  "making-money-online-is-easy-actually-just-copy-me": "2026-10-16",
+  "ai-businesses-35": "2026-10-16",
+  "zero-to-1000-profit-with-dropshipping-using-ai-24hours": "2026-09-10",
+  "ai-businesses-69": "2026-09-10",
+  "the-only-investing-video-youll-ever-need-start-with-100": "2026-10-22",
+  "ai-businesses-37": "2026-10-22",
+  "marketing-agents-are-too-good-now": "2026-09-10",
+  "ai-businesses-68": "2026-09-10",
+  "7-proven-ways-to-make-money-with-ai-no-experience": "2026-10-03",
+  "ai-businesses-38": "2026-10-03"
+};
+
 export function getCuratedCommunityReviews(
   title: string,
   rating: number,
   slug = ""
 ): BookReview[] {
+  if (slug && CURATED_COMMUNITY_REVIEW_OVERRIDES[slug]) {
+    return CURATED_COMMUNITY_REVIEW_OVERRIDES[slug];
+  }
   if (
     slug === "the-1-000-hour-1-person-ai-business" ||
     slug === "ai-businesses-103"
@@ -5916,6 +10913,9 @@ export function getPlaybookPublishedDate(
   slug = "",
   explicitPublishedAt?: string
 ): string {
+  if (slug && PLAYBOOK_PUBLISHED_DATES[slug]) {
+    return PLAYBOOK_PUBLISHED_DATES[slug];
+  }
   if (
     slug === "the-1-000-hour-1-person-ai-business" ||
     slug === "ai-businesses-103"

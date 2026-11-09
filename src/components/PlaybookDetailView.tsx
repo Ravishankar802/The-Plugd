@@ -113,16 +113,27 @@ export default function PlaybookDetailView({
     [playbook.categoryName, playbook.slug]
   );
 
+  // Catalog summary lookup for consistent catalog metadata (rating, count, published date)
+  const catalogEntry = useMemo(() => {
+    return ALL_PLAYBOOK_SUMMARIES.find(
+      (p) => p.slug === playbook.slug || p.id === playbook.id
+    );
+  }, [playbook.slug, playbook.id]);
+
+  const effectiveRating = catalogEntry?.rating ?? playbook.rating ?? 4.8;
+  const effectiveRatingCount = catalogEntry?.ratingCount ?? playbook.ratingCount ?? "4.9k";
+  const effectivePublishedAt = catalogEntry?.publishedAt ?? (playbook as any).publishedAt;
+
   // Relative published time ("xd ago" or "xmo ago")
   const relativePublishedDate = useMemo(
-    () => getRelativePublishedTime(playbook.slug, (playbook as any).publishedAt),
-    [playbook.slug, playbook]
+    () => getRelativePublishedTime(playbook.slug, effectivePublishedAt),
+    [playbook.slug, effectivePublishedAt]
   );
 
   // Mathematically calculated star rating distribution
   const ratingBreakdown = useMemo(
-    () => getPlaybookRatingBreakdown(playbook.rating || 4.8, playbook.ratingCount),
-    [playbook.rating, playbook.ratingCount]
+    () => getPlaybookRatingBreakdown(effectiveRating, effectiveRatingCount),
+    [effectiveRating, effectiveRatingCount]
   );
 
   // Clean description without repeated bold headline prefix
@@ -172,8 +183,8 @@ export default function PlaybookDetailView({
 
   // Curated community reviews
   const communityReviews = useMemo(
-    () => getCuratedCommunityReviews(playbook.title, playbook.rating || 4.8, playbook.slug),
-    [playbook.title, playbook.rating, playbook.slug]
+    () => getCuratedCommunityReviews(playbook.title, effectiveRating, playbook.slug),
+    [playbook.title, effectiveRating, playbook.slug]
   );
 
   const filteredReviews = useMemo(() => {
@@ -308,14 +319,14 @@ export default function PlaybookDetailView({
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-1 text-[13px] font-bold text-[#1c1917]">
                   <Star className="h-3 w-3 fill-[#d97706] text-[#d97706]" />
-                  <span>{playbook.rating?.toFixed(1) || "4.8"}</span>
+                  <span>{effectiveRating.toFixed(1)}</span>
                 </div>
-                {playbook.ratingCount && (
+                {effectiveRatingCount && (
                   <div className="inline-flex items-center rounded-md border border-[#e7e5e4] bg-white px-1.5 py-0.5 text-[11px] text-[#78716c] shadow-2xs shrink-0 font-medium">
                     <span>
-                      {typeof playbook.ratingCount === "number"
-                        ? playbook.ratingCount.toLocaleString()
-                        : playbook.ratingCount}{" "}
+                      {typeof effectiveRatingCount === "number"
+                        ? effectiveRatingCount.toLocaleString()
+                        : effectiveRatingCount}{" "}
                       ratings
                     </span>
                   </div>
@@ -461,13 +472,13 @@ export default function PlaybookDetailView({
                   ))}
                 </div>
                 <span className="font-bold text-sm text-[#1c1917] ml-0.5">
-                  {playbook.rating?.toFixed(1) || "4.8"}
+                  {effectiveRating.toFixed(1)}
                 </span>
                 <span className="text-stone-300">•</span>
                 <span className="text-xs text-stone-500">
-                  {typeof playbook.ratingCount === "number"
-                    ? playbook.ratingCount.toLocaleString()
-                    : playbook.ratingCount}{" "}
+                  {typeof effectiveRatingCount === "number"
+                    ? effectiveRatingCount.toLocaleString()
+                    : effectiveRatingCount}{" "}
                   ratings
                 </span>
               </div>
