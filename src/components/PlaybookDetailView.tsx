@@ -496,10 +496,10 @@ export default function PlaybookDetailView({
               </button>
             </div>
 
-            {/* About the Author */}
+            {/* Author */}
             <div className="border-t border-stone-200 pt-8 space-y-4">
               <h2 className="text-xl font-bold text-[#1c1917]">
-                About the author
+                Author
               </h2>
 
               <div className="flex items-center gap-3.5 sm:gap-4">
