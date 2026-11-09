@@ -502,27 +502,19 @@ export default function PlaybookDetailView({
                 About the author
               </h2>
 
-              <div className="flex items-start gap-4">
+              <div className="flex items-center gap-3.5 sm:gap-4">
                 <div
-                  className="h-14 w-14 rounded-full text-white flex items-center justify-center font-bold text-lg uppercase shrink-0 shadow-2xs"
+                  className="h-12 w-12 sm:h-13 sm:w-13 rounded-full text-white flex items-center justify-center font-bold text-lg sm:text-xl uppercase shrink-0 shadow-2xs"
                   style={{ backgroundColor: getAvatarBgColor(author.name) }}
                 >
                   {author.name.charAt(0)}
                 </div>
-                <div className="flex-1 space-y-1">
-                  <h3 className="font-bold text-sm text-[#1c1917] flex items-center gap-1.5">
-                    {author.name}
-                    <span className="inline-flex items-center justify-center h-3.5 w-3.5 rounded-full bg-stone-700 text-white text-[9px]">
-                      ✓
-                    </span>
-                  </h3>
-
-                  {author.bio ? (
-                    <p className="text-xs text-stone-600 leading-relaxed pt-1">
-                      {author.bio}
-                    </p>
-                  ) : null}
-                </div>
+                <h3 className="font-bold text-lg sm:text-xl text-[#1c1917] flex items-center gap-2">
+                  {author.name}
+                  <span className="inline-flex items-center justify-center h-4 w-4 rounded-full bg-stone-700 text-white text-[10px]">
+                    ✓
+                  </span>
+                </h3>
               </div>
             </div>
 

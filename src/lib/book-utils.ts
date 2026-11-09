@@ -1250,7 +1250,7 @@ if (
       avatar: "",
       booksCount: 6,
       followersCount: "18.4k",
-      bio: "Your go-to source for in-depth playbooks on the best website builders and online platforms. Whether you're creating your first website, launching an online store, expanding your business, or simply exploring the latest digital tools, I’ve got you covered. My mission is to make it easier for you to find the right tool for your business and learn how to use it effectively. Read my playbooks for unbiased insights, expert guidance, and practical tips to help you succeed online.",
+      bio: "",
     };
   }
 
@@ -1259,7 +1259,7 @@ if (
     avatar: "",
     booksCount: 60,
     followersCount: "34.2k",
-    bio: "Plugd Research & Editorial publishes authoritative, zero-fluff digital playbooks for modern entrepreneurs, digital builders, and independent operators. Grounded in first-principles thinking, operational unit economics, and production systems.",
+    bio: "",
   };
 }
 
