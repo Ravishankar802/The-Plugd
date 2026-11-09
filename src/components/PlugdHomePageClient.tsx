@@ -18,30 +18,53 @@ import Header from "@/components/Header";
 import PlaybookFeedCard from "@/components/PlaybookFeedCard";
 import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 import type { PlaybookSummary } from "@/lib/categories";
+import { getPlaybookPublishedDate } from "@/lib/book-utils";
 
 interface PlugdHomePageClientProps {
   playbooks: PlaybookSummary[];
   hasAccess?: boolean;
 }
 
-type SortOption = "featured" | "newest" | "oldest" | "az";
-type CategoryFilter = "all" | "ai-businesses";
+type PriceFilter = "default" | "low-to-high" | "high-to-low";
+type SortOption = "newest" | "oldest" | "highest-rated" | "most-popular";
 type ViewMode = "grid" | "list";
+
+function parseRatingCount(val: string | number | undefined): number {
+  if (typeof val === "number") return val;
+  if (!val) return 0;
+  const str = String(val).trim().toLowerCase().replace(/,/g, "");
+  if (str.endsWith("k")) {
+    const num = parseFloat(str.slice(0, -1));
+    return Number.isNaN(num) ? 0 : num * 1000;
+  }
+  if (str.endsWith("m")) {
+    const num = parseFloat(str.slice(0, -1));
+    return Number.isNaN(num) ? 0 : num * 1000000;
+  }
+  const num = parseFloat(str);
+  return Number.isNaN(num) ? 0 : num;
+}
+
+function getPublishedTimestamp(p: PlaybookSummary): number {
+  const dateStr = getPlaybookPublishedDate(p.slug, p.publishedAt);
+  const time = new Date(dateStr).getTime();
+  return Number.isNaN(time) ? 0 : time;
+}
 
 export default function PlugdHomePageClient({
   playbooks,
   hasAccess = false,
 }: PlugdHomePageClientProps) {
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>("all");
-  const [sortOption, setSortOption] = useState<SortOption>("featured");
+  const [priceFilter, setPriceFilter] = useState<PriceFilter>("default");
+  const [sortOption, setSortOption] = useState<SortOption>("newest");
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
 
   // Dropdown states
-  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+  const [isPriceOpen, setIsPriceOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
 
-  const categoryDropdownRef = useRef<HTMLDivElement>(null);
+  const priceDropdownRef = useRef<HTMLDivElement>(null);
   const sortDropdownRef = useRef<HTMLDivElement>(null);
 
   // Reliable outside-click and Escape key handler for dropdowns
@@ -49,10 +72,10 @@ export default function PlugdHomePageClient({
     function handleOutsideClick(event: MouseEvent) {
       const target = event.target as Node;
       if (
-        categoryDropdownRef.current &&
-        !categoryDropdownRef.current.contains(target)
+        priceDropdownRef.current &&
+        !priceDropdownRef.current.contains(target)
       ) {
-        setIsCategoryOpen(false);
+        setIsPriceOpen(false);
       }
       if (
         sortDropdownRef.current &&
@@ -64,7 +87,7 @@ export default function PlugdHomePageClient({
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setIsCategoryOpen(false);
+        setIsPriceOpen(false);
         setIsSortOpen(false);
       }
     }
@@ -81,14 +104,7 @@ export default function PlugdHomePageClient({
   const filteredAndSortedPlaybooks = useMemo(() => {
     let result = [...playbooks];
 
-    // 1. Category filter: only 'all' or 'ai-businesses'
-    if (selectedCategory === "ai-businesses") {
-      result = result.filter(
-        (p) => p.categorySlug === "ai-businesses"
-      );
-    }
-
-    // 2. Search filter
+    // 1. Search filter
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
       result = result.filter(
@@ -100,48 +116,88 @@ export default function PlugdHomePageClient({
       );
     }
 
-    // 3. Sorting
-    switch (sortOption) {
-      case "newest":
-        // Sort newest first by publishedAt or reverse catalog order
-        result.sort((a, b) => {
-          if (a.publishedAt && b.publishedAt) {
-            return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
-          }
-          return b.id.localeCompare(a.id);
-        });
-        break;
-      case "oldest":
-        // Sort oldest first
-        result.sort((a, b) => {
-          if (a.publishedAt && b.publishedAt) {
-            return new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime();
-          }
-          return a.id.localeCompare(b.id);
-        });
-        break;
-      case "az":
-        result.sort((a, b) => a.title.localeCompare(b.title));
-        break;
-      case "featured":
-      default:
-        // Default preserved catalog order
-        break;
-    }
+    // 2. Stable index assignment to preserve original catalog order for tie-breaking
+    const indexed = result.map((p, index) => ({ p, index }));
 
-    return result;
-  }, [playbooks, selectedCategory, searchQuery, sortOption]);
+    indexed.sort((a, b) => {
+      // 2a. Price sorting (if economic intent is selected)
+      if (priceFilter === "low-to-high") {
+        const priceA = typeof a.p.price === "number" ? a.p.price : 0;
+        const priceB = typeof b.p.price === "number" ? b.p.price : 0;
+        if (priceA !== priceB) {
+          return priceA - priceB;
+        }
+      } else if (priceFilter === "high-to-low") {
+        const priceA = typeof a.p.price === "number" ? a.p.price : 0;
+        const priceB = typeof b.p.price === "number" ? b.p.price : 0;
+        if (priceA !== priceB) {
+          return priceB - priceA;
+        }
+      }
 
-  const sortLabels: Record<SortOption, string> = {
-    featured: "Featured",
-    newest: "Newest",
-    oldest: "Oldest",
-    az: "A–Z",
+      // 2b. Discovery / Quality sort
+      switch (sortOption) {
+        case "newest": {
+          const timeA = getPublishedTimestamp(a.p);
+          const timeB = getPublishedTimestamp(b.p);
+          if (timeB !== timeA) {
+            return timeB - timeA;
+          }
+          return a.index - b.index;
+        }
+        case "oldest": {
+          const timeA = getPublishedTimestamp(a.p);
+          const timeB = getPublishedTimestamp(b.p);
+          if (timeA !== timeB) {
+            return timeA - timeB;
+          }
+          return a.index - b.index;
+        }
+        case "highest-rated": {
+          const ratingA = a.p.rating ?? 0;
+          const ratingB = b.p.rating ?? 0;
+          if (ratingB !== ratingA) {
+            return ratingB - ratingA;
+          }
+          const countA = parseRatingCount(a.p.ratingCount);
+          const countB = parseRatingCount(b.p.ratingCount);
+          if (countB !== countA) {
+            return countB - countA;
+          }
+          return a.index - b.index;
+        }
+        case "most-popular": {
+          const countA = parseRatingCount(a.p.ratingCount);
+          const countB = parseRatingCount(b.p.ratingCount);
+          if (countB !== countA) {
+            return countB - countA;
+          }
+          const ratingA = a.p.rating ?? 0;
+          const ratingB = b.p.rating ?? 0;
+          if (ratingB !== ratingA) {
+            return ratingB - ratingA;
+          }
+          return a.index - b.index;
+        }
+        default:
+          return a.index - b.index;
+      }
+    });
+
+    return indexed.map((item) => item.p);
+  }, [playbooks, searchQuery, priceFilter, sortOption]);
+
+  const priceLabels: Record<PriceFilter, string> = {
+    default: "Default",
+    "low-to-high": "Low to High",
+    "high-to-low": "High to Low",
   };
 
-  const categoryLabels: Record<CategoryFilter, string> = {
-    all: "All Categories",
-    "ai-businesses": "AI",
+  const sortLabels: Record<SortOption, string> = {
+    newest: "Newest",
+    oldest: "Oldest",
+    "highest-rated": "Highest Rated",
+    "most-popular": "Most Popular",
   };
 
   const countText = `${filteredAndSortedPlaybooks.length} ${
@@ -189,38 +245,38 @@ export default function PlugdHomePageClient({
 
             {/* Right: Controls (Category Dropdown, Sort Dropdown, Grid/List Toggle) */}
             <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
-              {/* Category Dropdown */}
-              <div className="relative" ref={categoryDropdownRef}>
+              {/* Price Dropdown */}
+              <div className="relative" ref={priceDropdownRef}>
                 <button
                   type="button"
                   onClick={() => {
-                    setIsCategoryOpen(!isCategoryOpen);
+                    setIsPriceOpen(!isPriceOpen);
                     setIsSortOpen(false);
                   }}
                   className="inline-flex items-center gap-2 h-10 px-3.5 rounded-xl border border-[#d6d3d1] bg-white text-xs sm:text-[13px] font-medium text-[#1c1917] hover:border-[#a8a29e] shadow-2xs transition-all cursor-pointer"
-                  aria-expanded={isCategoryOpen}
+                  aria-expanded={isPriceOpen}
                   aria-haspopup="listbox"
                 >
-                  <span className="text-[#78716c]">Category:</span>
-                  <span className="font-semibold">{categoryLabels[selectedCategory]}</span>
+                  <span className="text-[#78716c]">Price:</span>
+                  <span className="font-semibold">{priceLabels[priceFilter]}</span>
                   <ChevronDown
                     className={`h-3.5 w-3.5 text-[#78716c] transition-transform duration-150 ${
-                      isCategoryOpen ? "rotate-180" : ""
+                      isPriceOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
 
-                {isCategoryOpen && (
-                  <div className="absolute right-0 sm:left-0 sm:right-auto mt-1.5 w-48 rounded-xl border border-[#dcd8d0] bg-white p-1.5 shadow-lg z-30 animate-in fade-in zoom-in-95 duration-100">
-                    {(["all", "ai-businesses"] as CategoryFilter[]).map((catKey) => {
-                      const isSelected = selectedCategory === catKey;
+                {isPriceOpen && (
+                  <div className="absolute right-0 sm:left-0 sm:right-auto mt-1.5 w-44 rounded-xl border border-[#dcd8d0] bg-white p-1.5 shadow-lg z-30 animate-in fade-in zoom-in-95 duration-100">
+                    {(["default", "low-to-high", "high-to-low"] as PriceFilter[]).map((pKey) => {
+                      const isSelected = priceFilter === pKey;
                       return (
                         <button
-                          key={catKey}
+                          key={pKey}
                           type="button"
                           onClick={() => {
-                            setSelectedCategory(catKey);
-                            setIsCategoryOpen(false);
+                            setPriceFilter(pKey);
+                            setIsPriceOpen(false);
                           }}
                           className={`w-full flex items-center justify-between px-3 py-2 text-xs sm:text-[13px] rounded-lg transition-colors cursor-pointer ${
                             isSelected
@@ -230,7 +286,7 @@ export default function PlugdHomePageClient({
                           role="option"
                           aria-selected={isSelected}
                         >
-                          <span>{categoryLabels[catKey]}</span>
+                          <span>{priceLabels[pKey]}</span>
                           {isSelected && <Check className="h-3.5 w-3.5 text-[#2563eb]" />}
                         </button>
                       );
@@ -245,7 +301,7 @@ export default function PlugdHomePageClient({
                   type="button"
                   onClick={() => {
                     setIsSortOpen(!isSortOpen);
-                    setIsCategoryOpen(false);
+                    setIsPriceOpen(false);
                   }}
                   className="inline-flex items-center gap-2 h-10 px-3.5 rounded-xl border border-[#d6d3d1] bg-white text-xs sm:text-[13px] font-medium text-[#1c1917] hover:border-[#a8a29e] shadow-2xs transition-all cursor-pointer"
                   aria-expanded={isSortOpen}
@@ -261,8 +317,8 @@ export default function PlugdHomePageClient({
                 </button>
 
                 {isSortOpen && (
-                  <div className="absolute right-0 mt-1.5 w-44 rounded-xl border border-[#dcd8d0] bg-white p-1.5 shadow-lg z-30 animate-in fade-in zoom-in-95 duration-100">
-                    {(["featured", "newest", "oldest", "az"] as SortOption[]).map((optKey) => {
+                  <div className="absolute right-0 mt-1.5 w-48 rounded-xl border border-[#dcd8d0] bg-white p-1.5 shadow-lg z-30 animate-in fade-in zoom-in-95 duration-100">
+                    {(["newest", "oldest", "highest-rated", "most-popular"] as SortOption[]).map((optKey) => {
                       const isSelected = sortOption === optKey;
                       return (
                         <button
@@ -342,13 +398,13 @@ export default function PlugdHomePageClient({
               )}
             </div>
 
-            {(searchQuery.trim() || selectedCategory !== "all" || sortOption !== "featured") && (
+            {(searchQuery.trim() || priceFilter !== "default" || sortOption !== "newest") && (
               <button
                 type="button"
                 onClick={() => {
                   setSearchQuery("");
-                  setSelectedCategory("all");
-                  setSortOption("featured");
+                  setPriceFilter("default");
+                  setSortOption("newest");
                 }}
                 className="inline-flex items-center gap-1 text-[#2563eb] hover:text-[#1d4ed8] hover:underline cursor-pointer"
               >
@@ -389,8 +445,8 @@ export default function PlugdHomePageClient({
                   type="button"
                   onClick={() => {
                     setSearchQuery("");
-                    setSelectedCategory("all");
-                    setSortOption("featured");
+                    setPriceFilter("default");
+                    setSortOption("newest");
                   }}
                   className="inline-flex items-center gap-1.5 rounded-full border border-[#d6d3d1] bg-white px-4 py-1.5 text-xs font-mono font-semibold text-[#1c1917] hover:border-[#1c1917] transition-colors cursor-pointer"
                 >
