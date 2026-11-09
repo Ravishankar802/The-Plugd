@@ -6,7 +6,7 @@ export const MAKE_3000_ONLINE_90_DAYS_DETAIL_DATA: PlaybookDetailData = {
   slug: "make-your-first-3000-online-in-90days-or-scroll-for-5-37mins",
   title: "Make your first $3,000 online in 90days (Or scroll for 5.37mins)",
   headline: "Learn to turn conversations into commissions — master DM appointment setting, qualify high-ticket prospects, and build a path from beginner to professional sales roles.",
-  description: "**Learn to turn conversations into commissions — master DM appointment setting, qualify high-ticket prospects, and build a path from beginner to professional sales roles.**\n\nBreak into high-ticket sales without jumping straight into closing. This playbook walks you through DM appointment setting, natural sales conversations, lead qualification, commission structures, finding legitimate businesses, and securing your first opportunity. Follow a practical 90-day roadmap with ready-to-use scripts, application templates, qualification frameworks, income trackers, and performance scorecards.",
+  description: "Break into high-ticket sales without jumping straight into closing. This playbook walks you through DM appointment setting, natural sales conversations, lead qualification, commission structures, finding legitimate businesses, and securing your first opportunity. Follow a practical 90-day roadmap with ready-to-use scripts, application templates, qualification frameworks, income trackers, and performance scorecards.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

@@ -6,7 +6,7 @@ export const FIRST_100K_12_MONTHS_DETAIL_DATA: PlaybookDetailData = {
   slug: "if-i-wanted-to-make-my-first-100k-in-12-months-id-do-this",
   title: "If I Wanted to Make My First $100K in 12 months, I’d Do This",
   headline: "Turn your skills into a six-figure business — find a profitable niche, craft an irresistible offer, land your first paying clients, and build towards $100K in annual revenue.",
-  description: "**Turn your skills into a six-figure business — find a profitable niche, craft an irresistible offer, land your first paying clients, and build towards $100K in annual revenue.**\\n\\nStop wasting months brainstorming business ideas and start building something people will actually pay for. This playbook takes you from niche selection and offer creation to customer discovery, sales conversations, and your first paying customer — with a practical roadmap for building momentum towards an $8,333 monthly revenue run rate.\\n\\nIncludes the Six Ps offer framework, niche-selection worksheets, discovery-call scripts, outreach templates, validation trackers, sales pipeline tools, and a 12-month execution roadmap.",
+  description: "Stop wasting months brainstorming business ideas and start building something people will actually pay for. This playbook takes you from niche selection and offer creation to customer discovery, sales conversations, and your first paying customer — with a practical roadmap for building momentum towards an $8,333 monthly revenue run rate.\n\nIncludes the Six Ps offer framework, niche-selection worksheets, discovery-call scripts, outreach templates, validation trackers, sales pipeline tools, and a 12-month execution roadmap.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

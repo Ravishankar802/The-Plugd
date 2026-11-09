@@ -1272,6 +1272,57 @@ export function getCuratedCommunityReviews(
   slug = ""
 ): BookReview[] {
   if (
+    slug === "the-1-000-hour-1-person-ai-business" ||
+    slug === "ai-businesses-103"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Aditya",
+        avatar: "",
+        date: "October 3, 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Excellent breakdown of how to actually sell AI services to businesses. The focus on fixing real marketing problems instead of pitching random AI automations completely changed how I look at this opportunity.",
+        likes: 44,
+      },
+      {
+        id: "rev-2",
+        name: "Sanjana",
+        avatar: "",
+        date: "October 10, 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The Dream 100 strategy and personalised audit templates are gold. I especially liked how the playbook explains finding businesses, identifying their conversion gaps, and approaching owners with something genuinely useful.",
+        likes: 38,
+      },
+      {
+        id: "rev-3",
+        name: "Raghav",
+        avatar: "",
+        date: "October 18, 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Very practical and well structured. The landing-page workflows, pricing logic, client acquisition system, and 90-day roadmap make this feel like an actual business blueprint rather than another AI side-hustle guide.",
+        likes: 26,
+      },
+      {
+        id: "rev-4",
+        name: "Devika",
+        avatar: "",
+        date: "October 22, 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "My favourite part is the emphasis on measurable business results. It explains how to connect marketing improvements to qualified leads and booked jobs instead of blindly selling websites or AI agents. A genuinely valuable read.",
+        likes: 25,
+      },
+    ];
+  }
+  if (
     slug === "this-ai-side-hustle-makes-4-lakhs-month-copy-me" ||
     slug === "ai-businesses-100"
   ) {
@@ -5856,3 +5907,81 @@ export function getAvatarBgColor(name: string, index = 0): string {
   }
   return PALETTE[Math.abs(hash + index) % PALETTE.length];
 }
+
+/**
+ * Returns the canonical published date string (YYYY-MM-DD) for a Playbook.
+ * Uses explicit publishedAt when provided, or derives from earliest review date.
+ */
+export function getPlaybookPublishedDate(
+  slug = "",
+  explicitPublishedAt?: string
+): string {
+  if (
+    slug === "the-1-000-hour-1-person-ai-business" ||
+    slug === "ai-businesses-103"
+  ) {
+    return "2026-10-02";
+  }
+
+  if (explicitPublishedAt && explicitPublishedAt.trim()) {
+    return explicitPublishedAt.trim();
+  }
+
+  const reviews = getCuratedCommunityReviews("", 4.9, slug);
+  let earliestMs = Infinity;
+  for (const r of reviews) {
+    if (r.date) {
+      const parsed = Date.parse(r.date);
+      if (!Number.isNaN(parsed) && parsed < earliestMs) {
+        earliestMs = parsed;
+      }
+    }
+  }
+
+  if (earliestMs !== Infinity) {
+    // Published 1 day prior to the earliest review
+    const pubDate = new Date(earliestMs - 24 * 60 * 60 * 1000);
+    const yyyy = pubDate.getFullYear();
+    const mm = String(pubDate.getMonth() + 1).padStart(2, "0");
+    const dd = String(pubDate.getDate()).padStart(2, "0");
+    return `${yyyy}-${mm}-${dd}`;
+  }
+
+  return "2026-10-02";
+}
+
+/**
+ * Formats the Playbook's published date as a dynamic relative string ("xd ago" or "xmo ago")
+ * that automatically updates every day based on the current date.
+ */
+export function getRelativePublishedTime(
+  slug = "",
+  explicitPublishedAt?: string
+): string {
+  const iso = getPlaybookPublishedDate(slug, explicitPublishedAt);
+  const parts = iso.split("T")[0].split("-").map(Number);
+  const pubYear = parts[0] || 2026;
+  const pubMonth = (parts[1] || 10) - 1;
+  const pubDay = parts[2] || 2;
+
+  const now = new Date();
+  const currentYear = Math.max(now.getFullYear(), pubYear);
+  const todayUtc = Date.UTC(currentYear, now.getMonth(), now.getDate());
+  const pubUtc = Date.UTC(pubYear, pubMonth, pubDay);
+
+  const diffDays = Math.max(
+    1,
+    Math.floor((todayUtc - pubUtc) / (1000 * 60 * 60 * 24))
+  );
+
+  if (diffDays < 60) {
+    return `${diffDays}d ago`;
+  }
+  if (diffDays < 365) {
+    const months = Math.max(1, Math.floor(diffDays / 30));
+    return `${months}mo ago`;
+  }
+  const years = Math.max(1, Math.floor(diffDays / 365));
+  return `${years}y ago`;
+}
+

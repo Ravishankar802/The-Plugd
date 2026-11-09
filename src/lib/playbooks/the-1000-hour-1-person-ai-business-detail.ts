@@ -6,7 +6,7 @@ export const THE_1000_HOUR_1_PERSON_AI_BUSINESS_DETAIL_DATA: PlaybookDetailData 
   slug: "the-1-000-hour-1-person-ai-business",
   title: "The $1,000/hour 1-person AI business",
   headline: "Turn AI into a one-person growth business: find local companies losing customers, fix their marketing funnels, and build a high-value service around measurable results.",
-  description: "**Turn AI into a one-person growth business: find local companies losing customers, fix their marketing funnels, and build a high-value service around measurable results.**\n\nLearn how to build an AI-assisted marketing service for established local businesses, from choosing a profitable niche and finding high-value prospects to auditing websites, building landing pages, and improving lead conversion. This playbook includes the Dream 100 acquisition strategy, outreach templates, pricing frameworks, practical AI prompts, client reporting systems, and a complete 90-day execution roadmap.",
+  description: "Learn how to build an AI-assisted marketing service for established local businesses, from choosing a profitable niche and finding high-value prospects to auditing websites, building landing pages, and improving lead conversion. This playbook includes the Dream 100 acquisition strategy, outreach templates, pricing frameworks, practical AI prompts, client reporting systems, and a complete 90-day execution roadmap.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
@@ -15,13 +15,13 @@ export const THE_1000_HOUR_1_PERSON_AI_BUSINESS_DETAIL_DATA: PlaybookDetailData 
   discountPercentage: 67,
 
   rating: 4.9,
-  ratingCount: "4.9k",
+  ratingCount: "1.9k",
   studentsCount: "4,820",
   instructorName: "Divya Tiwari",
   instructorTitle: "Local Growth & Client Acquisition Architect",
   instructorBio: "",
   instructorRating: 4.9,
-  instructorReviews: "4.9k",
+  instructorReviews: "1.9k",
   instructorStudents: "4,820",
   instructorCourses: 1,
   lastUpdated: "11/2026",
@@ -112,7 +112,7 @@ export const THE_1000_HOUR_1_PERSON_AI_BUSINESS_DETAIL_DATA: PlaybookDetailData 
       rating: 5,
       quote: "Excellent breakdown of how to actually sell AI services to businesses. The focus on fixing real marketing problems instead of pitching random AI automations completely changed how I look at this opportunity.",
       initials: "A",
-      date: "August 04 2026"
+      date: "October 3, 2026"
     },
     {
       name: "Sanjana",
@@ -120,7 +120,7 @@ export const THE_1000_HOUR_1_PERSON_AI_BUSINESS_DETAIL_DATA: PlaybookDetailData 
       rating: 5,
       quote: "The Dream 100 strategy and personalised audit templates are gold. I especially liked how the playbook explains finding businesses, identifying their conversion gaps, and approaching owners with something genuinely useful.",
       initials: "S",
-      date: "August 08 2026"
+      date: "October 10, 2026"
     },
     {
       name: "Raghav",
@@ -128,7 +128,7 @@ export const THE_1000_HOUR_1_PERSON_AI_BUSINESS_DETAIL_DATA: PlaybookDetailData 
       rating: 5,
       quote: "Very practical and well structured. The landing-page workflows, pricing logic, client acquisition system, and 90-day roadmap make this feel like an actual business blueprint rather than another AI side-hustle guide.",
       initials: "R",
-      date: "August 14 2026"
+      date: "October 18, 2026"
     },
     {
       name: "Devika",
@@ -136,7 +136,7 @@ export const THE_1000_HOUR_1_PERSON_AI_BUSINESS_DETAIL_DATA: PlaybookDetailData 
       rating: 5,
       quote: "My favourite part is the emphasis on measurable business results. It explains how to connect marketing improvements to qualified leads and booked jobs instead of blindly selling websites or AI agents. A genuinely valuable read.",
       initials: "D",
-      date: "August 21 2026"
+      date: "October 22, 2026"
     }
   ],
   faqs: [

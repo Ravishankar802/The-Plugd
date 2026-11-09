@@ -6,7 +6,7 @@ export const FREE_AI_SIDE_HUSTLE_INDIANS_DETAIL_DATA: PlaybookDetailData = {
   slug: "i-tried-a-100-free-ai-side-hustle-for-indians-real-results",
   title: "I Tried A 100% FREE AI Side Hustle For Indians (Real Results)",
   headline: "Build and sell digital products from India using free AI tools — then turn Pinterest searches into a traffic source for your online store.",
-  description: "**Build and sell digital products from India using free AI tools — then turn Pinterest searches into a traffic source for your online store.**\n\nDiscover how to research products people are already searching for, create polished printable PDFs with Claude and Canva, and sell them through Gumroad. This playbook walks you through the entire Pinterest marketing funnel, from keyword research and product creation to free-to-paid offers, Pin publishing, and performance tracking — with a practical 7-day launch plan.",
+  description: "Discover how to research products people are already searching for, create polished printable PDFs with Claude and Canva, and sell them through Gumroad. This playbook walks you through the entire Pinterest marketing funnel, from keyword research and product creation to free-to-paid offers, Pin publishing, and performance tracking — with a practical 7-day launch plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 import type { PlaybookSummary } from "@/lib/categories";
-import { getAuthorProfile } from "@/lib/book-utils";
+import { getAuthorProfile, getRelativePublishedTime } from "@/lib/book-utils";
 
 /**
  * Reusable Playbook Card Component
@@ -23,6 +23,7 @@ interface PlaybookFeedCardProps {
 
 export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
   const authorName = (playbook as any).authorName || getAuthorProfile(playbook.categoryName, playbook.slug).name;
+  const relativePublishedDate = getRelativePublishedTime(playbook.slug, playbook.publishedAt);
   const formattedPrice = playbook.price ? Number(playbook.price).toFixed(2) : "3.00";
   const formattedOriginalPrice = (playbook.originalPrice ? Number(playbook.originalPrice) : 9).toFixed(2);
 
@@ -57,8 +58,9 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
           </h3>
 
           {/* Category beneath Title */}
-          <div className="mt-1.5 sm:mt-2 text-[13px] text-[#57534e] truncate w-full">
-            <span className="font-medium text-[#44403c]">{authorName}</span>
+          <div className="mt-1.5 sm:mt-2 flex items-center justify-between gap-2 text-[13px] text-[#57534e] w-full">
+            <span className="font-medium text-[#44403c] truncate">{authorName}</span>
+            <span className="text-[12px] text-[#78716c] shrink-0">{relativePublishedDate}</span>
           </div>
 
           {/* Metadata Row — Fixed height container so cards are always identical in size */}

@@ -6,7 +6,7 @@ export const ZERO_TO_100K_PLAN_DETAIL_DATA: PlaybookDetailData = {
   slug: "if-i-started-with-0-heres-my-exact-plan-to-100k",
   title: "If I Started With $0, Here's My Exact Plan To $100K",
   headline: "Starting from $0? Build your first $100K with an eight-step system to cut financial dead weight, increase your income, launch a second income stream, and turn what you earn into lasting wealth.",
-  description: "**Starting from $0? Build your first $100K with an eight-step system to cut financial dead weight, increase your income, launch a second income stream, and turn what you earn into lasting wealth.**\n\nForget get-rich-quick schemes. This playbook breaks the journey to your first $100K into eight practical steps, from reducing major expenses and reclaiming productive time to negotiating a better salary, finding your profit zone, and building a second income stream. Includes a 12-month execution roadmap, side-hustle validation frameworks, salary negotiation templates, investment planning worksheets, weekly scorecards, and a $100K milestone tracker.",
+  description: "Forget get-rich-quick schemes. This playbook breaks the journey to your first $100K into eight practical steps, from reducing major expenses and reclaiming productive time to negotiating a better salary, finding your profit zone, and building a second income stream. Includes a 12-month execution roadmap, side-hustle validation frameworks, salary negotiation templates, investment planning worksheets, weekly scorecards, and a $100K milestone tracker.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

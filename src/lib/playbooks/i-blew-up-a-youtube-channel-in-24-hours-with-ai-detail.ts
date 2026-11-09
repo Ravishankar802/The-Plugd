@@ -6,7 +6,7 @@ export const BLEW_UP_YOUTUBE_AI_DETAIL_DATA: PlaybookDetailData = {
   slug: "i-blew-up-a-youtube-channel-in-24-hours-with-ai",
   title: "I BLEW UP a YouTube Channel in 24 Hours with AI",
   headline: "Turn AI into your Shorts production studio — reverse-engineer viral storytelling, create original transformation videos, and build a repeatable YouTube content system that can capture millions of views.",
-  description: "**Turn AI into your Shorts production studio — reverse-engineer viral storytelling, create original transformation videos, and build a repeatable YouTube content system that can capture millions of views.**\\n\\nLearn how to take a proven short-form video format and transform it into an original AI-powered YouTube channel. From niche research and six-phase storytelling to consistent AI visuals, animation, voice-overs, editing, publishing, and analytics, this playbook walks you through the entire production process. Includes reusable AI prompts, scene-analysis templates, visual continuity workflows, editing checklists, performance trackers, and a practical 24-hour launch plan.",
+  description: "Learn how to take a proven short-form video format and transform it into an original AI-powered YouTube channel. From niche research and six-phase storytelling to consistent AI visuals, animation, voice-overs, editing, publishing, and analytics, this playbook walks you through the entire production process. Includes reusable AI prompts, scene-analysis templates, visual continuity workflows, editing checklists, performance trackers, and a practical 24-hour launch plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

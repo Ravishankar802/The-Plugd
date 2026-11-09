@@ -6,7 +6,7 @@ export const HOW_I_MADE_16K_WHOP_DETAIL_DATA: PlaybookDetailData = {
   slug: "how-i-made-16-705-83-on-whop-as-a-low-iq-21-year-old",
   title: "How I Made $16,705.83 On Whop (as a low iq 21 year old)",
   headline: "Turn other people's long-form videos into short-form content that gets paid — master campaign selection, viral storytelling, AI-assisted clipping, and multi-platform distribution.",
-  description: "Turn other people's long-form videos into short-form content that gets paid — master campaign selection, viral storytelling, AI-assisted clipping, and multi-platform distribution.\n\nDiscover how to build a performance-based clipping business, from finding worthwhile Whop campaigns to turning the best moments from podcasts and creator videos into engaging Shorts. Learn the hook–story–payoff framework, automate repetitive editing tasks, distribute clips across YouTube, TikTok, and Instagram, and track views, eligible payouts, and earnings per hour. Includes practical workflows, AI prompts, campaign scorecards, publishing trackers, and a 30-day launch plan.",
+  description: "Discover how to build a performance-based clipping business, from finding worthwhile Whop campaigns to turning the best moments from podcasts and creator videos into engaging Shorts. Learn the hook–story–payoff framework, automate repetitive editing tasks, distribute clips across YouTube, TikTok, and Instagram, and track views, eligible payouts, and earnings per hour. Includes practical workflows, AI prompts, campaign scorecards, publishing trackers, and a 30-day launch plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

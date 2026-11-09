@@ -32,6 +32,7 @@ import {
   getAuthorProfile,
   getCuratedCommunityReviews,
   getAvatarBgColor,
+  getRelativePublishedTime,
 } from "@/lib/book-utils";
 
 interface PlaybookDetailViewProps {
@@ -110,6 +111,24 @@ export default function PlaybookDetailView({
     () => getAuthorProfile(playbook.categoryName, playbook.slug),
     [playbook.categoryName, playbook.slug]
   );
+
+  // Relative published time ("xd ago" or "xmo ago")
+  const relativePublishedDate = useMemo(
+    () => getRelativePublishedTime(playbook.slug, (playbook as any).publishedAt),
+    [playbook.slug, playbook]
+  );
+
+  // Clean description without repeated bold headline prefix
+  const cleanDescription = useMemo(() => {
+    let desc = (playbook.description || "").replace(/\\n/g, "\n");
+    if (desc.startsWith("**")) {
+      desc = desc.replace(/^\*\*[\s\S]*?\*\*\s*\n*/, "");
+    }
+    if (playbook.headline && desc.startsWith(playbook.headline) && desc.length > playbook.headline.length) {
+      desc = desc.slice(playbook.headline.length).replace(/^\s*\n*/, "");
+    }
+    return desc;
+  }, [playbook.description, playbook.headline]);
 
   // Flattened chapters from modules and lessons
   const chapters = useMemo(() => {
@@ -420,7 +439,7 @@ export default function PlaybookDetailView({
                   ✓
                 </span>
                 <span className="text-stone-300">•</span>
-                <span className="text-stone-500">{playbook.categoryName}</span>
+                <span className="text-stone-500">{relativePublishedDate}</span>
               </div>
 
               {/* Star Rating & Ratings / Reviews Count */}
@@ -453,7 +472,7 @@ export default function PlaybookDetailView({
               </p>
 
               <div className={`space-y-3 whitespace-pre-line ${!isDescriptionExpanded ? "line-clamp-6" : ""}`}>
-                {playbook.description}
+                {cleanDescription}
               </div>
 
               <button

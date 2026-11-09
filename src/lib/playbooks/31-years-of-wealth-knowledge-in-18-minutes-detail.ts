@@ -6,7 +6,7 @@ export const WEALTH_KNOWLEDGE_31_YEARS_DETAIL_DATA: PlaybookDetailData = {
   slug: "31-years-of-wealth-knowledge-in-18-minutes",
   title: "31 Years of Wealth Knowledge in 18 Minutes",
   headline: "Stop chasing a bigger paycheck and start building real wealth — master the four stages of financial freedom, turn your income into productive assets, and make your money work harder over time.",
-  description: "**Stop chasing a bigger paycheck and start building real wealth — master the four stages of financial freedom, turn your income into productive assets, and make your money work harder over time.**\n\nA practical roadmap to building long-term wealth through four essential stages: active income, consistent surplus, productive assets, and passive income. Learn how to increase your earning power, pay your future self first, start investing at a manageable scale, and build income streams that can gradually cover your living expenses. Includes a 90-day implementation plan, Wealth Ladder assessment, monthly money-flow worksheets, asset evaluation checklists, passive-income trackers, and compounding scenarios.",
+  description: "A practical roadmap to building long-term wealth through four essential stages: active income, consistent surplus, productive assets, and passive income. Learn how to increase your earning power, pay your future self first, start investing at a manageable scale, and build income streams that can gradually cover your living expenses. Includes a 90-day implementation plan, Wealth Ladder assessment, monthly money-flow worksheets, asset evaluation checklists, passive-income trackers, and compounding scenarios.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

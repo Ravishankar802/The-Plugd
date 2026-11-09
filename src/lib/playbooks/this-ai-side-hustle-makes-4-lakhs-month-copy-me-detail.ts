@@ -6,7 +6,7 @@ export const THIS_AI_SIDE_HUSTLE_MAKES_4_LAKHS_DETAIL_DATA: PlaybookDetailData =
   slug: "this-ai-side-hustle-makes-4-lakhs-month-copy-me",
   title: "This AI Side Hustle Makes 4 Lakhs/Month (Copy Me)",
   headline: "Turn AI skills into a real service business: land brands, manage UGC creators, create scroll-stopping ad content, and build your way toward a full-scale agency.",
-  description: "**Turn AI skills into a real service business: land brands, manage UGC creators, create scroll-stopping ad content, and build your way toward a full-scale agency.**\n\nStart with one valuable service: helping brands find creators and manage their UGC campaigns. This playbook shows you how to progress from creator coordination to research-backed scripts, AI-generated UGC ads, and full marketing strategy — with practical outreach templates, AI prompts, creator databases, campaign trackers, and a 30-day beginner roadmap. It also includes an alternative path to offering AI-powered social media and website services to local businesses.",
+  description: "Start with one valuable service: helping brands find creators and manage their UGC campaigns. This playbook shows you how to progress from creator coordination to research-backed scripts, AI-generated UGC ads, and full marketing strategy — with practical outreach templates, AI prompts, creator databases, campaign trackers, and a 30-day beginner roadmap. It also includes an alternative path to offering AI-powered social media and website services to local businesses.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

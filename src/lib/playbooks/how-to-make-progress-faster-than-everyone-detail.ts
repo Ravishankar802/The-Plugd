@@ -6,7 +6,7 @@ export const HOW_TO_MAKE_PROGRESS_FASTER_DETAIL_DATA: PlaybookDetailData = {
   slug: "how-to-make-progress-faster-than-everyone",
   title: "How to make progress faster than everyone",
   headline: "Stop waiting to become good. Start creating, put your work out there, learn from every attempt, and turn consistent improvement into an unfair advantage.",
-  description: "**Stop waiting to become good. Start creating, put your work out there, learn from every attempt, and turn consistent improvement into an unfair advantage.**\n\nA practical system for overcoming perfectionism, getting comfortable with being a beginner, and making meaningful progress through repetition. Learn how to challenge limiting rules, collect useful feedback, identify your biggest weaknesses, document your journey, and improve your work through a structured 30-day sprint. Includes reflection exercises, iteration trackers, feedback templates, progress scorecards, and reusable workflows.",
+  description: "A practical system for overcoming perfectionism, getting comfortable with being a beginner, and making meaningful progress through repetition. Learn how to challenge limiting rules, collect useful feedback, identify your biggest weaknesses, document your journey, and improve your work through a structured 30-day sprint. Includes reflection exercises, iteration trackers, feedback templates, progress scorecards, and reusable workflows.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

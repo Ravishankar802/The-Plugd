@@ -6,7 +6,7 @@ export const HOW_I_WENT_FROM_0_TO_92K_MONTH_AT_19_DETAIL_DATA: PlaybookDetailDat
   slug: "how-i-went-from-0-to-92k-month-at-19-my-full-story",
   title: "How I Went From $0 to $92K/Month at 19 (My Full Story)",
   headline: "From a $13 freelance job to a reported $92K business month — learn the skills, sales systems, and hard lessons behind building a business that actually lasts.",
-  description: "From a $13 freelance job to a reported $92K business month — learn the skills, sales systems, and hard lessons behind building a business that actually lasts.\n\nThis is the unfiltered journey of turning small online experiments into a skill-based business, scaling into coaching and agency operations, and discovering why rapid growth can become its own biggest problem. Learn appointment setting, client acquisition, sales management, team training, service delivery, pricing, unit economics, and the systems needed to scale without losing control. Includes practical worksheets, financial dashboards, operating frameworks, and a 30-day roadmap to put the lessons into action.",
+  description: "This is the unfiltered journey of turning small online experiments into a skill-based business, scaling into coaching and agency operations, and discovering why rapid growth can become its own biggest problem. Learn appointment setting, client acquisition, sales management, team training, service delivery, pricing, unit economics, and the systems needed to scale without losing control. Includes practical worksheets, financial dashboards, operating frameworks, and a 30-day roadmap to put the lessons into action.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

@@ -6,7 +6,7 @@ export const STARTING_AI_SIDE_HUSTLE_DETAIL_DATA: PlaybookDetailData = {
   slug: "starting-an-ai-side-hustle-is-easy-copy-this-system",
   title: "Starting An AI Side Hustle Is EASY (Copy This System)",
   headline: "Stop building AI projects nobody wants. Find a problem people will actually pay to solve, create an edge competitors can't easily copy, and turn AI into a real customer-getting business.",
-  description: "**Stop building AI projects nobody wants. Find a problem people will actually pay to solve, create an edge competitors can't easily copy, and turn AI into a real customer-getting business.**\n\nAI makes building easier — but finding customers, earning trust, and standing out are still the hard parts. This playbook gives you a four-gate system to validate demand, develop a competitive edge through imagination, focus, and customer context, find the right distribution channels, and build continuous learning loops.\n\nIncludes customer discovery scripts, niche scorecards, AI research prompts, MVP frameworks, distribution experiments, feedback trackers, reusable worksheets, and a practical 30-day execution roadmap.",
+  description: "AI makes building easier — but finding customers, earning trust, and standing out are still the hard parts. This playbook gives you a four-gate system to validate demand, develop a competitive edge through imagination, focus, and customer context, find the right distribution channels, and build continuous learning loops.\n\nIncludes customer discovery scripts, niche scorecards, AI research prompts, MVP frameworks, distribution experiments, feedback trackers, reusable worksheets, and a practical 30-day execution roadmap.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

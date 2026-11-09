@@ -6,7 +6,7 @@ export const ITS_BORING_745_DAY_DETAIL_DATA: PlaybookDetailData = {
   slug: "its-boring-but-i-make-745-day-in-4-hours-at-22",
   title: "It's boring but i make $745/day in 4 hours at 22",
   headline: "Find products people already want, build a store that sells, and turn Meta ads into a measurable ecommerce system — without wasting weeks guessing what might work.",
-  description: "Find products people already want, build a store that sells, and turn Meta ads into a measurable ecommerce system — without wasting weeks guessing what might work.\n\nGo from product research to your first validated ecommerce offer with a practical, step-by-step dropshipping playbook. Learn to uncover winning product opportunities through competitor ad research, calculate real profit margins, build a focused Shopify store with AI tools, create profitable bundles, and test different customer desires through Meta ads. Includes ready-to-use prompts, product research scorecards, unit-economics calculators, campaign tracking sheets, daily P&L templates, and a complete launch roadmap.",
+  description: "Go from product research to your first validated ecommerce offer with a practical, step-by-step dropshipping playbook. Learn to uncover winning product opportunities through competitor ad research, calculate real profit margins, build a focused Shopify store with AI tools, create profitable bundles, and test different customer desires through Meta ads. Includes ready-to-use prompts, product research scorecards, unit-economics calculators, campaign tracking sheets, daily P&L templates, and a complete launch roadmap.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

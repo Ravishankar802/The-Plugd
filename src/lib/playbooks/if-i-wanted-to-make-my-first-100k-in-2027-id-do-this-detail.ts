@@ -6,7 +6,7 @@ export const FIRST_100K_IN_2027_DETAIL_DATA: PlaybookDetailData = {
   slug: "if-i-wanted-to-make-my-first-100k-in-2027-id-do-this",
   title: "If I Wanted to Make My First $100K in 2027, I’d Do This",
   headline: "Stop chasing revenue screenshots. Build the skills, income, discipline, and financial habits to earn more, spend smarter, and actually keep your first $100K.",
-  description: "**Stop chasing revenue screenshots. Build the skills, income, discipline, and financial habits to earn more, spend smarter, and actually keep your first $100K.**\n\nA practical roadmap to building your first $100,000 in savings by combining smarter spending, focused execution, valuable skills, and deliberate income growth. Learn how to identify skills people already pay for, improve through real-world feedback, invest in tools and opportunities without reckless spending, and turn higher earnings into lasting financial progress.\n\nIncludes a 90-day starting plan, a 2027 execution roadmap, skill-selection scorecards, experiment trackers, weekly performance reviews, offer templates, and monthly financial worksheets.",
+  description: "A practical roadmap to building your first $100,000 in savings by combining smarter spending, focused execution, valuable skills, and deliberate income growth. Learn how to identify skills people already pay for, improve through real-world feedback, invest in tools and opportunities without reckless spending, and turn higher earnings into lasting financial progress.\n\nIncludes a 90-day starting plan, a 2027 execution roadmap, skill-selection scorecards, experiment trackers, weekly performance reviews, offer templates, and monthly financial worksheets.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

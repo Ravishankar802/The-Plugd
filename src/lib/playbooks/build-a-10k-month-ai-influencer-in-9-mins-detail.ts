@@ -6,7 +6,7 @@ export const BUILD_AI_INFLUENCER_10K_DETAIL_DATA: PlaybookDetailData = {
   slug: "build-a-10k-month-ai-influencer-in-9-mins",
   title: "Build a $10k/month Ai influencer in 9 mins...",
   headline: "Build a virtual influencer from scratch, turn AI-generated videos into an audience, and monetise that attention through direct brand partnerships — without ever becoming the face of the account.",
-  description: "**Build a virtual influencer from scratch, turn AI-generated videos into an audience, and monetise that attention through direct brand partnerships — without ever becoming the face of the account.**\n\nGo from a character idea to a fully functioning AI influencer business with a practical workflow covering character design, consistent AI image and video generation, viral-content research, and social media growth. Then learn to approach relevant brands, negotiate affiliate commissions, set up product links, and track actual sales. Includes reusable AI prompts, character templates, content workflows, brand outreach scripts, commission calculators, and a 30-day launch roadmap.",
+  description: "Go from a character idea to a fully functioning AI influencer business with a practical workflow covering character design, consistent AI image and video generation, viral-content research, and social media growth. Then learn to approach relevant brands, negotiate affiliate commissions, set up product links, and track actual sales. Includes reusable AI prompts, character templates, content workflows, brand outreach scripts, commission calculators, and a 30-day launch roadmap.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

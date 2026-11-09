@@ -6,7 +6,7 @@ export const TOP_10_CLAUDE_SIDE_HUSTLES_DETAIL_DATA: PlaybookDetailData = {
   slug: "top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked",
   title: "Top 10 Claude AI Side Hustles That Can Pay A Full-Time Income (Ranked)",
   headline: "10 Claude-powered business models, ranked from weakest to strongest — discover what’s actually worth building, how to get customers, and how to turn AI skills into a real income stream.",
-  description: "**10 Claude-powered business models, ranked from weakest to strongest — discover what’s actually worth building, how to get customers, and how to turn AI skills into a real income stream.**\n\nExplore 10 AI-assisted business models, from digital products and small apps to AI consulting, specialised services, and building a YouTube personal brand. Learn how to use Claude to create offers, develop products, find customers, and streamline delivery with practical workflows, adapted prompts, and a 30-day execution roadmap. More importantly, understand which opportunities are worth pursuing — and what it takes to make them work.",
+  description: "Explore 10 AI-assisted business models, from digital products and small apps to AI consulting, specialised services, and building a YouTube personal brand. Learn how to use Claude to create offers, develop products, find customers, and streamline delivery with practical workflows, adapted prompts, and a 30-day execution roadmap. More importantly, understand which opportunities are worth pursuing — and what it takes to make them work.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,

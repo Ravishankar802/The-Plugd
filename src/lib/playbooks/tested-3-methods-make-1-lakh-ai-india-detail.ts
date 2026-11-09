@@ -6,7 +6,7 @@ export const TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_DETAIL_DATA: PlaybookDetailDa
   slug: "i-tested-3-methods-to-make-1-lakh-with-ai-in-india-real-results",
   title: "I Tested 3 Methods To Make ₹1 Lakh With AI in India?(Real Results)",
   headline: "Three AI side hustles. 72 hours to find out which business ideas actually show potential in India.",
-  description: "**Three AI side hustles. 72 hours to find out which business ideas actually show potential in India.**\n\nExplore three AI-powered business models: creating UGC-style video ads for brands, launching print-on-demand T-shirts, and selling digital colouring books. This playbook breaks down the tools, workflows, prompts, outreach strategies, advertising experiments, and reported results — plus a practical 72-hour testing plan to help you decide what deserves your time and money.",
+  description: "Explore three AI-powered business models: creating UGC-style video ads for brands, launching print-on-demand T-shirts, and selling digital colouring books. This playbook breaks down the tools, workflows, prompts, outreach strategies, advertising experiments, and reported results — plus a practical 72-hour testing plan to help you decide what deserves your time and money.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
