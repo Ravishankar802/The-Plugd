@@ -759,8 +759,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "lessonsCount": 28,
       "slidesCount": 112,
       "hoursOfMaterial": "9.1 hours",
-      "rating": 4.9,
-      "ratingCount": "4.8k",
+      "rating": 4.8,
+      "ratingCount": "2.8k",
+      "publishedAt": "2026-09-12",
       "accentColor": "#6366f1",
       "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996170/Claude_ChatGPT_57_152_In_90_Days.png",
       "href": "/claude-chatgpt-57152-in-90-days"
@@ -779,8 +780,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "hoursOfMaterial": "8.9 hours",
-      "rating": 4.9,
-      "ratingCount": "4.7k",
+      "rating": 4.5,
+      "ratingCount": "1.7k",
+      "publishedAt": "2026-09-10",
       "accentColor": "#d97706",
       "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996187/It_s_boring_but_I_make_51_day_in_1_hour_at_22.png",
       "href": "/its-boring-but-i-make-51-day-in-1-hour-at-22"
@@ -799,8 +801,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "hoursOfMaterial": "9.1 hours",
-      "rating": 4.9,
-      "ratingCount": "4.8k",
+      "rating": 4.7,
+      "ratingCount": "2.8k",
+      "publishedAt": "2026-09-03",
       "accentColor": "#0ea5e9",
       "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996183/This_AI_Business_Will_Make_You_10k_Month_With_Zero_Employees.png",
       "href": "/this-ai-business-will-make-you-10k-month-with-zero-employees"
@@ -820,7 +823,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "lessonsCount": 28,
       "hoursOfMaterial": "9.1 hours",
       "rating": 4.9,
-      "ratingCount": "5.4k",
+      "ratingCount": "3.4k",
+      "publishedAt": "2026-09-15",
       "accentColor": "#e11d48",
       "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996177/If_you_re_ambitious_and_in_your_20s_or_30s_please_watch_this..png",
       "href": "/if-youre-ambitious-and-in-your-20s-or-30s-please-watch-this"
@@ -840,7 +844,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "lessonsCount": 28,
       "hoursOfMaterial": "9.2 hours",
       "rating": 4.9,
-      "ratingCount": "5.1k",
+      "ratingCount": "5.5k",
+      "publishedAt": "2026-09-05",
       "accentColor": "#6366f1",
       "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793996171/Give_Me_27_Minutes_and_I_ll_Make_You_Disgustingly_Good_at_Digital_Marketing.png",
       "href": "/give-me-27-minutes-and-ill-make-you-disgustingly-good-at-digital-marketing"
@@ -860,7 +865,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "lessonsCount": 28,
       "hoursOfMaterial": "9.0 hours",
       "rating": 4.9,
-      "ratingCount": "4.9k",
+      "ratingCount": "3.9k",
+      "publishedAt": "2026-09-07",
       "accentColor": "#3b82f6",
       "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793998241/I_Built_An_85M_AI_Startup_in_5_Months_here_s_my_playbook.png",
       "href": "/i-built-an-85m-ai-startup-in-5-months-heres-my-playbook"
@@ -989,8 +995,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "lessonsCount": 28,
       "hoursOfMaterial": "7.5 hours",
 
-      "rating": 4.8,
-      "ratingCount": "4.2k",
+      "rating": 4.7,
+      "ratingCount": "1.2k",
+      "publishedAt": "2026-10-12",
       "accentColor": "#2563eb",
       "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023911/If_You_re_In_Your_20s_Here_s_How_To_Win_At_Anything.png",
       "href": "/if-youre-in-your-20s-heres-how-to-win-at-anything"
@@ -1011,7 +1018,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "hoursOfMaterial": "8.0 hours",
 
       "rating": 4.7,
-      "ratingCount": "3.8k",
+      "ratingCount": "2.8k",
+      "publishedAt": "2026-10-03",
       "accentColor": "#2563eb",
       "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793023915/The_SMARTEST_Way_to_Capitalize_On_The_AI_Gold_Rush.png",
       "href": "/the-smartest-way-to-capitalize-on-the-ai-gold-rush"
@@ -1056,7 +1064,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.5 hours",
 
     "rating": 4.8,
-    "ratingCount": "6.3k",
+    "ratingCount": "4.3k",
+      "publishedAt": "2026-10-06",
     "href": "/if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint"
   },
 {
@@ -1077,7 +1086,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "7.5 hours",
 
     "rating": 4.6,
-    "ratingCount": "4.1k",
+    "ratingCount": "1.1k",
+      "publishedAt": "2026-10-14",
     "href": "/7-ai-automations"
   },
   {
@@ -1098,7 +1108,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.5 hours",
 
     "rating": 4.7,
-    "ratingCount": "3.9k",
+    "ratingCount": "1.9k",
+      "publishedAt": "2026-10-05",
     "href": "/side-hustles"
   },
   {
@@ -1118,8 +1129,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "slidesCount": 96,
     "hoursOfMaterial": "6.5 hours",
 
-    "rating": 4.9,
+    "rating": 4.7,
     "ratingCount": "4.2k",
+      "publishedAt": "2026-09-09",
     "href": "/give-me-26-minutes-ill-give-you-10000-hours-of-claude-knowledge"
   },
   {
@@ -1140,7 +1152,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.0 hours",
 
     "rating": 4.8,
-    "ratingCount": "5.4k",
+    "ratingCount": "2.1k",
+      "publishedAt": "2026-10-10",
     "href": "/give-me-28-minutes-ill-give-you-10000-hours-of-chatgpt-knowledge"
   },
   {
@@ -1161,7 +1174,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.5 hours",
 
     "rating": 4.5,
-    "ratingCount": "7.3k",
+    "ratingCount": "1.3k",
+      "publishedAt": "2026-10-18",
     "href": "/5-proven-ways-to-make-money-with-ai-no-experience"
   },
   {
@@ -1226,7 +1240,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.5 hours",
 
     "rating": 4.9,
-    "ratingCount": "5.8k",
+    "ratingCount": "1.8k",
+      "publishedAt": "2026-10-12",
     "href": "/build-a-one-person-business-as-a-beginner-from-0-to-10k"
   },
   {
@@ -1268,8 +1283,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
 
-    "rating": 4.7,
-    "ratingCount": "7.1k",
+    "rating": 4.4,
+    "ratingCount": "731k",
+      "publishedAt": "2026-10-08",
     "href": "/the-blueprint-to-go-from-0-to-1000000"
   },
   {
@@ -1377,8 +1393,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "slidesCount": 96,
     "hoursOfMaterial": "6.5 hours",
 
-    "rating": 4.7,
-    "ratingCount": "4.1k",
+    "rating": 4.5,
+    "ratingCount": "2.1k",
+      "publishedAt": "2026-10-09",
     "href": "/the-4-levels-to-getting-rich-in-2026"
   },
   {
@@ -1398,8 +1415,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "slidesCount": 128,
     "hoursOfMaterial": "8.5 hours",
 
-    "rating": 4.9,
-    "ratingCount": "5.7k",
+    "rating": 4.6,
+    "ratingCount": "1.7k",
+      "publishedAt": "2026-10-09",
     "href": "/the-a-i-revolution-8-ways-to-get-rich"
   },
   {
@@ -1420,7 +1438,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "7.5 hours",
 
     "rating": 4.4,
-    "ratingCount": "3.9k",
+    "ratingCount": "1.9k",
+      "publishedAt": "2026-10-02",
     "href": "/how-i-turned-300-to-100-000-at-19-my-side-hustles"
   },
   {
@@ -1441,7 +1460,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.5 hours",
 
     "rating": 4.5,
-    "ratingCount": "3.6k",
+    "ratingCount": "1.6k",
+      "publishedAt": "2026-10-09",
     "href": "/how-to-become-rich-with-social-media-my-exact-playbook",
     "sourceUrl": "https://www.youtube.com/watch?v=21flGkcZO3A"
   },
@@ -1532,7 +1552,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "6.5 hours",
 
     "rating": 4.8,
-    "ratingCount": "5.3k",
+    "ratingCount": "1.3k",
+      "publishedAt": "2026-10-06",
     "href": "/what-makes-the-perfect-business-5-things",
     "sourceUrl": "https://www.youtube.com/watch?v=3fsJFUvA6Ts"
   },
@@ -1577,7 +1598,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.5 hours",
 
     "rating": 4.6,
-    "ratingCount": "3.5k",
+    "ratingCount": "1.0k",
+      "publishedAt": "2026-10-17",
     "href": "/if-you-have-multiple-interests-please-start-a-one-person-business",
     "sourceUrl": "https://www.youtube.com/watch?v=XqS7kIWMIDE"
   },
@@ -1600,6 +1622,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
 
     "rating": 4.7,
     "ratingCount": "6.2k",
+      "publishedAt": "2026-08-04",
     "href": "/learn-this-skill-if-you-want-to-win-in-the-next-2-3-years",
     "sourceUrl": "https://www.youtube.com/watch?v=bWR_3Sg-H-8"
   },
@@ -1621,7 +1644,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.5 hours",
 
     "rating": 4.8,
-    "ratingCount": "5.9k",
+    "ratingCount": "1.9k",
+      "publishedAt": "2026-10-09",
     "href": "/how-to-build-a-1m-one-person-business-faster-with-ai",
   },
   {
@@ -1663,7 +1687,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.5 hours",
 
     "rating": 4.8,
-    "ratingCount": "3.8k",
+    "ratingCount": "3.3k",
+      "publishedAt": "2026-09-06",
     "href": "/how-to-use-ai-better-than-99-of-people-this-changed-my-life",
   },
   {
@@ -1706,7 +1731,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "6.5 hours",
 
     "rating": 4.8,
-    "ratingCount": "6.4k",
+    "ratingCount": "1.4k",
+      "publishedAt": "2026-10-15",
     "href": "/you-have-5-years-to-get-rich-before-ai-takes-over",
   },
   {
@@ -1793,7 +1819,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.0 hours",
 
     "rating": 4.9,
-    "ratingCount": "7.8k",
+    "ratingCount": "3.8k",
+      "publishedAt": "2026-10-10",
     "href": "/7-side-hustles-students-can-start-in-2026"
   },
   {
@@ -1836,7 +1863,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.0 hours",
 
     "rating": 4.8,
-    "ratingCount": "5.6k",
+    "ratingCount": "1.6k",
+      "publishedAt": "2026-10-12",
     "href": "/how-to-make-your-first-10-000-as-a-teen-stupid-simple"
   },
   {
@@ -1901,7 +1929,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "7.5 hours",
 
     "rating": 4.8,
-    "ratingCount": "6.2k",
+    "ratingCount": "1.2k",
+      "publishedAt": "2026-10-19",
     "href": "/how-to-actually-lock-in-no-bullsh-t-guide"
   },
   {
@@ -1923,6 +1952,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
 
     "rating": 4.8,
     "ratingCount": "5.2k",
+      "publishedAt": "2026-09-02",
     "href": "/18-years-of-ugly-business-advice-in-19-minutes"
   },
     {
@@ -1943,7 +1973,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "7.0 hours",
 
     "rating": 4.8,
-    "ratingCount": "6.7k",
+    "ratingCount": "3.7k",
+      "publishedAt": "2026-10-04",
     "href": "/want-to-made-god-tier-money-use-this-sales-tactic-made-me-10m"
   },
   {
@@ -1964,7 +1995,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.0 hours",
 
     "rating": 4.7,
-    "ratingCount": "4.3k",
+    "ratingCount": "2.3k",
+      "publishedAt": "2026-10-08",
     "href": "/there-are-only-3-types-of-profitable-businesses-pick-one"
   },
   {
@@ -1985,7 +2017,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "6.0 hours",
 
     "rating": 4.8,
-    "ratingCount": "5.6k",
+    "ratingCount": "1.6k",
+      "publishedAt": "2026-10-17",
     "href": "/if-you-dont-understand-leadership-youll-never-win"
   },
   {
@@ -2005,8 +2038,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "slidesCount": 112,
     "hoursOfMaterial": "7.0 hours",
 
-    "rating": 4.9,
-    "ratingCount": "8.2k",
+    "rating": 4.6,
+    "ratingCount": "1.0k",
+      "publishedAt": "2026-10-10",
     "href": "/i-built-a-business-with-ai-in-24-hours"
   },
   {
@@ -2027,7 +2061,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.0 hours",
 
     "rating": 4.8,
-    "ratingCount": "5.8k",
+    "ratingCount": "1.8k",
+      "publishedAt": "2026-10-13",
     "href": "/copy-paste-this-strategy-to-make-your-first-5-000-online"
   },
   {
@@ -2048,7 +2083,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "7.0 hours",
 
     "rating": 4.7,
-    "ratingCount": "4.3k",
+    "ratingCount": "1.3k",
+      "publishedAt": "2026-10-16",
     "href": "/7-remote-jobs-you-can-do-from-home"
   },
   {
@@ -2068,8 +2104,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "slidesCount": 96,
     "hoursOfMaterial": "6.0 hours",
 
-    "rating": 4.8,
+    "rating": 4.7,
     "ratingCount": "3.8k",
+      "publishedAt": "2026-09-09",
     "href": "/i-asked-ai-to-make-me-as-much-money-as-possible"
   },
   {
@@ -2089,8 +2126,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "slidesCount": 128,
     "hoursOfMaterial": "8.0 hours",
 
-    "rating": 4.7,
-    "ratingCount": "4.0k",
+    "rating": 4.6,
+    "ratingCount": "2.0k",
+      "publishedAt": "2026-10-11",
     "href": "/these-are-the-best-business-books-to-read-7-billionaire-books"
   },
   {
@@ -2111,7 +2149,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "7.0 hours",
 
     "rating": 4.9,
-    "ratingCount": "5.2k",
+    "ratingCount": "1.2k",
+      "publishedAt": "2026-10-20",
     "href": "/my-honest-advice-to-someone-who-wants-to-get-rich"
   },
   {
@@ -2132,7 +2171,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.0 hours",
 
     "rating": 4.6,
-    "ratingCount": "3.9k",
+    "ratingCount": "1.9k",
+      "publishedAt": "2026-10-10",
     "href": "/the-30k-month-al-faceless-shorts-method-nobodys-talking-about"
   },
   {
@@ -2152,8 +2192,9 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "slidesCount": 112,
     "hoursOfMaterial": "7.0 hours",
 
-    "rating": 4.9,
-    "ratingCount": "7.9k",
+    "rating": 4.8,
+    "ratingCount": "1.7k",
+      "publishedAt": "2026-10-13",
     "href": "/how-to-build-10k-websites-in-minutes-claude-ai"
   },
   {
@@ -2174,7 +2215,8 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "6.0 hours",
 
     "rating": 4.8,
-    "ratingCount": "6.5k",
+    "ratingCount": "2.5k",
+      "publishedAt": "2026-10-18",
     "href": "/master-higgsfield-ai-in-20-minutes-beginner-tutorial"
   }
 ];
