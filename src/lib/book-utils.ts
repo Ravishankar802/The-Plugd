@@ -5974,7 +5974,7 @@ export function getRelativePublishedTime(
     Math.floor((todayUtc - pubUtc) / (1000 * 60 * 60 * 24))
   );
 
-  if (diffDays < 60) {
+  if (diffDays < 30) {
     return `${diffDays}d ago`;
   }
   if (diffDays < 365) {
@@ -5983,5 +5983,63 @@ export function getRelativePublishedTime(
   }
   const years = Math.max(1, Math.floor(diffDays / 365));
   return `${years}y ago`;
+}
+
+export interface RatingHistogramItem {
+  stars: number;
+  label: string;
+  count: number;
+  percentage: number;
+}
+
+/**
+ * Mathematically calculates the rating histogram distribution (5, 4, 3, 2, 1 stars)
+ * based on the playbook's actual star rating and total ratings count.
+ */
+export function getPlaybookRatingBreakdown(
+  rating: number = 4.8,
+  rawCount?: string | number
+): RatingHistogramItem[] {
+  let count = 1000;
+  if (typeof rawCount === "number") {
+    count = rawCount;
+  } else if (rawCount) {
+    const s = String(rawCount).trim().toLowerCase();
+    if (s.endsWith("k")) {
+      count = Math.round(parseFloat(s) * 1000);
+    } else {
+      count = Math.round(parseFloat(s.replace(/[^0-9.]/g, "")) || 1000);
+    }
+  }
+
+  const R = Math.min(5, Math.max(1, Number(rating) || 4.8));
+  const S = Math.round(R * count);
+
+  // Realistic long-tail distribution for lower star ratings
+  const c1 = Math.max(1, Math.round(count * Math.max(0.003, Math.min(0.02, (0.005 * (5 - R)) / 0.1))));
+  const c2 = Math.max(1, Math.round(count * Math.max(0.004, Math.min(0.03, (0.005 * (5 - R)) / 0.1))));
+  const c3 = Math.max(1, Math.round(count * Math.max(0.008, Math.min(0.06, (0.010 * (5 - R)) / 0.1))));
+
+  const N45 = count - (c1 + c2 + c3);
+  const S45 = S - (c1 * 1 + c2 * 2 + c3 * 3);
+
+  let c5 = Math.round(S45 - 4 * N45);
+  let c4 = N45 - c5;
+
+  if (c5 > N45) { c5 = N45; c4 = 0; }
+  if (c4 > N45) { c4 = N45; c5 = 0; }
+  if (c5 < 0) { c5 = 0; c4 = N45; }
+
+  const counts = [c5, c4, c3, c2, c1];
+  const percentages = counts.map((c) => Math.round((c / count) * 100));
+  const pSum = percentages.reduce((a, b) => a + b, 0);
+  percentages[0] += 100 - pSum; // Guarantee sum is exactly 100%
+
+  return [5, 4, 3, 2, 1].map((stars, idx) => ({
+    stars,
+    label: stars === 1 ? "1 star" : `${stars} stars`,
+    count: counts[idx],
+    percentage: Math.max(0, percentages[idx]),
+  }));
 }
 

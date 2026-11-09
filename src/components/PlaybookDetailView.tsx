@@ -33,6 +33,7 @@ import {
   getCuratedCommunityReviews,
   getAvatarBgColor,
   getRelativePublishedTime,
+  getPlaybookRatingBreakdown,
 } from "@/lib/book-utils";
 
 interface PlaybookDetailViewProps {
@@ -116,6 +117,12 @@ export default function PlaybookDetailView({
   const relativePublishedDate = useMemo(
     () => getRelativePublishedTime(playbook.slug, (playbook as any).publishedAt),
     [playbook.slug, playbook]
+  );
+
+  // Mathematically calculated star rating distribution
+  const ratingBreakdown = useMemo(
+    () => getPlaybookRatingBreakdown(playbook.rating || 4.8, playbook.ratingCount),
+    [playbook.rating, playbook.ratingCount]
   );
 
   // Clean description without repeated bold headline prefix
@@ -291,8 +298,9 @@ export default function PlaybookDetailView({
                 <h3 className="text-[15px] sm:text-base font-semibold text-[#1c1917] leading-snug line-clamp-2">
                   {playbook.title}
                 </h3>
-                <div className="text-[13px] text-[#57534e]">
-                  {author.name}
+                <div className="flex items-center justify-between gap-2 text-[13px] text-[#57534e] w-full">
+                  <span className="font-medium text-[#44403c] truncate">{author.name}</span>
+                  <span className="text-[12px] text-[#78716c] shrink-0">{relativePublishedDate}</span>
                 </div>
               </div>
 
@@ -654,45 +662,23 @@ export default function PlaybookDetailView({
 
                   {/* Rating Histogram */}
                   <div className="space-y-1.5 text-xs text-stone-600 font-medium">
-                    <div className="flex items-center gap-3">
-                      <span className="w-12 text-stone-500">5 stars</span>
-                      <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
-                        <div className="h-full bg-amber-500 rounded-full" style={{ width: "72%" }} />
+                    {ratingBreakdown.map((item) => (
+                      <div key={item.stars} className="flex items-center gap-3">
+                        <span className="w-12 text-stone-500">{item.label}</span>
+                        <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
+                          <div
+                            className="h-full bg-amber-500 rounded-full transition-all duration-300"
+                            style={{ width: `${item.percentage > 0 ? item.percentage : 1}%` }}
+                          />
+                        </div>
+                        <span
+                          className="w-16 text-right text-stone-400 tabular-nums"
+                          title={`${item.count.toLocaleString()} ratings`}
+                        >
+                          {item.percentage > 0 ? `${item.percentage}%` : "<1%"}
+                        </span>
                       </div>
-                      <span className="w-16 text-right text-stone-400">72%</span>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                      <span className="w-12 text-stone-500">4 stars</span>
-                      <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
-                        <div className="h-full bg-amber-500 rounded-full" style={{ width: "20%" }} />
-                      </div>
-                      <span className="w-16 text-right text-stone-400">20%</span>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                      <span className="w-12 text-stone-500">3 stars</span>
-                      <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
-                        <div className="h-full bg-amber-500 rounded-full" style={{ width: "5%" }} />
-                      </div>
-                      <span className="w-16 text-right text-stone-400">5%</span>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                      <span className="w-12 text-stone-500">2 stars</span>
-                      <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
-                        <div className="h-full bg-amber-500 rounded-full" style={{ width: "2%" }} />
-                      </div>
-                      <span className="w-16 text-right text-stone-400">2%</span>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                      <span className="w-12 text-stone-500">1 star</span>
-                      <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
-                        <div className="h-full bg-amber-500 rounded-full" style={{ width: "1%" }} />
-                      </div>
-                      <span className="w-16 text-right text-stone-400">1%</span>
-                    </div>
+                    ))}
                   </div>
                 </div>
 
