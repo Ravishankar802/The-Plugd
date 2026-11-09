@@ -9,10 +9,10 @@ export const STARTING_AI_SIDE_HUSTLE_DETAIL_DATA: PlaybookDetailData = {
   description: "AI makes building easier — but finding customers, earning trust, and standing out are still the hard parts. This playbook gives you a four-gate system to validate demand, develop a competitive edge through imagination, focus, and customer context, find the right distribution channels, and build continuous learning loops.\n\nIncludes customer discovery scripts, niche scorecards, AI research prompts, MVP frameworks, distribution experiments, feedback trackers, reusable worksheets, and a practical 30-day execution roadmap.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.9k",

@@ -9,10 +9,10 @@ export const THREE_AI_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
   description: "Explore three practical ways to build a lean, AI-powered business: an AI automation agency, an AI content agency, and an AI shadow-operating business. Learn how to find paying clients, create valuable offers, build repeatable systems, and use AI to handle research, production, and operations more efficiently. Discover how to partner with creators, turn their expertise into digital products, and structure revenue-sharing agreements. Includes practical workflows, outreach scripts, AI prompts, pricing frameworks, operating templates, and a 90-day roadmap to help you launch and grow.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 12,
-  originalPrice: 20,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.6,
   ratingCount: "4.1k",

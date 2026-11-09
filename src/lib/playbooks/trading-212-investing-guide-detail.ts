@@ -9,10 +9,10 @@ export const TRADING_212_GUIDE_DETAIL_DATA: PlaybookDetailData = {
   description: "Learn how to start investing, choose the right platform, understand investment accounts, and make your first investment with confidence.\n\nExplore the three-fund portfolio strategy, including US stocks, international equities, and bonds, and understand how to build a diversified portfolio.\n\nMaster the fundamentals of order types, recurring investments, compound growth, portfolio management, and knowing when to sell.\n\nIncludes practical workflows and checklists to help you develop a disciplined investing habit and stay focused on long-term wealth creation.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 5,
-  originalPrice: 9,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 44,
+  discountPercentage: 60,
 
   rating: 4.7,
   ratingCount: "6.1k",

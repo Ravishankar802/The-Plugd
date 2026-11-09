@@ -9,10 +9,10 @@ export const INVESTING_BEGINNERS_25M_DETAIL_DATA: PlaybookDetailData = {
   description: "Go from investing beginner to confident decision-maker with a practical guide to understanding financial markets, stocks, ETFs, bonds, and other asset classes.\n\nLearn how compounding works, prepare your finances, choose an investment platform, and build a diversified portfolio that aligns with your goals and risk tolerance.\n\nExplore stock research, portfolio allocation, rebalancing, order types, recurring investments, taxes, and the common mistakes that hold beginners back.\n\nIncludes a structured 30-day beginner plan, investment vocabulary, and practical checklists to help you build a repeatable investing routine.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 7,
-  originalPrice: 12,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 42,
+  discountPercentage: 60,
 
   rating: 4.4,
   ratingCount: "3.2k",

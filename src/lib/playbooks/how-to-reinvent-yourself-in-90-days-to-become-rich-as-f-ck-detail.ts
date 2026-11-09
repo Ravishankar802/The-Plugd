@@ -9,10 +9,10 @@ export const REINVENT_90_DAYS_DETAIL_DATA: PlaybookDetailData = {
   description: "Real change goes beyond motivation and morning routines. This playbook takes you through a structured 90-day process of reshaping your beliefs, managing your attention, overcoming avoidance, and developing consistent work habits. With practical exercises, daily trackers, weekly reviews, and a phased action plan, you'll learn to turn personal standards into measurable progress while building skills, pursuing opportunities, and protecting your health.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.9k",

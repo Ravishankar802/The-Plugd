@@ -9,10 +9,10 @@ export const NIGHT_AI_MONEY_DETAIL_DATA: PlaybookDetailData = {
   description: "Learn how to spot services businesses already pay for, evaluate opportunities using AI research, and choose an offer that matches your skills and available time. Then build a portfolio with practical samples, identify qualified prospects, write personalised outreach, create a simple service website, and use AI agents to streamline repetitive work. Includes ready-to-use prompts, templates, and a 30-day execution plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 4,
+  originalPrice: 9.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.9k",

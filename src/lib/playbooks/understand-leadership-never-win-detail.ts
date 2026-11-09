@@ -9,10 +9,10 @@ export const UNDERSTAND_LEADERSHIP_DETAIL_DATA: PlaybookDetailData = {
   description: "The Leadership Elevator is a practical playbook for business owners, entrepreneurs, and managers who want to become better leaders and build stronger organisations. It takes you through five levels of leadership, from mastering clear instructions and effective communication to hiring A-players, retaining top talent, and developing owner-level thinking. Packed with actionable frameworks, real-world examples, management strategies, and ready-to-use templates, it helps turn leadership principles into everyday practices. Learn to build accountability, develop independent decision-makers, and create systems that keep your business running smoothly. The ultimate goal is to build a capable team and a business that succeeds without depending on you for everything.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 7,
-  originalPrice: 12,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 42,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "5.6k",

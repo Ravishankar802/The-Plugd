@@ -9,10 +9,10 @@ export const STARTED_OVER_ZERO_TO_1M_DETAIL_DATA: PlaybookDetailData = {
   description: "Learn how to identify problems people are desperate to solve, build irresistible offers, price your services profitably, and find qualified buyers without needing an established audience. Master AI-powered prospect research, personalised outreach, and the nine-stage sales conversation framework to turn potential customers into paying clients. Discover how to deliver value quickly, build customer trust, improve your business through real feedback, and create repeatable systems. Includes a practical 30-day zero-to-first-customer sprint, AI prompts, outreach frameworks, worksheets, sales templates, and weekly business scorecards.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 19,
-  originalPrice: 30,
+  price: 3,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 37,
+  discountPercentage: 57,
 
   rating: 4.9,
   ratingCount: "4.5k",

@@ -9,10 +9,10 @@ export const FREE_AI_SIDE_HUSTLE_INDIANS_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover how to research products people are already searching for, create polished printable PDFs with Claude and Canva, and sell them through Gumroad. This playbook walks you through the entire Pinterest marketing funnel, from keyword research and product creation to free-to-paid offers, Pin publishing, and performance tracking — with a practical 7-day launch plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "4.8k",

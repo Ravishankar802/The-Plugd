@@ -9,10 +9,10 @@ export const THE_1000_HOUR_1_PERSON_AI_BUSINESS_DETAIL_DATA: PlaybookDetailData 
   description: "Learn how to build an AI-assisted marketing service for established local businesses, from choosing a profitable niche and finding high-value prospects to auditing websites, building landing pages, and improving lead conversion. This playbook includes the Dream 100 acquisition strategy, outreach templates, pricing frameworks, practical AI prompts, client reporting systems, and a complete 90-day execution roadmap.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "1.9k",

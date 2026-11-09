@@ -9,10 +9,10 @@ export const FIRST_10K_TEEN_DETAIL_DATA: PlaybookDetailData = {
   description: "Stop waiting for the perfect opportunity. Start building one.\n\nThe First $10,000 Playbook is your practical roadmap to turning a valuable skill into a real income-generating business. Discover four proven income engines, master the art of positioning, leverage, reach, and automation, and learn how to attract clients, deliver value, and scale your earnings.\n\nWith actionable strategies, real-world examples, practical worksheets, client templates, and a 90-day execution framework, this playbook takes you from your first idea to your first paying customers.\n\nBuild the skill. Create the offer. Earn the money. Keep the wealth. Your journey starts with the first $10,000.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "5.6k",

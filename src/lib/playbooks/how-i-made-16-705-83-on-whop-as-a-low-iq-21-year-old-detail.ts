@@ -9,10 +9,10 @@ export const HOW_I_MADE_16K_WHOP_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover how to build a performance-based clipping business, from finding worthwhile Whop campaigns to turning the best moments from podcasts and creator videos into engaging Shorts. Learn the hook–story–payoff framework, automate repetitive editing tasks, distribute clips across YouTube, TikTok, and Instagram, and track views, eligible payouts, and earnings per hour. Includes practical workflows, AI prompts, campaign scorecards, publishing trackers, and a 30-day launch plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 5,
+  originalPrice: 12.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 62,
 
   rating: 4.9,
   ratingCount: "4.9k",

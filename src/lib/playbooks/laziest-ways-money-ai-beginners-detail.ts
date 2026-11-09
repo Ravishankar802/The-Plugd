@@ -9,10 +9,10 @@ export const LAZIEST_WAYS_AI_BEGINNERS_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover seven practical ways to build an online business using AI, from video clipping and ghostwriting to landing pages, e-commerce, AI agents, virtual influencers, and app development.\n\nLearn which tools to use, how each business model works, what you need to get started, and where the money comes from.\n\nFollow step-by-step workflows, understand the costs and challenges, find potential customers, and turn your first idea into a real service or business.\n\nIncludes a focused 30-day validation plan to help you choose one model, build a sample, approach customers, and test whether the opportunity is worth pursuing.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 5,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "5.3k",

@@ -9,10 +9,10 @@ export const BEST_BUSINESS_BOOKS_DETAIL_DATA: PlaybookDetailData = {
   description: "Explore the key lessons from seven renowned business books covering entrepreneurship, leadership, investing, customer obsession, and strategic thinking. Discover practical frameworks for solving customer problems, building strong teams, improving decision-making, managing risks, and driving business growth. Includes actionable insights, a 30-day implementation plan, and practical checklists to help turn proven business principles into everyday action.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 5,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.7,
   ratingCount: "4.0k",

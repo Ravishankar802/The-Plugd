@@ -9,10 +9,10 @@ export const FIVE_SIMPLE_APPS_10K_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover five simple app ideas with existing market demand, from fasting and hydration trackers to habit managers, mood journals, and visual daily planners. Learn how to research successful competitors, identify profitable gaps, and build focused applications using AI app builders without unnecessary complexity. Explore monetisation strategies, free-to-premium feature models, retention systems, and the fundamentals of turning a small app into a recurring-revenue business. Includes two bonus app models, ready-to-use AI build prompts, competitor research frameworks, a 30-day launch roadmap, and practical validation checklists.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 3,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 57,
 
   rating: 4.7,
   ratingCount: "5.8k",

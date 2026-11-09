@@ -9,10 +9,10 @@ export const BECOME_MILLIONAIRE_2026_BLUEPRINT_DETAIL_DATA: PlaybookDetailData =
   description: "This playbook breaks the journey to your first million into three practical levels: building yourself, acquiring customers, and creating leverage that compounds over time. Learn how to choose a profitable market, identify customers with valuable problems, design irresistible offers, and master marketing and sales using the Core Four and CLOSER frameworks. Discover how to increase customer lifetime value, build teams, create repeatable systems, and protect your focus as your business grows. Includes a practical 2027 operating plan, actionable worksheets, outreach scripts, scorecards, and execution checklists to help turn ambition into a structured business-building strategy.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 3,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 57,
 
   rating: 4.8,
   ratingCount: "6.3k",

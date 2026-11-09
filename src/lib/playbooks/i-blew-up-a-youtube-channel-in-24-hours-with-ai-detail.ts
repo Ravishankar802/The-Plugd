@@ -10,9 +10,9 @@ export const BLEW_UP_YOUTUBE_AI_DETAIL_DATA: PlaybookDetailData = {
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 57,
 
   rating: 4.9,
   ratingCount: "4.9k",

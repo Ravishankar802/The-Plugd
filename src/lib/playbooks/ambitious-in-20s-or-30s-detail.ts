@@ -9,10 +9,10 @@ export const AMBITIOUS_IN_20S_OR_30S_DETAIL_DATA: PlaybookDetailData = {
   description: "Stop spreading yourself thin, waiting for the perfect opportunity, or letting other people's opinions dictate your decisions. This playbook shows you how to choose a direction, build rare competence, take intelligent risks, and stay focused on work that actually moves you forward. Includes a structured 90-day ambition plan, weekly operating system, and practical worksheets to turn big goals into consistent action.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "5.4k",

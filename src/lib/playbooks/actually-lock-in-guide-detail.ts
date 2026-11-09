@@ -10,9 +10,9 @@ export const ACTUALLY_LOCK_IN_GUIDE_DETAIL_DATA: PlaybookDetailData = {
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
-  originalPrice: 5,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 57,
 
   rating: 4.8,
   ratingCount: "6.2k",

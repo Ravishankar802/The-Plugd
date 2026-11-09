@@ -9,10 +9,10 @@ export const BORING_51_DAY_IN_1_HOUR_DETAIL_DATA: PlaybookDetailData = {
   description: "What if your next side hustle started with a tote bag and a little product research? Explore the Depop selling method behind a reported $51/day profit experiment, from spotting buying signals and finding affordable suppliers to creating eye-catching AI product images. Get a seven-day launch plan, pricing calculations, listing templates, and a practical one-hour daily workflow, with essential marketplace compliance checks.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.7k",

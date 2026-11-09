@@ -9,10 +9,10 @@ export const BUILT_BUSINESS_AI_24H_DETAIL_DATA: PlaybookDetailData = {
   description: "Building an AI-Powered Business from Zero is a hands-on playbook that shows you how to turn an idea into a structured, market-ready business. Explore proven frameworks for identifying demand, understanding your ideal customers, developing a brand, and creating websites that convert. Learn to use AI tools for research, content creation, advertising, and customer support while making smarter business decisions. Whether you're starting from scratch or refining an existing idea, this guide gives you a practical roadmap from concept to launch.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "8.2k",

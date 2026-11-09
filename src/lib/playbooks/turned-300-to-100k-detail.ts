@@ -9,10 +9,10 @@ export const TURNED_300_TO_100K_DETAIL_DATA: PlaybookDetailData = {
   description: "This playbook breaks down the journey from small offline hustles and reselling to e-commerce, influencer marketing, paid ads, and content creation. Learn how to spot profitable opportunities, protect your capital, test business ideas, and develop skills that compound over time. Discover how to build an audience, monetise your expertise through affiliate marketing and digital products, and package your knowledge into a paid course. Includes practical worksheets, financial calculators, campaign trackers, and a 90-day action plan to help you start building your own side-hustle engine.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 7,
-  originalPrice: 12,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 42,
+  discountPercentage: 60,
 
   rating: 4.4,
   ratingCount: "3.9k",

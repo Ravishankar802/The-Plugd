@@ -9,10 +9,10 @@ export const IM_BROKE_BUSINESS_DETAIL_DATA: PlaybookDetailData = {
   description: "You don't need a perfect idea, expensive tools, or a huge investment to start a business. This playbook walks you through the entire process — from discovering your business idea using the Three Ps (Pain, Profession, Passion) to identifying your ideal customers, crafting an outcome-driven offer, and landing your first five customers through warm outreach.\n\nIncludes customer avatar worksheets, problem-discovery questions, offer-building frameworks, outreach scripts, business validation exercises, and a practical 7-day action plan to take you from idea to real customer conversations.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.9k",

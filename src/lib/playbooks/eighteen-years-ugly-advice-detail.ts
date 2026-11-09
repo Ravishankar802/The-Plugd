@@ -9,10 +9,10 @@ export const EIGHTEEN_YEARS_UGLY_ADVICE_DETAIL_DATA: PlaybookDetailData = {
   description: "No motivational fluff or academic theories. This playbook distills 18 painful years of building, scaling, surviving recessions, hiring, firing, and protecting capital into concrete rules that separate surviving enterprises from bankrupt dreams.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 19,
-  originalPrice: 30,
+  price: 3,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 37,
+  discountPercentage: 57,
 
   rating: 4.8,
   ratingCount: "5.2k",

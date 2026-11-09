@@ -9,10 +9,10 @@ export const ASKED_AI_MAKE_MONEY_DETAIL_DATA: PlaybookDetailData = {
   description: "The AI-Powered Resale Playbook is a practical guide to building and scaling a second-hand resale business using AI agents. Discover how to source free and low-cost products, evaluate resale opportunities, calculate profit margins, organise collections, and create compelling marketplace listings. Learn to automate repetitive tasks while keeping important decisions under human control. With ready-to-use AI prompts, operational checklists, and a seven-day launch plan, this playbook helps you turn a simple reselling experiment into a structured, repeatable business.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "3.8k",

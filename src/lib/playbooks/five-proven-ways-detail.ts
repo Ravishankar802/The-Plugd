@@ -9,10 +9,10 @@ export const FIVE_PROVEN_WAYS_DETAIL_DATA: PlaybookDetailData = {
   description: "Explore five ways to turn AI into a real business: AI UGC, website building, short-form video clipping, voice agents, and digital products. Learn what to sell, which customers to target, how each model works, and how to get paid. Compare all five using the CLEAR framework to find the opportunity that fits your skills, budget, and goals. Includes practical workflows, AI prompts, outreach scripts, quality-control checklists, and a 30-day launch plan to help you move from research to your first real customer.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 5,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.5,
   ratingCount: "7.3k",

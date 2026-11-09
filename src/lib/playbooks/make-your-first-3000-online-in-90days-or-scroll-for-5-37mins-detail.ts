@@ -9,10 +9,10 @@ export const MAKE_3000_ONLINE_90_DAYS_DETAIL_DATA: PlaybookDetailData = {
   description: "Break into high-ticket sales without jumping straight into closing. This playbook walks you through DM appointment setting, natural sales conversations, lead qualification, commission structures, finding legitimate businesses, and securing your first opportunity. Follow a practical 90-day roadmap with ready-to-use scripts, application templates, qualification frameworks, income trackers, and performance scorecards.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 4,
+  originalPrice: 9.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.9k",

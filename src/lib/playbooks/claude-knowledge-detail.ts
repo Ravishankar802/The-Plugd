@@ -9,10 +9,10 @@ export const CLAUDE_KNOWLEDGE_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover 10 powerful Claude capabilities, organised from beginner to advanced, and learn how to use them to save time and produce better work. Build personalised context, create reusable Skills, organise Projects, connect apps, delegate browser tasks, and automate repeatable workflows. Go further by using Claude Code to build software and Claude Design to create functional interfaces and prototypes. Includes ready-to-use prompts, practical workflows, checklists, and a 7-day implementation plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.2k",

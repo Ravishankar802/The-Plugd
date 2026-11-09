@@ -9,10 +9,10 @@ export const FACELESS_SHORTS_30K_DETAIL_DATA: PlaybookDetailData = {
   description: "Search interest in YouTube automation is at its lowest point since 2022 while Shorts RPMs keep climbing \u2014 which means less competition and higher payouts for anyone starting a faceless YouTube channel right now. You'll see the full workflow: connecting the VidIQ extension to Claude, running a competitor breakdown on winning ranking channels, and getting a list of proven viral topics on tap. Then RankReel by Higgsfield AI handles the editing \u2014 paste in viral TikTok clips, name each rank, shuffle the custom playback order for retention, and generate a finished vertical Short in one click. No filming, no studio, no editing skills, basically zero expenses. Post 1\u20132 Shorts every single day, and a monetized channel within a few weeks is completely realistic.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 7,
-  originalPrice: 12,
+  price: 3,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 42,
+  discountPercentage: 57,
 
   rating: 4.6,
   ratingCount: "3.9k",

@@ -10,9 +10,9 @@ export const STUDENT_HUSTLES_2027_DETAIL_DATA: PlaybookDetailData = {
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
-  originalPrice: 5,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 57,
 
   rating: 4.8,
   ratingCount: "4.2k",

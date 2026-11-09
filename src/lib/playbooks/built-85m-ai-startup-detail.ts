@@ -9,10 +9,10 @@ export const BUILT_85M_AI_STARTUP_DETAIL_DATA: PlaybookDetailData = {
   description: "Learn how to identify emerging market opportunities, validate real customer demand using the CODE framework, and build a focused MVP without wasting months on unnecessary features. This practical founder's playbook covers audience building, customer feedback, founder-led content, GTM outreach, lead magnets, AI search visibility, and a 90-day execution plan—all inspired by the reported journey behind an $85M AI startup.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 5,
+  originalPrice: 12.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 62,
 
   rating: 4.9,
   ratingCount: "4.9k",

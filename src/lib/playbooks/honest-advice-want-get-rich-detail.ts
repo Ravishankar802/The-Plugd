@@ -9,10 +9,10 @@ export const HONEST_ADVICE_GET_RICH_DETAIL_DATA: PlaybookDetailData = {
   description: "Building wealth starts long before you earn your first big paycheck. This playbook shows you how to use your early years to develop valuable skills, build strong financial habits, and create opportunities that compound over time.\n\nLearn how to make smarter financial decisions, take calculated risks, grow your career, build meaningful connections, and turn small achievements into bigger opportunities.\n\nWith practical strategies, actionable lessons, and a 90-day starting plan, you'll have a clearer direction for building long-term success.\n\nStart early. Build wisely. Create a future on your own terms.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 5,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 44,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "5.2k",

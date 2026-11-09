@@ -9,10 +9,10 @@ export const CHATGPT_KNOWLEDGE_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover how to transform ChatGPT from a simple chatbot into your personal assistant, research partner, learning coach, and execution system. Learn to personalise it, write better prompts, challenge your ideas, create visuals, study smarter, and connect useful tools. Explore deep research, scheduled tasks, voice interactions, and agent-style workflows to handle complex tasks more efficiently. Includes ready-to-use prompts, practical workflows, a 7-day upgrade plan, and responsible-use checklists.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "5.4k",

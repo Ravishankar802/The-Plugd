@@ -9,10 +9,10 @@ export const FOUR_LEVELS_GETTING_RICH_2026_DETAIL_DATA: PlaybookDetailData = {
   description: "Explore the four levels of wealth-building, from developing earning power and launching a business to deploying capital, scaling operations, and building a powerful network. Discover practical strategies, financial frameworks, checklists, and a 90-day action plan to help you take the next step toward financial independence.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 7,
-  originalPrice: 12,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 42,
+  discountPercentage: 60,
 
   rating: 4.7,
   ratingCount: "4.1k",

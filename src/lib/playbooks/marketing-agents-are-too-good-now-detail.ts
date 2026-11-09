@@ -9,10 +9,10 @@ export const MARKETING_AGENTS_TOO_GOOD_DETAIL_DATA: PlaybookDetailData = {
   description: "What if your marketing system could do more than follow instructions? This playbook walks through the architecture behind autonomous marketing agents—from connecting analytics, CRM, and revenue data to generating ad creatives, testing campaigns, and learning from performance. It also explores AI-first product opportunities, practical agent workflows, implementation roadmaps, and the safeguards needed before handing AI control of real marketing operations.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 5,
+  originalPrice: 12.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 62,
 
   rating: 4.9,
   ratingCount: "4.8k",

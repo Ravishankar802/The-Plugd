@@ -9,10 +9,10 @@ export const GENERATIONAL_WEALTH_DETAIL_DATA: PlaybookDetailData = {
   description: "Most fortunes aren't lost because families stop making money — they're lost through poor succession planning, fragmented ownership, family conflicts, and a lack of financial education. This playbook breaks down nine systems used to organise, protect, govern, and preserve wealth across generations.\n\nExplore trusts, holding companies, family constitutions, governance councils, liquidity planning, long-term investing, and next-generation training. Includes practical checklists, family governance frameworks, asset inventories, risk registers, worksheets, and an implementation roadmap — with considerations for applying the principles in India.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.9k",

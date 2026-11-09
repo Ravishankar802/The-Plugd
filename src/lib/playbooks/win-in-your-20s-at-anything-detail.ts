@@ -9,10 +9,10 @@ export const WIN_IN_20S_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover why volume, consistency, and deliberate execution often matter more than constantly chasing new strategies. Learn when to do more, when to improve, and when it's genuinely time to try something new. Master the frameworks successful performers use to evaluate opportunities, scale their capacity, and stay focused on what actually moves the needle. Includes a practical 90-day execution plan, weekly review system, ICE scorecard, capacity planner, and actionable worksheets to help you turn ambition into measurable progress.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 19,
-  originalPrice: 30,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 37,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "4.2k",

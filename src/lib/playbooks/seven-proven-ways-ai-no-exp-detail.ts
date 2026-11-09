@@ -9,10 +9,10 @@ export const SEVEN_PROVEN_WAYS_AI_NO_EXP_DETAIL_DATA: PlaybookDetailData = {
   description: "The AI Service Business Playbook is your practical roadmap to turning today's powerful AI tools into real business opportunities. Discover six proven service models, learn how to find paying clients, create irresistible offers, price your services, and turn one-off projects into recurring revenue. From AI-powered content creation and website redesigns to lead reactivation, advertising creatives, and customer-support assistants, this playbook shows you how to turn existing technology into valuable services businesses actually need. No coding, no building complicated software, and no million-dollar startup required—just practical skills, smart execution, and a clear path to starting your own AI-powered service business.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 5,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 44,
+  discountPercentage: 60,
 
   rating: 4.6,
   ratingCount: "3.5k",

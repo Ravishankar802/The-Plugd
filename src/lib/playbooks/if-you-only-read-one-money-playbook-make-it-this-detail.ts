@@ -9,10 +9,10 @@ export const ONE_MONEY_PLAYBOOK_DETAIL_DATA: PlaybookDetailData = {
   description: "Making money is one thing. Building wealth that lasts is another. This playbook breaks down seven powerful money principles into a practical system for understanding compounding, ownership, cash flow, equity, leverage, asymmetric opportunities, and risk management.\n\nLearn how to evaluate investments, understand who controls the money, size your bets intelligently, and protect your financial future. Includes real-world examples, decision frameworks, investment checklists, worksheets, and a practical money operating system.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.9k",

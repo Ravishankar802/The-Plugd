@@ -9,10 +9,10 @@ export const SEVEN_REMOTE_JOBS_DETAIL_DATA: PlaybookDetailData = {
   description: "The Work-From-Home Side Hustle Playbook is your practical guide to exploring seven flexible online income opportunities. Learn how to start, find clients, build your skills, and turn simple ideas into potential income streams. With step-by-step guidance, launch checklists, and a 30-day action plan, this playbook helps you choose a side hustle that fits your lifestyle. Start small, build consistently, and grow with confidence.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 12,
-  originalPrice: 20,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.7,
   ratingCount: "4.3k",

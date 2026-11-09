@@ -9,10 +9,10 @@ export const MONEY_PRINCIPLES_20S_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover five powerful principles for building wealth early — from exploring different income opportunities and developing valuable skills to taking personal responsibility and eliminating distractions. This practical playbook includes actionable exercises, worksheets, a 90-day execution plan, and daily habits to help you turn ambition into consistent progress.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 5,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.7,
   ratingCount: "3.5k",

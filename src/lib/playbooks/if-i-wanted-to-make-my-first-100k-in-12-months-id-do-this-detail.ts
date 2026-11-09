@@ -9,10 +9,10 @@ export const FIRST_100K_12_MONTHS_DETAIL_DATA: PlaybookDetailData = {
   description: "Stop wasting months brainstorming business ideas and start building something people will actually pay for. This playbook takes you from niche selection and offer creation to customer discovery, sales conversations, and your first paying customer — with a practical roadmap for building momentum towards an $8,333 monthly revenue run rate.\n\nIncludes the Six Ps offer framework, niche-selection worksheets, discovery-call scripts, outreach templates, validation trackers, sales pipeline tools, and a 12-month execution roadmap.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.9k",

@@ -9,10 +9,10 @@ export const USE_AI_BETTER_99_DETAIL_DATA: PlaybookDetailData = {
   description: "Most people use AI for quick answers. This playbook shows you how to turn it into a powerful system for learning, thinking, creating, and executing.\n\nLearn four practical methods for developing detailed AI instructions, then use a meta-prompt to build reusable prompts tailored to your goals, knowledge, and workflow.\n\nExplore how to create intellectual sparring partners, creative thought partners, business assistants, and specialised YouTube production workflows.\n\nIncludes copy-ready templates, practical examples, a personal prompt-library system, and a 30-day implementation plan to upgrade the way you work with AI.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "3.8k",

@@ -10,9 +10,9 @@ export const HOW_I_WENT_FROM_0_TO_92K_MONTH_AT_19_DETAIL_DATA: PlaybookDetailDat
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 57,
 
   rating: 4.9,
   ratingCount: "4.9k",

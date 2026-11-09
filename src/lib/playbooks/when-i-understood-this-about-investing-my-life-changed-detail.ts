@@ -9,10 +9,10 @@ export const WHEN_I_UNDERSTOOD_THIS_ABOUT_INVESTING_DETAIL_DATA: PlaybookDetailD
   description: "Forget chasing trending stocks, predicting market crashes, or blindly trusting impressive return promises. This playbook gives you a repeatable system for evaluating investments through compounding, after-tax returns, capital-stack analysis, and the Four Goods: good people, good intentions, good rationale, and good contracts.\n\nIncludes a 100-point investment scorecard, due-diligence checklists, investment comparison matrices, practical worksheets, and a complete decision-making workflow to help you invest with greater clarity and discipline.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "5.0k",

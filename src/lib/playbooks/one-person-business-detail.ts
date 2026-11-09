@@ -9,10 +9,10 @@ export const ONE_PERSON_BUSINESS_DETAIL_DATA: PlaybookDetailData = {
   description: "This playbook gives you a practical, step-by-step roadmap to build a business from scratch, even as a beginner. Learn how to choose the right business model, find a profitable problem, identify your ideal audience, and create an offer people actually want to buy. Discover how to use AI, digital products, and organic content to build leverage without expensive tools, large teams, or unnecessary complexity. Includes a 30-day launch roadmap, ready-to-use AI prompts, business worksheets, customer research frameworks, and operating checklists to help you work towards a $10K monthly revenue target.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 12,
-  originalPrice: 20,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "5.8k",

@@ -9,10 +9,10 @@ export const SIDE_HUSTLES_STUDENTS_2026_DETAIL_DATA: PlaybookDetailData = {
   description: "Explore 7 side hustles with real business models behind them, from reselling and brand-deal brokerage to video editing, dropshipping, and investing.\n\nUnderstand how each opportunity works, what it takes to get started, how to find customers, and how to turn your skills into revenue.\n\nCompare startup costs, learning curves, earning potential, and the challenges behind each business model.\n\nFinish with a practical 30-day action plan to choose your path, test your idea, and start building something of your own.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 5,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "7.8k",

@@ -9,10 +9,10 @@ export const THREE_BEST_AI_BIZ_2027_DETAIL_DATA: PlaybookDetailData = {
   description: "Explore three practical AI-powered business models: AI influencer pages, subscription commerce, and digital products. Understand how each model works, where AI creates leverage, and what it actually takes to make money with it. Learn how to research markets, validate demand, build products, attract customers, and calculate the economics before investing your time or money. Includes step-by-step launch roadmaps, ready-to-use AI prompts, business model comparisons, decision scorecards, and practical checklists—with a clear breakdown of why digital products are the recommended starting point.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 7,
-  originalPrice: 12,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 42,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "4.2k",

@@ -9,10 +9,10 @@ export const RICH_WITH_SOCIAL_MEDIA_DETAIL_DATA: PlaybookDetailData = {
   description: "This playbook shows you how to build a social media strategy around business growth instead of vanity metrics. Learn to identify your most valuable customers, uncover the problems they're willing to pay to solve, and create content that attracts buyers rather than just viewers. Discover how to use vertical value, specialised content, compelling CTAs, and tracking systems to connect attention with actual revenue. Includes practical frameworks, customer research templates, content planning tools, and a 30-day implementation plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 5,
-  originalPrice: 9,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 44,
+  discountPercentage: 60,
 
   rating: 4.5,
   ratingCount: "3.6k",

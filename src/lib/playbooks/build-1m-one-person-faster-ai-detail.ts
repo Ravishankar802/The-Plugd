@@ -9,10 +9,10 @@ export const BUILD_1M_SOLO_FASTER_DETAIL_DATA: PlaybookDetailData = {
   description: "A practical, step-by-step guide to building a one-person business with the ambition of reaching $1M in annual revenue. Learn how to develop your personal brand, create content that attracts the right audience, research customer problems, design compelling offers, and build landing pages that convert. Discover how to use AI as your research partner, strategist, coach, and execution assistant without sacrificing quality or human judgment. Includes ready-to-use AI prompts, business templates, operating checklists, and a complete 30-day implementation plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 19,
-  originalPrice: 30,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 37,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "5.9k",

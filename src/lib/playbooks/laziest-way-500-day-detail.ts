@@ -9,10 +9,10 @@ export const LAZIEST_WAY_500_DAY_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover a practical business model that combines AI-assisted product creation, niche markets, and influencer partnerships to build a digital-product business. Learn how to uncover specific problems people are willing to pay to solve, research and create valuable ebooks, templates, and workbooks, and use AI to speed up production without sacrificing quality. Master the art of finding micro-influencers, structuring commission-based partnerships, and tracking the numbers that actually matter. Includes a 30-day launch plan, ready-to-use AI prompts, creator outreach templates, and product validation tools.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 5,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "4.3k",

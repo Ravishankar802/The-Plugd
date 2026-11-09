@@ -9,10 +9,10 @@ export const FIVE_YEARS_GET_RICH_AI_DETAIL_DATA: PlaybookDetailData = {
   description: "Understand how AI could transform jobs, businesses, and the way wealth is created—and why relying entirely on your salary may become increasingly risky.\n\nLearn how to use AI to increase your productivity, identify valuable customer problems, build an AI-leveraged income stream, and turn successful work into repeatable business systems.\n\nFollow a practical 90-day execution plan covering opportunity research, building your first solution, finding customers, validating demand, and improving your business economics.\n\nIncludes a five-year adaptation roadmap, ownership framework, personal scorecards, and actionable checklists to help you build greater financial resilience and long-term ownership.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 15,
-  originalPrice: 25,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "6.4k",

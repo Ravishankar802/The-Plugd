@@ -9,10 +9,10 @@ export const AI_SIDE_HUSTLES_2026_DETAIL_DATA: PlaybookDetailData = {
   description: "Explore 17 AI side hustles, ranked from S-tier to F-tier, with practical breakdowns of how each model works, what you can sell, and where the real opportunities lie. Learn how to build digital products, offer AI services, generate leads, automate business workflows, create content, and much more—even if you're starting without specialist skills. Understand the startup costs, competition, risks, and challenges behind each opportunity so you can avoid wasting time on weak business models. Includes beginner-friendly workflows, AI prompts, evaluation scorecards, practical checklists, and a 30-day validation and launch plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 5,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 44,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "6.2k",

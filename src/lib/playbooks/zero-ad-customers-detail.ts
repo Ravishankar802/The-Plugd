@@ -9,10 +9,10 @@ export const ZERO_AD_CUSTOMERS_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover how to attract customers through Threads, Pinterest, email marketing, short-form video, and YouTube without depending on advertising budgets. Learn how to choose the right platforms, create content people actually care about, and build a clear path from discovery to purchase. Turn one piece of content into multiple marketing assets, capture leads, and build an audience you can reach again. Includes ready-to-use AI prompts, content templates, practical checklists, tracking frameworks, and a 30-day organic customer acquisition plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 15,
-  originalPrice: 25,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.7,
   ratingCount: "3.9k",

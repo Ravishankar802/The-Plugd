@@ -9,10 +9,10 @@ export const MULTIPLE_INTERESTS_ONE_PERSON_DETAIL_DATA: PlaybookDetailData = {
   description: "You don't have to abandon your interests to build a successful one-person business. This playbook shows you how to connect your curiosity, skills, and unique perspective into a coherent personal brand with a clear audience and valuable offer. Learn to build a content and distribution system, use AI as your team of specialised assistants, and turn ideas into products people are willing to pay for. Includes practical prompts, reusable templates, workflows, and a step-by-step 30-day launch plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.6,
   ratingCount: "3.5k",

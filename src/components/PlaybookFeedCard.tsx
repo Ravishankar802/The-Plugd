@@ -24,8 +24,8 @@ interface PlaybookFeedCardProps {
 export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
   const authorName = (playbook as any).authorName || getAuthorProfile(playbook.categoryName, playbook.slug).name;
   const relativePublishedDate = getRelativePublishedTime(playbook.slug, playbook.publishedAt);
-  const formattedPrice = playbook.price ? Number(playbook.price).toFixed(2) : "3.00";
-  const formattedOriginalPrice = (playbook.originalPrice ? Number(playbook.originalPrice) : 9).toFixed(2);
+  const formattedPrice = typeof playbook.price === "number" ? playbook.price.toFixed(2) : "3.00";
+  const formattedOriginalPrice = typeof playbook.originalPrice === "number" ? playbook.originalPrice.toFixed(2) : "9.00";
 
   return (
     <div className="group relative flex flex-col justify-between h-full w-full rounded-2xl bg-white hover:bg-[#f7f8fa] border border-[#dcd8d0] hover:border-[#c7c4c0] p-3 sm:p-3.5 shadow-[0_1px_3px_rgba(28,25,23,0.06),0_1px_2px_rgba(28,25,23,0.04)] hover:shadow-lg motion-safe:hover:-translate-y-1 motion-reduce:hover:transform-none transition-all duration-200 ease-out">
@@ -111,29 +111,10 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
               Coming Soon
             </Link>
           </>
-        ) : IS_REVIEW_PHASE_FREE_ACCESS ? (
-          <>
-            <div className="flex items-center gap-1.5 shrink-0">
-              <span className="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-200">
-                Free
-              </span>
-              <span className="text-[11px] text-[#78716c] font-medium hidden xs:inline">
-                Review Access
-              </span>
-            </div>
-
-            <Link
-              href={playbook.href}
-              onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center justify-center rounded-lg bg-[#2563eb] hover:bg-[#1d4ed8] px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-white transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
-            >
-              Start Reading
-            </Link>
-          </>
         ) : (
           <>
             <div className="flex items-baseline gap-1.5 shrink-0">
-              {/* Prominent Current Price ($3.00) */}
+              {/* Prominent Current Price */}
               <span className="text-[16px] sm:text-[17px] font-bold text-[#1c1917] tracking-tight">
                 ${formattedPrice}
               </span>
@@ -143,13 +124,12 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
               </span>
             </div>
 
-            {/* Add to cart Action Button */}
             <Link
               href={playbook.href}
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center justify-center rounded-lg border border-[#2563eb] bg-white px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-[#2563eb] hover:bg-[#eff6ff] transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
+              className="inline-flex items-center justify-center rounded-lg bg-[#2563eb] hover:bg-[#1d4ed8] px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-white transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
             >
-              Add to cart
+              Start Reading
             </Link>
           </>
         )}

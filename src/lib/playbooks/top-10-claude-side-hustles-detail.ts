@@ -9,10 +9,10 @@ export const TOP_10_CLAUDE_SIDE_HUSTLES_DETAIL_DATA: PlaybookDetailData = {
   description: "Explore 10 AI-assisted business models, from digital products and small apps to AI consulting, specialised services, and building a YouTube personal brand. Learn how to use Claude to create offers, develop products, find customers, and streamline delivery with practical workflows, adapted prompts, and a 30-day execution roadmap. More importantly, understand which opportunities are worth pursuing — and what it takes to make them work.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.9k",

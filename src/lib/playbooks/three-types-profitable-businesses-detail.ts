@@ -9,10 +9,10 @@ export const THREE_TYPES_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
   description: "The Three Paths to Wealth is a practical playbook for entrepreneurs who want to build a business that creates lasting financial value while supporting the life they want.\n\nExplore three distinct business strategies: scaling a company for long-term growth, building a profitable lifestyle business that prioritises freedom and owner income, or creating an exit-ready company designed for a valuable sale.\n\nLearn how to make smarter financial decisions, improve profitability, build capable teams, strengthen operations, and create systems that support sustainable business growth.\n\nWith practical frameworks, actionable checklists, implementation plans, and ready-to-use templates, this playbook helps you turn your business ambitions into a clear operating strategy.\n\nWhether you're starting out, growing an established business, or preparing for an eventual sale, discover the path that aligns with your goals and build with greater clarity, confidence, and purpose.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 3,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 57,
 
   rating: 4.7,
   ratingCount: "4.3k",

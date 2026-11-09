@@ -9,10 +9,10 @@ export const BUILD_10K_WEBSITE_GPT6_DETAIL_DATA: PlaybookDetailData = {
   description: "Learn how to turn GPT-6 Astra into your website-building partner, taking a project from the initial business brief to a polished, responsive website that's ready for real customers. Master branding, image generation, design refinement, mobile optimisation, lead-form integration, hosting, and deployment — then use your skills to find businesses, create demo websites, and pitch your services.\n\nIncludes reusable AI prompts, brand-kit workflows, website briefs, design checklists, deployment instructions, pricing worksheets, outreach templates, and a practical 7-day launch roadmap.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 4,
+  originalPrice: 9.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.9k",

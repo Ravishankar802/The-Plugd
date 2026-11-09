@@ -9,10 +9,10 @@ export const MASTER_HIGGSFIELD_AI_DETAIL_DATA: PlaybookDetailData = {
   description: "Unlock the creative potential of Higgsfield AI and learn how to turn simple ideas into impressive visual productions. This playbook walks you through image generation, video creation, voiceovers, and Cinema Studio, helping you understand each tool and use it effectively.\n\nDiscover how to write better prompts, maintain character consistency, create cinematic scenes, manage credits, and combine AI-generated assets into complete projects.\n\nWhether you're a beginner, content creator, or aspiring filmmaker, this guide will help you create with more confidence and bring your creative vision to life.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 15,
-  originalPrice: 25,
+  price: 3,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 57,
 
   rating: 4.8,
   ratingCount: "6.5k",

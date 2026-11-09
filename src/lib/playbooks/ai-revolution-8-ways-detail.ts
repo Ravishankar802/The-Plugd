@@ -9,10 +9,10 @@ export const AI_REVOLUTION_8_WAYS_DETAIL_DATA: PlaybookDetailData = {
   description: "This playbook breaks down 8 powerful ways to turn AI into a practical economic advantage, from consuming information faster and producing better content to creating visuals, improving customer service, and building AI-powered workflows. Learn how to combine AI capabilities with human expertise, judgement, and quality control to deliver more valuable work. Includes ready-to-use prompts, practical workflows, a 30-day implementation plan, and strategies for turning increased productivity into real-world business value.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 12,
-  originalPrice: 20,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "5.7k",

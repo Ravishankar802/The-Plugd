@@ -9,10 +9,10 @@ export const SELL_PDFS_WITH_AI_DETAIL_DATA: PlaybookDetailData = {
   description: "Learn the complete system for building and selling profitable digital PDFs with AI, starting with market research and niche selection. Discover how to uncover painful customer problems, analyse comments and competitor products, validate demand, and create an original, valuable PDF using AI. Explore practical prompts, product positioning, pricing strategies, sales-page creation, and content marketing that attracts the right buyers. Includes a complete 30-day launch roadmap, research worksheets, validation scorecards, quality checklists, and a repeatable five-step system to take your idea from research to launch.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 3,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 57,
 
   rating: 4.9,
   ratingCount: "5.2k",

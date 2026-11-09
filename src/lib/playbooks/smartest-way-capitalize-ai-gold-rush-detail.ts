@@ -9,10 +9,10 @@ export const CAPITALIZE_AI_GOLD_RUSH_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover how to identify profitable problems, use AI to transform everyday workflows, and choose specialised tools that deliver real results. Learn how to move beyond generic AI services and build solutions customers actually want. Turn repeated service work into digital products, validate demand, and create systems that can scale beyond your time. Includes a 14-day AI opportunity sprint, a 30-day implementation roadmap, practical frameworks, worksheets, and ready-to-use templates.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 15,
-  originalPrice: 25,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.7,
   ratingCount: "3.8k",

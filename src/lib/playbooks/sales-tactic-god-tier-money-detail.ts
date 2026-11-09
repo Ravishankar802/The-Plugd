@@ -9,10 +9,10 @@ export const SALES_TACTIC_10M_DETAIL_DATA: PlaybookDetailData = {
   description: "The Problem-First Sales Playbook is a comprehensive guide to building a more effective, customer-focused sales process from the first conversation to successful implementation. It provides practical frameworks, discovery questions, qualification methods, value calculations, and tailored demonstration strategies to help sales teams understand what customers truly need. With actionable scripts, objection-handling techniques, and real-world business examples, it shows you how to communicate value, overcome uncertainty, and close with confidence. Beyond winning deals, this playbook emphasizes customer satisfaction, measurable outcomes, and long-term business growth. Whether you're a founder, sales professional, or business owner, it gives you a repeatable system for selling with clarity, credibility, and integrity.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 15,
-  originalPrice: 25,
+  price: 3,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 57,
 
   rating: 4.8,
   ratingCount: "6.7k",

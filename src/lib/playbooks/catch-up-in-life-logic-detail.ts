@@ -9,10 +9,10 @@ export const CATCH_UP_IN_LIFE_LOGIC_DETAIL_DATA: PlaybookDetailData = {
   description: "Feeling behind doesn't mean you're out of time. This playbook breaks down six practical principles for building the capacity to recognise and seize opportunities. Learn how to create financial breathing room, develop valuable skill stacks, build an audience before launching a product, validate demand, and expand your network. With a structured 90-day action plan, practical worksheets, and exercises, you'll turn uncertainty into measurable progress.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 5,
-  originalPrice: 9,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 44,
+  discountPercentage: 60,
 
   rating: 4.7,
   ratingCount: "4.0k",

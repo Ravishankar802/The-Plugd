@@ -256,8 +256,10 @@ export default function PlaybookDetailView({
     );
   };
 
-  const discountPercentage = playbook.originalPrice > playbook.price
-    ? Math.round(((playbook.originalPrice - playbook.price) / playbook.originalPrice) * 100)
+  const effectivePrice = catalogEntry?.price ?? playbook.price ?? 3;
+  const effectiveOriginalPrice = catalogEntry?.originalPrice ?? playbook.originalPrice ?? 9;
+  const discountPercentage = effectiveOriginalPrice > effectivePrice
+    ? Math.round(((effectiveOriginalPrice - effectivePrice) / effectiveOriginalPrice) * 100)
     : 0;
 
   return (
@@ -334,15 +336,15 @@ export default function PlaybookDetailView({
               </div>
 
               {/* Pricing Section */}
-              <div className="pt-2 border-t border-[#f0eee6] space-y-2">
+              <div className="pt-2 space-y-2">
                 <div className="flex items-baseline justify-between">
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl font-bold text-[#1c1917]">
-                      ${playbook.price.toFixed(2)}
+                      ${effectivePrice.toFixed(2)}
                     </span>
-                    {playbook.originalPrice > playbook.price && (
+                    {effectiveOriginalPrice > effectivePrice && (
                       <span className="text-sm text-[#a8a29e] line-through">
-                        ${playbook.originalPrice.toFixed(2)}
+                        ${effectiveOriginalPrice.toFixed(2)}
                       </span>
                     )}
                   </div>
@@ -351,11 +353,6 @@ export default function PlaybookDetailView({
                       {discountPercentage}% off
                     </span>
                   )}
-                </div>
-
-                <div className="text-[11.5px] text-[#78716c] flex items-center gap-1.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
-                  <span>Digital Playbook Edition · Instant Access</span>
                 </div>
               </div>
 

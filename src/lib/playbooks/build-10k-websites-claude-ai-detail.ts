@@ -15,10 +15,10 @@ export const BUILD_10K_WEBSITES_CLAUDE_DETAIL_DATA: PlaybookDetailData = {
 ✔️ Deploy live at your own custom domain on Hostinger`,
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 3,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 57,
 
   rating: 4.9,
   ratingCount: "7.9k",

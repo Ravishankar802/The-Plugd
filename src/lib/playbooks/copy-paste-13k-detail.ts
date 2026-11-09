@@ -9,10 +9,10 @@ export const COPY_PASTE_13K_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover how to become a shadow operator: the behind-the-scenes partner who helps micro-creators monetize their expertise without having to build an audience of your own. Learn how to find creators with real audience demand, identify profitable product opportunities, and use AI to turn their knowledge into valuable digital offers. From personalised outreach and partnership agreements to revenue sharing, product creation, launch strategies, and payment systems, this playbook breaks down the entire business model. Includes ready-to-use AI prompts, outreach scripts, practical templates, scorecards, and a 30-day execution plan to help you land your first partnership.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.7,
   ratingCount: "5.1k",

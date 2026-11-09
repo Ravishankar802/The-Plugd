@@ -9,10 +9,10 @@ export const COPY_PASTE_FIRST_5K_DETAIL_DATA: PlaybookDetailData = {
   description: "The 30-Day Newsletter Business Playbook is a practical, step-by-step guide to building an audience and turning your knowledge into a revenue-generating business. Learn how to choose a profitable niche, create a compelling newsletter, attract subscribers, and develop digital products people actually want to buy. Discover proven strategies for writing engaging emails, growing your audience, pricing your offers, and converting readers into customers. With a structured 30-day action plan, practical frameworks, and actionable checklists, this playbook helps you move from an idea to a validated newsletter business.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 7,
-  originalPrice: 12,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 42,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "5.8k",

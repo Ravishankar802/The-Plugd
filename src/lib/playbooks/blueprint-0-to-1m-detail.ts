@@ -9,10 +9,10 @@ export const BLUEPRINT_0_TO_1M_DETAIL_DATA: PlaybookDetailData = {
   description: "This playbook reveals why investing in your earning power can be your most valuable move when starting with little capital. Learn how to identify skills the market actually pays for, turn those skills into income, and combine complementary abilities to multiply your value. Discover the progression from skilled individual to business operator, with a practical framework for knowing when to focus on growth and when to protect your wealth. Includes a 90-day action plan, skill opportunity scorecards, investment checklists, and practical worksheets.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 3,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 57,
 
   rating: 4.7,
   ratingCount: "7.1k",

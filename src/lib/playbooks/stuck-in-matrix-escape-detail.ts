@@ -9,10 +9,10 @@ export const STUCK_IN_MATRIX_ESCAPE_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover how family, education, culture, media, social platforms, and AI shape the way you think, behave, and make decisions.\n\nLearn to question inherited beliefs, create your own vision, and build an education system around the things you genuinely want to achieve.\n\nDevelop high agency, tackle difficult challenges, and turn your knowledge into useful projects that create real value.\n\nIncludes practical exercises, worksheets, daily routines, and a complete 90-day escape plan to help you become more independent, capable, and self-directed.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 3,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 57,
 
   rating: 4.9,
   ratingCount: "5.2k",

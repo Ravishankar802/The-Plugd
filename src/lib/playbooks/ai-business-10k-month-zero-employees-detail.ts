@@ -9,10 +9,10 @@ export const AI_BUSINESS_10K_ZERO_EMPLOYEES_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover how to build a lean traffic-partner business without hiring employees or managing creators' entire operations. This playbook walks you through niche research, finding clients, performance-based partnerships, campaign tracking, AI-powered workflows, and the nine-system Traffic OS. It also includes a 90-day launch roadmap, practical templates, and guidance on consent, privacy, platform compliance, and transparent revenue attribution.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.8k",

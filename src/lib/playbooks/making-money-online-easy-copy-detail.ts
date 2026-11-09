@@ -9,10 +9,10 @@ export const MAKING_MONEY_ONLINE_EASY_DETAIL_DATA: PlaybookDetailData = {
   description: "The Online Wealth Wheel Playbook is your step-by-step guide to going from zero online income to building a scalable side hustle that works for you. Discover how to choose the right business model, find your ideal customers, validate products, create content that converts, and build a brand people trust. Learn to avoid the mistakes that keep beginners stuck, turn consistent effort into real sales, and reinvest your profits into smarter tools, marketing, and growth. Whether you're starting from scratch or trying to break through your first income milestone, this playbook gives you the strategy, structure, and practical tools to make your next move count.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 7,
-  originalPrice: 12,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 42,
+  discountPercentage: 60,
 
   rating: 4.7,
   ratingCount: "4.3k",

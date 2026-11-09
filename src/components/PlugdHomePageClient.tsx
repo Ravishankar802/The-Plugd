@@ -587,15 +587,6 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
                 In Production
               </span>
             </div>
-          ) : IS_REVIEW_PHASE_FREE_ACCESS ? (
-            <div className="flex items-center gap-1.5">
-              <span className="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-200">
-                Free
-              </span>
-              <span className="text-[11px] text-[#78716c] font-medium hidden xs:inline">
-                Review Access
-              </span>
-            </div>
           ) : (
             <div className="flex items-baseline gap-1.5">
               <span className="text-base sm:text-lg font-bold text-[#1c1917]">

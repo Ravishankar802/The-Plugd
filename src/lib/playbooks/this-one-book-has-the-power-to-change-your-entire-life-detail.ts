@@ -9,10 +9,10 @@ export const PSYCHO_CYBERNETICS_ONE_BOOK_DETAIL_DATA: PlaybookDetailData = {
   description: "Inspired by Maxwell Maltz’s Psycho-Cybernetics, this playbook explores how your beliefs about yourself can influence your decisions, confidence, and behaviour. Work through five core principles with practical exercises, visualization techniques, goal cards, self-reflection worksheets, and a structured 30-day plan designed to turn a healthier self-image into consistent, measurable action.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.9k",

@@ -9,10 +9,10 @@ export const LOCKED_IN_ROOM_350K_DETAIL_DATA: PlaybookDetailData = {
   description: "Discover the journey from launching a simple MVP to building a thriving subscription-based software company. Learn how to validate demand, improve product quality, experiment with pricing, build recurring revenue, attract customers organically, and create a team that can operate without your constant involvement.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 15,
-  originalPrice: 25,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "6.6k",

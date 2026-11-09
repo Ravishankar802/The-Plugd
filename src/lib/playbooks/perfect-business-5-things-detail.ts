@@ -9,10 +9,10 @@ export const PERFECT_BUSINESS_5_THINGS_DETAIL_DATA: PlaybookDetailData = {
   description: "AI isn't about replacing your entire business or collecting dozens of fancy tools. It's about making the work you already do better, faster, cheaper, and less risky. This playbook shows you how to identify automation opportunities, build reliable AI workflows, and apply AI across marketing, sales, customer support, and operations. Learn to train AI with your business knowledge, introduce human oversight, measure real results, and avoid costly implementation mistakes. Includes practical prompts, workflow templates, evaluation frameworks, and a step-by-step 30-day implementation plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 15,
-  originalPrice: 25,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "5.3k",

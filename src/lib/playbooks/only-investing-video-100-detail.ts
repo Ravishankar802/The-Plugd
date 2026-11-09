@@ -9,10 +9,10 @@ export const ONLY_INVESTING_VIDEO_100_DETAIL_DATA: PlaybookDetailData = {
   description: "Ready to make your money work smarter? This beginner-friendly playbook breaks down five popular investment options—stocks, REITs, cryptocurrency, gold, and index funds—into simple, practical lessons you can actually understand and use.\n\nExplore how each investment works, compare risks and potential returns, understand passive income and diversification, and learn how to put even a small amount of capital to work.\n\nPacked with real-world examples, historical $100 investment comparisons, practical checklists, and step-by-step worksheets, this guide helps you move beyond financial guesswork and start building a stronger foundation for your investing journey.\n\nNo complicated jargon. No get-rich-quick promises. Just the knowledge, tools, and confidence to start investing smarter.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 5,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.3,
   ratingCount: "2.4k",

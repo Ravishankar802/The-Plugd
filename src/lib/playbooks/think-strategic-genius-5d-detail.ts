@@ -9,10 +9,10 @@ export const THINK_STRATEGIC_GENIUS_DETAIL_DATA: PlaybookDetailData = {
   description: "Most people approach complex problems through a single perspective. This playbook teaches you how to expand your thinking across five dimensions: lines, levels, altitude, four perspectives, and historical thinking.\n\nLearn the difference between collecting knowledge and developing genuine understanding, recognise your mental blind spots, and connect ideas across different domains.\n\nExplore practical frameworks for analysing business, relationships, careers, personal development, and complex real-world problems.\n\nIncludes worked examples, strategic thinking worksheets, reusable templates, and a 30-day practice plan to sharpen your perspective and decision-making.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 7,
-  originalPrice: 12,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 42,
+  discountPercentage: 60,
 
   rating: 4.6,
   ratingCount: "4.9k",

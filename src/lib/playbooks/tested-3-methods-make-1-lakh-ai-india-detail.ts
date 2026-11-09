@@ -10,9 +10,9 @@ export const TESTED_3_METHODS_MAKE_1_LAKH_AI_INDIA_DETAIL_DATA: PlaybookDetailDa
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 57,
 
   rating: 4.9,
   ratingCount: "4.8k",

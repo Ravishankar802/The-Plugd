@@ -9,10 +9,10 @@ export const START_BUSINESS_FROM_SCRATCH_DETAIL_DATA: PlaybookDetailData = {
   description: "You don't need a huge audience, a perfect business idea, or a pile of startup capital to get started. Learn how to find your first customers, offer a low-risk pilot, build credibility through genuine results, and turn that proof into a paid service. From the Rule of 300 and warm outreach to recurring revenue, niche selection, and delivery systems, this playbook walks through the process of building a business one customer at a time.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.9k",

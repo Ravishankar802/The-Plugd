@@ -9,10 +9,10 @@ export const AI_AGENTS_2027_DETAIL_DATA: PlaybookDetailData = {
   description: "Move beyond asking AI questions and start delegating meaningful work to it. This playbook shows you how to configure agents with business knowledge, connect them to the tools they need, create repeatable procedures, and build workflows that produce real deliverables. It also covers security, memory, team adoption, and a practical 90-day roadmap for making AI part of your everyday operations.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 5,
+  originalPrice: 12.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 62,
 
   rating: 4.9,
   ratingCount: "4.9k",

@@ -9,10 +9,10 @@ export const BORING_MILLIONAIRES_2026_DETAIL_DATA: PlaybookDetailData = {
   description: "Forget complicated business ideas and endless preparation. Learn how to identify the right market, choose opportunities that match your current skills, implement faster, and build a minimum viable business without massive capital. Includes practical exercises, real-world business examples, and a step-by-step 90-day roadmap to help you get started.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "5.9k",

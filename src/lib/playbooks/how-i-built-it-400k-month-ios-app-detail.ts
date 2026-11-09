@@ -9,10 +9,10 @@ export const HOW_I_BUILT_400K_IOS_DETAIL_DATA: PlaybookDetailData = {
   description: "Go behind the growth story of Brain Rot, the screen-time app whose founder reported reaching approximately $400K in monthly revenue. Learn how to identify problems worth solving, build a distinctive mobile product, prepare for launch, understand power users, improve retention, and scale acquisition channels. Includes a 90-day roadmap, recommended tools, analytics frameworks, experiment templates, and launch checklists.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 4,
+  originalPrice: 9.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "4.9k",

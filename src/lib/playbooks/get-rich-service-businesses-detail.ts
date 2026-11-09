@@ -9,10 +9,10 @@ export const GET_RICH_SERVICE_BUSINESSES_DETAIL_DATA: PlaybookDetailData = {
   description: "AI has made content production easier, but genuine credibility is becoming more valuable than ever. This playbook shows you how to build trust through real evidence, live demonstrations, customer experiences, and documented expertise. Learn to turn everyday business activities, conversations, and customer interactions into a scalable content engine using AI-assisted workflows. Includes practical prompts, capture systems, demonstration frameworks, templates, and a 30-day implementation plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 9,
-  originalPrice: 15,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "4.9k",

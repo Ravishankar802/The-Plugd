@@ -9,10 +9,10 @@ export const FIRST_1M_IS_SIMPLE_DETAIL_DATA: PlaybookDetailData = {
   description: "This playbook breaks down how to overcome business inertia, eliminate distractions, and develop the focus needed to build something meaningful. Learn to set realistic financial milestones, create disciplined work routines, and turn concentrated effort into real business progress. With practical frameworks for monk mode, time management, customer acquisition, and sustainable performance, you'll have a clear system to move from planning to execution. Includes a 30-day action plan, a 90-day momentum roadmap, and six practical worksheets to keep you accountable.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 15,
-  originalPrice: 25,
+  price: 3,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 40,
+  discountPercentage: 57,
 
   rating: 4.8,
   ratingCount: "5.3k",

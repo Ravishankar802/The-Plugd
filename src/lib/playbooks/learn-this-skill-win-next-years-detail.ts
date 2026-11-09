@@ -9,10 +9,10 @@ export const LEARN_THIS_SKILL_DETAIL_DATA: PlaybookDetailData = {
   description: "Human nature is one of the most powerful skills you can develop, and this playbook shows you how to put it into practice. Learn the three psychological tensions—survival, identity, and progress—and the five persuasion levers that make communication more effective. Apply these frameworks to marketing, sales, content creation, business, careers, and everyday relationships. Includes practical exercises, reusable templates, checklists, and a 30-day plan to sharpen your understanding of people.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 19,
-  originalPrice: 30,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 37,
+  discountPercentage: 60,
 
   rating: 4.7,
   ratingCount: "6.2k",
