@@ -8,8 +8,8 @@ import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Log in · The Dating Playbook",
-  description: "Sign in to access your lifetime copy of The Dating Playbook.",
+  title: "Sign in · Plugd Playbooks",
+  description: "Sign in to access your lifetime copy of your Playbooks.",
 };
 
 interface LoginPageProps {

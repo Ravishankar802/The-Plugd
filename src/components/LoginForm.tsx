@@ -165,6 +165,14 @@ export default function LoginForm({ initialError }: LoginFormProps) {
         return;
       }
 
+      try {
+        localStorage.setItem("plugd_signed_in", "true");
+        localStorage.setItem("plugd_user_email", email.trim().toLowerCase());
+        const namePart = email.trim().split("@")[0] || "Reader";
+        localStorage.setItem("plugd_user_name", namePart);
+        window.dispatchEvent(new Event("plugd-auth-change"));
+      } catch {}
+
       if (data.redirectUrl) {
         window.location.href = data.redirectUrl;
       } else {

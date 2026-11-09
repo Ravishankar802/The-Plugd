@@ -25,6 +25,7 @@ import PlaybookFeedCard from "@/components/PlaybookFeedCard";
 import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 import type { PlaybookDetailData } from "@/lib/dating-playbook-detail";
 import { ALL_PLAYBOOK_SUMMARIES } from "@/lib/playbooks-catalog";
+import { isFollowingAuthor as isFollowingAuthorStore, followAuthor, unfollowAuthor } from "@/lib/following-store";
 import {
   getPlaybookPageCount,
   getChapterPageRange,
@@ -54,6 +55,7 @@ export default function PlaybookDetailView({
   const [userRating, setUserRating] = useState<number | null>(null);
   const [hoverRating, setHoverRating] = useState<number | null>(null);
   const [isFollowingAuthor, setIsFollowingAuthor] = useState(false);
+  const [showUnfollowModal, setShowUnfollowModal] = useState(false);
   const [reviewSearchQuery, setReviewSearchQuery] = useState("");
   const [isWritingReview, setIsWritingReview] = useState(false);
   const [newReviewText, setNewReviewText] = useState("");
@@ -98,20 +100,22 @@ export default function PlaybookDetailView({
     }
   };
 
-  // Book page count mapped by price tier ($3 -> 100-150, $5 -> 150-200, etc.)
-  const pageCount = useMemo(
-    () => getPlaybookPageCount(playbook.price, playbook.slug),
-    [playbook.price, playbook.slug]
-  );
-
-  // Social reading statistics
-  const readingStats = useMemo(() => getReadingStats(playbook.slug), [playbook.slug]);
-
   // Author profile
   const author = useMemo(
     () => getAuthorProfile(playbook.categoryName, playbook.slug),
     [playbook.categoryName, playbook.slug]
   );
+
+  useEffect(() => {
+    setIsFollowingAuthor(isFollowingAuthorStore(author.name));
+    const handleFollowingChange = () => {
+      setIsFollowingAuthor(isFollowingAuthorStore(author.name));
+    };
+    window.addEventListener("plugd-following-change", handleFollowingChange);
+    return () => {
+      window.removeEventListener("plugd-following-change", handleFollowingChange);
+    };
+  }, [author.name]);
 
   // Catalog summary lookup for consistent catalog metadata (rating, count, published date)
   const catalogEntry = useMemo(() => {
@@ -510,19 +514,49 @@ export default function PlaybookDetailView({
                 Author
               </h2>
 
-              <div className="flex items-center gap-3.5 sm:gap-4">
-                <div
-                  className="h-12 w-12 sm:h-13 sm:w-13 rounded-full text-white flex items-center justify-center font-bold text-lg sm:text-xl uppercase shrink-0 shadow-2xs"
-                  style={{ backgroundColor: getAvatarBgColor(author.name) }}
-                >
-                  {author.name.charAt(0)}
+              <div className="flex items-center justify-between gap-3 sm:gap-4 flex-wrap">
+                <div className="flex items-center gap-3.5 sm:gap-4">
+                  <div
+                    className="h-12 w-12 sm:h-13 sm:w-13 rounded-full text-white flex items-center justify-center font-bold text-lg sm:text-xl uppercase shrink-0 shadow-2xs"
+                    style={{ backgroundColor: getAvatarBgColor(author.name) }}
+                  >
+                    {author.name.charAt(0)}
+                  </div>
+                  <h3 className="font-bold text-lg sm:text-xl text-[#1c1917] flex items-center gap-2">
+                    {author.name}
+                    <span className="inline-flex items-center justify-center h-4 w-4 rounded-full bg-stone-700 text-white text-[10px]">
+                      ✓
+                    </span>
+                  </h3>
                 </div>
-                <h3 className="font-bold text-lg sm:text-xl text-[#1c1917] flex items-center gap-2">
-                  {author.name}
-                  <span className="inline-flex items-center justify-center h-4 w-4 rounded-full bg-stone-700 text-white text-[10px]">
-                    ✓
-                  </span>
-                </h3>
+
+                {/* Follow / Following Button */}
+                <div>
+                  {isFollowingAuthor ? (
+                    <button
+                      type="button"
+                      onClick={() => setShowUnfollowModal(true)}
+                      className="px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-[13px] font-semibold bg-[#eeebe2] hover:bg-[#e4e0d5] text-[#1c1917] border border-[#d6d3d1] transition-all cursor-pointer shadow-2xs"
+                    >
+                      Following
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        followAuthor({
+                          name: author.name,
+                          avatarBg: getAvatarBgColor(author.name),
+                          slug: playbook.slug,
+                        });
+                        setIsFollowingAuthor(true);
+                      }}
+                      className="px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-[13px] font-semibold bg-[#1c1917] hover:bg-[#2563eb] text-white transition-all cursor-pointer shadow-xs"
+                    >
+                      Follow
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -742,6 +776,47 @@ export default function PlaybookDetailView({
 
         </div>
       </main>
+      {/* Unfollow Confirmation Modal */}
+      {showUnfollowModal && (
+        <div
+          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-2xs flex items-center justify-center p-4"
+          onClick={() => setShowUnfollowModal(false)}
+        >
+          <div
+            className="w-full max-w-sm rounded-2xl bg-white p-5 sm:p-6 border border-[#dcd8d0] shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="space-y-1.5">
+              <h3 className="text-base font-bold text-[#1c1917]">
+                Unfollow {author.name}?
+              </h3>
+              <p className="text-xs sm:text-[13px] text-[#57534e] leading-relaxed">
+                Are you sure you want to unfollow <strong>{author.name}</strong>? You will no longer see updates from this author in your Following list.
+              </p>
+            </div>
+            <div className="flex items-center justify-end gap-2.5 pt-2">
+              <button
+                type="button"
+                onClick={() => setShowUnfollowModal(false)}
+                className="px-4 py-2 rounded-xl border border-[#d6d3d1] text-xs font-semibold text-[#57534e] hover:bg-black/5 transition-colors cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  unfollowAuthor(author.name);
+                  setIsFollowingAuthor(false);
+                  setShowUnfollowModal(false);
+                }}
+                className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-semibold transition-colors shadow-xs cursor-pointer"
+              >
+                Unfollow
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
