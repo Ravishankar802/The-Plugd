@@ -10495,6 +10495,22 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
 };
 
 export const PLAYBOOK_PUBLISHED_DATES: Record<string, string> = {
+  "the-courage-to-be-disliked-summary-my-honest-review": "2026-10-23",
+  "ai-businesses-104": "2026-10-23",
+  "i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days": "2026-10-26",
+  "ai-businesses-105": "2026-10-26",
+  "if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown": "2026-11-03",
+  "ai-businesses-106": "2026-11-03",
+  "how-to-make-more-money-than-you-deserve-my-2027-framework": "2026-11-09",
+  "ai-businesses-107": "2026-11-09",
+  "how-to-build-sell-ai-digital-products-2027-full-guide": "2026-11-06",
+  "ai-businesses-108": "2026-11-06",
+  "3-best-ai-businesses-to-start-before-2027-1000-day": "2026-11-05",
+  "ai-businesses-109": "2026-11-05",
+  "i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy": "2026-10-30",
+  "ai-businesses-110": "2026-10-30",
+  "how-id-start-a-20k-month-ai-agency-with-claude-in-30-days": "2026-11-10",
+  "ai-businesses-111": "2026-11-10",
   "the-1-000-hour-1-person-ai-business": "2026-10-02",
   "ai-businesses-103": "2026-10-02",
   "top-10-claude-ai-side-hustles-that-can-pay-a-full-time-income-ranked": "2026-09-15",

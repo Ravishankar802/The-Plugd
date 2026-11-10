@@ -35,6 +35,7 @@ export interface PlaybookDetailData {
   accentColor?: string;
   rating: number;
   ratingCount: string | number;
+  publishedAt?: string;
   studentsCount: string | number;
   instructorName: string;
   instructorTitle: string;

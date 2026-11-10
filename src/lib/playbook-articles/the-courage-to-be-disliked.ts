@@ -7,7 +7,7 @@ export const COURAGE_TO_BE_DISLIKED_ARTICLE: PlaybookArticle = {
   categoryName: "AI",
   categorySlug: "ai-businesses",
   thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352588/The_courage_to_be_disliked.png",
-  publishedDate: "November 2026",
+  publishedDate: "October 2026",
   authorName: "Divya Tiwari",
   authorTitle: "Mindset Strategist & Operational Thinker",
   introParagraphs: [

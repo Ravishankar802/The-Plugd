@@ -7,7 +7,7 @@ export const I_TRIED_23_EASY_SIDE_HUSTLES_ARTICLE: PlaybookArticle = {
   categoryName: "AI",
   categorySlug: "ai-businesses",
   thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352586/I_tried_23_side_hustles.png",
-  publishedDate: "November 2026",
+  publishedDate: "October 2026",
   authorName: "Alice Chen",
   authorTitle: "Commercial Strategist & Income Systems Architect",
   introParagraphs: [

@@ -2059,7 +2059,7 @@ export const HOW_ID_START_20K_MONTH_AI_AGENCY_COURSE: Course = {
   originalPrice: 9,
   currency: "USD",
   rating: 4.9,
-  ratingCount: "4.8k",
+  ratingCount: "0.1k",
   hoursOfMaterial: "9.8 hours",
   modulesCount: 7,
   lessonsCount: 28,

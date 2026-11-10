@@ -2059,7 +2059,7 @@ export const HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_COURSE: Course = {
   originalPrice: 9,
   currency: "USD",
   rating: 4.9,
-  ratingCount: "4.8k",
+  ratingCount: "0.1k",
   hoursOfMaterial: "9.8 hours",
   modulesCount: 7,
   lessonsCount: 28,
