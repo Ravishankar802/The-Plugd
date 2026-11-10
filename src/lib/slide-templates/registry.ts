@@ -2365,5 +2365,35 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-110"],
     assignedPlaybookSlugs: ["i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy"],
   },
+  "claude-agency-deal-terminal": {
+    templateId: "claude-agency-deal-terminal",
+    name: "Claude Agency Deal Terminal & Implementation Engine",
+    categoryTheme:
+      "AI Implementation Agencies, Deal Origination, Claude Prompting, Developer Arbitrage & B2B Sales",
+    description:
+      "A high-precision B2B agency operations console designed for deal originators and AI implementation founders. Features deep midnight obsidian canvas backgrounds (#0b0f19), cobalt slate card stages (#151e2e), warm copper-terracotta accents (#f97316), crisp cyan diagnostic highlights (#38bdf8), and structured scope-of-work matrices.",
+    colorPalette: {
+      canvasBg: "#0b0f19",
+      stageBg: "#151e2e",
+      border: "#1e293b",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#f97316",
+      accentSecondary: "#38bdf8",
+      highlightPillBg: "#431407",
+      highlightPillText: "#fed7aa",
+    },
+    visualMotifs: [
+      "The Deal-Originator Triad (Client Problem -> Originator Scope -> Developer Implementation)",
+      "The 3-Niche Portfolio Matrix (Background [A], High-Ticket [B], Recurring [C])",
+      "The Two-Call Sales Close Architecture (Call 1 Audit -> Scoped Prototyping -> Call 2 Options A & B)",
+      "The 30-Day Agency Launch Gantt Pipeline",
+    ],
+    layoutArchitecture:
+      "High-density executive sales console featuring dual-column discovery matrices, staged proposal deconstruction frameworks, and technical governance SOP cards",
+    assignedPlaybookIds: ["ai-businesses-111"],
+    assignedPlaybookSlugs: ["how-id-start-a-20k-month-ai-agency-with-claude-in-30-days"],
+  },
 };
+
 

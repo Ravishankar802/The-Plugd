@@ -160,6 +160,18 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "how-id-start-a-20k-month-ai-agency-with-claude-in-30-days" ||
+    slug === "ai-businesses-111"
+  ) {
+    return {
+      name: "Nathan Cole",
+      avatar: "",
+      booksCount: 2,
+      followersCount: "10.4k followers",
+      bio: "Nathan Cole is an AI agency founder, commercial deal architect, and enterprise systems strategist. He specializes in client origination models, developer arbitrage frameworks, and high-margin AI automation workflows for service businesses.",
+    };
+  }
+  if (
     slug === "i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy" ||
     slug === "ai-businesses-110"
   ) {
@@ -1384,6 +1396,90 @@ if (
  * High quality, realistic community reviews
  */
 export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = {
+  "how-id-start-a-20k-month-ai-agency-with-claude-in-30-days": [
+    {
+      "id": "rev-1",
+      "name": "Adrian",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "This is one of the clearest explanations I've seen of how to start an AI agency without being the person building everything. The deal-originator model, niche selection, and developer partnership approach made the business feel much more understandable.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Valentina",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The sales process is what stood out to me. Instead of randomly pitching AI services, you learn how to identify an actual business problem, run discovery calls, prepare a tailored demo, and present a solution that makes sense.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Omar",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Really useful frameworks throughout. The Claude prompts alone save a lot of time, especially for researching niches, preparing prospect audits, and structuring offers. I also appreciated the sections on delivery costs and client expectations.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Brooke",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "What I liked most is that it covers what happens after you get the client. Scoping, developer coordination, deposits, delivery, support, and recurring revenue are all addressed. It feels much more complete than a typical AI agency guide.",
+      "likes": 84
+    }
+  ],
+  "ai-businesses-111": [
+    {
+      "id": "rev-1",
+      "name": "Adrian",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "This is one of the clearest explanations I've seen of how to start an AI agency without being the person building everything. The deal-originator model, niche selection, and developer partnership approach made the business feel much more understandable.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Valentina",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The sales process is what stood out to me. Instead of randomly pitching AI services, you learn how to identify an actual business problem, run discovery calls, prepare a tailored demo, and present a solution that makes sense.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Omar",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Really useful frameworks throughout. The Claude prompts alone save a lot of time, especially for researching niches, preparing prospect audits, and structuring offers. I also appreciated the sections on delivery costs and client expectations.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Brooke",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "What I liked most is that it covers what happens after you get the client. Scoping, developer coordination, deposits, delivery, support, and recurring revenue are all addressed. It feels much more complete than a typical AI agency guide.",
+      "likes": 84
+    }
+  ],
   "i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy": [
     {
       "id": "rev-1",

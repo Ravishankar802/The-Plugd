@@ -1,3 +1,4 @@
+import { HOW_ID_START_20K_MONTH_AI_AGENCY_ARTICLE } from "./how-id-start-20k-month-ai-agency";
 import { I_TRIED_23_EASY_SIDE_HUSTLES_ARTICLE } from "./i-tried-23-easy-side-hustles";
 import { THREE_BEST_AI_BUSINESSES_BEFORE_2027_ARTICLE } from "./3-best-ai-businesses-to-start-before-2027";
 import { HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_ARTICLE } from "./how-to-build-sell-ai-digital-products";
@@ -335,6 +336,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-109": THREE_BEST_AI_BUSINESSES_BEFORE_2027_ARTICLE,
   "i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy": I_TRIED_23_EASY_SIDE_HUSTLES_ARTICLE,
   "ai-businesses-110": I_TRIED_23_EASY_SIDE_HUSTLES_ARTICLE,
+  "how-id-start-a-20k-month-ai-agency-with-claude-in-30-days": HOW_ID_START_20K_MONTH_AI_AGENCY_ARTICLE,
+  "ai-businesses-111": HOW_ID_START_20K_MONTH_AI_AGENCY_ARTICLE,
 
 
 };

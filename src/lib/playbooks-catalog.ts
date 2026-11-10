@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-111",
+      "slug": "how-id-start-a-20k-month-ai-agency-with-claude-in-30-days",
+      "title": "How I'd Start a $20K/Month AI Agency With Claude in 30 Days",
+      "headline": "Build an AI agency that sells business results, not just AI tools. Find profitable niches, land high-value clients, partner with developers, and turn real business problems into a $20K/month agency opportunity — with a focused 30-day launch roadmap.",
+      "description": "**Build an AI agency that sells business results, not just AI tools. Find profitable niches, land high-value clients, partner with developers, and turn real business problems into a $20K/month agency opportunity — with a focused 30-day launch roadmap.**\n\nLearn how to launch an AI implementation agency using Claude for market research, niche selection, offer creation, prospecting, audits, and sales preparation. From finding business owners with expensive operational problems to closing projects, coordinating developers, delivering AI systems, and building recurring revenue, this playbook breaks down the entire agency-building process.\n\nIncludes Claude prompts, niche scorecards, outreach scripts, discovery call frameworks, proposal structures, pricing models, client delivery checklists, and a practical 30-day execution plan.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "4.8k",
+      "hoursOfMaterial": "9.8 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "",
+      "href": "/how-id-start-a-20k-month-ai-agency-with-claude-in-30-days"
+  },
+  {
       "id": "ai-businesses-110",
       "slug": "i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy",
       "title": "I tried 23 easy SIDE HUSTLES that actually WORKED (copy my $10,000/month strategy)",

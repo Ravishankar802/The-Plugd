@@ -5,6 +5,17 @@ const path = require("node:path");
 
 const POPULATED_PLAYBOOKS = [
   {
+    id: "ai-businesses-111",
+    slug: "how-id-start-a-20k-month-ai-agency-with-claude-in-30-days",
+    title: "How I'd Start a $20K/Month AI Agency With Claude in 30 Days",
+    dataFile: "src/lib/playbooks/how-id-start-20k-month-ai-agency-data.ts",
+    detailFile: "src/lib/playbooks/how-id-start-20k-month-ai-agency-detail.ts",
+    routeDir: "src/app/how-id-start-a-20k-month-ai-agency-with-claude-in-30-days",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-110",
     slug: "i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy",
     title: "I tried 23 easy SIDE HUSTLES that actually WORKED (copy my $10,000/month strategy)",
@@ -1256,8 +1267,9 @@ test("4. Course registration in COURSES in playbooks-data.ts", () => {
     const isDigital108 = pb.id === "ai-businesses-108";
     const isBusinesses109 = pb.id === "ai-businesses-109";
     const isHustles110 = pb.id === "ai-businesses-110";
-    const slugRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_SLUG") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_SLUG") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_SLUG") : (isDeserve107 ? dataText.includes("HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_SLUG") : (isDigital108 ? dataText.includes("HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_SLUG") : (isBusinesses109 ? dataText.includes("THREE_BEST_AI_BUSINESSES_BEFORE_2027_SLUG") : (isHustles110 ? dataText.includes("I_TRIED_23_EASY_SIDE_HUSTLES_SLUG") : (dataText.includes(`"${pb.slug}"`) || dataText.includes(pb.slug))))))));
-    const idRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_ID") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_ID") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_ID") : (isDeserve107 ? dataText.includes("HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_ID") : (isDigital108 ? dataText.includes("HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_ID") : (isBusinesses109 ? dataText.includes("THREE_BEST_AI_BUSINESSES_BEFORE_2027_ID") : (isHustles110 ? dataText.includes("I_TRIED_23_EASY_SIDE_HUSTLES_ID") : (dataText.includes(`"${pb.id}"`) || dataText.includes(pb.id))))))));
+    const isAgency111 = pb.id === "ai-businesses-111";
+    const slugRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_SLUG") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_SLUG") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_SLUG") : (isDeserve107 ? dataText.includes("HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_SLUG") : (isDigital108 ? dataText.includes("HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_SLUG") : (isBusinesses109 ? dataText.includes("THREE_BEST_AI_BUSINESSES_BEFORE_2027_SLUG") : (isHustles110 ? dataText.includes("I_TRIED_23_EASY_SIDE_HUSTLES_SLUG") : (isAgency111 ? dataText.includes("HOW_ID_START_20K_MONTH_AI_AGENCY_SLUG") : (dataText.includes(`"${pb.slug}"`) || dataText.includes(pb.slug)))))))));
+    const idRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_ID") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_ID") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_ID") : (isDeserve107 ? dataText.includes("HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_ID") : (isDigital108 ? dataText.includes("HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_ID") : (isBusinesses109 ? dataText.includes("THREE_BEST_AI_BUSINESSES_BEFORE_2027_ID") : (isHustles110 ? dataText.includes("I_TRIED_23_EASY_SIDE_HUSTLES_ID") : (isAgency111 ? dataText.includes("HOW_ID_START_20K_MONTH_AI_AGENCY_ID") : (dataText.includes(`"${pb.id}"`) || dataText.includes(pb.id)))))))));
     assert.ok(slugRegistered, `COURSES must register slug: ${pb.slug}`);
     assert.ok(idRegistered, `COURSES must register id: ${pb.id}`);
   }
