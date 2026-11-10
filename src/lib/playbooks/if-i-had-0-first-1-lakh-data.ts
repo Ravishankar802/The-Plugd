@@ -2048,7 +2048,7 @@ export const IF_I_HAD_0_FIRST_1_LAKH_COURSE: Course = {
   "slug": IF_I_HAD_0_FIRST_1_LAKH_SLUG,
   "categorySlug": "ai-businesses",
   "categoryName": "AI",
-  "title": "if i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown",
+  "title": "If i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown",
   "shortTitle": "Make First ₹1 Lakh with ₹0",
   "audience": "Students, Solopreneurs, Freelancers & Independent Builders",
   "targetGender": "for-all",

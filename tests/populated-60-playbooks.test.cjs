@@ -62,7 +62,7 @@ const POPULATED_PLAYBOOKS = [
   {
     id: "ai-businesses-106",
     slug: "if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown",
-    title: "if i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown",
+    title: "If i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown",
     dataFile: "src/lib/playbooks/if-i-had-0-first-1-lakh-data.ts",
     detailFile: "src/lib/playbooks/if-i-had-0-first-1-lakh-detail.ts",
     routeDir: "src/app/if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown",

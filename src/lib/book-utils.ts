@@ -220,6 +220,30 @@ export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile 
     };
   }
   if (
+    slug === "if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown" ||
+    slug === "ai-businesses-106"
+  ) {
+    return {
+      name: "Kunal Raj",
+      avatar: "",
+      booksCount: 2,
+      followersCount: "4.1k followers",
+      bio: "Kunal Raj is an entrepreneur and digital strategist focused on lean service acquisition, skill arbitrage, and zero-capital business creation.",
+    };
+  }
+  if (
+    slug === "i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days" ||
+    slug === "ai-businesses-105"
+  ) {
+    return {
+      name: "Andre Simmons",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "1.6k followers",
+      bio: "Andre Simmons is an e-commerce operator, low-ticket digital funnel architect, and paid acquisition strategist specializing in unit economics and product launches.",
+    };
+  }
+  if (
     slug === "the-courage-to-be-disliked-summary-my-honest-review" ||
     slug === "ai-businesses-104" ||
     slug === "the-1-000-hour-1-person-ai-business" ||

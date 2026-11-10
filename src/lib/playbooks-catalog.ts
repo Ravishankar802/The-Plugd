@@ -104,7 +104,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
       "id": "ai-businesses-106",
       "slug": "if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown",
-      "title": "if i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown",
+      "title": "If i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown",
       "headline": "Starting with ₹0? Build a skill people will pay for, land your first client, turn your work into proof, and create a realistic path towards your first ₹1 lakh.",
       "description": "**Starting with ₹0? Build a skill people will pay for, land your first client, turn your work into proof, and create a realistic path towards your first ₹1 lakh.**\n\nDiscover a practical, step-by-step approach to earning your first money without an audience, investment, or existing network. Learn how to choose a high-demand skill, create a compelling service offer, build portfolio samples, find qualified prospects, win your first client, and turn successful projects into recurring income and referrals. Includes outreach scripts, pricing frameworks, worksheets, and a client acquisition roadmap.",
       "categorySlug": "ai-businesses",

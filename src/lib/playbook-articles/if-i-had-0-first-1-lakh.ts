@@ -2,7 +2,7 @@ import { PlaybookArticle } from "./types";
 
 export const IF_I_HAD_0_FIRST_1_LAKH_ARTICLE: PlaybookArticle = {
   slug: "if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown",
-  title: "if i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown",
+  title: "If i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown",
   readingTime: "32 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
@@ -11,7 +11,7 @@ export const IF_I_HAD_0_FIRST_1_LAKH_ARTICLE: PlaybookArticle = {
   authorName: "Kunal Raj",
   authorTitle: "Marketplace Arbitrage Operator & Commerce Strategist",
   introParagraphs: [
-    "if i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown\nA practical playbook for choosing a sellable skill, proving your value, winning your first client, and building cash flow",
+    "If i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown\nA practical playbook for choosing a sellable skill, proving your value, winning your first client, and building cash flow",
     "The starting point: stop trying to build wealth before you have cash flow\nImagine starting with no money, no audience, no team, no employees, no network, and no existing credibility. You have only a laptop, a phone, and an internet connection.",
     "The strategy in this playbook is deliberately unglamorous:\n\nSell a useful result to someone who already has the money and a real reason to pay for it.",
     "Rather than beginning with a startup, trading, a personal brand, or a search for dozens of business ideas, start by finding a problem you can solve. Learn enough to deliver a useful result, create proof that you can do the work, and sell that result to a suitable customer.",
