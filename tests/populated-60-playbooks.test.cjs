@@ -5,6 +5,17 @@ const path = require("node:path");
 
 const POPULATED_PLAYBOOKS = [
   {
+    id: "ai-businesses-107",
+    slug: "how-to-make-more-money-than-you-deserve-my-2027-framework",
+    title: "How To Make More Money Than You Deserve (My 2027 Framework)",
+    dataFile: "src/lib/playbooks/how-to-make-more-money-than-you-deserve-data.ts",
+    detailFile: "src/lib/playbooks/how-to-make-more-money-than-you-deserve-detail.ts",
+    routeDir: "src/app/how-to-make-more-money-than-you-deserve-my-2027-framework",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-106",
     slug: "if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown",
     title: "if i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown",
@@ -1208,8 +1219,9 @@ test("4. Course registration in COURSES in playbooks-data.ts", () => {
     const isCourage = pb.id === "ai-businesses-104";
     const isProduct105 = pb.id === "ai-businesses-105";
     const isLakh106 = pb.id === "ai-businesses-106";
-    const slugRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_SLUG") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_SLUG") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_SLUG") : (dataText.includes(`"${pb.slug}"`) || dataText.includes(pb.slug))));
-    const idRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_ID") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_ID") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_ID") : (dataText.includes(`"${pb.id}"`) || dataText.includes(pb.id))));
+    const isDeserve107 = pb.id === "ai-businesses-107";
+    const slugRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_SLUG") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_SLUG") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_SLUG") : (isDeserve107 ? dataText.includes("HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_SLUG") : (dataText.includes(`"${pb.slug}"`) || dataText.includes(pb.slug)))));
+    const idRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_ID") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_ID") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_ID") : (isDeserve107 ? dataText.includes("HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_ID") : (dataText.includes(`"${pb.id}"`) || dataText.includes(pb.id)))));
     assert.ok(slugRegistered, `COURSES must register slug: ${pb.slug}`);
     assert.ok(idRegistered, `COURSES must register id: ${pb.id}`);
   }

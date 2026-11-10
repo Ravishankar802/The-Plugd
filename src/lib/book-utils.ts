@@ -159,6 +159,18 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "how-to-make-more-money-than-you-deserve-my-2027-framework" ||
+    slug === "ai-businesses-107"
+  ) {
+    return {
+      name: "Martim Neves",
+      avatar: "",
+      booksCount: 3,
+      followersCount: "6.7k followers",
+      bio: "Martim Neves is an entrepreneur, investor, and business architect specializing in enterprise valuation, vehicle selection, and defensible unit economics.",
+    };
+  }
+  if (
     slug === "the-courage-to-be-disliked-summary-my-honest-review" ||
     slug === "ai-businesses-104" ||
     slug === "the-1-000-hour-1-person-ai-business" ||
@@ -1335,6 +1347,90 @@ if (
  * High quality, realistic community reviews
  */
 export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = {
+  "how-to-make-more-money-than-you-deserve-my-2027-framework": [
+    {
+      "id": "rev-1",
+      "name": "Oliver",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "An excellent framework for thinking beyond the usual startup advice. The distinction between building a high-income business and building an actual asset was particularly eye-opening. I've started evaluating opportunities very differently.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Chloe",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "I appreciated how this breaks down business economics without making everything sound like a get-rich-quick scheme. The sections on competitive moats and supply-demand gaps are especially valuable. Definitely worth working through.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Lucas",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "What stood out to me was the idea of choosing the right vehicle before committing years of effort. The scorecards and worksheets make the concepts practical rather than just theoretical. A genuinely useful business resource.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Amelia",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "This made me reconsider several business ideas I had been excited about. I especially liked the discussion around founder dependence, recurring revenue, and what makes a company transferable. Clear, structured, and full of useful questions to ask before taking the leap.",
+      "likes": 84
+    }
+  ],
+  "ai-businesses-107": [
+    {
+      "id": "rev-1",
+      "name": "Oliver",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "An excellent framework for thinking beyond the usual startup advice. The distinction between building a high-income business and building an actual asset was particularly eye-opening. I've started evaluating opportunities very differently.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Chloe",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "I appreciated how this breaks down business economics without making everything sound like a get-rich-quick scheme. The sections on competitive moats and supply-demand gaps are especially valuable. Definitely worth working through.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Lucas",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "What stood out to me was the idea of choosing the right vehicle before committing years of effort. The scorecards and worksheets make the concepts practical rather than just theoretical. A genuinely useful business resource.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Amelia",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "This made me reconsider several business ideas I had been excited about. I especially liked the discussion around founder dependence, recurring revenue, and what makes a company transferable. Clear, structured, and full of useful questions to ask before taking the leap.",
+      "likes": 84
+    }
+  ],
   "i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days": [
     {
       "id": "rev-1",

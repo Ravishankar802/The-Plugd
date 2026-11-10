@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-107",
+      "slug": "how-to-make-more-money-than-you-deserve-my-2027-framework",
+      "title": "How To Make More Money Than You Deserve (My 2027 Framework)",
+      "headline": "Stop working harder on businesses with limited upside. Learn how to spot the business models, market gaps, and competitive advantages that can make your effort worth significantly more.",
+      "description": "**Stop working harder on businesses with limited upside. Learn how to spot the business models, market gaps, and competitive advantages that can make your effort worth significantly more.**\n\nExplore five business categories, from accessible cash-flow opportunities and expert-led businesses to defensible enterprises and overlooked markets with favourable supply-demand economics. Learn how to evaluate business ideas through margins, scalability, recurring demand, competitive moats, and founder independence. Includes practical scorecards, decision-making worksheets, and a 30-day sprint to identify and validate your next business opportunity.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "4.8k",
+      "hoursOfMaterial": "9.8 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "",
+      "href": "/how-to-make-more-money-than-you-deserve-my-2027-framework"
+  },
+  {
       "id": "ai-businesses-106",
       "slug": "if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown",
       "title": "if i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown",

@@ -2249,4 +2249,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-106"],
     assignedPlaybookSlugs: ["if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown"],
   },
+  "asymmetric-vehicle-allocator": {
+    templateId: "asymmetric-vehicle-allocator",
+    name: "Asymmetric Vehicle Allocator & Economic Moat Engine",
+    categoryTheme:
+      "Vehicle Economics, Capital Allocation, Economic Moats, Founder-Independence Ladders & 2027 Vehicle Selection",
+    description:
+      "An architectural private equity terminal and capital allocation console featuring deep carbon obsidian backgrounds (#06070a), brushed platinum dividers (#1a1d27), warm burnished copper accents (#f97316), tactical amber highlights (#fbbf24), emerald margin indicators (#34d399), and structured vehicle decision matrices.",
+    colorPalette: {
+      canvasBg: "#06070a",
+      stageBg: "#0c0e14",
+      border: "#1a1d27",
+      primaryText: "#f3f4f6",
+      secondaryText: "#9ca3af",
+      accent: "#f97316",
+      accentSecondary: "#34d399",
+      highlightPillBg: "#431407",
+      highlightPillText: "#fdba74",
+    },
+    visualMotifs: [
+      "The Multiplier Equation (Business Outcome = Market Economics × Model Architecture × Execution)",
+      "The Operational Drag vs Financial Potential 4-Quadrant Cartesian Plane",
+      "The 3-Tier Business Maturity Ladder (Level 1 Owner-Operated -> Level 2 Systematized -> Level 3 Transferable Enterprise)",
+      "The 12-Factor Quantitative Opportunity Gating Radar",
+    ],
+    layoutArchitecture:
+      "Private equity evaluation studio featuring split 2-axis drag-vs-potential quadrants, multi-tier economic maturity progression bars, and 12-factor quantitative scorecard cards",
+    assignedPlaybookIds: ["ai-businesses-107"],
+    assignedPlaybookSlugs: ["how-to-make-more-money-than-you-deserve-my-2027-framework"],
+  },
 };

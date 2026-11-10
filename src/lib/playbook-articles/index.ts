@@ -1,3 +1,4 @@
+import { HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_ARTICLE } from "./how-to-make-more-money-than-you-deserve";
 import { IF_I_HAD_0_FIRST_1_LAKH_ARTICLE } from "./if-i-had-0-first-1-lakh";
 import { I_TRIED_SELLING_17_DIGITAL_PRODUCT_ARTICLE } from "./tried-selling-17-digital-product";
 import { COURAGE_TO_BE_DISLIKED_ARTICLE } from "./the-courage-to-be-disliked";
@@ -323,6 +324,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-105": I_TRIED_SELLING_17_DIGITAL_PRODUCT_ARTICLE,
   "if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown": IF_I_HAD_0_FIRST_1_LAKH_ARTICLE,
   "ai-businesses-106": IF_I_HAD_0_FIRST_1_LAKH_ARTICLE,
+  "how-to-make-more-money-than-you-deserve-my-2027-framework": HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_ARTICLE,
+  "ai-businesses-107": HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_ARTICLE,
 
 
 };
