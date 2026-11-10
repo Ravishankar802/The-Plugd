@@ -2162,4 +2162,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-103"],
     assignedPlaybookSlugs: ["the-1-000-hour-1-person-ai-business"],
   },
+  "adlerian-philosophical-dialectic": {
+    templateId: "adlerian-philosophical-dialectic",
+    name: "Adlerian Socratic Dialectic & Freedom Canvas",
+    categoryTheme:
+      "Adlerian Individual Psychology, Socratic Dialectic, Task Separation, Gemeinschaftsgefühl, Teleological Analysis & Horizontal Equality",
+    description:
+      "A warm, thoughtful philosophical study canvas featuring Japanese cedar (#1e2922) and deep forest obsidian, warm parchment borders (#2a3b31), serene sage emerald accents (#10b981), antique amber accents (#f59e0b), and structured Socratic inquiry panels.",
+    colorPalette: {
+      canvasBg: "#0c1410",
+      stageBg: "#121d17",
+      border: "#1f3327",
+      primaryText: "#f2fbf5",
+      secondaryText: "#92a89c",
+      accent: "#10b981",
+      accentSecondary: "#f59e0b",
+      highlightPillBg: "#133824",
+      highlightPillText: "#6ee7b7",
+    },
+    visualMotifs: [
+      "The Five-Night Socratic Dialectic Progression (Past -> Relationships -> Tasks -> Community -> Present)",
+      "The Teleological Horizon (Etiological Past Cause vs Present Goal Action)",
+      "The Steel Task-Separation Barrier (My Sacred Task vs Their Emotional Response)",
+      "The Concentric Community Basin (The Teacup Conflict vs The Global Human Ocean)",
+    ],
+    layoutArchitecture:
+      "Socratic dialectic study stage featuring dual-column inquiry cards, horizontal dignity scales, and present-moment focus spotlights",
+    assignedPlaybookIds: ["ai-businesses-104"],
+    assignedPlaybookSlugs: ["the-courage-to-be-disliked-summary-my-honest-review"],
+  },
 };

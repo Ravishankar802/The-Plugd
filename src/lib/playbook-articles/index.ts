@@ -1,3 +1,4 @@
+import { COURAGE_TO_BE_DISLIKED_ARTICLE } from "./the-courage-to-be-disliked";
 import { THE_1000_HOUR_1_PERSON_AI_BUSINESS_ARTICLE } from "./the-1000-hour-1-person-ai-business";
 import { PlaybookArticle } from "./types";
 import { HOW_TO_BUILD_10K_WEBSITES_ARTICLE } from "./how-to-build-10k-websites";
@@ -314,6 +315,9 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-102": TOP_10_CLAUDE_SIDE_HUSTLES_ARTICLE,
   "the-1-000-hour-1-person-ai-business": THE_1000_HOUR_1_PERSON_AI_BUSINESS_ARTICLE,
   "ai-businesses-103": THE_1000_HOUR_1_PERSON_AI_BUSINESS_ARTICLE,
+  "the-courage-to-be-disliked-summary-my-honest-review": COURAGE_TO_BE_DISLIKED_ARTICLE,
+  "ai-businesses-104": COURAGE_TO_BE_DISLIKED_ARTICLE,
+
 };
 
 export function getPlaybookArticle(slug: string): PlaybookArticle | null {

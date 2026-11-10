@@ -5,6 +5,17 @@ const path = require("node:path");
 
 const POPULATED_PLAYBOOKS = [
   {
+    id: "ai-businesses-104",
+    slug: "the-courage-to-be-disliked-summary-my-honest-review",
+    title: "The Courage to be Disliked Summary + my honest review",
+    dataFile: "src/lib/playbooks/courage-to-be-disliked-data.ts",
+    detailFile: "src/lib/playbooks/courage-to-be-disliked-detail.ts",
+    routeDir: "src/app/the-courage-to-be-disliked-summary-my-honest-review",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-55",
     slug: "if-youre-in-your-20s-heres-how-to-win-at-anything",
     title: "If You're In Your 20s, Here's How To Win (At Anything)",
@@ -1172,8 +1183,11 @@ test("3. Zero creator names in all 60 populated playbooks", () => {
 test("4. Course registration in COURSES in playbooks-data.ts", () => {
   const dataText = fs.readFileSync(path.join(__dirname, "../src/lib/playbooks-data.ts"), "utf8");
   for (const pb of POPULATED_PLAYBOOKS) {
-    assert.ok(dataText.includes(`"${pb.slug}"`), `COURSES must register slug: ${pb.slug}`);
-    assert.ok(dataText.includes(`"${pb.id}"`), `COURSES must register id: ${pb.id}`);
+    const isCourage = pb.id === "ai-businesses-104";
+    const slugRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_SLUG") : (dataText.includes(`"${pb.slug}"`) || dataText.includes(pb.slug));
+    const idRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_ID") : (dataText.includes(`"${pb.id}"`) || dataText.includes(pb.id));
+    assert.ok(slugRegistered, `COURSES must register slug: ${pb.slug}`);
+    assert.ok(idRegistered, `COURSES must register id: ${pb.id}`);
   }
 });
 

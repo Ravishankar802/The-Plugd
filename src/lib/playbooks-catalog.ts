@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-104",
+      "slug": "the-courage-to-be-disliked-summary-my-honest-review",
+      "title": "The Courage to be Disliked Summary + my honest review",
+      "headline": "Stop living for everyone else's approval. Discover how to break free from comparison, set boundaries, accept yourself, and finally live life on your own terms.",
+      "description": "**Stop living for everyone else's approval. Discover how to break free from comparison, set boundaries, accept yourself, and finally live life on your own terms.**\n\nExplore the five-night journey of The Courage to Be Disliked and its most powerful ideas on personal freedom, relationships, self-acceptance, and living in the present. Learn to separate your responsibilities from other people's expectations, escape the trap of comparison, and build healthier relationships — while examining the book's most controversial arguments through an honest, balanced review. Includes practical exercises, reflection prompts, and a seven-day plan to put the ideas into practice.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "4.9k",
+      "hoursOfMaterial": "9.8 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "",
+      "href": "/the-courage-to-be-disliked-summary-my-honest-review"
+  },
+  {
       "id": "ai-businesses-103",
       "slug": "the-1-000-hour-1-person-ai-business",
       "title": "The $1,000/hour 1-person AI business",

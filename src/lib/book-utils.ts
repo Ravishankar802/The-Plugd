@@ -159,13 +159,15 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "the-courage-to-be-disliked-summary-my-honest-review" ||
+    slug === "ai-businesses-104" ||
     slug === "the-1-000-hour-1-person-ai-business" ||
     slug === "ai-businesses-103"
   ) {
     return {
       name: "Divya Tiwari",
       avatar: "",
-      booksCount: 1,
+      booksCount: 2,
       followersCount: "",
       bio: "",
     };
@@ -1333,6 +1335,90 @@ if (
  * High quality, realistic community reviews
  */
 export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = {
+  "the-courage-to-be-disliked-summary-my-honest-review": [
+    {
+      "id": "rev-1",
+      "name": "Ananya Krishnan",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved how this breaks down the book without blindly agreeing with everything. The practical exercises made the ideas much easier to apply to everyday life.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Siddharth Kulkarni",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The section on separating your tasks from other people's expectations really hit me. A thoughtful guide that makes you question how much of your life is shaped by seeking approval.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Pooja",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "More than just a book summary. I especially liked the honest criticism around trauma, relationships, and self-worth. It feels balanced rather than preachy.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Karthik",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The seven-day reflection plan is genuinely useful. The ideas about comparison, boundaries, and accepting yourself are explained in a way that actually stays with you.",
+      "likes": 84
+    }
+  ],
+  "ai-businesses-104": [
+    {
+      "id": "rev-1",
+      "name": "Ananya Krishnan",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved how this breaks down the book without blindly agreeing with everything. The practical exercises made the ideas much easier to apply to everyday life.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Siddharth Kulkarni",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The section on separating your tasks from other people's expectations really hit me. A thoughtful guide that makes you question how much of your life is shaped by seeking approval.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Pooja",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "More than just a book summary. I especially liked the honest criticism around trauma, relationships, and self-worth. It feels balanced rather than preachy.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Karthik",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The seven-day reflection plan is genuinely useful. The ideas about comparison, boundaries, and accepting yourself are explained in a way that actually stays with you.",
+      "likes": 84
+    }
+  ],
   "the-1-000-hour-1-person-ai-business": [
     {
       "id": "rev-1",
@@ -10029,6 +10115,57 @@ export function getCuratedCommunityReviews(
 ): BookReview[] {
   if (slug && CURATED_COMMUNITY_REVIEW_OVERRIDES[slug]) {
     return CURATED_COMMUNITY_REVIEW_OVERRIDES[slug];
+  }
+  if (
+    slug === "the-courage-to-be-disliked-summary-my-honest-review" ||
+    slug === "ai-businesses-104"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Ananya Krishnan",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Loved how this breaks down the book without blindly agreeing with everything. The practical exercises made the ideas much easier to apply to everyday life.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Siddharth Kulkarni",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The section on separating your tasks from other people's expectations really hit me. A thoughtful guide that makes you question how much of your life is shaped by seeking approval.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Pooja",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "More than just a book summary. I especially liked the honest criticism around trauma, relationships, and self-worth. It feels balanced rather than preachy.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Karthik",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The seven-day reflection plan is genuinely useful. The ideas about comparison, boundaries, and accepting yourself are explained in a way that actually stays with you.",
+        likes: 84,
+      },
+    ];
   }
   if (
     slug === "the-1-000-hour-1-person-ai-business" ||
