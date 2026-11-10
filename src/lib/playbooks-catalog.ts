@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-109",
+      "slug": "3-best-ai-businesses-to-start-before-2027-1000-day",
+      "title": "3 BEST AI businesses to start before 2027 ($1,000+/day)",
+      "headline": "Three AI businesses. Three paths to $1,000 a day. Discover how to launch an AI agency, sell digital products, or build an AI-powered e-commerce brand — and find the business model with the potential to scale.",
+      "description": "**Three AI businesses. Three paths to $1,000 a day. Discover how to launch an AI agency, sell digital products, or build an AI-powered e-commerce brand — and find the business model with the potential to scale.**\n\nExplore three practical AI business models, from landing your first agency client and creating digital products to launching a physical-product brand with AI-powered research and marketing. Learn how to validate demand, build compelling offers, find customers, manage delivery, calculate real profit margins, and scale without letting operations become your biggest bottleneck.\n\nIncludes business-selection scorecards, outreach scripts, product validation frameworks, unit-economics worksheets, launch checklists, and a practical 30-day execution plan.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "4.8k",
+      "hoursOfMaterial": "9.8 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "",
+      "href": "/3-best-ai-businesses-to-start-before-2027-1000-day"
+  },
+  {
       "id": "ai-businesses-108",
       "slug": "how-to-build-sell-ai-digital-products-2027-full-guide",
       "title": "How to build & sell AI Digital Products (2027 full guide)",

@@ -159,6 +159,18 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "3-best-ai-businesses-to-start-before-2027-1000-day" ||
+    slug === "ai-businesses-109"
+  ) {
+    return {
+      name: "Byron Matthews",
+      avatar: "",
+      booksCount: 2,
+      followersCount: "1.4k followers",
+      bio: "Byron Matthews is an AI automation specialist, agency operator, and e-commerce systems architect. He specializes in designing practical commercial workflows, high-margin digital product funnels, and autonomous client acquisition frameworks for early-stage operators.",
+    };
+  }
+  if (
     slug === "how-to-build-sell-ai-digital-products-2027-full-guide" ||
     slug === "ai-businesses-108"
   ) {
@@ -1359,6 +1371,90 @@ if (
  * High quality, realistic community reviews
  */
 export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = {
+  "3-best-ai-businesses-to-start-before-2027-1000-day": [
+    {
+      "id": "rev-1",
+      "name": "Alex",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Really liked how this breaks down three completely different business models instead of pretending there's one perfect AI business for everyone. The comparison section helped me understand where to start based on my skills and budget.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Freya",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The AI agency section is excellent. I especially appreciated the outreach examples, service breakdowns, and advice on running a small pilot before committing to a full client relationship. Very practical.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Luca",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Much more useful than another generic AI side-hustle guide. The digital product and e-commerce sections explain the actual work involved, especially validation, supplier research, and understanding the numbers before scaling.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Naomi",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the structure and the 30-day execution plan. It doesn't just throw business ideas at you; it explains how to test them, find customers, track expenses, and decide whether to keep going or change direction. A genuinely useful resource.",
+      "likes": 84
+    }
+  ],
+  "ai-businesses-109": [
+    {
+      "id": "rev-1",
+      "name": "Alex",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Really liked how this breaks down three completely different business models instead of pretending there's one perfect AI business for everyone. The comparison section helped me understand where to start based on my skills and budget.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Freya",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The AI agency section is excellent. I especially appreciated the outreach examples, service breakdowns, and advice on running a small pilot before committing to a full client relationship. Very practical.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Luca",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Much more useful than another generic AI side-hustle guide. The digital product and e-commerce sections explain the actual work involved, especially validation, supplier research, and understanding the numbers before scaling.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Naomi",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Loved the structure and the 30-day execution plan. It doesn't just throw business ideas at you; it explains how to test them, find customers, track expenses, and decide whether to keep going or change direction. A genuinely useful resource.",
+      "likes": 84
+    }
+  ],
   "how-to-build-sell-ai-digital-products-2027-full-guide": [
     {
       "id": "rev-1",

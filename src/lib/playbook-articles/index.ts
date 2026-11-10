@@ -1,3 +1,4 @@
+import { THREE_BEST_AI_BUSINESSES_BEFORE_2027_ARTICLE } from "./3-best-ai-businesses-to-start-before-2027";
 import { HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_ARTICLE } from "./how-to-build-sell-ai-digital-products";
 import { HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_ARTICLE } from "./how-to-make-more-money-than-you-deserve";
 import { IF_I_HAD_0_FIRST_1_LAKH_ARTICLE } from "./if-i-had-0-first-1-lakh";
@@ -329,6 +330,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-107": HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_ARTICLE,
   "how-to-build-sell-ai-digital-products-2027-full-guide": HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_ARTICLE,
   "ai-businesses-108": HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_ARTICLE,
+  "3-best-ai-businesses-to-start-before-2027-1000-day": THREE_BEST_AI_BUSINESSES_BEFORE_2027_ARTICLE,
+  "ai-businesses-109": THREE_BEST_AI_BUSINESSES_BEFORE_2027_ARTICLE,
 
 
 };

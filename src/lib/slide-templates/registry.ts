@@ -2307,4 +2307,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-108"],
     assignedPlaybookSlugs: ["how-to-build-sell-ai-digital-products-2027-full-guide"],
   },
+  "tri-vector-commercial-arbitrage": {
+    templateId: "tri-vector-commercial-arbitrage",
+    name: "Tri-Vector Commercial Arbitrage & Scale Terminal",
+    categoryTheme:
+      "AI Agencies, High-Margin Digital Products, AI E-Commerce Brands, Unit Economics & 30-Day Launch Engines",
+    description:
+      "A sophisticated multi-model commercial trading and operations terminal designed for tri-vector business execution across agencies, digital products, and physical e-commerce. Features deep obsidian canvas backgrounds (#09090b), zinc card surfaces (#18181b), emerald unit-economic accents (#10b981), cobalt system indicators (#3b82f6), and tactical validation decision matrices.",
+    colorPalette: {
+      canvasBg: "#09090b",
+      stageBg: "#18181b",
+      border: "#27272a",
+      primaryText: "#fafafa",
+      secondaryText: "#a1a1aa",
+      accent: "#10b981",
+      accentSecondary: "#3b82f6",
+      highlightPillBg: "#064e3b",
+      highlightPillText: "#6ee7b7",
+    },
+    visualMotifs: [
+      "The Tri-Vector Model Comparison Matrix (Agency vs. Digital Products vs. E-Commerce)",
+      "The Demand Validation Ladder (Casual Interest -> Unprompted Problem -> Workaround -> Paid Deposit)",
+      "The 6-Stage E-Commerce Brand Progression (Research -> Sample -> Controlled Launch -> Validate -> Brand -> Independence)",
+      "The 30-Day Cross-Model Execution Gantt Architecture",
+    ],
+    layoutArchitecture:
+      "Tactical operating terminal with multi-column comparative model scorecards, unit-economic contribution calculators, and structured 30-day milestone sprint trackers",
+    assignedPlaybookIds: ["ai-businesses-109"],
+    assignedPlaybookSlugs: ["3-best-ai-businesses-to-start-before-2027-1000-day"],
+  },
 };
