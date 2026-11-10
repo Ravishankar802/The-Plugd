@@ -27,7 +27,7 @@ export const HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_DETAIL_DATA: PlaybookDetailDa
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352587/2027_full_guide.png",
   hoursOfMaterial: "9.8 hours",
   modulesCount: 7,
   lessonsCount: 28,

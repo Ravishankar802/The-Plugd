@@ -27,7 +27,7 @@ export const I_TRIED_SELLING_17_DIGITAL_PRODUCT_DETAIL_DATA: PlaybookDetailData 
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352586/I_Tried_Selling_a_17_Digital_Product_to_Make_1_000_in_10_Days.png",
   hoursOfMaterial: "9.8 hours",
   modulesCount: 7,
   lessonsCount: 28,

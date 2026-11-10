@@ -27,7 +27,7 @@ export const HOW_ID_START_20K_MONTH_AI_AGENCY_DETAIL_DATA: PlaybookDetailData = 
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352587/How_I_d_start_ai_agency.png",
   hoursOfMaterial: "9.8 hours",
   modulesCount: 7,
   lessonsCount: 28,

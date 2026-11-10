@@ -6,7 +6,7 @@ export const I_TRIED_SELLING_17_DIGITAL_PRODUCT_ARTICLE: PlaybookArticle = {
   readingTime: "32 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352586/I_Tried_Selling_a_17_Digital_Product_to_Make_1_000_in_10_Days.png",
   publishedDate: "November 2026",
   authorName: "Andre Simmons",
   authorTitle: "E-Commerce Operator & Funnel Architect",

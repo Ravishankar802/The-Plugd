@@ -18,7 +18,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "slidesCount": 112,
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352587/How_I_d_start_ai_agency.png",
       "href": "/how-id-start-a-20k-month-ai-agency-with-claude-in-30-days"
   },
   {
@@ -38,7 +38,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "slidesCount": 112,
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352586/I_tried_23_side_hustles.png",
       "href": "/i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy"
   },
   {
@@ -58,7 +58,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "slidesCount": 112,
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352587/3_best_AI_businesses_to_start_before_2027.png",
       "href": "/3-best-ai-businesses-to-start-before-2027-1000-day"
   },
   {
@@ -78,7 +78,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "slidesCount": 112,
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352587/2027_full_guide.png",
       "href": "/how-to-build-sell-ai-digital-products-2027-full-guide"
   },
   {
@@ -98,7 +98,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "slidesCount": 112,
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352587/How_To_Make_More_Money_Than_You_Deserve_My_2027_Framework.png",
       "href": "/how-to-make-more-money-than-you-deserve-my-2027-framework"
   },
   {
@@ -118,7 +118,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "slidesCount": 112,
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352588/if_i_had_0_today.png",
       "href": "/if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown"
   },
   {
@@ -138,7 +138,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "slidesCount": 112,
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352586/I_Tried_Selling_a_17_Digital_Product_to_Make_1_000_in_10_Days.png",
       "href": "/i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days"
   },
   {
@@ -158,7 +158,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
       "modulesCount": 7,
       "lessonsCount": 28,
       "slidesCount": 112,
-      "thumbnail": "",
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352588/The_courage_to_be_disliked.png",
       "href": "/the-courage-to-be-disliked-summary-my-honest-review"
   },
   {

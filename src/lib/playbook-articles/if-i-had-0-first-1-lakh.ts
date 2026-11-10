@@ -6,7 +6,7 @@ export const IF_I_HAD_0_FIRST_1_LAKH_ARTICLE: PlaybookArticle = {
   readingTime: "32 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352588/if_i_had_0_today.png",
   publishedDate: "November 2026",
   authorName: "Kunal Raj",
   authorTitle: "Marketplace Arbitrage Operator & Commerce Strategist",

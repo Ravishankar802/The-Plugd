@@ -6,7 +6,7 @@ export const HOW_ID_START_20K_MONTH_AI_AGENCY_ARTICLE: PlaybookArticle = {
   readingTime: "35 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352587/How_I_d_start_ai_agency.png",
   publishedDate: "November 2026",
   authorName: "Nathan Cole",
   authorTitle: "Commercial Deal Architect & Agency Strategist",

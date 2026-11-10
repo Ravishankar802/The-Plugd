@@ -27,7 +27,7 @@ export const IF_I_HAD_0_FIRST_1_LAKH_DETAIL_DATA: PlaybookDetailData = {
   lastUpdated: "11/2026",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352588/if_i_had_0_today.png",
   hoursOfMaterial: "9.6 hours",
   modulesCount: 7,
   lessonsCount: 28,

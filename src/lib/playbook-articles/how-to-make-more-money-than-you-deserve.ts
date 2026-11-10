@@ -6,7 +6,7 @@ export const HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_ARTICLE: PlaybookArticle = 
   readingTime: "36 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352587/How_To_Make_More_Money_Than_You_Deserve_My_2027_Framework.png",
   publishedDate: "November 2026",
   authorName: "Martim Neves",
   authorTitle: "Capital Allocator & Private Equity Operator",

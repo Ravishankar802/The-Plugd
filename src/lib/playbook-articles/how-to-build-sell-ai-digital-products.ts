@@ -6,7 +6,7 @@ export const HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_ARTICLE: PlaybookArticle = {
   readingTime: "35 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352587/2027_full_guide.png",
   publishedDate: "November 2026",
   authorName: "Caleb Sterling",
   authorTitle: "AI Systems Architect & Digital Product Strategist",
