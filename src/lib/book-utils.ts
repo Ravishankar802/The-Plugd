@@ -159,6 +159,18 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "how-to-build-sell-ai-digital-products-2027-full-guide" ||
+    slug === "ai-businesses-108"
+  ) {
+    return {
+      name: "Caleb Sterling",
+      avatar: "",
+      booksCount: 7,
+      followersCount: "11.7k followers",
+      bio: "Caleb Sterling is a digital product architect, educator, and systems strategist specializing in no-code app construction, AI workflows, and audience monetization.",
+    };
+  }
+  if (
     slug === "how-to-make-more-money-than-you-deserve-my-2027-framework" ||
     slug === "ai-businesses-107"
   ) {
@@ -1347,6 +1359,90 @@ if (
  * High quality, realistic community reviews
  */
 export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = {
+  "how-to-build-sell-ai-digital-products-2027-full-guide": [
+    {
+      "id": "rev-1",
+      "name": "Sophie",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "I used to think I needed to build an entire SaaS product to sell something with AI. This completely changed how I approach digital products. The audience-first framework and AI resource app concept are especially useful.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Mason",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Probably one of the most practical guides I've read on this topic. It doesn't just tell you to use AI and start selling. It walks through the actual process, from validating an offer to testing payments and getting customers.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Kowalska",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The templates and prompts alone make this worth reading. I particularly liked the sections about building a product around one specific customer problem instead of adding random AI features. Very clear and actionable.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Nathan",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Great breakdown of the entire process. The launch checklist, customer acquisition strategies, and 30-day plan make it much easier to know what to do next. Especially useful if you're starting from scratch and don't want to waste months building the wrong thing.",
+      "likes": 84
+    }
+  ],
+  "ai-businesses-108": [
+    {
+      "id": "rev-1",
+      "name": "Sophie",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "I used to think I needed to build an entire SaaS product to sell something with AI. This completely changed how I approach digital products. The audience-first framework and AI resource app concept are especially useful.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Mason",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Probably one of the most practical guides I've read on this topic. It doesn't just tell you to use AI and start selling. It walks through the actual process, from validating an offer to testing payments and getting customers.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Kowalska",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The templates and prompts alone make this worth reading. I particularly liked the sections about building a product around one specific customer problem instead of adding random AI features. Very clear and actionable.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Nathan",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Great breakdown of the entire process. The launch checklist, customer acquisition strategies, and 30-day plan make it much easier to know what to do next. Especially useful if you're starting from scratch and don't want to waste months building the wrong thing.",
+      "likes": 84
+    }
+  ],
   "how-to-make-more-money-than-you-deserve-my-2027-framework": [
     {
       "id": "rev-1",

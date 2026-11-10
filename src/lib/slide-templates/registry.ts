@@ -2278,4 +2278,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-107"],
     assignedPlaybookSlugs: ["how-to-make-more-money-than-you-deserve-my-2027-framework"],
   },
+  "ai-resource-app-foundry": {
+    templateId: "ai-resource-app-foundry",
+    name: "AI Resource App Foundry & Interactive Product Studio",
+    categoryTheme:
+      "AI Resource Apps, Audience Research, Offer Staircases, No-Code Engineering & 30-Day Launch Systems",
+    description:
+      "A modular, high-velocity digital product foundry themed around no-code app generation, transformation staircases, and interactive member portals. Features deep blueprint navy canvas backgrounds (#060b14), electric cyan accents (#06b6d4), crisp cobalt interactive cards (#0f172a), amber transformation badges (#f59e0b), and structured prompt architecture blueprints.",
+    colorPalette: {
+      canvasBg: "#060b14",
+      stageBg: "#0f172a",
+      border: "#1e293b",
+      primaryText: "#f1f5f9",
+      secondaryText: "#94a3b8",
+      accent: "#06b6d4",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#083344",
+      highlightPillText: "#67e8f9",
+    },
+    visualMotifs: [
+      "The Transformation Staircase (Current Pain -> Desired Destination via 6 Concrete Steps)",
+      "The 4-Layer Customer Discovery Radar (Reality, Desired Result, Failed Attempts, Vulnerabilities)",
+      "The AI Resource App Architecture (Landing Page -> Server Auth -> Member Portal -> Single-Task AI Utility)",
+      "The 30-Day Zero-to-Launch Roadmap Matrix",
+    ],
+    layoutArchitecture:
+      "Interactive product engineering console featuring dual-column staircase progression diagrams, structured prompt spec sheets, and pre-launch QA diagnostic scorecards",
+    assignedPlaybookIds: ["ai-businesses-108"],
+    assignedPlaybookSlugs: ["how-to-build-sell-ai-digital-products-2027-full-guide"],
+  },
 };

@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-108",
+      "slug": "how-to-build-sell-ai-digital-products-2027-full-guide",
+      "title": "How to build & sell AI Digital Products (2027 full guide)",
+      "headline": "Stop building digital products nobody wants to buy. Learn how to find a paying audience, create an irresistible offer, build an AI-powered product, and turn it into a business that attracts real customers.",
+      "description": "**Stop building digital products nobody wants to buy. Learn how to find a paying audience, create an irresistible offer, build an AI-powered product, and turn it into a business that attracts real customers.**\n\nDiscover a complete, step-by-step system for building and selling AI-powered digital products — starting with audience research and offer validation, all the way to product creation, launch, and customer acquisition. Learn how to use AI app builders to create interactive resource apps, design focused AI tools, set up payments and protected member areas, and attract customers through organic content and email marketing.\n\nIncludes practical prompts, reusable templates, product testing checklists, marketing frameworks, and a 30-day build-and-sell roadmap to take your idea from concept to launch.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "4.8k",
+      "hoursOfMaterial": "9.8 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "",
+      "href": "/how-to-build-sell-ai-digital-products-2027-full-guide"
+  },
+  {
       "id": "ai-businesses-107",
       "slug": "how-to-make-more-money-than-you-deserve-my-2027-framework",
       "title": "How To Make More Money Than You Deserve (My 2027 Framework)",
