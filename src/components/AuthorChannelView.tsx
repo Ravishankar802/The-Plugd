@@ -73,13 +73,6 @@ export default function AuthorChannelView({ author }: AuthorChannelViewProps) {
                 </span>
               </p>
 
-              {/* Bio Snippet */}
-              {author.bio && (
-                <p className="text-xs sm:text-[13px] text-[#57534e] max-w-2xl leading-relaxed pt-0.5">
-                  {author.bio}
-                </p>
-              )}
-
               {/* Follow / Following Button (YouTube Subscribe Style) */}
               <div className="pt-2">
                 {isFollowing ? (
@@ -154,12 +147,9 @@ export default function AuthorChannelView({ author }: AuthorChannelViewProps) {
             className="w-full max-w-sm rounded-2xl bg-white p-5 sm:p-6 border border-[#dcd8d0] shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="space-y-1.5">
-              <h3 className="text-base font-bold text-[#1c1917]">
-                Unfollow {author.name}?
-              </h3>
-              <p className="text-xs sm:text-[13px] text-[#57534e] leading-relaxed">
-                Are you sure you want to unfollow <strong>{author.name}</strong>? You will no longer see updates from this author in your Following list.
+            <div className="pt-1">
+              <p className="text-sm sm:text-[15px] font-medium text-[#1c1917] leading-snug">
+                Are you sure you want to unfollow {author.name}?
               </p>
             </div>
             <div className="flex items-center justify-end gap-2.5 pt-2">

@@ -23,21 +23,6 @@ export function slugifyAuthorName(name: string): string {
     .replace(/(^-|-$)+/g, "");
 }
 
-const AUTHOR_BIOS: Record<string, string> = {
-  "Brady Lawson": "Systems architect & digital operator specializing in automated online businesses, cash-flow funnels, and lean operations.",
-  "Ryan Walsh": "Enterprise strategist sharing counter-intuitive wealth principles, capital compounding, and asymmetric business models.",
-  "Akhil Varma": "Long-term investor and digital founder building generational wealth systems, automated assets, and high-leverage portfolios.",
-  "Jordan Hayes": "Full-stack creator and product strategist breaking down rapid digital asset creation, monetization frameworks, and scaling protocols.",
-  "Bryce Holloway": "Online business developer and AI implementer helping modern entrepreneurs build high-margin revenue streams.",
-  "Alex Turner": "Digital marketing and monetization architect engineering scalable digital offers, acquisition funnels, and high-ticket sales.",
-  "Felix Weber": "High-agency AI operator and software strategist teaching practical automation, agentic workflows, and lean digital businesses.",
-  "Caleb Sterling": "Digital commerce architect and prompt engineer behind plug-and-play AI businesses, digital micro-assets, and automated workflows.",
-  "Divya Tiwari": "AI business strategist and automation consultant specializing in one-person service businesses and high-leverage client systems.",
-  "Anjali Yadav": "Practical AI researcher breaking down real-world high-income side hustles, generative tools, and digital execution systems.",
-  "Ritu Sharma": "AI monetization practitioner and digital product builder documenting verified business models and automated online systems.",
-  "Franco Medina": "Digital growth strategist and operator breaking down the fundamental skill-stack to progress from $0 to $1,000,000.",
-};
-
 export function getAllAuthors(): AuthorDetails[] {
   const authorMap = new Map<string, {
     name: string;
@@ -53,7 +38,7 @@ export function getAllAuthors(): AuthorDetails[] {
       authorMap.set(authorName, {
         name: authorName,
         playbooks: [],
-        bio: AUTHOR_BIOS[authorName] || `Creator of practical digital playbooks across AI, wealth, and modern business on Plugd.`,
+        bio: "",
       });
     }
 

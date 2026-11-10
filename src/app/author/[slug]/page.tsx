@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: AuthorPageProps): Promise<Met
 
   return {
     title: `${author.name} (@${author.slug}) · Plugd Playbooks`,
-    description: `${author.name}'s digital playbooks on Plugd. ${author.followersCount} · ${author.playbooksCount} playbooks. ${author.bio}`,
+    description: `${author.name}'s digital playbooks on Plugd. ${author.followersCount} · ${author.playbooksCount} playbooks.`,
     openGraph: {
       title: `${author.name} · Plugd Playbooks`,
       description: `${author.name}'s verified playbooks on Plugd. ${author.followersCount}.`,
