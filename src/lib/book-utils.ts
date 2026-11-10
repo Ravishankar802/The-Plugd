@@ -1335,6 +1335,90 @@ if (
  * High quality, realistic community reviews
  */
 export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = {
+  "i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days": [
+    {
+      "id": "rev-1",
+      "name": "Pranav",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, a digital product guide that talks about profit instead of just showing revenue screenshots. The real experiment and its mistakes made this incredibly useful.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Shreya",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The advertising and funnel sections are excellent. I especially liked the breakdown of Meta Ads, upsells, tracking, and knowing when to stop spending.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Anthony",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Very practical from start to finish. The product validation, sales page structure, and launch checklists give you an actual system to follow instead of vague advice.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Varun",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The $623 revenue versus $46 profit breakdown was an eye-opener. It completely changed how I think about running ads and measuring a digital product business.",
+      "likes": 84
+    }
+  ],
+  "ai-businesses-105": [
+    {
+      "id": "rev-1",
+      "name": "Pranav",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Finally, a digital product guide that talks about profit instead of just showing revenue screenshots. The real experiment and its mistakes made this incredibly useful.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Shreya",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The advertising and funnel sections are excellent. I especially liked the breakdown of Meta Ads, upsells, tracking, and knowing when to stop spending.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Anthony",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "Very practical from start to finish. The product validation, sales page structure, and launch checklists give you an actual system to follow instead of vague advice.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Varun",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The $623 revenue versus $46 profit breakdown was an eye-opener. It completely changed how I think about running ads and measuring a digital product business.",
+      "likes": 84
+    }
+  ],
   "the-courage-to-be-disliked-summary-my-honest-review": [
     {
       "id": "rev-1",
@@ -10115,6 +10199,57 @@ export function getCuratedCommunityReviews(
 ): BookReview[] {
   if (slug && CURATED_COMMUNITY_REVIEW_OVERRIDES[slug]) {
     return CURATED_COMMUNITY_REVIEW_OVERRIDES[slug];
+  }
+  if (
+    slug === "i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days" ||
+    slug === "ai-businesses-105"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Pranav",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Finally, a digital product guide that talks about profit instead of just showing revenue screenshots. The real experiment and its mistakes made this incredibly useful.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Shreya",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The advertising and funnel sections are excellent. I especially liked the breakdown of Meta Ads, upsells, tracking, and knowing when to stop spending.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Anthony",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Very practical from start to finish. The product validation, sales page structure, and launch checklists give you an actual system to follow instead of vague advice.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Varun",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The $623 revenue versus $46 profit breakdown was an eye-opener. It completely changed how I think about running ads and measuring a digital product business.",
+        likes: 84,
+      },
+    ];
   }
   if (
     slug === "the-courage-to-be-disliked-summary-my-honest-review" ||

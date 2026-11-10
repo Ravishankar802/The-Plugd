@@ -5,6 +5,17 @@ const path = require("node:path");
 
 const POPULATED_PLAYBOOKS = [
   {
+    id: "ai-businesses-105",
+    slug: "i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days",
+    title: "I Tried Selling a $17 Digital Product to Make $1,000 in 10 Days",
+    dataFile: "src/lib/playbooks/tried-selling-17-digital-product-data.ts",
+    detailFile: "src/lib/playbooks/tried-selling-17-digital-product-detail.ts",
+    routeDir: "src/app/i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-104",
     slug: "the-courage-to-be-disliked-summary-my-honest-review",
     title: "The Courage to be Disliked Summary + my honest review",
@@ -1184,8 +1195,9 @@ test("4. Course registration in COURSES in playbooks-data.ts", () => {
   const dataText = fs.readFileSync(path.join(__dirname, "../src/lib/playbooks-data.ts"), "utf8");
   for (const pb of POPULATED_PLAYBOOKS) {
     const isCourage = pb.id === "ai-businesses-104";
-    const slugRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_SLUG") : (dataText.includes(`"${pb.slug}"`) || dataText.includes(pb.slug));
-    const idRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_ID") : (dataText.includes(`"${pb.id}"`) || dataText.includes(pb.id));
+    const isProduct105 = pb.id === "ai-businesses-105";
+    const slugRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_SLUG") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_SLUG") : (dataText.includes(`"${pb.slug}"`) || dataText.includes(pb.slug)));
+    const idRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_ID") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_ID") : (dataText.includes(`"${pb.id}"`) || dataText.includes(pb.id)));
     assert.ok(slugRegistered, `COURSES must register slug: ${pb.slug}`);
     assert.ok(idRegistered, `COURSES must register id: ${pb.id}`);
   }

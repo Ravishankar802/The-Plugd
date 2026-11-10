@@ -1,3 +1,4 @@
+import { I_TRIED_SELLING_17_DIGITAL_PRODUCT_ARTICLE } from "./tried-selling-17-digital-product";
 import { COURAGE_TO_BE_DISLIKED_ARTICLE } from "./the-courage-to-be-disliked";
 import { THE_1000_HOUR_1_PERSON_AI_BUSINESS_ARTICLE } from "./the-1000-hour-1-person-ai-business";
 import { PlaybookArticle } from "./types";
@@ -317,6 +318,9 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-103": THE_1000_HOUR_1_PERSON_AI_BUSINESS_ARTICLE,
   "the-courage-to-be-disliked-summary-my-honest-review": COURAGE_TO_BE_DISLIKED_ARTICLE,
   "ai-businesses-104": COURAGE_TO_BE_DISLIKED_ARTICLE,
+  "i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days": I_TRIED_SELLING_17_DIGITAL_PRODUCT_ARTICLE,
+  "ai-businesses-105": I_TRIED_SELLING_17_DIGITAL_PRODUCT_ARTICLE,
+
 
 };
 

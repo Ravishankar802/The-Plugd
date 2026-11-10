@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-105",
+      "slug": "i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days",
+      "title": "I Tried Selling a $17 Digital Product to Make $1,000 in 10 Days",
+      "headline": "Launch a $17 digital product, build a complete sales funnel, run paid ads, and learn how to turn clicks into customers — with a real-world experiment that reveals what actually makes money and what eats your profit.",
+      "description": "**Launch a $17 digital product, build a complete sales funnel, run paid ads, and learn how to turn clicks into customers — with a real-world experiment that reveals what actually makes money and what eats your profit.**\n\nLearn how to create and package a digital product, build a high-converting sales page, set up checkout and upsells, and launch Meta ad campaigns to attract buyers. Follow a real $1,000-in-10-days experiment that generated $623 in revenue but only $46 in reported profit, uncovering the mistakes, advertising lessons, pricing strategies, and funnel optimisations that every digital product seller should understand. Includes practical templates, tracking sheets, checklists, and a step-by-step launch framework.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "4.8k",
+      "hoursOfMaterial": "9.8 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "",
+      "href": "/i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days"
+  },
+  {
       "id": "ai-businesses-104",
       "slug": "the-courage-to-be-disliked-summary-my-honest-review",
       "title": "The Courage to be Disliked Summary + my honest review",

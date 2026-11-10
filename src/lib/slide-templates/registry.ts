@@ -2191,4 +2191,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-104"],
     assignedPlaybookSlugs: ["the-courage-to-be-disliked-summary-my-honest-review"],
   },
+  "low-ticket-funnel-ledger-console": {
+    templateId: "low-ticket-funnel-ledger-console",
+    name: "Low-Ticket E-Commerce Funnel & Unit Margin Console",
+    categoryTheme:
+      "Low-Ticket Digital Products, Meta Ads Manager Engineering, One-Click Upsells, Forensic Profit Reconciliation & Launch Architecture",
+    description:
+      "A precision commercial terminal and e-commerce engineering HUD featuring deep midnight indigo (#0b1320), blueprint slate stage cards (#131f33), electric royal blue accents (#2563eb), neon emerald profit indicators (#10b981), crimson margin-bleed warnings (#ef4444), and structured unit economics ledgers.",
+    colorPalette: {
+      canvasBg: "#080d16",
+      stageBg: "#101928",
+      border: "#1d2e47",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#2563eb",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#1e3a8a",
+      highlightPillText: "#93c5fd",
+    },
+    visualMotifs: [
+      "The Forensic Unit Margin Equation (Gross Receipts - Media Spend - Merchant Tolls - SaaS = Real Cash)",
+      "The 3-Tier Funnel Cascade (Front-End $17 -> Upsell $49 -> Mastermind $97)",
+      "The Dual-Engine Tracking Bridge (Client Browser Pixel vs Server-Side Conversions API)",
+      "The Scientific Change Log & 20% Compounding Scaling Ladder",
+    ],
+    layoutArchitecture:
+      "Precision e-commerce console featuring unit economics ledger tables, multi-tier funnel cascade diagrams, and ad performance triage scorecards",
+    assignedPlaybookIds: ["ai-businesses-105"],
+    assignedPlaybookSlugs: ["i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days"],
+  },
 };
