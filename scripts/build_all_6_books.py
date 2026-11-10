@@ -86,7 +86,7 @@ BOOKS_CONFIG = [
         "export_name": "BECOME_MILLIONAIRE_2027_BOOK_PAGES",
         "title": "IF I WANTED TO BECOME A MILLIONAIRE IN 2027, THIS IS WHAT I'D DO",
         "subtitle": "The Five Sovereign Commandments and Modern Capital Allocation Engine for Independent Wealth",
-        "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015891/If_I_Wanted_To_Become_a_Millionaire_in_2026_This_Is_What_I_d_Do.png",
+        "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794295235/If_I_Wanted_To_Become_a_Millionaire_in_2026_This_Is_What_I_d_Do_-_2.png",
         "taxonomy_label": "COMMANDMENT",
         "section_prefix": "Directive",
         "author_voice": "wealth_architect",

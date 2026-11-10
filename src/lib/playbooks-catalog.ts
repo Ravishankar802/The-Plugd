@@ -1048,7 +1048,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   },
     {
     "id": "ai-businesses-54",
-    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015891/If_I_Wanted_To_Become_a_Millionaire_in_2026_This_Is_What_I_d_Do.png",
+    "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794295235/If_I_Wanted_To_Become_a_Millionaire_in_2026_This_Is_What_I_d_Do_-_2.png",
     "slug": "if-i-wanted-to-become-a-millionaire-in-2026-this-is-what-id-do-full-blueprint",
     "title": "If I Wanted To Become a Millionaire in 2027, This Is What I'd Do",
     "headline": "Stop chasing the million-dollar dream and start building the system that can actually create it—master the skills, customers, business, and leverage behind lasting wealth.",

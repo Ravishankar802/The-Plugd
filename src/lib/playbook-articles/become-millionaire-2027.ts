@@ -6,7 +6,7 @@ export const BECOME_MILLIONAIRE_2027_ARTICLE: PlaybookArticle = {
   readingTime: "30 min read",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015891/If_I_Wanted_To_Become_a_Millionaire_in_2026_This_Is_What_I_d_Do.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794295235/If_I_Wanted_To_Become_a_Millionaire_in_2026_This_Is_What_I_d_Do_-_2.png",
   publishedDate: "2026",
   authorName: "Alistair Boyd",
   authorTitle: "Enterprise Systems Architect & Private Equity Operator",

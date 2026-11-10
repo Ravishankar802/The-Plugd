@@ -27,7 +27,7 @@ export const BECOME_MILLIONAIRE_2026_BLUEPRINT_DETAIL_DATA: PlaybookDetailData =
   lastUpdated: "10/2027",
   language: "English",
   subtitles: "English [Auto]",
-  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015891/If_I_Wanted_To_Become_a_Millionaire_in_2026_This_Is_What_I_d_Do.png",
+  thumbnail: "https://res.cloudinary.com/cy3gfawr/image/upload/v1794295235/If_I_Wanted_To_Become_a_Millionaire_in_2026_This_Is_What_I_d_Do_-_2.png",
   hoursOfMaterial: "8.5 hours",
   modulesCount: 8,
   lessonsCount: 32,
