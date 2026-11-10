@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-110",
+      "slug": "i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy",
+      "title": "I tried 23 easy SIDE HUSTLES that actually WORKED (copy my $10,000/month strategy)",
+      "headline": "23 side hustles. Four ways to make money. One practical roadmap to turn spare time, existing skills, and overlooked opportunities into income — and build something that can grow beyond your hours.",
+      "description": "**23 side hustles. Four ways to make money. One practical roadmap to turn spare time, existing skills, and overlooked opportunities into income — and build something that can grow beyond your hours.**\n\nFrom paid research studies and reselling to freelancing, print-on-demand, affiliate marketing, newsletters, and UGC, explore 23 side hustles and learn how each one actually works. Discover how to choose the right opportunity, find customers, calculate real profits, avoid scams, and turn small wins into repeatable income streams.\n\nIncludes practical checklists, pricing and profit calculations, business frameworks, a side-hustle selection scorecard, and a 30-day execution plan.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "4.8k",
+      "hoursOfMaterial": "9.8 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "",
+      "href": "/i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy"
+  },
+  {
       "id": "ai-businesses-109",
       "slug": "3-best-ai-businesses-to-start-before-2027-1000-day",
       "title": "3 BEST AI businesses to start before 2027 ($1,000+/day)",

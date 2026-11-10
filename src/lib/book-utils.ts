@@ -68,6 +68,7 @@ export const AUTHOR_FOLLOWERS_MAP: Record<string, string> = {
   "Jacob Wilson": "1.7k followers",
   "Andre Simmons": "1.6k followers",
   "Niall Brennan": "1.6k followers",
+  "Alice Chen": "8.9k followers",
   "Byron Matthews": "1.4k followers",
   "Sergio Torres": "1.3k followers",
 };
@@ -158,6 +159,18 @@ export function getReadingStats(slug = ""): {
  * Author profile for About the Author section
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
+  if (
+    slug === "i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy" ||
+    slug === "ai-businesses-110"
+  ) {
+    return {
+      name: "Alice Chen",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "8.9k followers",
+      bio: "Alice Chen is a commercial strategist, operator, and digital asset builder specializing in multi-stream income architectures, print-on-demand e-commerce, and practical freelancer monetization frameworks.",
+    };
+  }
   if (
     slug === "3-best-ai-businesses-to-start-before-2027-1000-day" ||
     slug === "ai-businesses-109"
@@ -1371,6 +1384,90 @@ if (
  * High quality, realistic community reviews
  */
 export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = {
+  "i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy": [
+    {
+      "id": "rev-1",
+      "name": "Bennett",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "I liked that this doesn't pretend every side hustle is a shortcut to getting rich. The four categories made it much easier to understand where to start and which opportunities are worth pursuing.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Caleb",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The breakdown of skill-based income versus building something scalable was genuinely useful. I came for side-hustle ideas and ended up with a much clearer plan for what to focus on first.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Fernández",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "So many ideas, but what makes this valuable is the practical detail. The profit calculations, checklists, and warnings about scams make it feel like an actual guide rather than another list of money-making methods.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Darius",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The 30-day plan is my favourite part. Instead of trying ten things at once, it helps you pick an opportunity, test it, track the numbers, and decide what to do next. Very practical.",
+      "likes": 84
+    }
+  ],
+  "ai-businesses-110": [
+    {
+      "id": "rev-1",
+      "name": "Bennett",
+      "avatar": "",
+      "date": "August 04 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "I liked that this doesn't pretend every side hustle is a shortcut to getting rich. The four categories made it much easier to understand where to start and which opportunities are worth pursuing.",
+      "likes": 121
+    },
+    {
+      "id": "rev-2",
+      "name": "Caleb",
+      "avatar": "",
+      "date": "August 08 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The breakdown of skill-based income versus building something scalable was genuinely useful. I came for side-hustle ideas and ended up with a much clearer plan for what to focus on first.",
+      "likes": 109
+    },
+    {
+      "id": "rev-3",
+      "name": "Fernández",
+      "avatar": "",
+      "date": "August 14 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "So many ideas, but what makes this valuable is the practical detail. The profit calculations, checklists, and warnings about scams make it feel like an actual guide rather than another list of money-making methods.",
+      "likes": 90
+    },
+    {
+      "id": "rev-4",
+      "name": "Darius",
+      "avatar": "",
+      "date": "August 21 2026",
+      "rating": 5,
+      "headline": "",
+      "content": "The 30-day plan is my favourite part. Instead of trying ten things at once, it helps you pick an opportunity, test it, track the numbers, and decide what to do next. Very practical.",
+      "likes": 84
+    }
+  ],
   "3-best-ai-businesses-to-start-before-2027-1000-day": [
     {
       "id": "rev-1",

@@ -2336,4 +2336,34 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-109"],
     assignedPlaybookSlugs: ["3-best-ai-businesses-to-start-before-2027-1000-day"],
   },
+  "quad-vector-hustle-workbench": {
+    templateId: "quad-vector-hustle-workbench",
+    name: "Quad-Vector Hustle Workbench & Micro-Asset Terminal",
+    categoryTheme:
+      "Side Hustles, Claim-Convert-Earn-Build Frameworks, Print-on-Demand & 30-Day Launch Engines",
+    description:
+      "A crisp, tactical field workbench engineered for multi-stream income execution across claim, convert, earn, and build models. Features deep charcoal canvas backgrounds (#121316), sleek gunmetal stage surfaces (#1a1c22), warm amber accents (#f59e0b), emerald profit indicators (#10b981), and systematic 30-day execution milestone matrices.",
+    colorPalette: {
+      canvasBg: "#121316",
+      stageBg: "#1a1c22",
+      border: "#2a2d37",
+      primaryText: "#f3f4f6",
+      secondaryText: "#9ca3af",
+      accent: "#f59e0b",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#78350f",
+      highlightPillText: "#fde68a",
+    },
+    visualMotifs: [
+      "The Quad-Vector Capital Engine (Claim -> Convert -> Earn -> Build)",
+      "The Strategic Side-Hustle Matrix (Offline vs. Online & Time-Based vs. Scalable)",
+      "The Net Arbitrage & Reselling Ledger Architecture",
+      "The 30-Day Multi-Stream Sprint Milestone Gateways",
+    ],
+    layoutArchitecture:
+      "High-density commercial field console featuring side-hustle comparative scorecards, net hourly profit calculators, and anti-scam verification checklists",
+    assignedPlaybookIds: ["ai-businesses-110"],
+    assignedPlaybookSlugs: ["i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy"],
+  },
 };
+
