@@ -10201,6 +10201,58 @@ export function getCuratedCommunityReviews(
     return CURATED_COMMUNITY_REVIEW_OVERRIDES[slug];
   }
   if (
+    slug === "if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown" ||
+    slug === "ai-businesses-106"
+  ) {
+    return [
+      {
+        id: "rev-1",
+        name: "Abhinav Pillai",
+        avatar: "",
+        date: "August 04 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Exactly the kind of playbook beginners need. It doesn't waste time selling dreams — it shows you how to choose a skill, build proof, and actually approach potential clients.",
+        likes: 121,
+      },
+      {
+        id: "rev-2",
+        name: "Mrinalini",
+        avatar: "",
+        date: "August 08 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "The Money, Problem, Access framework is brilliant. It helped me understand why finding the right customer matters just as much as learning the skill itself.",
+        likes: 109,
+      },
+      {
+        id: "rev-3",
+        name: "Saurabh",
+        avatar: "",
+        date: "August 14 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "Really liked the practical approach. The sample outreach messages, offer-building framework, and client delivery process make this feel like an actual business blueprint.",
+        likes: 90,
+      },
+      {
+        id: "rev-4",
+        name: "Nitya",
+        avatar: "",
+        date: "August 21 2026",
+        rating: 5,
+        headline: "",
+        content:
+          "My favourite part is the transition from first client to referrals and repeatable income. It's refreshing to see a guide focused on building real cash flow instead of chasing overnight success.",
+        likes: 84,
+      },
+    ];
+  }
+
+  if (
     slug === "i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days" ||
     slug === "ai-businesses-105"
   ) {

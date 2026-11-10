@@ -2,6 +2,26 @@ import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
   {
+      "id": "ai-businesses-106",
+      "slug": "if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown",
+      "title": "if i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown",
+      "headline": "Starting with ₹0? Build a skill people will pay for, land your first client, turn your work into proof, and create a realistic path towards your first ₹1 lakh.",
+      "description": "**Starting with ₹0? Build a skill people will pay for, land your first client, turn your work into proof, and create a realistic path towards your first ₹1 lakh.**\n\nDiscover a practical, step-by-step approach to earning your first money without an audience, investment, or existing network. Learn how to choose a high-demand skill, create a compelling service offer, build portfolio samples, find qualified prospects, win your first client, and turn successful projects into recurring income and referrals. Includes outreach scripts, pricing frameworks, worksheets, and a client acquisition roadmap.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "4.8k",
+      "hoursOfMaterial": "9.6 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "",
+      "href": "/if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown"
+  },
+  {
       "id": "ai-businesses-105",
       "slug": "i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days",
       "title": "I Tried Selling a $17 Digital Product to Make $1,000 in 10 Days",

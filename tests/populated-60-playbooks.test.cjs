@@ -5,6 +5,17 @@ const path = require("node:path");
 
 const POPULATED_PLAYBOOKS = [
   {
+    id: "ai-businesses-106",
+    slug: "if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown",
+    title: "if i had ₹0 today, this is how i'd make my first ₹1 Lakh - full breakdown",
+    dataFile: "src/lib/playbooks/if-i-had-0-first-1-lakh-data.ts",
+    detailFile: "src/lib/playbooks/if-i-had-0-first-1-lakh-detail.ts",
+    routeDir: "src/app/if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-105",
     slug: "i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days",
     title: "I Tried Selling a $17 Digital Product to Make $1,000 in 10 Days",
@@ -1196,8 +1207,9 @@ test("4. Course registration in COURSES in playbooks-data.ts", () => {
   for (const pb of POPULATED_PLAYBOOKS) {
     const isCourage = pb.id === "ai-businesses-104";
     const isProduct105 = pb.id === "ai-businesses-105";
-    const slugRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_SLUG") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_SLUG") : (dataText.includes(`"${pb.slug}"`) || dataText.includes(pb.slug)));
-    const idRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_ID") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_ID") : (dataText.includes(`"${pb.id}"`) || dataText.includes(pb.id)));
+    const isLakh106 = pb.id === "ai-businesses-106";
+    const slugRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_SLUG") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_SLUG") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_SLUG") : (dataText.includes(`"${pb.slug}"`) || dataText.includes(pb.slug))));
+    const idRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_ID") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_ID") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_ID") : (dataText.includes(`"${pb.id}"`) || dataText.includes(pb.id))));
     assert.ok(slugRegistered, `COURSES must register slug: ${pb.slug}`);
     assert.ok(idRegistered, `COURSES must register id: ${pb.id}`);
   }

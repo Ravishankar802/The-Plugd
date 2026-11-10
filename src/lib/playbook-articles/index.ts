@@ -1,3 +1,4 @@
+import { IF_I_HAD_0_FIRST_1_LAKH_ARTICLE } from "./if-i-had-0-first-1-lakh";
 import { I_TRIED_SELLING_17_DIGITAL_PRODUCT_ARTICLE } from "./tried-selling-17-digital-product";
 import { COURAGE_TO_BE_DISLIKED_ARTICLE } from "./the-courage-to-be-disliked";
 import { THE_1000_HOUR_1_PERSON_AI_BUSINESS_ARTICLE } from "./the-1000-hour-1-person-ai-business";
@@ -320,6 +321,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-104": COURAGE_TO_BE_DISLIKED_ARTICLE,
   "i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days": I_TRIED_SELLING_17_DIGITAL_PRODUCT_ARTICLE,
   "ai-businesses-105": I_TRIED_SELLING_17_DIGITAL_PRODUCT_ARTICLE,
+  "if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown": IF_I_HAD_0_FIRST_1_LAKH_ARTICLE,
+  "ai-businesses-106": IF_I_HAD_0_FIRST_1_LAKH_ARTICLE,
 
 
 };

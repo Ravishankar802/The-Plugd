@@ -2220,4 +2220,33 @@ export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
     assignedPlaybookIds: ["ai-businesses-105"],
     assignedPlaybookSlugs: ["i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days"],
   },
+  "zero-capital-cashflow-ladder": {
+    templateId: "zero-capital-cashflow-ladder",
+    name: "Zero-Capital Cashflow Ladder & Cold Arbitrage Console",
+    categoryTheme:
+      "Zero-Capital Client Acquisition, Skill Arbitrage, Cold Outreach Architecture, Retainer Ladders & Cashflow Solvency",
+    description:
+      "A rigorous, pragmatic cashflow-first console themed around zero-capital service arbitrage, high-value client acquisition, and bootstrap solvency. Engineered with deep obsidian emerald backgrounds (#050e0b), brushed brass gold accents (#eab308), mint green cashflow milestones (#10b981), subtle rupee watermark matrices, and diagnostic prospect scoring grids.",
+    colorPalette: {
+      canvasBg: "#050e0b",
+      stageBg: "#0b1c15",
+      border: "#163327",
+      primaryText: "#f0fdf4",
+      secondaryText: "#86efac",
+      accent: "#eab308",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#14532d",
+      highlightPillText: "#bbf7d0",
+    },
+    visualMotifs: [
+      "The Cashflow-First Wealth Foundation (Cashflow -> Solvency -> Asymmetric Leverage)",
+      "The Money-Problem-Access (MPA) Triangular Market Filter",
+      "The Unsolicited Spec Work Conversion Funnel (Audit -> 3 Sample Assets -> Private Loom)",
+      "The 4-Client Retainer Ladder (₹25,000 x 4 = ₹1,00,000 Consistent Monthly Net)",
+    ],
+    layoutArchitecture:
+      "Pragmatic client acquisition console featuring triangular MPA validation matrices, side-by-side outreach breakdown cards, and four-tier monthly milestone progression ladders",
+    assignedPlaybookIds: ["ai-businesses-106"],
+    assignedPlaybookSlugs: ["if-i-had-0-today-this-is-how-id-make-my-first-1-lakh-full-breakdown"],
+  },
 };
