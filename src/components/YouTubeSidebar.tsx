@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { getFollowedAuthors, type FollowedAuthor } from "@/lib/following-store";
 import { getAvatarBgColor } from "@/lib/book-utils";
+import { slugifyAuthorName } from "@/lib/authors";
 
 interface YouTubeSidebarProps {
   isOpen: boolean;
@@ -171,7 +172,7 @@ export default function YouTubeSidebar({
                 {followedAuthors.map((author) => {
                   const initial = author.name.charAt(0).toUpperCase();
                   const bg = author.avatarBg || getAvatarBgColor(author.name);
-                  const href = author.slug ? `/${author.slug}` : "/";
+                  const href = `/author/${slugifyAuthorName(author.name)}`;
                   return (
                     <Link
                       key={author.name}

@@ -9,6 +9,7 @@ import {
 } from "@/lib/categories";
 import { ALL_PLAYBOOK_SUMMARIES } from "@/lib/playbooks-catalog";
 import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
+import { getAuthorBySlug } from "@/lib/authors";
 
 interface CategoryPageProps {
   params: Promise<{
@@ -63,6 +64,11 @@ export default async function CategoryRoute({ params }: CategoryPageProps) {
   const category = getCategoryBySlug(categorySlug);
 
   if (!category) {
+    const author = getAuthorBySlug(categorySlug);
+    if (author) {
+      redirect(`/author/${author.slug}`);
+    }
+
     const placeholderPlaybook = ALL_PLAYBOOK_SUMMARIES.find(
       (p) => p.slug === categorySlug
     );

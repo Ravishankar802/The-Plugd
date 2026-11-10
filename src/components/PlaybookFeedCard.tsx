@@ -6,6 +6,7 @@ import { Star } from "lucide-react";
 import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 import type { PlaybookSummary } from "@/lib/categories";
 import { getAuthorProfile, getRelativePublishedTime } from "@/lib/book-utils";
+import { slugifyAuthorName } from "@/lib/authors";
 
 /**
  * Reusable Playbook Card Component
@@ -59,7 +60,17 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
 
           {/* Category beneath Title */}
           <div className="mt-1.5 sm:mt-2 flex items-center justify-between gap-2 text-[13px] text-[#57534e] w-full">
-            <span className="font-medium text-[#44403c] truncate">{authorName}</span>
+            <span
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.location.href = `/author/${slugifyAuthorName(authorName)}`;
+              }}
+              className="font-medium text-[#44403c] hover:text-[#2563eb] hover:underline cursor-pointer truncate transition-colors z-10"
+              title={`View all playbooks by ${authorName}`}
+            >
+              {authorName}
+            </span>
             <span className="text-[12px] text-[#78716c] shrink-0">{relativePublishedDate}</span>
           </div>
 

@@ -26,6 +26,7 @@ import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 import type { PlaybookDetailData } from "@/lib/dating-playbook-detail";
 import { ALL_PLAYBOOK_SUMMARIES } from "@/lib/playbooks-catalog";
 import { isFollowingAuthor as isFollowingAuthorStore, followAuthor, unfollowAuthor } from "@/lib/following-store";
+import { slugifyAuthorName } from "@/lib/authors";
 import {
   getPlaybookPageCount,
   getChapterPageRange,
@@ -516,15 +517,19 @@ export default function PlaybookDetailView({
               </h2>
 
               <div className="flex items-center justify-between gap-3 sm:gap-4 flex-wrap">
-                <div className="flex items-center gap-3.5 sm:gap-4">
+                <Link
+                  href={`/author/${slugifyAuthorName(author.name)}`}
+                  className="flex items-center gap-3.5 sm:gap-4 hover:opacity-85 transition-opacity group"
+                  title={`View ${author.name}'s playbooks`}
+                >
                   <div
-                    className="h-12 w-12 sm:h-13 sm:w-13 rounded-full text-white flex items-center justify-center font-bold text-lg sm:text-xl uppercase shrink-0 shadow-2xs"
+                    className="h-12 w-12 sm:h-13 sm:w-13 rounded-full text-white flex items-center justify-center font-bold text-lg sm:text-xl uppercase shrink-0 shadow-2xs group-hover:ring-2 group-hover:ring-[#1c1917]/20 transition-all"
                     style={{ backgroundColor: getAvatarBgColor(author.name) }}
                   >
                     {author.name.charAt(0)}
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg sm:text-xl text-[#1c1917] flex items-center gap-2">
+                    <h3 className="font-bold text-lg sm:text-xl text-[#1c1917] flex items-center gap-2 group-hover:text-[#2563eb] transition-colors">
                       {author.name}
                       <span className="inline-flex items-center justify-center h-4 w-4 rounded-full bg-stone-700 text-white text-[10px]">
                         ✓
@@ -534,7 +539,7 @@ export default function PlaybookDetailView({
                       {getAuthorFollowersCount(author.name)}
                     </p>
                   </div>
-                </div>
+                </Link>
 
                 {/* Follow / Following Button */}
                 <div>
@@ -553,7 +558,7 @@ export default function PlaybookDetailView({
                         followAuthor({
                           name: author.name,
                           avatarBg: getAvatarBgColor(author.name),
-                          slug: playbook.slug,
+                          slug: slugifyAuthorName(author.name),
                         });
                         setIsFollowingAuthor(true);
                       }}
