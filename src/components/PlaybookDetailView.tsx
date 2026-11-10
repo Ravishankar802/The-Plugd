@@ -31,6 +31,7 @@ import {
   getChapterPageRange,
   getReadingStats,
   getAuthorProfile,
+  getAuthorFollowersCount,
   getCuratedCommunityReviews,
   getAvatarBgColor,
   getRelativePublishedTime,
@@ -522,12 +523,17 @@ export default function PlaybookDetailView({
                   >
                     {author.name.charAt(0)}
                   </div>
-                  <h3 className="font-bold text-lg sm:text-xl text-[#1c1917] flex items-center gap-2">
-                    {author.name}
-                    <span className="inline-flex items-center justify-center h-4 w-4 rounded-full bg-stone-700 text-white text-[10px]">
-                      ✓
-                    </span>
-                  </h3>
+                  <div>
+                    <h3 className="font-bold text-lg sm:text-xl text-[#1c1917] flex items-center gap-2">
+                      {author.name}
+                      <span className="inline-flex items-center justify-center h-4 w-4 rounded-full bg-stone-700 text-white text-[10px]">
+                        ✓
+                      </span>
+                    </h3>
+                    <p className="text-xs sm:text-[13px] text-[#78716c] font-medium mt-0.5">
+                      {getAuthorFollowersCount(author.name)}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Follow / Following Button */}

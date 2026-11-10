@@ -12,6 +12,72 @@ export interface BookReview {
   likes: number;
 }
 
+export const AUTHOR_FOLLOWERS_MAP: Record<string, string> = {
+  "Brady Lawson": "24.1k followers",
+  "Ryan Walsh": "22.4k followers",
+  "Akhil Varma": "22.3k followers",
+  "Jordan Hayes": "21.0k followers",
+  "Bryce Holloway": "16.8k followers",
+  "Jason Teo": "15.2k followers",
+  "Dylan Scott": "14.8k followers",
+  "Eduardo Martins": "13.8k followers",
+  "Alex Turner": "13.6k followers",
+  "Felix Weber": "12.5k followers",
+  "Diego Valera": "11.8k followers",
+  "Caleb Sterling": "11.7k followers",
+  "Kelvin Ng": "10.4k followers",
+  "Nathan Cole": "10.4k followers",
+  "Sean Mitchell": "9.6k followers",
+  "Sean O'Brien": "8.6k followers",
+  "Sneha Mishra": "8.2k followers",
+  "Jack Robertson": "8.2k followers",
+  "Seiji Kai-Lun": "8.1k followers",
+  "Terence Chew": "7.5k followers",
+  "Jiho Kim": "7.2k followers",
+  "Liam Foster": "7.0k followers",
+  "Ritu Sharma": "6.9k followers",
+  "Martim Neves": "6.7k followers",
+  "Naveen Shetty": "6.6k followers",
+  "Pranav Joshi": "6.3k followers",
+  "Alistair Boyd": "6.2k followers",
+  "Austin Bailey": "5.9k followers",
+  "Rishabh Jain": "5.4k followers",
+  "Anjali Yadav": "5.3k followers",
+  "Tejas Patil": "5.3k followers",
+  "Rafael Mendes": "5.1k followers",
+  "Manish Yadav": "5.1k followers",
+  "Shawn Lim": "4.6k followers",
+  "Kunal Raj": "4.1k followers",
+  "Myles Grant": "3.9k followers",
+  "Preston McCoy": "3.8k followers",
+  "Elias Andersen": "3.1k followers",
+  "Divya Tiwari": "2.9k followers",
+  "Thomas Visser": "2.8k followers",
+  "Darshan Hegde": "2.8k followers",
+  "Austin Mercer": "2.6k followers",
+  "Kyle Donovan": "2.6k followers",
+  "Moritz Klein": "2.4k followers",
+  "Yash Thakur": "2.3k followers",
+  "Stefan Müller": "2.3k followers",
+  "Franco Medina": "2.1k followers",
+  "Adrian Teoh": "2.1k followers",
+  "Owen Bradley": "2.0k followers",
+  "Luka Horvat": "2.0k followers",
+  "Marco Romano": "1.9k followers",
+  "Ronit Meitei": "1.8k followers",
+  "Jacob Wilson": "1.7k followers",
+  "Andre Simmons": "1.6k followers",
+  "Niall Brennan": "1.6k followers",
+  "Byron Matthews": "1.4k followers",
+  "Sergio Torres": "1.3k followers",
+};
+
+export function getAuthorFollowersCount(authorName: string): string {
+  if (!authorName) return "2.1k followers";
+  const trimmed = authorName.trim();
+  return AUTHOR_FOLLOWERS_MAP[trimmed] || "2.1k followers";
+}
+
 export interface AuthorProfile {
   name: string;
   avatar: string;
