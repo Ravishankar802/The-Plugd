@@ -228,7 +228,7 @@ export default function YouTubeSidebar({
               }`}
             >
               <BookOpen className="h-5 w-5 text-[#57534e]" />
-              <span>Your Playbooks</span>
+              <span>My Library</span>
             </Link>
 
             <button
@@ -240,7 +240,7 @@ export default function YouTubeSidebar({
               className="w-full flex items-center gap-4 px-3 py-2.5 rounded-xl font-medium text-[#1c1917] hover:bg-black/5 transition-colors cursor-pointer text-left"
             >
               <ShoppingBag className="h-5 w-5 text-[#57534e]" />
-              <span>Your Cart</span>
+              <span>My Cart</span>
             </button>
           </div>
 

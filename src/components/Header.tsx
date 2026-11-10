@@ -255,18 +255,18 @@ export default function Header({
                           className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#1c1917] hover:bg-black/5 transition-colors"
                         >
                           <BookOpen className="h-4 w-4 text-[#78716c]" />
-                          <span>Your Playbooks</span>
+                          <span>My Library</span>
                         </Link>
                         <button
                           type="button"
                           onClick={() => {
                             setIsProfileOpen(false);
-                            setIsCartOpen(true);
+                            handleOpenCart();
                           }}
                           className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#1c1917] hover:bg-black/5 transition-colors text-left cursor-pointer"
                         >
                           <ShoppingBag className="h-4 w-4 text-[#78716c]" />
-                          <span>Your Cart</span>
+                          <span>My Cart</span>
                         </button>
                         <div className="border-t border-[#e7e5e4] my-1" />
                         <button
@@ -485,18 +485,18 @@ export default function Header({
                         className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#1c1917] hover:bg-black/5 transition-colors"
                       >
                         <BookOpen className="h-4 w-4 text-[#78716c]" />
-                        <span>Your Playbooks</span>
+                        <span>My Library</span>
                       </Link>
                       <button
                         type="button"
                         onClick={() => {
                           setIsProfileOpen(false);
-                          setIsCartOpen(true);
+                          handleOpenCart();
                         }}
                         className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#1c1917] hover:bg-black/5 transition-colors text-left cursor-pointer"
                       >
                         <ShoppingBag className="h-4 w-4 text-[#78716c]" />
-                        <span>Your Cart</span>
+                        <span>My Cart</span>
                       </button>
                       <div className="border-t border-[#e7e5e4] my-1" />
                       <button

@@ -55,12 +55,12 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
         className={`fixed top-0 bottom-0 right-0 z-[100] w-80 sm:w-96 bg-[#faf8f5] text-[#1c1917] border-l border-[#dcd8d0] shadow-2xl flex flex-col transition-transform duration-250 ease-out ${
           isOpen ? "translate-x-0 pointer-events-auto" : "translate-x-full pointer-events-none"
         }`}
-        aria-label="Your Cart"
+        aria-label="My Cart"
       >
         <div className="flex h-[56px] items-center justify-between px-5 border-b border-[#e7e5e4] shrink-0">
           <div className="flex items-center gap-2 font-bold text-base text-[#1c1917]">
             <ShoppingBag className="h-4 w-4 text-[#2563eb]" />
-            <span>Your Cart</span>
+            <span>My Cart</span>
           </div>
           <button
             type="button"
@@ -78,7 +78,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
             <ShoppingBag className="h-8 w-8 text-[#a8a29e]" />
           </div>
           <div className="space-y-1 max-w-xs">
-            <h4 className="font-bold text-base text-[#1c1917]">Your Cart is empty</h4>
+            <h4 className="font-bold text-base text-[#1c1917]">My Cart is empty</h4>
             <p className="text-xs text-[#78716c] leading-relaxed">
               Explore 101 practical playbooks across AI, wealth, digital products, and high-income side hustles.
             </p>
