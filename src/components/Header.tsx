@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -114,20 +114,27 @@ export default function Header({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const handleOpenSidebar = useCallback(() => setIsSidebarOpen(true), []);
+  const handleCloseSidebar = useCallback(() => setIsSidebarOpen(false), []);
+  const handleOpenCart = useCallback(() => setIsCartOpen(true), []);
+  const handleCloseCart = useCallback(() => setIsCartOpen(false), []);
+  const handleOpenCreate = useCallback(() => setIsCreateOpen(true), []);
+  const handleCloseCreate = useCallback(() => setIsCreateOpen(false), []);
+
   // Shared YouTube Sidebar & Modals
   const sidebarAndModals = (
     <>
       <YouTubeSidebar
         isOpen={isSidebarOpen}
-        onClose={() => setIsSidebarOpen(false)}
+        onClose={handleCloseSidebar}
         isSignedIn={isSignedIn}
-        onOpenCart={() => setIsCartOpen(true)}
+        onOpenCart={handleOpenCart}
       />
       <CreatePlaybookModal
         isOpen={isCreateOpen}
-        onClose={() => setIsCreateOpen(false)}
+        onClose={handleCloseCreate}
       />
-      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <CartDrawer isOpen={isCartOpen} onClose={handleCloseCart} />
     </>
   );
 
@@ -142,7 +149,7 @@ export default function Header({
             <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
               <button
                 type="button"
-                onClick={() => setIsSidebarOpen(true)}
+                onClick={handleOpenSidebar}
                 className="p-2 -ml-1.5 rounded-full hover:bg-black/5 text-[#1c1917] transition-colors cursor-pointer"
                 aria-label="Guide / Sidebar menu"
                 title="Sidebar"
@@ -301,7 +308,7 @@ export default function Header({
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={() => setIsSidebarOpen(true)}
+                onClick={handleOpenSidebar}
                 className="p-2 -ml-2 rounded-full hover:bg-black/5 text-[#1c1917] transition-colors cursor-pointer"
                 aria-label="Open sidebar menu"
               >
@@ -406,7 +413,7 @@ export default function Header({
           <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={() => setIsSidebarOpen(true)}
+              onClick={handleOpenSidebar}
               className="p-2 -ml-1.5 rounded-full hover:bg-black/5 text-[#1c1917] transition-colors cursor-pointer"
               aria-label="Guide / Sidebar menu"
               title="Sidebar"

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -11,7 +12,6 @@ import {
   ShoppingBag,
   ChevronRight,
   User,
-  X,
 } from "lucide-react";
 import { getFollowedAuthors, type FollowedAuthor } from "@/lib/following-store";
 import { getAvatarBgColor } from "@/lib/book-utils";
@@ -30,7 +30,17 @@ export default function YouTubeSidebar({
   onOpenCart,
 }: YouTubeSidebarProps) {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
   const [followedAuthors, setFollowedAuthors] = useState<FollowedAuthor[]>([]);
+
+  const onCloseRef = useRef(onClose);
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const update = () => {
@@ -50,7 +60,9 @@ export default function YouTubeSidebar({
     if (isOpen) {
       document.body.style.overflow = "hidden";
       const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Escape") onClose();
+        if (e.key === "Escape") {
+          onCloseRef.current?.();
+        }
       };
       window.addEventListener("keydown", handleKeyDown);
       return () => {
@@ -60,18 +72,24 @@ export default function YouTubeSidebar({
     } else {
       document.body.style.overflow = "";
     }
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
-  // Close drawer on route change
+  // Close drawer ONLY when route actually changes
+  const prevPathnameRef = useRef(pathname);
   useEffect(() => {
-    onClose();
-  }, [pathname, onClose]);
+    if (prevPathnameRef.current !== pathname) {
+      prevPathnameRef.current = pathname;
+      onCloseRef.current?.();
+    }
+  }, [pathname]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <>
       {/* Backdrop */}
       <div
-        className={`fixed inset-0 z-50 bg-black/50 backdrop-blur-2xs transition-opacity duration-200 ${
+        className={`fixed inset-0 z-[99] bg-black/50 backdrop-blur-2xs transition-opacity duration-200 ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={onClose}
@@ -80,8 +98,8 @@ export default function YouTubeSidebar({
 
       {/* Drawer */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-64 sm:w-72 bg-[#faf8f5] text-[#1c1917] border-r border-[#dcd8d0] shadow-2xl flex flex-col transition-transform duration-250 ease-out ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed top-0 bottom-0 left-0 z-[100] w-64 sm:w-72 bg-[#faf8f5] text-[#1c1917] border-r border-[#dcd8d0] shadow-2xl flex flex-col transition-transform duration-250 ease-out ${
+          isOpen ? "translate-x-0 pointer-events-auto" : "-translate-x-full pointer-events-none"
         }`}
         aria-label="Sidebar navigation"
       >
@@ -246,6 +264,7 @@ export default function YouTubeSidebar({
           )}
         </div>
       </aside>
-    </>
+    </>,
+    document.body
   );
 }

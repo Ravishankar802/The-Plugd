@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { X, ShoppingBag, ArrowRight } from "lucide-react";
 
@@ -10,11 +11,21 @@ interface CartDrawerProps {
 }
 
 export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
+  const [mounted, setMounted] = useState(false);
+  const onCloseRef = useRef(onClose);
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
       const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Escape") onClose();
+        if (e.key === "Escape") onCloseRef.current?.();
       };
       window.addEventListener("keydown", handleKeyDown);
       return () => {
@@ -24,13 +35,15 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
     } else {
       document.body.style.overflow = "";
     }
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <>
       {/* Backdrop */}
       <div
-        className={`fixed inset-0 z-50 bg-black/50 backdrop-blur-2xs transition-opacity duration-200 ${
+        className={`fixed inset-0 z-[99] bg-black/50 backdrop-blur-2xs transition-opacity duration-200 ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={onClose}
@@ -39,8 +52,8 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
       {/* Drawer */}
       <aside
-        className={`fixed top-0 bottom-0 right-0 z-50 w-80 sm:w-96 bg-[#faf8f5] text-[#1c1917] border-l border-[#dcd8d0] shadow-2xl flex flex-col transition-transform duration-250 ease-out ${
-          isOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 bottom-0 right-0 z-[100] w-80 sm:w-96 bg-[#faf8f5] text-[#1c1917] border-l border-[#dcd8d0] shadow-2xl flex flex-col transition-transform duration-250 ease-out ${
+          isOpen ? "translate-x-0 pointer-events-auto" : "translate-x-full pointer-events-none"
         }`}
         aria-label="Your Cart"
       >
@@ -80,6 +93,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
           </Link>
         </div>
       </aside>
-    </>
+    </>,
+    document.body
   );
 }

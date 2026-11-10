@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import { X, Sparkles, Check, ArrowRight, BookOpen, Layers } from "lucide-react";
 
 interface CreatePlaybookModalProps {
@@ -12,15 +13,25 @@ export default function CreatePlaybookModal({
   isOpen,
   onClose,
 }: CreatePlaybookModalProps) {
+  const [mounted, setMounted] = useState(false);
   const [topic, setTopic] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const onCloseRef = useRef(onClose);
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
       const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Escape") onClose();
+        if (e.key === "Escape") onCloseRef.current?.();
       };
       window.addEventListener("keydown", handleKeyDown);
       return () => {
@@ -30,9 +41,9 @@ export default function CreatePlaybookModal({
     } else {
       document.body.style.overflow = "";
     }
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!mounted || !isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,9 +55,9 @@ export default function CreatePlaybookModal({
     }, 600);
   };
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 bg-black/50 backdrop-blur-2xs flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-2xs flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div
@@ -156,6 +167,7 @@ export default function CreatePlaybookModal({
           </form>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

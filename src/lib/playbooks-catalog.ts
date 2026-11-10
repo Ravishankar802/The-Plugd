@@ -1284,7 +1284,7 @@ export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
     "hoursOfMaterial": "8.5 hours",
 
     "rating": 4.4,
-    "ratingCount": "731k",
+    "ratingCount": "1.7k",
       "publishedAt": "2026-10-08",
     "href": "/the-blueprint-to-go-from-0-to-1000000"
   },
