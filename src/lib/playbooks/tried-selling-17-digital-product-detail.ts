@@ -9,10 +9,10 @@ export const I_TRIED_SELLING_17_DIGITAL_PRODUCT_DETAIL_DATA: PlaybookDetailData 
   description: "**Launch a $17 digital product, build a complete sales funnel, run paid ads, and learn how to turn clicks into customers — with a real-world experiment that reveals what actually makes money and what eats your profit.**\n\nLearn how to create and package a digital product, build a high-converting sales page, set up checkout and upsells, and launch Meta ad campaigns to attract buyers. Follow a real $1,000-in-10-days experiment that generated $623 in revenue but only $46 in reported profit, uncovering the mistakes, advertising lessons, pricing strategies, and funnel optimisations that every digital product seller should understand. Includes practical templates, tracking sheets, checklists, and a step-by-step launch framework.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "0.4k",

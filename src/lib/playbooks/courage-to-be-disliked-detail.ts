@@ -9,10 +9,10 @@ export const COURAGE_TO_BE_DISLIKED_DETAIL_DATA: PlaybookDetailData = {
   description: "**Stop living for everyone else's approval. Discover how to break free from comparison, set boundaries, accept yourself, and finally live life on your own terms.**\n\nExplore the five-night journey of The Courage to Be Disliked and its most powerful ideas on personal freedom, relationships, self-acceptance, and living in the present. Learn to separate your responsibilities from other people's expectations, escape the trap of comparison, and build healthier relationships — while examining the book's most controversial arguments through an honest, balanced review. Includes practical exercises, reflection prompts, and a seven-day plan to put the ideas into practice.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.7,
   ratingCount: "0.5k",

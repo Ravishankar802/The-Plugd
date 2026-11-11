@@ -9,10 +9,10 @@ export const HOW_ID_START_20K_MONTH_AI_AGENCY_DETAIL_DATA: PlaybookDetailData = 
   description: "**Build an AI agency that sells business results, not just AI tools. Find profitable niches, land high-value clients, partner with developers, and turn real business problems into a $20K/month agency opportunity — with a focused 30-day launch roadmap.**\n\nLearn how to launch an AI implementation agency using Claude for market research, niche selection, offer creation, prospecting, audits, and sales preparation. From finding business owners with expensive operational problems to closing projects, coordinating developers, delivering AI systems, and building recurring revenue, this playbook breaks down the entire agency-building process.\n\nIncludes Claude prompts, niche scorecards, outreach scripts, discovery call frameworks, proposal structures, pricing models, client delivery checklists, and a practical 30-day execution plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 2,
+  originalPrice: 4.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.9,
   ratingCount: "0.1k",

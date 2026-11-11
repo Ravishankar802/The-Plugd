@@ -2056,7 +2056,7 @@ export const HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_COURSE: Course = {
   subheadline: "Stop working harder on businesses with limited upside. Choose a vehicle with superior economics and compounding enterprise value.",
   description: "Explore five business categories, from accessible cash-flow opportunities and expert-led businesses to defensible enterprises and overlooked markets with favourable supply-demand economics. Learn how to evaluate business ideas through margins, scalability, recurring demand, competitive moats, and founder independence. Includes practical scorecards, decision-making worksheets, and a 30-day sprint to identify and validate your next business opportunity.",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 6.99,
   currency: "USD",
   rating: 4.9,
   ratingCount: "0.1k",

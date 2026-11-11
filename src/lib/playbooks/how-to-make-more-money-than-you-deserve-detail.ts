@@ -10,9 +10,9 @@ export const HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_DETAIL_DATA: PlaybookDetail
   categoryName: "AI",
   categorySlug: "ai-businesses",
   price: 3,
-  originalPrice: 9,
+  originalPrice: 6.99,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 57,
 
   rating: 4.9,
   ratingCount: "0.1k",

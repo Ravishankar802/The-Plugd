@@ -9,10 +9,10 @@ export const IF_I_HAD_0_FIRST_1_LAKH_DETAIL_DATA: PlaybookDetailData = {
   description: "**Starting with ₹0? Build a skill people will pay for, land your first client, turn your work into proof, and create a realistic path towards your first ₹1 lakh.**\n\nDiscover a practical, step-by-step approach to earning your first money without an audience, investment, or existing network. Learn how to choose a high-demand skill, create a compelling service offer, build portfolio samples, find qualified prospects, win your first client, and turn successful projects into recurring income and referrals. Includes outreach scripts, pricing frameworks, worksheets, and a client acquisition roadmap.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.8,
   ratingCount: "0.2k",

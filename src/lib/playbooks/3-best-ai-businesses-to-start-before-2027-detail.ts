@@ -9,10 +9,10 @@ export const THREE_BEST_AI_BUSINESSES_BEFORE_2027_DETAIL_DATA: PlaybookDetailDat
   description: "**Three AI businesses. Three paths to $1,000 a day. Discover how to launch an AI agency, sell digital products, or build an AI-powered e-commerce brand — and find the business model with the potential to scale.**\n\nExplore three practical AI business models, from landing your first agency client and creating digital products to launching a physical-product brand with AI-powered research and marketing. Learn how to validate demand, build compelling offers, find customers, manage delivery, calculate real profit margins, and scale without letting operations become your biggest bottleneck.\n\nIncludes business-selection scorecards, outreach scripts, product validation frameworks, unit-economics worksheets, launch checklists, and a practical 30-day execution plan.",
   categoryName: "AI",
   categorySlug: "ai-businesses",
-  price: 3,
-  originalPrice: 9,
+  price: 1,
+  originalPrice: 2.49,
   currency: "USD",
-  discountPercentage: 67,
+  discountPercentage: 60,
 
   rating: 4.7,
   ratingCount: "0.2k",
