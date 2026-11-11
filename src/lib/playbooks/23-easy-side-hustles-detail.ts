@@ -129,7 +129,7 @@ export const I_TRIED_23_EASY_SIDE_HUSTLES_DETAIL_DATA: PlaybookDetailData = {
       rating: 5,
       quote: "I liked that this doesn't pretend every side hustle is a shortcut to getting rich. The four categories made it much easier to understand where to start and which opportunities are worth pursuing.",
       initials: "B",
-      date: "August 04 2026"
+      date: "October 31, 2026"
     },
     {
       name: "Caleb",
@@ -137,7 +137,7 @@ export const I_TRIED_23_EASY_SIDE_HUSTLES_DETAIL_DATA: PlaybookDetailData = {
       rating: 5,
       quote: "The breakdown of skill-based income versus building something scalable was genuinely useful. I came for side-hustle ideas and ended up with a much clearer plan for what to focus on first.",
       initials: "C",
-      date: "August 08 2026"
+      date: "November 03, 2026"
     },
     {
       name: "Fernández",
@@ -145,7 +145,7 @@ export const I_TRIED_23_EASY_SIDE_HUSTLES_DETAIL_DATA: PlaybookDetailData = {
       rating: 5,
       quote: "So many ideas, but what makes this valuable is the practical detail. The profit calculations, checklists, and warnings about scams make it feel like an actual guide rather than another list of money-making methods.",
       initials: "F",
-      date: "August 14 2026"
+      date: "November 06, 2026"
     },
     {
       name: "Darius",
@@ -153,7 +153,7 @@ export const I_TRIED_23_EASY_SIDE_HUSTLES_DETAIL_DATA: PlaybookDetailData = {
       rating: 5,
       quote: "The 30-day plan is my favourite part. Instead of trying ten things at once, it helps you pick an opportunity, test it, track the numbers, and decide what to do next. Very practical.",
       initials: "D",
-      date: "August 21 2026"
+      date: "November 09, 2026"
     }
   ]
 };

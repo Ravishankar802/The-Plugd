@@ -113,7 +113,7 @@ export const HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_DETAIL_DATA: PlaybookDetail
       rating: 5,
       quote: "An excellent framework for thinking beyond the usual startup advice. The distinction between building a high-income business and building an actual asset was particularly eye-opening. I've started evaluating opportunities very differently.",
       initials: "O",
-      date: "August 04 2026"
+      date: "November 09, 2026"
     },
     {
       name: "Chloe",
@@ -121,7 +121,7 @@ export const HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_DETAIL_DATA: PlaybookDetail
       rating: 5,
       quote: "I appreciated how this breaks down business economics without making everything sound like a get-rich-quick scheme. The sections on competitive moats and supply-demand gaps are especially valuable. Definitely worth working through.",
       initials: "C",
-      date: "August 08 2026"
+      date: "November 10, 2026"
     },
     {
       name: "Lucas",
@@ -129,7 +129,7 @@ export const HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_DETAIL_DATA: PlaybookDetail
       rating: 5,
       quote: "What stood out to me was the idea of choosing the right vehicle before committing years of effort. The scorecards and worksheets make the concepts practical rather than just theoretical. A genuinely useful business resource.",
       initials: "L",
-      date: "August 14 2026"
+      date: "November 10, 2026"
     },
     {
       name: "Amelia",
@@ -137,7 +137,7 @@ export const HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_DETAIL_DATA: PlaybookDetail
       rating: 5,
       quote: "This made me reconsider several business ideas I had been excited about. I especially liked the discussion around founder dependence, recurring revenue, and what makes a company transferable. Clear, structured, and full of useful questions to ask before taking the leap.",
       initials: "A",
-      date: "August 21 2026"
+      date: "November 11, 2026"
     }
   ],
   faqs: [

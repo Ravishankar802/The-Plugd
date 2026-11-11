@@ -113,7 +113,7 @@ export const I_TRIED_SELLING_17_DIGITAL_PRODUCT_DETAIL_DATA: PlaybookDetailData 
       rating: 5,
       quote: "Finally, a digital product guide that talks about profit instead of just showing revenue screenshots. The real experiment and its mistakes made this incredibly useful.",
       initials: "P",
-      date: "August 04 2026"
+      date: "October 28, 2026"
     },
     {
       name: "Shreya",
@@ -121,7 +121,7 @@ export const I_TRIED_SELLING_17_DIGITAL_PRODUCT_DETAIL_DATA: PlaybookDetailData 
       rating: 5,
       quote: "The advertising and funnel sections are excellent. I especially liked the breakdown of Meta Ads, upsells, tracking, and knowing when to stop spending.",
       initials: "S",
-      date: "August 08 2026"
+      date: "November 01, 2026"
     },
     {
       name: "Anthony",
@@ -129,7 +129,7 @@ export const I_TRIED_SELLING_17_DIGITAL_PRODUCT_DETAIL_DATA: PlaybookDetailData 
       rating: 5,
       quote: "Very practical from start to finish. The product validation, sales page structure, and launch checklists give you an actual system to follow instead of vague advice.",
       initials: "A",
-      date: "August 14 2026"
+      date: "November 05, 2026"
     },
     {
       name: "Varun",
@@ -137,7 +137,7 @@ export const I_TRIED_SELLING_17_DIGITAL_PRODUCT_DETAIL_DATA: PlaybookDetailData 
       rating: 5,
       quote: "The $623 revenue versus $46 profit breakdown was an eye-opener. It completely changed how I think about running ads and measuring a digital product business.",
       initials: "V",
-      date: "August 21 2026"
+      date: "November 09, 2026"
     }
   ],
   faqs: [

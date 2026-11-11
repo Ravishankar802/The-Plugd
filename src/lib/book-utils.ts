@@ -1425,41 +1425,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Adrian",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "November 10, 2026",
       "rating": 5,
       "headline": "",
       "content": "This is one of the clearest explanations I've seen of how to start an AI agency without being the person building everything. The deal-originator model, niche selection, and developer partnership approach made the business feel much more understandable.",
-      "likes": 121
+      "likes": 24
     },
     {
       "id": "rev-2",
       "name": "Valentina",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "November 10, 2026",
       "rating": 5,
       "headline": "",
       "content": "The sales process is what stood out to me. Instead of randomly pitching AI services, you learn how to identify an actual business problem, run discovery calls, prepare a tailored demo, and present a solution that makes sense.",
-      "likes": 109
+      "likes": 18
     },
     {
       "id": "rev-3",
       "name": "Omar",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 11, 2026",
       "rating": 5,
       "headline": "",
       "content": "Really useful frameworks throughout. The Claude prompts alone save a lot of time, especially for researching niches, preparing prospect audits, and structuring offers. I also appreciated the sections on delivery costs and client expectations.",
-      "likes": 90
+      "likes": 11
     },
     {
       "id": "rev-4",
       "name": "Brooke",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 11, 2026",
       "rating": 5,
       "headline": "",
       "content": "What I liked most is that it covers what happens after you get the client. Scoping, developer coordination, deposits, delivery, support, and recurring revenue are all addressed. It feels much more complete than a typical AI agency guide.",
-      "likes": 84
+      "likes": 7
     }
   ],
   "ai-businesses-111": [
@@ -1467,41 +1467,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Adrian",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "November 10, 2026",
       "rating": 5,
       "headline": "",
       "content": "This is one of the clearest explanations I've seen of how to start an AI agency without being the person building everything. The deal-originator model, niche selection, and developer partnership approach made the business feel much more understandable.",
-      "likes": 121
+      "likes": 24
     },
     {
       "id": "rev-2",
       "name": "Valentina",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "November 10, 2026",
       "rating": 5,
       "headline": "",
       "content": "The sales process is what stood out to me. Instead of randomly pitching AI services, you learn how to identify an actual business problem, run discovery calls, prepare a tailored demo, and present a solution that makes sense.",
-      "likes": 109
+      "likes": 18
     },
     {
       "id": "rev-3",
       "name": "Omar",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 11, 2026",
       "rating": 5,
       "headline": "",
       "content": "Really useful frameworks throughout. The Claude prompts alone save a lot of time, especially for researching niches, preparing prospect audits, and structuring offers. I also appreciated the sections on delivery costs and client expectations.",
-      "likes": 90
+      "likes": 11
     },
     {
       "id": "rev-4",
       "name": "Brooke",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 11, 2026",
       "rating": 5,
       "headline": "",
       "content": "What I liked most is that it covers what happens after you get the client. Scoping, developer coordination, deposits, delivery, support, and recurring revenue are all addressed. It feels much more complete than a typical AI agency guide.",
-      "likes": 84
+      "likes": 7
     }
   ],
   "i-tried-23-easy-side-hustles-that-actually-worked-copy-my-10-000-month-strategy": [
@@ -1509,41 +1509,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Bennett",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "October 31, 2026",
       "rating": 5,
       "headline": "",
       "content": "I liked that this doesn't pretend every side hustle is a shortcut to getting rich. The four categories made it much easier to understand where to start and which opportunities are worth pursuing.",
-      "likes": 121
+      "likes": 78
     },
     {
       "id": "rev-2",
       "name": "Caleb",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "November 03, 2026",
       "rating": 5,
       "headline": "",
       "content": "The breakdown of skill-based income versus building something scalable was genuinely useful. I came for side-hustle ideas and ended up with a much clearer plan for what to focus on first.",
-      "likes": 109
+      "likes": 61
     },
     {
       "id": "rev-3",
       "name": "Fernández",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 06, 2026",
       "rating": 5,
       "headline": "",
       "content": "So many ideas, but what makes this valuable is the practical detail. The profit calculations, checklists, and warnings about scams make it feel like an actual guide rather than another list of money-making methods.",
-      "likes": 90
+      "likes": 44
     },
     {
       "id": "rev-4",
       "name": "Darius",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 09, 2026",
       "rating": 5,
       "headline": "",
       "content": "The 30-day plan is my favourite part. Instead of trying ten things at once, it helps you pick an opportunity, test it, track the numbers, and decide what to do next. Very practical.",
-      "likes": 84
+      "likes": 29
     }
   ],
   "ai-businesses-110": [
@@ -1551,41 +1551,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Bennett",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "October 31, 2026",
       "rating": 5,
       "headline": "",
       "content": "I liked that this doesn't pretend every side hustle is a shortcut to getting rich. The four categories made it much easier to understand where to start and which opportunities are worth pursuing.",
-      "likes": 121
+      "likes": 78
     },
     {
       "id": "rev-2",
       "name": "Caleb",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "November 03, 2026",
       "rating": 5,
       "headline": "",
       "content": "The breakdown of skill-based income versus building something scalable was genuinely useful. I came for side-hustle ideas and ended up with a much clearer plan for what to focus on first.",
-      "likes": 109
+      "likes": 61
     },
     {
       "id": "rev-3",
       "name": "Fernández",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 06, 2026",
       "rating": 5,
       "headline": "",
       "content": "So many ideas, but what makes this valuable is the practical detail. The profit calculations, checklists, and warnings about scams make it feel like an actual guide rather than another list of money-making methods.",
-      "likes": 90
+      "likes": 44
     },
     {
       "id": "rev-4",
       "name": "Darius",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 09, 2026",
       "rating": 5,
       "headline": "",
       "content": "The 30-day plan is my favourite part. Instead of trying ten things at once, it helps you pick an opportunity, test it, track the numbers, and decide what to do next. Very practical.",
-      "likes": 84
+      "likes": 29
     }
   ],
   "3-best-ai-businesses-to-start-before-2027-1000-day": [
@@ -1593,41 +1593,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Alex",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "November 06, 2026",
       "rating": 5,
       "headline": "",
       "content": "Really liked how this breaks down three completely different business models instead of pretending there's one perfect AI business for everyone. The comparison section helped me understand where to start based on my skills and budget.",
-      "likes": 121
+      "likes": 53
     },
     {
       "id": "rev-2",
       "name": "Freya",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "November 07, 2026",
       "rating": 5,
       "headline": "",
       "content": "The AI agency section is excellent. I especially appreciated the outreach examples, service breakdowns, and advice on running a small pilot before committing to a full client relationship. Very practical.",
-      "likes": 109
+      "likes": 38
     },
     {
       "id": "rev-3",
       "name": "Luca",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 09, 2026",
       "rating": 5,
       "headline": "",
       "content": "Much more useful than another generic AI side-hustle guide. The digital product and e-commerce sections explain the actual work involved, especially validation, supplier research, and understanding the numbers before scaling.",
-      "likes": 90
+      "likes": 26
     },
     {
       "id": "rev-4",
       "name": "Naomi",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 10, 2026",
       "rating": 5,
       "headline": "",
       "content": "Loved the structure and the 30-day execution plan. It doesn't just throw business ideas at you; it explains how to test them, find customers, track expenses, and decide whether to keep going or change direction. A genuinely useful resource.",
-      "likes": 84
+      "likes": 17
     }
   ],
   "ai-businesses-109": [
@@ -1635,41 +1635,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Alex",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "November 06, 2026",
       "rating": 5,
       "headline": "",
       "content": "Really liked how this breaks down three completely different business models instead of pretending there's one perfect AI business for everyone. The comparison section helped me understand where to start based on my skills and budget.",
-      "likes": 121
+      "likes": 53
     },
     {
       "id": "rev-2",
       "name": "Freya",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "November 07, 2026",
       "rating": 5,
       "headline": "",
       "content": "The AI agency section is excellent. I especially appreciated the outreach examples, service breakdowns, and advice on running a small pilot before committing to a full client relationship. Very practical.",
-      "likes": 109
+      "likes": 38
     },
     {
       "id": "rev-3",
       "name": "Luca",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 09, 2026",
       "rating": 5,
       "headline": "",
       "content": "Much more useful than another generic AI side-hustle guide. The digital product and e-commerce sections explain the actual work involved, especially validation, supplier research, and understanding the numbers before scaling.",
-      "likes": 90
+      "likes": 26
     },
     {
       "id": "rev-4",
       "name": "Naomi",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 10, 2026",
       "rating": 5,
       "headline": "",
       "content": "Loved the structure and the 30-day execution plan. It doesn't just throw business ideas at you; it explains how to test them, find customers, track expenses, and decide whether to keep going or change direction. A genuinely useful resource.",
-      "likes": 84
+      "likes": 17
     }
   ],
   "how-to-build-sell-ai-digital-products-2027-full-guide": [
@@ -1677,41 +1677,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Sophie",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "November 07, 2026",
       "rating": 5,
       "headline": "",
       "content": "I used to think I needed to build an entire SaaS product to sell something with AI. This completely changed how I approach digital products. The audience-first framework and AI resource app concept are especially useful.",
-      "likes": 121
+      "likes": 42
     },
     {
       "id": "rev-2",
       "name": "Mason",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "November 08, 2026",
       "rating": 5,
       "headline": "",
       "content": "Probably one of the most practical guides I've read on this topic. It doesn't just tell you to use AI and start selling. It walks through the actual process, from validating an offer to testing payments and getting customers.",
-      "likes": 109
+      "likes": 31
     },
     {
       "id": "rev-3",
       "name": "Kowalska",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 09, 2026",
       "rating": 5,
       "headline": "",
       "content": "The templates and prompts alone make this worth reading. I particularly liked the sections about building a product around one specific customer problem instead of adding random AI features. Very clear and actionable.",
-      "likes": 90
+      "likes": 22
     },
     {
       "id": "rev-4",
       "name": "Nathan",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 10, 2026",
       "rating": 5,
       "headline": "",
       "content": "Great breakdown of the entire process. The launch checklist, customer acquisition strategies, and 30-day plan make it much easier to know what to do next. Especially useful if you're starting from scratch and don't want to waste months building the wrong thing.",
-      "likes": 84
+      "likes": 15
     }
   ],
   "ai-businesses-108": [
@@ -1719,41 +1719,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Sophie",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "November 07, 2026",
       "rating": 5,
       "headline": "",
       "content": "I used to think I needed to build an entire SaaS product to sell something with AI. This completely changed how I approach digital products. The audience-first framework and AI resource app concept are especially useful.",
-      "likes": 121
+      "likes": 42
     },
     {
       "id": "rev-2",
       "name": "Mason",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "November 08, 2026",
       "rating": 5,
       "headline": "",
       "content": "Probably one of the most practical guides I've read on this topic. It doesn't just tell you to use AI and start selling. It walks through the actual process, from validating an offer to testing payments and getting customers.",
-      "likes": 109
+      "likes": 31
     },
     {
       "id": "rev-3",
       "name": "Kowalska",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 09, 2026",
       "rating": 5,
       "headline": "",
       "content": "The templates and prompts alone make this worth reading. I particularly liked the sections about building a product around one specific customer problem instead of adding random AI features. Very clear and actionable.",
-      "likes": 90
+      "likes": 22
     },
     {
       "id": "rev-4",
       "name": "Nathan",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 10, 2026",
       "rating": 5,
       "headline": "",
       "content": "Great breakdown of the entire process. The launch checklist, customer acquisition strategies, and 30-day plan make it much easier to know what to do next. Especially useful if you're starting from scratch and don't want to waste months building the wrong thing.",
-      "likes": 84
+      "likes": 15
     }
   ],
   "how-to-make-more-money-than-you-deserve-my-2027-framework": [
@@ -1761,41 +1761,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Oliver",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "November 09, 2026",
       "rating": 5,
       "headline": "",
       "content": "An excellent framework for thinking beyond the usual startup advice. The distinction between building a high-income business and building an actual asset was particularly eye-opening. I've started evaluating opportunities very differently.",
-      "likes": 121
+      "likes": 28
     },
     {
       "id": "rev-2",
       "name": "Chloe",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "November 10, 2026",
       "rating": 5,
       "headline": "",
       "content": "I appreciated how this breaks down business economics without making everything sound like a get-rich-quick scheme. The sections on competitive moats and supply-demand gaps are especially valuable. Definitely worth working through.",
-      "likes": 109
+      "likes": 19
     },
     {
       "id": "rev-3",
       "name": "Lucas",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 10, 2026",
       "rating": 5,
       "headline": "",
       "content": "What stood out to me was the idea of choosing the right vehicle before committing years of effort. The scorecards and worksheets make the concepts practical rather than just theoretical. A genuinely useful business resource.",
-      "likes": 90
+      "likes": 14
     },
     {
       "id": "rev-4",
       "name": "Amelia",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 11, 2026",
       "rating": 5,
       "headline": "",
       "content": "This made me reconsider several business ideas I had been excited about. I especially liked the discussion around founder dependence, recurring revenue, and what makes a company transferable. Clear, structured, and full of useful questions to ask before taking the leap.",
-      "likes": 84
+      "likes": 8
     }
   ],
   "ai-businesses-107": [
@@ -1803,41 +1803,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Oliver",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "November 09, 2026",
       "rating": 5,
       "headline": "",
       "content": "An excellent framework for thinking beyond the usual startup advice. The distinction between building a high-income business and building an actual asset was particularly eye-opening. I've started evaluating opportunities very differently.",
-      "likes": 121
+      "likes": 28
     },
     {
       "id": "rev-2",
       "name": "Chloe",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "November 10, 2026",
       "rating": 5,
       "headline": "",
       "content": "I appreciated how this breaks down business economics without making everything sound like a get-rich-quick scheme. The sections on competitive moats and supply-demand gaps are especially valuable. Definitely worth working through.",
-      "likes": 109
+      "likes": 19
     },
     {
       "id": "rev-3",
       "name": "Lucas",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 10, 2026",
       "rating": 5,
       "headline": "",
       "content": "What stood out to me was the idea of choosing the right vehicle before committing years of effort. The scorecards and worksheets make the concepts practical rather than just theoretical. A genuinely useful business resource.",
-      "likes": 90
+      "likes": 14
     },
     {
       "id": "rev-4",
       "name": "Amelia",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 11, 2026",
       "rating": 5,
       "headline": "",
       "content": "This made me reconsider several business ideas I had been excited about. I especially liked the discussion around founder dependence, recurring revenue, and what makes a company transferable. Clear, structured, and full of useful questions to ask before taking the leap.",
-      "likes": 84
+      "likes": 8
     }
   ],
   "i-tried-selling-a-17-digital-product-to-make-1-000-in-10-days": [
@@ -1845,41 +1845,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Pranav",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "October 28, 2026",
       "rating": 5,
       "headline": "",
       "content": "Finally, a digital product guide that talks about profit instead of just showing revenue screenshots. The real experiment and its mistakes made this incredibly useful.",
-      "likes": 121
+      "likes": 92
     },
     {
       "id": "rev-2",
       "name": "Shreya",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "November 01, 2026",
       "rating": 5,
       "headline": "",
       "content": "The advertising and funnel sections are excellent. I especially liked the breakdown of Meta Ads, upsells, tracking, and knowing when to stop spending.",
-      "likes": 109
+      "likes": 76
     },
     {
       "id": "rev-3",
       "name": "Anthony",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 05, 2026",
       "rating": 5,
       "headline": "",
       "content": "Very practical from start to finish. The product validation, sales page structure, and launch checklists give you an actual system to follow instead of vague advice.",
-      "likes": 90
+      "likes": 58
     },
     {
       "id": "rev-4",
       "name": "Varun",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 09, 2026",
       "rating": 5,
       "headline": "",
       "content": "The $623 revenue versus $46 profit breakdown was an eye-opener. It completely changed how I think about running ads and measuring a digital product business.",
-      "likes": 84
+      "likes": 39
     }
   ],
   "ai-businesses-105": [
@@ -1887,41 +1887,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Pranav",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "October 28, 2026",
       "rating": 5,
       "headline": "",
       "content": "Finally, a digital product guide that talks about profit instead of just showing revenue screenshots. The real experiment and its mistakes made this incredibly useful.",
-      "likes": 121
+      "likes": 92
     },
     {
       "id": "rev-2",
       "name": "Shreya",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "November 01, 2026",
       "rating": 5,
       "headline": "",
       "content": "The advertising and funnel sections are excellent. I especially liked the breakdown of Meta Ads, upsells, tracking, and knowing when to stop spending.",
-      "likes": 109
+      "likes": 76
     },
     {
       "id": "rev-3",
       "name": "Anthony",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 05, 2026",
       "rating": 5,
       "headline": "",
       "content": "Very practical from start to finish. The product validation, sales page structure, and launch checklists give you an actual system to follow instead of vague advice.",
-      "likes": 90
+      "likes": 58
     },
     {
       "id": "rev-4",
       "name": "Varun",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 09, 2026",
       "rating": 5,
       "headline": "",
       "content": "The $623 revenue versus $46 profit breakdown was an eye-opener. It completely changed how I think about running ads and measuring a digital product business.",
-      "likes": 84
+      "likes": 39
     }
   ],
   "the-courage-to-be-disliked-summary-my-honest-review": [
@@ -1929,41 +1929,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Ananya Krishnan",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "October 25, 2026",
       "rating": 5,
       "headline": "",
       "content": "Loved how this breaks down the book without blindly agreeing with everything. The practical exercises made the ideas much easier to apply to everyday life.",
-      "likes": 121
+      "likes": 104
     },
     {
       "id": "rev-2",
       "name": "Siddharth Kulkarni",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "October 29, 2026",
       "rating": 5,
       "headline": "",
       "content": "The section on separating your tasks from other people's expectations really hit me. A thoughtful guide that makes you question how much of your life is shaped by seeking approval.",
-      "likes": 109
+      "likes": 88
     },
     {
       "id": "rev-3",
       "name": "Pooja",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 03, 2026",
       "rating": 5,
       "headline": "",
       "content": "More than just a book summary. I especially liked the honest criticism around trauma, relationships, and self-worth. It feels balanced rather than preachy.",
-      "likes": 90
+      "likes": 65
     },
     {
       "id": "rev-4",
       "name": "Karthik",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 08, 2026",
       "rating": 5,
       "headline": "",
       "content": "The seven-day reflection plan is genuinely useful. The ideas about comparison, boundaries, and accepting yourself are explained in a way that actually stays with you.",
-      "likes": 84
+      "likes": 42
     }
   ],
   "ai-businesses-104": [
@@ -1971,41 +1971,41 @@ export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = 
       "id": "rev-1",
       "name": "Ananya Krishnan",
       "avatar": "",
-      "date": "August 04 2026",
+      "date": "October 25, 2026",
       "rating": 5,
       "headline": "",
       "content": "Loved how this breaks down the book without blindly agreeing with everything. The practical exercises made the ideas much easier to apply to everyday life.",
-      "likes": 121
+      "likes": 104
     },
     {
       "id": "rev-2",
       "name": "Siddharth Kulkarni",
       "avatar": "",
-      "date": "August 08 2026",
+      "date": "October 29, 2026",
       "rating": 5,
       "headline": "",
       "content": "The section on separating your tasks from other people's expectations really hit me. A thoughtful guide that makes you question how much of your life is shaped by seeking approval.",
-      "likes": 109
+      "likes": 88
     },
     {
       "id": "rev-3",
       "name": "Pooja",
       "avatar": "",
-      "date": "August 14 2026",
+      "date": "November 03, 2026",
       "rating": 5,
       "headline": "",
       "content": "More than just a book summary. I especially liked the honest criticism around trauma, relationships, and self-worth. It feels balanced rather than preachy.",
-      "likes": 90
+      "likes": 65
     },
     {
       "id": "rev-4",
       "name": "Karthik",
       "avatar": "",
-      "date": "August 21 2026",
+      "date": "November 08, 2026",
       "rating": 5,
       "headline": "",
       "content": "The seven-day reflection plan is genuinely useful. The ideas about comparison, boundaries, and accepting yourself are explained in a way that actually stays with you.",
-      "likes": 84
+      "likes": 42
     }
   ],
   "the-1-000-hour-1-person-ai-business": [
@@ -10730,45 +10730,45 @@ export function getCuratedCommunityReviews(
         id: "rev-1",
         name: "Abhinav Pillai",
         avatar: "",
-        date: "August 04 2026",
+        date: "November 04, 2026",
         rating: 5,
         headline: "",
         content:
           "Exactly the kind of playbook beginners need. It doesn't waste time selling dreams — it shows you how to choose a skill, build proof, and actually approach potential clients.",
-        likes: 121,
+        likes: 64,
       },
       {
         id: "rev-2",
         name: "Mrinalini",
         avatar: "",
-        date: "August 08 2026",
+        date: "November 06, 2026",
         rating: 5,
         headline: "",
         content:
           "The Money, Problem, Access framework is brilliant. It helped me understand why finding the right customer matters just as much as learning the skill itself.",
-        likes: 109,
+        likes: 48,
       },
       {
         id: "rev-3",
         name: "Saurabh",
         avatar: "",
-        date: "August 14 2026",
+        date: "November 08, 2026",
         rating: 5,
         headline: "",
         content:
           "Really liked the practical approach. The sample outreach messages, offer-building framework, and client delivery process make this feel like an actual business blueprint.",
-        likes: 90,
+        likes: 35,
       },
       {
         id: "rev-4",
         name: "Nitya",
         avatar: "",
-        date: "August 21 2026",
+        date: "November 10, 2026",
         rating: 5,
         headline: "",
         content:
           "My favourite part is the transition from first client to referrals and repeatable income. It's refreshing to see a guide focused on building real cash flow instead of chasing overnight success.",
-        likes: 84,
+        likes: 21,
       },
     ];
   }
@@ -10782,45 +10782,45 @@ export function getCuratedCommunityReviews(
         id: "rev-1",
         name: "Pranav",
         avatar: "",
-        date: "August 04 2026",
+        date: "October 28, 2026",
         rating: 5,
         headline: "",
         content:
           "Finally, a digital product guide that talks about profit instead of just showing revenue screenshots. The real experiment and its mistakes made this incredibly useful.",
-        likes: 121,
+        likes: 92,
       },
       {
         id: "rev-2",
         name: "Shreya",
         avatar: "",
-        date: "August 08 2026",
+        date: "November 01, 2026",
         rating: 5,
         headline: "",
         content:
           "The advertising and funnel sections are excellent. I especially liked the breakdown of Meta Ads, upsells, tracking, and knowing when to stop spending.",
-        likes: 109,
+        likes: 76,
       },
       {
         id: "rev-3",
         name: "Anthony",
         avatar: "",
-        date: "August 14 2026",
+        date: "November 05, 2026",
         rating: 5,
         headline: "",
         content:
           "Very practical from start to finish. The product validation, sales page structure, and launch checklists give you an actual system to follow instead of vague advice.",
-        likes: 90,
+        likes: 58,
       },
       {
         id: "rev-4",
         name: "Varun",
         avatar: "",
-        date: "August 21 2026",
+        date: "November 09, 2026",
         rating: 5,
         headline: "",
         content:
           "The $623 revenue versus $46 profit breakdown was an eye-opener. It completely changed how I think about running ads and measuring a digital product business.",
-        likes: 84,
+        likes: 39,
       },
     ];
   }
@@ -10833,45 +10833,45 @@ export function getCuratedCommunityReviews(
         id: "rev-1",
         name: "Ananya Krishnan",
         avatar: "",
-        date: "August 04 2026",
+        date: "October 25, 2026",
         rating: 5,
         headline: "",
         content:
           "Loved how this breaks down the book without blindly agreeing with everything. The practical exercises made the ideas much easier to apply to everyday life.",
-        likes: 121,
+        likes: 104,
       },
       {
         id: "rev-2",
         name: "Siddharth Kulkarni",
         avatar: "",
-        date: "August 08 2026",
+        date: "October 29, 2026",
         rating: 5,
         headline: "",
         content:
           "The section on separating your tasks from other people's expectations really hit me. A thoughtful guide that makes you question how much of your life is shaped by seeking approval.",
-        likes: 109,
+        likes: 88,
       },
       {
         id: "rev-3",
         name: "Pooja",
         avatar: "",
-        date: "August 14 2026",
+        date: "November 03, 2026",
         rating: 5,
         headline: "",
         content:
           "More than just a book summary. I especially liked the honest criticism around trauma, relationships, and self-worth. It feels balanced rather than preachy.",
-        likes: 90,
+        likes: 65,
       },
       {
         id: "rev-4",
         name: "Karthik",
         avatar: "",
-        date: "August 21 2026",
+        date: "November 08, 2026",
         rating: 5,
         headline: "",
         content:
           "The seven-day reflection plan is genuinely useful. The ideas about comparison, boundaries, and accepting yourself are explained in a way that actually stays with you.",
-        likes: 84,
+        likes: 42,
       },
     ];
   }

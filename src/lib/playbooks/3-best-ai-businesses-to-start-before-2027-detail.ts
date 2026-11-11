@@ -128,7 +128,7 @@ export const THREE_BEST_AI_BUSINESSES_BEFORE_2027_DETAIL_DATA: PlaybookDetailDat
       rating: 5,
       quote: "Really liked how this breaks down three completely different business models instead of pretending there's one perfect AI business for everyone. The comparison section helped me understand where to start based on my skills and budget.",
       initials: "A",
-      date: "August 04 2026"
+      date: "November 06, 2026"
     },
     {
       name: "Freya",
@@ -136,7 +136,7 @@ export const THREE_BEST_AI_BUSINESSES_BEFORE_2027_DETAIL_DATA: PlaybookDetailDat
       rating: 5,
       quote: "The AI agency section is excellent. I especially appreciated the outreach examples, service breakdowns, and advice on running a small pilot before committing to a full client relationship. Very practical.",
       initials: "F",
-      date: "August 08 2026"
+      date: "November 07, 2026"
     },
     {
       name: "Luca",
@@ -144,7 +144,7 @@ export const THREE_BEST_AI_BUSINESSES_BEFORE_2027_DETAIL_DATA: PlaybookDetailDat
       rating: 5,
       quote: "Much more useful than another generic AI side-hustle guide. The digital product and e-commerce sections explain the actual work involved, especially validation, supplier research, and understanding the numbers before scaling.",
       initials: "L",
-      date: "August 14 2026"
+      date: "November 09, 2026"
     },
     {
       name: "Naomi",
@@ -152,7 +152,7 @@ export const THREE_BEST_AI_BUSINESSES_BEFORE_2027_DETAIL_DATA: PlaybookDetailDat
       rating: 5,
       quote: "Loved the structure and the 30-day execution plan. It doesn't just throw business ideas at you; it explains how to test them, find customers, track expenses, and decide whether to keep going or change direction. A genuinely useful resource.",
       initials: "N",
-      date: "August 21 2026"
+      date: "November 10, 2026"
     }
   ]
 };

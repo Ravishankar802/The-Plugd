@@ -129,7 +129,7 @@ export const HOW_ID_START_20K_MONTH_AI_AGENCY_DETAIL_DATA: PlaybookDetailData = 
       rating: 5,
       quote: "This is one of the clearest explanations I've seen of how to start an AI agency without being the person building everything. The deal-originator model, niche selection, and developer partnership approach made the business feel much more understandable.",
       initials: "A",
-      date: "August 04 2026"
+      date: "November 10, 2026"
     },
     {
       name: "Valentina",
@@ -137,7 +137,7 @@ export const HOW_ID_START_20K_MONTH_AI_AGENCY_DETAIL_DATA: PlaybookDetailData = 
       rating: 5,
       quote: "The sales process is what stood out to me. Instead of randomly pitching AI services, you learn how to identify an actual business problem, run discovery calls, prepare a tailored demo, and present a solution that makes sense.",
       initials: "V",
-      date: "August 08 2026"
+      date: "November 10, 2026"
     },
     {
       name: "Omar",
@@ -145,7 +145,7 @@ export const HOW_ID_START_20K_MONTH_AI_AGENCY_DETAIL_DATA: PlaybookDetailData = 
       rating: 5,
       quote: "Really useful frameworks throughout. The Claude prompts alone save a lot of time, especially for researching niches, preparing prospect audits, and structuring offers. I also appreciated the sections on delivery costs and client expectations.",
       initials: "O",
-      date: "August 14 2026"
+      date: "November 11, 2026"
     },
     {
       name: "Brooke",
@@ -153,7 +153,7 @@ export const HOW_ID_START_20K_MONTH_AI_AGENCY_DETAIL_DATA: PlaybookDetailData = 
       rating: 5,
       quote: "What I liked most is that it covers what happens after you get the client. Scoping, developer coordination, deposits, delivery, support, and recurring revenue are all addressed. It feels much more complete than a typical AI agency guide.",
       initials: "B",
-      date: "August 21 2026"
+      date: "November 11, 2026"
     }
   ]
 };

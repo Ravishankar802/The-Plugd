@@ -113,7 +113,7 @@ export const COURAGE_TO_BE_DISLIKED_DETAIL_DATA: PlaybookDetailData = {
       rating: 5,
       quote: "Loved how this breaks down the book without blindly agreeing with everything. The practical exercises made the ideas much easier to apply to everyday life.",
       initials: "A",
-      date: "August 04 2026"
+      date: "October 25, 2026"
     },
     {
       name: "Siddharth Kulkarni",
@@ -121,7 +121,7 @@ export const COURAGE_TO_BE_DISLIKED_DETAIL_DATA: PlaybookDetailData = {
       rating: 5,
       quote: "The section on separating your tasks from other people's expectations really hit me. A thoughtful guide that makes you question how much of your life is shaped by seeking approval.",
       initials: "S",
-      date: "August 08 2026"
+      date: "October 29, 2026"
     },
     {
       name: "Pooja",
@@ -129,7 +129,7 @@ export const COURAGE_TO_BE_DISLIKED_DETAIL_DATA: PlaybookDetailData = {
       rating: 5,
       quote: "More than just a book summary. I especially liked the honest criticism around trauma, relationships, and self-worth. It feels balanced rather than preachy.",
       initials: "P",
-      date: "August 14 2026"
+      date: "November 03, 2026"
     },
     {
       name: "Karthik",
@@ -137,7 +137,7 @@ export const COURAGE_TO_BE_DISLIKED_DETAIL_DATA: PlaybookDetailData = {
       rating: 5,
       quote: "The seven-day reflection plan is genuinely useful. The ideas about comparison, boundaries, and accepting yourself are explained in a way that actually stays with you.",
       initials: "K",
-      date: "August 21 2026"
+      date: "November 08, 2026"
     }
   ],
   faqs: [

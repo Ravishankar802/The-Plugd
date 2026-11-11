@@ -113,7 +113,7 @@ export const HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_DETAIL_DATA: PlaybookDetailDa
       rating: 5,
       quote: "I used to think I needed to build an entire SaaS product to sell something with AI. This completely changed how I approach digital products. The audience-first framework and AI resource app concept are especially useful.",
       initials: "S",
-      date: "August 04 2026"
+      date: "November 07, 2026"
     },
     {
       name: "Mason",
@@ -121,7 +121,7 @@ export const HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_DETAIL_DATA: PlaybookDetailDa
       rating: 5,
       quote: "Probably one of the most practical guides I've read on this topic. It doesn't just tell you to use AI and start selling. It walks through the actual process, from validating an offer to testing payments and getting customers.",
       initials: "M",
-      date: "August 08 2026"
+      date: "November 08, 2026"
     },
     {
       name: "Kowalska",
@@ -129,7 +129,7 @@ export const HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_DETAIL_DATA: PlaybookDetailDa
       rating: 5,
       quote: "The templates and prompts alone make this worth reading. I particularly liked the sections about building a product around one specific customer problem instead of adding random AI features. Very clear and actionable.",
       initials: "K",
-      date: "August 14 2026"
+      date: "November 09, 2026"
     },
     {
       name: "Nathan",
@@ -137,7 +137,7 @@ export const HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_DETAIL_DATA: PlaybookDetailDa
       rating: 5,
       quote: "Great breakdown of the entire process. The launch checklist, customer acquisition strategies, and 30-day plan make it much easier to know what to do next. Especially useful if you're starting from scratch and don't want to waste months building the wrong thing.",
       initials: "N",
-      date: "August 21 2026"
+      date: "November 10, 2026"
     }
   ],
   faqs: [

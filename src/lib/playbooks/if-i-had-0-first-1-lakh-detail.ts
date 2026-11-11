@@ -113,7 +113,7 @@ export const IF_I_HAD_0_FIRST_1_LAKH_DETAIL_DATA: PlaybookDetailData = {
       rating: 5,
       quote: "Exactly the kind of playbook beginners need. It doesn't waste time selling dreams — it shows you how to choose a skill, build proof, and actually approach potential clients.",
       initials: "A",
-      date: "August 04 2026"
+      date: "November 04, 2026"
     },
     {
       name: "Mrinalini",
@@ -121,7 +121,7 @@ export const IF_I_HAD_0_FIRST_1_LAKH_DETAIL_DATA: PlaybookDetailData = {
       rating: 5,
       quote: "The Money, Problem, Access framework is brilliant. It helped me understand why finding the right customer matters just as much as learning the skill itself.",
       initials: "M",
-      date: "August 08 2026"
+      date: "November 06, 2026"
     },
     {
       name: "Saurabh",
@@ -129,7 +129,7 @@ export const IF_I_HAD_0_FIRST_1_LAKH_DETAIL_DATA: PlaybookDetailData = {
       rating: 5,
       quote: "Really liked the practical approach. The sample outreach messages, offer-building framework, and client delivery process make this feel like an actual business blueprint.",
       initials: "S",
-      date: "August 14 2026"
+      date: "November 08, 2026"
     },
     {
       name: "Nitya",
@@ -137,7 +137,7 @@ export const IF_I_HAD_0_FIRST_1_LAKH_DETAIL_DATA: PlaybookDetailData = {
       rating: 5,
       quote: "My favourite part is the transition from first client to referrals and repeatable income. It's refreshing to see a guide focused on building real cash flow instead of chasing overnight success.",
       initials: "N",
-      date: "August 21 2026"
+      date: "November 10, 2026"
     }
   ],
   faqs: [
