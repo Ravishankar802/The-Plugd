@@ -5,7 +5,6 @@ import {
   isDodoConfigured,
   getDodoCourseProductId,
   getPlaybookByDodoProductId,
-  type DodoPlaybookMapping,
 } from "@/lib/dodopayments";
 import {
   getOrCreateCustomer,
@@ -245,23 +244,38 @@ export async function POST(req: Request) {
     }
 
     // 7. Resolve Playbook from product_cart or authoritative payment lookup
-    let matchedPlaybook: DodoPlaybookMapping | null = null;
-    let isLegacyDatingPlaybook = false;
+    interface MatchedItem {
+      slug: string;
+      playbookId: string;
+      sellingPriceCents: number;
+      sellingPriceDollars: number;
+    }
+
+    const matchedPlaybooks: MatchedItem[] = [];
+    const seenProductIds = new Set<string>();
 
     const productCart = data.product_cart;
     if (Array.isArray(productCart) && productCart.length > 0) {
       for (const item of productCart) {
         if ((item?.quantity ?? 1) === 1) {
           const prodId = item?.product_id;
-          if (prodId) {
+          if (prodId && !seenProductIds.has(prodId)) {
+            seenProductIds.add(prodId);
             const mapping = getPlaybookByDodoProductId(prodId);
             if (mapping) {
-              matchedPlaybook = mapping;
-              break;
-            }
-            if (mode !== "test_mode" && prodId === getDodoCourseProductId()) {
-              isLegacyDatingPlaybook = true;
-              break;
+              matchedPlaybooks.push({
+                slug: mapping.slug,
+                playbookId: mapping.playbookId,
+                sellingPriceCents: mapping.sellingPriceCents,
+                sellingPriceDollars: mapping.sellingPriceDollars,
+              });
+            } else if (mode !== "test_mode" && prodId === getDodoCourseProductId()) {
+              matchedPlaybooks.push({
+                slug: "men",
+                playbookId: "dating-men",
+                sellingPriceCents: 300,
+                sellingPriceDollars: 3.0,
+              });
             }
           }
         }
@@ -274,15 +288,23 @@ export async function POST(req: Request) {
           for (const item of authoritativePayment.product_cart) {
             if ((item?.quantity ?? 1) === 1) {
               const prodId = item?.product_id;
-              if (prodId) {
+              if (prodId && !seenProductIds.has(prodId)) {
+                seenProductIds.add(prodId);
                 const mapping = getPlaybookByDodoProductId(prodId);
                 if (mapping) {
-                  matchedPlaybook = mapping;
-                  break;
-                }
-                if (mode !== "test_mode" && prodId === getDodoCourseProductId()) {
-                  isLegacyDatingPlaybook = true;
-                  break;
+                  matchedPlaybooks.push({
+                    slug: mapping.slug,
+                    playbookId: mapping.playbookId,
+                    sellingPriceCents: mapping.sellingPriceCents,
+                    sellingPriceDollars: mapping.sellingPriceDollars,
+                  });
+                } else if (mode !== "test_mode" && prodId === getDodoCourseProductId()) {
+                  matchedPlaybooks.push({
+                    slug: "men",
+                    playbookId: "dating-men",
+                    sellingPriceCents: 300,
+                    sellingPriceDollars: 3.0,
+                  });
                 }
               }
             }
@@ -294,7 +316,7 @@ export async function POST(req: Request) {
       }
     }
 
-    if (!matchedPlaybook && !isLegacyDatingPlaybook) {
+    if (matchedPlaybooks.length === 0) {
       console.warn(`[DODO_WEBHOOK_REJECTED] Product ID mismatch for payment: ${data.payment_id}`);
       return NextResponse.json(
         { error: "Product mismatch" },
@@ -305,27 +327,37 @@ export async function POST(req: Request) {
     // 8. Metadata and course validation
     const metadata = (data.metadata || {}) as Record<string, string>;
     const metadataCourseSlug = metadata.courseSlug?.toLowerCase();
+    const metadataCourseSlugs = metadata.courseSlugs
+      ? metadata.courseSlugs.toLowerCase().split(",").map((s) => s.trim())
+      : [];
 
-    if (isLegacyDatingPlaybook) {
-      if (metadataCourseSlug !== "men") {
-        console.warn(`[DODO_WEBHOOK_REJECTED] Invalid or missing courseSlug metadata: ${metadataCourseSlug}`);
-        return NextResponse.json(
-          { error: "Invalid course metadata" },
-          { status: 400 }
-        );
+    const expectedCents = matchedPlaybooks.reduce((acc, it) => acc + it.sellingPriceCents, 0);
+    const expectedDollars = (expectedCents / 100).toFixed(2);
+
+    if (metadata.amount && metadata.amount !== expectedDollars) {
+      console.warn(`[DODO_WEBHOOK_REJECTED] Metadata amount mismatch: ${metadata.amount}`);
+      return NextResponse.json(
+        { error: "Amount mismatch" },
+        { status: 400 }
+      );
+    }
+
+    if (metadataCourseSlugs.length > 0) {
+      const matchedSlugs = new Set(matchedPlaybooks.map((m) => m.slug.toLowerCase()));
+      for (const slug of metadataCourseSlugs) {
+        if (!matchedSlugs.has(slug)) {
+          console.warn(`[DODO_WEBHOOK_REJECTED] Missing expected courseSlug in matched cart: ${slug}`);
+          return NextResponse.json(
+            { error: "Invalid course metadata" },
+            { status: 400 }
+          );
+        }
       }
-      if (metadata.amount && metadata.amount !== "3.00") {
-        console.warn(`[DODO_WEBHOOK_REJECTED] Metadata amount mismatch: ${metadata.amount}`);
-        return NextResponse.json(
-          { error: "Amount mismatch" },
-          { status: 400 }
-        );
-      }
-    } else if (matchedPlaybook) {
+    } else if (metadataCourseSlug) {
+      const firstMatched = matchedPlaybooks[0];
       if (
-        metadataCourseSlug &&
-        metadataCourseSlug !== matchedPlaybook.slug.toLowerCase() &&
-        metadataCourseSlug !== matchedPlaybook.playbookId.toLowerCase()
+        metadataCourseSlug !== firstMatched.slug.toLowerCase() &&
+        metadataCourseSlug !== firstMatched.playbookId.toLowerCase()
       ) {
         console.warn(`[DODO_WEBHOOK_REJECTED] Invalid courseSlug metadata: ${metadataCourseSlug}`);
         return NextResponse.json(
@@ -333,19 +365,15 @@ export async function POST(req: Request) {
           { status: 400 }
         );
       }
-      if (metadata.amount && metadata.amount !== matchedPlaybook.sellingPriceDollars.toFixed(2)) {
-        console.warn(`[DODO_WEBHOOK_REJECTED] Metadata amount mismatch: ${metadata.amount}`);
-        return NextResponse.json(
-          { error: "Amount mismatch" },
-          { status: 400 }
-        );
-      }
+    } else {
+      console.warn("[DODO_WEBHOOK_REJECTED] Missing required courseSlug or courseSlugs metadata");
+      return NextResponse.json(
+        { error: "Invalid course metadata" },
+        { status: 400 }
+      );
     }
 
-    // Determine target course slug, expected amount, and pricing tier
-    const targetCourseSlug = matchedPlaybook ? matchedPlaybook.slug : "men";
-    const expectedCents = matchedPlaybook ? matchedPlaybook.sellingPriceCents : 300;
-    const sellingPriceDollars = matchedPlaybook ? matchedPlaybook.sellingPriceDollars : 3.0;
+    const targetCourseSlug = matchedPlaybooks[0].slug;
 
     // 9. Currency and amount validation:
     // - For direct USD: pre-tax customer amount must equal expected discounted cents ($1-$5 USD).
@@ -434,13 +462,15 @@ export async function POST(req: Request) {
 
         const customer = await getOrCreateCustomer(customerEmail, tx);
 
-        await recordCoursePurchase({
-          customerId: customer.id,
-          courseSlug: targetCourseSlug,
-          amount: sellingPriceDollars,
-          paymentId,
-          client: tx,
-        });
+        for (const item of matchedPlaybooks) {
+          await recordCoursePurchase({
+            customerId: customer.id,
+            courseSlug: item.slug,
+            amount: item.sellingPriceDollars,
+            paymentId,
+            client: tx,
+          });
+        }
 
         if (eventId) {
           await tx.processedWebhook.create({
@@ -490,7 +520,11 @@ export async function POST(req: Request) {
       );
     }
 
-    return NextResponse.json({ success: true, playbook: targetCourseSlug });
+    return NextResponse.json({
+      success: true,
+      playbook: targetCourseSlug,
+      playbooks: matchedPlaybooks.map((m) => m.slug),
+    });
   } catch (error: unknown) {
     const errorMsg = error instanceof Error ? error.message : String(error);
     console.error("[DODO_WEBHOOK_HANDLER_ERROR]", errorMsg);

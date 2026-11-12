@@ -18,34 +18,60 @@ import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 
 export const dynamic = "force-dynamic";
 
+interface ProductCartItem {
+  product_id: string;
+  quantity: number;
+  amount?: number;
+}
+
+interface CheckoutSessionPayload {
+  product_cart: ProductCartItem[];
+  return_url: string;
+  metadata: Record<string, string>;
+  customer?: {
+    email: string;
+    name: string;
+  };
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json().catch(() => ({}));
 
-    // 0. Course slug validation: must be a non-empty string
-    if (!body || typeof body.courseSlug !== "string" || !body.courseSlug.trim()) {
+    // Extract target course slugs from either slugs array, items array, or single courseSlug
+    let rawSlugs: string[] = [];
+    if (Array.isArray(body?.slugs) && body.slugs.length > 0) {
+      rawSlugs = body.slugs.filter((s: unknown): s is string => typeof s === "string" && Boolean(s.trim()));
+    } else if (Array.isArray(body?.items) && body.items.length > 0) {
+      rawSlugs = body.items
+        .map((it: { slug?: string }) => it?.slug)
+        .filter((s: unknown): s is string => typeof s === "string" && Boolean(s?.trim()));
+    } else if (typeof body?.courseSlug === "string" && body.courseSlug.trim()) {
+      rawSlugs = [body.courseSlug.trim()];
+    }
+
+    if (rawSlugs.length === 0) {
       return NextResponse.json(
         { error: "Course slug is required." },
         { status: 400 }
       );
     }
 
-    const cleanSlug = body.courseSlug.trim().toLowerCase();
+    // Deduplicate and normalize slugs
+    const uniqueSlugs = Array.from(new Set(rawSlugs.map((s) => s.trim().toLowerCase())));
     const isTestMode = process.env.DODO_PAYMENTS_MODE === "test_mode";
 
-    // In test mode, only the representative test playbook is active.
-    // In live mode, matches one of the 109 Playbooks, or explicitly "men" for legacy checkout
-    const mapping = getPlaybookDodoMapping(cleanSlug);
-    const isLegacyMen = !mapping && cleanSlug === "men" && !isTestMode;
-
-    if (!mapping && !isLegacyMen) {
-      return NextResponse.json(
-        { error: "Invalid or unrecognized playbook slug." },
-        { status: 400 }
-      );
+    // Validate that all requested slugs are valid catalog products
+    for (const slug of uniqueSlugs) {
+      const mapping = getPlaybookDodoMapping(slug);
+      const isLegacyMen = !mapping && slug === "men" && !isTestMode;
+      if (!mapping && !isLegacyMen) {
+        return NextResponse.json(
+          { error: "Invalid or unrecognized playbook slug." },
+          { status: 400 }
+        );
+      }
     }
-
-    const courseSlug = mapping ? mapping.slug : "men";
 
     // Direct access during content review phase
     if (IS_REVIEW_PHASE_FREE_ACCESS) {
@@ -53,7 +79,7 @@ export async function POST(req: Request) {
         success: true,
         complimentary: true,
         message: "Free content review phase active. Direct access granted.",
-        redirectUrl: `/learn/${courseSlug}`,
+        redirectUrl: `/learn/${uniqueSlugs[0]}`,
       });
     }
 
@@ -90,35 +116,26 @@ export async function POST(req: Request) {
       customer = await getCustomerByAccessKey(accessKeyCookie);
     }
 
-    // 1. Verify Complimentary Access Entitlement (e.g. lifetime free accounts)
+    // Server-side ownership and complimentary access filter
+    let unownedSlugs = [...uniqueSlugs];
     if (customer) {
-      const isComp = await hasComplimentaryAccess(customer.email, courseSlug);
-      if (isComp) {
-        const res = NextResponse.json({
-          success: true,
-          complimentary: true,
-          message: "Complimentary lifetime access verified.",
-          redirectUrl: `/learn/${courseSlug}?access=granted`,
-        });
-
-        res.cookies.set("plugd_access_key", customer.accessKey, {
-          path: "/",
-          httpOnly: true,
-          secure: process.env.NODE_ENV === "production",
-          maxAge: 60 * 60 * 24 * 365, // 1 year
-          sameSite: "lax",
-        });
-
-        return res;
+      const filtered: string[] = [];
+      for (const slug of uniqueSlugs) {
+        const isComp = await hasComplimentaryAccess(customer.email, slug);
+        const alreadyPurchased = await hasUserPurchasedCourse(customer.id, slug);
+        if (!isComp && !alreadyPurchased) {
+          filtered.push(slug);
+        }
       }
 
-      // 2. Check if customer already owns the playbook
-      const alreadyPurchased = await hasUserPurchasedCourse(customer.id, courseSlug);
-      if (alreadyPurchased) {
+      if (filtered.length === 0) {
+        // Customer already owns all requested playbooks
+        const targetRedirect = uniqueSlugs.length === 1 ? `/learn/${uniqueSlugs[0]}` : "/my-playbooks";
         const res = NextResponse.json({
           success: true,
-          message: "You already have access to this playbook.",
-          redirectUrl: `/learn/${courseSlug}`,
+          allOwned: true,
+          message: "You already have access to the selected playbook(s).",
+          redirectUrl: targetRedirect,
         });
 
         res.cookies.set("plugd_access_key", customer.accessKey, {
@@ -131,9 +148,11 @@ export async function POST(req: Request) {
 
         return res;
       }
+
+      unownedSlugs = filtered;
     }
 
-    // 3. Resolve playbook and corresponding Dodo product mapping
+    // Verify Dodo Payments API configuration
     if (!isDodoConfigured()) {
       console.error("[CHECKOUT_ERROR] Dodo Payments API key is not configured");
       return NextResponse.json(
@@ -142,62 +161,64 @@ export async function POST(req: Request) {
       );
     }
 
-    const dodoProductId = mapping ? mapping.dodoProductId : getDodoCourseProductId("men");
-    if (!dodoProductId) {
-      console.error("[CHECKOUT_ERROR] Course product ID is not configured for", courseSlug);
-      return NextResponse.json(
-        { error: "Payment service is currently unavailable. Please try again later." },
-        { status: 503 }
-      );
+    // Build multi-product product_cart array
+    const productCart: ProductCartItem[] = [];
+    let totalExpectedCents = 0;
+
+    for (const slug of unownedSlugs) {
+      const mapping = getPlaybookDodoMapping(slug);
+      const isLegacyMen = !mapping && slug === "men" && !isTestMode;
+      const dodoProductId = mapping ? mapping.dodoProductId : getDodoCourseProductId("men");
+
+      if (!dodoProductId) {
+        console.error("[CHECKOUT_ERROR] Course product ID is not configured for", slug);
+        return NextResponse.json(
+          { error: "Payment service is currently unavailable. Please try again later." },
+          { status: 503 }
+        );
+      }
+
+      const item: ProductCartItem = {
+        product_id: dodoProductId,
+        quantity: 1,
+      };
+
+      if (isLegacyMen) {
+        item.amount = 300;
+        totalExpectedCents += 300;
+      } else if (mapping) {
+        totalExpectedCents += mapping.sellingPriceCents;
+      } else {
+        totalExpectedCents += 300;
+      }
+
+      productCart.push(item);
     }
 
-    const targetSlug = mapping ? mapping.slug : "men";
-    const playbookId = mapping ? mapping.playbookId : "dating-men";
-    const expectedSellingPrice = mapping ? mapping.sellingPriceDollars.toFixed(2) : "3.00";
-    const expectedCents = mapping ? mapping.sellingPriceCents : 300;
-
+    const totalExpectedDollars = (totalExpectedCents / 100).toFixed(2);
     const checkoutToken = randomBytes(24).toString("hex");
-    const returnUrl = `${origin}/learn/${targetSlug}?session_id={CHECKOUT_SESSION_ID}&purchased=${targetSlug}`;
+
+    const returnUrl =
+      unownedSlugs.length === 1
+        ? `${origin}/learn/${unownedSlugs[0]}?session_id={CHECKOUT_SESSION_ID}&purchased=${unownedSlugs[0]}`
+        : `${origin}/my-playbooks?session_id={CHECKOUT_SESSION_ID}&purchased=${encodeURIComponent(unownedSlugs.join(","))}`;
 
     const metadata: Record<string, string> = {
-      courseSlug: targetSlug,
-      playbookId,
-      amount: expectedSellingPrice,
-      expectedCents: String(expectedCents),
+      courseSlug: unownedSlugs[0],
+      courseSlugs: unownedSlugs.join(","),
+      itemCount: String(unownedSlugs.length),
+      amount: totalExpectedDollars,
+      expectedCents: String(totalExpectedCents),
       checkoutToken,
     };
+
     if (customer) {
       metadata.customerId = customer.id;
       metadata.customerEmail = customer.email;
     }
 
-    // Dodo native discounts apply automatically when product_id is passed with quantity: 1 and no manual amount override
-    interface ProductCartItem {
-      product_id: string;
-      quantity: number;
-      amount?: number;
-    }
-
-    const productItem: ProductCartItem = {
-      product_id: dodoProductId,
-      quantity: 1,
-    };
-    if (isLegacyMen) {
-      productItem.amount = 300;
-    }
-
-    interface CheckoutSessionPayload {
-      product_cart: ProductCartItem[];
-      return_url: string;
-      metadata: Record<string, string>;
-      customer?: {
-        email: string;
-        name: string;
-      };
-    }
-
     const sessionParams: CheckoutSessionPayload = {
-      product_cart: [productItem],
+      product_cart: productCart,
       return_url: returnUrl,
       metadata,
     };

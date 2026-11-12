@@ -17,6 +17,7 @@ import { performLogout } from "@/lib/auth-client";
 import YouTubeSidebar from "@/components/YouTubeSidebar";
 import CreatePlaybookModal from "@/components/CreatePlaybookModal";
 import CartDrawer from "@/components/CartDrawer";
+import { useCartCount } from "@/lib/cart";
 
 interface HeaderProps {
   activeCourse?: string;
@@ -46,6 +47,7 @@ export default function Header({
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const cartCount = useCartCount();
 
   // User auth state detection
   const [isSignedIn, setIsSignedIn] = useState(hasAccess);
@@ -99,6 +101,15 @@ export default function Header({
       window.removeEventListener("plugd-auth-change", checkAuth);
     };
   }, [hasAccess]);
+
+  // Listen to open-cart events from across the app
+  useEffect(() => {
+    const handleOpenDrawer = () => setIsCartOpen(true);
+    window.addEventListener("plugd-open-cart", handleOpenDrawer);
+    return () => {
+      window.removeEventListener("plugd-open-cart", handleOpenDrawer);
+    };
+  }, []);
 
   // Click outside profile dropdown
   useEffect(() => {
@@ -213,6 +224,22 @@ export default function Header({
 
             {/* Right: Actions, Create, & Auth */}
             <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+              {/* Shopping Cart Button */}
+              <button
+                type="button"
+                onClick={() => setIsCartOpen(true)}
+                className="relative inline-flex items-center justify-center p-2 rounded-full hover:bg-black/5 text-[#1c1917] transition-colors cursor-pointer"
+                title={`Shopping Cart (${cartCount})`}
+                aria-label="View Shopping Cart"
+              >
+                <ShoppingBag className="h-5 w-5 text-[#1c1917]" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 inline-flex items-center justify-center h-4.5 min-w-[18px] px-1 rounded-full bg-[#2563eb] text-white text-[10px] font-bold shadow-xs">
+                    {cartCount}
+                  </span>
+                )}
+              </button>
+
               {isSignedIn ? (
                 <>
                   {/* + Create Button (YouTube style) */}
@@ -335,7 +362,23 @@ export default function Header({
             </div>
 
             {/* Right Navigation */}
-            <div className="flex items-center gap-5 sm:gap-7">
+            <div className="flex items-center gap-4 sm:gap-6">
+              {/* Shopping Cart Button */}
+              <button
+                type="button"
+                onClick={handleOpenCart}
+                className="relative p-2 rounded-full hover:bg-black/5 text-[#1c1917] transition-colors cursor-pointer"
+                title="Shopping Cart"
+                aria-label="View Shopping Cart"
+              >
+                <ShoppingBag className="h-5 w-5 text-[#1c1917]" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 inline-flex items-center justify-center h-4.5 min-w-[18px] px-1 rounded-full bg-[#2563eb] text-white text-[10px] font-bold shadow-xs">
+                    {cartCount}
+                  </span>
+                )}
+              </button>
+
               {/* Desktop Navigation Links */}
               <nav className="hidden lg:flex items-center gap-6" aria-label="Sections">
                 <a
@@ -446,6 +489,22 @@ export default function Header({
 
           {/* Right Navigation & Auth */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Shopping Cart Button */}
+            <button
+              type="button"
+              onClick={handleOpenCart}
+              className="relative p-2 rounded-full hover:bg-black/5 text-[#1c1917] transition-colors cursor-pointer"
+              title="Shopping Cart"
+              aria-label="View Shopping Cart"
+            >
+              <ShoppingBag className="h-5 w-5 text-[#1c1917]" />
+              {cartCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 inline-flex items-center justify-center h-4.5 min-w-[18px] px-1 rounded-full bg-[#2563eb] text-white text-[10px] font-bold shadow-xs">
+                  {cartCount}
+                </span>
+              )}
+            </button>
+
             {isSignedIn ? (
               <>
                 <button

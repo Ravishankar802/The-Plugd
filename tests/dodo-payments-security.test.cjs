@@ -126,9 +126,9 @@ class InMemoryPrismaMock {
       findMany: async ({ where }) => {
         const list = [];
         for (const p of this._coursePurchases.values()) {
-          if (!where?.customerId || p.customerId === where.customerId) {
-            list.push(p);
-          }
+          if (where?.paymentId && p.paymentId !== where.paymentId) continue;
+          if (where?.customerId && p.customerId !== where.customerId) continue;
+          list.push(p);
         }
         return list;
       },

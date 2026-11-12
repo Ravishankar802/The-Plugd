@@ -1,11 +1,9 @@
 import { notFound, redirect } from "next/navigation";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
-import { cache } from "react";
 import SlideViewer from "@/components/SlideViewer";
 import { getLesson, getNextLesson, getPreviousLesson, COURSES } from "@/lib/playbooks-data";
-import { getCustomerByAccessKey, hasUserAccessToCourse } from "@/lib/playbooks";
-import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
+import { checkPlaybookAccess } from "@/lib/playbooks";
 
 interface LessonPageProps {
   params: Promise<{
@@ -20,23 +18,6 @@ interface LessonPageProps {
 
 export const dynamic = "force-dynamic";
 
-const checkLessonAccess = cache(async (accessKey?: string, targetSlug: string = "men"): Promise<boolean> => {
-  if (IS_REVIEW_PHASE_FREE_ACCESS) return true;
-  if (!accessKey) return false;
-  try {
-    const customer = await getCustomerByAccessKey(accessKey);
-    if (customer) {
-      return (
-        (await hasUserAccessToCourse(customer.id, targetSlug, customer.email)) ||
-        (await hasUserAccessToCourse(customer.id, "men", customer.email))
-      );
-    }
-  } catch (err) {
-    console.error("[LESSON_AUTH_CHECK_ERROR]", err);
-  }
-  return false;
-});
-
 export async function generateMetadata({ params }: LessonPageProps): Promise<Metadata> {
   const { courseSlug, lessonId } = await params;
   const course = COURSES[courseSlug] || COURSES.men;
@@ -50,7 +31,7 @@ export async function generateMetadata({ params }: LessonPageProps): Promise<Met
     console.error("[LESSON_METADATA_COOKIE_ERROR]", err);
   }
 
-  const hasAccess = await checkLessonAccess(accessKey, course.slug);
+  const hasAccess = await checkPlaybookAccess(accessKey, course.slug);
 
   if (!hasAccess) {
     return {
@@ -98,7 +79,7 @@ export default async function LessonPresentationPage({ params, searchParams }: L
     redirect(`/learn/${course.slug}/${lessonId}`);
   }
 
-  // Server-side Authorization Check
+  // Server-side Authorization Check: strictly enforces ownership
   let accessKey: string | undefined;
   try {
     const cookieStore = await cookies();
@@ -107,11 +88,11 @@ export default async function LessonPresentationPage({ params, searchParams }: L
     console.error("[LESSON_PAGE_COOKIE_ERROR]", err);
   }
 
-  const hasAccess = await checkLessonAccess(accessKey, course.slug);
+  const hasAccess = await checkPlaybookAccess(accessKey, course.slug);
 
   if (!hasAccess) {
     const redirectBase =
-      course.slug === "men" || course.slug === "women" ? "" : course.slug;
+      course.slug === "men" || course.slug === "women" ? "dating-playbook" : course.slug;
     redirect(`/${redirectBase}?checkout=true&lesson=${lessonId}`);
   }
 

@@ -17,7 +17,7 @@ export const dynamic = "force-dynamic";
 
 export default async function PlaybookPage() {
   // Temporary access granted for previewing purchased state
-  let hasAccess = true;
+  let hasAccess = false;
 
   return <PlaybookDetailView playbook={SELL_PDFS_WITH_AI_DETAIL} hasAccess={hasAccess} />;
 }

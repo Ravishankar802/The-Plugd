@@ -1,12 +1,13 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Star } from "lucide-react";
-import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
+import { Star, ShoppingBag, Check } from "lucide-react";
 import type { PlaybookSummary } from "@/lib/categories";
 import { getAuthorProfile, getRelativePublishedTime } from "@/lib/book-utils";
 import { slugifyAuthorName } from "@/lib/authors";
+import { addToCart, useIsInCart, openCartDrawer, getCustomerPurchasedSlugs } from "@/lib/cart";
 
 /**
  * Reusable Playbook Card Component
@@ -15,7 +16,7 @@ import { slugifyAuthorName } from "@/lib/authors";
  * 2. Playbook title and category label
  * 3. Optional Bestseller badge, rating, and rating count
  * 4. Horizontal line divider spanning full card width
- * 5. Card footer: Price ($3.00 / Free) on left, Start Reading / Add to cart button on right
+ * 5. Card footer: Price ($3.00 / Free) on left, Add to Cart / In Cart / Read button on right
  * 6. Full-card outline with rounded corners and subtle hover lift
  */
 interface PlaybookFeedCardProps {
@@ -23,10 +24,54 @@ interface PlaybookFeedCardProps {
 }
 
 export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
-  const authorName = (playbook as any).authorName || getAuthorProfile(playbook.categoryName, playbook.slug).name;
+  const authorName =
+    (playbook as PlaybookSummary & { authorName?: string }).authorName ||
+    getAuthorProfile(playbook.categoryName, playbook.slug).name;
   const relativePublishedDate = getRelativePublishedTime(playbook.slug, playbook.publishedAt);
   const formattedPrice = typeof playbook.price === "number" ? playbook.price.toFixed(2) : "3.00";
   const formattedOriginalPrice = typeof playbook.originalPrice === "number" ? playbook.originalPrice.toFixed(2) : "9.00";
+
+  const inCart = useIsInCart(playbook.slug);
+  const [isOwned, setIsOwned] = useState(false);
+  const [justAdded, setJustAdded] = useState(false);
+
+  useEffect(() => {
+    getCustomerPurchasedSlugs().then((slugs) => {
+      if (slugs.includes(playbook.slug.toLowerCase())) {
+        setIsOwned(true);
+      }
+    });
+  }, [playbook.slug]);
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (inCart) {
+      openCartDrawer();
+      return;
+    }
+
+    const priceNum = typeof playbook.price === "number" ? playbook.price : 3.0;
+    const origPriceNum = typeof playbook.originalPrice === "number" ? playbook.originalPrice : 9.0;
+    const discount = origPriceNum > priceNum ? Math.round(((origPriceNum - priceNum) / origPriceNum) * 100) : undefined;
+
+    addToCart({
+      slug: playbook.slug,
+      playbookId: playbook.id || playbook.slug,
+      title: playbook.title,
+      thumbnail: playbook.thumbnail || "/images/placeholder.png",
+      price: priceNum,
+      originalPrice: origPriceNum,
+      discountPercent: discount,
+      authorName,
+    });
+
+    setJustAdded(true);
+    setTimeout(() => {
+      setJustAdded(false);
+    }, 1500);
+  };
 
   return (
     <div className="group relative flex flex-col justify-between h-full w-full rounded-2xl bg-white hover:bg-[#f7f8fa] border border-[#dcd8d0] hover:border-[#c7c4c0] p-3 sm:p-3.5 shadow-[0_1px_3px_rgba(28,25,23,0.06),0_1px_2px_rgba(28,25,23,0.04)] hover:shadow-lg motion-safe:hover:-translate-y-1 motion-reduce:hover:transform-none transition-all duration-200 ease-out">
@@ -135,13 +180,50 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
               </span>
             </div>
 
-            <Link
-              href={playbook.href}
-              onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center justify-center rounded-lg bg-[#2563eb] hover:bg-[#1d4ed8] px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-white transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
-            >
-              Start Reading
-            </Link>
+            {isOwned ? (
+              <Link
+                href={playbook.href}
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center justify-center rounded-lg bg-[#1c1917] hover:bg-neutral-800 px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-white transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
+              >
+                Read
+              </Link>
+            ) : justAdded ? (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  openCartDrawer();
+                }}
+                className="inline-flex items-center justify-center gap-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-white transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
+              >
+                <span>Added ✓</span>
+              </button>
+            ) : inCart ? (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  openCartDrawer();
+                }}
+                className="inline-flex items-center justify-center gap-1 rounded-lg bg-[#eff6ff] hover:bg-[#dbeafe] border border-[#bfdbfe] px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-[#1d4ed8] transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
+                title="View item in cart"
+              >
+                <Check className="h-3.5 w-3.5" />
+                <span>In Cart</span>
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={handleAddToCart}
+                className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#2563eb] hover:bg-[#1d4ed8] px-3 sm:px-3.5 py-1.5 text-xs sm:text-[13px] font-semibold text-white transition-colors duration-150 shadow-2xs whitespace-nowrap cursor-pointer shrink-0"
+              >
+                <ShoppingBag className="h-3.5 w-3.5" />
+                <span>Add to Cart</span>
+              </button>
+            )}
           </>
         )}
       </div>

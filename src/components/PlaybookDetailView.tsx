@@ -19,9 +19,11 @@ import {
   ArrowLeft,
   ThumbsUp,
   UserCheck,
+  ShoppingBag,
 } from "lucide-react";
 import Header from "@/components/Header";
 import PlaybookFeedCard from "@/components/PlaybookFeedCard";
+import { addToCart, useIsInCart, openCartDrawer, getCustomerPurchasedSlugs } from "@/lib/cart";
 import { IS_REVIEW_PHASE_FREE_ACCESS } from "@/lib/config";
 import type { PlaybookDetailData } from "@/lib/dating-playbook-detail";
 import { ALL_PLAYBOOK_SUMMARIES } from "@/lib/playbooks-catalog";
@@ -56,39 +58,52 @@ export default function PlaybookDetailView({
   const [openChapterIndices, setOpenChapterIndices] = useState<number[]>([0, 1]);
   const [userRating, setUserRating] = useState<number | null>(null);
   const [hoverRating, setHoverRating] = useState<number | null>(null);
-  const [isFollowingAuthor, setIsFollowingAuthor] = useState(false);
   const [showUnfollowModal, setShowUnfollowModal] = useState(false);
   const [reviewSearchQuery, setReviewSearchQuery] = useState("");
   const [isWritingReview, setIsWritingReview] = useState(false);
   const [newReviewText, setNewReviewText] = useState("");
   const [submittedReview, setSubmittedReview] = useState(false);
   const [addedToCartToast, setAddedToCartToast] = useState(false);
-  const [hasStartedReading, setHasStartedReading] = useState(false);
   const [clientHasAccess, setClientHasAccess] = useState(hasAccess);
+  const inCart = useIsInCart(playbook.slug);
+
+  const [hasStartedReading, setHasStartedReading] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return localStorage.getItem(`plugd_started_${playbook.slug}`) === "true";
+  });
+
+  // Author profile
+  const author = useMemo(
+    () => getAuthorProfile(playbook.categoryName, playbook.slug),
+    [playbook.categoryName, playbook.slug]
+  );
+
+  const [isFollowingAuthor, setIsFollowingAuthor] = useState(() =>
+    isFollowingAuthorStore(author.name)
+  );
 
   useEffect(() => {
+    let active = true;
     if (typeof window !== "undefined") {
-      const started = localStorage.getItem(`plugd_started_${playbook.slug}`);
-      if (started) {
-        setHasStartedReading(true);
-      }
-
-      const urlParams = new URLSearchParams(window.location.search);
-      if (
-        urlParams.get("purchased") === "true" ||
-        urlParams.get("purchased") === playbook.slug ||
-        urlParams.get("access") === "true" ||
-        urlParams.get("session_id")
-      ) {
-        setClientHasAccess(true);
-        try {
-          localStorage.setItem(`plugd_owned_${playbook.slug}`, "true");
-        } catch {}
-      } else if (localStorage.getItem(`plugd_owned_${playbook.slug}`) === "true") {
-        setClientHasAccess(true);
-      }
+      // Revalidate ownership with server session
+      getCustomerPurchasedSlugs().then((slugs) => {
+        if (active && slugs.includes(playbook.slug.toLowerCase())) {
+          setClientHasAccess(true);
+        }
+      });
     }
-  }, [playbook.slug]);
+
+    const handleFollowingChange = () => {
+      if (active) {
+        setIsFollowingAuthor(isFollowingAuthorStore(author.name));
+      }
+    };
+    window.addEventListener("plugd-following-change", handleFollowingChange);
+    return () => {
+      active = false;
+      window.removeEventListener("plugd-following-change", handleFollowingChange);
+    };
+  }, [playbook.slug, author.name]);
 
   const isFreeReview = Boolean(IS_REVIEW_PHASE_FREE_ACCESS);
   const canAccess = hasAccess || isFreeReview || clientHasAccess;
@@ -102,23 +117,6 @@ export default function PlaybookDetailView({
     }
   };
 
-  // Author profile
-  const author = useMemo(
-    () => getAuthorProfile(playbook.categoryName, playbook.slug),
-    [playbook.categoryName, playbook.slug]
-  );
-
-  useEffect(() => {
-    setIsFollowingAuthor(isFollowingAuthorStore(author.name));
-    const handleFollowingChange = () => {
-      setIsFollowingAuthor(isFollowingAuthorStore(author.name));
-    };
-    window.addEventListener("plugd-following-change", handleFollowingChange);
-    return () => {
-      window.removeEventListener("plugd-following-change", handleFollowingChange);
-    };
-  }, [author.name]);
-
   // Catalog summary lookup for consistent catalog metadata (rating, count, published date)
   const catalogEntry = useMemo(() => {
     return ALL_PLAYBOOK_SUMMARIES.find(
@@ -128,7 +126,8 @@ export default function PlaybookDetailView({
 
   const effectiveRating = catalogEntry?.rating ?? playbook.rating ?? 4.8;
   const effectiveRatingCount = catalogEntry?.ratingCount ?? playbook.ratingCount ?? "4.9k";
-  const effectivePublishedAt = catalogEntry?.publishedAt ?? (playbook as any).publishedAt;
+  const effectivePublishedAt =
+    catalogEntry?.publishedAt ?? (playbook as PlaybookDetailData & { publishedAt?: string }).publishedAt;
 
   // Relative published time ("xd ago" or "xmo ago")
   const relativePublishedDate = useMemo(
@@ -171,7 +170,9 @@ export default function PlaybookDetailView({
         list.push({
           id: les.id,
           title: les.title,
-          description: (les as any).description || (les as any).summary,
+          description:
+            (les as { description?: string; summary?: string }).description ||
+            (les as { description?: string; summary?: string }).summary,
           partTitle: mod.title,
           partIndex: mIdx + 1,
           chapterIndex: cIndex++,
@@ -234,18 +235,33 @@ export default function PlaybookDetailView({
       } else if (data.redirectUrl) {
         window.location.href = data.redirectUrl;
       }
-    } catch (err: any) {
-      console.error("[PLAYBOOK_CHECKOUT_ERROR]", err);
-      setCheckoutError(err?.message || "Failed to initiate checkout. Please try again.");
+    } catch (err: unknown) {
+      const errorMsg = err instanceof Error ? err.message : String(err);
+      console.error("[PLAYBOOK_CHECKOUT_ERROR]", errorMsg);
+      setCheckoutError(errorMsg || "Failed to initiate checkout. Please try again.");
       setIsCheckingOut(false);
     }
   };
 
   const handleAddToCart = () => {
+    if (inCart) {
+      openCartDrawer();
+      return;
+    }
+
+    addToCart({
+      slug: playbook.slug,
+      playbookId: playbook.id || playbook.slug,
+      title: playbook.title,
+      thumbnail: playbook.thumbnail || "/images/placeholder.png",
+      price: effectivePrice,
+      originalPrice: effectiveOriginalPrice,
+      discountPercent: discountPercentage > 0 ? discountPercentage : undefined,
+      authorName: author.name,
+    });
+
     setAddedToCartToast(true);
-    setTimeout(() => setAddedToCartToast(false), 3000);
-    // Proceed to checkout
-    handleCheckout();
+    setTimeout(() => setAddedToCartToast(false), 3500);
   };
 
   const handleCopyLink = () => {
@@ -368,7 +384,7 @@ export default function PlaybookDetailView({
                 </div>
               )}
 
-              {/* Action Buttons: Add to cart & Buy now */}
+              {/* Action Buttons: Buy Now (Primary) & Add to Cart (Secondary) */}
               <div className="space-y-2 pt-1">
                 {canAccess ? (
                   <Link
@@ -382,31 +398,48 @@ export default function PlaybookDetailView({
                 ) : (
                   <>
                     <button
-                      onClick={handleAddToCart}
+                      onClick={handleCheckout}
                       disabled={isCheckingOut}
                       className="w-full py-2.5 px-4 rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-xs transition-all active:scale-[0.99] disabled:opacity-50 cursor-pointer"
                     >
                       {isCheckingOut ? (
                         <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                       ) : (
-                        "Add to cart"
+                        <span>Buy now</span>
                       )}
                     </button>
 
                     <button
-                      onClick={handleCheckout}
+                      onClick={handleAddToCart}
                       disabled={isCheckingOut}
-                      className="w-full py-2 px-4 rounded-xl bg-white hover:bg-[#eff6ff] text-[#2563eb] font-semibold text-sm border border-[#2563eb] transition-colors active:scale-[0.99] disabled:opacity-50 cursor-pointer"
+                      className="w-full py-2 px-4 rounded-xl bg-white hover:bg-[#eff6ff] text-[#2563eb] font-semibold text-sm border border-[#2563eb] flex items-center justify-center gap-2 shadow-xs transition-colors active:scale-[0.99] disabled:opacity-50 cursor-pointer"
                     >
-                      Buy now
+                      {inCart ? (
+                        <>
+                          <Check className="h-4 w-4 text-[#2563eb]" />
+                          <span>In Cart · View Cart</span>
+                        </>
+                      ) : (
+                        <>
+                          <ShoppingBag className="h-4 w-4 text-[#2563eb]" />
+                          <span>Add to cart</span>
+                        </>
+                      )}
                     </button>
                   </>
                 )}
               </div>
 
               {addedToCartToast && (
-                <div className="text-center text-xs text-emerald-700 font-medium bg-emerald-50 py-1.5 rounded-md border border-emerald-200 animate-fade-in">
-                  ✓ Playbook added. Redirecting to checkout...
+                <div className="text-xs text-emerald-700 font-medium bg-emerald-50 py-2 px-3 rounded-xl border border-emerald-200 animate-fade-in flex items-center justify-between gap-2">
+                  <span>✓ Added to cart</span>
+                  <button
+                    type="button"
+                    onClick={openCartDrawer}
+                    className="font-bold underline hover:text-emerald-900 cursor-pointer text-[11px]"
+                  >
+                    View Cart →
+                  </button>
                 </div>
               )}
 

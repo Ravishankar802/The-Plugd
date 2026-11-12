@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function PlaybookPage() {
-  let hasAccess = true;
+  let hasAccess = false;
 
   return <PlaybookDetailView playbook={MARKETING_AGENTS_TOO_GOOD_DETAIL_DATA} hasAccess={hasAccess} />;
 }

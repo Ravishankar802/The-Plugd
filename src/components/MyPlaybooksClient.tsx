@@ -30,44 +30,13 @@ export default function MyPlaybooksClient() {
     fetch("/api/customer/playbooks")
       .then((res) => res.json())
       .then((data) => {
-        if (data.playbooks && data.playbooks.length > 0) {
+        if (data.playbooks) {
           setPlaybooks(data.playbooks);
           setCustomerEmail(data.customerEmail || "");
-        } else {
-          // Default The Dating Playbook library item
-          setPlaybooks([
-            {
-              id: "the-dating-playbook",
-              courseSlug: "men",
-              title: "The Dating Playbook",
-              shortTitle: "The Dating Playbook",
-              audience: "Men",
-              description:
-                "A practical, 10-module guide to understanding attraction, building confidence, meeting women, dating, and developing meaningful relationships.",
-              completedCount: 0,
-              totalLessons: 69,
-              percent: 0,
-              lastViewedLessonId: "01-1",
-            },
-          ]);
         }
       })
       .catch(() => {
-        setPlaybooks([
-          {
-            id: "the-dating-playbook-fallback",
-            courseSlug: "men",
-            title: "The Dating Playbook",
-            shortTitle: "The Dating Playbook",
-            audience: "Men",
-            description:
-              "A practical, 10-module guide to understanding attraction, building confidence, meeting women, dating, and developing meaningful relationships.",
-            completedCount: 0,
-            totalLessons: 69,
-            percent: 0,
-            lastViewedLessonId: "01-1",
-          },
-        ]);
+        setPlaybooks([]);
       })
       .finally(() => setLoading(false));
   }, []);
@@ -122,9 +91,32 @@ export default function MyPlaybooksClient() {
           </div>
         </div>
 
-        {/* Playbooks List */}
-        <div className="grid grid-cols-1 gap-8">
-          {playbooks.map((item) => (
+        {/* Playbooks List or Empty State */}
+        {loading ? (
+          <div className="py-20 text-center text-[#78716c] font-medium">
+            Loading your library...
+          </div>
+        ) : playbooks.length === 0 ? (
+          <div className="rounded-3xl border border-[#e7e5e4] bg-white p-12 text-center shadow-xs">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-stone-100 text-[#78716c] mb-4">
+              <BookOpen className="h-7 w-7" />
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold text-[#1c1917] mb-2">
+              No playbooks yet
+            </h2>
+            <p className="text-sm sm:text-base text-[#78716c] max-w-md mx-auto mb-6">
+              You haven&apos;t purchased any playbooks yet. Browse our catalog of 109+ production-grade business playbooks to start learning.
+            </p>
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center rounded-xl bg-[#2563eb] hover:bg-[#1d4ed8] px-5 py-2.5 text-sm font-semibold text-white shadow-2xs transition-colors cursor-pointer"
+            >
+              Explore Playbooks
+            </Link>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-8">
+            {playbooks.map((item) => (
             <div
               key={item.id}
               className="flex flex-col justify-between rounded-3xl border border-[#e7e5e4] bg-white p-6 sm:p-10 shadow-sm transition-all hover:border-[#d6d3d1] hover:shadow-md"
@@ -192,6 +184,7 @@ export default function MyPlaybooksClient() {
             </div>
           ))}
         </div>
+        )}
       </main>
 
       <CheckoutModal

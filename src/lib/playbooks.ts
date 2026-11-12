@@ -106,6 +106,18 @@ export async function hasComplimentaryAccess(
   const cleanEmail = email.trim().toLowerCase();
   const cleanSlug = courseSlug.toLowerCase();
 
+  // Admin and authoring preview capability preservation
+  const adminEmails = [
+    process.env.ADMIN_EMAIL,
+    process.env.NEXT_PUBLIC_ADMIN_EMAIL,
+  ]
+    .filter(Boolean)
+    .map((e) => (e as string).trim().toLowerCase());
+
+  if (adminEmails.includes(cleanEmail) || COMPLIMENTARY_ACCESS_EMAILS.has(cleanEmail)) {
+    return true;
+  }
+
   // Query database entitlement
   let grant = await prisma.complimentaryAccess.findUnique({
     where: { email: cleanEmail },
@@ -179,6 +191,28 @@ export async function hasUserAccessToCourse(
     }
   }
 
+  return false;
+}
+
+/**
+ * Server-side authorization check to verify if a user with a given accessKey
+ * has legitimate access to a specific playbook (via purchase or complimentary admin grant).
+ * Fails closed if accessKey is absent or invalid.
+ */
+export async function checkPlaybookAccess(
+  accessKey?: string,
+  targetSlug: string = "men"
+): Promise<boolean> {
+  if (IS_REVIEW_PHASE_FREE_ACCESS) return true;
+  if (!accessKey) return false;
+  try {
+    const customer = await getCustomerByAccessKey(accessKey);
+    if (customer) {
+      return await hasUserAccessToCourse(customer.id, targetSlug, customer.email);
+    }
+  } catch (err) {
+    console.error("[PLAYBOOK_AUTH_CHECK_ERROR]", err);
+  }
   return false;
 }
 
@@ -325,26 +359,32 @@ export async function revokeCoursePurchase({
 }) {
   if (!paymentId) return null;
   const cleanPaymentId = paymentId.trim();
-  const existing = await client.coursePurchase.findFirst({
+  const existingList = await client.coursePurchase.findMany({
     where: { paymentId: cleanPaymentId },
   });
-  if (!existing) {
+  if (!existingList || existingList.length === 0) {
     return null;
   }
 
-  const currentProgress = (existing.progress as PurchaseProgress | null) || {};
-  return await client.coursePurchase.update({
-    where: { id: existing.id },
-    data: {
-      progress: {
-        ...currentProgress,
-        status: reason,
-        revokedAt: new Date().toISOString(),
-        revokedPaymentId: cleanPaymentId,
+  const updatedList = [];
+  const nowIso = new Date().toISOString();
+  for (const existing of existingList) {
+    const currentProgress = (existing.progress as PurchaseProgress | null) || {};
+    const updated = await client.coursePurchase.update({
+      where: { id: existing.id },
+      data: {
+        progress: {
+          ...currentProgress,
+          status: reason,
+          revokedAt: nowIso,
+          revokedPaymentId: cleanPaymentId,
+        },
+        updatedAt: new Date(),
       },
-      updatedAt: new Date(),
-    },
-  });
+    });
+    updatedList.push(updated);
+  }
+  return updatedList[0] || null;
 }
 
 export async function getUserPurchases(customerId: string, includeRevoked = false) {

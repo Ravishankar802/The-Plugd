@@ -1,8 +1,10 @@
 import { notFound, redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import PlaybookArticleReader from "@/components/PlaybookArticleReader";
 import { getPlaybookArticle } from "@/lib/playbook-articles";
 import { ALL_PLAYBOOK_SUMMARIES } from "@/lib/playbooks-catalog";
 import { COURSES, Course } from "@/lib/playbooks-data";
+import { checkPlaybookAccess } from "@/lib/playbooks";
 
 interface LearnPageProps {
   params: Promise<{
@@ -35,6 +37,22 @@ export default async function LearnCoursePage({ params }: LearnPageProps) {
     redirect(`/learn/${course.slug}`);
   }
 
+  // Server-side Authorization Check: strictly enforces ownership
+  let accessKey: string | undefined;
+  try {
+    const cookieStore = await cookies();
+    accessKey = cookieStore.get("plugd_access_key")?.value;
+  } catch (err) {
+    console.error("[LEARN_PAGE_COOKIE_ERROR]", err);
+  }
+
+  const hasAccess = await checkPlaybookAccess(accessKey, course.slug);
+  if (!hasAccess) {
+    const redirectBase =
+      course.slug === "men" || course.slug === "women" ? "dating-playbook" : course.slug;
+    redirect(`/${redirectBase}?checkout=true`);
+  }
+
   // Playbook Article Reader (Medium-style full article experience)
   const article = getPlaybookArticle(course.slug || courseSlug);
   const catalogEntry = ALL_PLAYBOOK_SUMMARIES.find(
@@ -43,7 +61,7 @@ export default async function LearnCoursePage({ params }: LearnPageProps) {
   const thumbnail =
     article?.thumbnail ||
     catalogEntry?.thumbnail ||
-    (course as any).thumbnail ||
+    (course as unknown as { thumbnail?: string }).thumbnail ||
     "https://res.cloudinary.com/cy3gfawr/image/upload/v1793015288/How_to_Build_10K_Websites_in_Minutes_Claude_AI.png";
 
   return (
