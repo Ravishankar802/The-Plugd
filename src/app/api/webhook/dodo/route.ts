@@ -10,6 +10,7 @@ import {
   getOrCreateCustomer,
   recordCoursePurchase,
   revokeCoursePurchase,
+  recordManualRefundReview,
 } from "@/lib/playbooks";
 
 export const dynamic = "force-dynamic";
@@ -112,26 +113,94 @@ export async function POST(req: Request) {
       req.headers.get("x-webhook-id") ||
       event?.event_id ||
       event?.id ||
-      (data?.payment_id ? `evt_${type}_${data.payment_id}` : "")
+      (data?.refund_id
+        ? `evt_${type}_${data.payment_id || ""}_${data.refund_id}`
+        : data?.dispute_id
+        ? `evt_${type}_${data.payment_id || ""}_${data.dispute_id}`
+        : data?.payment_id
+        ? `evt_${type}_${data.payment_id}`
+        : "")
     )?.trim();
 
     // 1. Check for duplicate processed events (Idempotency)
     if (eventId) {
-      const alreadyProcessed = await prisma.processedWebhook.findUnique({
-        where: { id: eventId },
-      });
+      try {
+        const alreadyProcessed = await prisma.processedWebhook.findUnique({
+          where: { id: eventId },
+        });
 
-      if (alreadyProcessed) {
+        if (alreadyProcessed) {
+          return NextResponse.json(
+            { success: true, message: "Duplicate webhook event already processed" },
+            { status: 200 }
+          );
+        }
+      } catch (dbErr: unknown) {
+        const errorMsg = dbErr instanceof Error ? dbErr.message : String(dbErr);
+        console.error("[DODO_WEBHOOK_DB_IDEMPOTENCY_ERROR]", errorMsg);
         return NextResponse.json(
-          { success: true, message: "Duplicate webhook event already processed" },
-          { status: 200 }
+          { error: "Database error during idempotency check", detail: errorMsg },
+          { status: 500 }
         );
       }
     }
 
-    // 2. Handle Refund Succeeded -> Revoke Access
+    // 2. Handle Refund Succeeded
     if (type === "refund.succeeded") {
-      const refundPaymentId = data?.payment_id;
+      const isPartial = data?.is_partial === true;
+      const refundPaymentId = String(data?.payment_id || "").trim();
+      const refundId = String(data?.refund_id || `ref_${Date.now()}`).trim();
+      const refundAmount = typeof data?.amount === "number" ? data.amount : 0;
+      const refundCurrency = data?.currency || "USD";
+      const refundReason = typeof data?.reason === "string" ? data.reason : null;
+
+      // 2A. Partial Refund Handling (Option A: Preserve all entitlements, record manual review audit item)
+      if (isPartial) {
+        try {
+          const reviewItem = await recordManualRefundReview({
+            refundId,
+            paymentId: refundPaymentId,
+            refundAmount,
+            currency: refundCurrency,
+            reason: refundReason,
+            client: prisma,
+          });
+
+          console.warn(
+            `[DODO_WEBHOOK_PARTIAL_REFUND_MANUAL_REVIEW] Partial refund ${refundId} of ${refundAmount} ${refundCurrency} for payment ${refundPaymentId} flagged for manual review. Entitlements preserved.`
+          );
+
+          if (eventId) {
+            await prisma.processedWebhook.create({
+              data: {
+                id: eventId,
+                eventType: type,
+              },
+            }).catch(() => {});
+          }
+
+          return NextResponse.json(
+            {
+              success: true,
+              status: "partial_refund_flagged_for_review",
+              refund_id: refundId,
+              payment_id: refundPaymentId,
+              review: reviewItem,
+            },
+            { status: 200 }
+          );
+        } catch (persistErr: unknown) {
+          const errorMsg = persistErr instanceof Error ? persistErr.message : String(persistErr);
+          console.error("[DODO_WEBHOOK_PARTIAL_REFUND_PERSISTENCE_ERROR]", errorMsg);
+          // Fail closed: return HTTP 500 so Dodo retries delivery
+          return NextResponse.json(
+            { error: "Failed to persist partial refund review record", detail: errorMsg },
+            { status: 500 }
+          );
+        }
+      }
+
+      // 2B. Full Refund Handling (data.is_partial === false or falsy: revoke all associated purchases)
       if (refundPaymentId) {
         try {
           await revokeCoursePurchase({ paymentId: refundPaymentId, reason: "REFUNDED" });

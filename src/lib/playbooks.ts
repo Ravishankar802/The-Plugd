@@ -216,6 +216,19 @@ export async function checkPlaybookAccess(
   return false;
 }
 
+export interface ManualRefundReviewRecord {
+  refund_id: string;
+  payment_id: string;
+  refund_amount: number;
+  currency: string;
+  is_partial: true;
+  reason?: string | null;
+  status: "PENDING_REVIEW";
+  created_at: string;
+  affected_playbooks: string[];
+  customer_email: string;
+}
+
 export interface PurchaseProgress {
   completedLessons?: string[];
   lastViewedLessonId?: string;
@@ -224,6 +237,7 @@ export interface PurchaseProgress {
   revokedPaymentId?: string;
   reactivatedAt?: string;
   updatedAt?: string;
+  manualReview?: ManualRefundReviewRecord;
   [key: string]: unknown;
 }
 
@@ -306,7 +320,7 @@ export async function recordCoursePurchase({
           paymentId: paymentId || existingPurchase.paymentId,
           amount,
           currency: "USD",
-          progress: updatedProgress,
+          progress: updatedProgress as unknown as Prisma.InputJsonValue,
           updatedAt: new Date(),
         },
       });
@@ -378,13 +392,141 @@ export async function revokeCoursePurchase({
           status: reason,
           revokedAt: nowIso,
           revokedPaymentId: cleanPaymentId,
-        },
+        } as unknown as Prisma.InputJsonValue,
         updatedAt: new Date(),
       },
     });
     updatedList.push(updated);
   }
   return updatedList[0] || null;
+}
+
+export async function recordManualRefundReview({
+  refundId,
+  paymentId,
+  refundAmount,
+  currency,
+  reason,
+  client = prisma,
+}: {
+  refundId: string;
+  paymentId: string;
+  refundAmount: number;
+  currency: string;
+  reason?: string | null;
+  client?: DbClient;
+}): Promise<ManualRefundReviewRecord> {
+  const cleanPaymentId = (paymentId || "").trim();
+  const cleanRefundId = (refundId || "").trim();
+  const reviewKey = `manual_refund_review_${cleanRefundId}`;
+
+  // Check if review record was already persisted (idempotency)
+  try {
+    const existing = await client.processedWebhook.findUnique({
+      where: { id: reviewKey },
+    });
+    if (existing) {
+      try {
+        const parsed = JSON.parse(existing.eventType) as ManualRefundReviewRecord;
+        return parsed;
+      } catch {
+        // Continue if parsing fails
+      }
+    }
+  } catch (err: unknown) {
+    // If lookup fails due to database failure, the subsequent create will fail closed
+    console.warn(`[MANUAL_REFUND_REVIEW_LOOKUP_WARNING] Error reading existing review for ${cleanRefundId}:`, err);
+  }
+
+  // Look up affected purchases and customer email
+  const purchases = cleanPaymentId
+    ? await client.coursePurchase.findMany({
+        where: { paymentId: cleanPaymentId },
+      })
+    : [];
+
+  const affectedPlaybooks = purchases.map((p) => p.courseSlug);
+  let customerEmail = "unknown";
+
+  if (purchases.length > 0 && purchases[0].customerId) {
+    try {
+      const customer = await client.customer.findUnique({
+        where: { id: purchases[0].customerId },
+      });
+      if (customer?.email) {
+        customerEmail = customer.email;
+      }
+    } catch {
+      // Keep customerEmail as unknown if lookup fails
+    }
+  }
+
+  const reviewRecord: ManualRefundReviewRecord = {
+    refund_id: cleanRefundId,
+    payment_id: cleanPaymentId,
+    refund_amount: refundAmount,
+    currency,
+    is_partial: true,
+    reason: reason || null,
+    status: "PENDING_REVIEW",
+    created_at: new Date().toISOString(),
+    affected_playbooks: affectedPlaybooks,
+    customer_email: customerEmail,
+  };
+
+  // Persist review record in ProcessedWebhook
+  await client.processedWebhook.create({
+    data: {
+      id: reviewKey,
+      eventType: JSON.stringify(reviewRecord),
+    },
+  });
+
+  // Attach manualReview to each CoursePurchase progress while preserving active entitlement
+  for (const purchase of purchases) {
+    const currentProgress = (purchase.progress as PurchaseProgress | null) || {};
+    try {
+      await client.coursePurchase.update({
+        where: { id: purchase.id },
+        data: {
+          progress: {
+            ...currentProgress,
+            status: currentProgress.status || "ACTIVE",
+            manualReview: reviewRecord,
+          } as unknown as Prisma.InputJsonValue,
+          updatedAt: new Date(),
+        },
+      });
+    } catch (updateErr: unknown) {
+      console.warn(`[MANUAL_REFUND_REVIEW_ATTACH_WARNING] Could not attach to purchase ${purchase.id}:`, updateErr);
+    }
+  }
+
+  return reviewRecord;
+}
+
+export async function getManualRefundReviews(client: DbClient = prisma): Promise<ManualRefundReviewRecord[]> {
+  try {
+    const records = await client.processedWebhook.findMany({
+      where: {
+        id: {
+          startsWith: "manual_refund_review_",
+        },
+      },
+    });
+    const reviews: ManualRefundReviewRecord[] = [];
+    for (const r of records) {
+      try {
+        reviews.push(JSON.parse(r.eventType) as ManualRefundReviewRecord);
+      } catch {
+        // ignore malformed
+      }
+    }
+    return reviews;
+  } catch (err: unknown) {
+    console.error("[GET_MANUAL_REFUND_REVIEWS_ERROR]", err);
+    return [];
+  }
 }
 
 export async function getUserPurchases(customerId: string, includeRevoked = false) {
@@ -446,7 +588,7 @@ export async function updateCourseProgress({
 
       return await prisma.coursePurchase.update({
         where: { id: existing.id },
-        data: { progress: updatedProgress },
+        data: { progress: updatedProgress as unknown as Prisma.InputJsonValue },
       });
     }
   }
@@ -486,7 +628,7 @@ export async function updateCourseProgress({
 
       return await prisma.complimentaryAccess.update({
         where: { id: compGrant.id },
-        data: { progress: updatedProgress },
+        data: { progress: updatedProgress as unknown as Prisma.InputJsonValue },
       });
     }
   }
