@@ -182,6 +182,17 @@ export async function hasUserAccessToCourse(
   return false;
 }
 
+export interface PurchaseProgress {
+  completedLessons?: string[];
+  lastViewedLessonId?: string;
+  status?: "ACTIVE" | "REFUNDED" | "DISPUTED";
+  revokedAt?: string;
+  revokedPaymentId?: string;
+  reactivatedAt?: string;
+  updatedAt?: string;
+  [key: string]: unknown;
+}
+
 export async function hasUserPurchasedCourse(customerId: string, courseSlug: string): Promise<boolean> {
   if (!customerId || !courseSlug) return false;
   const purchase = await prisma.coursePurchase.findUnique({
@@ -192,7 +203,12 @@ export async function hasUserPurchasedCourse(customerId: string, courseSlug: str
       },
     },
   });
-  return Boolean(purchase);
+  if (!purchase) return false;
+  const progress = (purchase.progress as PurchaseProgress | null) || {};
+  if (progress.status === "REFUNDED" || progress.status === "DISPUTED") {
+    return false;
+  }
+  return true;
 }
 
 export async function recordCoursePurchase({
@@ -234,7 +250,35 @@ export async function recordCoursePurchase({
   });
 
   if (existingPurchase) {
-    // If already has a paymentId and incoming paymentId is different, do NOT overwrite
+    const existingProgress = (existingPurchase.progress as PurchaseProgress | null) || {};
+    const isRevoked =
+      existingProgress.status === "REFUNDED" || existingProgress.status === "DISPUTED";
+
+    // If existing purchase was previously revoked (refunded or disputed), reactivate it on repurchase
+    if (isRevoked) {
+      console.info(
+        `[PURCHASE_REACTIVATED] Reactivating previously ${existingProgress.status} purchase for customer ${customerId}, slug ${cleanSlug} with new paymentId ${paymentId}`
+      );
+      const updatedProgress = {
+        ...existingProgress,
+        status: "ACTIVE",
+        revokedAt: undefined,
+        revokedPaymentId: undefined,
+        reactivatedAt: new Date().toISOString(),
+      };
+      return await client.coursePurchase.update({
+        where: { id: existingPurchase.id },
+        data: {
+          paymentId: paymentId || existingPurchase.paymentId,
+          amount,
+          currency: "USD",
+          progress: updatedProgress,
+          updatedAt: new Date(),
+        },
+      });
+    }
+
+    // If active and already has a paymentId and incoming paymentId is different, do NOT overwrite
     if (existingPurchase.paymentId && paymentId && existingPurchase.paymentId !== paymentId) {
       console.warn(
         `[PURCHASE_PRESERVED] Customer ${customerId} already has purchase for ${cleanSlug} with paymentId ${existingPurchase.paymentId}. Preserving original purchase record.`
@@ -270,11 +314,49 @@ export async function recordCoursePurchase({
   });
 }
 
-export async function getUserPurchases(customerId: string) {
+export async function revokeCoursePurchase({
+  paymentId,
+  client = prisma,
+  reason = "REFUNDED",
+}: {
+  paymentId: string;
+  client?: DbClient;
+  reason?: "REFUNDED" | "DISPUTED";
+}) {
+  if (!paymentId) return null;
+  const cleanPaymentId = paymentId.trim();
+  const existing = await client.coursePurchase.findFirst({
+    where: { paymentId: cleanPaymentId },
+  });
+  if (!existing) {
+    return null;
+  }
+
+  const currentProgress = (existing.progress as PurchaseProgress | null) || {};
+  return await client.coursePurchase.update({
+    where: { id: existing.id },
+    data: {
+      progress: {
+        ...currentProgress,
+        status: reason,
+        revokedAt: new Date().toISOString(),
+        revokedPaymentId: cleanPaymentId,
+      },
+      updatedAt: new Date(),
+    },
+  });
+}
+
+export async function getUserPurchases(customerId: string, includeRevoked = false) {
   if (!customerId) return [];
-  return await prisma.coursePurchase.findMany({
+  const purchases = await prisma.coursePurchase.findMany({
     where: { customerId },
     orderBy: { createdAt: "desc" },
+  });
+  if (includeRevoked) return purchases;
+  return purchases.filter((p) => {
+    const progress = (p.progress as PurchaseProgress | null) || {};
+    return progress.status !== "REFUNDED" && progress.status !== "DISPUTED";
   });
 }
 
@@ -305,7 +387,7 @@ export async function updateCourseProgress({
     });
 
     if (existing) {
-      const currentProgress = (existing.progress as any) || {
+      const currentProgress = (existing.progress as PurchaseProgress | null) || {
         completedLessons: [],
         lastViewedLessonId: lessonId,
       };
@@ -345,7 +427,7 @@ export async function updateCourseProgress({
     });
 
     if (compGrant) {
-      const currentProgress = (compGrant.progress as any) || {
+      const currentProgress = (compGrant.progress as PurchaseProgress | null) || {
         completedLessons: [],
         lastViewedLessonId: lessonId,
       };

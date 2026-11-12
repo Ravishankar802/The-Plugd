@@ -1,6 +1,10 @@
 import { PrismaClient } from "@prisma/client";
+import { assertLocalTestDatabase } from "@/lib/test-db-guard";
 
-const prismaClientSingleton = () => {
+export const prismaClientSingleton = () => {
+  if (process.env.DODO_PAYMENTS_MODE === "test_mode") {
+    assertLocalTestDatabase();
+  }
   return new PrismaClient();
 };
 

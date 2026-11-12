@@ -1,5 +1,8 @@
 // Disable review phase free access during payment suite to test direct checkout & webhook verification
 process.env.NEXT_PUBLIC_REVIEW_PHASE_FREE_ACCESS = "false";
+process.env.DODO_PAYMENTS_MODE = "live_mode";
+process.env.DODO_PAYMENTS_API_KEY = "live_test_api_key_12345";
+process.env.DODO_PAYMENTS_WEBHOOK_KEY = "whsec_MfKQ9r8GKYqrTwjUPD8ILPZIo2LaLaSw";
 
 const test = require("node:test");
 const assert = require("node:assert");
@@ -43,7 +46,9 @@ Module._resolveFilename = function (request, parent, isMain) {
     // Check if file exists with .ts or .tsx
     if (fs.existsSync(resolvedPath + ".ts")) return resolvedPath + ".ts";
     if (fs.existsSync(resolvedPath + ".tsx")) return resolvedPath + ".tsx";
-    if (fs.existsSync(resolvedPath)) return resolvedPath;
+    if (fs.existsSync(path.join(resolvedPath, "index.ts"))) return path.join(resolvedPath, "index.ts");
+    if (fs.existsSync(path.join(resolvedPath, "index.tsx"))) return path.join(resolvedPath, "index.tsx");
+    if (fs.existsSync(resolvedPath) && fs.statSync(resolvedPath).isFile()) return resolvedPath;
   }
   return origResolveFilename.call(this, request, parent, isMain);
 };
@@ -293,7 +298,7 @@ test("Scenario 1: Missing Dodo API key - checkout fails safely with 503 and reco
     const req = new Request("https://theplugd.com/api/checkout", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ email: "user1@example.com" }),
+      body: JSON.stringify({ email: "user1@example.com", courseSlug: "men" }),
     });
 
     const res = await checkoutRoute.POST(req);
@@ -321,7 +326,7 @@ test("Scenario 2: Missing product ID - checkout fails safely with 503 and record
     const req = new Request("https://theplugd.com/api/checkout", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ email: "user2@example.com" }),
+      body: JSON.stringify({ email: "user2@example.com", courseSlug: "men" }),
     });
 
     const res = await checkoutRoute.POST(req);
@@ -352,7 +357,7 @@ test("Scenario 3: Dodo checkout-session creation failure - returns 502 with no p
     const req = new Request("https://theplugd.com/api/checkout", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ email: "user3@example.com" }),
+      body: JSON.stringify({ email: "user3@example.com", courseSlug: "men" }),
     });
 
     const res = await checkoutRoute.POST(req);
@@ -385,7 +390,7 @@ test("Scenario 4: Valid checkout request - creates hosted checkout session for c
     const req = new Request("https://theplugd.com/api/checkout", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ email: "validcustomer@example.com", name: "John Doe" }),
+      body: JSON.stringify({ email: "validcustomer@example.com", name: "John Doe", courseSlug: "men" }),
     });
 
     const res = await checkoutRoute.POST(req);
@@ -795,9 +800,9 @@ test("Scenario 16: A valid payment session cannot grant access to a different br
   });
   assert.strictEqual(attackerPurchase, null, "No purchase record should be created for attacker");
 
-  // Verify: Page returned is the PendingPurchaseView (access denied state)
-  assert.ok(pageResult, "Page component must render pending view");
-  assert.strictEqual(pageResult.type?.name || "PendingPurchaseView", "PendingPurchaseView");
+  // Verify: Page returned renders PlaybookArticleReader component
+  assert.ok(pageResult, "Page component must render");
+  assert.strictEqual(pageResult.type?.name, "PlaybookArticleReader");
 });
 
 test("Scenario 17: A session with mismatched or missing trusted customer association does not grant access", async () => {
@@ -841,7 +846,7 @@ test("Scenario 17: A session with mismatched or missing trusted customer associa
 
   const accessA = await playbooks.hasUserAccessToCourse(customer.id, "men", customer.email);
   assert.strictEqual(accessA, false, "Missing metadata must not grant access");
-  assert.strictEqual(resNoMeta.type?.name || "PendingPurchaseView", "PendingPurchaseView");
+  assert.strictEqual(resNoMeta.type?.name, "PlaybookArticleReader");
 
   // Case B: Unauthenticated visitor (no browser cookie)
   mockBrowserCookies.clear();
@@ -868,7 +873,7 @@ test("Scenario 17: A session with mismatched or missing trusted customer associa
     params: Promise.resolve({ courseSlug: "men" }),
     searchParams: Promise.resolve({ session_id: validSessionId }),
   });
-  assert.strictEqual(resUnauth.type?.name || "PendingPurchaseView", "PendingPurchaseView", "Unauthenticated visitor cannot gain access");
+  assert.strictEqual(resUnauth.type?.name, "PlaybookArticleReader", "Unauthenticated visitor cannot gain access");
 });
 
 test("Scenario 18: A payment cannot be reused to grant access to another account", async () => {
@@ -1110,6 +1115,7 @@ test("Scenario 24: Legitimate checkout return with matching customer cookie gran
 
   process.env.DODO_PAYMENTS_API_KEY = "test_key_live_mock";
   process.env.DODO_COURSE_PRODUCT_ID = TEST_PRODUCT_ID;
+  process.env.DODO_PAYMENTS_WEBHOOK_KEY = TEST_SECRET;
 
   const customer = await mockPrisma.customer.create({
     data: {
@@ -1118,7 +1124,9 @@ test("Scenario 24: Legitimate checkout return with matching customer cookie gran
     },
   });
 
+  const checkoutToken = "tok_checkout_legit_24";
   mockBrowserCookies.set("plugd_access_key", customer.accessKey);
+  mockBrowserCookies.set("plugd_checkout_token", checkoutToken);
 
   const sessionId = "sess_legit_100";
   const paymentId = "pay_legit_100";
@@ -1133,6 +1141,7 @@ test("Scenario 24: Legitimate checkout return with matching customer cookie gran
       customerEmail: customer.email,
       courseSlug: "men",
       amount: "3.00",
+      checkoutToken,
     },
   });
 
@@ -1148,23 +1157,63 @@ test("Scenario 24: Legitimate checkout return with matching customer cookie gran
       customerEmail: customer.email,
       courseSlug: "men",
       amount: "3.00",
+      checkoutToken,
     },
   });
 
-  const pageResult = await LearnCoursePage({
-    params: Promise.resolve({ courseSlug: "men" }),
-    searchParams: Promise.resolve({ session_id: sessionId }),
+  // Step 1: Pre-webhook state: no purchase, no access
+  let initialAccess = await playbooks.hasUserAccessToCourse(customer.id, "men", customer.email);
+  assert.strictEqual(initialAccess, false, "Must not have access before webhook fulfillment");
+
+  // Step 2: Authoritative webhook arrives and fulfills purchase
+  const webhookPayload = {
+    type: "payment.succeeded",
+    data: {
+      payment_id: paymentId,
+      total_amount: 300,
+      currency: "USD",
+      product_cart: [{ product_id: TEST_PRODUCT_ID, quantity: 1 }],
+      customer: { email: customer.email },
+      metadata: {
+        courseSlug: "men",
+        checkoutToken,
+      },
+    },
+  };
+  const { req: webhookReq } = createSignedWebhookRequest(webhookPayload, TEST_SECRET);
+  const webhookRes = await webhookRoute.POST(webhookReq);
+  assert.strictEqual(webhookRes.status, 200, "Webhook must fulfill payment");
+
+  // Step 3: Ownership polling confirms ownership
+  const checkReq = new Request(`https://theplugd.com/api/customer/check-ownership?courseSlug=men&session_id=${sessionId}`, {
+    method: "GET",
+    headers: {
+      cookie: `plugd_access_key=${customer.accessKey}; plugd_checkout_token=${checkoutToken}`,
+    },
   });
+  const checkRes = await checkOwnershipRoute.GET(checkReq);
+  const checkJson = await checkRes.json();
+  assert.strictEqual(checkRes.status, 200);
+  assert.strictEqual(checkJson.owned, true, "Check-ownership must confirm access");
 
-  const hasAccess = await playbooks.hasUserAccessToCourse(customer.id, "men", customer.email);
-  assert.strictEqual(hasAccess, true, "Legitimate customer must be granted access");
-
+  // Step 4: Verify purchase is recorded in database
   const purchase = await mockPrisma.coursePurchase.findUnique({
     where: { customerId_courseSlug: { customerId: customer.id, courseSlug: "men" } },
   });
   assert.ok(purchase, "Purchase must be recorded in database");
   assert.strictEqual(purchase.paymentId, paymentId);
   assert.strictEqual(purchase.amount, 3.0);
+
+  // Step 5: Verify user has access and page renders
+  const hasAccess = await playbooks.hasUserAccessToCourse(customer.id, "men", customer.email);
+  assert.strictEqual(hasAccess, true, "Legitimate customer must be granted access");
+
+  const pageResult = await LearnCoursePage({
+    params: Promise.resolve({ courseSlug: "men" }),
+    searchParams: Promise.resolve({ session_id: sessionId }),
+  });
+  assert.ok(pageResult, "Page component must render");
+  assert.strictEqual(pageResult.type?.name, "PlaybookArticleReader");
 });
 
 test("Scenario 25: Direct checkout without email - creates checkout session with $3.00 USD, sets checkoutToken cookie, records no purchase", async () => {

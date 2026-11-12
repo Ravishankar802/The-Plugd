@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { randomBytes } from "crypto";
-import { dodoClient, isDodoConfigured, getDodoCourseProductId } from "@/lib/dodopayments";
+import {
+  dodoClient,
+  isDodoConfigured,
+  getDodoCourseProductId,
+  getPlaybookDodoMapping,
+} from "@/lib/dodopayments";
 import type { Customer } from "@prisma/client";
 import {
   getOrCreateCustomer,
@@ -16,10 +21,31 @@ export const dynamic = "force-dynamic";
 export async function POST(req: Request) {
   try {
     const body = await req.json().catch(() => ({}));
-    const courseSlug =
-      typeof body?.courseSlug === "string" && body.courseSlug.trim()
-        ? body.courseSlug.trim()
-        : "men";
+
+    // 0. Course slug validation: must be a non-empty string
+    if (!body || typeof body.courseSlug !== "string" || !body.courseSlug.trim()) {
+      return NextResponse.json(
+        { error: "Course slug is required." },
+        { status: 400 }
+      );
+    }
+
+    const cleanSlug = body.courseSlug.trim().toLowerCase();
+    const isTestMode = process.env.DODO_PAYMENTS_MODE === "test_mode";
+
+    // In test mode, only the representative test playbook is active.
+    // In live mode, matches one of the 109 Playbooks, or explicitly "men" for legacy checkout
+    const mapping = getPlaybookDodoMapping(cleanSlug);
+    const isLegacyMen = !mapping && cleanSlug === "men" && !isTestMode;
+
+    if (!mapping && !isLegacyMen) {
+      return NextResponse.json(
+        { error: "Invalid or unrecognized playbook slug." },
+        { status: 400 }
+      );
+    }
+
+    const courseSlug = mapping ? mapping.slug : "men";
 
     // Direct access during content review phase
     if (IS_REVIEW_PHASE_FREE_ACCESS) {
@@ -107,7 +133,7 @@ export async function POST(req: Request) {
       }
     }
 
-    // 3. One-time payment of exactly $3 USD via Dodo Payments
+    // 3. Resolve playbook and corresponding Dodo product mapping
     if (!isDodoConfigured()) {
       console.error("[CHECKOUT_ERROR] Dodo Payments API key is not configured");
       return NextResponse.json(
@@ -116,21 +142,28 @@ export async function POST(req: Request) {
       );
     }
 
-    const dodoProductId = getDodoCourseProductId();
+    const dodoProductId = mapping ? mapping.dodoProductId : getDodoCourseProductId("men");
     if (!dodoProductId) {
-      console.error("[CHECKOUT_ERROR] Course product ID is not configured");
+      console.error("[CHECKOUT_ERROR] Course product ID is not configured for", courseSlug);
       return NextResponse.json(
         { error: "Payment service is currently unavailable. Please try again later." },
         { status: 503 }
       );
     }
 
+    const targetSlug = mapping ? mapping.slug : "men";
+    const playbookId = mapping ? mapping.playbookId : "dating-men";
+    const expectedSellingPrice = mapping ? mapping.sellingPriceDollars.toFixed(2) : "3.00";
+    const expectedCents = mapping ? mapping.sellingPriceCents : 300;
+
     const checkoutToken = randomBytes(24).toString("hex");
-    const returnUrl = `${origin}/learn/${courseSlug}?session_id={CHECKOUT_SESSION_ID}&purchased=${courseSlug}`;
+    const returnUrl = `${origin}/learn/${targetSlug}?session_id={CHECKOUT_SESSION_ID}&purchased=${targetSlug}`;
 
     const metadata: Record<string, string> = {
-      courseSlug,
-      amount: "3.00",
+      courseSlug: targetSlug,
+      playbookId,
+      amount: expectedSellingPrice,
+      expectedCents: String(expectedCents),
       checkoutToken,
     };
     if (customer) {
@@ -138,14 +171,33 @@ export async function POST(req: Request) {
       metadata.customerEmail = customer.email;
     }
 
-    const sessionParams: any = {
-      product_cart: [
-        {
-          product_id: dodoProductId,
-          quantity: 1,
-          amount: 300,
-        },
-      ],
+    // Dodo native discounts apply automatically when product_id is passed with quantity: 1 and no manual amount override
+    interface ProductCartItem {
+      product_id: string;
+      quantity: number;
+      amount?: number;
+    }
+
+    const productItem: ProductCartItem = {
+      product_id: dodoProductId,
+      quantity: 1,
+    };
+    if (isLegacyMen) {
+      productItem.amount = 300;
+    }
+
+    interface CheckoutSessionPayload {
+      product_cart: ProductCartItem[];
+      return_url: string;
+      metadata: Record<string, string>;
+      customer?: {
+        email: string;
+        name: string;
+      };
+    }
+
+    const sessionParams: CheckoutSessionPayload = {
+      product_cart: [productItem],
       return_url: returnUrl,
       metadata,
     };
@@ -160,8 +212,9 @@ export async function POST(req: Request) {
     let checkoutSession;
     try {
       checkoutSession = await dodoClient.checkoutSessions.create(sessionParams);
-    } catch (dodoError: any) {
-      console.error("[DODO_CHECKOUT_SESSION_ERROR]", dodoError?.message || dodoError);
+    } catch (dodoError: unknown) {
+      const errorMsg = dodoError instanceof Error ? dodoError.message : String(dodoError);
+      console.error("[DODO_CHECKOUT_SESSION_ERROR]", errorMsg);
       return NextResponse.json(
         { error: "Failed to initialize checkout. Please try again." },
         { status: 502 }
@@ -199,8 +252,9 @@ export async function POST(req: Request) {
     });
 
     return res;
-  } catch (error: any) {
-    console.error("[COURSE_CHECKOUT_ERROR]", error?.message || error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    console.error("[COURSE_CHECKOUT_ERROR]", errorMsg);
     return NextResponse.json(
       { error: "Failed to process checkout. Please try again." },
       { status: 500 }

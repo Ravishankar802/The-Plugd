@@ -5,15 +5,44 @@ import {
   getCustomerByAccessKey,
   hasUserAccessToCourse,
 } from "@/lib/playbooks";
-import { dodoClient, isDodoConfigured, getDodoCourseProductId } from "@/lib/dodopayments";
+import {
+  dodoClient,
+  isDodoConfigured,
+  getDodoCourseProductId,
+  getPlaybookDodoMapping,
+} from "@/lib/dodopayments";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
   try {
     const url = new URL(req.url);
-    const courseSlug = url.searchParams.get("courseSlug")?.toLowerCase() || url.searchParams.get("slug")?.toLowerCase() || "men";
+    const rawSlug = url.searchParams.get("courseSlug") || url.searchParams.get("slug") || "";
+    if (!rawSlug.trim()) {
+      return NextResponse.json(
+        { error: "Course slug is required.", owned: false },
+        { status: 400 }
+      );
+    }
+
+    const requestedSlug = rawSlug.trim().toLowerCase();
     const sessionId = url.searchParams.get("session_id");
+
+    const isTestMode = process.env.DODO_PAYMENTS_MODE === "test_mode";
+    const mapping = getPlaybookDodoMapping(requestedSlug);
+    const isLegacyMen = !mapping && requestedSlug === "men" && !isTestMode;
+
+    if (!mapping && !isLegacyMen) {
+      return NextResponse.json(
+        { error: "Invalid or unrecognized playbook slug.", owned: false },
+        { status: 400 }
+      );
+    }
+
+    const targetSlug = mapping ? mapping.slug : "men";
+    const expectedProductId = mapping ? mapping.dodoProductId : getDodoCourseProductId("men");
+    const expectedCents = mapping ? mapping.sellingPriceCents : 300;
+    const expectedAmountStr = mapping ? mapping.sellingPriceDollars.toFixed(2) : "3.00";
 
     let accessKey: string | undefined;
     let checkoutToken: string | undefined;
@@ -38,7 +67,7 @@ export async function GET(req: Request) {
     if (accessKey) {
       const customer = await getCustomerByAccessKey(accessKey);
       if (customer) {
-        const owns = await hasUserAccessToCourse(customer.id, courseSlug, customer.email);
+        const owns = await hasUserAccessToCourse(customer.id, targetSlug, customer.email);
         if (owns) {
           return NextResponse.json({
             owned: true,
@@ -62,7 +91,6 @@ export async function GET(req: Request) {
         const session = await dodoClient.checkoutSessions.retrieve(sessionId);
         if (session?.payment_status === "succeeded" && session?.payment_id) {
           const payment = await dodoClient.payments.retrieve(session.payment_id);
-          const expectedProductId = getDodoCourseProductId();
           const hasProduct = Array.isArray(payment.product_cart) && payment.product_cart.some(
             (item: { product_id?: string; quantity?: number }) =>
               item?.product_id === expectedProductId && (item?.quantity ?? 1) === 1
@@ -80,22 +108,27 @@ export async function GET(req: Request) {
           const isDirectUsd =
             !hasDiscount &&
             paymentCurrency === "USD" &&
-            (totalAmount === 300 || (totalAmount > 300 && totalAmount - tax === 300));
+            (totalAmount === expectedCents || (totalAmount > expectedCents && totalAmount - tax === expectedCents));
+          const minAdaptiveSettlement = Math.floor(expectedCents * 0.80);
           const isAdaptiveSettlement =
             !hasDiscount &&
             settlementCurrency === "USD" &&
             totalAmount > 0 &&
             settlementAmount !== undefined &&
-            settlementAmount > 0 &&
-            settlementAmount <= 300 + settlementTax;
+            settlementAmount >= minAdaptiveSettlement &&
+            settlementAmount <= expectedCents + settlementTax;
           const isValidCurrencyAndAmount = isDirectUsd || isAdaptiveSettlement;
 
           const sessionMetadata = ((session as unknown as { metadata?: Record<string, string> })?.metadata || {}) as Record<string, string>;
           const paymentMetadata = (payment.metadata || {}) as Record<string, string>;
           const courseSlugMetadata = (paymentMetadata.courseSlug || sessionMetadata.courseSlug || "").toLowerCase();
-          const isCorrectCourse = courseSlugMetadata === "men";
+          const isCorrectCourse =
+            !courseSlugMetadata ||
+            courseSlugMetadata === targetSlug.toLowerCase() ||
+            courseSlugMetadata === requestedSlug.toLowerCase() ||
+            (mapping && (courseSlugMetadata === mapping.playbookId.toLowerCase() || courseSlugMetadata === mapping.slug.toLowerCase()));
           const metadataAmount = paymentMetadata.amount || sessionMetadata.amount;
-          const isCorrectMetadataAmount = !metadataAmount || metadataAmount === "3.00";
+          const isCorrectMetadataAmount = !metadataAmount || metadataAmount === expectedAmountStr;
 
           if (hasProduct && isValidCurrencyAndAmount && isCorrectCourse && isCorrectMetadataAmount) {
             const sessionCheckoutToken = paymentMetadata.checkoutToken || sessionMetadata.checkoutToken;
@@ -118,7 +151,7 @@ export async function GET(req: Request) {
                 const verifiedPurchase = await prisma.coursePurchase.findFirst({
                   where: {
                     paymentId: payment.payment_id,
-                    courseSlug: "men",
+                    courseSlug: targetSlug,
                   },
                 });
 
@@ -129,7 +162,7 @@ export async function GET(req: Request) {
                   });
 
                   if (purchaseCustomer && purchaseCustomer.email.toLowerCase() === customerEmail) {
-                    const owns = await hasUserAccessToCourse(purchaseCustomer.id, courseSlug, purchaseCustomer.email);
+                    const owns = await hasUserAccessToCourse(purchaseCustomer.id, targetSlug, purchaseCustomer.email);
                     if (owns) {
                       const res = NextResponse.json({
                         owned: true,
