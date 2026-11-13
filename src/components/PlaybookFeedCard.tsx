@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Star, ShoppingBag, Check } from "lucide-react";
+import { ShoppingBag, Check } from "lucide-react";
 import type { PlaybookSummary } from "@/lib/categories";
-import { getAuthorProfile, getRelativePublishedTime } from "@/lib/book-utils";
+import { getAuthorProfile } from "@/lib/book-utils";
 import { slugifyAuthorName } from "@/lib/authors";
 import { addToCart, useIsInCart, openCartDrawer, getCustomerPurchasedSlugs } from "@/lib/cart";
 
@@ -27,7 +27,6 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
   const authorName =
     (playbook as PlaybookSummary & { authorName?: string }).authorName ||
     getAuthorProfile(playbook.categoryName, playbook.slug).name;
-  const relativePublishedDate = getRelativePublishedTime(playbook.slug, playbook.publishedAt);
   const formattedPrice = typeof playbook.price === "number" ? playbook.price.toFixed(2) : "3.00";
   const formattedOriginalPrice = typeof playbook.originalPrice === "number" ? playbook.originalPrice.toFixed(2) : "9.00";
 
@@ -116,33 +115,15 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
             >
               {authorName}
             </span>
-            <span className="text-[12px] text-[#78716c] shrink-0">{relativePublishedDate}</span>
           </div>
 
-          {/* Metadata Row — Fixed height container so cards are always identical in size */}
-          <div className="mt-2.5 flex items-center gap-1.5 text-xs h-[24px] overflow-hidden w-full">
-            {playbook.badge && (
+          {playbook.badge && (
+            <div className="mt-2.5 flex items-center gap-1.5 text-xs h-[24px] overflow-hidden w-full">
               <span className="inline-flex items-center rounded-md bg-[#eff6ff] px-2 py-0.5 text-[11px] font-bold text-[#1d4ed8] tracking-tight shrink-0">
                 {playbook.badge}
               </span>
-            )}
-            {playbook.rating && (
-              <div className="inline-flex items-center gap-1 rounded-md border border-[#e7e5e4] bg-white px-1.5 py-0.5 text-[11px] font-semibold text-[#1c1917] shadow-2xs shrink-0">
-                <Star className="h-3 w-3 fill-[#d97706] text-[#d97706]" />
-                <span className="font-bold">{playbook.rating}</span>
-              </div>
-            )}
-            {playbook.ratingCount && (
-              <div className="inline-flex items-center rounded-md border border-[#e7e5e4] bg-white px-1.5 py-0.5 text-[11px] text-[#78716c] shadow-2xs shrink-0">
-                <span>
-                  {typeof playbook.ratingCount === "number"
-                    ? playbook.ratingCount.toLocaleString()
-                    : playbook.ratingCount}{" "}
-                  ratings
-                </span>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </Link>
 

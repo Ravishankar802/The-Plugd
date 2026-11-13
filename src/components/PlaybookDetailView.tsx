@@ -5,20 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   Star,
-  Share2,
   Check,
   BookOpen,
   ChevronDown,
   ChevronUp,
-  Search,
-  SlidersHorizontal,
-  Bookmark,
-  Award,
-  Sparkles,
-  ArrowRight,
   ArrowLeft,
   ThumbsUp,
-  UserCheck,
   ShoppingBag,
 } from "lucide-react";
 import Header from "@/components/Header";
@@ -30,15 +22,9 @@ import { ALL_PLAYBOOK_SUMMARIES } from "@/lib/playbooks-catalog";
 import { isFollowingAuthor as isFollowingAuthorStore, followAuthor, unfollowAuthor } from "@/lib/following-store";
 import { slugifyAuthorName } from "@/lib/authors";
 import {
-  getPlaybookPageCount,
-  getChapterPageRange,
-  getReadingStats,
   getAuthorProfile,
-  getAuthorFollowersCount,
   getCuratedCommunityReviews,
   getAvatarBgColor,
-  getRelativePublishedTime,
-  getPlaybookRatingBreakdown,
 } from "@/lib/book-utils";
 
 interface PlaybookDetailViewProps {
@@ -52,17 +38,8 @@ export default function PlaybookDetailView({
 }: PlaybookDetailViewProps) {
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
-  const [copiedLink, setCopiedLink] = useState(false);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
-  const [isBookDetailsOpen, setIsBookDetailsOpen] = useState(false);
-  const [openChapterIndices, setOpenChapterIndices] = useState<number[]>([0, 1]);
-  const [userRating, setUserRating] = useState<number | null>(null);
-  const [hoverRating, setHoverRating] = useState<number | null>(null);
   const [showUnfollowModal, setShowUnfollowModal] = useState(false);
-  const [reviewSearchQuery, setReviewSearchQuery] = useState("");
-  const [isWritingReview, setIsWritingReview] = useState(false);
-  const [newReviewText, setNewReviewText] = useState("");
-  const [submittedReview, setSubmittedReview] = useState(false);
   const [addedToCartToast, setAddedToCartToast] = useState(false);
   const [clientHasAccess, setClientHasAccess] = useState(hasAccess);
   const inCart = useIsInCart(playbook.slug);
@@ -125,21 +102,6 @@ export default function PlaybookDetailView({
   }, [playbook.slug, playbook.id]);
 
   const effectiveRating = catalogEntry?.rating ?? playbook.rating ?? 4.8;
-  const effectiveRatingCount = catalogEntry?.ratingCount ?? playbook.ratingCount ?? "4.9k";
-  const effectivePublishedAt =
-    catalogEntry?.publishedAt ?? (playbook as PlaybookDetailData & { publishedAt?: string }).publishedAt;
-
-  // Relative published time ("xd ago" or "xmo ago")
-  const relativePublishedDate = useMemo(
-    () => getRelativePublishedTime(playbook.slug, effectivePublishedAt),
-    [playbook.slug, effectivePublishedAt]
-  );
-
-  // Mathematically calculated star rating distribution
-  const ratingBreakdown = useMemo(
-    () => getPlaybookRatingBreakdown(effectiveRating, effectiveRatingCount),
-    [effectiveRating, effectiveRatingCount]
-  );
 
   // Clean description without repeated bold headline prefix
   const cleanDescription = useMemo(() => {
@@ -153,36 +115,6 @@ export default function PlaybookDetailView({
     return desc;
   }, [playbook.description, playbook.headline]);
 
-  // Flattened chapters from modules and lessons
-  const chapters = useMemo(() => {
-    const list: {
-      id: string;
-      title: string;
-      description?: string;
-      partTitle: string;
-      partIndex: number;
-      chapterIndex: number;
-    }[] = [];
-
-    let cIndex = 0;
-    playbook.modules?.forEach((mod, mIdx) => {
-      mod.lessons?.forEach((les) => {
-        list.push({
-          id: les.id,
-          title: les.title,
-          description:
-            (les as { description?: string; summary?: string }).description ||
-            (les as { description?: string; summary?: string }).summary,
-          partTitle: mod.title,
-          partIndex: mIdx + 1,
-          chapterIndex: cIndex++,
-        });
-      });
-    });
-
-    return list;
-  }, [playbook.modules]);
-
   // Readers also enjoyed: 8 related playbooks from catalog for smooth horizontal scroll
   const relatedBooks = useMemo(() => {
     return ALL_PLAYBOOK_SUMMARIES.filter((p) => p.slug !== playbook.slug).slice(0, 8);
@@ -193,17 +125,6 @@ export default function PlaybookDetailView({
     () => getCuratedCommunityReviews(playbook.title, effectiveRating, playbook.slug),
     [playbook.title, effectiveRating, playbook.slug]
   );
-
-  const filteredReviews = useMemo(() => {
-    if (!reviewSearchQuery.trim()) return communityReviews;
-    const q = reviewSearchQuery.toLowerCase();
-    return communityReviews.filter(
-      (r) =>
-        r.headline.toLowerCase().includes(q) ||
-        r.content.toLowerCase().includes(q) ||
-        r.name.toLowerCase().includes(q)
-    );
-  }, [communityReviews, reviewSearchQuery]);
 
   // Direct checkout handler (triggers Dodo checkout session)
   const handleCheckout = async () => {
@@ -264,20 +185,6 @@ export default function PlaybookDetailView({
     setTimeout(() => setAddedToCartToast(false), 3500);
   };
 
-  const handleCopyLink = () => {
-    if (typeof window !== "undefined") {
-      navigator.clipboard.writeText(window.location.href);
-      setCopiedLink(true);
-      setTimeout(() => setCopiedLink(false), 2500);
-    }
-  };
-
-  const toggleChapter = (index: number) => {
-    setOpenChapterIndices((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
-    );
-  };
-
   const effectivePrice = catalogEntry?.price ?? playbook.price ?? 3;
   const effectiveOriginalPrice = catalogEntry?.originalPrice ?? playbook.originalPrice ?? 9;
   const discountPercentage = effectiveOriginalPrice > effectivePrice
@@ -333,28 +240,9 @@ export default function PlaybookDetailView({
                 <h3 className="text-[15px] sm:text-base font-semibold text-[#1c1917] leading-snug line-clamp-2">
                   {playbook.title}
                 </h3>
-                <div className="flex items-center justify-between gap-2 text-[13px] text-[#57534e] w-full">
+                <div className="flex items-center gap-2 text-[13px] text-[#57534e] w-full">
                   <span className="font-medium text-[#44403c] truncate">{author.name}</span>
-                  <span className="text-[12px] text-[#78716c] shrink-0">{relativePublishedDate}</span>
                 </div>
-              </div>
-
-              {/* Rating & Ratings Count */}
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1 text-[13px] font-bold text-[#1c1917]">
-                  <Star className="h-3 w-3 fill-[#d97706] text-[#d97706]" />
-                  <span>{effectiveRating.toFixed(1)}</span>
-                </div>
-                {effectiveRatingCount && (
-                  <div className="inline-flex items-center rounded-md border border-[#e7e5e4] bg-white px-1.5 py-0.5 text-[11px] text-[#78716c] shadow-2xs shrink-0 font-medium">
-                    <span>
-                      {typeof effectiveRatingCount === "number"
-                        ? effectiveRatingCount.toLocaleString()
-                        : effectiveRatingCount}{" "}
-                      ratings
-                    </span>
-                  </div>
-                )}
               </div>
 
               {/* Pricing Section */}
@@ -443,37 +331,6 @@ export default function PlaybookDetailView({
                 </div>
               )}
 
-              {/* Rate This Playbook (Integrated into Bottom of Card) */}
-              <div className="pt-3 border-t border-[#f0eee6] text-center space-y-1">
-                <span className="text-[11.5px] font-medium text-stone-600 block">
-                  {userRating ? `You rated this ${userRating} stars` : "Rate this Playbook"}
-                </span>
-                <div className="flex items-center justify-center gap-1">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <button
-                      key={star}
-                      type="button"
-                      onMouseEnter={() => setHoverRating(star)}
-                      onMouseLeave={() => setHoverRating(null)}
-                      onClick={() => setUserRating(star)}
-                      className="p-1 text-stone-300 hover:text-amber-500 transition-colors focus:outline-none cursor-pointer"
-                      title={`Rate ${star} stars`}
-                    >
-                      <Star
-                        className={`h-5 w-5 ${
-                          (hoverRating ?? userRating ?? 0) >= star
-                            ? "fill-amber-500 text-amber-500"
-                            : "text-stone-300 stroke-[1.5]"
-                        }`}
-                      />
-                    </button>
-                  ))}
-                </div>
-                {userRating && (
-                  <p className="text-[11px] text-emerald-600 font-medium">Thank you for rating!</p>
-                )}
-              </div>
-
             </div>
 
           </div>
@@ -492,30 +349,6 @@ export default function PlaybookDetailView({
                 <span className="font-semibold text-[#292524]">{author.name}</span>
                 <span className="inline-flex items-center justify-center h-4 w-4 rounded-full bg-stone-700 text-white text-[10px]" title="Verified Publisher">
                   ✓
-                </span>
-                <span className="text-stone-300">•</span>
-                <span className="text-stone-500">{relativePublishedDate}</span>
-              </div>
-
-              {/* Star Rating & Ratings / Reviews Count */}
-              <div className="flex items-center gap-2 pt-1">
-                <div className="flex items-center gap-0.5">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star
-                      key={star}
-                      className="h-4 w-4 fill-amber-500 text-amber-500"
-                    />
-                  ))}
-                </div>
-                <span className="font-bold text-sm text-[#1c1917] ml-0.5">
-                  {effectiveRating.toFixed(1)}
-                </span>
-                <span className="text-stone-300">•</span>
-                <span className="text-xs text-stone-500">
-                  {typeof effectiveRatingCount === "number"
-                    ? effectiveRatingCount.toLocaleString()
-                    : effectiveRatingCount}{" "}
-                  ratings
                 </span>
               </div>
             </div>
@@ -568,9 +401,6 @@ export default function PlaybookDetailView({
                         ✓
                       </span>
                     </h3>
-                    <p className="text-xs sm:text-[13px] text-[#78716c] font-medium mt-0.5">
-                      {getAuthorFollowersCount(author.name)}
-                    </p>
                   </div>
                 </Link>
 
@@ -630,189 +460,60 @@ export default function PlaybookDetailView({
               </div>
             </div>
 
-            {/* Ratings & Reviews Section */}
+            {/* Reviews Section */}
             <div className="border-t border-stone-200 pt-8 space-y-6">
               <h2 className="text-2xl font-bold text-[#1c1917]">
-                Ratings & Reviews
+                Reviews
               </h2>
 
-              {/* What Do You Think? Box */}
-              <div className="bg-white rounded-xl border border-stone-200 p-6 text-center space-y-3 shadow-2xs">
-                <div className="h-10 w-10 mx-auto rounded-full bg-stone-100 flex items-center justify-center text-stone-400">
-                  <UserCheck className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-stone-900">
-                    What do you think?
-                  </h3>
-                  <p className="text-xs text-stone-500">Share your thoughts with other readers</p>
-                </div>
-
-                <div className="flex items-center justify-center gap-1.5 py-1">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <button
-                      key={star}
-                      type="button"
-                      onClick={() => setUserRating(star)}
-                      className="text-stone-300 hover:text-amber-500 transition-colors p-1 cursor-pointer"
-                    >
-                      <Star
-                        className={`h-6 w-6 ${
-                          (userRating ?? 0) >= star
-                            ? "fill-amber-500 text-amber-500"
-                            : "stroke-[1.5]"
-                        }`}
-                      />
-                    </button>
-                  ))}
-                </div>
-
-                <div>
-                  <button
-                    type="button"
-                    onClick={() => setIsWritingReview(!isWritingReview)}
-                    className="px-5 py-2 rounded-full bg-[#1c1917] text-white hover:bg-stone-800 text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+              {/* Display Reviews List */}
+              <div className="space-y-4">
+                {communityReviews.map((rev, revIdx) => (
+                  <div
+                    key={rev.id}
+                    className="bg-white rounded-xl border border-stone-200 p-5 shadow-2xs space-y-3"
                   >
-                    Write a Review
-                  </button>
-                </div>
-
-                {isWritingReview && (
-                  <div className="pt-3 max-w-lg mx-auto space-y-2.5 text-left">
-                    <textarea
-                      rows={3}
-                      value={newReviewText}
-                      onChange={(e) => setNewReviewText(e.target.value)}
-                      placeholder="Write your review about the playbook's frameworks, mental models, and practical utility..."
-                      className="w-full text-xs p-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-1 focus:ring-stone-800"
-                    />
-                    <div className="flex justify-end gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setIsWritingReview(false)}
-                        className="px-3 py-1.5 text-xs text-stone-600 hover:text-stone-900 cursor-pointer"
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setSubmittedReview(true);
-                          setIsWritingReview(false);
-                          setNewReviewText("");
-                        }}
-                        className="px-4 py-1.5 rounded-lg bg-emerald-700 text-white text-xs font-semibold hover:bg-emerald-800 cursor-pointer"
-                      >
-                        Submit Review
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {submittedReview && (
-                  <p className="text-xs text-emerald-600 font-medium">
-                    ✓ Your review has been submitted for verified reader publication!
-                  </p>
-                )}
-              </div>
-
-              {/* Community Reviews Breakdown */}
-              <div className="space-y-5">
-
-                {/* Score & Histogram */}
-                <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-6 items-center bg-white rounded-xl border border-stone-200 p-5 shadow-2xs">
-                  <div className="text-center sm:text-left space-y-1">
-                    <div className="flex items-center justify-center sm:justify-start gap-1">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star key={star} className="h-4 w-4 fill-amber-500 text-amber-500" />
-                      ))}
-                    </div>
-                    <div className="text-3xl font-bold text-stone-900">
-                      {playbook.rating?.toFixed(1) || "4.8"}
-                    </div>
-                    <div className="text-xs text-stone-500 font-medium">
-                      {typeof playbook.ratingCount === "number"
-                        ? playbook.ratingCount.toLocaleString()
-                        : playbook.ratingCount}{" "}
-                      ratings
-                    </div>
-                  </div>
-
-                  {/* Rating Histogram */}
-                  <div className="space-y-1.5 text-xs text-stone-600 font-medium">
-                    {ratingBreakdown.map((item) => (
-                      <div key={item.stars} className="flex items-center gap-3">
-                        <span className="w-12 text-stone-500">{item.label}</span>
-                        <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
-                          <div
-                            className="h-full bg-amber-500 rounded-full transition-all duration-300"
-                            style={{ width: `${item.percentage > 0 ? item.percentage : 1}%` }}
-                          />
-                        </div>
-                        <span
-                          className="w-16 text-right text-stone-400 tabular-nums"
-                          title={`${item.count.toLocaleString()} ratings`}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="h-10 w-10 rounded-full text-white flex items-center justify-center font-bold text-xs uppercase shadow-2xs shrink-0"
+                          style={{ backgroundColor: getAvatarBgColor(rev.name, revIdx) }}
                         >
-                          {item.percentage > 0 ? `${item.percentage}%` : "<1%"}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Display Reviews List */}
-                <div className="space-y-4 pt-2">
-                  <h4 className="text-base font-bold text-stone-900 pt-2">
-                    Reviews
-                  </h4>
-                  {communityReviews.map((rev, revIdx) => (
-                    <div
-                      key={rev.id}
-                      className="bg-white rounded-xl border border-stone-200 p-5 shadow-2xs space-y-3"
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div
-                            className="h-10 w-10 rounded-full text-white flex items-center justify-center font-bold text-xs uppercase shadow-2xs shrink-0"
-                            style={{ backgroundColor: getAvatarBgColor(rev.name, revIdx) }}
-                          >
-                            {rev.name.charAt(0)}
-                          </div>
-                          <div>
-                            <span className="font-bold text-xs text-stone-900 block">{rev.name}</span>
-                            <div className="flex items-center gap-2 text-[11px] text-stone-500 font-medium">
-                              <span className="flex items-center gap-0.5">
-                                {[...Array(rev.rating)].map((_, i) => (
-                                  <Star key={i} className="h-3 w-3 fill-amber-500 text-amber-500" />
-                                ))}
-                              </span>
-                              <span>•</span>
-                              <span>{rev.date}</span>
-                            </div>
+                          {rev.name.charAt(0)}
+                        </div>
+                        <div>
+                          <span className="font-bold text-xs text-stone-900 block">{rev.name}</span>
+                          <div className="flex items-center gap-2 text-[11px] text-stone-500 font-medium">
+                            <span className="flex items-center gap-0.5">
+                              {[...Array(rev.rating)].map((_, i) => (
+                                <Star key={i} className="h-3 w-3 fill-amber-500 text-amber-500" />
+                              ))}
+                            </span>
+                            <span>•</span>
+                            <span>{rev.date}</span>
                           </div>
                         </div>
                       </div>
-
-                      <div className="text-xs">
-                        <p className="text-stone-700 leading-relaxed">
-                          {rev.content}
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-between pt-2 border-t border-stone-100 text-[11px] text-stone-500">
-                        <button
-                          type="button"
-                          className="flex items-center gap-1 text-stone-500 hover:text-stone-900 transition-colors cursor-pointer font-medium"
-                        >
-                          <ThumbsUp className="h-3 w-3" />
-                          <span>Helpful ({rev.likes})</span>
-                        </button>
-                        <span className="font-medium">Verified purchase</span>
-                      </div>
                     </div>
-                  ))}
-                </div>
 
+                    <div className="text-xs">
+                      <p className="text-stone-700 leading-relaxed">
+                        {rev.content}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-2 border-t border-stone-100 text-[11px] text-stone-500">
+                      <button
+                        type="button"
+                        className="flex items-center gap-1 text-stone-500 hover:text-stone-900 transition-colors cursor-pointer font-medium"
+                      >
+                        <ThumbsUp className="h-3 w-3" />
+                        <span>Helpful ({rev.likes})</span>
+                      </button>
+                      <span className="font-medium">Verified purchase</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 

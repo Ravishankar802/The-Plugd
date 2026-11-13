@@ -10,9 +10,7 @@ import {
   Check,
   LayoutGrid,
   List,
-  Star,
   ArrowRight,
-  Sparkles,
 } from "lucide-react";
 import Header from "@/components/Header";
 import PlaybookFeedCard from "@/components/PlaybookFeedCard";
@@ -538,19 +536,6 @@ function PlaybookListRow({ playbook }: { playbook: PlaybookSummary }) {
           </p>
 
           <div className="mt-2.5 flex items-center flex-wrap gap-2 sm:gap-3 text-xs text-[#78716c]">
-            {playbook.rating && (
-              <div className="inline-flex items-center gap-1 font-semibold text-[#1c1917]">
-                <Star className="h-3 w-3 fill-[#d97706] text-[#d97706]" />
-                <span>{playbook.rating}</span>
-                {playbook.ratingCount && (
-                  <span className="text-[#78716c] font-normal">
-                    ({typeof playbook.ratingCount === "number"
-                      ? playbook.ratingCount.toLocaleString()
-                      : playbook.ratingCount})
-                  </span>
-                )}
-              </div>
-            )}
             {playbook.modulesCount > 0 && (
               <>
                 <span className="text-[#d6d3d1]">·</span>
