@@ -30,6 +30,36 @@ export interface SlideTemplateDefinition {
 
 // Master persistent registry of slide templates
 export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
+  "vibe-coding-applied-ai-matrix": {
+    templateId: "vibe-coding-applied-ai-matrix",
+    name: "Vibe Coding Systems Architecture & Applied AI Builder Console",
+    categoryTheme:
+      "Applied AI Engineering, Autonomous Coding Agents, Evaluation Benchmarks, Sandbox Security & Voice Interfaces",
+    description:
+      "A high-performance applied AI systems architecture console engineered for technical builders in the vibe coding era. Features deep obsidian-indigo canvas backgrounds (#090d16), dark cybernetic slate cards (#111827), vivid electric violet accents (#8b5cf6), crisp emerald telemetry highlights (#10b981), and structured state-machine loop matrices.",
+    colorPalette: {
+      canvasBg: "#090d16",
+      stageBg: "#111827",
+      border: "#1f2937",
+      primaryText: "#f9fafb",
+      secondaryText: "#9ca3af",
+      accent: "#8b5cf6",
+      accentSecondary: "#10b981",
+      highlightPillBg: "#2e1065",
+      highlightPillText: "#ddd6fe",
+    },
+    visualMotifs: [
+      "The Core Agent State Machine Loop (Context -> Tool Call -> Sandbox Exec -> State Audit)",
+      "The Multi-Tiered Memory Hierarchy (Working -> Episodic -> Semantic -> Document -> Graph)",
+      "The 7-Day Build Sprint Gantt & Verification Matrix",
+      "The Full-Duplex WebRTC Voice Pipeline (VAD -> AEC -> Barge-In Yield -> State Ledger)",
+    ],
+    layoutArchitecture:
+      "High-density systems engineering console featuring dual-column sandbox boundary cards, interactive code evaluation traces, and 30-minute scoping protocol worksheets",
+    assignedPlaybookIds: ["ai-businesses-113"],
+    assignedPlaybookSlugs: ["10-ai-project-ideas-in-30-minutes-for-the-vibe-coding-era"],
+  },
+
   "israels-election-shock-geopolitical-dossier": {
     templateId: "israels-election-shock-geopolitical-dossier",
     name: "Knesset Coalition & Geopolitical Transmission Intelligence Dossier",

@@ -160,6 +160,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "10-ai-project-ideas-in-30-minutes-for-the-vibe-coding-era" ||
+    slug === "ai-businesses-113"
+  ) {
+    return {
+      name: "Harsha Vardhan",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "4.1k followers",
+      bio: "Harsha Vardhan is an applied AI systems engineer, software architect, and builder specializing in autonomous coding agents, sandbox infrastructure, evaluation benchmarks, and real-time voice systems.",
+    };
+  }
+
+  if (
     slug === "israels-election-shock-how-netanyahu-lost-his-majority-and-why-the-world-is-watching" ||
     slug === "ai-businesses-112"
   ) {
@@ -1433,6 +1446,8 @@ if (
  * High quality, realistic community reviews
  */
 export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = {
+  "10-ai-project-ideas-in-30-minutes-for-the-vibe-coding-era": [],
+  "ai-businesses-113": [],
   "israels-election-shock-how-netanyahu-lost-his-majority-and-why-the-world-is-watching": [],
   "ai-businesses-112": [],
   "how-id-start-a-20k-month-ai-agency-with-claude-in-30-days": [

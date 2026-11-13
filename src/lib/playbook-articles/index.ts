@@ -1,4 +1,5 @@
 import { HOW_ID_START_20K_MONTH_AI_AGENCY_ARTICLE } from "./how-id-start-20k-month-ai-agency";
+import { TEN_AI_PROJECT_IDEAS_ARTICLE } from "./10-ai-project-ideas-in-30-minutes-for-the-vibe-coding-era";
 import { ISRAELS_ELECTION_SHOCK_ARTICLE } from "./israels-election-shock";
 import { I_TRIED_23_EASY_SIDE_HUSTLES_ARTICLE } from "./i-tried-23-easy-side-hustles";
 import { THREE_BEST_AI_BUSINESSES_BEFORE_2027_ARTICLE } from "./3-best-ai-businesses-to-start-before-2027";
@@ -341,6 +342,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-111": HOW_ID_START_20K_MONTH_AI_AGENCY_ARTICLE,
   "israels-election-shock-how-netanyahu-lost-his-majority-and-why-the-world-is-watching": ISRAELS_ELECTION_SHOCK_ARTICLE,
   "ai-businesses-112": ISRAELS_ELECTION_SHOCK_ARTICLE,
+  "10-ai-project-ideas-in-30-minutes-for-the-vibe-coding-era": TEN_AI_PROJECT_IDEAS_ARTICLE,
+  "ai-businesses-113": TEN_AI_PROJECT_IDEAS_ARTICLE,
 
 
 };

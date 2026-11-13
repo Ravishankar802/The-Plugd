@@ -1,6 +1,29 @@
 import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [  {
+      "id": "ai-businesses-113",
+      "slug": "10-ai-project-ideas-in-30-minutes-for-the-vibe-coding-era",
+      "title": "10 AI Project ideas in 30 minutes for the Vibe coding era",
+      "headline": "10 AI projects. 30 minutes. One idea could become your next big build. Explore the frontier of vibe coding — from autonomous coding agents and AI-powered code reviewers to agent infrastructure, reasoning benchmarks, and real-time voice systems. Stop building another generic AI wrapper. Build something that actually works.",
+      "description": "**10 AI projects. 30 minutes. One idea could become your next big build. Explore the frontier of vibe coding — from autonomous coding agents and AI-powered code reviewers to agent infrastructure, reasoning benchmarks, and real-time voice systems. Stop building another generic AI wrapper. Build something that actually works.**\n\nDiscover 10 practical AI project ideas across coding agents, evaluation systems, agent infrastructure, and voice AI. Learn how to build everything from terminal-based coding agents and cloud development environments to automated PR reviewers, computer-use benchmarks, memory services, and multi-person AI voice assistants.\n\nEach project breaks down its architecture, core challenges, MVP scope, and evaluation methods. Includes a project-selection scorecard, a 30-minute idea-to-plan exercise, a seven-day build sprint, and practical engineering principles to help you turn an AI idea into a working product.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "badge": "Applied AI Blueprint",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "0.1k",
+      "publishedAt": "2026-11-13",
+      "hoursOfMaterial": "10.4 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352588/10_AI_Project_Ideas_Vibe_Coding.png",
+      "href": "/10-ai-project-ideas-in-30-minutes-for-the-vibe-coding-era"
+  },
+
+  {
       "id": "ai-businesses-112",
       "slug": "israels-election-shock-how-netanyahu-lost-his-majority-and-why-the-world-is-watching",
       "title": "Israel's Election Shock! | How Netanyahu Lost His Majority and Why the World Is Watching?",
