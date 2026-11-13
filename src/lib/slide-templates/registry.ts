@@ -30,6 +30,36 @@ export interface SlideTemplateDefinition {
 
 // Master persistent registry of slide templates
 export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
+  "israels-election-shock-geopolitical-dossier": {
+    templateId: "israels-election-shock-geopolitical-dossier",
+    name: "Knesset Coalition & Geopolitical Transmission Intelligence Dossier",
+    categoryTheme:
+      "Geopolitical Strategy, Coalition Arithmetic, Maritime Chokepoints, Global Oil Security & Strategic Alliances",
+    description:
+      "A high-stakes international strategy and parliamentary intelligence console engineered for geopolitical case studies. Features deep maritime navy canvas backgrounds (#070b14), dark telemetry slate stage cards (#0f172a), crisp diplomat bronze accents (#d97706), electric geopolitical blue telemetry highlights (#0284c7), and structured multi-vector decision matrices.",
+    colorPalette: {
+      canvasBg: "#070b14",
+      stageBg: "#0f172a",
+      border: "#1e293b",
+      primaryText: "#f8fafc",
+      secondaryText: "#94a3b8",
+      accent: "#d97706",
+      accentSecondary: "#0284c7",
+      highlightPillBg: "#451a03",
+      highlightPillText: "#fef3c7",
+    },
+    visualMotifs: [
+      "The 120-Seat Knesset Arithmetic Matrix (53 Netanyahu vs. 48 Eisenkot vs. 19 Arab Kingmakers)",
+      "The Maritime Transmission Nexus (Bab el-Mandeb -> Suez -> Cape of Good Hope -> Supply Shock)",
+      "The IMEC Multimodal Connectivity Network (India -> UAE -> Saudi -> Jordan -> Haifa -> Europe)",
+      "The Five-Layer Geopolitical Intelligence Framework",
+    ],
+    layoutArchitecture:
+      "Executive security intelligence console featuring dual-column parliamentary compatibility matrices, chokepoint transit cost models, and structured 7-day research sprint protocols",
+    assignedPlaybookIds: ["ai-businesses-112"],
+    assignedPlaybookSlugs: ["israels-election-shock-how-netanyahu-lost-his-majority-and-why-the-world-is-watching"],
+  },
+
   // 1. Reference Blueprint Template (7 AI Automation Tools / These 3 AI)
   "blueprint-light-canvas": {
     templateId: "blueprint-light-canvas",

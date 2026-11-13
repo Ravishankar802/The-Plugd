@@ -692,7 +692,8 @@ export default function PlaybookDetailView({
                 </div>
 
                 {/* Display Reviews List */}
-                <div className="space-y-4 pt-2">
+                {communityReviews.length > 0 && (
+                  <div className="space-y-4 pt-2">
                   <h4 className="text-base font-bold text-stone-900 pt-2">
                     Reviews
                   </h4>
@@ -743,6 +744,7 @@ export default function PlaybookDetailView({
                     </div>
                   ))}
                 </div>
+                )}
 
               </div>
             </div>

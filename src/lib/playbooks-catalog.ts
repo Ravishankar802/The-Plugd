@@ -1,6 +1,28 @@
 import type { PlaybookSummary } from "./categories";
 
-export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [
+export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [  {
+      "id": "ai-businesses-112",
+      "slug": "israels-election-shock-how-netanyahu-lost-his-majority-and-why-the-world-is-watching",
+      "title": "Israel's Election Shock! | How Netanyahu Lost His Majority and Why the World Is Watching?",
+      "headline": "One election. 120 seats. A political deadlock with consequences far beyond Israel. Discover how coalition politics, military strategy and regional conflict connect to global oil markets, shipping routes, India's national interests and the future of international trade.",
+      "description": "**One election. 120 seats. A political deadlock with consequences far beyond Israel. Discover how coalition politics, military strategy and regional conflict connect to global oil markets, shipping routes, India's national interests and the future of international trade.**\n\nGo beyond the headlines and uncover how a parliamentary election can reshape the geopolitical landscape. Break down Israel's 120-seat Knesset, the 53–48–19 political deadlock, coalition negotiations, and the competing security strategies surrounding Iran and Gaza. Then trace how regional tensions can ripple through the Red Sea, Strait of Hormuz, global energy markets, maritime trade and India's strategic relationships.\n\nIncludes election and coalition analysis frameworks, geopolitical impact maps, stakeholder assessments, scenario comparisons, monitoring dashboards, practical research worksheets, and a 7-day geopolitical research sprint to help you analyse international events with greater depth and clarity.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "badge": "Geopolitical Dossier",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "0.1k",
+      "publishedAt": "2026-11-13",
+      "hoursOfMaterial": "9.8 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352588/Israels_Election_Shock_Netanyahu.png",
+      "href": "/israels-election-shock-how-netanyahu-lost-his-majority-and-why-the-world-is-watching"
+  },
+
   {
       "id": "ai-businesses-111",
       "slug": "how-id-start-a-20k-month-ai-agency-with-claude-in-30-days",

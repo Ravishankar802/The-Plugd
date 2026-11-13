@@ -160,6 +160,19 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "israels-election-shock-how-netanyahu-lost-his-majority-and-why-the-world-is-watching" ||
+    slug === "ai-businesses-112"
+  ) {
+    return {
+      name: "Rahul Sharma",
+      avatar: "",
+      booksCount: 1,
+      followersCount: "3.2k followers",
+      bio: "Rahul Sharma is a geopolitical analyst, international security researcher, and strategic risk advisor specializing in parliamentary coalition dynamics, energy market security, and Middle Eastern geopolitical transmission channels.",
+    };
+  }
+
+  if (
     slug === "how-id-start-a-20k-month-ai-agency-with-claude-in-30-days" ||
     slug === "ai-businesses-111"
   ) {
@@ -1420,6 +1433,8 @@ if (
  * High quality, realistic community reviews
  */
 export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = {
+  "israels-election-shock-how-netanyahu-lost-his-majority-and-why-the-world-is-watching": [],
+  "ai-businesses-112": [],
   "how-id-start-a-20k-month-ai-agency-with-claude-in-30-days": [
     {
       "id": "rev-1",
