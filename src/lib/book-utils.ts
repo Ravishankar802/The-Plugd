@@ -160,15 +160,17 @@ export function getReadingStats(slug = ""): {
  */
 export function getAuthorProfile(categoryName = "AI", slug = ""): AuthorProfile {
   if (
+    slug === "is-computer-science-still-worth-it-in-2027-winter-arc" ||
+    slug === "ai-businesses-114" ||
     slug === "10-ai-project-ideas-in-30-minutes-for-the-vibe-coding-era" ||
     slug === "ai-businesses-113"
   ) {
     return {
       name: "Harsha Vardhan",
       avatar: "",
-      booksCount: 1,
-      followersCount: "4.1k followers",
-      bio: "Harsha Vardhan is an applied AI systems engineer, software architect, and builder specializing in autonomous coding agents, sandbox infrastructure, evaluation benchmarks, and real-time voice systems.",
+      booksCount: 2,
+      followersCount: "4.8k followers",
+      bio: "Harsha Vardhan is an applied systems architect, engineering mentor, and software builder specializing in full-stack engineering, distributed systems, applied AI integration, and technical career readiness.",
     };
   }
 
@@ -1446,6 +1448,8 @@ if (
  * High quality, realistic community reviews
  */
 export const CURATED_COMMUNITY_REVIEW_OVERRIDES: Record<string, BookReview[]> = {
+  "is-computer-science-still-worth-it-in-2027-winter-arc": [],
+  "ai-businesses-114": [],
   "10-ai-project-ideas-in-30-minutes-for-the-vibe-coding-era": [],
   "ai-businesses-113": [],
   "israels-election-shock-how-netanyahu-lost-his-majority-and-why-the-world-is-watching": [],

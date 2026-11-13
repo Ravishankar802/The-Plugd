@@ -30,6 +30,36 @@ export interface SlideTemplateDefinition {
 
 // Master persistent registry of slide templates
 export const SLIDE_TEMPLATES: Record<string, SlideTemplateDefinition> = {
+  "winter-arc-cs-roadmap": {
+    templateId: "winter-arc-cs-roadmap",
+    name: "Winter Arc Software Engineering & Systems Architecture Dossier",
+    categoryTheme:
+      "Computer Science Foundations, Full-Stack Engineering, System Design, DSA & Applied AI Sprints",
+    description:
+      "A focused technical discipline and systems engineering console engineered for the 12-week Winter Arc roadmap. Features deep glacial midnight navy canvas backgrounds (#040d1a), ice-chiseled slate stage cards (#0d1d33), vibrant arctic cyan accents (#38bdf8), frosty teal execution highlights (#14b8a6), and structured curriculum milestone matrices.",
+    colorPalette: {
+      canvasBg: "#040d1a",
+      stageBg: "#0d1d33",
+      border: "#1e3a5f",
+      primaryText: "#f0f9ff",
+      secondaryText: "#94a3b8",
+      accent: "#38bdf8",
+      accentSecondary: "#14b8a6",
+      highlightPillBg: "#082f49",
+      highlightPillText: "#bae6fd",
+    },
+    visualMotifs: [
+      "The 12-Week Winter Arc Milestone Scaffolding (Foundations -> Full-Stack -> System Design -> Applied AI -> Polish)",
+      "The Four-Pass Problem-Solving Matrix (Understand -> Solve -> Analyze -> Verify)",
+      "The End-to-End Request Pipeline (Client -> Gateway -> Cache -> Queue -> Worker -> DB)",
+      "The 12-Week Engineering Self-Assessment Radar",
+    ],
+    layoutArchitecture:
+      "Executive learning and technical discipline console featuring dual-column architecture diagrams, code review checklists, and structured weekly sprint retrospectives",
+    assignedPlaybookIds: ["ai-businesses-114"],
+    assignedPlaybookSlugs: ["is-computer-science-still-worth-it-in-2027-winter-arc"],
+  },
+
   "vibe-coding-applied-ai-matrix": {
     templateId: "vibe-coding-applied-ai-matrix",
     name: "Vibe Coding Systems Architecture & Applied AI Builder Console",

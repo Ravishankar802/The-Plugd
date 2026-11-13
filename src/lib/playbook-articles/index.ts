@@ -1,3 +1,4 @@
+import { IS_CS_STILL_WORTH_IT_ARTICLE } from "./is-computer-science-still-worth-it-in-2027-winter-arc";
 import { HOW_ID_START_20K_MONTH_AI_AGENCY_ARTICLE } from "./how-id-start-20k-month-ai-agency";
 import { TEN_AI_PROJECT_IDEAS_ARTICLE } from "./10-ai-project-ideas-in-30-minutes-for-the-vibe-coding-era";
 import { ISRAELS_ELECTION_SHOCK_ARTICLE } from "./israels-election-shock";
@@ -344,6 +345,8 @@ export const PLAYBOOK_ARTICLES: Record<string, PlaybookArticle> = {
   "ai-businesses-112": ISRAELS_ELECTION_SHOCK_ARTICLE,
   "10-ai-project-ideas-in-30-minutes-for-the-vibe-coding-era": TEN_AI_PROJECT_IDEAS_ARTICLE,
   "ai-businesses-113": TEN_AI_PROJECT_IDEAS_ARTICLE,
+  "is-computer-science-still-worth-it-in-2027-winter-arc": IS_CS_STILL_WORTH_IT_ARTICLE,
+  "ai-businesses-114": IS_CS_STILL_WORTH_IT_ARTICLE,
 
 
 };

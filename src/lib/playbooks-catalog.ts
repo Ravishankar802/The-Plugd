@@ -1,6 +1,29 @@
 import type { PlaybookSummary } from "./categories";
 
 export const ALL_PLAYBOOK_SUMMARIES: PlaybookSummary[] = [  {
+      "id": "ai-businesses-114",
+      "slug": "is-computer-science-still-worth-it-in-2027-winter-arc",
+      "title": "Is Computer Science Still Worth It in 2027? | Winter Arc",
+      "headline": "AI changed the rules. Your degree alone won't make you job-ready — your ability to build will. Take on the 12-week Winter Arc: master DSA, ship full-stack projects, build AI agents, and discover whether computer science is truly your future.",
+      "description": "**AI changed the rules. Your degree alone won't make you job-ready — your ability to build will. Take on the 12-week Winter Arc: master DSA, ship full-stack projects, build AI agents, and discover whether computer science is truly your future.**\n\nA practical 12-week roadmap to go from programming fundamentals to modern software engineering. Work through JavaScript, backend and frontend development, databases, system design, DSA, RAG, coding agents, and voice AI — while building projects that demonstrate what you can actually do.\n\nIncludes weekly assignments, five portfolio project ideas, an AI-assisted learning framework, a seven-day-style execution mindset, career-readiness checklists, and a final self-assessment to help you evaluate your skills, discover your strengths, and decide your next move in computer science.",
+      "categorySlug": "ai-businesses",
+      "categoryName": "AI",
+      "badge": "Winter Arc Roadmap",
+      "price": 3,
+      "originalPrice": 9,
+      "currency": "USD",
+      "rating": 4.9,
+      "ratingCount": "0.1k",
+      "publishedAt": "2026-11-13",
+      "hoursOfMaterial": "10.5 hours",
+      "modulesCount": 7,
+      "lessonsCount": 28,
+      "slidesCount": 112,
+      "thumbnail": "https://res.cloudinary.com/cy3gfawr/image/upload/v1794352588/Is_CS_Still_Worth_It_Winter_Arc.png",
+      "href": "/is-computer-science-still-worth-it-in-2027-winter-arc"
+  },
+
+  {
       "id": "ai-businesses-113",
       "slug": "10-ai-project-ideas-in-30-minutes-for-the-vibe-coding-era",
       "title": "10 AI Project ideas in 30 minutes for the Vibe coding era",

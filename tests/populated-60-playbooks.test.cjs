@@ -5,6 +5,17 @@ const path = require("node:path");
 
 const POPULATED_PLAYBOOKS = [
   {
+    id: "ai-businesses-114",
+    slug: "is-computer-science-still-worth-it-in-2027-winter-arc",
+    title: "Is Computer Science Still Worth It in 2027? | Winter Arc",
+    dataFile: "src/lib/playbooks/is-computer-science-still-worth-it-data.ts",
+    detailFile: "src/lib/playbooks/is-computer-science-still-worth-it-detail.ts",
+    routeDir: "src/app/is-computer-science-still-worth-it-in-2027-winter-arc",
+    expectedModules: 7,
+    expectedLessons: 28,
+    expectedSlides: 112
+  },
+  {
     id: "ai-businesses-113",
     slug: "10-ai-project-ideas-in-30-minutes-for-the-vibe-coding-era",
     title: "10 AI Project ideas in 30 minutes for the Vibe coding era",
@@ -1292,8 +1303,9 @@ test("4. Course registration in COURSES in playbooks-data.ts", () => {
     const isAgency111 = pb.id === "ai-businesses-111";
     const isIsrael112 = pb.id === "ai-businesses-112";
     const isVibe113 = pb.id === "ai-businesses-113";
-    const slugRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_SLUG") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_SLUG") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_SLUG") : (isDeserve107 ? dataText.includes("HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_SLUG") : (isDigital108 ? dataText.includes("HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_SLUG") : (isBusinesses109 ? dataText.includes("THREE_BEST_AI_BUSINESSES_BEFORE_2027_SLUG") : (isHustles110 ? dataText.includes("I_TRIED_23_EASY_SIDE_HUSTLES_SLUG") : (isIsrael112 ? dataText.includes("ISRAELS_ELECTION_SHOCK_SLUG") : (isVibe113 ? dataText.includes("TEN_AI_PROJECT_IDEAS_SLUG") : (isAgency111 ? dataText.includes("HOW_ID_START_20K_MONTH_AI_AGENCY_SLUG") : (dataText.includes(`"${pb.slug}"`) || dataText.includes(pb.slug)))))))))));
-    const idRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_ID") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_ID") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_ID") : (isDeserve107 ? dataText.includes("HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_ID") : (isDigital108 ? dataText.includes("HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_ID") : (isBusinesses109 ? dataText.includes("THREE_BEST_AI_BUSINESSES_BEFORE_2027_ID") : (isHustles110 ? dataText.includes("I_TRIED_23_EASY_SIDE_HUSTLES_ID") : (isIsrael112 ? dataText.includes("ISRAELS_ELECTION_SHOCK_ID") : (isVibe113 ? dataText.includes("TEN_AI_PROJECT_IDEAS_ID") : (isAgency111 ? dataText.includes("HOW_ID_START_20K_MONTH_AI_AGENCY_ID") : (dataText.includes(`"${pb.id}"`) || dataText.includes(pb.id)))))))))));
+    const isCS114 = pb.id === "ai-businesses-114";
+    const slugRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_SLUG") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_SLUG") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_SLUG") : (isDeserve107 ? dataText.includes("HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_SLUG") : (isDigital108 ? dataText.includes("HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_SLUG") : (isBusinesses109 ? dataText.includes("THREE_BEST_AI_BUSINESSES_BEFORE_2027_SLUG") : (isHustles110 ? dataText.includes("I_TRIED_23_EASY_SIDE_HUSTLES_SLUG") : (isIsrael112 ? dataText.includes("ISRAELS_ELECTION_SHOCK_SLUG") : (isVibe113 ? dataText.includes("TEN_AI_PROJECT_IDEAS_SLUG") : (isCS114 ? dataText.includes("IS_CS_STILL_WORTH_IT_SLUG") : (isAgency111 ? dataText.includes("HOW_ID_START_20K_MONTH_AI_AGENCY_SLUG") : (dataText.includes(`"${pb.slug}"`) || dataText.includes(pb.slug))))))))))));
+    const idRegistered = isCourage ? dataText.includes("COURAGE_TO_BE_DISLIKED_ID") : (isProduct105 ? dataText.includes("I_TRIED_SELLING_17_DIGITAL_PRODUCT_ID") : (isLakh106 ? dataText.includes("IF_I_HAD_0_FIRST_1_LAKH_ID") : (isDeserve107 ? dataText.includes("HOW_TO_MAKE_MORE_MONEY_THAN_YOU_DESERVE_ID") : (isDigital108 ? dataText.includes("HOW_TO_BUILD_SELL_AI_DIGITAL_PRODUCTS_ID") : (isBusinesses109 ? dataText.includes("THREE_BEST_AI_BUSINESSES_BEFORE_2027_ID") : (isHustles110 ? dataText.includes("I_TRIED_23_EASY_SIDE_HUSTLES_ID") : (isIsrael112 ? dataText.includes("ISRAELS_ELECTION_SHOCK_ID") : (isVibe113 ? dataText.includes("TEN_AI_PROJECT_IDEAS_ID") : (isCS114 ? dataText.includes("IS_CS_STILL_WORTH_IT_ID") : (isAgency111 ? dataText.includes("HOW_ID_START_20K_MONTH_AI_AGENCY_ID") : (dataText.includes(`"${pb.id}"`) || dataText.includes(pb.id))))))))))));
     assert.ok(slugRegistered, `COURSES must register slug: ${pb.slug}`);
     assert.ok(idRegistered, `COURSES must register id: ${pb.id}`);
   }
