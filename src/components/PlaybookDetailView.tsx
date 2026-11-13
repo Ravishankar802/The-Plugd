@@ -25,6 +25,7 @@ import {
   getAuthorProfile,
   getCuratedCommunityReviews,
   getAvatarBgColor,
+  getRelativePublishedTime,
 } from "@/lib/book-utils";
 
 interface PlaybookDetailViewProps {
@@ -102,6 +103,14 @@ export default function PlaybookDetailView({
   }, [playbook.slug, playbook.id]);
 
   const effectiveRating = catalogEntry?.rating ?? playbook.rating ?? 4.8;
+  const effectivePublishedAt =
+    catalogEntry?.publishedAt ?? (playbook as PlaybookDetailData & { publishedAt?: string }).publishedAt;
+
+  // Relative published time ("xd ago" or "xmo ago")
+  const relativePublishedDate = useMemo(
+    () => getRelativePublishedTime(playbook.slug, effectivePublishedAt),
+    [playbook.slug, effectivePublishedAt]
+  );
 
   // Clean description without repeated bold headline prefix
   const cleanDescription = useMemo(() => {
@@ -240,8 +249,9 @@ export default function PlaybookDetailView({
                 <h3 className="text-[15px] sm:text-base font-semibold text-[#1c1917] leading-snug line-clamp-2">
                   {playbook.title}
                 </h3>
-                <div className="flex items-center gap-2 text-[13px] text-[#57534e] w-full">
+                <div className="flex items-center justify-between gap-2 text-[13px] text-[#57534e] w-full">
                   <span className="font-medium text-[#44403c] truncate">{author.name}</span>
+                  <span className="text-[12px] text-[#78716c] shrink-0">{relativePublishedDate}</span>
                 </div>
               </div>
 
@@ -350,6 +360,8 @@ export default function PlaybookDetailView({
                 <span className="inline-flex items-center justify-center h-4 w-4 rounded-full bg-stone-700 text-white text-[10px]" title="Verified Publisher">
                   ✓
                 </span>
+                <span className="text-stone-300">•</span>
+                <span className="text-stone-500">{relativePublishedDate}</span>
               </div>
             </div>
 

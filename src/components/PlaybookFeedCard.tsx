@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ShoppingBag, Check } from "lucide-react";
 import type { PlaybookSummary } from "@/lib/categories";
-import { getAuthorProfile } from "@/lib/book-utils";
+import { getAuthorProfile, getRelativePublishedTime } from "@/lib/book-utils";
 import { slugifyAuthorName } from "@/lib/authors";
 import { addToCart, useIsInCart, openCartDrawer, getCustomerPurchasedSlugs } from "@/lib/cart";
 
@@ -27,6 +27,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
   const authorName =
     (playbook as PlaybookSummary & { authorName?: string }).authorName ||
     getAuthorProfile(playbook.categoryName, playbook.slug).name;
+  const relativePublishedDate = getRelativePublishedTime(playbook.slug, playbook.publishedAt);
   const formattedPrice = typeof playbook.price === "number" ? playbook.price.toFixed(2) : "3.00";
   const formattedOriginalPrice = typeof playbook.originalPrice === "number" ? playbook.originalPrice.toFixed(2) : "9.00";
 
@@ -102,7 +103,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
             {playbook.title}
           </h3>
 
-          {/* Category beneath Title */}
+          {/* Category & Published Date beneath Title */}
           <div className="mt-1.5 sm:mt-2 flex items-center justify-between gap-2 text-[13px] text-[#57534e] w-full">
             <span
               onClick={(e) => {
@@ -115,6 +116,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
             >
               {authorName}
             </span>
+            <span className="text-[12px] text-[#78716c] shrink-0">{relativePublishedDate}</span>
           </div>
 
           {playbook.badge && (
