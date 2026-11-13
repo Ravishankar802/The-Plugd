@@ -59,9 +59,11 @@ export default function AuthorChannelView({ author }: AuthorChannelViewProps) {
                 </span>
               </h1>
 
-              {/* Handle & Playbooks Count Line */}
+              {/* Handle & Audience Stats Line */}
               <p className="text-xs sm:text-[13.5px] font-medium text-[#78716c] flex items-center gap-2 flex-wrap">
                 <span className="text-[#44403c] font-semibold">{author.handle}</span>
+                <span>•</span>
+                <span>{author.followersCount}</span>
                 <span>•</span>
                 <span>
                   {author.playbooksCount}{" "}

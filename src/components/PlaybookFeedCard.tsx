@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ShoppingBag, Check } from "lucide-react";
+import { Star, ShoppingBag, Check } from "lucide-react";
 import type { PlaybookSummary } from "@/lib/categories";
 import { getAuthorProfile, getRelativePublishedTime } from "@/lib/book-utils";
 import { slugifyAuthorName } from "@/lib/authors";
@@ -103,7 +103,7 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
             {playbook.title}
           </h3>
 
-          {/* Category & Published Date beneath Title */}
+          {/* Category beneath Title */}
           <div className="mt-1.5 sm:mt-2 flex items-center justify-between gap-2 text-[13px] text-[#57534e] w-full">
             <span
               onClick={(e) => {
@@ -119,13 +119,30 @@ export default function PlaybookFeedCard({ playbook }: PlaybookFeedCardProps) {
             <span className="text-[12px] text-[#78716c] shrink-0">{relativePublishedDate}</span>
           </div>
 
-          {playbook.badge && (
-            <div className="mt-2.5 flex items-center gap-1.5 text-xs h-[24px] overflow-hidden w-full">
+          {/* Metadata Row — Fixed height container so cards are always identical in size */}
+          <div className="mt-2.5 flex items-center gap-1.5 text-xs h-[24px] overflow-hidden w-full">
+            {playbook.badge && (
               <span className="inline-flex items-center rounded-md bg-[#eff6ff] px-2 py-0.5 text-[11px] font-bold text-[#1d4ed8] tracking-tight shrink-0">
                 {playbook.badge}
               </span>
-            </div>
-          )}
+            )}
+            {playbook.rating && (
+              <div className="inline-flex items-center gap-1 rounded-md border border-[#e7e5e4] bg-white px-1.5 py-0.5 text-[11px] font-semibold text-[#1c1917] shadow-2xs shrink-0">
+                <Star className="h-3 w-3 fill-[#d97706] text-[#d97706]" />
+                <span className="font-bold">{playbook.rating}</span>
+              </div>
+            )}
+            {playbook.ratingCount && (
+              <div className="inline-flex items-center rounded-md border border-[#e7e5e4] bg-white px-1.5 py-0.5 text-[11px] text-[#78716c] shadow-2xs shrink-0">
+                <span>
+                  {typeof playbook.ratingCount === "number"
+                    ? playbook.ratingCount.toLocaleString()
+                    : playbook.ratingCount}{" "}
+                  ratings
+                </span>
+              </div>
+            )}
+          </div>
         </div>
       </Link>
 
