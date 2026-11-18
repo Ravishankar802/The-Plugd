@@ -1,6 +1,0 @@
-export {
-  THREE_AI_BUSINESSES_COURSE,
-  THREE_AI_BUSINESSES_MODULES,
-  AI_AUTOMATIONS_PLAYBOOK_COURSE,
-  AI_AUTOMATIONS_MODULES,
-} from "./playbooks/three-ai-businesses-data";
