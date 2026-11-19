@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Plugd",
-  description: "Coming Soon",
+  title: "Ravi",
+  description: "Personal Portfolio & Media Archives",
 };
 
 export default function RootLayout({
@@ -13,16 +13,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        style={{
-          margin: 0,
-          padding: 0,
-          backgroundColor: "#ffffff",
-          color: "#000000",
-          minHeight: "100vh",
-          width: "100%",
-        }}
-      >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Press+Start+2P&family=Silkscreen:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="bg-[#070709] text-white min-h-screen w-full antialiased selection:bg-orange-500/30 selection:text-orange-200">
         {children}
       </body>
     </html>
