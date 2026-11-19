@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --color-ink: #000000;
+  --color-ink: #050507;
   --color-fog: #e2e2e6;
   --color-accent: #d3170a;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #000000;
+  background-color: #050507;
   color: #e2e2e6;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #000000;
+  background-color: #050507;
   color: #e2e2e6;
   min-height: 100vh;
   width: 100%;
@@ -24,7 +24,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Doto Pixel Font with square dot matrix settings */
+/* Doto Pixel Typography - Strict Square Pixel Matrix */
 .font-doto {
   font-family: 'Doto', monospace;
   font-variation-settings: 'ROND' 0;
@@ -38,33 +38,67 @@ body {
   font-family: 'Tektur', monospace;
 }
 
-/* Glass Breathe Animation */
-@keyframes glass-breathe {
-  0%, 100% {
-    box-shadow: 0 24px 90px rgba(0, 0, 0, 0.45), 0 0 34px rgba(211, 23, 10, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  }
-  38% {
-    box-shadow: 0 30px 108px rgba(0, 0, 0, 0.55), 0 0 46px rgba(211, 23, 10, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.16);
-  }
-  68% {
-    box-shadow: 0 34px 124px rgba(0, 0, 0, 0.60), 0 0 60px rgba(211, 23, 10, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  }
+/* Authentic Film Grain Texture */
+.film-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
 }
 
-/* Glass Sheen Streak Animation */
-@keyframes glass-sheen {
+/* CRT Scanline Shader */
+.crt-scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.38) 50%
+  );
+  background-size: 100% 3px;
+  pointer-events: none;
+}
+
+/* Micro Dot Phosphor Matrix */
+.phosphor-matrix {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.45) 0.65px, transparent 0.65px);
+  background-size: 6px 6px;
+  pointer-events: none;
+}
+
+/* Deep Specular Glass Card */
+.glass-surface {
+  position: relative;
+  background: rgba(14, 15, 19, 0.84);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 24px 80px rgba(0, 0, 0, 0.65),
+    0 0 45px rgba(211, 23, 10, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.glass-surface:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 32px 100px rgba(0, 0, 0, 0.8),
+    0 0 55px rgba(211, 23, 10, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.7);
+}
+
+/* Diagonal Specular Sheen Animation */
+@keyframes specular-sheen {
   0% {
     opacity: 0;
     transform: translate(-150%) skew(-18deg);
   }
-  18% {
+  20% {
     opacity: 0;
   }
-  45% {
-    opacity: 0.9;
+  50% {
+    opacity: 0.85;
   }
-  74% {
-    opacity: 0.22;
+  80% {
+    opacity: 0.2;
   }
   100% {
     opacity: 0;
@@ -72,34 +106,20 @@ body {
   }
 }
 
-/* CRT Hero Static Jitter */
-@keyframes hero-static {
-  0% { transform: translate(0); }
-  20% { transform: translate(-1px, 1px); }
-  40% { transform: translate(1px, -1px); }
-  60% { transform: translate(-1px); }
-  80% { transform: translate(1px, 1px); }
-  100% { transform: translate(0); }
+.animate-specular {
+  animation: 9s cubic-bezier(0.45, 0, 0.2, 1) infinite specular-sheen;
 }
 
-/* CRT Scan Roll Beam */
-@keyframes scan-roll {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(200%); }
+/* Slow breathing ambient glow */
+@keyframes ambient-glow {
+  0%, 100% {
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), 0 0 32px rgba(211, 23, 10, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+  50% {
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.65), 0 0 50px rgba(211, 23, 10, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  }
 }
 
-.animate-glass-breathe {
-  animation: 11s cubic-bezier(0.45, 0, 0.2, 1) infinite glass-breathe;
-}
-
-.animate-glass-sheen {
-  animation: 8.5s cubic-bezier(0.45, 0, 0.2, 1) infinite glass-sheen;
-}
-
-.animate-hero-static {
-  animation: 0.18s steps(2, end) infinite hero-static;
-}
-
-.animate-scan-roll {
-  animation: 8s linear infinite scan-roll;
+.animate-ambient-glow {
+  animation: 10s cubic-bezier(0.45, 0, 0.2, 1) infinite ambient-glow;
 }
